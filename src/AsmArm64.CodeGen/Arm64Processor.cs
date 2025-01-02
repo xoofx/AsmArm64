@@ -21,6 +21,7 @@ public partial class Arm64Processor
     private readonly string _basedOutputFolder;
 
     private readonly List<Instruction> _instructions;
+    private readonly Dictionary<string, string> _archVariantNameToArchitectureId = new();
 
     public Arm64Processor(string baseSpecsFolder)
     {
@@ -93,10 +94,63 @@ public partial class Arm64Processor
         //Console.WriteLine($"maximumMemoLength: {maximumMemoLength}");
         //Console.WriteLine($"maximumNameLength: {maximumNameLength}");
 
+        ExtractArchitecture();
+
+
         GenerateCode();
     }
 
+    private void ExtractArchitecture()
+    {
+        var distinctArchVariant = new Dictionary<string, List<string>>();
+        foreach (var instruction in _instructions)
+        {
+            foreach (var archVariant in instruction.ArchVariants)
+            {
+                if (!distinctArchVariant.TryGetValue(archVariant.Feature, out var list))
+                {
+                    list = new List<string>();
+                    distinctArchVariant.Add(archVariant.Feature, list);
+                }
+                if (!list.Contains(archVariant.Name))
+                {
+                    list.Add(archVariant.Name);
 
+                    string? archName = null;
+                    if (archVariant.Name.StartsWith("ARMv"))
+                    {
+                        archName = archVariant.Name.Replace('.', '_');
+                        archName += "_A";
+                    }
+                    else if (archVariant.Name.StartsWith("PROFILE_A"))
+                    {
+                        archName += "ARMv8_0_A";
+                    }
+                    else if (archVariant.Name.StartsWith("PROFILE_R"))
+                    {
+                        archName += "ARMv8_0_R";
+                    }
+
+                    if (archName != null && !_archVariantNameToArchitectureId.ContainsKey(archVariant.Name))
+                    {
+                        _archVariantNameToArchitectureId.Add(archVariant.Name, archName);
+                    }
+                }
+            }
+        }
+        
+        // Print distinct arch variants
+        foreach (var pair in distinctArchVariant.OrderBy(x => x.Key))
+        {
+            Console.Write($"Feature: {pair.Key} ");
+            foreach (var name in pair.Value)
+            {
+                Console.Write($",  {name}");
+            }
+            Console.WriteLine();
+        }
+    }
+    
     private void BuildTree()
     {
         // Sort instructions by normalized name
@@ -154,6 +208,7 @@ public partial class Arm64Processor
         {
             var regDiagrams = iclass.Descendants("regdiagram").First();
             var parentDocVars = GetDocVars(iclass);
+            var archVariants = GetArchVariants(iclass);
 
             string? baseInstrClass = null;
             parentDocVars.TryGetValue("instr-class", out baseInstrClass);
@@ -204,6 +259,7 @@ public partial class Arm64Processor
                     Summary = summary,
                     InstructionClass = instrClass,
                 };
+                instruction.ArchVariants.AddRange(archVariants);
 
                 //if (encodingName == "B_only_branch_imm" || encodingName == "BL_only_branch_imm")
                 //{
@@ -230,7 +286,7 @@ public partial class Arm64Processor
         }
     }
 
-    private Dictionary<string, string> GetDocVars(XElement element)
+    private static Dictionary<string, string> GetDocVars(XElement element)
     {
         var docVars = element.Element("docvars")!.Descendants("docvar");
         var dict = new Dictionary<string, string>();
@@ -244,6 +300,27 @@ public partial class Arm64Processor
             }
         }
         return dict;
+    }
+
+    private static List<ArchVariant> GetArchVariants(XElement element)
+    {
+        var archVariantElement = element.Element("arch_variants");
+        var list = new List<ArchVariant>();
+        if (archVariantElement is not null)
+        {
+            var archVariants = archVariantElement.Descendants("arch_variant");
+            foreach (var archVariant in archVariants)
+            {
+                var feature = archVariant.Attribute("feature")?.Value;
+                var name = archVariant.Attribute("name")?.Value;
+                if (feature != null && name != null)
+                {
+                    list.Add(new ArchVariant(feature, name));
+                }
+            }
+        }
+
+        return list;
     }
     
     private void ProcessBitFields(XElement elt, List<BitfieldInfo> bitFields)
@@ -364,7 +441,9 @@ public partial class Arm64Processor
         public uint BitfieldMask { get; set; }
 
         public uint BitfieldValue { get; set; }
-        
+
+        public List<ArchVariant> ArchVariants { get; } = new();
+
         public List<BitfieldInfo> BitFields { get; } = new();
 
 
@@ -726,7 +805,9 @@ public partial class Arm64Processor
         }
     }
 
-    public enum BitKind : byte
+    private record ArchVariant(string Feature, string Name);
+
+    private enum BitKind : byte
     {
         NotSet,
         Zero,

@@ -5,7 +5,9 @@
 using System.Collections.Frozen;
 using System.Diagnostics;
 using System.Numerics;
+using System.Reflection.PortableExecutable;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace AsmArm64.CodeGen;
@@ -23,6 +25,7 @@ partial class Arm64Processor
         GenerateMnemonicEnum();
         GenerateInstructionIdEnum();
         GenerateInstructionClass();
+        GenerateArchitecture();
     }
 
     private void GenerateMnemonicEnum()
@@ -86,9 +89,76 @@ partial class Arm64Processor
         w.CloseBraceBlock();
     }
 
+    private void GenerateArchitecture()
+    {
+        var variants = _archVariantNameToArchitectureId.Values.ToHashSet().Order().ToList();
+        {
+            using var w = GetWriter("Arm64ArchitectureId.gen.cs");
+            w.WriteLine("namespace AsmArm64;");
+            w.WriteLine();
+            w.WriteSummary("A list of all ARM64 architectures.");
+            w.WriteLine("public enum Arm64ArchitectureId : byte");
+            w.OpenBraceBlock();
+            w.WriteSummary("The architecture is invalid / unknown.");
+            w.WriteLine("Invalid,");
+            foreach (var arch in variants)
+            {
+                w.WriteSummary($"Architecture {arch}.");
+                w.WriteLine($"{arch},");
+            }
+            w.CloseBraceBlock();
+
+        }
+
+        {
+            using var w = GetWriter("Arm64Architecture.gen.cs");
+            w.WriteLine("namespace AsmArm64;");
+            w.WriteLine();
+            w.WriteLine("partial record struct Arm64Architecture");
+            w.OpenBraceBlock();
+            {
+                // Arm64ArchitectureId.ARMv8_0_A => new (id, 8, 0, Arm64ArchitectureProfile.A),
+                var regexDecodeArch = new Regex(@"ARMv(?<Major>\d+)_(?<Minor>\d+)_(?<Profile>[A-Z])");
+                foreach (var variant in variants)
+                {
+                    // arch: Arm64ArchitectureId.ARMv8_0_A
+                    var match = regexDecodeArch.Match(variant);
+                    Debug.Assert(match.Success);
+                    var major = int.Parse(match.Groups["Major"].Value);
+                    var minor = int.Parse(match.Groups["Minor"].Value);
+                    var profile = match.Groups["Profile"].Value;
+                    w.WriteSummary($"Architecture {variant}.");
+                    w.WriteLine($"public static readonly Arm64Architecture {variant} = new(Arm64ArchitectureId.{variant}, {major}, {minor}, Arm64ArchitectureProfile.{profile});");
+                }
+                
+                w.WriteSummary("Converts an architecture id to an architecture.");
+                w.WriteDoc($"<param name=\"id\">The id of the architecture.</param>");
+                w.WriteDoc("<returns>The architecture.</returns>");
+                w.WriteLine("public static Arm64Architecture FromId(Arm64ArchitectureId id)");
+                w.OpenBraceBlock();
+                {
+                    w.WriteLine("return id switch");
+                    w.OpenBraceBlock();
+                    {
+                        // Arm64ArchitectureId.ARMv8_0_A => new (id, 8, 0, Arm64ArchitectureProfile.A),
+                        foreach (var variant in variants)
+                        {
+                            w.WriteLine($"Arm64ArchitectureId.{variant} => {variant},");
+                        }
+
+                        w.WriteLine("_ => new(id, 0, 0, Arm64ArchitectureProfile.Invalid),");
+                    }
+                    w.CloseBraceBlockStatement();
+                }
+                w.CloseBraceBlock();
+            }
+            w.CloseBraceBlock();
+        }
+    }
+
     private CodeWriter GetWriter(string fileName)
     {
-        var sw = new StreamWriter(Path.Combine(_basedOutputFolder, fileName));
+        var sw = new StreamWriter(Path.Combine(_basedOutputFolder, "generated", fileName));
         var w = new CodeWriter(sw);
 
         w.WriteLine(

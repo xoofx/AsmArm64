@@ -57,6 +57,12 @@ internal class CodeWriter : IDisposable
         WriteLine("}");
     }
 
+    public void CloseBraceBlockStatement()
+    {
+        UnIndent();
+        WriteLine("};");
+    }
+
     public CodeWriter Write(string text)
     {
         if (text == null) throw new ArgumentNullException(nameof(text));
