@@ -21,6 +21,7 @@ partial class Arm64Processor
     private void GenerateCode()
     {
         GenerateMnemonicEnum();
+        GenerateInstructionIdEnum();
     }
 
     private void GenerateMnemonicEnum()
@@ -34,8 +35,8 @@ partial class Arm64Processor
         w.WriteSummary("A list of all ARM64 mnemonics.");
         w.WriteLine("public enum Arm64Mnemonic");
         w.OpenBraceBlock();
-        w.WriteSummary("This mnemonic is undefined.");
-        w.WriteLine("UNDEF,");
+        w.WriteSummary("This mnemonic is invalid.");
+        w.WriteLine("Invalid,");
         foreach (var mnemonic in mnemonics.Order())
         {
             w.WriteSummary($"This {mnemonic} mnemonic.");
@@ -44,8 +45,25 @@ partial class Arm64Processor
         w.CloseBraceBlock();
     }
 
+    private void GenerateInstructionIdEnum()
+    {
+        using var w = GetWriter("Arm64InstructionId.gen.cs");
 
-
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteSummary("A list of all ARM64 instruction ids.");
+        w.WriteLine("public enum Arm64InstructionId");
+        w.OpenBraceBlock();
+        w.WriteSummary("This instruction is invalid / undefined.");
+        w.WriteLine("Invalid,");
+        foreach (var instruction in _instructions)
+        {
+            w.WriteSummary($"Instruction {instruction.Mnemonic} - {instruction.Summary}.");
+            w.WriteLine($"{instruction.NormalizedName},");
+        }
+        w.CloseBraceBlock();
+    }
+    
     private CodeWriter GetWriter(string fileName)
     {
         var sw = new StreamWriter(Path.Combine(_basedOutputFolder, fileName));

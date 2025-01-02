@@ -3,8 +3,10 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
+using System.Globalization;
 using System.Numerics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace AsmArm64.CodeGen;
@@ -97,6 +99,8 @@ public partial class Arm64Processor
 
     private void BuildTree()
     {
+        // Sort instructions by normalized name
+        _instructions.Sort((left, right) => string.Compare(left.NormalizedName, right.NormalizedName, CultureInfo.InvariantCulture, CompareOptions.Ordinal));
         var decoder = new InstructionDecoder(0);
         for(int i = 0; i < _instructions.Count; i++)
         {
@@ -185,10 +189,10 @@ public partial class Arm64Processor
 
                 if (mnemonic == null || alias != null)
                 {
-                    if (alias != null)
-                    {
-                        Console.WriteLine($"Alias: {mnemonic} -> {alias}");
-                    }
+                    //if (alias != null)
+                    //{
+                    //    Console.WriteLine($"Alias: {mnemonic} -> {alias}");
+                    //}
                     continue;
                 }
 
@@ -219,7 +223,7 @@ public partial class Arm64Processor
                     instruction.Add(bitField);
                 }
 
-                instruction.BuildMask();
+                instruction.Build();
                 _instructions.Add(instruction);
             }
         }
@@ -333,6 +337,8 @@ public partial class Arm64Processor
 
         public string Name { get; set; } = string.Empty;
 
+        public string NormalizedName { get; set; } = string.Empty;
+
         public string Mnemonic { get; set; } = string.Empty;
 
         public string Summary { get; set; } = string.Empty;
@@ -366,8 +372,12 @@ public partial class Arm64Processor
             }
         }
 
-        public void BuildMask()
+        public void Build()
         {
+            var name = Name.TrimEnd('_');
+            var indexOfUnderscore = name.IndexOf('_');
+            NormalizedName = indexOfUnderscore > 0 ? $"{name.Substring(0, indexOfUnderscore).ToUpperInvariant()}{name.Substring(indexOfUnderscore).ToLowerInvariant()}" : name.ToUpperInvariant();
+
             //for (var i = 0; i < BitFields.Count; i++)
             //{
             //    var bitField = BitFields[i];

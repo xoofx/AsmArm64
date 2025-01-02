@@ -17,9 +17,9 @@ namespace AsmArm64;
 public enum Arm64Mnemonic
 {
     /// <summary>
-    /// This mnemonic is undefined.
+    /// This mnemonic is invalid.
     /// </summary>
-    UNDEF,
+    Invalid,
     /// <summary>
     /// This ABS mnemonic.
     /// </summary>
