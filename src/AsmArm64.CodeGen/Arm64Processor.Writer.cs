@@ -22,6 +22,7 @@ partial class Arm64Processor
     {
         GenerateMnemonicEnum();
         GenerateInstructionIdEnum();
+        GenerateInstructionClass();
     }
 
     private void GenerateMnemonicEnum()
@@ -63,7 +64,28 @@ partial class Arm64Processor
         }
         w.CloseBraceBlock();
     }
-    
+
+    private void GenerateInstructionClass()
+    {
+        using var w = GetWriter("Arm64InstructionClass.gen.cs");
+
+        var instructionClasses = _instructions.Select(x => x.InstructionClass).ToHashSet().Order();
+
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteSummary("A list of all ARM64 instruction classes.");
+        w.WriteLine("public enum Arm64InstructionClass");
+        w.OpenBraceBlock();
+        w.WriteSummary("The instruction class is invalid / unknown.");
+        w.WriteLine("Invalid,");
+        foreach (var iClass in instructionClasses)
+        {
+            w.WriteSummary($"Class {iClass}.");
+            w.WriteLine($"{iClass},");
+        }
+        w.CloseBraceBlock();
+    }
+
     private CodeWriter GetWriter(string fileName)
     {
         var sw = new StreamWriter(Path.Combine(_basedOutputFolder, fileName));

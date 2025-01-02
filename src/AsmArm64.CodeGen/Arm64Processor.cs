@@ -153,6 +153,11 @@ public partial class Arm64Processor
         foreach (var iclass in iclasses)
         {
             var regDiagrams = iclass.Descendants("regdiagram").First();
+            var parentDocVars = GetDocVars(iclass);
+
+            string? baseInstrClass = null;
+            parentDocVars.TryGetValue("instr-class", out baseInstrClass);
+
 
             bitFields.Clear();
             ProcessBitFields(regDiagrams, bitFields);
@@ -161,33 +166,22 @@ public partial class Arm64Processor
             
             foreach (var encoding in encodings)
             {
-                var encodingName = encoding.Attribute("name")?.Value;
-                var docVars = encoding.Descendants("docvar");
+                var encodingName = encoding.Attribute("name")?.Value!;
+                var docVars = GetDocVars(encoding);
                 
-                string? mnemonic = null;
+                string mnemonic = docVars["mnemonic"];
                 int? dataType = null;
                 string? alias = null;
-                
-                foreach (var docVar in docVars)
+                string? instrClass = null;
+
+                if (docVars.TryGetValue("dataType", out var dataTypeText))
                 {
-                    var key = docVar.Attribute("key")?.Value;
-                    var value = docVar.Attribute("value")?.Value;
-
-                    if (key == "mnemonic")
-                    {
-                        mnemonic = value;
-                    }
-                    else if (key == "dataType")
-                    {
-                        dataType = int.Parse(value!);
-                    }
-                    else if (key == "alias_mnemonic")
-                    {
-                        alias = value;
-                    }
+                    dataType = int.Parse(dataTypeText);
                 }
+                docVars.TryGetValue("alias_mnemonic", out alias);
+                docVars.TryGetValue("instr-class", out instrClass);
 
-                if (mnemonic == null || alias != null)
+                if (alias != null)
                 {
                     //if (alias != null)
                     //{
@@ -196,12 +190,19 @@ public partial class Arm64Processor
                     continue;
                 }
 
+                Debug.Assert(encodingName != null);
+                Debug.Assert(mnemonic != null);
+
+                instrClass ??= baseInstrClass ?? "Other";
+                instrClass = $"{char.ToUpperInvariant(instrClass[0])}{instrClass.Substring(1)}";
+
                 var instruction = new Instruction
                 {
                     Filename = fileName,
-                    Name = encodingName!,
+                    Name = encodingName,
                     Mnemonic = mnemonic,
                     Summary = summary,
+                    InstructionClass = instrClass,
                 };
 
                 //if (encodingName == "B_only_branch_imm" || encodingName == "BL_only_branch_imm")
@@ -229,7 +230,22 @@ public partial class Arm64Processor
         }
     }
 
-
+    private Dictionary<string, string> GetDocVars(XElement element)
+    {
+        var docVars = element.Element("docvars")!.Descendants("docvar");
+        var dict = new Dictionary<string, string>();
+        foreach (var docVar in docVars)
+        {
+            var key = docVar.Attribute("key")?.Value;
+            var value = docVar.Attribute("value")?.Value;
+            if (key != null && value != null)
+            {
+                dict[key] = value;
+            }
+        }
+        return dict;
+    }
+    
     private void ProcessBitFields(XElement elt, List<BitfieldInfo> bitFields)
     {
         var boxes = elt.Descendants("box");
@@ -342,6 +358,8 @@ public partial class Arm64Processor
         public string Mnemonic { get; set; } = string.Empty;
 
         public string Summary { get; set; } = string.Empty;
+
+        public string InstructionClass { get; set; } = string.Empty;
 
         public uint BitfieldMask { get; set; }
 
