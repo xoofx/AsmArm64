@@ -1,0 +1,7 @@
+# configuration file for dotnet-releaser
+# Disable default packs - It will only publish NuGet and the Changelog
+[msbuild]
+project = "AsmArm64.sln"
+[github]
+user = "xoofx"
+repo = "AsmArm64"

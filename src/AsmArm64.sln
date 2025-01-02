@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsmArm64", "AsmArm64\AsmArm64.csproj", "{C63196AC-392A-438E-8FC6-1FE2968C2548}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsmArm64.Tests", "AsmArm64.Tests\AsmArm64.Tests.csproj", "{7CA20517-CDCC-401A-B7AA-9E16B84C60CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BBC4B16D-083F-47E6-BFAE-9064E600F230}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\.github\workflows\ci.yml = ..\.github\workflows\ci.yml
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		dotnet-releaser.toml = dotnet-releaser.toml
+		global.json = global.json
+		..\license.txt = ..\license.txt
+		..\readme.md = ..\readme.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsmArm64.CodeGen", "AsmArm64.CodeGen\AsmArm64.CodeGen.csproj", "{8B8F1441-13B3-4F59-8058-A42D6FC5A9B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C63196AC-392A-438E-8FC6-1FE2968C2548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C63196AC-392A-438E-8FC6-1FE2968C2548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C63196AC-392A-438E-8FC6-1FE2968C2548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C63196AC-392A-438E-8FC6-1FE2968C2548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CA20517-CDCC-401A-B7AA-9E16B84C60CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA20517-CDCC-401A-B7AA-9E16B84C60CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA20517-CDCC-401A-B7AA-9E16B84C60CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA20517-CDCC-401A-B7AA-9E16B84C60CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B8F1441-13B3-4F59-8058-A42D6FC5A9B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B8F1441-13B3-4F59-8058-A42D6FC5A9B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B8F1441-13B3-4F59-8058-A42D6FC5A9B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B8F1441-13B3-4F59-8058-A42D6FC5A9B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95E8F3B3-49E8-400E-97A1-38D8B946DFCA}
+	EndGlobalSection
+EndGlobal
