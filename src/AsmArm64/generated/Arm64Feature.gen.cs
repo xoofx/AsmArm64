@@ -19,401 +19,401 @@ public enum Arm64Feature : byte
     /// <summary>
     /// The feature is invalid / unknown.
     /// </summary>
-    Invalid = 0,
+    Invalid,
     /// <summary>
     /// Feature `AES`.
     /// </summary>
-    AES = 0,
+    AES,
     /// <summary>
     /// Feature `AdvSIMD`.
     /// </summary>
-    AdvSIMD = 1,
+    AdvSIMD,
     /// <summary>
     /// Feature `BF16`.
     /// </summary>
-    BF16 = 2,
+    BF16,
     /// <summary>
     /// Feature `BTI`.
     /// </summary>
-    BTI = 3,
+    BTI,
     /// <summary>
     /// Feature `CHK`.
     /// </summary>
-    CHK = 4,
+    CHK,
     /// <summary>
     /// Feature `CLRBHB`.
     /// </summary>
-    CLRBHB = 5,
+    CLRBHB,
     /// <summary>
     /// Feature `CMPBR`.
     /// </summary>
-    CMPBR = 6,
+    CMPBR,
     /// <summary>
     /// Feature `CPA`.
     /// </summary>
-    CPA = 7,
+    CPA,
     /// <summary>
     /// Feature `CRC32`.
     /// </summary>
-    CRC32 = 8,
+    CRC32,
     /// <summary>
     /// Feature `CSSC`.
     /// </summary>
-    CSSC = 9,
+    CSSC,
     /// <summary>
     /// Feature `D128`.
     /// </summary>
-    D128 = 10,
+    D128,
     /// <summary>
     /// Feature `DGH`.
     /// </summary>
-    DGH = 11,
+    DGH,
     /// <summary>
     /// Feature `DotProd`.
     /// </summary>
-    DotProd = 12,
+    DotProd,
     /// <summary>
     /// Feature `F32MM`.
     /// </summary>
-    F32MM = 13,
+    F32MM,
     /// <summary>
     /// Feature `F64MM`.
     /// </summary>
-    F64MM = 14,
+    F64MM,
     /// <summary>
     /// Feature `F8F16MM`.
     /// </summary>
-    F8F16MM = 15,
+    F8F16MM,
     /// <summary>
     /// Feature `F8F32MM`.
     /// </summary>
-    F8F32MM = 16,
+    F8F32MM,
     /// <summary>
     /// Feature `FAMINMAX`.
     /// </summary>
-    FAMINMAX = 17,
+    FAMINMAX,
     /// <summary>
     /// Feature `FCMA`.
     /// </summary>
-    FCMA = 18,
+    FCMA,
     /// <summary>
     /// Feature `FHM`.
     /// </summary>
-    FHM = 19,
+    FHM,
     /// <summary>
     /// Feature `FP`.
     /// </summary>
-    FP = 20,
+    FP,
     /// <summary>
     /// Feature `FP16`.
     /// </summary>
-    FP16 = 21,
+    FP16,
     /// <summary>
     /// Feature `FP8`.
     /// </summary>
-    FP8 = 22,
+    FP8,
     /// <summary>
     /// Feature `FP8DOT2`.
     /// </summary>
-    FP8DOT2 = 23,
+    FP8DOT2,
     /// <summary>
     /// Feature `FP8DOT4`.
     /// </summary>
-    FP8DOT4 = 24,
+    FP8DOT4,
     /// <summary>
     /// Feature `FP8FMA`.
     /// </summary>
-    FP8FMA = 25,
+    FP8FMA,
     /// <summary>
     /// Feature `FPRCVT`.
     /// </summary>
-    FPRCVT = 26,
+    FPRCVT,
     /// <summary>
     /// Feature `FRINTTS`.
     /// </summary>
-    FRINTTS = 27,
+    FRINTTS,
     /// <summary>
     /// Feature `FlagM`.
     /// </summary>
-    FlagM = 28,
+    FlagM,
     /// <summary>
     /// Feature `FlagM2`.
     /// </summary>
-    FlagM2 = 29,
+    FlagM2,
     /// <summary>
     /// Feature `GCS`.
     /// </summary>
-    GCS = 30,
+    GCS,
     /// <summary>
     /// Feature `HBC`.
     /// </summary>
-    HBC = 31,
+    HBC,
     /// <summary>
     /// Feature `I8MM`.
     /// </summary>
-    I8MM = 32,
+    I8MM,
     /// <summary>
     /// Feature `JSCVT`.
     /// </summary>
-    JSCVT = 33,
+    JSCVT,
     /// <summary>
     /// Feature `LOR`.
     /// </summary>
-    LOR = 34,
+    LOR,
     /// <summary>
     /// Feature `LRCPC`.
     /// </summary>
-    LRCPC = 35,
+    LRCPC,
     /// <summary>
     /// Feature `LRCPC2`.
     /// </summary>
-    LRCPC2 = 36,
+    LRCPC2,
     /// <summary>
     /// Feature `LRCPC3`.
     /// </summary>
-    LRCPC3 = 37,
+    LRCPC3,
     /// <summary>
     /// Feature `LS64`.
     /// </summary>
-    LS64 = 38,
+    LS64,
     /// <summary>
     /// Feature `LS64_ACCDATA`.
     /// </summary>
-    LS64_ACCDATA = 39,
+    LS64_ACCDATA,
     /// <summary>
     /// Feature `LS64_V`.
     /// </summary>
-    LS64_V = 40,
+    LS64_V,
     /// <summary>
     /// Feature `LSE`.
     /// </summary>
-    LSE = 41,
+    LSE,
     /// <summary>
     /// Feature `LSE128`.
     /// </summary>
-    LSE128 = 42,
+    LSE128,
     /// <summary>
     /// Feature `LSFE`.
     /// </summary>
-    LSFE = 43,
+    LSFE,
     /// <summary>
     /// Feature `LSUI`.
     /// </summary>
-    LSUI = 44,
+    LSUI,
     /// <summary>
     /// Feature `LUT`.
     /// </summary>
-    LUT = 45,
+    LUT,
     /// <summary>
     /// Feature `MOPS`.
     /// </summary>
-    MOPS = 46,
+    MOPS,
     /// <summary>
     /// Feature `MTE`.
     /// </summary>
-    MTE = 47,
+    MTE,
     /// <summary>
     /// Feature `MTE2`.
     /// </summary>
-    MTE2 = 48,
+    MTE2,
     /// <summary>
     /// Feature `PAuth`.
     /// </summary>
-    PAuth = 49,
+    PAuth,
     /// <summary>
     /// Feature `PAuth_LR`.
     /// </summary>
-    PAuth_LR = 50,
+    PAuth_LR,
     /// <summary>
     /// Feature `PCDPHINT`.
     /// </summary>
-    PCDPHINT = 51,
+    PCDPHINT,
     /// <summary>
     /// Feature `RAS`.
     /// </summary>
-    RAS = 52,
+    RAS,
     /// <summary>
     /// Feature `RDM`.
     /// </summary>
-    RDM = 53,
+    RDM,
     /// <summary>
     /// Feature `RPRFM`.
     /// </summary>
-    RPRFM = 54,
+    RPRFM,
     /// <summary>
     /// Feature `SB`.
     /// </summary>
-    SB = 55,
+    SB,
     /// <summary>
     /// Feature `SHA1`.
     /// </summary>
-    SHA1 = 56,
+    SHA1,
     /// <summary>
     /// Feature `SHA256`.
     /// </summary>
-    SHA256 = 57,
+    SHA256,
     /// <summary>
     /// Feature `SHA3`.
     /// </summary>
-    SHA3 = 58,
+    SHA3,
     /// <summary>
     /// Feature `SHA512`.
     /// </summary>
-    SHA512 = 59,
+    SHA512,
     /// <summary>
     /// Feature `SM3`.
     /// </summary>
-    SM3 = 60,
+    SM3,
     /// <summary>
     /// Feature `SM4`.
     /// </summary>
-    SM4 = 61,
+    SM4,
     /// <summary>
     /// Feature `SME`.
     /// </summary>
-    SME = 62,
+    SME,
     /// <summary>
     /// Feature `SME2`.
     /// </summary>
-    SME2 = 63,
+    SME2,
     /// <summary>
     /// Feature `SME2p1`.
     /// </summary>
-    SME2p1 = 64,
+    SME2p1,
     /// <summary>
     /// Feature `SME2p2`.
     /// </summary>
-    SME2p2 = 65,
+    SME2p2,
     /// <summary>
     /// Feature `SME_B16B16`.
     /// </summary>
-    SME_B16B16 = 66,
+    SME_B16B16,
     /// <summary>
     /// Feature `SME_F16F16`.
     /// </summary>
-    SME_F16F16 = 67,
+    SME_F16F16,
     /// <summary>
     /// Feature `SME_F64F64`.
     /// </summary>
-    SME_F64F64 = 68,
+    SME_F64F64,
     /// <summary>
     /// Feature `SME_F8F16`.
     /// </summary>
-    SME_F8F16 = 69,
+    SME_F8F16,
     /// <summary>
     /// Feature `SME_F8F32`.
     /// </summary>
-    SME_F8F32 = 70,
+    SME_F8F32,
     /// <summary>
     /// Feature `SME_I16I64`.
     /// </summary>
-    SME_I16I64 = 71,
+    SME_I16I64,
     /// <summary>
     /// Feature `SME_LUTv2`.
     /// </summary>
-    SME_LUTv2 = 72,
+    SME_LUTv2,
     /// <summary>
     /// Feature `SME_MOP4`.
     /// </summary>
-    SME_MOP4 = 73,
+    SME_MOP4,
     /// <summary>
     /// Feature `SME_TMOP`.
     /// </summary>
-    SME_TMOP = 74,
+    SME_TMOP,
     /// <summary>
     /// Feature `SPE`.
     /// </summary>
-    SPE = 75,
+    SPE,
     /// <summary>
     /// Feature `SSVE_FP8DOT2`.
     /// </summary>
-    SSVE_FP8DOT2 = 76,
+    SSVE_FP8DOT2,
     /// <summary>
     /// Feature `SSVE_FP8DOT4`.
     /// </summary>
-    SSVE_FP8DOT4 = 77,
+    SSVE_FP8DOT4,
     /// <summary>
     /// Feature `SSVE_FP8FMA`.
     /// </summary>
-    SSVE_FP8FMA = 78,
+    SSVE_FP8FMA,
     /// <summary>
     /// Feature `SVE`.
     /// </summary>
-    SVE = 79,
+    SVE,
     /// <summary>
     /// Feature `SVE2`.
     /// </summary>
-    SVE2 = 80,
+    SVE2,
     /// <summary>
     /// Feature `SVE2p1`.
     /// </summary>
-    SVE2p1 = 81,
+    SVE2p1,
     /// <summary>
     /// Feature `SVE2p2`.
     /// </summary>
-    SVE2p2 = 82,
+    SVE2p2,
     /// <summary>
     /// Feature `SVE_AES`.
     /// </summary>
-    SVE_AES = 83,
+    SVE_AES,
     /// <summary>
     /// Feature `SVE_AES2`.
     /// </summary>
-    SVE_AES2 = 84,
+    SVE_AES2,
     /// <summary>
     /// Feature `SVE_B16B16`.
     /// </summary>
-    SVE_B16B16 = 85,
+    SVE_B16B16,
     /// <summary>
     /// Feature `SVE_BFSCALE`.
     /// </summary>
-    SVE_BFSCALE = 86,
+    SVE_BFSCALE,
     /// <summary>
     /// Feature `SVE_BitPerm`.
     /// </summary>
-    SVE_BitPerm = 87,
+    SVE_BitPerm,
     /// <summary>
     /// Feature `SVE_F16F32MM`.
     /// </summary>
-    SVE_F16F32MM = 88,
+    SVE_F16F32MM,
     /// <summary>
     /// Feature `SVE_PMULL128`.
     /// </summary>
-    SVE_PMULL128 = 89,
+    SVE_PMULL128,
     /// <summary>
     /// Feature `SVE_SHA3`.
     /// </summary>
-    SVE_SHA3 = 90,
+    SVE_SHA3,
     /// <summary>
     /// Feature `SVE_SM4`.
     /// </summary>
-    SVE_SM4 = 91,
+    SVE_SM4,
     /// <summary>
     /// Feature `SYSINSTR128`.
     /// </summary>
-    SYSINSTR128 = 92,
+    SYSINSTR128,
     /// <summary>
     /// Feature `SYSREG128`.
     /// </summary>
-    SYSREG128 = 93,
+    SYSREG128,
     /// <summary>
     /// Feature `THE`.
     /// </summary>
-    THE = 94,
+    THE,
     /// <summary>
     /// Feature `TME`.
     /// </summary>
-    TME = 95,
+    TME,
     /// <summary>
     /// Feature `TRF`.
     /// </summary>
-    TRF = 96,
+    TRF,
     /// <summary>
     /// Feature `WFxT`.
     /// </summary>
-    WFxT = 97,
+    WFxT,
     /// <summary>
     /// Feature `XS`.
     /// </summary>
-    XS = 98,
+    XS,
 }

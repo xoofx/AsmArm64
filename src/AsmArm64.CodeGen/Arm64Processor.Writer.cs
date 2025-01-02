@@ -161,12 +161,12 @@ partial class Arm64Processor
         w.WriteLine("public enum Arm64Feature : byte");
         w.OpenBraceBlock();
         w.WriteSummary("The feature is invalid / unknown.");
-        w.WriteLine("Invalid = 0,");
+        w.WriteLine("Invalid,");
         for (var i = 0; i < _features.Count; i++)
         {
             var feature = _features[i];
             w.WriteSummary($"Feature `{feature}`.");
-            w.WriteLine($"{feature} = {i},");
+            w.WriteLine($"{feature},");
         }
 
         w.CloseBraceBlock();
@@ -182,7 +182,7 @@ partial class Arm64Processor
         w.WriteLine("public enum Arm64FeatureExpressionId : byte");
         w.OpenBraceBlock();
         w.WriteSummary("The feature is invalid / unknown.");
-        w.WriteLine("Invalid = 0,");
+        w.WriteLine("Invalid,");
         for (var i = 0; i < _featureExpressions.Count; i++)
         {
             var featureExpression = _featureExpressions[i];
@@ -194,7 +194,7 @@ partial class Arm64Processor
             {
                 w.WriteSummary($"Feature `{EscapeHtmlEntities(featureExpression.FeatureExpression)}`.");
             }
-            w.WriteLine($"{featureExpression.FeatureExpressionId} = {i},");
+            w.WriteLine($"{featureExpression.FeatureExpressionId},");
         }
 
         w.CloseBraceBlock();

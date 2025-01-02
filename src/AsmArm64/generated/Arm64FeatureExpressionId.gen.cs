@@ -19,549 +19,549 @@ public enum Arm64FeatureExpressionId : byte
     /// <summary>
     /// The feature is invalid / unknown.
     /// </summary>
-    Invalid = 0,
+    Invalid,
     /// <summary>
     /// Feature `FEAT_AES` for `ARMv8.0`.
     /// </summary>
-    AES = 0,
+    AES,
     /// <summary>
     /// Feature `FEAT_AdvSIMD` for `ARMv8.0`.
     /// </summary>
-    AdvSIMD = 1,
+    AdvSIMD,
     /// <summary>
     /// Feature `FEAT_AdvSIMD &amp;&amp; FEAT_FAMINMAX`.
     /// </summary>
-    AdvSIMD_And_FAMINMAX = 2,
+    AdvSIMD_And_FAMINMAX,
     /// <summary>
     /// Feature `FEAT_AdvSIMD &amp;&amp; FEAT_FP16`.
     /// </summary>
-    AdvSIMD_And_FP16 = 3,
+    AdvSIMD_And_FP16,
     /// <summary>
     /// Feature `FEAT_AdvSIMD &amp;&amp; FEAT_LRCPC3`.
     /// </summary>
-    AdvSIMD_And_LRCPC3 = 4,
+    AdvSIMD_And_LRCPC3,
     /// <summary>
     /// Feature `FEAT_AdvSIMD &amp;&amp; FEAT_LUT`.
     /// </summary>
-    AdvSIMD_And_LUT = 5,
+    AdvSIMD_And_LUT,
     /// <summary>
     /// Feature `FEAT_BF16` for `ARMv8.6`.
     /// </summary>
-    BF16 = 6,
+    BF16,
     /// <summary>
     /// Feature `FEAT_BTI` for `ARMv8.5`.
     /// </summary>
-    BTI = 7,
+    BTI,
     /// <summary>
     /// Feature `FEAT_CHK` for `ARMv9.4`.
     /// </summary>
-    CHK = 8,
+    CHK,
     /// <summary>
     /// Feature `FEAT_CLRBHB` for `ARMv8.9`.
     /// </summary>
-    CLRBHB = 9,
+    CLRBHB,
     /// <summary>
     /// Feature `FEAT_CMPBR` for `ARMv9.6`.
     /// </summary>
-    CMPBR = 10,
+    CMPBR,
     /// <summary>
     /// Feature `FEAT_CPA` for `ARMv9.5`.
     /// </summary>
-    CPA = 11,
+    CPA,
     /// <summary>
     /// Feature `FEAT_CRC32` for `ARMv8.0`.
     /// </summary>
-    CRC32 = 12,
+    CRC32,
     /// <summary>
     /// Feature `FEAT_CSSC` for `ARMv8.9`.
     /// </summary>
-    CSSC = 13,
+    CSSC,
     /// <summary>
     /// Feature `FEAT_D128 &amp;&amp; FEAT_THE`.
     /// </summary>
-    D128_And_THE = 14,
+    D128_And_THE,
     /// <summary>
     /// Feature `FEAT_DGH`.
     /// </summary>
-    DGH = 15,
+    DGH,
     /// <summary>
     /// Feature `FEAT_DotProd` for `ARMv8.4`.
     /// </summary>
-    DotProd = 16,
+    DotProd,
     /// <summary>
     /// Feature `FEAT_F32MM`.
     /// </summary>
-    F32MM = 17,
+    F32MM,
     /// <summary>
     /// Feature `FEAT_F64MM`.
     /// </summary>
-    F64MM = 18,
+    F64MM,
     /// <summary>
     /// Feature `FEAT_F8F16MM` for `ARMv9.6`.
     /// </summary>
-    F8F16MM = 19,
+    F8F16MM,
     /// <summary>
     /// Feature `FEAT_F8F32MM` for `ARMv9.6`.
     /// </summary>
-    F8F32MM = 20,
+    F8F32MM,
     /// <summary>
     /// Feature `FEAT_FCMA` for `ARMv8.3`.
     /// </summary>
-    FCMA = 21,
+    FCMA,
     /// <summary>
     /// Feature `FEAT_FHM` for `ARMv8.4`.
     /// </summary>
-    FHM = 22,
+    FHM,
     /// <summary>
     /// Feature `FEAT_FP` for `ARMv8.0`.
     /// </summary>
-    FP = 23,
+    FP,
     /// <summary>
     /// Feature `FEAT_FP8` for `ARMv9.5`.
     /// </summary>
-    FP8 = 24,
+    FP8,
     /// <summary>
     /// Feature `FEAT_FP8DOT2` for `ARMv9.5`.
     /// </summary>
-    FP8DOT2 = 25,
+    FP8DOT2,
     /// <summary>
     /// Feature `FEAT_FP8DOT4` for `ARMv9.5`.
     /// </summary>
-    FP8DOT4 = 26,
+    FP8DOT4,
     /// <summary>
     /// Feature `FEAT_FP8FMA` for `ARMv9.5`.
     /// </summary>
-    FP8FMA = 27,
+    FP8FMA,
     /// <summary>
     /// Feature `FEAT_FPRCVT` for `ARMv9.6`.
     /// </summary>
-    FPRCVT = 28,
+    FPRCVT,
     /// <summary>
     /// Feature `FEAT_FP &amp;&amp; FEAT_LRCPC3`.
     /// </summary>
-    FP_And_LRCPC3 = 29,
+    FP_And_LRCPC3,
     /// <summary>
     /// Feature `FEAT_FP &amp;&amp; FEAT_LSUI`.
     /// </summary>
-    FP_And_LSUI = 30,
+    FP_And_LSUI,
     /// <summary>
     /// Feature `FEAT_FRINTTS` for `ARMv8.5`.
     /// </summary>
-    FRINTTS = 31,
+    FRINTTS,
     /// <summary>
     /// Feature `FEAT_FlagM` for `ARMv8.4`.
     /// </summary>
-    FlagM = 32,
+    FlagM,
     /// <summary>
     /// Feature `FEAT_FlagM2` for `ARMv8.5`.
     /// </summary>
-    FlagM2 = 33,
+    FlagM2,
     /// <summary>
     /// Feature `FEAT_GCS` for `ARMv9.4`.
     /// </summary>
-    GCS = 34,
+    GCS,
     /// <summary>
     /// Feature `FEAT_HBC` for `ARMv8.8`.
     /// </summary>
-    HBC = 35,
+    HBC,
     /// <summary>
     /// Feature `FEAT_I8MM`.
     /// </summary>
-    I8MM = 36,
+    I8MM,
     /// <summary>
     /// Feature `FEAT_JSCVT` for `ARMv8.3`.
     /// </summary>
-    JSCVT = 37,
+    JSCVT,
     /// <summary>
     /// Feature `FEAT_LOR`.
     /// </summary>
-    LOR = 38,
+    LOR,
     /// <summary>
     /// Feature `FEAT_LRCPC` for `ARMv8.3`.
     /// </summary>
-    LRCPC = 39,
+    LRCPC,
     /// <summary>
     /// Feature `FEAT_LRCPC2` for `ARMv8.4`.
     /// </summary>
-    LRCPC2 = 40,
+    LRCPC2,
     /// <summary>
     /// Feature `FEAT_LRCPC3` for `ARMv8.9`.
     /// </summary>
-    LRCPC3 = 41,
+    LRCPC3,
     /// <summary>
     /// Feature `FEAT_LS64` for `ARMv8.7`.
     /// </summary>
-    LS64 = 42,
+    LS64,
     /// <summary>
     /// Feature `FEAT_LS64_ACCDATA` for `ARMv8.7`.
     /// </summary>
-    LS64_ACCDATA = 43,
+    LS64_ACCDATA,
     /// <summary>
     /// Feature `FEAT_LS64_V` for `ARMv8.7`.
     /// </summary>
-    LS64_V = 44,
+    LS64_V,
     /// <summary>
     /// Feature `FEAT_LSE` for `ARMv8.1`.
     /// </summary>
-    LSE = 45,
+    LSE,
     /// <summary>
     /// Feature `FEAT_LSE128` for `ARMv9.4`.
     /// </summary>
-    LSE128 = 46,
+    LSE128,
     /// <summary>
     /// Feature `FEAT_LSFE` for `ARMv9.6`.
     /// </summary>
-    LSFE = 47,
+    LSFE,
     /// <summary>
     /// Feature `FEAT_LSUI` for `ARMv9.6`.
     /// </summary>
-    LSUI = 48,
+    LSUI,
     /// <summary>
     /// Feature `(FEAT_SVE2 &amp;&amp; FEAT_FP8DOT2) || FEAT_SSVE_FP8DOT2`.
     /// </summary>
-    Lp_SVE2_And_FP8DOT2_Rp_Or_SSVE_FP8DOT2 = 49,
+    Lp_SVE2_And_FP8DOT2_Rp_Or_SSVE_FP8DOT2,
     /// <summary>
     /// Feature `(FEAT_SVE2 &amp;&amp; FEAT_FP8DOT4) || FEAT_SSVE_FP8DOT4`.
     /// </summary>
-    Lp_SVE2_And_FP8DOT4_Rp_Or_SSVE_FP8DOT4 = 50,
+    Lp_SVE2_And_FP8DOT4_Rp_Or_SSVE_FP8DOT4,
     /// <summary>
     /// Feature `(FEAT_SVE2 &amp;&amp; FEAT_FP8FMA) || FEAT_SSVE_FP8FMA`.
     /// </summary>
-    Lp_SVE2_And_FP8FMA_Rp_Or_SSVE_FP8FMA = 51,
+    Lp_SVE2_And_FP8FMA_Rp_Or_SSVE_FP8FMA,
     /// <summary>
     /// Feature `(FEAT_SVE2 || FEAT_SME2) &amp;&amp; FEAT_FAMINMAX`.
     /// </summary>
-    Lp_SVE2_Or_SME2_Rp_And_FAMINMAX = 52,
+    Lp_SVE2_Or_SME2_Rp_And_FAMINMAX,
     /// <summary>
     /// Feature `(FEAT_SVE2 || FEAT_SME2) &amp;&amp; FEAT_FP8`.
     /// </summary>
-    Lp_SVE2_Or_SME2_Rp_And_FP8 = 53,
+    Lp_SVE2_Or_SME2_Rp_And_FP8,
     /// <summary>
     /// Feature `(FEAT_SVE2 || FEAT_SME2) &amp;&amp; FEAT_LUT`.
     /// </summary>
-    Lp_SVE2_Or_SME2_Rp_And_LUT = 54,
+    Lp_SVE2_Or_SME2_Rp_And_LUT,
     /// <summary>
     /// Feature `(FEAT_SVE || FEAT_SME) &amp;&amp; FEAT_BF16`.
     /// </summary>
-    Lp_SVE_Or_SME_Rp_And_BF16 = 55,
+    Lp_SVE_Or_SME_Rp_And_BF16,
     /// <summary>
     /// Feature `(FEAT_SVE || FEAT_SME) &amp;&amp; FEAT_I8MM`.
     /// </summary>
-    Lp_SVE_Or_SME_Rp_And_I8MM = 56,
+    Lp_SVE_Or_SME_Rp_And_I8MM,
     /// <summary>
     /// Feature `FEAT_MOPS` for `ARMv8.8`.
     /// </summary>
-    MOPS = 57,
+    MOPS,
     /// <summary>
     /// Feature `FEAT_MTE` for `ARMv8.5`.
     /// </summary>
-    MTE = 58,
+    MTE,
     /// <summary>
     /// Feature `FEAT_MTE2` for `ARMv8.5`.
     /// </summary>
-    MTE2 = 59,
+    MTE2,
     /// <summary>
     /// Feature `FEAT_PAuth` for `ARMv8.3`.
     /// </summary>
-    PAuth = 60,
+    PAuth,
     /// <summary>
     /// Feature `FEAT_PAuth_LR` for `ARMv9.5`.
     /// </summary>
-    PAuth_LR = 61,
+    PAuth_LR,
     /// <summary>
     /// Feature `FEAT_PCDPHINT` for `ARMv9.6`.
     /// </summary>
-    PCDPHINT = 62,
+    PCDPHINT,
     /// <summary>
     /// Feature `FEAT_RAS` for `ARMv8.2`.
     /// </summary>
-    RAS = 63,
+    RAS,
     /// <summary>
     /// Feature `FEAT_RDM` for `ARMv8.1`.
     /// </summary>
-    RDM = 64,
+    RDM,
     /// <summary>
     /// Feature `FEAT_RPRFM` for `ARMv8.9`.
     /// </summary>
-    RPRFM = 65,
+    RPRFM,
     /// <summary>
     /// Feature `FEAT_SB`.
     /// </summary>
-    SB = 66,
+    SB,
     /// <summary>
     /// Feature `FEAT_SHA1` for `ARMv8.0`.
     /// </summary>
-    SHA1 = 67,
+    SHA1,
     /// <summary>
     /// Feature `FEAT_SHA256` for `ARMv8.0`.
     /// </summary>
-    SHA256 = 68,
+    SHA256,
     /// <summary>
     /// Feature `FEAT_SHA3` for `ARMv8.2`.
     /// </summary>
-    SHA3 = 69,
+    SHA3,
     /// <summary>
     /// Feature `FEAT_SHA512` for `ARMv8.2`.
     /// </summary>
-    SHA512 = 70,
+    SHA512,
     /// <summary>
     /// Feature `FEAT_SM3` for `ARMv8.2`.
     /// </summary>
-    SM3 = 71,
+    SM3,
     /// <summary>
     /// Feature `FEAT_SM4` for `ARMv8.2`.
     /// </summary>
-    SM4 = 72,
+    SM4,
     /// <summary>
     /// Feature `FEAT_SME`.
     /// </summary>
-    SME = 73,
+    SME,
     /// <summary>
     /// Feature `FEAT_SME2` for `ARMv9.3`.
     /// </summary>
-    SME2 = 74,
+    SME2,
     /// <summary>
     /// Feature `FEAT_SME2 &amp;&amp; FEAT_FAMINMAX`.
     /// </summary>
-    SME2_And_FAMINMAX = 75,
+    SME2_And_FAMINMAX,
     /// <summary>
     /// Feature `FEAT_SME2 &amp;&amp; FEAT_FP8`.
     /// </summary>
-    SME2_And_FP8 = 76,
+    SME2_And_FP8,
     /// <summary>
     /// Feature `FEAT_SME2 &amp;&amp; FEAT_SME_F64F64`.
     /// </summary>
-    SME2_And_SME_F64F64 = 77,
+    SME2_And_SME_F64F64,
     /// <summary>
     /// Feature `FEAT_SME2 &amp;&amp; FEAT_SME_I16I64`.
     /// </summary>
-    SME2_And_SME_I16I64 = 78,
+    SME2_And_SME_I16I64,
     /// <summary>
     /// Feature `FEAT_SME2 &amp;&amp; FEAT_SVE_B16B16`.
     /// </summary>
-    SME2_And_SVE_B16B16 = 79,
+    SME2_And_SVE_B16B16,
     /// <summary>
     /// Feature `FEAT_SME2 &amp;&amp; FEAT_SVE_BFSCALE`.
     /// </summary>
-    SME2_And_SVE_BFSCALE = 80,
+    SME2_And_SVE_BFSCALE,
     /// <summary>
     /// Feature `FEAT_SME2 || FEAT_SVE2p1`.
     /// </summary>
-    SME2_Or_SVE2p1 = 81,
+    SME2_Or_SVE2p1,
     /// <summary>
     /// Feature `FEAT_SME2p1` for `ARMv9.4`.
     /// </summary>
-    SME2p1 = 82,
+    SME2p1,
     /// <summary>
     /// Feature `FEAT_SME2p1 &amp;&amp; FEAT_SME_LUTv2`.
     /// </summary>
-    SME2p1_And_SME_LUTv2 = 83,
+    SME2p1_And_SME_LUTv2,
     /// <summary>
     /// Feature `FEAT_SME2p2` for `ARMv9.6`.
     /// </summary>
-    SME2p2 = 84,
+    SME2p2,
     /// <summary>
     /// Feature `FEAT_SME_B16B16` for `ARMv9.4`.
     /// </summary>
-    SME_B16B16 = 85,
+    SME_B16B16,
     /// <summary>
     /// Feature `FEAT_SME_F16F16` for `ARMv9.4`.
     /// </summary>
-    SME_F16F16 = 86,
+    SME_F16F16,
     /// <summary>
     /// Feature `FEAT_SME_F16F16 || FEAT_SME_F8F16`.
     /// </summary>
-    SME_F16F16_Or_SME_F8F16 = 87,
+    SME_F16F16_Or_SME_F8F16,
     /// <summary>
     /// Feature `FEAT_SME_F64F64` for `ARMv9.2`.
     /// </summary>
-    SME_F64F64 = 88,
+    SME_F64F64,
     /// <summary>
     /// Feature `FEAT_SME_F8F16` for `ARMv9.5`.
     /// </summary>
-    SME_F8F16 = 89,
+    SME_F8F16,
     /// <summary>
     /// Feature `FEAT_SME_F8F32` for `ARMv9.5`.
     /// </summary>
-    SME_F8F32 = 90,
+    SME_F8F32,
     /// <summary>
     /// Feature `FEAT_SME_I16I64` for `ARMv9.2`.
     /// </summary>
-    SME_I16I64 = 91,
+    SME_I16I64,
     /// <summary>
     /// Feature `FEAT_SME_LUTv2` for `ARMv9.5`.
     /// </summary>
-    SME_LUTv2 = 92,
+    SME_LUTv2,
     /// <summary>
     /// Feature `FEAT_SME_MOP4` for `ARMv9.6`.
     /// </summary>
-    SME_MOP4 = 93,
+    SME_MOP4,
     /// <summary>
     /// Feature `FEAT_SME_MOP4 &amp;&amp; FEAT_SME_B16B16`.
     /// </summary>
-    SME_MOP4_And_SME_B16B16 = 94,
+    SME_MOP4_And_SME_B16B16,
     /// <summary>
     /// Feature `FEAT_SME_MOP4 &amp;&amp; FEAT_SME_F16F16`.
     /// </summary>
-    SME_MOP4_And_SME_F16F16 = 95,
+    SME_MOP4_And_SME_F16F16,
     /// <summary>
     /// Feature `FEAT_SME_MOP4 &amp;&amp; FEAT_SME_F64F64`.
     /// </summary>
-    SME_MOP4_And_SME_F64F64 = 96,
+    SME_MOP4_And_SME_F64F64,
     /// <summary>
     /// Feature `FEAT_SME_MOP4 &amp;&amp; FEAT_SME_F8F16`.
     /// </summary>
-    SME_MOP4_And_SME_F8F16 = 97,
+    SME_MOP4_And_SME_F8F16,
     /// <summary>
     /// Feature `FEAT_SME_MOP4 &amp;&amp; FEAT_SME_F8F32`.
     /// </summary>
-    SME_MOP4_And_SME_F8F32 = 98,
+    SME_MOP4_And_SME_F8F32,
     /// <summary>
     /// Feature `FEAT_SME_MOP4 &amp;&amp; FEAT_SME_I16I64`.
     /// </summary>
-    SME_MOP4_And_SME_I16I64 = 99,
+    SME_MOP4_And_SME_I16I64,
     /// <summary>
     /// Feature `FEAT_SME || FEAT_SVE2p1`.
     /// </summary>
-    SME_Or_SVE2p1 = 100,
+    SME_Or_SVE2p1,
     /// <summary>
     /// Feature `FEAT_SME_TMOP` for `ARMv9.6`.
     /// </summary>
-    SME_TMOP = 101,
+    SME_TMOP,
     /// <summary>
     /// Feature `FEAT_SME_TMOP &amp;&amp; FEAT_SME_B16B16`.
     /// </summary>
-    SME_TMOP_And_SME_B16B16 = 102,
+    SME_TMOP_And_SME_B16B16,
     /// <summary>
     /// Feature `FEAT_SME_TMOP &amp;&amp; FEAT_SME_F16F16`.
     /// </summary>
-    SME_TMOP_And_SME_F16F16 = 103,
+    SME_TMOP_And_SME_F16F16,
     /// <summary>
     /// Feature `FEAT_SME_TMOP &amp;&amp; FEAT_SME_F8F16`.
     /// </summary>
-    SME_TMOP_And_SME_F8F16 = 104,
+    SME_TMOP_And_SME_F8F16,
     /// <summary>
     /// Feature `FEAT_SME_TMOP &amp;&amp; FEAT_SME_F8F32`.
     /// </summary>
-    SME_TMOP_And_SME_F8F32 = 105,
+    SME_TMOP_And_SME_F8F32,
     /// <summary>
     /// Feature `FEAT_SPE`.
     /// </summary>
-    SPE = 106,
+    SPE,
     /// <summary>
     /// Feature `FEAT_SVE`.
     /// </summary>
-    SVE = 107,
+    SVE,
     /// <summary>
     /// Feature `FEAT_SVE2` for `ARMv9.0`.
     /// </summary>
-    SVE2 = 108,
+    SVE2,
     /// <summary>
     /// Feature `FEAT_SVE2 &amp;&amp; FEAT_F8F16MM`.
     /// </summary>
-    SVE2_And_F8F16MM = 109,
+    SVE2_And_F8F16MM,
     /// <summary>
     /// Feature `FEAT_SVE2 &amp;&amp; FEAT_F8F32MM`.
     /// </summary>
-    SVE2_And_F8F32MM = 110,
+    SVE2_And_F8F32MM,
     /// <summary>
     /// Feature `FEAT_SVE2 || FEAT_SME`.
     /// </summary>
-    SVE2_Or_SME = 111,
+    SVE2_Or_SME,
     /// <summary>
     /// Feature `FEAT_SVE2p1` for `ARMv9.4`.
     /// </summary>
-    SVE2p1 = 112,
+    SVE2p1,
     /// <summary>
     /// Feature `FEAT_SVE2p1 || FEAT_SME2p1`.
     /// </summary>
-    SVE2p1_Or_SME2p1 = 113,
+    SVE2p1_Or_SME2p1,
     /// <summary>
     /// Feature `FEAT_SVE2p2 || FEAT_SME2p2`.
     /// </summary>
-    SVE2p2_Or_SME2p2 = 114,
+    SVE2p2_Or_SME2p2,
     /// <summary>
     /// Feature `FEAT_SVE_AES` for `ARMv9.0`.
     /// </summary>
-    SVE_AES = 115,
+    SVE_AES,
     /// <summary>
     /// Feature `FEAT_SVE_AES2` for `ARMv9.6`.
     /// </summary>
-    SVE_AES2 = 116,
+    SVE_AES2,
     /// <summary>
     /// Feature `FEAT_SVE &amp;&amp; FEAT_BF16`.
     /// </summary>
-    SVE_And_BF16 = 117,
+    SVE_And_BF16,
     /// <summary>
     /// Feature `FEAT_SVE &amp;&amp; FEAT_CPA`.
     /// </summary>
-    SVE_And_CPA = 118,
+    SVE_And_CPA,
     /// <summary>
     /// Feature `FEAT_SVE &amp;&amp; FEAT_I8MM`.
     /// </summary>
-    SVE_And_I8MM = 119,
+    SVE_And_I8MM,
     /// <summary>
     /// Feature `FEAT_SVE_B16B16` for `ARMv9.4`.
     /// </summary>
-    SVE_B16B16 = 120,
+    SVE_B16B16,
     /// <summary>
     /// Feature `FEAT_SVE_BFSCALE` for `ARMv9.6`.
     /// </summary>
-    SVE_BFSCALE = 121,
+    SVE_BFSCALE,
     /// <summary>
     /// Feature `FEAT_SVE_BitPerm` for `ARMv9.0`.
     /// </summary>
-    SVE_BitPerm = 122,
+    SVE_BitPerm,
     /// <summary>
     /// Feature `FEAT_SVE_F16F32MM` for `ARMv9.6`.
     /// </summary>
-    SVE_F16F32MM = 123,
+    SVE_F16F32MM,
     /// <summary>
     /// Feature `FEAT_SVE || FEAT_SME`.
     /// </summary>
-    SVE_Or_SME = 124,
+    SVE_Or_SME,
     /// <summary>
     /// Feature `FEAT_SVE || FEAT_SME2p2`.
     /// </summary>
-    SVE_Or_SME2p2 = 125,
+    SVE_Or_SME2p2,
     /// <summary>
     /// Feature `FEAT_SVE_PMULL128` for `ARMv9.0`.
     /// </summary>
-    SVE_PMULL128 = 126,
+    SVE_PMULL128,
     /// <summary>
     /// Feature `FEAT_SVE_SHA3` for `ARMv9.0`.
     /// </summary>
-    SVE_SHA3 = 127,
+    SVE_SHA3,
     /// <summary>
     /// Feature `FEAT_SVE_SM4` for `ARMv9.0`.
     /// </summary>
-    SVE_SM4 = 128,
+    SVE_SM4,
     /// <summary>
     /// Feature `FEAT_SYSINSTR128` for `ARMv9.4`.
     /// </summary>
-    SYSINSTR128 = 129,
+    SYSINSTR128,
     /// <summary>
     /// Feature `FEAT_SYSREG128` for `ARMv9.4`.
     /// </summary>
-    SYSREG128 = 130,
+    SYSREG128,
     /// <summary>
     /// Feature `FEAT_THE` for `ARMv8.9`.
     /// </summary>
-    THE = 131,
+    THE,
     /// <summary>
     /// Feature `FEAT_TME` for `ARMv9.0`.
     /// </summary>
-    TME = 132,
+    TME,
     /// <summary>
     /// Feature `FEAT_TRF` for `ARMv8.4`.
     /// </summary>
-    TRF = 133,
+    TRF,
     /// <summary>
     /// Feature `FEAT_WFxT` for `ARMv8.7`.
     /// </summary>
-    WFxT = 134,
+    WFxT,
     /// <summary>
     /// Feature `FEAT_XS` for `ARMv8.7`.
     /// </summary>
-    XS = 135,
+    XS,
 }
