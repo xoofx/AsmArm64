@@ -21,71 +21,71 @@ public enum Arm64ArchitectureId : byte
     /// </summary>
     Invalid,
     /// <summary>
-    /// Architecture ARMv8_0_A.
+    /// Architecture `ARMv8_0_A`.
     /// </summary>
     ARMv8_0_A,
     /// <summary>
-    /// Architecture ARMv8_0_R.
+    /// Architecture `ARMv8_0_R`.
     /// </summary>
     ARMv8_0_R,
     /// <summary>
-    /// Architecture ARMv8_1_A.
+    /// Architecture `ARMv8_1_A`.
     /// </summary>
     ARMv8_1_A,
     /// <summary>
-    /// Architecture ARMv8_2_A.
+    /// Architecture `ARMv8_2_A`.
     /// </summary>
     ARMv8_2_A,
     /// <summary>
-    /// Architecture ARMv8_3_A.
+    /// Architecture `ARMv8_3_A`.
     /// </summary>
     ARMv8_3_A,
     /// <summary>
-    /// Architecture ARMv8_4_A.
+    /// Architecture `ARMv8_4_A`.
     /// </summary>
     ARMv8_4_A,
     /// <summary>
-    /// Architecture ARMv8_5_A.
+    /// Architecture `ARMv8_5_A`.
     /// </summary>
     ARMv8_5_A,
     /// <summary>
-    /// Architecture ARMv8_6_A.
+    /// Architecture `ARMv8_6_A`.
     /// </summary>
     ARMv8_6_A,
     /// <summary>
-    /// Architecture ARMv8_7_A.
+    /// Architecture `ARMv8_7_A`.
     /// </summary>
     ARMv8_7_A,
     /// <summary>
-    /// Architecture ARMv8_8_A.
+    /// Architecture `ARMv8_8_A`.
     /// </summary>
     ARMv8_8_A,
     /// <summary>
-    /// Architecture ARMv8_9_A.
+    /// Architecture `ARMv8_9_A`.
     /// </summary>
     ARMv8_9_A,
     /// <summary>
-    /// Architecture ARMv9_0_A.
+    /// Architecture `ARMv9_0_A`.
     /// </summary>
     ARMv9_0_A,
     /// <summary>
-    /// Architecture ARMv9_2_A.
+    /// Architecture `ARMv9_2_A`.
     /// </summary>
     ARMv9_2_A,
     /// <summary>
-    /// Architecture ARMv9_3_A.
+    /// Architecture `ARMv9_3_A`.
     /// </summary>
     ARMv9_3_A,
     /// <summary>
-    /// Architecture ARMv9_4_A.
+    /// Architecture `ARMv9_4_A`.
     /// </summary>
     ARMv9_4_A,
     /// <summary>
-    /// Architecture ARMv9_5_A.
+    /// Architecture `ARMv9_5_A`.
     /// </summary>
     ARMv9_5_A,
     /// <summary>
-    /// Architecture ARMv9_6_A.
+    /// Architecture `ARMv9_6_A`.
     /// </summary>
     ARMv9_6_A,
 }

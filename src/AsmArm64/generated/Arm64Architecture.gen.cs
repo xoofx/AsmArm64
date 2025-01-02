@@ -11,7 +11,7 @@
 
 namespace AsmArm64;
 
-partial record struct Arm64Architecture
+partial class Arm64Architecture
 {
     /// <summary>
     /// Architecture ARMv8_0_A.

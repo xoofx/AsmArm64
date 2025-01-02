@@ -5,6 +5,7 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.Numerics;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -22,6 +23,8 @@ public partial class Arm64Processor
 
     private readonly List<Instruction> _instructions;
     private readonly Dictionary<string, string> _archVariantNameToArchitectureId = new();
+    private readonly List<string> _features = new();
+    private readonly List<ArchVariant> _featureExpressions = new();
 
     public Arm64Processor(string baseSpecsFolder)
     {
@@ -102,34 +105,27 @@ public partial class Arm64Processor
 
     private void ExtractArchitecture()
     {
-        var distinctArchVariant = new Dictionary<string, List<string>>();
+        var distinctArchVariant = new Dictionary<string, List<ArchVariant>>();
         foreach (var instruction in _instructions)
         {
             foreach (var archVariant in instruction.ArchVariants)
             {
-                if (!distinctArchVariant.TryGetValue(archVariant.Feature, out var list))
+                if (!distinctArchVariant.TryGetValue(archVariant.FeatureExpressionId, out var list))
                 {
-                    list = new List<string>();
-                    distinctArchVariant.Add(archVariant.Feature, list);
+                    list = new List<ArchVariant>();
+                    distinctArchVariant.Add(archVariant.FeatureExpressionId, list);
                 }
-                if (!list.Contains(archVariant.Name))
-                {
-                    list.Add(archVariant.Name);
 
-                    string? archName = null;
-                    if (archVariant.Name.StartsWith("ARMv"))
-                    {
-                        archName = archVariant.Name.Replace('.', '_');
-                        archName += "_A";
-                    }
-                    else if (archVariant.Name.StartsWith("PROFILE_A"))
-                    {
-                        archName += "ARMv8_0_A";
-                    }
-                    else if (archVariant.Name.StartsWith("PROFILE_R"))
-                    {
-                        archName += "ARMv8_0_R";
-                    }
+                if (!_featureExpressions.Contains(archVariant))
+                {
+                    _featureExpressions.Add(archVariant);
+                }
+
+                if (!list.Contains(archVariant))
+                {
+                    list.Add(archVariant);
+
+                    string? archName = GetNormalizedArchName(archVariant.Name);
 
                     if (archName != null && !_archVariantNameToArchitectureId.ContainsKey(archVariant.Name))
                     {
@@ -138,17 +134,65 @@ public partial class Arm64Processor
                 }
             }
         }
-        
+
+        var matchFeature = new Regex("FEAT_(\\w+)");
+
         // Print distinct arch variants
-        foreach (var pair in distinctArchVariant.OrderBy(x => x.Key))
+        foreach (var archVariant in _featureExpressions)
         {
-            Console.Write($"Feature: {pair.Key} ");
-            foreach (var name in pair.Value)
+            var localFeatures = new HashSet<string>();
+            
+            foreach (Match match in matchFeature.Matches(archVariant.FeatureExpression))
             {
-                Console.Write($",  {name}");
+                var feature = match.Groups[1].Value;
+                if (!_features.Contains(feature))
+                {
+                    _features.Add(feature);
+                }
+
+                localFeatures.Add(feature);
             }
-            Console.WriteLine();
+
+            //foreach (var name in pair.Value)
+            //{
+            //    Console.Write($",  {name}");
+            //}
+
+            //Console.WriteLine();
         }
+
+        _features.Sort(string.CompareOrdinal);
+        _featureExpressions.Sort((a, b) => string.CompareOrdinal(a.FeatureExpressionId, b.FeatureExpressionId));
+    }
+    
+    private static string GetFeatureExpressionId(string feature)
+    {
+        feature = feature.Replace("(", "_Lp_").Replace(")", "_Rp_").Replace("||", "_Or_").Replace("&&", "_And_");
+        feature = feature.Replace("FEAT_", string.Empty);
+        feature = Regex.Replace(feature, @"\s+", string.Empty);
+        feature = feature.Trim('_');
+        feature = Regex.Replace(feature, "_+", "_");
+        return feature;
+    }
+
+    private string? GetNormalizedArchName(string name)
+    {
+        string? archName = null;
+        if (name.StartsWith("ARMv"))
+        {
+            archName = name.Replace('.', '_');
+            archName += "_A";
+        }
+        else if (name.StartsWith("PROFILE_A"))
+        {
+            archName += "ARMv8_0_A";
+        }
+        else if (name.StartsWith("PROFILE_R"))
+        {
+            archName += "ARMv8_0_R";
+        }
+
+        return archName;
     }
     
     private void BuildTree()
@@ -315,7 +359,7 @@ public partial class Arm64Processor
                 var name = archVariant.Attribute("name")?.Value;
                 if (feature != null && name != null)
                 {
-                    list.Add(new ArchVariant(feature, name));
+                    list.Add(new ArchVariant(GetFeatureExpressionId(feature), feature, name));
                 }
             }
         }
@@ -805,7 +849,7 @@ public partial class Arm64Processor
         }
     }
 
-    private record ArchVariant(string Feature, string Name);
+    private record ArchVariant(string FeatureExpressionId, string FeatureExpression, string Name);
 
     private enum BitKind : byte
     {

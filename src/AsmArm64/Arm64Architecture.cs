@@ -7,13 +7,44 @@ namespace AsmArm64;
 /// <summary>
 /// An ARM64 architecture version. Example: ARMv8.0-A.
 /// </summary>
-/// <param name="Major">The major version.</param>
-/// <param name="Minor">The minor version.</param>
-/// <param name="Profile">The profile.</param>
-public readonly partial record struct Arm64Architecture(Arm64ArchitectureId Id, int Major, int Minor, Arm64ArchitectureProfile Profile) : IComparable<Arm64Architecture>, IComparable
+public sealed partial class Arm64Architecture : IEquatable<Arm64Architecture>, IComparable<Arm64Architecture>, IComparable
 {
-    public int CompareTo(Arm64Architecture other)
+    internal Arm64Architecture(Arm64ArchitectureId id, int major, int minor, Arm64ArchitectureProfile profile)
     {
+        Id = id;
+        Major = major;
+        Minor = minor;
+        Profile = profile;
+    }
+
+    /// <summary>
+    /// Gets the id of the architecture.
+    /// </summary>
+    public Arm64ArchitectureId Id { get; }
+    
+
+    /// <summary>
+    /// Gets the major version.
+    /// </summary>
+    public int Major { get; }
+
+    /// <summary>
+    /// Gets the minor version.
+    /// </summary>
+    public int Minor { get; }
+
+    /// <summary>
+    /// Gets the profile.
+    /// </summary>
+    public Arm64ArchitectureProfile Profile { get; }
+    
+    public int CompareTo(Arm64Architecture? other)
+    {
+        if (other is null)
+        {
+            return 1;
+        }
+
         var majorComparison = Major.CompareTo(other.Major);
         return majorComparison != 0 ? majorComparison : Minor.CompareTo(other.Minor);
     }
@@ -38,4 +69,14 @@ public readonly partial record struct Arm64Architecture(Arm64ArchitectureId Id, 
     public static bool operator <=(Arm64Architecture left, Arm64Architecture right) => left.CompareTo(right) <= 0;
 
     public static bool operator >=(Arm64Architecture left, Arm64Architecture right) => left.CompareTo(right) >= 0;
+
+    public bool Equals(Arm64Architecture? other) => other is not null && Id == other.Id;
+
+    public override bool Equals(object? obj) => obj is Arm64Architecture other && Equals(other);
+
+    public override int GetHashCode() => (int)Id;
+
+    public static bool operator ==(Arm64Architecture left, Arm64Architecture right) => left.Equals(right);
+
+    public static bool operator !=(Arm64Architecture left, Arm64Architecture right) => !left.Equals(right);
 }

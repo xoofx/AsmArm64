@@ -21,43 +21,43 @@ public enum Arm64InstructionClass : byte
     /// </summary>
     Invalid,
     /// <summary>
-    /// Class Advsimd.
+    /// Class `Advsimd`.
     /// </summary>
     Advsimd,
     /// <summary>
-    /// Class Float.
+    /// Class `Float`.
     /// </summary>
     Float,
     /// <summary>
-    /// Class Fpsimd.
+    /// Class `Fpsimd`.
     /// </summary>
     Fpsimd,
     /// <summary>
-    /// Class General.
+    /// Class `General`.
     /// </summary>
     General,
     /// <summary>
-    /// Class Mortlach.
+    /// Class `Mortlach`.
     /// </summary>
     Mortlach,
     /// <summary>
-    /// Class Mortlach2.
+    /// Class `Mortlach2`.
     /// </summary>
     Mortlach2,
     /// <summary>
-    /// Class Other.
+    /// Class `Other`.
     /// </summary>
     Other,
     /// <summary>
-    /// Class Sve.
+    /// Class `Sve`.
     /// </summary>
     Sve,
     /// <summary>
-    /// Class Sve2.
+    /// Class `Sve2`.
     /// </summary>
     Sve2,
     /// <summary>
-    /// Class System.
+    /// Class `System`.
     /// </summary>
     System,
 }

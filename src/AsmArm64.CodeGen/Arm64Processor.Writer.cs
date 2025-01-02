@@ -2,17 +2,10 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
-using System.Collections.Frozen;
 using System.Diagnostics;
-using System.Numerics;
-using System.Reflection.PortableExecutable;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 
 namespace AsmArm64.CodeGen;
-
-
 
 // Feature
 // Docvars ideas
@@ -26,6 +19,8 @@ partial class Arm64Processor
         GenerateInstructionIdEnum();
         GenerateInstructionClass();
         GenerateArchitecture();
+        GenerateFeatures();
+        GenerateFeatureExpressions();
     }
 
     private void GenerateMnemonicEnum()
@@ -43,7 +38,7 @@ partial class Arm64Processor
         w.WriteLine("Invalid,");
         foreach (var mnemonic in mnemonics.Order())
         {
-            w.WriteSummary($"This {mnemonic} mnemonic.");
+            w.WriteSummary($"This `{mnemonic}` mnemonic.");
             w.WriteLine($"{mnemonic},");
         }
         w.CloseBraceBlock();
@@ -62,7 +57,7 @@ partial class Arm64Processor
         w.WriteLine("Invalid,");
         foreach (var instruction in _instructions)
         {
-            w.WriteSummary($"Instruction {instruction.Mnemonic} - {instruction.Summary}.");
+            w.WriteSummary($"Instruction `{instruction.Mnemonic}` - {instruction.Summary}.");
             w.WriteLine($"{instruction.NormalizedName},");
         }
         w.CloseBraceBlock();
@@ -83,7 +78,7 @@ partial class Arm64Processor
         w.WriteLine("Invalid,");
         foreach (var iClass in instructionClasses)
         {
-            w.WriteSummary($"Class {iClass}.");
+            w.WriteSummary($"Class `{iClass}`.");
             w.WriteLine($"{iClass},");
         }
         w.CloseBraceBlock();
@@ -103,7 +98,7 @@ partial class Arm64Processor
             w.WriteLine("Invalid,");
             foreach (var arch in variants)
             {
-                w.WriteSummary($"Architecture {arch}.");
+                w.WriteSummary($"Architecture `{arch}`.");
                 w.WriteLine($"{arch},");
             }
             w.CloseBraceBlock();
@@ -114,7 +109,7 @@ partial class Arm64Processor
             using var w = GetWriter("Arm64Architecture.gen.cs");
             w.WriteLine("namespace AsmArm64;");
             w.WriteLine();
-            w.WriteLine("partial record struct Arm64Architecture");
+            w.WriteLine("partial class Arm64Architecture");
             w.OpenBraceBlock();
             {
                 // Arm64ArchitectureId.ARMv8_0_A => new (id, 8, 0, Arm64ArchitectureProfile.A),
@@ -155,6 +150,57 @@ partial class Arm64Processor
             w.CloseBraceBlock();
         }
     }
+
+    private void GenerateFeatures()
+    {
+        using var w = GetWriter("Arm64Feature.gen.cs");
+
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteSummary("A list of ARM64 CPU features.");
+        w.WriteLine("public enum Arm64Feature : byte");
+        w.OpenBraceBlock();
+        w.WriteSummary("The feature is invalid / unknown.");
+        w.WriteLine("Invalid = 0,");
+        for (var i = 0; i < _features.Count; i++)
+        {
+            var feature = _features[i];
+            w.WriteSummary($"Feature `{feature}`.");
+            w.WriteLine($"{feature} = {i},");
+        }
+
+        w.CloseBraceBlock();
+    }
+
+    private void GenerateFeatureExpressions()
+    {
+        using var w = GetWriter("Arm64FeatureExpressionId.gen.cs");
+
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteSummary("A list of ARM64 CPU features.");
+        w.WriteLine("public enum Arm64FeatureExpressionId : byte");
+        w.OpenBraceBlock();
+        w.WriteSummary("The feature is invalid / unknown.");
+        w.WriteLine("Invalid = 0,");
+        for (var i = 0; i < _featureExpressions.Count; i++)
+        {
+            var featureExpression = _featureExpressions[i];
+            if (featureExpression.Name.StartsWith("ARM"))
+            {
+                w.WriteSummary($"Feature `{EscapeHtmlEntities(featureExpression.FeatureExpression)}` for `{featureExpression.Name}`.");
+            }
+            else
+            {
+                w.WriteSummary($"Feature `{EscapeHtmlEntities(featureExpression.FeatureExpression)}`.");
+            }
+            w.WriteLine($"{featureExpression.FeatureExpressionId} = {i},");
+        }
+
+        w.CloseBraceBlock();
+    }
+
+    private static string EscapeHtmlEntities(string text) => text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
 
     private CodeWriter GetWriter(string fileName)
     {
