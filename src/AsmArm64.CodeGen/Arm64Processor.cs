@@ -13,9 +13,10 @@ namespace AsmArm64.CodeGen;
 // Docvars ideas
 // https://github.com/google/EXEgesis/blob/master/exegesis/arm/xml/docvars.cc
 
-public class Arm64Processor
+public partial class Arm64Processor
 {
     private readonly string _baseSpecsFolder;
+    private readonly string _basedOutputFolder;
 
     private readonly List<Instruction> _instructions;
 
@@ -23,6 +24,17 @@ public class Arm64Processor
     {
         _baseSpecsFolder = baseSpecsFolder;
         _instructions = new List<Instruction>();
+
+        var basePath = Path.GetDirectoryName(AppContext.BaseDirectory); // src\AsmArm64.CodeGen\bin\Debug\net8.0
+        basePath = Path.GetDirectoryName(basePath); // src\AsmArm64.CodeGen\bin\Debug
+        basePath = Path.GetDirectoryName(basePath); // src\AsmArm64.CodeGen\bin
+        basePath = Path.GetDirectoryName(basePath); // src\AsmArm64.CodeGen
+        basePath = Path.GetDirectoryName(basePath); // src
+        _basedOutputFolder = Path.Combine(basePath!, "AsmArm64");
+        if (!Directory.Exists(_baseSpecsFolder))
+        {
+            throw new ArgumentException($"Specs folder `{_baseSpecsFolder}` doesn't exist");
+        }
     }
 
     public void Run()
@@ -78,6 +90,8 @@ public class Arm64Processor
 
         //Console.WriteLine($"maximumMemoLength: {maximumMemoLength}");
         //Console.WriteLine($"maximumNameLength: {maximumNameLength}");
+
+        GenerateCode();
     }
 
 
@@ -123,6 +137,13 @@ public class Arm64Processor
         //    Console.WriteLine($">>> Not expected {iclasses.Count} from file {fileName}");
         //}
 
+        var desc = xdoc.Descendants("desc").FirstOrDefault();
+        string summary = string.Empty;
+        if (desc != null)
+        {
+            summary = desc.Descendants("brief").First().Descendants("para").First().Value;
+        }
+        
         var bitFields = new List<BitfieldInfo>();
         var encodingBitFields = new List<BitfieldInfo>();
         foreach (var iclass in iclasses)
@@ -139,12 +160,10 @@ public class Arm64Processor
                 var encodingName = encoding.Attribute("name")?.Value;
                 var docVars = encoding.Descendants("docvar");
                 
-
                 string? mnemonic = null;
                 int? dataType = null;
                 string? alias = null;
-
-
+                
                 foreach (var docVar in docVars)
                 {
                     var key = docVar.Attribute("key")?.Value;
@@ -166,6 +185,10 @@ public class Arm64Processor
 
                 if (mnemonic == null || alias != null)
                 {
+                    if (alias != null)
+                    {
+                        Console.WriteLine($"Alias: {mnemonic} -> {alias}");
+                    }
                     continue;
                 }
 
@@ -173,7 +196,8 @@ public class Arm64Processor
                 {
                     Filename = fileName,
                     Name = encodingName!,
-                    Mnemonic = mnemonic
+                    Mnemonic = mnemonic,
+                    Summary = summary,
                 };
 
                 //if (encodingName == "B_only_branch_imm" || encodingName == "BL_only_branch_imm")
@@ -311,6 +335,8 @@ public class Arm64Processor
 
         public string Mnemonic { get; set; } = string.Empty;
 
+        public string Summary { get; set; } = string.Empty;
+
         public uint BitfieldMask { get; set; }
 
         public uint BitfieldValue { get; set; }
@@ -413,11 +439,11 @@ public class Arm64Processor
 
     private class BitfieldInfo
     {
-        public string? Name { get; set; }
+        public string? Name { get; init; }
 
-        public int HiBit { get; set; }
+        public int HiBit { get; init; }
 
-        public int Width { get; set; }
+        public int Width { get; init; }
 
         public List<BitKind> FieldSets { get; } = new();
 
@@ -461,35 +487,25 @@ public class Arm64Processor
             InstructionIndices = new();
         }
 
-        public uint? Key;
+        public int? Key;
         
         public int Shift;
 
         public int BitMaskCount;
 
-        public readonly Dictionary<uint, InstructionDecoder> MaskToSubDecoder;
+        public readonly Dictionary<int, InstructionDecoder> MaskToSubDecoder;
 
         public InstructionDecoder? ElseBranch;
 
         public readonly List<int> InstructionIndices;
 
         public bool IsElseBranch;
-       
+
+        public bool IsTerminal => MaskToSubDecoder.Count == 0;
+
         public void Build(List<Instruction> instructions, int level = 0)
         {
             if (InstructionIndices.Count == 1) return;
-
-            if (InstructionIndices.Count == 2)
-            {
-                foreach (var index in InstructionIndices)
-                {
-                    var instruction = instructions[index];
-                    if (instruction.Name == "ctermeq_rr_" || instruction.Name == "ctermne_rr_")
-                    {
-                        System.Diagnostics.Debugger.Break();
-                    }
-                }
-            }
 
             int minimumShift = int.MaxValue;
             int countCountLeading1 = 0;
@@ -580,7 +596,7 @@ public class Arm64Processor
                 var countLeading1 = BitOperations.LeadingZeroCount(~subMask);
                 if (countLeading1 >= bestCountLeading1)
                 {
-                    var localSubIndex = (instruction.BitfieldValue << Shift) >> (32 - bestCountLeading1);
+                    var localSubIndex = (int)((instruction.BitfieldValue << Shift) >> (32 - bestCountLeading1));
 
                     if (!MaskToSubDecoder.TryGetValue(localSubIndex, out var subDecoder))
                     {
@@ -616,6 +632,10 @@ public class Arm64Processor
                 subDecoder.Build(instructions, level + 1);
             }
 
+            if (IsTerminal && InstructionIndices.Count != 1)
+            {
+                Console.WriteLine($"Error with decoder. Invalid number of final instructions expecting only 1: {this}");
+            }
         }
 
         public void Print(TextWriter writer, List<Instruction> instructions, int level = 0)
