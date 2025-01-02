@@ -14,7 +14,7 @@ namespace AsmArm64;
 /// <summary>
 /// A list of all ARM64 instruction classes.
 /// </summary>
-public enum Arm64InstructionClass
+public enum Arm64InstructionClass : byte
 {
     /// <summary>
     /// The instruction class is invalid / unknown.

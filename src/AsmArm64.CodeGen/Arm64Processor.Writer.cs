@@ -34,7 +34,7 @@ partial class Arm64Processor
         w.WriteLine("namespace AsmArm64;");
         w.WriteLine();
         w.WriteSummary("A list of all ARM64 mnemonics.");
-        w.WriteLine("public enum Arm64Mnemonic");
+        w.WriteLine("public enum Arm64Mnemonic : ushort");
         w.OpenBraceBlock();
         w.WriteSummary("This mnemonic is invalid.");
         w.WriteLine("Invalid,");
@@ -53,7 +53,7 @@ partial class Arm64Processor
         w.WriteLine("namespace AsmArm64;");
         w.WriteLine();
         w.WriteSummary("A list of all ARM64 instruction ids.");
-        w.WriteLine("public enum Arm64InstructionId");
+        w.WriteLine("public enum Arm64InstructionId : ushort");
         w.OpenBraceBlock();
         w.WriteSummary("This instruction is invalid / undefined.");
         w.WriteLine("Invalid,");
@@ -74,7 +74,7 @@ partial class Arm64Processor
         w.WriteLine("namespace AsmArm64;");
         w.WriteLine();
         w.WriteSummary("A list of all ARM64 instruction classes.");
-        w.WriteLine("public enum Arm64InstructionClass");
+        w.WriteLine("public enum Arm64InstructionClass : byte");
         w.OpenBraceBlock();
         w.WriteSummary("The instruction class is invalid / unknown.");
         w.WriteLine("Invalid,");

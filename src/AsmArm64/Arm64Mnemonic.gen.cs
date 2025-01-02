@@ -14,7 +14,7 @@ namespace AsmArm64;
 /// <summary>
 /// A list of all ARM64 mnemonics.
 /// </summary>
-public enum Arm64Mnemonic
+public enum Arm64Mnemonic : ushort
 {
     /// <summary>
     /// This mnemonic is invalid.

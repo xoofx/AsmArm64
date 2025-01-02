@@ -14,7 +14,7 @@ namespace AsmArm64;
 /// <summary>
 /// A list of all ARM64 instruction ids.
 /// </summary>
-public enum Arm64InstructionId
+public enum Arm64InstructionId : ushort
 {
     /// <summary>
     /// This instruction is invalid / undefined.
