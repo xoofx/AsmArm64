@@ -9,11 +9,15 @@
 
   <ItemGroup>
     <PackageReference Include="MSTest" />
-    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting"/>
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AsmArm64\AsmArm64.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="generated\" />
   </ItemGroup>
 
 </Project>

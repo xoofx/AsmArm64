@@ -4,11 +4,10 @@
 
 using System.Diagnostics;
 using System.Globalization;
-using System.Numerics;
-using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using Spectre.Console;
 
 namespace AsmArm64.CodeGen;
 
@@ -20,11 +19,14 @@ public partial class Arm64Processor
 {
     private readonly string _baseSpecsFolder;
     private readonly string _basedOutputFolder;
+    private readonly string _basedOutputTestFolder;
 
     private readonly List<Instruction> _instructions;
     private readonly Dictionary<string, string> _archVariantNameToArchitectureId = new();
     private readonly List<string> _features = new();
     private readonly List<ArchVariant> _featureExpressions = new();
+    private readonly List<InstructionTrieNode> _allDecoders = new();
+    private readonly TableGenEncoder _tableGenEncoder = new();
 
     public Arm64Processor(string baseSpecsFolder)
     {
@@ -39,7 +41,13 @@ public partial class Arm64Processor
         _basedOutputFolder = Path.Combine(basePath!, "AsmArm64");
         if (!Directory.Exists(_baseSpecsFolder))
         {
-            throw new ArgumentException($"Specs folder `{_baseSpecsFolder}` doesn't exist");
+            throw new ArgumentException($"Generated folder `{_baseSpecsFolder}` doesn't exist");
+        }
+
+        _basedOutputTestFolder = Path.Combine(basePath!, "AsmArm64.Tests");
+        if (!Directory.Exists(_basedOutputTestFolder))
+        {
+            throw new ArgumentException($"Tests folder `{_basedOutputTestFolder}` doesn't exist");
         }
     }
 
@@ -84,7 +92,7 @@ public partial class Arm64Processor
 
         //Console.WriteLine($"Instruction Count: {_instructions.Count}");
 
-        BuildTree();
+        BuildTrie();
 
         int maximumMemoLength = 0;
         int maximumNameLength = 0;
@@ -100,111 +108,95 @@ public partial class Arm64Processor
         ExtractArchitecture();
 
 
-        GenerateCode();
-    }
-
-    private void ExtractArchitecture()
-    {
-        var distinctArchVariant = new Dictionary<string, List<ArchVariant>>();
-        foreach (var instruction in _instructions)
-        {
-            foreach (var archVariant in instruction.ArchVariants)
-            {
-                if (!distinctArchVariant.TryGetValue(archVariant.FeatureExpressionId, out var list))
-                {
-                    list = new List<ArchVariant>();
-                    distinctArchVariant.Add(archVariant.FeatureExpressionId, list);
-                }
-
-                if (!_featureExpressions.Contains(archVariant))
-                {
-                    _featureExpressions.Add(archVariant);
-                }
-
-                if (!list.Contains(archVariant))
-                {
-                    list.Add(archVariant);
-
-                    string? archName = GetNormalizedArchName(archVariant.Name);
-
-                    if (archName != null && !_archVariantNameToArchitectureId.ContainsKey(archVariant.Name))
-                    {
-                        _archVariantNameToArchitectureId.Add(archVariant.Name, archName);
-                    }
-                }
-            }
-        }
-
-        var matchFeature = new Regex("FEAT_(\\w+)");
-
-        // Print distinct arch variants
-        foreach (var archVariant in _featureExpressions)
-        {
-            var localFeatures = new HashSet<string>();
-            
-            foreach (Match match in matchFeature.Matches(archVariant.FeatureExpression))
-            {
-                var feature = match.Groups[1].Value;
-                if (!_features.Contains(feature))
-                {
-                    _features.Add(feature);
-                }
-
-                localFeatures.Add(feature);
-            }
-
-            //foreach (var name in pair.Value)
-            //{
-            //    Console.Write($",  {name}");
-            //}
-
-            //Console.WriteLine();
-        }
-
-        _features.Sort(string.CompareOrdinal);
-        _featureExpressions.Sort((a, b) => string.CompareOrdinal(a.FeatureExpressionId, b.FeatureExpressionId));
+        //GenerateCode();
     }
     
-    private static string GetFeatureExpressionId(string feature)
-    {
-        feature = feature.Replace("(", "_Lp_").Replace(")", "_Rp_").Replace("||", "_Or_").Replace("&&", "_And_");
-        feature = feature.Replace("FEAT_", string.Empty);
-        feature = Regex.Replace(feature, @"\s+", string.Empty);
-        feature = feature.Trim('_');
-        feature = Regex.Replace(feature, "_+", "_");
-        return feature;
-    }
-
-    private string? GetNormalizedArchName(string name)
-    {
-        string? archName = null;
-        if (name.StartsWith("ARMv"))
-        {
-            archName = name.Replace('.', '_');
-            archName += "_A";
-        }
-        else if (name.StartsWith("PROFILE_A"))
-        {
-            archName += "ARMv8_0_A";
-        }
-        else if (name.StartsWith("PROFILE_R"))
-        {
-            archName += "ARMv8_0_R";
-        }
-
-        return archName;
-    }
-    
-    private void BuildTree()
+    private void BuildTrie()
     {
         // Sort instructions by normalized name
         _instructions.Sort((left, right) => string.Compare(left.NormalizedName, right.NormalizedName, CultureInfo.InvariantCulture, CompareOptions.Ordinal));
-        var decoder = new InstructionDecoder(0);
-        for(int i = 0; i < _instructions.Count; i++)
+
+        Dictionary<uint, List<Instruction>> instructionWithSameBitValues = new();
+
+        for (var i = 0; i < _instructions.Count; i++)
         {
-            decoder.InstructionIndices.Add(i);
+            var instruction = _instructions[i];
+            //Console.WriteLine($"[{i}] {instruction}");
+
+            if (!instructionWithSameBitValues.TryGetValue(instruction.BitfieldValue, out var list))
+            {
+                list = new List<Instruction>();
+                instructionWithSameBitValues.Add(instruction.BitfieldValue, list);
+            }
+
+            list.Add(instruction);
         }
-        decoder.Build(_instructions);
+
+        //foreach (var bitPair in instructionWithSameBitValues)
+        //{
+        //    var instructions = bitPair.Value;
+        //    if (instructions.Count > 1)
+        //    {
+        //        Console.WriteLine($"Instructions with same bit values: {bitPair.Key:X8}");
+        //        foreach (var instruction in instructions)
+        //        {
+        //            Console.WriteLine($"  {instruction}");
+        //            //_instructions.Remove(instruction);
+        //        }
+        //    }
+        //}
+
+        //return;
+
+        var rootTrie = new InstructionTrieNode();
+        _allDecoders.Add(rootTrie);
+        for (int i = 0; i < _instructions.Count; i++)
+        {
+            rootTrie.InstructionIndices.Add(i);
+        }
+
+        var progress = AnsiConsole.Progress().Columns(new ProgressColumn[]
+        {
+            new SpinnerColumn(Spinner.Known.Dots), // Spinner
+            new TaskDescriptionColumn(), // Task description
+            new ProgressBarColumn(), // Progress bar
+            new PercentageColumn(), // Percentage
+            new ElapsedTimeColumn()
+        });
+        
+        progress.Start(ctx =>
+            {
+                var trieTask = ctx.AddTask("[yellow]Building trie[/]", maxValue: _instructions.Count);
+                rootTrie.RecursiveBuild(ctx, trieTask, _instructions, _allDecoders);
+                
+                var task = ctx.AddTask("[green]Building hash table[/]",  maxValue: _allDecoders.Count);
+                for (var i = 0; i < _allDecoders.Count; i++)
+                {
+                    var instructionDecoder = _allDecoders[i];
+                    instructionDecoder.PrepareForHash(ctx, task);
+                    ctx.Refresh();
+                }
+            }
+        );
+
+        return;
+
+        //for (var i = 0; i < _allDecoders.Count; i++)
+        //{
+        //    var decoder = _allDecoders[i];
+        //    if (decoder.IsTerminal) continue;
+        //    if (decoder.TableKind == TrieTableKind.Hash)
+        //    {
+        //        Console.WriteLine($"[{i}] Decoder {decoder.TableKind} ArrayLength: {decoder.DecoderArrayLength} HashMultiplier: 0x{decoder.HashMultiplier:X16}");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine($"[{i}] Decoder {decoder.TableKind} ArrayLength: {decoder.DecoderArrayLength}");
+        //    }
+        //}
+
+        _tableGenEncoder.Encode(rootTrie);
+        AnsiConsole.WriteLine($"Generated Table {_tableGenEncoder.Buffer.Length} bytes");
 
         //Console.WriteLine("--------------------------------");
         //Console.WriteLine("Level 0-2");
@@ -216,17 +208,7 @@ public partial class Arm64Processor
         //Console.WriteLine("--------------------------------");
 
         using var writer = new StreamWriter("decoder.txt");
-        decoder.Print(writer, _instructions);
-    }
-
-    private static string BinaryMask(uint value)
-    {
-        var builder = new StringBuilder();
-        for (var i = 0; i < 32; i++)
-        {
-            builder.Append((value & (1 << (31 - i))) != 0 ? '0' : '1');
-        }
-        return builder.ToString();
+        rootTrie.Print(writer, _instructions);
     }
 
     private void ProcessInstructionFile(string fileName)
@@ -246,8 +228,8 @@ public partial class Arm64Processor
             summary = desc.Descendants("brief").First().Descendants("para").First().Value;
         }
         
-        var bitFields = new List<BitfieldInfo>();
-        var encodingBitFields = new List<BitfieldInfo>();
+        var bitFields = new List<BitRangeInfo>();
+        var encodingBitFields = new List<BitRangeInfo>();
         foreach (var iclass in iclasses)
         {
             var regDiagrams = iclass.Descendants("regdiagram").First();
@@ -367,7 +349,7 @@ public partial class Arm64Processor
         return list;
     }
     
-    private void ProcessBitFields(XElement elt, List<BitfieldInfo> bitFields)
+    private void ProcessBitFields(XElement elt, List<BitRangeInfo> bitFields)
     {
         var boxes = elt.Descendants("box");
         foreach (var box in boxes)
@@ -377,13 +359,13 @@ public partial class Arm64Processor
         }
     }
 
-    private static BitfieldInfo ConvertToBitFieldInfo(XElement elt)
+    private static BitRangeInfo ConvertToBitFieldInfo(XElement elt)
     {
         var name = elt.Attribute("name")?.Value;
         var hiBit = int.Parse(elt.Attribute("hibit")!.Value!);
         var width = int.Parse(elt.Attribute("width")?.Value ?? "1");
 
-        var info = new BitfieldInfo
+        var info = new BitRangeInfo
         {
             Name = name,
             HiBit = hiBit,
@@ -467,394 +449,96 @@ public partial class Arm64Processor
 
         return info;
     }
-
-    private class Instruction
+    
+    private void ExtractArchitecture()
     {
-        public string Filename { get; set; } = string.Empty;
-
-        public string Name { get; set; } = string.Empty;
-
-        public string NormalizedName { get; set; } = string.Empty;
-
-        public string Mnemonic { get; set; } = string.Empty;
-
-        public string Summary { get; set; } = string.Empty;
-
-        public string InstructionClass { get; set; } = string.Empty;
-
-        public uint BitfieldMask { get; set; }
-
-        public uint BitfieldValue { get; set; }
-
-        public List<ArchVariant> ArchVariants { get; } = new();
-
-        public List<BitfieldInfo> BitFields { get; } = new();
-
-
-        public void Add(BitfieldInfo bitfieldInfo)
+        var distinctArchVariant = new Dictionary<string, List<ArchVariant>>();
+        foreach (var instruction in _instructions)
         {
-            var existingField = BitFields.FirstOrDefault(x => x.HiBit == bitfieldInfo.HiBit && x.Width == bitfieldInfo.Width);
-
-            if (existingField != null)
+            foreach (var archVariant in instruction.ArchVariants)
             {
-                Debug.Assert(existingField.FieldSets!.Count == bitfieldInfo.FieldSets.Count);
-                
-                for (var i = 0; i < bitfieldInfo.FieldSets.Count; i++)
+                if (!distinctArchVariant.TryGetValue(archVariant.FeatureExpressionId, out var list))
                 {
-                    if (bitfieldInfo.FieldSets![i] != BitKind.NotSet)
+                    list = new List<ArchVariant>();
+                    distinctArchVariant.Add(archVariant.FeatureExpressionId, list);
+                }
+
+                if (!_featureExpressions.Contains(archVariant))
+                {
+                    _featureExpressions.Add(archVariant);
+                }
+
+                if (!list.Contains(archVariant))
+                {
+                    list.Add(archVariant);
+
+                    string? archName = GetNormalizedArchName(archVariant.Name);
+
+                    if (archName != null && !_archVariantNameToArchitectureId.ContainsKey(archVariant.Name))
                     {
-                        existingField.FieldSets[i] = bitfieldInfo.FieldSets[i];
+                        _archVariantNameToArchitectureId.Add(archVariant.Name, archName);
                     }
                 }
             }
-            else
-            {
-                BitFields.Add(bitfieldInfo.Clone());
-            }
         }
 
-        public void Build()
-        {
-            var name = Name.TrimEnd('_');
-            var indexOfUnderscore = name.IndexOf('_');
-            NormalizedName = indexOfUnderscore > 0 ? $"{name.Substring(0, indexOfUnderscore).ToUpperInvariant()}{name.Substring(indexOfUnderscore).ToLowerInvariant()}" : name.ToUpperInvariant();
+        var matchFeature = new Regex("FEAT_(\\w+)");
 
-            //for (var i = 0; i < BitFields.Count; i++)
+        // Print distinct arch variants
+        foreach (var archVariant in _featureExpressions)
+        {
+            var localFeatures = new HashSet<string>();
+
+            foreach (Match match in matchFeature.Matches(archVariant.FeatureExpression))
+            {
+                var feature = match.Groups[1].Value;
+                if (!_features.Contains(feature))
+                {
+                    _features.Add(feature);
+                }
+
+                localFeatures.Add(feature);
+            }
+
+            //foreach (var name in pair.Value)
             //{
-            //    var bitField = BitFields[i];
-            //    if (bitField.Width <= 2 && (bitField.Name == "sz" || bitField.Name == "S" || bitField.Name == "size"))
-            //    {
-            //        for (int j = 0; j < bitField.Width; j++)
-            //        {
-            //            if (bitField.FieldSets[j] == BitKind.NotSet)
-            //            {
-            //                bitField.FieldSets[j] = BitKind.Any;
-            //            }
-            //        }
-            //    }
-            //    else if (bitField.Name is not null && bitField.Name.StartsWith("imm") && bitField.FieldSets.All(x => x == BitKind.NotSet) && bitField.Width <= 5)
-            //    {
-            //        //Console.WriteLine($"Check bit field {bitField} for instruction {Name}");
-            //    }
+            //    Console.Write($",  {name}");
             //}
 
-            foreach (var bitfieldInfo in BitFields)
-            {
-                var fieldSets = bitfieldInfo.FieldSets;
-
-                var mask = 0u;
-                var value = 0u;
-                for (var i = 0; i < fieldSets.Count; i++)
-                {
-                    mask <<= 1;
-                    value <<= 1;
-                    var bitKind = fieldSets[i];
-                    if (bitKind == BitKind.NotSet)
-                    {
-                        continue;
-                    }
-
-                    mask |= 1;
-                    if (bitKind == BitKind.One)
-                    {
-                        value |= 1;
-                    }
-                }
-
-                BitfieldMask |= mask << (bitfieldInfo.HiBit - (bitfieldInfo.Width - 1));
-                BitfieldValue |= value << (bitfieldInfo.HiBit - (bitfieldInfo.Width - 1));
-            }
+            //Console.WriteLine();
         }
 
-        public override string ToString()
-        {
-            var builder = new StringBuilder();
-            builder.Append($"{Name,-32} {Mnemonic,-12} Mask: 0x{BitfieldMask:X8} Bits: 0x{BitfieldValue:X8}");
-
-            foreach (var bitField in BitFields)
-            {
-                if ((BitfieldMask & (1 << bitField.HiBit)) != 0)
-                {
-                    continue;
-                }
-
-                builder.Append($" {bitField.Name} ({bitField.HiBit}: {bitField.Width})");
-            }
-
-            builder.Append($" (Filename: {Filename})");
-
-            return builder.ToString();
-        }
+        _features.Sort(string.CompareOrdinal);
+        _featureExpressions.Sort((a, b) => string.CompareOrdinal(a.FeatureExpressionId, b.FeatureExpressionId));
     }
 
-
-    private class BitfieldInfo
+    private static string GetFeatureExpressionId(string feature)
     {
-        public string? Name { get; init; }
-
-        public int HiBit { get; init; }
-
-        public int Width { get; init; }
-
-        public List<BitKind> FieldSets { get; } = new();
-
-        public override string ToString()
-        {
-            var builder = new StringBuilder();
-            builder.Append($"{Name,-8} {HiBit,-2} {Width,-2} ");
-
-            foreach (var fieldSet in FieldSets)
-            {
-                builder.Append(fieldSet switch
-                {
-                    BitKind.Zero => "0",
-                    BitKind.One => "1",
-                    BitKind.NotSet => "x",
-                    _ => throw new ArgumentOutOfRangeException()
-                });
-            }
-            return builder.ToString();
-        }
-
-        public BitfieldInfo Clone()
-        {
-            var clone = new BitfieldInfo
-            {
-                Name = Name,
-                HiBit = HiBit,
-                Width = Width
-            };
-            clone.FieldSets.AddRange(FieldSets);
-            return clone;
-        }
+        feature = feature.Replace("(", "_Lp_").Replace(")", "_Rp_").Replace("||", "_Or_").Replace("&&", "_And_");
+        feature = feature.Replace("FEAT_", string.Empty);
+        feature = Regex.Replace(feature, @"\s+", string.Empty);
+        feature = feature.Trim('_');
+        feature = Regex.Replace(feature, "_+", "_");
+        return feature;
     }
 
-    private class InstructionDecoder
+    private string? GetNormalizedArchName(string name)
     {
-        public InstructionDecoder(int shift)
+        string? archName = null;
+        if (name.StartsWith("ARMv"))
         {
-            Shift = shift;
-            MaskToSubDecoder = new();
-            InstructionIndices = new();
+            archName = name.Replace('.', '_');
+            archName += "_A";
+        }
+        else if (name.StartsWith("PROFILE_A"))
+        {
+            archName += "ARMv8_0_A";
+        }
+        else if (name.StartsWith("PROFILE_R"))
+        {
+            archName += "ARMv8_0_R";
         }
 
-        public int? Key;
-        
-        public int Shift;
-
-        public int BitMaskCount;
-
-        public readonly Dictionary<int, InstructionDecoder> MaskToSubDecoder;
-
-        public InstructionDecoder? ElseBranch;
-
-        public readonly List<int> InstructionIndices;
-
-        public bool IsElseBranch;
-
-        public bool IsTerminal => MaskToSubDecoder.Count == 0;
-
-        public void Build(List<Instruction> instructions, int level = 0)
-        {
-            if (InstructionIndices.Count == 1) return;
-
-            int minimumShift = int.MaxValue;
-            int countCountLeading1 = 0;
-            
-            foreach (var instructionIndex in InstructionIndices)
-            {
-                var instruction = instructions[instructionIndex];
-                var instructionMask = instruction.BitfieldMask << Shift;
-                var countLeading0 = BitOperations.LeadingZeroCount(instructionMask);
-                var countLeading1 = BitOperations.LeadingZeroCount(~instructionMask);
-
-                if (countLeading1 > 0)
-                {
-                    countCountLeading1++;
-                }
-
-                if (countLeading0 < minimumShift)
-                {
-                    minimumShift = countLeading0;
-                }
-            }
-
-            if (countCountLeading1 == 0)
-            {
-                Debug.Assert(minimumShift > 0);
-                Shift += minimumShift;
-            }
-            
-            (HashSet<uint>? CountPerMask, int Count)[] instCountPerFront1 = new (HashSet<uint>?, int)[33];
-            foreach (var instructionIndex in InstructionIndices)
-            {
-                var instruction = instructions[instructionIndex];
-                var instructionMask = instruction.BitfieldMask << Shift;
-
-                var countLeading1 = BitOperations.LeadingZeroCount(~instructionMask);
-                //count1 = Math.Min(count1, 8);
-                for (int i = 1; i <= countLeading1; i++)
-                {
-                    var instructionValue = (instruction.BitfieldValue << Shift) >> (32 - i);
-                    var pair = instCountPerFront1[i];
-                    if (pair.CountPerMask == null)
-                    {
-                        pair.CountPerMask = new HashSet<uint>();
-                        instCountPerFront1[i] = (pair.CountPerMask, 0);
-                    }
-                    pair.CountPerMask.Add(instructionValue);
-                    instCountPerFront1[i] = (pair.CountPerMask, pair.Count + 1);
-                }
-            }
-
-            int maximumPerMaskCount = 0;
-            int bestCountLeading1 = 0;
-            for (var i = 32; i >= 1; i--)
-            {
-                var hashSet = instCountPerFront1[i];
-                if (hashSet.CountPerMask is not null && hashSet.CountPerMask.Count > maximumPerMaskCount) // >= to prefer to have more bits
-                {
-                    maximumPerMaskCount = hashSet.CountPerMask.Count;
-                    bestCountLeading1 = i;
-                }
-            }
-
-            BitMaskCount = bestCountLeading1;
-            
-            if (bestCountLeading1 == 0)
-            {
-                return;
-            }
-
-            //Console.WriteLine($"{new string(' ', level * 2)} Decoder Shift = {Shift}, BitMaskCount = {BitMaskCount}, Other: {IsOtherDecoder}");
-
-            //Console.WriteLine($"{new string(' ', level * 2)} Decoder Shift = {Shift}, DecoderMask = {buildMask}");
-
-            //for (var i = 0; i < 32; i++)
-            //{
-            //    var hashSet = instCountPerFront1[i];
-            //    if (hashSet.CountPerMask is not null && hashSet.Count > 0)
-            //    {
-            //        Console.WriteLine($"{new string(' ', level * 2)} [{i}] CountPerMask = {hashSet.CountPerMask.Count}, Total = {hashSet.Count}");
-            //    }
-            //}
-
-            foreach (var instructionIndex in InstructionIndices)
-            {
-                var instruction = instructions[instructionIndex];
-                var subMask = instruction.BitfieldMask << Shift;
-
-                var countLeading1 = BitOperations.LeadingZeroCount(~subMask);
-                if (countLeading1 >= bestCountLeading1)
-                {
-                    var localSubIndex = (int)((instruction.BitfieldValue << Shift) >> (32 - bestCountLeading1));
-
-                    if (!MaskToSubDecoder.TryGetValue(localSubIndex, out var subDecoder))
-                    {
-                        subDecoder ??= new InstructionDecoder(Shift + bestCountLeading1)
-                        {
-                            Key = localSubIndex
-                        };
-                        MaskToSubDecoder.Add(localSubIndex, subDecoder);
-                    }
-
-                    if (!subDecoder.InstructionIndices.Contains(instructionIndex))
-                    {
-                        subDecoder.InstructionIndices.Add(instructionIndex);
-                    }
-                }
-                else
-                {
-                    ElseBranch ??= new InstructionDecoder(Shift) { IsElseBranch = true };
-                    if (!ElseBranch.InstructionIndices.Contains(instructionIndex))
-                    {
-                        ElseBranch.InstructionIndices.Add(instructionIndex);
-                    }
-                }
-            }
-
-            if (ElseBranch is not null)
-            {
-                ElseBranch.Build(instructions, level + 1);
-            }
-
-            foreach (var subDecoder in MaskToSubDecoder.Values)
-            {
-                subDecoder.Build(instructions, level + 1);
-            }
-
-            if (IsTerminal && InstructionIndices.Count != 1)
-            {
-                Console.WriteLine($"Error with decoder. Invalid number of final instructions expecting only 1: {this}");
-            }
-        }
-
-        public void Print(TextWriter writer, List<Instruction> instructions, int level = 0)
-        {
-            var builder = new StringBuilder();
-            builder.Append($"{new string(' ', level * 2)}[{level}] Shift: {Shift}, BitMaskCount: {BitMaskCount}, Instructions: {InstructionIndices.Count}");
-
-            if (MaskToSubDecoder.Count > 0)
-            {
-                builder.Append($", Sub-Key Count: {MaskToSubDecoder.Count}");
-            }
-            
-            if (Key.HasValue)
-            {
-                builder.Append($", Key: {Key.Value}");
-            }
-
-            if (IsElseBranch)
-            {
-                builder.Append($", ElseBranch: true");
-            }
-
-            if (MaskToSubDecoder.Count == 0)
-            {
-                if (InstructionIndices.Count > 1)
-                {
-                    builder.AppendLine($", Invalid-Multi: true");
-                }
-                else
-                {
-                    builder.AppendLine();
-
-                }
-
-                foreach (var instructionIndex in InstructionIndices)
-                {
-                    builder.AppendLine($"{new string(' ', level * 2)}  Instr: {instructions[instructionIndex]}");
-                }
-            }
-            else
-            {
-                builder.AppendLine();
-            }
-
-            writer.Write(builder.ToString());
-
-            var values = MaskToSubDecoder.Values.ToHashSet().ToList();
-            values.Sort((a, b) => (a.Key ?? 0).CompareTo(b.Key ?? 0));
-
-            foreach (var decoder in values)
-            {
-                decoder.Print(writer, instructions, level + 1);
-            }
-
-            if (ElseBranch is not null)
-            {
-                ElseBranch.Print(writer, instructions, level);
-            }
-
-        }
-    }
-
-    private record ArchVariant(string FeatureExpressionId, string FeatureExpression, string Name);
-
-    private enum BitKind : byte
-    {
-        NotSet,
-        Zero,
-        One,
+        return archName;
     }
 }

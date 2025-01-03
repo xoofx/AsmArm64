@@ -21,6 +21,8 @@ partial class Arm64Processor
         GenerateArchitecture();
         GenerateFeatures();
         GenerateFeatureExpressions();
+        GenerateInstructionDecoderTable();
+        GenerateInstructionIdTests();
     }
 
     private void GenerateMnemonicEnum()
@@ -200,11 +202,64 @@ partial class Arm64Processor
         w.CloseBraceBlock();
     }
 
+    private void GenerateInstructionDecoderTable()
+    {
+        using var w = GetWriter("Arm64InstructionDecoderTable.gen.cs");
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteLine("partial class Arm64InstructionDecoderTable");
+        w.OpenBraceBlock();
+        {
+            var buffer = _tableGenEncoder.Buffer;
+            w.WriteLine($"public static ReadOnlySpan<byte> Buffer => new byte[{buffer.Length}]");
+            w.OpenBraceBlock();
+            for (var i = 0; i < buffer.Length; i++)
+            {
+                w.Write($"{buffer[i]},");
+                if (i % 16 == 15)
+                {
+                    w.WriteLine();
+                }
+            }
+            if (buffer.Length % 16 != 0)
+            {
+                w.WriteLine();
+            }
+            w.CloseBraceBlockStatement();
+        }
+        w.CloseBraceBlock();
+    }
+
+    private void GenerateInstructionIdTests()
+    {
+        using var w = GetWriter("InstructionIdTests.gen.cs", true);
+        w.WriteLine("namespace AsmArm64.Tests;");
+        w.WriteLine();
+        w.WriteLine("[TestClass]");
+        w.WriteLine("public class InstructionIdTests");
+        w.OpenBraceBlock();
+        {
+            w.WriteLine("[TestMethod]");
+            foreach (var instruction in _instructions)
+            {
+                w.WriteLine($"[DataRow(0x{instruction.BitfieldValue:X8}U, Arm64InstructionId.{instruction.NormalizedName})]");
+            }
+            w.WriteLine($"public void Test(uint instruction, Arm64InstructionId expected)");
+            w.OpenBraceBlock();
+            {
+                w.WriteLine("var actual = Arm64InstructionDecoderTable.Resolve(instruction);");
+                w.WriteLine("Assert.AreEqual(expected, actual);");
+            }
+            w.CloseBraceBlock();
+        }
+        w.CloseBraceBlock();
+    }
+    
     private static string EscapeHtmlEntities(string text) => text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
 
-    private CodeWriter GetWriter(string fileName)
+    private CodeWriter GetWriter(string fileName, bool isTest = false)
     {
-        var sw = new StreamWriter(Path.Combine(_basedOutputFolder, "generated", fileName));
+        var sw = new StreamWriter(Path.Combine(isTest ? _basedOutputTestFolder : _basedOutputFolder, "generated", fileName));
         var w = new CodeWriter(sw);
 
         w.WriteLine(
