@@ -52,48 +52,41 @@ public readonly record struct Arm64Register<#= kind #> : IArm64Register
     private readonly uint _value;
     private Arm64Register<#= kind #>(int index) => _value = (uint)((uint)Arm64RegisterKind.<#= kind #> << 16 | (uint)index);
 
-    /// <inherited //>
+    /// <inheritdoc />
     public Arm64RegisterKind Kind => Arm64RegisterKind.<#= kind #>;
 
-    /// <inherited //>
+    /// <inheritdoc />
     public int Index => (int)(_value & 0b11111);
 
+    /// <inheritdoc />
+    public override string ToString() => this.ToText();
 <# if (kind == "XZ") { #>
-    /// <inherited //>
-    public override string ToString() => "XZR";
 
     /// <summary>
     /// Gets the <#= kind #> register.
     /// </summary>
     public static Arm64Register<#= kind #> XZR => new(0);
 <# } else if (kind == "WZ") { #>
-    /// <inherited //>
-    public override string ToString() => "WZR";
 
     /// <summary>
     /// Gets the <#= kind #> register.
     /// </summary>
     public static Arm64Register<#= kind #> WZR => new(0);
 <# } else if (kind == "SP") { #>
-    /// <inherited //>
-    public override string ToString() => "SP";
 
     /// <summary>
     /// Gets the <#= kind #> register.
     /// </summary>
     public static Arm64Register<#= kind #> <#= kind #> => new(0);
 <# } else { #>
-    /// <inherited //>
-    public override string ToString() => $"<#= kind #>{Index}"; // TODO: Add Extensions
 <# for(int i = 0; i < ((kind == "X" || kind == "W") ? 31 : 32); i++) { #>
 
     /// <summary>
     /// Gets the <#= kind #><#= i #> register.
     /// </summary>
     public static Arm64Register<#= kind #> <#= kind #><#= i #> => new(<#= i #>);
-<# }
-}
-#>
+<# } #>
+<# } // foreach kind #>
 }
 <# } #>
 
@@ -125,4 +118,43 @@ partial class Arm64Factory
 }
 }
 #>
+}
+
+partial class Arm64Extensions
+{
+<# foreach(var kind in registerKinds) { #>
+    /// <summary>
+    /// Converts the <#= kind #> register to a string.
+    /// </summary>
+    public static string ToText(this Arm64Register<#= kind #> register, bool upperCase = false) => upperCase ? Register<#= kind #>UpperNames[register.Index] : Register<#= kind #>LowerNames[register.Index];
+
+<# if (kind == "XZ") { #>
+    private static readonly string[] RegisterXZLowerNames = ["xzr"];
+
+    private static readonly string[] RegisterXZUpperNames = ["XZR"];
+
+
+
+<# } else if (kind == "WZ") { #>
+    private static readonly string[] RegisterWZLowerNames = ["wzr"];
+
+    private static readonly string[] RegisterWZUpperNames = ["WZR"];
+
+<# } else if (kind == "SP") { #>
+    private static readonly string[] RegisterSPLowerNames = ["sp"];
+
+    private static readonly string[] RegisterSPUpperNames = ["SP"];
+<# } else { #>
+    private static readonly string[] Register<#= kind #>LowerNames = [
+<# for(int i = 0; i < ((kind == "X" || kind == "W") ? 31 : 32); i++) { #>
+        "<#= kind.ToLowerInvariant() #><#= i #>",
+<# } #>
+    ];
+    private static readonly string[] Register<#= kind #>UpperNames = [
+<# for(int i = 0; i < ((kind == "X" || kind == "W") ? 31 : 32); i++) { #>
+        "<#= kind #><#= i #>",
+<# } #>
+    ];
+<# } // else #>
+<# } // foreach #>
 }

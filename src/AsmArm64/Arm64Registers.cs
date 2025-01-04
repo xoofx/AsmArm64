@@ -60,14 +60,14 @@ public readonly record struct Arm64RegisterX : IArm64Register
     private readonly uint _value;
     private Arm64RegisterX(int index) => _value = (uint)((uint)Arm64RegisterKind.X << 16 | (uint)index);
 
-    /// <inherited //>
+    /// <inheritdoc />
     public Arm64RegisterKind Kind => Arm64RegisterKind.X;
 
-    /// <inherited //>
+    /// <inheritdoc />
     public int Index => (int)(_value & 0b11111);
 
-    /// <inherited //>
-    public override string ToString() => $"X{Index}"; // TODO: Add Extensions
+    /// <inheritdoc />
+    public override string ToString() => this.ToText();
 
     /// <summary>
     /// Gets the X0 register.
@@ -233,14 +233,14 @@ public readonly record struct Arm64RegisterXZ : IArm64Register
     private readonly uint _value;
     private Arm64RegisterXZ(int index) => _value = (uint)((uint)Arm64RegisterKind.XZ << 16 | (uint)index);
 
-    /// <inherited //>
+    /// <inheritdoc />
     public Arm64RegisterKind Kind => Arm64RegisterKind.XZ;
 
-    /// <inherited //>
+    /// <inheritdoc />
     public int Index => (int)(_value & 0b11111);
 
-    /// <inherited //>
-    public override string ToString() => "XZR";
+    /// <inheritdoc />
+    public override string ToString() => this.ToText();
 
     /// <summary>
     /// Gets the XZ register.
@@ -256,14 +256,14 @@ public readonly record struct Arm64RegisterW : IArm64Register
     private readonly uint _value;
     private Arm64RegisterW(int index) => _value = (uint)((uint)Arm64RegisterKind.W << 16 | (uint)index);
 
-    /// <inherited //>
+    /// <inheritdoc />
     public Arm64RegisterKind Kind => Arm64RegisterKind.W;
 
-    /// <inherited //>
+    /// <inheritdoc />
     public int Index => (int)(_value & 0b11111);
 
-    /// <inherited //>
-    public override string ToString() => $"W{Index}"; // TODO: Add Extensions
+    /// <inheritdoc />
+    public override string ToString() => this.ToText();
 
     /// <summary>
     /// Gets the W0 register.
@@ -429,14 +429,14 @@ public readonly record struct Arm64RegisterWZ : IArm64Register
     private readonly uint _value;
     private Arm64RegisterWZ(int index) => _value = (uint)((uint)Arm64RegisterKind.WZ << 16 | (uint)index);
 
-    /// <inherited //>
+    /// <inheritdoc />
     public Arm64RegisterKind Kind => Arm64RegisterKind.WZ;
 
-    /// <inherited //>
+    /// <inheritdoc />
     public int Index => (int)(_value & 0b11111);
 
-    /// <inherited //>
-    public override string ToString() => "WZR";
+    /// <inheritdoc />
+    public override string ToString() => this.ToText();
 
     /// <summary>
     /// Gets the WZ register.
@@ -452,14 +452,14 @@ public readonly record struct Arm64RegisterSP : IArm64Register
     private readonly uint _value;
     private Arm64RegisterSP(int index) => _value = (uint)((uint)Arm64RegisterKind.SP << 16 | (uint)index);
 
-    /// <inherited //>
+    /// <inheritdoc />
     public Arm64RegisterKind Kind => Arm64RegisterKind.SP;
 
-    /// <inherited //>
+    /// <inheritdoc />
     public int Index => (int)(_value & 0b11111);
 
-    /// <inherited //>
-    public override string ToString() => "SP";
+    /// <inheritdoc />
+    public override string ToString() => this.ToText();
 
     /// <summary>
     /// Gets the SP register.
@@ -475,14 +475,14 @@ public readonly record struct Arm64RegisterV : IArm64Register
     private readonly uint _value;
     private Arm64RegisterV(int index) => _value = (uint)((uint)Arm64RegisterKind.V << 16 | (uint)index);
 
-    /// <inherited //>
+    /// <inheritdoc />
     public Arm64RegisterKind Kind => Arm64RegisterKind.V;
 
-    /// <inherited //>
+    /// <inheritdoc />
     public int Index => (int)(_value & 0b11111);
 
-    /// <inherited //>
-    public override string ToString() => $"V{Index}"; // TODO: Add Extensions
+    /// <inheritdoc />
+    public override string ToString() => this.ToText();
 
     /// <summary>
     /// Gets the V0 register.
@@ -653,14 +653,14 @@ public readonly record struct Arm64RegisterH : IArm64Register
     private readonly uint _value;
     private Arm64RegisterH(int index) => _value = (uint)((uint)Arm64RegisterKind.H << 16 | (uint)index);
 
-    /// <inherited //>
+    /// <inheritdoc />
     public Arm64RegisterKind Kind => Arm64RegisterKind.H;
 
-    /// <inherited //>
+    /// <inheritdoc />
     public int Index => (int)(_value & 0b11111);
 
-    /// <inherited //>
-    public override string ToString() => $"H{Index}"; // TODO: Add Extensions
+    /// <inheritdoc />
+    public override string ToString() => this.ToText();
 
     /// <summary>
     /// Gets the H0 register.
@@ -831,14 +831,14 @@ public readonly record struct Arm64RegisterS : IArm64Register
     private readonly uint _value;
     private Arm64RegisterS(int index) => _value = (uint)((uint)Arm64RegisterKind.S << 16 | (uint)index);
 
-    /// <inherited //>
+    /// <inheritdoc />
     public Arm64RegisterKind Kind => Arm64RegisterKind.S;
 
-    /// <inherited //>
+    /// <inheritdoc />
     public int Index => (int)(_value & 0b11111);
 
-    /// <inherited //>
-    public override string ToString() => $"S{Index}"; // TODO: Add Extensions
+    /// <inheritdoc />
+    public override string ToString() => this.ToText();
 
     /// <summary>
     /// Gets the S0 register.
@@ -1009,14 +1009,14 @@ public readonly record struct Arm64RegisterD : IArm64Register
     private readonly uint _value;
     private Arm64RegisterD(int index) => _value = (uint)((uint)Arm64RegisterKind.D << 16 | (uint)index);
 
-    /// <inherited //>
+    /// <inheritdoc />
     public Arm64RegisterKind Kind => Arm64RegisterKind.D;
 
-    /// <inherited //>
+    /// <inheritdoc />
     public int Index => (int)(_value & 0b11111);
 
-    /// <inherited //>
-    public override string ToString() => $"D{Index}"; // TODO: Add Extensions
+    /// <inheritdoc />
+    public override string ToString() => this.ToText();
 
     /// <summary>
     /// Gets the D0 register.
@@ -1953,4 +1953,470 @@ partial class Arm64Factory
     /// Gets the D31 register.
     /// </summary>
     public static Arm64RegisterD D31 => Arm64RegisterD.D31;
+}
+
+partial class Arm64Extensions
+{
+    /// <summary>
+    /// Converts the X register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterX register, bool upperCase = false) => upperCase ? RegisterXUpperNames[register.Index] : RegisterXLowerNames[register.Index];
+
+    private static readonly string[] RegisterXLowerNames = [
+        "x0",
+        "x1",
+        "x2",
+        "x3",
+        "x4",
+        "x5",
+        "x6",
+        "x7",
+        "x8",
+        "x9",
+        "x10",
+        "x11",
+        "x12",
+        "x13",
+        "x14",
+        "x15",
+        "x16",
+        "x17",
+        "x18",
+        "x19",
+        "x20",
+        "x21",
+        "x22",
+        "x23",
+        "x24",
+        "x25",
+        "x26",
+        "x27",
+        "x28",
+        "x29",
+        "x30",
+    ];
+    private static readonly string[] RegisterXUpperNames = [
+        "X0",
+        "X1",
+        "X2",
+        "X3",
+        "X4",
+        "X5",
+        "X6",
+        "X7",
+        "X8",
+        "X9",
+        "X10",
+        "X11",
+        "X12",
+        "X13",
+        "X14",
+        "X15",
+        "X16",
+        "X17",
+        "X18",
+        "X19",
+        "X20",
+        "X21",
+        "X22",
+        "X23",
+        "X24",
+        "X25",
+        "X26",
+        "X27",
+        "X28",
+        "X29",
+        "X30",
+    ];
+    /// <summary>
+    /// Converts the XZ register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterXZ register, bool upperCase = false) => upperCase ? RegisterXZUpperNames[register.Index] : RegisterXZLowerNames[register.Index];
+
+    private static readonly string[] RegisterXZLowerNames = ["xzr"];
+
+    private static readonly string[] RegisterXZUpperNames = ["XZR"];
+
+
+
+    /// <summary>
+    /// Converts the W register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterW register, bool upperCase = false) => upperCase ? RegisterWUpperNames[register.Index] : RegisterWLowerNames[register.Index];
+
+    private static readonly string[] RegisterWLowerNames = [
+        "w0",
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "w5",
+        "w6",
+        "w7",
+        "w8",
+        "w9",
+        "w10",
+        "w11",
+        "w12",
+        "w13",
+        "w14",
+        "w15",
+        "w16",
+        "w17",
+        "w18",
+        "w19",
+        "w20",
+        "w21",
+        "w22",
+        "w23",
+        "w24",
+        "w25",
+        "w26",
+        "w27",
+        "w28",
+        "w29",
+        "w30",
+    ];
+    private static readonly string[] RegisterWUpperNames = [
+        "W0",
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5",
+        "W6",
+        "W7",
+        "W8",
+        "W9",
+        "W10",
+        "W11",
+        "W12",
+        "W13",
+        "W14",
+        "W15",
+        "W16",
+        "W17",
+        "W18",
+        "W19",
+        "W20",
+        "W21",
+        "W22",
+        "W23",
+        "W24",
+        "W25",
+        "W26",
+        "W27",
+        "W28",
+        "W29",
+        "W30",
+    ];
+    /// <summary>
+    /// Converts the WZ register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterWZ register, bool upperCase = false) => upperCase ? RegisterWZUpperNames[register.Index] : RegisterWZLowerNames[register.Index];
+
+    private static readonly string[] RegisterWZLowerNames = ["wzr"];
+
+    private static readonly string[] RegisterWZUpperNames = ["WZR"];
+
+    /// <summary>
+    /// Converts the SP register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterSP register, bool upperCase = false) => upperCase ? RegisterSPUpperNames[register.Index] : RegisterSPLowerNames[register.Index];
+
+    private static readonly string[] RegisterSPLowerNames = ["sp"];
+
+    private static readonly string[] RegisterSPUpperNames = ["SP"];
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV register, bool upperCase = false) => upperCase ? RegisterVUpperNames[register.Index] : RegisterVLowerNames[register.Index];
+
+    private static readonly string[] RegisterVLowerNames = [
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8",
+        "v9",
+        "v10",
+        "v11",
+        "v12",
+        "v13",
+        "v14",
+        "v15",
+        "v16",
+        "v17",
+        "v18",
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23",
+        "v24",
+        "v25",
+        "v26",
+        "v27",
+        "v28",
+        "v29",
+        "v30",
+        "v31",
+    ];
+    private static readonly string[] RegisterVUpperNames = [
+        "V0",
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6",
+        "V7",
+        "V8",
+        "V9",
+        "V10",
+        "V11",
+        "V12",
+        "V13",
+        "V14",
+        "V15",
+        "V16",
+        "V17",
+        "V18",
+        "V19",
+        "V20",
+        "V21",
+        "V22",
+        "V23",
+        "V24",
+        "V25",
+        "V26",
+        "V27",
+        "V28",
+        "V29",
+        "V30",
+        "V31",
+    ];
+    /// <summary>
+    /// Converts the H register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterH register, bool upperCase = false) => upperCase ? RegisterHUpperNames[register.Index] : RegisterHLowerNames[register.Index];
+
+    private static readonly string[] RegisterHLowerNames = [
+        "h0",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "h7",
+        "h8",
+        "h9",
+        "h10",
+        "h11",
+        "h12",
+        "h13",
+        "h14",
+        "h15",
+        "h16",
+        "h17",
+        "h18",
+        "h19",
+        "h20",
+        "h21",
+        "h22",
+        "h23",
+        "h24",
+        "h25",
+        "h26",
+        "h27",
+        "h28",
+        "h29",
+        "h30",
+        "h31",
+    ];
+    private static readonly string[] RegisterHUpperNames = [
+        "H0",
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5",
+        "H6",
+        "H7",
+        "H8",
+        "H9",
+        "H10",
+        "H11",
+        "H12",
+        "H13",
+        "H14",
+        "H15",
+        "H16",
+        "H17",
+        "H18",
+        "H19",
+        "H20",
+        "H21",
+        "H22",
+        "H23",
+        "H24",
+        "H25",
+        "H26",
+        "H27",
+        "H28",
+        "H29",
+        "H30",
+        "H31",
+    ];
+    /// <summary>
+    /// Converts the S register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterS register, bool upperCase = false) => upperCase ? RegisterSUpperNames[register.Index] : RegisterSLowerNames[register.Index];
+
+    private static readonly string[] RegisterSLowerNames = [
+        "s0",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7",
+        "s8",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20",
+        "s21",
+        "s22",
+        "s23",
+        "s24",
+        "s25",
+        "s26",
+        "s27",
+        "s28",
+        "s29",
+        "s30",
+        "s31",
+    ];
+    private static readonly string[] RegisterSUpperNames = [
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S25",
+        "S26",
+        "S27",
+        "S28",
+        "S29",
+        "S30",
+        "S31",
+    ];
+    /// <summary>
+    /// Converts the D register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterD register, bool upperCase = false) => upperCase ? RegisterDUpperNames[register.Index] : RegisterDLowerNames[register.Index];
+
+    private static readonly string[] RegisterDLowerNames = [
+        "d0",
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "d9",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15",
+        "d16",
+        "d17",
+        "d18",
+        "d19",
+        "d20",
+        "d21",
+        "d22",
+        "d23",
+        "d24",
+        "d25",
+        "d26",
+        "d27",
+        "d28",
+        "d29",
+        "d30",
+        "d31",
+    ];
+    private static readonly string[] RegisterDUpperNames = [
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18",
+        "D19",
+        "D20",
+        "D21",
+        "D22",
+        "D23",
+        "D24",
+        "D25",
+        "D26",
+        "D27",
+        "D28",
+        "D29",
+        "D30",
+        "D31",
+    ];
 }
