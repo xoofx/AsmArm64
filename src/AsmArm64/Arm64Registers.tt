@@ -1,0 +1,128 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+    var registerKinds = new string[] { "X", "XZ", "W", "WZ", "SP", "V", "H", "S", "D" };
+    var registerKindNames = new Dictionary<string, string>
+    {
+        { "X", "64-bit general-purpose register" },
+        { "XZ","Zero 64-bit register" },
+        { "W", "32-bit general-purpose register" },
+        { "WZ","Zero 32-bit register" },
+        { "SP", "Stack pointer register" },
+        { "V", "Vector register" },
+        { "H", "Half-precision 16-bit floating-point register" },
+        { "S", "Single-precision 32-bit floating-point register" },
+        { "D", "Double-precision 64-bit floating-point register" },
+    };
+#>
+// Copyright (c) Alexandre Mutel. All rights reserved.
+// Licensed under the BSD-Clause 2 license.
+// See license.txt file in the project root for full license information.
+
+// ReSharper disable InconsistentNaming
+namespace AsmArm64;
+
+/// <summary>
+/// Defines the kind of register.
+/// </summary>
+public enum Arm64RegisterKind
+{
+    /// <summary>
+    /// Invalid register kind.
+    /// </summary>
+    Invalid = 0,
+<# foreach(var kind in registerKinds) { #>
+    /// <summary>
+    /// <#= registerKindNames[kind] #>.
+    /// </summary>
+    <#= kind #>,
+<# } #>
+}
+<# foreach(var kind in registerKinds) { #>
+
+/// <summary>
+/// Represents an ARM64 <#= kind #> register.
+/// </summary>
+public readonly record struct Arm64Register<#= kind #> : IArm64Register
+{
+    private readonly uint _value;
+    private Arm64Register<#= kind #>(int index) => _value = (uint)((uint)Arm64RegisterKind.<#= kind #> << 16 | (uint)index);
+
+    /// <inherited //>
+    public Arm64RegisterKind Kind => Arm64RegisterKind.<#= kind #>;
+
+    /// <inherited //>
+    public int Index => (int)(_value & 0b11111);
+
+<# if (kind == "XZ") { #>
+    /// <inherited //>
+    public override string ToString() => "XZR";
+
+    /// <summary>
+    /// Gets the <#= kind #> register.
+    /// </summary>
+    public static Arm64Register<#= kind #> XZR => new(0);
+<# } else if (kind == "WZ") { #>
+    /// <inherited //>
+    public override string ToString() => "WZR";
+
+    /// <summary>
+    /// Gets the <#= kind #> register.
+    /// </summary>
+    public static Arm64Register<#= kind #> WZR => new(0);
+<# } else if (kind == "SP") { #>
+    /// <inherited //>
+    public override string ToString() => "SP";
+
+    /// <summary>
+    /// Gets the <#= kind #> register.
+    /// </summary>
+    public static Arm64Register<#= kind #> <#= kind #> => new(0);
+<# } else { #>
+    /// <inherited //>
+    public override string ToString() => $"<#= kind #>{Index}"; // TODO: Add Extensions
+<# for(int i = 0; i < ((kind == "X" || kind == "W") ? 31 : 32); i++) { #>
+
+    /// <summary>
+    /// Gets the <#= kind #><#= i #> register.
+    /// </summary>
+    public static Arm64Register<#= kind #> <#= kind #><#= i #> => new(<#= i #>);
+<# }
+}
+#>
+}
+<# } #>
+
+partial class Arm64Factory
+{
+<# foreach(var kind in registerKinds) { #>
+<# if (kind == "XZ") { #>
+    /// <summary>
+    /// Gets the <#= kind #> register.
+    /// </summary>
+    public static Arm64Register<#= kind #> XZR => Arm64Register<#= kind #>.XZR;
+<# } else if (kind == "WZ") { #>
+    /// <summary>
+    /// Gets the <#= kind #> register.
+    /// </summary>
+    public static Arm64Register<#= kind #> WZR => Arm64Register<#= kind #>.WZR;
+<# } else if (kind == "SP") { #>
+    /// <summary>
+    /// Gets the <#= kind #> register.
+    /// </summary>
+    public static Arm64Register<#= kind #> <#= kind #> =>  Arm64RegisterSP.SP;
+<# } else { #>
+<# for(int i = 0; i < ((kind == "X" || kind == "W") ? 31 : 32); i++) { #>
+    /// <summary>
+    /// Gets the <#= kind #><#= i #> register.
+    /// </summary>
+    public static Arm64Register<#= kind #> <#= kind #><#= i #> => Arm64Register<#= kind #>.<#= kind #><#= i #>;
+<# }
+}
+}
+#>
+}

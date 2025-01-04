@@ -3,6 +3,7 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 
 namespace AsmArm64.CodeGen;
@@ -36,15 +37,45 @@ partial class Arm64Processor
         w.WriteSummary("A list of all ARM64 mnemonics.");
         w.WriteLine("public enum Arm64Mnemonic : ushort");
         w.OpenBraceBlock();
-        w.WriteSummary("This mnemonic is invalid.");
-        w.WriteLine("Invalid,");
-        foreach (var mnemonic in mnemonics.Order())
         {
-            w.WriteSummary($"This `{mnemonic}` mnemonic.");
-            w.WriteLine($"{mnemonic},");
+            w.WriteSummary("This mnemonic is invalid.");
+            w.WriteLine("Invalid,");
+            foreach (var mnemonic in mnemonics.Order())
+            {
+                w.WriteSummary($"This `{mnemonic}` mnemonic.");
+                w.WriteLine($"{mnemonic},");
+            }
         }
         w.CloseBraceBlock();
-    }
+        w.WriteLine();
+        w.WriteLine("partial class Arm64Extensions");
+        w.OpenBraceBlock();
+        {
+            w.WriteLine("private static readonly string[] MnemonicLowerTable = new string[]");
+            w.OpenBraceBlock();
+            {
+                w.WriteLine("\"???\",");
+                foreach (var mnemonic in mnemonics.Order())
+                {
+                    w.WriteLine($"\"{mnemonic.ToLowerInvariant()}\",");
+                }
+            }
+            w.CloseBraceBlockStatement();
+            w.WriteLine();
+            w.WriteLine("private static readonly string[] MnemonicUpperTable = new string[]");
+            w.OpenBraceBlock();
+            {
+                w.WriteLine("\"???\",");
+                foreach (var mnemonic in mnemonics.Order())
+                {
+                    w.WriteLine($"\"{mnemonic.ToUpperInvariant()}\",");
+                }
+            }
+            w.CloseBraceBlockStatement();
+        }
+        w.CloseBraceBlock();
+        w.WriteLine();
+}
 
     private void GenerateInstructionIdEnum()
     {

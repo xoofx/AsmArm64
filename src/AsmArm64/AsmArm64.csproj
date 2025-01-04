@@ -27,8 +27,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Registers.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)../../img/AsmArm64.png" Pack="true" PackagePath="/" />
     <None Include="$(MSBuildThisFileDirectory)../../readme.md" Pack="true" PackagePath="/" />
+    <None Include="Arm64Registers.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,5 +41,29 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Arm64Registers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Arm64Registers.cs</LastGenOutput>
+    </None>
+    <None Update="Arm64Registers.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64Registers.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Arm64Registers.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64Registers.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
