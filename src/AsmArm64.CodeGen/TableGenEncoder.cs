@@ -34,9 +34,9 @@ class TableGenEncoder
         ref var entry = ref Append(new EntryHeader());
         entry.TrieTableKind = trieNode.TableKind;
         entry.HasElseBranch = trieNode.ElseBranch is not null;
-        //entry.LeftShift = (byte)trieNode.LeftShift;
-        //entry.BitMaskCount = (byte)trieNode.BitMaskCount;
-        entry.ArrayLength = (ushort)trieNode.DecoderArrayLength;
+        entry.BitMask = trieNode.BitMask;
+        entry.Shift = (byte)trieNode.RightShift;
+        entry.ArrayLength = (ushort)trieNode.EncoderArrayLength;
 
         var offsetElseBranch = _offset;
         if (entry.HasElseBranch)
@@ -44,37 +44,18 @@ class TableGenEncoder
             Append(new EntryIndex());
         }
 
-        // Prepare buffers
-        var offset = _offset;
-        switch (trieNode.TableKind)
+        if (trieNode.TableKind == TrieTableKind.Hash)
         {
-            case TrieTableKind.Hash:
-                //entry.HashMultiplier = trie.HashMultiplier;
-                Append(trieNode.HashMultiplier);
-                offset = _offset;
-                for (int i = 0; i < entry.ArrayLength; i++)
-                {
-                    Append(new KeyEntryIndex());
-                }
-
-                break;
-            case TrieTableKind.SmallArray:
-                for (int i = 0; i < entry.ArrayLength; i++)
-                {
-                    Append(new KeyEntryIndex());
-                }
-
-                break;
-            case TrieTableKind.ArrayDirectIndex:
-                for (int i = 0; i < entry.ArrayLength; i++)
-                {
-                    Append(new EntryIndex());
-                }
-
-                break;
+            Append(trieNode.HashMultiplier);
         }
 
-        var keys = trieNode.MaskToSubDecoder.Keys.Order().ToArray();
+        var offset = _offset;
+        for (int i = 0; i < entry.ArrayLength; i++)
+        {
+            Append(new KeyEntryIndex());
+        }
+
+        var keys = trieNode.MaskToSubEncoder.Keys.Order().ToArray();
 
         // Fill entries in the table
         switch (trieNode.TableKind)
@@ -82,8 +63,8 @@ class TableGenEncoder
             case TrieTableKind.Hash:
                 foreach (var key in keys)
                 {
-                    var index = (int)(((uint)key * trieNode.HashMultiplier) % entry.ArrayLength);
-                    Unsafe.Add(ref Unsafe.As<byte, KeyEntryIndex>(ref _buffer[offset]), index) = new KeyEntryIndex((uint)key, Encode(trieNode.MaskToSubDecoder[key]));
+                    var index = (int)(((uint)(key >> trieNode.RightShift) * trieNode.HashMultiplier) % entry.ArrayLength);
+                    Unsafe.Add(ref Unsafe.As<byte, KeyEntryIndex>(ref _buffer[offset]), index) = new KeyEntryIndex((uint)key, Encode(trieNode.MaskToSubEncoder[key]));
                 }
 
                 break;
@@ -92,14 +73,7 @@ class TableGenEncoder
                 for (int i = 0; i < keys.Length; i++)
                 {
                     var key = keys[i];
-                    Unsafe.Add(ref Unsafe.As<byte, KeyEntryIndex>(ref _buffer[offset]), i) = new KeyEntryIndex((uint)key, Encode(trieNode.MaskToSubDecoder[key]));
-                }
-
-                break;
-            case TrieTableKind.ArrayDirectIndex:
-                foreach (var key in keys)
-                {
-                    Unsafe.Add(ref Unsafe.As<byte, EntryIndex>(ref _buffer[offset]), key) = Encode(trieNode.MaskToSubDecoder[key]);
+                    Unsafe.Add(ref Unsafe.As<byte, KeyEntryIndex>(ref _buffer[offset]), i) = new KeyEntryIndex((uint)key, Encode(trieNode.MaskToSubEncoder[key]));
                 }
 
                 break;
@@ -135,43 +109,35 @@ class TableGenEncoder
 
     public struct EntryHeader
     {
-        private byte _shiftAndTrieTableKind;
-        private byte _bitmaskCountAndHasElseBranch;
+        private uint _mask;
+        private byte _shift;
+        private byte _kindAndHasElseBranch;
         private ushort _arrayLength;
 
         public TrieTableKind TrieTableKind
         {
-            get => (TrieTableKind)(_shiftAndTrieTableKind & 0b_11);
-            set { _shiftAndTrieTableKind = (byte)((_shiftAndTrieTableKind & 0b_1111_1100) | (byte)value); }
-        }
-
-        public byte LeftShift
-        {
-            get => (byte)(_shiftAndTrieTableKind >> 2);
-
-            set
-            {
-                Debug.Assert(value <= 32);
-                _shiftAndTrieTableKind = (byte)((_shiftAndTrieTableKind & 0b_11) | (value << 2));
-            }
+            get => (TrieTableKind)(_kindAndHasElseBranch & 0b_11);
+            set { _kindAndHasElseBranch = (byte)((_kindAndHasElseBranch & 0b_1111_1100) | (byte)value); }
         }
 
         public bool HasElseBranch
         {
-            get => (_bitmaskCountAndHasElseBranch & 1) != 0;
-
-            set { _bitmaskCountAndHasElseBranch = (byte)((_bitmaskCountAndHasElseBranch & 0b_1111_1110) | (value ? 1 : 0)); }
+            get => (_kindAndHasElseBranch & 0b_1000_0000) != 0;
+            set { _kindAndHasElseBranch = (byte)((_kindAndHasElseBranch & 0b_0111_1111) | (value ? 0b_1000_0000 : 0)); }
         }
 
-        public byte BitMaskCount
+        public byte Shift
         {
-            get => (byte)(_bitmaskCountAndHasElseBranch >> 1);
-            set
-            {
-                Debug.Assert(value <= 32);
-                _bitmaskCountAndHasElseBranch = (byte)((_bitmaskCountAndHasElseBranch & 1) | (value << 1));
-            }
+            get => _shift;
+            set => _shift = value;
         }
+        
+        public uint BitMask
+        {
+            get => _mask;
+            set => _mask = value;
+        }
+        
 
         public ushort ArrayLength
         {
@@ -179,14 +145,11 @@ class TableGenEncoder
             set => _arrayLength = value;
         }
 
-        //public ulong HashMultiplier; // Hash multiplier
         //public EntryIndex ElseIndex; // Else index (null if no else)
 
         // Hashtable or small array
+        //public ulong HashMultiplier; // Hash multiplier
         //public KeyEntryIndex[] Array; // ArrayLength
-
-        // Array Direct Index
-        //public EntryIndex[] Indices;  // ArrayLength
     }
 
     // Value:

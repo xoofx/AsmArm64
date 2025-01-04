@@ -242,12 +242,16 @@ partial class Arm64Processor
             w.WriteLine("[TestMethod]");
             foreach (var instruction in _instructions)
             {
-                w.WriteLine($"[DataRow(0x{instruction.BitfieldValue:X8}U, Arm64InstructionId.{instruction.NormalizedName})]");
+                // Some instructions are not testable
+                if (instruction.IsBitFieldValueTestable)
+                {
+                    w.WriteLine($"[DataRow(0x{instruction.BitfieldValueForTest:X8}U, Arm64InstructionId.{instruction.NormalizedName})]");
+                }
             }
             w.WriteLine($"public void Test(uint instruction, Arm64InstructionId expected)");
             w.OpenBraceBlock();
             {
-                w.WriteLine("var actual = Arm64InstructionDecoderTable.Resolve(instruction);");
+                w.WriteLine("var actual = Arm64Instruction.DecodeId(instruction);");
                 w.WriteLine("Assert.AreEqual(expected, actual);");
             }
             w.CloseBraceBlock();

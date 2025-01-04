@@ -14,12 +14,16 @@ class BitRangeInfo
 
     public int Width { get; init; }
 
+    public string? OriginalCondition { get; set; }
+
+    public BitRangeCondition Condition { get; set; }
+
     public List<BitKind> FieldSets { get; } = new();
 
     public override string ToString()
     {
         var builder = new StringBuilder();
-        builder.Append($"{Name,-8} {HiBit,-2} {Width,-2} ");
+        builder.Append($"{Name} ({HiBit}:{Width}) ");
 
         foreach (var fieldSet in FieldSets)
         {
@@ -31,6 +35,12 @@ class BitRangeInfo
                 _ => throw new ArgumentOutOfRangeException()
             });
         }
+
+        if (OriginalCondition != null)
+        {
+            builder.Append($" [{OriginalCondition}]");
+        }
+
         return builder.ToString();
     }
 
@@ -40,9 +50,21 @@ class BitRangeInfo
         {
             Name = Name,
             HiBit = HiBit,
-            Width = Width
+            Width = Width,
+            OriginalCondition = OriginalCondition,
+            Condition = Condition
         };
         clone.FieldSets.AddRange(FieldSets);
         return clone;
     }
+}
+
+enum BitRangeCondition
+{
+    None,
+    Unknown,
+    AllNonZero,
+    AllNonOne,
+    AllNon111x,
+    AllNon11xxx
 }

@@ -24,12 +24,15 @@ class Instruction
     public uint BitfieldMask { get; set; }
 
     public uint BitfieldValue { get; set; }
+    
+    public uint BitfieldValueForTest { get; set; }
+
+    public bool IsBitFieldValueTestable { get; set; } = true;
 
     public List<ArchVariant> ArchVariants { get; } = new();
 
     public List<BitRangeInfo> BitFields { get; } = new();
-
-
+    
     public void Add(BitRangeInfo bitRangeInfo)
     {
         var existingField = BitFields.FirstOrDefault(x => x.HiBit == bitRangeInfo.HiBit && x.Width == bitRangeInfo.Width);
@@ -57,29 +60,15 @@ class Instruction
         var name = Name.TrimEnd('_');
         var indexOfUnderscore = name.IndexOf('_');
         NormalizedName = indexOfUnderscore > 0 ? $"{name.Substring(0, indexOfUnderscore).ToUpperInvariant()}{name.Substring(indexOfUnderscore).ToLowerInvariant()}" : name.ToUpperInvariant();
-
-        //for (var i = 0; i < BitFields.Count; i++)
-        //{
-        //    var bitField = BitFields[i];
-        //    if (bitField.Width <= 2 && (bitField.Name == "sz" || bitField.Name == "S" || bitField.Name == "size"))
-        //    {
-        //        for (int j = 0; j < bitField.Width; j++)
-        //        {
-        //            if (bitField.FieldSets[j] == BitKind.NotSet)
-        //            {
-        //                bitField.FieldSets[j] = BitKind.Any;
-        //            }
-        //        }
-        //    }
-        //    else if (bitField.Name is not null && bitField.Name.StartsWith("imm") && bitField.FieldSets.All(x => x == BitKind.NotSet) && bitField.Width <= 5)
-        //    {
-        //        //Console.WriteLine($"Check bit field {bitField} for instruction {Name}");
-        //    }
-        //}
-
+        
         foreach (var bitfieldInfo in BitFields)
         {
             var fieldSets = bitfieldInfo.FieldSets;
+
+            if (bitfieldInfo.Condition == BitRangeCondition.AllNonZero)
+            {
+                BitfieldValueForTest |= (1U << (bitfieldInfo.HiBit - (bitfieldInfo.Width - 1)));
+            }
 
             var mask = 0u;
             var value = 0u;
@@ -103,12 +92,14 @@ class Instruction
             BitfieldMask |= mask << (bitfieldInfo.HiBit - (bitfieldInfo.Width - 1));
             BitfieldValue |= value << (bitfieldInfo.HiBit - (bitfieldInfo.Width - 1));
         }
+
+        BitfieldValueForTest |= BitfieldValue;
     }
 
     public override string ToString()
     {
         var builder = new StringBuilder();
-        builder.Append($"{Name,-32} {Mnemonic,-12} Mask: 0x{BitfieldMask:X8} Bits: 0x{BitfieldValue:X8}");
+        builder.Append($"{Name,-32} {Mnemonic,-12} Mask: 0x{BitfieldMask:X8}, Bits: 0x{BitfieldValue:X8}");
 
         foreach (var bitField in BitFields)
         {
@@ -117,8 +108,10 @@ class Instruction
                 continue;
             }
 
-            builder.Append($" {bitField.Name} ({bitField.HiBit}: {bitField.Width})");
+            builder.Append($", {bitField}");
         }
+
+        builder.Append($", BitFieldTest: {IsBitFieldValueTestable}");
 
         builder.Append($" (Filename: {Filename})");
 

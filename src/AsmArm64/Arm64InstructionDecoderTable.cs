@@ -12,11 +12,11 @@ namespace AsmArm64;
 /// <summary>
 /// Encoded instruction table for ARM64.
 /// </summary>
-public static partial class Arm64InstructionDecoderTable
+public class Arm64Instruction
 {
-    public static unsafe Arm64InstructionId Resolve(Arm64RawInstruction instruction)
+    public static unsafe Arm64InstructionId DecodeId(Arm64RawInstruction instruction)
     {
-        ref byte buffer = ref MemoryMarshal.GetReference(Buffer);
+        ref byte buffer = ref MemoryMarshal.GetReference(Arm64InstructionDecoderTable.Buffer);
 
         int offset = 0;
 
@@ -27,7 +27,7 @@ public static partial class Arm64InstructionDecoderTable
 
             var kind = header.TrieTableKind;
             var shift = header.Shift;
-            var bitMaskCount = header.BitMaskCount;
+            var bitMask = header.BitMask;
             var hasElseBranch = header.HasElseBranch;
             var arrayLength = (uint)header.ArrayLength;
 
@@ -40,14 +40,8 @@ public static partial class Arm64InstructionDecoderTable
                 offset += sizeof(int);
             }
 
-            var key = (((instruction << shift) >> (32 - bitMaskCount)));
-            if (kind == TrieTableKind.ArrayDirectIndex)
-            {
-                offset = Unsafe.Add(ref Unsafe.As<byte, int>(ref Unsafe.Add(ref buffer, offset)), (int)key);
-                if (offset < 0) goto return_offset;
-                if (offset > 0) goto nextHeader;
-            }
-            else if (kind == TrieTableKind.SmallArray)
+            var key = instruction & bitMask;
+            if (kind == TrieTableKind.SmallArray)
             {
                 for(int i = 0; i < arrayLength; i++)
                 {
@@ -66,7 +60,7 @@ public static partial class Arm64InstructionDecoderTable
                 Debug.Assert(kind == TrieTableKind.Hash);
                 var hashMultiplier = Unsafe.As<byte, ulong>(ref Unsafe.Add(ref buffer, offset));
                 offset += sizeof(ulong);
-                var index = (int)(((uint)key * hashMultiplier) % arrayLength);
+                var index = (int)(((uint)(key >> shift) * hashMultiplier) % arrayLength);
                 ref var keyEntryIndex = ref Unsafe.As<byte, KeyEntryIndex>(ref Unsafe.Add(ref buffer, offset + index * sizeof(KeyEntryIndex)));
 
                 if (keyEntryIndex.Key == key)
@@ -95,19 +89,35 @@ public static partial class Arm64InstructionDecoderTable
 
     private readonly struct EntryHeader
     {
-        private readonly byte _shiftAndTrieTableKind;
-        private readonly byte _bitmaskCountAndHasElseBranch;
+        private readonly uint _mask;
+        private readonly byte _shift;
+        private readonly byte _kindAndHasElseBranch;
         private readonly ushort _arrayLength;
 
-        public TrieTableKind TrieTableKind => (TrieTableKind)(_shiftAndTrieTableKind & 0b_11);
+        public TrieTableKind TrieTableKind
+        {
+            get => (TrieTableKind)(_kindAndHasElseBranch & 0b_11);
+        }
 
-        public byte Shift => (byte)(_shiftAndTrieTableKind >> 2);
+        public bool HasElseBranch
+        {
+            get => (_kindAndHasElseBranch & 0b_1000_0000) != 0;
+        }
 
-        public bool HasElseBranch => (_bitmaskCountAndHasElseBranch & 1) != 0;
+        public byte Shift
+        {
+            get => _shift;
+        }
 
-        public byte BitMaskCount => (byte)(_bitmaskCountAndHasElseBranch >> 1);
-
-        public ushort ArrayLength => _arrayLength;
+        public uint BitMask
+        {
+            get => _mask;
+        }
+        
+        public ushort ArrayLength
+        {
+            get => _arrayLength;
+        }
 
         //public EntryIndex ElseIndex; // Else index (null if no else)
 
@@ -126,7 +136,6 @@ public static partial class Arm64InstructionDecoderTable
     {
         Hash = 0,
         SmallArray = 1,
-        ArrayDirectIndex = 2,
-        Terminal = 3
+        Terminal = 2
     }
 }

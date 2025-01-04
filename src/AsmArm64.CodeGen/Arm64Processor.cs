@@ -4,6 +4,7 @@
 
 using System.Diagnostics;
 using System.Globalization;
+using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -25,13 +26,15 @@ public partial class Arm64Processor
     private readonly Dictionary<string, string> _archVariantNameToArchitectureId = new();
     private readonly List<string> _features = new();
     private readonly List<ArchVariant> _featureExpressions = new();
-    private readonly List<InstructionTrieNode> _allDecoders = new();
+    private readonly List<InstructionTrieNode> _allNodes = new();
     private readonly TableGenEncoder _tableGenEncoder = new();
+    private readonly Dictionary<uint, List<Instruction>> _instructionsWithSameBitValue;
 
     public Arm64Processor(string baseSpecsFolder)
     {
         _baseSpecsFolder = baseSpecsFolder;
         _instructions = new List<Instruction>();
+        _instructionsWithSameBitValue = new();
 
         var basePath = Path.GetDirectoryName(AppContext.BaseDirectory); // src\AsmArm64.CodeGen\bin\Debug\net8.0
         basePath = Path.GetDirectoryName(basePath); // src\AsmArm64.CodeGen\bin\Debug
@@ -53,6 +56,15 @@ public partial class Arm64Processor
 
     public void Run()
     {
+        LoadInstructions();
+        BuildTrie();
+        ExtractArchitecture();
+        GenerateCode();
+    }
+
+    private void LoadInstructions()
+    {
+        bool hasErrors = false;
         foreach (var index in new string[]
                  {
                      "index.xml",
@@ -72,43 +84,22 @@ public partial class Arm64Processor
                 try
                 {
                     ProcessInstructionFile(id);
+
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error processing file {id}: {ex}");
+                    hasErrors = true;
                 }
             }
         }
 
-        //foreach (var instruction in _instructions.OrderBy(x => BinaryMask(x.BitfieldMask)))
-        //{
-        //    //if ((instruction.BitfieldMask >> 24) == 0xFF)
-        //    //{
-        //    //    continue;
-        //    //}
-
-        //    Console.WriteLine(instruction);
-        //}
-
-        //Console.WriteLine($"Instruction Count: {_instructions.Count}");
-
-        BuildTrie();
-
-        int maximumMemoLength = 0;
-        int maximumNameLength = 0;
-        foreach (var instruction in _instructions)
+        if (hasErrors)
         {
-            maximumMemoLength = Math.Max(maximumMemoLength, instruction.Mnemonic.Length);
-            maximumNameLength = Math.Max(maximumNameLength, instruction.Name.Length);
+            throw new InvalidOperationException("Errors processing files");
         }
 
-        //Console.WriteLine($"maximumMemoLength: {maximumMemoLength}");
-        //Console.WriteLine($"maximumNameLength: {maximumNameLength}");
-
-        ExtractArchitecture();
-
-
-        //GenerateCode();
+        MarkInstructionsNotTestableByBitFieldValue();
     }
     
     private void BuildTrie()
@@ -116,40 +107,8 @@ public partial class Arm64Processor
         // Sort instructions by normalized name
         _instructions.Sort((left, right) => string.Compare(left.NormalizedName, right.NormalizedName, CultureInfo.InvariantCulture, CompareOptions.Ordinal));
 
-        Dictionary<uint, List<Instruction>> instructionWithSameBitValues = new();
-
-        for (var i = 0; i < _instructions.Count; i++)
-        {
-            var instruction = _instructions[i];
-            //Console.WriteLine($"[{i}] {instruction}");
-
-            if (!instructionWithSameBitValues.TryGetValue(instruction.BitfieldValue, out var list))
-            {
-                list = new List<Instruction>();
-                instructionWithSameBitValues.Add(instruction.BitfieldValue, list);
-            }
-
-            list.Add(instruction);
-        }
-
-        //foreach (var bitPair in instructionWithSameBitValues)
-        //{
-        //    var instructions = bitPair.Value;
-        //    if (instructions.Count > 1)
-        //    {
-        //        Console.WriteLine($"Instructions with same bit values: {bitPair.Key:X8}");
-        //        foreach (var instruction in instructions)
-        //        {
-        //            Console.WriteLine($"  {instruction}");
-        //            //_instructions.Remove(instruction);
-        //        }
-        //    }
-        //}
-
-        //return;
-
         var rootTrie = new InstructionTrieNode();
-        _allDecoders.Add(rootTrie);
+        _allNodes.Add(rootTrie);
         for (int i = 0; i < _instructions.Count; i++)
         {
             rootTrie.InstructionIndices.Add(i);
@@ -167,48 +126,60 @@ public partial class Arm64Processor
         progress.Start(ctx =>
             {
                 var trieTask = ctx.AddTask("[yellow]Building trie[/]", maxValue: _instructions.Count);
-                rootTrie.RecursiveBuild(ctx, trieTask, _instructions, _allDecoders);
+                rootTrie.RecursiveBuild(ctx, trieTask, _instructions, _allNodes);
                 
-                var task = ctx.AddTask("[green]Building hash table[/]",  maxValue: _allDecoders.Count);
-                for (var i = 0; i < _allDecoders.Count; i++)
+                var task = ctx.AddTask("[green]Building hash table[/]",  maxValue: _allNodes.Count);
+                for (var i = 0; i < _allNodes.Count; i++)
                 {
-                    var instructionDecoder = _allDecoders[i];
+                    var instructionDecoder = _allNodes[i];
                     instructionDecoder.PrepareForHash(ctx, task);
                     ctx.Refresh();
                 }
             }
         );
 
-        return;
-
-        //for (var i = 0; i < _allDecoders.Count; i++)
-        //{
-        //    var decoder = _allDecoders[i];
-        //    if (decoder.IsTerminal) continue;
-        //    if (decoder.TableKind == TrieTableKind.Hash)
-        //    {
-        //        Console.WriteLine($"[{i}] Decoder {decoder.TableKind} ArrayLength: {decoder.DecoderArrayLength} HashMultiplier: 0x{decoder.HashMultiplier:X16}");
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"[{i}] Decoder {decoder.TableKind} ArrayLength: {decoder.DecoderArrayLength}");
-        //    }
-        //}
-
         _tableGenEncoder.Encode(rootTrie);
-        AnsiConsole.WriteLine($"Generated Table {_tableGenEncoder.Buffer.Length} bytes");
-
-        //Console.WriteLine("--------------------------------");
-        //Console.WriteLine("Level 0-2");
-        //Console.WriteLine("--------------------------------");
-        //decoder.Print(_instructions, 0, 3);
-
-        //Console.WriteLine("--------------------------------");
-        //Console.WriteLine("All Levels");
-        //Console.WriteLine("--------------------------------");
 
         using var writer = new StreamWriter("decoder.txt");
         rootTrie.Print(writer, _instructions);
+
+        PrintStatistics();
+    }
+
+    private void PrintStatistics()
+    {
+        AnsiConsole.MarkupLine($"[green]Instructions[/]: {_instructions.Count}");
+        AnsiConsole.MarkupLine($"[green]Generated Table[/]: {_tableGenEncoder.Buffer.Length} bytes");
+        AnsiConsole.MarkupLine($"[green]Generated Table Size / Instruction[/]: {((double)_tableGenEncoder.Buffer.Length/_instructions.Count):0.00} bytes");
+
+        int numberOfHash = 0;
+        int minimumSizeHash = int.MaxValue;
+        int maximumSizeHash = 0;
+        int numberOfSmallArray = 0;
+        int minimumSizeSmallArray = int.MaxValue;
+        int maximumSizeSmallArray = 0;
+        foreach (var node in _allNodes)
+        {
+            if (node.TableKind == TrieTableKind.Hash)
+            {
+                numberOfHash++;
+                minimumSizeHash = Math.Min(minimumSizeHash, (int)node.EncoderArrayLength);
+                maximumSizeHash = Math.Max(maximumSizeHash, (int)node.EncoderArrayLength);
+            }
+            else if (node.TableKind == TrieTableKind.SmallArray)
+            {
+                numberOfSmallArray++;
+                minimumSizeSmallArray = Math.Min(minimumSizeSmallArray, (int)node.EncoderArrayLength);
+                maximumSizeSmallArray = Math.Max(maximumSizeSmallArray, (int)node.EncoderArrayLength);
+            }
+        }
+
+        AnsiConsole.MarkupLine($"[green]Number of Hash Tables[/]: {numberOfHash}");
+        AnsiConsole.MarkupLine($"[green]Minimum size Hash Tables[/]: {minimumSizeHash}");
+        AnsiConsole.MarkupLine($"[green]Maximum size Hash Tables[/]: {maximumSizeHash}");
+        AnsiConsole.MarkupLine($"[green]Number of SmallArray Tables[/]: {numberOfSmallArray}");
+        AnsiConsole.MarkupLine($"[green]Minimum size SmallArray Tables[/]: {minimumSizeSmallArray}");
+        AnsiConsole.MarkupLine($"[green]Maximum size SmallArray Tables[/]: {maximumSizeSmallArray}");
     }
 
     private void ProcessInstructionFile(string fileName)
@@ -312,6 +283,49 @@ public partial class Arm64Processor
         }
     }
 
+    private void MarkInstructionsNotTestableByBitFieldValue()
+    {
+        for (var i = 0; i < _instructions.Count; i++)
+        {
+            var instruction = _instructions[i];
+
+            if (!_instructionsWithSameBitValue.TryGetValue(instruction.BitfieldValue, out var list))
+            {
+                list = new List<Instruction>();
+                _instructionsWithSameBitValue.Add(instruction.BitfieldValue, list);
+            }
+
+            list.Add(instruction);
+        }
+
+        foreach (var bitPair in _instructionsWithSameBitValue)
+        {
+            var instructions = bitPair.Value;
+            if (instructions.Count > 1)
+            {
+                instructions.Sort((a, b) => BitOperations.PopCount(b.BitfieldMask).CompareTo(BitOperations.PopCount(a.BitfieldMask)));
+
+                //// Uncomment to see the list. Could be added to decoder.txt
+                ////
+                //Console.WriteLine($"Instruction with equivalent BitFieldValue: 0x{bitPair.Key:X8}");
+                //foreach (var instruction in instructions)
+                //{
+                //    Console.WriteLine($"  {instruction}");
+                //}
+
+                // For example for the following instructions:
+                //
+                // Instruction with equivalent BitFieldValue: 0xD500401F
+                // CFINV_M_pstate                   CFINV        Mask: 0xFFFFFFFF Bits: 0xD500401F (Filename: cfinv.xml)
+                // MSR_SI_pstate                    MSR          Mask: 0xFFF8F01F Bits: 0xD500401F op1 (18: 3) CRm (11: 4) op2 (7: 3) (Filename: msr_imm.xml)
+                for (int i = 1; i < instructions.Count; i++)
+                {
+                    instructions[i].IsBitFieldValueTestable = false;
+                }
+            }
+        }
+    }
+
     private static Dictionary<string, string> GetDocVars(XElement element)
     {
         var docVars = element.Element("docvars")!.Descendants("docvar");
@@ -373,83 +387,90 @@ public partial class Arm64Processor
         };
         var fieldSetsList = info.FieldSets;
 
-        //if (name == "sz" && width == 2 && hiBit == 31)
-        //{
-        //    fieldSetsList.Add(BitKind.Zero);
-        //    fieldSetsList.Add(BitKind.Zero);
-        //}
-        //else
-        //if (name == "Q" && width == 1)
-        //{
-        //    fieldSetsList.Add(BitKind.Any);
-        //}
-        //else if (name == "b5" && width == 1 && hiBit == 31)
-        //{
-        //    fieldSetsList.Add(BitKind.Any);
-        //}
-        //else if (name == "immlo")
-        //{
-        //    for (int i = 0; i < width; i++)
-        //    {
-        //        fieldSetsList.Add(BitKind.Any);
-        //    }
-        //}
-        //else
+        var columns = elt.Descendants("c");
+        foreach (var column in columns)
         {
-            var columns = elt.Descendants("c");
-            foreach (var column in columns)
+            var value = column.Value;
+            if (value == "(0)") value = "0";
+            else if (value == "(1)") value = "1";
+            else if (value.StartsWith("!="))
             {
-                var colSpan = column.Attribute("colspan");
-                if (colSpan != null)
-                {
-                    var colNumber = int.Parse(colSpan.Value);
-                    for (var i = 0; i < colNumber; i++)
-                    {
-                        fieldSetsList.Add(BitKind.NotSet);
-                    }
+                info.OriginalCondition = value;
 
-                    continue;
+                var allZero = $"!= {new string('0', width)}";
+                var allOne = $"!= {new string('1', width)}";
+
+                if (allZero == value)
+                {
+                    info.Condition = BitRangeCondition.AllNonZero;
                 }
-
-                var value = column.Value;
-                if (value == "(0)") value = "0";
-                else if (value == "(1)") value = "1";
-                else if (value.StartsWith("!=")) value = ""; // TODO: ignore constraints for now
-
-                if (value.Length == 1)
+                else if (allOne == value)
                 {
-                    switch (value[0])
-                    {
-                        case '0':
-                            fieldSetsList.Add(BitKind.Zero);
-                            break;
-                        case '1':
-                            fieldSetsList.Add(BitKind.One);
-                            break;
-                        case 'x':
-                        case 'Z':
-                        case 'N':
-                            fieldSetsList.Add(BitKind.NotSet);
-                            break;
-                        default:
-                            throw new InvalidOperationException($"Invalid bit value {value}");
-                            break;
-                    }
+                    info.Condition = BitRangeCondition.AllNonOne;
                 }
-                else if (value.Length == 0)
+                else if ("!= 111x" == value)
                 {
-                    fieldSetsList.Add(BitKind.NotSet);
+                    info.Condition = BitRangeCondition.AllNon111x;
+                }
+                else if ("!= 11xxx" == value)
+                {
+                    info.Condition = BitRangeCondition.AllNon11xxx;
                 }
                 else
                 {
-                    throw new InvalidOperationException($"Invalid bit value `{value}`");
+                    Console.WriteLine($"Unsupported condition {value} - Please modify the codegen code");
+                    info.Condition = BitRangeCondition.Unknown;
                 }
+                
+                value = "";
+            }
+
+            var colSpan = column.Attribute("colspan");
+            if (colSpan != null)
+            {
+                var colNumber = int.Parse(colSpan.Value);
+                for (var i = 0; i < colNumber; i++)
+                {
+                    fieldSetsList.Add(BitKind.NotSet);
+                }
+
+                continue;
+            }
+
+            if (value.Length == 1)
+            {
+                switch (value[0])
+                {
+                    case '0':
+                        fieldSetsList.Add(BitKind.Zero);
+                        break;
+                    case '1':
+                        fieldSetsList.Add(BitKind.One);
+                        break;
+                    case 'x':
+                    case 'Z':
+                    case 'N':
+                        fieldSetsList.Add(BitKind.NotSet);
+                        break;
+                    default:
+                        throw new InvalidOperationException($"Invalid bit value {value}");
+                        break;
+                }
+            }
+            else if (value.Length == 0)
+            {
+                fieldSetsList.Add(BitKind.NotSet);
+            }
+            else
+            {
+                throw new InvalidOperationException($"Invalid bit value `{value}`");
             }
         }
 
+
         return info;
     }
-    
+
     private void ExtractArchitecture()
     {
         var distinctArchVariant = new Dictionary<string, List<ArchVariant>>();
