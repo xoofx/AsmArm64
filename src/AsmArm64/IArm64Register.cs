@@ -19,18 +19,3 @@ public interface IArm64Register : ISpanFormattable
     /// </summary>
     int Index { get; }
 }
-
-public interface IArm64RegisterV : IArm64Register
-{
-    Arm64RegisterVKind VKind { get; }
-}
-
-
-public interface IArm64RegisterVTyped : IArm64RegisterV
-{
-    int ElementCount { get; }
-}
-
-public interface IArm64RegisterVScalar : IArm64RegisterV
-{
-}

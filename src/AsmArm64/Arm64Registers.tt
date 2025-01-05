@@ -221,7 +221,7 @@ public readonly record struct Arm64RegisterV<#= size #><#= kind #> : IArm64Regis
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV<#= size #><#= kind #>(int index) => _value = <#= size #>U << 24 | (uint)Arm64RegisterVKind.<#= kind #> << 16 | (uint)Arm64RegisterKind.V << 8 | (uint)index;
+    internal Arm64RegisterV<#= size #><#= kind #>(int index) => _value = <#= size #>U << 24 | (uint)Arm64RegisterVKind.<#= kind #> << 16 | (uint)Arm64RegisterKind.VTyped << 8 | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -276,10 +276,18 @@ partial class Arm64Factory
     /// Gets the <#= kind #><#= i #> register.
     /// </summary>
     public static Arm64Register<#= kind #> <#= kind #><#= i #> => Arm64Register<#= kind #>.<#= kind #><#= i #>;
-<# }
-}
-}
-#>
+<# } // for #>
+<# } // else #>
+<# } // foreach kind #>
+
+<# foreach(var vector in vectors) { var vkind = vector.Name; if (vkind == "B") continue; #>
+<# for(int i = 0; i < 32; i++) { #>
+    /// <summary>
+    /// Gets the <#= vkind #><#= i #> register.
+    /// </summary>
+    public static Arm64RegisterVScalar<#= vkind #> <#= vkind #><#= i #> => Arm64RegisterVScalar<#= vkind #>.<#= vkind #><#= i #>;
+<# } // for #>
+<# } // foreach vector #>
 }
 
 partial class Arm64Extensions
@@ -288,7 +296,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the <#= kind #> register to a string.
     /// </summary>
-    public static string ToText(this Arm64Register<#= kind #> register, bool upperCase = false) => upperCase ? Register<#= kind #>UpperNames[register.Index] : Register<#= kind #>LowerNames[register.Index];
+    public static string ToText(this Arm64Register<#= kind #> register, bool upperCase = false) => upperCase ? Register<#= kind #>UpperNames[ValidateRegisterIndex(register.Index)] : Register<#= kind #>LowerNames[ValidateRegisterIndex(register.Index)];
 <# if (kind == "SP") { #>
     private static readonly string[] RegisterSPLowerNames = [
 <# for(int i = 0; i < 31; i++) { #>
@@ -326,7 +334,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the <#= kind #> register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterVScalar<#= vkind #> register, bool upperCase = false) => upperCase ? RegisterVScalar<#= vkind #>UpperNames[register.Index] : RegisterVScalar<#= vkind #>LowerNames[register.Index];
+    public static string ToText(this Arm64RegisterVScalar<#= vkind #> register, bool upperCase = false) => upperCase ? RegisterVScalar<#= vkind #>UpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalar<#= vkind #>LowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterVScalar<#= vkind #>LowerNames = [
     <# for(int i = 0; i < 32; i++) { #>
@@ -345,7 +353,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the <#= kind #> register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterV<#= size #><#= vkind #> register, bool upperCase = false) => upperCase ? RegisterV<#= size #><#= vkind #>UpperNames[register.Index] : RegisterV<#= size #><#= vkind #>LowerNames[register.Index];
+    public static string ToText(this Arm64RegisterV<#= size #><#= vkind #> register, bool upperCase = false) => upperCase ? RegisterV<#= size #><#= vkind #>UpperNames[ValidateRegisterIndex(register.Index)] : RegisterV<#= size #><#= vkind #>LowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterV<#= size #><#= vkind #>LowerNames = [
     <# for(int i = 0; i < 32; i++) { #>
