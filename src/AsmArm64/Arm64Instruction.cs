@@ -12,7 +12,7 @@ namespace AsmArm64;
 /// <summary>
 /// Encoded instruction table for ARM64.
 /// </summary>
-public class Arm64Instruction
+public readonly partial record struct Arm64Instruction(Arm64InstructionId Id, Arm64RawInstruction Value)
 {
     public static unsafe Arm64InstructionId DecodeId(Arm64RawInstruction instruction)
     {
@@ -138,4 +138,36 @@ public class Arm64Instruction
         SmallArray = 1,
         Terminal = 2
     }
+}
+
+struct RawBasicInstructionInfo
+{
+    public Arm64Mnemonic Mnemonic;
+
+    public ushort FormatterId;
+
+    public Arm64InstructionClass InstructionClass;
+
+    public byte OperandCount;
+
+    public RawBasicOperandInfo Operand0;
+
+    public RawBasicOperandInfo Operand1;
+
+    public RawBasicOperandInfo Operand2;
+
+    public RawBasicOperandInfo Operand3;
+
+    public RawBasicOperandInfo Operand4;
+}
+
+struct RawBasicOperandInfo
+{
+    public byte Kind;
+
+    public byte Data0;
+
+    public byte Data1;
+
+    public byte Data2;
 }

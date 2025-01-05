@@ -214,7 +214,7 @@ public partial class Arm64Processor
             bitFields.Clear();
             ProcessBitFields(regDiagrams, bitFields);
             
-            var encodings = iclass.Descendants("encoding");
+            var encodings = iclass.Descendants("encoding").ToList();
             
             foreach (var encoding in encodings)
             {
