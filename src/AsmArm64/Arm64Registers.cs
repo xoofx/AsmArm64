@@ -37,7 +37,7 @@ public enum Arm64RegisterKind : byte
     /// </summary>
     VTyped,
     /// <summary>
-    /// Vector Scalar Element register (e.g. B0 / V0.B[0]).
+    /// Vector Scalar element (e.g. H0 / S0 / D0).
     /// </summary>
     VScalar,
 }
@@ -755,7 +755,11 @@ public readonly record struct Arm64RegisterV8B : IArm64RegisterVTyped
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 }
 
@@ -790,7 +794,11 @@ public readonly record struct Arm64RegisterV16B : IArm64RegisterVTyped
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 }
 
@@ -822,7 +830,11 @@ public readonly record struct Arm64RegisterVScalarH : IArm64RegisterVScalar
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 
     /// <summary>
@@ -1017,7 +1029,11 @@ public readonly record struct Arm64RegisterV4H : IArm64RegisterVTyped
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 }
 
@@ -1052,7 +1068,11 @@ public readonly record struct Arm64RegisterV8H : IArm64RegisterVTyped
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 }
 
@@ -1084,7 +1104,11 @@ public readonly record struct Arm64RegisterVScalarS : IArm64RegisterVScalar
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 
     /// <summary>
@@ -1279,7 +1303,11 @@ public readonly record struct Arm64RegisterV2S : IArm64RegisterVTyped
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 }
 
@@ -1314,7 +1342,11 @@ public readonly record struct Arm64RegisterV4S : IArm64RegisterVTyped
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 }
 
@@ -1346,7 +1378,11 @@ public readonly record struct Arm64RegisterVScalarD : IArm64RegisterVScalar
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 
     /// <summary>
@@ -1541,7 +1577,11 @@ public readonly record struct Arm64RegisterV2D : IArm64RegisterVTyped
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 }
 
@@ -1979,6 +2019,7 @@ partial class Arm64Extensions
         "x30",
         "xzr",
     ];
+
     private static readonly string[] RegisterXUpperNames = [
         "X0",
         "X1",
@@ -2052,6 +2093,7 @@ partial class Arm64Extensions
         "w30",
         "wzr",
     ];
+
     private static readonly string[] RegisterWUpperNames = [
         "W0",
         "W1",
@@ -2090,11 +2132,75 @@ partial class Arm64Extensions
     /// Converts the SP register to a string.
     /// </summary>
     public static string ToText(this Arm64RegisterSP register, bool upperCase = false) => upperCase ? RegisterSPUpperNames[register.Index] : RegisterSPLowerNames[register.Index];
+    private static readonly string[] RegisterSPLowerNames = [
+        "??", // 0
+        "??", // 1
+        "??", // 2
+        "??", // 3
+        "??", // 4
+        "??", // 5
+        "??", // 6
+        "??", // 7
+        "??", // 8
+        "??", // 9
+        "??", // 10
+        "??", // 11
+        "??", // 12
+        "??", // 13
+        "??", // 14
+        "??", // 15
+        "??", // 16
+        "??", // 17
+        "??", // 18
+        "??", // 19
+        "??", // 20
+        "??", // 21
+        "??", // 22
+        "??", // 23
+        "??", // 24
+        "??", // 25
+        "??", // 26
+        "??", // 27
+        "??", // 28
+        "??", // 29
+        "??", // 30
+        "sp", // 31
+    ];
 
-    private static readonly string[] RegisterSPLowerNames = ["sp"];
-
-    private static readonly string[] RegisterSPUpperNames = ["SP"];
-
+    private static readonly string[] RegisterSPUpperNames = [
+        "??", // 0
+        "??", // 1
+        "??", // 2
+        "??", // 3
+        "??", // 4
+        "??", // 5
+        "??", // 6
+        "??", // 7
+        "??", // 8
+        "??", // 9
+        "??", // 10
+        "??", // 11
+        "??", // 12
+        "??", // 13
+        "??", // 14
+        "??", // 15
+        "??", // 16
+        "??", // 17
+        "??", // 18
+        "??", // 19
+        "??", // 20
+        "??", // 21
+        "??", // 22
+        "??", // 23
+        "??", // 24
+        "??", // 25
+        "??", // 26
+        "??", // 27
+        "??", // 28
+        "??", // 29
+        "??", // 30
+        "SP", // 31
+    ];
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
@@ -2134,6 +2240,7 @@ partial class Arm64Extensions
         "v30",
         "v31",
     ];
+
     private static readonly string[] RegisterVUpperNames = [
         "V0",
         "V1",
@@ -2168,4 +2275,751 @@ partial class Arm64Extensions
         "V30",
         "V31",
     ];
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV8B register, bool upperCase = false) => upperCase ? RegisterV8BUpperNames[register.Index] : RegisterV8BLowerNames[register.Index];
+
+    private static readonly string[] RegisterV8BLowerNames = [
+        "v0.8b",
+        "v1.8b",
+        "v2.8b",
+        "v3.8b",
+        "v4.8b",
+        "v5.8b",
+        "v6.8b",
+        "v7.8b",
+        "v8.8b",
+        "v9.8b",
+        "v10.8b",
+        "v11.8b",
+        "v12.8b",
+        "v13.8b",
+        "v14.8b",
+        "v15.8b",
+        "v16.8b",
+        "v17.8b",
+        "v18.8b",
+        "v19.8b",
+        "v20.8b",
+        "v21.8b",
+        "v22.8b",
+        "v23.8b",
+        "v24.8b",
+        "v25.8b",
+        "v26.8b",
+        "v27.8b",
+        "v28.8b",
+        "v29.8b",
+        "v30.8b",
+        "v31.8b",
+        ];
+
+    private static readonly string[] RegisterV8BUpperNames = [
+        "V0.8B",
+        "V1.8B",
+        "V2.8B",
+        "V3.8B",
+        "V4.8B",
+        "V5.8B",
+        "V6.8B",
+        "V7.8B",
+        "V8.8B",
+        "V9.8B",
+        "V10.8B",
+        "V11.8B",
+        "V12.8B",
+        "V13.8B",
+        "V14.8B",
+        "V15.8B",
+        "V16.8B",
+        "V17.8B",
+        "V18.8B",
+        "V19.8B",
+        "V20.8B",
+        "V21.8B",
+        "V22.8B",
+        "V23.8B",
+        "V24.8B",
+        "V25.8B",
+        "V26.8B",
+        "V27.8B",
+        "V28.8B",
+        "V29.8B",
+        "V30.8B",
+        "V31.8B",
+        ];
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV16B register, bool upperCase = false) => upperCase ? RegisterV16BUpperNames[register.Index] : RegisterV16BLowerNames[register.Index];
+
+    private static readonly string[] RegisterV16BLowerNames = [
+        "v0.16b",
+        "v1.16b",
+        "v2.16b",
+        "v3.16b",
+        "v4.16b",
+        "v5.16b",
+        "v6.16b",
+        "v7.16b",
+        "v8.16b",
+        "v9.16b",
+        "v10.16b",
+        "v11.16b",
+        "v12.16b",
+        "v13.16b",
+        "v14.16b",
+        "v15.16b",
+        "v16.16b",
+        "v17.16b",
+        "v18.16b",
+        "v19.16b",
+        "v20.16b",
+        "v21.16b",
+        "v22.16b",
+        "v23.16b",
+        "v24.16b",
+        "v25.16b",
+        "v26.16b",
+        "v27.16b",
+        "v28.16b",
+        "v29.16b",
+        "v30.16b",
+        "v31.16b",
+        ];
+
+    private static readonly string[] RegisterV16BUpperNames = [
+        "V0.16B",
+        "V1.16B",
+        "V2.16B",
+        "V3.16B",
+        "V4.16B",
+        "V5.16B",
+        "V6.16B",
+        "V7.16B",
+        "V8.16B",
+        "V9.16B",
+        "V10.16B",
+        "V11.16B",
+        "V12.16B",
+        "V13.16B",
+        "V14.16B",
+        "V15.16B",
+        "V16.16B",
+        "V17.16B",
+        "V18.16B",
+        "V19.16B",
+        "V20.16B",
+        "V21.16B",
+        "V22.16B",
+        "V23.16B",
+        "V24.16B",
+        "V25.16B",
+        "V26.16B",
+        "V27.16B",
+        "V28.16B",
+        "V29.16B",
+        "V30.16B",
+        "V31.16B",
+        ];
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterVScalarH register, bool upperCase = false) => upperCase ? RegisterVScalarHUpperNames[register.Index] : RegisterVScalarHLowerNames[register.Index];
+
+    private static readonly string[] RegisterVScalarHLowerNames = [
+        "h0",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "h7",
+        "h8",
+        "h9",
+        "h10",
+        "h11",
+        "h12",
+        "h13",
+        "h14",
+        "h15",
+        "h16",
+        "h17",
+        "h18",
+        "h19",
+        "h20",
+        "h21",
+        "h22",
+        "h23",
+        "h24",
+        "h25",
+        "h26",
+        "h27",
+        "h28",
+        "h29",
+        "h30",
+        "h31",
+        ];
+
+    private static readonly string[] RegisterVScalarHUpperNames = [
+        "H0",
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5",
+        "H6",
+        "H7",
+        "H8",
+        "H9",
+        "H10",
+        "H11",
+        "H12",
+        "H13",
+        "H14",
+        "H15",
+        "H16",
+        "H17",
+        "H18",
+        "H19",
+        "H20",
+        "H21",
+        "H22",
+        "H23",
+        "H24",
+        "H25",
+        "H26",
+        "H27",
+        "H28",
+        "H29",
+        "H30",
+        "H31",
+        ];
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV4H register, bool upperCase = false) => upperCase ? RegisterV4HUpperNames[register.Index] : RegisterV4HLowerNames[register.Index];
+
+    private static readonly string[] RegisterV4HLowerNames = [
+        "v0.4h",
+        "v1.4h",
+        "v2.4h",
+        "v3.4h",
+        "v4.4h",
+        "v5.4h",
+        "v6.4h",
+        "v7.4h",
+        "v8.4h",
+        "v9.4h",
+        "v10.4h",
+        "v11.4h",
+        "v12.4h",
+        "v13.4h",
+        "v14.4h",
+        "v15.4h",
+        "v16.4h",
+        "v17.4h",
+        "v18.4h",
+        "v19.4h",
+        "v20.4h",
+        "v21.4h",
+        "v22.4h",
+        "v23.4h",
+        "v24.4h",
+        "v25.4h",
+        "v26.4h",
+        "v27.4h",
+        "v28.4h",
+        "v29.4h",
+        "v30.4h",
+        "v31.4h",
+        ];
+
+    private static readonly string[] RegisterV4HUpperNames = [
+        "V0.4H",
+        "V1.4H",
+        "V2.4H",
+        "V3.4H",
+        "V4.4H",
+        "V5.4H",
+        "V6.4H",
+        "V7.4H",
+        "V8.4H",
+        "V9.4H",
+        "V10.4H",
+        "V11.4H",
+        "V12.4H",
+        "V13.4H",
+        "V14.4H",
+        "V15.4H",
+        "V16.4H",
+        "V17.4H",
+        "V18.4H",
+        "V19.4H",
+        "V20.4H",
+        "V21.4H",
+        "V22.4H",
+        "V23.4H",
+        "V24.4H",
+        "V25.4H",
+        "V26.4H",
+        "V27.4H",
+        "V28.4H",
+        "V29.4H",
+        "V30.4H",
+        "V31.4H",
+        ];
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV8H register, bool upperCase = false) => upperCase ? RegisterV8HUpperNames[register.Index] : RegisterV8HLowerNames[register.Index];
+
+    private static readonly string[] RegisterV8HLowerNames = [
+        "v0.8h",
+        "v1.8h",
+        "v2.8h",
+        "v3.8h",
+        "v4.8h",
+        "v5.8h",
+        "v6.8h",
+        "v7.8h",
+        "v8.8h",
+        "v9.8h",
+        "v10.8h",
+        "v11.8h",
+        "v12.8h",
+        "v13.8h",
+        "v14.8h",
+        "v15.8h",
+        "v16.8h",
+        "v17.8h",
+        "v18.8h",
+        "v19.8h",
+        "v20.8h",
+        "v21.8h",
+        "v22.8h",
+        "v23.8h",
+        "v24.8h",
+        "v25.8h",
+        "v26.8h",
+        "v27.8h",
+        "v28.8h",
+        "v29.8h",
+        "v30.8h",
+        "v31.8h",
+        ];
+
+    private static readonly string[] RegisterV8HUpperNames = [
+        "V0.8H",
+        "V1.8H",
+        "V2.8H",
+        "V3.8H",
+        "V4.8H",
+        "V5.8H",
+        "V6.8H",
+        "V7.8H",
+        "V8.8H",
+        "V9.8H",
+        "V10.8H",
+        "V11.8H",
+        "V12.8H",
+        "V13.8H",
+        "V14.8H",
+        "V15.8H",
+        "V16.8H",
+        "V17.8H",
+        "V18.8H",
+        "V19.8H",
+        "V20.8H",
+        "V21.8H",
+        "V22.8H",
+        "V23.8H",
+        "V24.8H",
+        "V25.8H",
+        "V26.8H",
+        "V27.8H",
+        "V28.8H",
+        "V29.8H",
+        "V30.8H",
+        "V31.8H",
+        ];
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterVScalarS register, bool upperCase = false) => upperCase ? RegisterVScalarSUpperNames[register.Index] : RegisterVScalarSLowerNames[register.Index];
+
+    private static readonly string[] RegisterVScalarSLowerNames = [
+        "s0",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7",
+        "s8",
+        "s9",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20",
+        "s21",
+        "s22",
+        "s23",
+        "s24",
+        "s25",
+        "s26",
+        "s27",
+        "s28",
+        "s29",
+        "s30",
+        "s31",
+        ];
+
+    private static readonly string[] RegisterVScalarSUpperNames = [
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S25",
+        "S26",
+        "S27",
+        "S28",
+        "S29",
+        "S30",
+        "S31",
+        ];
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV2S register, bool upperCase = false) => upperCase ? RegisterV2SUpperNames[register.Index] : RegisterV2SLowerNames[register.Index];
+
+    private static readonly string[] RegisterV2SLowerNames = [
+        "v0.2s",
+        "v1.2s",
+        "v2.2s",
+        "v3.2s",
+        "v4.2s",
+        "v5.2s",
+        "v6.2s",
+        "v7.2s",
+        "v8.2s",
+        "v9.2s",
+        "v10.2s",
+        "v11.2s",
+        "v12.2s",
+        "v13.2s",
+        "v14.2s",
+        "v15.2s",
+        "v16.2s",
+        "v17.2s",
+        "v18.2s",
+        "v19.2s",
+        "v20.2s",
+        "v21.2s",
+        "v22.2s",
+        "v23.2s",
+        "v24.2s",
+        "v25.2s",
+        "v26.2s",
+        "v27.2s",
+        "v28.2s",
+        "v29.2s",
+        "v30.2s",
+        "v31.2s",
+        ];
+
+    private static readonly string[] RegisterV2SUpperNames = [
+        "V0.2S",
+        "V1.2S",
+        "V2.2S",
+        "V3.2S",
+        "V4.2S",
+        "V5.2S",
+        "V6.2S",
+        "V7.2S",
+        "V8.2S",
+        "V9.2S",
+        "V10.2S",
+        "V11.2S",
+        "V12.2S",
+        "V13.2S",
+        "V14.2S",
+        "V15.2S",
+        "V16.2S",
+        "V17.2S",
+        "V18.2S",
+        "V19.2S",
+        "V20.2S",
+        "V21.2S",
+        "V22.2S",
+        "V23.2S",
+        "V24.2S",
+        "V25.2S",
+        "V26.2S",
+        "V27.2S",
+        "V28.2S",
+        "V29.2S",
+        "V30.2S",
+        "V31.2S",
+        ];
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV4S register, bool upperCase = false) => upperCase ? RegisterV4SUpperNames[register.Index] : RegisterV4SLowerNames[register.Index];
+
+    private static readonly string[] RegisterV4SLowerNames = [
+        "v0.4s",
+        "v1.4s",
+        "v2.4s",
+        "v3.4s",
+        "v4.4s",
+        "v5.4s",
+        "v6.4s",
+        "v7.4s",
+        "v8.4s",
+        "v9.4s",
+        "v10.4s",
+        "v11.4s",
+        "v12.4s",
+        "v13.4s",
+        "v14.4s",
+        "v15.4s",
+        "v16.4s",
+        "v17.4s",
+        "v18.4s",
+        "v19.4s",
+        "v20.4s",
+        "v21.4s",
+        "v22.4s",
+        "v23.4s",
+        "v24.4s",
+        "v25.4s",
+        "v26.4s",
+        "v27.4s",
+        "v28.4s",
+        "v29.4s",
+        "v30.4s",
+        "v31.4s",
+        ];
+
+    private static readonly string[] RegisterV4SUpperNames = [
+        "V0.4S",
+        "V1.4S",
+        "V2.4S",
+        "V3.4S",
+        "V4.4S",
+        "V5.4S",
+        "V6.4S",
+        "V7.4S",
+        "V8.4S",
+        "V9.4S",
+        "V10.4S",
+        "V11.4S",
+        "V12.4S",
+        "V13.4S",
+        "V14.4S",
+        "V15.4S",
+        "V16.4S",
+        "V17.4S",
+        "V18.4S",
+        "V19.4S",
+        "V20.4S",
+        "V21.4S",
+        "V22.4S",
+        "V23.4S",
+        "V24.4S",
+        "V25.4S",
+        "V26.4S",
+        "V27.4S",
+        "V28.4S",
+        "V29.4S",
+        "V30.4S",
+        "V31.4S",
+        ];
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterVScalarD register, bool upperCase = false) => upperCase ? RegisterVScalarDUpperNames[register.Index] : RegisterVScalarDLowerNames[register.Index];
+
+    private static readonly string[] RegisterVScalarDLowerNames = [
+        "d0",
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "d9",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15",
+        "d16",
+        "d17",
+        "d18",
+        "d19",
+        "d20",
+        "d21",
+        "d22",
+        "d23",
+        "d24",
+        "d25",
+        "d26",
+        "d27",
+        "d28",
+        "d29",
+        "d30",
+        "d31",
+        ];
+
+    private static readonly string[] RegisterVScalarDUpperNames = [
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18",
+        "D19",
+        "D20",
+        "D21",
+        "D22",
+        "D23",
+        "D24",
+        "D25",
+        "D26",
+        "D27",
+        "D28",
+        "D29",
+        "D30",
+        "D31",
+        ];
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV2D register, bool upperCase = false) => upperCase ? RegisterV2DUpperNames[register.Index] : RegisterV2DLowerNames[register.Index];
+
+    private static readonly string[] RegisterV2DLowerNames = [
+        "v0.2d",
+        "v1.2d",
+        "v2.2d",
+        "v3.2d",
+        "v4.2d",
+        "v5.2d",
+        "v6.2d",
+        "v7.2d",
+        "v8.2d",
+        "v9.2d",
+        "v10.2d",
+        "v11.2d",
+        "v12.2d",
+        "v13.2d",
+        "v14.2d",
+        "v15.2d",
+        "v16.2d",
+        "v17.2d",
+        "v18.2d",
+        "v19.2d",
+        "v20.2d",
+        "v21.2d",
+        "v22.2d",
+        "v23.2d",
+        "v24.2d",
+        "v25.2d",
+        "v26.2d",
+        "v27.2d",
+        "v28.2d",
+        "v29.2d",
+        "v30.2d",
+        "v31.2d",
+        ];
+
+    private static readonly string[] RegisterV2DUpperNames = [
+        "V0.2D",
+        "V1.2D",
+        "V2.2D",
+        "V3.2D",
+        "V4.2D",
+        "V5.2D",
+        "V6.2D",
+        "V7.2D",
+        "V8.2D",
+        "V9.2D",
+        "V10.2D",
+        "V11.2D",
+        "V12.2D",
+        "V13.2D",
+        "V14.2D",
+        "V15.2D",
+        "V16.2D",
+        "V17.2D",
+        "V18.2D",
+        "V19.2D",
+        "V20.2D",
+        "V21.2D",
+        "V22.2D",
+        "V23.2D",
+        "V24.2D",
+        "V25.2D",
+        "V26.2D",
+        "V27.2D",
+        "V28.2D",
+        "V29.2D",
+        "V30.2D",
+        "V31.2D",
+        ];
 }

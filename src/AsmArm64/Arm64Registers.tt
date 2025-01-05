@@ -54,7 +54,7 @@ public enum Arm64RegisterKind : byte
     /// </summary>
     VTyped,
     /// <summary>
-    /// Vector Scalar Element register (e.g. B0 / V0.B[0]).
+    /// Vector Scalar element (e.g. H0 / S0 / D0).
     /// </summary>
     VScalar,
 }
@@ -196,7 +196,11 @@ public readonly record struct Arm64RegisterVScalar<#= kind #> : IArm64RegisterVS
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 <# for(int i = 0; i < 32; i++) { #>
 
@@ -240,7 +244,11 @@ public readonly record struct Arm64RegisterV<#= size #><#= kind #> : IArm64Regis
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        throw new NotImplementedException();
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
     }
 }
 <# } } // foreach size / kind #>
@@ -281,13 +289,22 @@ partial class Arm64Extensions
     /// Converts the <#= kind #> register to a string.
     /// </summary>
     public static string ToText(this Arm64Register<#= kind #> register, bool upperCase = false) => upperCase ? Register<#= kind #>UpperNames[register.Index] : Register<#= kind #>LowerNames[register.Index];
-
 <# if (kind == "SP") { #>
-    private static readonly string[] RegisterSPLowerNames = ["sp"];
+    private static readonly string[] RegisterSPLowerNames = [
+<# for(int i = 0; i < 31; i++) { #>
+        "??", // <#= i #>
+<# } #>
+        "sp", // 31
+    ];
 
-    private static readonly string[] RegisterSPUpperNames = ["SP"];
-
+    private static readonly string[] RegisterSPUpperNames = [
+<# for(int i = 0; i < 31; i++) { #>
+        "??", // <#= i #>
+<# } #>
+        "SP", // 31
+    ];
 <# } else { #>
+
     private static readonly string[] Register<#= kind #>LowerNames = [
 <# for(int i = 0; i < ((kind == "X" || kind == "W") ? 31 : 32); i++) { #>
         "<#= kind.ToLowerInvariant() #><#= i #>",
@@ -295,6 +312,7 @@ partial class Arm64Extensions
         "<#= kind.ToLowerInvariant() #>zr",
 <# } #>
     ];
+
     private static readonly string[] Register<#= kind #>UpperNames = [
 <# for(int i = 0; i < ((kind == "X" || kind == "W") ? 31 : 32); i++) { #>
         "<#= kind #><#= i #>",
@@ -302,6 +320,47 @@ partial class Arm64Extensions
         "<#= kind #>ZR",
 <# } #>
     ];
+<# if (kind == "V") { #>
+<# foreach(var vector in vectors) { var vkind = vector.Name; #>
+<# if (vkind != "B") { #>
+    /// <summary>
+    /// Converts the <#= kind #> register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterVScalar<#= vkind #> register, bool upperCase = false) => upperCase ? RegisterVScalar<#= vkind #>UpperNames[register.Index] : RegisterVScalar<#= vkind #>LowerNames[register.Index];
+
+    private static readonly string[] RegisterVScalar<#= vkind #>LowerNames = [
+    <# for(int i = 0; i < 32; i++) { #>
+    "<#= vkind.ToLowerInvariant() #><#= i #>",
+    <# } #>
+    ];
+
+    private static readonly string[] RegisterVScalar<#= vkind #>UpperNames = [
+    <# for(int i = 0; i < 32; i++) { #>
+    "<#= vkind #><#= i #>",
+    <# } #>
+    ];
+<# } // if (vkind != "B") #>
+<# foreach(var size in vector.Sizes) { #>
+
+    /// <summary>
+    /// Converts the <#= kind #> register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV<#= size #><#= vkind #> register, bool upperCase = false) => upperCase ? RegisterV<#= size #><#= vkind #>UpperNames[register.Index] : RegisterV<#= size #><#= vkind #>LowerNames[register.Index];
+
+    private static readonly string[] RegisterV<#= size #><#= vkind #>LowerNames = [
+    <# for(int i = 0; i < 32; i++) { #>
+    "<#= kind.ToLowerInvariant() #><#= i #>.<#= size #><#= vkind.ToLowerInvariant() #>",
+    <# } #>
+    ];
+
+    private static readonly string[] RegisterV<#= size #><#= vkind #>UpperNames = [
+    <# for(int i = 0; i < 32; i++) { #>
+    "<#= kind #><#= i #>.<#= size #><#= vkind #>",
+    <# } #>
+    ];
+<# } // foreach size #>
+<# } // foreach vector #>
+<# } // if (kind == "V") #>
 <# } // else #>
-<# } // foreach #>
+<# } // foreach kind #>
 }
