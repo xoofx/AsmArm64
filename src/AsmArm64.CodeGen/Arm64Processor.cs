@@ -8,6 +8,7 @@ using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using AsmArm64.CodeGen.Model;
 using Spectre.Console;
 
 namespace AsmArm64.CodeGen;
@@ -57,6 +58,19 @@ public partial class Arm64Processor
     public void Run()
     {
         LoadInstructions();
+
+        //foreach (var paramName in _allParameterNames.Order())
+        //{
+        //    Console.WriteLine($"Parameter: {paramName}");
+        //}
+
+        var isa = new InstructionSet();
+        isa.Instructions.AddRange(_instructions);
+        isa.WriteJson("instructions.json");
+
+        //var isa2 = InstructionSet.ReadJson("instructions.json");
+        //isa2.WriteJson("instructions2.json");
+
         BuildTrie();
         ExtractArchitecture();
         GenerateCode();
@@ -69,8 +83,8 @@ public partial class Arm64Processor
                  {
                      "index.xml",
                      "fpsimdindex.xml",
-                     "sveindex.xml",
-                     "mortlachindex.xml"
+                     //"sveindex.xml",
+                     //"mortlachindex.xml"
                  })
         {
             var xdoc = XDocument.Load(Path.Combine(_baseSpecsFolder, index));
@@ -105,7 +119,7 @@ public partial class Arm64Processor
     private void BuildTrie()
     {
         // Sort instructions by normalized name
-        _instructions.Sort((left, right) => string.Compare(left.NormalizedName, right.NormalizedName, CultureInfo.InvariantCulture, CompareOptions.Ordinal));
+        _instructions.Sort((left, right) => string.Compare(left.Id, right.Id, CultureInfo.InvariantCulture, CompareOptions.Ordinal));
 
         var rootTrie = new InstructionTrieNode();
         _allNodes.Add(rootTrie);
@@ -198,6 +212,8 @@ public partial class Arm64Processor
         {
             summary = desc.Descendants("brief").First().Descendants("para").First().Value;
         }
+
+        var mapEncodingIdToInfo = ParseEncodingInfo(xdoc);
         
         var bitFields = new List<BitRangeInfo>();
         var encodingBitFields = new List<BitRangeInfo>();
@@ -257,6 +273,14 @@ public partial class Arm64Processor
                     InstructionClass = instrClass,
                 };
                 instruction.ArchVariants.AddRange(archVariants);
+
+                mapEncodingIdToInfo.TryGetValue(encodingName, out var encodingInfo);
+                var items = ParseOperands(encoding, encodingInfo);
+                //Console.WriteLine($"{encodingName}");
+                //foreach (var item in items)
+                //{
+                //    Console.WriteLine($"  {item}");
+                //}
 
                 //if (encodingName == "B_only_branch_imm" || encodingName == "BL_only_branch_imm")
                 //{
@@ -385,7 +409,7 @@ public partial class Arm64Processor
             HiBit = hiBit,
             Width = width,
         };
-        var fieldSetsList = info.FieldSets;
+        var fieldSetsList = info.BitFieldSet;
 
         var columns = elt.Descendants("c");
         foreach (var column in columns)
@@ -478,10 +502,10 @@ public partial class Arm64Processor
         {
             foreach (var archVariant in instruction.ArchVariants)
             {
-                if (!distinctArchVariant.TryGetValue(archVariant.FeatureExpressionId, out var list))
+                if (!distinctArchVariant.TryGetValue(archVariant.Id, out var list))
                 {
                     list = new List<ArchVariant>();
-                    distinctArchVariant.Add(archVariant.FeatureExpressionId, list);
+                    distinctArchVariant.Add(archVariant.Id, list);
                 }
 
                 if (!_featureExpressions.Contains(archVariant))
@@ -510,7 +534,7 @@ public partial class Arm64Processor
         {
             var localFeatures = new HashSet<string>();
 
-            foreach (Match match in matchFeature.Matches(archVariant.FeatureExpression))
+            foreach (Match match in matchFeature.Matches(archVariant.Expression))
             {
                 var feature = match.Groups[1].Value;
                 if (!_features.Contains(feature))
@@ -530,7 +554,7 @@ public partial class Arm64Processor
         }
 
         _features.Sort(string.CompareOrdinal);
-        _featureExpressions.Sort((a, b) => string.CompareOrdinal(a.FeatureExpressionId, b.FeatureExpressionId));
+        _featureExpressions.Sort((a, b) => string.CompareOrdinal(a.Id, b.Id));
     }
 
     private static string GetFeatureExpressionId(string feature)

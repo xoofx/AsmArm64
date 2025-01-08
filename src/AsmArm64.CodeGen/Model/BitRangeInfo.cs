@@ -2,9 +2,11 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+using AsmArm64.CodeGen.Model.JsonHelpers;
 using System.Text;
+using System.Text.Json.Serialization;
 
-namespace AsmArm64.CodeGen;
+namespace AsmArm64.CodeGen.Model;
 
 class BitRangeInfo
 {
@@ -16,25 +18,16 @@ class BitRangeInfo
 
     public string? OriginalCondition { get; set; }
 
+    [JsonConverter(typeof(JsonBitRangeConditionToStringConverter))]
     public BitRangeCondition Condition { get; set; }
 
-    public List<BitKind> FieldSets { get; } = new();
+    [JsonConverter(typeof(JsonBitFieldSetToStringConverter))]
+    public BitFieldSet BitFieldSet { get; set; } = new();
 
     public override string ToString()
     {
         var builder = new StringBuilder();
-        builder.Append($"{Name} ({HiBit}:{Width}) ");
-
-        foreach (var fieldSet in FieldSets)
-        {
-            builder.Append(fieldSet switch
-            {
-                BitKind.Zero => "0",
-                BitKind.One => "1",
-                BitKind.NotSet => "x",
-                _ => throw new ArgumentOutOfRangeException()
-            });
-        }
+        builder.Append($"{Name} ({HiBit}:{Width}) {BitFieldSet}");
 
         if (OriginalCondition != null)
         {
@@ -54,17 +47,7 @@ class BitRangeInfo
             OriginalCondition = OriginalCondition,
             Condition = Condition
         };
-        clone.FieldSets.AddRange(FieldSets);
+        clone.BitFieldSet.AddRange(BitFieldSet);
         return clone;
     }
-}
-
-enum BitRangeCondition
-{
-    None,
-    Unknown,
-    AllNonZero,
-    AllNonOne,
-    AllNon111x,
-    AllNon11xxx
 }

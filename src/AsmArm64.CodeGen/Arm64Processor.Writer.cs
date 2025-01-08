@@ -91,7 +91,7 @@ partial class Arm64Processor
         foreach (var instruction in _instructions)
         {
             w.WriteSummary($"Instruction `{instruction.Mnemonic}` - {instruction.Summary}.");
-            w.WriteLine($"{instruction.NormalizedName},");
+            w.WriteLine($"{instruction.Id},");
         }
         w.CloseBraceBlock();
     }
@@ -221,13 +221,13 @@ partial class Arm64Processor
             var featureExpression = _featureExpressions[i];
             if (featureExpression.Name.StartsWith("ARM"))
             {
-                w.WriteSummary($"Feature `{EscapeHtmlEntities(featureExpression.FeatureExpression)}` for `{featureExpression.Name}`.");
+                w.WriteSummary($"Feature `{EscapeHtmlEntities(featureExpression.Expression)}` for `{featureExpression.Name}`.");
             }
             else
             {
-                w.WriteSummary($"Feature `{EscapeHtmlEntities(featureExpression.FeatureExpression)}`.");
+                w.WriteSummary($"Feature `{EscapeHtmlEntities(featureExpression.Expression)}`.");
             }
-            w.WriteLine($"{featureExpression.FeatureExpressionId},");
+            w.WriteLine($"{featureExpression.Id},");
         }
 
         w.CloseBraceBlock();
@@ -276,7 +276,7 @@ partial class Arm64Processor
                 // Some instructions are not testable
                 if (instruction.IsBitFieldValueTestable)
                 {
-                    w.WriteLine($"[DataRow(0x{instruction.BitfieldValueForTest:X8}U, Arm64InstructionId.{instruction.NormalizedName})]");
+                    w.WriteLine($"[DataRow(0x{instruction.BitfieldValueForTest:X8}U, Arm64InstructionId.{instruction.Id})]");
                 }
             }
             w.WriteLine($"public void Test(uint instruction, Arm64InstructionId expected)");

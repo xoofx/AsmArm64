@@ -2,6 +2,8 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
-namespace AsmArm64.CodeGen;
+using System.Text.Json.Serialization;
 
-record ArchVariant(string FeatureExpressionId, string FeatureExpression, string Name);
+namespace AsmArm64.CodeGen.Model;
+
+record ArchVariant(string Id, string Expression, string Name);

@@ -73,14 +73,6 @@ public enum Arm64Feature : byte
     /// </summary>
     DotProd,
     /// <summary>
-    /// Feature `F32MM`.
-    /// </summary>
-    F32MM,
-    /// <summary>
-    /// Feature `F64MM`.
-    /// </summary>
-    F64MM,
-    /// <summary>
     /// Feature `F8F16MM`.
     /// </summary>
     F8F16MM,
@@ -269,125 +261,9 @@ public enum Arm64Feature : byte
     /// </summary>
     SM4,
     /// <summary>
-    /// Feature `SME`.
-    /// </summary>
-    SME,
-    /// <summary>
-    /// Feature `SME2`.
-    /// </summary>
-    SME2,
-    /// <summary>
-    /// Feature `SME2p1`.
-    /// </summary>
-    SME2p1,
-    /// <summary>
-    /// Feature `SME2p2`.
-    /// </summary>
-    SME2p2,
-    /// <summary>
-    /// Feature `SME_B16B16`.
-    /// </summary>
-    SME_B16B16,
-    /// <summary>
-    /// Feature `SME_F16F16`.
-    /// </summary>
-    SME_F16F16,
-    /// <summary>
-    /// Feature `SME_F64F64`.
-    /// </summary>
-    SME_F64F64,
-    /// <summary>
-    /// Feature `SME_F8F16`.
-    /// </summary>
-    SME_F8F16,
-    /// <summary>
-    /// Feature `SME_F8F32`.
-    /// </summary>
-    SME_F8F32,
-    /// <summary>
-    /// Feature `SME_I16I64`.
-    /// </summary>
-    SME_I16I64,
-    /// <summary>
-    /// Feature `SME_LUTv2`.
-    /// </summary>
-    SME_LUTv2,
-    /// <summary>
-    /// Feature `SME_MOP4`.
-    /// </summary>
-    SME_MOP4,
-    /// <summary>
-    /// Feature `SME_TMOP`.
-    /// </summary>
-    SME_TMOP,
-    /// <summary>
     /// Feature `SPE`.
     /// </summary>
     SPE,
-    /// <summary>
-    /// Feature `SSVE_FP8DOT2`.
-    /// </summary>
-    SSVE_FP8DOT2,
-    /// <summary>
-    /// Feature `SSVE_FP8DOT4`.
-    /// </summary>
-    SSVE_FP8DOT4,
-    /// <summary>
-    /// Feature `SSVE_FP8FMA`.
-    /// </summary>
-    SSVE_FP8FMA,
-    /// <summary>
-    /// Feature `SVE`.
-    /// </summary>
-    SVE,
-    /// <summary>
-    /// Feature `SVE2`.
-    /// </summary>
-    SVE2,
-    /// <summary>
-    /// Feature `SVE2p1`.
-    /// </summary>
-    SVE2p1,
-    /// <summary>
-    /// Feature `SVE2p2`.
-    /// </summary>
-    SVE2p2,
-    /// <summary>
-    /// Feature `SVE_AES`.
-    /// </summary>
-    SVE_AES,
-    /// <summary>
-    /// Feature `SVE_AES2`.
-    /// </summary>
-    SVE_AES2,
-    /// <summary>
-    /// Feature `SVE_B16B16`.
-    /// </summary>
-    SVE_B16B16,
-    /// <summary>
-    /// Feature `SVE_BFSCALE`.
-    /// </summary>
-    SVE_BFSCALE,
-    /// <summary>
-    /// Feature `SVE_BitPerm`.
-    /// </summary>
-    SVE_BitPerm,
-    /// <summary>
-    /// Feature `SVE_F16F32MM`.
-    /// </summary>
-    SVE_F16F32MM,
-    /// <summary>
-    /// Feature `SVE_PMULL128`.
-    /// </summary>
-    SVE_PMULL128,
-    /// <summary>
-    /// Feature `SVE_SHA3`.
-    /// </summary>
-    SVE_SHA3,
-    /// <summary>
-    /// Feature `SVE_SM4`.
-    /// </summary>
-    SVE_SM4,
     /// <summary>
     /// Feature `SYSINSTR128`.
     /// </summary>

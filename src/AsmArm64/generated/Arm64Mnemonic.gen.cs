@@ -29,14 +29,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     ADC,
     /// <summary>
-    /// This `ADCLB` mnemonic.
-    /// </summary>
-    ADCLB,
-    /// <summary>
-    /// This `ADCLT` mnemonic.
-    /// </summary>
-    ADCLT,
-    /// <summary>
     /// This `ADCS` mnemonic.
     /// </summary>
     ADCS,
@@ -49,61 +41,25 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     ADDG,
     /// <summary>
-    /// This `ADDHA` mnemonic.
-    /// </summary>
-    ADDHA,
-    /// <summary>
     /// This `ADDHN` mnemonic.
     /// </summary>
     ADDHN,
-    /// <summary>
-    /// This `ADDHNB` mnemonic.
-    /// </summary>
-    ADDHNB,
-    /// <summary>
-    /// This `ADDHNT` mnemonic.
-    /// </summary>
-    ADDHNT,
     /// <summary>
     /// This `ADDP` mnemonic.
     /// </summary>
     ADDP,
     /// <summary>
-    /// This `ADDPL` mnemonic.
-    /// </summary>
-    ADDPL,
-    /// <summary>
     /// This `ADDPT` mnemonic.
     /// </summary>
     ADDPT,
-    /// <summary>
-    /// This `ADDQV` mnemonic.
-    /// </summary>
-    ADDQV,
     /// <summary>
     /// This `ADDS` mnemonic.
     /// </summary>
     ADDS,
     /// <summary>
-    /// This `ADDSPL` mnemonic.
-    /// </summary>
-    ADDSPL,
-    /// <summary>
-    /// This `ADDSVL` mnemonic.
-    /// </summary>
-    ADDSVL,
-    /// <summary>
     /// This `ADDV` mnemonic.
     /// </summary>
     ADDV,
-    /// <summary>
-    /// This `ADDVA` mnemonic.
-    /// </summary>
-    ADDVA,
-    /// <summary>
-    /// This `ADDVL` mnemonic.
-    /// </summary>
-    ADDVL,
     /// <summary>
     /// This `ADR` mnemonic.
     /// </summary>
@@ -117,17 +73,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     AESD,
     /// <summary>
-    /// This `AESDIMC` mnemonic.
-    /// </summary>
-    AESDIMC,
-    /// <summary>
     /// This `AESE` mnemonic.
     /// </summary>
     AESE,
-    /// <summary>
-    /// This `AESEMC` mnemonic.
-    /// </summary>
-    AESEMC,
     /// <summary>
     /// This `AESIMC` mnemonic.
     /// </summary>
@@ -141,29 +89,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     AND,
     /// <summary>
-    /// This `ANDQV` mnemonic.
-    /// </summary>
-    ANDQV,
-    /// <summary>
     /// This `ANDS` mnemonic.
     /// </summary>
     ANDS,
-    /// <summary>
-    /// This `ANDV` mnemonic.
-    /// </summary>
-    ANDV,
-    /// <summary>
-    /// This `ASR` mnemonic.
-    /// </summary>
-    ASR,
-    /// <summary>
-    /// This `ASRD` mnemonic.
-    /// </summary>
-    ASRD,
-    /// <summary>
-    /// This `ASRR` mnemonic.
-    /// </summary>
-    ASRR,
     /// <summary>
     /// This `ASRV` mnemonic.
     /// </summary>
@@ -265,45 +193,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     BCAX,
     /// <summary>
-    /// This `BDEP` mnemonic.
-    /// </summary>
-    BDEP,
-    /// <summary>
-    /// This `BEXT` mnemonic.
-    /// </summary>
-    BEXT,
-    /// <summary>
-    /// This `BF1CVT` mnemonic.
-    /// </summary>
-    BF1CVT,
-    /// <summary>
     /// This `BF1CVTL` mnemonic.
     /// </summary>
     BF1CVTL,
     /// <summary>
-    /// This `BF1CVTLT` mnemonic.
-    /// </summary>
-    BF1CVTLT,
-    /// <summary>
-    /// This `BF2CVT` mnemonic.
-    /// </summary>
-    BF2CVT,
-    /// <summary>
     /// This `BF2CVTL` mnemonic.
     /// </summary>
     BF2CVTL,
-    /// <summary>
-    /// This `BF2CVTLT` mnemonic.
-    /// </summary>
-    BF2CVTLT,
-    /// <summary>
-    /// This `BFADD` mnemonic.
-    /// </summary>
-    BFADD,
-    /// <summary>
-    /// This `BFCLAMP` mnemonic.
-    /// </summary>
-    BFCLAMP,
     /// <summary>
     /// This `BFCVT` mnemonic.
     /// </summary>
@@ -313,10 +209,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     BFCVTN,
     /// <summary>
-    /// This `BFCVTNT` mnemonic.
-    /// </summary>
-    BFCVTNT,
-    /// <summary>
     /// This `BFDOT` mnemonic.
     /// </summary>
     BFDOT,
@@ -325,97 +217,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     BFM,
     /// <summary>
-    /// This `BFMAX` mnemonic.
-    /// </summary>
-    BFMAX,
-    /// <summary>
-    /// This `BFMAXNM` mnemonic.
-    /// </summary>
-    BFMAXNM,
-    /// <summary>
-    /// This `BFMIN` mnemonic.
-    /// </summary>
-    BFMIN,
-    /// <summary>
-    /// This `BFMINNM` mnemonic.
-    /// </summary>
-    BFMINNM,
-    /// <summary>
-    /// This `BFMLA` mnemonic.
-    /// </summary>
-    BFMLA,
-    /// <summary>
     /// This `BFMLAL` mnemonic.
     /// </summary>
     BFMLAL,
     /// <summary>
-    /// This `BFMLALB` mnemonic.
-    /// </summary>
-    BFMLALB,
-    /// <summary>
-    /// This `BFMLALT` mnemonic.
-    /// </summary>
-    BFMLALT,
-    /// <summary>
-    /// This `BFMLS` mnemonic.
-    /// </summary>
-    BFMLS,
-    /// <summary>
-    /// This `BFMLSL` mnemonic.
-    /// </summary>
-    BFMLSL,
-    /// <summary>
-    /// This `BFMLSLB` mnemonic.
-    /// </summary>
-    BFMLSLB,
-    /// <summary>
-    /// This `BFMLSLT` mnemonic.
-    /// </summary>
-    BFMLSLT,
-    /// <summary>
     /// This `BFMMLA` mnemonic.
     /// </summary>
     BFMMLA,
-    /// <summary>
-    /// This `BFMOP4A` mnemonic.
-    /// </summary>
-    BFMOP4A,
-    /// <summary>
-    /// This `BFMOP4S` mnemonic.
-    /// </summary>
-    BFMOP4S,
-    /// <summary>
-    /// This `BFMOPA` mnemonic.
-    /// </summary>
-    BFMOPA,
-    /// <summary>
-    /// This `BFMOPS` mnemonic.
-    /// </summary>
-    BFMOPS,
-    /// <summary>
-    /// This `BFMUL` mnemonic.
-    /// </summary>
-    BFMUL,
-    /// <summary>
-    /// This `BFSCALE` mnemonic.
-    /// </summary>
-    BFSCALE,
-    /// <summary>
-    /// This `BFSUB` mnemonic.
-    /// </summary>
-    BFSUB,
-    /// <summary>
-    /// This `BFTMOPA` mnemonic.
-    /// </summary>
-    BFTMOPA,
-    /// <summary>
-    /// This `BFVDOT` mnemonic.
-    /// </summary>
-    BFVDOT,
-    /// <summary>
-    /// This `BGRP` mnemonic.
-    /// </summary>
-    BGRP,
     /// <summary>
     /// This `BIC` mnemonic.
     /// </summary>
@@ -457,14 +265,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     BLRABZ,
     /// <summary>
-    /// This `BMOPA` mnemonic.
-    /// </summary>
-    BMOPA,
-    /// <summary>
-    /// This `BMOPS` mnemonic.
-    /// </summary>
-    BMOPS,
-    /// <summary>
     /// This `BR` mnemonic.
     /// </summary>
     BR,
@@ -489,65 +289,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     BRK,
     /// <summary>
-    /// This `BRKA` mnemonic.
-    /// </summary>
-    BRKA,
-    /// <summary>
-    /// This `BRKAS` mnemonic.
-    /// </summary>
-    BRKAS,
-    /// <summary>
-    /// This `BRKB` mnemonic.
-    /// </summary>
-    BRKB,
-    /// <summary>
-    /// This `BRKBS` mnemonic.
-    /// </summary>
-    BRKBS,
-    /// <summary>
-    /// This `BRKN` mnemonic.
-    /// </summary>
-    BRKN,
-    /// <summary>
-    /// This `BRKNS` mnemonic.
-    /// </summary>
-    BRKNS,
-    /// <summary>
-    /// This `BRKPA` mnemonic.
-    /// </summary>
-    BRKPA,
-    /// <summary>
-    /// This `BRKPAS` mnemonic.
-    /// </summary>
-    BRKPAS,
-    /// <summary>
-    /// This `BRKPB` mnemonic.
-    /// </summary>
-    BRKPB,
-    /// <summary>
-    /// This `BRKPBS` mnemonic.
-    /// </summary>
-    BRKPBS,
-    /// <summary>
     /// This `BSL` mnemonic.
     /// </summary>
     BSL,
     /// <summary>
-    /// This `BSL1N` mnemonic.
-    /// </summary>
-    BSL1N,
-    /// <summary>
-    /// This `BSL2N` mnemonic.
-    /// </summary>
-    BSL2N,
-    /// <summary>
     /// This `BTI` mnemonic.
     /// </summary>
     BTI,
-    /// <summary>
-    /// This `CADD` mnemonic.
-    /// </summary>
-    CADD,
     /// <summary>
     /// This `CAS` mnemonic.
     /// </summary>
@@ -741,10 +489,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     CCMP,
     /// <summary>
-    /// This `CDOT` mnemonic.
-    /// </summary>
-    CDOT,
-    /// <summary>
     /// This `CFINV` mnemonic.
     /// </summary>
     CFINV,
@@ -752,14 +496,6 @@ public enum Arm64Mnemonic : ushort
     /// This `CHKFEAT` mnemonic.
     /// </summary>
     CHKFEAT,
-    /// <summary>
-    /// This `CLASTA` mnemonic.
-    /// </summary>
-    CLASTA,
-    /// <summary>
-    /// This `CLASTB` mnemonic.
-    /// </summary>
-    CLASTB,
     /// <summary>
     /// This `CLRBHB` mnemonic.
     /// </summary>
@@ -797,10 +533,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     CMHS,
     /// <summary>
-    /// This `CMLA` mnemonic.
-    /// </summary>
-    CMLA,
-    /// <summary>
     /// This `CMLE` mnemonic.
     /// </summary>
     CMLE,
@@ -809,85 +541,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     CMLT,
     /// <summary>
-    /// This `CMPEQ` mnemonic.
-    /// </summary>
-    CMPEQ,
-    /// <summary>
-    /// This `CMPGE` mnemonic.
-    /// </summary>
-    CMPGE,
-    /// <summary>
-    /// This `CMPGT` mnemonic.
-    /// </summary>
-    CMPGT,
-    /// <summary>
-    /// This `CMPHI` mnemonic.
-    /// </summary>
-    CMPHI,
-    /// <summary>
-    /// This `CMPHS` mnemonic.
-    /// </summary>
-    CMPHS,
-    /// <summary>
-    /// This `CMPLE` mnemonic.
-    /// </summary>
-    CMPLE,
-    /// <summary>
-    /// This `CMPLO` mnemonic.
-    /// </summary>
-    CMPLO,
-    /// <summary>
-    /// This `CMPLS` mnemonic.
-    /// </summary>
-    CMPLS,
-    /// <summary>
-    /// This `CMPLT` mnemonic.
-    /// </summary>
-    CMPLT,
-    /// <summary>
-    /// This `CMPNE` mnemonic.
-    /// </summary>
-    CMPNE,
-    /// <summary>
     /// This `CMTST` mnemonic.
     /// </summary>
     CMTST,
     /// <summary>
-    /// This `CNOT` mnemonic.
-    /// </summary>
-    CNOT,
-    /// <summary>
     /// This `CNT` mnemonic.
     /// </summary>
     CNT,
-    /// <summary>
-    /// This `CNTB` mnemonic.
-    /// </summary>
-    CNTB,
-    /// <summary>
-    /// This `CNTD` mnemonic.
-    /// </summary>
-    CNTD,
-    /// <summary>
-    /// This `CNTH` mnemonic.
-    /// </summary>
-    CNTH,
-    /// <summary>
-    /// This `CNTP` mnemonic.
-    /// </summary>
-    CNTP,
-    /// <summary>
-    /// This `CNTW` mnemonic.
-    /// </summary>
-    CNTW,
-    /// <summary>
-    /// This `COMPACT` mnemonic.
-    /// </summary>
-    COMPACT,
-    /// <summary>
-    /// This `CPY` mnemonic.
-    /// </summary>
-    CPY,
     /// <summary>
     /// This `CPYE` mnemonic.
     /// </summary>
@@ -1325,14 +985,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     CSNEG,
     /// <summary>
-    /// This `CTERMEQ` mnemonic.
-    /// </summary>
-    CTERMEQ,
-    /// <summary>
-    /// This `CTERMNE` mnemonic.
-    /// </summary>
-    CTERMNE,
-    /// <summary>
     /// This `CTZ` mnemonic.
     /// </summary>
     CTZ,
@@ -1348,26 +1000,6 @@ public enum Arm64Mnemonic : ushort
     /// This `DCPS3` mnemonic.
     /// </summary>
     DCPS3,
-    /// <summary>
-    /// This `DECB` mnemonic.
-    /// </summary>
-    DECB,
-    /// <summary>
-    /// This `DECD` mnemonic.
-    /// </summary>
-    DECD,
-    /// <summary>
-    /// This `DECH` mnemonic.
-    /// </summary>
-    DECH,
-    /// <summary>
-    /// This `DECP` mnemonic.
-    /// </summary>
-    DECP,
-    /// <summary>
-    /// This `DECW` mnemonic.
-    /// </summary>
-    DECW,
     /// <summary>
     /// This `DGH` mnemonic.
     /// </summary>
@@ -1389,14 +1021,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     DUP,
     /// <summary>
-    /// This `DUPM` mnemonic.
-    /// </summary>
-    DUPM,
-    /// <summary>
-    /// This `DUPQ` mnemonic.
-    /// </summary>
-    DUPQ,
-    /// <summary>
     /// This `EON` mnemonic.
     /// </summary>
     EON,
@@ -1408,26 +1032,6 @@ public enum Arm64Mnemonic : ushort
     /// This `EOR3` mnemonic.
     /// </summary>
     EOR3,
-    /// <summary>
-    /// This `EORBT` mnemonic.
-    /// </summary>
-    EORBT,
-    /// <summary>
-    /// This `EORQV` mnemonic.
-    /// </summary>
-    EORQV,
-    /// <summary>
-    /// This `EORS` mnemonic.
-    /// </summary>
-    EORS,
-    /// <summary>
-    /// This `EORTB` mnemonic.
-    /// </summary>
-    EORTB,
-    /// <summary>
-    /// This `EORV` mnemonic.
-    /// </summary>
-    EORV,
     /// <summary>
     /// This `ERET` mnemonic.
     /// </summary>
@@ -1445,45 +1049,21 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     ESB,
     /// <summary>
-    /// This `EXPAND` mnemonic.
-    /// </summary>
-    EXPAND,
-    /// <summary>
     /// This `EXT` mnemonic.
     /// </summary>
     EXT,
-    /// <summary>
-    /// This `EXTQ` mnemonic.
-    /// </summary>
-    EXTQ,
     /// <summary>
     /// This `EXTR` mnemonic.
     /// </summary>
     EXTR,
     /// <summary>
-    /// This `F1CVT` mnemonic.
-    /// </summary>
-    F1CVT,
-    /// <summary>
     /// This `F1CVTL` mnemonic.
     /// </summary>
     F1CVTL,
     /// <summary>
-    /// This `F1CVTLT` mnemonic.
-    /// </summary>
-    F1CVTLT,
-    /// <summary>
-    /// This `F2CVT` mnemonic.
-    /// </summary>
-    F2CVT,
-    /// <summary>
     /// This `F2CVTL` mnemonic.
     /// </summary>
     F2CVTL,
-    /// <summary>
-    /// This `F2CVTLT` mnemonic.
-    /// </summary>
-    F2CVTLT,
     /// <summary>
     /// This `FABD` mnemonic.
     /// </summary>
@@ -1505,21 +1085,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     FADD,
     /// <summary>
-    /// This `FADDA` mnemonic.
-    /// </summary>
-    FADDA,
-    /// <summary>
     /// This `FADDP` mnemonic.
     /// </summary>
     FADDP,
-    /// <summary>
-    /// This `FADDQV` mnemonic.
-    /// </summary>
-    FADDQV,
-    /// <summary>
-    /// This `FADDV` mnemonic.
-    /// </summary>
-    FADDV,
     /// <summary>
     /// This `FAMAX` mnemonic.
     /// </summary>
@@ -1540,10 +1108,6 @@ public enum Arm64Mnemonic : ushort
     /// This `FCCMPE` mnemonic.
     /// </summary>
     FCCMPE,
-    /// <summary>
-    /// This `FCLAMP` mnemonic.
-    /// </summary>
-    FCLAMP,
     /// <summary>
     /// This `FCMEQ` mnemonic.
     /// </summary>
@@ -1569,10 +1133,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     FCMLT,
     /// <summary>
-    /// This `FCMNE` mnemonic.
-    /// </summary>
-    FCMNE,
-    /// <summary>
     /// This `FCMP` mnemonic.
     /// </summary>
     FCMP,
@@ -1580,14 +1140,6 @@ public enum Arm64Mnemonic : ushort
     /// This `FCMPE` mnemonic.
     /// </summary>
     FCMPE,
-    /// <summary>
-    /// This `FCMUO` mnemonic.
-    /// </summary>
-    FCMUO,
-    /// <summary>
-    /// This `FCPY` mnemonic.
-    /// </summary>
-    FCPY,
     /// <summary>
     /// This `FCSEL` mnemonic.
     /// </summary>
@@ -1609,10 +1161,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     FCVTL,
     /// <summary>
-    /// This `FCVTLT` mnemonic.
-    /// </summary>
-    FCVTLT,
-    /// <summary>
     /// This `FCVTMS` mnemonic.
     /// </summary>
     FCVTMS,
@@ -1625,17 +1173,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     FCVTN,
     /// <summary>
-    /// This `FCVTNB` mnemonic.
-    /// </summary>
-    FCVTNB,
-    /// <summary>
     /// This `FCVTNS` mnemonic.
     /// </summary>
     FCVTNS,
-    /// <summary>
-    /// This `FCVTNT` mnemonic.
-    /// </summary>
-    FCVTNT,
     /// <summary>
     /// This `FCVTNU` mnemonic.
     /// </summary>
@@ -1649,17 +1189,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     FCVTPU,
     /// <summary>
-    /// This `FCVTX` mnemonic.
-    /// </summary>
-    FCVTX,
-    /// <summary>
     /// This `FCVTXN` mnemonic.
     /// </summary>
     FCVTXN,
-    /// <summary>
-    /// This `FCVTXNT` mnemonic.
-    /// </summary>
-    FCVTXNT,
     /// <summary>
     /// This `FCVTZS` mnemonic.
     /// </summary>
@@ -1673,37 +1205,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     FDIV,
     /// <summary>
-    /// This `FDIVR` mnemonic.
-    /// </summary>
-    FDIVR,
-    /// <summary>
     /// This `FDOT` mnemonic.
     /// </summary>
     FDOT,
     /// <summary>
-    /// This `FDUP` mnemonic.
-    /// </summary>
-    FDUP,
-    /// <summary>
-    /// This `FEXPA` mnemonic.
-    /// </summary>
-    FEXPA,
-    /// <summary>
-    /// This `FIRSTP` mnemonic.
-    /// </summary>
-    FIRSTP,
-    /// <summary>
     /// This `FJCVTZS` mnemonic.
     /// </summary>
     FJCVTZS,
-    /// <summary>
-    /// This `FLOGB` mnemonic.
-    /// </summary>
-    FLOGB,
-    /// <summary>
-    /// This `FMAD` mnemonic.
-    /// </summary>
-    FMAD,
     /// <summary>
     /// This `FMADD` mnemonic.
     /// </summary>
@@ -1721,10 +1229,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     FMAXNMP,
     /// <summary>
-    /// This `FMAXNMQV` mnemonic.
-    /// </summary>
-    FMAXNMQV,
-    /// <summary>
     /// This `FMAXNMV` mnemonic.
     /// </summary>
     FMAXNMV,
@@ -1732,10 +1236,6 @@ public enum Arm64Mnemonic : ushort
     /// This `FMAXP` mnemonic.
     /// </summary>
     FMAXP,
-    /// <summary>
-    /// This `FMAXQV` mnemonic.
-    /// </summary>
-    FMAXQV,
     /// <summary>
     /// This `FMAXV` mnemonic.
     /// </summary>
@@ -1753,10 +1253,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     FMINNMP,
     /// <summary>
-    /// This `FMINNMQV` mnemonic.
-    /// </summary>
-    FMINNMQV,
-    /// <summary>
     /// This `FMINNMV` mnemonic.
     /// </summary>
     FMINNMV,
@@ -1764,10 +1260,6 @@ public enum Arm64Mnemonic : ushort
     /// This `FMINP` mnemonic.
     /// </summary>
     FMINP,
-    /// <summary>
-    /// This `FMINQV` mnemonic.
-    /// </summary>
-    FMINQV,
     /// <summary>
     /// This `FMINV` mnemonic.
     /// </summary>
@@ -1788,10 +1280,6 @@ public enum Arm64Mnemonic : ushort
     /// This `FMLALB` mnemonic.
     /// </summary>
     FMLALB,
-    /// <summary>
-    /// This `FMLALL` mnemonic.
-    /// </summary>
-    FMLALL,
     /// <summary>
     /// This `FMLALLBB` mnemonic.
     /// </summary>
@@ -1825,41 +1313,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     FMLSL2,
     /// <summary>
-    /// This `FMLSLB` mnemonic.
-    /// </summary>
-    FMLSLB,
-    /// <summary>
-    /// This `FMLSLT` mnemonic.
-    /// </summary>
-    FMLSLT,
-    /// <summary>
     /// This `FMMLA` mnemonic.
     /// </summary>
     FMMLA,
     /// <summary>
-    /// This `FMOP4A` mnemonic.
-    /// </summary>
-    FMOP4A,
-    /// <summary>
-    /// This `FMOP4S` mnemonic.
-    /// </summary>
-    FMOP4S,
-    /// <summary>
-    /// This `FMOPA` mnemonic.
-    /// </summary>
-    FMOPA,
-    /// <summary>
-    /// This `FMOPS` mnemonic.
-    /// </summary>
-    FMOPS,
-    /// <summary>
     /// This `FMOV` mnemonic.
     /// </summary>
     FMOV,
-    /// <summary>
-    /// This `FMSB` mnemonic.
-    /// </summary>
-    FMSB,
     /// <summary>
     /// This `FMSUB` mnemonic.
     /// </summary>
@@ -1877,25 +1337,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     FNEG,
     /// <summary>
-    /// This `FNMAD` mnemonic.
-    /// </summary>
-    FNMAD,
-    /// <summary>
     /// This `FNMADD` mnemonic.
     /// </summary>
     FNMADD,
-    /// <summary>
-    /// This `FNMLA` mnemonic.
-    /// </summary>
-    FNMLA,
-    /// <summary>
-    /// This `FNMLS` mnemonic.
-    /// </summary>
-    FNMLS,
-    /// <summary>
-    /// This `FNMSB` mnemonic.
-    /// </summary>
-    FNMSB,
     /// <summary>
     /// This `FNMSUB` mnemonic.
     /// </summary>
@@ -1981,38 +1425,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     FSUB,
     /// <summary>
-    /// This `FSUBR` mnemonic.
-    /// </summary>
-    FSUBR,
-    /// <summary>
-    /// This `FTMAD` mnemonic.
-    /// </summary>
-    FTMAD,
-    /// <summary>
-    /// This `FTMOPA` mnemonic.
-    /// </summary>
-    FTMOPA,
-    /// <summary>
-    /// This `FTSMUL` mnemonic.
-    /// </summary>
-    FTSMUL,
-    /// <summary>
-    /// This `FTSSEL` mnemonic.
-    /// </summary>
-    FTSSEL,
-    /// <summary>
-    /// This `FVDOT` mnemonic.
-    /// </summary>
-    FVDOT,
-    /// <summary>
-    /// This `FVDOTB` mnemonic.
-    /// </summary>
-    FVDOTB,
-    /// <summary>
-    /// This `FVDOTT` mnemonic.
-    /// </summary>
-    FVDOTT,
-    /// <summary>
     /// This `GCSB` mnemonic.
     /// </summary>
     GCSB,
@@ -2033,14 +1445,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     HINT,
     /// <summary>
-    /// This `HISTCNT` mnemonic.
-    /// </summary>
-    HISTCNT,
-    /// <summary>
-    /// This `HISTSEG` mnemonic.
-    /// </summary>
-    HISTSEG,
-    /// <summary>
     /// This `HLT` mnemonic.
     /// </summary>
     HLT,
@@ -2049,37 +1453,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     HVC,
     /// <summary>
-    /// This `INCB` mnemonic.
-    /// </summary>
-    INCB,
-    /// <summary>
-    /// This `INCD` mnemonic.
-    /// </summary>
-    INCD,
-    /// <summary>
-    /// This `INCH` mnemonic.
-    /// </summary>
-    INCH,
-    /// <summary>
-    /// This `INCP` mnemonic.
-    /// </summary>
-    INCP,
-    /// <summary>
-    /// This `INCW` mnemonic.
-    /// </summary>
-    INCW,
-    /// <summary>
-    /// This `INDEX` mnemonic.
-    /// </summary>
-    INDEX,
-    /// <summary>
     /// This `INS` mnemonic.
     /// </summary>
     INS,
-    /// <summary>
-    /// This `INSR` mnemonic.
-    /// </summary>
-    INSR,
     /// <summary>
     /// This `IRG` mnemonic.
     /// </summary>
@@ -2089,201 +1465,37 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     ISB,
     /// <summary>
-    /// This `LASTA` mnemonic.
-    /// </summary>
-    LASTA,
-    /// <summary>
-    /// This `LASTB` mnemonic.
-    /// </summary>
-    LASTB,
-    /// <summary>
-    /// This `LASTP` mnemonic.
-    /// </summary>
-    LASTP,
-    /// <summary>
     /// This `LD1` mnemonic.
     /// </summary>
     LD1,
-    /// <summary>
-    /// This `LD1B` mnemonic.
-    /// </summary>
-    LD1B,
-    /// <summary>
-    /// This `LD1D` mnemonic.
-    /// </summary>
-    LD1D,
-    /// <summary>
-    /// This `LD1H` mnemonic.
-    /// </summary>
-    LD1H,
-    /// <summary>
-    /// This `LD1Q` mnemonic.
-    /// </summary>
-    LD1Q,
     /// <summary>
     /// This `LD1R` mnemonic.
     /// </summary>
     LD1R,
     /// <summary>
-    /// This `LD1RB` mnemonic.
-    /// </summary>
-    LD1RB,
-    /// <summary>
-    /// This `LD1RD` mnemonic.
-    /// </summary>
-    LD1RD,
-    /// <summary>
-    /// This `LD1RH` mnemonic.
-    /// </summary>
-    LD1RH,
-    /// <summary>
-    /// This `LD1ROB` mnemonic.
-    /// </summary>
-    LD1ROB,
-    /// <summary>
-    /// This `LD1ROD` mnemonic.
-    /// </summary>
-    LD1ROD,
-    /// <summary>
-    /// This `LD1ROH` mnemonic.
-    /// </summary>
-    LD1ROH,
-    /// <summary>
-    /// This `LD1ROW` mnemonic.
-    /// </summary>
-    LD1ROW,
-    /// <summary>
-    /// This `LD1RQB` mnemonic.
-    /// </summary>
-    LD1RQB,
-    /// <summary>
-    /// This `LD1RQD` mnemonic.
-    /// </summary>
-    LD1RQD,
-    /// <summary>
-    /// This `LD1RQH` mnemonic.
-    /// </summary>
-    LD1RQH,
-    /// <summary>
-    /// This `LD1RQW` mnemonic.
-    /// </summary>
-    LD1RQW,
-    /// <summary>
-    /// This `LD1RSB` mnemonic.
-    /// </summary>
-    LD1RSB,
-    /// <summary>
-    /// This `LD1RSH` mnemonic.
-    /// </summary>
-    LD1RSH,
-    /// <summary>
-    /// This `LD1RSW` mnemonic.
-    /// </summary>
-    LD1RSW,
-    /// <summary>
-    /// This `LD1RW` mnemonic.
-    /// </summary>
-    LD1RW,
-    /// <summary>
-    /// This `LD1SB` mnemonic.
-    /// </summary>
-    LD1SB,
-    /// <summary>
-    /// This `LD1SH` mnemonic.
-    /// </summary>
-    LD1SH,
-    /// <summary>
-    /// This `LD1SW` mnemonic.
-    /// </summary>
-    LD1SW,
-    /// <summary>
-    /// This `LD1W` mnemonic.
-    /// </summary>
-    LD1W,
-    /// <summary>
     /// This `LD2` mnemonic.
     /// </summary>
     LD2,
-    /// <summary>
-    /// This `LD2B` mnemonic.
-    /// </summary>
-    LD2B,
-    /// <summary>
-    /// This `LD2D` mnemonic.
-    /// </summary>
-    LD2D,
-    /// <summary>
-    /// This `LD2H` mnemonic.
-    /// </summary>
-    LD2H,
-    /// <summary>
-    /// This `LD2Q` mnemonic.
-    /// </summary>
-    LD2Q,
     /// <summary>
     /// This `LD2R` mnemonic.
     /// </summary>
     LD2R,
     /// <summary>
-    /// This `LD2W` mnemonic.
-    /// </summary>
-    LD2W,
-    /// <summary>
     /// This `LD3` mnemonic.
     /// </summary>
     LD3,
-    /// <summary>
-    /// This `LD3B` mnemonic.
-    /// </summary>
-    LD3B,
-    /// <summary>
-    /// This `LD3D` mnemonic.
-    /// </summary>
-    LD3D,
-    /// <summary>
-    /// This `LD3H` mnemonic.
-    /// </summary>
-    LD3H,
-    /// <summary>
-    /// This `LD3Q` mnemonic.
-    /// </summary>
-    LD3Q,
     /// <summary>
     /// This `LD3R` mnemonic.
     /// </summary>
     LD3R,
     /// <summary>
-    /// This `LD3W` mnemonic.
-    /// </summary>
-    LD3W,
-    /// <summary>
     /// This `LD4` mnemonic.
     /// </summary>
     LD4,
     /// <summary>
-    /// This `LD4B` mnemonic.
-    /// </summary>
-    LD4B,
-    /// <summary>
-    /// This `LD4D` mnemonic.
-    /// </summary>
-    LD4D,
-    /// <summary>
-    /// This `LD4H` mnemonic.
-    /// </summary>
-    LD4H,
-    /// <summary>
-    /// This `LD4Q` mnemonic.
-    /// </summary>
-    LD4Q,
-    /// <summary>
     /// This `LD4R` mnemonic.
     /// </summary>
     LD4R,
-    /// <summary>
-    /// This `LD4W` mnemonic.
-    /// </summary>
-    LD4W,
     /// <summary>
     /// This `LD64B` mnemonic.
     /// </summary>
@@ -2617,34 +1829,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     LDFADDL,
     /// <summary>
-    /// This `LDFF1B` mnemonic.
-    /// </summary>
-    LDFF1B,
-    /// <summary>
-    /// This `LDFF1D` mnemonic.
-    /// </summary>
-    LDFF1D,
-    /// <summary>
-    /// This `LDFF1H` mnemonic.
-    /// </summary>
-    LDFF1H,
-    /// <summary>
-    /// This `LDFF1SB` mnemonic.
-    /// </summary>
-    LDFF1SB,
-    /// <summary>
-    /// This `LDFF1SH` mnemonic.
-    /// </summary>
-    LDFF1SH,
-    /// <summary>
-    /// This `LDFF1SW` mnemonic.
-    /// </summary>
-    LDFF1SW,
-    /// <summary>
-    /// This `LDFF1W` mnemonic.
-    /// </summary>
-    LDFF1W,
-    /// <summary>
     /// This `LDFMAX` mnemonic.
     /// </summary>
     LDFMAX,
@@ -2733,65 +1917,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     LDLARH,
     /// <summary>
-    /// This `LDNF1B` mnemonic.
-    /// </summary>
-    LDNF1B,
-    /// <summary>
-    /// This `LDNF1D` mnemonic.
-    /// </summary>
-    LDNF1D,
-    /// <summary>
-    /// This `LDNF1H` mnemonic.
-    /// </summary>
-    LDNF1H,
-    /// <summary>
-    /// This `LDNF1SB` mnemonic.
-    /// </summary>
-    LDNF1SB,
-    /// <summary>
-    /// This `LDNF1SH` mnemonic.
-    /// </summary>
-    LDNF1SH,
-    /// <summary>
-    /// This `LDNF1SW` mnemonic.
-    /// </summary>
-    LDNF1SW,
-    /// <summary>
-    /// This `LDNF1W` mnemonic.
-    /// </summary>
-    LDNF1W,
-    /// <summary>
     /// This `LDNP` mnemonic.
     /// </summary>
     LDNP,
-    /// <summary>
-    /// This `LDNT1B` mnemonic.
-    /// </summary>
-    LDNT1B,
-    /// <summary>
-    /// This `LDNT1D` mnemonic.
-    /// </summary>
-    LDNT1D,
-    /// <summary>
-    /// This `LDNT1H` mnemonic.
-    /// </summary>
-    LDNT1H,
-    /// <summary>
-    /// This `LDNT1SB` mnemonic.
-    /// </summary>
-    LDNT1SB,
-    /// <summary>
-    /// This `LDNT1SH` mnemonic.
-    /// </summary>
-    LDNT1SH,
-    /// <summary>
-    /// This `LDNT1SW` mnemonic.
-    /// </summary>
-    LDNT1SW,
-    /// <summary>
-    /// This `LDNT1W` mnemonic.
-    /// </summary>
-    LDNT1W,
     /// <summary>
     /// This `LDP` mnemonic.
     /// </summary>
@@ -3213,25 +2341,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     LDXRH,
     /// <summary>
-    /// This `LSL` mnemonic.
-    /// </summary>
-    LSL,
-    /// <summary>
-    /// This `LSLR` mnemonic.
-    /// </summary>
-    LSLR,
-    /// <summary>
     /// This `LSLV` mnemonic.
     /// </summary>
     LSLV,
-    /// <summary>
-    /// This `LSR` mnemonic.
-    /// </summary>
-    LSR,
-    /// <summary>
-    /// This `LSRR` mnemonic.
-    /// </summary>
-    LSRR,
     /// <summary>
     /// This `LSRV` mnemonic.
     /// </summary>
@@ -3245,10 +2357,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     LUTI4,
     /// <summary>
-    /// This `MAD` mnemonic.
-    /// </summary>
-    MAD,
-    /// <summary>
     /// This `MADD` mnemonic.
     /// </summary>
     MADD,
@@ -3257,33 +2365,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     MADDPT,
     /// <summary>
-    /// This `MADPT` mnemonic.
-    /// </summary>
-    MADPT,
-    /// <summary>
-    /// This `MATCH` mnemonic.
-    /// </summary>
-    MATCH,
-    /// <summary>
     /// This `MLA` mnemonic.
     /// </summary>
     MLA,
     /// <summary>
-    /// This `MLAPT` mnemonic.
-    /// </summary>
-    MLAPT,
-    /// <summary>
     /// This `MLS` mnemonic.
     /// </summary>
     MLS,
-    /// <summary>
-    /// This `MOVA` mnemonic.
-    /// </summary>
-    MOVA,
-    /// <summary>
-    /// This `MOVAZ` mnemonic.
-    /// </summary>
-    MOVAZ,
     /// <summary>
     /// This `MOVI` mnemonic.
     /// </summary>
@@ -3297,14 +2385,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     MOVN,
     /// <summary>
-    /// This `MOVPRFX` mnemonic.
-    /// </summary>
-    MOVPRFX,
-    /// <summary>
-    /// This `MOVT` mnemonic.
-    /// </summary>
-    MOVT,
-    /// <summary>
     /// This `MOVZ` mnemonic.
     /// </summary>
     MOVZ,
@@ -3316,10 +2396,6 @@ public enum Arm64Mnemonic : ushort
     /// This `MRS` mnemonic.
     /// </summary>
     MRS,
-    /// <summary>
-    /// This `MSB` mnemonic.
-    /// </summary>
-    MSB,
     /// <summary>
     /// This `MSR` mnemonic.
     /// </summary>
@@ -3345,37 +2421,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     MVNI,
     /// <summary>
-    /// This `NAND` mnemonic.
-    /// </summary>
-    NAND,
-    /// <summary>
-    /// This `NANDS` mnemonic.
-    /// </summary>
-    NANDS,
-    /// <summary>
-    /// This `NBSL` mnemonic.
-    /// </summary>
-    NBSL,
-    /// <summary>
     /// This `NEG` mnemonic.
     /// </summary>
     NEG,
     /// <summary>
-    /// This `NMATCH` mnemonic.
-    /// </summary>
-    NMATCH,
-    /// <summary>
     /// This `NOP` mnemonic.
     /// </summary>
     NOP,
-    /// <summary>
-    /// This `NOR` mnemonic.
-    /// </summary>
-    NOR,
-    /// <summary>
-    /// This `NORS` mnemonic.
-    /// </summary>
-    NORS,
     /// <summary>
     /// This `NOT` mnemonic.
     /// </summary>
@@ -3385,25 +2437,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     ORN,
     /// <summary>
-    /// This `ORNS` mnemonic.
-    /// </summary>
-    ORNS,
-    /// <summary>
-    /// This `ORQV` mnemonic.
-    /// </summary>
-    ORQV,
-    /// <summary>
     /// This `ORR` mnemonic.
     /// </summary>
     ORR,
-    /// <summary>
-    /// This `ORRS` mnemonic.
-    /// </summary>
-    ORRS,
-    /// <summary>
-    /// This `ORV` mnemonic.
-    /// </summary>
-    ORV,
     /// <summary>
     /// This `PACDA` mnemonic.
     /// </summary>
@@ -3493,26 +2529,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     PACNBIBSPPC,
     /// <summary>
-    /// This `PEXT` mnemonic.
-    /// </summary>
-    PEXT,
-    /// <summary>
-    /// This `PFALSE` mnemonic.
-    /// </summary>
-    PFALSE,
-    /// <summary>
-    /// This `PFIRST` mnemonic.
-    /// </summary>
-    PFIRST,
-    /// <summary>
-    /// This `PMLAL` mnemonic.
-    /// </summary>
-    PMLAL,
-    /// <summary>
-    /// This `PMOV` mnemonic.
-    /// </summary>
-    PMOV,
-    /// <summary>
     /// This `PMUL` mnemonic.
     /// </summary>
     PMUL,
@@ -3520,30 +2536,6 @@ public enum Arm64Mnemonic : ushort
     /// This `PMULL` mnemonic.
     /// </summary>
     PMULL,
-    /// <summary>
-    /// This `PMULLB` mnemonic.
-    /// </summary>
-    PMULLB,
-    /// <summary>
-    /// This `PMULLT` mnemonic.
-    /// </summary>
-    PMULLT,
-    /// <summary>
-    /// This `PNEXT` mnemonic.
-    /// </summary>
-    PNEXT,
-    /// <summary>
-    /// This `PRFB` mnemonic.
-    /// </summary>
-    PRFB,
-    /// <summary>
-    /// This `PRFD` mnemonic.
-    /// </summary>
-    PRFD,
-    /// <summary>
-    /// This `PRFH` mnemonic.
-    /// </summary>
-    PRFH,
     /// <summary>
     /// This `PRFM` mnemonic.
     /// </summary>
@@ -3553,49 +2545,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     PRFUM,
     /// <summary>
-    /// This `PRFW` mnemonic.
-    /// </summary>
-    PRFW,
-    /// <summary>
     /// This `PSB` mnemonic.
     /// </summary>
     PSB,
     /// <summary>
-    /// This `PSEL` mnemonic.
-    /// </summary>
-    PSEL,
-    /// <summary>
-    /// This `PTEST` mnemonic.
-    /// </summary>
-    PTEST,
-    /// <summary>
-    /// This `PTRUE` mnemonic.
-    /// </summary>
-    PTRUE,
-    /// <summary>
-    /// This `PTRUES` mnemonic.
-    /// </summary>
-    PTRUES,
-    /// <summary>
-    /// This `PUNPKHI` mnemonic.
-    /// </summary>
-    PUNPKHI,
-    /// <summary>
-    /// This `PUNPKLO` mnemonic.
-    /// </summary>
-    PUNPKLO,
-    /// <summary>
     /// This `RADDHN` mnemonic.
     /// </summary>
     RADDHN,
-    /// <summary>
-    /// This `RADDHNB` mnemonic.
-    /// </summary>
-    RADDHNB,
-    /// <summary>
-    /// This `RADDHNT` mnemonic.
-    /// </summary>
-    RADDHNT,
     /// <summary>
     /// This `RAX1` mnemonic.
     /// </summary>
@@ -3861,22 +2817,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     RCWSWPPL,
     /// <summary>
-    /// This `RDFFR` mnemonic.
-    /// </summary>
-    RDFFR,
-    /// <summary>
-    /// This `RDFFRS` mnemonic.
-    /// </summary>
-    RDFFRS,
-    /// <summary>
-    /// This `RDSVL` mnemonic.
-    /// </summary>
-    RDSVL,
-    /// <summary>
-    /// This `RDVL` mnemonic.
-    /// </summary>
-    RDVL,
-    /// <summary>
     /// This `RET` mnemonic.
     /// </summary>
     RET,
@@ -3921,22 +2861,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     REV64,
     /// <summary>
-    /// This `REVB` mnemonic.
-    /// </summary>
-    REVB,
-    /// <summary>
-    /// This `REVD` mnemonic.
-    /// </summary>
-    REVD,
-    /// <summary>
-    /// This `REVH` mnemonic.
-    /// </summary>
-    REVH,
-    /// <summary>
-    /// This `REVW` mnemonic.
-    /// </summary>
-    REVW,
-    /// <summary>
     /// This `RMIF` mnemonic.
     /// </summary>
     RMIF,
@@ -3953,25 +2877,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     RSHRN,
     /// <summary>
-    /// This `RSHRNB` mnemonic.
-    /// </summary>
-    RSHRNB,
-    /// <summary>
-    /// This `RSHRNT` mnemonic.
-    /// </summary>
-    RSHRNT,
-    /// <summary>
     /// This `RSUBHN` mnemonic.
     /// </summary>
     RSUBHN,
-    /// <summary>
-    /// This `RSUBHNB` mnemonic.
-    /// </summary>
-    RSUBHNB,
-    /// <summary>
-    /// This `RSUBHNT` mnemonic.
-    /// </summary>
-    RSUBHNT,
     /// <summary>
     /// This `SABA` mnemonic.
     /// </summary>
@@ -3981,14 +2889,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SABAL,
     /// <summary>
-    /// This `SABALB` mnemonic.
-    /// </summary>
-    SABALB,
-    /// <summary>
-    /// This `SABALT` mnemonic.
-    /// </summary>
-    SABALT,
-    /// <summary>
     /// This `SABD` mnemonic.
     /// </summary>
     SABD,
@@ -3996,14 +2896,6 @@ public enum Arm64Mnemonic : ushort
     /// This `SABDL` mnemonic.
     /// </summary>
     SABDL,
-    /// <summary>
-    /// This `SABDLB` mnemonic.
-    /// </summary>
-    SABDLB,
-    /// <summary>
-    /// This `SABDLT` mnemonic.
-    /// </summary>
-    SABDLT,
     /// <summary>
     /// This `SADALP` mnemonic.
     /// </summary>
@@ -4013,41 +2905,17 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SADDL,
     /// <summary>
-    /// This `SADDLB` mnemonic.
-    /// </summary>
-    SADDLB,
-    /// <summary>
-    /// This `SADDLBT` mnemonic.
-    /// </summary>
-    SADDLBT,
-    /// <summary>
     /// This `SADDLP` mnemonic.
     /// </summary>
     SADDLP,
-    /// <summary>
-    /// This `SADDLT` mnemonic.
-    /// </summary>
-    SADDLT,
     /// <summary>
     /// This `SADDLV` mnemonic.
     /// </summary>
     SADDLV,
     /// <summary>
-    /// This `SADDV` mnemonic.
-    /// </summary>
-    SADDV,
-    /// <summary>
     /// This `SADDW` mnemonic.
     /// </summary>
     SADDW,
-    /// <summary>
-    /// This `SADDWB` mnemonic.
-    /// </summary>
-    SADDWB,
-    /// <summary>
-    /// This `SADDWT` mnemonic.
-    /// </summary>
-    SADDWT,
     /// <summary>
     /// This `SB` mnemonic.
     /// </summary>
@@ -4057,14 +2925,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SBC,
     /// <summary>
-    /// This `SBCLB` mnemonic.
-    /// </summary>
-    SBCLB,
-    /// <summary>
-    /// This `SBCLT` mnemonic.
-    /// </summary>
-    SBCLT,
-    /// <summary>
     /// This `SBCS` mnemonic.
     /// </summary>
     SBCS,
@@ -4072,10 +2932,6 @@ public enum Arm64Mnemonic : ushort
     /// This `SBFM` mnemonic.
     /// </summary>
     SBFM,
-    /// <summary>
-    /// This `SCLAMP` mnemonic.
-    /// </summary>
-    SCLAMP,
     /// <summary>
     /// This `SCVTF` mnemonic.
     /// </summary>
@@ -4085,17 +2941,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SDIV,
     /// <summary>
-    /// This `SDIVR` mnemonic.
-    /// </summary>
-    SDIVR,
-    /// <summary>
     /// This `SDOT` mnemonic.
     /// </summary>
     SDOT,
-    /// <summary>
-    /// This `SEL` mnemonic.
-    /// </summary>
-    SEL,
     /// <summary>
     /// This `SETE` mnemonic.
     /// </summary>
@@ -4120,10 +2968,6 @@ public enum Arm64Mnemonic : ushort
     /// This `SETF8` mnemonic.
     /// </summary>
     SETF8,
-    /// <summary>
-    /// This `SETFFR` mnemonic.
-    /// </summary>
-    SETFFR,
     /// <summary>
     /// This `SETGE` mnemonic.
     /// </summary>
@@ -4285,21 +3129,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SHRN,
     /// <summary>
-    /// This `SHRNB` mnemonic.
-    /// </summary>
-    SHRNB,
-    /// <summary>
-    /// This `SHRNT` mnemonic.
-    /// </summary>
-    SHRNT,
-    /// <summary>
     /// This `SHSUB` mnemonic.
     /// </summary>
     SHSUB,
-    /// <summary>
-    /// This `SHSUBR` mnemonic.
-    /// </summary>
-    SHSUBR,
     /// <summary>
     /// This `SLI` mnemonic.
     /// </summary>
@@ -4353,10 +3185,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SMAXP,
     /// <summary>
-    /// This `SMAXQV` mnemonic.
-    /// </summary>
-    SMAXQV,
-    /// <summary>
     /// This `SMAXV` mnemonic.
     /// </summary>
     SMAXV,
@@ -4373,10 +3201,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SMINP,
     /// <summary>
-    /// This `SMINQV` mnemonic.
-    /// </summary>
-    SMINQV,
-    /// <summary>
     /// This `SMINV` mnemonic.
     /// </summary>
     SMINV,
@@ -4385,53 +3209,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SMLAL,
     /// <summary>
-    /// This `SMLALB` mnemonic.
-    /// </summary>
-    SMLALB,
-    /// <summary>
-    /// This `SMLALL` mnemonic.
-    /// </summary>
-    SMLALL,
-    /// <summary>
-    /// This `SMLALT` mnemonic.
-    /// </summary>
-    SMLALT,
-    /// <summary>
     /// This `SMLSL` mnemonic.
     /// </summary>
     SMLSL,
     /// <summary>
-    /// This `SMLSLB` mnemonic.
-    /// </summary>
-    SMLSLB,
-    /// <summary>
-    /// This `SMLSLL` mnemonic.
-    /// </summary>
-    SMLSLL,
-    /// <summary>
-    /// This `SMLSLT` mnemonic.
-    /// </summary>
-    SMLSLT,
-    /// <summary>
     /// This `SMMLA` mnemonic.
     /// </summary>
     SMMLA,
-    /// <summary>
-    /// This `SMOP4A` mnemonic.
-    /// </summary>
-    SMOP4A,
-    /// <summary>
-    /// This `SMOP4S` mnemonic.
-    /// </summary>
-    SMOP4S,
-    /// <summary>
-    /// This `SMOPA` mnemonic.
-    /// </summary>
-    SMOPA,
-    /// <summary>
-    /// This `SMOPS` mnemonic.
-    /// </summary>
-    SMOPS,
     /// <summary>
     /// This `SMOV` mnemonic.
     /// </summary>
@@ -4449,18 +3233,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SMULL,
     /// <summary>
-    /// This `SMULLB` mnemonic.
-    /// </summary>
-    SMULLB,
-    /// <summary>
-    /// This `SMULLT` mnemonic.
-    /// </summary>
-    SMULLT,
-    /// <summary>
-    /// This `SPLICE` mnemonic.
-    /// </summary>
-    SPLICE,
-    /// <summary>
     /// This `SQABS` mnemonic.
     /// </summary>
     SQABS,
@@ -4469,77 +3241,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SQADD,
     /// <summary>
-    /// This `SQCADD` mnemonic.
-    /// </summary>
-    SQCADD,
-    /// <summary>
-    /// This `SQCVT` mnemonic.
-    /// </summary>
-    SQCVT,
-    /// <summary>
-    /// This `SQCVTN` mnemonic.
-    /// </summary>
-    SQCVTN,
-    /// <summary>
-    /// This `SQCVTU` mnemonic.
-    /// </summary>
-    SQCVTU,
-    /// <summary>
-    /// This `SQCVTUN` mnemonic.
-    /// </summary>
-    SQCVTUN,
-    /// <summary>
-    /// This `SQDECB` mnemonic.
-    /// </summary>
-    SQDECB,
-    /// <summary>
-    /// This `SQDECD` mnemonic.
-    /// </summary>
-    SQDECD,
-    /// <summary>
-    /// This `SQDECH` mnemonic.
-    /// </summary>
-    SQDECH,
-    /// <summary>
-    /// This `SQDECP` mnemonic.
-    /// </summary>
-    SQDECP,
-    /// <summary>
-    /// This `SQDECW` mnemonic.
-    /// </summary>
-    SQDECW,
-    /// <summary>
     /// This `SQDMLAL` mnemonic.
     /// </summary>
     SQDMLAL,
     /// <summary>
-    /// This `SQDMLALB` mnemonic.
-    /// </summary>
-    SQDMLALB,
-    /// <summary>
-    /// This `SQDMLALBT` mnemonic.
-    /// </summary>
-    SQDMLALBT,
-    /// <summary>
-    /// This `SQDMLALT` mnemonic.
-    /// </summary>
-    SQDMLALT,
-    /// <summary>
     /// This `SQDMLSL` mnemonic.
     /// </summary>
     SQDMLSL,
-    /// <summary>
-    /// This `SQDMLSLB` mnemonic.
-    /// </summary>
-    SQDMLSLB,
-    /// <summary>
-    /// This `SQDMLSLBT` mnemonic.
-    /// </summary>
-    SQDMLSLBT,
-    /// <summary>
-    /// This `SQDMLSLT` mnemonic.
-    /// </summary>
-    SQDMLSLT,
     /// <summary>
     /// This `SQDMULH` mnemonic.
     /// </summary>
@@ -4549,41 +3257,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SQDMULL,
     /// <summary>
-    /// This `SQDMULLB` mnemonic.
-    /// </summary>
-    SQDMULLB,
-    /// <summary>
-    /// This `SQDMULLT` mnemonic.
-    /// </summary>
-    SQDMULLT,
-    /// <summary>
-    /// This `SQINCB` mnemonic.
-    /// </summary>
-    SQINCB,
-    /// <summary>
-    /// This `SQINCD` mnemonic.
-    /// </summary>
-    SQINCD,
-    /// <summary>
-    /// This `SQINCH` mnemonic.
-    /// </summary>
-    SQINCH,
-    /// <summary>
-    /// This `SQINCP` mnemonic.
-    /// </summary>
-    SQINCP,
-    /// <summary>
-    /// This `SQINCW` mnemonic.
-    /// </summary>
-    SQINCW,
-    /// <summary>
     /// This `SQNEG` mnemonic.
     /// </summary>
     SQNEG,
-    /// <summary>
-    /// This `SQRDCMLAH` mnemonic.
-    /// </summary>
-    SQRDCMLAH,
     /// <summary>
     /// This `SQRDMLAH` mnemonic.
     /// </summary>
@@ -4601,49 +3277,17 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SQRSHL,
     /// <summary>
-    /// This `SQRSHLR` mnemonic.
-    /// </summary>
-    SQRSHLR,
-    /// <summary>
-    /// This `SQRSHR` mnemonic.
-    /// </summary>
-    SQRSHR,
-    /// <summary>
     /// This `SQRSHRN` mnemonic.
     /// </summary>
     SQRSHRN,
-    /// <summary>
-    /// This `SQRSHRNB` mnemonic.
-    /// </summary>
-    SQRSHRNB,
-    /// <summary>
-    /// This `SQRSHRNT` mnemonic.
-    /// </summary>
-    SQRSHRNT,
-    /// <summary>
-    /// This `SQRSHRU` mnemonic.
-    /// </summary>
-    SQRSHRU,
     /// <summary>
     /// This `SQRSHRUN` mnemonic.
     /// </summary>
     SQRSHRUN,
     /// <summary>
-    /// This `SQRSHRUNB` mnemonic.
-    /// </summary>
-    SQRSHRUNB,
-    /// <summary>
-    /// This `SQRSHRUNT` mnemonic.
-    /// </summary>
-    SQRSHRUNT,
-    /// <summary>
     /// This `SQSHL` mnemonic.
     /// </summary>
     SQSHL,
-    /// <summary>
-    /// This `SQSHLR` mnemonic.
-    /// </summary>
-    SQSHLR,
     /// <summary>
     /// This `SQSHLU` mnemonic.
     /// </summary>
@@ -4653,57 +3297,21 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SQSHRN,
     /// <summary>
-    /// This `SQSHRNB` mnemonic.
-    /// </summary>
-    SQSHRNB,
-    /// <summary>
-    /// This `SQSHRNT` mnemonic.
-    /// </summary>
-    SQSHRNT,
-    /// <summary>
     /// This `SQSHRUN` mnemonic.
     /// </summary>
     SQSHRUN,
-    /// <summary>
-    /// This `SQSHRUNB` mnemonic.
-    /// </summary>
-    SQSHRUNB,
-    /// <summary>
-    /// This `SQSHRUNT` mnemonic.
-    /// </summary>
-    SQSHRUNT,
     /// <summary>
     /// This `SQSUB` mnemonic.
     /// </summary>
     SQSUB,
     /// <summary>
-    /// This `SQSUBR` mnemonic.
-    /// </summary>
-    SQSUBR,
-    /// <summary>
     /// This `SQXTN` mnemonic.
     /// </summary>
     SQXTN,
     /// <summary>
-    /// This `SQXTNB` mnemonic.
-    /// </summary>
-    SQXTNB,
-    /// <summary>
-    /// This `SQXTNT` mnemonic.
-    /// </summary>
-    SQXTNT,
-    /// <summary>
     /// This `SQXTUN` mnemonic.
     /// </summary>
     SQXTUN,
-    /// <summary>
-    /// This `SQXTUNB` mnemonic.
-    /// </summary>
-    SQXTUNB,
-    /// <summary>
-    /// This `SQXTUNT` mnemonic.
-    /// </summary>
-    SQXTUNT,
     /// <summary>
     /// This `SRHADD` mnemonic.
     /// </summary>
@@ -4716,10 +3324,6 @@ public enum Arm64Mnemonic : ushort
     /// This `SRSHL` mnemonic.
     /// </summary>
     SRSHL,
-    /// <summary>
-    /// This `SRSHLR` mnemonic.
-    /// </summary>
-    SRSHLR,
     /// <summary>
     /// This `SRSHR` mnemonic.
     /// </summary>
@@ -4737,14 +3341,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SSHLL,
     /// <summary>
-    /// This `SSHLLB` mnemonic.
-    /// </summary>
-    SSHLLB,
-    /// <summary>
-    /// This `SSHLLT` mnemonic.
-    /// </summary>
-    SSHLLT,
-    /// <summary>
     /// This `SSHR` mnemonic.
     /// </summary>
     SSHR,
@@ -4757,133 +3353,29 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SSUBL,
     /// <summary>
-    /// This `SSUBLB` mnemonic.
-    /// </summary>
-    SSUBLB,
-    /// <summary>
-    /// This `SSUBLBT` mnemonic.
-    /// </summary>
-    SSUBLBT,
-    /// <summary>
-    /// This `SSUBLT` mnemonic.
-    /// </summary>
-    SSUBLT,
-    /// <summary>
-    /// This `SSUBLTB` mnemonic.
-    /// </summary>
-    SSUBLTB,
-    /// <summary>
     /// This `SSUBW` mnemonic.
     /// </summary>
     SSUBW,
-    /// <summary>
-    /// This `SSUBWB` mnemonic.
-    /// </summary>
-    SSUBWB,
-    /// <summary>
-    /// This `SSUBWT` mnemonic.
-    /// </summary>
-    SSUBWT,
     /// <summary>
     /// This `ST1` mnemonic.
     /// </summary>
     ST1,
     /// <summary>
-    /// This `ST1B` mnemonic.
-    /// </summary>
-    ST1B,
-    /// <summary>
-    /// This `ST1D` mnemonic.
-    /// </summary>
-    ST1D,
-    /// <summary>
-    /// This `ST1H` mnemonic.
-    /// </summary>
-    ST1H,
-    /// <summary>
-    /// This `ST1Q` mnemonic.
-    /// </summary>
-    ST1Q,
-    /// <summary>
-    /// This `ST1W` mnemonic.
-    /// </summary>
-    ST1W,
-    /// <summary>
     /// This `ST2` mnemonic.
     /// </summary>
     ST2,
-    /// <summary>
-    /// This `ST2B` mnemonic.
-    /// </summary>
-    ST2B,
-    /// <summary>
-    /// This `ST2D` mnemonic.
-    /// </summary>
-    ST2D,
     /// <summary>
     /// This `ST2G` mnemonic.
     /// </summary>
     ST2G,
     /// <summary>
-    /// This `ST2H` mnemonic.
-    /// </summary>
-    ST2H,
-    /// <summary>
-    /// This `ST2Q` mnemonic.
-    /// </summary>
-    ST2Q,
-    /// <summary>
-    /// This `ST2W` mnemonic.
-    /// </summary>
-    ST2W,
-    /// <summary>
     /// This `ST3` mnemonic.
     /// </summary>
     ST3,
     /// <summary>
-    /// This `ST3B` mnemonic.
-    /// </summary>
-    ST3B,
-    /// <summary>
-    /// This `ST3D` mnemonic.
-    /// </summary>
-    ST3D,
-    /// <summary>
-    /// This `ST3H` mnemonic.
-    /// </summary>
-    ST3H,
-    /// <summary>
-    /// This `ST3Q` mnemonic.
-    /// </summary>
-    ST3Q,
-    /// <summary>
-    /// This `ST3W` mnemonic.
-    /// </summary>
-    ST3W,
-    /// <summary>
     /// This `ST4` mnemonic.
     /// </summary>
     ST4,
-    /// <summary>
-    /// This `ST4B` mnemonic.
-    /// </summary>
-    ST4B,
-    /// <summary>
-    /// This `ST4D` mnemonic.
-    /// </summary>
-    ST4D,
-    /// <summary>
-    /// This `ST4H` mnemonic.
-    /// </summary>
-    ST4H,
-    /// <summary>
-    /// This `ST4Q` mnemonic.
-    /// </summary>
-    ST4Q,
-    /// <summary>
-    /// This `ST4W` mnemonic.
-    /// </summary>
-    ST4W,
     /// <summary>
     /// This `ST64B` mnemonic.
     /// </summary>
@@ -5053,29 +3545,9 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     STLXRH,
     /// <summary>
-    /// This `STMOPA` mnemonic.
-    /// </summary>
-    STMOPA,
-    /// <summary>
     /// This `STNP` mnemonic.
     /// </summary>
     STNP,
-    /// <summary>
-    /// This `STNT1B` mnemonic.
-    /// </summary>
-    STNT1B,
-    /// <summary>
-    /// This `STNT1D` mnemonic.
-    /// </summary>
-    STNT1D,
-    /// <summary>
-    /// This `STNT1H` mnemonic.
-    /// </summary>
-    STNT1H,
-    /// <summary>
-    /// This `STNT1W` mnemonic.
-    /// </summary>
-    STNT1W,
     /// <summary>
     /// This `STP` mnemonic.
     /// </summary>
@@ -5173,14 +3645,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SUBHN,
     /// <summary>
-    /// This `SUBHNB` mnemonic.
-    /// </summary>
-    SUBHNB,
-    /// <summary>
-    /// This `SUBHNT` mnemonic.
-    /// </summary>
-    SUBHNT,
-    /// <summary>
     /// This `SUBP` mnemonic.
     /// </summary>
     SUBP,
@@ -5193,10 +3657,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SUBPT,
     /// <summary>
-    /// This `SUBR` mnemonic.
-    /// </summary>
-    SUBR,
-    /// <summary>
     /// This `SUBS` mnemonic.
     /// </summary>
     SUBS,
@@ -5205,57 +3665,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SUDOT,
     /// <summary>
-    /// This `SUMLALL` mnemonic.
-    /// </summary>
-    SUMLALL,
-    /// <summary>
-    /// This `SUMOP4A` mnemonic.
-    /// </summary>
-    SUMOP4A,
-    /// <summary>
-    /// This `SUMOP4S` mnemonic.
-    /// </summary>
-    SUMOP4S,
-    /// <summary>
-    /// This `SUMOPA` mnemonic.
-    /// </summary>
-    SUMOPA,
-    /// <summary>
-    /// This `SUMOPS` mnemonic.
-    /// </summary>
-    SUMOPS,
-    /// <summary>
-    /// This `SUNPK` mnemonic.
-    /// </summary>
-    SUNPK,
-    /// <summary>
-    /// This `SUNPKHI` mnemonic.
-    /// </summary>
-    SUNPKHI,
-    /// <summary>
-    /// This `SUNPKLO` mnemonic.
-    /// </summary>
-    SUNPKLO,
-    /// <summary>
     /// This `SUQADD` mnemonic.
     /// </summary>
     SUQADD,
     /// <summary>
-    /// This `SUTMOPA` mnemonic.
-    /// </summary>
-    SUTMOPA,
-    /// <summary>
-    /// This `SUVDOT` mnemonic.
-    /// </summary>
-    SUVDOT,
-    /// <summary>
     /// This `SVC` mnemonic.
     /// </summary>
     SVC,
-    /// <summary>
-    /// This `SVDOT` mnemonic.
-    /// </summary>
-    SVDOT,
     /// <summary>
     /// This `SWP` mnemonic.
     /// </summary>
@@ -5337,18 +3753,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     SWPTL,
     /// <summary>
-    /// This `SXTB` mnemonic.
-    /// </summary>
-    SXTB,
-    /// <summary>
-    /// This `SXTH` mnemonic.
-    /// </summary>
-    SXTH,
-    /// <summary>
-    /// This `SXTW` mnemonic.
-    /// </summary>
-    SXTW,
-    /// <summary>
     /// This `SYS` mnemonic.
     /// </summary>
     SYS,
@@ -5365,10 +3769,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     TBL,
     /// <summary>
-    /// This `TBLQ` mnemonic.
-    /// </summary>
-    TBLQ,
-    /// <summary>
     /// This `TBNZ` mnemonic.
     /// </summary>
     TBNZ,
@@ -5376,10 +3776,6 @@ public enum Arm64Mnemonic : ushort
     /// This `TBX` mnemonic.
     /// </summary>
     TBX,
-    /// <summary>
-    /// This `TBXQ` mnemonic.
-    /// </summary>
-    TBXQ,
     /// <summary>
     /// This `TBZ` mnemonic.
     /// </summary>
@@ -5421,14 +3817,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     UABAL,
     /// <summary>
-    /// This `UABALB` mnemonic.
-    /// </summary>
-    UABALB,
-    /// <summary>
-    /// This `UABALT` mnemonic.
-    /// </summary>
-    UABALT,
-    /// <summary>
     /// This `UABD` mnemonic.
     /// </summary>
     UABD,
@@ -5436,14 +3824,6 @@ public enum Arm64Mnemonic : ushort
     /// This `UABDL` mnemonic.
     /// </summary>
     UABDL,
-    /// <summary>
-    /// This `UABDLB` mnemonic.
-    /// </summary>
-    UABDLB,
-    /// <summary>
-    /// This `UABDLT` mnemonic.
-    /// </summary>
-    UABDLT,
     /// <summary>
     /// This `UADALP` mnemonic.
     /// </summary>
@@ -5453,45 +3833,21 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     UADDL,
     /// <summary>
-    /// This `UADDLB` mnemonic.
-    /// </summary>
-    UADDLB,
-    /// <summary>
     /// This `UADDLP` mnemonic.
     /// </summary>
     UADDLP,
-    /// <summary>
-    /// This `UADDLT` mnemonic.
-    /// </summary>
-    UADDLT,
     /// <summary>
     /// This `UADDLV` mnemonic.
     /// </summary>
     UADDLV,
     /// <summary>
-    /// This `UADDV` mnemonic.
-    /// </summary>
-    UADDV,
-    /// <summary>
     /// This `UADDW` mnemonic.
     /// </summary>
     UADDW,
     /// <summary>
-    /// This `UADDWB` mnemonic.
-    /// </summary>
-    UADDWB,
-    /// <summary>
-    /// This `UADDWT` mnemonic.
-    /// </summary>
-    UADDWT,
-    /// <summary>
     /// This `UBFM` mnemonic.
     /// </summary>
     UBFM,
-    /// <summary>
-    /// This `UCLAMP` mnemonic.
-    /// </summary>
-    UCLAMP,
     /// <summary>
     /// This `UCVTF` mnemonic.
     /// </summary>
@@ -5505,10 +3861,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     UDIV,
     /// <summary>
-    /// This `UDIVR` mnemonic.
-    /// </summary>
-    UDIVR,
-    /// <summary>
     /// This `UDOT` mnemonic.
     /// </summary>
     UDOT,
@@ -5520,10 +3872,6 @@ public enum Arm64Mnemonic : ushort
     /// This `UHSUB` mnemonic.
     /// </summary>
     UHSUB,
-    /// <summary>
-    /// This `UHSUBR` mnemonic.
-    /// </summary>
-    UHSUBR,
     /// <summary>
     /// This `UMADDL` mnemonic.
     /// </summary>
@@ -5537,10 +3885,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     UMAXP,
     /// <summary>
-    /// This `UMAXQV` mnemonic.
-    /// </summary>
-    UMAXQV,
-    /// <summary>
     /// This `UMAXV` mnemonic.
     /// </summary>
     UMAXV,
@@ -5553,10 +3897,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     UMINP,
     /// <summary>
-    /// This `UMINQV` mnemonic.
-    /// </summary>
-    UMINQV,
-    /// <summary>
     /// This `UMINV` mnemonic.
     /// </summary>
     UMINV,
@@ -5565,53 +3905,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     UMLAL,
     /// <summary>
-    /// This `UMLALB` mnemonic.
-    /// </summary>
-    UMLALB,
-    /// <summary>
-    /// This `UMLALL` mnemonic.
-    /// </summary>
-    UMLALL,
-    /// <summary>
-    /// This `UMLALT` mnemonic.
-    /// </summary>
-    UMLALT,
-    /// <summary>
     /// This `UMLSL` mnemonic.
     /// </summary>
     UMLSL,
     /// <summary>
-    /// This `UMLSLB` mnemonic.
-    /// </summary>
-    UMLSLB,
-    /// <summary>
-    /// This `UMLSLL` mnemonic.
-    /// </summary>
-    UMLSLL,
-    /// <summary>
-    /// This `UMLSLT` mnemonic.
-    /// </summary>
-    UMLSLT,
-    /// <summary>
     /// This `UMMLA` mnemonic.
     /// </summary>
     UMMLA,
-    /// <summary>
-    /// This `UMOP4A` mnemonic.
-    /// </summary>
-    UMOP4A,
-    /// <summary>
-    /// This `UMOP4S` mnemonic.
-    /// </summary>
-    UMOP4S,
-    /// <summary>
-    /// This `UMOPA` mnemonic.
-    /// </summary>
-    UMOPA,
-    /// <summary>
-    /// This `UMOPS` mnemonic.
-    /// </summary>
-    UMOPS,
     /// <summary>
     /// This `UMOV` mnemonic.
     /// </summary>
@@ -5629,129 +3929,33 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     UMULL,
     /// <summary>
-    /// This `UMULLB` mnemonic.
-    /// </summary>
-    UMULLB,
-    /// <summary>
-    /// This `UMULLT` mnemonic.
-    /// </summary>
-    UMULLT,
-    /// <summary>
     /// This `UQADD` mnemonic.
     /// </summary>
     UQADD,
-    /// <summary>
-    /// This `UQCVT` mnemonic.
-    /// </summary>
-    UQCVT,
-    /// <summary>
-    /// This `UQCVTN` mnemonic.
-    /// </summary>
-    UQCVTN,
-    /// <summary>
-    /// This `UQDECB` mnemonic.
-    /// </summary>
-    UQDECB,
-    /// <summary>
-    /// This `UQDECD` mnemonic.
-    /// </summary>
-    UQDECD,
-    /// <summary>
-    /// This `UQDECH` mnemonic.
-    /// </summary>
-    UQDECH,
-    /// <summary>
-    /// This `UQDECP` mnemonic.
-    /// </summary>
-    UQDECP,
-    /// <summary>
-    /// This `UQDECW` mnemonic.
-    /// </summary>
-    UQDECW,
-    /// <summary>
-    /// This `UQINCB` mnemonic.
-    /// </summary>
-    UQINCB,
-    /// <summary>
-    /// This `UQINCD` mnemonic.
-    /// </summary>
-    UQINCD,
-    /// <summary>
-    /// This `UQINCH` mnemonic.
-    /// </summary>
-    UQINCH,
-    /// <summary>
-    /// This `UQINCP` mnemonic.
-    /// </summary>
-    UQINCP,
-    /// <summary>
-    /// This `UQINCW` mnemonic.
-    /// </summary>
-    UQINCW,
     /// <summary>
     /// This `UQRSHL` mnemonic.
     /// </summary>
     UQRSHL,
     /// <summary>
-    /// This `UQRSHLR` mnemonic.
-    /// </summary>
-    UQRSHLR,
-    /// <summary>
-    /// This `UQRSHR` mnemonic.
-    /// </summary>
-    UQRSHR,
-    /// <summary>
     /// This `UQRSHRN` mnemonic.
     /// </summary>
     UQRSHRN,
-    /// <summary>
-    /// This `UQRSHRNB` mnemonic.
-    /// </summary>
-    UQRSHRNB,
-    /// <summary>
-    /// This `UQRSHRNT` mnemonic.
-    /// </summary>
-    UQRSHRNT,
     /// <summary>
     /// This `UQSHL` mnemonic.
     /// </summary>
     UQSHL,
     /// <summary>
-    /// This `UQSHLR` mnemonic.
-    /// </summary>
-    UQSHLR,
-    /// <summary>
     /// This `UQSHRN` mnemonic.
     /// </summary>
     UQSHRN,
-    /// <summary>
-    /// This `UQSHRNB` mnemonic.
-    /// </summary>
-    UQSHRNB,
-    /// <summary>
-    /// This `UQSHRNT` mnemonic.
-    /// </summary>
-    UQSHRNT,
     /// <summary>
     /// This `UQSUB` mnemonic.
     /// </summary>
     UQSUB,
     /// <summary>
-    /// This `UQSUBR` mnemonic.
-    /// </summary>
-    UQSUBR,
-    /// <summary>
     /// This `UQXTN` mnemonic.
     /// </summary>
     UQXTN,
-    /// <summary>
-    /// This `UQXTNB` mnemonic.
-    /// </summary>
-    UQXTNB,
-    /// <summary>
-    /// This `UQXTNT` mnemonic.
-    /// </summary>
-    UQXTNT,
     /// <summary>
     /// This `URECPE` mnemonic.
     /// </summary>
@@ -5764,10 +3968,6 @@ public enum Arm64Mnemonic : ushort
     /// This `URSHL` mnemonic.
     /// </summary>
     URSHL,
-    /// <summary>
-    /// This `URSHLR` mnemonic.
-    /// </summary>
-    URSHLR,
     /// <summary>
     /// This `URSHR` mnemonic.
     /// </summary>
@@ -5793,41 +3993,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     USHLL,
     /// <summary>
-    /// This `USHLLB` mnemonic.
-    /// </summary>
-    USHLLB,
-    /// <summary>
-    /// This `USHLLT` mnemonic.
-    /// </summary>
-    USHLLT,
-    /// <summary>
     /// This `USHR` mnemonic.
     /// </summary>
     USHR,
     /// <summary>
-    /// This `USMLALL` mnemonic.
-    /// </summary>
-    USMLALL,
-    /// <summary>
     /// This `USMMLA` mnemonic.
     /// </summary>
     USMMLA,
-    /// <summary>
-    /// This `USMOP4A` mnemonic.
-    /// </summary>
-    USMOP4A,
-    /// <summary>
-    /// This `USMOP4S` mnemonic.
-    /// </summary>
-    USMOP4S,
-    /// <summary>
-    /// This `USMOPA` mnemonic.
-    /// </summary>
-    USMOPA,
-    /// <summary>
-    /// This `USMOPS` mnemonic.
-    /// </summary>
-    USMOPS,
     /// <summary>
     /// This `USQADD` mnemonic.
     /// </summary>
@@ -5837,73 +4009,13 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     USRA,
     /// <summary>
-    /// This `USTMOPA` mnemonic.
-    /// </summary>
-    USTMOPA,
-    /// <summary>
     /// This `USUBL` mnemonic.
     /// </summary>
     USUBL,
     /// <summary>
-    /// This `USUBLB` mnemonic.
-    /// </summary>
-    USUBLB,
-    /// <summary>
-    /// This `USUBLT` mnemonic.
-    /// </summary>
-    USUBLT,
-    /// <summary>
     /// This `USUBW` mnemonic.
     /// </summary>
     USUBW,
-    /// <summary>
-    /// This `USUBWB` mnemonic.
-    /// </summary>
-    USUBWB,
-    /// <summary>
-    /// This `USUBWT` mnemonic.
-    /// </summary>
-    USUBWT,
-    /// <summary>
-    /// This `USVDOT` mnemonic.
-    /// </summary>
-    USVDOT,
-    /// <summary>
-    /// This `UTMOPA` mnemonic.
-    /// </summary>
-    UTMOPA,
-    /// <summary>
-    /// This `UUNPK` mnemonic.
-    /// </summary>
-    UUNPK,
-    /// <summary>
-    /// This `UUNPKHI` mnemonic.
-    /// </summary>
-    UUNPKHI,
-    /// <summary>
-    /// This `UUNPKLO` mnemonic.
-    /// </summary>
-    UUNPKLO,
-    /// <summary>
-    /// This `UVDOT` mnemonic.
-    /// </summary>
-    UVDOT,
-    /// <summary>
-    /// This `UXTB` mnemonic.
-    /// </summary>
-    UXTB,
-    /// <summary>
-    /// This `UXTH` mnemonic.
-    /// </summary>
-    UXTH,
-    /// <summary>
-    /// This `UXTW` mnemonic.
-    /// </summary>
-    UXTW,
-    /// <summary>
-    /// This `UZP` mnemonic.
-    /// </summary>
-    UZP,
     /// <summary>
     /// This `UZP1` mnemonic.
     /// </summary>
@@ -5912,14 +4024,6 @@ public enum Arm64Mnemonic : ushort
     /// This `UZP2` mnemonic.
     /// </summary>
     UZP2,
-    /// <summary>
-    /// This `UZPQ1` mnemonic.
-    /// </summary>
-    UZPQ1,
-    /// <summary>
-    /// This `UZPQ2` mnemonic.
-    /// </summary>
-    UZPQ2,
     /// <summary>
     /// This `WFE` mnemonic.
     /// </summary>
@@ -5936,50 +4040,6 @@ public enum Arm64Mnemonic : ushort
     /// This `WFIT` mnemonic.
     /// </summary>
     WFIT,
-    /// <summary>
-    /// This `WHILEGE` mnemonic.
-    /// </summary>
-    WHILEGE,
-    /// <summary>
-    /// This `WHILEGT` mnemonic.
-    /// </summary>
-    WHILEGT,
-    /// <summary>
-    /// This `WHILEHI` mnemonic.
-    /// </summary>
-    WHILEHI,
-    /// <summary>
-    /// This `WHILEHS` mnemonic.
-    /// </summary>
-    WHILEHS,
-    /// <summary>
-    /// This `WHILELE` mnemonic.
-    /// </summary>
-    WHILELE,
-    /// <summary>
-    /// This `WHILELO` mnemonic.
-    /// </summary>
-    WHILELO,
-    /// <summary>
-    /// This `WHILELS` mnemonic.
-    /// </summary>
-    WHILELS,
-    /// <summary>
-    /// This `WHILELT` mnemonic.
-    /// </summary>
-    WHILELT,
-    /// <summary>
-    /// This `WHILERW` mnemonic.
-    /// </summary>
-    WHILERW,
-    /// <summary>
-    /// This `WHILEWR` mnemonic.
-    /// </summary>
-    WHILEWR,
-    /// <summary>
-    /// This `WRFFR` mnemonic.
-    /// </summary>
-    WRFFR,
     /// <summary>
     /// This `XAFLAG` mnemonic.
     /// </summary>
@@ -6009,14 +4069,6 @@ public enum Arm64Mnemonic : ushort
     /// </summary>
     YIELD,
     /// <summary>
-    /// This `ZERO` mnemonic.
-    /// </summary>
-    ZERO,
-    /// <summary>
-    /// This `ZIP` mnemonic.
-    /// </summary>
-    ZIP,
-    /// <summary>
     /// This `ZIP1` mnemonic.
     /// </summary>
     ZIP1,
@@ -6024,14 +4076,6 @@ public enum Arm64Mnemonic : ushort
     /// This `ZIP2` mnemonic.
     /// </summary>
     ZIP2,
-    /// <summary>
-    /// This `ZIPQ1` mnemonic.
-    /// </summary>
-    ZIPQ1,
-    /// <summary>
-    /// This `ZIPQ2` mnemonic.
-    /// </summary>
-    ZIPQ2,
 }
 
 partial class Arm64Extensions
@@ -6041,40 +4085,22 @@ partial class Arm64Extensions
         "???",
         "abs",
         "adc",
-        "adclb",
-        "adclt",
         "adcs",
         "add",
         "addg",
-        "addha",
         "addhn",
-        "addhnb",
-        "addhnt",
         "addp",
-        "addpl",
         "addpt",
-        "addqv",
         "adds",
-        "addspl",
-        "addsvl",
         "addv",
-        "addva",
-        "addvl",
         "adr",
         "adrp",
         "aesd",
-        "aesdimc",
         "aese",
-        "aesemc",
         "aesimc",
         "aesmc",
         "and",
-        "andqv",
         "ands",
-        "andv",
-        "asr",
-        "asrd",
-        "asrr",
         "asrv",
         "autda",
         "autdb",
@@ -6100,44 +4126,14 @@ partial class Arm64Extensions
         "b",
         "bc",
         "bcax",
-        "bdep",
-        "bext",
-        "bf1cvt",
         "bf1cvtl",
-        "bf1cvtlt",
-        "bf2cvt",
         "bf2cvtl",
-        "bf2cvtlt",
-        "bfadd",
-        "bfclamp",
         "bfcvt",
         "bfcvtn",
-        "bfcvtnt",
         "bfdot",
         "bfm",
-        "bfmax",
-        "bfmaxnm",
-        "bfmin",
-        "bfminnm",
-        "bfmla",
         "bfmlal",
-        "bfmlalb",
-        "bfmlalt",
-        "bfmls",
-        "bfmlsl",
-        "bfmlslb",
-        "bfmlslt",
         "bfmmla",
-        "bfmop4a",
-        "bfmop4s",
-        "bfmopa",
-        "bfmops",
-        "bfmul",
-        "bfscale",
-        "bfsub",
-        "bftmopa",
-        "bfvdot",
-        "bgrp",
         "bic",
         "bics",
         "bif",
@@ -6148,29 +4144,14 @@ partial class Arm64Extensions
         "blraaz",
         "blrab",
         "blrabz",
-        "bmopa",
-        "bmops",
         "br",
         "braa",
         "braaz",
         "brab",
         "brabz",
         "brk",
-        "brka",
-        "brkas",
-        "brkb",
-        "brkbs",
-        "brkn",
-        "brkns",
-        "brkpa",
-        "brkpas",
-        "brkpb",
-        "brkpbs",
         "bsl",
-        "bsl1n",
-        "bsl2n",
         "bti",
-        "cadd",
         "cas",
         "casa",
         "casab",
@@ -6219,11 +4200,8 @@ partial class Arm64Extensions
         "cbz",
         "ccmn",
         "ccmp",
-        "cdot",
         "cfinv",
         "chkfeat",
-        "clasta",
-        "clastb",
         "clrbhb",
         "clrex",
         "cls",
@@ -6233,29 +4211,10 @@ partial class Arm64Extensions
         "cmgt",
         "cmhi",
         "cmhs",
-        "cmla",
         "cmle",
         "cmlt",
-        "cmpeq",
-        "cmpge",
-        "cmpgt",
-        "cmphi",
-        "cmphs",
-        "cmple",
-        "cmplo",
-        "cmpls",
-        "cmplt",
-        "cmpne",
         "cmtst",
-        "cnot",
         "cnt",
-        "cntb",
-        "cntd",
-        "cnth",
-        "cntp",
-        "cntw",
-        "compact",
-        "cpy",
         "cpye",
         "cpyen",
         "cpyern",
@@ -6365,123 +4324,80 @@ partial class Arm64Extensions
         "csinc",
         "csinv",
         "csneg",
-        "ctermeq",
-        "ctermne",
         "ctz",
         "dcps1",
         "dcps2",
         "dcps3",
-        "decb",
-        "decd",
-        "dech",
-        "decp",
-        "decw",
         "dgh",
         "dmb",
         "drps",
         "dsb",
         "dup",
-        "dupm",
-        "dupq",
         "eon",
         "eor",
         "eor3",
-        "eorbt",
-        "eorqv",
-        "eors",
-        "eortb",
-        "eorv",
         "eret",
         "eretaa",
         "eretab",
         "esb",
-        "expand",
         "ext",
-        "extq",
         "extr",
-        "f1cvt",
         "f1cvtl",
-        "f1cvtlt",
-        "f2cvt",
         "f2cvtl",
-        "f2cvtlt",
         "fabd",
         "fabs",
         "facge",
         "facgt",
         "fadd",
-        "fadda",
         "faddp",
-        "faddqv",
-        "faddv",
         "famax",
         "famin",
         "fcadd",
         "fccmp",
         "fccmpe",
-        "fclamp",
         "fcmeq",
         "fcmge",
         "fcmgt",
         "fcmla",
         "fcmle",
         "fcmlt",
-        "fcmne",
         "fcmp",
         "fcmpe",
-        "fcmuo",
-        "fcpy",
         "fcsel",
         "fcvt",
         "fcvtas",
         "fcvtau",
         "fcvtl",
-        "fcvtlt",
         "fcvtms",
         "fcvtmu",
         "fcvtn",
-        "fcvtnb",
         "fcvtns",
-        "fcvtnt",
         "fcvtnu",
         "fcvtps",
         "fcvtpu",
-        "fcvtx",
         "fcvtxn",
-        "fcvtxnt",
         "fcvtzs",
         "fcvtzu",
         "fdiv",
-        "fdivr",
         "fdot",
-        "fdup",
-        "fexpa",
-        "firstp",
         "fjcvtzs",
-        "flogb",
-        "fmad",
         "fmadd",
         "fmax",
         "fmaxnm",
         "fmaxnmp",
-        "fmaxnmqv",
         "fmaxnmv",
         "fmaxp",
-        "fmaxqv",
         "fmaxv",
         "fmin",
         "fminnm",
         "fminnmp",
-        "fminnmqv",
         "fminnmv",
         "fminp",
-        "fminqv",
         "fminv",
         "fmla",
         "fmlal",
         "fmlal2",
         "fmlalb",
-        "fmlall",
         "fmlallbb",
         "fmlallbt",
         "fmlalltb",
@@ -6490,24 +4406,13 @@ partial class Arm64Extensions
         "fmls",
         "fmlsl",
         "fmlsl2",
-        "fmlslb",
-        "fmlslt",
         "fmmla",
-        "fmop4a",
-        "fmop4s",
-        "fmopa",
-        "fmops",
         "fmov",
-        "fmsb",
         "fmsub",
         "fmul",
         "fmulx",
         "fneg",
-        "fnmad",
         "fnmadd",
-        "fnmla",
-        "fnmls",
-        "fnmsb",
         "fnmsub",
         "fnmul",
         "frecpe",
@@ -6529,82 +4434,24 @@ partial class Arm64Extensions
         "fscale",
         "fsqrt",
         "fsub",
-        "fsubr",
-        "ftmad",
-        "ftmopa",
-        "ftsmul",
-        "ftssel",
-        "fvdot",
-        "fvdotb",
-        "fvdott",
         "gcsb",
         "gcsstr",
         "gcssttr",
         "gmi",
         "hint",
-        "histcnt",
-        "histseg",
         "hlt",
         "hvc",
-        "incb",
-        "incd",
-        "inch",
-        "incp",
-        "incw",
-        "index",
         "ins",
-        "insr",
         "irg",
         "isb",
-        "lasta",
-        "lastb",
-        "lastp",
         "ld1",
-        "ld1b",
-        "ld1d",
-        "ld1h",
-        "ld1q",
         "ld1r",
-        "ld1rb",
-        "ld1rd",
-        "ld1rh",
-        "ld1rob",
-        "ld1rod",
-        "ld1roh",
-        "ld1row",
-        "ld1rqb",
-        "ld1rqd",
-        "ld1rqh",
-        "ld1rqw",
-        "ld1rsb",
-        "ld1rsh",
-        "ld1rsw",
-        "ld1rw",
-        "ld1sb",
-        "ld1sh",
-        "ld1sw",
-        "ld1w",
         "ld2",
-        "ld2b",
-        "ld2d",
-        "ld2h",
-        "ld2q",
         "ld2r",
-        "ld2w",
         "ld3",
-        "ld3b",
-        "ld3d",
-        "ld3h",
-        "ld3q",
         "ld3r",
-        "ld3w",
         "ld4",
-        "ld4b",
-        "ld4d",
-        "ld4h",
-        "ld4q",
         "ld4r",
-        "ld4w",
         "ld64b",
         "ldadd",
         "ldadda",
@@ -6688,13 +4535,6 @@ partial class Arm64Extensions
         "ldfadda",
         "ldfaddal",
         "ldfaddl",
-        "ldff1b",
-        "ldff1d",
-        "ldff1h",
-        "ldff1sb",
-        "ldff1sh",
-        "ldff1sw",
-        "ldff1w",
         "ldfmax",
         "ldfmaxa",
         "ldfmaxal",
@@ -6717,21 +4557,7 @@ partial class Arm64Extensions
         "ldlar",
         "ldlarb",
         "ldlarh",
-        "ldnf1b",
-        "ldnf1d",
-        "ldnf1h",
-        "ldnf1sb",
-        "ldnf1sh",
-        "ldnf1sw",
-        "ldnf1w",
         "ldnp",
-        "ldnt1b",
-        "ldnt1d",
-        "ldnt1h",
-        "ldnt1sb",
-        "ldnt1sh",
-        "ldnt1sw",
-        "ldnt1w",
         "ldp",
         "ldpsw",
         "ldr",
@@ -6837,54 +4663,31 @@ partial class Arm64Extensions
         "ldxr",
         "ldxrb",
         "ldxrh",
-        "lsl",
-        "lslr",
         "lslv",
-        "lsr",
-        "lsrr",
         "lsrv",
         "luti2",
         "luti4",
-        "mad",
         "madd",
         "maddpt",
-        "madpt",
-        "match",
         "mla",
-        "mlapt",
         "mls",
-        "mova",
-        "movaz",
         "movi",
         "movk",
         "movn",
-        "movprfx",
-        "movt",
         "movz",
         "mrrs",
         "mrs",
-        "msb",
         "msr",
         "msrr",
         "msub",
         "msubpt",
         "mul",
         "mvni",
-        "nand",
-        "nands",
-        "nbsl",
         "neg",
-        "nmatch",
         "nop",
-        "nor",
-        "nors",
         "not",
         "orn",
-        "orns",
-        "orqv",
         "orr",
-        "orrs",
-        "orv",
         "pacda",
         "pacdb",
         "pacdza",
@@ -6907,32 +4710,12 @@ partial class Arm64Extensions
         "pacm",
         "pacnbiasppc",
         "pacnbibsppc",
-        "pext",
-        "pfalse",
-        "pfirst",
-        "pmlal",
-        "pmov",
         "pmul",
         "pmull",
-        "pmullb",
-        "pmullt",
-        "pnext",
-        "prfb",
-        "prfd",
-        "prfh",
         "prfm",
         "prfum",
-        "prfw",
         "psb",
-        "psel",
-        "ptest",
-        "ptrue",
-        "ptrues",
-        "punpkhi",
-        "punpklo",
         "raddhn",
-        "raddhnb",
-        "raddhnt",
         "rax1",
         "rbit",
         "rcwcas",
@@ -6999,10 +4782,6 @@ partial class Arm64Extensions
         "rcwswppa",
         "rcwswppal",
         "rcwswppl",
-        "rdffr",
-        "rdffrs",
-        "rdsvl",
-        "rdvl",
         "ret",
         "retaa",
         "retaasppc",
@@ -7014,57 +4793,33 @@ partial class Arm64Extensions
         "rev16",
         "rev32",
         "rev64",
-        "revb",
-        "revd",
-        "revh",
-        "revw",
         "rmif",
         "rorv",
         "rprfm",
         "rshrn",
-        "rshrnb",
-        "rshrnt",
         "rsubhn",
-        "rsubhnb",
-        "rsubhnt",
         "saba",
         "sabal",
-        "sabalb",
-        "sabalt",
         "sabd",
         "sabdl",
-        "sabdlb",
-        "sabdlt",
         "sadalp",
         "saddl",
-        "saddlb",
-        "saddlbt",
         "saddlp",
-        "saddlt",
         "saddlv",
-        "saddv",
         "saddw",
-        "saddwb",
-        "saddwt",
         "sb",
         "sbc",
-        "sbclb",
-        "sbclt",
         "sbcs",
         "sbfm",
-        "sclamp",
         "scvtf",
         "sdiv",
-        "sdivr",
         "sdot",
-        "sel",
         "sete",
         "seten",
         "setet",
         "setetn",
         "setf16",
         "setf8",
-        "setffr",
         "setge",
         "setgen",
         "setget",
@@ -7105,10 +4860,7 @@ partial class Arm64Extensions
         "shl",
         "shll",
         "shrn",
-        "shrnb",
-        "shrnt",
         "shsub",
-        "shsubr",
         "sli",
         "sm3partw1",
         "sm3partw2",
@@ -7122,139 +4874,54 @@ partial class Arm64Extensions
         "smaddl",
         "smax",
         "smaxp",
-        "smaxqv",
         "smaxv",
         "smc",
         "smin",
         "sminp",
-        "sminqv",
         "sminv",
         "smlal",
-        "smlalb",
-        "smlall",
-        "smlalt",
         "smlsl",
-        "smlslb",
-        "smlsll",
-        "smlslt",
         "smmla",
-        "smop4a",
-        "smop4s",
-        "smopa",
-        "smops",
         "smov",
         "smsubl",
         "smulh",
         "smull",
-        "smullb",
-        "smullt",
-        "splice",
         "sqabs",
         "sqadd",
-        "sqcadd",
-        "sqcvt",
-        "sqcvtn",
-        "sqcvtu",
-        "sqcvtun",
-        "sqdecb",
-        "sqdecd",
-        "sqdech",
-        "sqdecp",
-        "sqdecw",
         "sqdmlal",
-        "sqdmlalb",
-        "sqdmlalbt",
-        "sqdmlalt",
         "sqdmlsl",
-        "sqdmlslb",
-        "sqdmlslbt",
-        "sqdmlslt",
         "sqdmulh",
         "sqdmull",
-        "sqdmullb",
-        "sqdmullt",
-        "sqincb",
-        "sqincd",
-        "sqinch",
-        "sqincp",
-        "sqincw",
         "sqneg",
-        "sqrdcmlah",
         "sqrdmlah",
         "sqrdmlsh",
         "sqrdmulh",
         "sqrshl",
-        "sqrshlr",
-        "sqrshr",
         "sqrshrn",
-        "sqrshrnb",
-        "sqrshrnt",
-        "sqrshru",
         "sqrshrun",
-        "sqrshrunb",
-        "sqrshrunt",
         "sqshl",
-        "sqshlr",
         "sqshlu",
         "sqshrn",
-        "sqshrnb",
-        "sqshrnt",
         "sqshrun",
-        "sqshrunb",
-        "sqshrunt",
         "sqsub",
-        "sqsubr",
         "sqxtn",
-        "sqxtnb",
-        "sqxtnt",
         "sqxtun",
-        "sqxtunb",
-        "sqxtunt",
         "srhadd",
         "sri",
         "srshl",
-        "srshlr",
         "srshr",
         "srsra",
         "sshl",
         "sshll",
-        "sshllb",
-        "sshllt",
         "sshr",
         "ssra",
         "ssubl",
-        "ssublb",
-        "ssublbt",
-        "ssublt",
-        "ssubltb",
         "ssubw",
-        "ssubwb",
-        "ssubwt",
         "st1",
-        "st1b",
-        "st1d",
-        "st1h",
-        "st1q",
-        "st1w",
         "st2",
-        "st2b",
-        "st2d",
         "st2g",
-        "st2h",
-        "st2q",
-        "st2w",
         "st3",
-        "st3b",
-        "st3d",
-        "st3h",
-        "st3q",
-        "st3w",
         "st4",
-        "st4b",
-        "st4d",
-        "st4h",
-        "st4q",
-        "st4w",
         "st64b",
         "st64bv",
         "st64bv0",
@@ -7297,12 +4964,7 @@ partial class Arm64Extensions
         "stlxr",
         "stlxrb",
         "stlxrh",
-        "stmopa",
         "stnp",
-        "stnt1b",
-        "stnt1d",
-        "stnt1h",
-        "stnt1w",
         "stp",
         "str",
         "strb",
@@ -7327,27 +4989,13 @@ partial class Arm64Extensions
         "sub",
         "subg",
         "subhn",
-        "subhnb",
-        "subhnt",
         "subp",
         "subps",
         "subpt",
-        "subr",
         "subs",
         "sudot",
-        "sumlall",
-        "sumop4a",
-        "sumop4s",
-        "sumopa",
-        "sumops",
-        "sunpk",
-        "sunpkhi",
-        "sunpklo",
         "suqadd",
-        "sutmopa",
-        "suvdot",
         "svc",
-        "svdot",
         "swp",
         "swpa",
         "swpab",
@@ -7368,17 +5016,12 @@ partial class Arm64Extensions
         "swpta",
         "swptal",
         "swptl",
-        "sxtb",
-        "sxth",
-        "sxtw",
         "sys",
         "sysl",
         "sysp",
         "tbl",
-        "tblq",
         "tbnz",
         "tbx",
-        "tbxq",
         "tbz",
         "tcancel",
         "tcommit",
@@ -7389,146 +5032,62 @@ partial class Arm64Extensions
         "ttest",
         "uaba",
         "uabal",
-        "uabalb",
-        "uabalt",
         "uabd",
         "uabdl",
-        "uabdlb",
-        "uabdlt",
         "uadalp",
         "uaddl",
-        "uaddlb",
         "uaddlp",
-        "uaddlt",
         "uaddlv",
-        "uaddv",
         "uaddw",
-        "uaddwb",
-        "uaddwt",
         "ubfm",
-        "uclamp",
         "ucvtf",
         "udf",
         "udiv",
-        "udivr",
         "udot",
         "uhadd",
         "uhsub",
-        "uhsubr",
         "umaddl",
         "umax",
         "umaxp",
-        "umaxqv",
         "umaxv",
         "umin",
         "uminp",
-        "uminqv",
         "uminv",
         "umlal",
-        "umlalb",
-        "umlall",
-        "umlalt",
         "umlsl",
-        "umlslb",
-        "umlsll",
-        "umlslt",
         "ummla",
-        "umop4a",
-        "umop4s",
-        "umopa",
-        "umops",
         "umov",
         "umsubl",
         "umulh",
         "umull",
-        "umullb",
-        "umullt",
         "uqadd",
-        "uqcvt",
-        "uqcvtn",
-        "uqdecb",
-        "uqdecd",
-        "uqdech",
-        "uqdecp",
-        "uqdecw",
-        "uqincb",
-        "uqincd",
-        "uqinch",
-        "uqincp",
-        "uqincw",
         "uqrshl",
-        "uqrshlr",
-        "uqrshr",
         "uqrshrn",
-        "uqrshrnb",
-        "uqrshrnt",
         "uqshl",
-        "uqshlr",
         "uqshrn",
-        "uqshrnb",
-        "uqshrnt",
         "uqsub",
-        "uqsubr",
         "uqxtn",
-        "uqxtnb",
-        "uqxtnt",
         "urecpe",
         "urhadd",
         "urshl",
-        "urshlr",
         "urshr",
         "ursqrte",
         "ursra",
         "usdot",
         "ushl",
         "ushll",
-        "ushllb",
-        "ushllt",
         "ushr",
-        "usmlall",
         "usmmla",
-        "usmop4a",
-        "usmop4s",
-        "usmopa",
-        "usmops",
         "usqadd",
         "usra",
-        "ustmopa",
         "usubl",
-        "usublb",
-        "usublt",
         "usubw",
-        "usubwb",
-        "usubwt",
-        "usvdot",
-        "utmopa",
-        "uunpk",
-        "uunpkhi",
-        "uunpklo",
-        "uvdot",
-        "uxtb",
-        "uxth",
-        "uxtw",
-        "uzp",
         "uzp1",
         "uzp2",
-        "uzpq1",
-        "uzpq2",
         "wfe",
         "wfet",
         "wfi",
         "wfit",
-        "whilege",
-        "whilegt",
-        "whilehi",
-        "whilehs",
-        "whilele",
-        "whilelo",
-        "whilels",
-        "whilelt",
-        "whilerw",
-        "whilewr",
-        "wrffr",
         "xaflag",
         "xar",
         "xpacd",
@@ -7536,12 +5095,8 @@ partial class Arm64Extensions
         "xpaclri",
         "xtn",
         "yield",
-        "zero",
-        "zip",
         "zip1",
         "zip2",
-        "zipq1",
-        "zipq2",
     };
     
     private static readonly string[] MnemonicUpperTable = new string[]
@@ -7549,40 +5104,22 @@ partial class Arm64Extensions
         "???",
         "ABS",
         "ADC",
-        "ADCLB",
-        "ADCLT",
         "ADCS",
         "ADD",
         "ADDG",
-        "ADDHA",
         "ADDHN",
-        "ADDHNB",
-        "ADDHNT",
         "ADDP",
-        "ADDPL",
         "ADDPT",
-        "ADDQV",
         "ADDS",
-        "ADDSPL",
-        "ADDSVL",
         "ADDV",
-        "ADDVA",
-        "ADDVL",
         "ADR",
         "ADRP",
         "AESD",
-        "AESDIMC",
         "AESE",
-        "AESEMC",
         "AESIMC",
         "AESMC",
         "AND",
-        "ANDQV",
         "ANDS",
-        "ANDV",
-        "ASR",
-        "ASRD",
-        "ASRR",
         "ASRV",
         "AUTDA",
         "AUTDB",
@@ -7608,44 +5145,14 @@ partial class Arm64Extensions
         "B",
         "BC",
         "BCAX",
-        "BDEP",
-        "BEXT",
-        "BF1CVT",
         "BF1CVTL",
-        "BF1CVTLT",
-        "BF2CVT",
         "BF2CVTL",
-        "BF2CVTLT",
-        "BFADD",
-        "BFCLAMP",
         "BFCVT",
         "BFCVTN",
-        "BFCVTNT",
         "BFDOT",
         "BFM",
-        "BFMAX",
-        "BFMAXNM",
-        "BFMIN",
-        "BFMINNM",
-        "BFMLA",
         "BFMLAL",
-        "BFMLALB",
-        "BFMLALT",
-        "BFMLS",
-        "BFMLSL",
-        "BFMLSLB",
-        "BFMLSLT",
         "BFMMLA",
-        "BFMOP4A",
-        "BFMOP4S",
-        "BFMOPA",
-        "BFMOPS",
-        "BFMUL",
-        "BFSCALE",
-        "BFSUB",
-        "BFTMOPA",
-        "BFVDOT",
-        "BGRP",
         "BIC",
         "BICS",
         "BIF",
@@ -7656,29 +5163,14 @@ partial class Arm64Extensions
         "BLRAAZ",
         "BLRAB",
         "BLRABZ",
-        "BMOPA",
-        "BMOPS",
         "BR",
         "BRAA",
         "BRAAZ",
         "BRAB",
         "BRABZ",
         "BRK",
-        "BRKA",
-        "BRKAS",
-        "BRKB",
-        "BRKBS",
-        "BRKN",
-        "BRKNS",
-        "BRKPA",
-        "BRKPAS",
-        "BRKPB",
-        "BRKPBS",
         "BSL",
-        "BSL1N",
-        "BSL2N",
         "BTI",
-        "CADD",
         "CAS",
         "CASA",
         "CASAB",
@@ -7727,11 +5219,8 @@ partial class Arm64Extensions
         "CBZ",
         "CCMN",
         "CCMP",
-        "CDOT",
         "CFINV",
         "CHKFEAT",
-        "CLASTA",
-        "CLASTB",
         "CLRBHB",
         "CLREX",
         "CLS",
@@ -7741,29 +5230,10 @@ partial class Arm64Extensions
         "CMGT",
         "CMHI",
         "CMHS",
-        "CMLA",
         "CMLE",
         "CMLT",
-        "CMPEQ",
-        "CMPGE",
-        "CMPGT",
-        "CMPHI",
-        "CMPHS",
-        "CMPLE",
-        "CMPLO",
-        "CMPLS",
-        "CMPLT",
-        "CMPNE",
         "CMTST",
-        "CNOT",
         "CNT",
-        "CNTB",
-        "CNTD",
-        "CNTH",
-        "CNTP",
-        "CNTW",
-        "COMPACT",
-        "CPY",
         "CPYE",
         "CPYEN",
         "CPYERN",
@@ -7873,123 +5343,80 @@ partial class Arm64Extensions
         "CSINC",
         "CSINV",
         "CSNEG",
-        "CTERMEQ",
-        "CTERMNE",
         "CTZ",
         "DCPS1",
         "DCPS2",
         "DCPS3",
-        "DECB",
-        "DECD",
-        "DECH",
-        "DECP",
-        "DECW",
         "DGH",
         "DMB",
         "DRPS",
         "DSB",
         "DUP",
-        "DUPM",
-        "DUPQ",
         "EON",
         "EOR",
         "EOR3",
-        "EORBT",
-        "EORQV",
-        "EORS",
-        "EORTB",
-        "EORV",
         "ERET",
         "ERETAA",
         "ERETAB",
         "ESB",
-        "EXPAND",
         "EXT",
-        "EXTQ",
         "EXTR",
-        "F1CVT",
         "F1CVTL",
-        "F1CVTLT",
-        "F2CVT",
         "F2CVTL",
-        "F2CVTLT",
         "FABD",
         "FABS",
         "FACGE",
         "FACGT",
         "FADD",
-        "FADDA",
         "FADDP",
-        "FADDQV",
-        "FADDV",
         "FAMAX",
         "FAMIN",
         "FCADD",
         "FCCMP",
         "FCCMPE",
-        "FCLAMP",
         "FCMEQ",
         "FCMGE",
         "FCMGT",
         "FCMLA",
         "FCMLE",
         "FCMLT",
-        "FCMNE",
         "FCMP",
         "FCMPE",
-        "FCMUO",
-        "FCPY",
         "FCSEL",
         "FCVT",
         "FCVTAS",
         "FCVTAU",
         "FCVTL",
-        "FCVTLT",
         "FCVTMS",
         "FCVTMU",
         "FCVTN",
-        "FCVTNB",
         "FCVTNS",
-        "FCVTNT",
         "FCVTNU",
         "FCVTPS",
         "FCVTPU",
-        "FCVTX",
         "FCVTXN",
-        "FCVTXNT",
         "FCVTZS",
         "FCVTZU",
         "FDIV",
-        "FDIVR",
         "FDOT",
-        "FDUP",
-        "FEXPA",
-        "FIRSTP",
         "FJCVTZS",
-        "FLOGB",
-        "FMAD",
         "FMADD",
         "FMAX",
         "FMAXNM",
         "FMAXNMP",
-        "FMAXNMQV",
         "FMAXNMV",
         "FMAXP",
-        "FMAXQV",
         "FMAXV",
         "FMIN",
         "FMINNM",
         "FMINNMP",
-        "FMINNMQV",
         "FMINNMV",
         "FMINP",
-        "FMINQV",
         "FMINV",
         "FMLA",
         "FMLAL",
         "FMLAL2",
         "FMLALB",
-        "FMLALL",
         "FMLALLBB",
         "FMLALLBT",
         "FMLALLTB",
@@ -7998,24 +5425,13 @@ partial class Arm64Extensions
         "FMLS",
         "FMLSL",
         "FMLSL2",
-        "FMLSLB",
-        "FMLSLT",
         "FMMLA",
-        "FMOP4A",
-        "FMOP4S",
-        "FMOPA",
-        "FMOPS",
         "FMOV",
-        "FMSB",
         "FMSUB",
         "FMUL",
         "FMULX",
         "FNEG",
-        "FNMAD",
         "FNMADD",
-        "FNMLA",
-        "FNMLS",
-        "FNMSB",
         "FNMSUB",
         "FNMUL",
         "FRECPE",
@@ -8037,82 +5453,24 @@ partial class Arm64Extensions
         "FSCALE",
         "FSQRT",
         "FSUB",
-        "FSUBR",
-        "FTMAD",
-        "FTMOPA",
-        "FTSMUL",
-        "FTSSEL",
-        "FVDOT",
-        "FVDOTB",
-        "FVDOTT",
         "GCSB",
         "GCSSTR",
         "GCSSTTR",
         "GMI",
         "HINT",
-        "HISTCNT",
-        "HISTSEG",
         "HLT",
         "HVC",
-        "INCB",
-        "INCD",
-        "INCH",
-        "INCP",
-        "INCW",
-        "INDEX",
         "INS",
-        "INSR",
         "IRG",
         "ISB",
-        "LASTA",
-        "LASTB",
-        "LASTP",
         "LD1",
-        "LD1B",
-        "LD1D",
-        "LD1H",
-        "LD1Q",
         "LD1R",
-        "LD1RB",
-        "LD1RD",
-        "LD1RH",
-        "LD1ROB",
-        "LD1ROD",
-        "LD1ROH",
-        "LD1ROW",
-        "LD1RQB",
-        "LD1RQD",
-        "LD1RQH",
-        "LD1RQW",
-        "LD1RSB",
-        "LD1RSH",
-        "LD1RSW",
-        "LD1RW",
-        "LD1SB",
-        "LD1SH",
-        "LD1SW",
-        "LD1W",
         "LD2",
-        "LD2B",
-        "LD2D",
-        "LD2H",
-        "LD2Q",
         "LD2R",
-        "LD2W",
         "LD3",
-        "LD3B",
-        "LD3D",
-        "LD3H",
-        "LD3Q",
         "LD3R",
-        "LD3W",
         "LD4",
-        "LD4B",
-        "LD4D",
-        "LD4H",
-        "LD4Q",
         "LD4R",
-        "LD4W",
         "LD64B",
         "LDADD",
         "LDADDA",
@@ -8196,13 +5554,6 @@ partial class Arm64Extensions
         "LDFADDA",
         "LDFADDAL",
         "LDFADDL",
-        "LDFF1B",
-        "LDFF1D",
-        "LDFF1H",
-        "LDFF1SB",
-        "LDFF1SH",
-        "LDFF1SW",
-        "LDFF1W",
         "LDFMAX",
         "LDFMAXA",
         "LDFMAXAL",
@@ -8225,21 +5576,7 @@ partial class Arm64Extensions
         "LDLAR",
         "LDLARB",
         "LDLARH",
-        "LDNF1B",
-        "LDNF1D",
-        "LDNF1H",
-        "LDNF1SB",
-        "LDNF1SH",
-        "LDNF1SW",
-        "LDNF1W",
         "LDNP",
-        "LDNT1B",
-        "LDNT1D",
-        "LDNT1H",
-        "LDNT1SB",
-        "LDNT1SH",
-        "LDNT1SW",
-        "LDNT1W",
         "LDP",
         "LDPSW",
         "LDR",
@@ -8345,54 +5682,31 @@ partial class Arm64Extensions
         "LDXR",
         "LDXRB",
         "LDXRH",
-        "LSL",
-        "LSLR",
         "LSLV",
-        "LSR",
-        "LSRR",
         "LSRV",
         "LUTI2",
         "LUTI4",
-        "MAD",
         "MADD",
         "MADDPT",
-        "MADPT",
-        "MATCH",
         "MLA",
-        "MLAPT",
         "MLS",
-        "MOVA",
-        "MOVAZ",
         "MOVI",
         "MOVK",
         "MOVN",
-        "MOVPRFX",
-        "MOVT",
         "MOVZ",
         "MRRS",
         "MRS",
-        "MSB",
         "MSR",
         "MSRR",
         "MSUB",
         "MSUBPT",
         "MUL",
         "MVNI",
-        "NAND",
-        "NANDS",
-        "NBSL",
         "NEG",
-        "NMATCH",
         "NOP",
-        "NOR",
-        "NORS",
         "NOT",
         "ORN",
-        "ORNS",
-        "ORQV",
         "ORR",
-        "ORRS",
-        "ORV",
         "PACDA",
         "PACDB",
         "PACDZA",
@@ -8415,32 +5729,12 @@ partial class Arm64Extensions
         "PACM",
         "PACNBIASPPC",
         "PACNBIBSPPC",
-        "PEXT",
-        "PFALSE",
-        "PFIRST",
-        "PMLAL",
-        "PMOV",
         "PMUL",
         "PMULL",
-        "PMULLB",
-        "PMULLT",
-        "PNEXT",
-        "PRFB",
-        "PRFD",
-        "PRFH",
         "PRFM",
         "PRFUM",
-        "PRFW",
         "PSB",
-        "PSEL",
-        "PTEST",
-        "PTRUE",
-        "PTRUES",
-        "PUNPKHI",
-        "PUNPKLO",
         "RADDHN",
-        "RADDHNB",
-        "RADDHNT",
         "RAX1",
         "RBIT",
         "RCWCAS",
@@ -8507,10 +5801,6 @@ partial class Arm64Extensions
         "RCWSWPPA",
         "RCWSWPPAL",
         "RCWSWPPL",
-        "RDFFR",
-        "RDFFRS",
-        "RDSVL",
-        "RDVL",
         "RET",
         "RETAA",
         "RETAASPPC",
@@ -8522,57 +5812,33 @@ partial class Arm64Extensions
         "REV16",
         "REV32",
         "REV64",
-        "REVB",
-        "REVD",
-        "REVH",
-        "REVW",
         "RMIF",
         "RORV",
         "RPRFM",
         "RSHRN",
-        "RSHRNB",
-        "RSHRNT",
         "RSUBHN",
-        "RSUBHNB",
-        "RSUBHNT",
         "SABA",
         "SABAL",
-        "SABALB",
-        "SABALT",
         "SABD",
         "SABDL",
-        "SABDLB",
-        "SABDLT",
         "SADALP",
         "SADDL",
-        "SADDLB",
-        "SADDLBT",
         "SADDLP",
-        "SADDLT",
         "SADDLV",
-        "SADDV",
         "SADDW",
-        "SADDWB",
-        "SADDWT",
         "SB",
         "SBC",
-        "SBCLB",
-        "SBCLT",
         "SBCS",
         "SBFM",
-        "SCLAMP",
         "SCVTF",
         "SDIV",
-        "SDIVR",
         "SDOT",
-        "SEL",
         "SETE",
         "SETEN",
         "SETET",
         "SETETN",
         "SETF16",
         "SETF8",
-        "SETFFR",
         "SETGE",
         "SETGEN",
         "SETGET",
@@ -8613,10 +5879,7 @@ partial class Arm64Extensions
         "SHL",
         "SHLL",
         "SHRN",
-        "SHRNB",
-        "SHRNT",
         "SHSUB",
-        "SHSUBR",
         "SLI",
         "SM3PARTW1",
         "SM3PARTW2",
@@ -8630,139 +5893,54 @@ partial class Arm64Extensions
         "SMADDL",
         "SMAX",
         "SMAXP",
-        "SMAXQV",
         "SMAXV",
         "SMC",
         "SMIN",
         "SMINP",
-        "SMINQV",
         "SMINV",
         "SMLAL",
-        "SMLALB",
-        "SMLALL",
-        "SMLALT",
         "SMLSL",
-        "SMLSLB",
-        "SMLSLL",
-        "SMLSLT",
         "SMMLA",
-        "SMOP4A",
-        "SMOP4S",
-        "SMOPA",
-        "SMOPS",
         "SMOV",
         "SMSUBL",
         "SMULH",
         "SMULL",
-        "SMULLB",
-        "SMULLT",
-        "SPLICE",
         "SQABS",
         "SQADD",
-        "SQCADD",
-        "SQCVT",
-        "SQCVTN",
-        "SQCVTU",
-        "SQCVTUN",
-        "SQDECB",
-        "SQDECD",
-        "SQDECH",
-        "SQDECP",
-        "SQDECW",
         "SQDMLAL",
-        "SQDMLALB",
-        "SQDMLALBT",
-        "SQDMLALT",
         "SQDMLSL",
-        "SQDMLSLB",
-        "SQDMLSLBT",
-        "SQDMLSLT",
         "SQDMULH",
         "SQDMULL",
-        "SQDMULLB",
-        "SQDMULLT",
-        "SQINCB",
-        "SQINCD",
-        "SQINCH",
-        "SQINCP",
-        "SQINCW",
         "SQNEG",
-        "SQRDCMLAH",
         "SQRDMLAH",
         "SQRDMLSH",
         "SQRDMULH",
         "SQRSHL",
-        "SQRSHLR",
-        "SQRSHR",
         "SQRSHRN",
-        "SQRSHRNB",
-        "SQRSHRNT",
-        "SQRSHRU",
         "SQRSHRUN",
-        "SQRSHRUNB",
-        "SQRSHRUNT",
         "SQSHL",
-        "SQSHLR",
         "SQSHLU",
         "SQSHRN",
-        "SQSHRNB",
-        "SQSHRNT",
         "SQSHRUN",
-        "SQSHRUNB",
-        "SQSHRUNT",
         "SQSUB",
-        "SQSUBR",
         "SQXTN",
-        "SQXTNB",
-        "SQXTNT",
         "SQXTUN",
-        "SQXTUNB",
-        "SQXTUNT",
         "SRHADD",
         "SRI",
         "SRSHL",
-        "SRSHLR",
         "SRSHR",
         "SRSRA",
         "SSHL",
         "SSHLL",
-        "SSHLLB",
-        "SSHLLT",
         "SSHR",
         "SSRA",
         "SSUBL",
-        "SSUBLB",
-        "SSUBLBT",
-        "SSUBLT",
-        "SSUBLTB",
         "SSUBW",
-        "SSUBWB",
-        "SSUBWT",
         "ST1",
-        "ST1B",
-        "ST1D",
-        "ST1H",
-        "ST1Q",
-        "ST1W",
         "ST2",
-        "ST2B",
-        "ST2D",
         "ST2G",
-        "ST2H",
-        "ST2Q",
-        "ST2W",
         "ST3",
-        "ST3B",
-        "ST3D",
-        "ST3H",
-        "ST3Q",
-        "ST3W",
         "ST4",
-        "ST4B",
-        "ST4D",
-        "ST4H",
-        "ST4Q",
-        "ST4W",
         "ST64B",
         "ST64BV",
         "ST64BV0",
@@ -8805,12 +5983,7 @@ partial class Arm64Extensions
         "STLXR",
         "STLXRB",
         "STLXRH",
-        "STMOPA",
         "STNP",
-        "STNT1B",
-        "STNT1D",
-        "STNT1H",
-        "STNT1W",
         "STP",
         "STR",
         "STRB",
@@ -8835,27 +6008,13 @@ partial class Arm64Extensions
         "SUB",
         "SUBG",
         "SUBHN",
-        "SUBHNB",
-        "SUBHNT",
         "SUBP",
         "SUBPS",
         "SUBPT",
-        "SUBR",
         "SUBS",
         "SUDOT",
-        "SUMLALL",
-        "SUMOP4A",
-        "SUMOP4S",
-        "SUMOPA",
-        "SUMOPS",
-        "SUNPK",
-        "SUNPKHI",
-        "SUNPKLO",
         "SUQADD",
-        "SUTMOPA",
-        "SUVDOT",
         "SVC",
-        "SVDOT",
         "SWP",
         "SWPA",
         "SWPAB",
@@ -8876,17 +6035,12 @@ partial class Arm64Extensions
         "SWPTA",
         "SWPTAL",
         "SWPTL",
-        "SXTB",
-        "SXTH",
-        "SXTW",
         "SYS",
         "SYSL",
         "SYSP",
         "TBL",
-        "TBLQ",
         "TBNZ",
         "TBX",
-        "TBXQ",
         "TBZ",
         "TCANCEL",
         "TCOMMIT",
@@ -8897,146 +6051,62 @@ partial class Arm64Extensions
         "TTEST",
         "UABA",
         "UABAL",
-        "UABALB",
-        "UABALT",
         "UABD",
         "UABDL",
-        "UABDLB",
-        "UABDLT",
         "UADALP",
         "UADDL",
-        "UADDLB",
         "UADDLP",
-        "UADDLT",
         "UADDLV",
-        "UADDV",
         "UADDW",
-        "UADDWB",
-        "UADDWT",
         "UBFM",
-        "UCLAMP",
         "UCVTF",
         "UDF",
         "UDIV",
-        "UDIVR",
         "UDOT",
         "UHADD",
         "UHSUB",
-        "UHSUBR",
         "UMADDL",
         "UMAX",
         "UMAXP",
-        "UMAXQV",
         "UMAXV",
         "UMIN",
         "UMINP",
-        "UMINQV",
         "UMINV",
         "UMLAL",
-        "UMLALB",
-        "UMLALL",
-        "UMLALT",
         "UMLSL",
-        "UMLSLB",
-        "UMLSLL",
-        "UMLSLT",
         "UMMLA",
-        "UMOP4A",
-        "UMOP4S",
-        "UMOPA",
-        "UMOPS",
         "UMOV",
         "UMSUBL",
         "UMULH",
         "UMULL",
-        "UMULLB",
-        "UMULLT",
         "UQADD",
-        "UQCVT",
-        "UQCVTN",
-        "UQDECB",
-        "UQDECD",
-        "UQDECH",
-        "UQDECP",
-        "UQDECW",
-        "UQINCB",
-        "UQINCD",
-        "UQINCH",
-        "UQINCP",
-        "UQINCW",
         "UQRSHL",
-        "UQRSHLR",
-        "UQRSHR",
         "UQRSHRN",
-        "UQRSHRNB",
-        "UQRSHRNT",
         "UQSHL",
-        "UQSHLR",
         "UQSHRN",
-        "UQSHRNB",
-        "UQSHRNT",
         "UQSUB",
-        "UQSUBR",
         "UQXTN",
-        "UQXTNB",
-        "UQXTNT",
         "URECPE",
         "URHADD",
         "URSHL",
-        "URSHLR",
         "URSHR",
         "URSQRTE",
         "URSRA",
         "USDOT",
         "USHL",
         "USHLL",
-        "USHLLB",
-        "USHLLT",
         "USHR",
-        "USMLALL",
         "USMMLA",
-        "USMOP4A",
-        "USMOP4S",
-        "USMOPA",
-        "USMOPS",
         "USQADD",
         "USRA",
-        "USTMOPA",
         "USUBL",
-        "USUBLB",
-        "USUBLT",
         "USUBW",
-        "USUBWB",
-        "USUBWT",
-        "USVDOT",
-        "UTMOPA",
-        "UUNPK",
-        "UUNPKHI",
-        "UUNPKLO",
-        "UVDOT",
-        "UXTB",
-        "UXTH",
-        "UXTW",
-        "UZP",
         "UZP1",
         "UZP2",
-        "UZPQ1",
-        "UZPQ2",
         "WFE",
         "WFET",
         "WFI",
         "WFIT",
-        "WHILEGE",
-        "WHILEGT",
-        "WHILEHI",
-        "WHILEHS",
-        "WHILELE",
-        "WHILELO",
-        "WHILELS",
-        "WHILELT",
-        "WHILERW",
-        "WHILEWR",
-        "WRFFR",
         "XAFLAG",
         "XAR",
         "XPACD",
@@ -9044,12 +6114,8 @@ partial class Arm64Extensions
         "XPACLRI",
         "XTN",
         "YIELD",
-        "ZERO",
-        "ZIP",
         "ZIP1",
         "ZIP2",
-        "ZIPQ1",
-        "ZIPQ2",
     };
 }
 

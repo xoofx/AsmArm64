@@ -37,25 +37,9 @@ public enum Arm64InstructionClass : byte
     /// </summary>
     General,
     /// <summary>
-    /// Class `Mortlach`.
-    /// </summary>
-    Mortlach,
-    /// <summary>
-    /// Class `Mortlach2`.
-    /// </summary>
-    Mortlach2,
-    /// <summary>
     /// Class `Other`.
     /// </summary>
     Other,
-    /// <summary>
-    /// Class `Sve`.
-    /// </summary>
-    Sve,
-    /// <summary>
-    /// Class `Sve2`.
-    /// </summary>
-    Sve2,
     /// <summary>
     /// Class `System`.
     /// </summary>

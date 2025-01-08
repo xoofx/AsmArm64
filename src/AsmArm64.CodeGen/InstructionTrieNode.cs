@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
+using AsmArm64.CodeGen.Model;
 using Spectre.Console;
 
 namespace AsmArm64.CodeGen;

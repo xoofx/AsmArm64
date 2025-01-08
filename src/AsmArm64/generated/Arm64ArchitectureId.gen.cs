@@ -69,14 +69,6 @@ public enum Arm64ArchitectureId : byte
     /// </summary>
     ARMv9_0_A,
     /// <summary>
-    /// Architecture `ARMv9_2_A`.
-    /// </summary>
-    ARMv9_2_A,
-    /// <summary>
-    /// Architecture `ARMv9_3_A`.
-    /// </summary>
-    ARMv9_3_A,
-    /// <summary>
     /// Architecture `ARMv9_4_A`.
     /// </summary>
     ARMv9_4_A,

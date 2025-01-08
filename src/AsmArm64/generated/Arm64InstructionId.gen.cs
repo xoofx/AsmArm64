@@ -37,22 +37,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     ABS_asisdmisc_r,
     /// <summary>
-    /// Instruction `ABS` - Absolute value (predicated).
-    /// </summary>
-    ABS_z_p_z_m,
-    /// <summary>
-    /// Instruction `ABS` - Absolute value (predicated).
-    /// </summary>
-    ABS_z_p_z_z,
-    /// <summary>
-    /// Instruction `ADCLB` - Add with carry long (bottom).
-    /// </summary>
-    ADCLB_z_zzz,
-    /// <summary>
-    /// Instruction `ADCLT` - Add with carry long (top).
-    /// </summary>
-    ADCLT_z_zzz,
-    /// <summary>
     /// Instruction `ADCS` - Add with carry, setting flags.
     /// </summary>
     ADCS_32_addsub_carry,
@@ -73,41 +57,13 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     ADDG_64_addsub_immtags,
     /// <summary>
-    /// Instruction `ADDHA` - Add horizontally vector elements to ZA tile.
-    /// </summary>
-    ADDHA_za_pp_z_32,
-    /// <summary>
-    /// Instruction `ADDHA` - Add horizontally vector elements to ZA tile.
-    /// </summary>
-    ADDHA_za_pp_z_64,
-    /// <summary>
-    /// Instruction `ADDHNB` - Add narrow high part (bottom).
-    /// </summary>
-    ADDHNB_z_zz,
-    /// <summary>
-    /// Instruction `ADDHNT` - Add narrow high part (top).
-    /// </summary>
-    ADDHNT_z_zz,
-    /// <summary>
     /// Instruction `ADDHN` - Add returning high narrow.
     /// </summary>
     ADDHN_asimddiff_n,
     /// <summary>
-    /// Instruction `ADDPL` - Add multiple of predicate register size to scalar register.
-    /// </summary>
-    ADDPL_r_ri,
-    /// <summary>
     /// Instruction `ADDPT` - Add checked pointer.
     /// </summary>
     ADDPT_64_addsub_pt,
-    /// <summary>
-    /// Instruction `ADDPT` - Add checked pointer vectors (predicated).
-    /// </summary>
-    ADDPT_z_p_zz,
-    /// <summary>
-    /// Instruction `ADDPT` - Add checked pointer vectors (unpredicated).
-    /// </summary>
-    ADDPT_z_zz,
     /// <summary>
     /// Instruction `ADDP` - Add pairwise (vector).
     /// </summary>
@@ -116,22 +72,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `ADDP` - Add pair of elements (scalar).
     /// </summary>
     ADDP_asisdpair_only,
-    /// <summary>
-    /// Instruction `ADDP` - Add pairwise.
-    /// </summary>
-    ADDP_z_p_zz,
-    /// <summary>
-    /// Instruction `ADDQV` - Unsigned add reduction of quadword vector segments.
-    /// </summary>
-    ADDQV_z_p_z,
-    /// <summary>
-    /// Instruction `ADDSPL` - Add multiple of Streaming SVE predicate register size to scalar register.
-    /// </summary>
-    ADDSPL_r_ri,
-    /// <summary>
-    /// Instruction `ADDSVL` - Add multiple of Streaming SVE vector register size to scalar register.
-    /// </summary>
-    ADDSVL_r_ri,
     /// <summary>
     /// Instruction `ADDS` - Add optionally-shifted register, setting flags.
     /// </summary>
@@ -156,18 +96,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `ADDS` - Add immediate value, setting flags.
     /// </summary>
     ADDS_64s_addsub_imm,
-    /// <summary>
-    /// Instruction `ADDVA` - Add vertically vector elements to ZA tile.
-    /// </summary>
-    ADDVA_za_pp_z_32,
-    /// <summary>
-    /// Instruction `ADDVA` - Add vertically vector elements to ZA tile.
-    /// </summary>
-    ADDVA_za_pp_z_64,
-    /// <summary>
-    /// Instruction `ADDVL` - Add multiple of vector register size to scalar register.
-    /// </summary>
-    ADDVL_r_ri,
     /// <summary>
     /// Instruction `ADDV` - Add across vector.
     /// </summary>
@@ -205,50 +133,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     ADD_asisdsame_only,
     /// <summary>
-    /// Instruction `ADD` - Add replicated single vector to multi-vector with multi-vector result.
-    /// </summary>
-    ADD_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `ADD` - Add replicated single vector to multi-vector with multi-vector result.
-    /// </summary>
-    ADD_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `ADD` - Add vectors (predicated).
-    /// </summary>
-    ADD_z_p_zz,
-    /// <summary>
-    /// Instruction `ADD` - Add immediate (unpredicated).
-    /// </summary>
-    ADD_z_zi,
-    /// <summary>
-    /// Instruction `ADD` - Add vectors (unpredicated).
-    /// </summary>
-    ADD_z_zz,
-    /// <summary>
-    /// Instruction `ADD` - Add multi-vector to ZA array vector accumulators.
-    /// </summary>
-    ADD_za_zw_2x2,
-    /// <summary>
-    /// Instruction `ADD` - Add multi-vector to ZA array vector accumulators.
-    /// </summary>
-    ADD_za_zw_4x4,
-    /// <summary>
-    /// Instruction `ADD` - Add replicated single vector to multi-vector with ZA array vector results.
-    /// </summary>
-    ADD_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `ADD` - Add replicated single vector to multi-vector with ZA array vector results.
-    /// </summary>
-    ADD_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `ADD` - Add multi-vector to multi-vector with ZA array vector results.
-    /// </summary>
-    ADD_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `ADD` - Add multi-vector to multi-vector with ZA array vector results.
-    /// </summary>
-    ADD_za_zzw_4x4,
-    /// <summary>
     /// Instruction `ADRP` - Form PC-relative address to 4KB page.
     /// </summary>
     ADRP_only_pcreladdr,
@@ -257,85 +141,21 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     ADR_only_pcreladdr,
     /// <summary>
-    /// Instruction `ADR` - Compute vector address.
-    /// </summary>
-    ADR_z_az_d_s32_scaled,
-    /// <summary>
-    /// Instruction `ADR` - Compute vector address.
-    /// </summary>
-    ADR_z_az_d_u32_scaled,
-    /// <summary>
-    /// Instruction `ADR` - Compute vector address.
-    /// </summary>
-    ADR_z_az_sd_same_scaled,
-    /// <summary>
-    /// Instruction `AESDIMC` - Multi-vector AES single round decryption and inverse mix columns.
-    /// </summary>
-    AESDIMC_mz_zzi_2x1,
-    /// <summary>
-    /// Instruction `AESDIMC` - Multi-vector AES single round decryption and inverse mix columns.
-    /// </summary>
-    AESDIMC_mz_zzi_4x1,
-    /// <summary>
     /// Instruction `AESD` - AES single round decryption.
     /// </summary>
     AESD_b_cryptoaes,
-    /// <summary>
-    /// Instruction `AESD` - Multi-vector AES single round decryption.
-    /// </summary>
-    AESD_mz_zzi_2x1,
-    /// <summary>
-    /// Instruction `AESD` - Multi-vector AES single round decryption.
-    /// </summary>
-    AESD_mz_zzi_4x1,
-    /// <summary>
-    /// Instruction `AESD` - AES single round decryption.
-    /// </summary>
-    AESD_z_zz,
-    /// <summary>
-    /// Instruction `AESEMC` - Multi-vector AES single round encryption and mix columns.
-    /// </summary>
-    AESEMC_mz_zzi_2x1,
-    /// <summary>
-    /// Instruction `AESEMC` - Multi-vector AES single round encryption and mix columns.
-    /// </summary>
-    AESEMC_mz_zzi_4x1,
     /// <summary>
     /// Instruction `AESE` - AES single round encryption.
     /// </summary>
     AESE_b_cryptoaes,
     /// <summary>
-    /// Instruction `AESE` - Multi-vector AES single round encryption.
-    /// </summary>
-    AESE_mz_zzi_2x1,
-    /// <summary>
-    /// Instruction `AESE` - Multi-vector AES single round encryption.
-    /// </summary>
-    AESE_mz_zzi_4x1,
-    /// <summary>
-    /// Instruction `AESE` - AES single round encryption.
-    /// </summary>
-    AESE_z_zz,
-    /// <summary>
     /// Instruction `AESIMC` - AES inverse mix columns.
     /// </summary>
     AESIMC_b_cryptoaes,
     /// <summary>
-    /// Instruction `AESIMC` - AES inverse mix columns.
-    /// </summary>
-    AESIMC_z_z,
-    /// <summary>
     /// Instruction `AESMC` - AES mix columns.
     /// </summary>
     AESMC_b_cryptoaes,
-    /// <summary>
-    /// Instruction `AESMC` - AES mix columns.
-    /// </summary>
-    AESMC_z_z,
-    /// <summary>
-    /// Instruction `ANDQV` - Bitwise AND reduction of quadword vector segments.
-    /// </summary>
-    ANDQV_z_p_z,
     /// <summary>
     /// Instruction `ANDS` - Bitwise AND (shifted register), setting flags.
     /// </summary>
@@ -352,14 +172,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `ANDS` - Bitwise AND (immediate), setting flags.
     /// </summary>
     ANDS_64s_log_imm,
-    /// <summary>
-    /// Instruction `ANDS` - Bitwise AND predicates, setting the condition flags.
-    /// </summary>
-    ANDS_p_p_pp_z,
-    /// <summary>
-    /// Instruction `ANDV` - Bitwise AND reduction to scalar.
-    /// </summary>
-    ANDV_r_p_z,
     /// <summary>
     /// Instruction `AND` - Bitwise AND (immediate).
     /// </summary>
@@ -381,30 +193,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     AND_asimdsame_only,
     /// <summary>
-    /// Instruction `AND` - Bitwise AND predicates.
-    /// </summary>
-    AND_p_p_pp_z,
-    /// <summary>
-    /// Instruction `AND` - Bitwise AND vectors (predicated).
-    /// </summary>
-    AND_z_p_zz,
-    /// <summary>
-    /// Instruction `AND` - Bitwise AND with immediate (unpredicated).
-    /// </summary>
-    AND_z_zi,
-    /// <summary>
-    /// Instruction `AND` - Bitwise AND vectors (unpredicated).
-    /// </summary>
-    AND_z_zz,
-    /// <summary>
-    /// Instruction `ASRD` - Arithmetic shift right for divide by immediate (predicated).
-    /// </summary>
-    ASRD_z_p_zi,
-    /// <summary>
-    /// Instruction `ASRR` - Reversed arithmetic shift right by vector (predicated).
-    /// </summary>
-    ASRR_z_p_zz,
-    /// <summary>
     /// Instruction `ASRV` - Arithmetic shift right variable.
     /// </summary>
     ASRV_32_dp_2src,
@@ -412,26 +200,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `ASRV` - Arithmetic shift right variable.
     /// </summary>
     ASRV_64_dp_2src,
-    /// <summary>
-    /// Instruction `ASR` - Arithmetic shift right by immediate (predicated).
-    /// </summary>
-    ASR_z_p_zi,
-    /// <summary>
-    /// Instruction `ASR` - Arithmetic shift right by 64-bit wide elements (predicated).
-    /// </summary>
-    ASR_z_p_zw,
-    /// <summary>
-    /// Instruction `ASR` - Arithmetic shift right by vector (predicated).
-    /// </summary>
-    ASR_z_p_zz,
-    /// <summary>
-    /// Instruction `ASR` - Arithmetic shift right by immediate (unpredicated).
-    /// </summary>
-    ASR_z_zi,
-    /// <summary>
-    /// Instruction `ASR` - Arithmetic shift right by 64-bit wide elements (unpredicated).
-    /// </summary>
-    ASR_z_zw,
     /// <summary>
     /// Instruction `AUTDA` - Authenticate data address, using key A.
     /// </summary>
@@ -521,129 +289,25 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     BCAX_vvv16_crypto4,
     /// <summary>
-    /// Instruction `BCAX` - Bitwise clear and exclusive-OR.
-    /// </summary>
-    BCAX_z_zzz,
-    /// <summary>
     /// Instruction `BC` - Branch consistent conditionally.
     /// </summary>
     BC_only_condbranch,
-    /// <summary>
-    /// Instruction `BDEP` - Scatter lower bits into positions selected by bitmask.
-    /// </summary>
-    BDEP_z_zz,
-    /// <summary>
-    /// Instruction `BEXT` - Gather lower bits from positions selected by bitmask.
-    /// </summary>
-    BEXT_z_zz,
-    /// <summary>
-    /// Instruction `BF1CVTLT` - 8-bit floating-point convert to BFloat16 (top).
-    /// </summary>
-    BF1CVTLT_z_z8_b2bf,
     /// <summary>
     /// Instruction `BF1CVTL` - 8-bit floating-point convert to BFloat16 (vector).
     /// </summary>
     BF1CVTL_asimdmisc_v,
     /// <summary>
-    /// Instruction `BF1CVTL` - Multi-vector floating-point convert from 8-bit floating-point to deinterleaved BFloat16.
-    /// </summary>
-    BF1CVTL_mz2_z8,
-    /// <summary>
-    /// Instruction `BF1CVT` - Multi-vector floating-point convert from 8-bit floating-point to BFloat16 (in-order).
-    /// </summary>
-    BF1CVT_mz2_z8,
-    /// <summary>
-    /// Instruction `BF1CVT` - 8-bit floating-point convert to BFloat16.
-    /// </summary>
-    BF1CVT_z_z8_b2bf,
-    /// <summary>
-    /// Instruction `BF2CVTLT` - 8-bit floating-point convert to BFloat16 (top).
-    /// </summary>
-    BF2CVTLT_z_z8_b2bf,
-    /// <summary>
     /// Instruction `BF2CVTL` - 8-bit floating-point convert to BFloat16 (vector).
     /// </summary>
     BF2CVTL_asimdmisc_v,
-    /// <summary>
-    /// Instruction `BF2CVTL` - Multi-vector floating-point convert from 8-bit floating-point to deinterleaved BFloat16.
-    /// </summary>
-    BF2CVTL_mz2_z8,
-    /// <summary>
-    /// Instruction `BF2CVT` - Multi-vector floating-point convert from 8-bit floating-point to BFloat16 (in-order).
-    /// </summary>
-    BF2CVT_mz2_z8,
-    /// <summary>
-    /// Instruction `BF2CVT` - 8-bit floating-point convert to BFloat16.
-    /// </summary>
-    BF2CVT_z_z8_b2bf,
-    /// <summary>
-    /// Instruction `BFADD` - BFloat16 floating-point add vectors (predicated).
-    /// </summary>
-    BFADD_z_p_zz,
-    /// <summary>
-    /// Instruction `BFADD` - BFloat16 floating-point add vectors (unpredicated).
-    /// </summary>
-    BFADD_z_zz,
-    /// <summary>
-    /// Instruction `BFADD` - BFloat16 floating-point add multi-vector to ZA array vector accumulators.
-    /// </summary>
-    BFADD_za_zw_2x2_16,
-    /// <summary>
-    /// Instruction `BFADD` - BFloat16 floating-point add multi-vector to ZA array vector accumulators.
-    /// </summary>
-    BFADD_za_zw_4x4_16,
-    /// <summary>
-    /// Instruction `BFCLAMP` - Multi-vector BFloat16 floating-point clamp to minimum/maximum number.
-    /// </summary>
-    BFCLAMP_mz_zz_2,
-    /// <summary>
-    /// Instruction `BFCLAMP` - Multi-vector BFloat16 floating-point clamp to minimum/maximum number.
-    /// </summary>
-    BFCLAMP_mz_zz_4,
-    /// <summary>
-    /// Instruction `BFCLAMP` - BFloat16 floating-point clamp to minimum/maximum number.
-    /// </summary>
-    BFCLAMP_z_zz,
-    /// <summary>
-    /// Instruction `BFCVTNT` - Floating-point down convert and narrow to BFloat16 (top, predicated).
-    /// </summary>
-    BFCVTNT_z_p_z_s2bf,
-    /// <summary>
-    /// Instruction `BFCVTNT` - Floating-point down convert and narrow to BFloat16 (top, predicated).
-    /// </summary>
-    BFCVTNT_z_p_z_s2bfz,
     /// <summary>
     /// Instruction `BFCVTN` - Floating-point convert from single-precision to BFloat16 format (vector).
     /// </summary>
     BFCVTN_asimdmisc_4s,
     /// <summary>
-    /// Instruction `BFCVTN` - BFloat16 convert, narrow and interleave to 8-bit floating-point.
-    /// </summary>
-    BFCVTN_z8_mz2_bf2b,
-    /// <summary>
-    /// Instruction `BFCVTN` - Multi-vector floating-point convert from single-precision to interleaved BFloat16 format.
-    /// </summary>
-    BFCVTN_z_mz2,
-    /// <summary>
     /// Instruction `BFCVT` - Floating-point convert from single-precision to BFloat16 format (scalar).
     /// </summary>
     BFCVT_bs_floatdp1,
-    /// <summary>
-    /// Instruction `BFCVT` - Multi-vector floating-point convert from BFloat16 to packed 8-bit floating-point format.
-    /// </summary>
-    BFCVT_z8_mz2,
-    /// <summary>
-    /// Instruction `BFCVT` - Multi-vector floating-point convert from single-precision to packed BFloat16 format.
-    /// </summary>
-    BFCVT_z_mz2,
-    /// <summary>
-    /// Instruction `BFCVT` - Floating-point down convert to BFloat16 format (predicated).
-    /// </summary>
-    BFCVT_z_p_z_s2bf,
-    /// <summary>
-    /// Instruction `BFCVT` - Floating-point down convert to BFloat16 format (predicated).
-    /// </summary>
-    BFCVT_z_p_z_s2bfz,
     /// <summary>
     /// Instruction `BFDOT` - BFloat16 floating-point dot product (vector, by element).
     /// </summary>
@@ -653,134 +317,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     BFDOT_asimdsame2_d,
     /// <summary>
-    /// Instruction `BFDOT` - BFloat16 floating-point dot product.
-    /// </summary>
-    BFDOT_z_zzz,
-    /// <summary>
-    /// Instruction `BFDOT` - BFloat16 floating-point indexed dot product.
-    /// </summary>
-    BFDOT_z_zzzi,
-    /// <summary>
-    /// Instruction `BFDOT` - Multi-vector BFloat16 floating-point dot-product by indexed element.
-    /// </summary>
-    BFDOT_za_zzi_2xi,
-    /// <summary>
-    /// Instruction `BFDOT` - Multi-vector BFloat16 floating-point dot-product by indexed element.
-    /// </summary>
-    BFDOT_za_zzi_4xi,
-    /// <summary>
-    /// Instruction `BFDOT` - Multi-vector BFloat16 floating-point dot-product by vector.
-    /// </summary>
-    BFDOT_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `BFDOT` - Multi-vector BFloat16 floating-point dot-product by vector.
-    /// </summary>
-    BFDOT_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `BFDOT` - Multi-vector BFloat16 floating-point dot-product.
-    /// </summary>
-    BFDOT_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `BFDOT` - Multi-vector BFloat16 floating-point dot-product.
-    /// </summary>
-    BFDOT_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `BFMAXNM` - Multi-vector BFloat16 floating-point maximum number by vector.
-    /// </summary>
-    BFMAXNM_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `BFMAXNM` - Multi-vector BFloat16 floating-point maximum number by vector.
-    /// </summary>
-    BFMAXNM_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `BFMAXNM` - Multi-vector BFloat16 floating-point maximum number.
-    /// </summary>
-    BFMAXNM_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `BFMAXNM` - Multi-vector BFloat16 floating-point maximum number.
-    /// </summary>
-    BFMAXNM_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `BFMAXNM` - BFloat16 floating-point maximum number (predicated).
-    /// </summary>
-    BFMAXNM_z_p_zz,
-    /// <summary>
-    /// Instruction `BFMAX` - Multi-vector BFloat16 floating-point maximum by vector.
-    /// </summary>
-    BFMAX_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `BFMAX` - Multi-vector BFloat16 floating-point maximum by vector.
-    /// </summary>
-    BFMAX_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `BFMAX` - Multi-vector BFloat16 floating-point maximum.
-    /// </summary>
-    BFMAX_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `BFMAX` - Multi-vector BFloat16 floating-point maximum.
-    /// </summary>
-    BFMAX_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `BFMAX` - BFloat16 floating-point maximum (predicated).
-    /// </summary>
-    BFMAX_z_p_zz,
-    /// <summary>
-    /// Instruction `BFMINNM` - Multi-vector BFloat16 floating-point minimum number by vector.
-    /// </summary>
-    BFMINNM_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `BFMINNM` - Multi-vector BFloat16 floating-point minimum number by vector.
-    /// </summary>
-    BFMINNM_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `BFMINNM` - Multi-vector BFloat16 floating-point minimum number.
-    /// </summary>
-    BFMINNM_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `BFMINNM` - Multi-vector BFloat16 floating-point minimum number.
-    /// </summary>
-    BFMINNM_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `BFMINNM` - BFloat16 floating-point minimum number (predicated).
-    /// </summary>
-    BFMINNM_z_p_zz,
-    /// <summary>
-    /// Instruction `BFMIN` - Multi-vector BFloat16 floating-point minimum by vector.
-    /// </summary>
-    BFMIN_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `BFMIN` - Multi-vector BFloat16 floating-point minimum by vector.
-    /// </summary>
-    BFMIN_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `BFMIN` - Multi-vector BFloat16 floating-point minimum.
-    /// </summary>
-    BFMIN_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `BFMIN` - Multi-vector BFloat16 floating-point minimum.
-    /// </summary>
-    BFMIN_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `BFMIN` - BFloat16 floating-point minimum (predicated).
-    /// </summary>
-    BFMIN_z_p_zz,
-    /// <summary>
-    /// Instruction `BFMLALB` - BFloat16 floating-point multiply-add long to single-precision (bottom).
-    /// </summary>
-    BFMLALB_z_zzz,
-    /// <summary>
-    /// Instruction `BFMLALB` - BFloat16 floating-point multiply-add long to single-precision (bottom, indexed).
-    /// </summary>
-    BFMLALB_z_zzzi,
-    /// <summary>
-    /// Instruction `BFMLALT` - BFloat16 floating-point multiply-add long to single-precision (top).
-    /// </summary>
-    BFMLALT_z_zzz,
-    /// <summary>
-    /// Instruction `BFMLALT` - BFloat16 floating-point multiply-add long to single-precision (top, indexed).
-    /// </summary>
-    BFMLALT_z_zzzi,
-    /// <summary>
     /// Instruction `BFMLAL` - BFloat16 floating-point widening multiply-add long (by element).
     /// </summary>
     BFMLAL_asimdelem_f,
@@ -789,265 +325,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     BFMLAL_asimdsame2_f,
     /// <summary>
-    /// Instruction `BFMLAL` - Multi-vector BFloat16 floating-point multiply-add long by indexed element.
-    /// </summary>
-    BFMLAL_za_zzi_1,
-    /// <summary>
-    /// Instruction `BFMLAL` - Multi-vector BFloat16 floating-point multiply-add long by indexed element.
-    /// </summary>
-    BFMLAL_za_zzi_2xi,
-    /// <summary>
-    /// Instruction `BFMLAL` - Multi-vector BFloat16 floating-point multiply-add long by indexed element.
-    /// </summary>
-    BFMLAL_za_zzi_4xi,
-    /// <summary>
-    /// Instruction `BFMLAL` - Multi-vector BFloat16 floating-point multiply-add long by vector.
-    /// </summary>
-    BFMLAL_za_zzv_1,
-    /// <summary>
-    /// Instruction `BFMLAL` - Multi-vector BFloat16 floating-point multiply-add long by vector.
-    /// </summary>
-    BFMLAL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `BFMLAL` - Multi-vector BFloat16 floating-point multiply-add long by vector.
-    /// </summary>
-    BFMLAL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `BFMLAL` - Multi-vector BFloat16 floating-point multiply-add long.
-    /// </summary>
-    BFMLAL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `BFMLAL` - Multi-vector BFloat16 floating-point multiply-add long.
-    /// </summary>
-    BFMLAL_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `BFMLA` - BFloat16 floating-point fused multiply-add vectors.
-    /// </summary>
-    BFMLA_z_p_zzz,
-    /// <summary>
-    /// Instruction `BFMLA` - BFloat16 floating-point fused multiply-add vectors by indexed elements.
-    /// </summary>
-    BFMLA_z_zzzi_h,
-    /// <summary>
-    /// Instruction `BFMLA` - Multi-vector BFloat16 floating-point fused multiply-add by indexed element.
-    /// </summary>
-    BFMLA_za_zzi_h2xi,
-    /// <summary>
-    /// Instruction `BFMLA` - Multi-vector BFloat16 floating-point fused multiply-add by indexed element.
-    /// </summary>
-    BFMLA_za_zzi_h4xi,
-    /// <summary>
-    /// Instruction `BFMLA` - Multi-vector BFloat16 floating-point fused multiply-add by vector.
-    /// </summary>
-    BFMLA_za_zzv_2x1_16,
-    /// <summary>
-    /// Instruction `BFMLA` - Multi-vector BFloat16 floating-point fused multiply-add by vector.
-    /// </summary>
-    BFMLA_za_zzv_4x1_16,
-    /// <summary>
-    /// Instruction `BFMLA` - Multi-vector BFloat16 floating-point fused multiply-add.
-    /// </summary>
-    BFMLA_za_zzw_2x2_16,
-    /// <summary>
-    /// Instruction `BFMLA` - Multi-vector BFloat16 floating-point fused multiply-add.
-    /// </summary>
-    BFMLA_za_zzw_4x4_16,
-    /// <summary>
-    /// Instruction `BFMLSLB` - BFloat16 floating-point multiply-subtract long from single-precision (bottom).
-    /// </summary>
-    BFMLSLB_z_zzz,
-    /// <summary>
-    /// Instruction `BFMLSLB` - BFloat16 floating-point multiply-subtract long from single-precision (bottom, indexed).
-    /// </summary>
-    BFMLSLB_z_zzzi,
-    /// <summary>
-    /// Instruction `BFMLSLT` - BFloat16 floating-point multiply-subtract long from single-precision (top).
-    /// </summary>
-    BFMLSLT_z_zzz,
-    /// <summary>
-    /// Instruction `BFMLSLT` - BFloat16 floating-point multiply-subtract long from single-precision (top, indexed).
-    /// </summary>
-    BFMLSLT_z_zzzi,
-    /// <summary>
-    /// Instruction `BFMLSL` - Multi-vector BFloat16 floating-point multiply-subtract long by indexed element.
-    /// </summary>
-    BFMLSL_za_zzi_1,
-    /// <summary>
-    /// Instruction `BFMLSL` - Multi-vector BFloat16 floating-point multiply-subtract long by indexed element.
-    /// </summary>
-    BFMLSL_za_zzi_2xi,
-    /// <summary>
-    /// Instruction `BFMLSL` - Multi-vector BFloat16 floating-point multiply-subtract long by indexed element.
-    /// </summary>
-    BFMLSL_za_zzi_4xi,
-    /// <summary>
-    /// Instruction `BFMLSL` - Multi-vector BFloat16 floating-point multiply-subtract long by vector.
-    /// </summary>
-    BFMLSL_za_zzv_1,
-    /// <summary>
-    /// Instruction `BFMLSL` - Multi-vector BFloat16 floating-point multiply-subtract long by vector.
-    /// </summary>
-    BFMLSL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `BFMLSL` - Multi-vector BFloat16 floating-point multiply-subtract long by vector.
-    /// </summary>
-    BFMLSL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `BFMLSL` - Multi-vector BFloat16 floating-point multiply-subtract long.
-    /// </summary>
-    BFMLSL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `BFMLSL` - Multi-vector BFloat16 floating-point multiply-subtract long.
-    /// </summary>
-    BFMLSL_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `BFMLS` - BFloat16 floating-point fused multiply-subtract vectors.
-    /// </summary>
-    BFMLS_z_p_zzz,
-    /// <summary>
-    /// Instruction `BFMLS` - BFloat16 floating-point fused multiply-subtract vectors by indexed elements.
-    /// </summary>
-    BFMLS_z_zzzi_h,
-    /// <summary>
-    /// Instruction `BFMLS` - Multi-vector BFloat16 floating-point fused multiply-subtract by indexed element.
-    /// </summary>
-    BFMLS_za_zzi_h2xi,
-    /// <summary>
-    /// Instruction `BFMLS` - Multi-vector BFloat16 floating-point fused multiply-subtract by indexed element.
-    /// </summary>
-    BFMLS_za_zzi_h4xi,
-    /// <summary>
-    /// Instruction `BFMLS` - Multi-vector BFloat16 floating-point fused multiply-subtract by vector.
-    /// </summary>
-    BFMLS_za_zzv_2x1_16,
-    /// <summary>
-    /// Instruction `BFMLS` - Multi-vector BFloat16 floating-point fused multiply-subtract by vector.
-    /// </summary>
-    BFMLS_za_zzv_4x1_16,
-    /// <summary>
-    /// Instruction `BFMLS` - Multi-vector BFloat16 floating-point fused multiply-subtract.
-    /// </summary>
-    BFMLS_za_zzw_2x2_16,
-    /// <summary>
-    /// Instruction `BFMLS` - Multi-vector BFloat16 floating-point fused multiply-subtract.
-    /// </summary>
-    BFMLS_za_zzw_4x4_16,
-    /// <summary>
     /// Instruction `BFMMLA` - BFloat16 floating-point matrix multiply-accumulate into 2x2 matrix.
     /// </summary>
     BFMMLA_asimdsame2_e,
-    /// <summary>
-    /// Instruction `BFMMLA` - BFloat16 floating-point matrix multiply-accumulate into 2×2 matrices.
-    /// </summary>
-    BFMMLA_z_zzz,
-    /// <summary>
-    /// Instruction `BFMOP4A` - BFloat16 quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    BFMOP4A_za32_zz_h1x1,
-    /// <summary>
-    /// Instruction `BFMOP4A` - BFloat16 quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    BFMOP4A_za32_zz_h1x2,
-    /// <summary>
-    /// Instruction `BFMOP4A` - BFloat16 quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    BFMOP4A_za32_zz_h2x1,
-    /// <summary>
-    /// Instruction `BFMOP4A` - BFloat16 quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    BFMOP4A_za32_zz_h2x2,
-    /// <summary>
-    /// Instruction `BFMOP4A` - BFloat16 quarter-tile outer products, accumulating.
-    /// </summary>
-    BFMOP4A_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `BFMOP4A` - BFloat16 quarter-tile outer products, accumulating.
-    /// </summary>
-    BFMOP4A_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `BFMOP4A` - BFloat16 quarter-tile outer products, accumulating.
-    /// </summary>
-    BFMOP4A_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `BFMOP4A` - BFloat16 quarter-tile outer products, accumulating.
-    /// </summary>
-    BFMOP4A_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `BFMOP4S` - BFloat16 quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    BFMOP4S_za32_zz_h1x1,
-    /// <summary>
-    /// Instruction `BFMOP4S` - BFloat16 quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    BFMOP4S_za32_zz_h1x2,
-    /// <summary>
-    /// Instruction `BFMOP4S` - BFloat16 quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    BFMOP4S_za32_zz_h2x1,
-    /// <summary>
-    /// Instruction `BFMOP4S` - BFloat16 quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    BFMOP4S_za32_zz_h2x2,
-    /// <summary>
-    /// Instruction `BFMOP4S` - BFloat16 quarter-tile outer products, subtracting.
-    /// </summary>
-    BFMOP4S_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `BFMOP4S` - BFloat16 quarter-tile outer products, subtracting.
-    /// </summary>
-    BFMOP4S_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `BFMOP4S` - BFloat16 quarter-tile outer products, subtracting.
-    /// </summary>
-    BFMOP4S_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `BFMOP4S` - BFloat16 quarter-tile outer products, subtracting.
-    /// </summary>
-    BFMOP4S_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `BFMOPA` - BFloat16 sum of outer products and accumulate.
-    /// </summary>
-    BFMOPA_za32_pp_zz,
-    /// <summary>
-    /// Instruction `BFMOPA` - BFloat16 floating-point outer product and accumulate.
-    /// </summary>
-    BFMOPA_za_pp_zz_16,
-    /// <summary>
-    /// Instruction `BFMOPS` - BFloat16 sum of outer products and subtract.
-    /// </summary>
-    BFMOPS_za32_pp_zz,
-    /// <summary>
-    /// Instruction `BFMOPS` - BFloat16 floating-point outer product and subtract.
-    /// </summary>
-    BFMOPS_za_pp_zz_16,
-    /// <summary>
-    /// Instruction `BFMUL` - Multi-vector BFloat16 floating-point multiply by vector.
-    /// </summary>
-    BFMUL_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `BFMUL` - Multi-vector BFloat16 floating-point multiply by vector.
-    /// </summary>
-    BFMUL_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `BFMUL` - Multi-vector BFloat16 floating-point multiply.
-    /// </summary>
-    BFMUL_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `BFMUL` - Multi-vector BFloat16 floating-point multiply.
-    /// </summary>
-    BFMUL_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `BFMUL` - BFloat16 floating-point multiply vectors (predicated).
-    /// </summary>
-    BFMUL_z_p_zz,
-    /// <summary>
-    /// Instruction `BFMUL` - BFloat16 floating-point multiply vectors (unpredicated).
-    /// </summary>
-    BFMUL_z_zz,
-    /// <summary>
-    /// Instruction `BFMUL` - BFloat16 floating-point multiply vectors by indexed elements.
-    /// </summary>
-    BFMUL_z_zzi_h,
     /// <summary>
     /// Instruction `BFM` - Bitfield move.
     /// </summary>
@@ -1057,58 +337,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     BFM_64m_bitfield,
     /// <summary>
-    /// Instruction `BFSCALE` - Multi-vector BFloat16 adjust exponent by vector.
-    /// </summary>
-    BFSCALE_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `BFSCALE` - Multi-vector BFloat16 adjust exponent by vector.
-    /// </summary>
-    BFSCALE_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `BFSCALE` - Multi-vector BFloat16 adjust exponent.
-    /// </summary>
-    BFSCALE_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `BFSCALE` - Multi-vector BFloat16 adjust exponent.
-    /// </summary>
-    BFSCALE_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `BFSCALE` - BFloat16 adjust exponent by vector (predicated).
-    /// </summary>
-    BFSCALE_z_p_zz,
-    /// <summary>
-    /// Instruction `BFSUB` - BFloat16 floating-point subtract vectors (predicated).
-    /// </summary>
-    BFSUB_z_p_zz,
-    /// <summary>
-    /// Instruction `BFSUB` - BFloat16 floating-point subtract vectors (unpredicated).
-    /// </summary>
-    BFSUB_z_zz,
-    /// <summary>
-    /// Instruction `BFSUB` - BFloat16 floating-point subtract multi-vector from ZA array vector accumulators.
-    /// </summary>
-    BFSUB_za_zw_2x2_16,
-    /// <summary>
-    /// Instruction `BFSUB` - BFloat16 floating-point subtract multi-vector from ZA array vector accumulators.
-    /// </summary>
-    BFSUB_za_zw_4x4_16,
-    /// <summary>
-    /// Instruction `BFTMOPA` - BFloat16 sparse sum of two outer products, accumulating.
-    /// </summary>
-    BFTMOPA_za32_zzzi_h2x1,
-    /// <summary>
-    /// Instruction `BFTMOPA` - BFloat16 sparse outer product, accumulating.
-    /// </summary>
-    BFTMOPA_za_zzzi_h2x1,
-    /// <summary>
-    /// Instruction `BFVDOT` - Multi-vector BFloat16 floating-point vertical dot-product by indexed element.
-    /// </summary>
-    BFVDOT_za_zzi_2xi,
-    /// <summary>
-    /// Instruction `BGRP` - Group bits to right or left as selected by bitmask.
-    /// </summary>
-    BGRP_z_zz,
-    /// <summary>
     /// Instruction `BICS` - Bitwise bit clear (shifted register), setting flags.
     /// </summary>
     BICS_32_log_shift,
@@ -1116,10 +344,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `BICS` - Bitwise bit clear (shifted register), setting flags.
     /// </summary>
     BICS_64_log_shift,
-    /// <summary>
-    /// Instruction `BICS` - Bitwise clear predicates, setting the condition flags.
-    /// </summary>
-    BICS_p_p_pp_z,
     /// <summary>
     /// Instruction `BIC` - Bitwise bit clear (shifted register).
     /// </summary>
@@ -1140,18 +364,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `BIC` - Bitwise bit clear (vector, register).
     /// </summary>
     BIC_asimdsame_only,
-    /// <summary>
-    /// Instruction `BIC` - Bitwise clear predicates.
-    /// </summary>
-    BIC_p_p_pp_z,
-    /// <summary>
-    /// Instruction `BIC` - Bitwise clear vectors (predicated).
-    /// </summary>
-    BIC_z_p_zz,
-    /// <summary>
-    /// Instruction `BIC` - Bitwise clear vectors (unpredicated).
-    /// </summary>
-    BIC_z_zz,
     /// <summary>
     /// Instruction `BIF` - Bitwise insert if false.
     /// </summary>
@@ -1185,14 +397,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     BL_only_branch_imm,
     /// <summary>
-    /// Instruction `BMOPA` - Bitwise exclusive NOR population count outer product and accumulate.
-    /// </summary>
-    BMOPA_za_pp_zz_32,
-    /// <summary>
-    /// Instruction `BMOPS` - Bitwise exclusive NOR population count outer product and subtract.
-    /// </summary>
-    BMOPS_za_pp_zz_32,
-    /// <summary>
     /// Instruction `BRAAZ` - Branch to register, with pointer authentication.
     /// </summary>
     BRAAZ_64_branch_reg,
@@ -1209,46 +413,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     BRAB_64p_branch_reg,
     /// <summary>
-    /// Instruction `BRKAS` - Break after first true condition, setting the condition flags.
-    /// </summary>
-    BRKAS_p_p_p_z,
-    /// <summary>
-    /// Instruction `BRKA` - Break after first true condition.
-    /// </summary>
-    BRKA_p_p_p,
-    /// <summary>
-    /// Instruction `BRKBS` - Break before first true condition, setting the condition flags.
-    /// </summary>
-    BRKBS_p_p_p_z,
-    /// <summary>
-    /// Instruction `BRKB` - Break before first true condition.
-    /// </summary>
-    BRKB_p_p_p,
-    /// <summary>
-    /// Instruction `BRKNS` - Propagate break to next partition, setting the condition flags.
-    /// </summary>
-    BRKNS_p_p_pp,
-    /// <summary>
-    /// Instruction `BRKN` - Propagate break to next partition.
-    /// </summary>
-    BRKN_p_p_pp,
-    /// <summary>
-    /// Instruction `BRKPAS` - Break after first true condition, propagating from previous partition and setting the condition flags.
-    /// </summary>
-    BRKPAS_p_p_pp,
-    /// <summary>
-    /// Instruction `BRKPA` - Break after first true condition, propagating from previous partition.
-    /// </summary>
-    BRKPA_p_p_pp,
-    /// <summary>
-    /// Instruction `BRKPBS` - Break before first true condition, propagating from previous partition and setting the condition flags.
-    /// </summary>
-    BRKPBS_p_p_pp,
-    /// <summary>
-    /// Instruction `BRKPB` - Break before first true condition, propagating from previous partition.
-    /// </summary>
-    BRKPB_p_p_pp,
-    /// <summary>
     /// Instruction `BRK` - Breakpoint instruction.
     /// </summary>
     BRK_ex_exception,
@@ -1257,21 +421,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     BR_64_branch_reg,
     /// <summary>
-    /// Instruction `BSL1N` - Bitwise select with first input inverted.
-    /// </summary>
-    BSL1N_z_zzz,
-    /// <summary>
-    /// Instruction `BSL2N` - Bitwise select with second input inverted.
-    /// </summary>
-    BSL2N_z_zzz,
-    /// <summary>
     /// Instruction `BSL` - Bitwise select.
     /// </summary>
     BSL_asimdsame_only,
-    /// <summary>
-    /// Instruction `BSL` - Bitwise select.
-    /// </summary>
-    BSL_z_zzz,
     /// <summary>
     /// Instruction `BTI` - Branch target identification.
     /// </summary>
@@ -1284,10 +436,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `B` - Branch conditionally.
     /// </summary>
     B_only_condbranch,
-    /// <summary>
-    /// Instruction `CADD` - Complex integer add with rotate.
-    /// </summary>
-    CADD_z_zz,
     /// <summary>
     /// Instruction `CASAB` - Compare and swap byte in memory.
     /// </summary>
@@ -1609,18 +757,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     CCMP_64_condcmp_reg,
     /// <summary>
-    /// Instruction `CDOT` - Complex integer dot product.
-    /// </summary>
-    CDOT_z_zzz,
-    /// <summary>
-    /// Instruction `CDOT` - Complex integer dot product (indexed).
-    /// </summary>
-    CDOT_z_zzzi_d,
-    /// <summary>
-    /// Instruction `CDOT` - Complex integer dot product (indexed).
-    /// </summary>
-    CDOT_z_zzzi_s,
-    /// <summary>
     /// Instruction `CFINV` - Invert carry flag.
     /// </summary>
     CFINV_m_pstate,
@@ -1628,30 +764,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `CHKFEAT` - Check feature status.
     /// </summary>
     CHKFEAT_hf_hints,
-    /// <summary>
-    /// Instruction `CLASTA` - Conditionally extract element after last to general-purpose register.
-    /// </summary>
-    CLASTA_r_p_z,
-    /// <summary>
-    /// Instruction `CLASTA` - Conditionally extract element after last to SIMD&FP scalar register.
-    /// </summary>
-    CLASTA_v_p_z,
-    /// <summary>
-    /// Instruction `CLASTA` - Conditionally extract element after last to vector register.
-    /// </summary>
-    CLASTA_z_p_zz,
-    /// <summary>
-    /// Instruction `CLASTB` - Conditionally extract last element to general-purpose register.
-    /// </summary>
-    CLASTB_r_p_z,
-    /// <summary>
-    /// Instruction `CLASTB` - Conditionally extract last element to SIMD&FP scalar register.
-    /// </summary>
-    CLASTB_v_p_z,
-    /// <summary>
-    /// Instruction `CLASTB` - Conditionally extract last element to vector register.
-    /// </summary>
-    CLASTB_z_p_zz,
     /// <summary>
     /// Instruction `CLRBHB` - Clear branch history.
     /// </summary>
@@ -1673,14 +785,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     CLS_asimdmisc_r,
     /// <summary>
-    /// Instruction `CLS` - Count leading sign bits (predicated).
-    /// </summary>
-    CLS_z_p_z_m,
-    /// <summary>
-    /// Instruction `CLS` - Count leading sign bits (predicated).
-    /// </summary>
-    CLS_z_p_z_z,
-    /// <summary>
     /// Instruction `CLZ` - Count leading zeros.
     /// </summary>
     CLZ_32_dp_1src,
@@ -1692,14 +796,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `CLZ` - Count leading zero bits (vector).
     /// </summary>
     CLZ_asimdmisc_r,
-    /// <summary>
-    /// Instruction `CLZ` - Count leading zero bits (predicated).
-    /// </summary>
-    CLZ_z_p_z_m,
-    /// <summary>
-    /// Instruction `CLZ` - Count leading zero bits (predicated).
-    /// </summary>
-    CLZ_z_p_z_z,
     /// <summary>
     /// Instruction `CMEQ` - Compare bitwise equal to zero (vector).
     /// </summary>
@@ -1765,18 +861,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     CMHS_asisdsame_only,
     /// <summary>
-    /// Instruction `CMLA` - Complex integer multiply-add with rotate.
-    /// </summary>
-    CMLA_z_zzz,
-    /// <summary>
-    /// Instruction `CMLA` - Complex integer multiply-add with rotate (indexed).
-    /// </summary>
-    CMLA_z_zzzi_h,
-    /// <summary>
-    /// Instruction `CMLA` - Complex integer multiply-add with rotate (indexed).
-    /// </summary>
-    CMLA_z_zzzi_s,
-    /// <summary>
     /// Instruction `CMLE` - Compare signed less than or equal to zero (vector).
     /// </summary>
     CMLE_asimdmisc_z,
@@ -1793,110 +877,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     CMLT_asisdmisc_z,
     /// <summary>
-    /// Instruction `CMPEQ` - Compare vector to immediate.
-    /// </summary>
-    CMPEQ_p_p_zi,
-    /// <summary>
-    /// Instruction `CMPEQ` - Compare vector to 64-bit wide elements.
-    /// </summary>
-    CMPEQ_p_p_zw,
-    /// <summary>
-    /// Instruction `CMPEQ` - Compare vectors.
-    /// </summary>
-    CMPEQ_p_p_zz,
-    /// <summary>
-    /// Instruction `CMPGE` - Compare vector to immediate.
-    /// </summary>
-    CMPGE_p_p_zi,
-    /// <summary>
-    /// Instruction `CMPGE` - Compare vector to 64-bit wide elements.
-    /// </summary>
-    CMPGE_p_p_zw,
-    /// <summary>
-    /// Instruction `CMPGE` - Compare vectors.
-    /// </summary>
-    CMPGE_p_p_zz,
-    /// <summary>
-    /// Instruction `CMPGT` - Compare vector to immediate.
-    /// </summary>
-    CMPGT_p_p_zi,
-    /// <summary>
-    /// Instruction `CMPGT` - Compare vector to 64-bit wide elements.
-    /// </summary>
-    CMPGT_p_p_zw,
-    /// <summary>
-    /// Instruction `CMPGT` - Compare vectors.
-    /// </summary>
-    CMPGT_p_p_zz,
-    /// <summary>
-    /// Instruction `CMPHI` - Compare vector to immediate.
-    /// </summary>
-    CMPHI_p_p_zi,
-    /// <summary>
-    /// Instruction `CMPHI` - Compare vector to 64-bit wide elements.
-    /// </summary>
-    CMPHI_p_p_zw,
-    /// <summary>
-    /// Instruction `CMPHI` - Compare vectors.
-    /// </summary>
-    CMPHI_p_p_zz,
-    /// <summary>
-    /// Instruction `CMPHS` - Compare vector to immediate.
-    /// </summary>
-    CMPHS_p_p_zi,
-    /// <summary>
-    /// Instruction `CMPHS` - Compare vector to 64-bit wide elements.
-    /// </summary>
-    CMPHS_p_p_zw,
-    /// <summary>
-    /// Instruction `CMPHS` - Compare vectors.
-    /// </summary>
-    CMPHS_p_p_zz,
-    /// <summary>
-    /// Instruction `CMPLE` - Compare vector to immediate.
-    /// </summary>
-    CMPLE_p_p_zi,
-    /// <summary>
-    /// Instruction `CMPLE` - Compare vector to 64-bit wide elements.
-    /// </summary>
-    CMPLE_p_p_zw,
-    /// <summary>
-    /// Instruction `CMPLO` - Compare vector to immediate.
-    /// </summary>
-    CMPLO_p_p_zi,
-    /// <summary>
-    /// Instruction `CMPLO` - Compare vector to 64-bit wide elements.
-    /// </summary>
-    CMPLO_p_p_zw,
-    /// <summary>
-    /// Instruction `CMPLS` - Compare vector to immediate.
-    /// </summary>
-    CMPLS_p_p_zi,
-    /// <summary>
-    /// Instruction `CMPLS` - Compare vector to 64-bit wide elements.
-    /// </summary>
-    CMPLS_p_p_zw,
-    /// <summary>
-    /// Instruction `CMPLT` - Compare vector to immediate.
-    /// </summary>
-    CMPLT_p_p_zi,
-    /// <summary>
-    /// Instruction `CMPLT` - Compare vector to 64-bit wide elements.
-    /// </summary>
-    CMPLT_p_p_zw,
-    /// <summary>
-    /// Instruction `CMPNE` - Compare vector to immediate.
-    /// </summary>
-    CMPNE_p_p_zi,
-    /// <summary>
-    /// Instruction `CMPNE` - Compare vector to 64-bit wide elements.
-    /// </summary>
-    CMPNE_p_p_zw,
-    /// <summary>
-    /// Instruction `CMPNE` - Compare vectors.
-    /// </summary>
-    CMPNE_p_p_zz,
-    /// <summary>
     /// Instruction `CMTST` - Compare bitwise test bits nonzero (vector).
     /// </summary>
     CMTST_asimdsame_only,
@@ -1904,38 +884,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `CMTST` - Compare bitwise test bits nonzero (vector).
     /// </summary>
     CMTST_asisdsame_only,
-    /// <summary>
-    /// Instruction `CNOT` - Logically invert boolean condition in vector (predicated).
-    /// </summary>
-    CNOT_z_p_z_m,
-    /// <summary>
-    /// Instruction `CNOT` - Logically invert boolean condition in vector (predicated).
-    /// </summary>
-    CNOT_z_p_z_z,
-    /// <summary>
-    /// Instruction `CNTB` - Set scalar to multiple of predicate constraint element count.
-    /// </summary>
-    CNTB_r_s,
-    /// <summary>
-    /// Instruction `CNTD` - Set scalar to multiple of predicate constraint element count.
-    /// </summary>
-    CNTD_r_s,
-    /// <summary>
-    /// Instruction `CNTH` - Set scalar to multiple of predicate constraint element count.
-    /// </summary>
-    CNTH_r_s,
-    /// <summary>
-    /// Instruction `CNTP` - Set scalar to count of true predicate elements.
-    /// </summary>
-    CNTP_r_p_p,
-    /// <summary>
-    /// Instruction `CNTP` - Set scalar to count from predicate-as-counter.
-    /// </summary>
-    CNTP_r_pn,
-    /// <summary>
-    /// Instruction `CNTW` - Set scalar to multiple of predicate constraint element count.
-    /// </summary>
-    CNTW_r_s,
     /// <summary>
     /// Instruction `CNT` - Count bits.
     /// </summary>
@@ -1948,22 +896,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `CNT` - Population count per byte.
     /// </summary>
     CNT_asimdmisc_r,
-    /// <summary>
-    /// Instruction `CNT` - Count non-zero bits (predicated).
-    /// </summary>
-    CNT_z_p_z_m,
-    /// <summary>
-    /// Instruction `CNT` - Count non-zero bits (predicated).
-    /// </summary>
-    CNT_z_p_z_z,
-    /// <summary>
-    /// Instruction `COMPACT` - Copy active vector elements to lower-numbered elements.
-    /// </summary>
-    COMPACT_z_p_z,
-    /// <summary>
-    /// Instruction `COMPACT` - Copy active vector elements to lower-numbered elements.
-    /// </summary>
-    COMPACT_z_p_z_s,
     /// <summary>
     /// Instruction `CPYEN` - Memory copy, reads and writes non-temporal.
     /// </summary>
@@ -2349,22 +1281,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     CPYP_cpy_memcms,
     /// <summary>
-    /// Instruction `CPY` - Copy signed integer immediate to vector elements (zeroing).
-    /// </summary>
-    CPY_z_o_i,
-    /// <summary>
-    /// Instruction `CPY` - Copy signed integer immediate to vector elements (merging).
-    /// </summary>
-    CPY_z_p_i,
-    /// <summary>
-    /// Instruction `CPY` - Copy general-purpose register to vector elements (predicated).
-    /// </summary>
-    CPY_z_p_r,
-    /// <summary>
-    /// Instruction `CPY` - Copy SIMD&FP scalar register to vector elements (predicated).
-    /// </summary>
-    CPY_z_p_v,
-    /// <summary>
     /// Instruction `CRC32B` - CRC32 checksum.
     /// </summary>
     CRC32B_32c_dp_2src,
@@ -2433,14 +1349,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     CSNEG_64_condsel,
     /// <summary>
-    /// Instruction `CTERMEQ` - Compare and terminate loop.
-    /// </summary>
-    CTERMEQ_rr,
-    /// <summary>
-    /// Instruction `CTERMNE` - Compare and terminate loop.
-    /// </summary>
-    CTERMNE_rr,
-    /// <summary>
     /// Instruction `CTZ` - Count trailing zeros.
     /// </summary>
     CTZ_32_dp_1src,
@@ -2460,42 +1368,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `DCPS3` - Debug change PE state to EL3.
     /// </summary>
     DCPS3_dc_exception,
-    /// <summary>
-    /// Instruction `DECB` - Decrement scalar by multiple of predicate constraint element count.
-    /// </summary>
-    DECB_r_rs,
-    /// <summary>
-    /// Instruction `DECD` - Decrement scalar by multiple of predicate constraint element count.
-    /// </summary>
-    DECD_r_rs,
-    /// <summary>
-    /// Instruction `DECD` - Decrement vector by multiple of predicate constraint element count.
-    /// </summary>
-    DECD_z_zs,
-    /// <summary>
-    /// Instruction `DECH` - Decrement scalar by multiple of predicate constraint element count.
-    /// </summary>
-    DECH_r_rs,
-    /// <summary>
-    /// Instruction `DECH` - Decrement vector by multiple of predicate constraint element count.
-    /// </summary>
-    DECH_z_zs,
-    /// <summary>
-    /// Instruction `DECP` - Decrement scalar by count of true predicate elements.
-    /// </summary>
-    DECP_r_p_r,
-    /// <summary>
-    /// Instruction `DECP` - Decrement vector by count of true predicate elements.
-    /// </summary>
-    DECP_z_p_z,
-    /// <summary>
-    /// Instruction `DECW` - Decrement scalar by multiple of predicate constraint element count.
-    /// </summary>
-    DECW_r_rs,
-    /// <summary>
-    /// Instruction `DECW` - Decrement vector by multiple of predicate constraint element count.
-    /// </summary>
-    DECW_z_zs,
     /// <summary>
     /// Instruction `DGH` - Data gathering hint.
     /// </summary>
@@ -2517,14 +1389,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     DSB_bon_barriers,
     /// <summary>
-    /// Instruction `DUPM` - Broadcast logical bitmask immediate to vector (unpredicated).
-    /// </summary>
-    DUPM_z_i,
-    /// <summary>
-    /// Instruction `DUPQ` - Broadcast indexed element within each quadword vector segment (unpredicated).
-    /// </summary>
-    DUPQ_z_zi,
-    /// <summary>
     /// Instruction `DUP` - Duplicate general-purpose register to vector.
     /// </summary>
     DUP_asimdins_dr_r,
@@ -2537,18 +1401,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     DUP_asisdone_only,
     /// <summary>
-    /// Instruction `DUP` - Broadcast signed immediate to vector elements (unpredicated).
-    /// </summary>
-    DUP_z_i,
-    /// <summary>
-    /// Instruction `DUP` - Broadcast general-purpose register to vector elements (unpredicated).
-    /// </summary>
-    DUP_z_r,
-    /// <summary>
-    /// Instruction `DUP` - Broadcast indexed element to vector (unpredicated).
-    /// </summary>
-    DUP_z_zi,
-    /// <summary>
     /// Instruction `EON` - Bitwise exclusive-OR NOT (shifted register).
     /// </summary>
     EON_32_log_shift,
@@ -2560,30 +1412,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `EOR3` - Three-way exclusive-OR.
     /// </summary>
     EOR3_vvv16_crypto4,
-    /// <summary>
-    /// Instruction `EOR3` - Bitwise exclusive-OR of three vectors.
-    /// </summary>
-    EOR3_z_zzz,
-    /// <summary>
-    /// Instruction `EORBT` - Interleaving exclusive-OR (bottom, top).
-    /// </summary>
-    EORBT_z_zz,
-    /// <summary>
-    /// Instruction `EORQV` - Bitwise exclusive-OR reduction of quadword vector segments.
-    /// </summary>
-    EORQV_z_p_z,
-    /// <summary>
-    /// Instruction `EORS` - Bitwise exclusive-OR predicates, setting the condition flags.
-    /// </summary>
-    EORS_p_p_pp_z,
-    /// <summary>
-    /// Instruction `EORTB` - Interleaving exclusive-OR (top, bottom).
-    /// </summary>
-    EORTB_z_zz,
-    /// <summary>
-    /// Instruction `EORV` - Bitwise exclusive-OR reduction to scalar.
-    /// </summary>
-    EORV_r_p_z,
     /// <summary>
     /// Instruction `EOR` - Bitwise exclusive-OR (immediate).
     /// </summary>
@@ -2605,22 +1433,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     EOR_asimdsame_only,
     /// <summary>
-    /// Instruction `EOR` - Bitwise exclusive-OR predicates.
-    /// </summary>
-    EOR_p_p_pp_z,
-    /// <summary>
-    /// Instruction `EOR` - Bitwise exclusive-OR vectors (predicated).
-    /// </summary>
-    EOR_z_p_zz,
-    /// <summary>
-    /// Instruction `EOR` - Bitwise exclusive-OR with immediate (unpredicated).
-    /// </summary>
-    EOR_z_zi,
-    /// <summary>
-    /// Instruction `EOR` - Bitwise exclusive-OR vectors (unpredicated).
-    /// </summary>
-    EOR_z_zz,
-    /// <summary>
     /// Instruction `ERETAA` - Exception return, with pointer authentication.
     /// </summary>
     ERETAA_64e_branch_reg,
@@ -2637,14 +1449,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     ESB_hi_hints,
     /// <summary>
-    /// Instruction `EXPAND` - Copy lower-numbered vector elements to active elements.
-    /// </summary>
-    EXPAND_z_p_z,
-    /// <summary>
-    /// Instruction `EXTQ` - Extract vector segment from each pair of quadword vector segments.
-    /// </summary>
-    EXTQ_z_zi_des,
-    /// <summary>
     /// Instruction `EXTR` - Extract register.
     /// </summary>
     EXTR_32_extract,
@@ -2657,53 +1461,13 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     EXT_asimdext_only,
     /// <summary>
-    /// Instruction `EXT` - Extract vector from pair of vectors.
-    /// </summary>
-    EXT_z_zi_con,
-    /// <summary>
-    /// Instruction `EXT` - Extract vector from pair of vectors.
-    /// </summary>
-    EXT_z_zi_des,
-    /// <summary>
-    /// Instruction `F1CVTLT` - 8-bit floating-point convert to half-precision (top).
-    /// </summary>
-    F1CVTLT_z_z8_b2h,
-    /// <summary>
     /// Instruction `F1CVTL` - 8-bit floating-point convert to half-precision (vector).
     /// </summary>
     F1CVTL_asimdmisc_v,
     /// <summary>
-    /// Instruction `F1CVTL` - Multi-vector floating-point convert from 8-bit floating-point to deinterleaved half-precision.
-    /// </summary>
-    F1CVTL_mz2_z8,
-    /// <summary>
-    /// Instruction `F1CVT` - Multi-vector floating-point convert from 8-bit floating-point to half-precision (in-order).
-    /// </summary>
-    F1CVT_mz2_z8,
-    /// <summary>
-    /// Instruction `F1CVT` - 8-bit floating-point convert to half-precision.
-    /// </summary>
-    F1CVT_z_z8_b2h,
-    /// <summary>
-    /// Instruction `F2CVTLT` - 8-bit floating-point convert to half-precision (top).
-    /// </summary>
-    F2CVTLT_z_z8_b2h,
-    /// <summary>
     /// Instruction `F2CVTL` - 8-bit floating-point convert to half-precision (vector).
     /// </summary>
     F2CVTL_asimdmisc_v,
-    /// <summary>
-    /// Instruction `F2CVTL` - Multi-vector floating-point convert from 8-bit floating-point to deinterleaved half-precision.
-    /// </summary>
-    F2CVTL_mz2_z8,
-    /// <summary>
-    /// Instruction `F2CVT` - Multi-vector floating-point convert from 8-bit floating-point to half-precision (in-order).
-    /// </summary>
-    F2CVT_mz2_z8,
-    /// <summary>
-    /// Instruction `F2CVT` - 8-bit floating-point convert to half-precision.
-    /// </summary>
-    F2CVT_z_z8_b2h,
     /// <summary>
     /// Instruction `FABD` - Floating-point absolute difference (vector).
     /// </summary>
@@ -2720,10 +1484,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FABD` - Floating-point absolute difference (vector).
     /// </summary>
     FABD_asisdsamefp16_only,
-    /// <summary>
-    /// Instruction `FABD` - Floating-point absolute difference (predicated).
-    /// </summary>
-    FABD_z_p_zz,
     /// <summary>
     /// Instruction `FABS` - Floating-point absolute value (vector).
     /// </summary>
@@ -2745,14 +1505,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FABS_s_floatdp1,
     /// <summary>
-    /// Instruction `FABS` - Floating-point absolute value (predicated).
-    /// </summary>
-    FABS_z_p_z_m,
-    /// <summary>
-    /// Instruction `FABS` - Floating-point absolute value (predicated).
-    /// </summary>
-    FABS_z_p_z_z,
-    /// <summary>
     /// Instruction `FACGE` - Floating-point absolute compare greater than or equal (vector).
     /// </summary>
     FACGE_asimdsame_only,
@@ -2768,10 +1520,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FACGE` - Floating-point absolute compare greater than or equal (vector).
     /// </summary>
     FACGE_asisdsamefp16_only,
-    /// <summary>
-    /// Instruction `FACGE` - Floating-point absolute compare vectors.
-    /// </summary>
-    FACGE_p_p_zz,
     /// <summary>
     /// Instruction `FACGT` - Floating-point absolute compare greater than (vector).
     /// </summary>
@@ -2789,14 +1537,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FACGT_asisdsamefp16_only,
     /// <summary>
-    /// Instruction `FACGT` - Floating-point absolute compare vectors.
-    /// </summary>
-    FACGT_p_p_zz,
-    /// <summary>
-    /// Instruction `FADDA` - Floating-point add strictly-ordered reduction, accumulating in scalar.
-    /// </summary>
-    FADDA_v_p_z,
-    /// <summary>
     /// Instruction `FADDP` - Floating-point add pairwise (vector).
     /// </summary>
     FADDP_asimdsame_only,
@@ -2812,18 +1552,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FADDP` - Floating-point add pair of elements (scalar).
     /// </summary>
     FADDP_asisdpair_only_sd,
-    /// <summary>
-    /// Instruction `FADDP` - Floating-point add pairwise.
-    /// </summary>
-    FADDP_z_p_zz,
-    /// <summary>
-    /// Instruction `FADDQV` - Floating-point add recursive reduction of quadword vector segments.
-    /// </summary>
-    FADDQV_z_p_z,
-    /// <summary>
-    /// Instruction `FADDV` - Floating-point add recursive reduction to scalar.
-    /// </summary>
-    FADDV_v_p_z,
     /// <summary>
     /// Instruction `FADD` - Floating-point add (vector).
     /// </summary>
@@ -2845,34 +1573,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FADD_s_floatdp2,
     /// <summary>
-    /// Instruction `FADD` - Floating-point add immediate (predicated).
-    /// </summary>
-    FADD_z_p_zs,
-    /// <summary>
-    /// Instruction `FADD` - Floating-point add vector (predicated).
-    /// </summary>
-    FADD_z_p_zz,
-    /// <summary>
-    /// Instruction `FADD` - Floating-point add vector (unpredicated).
-    /// </summary>
-    FADD_z_zz,
-    /// <summary>
-    /// Instruction `FADD` - Floating-point add multi-vector to ZA array vector accumulators.
-    /// </summary>
-    FADD_za_zw_2x2,
-    /// <summary>
-    /// Instruction `FADD` - Floating-point add multi-vector to ZA array vector accumulators.
-    /// </summary>
-    FADD_za_zw_2x2_16,
-    /// <summary>
-    /// Instruction `FADD` - Floating-point add multi-vector to ZA array vector accumulators.
-    /// </summary>
-    FADD_za_zw_4x4,
-    /// <summary>
-    /// Instruction `FADD` - Floating-point add multi-vector to ZA array vector accumulators.
-    /// </summary>
-    FADD_za_zw_4x4_16,
-    /// <summary>
     /// Instruction `FAMAX` - Floating-point absolute maximum.
     /// </summary>
     FAMAX_asimdsame_only,
@@ -2880,18 +1580,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FAMAX` - Floating-point absolute maximum.
     /// </summary>
     FAMAX_asimdsamefp16_only,
-    /// <summary>
-    /// Instruction `FAMAX` - Multi-vector floating-point absolute maximum.
-    /// </summary>
-    FAMAX_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `FAMAX` - Multi-vector floating-point absolute maximum.
-    /// </summary>
-    FAMAX_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `FAMAX` - Floating-point absolute maximum (predicated).
-    /// </summary>
-    FAMAX_z_p_zz,
     /// <summary>
     /// Instruction `FAMIN` - Floating-point absolute minimum.
     /// </summary>
@@ -2901,25 +1589,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FAMIN_asimdsamefp16_only,
     /// <summary>
-    /// Instruction `FAMIN` - Multi-vector floating-point absolute minimum.
-    /// </summary>
-    FAMIN_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `FAMIN` - Multi-vector floating-point absolute minimum.
-    /// </summary>
-    FAMIN_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `FAMIN` - Floating-point absolute minimum (predicated).
-    /// </summary>
-    FAMIN_z_p_zz,
-    /// <summary>
     /// Instruction `FCADD` - Floating-point complex add.
     /// </summary>
     FCADD_asimdsame2_c,
-    /// <summary>
-    /// Instruction `FCADD` - Floating-point complex add with rotate (predicated).
-    /// </summary>
-    FCADD_z_p_zz,
     /// <summary>
     /// Instruction `FCCMPE` - Floating-point conditional signaling compare (scalar).
     /// </summary>
@@ -2944,18 +1616,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FCCMP` - Floating-point conditional quiet compare (scalar).
     /// </summary>
     FCCMP_s_floatccmp,
-    /// <summary>
-    /// Instruction `FCLAMP` - Multi-vector floating-point clamp to minimum/maximum number.
-    /// </summary>
-    FCLAMP_mz_zz_2,
-    /// <summary>
-    /// Instruction `FCLAMP` - Multi-vector floating-point clamp to minimum/maximum number.
-    /// </summary>
-    FCLAMP_mz_zz_4,
-    /// <summary>
-    /// Instruction `FCLAMP` - Floating-point clamp to minimum/maximum number.
-    /// </summary>
-    FCLAMP_z_zz,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal to zero (vector).
     /// </summary>
@@ -2989,14 +1649,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCMEQ_asisdsamefp16_only,
     /// <summary>
-    /// Instruction `FCMEQ` - Floating-point compare vector with zero.
-    /// </summary>
-    FCMEQ_p_p_z0,
-    /// <summary>
-    /// Instruction `FCMEQ` - Floating-point compare vectors.
-    /// </summary>
-    FCMEQ_p_p_zz,
-    /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal to zero (vector).
     /// </summary>
     FCMGE_asimdmisc_fz,
@@ -3028,14 +1680,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FCMGE` - Floating-point compare greater than or equal (vector).
     /// </summary>
     FCMGE_asisdsamefp16_only,
-    /// <summary>
-    /// Instruction `FCMGE` - Floating-point compare vector with zero.
-    /// </summary>
-    FCMGE_p_p_z0,
-    /// <summary>
-    /// Instruction `FCMGE` - Floating-point compare vectors.
-    /// </summary>
-    FCMGE_p_p_zz,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than zero (vector).
     /// </summary>
@@ -3069,14 +1713,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCMGT_asisdsamefp16_only,
     /// <summary>
-    /// Instruction `FCMGT` - Floating-point compare vector with zero.
-    /// </summary>
-    FCMGT_p_p_z0,
-    /// <summary>
-    /// Instruction `FCMGT` - Floating-point compare vectors.
-    /// </summary>
-    FCMGT_p_p_zz,
-    /// <summary>
     /// Instruction `FCMLA` - Floating-point complex multiply accumulate (by element).
     /// </summary>
     FCMLA_advsimd_elt,
@@ -3084,18 +1720,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FCMLA` - Floating-point complex multiply accumulate.
     /// </summary>
     FCMLA_asimdsame2_c,
-    /// <summary>
-    /// Instruction `FCMLA` - Floating-point complex multiply-add with rotate (predicated).
-    /// </summary>
-    FCMLA_z_p_zzz,
-    /// <summary>
-    /// Instruction `FCMLA` - Floating-point complex multiply-add by indexed values with rotate.
-    /// </summary>
-    FCMLA_z_zzzi_h,
-    /// <summary>
-    /// Instruction `FCMLA` - Floating-point complex multiply-add by indexed values with rotate.
-    /// </summary>
-    FCMLA_z_zzzi_s,
     /// <summary>
     /// Instruction `FCMLE` - Floating-point compare less than or equal to zero (vector).
     /// </summary>
@@ -3113,10 +1737,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCMLE_asisdmiscfp16_fz,
     /// <summary>
-    /// Instruction `FCMLE` - Floating-point compare vector with zero.
-    /// </summary>
-    FCMLE_p_p_z0,
-    /// <summary>
     /// Instruction `FCMLT` - Floating-point compare less than zero (vector).
     /// </summary>
     FCMLT_asimdmisc_fz,
@@ -3132,18 +1752,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FCMLT` - Floating-point compare less than zero (vector).
     /// </summary>
     FCMLT_asisdmiscfp16_fz,
-    /// <summary>
-    /// Instruction `FCMLT` - Floating-point compare vector with zero.
-    /// </summary>
-    FCMLT_p_p_z0,
-    /// <summary>
-    /// Instruction `FCMNE` - Floating-point compare vector with zero.
-    /// </summary>
-    FCMNE_p_p_z0,
-    /// <summary>
-    /// Instruction `FCMNE` - Floating-point compare vectors.
-    /// </summary>
-    FCMNE_p_p_zz,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
@@ -3192,14 +1800,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
     FCMP_sz_floatcmp,
-    /// <summary>
-    /// Instruction `FCMUO` - Floating-point compare vectors.
-    /// </summary>
-    FCMUO_p_p_zz,
-    /// <summary>
-    /// Instruction `FCPY` - Copy 8-bit floating-point immediate to vector elements (predicated).
-    /// </summary>
-    FCPY_z_p_i,
     /// <summary>
     /// Instruction `FCSEL` - Floating-point conditional select (scalar).
     /// </summary>
@@ -3325,29 +1925,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTAU_sisd_64s,
     /// <summary>
-    /// Instruction `FCVTLT` - Floating-point up convert long (top, predicated).
-    /// </summary>
-    FCVTLT_z_p_z_h2s,
-    /// <summary>
-    /// Instruction `FCVTLT` - Floating-point up convert long (top, predicated).
-    /// </summary>
-    FCVTLT_z_p_z_h2sz,
-    /// <summary>
-    /// Instruction `FCVTLT` - Floating-point up convert long (top, predicated).
-    /// </summary>
-    FCVTLT_z_p_z_s2d,
-    /// <summary>
-    /// Instruction `FCVTLT` - Floating-point up convert long (top, predicated).
-    /// </summary>
-    FCVTLT_z_p_z_s2dz,
-    /// <summary>
     /// Instruction `FCVTL` - Floating-point convert to higher precision long (vector).
     /// </summary>
     FCVTL_asimdmisc_l,
-    /// <summary>
-    /// Instruction `FCVTL` - Multi-vector floating-point convert from half-precision to deinterleaved single-precision.
-    /// </summary>
-    FCVTL_mz2_z,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
@@ -3461,10 +2041,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTMU_sisd_64s,
     /// <summary>
-    /// Instruction `FCVTNB` - Single-precision convert, narrow and interleave to 8-bit floating-point (bottom).
-    /// </summary>
-    FCVTNB_z8_mz2_s2b,
-    /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
     FCVTNS_32d_float2int,
@@ -3520,26 +2096,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
     FCVTNS_sisd_64s,
-    /// <summary>
-    /// Instruction `FCVTNT` - Single-precision convert, narrow and interleave to 8-bit floating-point (top).
-    /// </summary>
-    FCVTNT_z8_mz2_s2b,
-    /// <summary>
-    /// Instruction `FCVTNT` - Floating-point down convert and narrow (top, predicated).
-    /// </summary>
-    FCVTNT_z_p_z_d2s,
-    /// <summary>
-    /// Instruction `FCVTNT` - Floating-point down convert and narrow (top, predicated).
-    /// </summary>
-    FCVTNT_z_p_z_d2sz,
-    /// <summary>
-    /// Instruction `FCVTNT` - Floating-point down convert and narrow (top, predicated).
-    /// </summary>
-    FCVTNT_z_p_z_s2h,
-    /// <summary>
-    /// Instruction `FCVTNT` - Floating-point down convert and narrow (top, predicated).
-    /// </summary>
-    FCVTNT_z_p_z_s2hz,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
@@ -3608,18 +2164,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FCVTN` - Single-precision to 8-bit floating-point convert and narrow (vector).
     /// </summary>
     FCVTN_asimdsame2_h,
-    /// <summary>
-    /// Instruction `FCVTN` - Half-precision convert, narrow and interleave to 8-bit floating-point.
-    /// </summary>
-    FCVTN_z8_mz2_h2b,
-    /// <summary>
-    /// Instruction `FCVTN` - Multi-vector floating-point convert from single-precision to interleaved 8-bit floating-point format.
-    /// </summary>
-    FCVTN_z8_mz4,
-    /// <summary>
-    /// Instruction `FCVTN` - Multi-vector floating-point convert from single-precision to interleaved half-precision.
-    /// </summary>
-    FCVTN_z_mz2,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
@@ -3733,14 +2277,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTPU_sisd_64s,
     /// <summary>
-    /// Instruction `FCVTXNT` - Floating-point down convert, rounding to odd (top, predicated).
-    /// </summary>
-    FCVTXNT_z_p_z_d2s,
-    /// <summary>
-    /// Instruction `FCVTXNT` - Floating-point down convert, rounding to odd (top, predicated).
-    /// </summary>
-    FCVTXNT_z_p_z_d2sz,
-    /// <summary>
     /// Instruction `FCVTXN` - Floating-point convert to lower precision narrow, rounding to odd (vector).
     /// </summary>
     FCVTXN_asimdmisc_n,
@@ -3748,14 +2284,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FCVTXN` - Floating-point convert to lower precision narrow, rounding to odd (vector).
     /// </summary>
     FCVTXN_asisdmisc_n,
-    /// <summary>
-    /// Instruction `FCVTX` - Floating-point down convert, rounding to odd (predicated).
-    /// </summary>
-    FCVTX_z_p_z_d2s,
-    /// <summary>
-    /// Instruction `FCVTX` - Floating-point down convert, rounding to odd (predicated).
-    /// </summary>
-    FCVTX_z_p_z_d2sz,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
@@ -3829,14 +2357,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTZS_asisdshf_c,
     /// <summary>
-    /// Instruction `FCVTZS` - Multi-vector floating-point convert to signed integer, rounding toward zero.
-    /// </summary>
-    FCVTZS_mz_z_2,
-    /// <summary>
-    /// Instruction `FCVTZS` - Multi-vector floating-point convert to signed integer, rounding toward zero.
-    /// </summary>
-    FCVTZS_mz_z_4,
-    /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
     FCVTZS_sisd_32d,
@@ -3852,62 +2372,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
     FCVTZS_sisd_64s,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_d2w,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_d2wz,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_d2x,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_d2xz,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_fp162h,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_fp162hz,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_fp162w,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_fp162wz,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_fp162x,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_fp162xz,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_s2w,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_s2wz,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_s2x,
-    /// <summary>
-    /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZS_z_p_z_s2xz,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
@@ -3981,14 +2445,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVTZU_asisdshf_c,
     /// <summary>
-    /// Instruction `FCVTZU` - Multi-vector floating-point convert to unsigned integer, rounding toward zero.
-    /// </summary>
-    FCVTZU_mz_z_2,
-    /// <summary>
-    /// Instruction `FCVTZU` - Multi-vector floating-point convert to unsigned integer, rounding toward zero.
-    /// </summary>
-    FCVTZU_mz_z_4,
-    /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
     FCVTZU_sisd_32d,
@@ -4004,62 +2460,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
     FCVTZU_sisd_64s,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_d2w,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_d2wz,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_d2x,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_d2xz,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_fp162h,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_fp162hz,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_fp162w,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_fp162wz,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_fp162x,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_fp162xz,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_s2w,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_s2wz,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_s2x,
-    /// <summary>
-    /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (predicated).
-    /// </summary>
-    FCVTZU_z_p_z_s2xz,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
@@ -4077,10 +2477,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FCVT_hs_floatdp1,
     /// <summary>
-    /// Instruction `FCVT` - Multi-vector floating-point convert from half-precision to single-precision (in-order).
-    /// </summary>
-    FCVT_mz2_z,
-    /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
     FCVT_sd_floatdp1,
@@ -4088,70 +2484,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
     FCVT_sh_floatdp1,
-    /// <summary>
-    /// Instruction `FCVT` - Multi-vector floating-point convert from half-precision to packed 8-bit floating-point format.
-    /// </summary>
-    FCVT_z8_mz2,
-    /// <summary>
-    /// Instruction `FCVT` - Multi-vector floating-point convert from single-precision to packed 8-bit floating-point format.
-    /// </summary>
-    FCVT_z8_mz4,
-    /// <summary>
-    /// Instruction `FCVT` - Multi-vector floating-point convert from single-precision to packed half-precision.
-    /// </summary>
-    FCVT_z_mz2,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_d2h,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_d2hz,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_d2s,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_d2sz,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_h2d,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_h2dz,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_h2s,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_h2sz,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_s2d,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_s2dz,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_s2h,
-    /// <summary>
-    /// Instruction `FCVT` - Floating-point convert precision (predicated).
-    /// </summary>
-    FCVT_z_p_z_s2hz,
-    /// <summary>
-    /// Instruction `FDIVR` - Floating-point reversed divide by vector (predicated).
-    /// </summary>
-    FDIVR_z_p_zz,
     /// <summary>
     /// Instruction `FDIV` - Floating-point divide (vector).
     /// </summary>
@@ -4173,10 +2505,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FDIV_s_floatdp2,
     /// <summary>
-    /// Instruction `FDIV` - Floating-point divide by vector (predicated).
-    /// </summary>
-    FDIV_z_p_zz,
-    /// <summary>
     /// Instruction `FDOT` - 8-bit floating-point dot product to single-precision (vector, by element).
     /// </summary>
     FDOT_asimdelem_d,
@@ -4193,125 +2521,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FDOT_asimdsame2_dd,
     /// <summary>
-    /// Instruction `FDOT` - 8-bit floating-point dot product to single-precision.
-    /// </summary>
-    FDOT_z32_zz8z8,
-    /// <summary>
-    /// Instruction `FDOT` - 8-bit floating-point indexed dot product to single-precision.
-    /// </summary>
-    FDOT_z32_zz8z8i,
-    /// <summary>
-    /// Instruction `FDOT` - 8-bit floating-point dot product to half-precision.
-    /// </summary>
-    FDOT_z_zz8z8,
-    /// <summary>
-    /// Instruction `FDOT` - 8-bit floating-point indexed dot product to half-precision.
-    /// </summary>
-    FDOT_z_zz8z8i,
-    /// <summary>
-    /// Instruction `FDOT` - Half-precision floating-point dot product.
-    /// </summary>
-    FDOT_z_zzz,
-    /// <summary>
-    /// Instruction `FDOT` - Half-precision floating-point indexed dot product.
-    /// </summary>
-    FDOT_z_zzzi,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product by indexed element to single-precision.
-    /// </summary>
-    FDOT_za32_z8z8i_2xi,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product by indexed element to single-precision.
-    /// </summary>
-    FDOT_za32_z8z8i_4xi,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product by vector to single-precision.
-    /// </summary>
-    FDOT_za32_z8z8v_2x1,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product by vector to single-precision.
-    /// </summary>
-    FDOT_za32_z8z8v_4x1,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product to single-precision.
-    /// </summary>
-    FDOT_za32_z8z8w_2x2,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product to single-precision.
-    /// </summary>
-    FDOT_za32_z8z8w_4x4,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product by indexed element to half-precision.
-    /// </summary>
-    FDOT_za_z8z8i_2xi,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product by indexed element to half-precision.
-    /// </summary>
-    FDOT_za_z8z8i_4xi,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product by vector to half-precision.
-    /// </summary>
-    FDOT_za_z8z8v_2x1,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product by vector to half-precision.
-    /// </summary>
-    FDOT_za_z8z8v_4x1,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product to half-precision.
-    /// </summary>
-    FDOT_za_z8z8w_2x2,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector 8-bit floating-point dot-product to half-precision.
-    /// </summary>
-    FDOT_za_z8z8w_4x4,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector half-precision floating-point dot-product by indexed element.
-    /// </summary>
-    FDOT_za_zzi_2xi,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector half-precision floating-point dot-product by indexed element.
-    /// </summary>
-    FDOT_za_zzi_4xi,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector half-precision floating-point dot-product by vector.
-    /// </summary>
-    FDOT_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector half-precision floating-point dot-product by vector.
-    /// </summary>
-    FDOT_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector half-precision floating-point dot-product.
-    /// </summary>
-    FDOT_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `FDOT` - Multi-vector half-precision floating-point dot-product.
-    /// </summary>
-    FDOT_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `FDUP` - Broadcast 8-bit floating-point immediate to vector elements (unpredicated).
-    /// </summary>
-    FDUP_z_i,
-    /// <summary>
-    /// Instruction `FEXPA` - Floating-point exponential accelerator.
-    /// </summary>
-    FEXPA_z_z,
-    /// <summary>
-    /// Instruction `FIRSTP` - Scalar index of first true predicate element (predicated).
-    /// </summary>
-    FIRSTP_r_p_p,
-    /// <summary>
     /// Instruction `FJCVTZS` - Floating-point Javascript convert to signed fixed-point, rounding toward zero.
     /// </summary>
     FJCVTZS_32d_float2int,
-    /// <summary>
-    /// Instruction `FLOGB` - Floating-point base 2 logarithm as integer.
-    /// </summary>
-    FLOGB_z_p_z_m,
-    /// <summary>
-    /// Instruction `FLOGB` - Floating-point base 2 logarithm as integer.
-    /// </summary>
-    FLOGB_z_p_z_z,
     /// <summary>
     /// Instruction `FMADD` - Floating-point fused multiply-add (scalar).
     /// </summary>
@@ -4324,10 +2536,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FMADD` - Floating-point fused multiply-add (scalar).
     /// </summary>
     FMADD_s_floatdp3,
-    /// <summary>
-    /// Instruction `FMAD` - Floating-point fused multiply-add vectors (predicated), writing multiplicand [Zdn = Za + Zdn * Zm].
-    /// </summary>
-    FMAD_z_p_zzz,
     /// <summary>
     /// Instruction `FMAXNMP` - Floating-point maximum number pairwise (vector).
     /// </summary>
@@ -4345,14 +2553,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMAXNMP_asisdpair_only_sd,
     /// <summary>
-    /// Instruction `FMAXNMP` - Floating-point maximum number pairwise.
-    /// </summary>
-    FMAXNMP_z_p_zz,
-    /// <summary>
-    /// Instruction `FMAXNMQV` - Floating-point maximum number recursive reduction of quadword vector segments.
-    /// </summary>
-    FMAXNMQV_z_p_z,
-    /// <summary>
     /// Instruction `FMAXNMV` - Floating-point maximum number across vector.
     /// </summary>
     FMAXNMV_asimdall_only_h,
@@ -4360,10 +2560,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FMAXNMV` - Floating-point maximum number across vector.
     /// </summary>
     FMAXNMV_asimdall_only_sd,
-    /// <summary>
-    /// Instruction `FMAXNMV` - Floating-point maximum number recursive reduction to scalar.
-    /// </summary>
-    FMAXNMV_v_p_z,
     /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (vector).
     /// </summary>
@@ -4381,33 +2577,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMAXNM_h_floatdp2,
     /// <summary>
-    /// Instruction `FMAXNM` - Multi-vector floating-point maximum number by vector.
-    /// </summary>
-    FMAXNM_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `FMAXNM` - Multi-vector floating-point maximum number by vector.
-    /// </summary>
-    FMAXNM_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `FMAXNM` - Multi-vector floating-point maximum number.
-    /// </summary>
-    FMAXNM_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `FMAXNM` - Multi-vector floating-point maximum number.
-    /// </summary>
-    FMAXNM_mz_zzw_4x4,
-    /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (scalar).
     /// </summary>
     FMAXNM_s_floatdp2,
-    /// <summary>
-    /// Instruction `FMAXNM` - Floating-point maximum number with immediate (predicated).
-    /// </summary>
-    FMAXNM_z_p_zs,
-    /// <summary>
-    /// Instruction `FMAXNM` - Floating-point maximum number (predicated).
-    /// </summary>
-    FMAXNM_z_p_zz,
     /// <summary>
     /// Instruction `FMAXP` - Floating-point maximum pairwise (vector).
     /// </summary>
@@ -4425,14 +2597,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMAXP_asisdpair_only_sd,
     /// <summary>
-    /// Instruction `FMAXP` - Floating-point maximum pairwise.
-    /// </summary>
-    FMAXP_z_p_zz,
-    /// <summary>
-    /// Instruction `FMAXQV` - Floating-point maximum reduction of quadword vector segments.
-    /// </summary>
-    FMAXQV_z_p_z,
-    /// <summary>
     /// Instruction `FMAXV` - Floating-point maximum across vector.
     /// </summary>
     FMAXV_asimdall_only_h,
@@ -4440,10 +2604,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FMAXV` - Floating-point maximum across vector.
     /// </summary>
     FMAXV_asimdall_only_sd,
-    /// <summary>
-    /// Instruction `FMAXV` - Floating-point maximum recursive reduction to scalar.
-    /// </summary>
-    FMAXV_v_p_z,
     /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (vector).
     /// </summary>
@@ -4461,33 +2621,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMAX_h_floatdp2,
     /// <summary>
-    /// Instruction `FMAX` - Multi-vector floating-point maximum by vector.
-    /// </summary>
-    FMAX_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `FMAX` - Multi-vector floating-point maximum by vector.
-    /// </summary>
-    FMAX_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `FMAX` - Multi-vector floating-point maximum.
-    /// </summary>
-    FMAX_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `FMAX` - Multi-vector floating-point maximum.
-    /// </summary>
-    FMAX_mz_zzw_4x4,
-    /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (scalar).
     /// </summary>
     FMAX_s_floatdp2,
-    /// <summary>
-    /// Instruction `FMAX` - Floating-point maximum with immediate (predicated).
-    /// </summary>
-    FMAX_z_p_zs,
-    /// <summary>
-    /// Instruction `FMAX` - Floating-point maximum (predicated).
-    /// </summary>
-    FMAX_z_p_zz,
     /// <summary>
     /// Instruction `FMINNMP` - Floating-point minimum number pairwise (vector).
     /// </summary>
@@ -4505,14 +2641,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMINNMP_asisdpair_only_sd,
     /// <summary>
-    /// Instruction `FMINNMP` - Floating-point minimum number pairwise.
-    /// </summary>
-    FMINNMP_z_p_zz,
-    /// <summary>
-    /// Instruction `FMINNMQV` - Floating-point minimum number recursive reduction of quadword vector segments.
-    /// </summary>
-    FMINNMQV_z_p_z,
-    /// <summary>
     /// Instruction `FMINNMV` - Floating-point minimum number across vector.
     /// </summary>
     FMINNMV_asimdall_only_h,
@@ -4520,10 +2648,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FMINNMV` - Floating-point minimum number across vector.
     /// </summary>
     FMINNMV_asimdall_only_sd,
-    /// <summary>
-    /// Instruction `FMINNMV` - Floating-point minimum number recursive reduction to scalar.
-    /// </summary>
-    FMINNMV_v_p_z,
     /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (vector).
     /// </summary>
@@ -4541,33 +2665,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMINNM_h_floatdp2,
     /// <summary>
-    /// Instruction `FMINNM` - Multi-vector floating-point minimum number by vector.
-    /// </summary>
-    FMINNM_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `FMINNM` - Multi-vector floating-point minimum number by vector.
-    /// </summary>
-    FMINNM_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `FMINNM` - Multi-vector floating-point minimum number.
-    /// </summary>
-    FMINNM_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `FMINNM` - Multi-vector floating-point minimum number.
-    /// </summary>
-    FMINNM_mz_zzw_4x4,
-    /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (scalar).
     /// </summary>
     FMINNM_s_floatdp2,
-    /// <summary>
-    /// Instruction `FMINNM` - Floating-point minimum number with immediate (predicated).
-    /// </summary>
-    FMINNM_z_p_zs,
-    /// <summary>
-    /// Instruction `FMINNM` - Floating-point minimum number (predicated).
-    /// </summary>
-    FMINNM_z_p_zz,
     /// <summary>
     /// Instruction `FMINP` - Floating-point minimum pairwise (vector).
     /// </summary>
@@ -4585,14 +2685,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMINP_asisdpair_only_sd,
     /// <summary>
-    /// Instruction `FMINP` - Floating-point minimum pairwise.
-    /// </summary>
-    FMINP_z_p_zz,
-    /// <summary>
-    /// Instruction `FMINQV` - Floating-point minimum recursive reduction of quadword vector segments.
-    /// </summary>
-    FMINQV_z_p_z,
-    /// <summary>
     /// Instruction `FMINV` - Floating-point minimum across vector.
     /// </summary>
     FMINV_asimdall_only_h,
@@ -4600,10 +2692,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FMINV` - Floating-point minimum across vector.
     /// </summary>
     FMINV_asimdall_only_sd,
-    /// <summary>
-    /// Instruction `FMINV` - Floating-point minimum recursive reduction to scalar.
-    /// </summary>
-    FMINV_v_p_z,
     /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (vector).
     /// </summary>
@@ -4621,33 +2709,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMIN_h_floatdp2,
     /// <summary>
-    /// Instruction `FMIN` - Multi-vector floating-point minimum by vector.
-    /// </summary>
-    FMIN_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `FMIN` - Multi-vector floating-point minimum by vector.
-    /// </summary>
-    FMIN_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `FMIN` - Multi-vector floating-point minimum.
-    /// </summary>
-    FMIN_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `FMIN` - Multi-vector floating-point minimum.
-    /// </summary>
-    FMIN_mz_zzw_4x4,
-    /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (scalar).
     /// </summary>
     FMIN_s_floatdp2,
-    /// <summary>
-    /// Instruction `FMIN` - Floating-point minimum with immediate (predicated).
-    /// </summary>
-    FMIN_z_p_zs,
-    /// <summary>
-    /// Instruction `FMIN` - Floating-point minimum (predicated).
-    /// </summary>
-    FMIN_z_p_zz,
     /// <summary>
     /// Instruction `FMLAL2` - Floating-point fused multiply-add long to accumulator (by element).
     /// </summary>
@@ -4665,22 +2729,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMLALB_asimdsame2_j,
     /// <summary>
-    /// Instruction `FMLALB` - 8-bit floating-point multiply-add long to half-precision (bottom).
-    /// </summary>
-    FMLALB_z_z8z8z8,
-    /// <summary>
-    /// Instruction `FMLALB` - 8-bit floating-point multiply-add long to half-precision (bottom, indexed).
-    /// </summary>
-    FMLALB_z_z8z8z8i,
-    /// <summary>
-    /// Instruction `FMLALB` - Half-precision floating-point multiply-add long to single-precision (bottom).
-    /// </summary>
-    FMLALB_z_zzz,
-    /// <summary>
-    /// Instruction `FMLALB` - Half-precision floating-point multiply-add long to single-precision (bottom, indexed).
-    /// </summary>
-    FMLALB_z_zzzi_s,
-    /// <summary>
     /// Instruction `FMLALLBB` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
     FMLALLBB_asimdelem_j,
@@ -4688,14 +2736,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FMLALLBB` - 8-bit floating-point multiply-add long-long to single-precision (vector).
     /// </summary>
     FMLALLBB_asimdsame2_g,
-    /// <summary>
-    /// Instruction `FMLALLBB` - 8-bit floating-point multiply-add long long to single-precision (bottom bottom).
-    /// </summary>
-    FMLALLBB_z32_z8z8z8,
-    /// <summary>
-    /// Instruction `FMLALLBB` - 8-bit floating-point multiply-add long long to single-precision (bottom bottom, indexed).
-    /// </summary>
-    FMLALLBB_z32_z8z8z8i,
     /// <summary>
     /// Instruction `FMLALLBT` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
@@ -4705,14 +2745,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMLALLBT_asimdsame2_g,
     /// <summary>
-    /// Instruction `FMLALLBT` - 8-bit floating-point multiply-add long long to single-precision (bottom top).
-    /// </summary>
-    FMLALLBT_z32_z8z8z8,
-    /// <summary>
-    /// Instruction `FMLALLBT` - 8-bit floating-point multiply-add long long to single-precision (bottom top, indexed).
-    /// </summary>
-    FMLALLBT_z32_z8z8z8i,
-    /// <summary>
     /// Instruction `FMLALLTB` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
     FMLALLTB_asimdelem_j,
@@ -4720,14 +2752,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FMLALLTB` - 8-bit floating-point multiply-add long-long to single-precision (vector).
     /// </summary>
     FMLALLTB_asimdsame2_g,
-    /// <summary>
-    /// Instruction `FMLALLTB` - 8-bit floating-point multiply-add long long to single-precision (top bottom).
-    /// </summary>
-    FMLALLTB_z32_z8z8z8,
-    /// <summary>
-    /// Instruction `FMLALLTB` - 8-bit floating-point multiply-add long long to single-precision (top bottom, indexed).
-    /// </summary>
-    FMLALLTB_z32_z8z8z8i,
     /// <summary>
     /// Instruction `FMLALLTT` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
@@ -4737,46 +2761,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMLALLTT_asimdsame2_g,
     /// <summary>
-    /// Instruction `FMLALLTT` - 8-bit floating-point multiply-add long long to single-precision (top top).
-    /// </summary>
-    FMLALLTT_z32_z8z8z8,
-    /// <summary>
-    /// Instruction `FMLALLTT` - 8-bit floating-point multiply-add long long to single-precision (top top, indexed).
-    /// </summary>
-    FMLALLTT_z32_z8z8z8i,
-    /// <summary>
-    /// Instruction `FMLALL` - Multi-vector 8-bit floating-point multiply-add long-long by indexed element to single-precision.
-    /// </summary>
-    FMLALL_za32_z8z8i_1,
-    /// <summary>
-    /// Instruction `FMLALL` - Multi-vector 8-bit floating-point multiply-add long-long by indexed element to single-precision.
-    /// </summary>
-    FMLALL_za32_z8z8i_2xi,
-    /// <summary>
-    /// Instruction `FMLALL` - Multi-vector 8-bit floating-point multiply-add long-long by indexed element to single-precision.
-    /// </summary>
-    FMLALL_za32_z8z8i_4xi,
-    /// <summary>
-    /// Instruction `FMLALL` - Multi-vector 8-bit floating-point multiply-add long-long by vector to single-precision.
-    /// </summary>
-    FMLALL_za32_z8z8v_1,
-    /// <summary>
-    /// Instruction `FMLALL` - Multi-vector 8-bit floating-point multiply-add long-long by vector to single-precision.
-    /// </summary>
-    FMLALL_za32_z8z8v_2x1,
-    /// <summary>
-    /// Instruction `FMLALL` - Multi-vector 8-bit floating-point multiply-add long-long by vector to single-precision.
-    /// </summary>
-    FMLALL_za32_z8z8v_4x1,
-    /// <summary>
-    /// Instruction `FMLALL` - Multi-vector 8-bit floating-point multiply-add long-long to single-precision.
-    /// </summary>
-    FMLALL_za32_z8z8w_2x2,
-    /// <summary>
-    /// Instruction `FMLALL` - Multi-vector 8-bit floating-point multiply-add long-long to single-precision.
-    /// </summary>
-    FMLALL_za32_z8z8w_4x4,
-    /// <summary>
     /// Instruction `FMLALT` - 8-bit floating-point multiply-add long to half-precision (vector, by element).
     /// </summary>
     FMLALT_asimdelem_h,
@@ -4785,22 +2769,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMLALT_asimdsame2_j,
     /// <summary>
-    /// Instruction `FMLALT` - 8-bit floating-point multiply-add long to half-precision (top).
-    /// </summary>
-    FMLALT_z_z8z8z8,
-    /// <summary>
-    /// Instruction `FMLALT` - 8-bit floating-point multiply-add long to half-precision (top, indexed).
-    /// </summary>
-    FMLALT_z_z8z8z8i,
-    /// <summary>
-    /// Instruction `FMLALT` - Half-precision floating-point multiply-add long to single-precision (top).
-    /// </summary>
-    FMLALT_z_zzz,
-    /// <summary>
-    /// Instruction `FMLALT` - Half-precision floating-point multiply-add long to single-precision (top, indexed).
-    /// </summary>
-    FMLALT_z_zzzi_s,
-    /// <summary>
     /// Instruction `FMLAL` - Floating-point fused multiply-add long to accumulator (by element).
     /// </summary>
     FMLAL_asimdelem_lh,
@@ -4808,70 +2776,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FMLAL` - Floating-point fused multiply-add long to accumulator (vector).
     /// </summary>
     FMLAL_asimdsame_f,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector 8-bit floating-point multiply-add long by indexed element to half-precision.
-    /// </summary>
-    FMLAL_za_z8z8i_1,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector 8-bit floating-point multiply-add long by indexed element to half-precision.
-    /// </summary>
-    FMLAL_za_z8z8i_2xi,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector 8-bit floating-point multiply-add long by indexed element to half-precision.
-    /// </summary>
-    FMLAL_za_z8z8i_4xi,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector 8-bit floating-point multiply-add long by vector to half-precision.
-    /// </summary>
-    FMLAL_za_z8z8v_1,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector 8-bit floating-point multiply-add long by vector to half-precision.
-    /// </summary>
-    FMLAL_za_z8z8v_2x1,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector 8-bit floating-point multiply-add long by vector to half-precision.
-    /// </summary>
-    FMLAL_za_z8z8v_4x1,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector 8-bit floating-point multiply-add long to half-precision.
-    /// </summary>
-    FMLAL_za_z8z8w_2x2,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector 8-bit floating-point multiply-add long to half-precision.
-    /// </summary>
-    FMLAL_za_z8z8w_4x4,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector floating-point multiply-add long by indexed element.
-    /// </summary>
-    FMLAL_za_zzi_1,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector floating-point multiply-add long by indexed element.
-    /// </summary>
-    FMLAL_za_zzi_2xi,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector floating-point multiply-add long by indexed element.
-    /// </summary>
-    FMLAL_za_zzi_4xi,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector floating-point multiply-add long by vector.
-    /// </summary>
-    FMLAL_za_zzv_1,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector floating-point multiply-add long by vector.
-    /// </summary>
-    FMLAL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector floating-point multiply-add long by vector.
-    /// </summary>
-    FMLAL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector floating-point multiply-add long.
-    /// </summary>
-    FMLAL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `FMLAL` - Multi-vector floating-point multiply-add long.
-    /// </summary>
-    FMLAL_za_zzw_4x4,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (by element).
     /// </summary>
@@ -4897,78 +2801,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMLA_asisdelem_rh_h,
     /// <summary>
-    /// Instruction `FMLA` - Floating-point fused multiply-add vectors (predicated), writing addend [Zda = Zda + Zn * Zm].
-    /// </summary>
-    FMLA_z_p_zzz,
-    /// <summary>
-    /// Instruction `FMLA` - Floating-point fused multiply-add by indexed elements (Zda = Zda + Zn * Zm[indexed]).
-    /// </summary>
-    FMLA_z_zzzi_d,
-    /// <summary>
-    /// Instruction `FMLA` - Floating-point fused multiply-add by indexed elements (Zda = Zda + Zn * Zm[indexed]).
-    /// </summary>
-    FMLA_z_zzzi_h,
-    /// <summary>
-    /// Instruction `FMLA` - Floating-point fused multiply-add by indexed elements (Zda = Zda + Zn * Zm[indexed]).
-    /// </summary>
-    FMLA_z_zzzi_s,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add by indexed element.
-    /// </summary>
-    FMLA_za_zzi_d2xi,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add by indexed element.
-    /// </summary>
-    FMLA_za_zzi_d4xi,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add by indexed element.
-    /// </summary>
-    FMLA_za_zzi_h2xi,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add by indexed element.
-    /// </summary>
-    FMLA_za_zzi_h4xi,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add by indexed element.
-    /// </summary>
-    FMLA_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add by indexed element.
-    /// </summary>
-    FMLA_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add by vector.
-    /// </summary>
-    FMLA_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add by vector.
-    /// </summary>
-    FMLA_za_zzv_2x1_16,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add by vector.
-    /// </summary>
-    FMLA_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add by vector.
-    /// </summary>
-    FMLA_za_zzv_4x1_16,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add.
-    /// </summary>
-    FMLA_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add.
-    /// </summary>
-    FMLA_za_zzw_2x2_16,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add.
-    /// </summary>
-    FMLA_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `FMLA` - Multi-vector floating-point fused multiply-add.
-    /// </summary>
-    FMLA_za_zzw_4x4_16,
-    /// <summary>
     /// Instruction `FMLSL2` - Floating-point fused multiply-subtract long from accumulator (by element).
     /// </summary>
     FMLSL2_asimdelem_lh,
@@ -4977,22 +2809,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMLSL2_asimdsame_f,
     /// <summary>
-    /// Instruction `FMLSLB` - Half-precision floating-point multiply-subtract long from single-precision (bottom).
-    /// </summary>
-    FMLSLB_z_zzz,
-    /// <summary>
-    /// Instruction `FMLSLB` - Half-precision floating-point multiply-subtract long from single-precision (bottom, indexed).
-    /// </summary>
-    FMLSLB_z_zzzi_s,
-    /// <summary>
-    /// Instruction `FMLSLT` - Half-precision floating-point multiply-subtract long from single-precision (top).
-    /// </summary>
-    FMLSLT_z_zzz,
-    /// <summary>
-    /// Instruction `FMLSLT` - Half-precision floating-point multiply-subtract long from single-precision (top, indexed).
-    /// </summary>
-    FMLSLT_z_zzzi_s,
-    /// <summary>
     /// Instruction `FMLSL` - Floating-point fused multiply-subtract long from accumulator (by element).
     /// </summary>
     FMLSL_asimdelem_lh,
@@ -5000,38 +2816,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FMLSL` - Floating-point fused multiply-subtract long from accumulator (vector).
     /// </summary>
     FMLSL_asimdsame_f,
-    /// <summary>
-    /// Instruction `FMLSL` - Multi-vector floating-point multiply-subtract long by indexed element.
-    /// </summary>
-    FMLSL_za_zzi_1,
-    /// <summary>
-    /// Instruction `FMLSL` - Multi-vector floating-point multiply-subtract long by indexed element.
-    /// </summary>
-    FMLSL_za_zzi_2xi,
-    /// <summary>
-    /// Instruction `FMLSL` - Multi-vector floating-point multiply-subtract long by indexed element.
-    /// </summary>
-    FMLSL_za_zzi_4xi,
-    /// <summary>
-    /// Instruction `FMLSL` - Multi-vector floating-point multiply-subtract long by vector.
-    /// </summary>
-    FMLSL_za_zzv_1,
-    /// <summary>
-    /// Instruction `FMLSL` - Multi-vector floating-point multiply-subtract long by vector.
-    /// </summary>
-    FMLSL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `FMLSL` - Multi-vector floating-point multiply-subtract long by vector.
-    /// </summary>
-    FMLSL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `FMLSL` - Multi-vector floating-point multiply-subtract long.
-    /// </summary>
-    FMLSL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `FMLSL` - Multi-vector floating-point multiply-subtract long.
-    /// </summary>
-    FMLSL_za_zzw_4x4,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (by element).
     /// </summary>
@@ -5057,78 +2841,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMLS_asisdelem_rh_h,
     /// <summary>
-    /// Instruction `FMLS` - Floating-point fused multiply-subtract vectors (predicated), writing addend [Zda = Zda + -Zn * Zm].
-    /// </summary>
-    FMLS_z_p_zzz,
-    /// <summary>
-    /// Instruction `FMLS` - Floating-point fused multiply-subtract by indexed elements (Zda = Zda + -Zn * Zm[indexed]).
-    /// </summary>
-    FMLS_z_zzzi_d,
-    /// <summary>
-    /// Instruction `FMLS` - Floating-point fused multiply-subtract by indexed elements (Zda = Zda + -Zn * Zm[indexed]).
-    /// </summary>
-    FMLS_z_zzzi_h,
-    /// <summary>
-    /// Instruction `FMLS` - Floating-point fused multiply-subtract by indexed elements (Zda = Zda + -Zn * Zm[indexed]).
-    /// </summary>
-    FMLS_z_zzzi_s,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract by indexed element.
-    /// </summary>
-    FMLS_za_zzi_d2xi,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract by indexed element.
-    /// </summary>
-    FMLS_za_zzi_d4xi,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract by indexed element.
-    /// </summary>
-    FMLS_za_zzi_h2xi,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract by indexed element.
-    /// </summary>
-    FMLS_za_zzi_h4xi,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract by indexed element.
-    /// </summary>
-    FMLS_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract by indexed element.
-    /// </summary>
-    FMLS_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract by vector.
-    /// </summary>
-    FMLS_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract by vector.
-    /// </summary>
-    FMLS_za_zzv_2x1_16,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract by vector.
-    /// </summary>
-    FMLS_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract by vector.
-    /// </summary>
-    FMLS_za_zzv_4x1_16,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract.
-    /// </summary>
-    FMLS_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract.
-    /// </summary>
-    FMLS_za_zzw_2x2_16,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract.
-    /// </summary>
-    FMLS_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `FMLS` - Multi-vector floating-point fused multiply-subtract.
-    /// </summary>
-    FMLS_za_zzw_4x4_16,
-    /// <summary>
     /// Instruction `FMMLA` - 8-bit floating-point matrix multiply-accumulate into 2x2 half-precision matrix.
     /// </summary>
     FMMLA_asimd_fp8fp16,
@@ -5136,226 +2848,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FMMLA` - 8-bit floating-point matrix multiply-accumulate into 2x2 single-precision matrix.
     /// </summary>
     FMMLA_asimd_fp8fp32,
-    /// <summary>
-    /// Instruction `FMMLA` - 8-bit floating-point matrix multiply-accumulate to half-precision.
-    /// </summary>
-    FMMLA_z16_zz8z8,
-    /// <summary>
-    /// Instruction `FMMLA` - 8-bit floating-point matrix multiply-accumulate to single-precision.
-    /// </summary>
-    FMMLA_z32_zz8z8,
-    /// <summary>
-    /// Instruction `FMMLA` - Half-precision floating-point matrix multiply-accumulate to single-precision.
-    /// </summary>
-    FMMLA_z32_zzz_h,
-    /// <summary>
-    /// Instruction `FMMLA` - Floating-point matrix multiply-accumulate.
-    /// </summary>
-    FMMLA_z_zzz_d,
-    /// <summary>
-    /// Instruction `FMMLA` - Floating-point matrix multiply-accumulate.
-    /// </summary>
-    FMMLA_z_zzz_s,
-    /// <summary>
-    /// Instruction `FMOP4A` - 8-bit floating-point quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    FMOP4A_za16_z8z8_b1x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - 8-bit floating-point quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    FMOP4A_za16_z8z8_b1x2,
-    /// <summary>
-    /// Instruction `FMOP4A` - 8-bit floating-point quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    FMOP4A_za16_z8z8_b2x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - 8-bit floating-point quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    FMOP4A_za16_z8z8_b2x2,
-    /// <summary>
-    /// Instruction `FMOP4A` - 8-bit floating-point quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    FMOP4A_za32_z8z8_b1x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - 8-bit floating-point quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    FMOP4A_za32_z8z8_b1x2,
-    /// <summary>
-    /// Instruction `FMOP4A` - 8-bit floating-point quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    FMOP4A_za32_z8z8_b2x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - 8-bit floating-point quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    FMOP4A_za32_z8z8_b2x2,
-    /// <summary>
-    /// Instruction `FMOP4A` - Half-precision quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    FMOP4A_za32_zz_h1x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - Half-precision quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    FMOP4A_za32_zz_h1x2,
-    /// <summary>
-    /// Instruction `FMOP4A` - Half-precision quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    FMOP4A_za32_zz_h2x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - Half-precision quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    FMOP4A_za32_zz_h2x2,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_d1x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_d1x2,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_d2x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_d2x2,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_s1x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_s1x2,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_s2x1,
-    /// <summary>
-    /// Instruction `FMOP4A` - Floating-point quarter-tile outer products, accumulating.
-    /// </summary>
-    FMOP4A_za_zz_s2x2,
-    /// <summary>
-    /// Instruction `FMOP4S` - Half-precision quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    FMOP4S_za32_zz_h1x1,
-    /// <summary>
-    /// Instruction `FMOP4S` - Half-precision quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    FMOP4S_za32_zz_h1x2,
-    /// <summary>
-    /// Instruction `FMOP4S` - Half-precision quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    FMOP4S_za32_zz_h2x1,
-    /// <summary>
-    /// Instruction `FMOP4S` - Half-precision quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    FMOP4S_za32_zz_h2x2,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_d1x1,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_d1x2,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_d2x1,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_d2x2,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_s1x1,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_s1x2,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_s2x1,
-    /// <summary>
-    /// Instruction `FMOP4S` - Floating-point quarter-tile outer products, subtracting.
-    /// </summary>
-    FMOP4S_za_zz_s2x2,
-    /// <summary>
-    /// Instruction `FMOPA` - 8-bit floating-point sum of outer products and accumulate.
-    /// </summary>
-    FMOPA_za16_pp_z8z8_8,
-    /// <summary>
-    /// Instruction `FMOPA` - 8-bit floating-point sum of outer products and accumulate.
-    /// </summary>
-    FMOPA_za32_pp_z8z8_8,
-    /// <summary>
-    /// Instruction `FMOPA` - Half-precision floating-point sum of outer products and accumulate.
-    /// </summary>
-    FMOPA_za32_pp_zz_16,
-    /// <summary>
-    /// Instruction `FMOPA` - Floating-point outer product and accumulate.
-    /// </summary>
-    FMOPA_za_pp_zz_16,
-    /// <summary>
-    /// Instruction `FMOPA` - Floating-point outer product and accumulate.
-    /// </summary>
-    FMOPA_za_pp_zz_32,
-    /// <summary>
-    /// Instruction `FMOPA` - Floating-point outer product and accumulate.
-    /// </summary>
-    FMOPA_za_pp_zz_64,
-    /// <summary>
-    /// Instruction `FMOPS` - Half-precision floating-point sum of outer products and subtract.
-    /// </summary>
-    FMOPS_za32_pp_zz_16,
-    /// <summary>
-    /// Instruction `FMOPS` - Floating-point outer product and subtract.
-    /// </summary>
-    FMOPS_za_pp_zz_16,
-    /// <summary>
-    /// Instruction `FMOPS` - Floating-point outer product and subtract.
-    /// </summary>
-    FMOPS_za_pp_zz_32,
-    /// <summary>
-    /// Instruction `FMOPS` - Floating-point outer product and subtract.
-    /// </summary>
-    FMOPS_za_pp_zz_64,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
@@ -5433,10 +2925,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMOV_v64i_float2int,
     /// <summary>
-    /// Instruction `FMSB` - Floating-point fused multiply-subtract vectors (predicated), writing multiplicand [Zdn = Za + -Zdn * Zm].
-    /// </summary>
-    FMSB_z_p_zzz,
-    /// <summary>
     /// Instruction `FMSUB` - Floating-point fused multiply-subtract (scalar).
     /// </summary>
     FMSUB_d_floatdp3,
@@ -5481,10 +2969,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMULX_asisdsamefp16_only,
     /// <summary>
-    /// Instruction `FMULX` - Floating-point multiply-extended vectors (predicated).
-    /// </summary>
-    FMULX_z_p_zz,
-    /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (by element).
     /// </summary>
     FMUL_asimdelem_r_sd,
@@ -5517,49 +3001,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FMUL_h_floatdp2,
     /// <summary>
-    /// Instruction `FMUL` - Multi-vector floating-point multiply by vector.
-    /// </summary>
-    FMUL_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `FMUL` - Multi-vector floating-point multiply by vector.
-    /// </summary>
-    FMUL_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `FMUL` - Multi-vector floating-point multiply.
-    /// </summary>
-    FMUL_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `FMUL` - Multi-vector floating-point multiply.
-    /// </summary>
-    FMUL_mz_zzw_4x4,
-    /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (scalar).
     /// </summary>
     FMUL_s_floatdp2,
-    /// <summary>
-    /// Instruction `FMUL` - Floating-point multiply by immediate (predicated).
-    /// </summary>
-    FMUL_z_p_zs,
-    /// <summary>
-    /// Instruction `FMUL` - Floating-point multiply vectors (predicated).
-    /// </summary>
-    FMUL_z_p_zz,
-    /// <summary>
-    /// Instruction `FMUL` - Floating-point multiply vectors (unpredicated).
-    /// </summary>
-    FMUL_z_zz,
-    /// <summary>
-    /// Instruction `FMUL` - Floating-point multiply by indexed elements.
-    /// </summary>
-    FMUL_z_zzi_d,
-    /// <summary>
-    /// Instruction `FMUL` - Floating-point multiply by indexed elements.
-    /// </summary>
-    FMUL_z_zzi_h,
-    /// <summary>
-    /// Instruction `FMUL` - Floating-point multiply by indexed elements.
-    /// </summary>
-    FMUL_z_zzi_s,
     /// <summary>
     /// Instruction `FNEG` - Floating-point negate (vector).
     /// </summary>
@@ -5581,14 +3025,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FNEG_s_floatdp1,
     /// <summary>
-    /// Instruction `FNEG` - Floating-point negate (predicated).
-    /// </summary>
-    FNEG_z_p_z_m,
-    /// <summary>
-    /// Instruction `FNEG` - Floating-point negate (predicated).
-    /// </summary>
-    FNEG_z_p_z_z,
-    /// <summary>
     /// Instruction `FNMADD` - Floating-point negated fused multiply-add (scalar).
     /// </summary>
     FNMADD_d_floatdp3,
@@ -5600,22 +3036,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FNMADD` - Floating-point negated fused multiply-add (scalar).
     /// </summary>
     FNMADD_s_floatdp3,
-    /// <summary>
-    /// Instruction `FNMAD` - Floating-point negated fused multiply-add vectors (predicated), writing multiplicand [Zdn = -Za + -Zdn * Zm].
-    /// </summary>
-    FNMAD_z_p_zzz,
-    /// <summary>
-    /// Instruction `FNMLA` - Floating-point negated fused multiply-add vectors (predicated), writing addend [Zda = -Zda + -Zn * Zm].
-    /// </summary>
-    FNMLA_z_p_zzz,
-    /// <summary>
-    /// Instruction `FNMLS` - Floating-point negated fused multiply-subtract vectors (predicated), writing addend [Zda = -Zda + Zn * Zm].
-    /// </summary>
-    FNMLS_z_p_zzz,
-    /// <summary>
-    /// Instruction `FNMSB` - Floating-point negated fused multiply-subtract vectors (predicated), writing multiplicand [Zdn = -Za + Zdn * Zm].
-    /// </summary>
-    FNMSB_z_p_zzz,
     /// <summary>
     /// Instruction `FNMSUB` - Floating-point negated fused multiply-subtract (scalar).
     /// </summary>
@@ -5657,10 +3077,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRECPE_asisdmiscfp16_r,
     /// <summary>
-    /// Instruction `FRECPE` - Floating-point reciprocal estimate (unpredicated).
-    /// </summary>
-    FRECPE_z_z,
-    /// <summary>
     /// Instruction `FRECPS` - Floating-point reciprocal step.
     /// </summary>
     FRECPS_asimdsame_only,
@@ -5677,10 +3093,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRECPS_asisdsamefp16_only,
     /// <summary>
-    /// Instruction `FRECPS` - Floating-point reciprocal step (unpredicated).
-    /// </summary>
-    FRECPS_z_zz,
-    /// <summary>
     /// Instruction `FRECPX` - Floating-point reciprocal exponent (scalar).
     /// </summary>
     FRECPX_asisdmisc_r,
@@ -5688,14 +3100,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FRECPX` - Floating-point reciprocal exponent (scalar).
     /// </summary>
     FRECPX_asisdmiscfp16_r,
-    /// <summary>
-    /// Instruction `FRECPX` - Floating-point reciprocal exponent (predicated).
-    /// </summary>
-    FRECPX_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRECPX` - Floating-point reciprocal exponent (predicated).
-    /// </summary>
-    FRECPX_z_p_z_z,
     /// <summary>
     /// Instruction `FRINT32X` - Floating-point round to 32-bit integer, using current rounding mode (vector).
     /// </summary>
@@ -5709,14 +3113,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRINT32X_s_floatdp1,
     /// <summary>
-    /// Instruction `FRINT32X` - Floating-point round to 32-bit integer, using current rounding mode (predicated).
-    /// </summary>
-    FRINT32X_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRINT32X` - Floating-point round to 32-bit integer, using current rounding mode (predicated).
-    /// </summary>
-    FRINT32X_z_p_z_z,
-    /// <summary>
     /// Instruction `FRINT32Z` - Floating-point round to 32-bit integer toward zero (vector).
     /// </summary>
     FRINT32Z_asimdmisc_r,
@@ -5728,14 +3124,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FRINT32Z` - Floating-point round to 32-bit integer toward zero (scalar).
     /// </summary>
     FRINT32Z_s_floatdp1,
-    /// <summary>
-    /// Instruction `FRINT32Z` - Floating-point round to 32-bit integer, toward zero (predicated).
-    /// </summary>
-    FRINT32Z_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRINT32Z` - Floating-point round to 32-bit integer, toward zero (predicated).
-    /// </summary>
-    FRINT32Z_z_p_z_z,
     /// <summary>
     /// Instruction `FRINT64X` - Floating-point round to 64-bit integer, using current rounding mode (vector).
     /// </summary>
@@ -5749,14 +3137,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRINT64X_s_floatdp1,
     /// <summary>
-    /// Instruction `FRINT64X` - Floating-point round to 64-bit integer, using current rounding mode (predicated).
-    /// </summary>
-    FRINT64X_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRINT64X` - Floating-point round to 64-bit integer, using current rounding mode (predicated).
-    /// </summary>
-    FRINT64X_z_p_z_z,
-    /// <summary>
     /// Instruction `FRINT64Z` - Floating-point round to 64-bit integer toward zero (vector).
     /// </summary>
     FRINT64Z_asimdmisc_r,
@@ -5768,14 +3148,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FRINT64Z` - Floating-point round to 64-bit integer toward zero (scalar).
     /// </summary>
     FRINT64Z_s_floatdp1,
-    /// <summary>
-    /// Instruction `FRINT64Z` - Floating-point round to 64-bit integer, toward zero (predicated).
-    /// </summary>
-    FRINT64Z_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRINT64Z` - Floating-point round to 64-bit integer, toward zero (predicated).
-    /// </summary>
-    FRINT64Z_z_p_z_z,
     /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (vector).
     /// </summary>
@@ -5793,25 +3165,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRINTA_h_floatdp1,
     /// <summary>
-    /// Instruction `FRINTA` - Multi-vector floating-point round to integral value, to nearest with ties away from zero.
-    /// </summary>
-    FRINTA_mz_z_2,
-    /// <summary>
-    /// Instruction `FRINTA` - Multi-vector floating-point round to integral value, to nearest with ties away from zero.
-    /// </summary>
-    FRINTA_mz_z_4,
-    /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (scalar).
     /// </summary>
     FRINTA_s_floatdp1,
-    /// <summary>
-    /// Instruction `FRINTA` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTA_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRINTA` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTA_z_p_z_z,
     /// <summary>
     /// Instruction `FRINTI` - Floating-point round to integral, using current rounding mode (vector).
     /// </summary>
@@ -5833,14 +3189,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRINTI_s_floatdp1,
     /// <summary>
-    /// Instruction `FRINTI` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTI_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRINTI` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTI_z_p_z_z,
-    /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (vector).
     /// </summary>
     FRINTM_asimdmisc_r,
@@ -5857,25 +3205,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRINTM_h_floatdp1,
     /// <summary>
-    /// Instruction `FRINTM` - Multi-vector floating-point round to integral value, toward minus Infinity.
-    /// </summary>
-    FRINTM_mz_z_2,
-    /// <summary>
-    /// Instruction `FRINTM` - Multi-vector floating-point round to integral value, toward minus Infinity.
-    /// </summary>
-    FRINTM_mz_z_4,
-    /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (scalar).
     /// </summary>
     FRINTM_s_floatdp1,
-    /// <summary>
-    /// Instruction `FRINTM` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTM_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRINTM` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTM_z_p_z_z,
     /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (vector).
     /// </summary>
@@ -5893,25 +3225,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRINTN_h_floatdp1,
     /// <summary>
-    /// Instruction `FRINTN` - Multi-vector floating-point round to integral value, to nearest with ties to even.
-    /// </summary>
-    FRINTN_mz_z_2,
-    /// <summary>
-    /// Instruction `FRINTN` - Multi-vector floating-point round to integral value, to nearest with ties to even.
-    /// </summary>
-    FRINTN_mz_z_4,
-    /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (scalar).
     /// </summary>
     FRINTN_s_floatdp1,
-    /// <summary>
-    /// Instruction `FRINTN` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTN_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRINTN` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTN_z_p_z_z,
     /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (vector).
     /// </summary>
@@ -5929,25 +3245,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRINTP_h_floatdp1,
     /// <summary>
-    /// Instruction `FRINTP` - Multi-vector floating-point round to integral value, toward plus Infinity.
-    /// </summary>
-    FRINTP_mz_z_2,
-    /// <summary>
-    /// Instruction `FRINTP` - Multi-vector floating-point round to integral value, toward plus Infinity.
-    /// </summary>
-    FRINTP_mz_z_4,
-    /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (scalar).
     /// </summary>
     FRINTP_s_floatdp1,
-    /// <summary>
-    /// Instruction `FRINTP` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTP_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRINTP` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTP_z_p_z_z,
     /// <summary>
     /// Instruction `FRINTX` - Floating-point round to integral exact, using current rounding mode (vector).
     /// </summary>
@@ -5969,14 +3269,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRINTX_s_floatdp1,
     /// <summary>
-    /// Instruction `FRINTX` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTX_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRINTX` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTX_z_p_z_z,
-    /// <summary>
     /// Instruction `FRINTZ` - Floating-point round to integral, toward zero (vector).
     /// </summary>
     FRINTZ_asimdmisc_r,
@@ -5997,14 +3289,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRINTZ_s_floatdp1,
     /// <summary>
-    /// Instruction `FRINTZ` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTZ_z_p_z_m,
-    /// <summary>
-    /// Instruction `FRINTZ` - Floating-point round to integral value (predicated).
-    /// </summary>
-    FRINTZ_z_p_z_z,
-    /// <summary>
     /// Instruction `FRSQRTE` - Floating-point reciprocal square root estimate.
     /// </summary>
     FRSQRTE_asimdmisc_r,
@@ -6020,10 +3304,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FRSQRTE` - Floating-point reciprocal square root estimate.
     /// </summary>
     FRSQRTE_asisdmiscfp16_r,
-    /// <summary>
-    /// Instruction `FRSQRTE` - Floating-point reciprocal square root estimate (unpredicated).
-    /// </summary>
-    FRSQRTE_z_z,
     /// <summary>
     /// Instruction `FRSQRTS` - Floating-point reciprocal square root step.
     /// </summary>
@@ -6041,10 +3321,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FRSQRTS_asisdsamefp16_only,
     /// <summary>
-    /// Instruction `FRSQRTS` - Floating-point reciprocal square root step (unpredicated).
-    /// </summary>
-    FRSQRTS_z_zz,
-    /// <summary>
     /// Instruction `FSCALE` - Floating-point adjust exponent by vector.
     /// </summary>
     FSCALE_asimdsame_only,
@@ -6052,26 +3328,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FSCALE` - Floating-point adjust exponent by vector.
     /// </summary>
     FSCALE_asimdsamefp16_only,
-    /// <summary>
-    /// Instruction `FSCALE` - Multi-vector floating-point adjust exponent by vector.
-    /// </summary>
-    FSCALE_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `FSCALE` - Multi-vector floating-point adjust exponent by vector.
-    /// </summary>
-    FSCALE_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `FSCALE` - Multi-vector floating-point adjust exponent.
-    /// </summary>
-    FSCALE_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `FSCALE` - Multi-vector floating-point adjust exponent.
-    /// </summary>
-    FSCALE_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `FSCALE` - Floating-point adjust exponent by vector (predicated).
-    /// </summary>
-    FSCALE_z_p_zz,
     /// <summary>
     /// Instruction `FSQRT` - Floating-point square root (vector).
     /// </summary>
@@ -6093,22 +3349,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     FSQRT_s_floatdp1,
     /// <summary>
-    /// Instruction `FSQRT` - Floating-point square root (predicated).
-    /// </summary>
-    FSQRT_z_p_z_m,
-    /// <summary>
-    /// Instruction `FSQRT` - Floating-point square root (predicated).
-    /// </summary>
-    FSQRT_z_p_z_z,
-    /// <summary>
-    /// Instruction `FSUBR` - Floating-point reversed subtract from immediate (predicated).
-    /// </summary>
-    FSUBR_z_p_zs,
-    /// <summary>
-    /// Instruction `FSUBR` - Floating-point reversed subtract vectors (predicated).
-    /// </summary>
-    FSUBR_z_p_zz,
-    /// <summary>
     /// Instruction `FSUB` - Floating-point subtract (vector).
     /// </summary>
     FSUB_asimdsame_only,
@@ -6128,82 +3368,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `FSUB` - Floating-point subtract (scalar).
     /// </summary>
     FSUB_s_floatdp2,
-    /// <summary>
-    /// Instruction `FSUB` - Floating-point subtract immediate (predicated).
-    /// </summary>
-    FSUB_z_p_zs,
-    /// <summary>
-    /// Instruction `FSUB` - Floating-point subtract vectors (predicated).
-    /// </summary>
-    FSUB_z_p_zz,
-    /// <summary>
-    /// Instruction `FSUB` - Floating-point subtract vectors (unpredicated).
-    /// </summary>
-    FSUB_z_zz,
-    /// <summary>
-    /// Instruction `FSUB` - Floating-point subtract multi-vector from ZA array vector accumulators.
-    /// </summary>
-    FSUB_za_zw_2x2,
-    /// <summary>
-    /// Instruction `FSUB` - Floating-point subtract multi-vector from ZA array vector accumulators.
-    /// </summary>
-    FSUB_za_zw_2x2_16,
-    /// <summary>
-    /// Instruction `FSUB` - Floating-point subtract multi-vector from ZA array vector accumulators.
-    /// </summary>
-    FSUB_za_zw_4x4,
-    /// <summary>
-    /// Instruction `FSUB` - Floating-point subtract multi-vector from ZA array vector accumulators.
-    /// </summary>
-    FSUB_za_zw_4x4_16,
-    /// <summary>
-    /// Instruction `FTMAD` - Floating-point trigonometric multiply-add coefficient.
-    /// </summary>
-    FTMAD_z_zzi,
-    /// <summary>
-    /// Instruction `FTMOPA` - 8-bit floating-point sparse sum of two outer products, accumulating.
-    /// </summary>
-    FTMOPA_za16_z8z8zi_b2x1,
-    /// <summary>
-    /// Instruction `FTMOPA` - 8-bit floating-point sparse sum of four outer products, accumulating.
-    /// </summary>
-    FTMOPA_za32_z8z8zi_b2x1,
-    /// <summary>
-    /// Instruction `FTMOPA` - Half-precision sparse sum of two outer products, accumulating.
-    /// </summary>
-    FTMOPA_za32_zzzi_h2x1,
-    /// <summary>
-    /// Instruction `FTMOPA` - Floating-point sparse outer product, accumulating.
-    /// </summary>
-    FTMOPA_za_zzzi_h2x1,
-    /// <summary>
-    /// Instruction `FTMOPA` - Floating-point sparse outer product, accumulating.
-    /// </summary>
-    FTMOPA_za_zzzi_s2x1,
-    /// <summary>
-    /// Instruction `FTSMUL` - Floating-point trigonometric starting value.
-    /// </summary>
-    FTSMUL_z_zz,
-    /// <summary>
-    /// Instruction `FTSSEL` - Floating-point trigonometric select coefficient.
-    /// </summary>
-    FTSSEL_z_zz,
-    /// <summary>
-    /// Instruction `FVDOTB` - Multi-vector 8-bit floating-point vertical dot-product by indexed element to single-precision (bottom).
-    /// </summary>
-    FVDOTB_za32_z8z8i_2xi,
-    /// <summary>
-    /// Instruction `FVDOTT` - Multi-vector 8-bit floating-point vertical dot-product by indexed element to single-precision (top).
-    /// </summary>
-    FVDOTT_za32_z8z8i_2xi,
-    /// <summary>
-    /// Instruction `FVDOT` - Multi-vector 8-bit floating-point vertical dot-product by indexed element to half-precision.
-    /// </summary>
-    FVDOT_za_z8z8i_2xi,
-    /// <summary>
-    /// Instruction `FVDOT` - Multi-vector half-precision floating-point vertical dot-product by indexed element.
-    /// </summary>
-    FVDOT_za_zzi_2xi,
     /// <summary>
     /// Instruction `GCSB` - Guarded Control Stack barrier.
     /// </summary>
@@ -6225,14 +3389,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     HINT_hm_hints,
     /// <summary>
-    /// Instruction `HISTCNT` - Count matching elements in vector.
-    /// </summary>
-    HISTCNT_z_p_zz,
-    /// <summary>
-    /// Instruction `HISTSEG` - Count matching elements in vector segments.
-    /// </summary>
-    HISTSEG_z_zz,
-    /// <summary>
     /// Instruction `HLT` - Halt instruction.
     /// </summary>
     HLT_ex_exception,
@@ -6240,66 +3396,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `HVC` - Hypervisor call.
     /// </summary>
     HVC_ex_exception,
-    /// <summary>
-    /// Instruction `INCB` - Increment scalar by multiple of predicate constraint element count.
-    /// </summary>
-    INCB_r_rs,
-    /// <summary>
-    /// Instruction `INCD` - Increment scalar by multiple of predicate constraint element count.
-    /// </summary>
-    INCD_r_rs,
-    /// <summary>
-    /// Instruction `INCD` - Increment vector by multiple of predicate constraint element count.
-    /// </summary>
-    INCD_z_zs,
-    /// <summary>
-    /// Instruction `INCH` - Increment scalar by multiple of predicate constraint element count.
-    /// </summary>
-    INCH_r_rs,
-    /// <summary>
-    /// Instruction `INCH` - Increment vector by multiple of predicate constraint element count.
-    /// </summary>
-    INCH_z_zs,
-    /// <summary>
-    /// Instruction `INCP` - Increment scalar by count of true predicate elements.
-    /// </summary>
-    INCP_r_p_r,
-    /// <summary>
-    /// Instruction `INCP` - Increment vector by count of true predicate elements.
-    /// </summary>
-    INCP_z_p_z,
-    /// <summary>
-    /// Instruction `INCW` - Increment scalar by multiple of predicate constraint element count.
-    /// </summary>
-    INCW_r_rs,
-    /// <summary>
-    /// Instruction `INCW` - Increment vector by multiple of predicate constraint element count.
-    /// </summary>
-    INCW_z_zs,
-    /// <summary>
-    /// Instruction `INDEX` - Create index starting from and incremented by immediate.
-    /// </summary>
-    INDEX_z_ii,
-    /// <summary>
-    /// Instruction `INDEX` - Create index starting from immediate and incremented by general-purpose register.
-    /// </summary>
-    INDEX_z_ir,
-    /// <summary>
-    /// Instruction `INDEX` - Create index starting from general-purpose register and incremented by immediate.
-    /// </summary>
-    INDEX_z_ri,
-    /// <summary>
-    /// Instruction `INDEX` - Create index starting from and incremented by general-purpose register.
-    /// </summary>
-    INDEX_z_rr,
-    /// <summary>
-    /// Instruction `INSR` - Insert general-purpose register in shifted vector.
-    /// </summary>
-    INSR_z_r,
-    /// <summary>
-    /// Instruction `INSR` - Insert SIMD&FP scalar register in shifted vector.
-    /// </summary>
-    INSR_z_v,
     /// <summary>
     /// Instruction `INS` - Insert vector element from general-purpose register.
     /// </summary>
@@ -6317,414 +3413,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     ISB_bi_barriers,
     /// <summary>
-    /// Instruction `LASTA` - Extract element after last to general-purpose register.
-    /// </summary>
-    LASTA_r_p_z,
-    /// <summary>
-    /// Instruction `LASTA` - Extract element after last to SIMD&FP scalar register.
-    /// </summary>
-    LASTA_v_p_z,
-    /// <summary>
-    /// Instruction `LASTB` - Extract last element to general-purpose register.
-    /// </summary>
-    LASTB_r_p_z,
-    /// <summary>
-    /// Instruction `LASTB` - Extract last element to SIMD&FP scalar register.
-    /// </summary>
-    LASTB_v_p_z,
-    /// <summary>
-    /// Instruction `LASTP` - Scalar index of last true predicate element (predicated).
-    /// </summary>
-    LASTP_r_p_p,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load of bytes to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LD1B_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load of bytes to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LD1B_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load of bytes to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LD1B_mz_p_br_2,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load of bytes to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LD1B_mz_p_br_4,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load of bytes to multiple strided vectors (immediate index).
-    /// </summary>
-    LD1B_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load of bytes to multiple strided vectors (immediate index).
-    /// </summary>
-    LD1B_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load of bytes to multiple strided vectors (scalar index).
-    /// </summary>
-    LD1B_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load of bytes to multiple strided vectors (scalar index).
-    /// </summary>
-    LD1B_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `LD1B` - Gather load unsigned bytes to vector (immediate index).
-    /// </summary>
-    LD1B_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LD1B` - Gather load unsigned bytes to vector (immediate index).
-    /// </summary>
-    LD1B_z_p_ai_s,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load unsigned bytes to vector (immediate index).
-    /// </summary>
-    LD1B_z_p_bi_u16,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load unsigned bytes to vector (immediate index).
-    /// </summary>
-    LD1B_z_p_bi_u32,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load unsigned bytes to vector (immediate index).
-    /// </summary>
-    LD1B_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load unsigned bytes to vector (immediate index).
-    /// </summary>
-    LD1B_z_p_bi_u8,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load unsigned bytes to vector (scalar index).
-    /// </summary>
-    LD1B_z_p_br_u16,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load unsigned bytes to vector (scalar index).
-    /// </summary>
-    LD1B_z_p_br_u32,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load unsigned bytes to vector (scalar index).
-    /// </summary>
-    LD1B_z_p_br_u64,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load unsigned bytes to vector (scalar index).
-    /// </summary>
-    LD1B_z_p_br_u8,
-    /// <summary>
-    /// Instruction `LD1B` - Gather load unsigned bytes to vector (vector index).
-    /// </summary>
-    LD1B_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LD1B` - Gather load unsigned bytes to vector (vector index).
-    /// </summary>
-    LD1B_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1B` - Gather load unsigned bytes to vector (vector index).
-    /// </summary>
-    LD1B_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1B` - Contiguous load of bytes to 8-bit element ZA tile slice.
-    /// </summary>
-    LD1B_za_p_rrr,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load of doublewords to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LD1D_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load of doublewords to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LD1D_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load of doublewords to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LD1D_mz_p_br_2,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load of doublewords to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LD1D_mz_p_br_4,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load of doublewords to multiple strided vectors (immediate index).
-    /// </summary>
-    LD1D_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load of doublewords to multiple strided vectors (immediate index).
-    /// </summary>
-    LD1D_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load of doublewords to multiple strided vectors (scalar index).
-    /// </summary>
-    LD1D_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load of doublewords to multiple strided vectors (scalar index).
-    /// </summary>
-    LD1D_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `LD1D` - Gather load doublewords to vector (immediate index).
-    /// </summary>
-    LD1D_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load unsigned doublewords to vector (immediate index).
-    /// </summary>
-    LD1D_z_p_bi_u128,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load unsigned doublewords to vector (immediate index).
-    /// </summary>
-    LD1D_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load unsigned doublewords to vector (scalar index).
-    /// </summary>
-    LD1D_z_p_br_u128,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load unsigned doublewords to vector (scalar index).
-    /// </summary>
-    LD1D_z_p_br_u64,
-    /// <summary>
-    /// Instruction `LD1D` - Gather load doublewords to vector (vector index).
-    /// </summary>
-    LD1D_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `LD1D` - Gather load doublewords to vector (vector index).
-    /// </summary>
-    LD1D_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LD1D` - Gather load doublewords to vector (vector index).
-    /// </summary>
-    LD1D_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `LD1D` - Gather load doublewords to vector (vector index).
-    /// </summary>
-    LD1D_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1D` - Contiguous load of doublewords to 64-bit element ZA tile slice.
-    /// </summary>
-    LD1D_za_p_rrr,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load of halfwords to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LD1H_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load of halfwords to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LD1H_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load of halfwords to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LD1H_mz_p_br_2,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load of halfwords to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LD1H_mz_p_br_4,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load of halfwords to multiple strided vectors (immediate index).
-    /// </summary>
-    LD1H_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load of halfwords to multiple strided vectors (immediate index).
-    /// </summary>
-    LD1H_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load of halfwords to multiple strided vectors (scalar index).
-    /// </summary>
-    LD1H_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load of halfwords to multiple strided vectors (scalar index).
-    /// </summary>
-    LD1H_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `LD1H` - Gather load unsigned halfwords to vector (immediate index).
-    /// </summary>
-    LD1H_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LD1H` - Gather load unsigned halfwords to vector (immediate index).
-    /// </summary>
-    LD1H_z_p_ai_s,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load unsigned halfwords to vector (immediate index).
-    /// </summary>
-    LD1H_z_p_bi_u16,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load unsigned halfwords to vector (immediate index).
-    /// </summary>
-    LD1H_z_p_bi_u32,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load unsigned halfwords to vector (immediate index).
-    /// </summary>
-    LD1H_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load unsigned halfwords to vector (scalar index).
-    /// </summary>
-    LD1H_z_p_br_u16,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load unsigned halfwords to vector (scalar index).
-    /// </summary>
-    LD1H_z_p_br_u32,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load unsigned halfwords to vector (scalar index).
-    /// </summary>
-    LD1H_z_p_br_u64,
-    /// <summary>
-    /// Instruction `LD1H` - Gather load unsigned halfwords to vector (vector index).
-    /// </summary>
-    LD1H_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `LD1H` - Gather load unsigned halfwords to vector (vector index).
-    /// </summary>
-    LD1H_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LD1H` - Gather load unsigned halfwords to vector (vector index).
-    /// </summary>
-    LD1H_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `LD1H` - Gather load unsigned halfwords to vector (vector index).
-    /// </summary>
-    LD1H_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1H` - Gather load unsigned halfwords to vector (vector index).
-    /// </summary>
-    LD1H_z_p_bz_s_x32_scaled,
-    /// <summary>
-    /// Instruction `LD1H` - Gather load unsigned halfwords to vector (vector index).
-    /// </summary>
-    LD1H_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1H` - Contiguous load of halfwords to 16-bit element ZA tile slice.
-    /// </summary>
-    LD1H_za_p_rrr,
-    /// <summary>
-    /// Instruction `LD1Q` - Gather load quadwords.
-    /// </summary>
-    LD1Q_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LD1Q` - Contiguous load of quadwords to 128-bit element ZA tile slice.
-    /// </summary>
-    LD1Q_za_p_rrr,
-    /// <summary>
-    /// Instruction `LD1RB` - Load and broadcast unsigned byte to vector.
-    /// </summary>
-    LD1RB_z_p_bi_u16,
-    /// <summary>
-    /// Instruction `LD1RB` - Load and broadcast unsigned byte to vector.
-    /// </summary>
-    LD1RB_z_p_bi_u32,
-    /// <summary>
-    /// Instruction `LD1RB` - Load and broadcast unsigned byte to vector.
-    /// </summary>
-    LD1RB_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LD1RB` - Load and broadcast unsigned byte to vector.
-    /// </summary>
-    LD1RB_z_p_bi_u8,
-    /// <summary>
-    /// Instruction `LD1RD` - Load and broadcast doubleword to vector.
-    /// </summary>
-    LD1RD_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LD1RH` - Load and broadcast unsigned halfword to vector.
-    /// </summary>
-    LD1RH_z_p_bi_u16,
-    /// <summary>
-    /// Instruction `LD1RH` - Load and broadcast unsigned halfword to vector.
-    /// </summary>
-    LD1RH_z_p_bi_u32,
-    /// <summary>
-    /// Instruction `LD1RH` - Load and broadcast unsigned halfword to vector.
-    /// </summary>
-    LD1RH_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LD1ROB` - Contiguous load and replicate thirty-two bytes (immediate index).
-    /// </summary>
-    LD1ROB_z_p_bi_u8,
-    /// <summary>
-    /// Instruction `LD1ROB` - Contiguous load and replicate thirty-two bytes (scalar index).
-    /// </summary>
-    LD1ROB_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD1ROD` - Contiguous load and replicate four doublewords (immediate index).
-    /// </summary>
-    LD1ROD_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LD1ROD` - Contiguous load and replicate four doublewords (scalar index).
-    /// </summary>
-    LD1ROD_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD1ROH` - Contiguous load and replicate sixteen halfwords (immediate index).
-    /// </summary>
-    LD1ROH_z_p_bi_u16,
-    /// <summary>
-    /// Instruction `LD1ROH` - Contiguous load and replicate sixteen halfwords (scalar index).
-    /// </summary>
-    LD1ROH_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD1ROW` - Contiguous load and replicate eight words (immediate index).
-    /// </summary>
-    LD1ROW_z_p_bi_u32,
-    /// <summary>
-    /// Instruction `LD1ROW` - Contiguous load and replicate eight words (scalar index).
-    /// </summary>
-    LD1ROW_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD1RQB` - Contiguous load and replicate sixteen bytes (immediate index).
-    /// </summary>
-    LD1RQB_z_p_bi_u8,
-    /// <summary>
-    /// Instruction `LD1RQB` - Contiguous load and replicate sixteen bytes (scalar index).
-    /// </summary>
-    LD1RQB_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD1RQD` - Contiguous load and replicate two doublewords (immediate index).
-    /// </summary>
-    LD1RQD_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LD1RQD` - Contiguous load and replicate two doublewords (scalar index).
-    /// </summary>
-    LD1RQD_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD1RQH` - Contiguous load and replicate eight halfwords (immediate index).
-    /// </summary>
-    LD1RQH_z_p_bi_u16,
-    /// <summary>
-    /// Instruction `LD1RQH` - Contiguous load and replicate eight halfwords (scalar index).
-    /// </summary>
-    LD1RQH_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD1RQW` - Contiguous load and replicate four words (immediate index).
-    /// </summary>
-    LD1RQW_z_p_bi_u32,
-    /// <summary>
-    /// Instruction `LD1RQW` - Contiguous load and replicate four words (scalar index).
-    /// </summary>
-    LD1RQW_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD1RSB` - Load and broadcast signed byte to vector.
-    /// </summary>
-    LD1RSB_z_p_bi_s16,
-    /// <summary>
-    /// Instruction `LD1RSB` - Load and broadcast signed byte to vector.
-    /// </summary>
-    LD1RSB_z_p_bi_s32,
-    /// <summary>
-    /// Instruction `LD1RSB` - Load and broadcast signed byte to vector.
-    /// </summary>
-    LD1RSB_z_p_bi_s64,
-    /// <summary>
-    /// Instruction `LD1RSH` - Load and broadcast signed halfword to vector.
-    /// </summary>
-    LD1RSH_z_p_bi_s32,
-    /// <summary>
-    /// Instruction `LD1RSH` - Load and broadcast signed halfword to vector.
-    /// </summary>
-    LD1RSH_z_p_bi_s64,
-    /// <summary>
-    /// Instruction `LD1RSW` - Load and broadcast signed word to vector.
-    /// </summary>
-    LD1RSW_z_p_bi_s64,
-    /// <summary>
-    /// Instruction `LD1RW` - Load and broadcast unsigned word to vector.
-    /// </summary>
-    LD1RW_z_p_bi_u32,
-    /// <summary>
-    /// Instruction `LD1RW` - Load and broadcast unsigned word to vector.
-    /// </summary>
-    LD1RW_z_p_bi_u64,
-    /// <summary>
     /// Instruction `LD1R` - Load one single-element structure and replicate to all lanes (of one register).
     /// </summary>
     LD1R_asisdlso_r1,
@@ -6736,218 +3424,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `LD1R` - Load one single-element structure and replicate to all lanes (of one register).
     /// </summary>
     LD1R_asisdlsop_rx1_r,
-    /// <summary>
-    /// Instruction `LD1SB` - Gather load signed bytes to vector (immediate index).
-    /// </summary>
-    LD1SB_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LD1SB` - Gather load signed bytes to vector (immediate index).
-    /// </summary>
-    LD1SB_z_p_ai_s,
-    /// <summary>
-    /// Instruction `LD1SB` - Contiguous load signed bytes to vector (immediate index).
-    /// </summary>
-    LD1SB_z_p_bi_s16,
-    /// <summary>
-    /// Instruction `LD1SB` - Contiguous load signed bytes to vector (immediate index).
-    /// </summary>
-    LD1SB_z_p_bi_s32,
-    /// <summary>
-    /// Instruction `LD1SB` - Contiguous load signed bytes to vector (immediate index).
-    /// </summary>
-    LD1SB_z_p_bi_s64,
-    /// <summary>
-    /// Instruction `LD1SB` - Contiguous load signed bytes to vector (scalar index).
-    /// </summary>
-    LD1SB_z_p_br_s16,
-    /// <summary>
-    /// Instruction `LD1SB` - Contiguous load signed bytes to vector (scalar index).
-    /// </summary>
-    LD1SB_z_p_br_s32,
-    /// <summary>
-    /// Instruction `LD1SB` - Contiguous load signed bytes to vector (scalar index).
-    /// </summary>
-    LD1SB_z_p_br_s64,
-    /// <summary>
-    /// Instruction `LD1SB` - Gather load signed bytes to vector (vector index).
-    /// </summary>
-    LD1SB_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LD1SB` - Gather load signed bytes to vector (vector index).
-    /// </summary>
-    LD1SB_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1SB` - Gather load signed bytes to vector (vector index).
-    /// </summary>
-    LD1SB_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1SH` - Gather load signed halfwords to vector (immediate index).
-    /// </summary>
-    LD1SH_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LD1SH` - Gather load signed halfwords to vector (immediate index).
-    /// </summary>
-    LD1SH_z_p_ai_s,
-    /// <summary>
-    /// Instruction `LD1SH` - Contiguous load signed halfwords to vector (immediate index).
-    /// </summary>
-    LD1SH_z_p_bi_s32,
-    /// <summary>
-    /// Instruction `LD1SH` - Contiguous load signed halfwords to vector (immediate index).
-    /// </summary>
-    LD1SH_z_p_bi_s64,
-    /// <summary>
-    /// Instruction `LD1SH` - Contiguous load signed halfwords to vector (scalar index).
-    /// </summary>
-    LD1SH_z_p_br_s32,
-    /// <summary>
-    /// Instruction `LD1SH` - Contiguous load signed halfwords to vector (scalar index).
-    /// </summary>
-    LD1SH_z_p_br_s64,
-    /// <summary>
-    /// Instruction `LD1SH` - Gather load signed halfwords to vector (vector index).
-    /// </summary>
-    LD1SH_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `LD1SH` - Gather load signed halfwords to vector (vector index).
-    /// </summary>
-    LD1SH_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LD1SH` - Gather load signed halfwords to vector (vector index).
-    /// </summary>
-    LD1SH_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `LD1SH` - Gather load signed halfwords to vector (vector index).
-    /// </summary>
-    LD1SH_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1SH` - Gather load signed halfwords to vector (vector index).
-    /// </summary>
-    LD1SH_z_p_bz_s_x32_scaled,
-    /// <summary>
-    /// Instruction `LD1SH` - Gather load signed halfwords to vector (vector index).
-    /// </summary>
-    LD1SH_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1SW` - Gather load signed words to vector (immediate index).
-    /// </summary>
-    LD1SW_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LD1SW` - Contiguous load signed words to vector (immediate index).
-    /// </summary>
-    LD1SW_z_p_bi_s64,
-    /// <summary>
-    /// Instruction `LD1SW` - Contiguous load signed words to vector (scalar index).
-    /// </summary>
-    LD1SW_z_p_br_s64,
-    /// <summary>
-    /// Instruction `LD1SW` - Gather load signed words to vector (vector index).
-    /// </summary>
-    LD1SW_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `LD1SW` - Gather load signed words to vector (vector index).
-    /// </summary>
-    LD1SW_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LD1SW` - Gather load signed words to vector (vector index).
-    /// </summary>
-    LD1SW_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `LD1SW` - Gather load signed words to vector (vector index).
-    /// </summary>
-    LD1SW_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load of words to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LD1W_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load of words to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LD1W_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load of words to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LD1W_mz_p_br_2,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load of words to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LD1W_mz_p_br_4,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load of words to multiple strided vectors (immediate index).
-    /// </summary>
-    LD1W_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load of words to multiple strided vectors (immediate index).
-    /// </summary>
-    LD1W_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load of words to multiple strided vectors (scalar index).
-    /// </summary>
-    LD1W_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load of words to multiple strided vectors (scalar index).
-    /// </summary>
-    LD1W_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `LD1W` - Gather load unsigned words to vector (immediate index).
-    /// </summary>
-    LD1W_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LD1W` - Gather load unsigned words to vector (immediate index).
-    /// </summary>
-    LD1W_z_p_ai_s,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load unsigned words to vector (immediate index).
-    /// </summary>
-    LD1W_z_p_bi_u128,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load unsigned words to vector (immediate index).
-    /// </summary>
-    LD1W_z_p_bi_u32,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load unsigned words to vector (immediate index).
-    /// </summary>
-    LD1W_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load unsigned words to vector (scalar index).
-    /// </summary>
-    LD1W_z_p_br_u128,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load unsigned words to vector (scalar index).
-    /// </summary>
-    LD1W_z_p_br_u32,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load unsigned words to vector (scalar index).
-    /// </summary>
-    LD1W_z_p_br_u64,
-    /// <summary>
-    /// Instruction `LD1W` - Gather load unsigned words to vector (vector index).
-    /// </summary>
-    LD1W_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `LD1W` - Gather load unsigned words to vector (vector index).
-    /// </summary>
-    LD1W_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LD1W` - Gather load unsigned words to vector (vector index).
-    /// </summary>
-    LD1W_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `LD1W` - Gather load unsigned words to vector (vector index).
-    /// </summary>
-    LD1W_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1W` - Gather load unsigned words to vector (vector index).
-    /// </summary>
-    LD1W_z_p_bz_s_x32_scaled,
-    /// <summary>
-    /// Instruction `LD1W` - Gather load unsigned words to vector (vector index).
-    /// </summary>
-    LD1W_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LD1W` - Contiguous load of words to 32-bit element ZA tile slice.
-    /// </summary>
-    LD1W_za_p_rrr,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
@@ -7045,38 +3521,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     LD1_asisdlsop_sx1_r1s,
     /// <summary>
-    /// Instruction `LD2B` - Contiguous load two-byte structures to two vectors (immediate index).
-    /// </summary>
-    LD2B_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD2B` - Contiguous load two-byte structures to two vectors (scalar index).
-    /// </summary>
-    LD2B_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD2D` - Contiguous load two-doubleword structures to two vectors (immediate index).
-    /// </summary>
-    LD2D_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD2D` - Contiguous load two-doubleword structures to two vectors (scalar index).
-    /// </summary>
-    LD2D_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD2H` - Contiguous load two-halfword structures to two vectors (immediate index).
-    /// </summary>
-    LD2H_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD2H` - Contiguous load two-halfword structures to two vectors (scalar index).
-    /// </summary>
-    LD2H_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD2Q` - Contiguous load two-quadword structures to two vectors (immediate index).
-    /// </summary>
-    LD2Q_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD2Q` - Contiguous load two-quadword structures to two vectors (scalar index).
-    /// </summary>
-    LD2Q_z_p_br_contiguous,
-    /// <summary>
     /// Instruction `LD2R` - Load single 2-element structure and replicate to all lanes of two registers.
     /// </summary>
     LD2R_asisdlso_r2,
@@ -7088,14 +3532,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `LD2R` - Load single 2-element structure and replicate to all lanes of two registers.
     /// </summary>
     LD2R_asisdlsop_rx2_r,
-    /// <summary>
-    /// Instruction `LD2W` - Contiguous load two-word structures to two vectors (immediate index).
-    /// </summary>
-    LD2W_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD2W` - Contiguous load two-word structures to two vectors (scalar index).
-    /// </summary>
-    LD2W_z_p_br_contiguous,
     /// <summary>
     /// Instruction `LD2` - Load multiple 2-element structures to two registers.
     /// </summary>
@@ -7157,38 +3593,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     LD2_asisdlsop_sx2_r2s,
     /// <summary>
-    /// Instruction `LD3B` - Contiguous load three-byte structures to three vectors (immediate index).
-    /// </summary>
-    LD3B_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD3B` - Contiguous load three-byte structures to three vectors (scalar index).
-    /// </summary>
-    LD3B_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD3D` - Contiguous load three-doubleword structures to three vectors (immediate index).
-    /// </summary>
-    LD3D_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD3D` - Contiguous load three-doubleword structures to three vectors (scalar index).
-    /// </summary>
-    LD3D_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD3H` - Contiguous load three-halfword structures to three vectors (immediate index).
-    /// </summary>
-    LD3H_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD3H` - Contiguous load three-halfword structures to three vectors (scalar index).
-    /// </summary>
-    LD3H_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD3Q` - Contiguous load three-quadword structures to three vectors (immediate index).
-    /// </summary>
-    LD3Q_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD3Q` - Contiguous load three-quadword structures to three vectors (scalar index).
-    /// </summary>
-    LD3Q_z_p_br_contiguous,
-    /// <summary>
     /// Instruction `LD3R` - Load single 3-element structure and replicate to all lanes of three registers.
     /// </summary>
     LD3R_asisdlso_r3,
@@ -7200,14 +3604,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `LD3R` - Load single 3-element structure and replicate to all lanes of three registers.
     /// </summary>
     LD3R_asisdlsop_rx3_r,
-    /// <summary>
-    /// Instruction `LD3W` - Contiguous load three-word structures to three vectors (immediate index).
-    /// </summary>
-    LD3W_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD3W` - Contiguous load three-word structures to three vectors (scalar index).
-    /// </summary>
-    LD3W_z_p_br_contiguous,
     /// <summary>
     /// Instruction `LD3` - Load multiple 3-element structures to three registers.
     /// </summary>
@@ -7269,38 +3665,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     LD3_asisdlsop_sx3_r3s,
     /// <summary>
-    /// Instruction `LD4B` - Contiguous load four-byte structures to four vectors (immediate index).
-    /// </summary>
-    LD4B_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD4B` - Contiguous load four-byte structures to four vectors (scalar index).
-    /// </summary>
-    LD4B_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD4D` - Contiguous load four-doubleword structures to four vectors (immediate index).
-    /// </summary>
-    LD4D_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD4D` - Contiguous load four-doubleword structures to four vectors (scalar index).
-    /// </summary>
-    LD4D_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD4H` - Contiguous load four-halfword structures to four vectors (immediate index).
-    /// </summary>
-    LD4H_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD4H` - Contiguous load four-halfword structures to four vectors (scalar index).
-    /// </summary>
-    LD4H_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LD4Q` - Contiguous load four-quadword structures to four vectors (immediate index).
-    /// </summary>
-    LD4Q_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD4Q` - Contiguous load four-quadword structures to four vectors (scalar index).
-    /// </summary>
-    LD4Q_z_p_br_contiguous,
-    /// <summary>
     /// Instruction `LD4R` - Load single 4-element structure and replicate to all lanes of four registers.
     /// </summary>
     LD4R_asisdlso_r4,
@@ -7312,14 +3676,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `LD4R` - Load single 4-element structure and replicate to all lanes of four registers.
     /// </summary>
     LD4R_asisdlsop_rx4_r,
-    /// <summary>
-    /// Instruction `LD4W` - Contiguous load four-word structures to four vectors (immediate index).
-    /// </summary>
-    LD4W_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LD4W` - Contiguous load four-word structures to four vectors (scalar index).
-    /// </summary>
-    LD4W_z_p_br_contiguous,
     /// <summary>
     /// Instruction `LD4` - Load multiple 4-element structures to four registers.
     /// </summary>
@@ -7853,246 +4209,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     LDFADD_64,
     /// <summary>
-    /// Instruction `LDFF1B` - Gather load first-fault unsigned bytes to vector (immediate index).
-    /// </summary>
-    LDFF1B_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LDFF1B` - Gather load first-fault unsigned bytes to vector (immediate index).
-    /// </summary>
-    LDFF1B_z_p_ai_s,
-    /// <summary>
-    /// Instruction `LDFF1B` - Contiguous load first-fault unsigned bytes to vector (scalar index).
-    /// </summary>
-    LDFF1B_z_p_br_u16,
-    /// <summary>
-    /// Instruction `LDFF1B` - Contiguous load first-fault unsigned bytes to vector (scalar index).
-    /// </summary>
-    LDFF1B_z_p_br_u32,
-    /// <summary>
-    /// Instruction `LDFF1B` - Contiguous load first-fault unsigned bytes to vector (scalar index).
-    /// </summary>
-    LDFF1B_z_p_br_u64,
-    /// <summary>
-    /// Instruction `LDFF1B` - Contiguous load first-fault unsigned bytes to vector (scalar index).
-    /// </summary>
-    LDFF1B_z_p_br_u8,
-    /// <summary>
-    /// Instruction `LDFF1B` - Gather load first-fault unsigned bytes to vector (vector index).
-    /// </summary>
-    LDFF1B_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1B` - Gather load first-fault unsigned bytes to vector (vector index).
-    /// </summary>
-    LDFF1B_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1B` - Gather load first-fault unsigned bytes to vector (vector index).
-    /// </summary>
-    LDFF1B_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1D` - Gather load first-fault doublewords to vector (immediate index).
-    /// </summary>
-    LDFF1D_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LDFF1D` - Contiguous load first-fault doublewords to vector (scalar index).
-    /// </summary>
-    LDFF1D_z_p_br_u64,
-    /// <summary>
-    /// Instruction `LDFF1D` - Gather load first-fault doublewords to vector (vector index).
-    /// </summary>
-    LDFF1D_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `LDFF1D` - Gather load first-fault doublewords to vector (vector index).
-    /// </summary>
-    LDFF1D_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1D` - Gather load first-fault doublewords to vector (vector index).
-    /// </summary>
-    LDFF1D_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `LDFF1D` - Gather load first-fault doublewords to vector (vector index).
-    /// </summary>
-    LDFF1D_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1H` - Gather load first-fault unsigned halfwords to vector (immediate index).
-    /// </summary>
-    LDFF1H_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LDFF1H` - Gather load first-fault unsigned halfwords to vector (immediate index).
-    /// </summary>
-    LDFF1H_z_p_ai_s,
-    /// <summary>
-    /// Instruction `LDFF1H` - Contiguous load first-fault unsigned halfwords to vector (scalar index).
-    /// </summary>
-    LDFF1H_z_p_br_u16,
-    /// <summary>
-    /// Instruction `LDFF1H` - Contiguous load first-fault unsigned halfwords to vector (scalar index).
-    /// </summary>
-    LDFF1H_z_p_br_u32,
-    /// <summary>
-    /// Instruction `LDFF1H` - Contiguous load first-fault unsigned halfwords to vector (scalar index).
-    /// </summary>
-    LDFF1H_z_p_br_u64,
-    /// <summary>
-    /// Instruction `LDFF1H` - Gather load first-fault unsigned halfwords to vector (vector index).
-    /// </summary>
-    LDFF1H_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `LDFF1H` - Gather load first-fault unsigned halfwords to vector (vector index).
-    /// </summary>
-    LDFF1H_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1H` - Gather load first-fault unsigned halfwords to vector (vector index).
-    /// </summary>
-    LDFF1H_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `LDFF1H` - Gather load first-fault unsigned halfwords to vector (vector index).
-    /// </summary>
-    LDFF1H_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1H` - Gather load first-fault unsigned halfwords to vector (vector index).
-    /// </summary>
-    LDFF1H_z_p_bz_s_x32_scaled,
-    /// <summary>
-    /// Instruction `LDFF1H` - Gather load first-fault unsigned halfwords to vector (vector index).
-    /// </summary>
-    LDFF1H_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1SB` - Gather load first-fault signed bytes to vector (immediate index).
-    /// </summary>
-    LDFF1SB_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LDFF1SB` - Gather load first-fault signed bytes to vector (immediate index).
-    /// </summary>
-    LDFF1SB_z_p_ai_s,
-    /// <summary>
-    /// Instruction `LDFF1SB` - Contiguous load first-fault signed bytes to vector (scalar index).
-    /// </summary>
-    LDFF1SB_z_p_br_s16,
-    /// <summary>
-    /// Instruction `LDFF1SB` - Contiguous load first-fault signed bytes to vector (scalar index).
-    /// </summary>
-    LDFF1SB_z_p_br_s32,
-    /// <summary>
-    /// Instruction `LDFF1SB` - Contiguous load first-fault signed bytes to vector (scalar index).
-    /// </summary>
-    LDFF1SB_z_p_br_s64,
-    /// <summary>
-    /// Instruction `LDFF1SB` - Gather load first-fault signed bytes to vector (vector index).
-    /// </summary>
-    LDFF1SB_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1SB` - Gather load first-fault signed bytes to vector (vector index).
-    /// </summary>
-    LDFF1SB_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1SB` - Gather load first-fault signed bytes to vector (vector index).
-    /// </summary>
-    LDFF1SB_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1SH` - Gather load first-fault signed halfwords to vector (immediate index).
-    /// </summary>
-    LDFF1SH_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LDFF1SH` - Gather load first-fault signed halfwords to vector (immediate index).
-    /// </summary>
-    LDFF1SH_z_p_ai_s,
-    /// <summary>
-    /// Instruction `LDFF1SH` - Contiguous load first-fault signed halfwords to vector (scalar index).
-    /// </summary>
-    LDFF1SH_z_p_br_s32,
-    /// <summary>
-    /// Instruction `LDFF1SH` - Contiguous load first-fault signed halfwords to vector (scalar index).
-    /// </summary>
-    LDFF1SH_z_p_br_s64,
-    /// <summary>
-    /// Instruction `LDFF1SH` - Gather load first-fault signed halfwords to vector (vector index).
-    /// </summary>
-    LDFF1SH_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `LDFF1SH` - Gather load first-fault signed halfwords to vector (vector index).
-    /// </summary>
-    LDFF1SH_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1SH` - Gather load first-fault signed halfwords to vector (vector index).
-    /// </summary>
-    LDFF1SH_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `LDFF1SH` - Gather load first-fault signed halfwords to vector (vector index).
-    /// </summary>
-    LDFF1SH_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1SH` - Gather load first-fault signed halfwords to vector (vector index).
-    /// </summary>
-    LDFF1SH_z_p_bz_s_x32_scaled,
-    /// <summary>
-    /// Instruction `LDFF1SH` - Gather load first-fault signed halfwords to vector (vector index).
-    /// </summary>
-    LDFF1SH_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1SW` - Gather load first-fault signed words to vector (immediate index).
-    /// </summary>
-    LDFF1SW_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LDFF1SW` - Contiguous load first-fault signed words to vector (scalar index).
-    /// </summary>
-    LDFF1SW_z_p_br_s64,
-    /// <summary>
-    /// Instruction `LDFF1SW` - Gather load first-fault signed words to vector (vector index).
-    /// </summary>
-    LDFF1SW_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `LDFF1SW` - Gather load first-fault signed words to vector (vector index).
-    /// </summary>
-    LDFF1SW_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1SW` - Gather load first-fault signed words to vector (vector index).
-    /// </summary>
-    LDFF1SW_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `LDFF1SW` - Gather load first-fault signed words to vector (vector index).
-    /// </summary>
-    LDFF1SW_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1W` - Gather load first-fault unsigned words to vector (immediate index).
-    /// </summary>
-    LDFF1W_z_p_ai_d,
-    /// <summary>
-    /// Instruction `LDFF1W` - Gather load first-fault unsigned words to vector (immediate index).
-    /// </summary>
-    LDFF1W_z_p_ai_s,
-    /// <summary>
-    /// Instruction `LDFF1W` - Contiguous load first-fault unsigned words to vector (scalar index).
-    /// </summary>
-    LDFF1W_z_p_br_u32,
-    /// <summary>
-    /// Instruction `LDFF1W` - Contiguous load first-fault unsigned words to vector (scalar index).
-    /// </summary>
-    LDFF1W_z_p_br_u64,
-    /// <summary>
-    /// Instruction `LDFF1W` - Gather load first-fault unsigned words to vector (vector index).
-    /// </summary>
-    LDFF1W_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `LDFF1W` - Gather load first-fault unsigned words to vector (vector index).
-    /// </summary>
-    LDFF1W_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1W` - Gather load first-fault unsigned words to vector (vector index).
-    /// </summary>
-    LDFF1W_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `LDFF1W` - Gather load first-fault unsigned words to vector (vector index).
-    /// </summary>
-    LDFF1W_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDFF1W` - Gather load first-fault unsigned words to vector (vector index).
-    /// </summary>
-    LDFF1W_z_p_bz_s_x32_scaled,
-    /// <summary>
-    /// Instruction `LDFF1W` - Gather load first-fault unsigned words to vector (vector index).
-    /// </summary>
-    LDFF1W_z_p_bz_s_x32_unscaled,
-    /// <summary>
     /// Instruction `LDFMAXAL` - Floating-point atomic maximum in memory.
     /// </summary>
     LDFMAXAL_16,
@@ -8325,70 +4441,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     LDLAR_lr64_ldstord,
     /// <summary>
-    /// Instruction `LDNF1B` - Contiguous load non-fault unsigned bytes to vector (immediate index).
-    /// </summary>
-    LDNF1B_z_p_bi_u16,
-    /// <summary>
-    /// Instruction `LDNF1B` - Contiguous load non-fault unsigned bytes to vector (immediate index).
-    /// </summary>
-    LDNF1B_z_p_bi_u32,
-    /// <summary>
-    /// Instruction `LDNF1B` - Contiguous load non-fault unsigned bytes to vector (immediate index).
-    /// </summary>
-    LDNF1B_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LDNF1B` - Contiguous load non-fault unsigned bytes to vector (immediate index).
-    /// </summary>
-    LDNF1B_z_p_bi_u8,
-    /// <summary>
-    /// Instruction `LDNF1D` - Contiguous load non-fault doublewords to vector (immediate index).
-    /// </summary>
-    LDNF1D_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LDNF1H` - Contiguous load non-fault unsigned halfwords to vector (immediate index).
-    /// </summary>
-    LDNF1H_z_p_bi_u16,
-    /// <summary>
-    /// Instruction `LDNF1H` - Contiguous load non-fault unsigned halfwords to vector (immediate index).
-    /// </summary>
-    LDNF1H_z_p_bi_u32,
-    /// <summary>
-    /// Instruction `LDNF1H` - Contiguous load non-fault unsigned halfwords to vector (immediate index).
-    /// </summary>
-    LDNF1H_z_p_bi_u64,
-    /// <summary>
-    /// Instruction `LDNF1SB` - Contiguous load non-fault signed bytes to vector (immediate index).
-    /// </summary>
-    LDNF1SB_z_p_bi_s16,
-    /// <summary>
-    /// Instruction `LDNF1SB` - Contiguous load non-fault signed bytes to vector (immediate index).
-    /// </summary>
-    LDNF1SB_z_p_bi_s32,
-    /// <summary>
-    /// Instruction `LDNF1SB` - Contiguous load non-fault signed bytes to vector (immediate index).
-    /// </summary>
-    LDNF1SB_z_p_bi_s64,
-    /// <summary>
-    /// Instruction `LDNF1SH` - Contiguous load non-fault signed halfwords to vector (immediate index).
-    /// </summary>
-    LDNF1SH_z_p_bi_s32,
-    /// <summary>
-    /// Instruction `LDNF1SH` - Contiguous load non-fault signed halfwords to vector (immediate index).
-    /// </summary>
-    LDNF1SH_z_p_bi_s64,
-    /// <summary>
-    /// Instruction `LDNF1SW` - Contiguous load non-fault signed words to vector (immediate index).
-    /// </summary>
-    LDNF1SW_z_p_bi_s64,
-    /// <summary>
-    /// Instruction `LDNF1W` - Contiguous load non-fault unsigned words to vector (immediate index).
-    /// </summary>
-    LDNF1W_z_p_bi_u32,
-    /// <summary>
-    /// Instruction `LDNF1W` - Contiguous load non-fault unsigned words to vector (immediate index).
-    /// </summary>
-    LDNF1W_z_p_bi_u64,
-    /// <summary>
     /// Instruction `LDNP` - Load pair of registers, with non-temporal hint.
     /// </summary>
     LDNP_32_ldstnapair_offs,
@@ -8408,214 +4460,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `LDNP` - Load pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
     LDNP_s_ldstnapair_offs,
-    /// <summary>
-    /// Instruction `LDNT1B` - Contiguous load non-temporal of bytes to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LDNT1B_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `LDNT1B` - Contiguous load non-temporal of bytes to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LDNT1B_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `LDNT1B` - Contiguous load non-temporal of bytes to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LDNT1B_mz_p_br_2,
-    /// <summary>
-    /// Instruction `LDNT1B` - Contiguous load non-temporal of bytes to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LDNT1B_mz_p_br_4,
-    /// <summary>
-    /// Instruction `LDNT1B` - Contiguous load non-temporal of bytes to multiple strided vectors (immediate index).
-    /// </summary>
-    LDNT1B_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `LDNT1B` - Contiguous load non-temporal of bytes to multiple strided vectors (immediate index).
-    /// </summary>
-    LDNT1B_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `LDNT1B` - Contiguous load non-temporal of bytes to multiple strided vectors (scalar index).
-    /// </summary>
-    LDNT1B_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `LDNT1B` - Contiguous load non-temporal of bytes to multiple strided vectors (scalar index).
-    /// </summary>
-    LDNT1B_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `LDNT1B` - Gather load non-temporal unsigned bytes.
-    /// </summary>
-    LDNT1B_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1B` - Gather load non-temporal unsigned bytes.
-    /// </summary>
-    LDNT1B_z_p_ar_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1B` - Contiguous load non-temporal bytes to vector (immediate index).
-    /// </summary>
-    LDNT1B_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LDNT1B` - Contiguous load non-temporal bytes to vector (scalar index).
-    /// </summary>
-    LDNT1B_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LDNT1D` - Contiguous load non-temporal of doublewords to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LDNT1D_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `LDNT1D` - Contiguous load non-temporal of doublewords to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LDNT1D_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `LDNT1D` - Contiguous load non-temporal of doublewords to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LDNT1D_mz_p_br_2,
-    /// <summary>
-    /// Instruction `LDNT1D` - Contiguous load non-temporal of doublewords to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LDNT1D_mz_p_br_4,
-    /// <summary>
-    /// Instruction `LDNT1D` - Contiguous load non-temporal of doublewords to multiple strided vectors (immediate index).
-    /// </summary>
-    LDNT1D_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `LDNT1D` - Contiguous load non-temporal of doublewords to multiple strided vectors (immediate index).
-    /// </summary>
-    LDNT1D_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `LDNT1D` - Contiguous load non-temporal of doublewords to multiple strided vectors (scalar index).
-    /// </summary>
-    LDNT1D_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `LDNT1D` - Contiguous load non-temporal of doublewords to multiple strided vectors (scalar index).
-    /// </summary>
-    LDNT1D_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `LDNT1D` - Gather load non-temporal unsigned doublewords.
-    /// </summary>
-    LDNT1D_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1D` - Contiguous load non-temporal doublewords to vector (immediate index).
-    /// </summary>
-    LDNT1D_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LDNT1D` - Contiguous load non-temporal doublewords to vector (scalar index).
-    /// </summary>
-    LDNT1D_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LDNT1H` - Contiguous load non-temporal of halfwords to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LDNT1H_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `LDNT1H` - Contiguous load non-temporal of halfwords to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LDNT1H_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `LDNT1H` - Contiguous load non-temporal of halfwords to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LDNT1H_mz_p_br_2,
-    /// <summary>
-    /// Instruction `LDNT1H` - Contiguous load non-temporal of halfwords to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LDNT1H_mz_p_br_4,
-    /// <summary>
-    /// Instruction `LDNT1H` - Contiguous load non-temporal of halfwords to multiple strided vectors (immediate index).
-    /// </summary>
-    LDNT1H_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `LDNT1H` - Contiguous load non-temporal of halfwords to multiple strided vectors (immediate index).
-    /// </summary>
-    LDNT1H_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `LDNT1H` - Contiguous load non-temporal of halfwords to multiple strided vectors (scalar index).
-    /// </summary>
-    LDNT1H_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `LDNT1H` - Contiguous load non-temporal of halfwords to multiple strided vectors (scalar index).
-    /// </summary>
-    LDNT1H_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `LDNT1H` - Gather load non-temporal unsigned halfwords.
-    /// </summary>
-    LDNT1H_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1H` - Gather load non-temporal unsigned halfwords.
-    /// </summary>
-    LDNT1H_z_p_ar_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1H` - Contiguous load non-temporal halfwords to vector (immediate index).
-    /// </summary>
-    LDNT1H_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LDNT1H` - Contiguous load non-temporal halfwords to vector (scalar index).
-    /// </summary>
-    LDNT1H_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `LDNT1SB` - Gather load non-temporal signed bytes.
-    /// </summary>
-    LDNT1SB_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1SB` - Gather load non-temporal signed bytes.
-    /// </summary>
-    LDNT1SB_z_p_ar_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1SH` - Gather load non-temporal signed halfwords.
-    /// </summary>
-    LDNT1SH_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1SH` - Gather load non-temporal signed halfwords.
-    /// </summary>
-    LDNT1SH_z_p_ar_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1SW` - Gather load non-temporal signed words.
-    /// </summary>
-    LDNT1SW_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1W` - Contiguous load non-temporal of words to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LDNT1W_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `LDNT1W` - Contiguous load non-temporal of words to multiple consecutive vectors (immediate index).
-    /// </summary>
-    LDNT1W_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `LDNT1W` - Contiguous load non-temporal of words to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LDNT1W_mz_p_br_2,
-    /// <summary>
-    /// Instruction `LDNT1W` - Contiguous load non-temporal of words to multiple consecutive vectors (scalar index).
-    /// </summary>
-    LDNT1W_mz_p_br_4,
-    /// <summary>
-    /// Instruction `LDNT1W` - Contiguous load non-temporal of words to multiple strided vectors (immediate index).
-    /// </summary>
-    LDNT1W_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `LDNT1W` - Contiguous load non-temporal of words to multiple strided vectors (immediate index).
-    /// </summary>
-    LDNT1W_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `LDNT1W` - Contiguous load non-temporal of words to multiple strided vectors (scalar index).
-    /// </summary>
-    LDNT1W_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `LDNT1W` - Contiguous load non-temporal of words to multiple strided vectors (scalar index).
-    /// </summary>
-    LDNT1W_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `LDNT1W` - Gather load non-temporal unsigned words.
-    /// </summary>
-    LDNT1W_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1W` - Gather load non-temporal unsigned words.
-    /// </summary>
-    LDNT1W_z_p_ar_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `LDNT1W` - Contiguous load non-temporal words to vector (immediate index).
-    /// </summary>
-    LDNT1W_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `LDNT1W` - Contiguous load non-temporal words to vector (scalar index).
-    /// </summary>
-    LDNT1W_z_p_br_contiguous,
     /// <summary>
     /// Instruction `LDPSW` - Load pair of registers signed word.
     /// </summary>
@@ -8929,10 +4773,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     LDR_h_ldst_regoff,
     /// <summary>
-    /// Instruction `LDR` - Load predicate register.
-    /// </summary>
-    LDR_p_bi,
-    /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
     LDR_q_ldst_immpost,
@@ -8972,18 +4812,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `LDR` - Load SIMD&FP register (PC-relative literal).
     /// </summary>
     LDR_s_loadlit,
-    /// <summary>
-    /// Instruction `LDR` - Load vector register.
-    /// </summary>
-    LDR_z_bi,
-    /// <summary>
-    /// Instruction `LDR` - Load ZA array vector.
-    /// </summary>
-    LDR_za_ri,
-    /// <summary>
-    /// Instruction `LDR` - Load ZT0 register.
-    /// </summary>
-    LDR_zt_br,
     /// <summary>
     /// Instruction `LDSETAB` - Atomic bit set on byte in memory.
     /// </summary>
@@ -9573,10 +5401,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     LDXR_lr64_ldstexclr,
     /// <summary>
-    /// Instruction `LSLR` - Reversed logical shift left by vector (predicated).
-    /// </summary>
-    LSLR_z_p_zz,
-    /// <summary>
     /// Instruction `LSLV` - Logical shift left variable.
     /// </summary>
     LSLV_32_dp_2src,
@@ -9584,30 +5408,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `LSLV` - Logical shift left variable.
     /// </summary>
     LSLV_64_dp_2src,
-    /// <summary>
-    /// Instruction `LSL` - Logical shift left by immediate (predicated).
-    /// </summary>
-    LSL_z_p_zi,
-    /// <summary>
-    /// Instruction `LSL` - Logical shift left by 64-bit wide elements (predicated).
-    /// </summary>
-    LSL_z_p_zw,
-    /// <summary>
-    /// Instruction `LSL` - Logical shift left by vector (predicated).
-    /// </summary>
-    LSL_z_p_zz,
-    /// <summary>
-    /// Instruction `LSL` - Logical shift left by immediate (unpredicated).
-    /// </summary>
-    LSL_z_zi,
-    /// <summary>
-    /// Instruction `LSL` - Logical shift left by 64-bit wide elements (unpredicated).
-    /// </summary>
-    LSL_z_zw,
-    /// <summary>
-    /// Instruction `LSRR` - Reversed logical shift right by vector (predicated).
-    /// </summary>
-    LSRR_z_p_zz,
     /// <summary>
     /// Instruction `LSRV` - Logical shift right variable.
     /// </summary>
@@ -9617,26 +5417,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     LSRV_64_dp_2src,
     /// <summary>
-    /// Instruction `LSR` - Logical shift right by immediate (predicated).
-    /// </summary>
-    LSR_z_p_zi,
-    /// <summary>
-    /// Instruction `LSR` - Logical shift right by 64-bit wide elements (predicated).
-    /// </summary>
-    LSR_z_p_zw,
-    /// <summary>
-    /// Instruction `LSR` - Logical shift right by vector (predicated).
-    /// </summary>
-    LSR_z_p_zz,
-    /// <summary>
-    /// Instruction `LSR` - Logical shift right by immediate (unpredicated).
-    /// </summary>
-    LSR_z_zi,
-    /// <summary>
-    /// Instruction `LSR` - Logical shift right by 64-bit wide elements (unpredicated).
-    /// </summary>
-    LSR_z_zw,
-    /// <summary>
     /// Instruction `LUTI2` - Lookup table read with 2-bit indices.
     /// </summary>
     LUTI2_asimdtbl_l5,
@@ -9645,34 +5425,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     LUTI2_asimdtbl_l6,
     /// <summary>
-    /// Instruction `LUTI2` - Lookup table read with 2-bit indexes.
-    /// </summary>
-    LUTI2_mz2_ztz_1,
-    /// <summary>
-    /// Instruction `LUTI2` - Lookup table read with 2-bit indexes.
-    /// </summary>
-    LUTI2_mz2_ztz_8,
-    /// <summary>
-    /// Instruction `LUTI2` - Lookup table read with 2-bit indexes.
-    /// </summary>
-    LUTI2_mz4_ztz_1,
-    /// <summary>
-    /// Instruction `LUTI2` - Lookup table read with 2-bit indexes.
-    /// </summary>
-    LUTI2_mz4_ztz_4,
-    /// <summary>
-    /// Instruction `LUTI2` - Lookup table read with 2-bit indexes.
-    /// </summary>
-    LUTI2_z_ztz,
-    /// <summary>
-    /// Instruction `LUTI2` - Lookup table read with 2-bit indices.
-    /// </summary>
-    LUTI2_z_zz_16,
-    /// <summary>
-    /// Instruction `LUTI2` - Lookup table read with 2-bit indices.
-    /// </summary>
-    LUTI2_z_zz_8,
-    /// <summary>
     /// Instruction `LUTI4` - Lookup table read with 4-bit indices.
     /// </summary>
     LUTI4_asimdtbl_l5,
@@ -9680,46 +5432,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `LUTI4` - Lookup table read with 4-bit indices.
     /// </summary>
     LUTI4_asimdtbl_l7,
-    /// <summary>
-    /// Instruction `LUTI4` - Lookup table read with 4-bit indexes.
-    /// </summary>
-    LUTI4_mz2_ztz_1,
-    /// <summary>
-    /// Instruction `LUTI4` - Lookup table read with 4-bit indexes.
-    /// </summary>
-    LUTI4_mz2_ztz_8,
-    /// <summary>
-    /// Instruction `LUTI4` - Lookup table read with 4-bit indexes and 8-bit elements.
-    /// </summary>
-    LUTI4_mz4_ztmz2_1,
-    /// <summary>
-    /// Instruction `LUTI4` - Lookup table read with 4-bit indexes and 8-bit elements.
-    /// </summary>
-    LUTI4_mz4_ztmz2_4,
-    /// <summary>
-    /// Instruction `LUTI4` - Lookup table read with 4-bit indexes.
-    /// </summary>
-    LUTI4_mz4_ztz_1,
-    /// <summary>
-    /// Instruction `LUTI4` - Lookup table read with 4-bit indexes.
-    /// </summary>
-    LUTI4_mz4_ztz_4,
-    /// <summary>
-    /// Instruction `LUTI4` - Lookup table read with 4-bit indexes.
-    /// </summary>
-    LUTI4_z_ztz,
-    /// <summary>
-    /// Instruction `LUTI4` - Lookup table read with 4-bit indices.
-    /// </summary>
-    LUTI4_z_zz_1x16,
-    /// <summary>
-    /// Instruction `LUTI4` - Lookup table read with 4-bit indices.
-    /// </summary>
-    LUTI4_z_zz_2x16,
-    /// <summary>
-    /// Instruction `LUTI4` - Lookup table read with 4-bit indices.
-    /// </summary>
-    LUTI4_z_zz_8,
     /// <summary>
     /// Instruction `MADDPT` - Multiply-add checked pointer.
     /// </summary>
@@ -9733,22 +5445,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     MADD_64a_dp_3src,
     /// <summary>
-    /// Instruction `MADPT` - Multiply-add checked pointer vectors, writing multiplicand [Zdn = Za + Zdn * Zm].
-    /// </summary>
-    MADPT_z_zzz,
-    /// <summary>
-    /// Instruction `MAD` - Multiply-add vectors (predicated), writing multiplicand [Zdn = Za + Zdn * Zm].
-    /// </summary>
-    MAD_z_p_zzz,
-    /// <summary>
-    /// Instruction `MATCH` - Detect any matching elements, setting the condition flags.
-    /// </summary>
-    MATCH_p_p_zz,
-    /// <summary>
-    /// Instruction `MLAPT` - Multiply-add checked pointer vectors, writing addend [Zda = Zda + Zn * Zm].
-    /// </summary>
-    MLAPT_z_zzz,
-    /// <summary>
     /// Instruction `MLA` - Multiply-add to accumulator (vector, by element).
     /// </summary>
     MLA_asimdelem_r,
@@ -9757,22 +5453,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     MLA_asimdsame_only,
     /// <summary>
-    /// Instruction `MLA` - Multiply-add vectors (predicated), writing addend [Zda = Zda + Zn * Zm].
-    /// </summary>
-    MLA_z_p_zzz,
-    /// <summary>
-    /// Instruction `MLA` - Multiply-add to accumulator (indexed).
-    /// </summary>
-    MLA_z_zzzi_d,
-    /// <summary>
-    /// Instruction `MLA` - Multiply-add to accumulator (indexed).
-    /// </summary>
-    MLA_z_zzzi_h,
-    /// <summary>
-    /// Instruction `MLA` - Multiply-add to accumulator (indexed).
-    /// </summary>
-    MLA_z_zzzi_s,
-    /// <summary>
     /// Instruction `MLS` - Multiply-subtract from accumulator (vector, by element).
     /// </summary>
     MLS_asimdelem_r,
@@ -9780,202 +5460,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `MLS` - Multiply-subtract from accumulator (vector).
     /// </summary>
     MLS_asimdsame_only,
-    /// <summary>
-    /// Instruction `MLS` - Multiply-subtract vectors (predicated), writing addend [Zda = Zda - Zn * Zm].
-    /// </summary>
-    MLS_z_p_zzz,
-    /// <summary>
-    /// Instruction `MLS` - Multiply-subtract from accumulator (indexed).
-    /// </summary>
-    MLS_z_zzzi_d,
-    /// <summary>
-    /// Instruction `MLS` - Multiply-subtract from accumulator (indexed).
-    /// </summary>
-    MLS_z_zzzi_h,
-    /// <summary>
-    /// Instruction `MLS` - Multiply-subtract from accumulator (indexed).
-    /// </summary>
-    MLS_z_zzzi_s,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero two ZA tile slices to vector registers.
-    /// </summary>
-    MOVAZ_mz2_za_b1,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero two ZA tile slices to vector registers.
-    /// </summary>
-    MOVAZ_mz2_za_d1,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero two ZA tile slices to vector registers.
-    /// </summary>
-    MOVAZ_mz2_za_h1,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero two ZA tile slices to vector registers.
-    /// </summary>
-    MOVAZ_mz2_za_w1,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero four ZA tile slices to vector registers.
-    /// </summary>
-    MOVAZ_mz4_za_b1,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero four ZA tile slices to vector registers.
-    /// </summary>
-    MOVAZ_mz4_za_d1,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero four ZA tile slices to vector registers.
-    /// </summary>
-    MOVAZ_mz4_za_h1,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero four ZA tile slices to vector registers.
-    /// </summary>
-    MOVAZ_mz4_za_w1,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero two ZA single-vector groups to vector registers.
-    /// </summary>
-    MOVAZ_mz_za2_1,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero four ZA single-vector groups to vector registers.
-    /// </summary>
-    MOVAZ_mz_za4_1,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero ZA tile slice to vector register.
-    /// </summary>
-    MOVAZ_z_rza_b,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero ZA tile slice to vector register.
-    /// </summary>
-    MOVAZ_z_rza_d,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero ZA tile slice to vector register.
-    /// </summary>
-    MOVAZ_z_rza_h,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero ZA tile slice to vector register.
-    /// </summary>
-    MOVAZ_z_rza_q,
-    /// <summary>
-    /// Instruction `MOVAZ` - Move and zero ZA tile slice to vector register.
-    /// </summary>
-    MOVAZ_z_rza_w,
-    /// <summary>
-    /// Instruction `MOVA` - Move two ZA tile slices to two vector registers.
-    /// </summary>
-    MOVA_mz2_za_b1,
-    /// <summary>
-    /// Instruction `MOVA` - Move two ZA tile slices to two vector registers.
-    /// </summary>
-    MOVA_mz2_za_d1,
-    /// <summary>
-    /// Instruction `MOVA` - Move two ZA tile slices to two vector registers.
-    /// </summary>
-    MOVA_mz2_za_h1,
-    /// <summary>
-    /// Instruction `MOVA` - Move two ZA tile slices to two vector registers.
-    /// </summary>
-    MOVA_mz2_za_w1,
-    /// <summary>
-    /// Instruction `MOVA` - Move four ZA tile slices to four vector registers.
-    /// </summary>
-    MOVA_mz4_za_b1,
-    /// <summary>
-    /// Instruction `MOVA` - Move four ZA tile slices to four vector registers.
-    /// </summary>
-    MOVA_mz4_za_d1,
-    /// <summary>
-    /// Instruction `MOVA` - Move four ZA tile slices to four vector registers.
-    /// </summary>
-    MOVA_mz4_za_h1,
-    /// <summary>
-    /// Instruction `MOVA` - Move four ZA tile slices to four vector registers.
-    /// </summary>
-    MOVA_mz4_za_w1,
-    /// <summary>
-    /// Instruction `MOVA` - Move two ZA single-vector groups to two vector registers.
-    /// </summary>
-    MOVA_mz_za2_1,
-    /// <summary>
-    /// Instruction `MOVA` - Move four ZA single-vector groups to four vector registers.
-    /// </summary>
-    MOVA_mz_za4_1,
-    /// <summary>
-    /// Instruction `MOVA` - Move ZA tile slice to vector register.
-    /// </summary>
-    MOVA_z_p_rza_b,
-    /// <summary>
-    /// Instruction `MOVA` - Move ZA tile slice to vector register.
-    /// </summary>
-    MOVA_z_p_rza_d,
-    /// <summary>
-    /// Instruction `MOVA` - Move ZA tile slice to vector register.
-    /// </summary>
-    MOVA_z_p_rza_h,
-    /// <summary>
-    /// Instruction `MOVA` - Move ZA tile slice to vector register.
-    /// </summary>
-    MOVA_z_p_rza_q,
-    /// <summary>
-    /// Instruction `MOVA` - Move ZA tile slice to vector register.
-    /// </summary>
-    MOVA_z_p_rza_w,
-    /// <summary>
-    /// Instruction `MOVA` - Move two vector registers to two ZA tile slices.
-    /// </summary>
-    MOVA_za2_z_b1,
-    /// <summary>
-    /// Instruction `MOVA` - Move two vector registers to two ZA tile slices.
-    /// </summary>
-    MOVA_za2_z_d1,
-    /// <summary>
-    /// Instruction `MOVA` - Move two vector registers to two ZA tile slices.
-    /// </summary>
-    MOVA_za2_z_h1,
-    /// <summary>
-    /// Instruction `MOVA` - Move two vector registers to two ZA tile slices.
-    /// </summary>
-    MOVA_za2_z_w1,
-    /// <summary>
-    /// Instruction `MOVA` - Move four vector registers to four ZA tile slices.
-    /// </summary>
-    MOVA_za4_z_b1,
-    /// <summary>
-    /// Instruction `MOVA` - Move four vector registers to four ZA tile slices.
-    /// </summary>
-    MOVA_za4_z_d1,
-    /// <summary>
-    /// Instruction `MOVA` - Move four vector registers to four ZA tile slices.
-    /// </summary>
-    MOVA_za4_z_h1,
-    /// <summary>
-    /// Instruction `MOVA` - Move four vector registers to four ZA tile slices.
-    /// </summary>
-    MOVA_za4_z_w1,
-    /// <summary>
-    /// Instruction `MOVA` - Move two vector registers to two ZA single-vector groups.
-    /// </summary>
-    MOVA_za_mz2_1,
-    /// <summary>
-    /// Instruction `MOVA` - Move four vector registers to four ZA single-vector groups.
-    /// </summary>
-    MOVA_za_mz4_1,
-    /// <summary>
-    /// Instruction `MOVA` - Move vector register to ZA tile slice.
-    /// </summary>
-    MOVA_za_p_rz_b,
-    /// <summary>
-    /// Instruction `MOVA` - Move vector register to ZA tile slice.
-    /// </summary>
-    MOVA_za_p_rz_d,
-    /// <summary>
-    /// Instruction `MOVA` - Move vector register to ZA tile slice.
-    /// </summary>
-    MOVA_za_p_rz_h,
-    /// <summary>
-    /// Instruction `MOVA` - Move vector register to ZA tile slice.
-    /// </summary>
-    MOVA_za_p_rz_q,
-    /// <summary>
-    /// Instruction `MOVA` - Move vector register to ZA tile slice.
-    /// </summary>
-    MOVA_za_p_rz_w,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
@@ -10017,26 +5501,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     MOVN_64_movewide,
     /// <summary>
-    /// Instruction `MOVPRFX` - Move prefix (predicated).
-    /// </summary>
-    MOVPRFX_z_p_z,
-    /// <summary>
-    /// Instruction `MOVPRFX` - Move prefix (unpredicated).
-    /// </summary>
-    MOVPRFX_z_z,
-    /// <summary>
-    /// Instruction `MOVT` - Move 8 bytes from ZT0 to general-purpose register.
-    /// </summary>
-    MOVT_r_zt,
-    /// <summary>
-    /// Instruction `MOVT` - Move 8 bytes from general-purpose register to ZT0.
-    /// </summary>
-    MOVT_zt_r,
-    /// <summary>
-    /// Instruction `MOVT` - Move vector register to ZT0.
-    /// </summary>
-    MOVT_zt_z,
-    /// <summary>
     /// Instruction `MOVZ` - Move wide with zero.
     /// </summary>
     MOVZ_32_movewide,
@@ -10052,10 +5516,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `MRS` - Move System register to general-purpose register.
     /// </summary>
     MRS_rs_systemmove,
-    /// <summary>
-    /// Instruction `MSB` - Multiply-subtract vectors (predicated), writing multiplicand [Zdn = Za - Zdn * Zm].
-    /// </summary>
-    MSB_z_p_zzz,
     /// <summary>
     /// Instruction `MSRR` - Move two adjacent general-purpose registers to System register.
     /// </summary>
@@ -10089,30 +5549,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     MUL_asimdsame_only,
     /// <summary>
-    /// Instruction `MUL` - Multiply vectors (predicated).
-    /// </summary>
-    MUL_z_p_zz,
-    /// <summary>
-    /// Instruction `MUL` - Multiply by immediate (unpredicated).
-    /// </summary>
-    MUL_z_zi,
-    /// <summary>
-    /// Instruction `MUL` - Multiply vectors (unpredicated).
-    /// </summary>
-    MUL_z_zz,
-    /// <summary>
-    /// Instruction `MUL` - Multiply (indexed).
-    /// </summary>
-    MUL_z_zzi_d,
-    /// <summary>
-    /// Instruction `MUL` - Multiply (indexed).
-    /// </summary>
-    MUL_z_zzi_h,
-    /// <summary>
-    /// Instruction `MUL` - Multiply (indexed).
-    /// </summary>
-    MUL_z_zzi_s,
-    /// <summary>
     /// Instruction `MVNI` - Move inverted immediate (vector).
     /// </summary>
     MVNI_asimdimm_l_hl,
@@ -10125,18 +5561,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     MVNI_asimdimm_m_sm,
     /// <summary>
-    /// Instruction `NANDS` - Bitwise NAND predicates, setting the condition flags.
-    /// </summary>
-    NANDS_p_p_pp_z,
-    /// <summary>
-    /// Instruction `NAND` - Bitwise NAND predicates.
-    /// </summary>
-    NAND_p_p_pp_z,
-    /// <summary>
-    /// Instruction `NBSL` - Bitwise inverted select.
-    /// </summary>
-    NBSL_z_zzz,
-    /// <summary>
     /// Instruction `NEG` - Negate (vector).
     /// </summary>
     NEG_asimdmisc_r,
@@ -10145,45 +5569,13 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     NEG_asisdmisc_r,
     /// <summary>
-    /// Instruction `NEG` - Negate (predicated).
-    /// </summary>
-    NEG_z_p_z_m,
-    /// <summary>
-    /// Instruction `NEG` - Negate (predicated).
-    /// </summary>
-    NEG_z_p_z_z,
-    /// <summary>
-    /// Instruction `NMATCH` - Detect no matching elements, setting the condition flags.
-    /// </summary>
-    NMATCH_p_p_zz,
-    /// <summary>
     /// Instruction `NOP` - No operation.
     /// </summary>
     NOP_hi_hints,
     /// <summary>
-    /// Instruction `NORS` - Bitwise NOR predicates, setting the condition flags.
-    /// </summary>
-    NORS_p_p_pp_z,
-    /// <summary>
-    /// Instruction `NOR` - Bitwise NOR predicates.
-    /// </summary>
-    NOR_p_p_pp_z,
-    /// <summary>
     /// Instruction `NOT` - Bitwise NOT (vector).
     /// </summary>
     NOT_asimdmisc_r,
-    /// <summary>
-    /// Instruction `NOT` - Bitwise invert vector (predicated).
-    /// </summary>
-    NOT_z_p_z_m,
-    /// <summary>
-    /// Instruction `NOT` - Bitwise invert vector (predicated).
-    /// </summary>
-    NOT_z_p_z_z,
-    /// <summary>
-    /// Instruction `ORNS` - Bitwise inclusive OR inverted predicate, setting the condition flags.
-    /// </summary>
-    ORNS_p_p_pp_z,
     /// <summary>
     /// Instruction `ORN` - Bitwise OR NOT (shifted register).
     /// </summary>
@@ -10196,18 +5588,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `ORN` - Bitwise inclusive OR NOT (vector).
     /// </summary>
     ORN_asimdsame_only,
-    /// <summary>
-    /// Instruction `ORN` - Bitwise inclusive OR inverted predicate.
-    /// </summary>
-    ORN_p_p_pp_z,
-    /// <summary>
-    /// Instruction `ORQV` - Bitwise inclusive OR reduction of quadword vector segments.
-    /// </summary>
-    ORQV_z_p_z,
-    /// <summary>
-    /// Instruction `ORRS` - Bitwise inclusive OR predicates, setting the condition flags.
-    /// </summary>
-    ORRS_p_p_pp_z,
     /// <summary>
     /// Instruction `ORR` - Bitwise OR (immediate).
     /// </summary>
@@ -10236,26 +5616,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `ORR` - Bitwise inclusive OR (vector, register).
     /// </summary>
     ORR_asimdsame_only,
-    /// <summary>
-    /// Instruction `ORR` - Bitwise inclusive OR predicates.
-    /// </summary>
-    ORR_p_p_pp_z,
-    /// <summary>
-    /// Instruction `ORR` - Bitwise inclusive OR vectors (predicated).
-    /// </summary>
-    ORR_z_p_zz,
-    /// <summary>
-    /// Instruction `ORR` - Bitwise inclusive OR with immediate (unpredicated).
-    /// </summary>
-    ORR_z_zi,
-    /// <summary>
-    /// Instruction `ORR` - Bitwise inclusive OR vectors (unpredicated).
-    /// </summary>
-    ORR_z_zz,
-    /// <summary>
-    /// Instruction `ORV` - Bitwise inclusive OR reduction to scalar.
-    /// </summary>
-    ORV_r_p_z,
     /// <summary>
     /// Instruction `PACDA` - Pointer Authentication Code for data address, using key A.
     /// </summary>
@@ -10345,177 +5705,13 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     PACNBIBSPPC_64lr_dp_1src,
     /// <summary>
-    /// Instruction `PEXT` - Predicate extract from predicate-as-counter.
-    /// </summary>
-    PEXT_pn_rr,
-    /// <summary>
-    /// Instruction `PEXT` - Predicate extract pair from predicate-as-counter.
-    /// </summary>
-    PEXT_pp_rr,
-    /// <summary>
-    /// Instruction `PFALSE` - Set all predicate elements to false.
-    /// </summary>
-    PFALSE_p,
-    /// <summary>
-    /// Instruction `PFIRST` - Set the first active predicate element to true.
-    /// </summary>
-    PFIRST_p_p_p,
-    /// <summary>
-    /// Instruction `PMLAL` - Multi-vector polynomial multiply long and accumulate vectors.
-    /// </summary>
-    PMLAL_mz_zzzw_1x2,
-    /// <summary>
-    /// Instruction `PMOV` - Move predicate from vector.
-    /// </summary>
-    PMOV_p_zi_b,
-    /// <summary>
-    /// Instruction `PMOV` - Move predicate from vector.
-    /// </summary>
-    PMOV_p_zi_d,
-    /// <summary>
-    /// Instruction `PMOV` - Move predicate from vector.
-    /// </summary>
-    PMOV_p_zi_h,
-    /// <summary>
-    /// Instruction `PMOV` - Move predicate from vector.
-    /// </summary>
-    PMOV_p_zi_s,
-    /// <summary>
-    /// Instruction `PMOV` - Move predicate to vector.
-    /// </summary>
-    PMOV_z_pi_b,
-    /// <summary>
-    /// Instruction `PMOV` - Move predicate to vector.
-    /// </summary>
-    PMOV_z_pi_d,
-    /// <summary>
-    /// Instruction `PMOV` - Move predicate to vector.
-    /// </summary>
-    PMOV_z_pi_h,
-    /// <summary>
-    /// Instruction `PMOV` - Move predicate to vector.
-    /// </summary>
-    PMOV_z_pi_s,
-    /// <summary>
-    /// Instruction `PMULLB` - Polynomial multiply long (bottom).
-    /// </summary>
-    PMULLB_z_zz,
-    /// <summary>
-    /// Instruction `PMULLB` - Polynomial multiply long (bottom).
-    /// </summary>
-    PMULLB_z_zz_q,
-    /// <summary>
-    /// Instruction `PMULLT` - Polynomial multiply long (top).
-    /// </summary>
-    PMULLT_z_zz,
-    /// <summary>
-    /// Instruction `PMULLT` - Polynomial multiply long (top).
-    /// </summary>
-    PMULLT_z_zz_q,
-    /// <summary>
     /// Instruction `PMULL` - Polynomial multiply long.
     /// </summary>
     PMULL_asimddiff_l,
     /// <summary>
-    /// Instruction `PMULL` - Multi-vector polynomial multiply long.
-    /// </summary>
-    PMULL_mz_zzw_1x2,
-    /// <summary>
     /// Instruction `PMUL` - Polynomial multiply.
     /// </summary>
     PMUL_asimdsame_only,
-    /// <summary>
-    /// Instruction `PMUL` - Polynomial multiply vectors (unpredicated).
-    /// </summary>
-    PMUL_z_zz,
-    /// <summary>
-    /// Instruction `PNEXT` - Find next active predicate.
-    /// </summary>
-    PNEXT_p_p_p,
-    /// <summary>
-    /// Instruction `PRFB` - Gather prefetch bytes (vector plus immediate).
-    /// </summary>
-    PRFB_i_p_ai_d,
-    /// <summary>
-    /// Instruction `PRFB` - Gather prefetch bytes (vector plus immediate).
-    /// </summary>
-    PRFB_i_p_ai_s,
-    /// <summary>
-    /// Instruction `PRFB` - Contiguous prefetch bytes (immediate index).
-    /// </summary>
-    PRFB_i_p_bi_s,
-    /// <summary>
-    /// Instruction `PRFB` - Contiguous prefetch bytes (scalar index).
-    /// </summary>
-    PRFB_i_p_br_s,
-    /// <summary>
-    /// Instruction `PRFB` - Gather prefetch bytes (scalar plus vector).
-    /// </summary>
-    PRFB_i_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `PRFB` - Gather prefetch bytes (scalar plus vector).
-    /// </summary>
-    PRFB_i_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `PRFB` - Gather prefetch bytes (scalar plus vector).
-    /// </summary>
-    PRFB_i_p_bz_s_x32_scaled,
-    /// <summary>
-    /// Instruction `PRFD` - Gather prefetch doublewords (vector plus immediate).
-    /// </summary>
-    PRFD_i_p_ai_d,
-    /// <summary>
-    /// Instruction `PRFD` - Gather prefetch doublewords (vector plus immediate).
-    /// </summary>
-    PRFD_i_p_ai_s,
-    /// <summary>
-    /// Instruction `PRFD` - Contiguous prefetch doublewords (immediate index).
-    /// </summary>
-    PRFD_i_p_bi_s,
-    /// <summary>
-    /// Instruction `PRFD` - Contiguous prefetch doublewords (scalar index).
-    /// </summary>
-    PRFD_i_p_br_s,
-    /// <summary>
-    /// Instruction `PRFD` - Gather prefetch doublewords (scalar plus vector).
-    /// </summary>
-    PRFD_i_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `PRFD` - Gather prefetch doublewords (scalar plus vector).
-    /// </summary>
-    PRFD_i_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `PRFD` - Gather prefetch doublewords (scalar plus vector).
-    /// </summary>
-    PRFD_i_p_bz_s_x32_scaled,
-    /// <summary>
-    /// Instruction `PRFH` - Gather prefetch halfwords (vector plus immediate).
-    /// </summary>
-    PRFH_i_p_ai_d,
-    /// <summary>
-    /// Instruction `PRFH` - Gather prefetch halfwords (vector plus immediate).
-    /// </summary>
-    PRFH_i_p_ai_s,
-    /// <summary>
-    /// Instruction `PRFH` - Contiguous prefetch halfwords (immediate index).
-    /// </summary>
-    PRFH_i_p_bi_s,
-    /// <summary>
-    /// Instruction `PRFH` - Contiguous prefetch halfwords (scalar index).
-    /// </summary>
-    PRFH_i_p_br_s,
-    /// <summary>
-    /// Instruction `PRFH` - Gather prefetch halfwords (scalar plus vector).
-    /// </summary>
-    PRFH_i_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `PRFH` - Gather prefetch halfwords (scalar plus vector).
-    /// </summary>
-    PRFH_i_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `PRFH` - Gather prefetch halfwords (scalar plus vector).
-    /// </summary>
-    PRFH_i_p_bz_s_x32_scaled,
     /// <summary>
     /// Instruction `PRFM` - Prefetch memory (immediate).
     /// </summary>
@@ -10533,73 +5729,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     PRFUM_p_ldst_unscaled,
     /// <summary>
-    /// Instruction `PRFW` - Gather prefetch words (vector plus immediate).
-    /// </summary>
-    PRFW_i_p_ai_d,
-    /// <summary>
-    /// Instruction `PRFW` - Gather prefetch words (vector plus immediate).
-    /// </summary>
-    PRFW_i_p_ai_s,
-    /// <summary>
-    /// Instruction `PRFW` - Contiguous prefetch words (immediate index).
-    /// </summary>
-    PRFW_i_p_bi_s,
-    /// <summary>
-    /// Instruction `PRFW` - Contiguous prefetch words (scalar index).
-    /// </summary>
-    PRFW_i_p_br_s,
-    /// <summary>
-    /// Instruction `PRFW` - Gather prefetch words (scalar plus vector).
-    /// </summary>
-    PRFW_i_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `PRFW` - Gather prefetch words (scalar plus vector).
-    /// </summary>
-    PRFW_i_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `PRFW` - Gather prefetch words (scalar plus vector).
-    /// </summary>
-    PRFW_i_p_bz_s_x32_scaled,
-    /// <summary>
     /// Instruction `PSB` - Profiling synchronization barrier.
     /// </summary>
     PSB_hc_hints,
-    /// <summary>
-    /// Instruction `PSEL` - Predicate select between predicate register or all-false.
-    /// </summary>
-    PSEL_p_ppi,
-    /// <summary>
-    /// Instruction `PTEST` - Set condition flags for predicate.
-    /// </summary>
-    PTEST__p_p,
-    /// <summary>
-    /// Instruction `PTRUES` - Initialise predicate from named constraint and set the condition flags.
-    /// </summary>
-    PTRUES_p_s,
-    /// <summary>
-    /// Instruction `PTRUE` - Initialise predicate from named constraint.
-    /// </summary>
-    PTRUE_p_s,
-    /// <summary>
-    /// Instruction `PTRUE` - Initialise predicate-as-counter to all active.
-    /// </summary>
-    PTRUE_pn_i,
-    /// <summary>
-    /// Instruction `PUNPKHI` - Unpack and widen half of predicate.
-    /// </summary>
-    PUNPKHI_p_p,
-    /// <summary>
-    /// Instruction `PUNPKLO` - Unpack and widen half of predicate.
-    /// </summary>
-    PUNPKLO_p_p,
-    /// <summary>
-    /// Instruction `RADDHNB` - Rounding add narrow high part (bottom).
-    /// </summary>
-    RADDHNB_z_zz,
-    /// <summary>
-    /// Instruction `RADDHNT` - Rounding add narrow high part (top).
-    /// </summary>
-    RADDHNT_z_zz,
     /// <summary>
     /// Instruction `RADDHN` - Rounding add returning high narrow.
     /// </summary>
@@ -10608,10 +5740,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `RAX1` - Rotate and exclusive-OR.
     /// </summary>
     RAX1_vvv2_cryptosha512_3,
-    /// <summary>
-    /// Instruction `RAX1` - Bitwise rotate left by 1 and exclusive-OR.
-    /// </summary>
-    RAX1_z_zz,
     /// <summary>
     /// Instruction `RBIT` - Reverse bits.
     /// </summary>
@@ -10624,14 +5752,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `RBIT` - Reverse bit order (vector).
     /// </summary>
     RBIT_asimdmisc_r,
-    /// <summary>
-    /// Instruction `RBIT` - Reverse bits (predicated).
-    /// </summary>
-    RBIT_z_p_z_m,
-    /// <summary>
-    /// Instruction `RBIT` - Reverse bits (predicated).
-    /// </summary>
-    RBIT_z_p_z_z,
     /// <summary>
     /// Instruction `RCWCASAL` - Read check write compare and swap doubleword in memory.
     /// </summary>
@@ -10889,26 +6009,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     RCWSWP_64_memop,
     /// <summary>
-    /// Instruction `RDFFRS` - Return predicate of succesfully loaded elements, setting the condition flags.
-    /// </summary>
-    RDFFRS_p_p_f,
-    /// <summary>
-    /// Instruction `RDFFR` - Read the first-fault register.
-    /// </summary>
-    RDFFR_p_f,
-    /// <summary>
-    /// Instruction `RDFFR` - Return predicate of succesfully loaded elements.
-    /// </summary>
-    RDFFR_p_p_f,
-    /// <summary>
-    /// Instruction `RDSVL` - Read multiple of Streaming SVE vector register size to scalar register.
-    /// </summary>
-    RDSVL_r_i,
-    /// <summary>
-    /// Instruction `RDVL` - Read multiple of vector register size to scalar register.
-    /// </summary>
-    RDVL_r_i,
-    /// <summary>
     /// Instruction `RETAASPPCR` - Return from subroutine, with enhanced pointer authentication using a register.
     /// </summary>
     RETAASPPCR_64m_branch_reg,
@@ -10961,38 +6061,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     REV64_asimdmisc_r,
     /// <summary>
-    /// Instruction `REVB` - Reverse bytes / halfwords / words within elements (predicated).
-    /// </summary>
-    REVB_z_z_m,
-    /// <summary>
-    /// Instruction `REVB` - Reverse bytes / halfwords / words within elements (predicated).
-    /// </summary>
-    REVB_z_z_z,
-    /// <summary>
-    /// Instruction `REVD` - Reverse 64-bit doublewords in elements (predicated).
-    /// </summary>
-    REVD_z_p_z_m,
-    /// <summary>
-    /// Instruction `REVD` - Reverse 64-bit doublewords in elements (predicated).
-    /// </summary>
-    REVD_z_p_z_z,
-    /// <summary>
-    /// Instruction `REVH` - Reverse bytes / halfwords / words within elements (predicated).
-    /// </summary>
-    REVH_z_z_m,
-    /// <summary>
-    /// Instruction `REVH` - Reverse bytes / halfwords / words within elements (predicated).
-    /// </summary>
-    REVH_z_z_z,
-    /// <summary>
-    /// Instruction `REVW` - Reverse bytes / halfwords / words within elements (predicated).
-    /// </summary>
-    REVW_z_z_m,
-    /// <summary>
-    /// Instruction `REVW` - Reverse bytes / halfwords / words within elements (predicated).
-    /// </summary>
-    REVW_z_z_z,
-    /// <summary>
     /// Instruction `REV` - Reverse bytes.
     /// </summary>
     REV_32_dp_1src,
@@ -11000,14 +6068,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `REV` - Reverse bytes.
     /// </summary>
     REV_64_dp_1src,
-    /// <summary>
-    /// Instruction `REV` - Reverse all elements in a predicate.
-    /// </summary>
-    REV_p_p,
-    /// <summary>
-    /// Instruction `REV` - Reverse all elements in a vector (unpredicated).
-    /// </summary>
-    REV_z_z,
     /// <summary>
     /// Instruction `RMIF` - Rotate, mask insert flags.
     /// </summary>
@@ -11025,37 +6085,13 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     RPRFM_r_ldst_regoff,
     /// <summary>
-    /// Instruction `RSHRNB` - Rounding shift right narrow by immediate (bottom).
-    /// </summary>
-    RSHRNB_z_zi,
-    /// <summary>
-    /// Instruction `RSHRNT` - Rounding shift right narrow by immediate (top).
-    /// </summary>
-    RSHRNT_z_zi,
-    /// <summary>
     /// Instruction `RSHRN` - Rounding shift right narrow (immediate).
     /// </summary>
     RSHRN_asimdshf_n,
     /// <summary>
-    /// Instruction `RSUBHNB` - Rounding subtract narrow high part (bottom).
-    /// </summary>
-    RSUBHNB_z_zz,
-    /// <summary>
-    /// Instruction `RSUBHNT` - Rounding subtract narrow high part (top).
-    /// </summary>
-    RSUBHNT_z_zz,
-    /// <summary>
     /// Instruction `RSUBHN` - Rounding subtract returning high narrow.
     /// </summary>
     RSUBHN_asimddiff_n,
-    /// <summary>
-    /// Instruction `SABALB` - Signed absolute difference and accumulate long (bottom).
-    /// </summary>
-    SABALB_z_zzz,
-    /// <summary>
-    /// Instruction `SABALT` - Signed absolute difference and accumulate long (top).
-    /// </summary>
-    SABALT_z_zzz,
     /// <summary>
     /// Instruction `SABAL` - Signed absolute difference and accumulate long.
     /// </summary>
@@ -11065,18 +6101,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SABA_asimdsame_only,
     /// <summary>
-    /// Instruction `SABA` - Signed absolute difference and accumulate.
-    /// </summary>
-    SABA_z_zzz,
-    /// <summary>
-    /// Instruction `SABDLB` - Signed absolute difference long (bottom).
-    /// </summary>
-    SABDLB_z_zz,
-    /// <summary>
-    /// Instruction `SABDLT` - Signed absolute difference long (top).
-    /// </summary>
-    SABDLT_z_zz,
-    /// <summary>
     /// Instruction `SABDL` - Signed absolute difference long.
     /// </summary>
     SABDL_asimddiff_l,
@@ -11085,33 +6109,13 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SABD_asimdsame_only,
     /// <summary>
-    /// Instruction `SABD` - Signed absolute difference (predicated).
-    /// </summary>
-    SABD_z_p_zz,
-    /// <summary>
     /// Instruction `SADALP` - Signed add and accumulate long pairwise.
     /// </summary>
     SADALP_asimdmisc_p,
     /// <summary>
-    /// Instruction `SADALP` - Signed add and accumulate long pairwise.
-    /// </summary>
-    SADALP_z_p_z,
-    /// <summary>
-    /// Instruction `SADDLBT` - Signed add long (bottom + top).
-    /// </summary>
-    SADDLBT_z_zz,
-    /// <summary>
-    /// Instruction `SADDLB` - Signed add long (bottom).
-    /// </summary>
-    SADDLB_z_zz,
-    /// <summary>
     /// Instruction `SADDLP` - Signed add long pairwise.
     /// </summary>
     SADDLP_asimdmisc_p,
-    /// <summary>
-    /// Instruction `SADDLT` - Signed add long (top).
-    /// </summary>
-    SADDLT_z_zz,
     /// <summary>
     /// Instruction `SADDLV` - Signed add long across vector.
     /// </summary>
@@ -11121,29 +6125,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SADDL_asimddiff_l,
     /// <summary>
-    /// Instruction `SADDV` - Signed add reduction to scalar.
-    /// </summary>
-    SADDV_r_p_z,
-    /// <summary>
-    /// Instruction `SADDWB` - Signed add wide (bottom).
-    /// </summary>
-    SADDWB_z_zz,
-    /// <summary>
-    /// Instruction `SADDWT` - Signed add wide (top).
-    /// </summary>
-    SADDWT_z_zz,
-    /// <summary>
     /// Instruction `SADDW` - Signed add wide.
     /// </summary>
     SADDW_asimddiff_w,
-    /// <summary>
-    /// Instruction `SBCLB` - Subtract with carry long (bottom).
-    /// </summary>
-    SBCLB_z_zzz,
-    /// <summary>
-    /// Instruction `SBCLT` - Subtract with carry long (top).
-    /// </summary>
-    SBCLT_z_zzz,
     /// <summary>
     /// Instruction `SBCS` - Subtract with carry, setting flags.
     /// </summary>
@@ -11172,18 +6156,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SB` - Speculation barrier.
     /// </summary>
     SB_only_barriers,
-    /// <summary>
-    /// Instruction `SCLAMP` - Multi-vector signed clamp to minimum/maximum vector.
-    /// </summary>
-    SCLAMP_mz_zz_2,
-    /// <summary>
-    /// Instruction `SCLAMP` - Multi-vector signed clamp to minimum/maximum vector.
-    /// </summary>
-    SCLAMP_mz_zz_4,
-    /// <summary>
-    /// Instruction `SCLAMP` - Signed clamp to minimum/maximum vector.
-    /// </summary>
-    SCLAMP_z_zz,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (vector).
     /// </summary>
@@ -11241,14 +6213,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SCVTF_h64_float2int,
     /// <summary>
-    /// Instruction `SCVTF` - Multi-vector signed integer convert to floating-point.
-    /// </summary>
-    SCVTF_mz_z_2,
-    /// <summary>
-    /// Instruction `SCVTF` - Multi-vector signed integer convert to floating-point.
-    /// </summary>
-    SCVTF_mz_z_4,
-    /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
     SCVTF_s32_float2fix,
@@ -11281,66 +6245,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SCVTF_sisd_64s,
     /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_h2fp16,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_h2fp16z,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_w2d,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_w2dz,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_w2fp16,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_w2fp16z,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_w2s,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_w2sz,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_x2d,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_x2dz,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_x2fp16,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_x2fp16z,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_x2s,
-    /// <summary>
-    /// Instruction `SCVTF` - Signed integer convert to floating-point (predicated).
-    /// </summary>
-    SCVTF_z_p_z_x2sz,
-    /// <summary>
-    /// Instruction `SDIVR` - Signed reversed divide (predicated).
-    /// </summary>
-    SDIVR_z_p_zz,
-    /// <summary>
     /// Instruction `SDIV` - Signed divide.
     /// </summary>
     SDIV_32_dp_2src,
@@ -11349,10 +6253,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SDIV_64_dp_2src,
     /// <summary>
-    /// Instruction `SDIV` - Signed divide (predicated).
-    /// </summary>
-    SDIV_z_p_zz,
-    /// <summary>
     /// Instruction `SDOT` - Dot product signed arithmetic (vector, by element).
     /// </summary>
     SDOT_asimdelem_d,
@@ -11360,98 +6260,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SDOT` - Dot product signed arithmetic (vector).
     /// </summary>
     SDOT_asimdsame2_d,
-    /// <summary>
-    /// Instruction `SDOT` - Signed integer dot product.
-    /// </summary>
-    SDOT_z32_zzz,
-    /// <summary>
-    /// Instruction `SDOT` - Signed integer indexed dot product.
-    /// </summary>
-    SDOT_z32_zzzi,
-    /// <summary>
-    /// Instruction `SDOT` - Signed integer dot product.
-    /// </summary>
-    SDOT_z_zzz,
-    /// <summary>
-    /// Instruction `SDOT` - Signed integer indexed dot product.
-    /// </summary>
-    SDOT_z_zzzi_d,
-    /// <summary>
-    /// Instruction `SDOT` - Signed integer indexed dot product.
-    /// </summary>
-    SDOT_z_zzzi_s,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product by indexed element.
-    /// </summary>
-    SDOT_za32_zzi_2xi,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product by indexed element.
-    /// </summary>
-    SDOT_za32_zzi_4xi,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product by vector.
-    /// </summary>
-    SDOT_za32_zzv_2x1,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product by vector.
-    /// </summary>
-    SDOT_za32_zzv_4x1,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product.
-    /// </summary>
-    SDOT_za32_zzw_2x2,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product.
-    /// </summary>
-    SDOT_za32_zzw_4x4,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product by indexed element.
-    /// </summary>
-    SDOT_za_zzi_d2xi,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product by indexed element.
-    /// </summary>
-    SDOT_za_zzi_d4xi,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product by indexed element.
-    /// </summary>
-    SDOT_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product by indexed element.
-    /// </summary>
-    SDOT_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product by vector.
-    /// </summary>
-    SDOT_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product by vector.
-    /// </summary>
-    SDOT_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product.
-    /// </summary>
-    SDOT_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `SDOT` - Multi-vector signed integer dot-product.
-    /// </summary>
-    SDOT_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `SEL` - Multi-vector conditionally select elements from two vectors.
-    /// </summary>
-    SEL_mz_p_zz_2,
-    /// <summary>
-    /// Instruction `SEL` - Multi-vector conditionally select elements from two vectors.
-    /// </summary>
-    SEL_mz_p_zz_4,
-    /// <summary>
-    /// Instruction `SEL` - Conditionally select elements from two predicates.
-    /// </summary>
-    SEL_p_p_pp,
-    /// <summary>
-    /// Instruction `SEL` - Conditionally select elements from two vectors.
-    /// </summary>
-    SEL_z_p_zz,
     /// <summary>
     /// Instruction `SETEN` - Memory set, non-temporal.
     /// </summary>
@@ -11476,10 +6284,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SETF8` - Evaluation of 8-bit or 16-bit flag values.
     /// </summary>
     SETF8_only_setf,
-    /// <summary>
-    /// Instruction `SETFFR` - Initialise the first-fault register to all true.
-    /// </summary>
-    SETFFR_f,
     /// <summary>
     /// Instruction `SETGEN` - Memory set with tag setting, non-temporal.
     /// </summary>
@@ -11629,10 +6433,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SHADD_asimdsame_only,
     /// <summary>
-    /// Instruction `SHADD` - Signed halving addition.
-    /// </summary>
-    SHADD_z_p_zz,
-    /// <summary>
     /// Instruction `SHLL` - Shift left long (by element size).
     /// </summary>
     SHLL_asimdmisc_s,
@@ -11645,29 +6445,13 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SHL_asisdshf_r,
     /// <summary>
-    /// Instruction `SHRNB` - Shift right narrow by immediate (bottom).
-    /// </summary>
-    SHRNB_z_zi,
-    /// <summary>
-    /// Instruction `SHRNT` - Shift right narrow by immediate (top).
-    /// </summary>
-    SHRNT_z_zi,
-    /// <summary>
     /// Instruction `SHRN` - Shift right narrow (immediate).
     /// </summary>
     SHRN_asimdshf_n,
     /// <summary>
-    /// Instruction `SHSUBR` - Signed halving subtract reversed vectors.
-    /// </summary>
-    SHSUBR_z_p_zz,
-    /// <summary>
     /// Instruction `SHSUB` - Signed halving subtract.
     /// </summary>
     SHSUB_asimdsame_only,
-    /// <summary>
-    /// Instruction `SHSUB` - Signed halving subtract.
-    /// </summary>
-    SHSUB_z_p_zz,
     /// <summary>
     /// Instruction `SLI` - Shift left and insert (immediate).
     /// </summary>
@@ -11676,10 +6460,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SLI` - Shift left and insert (immediate).
     /// </summary>
     SLI_asisdshf_r,
-    /// <summary>
-    /// Instruction `SLI` - Shift left and insert (immediate).
-    /// </summary>
-    SLI_z_zzi,
     /// <summary>
     /// Instruction `SM3PARTW1` - SM3PARTW1.
     /// </summary>
@@ -11713,17 +6493,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SM4EKEY_vvv4_cryptosha512_3,
     /// <summary>
-    /// Instruction `SM4EKEY` - SM4 key updates.
-    /// </summary>
-    SM4EKEY_z_zz,
-    /// <summary>
     /// Instruction `SM4E` - SM4 encode.
     /// </summary>
     SM4E_vv4_cryptosha512_2,
-    /// <summary>
-    /// Instruction `SM4E` - SM4 encryption and decryption.
-    /// </summary>
-    SM4E_z_zz,
     /// <summary>
     /// Instruction `SMADDL` - Signed multiply-add long.
     /// </summary>
@@ -11733,21 +6505,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SMAXP_asimdsame_only,
     /// <summary>
-    /// Instruction `SMAXP` - Signed maximum pairwise.
-    /// </summary>
-    SMAXP_z_p_zz,
-    /// <summary>
-    /// Instruction `SMAXQV` - Signed maximum reduction of quadword vector segments.
-    /// </summary>
-    SMAXQV_z_p_z,
-    /// <summary>
     /// Instruction `SMAXV` - Signed maximum across vector.
     /// </summary>
     SMAXV_asimdall_only,
-    /// <summary>
-    /// Instruction `SMAXV` - Signed maximum reduction to scalar.
-    /// </summary>
-    SMAXV_r_p_z,
     /// <summary>
     /// Instruction `SMAX` - Signed maximum (register).
     /// </summary>
@@ -11769,30 +6529,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SMAX_asimdsame_only,
     /// <summary>
-    /// Instruction `SMAX` - Multi-vector signed maximum by vector.
-    /// </summary>
-    SMAX_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `SMAX` - Multi-vector signed maximum by vector.
-    /// </summary>
-    SMAX_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `SMAX` - Multi-vector signed maximum.
-    /// </summary>
-    SMAX_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `SMAX` - Multi-vector signed maximum.
-    /// </summary>
-    SMAX_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `SMAX` - Signed maximum vectors (predicated).
-    /// </summary>
-    SMAX_z_p_zz,
-    /// <summary>
-    /// Instruction `SMAX` - Signed maximum with immediate (unpredicated).
-    /// </summary>
-    SMAX_z_zi,
-    /// <summary>
     /// Instruction `SMC` - Secure monitor call.
     /// </summary>
     SMC_ex_exception,
@@ -11801,21 +6537,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SMINP_asimdsame_only,
     /// <summary>
-    /// Instruction `SMINP` - Signed minimum pairwise.
-    /// </summary>
-    SMINP_z_p_zz,
-    /// <summary>
-    /// Instruction `SMINQV` - Signed minimum reduction of quadword vector segments.
-    /// </summary>
-    SMINQV_z_p_z,
-    /// <summary>
     /// Instruction `SMINV` - Signed minimum across vector.
     /// </summary>
     SMINV_asimdall_only,
-    /// <summary>
-    /// Instruction `SMINV` - Signed minimum reduction to scalar.
-    /// </summary>
-    SMINV_r_p_z,
     /// <summary>
     /// Instruction `SMIN` - Signed minimum (register).
     /// </summary>
@@ -11837,98 +6561,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SMIN_asimdsame_only,
     /// <summary>
-    /// Instruction `SMIN` - Multi-vector signed minimum by vector.
-    /// </summary>
-    SMIN_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `SMIN` - Multi-vector signed minimum by vector.
-    /// </summary>
-    SMIN_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `SMIN` - Multi-vector signed minimum.
-    /// </summary>
-    SMIN_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `SMIN` - Multi-vector signed minimum.
-    /// </summary>
-    SMIN_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `SMIN` - Signed minimum vectors (predicated).
-    /// </summary>
-    SMIN_z_p_zz,
-    /// <summary>
-    /// Instruction `SMIN` - Signed minimum with immediate (unpredicated).
-    /// </summary>
-    SMIN_z_zi,
-    /// <summary>
-    /// Instruction `SMLALB` - Signed multiply-add long to accumulator (bottom).
-    /// </summary>
-    SMLALB_z_zzz,
-    /// <summary>
-    /// Instruction `SMLALB` - Signed multiply-add long to accumulator (bottom, indexed).
-    /// </summary>
-    SMLALB_z_zzzi_d,
-    /// <summary>
-    /// Instruction `SMLALB` - Signed multiply-add long to accumulator (bottom, indexed).
-    /// </summary>
-    SMLALB_z_zzzi_s,
-    /// <summary>
-    /// Instruction `SMLALL` - Multi-vector signed integer multiply-add long-long by indexed element.
-    /// </summary>
-    SMLALL_za_zzi_d,
-    /// <summary>
-    /// Instruction `SMLALL` - Multi-vector signed integer multiply-add long-long by indexed element.
-    /// </summary>
-    SMLALL_za_zzi_d2xi,
-    /// <summary>
-    /// Instruction `SMLALL` - Multi-vector signed integer multiply-add long-long by indexed element.
-    /// </summary>
-    SMLALL_za_zzi_d4xi,
-    /// <summary>
-    /// Instruction `SMLALL` - Multi-vector signed integer multiply-add long-long by indexed element.
-    /// </summary>
-    SMLALL_za_zzi_s,
-    /// <summary>
-    /// Instruction `SMLALL` - Multi-vector signed integer multiply-add long-long by indexed element.
-    /// </summary>
-    SMLALL_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `SMLALL` - Multi-vector signed integer multiply-add long-long by indexed element.
-    /// </summary>
-    SMLALL_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `SMLALL` - Multi-vector signed integer multiply-add long-long by vector.
-    /// </summary>
-    SMLALL_za_zzv_1,
-    /// <summary>
-    /// Instruction `SMLALL` - Multi-vector signed integer multiply-add long-long by vector.
-    /// </summary>
-    SMLALL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `SMLALL` - Multi-vector signed integer multiply-add long-long by vector.
-    /// </summary>
-    SMLALL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `SMLALL` - Multi-vector signed integer multiply-add long-long.
-    /// </summary>
-    SMLALL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `SMLALL` - Multi-vector signed integer multiply-add long-long.
-    /// </summary>
-    SMLALL_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `SMLALT` - Signed multiply-add long to accumulator (top).
-    /// </summary>
-    SMLALT_z_zzz,
-    /// <summary>
-    /// Instruction `SMLALT` - Signed multiply-add long to accumulator (top, indexed).
-    /// </summary>
-    SMLALT_z_zzzi_d,
-    /// <summary>
-    /// Instruction `SMLALT` - Signed multiply-add long to accumulator (top, indexed).
-    /// </summary>
-    SMLALT_z_zzzi_s,
-    /// <summary>
     /// Instruction `SMLAL` - Signed multiply-add long (vector).
     /// </summary>
     SMLAL_asimddiff_l,
@@ -11936,106 +6568,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SMLAL` - Signed multiply-add long (vector, by element).
     /// </summary>
     SMLAL_asimdelem_l,
-    /// <summary>
-    /// Instruction `SMLAL` - Multi-vector signed integer multiply-add long by indexed element.
-    /// </summary>
-    SMLAL_za_zzi_1,
-    /// <summary>
-    /// Instruction `SMLAL` - Multi-vector signed integer multiply-add long by indexed element.
-    /// </summary>
-    SMLAL_za_zzi_2xi,
-    /// <summary>
-    /// Instruction `SMLAL` - Multi-vector signed integer multiply-add long by indexed element.
-    /// </summary>
-    SMLAL_za_zzi_4xi,
-    /// <summary>
-    /// Instruction `SMLAL` - Multi-vector signed integer multiply-add long by vector.
-    /// </summary>
-    SMLAL_za_zzv_1,
-    /// <summary>
-    /// Instruction `SMLAL` - Multi-vector signed integer multiply-add long by vector.
-    /// </summary>
-    SMLAL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `SMLAL` - Multi-vector signed integer multiply-add long by vector.
-    /// </summary>
-    SMLAL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `SMLAL` - Multi-vector signed integer multiply-add long.
-    /// </summary>
-    SMLAL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `SMLAL` - Multi-vector signed integer multiply-add long.
-    /// </summary>
-    SMLAL_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `SMLSLB` - Signed multiply-subtract long from accumulator (bottom).
-    /// </summary>
-    SMLSLB_z_zzz,
-    /// <summary>
-    /// Instruction `SMLSLB` - Signed multiply-subtract long from accumulator (bottom, indexed).
-    /// </summary>
-    SMLSLB_z_zzzi_d,
-    /// <summary>
-    /// Instruction `SMLSLB` - Signed multiply-subtract long from accumulator (bottom, indexed).
-    /// </summary>
-    SMLSLB_z_zzzi_s,
-    /// <summary>
-    /// Instruction `SMLSLL` - Multi-vector signed integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    SMLSLL_za_zzi_d,
-    /// <summary>
-    /// Instruction `SMLSLL` - Multi-vector signed integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    SMLSLL_za_zzi_d2xi,
-    /// <summary>
-    /// Instruction `SMLSLL` - Multi-vector signed integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    SMLSLL_za_zzi_d4xi,
-    /// <summary>
-    /// Instruction `SMLSLL` - Multi-vector signed integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    SMLSLL_za_zzi_s,
-    /// <summary>
-    /// Instruction `SMLSLL` - Multi-vector signed integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    SMLSLL_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `SMLSLL` - Multi-vector signed integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    SMLSLL_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `SMLSLL` - Multi-vector signed integer multiply-subtract long-long by vector.
-    /// </summary>
-    SMLSLL_za_zzv_1,
-    /// <summary>
-    /// Instruction `SMLSLL` - Multi-vector signed integer multiply-subtract long-long by vector.
-    /// </summary>
-    SMLSLL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `SMLSLL` - Multi-vector signed integer multiply-subtract long-long by vector.
-    /// </summary>
-    SMLSLL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `SMLSLL` - Multi-vector signed integer multiply-subtract long-long.
-    /// </summary>
-    SMLSLL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `SMLSLL` - Multi-vector signed integer multiply-subtract long-long.
-    /// </summary>
-    SMLSLL_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `SMLSLT` - Signed multiply-subtract long from accumulator (top).
-    /// </summary>
-    SMLSLT_z_zzz,
-    /// <summary>
-    /// Instruction `SMLSLT` - Signed multiply-subtract long from accumulator (top, indexed).
-    /// </summary>
-    SMLSLT_z_zzzi_d,
-    /// <summary>
-    /// Instruction `SMLSLT` - Signed multiply-subtract long from accumulator (top, indexed).
-    /// </summary>
-    SMLSLT_z_zzzi_s,
     /// <summary>
     /// Instruction `SMLSL` - Signed multiply-subtract long (vector).
     /// </summary>
@@ -12045,165 +6577,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SMLSL_asimdelem_l,
     /// <summary>
-    /// Instruction `SMLSL` - Multi-vector signed integer multiply-subtract long by indexed element.
-    /// </summary>
-    SMLSL_za_zzi_1,
-    /// <summary>
-    /// Instruction `SMLSL` - Multi-vector signed integer multiply-subtract long by indexed element.
-    /// </summary>
-    SMLSL_za_zzi_2xi,
-    /// <summary>
-    /// Instruction `SMLSL` - Multi-vector signed integer multiply-subtract long by indexed element.
-    /// </summary>
-    SMLSL_za_zzi_4xi,
-    /// <summary>
-    /// Instruction `SMLSL` - Multi-vector signed integer multiply-subtract long by vector.
-    /// </summary>
-    SMLSL_za_zzv_1,
-    /// <summary>
-    /// Instruction `SMLSL` - Multi-vector signed integer multiply-subtract long by vector.
-    /// </summary>
-    SMLSL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `SMLSL` - Multi-vector signed integer multiply-subtract long by vector.
-    /// </summary>
-    SMLSL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `SMLSL` - Multi-vector signed integer multiply-subtract long.
-    /// </summary>
-    SMLSL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `SMLSL` - Multi-vector signed integer multiply-subtract long.
-    /// </summary>
-    SMLSL_za_zzw_4x4,
-    /// <summary>
     /// Instruction `SMMLA` - Signed 8-bit integer matrix multiply-accumulate (vector).
     /// </summary>
     SMMLA_asimdsame2_g,
-    /// <summary>
-    /// Instruction `SMMLA` - Signed integer matrix multiply-accumulate.
-    /// </summary>
-    SMMLA_z_zzz,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    SMOP4A_za32_zz_h1x1,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    SMOP4A_za32_zz_h1x2,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    SMOP4A_za32_zz_h2x1,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    SMOP4A_za32_zz_h2x2,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SMOP4A_za_zz_b1x1,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SMOP4A_za_zz_b1x2,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SMOP4A_za_zz_b2x1,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SMOP4A_za_zz_b2x2,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SMOP4A_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SMOP4A_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SMOP4A_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `SMOP4A` - Signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SMOP4A_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    SMOP4S_za32_zz_h1x1,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    SMOP4S_za32_zz_h1x2,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    SMOP4S_za32_zz_h2x1,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    SMOP4S_za32_zz_h2x2,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SMOP4S_za_zz_b1x1,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SMOP4S_za_zz_b1x2,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SMOP4S_za_zz_b2x1,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SMOP4S_za_zz_b2x2,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SMOP4S_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SMOP4S_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SMOP4S_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `SMOP4S` - Signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SMOP4S_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `SMOPA` - Signed integer sum of outer products and accumulate.
-    /// </summary>
-    SMOPA_za32_pp_zz_16,
-    /// <summary>
-    /// Instruction `SMOPA` - Signed integer sum of outer products and accumulate.
-    /// </summary>
-    SMOPA_za_pp_zz_32,
-    /// <summary>
-    /// Instruction `SMOPA` - Signed integer sum of outer products and accumulate.
-    /// </summary>
-    SMOPA_za_pp_zz_64,
-    /// <summary>
-    /// Instruction `SMOPS` - Signed integer sum of outer products and subtract.
-    /// </summary>
-    SMOPS_za32_pp_zz_16,
-    /// <summary>
-    /// Instruction `SMOPS` - Signed integer sum of outer products and subtract.
-    /// </summary>
-    SMOPS_za_pp_zz_32,
-    /// <summary>
-    /// Instruction `SMOPS` - Signed integer sum of outer products and subtract.
-    /// </summary>
-    SMOPS_za_pp_zz_64,
     /// <summary>
     /// Instruction `SMOV` - Signed move vector element to general-purpose register.
     /// </summary>
@@ -12221,38 +6597,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SMULH_64_dp_3src,
     /// <summary>
-    /// Instruction `SMULH` - Signed multiply returning high half (predicated).
-    /// </summary>
-    SMULH_z_p_zz,
-    /// <summary>
-    /// Instruction `SMULH` - Signed multiply returning high half (unpredicated).
-    /// </summary>
-    SMULH_z_zz,
-    /// <summary>
-    /// Instruction `SMULLB` - Signed multiply long (bottom).
-    /// </summary>
-    SMULLB_z_zz,
-    /// <summary>
-    /// Instruction `SMULLB` - Signed multiply long (bottom, indexed).
-    /// </summary>
-    SMULLB_z_zzi_d,
-    /// <summary>
-    /// Instruction `SMULLB` - Signed multiply long (bottom, indexed).
-    /// </summary>
-    SMULLB_z_zzi_s,
-    /// <summary>
-    /// Instruction `SMULLT` - Signed multiply long (top).
-    /// </summary>
-    SMULLT_z_zz,
-    /// <summary>
-    /// Instruction `SMULLT` - Signed multiply long (top, indexed).
-    /// </summary>
-    SMULLT_z_zzi_d,
-    /// <summary>
-    /// Instruction `SMULLT` - Signed multiply long (top, indexed).
-    /// </summary>
-    SMULLT_z_zzi_s,
-    /// <summary>
     /// Instruction `SMULL` - Signed multiply long (vector).
     /// </summary>
     SMULL_asimddiff_l,
@@ -12260,14 +6604,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SMULL` - Signed multiply long (vector, by element).
     /// </summary>
     SMULL_asimdelem_l,
-    /// <summary>
-    /// Instruction `SPLICE` - Splice two vectors under predicate control.
-    /// </summary>
-    SPLICE_z_p_zz_con,
-    /// <summary>
-    /// Instruction `SPLICE` - Splice two vectors under predicate control.
-    /// </summary>
-    SPLICE_z_p_zz_des,
     /// <summary>
     /// Instruction `SQABS` - Signed saturating absolute value.
     /// </summary>
@@ -12277,14 +6613,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SQABS_asisdmisc_r,
     /// <summary>
-    /// Instruction `SQABS` - Signed saturating absolute value.
-    /// </summary>
-    SQABS_z_p_z_m,
-    /// <summary>
-    /// Instruction `SQABS` - Signed saturating absolute value.
-    /// </summary>
-    SQABS_z_p_z_z,
-    /// <summary>
     /// Instruction `SQADD` - Signed saturating add.
     /// </summary>
     SQADD_asimdsame_only,
@@ -12292,138 +6620,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SQADD` - Signed saturating add.
     /// </summary>
     SQADD_asisdsame_only,
-    /// <summary>
-    /// Instruction `SQADD` - Signed saturating addition (predicated).
-    /// </summary>
-    SQADD_z_p_zz,
-    /// <summary>
-    /// Instruction `SQADD` - Signed saturating add immediate (unpredicated).
-    /// </summary>
-    SQADD_z_zi,
-    /// <summary>
-    /// Instruction `SQADD` - Signed saturating add vectors (unpredicated).
-    /// </summary>
-    SQADD_z_zz,
-    /// <summary>
-    /// Instruction `SQCADD` - Saturating complex integer add with rotate.
-    /// </summary>
-    SQCADD_z_zz,
-    /// <summary>
-    /// Instruction `SQCVTN` - Signed saturating extract narrow and interleave.
-    /// </summary>
-    SQCVTN_z_mz2,
-    /// <summary>
-    /// Instruction `SQCVTN` - Multi-vector signed saturating extract narrow and interleave.
-    /// </summary>
-    SQCVTN_z_mz4,
-    /// <summary>
-    /// Instruction `SQCVTUN` - Signed saturating unsigned extract narrow and interleave.
-    /// </summary>
-    SQCVTUN_z_mz2,
-    /// <summary>
-    /// Instruction `SQCVTUN` - Multi-vector signed saturating unsigned extract narrow and interleave.
-    /// </summary>
-    SQCVTUN_z_mz4,
-    /// <summary>
-    /// Instruction `SQCVTU` - Multi-vector signed saturating unsigned extract narrow.
-    /// </summary>
-    SQCVTU_z_mz2,
-    /// <summary>
-    /// Instruction `SQCVTU` - Multi-vector signed saturating unsigned extract narrow.
-    /// </summary>
-    SQCVTU_z_mz4,
-    /// <summary>
-    /// Instruction `SQCVT` - Multi-vector signed saturating extract narrow.
-    /// </summary>
-    SQCVT_z_mz2,
-    /// <summary>
-    /// Instruction `SQCVT` - Multi-vector signed saturating extract narrow.
-    /// </summary>
-    SQCVT_z_mz4,
-    /// <summary>
-    /// Instruction `SQDECB` - Signed saturating decrement scalar by multiple of 8-bit predicate constraint element count.
-    /// </summary>
-    SQDECB_r_rs_sx,
-    /// <summary>
-    /// Instruction `SQDECB` - Signed saturating decrement scalar by multiple of 8-bit predicate constraint element count.
-    /// </summary>
-    SQDECB_r_rs_x,
-    /// <summary>
-    /// Instruction `SQDECD` - Signed saturating decrement scalar by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    SQDECD_r_rs_sx,
-    /// <summary>
-    /// Instruction `SQDECD` - Signed saturating decrement scalar by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    SQDECD_r_rs_x,
-    /// <summary>
-    /// Instruction `SQDECD` - Signed saturating decrement vector by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    SQDECD_z_zs,
-    /// <summary>
-    /// Instruction `SQDECH` - Signed saturating decrement scalar by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    SQDECH_r_rs_sx,
-    /// <summary>
-    /// Instruction `SQDECH` - Signed saturating decrement scalar by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    SQDECH_r_rs_x,
-    /// <summary>
-    /// Instruction `SQDECH` - Signed saturating decrement vector by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    SQDECH_z_zs,
-    /// <summary>
-    /// Instruction `SQDECP` - Signed saturating decrement scalar by count of true predicate elements.
-    /// </summary>
-    SQDECP_r_p_r_sx,
-    /// <summary>
-    /// Instruction `SQDECP` - Signed saturating decrement scalar by count of true predicate elements.
-    /// </summary>
-    SQDECP_r_p_r_x,
-    /// <summary>
-    /// Instruction `SQDECP` - Signed saturating decrement vector by count of true predicate elements.
-    /// </summary>
-    SQDECP_z_p_z,
-    /// <summary>
-    /// Instruction `SQDECW` - Signed saturating decrement scalar by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    SQDECW_r_rs_sx,
-    /// <summary>
-    /// Instruction `SQDECW` - Signed saturating decrement scalar by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    SQDECW_r_rs_x,
-    /// <summary>
-    /// Instruction `SQDECW` - Signed saturating decrement vector by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    SQDECW_z_zs,
-    /// <summary>
-    /// Instruction `SQDMLALBT` - Signed saturating doubling multiply-add long to accumulator (bottom × top).
-    /// </summary>
-    SQDMLALBT_z_zzz,
-    /// <summary>
-    /// Instruction `SQDMLALB` - Signed saturating doubling multiply-add long to accumulator (bottom).
-    /// </summary>
-    SQDMLALB_z_zzz,
-    /// <summary>
-    /// Instruction `SQDMLALB` - Signed saturating doubling multiply-add long to accumulator (bottom, indexed).
-    /// </summary>
-    SQDMLALB_z_zzzi_d,
-    /// <summary>
-    /// Instruction `SQDMLALB` - Signed saturating doubling multiply-add long to accumulator (bottom, indexed).
-    /// </summary>
-    SQDMLALB_z_zzzi_s,
-    /// <summary>
-    /// Instruction `SQDMLALT` - Signed saturating doubling multiply-add long to accumulator (top).
-    /// </summary>
-    SQDMLALT_z_zzz,
-    /// <summary>
-    /// Instruction `SQDMLALT` - Signed saturating doubling multiply-add long to accumulator (top, indexed).
-    /// </summary>
-    SQDMLALT_z_zzzi_d,
-    /// <summary>
-    /// Instruction `SQDMLALT` - Signed saturating doubling multiply-add long to accumulator (top, indexed).
-    /// </summary>
-    SQDMLALT_z_zzzi_s,
     /// <summary>
     /// Instruction `SQDMLAL` - Signed saturating doubling multiply-add long.
     /// </summary>
@@ -12440,34 +6636,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SQDMLAL` - Signed saturating doubling multiply-add long (by element).
     /// </summary>
     SQDMLAL_asisdelem_l,
-    /// <summary>
-    /// Instruction `SQDMLSLBT` - Signed saturating doubling multiply-subtract long from accumulator (bottom × top).
-    /// </summary>
-    SQDMLSLBT_z_zzz,
-    /// <summary>
-    /// Instruction `SQDMLSLB` - Signed saturating doubling multiply-subtract long from accumulator (bottom).
-    /// </summary>
-    SQDMLSLB_z_zzz,
-    /// <summary>
-    /// Instruction `SQDMLSLB` - Signed saturating doubling multiply-subtract long from accumulator (bottom, indexed).
-    /// </summary>
-    SQDMLSLB_z_zzzi_d,
-    /// <summary>
-    /// Instruction `SQDMLSLB` - Signed saturating doubling multiply-subtract long from accumulator (bottom, indexed).
-    /// </summary>
-    SQDMLSLB_z_zzzi_s,
-    /// <summary>
-    /// Instruction `SQDMLSLT` - Signed saturating doubling multiply-subtract long from accumulator (top).
-    /// </summary>
-    SQDMLSLT_z_zzz,
-    /// <summary>
-    /// Instruction `SQDMLSLT` - Signed saturating doubling multiply-subtract long from accumulator (top, indexed).
-    /// </summary>
-    SQDMLSLT_z_zzzi_d,
-    /// <summary>
-    /// Instruction `SQDMLSLT` - Signed saturating doubling multiply-subtract long from accumulator (top, indexed).
-    /// </summary>
-    SQDMLSLT_z_zzzi_s,
     /// <summary>
     /// Instruction `SQDMLSL` - Signed saturating doubling multiply-subtract long.
     /// </summary>
@@ -12501,62 +6669,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SQDMULH_asisdsame_only,
     /// <summary>
-    /// Instruction `SQDMULH` - Multi-vector signed saturating doubling multiply high by vector.
-    /// </summary>
-    SQDMULH_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `SQDMULH` - Multi-vector signed saturating doubling multiply high by vector.
-    /// </summary>
-    SQDMULH_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `SQDMULH` - Multi-vector signed saturating doubling multiply high.
-    /// </summary>
-    SQDMULH_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `SQDMULH` - Multi-vector signed saturating doubling multiply high.
-    /// </summary>
-    SQDMULH_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `SQDMULH` - Signed saturating doubling multiply high (unpredicated).
-    /// </summary>
-    SQDMULH_z_zz,
-    /// <summary>
-    /// Instruction `SQDMULH` - Signed saturating doubling multiply high (indexed).
-    /// </summary>
-    SQDMULH_z_zzi_d,
-    /// <summary>
-    /// Instruction `SQDMULH` - Signed saturating doubling multiply high (indexed).
-    /// </summary>
-    SQDMULH_z_zzi_h,
-    /// <summary>
-    /// Instruction `SQDMULH` - Signed saturating doubling multiply high (indexed).
-    /// </summary>
-    SQDMULH_z_zzi_s,
-    /// <summary>
-    /// Instruction `SQDMULLB` - Signed saturating doubling multiply long (bottom).
-    /// </summary>
-    SQDMULLB_z_zz,
-    /// <summary>
-    /// Instruction `SQDMULLB` - Signed saturating doubling multiply long (bottom, indexed).
-    /// </summary>
-    SQDMULLB_z_zzi_d,
-    /// <summary>
-    /// Instruction `SQDMULLB` - Signed saturating doubling multiply long (bottom, indexed).
-    /// </summary>
-    SQDMULLB_z_zzi_s,
-    /// <summary>
-    /// Instruction `SQDMULLT` - Signed saturating doubling multiply long (top).
-    /// </summary>
-    SQDMULLT_z_zz,
-    /// <summary>
-    /// Instruction `SQDMULLT` - Signed saturating doubling multiply long (top, indexed).
-    /// </summary>
-    SQDMULLT_z_zzi_d,
-    /// <summary>
-    /// Instruction `SQDMULLT` - Signed saturating doubling multiply long (top, indexed).
-    /// </summary>
-    SQDMULLT_z_zzi_s,
-    /// <summary>
     /// Instruction `SQDMULL` - Signed saturating doubling multiply long.
     /// </summary>
     SQDMULL_asimddiff_l,
@@ -12573,62 +6685,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SQDMULL_asisdelem_l,
     /// <summary>
-    /// Instruction `SQINCB` - Signed saturating increment scalar by multiple of 8-bit predicate constraint element count.
-    /// </summary>
-    SQINCB_r_rs_sx,
-    /// <summary>
-    /// Instruction `SQINCB` - Signed saturating increment scalar by multiple of 8-bit predicate constraint element count.
-    /// </summary>
-    SQINCB_r_rs_x,
-    /// <summary>
-    /// Instruction `SQINCD` - Signed saturating increment scalar by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    SQINCD_r_rs_sx,
-    /// <summary>
-    /// Instruction `SQINCD` - Signed saturating increment scalar by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    SQINCD_r_rs_x,
-    /// <summary>
-    /// Instruction `SQINCD` - Signed saturating increment vector by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    SQINCD_z_zs,
-    /// <summary>
-    /// Instruction `SQINCH` - Signed saturating increment scalar by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    SQINCH_r_rs_sx,
-    /// <summary>
-    /// Instruction `SQINCH` - Signed saturating increment scalar by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    SQINCH_r_rs_x,
-    /// <summary>
-    /// Instruction `SQINCH` - Signed saturating increment vector by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    SQINCH_z_zs,
-    /// <summary>
-    /// Instruction `SQINCP` - Signed saturating increment scalar by count of true predicate elements.
-    /// </summary>
-    SQINCP_r_p_r_sx,
-    /// <summary>
-    /// Instruction `SQINCP` - Signed saturating increment scalar by count of true predicate elements.
-    /// </summary>
-    SQINCP_r_p_r_x,
-    /// <summary>
-    /// Instruction `SQINCP` - Signed saturating increment vector by count of true predicate elements.
-    /// </summary>
-    SQINCP_z_p_z,
-    /// <summary>
-    /// Instruction `SQINCW` - Signed saturating increment scalar by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    SQINCW_r_rs_sx,
-    /// <summary>
-    /// Instruction `SQINCW` - Signed saturating increment scalar by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    SQINCW_r_rs_x,
-    /// <summary>
-    /// Instruction `SQINCW` - Signed saturating increment vector by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    SQINCW_z_zs,
-    /// <summary>
     /// Instruction `SQNEG` - Signed saturating negate.
     /// </summary>
     SQNEG_asimdmisc_r,
@@ -12636,26 +6692,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SQNEG` - Signed saturating negate.
     /// </summary>
     SQNEG_asisdmisc_r,
-    /// <summary>
-    /// Instruction `SQNEG` - Signed saturating negate.
-    /// </summary>
-    SQNEG_z_p_z_m,
-    /// <summary>
-    /// Instruction `SQNEG` - Signed saturating negate.
-    /// </summary>
-    SQNEG_z_p_z_z,
-    /// <summary>
-    /// Instruction `SQRDCMLAH` - Saturating rounding doubling complex integer multiply-add high with rotate.
-    /// </summary>
-    SQRDCMLAH_z_zzz,
-    /// <summary>
-    /// Instruction `SQRDCMLAH` - Saturating rounding doubling complex integer multiply-add high with rotate (indexed).
-    /// </summary>
-    SQRDCMLAH_z_zzzi_h,
-    /// <summary>
-    /// Instruction `SQRDCMLAH` - Saturating rounding doubling complex integer multiply-add high with rotate (indexed).
-    /// </summary>
-    SQRDCMLAH_z_zzzi_s,
     /// <summary>
     /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply accumulate returning high half (by element).
     /// </summary>
@@ -12673,22 +6709,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SQRDMLAH_asisdsame2_only,
     /// <summary>
-    /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply-add high to accumulator (unpredicated).
-    /// </summary>
-    SQRDMLAH_z_zzz,
-    /// <summary>
-    /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply-add high to accumulator (indexed).
-    /// </summary>
-    SQRDMLAH_z_zzzi_d,
-    /// <summary>
-    /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply-add high to accumulator (indexed).
-    /// </summary>
-    SQRDMLAH_z_zzzi_h,
-    /// <summary>
-    /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply-add high to accumulator (indexed).
-    /// </summary>
-    SQRDMLAH_z_zzzi_s,
-    /// <summary>
     /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply subtract returning high half (by element).
     /// </summary>
     SQRDMLSH_asimdelem_r,
@@ -12704,22 +6724,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply subtract returning high half (vector).
     /// </summary>
     SQRDMLSH_asisdsame2_only,
-    /// <summary>
-    /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply-subtract high from accumulator (unpredicated).
-    /// </summary>
-    SQRDMLSH_z_zzz,
-    /// <summary>
-    /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply-subtract high from accumulator (indexed).
-    /// </summary>
-    SQRDMLSH_z_zzzi_d,
-    /// <summary>
-    /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply-subtract high from accumulator (indexed).
-    /// </summary>
-    SQRDMLSH_z_zzzi_h,
-    /// <summary>
-    /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply-subtract high from accumulator (indexed).
-    /// </summary>
-    SQRDMLSH_z_zzzi_s,
     /// <summary>
     /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply returning high half (by element).
     /// </summary>
@@ -12737,26 +6741,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SQRDMULH_asisdsame_only,
     /// <summary>
-    /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply high (unpredicated).
-    /// </summary>
-    SQRDMULH_z_zz,
-    /// <summary>
-    /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply high (indexed).
-    /// </summary>
-    SQRDMULH_z_zzi_d,
-    /// <summary>
-    /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply high (indexed).
-    /// </summary>
-    SQRDMULH_z_zzi_h,
-    /// <summary>
-    /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply high (indexed).
-    /// </summary>
-    SQRDMULH_z_zzi_s,
-    /// <summary>
-    /// Instruction `SQRSHLR` - Signed saturating rounding shift left reversed vectors (predicated).
-    /// </summary>
-    SQRSHLR_z_p_zz,
-    /// <summary>
     /// Instruction `SQRSHL` - Signed saturating rounding shift left (register).
     /// </summary>
     SQRSHL_asimdsame_only,
@@ -12764,18 +6748,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SQRSHL` - Signed saturating rounding shift left (register).
     /// </summary>
     SQRSHL_asisdsame_only,
-    /// <summary>
-    /// Instruction `SQRSHL` - Signed saturating rounding shift left by vector (predicated).
-    /// </summary>
-    SQRSHL_z_p_zz,
-    /// <summary>
-    /// Instruction `SQRSHRNB` - Signed saturating rounding shift right narrow by immediate (bottom).
-    /// </summary>
-    SQRSHRNB_z_zi,
-    /// <summary>
-    /// Instruction `SQRSHRNT` - Signed saturating rounding shift right narrow by immediate (top).
-    /// </summary>
-    SQRSHRNT_z_zi,
     /// <summary>
     /// Instruction `SQRSHRN` - Signed saturating rounded shift right narrow (immediate).
     /// </summary>
@@ -12785,22 +6757,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SQRSHRN_asisdshf_n,
     /// <summary>
-    /// Instruction `SQRSHRN` - Signed saturating rounding shift right narrow by immediate and interleave.
-    /// </summary>
-    SQRSHRN_z_mz2,
-    /// <summary>
-    /// Instruction `SQRSHRN` - Multi-vector signed saturating rounding shift right narrow by immediate and interleave.
-    /// </summary>
-    SQRSHRN_z_mz4,
-    /// <summary>
-    /// Instruction `SQRSHRUNB` - Signed saturating rounding shift right unsigned narrow by immediate (bottom).
-    /// </summary>
-    SQRSHRUNB_z_zi,
-    /// <summary>
-    /// Instruction `SQRSHRUNT` - Signed saturating rounding shift right unsigned narrow by immediate (top).
-    /// </summary>
-    SQRSHRUNT_z_zi,
-    /// <summary>
     /// Instruction `SQRSHRUN` - Signed saturating rounded shift right unsigned narrow (immediate).
     /// </summary>
     SQRSHRUN_asimdshf_n,
@@ -12809,34 +6765,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SQRSHRUN_asisdshf_n,
     /// <summary>
-    /// Instruction `SQRSHRUN` - Signed saturating rounding shift right unsigned narrow by immediate and interleave.
-    /// </summary>
-    SQRSHRUN_z_mz2,
-    /// <summary>
-    /// Instruction `SQRSHRUN` - Multi-vector signed saturating rounding shift right unsigned narrow by immediate and interleave.
-    /// </summary>
-    SQRSHRUN_z_mz4,
-    /// <summary>
-    /// Instruction `SQRSHRU` - Multi-vector signed saturating rounding shift right unsigned narrow by immediate.
-    /// </summary>
-    SQRSHRU_z_mz2,
-    /// <summary>
-    /// Instruction `SQRSHRU` - Multi-vector signed saturating rounding shift right unsigned narrow by immediate.
-    /// </summary>
-    SQRSHRU_z_mz4,
-    /// <summary>
-    /// Instruction `SQRSHR` - Multi-vector signed saturating rounding shift right narrow by immediate.
-    /// </summary>
-    SQRSHR_z_mz2,
-    /// <summary>
-    /// Instruction `SQRSHR` - Multi-vector signed saturating rounding shift right narrow by immediate.
-    /// </summary>
-    SQRSHR_z_mz4,
-    /// <summary>
-    /// Instruction `SQSHLR` - Signed saturating shift left reversed vectors (predicated).
-    /// </summary>
-    SQSHLR_z_p_zz,
-    /// <summary>
     /// Instruction `SQSHLU` - Signed saturating shift left unsigned (immediate).
     /// </summary>
     SQSHLU_asimdshf_r,
@@ -12844,10 +6772,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SQSHLU` - Signed saturating shift left unsigned (immediate).
     /// </summary>
     SQSHLU_asisdshf_r,
-    /// <summary>
-    /// Instruction `SQSHLU` - Signed saturating shift left unsigned by immediate.
-    /// </summary>
-    SQSHLU_z_p_zi,
     /// <summary>
     /// Instruction `SQSHL` - Signed saturating shift left (register).
     /// </summary>
@@ -12865,22 +6789,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SQSHL_asisdshf_r,
     /// <summary>
-    /// Instruction `SQSHL` - Signed saturating shift left by immediate.
-    /// </summary>
-    SQSHL_z_p_zi,
-    /// <summary>
-    /// Instruction `SQSHL` - Signed saturating shift left by vector (predicated).
-    /// </summary>
-    SQSHL_z_p_zz,
-    /// <summary>
-    /// Instruction `SQSHRNB` - Signed saturating shift right narrow by immediate (bottom).
-    /// </summary>
-    SQSHRNB_z_zi,
-    /// <summary>
-    /// Instruction `SQSHRNT` - Signed saturating shift right narrow by immediate (top).
-    /// </summary>
-    SQSHRNT_z_zi,
-    /// <summary>
     /// Instruction `SQSHRN` - Signed saturating shift right narrow (immediate).
     /// </summary>
     SQSHRN_asimdshf_n,
@@ -12888,14 +6796,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SQSHRN` - Signed saturating shift right narrow (immediate).
     /// </summary>
     SQSHRN_asisdshf_n,
-    /// <summary>
-    /// Instruction `SQSHRUNB` - Signed saturating shift right unsigned narrow by immediate (bottom).
-    /// </summary>
-    SQSHRUNB_z_zi,
-    /// <summary>
-    /// Instruction `SQSHRUNT` - Signed saturating shift right unsigned narrow by immediate (top).
-    /// </summary>
-    SQSHRUNT_z_zi,
     /// <summary>
     /// Instruction `SQSHRUN` - Signed saturating shift right unsigned narrow (immediate).
     /// </summary>
@@ -12905,10 +6805,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SQSHRUN_asisdshf_n,
     /// <summary>
-    /// Instruction `SQSUBR` - Signed saturating subtraction reversed vectors (predicated).
-    /// </summary>
-    SQSUBR_z_p_zz,
-    /// <summary>
     /// Instruction `SQSUB` - Signed saturating subtract.
     /// </summary>
     SQSUB_asimdsame_only,
@@ -12917,26 +6813,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SQSUB_asisdsame_only,
     /// <summary>
-    /// Instruction `SQSUB` - Signed saturating subtraction (predicated).
-    /// </summary>
-    SQSUB_z_p_zz,
-    /// <summary>
-    /// Instruction `SQSUB` - Signed saturating subtract immediate (unpredicated).
-    /// </summary>
-    SQSUB_z_zi,
-    /// <summary>
-    /// Instruction `SQSUB` - Signed saturating subtract vectors (unpredicated).
-    /// </summary>
-    SQSUB_z_zz,
-    /// <summary>
-    /// Instruction `SQXTNB` - Signed saturating extract narrow (bottom).
-    /// </summary>
-    SQXTNB_z_zz,
-    /// <summary>
-    /// Instruction `SQXTNT` - Signed saturating extract narrow (top).
-    /// </summary>
-    SQXTNT_z_zz,
-    /// <summary>
     /// Instruction `SQXTN` - Signed saturating extract narrow.
     /// </summary>
     SQXTN_asimdmisc_n,
@@ -12944,14 +6820,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SQXTN` - Signed saturating extract narrow.
     /// </summary>
     SQXTN_asisdmisc_n,
-    /// <summary>
-    /// Instruction `SQXTUNB` - Signed saturating unsigned extract narrow (bottom).
-    /// </summary>
-    SQXTUNB_z_zz,
-    /// <summary>
-    /// Instruction `SQXTUNT` - Signed saturating unsigned extract narrow (top).
-    /// </summary>
-    SQXTUNT_z_zz,
     /// <summary>
     /// Instruction `SQXTUN` - Signed saturating extract unsigned narrow.
     /// </summary>
@@ -12965,10 +6833,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SRHADD_asimdsame_only,
     /// <summary>
-    /// Instruction `SRHADD` - Signed rounding halving addition.
-    /// </summary>
-    SRHADD_z_p_zz,
-    /// <summary>
     /// Instruction `SRI` - Shift right and insert (immediate).
     /// </summary>
     SRI_asimdshf_r,
@@ -12976,14 +6840,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SRI` - Shift right and insert (immediate).
     /// </summary>
     SRI_asisdshf_r,
-    /// <summary>
-    /// Instruction `SRI` - Shift right and insert (immediate).
-    /// </summary>
-    SRI_z_zzi,
-    /// <summary>
-    /// Instruction `SRSHLR` - Signed rounding shift left reversed vectors (predicated).
-    /// </summary>
-    SRSHLR_z_p_zz,
     /// <summary>
     /// Instruction `SRSHL` - Signed rounding shift left (register).
     /// </summary>
@@ -12993,26 +6849,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SRSHL_asisdsame_only,
     /// <summary>
-    /// Instruction `SRSHL` - Multi-vector signed rounding shift left by vector.
-    /// </summary>
-    SRSHL_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `SRSHL` - Multi-vector signed rounding shift left by vector.
-    /// </summary>
-    SRSHL_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `SRSHL` - Multi-vector signed rounding shift left.
-    /// </summary>
-    SRSHL_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `SRSHL` - Multi-vector signed rounding shift left.
-    /// </summary>
-    SRSHL_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `SRSHL` - Signed rounding shift left by vector (predicated).
-    /// </summary>
-    SRSHL_z_p_zz,
-    /// <summary>
     /// Instruction `SRSHR` - Signed rounding shift right (immediate).
     /// </summary>
     SRSHR_asimdshf_r,
@@ -13021,10 +6857,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SRSHR_asisdshf_r,
     /// <summary>
-    /// Instruction `SRSHR` - Signed rounding shift right by immediate.
-    /// </summary>
-    SRSHR_z_p_zi,
-    /// <summary>
     /// Instruction `SRSRA` - Signed rounding shift right and accumulate (immediate).
     /// </summary>
     SRSRA_asimdshf_r,
@@ -13032,18 +6864,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SRSRA` - Signed rounding shift right and accumulate (immediate).
     /// </summary>
     SRSRA_asisdshf_r,
-    /// <summary>
-    /// Instruction `SRSRA` - Signed rounding shift right and accumulate (immediate).
-    /// </summary>
-    SRSRA_z_zi,
-    /// <summary>
-    /// Instruction `SSHLLB` - Signed shift left long by immediate (bottom).
-    /// </summary>
-    SSHLLB_z_zi,
-    /// <summary>
-    /// Instruction `SSHLLT` - Signed shift left long by immediate (top).
-    /// </summary>
-    SSHLLT_z_zi,
     /// <summary>
     /// Instruction `SSHLL` - Signed shift left long (immediate).
     /// </summary>
@@ -13073,345 +6893,13 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SSRA_asisdshf_r,
     /// <summary>
-    /// Instruction `SSRA` - Signed shift right and accumulate (immediate).
-    /// </summary>
-    SSRA_z_zi,
-    /// <summary>
-    /// Instruction `SSUBLBT` - Signed subtract long (bottom - top).
-    /// </summary>
-    SSUBLBT_z_zz,
-    /// <summary>
-    /// Instruction `SSUBLB` - Signed subtract long (bottom).
-    /// </summary>
-    SSUBLB_z_zz,
-    /// <summary>
-    /// Instruction `SSUBLTB` - Signed subtract long (top - bottom).
-    /// </summary>
-    SSUBLTB_z_zz,
-    /// <summary>
-    /// Instruction `SSUBLT` - Signed subtract long (top).
-    /// </summary>
-    SSUBLT_z_zz,
-    /// <summary>
     /// Instruction `SSUBL` - Signed subtract long.
     /// </summary>
     SSUBL_asimddiff_l,
     /// <summary>
-    /// Instruction `SSUBWB` - Signed subtract wide (bottom).
-    /// </summary>
-    SSUBWB_z_zz,
-    /// <summary>
-    /// Instruction `SSUBWT` - Signed subtract wide (top).
-    /// </summary>
-    SSUBWT_z_zz,
-    /// <summary>
     /// Instruction `SSUBW` - Signed subtract wide.
     /// </summary>
     SSUBW_asimddiff_w,
-    /// <summary>
-    /// Instruction `ST1B` - Contiguous store of bytes from multiple consecutive vectors (immediate index).
-    /// </summary>
-    ST1B_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `ST1B` - Contiguous store of bytes from multiple consecutive vectors (immediate index).
-    /// </summary>
-    ST1B_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `ST1B` - Contiguous store of bytes from multiple consecutive vectors (scalar index).
-    /// </summary>
-    ST1B_mz_p_br_2,
-    /// <summary>
-    /// Instruction `ST1B` - Contiguous store of bytes from multiple consecutive vectors (scalar index).
-    /// </summary>
-    ST1B_mz_p_br_4,
-    /// <summary>
-    /// Instruction `ST1B` - Contiguous store of bytes from multiple strided vectors (immediate index).
-    /// </summary>
-    ST1B_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `ST1B` - Contiguous store of bytes from multiple strided vectors (immediate index).
-    /// </summary>
-    ST1B_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `ST1B` - Contiguous store of bytes from multiple strided vectors (scalar index).
-    /// </summary>
-    ST1B_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `ST1B` - Contiguous store of bytes from multiple strided vectors (scalar index).
-    /// </summary>
-    ST1B_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `ST1B` - Scatter store bytes from a vector (immediate index).
-    /// </summary>
-    ST1B_z_p_ai_d,
-    /// <summary>
-    /// Instruction `ST1B` - Scatter store bytes from a vector (immediate index).
-    /// </summary>
-    ST1B_z_p_ai_s,
-    /// <summary>
-    /// Instruction `ST1B` - Contiguous store bytes from vector (immediate index).
-    /// </summary>
-    ST1B_z_p_bi,
-    /// <summary>
-    /// Instruction `ST1B` - Contiguous store bytes from vector (scalar index).
-    /// </summary>
-    ST1B_z_p_br,
-    /// <summary>
-    /// Instruction `ST1B` - Scatter store bytes from a vector (vector index).
-    /// </summary>
-    ST1B_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `ST1B` - Scatter store bytes from a vector (vector index).
-    /// </summary>
-    ST1B_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `ST1B` - Scatter store bytes from a vector (vector index).
-    /// </summary>
-    ST1B_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `ST1B` - Contiguous store of bytes from 8-bit element ZA tile slice.
-    /// </summary>
-    ST1B_za_p_rrr,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store of doublewords from multiple consecutive vectors (immediate index).
-    /// </summary>
-    ST1D_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store of doublewords from multiple consecutive vectors (immediate index).
-    /// </summary>
-    ST1D_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store of doublewords from multiple consecutive vectors (scalar index).
-    /// </summary>
-    ST1D_mz_p_br_2,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store of doublewords from multiple consecutive vectors (scalar index).
-    /// </summary>
-    ST1D_mz_p_br_4,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store of doublewords from multiple strided vectors (immediate index).
-    /// </summary>
-    ST1D_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store of doublewords from multiple strided vectors (immediate index).
-    /// </summary>
-    ST1D_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store of doublewords from multiple strided vectors (scalar index).
-    /// </summary>
-    ST1D_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store of doublewords from multiple strided vectors (scalar index).
-    /// </summary>
-    ST1D_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `ST1D` - Scatter store doublewords from a vector (immediate index).
-    /// </summary>
-    ST1D_z_p_ai_d,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store doublewords from vector (immediate index).
-    /// </summary>
-    ST1D_z_p_bi,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store doublewords from vector (immediate index).
-    /// </summary>
-    ST1D_z_p_bi_u128,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store doublewords from vector (scalar index).
-    /// </summary>
-    ST1D_z_p_br,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store doublewords from vector (scalar index).
-    /// </summary>
-    ST1D_z_p_br_u128,
-    /// <summary>
-    /// Instruction `ST1D` - Scatter store doublewords from a vector (vector index).
-    /// </summary>
-    ST1D_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `ST1D` - Scatter store doublewords from a vector (vector index).
-    /// </summary>
-    ST1D_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `ST1D` - Scatter store doublewords from a vector (vector index).
-    /// </summary>
-    ST1D_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `ST1D` - Scatter store doublewords from a vector (vector index).
-    /// </summary>
-    ST1D_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `ST1D` - Contiguous store of doublewords from 64-bit element ZA tile slice.
-    /// </summary>
-    ST1D_za_p_rrr,
-    /// <summary>
-    /// Instruction `ST1H` - Contiguous store of halfwords from multiple consecutive vectors (immediate index).
-    /// </summary>
-    ST1H_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `ST1H` - Contiguous store of halfwords from multiple consecutive vectors (immediate index).
-    /// </summary>
-    ST1H_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `ST1H` - Contiguous store of halfwords from multiple consecutive vectors (scalar index).
-    /// </summary>
-    ST1H_mz_p_br_2,
-    /// <summary>
-    /// Instruction `ST1H` - Contiguous store of halfwords from multiple consecutive vectors (scalar index).
-    /// </summary>
-    ST1H_mz_p_br_4,
-    /// <summary>
-    /// Instruction `ST1H` - Contiguous store of halfwords from multiple strided vectors (immediate index).
-    /// </summary>
-    ST1H_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `ST1H` - Contiguous store of halfwords from multiple strided vectors (immediate index).
-    /// </summary>
-    ST1H_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `ST1H` - Contiguous store of halfwords from multiple strided vectors (scalar index).
-    /// </summary>
-    ST1H_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `ST1H` - Contiguous store of halfwords from multiple strided vectors (scalar index).
-    /// </summary>
-    ST1H_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `ST1H` - Scatter store halfwords from a vector (immediate index).
-    /// </summary>
-    ST1H_z_p_ai_d,
-    /// <summary>
-    /// Instruction `ST1H` - Scatter store halfwords from a vector (immediate index).
-    /// </summary>
-    ST1H_z_p_ai_s,
-    /// <summary>
-    /// Instruction `ST1H` - Contiguous store halfwords from vector (immediate index).
-    /// </summary>
-    ST1H_z_p_bi,
-    /// <summary>
-    /// Instruction `ST1H` - Contiguous store halfwords from vector (scalar index).
-    /// </summary>
-    ST1H_z_p_br,
-    /// <summary>
-    /// Instruction `ST1H` - Scatter store halfwords from a vector (vector index).
-    /// </summary>
-    ST1H_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `ST1H` - Scatter store halfwords from a vector (vector index).
-    /// </summary>
-    ST1H_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `ST1H` - Scatter store halfwords from a vector (vector index).
-    /// </summary>
-    ST1H_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `ST1H` - Scatter store halfwords from a vector (vector index).
-    /// </summary>
-    ST1H_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `ST1H` - Scatter store halfwords from a vector (vector index).
-    /// </summary>
-    ST1H_z_p_bz_s_x32_scaled,
-    /// <summary>
-    /// Instruction `ST1H` - Scatter store halfwords from a vector (vector index).
-    /// </summary>
-    ST1H_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `ST1H` - Contiguous store of halfwords from 16-bit element ZA tile slice.
-    /// </summary>
-    ST1H_za_p_rrr,
-    /// <summary>
-    /// Instruction `ST1Q` - Scatter store quadwords.
-    /// </summary>
-    ST1Q_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `ST1Q` - Contiguous store of quadwords from 128-bit element ZA tile slice.
-    /// </summary>
-    ST1Q_za_p_rrr,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store of words from multiple consecutive vectors (immediate index).
-    /// </summary>
-    ST1W_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store of words from multiple consecutive vectors (immediate index).
-    /// </summary>
-    ST1W_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store of words from multiple consecutive vectors (scalar index).
-    /// </summary>
-    ST1W_mz_p_br_2,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store of words from multiple consecutive vectors (scalar index).
-    /// </summary>
-    ST1W_mz_p_br_4,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store of words from multiple strided vectors (immediate index).
-    /// </summary>
-    ST1W_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store of words from multiple strided vectors (immediate index).
-    /// </summary>
-    ST1W_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store of words from multiple strided vectors (scalar index).
-    /// </summary>
-    ST1W_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store of words from multiple strided vectors (scalar index).
-    /// </summary>
-    ST1W_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `ST1W` - Scatter store words from a vector (immediate index).
-    /// </summary>
-    ST1W_z_p_ai_d,
-    /// <summary>
-    /// Instruction `ST1W` - Scatter store words from a vector (immediate index).
-    /// </summary>
-    ST1W_z_p_ai_s,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store words from vector (immediate index).
-    /// </summary>
-    ST1W_z_p_bi,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store words from vector (immediate index).
-    /// </summary>
-    ST1W_z_p_bi_u128,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store words from vector (scalar index).
-    /// </summary>
-    ST1W_z_p_br,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store words from vector (scalar index).
-    /// </summary>
-    ST1W_z_p_br_u128,
-    /// <summary>
-    /// Instruction `ST1W` - Scatter store words from a vector (vector index).
-    /// </summary>
-    ST1W_z_p_bz_d_64_scaled,
-    /// <summary>
-    /// Instruction `ST1W` - Scatter store words from a vector (vector index).
-    /// </summary>
-    ST1W_z_p_bz_d_64_unscaled,
-    /// <summary>
-    /// Instruction `ST1W` - Scatter store words from a vector (vector index).
-    /// </summary>
-    ST1W_z_p_bz_d_x32_scaled,
-    /// <summary>
-    /// Instruction `ST1W` - Scatter store words from a vector (vector index).
-    /// </summary>
-    ST1W_z_p_bz_d_x32_unscaled,
-    /// <summary>
-    /// Instruction `ST1W` - Scatter store words from a vector (vector index).
-    /// </summary>
-    ST1W_z_p_bz_s_x32_scaled,
-    /// <summary>
-    /// Instruction `ST1W` - Scatter store words from a vector (vector index).
-    /// </summary>
-    ST1W_z_p_bz_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `ST1W` - Contiguous store of words from 32-bit element ZA tile slice.
-    /// </summary>
-    ST1W_za_p_rrr,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
@@ -13509,22 +6997,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     ST1_asisdlsop_sx1_r1s,
     /// <summary>
-    /// Instruction `ST2B` - Contiguous store two-byte structures from two vectors (immediate index).
-    /// </summary>
-    ST2B_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST2B` - Contiguous store two-byte structures from two vectors (scalar index).
-    /// </summary>
-    ST2B_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `ST2D` - Contiguous store two-doubleword structures from two vectors (immediate index).
-    /// </summary>
-    ST2D_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST2D` - Contiguous store two-doubleword structures from two vectors (scalar index).
-    /// </summary>
-    ST2D_z_p_br_contiguous,
-    /// <summary>
     /// Instruction `ST2G` - Store Allocation Tags.
     /// </summary>
     ST2G_64soffset_ldsttags,
@@ -13536,30 +7008,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `ST2G` - Store Allocation Tags.
     /// </summary>
     ST2G_64spre_ldsttags,
-    /// <summary>
-    /// Instruction `ST2H` - Contiguous store two-halfword structures from two vectors (immediate index).
-    /// </summary>
-    ST2H_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST2H` - Contiguous store two-halfword structures from two vectors (scalar index).
-    /// </summary>
-    ST2H_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `ST2Q` - Contiguous store two-quadword structures from two vectors (immediate index).
-    /// </summary>
-    ST2Q_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST2Q` - Contiguous store two-quadword structures from two vectors (scalar index).
-    /// </summary>
-    ST2Q_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `ST2W` - Contiguous store two-word structures from two vectors (immediate index).
-    /// </summary>
-    ST2W_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST2W` - Contiguous store two-word structures from two vectors (scalar index).
-    /// </summary>
-    ST2W_z_p_br_contiguous,
     /// <summary>
     /// Instruction `ST2` - Store multiple 2-element structures from two registers.
     /// </summary>
@@ -13621,46 +7069,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     ST2_asisdlsop_sx2_r2s,
     /// <summary>
-    /// Instruction `ST3B` - Contiguous store three-byte structures from three vectors (immediate index).
-    /// </summary>
-    ST3B_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST3B` - Contiguous store three-byte structures from three vectors (scalar index).
-    /// </summary>
-    ST3B_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `ST3D` - Contiguous store three-doubleword structures from three vectors (immediate index).
-    /// </summary>
-    ST3D_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST3D` - Contiguous store three-doubleword structures from three vectors (scalar index).
-    /// </summary>
-    ST3D_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `ST3H` - Contiguous store three-halfword structures from three vectors (immediate index).
-    /// </summary>
-    ST3H_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST3H` - Contiguous store three-halfword structures from three vectors (scalar index).
-    /// </summary>
-    ST3H_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `ST3Q` - Contiguous store three-quadword structures from three vectors (immediate index).
-    /// </summary>
-    ST3Q_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST3Q` - Contiguous store three-quadword structures from three vectors (scalar index).
-    /// </summary>
-    ST3Q_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `ST3W` - Contiguous store three-word structures from three vectors (immediate index).
-    /// </summary>
-    ST3W_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST3W` - Contiguous store three-word structures from three vectors (scalar index).
-    /// </summary>
-    ST3W_z_p_br_contiguous,
-    /// <summary>
     /// Instruction `ST3` - Store multiple 3-element structures from three registers.
     /// </summary>
     ST3_asisdlse_r3,
@@ -13720,46 +7128,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
     ST3_asisdlsop_sx3_r3s,
-    /// <summary>
-    /// Instruction `ST4B` - Contiguous store four-byte structures from four vectors (immediate index).
-    /// </summary>
-    ST4B_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST4B` - Contiguous store four-byte structures from four vectors (scalar index).
-    /// </summary>
-    ST4B_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `ST4D` - Contiguous store four-doubleword structures from four vectors (immediate index).
-    /// </summary>
-    ST4D_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST4D` - Contiguous store four-doubleword structures from four vectors (scalar index).
-    /// </summary>
-    ST4D_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `ST4H` - Contiguous store four-halfword structures from four vectors (immediate index).
-    /// </summary>
-    ST4H_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST4H` - Contiguous store four-halfword structures from four vectors (scalar index).
-    /// </summary>
-    ST4H_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `ST4Q` - Contiguous store four-quadword structures from four vectors (immediate index).
-    /// </summary>
-    ST4Q_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST4Q` - Contiguous store four-quadword structures from four vectors (scalar index).
-    /// </summary>
-    ST4Q_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `ST4W` - Contiguous store four-word structures from four vectors (immediate index).
-    /// </summary>
-    ST4W_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `ST4W` - Contiguous store four-word structures from four vectors (scalar index).
-    /// </summary>
-    ST4W_z_p_br_contiguous,
     /// <summary>
     /// Instruction `ST4` - Store multiple 4-element structures from four registers.
     /// </summary>
@@ -14149,14 +7517,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     STLXR_sr64_ldstexclr,
     /// <summary>
-    /// Instruction `STMOPA` - Signed integer sparse sum of two outer products, accumulating.
-    /// </summary>
-    STMOPA_za32_zzzi_h2x1,
-    /// <summary>
-    /// Instruction `STMOPA` - Signed integer sparse sum of four outer products, accumulating.
-    /// </summary>
-    STMOPA_za_zzzi_b2x1,
-    /// <summary>
     /// Instruction `STNP` - Store pair of registers, with non-temporal hint.
     /// </summary>
     STNP_32_ldstnapair_offs,
@@ -14176,194 +7536,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `STNP` - Store pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
     STNP_s_ldstnapair_offs,
-    /// <summary>
-    /// Instruction `STNT1B` - Contiguous store non-temporal of bytes from multiple consecutive vectors (immediate index).
-    /// </summary>
-    STNT1B_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `STNT1B` - Contiguous store non-temporal of bytes from multiple consecutive vectors (immediate index).
-    /// </summary>
-    STNT1B_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `STNT1B` - Contiguous store non-temporal of bytes from multiple consecutive vectors (scalar index).
-    /// </summary>
-    STNT1B_mz_p_br_2,
-    /// <summary>
-    /// Instruction `STNT1B` - Contiguous store non-temporal of bytes from multiple consecutive vectors (scalar index).
-    /// </summary>
-    STNT1B_mz_p_br_4,
-    /// <summary>
-    /// Instruction `STNT1B` - Contiguous store non-temporal of bytes from multiple strided vectors (immediate index).
-    /// </summary>
-    STNT1B_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `STNT1B` - Contiguous store non-temporal of bytes from multiple strided vectors (immediate index).
-    /// </summary>
-    STNT1B_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `STNT1B` - Contiguous store non-temporal of bytes from multiple strided vectors (scalar index).
-    /// </summary>
-    STNT1B_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `STNT1B` - Contiguous store non-temporal of bytes from multiple strided vectors (scalar index).
-    /// </summary>
-    STNT1B_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `STNT1B` - Scatter store non-temporal bytes.
-    /// </summary>
-    STNT1B_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `STNT1B` - Scatter store non-temporal bytes.
-    /// </summary>
-    STNT1B_z_p_ar_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `STNT1B` - Contiguous store non-temporal bytes from vector (immediate index).
-    /// </summary>
-    STNT1B_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `STNT1B` - Contiguous store non-temporal bytes from vector (scalar index).
-    /// </summary>
-    STNT1B_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `STNT1D` - Contiguous store non-temporal of doublewords from multiple consecutive vectors (immediate index).
-    /// </summary>
-    STNT1D_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `STNT1D` - Contiguous store non-temporal of doublewords from multiple consecutive vectors (immediate index).
-    /// </summary>
-    STNT1D_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `STNT1D` - Contiguous store non-temporal of doublewords from multiple consecutive vectors (scalar index).
-    /// </summary>
-    STNT1D_mz_p_br_2,
-    /// <summary>
-    /// Instruction `STNT1D` - Contiguous store non-temporal of doublewords from multiple consecutive vectors (scalar index).
-    /// </summary>
-    STNT1D_mz_p_br_4,
-    /// <summary>
-    /// Instruction `STNT1D` - Contiguous store non-temporal of doublewords from multiple strided vectors (immediate index).
-    /// </summary>
-    STNT1D_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `STNT1D` - Contiguous store non-temporal of doublewords from multiple strided vectors (immediate index).
-    /// </summary>
-    STNT1D_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `STNT1D` - Contiguous store non-temporal of doublewords from multiple strided vectors (scalar index).
-    /// </summary>
-    STNT1D_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `STNT1D` - Contiguous store non-temporal of doublewords from multiple strided vectors (scalar index).
-    /// </summary>
-    STNT1D_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `STNT1D` - Scatter store non-temporal doublewords.
-    /// </summary>
-    STNT1D_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `STNT1D` - Contiguous store non-temporal doublewords from vector (immediate index).
-    /// </summary>
-    STNT1D_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `STNT1D` - Contiguous store non-temporal doublewords from vector (scalar index).
-    /// </summary>
-    STNT1D_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `STNT1H` - Contiguous store non-temporal of halfwords from multiple consecutive vectors (immediate index).
-    /// </summary>
-    STNT1H_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `STNT1H` - Contiguous store non-temporal of halfwords from multiple consecutive vectors (immediate index).
-    /// </summary>
-    STNT1H_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `STNT1H` - Contiguous store non-temporal of halfwords from multiple consecutive vectors (scalar index).
-    /// </summary>
-    STNT1H_mz_p_br_2,
-    /// <summary>
-    /// Instruction `STNT1H` - Contiguous store non-temporal of halfwords from multiple consecutive vectors (scalar index).
-    /// </summary>
-    STNT1H_mz_p_br_4,
-    /// <summary>
-    /// Instruction `STNT1H` - Contiguous store non-temporal of halfwords from multiple strided vectors (immediate index).
-    /// </summary>
-    STNT1H_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `STNT1H` - Contiguous store non-temporal of halfwords from multiple strided vectors (immediate index).
-    /// </summary>
-    STNT1H_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `STNT1H` - Contiguous store non-temporal of halfwords from multiple strided vectors (scalar index).
-    /// </summary>
-    STNT1H_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `STNT1H` - Contiguous store non-temporal of halfwords from multiple strided vectors (scalar index).
-    /// </summary>
-    STNT1H_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `STNT1H` - Scatter store non-temporal halfwords.
-    /// </summary>
-    STNT1H_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `STNT1H` - Scatter store non-temporal halfwords.
-    /// </summary>
-    STNT1H_z_p_ar_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `STNT1H` - Contiguous store non-temporal halfwords from vector (immediate index).
-    /// </summary>
-    STNT1H_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `STNT1H` - Contiguous store non-temporal halfwords from vector (scalar index).
-    /// </summary>
-    STNT1H_z_p_br_contiguous,
-    /// <summary>
-    /// Instruction `STNT1W` - Contiguous store non-temporal of words from multiple consecutive vectors (immediate index).
-    /// </summary>
-    STNT1W_mz_p_bi_2,
-    /// <summary>
-    /// Instruction `STNT1W` - Contiguous store non-temporal of words from multiple consecutive vectors (immediate index).
-    /// </summary>
-    STNT1W_mz_p_bi_4,
-    /// <summary>
-    /// Instruction `STNT1W` - Contiguous store non-temporal of words from multiple consecutive vectors (scalar index).
-    /// </summary>
-    STNT1W_mz_p_br_2,
-    /// <summary>
-    /// Instruction `STNT1W` - Contiguous store non-temporal of words from multiple consecutive vectors (scalar index).
-    /// </summary>
-    STNT1W_mz_p_br_4,
-    /// <summary>
-    /// Instruction `STNT1W` - Contiguous store non-temporal of words from multiple strided vectors (immediate index).
-    /// </summary>
-    STNT1W_mzx_p_bi_2x8,
-    /// <summary>
-    /// Instruction `STNT1W` - Contiguous store non-temporal of words from multiple strided vectors (immediate index).
-    /// </summary>
-    STNT1W_mzx_p_bi_4x4,
-    /// <summary>
-    /// Instruction `STNT1W` - Contiguous store non-temporal of words from multiple strided vectors (scalar index).
-    /// </summary>
-    STNT1W_mzx_p_br_2x8,
-    /// <summary>
-    /// Instruction `STNT1W` - Contiguous store non-temporal of words from multiple strided vectors (scalar index).
-    /// </summary>
-    STNT1W_mzx_p_br_4x4,
-    /// <summary>
-    /// Instruction `STNT1W` - Scatter store non-temporal words.
-    /// </summary>
-    STNT1W_z_p_ar_d_64_unscaled,
-    /// <summary>
-    /// Instruction `STNT1W` - Scatter store non-temporal words.
-    /// </summary>
-    STNT1W_z_p_ar_s_x32_unscaled,
-    /// <summary>
-    /// Instruction `STNT1W` - Contiguous store non-temporal words from vector (immediate index).
-    /// </summary>
-    STNT1W_z_p_bi_contiguous,
-    /// <summary>
-    /// Instruction `STNT1W` - Contiguous store non-temporal words from vector (scalar index).
-    /// </summary>
-    STNT1W_z_p_br_contiguous,
     /// <summary>
     /// Instruction `STP` - Store pair of registers.
     /// </summary>
@@ -14545,10 +7717,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     STR_h_ldst_regoff,
     /// <summary>
-    /// Instruction `STR` - Store predicate register.
-    /// </summary>
-    STR_p_bi,
-    /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
     STR_q_ldst_immpost,
@@ -14580,18 +7748,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
     STR_s_ldst_regoff,
-    /// <summary>
-    /// Instruction `STR` - Store vector register.
-    /// </summary>
-    STR_z_bi,
-    /// <summary>
-    /// Instruction `STR` - Store ZA array vector.
-    /// </summary>
-    STR_za_ri,
-    /// <summary>
-    /// Instruction `STR` - Store ZT0 register.
-    /// </summary>
-    STR_zt_br,
     /// <summary>
     /// Instruction `STSHH` - Store shared hint.
     /// </summary>
@@ -14745,14 +7901,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SUBG_64_addsub_immtags,
     /// <summary>
-    /// Instruction `SUBHNB` - Subtract narrow high part (bottom).
-    /// </summary>
-    SUBHNB_z_zz,
-    /// <summary>
-    /// Instruction `SUBHNT` - Subtract narrow high part (top).
-    /// </summary>
-    SUBHNT_z_zz,
-    /// <summary>
     /// Instruction `SUBHN` - Subtract returning high narrow.
     /// </summary>
     SUBHN_asimddiff_n,
@@ -14765,25 +7913,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SUBPT_64_addsub_pt,
     /// <summary>
-    /// Instruction `SUBPT` - Subtract checked pointer vectors (predicated).
-    /// </summary>
-    SUBPT_z_p_zz,
-    /// <summary>
-    /// Instruction `SUBPT` - Subtract checked pointer vectors (unpredicated).
-    /// </summary>
-    SUBPT_z_zz,
-    /// <summary>
     /// Instruction `SUBP` - Subtract pointer.
     /// </summary>
     SUBP_64s_dp_2src,
-    /// <summary>
-    /// Instruction `SUBR` - Reversed subtract vectors (predicated).
-    /// </summary>
-    SUBR_z_p_zz,
-    /// <summary>
-    /// Instruction `SUBR` - Reversed subtract from immediate (unpredicated).
-    /// </summary>
-    SUBR_z_zi,
     /// <summary>
     /// Instruction `SUBS` - Subtract optionally-shifted register, setting flags.
     /// </summary>
@@ -14841,181 +7973,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SUB_asisdsame_only,
     /// <summary>
-    /// Instruction `SUB` - Subtract vectors (predicated).
-    /// </summary>
-    SUB_z_p_zz,
-    /// <summary>
-    /// Instruction `SUB` - Subtract immediate (unpredicated).
-    /// </summary>
-    SUB_z_zi,
-    /// <summary>
-    /// Instruction `SUB` - Subtract vectors (unpredicated).
-    /// </summary>
-    SUB_z_zz,
-    /// <summary>
-    /// Instruction `SUB` - Subtract multi-vector from ZA array vector accumulators.
-    /// </summary>
-    SUB_za_zw_2x2,
-    /// <summary>
-    /// Instruction `SUB` - Subtract multi-vector from ZA array vector accumulators.
-    /// </summary>
-    SUB_za_zw_4x4,
-    /// <summary>
-    /// Instruction `SUB` - Subtract replicated single vector from multi-vector with ZA array vector results.
-    /// </summary>
-    SUB_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `SUB` - Subtract replicated single vector from multi-vector with ZA array vector results.
-    /// </summary>
-    SUB_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `SUB` - Subtract multi-vector from multi-vector with ZA array vector results.
-    /// </summary>
-    SUB_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `SUB` - Subtract multi-vector from multi-vector with ZA array vector results.
-    /// </summary>
-    SUB_za_zzw_4x4,
-    /// <summary>
     /// Instruction `SUDOT` - Dot product with signed and unsigned integers (vector, by element).
     /// </summary>
     SUDOT_asimdelem_d,
-    /// <summary>
-    /// Instruction `SUDOT` - Signed by unsigned integer indexed dot product.
-    /// </summary>
-    SUDOT_z_zzzi_s,
-    /// <summary>
-    /// Instruction `SUDOT` - Multi-vector signed by unsigned integer dot-product by indexed elements.
-    /// </summary>
-    SUDOT_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `SUDOT` - Multi-vector signed by unsigned integer dot-product by indexed elements.
-    /// </summary>
-    SUDOT_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `SUDOT` - Multi-vector signed by unsigned integer dot-product by vector.
-    /// </summary>
-    SUDOT_za_zzv_s2x1,
-    /// <summary>
-    /// Instruction `SUDOT` - Multi-vector signed by unsigned integer dot-product by vector.
-    /// </summary>
-    SUDOT_za_zzv_s4x1,
-    /// <summary>
-    /// Instruction `SUMLALL` - Multi-vector signed by unsigned integer multiply-add long-long by indexed element.
-    /// </summary>
-    SUMLALL_za_zzi_s,
-    /// <summary>
-    /// Instruction `SUMLALL` - Multi-vector signed by unsigned integer multiply-add long-long by indexed element.
-    /// </summary>
-    SUMLALL_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `SUMLALL` - Multi-vector signed by unsigned integer multiply-add long-long by indexed element.
-    /// </summary>
-    SUMLALL_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `SUMLALL` - Multi-vector signed by unsigned integer multiply-add long-long by vector.
-    /// </summary>
-    SUMLALL_za_zzv_s2x1,
-    /// <summary>
-    /// Instruction `SUMLALL` - Multi-vector signed by unsigned integer multiply-add long-long by vector.
-    /// </summary>
-    SUMLALL_za_zzv_s4x1,
-    /// <summary>
-    /// Instruction `SUMOP4A` - Signed by unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SUMOP4A_za_zz_b1x1,
-    /// <summary>
-    /// Instruction `SUMOP4A` - Signed by unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SUMOP4A_za_zz_b1x2,
-    /// <summary>
-    /// Instruction `SUMOP4A` - Signed by unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SUMOP4A_za_zz_b2x1,
-    /// <summary>
-    /// Instruction `SUMOP4A` - Signed by unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SUMOP4A_za_zz_b2x2,
-    /// <summary>
-    /// Instruction `SUMOP4A` - Signed by unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SUMOP4A_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `SUMOP4A` - Signed by unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SUMOP4A_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `SUMOP4A` - Signed by unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SUMOP4A_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `SUMOP4A` - Signed by unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    SUMOP4A_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `SUMOP4S` - Signed by unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SUMOP4S_za_zz_b1x1,
-    /// <summary>
-    /// Instruction `SUMOP4S` - Signed by unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SUMOP4S_za_zz_b1x2,
-    /// <summary>
-    /// Instruction `SUMOP4S` - Signed by unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SUMOP4S_za_zz_b2x1,
-    /// <summary>
-    /// Instruction `SUMOP4S` - Signed by unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SUMOP4S_za_zz_b2x2,
-    /// <summary>
-    /// Instruction `SUMOP4S` - Signed by unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SUMOP4S_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `SUMOP4S` - Signed by unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SUMOP4S_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `SUMOP4S` - Signed by unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SUMOP4S_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `SUMOP4S` - Signed by unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    SUMOP4S_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `SUMOPA` - Signed by unsigned integer sum of outer products and accumulate.
-    /// </summary>
-    SUMOPA_za_pp_zz_32,
-    /// <summary>
-    /// Instruction `SUMOPA` - Signed by unsigned integer sum of outer products and accumulate.
-    /// </summary>
-    SUMOPA_za_pp_zz_64,
-    /// <summary>
-    /// Instruction `SUMOPS` - Signed by unsigned integer sum of outer products and subtract.
-    /// </summary>
-    SUMOPS_za_pp_zz_32,
-    /// <summary>
-    /// Instruction `SUMOPS` - Signed by unsigned integer sum of outer products and subtract.
-    /// </summary>
-    SUMOPS_za_pp_zz_64,
-    /// <summary>
-    /// Instruction `SUNPKHI` - Signed unpack and extend half of vector.
-    /// </summary>
-    SUNPKHI_z_z,
-    /// <summary>
-    /// Instruction `SUNPKLO` - Signed unpack and extend half of vector.
-    /// </summary>
-    SUNPKLO_z_z,
-    /// <summary>
-    /// Instruction `SUNPK` - Unpack and sign-extend multi-vector elements.
-    /// </summary>
-    SUNPK_mz_z_2,
-    /// <summary>
-    /// Instruction `SUNPK` - Unpack and sign-extend multi-vector elements.
-    /// </summary>
-    SUNPK_mz_z_4,
     /// <summary>
     /// Instruction `SUQADD` - Signed saturating accumulate of unsigned value.
     /// </summary>
@@ -15025,33 +7985,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SUQADD_asisdmisc_r,
     /// <summary>
-    /// Instruction `SUQADD` - Signed saturating addition of unsigned value.
-    /// </summary>
-    SUQADD_z_p_zz,
-    /// <summary>
-    /// Instruction `SUTMOPA` - Signed by unsigned integer sparse sum of four outer products, accumulating.
-    /// </summary>
-    SUTMOPA_za_zzzi_b2x1,
-    /// <summary>
-    /// Instruction `SUVDOT` - Multi-vector signed by unsigned integer vertical dot-product by indexed element.
-    /// </summary>
-    SUVDOT_za_zzi_s4xi,
-    /// <summary>
     /// Instruction `SVC` - Supervisor call.
     /// </summary>
     SVC_ex_exception,
-    /// <summary>
-    /// Instruction `SVDOT` - Multi-vector signed integer vertical dot-product by indexed element.
-    /// </summary>
-    SVDOT_za32_zzi_2xi,
-    /// <summary>
-    /// Instruction `SVDOT` - Multi-vector signed integer vertical dot-product by indexed element.
-    /// </summary>
-    SVDOT_za_zzi_d4xi,
-    /// <summary>
-    /// Instruction `SVDOT` - Multi-vector signed integer vertical dot-product by indexed element.
-    /// </summary>
-    SVDOT_za_zzi_s4xi,
     /// <summary>
     /// Instruction `SWPAB` - Swap byte in memory.
     /// </summary>
@@ -15165,30 +8101,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     SWP_64_memop,
     /// <summary>
-    /// Instruction `SXTB` - Signed byte / halfword / word extend (predicated).
-    /// </summary>
-    SXTB_z_p_z_m,
-    /// <summary>
-    /// Instruction `SXTB` - Signed byte / halfword / word extend (predicated).
-    /// </summary>
-    SXTB_z_p_z_z,
-    /// <summary>
-    /// Instruction `SXTH` - Signed byte / halfword / word extend (predicated).
-    /// </summary>
-    SXTH_z_p_z_m,
-    /// <summary>
-    /// Instruction `SXTH` - Signed byte / halfword / word extend (predicated).
-    /// </summary>
-    SXTH_z_p_z_z,
-    /// <summary>
-    /// Instruction `SXTW` - Signed byte / halfword / word extend (predicated).
-    /// </summary>
-    SXTW_z_p_z_m,
-    /// <summary>
-    /// Instruction `SXTW` - Signed byte / halfword / word extend (predicated).
-    /// </summary>
-    SXTW_z_p_z_z,
-    /// <summary>
     /// Instruction `SYSL` - System instruction with result.
     /// </summary>
     SYSL_rc_systeminstrs,
@@ -15200,10 +8112,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `SYS` - System instruction.
     /// </summary>
     SYS_cr_systeminstrs,
-    /// <summary>
-    /// Instruction `TBLQ` - Programmable table lookup within each quadword vector segment (zeroing).
-    /// </summary>
-    TBLQ_z_zz,
     /// <summary>
     /// Instruction `TBL` - Table vector lookup.
     /// </summary>
@@ -15221,21 +8129,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     TBL_asimdtbl_l4_4,
     /// <summary>
-    /// Instruction `TBL` - Programmable table lookup in one or two vector table (zeroing).
-    /// </summary>
-    TBL_z_zz_1,
-    /// <summary>
-    /// Instruction `TBL` - Programmable table lookup in one or two vector table (zeroing).
-    /// </summary>
-    TBL_z_zz_2,
-    /// <summary>
     /// Instruction `TBNZ` - Test bit and branch if nonzero.
     /// </summary>
     TBNZ_only_testbranch,
-    /// <summary>
-    /// Instruction `TBXQ` - Programmable table lookup within each quadword vector segment (merging).
-    /// </summary>
-    TBXQ_z_zz,
     /// <summary>
     /// Instruction `TBX` - Table vector lookup extension.
     /// </summary>
@@ -15253,10 +8149,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     TBX_asimdtbl_l4_4,
     /// <summary>
-    /// Instruction `TBX` - Programmable table lookup in single vector table (merging).
-    /// </summary>
-    TBX_z_zz,
-    /// <summary>
     /// Instruction `TBZ` - Test bit and branch if zero.
     /// </summary>
     TBZ_only_testbranch,
@@ -15273,33 +8165,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     TRN1_asimdperm_only,
     /// <summary>
-    /// Instruction `TRN1` - Interleave even or odd elements from two predicates.
-    /// </summary>
-    TRN1_p_pp,
-    /// <summary>
-    /// Instruction `TRN1` - Interleave even or odd elements from two vectors.
-    /// </summary>
-    TRN1_z_zz,
-    /// <summary>
-    /// Instruction `TRN1` - Interleave even or odd elements from two vectors.
-    /// </summary>
-    TRN1_z_zz_q,
-    /// <summary>
     /// Instruction `TRN2` - Transpose vectors (secondary).
     /// </summary>
     TRN2_asimdperm_only,
-    /// <summary>
-    /// Instruction `TRN2` - Interleave even or odd elements from two predicates.
-    /// </summary>
-    TRN2_p_pp,
-    /// <summary>
-    /// Instruction `TRN2` - Interleave even or odd elements from two vectors.
-    /// </summary>
-    TRN2_z_zz,
-    /// <summary>
-    /// Instruction `TRN2` - Interleave even or odd elements from two vectors.
-    /// </summary>
-    TRN2_z_zz_q,
     /// <summary>
     /// Instruction `TSB` - Trace synchronization barrier.
     /// </summary>
@@ -15313,14 +8181,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     TTEST_br_systemresult,
     /// <summary>
-    /// Instruction `UABALB` - Unsigned absolute difference and accumulate long (bottom).
-    /// </summary>
-    UABALB_z_zzz,
-    /// <summary>
-    /// Instruction `UABALT` - Unsigned absolute difference and accumulate long (top).
-    /// </summary>
-    UABALT_z_zzz,
-    /// <summary>
     /// Instruction `UABAL` - Unsigned absolute difference and accumulate long.
     /// </summary>
     UABAL_asimddiff_l,
@@ -15328,18 +8188,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `UABA` - Unsigned absolute difference and accumulate.
     /// </summary>
     UABA_asimdsame_only,
-    /// <summary>
-    /// Instruction `UABA` - Unsigned absolute difference and accumulate.
-    /// </summary>
-    UABA_z_zzz,
-    /// <summary>
-    /// Instruction `UABDLB` - Unsigned absolute difference long (bottom).
-    /// </summary>
-    UABDLB_z_zz,
-    /// <summary>
-    /// Instruction `UABDLT` - Unsigned absolute difference long (top).
-    /// </summary>
-    UABDLT_z_zz,
     /// <summary>
     /// Instruction `UABDL` - Unsigned absolute difference long.
     /// </summary>
@@ -15349,29 +8197,13 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UABD_asimdsame_only,
     /// <summary>
-    /// Instruction `UABD` - Unsigned absolute difference (predicated).
-    /// </summary>
-    UABD_z_p_zz,
-    /// <summary>
     /// Instruction `UADALP` - Unsigned add and accumulate long pairwise.
     /// </summary>
     UADALP_asimdmisc_p,
     /// <summary>
-    /// Instruction `UADALP` - Unsigned add and accumulate long pairwise.
-    /// </summary>
-    UADALP_z_p_z,
-    /// <summary>
-    /// Instruction `UADDLB` - Unsigned add long (bottom).
-    /// </summary>
-    UADDLB_z_zz,
-    /// <summary>
     /// Instruction `UADDLP` - Unsigned add long pairwise.
     /// </summary>
     UADDLP_asimdmisc_p,
-    /// <summary>
-    /// Instruction `UADDLT` - Unsigned add long (top).
-    /// </summary>
-    UADDLT_z_zz,
     /// <summary>
     /// Instruction `UADDLV` - Unsigned sum long across vector.
     /// </summary>
@@ -15380,18 +8212,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `UADDL` - Unsigned add long (vector).
     /// </summary>
     UADDL_asimddiff_l,
-    /// <summary>
-    /// Instruction `UADDV` - Unsigned add reduction to scalar.
-    /// </summary>
-    UADDV_r_p_z,
-    /// <summary>
-    /// Instruction `UADDWB` - Unsigned add wide (bottom).
-    /// </summary>
-    UADDWB_z_zz,
-    /// <summary>
-    /// Instruction `UADDWT` - Unsigned add wide (top).
-    /// </summary>
-    UADDWT_z_zz,
     /// <summary>
     /// Instruction `UADDW` - Unsigned add wide.
     /// </summary>
@@ -15404,18 +8224,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `UBFM` - Unsigned bitfield move.
     /// </summary>
     UBFM_64m_bitfield,
-    /// <summary>
-    /// Instruction `UCLAMP` - Multi-vector unsigned clamp to minimum/maximum vector.
-    /// </summary>
-    UCLAMP_mz_zz_2,
-    /// <summary>
-    /// Instruction `UCLAMP` - Multi-vector unsigned clamp to minimum/maximum vector.
-    /// </summary>
-    UCLAMP_mz_zz_4,
-    /// <summary>
-    /// Instruction `UCLAMP` - Unsigned clamp to minimum/maximum vector.
-    /// </summary>
-    UCLAMP_z_zz,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (vector).
     /// </summary>
@@ -15473,14 +8281,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UCVTF_h64_float2int,
     /// <summary>
-    /// Instruction `UCVTF` - Multi-vector unsigned integer convert to floating-point.
-    /// </summary>
-    UCVTF_mz_z_2,
-    /// <summary>
-    /// Instruction `UCVTF` - Multi-vector unsigned integer convert to floating-point.
-    /// </summary>
-    UCVTF_mz_z_4,
-    /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
     UCVTF_s32_float2fix,
@@ -15513,69 +8313,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UCVTF_sisd_64s,
     /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_h2fp16,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_h2fp16z,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_w2d,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_w2dz,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_w2fp16,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_w2fp16z,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_w2s,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_w2sz,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_x2d,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_x2dz,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_x2fp16,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_x2fp16z,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_x2s,
-    /// <summary>
-    /// Instruction `UCVTF` - Unsigned integer convert to floating-point (predicated).
-    /// </summary>
-    UCVTF_z_p_z_x2sz,
-    /// <summary>
     /// Instruction `UDF` - Permanently undefined.
     /// </summary>
     UDF_only_perm_undef,
-    /// <summary>
-    /// Instruction `UDIVR` - Unsigned reversed divide (predicated).
-    /// </summary>
-    UDIVR_z_p_zz,
     /// <summary>
     /// Instruction `UDIV` - Unsigned divide.
     /// </summary>
@@ -15585,10 +8325,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UDIV_64_dp_2src,
     /// <summary>
-    /// Instruction `UDIV` - Unsigned divide (predicated).
-    /// </summary>
-    UDIV_z_p_zz,
-    /// <summary>
     /// Instruction `UDOT` - Dot product unsigned arithmetic (vector, by element).
     /// </summary>
     UDOT_asimdelem_d,
@@ -15597,101 +8333,13 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UDOT_asimdsame2_d,
     /// <summary>
-    /// Instruction `UDOT` - Unsigned integer dot product.
-    /// </summary>
-    UDOT_z32_zzz,
-    /// <summary>
-    /// Instruction `UDOT` - Unsigned integer indexed dot product.
-    /// </summary>
-    UDOT_z32_zzzi,
-    /// <summary>
-    /// Instruction `UDOT` - Unsigned integer dot product.
-    /// </summary>
-    UDOT_z_zzz,
-    /// <summary>
-    /// Instruction `UDOT` - Unsigned integer indexed dot product.
-    /// </summary>
-    UDOT_z_zzzi_d,
-    /// <summary>
-    /// Instruction `UDOT` - Unsigned integer indexed dot product.
-    /// </summary>
-    UDOT_z_zzzi_s,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product by indexed element.
-    /// </summary>
-    UDOT_za32_zzi_2xi,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product by indexed element.
-    /// </summary>
-    UDOT_za32_zzi_4xi,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product by vector.
-    /// </summary>
-    UDOT_za32_zzv_2x1,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product by vector.
-    /// </summary>
-    UDOT_za32_zzv_4x1,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product.
-    /// </summary>
-    UDOT_za32_zzw_2x2,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product.
-    /// </summary>
-    UDOT_za32_zzw_4x4,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product by indexed element.
-    /// </summary>
-    UDOT_za_zzi_d2xi,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product by indexed element.
-    /// </summary>
-    UDOT_za_zzi_d4xi,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product by indexed element.
-    /// </summary>
-    UDOT_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product by indexed element.
-    /// </summary>
-    UDOT_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product by vector.
-    /// </summary>
-    UDOT_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product by vector.
-    /// </summary>
-    UDOT_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product.
-    /// </summary>
-    UDOT_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `UDOT` - Multi-vector unsigned integer dot-product.
-    /// </summary>
-    UDOT_za_zzw_4x4,
-    /// <summary>
     /// Instruction `UHADD` - Unsigned halving add.
     /// </summary>
     UHADD_asimdsame_only,
     /// <summary>
-    /// Instruction `UHADD` - Unsigned halving addition.
-    /// </summary>
-    UHADD_z_p_zz,
-    /// <summary>
-    /// Instruction `UHSUBR` - Unsigned halving subtract reversed vectors.
-    /// </summary>
-    UHSUBR_z_p_zz,
-    /// <summary>
     /// Instruction `UHSUB` - Unsigned halving subtract.
     /// </summary>
     UHSUB_asimdsame_only,
-    /// <summary>
-    /// Instruction `UHSUB` - Unsigned halving subtract.
-    /// </summary>
-    UHSUB_z_p_zz,
     /// <summary>
     /// Instruction `UMADDL` - Unsigned multiply-add long.
     /// </summary>
@@ -15701,21 +8349,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UMAXP_asimdsame_only,
     /// <summary>
-    /// Instruction `UMAXP` - Unsigned maximum pairwise.
-    /// </summary>
-    UMAXP_z_p_zz,
-    /// <summary>
-    /// Instruction `UMAXQV` - Unsigned maximum reduction of quadword vector segments.
-    /// </summary>
-    UMAXQV_z_p_z,
-    /// <summary>
     /// Instruction `UMAXV` - Unsigned maximum across vector.
     /// </summary>
     UMAXV_asimdall_only,
-    /// <summary>
-    /// Instruction `UMAXV` - Unsigned maximum reduction to scalar.
-    /// </summary>
-    UMAXV_r_p_z,
     /// <summary>
     /// Instruction `UMAX` - Unsigned maximum (register).
     /// </summary>
@@ -15737,49 +8373,13 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UMAX_asimdsame_only,
     /// <summary>
-    /// Instruction `UMAX` - Multi-vector unsigned maximum by vector.
-    /// </summary>
-    UMAX_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `UMAX` - Multi-vector unsigned maximum by vector.
-    /// </summary>
-    UMAX_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `UMAX` - Multi-vector unsigned maximum.
-    /// </summary>
-    UMAX_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `UMAX` - Multi-vector unsigned maximum.
-    /// </summary>
-    UMAX_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `UMAX` - Unsigned maximum vectors (predicated).
-    /// </summary>
-    UMAX_z_p_zz,
-    /// <summary>
-    /// Instruction `UMAX` - Unsigned maximum with immediate (unpredicated).
-    /// </summary>
-    UMAX_z_zi,
-    /// <summary>
     /// Instruction `UMINP` - Unsigned minimum pairwise.
     /// </summary>
     UMINP_asimdsame_only,
     /// <summary>
-    /// Instruction `UMINP` - Unsigned minimum pairwise.
-    /// </summary>
-    UMINP_z_p_zz,
-    /// <summary>
-    /// Instruction `UMINQV` - Unsigned minimum reduction of quadword vector segments.
-    /// </summary>
-    UMINQV_z_p_z,
-    /// <summary>
     /// Instruction `UMINV` - Unsigned minimum across vector.
     /// </summary>
     UMINV_asimdall_only,
-    /// <summary>
-    /// Instruction `UMINV` - Unsigned minimum reduction to scalar.
-    /// </summary>
-    UMINV_r_p_z,
     /// <summary>
     /// Instruction `UMIN` - Unsigned minimum (register).
     /// </summary>
@@ -15801,98 +8401,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UMIN_asimdsame_only,
     /// <summary>
-    /// Instruction `UMIN` - Multi-vector unsigned minimum by vector.
-    /// </summary>
-    UMIN_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `UMIN` - Multi-vector unsigned minimum by vector.
-    /// </summary>
-    UMIN_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `UMIN` - Multi-vector unsigned minimum.
-    /// </summary>
-    UMIN_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `UMIN` - Multi-vector unsigned minimum.
-    /// </summary>
-    UMIN_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `UMIN` - Unsigned minimum vectors (predicated).
-    /// </summary>
-    UMIN_z_p_zz,
-    /// <summary>
-    /// Instruction `UMIN` - Unsigned minimum with immediate (unpredicated).
-    /// </summary>
-    UMIN_z_zi,
-    /// <summary>
-    /// Instruction `UMLALB` - Unsigned multiply-add long to accumulator (bottom).
-    /// </summary>
-    UMLALB_z_zzz,
-    /// <summary>
-    /// Instruction `UMLALB` - Unsigned multiply-add long to accumulator (bottom, indexed).
-    /// </summary>
-    UMLALB_z_zzzi_d,
-    /// <summary>
-    /// Instruction `UMLALB` - Unsigned multiply-add long to accumulator (bottom, indexed).
-    /// </summary>
-    UMLALB_z_zzzi_s,
-    /// <summary>
-    /// Instruction `UMLALL` - Multi-vector unsigned integer multiply-add long-long by indexed element.
-    /// </summary>
-    UMLALL_za_zzi_d,
-    /// <summary>
-    /// Instruction `UMLALL` - Multi-vector unsigned integer multiply-add long-long by indexed element.
-    /// </summary>
-    UMLALL_za_zzi_d2xi,
-    /// <summary>
-    /// Instruction `UMLALL` - Multi-vector unsigned integer multiply-add long-long by indexed element.
-    /// </summary>
-    UMLALL_za_zzi_d4xi,
-    /// <summary>
-    /// Instruction `UMLALL` - Multi-vector unsigned integer multiply-add long-long by indexed element.
-    /// </summary>
-    UMLALL_za_zzi_s,
-    /// <summary>
-    /// Instruction `UMLALL` - Multi-vector unsigned integer multiply-add long-long by indexed element.
-    /// </summary>
-    UMLALL_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `UMLALL` - Multi-vector unsigned integer multiply-add long-long by indexed element.
-    /// </summary>
-    UMLALL_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `UMLALL` - Multi-vector unsigned integer multiply-add long-long by vector.
-    /// </summary>
-    UMLALL_za_zzv_1,
-    /// <summary>
-    /// Instruction `UMLALL` - Multi-vector unsigned integer multiply-add long-long by vector.
-    /// </summary>
-    UMLALL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `UMLALL` - Multi-vector unsigned integer multiply-add long-long by vector.
-    /// </summary>
-    UMLALL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `UMLALL` - Multi-vector unsigned integer multiply-add long-long.
-    /// </summary>
-    UMLALL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `UMLALL` - Multi-vector unsigned integer multiply-add long-long.
-    /// </summary>
-    UMLALL_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `UMLALT` - Unsigned multiply-add long to accumulator (top).
-    /// </summary>
-    UMLALT_z_zzz,
-    /// <summary>
-    /// Instruction `UMLALT` - Unsigned multiply-add long to accumulator (top, indexed).
-    /// </summary>
-    UMLALT_z_zzzi_d,
-    /// <summary>
-    /// Instruction `UMLALT` - Unsigned multiply-add long to accumulator (top, indexed).
-    /// </summary>
-    UMLALT_z_zzzi_s,
-    /// <summary>
     /// Instruction `UMLAL` - Unsigned multiply-add long (vector).
     /// </summary>
     UMLAL_asimddiff_l,
@@ -15900,106 +8408,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `UMLAL` - Unsigned multiply-add long (vector, by element).
     /// </summary>
     UMLAL_asimdelem_l,
-    /// <summary>
-    /// Instruction `UMLAL` - Multi-vector unsigned integer multiply-add long by indexed element.
-    /// </summary>
-    UMLAL_za_zzi_1,
-    /// <summary>
-    /// Instruction `UMLAL` - Multi-vector unsigned integer multiply-add long by indexed element.
-    /// </summary>
-    UMLAL_za_zzi_2xi,
-    /// <summary>
-    /// Instruction `UMLAL` - Multi-vector unsigned integer multiply-add long by indexed element.
-    /// </summary>
-    UMLAL_za_zzi_4xi,
-    /// <summary>
-    /// Instruction `UMLAL` - Multi-vector unsigned integer multiply-add long by vector.
-    /// </summary>
-    UMLAL_za_zzv_1,
-    /// <summary>
-    /// Instruction `UMLAL` - Multi-vector unsigned integer multiply-add long by vector.
-    /// </summary>
-    UMLAL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `UMLAL` - Multi-vector unsigned integer multiply-add long by vector.
-    /// </summary>
-    UMLAL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `UMLAL` - Multi-vector unsigned integer multiply-add long.
-    /// </summary>
-    UMLAL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `UMLAL` - Multi-vector unsigned integer multiply-add long.
-    /// </summary>
-    UMLAL_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `UMLSLB` - Unsigned multiply-subtract long from accumulator (bottom).
-    /// </summary>
-    UMLSLB_z_zzz,
-    /// <summary>
-    /// Instruction `UMLSLB` - Unsigned multiply-subtract long from accumulator (bottom, indexed).
-    /// </summary>
-    UMLSLB_z_zzzi_d,
-    /// <summary>
-    /// Instruction `UMLSLB` - Unsigned multiply-subtract long from accumulator (bottom, indexed).
-    /// </summary>
-    UMLSLB_z_zzzi_s,
-    /// <summary>
-    /// Instruction `UMLSLL` - Multi-vector unsigned integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    UMLSLL_za_zzi_d,
-    /// <summary>
-    /// Instruction `UMLSLL` - Multi-vector unsigned integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    UMLSLL_za_zzi_d2xi,
-    /// <summary>
-    /// Instruction `UMLSLL` - Multi-vector unsigned integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    UMLSLL_za_zzi_d4xi,
-    /// <summary>
-    /// Instruction `UMLSLL` - Multi-vector unsigned integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    UMLSLL_za_zzi_s,
-    /// <summary>
-    /// Instruction `UMLSLL` - Multi-vector unsigned integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    UMLSLL_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `UMLSLL` - Multi-vector unsigned integer multiply-subtract long-long by indexed element.
-    /// </summary>
-    UMLSLL_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `UMLSLL` - Multi-vector unsigned integer multiply-subtract long-long by vector.
-    /// </summary>
-    UMLSLL_za_zzv_1,
-    /// <summary>
-    /// Instruction `UMLSLL` - Multi-vector unsigned integer multiply-subtract long-long by vector.
-    /// </summary>
-    UMLSLL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `UMLSLL` - Multi-vector unsigned integer multiply-subtract long-long by vector.
-    /// </summary>
-    UMLSLL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `UMLSLL` - Multi-vector unsigned integer multiply-subtract long-long.
-    /// </summary>
-    UMLSLL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `UMLSLL` - Multi-vector unsigned integer multiply-subtract long-long.
-    /// </summary>
-    UMLSLL_za_zzw_4x4,
-    /// <summary>
-    /// Instruction `UMLSLT` - Unsigned multiply-subtract long from accumulator (top).
-    /// </summary>
-    UMLSLT_z_zzz,
-    /// <summary>
-    /// Instruction `UMLSLT` - Unsigned multiply-subtract long from accumulator (top, indexed).
-    /// </summary>
-    UMLSLT_z_zzzi_d,
-    /// <summary>
-    /// Instruction `UMLSLT` - Unsigned multiply-subtract long from accumulator (top, indexed).
-    /// </summary>
-    UMLSLT_z_zzzi_s,
     /// <summary>
     /// Instruction `UMLSL` - Unsigned multiply-subtract long (vector).
     /// </summary>
@@ -16009,165 +8417,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UMLSL_asimdelem_l,
     /// <summary>
-    /// Instruction `UMLSL` - Multi-vector unsigned integer multiply-subtract long by indexed element.
-    /// </summary>
-    UMLSL_za_zzi_1,
-    /// <summary>
-    /// Instruction `UMLSL` - Multi-vector unsigned integer multiply-subtract long by indexed element.
-    /// </summary>
-    UMLSL_za_zzi_2xi,
-    /// <summary>
-    /// Instruction `UMLSL` - Multi-vector unsigned integer multiply-subtract long by indexed element.
-    /// </summary>
-    UMLSL_za_zzi_4xi,
-    /// <summary>
-    /// Instruction `UMLSL` - Multi-vector unsigned integer multiply-subtract long by vector.
-    /// </summary>
-    UMLSL_za_zzv_1,
-    /// <summary>
-    /// Instruction `UMLSL` - Multi-vector unsigned integer multiply-subtract long by vector.
-    /// </summary>
-    UMLSL_za_zzv_2x1,
-    /// <summary>
-    /// Instruction `UMLSL` - Multi-vector unsigned integer multiply-subtract long by vector.
-    /// </summary>
-    UMLSL_za_zzv_4x1,
-    /// <summary>
-    /// Instruction `UMLSL` - Multi-vector unsigned integer multiply-subtract long.
-    /// </summary>
-    UMLSL_za_zzw_2x2,
-    /// <summary>
-    /// Instruction `UMLSL` - Multi-vector unsigned integer multiply-subtract long.
-    /// </summary>
-    UMLSL_za_zzw_4x4,
-    /// <summary>
     /// Instruction `UMMLA` - Unsigned 8-bit integer matrix multiply-accumulate (vector).
     /// </summary>
     UMMLA_asimdsame2_g,
-    /// <summary>
-    /// Instruction `UMMLA` - Unsigned integer matrix multiply-accumulate.
-    /// </summary>
-    UMMLA_z_zzz,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    UMOP4A_za32_zz_h1x1,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    UMOP4A_za32_zz_h1x2,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    UMOP4A_za32_zz_h2x1,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of two outer products, accumulating.
-    /// </summary>
-    UMOP4A_za32_zz_h2x2,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    UMOP4A_za_zz_b1x1,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    UMOP4A_za_zz_b1x2,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    UMOP4A_za_zz_b2x1,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    UMOP4A_za_zz_b2x2,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    UMOP4A_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    UMOP4A_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    UMOP4A_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `UMOP4A` - Unsigned integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    UMOP4A_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    UMOP4S_za32_zz_h1x1,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    UMOP4S_za32_zz_h1x2,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    UMOP4S_za32_zz_h2x1,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of two outer products, subtracting.
-    /// </summary>
-    UMOP4S_za32_zz_h2x2,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    UMOP4S_za_zz_b1x1,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    UMOP4S_za_zz_b1x2,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    UMOP4S_za_zz_b2x1,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    UMOP4S_za_zz_b2x2,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    UMOP4S_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    UMOP4S_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    UMOP4S_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `UMOP4S` - Unsigned integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    UMOP4S_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `UMOPA` - Unsigned integer sum of outer products and accumulate.
-    /// </summary>
-    UMOPA_za32_pp_zz_16,
-    /// <summary>
-    /// Instruction `UMOPA` - Unsigned integer sum of outer products and accumulate.
-    /// </summary>
-    UMOPA_za_pp_zz_32,
-    /// <summary>
-    /// Instruction `UMOPA` - Unsigned integer sum of outer products and accumulate.
-    /// </summary>
-    UMOPA_za_pp_zz_64,
-    /// <summary>
-    /// Instruction `UMOPS` - Unsigned integer sum of outer products and subtract.
-    /// </summary>
-    UMOPS_za32_pp_zz_16,
-    /// <summary>
-    /// Instruction `UMOPS` - Unsigned integer sum of outer products and subtract.
-    /// </summary>
-    UMOPS_za_pp_zz_32,
-    /// <summary>
-    /// Instruction `UMOPS` - Unsigned integer sum of outer products and subtract.
-    /// </summary>
-    UMOPS_za_pp_zz_64,
     /// <summary>
     /// Instruction `UMOV` - Unsigned move vector element to general-purpose register.
     /// </summary>
@@ -16185,38 +8437,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UMULH_64_dp_3src,
     /// <summary>
-    /// Instruction `UMULH` - Unsigned multiply returning high half (predicated).
-    /// </summary>
-    UMULH_z_p_zz,
-    /// <summary>
-    /// Instruction `UMULH` - Unsigned multiply returning high half (unpredicated).
-    /// </summary>
-    UMULH_z_zz,
-    /// <summary>
-    /// Instruction `UMULLB` - Unsigned multiply long (bottom).
-    /// </summary>
-    UMULLB_z_zz,
-    /// <summary>
-    /// Instruction `UMULLB` - Unsigned multiply long (bottom, indexed).
-    /// </summary>
-    UMULLB_z_zzi_d,
-    /// <summary>
-    /// Instruction `UMULLB` - Unsigned multiply long (bottom, indexed).
-    /// </summary>
-    UMULLB_z_zzi_s,
-    /// <summary>
-    /// Instruction `UMULLT` - Unsigned multiply long (top).
-    /// </summary>
-    UMULLT_z_zz,
-    /// <summary>
-    /// Instruction `UMULLT` - Unsigned multiply long (top, indexed).
-    /// </summary>
-    UMULLT_z_zzi_d,
-    /// <summary>
-    /// Instruction `UMULLT` - Unsigned multiply long (top, indexed).
-    /// </summary>
-    UMULLT_z_zzi_s,
-    /// <summary>
     /// Instruction `UMULL` - Unsigned multiply long (vector).
     /// </summary>
     UMULL_asimddiff_l,
@@ -16233,150 +8453,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UQADD_asisdsame_only,
     /// <summary>
-    /// Instruction `UQADD` - Unsigned saturating addition (predicated).
-    /// </summary>
-    UQADD_z_p_zz,
-    /// <summary>
-    /// Instruction `UQADD` - Unsigned saturating add immediate (unpredicated).
-    /// </summary>
-    UQADD_z_zi,
-    /// <summary>
-    /// Instruction `UQADD` - Unsigned saturating add vectors (unpredicated).
-    /// </summary>
-    UQADD_z_zz,
-    /// <summary>
-    /// Instruction `UQCVTN` - Unsigned saturating extract narrow and interleave.
-    /// </summary>
-    UQCVTN_z_mz2,
-    /// <summary>
-    /// Instruction `UQCVTN` - Multi-vector unsigned saturating extract narrow and interleave.
-    /// </summary>
-    UQCVTN_z_mz4,
-    /// <summary>
-    /// Instruction `UQCVT` - Multi-vector unsigned saturating extract narrow.
-    /// </summary>
-    UQCVT_z_mz2,
-    /// <summary>
-    /// Instruction `UQCVT` - Multi-vector unsigned saturating extract narrow.
-    /// </summary>
-    UQCVT_z_mz4,
-    /// <summary>
-    /// Instruction `UQDECB` - Unsigned saturating decrement scalar by multiple of 8-bit predicate constraint element count.
-    /// </summary>
-    UQDECB_r_rs_uw,
-    /// <summary>
-    /// Instruction `UQDECB` - Unsigned saturating decrement scalar by multiple of 8-bit predicate constraint element count.
-    /// </summary>
-    UQDECB_r_rs_x,
-    /// <summary>
-    /// Instruction `UQDECD` - Unsigned saturating decrement scalar by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    UQDECD_r_rs_uw,
-    /// <summary>
-    /// Instruction `UQDECD` - Unsigned saturating decrement scalar by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    UQDECD_r_rs_x,
-    /// <summary>
-    /// Instruction `UQDECD` - Unsigned saturating decrement vector by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    UQDECD_z_zs,
-    /// <summary>
-    /// Instruction `UQDECH` - Unsigned saturating decrement scalar by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    UQDECH_r_rs_uw,
-    /// <summary>
-    /// Instruction `UQDECH` - Unsigned saturating decrement scalar by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    UQDECH_r_rs_x,
-    /// <summary>
-    /// Instruction `UQDECH` - Unsigned saturating decrement vector by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    UQDECH_z_zs,
-    /// <summary>
-    /// Instruction `UQDECP` - Unsigned saturating decrement scalar by count of true predicate elements.
-    /// </summary>
-    UQDECP_r_p_r_uw,
-    /// <summary>
-    /// Instruction `UQDECP` - Unsigned saturating decrement scalar by count of true predicate elements.
-    /// </summary>
-    UQDECP_r_p_r_x,
-    /// <summary>
-    /// Instruction `UQDECP` - Unsigned saturating decrement vector by count of true predicate elements.
-    /// </summary>
-    UQDECP_z_p_z,
-    /// <summary>
-    /// Instruction `UQDECW` - Unsigned saturating decrement scalar by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    UQDECW_r_rs_uw,
-    /// <summary>
-    /// Instruction `UQDECW` - Unsigned saturating decrement scalar by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    UQDECW_r_rs_x,
-    /// <summary>
-    /// Instruction `UQDECW` - Unsigned saturating decrement vector by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    UQDECW_z_zs,
-    /// <summary>
-    /// Instruction `UQINCB` - Unsigned saturating increment scalar by multiple of 8-bit predicate constraint element count.
-    /// </summary>
-    UQINCB_r_rs_uw,
-    /// <summary>
-    /// Instruction `UQINCB` - Unsigned saturating increment scalar by multiple of 8-bit predicate constraint element count.
-    /// </summary>
-    UQINCB_r_rs_x,
-    /// <summary>
-    /// Instruction `UQINCD` - Unsigned saturating increment scalar by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    UQINCD_r_rs_uw,
-    /// <summary>
-    /// Instruction `UQINCD` - Unsigned saturating increment scalar by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    UQINCD_r_rs_x,
-    /// <summary>
-    /// Instruction `UQINCD` - Unsigned saturating increment vector by multiple of 64-bit predicate constraint element count.
-    /// </summary>
-    UQINCD_z_zs,
-    /// <summary>
-    /// Instruction `UQINCH` - Unsigned saturating increment scalar by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    UQINCH_r_rs_uw,
-    /// <summary>
-    /// Instruction `UQINCH` - Unsigned saturating increment scalar by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    UQINCH_r_rs_x,
-    /// <summary>
-    /// Instruction `UQINCH` - Unsigned saturating increment vector by multiple of 16-bit predicate constraint element count.
-    /// </summary>
-    UQINCH_z_zs,
-    /// <summary>
-    /// Instruction `UQINCP` - Unsigned saturating increment scalar by count of true predicate elements.
-    /// </summary>
-    UQINCP_r_p_r_uw,
-    /// <summary>
-    /// Instruction `UQINCP` - Unsigned saturating increment scalar by count of true predicate elements.
-    /// </summary>
-    UQINCP_r_p_r_x,
-    /// <summary>
-    /// Instruction `UQINCP` - Unsigned saturating increment vector by count of true predicate elements.
-    /// </summary>
-    UQINCP_z_p_z,
-    /// <summary>
-    /// Instruction `UQINCW` - Unsigned saturating increment scalar by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    UQINCW_r_rs_uw,
-    /// <summary>
-    /// Instruction `UQINCW` - Unsigned saturating increment scalar by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    UQINCW_r_rs_x,
-    /// <summary>
-    /// Instruction `UQINCW` - Unsigned saturating increment vector by multiple of 32-bit predicate constraint element count.
-    /// </summary>
-    UQINCW_z_zs,
-    /// <summary>
-    /// Instruction `UQRSHLR` - Unsigned saturating rounding shift left reversed vectors (predicated).
-    /// </summary>
-    UQRSHLR_z_p_zz,
-    /// <summary>
     /// Instruction `UQRSHL` - Unsigned saturating rounding shift left (register).
     /// </summary>
     UQRSHL_asimdsame_only,
@@ -16385,18 +8461,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UQRSHL_asisdsame_only,
     /// <summary>
-    /// Instruction `UQRSHL` - Unsigned saturating rounding shift left by vector (predicated).
-    /// </summary>
-    UQRSHL_z_p_zz,
-    /// <summary>
-    /// Instruction `UQRSHRNB` - Unsigned saturating rounding shift right narrow by immediate (bottom).
-    /// </summary>
-    UQRSHRNB_z_zi,
-    /// <summary>
-    /// Instruction `UQRSHRNT` - Unsigned saturating rounding shift right narrow by immediate (top).
-    /// </summary>
-    UQRSHRNT_z_zi,
-    /// <summary>
     /// Instruction `UQRSHRN` - Unsigned saturating rounded shift right narrow (immediate).
     /// </summary>
     UQRSHRN_asimdshf_n,
@@ -16404,26 +8468,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `UQRSHRN` - Unsigned saturating rounded shift right narrow (immediate).
     /// </summary>
     UQRSHRN_asisdshf_n,
-    /// <summary>
-    /// Instruction `UQRSHRN` - Unsigned saturating rounding shift right narrow by immediate and interleave.
-    /// </summary>
-    UQRSHRN_z_mz2,
-    /// <summary>
-    /// Instruction `UQRSHRN` - Multi-vector unsigned saturating rounding shift right narrow by immediate and interleave.
-    /// </summary>
-    UQRSHRN_z_mz4,
-    /// <summary>
-    /// Instruction `UQRSHR` - Multi-vector unsigned saturating rounding shift right narrow by immediate.
-    /// </summary>
-    UQRSHR_z_mz2,
-    /// <summary>
-    /// Instruction `UQRSHR` - Multi-vector unsigned saturating rounding shift right narrow by immediate.
-    /// </summary>
-    UQRSHR_z_mz4,
-    /// <summary>
-    /// Instruction `UQSHLR` - Unsigned saturating shift left reversed vectors (predicated).
-    /// </summary>
-    UQSHLR_z_p_zz,
     /// <summary>
     /// Instruction `UQSHL` - Unsigned saturating shift left (register).
     /// </summary>
@@ -16441,22 +8485,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UQSHL_asisdshf_r,
     /// <summary>
-    /// Instruction `UQSHL` - Unsigned saturating shift left by immediate.
-    /// </summary>
-    UQSHL_z_p_zi,
-    /// <summary>
-    /// Instruction `UQSHL` - Unsigned saturating shift left by vector (predicated).
-    /// </summary>
-    UQSHL_z_p_zz,
-    /// <summary>
-    /// Instruction `UQSHRNB` - Unsigned saturating shift right narrow by immediate (bottom).
-    /// </summary>
-    UQSHRNB_z_zi,
-    /// <summary>
-    /// Instruction `UQSHRNT` - Unsigned saturating shift right narrow by immediate (top).
-    /// </summary>
-    UQSHRNT_z_zi,
-    /// <summary>
     /// Instruction `UQSHRN` - Unsigned saturating shift right narrow (immediate).
     /// </summary>
     UQSHRN_asimdshf_n,
@@ -16465,10 +8493,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     UQSHRN_asisdshf_n,
     /// <summary>
-    /// Instruction `UQSUBR` - Unsigned saturating subtraction reversed vectors (predicated).
-    /// </summary>
-    UQSUBR_z_p_zz,
-    /// <summary>
     /// Instruction `UQSUB` - Unsigned saturating subtract.
     /// </summary>
     UQSUB_asimdsame_only,
@@ -16476,26 +8500,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `UQSUB` - Unsigned saturating subtract.
     /// </summary>
     UQSUB_asisdsame_only,
-    /// <summary>
-    /// Instruction `UQSUB` - Unsigned saturating subtraction (predicated).
-    /// </summary>
-    UQSUB_z_p_zz,
-    /// <summary>
-    /// Instruction `UQSUB` - Unsigned saturating subtract immediate (unpredicated).
-    /// </summary>
-    UQSUB_z_zi,
-    /// <summary>
-    /// Instruction `UQSUB` - Unsigned saturating subtract vectors (unpredicated).
-    /// </summary>
-    UQSUB_z_zz,
-    /// <summary>
-    /// Instruction `UQXTNB` - Unsigned saturating extract narrow (bottom).
-    /// </summary>
-    UQXTNB_z_zz,
-    /// <summary>
-    /// Instruction `UQXTNT` - Unsigned saturating extract narrow (top).
-    /// </summary>
-    UQXTNT_z_zz,
     /// <summary>
     /// Instruction `UQXTN` - Unsigned saturating extract narrow.
     /// </summary>
@@ -16509,25 +8513,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     URECPE_asimdmisc_r,
     /// <summary>
-    /// Instruction `URECPE` - Unsigned reciprocal estimate (predicated).
-    /// </summary>
-    URECPE_z_p_z_m,
-    /// <summary>
-    /// Instruction `URECPE` - Unsigned reciprocal estimate (predicated).
-    /// </summary>
-    URECPE_z_p_z_z,
-    /// <summary>
     /// Instruction `URHADD` - Unsigned rounding halving add.
     /// </summary>
     URHADD_asimdsame_only,
-    /// <summary>
-    /// Instruction `URHADD` - Unsigned rounding halving addition.
-    /// </summary>
-    URHADD_z_p_zz,
-    /// <summary>
-    /// Instruction `URSHLR` - Unsigned rounding shift left reversed vectors (predicated).
-    /// </summary>
-    URSHLR_z_p_zz,
     /// <summary>
     /// Instruction `URSHL` - Unsigned rounding shift left (register).
     /// </summary>
@@ -16537,26 +8525,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     URSHL_asisdsame_only,
     /// <summary>
-    /// Instruction `URSHL` - Multi-vector unsigned rounding shift left by vector.
-    /// </summary>
-    URSHL_mz_zzv_2x1,
-    /// <summary>
-    /// Instruction `URSHL` - Multi-vector unsigned rounding shift left by vector.
-    /// </summary>
-    URSHL_mz_zzv_4x1,
-    /// <summary>
-    /// Instruction `URSHL` - Multi-vector unsigned rounding shift left.
-    /// </summary>
-    URSHL_mz_zzw_2x2,
-    /// <summary>
-    /// Instruction `URSHL` - Multi-vector unsigned rounding shift left.
-    /// </summary>
-    URSHL_mz_zzw_4x4,
-    /// <summary>
-    /// Instruction `URSHL` - Unsigned rounding shift left by vector (predicated).
-    /// </summary>
-    URSHL_z_p_zz,
-    /// <summary>
     /// Instruction `URSHR` - Unsigned rounding shift right (immediate).
     /// </summary>
     URSHR_asimdshf_r,
@@ -16565,21 +8533,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     URSHR_asisdshf_r,
     /// <summary>
-    /// Instruction `URSHR` - Unsigned rounding shift right by immediate.
-    /// </summary>
-    URSHR_z_p_zi,
-    /// <summary>
     /// Instruction `URSQRTE` - Unsigned reciprocal square root estimate.
     /// </summary>
     URSQRTE_asimdmisc_r,
-    /// <summary>
-    /// Instruction `URSQRTE` - Unsigned reciprocal square root estimate (predicated).
-    /// </summary>
-    URSQRTE_z_p_z_m,
-    /// <summary>
-    /// Instruction `URSQRTE` - Unsigned reciprocal square root estimate (predicated).
-    /// </summary>
-    URSQRTE_z_p_z_z,
     /// <summary>
     /// Instruction `URSRA` - Unsigned rounding shift right and accumulate (immediate).
     /// </summary>
@@ -16589,10 +8545,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     URSRA_asisdshf_r,
     /// <summary>
-    /// Instruction `URSRA` - Unsigned rounding shift right and accumulate (immediate).
-    /// </summary>
-    URSRA_z_zi,
-    /// <summary>
     /// Instruction `USDOT` - Dot product with unsigned and signed integers (vector, by element).
     /// </summary>
     USDOT_asimdelem_d,
@@ -16600,46 +8552,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `USDOT` - Dot product with unsigned and signed integers (vector).
     /// </summary>
     USDOT_asimdsame2_d,
-    /// <summary>
-    /// Instruction `USDOT` - Unsigned by signed integer dot product.
-    /// </summary>
-    USDOT_z_zzz_s,
-    /// <summary>
-    /// Instruction `USDOT` - Unsigned by signed integer indexed dot product.
-    /// </summary>
-    USDOT_z_zzzi_s,
-    /// <summary>
-    /// Instruction `USDOT` - Multi-vector unsigned by signed integer dot-product by indexed element.
-    /// </summary>
-    USDOT_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `USDOT` - Multi-vector unsigned by signed integer dot-product by indexed element.
-    /// </summary>
-    USDOT_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `USDOT` - Multi-vector unsigned by signed integer dot-product by vector.
-    /// </summary>
-    USDOT_za_zzv_s2x1,
-    /// <summary>
-    /// Instruction `USDOT` - Multi-vector unsigned by signed integer dot-product by vector.
-    /// </summary>
-    USDOT_za_zzv_s4x1,
-    /// <summary>
-    /// Instruction `USDOT` - Multi-vector unsigned by signed integer dot-product.
-    /// </summary>
-    USDOT_za_zzw_s2x2,
-    /// <summary>
-    /// Instruction `USDOT` - Multi-vector unsigned by signed integer dot-product.
-    /// </summary>
-    USDOT_za_zzw_s4x4,
-    /// <summary>
-    /// Instruction `USHLLB` - Unsigned shift left long by immediate (bottom).
-    /// </summary>
-    USHLLB_z_zi,
-    /// <summary>
-    /// Instruction `USHLLT` - Unsigned shift left long by immediate (top).
-    /// </summary>
-    USHLLT_z_zi,
     /// <summary>
     /// Instruction `USHLL` - Unsigned shift left long (immediate).
     /// </summary>
@@ -16661,125 +8573,9 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     USHR_asisdshf_r,
     /// <summary>
-    /// Instruction `USMLALL` - Multi-vector unsigned by signed integer multiply-add long-long by indexed element.
-    /// </summary>
-    USMLALL_za_zzi_s,
-    /// <summary>
-    /// Instruction `USMLALL` - Multi-vector unsigned by signed integer multiply-add long-long by indexed element.
-    /// </summary>
-    USMLALL_za_zzi_s2xi,
-    /// <summary>
-    /// Instruction `USMLALL` - Multi-vector unsigned by signed integer multiply-add long-long by indexed element.
-    /// </summary>
-    USMLALL_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `USMLALL` - Multi-vector unsigned by signed integer multiply-add long-long by vector.
-    /// </summary>
-    USMLALL_za_zzv_s,
-    /// <summary>
-    /// Instruction `USMLALL` - Multi-vector unsigned by signed integer multiply-add long-long by vector.
-    /// </summary>
-    USMLALL_za_zzv_s2x1,
-    /// <summary>
-    /// Instruction `USMLALL` - Multi-vector unsigned by signed integer multiply-add long-long by vector.
-    /// </summary>
-    USMLALL_za_zzv_s4x1,
-    /// <summary>
-    /// Instruction `USMLALL` - Multi-vector unsigned by signed integer multiply-add long-long.
-    /// </summary>
-    USMLALL_za_zzw_s2x2,
-    /// <summary>
-    /// Instruction `USMLALL` - Multi-vector unsigned by signed integer multiply-add long-long.
-    /// </summary>
-    USMLALL_za_zzw_s4x4,
-    /// <summary>
     /// Instruction `USMMLA` - Unsigned and signed 8-bit integer matrix multiply-accumulate (vector).
     /// </summary>
     USMMLA_asimdsame2_g,
-    /// <summary>
-    /// Instruction `USMMLA` - Unsigned by signed integer matrix multiply-accumulate.
-    /// </summary>
-    USMMLA_z_zzz,
-    /// <summary>
-    /// Instruction `USMOP4A` - Unsigned by signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    USMOP4A_za_zz_b1x1,
-    /// <summary>
-    /// Instruction `USMOP4A` - Unsigned by signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    USMOP4A_za_zz_b1x2,
-    /// <summary>
-    /// Instruction `USMOP4A` - Unsigned by signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    USMOP4A_za_zz_b2x1,
-    /// <summary>
-    /// Instruction `USMOP4A` - Unsigned by signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    USMOP4A_za_zz_b2x2,
-    /// <summary>
-    /// Instruction `USMOP4A` - Unsigned by signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    USMOP4A_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `USMOP4A` - Unsigned by signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    USMOP4A_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `USMOP4A` - Unsigned by signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    USMOP4A_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `USMOP4A` - Unsigned by signed integer quarter-tile sums of four outer products, accumulating.
-    /// </summary>
-    USMOP4A_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `USMOP4S` - Unsigned by signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    USMOP4S_za_zz_b1x1,
-    /// <summary>
-    /// Instruction `USMOP4S` - Unsigned by signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    USMOP4S_za_zz_b1x2,
-    /// <summary>
-    /// Instruction `USMOP4S` - Unsigned by signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    USMOP4S_za_zz_b2x1,
-    /// <summary>
-    /// Instruction `USMOP4S` - Unsigned by signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    USMOP4S_za_zz_b2x2,
-    /// <summary>
-    /// Instruction `USMOP4S` - Unsigned by signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    USMOP4S_za_zz_h1x1,
-    /// <summary>
-    /// Instruction `USMOP4S` - Unsigned by signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    USMOP4S_za_zz_h1x2,
-    /// <summary>
-    /// Instruction `USMOP4S` - Unsigned by signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    USMOP4S_za_zz_h2x1,
-    /// <summary>
-    /// Instruction `USMOP4S` - Unsigned by signed integer quarter-tile sums of four outer products, subtracting.
-    /// </summary>
-    USMOP4S_za_zz_h2x2,
-    /// <summary>
-    /// Instruction `USMOPA` - Unsigned by signed integer sum of outer products and accumulate.
-    /// </summary>
-    USMOPA_za_pp_zz_32,
-    /// <summary>
-    /// Instruction `USMOPA` - Unsigned by signed integer sum of outer products and accumulate.
-    /// </summary>
-    USMOPA_za_pp_zz_64,
-    /// <summary>
-    /// Instruction `USMOPS` - Unsigned by signed integer sum of outer products and subtract.
-    /// </summary>
-    USMOPS_za_pp_zz_32,
-    /// <summary>
-    /// Instruction `USMOPS` - Unsigned by signed integer sum of outer products and subtract.
-    /// </summary>
-    USMOPS_za_pp_zz_64,
     /// <summary>
     /// Instruction `USQADD` - Unsigned saturating accumulate of signed value.
     /// </summary>
@@ -16789,10 +8585,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     USQADD_asisdmisc_r,
     /// <summary>
-    /// Instruction `USQADD` - Unsigned saturating addition of signed value.
-    /// </summary>
-    USQADD_z_p_zz,
-    /// <summary>
     /// Instruction `USRA` - Unsigned shift right and accumulate (immediate).
     /// </summary>
     USRA_asimdshf_r,
@@ -16801,157 +8593,21 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     USRA_asisdshf_r,
     /// <summary>
-    /// Instruction `USRA` - Unsigned shift right and accumulate (immediate).
-    /// </summary>
-    USRA_z_zi,
-    /// <summary>
-    /// Instruction `USTMOPA` - Unsigned by signed integer sparse sum of four outer products, accumulating.
-    /// </summary>
-    USTMOPA_za_zzzi_b2x1,
-    /// <summary>
-    /// Instruction `USUBLB` - Unsigned subtract long (bottom).
-    /// </summary>
-    USUBLB_z_zz,
-    /// <summary>
-    /// Instruction `USUBLT` - Unsigned subtract long (top).
-    /// </summary>
-    USUBLT_z_zz,
-    /// <summary>
     /// Instruction `USUBL` - Unsigned subtract long.
     /// </summary>
     USUBL_asimddiff_l,
-    /// <summary>
-    /// Instruction `USUBWB` - Unsigned subtract wide (bottom).
-    /// </summary>
-    USUBWB_z_zz,
-    /// <summary>
-    /// Instruction `USUBWT` - Unsigned subtract wide (top).
-    /// </summary>
-    USUBWT_z_zz,
     /// <summary>
     /// Instruction `USUBW` - Unsigned subtract wide.
     /// </summary>
     USUBW_asimddiff_w,
     /// <summary>
-    /// Instruction `USVDOT` - Multi-vector unsigned by signed integer vertical dot-product by indexed element.
-    /// </summary>
-    USVDOT_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `UTMOPA` - Unsigned integer sparse sum of two outer products, accumulating.
-    /// </summary>
-    UTMOPA_za32_zzzi_h2x1,
-    /// <summary>
-    /// Instruction `UTMOPA` - Unsigned integer sparse sum of four outer products, accumulating.
-    /// </summary>
-    UTMOPA_za_zzzi_b2x1,
-    /// <summary>
-    /// Instruction `UUNPKHI` - Unsigned unpack and extend half of vector.
-    /// </summary>
-    UUNPKHI_z_z,
-    /// <summary>
-    /// Instruction `UUNPKLO` - Unsigned unpack and extend half of vector.
-    /// </summary>
-    UUNPKLO_z_z,
-    /// <summary>
-    /// Instruction `UUNPK` - Unpack and zero-extend multi-vector elements.
-    /// </summary>
-    UUNPK_mz_z_2,
-    /// <summary>
-    /// Instruction `UUNPK` - Unpack and zero-extend multi-vector elements.
-    /// </summary>
-    UUNPK_mz_z_4,
-    /// <summary>
-    /// Instruction `UVDOT` - Multi-vector unsigned integer vertical dot-product by indexed element.
-    /// </summary>
-    UVDOT_za32_zzi_2xi,
-    /// <summary>
-    /// Instruction `UVDOT` - Multi-vector unsigned integer vertical dot-product by indexed element.
-    /// </summary>
-    UVDOT_za_zzi_d4xi,
-    /// <summary>
-    /// Instruction `UVDOT` - Multi-vector unsigned integer vertical dot-product by indexed element.
-    /// </summary>
-    UVDOT_za_zzi_s4xi,
-    /// <summary>
-    /// Instruction `UXTB` - Unsigned byte / halfword / word extend (predicated).
-    /// </summary>
-    UXTB_z_p_z_m,
-    /// <summary>
-    /// Instruction `UXTB` - Unsigned byte / halfword / word extend (predicated).
-    /// </summary>
-    UXTB_z_p_z_z,
-    /// <summary>
-    /// Instruction `UXTH` - Unsigned byte / halfword / word extend (predicated).
-    /// </summary>
-    UXTH_z_p_z_m,
-    /// <summary>
-    /// Instruction `UXTH` - Unsigned byte / halfword / word extend (predicated).
-    /// </summary>
-    UXTH_z_p_z_z,
-    /// <summary>
-    /// Instruction `UXTW` - Unsigned byte / halfword / word extend (predicated).
-    /// </summary>
-    UXTW_z_p_z_m,
-    /// <summary>
-    /// Instruction `UXTW` - Unsigned byte / halfword / word extend (predicated).
-    /// </summary>
-    UXTW_z_p_z_z,
-    /// <summary>
     /// Instruction `UZP1` - Unzip vectors (primary).
     /// </summary>
     UZP1_asimdperm_only,
     /// <summary>
-    /// Instruction `UZP1` - Concatenate even or odd elements from two predicates.
-    /// </summary>
-    UZP1_p_pp,
-    /// <summary>
-    /// Instruction `UZP1` - Concatenate even or odd elements from two vectors.
-    /// </summary>
-    UZP1_z_zz,
-    /// <summary>
-    /// Instruction `UZP1` - Concatenate even or odd elements from two vectors.
-    /// </summary>
-    UZP1_z_zz_q,
-    /// <summary>
     /// Instruction `UZP2` - Unzip vectors (secondary).
     /// </summary>
     UZP2_asimdperm_only,
-    /// <summary>
-    /// Instruction `UZP2` - Concatenate even or odd elements from two predicates.
-    /// </summary>
-    UZP2_p_pp,
-    /// <summary>
-    /// Instruction `UZP2` - Concatenate even or odd elements from two vectors.
-    /// </summary>
-    UZP2_z_zz,
-    /// <summary>
-    /// Instruction `UZP2` - Concatenate even or odd elements from two vectors.
-    /// </summary>
-    UZP2_z_zz_q,
-    /// <summary>
-    /// Instruction `UZPQ1` - Concatenate even elements within each pair of quadword vector segments.
-    /// </summary>
-    UZPQ1_z_zz,
-    /// <summary>
-    /// Instruction `UZPQ2` - Concatenate odd elements within each pair of quadword vector segments.
-    /// </summary>
-    UZPQ2_z_zz,
-    /// <summary>
-    /// Instruction `UZP` - Concatenate elements from four vectors.
-    /// </summary>
-    UZP_mz_z_4,
-    /// <summary>
-    /// Instruction `UZP` - Concatenate elements from four vectors.
-    /// </summary>
-    UZP_mz_z_4q,
-    /// <summary>
-    /// Instruction `UZP` - Concatenate elements from two vectors.
-    /// </summary>
-    UZP_mz_zz_2,
-    /// <summary>
-    /// Instruction `UZP` - Concatenate elements from two vectors.
-    /// </summary>
-    UZP_mz_zz_2q,
     /// <summary>
     /// Instruction `WFET` - Wait for event with timeout.
     /// </summary>
@@ -16969,114 +8625,6 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     WFI_hi_hints,
     /// <summary>
-    /// Instruction `WHILEGE` - While decrementing signed scalar greater than or equal to scalar.
-    /// </summary>
-    WHILEGE_p_p_rr,
-    /// <summary>
-    /// Instruction `WHILEGE` - While decrementing signed scalar greater than or equal to scalar (predicate-as-counter).
-    /// </summary>
-    WHILEGE_pn_rr,
-    /// <summary>
-    /// Instruction `WHILEGE` - While decrementing signed scalar greater than or equal to scalar (pair of predicates).
-    /// </summary>
-    WHILEGE_pp_rr,
-    /// <summary>
-    /// Instruction `WHILEGT` - While decrementing signed scalar greater than scalar.
-    /// </summary>
-    WHILEGT_p_p_rr,
-    /// <summary>
-    /// Instruction `WHILEGT` - While decrementing signed scalar greater than scalar (predicate-as-counter).
-    /// </summary>
-    WHILEGT_pn_rr,
-    /// <summary>
-    /// Instruction `WHILEGT` - While decrementing signed scalar greater than scalar (pair of predicates).
-    /// </summary>
-    WHILEGT_pp_rr,
-    /// <summary>
-    /// Instruction `WHILEHI` - While decrementing unsigned scalar higher than scalar.
-    /// </summary>
-    WHILEHI_p_p_rr,
-    /// <summary>
-    /// Instruction `WHILEHI` - While decrementing unsigned scalar higher than scalar (predicate-as-counter).
-    /// </summary>
-    WHILEHI_pn_rr,
-    /// <summary>
-    /// Instruction `WHILEHI` - While decrementing unsigned scalar higher than scalar (pair of predicates).
-    /// </summary>
-    WHILEHI_pp_rr,
-    /// <summary>
-    /// Instruction `WHILEHS` - While decrementing unsigned scalar higher or same as scalar.
-    /// </summary>
-    WHILEHS_p_p_rr,
-    /// <summary>
-    /// Instruction `WHILEHS` - While decrementing unsigned scalar higher or same as scalar (predicate-as-counter).
-    /// </summary>
-    WHILEHS_pn_rr,
-    /// <summary>
-    /// Instruction `WHILEHS` - While decrementing unsigned scalar higher or same as scalar (pair of predicates).
-    /// </summary>
-    WHILEHS_pp_rr,
-    /// <summary>
-    /// Instruction `WHILELE` - While incrementing signed scalar less than or equal to scalar.
-    /// </summary>
-    WHILELE_p_p_rr,
-    /// <summary>
-    /// Instruction `WHILELE` - While incrementing signed scalar less than or equal to scalar (predicate-as-counter).
-    /// </summary>
-    WHILELE_pn_rr,
-    /// <summary>
-    /// Instruction `WHILELE` - While incrementing signed scalar less than or equal to scalar (pair of predicates).
-    /// </summary>
-    WHILELE_pp_rr,
-    /// <summary>
-    /// Instruction `WHILELO` - While incrementing unsigned scalar lower than scalar.
-    /// </summary>
-    WHILELO_p_p_rr,
-    /// <summary>
-    /// Instruction `WHILELO` - While incrementing unsigned scalar lower than scalar (predicate-as-counter).
-    /// </summary>
-    WHILELO_pn_rr,
-    /// <summary>
-    /// Instruction `WHILELO` - While incrementing unsigned scalar lower than scalar (pair of predicates).
-    /// </summary>
-    WHILELO_pp_rr,
-    /// <summary>
-    /// Instruction `WHILELS` - While incrementing unsigned scalar lower or same as scalar.
-    /// </summary>
-    WHILELS_p_p_rr,
-    /// <summary>
-    /// Instruction `WHILELS` - While incrementing unsigned scalar lower or same as scalar (predicate-as-counter).
-    /// </summary>
-    WHILELS_pn_rr,
-    /// <summary>
-    /// Instruction `WHILELS` - While incrementing unsigned scalar lower or same as scalar (pair of predicates).
-    /// </summary>
-    WHILELS_pp_rr,
-    /// <summary>
-    /// Instruction `WHILELT` - While incrementing signed scalar less than scalar.
-    /// </summary>
-    WHILELT_p_p_rr,
-    /// <summary>
-    /// Instruction `WHILELT` - While incrementing signed scalar less than scalar (predicate-as-counter).
-    /// </summary>
-    WHILELT_pn_rr,
-    /// <summary>
-    /// Instruction `WHILELT` - While incrementing signed scalar less than scalar (pair of predicates).
-    /// </summary>
-    WHILELT_pp_rr,
-    /// <summary>
-    /// Instruction `WHILERW` - While free of read-after-write conflicts.
-    /// </summary>
-    WHILERW_p_rr,
-    /// <summary>
-    /// Instruction `WHILEWR` - While free of write-after-read/write conflicts.
-    /// </summary>
-    WHILEWR_p_rr,
-    /// <summary>
-    /// Instruction `WRFFR` - Write the first-fault register.
-    /// </summary>
-    WRFFR_f_p,
-    /// <summary>
     /// Instruction `XAFLAG` - Convert floating-point condition flags from external format to Arm format.
     /// </summary>
     XAFLAG_m_pstate,
@@ -17084,10 +8632,6 @@ public enum Arm64InstructionId : ushort
     /// Instruction `XAR` - Exclusive-OR and rotate.
     /// </summary>
     XAR_vvv2_crypto3_imm6,
-    /// <summary>
-    /// Instruction `XAR` - Bitwise exclusive-OR and rotate right by immediate.
-    /// </summary>
-    XAR_z_zzi,
     /// <summary>
     /// Instruction `XPACD` - Strip Pointer Authentication Code.
     /// </summary>
@@ -17109,99 +8653,11 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     YIELD_hi_hints,
     /// <summary>
-    /// Instruction `ZERO` - Zero ZA single-vector groups.
-    /// </summary>
-    ZERO_za1_ri_2,
-    /// <summary>
-    /// Instruction `ZERO` - Zero ZA single-vector groups.
-    /// </summary>
-    ZERO_za1_ri_4,
-    /// <summary>
-    /// Instruction `ZERO` - Zero ZA double-vector groups.
-    /// </summary>
-    ZERO_za2_ri_1,
-    /// <summary>
-    /// Instruction `ZERO` - Zero ZA double-vector groups.
-    /// </summary>
-    ZERO_za2_ri_2,
-    /// <summary>
-    /// Instruction `ZERO` - Zero ZA double-vector groups.
-    /// </summary>
-    ZERO_za2_ri_4,
-    /// <summary>
-    /// Instruction `ZERO` - Zero ZA quad-vector groups.
-    /// </summary>
-    ZERO_za4_ri_1,
-    /// <summary>
-    /// Instruction `ZERO` - Zero ZA quad-vector groups.
-    /// </summary>
-    ZERO_za4_ri_2,
-    /// <summary>
-    /// Instruction `ZERO` - Zero ZA quad-vector groups.
-    /// </summary>
-    ZERO_za4_ri_4,
-    /// <summary>
-    /// Instruction `ZERO` - Zero a list of 64-bit element ZA tiles.
-    /// </summary>
-    ZERO_za_i,
-    /// <summary>
-    /// Instruction `ZERO` - Zero ZT0.
-    /// </summary>
-    ZERO_zt_i,
-    /// <summary>
     /// Instruction `ZIP1` - Zip vectors (primary).
     /// </summary>
     ZIP1_asimdperm_only,
     /// <summary>
-    /// Instruction `ZIP1` - Interleave elements from two half predicates.
-    /// </summary>
-    ZIP1_p_pp,
-    /// <summary>
-    /// Instruction `ZIP1` - Interleave elements from two half vectors.
-    /// </summary>
-    ZIP1_z_zz,
-    /// <summary>
-    /// Instruction `ZIP1` - Interleave elements from two half vectors.
-    /// </summary>
-    ZIP1_z_zz_q,
-    /// <summary>
     /// Instruction `ZIP2` - Zip vectors (secondary).
     /// </summary>
     ZIP2_asimdperm_only,
-    /// <summary>
-    /// Instruction `ZIP2` - Interleave elements from two half predicates.
-    /// </summary>
-    ZIP2_p_pp,
-    /// <summary>
-    /// Instruction `ZIP2` - Interleave elements from two half vectors.
-    /// </summary>
-    ZIP2_z_zz,
-    /// <summary>
-    /// Instruction `ZIP2` - Interleave elements from two half vectors.
-    /// </summary>
-    ZIP2_z_zz_q,
-    /// <summary>
-    /// Instruction `ZIPQ1` - Interleave elements from low halves of each pair of quadword vector segments.
-    /// </summary>
-    ZIPQ1_z_zz,
-    /// <summary>
-    /// Instruction `ZIPQ2` - Interleave elements from high halves of each pair of quadword vector segments.
-    /// </summary>
-    ZIPQ2_z_zz,
-    /// <summary>
-    /// Instruction `ZIP` - Interleave elements from four vectors.
-    /// </summary>
-    ZIP_mz_z_4,
-    /// <summary>
-    /// Instruction `ZIP` - Interleave elements from four vectors.
-    /// </summary>
-    ZIP_mz_z_4q,
-    /// <summary>
-    /// Instruction `ZIP` - Interleave elements from two vectors.
-    /// </summary>
-    ZIP_mz_zz_2,
-    /// <summary>
-    /// Instruction `ZIP` - Interleave elements from two vectors.
-    /// </summary>
-    ZIP_mz_zz_2q,
 }
