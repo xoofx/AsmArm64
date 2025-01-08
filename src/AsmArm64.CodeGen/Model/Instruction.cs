@@ -2,6 +2,8 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+using System.Collections;
+using System.Collections.ObjectModel;
 using AsmArm64.CodeGen.Model.JsonHelpers;
 using System.Diagnostics;
 using System.Text;
@@ -9,7 +11,7 @@ using System.Text.Json.Serialization;
 
 namespace AsmArm64.CodeGen.Model;
 
-class Instruction
+class Instruction : IJsonOnDeserialized
 {
     public string Id { get; set; } = string.Empty;
 
@@ -39,6 +41,12 @@ class Instruction
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<BitRangeInfo> BitRanges { get; } = new();
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<Operand> Operands { get; } = new();
+    
+    [JsonIgnore]
+    public Dictionary<string, BitRangeInfo> BitRangeMap { get; } = new();
 
     public void Add(BitRangeInfo bitRangeInfo)
     {
@@ -101,6 +109,20 @@ class Instruction
         }
 
         BitfieldValueForTest |= BitfieldValue;
+
+        UpdateBitRangeMap();
+    }
+
+    public void UpdateBitRangeMap()
+    {
+        BitRangeMap.Clear();
+        foreach (var bitRange in BitRanges)
+        {
+            if (bitRange.Name is not null)
+            {
+                BitRangeMap[bitRange.Name] = bitRange;
+            }
+        }
     }
 
     public override string ToString()
@@ -123,5 +145,10 @@ class Instruction
         builder.Append($" (Filename: {Filename})");
 
         return builder.ToString();
+    }
+
+    void IJsonOnDeserialized.OnDeserialized()
+    {
+        UpdateBitRangeMap();
     }
 }

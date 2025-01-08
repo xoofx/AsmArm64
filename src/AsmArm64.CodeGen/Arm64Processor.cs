@@ -64,6 +64,8 @@ public partial class Arm64Processor
         //    Console.WriteLine($"Parameter: {paramName}");
         //}
 
+        ProcessInstructions();
+
         var isa = new InstructionSet();
         isa.Instructions.AddRange(_instructions);
         isa.WriteJson("instructions.json");
@@ -71,9 +73,20 @@ public partial class Arm64Processor
         //var isa2 = InstructionSet.ReadJson("instructions.json");
         //isa2.WriteJson("instructions2.json");
 
+        //return;
+
         BuildTrie();
         ExtractArchitecture();
         GenerateCode();
+    }
+
+
+    private void ProcessInstructions()
+    {
+        var processor = new InstructionProcessor(_instructions);
+        processor.DumpAllOperands();
+
+        processor.ProcessRegisterKind();
     }
 
     private void LoadInstructions()
@@ -275,19 +288,10 @@ public partial class Arm64Processor
                 instruction.ArchVariants.AddRange(archVariants);
 
                 mapEncodingIdToInfo.TryGetValue(encodingName, out var encodingInfo);
-                var items = ParseOperands(encoding, encodingInfo);
-                //Console.WriteLine($"{encodingName}");
-                //foreach (var item in items)
-                //{
-                //    Console.WriteLine($"  {item}");
-                //}
 
-                //if (encodingName == "B_only_branch_imm" || encodingName == "BL_only_branch_imm")
-                //{
-                //    instruction.BitfieldMask |= 3 << 24;
-                //    instruction.BitfieldAny |= 3 << 24;
-                //}
-
+                var operands = ParseOperands(encoding, encodingInfo);
+                instruction.Operands.AddRange(operands);
+                
                 encodingBitFields.Clear();
                 ProcessBitFields(encoding, encodingBitFields);
 

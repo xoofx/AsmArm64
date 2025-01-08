@@ -2,11 +2,7 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
-using System;
 using System.Diagnostics;
-using System.Reflection.Metadata;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -26,7 +22,7 @@ partial class Arm64Processor
     private static readonly Regex MatchIdentifier = new(@"\w+");
     private static readonly Regex MatchEnum = new(@"^[a-zA-Z][a-zA-Z0-9_\|]*(\s+#\d+)?$");
 
-    private List<RawOperand> ParseOperands(XElement encodingElt, RawEncodingInfo? rawEncodingInfo)
+    private List<Operand> ParseOperands(XElement encodingElt, EncodingInfo? rawEncodingInfo)
     {
         var asmTemplate = encodingElt.Element("asmtemplate")!;
 
@@ -93,7 +89,7 @@ partial class Arm64Processor
 
         var states = new Stack<ParsingState>();
         states.Push(new ParsingState() { CurrentStateKind = ParsingStateKind.Global });
-        var operands = new List<RawOperand>();
+        var operands = new List<Operand>();
 
         bool hasOptionalParameterAfterNextCommaOrImmediate = false;
 
@@ -146,6 +142,7 @@ partial class Arm64Processor
                     }
                     else
                     {
+                        AddPendingParameter();
                         states.Push(new ParsingState() { CurrentStateKind = ParsingStateKind.Braces });
                     }
 
@@ -176,6 +173,8 @@ partial class Arm64Processor
                 }
                 else if (c == '#')
                 {
+                    AddPendingParameter();
+
                     if (index + 1 < text.Length && text[index + 1] == '0' && states.Peek().CurrentStateKind == ParsingStateKind.Optional)
                     {
                         // We can discard this operand/parameter entirely as it is only used for informational purpose to indicate no base offsets
@@ -211,7 +210,14 @@ partial class Arm64Processor
                 }
                 else if (c == '!')
                 {
-                    // TODO: Need to use this information
+                    AddPendingParameter();
+                    Debug.Assert(states.Count == 1);
+                    Debug.Assert(states.Peek().PendingParameters.Count == 0);
+                    Debug.Assert(states.Peek().TextElements.Count == 0);
+
+                    var lastOperand = operands[^1];
+                    lastOperand.HasBang = true;
+                    
                     index++;
                 }
                 else if (c == '-')
@@ -264,11 +270,14 @@ partial class Arm64Processor
             }
         }
 
-        // Adds the last operand or modifier
+        // Pop all states until we reach the top level state
         while (states.Count > 1)
         {
             AddPendingParameter(true);
         }
+
+        // Adds the last operand or modifier
+        AddPendingParameter();
 
         return operands;
 
@@ -279,46 +288,48 @@ partial class Arm64Processor
             var textElements = state.TextElements;
             if (textElements.Count > 0)
             {
-                RawParameter parameter;
+                OperandItem operandItem;
 
                 var elt0 = textElements[0];
                 if (elt0.Text == "#")
                 {
-                    parameter = new RawImmediateParameter();
+                    operandItem = new ImmediateOperandItem();
                     textElements.RemoveAt(0);
                 }
-                else if (elt0.Symbol is not null && elt0.Symbol.BitInfos.Any(x => x.BitName.StartsWith("R", StringComparison.Ordinal)))
+                else if (elt0.Symbol is not null && elt0.Symbol.BitInfos.Any(x => x.Name.StartsWith("R", StringComparison.Ordinal)))
                 {
                     // Some registers can have elt0.Symbol.BitValues.Count != 0 TODO: Check how to handle these
-                    parameter = new RawRegister();
+                    operandItem = new RegisterOperandItem();
                 }
                 else
                 {
                     bool isEnum = elt0.Symbol is not null && elt0.Symbol.BitValues.Count > 0 && elt0.Symbol.BitValues.All(x => MatchEnum.IsMatch(x.Value));
                     // TODO: Detect Enum kind (e.g. LSL #<amount>)
-                    parameter = isEnum ? new RawEnumParameter() : new RawValueParameter();
+                    operandItem = isEnum ? new EnumOperandItem() : new ValueOperandItem();
                 }
                 
-                parameter.TextElements.AddRange(textElements);
+                operandItem.TextElements.AddRange(textElements);
                 textElements.Clear();
 
-                state.PendingParameters.Add(parameter);
+                state.PendingParameters.Add(operandItem);
             }
 
             switch (state.CurrentStateKind)
             {
                 case ParsingStateKind.BracketForIndexer:
                 {
-                    var register = operands[^1].Parameters[^1];
-                    register.Indices.AddRange(state.PendingParameters);
+                    var register = operands[^1].Items[^1];
+                    Debug.Assert(register.Indexer is null);
+                    Debug.Assert(state.PendingParameters.Count == 1);
+                    register.Indexer = state.PendingParameters[0];
                     state.PendingParameters.Clear();
                     break;
                 }
                 case ParsingStateKind.BracketForMemory:
                     if (popState)
                     {
-                        var operand = new RawOperand(RawOperandKind.Memory);
-                        operand.Parameters.AddRange(state.PendingParameters);
+                        var operand = new Operand() { Kind = OperandKind.Memory };
+                        operand.Items.AddRange(state.PendingParameters);
                         state.PendingParameters.Clear();
                         operands.Add(operand);
                         // We can early exit here as we are at the top level
@@ -326,24 +337,28 @@ partial class Arm64Processor
                     }
                     break;
                 case ParsingStateKind.Braces:
+                case ParsingStateKind.Optional:
                     if (popState)
                     {
-                        var group = new RawGroupParameter();
-                        group.Items.AddRange(state.PendingParameters);
-                        state.PendingParameters.Clear();
-                        state.PendingParameters.Add(group);
-                    }
-                    break;
-                case ParsingStateKind.Optional:
-                    foreach (var pendingParameter in state.PendingParameters)
-                    {
-                        pendingParameter.IsOptional = true;
+                        // Don't create a group without parameters (can happen for {,#0} where #0 is discarded by the parser above)
+                        if (state.PendingParameters.Count > 0)
+                        {
+                            var allRegisters = state.PendingParameters.All(x => x.Kind == OperandItemKind.Register);
+
+                            GroupOperandItemBase group = allRegisters
+                                ? new RegisterGroupOperandItem() { IsOptional = state.CurrentStateKind == ParsingStateKind.Optional }
+                                : new GroupOperandItem() { IsOptional = state.CurrentStateKind == ParsingStateKind.Optional };
+                            
+                            group.Items.AddRange(state.PendingParameters);
+                            state.PendingParameters.Clear();
+                            state.PendingParameters.Add(group);
+                        }
                     }
                     break;
                 case ParsingStateKind.Parenthesis:
                     if (popState)
                     {
-                        var parameter = new RawChoiceParameter();
+                        var parameter = new SelectOperandItem();
                         parameter.Items.AddRange(state.PendingParameters);
                         state.PendingParameters.Clear();
                         state.PendingParameters.Add(parameter);
@@ -363,20 +378,21 @@ partial class Arm64Processor
                 var pendingParameters = states.Peek().PendingParameters;
                 var kind = pendingParameters[0].Kind;
 
-                RawOperandKind operandKind = kind switch
+                OperandKind operandKind = kind switch
                 {
-                    RawParameterKind.Immediate => RawOperandKind.Immediate,
-                    RawParameterKind.Register => RawOperandKind.Register,
-                    RawParameterKind.Value => RawOperandKind.Value,
-                    RawParameterKind.Enum => RawOperandKind.Enum,
-                    RawParameterKind.Group => RawOperandKind.Group,
-                    RawParameterKind.Choice => RawOperandKind.Choice,
+                    OperandItemKind.Immediate => OperandKind.Immediate,
+                    OperandItemKind.Register => OperandKind.Register,
+                    OperandItemKind.Value => OperandKind.Value,
+                    OperandItemKind.Enum => OperandKind.Enum,
+                    OperandItemKind.Group => OperandKind.Group,
+                    OperandItemKind.RegisterGroup => OperandKind.RegisterGroup,
+                    OperandItemKind.Select => OperandKind.Choice,
                     _ => throw new ArgumentOutOfRangeException()
                 };
 
                 // Add the operand
-                var operand = new RawOperand(operandKind);
-                operand.Parameters.AddRange(pendingParameters);
+                var operand = new Operand() { Kind = operandKind };
+                operand.Items.AddRange(pendingParameters);
                 operands.Add(operand);
 
                 pendingParameters.Clear();
@@ -388,28 +404,12 @@ partial class Arm64Processor
     {
         public required ParsingStateKind CurrentStateKind { get; init; }
 
-        public List<RawText> TextElements { get; } = new();
+        public List<OperandText> TextElements { get; } = new();
 
-        public List<RawParameter> PendingParameters { get; } = new();
+        public List<OperandItem> PendingParameters { get; } = new();
         
 
         public override string ToString() => $"{CurrentStateKind} Parameters: ({string.Join(",", PendingParameters)})";
-    }
-
-
-    private sealed class RawText
-    {
-        public RawText(string text, RawEncodingSymbol? symbol)
-        {
-            Text = text;
-            Symbol = symbol;
-        }
-        
-        public string Text { get; }
-
-        public RawEncodingSymbol? Symbol { get; }
-
-        public override string ToString() => Symbol is not null ? $"{Text} ({Symbol})" : Text;
     }
 
     private enum ParsingStateKind
@@ -440,142 +440,6 @@ partial class Arm64Processor
         Parenthesis,
     }
 
-    private abstract class RawOperandNode
-    {
-        /// <summary>
-        /// Is this object optional.
-        /// </summary>
-        public bool IsOptional { get; set; }
-    }
-
-
-    private sealed class RawOperand(RawOperandKind kind) : RawOperandNode
-    {
-        public RawOperandKind Kind { get; } = kind;
-
-        public List<RawParameter> Parameters { get; } = new();
-
-        public override string ToString()
-        {
-            var builder = new StringBuilder();
-
-            switch (Kind)
-            {
-                case RawOperandKind.Immediate:
-                    builder.Append('#');
-                    break;
-                case RawOperandKind.Memory:
-                    builder.Append('[');
-                    break;
-            }
-
-            builder.Append(string.Join(Kind == RawOperandKind.Choice ? "|" : ",", Parameters));
-
-            switch (Kind)
-            {
-                case RawOperandKind.Memory:
-                    builder.Append(']');
-                    break;
-            }
-
-            return builder.ToString();
-        }
-    }
-
-    private abstract class RawParameter(RawParameterKind kind) : RawOperandNode
-    {
-        public RawParameterKind Kind { get; } = kind;
-
-        public List<RawText> TextElements { get; } = new();
-
-        public List<RawParameter> Indices { get; } = new();
-
-        public sealed override string ToString()
-        {
-            var builder = new StringBuilder();
-            ToStringTextElements(builder);
-            ToStringParameters(builder);
-            if (Indices.Count > 0)
-            {
-                builder.Append('[');
-                builder.Append(string.Join(",", Indices));
-                builder.Append(']');
-            }
-
-            return builder.ToString();
-        }
-
-        protected virtual void ToStringParameters(StringBuilder builder)
-        {
-        }
-
-        protected void ToStringTextElements(StringBuilder builder)
-        {
-            foreach (var textElement in TextElements)
-            {
-                builder.Append(textElement.Text);
-            }
-        }
-    }
-
-    private sealed class RawEnumParameter() : RawParameter(RawParameterKind.Enum);
-
-    private sealed class RawValueParameter() : RawParameter(RawParameterKind.Value);
-
-    private sealed class RawImmediateParameter() : RawParameter(RawParameterKind.Immediate);
-
-    private sealed class RawGroupParameter() : RawParameter(RawParameterKind.Group)
-    {
-        public List<RawParameter> Items { get; } = new();
-
-        protected override void ToStringParameters(StringBuilder builder)
-        {
-            builder.Append('{');
-            builder.Append(string.Join(",", Items));
-            builder.Append('}');
-        }
-    }
-
-    private sealed class RawRegister() : RawParameter(RawParameterKind.Register);
-
-    /// <summary>
-    /// Arguments Starting with ( and with | and ) are grouped arguments.
-    /// </summary>
-    private sealed class RawChoiceParameter() : RawParameter(RawParameterKind.Choice)
-    {
-        public List<RawParameter> Items { get; } = new();
-
-        protected override void ToStringParameters(StringBuilder builder)
-        {
-            builder.Append('(');
-            builder.Append(string.Join(" | ", Items));
-            builder.Append(')');
-        }
-    }
-
-    private enum RawParameterKind
-    {
-        Register,
-        Immediate,
-        Value,
-        Enum,
-        Group,
-        Choice,
-    }
-
-
-    private enum RawOperandKind
-    {
-        Undefined,
-        Register,
-        Immediate,
-        Value,
-        Enum,
-        Memory,
-        Group,
-        Choice,
-    }
-
     private record RawAsmTemplateItem
     {
         public RawAsmTemplateItem(RawAsmTemplateItemKind kind, string text)
@@ -591,7 +455,7 @@ partial class Arm64Processor
         public override string ToString() => $"Text = `{Text}`";
     }
 
-    private record RawAsmTemplateItemLink(RawAsmTemplateItemKind Kind, string text, string Link, RawEncodingSymbol EncodedIn) : RawAsmTemplateItem(Kind, text)
+    private record RawAsmTemplateItemLink(RawAsmTemplateItemKind Kind, string text, string Link, EncodingSymbol EncodedIn) : RawAsmTemplateItem(Kind, text)
     {
         public override string ToString() => $"Text = `{Text}`, Link = {Link}, EncodedIn = {EncodedIn}";
     }
@@ -602,11 +466,11 @@ partial class Arm64Processor
         Link,
     }
 
-    private Dictionary<string, RawEncodingInfo> ParseEncodingInfo(XDocument doc)
+    private Dictionary<string, EncodingInfo> ParseEncodingInfo(XDocument doc)
     {
         var explanations = doc.Descendants("explanation").ToList();
 
-        var mapEncodingIdToInfo = new Dictionary<string, RawEncodingInfo>();
+        var mapEncodingIdToInfo = new Dictionary<string, EncodingInfo>();
 
         foreach (var explanation in explanations)
         {
@@ -615,7 +479,7 @@ partial class Arm64Processor
 
             var link = symbolElement.Attribute("link")!.Value;
             var name = symbolElement.Value.Trim();
-            var encodingSymbol = new RawEncodingSymbol
+            var encodingSymbol = new EncodingSymbol
             {
                 Link = link,
                 Name = name,
@@ -634,7 +498,7 @@ partial class Arm64Processor
                 }
                 var bitName = match.Value;
                 index += match.Length;
-                var bitInfo = new RawEncodingBitInfo(bitName);
+                var bitInfo = new EncodingBitInfo() { Name = bitName };
                 if (index < encodedIn.Length)
                 {
                     var c = encodedIn[index];
@@ -672,7 +536,7 @@ partial class Arm64Processor
 
                 foreach (var row in rows)
                 {
-                    var bitValue = new RawEncodingBitValue();
+                    var bitValue = new EncodingBitValue();
                     foreach (var entry in row.Elements("entry"))
                     {
                         var cls = entry.Attribute("class")?.Value;
@@ -702,7 +566,7 @@ partial class Arm64Processor
             {
                 if (!mapEncodingIdToInfo.TryGetValue(enc, out var encodingInfo))
                 {
-                    encodingInfo = new RawEncodingInfo()
+                    encodingInfo = new EncodingInfo()
                     {
                         Name = enc
                     };
@@ -714,67 +578,4 @@ partial class Arm64Processor
 
         return mapEncodingIdToInfo;
     }
-
-    [DebuggerDisplay("Name = {Name}, Symbols = {Symbols.Count}")]
-    class RawEncodingInfo
-    {
-        public required string Name { get; init; } = string.Empty;
-
-        public Dictionary<string, RawEncodingSymbol> Symbols { get; } = new();
-    }
-
-    [DebuggerDisplay("Link = {Link}, BitInfos = {BitInfosDebuggerDisplay}, BitValues = {BitValues.Count}")]
-    class RawEncodingSymbol
-    {
-        public required string Link { get; init; } = string.Empty;
-
-        public required string Name { get; init; } = string.Empty;
-
-        public List<RawEncodingBitInfo> BitInfos { get; } = new();
-
-        public List<RawEncodingBitValue> BitValues { get; } = new();
-
-        private string BitInfosDebuggerDisplay => string.Join(":", BitInfos);
-
-        public override string ToString()
-        {
-            return BitValues.Count > 0 ? $"{BitInfosDebuggerDisplay} ([{string.Join("], [", BitValues)}])" : BitInfosDebuggerDisplay;
-        }
-    }
-    
-    private record RawEncodingBitInfo(string BitName)
-    {
-        public List<int> BitIndices { get; } = new();
-
-        public override string ToString()
-        {
-            if (BitIndices.Count == 0)
-            {
-                return BitName;
-            }
-
-            var builder = new StringBuilder();
-            builder.Append(BitName);
-            builder.Append('<');
-            for (int i = 0; i < BitIndices.Count; i++)
-            {
-                if (i > 0)
-                {
-                    builder.Append(',');
-                }
-                builder.Append(BitIndices[i]);
-            }
-            builder.Append('>');
-            return builder.ToString();
-        }
-    }
-
-    private record RawEncodingBitValue
-    {
-        public string Value { get; set; } = string.Empty;
-        public List<string> BitFields { get; } = new();
-
-        public override string ToString() => $"BitFields = {string.Join(":", BitFields)}, Value = {Value}";
-    }
 }
-
