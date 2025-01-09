@@ -64,16 +64,16 @@ public partial class Arm64Processor
         //    Console.WriteLine($"Parameter: {paramName}");
         //}
 
-        ProcessInstructions();
-
         var isa = new InstructionSet();
         isa.Instructions.AddRange(_instructions);
+        ProcessInstructions(isa);
+
         isa.WriteJson("instructions.json");
 
         //var isa2 = InstructionSet.ReadJson("instructions.json");
         //isa2.WriteJson("instructions2.json");
 
-        //return;
+        return;
 
         BuildTrie();
         ExtractArchitecture();
@@ -81,9 +81,9 @@ public partial class Arm64Processor
     }
 
 
-    private void ProcessInstructions()
+    private void ProcessInstructions(InstructionSet isa)
     {
-        var processor = new InstructionProcessor(_instructions);
+        var processor = new InstructionProcessor(isa);
         processor.DumpAllOperands();
 
         processor.ProcessRegisterKind();

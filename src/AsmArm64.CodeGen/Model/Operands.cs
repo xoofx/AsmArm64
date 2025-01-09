@@ -18,6 +18,8 @@ sealed class Operand
 {
     public required OperandKind Kind { get; init; }
 
+    public OperandDescriptor? Descriptor { get; set; }
+    
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<OperandItem> Items { get; } = new();
 
@@ -102,7 +104,7 @@ abstract class OperandItem(OperandItemKind kind)
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<OperandText> TextElements { get; } = new();
 
-    public OperandItem? Indexer;
+    public OperandItem? Indexer { get; set; }
 
     public sealed override string ToString()
     {
@@ -198,11 +200,7 @@ sealed class OperandText(string text, EncodingSymbol? symbol)
     public override string ToString() => Symbol is not null ? $"{Text} ({Symbol})" : Text;
 }
 
-sealed class RegisterOperandItem() : OperandItem(OperandItemKind.Register)
-{
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public RegisterDescriptor Descriptor { get; } = new();
-}
+sealed class RegisterOperandItem() : OperandItem(OperandItemKind.Register);
 
 /// <summary>
 /// Arguments Starting with ( and with | and ) are grouped arguments.
@@ -215,7 +213,7 @@ sealed class SelectOperandItem() : OperandItem(OperandItemKind.Select)
     protected override void ToStringParameters(StringBuilder builder)
     {
         builder.Append('(');
-        builder.Append(string.Join(" | ", Items));
+        builder.Append(string.Join("|", Items));
         builder.Append(')');
     }
 }
@@ -239,13 +237,16 @@ class EncodingSymbol
     public List<EncodingBitInfo> BitInfos { get; } = new();
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<string> BitValueNames { get; } = new();
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<EncodingBitValue> BitValues { get; } = new();
 
     private string BitInfosDebuggerDisplay => string.Join(":", BitInfos);
 
     public override string ToString()
     {
-        return BitValues.Count > 0 ? $"{BitInfosDebuggerDisplay} ([{string.Join("], [", BitValues)}])" : BitInfosDebuggerDisplay;
+        return BitValues.Count > 0 ? $"{BitInfosDebuggerDisplay} Match: ({string.Join(":", BitValueNames)} -> ([{string.Join("], [", BitValues)}])" : BitInfosDebuggerDisplay;
     }
 }
 
@@ -289,50 +290,108 @@ record EncodingBitValue
     public override string ToString() => $"BitFields = {string.Join(":", BitFields)}, Value = {Value}";
 }
 
-sealed class RegisterDescriptor
+[JsonPolymorphic(TypeDiscriminatorPropertyName = "$kind")]
+[JsonDerivedType(typeof(RegisterOperandDescriptor), typeDiscriminator: "reg")]
+[JsonDerivedType(typeof(GroupRegisterOperandDescriptor), typeDiscriminator: "group-reg")]
+abstract class OperandDescriptor
 {
-    public RegisterIndexKind IndexKind { get; set; }
+    public required OperandDescriptorKind Kind { get; init; }
+}
 
-    public RegisterIndexEncodingKind IndexEncodingKind { get; set; }
+sealed class GroupRegisterOperandDescriptor : OperandDescriptor
+{
+    public required int Size { get; set; }
+
+    public required RegisterOperandDescriptor Register { get; init; }
+
+    public override string ToString() => $"Group{Size}({Register})";
+}
+
+
+sealed class DynamicRegisterSelector
+{
+    public int SelectorSize { get; set; }
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<BitRange> Encoding { get; } = new();
-
+    public List<BitRange> SelectorEncoding { get; } = new();
+    
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<VectorArrangement> VectorArrangements { get; } = new();
-
-    [JsonIgnore]
-    public bool HasFixedVectorArrangements
-    {
-        get
-        {
-            return VectorArrangements.Count == 1 && !VectorArrangements[0].HasEncoding;
-        }
-    }
+    public List<BitValueToRegister> MapBitValueToRegister { get; } = new();
 
     public override string ToString()
     {
         var builder = new StringBuilder();
-        builder.Append(IndexKind);
+        builder.Append($"DynamicXorW[{SelectorSize}](");
+        builder.Append(string.Join(", ", SelectorEncoding));
+        builder.Append(") -> {");
+        for (int i = 0; i < MapBitValueToRegister.Count; i++)
+        {
+            if (i > 0)
+            {
+                builder.Append(", ");
+            }
+            builder.Append(MapBitValueToRegister[i]);
+        }
+        builder.Append("}");
+        return builder.ToString();
+    }
+}
+
+sealed class RegisterOperandDescriptor : OperandDescriptor
+{
+    public RegisterIndexEncodingKind RegisterIndexEncodingKind { get; set; }
+
+    /// <summary>
+    /// If the operand kind is <see cref="OperandDescriptorKind.DynamicRegXOrW"/>, then the kind of register is selected dynamically
+    /// </summary>
+    public DynamicRegisterSelector? DynamicRegisterXOrWSelector { get; set; }
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<BitRange> IndexEncoding { get; } = new();
+
+    public VectorArrangement? VectorArrangement { get; set; }
+    
+    //[JsonIgnore]
+    //public bool HasFixedVectorArrangements
+    //{
+    //    get
+    //    {
+    //        return RegisterVectorArrangements.Count == 1 && !RegisterVectorArrangements[0].HasEncoding;
+    //    }
+    //}
+
+    public override string ToString()
+    {
+        var builder = new StringBuilder();
+        builder.Append(Kind);
 
         builder.Append('/');
-        builder.Append(IndexEncodingKind);
+        builder.Append(RegisterIndexEncodingKind);
 
-        if (IndexKind == RegisterIndexKind.V && VectorArrangements.Count > 0)
+        if (DynamicRegisterXOrWSelector is not null)
         {
-            builder.Append(".<");
-            for (var i = 0; i < VectorArrangements.Count; i++)
+            builder.Append($" {DynamicRegisterXOrWSelector}");
+        }
+
+        if (Kind == OperandDescriptorKind.RegV && VectorArrangement != null)
+        {
+            builder.Append($".{VectorArrangement}");
+        }
+
+        if (IndexEncoding.Count > 0)
+        {
+            builder.Append('[');
+            for (int i = 0; i < IndexEncoding.Count; i++)
             {
-                var arrangement = VectorArrangements[i];
                 if (i > 0)
                 {
                     builder.Append(',');
                 }
-                builder.Append(arrangement.ArrangementKind);
+                builder.Append(IndexEncoding[i]);
             }
-            builder.Append('>');
+            builder.Append(']');
         }
-
+        
         return builder.ToString();
     }
 }
@@ -342,73 +401,259 @@ readonly record struct BitRange(int HiBit, int Width)
     public override string ToString() => $"({HiBit}:{Width})";
 }
 
-record struct VectorArrangement(VectorArrangementKind ArrangementKind, bool HasEncoding, int EncodingIndex)
+readonly record struct BitValueToRegister(string BitValues, OperandDescriptorKind RegisterKind)
 {
+    public override string ToString() => $"{BitValues} -> {RegisterKind}";
+}
+
+readonly record struct VectorArrangementValue(RegisterVArrangementKind Kind, string BitValues)
+{
+    public override string ToString() => $"{Kind} = {BitValues}";
+}
+
+record VectorArrangement
+{
+    private int _vectorArrangementValuesIndex;
+    public RegisterVArrangementKind ArrangementKind { get; set; }
+
+    public int EncodingSize { get; set; }
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<BitRange> Encoding { get; } = new();
+
+    [JsonPropertyName("vaidx")]
+    public int VectorArrangementValuesIndex
+    {
+        get => Values?.Index ?? _vectorArrangementValuesIndex;
+        set => _vectorArrangementValuesIndex = value;
+    }
+
+    [JsonIgnore]
+    public VectorArrangementValues? Values { get; set; }
+    
+    public override int GetHashCode()
+    {
+        var hash = new HashCode();
+        hash.Add(ArrangementKind);
+        hash.Add(EncodingSize);
+        foreach (var bitRange in Encoding)
+        {
+            hash.Add(bitRange);
+        }
+
+        if (Values is not null)
+        {
+            foreach (var item in Values)
+            {
+                hash.Add(item);
+            }
+        }
+        return hash.ToHashCode();
+    }
+    
+    public virtual bool Equals(VectorArrangement? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        if (ArrangementKind != other.ArrangementKind)
+        {
+            return false;
+        }
+        if (EncodingSize != other.EncodingSize)
+        {
+            return false;
+        }
+        if (Encoding.Count != other.Encoding.Count)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < Encoding.Count; i++)
+        {
+            if (Encoding[i] != other.Encoding[i])
+            {
+                return false;
+            }
+        }
+
+        if (Values is null && other.Values is null)
+        {
+            return true;
+        }
+
+        if (Values is null || other.Values is null)
+        {
+            return false;
+        }
+
+        if (Values.Count != other.Values.Count)
+        {
+            return false;
+        }
+        
+        for (int i = 0; i < Values.Count; i++)
+        {
+            if (Values[i] != other.Values[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    [JsonIgnore]
+    public string Id => this.ToString();
+
     public override string ToString()
     {
-        if (HasEncoding)
+        if (Encoding.Count == 0 && Values is null)
         {
             return ArrangementKind.ToString();
         }
         var builder = new StringBuilder();
         builder.Append(ArrangementKind);
-        if (!HasEncoding)
+
+        builder.Append($"(Size: {EncodingSize}, Encoding: ");
+
+        builder.Append("[");
+        for (var i = 0; i < Encoding.Count; i++)
         {
-            builder.Append('!');
+            var bitRange = Encoding[i];
+            if (i > 0) builder.Append(",");
+            builder.Append(bitRange);
         }
+        builder.Append("], Values: ");
+
+        builder.Append("{");
+        for (var i = 0; i < Values!.Count; i++)
+        {
+            var item = Values[i];
+            if (i > 0) builder.Append(",");
+            builder.Append(item);
+        }
+        builder.Append("}");
+        
         return builder.ToString();
     }
 }
 
+sealed class VectorArrangementValues : List<VectorArrangementValue>
+{
+    [JsonIgnore]
+    public string Id => ToString();
+
+    [JsonIgnore]
+    public int Index { get; set; }
+
+    public override int GetHashCode()
+    {
+        var hash = new HashCode();
+        foreach (var item in this)
+        {
+            hash.Add(item);
+        }
+        return hash.ToHashCode();
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is not VectorArrangementValues other)
+        {
+            return false;
+        }
+        if (Count != other.Count)
+        {
+            return false;
+        }
+        for (int i = 0; i < Count; i++)
+        {
+            if (this[i] != other[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public override string ToString()
+    {
+        var builder = new StringBuilder();
+        builder.Append("{");
+        for (int i = 0; i < Count; i++)
+        {
+            if (i > 0)
+            {
+                builder.Append(", ");
+            }
+            builder.Append(this[i]);
+        }
+        builder.Append("}");
+        return builder.ToString();
+    }
+}
 
 [JsonConverter(typeof(JsonStringEnumConverter))]
-internal enum RegisterIndexKind
+internal enum OperandDescriptorKind
 {
     None,
     /// <summary>
     /// 64-bit register
     /// </summary>
-    X,
+    RegX,
     /// <summary>
     /// 64-bit register or SP (stack pointer)
     /// </summary>
-    XOrSP,
+    RegXOrSP,
     /// <summary>
     /// 32-bit register
     /// </summary>
-    W,
+    RegW,
     /// <summary>
     /// 32-bit register or WSP (stack pointer)
     /// </summary>
-    WOrWSP,
+    RegWOrWSP,
+    /// <summary>
+    /// Either X or W depending on some encoding
+    /// </summary>
+    DynamicRegXOrW,
+    /// <summary>
+    /// Either B, H, S depending on some encoding
+    /// </summary>
+    DynamicRegVScalar,
     /// <summary>
     /// 8-bit register from vector registers
     /// </summary>
-    B,
+    RegB,
     /// <summary>
     /// 16-bit floating point register from vector registers
     /// </summary>
-    H,
+    RegH,
     /// <summary>
     /// 32-bit floating point register from vector registers
     /// </summary>
-    S,
+    RegS,
     /// <summary>
     /// 64-bit floating point register from vector registers
     /// </summary>
-    D,
+    RegD,
     /// <summary>
     /// Vector register (128-bit)
     /// </summary>
-    V,
+    RegV,
     /// <summary>
     /// Vector register (128-bit)
     /// </summary>
-    Q,
+    RegQ,
     /// <summary>
     /// SVE register
     /// </summary>
-    Z,
+    RegZ,
+    MultiReg1,
+    MultiReg2,
+    MultiReg3,
+    MultiReg4,
 }
 
 [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -438,12 +683,17 @@ internal enum RegisterIndexEncodingKind : byte
     SpecialMRm,
 }
 
-
-
 [JsonConverter(typeof(JsonStringEnumConverter))]
-internal enum VectorArrangementKind
+internal enum RegisterVArrangementKind
 {
     None,
+
+    /// <summary>
+    /// Dynamic
+    /// </summary>
+    T,
+    B,
+    H,
     S,
     D,
 
@@ -453,12 +703,18 @@ internal enum VectorArrangementKind
     T_2B,
 
     T_2H,
+    T_4H,
     T_8H,
 
     T_2S,
     T_4S,
 
+    T_1D,
     T_2D,
+
+    T_1Q,
+
+    Reserved,
 }
 
 

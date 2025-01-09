@@ -291,14 +291,25 @@ partial class Arm64Processor
                 OperandItem operandItem;
 
                 var elt0 = textElements[0];
+
+                // Collect bitNames for all text elements
+                // e.g. The name R might not appear in the first element but in the second one
+                var bitNames = new List<string>();
+                foreach (var elt in textElements)
+                {
+                    if (elt.Symbol is not null)
+                    {
+                        bitNames.AddRange(elt.Symbol.BitInfos.Select(x => x.Name));
+                    }
+                }
+
                 if (elt0.Text == "#")
                 {
                     operandItem = new ImmediateOperandItem();
                     textElements.RemoveAt(0);
                 }
-                else if (elt0.Symbol is not null && elt0.Symbol.BitInfos.Any(x => x.Name.StartsWith("R", StringComparison.Ordinal)))
+                else if (bitNames.Any(x => x.StartsWith("R", StringComparison.Ordinal)))
                 {
-                    // Some registers can have elt0.Symbol.BitValues.Count != 0 TODO: Check how to handle these
                     operandItem = new RegisterOperandItem();
                 }
                 else
@@ -531,6 +542,18 @@ partial class Arm64Processor
             {
                 Debug.Assert(tableElement.Attribute("class")?.Value == "valuetable");
 
+                // Collect the fields used to match
+                var thead = tableElement.Descendants("thead").First();
+                foreach (var entry in thead.Descendants("entry"))
+                {
+                    var cls = entry.Attribute("class")!.Value;
+                    if (cls == "bitfield")
+                    {
+                        encodingSymbol.BitValueNames.Add(entry.Value);
+                    }
+                }
+
+                // Collect the match values
                 var tbody = tableElement.Descendants("tbody").First();
                 var rows = tbody.Elements("row").ToList();
 

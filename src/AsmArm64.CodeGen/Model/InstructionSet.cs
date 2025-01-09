@@ -14,8 +14,11 @@ namespace AsmArm64.CodeGen.Model;
 class InstructionSet
 {
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<Instruction> Instructions { get; } = new();
+    public List<VectorArrangementValues> VectorArrangementValues { get; } = new();
 
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<Instruction> Instructions { get; } = new();
+    
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
