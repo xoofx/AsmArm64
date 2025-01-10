@@ -3,9 +3,9 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using AsmArm64.CodeGen.Model;
 
 namespace AsmArm64.CodeGen;
 
@@ -22,7 +22,7 @@ partial class Arm64Processor
     private static readonly Regex MatchIdentifier = new(@"\w+");
     private static readonly Regex MatchEnum = new(@"^[a-zA-Z][a-zA-Z0-9_\|]*(\s+#\d+)?$");
 
-    private List<Operand> ParseOperands(XElement encodingElt, EncodingInfo? rawEncodingInfo)
+    private List<Operand> ParseOperands(XElement encodingElt, EncodingSymbolsInfo? rawEncodingInfo)
     {
         var asmTemplate = encodingElt.Element("asmtemplate")!;
 
@@ -47,6 +47,7 @@ partial class Arm64Processor
             }
         }
 
+        var instructionId = rawEncodingInfo?.Name;
         var mnemonic = items[0].Text;
         var match = MatchMnemonic.Match(mnemonic);
         Debug.Assert(match.Success);
@@ -325,6 +326,12 @@ partial class Arm64Processor
                 state.PendingParameters.Add(operandItem);
             }
 
+            // A group seen at the end of a list of operand items is optional
+            if (state.PendingParameters.Count > 1 && state.PendingParameters[^1] is GroupOperandItemBase pendingGroup)
+            {
+                pendingGroup.IsOptional = true;
+            }
+
             switch (state.CurrentStateKind)
             {
                 case ParsingStateKind.BracketForIndexer:
@@ -397,7 +404,7 @@ partial class Arm64Processor
                     OperandItemKind.Enum => OperandKind.Enum,
                     OperandItemKind.Group => OperandKind.Group,
                     OperandItemKind.RegisterGroup => OperandKind.RegisterGroup,
-                    OperandItemKind.Select => OperandKind.Choice,
+                    OperandItemKind.Select => OperandKind.Select,
                     _ => throw new ArgumentOutOfRangeException()
                 };
 
@@ -410,78 +417,12 @@ partial class Arm64Processor
             }
         }
     }
-
-    private class ParsingState
-    {
-        public required ParsingStateKind CurrentStateKind { get; init; }
-
-        public List<OperandText> TextElements { get; } = new();
-
-        public List<OperandItem> PendingParameters { get; } = new();
-        
-
-        public override string ToString() => $"{CurrentStateKind} Parameters: ({string.Join(",", PendingParameters)})";
-    }
-
-    private enum ParsingStateKind
-    {
-        /// <summary>
-        /// Top level state.
-        /// </summary>
-        Global,
-        /// <summary>
-        /// [...]
-        /// </summary>
-        BracketForMemory,
-        /// <summary>
-        /// [...]
-        /// </summary>
-        BracketForIndexer,
-        /// <summary>
-        /// {...} or {...,...} - Used by SVE
-        /// </summary>
-        Braces,
-        /// <summary>
-        /// {,...} or {#...} TODO: Check other cases
-        /// </summary>
-        Optional,
-        /// <summary>
-        /// (...|...)
-        /// </summary>
-        Parenthesis,
-    }
-
-    private record RawAsmTemplateItem
-    {
-        public RawAsmTemplateItem(RawAsmTemplateItemKind kind, string text)
-        {
-            Kind = kind;
-            Text = text;
-        }
-
-        public RawAsmTemplateItemKind Kind { get; }
-
-        public string Text { get; set; }
-
-        public override string ToString() => $"Text = `{Text}`";
-    }
-
-    private record RawAsmTemplateItemLink(RawAsmTemplateItemKind Kind, string text, string Link, EncodingSymbol EncodedIn) : RawAsmTemplateItem(Kind, text)
-    {
-        public override string ToString() => $"Text = `{Text}`, Link = {Link}, EncodedIn = {EncodedIn}";
-    }
-
-    private enum RawAsmTemplateItemKind
-    {
-        Text,
-        Link,
-    }
-
-    private Dictionary<string, EncodingInfo> ParseEncodingInfo(XDocument doc)
+    
+    private Dictionary<string, EncodingSymbolsInfo> ParseEncodingInfo(XDocument doc)
     {
         var explanations = doc.Descendants("explanation").ToList();
 
-        var mapEncodingIdToInfo = new Dictionary<string, EncodingInfo>();
+        var mapEncodingIdToInfo = new Dictionary<string, EncodingSymbolsInfo>();
 
         foreach (var explanation in explanations)
         {
@@ -589,7 +530,7 @@ partial class Arm64Processor
             {
                 if (!mapEncodingIdToInfo.TryGetValue(enc, out var encodingInfo))
                 {
-                    encodingInfo = new EncodingInfo()
+                    encodingInfo = new EncodingSymbolsInfo()
                     {
                         Name = enc
                     };
@@ -600,5 +541,72 @@ partial class Arm64Processor
         }
 
         return mapEncodingIdToInfo;
+    }
+
+
+    private class ParsingState
+    {
+        public required ParsingStateKind CurrentStateKind { get; init; }
+
+        public List<OperandText> TextElements { get; } = new();
+
+        public List<OperandItem> PendingParameters { get; } = new();
+
+
+        public override string ToString() => $"{CurrentStateKind} Parameters: ({string.Join(",", PendingParameters)})";
+    }
+
+    private enum ParsingStateKind
+    {
+        /// <summary>
+        /// Top level state.
+        /// </summary>
+        Global,
+        /// <summary>
+        /// [...]
+        /// </summary>
+        BracketForMemory,
+        /// <summary>
+        /// [...]
+        /// </summary>
+        BracketForIndexer,
+        /// <summary>
+        /// {...} or {...,...} - Used by SVE
+        /// </summary>
+        Braces,
+        /// <summary>
+        /// {,...} or {#...} TODO: Check other cases
+        /// </summary>
+        Optional,
+        /// <summary>
+        /// (...|...)
+        /// </summary>
+        Parenthesis,
+    }
+
+    private record RawAsmTemplateItem
+    {
+        public RawAsmTemplateItem(RawAsmTemplateItemKind kind, string text)
+        {
+            Kind = kind;
+            Text = text;
+        }
+
+        public RawAsmTemplateItemKind Kind { get; }
+
+        public string Text { get; set; }
+
+        public override string ToString() => $"Text = `{Text}`";
+    }
+
+    private record RawAsmTemplateItemLink(RawAsmTemplateItemKind Kind, string text, string Link, EncodingSymbol EncodedIn) : RawAsmTemplateItem(Kind, text)
+    {
+        public override string ToString() => $"Text = `{Text}`, Link = {Link}, EncodedIn = {EncodedIn}";
+    }
+
+    private enum RawAsmTemplateItemKind
+    {
+        Text,
+        Link,
     }
 }

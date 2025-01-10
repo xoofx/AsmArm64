@@ -16,8 +16,10 @@ class Instruction : IJsonOnDeserialized
     public string Id { get; set; } = string.Empty;
 
     public string Mnemonic { get; set; } = string.Empty;
-
+    
     public string Name { get; set; } = string.Empty;
+
+    public string Signature { get; set; } = string.Empty;
 
     public string Filename { get; set; } = string.Empty;
 
@@ -75,7 +77,7 @@ class Instruction : IJsonOnDeserialized
         var name = Name.TrimEnd('_');
         var indexOfUnderscore = name.IndexOf('_');
         Id = indexOfUnderscore > 0 ? $"{name.Substring(0, indexOfUnderscore).ToUpperInvariant()}{name.Substring(indexOfUnderscore).ToLowerInvariant()}" : name.ToUpperInvariant();
-
+        
         foreach (var bitfieldInfo in BitRanges)
         {
             var fieldSets = bitfieldInfo.BitFieldSet;
@@ -111,6 +113,26 @@ class Instruction : IJsonOnDeserialized
         BitfieldValueForTest |= BitfieldValue;
 
         UpdateBitRangeMap();
+
+        UpdateSignature();
+    }
+
+    public void UpdateSignature()
+    {
+        var builder = new StringBuilder();
+        builder.Append($"{Mnemonic,-11} ");
+        for (var i = 0; i < Operands.Count; i++)
+        {
+            var item = Operands[i];
+            if (i > 0)
+            {
+                builder.Append(", ");
+            }
+
+            builder.Append(item);
+        }
+
+        Signature = builder.ToString();
     }
 
     public void UpdateBitRangeMap()
