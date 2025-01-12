@@ -321,6 +321,7 @@ record EncodingBitValue
 [JsonDerivedType(typeof(LabelOperandDescriptor), typeDiscriminator: "label")]
 [JsonDerivedType(typeof(ImmediateByteValuesOperandDescriptor), typeDiscriminator: "imm-values")]
 [JsonDerivedType(typeof(ShiftOperandDescriptor), typeDiscriminator: "shift")]
+[JsonDerivedType(typeof(ExtendOperandDescriptor), typeDiscriminator: "extend")]
 abstract class OperandDescriptor
 {
     public required Arm64OperandKind Kind { get; init; }
@@ -396,7 +397,6 @@ sealed class ImmediateByteValuesOperandDescriptor : OperandDescriptor
     }
 }
 
-
 sealed class MemoryOperandDescriptor : OperandDescriptor
 {
     public Arm64MemoryEncodingKind MemoryEncodingKind { get; set; }
@@ -419,7 +419,12 @@ sealed class ShiftOperandDescriptor : OperandDescriptor
     
     public BitRange ShiftEncoding { get; set; }
 
-    public int AmountSize { get; set; }
+    public BitRange AmountEncoding { get; set; }
+}
+
+sealed class ExtendOperandDescriptor : OperandDescriptor
+{
+    public BitRange ExtendEncoding { get; set; }
 
     public BitRange AmountEncoding { get; set; }
 }

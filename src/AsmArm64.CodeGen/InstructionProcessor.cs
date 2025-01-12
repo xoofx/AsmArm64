@@ -247,7 +247,7 @@ internal sealed class InstructionProcessor
                         Debug.Assert(symbol is not null);
 
                         var encoding = new List<BitRange>();
-                        shiftOperandDescriptor.AmountSize = CollectEncodingForSymbol(instruction, symbol, encoding);
+                        CollectEncodingForSymbol(instruction, symbol, encoding);
                         Debug.Assert(encoding.Count == 1);
                         shiftOperandDescriptor.AmountEncoding = encoding[0];
 
@@ -282,14 +282,30 @@ internal sealed class InstructionProcessor
 
             if (name0 == "extend")
             {
-                Debug.Assert(symbol0 is not null);
-                Console.WriteLine($"Instruction extend {instruction.Id, -30} {instruction.Signature}");
-                foreach (var bitValue in symbol0.BitValues)
-                {
-                    Console.WriteLine($"  {string.Join(":", bitValue.BitFields)} = {bitValue.Value}");
-                }
+                // extend, {amount}
 
-                return null;
+                Debug.Assert(symbol0 is not null);
+                Debug.Assert(symbol0.BitValues.Count == 8 && symbol0.BitValues[0].Value == "UXTB" && symbol0.BitValues[^1].Value == "SXTX");
+
+                var extend = new ExtendOperandDescriptor()
+                {
+                    Kind = Arm64OperandKind.Extend,
+                    Name = name0,
+                };
+
+                var encoding = new List<BitRange>();
+                CollectEncodingForSymbol(instruction, symbol0, encoding);
+                Debug.Assert(encoding.Count == 1);
+                extend.ExtendEncoding = encoding[0];
+
+                encoding.Clear();
+                var amountSymbol = ((OptionalGroupOperandItem)item1).Items[0].TextElements[0].Symbol!;
+                Debug.Assert(amountSymbol is not null);
+                CollectEncodingForSymbol(instruction, amountSymbol, encoding);
+                Debug.Assert(encoding.Count == 1);
+                extend.AmountEncoding = encoding[0];
+
+                return extend;
             }
             else if (name0 == "shift")
             {
@@ -317,7 +333,7 @@ internal sealed class InstructionProcessor
                 Debug.Assert(amountSymbol is not null);
 
                 encoding.Clear();
-                shiftOperandDescriptor.AmountSize = CollectEncodingForSymbol(instruction, amountSymbol, encoding);
+                CollectEncodingForSymbol(instruction, amountSymbol, encoding);
                 Debug.Assert(encoding.Count == 1);
                 shiftOperandDescriptor.AmountEncoding = encoding[0];
 
