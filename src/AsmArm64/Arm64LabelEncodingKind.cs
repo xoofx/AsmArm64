@@ -7,31 +7,21 @@ using System.Text.Json.Serialization;
 namespace AsmArm64;
 
 [JsonConverter(typeof(JsonStringEnumConverter))]
-enum Arm64ShiftEncodingKind : byte
+enum Arm64LabelEncodingKind : byte
 {
     None,
     /// <summary>
-    /// The shift amount is fixed.
+    /// A signed offset multiplied by 4
     /// </summary>
-    Fixed,
+    StandardOffset,
 
     /// <summary>
-    /// The shift is encoded with LSL, LSR, ASR.
+    /// A negative offset multiplied by 4 encoded as an unsigned value
     /// </summary>
-    Shift3,
+    NegativeEncodedAsUnsigned,
 
     /// <summary>
-    /// The shift is encoded with LSL, LSR, ASR, ROR.
+    /// A signed offset multiplied by 4096 encoded as an unsigned value
     /// </summary>
-    Shift4,
-
-    /// <summary>
-    /// A zero shift.
-    /// </summary>
-    Lsl0,
-
-    /// <summary>
-    /// Only amount is encoded
-    /// </summary>
-    Lsl
+    PageOffset,
 }

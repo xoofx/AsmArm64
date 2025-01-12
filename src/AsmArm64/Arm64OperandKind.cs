@@ -19,17 +19,21 @@ public enum Arm64OperandKind : byte
     /// </summary>
     RegisterGroup,
     /// <summary>
-    /// An immediate
-    /// </summary>
-    Immediate,
-    /// <summary>
     /// A memory operand
     /// </summary>
     Memory,
     /// <summary>
+    /// An immediate
+    /// </summary>
+    Immediate,
+    /// <summary>
     /// Immediate byte values.
     /// </summary>
     ImmediateByteValues,
+    /// <summary>
+    /// Label.
+    /// </summary>
+    Label,
     /// <summary>
     /// Shift.
     /// </summary>

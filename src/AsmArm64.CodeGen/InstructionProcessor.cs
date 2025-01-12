@@ -129,19 +129,19 @@ internal sealed class InstructionProcessor
                         case OperandKind.Value:
                             Debug.Assert(operand.Items.Count == 1);
                             var selectedValue = (ValueOperandItem)operand.Items[0];
-                            ProcessValue(instruction, selectedValue);
+                            operand.Descriptor = ProcessValue(instruction, selectedValue);
                             break;
                         case OperandKind.Enum:
                             break;
                         case OperandKind.OptionalGroup:
                             Debug.Assert(operand.Items.Count == 1);
                             var optionalGroup = (OptionalGroupOperandItem)operand.Items[0];
-                            ProcessOptionalGroup(instruction, optionalGroup);
+                            operand.Descriptor = ProcessOptionalGroup(instruction, optionalGroup);
                             break;
                         case OperandKind.Const:
                             break;
                         default:
-                            throw new InvalidOperationException($"Enum not supported {operand.Kind} in instruction {instruction.Id} for operand {operand}");
+                            throw new InvalidOperationException($"Operand kind not supported {operand.Kind}");
                     }
                 }
                 catch (Exception ex)
@@ -266,7 +266,7 @@ internal sealed class InstructionProcessor
             }
             else if (name0 == "targets")
             {
-                Console.WriteLine($"Instruction {instruction.Id,-30} {instruction.Signature}");
+                Console.WriteLine($"Instruction targets {instruction.Id,-30} {instruction.Signature}");
 
                 return null;
             }
@@ -282,7 +282,8 @@ internal sealed class InstructionProcessor
 
             if (name0 == "extend")
             {
-                Console.WriteLine($"Instruction {instruction.Id, -30} {instruction.Signature}");
+                Debug.Assert(symbol0 is not null);
+                Console.WriteLine($"Instruction extend {instruction.Id, -30} {instruction.Signature}");
                 foreach (var bitValue in symbol0.BitValues)
                 {
                     Console.WriteLine($"  {string.Join(":", bitValue.BitFields)} = {bitValue.Value}");
@@ -324,7 +325,7 @@ internal sealed class InstructionProcessor
             }
             else if (name0 == "option")
             {
-                Console.WriteLine($"Instruction {instruction.Id,-30} {instruction.Signature}");
+                Console.WriteLine($"Instruction option {instruction.Id,-30} {instruction.Signature}");
 
                 return null;
             }
@@ -338,65 +339,65 @@ internal sealed class InstructionProcessor
     /// <summary>
     /// List of identified labels kind for instruction. I was not able to find a better way to identify them from the XML file.
     /// </summary>
-    private static readonly Dictionary<string, Arm64ImmediateEncodingKind> InstructionIdToLabelOffsetKind = new()
+    private static readonly Dictionary<string, Arm64LabelEncodingKind> InstructionIdToLabelOffsetKind = new()
     {
-        { "ADR_only_pcreladdr", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "ADRP_only_pcreladdr", Arm64ImmediateEncodingKind.LabelPageOffset },
-        { "AUTIASPPC_only_dp_1src_imm", Arm64ImmediateEncodingKind.LabelNegativeEncodedAsUnsigned },
-        { "AUTIBSPPC_only_dp_1src_imm", Arm64ImmediateEncodingKind.LabelNegativeEncodedAsUnsigned },
-        { "B_only_branch_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "BL_only_branch_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBBEQ_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBBGE_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBBGT_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBBHI_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBBHS_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBBNE_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBEQ_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBEQ_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBEQ_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBEQ_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBGE_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBGE_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBGT_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBGT_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBGT_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBGT_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHEQ_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHGE_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHGT_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHHI_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHHS_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHI_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHI_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHI_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHI_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHNE_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHS_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBHS_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBLO_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBLO_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBLT_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBLT_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBNE_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBNE_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBNE_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBNE_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBNZ_32_compbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBNZ_64_compbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBZ_32_compbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "CBZ_64_compbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "LDR_32_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "LDR_64_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "LDR_d_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "LDR_q_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "LDR_s_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "LDRSW_64_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "PRFM_p_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "RETAASPPC_only_miscbranch", Arm64ImmediateEncodingKind.LabelNegativeEncodedAsUnsigned },
-        { "RETABSPPC_only_miscbranch", Arm64ImmediateEncodingKind.LabelNegativeEncodedAsUnsigned },
-        { "TBNZ_only_testbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
-        { "TBZ_only_testbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "ADR_only_pcreladdr", Arm64LabelEncodingKind.StandardOffset },
+        { "ADRP_only_pcreladdr", Arm64LabelEncodingKind.PageOffset },
+        { "AUTIASPPC_only_dp_1src_imm", Arm64LabelEncodingKind.NegativeEncodedAsUnsigned },
+        { "AUTIBSPPC_only_dp_1src_imm", Arm64LabelEncodingKind.NegativeEncodedAsUnsigned },
+        { "B_only_branch_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "BL_only_branch_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBBEQ_8_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBBGE_8_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBBGT_8_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBBHI_8_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBBHS_8_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBBNE_8_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBEQ_32_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBEQ_32_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBEQ_64_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBEQ_64_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBGE_32_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBGE_64_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBGT_32_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBGT_32_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBGT_64_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBGT_64_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHEQ_16_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHGE_16_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHGT_16_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHHI_16_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHHS_16_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHI_32_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHI_32_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHI_64_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHI_64_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHNE_16_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHS_32_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHS_64_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLO_32_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLO_64_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLT_32_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLT_64_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBNE_32_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBNE_32_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBNE_64_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBNE_64_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBNZ_32_compbranch", Arm64LabelEncodingKind.StandardOffset },
+        { "CBNZ_64_compbranch", Arm64LabelEncodingKind.StandardOffset },
+        { "CBZ_32_compbranch", Arm64LabelEncodingKind.StandardOffset },
+        { "CBZ_64_compbranch", Arm64LabelEncodingKind.StandardOffset },
+        { "LDR_32_loadlit", Arm64LabelEncodingKind.StandardOffset },
+        { "LDR_64_loadlit", Arm64LabelEncodingKind.StandardOffset },
+        { "LDR_d_loadlit", Arm64LabelEncodingKind.StandardOffset },
+        { "LDR_q_loadlit", Arm64LabelEncodingKind.StandardOffset },
+        { "LDR_s_loadlit", Arm64LabelEncodingKind.StandardOffset },
+        { "LDRSW_64_loadlit", Arm64LabelEncodingKind.StandardOffset },
+        { "PRFM_p_loadlit", Arm64LabelEncodingKind.StandardOffset },
+        { "RETAASPPC_only_miscbranch", Arm64LabelEncodingKind.NegativeEncodedAsUnsigned },
+        { "RETABSPPC_only_miscbranch", Arm64LabelEncodingKind.NegativeEncodedAsUnsigned },
+        { "TBNZ_only_testbranch", Arm64LabelEncodingKind.StandardOffset },
+        { "TBZ_only_testbranch", Arm64LabelEncodingKind.StandardOffset },
     };
 
     private OperandDescriptor ProcessValue(Instruction instruction, ValueOperandItem selectedValue)
@@ -406,6 +407,8 @@ internal sealed class InstructionProcessor
         if (symbol is null)
         {
             Console.WriteLine($"Instruction {instruction.Id} {selectedValue} <<<<");
+
+            return null;
         }
         else
         {
@@ -413,16 +416,24 @@ internal sealed class InstructionProcessor
             {
                 if (!InstructionIdToLabelOffsetKind.TryGetValue(instruction.Id, out var labelOffsetKind))
                 {
-                    labelOffsetKind = Arm64ImmediateEncodingKind.LabelStandardOffset;
+                    labelOffsetKind = Arm64LabelEncodingKind.StandardOffset;
                     Console.WriteLine($"Unsupported label kind for instruction {instruction.Id}");
                     _hasErrors = true;
                 }
                 
                 var immediate = ProcessImmediate(instruction, selectedValue);
-                immediate.ImmediateKind = labelOffsetKind;
-                immediate.Name = name;
 
-                return immediate;
+                var label = new LabelOperandDescriptor
+                {
+                    Kind = Arm64OperandKind.Label,
+                    LabelKind = labelOffsetKind,
+                    Name = name,
+                    BitSize = immediate.BitSize
+                };
+
+                label.Encoding.AddRange(immediate.Encoding);
+
+                return label;
             }
             else if (symbol.BitValues.Count > 0)
             {
@@ -432,7 +443,7 @@ internal sealed class InstructionProcessor
                     Kind = Arm64OperandKind.ImmediateByteValues,
                     Name = name,
                 };
-                descriptor.Size = CollectEncodingForSymbol(instruction, symbol, descriptor.Encoding);
+                descriptor.BitSize = CollectEncodingForSymbol(instruction, symbol, descriptor.Encoding);
 
                 Debug.Assert(symbol.BitValues.Count <= 4);
 
@@ -456,7 +467,7 @@ internal sealed class InstructionProcessor
             }
         }
 
-        return null;
+        throw new InvalidOperationException($"Value {selectedValue} not supported");
     }
     
     private OperandDescriptor ProcessSelectOperand(Instruction instruction, SelectOperandItem selectOperand)
@@ -479,7 +490,7 @@ internal sealed class InstructionProcessor
             Debug.Assert(instruction.Id == "MRRS_rs_systemmovepr" || instruction.Id == "MRS_rs_systemmove" || instruction.Id == "MSR_sr_systemmove" || instruction.Id == "MSRR_sr_systemmovepr");
 
             immediate.ImmediateKind = Arm64ImmediateEncodingKind.SystemRegister;
-            immediate.Size = CollectEncodingForSymbol(instruction, item0.TextElements[0].Symbol!, immediate.Encoding);
+            immediate.BitSize = CollectEncodingForSymbol(instruction, item0.TextElements[0].Symbol!, immediate.Encoding);
 
             return immediate;
         }
@@ -489,7 +500,7 @@ internal sealed class InstructionProcessor
             // Select DSB_bo_barriers - (option|#imm)
 
             immediate.ImmediateKind = Arm64ImmediateEncodingKind.BarrierOperationLimit;
-            immediate.Size = CollectEncodingForSymbol(instruction, name.Symbol!, immediate.Encoding);
+            immediate.BitSize = CollectEncodingForSymbol(instruction, name.Symbol!, immediate.Encoding);
             CollectEnumValues(name.Symbol!, _barrierOperationLimitEnumValues);
 
             return immediate;
@@ -502,7 +513,7 @@ internal sealed class InstructionProcessor
             // Select PRFUM_p_ldst_unscaled - (prfop|#imm5)
 
             immediate.ImmediateKind = Arm64ImmediateEncodingKind.PrefetchOperation;
-            immediate.Size = CollectEncodingForSymbol(instruction, name.Symbol!, immediate.Encoding);
+            immediate.BitSize = CollectEncodingForSymbol(instruction, name.Symbol!, immediate.Encoding);
             CollectEnumValues(name.Symbol!, _prefetchOperationEnumValues);
 
             return immediate;
@@ -511,7 +522,7 @@ internal sealed class InstructionProcessor
         {
             // Select RPRFM_r_ldst_regoff - (rprfop|#imm6)
             immediate.ImmediateKind = Arm64ImmediateEncodingKind.RangePrefetchOperation;
-            immediate.Size = CollectEncodingForSymbol(instruction, name.Symbol!, immediate.Encoding);
+            immediate.BitSize = CollectEncodingForSymbol(instruction, name.Symbol!, immediate.Encoding);
             CollectEnumValues(name.Symbol!, _rangePrefetchOperationEnumValues);
 
             return immediate;
@@ -638,14 +649,14 @@ internal sealed class InstructionProcessor
                 // BitFields = 10, Value = UInt(M:Rm)
                 // BitFields = 11, Value = RESERVED
                 var encodingSignature = $"Match `{string.Join(":", symbol.BitValueNames)}` {{{string.Join("|", symbol.BitValues)}}} - {string.Join(",", descriptor.IndexEncoding)}";
-                var expectedSignature = "Match `size` {BitFields = 00, Value = RESERVED|BitFields = 01, Value = UInt('0':Rm)|BitFields = 10, Value = UInt(M:Rm)|BitFields = 11, Value = RESERVED} - (23:2),(20:5)";
+                var expectedSignature = "Match `size` {BitFields = 00, Value = RESERVED|BitFields = 01, Value = UInt('0':Rm)|BitFields = 10, Value = UInt(M:Rm)|BitFields = 11, Value = RESERVED} - (22:2),(16:5)";
                 if (encodingSignature != expectedSignature)
                 {
                     var errorMessage = new StringBuilder();
-                    errorMessage.AppendLine($"Unsupported register encoding `{name0}` Size: {size}, Count: {symbol.BitInfos.Count} for instruction `{instruction.Id}` - {string.Join(",", descriptor.IndexEncoding)} - BitMatch: {string.Join(":", symbol.BitValueNames)}");
-                    symbol.BitValues.ForEach(x => Console.WriteLine($"  {x}"));
-                    //throw new NotSupportedException(errorMessage.ToString());
-                    //Console.WriteLine(errorMessage);
+                    errorMessage.AppendLine($"Unsupported register encoding:");
+                    errorMessage.AppendLine($"  Expecting: {expectedSignature}");
+                    errorMessage.AppendLine($"      Found: {encodingSignature}");
+                    throw new NotSupportedException(errorMessage.ToString());
                 }
                 else
                 {
@@ -743,7 +754,7 @@ internal sealed class InstructionProcessor
 
         if (symbol is not null && symbol.BitValues.Count > 0)
         {
-            vectorArrangement.EncodingSize = CollectEncodingForSymbol(instruction, symbol, vectorArrangement.Encoding);
+            vectorArrangement.BitSize = CollectEncodingForSymbol(instruction, symbol, vectorArrangement.Encoding);
             
             var values = new VectorArrangementValues();
             foreach (var bitValue in symbol.BitValues)
@@ -769,8 +780,7 @@ internal sealed class InstructionProcessor
 
         return vectorArrangement;
     }
-
-
+    
     private static Arm64RegisterVectorArrangementEncodingKind ParseArrangementKind(string text)
     {
         switch (text)
@@ -900,14 +910,14 @@ internal sealed class InstructionProcessor
             Debug.Assert(item.TextElements.Count == 1);
             var symbol = item.TextElements[0].Symbol;
             Debug.Assert(symbol != null);
-            immediate.Size = CollectEncodingForSymbol(instruction, symbol, immediate.Encoding);
+            immediate.BitSize = CollectEncodingForSymbol(instruction, symbol, immediate.Encoding);
             Debug.Assert(immediate.Encoding.Count > 0);
             immediate.ImmediateKind = Arm64ImmediateEncodingKind.Regular;
 
             if (symbol.BitValues.Count != 0)
             {
                 var kind = $"[{string.Join(",", symbol.BitValues.Select(bitValue => $"{bitValue.BitFields[0]} = {bitValue.Value}"))}]";
-                if (immediate.Size == 7 && immediate.Encoding[0] == new BitRange(16, 7) && symbol.BitValues.Count == 4 && symbol.BitValueNames.Count == 1 && symbol.BitValueNames[0] == "immh")
+                if (immediate.BitSize == 7 && immediate.Encoding[0] == new BitRange(16, 7) && symbol.BitValues.Count == 4 && symbol.BitValueNames.Count == 1 && symbol.BitValueNames[0] == "immh")
                 {
                     switch (kind)
                     {
@@ -948,7 +958,7 @@ internal sealed class InstructionProcessor
                 {
                     Debug.Assert(immediate.Encoding[0] == new BitRange(12,4));
                     immediate.ImmediateKind = Arm64ImmediateEncodingKind.EnumAmount8Or16;
-                    immediate.Size = 1;
+                    immediate.BitSize = 1;
                     immediate.Encoding[0] = new BitRange(12, 1);
                 }
                 else if (instruction.Id == "SHLL_asimdmisc_s")
@@ -968,12 +978,12 @@ internal sealed class InstructionProcessor
                     // 0:1 = RESERVED
                     // 1:x = UInt(imm4)
                     immediate.Encoding.Clear();
-                    immediate.Size = 0;
+                    immediate.BitSize = 0;
                     immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdExtIndex;
                 }
                 else
                 {
-                    Console.WriteLine($"Unsupported special immediate {item} Size: {immediate.Size} in instruction id {instruction.Id} - [{string.Join(",", immediate.Encoding)}] - Selector: {string.Join(",", symbol.BitValueNames)}");
+                    Console.WriteLine($"Unsupported special immediate {item} Size: {immediate.BitSize} in instruction id {instruction.Id} - [{string.Join(",", immediate.Encoding)}] - Selector: {string.Join(",", symbol.BitValueNames)}");
                     foreach (var bitValue in symbol.BitValues)
                     {
                         Console.WriteLine($"  {string.Join(":", bitValue.BitFields)} = {bitValue.Value}");
@@ -996,7 +1006,7 @@ internal sealed class InstructionProcessor
                 }
                 else if (symbol.BitInfos.Count > 3)
                 {
-                    Console.WriteLine($"Watch out special immediate #{immediate.Name} Size: {immediate.Size} in instruction id {instruction.Id} - [{string.Join(",", immediate.Encoding)}] - Selector: {string.Join(":", symbol.BitInfos.Select(x => x.Name))}");
+                    Console.WriteLine($"Watch out special immediate #{immediate.Name} Size: {immediate.BitSize} in instruction id {instruction.Id} - [{string.Join(",", immediate.Encoding)}] - Selector: {string.Join(":", symbol.BitInfos.Select(x => x.Name))}");
                     _hasErrors = true;
                 }
             }
@@ -1284,42 +1294,6 @@ internal sealed class InstructionProcessor
             {
                 Debug.Assert(previousValue == bitValue);
             }
-        }
-    }
-
-    private sealed class ByteListEqualityComparer : IEqualityComparer<List<byte>>
-    {
-        public static ByteListEqualityComparer Instance { get; } = new();
-
-        public bool Equals(List<byte>? x, List<byte>? y)
-        {
-            if (x == null || y == null)
-            {
-                return x == y;
-            }
-            if (x.Count != y.Count)
-            {
-                return false;
-            }
-            for (int i = 0; i < x.Count; i++)
-            {
-                if (x[i] != y[i])
-                {
-                    return false;
-                }
-            }
-            return true;
-
-        }
-
-        public int GetHashCode(List<byte> obj)
-        {
-            var hashCode = obj.Count;
-            foreach (var b in obj)
-            {
-                hashCode = HashCode.Combine(hashCode, b);
-            }
-            return hashCode;
         }
     }
 }

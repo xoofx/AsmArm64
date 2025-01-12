@@ -318,6 +318,9 @@ record EncodingBitValue
 [JsonDerivedType(typeof(RegisterGroupOperandDescriptor), typeDiscriminator: "greg")]
 [JsonDerivedType(typeof(ImmediateOperandDescriptor), typeDiscriminator: "imm")]
 [JsonDerivedType(typeof(MemoryOperandDescriptor), typeDiscriminator: "mem")]
+[JsonDerivedType(typeof(LabelOperandDescriptor), typeDiscriminator: "label")]
+[JsonDerivedType(typeof(ImmediateByteValuesOperandDescriptor), typeDiscriminator: "imm-values")]
+[JsonDerivedType(typeof(ShiftOperandDescriptor), typeDiscriminator: "shift")]
 abstract class OperandDescriptor
 {
     public required Arm64OperandKind Kind { get; init; }
@@ -331,14 +334,14 @@ sealed class RegisterGroupOperandDescriptor : OperandDescriptor
 
     public required RegisterOperandDescriptor Register { get; init; }
 
-    public override string ToString() => $"Group{Count}({Register})";
+    public override string ToString() => $"Group {Name}, Count: {Count}, {Register}";
 }
 
 sealed class ImmediateOperandDescriptor : OperandDescriptor
 {
     public Arm64ImmediateEncodingKind ImmediateKind { get; set; }
 
-    public int Size { get; set; }
+    public int BitSize { get; set; }
 
     public bool IsSigned { get; set; }
 
@@ -350,22 +353,34 @@ sealed class ImmediateOperandDescriptor : OperandDescriptor
     public override string ToString()
     {
         var builder = new StringBuilder();
-        if (Size == 0 && Encoding.Count == 0)
+        if (BitSize == 0 && Encoding.Count == 0)
         {
-            builder.Append($"Imm {Name}, Signed: {IsSigned}, Size {Size}, Value: {FixedValue}");
+            builder.Append($"Imm {Name}, Signed: {IsSigned}, Value: {FixedValue}");
         }
         else
         {
-            builder.Append($"Imm {Name}, Signed: {IsSigned}, Size {Size}, Encoding: {string.Join(", ", Encoding)}");
+            builder.Append($"Imm {Name}, Signed: {IsSigned}, Size {BitSize}, Encoding: {string.Join(", ", Encoding)}");
         }
 
         return builder.ToString();
     }
 }
 
+sealed class LabelOperandDescriptor : OperandDescriptor
+{
+    public Arm64LabelEncodingKind LabelKind { get; set; }
+
+    public int BitSize { get; set; }
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<BitRange> Encoding { get; } = new();
+
+    public override string ToString() => $"Label {Name}, Kind: {LabelKind}, Size {BitSize}, Encoding: {string.Join(", ", Encoding)}";
+}
+
 sealed class ImmediateByteValuesOperandDescriptor : OperandDescriptor
 {
-    public int Size { get; set; }
+    public int BitSize { get; set; }
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<BitRange> Encoding { get; } = new();
@@ -376,7 +391,7 @@ sealed class ImmediateByteValuesOperandDescriptor : OperandDescriptor
     public override string ToString()
     {
         var builder = new StringBuilder();
-        builder.Append($"ByteValues {Name}, Size {Size}, Encoding: {string.Join(", ", Encoding)}, Values: [{string.Join(", ", Values)}]");
+        builder.Append($"ByteValues {Name}, Size {BitSize}, Encoding: {string.Join(", ", Encoding)}, Values: [{string.Join(", ", Values)}]");
         return builder.ToString();
     }
 }
@@ -445,7 +460,7 @@ sealed class RegisterOperandDescriptor : OperandDescriptor
     public Arm64RegisterIndexEncodingKind RegisterIndexEncodingKind { get; set; }
 
     /// <summary>
-    /// If the operand kind is <see cref="Arm64OperandKind.DynamicRegXOrW"/>, then the kind of register is selected dynamically
+    /// If the operand kind is <see cref="Arm64RegisterEncodingKind.DynamicRegXOrW"/>, then the kind of register is selected dynamically
     /// </summary>
     public DynamicRegisterSelector? DynamicRegisterXOrWSelector { get; set; }
 
@@ -519,7 +534,7 @@ record VectorArrangement
     private int _vectorArrangementValuesIndex;
     public Arm64RegisterVectorArrangementEncodingKind ArrangementKind { get; set; }
 
-    public int EncodingSize { get; set; }
+    public int BitSize { get; set; }
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<BitRange> Encoding { get; } = new();
@@ -538,7 +553,7 @@ record VectorArrangement
     {
         var hash = new HashCode();
         hash.Add(ArrangementKind);
-        hash.Add(EncodingSize);
+        hash.Add(BitSize);
         foreach (var bitRange in Encoding)
         {
             hash.Add(bitRange);
@@ -564,7 +579,7 @@ record VectorArrangement
         {
             return false;
         }
-        if (EncodingSize != other.EncodingSize)
+        if (BitSize != other.BitSize)
         {
             return false;
         }
@@ -618,7 +633,7 @@ record VectorArrangement
         var builder = new StringBuilder();
         builder.Append(ArrangementKind);
 
-        builder.Append($"(Size: {EncodingSize}, Encoding: ");
+        builder.Append($"(Size: {BitSize}, Encoding: ");
 
         builder.Append("[");
         for (var i = 0; i < Encoding.Count; i++)

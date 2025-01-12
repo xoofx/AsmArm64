@@ -84,19 +84,4 @@ enum Arm64ImmediateEncodingKind : byte
     BarrierOperationLimit,
     PrefetchOperation,
     RangePrefetchOperation,
-
-    /// <summary>
-    /// A signed offset multiplied by 4
-    /// </summary>
-    LabelStandardOffset,
-
-    /// <summary>
-    /// A negative offset multiplied by 4 encoded as an unsigned value
-    /// </summary>
-    LabelNegativeEncodedAsUnsigned,
-
-    /// <summary>
-    /// A signed offset multiplied by 4096 encoded as an unsigned value
-    /// </summary>
-    LabelPageOffset,
 }
