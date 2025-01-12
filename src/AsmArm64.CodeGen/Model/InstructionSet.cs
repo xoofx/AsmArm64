@@ -15,7 +15,7 @@ class InstructionSet
 {
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<VectorArrangementValues> VectorArrangementValues { get; } = new();
-
+    
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<Instruction> Instructions { get; } = new();
     

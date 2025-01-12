@@ -27,6 +27,9 @@ class Instruction : IJsonOnDeserialized
 
     public string InstructionClass { get; set; } = string.Empty;
 
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public Dictionary<string, string> DocVars { get; } = new();
+    
     [JsonConverter(typeof(JsonUIntToHexConverter))]
     public uint BitfieldMask { get; set; }
 
@@ -124,12 +127,22 @@ class Instruction : IJsonOnDeserialized
         for (var i = 0; i < Operands.Count; i++)
         {
             var item = Operands[i];
+            var itemStr = item.ToString();
+
+            // If next parameter is optional, we want to add the `{` before the `,`
+            if (i > 0 && item.Kind == OperandKind.OptionalGroup)
+            {
+                builder.Append(" {");
+                Debug.Assert(itemStr.StartsWith('{'));
+                itemStr = itemStr.Substring(1);
+            }
+
             if (i > 0)
             {
                 builder.Append(", ");
             }
 
-            builder.Append(item);
+            builder.Append(itemStr);
         }
 
         Signature = builder.ToString();

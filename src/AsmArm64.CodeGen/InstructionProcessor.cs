@@ -4,6 +4,7 @@
 
 using System.Diagnostics;
 using System.Text;
+using System.Xml;
 using AsmArm64.CodeGen.Model;
 
 namespace AsmArm64.CodeGen;
@@ -21,7 +22,6 @@ internal sealed class InstructionProcessor
     private readonly Dictionary<string, int> _barrierOperationLimitEnumValues = new();
     private readonly Dictionary<string, int> _prefetchOperationEnumValues = new();
     private readonly Dictionary<string, int> _rangePrefetchOperationEnumValues = new();
-
     private bool _hasErrors;
     
     public InstructionProcessor(InstructionSet instructionSet)
@@ -60,15 +60,15 @@ internal sealed class InstructionProcessor
             instructions.Add(instruction);
         }
 
-        //foreach (var operandSignature in operandSignatures.OrderBy(x => (int)x.Key))
-        //{
-        //    Console.WriteLine($"Operand kind: {operandSignature.Key}");
-        //    foreach (var signature in operandSignature.Value.Order())
-        //    {
-        //        Console.WriteLine($"  {signature}");
-        //    }
-        //}
-        
+        foreach (var operandSignature in operandSignatures.OrderBy(x => (int)x.Key))
+        {
+            Console.WriteLine($"Operand kind: {operandSignature.Key}");
+            foreach (var signature in operandSignature.Value.Order())
+            {
+                Console.WriteLine($"  {signature}");
+            }
+        }
+
         //Console.WriteLine($"Max operand count: {maxOperandCount}");
 
 
@@ -78,7 +78,7 @@ internal sealed class InstructionProcessor
         //}
     }
     
-    public void ProcessRegisterKind()
+    public void Run()
     {
         foreach (var instruction in _instructions)
         {
@@ -104,6 +104,10 @@ internal sealed class InstructionProcessor
                             operand.Descriptor = ProcessRegisterGroup(instruction, (RegisterGroupOperandItem)operand.Items[0]);
                             break;
                         }
+                        case OperandKind.ConstAndImmediate:
+                        {
+                            break;
+                        }
                         case OperandKind.Immediate:
                         {
                             Debug.Assert(operand.Items.Count == 1);
@@ -117,15 +121,24 @@ internal sealed class InstructionProcessor
                         }
                         case OperandKind.Select:
                         {
+                            Debug.Assert(operand.Items.Count == 1);
                             var selectOperand = (SelectOperandItem)operand.Items[0];
-                            ProcessSelectOperand(instruction, selectOperand);
+                            operand.Descriptor = ProcessSelectOperand(instruction, selectOperand);
                             break;
                         }
                         case OperandKind.Value:
+                            Debug.Assert(operand.Items.Count == 1);
+                            var selectedValue = (ValueOperandItem)operand.Items[0];
+                            ProcessValue(instruction, selectedValue);
                             break;
                         case OperandKind.Enum:
                             break;
-                        case OperandKind.Group:
+                        case OperandKind.OptionalGroup:
+                            Debug.Assert(operand.Items.Count == 1);
+                            var optionalGroup = (OptionalGroupOperandItem)operand.Items[0];
+                            ProcessOptionalGroup(instruction, optionalGroup);
+                            break;
+                        case OperandKind.Const:
                             break;
                         default:
                             throw new InvalidOperationException($"Enum not supported {operand.Kind} in instruction {instruction.Id} for operand {operand}");
@@ -174,8 +187,278 @@ internal sealed class InstructionProcessor
         //    Console.WriteLine();
         //    index++;
         //}
+
+        if (_hasErrors)
+        {
+            throw new InvalidOperationException("Errors found during processing");
+        }
     }
 
+    private OperandDescriptor ProcessOptionalGroup(Instruction instruction, OptionalGroupOperandItem optionalGroup)
+    {
+        var items = optionalGroup.Items;
+        Debug.Assert(items.Count > 0);
+
+        var item0 = items[0];
+        var elt0 = item0.TextElements[0];
+        var name0 = elt0.Text;
+        var symbol0 = elt0.Symbol;
+
+        if (items.Count == 1)
+        {
+            if (name0 == "shift")
+            {
+                Debug.Assert(symbol0 is not null && symbol0.BitValues.Count == 2 && symbol0.BitValues[0].Value == "LSL #0" && symbol0.BitValues[1].Value == "LSL #12");
+
+                var shiftOperandDescriptor = new ShiftOperandDescriptor()
+                {
+                    Kind = Arm64OperandKind.Shift,
+                    Name = name0,
+                    ShiftKind = Arm64ShiftEncodingKind.Fixed,
+                };
+
+                var encoding = new List<BitRange>();
+                var size = CollectEncodingForSymbol(instruction, symbol0, encoding);
+                Debug.Assert(size == 1);
+                Debug.Assert(encoding.Count == 1);
+                shiftOperandDescriptor.ShiftEncoding = encoding[0];
+
+                return shiftOperandDescriptor;
+            }
+            else if (name0 == "LSL")
+            {
+                var shiftOperandDescriptor = new ShiftOperandDescriptor()
+                {
+                    Kind = Arm64OperandKind.Shift,
+                    Name = name0,
+                    ShiftKind = Arm64ShiftEncodingKind.Lsl,
+                };
+
+                if (item0.TextElements.Count == 3)
+                {
+                    Debug.Assert(item0.TextElements[1].Text == " #");
+                    if (item0.TextElements[2].Text == "0")
+                    {
+                        shiftOperandDescriptor.ShiftKind = Arm64ShiftEncodingKind.Lsl0;
+                    }
+                    else
+                    {
+                        var symbol = item0.TextElements[2].Symbol;
+                        Debug.Assert(symbol is not null);
+
+                        var encoding = new List<BitRange>();
+                        shiftOperandDescriptor.AmountSize = CollectEncodingForSymbol(instruction, symbol, encoding);
+                        Debug.Assert(encoding.Count == 1);
+                        shiftOperandDescriptor.AmountEncoding = encoding[0];
+
+                    }
+                }
+                else if (item0.TextElements[1].Text == "#0")
+                {
+                    shiftOperandDescriptor.ShiftKind = Arm64ShiftEncodingKind.Lsl0;
+                }
+                else
+                {
+                    Debug.Assert(false, $"Unsupported shift [{string.Join(",", item0.TextElements)}]");
+                }
+
+                return shiftOperandDescriptor;
+            }
+            else if (name0 == "targets")
+            {
+                Console.WriteLine($"Instruction {instruction.Id,-30} {instruction.Signature}");
+
+                return null;
+            }
+            else if (name0 == "imm")
+            {
+                var imm = ProcessImmediate(instruction, items[0]);
+                return imm;
+            }
+        }
+        else if (items.Count == 2)
+        {
+            var item1 = items[1];
+
+            if (name0 == "extend")
+            {
+                Console.WriteLine($"Instruction {instruction.Id, -30} {instruction.Signature}");
+                foreach (var bitValue in symbol0.BitValues)
+                {
+                    Console.WriteLine($"  {string.Join(":", bitValue.BitFields)} = {bitValue.Value}");
+                }
+
+                return null;
+            }
+            else if (name0 == "shift")
+            {
+                Debug.Assert(symbol0 is not null);
+                var shiftOperandDescriptor = new ShiftOperandDescriptor()
+                {
+                    Kind = Arm64OperandKind.Shift,
+                    ShiftKind = Arm64ShiftEncodingKind.Shift3,
+                    Name = name0,
+                };
+
+                Debug.Assert(symbol0 is not null && symbol0.BitValues.Count == 4 && symbol0.BitValues[0].Value == "LSL" && symbol0.BitValues[1].Value == "LSR" && symbol0.BitValues[2].Value == "ASR" && (
+                    symbol0.BitValues[3].Value == "RESERVED" || symbol0.BitValues[3].Value == "ROR"));
+
+
+                shiftOperandDescriptor.ShiftKind = symbol0.BitValues[3].Value == "RESERVED" ? Arm64ShiftEncodingKind.Shift3 : Arm64ShiftEncodingKind.Shift4;
+                
+                var encoding = new List<BitRange>();
+                var size = CollectEncodingForSymbol(instruction, symbol0, encoding);
+                Debug.Assert(size == 2);
+                Debug.Assert(encoding.Count == 1);
+                shiftOperandDescriptor.ShiftEncoding = encoding[0];
+                
+                var amountSymbol = item1.TextElements[0].Symbol;
+                Debug.Assert(amountSymbol is not null);
+
+                encoding.Clear();
+                shiftOperandDescriptor.AmountSize = CollectEncodingForSymbol(instruction, amountSymbol, encoding);
+                Debug.Assert(encoding.Count == 1);
+                shiftOperandDescriptor.AmountEncoding = encoding[0];
+
+                return shiftOperandDescriptor;
+            }
+            else if (name0 == "option")
+            {
+                Console.WriteLine($"Instruction {instruction.Id,-30} {instruction.Signature}");
+
+                return null;
+            }
+        }
+
+        Debug.Assert(false, $"Unsupported optional group `{optionalGroup}` for instruction {instruction.Id}");
+
+        return null;
+    }
+
+    /// <summary>
+    /// List of identified labels kind for instruction. I was not able to find a better way to identify them from the XML file.
+    /// </summary>
+    private static readonly Dictionary<string, Arm64ImmediateEncodingKind> InstructionIdToLabelOffsetKind = new()
+    {
+        { "ADR_only_pcreladdr", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "ADRP_only_pcreladdr", Arm64ImmediateEncodingKind.LabelPageOffset },
+        { "AUTIASPPC_only_dp_1src_imm", Arm64ImmediateEncodingKind.LabelNegativeEncodedAsUnsigned },
+        { "AUTIBSPPC_only_dp_1src_imm", Arm64ImmediateEncodingKind.LabelNegativeEncodedAsUnsigned },
+        { "B_only_branch_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "BL_only_branch_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBBEQ_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBBGE_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBBGT_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBBHI_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBBHS_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBBNE_8_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBEQ_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBEQ_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBEQ_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBEQ_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBGE_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBGE_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBGT_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBGT_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBGT_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBGT_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHEQ_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHGE_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHGT_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHHI_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHHS_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHI_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHI_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHI_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHI_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHNE_16_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHS_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBHS_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBLO_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBLO_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBLT_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBLT_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBNE_32_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBNE_32_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBNE_64_imm", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBNE_64_regs", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBNZ_32_compbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBNZ_64_compbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBZ_32_compbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "CBZ_64_compbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "LDR_32_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "LDR_64_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "LDR_d_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "LDR_q_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "LDR_s_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "LDRSW_64_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "PRFM_p_loadlit", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "RETAASPPC_only_miscbranch", Arm64ImmediateEncodingKind.LabelNegativeEncodedAsUnsigned },
+        { "RETABSPPC_only_miscbranch", Arm64ImmediateEncodingKind.LabelNegativeEncodedAsUnsigned },
+        { "TBNZ_only_testbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
+        { "TBZ_only_testbranch", Arm64ImmediateEncodingKind.LabelStandardOffset },
+    };
+
+    private OperandDescriptor ProcessValue(Instruction instruction, ValueOperandItem selectedValue)
+    {
+        var name = selectedValue.TextElements[0].Text;
+        var symbol = selectedValue.TextElements[0].Symbol;
+        if (symbol is null)
+        {
+            Console.WriteLine($"Instruction {instruction.Id} {selectedValue} <<<<");
+        }
+        else
+        {
+            if (symbol.BitValues.Count == 0 && name == "label")
+            {
+                if (!InstructionIdToLabelOffsetKind.TryGetValue(instruction.Id, out var labelOffsetKind))
+                {
+                    labelOffsetKind = Arm64ImmediateEncodingKind.LabelStandardOffset;
+                    Console.WriteLine($"Unsupported label kind for instruction {instruction.Id}");
+                    _hasErrors = true;
+                }
+                
+                var immediate = ProcessImmediate(instruction, selectedValue);
+                immediate.ImmediateKind = labelOffsetKind;
+                immediate.Name = name;
+
+                return immediate;
+            }
+            else if (symbol.BitValues.Count > 0)
+            {
+                var descriptor = new ImmediateByteValuesOperandDescriptor()
+                {
+
+                    Kind = Arm64OperandKind.ImmediateByteValues,
+                    Name = name,
+                };
+                descriptor.Size = CollectEncodingForSymbol(instruction, symbol, descriptor.Encoding);
+
+                Debug.Assert(symbol.BitValues.Count <= 4);
+
+                for (var i = 0; i < symbol.BitValues.Count; i++)
+                {
+                    var bitValue = symbol.BitValues[i];
+                    var encodingValue = bitValue.GetBitFieldsAsInt();
+                    Debug.Assert(i == encodingValue);
+                    Debug.Assert(bitValue.Value.StartsWith("#"));
+                    var userValue = byte.Parse(bitValue.Value.Substring(1));
+
+                    descriptor.Values.Add(userValue);
+                }
+
+                Debug.Assert(descriptor.Encoding.Count == 1 || descriptor.Encoding.Count == 2);
+                return descriptor;
+            }
+            else
+            {
+                Debug.Assert(false, $"Operand {selectedValue} is not supported in instruction {instruction.Id}. Symbol: {symbol}");
+            }
+        }
+
+        return null;
+    }
+    
     private OperandDescriptor ProcessSelectOperand(Instruction instruction, SelectOperandItem selectOperand)
     {
         Debug.Assert(selectOperand.Items.Count == 2);
@@ -183,7 +466,7 @@ internal sealed class InstructionProcessor
         var name = item0.TextElements[0];
         var immediate = new ImmediateOperandDescriptor()
         {
-            Kind = OperandDescriptorKind.Immediate,
+            Kind = Arm64OperandKind.Immediate,
             Name = name.Text,
         };
 
@@ -195,7 +478,7 @@ internal sealed class InstructionProcessor
             // Select MSRR_sr_systemmovepr - (systemreg|Sop0_op1_Cn_Cm_op2)
             Debug.Assert(instruction.Id == "MRRS_rs_systemmovepr" || instruction.Id == "MRS_rs_systemmove" || instruction.Id == "MSR_sr_systemmove" || instruction.Id == "MSRR_sr_systemmovepr");
 
-            immediate.ImmediateKind = ImmediateKind.SystemRegister;
+            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SystemRegister;
             immediate.Size = CollectEncodingForSymbol(instruction, item0.TextElements[0].Symbol!, immediate.Encoding);
 
             return immediate;
@@ -205,7 +488,7 @@ internal sealed class InstructionProcessor
             // Select DMB_bo_barriers - (option|#imm)
             // Select DSB_bo_barriers - (option|#imm)
 
-            immediate.ImmediateKind = ImmediateKind.BarrierOperationLimit;
+            immediate.ImmediateKind = Arm64ImmediateEncodingKind.BarrierOperationLimit;
             immediate.Size = CollectEncodingForSymbol(instruction, name.Symbol!, immediate.Encoding);
             CollectEnumValues(name.Symbol!, _barrierOperationLimitEnumValues);
 
@@ -218,7 +501,7 @@ internal sealed class InstructionProcessor
             // Select PRFM_p_ldst_regoff - (prfop|#imm5)
             // Select PRFUM_p_ldst_unscaled - (prfop|#imm5)
 
-            immediate.ImmediateKind = ImmediateKind.PrefetchOperation;
+            immediate.ImmediateKind = Arm64ImmediateEncodingKind.PrefetchOperation;
             immediate.Size = CollectEncodingForSymbol(instruction, name.Symbol!, immediate.Encoding);
             CollectEnumValues(name.Symbol!, _prefetchOperationEnumValues);
 
@@ -227,7 +510,7 @@ internal sealed class InstructionProcessor
         else if (instruction.Id == "RPRFM_r_ldst_regoff")
         {
             // Select RPRFM_r_ldst_regoff - (rprfop|#imm6)
-            immediate.ImmediateKind = ImmediateKind.RangePrefetchOperation;
+            immediate.ImmediateKind = Arm64ImmediateEncodingKind.RangePrefetchOperation;
             immediate.Size = CollectEncodingForSymbol(instruction, name.Symbol!, immediate.Encoding);
             CollectEnumValues(name.Symbol!, _rangePrefetchOperationEnumValues);
 
@@ -255,7 +538,7 @@ internal sealed class InstructionProcessor
 
         int indexOfIndexEncoding = 0;
 
-        OperandDescriptorKind kind;
+        Arm64RegisterEncodingKind kind;
 
         DynamicRegisterSelector? dynamicDescriptor = null;
 
@@ -273,37 +556,40 @@ internal sealed class InstructionProcessor
         switch (c)
         {
             case 'X':
-                kind = isSP ? OperandDescriptorKind.RegXOrSP : OperandDescriptorKind.RegX;
+                kind = isSP ? Arm64RegisterEncodingKind.RegXOrSP : Arm64RegisterEncodingKind.RegX;
                 break;
             case 'W':
-                kind = isSP ? OperandDescriptorKind.RegWOrWSP : OperandDescriptorKind.RegW;
+                kind = isSP ? Arm64RegisterEncodingKind.RegWOrWSP : Arm64RegisterEncodingKind.RegW;
                 break;
             case 'B':
-                kind = OperandDescriptorKind.RegB;
+                kind = Arm64RegisterEncodingKind.RegB;
                 break;
             case 'H':
-                kind = OperandDescriptorKind.RegH;
+                kind = Arm64RegisterEncodingKind.RegH;
                 break;
             case 'S':
-                kind = OperandDescriptorKind.RegS;
+                kind = Arm64RegisterEncodingKind.RegS;
                 break;
             case 'D':
-                kind = OperandDescriptorKind.RegD;
+                kind = Arm64RegisterEncodingKind.RegD;
+                break;
+            case 'C':
+                kind = Arm64RegisterEncodingKind.RegC;
                 break;
             case 'V':
                 if (indexOfIndexEncoding != 0 && elt0.Symbol is not null && elt0.Symbol.BitValues.Count > 0)
                 {
                     // This is not a vector but a scalar register
-                    kind = OperandDescriptorKind.DynamicRegVScalar;
+                    kind = Arm64RegisterEncodingKind.DynamicRegVScalar;
                     dynamicDescriptor = ParseDynamicRegister(instruction, register);
                 }
                 else
                 {
-                    kind = OperandDescriptorKind.RegV;
+                    kind = Arm64RegisterEncodingKind.RegV;
                 }
                 break;
             case 'Q':
-                kind = OperandDescriptorKind.RegQ;
+                kind = Arm64RegisterEncodingKind.RegQ;
                 break;
             //case 'Z':
             //    kind = RegisterKind.Z;
@@ -313,7 +599,7 @@ internal sealed class InstructionProcessor
                 {
                     // Case of a dynamic X or W register
                     Debug.Assert(elt0.Symbol is not null);
-                    kind = OperandDescriptorKind.DynamicRegXOrW;
+                    kind = Arm64RegisterEncodingKind.DynamicRegXOrW;
                     dynamicDescriptor = ParseDynamicRegister(instruction, register);
                     indexOfIndexEncoding = 1;
                 }
@@ -327,7 +613,8 @@ internal sealed class InstructionProcessor
 
         var descriptor = new RegisterOperandDescriptor()
         {
-            Kind = kind,
+            Kind = Arm64OperandKind.Register,
+            RegisterKind = kind,
             DynamicRegisterXOrWSelector = dynamicDescriptor
         };
 
@@ -339,8 +626,8 @@ internal sealed class InstructionProcessor
             if (symbol.BitValues.Count == 0 && (descriptor.IndexEncoding.Count == 1 && (size == 5 || size == 4)))
             {
                 descriptor.RegisterIndexEncodingKind = size == 4
-                    ? RegisterIndexEncodingKind.Regular4
-                    : RegisterIndexEncodingKind.Regular5;
+                    ? Arm64RegisterIndexEncodingKind.Regular4
+                    : Arm64RegisterIndexEncodingKind.Regular5;
             }
             else //if (symbol.BitInfos.Count != 1 || size != 5 || symbol.BitValues.Count != 0)
             {
@@ -362,7 +649,7 @@ internal sealed class InstructionProcessor
                 }
                 else
                 {
-                    descriptor.RegisterIndexEncodingKind = RegisterIndexEncodingKind.SpecialMRm;
+                    descriptor.RegisterIndexEncodingKind = Arm64RegisterIndexEncodingKind.SpecialMRm;
                     // We don't need to store the bit, as we know it is a special encoding
                     descriptor.IndexEncoding.Clear();
                 }
@@ -373,12 +660,11 @@ internal sealed class InstructionProcessor
             Debug.Assert(false, $"No encoding found for {instruction.Id}");
         }
 
-        if (descriptor.Kind == OperandDescriptorKind.RegV && register.TextElements.Count > 1)
+        if (kind == Arm64RegisterEncodingKind.RegV && register.TextElements.Count > 1)
         {
             descriptor.VectorArrangement = ParseVectorArrangement(instruction, register);
         }
-
-
+        
         ProcessIndexer(instruction, register);
         
         return descriptor;
@@ -394,13 +680,13 @@ internal sealed class InstructionProcessor
         {
             var registerOperandKind = bitValue.Value switch
             {
-                "B" => OperandDescriptorKind.RegB,
-                "S" => OperandDescriptorKind.RegS,
-                "H" => OperandDescriptorKind.RegH,
-                "D" => OperandDescriptorKind.RegD,
-                "W" => OperandDescriptorKind.RegW,
-                "X" => OperandDescriptorKind.RegX,
-                "RESERVED" => OperandDescriptorKind.None,
+                "B" => Arm64RegisterEncodingKind.RegB,
+                "S" => Arm64RegisterEncodingKind.RegS,
+                "H" => Arm64RegisterEncodingKind.RegH,
+                "D" => Arm64RegisterEncodingKind.RegD,
+                "W" => Arm64RegisterEncodingKind.RegW,
+                "X" => Arm64RegisterEncodingKind.RegX,
+                "RESERVED" => Arm64RegisterEncodingKind.None,
                 _ => throw new NotSupportedException($"Unsupported dynamic register value `{bitValue.Value}` in instruction `{instruction.Id}`")
             };
 
@@ -485,50 +771,50 @@ internal sealed class InstructionProcessor
     }
 
 
-    private static RegisterVArrangementKind ParseArrangementKind(string text)
+    private static Arm64RegisterVectorArrangementEncodingKind ParseArrangementKind(string text)
     {
         switch (text)
         {
             case "16B":
-                return RegisterVArrangementKind.T_16B;
+                return Arm64RegisterVectorArrangementEncodingKind.T_16B;
             case "8B":
-                return RegisterVArrangementKind.T_8B;
+                return Arm64RegisterVectorArrangementEncodingKind.T_8B;
             case "4B":
-                return RegisterVArrangementKind.T_4B;
+                return Arm64RegisterVectorArrangementEncodingKind.T_4B;
             case "2B":
-                return RegisterVArrangementKind.T_2B;
+                return Arm64RegisterVectorArrangementEncodingKind.T_2B;
             case "2H":
-                return RegisterVArrangementKind.T_2H;
+                return Arm64RegisterVectorArrangementEncodingKind.T_2H;
             case "4H":
-                return RegisterVArrangementKind.T_4H;
+                return Arm64RegisterVectorArrangementEncodingKind.T_4H;
             case "8H":
-                return RegisterVArrangementKind.T_8H;
+                return Arm64RegisterVectorArrangementEncodingKind.T_8H;
             case "2S":
-                return RegisterVArrangementKind.T_2S;
+                return Arm64RegisterVectorArrangementEncodingKind.T_2S;
             case "4S":
-                return RegisterVArrangementKind.T_4S;
+                return Arm64RegisterVectorArrangementEncodingKind.T_4S;
             case "2D":
-                return RegisterVArrangementKind.T_2D;
+                return Arm64RegisterVectorArrangementEncodingKind.T_2D;
             case "1D":
-                return RegisterVArrangementKind.T_1D;
+                return Arm64RegisterVectorArrangementEncodingKind.T_1D;
             case "1Q":
-                return RegisterVArrangementKind.T_1Q;
+                return Arm64RegisterVectorArrangementEncodingKind.T_1Q;
             case "T":
-                return RegisterVArrangementKind.T;
+                return Arm64RegisterVectorArrangementEncodingKind.T;
             case "D":
-                return RegisterVArrangementKind.D;
+                return Arm64RegisterVectorArrangementEncodingKind.D;
             case "H":
-                return RegisterVArrangementKind.H;
+                return Arm64RegisterVectorArrangementEncodingKind.H;
             case "B":
-                return RegisterVArrangementKind.B;
+                return Arm64RegisterVectorArrangementEncodingKind.B;
             case "S":
-                return RegisterVArrangementKind.S;
+                return Arm64RegisterVectorArrangementEncodingKind.S;
             case "RESERVED":
-                return RegisterVArrangementKind.Reserved;
+                return Arm64RegisterVectorArrangementEncodingKind.Reserved;
             default:
                 if (text.StartsWith("T"))
                 {
-                    return RegisterVArrangementKind.T;
+                    return Arm64RegisterVectorArrangementEncodingKind.T;
                 }
                 else
                 {
@@ -537,7 +823,7 @@ internal sealed class InstructionProcessor
         }
     }
     
-    private GroupRegisterOperandDescriptor ProcessRegisterGroup(Instruction instruction, RegisterGroupOperandItem group)
+    private RegisterGroupOperandDescriptor ProcessRegisterGroup(Instruction instruction, RegisterGroupOperandItem group)
     {
         var descriptors = new List<RegisterOperandDescriptor>();
         var ids = new HashSet<string>();
@@ -556,43 +842,27 @@ internal sealed class InstructionProcessor
         }
 
         Debug.Assert(ids.Count == 1);
-
-        OperandDescriptorKind kind;
-        switch (group.Items.Count)
+        if (group.Items.Count == 0 || group.Items.Count > 4)
         {
-            case 1:
-                kind = OperandDescriptorKind.MultiReg1;
-                break;
-            case 2:
-                kind = OperandDescriptorKind.MultiReg2;
-                break;
-            case 3:
-                kind = OperandDescriptorKind.MultiReg3;
-                break;
-            case 4:
-                kind = OperandDescriptorKind.MultiReg4;
-                break;
-            default:
-                throw new NotSupportedException(
-                    $"Unsupported number of register groups {group.Items.Count}. Must be <= 4 for instruction {instruction.Id}");
-                break;
+            throw new NotSupportedException(
+                $"Unsupported number of register groups {group.Items.Count}. Must be <= 4 for instruction {instruction.Id}");
         }
 
-        var registerGroup = new GroupRegisterOperandDescriptor()
+        var registerGroup = new RegisterGroupOperandDescriptor()
         {
-            Kind = kind,
+            Kind = Arm64OperandKind.RegisterGroup,
             Register = descriptors[0],
-            Size = group.Items.Count,
+            Count = group.Items.Count,
         };
 
         return registerGroup;
     }
 
-    private ImmediateOperandDescriptor ProcessImmediate(Instruction instruction, ImmediateOperandItem item)
+    private ImmediateOperandDescriptor ProcessImmediate(Instruction instruction, OperandItem item)
     {
         var immediate = new ImmediateOperandDescriptor()
         {
-            Kind = OperandDescriptorKind.Immediate,
+            Kind = Arm64OperandKind.Immediate,
             Name = item.GetName(),
         };
 
@@ -615,12 +885,12 @@ internal sealed class InstructionProcessor
             if (fixedValueStr.Contains('.'))
             {
                 Debug.Assert(fixedValueStr.EndsWith("0.0"));
-                immediate.ImmediateKind = ImmediateKind.FixedFloatZero;
+                immediate.ImmediateKind = Arm64ImmediateEncodingKind.FixedFloatZero;
                 immediate.FixedValue = 0;
             }
             else
             {
-                immediate.ImmediateKind = ImmediateKind.FixedInt;
+                immediate.ImmediateKind = Arm64ImmediateEncodingKind.FixedInt;
                 immediate.FixedValue = sbyte.Parse(fixedValueStr);
             }
         }
@@ -632,7 +902,7 @@ internal sealed class InstructionProcessor
             Debug.Assert(symbol != null);
             immediate.Size = CollectEncodingForSymbol(instruction, symbol, immediate.Encoding);
             Debug.Assert(immediate.Encoding.Count > 0);
-            immediate.ImmediateKind = ImmediateKind.Regular;
+            immediate.ImmediateKind = Arm64ImmediateEncodingKind.Regular;
 
             if (symbol.BitValues.Count != 0)
             {
@@ -642,19 +912,19 @@ internal sealed class InstructionProcessor
                     switch (kind)
                     {
                         case "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]":
-                            immediate.ImmediateKind = ImmediateKind.SimdBitShiftType0;
+                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType0;
                             break;
                         case "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = RESERVED]":
-                            immediate.ImmediateKind = ImmediateKind.SimdBitShiftType1;
+                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType1;
                             break;
                         case "[0001 = RESERVED,001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]":
-                            immediate.ImmediateKind = ImmediateKind.SimdBitShiftType2;
+                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType2;
                             break;
                         case "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = RESERVED]":
-                            immediate.ImmediateKind = ImmediateKind.SimdBitShiftType3;
+                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType3;
                             break;
                         case "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = UInt(immh:immb) - 64]":
-                            immediate.ImmediateKind = ImmediateKind.SimdBitShiftType4;
+                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType4;
                             break;
                         default:
                             throw new NotSupportedException($"Unsupported immediate kind `{kind}` in instruction `{instruction.Id}`");
@@ -665,10 +935,10 @@ internal sealed class InstructionProcessor
                     switch (kind)
                     {
                         case "[0 = 90,1 = 270]":
-                            immediate.ImmediateKind = ImmediateKind.Rotate90Or270;
+                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.Rotate90Or270;
                             break;
                         case "[00 = 0,01 = 90,10 = 180,11 = 270]":
-                            immediate.ImmediateKind = ImmediateKind.Rotate0Or90Or180Or270;
+                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.Rotate0Or90Or180Or270;
                             break;
                         default:
                             throw new NotSupportedException($"Unsupported immediate kind `{kind}` in instruction `{instruction.Id}`");
@@ -677,7 +947,7 @@ internal sealed class InstructionProcessor
                 else if (symbol.BitValueNames.Count == 1 && symbol.BitValueNames[0] == "cmode<0>" && immediate.Encoding.Count == 1)
                 {
                     Debug.Assert(immediate.Encoding[0] == new BitRange(15,4));
-                    immediate.ImmediateKind = ImmediateKind.EnumAmount8Or16;
+                    immediate.ImmediateKind = Arm64ImmediateEncodingKind.EnumAmount8Or16;
                     immediate.Size = 1;
                     immediate.Encoding[0] = new BitRange(12, 1);
                 }
@@ -689,7 +959,7 @@ internal sealed class InstructionProcessor
                     // 10 = 32
                     // 11 = RESERVED
                     Debug.Assert(symbol.BitValues.Count == 4);
-                    immediate.ImmediateKind = ImmediateKind.SimdLeftShift8Or16Or32;
+                    immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdLeftShift8Or16Or32;
                 }
                 else if (instruction.Id == "EXT_asimdext_only")
                 {
@@ -699,7 +969,7 @@ internal sealed class InstructionProcessor
                     // 1:x = UInt(imm4)
                     immediate.Encoding.Clear();
                     immediate.Size = 0;
-                    immediate.ImmediateKind = ImmediateKind.SimdExtIndex;
+                    immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdExtIndex;
                 }
                 else
                 {
@@ -721,7 +991,7 @@ internal sealed class InstructionProcessor
                     {
                         // 64-bit immediate 'aaaaaaaabbbbbbbbccccccccddddddddeeeeeeeeffffffffgggggggghhhhhhhh'
                         // immediate.Name == "imm"
-                        immediate.ImmediateKind = ImmediateKind.Imm64;
+                        immediate.ImmediateKind = Arm64ImmediateEncodingKind.Imm64;
                     }
                 }
                 else if (symbol.BitInfos.Count > 3)
@@ -743,8 +1013,8 @@ internal sealed class InstructionProcessor
 
         //Console.WriteLine($"Memory instruction {instruction.Id,-30} - {instruction.Signature}");
 
-        MemoryOperandKind kind;
-        var extendKind = MemoryOperandExtendKind.NoLsl;
+        Arm64MemoryEncodingKind kind;
+        var extendKind = Arm64MemoryExtendEncodingKind.NoLsl;
         sbyte fixedValue = 0;
 
         // 1 [Xd]!
@@ -752,7 +1022,7 @@ internal sealed class InstructionProcessor
         // 1 [Xs]!
         if (items.Count == 1)
         {
-            kind = MemoryOperandKind.BaseRegisterXn;
+            kind = Arm64MemoryEncodingKind.BaseRegisterXn;
         }
         else if (items.Count == 2)
         {
@@ -770,15 +1040,15 @@ internal sealed class InstructionProcessor
             if (imm.Kind == OperandItemKind.Immediate)
             {
                 immediate = ProcessImmediate(instruction, (ImmediateOperandItem)imm);
-                kind = immediate.FixedValue != 0 ? MemoryOperandKind.BaseRegisterAndFixedImmediate : MemoryOperandKind.BaseRegisterXnOrSPAndImmediate;
+                kind = immediate.FixedValue != 0 ? Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate : Arm64MemoryEncodingKind.BaseRegisterXnOrSPAndImmediate;
                 fixedValue = immediate.FixedValue;
             }
-            else if (imm.Kind == OperandItemKind.Group)
+            else if (imm.Kind == OperandItemKind.OptionalGroup)
             {
-                var group = (GroupOperandItem)imm;
+                var group = (OptionalGroupOperandItem)imm;
                 Debug.Assert(group.Items.Count == 1);
                 immediate = ProcessImmediate(instruction, (ImmediateOperandItem)group.Items[0]);
-                kind = MemoryOperandKind.BaseRegisterAndImmediateOptional;
+                kind = Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional;
             }
             else
             {
@@ -798,7 +1068,7 @@ internal sealed class InstructionProcessor
             if (index.Kind == OperandItemKind.Register)
             {
                 indexRegisterOrImmediate = ProcessRegister(instruction, (RegisterOperandItem)index);
-                kind = MemoryOperandKind.BaseRegisterAndIndexXmAndLslAmount;
+                kind = Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount;
             }
             else if (index.Kind == OperandItemKind.Select)
             {
@@ -809,7 +1079,7 @@ internal sealed class InstructionProcessor
                 Debug.Assert(firstReg.IndexEncoding.Count == 1);
                 Debug.Assert(secondReg.IndexEncoding.Count == 1);
                 Debug.Assert(firstReg.IndexEncoding[0] == secondReg.IndexEncoding[0]);
-                kind = MemoryOperandKind.BaseRegisterAndIndexWmOrXmAndExtendAndAmount;
+                kind = Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend;
                 indexRegisterOrImmediate = firstReg;
             }
             else
@@ -821,7 +1091,7 @@ internal sealed class InstructionProcessor
 
             if (items.Count == 3)
             {
-                var item2 = (GroupOperandItem)items[2];
+                var item2 = (OptionalGroupOperandItem)items[2];
                 
                 if (item2.Items.Count == 1)
                 {
@@ -838,8 +1108,8 @@ internal sealed class InstructionProcessor
                     Debug.Assert(item2.Items.Count == 2);
 
                     var extend = item2.Items[0];
-                    var amount = ((GroupOperandItem)item2.Items[1]).Items[0];
-                    extendKind = DetectExtendKind(instruction, extend, amount);
+                    var amount = ((OptionalGroupOperandItem)item2.Items[1]).Items[0];
+                    extendKind = DetectMemoryExtendKind(instruction, extend, amount);
                 }
             }
             else
@@ -849,8 +1119,8 @@ internal sealed class InstructionProcessor
                 // LDRSB       Xt, [Xn|SP, (Wm|Xm), extend{, amount}]
 
                 var extend = items[2];
-                var amount = ((GroupOperandItem)items[3]).Items[0];
-                extendKind = DetectExtendKind(instruction, extend, amount);
+                var amount = ((OptionalGroupOperandItem)items[3]).Items[0];
+                extendKind = DetectMemoryExtendKind(instruction, extend, amount);
             }
         }
         else
@@ -860,8 +1130,8 @@ internal sealed class InstructionProcessor
 
         var memoryOperandDescriptor = new MemoryOperandDescriptor()
         {
-            Kind = OperandDescriptorKind.Memory,
-            MemoryOperandKind = kind,
+            Kind = Arm64OperandKind.Memory,
+            MemoryEncodingKind = kind,
             Name = "mem", // TODO: name it better between src/dst
             FixedValue = fixedValue,
             IsPreIncrement = operand.HasBang,
@@ -896,7 +1166,7 @@ internal sealed class InstructionProcessor
 
     }
 
-    static MemoryOperandExtendKind DetectExtendKind(Instruction instruction, OperandItem extend, OperandItem amount)
+    static Arm64MemoryExtendEncodingKind DetectMemoryExtendKind(Instruction instruction, OperandItem extend, OperandItem amount)
     {
         var extendSymbol = extend.TextElements[0].Symbol!;
         var amountSymbol = amount.TextElements[0].Symbol!;
@@ -904,25 +1174,28 @@ internal sealed class InstructionProcessor
         var extendBitRange = instruction.BitRangeMap[extendSymbol.BitInfos[0].Name];
         var amountBitRange = instruction.BitRangeMap[amountSymbol.BitInfos[0].Name];
 
+        // The bits are always at the same location, so we don't need to encode them
+        // But we just verify it here
         Debug.Assert(extendBitRange.HiBit == 15 && extendBitRange.Width == 3);
         Debug.Assert(amountBitRange.HiBit == 12 && amountBitRange.Width == 1);
 
-        MemoryOperandExtendKind extendKind = MemoryOperandExtendKind.NoLsl;
+        Arm64MemoryExtendEncodingKind extendKind = Arm64MemoryExtendEncodingKind.NoLsl;
 
         if (extendSymbol.BitValues.Count == 3)
         {
-            extendKind = MemoryOperandExtendKind.NoLsl;
+            extendKind = Arm64MemoryExtendEncodingKind.NoLsl;
         }
         else
         {
             Debug.Assert(extendSymbol.BitValues.Count == 4);
             Debug.Assert(amountSymbol.BitValues.Count == 2);
+            Debug.Assert(amountSymbol.BitValues[0].Value == "#0"); // Always 0
             extendKind = amountSymbol.BitValues[1].Value switch
             {
-                "#1" => MemoryOperandExtendKind.Shift1,
-                "#2" => MemoryOperandExtendKind.Shift2,
-                "#3" => MemoryOperandExtendKind.Shift3,
-                "#4" => MemoryOperandExtendKind.Shift4,
+                "#1" => Arm64MemoryExtendEncodingKind.Shift1,
+                "#2" => Arm64MemoryExtendEncodingKind.Shift2,
+                "#3" => Arm64MemoryExtendEncodingKind.Shift3,
+                "#4" => Arm64MemoryExtendEncodingKind.Shift4,
                 _ => throw new NotSupportedException($"Unsupported amount {amountSymbol.BitValues[1].Value}")
             };
         }
@@ -1011,6 +1284,42 @@ internal sealed class InstructionProcessor
             {
                 Debug.Assert(previousValue == bitValue);
             }
+        }
+    }
+
+    private sealed class ByteListEqualityComparer : IEqualityComparer<List<byte>>
+    {
+        public static ByteListEqualityComparer Instance { get; } = new();
+
+        public bool Equals(List<byte>? x, List<byte>? y)
+        {
+            if (x == null || y == null)
+            {
+                return x == y;
+            }
+            if (x.Count != y.Count)
+            {
+                return false;
+            }
+            for (int i = 0; i < x.Count; i++)
+            {
+                if (x[i] != y[i])
+                {
+                    return false;
+                }
+            }
+            return true;
+
+        }
+
+        public int GetHashCode(List<byte> obj)
+        {
+            var hashCode = obj.Count;
+            foreach (var b in obj)
+            {
+                hashCode = HashCode.Combine(hashCode, b);
+            }
+            return hashCode;
         }
     }
 }

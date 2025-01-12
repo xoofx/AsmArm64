@@ -3,7 +3,6 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 
 namespace AsmArm64.CodeGen;

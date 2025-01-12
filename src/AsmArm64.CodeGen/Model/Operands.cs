@@ -38,7 +38,7 @@ sealed class Operand
         for (int i = 0; i < Items.Count; i++)
         {
             var parameter = Items[i];
-            var isOptional = parameter is GroupOperandItem { IsOptional: true };
+            var isOptional = parameter is OptionalGroupOperandItem { IsOptional: true };
             if (isOptional)
             {
                 builder.Append('{');
@@ -79,20 +79,24 @@ enum OperandKind
 {
     Undefined,
     Register,
+    ConstAndImmediate,
     Immediate,
+    Const,
     Value,
     Enum,
     Memory,
-    Group,
+    OptionalGroup,
     RegisterGroup,
     Select,
 }
 
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "kind")]
 [JsonDerivedType(typeof(EnumOperandItem), typeDiscriminator: "enum")]
+[JsonDerivedType(typeof(ConstOperandItem), typeDiscriminator: "const")]
 [JsonDerivedType(typeof(ValueOperandItem), typeDiscriminator: "value")]
+[JsonDerivedType(typeof(ConstAndImmediateOperandItem), typeDiscriminator: "const-and-imm")]
 [JsonDerivedType(typeof(ImmediateOperandItem), typeDiscriminator: "imm")]
-[JsonDerivedType(typeof(GroupOperandItem), typeDiscriminator: "group")]
+[JsonDerivedType(typeof(OptionalGroupOperandItem), typeDiscriminator: "optional-group")]
 [JsonDerivedType(typeof(RegisterGroupOperandItem), typeDiscriminator: "reg-group")]
 [JsonDerivedType(typeof(RegisterOperandItem), typeDiscriminator: "reg")]
 [JsonDerivedType(typeof(SelectOperandItem), typeDiscriminator: "select")]
@@ -145,10 +149,12 @@ abstract class OperandItem(OperandItemKind kind)
 enum OperandItemKind
 {
     Register,
+    ConstAndImmediate,
     Immediate,
+    Const,
     Value,
     Enum,
-    Group,
+    OptionalGroup,
     RegisterGroup,
     Select,
 }
@@ -157,10 +163,15 @@ sealed class EnumOperandItem() : OperandItem(OperandItemKind.Enum);
 
 sealed class ValueOperandItem() : OperandItem(OperandItemKind.Value);
 
+sealed class ConstOperandItem() : OperandItem(OperandItemKind.Const);
+
 sealed class ImmediateOperandItem() : OperandItem(OperandItemKind.Immediate)
 {
     protected override void ToStringPrefix(StringBuilder builder) => builder.Append('#');
 }
+
+sealed class ConstAndImmediateOperandItem() : OperandItem(OperandItemKind.ConstAndImmediate);
+
 
 abstract class GroupOperandItemBase(OperandItemKind kind) : OperandItem(kind)
 {
@@ -181,7 +192,7 @@ abstract class GroupOperandItemBase(OperandItemKind kind) : OperandItem(kind)
 }
 
 
-sealed class GroupOperandItem() : GroupOperandItemBase(OperandItemKind.Group);
+sealed class OptionalGroupOperandItem() : GroupOperandItemBase(OperandItemKind.OptionalGroup);
 
 sealed class RegisterGroupOperandItem() : GroupOperandItemBase(OperandItemKind.RegisterGroup);
 
@@ -304,28 +315,28 @@ record EncodingBitValue
 
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "$kind")]
 [JsonDerivedType(typeof(RegisterOperandDescriptor), typeDiscriminator: "reg")]
-[JsonDerivedType(typeof(GroupRegisterOperandDescriptor), typeDiscriminator: "greg")]
+[JsonDerivedType(typeof(RegisterGroupOperandDescriptor), typeDiscriminator: "greg")]
 [JsonDerivedType(typeof(ImmediateOperandDescriptor), typeDiscriminator: "imm")]
 [JsonDerivedType(typeof(MemoryOperandDescriptor), typeDiscriminator: "mem")]
 abstract class OperandDescriptor
 {
-    public required OperandDescriptorKind Kind { get; init; }
+    public required Arm64OperandKind Kind { get; init; }
 
     public string Name { get; set; } = string.Empty;
 }
 
-sealed class GroupRegisterOperandDescriptor : OperandDescriptor
+sealed class RegisterGroupOperandDescriptor : OperandDescriptor
 {
-    public required int Size { get; set; }
+    public required int Count { get; set; }
 
     public required RegisterOperandDescriptor Register { get; init; }
 
-    public override string ToString() => $"Group{Size}({Register})";
+    public override string ToString() => $"Group{Count}({Register})";
 }
 
 sealed class ImmediateOperandDescriptor : OperandDescriptor
 {
-    public ImmediateKind ImmediateKind { get; set; }
+    public Arm64ImmediateEncodingKind ImmediateKind { get; set; }
 
     public int Size { get; set; }
 
@@ -352,13 +363,32 @@ sealed class ImmediateOperandDescriptor : OperandDescriptor
     }
 }
 
+sealed class ImmediateByteValuesOperandDescriptor : OperandDescriptor
+{
+    public int Size { get; set; }
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<BitRange> Encoding { get; } = new();
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<int> Values { get; } = new();
+
+    public override string ToString()
+    {
+        var builder = new StringBuilder();
+        builder.Append($"ByteValues {Name}, Size {Size}, Encoding: {string.Join(", ", Encoding)}, Values: [{string.Join(", ", Values)}]");
+        return builder.ToString();
+    }
+}
+
+
 sealed class MemoryOperandDescriptor : OperandDescriptor
 {
-    public MemoryOperandKind MemoryOperandKind { get; set; }
+    public Arm64MemoryEncodingKind MemoryEncodingKind { get; set; }
 
     public BitRange BaseRegister;
 
-    public MemoryOperandExtendKind ExtendKind { get; set; }
+    public Arm64MemoryExtendEncodingKind ExtendKind { get; set; }
 
     public sbyte FixedValue { get; set; }
 
@@ -368,82 +398,19 @@ sealed class MemoryOperandDescriptor : OperandDescriptor
     public List<BitRange> IndexRegisterOrImmediate { get; } = new();
 }
 
-
-enum MemoryOperandKind
+sealed class ShiftOperandDescriptor : OperandDescriptor
 {
-    None,
-    // 1 [Xd]!
-    // 1 [Xs]!
-    BaseRegisterXn,
-    // 1 [Xn|SP]
-    BaseRegister,
-    // 2 [Xn|SP,#-16]!
-    // 2 [Xn|SP,#-4]!
-    // 2 [Xn|SP,#-8]!
-    BaseRegisterAndFixedImmediate,
-    // 2 [Xn|SP,#imm]!
-    // 2 [Xn|SP,#simm]!
-    BaseRegisterXnOrSPAndImmediate,
-    // 2 [Xn|SP{,#imm}]
-    // 2 [Xn|SP{,#pimm}]
-    // 2 [Xn|SP{,#simm}]
-    // 2 [Xn|SP{,#simm}]!
-    BaseRegisterAndImmediateOptional,
-    // 3 [Xn|SP,(Wm|Xm){,extend,{amount}}]
-    BaseRegisterAndIndexWmOrXmAndExtendAndAmountOptional,
-    // 3 [Xn|SP,Xm{,LSLamount}]
-    BaseRegisterAndIndexXmAndLslAmount,
-    // 4 [Xn|SP,(Wm|Xm),extend,{amount}]
-    BaseRegisterAndIndexWmOrXmAndExtendAndAmount,
+    public Arm64ShiftEncodingKind ShiftKind { get; set; }
+    
+    public BitRange ShiftEncoding { get; set; }
+
+    public int AmountSize { get; set; }
+
+    public BitRange AmountEncoding { get; set; }
+
+
 }
 
-enum MemoryOperandExtendKind : byte
-{
-    /// <summary>
-    /// Option:
-    /// 010 = UXTW
-    /// 110 = SXTW
-    /// 111 = SXTX
-    /// Amount: 0 (bit 0, bit 1 is not possible)
-    /// </summary>
-    NoLsl = 0,
-    /// <summary>
-    /// Option:
-    /// 010 = UXTW
-    /// 011 = UXTX
-    /// 110 = SXTW
-    /// 111 = SXTX
-    /// Amount: 1 (when bit set)
-    /// </summary>
-    Shift1 = 1,
-    /// <summary>
-    /// Option:
-    /// 010 = UXTW
-    /// 011 = UXTX
-    /// 110 = SXTW
-    /// 111 = SXTX
-    /// Amount: 2 (when bit set)
-    /// </summary>
-    Shift2 = 2,
-    /// <summary>
-    /// Option:
-    /// 010 = UXTW
-    /// 011 = UXTX
-    /// 110 = SXTW
-    /// 111 = SXTX
-    /// Amount: 3 (when bit set)
-    /// </summary>
-    Shift3 = 3,
-    /// <summary>
-    /// Option:
-    /// 010 = UXTW
-    /// 011 = UXTX
-    /// 110 = SXTW
-    /// 111 = SXTX
-    /// Amount: 4 (when bit set)
-    /// </summary>
-    Shift4 = 4,
-}
 
 
 
@@ -478,10 +445,12 @@ sealed class DynamicRegisterSelector
 
 sealed class RegisterOperandDescriptor : OperandDescriptor
 {
-    public RegisterIndexEncodingKind RegisterIndexEncodingKind { get; set; }
+    public Arm64RegisterEncodingKind RegisterKind { get; set; }
+
+    public Arm64RegisterIndexEncodingKind RegisterIndexEncodingKind { get; set; }
 
     /// <summary>
-    /// If the operand kind is <see cref="OperandDescriptorKind.DynamicRegXOrW"/>, then the kind of register is selected dynamically
+    /// If the operand kind is <see cref="Arm64OperandKind.DynamicRegXOrW"/>, then the kind of register is selected dynamically
     /// </summary>
     public DynamicRegisterSelector? DynamicRegisterXOrWSelector { get; set; }
 
@@ -502,7 +471,7 @@ sealed class RegisterOperandDescriptor : OperandDescriptor
     public override string ToString()
     {
         var builder = new StringBuilder();
-        builder.Append(Kind);
+        builder.Append(RegisterKind);
 
         builder.Append('/');
         builder.Append(RegisterIndexEncodingKind);
@@ -512,7 +481,7 @@ sealed class RegisterOperandDescriptor : OperandDescriptor
             builder.Append($" {DynamicRegisterXOrWSelector}");
         }
 
-        if (Kind == OperandDescriptorKind.RegV && VectorArrangement != null)
+        if (RegisterKind == Arm64RegisterEncodingKind.RegV && VectorArrangement != null)
         {
             builder.Append($".{VectorArrangement}");
         }
@@ -535,20 +504,17 @@ sealed class RegisterOperandDescriptor : OperandDescriptor
     }
 }
 
-
-
-
 readonly record struct BitRange(int HiBit, int Width)
 {
     public override string ToString() => $"({HiBit}:{Width})";
 }
 
-readonly record struct BitValueToRegister(string BitValues, OperandDescriptorKind RegisterKind)
+readonly record struct BitValueToRegister(string BitValues, Arm64RegisterEncodingKind RegisterKind)
 {
     public override string ToString() => $"{BitValues} -> {RegisterKind}";
 }
 
-readonly record struct VectorArrangementValue(RegisterVArrangementKind Kind, string BitValues)
+readonly record struct VectorArrangementValue(Arm64RegisterVectorArrangementEncodingKind Kind, string BitValues)
 {
     public override string ToString() => $"{Kind} = {BitValues}";
 }
@@ -556,7 +522,7 @@ readonly record struct VectorArrangementValue(RegisterVArrangementKind Kind, str
 record VectorArrangement
 {
     private int _vectorArrangementValuesIndex;
-    public RegisterVArrangementKind ArrangementKind { get; set; }
+    public Arm64RegisterVectorArrangementEncodingKind ArrangementKind { get; set; }
 
     public int EncodingSize { get; set; }
 
@@ -734,215 +700,4 @@ sealed class VectorArrangementValues : List<VectorArrangementValue>
         builder.Append("}");
         return builder.ToString();
     }
-}
-
-[JsonConverter(typeof(JsonStringEnumConverter))]
-internal enum OperandDescriptorKind
-{
-    None,
-    /// <summary>
-    /// 64-bit register
-    /// </summary>
-    RegX,
-    /// <summary>
-    /// 64-bit register or SP (stack pointer)
-    /// </summary>
-    RegXOrSP,
-    /// <summary>
-    /// 32-bit register
-    /// </summary>
-    RegW,
-    /// <summary>
-    /// 32-bit register or WSP (stack pointer)
-    /// </summary>
-    RegWOrWSP,
-    /// <summary>
-    /// Either X or W depending on some encoding
-    /// </summary>
-    DynamicRegXOrW,
-    /// <summary>
-    /// Either B, H, S depending on some encoding
-    /// </summary>
-    DynamicRegVScalar,
-    /// <summary>
-    /// 8-bit register from vector registers
-    /// </summary>
-    RegB,
-    /// <summary>
-    /// 16-bit floating point register from vector registers
-    /// </summary>
-    RegH,
-    /// <summary>
-    /// 32-bit floating point register from vector registers
-    /// </summary>
-    RegS,
-    /// <summary>
-    /// 64-bit floating point register from vector registers
-    /// </summary>
-    RegD,
-    /// <summary>
-    /// Vector register (128-bit)
-    /// </summary>
-    RegV,
-    /// <summary>
-    /// Vector register (128-bit)
-    /// </summary>
-    RegQ,
-    /// <summary>
-    /// SVE register
-    /// </summary>
-    RegZ,
-    MultiReg1,
-    MultiReg2,
-    MultiReg3,
-    MultiReg4,
-    /// <summary>
-    /// An immediate
-    /// </summary>
-    Immediate,
-    /// <summary>
-    /// A memory operand
-    /// </summary>
-    Memory,
-}
-
-[JsonConverter(typeof(JsonStringEnumConverter))]
-internal enum RegisterIndexEncodingKind : byte
-{
-    /// <summary>
-    /// No encoding. The register is fixed.
-    /// </summary>
-    None,
-    /// <summary>
-    /// 5 bit
-    /// </summary>
-    Regular5,
-    /// <summary>
-    /// 4 bit
-    /// </summary>
-    Regular4,
-    /// <summary>
-    /// Special size:M:Rm encoding
-    /// size:(23:2),M:(20:1),Rm:(19:4)
-    /// With Size:
-    /// * BitFields = 00, Value = RESERVED
-    /// * BitFields = 01, Value = UInt('0':Rm)
-    /// * BitFields = 10, Value = UInt(M:Rm)
-    /// * BitFields = 11, Value = RESERVED
-    /// </summary>
-    SpecialMRm,
-}
-
-[JsonConverter(typeof(JsonStringEnumConverter))]
-internal enum RegisterVArrangementKind
-{
-    None,
-
-    /// <summary>
-    /// Dynamic
-    /// </summary>
-    T,
-    B,
-    H,
-    S,
-    D,
-
-    T_16B,
-    T_8B,
-    T_4B,
-    T_2B,
-
-    T_2H,
-    T_4H,
-    T_8H,
-
-    T_2S,
-    T_4S,
-
-    T_1D,
-    T_2D,
-
-    T_1Q,
-
-    Reserved,
-}
-
-
-enum ImmediateKind
-{
-    None,
-    /// <summary>
-    /// A regular immediate
-    /// </summary>
-    Regular,
-    /// <summary>
-    /// The immediate used for the shift operation by SIMD instructions (7 bits with special encoding)
-    /// immh [22:4] -> "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]"
-    /// </summary>
-    SimdBitShiftType0,
-    /// <summary>
-    /// The immediate used for the shift operation by SIMD instructions (7 bits with special encoding)
-    /// immh [22:4] -> "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = RESERVED]"
-    /// </summary>
-    SimdBitShiftType1,
-    /// <summary>
-    /// The immediate used for the shift operation by SIMD instructions (7 bits with special encoding)
-    /// immh [22:4] -> "[0001 = RESERVED,001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]"
-    /// </summary>
-    SimdBitShiftType2,
-    /// <summary>
-    /// The immediate used for the shift operation by SIMD instructions (7 bits with special encoding)
-    /// immh [22:4] -> "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = RESERVED]"
-    /// </summary>
-    SimdBitShiftType3,
-    /// <summary>
-    /// The immediate used for the shift operation by SIMD instructions (7 bits with special encoding)
-    /// immh [22:4] -> "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = UInt(immh:immb) - 64]"
-    /// </summary>
-    SimdBitShiftType4,
-    /// <summary>
-    /// Rotation encoded in 1 bit. [0 = 90,1 = 270]
-    /// </summary>
-    Rotate90Or270,
-    /// <summary>
-    /// Rotation encoded in 2 bits. [00 = 0,01 = 90,10 = 180,11 = 270]
-    /// </summary>
-    Rotate0Or90Or180Or270,
-    /// <summary>
-    /// A fixed value
-    /// </summary>
-    FixedInt,
-    /// <summary>
-    /// A fixed value that is a float
-    /// </summary>
-    FixedFloatZero,
-    /// <summary>
-    /// Depending on the bit set of the encoding 0 -> 8, 1 -> 16
-    /// </summary>
-    EnumAmount8Or16,
-    /// <summary>
-    /// Depending on the value set in the bits: 00 -> 8, 01 -> 16, 10 -> 32, 11 -> RESERVED.
-    /// </summary>
-    SimdLeftShift8Or16Or32,
-    /// <summary>
-    /// Special immediate #index Size: 5 in instruction id EXT_asimdext_only - [(30:1),(14:4)] - Selector: Q,imm4&lt;3>
-    /// 0:0 = UInt(imm4&lt;2:0>)
-    /// 0:1 = RESERVED
-    /// 1:x = UInt(imm4)
-    /// </summary>
-    SimdExtIndex,
-    /// <summary>
-    /// 64-bit immediate 'aaaaaaaabbbbbbbbccccccccddddddddeeeeeeeeffffffffgggggggghhhhhhhh'
-    /// </summary>
-    Imm64,
-    /// <summary>
-    /// A system register used my MRS and MSR.
-    /// </summary>
-    SystemRegister,
-    /// <summary>
-    /// A barrier operation limit used by DMB_bo_barriers and DSB_bo_barriers instructions.
-    /// </summary>
-    BarrierOperationLimit,
-    PrefetchOperation,
-    RangePrefetchOperation
 }

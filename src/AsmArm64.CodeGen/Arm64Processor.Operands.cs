@@ -174,24 +174,20 @@ partial class Arm64Processor
                 }
                 else if (c == '#')
                 {
-                    AddPendingParameter();
-
-                    if (index + 1 < text.Length && text[index + 1] == '0' && states.Peek().CurrentStateKind == ParsingStateKind.Optional)
+                    if (states.Peek().TextElements.Any(x => x.Symbol is not null))
                     {
-                        // We can discard this operand/parameter entirely as it is only used for informational purpose to indicate no base offsets
-                        index += 2;
+                        AddPendingParameter();
                     }
-                    else
+                    
+                    if (hasOptionalParameterAfterNextCommaOrImmediate)
                     {
-                        if (hasOptionalParameterAfterNextCommaOrImmediate)
-                        {
-                            states.Push(new ParsingState() { CurrentStateKind = ParsingStateKind.Optional });
-                            hasOptionalParameterAfterNextCommaOrImmediate = false;
-                        }
-
-                        states.Peek().TextElements.Add(new("#", null));
-                        index++;
+                        states.Push(new ParsingState() { CurrentStateKind = ParsingStateKind.Optional });
+                        hasOptionalParameterAfterNextCommaOrImmediate = false;
                     }
+
+                    bool hasTextBefore = states.Peek().TextElements.Count > 0;
+                    states.Peek().TextElements.Add(new(hasTextBefore ? " #" : "#", null));
+                    index++;
                 }
                 else if (c == '[')
                 {
@@ -309,7 +305,15 @@ partial class Arm64Processor
                     operandItem = new ImmediateOperandItem();
                     textElements.RemoveAt(0);
                 }
+                else if (textElements.Any(x => x.Text == " #"))
+                {
+                    operandItem = new ConstAndImmediateOperandItem();
+                }
                 else if (bitNames.Any(x => x.StartsWith("R", StringComparison.Ordinal)))
+                {
+                    operandItem = new RegisterOperandItem();
+                }
+                else if (bitNames.Count == 1 && bitNames[0].StartsWith("CR", StringComparison.Ordinal))
                 {
                     operandItem = new RegisterOperandItem();
                 }
@@ -317,7 +321,11 @@ partial class Arm64Processor
                 {
                     bool isEnum = elt0.Symbol is not null && elt0.Symbol.BitValues.Count > 0 && elt0.Symbol.BitValues.All(x => MatchEnum.IsMatch(x.Value));
                     // TODO: Detect Enum kind (e.g. LSL #<amount>)
-                    operandItem = isEnum ? new EnumOperandItem() : new ValueOperandItem();
+                    operandItem = isEnum
+                        ? new EnumOperandItem()
+                        : elt0.Symbol is null
+                            ? new ConstOperandItem()
+                            : new ValueOperandItem();
                 }
                 
                 operandItem.TextElements.AddRange(textElements);
@@ -339,7 +347,7 @@ partial class Arm64Processor
                     var register = operands[^1].Items[^1];
                     Debug.Assert(register.Indexer is null);
                     Debug.Assert(state.PendingParameters.Count == 1);
-                    register.Indexer = state.PendingParameters[0];
+                    register.Indexer = state.PendingParameters[^1];
                     state.PendingParameters.Clear();
                     break;
                 }
@@ -359,18 +367,15 @@ partial class Arm64Processor
                     if (popState)
                     {
                         // Don't create a group without parameters (can happen for {,#0} where #0 is discarded by the parser above)
-                        if (state.PendingParameters.Count > 0)
-                        {
-                            var allRegisters = state.PendingParameters.All(x => x.Kind == OperandItemKind.Register);
+                        var allRegisters = state.PendingParameters.All(x => x.Kind == OperandItemKind.Register);
 
-                            GroupOperandItemBase group = allRegisters
-                                ? new RegisterGroupOperandItem() { IsOptional = state.CurrentStateKind == ParsingStateKind.Optional }
-                                : new GroupOperandItem() { IsOptional = state.CurrentStateKind == ParsingStateKind.Optional };
-                            
-                            group.Items.AddRange(state.PendingParameters);
-                            state.PendingParameters.Clear();
-                            state.PendingParameters.Add(group);
-                        }
+                        GroupOperandItemBase group = allRegisters
+                            ? new RegisterGroupOperandItem() { IsOptional = state.CurrentStateKind == ParsingStateKind.Optional }
+                            : new OptionalGroupOperandItem() { IsOptional = state.CurrentStateKind == ParsingStateKind.Optional };
+                        
+                        group.Items.AddRange(state.PendingParameters);
+                        state.PendingParameters.Clear();
+                        state.PendingParameters.Add(group);
                     }
                     break;
                 case ParsingStateKind.Parenthesis:
@@ -386,23 +391,26 @@ partial class Arm64Processor
 
             if (popState)
             {
-                // Propagate parameters to the parent state
-                states.Peek().PendingParameters.AddRange(state.PendingParameters);
+                var parentPendingParameters = states.Peek().PendingParameters;
+                parentPendingParameters.AddRange(state.PendingParameters);
                 state.PendingParameters.Clear();
             }
+            
 
             if (states.Count == 1 && states.Peek().PendingParameters.Count > 0)
             {
-                var pendingParameters = states.Peek().PendingParameters;
-                var kind = pendingParameters[0].Kind;
+                var rootPendingParameters = states.Peek().PendingParameters;
+                var kind = rootPendingParameters[0].Kind;
 
                 OperandKind operandKind = kind switch
                 {
+                    OperandItemKind.ConstAndImmediate => OperandKind.ConstAndImmediate,
                     OperandItemKind.Immediate => OperandKind.Immediate,
                     OperandItemKind.Register => OperandKind.Register,
+                    OperandItemKind.Const => OperandKind.Const,
                     OperandItemKind.Value => OperandKind.Value,
                     OperandItemKind.Enum => OperandKind.Enum,
-                    OperandItemKind.Group => OperandKind.Group,
+                    OperandItemKind.OptionalGroup => OperandKind.OptionalGroup,
                     OperandItemKind.RegisterGroup => OperandKind.RegisterGroup,
                     OperandItemKind.Select => OperandKind.Select,
                     _ => throw new ArgumentOutOfRangeException()
@@ -410,10 +418,10 @@ partial class Arm64Processor
 
                 // Add the operand
                 var operand = new Operand() { Kind = operandKind };
-                operand.Items.AddRange(pendingParameters);
+                operand.Items.AddRange(rootPendingParameters);
                 operands.Add(operand);
 
-                pendingParameters.Clear();
+                rootPendingParameters.Clear();
             }
         }
     }
@@ -551,7 +559,6 @@ partial class Arm64Processor
         public List<OperandText> TextElements { get; } = new();
 
         public List<OperandItem> PendingParameters { get; } = new();
-
 
         public override string ToString() => $"{CurrentStateKind} Parameters: ({string.Join(",", PendingParameters)})";
     }

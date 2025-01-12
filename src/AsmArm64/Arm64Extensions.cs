@@ -12,6 +12,22 @@ namespace AsmArm64;
 /// </summary>
 public static partial class Arm64Extensions
 {
+    private static readonly string[] ShiftTypeLower =
+    [
+        "lsl",
+        "lsr",
+        "asr",
+        "ror"
+    ];
+
+    private static readonly string[] ShiftTypeUpper =
+    [
+        "LSL",
+        "LSR",
+        "ASR",
+        "ROR"
+    ];
+    
     /// <summary>
     /// Gets the text representation of the specified <see cref="Arm64Mnemonic"/>.
     /// </summary>
@@ -20,6 +36,15 @@ public static partial class Arm64Extensions
     /// <returns>The upper text representation of the specified <see cref="Arm64Mnemonic"/>.</returns>
     public static string ToText(this Arm64Mnemonic mnemonic, bool upperCase = false) => upperCase ? MnemonicUpperTable[(int)mnemonic] : MnemonicLowerTable[(int)mnemonic];
 
+    /// <summary>
+    /// Gets the text representation of the specified <see cref="Arm64ShiftType"/>.
+    /// </summary>
+    /// <param name="shiftType"></param>
+    /// <param name="upperCase"></param>
+    /// <returns></returns>
+    public static string ToText<T>(this T shiftType, bool upperCase = false) where T : IArm64ShiftType
+        => upperCase ? ShiftTypeUpper[(int)shiftType.ShiftType] : ShiftTypeLower[(int)shiftType.ShiftType];
+    
     /// <summary>
     /// Validates the range of a register index.
     /// </summary>

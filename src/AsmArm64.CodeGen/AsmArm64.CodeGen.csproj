@@ -9,6 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\AsmArm64\Arm64ImmediateEncodingKind.cs" Link="Model\Arm64ImmediateEncodingKind.cs" />
+    <Compile Include="..\AsmArm64\Arm64MemoryEncodingKind.cs" Link="Model\Arm64MemoryEncodingKind.cs" />
+    <Compile Include="..\AsmArm64\Arm64MemoryExtendEncodingKind.cs" Link="Model\Arm64MemoryExtendEncodingKind.cs" />
+    <Compile Include="..\AsmArm64\Arm64OperandKind.cs" Link="Model\Arm64OperandKind.cs" />
+    <Compile Include="..\AsmArm64\Arm64RegisterEncodingKind.cs" Link="Model\Arm64RegisterEncodingKind.cs" />
+    <Compile Include="..\AsmArm64\Arm64RegisterIndexEncodingKind.cs" Link="Model\Arm64RegisterIndexEncodingKind.cs" />
+    <Compile Include="..\AsmArm64\Arm64RegisterVectorArrangementEncodingKind.cs" Link="Model\Arm64RegisterVectorArrangementEncodingKind.cs" />
+    <Compile Include="..\AsmArm64\Arm64ShiftEncodingKind.cs" Link="Model\Arm64ShiftEncodingKind.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Spectre.Console" />
   </ItemGroup>
 

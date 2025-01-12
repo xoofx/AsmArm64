@@ -86,7 +86,7 @@ public partial class Arm64Processor
         var processor = new InstructionProcessor(isa);
         processor.DumpAllOperands();
 
-        processor.ProcessRegisterKind();
+        processor.Run();
     }
 
     private void LoadInstructions()
@@ -286,6 +286,16 @@ public partial class Arm64Processor
                     InstructionClass = instrClass,
                 };
                 instruction.ArchVariants.AddRange(archVariants);
+
+                // Add doc vars
+                foreach (var docVar in parentDocVars)
+                {
+                    instruction.DocVars[docVar.Key] = docVar.Value;
+                }
+                foreach (var docVar in docVars)
+                {
+                    instruction.DocVars[docVar.Key] = docVar.Value;
+                }
 
                 mapEncodingIdToInfo.TryGetValue(encodingName, out var encodingInfo);
 
