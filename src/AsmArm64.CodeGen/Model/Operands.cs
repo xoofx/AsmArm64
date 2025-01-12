@@ -480,23 +480,30 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
     public Arm64RegisterIndexEncodingKind RegisterIndexEncodingKind { get; set; }
 
     /// <summary>
+    /// Only valid for Regular5 and Regular4
+    /// </summary>
+    public int LowBitIndexEncoding { get; set; }
+
+    /// <summary>
     /// If the operand kind is <see cref="Arm64RegisterEncodingKind.DynamicRegXOrW"/>, then the kind of register is selected dynamically
     /// </summary>
     public DynamicRegisterSelector? DynamicRegisterXOrWSelector { get; set; }
 
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<BitRange> IndexEncoding { get; } = new();
-
     public VectorArrangement? VectorArrangement { get; set; }
+
+    [JsonIgnore]
+    public bool IsSimpleEncoding => RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.SpecialMRm;
     
-    //[JsonIgnore]
-    //public bool HasFixedVectorArrangements
-    //{
-    //    get
-    //    {
-    //        return RegisterVectorArrangements.Count == 1 && !RegisterVectorArrangements[0].HasEncoding;
-    //    }
-    //}
+    public BitRange GetIndexEncoding()
+    {
+        if (!IsSimpleEncoding) throw new InvalidOperationException("Cannot get index encoding for non-simple encoding");
+        return RegisterIndexEncodingKind switch
+        {
+            Arm64RegisterIndexEncodingKind.Regular4 => new BitRange(LowBitIndexEncoding, 4),
+            Arm64RegisterIndexEncodingKind.Regular5 => new BitRange(LowBitIndexEncoding, 5),
+            _ => throw new InvalidOperationException("Cannot get index encoding for non-simple encoding")
+        };
+    }
 
     public override string ToString()
     {
@@ -516,26 +523,27 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
             builder.Append($".{VectorArrangement}");
         }
 
-        if (IndexEncoding.Count > 0)
+        if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Regular4)
         {
-            builder.Append('[');
-            for (int i = 0; i < IndexEncoding.Count; i++)
-            {
-                if (i > 0)
-                {
-                    builder.Append(',');
-                }
-                builder.Append(IndexEncoding[i]);
-            }
-            builder.Append(']');
+            builder.Append($"({LowBitIndexEncoding}:4)");
         }
-        
+        else if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Regular5)
+        {
+            builder.Append($"({LowBitIndexEncoding}:5)");
+        }
+
         return builder.ToString();
     }
 }
 
 readonly record struct BitRange(int LowBit, int Width)
 {
+    /// <summary>
+    /// If a bit range is small encoding, it can be encoded in a single byte (5 bits for LowBit, 3 bits for Width)
+    /// </summary>
+    [JsonIgnore]
+    public bool IsSmallEncoding => Width < 8; // Could be slightly improved if Width is encoded with always + 1
+    
     public override string ToString() => $"({LowBit}:{Width})";
 }
 
@@ -558,7 +566,7 @@ record VectorArrangement
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<BitRange> Encoding { get; } = new();
-
+    
     [JsonPropertyName("vaidx")]
     public int VectorArrangementValuesIndex
     {

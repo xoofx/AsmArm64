@@ -739,13 +739,17 @@ internal sealed class InstructionProcessor
             DynamicRegisterXOrWSelector = dynamicDescriptor
         };
 
+        
+
         var symbol = register.TextElements[indexOfIndexEncoding].Symbol;
         if (symbol is not null && symbol.BitInfos.Count > 0)
         {
-            int size = CollectEncodingForSymbol(instruction, symbol, descriptor.IndexEncoding);
+            var encoding = new List<BitRange>();
+            int size = CollectEncodingForSymbol(instruction, symbol, encoding);
 
-            if (symbol.BitValues.Count == 0 && (descriptor.IndexEncoding.Count == 1 && (size == 5 || size == 4)))
+            if (symbol.BitValues.Count == 0 && (encoding.Count == 1 && (size == 5 || size == 4)))
             {
+                descriptor.LowBitIndexEncoding = encoding[0].LowBit;
                 descriptor.RegisterIndexEncodingKind = size == 4
                     ? Arm64RegisterIndexEncodingKind.Regular4
                     : Arm64RegisterIndexEncodingKind.Regular5;
@@ -758,7 +762,7 @@ internal sealed class InstructionProcessor
                 // BitFields = 01, Value = UInt('0':Rm)
                 // BitFields = 10, Value = UInt(M:Rm)
                 // BitFields = 11, Value = RESERVED
-                var encodingSignature = $"Match `{string.Join(":", symbol.BitValueNames)}` {{{string.Join("|", symbol.BitValues)}}} - {string.Join(",", descriptor.IndexEncoding)}";
+                var encodingSignature = $"Match `{string.Join(":", symbol.BitValueNames)}` {{{string.Join("|", symbol.BitValues)}}} - {string.Join(",", encoding)}";
                 var expectedSignature = "Match `size` {BitFields = 00, Value = RESERVED|BitFields = 01, Value = UInt('0':Rm)|BitFields = 10, Value = UInt(M:Rm)|BitFields = 11, Value = RESERVED} - (22:2),(16:5)";
                 if (encodingSignature != expectedSignature)
                 {
@@ -771,8 +775,6 @@ internal sealed class InstructionProcessor
                 else
                 {
                     descriptor.RegisterIndexEncodingKind = Arm64RegisterIndexEncodingKind.SpecialMRm;
-                    // We don't need to store the bit, as we know it is a special encoding
-                    descriptor.IndexEncoding.Clear();
                 }
             }
         }
@@ -787,7 +789,7 @@ internal sealed class InstructionProcessor
         }
         
         ProcessIndexer(instruction, register);
-        
+
         return descriptor;
     }
 
@@ -865,7 +867,9 @@ internal sealed class InstructionProcessor
         if (symbol is not null && symbol.BitValues.Count > 0)
         {
             vectorArrangement.BitSize = CollectEncodingForSymbol(instruction, symbol, vectorArrangement.Encoding);
-            
+            Debug.Assert(vectorArrangement.Encoding.Count <= 2);
+            Debug.Assert(vectorArrangement.Encoding.All(x => x.IsSmallEncoding));
+
             var values = new VectorArrangementValues();
             foreach (var bitValue in symbol.BitValues)
             {
@@ -887,7 +891,7 @@ internal sealed class InstructionProcessor
             valuesAndCount.Variations.Add(vectorArrangement.Id);
             _vectorArrangementItemsUsage[id] = (valuesAndCount.Values, valuesAndCount.Variations,  valuesAndCount.Count + 1);
         }
-
+        
         return vectorArrangement;
     }
     
@@ -1194,9 +1198,9 @@ internal sealed class InstructionProcessor
                 Debug.Assert(selectOperandItem.Items.Count == 2);
                 var firstReg = ProcessRegister(instruction, (RegisterOperandItem)selectOperandItem.Items[0]);
                 var secondReg = ProcessRegister(instruction, (RegisterOperandItem)selectOperandItem.Items[1]);
-                Debug.Assert(firstReg.IndexEncoding.Count == 1);
-                Debug.Assert(secondReg.IndexEncoding.Count == 1);
-                Debug.Assert(firstReg.IndexEncoding[0] == secondReg.IndexEncoding[0]);
+                Debug.Assert(firstReg.RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.SpecialMRm);
+                Debug.Assert(secondReg.RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.SpecialMRm);
+                Debug.Assert(firstReg.LowBitIndexEncoding == secondReg.LowBitIndexEncoding);
                 kind = Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend;
                 indexRegisterOrImmediate = firstReg;
             }
@@ -1255,15 +1259,15 @@ internal sealed class InstructionProcessor
             ExtendKind = extendKind,
         };
 
-        Debug.Assert(baseRegister.IndexEncoding.Count == 1);
-        memoryOperandDescriptor.BaseRegister = baseRegister.IndexEncoding[0];
+        Debug.Assert(baseRegister.IsSimpleEncoding);
+        memoryOperandDescriptor.BaseRegister = baseRegister.GetIndexEncoding();
         Debug.Assert(memoryOperandDescriptor.BaseRegister.Width == 5);
 
         if (indexRegisterOrImmediate is RegisterOperandDescriptor indexDesc)
         {
-            Debug.Assert(indexDesc.IndexEncoding.Count ==  1);
-            memoryOperandDescriptor.IndexRegisterOrImmediate.Add(indexDesc.IndexEncoding[0]);
-            Debug.Assert(indexDesc.IndexEncoding[0].Width == 5);
+            Debug.Assert(indexDesc.IsSimpleEncoding);
+            memoryOperandDescriptor.IndexRegisterOrImmediate.Add(indexDesc.GetIndexEncoding());
+            Debug.Assert(indexDesc.RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Regular5);
         }
         else if (indexRegisterOrImmediate is ImmediateOperandDescriptor immediate)
         {
