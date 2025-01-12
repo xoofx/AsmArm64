@@ -78,11 +78,7 @@ enum Arm64ImmediateEncodingKind : byte
     /// A system register used my MRS and MSR.
     /// </summary>
     SystemRegister,
-    /// <summary>
-    /// A barrier operation limit used by DMB_bo_barriers and DSB_bo_barriers instructions.
-    /// </summary>
-    BarrierOperationLimit,
-    PrefetchOperation,
+
     RangePrefetchOperation,
     /// <summary>
     /// Option for ISB instruction

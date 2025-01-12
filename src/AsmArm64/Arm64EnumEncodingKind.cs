@@ -32,5 +32,14 @@ public enum Arm64EnumEncodingKind
     /// <summary>
     /// The PSTATE field used by MSR (immediate) instruction.
     /// </summary>
-    PStateField
+    PStateField,
+    /// <summary>
+    /// A barrier operation limit used by DMB_bo_barriers and DSB_bo_barriers instructions.
+    /// </summary>
+    BarrierOperationLimit,
+    /// <summary>
+    /// 
+    /// </summary>
+    PrefetchOperation,
+
 }

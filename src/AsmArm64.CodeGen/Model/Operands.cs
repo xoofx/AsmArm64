@@ -323,6 +323,8 @@ record EncodingBitValue
 [JsonDerivedType(typeof(ShiftOperandDescriptor), typeDiscriminator: "shift")]
 [JsonDerivedType(typeof(ExtendOperandDescriptor), typeDiscriminator: "extend")]
 [JsonDerivedType(typeof(EnumOperandDescriptor), typeDiscriminator: "enum")]
+[JsonDerivedType(typeof(PStateFieldOperandDescriptor), typeDiscriminator: "pstate")]
+[JsonDerivedType(typeof(ConstOperandDescriptor), typeDiscriminator: "const")]
 abstract class OperandDescriptor(Arm64OperandKind kind)
 {
     [JsonIgnore]
@@ -333,11 +335,18 @@ abstract class OperandDescriptor(Arm64OperandKind kind)
     public string Name { get; set; } = string.Empty;
 }
 
-sealed class RegisterGroupOperandDescriptor() : OperandDescriptor(Arm64OperandKind.RegisterGroup)
+interface IIndexableOperandDescriptor
+{
+    int IndexerId { get; set; }
+}
+
+sealed class RegisterGroupOperandDescriptor() : OperandDescriptor(Arm64OperandKind.RegisterGroup), IIndexableOperandDescriptor
 {
     public required int Count { get; set; }
 
     public required RegisterOperandDescriptor Register { get; init; }
+
+    public int IndexerId { get; set; }
 
     public override string ToString() => $"Group {Name}, Count: {Count}, {Register}";
 }
@@ -378,6 +387,10 @@ sealed class EnumOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Enum)
     public int BitSize { get; set; }
 
     public BitRange EnumEncoding { get; set; }
+
+    public bool AllowImmediate { get; set; }
+
+    public override string ToString() => $"Enum {Name}, Kind: {EnumKind}, Size {BitSize}, Encoding: {EnumEncoding}, AllowImmediate: {AllowImmediate}";
 }
 
 sealed class PStateFieldOperandDescriptor() : OperandDescriptor(Arm64OperandKind.PStateField);
@@ -435,6 +448,8 @@ sealed class ShiftOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Shift
     public BitRange ShiftEncoding { get; set; }
 
     public BitRange AmountEncoding { get; set; }
+
+    public override string ToString() => $"Shift {ShiftKind}, {ShiftEncoding}, {AmountEncoding}";
 }
 
 sealed class ExtendOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Extend)
@@ -442,6 +457,33 @@ sealed class ExtendOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Exte
     public BitRange ExtendEncoding { get; set; }
 
     public BitRange AmountEncoding { get; set; }
+
+    public override string ToString() => $"Extend {ExtendEncoding}, {AmountEncoding}";
+}
+
+sealed class ConstOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Const)
+{
+    public Arm64ConstEncodingKind ConstKind { get; set; }
+
+    public override string ToString() => $"Const {ConstKind}";
+}
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
+enum Arm64ConstEncodingKind : byte
+{
+    None,
+    /// <summary>
+    /// Used by instruction CHKFEAT_hf_hints -> CHKFEAT X16
+    /// </summary>
+    X16,
+    /// <summary>
+    /// Used by instruction: GCSB_hd_hints -> GCSB DSYNC
+    /// </summary>
+    DSYNC,
+    /// <summary>
+    /// Used by instruction: PSB_hc_hints -> PSB CSYNC and TSB_hc_hints -> TSB CSYNC
+    /// </summary>
+    CSYNC,
 }
 
 sealed class DynamicRegisterSelector
@@ -473,7 +515,7 @@ sealed class DynamicRegisterSelector
     }
 }
 
-sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Register)
+sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Register), IIndexableOperandDescriptor
 {
     public Arm64RegisterEncodingKind RegisterKind { get; set; }
 
@@ -493,14 +535,16 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
 
     [JsonIgnore]
     public bool IsSimpleEncoding => RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.SpecialMRm;
-    
+
+    public int IndexerId { get; set; }
+
     public BitRange GetIndexEncoding()
     {
         if (!IsSimpleEncoding) throw new InvalidOperationException("Cannot get index encoding for non-simple encoding");
         return RegisterIndexEncodingKind switch
         {
-            Arm64RegisterIndexEncodingKind.Regular4 => new BitRange(LowBitIndexEncoding, 4),
-            Arm64RegisterIndexEncodingKind.Regular5 => new BitRange(LowBitIndexEncoding, 5),
+            Arm64RegisterIndexEncodingKind.Std4 => new BitRange(LowBitIndexEncoding, 4),
+            Arm64RegisterIndexEncodingKind.Std5 => new BitRange(LowBitIndexEncoding, 5),
             _ => throw new InvalidOperationException("Cannot get index encoding for non-simple encoding")
         };
     }
@@ -518,16 +562,16 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
             builder.Append($" {DynamicRegisterXOrWSelector}");
         }
 
-        if (RegisterKind == Arm64RegisterEncodingKind.RegV && VectorArrangement != null)
+        if (RegisterKind == Arm64RegisterEncodingKind.V && VectorArrangement != null)
         {
             builder.Append($".{VectorArrangement}");
         }
 
-        if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Regular4)
+        if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Std4)
         {
             builder.Append($"({LowBitIndexEncoding}:4)");
         }
-        else if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Regular5)
+        else if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Std5)
         {
             builder.Append($"({LowBitIndexEncoding}:5)");
         }

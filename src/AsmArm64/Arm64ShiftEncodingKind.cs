@@ -33,5 +33,15 @@ enum Arm64ShiftEncodingKind : byte
     /// <summary>
     /// Only amount is encoded
     /// </summary>
-    Lsl
+    Lsl,
+
+    /// <summary>
+    /// Only amount is encoded. The amount is encoded in 1 or 2 bit and scaled by 8, giving [0, 8], or [0, 8, 16, 24]
+    /// </summary>
+    LslScale8,
+
+    /// <summary>
+    /// Only amount is encoded. The amount is encoded in 1 bit ((bit + 1) * 8) giving [8, 16]
+    /// </summary>
+    Msl
 }

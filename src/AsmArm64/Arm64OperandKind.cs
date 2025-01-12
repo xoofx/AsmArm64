@@ -52,5 +52,9 @@ public enum Arm64OperandKind : byte
     /// <summary>
     /// A PState field value used by MSR (immediate) instruction.
     /// </summary>
-    PStateField
+    PStateField,
+    /// <summary>
+    /// A const value but not actually a real operand.
+    /// </summary>
+    Const
 }

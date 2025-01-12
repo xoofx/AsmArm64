@@ -13,57 +13,57 @@ internal enum Arm64RegisterEncodingKind : byte
     /// <summary>
     /// 64-bit register
     /// </summary>
-    RegX,
+    X,
     /// <summary>
     /// 64-bit register or SP (stack pointer)
     /// </summary>
-    RegXOrSP,
+    XOrSP,
     /// <summary>
     /// 32-bit register
     /// </summary>
-    RegW,
+    W,
     /// <summary>
     /// 32-bit register or WSP (stack pointer)
     /// </summary>
-    RegWOrWSP,
+    WOrWSP,
     /// <summary>
     /// Either X or W depending on some encoding
     /// </summary>
-    DynamicRegXOrW,
+    DynamicXOrW,
     /// <summary>
     /// Either B, H, S depending on some encoding
     /// </summary>
-    DynamicRegVScalar,
+    DynamicVScalar,
     /// <summary>
     /// 8-bit register from vector registers
     /// </summary>
-    RegB,
+    B,
     /// <summary>
     /// 16-bit floating point register from vector registers
     /// </summary>
-    RegH,
+    H,
     /// <summary>
     /// 32-bit floating point register from vector registers
     /// </summary>
-    RegS,
+    S,
     /// <summary>
     /// 64-bit floating point register from vector registers
     /// </summary>
-    RegD,
+    D,
     /// <summary>
     /// Vector register (128-bit)
     /// </summary>
-    RegV,
+    V,
     /// <summary>
     /// Vector register (128-bit)
     /// </summary>
-    RegQ,
+    Q,
     /// <summary>
     /// SVE register
     /// </summary>
-    RegZ,
+    Z,
     /// <summary>
     /// Control register
     /// </summary>
-    RegC,
+    C,
 }

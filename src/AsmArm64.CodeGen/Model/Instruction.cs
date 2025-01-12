@@ -19,7 +19,16 @@ class Instruction : IJsonOnDeserialized
     
     public string Name { get; set; } = string.Empty;
 
-    public string Signature { get; set; } = string.Empty;
+    /// <summary>
+    /// Gets or sets the syntax of the operands of this instruction.
+    /// </summary>
+    public string OperandsSyntax { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Gets the full syntax of this instruction.
+    /// </summary>
+    [JsonIgnore]
+    public string FullSyntax => $"{Mnemonic,-11} {OperandsSyntax}";
 
     public string Filename { get; set; } = string.Empty;
 
@@ -123,7 +132,6 @@ class Instruction : IJsonOnDeserialized
     public void UpdateSignature()
     {
         var builder = new StringBuilder();
-        builder.Append($"{Mnemonic,-11} ");
         for (var i = 0; i < Operands.Count; i++)
         {
             var item = Operands[i];
@@ -145,7 +153,7 @@ class Instruction : IJsonOnDeserialized
             builder.Append(itemStr);
         }
 
-        Signature = builder.ToString();
+        OperandsSyntax = builder.ToString();
     }
 
     public void UpdateBitRangeMap()

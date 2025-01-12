@@ -14,13 +14,13 @@ internal enum Arm64RegisterIndexEncodingKind : byte
     /// </summary>
     None,
     /// <summary>
-    /// 5 bit
+    /// Standard 5 bit encoding.
     /// </summary>
-    Regular5,
+    Std5,
     /// <summary>
-    /// 4 bit
+    /// Standard 4 bit encoding.
     /// </summary>
-    Regular4,
+    Std4,
     /// <summary>
     /// Special size:M:Rm encoding
     /// size:(23:2),M:(20:1),Rm:(19:4)

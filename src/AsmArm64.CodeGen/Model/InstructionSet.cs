@@ -17,6 +17,9 @@ class InstructionSet
     public List<VectorArrangementValues> VectorArrangementValues { get; } = new();
     
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<string> IndexerIdList { get; } = new();
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<Instruction> Instructions { get; } = new();
     
     private static readonly JsonSerializerOptions JsonOptions = new()
