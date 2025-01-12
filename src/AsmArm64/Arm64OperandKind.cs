@@ -9,6 +9,9 @@ namespace AsmArm64;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Arm64OperandKind : byte
 {
+    /// <summary>
+    /// Operand is not defined.
+    /// </summary>
     None,
     /// <summary>
     /// Register
@@ -42,4 +45,12 @@ public enum Arm64OperandKind : byte
     /// Shift.
     /// </summary>
     Extend,
+    /// <summary>
+    /// An enum value
+    /// </summary>
+    Enum,
+    /// <summary>
+    /// A PState field value used by MSR (immediate) instruction.
+    /// </summary>
+    PStateField
 }

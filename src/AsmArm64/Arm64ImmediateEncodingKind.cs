@@ -84,4 +84,8 @@ enum Arm64ImmediateEncodingKind : byte
     BarrierOperationLimit,
     PrefetchOperation,
     RangePrefetchOperation,
+    /// <summary>
+    /// Option for ISB instruction
+    /// </summary>
+    IsbOption,
 }

@@ -4,11 +4,13 @@
 
 using System.Diagnostics;
 using System.Text;
-using System.Xml;
 using AsmArm64.CodeGen.Model;
 
 namespace AsmArm64.CodeGen;
 
+/// <summary>
+/// This class is responsible for refining the operands of instructions parsed from the ARM XML files for precise encoding in an encoding table.
+/// </summary>
 internal sealed class InstructionProcessor
 {
     private readonly InstructionSet _instructionSet;
@@ -132,6 +134,9 @@ internal sealed class InstructionProcessor
                             operand.Descriptor = ProcessValue(instruction, selectedValue);
                             break;
                         case OperandKind.Enum:
+                            Debug.Assert(operand.Items.Count == 1);
+                            var enumOperand = (EnumOperandItem)operand.Items[0];
+                            operand.Descriptor = ProcessEnum(instruction, enumOperand);
                             break;
                         case OperandKind.OptionalGroup:
                             Debug.Assert(operand.Items.Count == 1);
@@ -194,6 +199,74 @@ internal sealed class InstructionProcessor
         }
     }
 
+    private OperandDescriptor? ProcessEnum(Instruction instruction, EnumOperandItem enumOperand)
+    {
+        var elt0 = enumOperand.TextElements[0];
+        var name0 = elt0.Text;
+        var symbol0 = elt0.Symbol!;
+
+        var bitValuesId = $"[{string.Join("\n", symbol0.BitValues.Select(x => $"({x})"))}]";
+        if (name0 == "cond" || name0 == "condlabel")
+        {
+            const string expectedId =
+                "[(BitFields = 0000, Value = EQ)\n(BitFields = 0001, Value = NE)\n(BitFields = 0010, Value = CS)\n(BitFields = 0011, Value = CC)\n(BitFields = 0100, Value = MI)\n(BitFields = 0101, Value = PL)\n(BitFields = 0110, Value = VS)\n(BitFields = 0111, Value = VC)\n(BitFields = 1000, Value = HI)\n(BitFields = 1001, Value = LS)\n(BitFields = 1010, Value = GE)\n(BitFields = 1011, Value = LT)\n(BitFields = 1100, Value = GT)\n(BitFields = 1101, Value = LE)\n(BitFields = 1110, Value = AL)\n(BitFields = 1111, Value = NV)]";
+            Debug.Assert(bitValuesId == expectedId);
+
+            var enumOperandDescriptor = new EnumOperandDescriptor()
+            {
+                EnumKind = Arm64EnumEncodingKind.Conditional,
+                Name = name0,
+                BitSize = 4,
+            };
+
+            var encoding = new List<BitRange>();
+            var size = CollectEncodingForSymbol(instruction, symbol0, encoding);
+            Debug.Assert(size == 4);
+            Debug.Assert(encoding.Count == 1);
+            enumOperandDescriptor.EnumEncoding = encoding[0];
+
+            return enumOperandDescriptor;
+        }
+        else if (instruction.Id == "DSB_bon_barriers")
+        {
+            var enumOperandDescriptor = new EnumOperandDescriptor
+            {
+                EnumKind = Arm64EnumEncodingKind.DataSynchronizationOption,
+                Name = name0,
+                BitSize = 4,
+                EnumEncoding = new BitRange(8, 4)
+            };
+
+            return enumOperandDescriptor;
+        }
+        else if (instruction.Id == "STSHH_hi_hints")
+        {
+            var enumOperandDescriptor = new EnumOperandDescriptor
+            {
+                EnumKind = Arm64EnumEncodingKind.StoredSharedHintPolicy,
+                Name = name0,
+                BitSize = 1,
+                EnumEncoding = new BitRange(5, 1)
+            };
+
+            return enumOperandDescriptor;
+        }
+        else if (instruction.Id == "MSR_si_pstate")
+        {
+            var enumOperandDescriptor = new EnumOperandDescriptor
+            {
+                EnumKind = Arm64EnumEncodingKind.PStateField,
+                Name = name0,
+                BitSize = 0, // Not encoded here, the encoding/decoding is more complicated so will be manually handled
+                EnumEncoding = default
+            };
+
+            return enumOperandDescriptor;
+        }
+
+        throw new InvalidOperationException($"Unsupported enum operand `{enumOperand}`");
+    }
+
     private OperandDescriptor ProcessOptionalGroup(Instruction instruction, OptionalGroupOperandItem optionalGroup)
     {
         var items = optionalGroup.Items;
@@ -212,9 +285,9 @@ internal sealed class InstructionProcessor
 
                 var shiftOperandDescriptor = new ShiftOperandDescriptor()
                 {
-                    Kind = Arm64OperandKind.Shift,
                     Name = name0,
                     ShiftKind = Arm64ShiftEncodingKind.Fixed,
+                    IsOptional = true,
                 };
 
                 var encoding = new List<BitRange>();
@@ -229,9 +302,9 @@ internal sealed class InstructionProcessor
             {
                 var shiftOperandDescriptor = new ShiftOperandDescriptor()
                 {
-                    Kind = Arm64OperandKind.Shift,
                     Name = name0,
                     ShiftKind = Arm64ShiftEncodingKind.Lsl,
+                    IsOptional = true,
                 };
 
                 if (item0.TextElements.Count == 3)
@@ -266,13 +339,29 @@ internal sealed class InstructionProcessor
             }
             else if (name0 == "targets")
             {
-                Console.WriteLine($"Instruction targets {instruction.Id,-30} {instruction.Signature}");
+                Debug.Assert(symbol0 is not null);
+                var encoding = new List<BitRange>();
+                CollectEncodingForSymbol(instruction, symbol0!, encoding);
+                Debug.Assert(encoding.Count == 1);
 
-                return null;
+                var bti = new EnumOperandDescriptor()
+                {
+                    EnumKind = Arm64EnumEncodingKind.Bti,
+                    Name = name0,
+                    IsOptional = true,
+                    EnumEncoding = encoding[0]
+                };
+
+                Debug.Assert(bti.EnumEncoding == new BitRange(5, 3));
+                // The `targets` is actually  encoded in bits [6:2], the bit 5 is zero
+                bti.EnumEncoding = new BitRange(6, 2);
+
+                return bti;
             }
             else if (name0 == "imm")
             {
                 var imm = ProcessImmediate(instruction, items[0]);
+                imm.IsOptional = true;
                 return imm;
             }
         }
@@ -289,8 +378,8 @@ internal sealed class InstructionProcessor
 
                 var extend = new ExtendOperandDescriptor()
                 {
-                    Kind = Arm64OperandKind.Extend,
                     Name = name0,
+                    IsOptional = true,
                 };
 
                 var encoding = new List<BitRange>();
@@ -312,9 +401,9 @@ internal sealed class InstructionProcessor
                 Debug.Assert(symbol0 is not null);
                 var shiftOperandDescriptor = new ShiftOperandDescriptor()
                 {
-                    Kind = Arm64OperandKind.Shift,
                     ShiftKind = Arm64ShiftEncodingKind.Shift3,
                     Name = name0,
+                    IsOptional = true,
                 };
 
                 Debug.Assert(symbol0 is not null && symbol0.BitValues.Count == 4 && symbol0.BitValues[0].Value == "LSL" && symbol0.BitValues[1].Value == "LSR" && symbol0.BitValues[2].Value == "ASR" && (
@@ -341,15 +430,25 @@ internal sealed class InstructionProcessor
             }
             else if (name0 == "option")
             {
-                Console.WriteLine($"Instruction option {instruction.Id,-30} {instruction.Signature}");
+                var isbOption = new ImmediateOperandDescriptor()
+                {
+                    ImmediateKind = Arm64ImmediateEncodingKind.IsbOption,
+                    Name = name0,
+                    IsOptional = true,
+                };
 
-                return null;
+                Debug.Assert(item1.TextElements[0].Symbol is not null);
+                var encoding = new List<BitRange>();
+                isbOption.BitSize = CollectEncodingForSymbol(instruction, item1.TextElements[0].Symbol!, encoding);
+                Debug.Assert(isbOption.BitSize == 4);
+                Debug.Assert(encoding.Count == 1);
+                isbOption.Encoding.AddRange(encoding);
+
+                return isbOption;
             }
         }
 
-        Debug.Assert(false, $"Unsupported optional group `{optionalGroup}` for instruction {instruction.Id}");
-
-        return null;
+        throw new InvalidOperationException($"Unsupported optional group `{optionalGroup}`");
     }
 
     /// <summary>
@@ -441,7 +540,6 @@ internal sealed class InstructionProcessor
 
                 var label = new LabelOperandDescriptor
                 {
-                    Kind = Arm64OperandKind.Label,
                     LabelKind = labelOffsetKind,
                     Name = name,
                     BitSize = immediate.BitSize
@@ -455,8 +553,6 @@ internal sealed class InstructionProcessor
             {
                 var descriptor = new ImmediateByteValuesOperandDescriptor()
                 {
-
-                    Kind = Arm64OperandKind.ImmediateByteValues,
                     Name = name,
                 };
                 descriptor.BitSize = CollectEncodingForSymbol(instruction, symbol, descriptor.Encoding);
@@ -493,7 +589,6 @@ internal sealed class InstructionProcessor
         var name = item0.TextElements[0];
         var immediate = new ImmediateOperandDescriptor()
         {
-            Kind = Arm64OperandKind.Immediate,
             Name = name.Text,
         };
 
@@ -640,7 +735,6 @@ internal sealed class InstructionProcessor
 
         var descriptor = new RegisterOperandDescriptor()
         {
-            Kind = Arm64OperandKind.Register,
             RegisterKind = kind,
             DynamicRegisterXOrWSelector = dynamicDescriptor
         };
@@ -876,7 +970,6 @@ internal sealed class InstructionProcessor
 
         var registerGroup = new RegisterGroupOperandDescriptor()
         {
-            Kind = Arm64OperandKind.RegisterGroup,
             Register = descriptors[0],
             Count = group.Items.Count,
         };
@@ -888,7 +981,6 @@ internal sealed class InstructionProcessor
     {
         var immediate = new ImmediateOperandDescriptor()
         {
-            Kind = Arm64OperandKind.Immediate,
             Name = item.GetName(),
         };
 
@@ -1156,7 +1248,6 @@ internal sealed class InstructionProcessor
 
         var memoryOperandDescriptor = new MemoryOperandDescriptor()
         {
-            Kind = Arm64OperandKind.Memory,
             MemoryEncodingKind = kind,
             Name = "mem", // TODO: name it better between src/dst
             FixedValue = fixedValue,

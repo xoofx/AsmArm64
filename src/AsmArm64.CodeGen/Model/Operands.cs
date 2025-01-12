@@ -313,7 +313,7 @@ record EncodingBitValue
     public override string ToString() => $"BitFields = {string.Join(":", BitFields)}, Value = {Value}";
 }
 
-[JsonPolymorphic(TypeDiscriminatorPropertyName = "$kind")]
+[JsonPolymorphic(TypeDiscriminatorPropertyName = "kind")]
 [JsonDerivedType(typeof(RegisterOperandDescriptor), typeDiscriminator: "reg")]
 [JsonDerivedType(typeof(RegisterGroupOperandDescriptor), typeDiscriminator: "greg")]
 [JsonDerivedType(typeof(ImmediateOperandDescriptor), typeDiscriminator: "imm")]
@@ -322,14 +322,18 @@ record EncodingBitValue
 [JsonDerivedType(typeof(ImmediateByteValuesOperandDescriptor), typeDiscriminator: "imm-values")]
 [JsonDerivedType(typeof(ShiftOperandDescriptor), typeDiscriminator: "shift")]
 [JsonDerivedType(typeof(ExtendOperandDescriptor), typeDiscriminator: "extend")]
-abstract class OperandDescriptor
+[JsonDerivedType(typeof(EnumOperandDescriptor), typeDiscriminator: "enum")]
+abstract class OperandDescriptor(Arm64OperandKind kind)
 {
-    public required Arm64OperandKind Kind { get; init; }
+    [JsonIgnore]
+    public Arm64OperandKind Kind { get; } = kind;
+
+    public bool IsOptional { get; set; }
 
     public string Name { get; set; } = string.Empty;
 }
 
-sealed class RegisterGroupOperandDescriptor : OperandDescriptor
+sealed class RegisterGroupOperandDescriptor() : OperandDescriptor(Arm64OperandKind.RegisterGroup)
 {
     public required int Count { get; set; }
 
@@ -338,7 +342,7 @@ sealed class RegisterGroupOperandDescriptor : OperandDescriptor
     public override string ToString() => $"Group {Name}, Count: {Count}, {Register}";
 }
 
-sealed class ImmediateOperandDescriptor : OperandDescriptor
+sealed class ImmediateOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Immediate)
 {
     public Arm64ImmediateEncodingKind ImmediateKind { get; set; }
 
@@ -367,7 +371,18 @@ sealed class ImmediateOperandDescriptor : OperandDescriptor
     }
 }
 
-sealed class LabelOperandDescriptor : OperandDescriptor
+sealed class EnumOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Enum)
+{
+    public Arm64EnumEncodingKind EnumKind { get; set; }
+
+    public int BitSize { get; set; }
+
+    public BitRange EnumEncoding { get; set; }
+}
+
+sealed class PStateFieldOperandDescriptor() : OperandDescriptor(Arm64OperandKind.PStateField);
+
+sealed class LabelOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Label)
 {
     public Arm64LabelEncodingKind LabelKind { get; set; }
 
@@ -379,7 +394,7 @@ sealed class LabelOperandDescriptor : OperandDescriptor
     public override string ToString() => $"Label {Name}, Kind: {LabelKind}, Size {BitSize}, Encoding: {string.Join(", ", Encoding)}";
 }
 
-sealed class ImmediateByteValuesOperandDescriptor : OperandDescriptor
+sealed class ImmediateByteValuesOperandDescriptor() : OperandDescriptor(Arm64OperandKind.ImmediateByteValues)
 {
     public int BitSize { get; set; }
 
@@ -397,7 +412,7 @@ sealed class ImmediateByteValuesOperandDescriptor : OperandDescriptor
     }
 }
 
-sealed class MemoryOperandDescriptor : OperandDescriptor
+sealed class MemoryOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Memory)
 {
     public Arm64MemoryEncodingKind MemoryEncodingKind { get; set; }
 
@@ -413,7 +428,7 @@ sealed class MemoryOperandDescriptor : OperandDescriptor
     public List<BitRange> IndexRegisterOrImmediate { get; } = new();
 }
 
-sealed class ShiftOperandDescriptor : OperandDescriptor
+sealed class ShiftOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Shift)
 {
     public Arm64ShiftEncodingKind ShiftKind { get; set; }
     
@@ -422,7 +437,7 @@ sealed class ShiftOperandDescriptor : OperandDescriptor
     public BitRange AmountEncoding { get; set; }
 }
 
-sealed class ExtendOperandDescriptor : OperandDescriptor
+sealed class ExtendOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Extend)
 {
     public BitRange ExtendEncoding { get; set; }
 
@@ -458,7 +473,7 @@ sealed class DynamicRegisterSelector
     }
 }
 
-sealed class RegisterOperandDescriptor : OperandDescriptor
+sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Register)
 {
     public Arm64RegisterEncodingKind RegisterKind { get; set; }
 
