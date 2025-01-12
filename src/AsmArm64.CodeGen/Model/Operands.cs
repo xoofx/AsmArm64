@@ -407,12 +407,7 @@ sealed class ShiftOperandDescriptor : OperandDescriptor
     public int AmountSize { get; set; }
 
     public BitRange AmountEncoding { get; set; }
-
-
 }
-
-
-
 
 sealed class DynamicRegisterSelector
 {
@@ -504,9 +499,9 @@ sealed class RegisterOperandDescriptor : OperandDescriptor
     }
 }
 
-readonly record struct BitRange(int HiBit, int Width)
+readonly record struct BitRange(int LowBit, int Width)
 {
-    public override string ToString() => $"({HiBit}:{Width})";
+    public override string ToString() => $"({LowBit}:{Width})";
 }
 
 readonly record struct BitValueToRegister(string BitValues, Arm64RegisterEncodingKind RegisterKind)

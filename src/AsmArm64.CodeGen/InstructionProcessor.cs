@@ -907,7 +907,7 @@ internal sealed class InstructionProcessor
             if (symbol.BitValues.Count != 0)
             {
                 var kind = $"[{string.Join(",", symbol.BitValues.Select(bitValue => $"{bitValue.BitFields[0]} = {bitValue.Value}"))}]";
-                if (immediate.Size == 7 && immediate.Encoding[0] == new BitRange(22, 7) && symbol.BitValues.Count == 4 && symbol.BitValueNames.Count == 1 && symbol.BitValueNames[0] == "immh")
+                if (immediate.Size == 7 && immediate.Encoding[0] == new BitRange(16, 7) && symbol.BitValues.Count == 4 && symbol.BitValueNames.Count == 1 && symbol.BitValueNames[0] == "immh")
                 {
                     switch (kind)
                     {
@@ -946,7 +946,7 @@ internal sealed class InstructionProcessor
                 }
                 else if (symbol.BitValueNames.Count == 1 && symbol.BitValueNames[0] == "cmode<0>" && immediate.Encoding.Count == 1)
                 {
-                    Debug.Assert(immediate.Encoding[0] == new BitRange(15,4));
+                    Debug.Assert(immediate.Encoding[0] == new BitRange(12,4));
                     immediate.ImmediateKind = Arm64ImmediateEncodingKind.EnumAmount8Or16;
                     immediate.Size = 1;
                     immediate.Encoding[0] = new BitRange(12, 1);
@@ -1213,16 +1213,16 @@ internal sealed class InstructionProcessor
             if (encoding.Count > 0)
             {
                 var previousEncoding = encoding[^1];
-                if (previousEncoding.HiBit - previousEncoding.Width == bitRangeInfo.HiBit)
+                if (previousEncoding.LowBit - 1 == bitRangeInfo.HiBit)
                 {
                     // Merge with previous encoding
-                    encoding[^1] = new(previousEncoding.HiBit, previousEncoding.Width + bitRangeInfo.Width);
+                    encoding[^1] = new(bitRangeInfo.HiBit - bitRangeInfo.Width + 1, previousEncoding.Width + bitRangeInfo.Width);
                     size += bitRangeInfo.Width;
                     continue;
                 }
             }
 
-            encoding.Add(new(bitRangeInfo.HiBit, bitRangeInfo.Width));
+            encoding.Add(new(bitRangeInfo.HiBit - bitRangeInfo.Width + 1, bitRangeInfo.Width));
             size += bitRangeInfo.Width;
         }
         
@@ -1245,16 +1245,16 @@ internal sealed class InstructionProcessor
             if (encoding.Count > 0)
             {
                 var previousEncoding = encoding[^1];
-                if (previousEncoding.HiBit - previousEncoding.Width == bitRangeInfo.HiBit)
+                if (previousEncoding.LowBit - 1 == bitRangeInfo.HiBit)
                 {
                     // Merge with previous encoding
-                    encoding[^1] = new(previousEncoding.HiBit, previousEncoding.Width + bitRangeInfo.Width);
+                    encoding[^1] = new(bitRangeInfo.HiBit - bitRangeInfo.Width + 1, previousEncoding.Width + bitRangeInfo.Width);
                     size += bitRangeInfo.Width;
                     continue;
                 }
             }
 
-            encoding.Add(new(bitRangeInfo.HiBit, bitRangeInfo.Width));
+            encoding.Add(new(bitRangeInfo.HiBit - bitRangeInfo.Width + 1, bitRangeInfo.Width));
             size += bitRangeInfo.Width;
         }
 
