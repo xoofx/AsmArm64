@@ -566,7 +566,10 @@ record VectorArrangement
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<BitRange> Encoding { get; } = new();
-    
+
+    /// <summary>
+    /// Gets or sets the index of the vector arrangement values in the <see cref="InstructionSet.VectorArrangementValues"/>
+    /// </summary>
     [JsonPropertyName("vaidx")]
     public int VectorArrangementValuesIndex
     {

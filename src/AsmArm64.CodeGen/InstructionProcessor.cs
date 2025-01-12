@@ -15,7 +15,7 @@ internal sealed class InstructionProcessor
 {
     private readonly InstructionSet _instructionSet;
     private readonly List<Instruction> _instructions;
-    private readonly Dictionary<string, (VectorArrangementValues Values, HashSet<string> Variations, int Count)> _vectorArrangementItemsUsage = new();
+    private readonly Dictionary<string, (VectorArrangementValues Values, HashSet<string> Variations, int Count, List<VectorArrangement> Arrangements)> _vectorArrangementItemsUsage = new();
     private readonly Dictionary<string, List<Instruction>> _memoryOperands = new();
     private readonly Dictionary<string, List<Instruction>> _immediateBitShiftSimdSpecial = new();
 
@@ -162,6 +162,11 @@ internal sealed class InstructionProcessor
         {
             var values = vectorArrangementItems.Value.Values;
             values.Index = _instructionSet.VectorArrangementValues.Count;
+
+            foreach (var descriptor in vectorArrangementItems.Value.Arrangements)
+            {
+                descriptor.VectorArrangementValuesIndex = values.Index;
+            }
 
             //Console.WriteLine($"[{values.Index}] VectorArrangement {vectorArrangementItems.Key} - {values}");
             //foreach (var variation in vectorArrangementItems.Value.Variations.Order())
@@ -738,9 +743,7 @@ internal sealed class InstructionProcessor
             RegisterKind = kind,
             DynamicRegisterXOrWSelector = dynamicDescriptor
         };
-
         
-
         var symbol = register.TextElements[indexOfIndexEncoding].Symbol;
         if (symbol is not null && symbol.BitInfos.Count > 0)
         {
@@ -883,13 +886,14 @@ internal sealed class InstructionProcessor
 
             if (!_vectorArrangementItemsUsage.TryGetValue(id, out var valuesAndCount))
             {
-                valuesAndCount = (values, new HashSet<string>(), 0);
+                valuesAndCount = (values, new HashSet<string>(), 0, new List<VectorArrangement>());
                 _vectorArrangementItemsUsage.Add(id, valuesAndCount);
             }
 
             vectorArrangement.Values = valuesAndCount.Values;
             valuesAndCount.Variations.Add(vectorArrangement.Id);
-            _vectorArrangementItemsUsage[id] = (valuesAndCount.Values, valuesAndCount.Variations,  valuesAndCount.Count + 1);
+            valuesAndCount.Arrangements.Add(vectorArrangement);
+            _vectorArrangementItemsUsage[id] = (valuesAndCount.Values, valuesAndCount.Variations,  valuesAndCount.Count + 1, valuesAndCount.Arrangements);
         }
         
         return vectorArrangement;
