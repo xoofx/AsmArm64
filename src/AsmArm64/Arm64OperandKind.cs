@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Can be encoded in 4 bits.
+/// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Arm64OperandKind : byte
 {
@@ -16,45 +19,49 @@ public enum Arm64OperandKind : byte
     /// <summary>
     /// Register
     /// </summary>
-    Register,
+    Register = 1,
     /// <summary>
     /// Register group {X0,X1...}
     /// </summary>
-    RegisterGroup,
+    RegisterGroup = 2,
     /// <summary>
     /// A memory operand
     /// </summary>
-    Memory,
+    Memory = 3,
     /// <summary>
     /// An immediate
     /// </summary>
-    Immediate,
+    Immediate = 4,
     /// <summary>
     /// Immediate byte values.
     /// </summary>
-    ImmediateByteValues,
+    ImmediateByteValues = 5,
+    /// <summary>
+    /// A fixed immediate value.
+    /// </summary>
+    FixedImmediate = 6,
     /// <summary>
     /// Label.
     /// </summary>
-    Label,
+    Label = 7,
     /// <summary>
     /// Shift.
     /// </summary>
-    Shift,
+    Shift = 8,
     /// <summary>
     /// Shift.
     /// </summary>
-    Extend,
+    Extend = 9,
     /// <summary>
     /// An enum value
     /// </summary>
-    Enum,
+    Enum = 10,
     /// <summary>
     /// A PState field value used by MSR (immediate) instruction.
     /// </summary>
-    PStateField,
+    PStateField = 11,
     /// <summary>
     /// A const value but not actually a real operand.
     /// </summary>
-    Const
+    Const = 12,
 }

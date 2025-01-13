@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.ObjectModel;
 using AsmArm64.CodeGen.Model.JsonHelpers;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -15,8 +16,14 @@ class Instruction : IJsonOnDeserialized
 {
     public string Id { get; set; } = string.Empty;
 
+    [JsonIgnore]
+    public int IdIndex { get; set; }
+
     public string Mnemonic { get; set; } = string.Empty;
-    
+
+    [JsonIgnore]
+    public int MnemonicIndex { get; set; }
+
     public string Name { get; set; } = string.Empty;
 
     /// <summary>
@@ -36,6 +43,9 @@ class Instruction : IJsonOnDeserialized
 
     public string InstructionClass { get; set; } = string.Empty;
 
+    [JsonIgnore]
+    public byte InstructionClassIndex { get; set; } 
+
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public Dictionary<string, string> DocVars { get; } = new();
     
@@ -50,8 +60,10 @@ class Instruction : IJsonOnDeserialized
 
     public bool IsBitFieldValueTestable { get; set; } = true;
 
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<ArchVariant> ArchVariants { get; } = new();
+    public FeatureExpression? FeatureRequirement { get; set; }
+
+    [JsonIgnore]
+    public int FeatureExpressionIdIndex { get; set; }
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<BitRangeInfo> BitRanges { get; } = new();
@@ -62,6 +74,18 @@ class Instruction : IJsonOnDeserialized
     [JsonIgnore]
     public Dictionary<string, BitRangeInfo> BitRangeMap { get; } = new();
 
+    public bool UseOperandUIntEncoding { get; set; }
+    
+    public void Encode(Span<byte> buffer)
+    {
+        MemoryMarshal.Write(buffer, (ushort)IdIndex);
+        MemoryMarshal.Write(buffer.Slice(2), (ushort)MnemonicIndex);
+        buffer[4] = (byte)InstructionClassIndex;
+        buffer[5] = (byte)FeatureExpressionIdIndex;
+        buffer[6] = (byte)Operands.Count;
+        buffer[7] = UseOperandUIntEncoding ? (byte)1 : (byte)0;
+    }
+    
     public void Add(BitRangeInfo bitRangeInfo)
     {
         var existingField = BitRanges.FirstOrDefault(x => x.HiBit == bitRangeInfo.HiBit && x.Width == bitRangeInfo.Width);

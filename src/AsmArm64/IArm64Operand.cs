@@ -2,8 +2,9 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
-using System.Text.Json.Serialization;
+namespace AsmArm64;
 
-namespace AsmArm64.CodeGen.Model;
-
-record ArchVariant(string Id, string Expression, string Name);
+public interface IArm64Operand
+{
+    Arm64OperandKind Kind { get; }
+}

@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Can be encoded in 5 bits
+/// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 enum Arm64ImmediateEncodingKind : byte
 {
@@ -13,75 +16,77 @@ enum Arm64ImmediateEncodingKind : byte
     /// <summary>
     /// A regular immediate
     /// </summary>
-    Regular,
+    Regular = 1,
     /// <summary>
     /// The immediate used for the shift operation by SIMD instructions (7 bits with special encoding)
     /// immh [22:4] -> "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]"
     /// </summary>
-    SimdBitShiftType0,
+    SimdBitShiftType0 = 2,
     /// <summary>
     /// The immediate used for the shift operation by SIMD instructions (7 bits with special encoding)
     /// immh [22:4] -> "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = RESERVED]"
     /// </summary>
-    SimdBitShiftType1,
+    SimdBitShiftType1 = 3,
     /// <summary>
     /// The immediate used for the shift operation by SIMD instructions (7 bits with special encoding)
     /// immh [22:4] -> "[0001 = RESERVED,001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]"
     /// </summary>
-    SimdBitShiftType2,
+    SimdBitShiftType2 = 4,
     /// <summary>
     /// The immediate used for the shift operation by SIMD instructions (7 bits with special encoding)
     /// immh [22:4] -> "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = RESERVED]"
     /// </summary>
-    SimdBitShiftType3,
+    SimdBitShiftType3 = 5,
     /// <summary>
     /// The immediate used for the shift operation by SIMD instructions (7 bits with special encoding)
     /// immh [22:4] -> "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = UInt(immh:immb) - 64]"
     /// </summary>
-    SimdBitShiftType4,
+    SimdBitShiftType4 = 6,
     /// <summary>
     /// Rotation encoded in 1 bit. [0 = 90,1 = 270]
     /// </summary>
-    Rotate90Or270,
+    Rotate90Or270 = 7,
     /// <summary>
     /// Rotation encoded in 2 bits. [00 = 0,01 = 90,10 = 180,11 = 270]
     /// </summary>
-    Rotate0Or90Or180Or270,
+    Rotate0Or90Or180Or270 = 8,
     /// <summary>
     /// A fixed value
     /// </summary>
-    FixedInt,
+    FixedInt = 9,
     /// <summary>
     /// A fixed value that is a float
     /// </summary>
-    FixedFloatZero,
+    FixedFloatZero = 10,
     /// <summary>
     /// Depending on the bit set of the encoding 0 -> 8, 1 -> 16
     /// </summary>
-    EnumAmount8Or16,
+    EnumAmount8Or16 = 11,
     /// <summary>
     /// Depending on the value set in the bits: 00 -> 8, 01 -> 16, 10 -> 32, 11 -> RESERVED.
     /// </summary>
-    SimdLeftShift8Or16Or32,
+    SimdLeftShift8Or16Or32 = 12,
     /// <summary>
     /// Special immediate #index Size: 5 in instruction id EXT_asimdext_only - [(30:1),(14:4)] - Selector: Q,imm4&lt;3>
     /// 0:0 = UInt(imm4&lt;2:0>)
     /// 0:1 = RESERVED
     /// 1:x = UInt(imm4)
     /// </summary>
-    SimdExtIndex,
+    SimdExtIndex = 13,
     /// <summary>
     /// 64-bit immediate 'aaaaaaaabbbbbbbbccccccccddddddddeeeeeeeeffffffffgggggggghhhhhhhh'
     /// </summary>
-    Imm64,
+    Imm64 = 14,
     /// <summary>
     /// A system register used my MRS and MSR.
     /// </summary>
-    SystemRegister,
+    SystemRegister = 15,
 
-    RangePrefetchOperation,
+    PStateField = 16,
+
+    RangePrefetchOperation = 17,
     /// <summary>
     /// Option for ISB instruction
     /// </summary>
-    IsbOption,
+    IsbOption = 18,
 }

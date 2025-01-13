@@ -9,15 +9,15 @@ using static Arm64Factory;
 
 public partial class Arm64Assembler
 {
-    public uint ADD(Arm64RegisterX xd, Arm64RegisterX xn, Arm64RegisterX xm, Arm64ShiftType shift = Arm64ShiftType.LSL, int amount = 0)
+    public uint ADD(Arm64RegisterX xd, Arm64RegisterX xn, Arm64RegisterX xm, Arm64ShiftKind shift = Arm64ShiftKind.LSL, int amount = 0)
     {
         if (amount > 10) throw new System.ArgumentOutOfRangeException(nameof(amount), "Amount must be in the range [0, 10]");
         return 0xFF00_0000 | ((uint)shift << 22) | ((uint)amount << 10) | ((uint)xn.Index << 5) | ((uint)xm.Index << 16) | ((uint)xd.Index << 0);
     }
 
-    public uint ADDS(Arm64RegisterX xd, Arm64RegisterX xn, Arm64RegisterX xm, Arm64ShiftType3 shift = default, int amount = 0)
+    public uint ADDS(Arm64RegisterX xd, Arm64RegisterX xn, Arm64RegisterX xm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
-        return 0xFF00_0000 | ((uint)shift.ShiftType << 22) | ((uint)amount << 10) | ((uint)xn.Index << 5) | ((uint)xm.Index << 16) | ((uint)xd.Index << 0);
+        return 0xFF00_0000 | ((uint)shift.ShiftKind << 22) | ((uint)amount << 10) | ((uint)xn.Index << 5) | ((uint)xm.Index << 16) | ((uint)xd.Index << 0);
     }
 
     public uint LDR(Arm64RegisterX xd, ReadOnlySpan<Arm64RegisterX> xs)

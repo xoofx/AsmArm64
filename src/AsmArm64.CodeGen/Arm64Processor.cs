@@ -23,19 +23,25 @@ public partial class Arm64Processor
     private readonly string _basedOutputFolder;
     private readonly string _basedOutputTestFolder;
 
+    private readonly InstructionSet _instructionSet = new();
     private readonly List<Instruction> _instructions;
-    private readonly Dictionary<string, string> _archVariantNameToArchitectureId = new();
+    private readonly InstructionProcessor _instructionProcessor;
+
+    private readonly Dictionary<string, string> _featureRequirementIdToArchitectureId = new();
     private readonly List<string> _features = new();
-    private readonly List<ArchVariant> _featureExpressions = new();
+    private readonly List<FeatureExpression> _featureExpressions = new();
     private readonly List<InstructionTrieNode> _allNodes = new();
+    private readonly Dictionary<string, int> _mapFeatureExpressionIdToIndex = new();
+
     private readonly TableGenEncoder _tableGenEncoder = new();
     private readonly Dictionary<uint, List<Instruction>> _instructionsWithSameBitValue;
 
     public Arm64Processor(string baseSpecsFolder)
     {
         _baseSpecsFolder = baseSpecsFolder;
-        _instructions = new List<Instruction>();
+        _instructions = _instructionSet.Instructions;
         _instructionsWithSameBitValue = new();
+        _instructionProcessor = new(_instructionSet);
 
         var basePath = Path.GetDirectoryName(AppContext.BaseDirectory); // src\AsmArm64.CodeGen\bin\Debug\net8.0
         basePath = Path.GetDirectoryName(basePath); // src\AsmArm64.CodeGen\bin\Debug
@@ -64,29 +70,28 @@ public partial class Arm64Processor
         //    Console.WriteLine($"Parameter: {paramName}");
         //}
 
-        var isa = new InstructionSet();
-        isa.Instructions.AddRange(_instructions);
-        ProcessInstructions(isa);
+        ProcessInstructions();
 
-        isa.WriteJson("instructions.json");
+        _instructionSet.WriteJson("instructions.json");
 
         //var isa2 = InstructionSet.ReadJson("instructions.json");
         //isa2.WriteJson("instructions2.json");
 
-        return;
+        //return;
 
         BuildTrie();
-        ExtractArchitecture();
+        
         GenerateCode();
     }
 
 
-    private void ProcessInstructions(InstructionSet isa)
+    private void ProcessInstructions()
     {
-        var processor = new InstructionProcessor(isa);
-        processor.DumpAllOperands();
+        _instructionProcessor.DumpAllOperands();
 
-        processor.Run();
+        ExtractArchitecture();
+
+        _instructionProcessor.Run();
     }
 
     private void LoadInstructions()
@@ -131,9 +136,6 @@ public partial class Arm64Processor
     
     private void BuildTrie()
     {
-        // Sort instructions by normalized name
-        _instructions.Sort((left, right) => string.Compare(left.Id, right.Id, CultureInfo.InvariantCulture, CompareOptions.Ordinal));
-
         var rootTrie = new InstructionTrieNode();
         _allNodes.Add(rootTrie);
         for (int i = 0; i < _instructions.Count; i++)
@@ -176,9 +178,15 @@ public partial class Arm64Processor
     private void PrintStatistics()
     {
         AnsiConsole.MarkupLine($"[green]Instructions[/]: {_instructions.Count}");
-        AnsiConsole.MarkupLine($"[green]Generated Table[/]: {_tableGenEncoder.Buffer.Length} bytes");
-        AnsiConsole.MarkupLine($"[green]Generated Table Size / Instruction[/]: {((double)_tableGenEncoder.Buffer.Length/_instructions.Count):0.00} bytes");
+        AnsiConsole.MarkupLine($"[green]Generated InstructionIdDecoder Table[/]: {_tableGenEncoder.Buffer.Length} bytes");
+        AnsiConsole.MarkupLine($"[green]Generated InstructionIdDecoder Table Size / Instruction[/]: {((double)_tableGenEncoder.Buffer.Length/_instructions.Count):0.00} bytes");
+        AnsiConsole.MarkupLine($"[green]Generated InstructionDecoder Table[/]: {_instructionProcessor.InstructionEncodingBuffer.Length} bytes");
+        AnsiConsole.MarkupLine($"[green]Generated InstructionDecoder Offsets Table[/]: {_instructionProcessor.InstructionEncodingOffsets.Count * 2} bytes");
 
+        var totalMemory = _tableGenEncoder.Buffer.Length + _instructionProcessor.InstructionEncodingBuffer.Length + _instructionProcessor.InstructionEncodingOffsets.Count * 2;
+        double totalMemoryPerInstruction = (double)totalMemory / (_instructions.Count + 1);
+        AnsiConsole.MarkupLine($"[green]Average Instruction Decoder Size / Instruction [/]: {totalMemoryPerInstruction:0.00} bytes");
+        
         int numberOfHash = 0;
         int minimumSizeHash = int.MaxValue;
         int maximumSizeHash = 0;
@@ -234,7 +242,7 @@ public partial class Arm64Processor
         {
             var regDiagrams = iclass.Descendants("regdiagram").First();
             var parentDocVars = GetDocVars(iclass);
-            var archVariants = GetArchVariants(iclass);
+            var archVariants = GetFeatureExpressions(iclass);
 
             string? baseInstrClass = null;
             parentDocVars.TryGetValue("instr-class", out baseInstrClass);
@@ -285,8 +293,12 @@ public partial class Arm64Processor
                     Summary = summary,
                     InstructionClass = instrClass,
                 };
-                instruction.ArchVariants.AddRange(archVariants);
-
+                Debug.Assert(archVariants.Count <= 1);
+                if (archVariants.Count == 1)
+                {
+                    instruction.FeatureRequirement = archVariants[0];
+                }
+                
                 // Add doc vars
                 foreach (var docVar in parentDocVars)
                 {
@@ -380,10 +392,10 @@ public partial class Arm64Processor
         return dict;
     }
 
-    private static List<ArchVariant> GetArchVariants(XElement element)
+    private static List<FeatureExpression> GetFeatureExpressions(XElement element)
     {
         var archVariantElement = element.Element("arch_variants");
-        var list = new List<ArchVariant>();
+        var list = new List<FeatureExpression>();
         if (archVariantElement is not null)
         {
             var archVariants = archVariantElement.Descendants("arch_variant");
@@ -393,7 +405,7 @@ public partial class Arm64Processor
                 var name = archVariant.Attribute("name")?.Value;
                 if (feature != null && name != null)
                 {
-                    list.Add(new ArchVariant(GetFeatureExpressionId(feature), feature, name));
+                    list.Add(new FeatureExpression(GetFeatureExpressionId(feature), feature, name));
                 }
             }
         }
@@ -511,14 +523,15 @@ public partial class Arm64Processor
 
     private void ExtractArchitecture()
     {
-        var distinctArchVariant = new Dictionary<string, List<ArchVariant>>();
+        var distinctArchVariant = new Dictionary<string, List<FeatureExpression>>();
         foreach (var instruction in _instructions)
         {
-            foreach (var archVariant in instruction.ArchVariants)
+            var archVariant = instruction.FeatureRequirement;
+            if (archVariant != null)
             {
                 if (!distinctArchVariant.TryGetValue(archVariant.Id, out var list))
                 {
-                    list = new List<ArchVariant>();
+                    list = new List<FeatureExpression>();
                     distinctArchVariant.Add(archVariant.Id, list);
                 }
 
@@ -533,9 +546,9 @@ public partial class Arm64Processor
 
                     string? archName = GetNormalizedArchName(archVariant.Name);
 
-                    if (archName != null && !_archVariantNameToArchitectureId.ContainsKey(archVariant.Name))
+                    if (archName != null && !_featureRequirementIdToArchitectureId.ContainsKey(archVariant.Name))
                     {
-                        _archVariantNameToArchitectureId.Add(archVariant.Name, archName);
+                        _featureRequirementIdToArchitectureId.Add(archVariant.Name, archName);
                     }
                 }
             }
@@ -569,6 +582,22 @@ public partial class Arm64Processor
 
         _features.Sort(string.CompareOrdinal);
         _featureExpressions.Sort((a, b) => string.CompareOrdinal(a.Id, b.Id));
+
+        var featureExpressionIds = _featureExpressions.Select(x => x.Id).ToList();
+        
+        for (var i = 0; i < featureExpressionIds.Count; i++)
+        {
+            _mapFeatureExpressionIdToIndex.Add(featureExpressionIds[i], i + 1);
+        }
+
+        foreach (var instruction in _instructions)
+        {
+            var featureRequirement = instruction.FeatureRequirement;
+            if (featureRequirement != null)
+            {
+                instruction.FeatureExpressionIdIndex = _mapFeatureExpressionIdToIndex[featureRequirement.Id];
+            }
+        }
     }
 
     private static string GetFeatureExpressionId(string feature)

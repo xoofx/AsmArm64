@@ -23,8641 +23,8641 @@ public enum Arm64InstructionId : ushort
     /// <summary>
     /// Instruction `ABS` - Absolute value.
     /// </summary>
-    ABS_32_dp_1src,
+    ABS_32_dp_1src = 1,
     /// <summary>
     /// Instruction `ABS` - Absolute value.
     /// </summary>
-    ABS_64_dp_1src,
+    ABS_64_dp_1src = 2,
     /// <summary>
     /// Instruction `ABS` - Absolute value (vector).
     /// </summary>
-    ABS_asimdmisc_r,
+    ABS_asimdmisc_r = 3,
     /// <summary>
     /// Instruction `ABS` - Absolute value (vector).
     /// </summary>
-    ABS_asisdmisc_r,
+    ABS_asisdmisc_r = 4,
     /// <summary>
     /// Instruction `ADCS` - Add with carry, setting flags.
     /// </summary>
-    ADCS_32_addsub_carry,
+    ADCS_32_addsub_carry = 5,
     /// <summary>
     /// Instruction `ADCS` - Add with carry, setting flags.
     /// </summary>
-    ADCS_64_addsub_carry,
+    ADCS_64_addsub_carry = 6,
     /// <summary>
     /// Instruction `ADC` - Add with carry.
     /// </summary>
-    ADC_32_addsub_carry,
+    ADC_32_addsub_carry = 7,
     /// <summary>
     /// Instruction `ADC` - Add with carry.
     /// </summary>
-    ADC_64_addsub_carry,
+    ADC_64_addsub_carry = 8,
     /// <summary>
     /// Instruction `ADDG` - Add with tag.
     /// </summary>
-    ADDG_64_addsub_immtags,
+    ADDG_64_addsub_immtags = 9,
     /// <summary>
     /// Instruction `ADDHN` - Add returning high narrow.
     /// </summary>
-    ADDHN_asimddiff_n,
+    ADDHN_asimddiff_n = 10,
     /// <summary>
     /// Instruction `ADDPT` - Add checked pointer.
     /// </summary>
-    ADDPT_64_addsub_pt,
+    ADDPT_64_addsub_pt = 11,
     /// <summary>
     /// Instruction `ADDP` - Add pairwise (vector).
     /// </summary>
-    ADDP_asimdsame_only,
+    ADDP_asimdsame_only = 12,
     /// <summary>
     /// Instruction `ADDP` - Add pair of elements (scalar).
     /// </summary>
-    ADDP_asisdpair_only,
+    ADDP_asisdpair_only = 13,
     /// <summary>
     /// Instruction `ADDS` - Add optionally-shifted register, setting flags.
     /// </summary>
-    ADDS_32_addsub_shift,
+    ADDS_32_addsub_shift = 14,
     /// <summary>
     /// Instruction `ADDS` - Add extended and scaled register, setting flags.
     /// </summary>
-    ADDS_32s_addsub_ext,
+    ADDS_32s_addsub_ext = 15,
     /// <summary>
     /// Instruction `ADDS` - Add immediate value, setting flags.
     /// </summary>
-    ADDS_32s_addsub_imm,
+    ADDS_32s_addsub_imm = 16,
     /// <summary>
     /// Instruction `ADDS` - Add optionally-shifted register, setting flags.
     /// </summary>
-    ADDS_64_addsub_shift,
+    ADDS_64_addsub_shift = 17,
     /// <summary>
     /// Instruction `ADDS` - Add extended and scaled register, setting flags.
     /// </summary>
-    ADDS_64s_addsub_ext,
+    ADDS_64s_addsub_ext = 18,
     /// <summary>
     /// Instruction `ADDS` - Add immediate value, setting flags.
     /// </summary>
-    ADDS_64s_addsub_imm,
+    ADDS_64s_addsub_imm = 19,
     /// <summary>
     /// Instruction `ADDV` - Add across vector.
     /// </summary>
-    ADDV_asimdall_only,
+    ADDV_asimdall_only = 20,
     /// <summary>
     /// Instruction `ADD` - Add extended and scaled register.
     /// </summary>
-    ADD_32_addsub_ext,
+    ADD_32_addsub_ext = 21,
     /// <summary>
     /// Instruction `ADD` - Add immediate value.
     /// </summary>
-    ADD_32_addsub_imm,
+    ADD_32_addsub_imm = 22,
     /// <summary>
     /// Instruction `ADD` - Add optionally-shifted register.
     /// </summary>
-    ADD_32_addsub_shift,
+    ADD_32_addsub_shift = 23,
     /// <summary>
     /// Instruction `ADD` - Add extended and scaled register.
     /// </summary>
-    ADD_64_addsub_ext,
+    ADD_64_addsub_ext = 24,
     /// <summary>
     /// Instruction `ADD` - Add immediate value.
     /// </summary>
-    ADD_64_addsub_imm,
+    ADD_64_addsub_imm = 25,
     /// <summary>
     /// Instruction `ADD` - Add optionally-shifted register.
     /// </summary>
-    ADD_64_addsub_shift,
+    ADD_64_addsub_shift = 26,
     /// <summary>
     /// Instruction `ADD` - Add (vector).
     /// </summary>
-    ADD_asimdsame_only,
+    ADD_asimdsame_only = 27,
     /// <summary>
     /// Instruction `ADD` - Add (vector).
     /// </summary>
-    ADD_asisdsame_only,
+    ADD_asisdsame_only = 28,
     /// <summary>
     /// Instruction `ADRP` - Form PC-relative address to 4KB page.
     /// </summary>
-    ADRP_only_pcreladdr,
+    ADRP_only_pcreladdr = 29,
     /// <summary>
     /// Instruction `ADR` - Form PC-relative address.
     /// </summary>
-    ADR_only_pcreladdr,
+    ADR_only_pcreladdr = 30,
     /// <summary>
     /// Instruction `AESD` - AES single round decryption.
     /// </summary>
-    AESD_b_cryptoaes,
+    AESD_b_cryptoaes = 31,
     /// <summary>
     /// Instruction `AESE` - AES single round encryption.
     /// </summary>
-    AESE_b_cryptoaes,
+    AESE_b_cryptoaes = 32,
     /// <summary>
     /// Instruction `AESIMC` - AES inverse mix columns.
     /// </summary>
-    AESIMC_b_cryptoaes,
+    AESIMC_b_cryptoaes = 33,
     /// <summary>
     /// Instruction `AESMC` - AES mix columns.
     /// </summary>
-    AESMC_b_cryptoaes,
+    AESMC_b_cryptoaes = 34,
     /// <summary>
     /// Instruction `ANDS` - Bitwise AND (shifted register), setting flags.
     /// </summary>
-    ANDS_32_log_shift,
+    ANDS_32_log_shift = 35,
     /// <summary>
     /// Instruction `ANDS` - Bitwise AND (immediate), setting flags.
     /// </summary>
-    ANDS_32s_log_imm,
+    ANDS_32s_log_imm = 36,
     /// <summary>
     /// Instruction `ANDS` - Bitwise AND (shifted register), setting flags.
     /// </summary>
-    ANDS_64_log_shift,
+    ANDS_64_log_shift = 37,
     /// <summary>
     /// Instruction `ANDS` - Bitwise AND (immediate), setting flags.
     /// </summary>
-    ANDS_64s_log_imm,
+    ANDS_64s_log_imm = 38,
     /// <summary>
     /// Instruction `AND` - Bitwise AND (immediate).
     /// </summary>
-    AND_32_log_imm,
+    AND_32_log_imm = 39,
     /// <summary>
     /// Instruction `AND` - Bitwise AND (shifted register).
     /// </summary>
-    AND_32_log_shift,
+    AND_32_log_shift = 40,
     /// <summary>
     /// Instruction `AND` - Bitwise AND (immediate).
     /// </summary>
-    AND_64_log_imm,
+    AND_64_log_imm = 41,
     /// <summary>
     /// Instruction `AND` - Bitwise AND (shifted register).
     /// </summary>
-    AND_64_log_shift,
+    AND_64_log_shift = 42,
     /// <summary>
     /// Instruction `AND` - Bitwise AND (vector).
     /// </summary>
-    AND_asimdsame_only,
+    AND_asimdsame_only = 43,
     /// <summary>
     /// Instruction `ASRV` - Arithmetic shift right variable.
     /// </summary>
-    ASRV_32_dp_2src,
+    ASRV_32_dp_2src = 44,
     /// <summary>
     /// Instruction `ASRV` - Arithmetic shift right variable.
     /// </summary>
-    ASRV_64_dp_2src,
+    ASRV_64_dp_2src = 45,
     /// <summary>
     /// Instruction `AUTDA` - Authenticate data address, using key A.
     /// </summary>
-    AUTDA_64p_dp_1src,
+    AUTDA_64p_dp_1src = 46,
     /// <summary>
     /// Instruction `AUTDB` - Authenticate data address, using key B.
     /// </summary>
-    AUTDB_64p_dp_1src,
+    AUTDB_64p_dp_1src = 47,
     /// <summary>
     /// Instruction `AUTDZA` - Authenticate data address, using key A.
     /// </summary>
-    AUTDZA_64z_dp_1src,
+    AUTDZA_64z_dp_1src = 48,
     /// <summary>
     /// Instruction `AUTDZB` - Authenticate data address, using key B.
     /// </summary>
-    AUTDZB_64z_dp_1src,
+    AUTDZB_64z_dp_1src = 49,
     /// <summary>
     /// Instruction `AUTIA171615` - Authenticate instruction address, using key A.
     /// </summary>
-    AUTIA171615_64lr_dp_1src,
+    AUTIA171615_64lr_dp_1src = 50,
     /// <summary>
     /// Instruction `AUTIA1716` - Authenticate instruction address, using key A.
     /// </summary>
-    AUTIA1716_hi_hints,
+    AUTIA1716_hi_hints = 51,
     /// <summary>
     /// Instruction `AUTIASPPCR` - Authenticate return address using key A, using a register.
     /// </summary>
-    AUTIASPPCR_64lrr_dp_1src,
+    AUTIASPPCR_64lrr_dp_1src = 52,
     /// <summary>
     /// Instruction `AUTIASPPC` - Authenticate return address using key A, using an immediate offset.
     /// </summary>
-    AUTIASPPC_only_dp_1src_imm,
+    AUTIASPPC_only_dp_1src_imm = 53,
     /// <summary>
     /// Instruction `AUTIASP` - Authenticate instruction address, using key A.
     /// </summary>
-    AUTIASP_hi_hints,
+    AUTIASP_hi_hints = 54,
     /// <summary>
     /// Instruction `AUTIAZ` - Authenticate instruction address, using key A.
     /// </summary>
-    AUTIAZ_hi_hints,
+    AUTIAZ_hi_hints = 55,
     /// <summary>
     /// Instruction `AUTIA` - Authenticate instruction address, using key A.
     /// </summary>
-    AUTIA_64p_dp_1src,
+    AUTIA_64p_dp_1src = 56,
     /// <summary>
     /// Instruction `AUTIB171615` - Authenticate instruction address, using key B.
     /// </summary>
-    AUTIB171615_64lr_dp_1src,
+    AUTIB171615_64lr_dp_1src = 57,
     /// <summary>
     /// Instruction `AUTIB1716` - Authenticate instruction address, using key B.
     /// </summary>
-    AUTIB1716_hi_hints,
+    AUTIB1716_hi_hints = 58,
     /// <summary>
     /// Instruction `AUTIBSPPCR` - Authenticate return address using key B, using a register.
     /// </summary>
-    AUTIBSPPCR_64lrr_dp_1src,
+    AUTIBSPPCR_64lrr_dp_1src = 59,
     /// <summary>
     /// Instruction `AUTIBSPPC` - Authenticate return address using key B, using an immediate offset.
     /// </summary>
-    AUTIBSPPC_only_dp_1src_imm,
+    AUTIBSPPC_only_dp_1src_imm = 60,
     /// <summary>
     /// Instruction `AUTIBSP` - Authenticate instruction address, using key B.
     /// </summary>
-    AUTIBSP_hi_hints,
+    AUTIBSP_hi_hints = 61,
     /// <summary>
     /// Instruction `AUTIBZ` - Authenticate instruction address, using key B.
     /// </summary>
-    AUTIBZ_hi_hints,
+    AUTIBZ_hi_hints = 62,
     /// <summary>
     /// Instruction `AUTIB` - Authenticate instruction address, using key B.
     /// </summary>
-    AUTIB_64p_dp_1src,
+    AUTIB_64p_dp_1src = 63,
     /// <summary>
     /// Instruction `AUTIZA` - Authenticate instruction address, using key A.
     /// </summary>
-    AUTIZA_64z_dp_1src,
+    AUTIZA_64z_dp_1src = 64,
     /// <summary>
     /// Instruction `AUTIZB` - Authenticate instruction address, using key B.
     /// </summary>
-    AUTIZB_64z_dp_1src,
+    AUTIZB_64z_dp_1src = 65,
     /// <summary>
     /// Instruction `AXFLAG` - Convert floating-point condition flags from Arm to external format.
     /// </summary>
-    AXFLAG_m_pstate,
+    AXFLAG_m_pstate = 66,
     /// <summary>
     /// Instruction `BCAX` - Bit clear and exclusive-OR.
     /// </summary>
-    BCAX_vvv16_crypto4,
+    BCAX_vvv16_crypto4 = 67,
     /// <summary>
     /// Instruction `BC` - Branch consistent conditionally.
     /// </summary>
-    BC_only_condbranch,
+    BC_only_condbranch = 68,
     /// <summary>
     /// Instruction `BF1CVTL` - 8-bit floating-point convert to BFloat16 (vector).
     /// </summary>
-    BF1CVTL_asimdmisc_v,
+    BF1CVTL_asimdmisc_v = 69,
     /// <summary>
     /// Instruction `BF2CVTL` - 8-bit floating-point convert to BFloat16 (vector).
     /// </summary>
-    BF2CVTL_asimdmisc_v,
+    BF2CVTL_asimdmisc_v = 70,
     /// <summary>
     /// Instruction `BFCVTN` - Floating-point convert from single-precision to BFloat16 format (vector).
     /// </summary>
-    BFCVTN_asimdmisc_4s,
+    BFCVTN_asimdmisc_4s = 71,
     /// <summary>
     /// Instruction `BFCVT` - Floating-point convert from single-precision to BFloat16 format (scalar).
     /// </summary>
-    BFCVT_bs_floatdp1,
+    BFCVT_bs_floatdp1 = 72,
     /// <summary>
     /// Instruction `BFDOT` - BFloat16 floating-point dot product (vector, by element).
     /// </summary>
-    BFDOT_asimdelem_e,
+    BFDOT_asimdelem_e = 73,
     /// <summary>
     /// Instruction `BFDOT` - BFloat16 floating-point dot product (vector).
     /// </summary>
-    BFDOT_asimdsame2_d,
+    BFDOT_asimdsame2_d = 74,
     /// <summary>
     /// Instruction `BFMLAL` - BFloat16 floating-point widening multiply-add long (by element).
     /// </summary>
-    BFMLAL_asimdelem_f,
+    BFMLAL_asimdelem_f = 75,
     /// <summary>
     /// Instruction `BFMLAL` - BFloat16 floating-point widening multiply-add long (vector).
     /// </summary>
-    BFMLAL_asimdsame2_f,
+    BFMLAL_asimdsame2_f = 76,
     /// <summary>
     /// Instruction `BFMMLA` - BFloat16 floating-point matrix multiply-accumulate into 2x2 matrix.
     /// </summary>
-    BFMMLA_asimdsame2_e,
+    BFMMLA_asimdsame2_e = 77,
     /// <summary>
     /// Instruction `BFM` - Bitfield move.
     /// </summary>
-    BFM_32m_bitfield,
+    BFM_32m_bitfield = 78,
     /// <summary>
     /// Instruction `BFM` - Bitfield move.
     /// </summary>
-    BFM_64m_bitfield,
+    BFM_64m_bitfield = 79,
     /// <summary>
     /// Instruction `BICS` - Bitwise bit clear (shifted register), setting flags.
     /// </summary>
-    BICS_32_log_shift,
+    BICS_32_log_shift = 80,
     /// <summary>
     /// Instruction `BICS` - Bitwise bit clear (shifted register), setting flags.
     /// </summary>
-    BICS_64_log_shift,
+    BICS_64_log_shift = 81,
     /// <summary>
     /// Instruction `BIC` - Bitwise bit clear (shifted register).
     /// </summary>
-    BIC_32_log_shift,
+    BIC_32_log_shift = 82,
     /// <summary>
     /// Instruction `BIC` - Bitwise bit clear (shifted register).
     /// </summary>
-    BIC_64_log_shift,
+    BIC_64_log_shift = 83,
     /// <summary>
     /// Instruction `BIC` - Bitwise bit clear (vector, immediate).
     /// </summary>
-    BIC_asimdimm_l_hl,
+    BIC_asimdimm_l_hl = 84,
     /// <summary>
     /// Instruction `BIC` - Bitwise bit clear (vector, immediate).
     /// </summary>
-    BIC_asimdimm_l_sl,
+    BIC_asimdimm_l_sl = 85,
     /// <summary>
     /// Instruction `BIC` - Bitwise bit clear (vector, register).
     /// </summary>
-    BIC_asimdsame_only,
+    BIC_asimdsame_only = 86,
     /// <summary>
     /// Instruction `BIF` - Bitwise insert if false.
     /// </summary>
-    BIF_asimdsame_only,
+    BIF_asimdsame_only = 87,
     /// <summary>
     /// Instruction `BIT` - Bitwise insert if true.
     /// </summary>
-    BIT_asimdsame_only,
+    BIT_asimdsame_only = 88,
     /// <summary>
     /// Instruction `BLRAAZ` - Branch with link to register, with pointer authentication.
     /// </summary>
-    BLRAAZ_64_branch_reg,
+    BLRAAZ_64_branch_reg = 89,
     /// <summary>
     /// Instruction `BLRAA` - Branch with link to register, with pointer authentication.
     /// </summary>
-    BLRAA_64p_branch_reg,
+    BLRAA_64p_branch_reg = 90,
     /// <summary>
     /// Instruction `BLRABZ` - Branch with link to register, with pointer authentication.
     /// </summary>
-    BLRABZ_64_branch_reg,
+    BLRABZ_64_branch_reg = 91,
     /// <summary>
     /// Instruction `BLRAB` - Branch with link to register, with pointer authentication.
     /// </summary>
-    BLRAB_64p_branch_reg,
+    BLRAB_64p_branch_reg = 92,
     /// <summary>
     /// Instruction `BLR` - Branch with link to register.
     /// </summary>
-    BLR_64_branch_reg,
+    BLR_64_branch_reg = 93,
     /// <summary>
     /// Instruction `BL` - Branch with link.
     /// </summary>
-    BL_only_branch_imm,
+    BL_only_branch_imm = 94,
     /// <summary>
     /// Instruction `BRAAZ` - Branch to register, with pointer authentication.
     /// </summary>
-    BRAAZ_64_branch_reg,
+    BRAAZ_64_branch_reg = 95,
     /// <summary>
     /// Instruction `BRAA` - Branch to register, with pointer authentication.
     /// </summary>
-    BRAA_64p_branch_reg,
+    BRAA_64p_branch_reg = 96,
     /// <summary>
     /// Instruction `BRABZ` - Branch to register, with pointer authentication.
     /// </summary>
-    BRABZ_64_branch_reg,
+    BRABZ_64_branch_reg = 97,
     /// <summary>
     /// Instruction `BRAB` - Branch to register, with pointer authentication.
     /// </summary>
-    BRAB_64p_branch_reg,
+    BRAB_64p_branch_reg = 98,
     /// <summary>
     /// Instruction `BRK` - Breakpoint instruction.
     /// </summary>
-    BRK_ex_exception,
+    BRK_ex_exception = 99,
     /// <summary>
     /// Instruction `BR` - Branch to register.
     /// </summary>
-    BR_64_branch_reg,
+    BR_64_branch_reg = 100,
     /// <summary>
     /// Instruction `BSL` - Bitwise select.
     /// </summary>
-    BSL_asimdsame_only,
+    BSL_asimdsame_only = 101,
     /// <summary>
     /// Instruction `BTI` - Branch target identification.
     /// </summary>
-    BTI_hb_hints,
+    BTI_hb_hints = 102,
     /// <summary>
     /// Instruction `B` - Branch.
     /// </summary>
-    B_only_branch_imm,
+    B_only_branch_imm = 103,
     /// <summary>
     /// Instruction `B` - Branch conditionally.
     /// </summary>
-    B_only_condbranch,
+    B_only_condbranch = 104,
     /// <summary>
     /// Instruction `CASAB` - Compare and swap byte in memory.
     /// </summary>
-    CASAB_c32_comswap,
+    CASAB_c32_comswap = 105,
     /// <summary>
     /// Instruction `CASAH` - Compare and swap halfword in memory.
     /// </summary>
-    CASAH_c32_comswap,
+    CASAH_c32_comswap = 106,
     /// <summary>
     /// Instruction `CASALB` - Compare and swap byte in memory.
     /// </summary>
-    CASALB_c32_comswap,
+    CASALB_c32_comswap = 107,
     /// <summary>
     /// Instruction `CASALH` - Compare and swap halfword in memory.
     /// </summary>
-    CASALH_c32_comswap,
+    CASALH_c32_comswap = 108,
     /// <summary>
     /// Instruction `CASALT` - Compare and swap unprivileged.
     /// </summary>
-    CASALT_c64_comswap_unpriv,
+    CASALT_c64_comswap_unpriv = 109,
     /// <summary>
     /// Instruction `CASAL` - Compare and swap word or doubleword in memory.
     /// </summary>
-    CASAL_c32_comswap,
+    CASAL_c32_comswap = 110,
     /// <summary>
     /// Instruction `CASAL` - Compare and swap word or doubleword in memory.
     /// </summary>
-    CASAL_c64_comswap,
+    CASAL_c64_comswap = 111,
     /// <summary>
     /// Instruction `CASAT` - Compare and swap unprivileged.
     /// </summary>
-    CASAT_c64_comswap_unpriv,
+    CASAT_c64_comswap_unpriv = 112,
     /// <summary>
     /// Instruction `CASA` - Compare and swap word or doubleword in memory.
     /// </summary>
-    CASA_c32_comswap,
+    CASA_c32_comswap = 113,
     /// <summary>
     /// Instruction `CASA` - Compare and swap word or doubleword in memory.
     /// </summary>
-    CASA_c64_comswap,
+    CASA_c64_comswap = 114,
     /// <summary>
     /// Instruction `CASB` - Compare and swap byte in memory.
     /// </summary>
-    CASB_c32_comswap,
+    CASB_c32_comswap = 115,
     /// <summary>
     /// Instruction `CASH` - Compare and swap halfword in memory.
     /// </summary>
-    CASH_c32_comswap,
+    CASH_c32_comswap = 116,
     /// <summary>
     /// Instruction `CASLB` - Compare and swap byte in memory.
     /// </summary>
-    CASLB_c32_comswap,
+    CASLB_c32_comswap = 117,
     /// <summary>
     /// Instruction `CASLH` - Compare and swap halfword in memory.
     /// </summary>
-    CASLH_c32_comswap,
+    CASLH_c32_comswap = 118,
     /// <summary>
     /// Instruction `CASLT` - Compare and swap unprivileged.
     /// </summary>
-    CASLT_c64_comswap_unpriv,
+    CASLT_c64_comswap_unpriv = 119,
     /// <summary>
     /// Instruction `CASL` - Compare and swap word or doubleword in memory.
     /// </summary>
-    CASL_c32_comswap,
+    CASL_c32_comswap = 120,
     /// <summary>
     /// Instruction `CASL` - Compare and swap word or doubleword in memory.
     /// </summary>
-    CASL_c64_comswap,
+    CASL_c64_comswap = 121,
     /// <summary>
     /// Instruction `CASPALT` - Compare and swap pair unprivileged.
     /// </summary>
-    CASPALT_cp64_comswappr_unpriv,
+    CASPALT_cp64_comswappr_unpriv = 122,
     /// <summary>
     /// Instruction `CASPAL` - Compare and swap pair of words or doublewords in memory.
     /// </summary>
-    CASPAL_cp32_comswappr,
+    CASPAL_cp32_comswappr = 123,
     /// <summary>
     /// Instruction `CASPAL` - Compare and swap pair of words or doublewords in memory.
     /// </summary>
-    CASPAL_cp64_comswappr,
+    CASPAL_cp64_comswappr = 124,
     /// <summary>
     /// Instruction `CASPAT` - Compare and swap pair unprivileged.
     /// </summary>
-    CASPAT_cp64_comswappr_unpriv,
+    CASPAT_cp64_comswappr_unpriv = 125,
     /// <summary>
     /// Instruction `CASPA` - Compare and swap pair of words or doublewords in memory.
     /// </summary>
-    CASPA_cp32_comswappr,
+    CASPA_cp32_comswappr = 126,
     /// <summary>
     /// Instruction `CASPA` - Compare and swap pair of words or doublewords in memory.
     /// </summary>
-    CASPA_cp64_comswappr,
+    CASPA_cp64_comswappr = 127,
     /// <summary>
     /// Instruction `CASPLT` - Compare and swap pair unprivileged.
     /// </summary>
-    CASPLT_cp64_comswappr_unpriv,
+    CASPLT_cp64_comswappr_unpriv = 128,
     /// <summary>
     /// Instruction `CASPL` - Compare and swap pair of words or doublewords in memory.
     /// </summary>
-    CASPL_cp32_comswappr,
+    CASPL_cp32_comswappr = 129,
     /// <summary>
     /// Instruction `CASPL` - Compare and swap pair of words or doublewords in memory.
     /// </summary>
-    CASPL_cp64_comswappr,
+    CASPL_cp64_comswappr = 130,
     /// <summary>
     /// Instruction `CASPT` - Compare and swap pair unprivileged.
     /// </summary>
-    CASPT_cp64_comswappr_unpriv,
+    CASPT_cp64_comswappr_unpriv = 131,
     /// <summary>
     /// Instruction `CASP` - Compare and swap pair of words or doublewords in memory.
     /// </summary>
-    CASP_cp32_comswappr,
+    CASP_cp32_comswappr = 132,
     /// <summary>
     /// Instruction `CASP` - Compare and swap pair of words or doublewords in memory.
     /// </summary>
-    CASP_cp64_comswappr,
+    CASP_cp64_comswappr = 133,
     /// <summary>
     /// Instruction `CAST` - Compare and swap unprivileged.
     /// </summary>
-    CAST_c64_comswap_unpriv,
+    CAST_c64_comswap_unpriv = 134,
     /// <summary>
     /// Instruction `CAS` - Compare and swap word or doubleword in memory.
     /// </summary>
-    CAS_c32_comswap,
+    CAS_c32_comswap = 135,
     /// <summary>
     /// Instruction `CAS` - Compare and swap word or doubleword in memory.
     /// </summary>
-    CAS_c64_comswap,
+    CAS_c64_comswap = 136,
     /// <summary>
     /// Instruction `CBBEQ` - Compare bytes and branch.
     /// </summary>
-    CBBEQ_8_regs,
+    CBBEQ_8_regs = 137,
     /// <summary>
     /// Instruction `CBBGE` - Compare bytes and branch.
     /// </summary>
-    CBBGE_8_regs,
+    CBBGE_8_regs = 138,
     /// <summary>
     /// Instruction `CBBGT` - Compare bytes and branch.
     /// </summary>
-    CBBGT_8_regs,
+    CBBGT_8_regs = 139,
     /// <summary>
     /// Instruction `CBBHI` - Compare bytes and branch.
     /// </summary>
-    CBBHI_8_regs,
+    CBBHI_8_regs = 140,
     /// <summary>
     /// Instruction `CBBHS` - Compare bytes and branch.
     /// </summary>
-    CBBHS_8_regs,
+    CBBHS_8_regs = 141,
     /// <summary>
     /// Instruction `CBBNE` - Compare bytes and branch.
     /// </summary>
-    CBBNE_8_regs,
+    CBBNE_8_regs = 142,
     /// <summary>
     /// Instruction `CBEQ` - Compare register with immediate and branch.
     /// </summary>
-    CBEQ_32_imm,
+    CBEQ_32_imm = 143,
     /// <summary>
     /// Instruction `CBEQ` - Compare registers and branch.
     /// </summary>
-    CBEQ_32_regs,
+    CBEQ_32_regs = 144,
     /// <summary>
     /// Instruction `CBEQ` - Compare register with immediate and branch.
     /// </summary>
-    CBEQ_64_imm,
+    CBEQ_64_imm = 145,
     /// <summary>
     /// Instruction `CBEQ` - Compare registers and branch.
     /// </summary>
-    CBEQ_64_regs,
+    CBEQ_64_regs = 146,
     /// <summary>
     /// Instruction `CBGE` - Compare registers and branch.
     /// </summary>
-    CBGE_32_regs,
+    CBGE_32_regs = 147,
     /// <summary>
     /// Instruction `CBGE` - Compare registers and branch.
     /// </summary>
-    CBGE_64_regs,
+    CBGE_64_regs = 148,
     /// <summary>
     /// Instruction `CBGT` - Compare register with immediate and branch.
     /// </summary>
-    CBGT_32_imm,
+    CBGT_32_imm = 149,
     /// <summary>
     /// Instruction `CBGT` - Compare registers and branch.
     /// </summary>
-    CBGT_32_regs,
+    CBGT_32_regs = 150,
     /// <summary>
     /// Instruction `CBGT` - Compare register with immediate and branch.
     /// </summary>
-    CBGT_64_imm,
+    CBGT_64_imm = 151,
     /// <summary>
     /// Instruction `CBGT` - Compare registers and branch.
     /// </summary>
-    CBGT_64_regs,
+    CBGT_64_regs = 152,
     /// <summary>
     /// Instruction `CBHEQ` - Compare halfwords and branch.
     /// </summary>
-    CBHEQ_16_regs,
+    CBHEQ_16_regs = 153,
     /// <summary>
     /// Instruction `CBHGE` - Compare halfwords and branch.
     /// </summary>
-    CBHGE_16_regs,
+    CBHGE_16_regs = 154,
     /// <summary>
     /// Instruction `CBHGT` - Compare halfwords and branch.
     /// </summary>
-    CBHGT_16_regs,
+    CBHGT_16_regs = 155,
     /// <summary>
     /// Instruction `CBHHI` - Compare halfwords and branch.
     /// </summary>
-    CBHHI_16_regs,
+    CBHHI_16_regs = 156,
     /// <summary>
     /// Instruction `CBHHS` - Compare halfwords and branch.
     /// </summary>
-    CBHHS_16_regs,
+    CBHHS_16_regs = 157,
     /// <summary>
     /// Instruction `CBHI` - Compare register with immediate and branch.
     /// </summary>
-    CBHI_32_imm,
+    CBHI_32_imm = 158,
     /// <summary>
     /// Instruction `CBHI` - Compare registers and branch.
     /// </summary>
-    CBHI_32_regs,
+    CBHI_32_regs = 159,
     /// <summary>
     /// Instruction `CBHI` - Compare register with immediate and branch.
     /// </summary>
-    CBHI_64_imm,
+    CBHI_64_imm = 160,
     /// <summary>
     /// Instruction `CBHI` - Compare registers and branch.
     /// </summary>
-    CBHI_64_regs,
+    CBHI_64_regs = 161,
     /// <summary>
     /// Instruction `CBHNE` - Compare halfwords and branch.
     /// </summary>
-    CBHNE_16_regs,
+    CBHNE_16_regs = 162,
     /// <summary>
     /// Instruction `CBHS` - Compare registers and branch.
     /// </summary>
-    CBHS_32_regs,
+    CBHS_32_regs = 163,
     /// <summary>
     /// Instruction `CBHS` - Compare registers and branch.
     /// </summary>
-    CBHS_64_regs,
+    CBHS_64_regs = 164,
     /// <summary>
     /// Instruction `CBLO` - Compare register with immediate and branch.
     /// </summary>
-    CBLO_32_imm,
+    CBLO_32_imm = 165,
     /// <summary>
     /// Instruction `CBLO` - Compare register with immediate and branch.
     /// </summary>
-    CBLO_64_imm,
+    CBLO_64_imm = 166,
     /// <summary>
     /// Instruction `CBLT` - Compare register with immediate and branch.
     /// </summary>
-    CBLT_32_imm,
+    CBLT_32_imm = 167,
     /// <summary>
     /// Instruction `CBLT` - Compare register with immediate and branch.
     /// </summary>
-    CBLT_64_imm,
+    CBLT_64_imm = 168,
     /// <summary>
     /// Instruction `CBNE` - Compare register with immediate and branch.
     /// </summary>
-    CBNE_32_imm,
+    CBNE_32_imm = 169,
     /// <summary>
     /// Instruction `CBNE` - Compare registers and branch.
     /// </summary>
-    CBNE_32_regs,
+    CBNE_32_regs = 170,
     /// <summary>
     /// Instruction `CBNE` - Compare register with immediate and branch.
     /// </summary>
-    CBNE_64_imm,
+    CBNE_64_imm = 171,
     /// <summary>
     /// Instruction `CBNE` - Compare registers and branch.
     /// </summary>
-    CBNE_64_regs,
+    CBNE_64_regs = 172,
     /// <summary>
     /// Instruction `CBNZ` - Compare and branch on nonzero.
     /// </summary>
-    CBNZ_32_compbranch,
+    CBNZ_32_compbranch = 173,
     /// <summary>
     /// Instruction `CBNZ` - Compare and branch on nonzero.
     /// </summary>
-    CBNZ_64_compbranch,
+    CBNZ_64_compbranch = 174,
     /// <summary>
     /// Instruction `CBZ` - Compare and branch on zero.
     /// </summary>
-    CBZ_32_compbranch,
+    CBZ_32_compbranch = 175,
     /// <summary>
     /// Instruction `CBZ` - Compare and branch on zero.
     /// </summary>
-    CBZ_64_compbranch,
+    CBZ_64_compbranch = 176,
     /// <summary>
     /// Instruction `CCMN` - Conditional compare negative (immediate).
     /// </summary>
-    CCMN_32_condcmp_imm,
+    CCMN_32_condcmp_imm = 177,
     /// <summary>
     /// Instruction `CCMN` - Conditional compare negative (register).
     /// </summary>
-    CCMN_32_condcmp_reg,
+    CCMN_32_condcmp_reg = 178,
     /// <summary>
     /// Instruction `CCMN` - Conditional compare negative (immediate).
     /// </summary>
-    CCMN_64_condcmp_imm,
+    CCMN_64_condcmp_imm = 179,
     /// <summary>
     /// Instruction `CCMN` - Conditional compare negative (register).
     /// </summary>
-    CCMN_64_condcmp_reg,
+    CCMN_64_condcmp_reg = 180,
     /// <summary>
     /// Instruction `CCMP` - Conditional compare (immediate).
     /// </summary>
-    CCMP_32_condcmp_imm,
+    CCMP_32_condcmp_imm = 181,
     /// <summary>
     /// Instruction `CCMP` - Conditional compare (register).
     /// </summary>
-    CCMP_32_condcmp_reg,
+    CCMP_32_condcmp_reg = 182,
     /// <summary>
     /// Instruction `CCMP` - Conditional compare (immediate).
     /// </summary>
-    CCMP_64_condcmp_imm,
+    CCMP_64_condcmp_imm = 183,
     /// <summary>
     /// Instruction `CCMP` - Conditional compare (register).
     /// </summary>
-    CCMP_64_condcmp_reg,
+    CCMP_64_condcmp_reg = 184,
     /// <summary>
     /// Instruction `CFINV` - Invert carry flag.
     /// </summary>
-    CFINV_m_pstate,
+    CFINV_m_pstate = 185,
     /// <summary>
     /// Instruction `CHKFEAT` - Check feature status.
     /// </summary>
-    CHKFEAT_hf_hints,
+    CHKFEAT_hf_hints = 186,
     /// <summary>
     /// Instruction `CLRBHB` - Clear branch history.
     /// </summary>
-    CLRBHB_hi_hints,
+    CLRBHB_hi_hints = 187,
     /// <summary>
     /// Instruction `CLREX` - Clear exclusive.
     /// </summary>
-    CLREX_bn_barriers,
+    CLREX_bn_barriers = 188,
     /// <summary>
     /// Instruction `CLS` - Count leading sign bits.
     /// </summary>
-    CLS_32_dp_1src,
+    CLS_32_dp_1src = 189,
     /// <summary>
     /// Instruction `CLS` - Count leading sign bits.
     /// </summary>
-    CLS_64_dp_1src,
+    CLS_64_dp_1src = 190,
     /// <summary>
     /// Instruction `CLS` - Count leading sign bits (vector).
     /// </summary>
-    CLS_asimdmisc_r,
+    CLS_asimdmisc_r = 191,
     /// <summary>
     /// Instruction `CLZ` - Count leading zeros.
     /// </summary>
-    CLZ_32_dp_1src,
+    CLZ_32_dp_1src = 192,
     /// <summary>
     /// Instruction `CLZ` - Count leading zeros.
     /// </summary>
-    CLZ_64_dp_1src,
+    CLZ_64_dp_1src = 193,
     /// <summary>
     /// Instruction `CLZ` - Count leading zero bits (vector).
     /// </summary>
-    CLZ_asimdmisc_r,
+    CLZ_asimdmisc_r = 194,
     /// <summary>
     /// Instruction `CMEQ` - Compare bitwise equal to zero (vector).
     /// </summary>
-    CMEQ_asimdmisc_z,
+    CMEQ_asimdmisc_z = 195,
     /// <summary>
     /// Instruction `CMEQ` - Compare bitwise equal (vector).
     /// </summary>
-    CMEQ_asimdsame_only,
+    CMEQ_asimdsame_only = 196,
     /// <summary>
     /// Instruction `CMEQ` - Compare bitwise equal to zero (vector).
     /// </summary>
-    CMEQ_asisdmisc_z,
+    CMEQ_asisdmisc_z = 197,
     /// <summary>
     /// Instruction `CMEQ` - Compare bitwise equal (vector).
     /// </summary>
-    CMEQ_asisdsame_only,
+    CMEQ_asisdsame_only = 198,
     /// <summary>
     /// Instruction `CMGE` - Compare signed greater than or equal to zero (vector).
     /// </summary>
-    CMGE_asimdmisc_z,
+    CMGE_asimdmisc_z = 199,
     /// <summary>
     /// Instruction `CMGE` - Compare signed greater than or equal (vector).
     /// </summary>
-    CMGE_asimdsame_only,
+    CMGE_asimdsame_only = 200,
     /// <summary>
     /// Instruction `CMGE` - Compare signed greater than or equal to zero (vector).
     /// </summary>
-    CMGE_asisdmisc_z,
+    CMGE_asisdmisc_z = 201,
     /// <summary>
     /// Instruction `CMGE` - Compare signed greater than or equal (vector).
     /// </summary>
-    CMGE_asisdsame_only,
+    CMGE_asisdsame_only = 202,
     /// <summary>
     /// Instruction `CMGT` - Compare signed greater than zero (vector).
     /// </summary>
-    CMGT_asimdmisc_z,
+    CMGT_asimdmisc_z = 203,
     /// <summary>
     /// Instruction `CMGT` - Compare signed greater than (vector).
     /// </summary>
-    CMGT_asimdsame_only,
+    CMGT_asimdsame_only = 204,
     /// <summary>
     /// Instruction `CMGT` - Compare signed greater than zero (vector).
     /// </summary>
-    CMGT_asisdmisc_z,
+    CMGT_asisdmisc_z = 205,
     /// <summary>
     /// Instruction `CMGT` - Compare signed greater than (vector).
     /// </summary>
-    CMGT_asisdsame_only,
+    CMGT_asisdsame_only = 206,
     /// <summary>
     /// Instruction `CMHI` - Compare unsigned higher (vector).
     /// </summary>
-    CMHI_asimdsame_only,
+    CMHI_asimdsame_only = 207,
     /// <summary>
     /// Instruction `CMHI` - Compare unsigned higher (vector).
     /// </summary>
-    CMHI_asisdsame_only,
+    CMHI_asisdsame_only = 208,
     /// <summary>
     /// Instruction `CMHS` - Compare unsigned higher or same (vector).
     /// </summary>
-    CMHS_asimdsame_only,
+    CMHS_asimdsame_only = 209,
     /// <summary>
     /// Instruction `CMHS` - Compare unsigned higher or same (vector).
     /// </summary>
-    CMHS_asisdsame_only,
+    CMHS_asisdsame_only = 210,
     /// <summary>
     /// Instruction `CMLE` - Compare signed less than or equal to zero (vector).
     /// </summary>
-    CMLE_asimdmisc_z,
+    CMLE_asimdmisc_z = 211,
     /// <summary>
     /// Instruction `CMLE` - Compare signed less than or equal to zero (vector).
     /// </summary>
-    CMLE_asisdmisc_z,
+    CMLE_asisdmisc_z = 212,
     /// <summary>
     /// Instruction `CMLT` - Compare signed less than zero (vector).
     /// </summary>
-    CMLT_asimdmisc_z,
+    CMLT_asimdmisc_z = 213,
     /// <summary>
     /// Instruction `CMLT` - Compare signed less than zero (vector).
     /// </summary>
-    CMLT_asisdmisc_z,
+    CMLT_asisdmisc_z = 214,
     /// <summary>
     /// Instruction `CMTST` - Compare bitwise test bits nonzero (vector).
     /// </summary>
-    CMTST_asimdsame_only,
+    CMTST_asimdsame_only = 215,
     /// <summary>
     /// Instruction `CMTST` - Compare bitwise test bits nonzero (vector).
     /// </summary>
-    CMTST_asisdsame_only,
+    CMTST_asisdsame_only = 216,
     /// <summary>
     /// Instruction `CNT` - Count bits.
     /// </summary>
-    CNT_32_dp_1src,
+    CNT_32_dp_1src = 217,
     /// <summary>
     /// Instruction `CNT` - Count bits.
     /// </summary>
-    CNT_64_dp_1src,
+    CNT_64_dp_1src = 218,
     /// <summary>
     /// Instruction `CNT` - Population count per byte.
     /// </summary>
-    CNT_asimdmisc_r,
+    CNT_asimdmisc_r = 219,
     /// <summary>
     /// Instruction `CPYEN` - Memory copy, reads and writes non-temporal.
     /// </summary>
-    CPYEN_cpy_memcms,
+    CPYEN_cpy_memcms = 220,
     /// <summary>
     /// Instruction `CPYERN` - Memory copy, reads non-temporal.
     /// </summary>
-    CPYERN_cpy_memcms,
+    CPYERN_cpy_memcms = 221,
     /// <summary>
     /// Instruction `CPYERTN` - Memory copy, reads unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYERTN_cpy_memcms,
+    CPYERTN_cpy_memcms = 222,
     /// <summary>
     /// Instruction `CPYERTRN` - Memory copy, reads unprivileged and non-temporal.
     /// </summary>
-    CPYERTRN_cpy_memcms,
+    CPYERTRN_cpy_memcms = 223,
     /// <summary>
     /// Instruction `CPYERTWN` - Memory copy, reads unprivileged, writes non-temporal.
     /// </summary>
-    CPYERTWN_cpy_memcms,
+    CPYERTWN_cpy_memcms = 224,
     /// <summary>
     /// Instruction `CPYERT` - Memory copy, reads unprivileged.
     /// </summary>
-    CPYERT_cpy_memcms,
+    CPYERT_cpy_memcms = 225,
     /// <summary>
     /// Instruction `CPYETN` - Memory copy, reads and writes unprivileged and non-temporal.
     /// </summary>
-    CPYETN_cpy_memcms,
+    CPYETN_cpy_memcms = 226,
     /// <summary>
     /// Instruction `CPYETRN` - Memory copy, reads and writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYETRN_cpy_memcms,
+    CPYETRN_cpy_memcms = 227,
     /// <summary>
     /// Instruction `CPYETWN` - Memory copy, reads and writes unprivileged, writes non-temporal.
     /// </summary>
-    CPYETWN_cpy_memcms,
+    CPYETWN_cpy_memcms = 228,
     /// <summary>
     /// Instruction `CPYET` - Memory copy, reads and writes unprivileged.
     /// </summary>
-    CPYET_cpy_memcms,
+    CPYET_cpy_memcms = 229,
     /// <summary>
     /// Instruction `CPYEWN` - Memory copy, writes non-temporal.
     /// </summary>
-    CPYEWN_cpy_memcms,
+    CPYEWN_cpy_memcms = 230,
     /// <summary>
     /// Instruction `CPYEWTN` - Memory copy, writes unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYEWTN_cpy_memcms,
+    CPYEWTN_cpy_memcms = 231,
     /// <summary>
     /// Instruction `CPYEWTRN` - Memory copy, writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYEWTRN_cpy_memcms,
+    CPYEWTRN_cpy_memcms = 232,
     /// <summary>
     /// Instruction `CPYEWTWN` - Memory copy, writes unprivileged and non-temporal.
     /// </summary>
-    CPYEWTWN_cpy_memcms,
+    CPYEWTWN_cpy_memcms = 233,
     /// <summary>
     /// Instruction `CPYEWT` - Memory copy, writes unprivileged.
     /// </summary>
-    CPYEWT_cpy_memcms,
+    CPYEWT_cpy_memcms = 234,
     /// <summary>
     /// Instruction `CPYE` - Memory copy.
     /// </summary>
-    CPYE_cpy_memcms,
+    CPYE_cpy_memcms = 235,
     /// <summary>
     /// Instruction `CPYFEN` - Memory copy forward-only, reads and writes non-temporal.
     /// </summary>
-    CPYFEN_cpy_memcms,
+    CPYFEN_cpy_memcms = 236,
     /// <summary>
     /// Instruction `CPYFERN` - Memory copy forward-only, reads non-temporal.
     /// </summary>
-    CPYFERN_cpy_memcms,
+    CPYFERN_cpy_memcms = 237,
     /// <summary>
     /// Instruction `CPYFERTN` - Memory copy forward-only, reads unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYFERTN_cpy_memcms,
+    CPYFERTN_cpy_memcms = 238,
     /// <summary>
     /// Instruction `CPYFERTRN` - Memory copy forward-only, reads unprivileged and non-temporal.
     /// </summary>
-    CPYFERTRN_cpy_memcms,
+    CPYFERTRN_cpy_memcms = 239,
     /// <summary>
     /// Instruction `CPYFERTWN` - Memory copy forward-only, reads unprivileged, writes non-temporal.
     /// </summary>
-    CPYFERTWN_cpy_memcms,
+    CPYFERTWN_cpy_memcms = 240,
     /// <summary>
     /// Instruction `CPYFERT` - Memory copy forward-only, reads unprivileged.
     /// </summary>
-    CPYFERT_cpy_memcms,
+    CPYFERT_cpy_memcms = 241,
     /// <summary>
     /// Instruction `CPYFETN` - Memory copy forward-only, reads and writes unprivileged and non-temporal.
     /// </summary>
-    CPYFETN_cpy_memcms,
+    CPYFETN_cpy_memcms = 242,
     /// <summary>
     /// Instruction `CPYFETRN` - Memory copy forward-only, reads and writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYFETRN_cpy_memcms,
+    CPYFETRN_cpy_memcms = 243,
     /// <summary>
     /// Instruction `CPYFETWN` - Memory copy forward-only, reads and writes unprivileged, writes non-temporal.
     /// </summary>
-    CPYFETWN_cpy_memcms,
+    CPYFETWN_cpy_memcms = 244,
     /// <summary>
     /// Instruction `CPYFET` - Memory copy forward-only, reads and writes unprivileged.
     /// </summary>
-    CPYFET_cpy_memcms,
+    CPYFET_cpy_memcms = 245,
     /// <summary>
     /// Instruction `CPYFEWN` - Memory copy forward-only, writes non-temporal.
     /// </summary>
-    CPYFEWN_cpy_memcms,
+    CPYFEWN_cpy_memcms = 246,
     /// <summary>
     /// Instruction `CPYFEWTN` - Memory copy forward-only, writes unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYFEWTN_cpy_memcms,
+    CPYFEWTN_cpy_memcms = 247,
     /// <summary>
     /// Instruction `CPYFEWTRN` - Memory copy forward-only, writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYFEWTRN_cpy_memcms,
+    CPYFEWTRN_cpy_memcms = 248,
     /// <summary>
     /// Instruction `CPYFEWTWN` - Memory copy forward-only, writes unprivileged and non-temporal.
     /// </summary>
-    CPYFEWTWN_cpy_memcms,
+    CPYFEWTWN_cpy_memcms = 249,
     /// <summary>
     /// Instruction `CPYFEWT` - Memory copy forward-only, writes unprivileged.
     /// </summary>
-    CPYFEWT_cpy_memcms,
+    CPYFEWT_cpy_memcms = 250,
     /// <summary>
     /// Instruction `CPYFE` - Memory copy forward-only.
     /// </summary>
-    CPYFE_cpy_memcms,
+    CPYFE_cpy_memcms = 251,
     /// <summary>
     /// Instruction `CPYFMN` - Memory copy forward-only, reads and writes non-temporal.
     /// </summary>
-    CPYFMN_cpy_memcms,
+    CPYFMN_cpy_memcms = 252,
     /// <summary>
     /// Instruction `CPYFMRN` - Memory copy forward-only, reads non-temporal.
     /// </summary>
-    CPYFMRN_cpy_memcms,
+    CPYFMRN_cpy_memcms = 253,
     /// <summary>
     /// Instruction `CPYFMRTN` - Memory copy forward-only, reads unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYFMRTN_cpy_memcms,
+    CPYFMRTN_cpy_memcms = 254,
     /// <summary>
     /// Instruction `CPYFMRTRN` - Memory copy forward-only, reads unprivileged and non-temporal.
     /// </summary>
-    CPYFMRTRN_cpy_memcms,
+    CPYFMRTRN_cpy_memcms = 255,
     /// <summary>
     /// Instruction `CPYFMRTWN` - Memory copy forward-only, reads unprivileged, writes non-temporal.
     /// </summary>
-    CPYFMRTWN_cpy_memcms,
+    CPYFMRTWN_cpy_memcms = 256,
     /// <summary>
     /// Instruction `CPYFMRT` - Memory copy forward-only, reads unprivileged.
     /// </summary>
-    CPYFMRT_cpy_memcms,
+    CPYFMRT_cpy_memcms = 257,
     /// <summary>
     /// Instruction `CPYFMTN` - Memory copy forward-only, reads and writes unprivileged and non-temporal.
     /// </summary>
-    CPYFMTN_cpy_memcms,
+    CPYFMTN_cpy_memcms = 258,
     /// <summary>
     /// Instruction `CPYFMTRN` - Memory copy forward-only, reads and writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYFMTRN_cpy_memcms,
+    CPYFMTRN_cpy_memcms = 259,
     /// <summary>
     /// Instruction `CPYFMTWN` - Memory copy forward-only, reads and writes unprivileged, writes non-temporal.
     /// </summary>
-    CPYFMTWN_cpy_memcms,
+    CPYFMTWN_cpy_memcms = 260,
     /// <summary>
     /// Instruction `CPYFMT` - Memory copy forward-only, reads and writes unprivileged.
     /// </summary>
-    CPYFMT_cpy_memcms,
+    CPYFMT_cpy_memcms = 261,
     /// <summary>
     /// Instruction `CPYFMWN` - Memory copy forward-only, writes non-temporal.
     /// </summary>
-    CPYFMWN_cpy_memcms,
+    CPYFMWN_cpy_memcms = 262,
     /// <summary>
     /// Instruction `CPYFMWTN` - Memory copy forward-only, writes unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYFMWTN_cpy_memcms,
+    CPYFMWTN_cpy_memcms = 263,
     /// <summary>
     /// Instruction `CPYFMWTRN` - Memory copy forward-only, writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYFMWTRN_cpy_memcms,
+    CPYFMWTRN_cpy_memcms = 264,
     /// <summary>
     /// Instruction `CPYFMWTWN` - Memory copy forward-only, writes unprivileged and non-temporal.
     /// </summary>
-    CPYFMWTWN_cpy_memcms,
+    CPYFMWTWN_cpy_memcms = 265,
     /// <summary>
     /// Instruction `CPYFMWT` - Memory copy forward-only, writes unprivileged.
     /// </summary>
-    CPYFMWT_cpy_memcms,
+    CPYFMWT_cpy_memcms = 266,
     /// <summary>
     /// Instruction `CPYFM` - Memory copy forward-only.
     /// </summary>
-    CPYFM_cpy_memcms,
+    CPYFM_cpy_memcms = 267,
     /// <summary>
     /// Instruction `CPYFPN` - Memory copy forward-only, reads and writes non-temporal.
     /// </summary>
-    CPYFPN_cpy_memcms,
+    CPYFPN_cpy_memcms = 268,
     /// <summary>
     /// Instruction `CPYFPRN` - Memory copy forward-only, reads non-temporal.
     /// </summary>
-    CPYFPRN_cpy_memcms,
+    CPYFPRN_cpy_memcms = 269,
     /// <summary>
     /// Instruction `CPYFPRTN` - Memory copy forward-only, reads unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYFPRTN_cpy_memcms,
+    CPYFPRTN_cpy_memcms = 270,
     /// <summary>
     /// Instruction `CPYFPRTRN` - Memory copy forward-only, reads unprivileged and non-temporal.
     /// </summary>
-    CPYFPRTRN_cpy_memcms,
+    CPYFPRTRN_cpy_memcms = 271,
     /// <summary>
     /// Instruction `CPYFPRTWN` - Memory copy forward-only, reads unprivileged, writes non-temporal.
     /// </summary>
-    CPYFPRTWN_cpy_memcms,
+    CPYFPRTWN_cpy_memcms = 272,
     /// <summary>
     /// Instruction `CPYFPRT` - Memory copy forward-only, reads unprivileged.
     /// </summary>
-    CPYFPRT_cpy_memcms,
+    CPYFPRT_cpy_memcms = 273,
     /// <summary>
     /// Instruction `CPYFPTN` - Memory copy forward-only, reads and writes unprivileged and non-temporal.
     /// </summary>
-    CPYFPTN_cpy_memcms,
+    CPYFPTN_cpy_memcms = 274,
     /// <summary>
     /// Instruction `CPYFPTRN` - Memory copy forward-only, reads and writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYFPTRN_cpy_memcms,
+    CPYFPTRN_cpy_memcms = 275,
     /// <summary>
     /// Instruction `CPYFPTWN` - Memory copy forward-only, reads and writes unprivileged, writes non-temporal.
     /// </summary>
-    CPYFPTWN_cpy_memcms,
+    CPYFPTWN_cpy_memcms = 276,
     /// <summary>
     /// Instruction `CPYFPT` - Memory copy forward-only, reads and writes unprivileged.
     /// </summary>
-    CPYFPT_cpy_memcms,
+    CPYFPT_cpy_memcms = 277,
     /// <summary>
     /// Instruction `CPYFPWN` - Memory copy forward-only, writes non-temporal.
     /// </summary>
-    CPYFPWN_cpy_memcms,
+    CPYFPWN_cpy_memcms = 278,
     /// <summary>
     /// Instruction `CPYFPWTN` - Memory copy forward-only, writes unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYFPWTN_cpy_memcms,
+    CPYFPWTN_cpy_memcms = 279,
     /// <summary>
     /// Instruction `CPYFPWTRN` - Memory copy forward-only, writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYFPWTRN_cpy_memcms,
+    CPYFPWTRN_cpy_memcms = 280,
     /// <summary>
     /// Instruction `CPYFPWTWN` - Memory copy forward-only, writes unprivileged and non-temporal.
     /// </summary>
-    CPYFPWTWN_cpy_memcms,
+    CPYFPWTWN_cpy_memcms = 281,
     /// <summary>
     /// Instruction `CPYFPWT` - Memory copy forward-only, writes unprivileged.
     /// </summary>
-    CPYFPWT_cpy_memcms,
+    CPYFPWT_cpy_memcms = 282,
     /// <summary>
     /// Instruction `CPYFP` - Memory copy forward-only.
     /// </summary>
-    CPYFP_cpy_memcms,
+    CPYFP_cpy_memcms = 283,
     /// <summary>
     /// Instruction `CPYMN` - Memory copy, reads and writes non-temporal.
     /// </summary>
-    CPYMN_cpy_memcms,
+    CPYMN_cpy_memcms = 284,
     /// <summary>
     /// Instruction `CPYMRN` - Memory copy, reads non-temporal.
     /// </summary>
-    CPYMRN_cpy_memcms,
+    CPYMRN_cpy_memcms = 285,
     /// <summary>
     /// Instruction `CPYMRTN` - Memory copy, reads unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYMRTN_cpy_memcms,
+    CPYMRTN_cpy_memcms = 286,
     /// <summary>
     /// Instruction `CPYMRTRN` - Memory copy, reads unprivileged and non-temporal.
     /// </summary>
-    CPYMRTRN_cpy_memcms,
+    CPYMRTRN_cpy_memcms = 287,
     /// <summary>
     /// Instruction `CPYMRTWN` - Memory copy, reads unprivileged, writes non-temporal.
     /// </summary>
-    CPYMRTWN_cpy_memcms,
+    CPYMRTWN_cpy_memcms = 288,
     /// <summary>
     /// Instruction `CPYMRT` - Memory copy, reads unprivileged.
     /// </summary>
-    CPYMRT_cpy_memcms,
+    CPYMRT_cpy_memcms = 289,
     /// <summary>
     /// Instruction `CPYMTN` - Memory copy, reads and writes unprivileged and non-temporal.
     /// </summary>
-    CPYMTN_cpy_memcms,
+    CPYMTN_cpy_memcms = 290,
     /// <summary>
     /// Instruction `CPYMTRN` - Memory copy, reads and writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYMTRN_cpy_memcms,
+    CPYMTRN_cpy_memcms = 291,
     /// <summary>
     /// Instruction `CPYMTWN` - Memory copy, reads and writes unprivileged, writes non-temporal.
     /// </summary>
-    CPYMTWN_cpy_memcms,
+    CPYMTWN_cpy_memcms = 292,
     /// <summary>
     /// Instruction `CPYMT` - Memory copy, reads and writes unprivileged.
     /// </summary>
-    CPYMT_cpy_memcms,
+    CPYMT_cpy_memcms = 293,
     /// <summary>
     /// Instruction `CPYMWN` - Memory copy, writes non-temporal.
     /// </summary>
-    CPYMWN_cpy_memcms,
+    CPYMWN_cpy_memcms = 294,
     /// <summary>
     /// Instruction `CPYMWTN` - Memory copy, writes unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYMWTN_cpy_memcms,
+    CPYMWTN_cpy_memcms = 295,
     /// <summary>
     /// Instruction `CPYMWTRN` - Memory copy, writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYMWTRN_cpy_memcms,
+    CPYMWTRN_cpy_memcms = 296,
     /// <summary>
     /// Instruction `CPYMWTWN` - Memory copy, writes unprivileged and non-temporal.
     /// </summary>
-    CPYMWTWN_cpy_memcms,
+    CPYMWTWN_cpy_memcms = 297,
     /// <summary>
     /// Instruction `CPYMWT` - Memory copy, writes unprivileged.
     /// </summary>
-    CPYMWT_cpy_memcms,
+    CPYMWT_cpy_memcms = 298,
     /// <summary>
     /// Instruction `CPYM` - Memory copy.
     /// </summary>
-    CPYM_cpy_memcms,
+    CPYM_cpy_memcms = 299,
     /// <summary>
     /// Instruction `CPYPN` - Memory copy, reads and writes non-temporal.
     /// </summary>
-    CPYPN_cpy_memcms,
+    CPYPN_cpy_memcms = 300,
     /// <summary>
     /// Instruction `CPYPRN` - Memory copy, reads non-temporal.
     /// </summary>
-    CPYPRN_cpy_memcms,
+    CPYPRN_cpy_memcms = 301,
     /// <summary>
     /// Instruction `CPYPRTN` - Memory copy, reads unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYPRTN_cpy_memcms,
+    CPYPRTN_cpy_memcms = 302,
     /// <summary>
     /// Instruction `CPYPRTRN` - Memory copy, reads unprivileged and non-temporal.
     /// </summary>
-    CPYPRTRN_cpy_memcms,
+    CPYPRTRN_cpy_memcms = 303,
     /// <summary>
     /// Instruction `CPYPRTWN` - Memory copy, reads unprivileged, writes non-temporal.
     /// </summary>
-    CPYPRTWN_cpy_memcms,
+    CPYPRTWN_cpy_memcms = 304,
     /// <summary>
     /// Instruction `CPYPRT` - Memory copy, reads unprivileged.
     /// </summary>
-    CPYPRT_cpy_memcms,
+    CPYPRT_cpy_memcms = 305,
     /// <summary>
     /// Instruction `CPYPTN` - Memory copy, reads and writes unprivileged and non-temporal.
     /// </summary>
-    CPYPTN_cpy_memcms,
+    CPYPTN_cpy_memcms = 306,
     /// <summary>
     /// Instruction `CPYPTRN` - Memory copy, reads and writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYPTRN_cpy_memcms,
+    CPYPTRN_cpy_memcms = 307,
     /// <summary>
     /// Instruction `CPYPTWN` - Memory copy, reads and writes unprivileged, writes non-temporal.
     /// </summary>
-    CPYPTWN_cpy_memcms,
+    CPYPTWN_cpy_memcms = 308,
     /// <summary>
     /// Instruction `CPYPT` - Memory copy, reads and writes unprivileged.
     /// </summary>
-    CPYPT_cpy_memcms,
+    CPYPT_cpy_memcms = 309,
     /// <summary>
     /// Instruction `CPYPWN` - Memory copy, writes non-temporal.
     /// </summary>
-    CPYPWN_cpy_memcms,
+    CPYPWN_cpy_memcms = 310,
     /// <summary>
     /// Instruction `CPYPWTN` - Memory copy, writes unprivileged, reads and writes non-temporal.
     /// </summary>
-    CPYPWTN_cpy_memcms,
+    CPYPWTN_cpy_memcms = 311,
     /// <summary>
     /// Instruction `CPYPWTRN` - Memory copy, writes unprivileged, reads non-temporal.
     /// </summary>
-    CPYPWTRN_cpy_memcms,
+    CPYPWTRN_cpy_memcms = 312,
     /// <summary>
     /// Instruction `CPYPWTWN` - Memory copy, writes unprivileged and non-temporal.
     /// </summary>
-    CPYPWTWN_cpy_memcms,
+    CPYPWTWN_cpy_memcms = 313,
     /// <summary>
     /// Instruction `CPYPWT` - Memory copy, writes unprivileged.
     /// </summary>
-    CPYPWT_cpy_memcms,
+    CPYPWT_cpy_memcms = 314,
     /// <summary>
     /// Instruction `CPYP` - Memory copy.
     /// </summary>
-    CPYP_cpy_memcms,
+    CPYP_cpy_memcms = 315,
     /// <summary>
     /// Instruction `CRC32B` - CRC32 checksum.
     /// </summary>
-    CRC32B_32c_dp_2src,
+    CRC32B_32c_dp_2src = 316,
     /// <summary>
     /// Instruction `CRC32CB` - CRC32C checksum.
     /// </summary>
-    CRC32CB_32c_dp_2src,
+    CRC32CB_32c_dp_2src = 317,
     /// <summary>
     /// Instruction `CRC32CH` - CRC32C checksum.
     /// </summary>
-    CRC32CH_32c_dp_2src,
+    CRC32CH_32c_dp_2src = 318,
     /// <summary>
     /// Instruction `CRC32CW` - CRC32C checksum.
     /// </summary>
-    CRC32CW_32c_dp_2src,
+    CRC32CW_32c_dp_2src = 319,
     /// <summary>
     /// Instruction `CRC32CX` - CRC32C checksum.
     /// </summary>
-    CRC32CX_64c_dp_2src,
+    CRC32CX_64c_dp_2src = 320,
     /// <summary>
     /// Instruction `CRC32H` - CRC32 checksum.
     /// </summary>
-    CRC32H_32c_dp_2src,
+    CRC32H_32c_dp_2src = 321,
     /// <summary>
     /// Instruction `CRC32W` - CRC32 checksum.
     /// </summary>
-    CRC32W_32c_dp_2src,
+    CRC32W_32c_dp_2src = 322,
     /// <summary>
     /// Instruction `CRC32X` - CRC32 checksum.
     /// </summary>
-    CRC32X_64c_dp_2src,
+    CRC32X_64c_dp_2src = 323,
     /// <summary>
     /// Instruction `CSDB` - Consumption of speculative data barrier.
     /// </summary>
-    CSDB_hi_hints,
+    CSDB_hi_hints = 324,
     /// <summary>
     /// Instruction `CSEL` - Conditional select.
     /// </summary>
-    CSEL_32_condsel,
+    CSEL_32_condsel = 325,
     /// <summary>
     /// Instruction `CSEL` - Conditional select.
     /// </summary>
-    CSEL_64_condsel,
+    CSEL_64_condsel = 326,
     /// <summary>
     /// Instruction `CSINC` - Conditional select increment.
     /// </summary>
-    CSINC_32_condsel,
+    CSINC_32_condsel = 327,
     /// <summary>
     /// Instruction `CSINC` - Conditional select increment.
     /// </summary>
-    CSINC_64_condsel,
+    CSINC_64_condsel = 328,
     /// <summary>
     /// Instruction `CSINV` - Conditional select invert.
     /// </summary>
-    CSINV_32_condsel,
+    CSINV_32_condsel = 329,
     /// <summary>
     /// Instruction `CSINV` - Conditional select invert.
     /// </summary>
-    CSINV_64_condsel,
+    CSINV_64_condsel = 330,
     /// <summary>
     /// Instruction `CSNEG` - Conditional select negation.
     /// </summary>
-    CSNEG_32_condsel,
+    CSNEG_32_condsel = 331,
     /// <summary>
     /// Instruction `CSNEG` - Conditional select negation.
     /// </summary>
-    CSNEG_64_condsel,
+    CSNEG_64_condsel = 332,
     /// <summary>
     /// Instruction `CTZ` - Count trailing zeros.
     /// </summary>
-    CTZ_32_dp_1src,
+    CTZ_32_dp_1src = 333,
     /// <summary>
     /// Instruction `CTZ` - Count trailing zeros.
     /// </summary>
-    CTZ_64_dp_1src,
+    CTZ_64_dp_1src = 334,
     /// <summary>
     /// Instruction `DCPS1` - Debug change PE state to EL1.
     /// </summary>
-    DCPS1_dc_exception,
+    DCPS1_dc_exception = 335,
     /// <summary>
     /// Instruction `DCPS2` - Debug change PE state to EL2.
     /// </summary>
-    DCPS2_dc_exception,
+    DCPS2_dc_exception = 336,
     /// <summary>
     /// Instruction `DCPS3` - Debug change PE state to EL3.
     /// </summary>
-    DCPS3_dc_exception,
+    DCPS3_dc_exception = 337,
     /// <summary>
     /// Instruction `DGH` - Data gathering hint.
     /// </summary>
-    DGH_hi_hints,
+    DGH_hi_hints = 338,
     /// <summary>
     /// Instruction `DMB` - Data memory barrier.
     /// </summary>
-    DMB_bo_barriers,
+    DMB_bo_barriers = 339,
     /// <summary>
     /// Instruction `DRPS` - Debug restore PE state.
     /// </summary>
-    DRPS_64e_branch_reg,
+    DRPS_64e_branch_reg = 340,
     /// <summary>
     /// Instruction `DSB` - Data synchronization barrier.
     /// </summary>
-    DSB_bo_barriers,
+    DSB_bo_barriers = 341,
     /// <summary>
     /// Instruction `DSB` - Data synchronization barrier.
     /// </summary>
-    DSB_bon_barriers,
+    DSB_bon_barriers = 342,
     /// <summary>
     /// Instruction `DUP` - Duplicate general-purpose register to vector.
     /// </summary>
-    DUP_asimdins_dr_r,
+    DUP_asimdins_dr_r = 343,
     /// <summary>
     /// Instruction `DUP` - Duplicate vector element to vector or scalar.
     /// </summary>
-    DUP_asimdins_dv_v,
+    DUP_asimdins_dv_v = 344,
     /// <summary>
     /// Instruction `DUP` - Duplicate vector element to vector or scalar.
     /// </summary>
-    DUP_asisdone_only,
+    DUP_asisdone_only = 345,
     /// <summary>
     /// Instruction `EON` - Bitwise exclusive-OR NOT (shifted register).
     /// </summary>
-    EON_32_log_shift,
+    EON_32_log_shift = 346,
     /// <summary>
     /// Instruction `EON` - Bitwise exclusive-OR NOT (shifted register).
     /// </summary>
-    EON_64_log_shift,
+    EON_64_log_shift = 347,
     /// <summary>
     /// Instruction `EOR3` - Three-way exclusive-OR.
     /// </summary>
-    EOR3_vvv16_crypto4,
+    EOR3_vvv16_crypto4 = 348,
     /// <summary>
     /// Instruction `EOR` - Bitwise exclusive-OR (immediate).
     /// </summary>
-    EOR_32_log_imm,
+    EOR_32_log_imm = 349,
     /// <summary>
     /// Instruction `EOR` - Bitwise exclusive-OR (shifted register).
     /// </summary>
-    EOR_32_log_shift,
+    EOR_32_log_shift = 350,
     /// <summary>
     /// Instruction `EOR` - Bitwise exclusive-OR (immediate).
     /// </summary>
-    EOR_64_log_imm,
+    EOR_64_log_imm = 351,
     /// <summary>
     /// Instruction `EOR` - Bitwise exclusive-OR (shifted register).
     /// </summary>
-    EOR_64_log_shift,
+    EOR_64_log_shift = 352,
     /// <summary>
     /// Instruction `EOR` - Bitwise exclusive-OR (vector).
     /// </summary>
-    EOR_asimdsame_only,
+    EOR_asimdsame_only = 353,
     /// <summary>
     /// Instruction `ERETAA` - Exception return, with pointer authentication.
     /// </summary>
-    ERETAA_64e_branch_reg,
+    ERETAA_64e_branch_reg = 354,
     /// <summary>
     /// Instruction `ERETAB` - Exception return, with pointer authentication.
     /// </summary>
-    ERETAB_64e_branch_reg,
+    ERETAB_64e_branch_reg = 355,
     /// <summary>
     /// Instruction `ERET` - Exception return.
     /// </summary>
-    ERET_64e_branch_reg,
+    ERET_64e_branch_reg = 356,
     /// <summary>
     /// Instruction `ESB` - Error synchronization barrier.
     /// </summary>
-    ESB_hi_hints,
+    ESB_hi_hints = 357,
     /// <summary>
     /// Instruction `EXTR` - Extract register.
     /// </summary>
-    EXTR_32_extract,
+    EXTR_32_extract = 358,
     /// <summary>
     /// Instruction `EXTR` - Extract register.
     /// </summary>
-    EXTR_64_extract,
+    EXTR_64_extract = 359,
     /// <summary>
     /// Instruction `EXT` - Extract vector from pair of vectors.
     /// </summary>
-    EXT_asimdext_only,
+    EXT_asimdext_only = 360,
     /// <summary>
     /// Instruction `F1CVTL` - 8-bit floating-point convert to half-precision (vector).
     /// </summary>
-    F1CVTL_asimdmisc_v,
+    F1CVTL_asimdmisc_v = 361,
     /// <summary>
     /// Instruction `F2CVTL` - 8-bit floating-point convert to half-precision (vector).
     /// </summary>
-    F2CVTL_asimdmisc_v,
+    F2CVTL_asimdmisc_v = 362,
     /// <summary>
     /// Instruction `FABD` - Floating-point absolute difference (vector).
     /// </summary>
-    FABD_asimdsame_only,
+    FABD_asimdsame_only = 363,
     /// <summary>
     /// Instruction `FABD` - Floating-point absolute difference (vector).
     /// </summary>
-    FABD_asimdsamefp16_only,
+    FABD_asimdsamefp16_only = 364,
     /// <summary>
     /// Instruction `FABD` - Floating-point absolute difference (vector).
     /// </summary>
-    FABD_asisdsame_only,
+    FABD_asisdsame_only = 365,
     /// <summary>
     /// Instruction `FABD` - Floating-point absolute difference (vector).
     /// </summary>
-    FABD_asisdsamefp16_only,
+    FABD_asisdsamefp16_only = 366,
     /// <summary>
     /// Instruction `FABS` - Floating-point absolute value (vector).
     /// </summary>
-    FABS_asimdmisc_r,
+    FABS_asimdmisc_r = 367,
     /// <summary>
     /// Instruction `FABS` - Floating-point absolute value (vector).
     /// </summary>
-    FABS_asimdmiscfp16_r,
+    FABS_asimdmiscfp16_r = 368,
     /// <summary>
     /// Instruction `FABS` - Floating-point absolute value (scalar).
     /// </summary>
-    FABS_d_floatdp1,
+    FABS_d_floatdp1 = 369,
     /// <summary>
     /// Instruction `FABS` - Floating-point absolute value (scalar).
     /// </summary>
-    FABS_h_floatdp1,
+    FABS_h_floatdp1 = 370,
     /// <summary>
     /// Instruction `FABS` - Floating-point absolute value (scalar).
     /// </summary>
-    FABS_s_floatdp1,
+    FABS_s_floatdp1 = 371,
     /// <summary>
     /// Instruction `FACGE` - Floating-point absolute compare greater than or equal (vector).
     /// </summary>
-    FACGE_asimdsame_only,
+    FACGE_asimdsame_only = 372,
     /// <summary>
     /// Instruction `FACGE` - Floating-point absolute compare greater than or equal (vector).
     /// </summary>
-    FACGE_asimdsamefp16_only,
+    FACGE_asimdsamefp16_only = 373,
     /// <summary>
     /// Instruction `FACGE` - Floating-point absolute compare greater than or equal (vector).
     /// </summary>
-    FACGE_asisdsame_only,
+    FACGE_asisdsame_only = 374,
     /// <summary>
     /// Instruction `FACGE` - Floating-point absolute compare greater than or equal (vector).
     /// </summary>
-    FACGE_asisdsamefp16_only,
+    FACGE_asisdsamefp16_only = 375,
     /// <summary>
     /// Instruction `FACGT` - Floating-point absolute compare greater than (vector).
     /// </summary>
-    FACGT_asimdsame_only,
+    FACGT_asimdsame_only = 376,
     /// <summary>
     /// Instruction `FACGT` - Floating-point absolute compare greater than (vector).
     /// </summary>
-    FACGT_asimdsamefp16_only,
+    FACGT_asimdsamefp16_only = 377,
     /// <summary>
     /// Instruction `FACGT` - Floating-point absolute compare greater than (vector).
     /// </summary>
-    FACGT_asisdsame_only,
+    FACGT_asisdsame_only = 378,
     /// <summary>
     /// Instruction `FACGT` - Floating-point absolute compare greater than (vector).
     /// </summary>
-    FACGT_asisdsamefp16_only,
+    FACGT_asisdsamefp16_only = 379,
     /// <summary>
     /// Instruction `FADDP` - Floating-point add pairwise (vector).
     /// </summary>
-    FADDP_asimdsame_only,
+    FADDP_asimdsame_only = 380,
     /// <summary>
     /// Instruction `FADDP` - Floating-point add pairwise (vector).
     /// </summary>
-    FADDP_asimdsamefp16_only,
+    FADDP_asimdsamefp16_only = 381,
     /// <summary>
     /// Instruction `FADDP` - Floating-point add pair of elements (scalar).
     /// </summary>
-    FADDP_asisdpair_only_h,
+    FADDP_asisdpair_only_h = 382,
     /// <summary>
     /// Instruction `FADDP` - Floating-point add pair of elements (scalar).
     /// </summary>
-    FADDP_asisdpair_only_sd,
+    FADDP_asisdpair_only_sd = 383,
     /// <summary>
     /// Instruction `FADD` - Floating-point add (vector).
     /// </summary>
-    FADD_asimdsame_only,
+    FADD_asimdsame_only = 384,
     /// <summary>
     /// Instruction `FADD` - Floating-point add (vector).
     /// </summary>
-    FADD_asimdsamefp16_only,
+    FADD_asimdsamefp16_only = 385,
     /// <summary>
     /// Instruction `FADD` - Floating-point add (scalar).
     /// </summary>
-    FADD_d_floatdp2,
+    FADD_d_floatdp2 = 386,
     /// <summary>
     /// Instruction `FADD` - Floating-point add (scalar).
     /// </summary>
-    FADD_h_floatdp2,
+    FADD_h_floatdp2 = 387,
     /// <summary>
     /// Instruction `FADD` - Floating-point add (scalar).
     /// </summary>
-    FADD_s_floatdp2,
+    FADD_s_floatdp2 = 388,
     /// <summary>
     /// Instruction `FAMAX` - Floating-point absolute maximum.
     /// </summary>
-    FAMAX_asimdsame_only,
+    FAMAX_asimdsame_only = 389,
     /// <summary>
     /// Instruction `FAMAX` - Floating-point absolute maximum.
     /// </summary>
-    FAMAX_asimdsamefp16_only,
+    FAMAX_asimdsamefp16_only = 390,
     /// <summary>
     /// Instruction `FAMIN` - Floating-point absolute minimum.
     /// </summary>
-    FAMIN_asimdsame_only,
+    FAMIN_asimdsame_only = 391,
     /// <summary>
     /// Instruction `FAMIN` - Floating-point absolute minimum.
     /// </summary>
-    FAMIN_asimdsamefp16_only,
+    FAMIN_asimdsamefp16_only = 392,
     /// <summary>
     /// Instruction `FCADD` - Floating-point complex add.
     /// </summary>
-    FCADD_asimdsame2_c,
+    FCADD_asimdsame2_c = 393,
     /// <summary>
     /// Instruction `FCCMPE` - Floating-point conditional signaling compare (scalar).
     /// </summary>
-    FCCMPE_d_floatccmp,
+    FCCMPE_d_floatccmp = 394,
     /// <summary>
     /// Instruction `FCCMPE` - Floating-point conditional signaling compare (scalar).
     /// </summary>
-    FCCMPE_h_floatccmp,
+    FCCMPE_h_floatccmp = 395,
     /// <summary>
     /// Instruction `FCCMPE` - Floating-point conditional signaling compare (scalar).
     /// </summary>
-    FCCMPE_s_floatccmp,
+    FCCMPE_s_floatccmp = 396,
     /// <summary>
     /// Instruction `FCCMP` - Floating-point conditional quiet compare (scalar).
     /// </summary>
-    FCCMP_d_floatccmp,
+    FCCMP_d_floatccmp = 397,
     /// <summary>
     /// Instruction `FCCMP` - Floating-point conditional quiet compare (scalar).
     /// </summary>
-    FCCMP_h_floatccmp,
+    FCCMP_h_floatccmp = 398,
     /// <summary>
     /// Instruction `FCCMP` - Floating-point conditional quiet compare (scalar).
     /// </summary>
-    FCCMP_s_floatccmp,
+    FCCMP_s_floatccmp = 399,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal to zero (vector).
     /// </summary>
-    FCMEQ_asimdmisc_fz,
+    FCMEQ_asimdmisc_fz = 400,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal to zero (vector).
     /// </summary>
-    FCMEQ_asimdmiscfp16_fz,
+    FCMEQ_asimdmiscfp16_fz = 401,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal (vector).
     /// </summary>
-    FCMEQ_asimdsame_only,
+    FCMEQ_asimdsame_only = 402,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal (vector).
     /// </summary>
-    FCMEQ_asimdsamefp16_only,
+    FCMEQ_asimdsamefp16_only = 403,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal to zero (vector).
     /// </summary>
-    FCMEQ_asisdmisc_fz,
+    FCMEQ_asisdmisc_fz = 404,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal to zero (vector).
     /// </summary>
-    FCMEQ_asisdmiscfp16_fz,
+    FCMEQ_asisdmiscfp16_fz = 405,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal (vector).
     /// </summary>
-    FCMEQ_asisdsame_only,
+    FCMEQ_asisdsame_only = 406,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal (vector).
     /// </summary>
-    FCMEQ_asisdsamefp16_only,
+    FCMEQ_asisdsamefp16_only = 407,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal to zero (vector).
     /// </summary>
-    FCMGE_asimdmisc_fz,
+    FCMGE_asimdmisc_fz = 408,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal to zero (vector).
     /// </summary>
-    FCMGE_asimdmiscfp16_fz,
+    FCMGE_asimdmiscfp16_fz = 409,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal (vector).
     /// </summary>
-    FCMGE_asimdsame_only,
+    FCMGE_asimdsame_only = 410,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal (vector).
     /// </summary>
-    FCMGE_asimdsamefp16_only,
+    FCMGE_asimdsamefp16_only = 411,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal to zero (vector).
     /// </summary>
-    FCMGE_asisdmisc_fz,
+    FCMGE_asisdmisc_fz = 412,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal to zero (vector).
     /// </summary>
-    FCMGE_asisdmiscfp16_fz,
+    FCMGE_asisdmiscfp16_fz = 413,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal (vector).
     /// </summary>
-    FCMGE_asisdsame_only,
+    FCMGE_asisdsame_only = 414,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal (vector).
     /// </summary>
-    FCMGE_asisdsamefp16_only,
+    FCMGE_asisdsamefp16_only = 415,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than zero (vector).
     /// </summary>
-    FCMGT_asimdmisc_fz,
+    FCMGT_asimdmisc_fz = 416,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than zero (vector).
     /// </summary>
-    FCMGT_asimdmiscfp16_fz,
+    FCMGT_asimdmiscfp16_fz = 417,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than (vector).
     /// </summary>
-    FCMGT_asimdsame_only,
+    FCMGT_asimdsame_only = 418,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than (vector).
     /// </summary>
-    FCMGT_asimdsamefp16_only,
+    FCMGT_asimdsamefp16_only = 419,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than zero (vector).
     /// </summary>
-    FCMGT_asisdmisc_fz,
+    FCMGT_asisdmisc_fz = 420,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than zero (vector).
     /// </summary>
-    FCMGT_asisdmiscfp16_fz,
+    FCMGT_asisdmiscfp16_fz = 421,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than (vector).
     /// </summary>
-    FCMGT_asisdsame_only,
+    FCMGT_asisdsame_only = 422,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than (vector).
     /// </summary>
-    FCMGT_asisdsamefp16_only,
+    FCMGT_asisdsamefp16_only = 423,
     /// <summary>
     /// Instruction `FCMLA` - Floating-point complex multiply accumulate (by element).
     /// </summary>
-    FCMLA_advsimd_elt,
+    FCMLA_advsimd_elt = 424,
     /// <summary>
     /// Instruction `FCMLA` - Floating-point complex multiply accumulate.
     /// </summary>
-    FCMLA_asimdsame2_c,
+    FCMLA_asimdsame2_c = 425,
     /// <summary>
     /// Instruction `FCMLE` - Floating-point compare less than or equal to zero (vector).
     /// </summary>
-    FCMLE_asimdmisc_fz,
+    FCMLE_asimdmisc_fz = 426,
     /// <summary>
     /// Instruction `FCMLE` - Floating-point compare less than or equal to zero (vector).
     /// </summary>
-    FCMLE_asimdmiscfp16_fz,
+    FCMLE_asimdmiscfp16_fz = 427,
     /// <summary>
     /// Instruction `FCMLE` - Floating-point compare less than or equal to zero (vector).
     /// </summary>
-    FCMLE_asisdmisc_fz,
+    FCMLE_asisdmisc_fz = 428,
     /// <summary>
     /// Instruction `FCMLE` - Floating-point compare less than or equal to zero (vector).
     /// </summary>
-    FCMLE_asisdmiscfp16_fz,
+    FCMLE_asisdmiscfp16_fz = 429,
     /// <summary>
     /// Instruction `FCMLT` - Floating-point compare less than zero (vector).
     /// </summary>
-    FCMLT_asimdmisc_fz,
+    FCMLT_asimdmisc_fz = 430,
     /// <summary>
     /// Instruction `FCMLT` - Floating-point compare less than zero (vector).
     /// </summary>
-    FCMLT_asimdmiscfp16_fz,
+    FCMLT_asimdmiscfp16_fz = 431,
     /// <summary>
     /// Instruction `FCMLT` - Floating-point compare less than zero (vector).
     /// </summary>
-    FCMLT_asisdmisc_fz,
+    FCMLT_asisdmisc_fz = 432,
     /// <summary>
     /// Instruction `FCMLT` - Floating-point compare less than zero (vector).
     /// </summary>
-    FCMLT_asisdmiscfp16_fz,
+    FCMLT_asisdmiscfp16_fz = 433,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_d_floatcmp,
+    FCMPE_d_floatcmp = 434,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_dz_floatcmp,
+    FCMPE_dz_floatcmp = 435,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_h_floatcmp,
+    FCMPE_h_floatcmp = 436,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_hz_floatcmp,
+    FCMPE_hz_floatcmp = 437,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_s_floatcmp,
+    FCMPE_s_floatcmp = 438,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_sz_floatcmp,
+    FCMPE_sz_floatcmp = 439,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_d_floatcmp,
+    FCMP_d_floatcmp = 440,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_dz_floatcmp,
+    FCMP_dz_floatcmp = 441,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_h_floatcmp,
+    FCMP_h_floatcmp = 442,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_hz_floatcmp,
+    FCMP_hz_floatcmp = 443,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_s_floatcmp,
+    FCMP_s_floatcmp = 444,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_sz_floatcmp,
+    FCMP_sz_floatcmp = 445,
     /// <summary>
     /// Instruction `FCSEL` - Floating-point conditional select (scalar).
     /// </summary>
-    FCSEL_d_floatsel,
+    FCSEL_d_floatsel = 446,
     /// <summary>
     /// Instruction `FCSEL` - Floating-point conditional select (scalar).
     /// </summary>
-    FCSEL_h_floatsel,
+    FCSEL_h_floatsel = 447,
     /// <summary>
     /// Instruction `FCSEL` - Floating-point conditional select (scalar).
     /// </summary>
-    FCSEL_s_floatsel,
+    FCSEL_s_floatsel = 448,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_32d_float2int,
+    FCVTAS_32d_float2int = 449,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_32h_float2int,
+    FCVTAS_32h_float2int = 450,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_32s_float2int,
+    FCVTAS_32s_float2int = 451,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_64d_float2int,
+    FCVTAS_64d_float2int = 452,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_64h_float2int,
+    FCVTAS_64h_float2int = 453,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_64s_float2int,
+    FCVTAS_64s_float2int = 454,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAS_asimdmisc_r,
+    FCVTAS_asimdmisc_r = 455,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAS_asimdmiscfp16_r,
+    FCVTAS_asimdmiscfp16_r = 456,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAS_asisdmisc_r,
+    FCVTAS_asisdmisc_r = 457,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAS_asisdmiscfp16_r,
+    FCVTAS_asisdmiscfp16_r = 458,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAS_sisd_32d,
+    FCVTAS_sisd_32d = 459,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAS_sisd_32h,
+    FCVTAS_sisd_32h = 460,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAS_sisd_64h,
+    FCVTAS_sisd_64h = 461,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAS_sisd_64s,
+    FCVTAS_sisd_64s = 462,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_32d_float2int,
+    FCVTAU_32d_float2int = 463,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_32h_float2int,
+    FCVTAU_32h_float2int = 464,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_32s_float2int,
+    FCVTAU_32s_float2int = 465,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_64d_float2int,
+    FCVTAU_64d_float2int = 466,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_64h_float2int,
+    FCVTAU_64h_float2int = 467,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_64s_float2int,
+    FCVTAU_64s_float2int = 468,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAU_asimdmisc_r,
+    FCVTAU_asimdmisc_r = 469,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAU_asimdmiscfp16_r,
+    FCVTAU_asimdmiscfp16_r = 470,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAU_asisdmisc_r,
+    FCVTAU_asisdmisc_r = 471,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAU_asisdmiscfp16_r,
+    FCVTAU_asisdmiscfp16_r = 472,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAU_sisd_32d,
+    FCVTAU_sisd_32d = 473,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAU_sisd_32h,
+    FCVTAU_sisd_32h = 474,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAU_sisd_64h,
+    FCVTAU_sisd_64h = 475,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAU_sisd_64s,
+    FCVTAU_sisd_64s = 476,
     /// <summary>
     /// Instruction `FCVTL` - Floating-point convert to higher precision long (vector).
     /// </summary>
-    FCVTL_asimdmisc_l,
+    FCVTL_asimdmisc_l = 477,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_32d_float2int,
+    FCVTMS_32d_float2int = 478,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_32h_float2int,
+    FCVTMS_32h_float2int = 479,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_32s_float2int,
+    FCVTMS_32s_float2int = 480,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_64d_float2int,
+    FCVTMS_64d_float2int = 481,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_64h_float2int,
+    FCVTMS_64h_float2int = 482,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_64s_float2int,
+    FCVTMS_64s_float2int = 483,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMS_asimdmisc_r,
+    FCVTMS_asimdmisc_r = 484,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMS_asimdmiscfp16_r,
+    FCVTMS_asimdmiscfp16_r = 485,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMS_asisdmisc_r,
+    FCVTMS_asisdmisc_r = 486,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMS_asisdmiscfp16_r,
+    FCVTMS_asisdmiscfp16_r = 487,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMS_sisd_32d,
+    FCVTMS_sisd_32d = 488,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMS_sisd_32h,
+    FCVTMS_sisd_32h = 489,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMS_sisd_64h,
+    FCVTMS_sisd_64h = 490,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMS_sisd_64s,
+    FCVTMS_sisd_64s = 491,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_32d_float2int,
+    FCVTMU_32d_float2int = 492,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_32h_float2int,
+    FCVTMU_32h_float2int = 493,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_32s_float2int,
+    FCVTMU_32s_float2int = 494,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_64d_float2int,
+    FCVTMU_64d_float2int = 495,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_64h_float2int,
+    FCVTMU_64h_float2int = 496,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_64s_float2int,
+    FCVTMU_64s_float2int = 497,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMU_asimdmisc_r,
+    FCVTMU_asimdmisc_r = 498,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMU_asimdmiscfp16_r,
+    FCVTMU_asimdmiscfp16_r = 499,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMU_asisdmisc_r,
+    FCVTMU_asisdmisc_r = 500,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMU_asisdmiscfp16_r,
+    FCVTMU_asisdmiscfp16_r = 501,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMU_sisd_32d,
+    FCVTMU_sisd_32d = 502,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMU_sisd_32h,
+    FCVTMU_sisd_32h = 503,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMU_sisd_64h,
+    FCVTMU_sisd_64h = 504,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMU_sisd_64s,
+    FCVTMU_sisd_64s = 505,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_32d_float2int,
+    FCVTNS_32d_float2int = 506,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_32h_float2int,
+    FCVTNS_32h_float2int = 507,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_32s_float2int,
+    FCVTNS_32s_float2int = 508,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_64d_float2int,
+    FCVTNS_64d_float2int = 509,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_64h_float2int,
+    FCVTNS_64h_float2int = 510,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_64s_float2int,
+    FCVTNS_64s_float2int = 511,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNS_asimdmisc_r,
+    FCVTNS_asimdmisc_r = 512,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNS_asimdmiscfp16_r,
+    FCVTNS_asimdmiscfp16_r = 513,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNS_asisdmisc_r,
+    FCVTNS_asisdmisc_r = 514,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNS_asisdmiscfp16_r,
+    FCVTNS_asisdmiscfp16_r = 515,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNS_sisd_32d,
+    FCVTNS_sisd_32d = 516,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNS_sisd_32h,
+    FCVTNS_sisd_32h = 517,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNS_sisd_64h,
+    FCVTNS_sisd_64h = 518,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNS_sisd_64s,
+    FCVTNS_sisd_64s = 519,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_32d_float2int,
+    FCVTNU_32d_float2int = 520,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_32h_float2int,
+    FCVTNU_32h_float2int = 521,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_32s_float2int,
+    FCVTNU_32s_float2int = 522,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_64d_float2int,
+    FCVTNU_64d_float2int = 523,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_64h_float2int,
+    FCVTNU_64h_float2int = 524,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_64s_float2int,
+    FCVTNU_64s_float2int = 525,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNU_asimdmisc_r,
+    FCVTNU_asimdmisc_r = 526,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNU_asimdmiscfp16_r,
+    FCVTNU_asimdmiscfp16_r = 527,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNU_asisdmisc_r,
+    FCVTNU_asisdmisc_r = 528,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNU_asisdmiscfp16_r,
+    FCVTNU_asisdmiscfp16_r = 529,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNU_sisd_32d,
+    FCVTNU_sisd_32d = 530,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNU_sisd_32h,
+    FCVTNU_sisd_32h = 531,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNU_sisd_64h,
+    FCVTNU_sisd_64h = 532,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNU_sisd_64s,
+    FCVTNU_sisd_64s = 533,
     /// <summary>
     /// Instruction `FCVTN` - Floating-point convert to lower precision narrow (vector).
     /// </summary>
-    FCVTN_asimdmisc_n,
+    FCVTN_asimdmisc_n = 534,
     /// <summary>
     /// Instruction `FCVTN` - Half-precision to 8-bit floating-point convert and narrow (vector).
     /// </summary>
-    FCVTN_asimdsame2_d,
+    FCVTN_asimdsame2_d = 535,
     /// <summary>
     /// Instruction `FCVTN` - Single-precision to 8-bit floating-point convert and narrow (vector).
     /// </summary>
-    FCVTN_asimdsame2_h,
+    FCVTN_asimdsame2_h = 536,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_32d_float2int,
+    FCVTPS_32d_float2int = 537,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_32h_float2int,
+    FCVTPS_32h_float2int = 538,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_32s_float2int,
+    FCVTPS_32s_float2int = 539,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_64d_float2int,
+    FCVTPS_64d_float2int = 540,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_64h_float2int,
+    FCVTPS_64h_float2int = 541,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_64s_float2int,
+    FCVTPS_64s_float2int = 542,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPS_asimdmisc_r,
+    FCVTPS_asimdmisc_r = 543,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPS_asimdmiscfp16_r,
+    FCVTPS_asimdmiscfp16_r = 544,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPS_asisdmisc_r,
+    FCVTPS_asisdmisc_r = 545,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPS_asisdmiscfp16_r,
+    FCVTPS_asisdmiscfp16_r = 546,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPS_sisd_32d,
+    FCVTPS_sisd_32d = 547,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPS_sisd_32h,
+    FCVTPS_sisd_32h = 548,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPS_sisd_64h,
+    FCVTPS_sisd_64h = 549,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPS_sisd_64s,
+    FCVTPS_sisd_64s = 550,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_32d_float2int,
+    FCVTPU_32d_float2int = 551,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_32h_float2int,
+    FCVTPU_32h_float2int = 552,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_32s_float2int,
+    FCVTPU_32s_float2int = 553,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_64d_float2int,
+    FCVTPU_64d_float2int = 554,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_64h_float2int,
+    FCVTPU_64h_float2int = 555,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_64s_float2int,
+    FCVTPU_64s_float2int = 556,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPU_asimdmisc_r,
+    FCVTPU_asimdmisc_r = 557,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPU_asimdmiscfp16_r,
+    FCVTPU_asimdmiscfp16_r = 558,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPU_asisdmisc_r,
+    FCVTPU_asisdmisc_r = 559,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPU_asisdmiscfp16_r,
+    FCVTPU_asisdmiscfp16_r = 560,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPU_sisd_32d,
+    FCVTPU_sisd_32d = 561,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPU_sisd_32h,
+    FCVTPU_sisd_32h = 562,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPU_sisd_64h,
+    FCVTPU_sisd_64h = 563,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPU_sisd_64s,
+    FCVTPU_sisd_64s = 564,
     /// <summary>
     /// Instruction `FCVTXN` - Floating-point convert to lower precision narrow, rounding to odd (vector).
     /// </summary>
-    FCVTXN_asimdmisc_n,
+    FCVTXN_asimdmisc_n = 565,
     /// <summary>
     /// Instruction `FCVTXN` - Floating-point convert to lower precision narrow, rounding to odd (vector).
     /// </summary>
-    FCVTXN_asisdmisc_n,
+    FCVTXN_asisdmisc_n = 566,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32d_float2fix,
+    FCVTZS_32d_float2fix = 567,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32d_float2int,
+    FCVTZS_32d_float2int = 568,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32h_float2fix,
+    FCVTZS_32h_float2fix = 569,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32h_float2int,
+    FCVTZS_32h_float2int = 570,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32s_float2fix,
+    FCVTZS_32s_float2fix = 571,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32s_float2int,
+    FCVTZS_32s_float2int = 572,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64d_float2fix,
+    FCVTZS_64d_float2fix = 573,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64d_float2int,
+    FCVTZS_64d_float2int = 574,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64h_float2fix,
+    FCVTZS_64h_float2fix = 575,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64h_float2int,
+    FCVTZS_64h_float2int = 576,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64s_float2fix,
+    FCVTZS_64s_float2fix = 577,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64s_float2int,
+    FCVTZS_64s_float2int = 578,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asimdmisc_r,
+    FCVTZS_asimdmisc_r = 579,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asimdmiscfp16_r,
+    FCVTZS_asimdmiscfp16_r = 580,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asimdshf_c,
+    FCVTZS_asimdshf_c = 581,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asisdmisc_r,
+    FCVTZS_asisdmisc_r = 582,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asisdmiscfp16_r,
+    FCVTZS_asisdmiscfp16_r = 583,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asisdshf_c,
+    FCVTZS_asisdshf_c = 584,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZS_sisd_32d,
+    FCVTZS_sisd_32d = 585,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZS_sisd_32h,
+    FCVTZS_sisd_32h = 586,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZS_sisd_64h,
+    FCVTZS_sisd_64h = 587,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZS_sisd_64s,
+    FCVTZS_sisd_64s = 588,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32d_float2fix,
+    FCVTZU_32d_float2fix = 589,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32d_float2int,
+    FCVTZU_32d_float2int = 590,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32h_float2fix,
+    FCVTZU_32h_float2fix = 591,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32h_float2int,
+    FCVTZU_32h_float2int = 592,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32s_float2fix,
+    FCVTZU_32s_float2fix = 593,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32s_float2int,
+    FCVTZU_32s_float2int = 594,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64d_float2fix,
+    FCVTZU_64d_float2fix = 595,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64d_float2int,
+    FCVTZU_64d_float2int = 596,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64h_float2fix,
+    FCVTZU_64h_float2fix = 597,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64h_float2int,
+    FCVTZU_64h_float2int = 598,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64s_float2fix,
+    FCVTZU_64s_float2fix = 599,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64s_float2int,
+    FCVTZU_64s_float2int = 600,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asimdmisc_r,
+    FCVTZU_asimdmisc_r = 601,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asimdmiscfp16_r,
+    FCVTZU_asimdmiscfp16_r = 602,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asimdshf_c,
+    FCVTZU_asimdshf_c = 603,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asisdmisc_r,
+    FCVTZU_asisdmisc_r = 604,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asisdmiscfp16_r,
+    FCVTZU_asisdmiscfp16_r = 605,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asisdshf_c,
+    FCVTZU_asisdshf_c = 606,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZU_sisd_32d,
+    FCVTZU_sisd_32d = 607,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZU_sisd_32h,
+    FCVTZU_sisd_32h = 608,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZU_sisd_64h,
+    FCVTZU_sisd_64h = 609,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZU_sisd_64s,
+    FCVTZU_sisd_64s = 610,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_dh_floatdp1,
+    FCVT_dh_floatdp1 = 611,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_ds_floatdp1,
+    FCVT_ds_floatdp1 = 612,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_hd_floatdp1,
+    FCVT_hd_floatdp1 = 613,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_hs_floatdp1,
+    FCVT_hs_floatdp1 = 614,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_sd_floatdp1,
+    FCVT_sd_floatdp1 = 615,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_sh_floatdp1,
+    FCVT_sh_floatdp1 = 616,
     /// <summary>
     /// Instruction `FDIV` - Floating-point divide (vector).
     /// </summary>
-    FDIV_asimdsame_only,
+    FDIV_asimdsame_only = 617,
     /// <summary>
     /// Instruction `FDIV` - Floating-point divide (vector).
     /// </summary>
-    FDIV_asimdsamefp16_only,
+    FDIV_asimdsamefp16_only = 618,
     /// <summary>
     /// Instruction `FDIV` - Floating-point divide (scalar).
     /// </summary>
-    FDIV_d_floatdp2,
+    FDIV_d_floatdp2 = 619,
     /// <summary>
     /// Instruction `FDIV` - Floating-point divide (scalar).
     /// </summary>
-    FDIV_h_floatdp2,
+    FDIV_h_floatdp2 = 620,
     /// <summary>
     /// Instruction `FDIV` - Floating-point divide (scalar).
     /// </summary>
-    FDIV_s_floatdp2,
+    FDIV_s_floatdp2 = 621,
     /// <summary>
     /// Instruction `FDOT` - 8-bit floating-point dot product to single-precision (vector, by element).
     /// </summary>
-    FDOT_asimdelem_d,
+    FDOT_asimdelem_d = 622,
     /// <summary>
     /// Instruction `FDOT` - 8-bit floating-point dot product to half-precision (vector, by element).
     /// </summary>
-    FDOT_asimdelem_g,
+    FDOT_asimdelem_g = 623,
     /// <summary>
     /// Instruction `FDOT` - 8-bit floating-point dot product to half-precision (vector).
     /// </summary>
-    FDOT_asimdsame2_d,
+    FDOT_asimdsame2_d = 624,
     /// <summary>
     /// Instruction `FDOT` - 8-bit floating-point dot product to single-precision (vector).
     /// </summary>
-    FDOT_asimdsame2_dd,
+    FDOT_asimdsame2_dd = 625,
     /// <summary>
     /// Instruction `FJCVTZS` - Floating-point Javascript convert to signed fixed-point, rounding toward zero.
     /// </summary>
-    FJCVTZS_32d_float2int,
+    FJCVTZS_32d_float2int = 626,
     /// <summary>
     /// Instruction `FMADD` - Floating-point fused multiply-add (scalar).
     /// </summary>
-    FMADD_d_floatdp3,
+    FMADD_d_floatdp3 = 627,
     /// <summary>
     /// Instruction `FMADD` - Floating-point fused multiply-add (scalar).
     /// </summary>
-    FMADD_h_floatdp3,
+    FMADD_h_floatdp3 = 628,
     /// <summary>
     /// Instruction `FMADD` - Floating-point fused multiply-add (scalar).
     /// </summary>
-    FMADD_s_floatdp3,
+    FMADD_s_floatdp3 = 629,
     /// <summary>
     /// Instruction `FMAXNMP` - Floating-point maximum number pairwise (vector).
     /// </summary>
-    FMAXNMP_asimdsame_only,
+    FMAXNMP_asimdsame_only = 630,
     /// <summary>
     /// Instruction `FMAXNMP` - Floating-point maximum number pairwise (vector).
     /// </summary>
-    FMAXNMP_asimdsamefp16_only,
+    FMAXNMP_asimdsamefp16_only = 631,
     /// <summary>
     /// Instruction `FMAXNMP` - Floating-point maximum number of pair of elements (scalar).
     /// </summary>
-    FMAXNMP_asisdpair_only_h,
+    FMAXNMP_asisdpair_only_h = 632,
     /// <summary>
     /// Instruction `FMAXNMP` - Floating-point maximum number of pair of elements (scalar).
     /// </summary>
-    FMAXNMP_asisdpair_only_sd,
+    FMAXNMP_asisdpair_only_sd = 633,
     /// <summary>
     /// Instruction `FMAXNMV` - Floating-point maximum number across vector.
     /// </summary>
-    FMAXNMV_asimdall_only_h,
+    FMAXNMV_asimdall_only_h = 634,
     /// <summary>
     /// Instruction `FMAXNMV` - Floating-point maximum number across vector.
     /// </summary>
-    FMAXNMV_asimdall_only_sd,
+    FMAXNMV_asimdall_only_sd = 635,
     /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (vector).
     /// </summary>
-    FMAXNM_asimdsame_only,
+    FMAXNM_asimdsame_only = 636,
     /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (vector).
     /// </summary>
-    FMAXNM_asimdsamefp16_only,
+    FMAXNM_asimdsamefp16_only = 637,
     /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (scalar).
     /// </summary>
-    FMAXNM_d_floatdp2,
+    FMAXNM_d_floatdp2 = 638,
     /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (scalar).
     /// </summary>
-    FMAXNM_h_floatdp2,
+    FMAXNM_h_floatdp2 = 639,
     /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (scalar).
     /// </summary>
-    FMAXNM_s_floatdp2,
+    FMAXNM_s_floatdp2 = 640,
     /// <summary>
     /// Instruction `FMAXP` - Floating-point maximum pairwise (vector).
     /// </summary>
-    FMAXP_asimdsame_only,
+    FMAXP_asimdsame_only = 641,
     /// <summary>
     /// Instruction `FMAXP` - Floating-point maximum pairwise (vector).
     /// </summary>
-    FMAXP_asimdsamefp16_only,
+    FMAXP_asimdsamefp16_only = 642,
     /// <summary>
     /// Instruction `FMAXP` - Floating-point maximum of pair of elements (scalar).
     /// </summary>
-    FMAXP_asisdpair_only_h,
+    FMAXP_asisdpair_only_h = 643,
     /// <summary>
     /// Instruction `FMAXP` - Floating-point maximum of pair of elements (scalar).
     /// </summary>
-    FMAXP_asisdpair_only_sd,
+    FMAXP_asisdpair_only_sd = 644,
     /// <summary>
     /// Instruction `FMAXV` - Floating-point maximum across vector.
     /// </summary>
-    FMAXV_asimdall_only_h,
+    FMAXV_asimdall_only_h = 645,
     /// <summary>
     /// Instruction `FMAXV` - Floating-point maximum across vector.
     /// </summary>
-    FMAXV_asimdall_only_sd,
+    FMAXV_asimdall_only_sd = 646,
     /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (vector).
     /// </summary>
-    FMAX_asimdsame_only,
+    FMAX_asimdsame_only = 647,
     /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (vector).
     /// </summary>
-    FMAX_asimdsamefp16_only,
+    FMAX_asimdsamefp16_only = 648,
     /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (scalar).
     /// </summary>
-    FMAX_d_floatdp2,
+    FMAX_d_floatdp2 = 649,
     /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (scalar).
     /// </summary>
-    FMAX_h_floatdp2,
+    FMAX_h_floatdp2 = 650,
     /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (scalar).
     /// </summary>
-    FMAX_s_floatdp2,
+    FMAX_s_floatdp2 = 651,
     /// <summary>
     /// Instruction `FMINNMP` - Floating-point minimum number pairwise (vector).
     /// </summary>
-    FMINNMP_asimdsame_only,
+    FMINNMP_asimdsame_only = 652,
     /// <summary>
     /// Instruction `FMINNMP` - Floating-point minimum number pairwise (vector).
     /// </summary>
-    FMINNMP_asimdsamefp16_only,
+    FMINNMP_asimdsamefp16_only = 653,
     /// <summary>
     /// Instruction `FMINNMP` - Floating-point minimum number of pair of elements (scalar).
     /// </summary>
-    FMINNMP_asisdpair_only_h,
+    FMINNMP_asisdpair_only_h = 654,
     /// <summary>
     /// Instruction `FMINNMP` - Floating-point minimum number of pair of elements (scalar).
     /// </summary>
-    FMINNMP_asisdpair_only_sd,
+    FMINNMP_asisdpair_only_sd = 655,
     /// <summary>
     /// Instruction `FMINNMV` - Floating-point minimum number across vector.
     /// </summary>
-    FMINNMV_asimdall_only_h,
+    FMINNMV_asimdall_only_h = 656,
     /// <summary>
     /// Instruction `FMINNMV` - Floating-point minimum number across vector.
     /// </summary>
-    FMINNMV_asimdall_only_sd,
+    FMINNMV_asimdall_only_sd = 657,
     /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (vector).
     /// </summary>
-    FMINNM_asimdsame_only,
+    FMINNM_asimdsame_only = 658,
     /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (vector).
     /// </summary>
-    FMINNM_asimdsamefp16_only,
+    FMINNM_asimdsamefp16_only = 659,
     /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (scalar).
     /// </summary>
-    FMINNM_d_floatdp2,
+    FMINNM_d_floatdp2 = 660,
     /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (scalar).
     /// </summary>
-    FMINNM_h_floatdp2,
+    FMINNM_h_floatdp2 = 661,
     /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (scalar).
     /// </summary>
-    FMINNM_s_floatdp2,
+    FMINNM_s_floatdp2 = 662,
     /// <summary>
     /// Instruction `FMINP` - Floating-point minimum pairwise (vector).
     /// </summary>
-    FMINP_asimdsame_only,
+    FMINP_asimdsame_only = 663,
     /// <summary>
     /// Instruction `FMINP` - Floating-point minimum pairwise (vector).
     /// </summary>
-    FMINP_asimdsamefp16_only,
+    FMINP_asimdsamefp16_only = 664,
     /// <summary>
     /// Instruction `FMINP` - Floating-point minimum of pair of elements (scalar).
     /// </summary>
-    FMINP_asisdpair_only_h,
+    FMINP_asisdpair_only_h = 665,
     /// <summary>
     /// Instruction `FMINP` - Floating-point minimum of pair of elements (scalar).
     /// </summary>
-    FMINP_asisdpair_only_sd,
+    FMINP_asisdpair_only_sd = 666,
     /// <summary>
     /// Instruction `FMINV` - Floating-point minimum across vector.
     /// </summary>
-    FMINV_asimdall_only_h,
+    FMINV_asimdall_only_h = 667,
     /// <summary>
     /// Instruction `FMINV` - Floating-point minimum across vector.
     /// </summary>
-    FMINV_asimdall_only_sd,
+    FMINV_asimdall_only_sd = 668,
     /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (vector).
     /// </summary>
-    FMIN_asimdsame_only,
+    FMIN_asimdsame_only = 669,
     /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (vector).
     /// </summary>
-    FMIN_asimdsamefp16_only,
+    FMIN_asimdsamefp16_only = 670,
     /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (scalar).
     /// </summary>
-    FMIN_d_floatdp2,
+    FMIN_d_floatdp2 = 671,
     /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (scalar).
     /// </summary>
-    FMIN_h_floatdp2,
+    FMIN_h_floatdp2 = 672,
     /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (scalar).
     /// </summary>
-    FMIN_s_floatdp2,
+    FMIN_s_floatdp2 = 673,
     /// <summary>
     /// Instruction `FMLAL2` - Floating-point fused multiply-add long to accumulator (by element).
     /// </summary>
-    FMLAL2_asimdelem_lh,
+    FMLAL2_asimdelem_lh = 674,
     /// <summary>
     /// Instruction `FMLAL2` - Floating-point fused multiply-add long to accumulator (vector).
     /// </summary>
-    FMLAL2_asimdsame_f,
+    FMLAL2_asimdsame_f = 675,
     /// <summary>
     /// Instruction `FMLALB` - 8-bit floating-point multiply-add long to half-precision (vector, by element).
     /// </summary>
-    FMLALB_asimdelem_h,
+    FMLALB_asimdelem_h = 676,
     /// <summary>
     /// Instruction `FMLALB` - 8-bit floating-point multiply-add long to half-precision (vector).
     /// </summary>
-    FMLALB_asimdsame2_j,
+    FMLALB_asimdsame2_j = 677,
     /// <summary>
     /// Instruction `FMLALLBB` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
-    FMLALLBB_asimdelem_j,
+    FMLALLBB_asimdelem_j = 678,
     /// <summary>
     /// Instruction `FMLALLBB` - 8-bit floating-point multiply-add long-long to single-precision (vector).
     /// </summary>
-    FMLALLBB_asimdsame2_g,
+    FMLALLBB_asimdsame2_g = 679,
     /// <summary>
     /// Instruction `FMLALLBT` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
-    FMLALLBT_asimdelem_j,
+    FMLALLBT_asimdelem_j = 680,
     /// <summary>
     /// Instruction `FMLALLBT` - 8-bit floating-point multiply-add long-long to single-precision (vector).
     /// </summary>
-    FMLALLBT_asimdsame2_g,
+    FMLALLBT_asimdsame2_g = 681,
     /// <summary>
     /// Instruction `FMLALLTB` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
-    FMLALLTB_asimdelem_j,
+    FMLALLTB_asimdelem_j = 682,
     /// <summary>
     /// Instruction `FMLALLTB` - 8-bit floating-point multiply-add long-long to single-precision (vector).
     /// </summary>
-    FMLALLTB_asimdsame2_g,
+    FMLALLTB_asimdsame2_g = 683,
     /// <summary>
     /// Instruction `FMLALLTT` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
-    FMLALLTT_asimdelem_j,
+    FMLALLTT_asimdelem_j = 684,
     /// <summary>
     /// Instruction `FMLALLTT` - 8-bit floating-point multiply-add long-long to single-precision (vector).
     /// </summary>
-    FMLALLTT_asimdsame2_g,
+    FMLALLTT_asimdsame2_g = 685,
     /// <summary>
     /// Instruction `FMLALT` - 8-bit floating-point multiply-add long to half-precision (vector, by element).
     /// </summary>
-    FMLALT_asimdelem_h,
+    FMLALT_asimdelem_h = 686,
     /// <summary>
     /// Instruction `FMLALT` - 8-bit floating-point multiply-add long to half-precision (vector).
     /// </summary>
-    FMLALT_asimdsame2_j,
+    FMLALT_asimdsame2_j = 687,
     /// <summary>
     /// Instruction `FMLAL` - Floating-point fused multiply-add long to accumulator (by element).
     /// </summary>
-    FMLAL_asimdelem_lh,
+    FMLAL_asimdelem_lh = 688,
     /// <summary>
     /// Instruction `FMLAL` - Floating-point fused multiply-add long to accumulator (vector).
     /// </summary>
-    FMLAL_asimdsame_f,
+    FMLAL_asimdsame_f = 689,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (by element).
     /// </summary>
-    FMLA_asimdelem_r_sd,
+    FMLA_asimdelem_r_sd = 690,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (by element).
     /// </summary>
-    FMLA_asimdelem_rh_h,
+    FMLA_asimdelem_rh_h = 691,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (vector).
     /// </summary>
-    FMLA_asimdsame_only,
+    FMLA_asimdsame_only = 692,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (vector).
     /// </summary>
-    FMLA_asimdsamefp16_only,
+    FMLA_asimdsamefp16_only = 693,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (by element).
     /// </summary>
-    FMLA_asisdelem_r_sd,
+    FMLA_asisdelem_r_sd = 694,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (by element).
     /// </summary>
-    FMLA_asisdelem_rh_h,
+    FMLA_asisdelem_rh_h = 695,
     /// <summary>
     /// Instruction `FMLSL2` - Floating-point fused multiply-subtract long from accumulator (by element).
     /// </summary>
-    FMLSL2_asimdelem_lh,
+    FMLSL2_asimdelem_lh = 696,
     /// <summary>
     /// Instruction `FMLSL2` - Floating-point fused multiply-subtract long from accumulator (vector).
     /// </summary>
-    FMLSL2_asimdsame_f,
+    FMLSL2_asimdsame_f = 697,
     /// <summary>
     /// Instruction `FMLSL` - Floating-point fused multiply-subtract long from accumulator (by element).
     /// </summary>
-    FMLSL_asimdelem_lh,
+    FMLSL_asimdelem_lh = 698,
     /// <summary>
     /// Instruction `FMLSL` - Floating-point fused multiply-subtract long from accumulator (vector).
     /// </summary>
-    FMLSL_asimdsame_f,
+    FMLSL_asimdsame_f = 699,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (by element).
     /// </summary>
-    FMLS_asimdelem_r_sd,
+    FMLS_asimdelem_r_sd = 700,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (by element).
     /// </summary>
-    FMLS_asimdelem_rh_h,
+    FMLS_asimdelem_rh_h = 701,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (vector).
     /// </summary>
-    FMLS_asimdsame_only,
+    FMLS_asimdsame_only = 702,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (vector).
     /// </summary>
-    FMLS_asimdsamefp16_only,
+    FMLS_asimdsamefp16_only = 703,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (by element).
     /// </summary>
-    FMLS_asisdelem_r_sd,
+    FMLS_asisdelem_r_sd = 704,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (by element).
     /// </summary>
-    FMLS_asisdelem_rh_h,
+    FMLS_asisdelem_rh_h = 705,
     /// <summary>
     /// Instruction `FMMLA` - 8-bit floating-point matrix multiply-accumulate into 2x2 half-precision matrix.
     /// </summary>
-    FMMLA_asimd_fp8fp16,
+    FMMLA_asimd_fp8fp16 = 706,
     /// <summary>
     /// Instruction `FMMLA` - 8-bit floating-point matrix multiply-accumulate into 2x2 single-precision matrix.
     /// </summary>
-    FMMLA_asimd_fp8fp32,
+    FMMLA_asimd_fp8fp32 = 707,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_32h_float2int,
+    FMOV_32h_float2int = 708,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_32s_float2int,
+    FMOV_32s_float2int = 709,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_64d_float2int,
+    FMOV_64d_float2int = 710,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_64h_float2int,
+    FMOV_64h_float2int = 711,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_64vx_float2int,
+    FMOV_64vx_float2int = 712,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (vector).
     /// </summary>
-    FMOV_asimdimm_d2_d,
+    FMOV_asimdimm_d2_d = 713,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (vector).
     /// </summary>
-    FMOV_asimdimm_h_h,
+    FMOV_asimdimm_h_h = 714,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (vector).
     /// </summary>
-    FMOV_asimdimm_s_s,
+    FMOV_asimdimm_s_s = 715,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_d64_float2int,
+    FMOV_d64_float2int = 716,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move register without conversion.
     /// </summary>
-    FMOV_d_floatdp1,
+    FMOV_d_floatdp1 = 717,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (scalar).
     /// </summary>
-    FMOV_d_floatimm,
+    FMOV_d_floatimm = 718,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_h32_float2int,
+    FMOV_h32_float2int = 719,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_h64_float2int,
+    FMOV_h64_float2int = 720,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move register without conversion.
     /// </summary>
-    FMOV_h_floatdp1,
+    FMOV_h_floatdp1 = 721,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (scalar).
     /// </summary>
-    FMOV_h_floatimm,
+    FMOV_h_floatimm = 722,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_s32_float2int,
+    FMOV_s32_float2int = 723,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move register without conversion.
     /// </summary>
-    FMOV_s_floatdp1,
+    FMOV_s_floatdp1 = 724,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (scalar).
     /// </summary>
-    FMOV_s_floatimm,
+    FMOV_s_floatimm = 725,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_v64i_float2int,
+    FMOV_v64i_float2int = 726,
     /// <summary>
     /// Instruction `FMSUB` - Floating-point fused multiply-subtract (scalar).
     /// </summary>
-    FMSUB_d_floatdp3,
+    FMSUB_d_floatdp3 = 727,
     /// <summary>
     /// Instruction `FMSUB` - Floating-point fused multiply-subtract (scalar).
     /// </summary>
-    FMSUB_h_floatdp3,
+    FMSUB_h_floatdp3 = 728,
     /// <summary>
     /// Instruction `FMSUB` - Floating-point fused multiply-subtract (scalar).
     /// </summary>
-    FMSUB_s_floatdp3,
+    FMSUB_s_floatdp3 = 729,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended (by element).
     /// </summary>
-    FMULX_asimdelem_r_sd,
+    FMULX_asimdelem_r_sd = 730,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended (by element).
     /// </summary>
-    FMULX_asimdelem_rh_h,
+    FMULX_asimdelem_rh_h = 731,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended.
     /// </summary>
-    FMULX_asimdsame_only,
+    FMULX_asimdsame_only = 732,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended.
     /// </summary>
-    FMULX_asimdsamefp16_only,
+    FMULX_asimdsamefp16_only = 733,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended (by element).
     /// </summary>
-    FMULX_asisdelem_r_sd,
+    FMULX_asisdelem_r_sd = 734,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended (by element).
     /// </summary>
-    FMULX_asisdelem_rh_h,
+    FMULX_asisdelem_rh_h = 735,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended.
     /// </summary>
-    FMULX_asisdsame_only,
+    FMULX_asisdsame_only = 736,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended.
     /// </summary>
-    FMULX_asisdsamefp16_only,
+    FMULX_asisdsamefp16_only = 737,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (by element).
     /// </summary>
-    FMUL_asimdelem_r_sd,
+    FMUL_asimdelem_r_sd = 738,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (by element).
     /// </summary>
-    FMUL_asimdelem_rh_h,
+    FMUL_asimdelem_rh_h = 739,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (vector).
     /// </summary>
-    FMUL_asimdsame_only,
+    FMUL_asimdsame_only = 740,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (vector).
     /// </summary>
-    FMUL_asimdsamefp16_only,
+    FMUL_asimdsamefp16_only = 741,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (by element).
     /// </summary>
-    FMUL_asisdelem_r_sd,
+    FMUL_asisdelem_r_sd = 742,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (by element).
     /// </summary>
-    FMUL_asisdelem_rh_h,
+    FMUL_asisdelem_rh_h = 743,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (scalar).
     /// </summary>
-    FMUL_d_floatdp2,
+    FMUL_d_floatdp2 = 744,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (scalar).
     /// </summary>
-    FMUL_h_floatdp2,
+    FMUL_h_floatdp2 = 745,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (scalar).
     /// </summary>
-    FMUL_s_floatdp2,
+    FMUL_s_floatdp2 = 746,
     /// <summary>
     /// Instruction `FNEG` - Floating-point negate (vector).
     /// </summary>
-    FNEG_asimdmisc_r,
+    FNEG_asimdmisc_r = 747,
     /// <summary>
     /// Instruction `FNEG` - Floating-point negate (vector).
     /// </summary>
-    FNEG_asimdmiscfp16_r,
+    FNEG_asimdmiscfp16_r = 748,
     /// <summary>
     /// Instruction `FNEG` - Floating-point negate (scalar).
     /// </summary>
-    FNEG_d_floatdp1,
+    FNEG_d_floatdp1 = 749,
     /// <summary>
     /// Instruction `FNEG` - Floating-point negate (scalar).
     /// </summary>
-    FNEG_h_floatdp1,
+    FNEG_h_floatdp1 = 750,
     /// <summary>
     /// Instruction `FNEG` - Floating-point negate (scalar).
     /// </summary>
-    FNEG_s_floatdp1,
+    FNEG_s_floatdp1 = 751,
     /// <summary>
     /// Instruction `FNMADD` - Floating-point negated fused multiply-add (scalar).
     /// </summary>
-    FNMADD_d_floatdp3,
+    FNMADD_d_floatdp3 = 752,
     /// <summary>
     /// Instruction `FNMADD` - Floating-point negated fused multiply-add (scalar).
     /// </summary>
-    FNMADD_h_floatdp3,
+    FNMADD_h_floatdp3 = 753,
     /// <summary>
     /// Instruction `FNMADD` - Floating-point negated fused multiply-add (scalar).
     /// </summary>
-    FNMADD_s_floatdp3,
+    FNMADD_s_floatdp3 = 754,
     /// <summary>
     /// Instruction `FNMSUB` - Floating-point negated fused multiply-subtract (scalar).
     /// </summary>
-    FNMSUB_d_floatdp3,
+    FNMSUB_d_floatdp3 = 755,
     /// <summary>
     /// Instruction `FNMSUB` - Floating-point negated fused multiply-subtract (scalar).
     /// </summary>
-    FNMSUB_h_floatdp3,
+    FNMSUB_h_floatdp3 = 756,
     /// <summary>
     /// Instruction `FNMSUB` - Floating-point negated fused multiply-subtract (scalar).
     /// </summary>
-    FNMSUB_s_floatdp3,
+    FNMSUB_s_floatdp3 = 757,
     /// <summary>
     /// Instruction `FNMUL` - Floating-point multiply-negate (scalar).
     /// </summary>
-    FNMUL_d_floatdp2,
+    FNMUL_d_floatdp2 = 758,
     /// <summary>
     /// Instruction `FNMUL` - Floating-point multiply-negate (scalar).
     /// </summary>
-    FNMUL_h_floatdp2,
+    FNMUL_h_floatdp2 = 759,
     /// <summary>
     /// Instruction `FNMUL` - Floating-point multiply-negate (scalar).
     /// </summary>
-    FNMUL_s_floatdp2,
+    FNMUL_s_floatdp2 = 760,
     /// <summary>
     /// Instruction `FRECPE` - Floating-point reciprocal estimate.
     /// </summary>
-    FRECPE_asimdmisc_r,
+    FRECPE_asimdmisc_r = 761,
     /// <summary>
     /// Instruction `FRECPE` - Floating-point reciprocal estimate.
     /// </summary>
-    FRECPE_asimdmiscfp16_r,
+    FRECPE_asimdmiscfp16_r = 762,
     /// <summary>
     /// Instruction `FRECPE` - Floating-point reciprocal estimate.
     /// </summary>
-    FRECPE_asisdmisc_r,
+    FRECPE_asisdmisc_r = 763,
     /// <summary>
     /// Instruction `FRECPE` - Floating-point reciprocal estimate.
     /// </summary>
-    FRECPE_asisdmiscfp16_r,
+    FRECPE_asisdmiscfp16_r = 764,
     /// <summary>
     /// Instruction `FRECPS` - Floating-point reciprocal step.
     /// </summary>
-    FRECPS_asimdsame_only,
+    FRECPS_asimdsame_only = 765,
     /// <summary>
     /// Instruction `FRECPS` - Floating-point reciprocal step.
     /// </summary>
-    FRECPS_asimdsamefp16_only,
+    FRECPS_asimdsamefp16_only = 766,
     /// <summary>
     /// Instruction `FRECPS` - Floating-point reciprocal step.
     /// </summary>
-    FRECPS_asisdsame_only,
+    FRECPS_asisdsame_only = 767,
     /// <summary>
     /// Instruction `FRECPS` - Floating-point reciprocal step.
     /// </summary>
-    FRECPS_asisdsamefp16_only,
+    FRECPS_asisdsamefp16_only = 768,
     /// <summary>
     /// Instruction `FRECPX` - Floating-point reciprocal exponent (scalar).
     /// </summary>
-    FRECPX_asisdmisc_r,
+    FRECPX_asisdmisc_r = 769,
     /// <summary>
     /// Instruction `FRECPX` - Floating-point reciprocal exponent (scalar).
     /// </summary>
-    FRECPX_asisdmiscfp16_r,
+    FRECPX_asisdmiscfp16_r = 770,
     /// <summary>
     /// Instruction `FRINT32X` - Floating-point round to 32-bit integer, using current rounding mode (vector).
     /// </summary>
-    FRINT32X_asimdmisc_r,
+    FRINT32X_asimdmisc_r = 771,
     /// <summary>
     /// Instruction `FRINT32X` - Floating-point round to 32-bit integer, using current rounding mode (scalar).
     /// </summary>
-    FRINT32X_d_floatdp1,
+    FRINT32X_d_floatdp1 = 772,
     /// <summary>
     /// Instruction `FRINT32X` - Floating-point round to 32-bit integer, using current rounding mode (scalar).
     /// </summary>
-    FRINT32X_s_floatdp1,
+    FRINT32X_s_floatdp1 = 773,
     /// <summary>
     /// Instruction `FRINT32Z` - Floating-point round to 32-bit integer toward zero (vector).
     /// </summary>
-    FRINT32Z_asimdmisc_r,
+    FRINT32Z_asimdmisc_r = 774,
     /// <summary>
     /// Instruction `FRINT32Z` - Floating-point round to 32-bit integer toward zero (scalar).
     /// </summary>
-    FRINT32Z_d_floatdp1,
+    FRINT32Z_d_floatdp1 = 775,
     /// <summary>
     /// Instruction `FRINT32Z` - Floating-point round to 32-bit integer toward zero (scalar).
     /// </summary>
-    FRINT32Z_s_floatdp1,
+    FRINT32Z_s_floatdp1 = 776,
     /// <summary>
     /// Instruction `FRINT64X` - Floating-point round to 64-bit integer, using current rounding mode (vector).
     /// </summary>
-    FRINT64X_asimdmisc_r,
+    FRINT64X_asimdmisc_r = 777,
     /// <summary>
     /// Instruction `FRINT64X` - Floating-point round to 64-bit integer, using current rounding mode (scalar).
     /// </summary>
-    FRINT64X_d_floatdp1,
+    FRINT64X_d_floatdp1 = 778,
     /// <summary>
     /// Instruction `FRINT64X` - Floating-point round to 64-bit integer, using current rounding mode (scalar).
     /// </summary>
-    FRINT64X_s_floatdp1,
+    FRINT64X_s_floatdp1 = 779,
     /// <summary>
     /// Instruction `FRINT64Z` - Floating-point round to 64-bit integer toward zero (vector).
     /// </summary>
-    FRINT64Z_asimdmisc_r,
+    FRINT64Z_asimdmisc_r = 780,
     /// <summary>
     /// Instruction `FRINT64Z` - Floating-point round to 64-bit integer toward zero (scalar).
     /// </summary>
-    FRINT64Z_d_floatdp1,
+    FRINT64Z_d_floatdp1 = 781,
     /// <summary>
     /// Instruction `FRINT64Z` - Floating-point round to 64-bit integer toward zero (scalar).
     /// </summary>
-    FRINT64Z_s_floatdp1,
+    FRINT64Z_s_floatdp1 = 782,
     /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (vector).
     /// </summary>
-    FRINTA_asimdmisc_r,
+    FRINTA_asimdmisc_r = 783,
     /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (vector).
     /// </summary>
-    FRINTA_asimdmiscfp16_r,
+    FRINTA_asimdmiscfp16_r = 784,
     /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (scalar).
     /// </summary>
-    FRINTA_d_floatdp1,
+    FRINTA_d_floatdp1 = 785,
     /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (scalar).
     /// </summary>
-    FRINTA_h_floatdp1,
+    FRINTA_h_floatdp1 = 786,
     /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (scalar).
     /// </summary>
-    FRINTA_s_floatdp1,
+    FRINTA_s_floatdp1 = 787,
     /// <summary>
     /// Instruction `FRINTI` - Floating-point round to integral, using current rounding mode (vector).
     /// </summary>
-    FRINTI_asimdmisc_r,
+    FRINTI_asimdmisc_r = 788,
     /// <summary>
     /// Instruction `FRINTI` - Floating-point round to integral, using current rounding mode (vector).
     /// </summary>
-    FRINTI_asimdmiscfp16_r,
+    FRINTI_asimdmiscfp16_r = 789,
     /// <summary>
     /// Instruction `FRINTI` - Floating-point round to integral, using current rounding mode (scalar).
     /// </summary>
-    FRINTI_d_floatdp1,
+    FRINTI_d_floatdp1 = 790,
     /// <summary>
     /// Instruction `FRINTI` - Floating-point round to integral, using current rounding mode (scalar).
     /// </summary>
-    FRINTI_h_floatdp1,
+    FRINTI_h_floatdp1 = 791,
     /// <summary>
     /// Instruction `FRINTI` - Floating-point round to integral, using current rounding mode (scalar).
     /// </summary>
-    FRINTI_s_floatdp1,
+    FRINTI_s_floatdp1 = 792,
     /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (vector).
     /// </summary>
-    FRINTM_asimdmisc_r,
+    FRINTM_asimdmisc_r = 793,
     /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (vector).
     /// </summary>
-    FRINTM_asimdmiscfp16_r,
+    FRINTM_asimdmiscfp16_r = 794,
     /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (scalar).
     /// </summary>
-    FRINTM_d_floatdp1,
+    FRINTM_d_floatdp1 = 795,
     /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (scalar).
     /// </summary>
-    FRINTM_h_floatdp1,
+    FRINTM_h_floatdp1 = 796,
     /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (scalar).
     /// </summary>
-    FRINTM_s_floatdp1,
+    FRINTM_s_floatdp1 = 797,
     /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (vector).
     /// </summary>
-    FRINTN_asimdmisc_r,
+    FRINTN_asimdmisc_r = 798,
     /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (vector).
     /// </summary>
-    FRINTN_asimdmiscfp16_r,
+    FRINTN_asimdmiscfp16_r = 799,
     /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (scalar).
     /// </summary>
-    FRINTN_d_floatdp1,
+    FRINTN_d_floatdp1 = 800,
     /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (scalar).
     /// </summary>
-    FRINTN_h_floatdp1,
+    FRINTN_h_floatdp1 = 801,
     /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (scalar).
     /// </summary>
-    FRINTN_s_floatdp1,
+    FRINTN_s_floatdp1 = 802,
     /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (vector).
     /// </summary>
-    FRINTP_asimdmisc_r,
+    FRINTP_asimdmisc_r = 803,
     /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (vector).
     /// </summary>
-    FRINTP_asimdmiscfp16_r,
+    FRINTP_asimdmiscfp16_r = 804,
     /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (scalar).
     /// </summary>
-    FRINTP_d_floatdp1,
+    FRINTP_d_floatdp1 = 805,
     /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (scalar).
     /// </summary>
-    FRINTP_h_floatdp1,
+    FRINTP_h_floatdp1 = 806,
     /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (scalar).
     /// </summary>
-    FRINTP_s_floatdp1,
+    FRINTP_s_floatdp1 = 807,
     /// <summary>
     /// Instruction `FRINTX` - Floating-point round to integral exact, using current rounding mode (vector).
     /// </summary>
-    FRINTX_asimdmisc_r,
+    FRINTX_asimdmisc_r = 808,
     /// <summary>
     /// Instruction `FRINTX` - Floating-point round to integral exact, using current rounding mode (vector).
     /// </summary>
-    FRINTX_asimdmiscfp16_r,
+    FRINTX_asimdmiscfp16_r = 809,
     /// <summary>
     /// Instruction `FRINTX` - Floating-point round to integral exact, using current rounding mode (scalar).
     /// </summary>
-    FRINTX_d_floatdp1,
+    FRINTX_d_floatdp1 = 810,
     /// <summary>
     /// Instruction `FRINTX` - Floating-point round to integral exact, using current rounding mode (scalar).
     /// </summary>
-    FRINTX_h_floatdp1,
+    FRINTX_h_floatdp1 = 811,
     /// <summary>
     /// Instruction `FRINTX` - Floating-point round to integral exact, using current rounding mode (scalar).
     /// </summary>
-    FRINTX_s_floatdp1,
+    FRINTX_s_floatdp1 = 812,
     /// <summary>
     /// Instruction `FRINTZ` - Floating-point round to integral, toward zero (vector).
     /// </summary>
-    FRINTZ_asimdmisc_r,
+    FRINTZ_asimdmisc_r = 813,
     /// <summary>
     /// Instruction `FRINTZ` - Floating-point round to integral, toward zero (vector).
     /// </summary>
-    FRINTZ_asimdmiscfp16_r,
+    FRINTZ_asimdmiscfp16_r = 814,
     /// <summary>
     /// Instruction `FRINTZ` - Floating-point round to integral, toward zero (scalar).
     /// </summary>
-    FRINTZ_d_floatdp1,
+    FRINTZ_d_floatdp1 = 815,
     /// <summary>
     /// Instruction `FRINTZ` - Floating-point round to integral, toward zero (scalar).
     /// </summary>
-    FRINTZ_h_floatdp1,
+    FRINTZ_h_floatdp1 = 816,
     /// <summary>
     /// Instruction `FRINTZ` - Floating-point round to integral, toward zero (scalar).
     /// </summary>
-    FRINTZ_s_floatdp1,
+    FRINTZ_s_floatdp1 = 817,
     /// <summary>
     /// Instruction `FRSQRTE` - Floating-point reciprocal square root estimate.
     /// </summary>
-    FRSQRTE_asimdmisc_r,
+    FRSQRTE_asimdmisc_r = 818,
     /// <summary>
     /// Instruction `FRSQRTE` - Floating-point reciprocal square root estimate.
     /// </summary>
-    FRSQRTE_asimdmiscfp16_r,
+    FRSQRTE_asimdmiscfp16_r = 819,
     /// <summary>
     /// Instruction `FRSQRTE` - Floating-point reciprocal square root estimate.
     /// </summary>
-    FRSQRTE_asisdmisc_r,
+    FRSQRTE_asisdmisc_r = 820,
     /// <summary>
     /// Instruction `FRSQRTE` - Floating-point reciprocal square root estimate.
     /// </summary>
-    FRSQRTE_asisdmiscfp16_r,
+    FRSQRTE_asisdmiscfp16_r = 821,
     /// <summary>
     /// Instruction `FRSQRTS` - Floating-point reciprocal square root step.
     /// </summary>
-    FRSQRTS_asimdsame_only,
+    FRSQRTS_asimdsame_only = 822,
     /// <summary>
     /// Instruction `FRSQRTS` - Floating-point reciprocal square root step.
     /// </summary>
-    FRSQRTS_asimdsamefp16_only,
+    FRSQRTS_asimdsamefp16_only = 823,
     /// <summary>
     /// Instruction `FRSQRTS` - Floating-point reciprocal square root step.
     /// </summary>
-    FRSQRTS_asisdsame_only,
+    FRSQRTS_asisdsame_only = 824,
     /// <summary>
     /// Instruction `FRSQRTS` - Floating-point reciprocal square root step.
     /// </summary>
-    FRSQRTS_asisdsamefp16_only,
+    FRSQRTS_asisdsamefp16_only = 825,
     /// <summary>
     /// Instruction `FSCALE` - Floating-point adjust exponent by vector.
     /// </summary>
-    FSCALE_asimdsame_only,
+    FSCALE_asimdsame_only = 826,
     /// <summary>
     /// Instruction `FSCALE` - Floating-point adjust exponent by vector.
     /// </summary>
-    FSCALE_asimdsamefp16_only,
+    FSCALE_asimdsamefp16_only = 827,
     /// <summary>
     /// Instruction `FSQRT` - Floating-point square root (vector).
     /// </summary>
-    FSQRT_asimdmisc_r,
+    FSQRT_asimdmisc_r = 828,
     /// <summary>
     /// Instruction `FSQRT` - Floating-point square root (vector).
     /// </summary>
-    FSQRT_asimdmiscfp16_r,
+    FSQRT_asimdmiscfp16_r = 829,
     /// <summary>
     /// Instruction `FSQRT` - Floating-point square root (scalar).
     /// </summary>
-    FSQRT_d_floatdp1,
+    FSQRT_d_floatdp1 = 830,
     /// <summary>
     /// Instruction `FSQRT` - Floating-point square root (scalar).
     /// </summary>
-    FSQRT_h_floatdp1,
+    FSQRT_h_floatdp1 = 831,
     /// <summary>
     /// Instruction `FSQRT` - Floating-point square root (scalar).
     /// </summary>
-    FSQRT_s_floatdp1,
+    FSQRT_s_floatdp1 = 832,
     /// <summary>
     /// Instruction `FSUB` - Floating-point subtract (vector).
     /// </summary>
-    FSUB_asimdsame_only,
+    FSUB_asimdsame_only = 833,
     /// <summary>
     /// Instruction `FSUB` - Floating-point subtract (vector).
     /// </summary>
-    FSUB_asimdsamefp16_only,
+    FSUB_asimdsamefp16_only = 834,
     /// <summary>
     /// Instruction `FSUB` - Floating-point subtract (scalar).
     /// </summary>
-    FSUB_d_floatdp2,
+    FSUB_d_floatdp2 = 835,
     /// <summary>
     /// Instruction `FSUB` - Floating-point subtract (scalar).
     /// </summary>
-    FSUB_h_floatdp2,
+    FSUB_h_floatdp2 = 836,
     /// <summary>
     /// Instruction `FSUB` - Floating-point subtract (scalar).
     /// </summary>
-    FSUB_s_floatdp2,
+    FSUB_s_floatdp2 = 837,
     /// <summary>
     /// Instruction `GCSB` - Guarded Control Stack barrier.
     /// </summary>
-    GCSB_hd_hints,
+    GCSB_hd_hints = 838,
     /// <summary>
     /// Instruction `GCSSTR` - Guarded Control Stack store register.
     /// </summary>
-    GCSSTR_64_ldst_gcs,
+    GCSSTR_64_ldst_gcs = 839,
     /// <summary>
     /// Instruction `GCSSTTR` - Guarded Control Stack store register (unprivileged).
     /// </summary>
-    GCSSTTR_64_ldst_gcs,
+    GCSSTTR_64_ldst_gcs = 840,
     /// <summary>
     /// Instruction `GMI` - Tag mask insert.
     /// </summary>
-    GMI_64g_dp_2src,
+    GMI_64g_dp_2src = 841,
     /// <summary>
     /// Instruction `HINT` - Hint instruction.
     /// </summary>
-    HINT_hm_hints,
+    HINT_hm_hints = 842,
     /// <summary>
     /// Instruction `HLT` - Halt instruction.
     /// </summary>
-    HLT_ex_exception,
+    HLT_ex_exception = 843,
     /// <summary>
     /// Instruction `HVC` - Hypervisor call.
     /// </summary>
-    HVC_ex_exception,
+    HVC_ex_exception = 844,
     /// <summary>
     /// Instruction `INS` - Insert vector element from general-purpose register.
     /// </summary>
-    INS_asimdins_ir_r,
+    INS_asimdins_ir_r = 845,
     /// <summary>
     /// Instruction `INS` - Insert vector element from another vector element.
     /// </summary>
-    INS_asimdins_iv_v,
+    INS_asimdins_iv_v = 846,
     /// <summary>
     /// Instruction `IRG` - Insert random tag.
     /// </summary>
-    IRG_64i_dp_2src,
+    IRG_64i_dp_2src = 847,
     /// <summary>
     /// Instruction `ISB` - Instruction synchronization barrier.
     /// </summary>
-    ISB_bi_barriers,
+    ISB_bi_barriers = 848,
     /// <summary>
     /// Instruction `LD1R` - Load one single-element structure and replicate to all lanes (of one register).
     /// </summary>
-    LD1R_asisdlso_r1,
+    LD1R_asisdlso_r1 = 849,
     /// <summary>
     /// Instruction `LD1R` - Load one single-element structure and replicate to all lanes (of one register).
     /// </summary>
-    LD1R_asisdlsop_r1_i,
+    LD1R_asisdlsop_r1_i = 850,
     /// <summary>
     /// Instruction `LD1R` - Load one single-element structure and replicate to all lanes (of one register).
     /// </summary>
-    LD1R_asisdlsop_rx1_r,
+    LD1R_asisdlsop_rx1_r = 851,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlse_r1_1v,
+    LD1_asisdlse_r1_1v = 852,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlse_r2_2v,
+    LD1_asisdlse_r2_2v = 853,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlse_r3_3v,
+    LD1_asisdlse_r3_3v = 854,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlse_r4_4v,
+    LD1_asisdlse_r4_4v = 855,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_i1_i1,
+    LD1_asisdlsep_i1_i1 = 856,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_i2_i2,
+    LD1_asisdlsep_i2_i2 = 857,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_i3_i3,
+    LD1_asisdlsep_i3_i3 = 858,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_i4_i4,
+    LD1_asisdlsep_i4_i4 = 859,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_r1_r1,
+    LD1_asisdlsep_r1_r1 = 860,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_r2_r2,
+    LD1_asisdlsep_r2_r2 = 861,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_r3_r3,
+    LD1_asisdlsep_r3_r3 = 862,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_r4_r4,
+    LD1_asisdlsep_r4_r4 = 863,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlso_b1_1b,
+    LD1_asisdlso_b1_1b = 864,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlso_d1_1d,
+    LD1_asisdlso_d1_1d = 865,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlso_h1_1h,
+    LD1_asisdlso_h1_1h = 866,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlso_s1_1s,
+    LD1_asisdlso_s1_1s = 867,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_b1_i1b,
+    LD1_asisdlsop_b1_i1b = 868,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_bx1_r1b,
+    LD1_asisdlsop_bx1_r1b = 869,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_d1_i1d,
+    LD1_asisdlsop_d1_i1d = 870,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_dx1_r1d,
+    LD1_asisdlsop_dx1_r1d = 871,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_h1_i1h,
+    LD1_asisdlsop_h1_i1h = 872,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_hx1_r1h,
+    LD1_asisdlsop_hx1_r1h = 873,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_s1_i1s,
+    LD1_asisdlsop_s1_i1s = 874,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_sx1_r1s,
+    LD1_asisdlsop_sx1_r1s = 875,
     /// <summary>
     /// Instruction `LD2R` - Load single 2-element structure and replicate to all lanes of two registers.
     /// </summary>
-    LD2R_asisdlso_r2,
+    LD2R_asisdlso_r2 = 876,
     /// <summary>
     /// Instruction `LD2R` - Load single 2-element structure and replicate to all lanes of two registers.
     /// </summary>
-    LD2R_asisdlsop_r2_i,
+    LD2R_asisdlsop_r2_i = 877,
     /// <summary>
     /// Instruction `LD2R` - Load single 2-element structure and replicate to all lanes of two registers.
     /// </summary>
-    LD2R_asisdlsop_rx2_r,
+    LD2R_asisdlsop_rx2_r = 878,
     /// <summary>
     /// Instruction `LD2` - Load multiple 2-element structures to two registers.
     /// </summary>
-    LD2_asisdlse_r2,
+    LD2_asisdlse_r2 = 879,
     /// <summary>
     /// Instruction `LD2` - Load multiple 2-element structures to two registers.
     /// </summary>
-    LD2_asisdlsep_i2_i,
+    LD2_asisdlsep_i2_i = 880,
     /// <summary>
     /// Instruction `LD2` - Load multiple 2-element structures to two registers.
     /// </summary>
-    LD2_asisdlsep_r2_r,
+    LD2_asisdlsep_r2_r = 881,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlso_b2_2b,
+    LD2_asisdlso_b2_2b = 882,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlso_d2_2d,
+    LD2_asisdlso_d2_2d = 883,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlso_h2_2h,
+    LD2_asisdlso_h2_2h = 884,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlso_s2_2s,
+    LD2_asisdlso_s2_2s = 885,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_b2_i2b,
+    LD2_asisdlsop_b2_i2b = 886,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_bx2_r2b,
+    LD2_asisdlsop_bx2_r2b = 887,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_d2_i2d,
+    LD2_asisdlsop_d2_i2d = 888,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_dx2_r2d,
+    LD2_asisdlsop_dx2_r2d = 889,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_h2_i2h,
+    LD2_asisdlsop_h2_i2h = 890,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_hx2_r2h,
+    LD2_asisdlsop_hx2_r2h = 891,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_s2_i2s,
+    LD2_asisdlsop_s2_i2s = 892,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_sx2_r2s,
+    LD2_asisdlsop_sx2_r2s = 893,
     /// <summary>
     /// Instruction `LD3R` - Load single 3-element structure and replicate to all lanes of three registers.
     /// </summary>
-    LD3R_asisdlso_r3,
+    LD3R_asisdlso_r3 = 894,
     /// <summary>
     /// Instruction `LD3R` - Load single 3-element structure and replicate to all lanes of three registers.
     /// </summary>
-    LD3R_asisdlsop_r3_i,
+    LD3R_asisdlsop_r3_i = 895,
     /// <summary>
     /// Instruction `LD3R` - Load single 3-element structure and replicate to all lanes of three registers.
     /// </summary>
-    LD3R_asisdlsop_rx3_r,
+    LD3R_asisdlsop_rx3_r = 896,
     /// <summary>
     /// Instruction `LD3` - Load multiple 3-element structures to three registers.
     /// </summary>
-    LD3_asisdlse_r3,
+    LD3_asisdlse_r3 = 897,
     /// <summary>
     /// Instruction `LD3` - Load multiple 3-element structures to three registers.
     /// </summary>
-    LD3_asisdlsep_i3_i,
+    LD3_asisdlsep_i3_i = 898,
     /// <summary>
     /// Instruction `LD3` - Load multiple 3-element structures to three registers.
     /// </summary>
-    LD3_asisdlsep_r3_r,
+    LD3_asisdlsep_r3_r = 899,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlso_b3_3b,
+    LD3_asisdlso_b3_3b = 900,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlso_d3_3d,
+    LD3_asisdlso_d3_3d = 901,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlso_h3_3h,
+    LD3_asisdlso_h3_3h = 902,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlso_s3_3s,
+    LD3_asisdlso_s3_3s = 903,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_b3_i3b,
+    LD3_asisdlsop_b3_i3b = 904,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_bx3_r3b,
+    LD3_asisdlsop_bx3_r3b = 905,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_d3_i3d,
+    LD3_asisdlsop_d3_i3d = 906,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_dx3_r3d,
+    LD3_asisdlsop_dx3_r3d = 907,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_h3_i3h,
+    LD3_asisdlsop_h3_i3h = 908,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_hx3_r3h,
+    LD3_asisdlsop_hx3_r3h = 909,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_s3_i3s,
+    LD3_asisdlsop_s3_i3s = 910,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_sx3_r3s,
+    LD3_asisdlsop_sx3_r3s = 911,
     /// <summary>
     /// Instruction `LD4R` - Load single 4-element structure and replicate to all lanes of four registers.
     /// </summary>
-    LD4R_asisdlso_r4,
+    LD4R_asisdlso_r4 = 912,
     /// <summary>
     /// Instruction `LD4R` - Load single 4-element structure and replicate to all lanes of four registers.
     /// </summary>
-    LD4R_asisdlsop_r4_i,
+    LD4R_asisdlsop_r4_i = 913,
     /// <summary>
     /// Instruction `LD4R` - Load single 4-element structure and replicate to all lanes of four registers.
     /// </summary>
-    LD4R_asisdlsop_rx4_r,
+    LD4R_asisdlsop_rx4_r = 914,
     /// <summary>
     /// Instruction `LD4` - Load multiple 4-element structures to four registers.
     /// </summary>
-    LD4_asisdlse_r4,
+    LD4_asisdlse_r4 = 915,
     /// <summary>
     /// Instruction `LD4` - Load multiple 4-element structures to four registers.
     /// </summary>
-    LD4_asisdlsep_i4_i,
+    LD4_asisdlsep_i4_i = 916,
     /// <summary>
     /// Instruction `LD4` - Load multiple 4-element structures to four registers.
     /// </summary>
-    LD4_asisdlsep_r4_r,
+    LD4_asisdlsep_r4_r = 917,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlso_b4_4b,
+    LD4_asisdlso_b4_4b = 918,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlso_d4_4d,
+    LD4_asisdlso_d4_4d = 919,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlso_h4_4h,
+    LD4_asisdlso_h4_4h = 920,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlso_s4_4s,
+    LD4_asisdlso_s4_4s = 921,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_b4_i4b,
+    LD4_asisdlsop_b4_i4b = 922,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_bx4_r4b,
+    LD4_asisdlsop_bx4_r4b = 923,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_d4_i4d,
+    LD4_asisdlsop_d4_i4d = 924,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_dx4_r4d,
+    LD4_asisdlsop_dx4_r4d = 925,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_h4_i4h,
+    LD4_asisdlsop_h4_i4h = 926,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_hx4_r4h,
+    LD4_asisdlsop_hx4_r4h = 927,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_s4_i4s,
+    LD4_asisdlsop_s4_i4s = 928,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_sx4_r4s,
+    LD4_asisdlsop_sx4_r4s = 929,
     /// <summary>
     /// Instruction `LD64B` - Single-copy atomic 64-byte Load.
     /// </summary>
-    LD64B_64l_memop,
+    LD64B_64l_memop = 930,
     /// <summary>
     /// Instruction `LDADDAB` - Atomic add on byte in memory.
     /// </summary>
-    LDADDAB_32_memop,
+    LDADDAB_32_memop = 931,
     /// <summary>
     /// Instruction `LDADDAH` - Atomic add on halfword in memory.
     /// </summary>
-    LDADDAH_32_memop,
+    LDADDAH_32_memop = 932,
     /// <summary>
     /// Instruction `LDADDALB` - Atomic add on byte in memory.
     /// </summary>
-    LDADDALB_32_memop,
+    LDADDALB_32_memop = 933,
     /// <summary>
     /// Instruction `LDADDALH` - Atomic add on halfword in memory.
     /// </summary>
-    LDADDALH_32_memop,
+    LDADDALH_32_memop = 934,
     /// <summary>
     /// Instruction `LDADDAL` - Atomic add on word or doubleword in memory.
     /// </summary>
-    LDADDAL_32_memop,
+    LDADDAL_32_memop = 935,
     /// <summary>
     /// Instruction `LDADDAL` - Atomic add on word or doubleword in memory.
     /// </summary>
-    LDADDAL_64_memop,
+    LDADDAL_64_memop = 936,
     /// <summary>
     /// Instruction `LDADDA` - Atomic add on word or doubleword in memory.
     /// </summary>
-    LDADDA_32_memop,
+    LDADDA_32_memop = 937,
     /// <summary>
     /// Instruction `LDADDA` - Atomic add on word or doubleword in memory.
     /// </summary>
-    LDADDA_64_memop,
+    LDADDA_64_memop = 938,
     /// <summary>
     /// Instruction `LDADDB` - Atomic add on byte in memory.
     /// </summary>
-    LDADDB_32_memop,
+    LDADDB_32_memop = 939,
     /// <summary>
     /// Instruction `LDADDH` - Atomic add on halfword in memory.
     /// </summary>
-    LDADDH_32_memop,
+    LDADDH_32_memop = 940,
     /// <summary>
     /// Instruction `LDADDLB` - Atomic add on byte in memory.
     /// </summary>
-    LDADDLB_32_memop,
+    LDADDLB_32_memop = 941,
     /// <summary>
     /// Instruction `LDADDLH` - Atomic add on halfword in memory.
     /// </summary>
-    LDADDLH_32_memop,
+    LDADDLH_32_memop = 942,
     /// <summary>
     /// Instruction `LDADDL` - Atomic add on word or doubleword in memory.
     /// </summary>
-    LDADDL_32_memop,
+    LDADDL_32_memop = 943,
     /// <summary>
     /// Instruction `LDADDL` - Atomic add on word or doubleword in memory.
     /// </summary>
-    LDADDL_64_memop,
+    LDADDL_64_memop = 944,
     /// <summary>
     /// Instruction `LDADD` - Atomic add on word or doubleword in memory.
     /// </summary>
-    LDADD_32_memop,
+    LDADD_32_memop = 945,
     /// <summary>
     /// Instruction `LDADD` - Atomic add on word or doubleword in memory.
     /// </summary>
-    LDADD_64_memop,
+    LDADD_64_memop = 946,
     /// <summary>
     /// Instruction `LDAP1` - Load-acquire RCpc one single-element structure to one lane of one register.
     /// </summary>
-    LDAP1_asisdlso_d1,
+    LDAP1_asisdlso_d1 = 947,
     /// <summary>
     /// Instruction `LDAPRB` - Load-acquire RCpc register byte.
     /// </summary>
-    LDAPRB_32l_memop,
+    LDAPRB_32l_memop = 948,
     /// <summary>
     /// Instruction `LDAPRH` - Load-acquire RCpc register halfword.
     /// </summary>
-    LDAPRH_32l_memop,
+    LDAPRH_32l_memop = 949,
     /// <summary>
     /// Instruction `LDAPR` - Load-acquire RCpc register.
     /// </summary>
-    LDAPR_32l_ldapstl_writeback,
+    LDAPR_32l_ldapstl_writeback = 950,
     /// <summary>
     /// Instruction `LDAPR` - Load-acquire RCpc register.
     /// </summary>
-    LDAPR_32l_memop,
+    LDAPR_32l_memop = 951,
     /// <summary>
     /// Instruction `LDAPR` - Load-acquire RCpc register.
     /// </summary>
-    LDAPR_64l_ldapstl_writeback,
+    LDAPR_64l_ldapstl_writeback = 952,
     /// <summary>
     /// Instruction `LDAPR` - Load-acquire RCpc register.
     /// </summary>
-    LDAPR_64l_memop,
+    LDAPR_64l_memop = 953,
     /// <summary>
     /// Instruction `LDAPURB` - Load-acquire RCpc register byte (unscaled).
     /// </summary>
-    LDAPURB_32_ldapstl_unscaled,
+    LDAPURB_32_ldapstl_unscaled = 954,
     /// <summary>
     /// Instruction `LDAPURH` - Load-acquire RCpc register halfword (unscaled).
     /// </summary>
-    LDAPURH_32_ldapstl_unscaled,
+    LDAPURH_32_ldapstl_unscaled = 955,
     /// <summary>
     /// Instruction `LDAPURSB` - Load-acquire RCpc register signed byte (unscaled).
     /// </summary>
-    LDAPURSB_32_ldapstl_unscaled,
+    LDAPURSB_32_ldapstl_unscaled = 956,
     /// <summary>
     /// Instruction `LDAPURSB` - Load-acquire RCpc register signed byte (unscaled).
     /// </summary>
-    LDAPURSB_64_ldapstl_unscaled,
+    LDAPURSB_64_ldapstl_unscaled = 957,
     /// <summary>
     /// Instruction `LDAPURSH` - Load-acquire RCpc register signed halfword (unscaled).
     /// </summary>
-    LDAPURSH_32_ldapstl_unscaled,
+    LDAPURSH_32_ldapstl_unscaled = 958,
     /// <summary>
     /// Instruction `LDAPURSH` - Load-acquire RCpc register signed halfword (unscaled).
     /// </summary>
-    LDAPURSH_64_ldapstl_unscaled,
+    LDAPURSH_64_ldapstl_unscaled = 959,
     /// <summary>
     /// Instruction `LDAPURSW` - Load-acquire RCpc register signed word (unscaled).
     /// </summary>
-    LDAPURSW_64_ldapstl_unscaled,
+    LDAPURSW_64_ldapstl_unscaled = 960,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc register (unscaled).
     /// </summary>
-    LDAPUR_32_ldapstl_unscaled,
+    LDAPUR_32_ldapstl_unscaled = 961,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc register (unscaled).
     /// </summary>
-    LDAPUR_64_ldapstl_unscaled,
+    LDAPUR_64_ldapstl_unscaled = 962,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
     /// </summary>
-    LDAPUR_b_ldapstl_simd,
+    LDAPUR_b_ldapstl_simd = 963,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
     /// </summary>
-    LDAPUR_d_ldapstl_simd,
+    LDAPUR_d_ldapstl_simd = 964,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
     /// </summary>
-    LDAPUR_h_ldapstl_simd,
+    LDAPUR_h_ldapstl_simd = 965,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
     /// </summary>
-    LDAPUR_q_ldapstl_simd,
+    LDAPUR_q_ldapstl_simd = 966,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
     /// </summary>
-    LDAPUR_s_ldapstl_simd,
+    LDAPUR_s_ldapstl_simd = 967,
     /// <summary>
     /// Instruction `LDARB` - Load-acquire register byte.
     /// </summary>
-    LDARB_lr32_ldstord,
+    LDARB_lr32_ldstord = 968,
     /// <summary>
     /// Instruction `LDARH` - Load-acquire register halfword.
     /// </summary>
-    LDARH_lr32_ldstord,
+    LDARH_lr32_ldstord = 969,
     /// <summary>
     /// Instruction `LDAR` - Load-acquire register.
     /// </summary>
-    LDAR_lr32_ldstord,
+    LDAR_lr32_ldstord = 970,
     /// <summary>
     /// Instruction `LDAR` - Load-acquire register.
     /// </summary>
-    LDAR_lr64_ldstord,
+    LDAR_lr64_ldstord = 971,
     /// <summary>
     /// Instruction `LDATXR` - Load-acquire unprivileged exclusive register.
     /// </summary>
-    LDATXR_lr32_ldstexclr_unpriv,
+    LDATXR_lr32_ldstexclr_unpriv = 972,
     /// <summary>
     /// Instruction `LDATXR` - Load-acquire unprivileged exclusive register.
     /// </summary>
-    LDATXR_lr64_ldstexclr_unpriv,
+    LDATXR_lr64_ldstexclr_unpriv = 973,
     /// <summary>
     /// Instruction `LDAXP` - Load-acquire exclusive pair of registers.
     /// </summary>
-    LDAXP_lp32_ldstexclp,
+    LDAXP_lp32_ldstexclp = 974,
     /// <summary>
     /// Instruction `LDAXP` - Load-acquire exclusive pair of registers.
     /// </summary>
-    LDAXP_lp64_ldstexclp,
+    LDAXP_lp64_ldstexclp = 975,
     /// <summary>
     /// Instruction `LDAXRB` - Load-acquire exclusive register byte.
     /// </summary>
-    LDAXRB_lr32_ldstexclr,
+    LDAXRB_lr32_ldstexclr = 976,
     /// <summary>
     /// Instruction `LDAXRH` - Load-acquire exclusive register halfword.
     /// </summary>
-    LDAXRH_lr32_ldstexclr,
+    LDAXRH_lr32_ldstexclr = 977,
     /// <summary>
     /// Instruction `LDAXR` - Load-acquire exclusive register.
     /// </summary>
-    LDAXR_lr32_ldstexclr,
+    LDAXR_lr32_ldstexclr = 978,
     /// <summary>
     /// Instruction `LDAXR` - Load-acquire exclusive register.
     /// </summary>
-    LDAXR_lr64_ldstexclr,
+    LDAXR_lr64_ldstexclr = 979,
     /// <summary>
     /// Instruction `LDBFADDAL` - BFloat16 floating-point add in memory.
     /// </summary>
-    LDBFADDAL_16,
+    LDBFADDAL_16 = 980,
     /// <summary>
     /// Instruction `LDBFADDA` - BFloat16 floating-point add in memory.
     /// </summary>
-    LDBFADDA_16,
+    LDBFADDA_16 = 981,
     /// <summary>
     /// Instruction `LDBFADDL` - BFloat16 floating-point add in memory.
     /// </summary>
-    LDBFADDL_16,
+    LDBFADDL_16 = 982,
     /// <summary>
     /// Instruction `LDBFADD` - BFloat16 floating-point add in memory.
     /// </summary>
-    LDBFADD_16,
+    LDBFADD_16 = 983,
     /// <summary>
     /// Instruction `LDBFMAXAL` - BFloat16 floating-point atomic maximum in memory.
     /// </summary>
-    LDBFMAXAL_16,
+    LDBFMAXAL_16 = 984,
     /// <summary>
     /// Instruction `LDBFMAXA` - BFloat16 floating-point atomic maximum in memory.
     /// </summary>
-    LDBFMAXA_16,
+    LDBFMAXA_16 = 985,
     /// <summary>
     /// Instruction `LDBFMAXL` - BFloat16 floating-point atomic maximum in memory.
     /// </summary>
-    LDBFMAXL_16,
+    LDBFMAXL_16 = 986,
     /// <summary>
     /// Instruction `LDBFMAXNMAL` - BFloat16 floating-point atomic maximum number in memory.
     /// </summary>
-    LDBFMAXNMAL_16,
+    LDBFMAXNMAL_16 = 987,
     /// <summary>
     /// Instruction `LDBFMAXNMA` - BFloat16 floating-point atomic maximum number in memory.
     /// </summary>
-    LDBFMAXNMA_16,
+    LDBFMAXNMA_16 = 988,
     /// <summary>
     /// Instruction `LDBFMAXNML` - BFloat16 floating-point atomic maximum number in memory.
     /// </summary>
-    LDBFMAXNML_16,
+    LDBFMAXNML_16 = 989,
     /// <summary>
     /// Instruction `LDBFMAXNM` - BFloat16 floating-point atomic maximum number in memory.
     /// </summary>
-    LDBFMAXNM_16,
+    LDBFMAXNM_16 = 990,
     /// <summary>
     /// Instruction `LDBFMAX` - BFloat16 floating-point atomic maximum in memory.
     /// </summary>
-    LDBFMAX_16,
+    LDBFMAX_16 = 991,
     /// <summary>
     /// Instruction `LDBFMINAL` - BFloat16 floating-point atomic minimum in memory.
     /// </summary>
-    LDBFMINAL_16,
+    LDBFMINAL_16 = 992,
     /// <summary>
     /// Instruction `LDBFMINA` - BFloat16 floating-point atomic minimum in memory.
     /// </summary>
-    LDBFMINA_16,
+    LDBFMINA_16 = 993,
     /// <summary>
     /// Instruction `LDBFMINL` - BFloat16 floating-point atomic minimum in memory.
     /// </summary>
-    LDBFMINL_16,
+    LDBFMINL_16 = 994,
     /// <summary>
     /// Instruction `LDBFMINNMAL` - BFloat16 floating-point atomic minimum number in memory.
     /// </summary>
-    LDBFMINNMAL_16,
+    LDBFMINNMAL_16 = 995,
     /// <summary>
     /// Instruction `LDBFMINNMA` - BFloat16 floating-point atomic minimum number in memory.
     /// </summary>
-    LDBFMINNMA_16,
+    LDBFMINNMA_16 = 996,
     /// <summary>
     /// Instruction `LDBFMINNML` - BFloat16 floating-point atomic minimum number in memory.
     /// </summary>
-    LDBFMINNML_16,
+    LDBFMINNML_16 = 997,
     /// <summary>
     /// Instruction `LDBFMINNM` - BFloat16 floating-point atomic minimum number in memory.
     /// </summary>
-    LDBFMINNM_16,
+    LDBFMINNM_16 = 998,
     /// <summary>
     /// Instruction `LDBFMIN` - BFloat16 floating-point atomic minimum in memory.
     /// </summary>
-    LDBFMIN_16,
+    LDBFMIN_16 = 999,
     /// <summary>
     /// Instruction `LDCLRAB` - Atomic bit clear on byte in memory.
     /// </summary>
-    LDCLRAB_32_memop,
+    LDCLRAB_32_memop = 1000,
     /// <summary>
     /// Instruction `LDCLRAH` - Atomic bit clear on halfword in memory.
     /// </summary>
-    LDCLRAH_32_memop,
+    LDCLRAH_32_memop = 1001,
     /// <summary>
     /// Instruction `LDCLRALB` - Atomic bit clear on byte in memory.
     /// </summary>
-    LDCLRALB_32_memop,
+    LDCLRALB_32_memop = 1002,
     /// <summary>
     /// Instruction `LDCLRALH` - Atomic bit clear on halfword in memory.
     /// </summary>
-    LDCLRALH_32_memop,
+    LDCLRALH_32_memop = 1003,
     /// <summary>
     /// Instruction `LDCLRAL` - Atomic bit clear on word or doubleword in memory.
     /// </summary>
-    LDCLRAL_32_memop,
+    LDCLRAL_32_memop = 1004,
     /// <summary>
     /// Instruction `LDCLRAL` - Atomic bit clear on word or doubleword in memory.
     /// </summary>
-    LDCLRAL_64_memop,
+    LDCLRAL_64_memop = 1005,
     /// <summary>
     /// Instruction `LDCLRA` - Atomic bit clear on word or doubleword in memory.
     /// </summary>
-    LDCLRA_32_memop,
+    LDCLRA_32_memop = 1006,
     /// <summary>
     /// Instruction `LDCLRA` - Atomic bit clear on word or doubleword in memory.
     /// </summary>
-    LDCLRA_64_memop,
+    LDCLRA_64_memop = 1007,
     /// <summary>
     /// Instruction `LDCLRB` - Atomic bit clear on byte in memory.
     /// </summary>
-    LDCLRB_32_memop,
+    LDCLRB_32_memop = 1008,
     /// <summary>
     /// Instruction `LDCLRH` - Atomic bit clear on halfword in memory.
     /// </summary>
-    LDCLRH_32_memop,
+    LDCLRH_32_memop = 1009,
     /// <summary>
     /// Instruction `LDCLRLB` - Atomic bit clear on byte in memory.
     /// </summary>
-    LDCLRLB_32_memop,
+    LDCLRLB_32_memop = 1010,
     /// <summary>
     /// Instruction `LDCLRLH` - Atomic bit clear on halfword in memory.
     /// </summary>
-    LDCLRLH_32_memop,
+    LDCLRLH_32_memop = 1011,
     /// <summary>
     /// Instruction `LDCLRL` - Atomic bit clear on word or doubleword in memory.
     /// </summary>
-    LDCLRL_32_memop,
+    LDCLRL_32_memop = 1012,
     /// <summary>
     /// Instruction `LDCLRL` - Atomic bit clear on word or doubleword in memory.
     /// </summary>
-    LDCLRL_64_memop,
+    LDCLRL_64_memop = 1013,
     /// <summary>
     /// Instruction `LDCLRPAL` - Atomic bit clear on quadword in memory.
     /// </summary>
-    LDCLRPAL_128_memop_128,
+    LDCLRPAL_128_memop_128 = 1014,
     /// <summary>
     /// Instruction `LDCLRPA` - Atomic bit clear on quadword in memory.
     /// </summary>
-    LDCLRPA_128_memop_128,
+    LDCLRPA_128_memop_128 = 1015,
     /// <summary>
     /// Instruction `LDCLRPL` - Atomic bit clear on quadword in memory.
     /// </summary>
-    LDCLRPL_128_memop_128,
+    LDCLRPL_128_memop_128 = 1016,
     /// <summary>
     /// Instruction `LDCLRP` - Atomic bit clear on quadword in memory.
     /// </summary>
-    LDCLRP_128_memop_128,
+    LDCLRP_128_memop_128 = 1017,
     /// <summary>
     /// Instruction `LDCLR` - Atomic bit clear on word or doubleword in memory.
     /// </summary>
-    LDCLR_32_memop,
+    LDCLR_32_memop = 1018,
     /// <summary>
     /// Instruction `LDCLR` - Atomic bit clear on word or doubleword in memory.
     /// </summary>
-    LDCLR_64_memop,
+    LDCLR_64_memop = 1019,
     /// <summary>
     /// Instruction `LDEORAB` - Atomic exclusive-OR on byte in memory.
     /// </summary>
-    LDEORAB_32_memop,
+    LDEORAB_32_memop = 1020,
     /// <summary>
     /// Instruction `LDEORAH` - Atomic exclusive-OR on halfword in memory.
     /// </summary>
-    LDEORAH_32_memop,
+    LDEORAH_32_memop = 1021,
     /// <summary>
     /// Instruction `LDEORALB` - Atomic exclusive-OR on byte in memory.
     /// </summary>
-    LDEORALB_32_memop,
+    LDEORALB_32_memop = 1022,
     /// <summary>
     /// Instruction `LDEORALH` - Atomic exclusive-OR on halfword in memory.
     /// </summary>
-    LDEORALH_32_memop,
+    LDEORALH_32_memop = 1023,
     /// <summary>
     /// Instruction `LDEORAL` - Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
-    LDEORAL_32_memop,
+    LDEORAL_32_memop = 1024,
     /// <summary>
     /// Instruction `LDEORAL` - Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
-    LDEORAL_64_memop,
+    LDEORAL_64_memop = 1025,
     /// <summary>
     /// Instruction `LDEORA` - Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
-    LDEORA_32_memop,
+    LDEORA_32_memop = 1026,
     /// <summary>
     /// Instruction `LDEORA` - Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
-    LDEORA_64_memop,
+    LDEORA_64_memop = 1027,
     /// <summary>
     /// Instruction `LDEORB` - Atomic exclusive-OR on byte in memory.
     /// </summary>
-    LDEORB_32_memop,
+    LDEORB_32_memop = 1028,
     /// <summary>
     /// Instruction `LDEORH` - Atomic exclusive-OR on halfword in memory.
     /// </summary>
-    LDEORH_32_memop,
+    LDEORH_32_memop = 1029,
     /// <summary>
     /// Instruction `LDEORLB` - Atomic exclusive-OR on byte in memory.
     /// </summary>
-    LDEORLB_32_memop,
+    LDEORLB_32_memop = 1030,
     /// <summary>
     /// Instruction `LDEORLH` - Atomic exclusive-OR on halfword in memory.
     /// </summary>
-    LDEORLH_32_memop,
+    LDEORLH_32_memop = 1031,
     /// <summary>
     /// Instruction `LDEORL` - Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
-    LDEORL_32_memop,
+    LDEORL_32_memop = 1032,
     /// <summary>
     /// Instruction `LDEORL` - Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
-    LDEORL_64_memop,
+    LDEORL_64_memop = 1033,
     /// <summary>
     /// Instruction `LDEOR` - Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
-    LDEOR_32_memop,
+    LDEOR_32_memop = 1034,
     /// <summary>
     /// Instruction `LDEOR` - Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
-    LDEOR_64_memop,
+    LDEOR_64_memop = 1035,
     /// <summary>
     /// Instruction `LDFADDAL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDAL_16,
+    LDFADDAL_16 = 1036,
     /// <summary>
     /// Instruction `LDFADDAL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDAL_32,
+    LDFADDAL_32 = 1037,
     /// <summary>
     /// Instruction `LDFADDAL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDAL_64,
+    LDFADDAL_64 = 1038,
     /// <summary>
     /// Instruction `LDFADDA` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDA_16,
+    LDFADDA_16 = 1039,
     /// <summary>
     /// Instruction `LDFADDA` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDA_32,
+    LDFADDA_32 = 1040,
     /// <summary>
     /// Instruction `LDFADDA` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDA_64,
+    LDFADDA_64 = 1041,
     /// <summary>
     /// Instruction `LDFADDL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDL_16,
+    LDFADDL_16 = 1042,
     /// <summary>
     /// Instruction `LDFADDL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDL_32,
+    LDFADDL_32 = 1043,
     /// <summary>
     /// Instruction `LDFADDL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDL_64,
+    LDFADDL_64 = 1044,
     /// <summary>
     /// Instruction `LDFADD` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADD_16,
+    LDFADD_16 = 1045,
     /// <summary>
     /// Instruction `LDFADD` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADD_32,
+    LDFADD_32 = 1046,
     /// <summary>
     /// Instruction `LDFADD` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADD_64,
+    LDFADD_64 = 1047,
     /// <summary>
     /// Instruction `LDFMAXAL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXAL_16,
+    LDFMAXAL_16 = 1048,
     /// <summary>
     /// Instruction `LDFMAXAL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXAL_32,
+    LDFMAXAL_32 = 1049,
     /// <summary>
     /// Instruction `LDFMAXAL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXAL_64,
+    LDFMAXAL_64 = 1050,
     /// <summary>
     /// Instruction `LDFMAXA` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXA_16,
+    LDFMAXA_16 = 1051,
     /// <summary>
     /// Instruction `LDFMAXA` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXA_32,
+    LDFMAXA_32 = 1052,
     /// <summary>
     /// Instruction `LDFMAXA` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXA_64,
+    LDFMAXA_64 = 1053,
     /// <summary>
     /// Instruction `LDFMAXL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXL_16,
+    LDFMAXL_16 = 1054,
     /// <summary>
     /// Instruction `LDFMAXL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXL_32,
+    LDFMAXL_32 = 1055,
     /// <summary>
     /// Instruction `LDFMAXL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXL_64,
+    LDFMAXL_64 = 1056,
     /// <summary>
     /// Instruction `LDFMAXNMAL` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMAL_16,
+    LDFMAXNMAL_16 = 1057,
     /// <summary>
     /// Instruction `LDFMAXNMAL` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMAL_32,
+    LDFMAXNMAL_32 = 1058,
     /// <summary>
     /// Instruction `LDFMAXNMAL` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMAL_64,
+    LDFMAXNMAL_64 = 1059,
     /// <summary>
     /// Instruction `LDFMAXNMA` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMA_16,
+    LDFMAXNMA_16 = 1060,
     /// <summary>
     /// Instruction `LDFMAXNMA` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMA_32,
+    LDFMAXNMA_32 = 1061,
     /// <summary>
     /// Instruction `LDFMAXNMA` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMA_64,
+    LDFMAXNMA_64 = 1062,
     /// <summary>
     /// Instruction `LDFMAXNML` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNML_16,
+    LDFMAXNML_16 = 1063,
     /// <summary>
     /// Instruction `LDFMAXNML` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNML_32,
+    LDFMAXNML_32 = 1064,
     /// <summary>
     /// Instruction `LDFMAXNML` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNML_64,
+    LDFMAXNML_64 = 1065,
     /// <summary>
     /// Instruction `LDFMAXNM` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNM_16,
+    LDFMAXNM_16 = 1066,
     /// <summary>
     /// Instruction `LDFMAXNM` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNM_32,
+    LDFMAXNM_32 = 1067,
     /// <summary>
     /// Instruction `LDFMAXNM` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNM_64,
+    LDFMAXNM_64 = 1068,
     /// <summary>
     /// Instruction `LDFMAX` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAX_16,
+    LDFMAX_16 = 1069,
     /// <summary>
     /// Instruction `LDFMAX` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAX_32,
+    LDFMAX_32 = 1070,
     /// <summary>
     /// Instruction `LDFMAX` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAX_64,
+    LDFMAX_64 = 1071,
     /// <summary>
     /// Instruction `LDFMINAL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINAL_16,
+    LDFMINAL_16 = 1072,
     /// <summary>
     /// Instruction `LDFMINAL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINAL_32,
+    LDFMINAL_32 = 1073,
     /// <summary>
     /// Instruction `LDFMINAL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINAL_64,
+    LDFMINAL_64 = 1074,
     /// <summary>
     /// Instruction `LDFMINA` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINA_16,
+    LDFMINA_16 = 1075,
     /// <summary>
     /// Instruction `LDFMINA` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINA_32,
+    LDFMINA_32 = 1076,
     /// <summary>
     /// Instruction `LDFMINA` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINA_64,
+    LDFMINA_64 = 1077,
     /// <summary>
     /// Instruction `LDFMINL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINL_16,
+    LDFMINL_16 = 1078,
     /// <summary>
     /// Instruction `LDFMINL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINL_32,
+    LDFMINL_32 = 1079,
     /// <summary>
     /// Instruction `LDFMINL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINL_64,
+    LDFMINL_64 = 1080,
     /// <summary>
     /// Instruction `LDFMINNMAL` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMAL_16,
+    LDFMINNMAL_16 = 1081,
     /// <summary>
     /// Instruction `LDFMINNMAL` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMAL_32,
+    LDFMINNMAL_32 = 1082,
     /// <summary>
     /// Instruction `LDFMINNMAL` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMAL_64,
+    LDFMINNMAL_64 = 1083,
     /// <summary>
     /// Instruction `LDFMINNMA` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMA_16,
+    LDFMINNMA_16 = 1084,
     /// <summary>
     /// Instruction `LDFMINNMA` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMA_32,
+    LDFMINNMA_32 = 1085,
     /// <summary>
     /// Instruction `LDFMINNMA` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMA_64,
+    LDFMINNMA_64 = 1086,
     /// <summary>
     /// Instruction `LDFMINNML` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNML_16,
+    LDFMINNML_16 = 1087,
     /// <summary>
     /// Instruction `LDFMINNML` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNML_32,
+    LDFMINNML_32 = 1088,
     /// <summary>
     /// Instruction `LDFMINNML` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNML_64,
+    LDFMINNML_64 = 1089,
     /// <summary>
     /// Instruction `LDFMINNM` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNM_16,
+    LDFMINNM_16 = 1090,
     /// <summary>
     /// Instruction `LDFMINNM` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNM_32,
+    LDFMINNM_32 = 1091,
     /// <summary>
     /// Instruction `LDFMINNM` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNM_64,
+    LDFMINNM_64 = 1092,
     /// <summary>
     /// Instruction `LDFMIN` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMIN_16,
+    LDFMIN_16 = 1093,
     /// <summary>
     /// Instruction `LDFMIN` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMIN_32,
+    LDFMIN_32 = 1094,
     /// <summary>
     /// Instruction `LDFMIN` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMIN_64,
+    LDFMIN_64 = 1095,
     /// <summary>
     /// Instruction `LDGM` - Load tag multiple.
     /// </summary>
-    LDGM_64bulk_ldsttags,
+    LDGM_64bulk_ldsttags = 1096,
     /// <summary>
     /// Instruction `LDG` - Load Allocation Tag.
     /// </summary>
-    LDG_64loffset_ldsttags,
+    LDG_64loffset_ldsttags = 1097,
     /// <summary>
     /// Instruction `LDIAPP` - Load-Acquire RCpc ordered pair of registers.
     /// </summary>
-    LDIAPP_32l_ldiappstilp,
+    LDIAPP_32l_ldiappstilp = 1098,
     /// <summary>
     /// Instruction `LDIAPP` - Load-Acquire RCpc ordered pair of registers.
     /// </summary>
-    LDIAPP_32le_ldiappstilp,
+    LDIAPP_32le_ldiappstilp = 1099,
     /// <summary>
     /// Instruction `LDIAPP` - Load-Acquire RCpc ordered pair of registers.
     /// </summary>
-    LDIAPP_64l_ldiappstilp,
+    LDIAPP_64l_ldiappstilp = 1100,
     /// <summary>
     /// Instruction `LDIAPP` - Load-Acquire RCpc ordered pair of registers.
     /// </summary>
-    LDIAPP_64ls_ldiappstilp,
+    LDIAPP_64ls_ldiappstilp = 1101,
     /// <summary>
     /// Instruction `LDLARB` - Load LOAcquire register byte.
     /// </summary>
-    LDLARB_lr32_ldstord,
+    LDLARB_lr32_ldstord = 1102,
     /// <summary>
     /// Instruction `LDLARH` - Load LOAcquire register halfword.
     /// </summary>
-    LDLARH_lr32_ldstord,
+    LDLARH_lr32_ldstord = 1103,
     /// <summary>
     /// Instruction `LDLAR` - Load LOAcquire register.
     /// </summary>
-    LDLAR_lr32_ldstord,
+    LDLAR_lr32_ldstord = 1104,
     /// <summary>
     /// Instruction `LDLAR` - Load LOAcquire register.
     /// </summary>
-    LDLAR_lr64_ldstord,
+    LDLAR_lr64_ldstord = 1105,
     /// <summary>
     /// Instruction `LDNP` - Load pair of registers, with non-temporal hint.
     /// </summary>
-    LDNP_32_ldstnapair_offs,
+    LDNP_32_ldstnapair_offs = 1106,
     /// <summary>
     /// Instruction `LDNP` - Load pair of registers, with non-temporal hint.
     /// </summary>
-    LDNP_64_ldstnapair_offs,
+    LDNP_64_ldstnapair_offs = 1107,
     /// <summary>
     /// Instruction `LDNP` - Load pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    LDNP_d_ldstnapair_offs,
+    LDNP_d_ldstnapair_offs = 1108,
     /// <summary>
     /// Instruction `LDNP` - Load pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    LDNP_q_ldstnapair_offs,
+    LDNP_q_ldstnapair_offs = 1109,
     /// <summary>
     /// Instruction `LDNP` - Load pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    LDNP_s_ldstnapair_offs,
+    LDNP_s_ldstnapair_offs = 1110,
     /// <summary>
     /// Instruction `LDPSW` - Load pair of registers signed word.
     /// </summary>
-    LDPSW_64_ldstpair_off,
+    LDPSW_64_ldstpair_off = 1111,
     /// <summary>
     /// Instruction `LDPSW` - Load pair of registers signed word.
     /// </summary>
-    LDPSW_64_ldstpair_post,
+    LDPSW_64_ldstpair_post = 1112,
     /// <summary>
     /// Instruction `LDPSW` - Load pair of registers signed word.
     /// </summary>
-    LDPSW_64_ldstpair_pre,
+    LDPSW_64_ldstpair_pre = 1113,
     /// <summary>
     /// Instruction `LDP` - Load pair of registers.
     /// </summary>
-    LDP_32_ldstpair_off,
+    LDP_32_ldstpair_off = 1114,
     /// <summary>
     /// Instruction `LDP` - Load pair of registers.
     /// </summary>
-    LDP_32_ldstpair_post,
+    LDP_32_ldstpair_post = 1115,
     /// <summary>
     /// Instruction `LDP` - Load pair of registers.
     /// </summary>
-    LDP_32_ldstpair_pre,
+    LDP_32_ldstpair_pre = 1116,
     /// <summary>
     /// Instruction `LDP` - Load pair of registers.
     /// </summary>
-    LDP_64_ldstpair_off,
+    LDP_64_ldstpair_off = 1117,
     /// <summary>
     /// Instruction `LDP` - Load pair of registers.
     /// </summary>
-    LDP_64_ldstpair_post,
+    LDP_64_ldstpair_post = 1118,
     /// <summary>
     /// Instruction `LDP` - Load pair of registers.
     /// </summary>
-    LDP_64_ldstpair_pre,
+    LDP_64_ldstpair_pre = 1119,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_d_ldstpair_off,
+    LDP_d_ldstpair_off = 1120,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_d_ldstpair_post,
+    LDP_d_ldstpair_post = 1121,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_d_ldstpair_pre,
+    LDP_d_ldstpair_pre = 1122,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_q_ldstpair_off,
+    LDP_q_ldstpair_off = 1123,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_q_ldstpair_post,
+    LDP_q_ldstpair_post = 1124,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_q_ldstpair_pre,
+    LDP_q_ldstpair_pre = 1125,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_s_ldstpair_off,
+    LDP_s_ldstpair_off = 1126,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_s_ldstpair_post,
+    LDP_s_ldstpair_post = 1127,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_s_ldstpair_pre,
+    LDP_s_ldstpair_pre = 1128,
     /// <summary>
     /// Instruction `LDRAA` - Load register, with pointer authentication.
     /// </summary>
-    LDRAA_64_ldst_pac,
+    LDRAA_64_ldst_pac = 1129,
     /// <summary>
     /// Instruction `LDRAA` - Load register, with pointer authentication.
     /// </summary>
-    LDRAA_64w_ldst_pac,
+    LDRAA_64w_ldst_pac = 1130,
     /// <summary>
     /// Instruction `LDRAB` - Load register, with pointer authentication.
     /// </summary>
-    LDRAB_64_ldst_pac,
+    LDRAB_64_ldst_pac = 1131,
     /// <summary>
     /// Instruction `LDRAB` - Load register, with pointer authentication.
     /// </summary>
-    LDRAB_64w_ldst_pac,
+    LDRAB_64w_ldst_pac = 1132,
     /// <summary>
     /// Instruction `LDRB` - Load register byte (immediate).
     /// </summary>
-    LDRB_32_ldst_immpost,
+    LDRB_32_ldst_immpost = 1133,
     /// <summary>
     /// Instruction `LDRB` - Load register byte (immediate).
     /// </summary>
-    LDRB_32_ldst_immpre,
+    LDRB_32_ldst_immpre = 1134,
     /// <summary>
     /// Instruction `LDRB` - Load register byte (immediate).
     /// </summary>
-    LDRB_32_ldst_pos,
+    LDRB_32_ldst_pos = 1135,
     /// <summary>
     /// Instruction `LDRB` - Load register byte (register).
     /// </summary>
-    LDRB_32b_ldst_regoff,
+    LDRB_32b_ldst_regoff = 1136,
     /// <summary>
     /// Instruction `LDRB` - Load register byte (register).
     /// </summary>
-    LDRB_32bl_ldst_regoff,
+    LDRB_32bl_ldst_regoff = 1137,
     /// <summary>
     /// Instruction `LDRH` - Load register halfword (immediate).
     /// </summary>
-    LDRH_32_ldst_immpost,
+    LDRH_32_ldst_immpost = 1138,
     /// <summary>
     /// Instruction `LDRH` - Load register halfword (immediate).
     /// </summary>
-    LDRH_32_ldst_immpre,
+    LDRH_32_ldst_immpre = 1139,
     /// <summary>
     /// Instruction `LDRH` - Load register halfword (immediate).
     /// </summary>
-    LDRH_32_ldst_pos,
+    LDRH_32_ldst_pos = 1140,
     /// <summary>
     /// Instruction `LDRH` - Load register halfword (register).
     /// </summary>
-    LDRH_32_ldst_regoff,
+    LDRH_32_ldst_regoff = 1141,
     /// <summary>
     /// Instruction `LDRSB` - Load register signed byte (immediate).
     /// </summary>
-    LDRSB_32_ldst_immpost,
+    LDRSB_32_ldst_immpost = 1142,
     /// <summary>
     /// Instruction `LDRSB` - Load register signed byte (immediate).
     /// </summary>
-    LDRSB_32_ldst_immpre,
+    LDRSB_32_ldst_immpre = 1143,
     /// <summary>
     /// Instruction `LDRSB` - Load register signed byte (immediate).
     /// </summary>
-    LDRSB_32_ldst_pos,
+    LDRSB_32_ldst_pos = 1144,
     /// <summary>
     /// Instruction `LDRSB` - Load register signed byte (register).
     /// </summary>
-    LDRSB_32b_ldst_regoff,
+    LDRSB_32b_ldst_regoff = 1145,
     /// <summary>
     /// Instruction `LDRSB` - Load register signed byte (register).
     /// </summary>
-    LDRSB_32bl_ldst_regoff,
+    LDRSB_32bl_ldst_regoff = 1146,
     /// <summary>
     /// Instruction `LDRSB` - Load register signed byte (immediate).
     /// </summary>
-    LDRSB_64_ldst_immpost,
+    LDRSB_64_ldst_immpost = 1147,
     /// <summary>
     /// Instruction `LDRSB` - Load register signed byte (immediate).
     /// </summary>
-    LDRSB_64_ldst_immpre,
+    LDRSB_64_ldst_immpre = 1148,
     /// <summary>
     /// Instruction `LDRSB` - Load register signed byte (immediate).
     /// </summary>
-    LDRSB_64_ldst_pos,
+    LDRSB_64_ldst_pos = 1149,
     /// <summary>
     /// Instruction `LDRSB` - Load register signed byte (register).
     /// </summary>
-    LDRSB_64b_ldst_regoff,
+    LDRSB_64b_ldst_regoff = 1150,
     /// <summary>
     /// Instruction `LDRSB` - Load register signed byte (register).
     /// </summary>
-    LDRSB_64bl_ldst_regoff,
+    LDRSB_64bl_ldst_regoff = 1151,
     /// <summary>
     /// Instruction `LDRSH` - Load register signed halfword (immediate).
     /// </summary>
-    LDRSH_32_ldst_immpost,
+    LDRSH_32_ldst_immpost = 1152,
     /// <summary>
     /// Instruction `LDRSH` - Load register signed halfword (immediate).
     /// </summary>
-    LDRSH_32_ldst_immpre,
+    LDRSH_32_ldst_immpre = 1153,
     /// <summary>
     /// Instruction `LDRSH` - Load register signed halfword (immediate).
     /// </summary>
-    LDRSH_32_ldst_pos,
+    LDRSH_32_ldst_pos = 1154,
     /// <summary>
     /// Instruction `LDRSH` - Load register signed halfword (register).
     /// </summary>
-    LDRSH_32_ldst_regoff,
+    LDRSH_32_ldst_regoff = 1155,
     /// <summary>
     /// Instruction `LDRSH` - Load register signed halfword (immediate).
     /// </summary>
-    LDRSH_64_ldst_immpost,
+    LDRSH_64_ldst_immpost = 1156,
     /// <summary>
     /// Instruction `LDRSH` - Load register signed halfword (immediate).
     /// </summary>
-    LDRSH_64_ldst_immpre,
+    LDRSH_64_ldst_immpre = 1157,
     /// <summary>
     /// Instruction `LDRSH` - Load register signed halfword (immediate).
     /// </summary>
-    LDRSH_64_ldst_pos,
+    LDRSH_64_ldst_pos = 1158,
     /// <summary>
     /// Instruction `LDRSH` - Load register signed halfword (register).
     /// </summary>
-    LDRSH_64_ldst_regoff,
+    LDRSH_64_ldst_regoff = 1159,
     /// <summary>
     /// Instruction `LDRSW` - Load register signed word (immediate).
     /// </summary>
-    LDRSW_64_ldst_immpost,
+    LDRSW_64_ldst_immpost = 1160,
     /// <summary>
     /// Instruction `LDRSW` - Load register signed word (immediate).
     /// </summary>
-    LDRSW_64_ldst_immpre,
+    LDRSW_64_ldst_immpre = 1161,
     /// <summary>
     /// Instruction `LDRSW` - Load register signed word (immediate).
     /// </summary>
-    LDRSW_64_ldst_pos,
+    LDRSW_64_ldst_pos = 1162,
     /// <summary>
     /// Instruction `LDRSW` - Load register signed word (register).
     /// </summary>
-    LDRSW_64_ldst_regoff,
+    LDRSW_64_ldst_regoff = 1163,
     /// <summary>
     /// Instruction `LDRSW` - Load register signed word (literal).
     /// </summary>
-    LDRSW_64_loadlit,
+    LDRSW_64_loadlit = 1164,
     /// <summary>
     /// Instruction `LDR` - Load register (immediate).
     /// </summary>
-    LDR_32_ldst_immpost,
+    LDR_32_ldst_immpost = 1165,
     /// <summary>
     /// Instruction `LDR` - Load register (immediate).
     /// </summary>
-    LDR_32_ldst_immpre,
+    LDR_32_ldst_immpre = 1166,
     /// <summary>
     /// Instruction `LDR` - Load register (immediate).
     /// </summary>
-    LDR_32_ldst_pos,
+    LDR_32_ldst_pos = 1167,
     /// <summary>
     /// Instruction `LDR` - Load register (register).
     /// </summary>
-    LDR_32_ldst_regoff,
+    LDR_32_ldst_regoff = 1168,
     /// <summary>
     /// Instruction `LDR` - Load register (literal).
     /// </summary>
-    LDR_32_loadlit,
+    LDR_32_loadlit = 1169,
     /// <summary>
     /// Instruction `LDR` - Load register (immediate).
     /// </summary>
-    LDR_64_ldst_immpost,
+    LDR_64_ldst_immpost = 1170,
     /// <summary>
     /// Instruction `LDR` - Load register (immediate).
     /// </summary>
-    LDR_64_ldst_immpre,
+    LDR_64_ldst_immpre = 1171,
     /// <summary>
     /// Instruction `LDR` - Load register (immediate).
     /// </summary>
-    LDR_64_ldst_pos,
+    LDR_64_ldst_pos = 1172,
     /// <summary>
     /// Instruction `LDR` - Load register (register).
     /// </summary>
-    LDR_64_ldst_regoff,
+    LDR_64_ldst_regoff = 1173,
     /// <summary>
     /// Instruction `LDR` - Load register (literal).
     /// </summary>
-    LDR_64_loadlit,
+    LDR_64_loadlit = 1174,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_b_ldst_immpost,
+    LDR_b_ldst_immpost = 1175,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_b_ldst_immpre,
+    LDR_b_ldst_immpre = 1176,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_b_ldst_pos,
+    LDR_b_ldst_pos = 1177,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_b_ldst_regoff,
+    LDR_b_ldst_regoff = 1178,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_bl_ldst_regoff,
+    LDR_bl_ldst_regoff = 1179,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_d_ldst_immpost,
+    LDR_d_ldst_immpost = 1180,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_d_ldst_immpre,
+    LDR_d_ldst_immpre = 1181,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_d_ldst_pos,
+    LDR_d_ldst_pos = 1182,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_d_ldst_regoff,
+    LDR_d_ldst_regoff = 1183,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (PC-relative literal).
     /// </summary>
-    LDR_d_loadlit,
+    LDR_d_loadlit = 1184,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_h_ldst_immpost,
+    LDR_h_ldst_immpost = 1185,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_h_ldst_immpre,
+    LDR_h_ldst_immpre = 1186,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_h_ldst_pos,
+    LDR_h_ldst_pos = 1187,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_h_ldst_regoff,
+    LDR_h_ldst_regoff = 1188,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_q_ldst_immpost,
+    LDR_q_ldst_immpost = 1189,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_q_ldst_immpre,
+    LDR_q_ldst_immpre = 1190,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_q_ldst_pos,
+    LDR_q_ldst_pos = 1191,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_q_ldst_regoff,
+    LDR_q_ldst_regoff = 1192,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (PC-relative literal).
     /// </summary>
-    LDR_q_loadlit,
+    LDR_q_loadlit = 1193,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_s_ldst_immpost,
+    LDR_s_ldst_immpost = 1194,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_s_ldst_immpre,
+    LDR_s_ldst_immpre = 1195,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_s_ldst_pos,
+    LDR_s_ldst_pos = 1196,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_s_ldst_regoff,
+    LDR_s_ldst_regoff = 1197,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (PC-relative literal).
     /// </summary>
-    LDR_s_loadlit,
+    LDR_s_loadlit = 1198,
     /// <summary>
     /// Instruction `LDSETAB` - Atomic bit set on byte in memory.
     /// </summary>
-    LDSETAB_32_memop,
+    LDSETAB_32_memop = 1199,
     /// <summary>
     /// Instruction `LDSETAH` - Atomic bit set on halfword in memory.
     /// </summary>
-    LDSETAH_32_memop,
+    LDSETAH_32_memop = 1200,
     /// <summary>
     /// Instruction `LDSETALB` - Atomic bit set on byte in memory.
     /// </summary>
-    LDSETALB_32_memop,
+    LDSETALB_32_memop = 1201,
     /// <summary>
     /// Instruction `LDSETALH` - Atomic bit set on halfword in memory.
     /// </summary>
-    LDSETALH_32_memop,
+    LDSETALH_32_memop = 1202,
     /// <summary>
     /// Instruction `LDSETAL` - Atomic bit set on word or doubleword in memory.
     /// </summary>
-    LDSETAL_32_memop,
+    LDSETAL_32_memop = 1203,
     /// <summary>
     /// Instruction `LDSETAL` - Atomic bit set on word or doubleword in memory.
     /// </summary>
-    LDSETAL_64_memop,
+    LDSETAL_64_memop = 1204,
     /// <summary>
     /// Instruction `LDSETA` - Atomic bit set on word or doubleword in memory.
     /// </summary>
-    LDSETA_32_memop,
+    LDSETA_32_memop = 1205,
     /// <summary>
     /// Instruction `LDSETA` - Atomic bit set on word or doubleword in memory.
     /// </summary>
-    LDSETA_64_memop,
+    LDSETA_64_memop = 1206,
     /// <summary>
     /// Instruction `LDSETB` - Atomic bit set on byte in memory.
     /// </summary>
-    LDSETB_32_memop,
+    LDSETB_32_memop = 1207,
     /// <summary>
     /// Instruction `LDSETH` - Atomic bit set on halfword in memory.
     /// </summary>
-    LDSETH_32_memop,
+    LDSETH_32_memop = 1208,
     /// <summary>
     /// Instruction `LDSETLB` - Atomic bit set on byte in memory.
     /// </summary>
-    LDSETLB_32_memop,
+    LDSETLB_32_memop = 1209,
     /// <summary>
     /// Instruction `LDSETLH` - Atomic bit set on halfword in memory.
     /// </summary>
-    LDSETLH_32_memop,
+    LDSETLH_32_memop = 1210,
     /// <summary>
     /// Instruction `LDSETL` - Atomic bit set on word or doubleword in memory.
     /// </summary>
-    LDSETL_32_memop,
+    LDSETL_32_memop = 1211,
     /// <summary>
     /// Instruction `LDSETL` - Atomic bit set on word or doubleword in memory.
     /// </summary>
-    LDSETL_64_memop,
+    LDSETL_64_memop = 1212,
     /// <summary>
     /// Instruction `LDSETPAL` - Atomic bit set on quadword in memory.
     /// </summary>
-    LDSETPAL_128_memop_128,
+    LDSETPAL_128_memop_128 = 1213,
     /// <summary>
     /// Instruction `LDSETPA` - Atomic bit set on quadword in memory.
     /// </summary>
-    LDSETPA_128_memop_128,
+    LDSETPA_128_memop_128 = 1214,
     /// <summary>
     /// Instruction `LDSETPL` - Atomic bit set on quadword in memory.
     /// </summary>
-    LDSETPL_128_memop_128,
+    LDSETPL_128_memop_128 = 1215,
     /// <summary>
     /// Instruction `LDSETP` - Atomic bit set on quadword in memory.
     /// </summary>
-    LDSETP_128_memop_128,
+    LDSETP_128_memop_128 = 1216,
     /// <summary>
     /// Instruction `LDSET` - Atomic bit set on word or doubleword in memory.
     /// </summary>
-    LDSET_32_memop,
+    LDSET_32_memop = 1217,
     /// <summary>
     /// Instruction `LDSET` - Atomic bit set on word or doubleword in memory.
     /// </summary>
-    LDSET_64_memop,
+    LDSET_64_memop = 1218,
     /// <summary>
     /// Instruction `LDSMAXAB` - Atomic signed maximum on byte in memory.
     /// </summary>
-    LDSMAXAB_32_memop,
+    LDSMAXAB_32_memop = 1219,
     /// <summary>
     /// Instruction `LDSMAXAH` - Atomic signed maximum on halfword in memory.
     /// </summary>
-    LDSMAXAH_32_memop,
+    LDSMAXAH_32_memop = 1220,
     /// <summary>
     /// Instruction `LDSMAXALB` - Atomic signed maximum on byte in memory.
     /// </summary>
-    LDSMAXALB_32_memop,
+    LDSMAXALB_32_memop = 1221,
     /// <summary>
     /// Instruction `LDSMAXALH` - Atomic signed maximum on halfword in memory.
     /// </summary>
-    LDSMAXALH_32_memop,
+    LDSMAXALH_32_memop = 1222,
     /// <summary>
     /// Instruction `LDSMAXAL` - Atomic signed maximum on word or doubleword in memory.
     /// </summary>
-    LDSMAXAL_32_memop,
+    LDSMAXAL_32_memop = 1223,
     /// <summary>
     /// Instruction `LDSMAXAL` - Atomic signed maximum on word or doubleword in memory.
     /// </summary>
-    LDSMAXAL_64_memop,
+    LDSMAXAL_64_memop = 1224,
     /// <summary>
     /// Instruction `LDSMAXA` - Atomic signed maximum on word or doubleword in memory.
     /// </summary>
-    LDSMAXA_32_memop,
+    LDSMAXA_32_memop = 1225,
     /// <summary>
     /// Instruction `LDSMAXA` - Atomic signed maximum on word or doubleword in memory.
     /// </summary>
-    LDSMAXA_64_memop,
+    LDSMAXA_64_memop = 1226,
     /// <summary>
     /// Instruction `LDSMAXB` - Atomic signed maximum on byte in memory.
     /// </summary>
-    LDSMAXB_32_memop,
+    LDSMAXB_32_memop = 1227,
     /// <summary>
     /// Instruction `LDSMAXH` - Atomic signed maximum on halfword in memory.
     /// </summary>
-    LDSMAXH_32_memop,
+    LDSMAXH_32_memop = 1228,
     /// <summary>
     /// Instruction `LDSMAXLB` - Atomic signed maximum on byte in memory.
     /// </summary>
-    LDSMAXLB_32_memop,
+    LDSMAXLB_32_memop = 1229,
     /// <summary>
     /// Instruction `LDSMAXLH` - Atomic signed maximum on halfword in memory.
     /// </summary>
-    LDSMAXLH_32_memop,
+    LDSMAXLH_32_memop = 1230,
     /// <summary>
     /// Instruction `LDSMAXL` - Atomic signed maximum on word or doubleword in memory.
     /// </summary>
-    LDSMAXL_32_memop,
+    LDSMAXL_32_memop = 1231,
     /// <summary>
     /// Instruction `LDSMAXL` - Atomic signed maximum on word or doubleword in memory.
     /// </summary>
-    LDSMAXL_64_memop,
+    LDSMAXL_64_memop = 1232,
     /// <summary>
     /// Instruction `LDSMAX` - Atomic signed maximum on word or doubleword in memory.
     /// </summary>
-    LDSMAX_32_memop,
+    LDSMAX_32_memop = 1233,
     /// <summary>
     /// Instruction `LDSMAX` - Atomic signed maximum on word or doubleword in memory.
     /// </summary>
-    LDSMAX_64_memop,
+    LDSMAX_64_memop = 1234,
     /// <summary>
     /// Instruction `LDSMINAB` - Atomic signed minimum on byte in memory.
     /// </summary>
-    LDSMINAB_32_memop,
+    LDSMINAB_32_memop = 1235,
     /// <summary>
     /// Instruction `LDSMINAH` - Atomic signed minimum on halfword in memory.
     /// </summary>
-    LDSMINAH_32_memop,
+    LDSMINAH_32_memop = 1236,
     /// <summary>
     /// Instruction `LDSMINALB` - Atomic signed minimum on byte in memory.
     /// </summary>
-    LDSMINALB_32_memop,
+    LDSMINALB_32_memop = 1237,
     /// <summary>
     /// Instruction `LDSMINALH` - Atomic signed minimum on halfword in memory.
     /// </summary>
-    LDSMINALH_32_memop,
+    LDSMINALH_32_memop = 1238,
     /// <summary>
     /// Instruction `LDSMINAL` - Atomic signed minimum on word or doubleword in memory.
     /// </summary>
-    LDSMINAL_32_memop,
+    LDSMINAL_32_memop = 1239,
     /// <summary>
     /// Instruction `LDSMINAL` - Atomic signed minimum on word or doubleword in memory.
     /// </summary>
-    LDSMINAL_64_memop,
+    LDSMINAL_64_memop = 1240,
     /// <summary>
     /// Instruction `LDSMINA` - Atomic signed minimum on word or doubleword in memory.
     /// </summary>
-    LDSMINA_32_memop,
+    LDSMINA_32_memop = 1241,
     /// <summary>
     /// Instruction `LDSMINA` - Atomic signed minimum on word or doubleword in memory.
     /// </summary>
-    LDSMINA_64_memop,
+    LDSMINA_64_memop = 1242,
     /// <summary>
     /// Instruction `LDSMINB` - Atomic signed minimum on byte in memory.
     /// </summary>
-    LDSMINB_32_memop,
+    LDSMINB_32_memop = 1243,
     /// <summary>
     /// Instruction `LDSMINH` - Atomic signed minimum on halfword in memory.
     /// </summary>
-    LDSMINH_32_memop,
+    LDSMINH_32_memop = 1244,
     /// <summary>
     /// Instruction `LDSMINLB` - Atomic signed minimum on byte in memory.
     /// </summary>
-    LDSMINLB_32_memop,
+    LDSMINLB_32_memop = 1245,
     /// <summary>
     /// Instruction `LDSMINLH` - Atomic signed minimum on halfword in memory.
     /// </summary>
-    LDSMINLH_32_memop,
+    LDSMINLH_32_memop = 1246,
     /// <summary>
     /// Instruction `LDSMINL` - Atomic signed minimum on word or doubleword in memory.
     /// </summary>
-    LDSMINL_32_memop,
+    LDSMINL_32_memop = 1247,
     /// <summary>
     /// Instruction `LDSMINL` - Atomic signed minimum on word or doubleword in memory.
     /// </summary>
-    LDSMINL_64_memop,
+    LDSMINL_64_memop = 1248,
     /// <summary>
     /// Instruction `LDSMIN` - Atomic signed minimum on word or doubleword in memory.
     /// </summary>
-    LDSMIN_32_memop,
+    LDSMIN_32_memop = 1249,
     /// <summary>
     /// Instruction `LDSMIN` - Atomic signed minimum on word or doubleword in memory.
     /// </summary>
-    LDSMIN_64_memop,
+    LDSMIN_64_memop = 1250,
     /// <summary>
     /// Instruction `LDTADDAL` - Atomic add unprivileged.
     /// </summary>
-    LDTADDAL_32_memop_unpriv,
+    LDTADDAL_32_memop_unpriv = 1251,
     /// <summary>
     /// Instruction `LDTADDAL` - Atomic add unprivileged.
     /// </summary>
-    LDTADDAL_64_memop_unpriv,
+    LDTADDAL_64_memop_unpriv = 1252,
     /// <summary>
     /// Instruction `LDTADDA` - Atomic add unprivileged.
     /// </summary>
-    LDTADDA_32_memop_unpriv,
+    LDTADDA_32_memop_unpriv = 1253,
     /// <summary>
     /// Instruction `LDTADDA` - Atomic add unprivileged.
     /// </summary>
-    LDTADDA_64_memop_unpriv,
+    LDTADDA_64_memop_unpriv = 1254,
     /// <summary>
     /// Instruction `LDTADDL` - Atomic add unprivileged.
     /// </summary>
-    LDTADDL_32_memop_unpriv,
+    LDTADDL_32_memop_unpriv = 1255,
     /// <summary>
     /// Instruction `LDTADDL` - Atomic add unprivileged.
     /// </summary>
-    LDTADDL_64_memop_unpriv,
+    LDTADDL_64_memop_unpriv = 1256,
     /// <summary>
     /// Instruction `LDTADD` - Atomic add unprivileged.
     /// </summary>
-    LDTADD_32_memop_unpriv,
+    LDTADD_32_memop_unpriv = 1257,
     /// <summary>
     /// Instruction `LDTADD` - Atomic add unprivileged.
     /// </summary>
-    LDTADD_64_memop_unpriv,
+    LDTADD_64_memop_unpriv = 1258,
     /// <summary>
     /// Instruction `LDTCLRAL` - Atomic bit clear unprivileged.
     /// </summary>
-    LDTCLRAL_32_memop_unpriv,
+    LDTCLRAL_32_memop_unpriv = 1259,
     /// <summary>
     /// Instruction `LDTCLRAL` - Atomic bit clear unprivileged.
     /// </summary>
-    LDTCLRAL_64_memop_unpriv,
+    LDTCLRAL_64_memop_unpriv = 1260,
     /// <summary>
     /// Instruction `LDTCLRA` - Atomic bit clear unprivileged.
     /// </summary>
-    LDTCLRA_32_memop_unpriv,
+    LDTCLRA_32_memop_unpriv = 1261,
     /// <summary>
     /// Instruction `LDTCLRA` - Atomic bit clear unprivileged.
     /// </summary>
-    LDTCLRA_64_memop_unpriv,
+    LDTCLRA_64_memop_unpriv = 1262,
     /// <summary>
     /// Instruction `LDTCLRL` - Atomic bit clear unprivileged.
     /// </summary>
-    LDTCLRL_32_memop_unpriv,
+    LDTCLRL_32_memop_unpriv = 1263,
     /// <summary>
     /// Instruction `LDTCLRL` - Atomic bit clear unprivileged.
     /// </summary>
-    LDTCLRL_64_memop_unpriv,
+    LDTCLRL_64_memop_unpriv = 1264,
     /// <summary>
     /// Instruction `LDTCLR` - Atomic bit clear unprivileged.
     /// </summary>
-    LDTCLR_32_memop_unpriv,
+    LDTCLR_32_memop_unpriv = 1265,
     /// <summary>
     /// Instruction `LDTCLR` - Atomic bit clear unprivileged.
     /// </summary>
-    LDTCLR_64_memop_unpriv,
+    LDTCLR_64_memop_unpriv = 1266,
     /// <summary>
     /// Instruction `LDTNP` - Load unprivileged pair of registers, with non-temporal hint.
     /// </summary>
-    LDTNP_64_ldstnapair_offs,
+    LDTNP_64_ldstnapair_offs = 1267,
     /// <summary>
     /// Instruction `LDTNP` - Load unprivileged pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    LDTNP_q_ldstnapair_offs,
+    LDTNP_q_ldstnapair_offs = 1268,
     /// <summary>
     /// Instruction `LDTP` - Load unprivileged pair of registers.
     /// </summary>
-    LDTP_64_ldstpair_off,
+    LDTP_64_ldstpair_off = 1269,
     /// <summary>
     /// Instruction `LDTP` - Load unprivileged pair of registers.
     /// </summary>
-    LDTP_64_ldstpair_post,
+    LDTP_64_ldstpair_post = 1270,
     /// <summary>
     /// Instruction `LDTP` - Load unprivileged pair of registers.
     /// </summary>
-    LDTP_64_ldstpair_pre,
+    LDTP_64_ldstpair_pre = 1271,
     /// <summary>
     /// Instruction `LDTP` - Load unprivileged pair of SIMD&FP registers.
     /// </summary>
-    LDTP_q_ldstpair_off,
+    LDTP_q_ldstpair_off = 1272,
     /// <summary>
     /// Instruction `LDTP` - Load unprivileged pair of SIMD&FP registers.
     /// </summary>
-    LDTP_q_ldstpair_post,
+    LDTP_q_ldstpair_post = 1273,
     /// <summary>
     /// Instruction `LDTP` - Load unprivileged pair of SIMD&FP registers.
     /// </summary>
-    LDTP_q_ldstpair_pre,
+    LDTP_q_ldstpair_pre = 1274,
     /// <summary>
     /// Instruction `LDTRB` - Load register byte (unprivileged).
     /// </summary>
-    LDTRB_32_ldst_unpriv,
+    LDTRB_32_ldst_unpriv = 1275,
     /// <summary>
     /// Instruction `LDTRH` - Load register halfword (unprivileged).
     /// </summary>
-    LDTRH_32_ldst_unpriv,
+    LDTRH_32_ldst_unpriv = 1276,
     /// <summary>
     /// Instruction `LDTRSB` - Load register signed byte (unprivileged).
     /// </summary>
-    LDTRSB_32_ldst_unpriv,
+    LDTRSB_32_ldst_unpriv = 1277,
     /// <summary>
     /// Instruction `LDTRSB` - Load register signed byte (unprivileged).
     /// </summary>
-    LDTRSB_64_ldst_unpriv,
+    LDTRSB_64_ldst_unpriv = 1278,
     /// <summary>
     /// Instruction `LDTRSH` - Load register signed halfword (unprivileged).
     /// </summary>
-    LDTRSH_32_ldst_unpriv,
+    LDTRSH_32_ldst_unpriv = 1279,
     /// <summary>
     /// Instruction `LDTRSH` - Load register signed halfword (unprivileged).
     /// </summary>
-    LDTRSH_64_ldst_unpriv,
+    LDTRSH_64_ldst_unpriv = 1280,
     /// <summary>
     /// Instruction `LDTRSW` - Load register signed word (unprivileged).
     /// </summary>
-    LDTRSW_64_ldst_unpriv,
+    LDTRSW_64_ldst_unpriv = 1281,
     /// <summary>
     /// Instruction `LDTR` - Load register (unprivileged).
     /// </summary>
-    LDTR_32_ldst_unpriv,
+    LDTR_32_ldst_unpriv = 1282,
     /// <summary>
     /// Instruction `LDTR` - Load register (unprivileged).
     /// </summary>
-    LDTR_64_ldst_unpriv,
+    LDTR_64_ldst_unpriv = 1283,
     /// <summary>
     /// Instruction `LDTSETAL` - Atomic bit set unprivileged.
     /// </summary>
-    LDTSETAL_32_memop_unpriv,
+    LDTSETAL_32_memop_unpriv = 1284,
     /// <summary>
     /// Instruction `LDTSETAL` - Atomic bit set unprivileged.
     /// </summary>
-    LDTSETAL_64_memop_unpriv,
+    LDTSETAL_64_memop_unpriv = 1285,
     /// <summary>
     /// Instruction `LDTSETA` - Atomic bit set unprivileged.
     /// </summary>
-    LDTSETA_32_memop_unpriv,
+    LDTSETA_32_memop_unpriv = 1286,
     /// <summary>
     /// Instruction `LDTSETA` - Atomic bit set unprivileged.
     /// </summary>
-    LDTSETA_64_memop_unpriv,
+    LDTSETA_64_memop_unpriv = 1287,
     /// <summary>
     /// Instruction `LDTSETL` - Atomic bit set unprivileged.
     /// </summary>
-    LDTSETL_32_memop_unpriv,
+    LDTSETL_32_memop_unpriv = 1288,
     /// <summary>
     /// Instruction `LDTSETL` - Atomic bit set unprivileged.
     /// </summary>
-    LDTSETL_64_memop_unpriv,
+    LDTSETL_64_memop_unpriv = 1289,
     /// <summary>
     /// Instruction `LDTSET` - Atomic bit set unprivileged.
     /// </summary>
-    LDTSET_32_memop_unpriv,
+    LDTSET_32_memop_unpriv = 1290,
     /// <summary>
     /// Instruction `LDTSET` - Atomic bit set unprivileged.
     /// </summary>
-    LDTSET_64_memop_unpriv,
+    LDTSET_64_memop_unpriv = 1291,
     /// <summary>
     /// Instruction `LDTXR` - Load unprivileged exclusive register.
     /// </summary>
-    LDTXR_lr32_ldstexclr_unpriv,
+    LDTXR_lr32_ldstexclr_unpriv = 1292,
     /// <summary>
     /// Instruction `LDTXR` - Load unprivileged exclusive register.
     /// </summary>
-    LDTXR_lr64_ldstexclr_unpriv,
+    LDTXR_lr64_ldstexclr_unpriv = 1293,
     /// <summary>
     /// Instruction `LDUMAXAB` - Atomic unsigned maximum on byte in memory.
     /// </summary>
-    LDUMAXAB_32_memop,
+    LDUMAXAB_32_memop = 1294,
     /// <summary>
     /// Instruction `LDUMAXAH` - Atomic unsigned maximum on halfword in memory.
     /// </summary>
-    LDUMAXAH_32_memop,
+    LDUMAXAH_32_memop = 1295,
     /// <summary>
     /// Instruction `LDUMAXALB` - Atomic unsigned maximum on byte in memory.
     /// </summary>
-    LDUMAXALB_32_memop,
+    LDUMAXALB_32_memop = 1296,
     /// <summary>
     /// Instruction `LDUMAXALH` - Atomic unsigned maximum on halfword in memory.
     /// </summary>
-    LDUMAXALH_32_memop,
+    LDUMAXALH_32_memop = 1297,
     /// <summary>
     /// Instruction `LDUMAXAL` - Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
-    LDUMAXAL_32_memop,
+    LDUMAXAL_32_memop = 1298,
     /// <summary>
     /// Instruction `LDUMAXAL` - Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
-    LDUMAXAL_64_memop,
+    LDUMAXAL_64_memop = 1299,
     /// <summary>
     /// Instruction `LDUMAXA` - Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
-    LDUMAXA_32_memop,
+    LDUMAXA_32_memop = 1300,
     /// <summary>
     /// Instruction `LDUMAXA` - Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
-    LDUMAXA_64_memop,
+    LDUMAXA_64_memop = 1301,
     /// <summary>
     /// Instruction `LDUMAXB` - Atomic unsigned maximum on byte in memory.
     /// </summary>
-    LDUMAXB_32_memop,
+    LDUMAXB_32_memop = 1302,
     /// <summary>
     /// Instruction `LDUMAXH` - Atomic unsigned maximum on halfword in memory.
     /// </summary>
-    LDUMAXH_32_memop,
+    LDUMAXH_32_memop = 1303,
     /// <summary>
     /// Instruction `LDUMAXLB` - Atomic unsigned maximum on byte in memory.
     /// </summary>
-    LDUMAXLB_32_memop,
+    LDUMAXLB_32_memop = 1304,
     /// <summary>
     /// Instruction `LDUMAXLH` - Atomic unsigned maximum on halfword in memory.
     /// </summary>
-    LDUMAXLH_32_memop,
+    LDUMAXLH_32_memop = 1305,
     /// <summary>
     /// Instruction `LDUMAXL` - Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
-    LDUMAXL_32_memop,
+    LDUMAXL_32_memop = 1306,
     /// <summary>
     /// Instruction `LDUMAXL` - Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
-    LDUMAXL_64_memop,
+    LDUMAXL_64_memop = 1307,
     /// <summary>
     /// Instruction `LDUMAX` - Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
-    LDUMAX_32_memop,
+    LDUMAX_32_memop = 1308,
     /// <summary>
     /// Instruction `LDUMAX` - Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
-    LDUMAX_64_memop,
+    LDUMAX_64_memop = 1309,
     /// <summary>
     /// Instruction `LDUMINAB` - Atomic unsigned minimum on byte in memory.
     /// </summary>
-    LDUMINAB_32_memop,
+    LDUMINAB_32_memop = 1310,
     /// <summary>
     /// Instruction `LDUMINAH` - Atomic unsigned minimum on halfword in memory.
     /// </summary>
-    LDUMINAH_32_memop,
+    LDUMINAH_32_memop = 1311,
     /// <summary>
     /// Instruction `LDUMINALB` - Atomic unsigned minimum on byte in memory.
     /// </summary>
-    LDUMINALB_32_memop,
+    LDUMINALB_32_memop = 1312,
     /// <summary>
     /// Instruction `LDUMINALH` - Atomic unsigned minimum on halfword in memory.
     /// </summary>
-    LDUMINALH_32_memop,
+    LDUMINALH_32_memop = 1313,
     /// <summary>
     /// Instruction `LDUMINAL` - Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
-    LDUMINAL_32_memop,
+    LDUMINAL_32_memop = 1314,
     /// <summary>
     /// Instruction `LDUMINAL` - Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
-    LDUMINAL_64_memop,
+    LDUMINAL_64_memop = 1315,
     /// <summary>
     /// Instruction `LDUMINA` - Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
-    LDUMINA_32_memop,
+    LDUMINA_32_memop = 1316,
     /// <summary>
     /// Instruction `LDUMINA` - Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
-    LDUMINA_64_memop,
+    LDUMINA_64_memop = 1317,
     /// <summary>
     /// Instruction `LDUMINB` - Atomic unsigned minimum on byte in memory.
     /// </summary>
-    LDUMINB_32_memop,
+    LDUMINB_32_memop = 1318,
     /// <summary>
     /// Instruction `LDUMINH` - Atomic unsigned minimum on halfword in memory.
     /// </summary>
-    LDUMINH_32_memop,
+    LDUMINH_32_memop = 1319,
     /// <summary>
     /// Instruction `LDUMINLB` - Atomic unsigned minimum on byte in memory.
     /// </summary>
-    LDUMINLB_32_memop,
+    LDUMINLB_32_memop = 1320,
     /// <summary>
     /// Instruction `LDUMINLH` - Atomic unsigned minimum on halfword in memory.
     /// </summary>
-    LDUMINLH_32_memop,
+    LDUMINLH_32_memop = 1321,
     /// <summary>
     /// Instruction `LDUMINL` - Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
-    LDUMINL_32_memop,
+    LDUMINL_32_memop = 1322,
     /// <summary>
     /// Instruction `LDUMINL` - Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
-    LDUMINL_64_memop,
+    LDUMINL_64_memop = 1323,
     /// <summary>
     /// Instruction `LDUMIN` - Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
-    LDUMIN_32_memop,
+    LDUMIN_32_memop = 1324,
     /// <summary>
     /// Instruction `LDUMIN` - Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
-    LDUMIN_64_memop,
+    LDUMIN_64_memop = 1325,
     /// <summary>
     /// Instruction `LDURB` - Load register byte (unscaled).
     /// </summary>
-    LDURB_32_ldst_unscaled,
+    LDURB_32_ldst_unscaled = 1326,
     /// <summary>
     /// Instruction `LDURH` - Load register halfword (unscaled).
     /// </summary>
-    LDURH_32_ldst_unscaled,
+    LDURH_32_ldst_unscaled = 1327,
     /// <summary>
     /// Instruction `LDURSB` - Load register signed byte (unscaled).
     /// </summary>
-    LDURSB_32_ldst_unscaled,
+    LDURSB_32_ldst_unscaled = 1328,
     /// <summary>
     /// Instruction `LDURSB` - Load register signed byte (unscaled).
     /// </summary>
-    LDURSB_64_ldst_unscaled,
+    LDURSB_64_ldst_unscaled = 1329,
     /// <summary>
     /// Instruction `LDURSH` - Load register signed halfword (unscaled).
     /// </summary>
-    LDURSH_32_ldst_unscaled,
+    LDURSH_32_ldst_unscaled = 1330,
     /// <summary>
     /// Instruction `LDURSH` - Load register signed halfword (unscaled).
     /// </summary>
-    LDURSH_64_ldst_unscaled,
+    LDURSH_64_ldst_unscaled = 1331,
     /// <summary>
     /// Instruction `LDURSW` - Load register signed word (unscaled).
     /// </summary>
-    LDURSW_64_ldst_unscaled,
+    LDURSW_64_ldst_unscaled = 1332,
     /// <summary>
     /// Instruction `LDUR` - Load register (unscaled).
     /// </summary>
-    LDUR_32_ldst_unscaled,
+    LDUR_32_ldst_unscaled = 1333,
     /// <summary>
     /// Instruction `LDUR` - Load register (unscaled).
     /// </summary>
-    LDUR_64_ldst_unscaled,
+    LDUR_64_ldst_unscaled = 1334,
     /// <summary>
     /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
     /// </summary>
-    LDUR_b_ldst_unscaled,
+    LDUR_b_ldst_unscaled = 1335,
     /// <summary>
     /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
     /// </summary>
-    LDUR_d_ldst_unscaled,
+    LDUR_d_ldst_unscaled = 1336,
     /// <summary>
     /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
     /// </summary>
-    LDUR_h_ldst_unscaled,
+    LDUR_h_ldst_unscaled = 1337,
     /// <summary>
     /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
     /// </summary>
-    LDUR_q_ldst_unscaled,
+    LDUR_q_ldst_unscaled = 1338,
     /// <summary>
     /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
     /// </summary>
-    LDUR_s_ldst_unscaled,
+    LDUR_s_ldst_unscaled = 1339,
     /// <summary>
     /// Instruction `LDXP` - Load exclusive pair of registers.
     /// </summary>
-    LDXP_lp32_ldstexclp,
+    LDXP_lp32_ldstexclp = 1340,
     /// <summary>
     /// Instruction `LDXP` - Load exclusive pair of registers.
     /// </summary>
-    LDXP_lp64_ldstexclp,
+    LDXP_lp64_ldstexclp = 1341,
     /// <summary>
     /// Instruction `LDXRB` - Load exclusive register byte.
     /// </summary>
-    LDXRB_lr32_ldstexclr,
+    LDXRB_lr32_ldstexclr = 1342,
     /// <summary>
     /// Instruction `LDXRH` - Load exclusive register halfword.
     /// </summary>
-    LDXRH_lr32_ldstexclr,
+    LDXRH_lr32_ldstexclr = 1343,
     /// <summary>
     /// Instruction `LDXR` - Load exclusive register.
     /// </summary>
-    LDXR_lr32_ldstexclr,
+    LDXR_lr32_ldstexclr = 1344,
     /// <summary>
     /// Instruction `LDXR` - Load exclusive register.
     /// </summary>
-    LDXR_lr64_ldstexclr,
+    LDXR_lr64_ldstexclr = 1345,
     /// <summary>
     /// Instruction `LSLV` - Logical shift left variable.
     /// </summary>
-    LSLV_32_dp_2src,
+    LSLV_32_dp_2src = 1346,
     /// <summary>
     /// Instruction `LSLV` - Logical shift left variable.
     /// </summary>
-    LSLV_64_dp_2src,
+    LSLV_64_dp_2src = 1347,
     /// <summary>
     /// Instruction `LSRV` - Logical shift right variable.
     /// </summary>
-    LSRV_32_dp_2src,
+    LSRV_32_dp_2src = 1348,
     /// <summary>
     /// Instruction `LSRV` - Logical shift right variable.
     /// </summary>
-    LSRV_64_dp_2src,
+    LSRV_64_dp_2src = 1349,
     /// <summary>
     /// Instruction `LUTI2` - Lookup table read with 2-bit indices.
     /// </summary>
-    LUTI2_asimdtbl_l5,
+    LUTI2_asimdtbl_l5 = 1350,
     /// <summary>
     /// Instruction `LUTI2` - Lookup table read with 2-bit indices.
     /// </summary>
-    LUTI2_asimdtbl_l6,
+    LUTI2_asimdtbl_l6 = 1351,
     /// <summary>
     /// Instruction `LUTI4` - Lookup table read with 4-bit indices.
     /// </summary>
-    LUTI4_asimdtbl_l5,
+    LUTI4_asimdtbl_l5 = 1352,
     /// <summary>
     /// Instruction `LUTI4` - Lookup table read with 4-bit indices.
     /// </summary>
-    LUTI4_asimdtbl_l7,
+    LUTI4_asimdtbl_l7 = 1353,
     /// <summary>
     /// Instruction `MADDPT` - Multiply-add checked pointer.
     /// </summary>
-    MADDPT_64a_dp_3src,
+    MADDPT_64a_dp_3src = 1354,
     /// <summary>
     /// Instruction `MADD` - Multiply-add.
     /// </summary>
-    MADD_32a_dp_3src,
+    MADD_32a_dp_3src = 1355,
     /// <summary>
     /// Instruction `MADD` - Multiply-add.
     /// </summary>
-    MADD_64a_dp_3src,
+    MADD_64a_dp_3src = 1356,
     /// <summary>
     /// Instruction `MLA` - Multiply-add to accumulator (vector, by element).
     /// </summary>
-    MLA_asimdelem_r,
+    MLA_asimdelem_r = 1357,
     /// <summary>
     /// Instruction `MLA` - Multiply-add to accumulator (vector).
     /// </summary>
-    MLA_asimdsame_only,
+    MLA_asimdsame_only = 1358,
     /// <summary>
     /// Instruction `MLS` - Multiply-subtract from accumulator (vector, by element).
     /// </summary>
-    MLS_asimdelem_r,
+    MLS_asimdelem_r = 1359,
     /// <summary>
     /// Instruction `MLS` - Multiply-subtract from accumulator (vector).
     /// </summary>
-    MLS_asimdsame_only,
+    MLS_asimdsame_only = 1360,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_d2_d,
+    MOVI_asimdimm_d2_d = 1361,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_d_ds,
+    MOVI_asimdimm_d_ds = 1362,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_l_hl,
+    MOVI_asimdimm_l_hl = 1363,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_l_sl,
+    MOVI_asimdimm_l_sl = 1364,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_m_sm,
+    MOVI_asimdimm_m_sm = 1365,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_n_b,
+    MOVI_asimdimm_n_b = 1366,
     /// <summary>
     /// Instruction `MOVK` - Move wide with keep.
     /// </summary>
-    MOVK_32_movewide,
+    MOVK_32_movewide = 1367,
     /// <summary>
     /// Instruction `MOVK` - Move wide with keep.
     /// </summary>
-    MOVK_64_movewide,
+    MOVK_64_movewide = 1368,
     /// <summary>
     /// Instruction `MOVN` - Move wide with NOT.
     /// </summary>
-    MOVN_32_movewide,
+    MOVN_32_movewide = 1369,
     /// <summary>
     /// Instruction `MOVN` - Move wide with NOT.
     /// </summary>
-    MOVN_64_movewide,
+    MOVN_64_movewide = 1370,
     /// <summary>
     /// Instruction `MOVZ` - Move wide with zero.
     /// </summary>
-    MOVZ_32_movewide,
+    MOVZ_32_movewide = 1371,
     /// <summary>
     /// Instruction `MOVZ` - Move wide with zero.
     /// </summary>
-    MOVZ_64_movewide,
+    MOVZ_64_movewide = 1372,
     /// <summary>
     /// Instruction `MRRS` - Move System register to two adjacent general-purpose registers.
     /// </summary>
-    MRRS_rs_systemmovepr,
+    MRRS_rs_systemmovepr = 1373,
     /// <summary>
     /// Instruction `MRS` - Move System register to general-purpose register.
     /// </summary>
-    MRS_rs_systemmove,
+    MRS_rs_systemmove = 1374,
     /// <summary>
     /// Instruction `MSRR` - Move two adjacent general-purpose registers to System register.
     /// </summary>
-    MSRR_sr_systemmovepr,
+    MSRR_sr_systemmovepr = 1375,
     /// <summary>
     /// Instruction `MSR` - Move immediate value to special register.
     /// </summary>
-    MSR_si_pstate,
+    MSR_si_pstate = 1376,
     /// <summary>
     /// Instruction `MSR` - Move general-purpose register to System register.
     /// </summary>
-    MSR_sr_systemmove,
+    MSR_sr_systemmove = 1377,
     /// <summary>
     /// Instruction `MSUBPT` - Multiply-subtract checked pointer.
     /// </summary>
-    MSUBPT_64a_dp_3src,
+    MSUBPT_64a_dp_3src = 1378,
     /// <summary>
     /// Instruction `MSUB` - Multiply-subtract.
     /// </summary>
-    MSUB_32a_dp_3src,
+    MSUB_32a_dp_3src = 1379,
     /// <summary>
     /// Instruction `MSUB` - Multiply-subtract.
     /// </summary>
-    MSUB_64a_dp_3src,
+    MSUB_64a_dp_3src = 1380,
     /// <summary>
     /// Instruction `MUL` - Multiply (vector, by element).
     /// </summary>
-    MUL_asimdelem_r,
+    MUL_asimdelem_r = 1381,
     /// <summary>
     /// Instruction `MUL` - Multiply (vector).
     /// </summary>
-    MUL_asimdsame_only,
+    MUL_asimdsame_only = 1382,
     /// <summary>
     /// Instruction `MVNI` - Move inverted immediate (vector).
     /// </summary>
-    MVNI_asimdimm_l_hl,
+    MVNI_asimdimm_l_hl = 1383,
     /// <summary>
     /// Instruction `MVNI` - Move inverted immediate (vector).
     /// </summary>
-    MVNI_asimdimm_l_sl,
+    MVNI_asimdimm_l_sl = 1384,
     /// <summary>
     /// Instruction `MVNI` - Move inverted immediate (vector).
     /// </summary>
-    MVNI_asimdimm_m_sm,
+    MVNI_asimdimm_m_sm = 1385,
     /// <summary>
     /// Instruction `NEG` - Negate (vector).
     /// </summary>
-    NEG_asimdmisc_r,
+    NEG_asimdmisc_r = 1386,
     /// <summary>
     /// Instruction `NEG` - Negate (vector).
     /// </summary>
-    NEG_asisdmisc_r,
+    NEG_asisdmisc_r = 1387,
     /// <summary>
     /// Instruction `NOP` - No operation.
     /// </summary>
-    NOP_hi_hints,
+    NOP_hi_hints = 1388,
     /// <summary>
     /// Instruction `NOT` - Bitwise NOT (vector).
     /// </summary>
-    NOT_asimdmisc_r,
+    NOT_asimdmisc_r = 1389,
     /// <summary>
     /// Instruction `ORN` - Bitwise OR NOT (shifted register).
     /// </summary>
-    ORN_32_log_shift,
+    ORN_32_log_shift = 1390,
     /// <summary>
     /// Instruction `ORN` - Bitwise OR NOT (shifted register).
     /// </summary>
-    ORN_64_log_shift,
+    ORN_64_log_shift = 1391,
     /// <summary>
     /// Instruction `ORN` - Bitwise inclusive OR NOT (vector).
     /// </summary>
-    ORN_asimdsame_only,
+    ORN_asimdsame_only = 1392,
     /// <summary>
     /// Instruction `ORR` - Bitwise OR (immediate).
     /// </summary>
-    ORR_32_log_imm,
+    ORR_32_log_imm = 1393,
     /// <summary>
     /// Instruction `ORR` - Bitwise OR (shifted register).
     /// </summary>
-    ORR_32_log_shift,
+    ORR_32_log_shift = 1394,
     /// <summary>
     /// Instruction `ORR` - Bitwise OR (immediate).
     /// </summary>
-    ORR_64_log_imm,
+    ORR_64_log_imm = 1395,
     /// <summary>
     /// Instruction `ORR` - Bitwise OR (shifted register).
     /// </summary>
-    ORR_64_log_shift,
+    ORR_64_log_shift = 1396,
     /// <summary>
     /// Instruction `ORR` - Bitwise inclusive OR (vector, immediate).
     /// </summary>
-    ORR_asimdimm_l_hl,
+    ORR_asimdimm_l_hl = 1397,
     /// <summary>
     /// Instruction `ORR` - Bitwise inclusive OR (vector, immediate).
     /// </summary>
-    ORR_asimdimm_l_sl,
+    ORR_asimdimm_l_sl = 1398,
     /// <summary>
     /// Instruction `ORR` - Bitwise inclusive OR (vector, register).
     /// </summary>
-    ORR_asimdsame_only,
+    ORR_asimdsame_only = 1399,
     /// <summary>
     /// Instruction `PACDA` - Pointer Authentication Code for data address, using key A.
     /// </summary>
-    PACDA_64p_dp_1src,
+    PACDA_64p_dp_1src = 1400,
     /// <summary>
     /// Instruction `PACDB` - Pointer Authentication Code for data address, using key B.
     /// </summary>
-    PACDB_64p_dp_1src,
+    PACDB_64p_dp_1src = 1401,
     /// <summary>
     /// Instruction `PACDZA` - Pointer Authentication Code for data address, using key A.
     /// </summary>
-    PACDZA_64z_dp_1src,
+    PACDZA_64z_dp_1src = 1402,
     /// <summary>
     /// Instruction `PACDZB` - Pointer Authentication Code for data address, using key B.
     /// </summary>
-    PACDZB_64z_dp_1src,
+    PACDZB_64z_dp_1src = 1403,
     /// <summary>
     /// Instruction `PACGA` - Pointer Authentication Code, using generic key.
     /// </summary>
-    PACGA_64p_dp_2src,
+    PACGA_64p_dp_2src = 1404,
     /// <summary>
     /// Instruction `PACIA171615` - Pointer Authentication Code for instruction address, using key A.
     /// </summary>
-    PACIA171615_64lr_dp_1src,
+    PACIA171615_64lr_dp_1src = 1405,
     /// <summary>
     /// Instruction `PACIA1716` - Pointer Authentication Code for instruction address, using key A.
     /// </summary>
-    PACIA1716_hi_hints,
+    PACIA1716_hi_hints = 1406,
     /// <summary>
     /// Instruction `PACIASPPC` - Pointer Authentication Code for return address, using key A.
     /// </summary>
-    PACIASPPC_64lr_dp_1src,
+    PACIASPPC_64lr_dp_1src = 1407,
     /// <summary>
     /// Instruction `PACIASP` - Pointer Authentication Code for instruction address, using key A.
     /// </summary>
-    PACIASP_hi_hints,
+    PACIASP_hi_hints = 1408,
     /// <summary>
     /// Instruction `PACIAZ` - Pointer Authentication Code for instruction address, using key A.
     /// </summary>
-    PACIAZ_hi_hints,
+    PACIAZ_hi_hints = 1409,
     /// <summary>
     /// Instruction `PACIA` - Pointer Authentication Code for instruction address, using key A.
     /// </summary>
-    PACIA_64p_dp_1src,
+    PACIA_64p_dp_1src = 1410,
     /// <summary>
     /// Instruction `PACIB171615` - Pointer Authentication Code for instruction address, using key B.
     /// </summary>
-    PACIB171615_64lr_dp_1src,
+    PACIB171615_64lr_dp_1src = 1411,
     /// <summary>
     /// Instruction `PACIB1716` - Pointer Authentication Code for instruction address, using key B.
     /// </summary>
-    PACIB1716_hi_hints,
+    PACIB1716_hi_hints = 1412,
     /// <summary>
     /// Instruction `PACIBSPPC` - Pointer Authentication Code for return address, using key B.
     /// </summary>
-    PACIBSPPC_64lr_dp_1src,
+    PACIBSPPC_64lr_dp_1src = 1413,
     /// <summary>
     /// Instruction `PACIBSP` - Pointer Authentication Code for instruction address, using key B.
     /// </summary>
-    PACIBSP_hi_hints,
+    PACIBSP_hi_hints = 1414,
     /// <summary>
     /// Instruction `PACIBZ` - Pointer Authentication Code for instruction address, using key B.
     /// </summary>
-    PACIBZ_hi_hints,
+    PACIBZ_hi_hints = 1415,
     /// <summary>
     /// Instruction `PACIB` - Pointer Authentication Code for instruction address, using key B.
     /// </summary>
-    PACIB_64p_dp_1src,
+    PACIB_64p_dp_1src = 1416,
     /// <summary>
     /// Instruction `PACIZA` - Pointer Authentication Code for instruction address, using key A.
     /// </summary>
-    PACIZA_64z_dp_1src,
+    PACIZA_64z_dp_1src = 1417,
     /// <summary>
     /// Instruction `PACIZB` - Pointer Authentication Code for instruction address, using key B.
     /// </summary>
-    PACIZB_64z_dp_1src,
+    PACIZB_64z_dp_1src = 1418,
     /// <summary>
     /// Instruction `PACM` - Pointer authentication modifier.
     /// </summary>
-    PACM_hi_hints,
+    PACM_hi_hints = 1419,
     /// <summary>
     /// Instruction `PACNBIASPPC` - Pointer Authentication Code for return address, using key A, not a branch target.
     /// </summary>
-    PACNBIASPPC_64lr_dp_1src,
+    PACNBIASPPC_64lr_dp_1src = 1420,
     /// <summary>
     /// Instruction `PACNBIBSPPC` - Pointer Authentication Code for return address, using key B, not a branch target.
     /// </summary>
-    PACNBIBSPPC_64lr_dp_1src,
+    PACNBIBSPPC_64lr_dp_1src = 1421,
     /// <summary>
     /// Instruction `PMULL` - Polynomial multiply long.
     /// </summary>
-    PMULL_asimddiff_l,
+    PMULL_asimddiff_l = 1422,
     /// <summary>
     /// Instruction `PMUL` - Polynomial multiply.
     /// </summary>
-    PMUL_asimdsame_only,
+    PMUL_asimdsame_only = 1423,
     /// <summary>
     /// Instruction `PRFM` - Prefetch memory (immediate).
     /// </summary>
-    PRFM_p_ldst_pos,
+    PRFM_p_ldst_pos = 1424,
     /// <summary>
     /// Instruction `PRFM` - Prefetch memory (register).
     /// </summary>
-    PRFM_p_ldst_regoff,
+    PRFM_p_ldst_regoff = 1425,
     /// <summary>
     /// Instruction `PRFM` - Prefetch memory (literal).
     /// </summary>
-    PRFM_p_loadlit,
+    PRFM_p_loadlit = 1426,
     /// <summary>
     /// Instruction `PRFUM` - Prefetch memory (unscaled offset).
     /// </summary>
-    PRFUM_p_ldst_unscaled,
+    PRFUM_p_ldst_unscaled = 1427,
     /// <summary>
     /// Instruction `PSB` - Profiling synchronization barrier.
     /// </summary>
-    PSB_hc_hints,
+    PSB_hc_hints = 1428,
     /// <summary>
     /// Instruction `RADDHN` - Rounding add returning high narrow.
     /// </summary>
-    RADDHN_asimddiff_n,
+    RADDHN_asimddiff_n = 1429,
     /// <summary>
     /// Instruction `RAX1` - Rotate and exclusive-OR.
     /// </summary>
-    RAX1_vvv2_cryptosha512_3,
+    RAX1_vvv2_cryptosha512_3 = 1430,
     /// <summary>
     /// Instruction `RBIT` - Reverse bits.
     /// </summary>
-    RBIT_32_dp_1src,
+    RBIT_32_dp_1src = 1431,
     /// <summary>
     /// Instruction `RBIT` - Reverse bits.
     /// </summary>
-    RBIT_64_dp_1src,
+    RBIT_64_dp_1src = 1432,
     /// <summary>
     /// Instruction `RBIT` - Reverse bit order (vector).
     /// </summary>
-    RBIT_asimdmisc_r,
+    RBIT_asimdmisc_r = 1433,
     /// <summary>
     /// Instruction `RCWCASAL` - Read check write compare and swap doubleword in memory.
     /// </summary>
-    RCWCASAL_c64_rcwcomswap,
+    RCWCASAL_c64_rcwcomswap = 1434,
     /// <summary>
     /// Instruction `RCWCASA` - Read check write compare and swap doubleword in memory.
     /// </summary>
-    RCWCASA_c64_rcwcomswap,
+    RCWCASA_c64_rcwcomswap = 1435,
     /// <summary>
     /// Instruction `RCWCASL` - Read check write compare and swap doubleword in memory.
     /// </summary>
-    RCWCASL_c64_rcwcomswap,
+    RCWCASL_c64_rcwcomswap = 1436,
     /// <summary>
     /// Instruction `RCWCASPAL` - Read check write compare and swap quadword in memory.
     /// </summary>
-    RCWCASPAL_c64_rcwcomswappr,
+    RCWCASPAL_c64_rcwcomswappr = 1437,
     /// <summary>
     /// Instruction `RCWCASPA` - Read check write compare and swap quadword in memory.
     /// </summary>
-    RCWCASPA_c64_rcwcomswappr,
+    RCWCASPA_c64_rcwcomswappr = 1438,
     /// <summary>
     /// Instruction `RCWCASPL` - Read check write compare and swap quadword in memory.
     /// </summary>
-    RCWCASPL_c64_rcwcomswappr,
+    RCWCASPL_c64_rcwcomswappr = 1439,
     /// <summary>
     /// Instruction `RCWCASP` - Read check write compare and swap quadword in memory.
     /// </summary>
-    RCWCASP_c64_rcwcomswappr,
+    RCWCASP_c64_rcwcomswappr = 1440,
     /// <summary>
     /// Instruction `RCWCAS` - Read check write compare and swap doubleword in memory.
     /// </summary>
-    RCWCAS_c64_rcwcomswap,
+    RCWCAS_c64_rcwcomswap = 1441,
     /// <summary>
     /// Instruction `RCWCLRAL` - Read check write atomic bit clear on doubleword in memory.
     /// </summary>
-    RCWCLRAL_64_memop,
+    RCWCLRAL_64_memop = 1442,
     /// <summary>
     /// Instruction `RCWCLRA` - Read check write atomic bit clear on doubleword in memory.
     /// </summary>
-    RCWCLRA_64_memop,
+    RCWCLRA_64_memop = 1443,
     /// <summary>
     /// Instruction `RCWCLRL` - Read check write atomic bit clear on doubleword in memory.
     /// </summary>
-    RCWCLRL_64_memop,
+    RCWCLRL_64_memop = 1444,
     /// <summary>
     /// Instruction `RCWCLRPAL` - Read check write atomic bit clear on quadword in memory.
     /// </summary>
-    RCWCLRPAL_128_memop_128,
+    RCWCLRPAL_128_memop_128 = 1445,
     /// <summary>
     /// Instruction `RCWCLRPA` - Read check write atomic bit clear on quadword in memory.
     /// </summary>
-    RCWCLRPA_128_memop_128,
+    RCWCLRPA_128_memop_128 = 1446,
     /// <summary>
     /// Instruction `RCWCLRPL` - Read check write atomic bit clear on quadword in memory.
     /// </summary>
-    RCWCLRPL_128_memop_128,
+    RCWCLRPL_128_memop_128 = 1447,
     /// <summary>
     /// Instruction `RCWCLRP` - Read check write atomic bit clear on quadword in memory.
     /// </summary>
-    RCWCLRP_128_memop_128,
+    RCWCLRP_128_memop_128 = 1448,
     /// <summary>
     /// Instruction `RCWCLR` - Read check write atomic bit clear on doubleword in memory.
     /// </summary>
-    RCWCLR_64_memop,
+    RCWCLR_64_memop = 1449,
     /// <summary>
     /// Instruction `RCWSCASAL` - Read check write software compare and swap doubleword in memory.
     /// </summary>
-    RCWSCASAL_c64_rcwcomswap,
+    RCWSCASAL_c64_rcwcomswap = 1450,
     /// <summary>
     /// Instruction `RCWSCASA` - Read check write software compare and swap doubleword in memory.
     /// </summary>
-    RCWSCASA_c64_rcwcomswap,
+    RCWSCASA_c64_rcwcomswap = 1451,
     /// <summary>
     /// Instruction `RCWSCASL` - Read check write software compare and swap doubleword in memory.
     /// </summary>
-    RCWSCASL_c64_rcwcomswap,
+    RCWSCASL_c64_rcwcomswap = 1452,
     /// <summary>
     /// Instruction `RCWSCASPAL` - Read check write software compare and swap quadword in memory.
     /// </summary>
-    RCWSCASPAL_c64_rcwcomswappr,
+    RCWSCASPAL_c64_rcwcomswappr = 1453,
     /// <summary>
     /// Instruction `RCWSCASPA` - Read check write software compare and swap quadword in memory.
     /// </summary>
-    RCWSCASPA_c64_rcwcomswappr,
+    RCWSCASPA_c64_rcwcomswappr = 1454,
     /// <summary>
     /// Instruction `RCWSCASPL` - Read check write software compare and swap quadword in memory.
     /// </summary>
-    RCWSCASPL_c64_rcwcomswappr,
+    RCWSCASPL_c64_rcwcomswappr = 1455,
     /// <summary>
     /// Instruction `RCWSCASP` - Read check write software compare and swap quadword in memory.
     /// </summary>
-    RCWSCASP_c64_rcwcomswappr,
+    RCWSCASP_c64_rcwcomswappr = 1456,
     /// <summary>
     /// Instruction `RCWSCAS` - Read check write software compare and swap doubleword in memory.
     /// </summary>
-    RCWSCAS_c64_rcwcomswap,
+    RCWSCAS_c64_rcwcomswap = 1457,
     /// <summary>
     /// Instruction `RCWSCLRAL` - Read check write software atomic bit clear on doubleword in memory.
     /// </summary>
-    RCWSCLRAL_64_memop,
+    RCWSCLRAL_64_memop = 1458,
     /// <summary>
     /// Instruction `RCWSCLRA` - Read check write software atomic bit clear on doubleword in memory.
     /// </summary>
-    RCWSCLRA_64_memop,
+    RCWSCLRA_64_memop = 1459,
     /// <summary>
     /// Instruction `RCWSCLRL` - Read check write software atomic bit clear on doubleword in memory.
     /// </summary>
-    RCWSCLRL_64_memop,
+    RCWSCLRL_64_memop = 1460,
     /// <summary>
     /// Instruction `RCWSCLRPAL` - Read check write software atomic bit clear on quadword in memory.
     /// </summary>
-    RCWSCLRPAL_128_memop_128,
+    RCWSCLRPAL_128_memop_128 = 1461,
     /// <summary>
     /// Instruction `RCWSCLRPA` - Read check write software atomic bit clear on quadword in memory.
     /// </summary>
-    RCWSCLRPA_128_memop_128,
+    RCWSCLRPA_128_memop_128 = 1462,
     /// <summary>
     /// Instruction `RCWSCLRPL` - Read check write software atomic bit clear on quadword in memory.
     /// </summary>
-    RCWSCLRPL_128_memop_128,
+    RCWSCLRPL_128_memop_128 = 1463,
     /// <summary>
     /// Instruction `RCWSCLRP` - Read check write software atomic bit clear on quadword in memory.
     /// </summary>
-    RCWSCLRP_128_memop_128,
+    RCWSCLRP_128_memop_128 = 1464,
     /// <summary>
     /// Instruction `RCWSCLR` - Read check write software atomic bit clear on doubleword in memory.
     /// </summary>
-    RCWSCLR_64_memop,
+    RCWSCLR_64_memop = 1465,
     /// <summary>
     /// Instruction `RCWSETAL` - Read check write atomic bit set on doubleword in memory.
     /// </summary>
-    RCWSETAL_64_memop,
+    RCWSETAL_64_memop = 1466,
     /// <summary>
     /// Instruction `RCWSETA` - Read check write atomic bit set on doubleword in memory.
     /// </summary>
-    RCWSETA_64_memop,
+    RCWSETA_64_memop = 1467,
     /// <summary>
     /// Instruction `RCWSETL` - Read check write atomic bit set on doubleword in memory.
     /// </summary>
-    RCWSETL_64_memop,
+    RCWSETL_64_memop = 1468,
     /// <summary>
     /// Instruction `RCWSETPAL` - Read check write atomic bit set on quadword in memory.
     /// </summary>
-    RCWSETPAL_128_memop_128,
+    RCWSETPAL_128_memop_128 = 1469,
     /// <summary>
     /// Instruction `RCWSETPA` - Read check write atomic bit set on quadword in memory.
     /// </summary>
-    RCWSETPA_128_memop_128,
+    RCWSETPA_128_memop_128 = 1470,
     /// <summary>
     /// Instruction `RCWSETPL` - Read check write atomic bit set on quadword in memory.
     /// </summary>
-    RCWSETPL_128_memop_128,
+    RCWSETPL_128_memop_128 = 1471,
     /// <summary>
     /// Instruction `RCWSETP` - Read check write atomic bit set on quadword in memory.
     /// </summary>
-    RCWSETP_128_memop_128,
+    RCWSETP_128_memop_128 = 1472,
     /// <summary>
     /// Instruction `RCWSET` - Read check write atomic bit set on doubleword in memory.
     /// </summary>
-    RCWSET_64_memop,
+    RCWSET_64_memop = 1473,
     /// <summary>
     /// Instruction `RCWSSETAL` - Read check write software atomic bit set on doubleword in memory.
     /// </summary>
-    RCWSSETAL_64_memop,
+    RCWSSETAL_64_memop = 1474,
     /// <summary>
     /// Instruction `RCWSSETA` - Read check write software atomic bit set on doubleword in memory.
     /// </summary>
-    RCWSSETA_64_memop,
+    RCWSSETA_64_memop = 1475,
     /// <summary>
     /// Instruction `RCWSSETL` - Read check write software atomic bit set on doubleword in memory.
     /// </summary>
-    RCWSSETL_64_memop,
+    RCWSSETL_64_memop = 1476,
     /// <summary>
     /// Instruction `RCWSSETPAL` - Read check write software atomic bit set on quadword in memory.
     /// </summary>
-    RCWSSETPAL_128_memop_128,
+    RCWSSETPAL_128_memop_128 = 1477,
     /// <summary>
     /// Instruction `RCWSSETPA` - Read check write software atomic bit set on quadword in memory.
     /// </summary>
-    RCWSSETPA_128_memop_128,
+    RCWSSETPA_128_memop_128 = 1478,
     /// <summary>
     /// Instruction `RCWSSETPL` - Read check write software atomic bit set on quadword in memory.
     /// </summary>
-    RCWSSETPL_128_memop_128,
+    RCWSSETPL_128_memop_128 = 1479,
     /// <summary>
     /// Instruction `RCWSSETP` - Read check write software atomic bit set on quadword in memory.
     /// </summary>
-    RCWSSETP_128_memop_128,
+    RCWSSETP_128_memop_128 = 1480,
     /// <summary>
     /// Instruction `RCWSSET` - Read check write software atomic bit set on doubleword in memory.
     /// </summary>
-    RCWSSET_64_memop,
+    RCWSSET_64_memop = 1481,
     /// <summary>
     /// Instruction `RCWSSWPAL` - Read check write software swap doubleword in memory.
     /// </summary>
-    RCWSSWPAL_64_memop,
+    RCWSSWPAL_64_memop = 1482,
     /// <summary>
     /// Instruction `RCWSSWPA` - Read check write software swap doubleword in memory.
     /// </summary>
-    RCWSSWPA_64_memop,
+    RCWSSWPA_64_memop = 1483,
     /// <summary>
     /// Instruction `RCWSSWPL` - Read check write software swap doubleword in memory.
     /// </summary>
-    RCWSSWPL_64_memop,
+    RCWSSWPL_64_memop = 1484,
     /// <summary>
     /// Instruction `RCWSSWPPAL` - Read check write software swap quadword in memory.
     /// </summary>
-    RCWSSWPPAL_128_memop_128,
+    RCWSSWPPAL_128_memop_128 = 1485,
     /// <summary>
     /// Instruction `RCWSSWPPA` - Read check write software swap quadword in memory.
     /// </summary>
-    RCWSSWPPA_128_memop_128,
+    RCWSSWPPA_128_memop_128 = 1486,
     /// <summary>
     /// Instruction `RCWSSWPPL` - Read check write software swap quadword in memory.
     /// </summary>
-    RCWSSWPPL_128_memop_128,
+    RCWSSWPPL_128_memop_128 = 1487,
     /// <summary>
     /// Instruction `RCWSSWPP` - Read check write software swap quadword in memory.
     /// </summary>
-    RCWSSWPP_128_memop_128,
+    RCWSSWPP_128_memop_128 = 1488,
     /// <summary>
     /// Instruction `RCWSSWP` - Read check write software swap doubleword in memory.
     /// </summary>
-    RCWSSWP_64_memop,
+    RCWSSWP_64_memop = 1489,
     /// <summary>
     /// Instruction `RCWSWPAL` - Read check write swap doubleword in memory.
     /// </summary>
-    RCWSWPAL_64_memop,
+    RCWSWPAL_64_memop = 1490,
     /// <summary>
     /// Instruction `RCWSWPA` - Read check write swap doubleword in memory.
     /// </summary>
-    RCWSWPA_64_memop,
+    RCWSWPA_64_memop = 1491,
     /// <summary>
     /// Instruction `RCWSWPL` - Read check write swap doubleword in memory.
     /// </summary>
-    RCWSWPL_64_memop,
+    RCWSWPL_64_memop = 1492,
     /// <summary>
     /// Instruction `RCWSWPPAL` - Read check write swap quadword in memory.
     /// </summary>
-    RCWSWPPAL_128_memop_128,
+    RCWSWPPAL_128_memop_128 = 1493,
     /// <summary>
     /// Instruction `RCWSWPPA` - Read check write swap quadword in memory.
     /// </summary>
-    RCWSWPPA_128_memop_128,
+    RCWSWPPA_128_memop_128 = 1494,
     /// <summary>
     /// Instruction `RCWSWPPL` - Read check write swap quadword in memory.
     /// </summary>
-    RCWSWPPL_128_memop_128,
+    RCWSWPPL_128_memop_128 = 1495,
     /// <summary>
     /// Instruction `RCWSWPP` - Read check write swap quadword in memory.
     /// </summary>
-    RCWSWPP_128_memop_128,
+    RCWSWPP_128_memop_128 = 1496,
     /// <summary>
     /// Instruction `RCWSWP` - Read check write swap doubleword in memory.
     /// </summary>
-    RCWSWP_64_memop,
+    RCWSWP_64_memop = 1497,
     /// <summary>
     /// Instruction `RETAASPPCR` - Return from subroutine, with enhanced pointer authentication using a register.
     /// </summary>
-    RETAASPPCR_64m_branch_reg,
+    RETAASPPCR_64m_branch_reg = 1498,
     /// <summary>
     /// Instruction `RETAASPPC` - Return from subroutine, with enhanced pointer authentication using an immediate offset.
     /// </summary>
-    RETAASPPC_only_miscbranch,
+    RETAASPPC_only_miscbranch = 1499,
     /// <summary>
     /// Instruction `RETAA` - Return from subroutine, with pointer authentication.
     /// </summary>
-    RETAA_64e_branch_reg,
+    RETAA_64e_branch_reg = 1500,
     /// <summary>
     /// Instruction `RETABSPPCR` - Return from subroutine, with enhanced pointer authentication using a register.
     /// </summary>
-    RETABSPPCR_64m_branch_reg,
+    RETABSPPCR_64m_branch_reg = 1501,
     /// <summary>
     /// Instruction `RETABSPPC` - Return from subroutine, with enhanced pointer authentication using an immediate offset.
     /// </summary>
-    RETABSPPC_only_miscbranch,
+    RETABSPPC_only_miscbranch = 1502,
     /// <summary>
     /// Instruction `RETAB` - Return from subroutine, with pointer authentication.
     /// </summary>
-    RETAB_64e_branch_reg,
+    RETAB_64e_branch_reg = 1503,
     /// <summary>
     /// Instruction `RET` - Return from subroutine.
     /// </summary>
-    RET_64r_branch_reg,
+    RET_64r_branch_reg = 1504,
     /// <summary>
     /// Instruction `REV16` - Reverse bytes in 16-bit halfwords.
     /// </summary>
-    REV16_32_dp_1src,
+    REV16_32_dp_1src = 1505,
     /// <summary>
     /// Instruction `REV16` - Reverse bytes in 16-bit halfwords.
     /// </summary>
-    REV16_64_dp_1src,
+    REV16_64_dp_1src = 1506,
     /// <summary>
     /// Instruction `REV16` - Reverse elements in 16-bit halfwords (vector).
     /// </summary>
-    REV16_asimdmisc_r,
+    REV16_asimdmisc_r = 1507,
     /// <summary>
     /// Instruction `REV32` - Reverse bytes in 32-bit words.
     /// </summary>
-    REV32_64_dp_1src,
+    REV32_64_dp_1src = 1508,
     /// <summary>
     /// Instruction `REV32` - Reverse elements in 32-bit words (vector).
     /// </summary>
-    REV32_asimdmisc_r,
+    REV32_asimdmisc_r = 1509,
     /// <summary>
     /// Instruction `REV64` - Reverse elements in 64-bit doublewords (vector).
     /// </summary>
-    REV64_asimdmisc_r,
+    REV64_asimdmisc_r = 1510,
     /// <summary>
     /// Instruction `REV` - Reverse bytes.
     /// </summary>
-    REV_32_dp_1src,
+    REV_32_dp_1src = 1511,
     /// <summary>
     /// Instruction `REV` - Reverse bytes.
     /// </summary>
-    REV_64_dp_1src,
+    REV_64_dp_1src = 1512,
     /// <summary>
     /// Instruction `RMIF` - Rotate, mask insert flags.
     /// </summary>
-    RMIF_only_rmif,
+    RMIF_only_rmif = 1513,
     /// <summary>
     /// Instruction `RORV` - Rotate right variable.
     /// </summary>
-    RORV_32_dp_2src,
+    RORV_32_dp_2src = 1514,
     /// <summary>
     /// Instruction `RORV` - Rotate right variable.
     /// </summary>
-    RORV_64_dp_2src,
+    RORV_64_dp_2src = 1515,
     /// <summary>
     /// Instruction `RPRFM` - Range prefetch memory.
     /// </summary>
-    RPRFM_r_ldst_regoff,
+    RPRFM_r_ldst_regoff = 1516,
     /// <summary>
     /// Instruction `RSHRN` - Rounding shift right narrow (immediate).
     /// </summary>
-    RSHRN_asimdshf_n,
+    RSHRN_asimdshf_n = 1517,
     /// <summary>
     /// Instruction `RSUBHN` - Rounding subtract returning high narrow.
     /// </summary>
-    RSUBHN_asimddiff_n,
+    RSUBHN_asimddiff_n = 1518,
     /// <summary>
     /// Instruction `SABAL` - Signed absolute difference and accumulate long.
     /// </summary>
-    SABAL_asimddiff_l,
+    SABAL_asimddiff_l = 1519,
     /// <summary>
     /// Instruction `SABA` - Signed absolute difference and accumulate.
     /// </summary>
-    SABA_asimdsame_only,
+    SABA_asimdsame_only = 1520,
     /// <summary>
     /// Instruction `SABDL` - Signed absolute difference long.
     /// </summary>
-    SABDL_asimddiff_l,
+    SABDL_asimddiff_l = 1521,
     /// <summary>
     /// Instruction `SABD` - Signed absolute difference.
     /// </summary>
-    SABD_asimdsame_only,
+    SABD_asimdsame_only = 1522,
     /// <summary>
     /// Instruction `SADALP` - Signed add and accumulate long pairwise.
     /// </summary>
-    SADALP_asimdmisc_p,
+    SADALP_asimdmisc_p = 1523,
     /// <summary>
     /// Instruction `SADDLP` - Signed add long pairwise.
     /// </summary>
-    SADDLP_asimdmisc_p,
+    SADDLP_asimdmisc_p = 1524,
     /// <summary>
     /// Instruction `SADDLV` - Signed add long across vector.
     /// </summary>
-    SADDLV_asimdall_only,
+    SADDLV_asimdall_only = 1525,
     /// <summary>
     /// Instruction `SADDL` - Signed add long (vector).
     /// </summary>
-    SADDL_asimddiff_l,
+    SADDL_asimddiff_l = 1526,
     /// <summary>
     /// Instruction `SADDW` - Signed add wide.
     /// </summary>
-    SADDW_asimddiff_w,
+    SADDW_asimddiff_w = 1527,
     /// <summary>
     /// Instruction `SBCS` - Subtract with carry, setting flags.
     /// </summary>
-    SBCS_32_addsub_carry,
+    SBCS_32_addsub_carry = 1528,
     /// <summary>
     /// Instruction `SBCS` - Subtract with carry, setting flags.
     /// </summary>
-    SBCS_64_addsub_carry,
+    SBCS_64_addsub_carry = 1529,
     /// <summary>
     /// Instruction `SBC` - Subtract with carry.
     /// </summary>
-    SBC_32_addsub_carry,
+    SBC_32_addsub_carry = 1530,
     /// <summary>
     /// Instruction `SBC` - Subtract with carry.
     /// </summary>
-    SBC_64_addsub_carry,
+    SBC_64_addsub_carry = 1531,
     /// <summary>
     /// Instruction `SBFM` - Signed bitfield move.
     /// </summary>
-    SBFM_32m_bitfield,
+    SBFM_32m_bitfield = 1532,
     /// <summary>
     /// Instruction `SBFM` - Signed bitfield move.
     /// </summary>
-    SBFM_64m_bitfield,
+    SBFM_64m_bitfield = 1533,
     /// <summary>
     /// Instruction `SB` - Speculation barrier.
     /// </summary>
-    SB_only_barriers,
+    SB_only_barriers = 1534,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (vector).
     /// </summary>
-    SCVTF_asimdmisc_r,
+    SCVTF_asimdmisc_r = 1535,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (vector).
     /// </summary>
-    SCVTF_asimdmiscfp16_r,
+    SCVTF_asimdmiscfp16_r = 1536,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (vector).
     /// </summary>
-    SCVTF_asimdshf_c,
+    SCVTF_asimdshf_c = 1537,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (vector).
     /// </summary>
-    SCVTF_asisdmisc_r,
+    SCVTF_asisdmisc_r = 1538,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (vector).
     /// </summary>
-    SCVTF_asisdmiscfp16_r,
+    SCVTF_asisdmiscfp16_r = 1539,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (vector).
     /// </summary>
-    SCVTF_asisdshf_c,
+    SCVTF_asisdshf_c = 1540,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_d32_float2fix,
+    SCVTF_d32_float2fix = 1541,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_d32_float2int,
+    SCVTF_d32_float2int = 1542,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_d64_float2fix,
+    SCVTF_d64_float2fix = 1543,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_d64_float2int,
+    SCVTF_d64_float2int = 1544,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_h32_float2fix,
+    SCVTF_h32_float2fix = 1545,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_h32_float2int,
+    SCVTF_h32_float2int = 1546,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_h64_float2fix,
+    SCVTF_h64_float2fix = 1547,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_h64_float2int,
+    SCVTF_h64_float2int = 1548,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_s32_float2fix,
+    SCVTF_s32_float2fix = 1549,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_s32_float2int,
+    SCVTF_s32_float2int = 1550,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_s64_float2fix,
+    SCVTF_s64_float2fix = 1551,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_s64_float2int,
+    SCVTF_s64_float2int = 1552,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    SCVTF_sisd_32d,
+    SCVTF_sisd_32d = 1553,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    SCVTF_sisd_32h,
+    SCVTF_sisd_32h = 1554,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    SCVTF_sisd_64h,
+    SCVTF_sisd_64h = 1555,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    SCVTF_sisd_64s,
+    SCVTF_sisd_64s = 1556,
     /// <summary>
     /// Instruction `SDIV` - Signed divide.
     /// </summary>
-    SDIV_32_dp_2src,
+    SDIV_32_dp_2src = 1557,
     /// <summary>
     /// Instruction `SDIV` - Signed divide.
     /// </summary>
-    SDIV_64_dp_2src,
+    SDIV_64_dp_2src = 1558,
     /// <summary>
     /// Instruction `SDOT` - Dot product signed arithmetic (vector, by element).
     /// </summary>
-    SDOT_asimdelem_d,
+    SDOT_asimdelem_d = 1559,
     /// <summary>
     /// Instruction `SDOT` - Dot product signed arithmetic (vector).
     /// </summary>
-    SDOT_asimdsame2_d,
+    SDOT_asimdsame2_d = 1560,
     /// <summary>
     /// Instruction `SETEN` - Memory set, non-temporal.
     /// </summary>
-    SETEN_set_memcms,
+    SETEN_set_memcms = 1561,
     /// <summary>
     /// Instruction `SETETN` - Memory set, unprivileged and non-temporal.
     /// </summary>
-    SETETN_set_memcms,
+    SETETN_set_memcms = 1562,
     /// <summary>
     /// Instruction `SETET` - Memory set, unprivileged.
     /// </summary>
-    SETET_set_memcms,
+    SETET_set_memcms = 1563,
     /// <summary>
     /// Instruction `SETE` - Memory set.
     /// </summary>
-    SETE_set_memcms,
+    SETE_set_memcms = 1564,
     /// <summary>
     /// Instruction `SETF16` - Evaluation of 8-bit or 16-bit flag values.
     /// </summary>
-    SETF16_only_setf,
+    SETF16_only_setf = 1565,
     /// <summary>
     /// Instruction `SETF8` - Evaluation of 8-bit or 16-bit flag values.
     /// </summary>
-    SETF8_only_setf,
+    SETF8_only_setf = 1566,
     /// <summary>
     /// Instruction `SETGEN` - Memory set with tag setting, non-temporal.
     /// </summary>
-    SETGEN_set_memcms,
+    SETGEN_set_memcms = 1567,
     /// <summary>
     /// Instruction `SETGETN` - Memory set with tag setting, unprivileged and non-temporal.
     /// </summary>
-    SETGETN_set_memcms,
+    SETGETN_set_memcms = 1568,
     /// <summary>
     /// Instruction `SETGET` - Memory set with tag setting, unprivileged.
     /// </summary>
-    SETGET_set_memcms,
+    SETGET_set_memcms = 1569,
     /// <summary>
     /// Instruction `SETGE` - Memory set with tag setting.
     /// </summary>
-    SETGE_set_memcms,
+    SETGE_set_memcms = 1570,
     /// <summary>
     /// Instruction `SETGMN` - Memory set with tag setting, non-temporal.
     /// </summary>
-    SETGMN_set_memcms,
+    SETGMN_set_memcms = 1571,
     /// <summary>
     /// Instruction `SETGMTN` - Memory set with tag setting, unprivileged and non-temporal.
     /// </summary>
-    SETGMTN_set_memcms,
+    SETGMTN_set_memcms = 1572,
     /// <summary>
     /// Instruction `SETGMT` - Memory set with tag setting, unprivileged.
     /// </summary>
-    SETGMT_set_memcms,
+    SETGMT_set_memcms = 1573,
     /// <summary>
     /// Instruction `SETGM` - Memory set with tag setting.
     /// </summary>
-    SETGM_set_memcms,
+    SETGM_set_memcms = 1574,
     /// <summary>
     /// Instruction `SETGPN` - Memory set with tag setting, non-temporal.
     /// </summary>
-    SETGPN_set_memcms,
+    SETGPN_set_memcms = 1575,
     /// <summary>
     /// Instruction `SETGPTN` - Memory set with tag setting, unprivileged and non-temporal.
     /// </summary>
-    SETGPTN_set_memcms,
+    SETGPTN_set_memcms = 1576,
     /// <summary>
     /// Instruction `SETGPT` - Memory set with tag setting, unprivileged.
     /// </summary>
-    SETGPT_set_memcms,
+    SETGPT_set_memcms = 1577,
     /// <summary>
     /// Instruction `SETGP` - Memory set with tag setting.
     /// </summary>
-    SETGP_set_memcms,
+    SETGP_set_memcms = 1578,
     /// <summary>
     /// Instruction `SETMN` - Memory set, non-temporal.
     /// </summary>
-    SETMN_set_memcms,
+    SETMN_set_memcms = 1579,
     /// <summary>
     /// Instruction `SETMTN` - Memory set, unprivileged and non-temporal.
     /// </summary>
-    SETMTN_set_memcms,
+    SETMTN_set_memcms = 1580,
     /// <summary>
     /// Instruction `SETMT` - Memory set, unprivileged.
     /// </summary>
-    SETMT_set_memcms,
+    SETMT_set_memcms = 1581,
     /// <summary>
     /// Instruction `SETM` - Memory set.
     /// </summary>
-    SETM_set_memcms,
+    SETM_set_memcms = 1582,
     /// <summary>
     /// Instruction `SETPN` - Memory set, non-temporal.
     /// </summary>
-    SETPN_set_memcms,
+    SETPN_set_memcms = 1583,
     /// <summary>
     /// Instruction `SETPTN` - Memory set, unprivileged and non-temporal.
     /// </summary>
-    SETPTN_set_memcms,
+    SETPTN_set_memcms = 1584,
     /// <summary>
     /// Instruction `SETPT` - Memory set, unprivileged.
     /// </summary>
-    SETPT_set_memcms,
+    SETPT_set_memcms = 1585,
     /// <summary>
     /// Instruction `SETP` - Memory set.
     /// </summary>
-    SETP_set_memcms,
+    SETP_set_memcms = 1586,
     /// <summary>
     /// Instruction `SEVL` - Send event local.
     /// </summary>
-    SEVL_hi_hints,
+    SEVL_hi_hints = 1587,
     /// <summary>
     /// Instruction `SEV` - Send event.
     /// </summary>
-    SEV_hi_hints,
+    SEV_hi_hints = 1588,
     /// <summary>
     /// Instruction `SHA1C` - SHA1 hash update (choose).
     /// </summary>
-    SHA1C_qsv_cryptosha3,
+    SHA1C_qsv_cryptosha3 = 1589,
     /// <summary>
     /// Instruction `SHA1H` - SHA1 fixed rotate.
     /// </summary>
-    SHA1H_ss_cryptosha2,
+    SHA1H_ss_cryptosha2 = 1590,
     /// <summary>
     /// Instruction `SHA1M` - SHA1 hash update (majority).
     /// </summary>
-    SHA1M_qsv_cryptosha3,
+    SHA1M_qsv_cryptosha3 = 1591,
     /// <summary>
     /// Instruction `SHA1P` - SHA1 hash update (parity).
     /// </summary>
-    SHA1P_qsv_cryptosha3,
+    SHA1P_qsv_cryptosha3 = 1592,
     /// <summary>
     /// Instruction `SHA1SU0` - SHA1 schedule update 0.
     /// </summary>
-    SHA1SU0_vvv_cryptosha3,
+    SHA1SU0_vvv_cryptosha3 = 1593,
     /// <summary>
     /// Instruction `SHA1SU1` - SHA1 schedule update 1.
     /// </summary>
-    SHA1SU1_vv_cryptosha2,
+    SHA1SU1_vv_cryptosha2 = 1594,
     /// <summary>
     /// Instruction `SHA256H2` - SHA256 hash update (part 2).
     /// </summary>
-    SHA256H2_qqv_cryptosha3,
+    SHA256H2_qqv_cryptosha3 = 1595,
     /// <summary>
     /// Instruction `SHA256H` - SHA256 hash update (part 1).
     /// </summary>
-    SHA256H_qqv_cryptosha3,
+    SHA256H_qqv_cryptosha3 = 1596,
     /// <summary>
     /// Instruction `SHA256SU0` - SHA256 schedule update 0.
     /// </summary>
-    SHA256SU0_vv_cryptosha2,
+    SHA256SU0_vv_cryptosha2 = 1597,
     /// <summary>
     /// Instruction `SHA256SU1` - SHA256 schedule update 1.
     /// </summary>
-    SHA256SU1_vvv_cryptosha3,
+    SHA256SU1_vvv_cryptosha3 = 1598,
     /// <summary>
     /// Instruction `SHA512H2` - SHA512 hash update part 2.
     /// </summary>
-    SHA512H2_qqv_cryptosha512_3,
+    SHA512H2_qqv_cryptosha512_3 = 1599,
     /// <summary>
     /// Instruction `SHA512H` - SHA512 hash update part 1.
     /// </summary>
-    SHA512H_qqv_cryptosha512_3,
+    SHA512H_qqv_cryptosha512_3 = 1600,
     /// <summary>
     /// Instruction `SHA512SU0` - SHA512 schedule update 0.
     /// </summary>
-    SHA512SU0_vv2_cryptosha512_2,
+    SHA512SU0_vv2_cryptosha512_2 = 1601,
     /// <summary>
     /// Instruction `SHA512SU1` - SHA512 schedule update 1.
     /// </summary>
-    SHA512SU1_vvv2_cryptosha512_3,
+    SHA512SU1_vvv2_cryptosha512_3 = 1602,
     /// <summary>
     /// Instruction `SHADD` - Signed halving add.
     /// </summary>
-    SHADD_asimdsame_only,
+    SHADD_asimdsame_only = 1603,
     /// <summary>
     /// Instruction `SHLL` - Shift left long (by element size).
     /// </summary>
-    SHLL_asimdmisc_s,
+    SHLL_asimdmisc_s = 1604,
     /// <summary>
     /// Instruction `SHL` - Shift left (immediate).
     /// </summary>
-    SHL_asimdshf_r,
+    SHL_asimdshf_r = 1605,
     /// <summary>
     /// Instruction `SHL` - Shift left (immediate).
     /// </summary>
-    SHL_asisdshf_r,
+    SHL_asisdshf_r = 1606,
     /// <summary>
     /// Instruction `SHRN` - Shift right narrow (immediate).
     /// </summary>
-    SHRN_asimdshf_n,
+    SHRN_asimdshf_n = 1607,
     /// <summary>
     /// Instruction `SHSUB` - Signed halving subtract.
     /// </summary>
-    SHSUB_asimdsame_only,
+    SHSUB_asimdsame_only = 1608,
     /// <summary>
     /// Instruction `SLI` - Shift left and insert (immediate).
     /// </summary>
-    SLI_asimdshf_r,
+    SLI_asimdshf_r = 1609,
     /// <summary>
     /// Instruction `SLI` - Shift left and insert (immediate).
     /// </summary>
-    SLI_asisdshf_r,
+    SLI_asisdshf_r = 1610,
     /// <summary>
     /// Instruction `SM3PARTW1` - SM3PARTW1.
     /// </summary>
-    SM3PARTW1_vvv4_cryptosha512_3,
+    SM3PARTW1_vvv4_cryptosha512_3 = 1611,
     /// <summary>
     /// Instruction `SM3PARTW2` - SM3PARTW2.
     /// </summary>
-    SM3PARTW2_vvv4_cryptosha512_3,
+    SM3PARTW2_vvv4_cryptosha512_3 = 1612,
     /// <summary>
     /// Instruction `SM3SS1` - SM3SS1.
     /// </summary>
-    SM3SS1_vvv4_crypto4,
+    SM3SS1_vvv4_crypto4 = 1613,
     /// <summary>
     /// Instruction `SM3TT1A` - SM3TT1A.
     /// </summary>
-    SM3TT1A_vvv4_crypto3_imm2,
+    SM3TT1A_vvv4_crypto3_imm2 = 1614,
     /// <summary>
     /// Instruction `SM3TT1B` - SM3TT1B.
     /// </summary>
-    SM3TT1B_vvv4_crypto3_imm2,
+    SM3TT1B_vvv4_crypto3_imm2 = 1615,
     /// <summary>
     /// Instruction `SM3TT2A` - SM3TT2A.
     /// </summary>
-    SM3TT2A_vvv4_crypto3_imm2,
+    SM3TT2A_vvv4_crypto3_imm2 = 1616,
     /// <summary>
     /// Instruction `SM3TT2B` - SM3TT2B.
     /// </summary>
-    SM3TT2B_vvv_crypto3_imm2,
+    SM3TT2B_vvv_crypto3_imm2 = 1617,
     /// <summary>
     /// Instruction `SM4EKEY` - SM4 key.
     /// </summary>
-    SM4EKEY_vvv4_cryptosha512_3,
+    SM4EKEY_vvv4_cryptosha512_3 = 1618,
     /// <summary>
     /// Instruction `SM4E` - SM4 encode.
     /// </summary>
-    SM4E_vv4_cryptosha512_2,
+    SM4E_vv4_cryptosha512_2 = 1619,
     /// <summary>
     /// Instruction `SMADDL` - Signed multiply-add long.
     /// </summary>
-    SMADDL_64wa_dp_3src,
+    SMADDL_64wa_dp_3src = 1620,
     /// <summary>
     /// Instruction `SMAXP` - Signed maximum pairwise.
     /// </summary>
-    SMAXP_asimdsame_only,
+    SMAXP_asimdsame_only = 1621,
     /// <summary>
     /// Instruction `SMAXV` - Signed maximum across vector.
     /// </summary>
-    SMAXV_asimdall_only,
+    SMAXV_asimdall_only = 1622,
     /// <summary>
     /// Instruction `SMAX` - Signed maximum (register).
     /// </summary>
-    SMAX_32_dp_2src,
+    SMAX_32_dp_2src = 1623,
     /// <summary>
     /// Instruction `SMAX` - Signed maximum (immediate).
     /// </summary>
-    SMAX_32_minmax_imm,
+    SMAX_32_minmax_imm = 1624,
     /// <summary>
     /// Instruction `SMAX` - Signed maximum (register).
     /// </summary>
-    SMAX_64_dp_2src,
+    SMAX_64_dp_2src = 1625,
     /// <summary>
     /// Instruction `SMAX` - Signed maximum (immediate).
     /// </summary>
-    SMAX_64_minmax_imm,
+    SMAX_64_minmax_imm = 1626,
     /// <summary>
     /// Instruction `SMAX` - Signed maximum (vector).
     /// </summary>
-    SMAX_asimdsame_only,
+    SMAX_asimdsame_only = 1627,
     /// <summary>
     /// Instruction `SMC` - Secure monitor call.
     /// </summary>
-    SMC_ex_exception,
+    SMC_ex_exception = 1628,
     /// <summary>
     /// Instruction `SMINP` - Signed minimum pairwise.
     /// </summary>
-    SMINP_asimdsame_only,
+    SMINP_asimdsame_only = 1629,
     /// <summary>
     /// Instruction `SMINV` - Signed minimum across vector.
     /// </summary>
-    SMINV_asimdall_only,
+    SMINV_asimdall_only = 1630,
     /// <summary>
     /// Instruction `SMIN` - Signed minimum (register).
     /// </summary>
-    SMIN_32_dp_2src,
+    SMIN_32_dp_2src = 1631,
     /// <summary>
     /// Instruction `SMIN` - Signed minimum (immediate).
     /// </summary>
-    SMIN_32_minmax_imm,
+    SMIN_32_minmax_imm = 1632,
     /// <summary>
     /// Instruction `SMIN` - Signed minimum (register).
     /// </summary>
-    SMIN_64_dp_2src,
+    SMIN_64_dp_2src = 1633,
     /// <summary>
     /// Instruction `SMIN` - Signed minimum (immediate).
     /// </summary>
-    SMIN_64_minmax_imm,
+    SMIN_64_minmax_imm = 1634,
     /// <summary>
     /// Instruction `SMIN` - Signed minimum (vector).
     /// </summary>
-    SMIN_asimdsame_only,
+    SMIN_asimdsame_only = 1635,
     /// <summary>
     /// Instruction `SMLAL` - Signed multiply-add long (vector).
     /// </summary>
-    SMLAL_asimddiff_l,
+    SMLAL_asimddiff_l = 1636,
     /// <summary>
     /// Instruction `SMLAL` - Signed multiply-add long (vector, by element).
     /// </summary>
-    SMLAL_asimdelem_l,
+    SMLAL_asimdelem_l = 1637,
     /// <summary>
     /// Instruction `SMLSL` - Signed multiply-subtract long (vector).
     /// </summary>
-    SMLSL_asimddiff_l,
+    SMLSL_asimddiff_l = 1638,
     /// <summary>
     /// Instruction `SMLSL` - Signed multiply-subtract long (vector, by element).
     /// </summary>
-    SMLSL_asimdelem_l,
+    SMLSL_asimdelem_l = 1639,
     /// <summary>
     /// Instruction `SMMLA` - Signed 8-bit integer matrix multiply-accumulate (vector).
     /// </summary>
-    SMMLA_asimdsame2_g,
+    SMMLA_asimdsame2_g = 1640,
     /// <summary>
     /// Instruction `SMOV` - Signed move vector element to general-purpose register.
     /// </summary>
-    SMOV_asimdins_w_w,
+    SMOV_asimdins_w_w = 1641,
     /// <summary>
     /// Instruction `SMOV` - Signed move vector element to general-purpose register.
     /// </summary>
-    SMOV_asimdins_x_x,
+    SMOV_asimdins_x_x = 1642,
     /// <summary>
     /// Instruction `SMSUBL` - Signed multiply-subtract long.
     /// </summary>
-    SMSUBL_64wa_dp_3src,
+    SMSUBL_64wa_dp_3src = 1643,
     /// <summary>
     /// Instruction `SMULH` - Signed multiply high.
     /// </summary>
-    SMULH_64_dp_3src,
+    SMULH_64_dp_3src = 1644,
     /// <summary>
     /// Instruction `SMULL` - Signed multiply long (vector).
     /// </summary>
-    SMULL_asimddiff_l,
+    SMULL_asimddiff_l = 1645,
     /// <summary>
     /// Instruction `SMULL` - Signed multiply long (vector, by element).
     /// </summary>
-    SMULL_asimdelem_l,
+    SMULL_asimdelem_l = 1646,
     /// <summary>
     /// Instruction `SQABS` - Signed saturating absolute value.
     /// </summary>
-    SQABS_asimdmisc_r,
+    SQABS_asimdmisc_r = 1647,
     /// <summary>
     /// Instruction `SQABS` - Signed saturating absolute value.
     /// </summary>
-    SQABS_asisdmisc_r,
+    SQABS_asisdmisc_r = 1648,
     /// <summary>
     /// Instruction `SQADD` - Signed saturating add.
     /// </summary>
-    SQADD_asimdsame_only,
+    SQADD_asimdsame_only = 1649,
     /// <summary>
     /// Instruction `SQADD` - Signed saturating add.
     /// </summary>
-    SQADD_asisdsame_only,
+    SQADD_asisdsame_only = 1650,
     /// <summary>
     /// Instruction `SQDMLAL` - Signed saturating doubling multiply-add long.
     /// </summary>
-    SQDMLAL_asimddiff_l,
+    SQDMLAL_asimddiff_l = 1651,
     /// <summary>
     /// Instruction `SQDMLAL` - Signed saturating doubling multiply-add long (by element).
     /// </summary>
-    SQDMLAL_asimdelem_l,
+    SQDMLAL_asimdelem_l = 1652,
     /// <summary>
     /// Instruction `SQDMLAL` - Signed saturating doubling multiply-add long.
     /// </summary>
-    SQDMLAL_asisddiff_only,
+    SQDMLAL_asisddiff_only = 1653,
     /// <summary>
     /// Instruction `SQDMLAL` - Signed saturating doubling multiply-add long (by element).
     /// </summary>
-    SQDMLAL_asisdelem_l,
+    SQDMLAL_asisdelem_l = 1654,
     /// <summary>
     /// Instruction `SQDMLSL` - Signed saturating doubling multiply-subtract long.
     /// </summary>
-    SQDMLSL_asimddiff_l,
+    SQDMLSL_asimddiff_l = 1655,
     /// <summary>
     /// Instruction `SQDMLSL` - Signed saturating doubling multiply-subtract long (by element).
     /// </summary>
-    SQDMLSL_asimdelem_l,
+    SQDMLSL_asimdelem_l = 1656,
     /// <summary>
     /// Instruction `SQDMLSL` - Signed saturating doubling multiply-subtract long.
     /// </summary>
-    SQDMLSL_asisddiff_only,
+    SQDMLSL_asisddiff_only = 1657,
     /// <summary>
     /// Instruction `SQDMLSL` - Signed saturating doubling multiply-subtract long (by element).
     /// </summary>
-    SQDMLSL_asisdelem_l,
+    SQDMLSL_asisdelem_l = 1658,
     /// <summary>
     /// Instruction `SQDMULH` - Signed saturating doubling multiply returning high half (by element).
     /// </summary>
-    SQDMULH_asimdelem_r,
+    SQDMULH_asimdelem_r = 1659,
     /// <summary>
     /// Instruction `SQDMULH` - Signed saturating doubling multiply returning high half.
     /// </summary>
-    SQDMULH_asimdsame_only,
+    SQDMULH_asimdsame_only = 1660,
     /// <summary>
     /// Instruction `SQDMULH` - Signed saturating doubling multiply returning high half (by element).
     /// </summary>
-    SQDMULH_asisdelem_r,
+    SQDMULH_asisdelem_r = 1661,
     /// <summary>
     /// Instruction `SQDMULH` - Signed saturating doubling multiply returning high half.
     /// </summary>
-    SQDMULH_asisdsame_only,
+    SQDMULH_asisdsame_only = 1662,
     /// <summary>
     /// Instruction `SQDMULL` - Signed saturating doubling multiply long.
     /// </summary>
-    SQDMULL_asimddiff_l,
+    SQDMULL_asimddiff_l = 1663,
     /// <summary>
     /// Instruction `SQDMULL` - Signed saturating doubling multiply long (by element).
     /// </summary>
-    SQDMULL_asimdelem_l,
+    SQDMULL_asimdelem_l = 1664,
     /// <summary>
     /// Instruction `SQDMULL` - Signed saturating doubling multiply long.
     /// </summary>
-    SQDMULL_asisddiff_only,
+    SQDMULL_asisddiff_only = 1665,
     /// <summary>
     /// Instruction `SQDMULL` - Signed saturating doubling multiply long (by element).
     /// </summary>
-    SQDMULL_asisdelem_l,
+    SQDMULL_asisdelem_l = 1666,
     /// <summary>
     /// Instruction `SQNEG` - Signed saturating negate.
     /// </summary>
-    SQNEG_asimdmisc_r,
+    SQNEG_asimdmisc_r = 1667,
     /// <summary>
     /// Instruction `SQNEG` - Signed saturating negate.
     /// </summary>
-    SQNEG_asisdmisc_r,
+    SQNEG_asisdmisc_r = 1668,
     /// <summary>
     /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply accumulate returning high half (by element).
     /// </summary>
-    SQRDMLAH_asimdelem_r,
+    SQRDMLAH_asimdelem_r = 1669,
     /// <summary>
     /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply accumulate returning high half (vector).
     /// </summary>
-    SQRDMLAH_asimdsame2_only,
+    SQRDMLAH_asimdsame2_only = 1670,
     /// <summary>
     /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply accumulate returning high half (by element).
     /// </summary>
-    SQRDMLAH_asisdelem_r,
+    SQRDMLAH_asisdelem_r = 1671,
     /// <summary>
     /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply accumulate returning high half (vector).
     /// </summary>
-    SQRDMLAH_asisdsame2_only,
+    SQRDMLAH_asisdsame2_only = 1672,
     /// <summary>
     /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply subtract returning high half (by element).
     /// </summary>
-    SQRDMLSH_asimdelem_r,
+    SQRDMLSH_asimdelem_r = 1673,
     /// <summary>
     /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply subtract returning high half (vector).
     /// </summary>
-    SQRDMLSH_asimdsame2_only,
+    SQRDMLSH_asimdsame2_only = 1674,
     /// <summary>
     /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply subtract returning high half (by element).
     /// </summary>
-    SQRDMLSH_asisdelem_r,
+    SQRDMLSH_asisdelem_r = 1675,
     /// <summary>
     /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply subtract returning high half (vector).
     /// </summary>
-    SQRDMLSH_asisdsame2_only,
+    SQRDMLSH_asisdsame2_only = 1676,
     /// <summary>
     /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply returning high half (by element).
     /// </summary>
-    SQRDMULH_asimdelem_r,
+    SQRDMULH_asimdelem_r = 1677,
     /// <summary>
     /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply returning high half.
     /// </summary>
-    SQRDMULH_asimdsame_only,
+    SQRDMULH_asimdsame_only = 1678,
     /// <summary>
     /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply returning high half (by element).
     /// </summary>
-    SQRDMULH_asisdelem_r,
+    SQRDMULH_asisdelem_r = 1679,
     /// <summary>
     /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply returning high half.
     /// </summary>
-    SQRDMULH_asisdsame_only,
+    SQRDMULH_asisdsame_only = 1680,
     /// <summary>
     /// Instruction `SQRSHL` - Signed saturating rounding shift left (register).
     /// </summary>
-    SQRSHL_asimdsame_only,
+    SQRSHL_asimdsame_only = 1681,
     /// <summary>
     /// Instruction `SQRSHL` - Signed saturating rounding shift left (register).
     /// </summary>
-    SQRSHL_asisdsame_only,
+    SQRSHL_asisdsame_only = 1682,
     /// <summary>
     /// Instruction `SQRSHRN` - Signed saturating rounded shift right narrow (immediate).
     /// </summary>
-    SQRSHRN_asimdshf_n,
+    SQRSHRN_asimdshf_n = 1683,
     /// <summary>
     /// Instruction `SQRSHRN` - Signed saturating rounded shift right narrow (immediate).
     /// </summary>
-    SQRSHRN_asisdshf_n,
+    SQRSHRN_asisdshf_n = 1684,
     /// <summary>
     /// Instruction `SQRSHRUN` - Signed saturating rounded shift right unsigned narrow (immediate).
     /// </summary>
-    SQRSHRUN_asimdshf_n,
+    SQRSHRUN_asimdshf_n = 1685,
     /// <summary>
     /// Instruction `SQRSHRUN` - Signed saturating rounded shift right unsigned narrow (immediate).
     /// </summary>
-    SQRSHRUN_asisdshf_n,
+    SQRSHRUN_asisdshf_n = 1686,
     /// <summary>
     /// Instruction `SQSHLU` - Signed saturating shift left unsigned (immediate).
     /// </summary>
-    SQSHLU_asimdshf_r,
+    SQSHLU_asimdshf_r = 1687,
     /// <summary>
     /// Instruction `SQSHLU` - Signed saturating shift left unsigned (immediate).
     /// </summary>
-    SQSHLU_asisdshf_r,
+    SQSHLU_asisdshf_r = 1688,
     /// <summary>
     /// Instruction `SQSHL` - Signed saturating shift left (register).
     /// </summary>
-    SQSHL_asimdsame_only,
+    SQSHL_asimdsame_only = 1689,
     /// <summary>
     /// Instruction `SQSHL` - Signed saturating shift left (immediate).
     /// </summary>
-    SQSHL_asimdshf_r,
+    SQSHL_asimdshf_r = 1690,
     /// <summary>
     /// Instruction `SQSHL` - Signed saturating shift left (register).
     /// </summary>
-    SQSHL_asisdsame_only,
+    SQSHL_asisdsame_only = 1691,
     /// <summary>
     /// Instruction `SQSHL` - Signed saturating shift left (immediate).
     /// </summary>
-    SQSHL_asisdshf_r,
+    SQSHL_asisdshf_r = 1692,
     /// <summary>
     /// Instruction `SQSHRN` - Signed saturating shift right narrow (immediate).
     /// </summary>
-    SQSHRN_asimdshf_n,
+    SQSHRN_asimdshf_n = 1693,
     /// <summary>
     /// Instruction `SQSHRN` - Signed saturating shift right narrow (immediate).
     /// </summary>
-    SQSHRN_asisdshf_n,
+    SQSHRN_asisdshf_n = 1694,
     /// <summary>
     /// Instruction `SQSHRUN` - Signed saturating shift right unsigned narrow (immediate).
     /// </summary>
-    SQSHRUN_asimdshf_n,
+    SQSHRUN_asimdshf_n = 1695,
     /// <summary>
     /// Instruction `SQSHRUN` - Signed saturating shift right unsigned narrow (immediate).
     /// </summary>
-    SQSHRUN_asisdshf_n,
+    SQSHRUN_asisdshf_n = 1696,
     /// <summary>
     /// Instruction `SQSUB` - Signed saturating subtract.
     /// </summary>
-    SQSUB_asimdsame_only,
+    SQSUB_asimdsame_only = 1697,
     /// <summary>
     /// Instruction `SQSUB` - Signed saturating subtract.
     /// </summary>
-    SQSUB_asisdsame_only,
+    SQSUB_asisdsame_only = 1698,
     /// <summary>
     /// Instruction `SQXTN` - Signed saturating extract narrow.
     /// </summary>
-    SQXTN_asimdmisc_n,
+    SQXTN_asimdmisc_n = 1699,
     /// <summary>
     /// Instruction `SQXTN` - Signed saturating extract narrow.
     /// </summary>
-    SQXTN_asisdmisc_n,
+    SQXTN_asisdmisc_n = 1700,
     /// <summary>
     /// Instruction `SQXTUN` - Signed saturating extract unsigned narrow.
     /// </summary>
-    SQXTUN_asimdmisc_n,
+    SQXTUN_asimdmisc_n = 1701,
     /// <summary>
     /// Instruction `SQXTUN` - Signed saturating extract unsigned narrow.
     /// </summary>
-    SQXTUN_asisdmisc_n,
+    SQXTUN_asisdmisc_n = 1702,
     /// <summary>
     /// Instruction `SRHADD` - Signed rounding halving add.
     /// </summary>
-    SRHADD_asimdsame_only,
+    SRHADD_asimdsame_only = 1703,
     /// <summary>
     /// Instruction `SRI` - Shift right and insert (immediate).
     /// </summary>
-    SRI_asimdshf_r,
+    SRI_asimdshf_r = 1704,
     /// <summary>
     /// Instruction `SRI` - Shift right and insert (immediate).
     /// </summary>
-    SRI_asisdshf_r,
+    SRI_asisdshf_r = 1705,
     /// <summary>
     /// Instruction `SRSHL` - Signed rounding shift left (register).
     /// </summary>
-    SRSHL_asimdsame_only,
+    SRSHL_asimdsame_only = 1706,
     /// <summary>
     /// Instruction `SRSHL` - Signed rounding shift left (register).
     /// </summary>
-    SRSHL_asisdsame_only,
+    SRSHL_asisdsame_only = 1707,
     /// <summary>
     /// Instruction `SRSHR` - Signed rounding shift right (immediate).
     /// </summary>
-    SRSHR_asimdshf_r,
+    SRSHR_asimdshf_r = 1708,
     /// <summary>
     /// Instruction `SRSHR` - Signed rounding shift right (immediate).
     /// </summary>
-    SRSHR_asisdshf_r,
+    SRSHR_asisdshf_r = 1709,
     /// <summary>
     /// Instruction `SRSRA` - Signed rounding shift right and accumulate (immediate).
     /// </summary>
-    SRSRA_asimdshf_r,
+    SRSRA_asimdshf_r = 1710,
     /// <summary>
     /// Instruction `SRSRA` - Signed rounding shift right and accumulate (immediate).
     /// </summary>
-    SRSRA_asisdshf_r,
+    SRSRA_asisdshf_r = 1711,
     /// <summary>
     /// Instruction `SSHLL` - Signed shift left long (immediate).
     /// </summary>
-    SSHLL_asimdshf_l,
+    SSHLL_asimdshf_l = 1712,
     /// <summary>
     /// Instruction `SSHL` - Signed shift left (register).
     /// </summary>
-    SSHL_asimdsame_only,
+    SSHL_asimdsame_only = 1713,
     /// <summary>
     /// Instruction `SSHL` - Signed shift left (register).
     /// </summary>
-    SSHL_asisdsame_only,
+    SSHL_asisdsame_only = 1714,
     /// <summary>
     /// Instruction `SSHR` - Signed shift right (immediate).
     /// </summary>
-    SSHR_asimdshf_r,
+    SSHR_asimdshf_r = 1715,
     /// <summary>
     /// Instruction `SSHR` - Signed shift right (immediate).
     /// </summary>
-    SSHR_asisdshf_r,
+    SSHR_asisdshf_r = 1716,
     /// <summary>
     /// Instruction `SSRA` - Signed shift right and accumulate (immediate).
     /// </summary>
-    SSRA_asimdshf_r,
+    SSRA_asimdshf_r = 1717,
     /// <summary>
     /// Instruction `SSRA` - Signed shift right and accumulate (immediate).
     /// </summary>
-    SSRA_asisdshf_r,
+    SSRA_asisdshf_r = 1718,
     /// <summary>
     /// Instruction `SSUBL` - Signed subtract long.
     /// </summary>
-    SSUBL_asimddiff_l,
+    SSUBL_asimddiff_l = 1719,
     /// <summary>
     /// Instruction `SSUBW` - Signed subtract wide.
     /// </summary>
-    SSUBW_asimddiff_w,
+    SSUBW_asimddiff_w = 1720,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlse_r1_1v,
+    ST1_asisdlse_r1_1v = 1721,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlse_r2_2v,
+    ST1_asisdlse_r2_2v = 1722,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlse_r3_3v,
+    ST1_asisdlse_r3_3v = 1723,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlse_r4_4v,
+    ST1_asisdlse_r4_4v = 1724,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_i1_i1,
+    ST1_asisdlsep_i1_i1 = 1725,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_i2_i2,
+    ST1_asisdlsep_i2_i2 = 1726,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_i3_i3,
+    ST1_asisdlsep_i3_i3 = 1727,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_i4_i4,
+    ST1_asisdlsep_i4_i4 = 1728,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_r1_r1,
+    ST1_asisdlsep_r1_r1 = 1729,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_r2_r2,
+    ST1_asisdlsep_r2_r2 = 1730,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_r3_r3,
+    ST1_asisdlsep_r3_r3 = 1731,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_r4_r4,
+    ST1_asisdlsep_r4_r4 = 1732,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlso_b1_1b,
+    ST1_asisdlso_b1_1b = 1733,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlso_d1_1d,
+    ST1_asisdlso_d1_1d = 1734,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlso_h1_1h,
+    ST1_asisdlso_h1_1h = 1735,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlso_s1_1s,
+    ST1_asisdlso_s1_1s = 1736,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_b1_i1b,
+    ST1_asisdlsop_b1_i1b = 1737,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_bx1_r1b,
+    ST1_asisdlsop_bx1_r1b = 1738,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_d1_i1d,
+    ST1_asisdlsop_d1_i1d = 1739,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_dx1_r1d,
+    ST1_asisdlsop_dx1_r1d = 1740,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_h1_i1h,
+    ST1_asisdlsop_h1_i1h = 1741,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_hx1_r1h,
+    ST1_asisdlsop_hx1_r1h = 1742,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_s1_i1s,
+    ST1_asisdlsop_s1_i1s = 1743,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_sx1_r1s,
+    ST1_asisdlsop_sx1_r1s = 1744,
     /// <summary>
     /// Instruction `ST2G` - Store Allocation Tags.
     /// </summary>
-    ST2G_64soffset_ldsttags,
+    ST2G_64soffset_ldsttags = 1745,
     /// <summary>
     /// Instruction `ST2G` - Store Allocation Tags.
     /// </summary>
-    ST2G_64spost_ldsttags,
+    ST2G_64spost_ldsttags = 1746,
     /// <summary>
     /// Instruction `ST2G` - Store Allocation Tags.
     /// </summary>
-    ST2G_64spre_ldsttags,
+    ST2G_64spre_ldsttags = 1747,
     /// <summary>
     /// Instruction `ST2` - Store multiple 2-element structures from two registers.
     /// </summary>
-    ST2_asisdlse_r2,
+    ST2_asisdlse_r2 = 1748,
     /// <summary>
     /// Instruction `ST2` - Store multiple 2-element structures from two registers.
     /// </summary>
-    ST2_asisdlsep_i2_i,
+    ST2_asisdlsep_i2_i = 1749,
     /// <summary>
     /// Instruction `ST2` - Store multiple 2-element structures from two registers.
     /// </summary>
-    ST2_asisdlsep_r2_r,
+    ST2_asisdlsep_r2_r = 1750,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlso_b2_2b,
+    ST2_asisdlso_b2_2b = 1751,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlso_d2_2d,
+    ST2_asisdlso_d2_2d = 1752,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlso_h2_2h,
+    ST2_asisdlso_h2_2h = 1753,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlso_s2_2s,
+    ST2_asisdlso_s2_2s = 1754,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_b2_i2b,
+    ST2_asisdlsop_b2_i2b = 1755,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_bx2_r2b,
+    ST2_asisdlsop_bx2_r2b = 1756,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_d2_i2d,
+    ST2_asisdlsop_d2_i2d = 1757,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_dx2_r2d,
+    ST2_asisdlsop_dx2_r2d = 1758,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_h2_i2h,
+    ST2_asisdlsop_h2_i2h = 1759,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_hx2_r2h,
+    ST2_asisdlsop_hx2_r2h = 1760,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_s2_i2s,
+    ST2_asisdlsop_s2_i2s = 1761,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_sx2_r2s,
+    ST2_asisdlsop_sx2_r2s = 1762,
     /// <summary>
     /// Instruction `ST3` - Store multiple 3-element structures from three registers.
     /// </summary>
-    ST3_asisdlse_r3,
+    ST3_asisdlse_r3 = 1763,
     /// <summary>
     /// Instruction `ST3` - Store multiple 3-element structures from three registers.
     /// </summary>
-    ST3_asisdlsep_i3_i,
+    ST3_asisdlsep_i3_i = 1764,
     /// <summary>
     /// Instruction `ST3` - Store multiple 3-element structures from three registers.
     /// </summary>
-    ST3_asisdlsep_r3_r,
+    ST3_asisdlsep_r3_r = 1765,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlso_b3_3b,
+    ST3_asisdlso_b3_3b = 1766,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlso_d3_3d,
+    ST3_asisdlso_d3_3d = 1767,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlso_h3_3h,
+    ST3_asisdlso_h3_3h = 1768,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlso_s3_3s,
+    ST3_asisdlso_s3_3s = 1769,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_b3_i3b,
+    ST3_asisdlsop_b3_i3b = 1770,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_bx3_r3b,
+    ST3_asisdlsop_bx3_r3b = 1771,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_d3_i3d,
+    ST3_asisdlsop_d3_i3d = 1772,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_dx3_r3d,
+    ST3_asisdlsop_dx3_r3d = 1773,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_h3_i3h,
+    ST3_asisdlsop_h3_i3h = 1774,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_hx3_r3h,
+    ST3_asisdlsop_hx3_r3h = 1775,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_s3_i3s,
+    ST3_asisdlsop_s3_i3s = 1776,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_sx3_r3s,
+    ST3_asisdlsop_sx3_r3s = 1777,
     /// <summary>
     /// Instruction `ST4` - Store multiple 4-element structures from four registers.
     /// </summary>
-    ST4_asisdlse_r4,
+    ST4_asisdlse_r4 = 1778,
     /// <summary>
     /// Instruction `ST4` - Store multiple 4-element structures from four registers.
     /// </summary>
-    ST4_asisdlsep_i4_i,
+    ST4_asisdlsep_i4_i = 1779,
     /// <summary>
     /// Instruction `ST4` - Store multiple 4-element structures from four registers.
     /// </summary>
-    ST4_asisdlsep_r4_r,
+    ST4_asisdlsep_r4_r = 1780,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlso_b4_4b,
+    ST4_asisdlso_b4_4b = 1781,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlso_d4_4d,
+    ST4_asisdlso_d4_4d = 1782,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlso_h4_4h,
+    ST4_asisdlso_h4_4h = 1783,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlso_s4_4s,
+    ST4_asisdlso_s4_4s = 1784,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_b4_i4b,
+    ST4_asisdlsop_b4_i4b = 1785,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_bx4_r4b,
+    ST4_asisdlsop_bx4_r4b = 1786,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_d4_i4d,
+    ST4_asisdlsop_d4_i4d = 1787,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_dx4_r4d,
+    ST4_asisdlsop_dx4_r4d = 1788,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_h4_i4h,
+    ST4_asisdlsop_h4_i4h = 1789,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_hx4_r4h,
+    ST4_asisdlsop_hx4_r4h = 1790,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_s4_i4s,
+    ST4_asisdlsop_s4_i4s = 1791,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_sx4_r4s,
+    ST4_asisdlsop_sx4_r4s = 1792,
     /// <summary>
     /// Instruction `ST64BV0` - Single-copy atomic 64-byte EL0 store with status result.
     /// </summary>
-    ST64BV0_64_memop,
+    ST64BV0_64_memop = 1793,
     /// <summary>
     /// Instruction `ST64BV` - Single-copy atomic 64-byte store with status result.
     /// </summary>
-    ST64BV_64_memop,
+    ST64BV_64_memop = 1794,
     /// <summary>
     /// Instruction `ST64B` - Single-copy atomic 64-byte store without status result.
     /// </summary>
-    ST64B_64l_memop,
+    ST64B_64l_memop = 1795,
     /// <summary>
     /// Instruction `STBFADDL` - BFloat16 floating-point atomic add in memory, without return.
     /// </summary>
-    STBFADDL_16,
+    STBFADDL_16 = 1796,
     /// <summary>
     /// Instruction `STBFADD` - BFloat16 floating-point atomic add in memory, without return.
     /// </summary>
-    STBFADD_16,
+    STBFADD_16 = 1797,
     /// <summary>
     /// Instruction `STBFMAXL` - BFloat16 floating-point atomic maximum in memory, without return.
     /// </summary>
-    STBFMAXL_16,
+    STBFMAXL_16 = 1798,
     /// <summary>
     /// Instruction `STBFMAXNML` - BFloat16 floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STBFMAXNML_16,
+    STBFMAXNML_16 = 1799,
     /// <summary>
     /// Instruction `STBFMAXNM` - BFloat16 floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STBFMAXNM_16,
+    STBFMAXNM_16 = 1800,
     /// <summary>
     /// Instruction `STBFMAX` - BFloat16 floating-point atomic maximum in memory, without return.
     /// </summary>
-    STBFMAX_16,
+    STBFMAX_16 = 1801,
     /// <summary>
     /// Instruction `STBFMINL` - BFloat16 floating-point atomic minimum in memory, without return.
     /// </summary>
-    STBFMINL_16,
+    STBFMINL_16 = 1802,
     /// <summary>
     /// Instruction `STBFMINNML` - BFloat16 floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STBFMINNML_16,
+    STBFMINNML_16 = 1803,
     /// <summary>
     /// Instruction `STBFMINNM` - BFloat16 floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STBFMINNM_16,
+    STBFMINNM_16 = 1804,
     /// <summary>
     /// Instruction `STBFMIN` - BFloat16 floating-point atomic minimum in memory, without return.
     /// </summary>
-    STBFMIN_16,
+    STBFMIN_16 = 1805,
     /// <summary>
     /// Instruction `STFADDL` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADDL_16,
+    STFADDL_16 = 1806,
     /// <summary>
     /// Instruction `STFADDL` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADDL_32,
+    STFADDL_32 = 1807,
     /// <summary>
     /// Instruction `STFADDL` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADDL_64,
+    STFADDL_64 = 1808,
     /// <summary>
     /// Instruction `STFADD` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADD_16,
+    STFADD_16 = 1809,
     /// <summary>
     /// Instruction `STFADD` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADD_32,
+    STFADD_32 = 1810,
     /// <summary>
     /// Instruction `STFADD` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADD_64,
+    STFADD_64 = 1811,
     /// <summary>
     /// Instruction `STFMAXL` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAXL_16,
+    STFMAXL_16 = 1812,
     /// <summary>
     /// Instruction `STFMAXL` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAXL_32,
+    STFMAXL_32 = 1813,
     /// <summary>
     /// Instruction `STFMAXL` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAXL_64,
+    STFMAXL_64 = 1814,
     /// <summary>
     /// Instruction `STFMAXNML` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNML_16,
+    STFMAXNML_16 = 1815,
     /// <summary>
     /// Instruction `STFMAXNML` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNML_32,
+    STFMAXNML_32 = 1816,
     /// <summary>
     /// Instruction `STFMAXNML` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNML_64,
+    STFMAXNML_64 = 1817,
     /// <summary>
     /// Instruction `STFMAXNM` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNM_16,
+    STFMAXNM_16 = 1818,
     /// <summary>
     /// Instruction `STFMAXNM` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNM_32,
+    STFMAXNM_32 = 1819,
     /// <summary>
     /// Instruction `STFMAXNM` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNM_64,
+    STFMAXNM_64 = 1820,
     /// <summary>
     /// Instruction `STFMAX` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAX_16,
+    STFMAX_16 = 1821,
     /// <summary>
     /// Instruction `STFMAX` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAX_32,
+    STFMAX_32 = 1822,
     /// <summary>
     /// Instruction `STFMAX` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAX_64,
+    STFMAX_64 = 1823,
     /// <summary>
     /// Instruction `STFMINL` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMINL_16,
+    STFMINL_16 = 1824,
     /// <summary>
     /// Instruction `STFMINL` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMINL_32,
+    STFMINL_32 = 1825,
     /// <summary>
     /// Instruction `STFMINL` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMINL_64,
+    STFMINL_64 = 1826,
     /// <summary>
     /// Instruction `STFMINNML` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNML_16,
+    STFMINNML_16 = 1827,
     /// <summary>
     /// Instruction `STFMINNML` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNML_32,
+    STFMINNML_32 = 1828,
     /// <summary>
     /// Instruction `STFMINNML` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNML_64,
+    STFMINNML_64 = 1829,
     /// <summary>
     /// Instruction `STFMINNM` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNM_16,
+    STFMINNM_16 = 1830,
     /// <summary>
     /// Instruction `STFMINNM` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNM_32,
+    STFMINNM_32 = 1831,
     /// <summary>
     /// Instruction `STFMINNM` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNM_64,
+    STFMINNM_64 = 1832,
     /// <summary>
     /// Instruction `STFMIN` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMIN_16,
+    STFMIN_16 = 1833,
     /// <summary>
     /// Instruction `STFMIN` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMIN_32,
+    STFMIN_32 = 1834,
     /// <summary>
     /// Instruction `STFMIN` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMIN_64,
+    STFMIN_64 = 1835,
     /// <summary>
     /// Instruction `STGM` - Store Allocation Tag multiple.
     /// </summary>
-    STGM_64bulk_ldsttags,
+    STGM_64bulk_ldsttags = 1836,
     /// <summary>
     /// Instruction `STGP` - Store Allocation Tag and pair of registers.
     /// </summary>
-    STGP_64_ldstpair_off,
+    STGP_64_ldstpair_off = 1837,
     /// <summary>
     /// Instruction `STGP` - Store Allocation Tag and pair of registers.
     /// </summary>
-    STGP_64_ldstpair_post,
+    STGP_64_ldstpair_post = 1838,
     /// <summary>
     /// Instruction `STGP` - Store Allocation Tag and pair of registers.
     /// </summary>
-    STGP_64_ldstpair_pre,
+    STGP_64_ldstpair_pre = 1839,
     /// <summary>
     /// Instruction `STG` - Store Allocation Tag.
     /// </summary>
-    STG_64soffset_ldsttags,
+    STG_64soffset_ldsttags = 1840,
     /// <summary>
     /// Instruction `STG` - Store Allocation Tag.
     /// </summary>
-    STG_64spost_ldsttags,
+    STG_64spost_ldsttags = 1841,
     /// <summary>
     /// Instruction `STG` - Store Allocation Tag.
     /// </summary>
-    STG_64spre_ldsttags,
+    STG_64spre_ldsttags = 1842,
     /// <summary>
     /// Instruction `STILP` - Store-release ordered pair of registers.
     /// </summary>
-    STILP_32s_ldiappstilp,
+    STILP_32s_ldiappstilp = 1843,
     /// <summary>
     /// Instruction `STILP` - Store-release ordered pair of registers.
     /// </summary>
-    STILP_32se_ldiappstilp,
+    STILP_32se_ldiappstilp = 1844,
     /// <summary>
     /// Instruction `STILP` - Store-release ordered pair of registers.
     /// </summary>
-    STILP_64s_ldiappstilp,
+    STILP_64s_ldiappstilp = 1845,
     /// <summary>
     /// Instruction `STILP` - Store-release ordered pair of registers.
     /// </summary>
-    STILP_64ss_ldiappstilp,
+    STILP_64ss_ldiappstilp = 1846,
     /// <summary>
     /// Instruction `STL1` - Store-release a single-element structure from one lane of one register.
     /// </summary>
-    STL1_asisdlso_d1,
+    STL1_asisdlso_d1 = 1847,
     /// <summary>
     /// Instruction `STLLRB` - Store LORelease register byte.
     /// </summary>
-    STLLRB_sl32_ldstord,
+    STLLRB_sl32_ldstord = 1848,
     /// <summary>
     /// Instruction `STLLRH` - Store LORelease register halfword.
     /// </summary>
-    STLLRH_sl32_ldstord,
+    STLLRH_sl32_ldstord = 1849,
     /// <summary>
     /// Instruction `STLLR` - Store LORelease register.
     /// </summary>
-    STLLR_sl32_ldstord,
+    STLLR_sl32_ldstord = 1850,
     /// <summary>
     /// Instruction `STLLR` - Store LORelease register.
     /// </summary>
-    STLLR_sl64_ldstord,
+    STLLR_sl64_ldstord = 1851,
     /// <summary>
     /// Instruction `STLRB` - Store-release register byte.
     /// </summary>
-    STLRB_sl32_ldstord,
+    STLRB_sl32_ldstord = 1852,
     /// <summary>
     /// Instruction `STLRH` - Store-release register halfword.
     /// </summary>
-    STLRH_sl32_ldstord,
+    STLRH_sl32_ldstord = 1853,
     /// <summary>
     /// Instruction `STLR` - Store-release register.
     /// </summary>
-    STLR_32s_ldapstl_writeback,
+    STLR_32s_ldapstl_writeback = 1854,
     /// <summary>
     /// Instruction `STLR` - Store-release register.
     /// </summary>
-    STLR_64s_ldapstl_writeback,
+    STLR_64s_ldapstl_writeback = 1855,
     /// <summary>
     /// Instruction `STLR` - Store-release register.
     /// </summary>
-    STLR_sl32_ldstord,
+    STLR_sl32_ldstord = 1856,
     /// <summary>
     /// Instruction `STLR` - Store-release register.
     /// </summary>
-    STLR_sl64_ldstord,
+    STLR_sl64_ldstord = 1857,
     /// <summary>
     /// Instruction `STLTXR` - Store-release unprivileged exclusive register.
     /// </summary>
-    STLTXR_sr32_ldstexclr_unpriv,
+    STLTXR_sr32_ldstexclr_unpriv = 1858,
     /// <summary>
     /// Instruction `STLTXR` - Store-release unprivileged exclusive register.
     /// </summary>
-    STLTXR_sr64_ldstexclr_unpriv,
+    STLTXR_sr64_ldstexclr_unpriv = 1859,
     /// <summary>
     /// Instruction `STLURB` - Store-release register byte (unscaled).
     /// </summary>
-    STLURB_32_ldapstl_unscaled,
+    STLURB_32_ldapstl_unscaled = 1860,
     /// <summary>
     /// Instruction `STLURH` - Store-release register halfword (unscaled).
     /// </summary>
-    STLURH_32_ldapstl_unscaled,
+    STLURH_32_ldapstl_unscaled = 1861,
     /// <summary>
     /// Instruction `STLUR` - Store-release register (unscaled).
     /// </summary>
-    STLUR_32_ldapstl_unscaled,
+    STLUR_32_ldapstl_unscaled = 1862,
     /// <summary>
     /// Instruction `STLUR` - Store-release register (unscaled).
     /// </summary>
-    STLUR_64_ldapstl_unscaled,
+    STLUR_64_ldapstl_unscaled = 1863,
     /// <summary>
     /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
     /// </summary>
-    STLUR_b_ldapstl_simd,
+    STLUR_b_ldapstl_simd = 1864,
     /// <summary>
     /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
     /// </summary>
-    STLUR_d_ldapstl_simd,
+    STLUR_d_ldapstl_simd = 1865,
     /// <summary>
     /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
     /// </summary>
-    STLUR_h_ldapstl_simd,
+    STLUR_h_ldapstl_simd = 1866,
     /// <summary>
     /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
     /// </summary>
-    STLUR_q_ldapstl_simd,
+    STLUR_q_ldapstl_simd = 1867,
     /// <summary>
     /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
     /// </summary>
-    STLUR_s_ldapstl_simd,
+    STLUR_s_ldapstl_simd = 1868,
     /// <summary>
     /// Instruction `STLXP` - Store-release exclusive pair of registers.
     /// </summary>
-    STLXP_sp32_ldstexclp,
+    STLXP_sp32_ldstexclp = 1869,
     /// <summary>
     /// Instruction `STLXP` - Store-release exclusive pair of registers.
     /// </summary>
-    STLXP_sp64_ldstexclp,
+    STLXP_sp64_ldstexclp = 1870,
     /// <summary>
     /// Instruction `STLXRB` - Store-release exclusive register byte.
     /// </summary>
-    STLXRB_sr32_ldstexclr,
+    STLXRB_sr32_ldstexclr = 1871,
     /// <summary>
     /// Instruction `STLXRH` - Store-release exclusive register halfword.
     /// </summary>
-    STLXRH_sr32_ldstexclr,
+    STLXRH_sr32_ldstexclr = 1872,
     /// <summary>
     /// Instruction `STLXR` - Store-release exclusive register.
     /// </summary>
-    STLXR_sr32_ldstexclr,
+    STLXR_sr32_ldstexclr = 1873,
     /// <summary>
     /// Instruction `STLXR` - Store-release exclusive register.
     /// </summary>
-    STLXR_sr64_ldstexclr,
+    STLXR_sr64_ldstexclr = 1874,
     /// <summary>
     /// Instruction `STNP` - Store pair of registers, with non-temporal hint.
     /// </summary>
-    STNP_32_ldstnapair_offs,
+    STNP_32_ldstnapair_offs = 1875,
     /// <summary>
     /// Instruction `STNP` - Store pair of registers, with non-temporal hint.
     /// </summary>
-    STNP_64_ldstnapair_offs,
+    STNP_64_ldstnapair_offs = 1876,
     /// <summary>
     /// Instruction `STNP` - Store pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    STNP_d_ldstnapair_offs,
+    STNP_d_ldstnapair_offs = 1877,
     /// <summary>
     /// Instruction `STNP` - Store pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    STNP_q_ldstnapair_offs,
+    STNP_q_ldstnapair_offs = 1878,
     /// <summary>
     /// Instruction `STNP` - Store pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    STNP_s_ldstnapair_offs,
+    STNP_s_ldstnapair_offs = 1879,
     /// <summary>
     /// Instruction `STP` - Store pair of registers.
     /// </summary>
-    STP_32_ldstpair_off,
+    STP_32_ldstpair_off = 1880,
     /// <summary>
     /// Instruction `STP` - Store pair of registers.
     /// </summary>
-    STP_32_ldstpair_post,
+    STP_32_ldstpair_post = 1881,
     /// <summary>
     /// Instruction `STP` - Store pair of registers.
     /// </summary>
-    STP_32_ldstpair_pre,
+    STP_32_ldstpair_pre = 1882,
     /// <summary>
     /// Instruction `STP` - Store pair of registers.
     /// </summary>
-    STP_64_ldstpair_off,
+    STP_64_ldstpair_off = 1883,
     /// <summary>
     /// Instruction `STP` - Store pair of registers.
     /// </summary>
-    STP_64_ldstpair_post,
+    STP_64_ldstpair_post = 1884,
     /// <summary>
     /// Instruction `STP` - Store pair of registers.
     /// </summary>
-    STP_64_ldstpair_pre,
+    STP_64_ldstpair_pre = 1885,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_d_ldstpair_off,
+    STP_d_ldstpair_off = 1886,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_d_ldstpair_post,
+    STP_d_ldstpair_post = 1887,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_d_ldstpair_pre,
+    STP_d_ldstpair_pre = 1888,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_q_ldstpair_off,
+    STP_q_ldstpair_off = 1889,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_q_ldstpair_post,
+    STP_q_ldstpair_post = 1890,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_q_ldstpair_pre,
+    STP_q_ldstpair_pre = 1891,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_s_ldstpair_off,
+    STP_s_ldstpair_off = 1892,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_s_ldstpair_post,
+    STP_s_ldstpair_post = 1893,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_s_ldstpair_pre,
+    STP_s_ldstpair_pre = 1894,
     /// <summary>
     /// Instruction `STRB` - Store register byte (immediate).
     /// </summary>
-    STRB_32_ldst_immpost,
+    STRB_32_ldst_immpost = 1895,
     /// <summary>
     /// Instruction `STRB` - Store register byte (immediate).
     /// </summary>
-    STRB_32_ldst_immpre,
+    STRB_32_ldst_immpre = 1896,
     /// <summary>
     /// Instruction `STRB` - Store register byte (immediate).
     /// </summary>
-    STRB_32_ldst_pos,
+    STRB_32_ldst_pos = 1897,
     /// <summary>
     /// Instruction `STRB` - Store register byte (register).
     /// </summary>
-    STRB_32b_ldst_regoff,
+    STRB_32b_ldst_regoff = 1898,
     /// <summary>
     /// Instruction `STRB` - Store register byte (register).
     /// </summary>
-    STRB_32bl_ldst_regoff,
+    STRB_32bl_ldst_regoff = 1899,
     /// <summary>
     /// Instruction `STRH` - Store register halfword (immediate).
     /// </summary>
-    STRH_32_ldst_immpost,
+    STRH_32_ldst_immpost = 1900,
     /// <summary>
     /// Instruction `STRH` - Store register halfword (immediate).
     /// </summary>
-    STRH_32_ldst_immpre,
+    STRH_32_ldst_immpre = 1901,
     /// <summary>
     /// Instruction `STRH` - Store register halfword (immediate).
     /// </summary>
-    STRH_32_ldst_pos,
+    STRH_32_ldst_pos = 1902,
     /// <summary>
     /// Instruction `STRH` - Store register halfword (register).
     /// </summary>
-    STRH_32_ldst_regoff,
+    STRH_32_ldst_regoff = 1903,
     /// <summary>
     /// Instruction `STR` - Store register (immediate).
     /// </summary>
-    STR_32_ldst_immpost,
+    STR_32_ldst_immpost = 1904,
     /// <summary>
     /// Instruction `STR` - Store register (immediate).
     /// </summary>
-    STR_32_ldst_immpre,
+    STR_32_ldst_immpre = 1905,
     /// <summary>
     /// Instruction `STR` - Store register (immediate).
     /// </summary>
-    STR_32_ldst_pos,
+    STR_32_ldst_pos = 1906,
     /// <summary>
     /// Instruction `STR` - Store register (register).
     /// </summary>
-    STR_32_ldst_regoff,
+    STR_32_ldst_regoff = 1907,
     /// <summary>
     /// Instruction `STR` - Store register (immediate).
     /// </summary>
-    STR_64_ldst_immpost,
+    STR_64_ldst_immpost = 1908,
     /// <summary>
     /// Instruction `STR` - Store register (immediate).
     /// </summary>
-    STR_64_ldst_immpre,
+    STR_64_ldst_immpre = 1909,
     /// <summary>
     /// Instruction `STR` - Store register (immediate).
     /// </summary>
-    STR_64_ldst_pos,
+    STR_64_ldst_pos = 1910,
     /// <summary>
     /// Instruction `STR` - Store register (register).
     /// </summary>
-    STR_64_ldst_regoff,
+    STR_64_ldst_regoff = 1911,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_b_ldst_immpost,
+    STR_b_ldst_immpost = 1912,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_b_ldst_immpre,
+    STR_b_ldst_immpre = 1913,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_b_ldst_pos,
+    STR_b_ldst_pos = 1914,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_b_ldst_regoff,
+    STR_b_ldst_regoff = 1915,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_bl_ldst_regoff,
+    STR_bl_ldst_regoff = 1916,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_d_ldst_immpost,
+    STR_d_ldst_immpost = 1917,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_d_ldst_immpre,
+    STR_d_ldst_immpre = 1918,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_d_ldst_pos,
+    STR_d_ldst_pos = 1919,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_d_ldst_regoff,
+    STR_d_ldst_regoff = 1920,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_h_ldst_immpost,
+    STR_h_ldst_immpost = 1921,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_h_ldst_immpre,
+    STR_h_ldst_immpre = 1922,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_h_ldst_pos,
+    STR_h_ldst_pos = 1923,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_h_ldst_regoff,
+    STR_h_ldst_regoff = 1924,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_q_ldst_immpost,
+    STR_q_ldst_immpost = 1925,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_q_ldst_immpre,
+    STR_q_ldst_immpre = 1926,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_q_ldst_pos,
+    STR_q_ldst_pos = 1927,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_q_ldst_regoff,
+    STR_q_ldst_regoff = 1928,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_s_ldst_immpost,
+    STR_s_ldst_immpost = 1929,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_s_ldst_immpre,
+    STR_s_ldst_immpre = 1930,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_s_ldst_pos,
+    STR_s_ldst_pos = 1931,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_s_ldst_regoff,
+    STR_s_ldst_regoff = 1932,
     /// <summary>
     /// Instruction `STSHH` - Store shared hint.
     /// </summary>
-    STSHH_hi_hints,
+    STSHH_hi_hints = 1933,
     /// <summary>
     /// Instruction `STTNP` - Store unprivileged pair of registers, with non-temporal hint.
     /// </summary>
-    STTNP_64_ldstnapair_offs,
+    STTNP_64_ldstnapair_offs = 1934,
     /// <summary>
     /// Instruction `STTNP` - Store unprivileged pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    STTNP_q_ldstnapair_offs,
+    STTNP_q_ldstnapair_offs = 1935,
     /// <summary>
     /// Instruction `STTP` - Store unprivileged pair of registers.
     /// </summary>
-    STTP_64_ldstpair_off,
+    STTP_64_ldstpair_off = 1936,
     /// <summary>
     /// Instruction `STTP` - Store unprivileged pair of registers.
     /// </summary>
-    STTP_64_ldstpair_post,
+    STTP_64_ldstpair_post = 1937,
     /// <summary>
     /// Instruction `STTP` - Store unprivileged pair of registers.
     /// </summary>
-    STTP_64_ldstpair_pre,
+    STTP_64_ldstpair_pre = 1938,
     /// <summary>
     /// Instruction `STTP` - Store unprivileged pair of SIMD&FP registers.
     /// </summary>
-    STTP_q_ldstpair_off,
+    STTP_q_ldstpair_off = 1939,
     /// <summary>
     /// Instruction `STTP` - Store unprivileged pair of SIMD&FP registers.
     /// </summary>
-    STTP_q_ldstpair_post,
+    STTP_q_ldstpair_post = 1940,
     /// <summary>
     /// Instruction `STTP` - Store unprivileged pair of SIMD&FP registers.
     /// </summary>
-    STTP_q_ldstpair_pre,
+    STTP_q_ldstpair_pre = 1941,
     /// <summary>
     /// Instruction `STTRB` - Store register byte (unprivileged).
     /// </summary>
-    STTRB_32_ldst_unpriv,
+    STTRB_32_ldst_unpriv = 1942,
     /// <summary>
     /// Instruction `STTRH` - Store register halfword (unprivileged).
     /// </summary>
-    STTRH_32_ldst_unpriv,
+    STTRH_32_ldst_unpriv = 1943,
     /// <summary>
     /// Instruction `STTR` - Store register (unprivileged).
     /// </summary>
-    STTR_32_ldst_unpriv,
+    STTR_32_ldst_unpriv = 1944,
     /// <summary>
     /// Instruction `STTR` - Store register (unprivileged).
     /// </summary>
-    STTR_64_ldst_unpriv,
+    STTR_64_ldst_unpriv = 1945,
     /// <summary>
     /// Instruction `STTXR` - Store unprivileged exclusive register.
     /// </summary>
-    STTXR_sr32_ldstexclr_unpriv,
+    STTXR_sr32_ldstexclr_unpriv = 1946,
     /// <summary>
     /// Instruction `STTXR` - Store unprivileged exclusive register.
     /// </summary>
-    STTXR_sr64_ldstexclr_unpriv,
+    STTXR_sr64_ldstexclr_unpriv = 1947,
     /// <summary>
     /// Instruction `STURB` - Store register byte (unscaled).
     /// </summary>
-    STURB_32_ldst_unscaled,
+    STURB_32_ldst_unscaled = 1948,
     /// <summary>
     /// Instruction `STURH` - Store register halfword (unscaled).
     /// </summary>
-    STURH_32_ldst_unscaled,
+    STURH_32_ldst_unscaled = 1949,
     /// <summary>
     /// Instruction `STUR` - Store register (unscaled).
     /// </summary>
-    STUR_32_ldst_unscaled,
+    STUR_32_ldst_unscaled = 1950,
     /// <summary>
     /// Instruction `STUR` - Store register (unscaled).
     /// </summary>
-    STUR_64_ldst_unscaled,
+    STUR_64_ldst_unscaled = 1951,
     /// <summary>
     /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
     /// </summary>
-    STUR_b_ldst_unscaled,
+    STUR_b_ldst_unscaled = 1952,
     /// <summary>
     /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
     /// </summary>
-    STUR_d_ldst_unscaled,
+    STUR_d_ldst_unscaled = 1953,
     /// <summary>
     /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
     /// </summary>
-    STUR_h_ldst_unscaled,
+    STUR_h_ldst_unscaled = 1954,
     /// <summary>
     /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
     /// </summary>
-    STUR_q_ldst_unscaled,
+    STUR_q_ldst_unscaled = 1955,
     /// <summary>
     /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
     /// </summary>
-    STUR_s_ldst_unscaled,
+    STUR_s_ldst_unscaled = 1956,
     /// <summary>
     /// Instruction `STXP` - Store exclusive pair of registers.
     /// </summary>
-    STXP_sp32_ldstexclp,
+    STXP_sp32_ldstexclp = 1957,
     /// <summary>
     /// Instruction `STXP` - Store exclusive pair of registers.
     /// </summary>
-    STXP_sp64_ldstexclp,
+    STXP_sp64_ldstexclp = 1958,
     /// <summary>
     /// Instruction `STXRB` - Store exclusive register byte.
     /// </summary>
-    STXRB_sr32_ldstexclr,
+    STXRB_sr32_ldstexclr = 1959,
     /// <summary>
     /// Instruction `STXRH` - Store exclusive register halfword.
     /// </summary>
-    STXRH_sr32_ldstexclr,
+    STXRH_sr32_ldstexclr = 1960,
     /// <summary>
     /// Instruction `STXR` - Store exclusive register.
     /// </summary>
-    STXR_sr32_ldstexclr,
+    STXR_sr32_ldstexclr = 1961,
     /// <summary>
     /// Instruction `STXR` - Store exclusive register.
     /// </summary>
-    STXR_sr64_ldstexclr,
+    STXR_sr64_ldstexclr = 1962,
     /// <summary>
     /// Instruction `STZ2G` - Store Allocation Tags, zeroing.
     /// </summary>
-    STZ2G_64soffset_ldsttags,
+    STZ2G_64soffset_ldsttags = 1963,
     /// <summary>
     /// Instruction `STZ2G` - Store Allocation Tags, zeroing.
     /// </summary>
-    STZ2G_64spost_ldsttags,
+    STZ2G_64spost_ldsttags = 1964,
     /// <summary>
     /// Instruction `STZ2G` - Store Allocation Tags, zeroing.
     /// </summary>
-    STZ2G_64spre_ldsttags,
+    STZ2G_64spre_ldsttags = 1965,
     /// <summary>
     /// Instruction `STZGM` - Store Allocation Tag and zero multiple.
     /// </summary>
-    STZGM_64bulk_ldsttags,
+    STZGM_64bulk_ldsttags = 1966,
     /// <summary>
     /// Instruction `STZG` - Store Allocation Tag, zeroing.
     /// </summary>
-    STZG_64soffset_ldsttags,
+    STZG_64soffset_ldsttags = 1967,
     /// <summary>
     /// Instruction `STZG` - Store Allocation Tag, zeroing.
     /// </summary>
-    STZG_64spost_ldsttags,
+    STZG_64spost_ldsttags = 1968,
     /// <summary>
     /// Instruction `STZG` - Store Allocation Tag, zeroing.
     /// </summary>
-    STZG_64spre_ldsttags,
+    STZG_64spre_ldsttags = 1969,
     /// <summary>
     /// Instruction `SUBG` - Subtract with tag.
     /// </summary>
-    SUBG_64_addsub_immtags,
+    SUBG_64_addsub_immtags = 1970,
     /// <summary>
     /// Instruction `SUBHN` - Subtract returning high narrow.
     /// </summary>
-    SUBHN_asimddiff_n,
+    SUBHN_asimddiff_n = 1971,
     /// <summary>
     /// Instruction `SUBPS` - Subtract pointer, setting flags.
     /// </summary>
-    SUBPS_64s_dp_2src,
+    SUBPS_64s_dp_2src = 1972,
     /// <summary>
     /// Instruction `SUBPT` - Subtract checked pointer.
     /// </summary>
-    SUBPT_64_addsub_pt,
+    SUBPT_64_addsub_pt = 1973,
     /// <summary>
     /// Instruction `SUBP` - Subtract pointer.
     /// </summary>
-    SUBP_64s_dp_2src,
+    SUBP_64s_dp_2src = 1974,
     /// <summary>
     /// Instruction `SUBS` - Subtract optionally-shifted register, setting flags.
     /// </summary>
-    SUBS_32_addsub_shift,
+    SUBS_32_addsub_shift = 1975,
     /// <summary>
     /// Instruction `SUBS` - Subtract extended and scaled register, setting flags.
     /// </summary>
-    SUBS_32s_addsub_ext,
+    SUBS_32s_addsub_ext = 1976,
     /// <summary>
     /// Instruction `SUBS` - Subtract immediate value, setting flags.
     /// </summary>
-    SUBS_32s_addsub_imm,
+    SUBS_32s_addsub_imm = 1977,
     /// <summary>
     /// Instruction `SUBS` - Subtract optionally-shifted register, setting flags.
     /// </summary>
-    SUBS_64_addsub_shift,
+    SUBS_64_addsub_shift = 1978,
     /// <summary>
     /// Instruction `SUBS` - Subtract extended and scaled register, setting flags.
     /// </summary>
-    SUBS_64s_addsub_ext,
+    SUBS_64s_addsub_ext = 1979,
     /// <summary>
     /// Instruction `SUBS` - Subtract immediate value, setting flags.
     /// </summary>
-    SUBS_64s_addsub_imm,
+    SUBS_64s_addsub_imm = 1980,
     /// <summary>
     /// Instruction `SUB` - Subtract extended and scaled register.
     /// </summary>
-    SUB_32_addsub_ext,
+    SUB_32_addsub_ext = 1981,
     /// <summary>
     /// Instruction `SUB` - Subtract immediate value.
     /// </summary>
-    SUB_32_addsub_imm,
+    SUB_32_addsub_imm = 1982,
     /// <summary>
     /// Instruction `SUB` - Subtract optionally-shifted register.
     /// </summary>
-    SUB_32_addsub_shift,
+    SUB_32_addsub_shift = 1983,
     /// <summary>
     /// Instruction `SUB` - Subtract extended and scaled register.
     /// </summary>
-    SUB_64_addsub_ext,
+    SUB_64_addsub_ext = 1984,
     /// <summary>
     /// Instruction `SUB` - Subtract immediate value.
     /// </summary>
-    SUB_64_addsub_imm,
+    SUB_64_addsub_imm = 1985,
     /// <summary>
     /// Instruction `SUB` - Subtract optionally-shifted register.
     /// </summary>
-    SUB_64_addsub_shift,
+    SUB_64_addsub_shift = 1986,
     /// <summary>
     /// Instruction `SUB` - Subtract (vector).
     /// </summary>
-    SUB_asimdsame_only,
+    SUB_asimdsame_only = 1987,
     /// <summary>
     /// Instruction `SUB` - Subtract (vector).
     /// </summary>
-    SUB_asisdsame_only,
+    SUB_asisdsame_only = 1988,
     /// <summary>
     /// Instruction `SUDOT` - Dot product with signed and unsigned integers (vector, by element).
     /// </summary>
-    SUDOT_asimdelem_d,
+    SUDOT_asimdelem_d = 1989,
     /// <summary>
     /// Instruction `SUQADD` - Signed saturating accumulate of unsigned value.
     /// </summary>
-    SUQADD_asimdmisc_r,
+    SUQADD_asimdmisc_r = 1990,
     /// <summary>
     /// Instruction `SUQADD` - Signed saturating accumulate of unsigned value.
     /// </summary>
-    SUQADD_asisdmisc_r,
+    SUQADD_asisdmisc_r = 1991,
     /// <summary>
     /// Instruction `SVC` - Supervisor call.
     /// </summary>
-    SVC_ex_exception,
+    SVC_ex_exception = 1992,
     /// <summary>
     /// Instruction `SWPAB` - Swap byte in memory.
     /// </summary>
-    SWPAB_32_memop,
+    SWPAB_32_memop = 1993,
     /// <summary>
     /// Instruction `SWPAH` - Swap halfword in memory.
     /// </summary>
-    SWPAH_32_memop,
+    SWPAH_32_memop = 1994,
     /// <summary>
     /// Instruction `SWPALB` - Swap byte in memory.
     /// </summary>
-    SWPALB_32_memop,
+    SWPALB_32_memop = 1995,
     /// <summary>
     /// Instruction `SWPALH` - Swap halfword in memory.
     /// </summary>
-    SWPALH_32_memop,
+    SWPALH_32_memop = 1996,
     /// <summary>
     /// Instruction `SWPAL` - Swap word or doubleword in memory.
     /// </summary>
-    SWPAL_32_memop,
+    SWPAL_32_memop = 1997,
     /// <summary>
     /// Instruction `SWPAL` - Swap word or doubleword in memory.
     /// </summary>
-    SWPAL_64_memop,
+    SWPAL_64_memop = 1998,
     /// <summary>
     /// Instruction `SWPA` - Swap word or doubleword in memory.
     /// </summary>
-    SWPA_32_memop,
+    SWPA_32_memop = 1999,
     /// <summary>
     /// Instruction `SWPA` - Swap word or doubleword in memory.
     /// </summary>
-    SWPA_64_memop,
+    SWPA_64_memop = 2000,
     /// <summary>
     /// Instruction `SWPB` - Swap byte in memory.
     /// </summary>
-    SWPB_32_memop,
+    SWPB_32_memop = 2001,
     /// <summary>
     /// Instruction `SWPH` - Swap halfword in memory.
     /// </summary>
-    SWPH_32_memop,
+    SWPH_32_memop = 2002,
     /// <summary>
     /// Instruction `SWPLB` - Swap byte in memory.
     /// </summary>
-    SWPLB_32_memop,
+    SWPLB_32_memop = 2003,
     /// <summary>
     /// Instruction `SWPLH` - Swap halfword in memory.
     /// </summary>
-    SWPLH_32_memop,
+    SWPLH_32_memop = 2004,
     /// <summary>
     /// Instruction `SWPL` - Swap word or doubleword in memory.
     /// </summary>
-    SWPL_32_memop,
+    SWPL_32_memop = 2005,
     /// <summary>
     /// Instruction `SWPL` - Swap word or doubleword in memory.
     /// </summary>
-    SWPL_64_memop,
+    SWPL_64_memop = 2006,
     /// <summary>
     /// Instruction `SWPPAL` - Swap quadword in memory.
     /// </summary>
-    SWPPAL_128_memop_128,
+    SWPPAL_128_memop_128 = 2007,
     /// <summary>
     /// Instruction `SWPPA` - Swap quadword in memory.
     /// </summary>
-    SWPPA_128_memop_128,
+    SWPPA_128_memop_128 = 2008,
     /// <summary>
     /// Instruction `SWPPL` - Swap quadword in memory.
     /// </summary>
-    SWPPL_128_memop_128,
+    SWPPL_128_memop_128 = 2009,
     /// <summary>
     /// Instruction `SWPP` - Swap quadword in memory.
     /// </summary>
-    SWPP_128_memop_128,
+    SWPP_128_memop_128 = 2010,
     /// <summary>
     /// Instruction `SWPTAL` - Swap unprivileged.
     /// </summary>
-    SWPTAL_32_memop_unpriv,
+    SWPTAL_32_memop_unpriv = 2011,
     /// <summary>
     /// Instruction `SWPTAL` - Swap unprivileged.
     /// </summary>
-    SWPTAL_64_memop_unpriv,
+    SWPTAL_64_memop_unpriv = 2012,
     /// <summary>
     /// Instruction `SWPTA` - Swap unprivileged.
     /// </summary>
-    SWPTA_32_memop_unpriv,
+    SWPTA_32_memop_unpriv = 2013,
     /// <summary>
     /// Instruction `SWPTA` - Swap unprivileged.
     /// </summary>
-    SWPTA_64_memop_unpriv,
+    SWPTA_64_memop_unpriv = 2014,
     /// <summary>
     /// Instruction `SWPTL` - Swap unprivileged.
     /// </summary>
-    SWPTL_32_memop_unpriv,
+    SWPTL_32_memop_unpriv = 2015,
     /// <summary>
     /// Instruction `SWPTL` - Swap unprivileged.
     /// </summary>
-    SWPTL_64_memop_unpriv,
+    SWPTL_64_memop_unpriv = 2016,
     /// <summary>
     /// Instruction `SWPT` - Swap unprivileged.
     /// </summary>
-    SWPT_32_memop_unpriv,
+    SWPT_32_memop_unpriv = 2017,
     /// <summary>
     /// Instruction `SWPT` - Swap unprivileged.
     /// </summary>
-    SWPT_64_memop_unpriv,
+    SWPT_64_memop_unpriv = 2018,
     /// <summary>
     /// Instruction `SWP` - Swap word or doubleword in memory.
     /// </summary>
-    SWP_32_memop,
+    SWP_32_memop = 2019,
     /// <summary>
     /// Instruction `SWP` - Swap word or doubleword in memory.
     /// </summary>
-    SWP_64_memop,
+    SWP_64_memop = 2020,
     /// <summary>
     /// Instruction `SYSL` - System instruction with result.
     /// </summary>
-    SYSL_rc_systeminstrs,
+    SYSL_rc_systeminstrs = 2021,
     /// <summary>
     /// Instruction `SYSP` - 128-bit system instruction.
     /// </summary>
-    SYSP_cr_syspairinstrs,
+    SYSP_cr_syspairinstrs = 2022,
     /// <summary>
     /// Instruction `SYS` - System instruction.
     /// </summary>
-    SYS_cr_systeminstrs,
+    SYS_cr_systeminstrs = 2023,
     /// <summary>
     /// Instruction `TBL` - Table vector lookup.
     /// </summary>
-    TBL_asimdtbl_l1_1,
+    TBL_asimdtbl_l1_1 = 2024,
     /// <summary>
     /// Instruction `TBL` - Table vector lookup.
     /// </summary>
-    TBL_asimdtbl_l2_2,
+    TBL_asimdtbl_l2_2 = 2025,
     /// <summary>
     /// Instruction `TBL` - Table vector lookup.
     /// </summary>
-    TBL_asimdtbl_l3_3,
+    TBL_asimdtbl_l3_3 = 2026,
     /// <summary>
     /// Instruction `TBL` - Table vector lookup.
     /// </summary>
-    TBL_asimdtbl_l4_4,
+    TBL_asimdtbl_l4_4 = 2027,
     /// <summary>
     /// Instruction `TBNZ` - Test bit and branch if nonzero.
     /// </summary>
-    TBNZ_only_testbranch,
+    TBNZ_only_testbranch = 2028,
     /// <summary>
     /// Instruction `TBX` - Table vector lookup extension.
     /// </summary>
-    TBX_asimdtbl_l1_1,
+    TBX_asimdtbl_l1_1 = 2029,
     /// <summary>
     /// Instruction `TBX` - Table vector lookup extension.
     /// </summary>
-    TBX_asimdtbl_l2_2,
+    TBX_asimdtbl_l2_2 = 2030,
     /// <summary>
     /// Instruction `TBX` - Table vector lookup extension.
     /// </summary>
-    TBX_asimdtbl_l3_3,
+    TBX_asimdtbl_l3_3 = 2031,
     /// <summary>
     /// Instruction `TBX` - Table vector lookup extension.
     /// </summary>
-    TBX_asimdtbl_l4_4,
+    TBX_asimdtbl_l4_4 = 2032,
     /// <summary>
     /// Instruction `TBZ` - Test bit and branch if zero.
     /// </summary>
-    TBZ_only_testbranch,
+    TBZ_only_testbranch = 2033,
     /// <summary>
     /// Instruction `TCANCEL` - Cancel current transaction.
     /// </summary>
-    TCANCEL_ex_exception,
+    TCANCEL_ex_exception = 2034,
     /// <summary>
     /// Instruction `TCOMMIT` - Commit current transaction.
     /// </summary>
-    TCOMMIT_only_barriers,
+    TCOMMIT_only_barriers = 2035,
     /// <summary>
     /// Instruction `TRN1` - Transpose vectors (primary).
     /// </summary>
-    TRN1_asimdperm_only,
+    TRN1_asimdperm_only = 2036,
     /// <summary>
     /// Instruction `TRN2` - Transpose vectors (secondary).
     /// </summary>
-    TRN2_asimdperm_only,
+    TRN2_asimdperm_only = 2037,
     /// <summary>
     /// Instruction `TSB` - Trace synchronization barrier.
     /// </summary>
-    TSB_hc_hints,
+    TSB_hc_hints = 2038,
     /// <summary>
     /// Instruction `TSTART` - Start transaction.
     /// </summary>
-    TSTART_br_systemresult,
+    TSTART_br_systemresult = 2039,
     /// <summary>
     /// Instruction `TTEST` - Test transaction state.
     /// </summary>
-    TTEST_br_systemresult,
+    TTEST_br_systemresult = 2040,
     /// <summary>
     /// Instruction `UABAL` - Unsigned absolute difference and accumulate long.
     /// </summary>
-    UABAL_asimddiff_l,
+    UABAL_asimddiff_l = 2041,
     /// <summary>
     /// Instruction `UABA` - Unsigned absolute difference and accumulate.
     /// </summary>
-    UABA_asimdsame_only,
+    UABA_asimdsame_only = 2042,
     /// <summary>
     /// Instruction `UABDL` - Unsigned absolute difference long.
     /// </summary>
-    UABDL_asimddiff_l,
+    UABDL_asimddiff_l = 2043,
     /// <summary>
     /// Instruction `UABD` - Unsigned absolute difference (vector).
     /// </summary>
-    UABD_asimdsame_only,
+    UABD_asimdsame_only = 2044,
     /// <summary>
     /// Instruction `UADALP` - Unsigned add and accumulate long pairwise.
     /// </summary>
-    UADALP_asimdmisc_p,
+    UADALP_asimdmisc_p = 2045,
     /// <summary>
     /// Instruction `UADDLP` - Unsigned add long pairwise.
     /// </summary>
-    UADDLP_asimdmisc_p,
+    UADDLP_asimdmisc_p = 2046,
     /// <summary>
     /// Instruction `UADDLV` - Unsigned sum long across vector.
     /// </summary>
-    UADDLV_asimdall_only,
+    UADDLV_asimdall_only = 2047,
     /// <summary>
     /// Instruction `UADDL` - Unsigned add long (vector).
     /// </summary>
-    UADDL_asimddiff_l,
+    UADDL_asimddiff_l = 2048,
     /// <summary>
     /// Instruction `UADDW` - Unsigned add wide.
     /// </summary>
-    UADDW_asimddiff_w,
+    UADDW_asimddiff_w = 2049,
     /// <summary>
     /// Instruction `UBFM` - Unsigned bitfield move.
     /// </summary>
-    UBFM_32m_bitfield,
+    UBFM_32m_bitfield = 2050,
     /// <summary>
     /// Instruction `UBFM` - Unsigned bitfield move.
     /// </summary>
-    UBFM_64m_bitfield,
+    UBFM_64m_bitfield = 2051,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (vector).
     /// </summary>
-    UCVTF_asimdmisc_r,
+    UCVTF_asimdmisc_r = 2052,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (vector).
     /// </summary>
-    UCVTF_asimdmiscfp16_r,
+    UCVTF_asimdmiscfp16_r = 2053,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (vector).
     /// </summary>
-    UCVTF_asimdshf_c,
+    UCVTF_asimdshf_c = 2054,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (vector).
     /// </summary>
-    UCVTF_asisdmisc_r,
+    UCVTF_asisdmisc_r = 2055,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (vector).
     /// </summary>
-    UCVTF_asisdmiscfp16_r,
+    UCVTF_asisdmiscfp16_r = 2056,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (vector).
     /// </summary>
-    UCVTF_asisdshf_c,
+    UCVTF_asisdshf_c = 2057,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_d32_float2fix,
+    UCVTF_d32_float2fix = 2058,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_d32_float2int,
+    UCVTF_d32_float2int = 2059,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_d64_float2fix,
+    UCVTF_d64_float2fix = 2060,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_d64_float2int,
+    UCVTF_d64_float2int = 2061,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_h32_float2fix,
+    UCVTF_h32_float2fix = 2062,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_h32_float2int,
+    UCVTF_h32_float2int = 2063,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_h64_float2fix,
+    UCVTF_h64_float2fix = 2064,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_h64_float2int,
+    UCVTF_h64_float2int = 2065,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_s32_float2fix,
+    UCVTF_s32_float2fix = 2066,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_s32_float2int,
+    UCVTF_s32_float2int = 2067,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_s64_float2fix,
+    UCVTF_s64_float2fix = 2068,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_s64_float2int,
+    UCVTF_s64_float2int = 2069,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    UCVTF_sisd_32d,
+    UCVTF_sisd_32d = 2070,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    UCVTF_sisd_32h,
+    UCVTF_sisd_32h = 2071,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    UCVTF_sisd_64h,
+    UCVTF_sisd_64h = 2072,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    UCVTF_sisd_64s,
+    UCVTF_sisd_64s = 2073,
     /// <summary>
     /// Instruction `UDF` - Permanently undefined.
     /// </summary>
-    UDF_only_perm_undef,
+    UDF_only_perm_undef = 2074,
     /// <summary>
     /// Instruction `UDIV` - Unsigned divide.
     /// </summary>
-    UDIV_32_dp_2src,
+    UDIV_32_dp_2src = 2075,
     /// <summary>
     /// Instruction `UDIV` - Unsigned divide.
     /// </summary>
-    UDIV_64_dp_2src,
+    UDIV_64_dp_2src = 2076,
     /// <summary>
     /// Instruction `UDOT` - Dot product unsigned arithmetic (vector, by element).
     /// </summary>
-    UDOT_asimdelem_d,
+    UDOT_asimdelem_d = 2077,
     /// <summary>
     /// Instruction `UDOT` - Dot product unsigned arithmetic (vector).
     /// </summary>
-    UDOT_asimdsame2_d,
+    UDOT_asimdsame2_d = 2078,
     /// <summary>
     /// Instruction `UHADD` - Unsigned halving add.
     /// </summary>
-    UHADD_asimdsame_only,
+    UHADD_asimdsame_only = 2079,
     /// <summary>
     /// Instruction `UHSUB` - Unsigned halving subtract.
     /// </summary>
-    UHSUB_asimdsame_only,
+    UHSUB_asimdsame_only = 2080,
     /// <summary>
     /// Instruction `UMADDL` - Unsigned multiply-add long.
     /// </summary>
-    UMADDL_64wa_dp_3src,
+    UMADDL_64wa_dp_3src = 2081,
     /// <summary>
     /// Instruction `UMAXP` - Unsigned maximum pairwise.
     /// </summary>
-    UMAXP_asimdsame_only,
+    UMAXP_asimdsame_only = 2082,
     /// <summary>
     /// Instruction `UMAXV` - Unsigned maximum across vector.
     /// </summary>
-    UMAXV_asimdall_only,
+    UMAXV_asimdall_only = 2083,
     /// <summary>
     /// Instruction `UMAX` - Unsigned maximum (register).
     /// </summary>
-    UMAX_32_dp_2src,
+    UMAX_32_dp_2src = 2084,
     /// <summary>
     /// Instruction `UMAX` - Unsigned maximum (immediate).
     /// </summary>
-    UMAX_32u_minmax_imm,
+    UMAX_32u_minmax_imm = 2085,
     /// <summary>
     /// Instruction `UMAX` - Unsigned maximum (register).
     /// </summary>
-    UMAX_64_dp_2src,
+    UMAX_64_dp_2src = 2086,
     /// <summary>
     /// Instruction `UMAX` - Unsigned maximum (immediate).
     /// </summary>
-    UMAX_64u_minmax_imm,
+    UMAX_64u_minmax_imm = 2087,
     /// <summary>
     /// Instruction `UMAX` - Unsigned maximum (vector).
     /// </summary>
-    UMAX_asimdsame_only,
+    UMAX_asimdsame_only = 2088,
     /// <summary>
     /// Instruction `UMINP` - Unsigned minimum pairwise.
     /// </summary>
-    UMINP_asimdsame_only,
+    UMINP_asimdsame_only = 2089,
     /// <summary>
     /// Instruction `UMINV` - Unsigned minimum across vector.
     /// </summary>
-    UMINV_asimdall_only,
+    UMINV_asimdall_only = 2090,
     /// <summary>
     /// Instruction `UMIN` - Unsigned minimum (register).
     /// </summary>
-    UMIN_32_dp_2src,
+    UMIN_32_dp_2src = 2091,
     /// <summary>
     /// Instruction `UMIN` - Unsigned minimum (immediate).
     /// </summary>
-    UMIN_32u_minmax_imm,
+    UMIN_32u_minmax_imm = 2092,
     /// <summary>
     /// Instruction `UMIN` - Unsigned minimum (register).
     /// </summary>
-    UMIN_64_dp_2src,
+    UMIN_64_dp_2src = 2093,
     /// <summary>
     /// Instruction `UMIN` - Unsigned minimum (immediate).
     /// </summary>
-    UMIN_64u_minmax_imm,
+    UMIN_64u_minmax_imm = 2094,
     /// <summary>
     /// Instruction `UMIN` - Unsigned minimum (vector).
     /// </summary>
-    UMIN_asimdsame_only,
+    UMIN_asimdsame_only = 2095,
     /// <summary>
     /// Instruction `UMLAL` - Unsigned multiply-add long (vector).
     /// </summary>
-    UMLAL_asimddiff_l,
+    UMLAL_asimddiff_l = 2096,
     /// <summary>
     /// Instruction `UMLAL` - Unsigned multiply-add long (vector, by element).
     /// </summary>
-    UMLAL_asimdelem_l,
+    UMLAL_asimdelem_l = 2097,
     /// <summary>
     /// Instruction `UMLSL` - Unsigned multiply-subtract long (vector).
     /// </summary>
-    UMLSL_asimddiff_l,
+    UMLSL_asimddiff_l = 2098,
     /// <summary>
     /// Instruction `UMLSL` - Unsigned multiply-subtract long (vector, by element).
     /// </summary>
-    UMLSL_asimdelem_l,
+    UMLSL_asimdelem_l = 2099,
     /// <summary>
     /// Instruction `UMMLA` - Unsigned 8-bit integer matrix multiply-accumulate (vector).
     /// </summary>
-    UMMLA_asimdsame2_g,
+    UMMLA_asimdsame2_g = 2100,
     /// <summary>
     /// Instruction `UMOV` - Unsigned move vector element to general-purpose register.
     /// </summary>
-    UMOV_asimdins_w_w,
+    UMOV_asimdins_w_w = 2101,
     /// <summary>
     /// Instruction `UMOV` - Unsigned move vector element to general-purpose register.
     /// </summary>
-    UMOV_asimdins_x_x,
+    UMOV_asimdins_x_x = 2102,
     /// <summary>
     /// Instruction `UMSUBL` - Unsigned multiply-subtract long.
     /// </summary>
-    UMSUBL_64wa_dp_3src,
+    UMSUBL_64wa_dp_3src = 2103,
     /// <summary>
     /// Instruction `UMULH` - Unsigned multiply high.
     /// </summary>
-    UMULH_64_dp_3src,
+    UMULH_64_dp_3src = 2104,
     /// <summary>
     /// Instruction `UMULL` - Unsigned multiply long (vector).
     /// </summary>
-    UMULL_asimddiff_l,
+    UMULL_asimddiff_l = 2105,
     /// <summary>
     /// Instruction `UMULL` - Unsigned multiply long (vector, by element).
     /// </summary>
-    UMULL_asimdelem_l,
+    UMULL_asimdelem_l = 2106,
     /// <summary>
     /// Instruction `UQADD` - Unsigned saturating add.
     /// </summary>
-    UQADD_asimdsame_only,
+    UQADD_asimdsame_only = 2107,
     /// <summary>
     /// Instruction `UQADD` - Unsigned saturating add.
     /// </summary>
-    UQADD_asisdsame_only,
+    UQADD_asisdsame_only = 2108,
     /// <summary>
     /// Instruction `UQRSHL` - Unsigned saturating rounding shift left (register).
     /// </summary>
-    UQRSHL_asimdsame_only,
+    UQRSHL_asimdsame_only = 2109,
     /// <summary>
     /// Instruction `UQRSHL` - Unsigned saturating rounding shift left (register).
     /// </summary>
-    UQRSHL_asisdsame_only,
+    UQRSHL_asisdsame_only = 2110,
     /// <summary>
     /// Instruction `UQRSHRN` - Unsigned saturating rounded shift right narrow (immediate).
     /// </summary>
-    UQRSHRN_asimdshf_n,
+    UQRSHRN_asimdshf_n = 2111,
     /// <summary>
     /// Instruction `UQRSHRN` - Unsigned saturating rounded shift right narrow (immediate).
     /// </summary>
-    UQRSHRN_asisdshf_n,
+    UQRSHRN_asisdshf_n = 2112,
     /// <summary>
     /// Instruction `UQSHL` - Unsigned saturating shift left (register).
     /// </summary>
-    UQSHL_asimdsame_only,
+    UQSHL_asimdsame_only = 2113,
     /// <summary>
     /// Instruction `UQSHL` - Unsigned saturating shift left (immediate).
     /// </summary>
-    UQSHL_asimdshf_r,
+    UQSHL_asimdshf_r = 2114,
     /// <summary>
     /// Instruction `UQSHL` - Unsigned saturating shift left (register).
     /// </summary>
-    UQSHL_asisdsame_only,
+    UQSHL_asisdsame_only = 2115,
     /// <summary>
     /// Instruction `UQSHL` - Unsigned saturating shift left (immediate).
     /// </summary>
-    UQSHL_asisdshf_r,
+    UQSHL_asisdshf_r = 2116,
     /// <summary>
     /// Instruction `UQSHRN` - Unsigned saturating shift right narrow (immediate).
     /// </summary>
-    UQSHRN_asimdshf_n,
+    UQSHRN_asimdshf_n = 2117,
     /// <summary>
     /// Instruction `UQSHRN` - Unsigned saturating shift right narrow (immediate).
     /// </summary>
-    UQSHRN_asisdshf_n,
+    UQSHRN_asisdshf_n = 2118,
     /// <summary>
     /// Instruction `UQSUB` - Unsigned saturating subtract.
     /// </summary>
-    UQSUB_asimdsame_only,
+    UQSUB_asimdsame_only = 2119,
     /// <summary>
     /// Instruction `UQSUB` - Unsigned saturating subtract.
     /// </summary>
-    UQSUB_asisdsame_only,
+    UQSUB_asisdsame_only = 2120,
     /// <summary>
     /// Instruction `UQXTN` - Unsigned saturating extract narrow.
     /// </summary>
-    UQXTN_asimdmisc_n,
+    UQXTN_asimdmisc_n = 2121,
     /// <summary>
     /// Instruction `UQXTN` - Unsigned saturating extract narrow.
     /// </summary>
-    UQXTN_asisdmisc_n,
+    UQXTN_asisdmisc_n = 2122,
     /// <summary>
     /// Instruction `URECPE` - Unsigned reciprocal estimate.
     /// </summary>
-    URECPE_asimdmisc_r,
+    URECPE_asimdmisc_r = 2123,
     /// <summary>
     /// Instruction `URHADD` - Unsigned rounding halving add.
     /// </summary>
-    URHADD_asimdsame_only,
+    URHADD_asimdsame_only = 2124,
     /// <summary>
     /// Instruction `URSHL` - Unsigned rounding shift left (register).
     /// </summary>
-    URSHL_asimdsame_only,
+    URSHL_asimdsame_only = 2125,
     /// <summary>
     /// Instruction `URSHL` - Unsigned rounding shift left (register).
     /// </summary>
-    URSHL_asisdsame_only,
+    URSHL_asisdsame_only = 2126,
     /// <summary>
     /// Instruction `URSHR` - Unsigned rounding shift right (immediate).
     /// </summary>
-    URSHR_asimdshf_r,
+    URSHR_asimdshf_r = 2127,
     /// <summary>
     /// Instruction `URSHR` - Unsigned rounding shift right (immediate).
     /// </summary>
-    URSHR_asisdshf_r,
+    URSHR_asisdshf_r = 2128,
     /// <summary>
     /// Instruction `URSQRTE` - Unsigned reciprocal square root estimate.
     /// </summary>
-    URSQRTE_asimdmisc_r,
+    URSQRTE_asimdmisc_r = 2129,
     /// <summary>
     /// Instruction `URSRA` - Unsigned rounding shift right and accumulate (immediate).
     /// </summary>
-    URSRA_asimdshf_r,
+    URSRA_asimdshf_r = 2130,
     /// <summary>
     /// Instruction `URSRA` - Unsigned rounding shift right and accumulate (immediate).
     /// </summary>
-    URSRA_asisdshf_r,
+    URSRA_asisdshf_r = 2131,
     /// <summary>
     /// Instruction `USDOT` - Dot product with unsigned and signed integers (vector, by element).
     /// </summary>
-    USDOT_asimdelem_d,
+    USDOT_asimdelem_d = 2132,
     /// <summary>
     /// Instruction `USDOT` - Dot product with unsigned and signed integers (vector).
     /// </summary>
-    USDOT_asimdsame2_d,
+    USDOT_asimdsame2_d = 2133,
     /// <summary>
     /// Instruction `USHLL` - Unsigned shift left long (immediate).
     /// </summary>
-    USHLL_asimdshf_l,
+    USHLL_asimdshf_l = 2134,
     /// <summary>
     /// Instruction `USHL` - Unsigned shift left (register).
     /// </summary>
-    USHL_asimdsame_only,
+    USHL_asimdsame_only = 2135,
     /// <summary>
     /// Instruction `USHL` - Unsigned shift left (register).
     /// </summary>
-    USHL_asisdsame_only,
+    USHL_asisdsame_only = 2136,
     /// <summary>
     /// Instruction `USHR` - Unsigned shift right (immediate).
     /// </summary>
-    USHR_asimdshf_r,
+    USHR_asimdshf_r = 2137,
     /// <summary>
     /// Instruction `USHR` - Unsigned shift right (immediate).
     /// </summary>
-    USHR_asisdshf_r,
+    USHR_asisdshf_r = 2138,
     /// <summary>
     /// Instruction `USMMLA` - Unsigned and signed 8-bit integer matrix multiply-accumulate (vector).
     /// </summary>
-    USMMLA_asimdsame2_g,
+    USMMLA_asimdsame2_g = 2139,
     /// <summary>
     /// Instruction `USQADD` - Unsigned saturating accumulate of signed value.
     /// </summary>
-    USQADD_asimdmisc_r,
+    USQADD_asimdmisc_r = 2140,
     /// <summary>
     /// Instruction `USQADD` - Unsigned saturating accumulate of signed value.
     /// </summary>
-    USQADD_asisdmisc_r,
+    USQADD_asisdmisc_r = 2141,
     /// <summary>
     /// Instruction `USRA` - Unsigned shift right and accumulate (immediate).
     /// </summary>
-    USRA_asimdshf_r,
+    USRA_asimdshf_r = 2142,
     /// <summary>
     /// Instruction `USRA` - Unsigned shift right and accumulate (immediate).
     /// </summary>
-    USRA_asisdshf_r,
+    USRA_asisdshf_r = 2143,
     /// <summary>
     /// Instruction `USUBL` - Unsigned subtract long.
     /// </summary>
-    USUBL_asimddiff_l,
+    USUBL_asimddiff_l = 2144,
     /// <summary>
     /// Instruction `USUBW` - Unsigned subtract wide.
     /// </summary>
-    USUBW_asimddiff_w,
+    USUBW_asimddiff_w = 2145,
     /// <summary>
     /// Instruction `UZP1` - Unzip vectors (primary).
     /// </summary>
-    UZP1_asimdperm_only,
+    UZP1_asimdperm_only = 2146,
     /// <summary>
     /// Instruction `UZP2` - Unzip vectors (secondary).
     /// </summary>
-    UZP2_asimdperm_only,
+    UZP2_asimdperm_only = 2147,
     /// <summary>
     /// Instruction `WFET` - Wait for event with timeout.
     /// </summary>
-    WFET_only_systeminstrswithreg,
+    WFET_only_systeminstrswithreg = 2148,
     /// <summary>
     /// Instruction `WFE` - Wait for event.
     /// </summary>
-    WFE_hi_hints,
+    WFE_hi_hints = 2149,
     /// <summary>
     /// Instruction `WFIT` - Wait for interrupt with timeout.
     /// </summary>
-    WFIT_only_systeminstrswithreg,
+    WFIT_only_systeminstrswithreg = 2150,
     /// <summary>
     /// Instruction `WFI` - Wait for interrupt.
     /// </summary>
-    WFI_hi_hints,
+    WFI_hi_hints = 2151,
     /// <summary>
     /// Instruction `XAFLAG` - Convert floating-point condition flags from external format to Arm format.
     /// </summary>
-    XAFLAG_m_pstate,
+    XAFLAG_m_pstate = 2152,
     /// <summary>
     /// Instruction `XAR` - Exclusive-OR and rotate.
     /// </summary>
-    XAR_vvv2_crypto3_imm6,
+    XAR_vvv2_crypto3_imm6 = 2153,
     /// <summary>
     /// Instruction `XPACD` - Strip Pointer Authentication Code.
     /// </summary>
-    XPACD_64z_dp_1src,
+    XPACD_64z_dp_1src = 2154,
     /// <summary>
     /// Instruction `XPACI` - Strip Pointer Authentication Code.
     /// </summary>
-    XPACI_64z_dp_1src,
+    XPACI_64z_dp_1src = 2155,
     /// <summary>
     /// Instruction `XPACLRI` - Strip Pointer Authentication Code.
     /// </summary>
-    XPACLRI_hi_hints,
+    XPACLRI_hi_hints = 2156,
     /// <summary>
     /// Instruction `XTN` - Extract narrow.
     /// </summary>
-    XTN_asimdmisc_n,
+    XTN_asimdmisc_n = 2157,
     /// <summary>
     /// Instruction `YIELD` - Yield.
     /// </summary>
-    YIELD_hi_hints,
+    YIELD_hi_hints = 2158,
     /// <summary>
     /// Instruction `ZIP1` - Zip vectors (primary).
     /// </summary>
-    ZIP1_asimdperm_only,
+    ZIP1_asimdperm_only = 2159,
     /// <summary>
     /// Instruction `ZIP2` - Zip vectors (secondary).
     /// </summary>
-    ZIP2_asimdperm_only,
+    ZIP2_asimdperm_only = 2160,
 }

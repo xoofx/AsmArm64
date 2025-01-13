@@ -5,6 +5,6 @@
 namespace AsmArm64;
 
 /// <summary>
-/// Defines the interface for a scalar register (S0, D1...etc.)
+/// Defines the interface for a vector typed scalar register (V0.S, V1.D...etc.)
 /// </summary>
-public interface IArm64RegisterVScalar : IArm64RegisterV;
+public interface IArm64RegisterVTypedScalar : IArm64RegisterV;

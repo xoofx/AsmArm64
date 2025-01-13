@@ -3,7 +3,9 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using AsmArm64.CodeGen.Model;
 
@@ -26,6 +28,10 @@ internal sealed class InstructionProcessor
     private readonly Dictionary<string, int> _prefetchOperationEnumValues = new();
     private readonly Dictionary<string, int> _rangePrefetchOperationEnumValues = new();
 
+    private readonly Dictionary<string, VectorArrangement> _mapIdToVectorArrangements = new();
+
+    private readonly Dictionary<string, DynamicRegisterSelector> _dynamicRegisterSelectors = new();
+
     private readonly List<(string Id, List<IIndexableOperandDescriptor> Descriptors)> _indexers = new();
 
     private bool _hasErrors;
@@ -34,7 +40,12 @@ internal sealed class InstructionProcessor
     {
         _instructionSet = instructionSet;
         _instructions = instructionSet.Instructions;
+        InstructionEncodingBuffer = new MemoryStream();
     }
+
+    public List<int> InstructionEncodingOffsets { get; } = new();
+
+    public MemoryStream InstructionEncodingBuffer { get; }
 
     public void DumpAllOperands()
     {
@@ -88,9 +99,45 @@ internal sealed class InstructionProcessor
     {
         // Order instructions by their id
         _instructions.Sort((a, b) => string.Compare(a.Id, b.Id, StringComparison.Ordinal));
+
+        // Assign ids and collect mnemonics
+        for (int i = 0; i < _instructions.Count; i++)
+        {
+            var instruction = _instructions[i];
+            instruction.IdIndex = i + 1;
+            if (!_instructionSet.OrderedMnemonics.Contains(instruction.Mnemonic))
+            {
+                _instructionSet.OrderedMnemonics.Add(instruction.Mnemonic);
+            }
+
+            if (!_instructionSet.OrderedInstructionClass.Contains(instruction.InstructionClass))
+            {
+                _instructionSet.OrderedInstructionClass.Add(instruction.InstructionClass);
+            }
+        }
+
+        // Assign mnemonics
+        _instructionSet.OrderedMnemonics.Sort();
+        _instructionSet.OrderedInstructionClass.Sort();
+        foreach (var instruction in _instructions)
+        {
+            instruction.MnemonicIndex = _instructionSet.OrderedMnemonics.IndexOf(instruction.Mnemonic) + 1;
+            instruction.InstructionClassIndex = (byte)(_instructionSet.OrderedInstructionClass.IndexOf(instruction.InstructionClass) + 1);
+        }
+
+        Span<byte> buffer = stackalloc byte[8];
+        buffer.Clear();
+
+        // First instruction (index) is null
+        RecordInstructionBufferOffset();
+        Write(buffer);
+
+        Span<byte> allOperands = new byte[8 * 16]; // 16 operands max (should be much lower, like 5)
         
         foreach (var instruction in _instructions)
         {
+            allOperands.Clear();
+            
             //bool hasMemory = instruction.Operands.Any(x => x.Kind == OperandKind.Memory);
             //if (hasMemory)
             //{
@@ -160,6 +207,9 @@ internal sealed class InstructionProcessor
                         default:
                             throw new InvalidOperationException($"Operand kind not supported {operand.Kind}");
                     }
+
+                    // Encode the operand
+                    operand.Descriptor!.Encode(allOperands.Slice(operandIndex * 8, 8));
                 }
                 catch (Exception ex)
                 {
@@ -168,12 +218,46 @@ internal sealed class InstructionProcessor
                     _hasErrors = true;
                 }
             }
+
+            // detect if operands can be all encoded into uint
+            var spanULong = MemoryMarshal.Cast<byte, ulong>(allOperands);
+            instruction.UseOperandUIntEncoding = true;
+            for (int i = 0; i < instruction.Operands.Count; i++)
+            {
+                var value = spanULong[i];
+                if (value > uint.MaxValue)
+                {
+                    instruction.UseOperandUIntEncoding = false;
+                    break;
+                }
+            }
+
+            // Encode the instruction decoding
+            RecordInstructionBufferOffset();
+            buffer.Clear();
+            instruction.Encode(buffer);
+            Write(buffer);
+
+            if (instruction.UseOperandUIntEncoding)
+            {
+                for (int i = 0; i < instruction.Operands.Count; i++)
+                {
+                    Write(allOperands.Slice(i * 8, 4));
+                }
+            }
+            else
+            {
+                for (int i = 0; i < instruction.Operands.Count; i++)
+                {
+                    Write(allOperands.Slice(i * 8, 8));
+                }
+            }
         }
 
         foreach (var vectorArrangementItems in _vectorArrangementItemsUsage.OrderByDescending(x => x.Value.Count).ThenBy(x => x.Key))
         {
             var values = vectorArrangementItems.Value.Values;
-            values.Index = _instructionSet.VectorArrangementValues.Count;
+            values.Index = _instructionSet.VectorArrangementValues.Count + 1;
 
             foreach (var descriptor in vectorArrangementItems.Value.Arrangements)
             {
@@ -200,6 +284,25 @@ internal sealed class InstructionProcessor
             }
             _instructionSet.IndexerIdList.Add(pair.Id);
         }
+
+        var dynamicRegisterSelectors = _dynamicRegisterSelectors.Values.OrderBy(selector => selector.Id).ToList();
+        for (int i = 0; i < dynamicRegisterSelectors.Count; i++)
+        {
+            var descriptor = dynamicRegisterSelectors[i];
+            var index = _instructionSet.DynamicRegisterSelectorList.Count + 1;
+            descriptor.Index = index;
+            _instructionSet.DynamicRegisterSelectorList.Add(descriptor);
+        }
+
+        // Vector arrangements
+        var vectorArrangements = _mapIdToVectorArrangements.OrderBy(x => x.Key).Select(x => x.Value).ToList();
+        for (int i = 0; i < vectorArrangements.Count; i++)
+        {
+            var vectorArrangement = vectorArrangements[i];
+            vectorArrangement.VectorArrangementIndex = _instructionSet.VectorArrangements.Count + 1;
+            _instructionSet.VectorArrangements.Add(vectorArrangement);
+        }
+        //Console.WriteLine($"Vector Arrangements: {vectorArrangements.Count}");
         
         //foreach (var pair in _memoryOperands.OrderBy(x => x.Key))
         //{
@@ -227,6 +330,19 @@ internal sealed class InstructionProcessor
         {
             throw new InvalidOperationException("Errors found during processing");
         }
+    }
+
+    private void Write(ReadOnlySpan<byte> buffer)
+    {
+        Debug.Assert(buffer.Length == 8 || buffer.Length == 4);
+        InstructionEncodingBuffer.Write(buffer);
+    }
+
+    private void RecordInstructionBufferOffset()
+    {
+        // Position of an instruction is always at least a multiple of 4
+        Debug.Assert(InstructionEncodingBuffer.Position % 4 == 0);
+        InstructionEncodingOffsets.Add((int)InstructionEncodingBuffer.Position);
     }
 
     private OperandDescriptor ProcessConst(Instruction instruction, ConstOperandItem constOperand)
@@ -653,6 +769,7 @@ internal sealed class InstructionProcessor
                 }
 
                 Debug.Assert(descriptor.Encoding.Count == 1 || descriptor.Encoding.Count == 2);
+                Debug.Assert(descriptor.Encoding.All(x => x.IsSmallEncoding));
                 return descriptor;
             }
             else
@@ -839,6 +956,11 @@ internal sealed class InstructionProcessor
             DynamicRegisterXOrWSelector = dynamicDescriptor
         };
 
+        if (dynamicDescriptor is not null)
+        {
+            dynamicDescriptor.RegisterDescriptors.Add(descriptor);
+        }
+
         var registerNameBuilder = new StringBuilder();
         foreach (var textElement in register.TextElements)
         {
@@ -923,7 +1045,14 @@ internal sealed class InstructionProcessor
         }
         Debug.Assert(register.TextElements.Count == 2 && register.TextElements[1].Symbol is not null, $"Invalid encoding for instruction {instruction.Id}");
 
-        return dynamicDescriptor;
+        var id = dynamicDescriptor.Id;
+        if (!_dynamicRegisterSelectors.TryGetValue(id, out var existingDescriptor))
+        {
+            existingDescriptor = dynamicDescriptor;
+            _dynamicRegisterSelectors.Add(id, existingDescriptor);
+        }
+
+        return existingDescriptor;
     }
 
     private int ProcessIndexer(Instruction instruction, OperandItem item, IIndexableOperandDescriptor descriptor)
@@ -1010,6 +1139,8 @@ internal sealed class InstructionProcessor
 
         if (symbol is not null && symbol.BitValues.Count > 0)
         {
+            Debug.Assert(vectorArrangement.ArrangementKind == Arm64RegisterVectorArrangementEncodingKind.T);
+
             vectorArrangement.BitSize = CollectEncodingForSymbol(instruction, symbol, vectorArrangement.Encoding);
             Debug.Assert(vectorArrangement.Encoding.Count <= 2);
             Debug.Assert(vectorArrangement.Encoding.All(x => x.IsSmallEncoding));
@@ -1018,7 +1149,7 @@ internal sealed class InstructionProcessor
             foreach (var bitValue in symbol.BitValues)
             {
                 var elementKind = ParseArrangementKind(bitValue.Value);
-                var bitValues = string.Join(":", bitValue.BitFields);
+                var bitValues = string.Join("", bitValue.BitFields);
                 var element = new VectorArrangementValue(elementKind, bitValues);
                 values.Add(element);
             }
@@ -1036,8 +1167,15 @@ internal sealed class InstructionProcessor
             valuesAndCount.Arrangements.Add(vectorArrangement);
             _vectorArrangementItemsUsage[id] = (valuesAndCount.Values, valuesAndCount.Variations,  valuesAndCount.Count + 1, valuesAndCount.Arrangements);
         }
+
+        var vectorArrangementId = vectorArrangement.Id;
+        if (!_mapIdToVectorArrangements.TryGetValue(vectorArrangementId, out var existingArrangement))
+        {
+            existingArrangement = vectorArrangement;
+            _mapIdToVectorArrangements.Add(vectorArrangementId, existingArrangement);
+        }
         
-        return vectorArrangement;
+        return existingArrangement;
     }
     
     private static Arm64RegisterVectorArrangementEncodingKind ParseArrangementKind(string text)
@@ -1171,7 +1309,13 @@ internal sealed class InstructionProcessor
             var symbol = item.TextElements[0].Symbol;
             Debug.Assert(symbol != null);
             immediate.BitSize = CollectEncodingForSymbol(instruction, symbol, immediate.Encoding);
-            Debug.Assert(immediate.Encoding.Count > 0);
+            if (immediate.Encoding.Count == 3)
+            {
+                Debug.Assert(instruction.Id == "MSR_si_pstate");
+                immediate.ImmediateKind = Arm64ImmediateEncodingKind.PStateField;
+                return immediate;
+            }
+            Debug.Assert(immediate.Encoding.Count > 0 && immediate.Encoding.Count <= 2);
             immediate.ImmediateKind = Arm64ImmediateEncodingKind.Regular;
 
             if (symbol.BitValues.Count != 0)

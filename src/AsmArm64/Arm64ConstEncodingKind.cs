@@ -6,25 +6,20 @@ using System.Text.Json.Serialization;
 
 namespace AsmArm64;
 
-/// <summary>
-/// Can be encoded in 2 bits
-/// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-enum Arm64LabelEncodingKind : byte
+enum Arm64ConstEncodingKind : byte
 {
     None,
     /// <summary>
-    /// A signed offset multiplied by 4
+    /// Used by instruction CHKFEAT_hf_hints -> CHKFEAT X16
     /// </summary>
-    StandardOffset = 1,
-
+    X16,
     /// <summary>
-    /// A negative offset multiplied by 4 encoded as an unsigned value
+    /// Used by instruction: GCSB_hd_hints -> GCSB DSYNC
     /// </summary>
-    NegativeEncodedAsUnsigned = 2,
-
+    DSYNC,
     /// <summary>
-    /// A signed offset multiplied by 4096 encoded as an unsigned value
+    /// Used by instruction: PSB_hc_hints -> PSB CSYNC and TSB_hc_hints -> TSB CSYNC
     /// </summary>
-    PageOffset = 3,
+    CSYNC,
 }

@@ -21,6 +21,7 @@ partial class Arm64Processor
         GenerateArchitecture();
         GenerateFeatures();
         GenerateFeatureExpressions();
+        GenerateInstructionIdDecoderTable();
         GenerateInstructionDecoderTable();
         GenerateInstructionIdTests();
     }
@@ -28,8 +29,6 @@ partial class Arm64Processor
     private void GenerateMnemonicEnum()
     {
         using var w = GetWriter("Arm64Mnemonic.gen.cs");
-
-        var mnemonics = _instructions.Select(x => x.Mnemonic).ToHashSet();
 
         w.WriteLine("namespace AsmArm64;");
         w.WriteLine();
@@ -39,10 +38,10 @@ partial class Arm64Processor
         {
             w.WriteSummary("This mnemonic is invalid.");
             w.WriteLine("Invalid,");
-            foreach (var mnemonic in mnemonics.Order())
+            foreach (var mnemonic in _instructionSet.OrderedMnemonics)
             {
                 w.WriteSummary($"This `{mnemonic}` mnemonic.");
-                w.WriteLine($"{mnemonic},");
+                w.WriteLine($"{mnemonic} = {_instructionSet.OrderedMnemonics.IndexOf(mnemonic) + 1},");
             }
         }
         w.CloseBraceBlock();
@@ -54,7 +53,7 @@ partial class Arm64Processor
             w.OpenBraceBlock();
             {
                 w.WriteLine("\"???\",");
-                foreach (var mnemonic in mnemonics.Order())
+                foreach (var mnemonic in _instructionSet.OrderedMnemonics)
                 {
                     w.WriteLine($"\"{mnemonic.ToLowerInvariant()}\",");
                 }
@@ -65,7 +64,7 @@ partial class Arm64Processor
             w.OpenBraceBlock();
             {
                 w.WriteLine("\"???\",");
-                foreach (var mnemonic in mnemonics.Order())
+                foreach (var mnemonic in _instructionSet.OrderedMnemonics)
                 {
                     w.WriteLine($"\"{mnemonic.ToUpperInvariant()}\",");
                 }
@@ -90,7 +89,7 @@ partial class Arm64Processor
         foreach (var instruction in _instructions)
         {
             w.WriteSummary($"Instruction `{instruction.Mnemonic}` - {instruction.Summary}.");
-            w.WriteLine($"{instruction.Id},");
+            w.WriteLine($"{instruction.Id} = {instruction.IdIndex},");
         }
         w.CloseBraceBlock();
     }
@@ -99,8 +98,6 @@ partial class Arm64Processor
     {
         using var w = GetWriter("Arm64InstructionClass.gen.cs");
 
-        var instructionClasses = _instructions.Select(x => x.InstructionClass).ToHashSet().Order();
-
         w.WriteLine("namespace AsmArm64;");
         w.WriteLine();
         w.WriteSummary("A list of all ARM64 instruction classes.");
@@ -108,17 +105,17 @@ partial class Arm64Processor
         w.OpenBraceBlock();
         w.WriteSummary("The instruction class is invalid / unknown.");
         w.WriteLine("Invalid,");
-        foreach (var iClass in instructionClasses)
+        foreach (var iClass in _instructionSet.OrderedInstructionClass)
         {
             w.WriteSummary($"Class `{iClass}`.");
-            w.WriteLine($"{iClass},");
+            w.WriteLine($"{iClass} = {_instructionSet.OrderedInstructionClass.IndexOf(iClass) + 1},");
         }
         w.CloseBraceBlock();
     }
 
     private void GenerateArchitecture()
     {
-        var variants = _archVariantNameToArchitectureId.Values.ToHashSet().Order().ToList();
+        var variants = _featureRequirementIdToArchitectureId.Values.ToHashSet().Order().ToList();
         {
             using var w = GetWriter("Arm64ArchitectureId.gen.cs");
             w.WriteLine("namespace AsmArm64;");
@@ -226,9 +223,23 @@ partial class Arm64Processor
             {
                 w.WriteSummary($"Feature `{EscapeHtmlEntities(featureExpression.Expression)}`.");
             }
-            w.WriteLine($"{featureExpression.Id},");
+            w.WriteLine($"{featureExpression.Id} = {_mapFeatureExpressionIdToIndex[featureExpression.Id]},");
         }
 
+        w.CloseBraceBlock();
+    }
+
+    private void GenerateInstructionIdDecoderTable()
+    {
+        using var w = GetWriter("Arm64InstructionIdDecoderTable.gen.cs");
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteLine("partial class Arm64InstructionIdDecoderTable");
+        w.OpenBraceBlock();
+        {
+            var buffer = _tableGenEncoder.Buffer;
+            WriteBuffer(w, buffer, "Buffer", "Decoder table to get an instruction id from a raw ARM64 instruction uint");
+        }
         w.CloseBraceBlock();
     }
 
@@ -240,18 +251,62 @@ partial class Arm64Processor
         w.WriteLine("partial class Arm64InstructionDecoderTable");
         w.OpenBraceBlock();
         {
-            var buffer = _tableGenEncoder.Buffer;
+            var offsets = _instructionProcessor.InstructionEncodingOffsets;
+            w.WriteLine($"public static ReadOnlySpan<ushort> InstructionIdToBufferOffset => new ushort[{_instructionProcessor.InstructionEncodingOffsets.Count}]");
+            w.OpenBraceBlock();
+            for (var i = 0; i < offsets.Count; i++)
+            {
+                var offset = offsets[i];
+                Debug.Assert(offset % 4 == 0);
+                Debug.Assert(offset / 4 <= ushort.MaxValue);
+                w.WriteLine($"{offset/4}, // {(i == 0 ? "Undefined" : _instructions[i - 1].Id)}");
+            }
+            w.CloseBraceBlockStatement();
+
+            var buffer = _instructionProcessor.InstructionEncodingBuffer.ToArray();
+            int indexInOffset = 0;
+
+            w.WriteSummary("Decoder table to get the instruction details");
             w.WriteLine($"public static ReadOnlySpan<byte> Buffer => new byte[{buffer.Length}]");
             w.OpenBraceBlock();
+
+            int wrapping = 8;
+            int wrappingAfterFirst = 8;
+            int startingOffset = 0;
             for (var i = 0; i < buffer.Length; i++)
             {
+                if (indexInOffset < offsets.Count && i == offsets[indexInOffset])
+                {
+                    startingOffset = 0;
+                    wrapping = 8;
+                    wrappingAfterFirst = 8;
+                    if (indexInOffset == 0)
+                    {
+                        w.WriteLine($"// Undefined");
+                    }
+                    else
+                    {
+                        var instruction = _instructions[indexInOffset - 1];
+                        w.WriteLine($"// {instruction.Id,-30} - {instruction.Mnemonic,-11}{(instruction.OperandsSyntax.Length > 0 ? $" {instruction.OperandsSyntax}" : string.Empty)}");
+                        if (instruction.UseOperandUIntEncoding)
+                        {
+                            wrappingAfterFirst = 4;
+                        }
+                    }
+                    indexInOffset++;
+                }
+
                 w.Write($"{buffer[i]},");
-                if (i % 16 == 15)
+                if (startingOffset % wrapping == (wrapping - 1))
                 {
                     w.WriteLine();
+                    wrapping = wrappingAfterFirst;
                 }
+
+                startingOffset++;
             }
-            if (buffer.Length % 16 != 0)
+
+            if (buffer.Length % wrapping != 0)
             {
                 w.WriteLine();
             }
@@ -260,6 +315,26 @@ partial class Arm64Processor
         w.CloseBraceBlock();
     }
 
+    private void WriteBuffer(CodeWriter w, ReadOnlySpan<byte> buffer, string name, string summary, int wrapping = 16)
+    {
+        w.WriteSummary(summary);
+        w.WriteLine($"public static ReadOnlySpan<byte> {name} => new byte[{buffer.Length}]");
+        w.OpenBraceBlock();
+        for (var i = 0; i < buffer.Length; i++)
+        {
+            w.Write($"{buffer[i]},");
+            if (i % wrapping == (wrapping - 1))
+            {
+                w.WriteLine();
+            }
+        }
+        if (buffer.Length % wrapping != 0)
+        {
+            w.WriteLine();
+        }
+        w.CloseBraceBlockStatement();
+    }
+    
     private void GenerateInstructionIdTests()
     {
         using var w = GetWriter("InstructionIdTests.gen.cs", true);

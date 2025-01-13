@@ -23,4059 +23,4059 @@ public enum Arm64Mnemonic : ushort
     /// <summary>
     /// This `ABS` mnemonic.
     /// </summary>
-    ABS,
+    ABS = 1,
     /// <summary>
     /// This `ADC` mnemonic.
     /// </summary>
-    ADC,
+    ADC = 2,
     /// <summary>
     /// This `ADCS` mnemonic.
     /// </summary>
-    ADCS,
+    ADCS = 3,
     /// <summary>
     /// This `ADD` mnemonic.
     /// </summary>
-    ADD,
+    ADD = 4,
     /// <summary>
     /// This `ADDG` mnemonic.
     /// </summary>
-    ADDG,
+    ADDG = 5,
     /// <summary>
     /// This `ADDHN` mnemonic.
     /// </summary>
-    ADDHN,
+    ADDHN = 6,
     /// <summary>
     /// This `ADDP` mnemonic.
     /// </summary>
-    ADDP,
+    ADDP = 7,
     /// <summary>
     /// This `ADDPT` mnemonic.
     /// </summary>
-    ADDPT,
+    ADDPT = 8,
     /// <summary>
     /// This `ADDS` mnemonic.
     /// </summary>
-    ADDS,
+    ADDS = 9,
     /// <summary>
     /// This `ADDV` mnemonic.
     /// </summary>
-    ADDV,
+    ADDV = 10,
     /// <summary>
     /// This `ADR` mnemonic.
     /// </summary>
-    ADR,
+    ADR = 11,
     /// <summary>
     /// This `ADRP` mnemonic.
     /// </summary>
-    ADRP,
+    ADRP = 12,
     /// <summary>
     /// This `AESD` mnemonic.
     /// </summary>
-    AESD,
+    AESD = 13,
     /// <summary>
     /// This `AESE` mnemonic.
     /// </summary>
-    AESE,
+    AESE = 14,
     /// <summary>
     /// This `AESIMC` mnemonic.
     /// </summary>
-    AESIMC,
+    AESIMC = 15,
     /// <summary>
     /// This `AESMC` mnemonic.
     /// </summary>
-    AESMC,
+    AESMC = 16,
     /// <summary>
     /// This `AND` mnemonic.
     /// </summary>
-    AND,
+    AND = 17,
     /// <summary>
     /// This `ANDS` mnemonic.
     /// </summary>
-    ANDS,
+    ANDS = 18,
     /// <summary>
     /// This `ASRV` mnemonic.
     /// </summary>
-    ASRV,
+    ASRV = 19,
     /// <summary>
     /// This `AUTDA` mnemonic.
     /// </summary>
-    AUTDA,
+    AUTDA = 20,
     /// <summary>
     /// This `AUTDB` mnemonic.
     /// </summary>
-    AUTDB,
+    AUTDB = 21,
     /// <summary>
     /// This `AUTDZA` mnemonic.
     /// </summary>
-    AUTDZA,
+    AUTDZA = 22,
     /// <summary>
     /// This `AUTDZB` mnemonic.
     /// </summary>
-    AUTDZB,
+    AUTDZB = 23,
     /// <summary>
     /// This `AUTIA` mnemonic.
     /// </summary>
-    AUTIA,
+    AUTIA = 24,
     /// <summary>
     /// This `AUTIA1716` mnemonic.
     /// </summary>
-    AUTIA1716,
+    AUTIA1716 = 25,
     /// <summary>
     /// This `AUTIA171615` mnemonic.
     /// </summary>
-    AUTIA171615,
+    AUTIA171615 = 26,
     /// <summary>
     /// This `AUTIASP` mnemonic.
     /// </summary>
-    AUTIASP,
+    AUTIASP = 27,
     /// <summary>
     /// This `AUTIASPPC` mnemonic.
     /// </summary>
-    AUTIASPPC,
+    AUTIASPPC = 28,
     /// <summary>
     /// This `AUTIASPPCR` mnemonic.
     /// </summary>
-    AUTIASPPCR,
+    AUTIASPPCR = 29,
     /// <summary>
     /// This `AUTIAZ` mnemonic.
     /// </summary>
-    AUTIAZ,
+    AUTIAZ = 30,
     /// <summary>
     /// This `AUTIB` mnemonic.
     /// </summary>
-    AUTIB,
+    AUTIB = 31,
     /// <summary>
     /// This `AUTIB1716` mnemonic.
     /// </summary>
-    AUTIB1716,
+    AUTIB1716 = 32,
     /// <summary>
     /// This `AUTIB171615` mnemonic.
     /// </summary>
-    AUTIB171615,
+    AUTIB171615 = 33,
     /// <summary>
     /// This `AUTIBSP` mnemonic.
     /// </summary>
-    AUTIBSP,
+    AUTIBSP = 34,
     /// <summary>
     /// This `AUTIBSPPC` mnemonic.
     /// </summary>
-    AUTIBSPPC,
+    AUTIBSPPC = 35,
     /// <summary>
     /// This `AUTIBSPPCR` mnemonic.
     /// </summary>
-    AUTIBSPPCR,
+    AUTIBSPPCR = 36,
     /// <summary>
     /// This `AUTIBZ` mnemonic.
     /// </summary>
-    AUTIBZ,
+    AUTIBZ = 37,
     /// <summary>
     /// This `AUTIZA` mnemonic.
     /// </summary>
-    AUTIZA,
+    AUTIZA = 38,
     /// <summary>
     /// This `AUTIZB` mnemonic.
     /// </summary>
-    AUTIZB,
+    AUTIZB = 39,
     /// <summary>
     /// This `AXFLAG` mnemonic.
     /// </summary>
-    AXFLAG,
+    AXFLAG = 40,
     /// <summary>
     /// This `B` mnemonic.
     /// </summary>
-    B,
+    B = 41,
     /// <summary>
     /// This `BC` mnemonic.
     /// </summary>
-    BC,
+    BC = 42,
     /// <summary>
     /// This `BCAX` mnemonic.
     /// </summary>
-    BCAX,
+    BCAX = 43,
     /// <summary>
     /// This `BF1CVTL` mnemonic.
     /// </summary>
-    BF1CVTL,
+    BF1CVTL = 44,
     /// <summary>
     /// This `BF2CVTL` mnemonic.
     /// </summary>
-    BF2CVTL,
+    BF2CVTL = 45,
     /// <summary>
     /// This `BFCVT` mnemonic.
     /// </summary>
-    BFCVT,
+    BFCVT = 46,
     /// <summary>
     /// This `BFCVTN` mnemonic.
     /// </summary>
-    BFCVTN,
+    BFCVTN = 47,
     /// <summary>
     /// This `BFDOT` mnemonic.
     /// </summary>
-    BFDOT,
+    BFDOT = 48,
     /// <summary>
     /// This `BFM` mnemonic.
     /// </summary>
-    BFM,
+    BFM = 49,
     /// <summary>
     /// This `BFMLAL` mnemonic.
     /// </summary>
-    BFMLAL,
+    BFMLAL = 50,
     /// <summary>
     /// This `BFMMLA` mnemonic.
     /// </summary>
-    BFMMLA,
+    BFMMLA = 51,
     /// <summary>
     /// This `BIC` mnemonic.
     /// </summary>
-    BIC,
+    BIC = 52,
     /// <summary>
     /// This `BICS` mnemonic.
     /// </summary>
-    BICS,
+    BICS = 53,
     /// <summary>
     /// This `BIF` mnemonic.
     /// </summary>
-    BIF,
+    BIF = 54,
     /// <summary>
     /// This `BIT` mnemonic.
     /// </summary>
-    BIT,
+    BIT = 55,
     /// <summary>
     /// This `BL` mnemonic.
     /// </summary>
-    BL,
+    BL = 56,
     /// <summary>
     /// This `BLR` mnemonic.
     /// </summary>
-    BLR,
+    BLR = 57,
     /// <summary>
     /// This `BLRAA` mnemonic.
     /// </summary>
-    BLRAA,
+    BLRAA = 58,
     /// <summary>
     /// This `BLRAAZ` mnemonic.
     /// </summary>
-    BLRAAZ,
+    BLRAAZ = 59,
     /// <summary>
     /// This `BLRAB` mnemonic.
     /// </summary>
-    BLRAB,
+    BLRAB = 60,
     /// <summary>
     /// This `BLRABZ` mnemonic.
     /// </summary>
-    BLRABZ,
+    BLRABZ = 61,
     /// <summary>
     /// This `BR` mnemonic.
     /// </summary>
-    BR,
+    BR = 62,
     /// <summary>
     /// This `BRAA` mnemonic.
     /// </summary>
-    BRAA,
+    BRAA = 63,
     /// <summary>
     /// This `BRAAZ` mnemonic.
     /// </summary>
-    BRAAZ,
+    BRAAZ = 64,
     /// <summary>
     /// This `BRAB` mnemonic.
     /// </summary>
-    BRAB,
+    BRAB = 65,
     /// <summary>
     /// This `BRABZ` mnemonic.
     /// </summary>
-    BRABZ,
+    BRABZ = 66,
     /// <summary>
     /// This `BRK` mnemonic.
     /// </summary>
-    BRK,
+    BRK = 67,
     /// <summary>
     /// This `BSL` mnemonic.
     /// </summary>
-    BSL,
+    BSL = 68,
     /// <summary>
     /// This `BTI` mnemonic.
     /// </summary>
-    BTI,
+    BTI = 69,
     /// <summary>
     /// This `CAS` mnemonic.
     /// </summary>
-    CAS,
+    CAS = 70,
     /// <summary>
     /// This `CASA` mnemonic.
     /// </summary>
-    CASA,
+    CASA = 71,
     /// <summary>
     /// This `CASAB` mnemonic.
     /// </summary>
-    CASAB,
+    CASAB = 72,
     /// <summary>
     /// This `CASAH` mnemonic.
     /// </summary>
-    CASAH,
+    CASAH = 73,
     /// <summary>
     /// This `CASAL` mnemonic.
     /// </summary>
-    CASAL,
+    CASAL = 74,
     /// <summary>
     /// This `CASALB` mnemonic.
     /// </summary>
-    CASALB,
+    CASALB = 75,
     /// <summary>
     /// This `CASALH` mnemonic.
     /// </summary>
-    CASALH,
+    CASALH = 76,
     /// <summary>
     /// This `CASALT` mnemonic.
     /// </summary>
-    CASALT,
+    CASALT = 77,
     /// <summary>
     /// This `CASAT` mnemonic.
     /// </summary>
-    CASAT,
+    CASAT = 78,
     /// <summary>
     /// This `CASB` mnemonic.
     /// </summary>
-    CASB,
+    CASB = 79,
     /// <summary>
     /// This `CASH` mnemonic.
     /// </summary>
-    CASH,
+    CASH = 80,
     /// <summary>
     /// This `CASL` mnemonic.
     /// </summary>
-    CASL,
+    CASL = 81,
     /// <summary>
     /// This `CASLB` mnemonic.
     /// </summary>
-    CASLB,
+    CASLB = 82,
     /// <summary>
     /// This `CASLH` mnemonic.
     /// </summary>
-    CASLH,
+    CASLH = 83,
     /// <summary>
     /// This `CASLT` mnemonic.
     /// </summary>
-    CASLT,
+    CASLT = 84,
     /// <summary>
     /// This `CASP` mnemonic.
     /// </summary>
-    CASP,
+    CASP = 85,
     /// <summary>
     /// This `CASPA` mnemonic.
     /// </summary>
-    CASPA,
+    CASPA = 86,
     /// <summary>
     /// This `CASPAL` mnemonic.
     /// </summary>
-    CASPAL,
+    CASPAL = 87,
     /// <summary>
     /// This `CASPALT` mnemonic.
     /// </summary>
-    CASPALT,
+    CASPALT = 88,
     /// <summary>
     /// This `CASPAT` mnemonic.
     /// </summary>
-    CASPAT,
+    CASPAT = 89,
     /// <summary>
     /// This `CASPL` mnemonic.
     /// </summary>
-    CASPL,
+    CASPL = 90,
     /// <summary>
     /// This `CASPLT` mnemonic.
     /// </summary>
-    CASPLT,
+    CASPLT = 91,
     /// <summary>
     /// This `CASPT` mnemonic.
     /// </summary>
-    CASPT,
+    CASPT = 92,
     /// <summary>
     /// This `CAST` mnemonic.
     /// </summary>
-    CAST,
+    CAST = 93,
     /// <summary>
     /// This `CBBEQ` mnemonic.
     /// </summary>
-    CBBEQ,
+    CBBEQ = 94,
     /// <summary>
     /// This `CBBGE` mnemonic.
     /// </summary>
-    CBBGE,
+    CBBGE = 95,
     /// <summary>
     /// This `CBBGT` mnemonic.
     /// </summary>
-    CBBGT,
+    CBBGT = 96,
     /// <summary>
     /// This `CBBHI` mnemonic.
     /// </summary>
-    CBBHI,
+    CBBHI = 97,
     /// <summary>
     /// This `CBBHS` mnemonic.
     /// </summary>
-    CBBHS,
+    CBBHS = 98,
     /// <summary>
     /// This `CBBNE` mnemonic.
     /// </summary>
-    CBBNE,
+    CBBNE = 99,
     /// <summary>
     /// This `CBEQ` mnemonic.
     /// </summary>
-    CBEQ,
+    CBEQ = 100,
     /// <summary>
     /// This `CBGE` mnemonic.
     /// </summary>
-    CBGE,
+    CBGE = 101,
     /// <summary>
     /// This `CBGT` mnemonic.
     /// </summary>
-    CBGT,
+    CBGT = 102,
     /// <summary>
     /// This `CBHEQ` mnemonic.
     /// </summary>
-    CBHEQ,
+    CBHEQ = 103,
     /// <summary>
     /// This `CBHGE` mnemonic.
     /// </summary>
-    CBHGE,
+    CBHGE = 104,
     /// <summary>
     /// This `CBHGT` mnemonic.
     /// </summary>
-    CBHGT,
+    CBHGT = 105,
     /// <summary>
     /// This `CBHHI` mnemonic.
     /// </summary>
-    CBHHI,
+    CBHHI = 106,
     /// <summary>
     /// This `CBHHS` mnemonic.
     /// </summary>
-    CBHHS,
+    CBHHS = 107,
     /// <summary>
     /// This `CBHI` mnemonic.
     /// </summary>
-    CBHI,
+    CBHI = 108,
     /// <summary>
     /// This `CBHNE` mnemonic.
     /// </summary>
-    CBHNE,
+    CBHNE = 109,
     /// <summary>
     /// This `CBHS` mnemonic.
     /// </summary>
-    CBHS,
+    CBHS = 110,
     /// <summary>
     /// This `CBLO` mnemonic.
     /// </summary>
-    CBLO,
+    CBLO = 111,
     /// <summary>
     /// This `CBLT` mnemonic.
     /// </summary>
-    CBLT,
+    CBLT = 112,
     /// <summary>
     /// This `CBNE` mnemonic.
     /// </summary>
-    CBNE,
+    CBNE = 113,
     /// <summary>
     /// This `CBNZ` mnemonic.
     /// </summary>
-    CBNZ,
+    CBNZ = 114,
     /// <summary>
     /// This `CBZ` mnemonic.
     /// </summary>
-    CBZ,
+    CBZ = 115,
     /// <summary>
     /// This `CCMN` mnemonic.
     /// </summary>
-    CCMN,
+    CCMN = 116,
     /// <summary>
     /// This `CCMP` mnemonic.
     /// </summary>
-    CCMP,
+    CCMP = 117,
     /// <summary>
     /// This `CFINV` mnemonic.
     /// </summary>
-    CFINV,
+    CFINV = 118,
     /// <summary>
     /// This `CHKFEAT` mnemonic.
     /// </summary>
-    CHKFEAT,
+    CHKFEAT = 119,
     /// <summary>
     /// This `CLRBHB` mnemonic.
     /// </summary>
-    CLRBHB,
+    CLRBHB = 120,
     /// <summary>
     /// This `CLREX` mnemonic.
     /// </summary>
-    CLREX,
+    CLREX = 121,
     /// <summary>
     /// This `CLS` mnemonic.
     /// </summary>
-    CLS,
+    CLS = 122,
     /// <summary>
     /// This `CLZ` mnemonic.
     /// </summary>
-    CLZ,
+    CLZ = 123,
     /// <summary>
     /// This `CMEQ` mnemonic.
     /// </summary>
-    CMEQ,
+    CMEQ = 124,
     /// <summary>
     /// This `CMGE` mnemonic.
     /// </summary>
-    CMGE,
+    CMGE = 125,
     /// <summary>
     /// This `CMGT` mnemonic.
     /// </summary>
-    CMGT,
+    CMGT = 126,
     /// <summary>
     /// This `CMHI` mnemonic.
     /// </summary>
-    CMHI,
+    CMHI = 127,
     /// <summary>
     /// This `CMHS` mnemonic.
     /// </summary>
-    CMHS,
+    CMHS = 128,
     /// <summary>
     /// This `CMLE` mnemonic.
     /// </summary>
-    CMLE,
+    CMLE = 129,
     /// <summary>
     /// This `CMLT` mnemonic.
     /// </summary>
-    CMLT,
+    CMLT = 130,
     /// <summary>
     /// This `CMTST` mnemonic.
     /// </summary>
-    CMTST,
+    CMTST = 131,
     /// <summary>
     /// This `CNT` mnemonic.
     /// </summary>
-    CNT,
+    CNT = 132,
     /// <summary>
     /// This `CPYE` mnemonic.
     /// </summary>
-    CPYE,
+    CPYE = 133,
     /// <summary>
     /// This `CPYEN` mnemonic.
     /// </summary>
-    CPYEN,
+    CPYEN = 134,
     /// <summary>
     /// This `CPYERN` mnemonic.
     /// </summary>
-    CPYERN,
+    CPYERN = 135,
     /// <summary>
     /// This `CPYERT` mnemonic.
     /// </summary>
-    CPYERT,
+    CPYERT = 136,
     /// <summary>
     /// This `CPYERTN` mnemonic.
     /// </summary>
-    CPYERTN,
+    CPYERTN = 137,
     /// <summary>
     /// This `CPYERTRN` mnemonic.
     /// </summary>
-    CPYERTRN,
+    CPYERTRN = 138,
     /// <summary>
     /// This `CPYERTWN` mnemonic.
     /// </summary>
-    CPYERTWN,
+    CPYERTWN = 139,
     /// <summary>
     /// This `CPYET` mnemonic.
     /// </summary>
-    CPYET,
+    CPYET = 140,
     /// <summary>
     /// This `CPYETN` mnemonic.
     /// </summary>
-    CPYETN,
+    CPYETN = 141,
     /// <summary>
     /// This `CPYETRN` mnemonic.
     /// </summary>
-    CPYETRN,
+    CPYETRN = 142,
     /// <summary>
     /// This `CPYETWN` mnemonic.
     /// </summary>
-    CPYETWN,
+    CPYETWN = 143,
     /// <summary>
     /// This `CPYEWN` mnemonic.
     /// </summary>
-    CPYEWN,
+    CPYEWN = 144,
     /// <summary>
     /// This `CPYEWT` mnemonic.
     /// </summary>
-    CPYEWT,
+    CPYEWT = 145,
     /// <summary>
     /// This `CPYEWTN` mnemonic.
     /// </summary>
-    CPYEWTN,
+    CPYEWTN = 146,
     /// <summary>
     /// This `CPYEWTRN` mnemonic.
     /// </summary>
-    CPYEWTRN,
+    CPYEWTRN = 147,
     /// <summary>
     /// This `CPYEWTWN` mnemonic.
     /// </summary>
-    CPYEWTWN,
+    CPYEWTWN = 148,
     /// <summary>
     /// This `CPYFE` mnemonic.
     /// </summary>
-    CPYFE,
+    CPYFE = 149,
     /// <summary>
     /// This `CPYFEN` mnemonic.
     /// </summary>
-    CPYFEN,
+    CPYFEN = 150,
     /// <summary>
     /// This `CPYFERN` mnemonic.
     /// </summary>
-    CPYFERN,
+    CPYFERN = 151,
     /// <summary>
     /// This `CPYFERT` mnemonic.
     /// </summary>
-    CPYFERT,
+    CPYFERT = 152,
     /// <summary>
     /// This `CPYFERTN` mnemonic.
     /// </summary>
-    CPYFERTN,
+    CPYFERTN = 153,
     /// <summary>
     /// This `CPYFERTRN` mnemonic.
     /// </summary>
-    CPYFERTRN,
+    CPYFERTRN = 154,
     /// <summary>
     /// This `CPYFERTWN` mnemonic.
     /// </summary>
-    CPYFERTWN,
+    CPYFERTWN = 155,
     /// <summary>
     /// This `CPYFET` mnemonic.
     /// </summary>
-    CPYFET,
+    CPYFET = 156,
     /// <summary>
     /// This `CPYFETN` mnemonic.
     /// </summary>
-    CPYFETN,
+    CPYFETN = 157,
     /// <summary>
     /// This `CPYFETRN` mnemonic.
     /// </summary>
-    CPYFETRN,
+    CPYFETRN = 158,
     /// <summary>
     /// This `CPYFETWN` mnemonic.
     /// </summary>
-    CPYFETWN,
+    CPYFETWN = 159,
     /// <summary>
     /// This `CPYFEWN` mnemonic.
     /// </summary>
-    CPYFEWN,
+    CPYFEWN = 160,
     /// <summary>
     /// This `CPYFEWT` mnemonic.
     /// </summary>
-    CPYFEWT,
+    CPYFEWT = 161,
     /// <summary>
     /// This `CPYFEWTN` mnemonic.
     /// </summary>
-    CPYFEWTN,
+    CPYFEWTN = 162,
     /// <summary>
     /// This `CPYFEWTRN` mnemonic.
     /// </summary>
-    CPYFEWTRN,
+    CPYFEWTRN = 163,
     /// <summary>
     /// This `CPYFEWTWN` mnemonic.
     /// </summary>
-    CPYFEWTWN,
+    CPYFEWTWN = 164,
     /// <summary>
     /// This `CPYFM` mnemonic.
     /// </summary>
-    CPYFM,
+    CPYFM = 165,
     /// <summary>
     /// This `CPYFMN` mnemonic.
     /// </summary>
-    CPYFMN,
+    CPYFMN = 166,
     /// <summary>
     /// This `CPYFMRN` mnemonic.
     /// </summary>
-    CPYFMRN,
+    CPYFMRN = 167,
     /// <summary>
     /// This `CPYFMRT` mnemonic.
     /// </summary>
-    CPYFMRT,
+    CPYFMRT = 168,
     /// <summary>
     /// This `CPYFMRTN` mnemonic.
     /// </summary>
-    CPYFMRTN,
+    CPYFMRTN = 169,
     /// <summary>
     /// This `CPYFMRTRN` mnemonic.
     /// </summary>
-    CPYFMRTRN,
+    CPYFMRTRN = 170,
     /// <summary>
     /// This `CPYFMRTWN` mnemonic.
     /// </summary>
-    CPYFMRTWN,
+    CPYFMRTWN = 171,
     /// <summary>
     /// This `CPYFMT` mnemonic.
     /// </summary>
-    CPYFMT,
+    CPYFMT = 172,
     /// <summary>
     /// This `CPYFMTN` mnemonic.
     /// </summary>
-    CPYFMTN,
+    CPYFMTN = 173,
     /// <summary>
     /// This `CPYFMTRN` mnemonic.
     /// </summary>
-    CPYFMTRN,
+    CPYFMTRN = 174,
     /// <summary>
     /// This `CPYFMTWN` mnemonic.
     /// </summary>
-    CPYFMTWN,
+    CPYFMTWN = 175,
     /// <summary>
     /// This `CPYFMWN` mnemonic.
     /// </summary>
-    CPYFMWN,
+    CPYFMWN = 176,
     /// <summary>
     /// This `CPYFMWT` mnemonic.
     /// </summary>
-    CPYFMWT,
+    CPYFMWT = 177,
     /// <summary>
     /// This `CPYFMWTN` mnemonic.
     /// </summary>
-    CPYFMWTN,
+    CPYFMWTN = 178,
     /// <summary>
     /// This `CPYFMWTRN` mnemonic.
     /// </summary>
-    CPYFMWTRN,
+    CPYFMWTRN = 179,
     /// <summary>
     /// This `CPYFMWTWN` mnemonic.
     /// </summary>
-    CPYFMWTWN,
+    CPYFMWTWN = 180,
     /// <summary>
     /// This `CPYFP` mnemonic.
     /// </summary>
-    CPYFP,
+    CPYFP = 181,
     /// <summary>
     /// This `CPYFPN` mnemonic.
     /// </summary>
-    CPYFPN,
+    CPYFPN = 182,
     /// <summary>
     /// This `CPYFPRN` mnemonic.
     /// </summary>
-    CPYFPRN,
+    CPYFPRN = 183,
     /// <summary>
     /// This `CPYFPRT` mnemonic.
     /// </summary>
-    CPYFPRT,
+    CPYFPRT = 184,
     /// <summary>
     /// This `CPYFPRTN` mnemonic.
     /// </summary>
-    CPYFPRTN,
+    CPYFPRTN = 185,
     /// <summary>
     /// This `CPYFPRTRN` mnemonic.
     /// </summary>
-    CPYFPRTRN,
+    CPYFPRTRN = 186,
     /// <summary>
     /// This `CPYFPRTWN` mnemonic.
     /// </summary>
-    CPYFPRTWN,
+    CPYFPRTWN = 187,
     /// <summary>
     /// This `CPYFPT` mnemonic.
     /// </summary>
-    CPYFPT,
+    CPYFPT = 188,
     /// <summary>
     /// This `CPYFPTN` mnemonic.
     /// </summary>
-    CPYFPTN,
+    CPYFPTN = 189,
     /// <summary>
     /// This `CPYFPTRN` mnemonic.
     /// </summary>
-    CPYFPTRN,
+    CPYFPTRN = 190,
     /// <summary>
     /// This `CPYFPTWN` mnemonic.
     /// </summary>
-    CPYFPTWN,
+    CPYFPTWN = 191,
     /// <summary>
     /// This `CPYFPWN` mnemonic.
     /// </summary>
-    CPYFPWN,
+    CPYFPWN = 192,
     /// <summary>
     /// This `CPYFPWT` mnemonic.
     /// </summary>
-    CPYFPWT,
+    CPYFPWT = 193,
     /// <summary>
     /// This `CPYFPWTN` mnemonic.
     /// </summary>
-    CPYFPWTN,
+    CPYFPWTN = 194,
     /// <summary>
     /// This `CPYFPWTRN` mnemonic.
     /// </summary>
-    CPYFPWTRN,
+    CPYFPWTRN = 195,
     /// <summary>
     /// This `CPYFPWTWN` mnemonic.
     /// </summary>
-    CPYFPWTWN,
+    CPYFPWTWN = 196,
     /// <summary>
     /// This `CPYM` mnemonic.
     /// </summary>
-    CPYM,
+    CPYM = 197,
     /// <summary>
     /// This `CPYMN` mnemonic.
     /// </summary>
-    CPYMN,
+    CPYMN = 198,
     /// <summary>
     /// This `CPYMRN` mnemonic.
     /// </summary>
-    CPYMRN,
+    CPYMRN = 199,
     /// <summary>
     /// This `CPYMRT` mnemonic.
     /// </summary>
-    CPYMRT,
+    CPYMRT = 200,
     /// <summary>
     /// This `CPYMRTN` mnemonic.
     /// </summary>
-    CPYMRTN,
+    CPYMRTN = 201,
     /// <summary>
     /// This `CPYMRTRN` mnemonic.
     /// </summary>
-    CPYMRTRN,
+    CPYMRTRN = 202,
     /// <summary>
     /// This `CPYMRTWN` mnemonic.
     /// </summary>
-    CPYMRTWN,
+    CPYMRTWN = 203,
     /// <summary>
     /// This `CPYMT` mnemonic.
     /// </summary>
-    CPYMT,
+    CPYMT = 204,
     /// <summary>
     /// This `CPYMTN` mnemonic.
     /// </summary>
-    CPYMTN,
+    CPYMTN = 205,
     /// <summary>
     /// This `CPYMTRN` mnemonic.
     /// </summary>
-    CPYMTRN,
+    CPYMTRN = 206,
     /// <summary>
     /// This `CPYMTWN` mnemonic.
     /// </summary>
-    CPYMTWN,
+    CPYMTWN = 207,
     /// <summary>
     /// This `CPYMWN` mnemonic.
     /// </summary>
-    CPYMWN,
+    CPYMWN = 208,
     /// <summary>
     /// This `CPYMWT` mnemonic.
     /// </summary>
-    CPYMWT,
+    CPYMWT = 209,
     /// <summary>
     /// This `CPYMWTN` mnemonic.
     /// </summary>
-    CPYMWTN,
+    CPYMWTN = 210,
     /// <summary>
     /// This `CPYMWTRN` mnemonic.
     /// </summary>
-    CPYMWTRN,
+    CPYMWTRN = 211,
     /// <summary>
     /// This `CPYMWTWN` mnemonic.
     /// </summary>
-    CPYMWTWN,
+    CPYMWTWN = 212,
     /// <summary>
     /// This `CPYP` mnemonic.
     /// </summary>
-    CPYP,
+    CPYP = 213,
     /// <summary>
     /// This `CPYPN` mnemonic.
     /// </summary>
-    CPYPN,
+    CPYPN = 214,
     /// <summary>
     /// This `CPYPRN` mnemonic.
     /// </summary>
-    CPYPRN,
+    CPYPRN = 215,
     /// <summary>
     /// This `CPYPRT` mnemonic.
     /// </summary>
-    CPYPRT,
+    CPYPRT = 216,
     /// <summary>
     /// This `CPYPRTN` mnemonic.
     /// </summary>
-    CPYPRTN,
+    CPYPRTN = 217,
     /// <summary>
     /// This `CPYPRTRN` mnemonic.
     /// </summary>
-    CPYPRTRN,
+    CPYPRTRN = 218,
     /// <summary>
     /// This `CPYPRTWN` mnemonic.
     /// </summary>
-    CPYPRTWN,
+    CPYPRTWN = 219,
     /// <summary>
     /// This `CPYPT` mnemonic.
     /// </summary>
-    CPYPT,
+    CPYPT = 220,
     /// <summary>
     /// This `CPYPTN` mnemonic.
     /// </summary>
-    CPYPTN,
+    CPYPTN = 221,
     /// <summary>
     /// This `CPYPTRN` mnemonic.
     /// </summary>
-    CPYPTRN,
+    CPYPTRN = 222,
     /// <summary>
     /// This `CPYPTWN` mnemonic.
     /// </summary>
-    CPYPTWN,
+    CPYPTWN = 223,
     /// <summary>
     /// This `CPYPWN` mnemonic.
     /// </summary>
-    CPYPWN,
+    CPYPWN = 224,
     /// <summary>
     /// This `CPYPWT` mnemonic.
     /// </summary>
-    CPYPWT,
+    CPYPWT = 225,
     /// <summary>
     /// This `CPYPWTN` mnemonic.
     /// </summary>
-    CPYPWTN,
+    CPYPWTN = 226,
     /// <summary>
     /// This `CPYPWTRN` mnemonic.
     /// </summary>
-    CPYPWTRN,
+    CPYPWTRN = 227,
     /// <summary>
     /// This `CPYPWTWN` mnemonic.
     /// </summary>
-    CPYPWTWN,
+    CPYPWTWN = 228,
     /// <summary>
     /// This `CRC32B` mnemonic.
     /// </summary>
-    CRC32B,
+    CRC32B = 229,
     /// <summary>
     /// This `CRC32CB` mnemonic.
     /// </summary>
-    CRC32CB,
+    CRC32CB = 230,
     /// <summary>
     /// This `CRC32CH` mnemonic.
     /// </summary>
-    CRC32CH,
+    CRC32CH = 231,
     /// <summary>
     /// This `CRC32CW` mnemonic.
     /// </summary>
-    CRC32CW,
+    CRC32CW = 232,
     /// <summary>
     /// This `CRC32CX` mnemonic.
     /// </summary>
-    CRC32CX,
+    CRC32CX = 233,
     /// <summary>
     /// This `CRC32H` mnemonic.
     /// </summary>
-    CRC32H,
+    CRC32H = 234,
     /// <summary>
     /// This `CRC32W` mnemonic.
     /// </summary>
-    CRC32W,
+    CRC32W = 235,
     /// <summary>
     /// This `CRC32X` mnemonic.
     /// </summary>
-    CRC32X,
+    CRC32X = 236,
     /// <summary>
     /// This `CSDB` mnemonic.
     /// </summary>
-    CSDB,
+    CSDB = 237,
     /// <summary>
     /// This `CSEL` mnemonic.
     /// </summary>
-    CSEL,
+    CSEL = 238,
     /// <summary>
     /// This `CSINC` mnemonic.
     /// </summary>
-    CSINC,
+    CSINC = 239,
     /// <summary>
     /// This `CSINV` mnemonic.
     /// </summary>
-    CSINV,
+    CSINV = 240,
     /// <summary>
     /// This `CSNEG` mnemonic.
     /// </summary>
-    CSNEG,
+    CSNEG = 241,
     /// <summary>
     /// This `CTZ` mnemonic.
     /// </summary>
-    CTZ,
+    CTZ = 242,
     /// <summary>
     /// This `DCPS1` mnemonic.
     /// </summary>
-    DCPS1,
+    DCPS1 = 243,
     /// <summary>
     /// This `DCPS2` mnemonic.
     /// </summary>
-    DCPS2,
+    DCPS2 = 244,
     /// <summary>
     /// This `DCPS3` mnemonic.
     /// </summary>
-    DCPS3,
+    DCPS3 = 245,
     /// <summary>
     /// This `DGH` mnemonic.
     /// </summary>
-    DGH,
+    DGH = 246,
     /// <summary>
     /// This `DMB` mnemonic.
     /// </summary>
-    DMB,
+    DMB = 247,
     /// <summary>
     /// This `DRPS` mnemonic.
     /// </summary>
-    DRPS,
+    DRPS = 248,
     /// <summary>
     /// This `DSB` mnemonic.
     /// </summary>
-    DSB,
+    DSB = 249,
     /// <summary>
     /// This `DUP` mnemonic.
     /// </summary>
-    DUP,
+    DUP = 250,
     /// <summary>
     /// This `EON` mnemonic.
     /// </summary>
-    EON,
+    EON = 251,
     /// <summary>
     /// This `EOR` mnemonic.
     /// </summary>
-    EOR,
+    EOR = 252,
     /// <summary>
     /// This `EOR3` mnemonic.
     /// </summary>
-    EOR3,
+    EOR3 = 253,
     /// <summary>
     /// This `ERET` mnemonic.
     /// </summary>
-    ERET,
+    ERET = 254,
     /// <summary>
     /// This `ERETAA` mnemonic.
     /// </summary>
-    ERETAA,
+    ERETAA = 255,
     /// <summary>
     /// This `ERETAB` mnemonic.
     /// </summary>
-    ERETAB,
+    ERETAB = 256,
     /// <summary>
     /// This `ESB` mnemonic.
     /// </summary>
-    ESB,
+    ESB = 257,
     /// <summary>
     /// This `EXT` mnemonic.
     /// </summary>
-    EXT,
+    EXT = 258,
     /// <summary>
     /// This `EXTR` mnemonic.
     /// </summary>
-    EXTR,
+    EXTR = 259,
     /// <summary>
     /// This `F1CVTL` mnemonic.
     /// </summary>
-    F1CVTL,
+    F1CVTL = 260,
     /// <summary>
     /// This `F2CVTL` mnemonic.
     /// </summary>
-    F2CVTL,
+    F2CVTL = 261,
     /// <summary>
     /// This `FABD` mnemonic.
     /// </summary>
-    FABD,
+    FABD = 262,
     /// <summary>
     /// This `FABS` mnemonic.
     /// </summary>
-    FABS,
+    FABS = 263,
     /// <summary>
     /// This `FACGE` mnemonic.
     /// </summary>
-    FACGE,
+    FACGE = 264,
     /// <summary>
     /// This `FACGT` mnemonic.
     /// </summary>
-    FACGT,
+    FACGT = 265,
     /// <summary>
     /// This `FADD` mnemonic.
     /// </summary>
-    FADD,
+    FADD = 266,
     /// <summary>
     /// This `FADDP` mnemonic.
     /// </summary>
-    FADDP,
+    FADDP = 267,
     /// <summary>
     /// This `FAMAX` mnemonic.
     /// </summary>
-    FAMAX,
+    FAMAX = 268,
     /// <summary>
     /// This `FAMIN` mnemonic.
     /// </summary>
-    FAMIN,
+    FAMIN = 269,
     /// <summary>
     /// This `FCADD` mnemonic.
     /// </summary>
-    FCADD,
+    FCADD = 270,
     /// <summary>
     /// This `FCCMP` mnemonic.
     /// </summary>
-    FCCMP,
+    FCCMP = 271,
     /// <summary>
     /// This `FCCMPE` mnemonic.
     /// </summary>
-    FCCMPE,
+    FCCMPE = 272,
     /// <summary>
     /// This `FCMEQ` mnemonic.
     /// </summary>
-    FCMEQ,
+    FCMEQ = 273,
     /// <summary>
     /// This `FCMGE` mnemonic.
     /// </summary>
-    FCMGE,
+    FCMGE = 274,
     /// <summary>
     /// This `FCMGT` mnemonic.
     /// </summary>
-    FCMGT,
+    FCMGT = 275,
     /// <summary>
     /// This `FCMLA` mnemonic.
     /// </summary>
-    FCMLA,
+    FCMLA = 276,
     /// <summary>
     /// This `FCMLE` mnemonic.
     /// </summary>
-    FCMLE,
+    FCMLE = 277,
     /// <summary>
     /// This `FCMLT` mnemonic.
     /// </summary>
-    FCMLT,
+    FCMLT = 278,
     /// <summary>
     /// This `FCMP` mnemonic.
     /// </summary>
-    FCMP,
+    FCMP = 279,
     /// <summary>
     /// This `FCMPE` mnemonic.
     /// </summary>
-    FCMPE,
+    FCMPE = 280,
     /// <summary>
     /// This `FCSEL` mnemonic.
     /// </summary>
-    FCSEL,
+    FCSEL = 281,
     /// <summary>
     /// This `FCVT` mnemonic.
     /// </summary>
-    FCVT,
+    FCVT = 282,
     /// <summary>
     /// This `FCVTAS` mnemonic.
     /// </summary>
-    FCVTAS,
+    FCVTAS = 283,
     /// <summary>
     /// This `FCVTAU` mnemonic.
     /// </summary>
-    FCVTAU,
+    FCVTAU = 284,
     /// <summary>
     /// This `FCVTL` mnemonic.
     /// </summary>
-    FCVTL,
+    FCVTL = 285,
     /// <summary>
     /// This `FCVTMS` mnemonic.
     /// </summary>
-    FCVTMS,
+    FCVTMS = 286,
     /// <summary>
     /// This `FCVTMU` mnemonic.
     /// </summary>
-    FCVTMU,
+    FCVTMU = 287,
     /// <summary>
     /// This `FCVTN` mnemonic.
     /// </summary>
-    FCVTN,
+    FCVTN = 288,
     /// <summary>
     /// This `FCVTNS` mnemonic.
     /// </summary>
-    FCVTNS,
+    FCVTNS = 289,
     /// <summary>
     /// This `FCVTNU` mnemonic.
     /// </summary>
-    FCVTNU,
+    FCVTNU = 290,
     /// <summary>
     /// This `FCVTPS` mnemonic.
     /// </summary>
-    FCVTPS,
+    FCVTPS = 291,
     /// <summary>
     /// This `FCVTPU` mnemonic.
     /// </summary>
-    FCVTPU,
+    FCVTPU = 292,
     /// <summary>
     /// This `FCVTXN` mnemonic.
     /// </summary>
-    FCVTXN,
+    FCVTXN = 293,
     /// <summary>
     /// This `FCVTZS` mnemonic.
     /// </summary>
-    FCVTZS,
+    FCVTZS = 294,
     /// <summary>
     /// This `FCVTZU` mnemonic.
     /// </summary>
-    FCVTZU,
+    FCVTZU = 295,
     /// <summary>
     /// This `FDIV` mnemonic.
     /// </summary>
-    FDIV,
+    FDIV = 296,
     /// <summary>
     /// This `FDOT` mnemonic.
     /// </summary>
-    FDOT,
+    FDOT = 297,
     /// <summary>
     /// This `FJCVTZS` mnemonic.
     /// </summary>
-    FJCVTZS,
+    FJCVTZS = 298,
     /// <summary>
     /// This `FMADD` mnemonic.
     /// </summary>
-    FMADD,
+    FMADD = 299,
     /// <summary>
     /// This `FMAX` mnemonic.
     /// </summary>
-    FMAX,
+    FMAX = 300,
     /// <summary>
     /// This `FMAXNM` mnemonic.
     /// </summary>
-    FMAXNM,
+    FMAXNM = 301,
     /// <summary>
     /// This `FMAXNMP` mnemonic.
     /// </summary>
-    FMAXNMP,
+    FMAXNMP = 302,
     /// <summary>
     /// This `FMAXNMV` mnemonic.
     /// </summary>
-    FMAXNMV,
+    FMAXNMV = 303,
     /// <summary>
     /// This `FMAXP` mnemonic.
     /// </summary>
-    FMAXP,
+    FMAXP = 304,
     /// <summary>
     /// This `FMAXV` mnemonic.
     /// </summary>
-    FMAXV,
+    FMAXV = 305,
     /// <summary>
     /// This `FMIN` mnemonic.
     /// </summary>
-    FMIN,
+    FMIN = 306,
     /// <summary>
     /// This `FMINNM` mnemonic.
     /// </summary>
-    FMINNM,
+    FMINNM = 307,
     /// <summary>
     /// This `FMINNMP` mnemonic.
     /// </summary>
-    FMINNMP,
+    FMINNMP = 308,
     /// <summary>
     /// This `FMINNMV` mnemonic.
     /// </summary>
-    FMINNMV,
+    FMINNMV = 309,
     /// <summary>
     /// This `FMINP` mnemonic.
     /// </summary>
-    FMINP,
+    FMINP = 310,
     /// <summary>
     /// This `FMINV` mnemonic.
     /// </summary>
-    FMINV,
+    FMINV = 311,
     /// <summary>
     /// This `FMLA` mnemonic.
     /// </summary>
-    FMLA,
+    FMLA = 312,
     /// <summary>
     /// This `FMLAL` mnemonic.
     /// </summary>
-    FMLAL,
+    FMLAL = 313,
     /// <summary>
     /// This `FMLAL2` mnemonic.
     /// </summary>
-    FMLAL2,
+    FMLAL2 = 314,
     /// <summary>
     /// This `FMLALB` mnemonic.
     /// </summary>
-    FMLALB,
+    FMLALB = 315,
     /// <summary>
     /// This `FMLALLBB` mnemonic.
     /// </summary>
-    FMLALLBB,
+    FMLALLBB = 316,
     /// <summary>
     /// This `FMLALLBT` mnemonic.
     /// </summary>
-    FMLALLBT,
+    FMLALLBT = 317,
     /// <summary>
     /// This `FMLALLTB` mnemonic.
     /// </summary>
-    FMLALLTB,
+    FMLALLTB = 318,
     /// <summary>
     /// This `FMLALLTT` mnemonic.
     /// </summary>
-    FMLALLTT,
+    FMLALLTT = 319,
     /// <summary>
     /// This `FMLALT` mnemonic.
     /// </summary>
-    FMLALT,
+    FMLALT = 320,
     /// <summary>
     /// This `FMLS` mnemonic.
     /// </summary>
-    FMLS,
+    FMLS = 321,
     /// <summary>
     /// This `FMLSL` mnemonic.
     /// </summary>
-    FMLSL,
+    FMLSL = 322,
     /// <summary>
     /// This `FMLSL2` mnemonic.
     /// </summary>
-    FMLSL2,
+    FMLSL2 = 323,
     /// <summary>
     /// This `FMMLA` mnemonic.
     /// </summary>
-    FMMLA,
+    FMMLA = 324,
     /// <summary>
     /// This `FMOV` mnemonic.
     /// </summary>
-    FMOV,
+    FMOV = 325,
     /// <summary>
     /// This `FMSUB` mnemonic.
     /// </summary>
-    FMSUB,
+    FMSUB = 326,
     /// <summary>
     /// This `FMUL` mnemonic.
     /// </summary>
-    FMUL,
+    FMUL = 327,
     /// <summary>
     /// This `FMULX` mnemonic.
     /// </summary>
-    FMULX,
+    FMULX = 328,
     /// <summary>
     /// This `FNEG` mnemonic.
     /// </summary>
-    FNEG,
+    FNEG = 329,
     /// <summary>
     /// This `FNMADD` mnemonic.
     /// </summary>
-    FNMADD,
+    FNMADD = 330,
     /// <summary>
     /// This `FNMSUB` mnemonic.
     /// </summary>
-    FNMSUB,
+    FNMSUB = 331,
     /// <summary>
     /// This `FNMUL` mnemonic.
     /// </summary>
-    FNMUL,
+    FNMUL = 332,
     /// <summary>
     /// This `FRECPE` mnemonic.
     /// </summary>
-    FRECPE,
+    FRECPE = 333,
     /// <summary>
     /// This `FRECPS` mnemonic.
     /// </summary>
-    FRECPS,
+    FRECPS = 334,
     /// <summary>
     /// This `FRECPX` mnemonic.
     /// </summary>
-    FRECPX,
+    FRECPX = 335,
     /// <summary>
     /// This `FRINT32X` mnemonic.
     /// </summary>
-    FRINT32X,
+    FRINT32X = 336,
     /// <summary>
     /// This `FRINT32Z` mnemonic.
     /// </summary>
-    FRINT32Z,
+    FRINT32Z = 337,
     /// <summary>
     /// This `FRINT64X` mnemonic.
     /// </summary>
-    FRINT64X,
+    FRINT64X = 338,
     /// <summary>
     /// This `FRINT64Z` mnemonic.
     /// </summary>
-    FRINT64Z,
+    FRINT64Z = 339,
     /// <summary>
     /// This `FRINTA` mnemonic.
     /// </summary>
-    FRINTA,
+    FRINTA = 340,
     /// <summary>
     /// This `FRINTI` mnemonic.
     /// </summary>
-    FRINTI,
+    FRINTI = 341,
     /// <summary>
     /// This `FRINTM` mnemonic.
     /// </summary>
-    FRINTM,
+    FRINTM = 342,
     /// <summary>
     /// This `FRINTN` mnemonic.
     /// </summary>
-    FRINTN,
+    FRINTN = 343,
     /// <summary>
     /// This `FRINTP` mnemonic.
     /// </summary>
-    FRINTP,
+    FRINTP = 344,
     /// <summary>
     /// This `FRINTX` mnemonic.
     /// </summary>
-    FRINTX,
+    FRINTX = 345,
     /// <summary>
     /// This `FRINTZ` mnemonic.
     /// </summary>
-    FRINTZ,
+    FRINTZ = 346,
     /// <summary>
     /// This `FRSQRTE` mnemonic.
     /// </summary>
-    FRSQRTE,
+    FRSQRTE = 347,
     /// <summary>
     /// This `FRSQRTS` mnemonic.
     /// </summary>
-    FRSQRTS,
+    FRSQRTS = 348,
     /// <summary>
     /// This `FSCALE` mnemonic.
     /// </summary>
-    FSCALE,
+    FSCALE = 349,
     /// <summary>
     /// This `FSQRT` mnemonic.
     /// </summary>
-    FSQRT,
+    FSQRT = 350,
     /// <summary>
     /// This `FSUB` mnemonic.
     /// </summary>
-    FSUB,
+    FSUB = 351,
     /// <summary>
     /// This `GCSB` mnemonic.
     /// </summary>
-    GCSB,
+    GCSB = 352,
     /// <summary>
     /// This `GCSSTR` mnemonic.
     /// </summary>
-    GCSSTR,
+    GCSSTR = 353,
     /// <summary>
     /// This `GCSSTTR` mnemonic.
     /// </summary>
-    GCSSTTR,
+    GCSSTTR = 354,
     /// <summary>
     /// This `GMI` mnemonic.
     /// </summary>
-    GMI,
+    GMI = 355,
     /// <summary>
     /// This `HINT` mnemonic.
     /// </summary>
-    HINT,
+    HINT = 356,
     /// <summary>
     /// This `HLT` mnemonic.
     /// </summary>
-    HLT,
+    HLT = 357,
     /// <summary>
     /// This `HVC` mnemonic.
     /// </summary>
-    HVC,
+    HVC = 358,
     /// <summary>
     /// This `INS` mnemonic.
     /// </summary>
-    INS,
+    INS = 359,
     /// <summary>
     /// This `IRG` mnemonic.
     /// </summary>
-    IRG,
+    IRG = 360,
     /// <summary>
     /// This `ISB` mnemonic.
     /// </summary>
-    ISB,
+    ISB = 361,
     /// <summary>
     /// This `LD1` mnemonic.
     /// </summary>
-    LD1,
+    LD1 = 362,
     /// <summary>
     /// This `LD1R` mnemonic.
     /// </summary>
-    LD1R,
+    LD1R = 363,
     /// <summary>
     /// This `LD2` mnemonic.
     /// </summary>
-    LD2,
+    LD2 = 364,
     /// <summary>
     /// This `LD2R` mnemonic.
     /// </summary>
-    LD2R,
+    LD2R = 365,
     /// <summary>
     /// This `LD3` mnemonic.
     /// </summary>
-    LD3,
+    LD3 = 366,
     /// <summary>
     /// This `LD3R` mnemonic.
     /// </summary>
-    LD3R,
+    LD3R = 367,
     /// <summary>
     /// This `LD4` mnemonic.
     /// </summary>
-    LD4,
+    LD4 = 368,
     /// <summary>
     /// This `LD4R` mnemonic.
     /// </summary>
-    LD4R,
+    LD4R = 369,
     /// <summary>
     /// This `LD64B` mnemonic.
     /// </summary>
-    LD64B,
+    LD64B = 370,
     /// <summary>
     /// This `LDADD` mnemonic.
     /// </summary>
-    LDADD,
+    LDADD = 371,
     /// <summary>
     /// This `LDADDA` mnemonic.
     /// </summary>
-    LDADDA,
+    LDADDA = 372,
     /// <summary>
     /// This `LDADDAB` mnemonic.
     /// </summary>
-    LDADDAB,
+    LDADDAB = 373,
     /// <summary>
     /// This `LDADDAH` mnemonic.
     /// </summary>
-    LDADDAH,
+    LDADDAH = 374,
     /// <summary>
     /// This `LDADDAL` mnemonic.
     /// </summary>
-    LDADDAL,
+    LDADDAL = 375,
     /// <summary>
     /// This `LDADDALB` mnemonic.
     /// </summary>
-    LDADDALB,
+    LDADDALB = 376,
     /// <summary>
     /// This `LDADDALH` mnemonic.
     /// </summary>
-    LDADDALH,
+    LDADDALH = 377,
     /// <summary>
     /// This `LDADDB` mnemonic.
     /// </summary>
-    LDADDB,
+    LDADDB = 378,
     /// <summary>
     /// This `LDADDH` mnemonic.
     /// </summary>
-    LDADDH,
+    LDADDH = 379,
     /// <summary>
     /// This `LDADDL` mnemonic.
     /// </summary>
-    LDADDL,
+    LDADDL = 380,
     /// <summary>
     /// This `LDADDLB` mnemonic.
     /// </summary>
-    LDADDLB,
+    LDADDLB = 381,
     /// <summary>
     /// This `LDADDLH` mnemonic.
     /// </summary>
-    LDADDLH,
+    LDADDLH = 382,
     /// <summary>
     /// This `LDAP1` mnemonic.
     /// </summary>
-    LDAP1,
+    LDAP1 = 383,
     /// <summary>
     /// This `LDAPR` mnemonic.
     /// </summary>
-    LDAPR,
+    LDAPR = 384,
     /// <summary>
     /// This `LDAPRB` mnemonic.
     /// </summary>
-    LDAPRB,
+    LDAPRB = 385,
     /// <summary>
     /// This `LDAPRH` mnemonic.
     /// </summary>
-    LDAPRH,
+    LDAPRH = 386,
     /// <summary>
     /// This `LDAPUR` mnemonic.
     /// </summary>
-    LDAPUR,
+    LDAPUR = 387,
     /// <summary>
     /// This `LDAPURB` mnemonic.
     /// </summary>
-    LDAPURB,
+    LDAPURB = 388,
     /// <summary>
     /// This `LDAPURH` mnemonic.
     /// </summary>
-    LDAPURH,
+    LDAPURH = 389,
     /// <summary>
     /// This `LDAPURSB` mnemonic.
     /// </summary>
-    LDAPURSB,
+    LDAPURSB = 390,
     /// <summary>
     /// This `LDAPURSH` mnemonic.
     /// </summary>
-    LDAPURSH,
+    LDAPURSH = 391,
     /// <summary>
     /// This `LDAPURSW` mnemonic.
     /// </summary>
-    LDAPURSW,
+    LDAPURSW = 392,
     /// <summary>
     /// This `LDAR` mnemonic.
     /// </summary>
-    LDAR,
+    LDAR = 393,
     /// <summary>
     /// This `LDARB` mnemonic.
     /// </summary>
-    LDARB,
+    LDARB = 394,
     /// <summary>
     /// This `LDARH` mnemonic.
     /// </summary>
-    LDARH,
+    LDARH = 395,
     /// <summary>
     /// This `LDATXR` mnemonic.
     /// </summary>
-    LDATXR,
+    LDATXR = 396,
     /// <summary>
     /// This `LDAXP` mnemonic.
     /// </summary>
-    LDAXP,
+    LDAXP = 397,
     /// <summary>
     /// This `LDAXR` mnemonic.
     /// </summary>
-    LDAXR,
+    LDAXR = 398,
     /// <summary>
     /// This `LDAXRB` mnemonic.
     /// </summary>
-    LDAXRB,
+    LDAXRB = 399,
     /// <summary>
     /// This `LDAXRH` mnemonic.
     /// </summary>
-    LDAXRH,
+    LDAXRH = 400,
     /// <summary>
     /// This `LDBFADD` mnemonic.
     /// </summary>
-    LDBFADD,
+    LDBFADD = 401,
     /// <summary>
     /// This `LDBFADDA` mnemonic.
     /// </summary>
-    LDBFADDA,
+    LDBFADDA = 402,
     /// <summary>
     /// This `LDBFADDAL` mnemonic.
     /// </summary>
-    LDBFADDAL,
+    LDBFADDAL = 403,
     /// <summary>
     /// This `LDBFADDL` mnemonic.
     /// </summary>
-    LDBFADDL,
+    LDBFADDL = 404,
     /// <summary>
     /// This `LDBFMAX` mnemonic.
     /// </summary>
-    LDBFMAX,
+    LDBFMAX = 405,
     /// <summary>
     /// This `LDBFMAXA` mnemonic.
     /// </summary>
-    LDBFMAXA,
+    LDBFMAXA = 406,
     /// <summary>
     /// This `LDBFMAXAL` mnemonic.
     /// </summary>
-    LDBFMAXAL,
+    LDBFMAXAL = 407,
     /// <summary>
     /// This `LDBFMAXL` mnemonic.
     /// </summary>
-    LDBFMAXL,
+    LDBFMAXL = 408,
     /// <summary>
     /// This `LDBFMAXNM` mnemonic.
     /// </summary>
-    LDBFMAXNM,
+    LDBFMAXNM = 409,
     /// <summary>
     /// This `LDBFMAXNMA` mnemonic.
     /// </summary>
-    LDBFMAXNMA,
+    LDBFMAXNMA = 410,
     /// <summary>
     /// This `LDBFMAXNMAL` mnemonic.
     /// </summary>
-    LDBFMAXNMAL,
+    LDBFMAXNMAL = 411,
     /// <summary>
     /// This `LDBFMAXNML` mnemonic.
     /// </summary>
-    LDBFMAXNML,
+    LDBFMAXNML = 412,
     /// <summary>
     /// This `LDBFMIN` mnemonic.
     /// </summary>
-    LDBFMIN,
+    LDBFMIN = 413,
     /// <summary>
     /// This `LDBFMINA` mnemonic.
     /// </summary>
-    LDBFMINA,
+    LDBFMINA = 414,
     /// <summary>
     /// This `LDBFMINAL` mnemonic.
     /// </summary>
-    LDBFMINAL,
+    LDBFMINAL = 415,
     /// <summary>
     /// This `LDBFMINL` mnemonic.
     /// </summary>
-    LDBFMINL,
+    LDBFMINL = 416,
     /// <summary>
     /// This `LDBFMINNM` mnemonic.
     /// </summary>
-    LDBFMINNM,
+    LDBFMINNM = 417,
     /// <summary>
     /// This `LDBFMINNMA` mnemonic.
     /// </summary>
-    LDBFMINNMA,
+    LDBFMINNMA = 418,
     /// <summary>
     /// This `LDBFMINNMAL` mnemonic.
     /// </summary>
-    LDBFMINNMAL,
+    LDBFMINNMAL = 419,
     /// <summary>
     /// This `LDBFMINNML` mnemonic.
     /// </summary>
-    LDBFMINNML,
+    LDBFMINNML = 420,
     /// <summary>
     /// This `LDCLR` mnemonic.
     /// </summary>
-    LDCLR,
+    LDCLR = 421,
     /// <summary>
     /// This `LDCLRA` mnemonic.
     /// </summary>
-    LDCLRA,
+    LDCLRA = 422,
     /// <summary>
     /// This `LDCLRAB` mnemonic.
     /// </summary>
-    LDCLRAB,
+    LDCLRAB = 423,
     /// <summary>
     /// This `LDCLRAH` mnemonic.
     /// </summary>
-    LDCLRAH,
+    LDCLRAH = 424,
     /// <summary>
     /// This `LDCLRAL` mnemonic.
     /// </summary>
-    LDCLRAL,
+    LDCLRAL = 425,
     /// <summary>
     /// This `LDCLRALB` mnemonic.
     /// </summary>
-    LDCLRALB,
+    LDCLRALB = 426,
     /// <summary>
     /// This `LDCLRALH` mnemonic.
     /// </summary>
-    LDCLRALH,
+    LDCLRALH = 427,
     /// <summary>
     /// This `LDCLRB` mnemonic.
     /// </summary>
-    LDCLRB,
+    LDCLRB = 428,
     /// <summary>
     /// This `LDCLRH` mnemonic.
     /// </summary>
-    LDCLRH,
+    LDCLRH = 429,
     /// <summary>
     /// This `LDCLRL` mnemonic.
     /// </summary>
-    LDCLRL,
+    LDCLRL = 430,
     /// <summary>
     /// This `LDCLRLB` mnemonic.
     /// </summary>
-    LDCLRLB,
+    LDCLRLB = 431,
     /// <summary>
     /// This `LDCLRLH` mnemonic.
     /// </summary>
-    LDCLRLH,
+    LDCLRLH = 432,
     /// <summary>
     /// This `LDCLRP` mnemonic.
     /// </summary>
-    LDCLRP,
+    LDCLRP = 433,
     /// <summary>
     /// This `LDCLRPA` mnemonic.
     /// </summary>
-    LDCLRPA,
+    LDCLRPA = 434,
     /// <summary>
     /// This `LDCLRPAL` mnemonic.
     /// </summary>
-    LDCLRPAL,
+    LDCLRPAL = 435,
     /// <summary>
     /// This `LDCLRPL` mnemonic.
     /// </summary>
-    LDCLRPL,
+    LDCLRPL = 436,
     /// <summary>
     /// This `LDEOR` mnemonic.
     /// </summary>
-    LDEOR,
+    LDEOR = 437,
     /// <summary>
     /// This `LDEORA` mnemonic.
     /// </summary>
-    LDEORA,
+    LDEORA = 438,
     /// <summary>
     /// This `LDEORAB` mnemonic.
     /// </summary>
-    LDEORAB,
+    LDEORAB = 439,
     /// <summary>
     /// This `LDEORAH` mnemonic.
     /// </summary>
-    LDEORAH,
+    LDEORAH = 440,
     /// <summary>
     /// This `LDEORAL` mnemonic.
     /// </summary>
-    LDEORAL,
+    LDEORAL = 441,
     /// <summary>
     /// This `LDEORALB` mnemonic.
     /// </summary>
-    LDEORALB,
+    LDEORALB = 442,
     /// <summary>
     /// This `LDEORALH` mnemonic.
     /// </summary>
-    LDEORALH,
+    LDEORALH = 443,
     /// <summary>
     /// This `LDEORB` mnemonic.
     /// </summary>
-    LDEORB,
+    LDEORB = 444,
     /// <summary>
     /// This `LDEORH` mnemonic.
     /// </summary>
-    LDEORH,
+    LDEORH = 445,
     /// <summary>
     /// This `LDEORL` mnemonic.
     /// </summary>
-    LDEORL,
+    LDEORL = 446,
     /// <summary>
     /// This `LDEORLB` mnemonic.
     /// </summary>
-    LDEORLB,
+    LDEORLB = 447,
     /// <summary>
     /// This `LDEORLH` mnemonic.
     /// </summary>
-    LDEORLH,
+    LDEORLH = 448,
     /// <summary>
     /// This `LDFADD` mnemonic.
     /// </summary>
-    LDFADD,
+    LDFADD = 449,
     /// <summary>
     /// This `LDFADDA` mnemonic.
     /// </summary>
-    LDFADDA,
+    LDFADDA = 450,
     /// <summary>
     /// This `LDFADDAL` mnemonic.
     /// </summary>
-    LDFADDAL,
+    LDFADDAL = 451,
     /// <summary>
     /// This `LDFADDL` mnemonic.
     /// </summary>
-    LDFADDL,
+    LDFADDL = 452,
     /// <summary>
     /// This `LDFMAX` mnemonic.
     /// </summary>
-    LDFMAX,
+    LDFMAX = 453,
     /// <summary>
     /// This `LDFMAXA` mnemonic.
     /// </summary>
-    LDFMAXA,
+    LDFMAXA = 454,
     /// <summary>
     /// This `LDFMAXAL` mnemonic.
     /// </summary>
-    LDFMAXAL,
+    LDFMAXAL = 455,
     /// <summary>
     /// This `LDFMAXL` mnemonic.
     /// </summary>
-    LDFMAXL,
+    LDFMAXL = 456,
     /// <summary>
     /// This `LDFMAXNM` mnemonic.
     /// </summary>
-    LDFMAXNM,
+    LDFMAXNM = 457,
     /// <summary>
     /// This `LDFMAXNMA` mnemonic.
     /// </summary>
-    LDFMAXNMA,
+    LDFMAXNMA = 458,
     /// <summary>
     /// This `LDFMAXNMAL` mnemonic.
     /// </summary>
-    LDFMAXNMAL,
+    LDFMAXNMAL = 459,
     /// <summary>
     /// This `LDFMAXNML` mnemonic.
     /// </summary>
-    LDFMAXNML,
+    LDFMAXNML = 460,
     /// <summary>
     /// This `LDFMIN` mnemonic.
     /// </summary>
-    LDFMIN,
+    LDFMIN = 461,
     /// <summary>
     /// This `LDFMINA` mnemonic.
     /// </summary>
-    LDFMINA,
+    LDFMINA = 462,
     /// <summary>
     /// This `LDFMINAL` mnemonic.
     /// </summary>
-    LDFMINAL,
+    LDFMINAL = 463,
     /// <summary>
     /// This `LDFMINL` mnemonic.
     /// </summary>
-    LDFMINL,
+    LDFMINL = 464,
     /// <summary>
     /// This `LDFMINNM` mnemonic.
     /// </summary>
-    LDFMINNM,
+    LDFMINNM = 465,
     /// <summary>
     /// This `LDFMINNMA` mnemonic.
     /// </summary>
-    LDFMINNMA,
+    LDFMINNMA = 466,
     /// <summary>
     /// This `LDFMINNMAL` mnemonic.
     /// </summary>
-    LDFMINNMAL,
+    LDFMINNMAL = 467,
     /// <summary>
     /// This `LDFMINNML` mnemonic.
     /// </summary>
-    LDFMINNML,
+    LDFMINNML = 468,
     /// <summary>
     /// This `LDG` mnemonic.
     /// </summary>
-    LDG,
+    LDG = 469,
     /// <summary>
     /// This `LDGM` mnemonic.
     /// </summary>
-    LDGM,
+    LDGM = 470,
     /// <summary>
     /// This `LDIAPP` mnemonic.
     /// </summary>
-    LDIAPP,
+    LDIAPP = 471,
     /// <summary>
     /// This `LDLAR` mnemonic.
     /// </summary>
-    LDLAR,
+    LDLAR = 472,
     /// <summary>
     /// This `LDLARB` mnemonic.
     /// </summary>
-    LDLARB,
+    LDLARB = 473,
     /// <summary>
     /// This `LDLARH` mnemonic.
     /// </summary>
-    LDLARH,
+    LDLARH = 474,
     /// <summary>
     /// This `LDNP` mnemonic.
     /// </summary>
-    LDNP,
+    LDNP = 475,
     /// <summary>
     /// This `LDP` mnemonic.
     /// </summary>
-    LDP,
+    LDP = 476,
     /// <summary>
     /// This `LDPSW` mnemonic.
     /// </summary>
-    LDPSW,
+    LDPSW = 477,
     /// <summary>
     /// This `LDR` mnemonic.
     /// </summary>
-    LDR,
+    LDR = 478,
     /// <summary>
     /// This `LDRAA` mnemonic.
     /// </summary>
-    LDRAA,
+    LDRAA = 479,
     /// <summary>
     /// This `LDRAB` mnemonic.
     /// </summary>
-    LDRAB,
+    LDRAB = 480,
     /// <summary>
     /// This `LDRB` mnemonic.
     /// </summary>
-    LDRB,
+    LDRB = 481,
     /// <summary>
     /// This `LDRH` mnemonic.
     /// </summary>
-    LDRH,
+    LDRH = 482,
     /// <summary>
     /// This `LDRSB` mnemonic.
     /// </summary>
-    LDRSB,
+    LDRSB = 483,
     /// <summary>
     /// This `LDRSH` mnemonic.
     /// </summary>
-    LDRSH,
+    LDRSH = 484,
     /// <summary>
     /// This `LDRSW` mnemonic.
     /// </summary>
-    LDRSW,
+    LDRSW = 485,
     /// <summary>
     /// This `LDSET` mnemonic.
     /// </summary>
-    LDSET,
+    LDSET = 486,
     /// <summary>
     /// This `LDSETA` mnemonic.
     /// </summary>
-    LDSETA,
+    LDSETA = 487,
     /// <summary>
     /// This `LDSETAB` mnemonic.
     /// </summary>
-    LDSETAB,
+    LDSETAB = 488,
     /// <summary>
     /// This `LDSETAH` mnemonic.
     /// </summary>
-    LDSETAH,
+    LDSETAH = 489,
     /// <summary>
     /// This `LDSETAL` mnemonic.
     /// </summary>
-    LDSETAL,
+    LDSETAL = 490,
     /// <summary>
     /// This `LDSETALB` mnemonic.
     /// </summary>
-    LDSETALB,
+    LDSETALB = 491,
     /// <summary>
     /// This `LDSETALH` mnemonic.
     /// </summary>
-    LDSETALH,
+    LDSETALH = 492,
     /// <summary>
     /// This `LDSETB` mnemonic.
     /// </summary>
-    LDSETB,
+    LDSETB = 493,
     /// <summary>
     /// This `LDSETH` mnemonic.
     /// </summary>
-    LDSETH,
+    LDSETH = 494,
     /// <summary>
     /// This `LDSETL` mnemonic.
     /// </summary>
-    LDSETL,
+    LDSETL = 495,
     /// <summary>
     /// This `LDSETLB` mnemonic.
     /// </summary>
-    LDSETLB,
+    LDSETLB = 496,
     /// <summary>
     /// This `LDSETLH` mnemonic.
     /// </summary>
-    LDSETLH,
+    LDSETLH = 497,
     /// <summary>
     /// This `LDSETP` mnemonic.
     /// </summary>
-    LDSETP,
+    LDSETP = 498,
     /// <summary>
     /// This `LDSETPA` mnemonic.
     /// </summary>
-    LDSETPA,
+    LDSETPA = 499,
     /// <summary>
     /// This `LDSETPAL` mnemonic.
     /// </summary>
-    LDSETPAL,
+    LDSETPAL = 500,
     /// <summary>
     /// This `LDSETPL` mnemonic.
     /// </summary>
-    LDSETPL,
+    LDSETPL = 501,
     /// <summary>
     /// This `LDSMAX` mnemonic.
     /// </summary>
-    LDSMAX,
+    LDSMAX = 502,
     /// <summary>
     /// This `LDSMAXA` mnemonic.
     /// </summary>
-    LDSMAXA,
+    LDSMAXA = 503,
     /// <summary>
     /// This `LDSMAXAB` mnemonic.
     /// </summary>
-    LDSMAXAB,
+    LDSMAXAB = 504,
     /// <summary>
     /// This `LDSMAXAH` mnemonic.
     /// </summary>
-    LDSMAXAH,
+    LDSMAXAH = 505,
     /// <summary>
     /// This `LDSMAXAL` mnemonic.
     /// </summary>
-    LDSMAXAL,
+    LDSMAXAL = 506,
     /// <summary>
     /// This `LDSMAXALB` mnemonic.
     /// </summary>
-    LDSMAXALB,
+    LDSMAXALB = 507,
     /// <summary>
     /// This `LDSMAXALH` mnemonic.
     /// </summary>
-    LDSMAXALH,
+    LDSMAXALH = 508,
     /// <summary>
     /// This `LDSMAXB` mnemonic.
     /// </summary>
-    LDSMAXB,
+    LDSMAXB = 509,
     /// <summary>
     /// This `LDSMAXH` mnemonic.
     /// </summary>
-    LDSMAXH,
+    LDSMAXH = 510,
     /// <summary>
     /// This `LDSMAXL` mnemonic.
     /// </summary>
-    LDSMAXL,
+    LDSMAXL = 511,
     /// <summary>
     /// This `LDSMAXLB` mnemonic.
     /// </summary>
-    LDSMAXLB,
+    LDSMAXLB = 512,
     /// <summary>
     /// This `LDSMAXLH` mnemonic.
     /// </summary>
-    LDSMAXLH,
+    LDSMAXLH = 513,
     /// <summary>
     /// This `LDSMIN` mnemonic.
     /// </summary>
-    LDSMIN,
+    LDSMIN = 514,
     /// <summary>
     /// This `LDSMINA` mnemonic.
     /// </summary>
-    LDSMINA,
+    LDSMINA = 515,
     /// <summary>
     /// This `LDSMINAB` mnemonic.
     /// </summary>
-    LDSMINAB,
+    LDSMINAB = 516,
     /// <summary>
     /// This `LDSMINAH` mnemonic.
     /// </summary>
-    LDSMINAH,
+    LDSMINAH = 517,
     /// <summary>
     /// This `LDSMINAL` mnemonic.
     /// </summary>
-    LDSMINAL,
+    LDSMINAL = 518,
     /// <summary>
     /// This `LDSMINALB` mnemonic.
     /// </summary>
-    LDSMINALB,
+    LDSMINALB = 519,
     /// <summary>
     /// This `LDSMINALH` mnemonic.
     /// </summary>
-    LDSMINALH,
+    LDSMINALH = 520,
     /// <summary>
     /// This `LDSMINB` mnemonic.
     /// </summary>
-    LDSMINB,
+    LDSMINB = 521,
     /// <summary>
     /// This `LDSMINH` mnemonic.
     /// </summary>
-    LDSMINH,
+    LDSMINH = 522,
     /// <summary>
     /// This `LDSMINL` mnemonic.
     /// </summary>
-    LDSMINL,
+    LDSMINL = 523,
     /// <summary>
     /// This `LDSMINLB` mnemonic.
     /// </summary>
-    LDSMINLB,
+    LDSMINLB = 524,
     /// <summary>
     /// This `LDSMINLH` mnemonic.
     /// </summary>
-    LDSMINLH,
+    LDSMINLH = 525,
     /// <summary>
     /// This `LDTADD` mnemonic.
     /// </summary>
-    LDTADD,
+    LDTADD = 526,
     /// <summary>
     /// This `LDTADDA` mnemonic.
     /// </summary>
-    LDTADDA,
+    LDTADDA = 527,
     /// <summary>
     /// This `LDTADDAL` mnemonic.
     /// </summary>
-    LDTADDAL,
+    LDTADDAL = 528,
     /// <summary>
     /// This `LDTADDL` mnemonic.
     /// </summary>
-    LDTADDL,
+    LDTADDL = 529,
     /// <summary>
     /// This `LDTCLR` mnemonic.
     /// </summary>
-    LDTCLR,
+    LDTCLR = 530,
     /// <summary>
     /// This `LDTCLRA` mnemonic.
     /// </summary>
-    LDTCLRA,
+    LDTCLRA = 531,
     /// <summary>
     /// This `LDTCLRAL` mnemonic.
     /// </summary>
-    LDTCLRAL,
+    LDTCLRAL = 532,
     /// <summary>
     /// This `LDTCLRL` mnemonic.
     /// </summary>
-    LDTCLRL,
+    LDTCLRL = 533,
     /// <summary>
     /// This `LDTNP` mnemonic.
     /// </summary>
-    LDTNP,
+    LDTNP = 534,
     /// <summary>
     /// This `LDTP` mnemonic.
     /// </summary>
-    LDTP,
+    LDTP = 535,
     /// <summary>
     /// This `LDTR` mnemonic.
     /// </summary>
-    LDTR,
+    LDTR = 536,
     /// <summary>
     /// This `LDTRB` mnemonic.
     /// </summary>
-    LDTRB,
+    LDTRB = 537,
     /// <summary>
     /// This `LDTRH` mnemonic.
     /// </summary>
-    LDTRH,
+    LDTRH = 538,
     /// <summary>
     /// This `LDTRSB` mnemonic.
     /// </summary>
-    LDTRSB,
+    LDTRSB = 539,
     /// <summary>
     /// This `LDTRSH` mnemonic.
     /// </summary>
-    LDTRSH,
+    LDTRSH = 540,
     /// <summary>
     /// This `LDTRSW` mnemonic.
     /// </summary>
-    LDTRSW,
+    LDTRSW = 541,
     /// <summary>
     /// This `LDTSET` mnemonic.
     /// </summary>
-    LDTSET,
+    LDTSET = 542,
     /// <summary>
     /// This `LDTSETA` mnemonic.
     /// </summary>
-    LDTSETA,
+    LDTSETA = 543,
     /// <summary>
     /// This `LDTSETAL` mnemonic.
     /// </summary>
-    LDTSETAL,
+    LDTSETAL = 544,
     /// <summary>
     /// This `LDTSETL` mnemonic.
     /// </summary>
-    LDTSETL,
+    LDTSETL = 545,
     /// <summary>
     /// This `LDTXR` mnemonic.
     /// </summary>
-    LDTXR,
+    LDTXR = 546,
     /// <summary>
     /// This `LDUMAX` mnemonic.
     /// </summary>
-    LDUMAX,
+    LDUMAX = 547,
     /// <summary>
     /// This `LDUMAXA` mnemonic.
     /// </summary>
-    LDUMAXA,
+    LDUMAXA = 548,
     /// <summary>
     /// This `LDUMAXAB` mnemonic.
     /// </summary>
-    LDUMAXAB,
+    LDUMAXAB = 549,
     /// <summary>
     /// This `LDUMAXAH` mnemonic.
     /// </summary>
-    LDUMAXAH,
+    LDUMAXAH = 550,
     /// <summary>
     /// This `LDUMAXAL` mnemonic.
     /// </summary>
-    LDUMAXAL,
+    LDUMAXAL = 551,
     /// <summary>
     /// This `LDUMAXALB` mnemonic.
     /// </summary>
-    LDUMAXALB,
+    LDUMAXALB = 552,
     /// <summary>
     /// This `LDUMAXALH` mnemonic.
     /// </summary>
-    LDUMAXALH,
+    LDUMAXALH = 553,
     /// <summary>
     /// This `LDUMAXB` mnemonic.
     /// </summary>
-    LDUMAXB,
+    LDUMAXB = 554,
     /// <summary>
     /// This `LDUMAXH` mnemonic.
     /// </summary>
-    LDUMAXH,
+    LDUMAXH = 555,
     /// <summary>
     /// This `LDUMAXL` mnemonic.
     /// </summary>
-    LDUMAXL,
+    LDUMAXL = 556,
     /// <summary>
     /// This `LDUMAXLB` mnemonic.
     /// </summary>
-    LDUMAXLB,
+    LDUMAXLB = 557,
     /// <summary>
     /// This `LDUMAXLH` mnemonic.
     /// </summary>
-    LDUMAXLH,
+    LDUMAXLH = 558,
     /// <summary>
     /// This `LDUMIN` mnemonic.
     /// </summary>
-    LDUMIN,
+    LDUMIN = 559,
     /// <summary>
     /// This `LDUMINA` mnemonic.
     /// </summary>
-    LDUMINA,
+    LDUMINA = 560,
     /// <summary>
     /// This `LDUMINAB` mnemonic.
     /// </summary>
-    LDUMINAB,
+    LDUMINAB = 561,
     /// <summary>
     /// This `LDUMINAH` mnemonic.
     /// </summary>
-    LDUMINAH,
+    LDUMINAH = 562,
     /// <summary>
     /// This `LDUMINAL` mnemonic.
     /// </summary>
-    LDUMINAL,
+    LDUMINAL = 563,
     /// <summary>
     /// This `LDUMINALB` mnemonic.
     /// </summary>
-    LDUMINALB,
+    LDUMINALB = 564,
     /// <summary>
     /// This `LDUMINALH` mnemonic.
     /// </summary>
-    LDUMINALH,
+    LDUMINALH = 565,
     /// <summary>
     /// This `LDUMINB` mnemonic.
     /// </summary>
-    LDUMINB,
+    LDUMINB = 566,
     /// <summary>
     /// This `LDUMINH` mnemonic.
     /// </summary>
-    LDUMINH,
+    LDUMINH = 567,
     /// <summary>
     /// This `LDUMINL` mnemonic.
     /// </summary>
-    LDUMINL,
+    LDUMINL = 568,
     /// <summary>
     /// This `LDUMINLB` mnemonic.
     /// </summary>
-    LDUMINLB,
+    LDUMINLB = 569,
     /// <summary>
     /// This `LDUMINLH` mnemonic.
     /// </summary>
-    LDUMINLH,
+    LDUMINLH = 570,
     /// <summary>
     /// This `LDUR` mnemonic.
     /// </summary>
-    LDUR,
+    LDUR = 571,
     /// <summary>
     /// This `LDURB` mnemonic.
     /// </summary>
-    LDURB,
+    LDURB = 572,
     /// <summary>
     /// This `LDURH` mnemonic.
     /// </summary>
-    LDURH,
+    LDURH = 573,
     /// <summary>
     /// This `LDURSB` mnemonic.
     /// </summary>
-    LDURSB,
+    LDURSB = 574,
     /// <summary>
     /// This `LDURSH` mnemonic.
     /// </summary>
-    LDURSH,
+    LDURSH = 575,
     /// <summary>
     /// This `LDURSW` mnemonic.
     /// </summary>
-    LDURSW,
+    LDURSW = 576,
     /// <summary>
     /// This `LDXP` mnemonic.
     /// </summary>
-    LDXP,
+    LDXP = 577,
     /// <summary>
     /// This `LDXR` mnemonic.
     /// </summary>
-    LDXR,
+    LDXR = 578,
     /// <summary>
     /// This `LDXRB` mnemonic.
     /// </summary>
-    LDXRB,
+    LDXRB = 579,
     /// <summary>
     /// This `LDXRH` mnemonic.
     /// </summary>
-    LDXRH,
+    LDXRH = 580,
     /// <summary>
     /// This `LSLV` mnemonic.
     /// </summary>
-    LSLV,
+    LSLV = 581,
     /// <summary>
     /// This `LSRV` mnemonic.
     /// </summary>
-    LSRV,
+    LSRV = 582,
     /// <summary>
     /// This `LUTI2` mnemonic.
     /// </summary>
-    LUTI2,
+    LUTI2 = 583,
     /// <summary>
     /// This `LUTI4` mnemonic.
     /// </summary>
-    LUTI4,
+    LUTI4 = 584,
     /// <summary>
     /// This `MADD` mnemonic.
     /// </summary>
-    MADD,
+    MADD = 585,
     /// <summary>
     /// This `MADDPT` mnemonic.
     /// </summary>
-    MADDPT,
+    MADDPT = 586,
     /// <summary>
     /// This `MLA` mnemonic.
     /// </summary>
-    MLA,
+    MLA = 587,
     /// <summary>
     /// This `MLS` mnemonic.
     /// </summary>
-    MLS,
+    MLS = 588,
     /// <summary>
     /// This `MOVI` mnemonic.
     /// </summary>
-    MOVI,
+    MOVI = 589,
     /// <summary>
     /// This `MOVK` mnemonic.
     /// </summary>
-    MOVK,
+    MOVK = 590,
     /// <summary>
     /// This `MOVN` mnemonic.
     /// </summary>
-    MOVN,
+    MOVN = 591,
     /// <summary>
     /// This `MOVZ` mnemonic.
     /// </summary>
-    MOVZ,
+    MOVZ = 592,
     /// <summary>
     /// This `MRRS` mnemonic.
     /// </summary>
-    MRRS,
+    MRRS = 593,
     /// <summary>
     /// This `MRS` mnemonic.
     /// </summary>
-    MRS,
+    MRS = 594,
     /// <summary>
     /// This `MSR` mnemonic.
     /// </summary>
-    MSR,
+    MSR = 595,
     /// <summary>
     /// This `MSRR` mnemonic.
     /// </summary>
-    MSRR,
+    MSRR = 596,
     /// <summary>
     /// This `MSUB` mnemonic.
     /// </summary>
-    MSUB,
+    MSUB = 597,
     /// <summary>
     /// This `MSUBPT` mnemonic.
     /// </summary>
-    MSUBPT,
+    MSUBPT = 598,
     /// <summary>
     /// This `MUL` mnemonic.
     /// </summary>
-    MUL,
+    MUL = 599,
     /// <summary>
     /// This `MVNI` mnemonic.
     /// </summary>
-    MVNI,
+    MVNI = 600,
     /// <summary>
     /// This `NEG` mnemonic.
     /// </summary>
-    NEG,
+    NEG = 601,
     /// <summary>
     /// This `NOP` mnemonic.
     /// </summary>
-    NOP,
+    NOP = 602,
     /// <summary>
     /// This `NOT` mnemonic.
     /// </summary>
-    NOT,
+    NOT = 603,
     /// <summary>
     /// This `ORN` mnemonic.
     /// </summary>
-    ORN,
+    ORN = 604,
     /// <summary>
     /// This `ORR` mnemonic.
     /// </summary>
-    ORR,
+    ORR = 605,
     /// <summary>
     /// This `PACDA` mnemonic.
     /// </summary>
-    PACDA,
+    PACDA = 606,
     /// <summary>
     /// This `PACDB` mnemonic.
     /// </summary>
-    PACDB,
+    PACDB = 607,
     /// <summary>
     /// This `PACDZA` mnemonic.
     /// </summary>
-    PACDZA,
+    PACDZA = 608,
     /// <summary>
     /// This `PACDZB` mnemonic.
     /// </summary>
-    PACDZB,
+    PACDZB = 609,
     /// <summary>
     /// This `PACGA` mnemonic.
     /// </summary>
-    PACGA,
+    PACGA = 610,
     /// <summary>
     /// This `PACIA` mnemonic.
     /// </summary>
-    PACIA,
+    PACIA = 611,
     /// <summary>
     /// This `PACIA1716` mnemonic.
     /// </summary>
-    PACIA1716,
+    PACIA1716 = 612,
     /// <summary>
     /// This `PACIA171615` mnemonic.
     /// </summary>
-    PACIA171615,
+    PACIA171615 = 613,
     /// <summary>
     /// This `PACIASP` mnemonic.
     /// </summary>
-    PACIASP,
+    PACIASP = 614,
     /// <summary>
     /// This `PACIASPPC` mnemonic.
     /// </summary>
-    PACIASPPC,
+    PACIASPPC = 615,
     /// <summary>
     /// This `PACIAZ` mnemonic.
     /// </summary>
-    PACIAZ,
+    PACIAZ = 616,
     /// <summary>
     /// This `PACIB` mnemonic.
     /// </summary>
-    PACIB,
+    PACIB = 617,
     /// <summary>
     /// This `PACIB1716` mnemonic.
     /// </summary>
-    PACIB1716,
+    PACIB1716 = 618,
     /// <summary>
     /// This `PACIB171615` mnemonic.
     /// </summary>
-    PACIB171615,
+    PACIB171615 = 619,
     /// <summary>
     /// This `PACIBSP` mnemonic.
     /// </summary>
-    PACIBSP,
+    PACIBSP = 620,
     /// <summary>
     /// This `PACIBSPPC` mnemonic.
     /// </summary>
-    PACIBSPPC,
+    PACIBSPPC = 621,
     /// <summary>
     /// This `PACIBZ` mnemonic.
     /// </summary>
-    PACIBZ,
+    PACIBZ = 622,
     /// <summary>
     /// This `PACIZA` mnemonic.
     /// </summary>
-    PACIZA,
+    PACIZA = 623,
     /// <summary>
     /// This `PACIZB` mnemonic.
     /// </summary>
-    PACIZB,
+    PACIZB = 624,
     /// <summary>
     /// This `PACM` mnemonic.
     /// </summary>
-    PACM,
+    PACM = 625,
     /// <summary>
     /// This `PACNBIASPPC` mnemonic.
     /// </summary>
-    PACNBIASPPC,
+    PACNBIASPPC = 626,
     /// <summary>
     /// This `PACNBIBSPPC` mnemonic.
     /// </summary>
-    PACNBIBSPPC,
+    PACNBIBSPPC = 627,
     /// <summary>
     /// This `PMUL` mnemonic.
     /// </summary>
-    PMUL,
+    PMUL = 628,
     /// <summary>
     /// This `PMULL` mnemonic.
     /// </summary>
-    PMULL,
+    PMULL = 629,
     /// <summary>
     /// This `PRFM` mnemonic.
     /// </summary>
-    PRFM,
+    PRFM = 630,
     /// <summary>
     /// This `PRFUM` mnemonic.
     /// </summary>
-    PRFUM,
+    PRFUM = 631,
     /// <summary>
     /// This `PSB` mnemonic.
     /// </summary>
-    PSB,
+    PSB = 632,
     /// <summary>
     /// This `RADDHN` mnemonic.
     /// </summary>
-    RADDHN,
+    RADDHN = 633,
     /// <summary>
     /// This `RAX1` mnemonic.
     /// </summary>
-    RAX1,
+    RAX1 = 634,
     /// <summary>
     /// This `RBIT` mnemonic.
     /// </summary>
-    RBIT,
+    RBIT = 635,
     /// <summary>
     /// This `RCWCAS` mnemonic.
     /// </summary>
-    RCWCAS,
+    RCWCAS = 636,
     /// <summary>
     /// This `RCWCASA` mnemonic.
     /// </summary>
-    RCWCASA,
+    RCWCASA = 637,
     /// <summary>
     /// This `RCWCASAL` mnemonic.
     /// </summary>
-    RCWCASAL,
+    RCWCASAL = 638,
     /// <summary>
     /// This `RCWCASL` mnemonic.
     /// </summary>
-    RCWCASL,
+    RCWCASL = 639,
     /// <summary>
     /// This `RCWCASP` mnemonic.
     /// </summary>
-    RCWCASP,
+    RCWCASP = 640,
     /// <summary>
     /// This `RCWCASPA` mnemonic.
     /// </summary>
-    RCWCASPA,
+    RCWCASPA = 641,
     /// <summary>
     /// This `RCWCASPAL` mnemonic.
     /// </summary>
-    RCWCASPAL,
+    RCWCASPAL = 642,
     /// <summary>
     /// This `RCWCASPL` mnemonic.
     /// </summary>
-    RCWCASPL,
+    RCWCASPL = 643,
     /// <summary>
     /// This `RCWCLR` mnemonic.
     /// </summary>
-    RCWCLR,
+    RCWCLR = 644,
     /// <summary>
     /// This `RCWCLRA` mnemonic.
     /// </summary>
-    RCWCLRA,
+    RCWCLRA = 645,
     /// <summary>
     /// This `RCWCLRAL` mnemonic.
     /// </summary>
-    RCWCLRAL,
+    RCWCLRAL = 646,
     /// <summary>
     /// This `RCWCLRL` mnemonic.
     /// </summary>
-    RCWCLRL,
+    RCWCLRL = 647,
     /// <summary>
     /// This `RCWCLRP` mnemonic.
     /// </summary>
-    RCWCLRP,
+    RCWCLRP = 648,
     /// <summary>
     /// This `RCWCLRPA` mnemonic.
     /// </summary>
-    RCWCLRPA,
+    RCWCLRPA = 649,
     /// <summary>
     /// This `RCWCLRPAL` mnemonic.
     /// </summary>
-    RCWCLRPAL,
+    RCWCLRPAL = 650,
     /// <summary>
     /// This `RCWCLRPL` mnemonic.
     /// </summary>
-    RCWCLRPL,
+    RCWCLRPL = 651,
     /// <summary>
     /// This `RCWSCAS` mnemonic.
     /// </summary>
-    RCWSCAS,
+    RCWSCAS = 652,
     /// <summary>
     /// This `RCWSCASA` mnemonic.
     /// </summary>
-    RCWSCASA,
+    RCWSCASA = 653,
     /// <summary>
     /// This `RCWSCASAL` mnemonic.
     /// </summary>
-    RCWSCASAL,
+    RCWSCASAL = 654,
     /// <summary>
     /// This `RCWSCASL` mnemonic.
     /// </summary>
-    RCWSCASL,
+    RCWSCASL = 655,
     /// <summary>
     /// This `RCWSCASP` mnemonic.
     /// </summary>
-    RCWSCASP,
+    RCWSCASP = 656,
     /// <summary>
     /// This `RCWSCASPA` mnemonic.
     /// </summary>
-    RCWSCASPA,
+    RCWSCASPA = 657,
     /// <summary>
     /// This `RCWSCASPAL` mnemonic.
     /// </summary>
-    RCWSCASPAL,
+    RCWSCASPAL = 658,
     /// <summary>
     /// This `RCWSCASPL` mnemonic.
     /// </summary>
-    RCWSCASPL,
+    RCWSCASPL = 659,
     /// <summary>
     /// This `RCWSCLR` mnemonic.
     /// </summary>
-    RCWSCLR,
+    RCWSCLR = 660,
     /// <summary>
     /// This `RCWSCLRA` mnemonic.
     /// </summary>
-    RCWSCLRA,
+    RCWSCLRA = 661,
     /// <summary>
     /// This `RCWSCLRAL` mnemonic.
     /// </summary>
-    RCWSCLRAL,
+    RCWSCLRAL = 662,
     /// <summary>
     /// This `RCWSCLRL` mnemonic.
     /// </summary>
-    RCWSCLRL,
+    RCWSCLRL = 663,
     /// <summary>
     /// This `RCWSCLRP` mnemonic.
     /// </summary>
-    RCWSCLRP,
+    RCWSCLRP = 664,
     /// <summary>
     /// This `RCWSCLRPA` mnemonic.
     /// </summary>
-    RCWSCLRPA,
+    RCWSCLRPA = 665,
     /// <summary>
     /// This `RCWSCLRPAL` mnemonic.
     /// </summary>
-    RCWSCLRPAL,
+    RCWSCLRPAL = 666,
     /// <summary>
     /// This `RCWSCLRPL` mnemonic.
     /// </summary>
-    RCWSCLRPL,
+    RCWSCLRPL = 667,
     /// <summary>
     /// This `RCWSET` mnemonic.
     /// </summary>
-    RCWSET,
+    RCWSET = 668,
     /// <summary>
     /// This `RCWSETA` mnemonic.
     /// </summary>
-    RCWSETA,
+    RCWSETA = 669,
     /// <summary>
     /// This `RCWSETAL` mnemonic.
     /// </summary>
-    RCWSETAL,
+    RCWSETAL = 670,
     /// <summary>
     /// This `RCWSETL` mnemonic.
     /// </summary>
-    RCWSETL,
+    RCWSETL = 671,
     /// <summary>
     /// This `RCWSETP` mnemonic.
     /// </summary>
-    RCWSETP,
+    RCWSETP = 672,
     /// <summary>
     /// This `RCWSETPA` mnemonic.
     /// </summary>
-    RCWSETPA,
+    RCWSETPA = 673,
     /// <summary>
     /// This `RCWSETPAL` mnemonic.
     /// </summary>
-    RCWSETPAL,
+    RCWSETPAL = 674,
     /// <summary>
     /// This `RCWSETPL` mnemonic.
     /// </summary>
-    RCWSETPL,
+    RCWSETPL = 675,
     /// <summary>
     /// This `RCWSSET` mnemonic.
     /// </summary>
-    RCWSSET,
+    RCWSSET = 676,
     /// <summary>
     /// This `RCWSSETA` mnemonic.
     /// </summary>
-    RCWSSETA,
+    RCWSSETA = 677,
     /// <summary>
     /// This `RCWSSETAL` mnemonic.
     /// </summary>
-    RCWSSETAL,
+    RCWSSETAL = 678,
     /// <summary>
     /// This `RCWSSETL` mnemonic.
     /// </summary>
-    RCWSSETL,
+    RCWSSETL = 679,
     /// <summary>
     /// This `RCWSSETP` mnemonic.
     /// </summary>
-    RCWSSETP,
+    RCWSSETP = 680,
     /// <summary>
     /// This `RCWSSETPA` mnemonic.
     /// </summary>
-    RCWSSETPA,
+    RCWSSETPA = 681,
     /// <summary>
     /// This `RCWSSETPAL` mnemonic.
     /// </summary>
-    RCWSSETPAL,
+    RCWSSETPAL = 682,
     /// <summary>
     /// This `RCWSSETPL` mnemonic.
     /// </summary>
-    RCWSSETPL,
+    RCWSSETPL = 683,
     /// <summary>
     /// This `RCWSSWP` mnemonic.
     /// </summary>
-    RCWSSWP,
+    RCWSSWP = 684,
     /// <summary>
     /// This `RCWSSWPA` mnemonic.
     /// </summary>
-    RCWSSWPA,
+    RCWSSWPA = 685,
     /// <summary>
     /// This `RCWSSWPAL` mnemonic.
     /// </summary>
-    RCWSSWPAL,
+    RCWSSWPAL = 686,
     /// <summary>
     /// This `RCWSSWPL` mnemonic.
     /// </summary>
-    RCWSSWPL,
+    RCWSSWPL = 687,
     /// <summary>
     /// This `RCWSSWPP` mnemonic.
     /// </summary>
-    RCWSSWPP,
+    RCWSSWPP = 688,
     /// <summary>
     /// This `RCWSSWPPA` mnemonic.
     /// </summary>
-    RCWSSWPPA,
+    RCWSSWPPA = 689,
     /// <summary>
     /// This `RCWSSWPPAL` mnemonic.
     /// </summary>
-    RCWSSWPPAL,
+    RCWSSWPPAL = 690,
     /// <summary>
     /// This `RCWSSWPPL` mnemonic.
     /// </summary>
-    RCWSSWPPL,
+    RCWSSWPPL = 691,
     /// <summary>
     /// This `RCWSWP` mnemonic.
     /// </summary>
-    RCWSWP,
+    RCWSWP = 692,
     /// <summary>
     /// This `RCWSWPA` mnemonic.
     /// </summary>
-    RCWSWPA,
+    RCWSWPA = 693,
     /// <summary>
     /// This `RCWSWPAL` mnemonic.
     /// </summary>
-    RCWSWPAL,
+    RCWSWPAL = 694,
     /// <summary>
     /// This `RCWSWPL` mnemonic.
     /// </summary>
-    RCWSWPL,
+    RCWSWPL = 695,
     /// <summary>
     /// This `RCWSWPP` mnemonic.
     /// </summary>
-    RCWSWPP,
+    RCWSWPP = 696,
     /// <summary>
     /// This `RCWSWPPA` mnemonic.
     /// </summary>
-    RCWSWPPA,
+    RCWSWPPA = 697,
     /// <summary>
     /// This `RCWSWPPAL` mnemonic.
     /// </summary>
-    RCWSWPPAL,
+    RCWSWPPAL = 698,
     /// <summary>
     /// This `RCWSWPPL` mnemonic.
     /// </summary>
-    RCWSWPPL,
+    RCWSWPPL = 699,
     /// <summary>
     /// This `RET` mnemonic.
     /// </summary>
-    RET,
+    RET = 700,
     /// <summary>
     /// This `RETAA` mnemonic.
     /// </summary>
-    RETAA,
+    RETAA = 701,
     /// <summary>
     /// This `RETAASPPC` mnemonic.
     /// </summary>
-    RETAASPPC,
+    RETAASPPC = 702,
     /// <summary>
     /// This `RETAASPPCR` mnemonic.
     /// </summary>
-    RETAASPPCR,
+    RETAASPPCR = 703,
     /// <summary>
     /// This `RETAB` mnemonic.
     /// </summary>
-    RETAB,
+    RETAB = 704,
     /// <summary>
     /// This `RETABSPPC` mnemonic.
     /// </summary>
-    RETABSPPC,
+    RETABSPPC = 705,
     /// <summary>
     /// This `RETABSPPCR` mnemonic.
     /// </summary>
-    RETABSPPCR,
+    RETABSPPCR = 706,
     /// <summary>
     /// This `REV` mnemonic.
     /// </summary>
-    REV,
+    REV = 707,
     /// <summary>
     /// This `REV16` mnemonic.
     /// </summary>
-    REV16,
+    REV16 = 708,
     /// <summary>
     /// This `REV32` mnemonic.
     /// </summary>
-    REV32,
+    REV32 = 709,
     /// <summary>
     /// This `REV64` mnemonic.
     /// </summary>
-    REV64,
+    REV64 = 710,
     /// <summary>
     /// This `RMIF` mnemonic.
     /// </summary>
-    RMIF,
+    RMIF = 711,
     /// <summary>
     /// This `RORV` mnemonic.
     /// </summary>
-    RORV,
+    RORV = 712,
     /// <summary>
     /// This `RPRFM` mnemonic.
     /// </summary>
-    RPRFM,
+    RPRFM = 713,
     /// <summary>
     /// This `RSHRN` mnemonic.
     /// </summary>
-    RSHRN,
+    RSHRN = 714,
     /// <summary>
     /// This `RSUBHN` mnemonic.
     /// </summary>
-    RSUBHN,
+    RSUBHN = 715,
     /// <summary>
     /// This `SABA` mnemonic.
     /// </summary>
-    SABA,
+    SABA = 716,
     /// <summary>
     /// This `SABAL` mnemonic.
     /// </summary>
-    SABAL,
+    SABAL = 717,
     /// <summary>
     /// This `SABD` mnemonic.
     /// </summary>
-    SABD,
+    SABD = 718,
     /// <summary>
     /// This `SABDL` mnemonic.
     /// </summary>
-    SABDL,
+    SABDL = 719,
     /// <summary>
     /// This `SADALP` mnemonic.
     /// </summary>
-    SADALP,
+    SADALP = 720,
     /// <summary>
     /// This `SADDL` mnemonic.
     /// </summary>
-    SADDL,
+    SADDL = 721,
     /// <summary>
     /// This `SADDLP` mnemonic.
     /// </summary>
-    SADDLP,
+    SADDLP = 722,
     /// <summary>
     /// This `SADDLV` mnemonic.
     /// </summary>
-    SADDLV,
+    SADDLV = 723,
     /// <summary>
     /// This `SADDW` mnemonic.
     /// </summary>
-    SADDW,
+    SADDW = 724,
     /// <summary>
     /// This `SB` mnemonic.
     /// </summary>
-    SB,
+    SB = 725,
     /// <summary>
     /// This `SBC` mnemonic.
     /// </summary>
-    SBC,
+    SBC = 726,
     /// <summary>
     /// This `SBCS` mnemonic.
     /// </summary>
-    SBCS,
+    SBCS = 727,
     /// <summary>
     /// This `SBFM` mnemonic.
     /// </summary>
-    SBFM,
+    SBFM = 728,
     /// <summary>
     /// This `SCVTF` mnemonic.
     /// </summary>
-    SCVTF,
+    SCVTF = 729,
     /// <summary>
     /// This `SDIV` mnemonic.
     /// </summary>
-    SDIV,
+    SDIV = 730,
     /// <summary>
     /// This `SDOT` mnemonic.
     /// </summary>
-    SDOT,
+    SDOT = 731,
     /// <summary>
     /// This `SETE` mnemonic.
     /// </summary>
-    SETE,
+    SETE = 732,
     /// <summary>
     /// This `SETEN` mnemonic.
     /// </summary>
-    SETEN,
+    SETEN = 733,
     /// <summary>
     /// This `SETET` mnemonic.
     /// </summary>
-    SETET,
+    SETET = 734,
     /// <summary>
     /// This `SETETN` mnemonic.
     /// </summary>
-    SETETN,
+    SETETN = 735,
     /// <summary>
     /// This `SETF16` mnemonic.
     /// </summary>
-    SETF16,
+    SETF16 = 736,
     /// <summary>
     /// This `SETF8` mnemonic.
     /// </summary>
-    SETF8,
+    SETF8 = 737,
     /// <summary>
     /// This `SETGE` mnemonic.
     /// </summary>
-    SETGE,
+    SETGE = 738,
     /// <summary>
     /// This `SETGEN` mnemonic.
     /// </summary>
-    SETGEN,
+    SETGEN = 739,
     /// <summary>
     /// This `SETGET` mnemonic.
     /// </summary>
-    SETGET,
+    SETGET = 740,
     /// <summary>
     /// This `SETGETN` mnemonic.
     /// </summary>
-    SETGETN,
+    SETGETN = 741,
     /// <summary>
     /// This `SETGM` mnemonic.
     /// </summary>
-    SETGM,
+    SETGM = 742,
     /// <summary>
     /// This `SETGMN` mnemonic.
     /// </summary>
-    SETGMN,
+    SETGMN = 743,
     /// <summary>
     /// This `SETGMT` mnemonic.
     /// </summary>
-    SETGMT,
+    SETGMT = 744,
     /// <summary>
     /// This `SETGMTN` mnemonic.
     /// </summary>
-    SETGMTN,
+    SETGMTN = 745,
     /// <summary>
     /// This `SETGP` mnemonic.
     /// </summary>
-    SETGP,
+    SETGP = 746,
     /// <summary>
     /// This `SETGPN` mnemonic.
     /// </summary>
-    SETGPN,
+    SETGPN = 747,
     /// <summary>
     /// This `SETGPT` mnemonic.
     /// </summary>
-    SETGPT,
+    SETGPT = 748,
     /// <summary>
     /// This `SETGPTN` mnemonic.
     /// </summary>
-    SETGPTN,
+    SETGPTN = 749,
     /// <summary>
     /// This `SETM` mnemonic.
     /// </summary>
-    SETM,
+    SETM = 750,
     /// <summary>
     /// This `SETMN` mnemonic.
     /// </summary>
-    SETMN,
+    SETMN = 751,
     /// <summary>
     /// This `SETMT` mnemonic.
     /// </summary>
-    SETMT,
+    SETMT = 752,
     /// <summary>
     /// This `SETMTN` mnemonic.
     /// </summary>
-    SETMTN,
+    SETMTN = 753,
     /// <summary>
     /// This `SETP` mnemonic.
     /// </summary>
-    SETP,
+    SETP = 754,
     /// <summary>
     /// This `SETPN` mnemonic.
     /// </summary>
-    SETPN,
+    SETPN = 755,
     /// <summary>
     /// This `SETPT` mnemonic.
     /// </summary>
-    SETPT,
+    SETPT = 756,
     /// <summary>
     /// This `SETPTN` mnemonic.
     /// </summary>
-    SETPTN,
+    SETPTN = 757,
     /// <summary>
     /// This `SEV` mnemonic.
     /// </summary>
-    SEV,
+    SEV = 758,
     /// <summary>
     /// This `SEVL` mnemonic.
     /// </summary>
-    SEVL,
+    SEVL = 759,
     /// <summary>
     /// This `SHA1C` mnemonic.
     /// </summary>
-    SHA1C,
+    SHA1C = 760,
     /// <summary>
     /// This `SHA1H` mnemonic.
     /// </summary>
-    SHA1H,
+    SHA1H = 761,
     /// <summary>
     /// This `SHA1M` mnemonic.
     /// </summary>
-    SHA1M,
+    SHA1M = 762,
     /// <summary>
     /// This `SHA1P` mnemonic.
     /// </summary>
-    SHA1P,
+    SHA1P = 763,
     /// <summary>
     /// This `SHA1SU0` mnemonic.
     /// </summary>
-    SHA1SU0,
+    SHA1SU0 = 764,
     /// <summary>
     /// This `SHA1SU1` mnemonic.
     /// </summary>
-    SHA1SU1,
+    SHA1SU1 = 765,
     /// <summary>
     /// This `SHA256H` mnemonic.
     /// </summary>
-    SHA256H,
+    SHA256H = 766,
     /// <summary>
     /// This `SHA256H2` mnemonic.
     /// </summary>
-    SHA256H2,
+    SHA256H2 = 767,
     /// <summary>
     /// This `SHA256SU0` mnemonic.
     /// </summary>
-    SHA256SU0,
+    SHA256SU0 = 768,
     /// <summary>
     /// This `SHA256SU1` mnemonic.
     /// </summary>
-    SHA256SU1,
+    SHA256SU1 = 769,
     /// <summary>
     /// This `SHA512H` mnemonic.
     /// </summary>
-    SHA512H,
+    SHA512H = 770,
     /// <summary>
     /// This `SHA512H2` mnemonic.
     /// </summary>
-    SHA512H2,
+    SHA512H2 = 771,
     /// <summary>
     /// This `SHA512SU0` mnemonic.
     /// </summary>
-    SHA512SU0,
+    SHA512SU0 = 772,
     /// <summary>
     /// This `SHA512SU1` mnemonic.
     /// </summary>
-    SHA512SU1,
+    SHA512SU1 = 773,
     /// <summary>
     /// This `SHADD` mnemonic.
     /// </summary>
-    SHADD,
+    SHADD = 774,
     /// <summary>
     /// This `SHL` mnemonic.
     /// </summary>
-    SHL,
+    SHL = 775,
     /// <summary>
     /// This `SHLL` mnemonic.
     /// </summary>
-    SHLL,
+    SHLL = 776,
     /// <summary>
     /// This `SHRN` mnemonic.
     /// </summary>
-    SHRN,
+    SHRN = 777,
     /// <summary>
     /// This `SHSUB` mnemonic.
     /// </summary>
-    SHSUB,
+    SHSUB = 778,
     /// <summary>
     /// This `SLI` mnemonic.
     /// </summary>
-    SLI,
+    SLI = 779,
     /// <summary>
     /// This `SM3PARTW1` mnemonic.
     /// </summary>
-    SM3PARTW1,
+    SM3PARTW1 = 780,
     /// <summary>
     /// This `SM3PARTW2` mnemonic.
     /// </summary>
-    SM3PARTW2,
+    SM3PARTW2 = 781,
     /// <summary>
     /// This `SM3SS1` mnemonic.
     /// </summary>
-    SM3SS1,
+    SM3SS1 = 782,
     /// <summary>
     /// This `SM3TT1A` mnemonic.
     /// </summary>
-    SM3TT1A,
+    SM3TT1A = 783,
     /// <summary>
     /// This `SM3TT1B` mnemonic.
     /// </summary>
-    SM3TT1B,
+    SM3TT1B = 784,
     /// <summary>
     /// This `SM3TT2A` mnemonic.
     /// </summary>
-    SM3TT2A,
+    SM3TT2A = 785,
     /// <summary>
     /// This `SM3TT2B` mnemonic.
     /// </summary>
-    SM3TT2B,
+    SM3TT2B = 786,
     /// <summary>
     /// This `SM4E` mnemonic.
     /// </summary>
-    SM4E,
+    SM4E = 787,
     /// <summary>
     /// This `SM4EKEY` mnemonic.
     /// </summary>
-    SM4EKEY,
+    SM4EKEY = 788,
     /// <summary>
     /// This `SMADDL` mnemonic.
     /// </summary>
-    SMADDL,
+    SMADDL = 789,
     /// <summary>
     /// This `SMAX` mnemonic.
     /// </summary>
-    SMAX,
+    SMAX = 790,
     /// <summary>
     /// This `SMAXP` mnemonic.
     /// </summary>
-    SMAXP,
+    SMAXP = 791,
     /// <summary>
     /// This `SMAXV` mnemonic.
     /// </summary>
-    SMAXV,
+    SMAXV = 792,
     /// <summary>
     /// This `SMC` mnemonic.
     /// </summary>
-    SMC,
+    SMC = 793,
     /// <summary>
     /// This `SMIN` mnemonic.
     /// </summary>
-    SMIN,
+    SMIN = 794,
     /// <summary>
     /// This `SMINP` mnemonic.
     /// </summary>
-    SMINP,
+    SMINP = 795,
     /// <summary>
     /// This `SMINV` mnemonic.
     /// </summary>
-    SMINV,
+    SMINV = 796,
     /// <summary>
     /// This `SMLAL` mnemonic.
     /// </summary>
-    SMLAL,
+    SMLAL = 797,
     /// <summary>
     /// This `SMLSL` mnemonic.
     /// </summary>
-    SMLSL,
+    SMLSL = 798,
     /// <summary>
     /// This `SMMLA` mnemonic.
     /// </summary>
-    SMMLA,
+    SMMLA = 799,
     /// <summary>
     /// This `SMOV` mnemonic.
     /// </summary>
-    SMOV,
+    SMOV = 800,
     /// <summary>
     /// This `SMSUBL` mnemonic.
     /// </summary>
-    SMSUBL,
+    SMSUBL = 801,
     /// <summary>
     /// This `SMULH` mnemonic.
     /// </summary>
-    SMULH,
+    SMULH = 802,
     /// <summary>
     /// This `SMULL` mnemonic.
     /// </summary>
-    SMULL,
+    SMULL = 803,
     /// <summary>
     /// This `SQABS` mnemonic.
     /// </summary>
-    SQABS,
+    SQABS = 804,
     /// <summary>
     /// This `SQADD` mnemonic.
     /// </summary>
-    SQADD,
+    SQADD = 805,
     /// <summary>
     /// This `SQDMLAL` mnemonic.
     /// </summary>
-    SQDMLAL,
+    SQDMLAL = 806,
     /// <summary>
     /// This `SQDMLSL` mnemonic.
     /// </summary>
-    SQDMLSL,
+    SQDMLSL = 807,
     /// <summary>
     /// This `SQDMULH` mnemonic.
     /// </summary>
-    SQDMULH,
+    SQDMULH = 808,
     /// <summary>
     /// This `SQDMULL` mnemonic.
     /// </summary>
-    SQDMULL,
+    SQDMULL = 809,
     /// <summary>
     /// This `SQNEG` mnemonic.
     /// </summary>
-    SQNEG,
+    SQNEG = 810,
     /// <summary>
     /// This `SQRDMLAH` mnemonic.
     /// </summary>
-    SQRDMLAH,
+    SQRDMLAH = 811,
     /// <summary>
     /// This `SQRDMLSH` mnemonic.
     /// </summary>
-    SQRDMLSH,
+    SQRDMLSH = 812,
     /// <summary>
     /// This `SQRDMULH` mnemonic.
     /// </summary>
-    SQRDMULH,
+    SQRDMULH = 813,
     /// <summary>
     /// This `SQRSHL` mnemonic.
     /// </summary>
-    SQRSHL,
+    SQRSHL = 814,
     /// <summary>
     /// This `SQRSHRN` mnemonic.
     /// </summary>
-    SQRSHRN,
+    SQRSHRN = 815,
     /// <summary>
     /// This `SQRSHRUN` mnemonic.
     /// </summary>
-    SQRSHRUN,
+    SQRSHRUN = 816,
     /// <summary>
     /// This `SQSHL` mnemonic.
     /// </summary>
-    SQSHL,
+    SQSHL = 817,
     /// <summary>
     /// This `SQSHLU` mnemonic.
     /// </summary>
-    SQSHLU,
+    SQSHLU = 818,
     /// <summary>
     /// This `SQSHRN` mnemonic.
     /// </summary>
-    SQSHRN,
+    SQSHRN = 819,
     /// <summary>
     /// This `SQSHRUN` mnemonic.
     /// </summary>
-    SQSHRUN,
+    SQSHRUN = 820,
     /// <summary>
     /// This `SQSUB` mnemonic.
     /// </summary>
-    SQSUB,
+    SQSUB = 821,
     /// <summary>
     /// This `SQXTN` mnemonic.
     /// </summary>
-    SQXTN,
+    SQXTN = 822,
     /// <summary>
     /// This `SQXTUN` mnemonic.
     /// </summary>
-    SQXTUN,
+    SQXTUN = 823,
     /// <summary>
     /// This `SRHADD` mnemonic.
     /// </summary>
-    SRHADD,
+    SRHADD = 824,
     /// <summary>
     /// This `SRI` mnemonic.
     /// </summary>
-    SRI,
+    SRI = 825,
     /// <summary>
     /// This `SRSHL` mnemonic.
     /// </summary>
-    SRSHL,
+    SRSHL = 826,
     /// <summary>
     /// This `SRSHR` mnemonic.
     /// </summary>
-    SRSHR,
+    SRSHR = 827,
     /// <summary>
     /// This `SRSRA` mnemonic.
     /// </summary>
-    SRSRA,
+    SRSRA = 828,
     /// <summary>
     /// This `SSHL` mnemonic.
     /// </summary>
-    SSHL,
+    SSHL = 829,
     /// <summary>
     /// This `SSHLL` mnemonic.
     /// </summary>
-    SSHLL,
+    SSHLL = 830,
     /// <summary>
     /// This `SSHR` mnemonic.
     /// </summary>
-    SSHR,
+    SSHR = 831,
     /// <summary>
     /// This `SSRA` mnemonic.
     /// </summary>
-    SSRA,
+    SSRA = 832,
     /// <summary>
     /// This `SSUBL` mnemonic.
     /// </summary>
-    SSUBL,
+    SSUBL = 833,
     /// <summary>
     /// This `SSUBW` mnemonic.
     /// </summary>
-    SSUBW,
+    SSUBW = 834,
     /// <summary>
     /// This `ST1` mnemonic.
     /// </summary>
-    ST1,
+    ST1 = 835,
     /// <summary>
     /// This `ST2` mnemonic.
     /// </summary>
-    ST2,
+    ST2 = 836,
     /// <summary>
     /// This `ST2G` mnemonic.
     /// </summary>
-    ST2G,
+    ST2G = 837,
     /// <summary>
     /// This `ST3` mnemonic.
     /// </summary>
-    ST3,
+    ST3 = 838,
     /// <summary>
     /// This `ST4` mnemonic.
     /// </summary>
-    ST4,
+    ST4 = 839,
     /// <summary>
     /// This `ST64B` mnemonic.
     /// </summary>
-    ST64B,
+    ST64B = 840,
     /// <summary>
     /// This `ST64BV` mnemonic.
     /// </summary>
-    ST64BV,
+    ST64BV = 841,
     /// <summary>
     /// This `ST64BV0` mnemonic.
     /// </summary>
-    ST64BV0,
+    ST64BV0 = 842,
     /// <summary>
     /// This `STBFADD` mnemonic.
     /// </summary>
-    STBFADD,
+    STBFADD = 843,
     /// <summary>
     /// This `STBFADDL` mnemonic.
     /// </summary>
-    STBFADDL,
+    STBFADDL = 844,
     /// <summary>
     /// This `STBFMAX` mnemonic.
     /// </summary>
-    STBFMAX,
+    STBFMAX = 845,
     /// <summary>
     /// This `STBFMAXL` mnemonic.
     /// </summary>
-    STBFMAXL,
+    STBFMAXL = 846,
     /// <summary>
     /// This `STBFMAXNM` mnemonic.
     /// </summary>
-    STBFMAXNM,
+    STBFMAXNM = 847,
     /// <summary>
     /// This `STBFMAXNML` mnemonic.
     /// </summary>
-    STBFMAXNML,
+    STBFMAXNML = 848,
     /// <summary>
     /// This `STBFMIN` mnemonic.
     /// </summary>
-    STBFMIN,
+    STBFMIN = 849,
     /// <summary>
     /// This `STBFMINL` mnemonic.
     /// </summary>
-    STBFMINL,
+    STBFMINL = 850,
     /// <summary>
     /// This `STBFMINNM` mnemonic.
     /// </summary>
-    STBFMINNM,
+    STBFMINNM = 851,
     /// <summary>
     /// This `STBFMINNML` mnemonic.
     /// </summary>
-    STBFMINNML,
+    STBFMINNML = 852,
     /// <summary>
     /// This `STFADD` mnemonic.
     /// </summary>
-    STFADD,
+    STFADD = 853,
     /// <summary>
     /// This `STFADDL` mnemonic.
     /// </summary>
-    STFADDL,
+    STFADDL = 854,
     /// <summary>
     /// This `STFMAX` mnemonic.
     /// </summary>
-    STFMAX,
+    STFMAX = 855,
     /// <summary>
     /// This `STFMAXL` mnemonic.
     /// </summary>
-    STFMAXL,
+    STFMAXL = 856,
     /// <summary>
     /// This `STFMAXNM` mnemonic.
     /// </summary>
-    STFMAXNM,
+    STFMAXNM = 857,
     /// <summary>
     /// This `STFMAXNML` mnemonic.
     /// </summary>
-    STFMAXNML,
+    STFMAXNML = 858,
     /// <summary>
     /// This `STFMIN` mnemonic.
     /// </summary>
-    STFMIN,
+    STFMIN = 859,
     /// <summary>
     /// This `STFMINL` mnemonic.
     /// </summary>
-    STFMINL,
+    STFMINL = 860,
     /// <summary>
     /// This `STFMINNM` mnemonic.
     /// </summary>
-    STFMINNM,
+    STFMINNM = 861,
     /// <summary>
     /// This `STFMINNML` mnemonic.
     /// </summary>
-    STFMINNML,
+    STFMINNML = 862,
     /// <summary>
     /// This `STG` mnemonic.
     /// </summary>
-    STG,
+    STG = 863,
     /// <summary>
     /// This `STGM` mnemonic.
     /// </summary>
-    STGM,
+    STGM = 864,
     /// <summary>
     /// This `STGP` mnemonic.
     /// </summary>
-    STGP,
+    STGP = 865,
     /// <summary>
     /// This `STILP` mnemonic.
     /// </summary>
-    STILP,
+    STILP = 866,
     /// <summary>
     /// This `STL1` mnemonic.
     /// </summary>
-    STL1,
+    STL1 = 867,
     /// <summary>
     /// This `STLLR` mnemonic.
     /// </summary>
-    STLLR,
+    STLLR = 868,
     /// <summary>
     /// This `STLLRB` mnemonic.
     /// </summary>
-    STLLRB,
+    STLLRB = 869,
     /// <summary>
     /// This `STLLRH` mnemonic.
     /// </summary>
-    STLLRH,
+    STLLRH = 870,
     /// <summary>
     /// This `STLR` mnemonic.
     /// </summary>
-    STLR,
+    STLR = 871,
     /// <summary>
     /// This `STLRB` mnemonic.
     /// </summary>
-    STLRB,
+    STLRB = 872,
     /// <summary>
     /// This `STLRH` mnemonic.
     /// </summary>
-    STLRH,
+    STLRH = 873,
     /// <summary>
     /// This `STLTXR` mnemonic.
     /// </summary>
-    STLTXR,
+    STLTXR = 874,
     /// <summary>
     /// This `STLUR` mnemonic.
     /// </summary>
-    STLUR,
+    STLUR = 875,
     /// <summary>
     /// This `STLURB` mnemonic.
     /// </summary>
-    STLURB,
+    STLURB = 876,
     /// <summary>
     /// This `STLURH` mnemonic.
     /// </summary>
-    STLURH,
+    STLURH = 877,
     /// <summary>
     /// This `STLXP` mnemonic.
     /// </summary>
-    STLXP,
+    STLXP = 878,
     /// <summary>
     /// This `STLXR` mnemonic.
     /// </summary>
-    STLXR,
+    STLXR = 879,
     /// <summary>
     /// This `STLXRB` mnemonic.
     /// </summary>
-    STLXRB,
+    STLXRB = 880,
     /// <summary>
     /// This `STLXRH` mnemonic.
     /// </summary>
-    STLXRH,
+    STLXRH = 881,
     /// <summary>
     /// This `STNP` mnemonic.
     /// </summary>
-    STNP,
+    STNP = 882,
     /// <summary>
     /// This `STP` mnemonic.
     /// </summary>
-    STP,
+    STP = 883,
     /// <summary>
     /// This `STR` mnemonic.
     /// </summary>
-    STR,
+    STR = 884,
     /// <summary>
     /// This `STRB` mnemonic.
     /// </summary>
-    STRB,
+    STRB = 885,
     /// <summary>
     /// This `STRH` mnemonic.
     /// </summary>
-    STRH,
+    STRH = 886,
     /// <summary>
     /// This `STSHH` mnemonic.
     /// </summary>
-    STSHH,
+    STSHH = 887,
     /// <summary>
     /// This `STTNP` mnemonic.
     /// </summary>
-    STTNP,
+    STTNP = 888,
     /// <summary>
     /// This `STTP` mnemonic.
     /// </summary>
-    STTP,
+    STTP = 889,
     /// <summary>
     /// This `STTR` mnemonic.
     /// </summary>
-    STTR,
+    STTR = 890,
     /// <summary>
     /// This `STTRB` mnemonic.
     /// </summary>
-    STTRB,
+    STTRB = 891,
     /// <summary>
     /// This `STTRH` mnemonic.
     /// </summary>
-    STTRH,
+    STTRH = 892,
     /// <summary>
     /// This `STTXR` mnemonic.
     /// </summary>
-    STTXR,
+    STTXR = 893,
     /// <summary>
     /// This `STUR` mnemonic.
     /// </summary>
-    STUR,
+    STUR = 894,
     /// <summary>
     /// This `STURB` mnemonic.
     /// </summary>
-    STURB,
+    STURB = 895,
     /// <summary>
     /// This `STURH` mnemonic.
     /// </summary>
-    STURH,
+    STURH = 896,
     /// <summary>
     /// This `STXP` mnemonic.
     /// </summary>
-    STXP,
+    STXP = 897,
     /// <summary>
     /// This `STXR` mnemonic.
     /// </summary>
-    STXR,
+    STXR = 898,
     /// <summary>
     /// This `STXRB` mnemonic.
     /// </summary>
-    STXRB,
+    STXRB = 899,
     /// <summary>
     /// This `STXRH` mnemonic.
     /// </summary>
-    STXRH,
+    STXRH = 900,
     /// <summary>
     /// This `STZ2G` mnemonic.
     /// </summary>
-    STZ2G,
+    STZ2G = 901,
     /// <summary>
     /// This `STZG` mnemonic.
     /// </summary>
-    STZG,
+    STZG = 902,
     /// <summary>
     /// This `STZGM` mnemonic.
     /// </summary>
-    STZGM,
+    STZGM = 903,
     /// <summary>
     /// This `SUB` mnemonic.
     /// </summary>
-    SUB,
+    SUB = 904,
     /// <summary>
     /// This `SUBG` mnemonic.
     /// </summary>
-    SUBG,
+    SUBG = 905,
     /// <summary>
     /// This `SUBHN` mnemonic.
     /// </summary>
-    SUBHN,
+    SUBHN = 906,
     /// <summary>
     /// This `SUBP` mnemonic.
     /// </summary>
-    SUBP,
+    SUBP = 907,
     /// <summary>
     /// This `SUBPS` mnemonic.
     /// </summary>
-    SUBPS,
+    SUBPS = 908,
     /// <summary>
     /// This `SUBPT` mnemonic.
     /// </summary>
-    SUBPT,
+    SUBPT = 909,
     /// <summary>
     /// This `SUBS` mnemonic.
     /// </summary>
-    SUBS,
+    SUBS = 910,
     /// <summary>
     /// This `SUDOT` mnemonic.
     /// </summary>
-    SUDOT,
+    SUDOT = 911,
     /// <summary>
     /// This `SUQADD` mnemonic.
     /// </summary>
-    SUQADD,
+    SUQADD = 912,
     /// <summary>
     /// This `SVC` mnemonic.
     /// </summary>
-    SVC,
+    SVC = 913,
     /// <summary>
     /// This `SWP` mnemonic.
     /// </summary>
-    SWP,
+    SWP = 914,
     /// <summary>
     /// This `SWPA` mnemonic.
     /// </summary>
-    SWPA,
+    SWPA = 915,
     /// <summary>
     /// This `SWPAB` mnemonic.
     /// </summary>
-    SWPAB,
+    SWPAB = 916,
     /// <summary>
     /// This `SWPAH` mnemonic.
     /// </summary>
-    SWPAH,
+    SWPAH = 917,
     /// <summary>
     /// This `SWPAL` mnemonic.
     /// </summary>
-    SWPAL,
+    SWPAL = 918,
     /// <summary>
     /// This `SWPALB` mnemonic.
     /// </summary>
-    SWPALB,
+    SWPALB = 919,
     /// <summary>
     /// This `SWPALH` mnemonic.
     /// </summary>
-    SWPALH,
+    SWPALH = 920,
     /// <summary>
     /// This `SWPB` mnemonic.
     /// </summary>
-    SWPB,
+    SWPB = 921,
     /// <summary>
     /// This `SWPH` mnemonic.
     /// </summary>
-    SWPH,
+    SWPH = 922,
     /// <summary>
     /// This `SWPL` mnemonic.
     /// </summary>
-    SWPL,
+    SWPL = 923,
     /// <summary>
     /// This `SWPLB` mnemonic.
     /// </summary>
-    SWPLB,
+    SWPLB = 924,
     /// <summary>
     /// This `SWPLH` mnemonic.
     /// </summary>
-    SWPLH,
+    SWPLH = 925,
     /// <summary>
     /// This `SWPP` mnemonic.
     /// </summary>
-    SWPP,
+    SWPP = 926,
     /// <summary>
     /// This `SWPPA` mnemonic.
     /// </summary>
-    SWPPA,
+    SWPPA = 927,
     /// <summary>
     /// This `SWPPAL` mnemonic.
     /// </summary>
-    SWPPAL,
+    SWPPAL = 928,
     /// <summary>
     /// This `SWPPL` mnemonic.
     /// </summary>
-    SWPPL,
+    SWPPL = 929,
     /// <summary>
     /// This `SWPT` mnemonic.
     /// </summary>
-    SWPT,
+    SWPT = 930,
     /// <summary>
     /// This `SWPTA` mnemonic.
     /// </summary>
-    SWPTA,
+    SWPTA = 931,
     /// <summary>
     /// This `SWPTAL` mnemonic.
     /// </summary>
-    SWPTAL,
+    SWPTAL = 932,
     /// <summary>
     /// This `SWPTL` mnemonic.
     /// </summary>
-    SWPTL,
+    SWPTL = 933,
     /// <summary>
     /// This `SYS` mnemonic.
     /// </summary>
-    SYS,
+    SYS = 934,
     /// <summary>
     /// This `SYSL` mnemonic.
     /// </summary>
-    SYSL,
+    SYSL = 935,
     /// <summary>
     /// This `SYSP` mnemonic.
     /// </summary>
-    SYSP,
+    SYSP = 936,
     /// <summary>
     /// This `TBL` mnemonic.
     /// </summary>
-    TBL,
+    TBL = 937,
     /// <summary>
     /// This `TBNZ` mnemonic.
     /// </summary>
-    TBNZ,
+    TBNZ = 938,
     /// <summary>
     /// This `TBX` mnemonic.
     /// </summary>
-    TBX,
+    TBX = 939,
     /// <summary>
     /// This `TBZ` mnemonic.
     /// </summary>
-    TBZ,
+    TBZ = 940,
     /// <summary>
     /// This `TCANCEL` mnemonic.
     /// </summary>
-    TCANCEL,
+    TCANCEL = 941,
     /// <summary>
     /// This `TCOMMIT` mnemonic.
     /// </summary>
-    TCOMMIT,
+    TCOMMIT = 942,
     /// <summary>
     /// This `TRN1` mnemonic.
     /// </summary>
-    TRN1,
+    TRN1 = 943,
     /// <summary>
     /// This `TRN2` mnemonic.
     /// </summary>
-    TRN2,
+    TRN2 = 944,
     /// <summary>
     /// This `TSB` mnemonic.
     /// </summary>
-    TSB,
+    TSB = 945,
     /// <summary>
     /// This `TSTART` mnemonic.
     /// </summary>
-    TSTART,
+    TSTART = 946,
     /// <summary>
     /// This `TTEST` mnemonic.
     /// </summary>
-    TTEST,
+    TTEST = 947,
     /// <summary>
     /// This `UABA` mnemonic.
     /// </summary>
-    UABA,
+    UABA = 948,
     /// <summary>
     /// This `UABAL` mnemonic.
     /// </summary>
-    UABAL,
+    UABAL = 949,
     /// <summary>
     /// This `UABD` mnemonic.
     /// </summary>
-    UABD,
+    UABD = 950,
     /// <summary>
     /// This `UABDL` mnemonic.
     /// </summary>
-    UABDL,
+    UABDL = 951,
     /// <summary>
     /// This `UADALP` mnemonic.
     /// </summary>
-    UADALP,
+    UADALP = 952,
     /// <summary>
     /// This `UADDL` mnemonic.
     /// </summary>
-    UADDL,
+    UADDL = 953,
     /// <summary>
     /// This `UADDLP` mnemonic.
     /// </summary>
-    UADDLP,
+    UADDLP = 954,
     /// <summary>
     /// This `UADDLV` mnemonic.
     /// </summary>
-    UADDLV,
+    UADDLV = 955,
     /// <summary>
     /// This `UADDW` mnemonic.
     /// </summary>
-    UADDW,
+    UADDW = 956,
     /// <summary>
     /// This `UBFM` mnemonic.
     /// </summary>
-    UBFM,
+    UBFM = 957,
     /// <summary>
     /// This `UCVTF` mnemonic.
     /// </summary>
-    UCVTF,
+    UCVTF = 958,
     /// <summary>
     /// This `UDF` mnemonic.
     /// </summary>
-    UDF,
+    UDF = 959,
     /// <summary>
     /// This `UDIV` mnemonic.
     /// </summary>
-    UDIV,
+    UDIV = 960,
     /// <summary>
     /// This `UDOT` mnemonic.
     /// </summary>
-    UDOT,
+    UDOT = 961,
     /// <summary>
     /// This `UHADD` mnemonic.
     /// </summary>
-    UHADD,
+    UHADD = 962,
     /// <summary>
     /// This `UHSUB` mnemonic.
     /// </summary>
-    UHSUB,
+    UHSUB = 963,
     /// <summary>
     /// This `UMADDL` mnemonic.
     /// </summary>
-    UMADDL,
+    UMADDL = 964,
     /// <summary>
     /// This `UMAX` mnemonic.
     /// </summary>
-    UMAX,
+    UMAX = 965,
     /// <summary>
     /// This `UMAXP` mnemonic.
     /// </summary>
-    UMAXP,
+    UMAXP = 966,
     /// <summary>
     /// This `UMAXV` mnemonic.
     /// </summary>
-    UMAXV,
+    UMAXV = 967,
     /// <summary>
     /// This `UMIN` mnemonic.
     /// </summary>
-    UMIN,
+    UMIN = 968,
     /// <summary>
     /// This `UMINP` mnemonic.
     /// </summary>
-    UMINP,
+    UMINP = 969,
     /// <summary>
     /// This `UMINV` mnemonic.
     /// </summary>
-    UMINV,
+    UMINV = 970,
     /// <summary>
     /// This `UMLAL` mnemonic.
     /// </summary>
-    UMLAL,
+    UMLAL = 971,
     /// <summary>
     /// This `UMLSL` mnemonic.
     /// </summary>
-    UMLSL,
+    UMLSL = 972,
     /// <summary>
     /// This `UMMLA` mnemonic.
     /// </summary>
-    UMMLA,
+    UMMLA = 973,
     /// <summary>
     /// This `UMOV` mnemonic.
     /// </summary>
-    UMOV,
+    UMOV = 974,
     /// <summary>
     /// This `UMSUBL` mnemonic.
     /// </summary>
-    UMSUBL,
+    UMSUBL = 975,
     /// <summary>
     /// This `UMULH` mnemonic.
     /// </summary>
-    UMULH,
+    UMULH = 976,
     /// <summary>
     /// This `UMULL` mnemonic.
     /// </summary>
-    UMULL,
+    UMULL = 977,
     /// <summary>
     /// This `UQADD` mnemonic.
     /// </summary>
-    UQADD,
+    UQADD = 978,
     /// <summary>
     /// This `UQRSHL` mnemonic.
     /// </summary>
-    UQRSHL,
+    UQRSHL = 979,
     /// <summary>
     /// This `UQRSHRN` mnemonic.
     /// </summary>
-    UQRSHRN,
+    UQRSHRN = 980,
     /// <summary>
     /// This `UQSHL` mnemonic.
     /// </summary>
-    UQSHL,
+    UQSHL = 981,
     /// <summary>
     /// This `UQSHRN` mnemonic.
     /// </summary>
-    UQSHRN,
+    UQSHRN = 982,
     /// <summary>
     /// This `UQSUB` mnemonic.
     /// </summary>
-    UQSUB,
+    UQSUB = 983,
     /// <summary>
     /// This `UQXTN` mnemonic.
     /// </summary>
-    UQXTN,
+    UQXTN = 984,
     /// <summary>
     /// This `URECPE` mnemonic.
     /// </summary>
-    URECPE,
+    URECPE = 985,
     /// <summary>
     /// This `URHADD` mnemonic.
     /// </summary>
-    URHADD,
+    URHADD = 986,
     /// <summary>
     /// This `URSHL` mnemonic.
     /// </summary>
-    URSHL,
+    URSHL = 987,
     /// <summary>
     /// This `URSHR` mnemonic.
     /// </summary>
-    URSHR,
+    URSHR = 988,
     /// <summary>
     /// This `URSQRTE` mnemonic.
     /// </summary>
-    URSQRTE,
+    URSQRTE = 989,
     /// <summary>
     /// This `URSRA` mnemonic.
     /// </summary>
-    URSRA,
+    URSRA = 990,
     /// <summary>
     /// This `USDOT` mnemonic.
     /// </summary>
-    USDOT,
+    USDOT = 991,
     /// <summary>
     /// This `USHL` mnemonic.
     /// </summary>
-    USHL,
+    USHL = 992,
     /// <summary>
     /// This `USHLL` mnemonic.
     /// </summary>
-    USHLL,
+    USHLL = 993,
     /// <summary>
     /// This `USHR` mnemonic.
     /// </summary>
-    USHR,
+    USHR = 994,
     /// <summary>
     /// This `USMMLA` mnemonic.
     /// </summary>
-    USMMLA,
+    USMMLA = 995,
     /// <summary>
     /// This `USQADD` mnemonic.
     /// </summary>
-    USQADD,
+    USQADD = 996,
     /// <summary>
     /// This `USRA` mnemonic.
     /// </summary>
-    USRA,
+    USRA = 997,
     /// <summary>
     /// This `USUBL` mnemonic.
     /// </summary>
-    USUBL,
+    USUBL = 998,
     /// <summary>
     /// This `USUBW` mnemonic.
     /// </summary>
-    USUBW,
+    USUBW = 999,
     /// <summary>
     /// This `UZP1` mnemonic.
     /// </summary>
-    UZP1,
+    UZP1 = 1000,
     /// <summary>
     /// This `UZP2` mnemonic.
     /// </summary>
-    UZP2,
+    UZP2 = 1001,
     /// <summary>
     /// This `WFE` mnemonic.
     /// </summary>
-    WFE,
+    WFE = 1002,
     /// <summary>
     /// This `WFET` mnemonic.
     /// </summary>
-    WFET,
+    WFET = 1003,
     /// <summary>
     /// This `WFI` mnemonic.
     /// </summary>
-    WFI,
+    WFI = 1004,
     /// <summary>
     /// This `WFIT` mnemonic.
     /// </summary>
-    WFIT,
+    WFIT = 1005,
     /// <summary>
     /// This `XAFLAG` mnemonic.
     /// </summary>
-    XAFLAG,
+    XAFLAG = 1006,
     /// <summary>
     /// This `XAR` mnemonic.
     /// </summary>
-    XAR,
+    XAR = 1007,
     /// <summary>
     /// This `XPACD` mnemonic.
     /// </summary>
-    XPACD,
+    XPACD = 1008,
     /// <summary>
     /// This `XPACI` mnemonic.
     /// </summary>
-    XPACI,
+    XPACI = 1009,
     /// <summary>
     /// This `XPACLRI` mnemonic.
     /// </summary>
-    XPACLRI,
+    XPACLRI = 1010,
     /// <summary>
     /// This `XTN` mnemonic.
     /// </summary>
-    XTN,
+    XTN = 1011,
     /// <summary>
     /// This `YIELD` mnemonic.
     /// </summary>
-    YIELD,
+    YIELD = 1012,
     /// <summary>
     /// This `ZIP1` mnemonic.
     /// </summary>
-    ZIP1,
+    ZIP1 = 1013,
     /// <summary>
     /// This `ZIP2` mnemonic.
     /// </summary>
-    ZIP2,
+    ZIP2 = 1014,
 }
 
 partial class Arm64Extensions

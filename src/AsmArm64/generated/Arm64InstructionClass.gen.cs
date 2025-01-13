@@ -23,25 +23,25 @@ public enum Arm64InstructionClass : byte
     /// <summary>
     /// Class `Advsimd`.
     /// </summary>
-    Advsimd,
+    Advsimd = 1,
     /// <summary>
     /// Class `Float`.
     /// </summary>
-    Float,
+    Float = 2,
     /// <summary>
     /// Class `Fpsimd`.
     /// </summary>
-    Fpsimd,
+    Fpsimd = 3,
     /// <summary>
     /// Class `General`.
     /// </summary>
-    General,
+    General = 4,
     /// <summary>
     /// Class `Other`.
     /// </summary>
-    Other,
+    Other = 5,
     /// <summary>
     /// Class `System`.
     /// </summary>
-    System,
+    System = 6,
 }

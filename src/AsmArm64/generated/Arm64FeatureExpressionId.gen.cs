@@ -23,285 +23,285 @@ public enum Arm64FeatureExpressionId : byte
     /// <summary>
     /// Feature `FEAT_AES` for `ARMv8.0`.
     /// </summary>
-    AES,
+    AES = 1,
     /// <summary>
     /// Feature `FEAT_AdvSIMD` for `ARMv8.0`.
     /// </summary>
-    AdvSIMD,
+    AdvSIMD = 2,
     /// <summary>
     /// Feature `FEAT_AdvSIMD &amp;&amp; FEAT_FAMINMAX`.
     /// </summary>
-    AdvSIMD_And_FAMINMAX,
+    AdvSIMD_And_FAMINMAX = 3,
     /// <summary>
     /// Feature `FEAT_AdvSIMD &amp;&amp; FEAT_FP16`.
     /// </summary>
-    AdvSIMD_And_FP16,
+    AdvSIMD_And_FP16 = 4,
     /// <summary>
     /// Feature `FEAT_AdvSIMD &amp;&amp; FEAT_LRCPC3`.
     /// </summary>
-    AdvSIMD_And_LRCPC3,
+    AdvSIMD_And_LRCPC3 = 5,
     /// <summary>
     /// Feature `FEAT_AdvSIMD &amp;&amp; FEAT_LUT`.
     /// </summary>
-    AdvSIMD_And_LUT,
+    AdvSIMD_And_LUT = 6,
     /// <summary>
     /// Feature `FEAT_BF16` for `ARMv8.6`.
     /// </summary>
-    BF16,
+    BF16 = 7,
     /// <summary>
     /// Feature `FEAT_BTI` for `ARMv8.5`.
     /// </summary>
-    BTI,
+    BTI = 8,
     /// <summary>
     /// Feature `FEAT_CHK` for `ARMv9.4`.
     /// </summary>
-    CHK,
+    CHK = 9,
     /// <summary>
     /// Feature `FEAT_CLRBHB` for `ARMv8.9`.
     /// </summary>
-    CLRBHB,
+    CLRBHB = 10,
     /// <summary>
     /// Feature `FEAT_CMPBR` for `ARMv9.6`.
     /// </summary>
-    CMPBR,
+    CMPBR = 11,
     /// <summary>
     /// Feature `FEAT_CPA` for `ARMv9.5`.
     /// </summary>
-    CPA,
+    CPA = 12,
     /// <summary>
     /// Feature `FEAT_CRC32` for `ARMv8.0`.
     /// </summary>
-    CRC32,
+    CRC32 = 13,
     /// <summary>
     /// Feature `FEAT_CSSC` for `ARMv8.9`.
     /// </summary>
-    CSSC,
+    CSSC = 14,
     /// <summary>
     /// Feature `FEAT_D128 &amp;&amp; FEAT_THE`.
     /// </summary>
-    D128_And_THE,
+    D128_And_THE = 15,
     /// <summary>
     /// Feature `FEAT_DGH`.
     /// </summary>
-    DGH,
+    DGH = 16,
     /// <summary>
     /// Feature `FEAT_DotProd` for `ARMv8.4`.
     /// </summary>
-    DotProd,
+    DotProd = 17,
     /// <summary>
     /// Feature `FEAT_F8F16MM` for `ARMv9.6`.
     /// </summary>
-    F8F16MM,
+    F8F16MM = 18,
     /// <summary>
     /// Feature `FEAT_F8F32MM` for `ARMv9.6`.
     /// </summary>
-    F8F32MM,
+    F8F32MM = 19,
     /// <summary>
     /// Feature `FEAT_FCMA` for `ARMv8.3`.
     /// </summary>
-    FCMA,
+    FCMA = 20,
     /// <summary>
     /// Feature `FEAT_FHM` for `ARMv8.4`.
     /// </summary>
-    FHM,
+    FHM = 21,
     /// <summary>
     /// Feature `FEAT_FP` for `ARMv8.0`.
     /// </summary>
-    FP,
+    FP = 22,
     /// <summary>
     /// Feature `FEAT_FP8` for `ARMv9.5`.
     /// </summary>
-    FP8,
+    FP8 = 23,
     /// <summary>
     /// Feature `FEAT_FP8DOT2` for `ARMv9.5`.
     /// </summary>
-    FP8DOT2,
+    FP8DOT2 = 24,
     /// <summary>
     /// Feature `FEAT_FP8DOT4` for `ARMv9.5`.
     /// </summary>
-    FP8DOT4,
+    FP8DOT4 = 25,
     /// <summary>
     /// Feature `FEAT_FP8FMA` for `ARMv9.5`.
     /// </summary>
-    FP8FMA,
+    FP8FMA = 26,
     /// <summary>
     /// Feature `FEAT_FPRCVT` for `ARMv9.6`.
     /// </summary>
-    FPRCVT,
+    FPRCVT = 27,
     /// <summary>
     /// Feature `FEAT_FP &amp;&amp; FEAT_LRCPC3`.
     /// </summary>
-    FP_And_LRCPC3,
+    FP_And_LRCPC3 = 28,
     /// <summary>
     /// Feature `FEAT_FP &amp;&amp; FEAT_LSUI`.
     /// </summary>
-    FP_And_LSUI,
+    FP_And_LSUI = 29,
     /// <summary>
     /// Feature `FEAT_FRINTTS` for `ARMv8.5`.
     /// </summary>
-    FRINTTS,
+    FRINTTS = 30,
     /// <summary>
     /// Feature `FEAT_FlagM` for `ARMv8.4`.
     /// </summary>
-    FlagM,
+    FlagM = 31,
     /// <summary>
     /// Feature `FEAT_FlagM2` for `ARMv8.5`.
     /// </summary>
-    FlagM2,
+    FlagM2 = 32,
     /// <summary>
     /// Feature `FEAT_GCS` for `ARMv9.4`.
     /// </summary>
-    GCS,
+    GCS = 33,
     /// <summary>
     /// Feature `FEAT_HBC` for `ARMv8.8`.
     /// </summary>
-    HBC,
+    HBC = 34,
     /// <summary>
     /// Feature `FEAT_I8MM`.
     /// </summary>
-    I8MM,
+    I8MM = 35,
     /// <summary>
     /// Feature `FEAT_JSCVT` for `ARMv8.3`.
     /// </summary>
-    JSCVT,
+    JSCVT = 36,
     /// <summary>
     /// Feature `FEAT_LOR`.
     /// </summary>
-    LOR,
+    LOR = 37,
     /// <summary>
     /// Feature `FEAT_LRCPC` for `ARMv8.3`.
     /// </summary>
-    LRCPC,
+    LRCPC = 38,
     /// <summary>
     /// Feature `FEAT_LRCPC2` for `ARMv8.4`.
     /// </summary>
-    LRCPC2,
+    LRCPC2 = 39,
     /// <summary>
     /// Feature `FEAT_LRCPC3` for `ARMv8.9`.
     /// </summary>
-    LRCPC3,
+    LRCPC3 = 40,
     /// <summary>
     /// Feature `FEAT_LS64` for `ARMv8.7`.
     /// </summary>
-    LS64,
+    LS64 = 41,
     /// <summary>
     /// Feature `FEAT_LS64_ACCDATA` for `ARMv8.7`.
     /// </summary>
-    LS64_ACCDATA,
+    LS64_ACCDATA = 42,
     /// <summary>
     /// Feature `FEAT_LS64_V` for `ARMv8.7`.
     /// </summary>
-    LS64_V,
+    LS64_V = 43,
     /// <summary>
     /// Feature `FEAT_LSE` for `ARMv8.1`.
     /// </summary>
-    LSE,
+    LSE = 44,
     /// <summary>
     /// Feature `FEAT_LSE128` for `ARMv9.4`.
     /// </summary>
-    LSE128,
+    LSE128 = 45,
     /// <summary>
     /// Feature `FEAT_LSFE` for `ARMv9.6`.
     /// </summary>
-    LSFE,
+    LSFE = 46,
     /// <summary>
     /// Feature `FEAT_LSUI` for `ARMv9.6`.
     /// </summary>
-    LSUI,
+    LSUI = 47,
     /// <summary>
     /// Feature `FEAT_MOPS` for `ARMv8.8`.
     /// </summary>
-    MOPS,
+    MOPS = 48,
     /// <summary>
     /// Feature `FEAT_MTE` for `ARMv8.5`.
     /// </summary>
-    MTE,
+    MTE = 49,
     /// <summary>
     /// Feature `FEAT_MTE2` for `ARMv8.5`.
     /// </summary>
-    MTE2,
+    MTE2 = 50,
     /// <summary>
     /// Feature `FEAT_PAuth` for `ARMv8.3`.
     /// </summary>
-    PAuth,
+    PAuth = 51,
     /// <summary>
     /// Feature `FEAT_PAuth_LR` for `ARMv9.5`.
     /// </summary>
-    PAuth_LR,
+    PAuth_LR = 52,
     /// <summary>
     /// Feature `FEAT_PCDPHINT` for `ARMv9.6`.
     /// </summary>
-    PCDPHINT,
+    PCDPHINT = 53,
     /// <summary>
     /// Feature `FEAT_RAS` for `ARMv8.2`.
     /// </summary>
-    RAS,
+    RAS = 54,
     /// <summary>
     /// Feature `FEAT_RDM` for `ARMv8.1`.
     /// </summary>
-    RDM,
+    RDM = 55,
     /// <summary>
     /// Feature `FEAT_RPRFM` for `ARMv8.9`.
     /// </summary>
-    RPRFM,
+    RPRFM = 56,
     /// <summary>
     /// Feature `FEAT_SB`.
     /// </summary>
-    SB,
+    SB = 57,
     /// <summary>
     /// Feature `FEAT_SHA1` for `ARMv8.0`.
     /// </summary>
-    SHA1,
+    SHA1 = 58,
     /// <summary>
     /// Feature `FEAT_SHA256` for `ARMv8.0`.
     /// </summary>
-    SHA256,
+    SHA256 = 59,
     /// <summary>
     /// Feature `FEAT_SHA3` for `ARMv8.2`.
     /// </summary>
-    SHA3,
+    SHA3 = 60,
     /// <summary>
     /// Feature `FEAT_SHA512` for `ARMv8.2`.
     /// </summary>
-    SHA512,
+    SHA512 = 61,
     /// <summary>
     /// Feature `FEAT_SM3` for `ARMv8.2`.
     /// </summary>
-    SM3,
+    SM3 = 62,
     /// <summary>
     /// Feature `FEAT_SM4` for `ARMv8.2`.
     /// </summary>
-    SM4,
+    SM4 = 63,
     /// <summary>
     /// Feature `FEAT_SPE`.
     /// </summary>
-    SPE,
+    SPE = 64,
     /// <summary>
     /// Feature `FEAT_SYSINSTR128` for `ARMv9.4`.
     /// </summary>
-    SYSINSTR128,
+    SYSINSTR128 = 65,
     /// <summary>
     /// Feature `FEAT_SYSREG128` for `ARMv9.4`.
     /// </summary>
-    SYSREG128,
+    SYSREG128 = 66,
     /// <summary>
     /// Feature `FEAT_THE` for `ARMv8.9`.
     /// </summary>
-    THE,
+    THE = 67,
     /// <summary>
     /// Feature `FEAT_TME` for `ARMv9.0`.
     /// </summary>
-    TME,
+    TME = 68,
     /// <summary>
     /// Feature `FEAT_TRF` for `ARMv8.4`.
     /// </summary>
-    TRF,
+    TRF = 69,
     /// <summary>
     /// Feature `FEAT_WFxT` for `ARMv8.7`.
     /// </summary>
-    WFxT,
+    WFxT = 70,
     /// <summary>
     /// Feature `FEAT_XS` for `ARMv8.7`.
     /// </summary>
-    XS,
+    XS = 71,
 }

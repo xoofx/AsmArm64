@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Encoding fits within 2 bits.
+/// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 internal enum Arm64RegisterIndexEncodingKind : byte
 {

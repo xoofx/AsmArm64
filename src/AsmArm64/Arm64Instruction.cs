@@ -3,20 +3,61 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using EntryIndex = int;
 
 namespace AsmArm64;
+
+using EntryIndex = int;
 
 /// <summary>
 /// Encoded instruction table for ARM64.
 /// </summary>
-public readonly partial record struct Arm64Instruction(Arm64InstructionId Id, Arm64RawInstruction Value)
+public readonly unsafe struct Arm64Instruction
 {
+    internal readonly ulong Descriptor;
+    internal readonly byte* OperandsPtr;
+    internal readonly Arm64RawInstruction RawValue;
+
+    private Arm64Instruction(ulong descriptor, byte* operandsPtr, Arm64RawInstruction rawValue)
+    {
+        Descriptor = descriptor;
+        OperandsPtr = operandsPtr;
+        RawValue = rawValue;
+    }
+
+    public Arm64InstructionId Id => (Arm64InstructionId)(ushort)Descriptor;
+
+    public Arm64Mnemonic Mnemonic => (Arm64Mnemonic) (ushort) (Descriptor >> 16);
+
+    public Arm64InstructionClass Class => (Arm64InstructionClass) (byte) (Descriptor >> 32);
+
+    public Arm64FeatureExpressionId FeatureExpressionId => (Arm64FeatureExpressionId)(byte)(Descriptor >> 40);
+
+    public int OperandCount => (byte)(Descriptor >> 48);
+
+    internal bool IsOperandEncodingSize8Bytes => ((byte)(Descriptor >> 56) & 1) == 0;
+
+    public Arm64Operand GetOperand(int index)
+    {
+        ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual((uint)index, (uint)OperandCount);
+        return IsOperandEncodingSize8Bytes ? new Arm64Operand(*((ulong*)OperandsPtr + index), RawValue) : new Arm64Operand(*((uint*)OperandsPtr + index), RawValue);
+    }
+    
+    public static Arm64Instruction Decode(Arm64RawInstruction instruction)
+    {
+        var id = DecodeId(instruction);
+        var offset = Arm64InstructionDecoderTable.InstructionIdToBufferOffset[(int) id];
+        var buffer = (byte*)Unsafe.AsPointer(ref Unsafe.Add(ref MemoryMarshal.GetReference(Arm64InstructionDecoderTable.Buffer), offset * 4));
+        var descriptor = (ulong*) buffer;
+        var operands = buffer + sizeof(ulong);
+        return new Arm64Instruction(*descriptor, operands, instruction);
+    }
+
     public static unsafe Arm64InstructionId DecodeId(Arm64RawInstruction instruction)
     {
-        ref byte buffer = ref MemoryMarshal.GetReference(Arm64InstructionDecoderTable.Buffer);
+        ref byte buffer = ref MemoryMarshal.GetReference(Arm64InstructionIdDecoderTable.Buffer);
 
         int offset = 0;
 
@@ -138,36 +179,4 @@ public readonly partial record struct Arm64Instruction(Arm64InstructionId Id, Ar
         SmallArray = 1,
         Terminal = 2
     }
-}
-
-struct RawBasicInstructionInfo
-{
-    public Arm64Mnemonic Mnemonic;
-
-    public ushort FormatterId;
-
-    public Arm64InstructionClass InstructionClass;
-
-    public byte OperandCount;
-
-    public RawBasicOperandInfo Operand0;
-
-    public RawBasicOperandInfo Operand1;
-
-    public RawBasicOperandInfo Operand2;
-
-    public RawBasicOperandInfo Operand3;
-
-    public RawBasicOperandInfo Operand4;
-}
-
-struct RawBasicOperandInfo
-{
-    public byte Kind;
-
-    public byte Data0;
-
-    public byte Data1;
-
-    public byte Data2;
 }

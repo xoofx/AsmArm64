@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Encoding fits within 4 bits
+/// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 internal enum Arm64RegisterEncodingKind : byte
 {
@@ -13,57 +16,57 @@ internal enum Arm64RegisterEncodingKind : byte
     /// <summary>
     /// 64-bit register
     /// </summary>
-    X,
+    X = 1,
     /// <summary>
     /// 64-bit register or SP (stack pointer)
     /// </summary>
-    XOrSP,
+    XOrSP = 2,
     /// <summary>
     /// 32-bit register
     /// </summary>
-    W,
+    W = 3,
     /// <summary>
     /// 32-bit register or WSP (stack pointer)
     /// </summary>
-    WOrWSP,
+    WOrWSP = 4,
     /// <summary>
     /// Either X or W depending on some encoding
     /// </summary>
-    DynamicXOrW,
+    DynamicXOrW = 5,
     /// <summary>
     /// Either B, H, S depending on some encoding
     /// </summary>
-    DynamicVScalar,
+    DynamicVScalar = 6,
     /// <summary>
     /// 8-bit register from vector registers
     /// </summary>
-    B,
+    B = 7,
     /// <summary>
     /// 16-bit floating point register from vector registers
     /// </summary>
-    H,
+    H = 8,
     /// <summary>
     /// 32-bit floating point register from vector registers
     /// </summary>
-    S,
+    S = 9,
     /// <summary>
     /// 64-bit floating point register from vector registers
     /// </summary>
-    D,
+    D = 10,
     /// <summary>
     /// Vector register (128-bit)
     /// </summary>
-    V,
+    V = 11,
     /// <summary>
     /// Vector register (128-bit)
     /// </summary>
-    Q,
+    Q = 12,
     /// <summary>
     /// SVE register
     /// </summary>
-    Z,
+    Z = 13,
     /// <summary>
     /// Control register
     /// </summary>
-    C,
+    C = 14,
 }

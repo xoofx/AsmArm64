@@ -6,8 +6,11 @@ using System.Text.Json.Serialization;
 
 namespace AsmArm64;
 
+/// <summary>
+/// Can be encoded in 3 bits
+/// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum Arm64EnumEncodingKind
+public enum Arm64EnumEncodingKind : byte
 {
     /// <summary>
     /// No enum encoding
@@ -16,30 +19,30 @@ public enum Arm64EnumEncodingKind
     /// <summary>
     /// The Arm64Conditional enum encoding.
     /// </summary>
-    Conditional,
+    Conditional = 1,
     /// <summary>
     /// Branch Target Identification.
     /// </summary>
-    Bti,
+    Bti = 2,
     /// <summary>
     /// The data synchronization option defined by DSB instruction.
     /// </summary>
-    DataSynchronizationOption,
+    DataSynchronizationOption = 3,
     /// <summary>
     /// The policy defined by the STSHH instruction (Store Shared Hint). (KEEP or STRM)
     /// </summary>
-    StoredSharedHintPolicy,
+    StoredSharedHintPolicy = 4,
     /// <summary>
     /// The PSTATE field used by MSR (immediate) instruction.
     /// </summary>
-    PStateField,
+    PStateField = 5,
     /// <summary>
     /// A barrier operation limit used by DMB_bo_barriers and DSB_bo_barriers instructions.
     /// </summary>
-    BarrierOperationLimit,
+    BarrierOperationLimit = 6,
     /// <summary>
     /// 
     /// </summary>
-    PrefetchOperation,
+    PrefetchOperation = 7,
 
 }

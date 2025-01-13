@@ -37,14 +37,24 @@ public static partial class Arm64Extensions
     public static string ToText(this Arm64Mnemonic mnemonic, bool upperCase = false) => upperCase ? MnemonicUpperTable[(int)mnemonic] : MnemonicLowerTable[(int)mnemonic];
 
     /// <summary>
-    /// Gets the text representation of the specified <see cref="Arm64ShiftType"/>.
+    /// Gets the text representation of the specified <see cref="Arm64ShiftKind"/>.
     /// </summary>
     /// <param name="shiftType"></param>
     /// <param name="upperCase"></param>
     /// <returns></returns>
-    public static string ToText<T>(this T shiftType, bool upperCase = false) where T : IArm64ShiftType
-        => upperCase ? ShiftTypeUpper[(int)shiftType.ShiftType] : ShiftTypeLower[(int)shiftType.ShiftType];
-    
+    public static string ToText<T>(this T shiftType, bool upperCase = false) where T : IArm64ShiftKind
+        => upperCase ? ShiftTypeUpper[(int)shiftType.ShiftKind] : ShiftTypeLower[(int)shiftType.ShiftKind];
+
+
+    /// <summary>
+    /// Gets the text representation of the specified <see cref="Arm64ShiftKind"/>.
+    /// </summary>
+    /// <param name="shiftKind"></param>
+    /// <param name="upperCase"></param>
+    /// <returns></returns>
+    public static string ToText(this Arm64ShiftKind shiftKind, bool upperCase = false)
+        => upperCase ? ShiftTypeUpper[(int)shiftKind] : ShiftTypeLower[(int)shiftKind];
+
     /// <summary>
     /// Validates the range of a register index.
     /// </summary>

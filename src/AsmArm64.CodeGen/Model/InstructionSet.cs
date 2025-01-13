@@ -15,13 +15,25 @@ class InstructionSet
 {
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<VectorArrangementValues> VectorArrangementValues { get; } = new();
-    
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<VectorArrangement> VectorArrangements { get; } = new();
+
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<string> IndexerIdList { get; } = new();
+    
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<DynamicRegisterSelector> DynamicRegisterSelectorList { get; } = new();
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<Instruction> Instructions { get; } = new();
-    
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    internal List<string> OrderedMnemonics { get; } = new();
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    internal List<string> OrderedInstructionClass { get; } = new();
+
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
