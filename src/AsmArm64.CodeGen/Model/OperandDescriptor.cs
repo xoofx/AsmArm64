@@ -312,7 +312,6 @@ sealed class DynamicRegisterSelector
 sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Register), IIndexableOperandDescriptor
 {
     private int _dynamicRegisterSelectorIndex;
-    private int _vectorArrangementIndex;
     public Arm64RegisterEncodingKind RegisterKind { get; set; }
 
     public Arm64RegisterIndexEncodingKind RegisterIndexEncodingKind { get; set; }
@@ -330,20 +329,16 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
         set => _dynamicRegisterSelectorIndex = value;
     }
 
-    public int VectorArrangementIndex
-    {
-        get => VectorArrangement?.VectorArrangementIndex ?? _vectorArrangementIndex;
-        set => _vectorArrangementIndex = value;
-    }
+    /// <summary>
+    /// If > 0, this is an index (-1) to the <see cref="Instruction.VectorArrangements"/> / <see cref="Instruction.VectorArrangementIndices"/>
+    /// </summary>
+    public int VectorArrangementLocalIndex { get; set; }
 
     /// <summary>
     /// If the operand kind is <see cref="Arm64RegisterEncodingKind.DynamicXOrW"/>, then the kind of register is selected dynamically
     /// </summary>
     [JsonIgnore]
     public DynamicRegisterSelector? DynamicRegisterXOrWSelector { get; set; }
-
-    [JsonIgnore]
-    public VectorArrangement? VectorArrangement { get; set; }
 
     [JsonIgnore]
     public bool IsSimpleEncoding => RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.SpecialMRm;
@@ -365,12 +360,12 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
         buffer[3] = (byte)LowBitIndexEncoding;
         if (RegisterKind == Arm64RegisterEncodingKind.V)
         {
-            buffer[4] = (byte)VectorArrangementIndex;
+            buffer[4] = (byte)VectorArrangementLocalIndex;
         }
         else if (RegisterKind == Arm64RegisterEncodingKind.DynamicXOrW || RegisterKind == Arm64RegisterEncodingKind.DynamicVScalar)
         {
             buffer[4] = (byte)DynamicRegisterSelectorIndex;
-            Debug.Assert(VectorArrangement is null);
+            Debug.Assert(VectorArrangementLocalIndex == 0);
         }
     }
 
@@ -387,9 +382,9 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
             builder.Append($" {DynamicRegisterXOrWSelector}");
         }
 
-        if (RegisterKind == Arm64RegisterEncodingKind.V && VectorArrangement != null)
+        if (RegisterKind == Arm64RegisterEncodingKind.V && VectorArrangementLocalIndex != 0)
         {
-            builder.Append($".{VectorArrangement}");
+            builder.Append($".{VectorArrangementLocalIndex}");
         }
 
         if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Std4)
@@ -437,8 +432,10 @@ record VectorArrangement
 {
     private int _vectorArrangementValuesIndex;
 
-    [JsonIgnore]
-    public int VectorArrangementIndex { get; set; }
+    /// <summary>
+    /// Index in the global list of <see cref="InstructionSet.VectorArrangements"/>
+    /// </summary>
+    public int Index { get; set; }
 
     public Arm64RegisterVectorArrangementEncodingKind ArrangementKind { get; set; }
 
@@ -500,9 +497,10 @@ record VectorArrangement
             hash.Add(bitRange);
         }
 
-        if (Values is not null)
+        var values = Values;
+        if (values is not null)
         {
-            foreach (var item in Values)
+            foreach (var item in values.Items)
             {
                 hash.Add(item);
             }
@@ -547,19 +545,7 @@ record VectorArrangement
             return false;
         }
 
-        if (Values.Count != other.Values.Count)
-        {
-            return false;
-        }
-
-        for (int i = 0; i < Values.Count; i++)
-        {
-            if (Values[i] != other.Values[i])
-            {
-                return false;
-            }
-        }
-        return true;
+        return Values.Equals(other.Values);
     }
 
     public override string ToString()
@@ -583,9 +569,9 @@ record VectorArrangement
         builder.Append("], Values: ");
 
         builder.Append("{");
-        for (var i = 0; i < Values!.Count; i++)
+        for (var i = 0; i < Values!.Items.Count; i++)
         {
-            var item = Values[i];
+            var item = Values.Items[i];
             if (i > 0) builder.Append(",");
             builder.Append(item);
         }
@@ -595,18 +581,20 @@ record VectorArrangement
     }
 }
 
-sealed class VectorArrangementValues : List<VectorArrangementValue>
+sealed class VectorArrangementValues
 {
     [JsonIgnore]
     public string Id => ToString();
 
-    [JsonIgnore]
     public int Index { get; set; }
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<VectorArrangementValue> Items { get; } = new();
 
     public override int GetHashCode()
     {
         var hash = new HashCode();
-        foreach (var item in this)
+        foreach (var item in Items)
         {
             hash.Add(item);
         }
@@ -619,13 +607,13 @@ sealed class VectorArrangementValues : List<VectorArrangementValue>
         {
             return false;
         }
-        if (Count != other.Count)
+        if (Items.Count != other.Items.Count)
         {
             return false;
         }
-        for (int i = 0; i < Count; i++)
+        for (int i = 0; i < Items.Count; i++)
         {
-            if (this[i] != other[i])
+            if (this.Items[i] != other.Items[i])
             {
                 return false;
             }
@@ -637,13 +625,13 @@ sealed class VectorArrangementValues : List<VectorArrangementValue>
     {
         var builder = new StringBuilder();
         builder.Append("{");
-        for (int i = 0; i < Count; i++)
+        for (int i = 0; i < Items.Count; i++)
         {
             if (i > 0)
             {
                 builder.Append(", ");
             }
-            builder.Append(this[i]);
+            builder.Append(this.Items[i]);
         }
         builder.Append("}");
         return builder.ToString();

@@ -271,7 +271,7 @@ partial class Arm64Processor
             w.OpenBraceBlock();
 
             int wrapping = 8;
-            int wrappingAfterFirst = 8;
+            var nextWrapping = new Stack<int>();
             int startingOffset = 0;
             for (var i = 0; i < buffer.Length; i++)
             {
@@ -279,7 +279,7 @@ partial class Arm64Processor
                 {
                     startingOffset = 0;
                     wrapping = 8;
-                    wrappingAfterFirst = 8;
+                    nextWrapping.Clear();
                     if (indexInOffset == 0)
                     {
                         w.WriteLine($"// Undefined");
@@ -288,9 +288,11 @@ partial class Arm64Processor
                     {
                         var instruction = _instructions[indexInOffset - 1];
                         w.WriteLine($"// {instruction.Id,-30} - {instruction.Mnemonic,-11}{(instruction.OperandsSyntax.Length > 0 ? $" {instruction.OperandsSyntax}" : string.Empty)}");
-                        if (instruction.UseOperandUIntEncoding)
+                        nextWrapping.Push(instruction.UseOperandEncoding8Bytes ? 8 : 4);
+
+                        if (instruction.VectorArrangementIndices.Count > 0)
                         {
-                            wrappingAfterFirst = 4;
+                            nextWrapping.Push(4); // We want to separate the vector arrangement on its own line
                         }
                     }
                     indexInOffset++;
@@ -300,7 +302,10 @@ partial class Arm64Processor
                 if (startingOffset % wrapping == (wrapping - 1))
                 {
                     w.WriteLine();
-                    wrapping = wrappingAfterFirst;
+                    if (nextWrapping.Count > 0)
+                    {
+                        wrapping = nextWrapping.Pop();
+                    }
                 }
 
                 startingOffset++;

@@ -647,12 +647,12 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     /// <summary>
     /// Gets the 8 x B V register.
     /// </summary>
-    public Arm64RegisterV8B T8B => new(Index);
+    public Arm64RegisterV8B T_8B => new(Index);
 
     /// <summary>
     /// Gets the 16 x B V register.
     /// </summary>
-    public Arm64RegisterV16B T16B => new(Index);
+    public Arm64RegisterV16B T_16B => new(Index);
 
     /// <summary>
     /// Gets the V.H register.
@@ -662,12 +662,12 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     /// <summary>
     /// Gets the 4 x H V register.
     /// </summary>
-    public Arm64RegisterV4H T4H => new(Index);
+    public Arm64RegisterV4H T_4H => new(Index);
 
     /// <summary>
     /// Gets the 8 x H V register.
     /// </summary>
-    public Arm64RegisterV8H T8H => new(Index);
+    public Arm64RegisterV8H T_8H => new(Index);
 
     /// <summary>
     /// Gets the V.S register.
@@ -677,12 +677,12 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     /// <summary>
     /// Gets the 2 x S V register.
     /// </summary>
-    public Arm64RegisterV2S T2S => new(Index);
+    public Arm64RegisterV2S T_2S => new(Index);
 
     /// <summary>
     /// Gets the 4 x S V register.
     /// </summary>
-    public Arm64RegisterV4S T4S => new(Index);
+    public Arm64RegisterV4S T_4S => new(Index);
 
     /// <summary>
     /// Gets the V.D register.
@@ -692,7 +692,7 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     /// <summary>
     /// Gets the 2 x D V register.
     /// </summary>
-    public Arm64RegisterV2D T2D => new(Index);
+    public Arm64RegisterV2D T_2D => new(Index);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);

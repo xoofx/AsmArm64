@@ -18,11 +18,24 @@ public readonly unsafe struct Arm64Instruction
 {
     internal readonly ulong Descriptor;
     internal readonly byte* OperandsPtr;
+    internal readonly uint VectorArrangements;
     internal readonly Arm64RawInstruction RawValue;
 
     private Arm64Instruction(ulong descriptor, byte* operandsPtr, Arm64RawInstruction rawValue)
     {
+        // MemoryMarshal.Write(buffer, (ushort)IdIndex);
+        // MemoryMarshal.Write(buffer.Slice(2), (ushort)MnemonicIndex);
+        // buffer[4] = (byte)InstructionClassIndex;
+        // buffer[5] = (byte)FeatureExpressionIdIndex;
+        // buffer[6] = (byte)((VectorArrangementIndices.Count << 1) | (UseOperandEncoding8Bytes ? 1 : 0));
+        // buffer[7] = (byte)Operands.Count;
         Descriptor = descriptor;
+        var vectorArrangementCount = (descriptor >> (48 + 1)) & 0b11; // No more than 3 vector arrangements
+        if (vectorArrangementCount > 0)
+        {
+            VectorArrangements = *(uint*)operandsPtr;
+            operandsPtr += sizeof(uint);
+        }
         OperandsPtr = operandsPtr;
         RawValue = rawValue;
     }
@@ -35,14 +48,14 @@ public readonly unsafe struct Arm64Instruction
 
     public Arm64FeatureExpressionId FeatureExpressionId => (Arm64FeatureExpressionId)(byte)(Descriptor >> 40);
 
-    public int OperandCount => (byte)(Descriptor >> 48);
+    public int OperandCount => (byte)(Descriptor >> 56);
 
-    internal bool IsOperandEncodingSize8Bytes => ((byte)(Descriptor >> 56) & 1) == 0;
+    internal bool IsOperandEncodingSize4Bytes => ((byte)(Descriptor >> 48) & 1) == 0;
 
     public Arm64Operand GetOperand(int index)
     {
         ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual((uint)index, (uint)OperandCount);
-        return IsOperandEncodingSize8Bytes ? new Arm64Operand(*((ulong*)OperandsPtr + index), RawValue) : new Arm64Operand(*((uint*)OperandsPtr + index), RawValue);
+        return IsOperandEncodingSize4Bytes ? new Arm64Operand(*((uint*)OperandsPtr + index), RawValue) : new Arm64Operand(*((ulong*)OperandsPtr + index), RawValue);
     }
     
     public static Arm64Instruction Decode(Arm64RawInstruction instruction)

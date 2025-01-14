@@ -132,12 +132,9 @@ internal sealed class InstructionProcessor
         RecordInstructionBufferOffset();
         Write(buffer);
 
-        Span<byte> allOperands = new byte[8 * 16]; // 16 operands max (should be much lower, like 5)
-        
         foreach (var instruction in _instructions)
         {
-            allOperands.Clear();
-            
+
             //bool hasMemory = instruction.Operands.Any(x => x.Kind == OperandKind.Memory);
             //if (hasMemory)
             //{
@@ -207,9 +204,6 @@ internal sealed class InstructionProcessor
                         default:
                             throw new InvalidOperationException($"Operand kind not supported {operand.Kind}");
                     }
-
-                    // Encode the operand
-                    operand.Descriptor!.Encode(allOperands.Slice(operandIndex * 8, 8));
                 }
                 catch (Exception ex)
                 {
@@ -219,39 +213,6 @@ internal sealed class InstructionProcessor
                 }
             }
 
-            // detect if operands can be all encoded into uint
-            var spanULong = MemoryMarshal.Cast<byte, ulong>(allOperands);
-            instruction.UseOperandUIntEncoding = true;
-            for (int i = 0; i < instruction.Operands.Count; i++)
-            {
-                var value = spanULong[i];
-                if (value > uint.MaxValue)
-                {
-                    instruction.UseOperandUIntEncoding = false;
-                    break;
-                }
-            }
-
-            // Encode the instruction decoding
-            RecordInstructionBufferOffset();
-            buffer.Clear();
-            instruction.Encode(buffer);
-            Write(buffer);
-
-            if (instruction.UseOperandUIntEncoding)
-            {
-                for (int i = 0; i < instruction.Operands.Count; i++)
-                {
-                    Write(allOperands.Slice(i * 8, 4));
-                }
-            }
-            else
-            {
-                for (int i = 0; i < instruction.Operands.Count; i++)
-                {
-                    Write(allOperands.Slice(i * 8, 8));
-                }
-            }
         }
 
         foreach (var vectorArrangementItems in _vectorArrangementItemsUsage.OrderByDescending(x => x.Value.Count).ThenBy(x => x.Key))
@@ -299,11 +260,26 @@ internal sealed class InstructionProcessor
         for (int i = 0; i < vectorArrangements.Count; i++)
         {
             var vectorArrangement = vectorArrangements[i];
-            vectorArrangement.VectorArrangementIndex = _instructionSet.VectorArrangements.Count + 1;
+            vectorArrangement.Index = _instructionSet.VectorArrangements.Count + 1;
             _instructionSet.VectorArrangements.Add(vectorArrangement);
         }
-        //Console.WriteLine($"Vector Arrangements: {vectorArrangements.Count}");
+
+        // Vector Arrangement indices
+        foreach (var instruction in _instructions)
+        {
+            if (instruction.VectorArrangements.Count > 0)
+            {
+                instruction.VectorArrangementIndices.Clear();
+                foreach (var vectorArrangement in instruction.VectorArrangements)
+                {
+                    var index = vectorArrangement.Index;
+                    instruction.VectorArrangementIndices.Add(index);
+                }
+            }
+        }
         
+        //Console.WriteLine($"Vector Arrangements: {vectorArrangements.Count}");
+
         //foreach (var pair in _memoryOperands.OrderBy(x => x.Key))
         //{
         //    Console.WriteLine($"Memory {pair.Key}");
@@ -329,6 +305,60 @@ internal sealed class InstructionProcessor
         if (_hasErrors)
         {
             throw new InvalidOperationException("Errors found during processing");
+        }
+
+        EncodeInstructions();
+    }
+
+    private void EncodeInstructions()
+    {
+        Span<byte> buffer = stackalloc byte[8];
+        Span<byte> allOperands = new byte[8 * 16]; // 16 operands max (should be much lower, like 5)
+        allOperands.Clear();
+        foreach (var instruction in _instructions)
+        {
+            // Encode the instruction decoding
+            RecordInstructionBufferOffset();
+            buffer.Clear();
+            instruction.Encode(buffer);
+            Write(buffer);
+
+            // Encode vector arrangement indices
+            if (instruction.VectorArrangementIndices.Count > 0)
+            {
+                buffer.Clear();
+                var vBuffer = buffer.Slice(0, 4);
+                instruction.EncodeVectorArrangementIndices(vBuffer);
+                Write(vBuffer);
+            }
+
+            // Encode the operands locally
+            for (var operandIndex = 0; operandIndex < instruction.Operands.Count; operandIndex++)
+            {
+                var operand = instruction.Operands[operandIndex];
+                // Encode the operand
+                operand.Descriptor!.Encode(allOperands.Slice(operandIndex * 8, 8));
+            }
+            
+            // Detect if operands can be all encoded into uint
+            var spanULong = MemoryMarshal.Cast<byte, ulong>(allOperands);
+            instruction.UseOperandEncoding8Bytes = instruction.Operands.Count != 0;
+            for (int i = 0; i < instruction.Operands.Count; i++)
+            {
+                var value = spanULong[i];
+                if (value > uint.MaxValue)
+                {
+                    instruction.UseOperandEncoding8Bytes = false;
+                    break;
+                }
+            }
+
+            // Encode the operands
+            var encodingSize = instruction.UseOperandEncoding8Bytes ? 8 : 4;
+            for (int i = 0; i < instruction.Operands.Count; i++)
+            {
+                Write(allOperands.Slice(i * 8, encodingSize));
+            }
         }
     }
 
@@ -1013,7 +1043,7 @@ internal sealed class InstructionProcessor
 
         if (kind == Arm64RegisterEncodingKind.V && register.TextElements.Count > 1)
         {
-            descriptor.VectorArrangement = ParseVectorArrangement(instruction, register);
+            descriptor.VectorArrangementLocalIndex = GetVectorArrangementLocalIndex(instruction, register);
         }
         
         descriptor.IndexerId = ProcessIndexer(instruction, register, descriptor);
@@ -1041,7 +1071,7 @@ internal sealed class InstructionProcessor
                 _ => throw new NotSupportedException($"Unsupported dynamic register value `{bitValue.Value}` in instruction `{instruction.Id}`")
             };
 
-            dynamicDescriptor.MapBitValueToRegister.Add(new(string.Join("", bitValue.BitFields), registerOperandKind));
+            dynamicDescriptor.MapBitValueToRegister.Add(new(string.Concat(bitValue.BitFields), registerOperandKind));
         }
         Debug.Assert(register.TextElements.Count == 2 && register.TextElements[1].Symbol is not null, $"Invalid encoding for instruction {instruction.Id}");
 
@@ -1107,7 +1137,7 @@ internal sealed class InstructionProcessor
         return index;
     }
 
-    private VectorArrangement ParseVectorArrangement(Instruction instruction, RegisterOperandItem register)
+    private int GetVectorArrangementLocalIndex(Instruction instruction, RegisterOperandItem register)
     {
         // Detect arrangement
         int index;
@@ -1149,9 +1179,9 @@ internal sealed class InstructionProcessor
             foreach (var bitValue in symbol.BitValues)
             {
                 var elementKind = ParseArrangementKind(bitValue.Value);
-                var bitValues = string.Join("", bitValue.BitFields);
+                var bitValues = string.Concat(bitValue.BitFields);
                 var element = new VectorArrangementValue(elementKind, bitValues);
-                values.Add(element);
+                values.Items.Add(element);
             }
 
             var id = values.Id;
@@ -1174,8 +1204,17 @@ internal sealed class InstructionProcessor
             existingArrangement = vectorArrangement;
             _mapIdToVectorArrangements.Add(vectorArrangementId, existingArrangement);
         }
-        
-        return existingArrangement;
+
+        var indexOfArrangement = instruction.VectorArrangements.IndexOf(vectorArrangement);
+        if (indexOfArrangement < 0)
+        {
+            indexOfArrangement = instruction.VectorArrangements.Count;
+            instruction.VectorArrangements.Add(existingArrangement);
+            Debug.Assert(instruction.VectorArrangements.Count <= 3); // Maximum 3 vector arrangements allowed per instruction
+        }
+
+        // Always used index + 1 (0 is reserved for null / no vector arrangement)
+        return indexOfArrangement + 1;
     }
     
     private static Arm64RegisterVectorArrangementEncodingKind ParseArrangementKind(string text)

@@ -17,12207 +17,12808 @@ partial class Arm64InstructionDecoderTable
     {
         0, // Undefined
         2, // ABS_32_dp_1src
-        6, // ABS_64_dp_1src
-        10, // ABS_asimdmisc_r
-        14, // ABS_asisdmisc_r
-        18, // ADCS_32_addsub_carry
-        23, // ADCS_64_addsub_carry
-        28, // ADC_32_addsub_carry
-        33, // ADC_64_addsub_carry
-        38, // ADDG_64_addsub_immtags
-        48, // ADDHN_asimddiff_n
-        53, // ADDPT_64_addsub_pt
-        59, // ADDP_asimdsame_only
-        64, // ADDP_asisdpair_only
-        68, // ADDS_32_addsub_shift
-        74, // ADDS_32s_addsub_ext
-        80, // ADDS_32s_addsub_imm
+        8, // ABS_64_dp_1src
+        14, // ABS_asimdmisc_r
+        19, // ABS_asisdmisc_r
+        23, // ADCS_32_addsub_carry
+        28, // ADCS_64_addsub_carry
+        33, // ADC_32_addsub_carry
+        38, // ADC_64_addsub_carry
+        43, // ADDG_64_addsub_immtags
+        49, // ADDHN_asimddiff_n
+        55, // ADDPT_64_addsub_pt
+        61, // ADDP_asimdsame_only
+        67, // ADDP_asisdpair_only
+        72, // ADDS_32_addsub_shift
+        78, // ADDS_32s_addsub_ext
+        84, // ADDS_32s_addsub_imm
         90, // ADDS_64_addsub_shift
         96, // ADDS_64s_addsub_ext
         102, // ADDS_64s_addsub_imm
-        112, // ADDV_asimdall_only
-        116, // ADD_32_addsub_ext
-        122, // ADD_32_addsub_imm
-        132, // ADD_32_addsub_shift
-        138, // ADD_64_addsub_ext
-        144, // ADD_64_addsub_imm
-        154, // ADD_64_addsub_shift
-        160, // ADD_asimdsame_only
-        165, // ADD_asisdsame_only
-        170, // ADRP_only_pcreladdr
-        176, // ADR_only_pcreladdr
-        182, // AESD_b_cryptoaes
-        186, // AESE_b_cryptoaes
-        190, // AESIMC_b_cryptoaes
-        194, // AESMC_b_cryptoaes
-        198, // ANDS_32_log_shift
-        204, // ANDS_32s_log_imm
-        212, // ANDS_64_log_shift
-        218, // ANDS_64s_log_imm
-        226, // AND_32_log_imm
-        234, // AND_32_log_shift
-        240, // AND_64_log_imm
-        248, // AND_64_log_shift
-        254, // AND_asimdsame_only
-        259, // ASRV_32_dp_2src
-        264, // ASRV_64_dp_2src
-        269, // AUTDA_64p_dp_1src
-        273, // AUTDB_64p_dp_1src
-        277, // AUTDZA_64z_dp_1src
-        280, // AUTDZB_64z_dp_1src
-        283, // AUTIA171615_64lr_dp_1src
-        285, // AUTIA1716_hi_hints
-        287, // AUTIASPPCR_64lrr_dp_1src
-        290, // AUTIASPPC_only_dp_1src_imm
-        294, // AUTIASP_hi_hints
-        296, // AUTIAZ_hi_hints
-        298, // AUTIA_64p_dp_1src
-        302, // AUTIB171615_64lr_dp_1src
-        304, // AUTIB1716_hi_hints
-        306, // AUTIBSPPCR_64lrr_dp_1src
-        309, // AUTIBSPPC_only_dp_1src_imm
-        313, // AUTIBSP_hi_hints
-        315, // AUTIBZ_hi_hints
-        317, // AUTIB_64p_dp_1src
-        321, // AUTIZA_64z_dp_1src
-        324, // AUTIZB_64z_dp_1src
-        327, // AXFLAG_m_pstate
-        329, // BCAX_vvv16_crypto4
-        335, // BC_only_condbranch
-        338, // BF1CVTL_asimdmisc_v
-        342, // BF2CVTL_asimdmisc_v
-        346, // BFCVTN_asimdmisc_4s
-        350, // BFCVT_bs_floatdp1
-        354, // BFDOT_asimdelem_e
-        359, // BFDOT_asimdsame2_d
-        364, // BFMLAL_asimdelem_f
-        369, // BFMLAL_asimdsame2_f
-        374, // BFMMLA_asimdsame2_e
-        379, // BFM_32m_bitfield
-        389, // BFM_64m_bitfield
-        399, // BICS_32_log_shift
-        405, // BICS_64_log_shift
-        411, // BIC_32_log_shift
-        417, // BIC_64_log_shift
-        423, // BIC_asimdimm_l_hl
-        431, // BIC_asimdimm_l_sl
-        439, // BIC_asimdsame_only
-        444, // BIF_asimdsame_only
-        449, // BIT_asimdsame_only
-        454, // BLRAAZ_64_branch_reg
-        457, // BLRAA_64p_branch_reg
-        461, // BLRABZ_64_branch_reg
-        464, // BLRAB_64p_branch_reg
-        468, // BLR_64_branch_reg
-        471, // BL_only_branch_imm
-        475, // BRAAZ_64_branch_reg
-        478, // BRAA_64p_branch_reg
-        482, // BRABZ_64_branch_reg
-        485, // BRAB_64p_branch_reg
-        489, // BRK_ex_exception
-        493, // BR_64_branch_reg
-        496, // BSL_asimdsame_only
-        501, // BTI_hb_hints
-        504, // B_only_branch_imm
-        508, // B_only_condbranch
-        511, // CASAB_c32_comswap
-        516, // CASAH_c32_comswap
-        521, // CASALB_c32_comswap
-        526, // CASALH_c32_comswap
-        531, // CASALT_c64_comswap_unpriv
-        536, // CASAL_c32_comswap
-        541, // CASAL_c64_comswap
-        546, // CASAT_c64_comswap_unpriv
-        551, // CASA_c32_comswap
-        556, // CASA_c64_comswap
-        561, // CASB_c32_comswap
-        566, // CASH_c32_comswap
-        571, // CASLB_c32_comswap
-        576, // CASLH_c32_comswap
-        581, // CASLT_c64_comswap_unpriv
-        586, // CASL_c32_comswap
-        591, // CASL_c64_comswap
-        596, // CASPALT_cp64_comswappr_unpriv
-        603, // CASPAL_cp32_comswappr
-        610, // CASPAL_cp64_comswappr
-        617, // CASPAT_cp64_comswappr_unpriv
-        624, // CASPA_cp32_comswappr
-        631, // CASPA_cp64_comswappr
-        638, // CASPLT_cp64_comswappr_unpriv
-        645, // CASPL_cp32_comswappr
-        652, // CASPL_cp64_comswappr
-        659, // CASPT_cp64_comswappr_unpriv
-        666, // CASP_cp32_comswappr
-        673, // CASP_cp64_comswappr
-        680, // CAST_c64_comswap_unpriv
-        685, // CAS_c32_comswap
-        690, // CAS_c64_comswap
-        695, // CBBEQ_8_regs
-        703, // CBBGE_8_regs
-        711, // CBBGT_8_regs
-        719, // CBBHI_8_regs
-        727, // CBBHS_8_regs
-        735, // CBBNE_8_regs
-        743, // CBEQ_32_imm
-        751, // CBEQ_32_regs
-        759, // CBEQ_64_imm
-        767, // CBEQ_64_regs
-        775, // CBGE_32_regs
-        783, // CBGE_64_regs
-        791, // CBGT_32_imm
-        799, // CBGT_32_regs
-        807, // CBGT_64_imm
-        815, // CBGT_64_regs
-        823, // CBHEQ_16_regs
-        831, // CBHGE_16_regs
-        839, // CBHGT_16_regs
-        847, // CBHHI_16_regs
-        855, // CBHHS_16_regs
-        863, // CBHI_32_imm
-        871, // CBHI_32_regs
-        879, // CBHI_64_imm
-        887, // CBHI_64_regs
-        895, // CBHNE_16_regs
-        903, // CBHS_32_regs
-        911, // CBHS_64_regs
-        919, // CBLO_32_imm
-        927, // CBLO_64_imm
-        935, // CBLT_32_imm
-        943, // CBLT_64_imm
-        951, // CBNE_32_imm
-        959, // CBNE_32_regs
-        967, // CBNE_64_imm
-        975, // CBNE_64_regs
-        983, // CBNZ_32_compbranch
-        989, // CBNZ_64_compbranch
-        995, // CBZ_32_compbranch
-        1001, // CBZ_64_compbranch
-        1007, // CCMN_32_condcmp_imm
-        1017, // CCMN_32_condcmp_reg
-        1027, // CCMN_64_condcmp_imm
-        1037, // CCMN_64_condcmp_reg
-        1047, // CCMP_32_condcmp_imm
-        1057, // CCMP_32_condcmp_reg
-        1067, // CCMP_64_condcmp_imm
-        1077, // CCMP_64_condcmp_reg
-        1087, // CFINV_m_pstate
-        1089, // CHKFEAT_hf_hints
-        1092, // CLRBHB_hi_hints
-        1094, // CLREX_bn_barriers
-        1098, // CLS_32_dp_1src
-        1102, // CLS_64_dp_1src
-        1106, // CLS_asimdmisc_r
-        1110, // CLZ_32_dp_1src
-        1114, // CLZ_64_dp_1src
-        1118, // CLZ_asimdmisc_r
-        1122, // CMEQ_asimdmisc_z
-        1127, // CMEQ_asimdsame_only
-        1132, // CMEQ_asisdmisc_z
-        1137, // CMEQ_asisdsame_only
-        1142, // CMGE_asimdmisc_z
-        1147, // CMGE_asimdsame_only
-        1152, // CMGE_asisdmisc_z
-        1157, // CMGE_asisdsame_only
-        1162, // CMGT_asimdmisc_z
-        1167, // CMGT_asimdsame_only
-        1172, // CMGT_asisdmisc_z
-        1177, // CMGT_asisdsame_only
-        1182, // CMHI_asimdsame_only
-        1187, // CMHI_asisdsame_only
-        1192, // CMHS_asimdsame_only
-        1197, // CMHS_asisdsame_only
-        1202, // CMLE_asimdmisc_z
-        1207, // CMLE_asisdmisc_z
-        1212, // CMLT_asimdmisc_z
-        1217, // CMLT_asisdmisc_z
-        1222, // CMTST_asimdsame_only
-        1227, // CMTST_asisdsame_only
-        1232, // CNT_32_dp_1src
-        1236, // CNT_64_dp_1src
-        1240, // CNT_asimdmisc_r
-        1244, // CPYEN_cpy_memcms
-        1249, // CPYERN_cpy_memcms
-        1254, // CPYERTN_cpy_memcms
-        1259, // CPYERTRN_cpy_memcms
-        1264, // CPYERTWN_cpy_memcms
-        1269, // CPYERT_cpy_memcms
-        1274, // CPYETN_cpy_memcms
-        1279, // CPYETRN_cpy_memcms
-        1284, // CPYETWN_cpy_memcms
-        1289, // CPYET_cpy_memcms
-        1294, // CPYEWN_cpy_memcms
-        1299, // CPYEWTN_cpy_memcms
-        1304, // CPYEWTRN_cpy_memcms
-        1309, // CPYEWTWN_cpy_memcms
-        1314, // CPYEWT_cpy_memcms
-        1319, // CPYE_cpy_memcms
-        1324, // CPYFEN_cpy_memcms
-        1329, // CPYFERN_cpy_memcms
-        1334, // CPYFERTN_cpy_memcms
-        1339, // CPYFERTRN_cpy_memcms
-        1344, // CPYFERTWN_cpy_memcms
-        1349, // CPYFERT_cpy_memcms
-        1354, // CPYFETN_cpy_memcms
-        1359, // CPYFETRN_cpy_memcms
-        1364, // CPYFETWN_cpy_memcms
-        1369, // CPYFET_cpy_memcms
-        1374, // CPYFEWN_cpy_memcms
-        1379, // CPYFEWTN_cpy_memcms
-        1384, // CPYFEWTRN_cpy_memcms
-        1389, // CPYFEWTWN_cpy_memcms
-        1394, // CPYFEWT_cpy_memcms
-        1399, // CPYFE_cpy_memcms
-        1404, // CPYFMN_cpy_memcms
-        1409, // CPYFMRN_cpy_memcms
-        1414, // CPYFMRTN_cpy_memcms
-        1419, // CPYFMRTRN_cpy_memcms
-        1424, // CPYFMRTWN_cpy_memcms
-        1429, // CPYFMRT_cpy_memcms
-        1434, // CPYFMTN_cpy_memcms
-        1439, // CPYFMTRN_cpy_memcms
-        1444, // CPYFMTWN_cpy_memcms
-        1449, // CPYFMT_cpy_memcms
-        1454, // CPYFMWN_cpy_memcms
-        1459, // CPYFMWTN_cpy_memcms
-        1464, // CPYFMWTRN_cpy_memcms
-        1469, // CPYFMWTWN_cpy_memcms
-        1474, // CPYFMWT_cpy_memcms
-        1479, // CPYFM_cpy_memcms
-        1484, // CPYFPN_cpy_memcms
-        1489, // CPYFPRN_cpy_memcms
-        1494, // CPYFPRTN_cpy_memcms
-        1499, // CPYFPRTRN_cpy_memcms
-        1504, // CPYFPRTWN_cpy_memcms
-        1509, // CPYFPRT_cpy_memcms
-        1514, // CPYFPTN_cpy_memcms
-        1519, // CPYFPTRN_cpy_memcms
-        1524, // CPYFPTWN_cpy_memcms
-        1529, // CPYFPT_cpy_memcms
-        1534, // CPYFPWN_cpy_memcms
-        1539, // CPYFPWTN_cpy_memcms
-        1544, // CPYFPWTRN_cpy_memcms
-        1549, // CPYFPWTWN_cpy_memcms
-        1554, // CPYFPWT_cpy_memcms
-        1559, // CPYFP_cpy_memcms
-        1564, // CPYMN_cpy_memcms
-        1569, // CPYMRN_cpy_memcms
-        1574, // CPYMRTN_cpy_memcms
-        1579, // CPYMRTRN_cpy_memcms
-        1584, // CPYMRTWN_cpy_memcms
-        1589, // CPYMRT_cpy_memcms
-        1594, // CPYMTN_cpy_memcms
-        1599, // CPYMTRN_cpy_memcms
-        1604, // CPYMTWN_cpy_memcms
-        1609, // CPYMT_cpy_memcms
-        1614, // CPYMWN_cpy_memcms
-        1619, // CPYMWTN_cpy_memcms
-        1624, // CPYMWTRN_cpy_memcms
-        1629, // CPYMWTWN_cpy_memcms
-        1634, // CPYMWT_cpy_memcms
-        1639, // CPYM_cpy_memcms
-        1644, // CPYPN_cpy_memcms
-        1649, // CPYPRN_cpy_memcms
-        1654, // CPYPRTN_cpy_memcms
-        1659, // CPYPRTRN_cpy_memcms
-        1664, // CPYPRTWN_cpy_memcms
-        1669, // CPYPRT_cpy_memcms
-        1674, // CPYPTN_cpy_memcms
-        1679, // CPYPTRN_cpy_memcms
-        1684, // CPYPTWN_cpy_memcms
-        1689, // CPYPT_cpy_memcms
-        1694, // CPYPWN_cpy_memcms
-        1699, // CPYPWTN_cpy_memcms
-        1704, // CPYPWTRN_cpy_memcms
-        1709, // CPYPWTWN_cpy_memcms
-        1714, // CPYPWT_cpy_memcms
-        1719, // CPYP_cpy_memcms
-        1724, // CRC32B_32c_dp_2src
-        1729, // CRC32CB_32c_dp_2src
-        1734, // CRC32CH_32c_dp_2src
-        1739, // CRC32CW_32c_dp_2src
-        1744, // CRC32CX_64c_dp_2src
-        1749, // CRC32H_32c_dp_2src
-        1754, // CRC32W_32c_dp_2src
-        1759, // CRC32X_64c_dp_2src
-        1764, // CSDB_hi_hints
-        1766, // CSEL_32_condsel
-        1772, // CSEL_64_condsel
-        1778, // CSINC_32_condsel
-        1784, // CSINC_64_condsel
-        1790, // CSINV_32_condsel
-        1796, // CSINV_64_condsel
-        1802, // CSNEG_32_condsel
-        1808, // CSNEG_64_condsel
-        1814, // CTZ_32_dp_1src
-        1818, // CTZ_64_dp_1src
-        1822, // DCPS1_dc_exception
-        1826, // DCPS2_dc_exception
-        1830, // DCPS3_dc_exception
-        1834, // DGH_hi_hints
-        1836, // DMB_bo_barriers
-        1839, // DRPS_64e_branch_reg
-        1841, // DSB_bo_barriers
-        1844, // DSB_bon_barriers
-        1847, // DUP_asimdins_dr_r
-        1851, // DUP_asimdins_dv_v
-        1855, // DUP_asisdone_only
-        1859, // EON_32_log_shift
-        1865, // EON_64_log_shift
-        1871, // EOR3_vvv16_crypto4
-        1877, // EOR_32_log_imm
-        1885, // EOR_32_log_shift
-        1891, // EOR_64_log_imm
-        1899, // EOR_64_log_shift
-        1905, // EOR_asimdsame_only
-        1910, // ERETAA_64e_branch_reg
-        1912, // ERETAB_64e_branch_reg
-        1914, // ERET_64e_branch_reg
-        1916, // ESB_hi_hints
-        1918, // EXTR_32_extract
-        1928, // EXTR_64_extract
-        1938, // EXT_asimdext_only
-        1944, // F1CVTL_asimdmisc_v
-        1948, // F2CVTL_asimdmisc_v
-        1952, // FABD_asimdsame_only
-        1957, // FABD_asimdsamefp16_only
-        1962, // FABD_asisdsame_only
-        1967, // FABD_asisdsamefp16_only
-        1972, // FABS_asimdmisc_r
-        1976, // FABS_asimdmiscfp16_r
-        1980, // FABS_d_floatdp1
-        1984, // FABS_h_floatdp1
-        1988, // FABS_s_floatdp1
-        1992, // FACGE_asimdsame_only
-        1997, // FACGE_asimdsamefp16_only
-        2002, // FACGE_asisdsame_only
-        2007, // FACGE_asisdsamefp16_only
-        2012, // FACGT_asimdsame_only
-        2017, // FACGT_asimdsamefp16_only
-        2022, // FACGT_asisdsame_only
-        2027, // FACGT_asisdsamefp16_only
-        2032, // FADDP_asimdsame_only
-        2037, // FADDP_asimdsamefp16_only
-        2042, // FADDP_asisdpair_only_h
-        2046, // FADDP_asisdpair_only_sd
-        2050, // FADD_asimdsame_only
-        2055, // FADD_asimdsamefp16_only
-        2060, // FADD_d_floatdp2
-        2065, // FADD_h_floatdp2
-        2070, // FADD_s_floatdp2
-        2075, // FAMAX_asimdsame_only
-        2080, // FAMAX_asimdsamefp16_only
-        2085, // FAMIN_asimdsame_only
-        2090, // FAMIN_asimdsamefp16_only
-        2095, // FCADD_asimdsame2_c
-        2105, // FCCMPE_d_floatccmp
-        2115, // FCCMPE_h_floatccmp
-        2125, // FCCMPE_s_floatccmp
-        2135, // FCCMP_d_floatccmp
-        2145, // FCCMP_h_floatccmp
-        2155, // FCCMP_s_floatccmp
-        2165, // FCMEQ_asimdmisc_fz
-        2170, // FCMEQ_asimdmiscfp16_fz
-        2175, // FCMEQ_asimdsame_only
-        2180, // FCMEQ_asimdsamefp16_only
-        2185, // FCMEQ_asisdmisc_fz
-        2190, // FCMEQ_asisdmiscfp16_fz
-        2195, // FCMEQ_asisdsame_only
-        2200, // FCMEQ_asisdsamefp16_only
-        2205, // FCMGE_asimdmisc_fz
-        2210, // FCMGE_asimdmiscfp16_fz
-        2215, // FCMGE_asimdsame_only
-        2220, // FCMGE_asimdsamefp16_only
-        2225, // FCMGE_asisdmisc_fz
-        2230, // FCMGE_asisdmiscfp16_fz
-        2235, // FCMGE_asisdsame_only
-        2240, // FCMGE_asisdsamefp16_only
-        2245, // FCMGT_asimdmisc_fz
-        2250, // FCMGT_asimdmiscfp16_fz
-        2255, // FCMGT_asimdsame_only
-        2260, // FCMGT_asimdsamefp16_only
-        2265, // FCMGT_asisdmisc_fz
-        2270, // FCMGT_asisdmiscfp16_fz
-        2275, // FCMGT_asisdsame_only
-        2280, // FCMGT_asisdsamefp16_only
-        2285, // FCMLA_advsimd_elt
-        2295, // FCMLA_asimdsame2_c
-        2305, // FCMLE_asimdmisc_fz
-        2310, // FCMLE_asimdmiscfp16_fz
-        2315, // FCMLE_asisdmisc_fz
-        2320, // FCMLE_asisdmiscfp16_fz
-        2325, // FCMLT_asimdmisc_fz
-        2330, // FCMLT_asimdmiscfp16_fz
-        2335, // FCMLT_asisdmisc_fz
-        2340, // FCMLT_asisdmiscfp16_fz
-        2345, // FCMPE_d_floatcmp
-        2349, // FCMPE_dz_floatcmp
-        2353, // FCMPE_h_floatcmp
-        2357, // FCMPE_hz_floatcmp
-        2361, // FCMPE_s_floatcmp
-        2365, // FCMPE_sz_floatcmp
-        2369, // FCMP_d_floatcmp
-        2373, // FCMP_dz_floatcmp
-        2377, // FCMP_h_floatcmp
-        2381, // FCMP_hz_floatcmp
-        2385, // FCMP_s_floatcmp
-        2389, // FCMP_sz_floatcmp
-        2393, // FCSEL_d_floatsel
-        2399, // FCSEL_h_floatsel
-        2405, // FCSEL_s_floatsel
-        2411, // FCVTAS_32d_float2int
-        2415, // FCVTAS_32h_float2int
-        2419, // FCVTAS_32s_float2int
-        2423, // FCVTAS_64d_float2int
-        2427, // FCVTAS_64h_float2int
-        2431, // FCVTAS_64s_float2int
-        2435, // FCVTAS_asimdmisc_r
-        2439, // FCVTAS_asimdmiscfp16_r
-        2443, // FCVTAS_asisdmisc_r
-        2447, // FCVTAS_asisdmiscfp16_r
-        2451, // FCVTAS_sisd_32d
-        2455, // FCVTAS_sisd_32h
-        2459, // FCVTAS_sisd_64h
-        2463, // FCVTAS_sisd_64s
-        2467, // FCVTAU_32d_float2int
-        2471, // FCVTAU_32h_float2int
-        2475, // FCVTAU_32s_float2int
-        2479, // FCVTAU_64d_float2int
-        2483, // FCVTAU_64h_float2int
-        2487, // FCVTAU_64s_float2int
-        2491, // FCVTAU_asimdmisc_r
-        2495, // FCVTAU_asimdmiscfp16_r
-        2499, // FCVTAU_asisdmisc_r
-        2503, // FCVTAU_asisdmiscfp16_r
-        2507, // FCVTAU_sisd_32d
-        2511, // FCVTAU_sisd_32h
-        2515, // FCVTAU_sisd_64h
-        2519, // FCVTAU_sisd_64s
-        2523, // FCVTL_asimdmisc_l
-        2527, // FCVTMS_32d_float2int
-        2531, // FCVTMS_32h_float2int
-        2535, // FCVTMS_32s_float2int
-        2539, // FCVTMS_64d_float2int
-        2543, // FCVTMS_64h_float2int
-        2547, // FCVTMS_64s_float2int
-        2551, // FCVTMS_asimdmisc_r
-        2555, // FCVTMS_asimdmiscfp16_r
-        2559, // FCVTMS_asisdmisc_r
-        2563, // FCVTMS_asisdmiscfp16_r
-        2567, // FCVTMS_sisd_32d
-        2571, // FCVTMS_sisd_32h
-        2575, // FCVTMS_sisd_64h
-        2579, // FCVTMS_sisd_64s
-        2583, // FCVTMU_32d_float2int
-        2587, // FCVTMU_32h_float2int
-        2591, // FCVTMU_32s_float2int
-        2595, // FCVTMU_64d_float2int
-        2599, // FCVTMU_64h_float2int
-        2603, // FCVTMU_64s_float2int
-        2607, // FCVTMU_asimdmisc_r
-        2611, // FCVTMU_asimdmiscfp16_r
-        2615, // FCVTMU_asisdmisc_r
-        2619, // FCVTMU_asisdmiscfp16_r
-        2623, // FCVTMU_sisd_32d
-        2627, // FCVTMU_sisd_32h
-        2631, // FCVTMU_sisd_64h
-        2635, // FCVTMU_sisd_64s
-        2639, // FCVTNS_32d_float2int
-        2643, // FCVTNS_32h_float2int
-        2647, // FCVTNS_32s_float2int
-        2651, // FCVTNS_64d_float2int
-        2655, // FCVTNS_64h_float2int
-        2659, // FCVTNS_64s_float2int
-        2663, // FCVTNS_asimdmisc_r
-        2667, // FCVTNS_asimdmiscfp16_r
-        2671, // FCVTNS_asisdmisc_r
-        2675, // FCVTNS_asisdmiscfp16_r
-        2679, // FCVTNS_sisd_32d
-        2683, // FCVTNS_sisd_32h
-        2687, // FCVTNS_sisd_64h
-        2691, // FCVTNS_sisd_64s
-        2695, // FCVTNU_32d_float2int
-        2699, // FCVTNU_32h_float2int
-        2703, // FCVTNU_32s_float2int
-        2707, // FCVTNU_64d_float2int
-        2711, // FCVTNU_64h_float2int
-        2715, // FCVTNU_64s_float2int
-        2719, // FCVTNU_asimdmisc_r
-        2723, // FCVTNU_asimdmiscfp16_r
-        2727, // FCVTNU_asisdmisc_r
-        2731, // FCVTNU_asisdmiscfp16_r
-        2735, // FCVTNU_sisd_32d
-        2739, // FCVTNU_sisd_32h
-        2743, // FCVTNU_sisd_64h
-        2747, // FCVTNU_sisd_64s
-        2751, // FCVTN_asimdmisc_n
-        2755, // FCVTN_asimdsame2_d
-        2760, // FCVTN_asimdsame2_h
-        2765, // FCVTPS_32d_float2int
-        2769, // FCVTPS_32h_float2int
-        2773, // FCVTPS_32s_float2int
-        2777, // FCVTPS_64d_float2int
-        2781, // FCVTPS_64h_float2int
-        2785, // FCVTPS_64s_float2int
-        2789, // FCVTPS_asimdmisc_r
-        2793, // FCVTPS_asimdmiscfp16_r
-        2797, // FCVTPS_asisdmisc_r
-        2801, // FCVTPS_asisdmiscfp16_r
-        2805, // FCVTPS_sisd_32d
-        2809, // FCVTPS_sisd_32h
-        2813, // FCVTPS_sisd_64h
-        2817, // FCVTPS_sisd_64s
-        2821, // FCVTPU_32d_float2int
-        2825, // FCVTPU_32h_float2int
-        2829, // FCVTPU_32s_float2int
-        2833, // FCVTPU_64d_float2int
-        2837, // FCVTPU_64h_float2int
-        2841, // FCVTPU_64s_float2int
-        2845, // FCVTPU_asimdmisc_r
-        2849, // FCVTPU_asimdmiscfp16_r
-        2853, // FCVTPU_asisdmisc_r
-        2857, // FCVTPU_asisdmiscfp16_r
-        2861, // FCVTPU_sisd_32d
-        2865, // FCVTPU_sisd_32h
-        2869, // FCVTPU_sisd_64h
-        2873, // FCVTPU_sisd_64s
-        2877, // FCVTXN_asimdmisc_n
-        2881, // FCVTXN_asisdmisc_n
-        2885, // FCVTZS_32d_float2fix
-        2893, // FCVTZS_32d_float2int
-        2897, // FCVTZS_32h_float2fix
-        2905, // FCVTZS_32h_float2int
-        2909, // FCVTZS_32s_float2fix
-        2917, // FCVTZS_32s_float2int
-        2921, // FCVTZS_64d_float2fix
-        2929, // FCVTZS_64d_float2int
-        2933, // FCVTZS_64h_float2fix
-        2941, // FCVTZS_64h_float2int
-        2945, // FCVTZS_64s_float2fix
-        2953, // FCVTZS_64s_float2int
-        2957, // FCVTZS_asimdmisc_r
-        2961, // FCVTZS_asimdmiscfp16_r
-        2965, // FCVTZS_asimdshf_c
-        2973, // FCVTZS_asisdmisc_r
-        2977, // FCVTZS_asisdmiscfp16_r
-        2981, // FCVTZS_asisdshf_c
-        2989, // FCVTZS_sisd_32d
-        2993, // FCVTZS_sisd_32h
-        2997, // FCVTZS_sisd_64h
-        3001, // FCVTZS_sisd_64s
-        3005, // FCVTZU_32d_float2fix
-        3013, // FCVTZU_32d_float2int
-        3017, // FCVTZU_32h_float2fix
-        3025, // FCVTZU_32h_float2int
-        3029, // FCVTZU_32s_float2fix
-        3037, // FCVTZU_32s_float2int
-        3041, // FCVTZU_64d_float2fix
-        3049, // FCVTZU_64d_float2int
-        3053, // FCVTZU_64h_float2fix
-        3061, // FCVTZU_64h_float2int
-        3065, // FCVTZU_64s_float2fix
-        3073, // FCVTZU_64s_float2int
-        3077, // FCVTZU_asimdmisc_r
-        3081, // FCVTZU_asimdmiscfp16_r
-        3085, // FCVTZU_asimdshf_c
-        3093, // FCVTZU_asisdmisc_r
-        3097, // FCVTZU_asisdmiscfp16_r
-        3101, // FCVTZU_asisdshf_c
-        3109, // FCVTZU_sisd_32d
-        3113, // FCVTZU_sisd_32h
-        3117, // FCVTZU_sisd_64h
-        3121, // FCVTZU_sisd_64s
-        3125, // FCVT_dh_floatdp1
-        3129, // FCVT_ds_floatdp1
-        3133, // FCVT_hd_floatdp1
-        3137, // FCVT_hs_floatdp1
-        3141, // FCVT_sd_floatdp1
-        3145, // FCVT_sh_floatdp1
-        3149, // FDIV_asimdsame_only
-        3154, // FDIV_asimdsamefp16_only
-        3159, // FDIV_d_floatdp2
-        3164, // FDIV_h_floatdp2
-        3169, // FDIV_s_floatdp2
-        3174, // FDOT_asimdelem_d
-        3179, // FDOT_asimdelem_g
-        3184, // FDOT_asimdsame2_d
-        3189, // FDOT_asimdsame2_dd
-        3194, // FJCVTZS_32d_float2int
-        3198, // FMADD_d_floatdp3
-        3204, // FMADD_h_floatdp3
-        3210, // FMADD_s_floatdp3
-        3216, // FMAXNMP_asimdsame_only
-        3221, // FMAXNMP_asimdsamefp16_only
-        3226, // FMAXNMP_asisdpair_only_h
-        3230, // FMAXNMP_asisdpair_only_sd
-        3234, // FMAXNMV_asimdall_only_h
-        3238, // FMAXNMV_asimdall_only_sd
-        3242, // FMAXNM_asimdsame_only
-        3247, // FMAXNM_asimdsamefp16_only
-        3252, // FMAXNM_d_floatdp2
-        3257, // FMAXNM_h_floatdp2
-        3262, // FMAXNM_s_floatdp2
-        3267, // FMAXP_asimdsame_only
-        3272, // FMAXP_asimdsamefp16_only
-        3277, // FMAXP_asisdpair_only_h
-        3281, // FMAXP_asisdpair_only_sd
-        3285, // FMAXV_asimdall_only_h
-        3289, // FMAXV_asimdall_only_sd
-        3293, // FMAX_asimdsame_only
-        3298, // FMAX_asimdsamefp16_only
-        3303, // FMAX_d_floatdp2
-        3308, // FMAX_h_floatdp2
-        3313, // FMAX_s_floatdp2
-        3318, // FMINNMP_asimdsame_only
-        3323, // FMINNMP_asimdsamefp16_only
-        3328, // FMINNMP_asisdpair_only_h
-        3332, // FMINNMP_asisdpair_only_sd
-        3336, // FMINNMV_asimdall_only_h
-        3340, // FMINNMV_asimdall_only_sd
-        3344, // FMINNM_asimdsame_only
-        3349, // FMINNM_asimdsamefp16_only
-        3354, // FMINNM_d_floatdp2
-        3359, // FMINNM_h_floatdp2
-        3364, // FMINNM_s_floatdp2
-        3369, // FMINP_asimdsame_only
-        3374, // FMINP_asimdsamefp16_only
-        3379, // FMINP_asisdpair_only_h
-        3383, // FMINP_asisdpair_only_sd
-        3387, // FMINV_asimdall_only_h
-        3391, // FMINV_asimdall_only_sd
-        3395, // FMIN_asimdsame_only
-        3400, // FMIN_asimdsamefp16_only
-        3405, // FMIN_d_floatdp2
-        3410, // FMIN_h_floatdp2
-        3415, // FMIN_s_floatdp2
-        3420, // FMLAL2_asimdelem_lh
-        3425, // FMLAL2_asimdsame_f
-        3430, // FMLALB_asimdelem_h
-        3435, // FMLALB_asimdsame2_j
-        3440, // FMLALLBB_asimdelem_j
-        3445, // FMLALLBB_asimdsame2_g
-        3450, // FMLALLBT_asimdelem_j
-        3455, // FMLALLBT_asimdsame2_g
-        3460, // FMLALLTB_asimdelem_j
-        3465, // FMLALLTB_asimdsame2_g
-        3470, // FMLALLTT_asimdelem_j
-        3475, // FMLALLTT_asimdsame2_g
-        3480, // FMLALT_asimdelem_h
-        3485, // FMLALT_asimdsame2_j
-        3490, // FMLAL_asimdelem_lh
-        3495, // FMLAL_asimdsame_f
-        3500, // FMLA_asimdelem_r_sd
-        3505, // FMLA_asimdelem_rh_h
-        3510, // FMLA_asimdsame_only
-        3515, // FMLA_asimdsamefp16_only
-        3520, // FMLA_asisdelem_r_sd
-        3525, // FMLA_asisdelem_rh_h
-        3530, // FMLSL2_asimdelem_lh
-        3535, // FMLSL2_asimdsame_f
-        3540, // FMLSL_asimdelem_lh
-        3545, // FMLSL_asimdsame_f
-        3550, // FMLS_asimdelem_r_sd
-        3555, // FMLS_asimdelem_rh_h
-        3560, // FMLS_asimdsame_only
-        3565, // FMLS_asimdsamefp16_only
-        3570, // FMLS_asisdelem_r_sd
-        3575, // FMLS_asisdelem_rh_h
-        3580, // FMMLA_asimd_fp8fp16
-        3585, // FMMLA_asimd_fp8fp32
-        3590, // FMOV_32h_float2int
-        3594, // FMOV_32s_float2int
-        3598, // FMOV_64d_float2int
-        3602, // FMOV_64h_float2int
-        3606, // FMOV_64vx_float2int
-        3610, // FMOV_asimdimm_d2_d
-        3616, // FMOV_asimdimm_h_h
-        3622, // FMOV_asimdimm_s_s
-        3628, // FMOV_d64_float2int
-        3632, // FMOV_d_floatdp1
-        3636, // FMOV_d_floatimm
-        3642, // FMOV_h32_float2int
-        3646, // FMOV_h64_float2int
-        3650, // FMOV_h_floatdp1
-        3654, // FMOV_h_floatimm
-        3660, // FMOV_s32_float2int
-        3664, // FMOV_s_floatdp1
-        3668, // FMOV_s_floatimm
-        3674, // FMOV_v64i_float2int
-        3678, // FMSUB_d_floatdp3
-        3684, // FMSUB_h_floatdp3
-        3690, // FMSUB_s_floatdp3
-        3696, // FMULX_asimdelem_r_sd
-        3701, // FMULX_asimdelem_rh_h
-        3706, // FMULX_asimdsame_only
-        3711, // FMULX_asimdsamefp16_only
-        3716, // FMULX_asisdelem_r_sd
-        3721, // FMULX_asisdelem_rh_h
-        3726, // FMULX_asisdsame_only
-        3731, // FMULX_asisdsamefp16_only
-        3736, // FMUL_asimdelem_r_sd
-        3741, // FMUL_asimdelem_rh_h
-        3746, // FMUL_asimdsame_only
-        3751, // FMUL_asimdsamefp16_only
-        3756, // FMUL_asisdelem_r_sd
-        3761, // FMUL_asisdelem_rh_h
-        3766, // FMUL_d_floatdp2
-        3771, // FMUL_h_floatdp2
-        3776, // FMUL_s_floatdp2
-        3781, // FNEG_asimdmisc_r
-        3785, // FNEG_asimdmiscfp16_r
-        3789, // FNEG_d_floatdp1
-        3793, // FNEG_h_floatdp1
-        3797, // FNEG_s_floatdp1
-        3801, // FNMADD_d_floatdp3
-        3807, // FNMADD_h_floatdp3
-        3813, // FNMADD_s_floatdp3
-        3819, // FNMSUB_d_floatdp3
-        3825, // FNMSUB_h_floatdp3
-        3831, // FNMSUB_s_floatdp3
-        3837, // FNMUL_d_floatdp2
-        3842, // FNMUL_h_floatdp2
-        3847, // FNMUL_s_floatdp2
-        3852, // FRECPE_asimdmisc_r
-        3856, // FRECPE_asimdmiscfp16_r
-        3860, // FRECPE_asisdmisc_r
-        3864, // FRECPE_asisdmiscfp16_r
-        3868, // FRECPS_asimdsame_only
-        3873, // FRECPS_asimdsamefp16_only
-        3878, // FRECPS_asisdsame_only
-        3883, // FRECPS_asisdsamefp16_only
-        3888, // FRECPX_asisdmisc_r
-        3892, // FRECPX_asisdmiscfp16_r
-        3896, // FRINT32X_asimdmisc_r
-        3900, // FRINT32X_d_floatdp1
-        3904, // FRINT32X_s_floatdp1
-        3908, // FRINT32Z_asimdmisc_r
-        3912, // FRINT32Z_d_floatdp1
-        3916, // FRINT32Z_s_floatdp1
-        3920, // FRINT64X_asimdmisc_r
-        3924, // FRINT64X_d_floatdp1
-        3928, // FRINT64X_s_floatdp1
-        3932, // FRINT64Z_asimdmisc_r
-        3936, // FRINT64Z_d_floatdp1
-        3940, // FRINT64Z_s_floatdp1
-        3944, // FRINTA_asimdmisc_r
-        3948, // FRINTA_asimdmiscfp16_r
-        3952, // FRINTA_d_floatdp1
-        3956, // FRINTA_h_floatdp1
-        3960, // FRINTA_s_floatdp1
-        3964, // FRINTI_asimdmisc_r
-        3968, // FRINTI_asimdmiscfp16_r
-        3972, // FRINTI_d_floatdp1
-        3976, // FRINTI_h_floatdp1
-        3980, // FRINTI_s_floatdp1
-        3984, // FRINTM_asimdmisc_r
-        3988, // FRINTM_asimdmiscfp16_r
-        3992, // FRINTM_d_floatdp1
-        3996, // FRINTM_h_floatdp1
-        4000, // FRINTM_s_floatdp1
-        4004, // FRINTN_asimdmisc_r
-        4008, // FRINTN_asimdmiscfp16_r
-        4012, // FRINTN_d_floatdp1
-        4016, // FRINTN_h_floatdp1
-        4020, // FRINTN_s_floatdp1
-        4024, // FRINTP_asimdmisc_r
-        4028, // FRINTP_asimdmiscfp16_r
-        4032, // FRINTP_d_floatdp1
-        4036, // FRINTP_h_floatdp1
-        4040, // FRINTP_s_floatdp1
-        4044, // FRINTX_asimdmisc_r
-        4048, // FRINTX_asimdmiscfp16_r
-        4052, // FRINTX_d_floatdp1
-        4056, // FRINTX_h_floatdp1
-        4060, // FRINTX_s_floatdp1
-        4064, // FRINTZ_asimdmisc_r
-        4068, // FRINTZ_asimdmiscfp16_r
-        4072, // FRINTZ_d_floatdp1
-        4076, // FRINTZ_h_floatdp1
-        4080, // FRINTZ_s_floatdp1
-        4084, // FRSQRTE_asimdmisc_r
-        4088, // FRSQRTE_asimdmiscfp16_r
-        4092, // FRSQRTE_asisdmisc_r
-        4096, // FRSQRTE_asisdmiscfp16_r
-        4100, // FRSQRTS_asimdsame_only
-        4105, // FRSQRTS_asimdsamefp16_only
-        4110, // FRSQRTS_asisdsame_only
-        4115, // FRSQRTS_asisdsamefp16_only
-        4120, // FSCALE_asimdsame_only
-        4125, // FSCALE_asimdsamefp16_only
-        4130, // FSQRT_asimdmisc_r
-        4134, // FSQRT_asimdmiscfp16_r
-        4138, // FSQRT_d_floatdp1
-        4142, // FSQRT_h_floatdp1
-        4146, // FSQRT_s_floatdp1
-        4150, // FSUB_asimdsame_only
-        4155, // FSUB_asimdsamefp16_only
-        4160, // FSUB_d_floatdp2
-        4165, // FSUB_h_floatdp2
-        4170, // FSUB_s_floatdp2
-        4175, // GCSB_hd_hints
-        4178, // GCSSTR_64_ldst_gcs
-        4182, // GCSSTTR_64_ldst_gcs
-        4186, // GMI_64g_dp_2src
-        4191, // HINT_hm_hints
-        4195, // HLT_ex_exception
-        4199, // HVC_ex_exception
-        4203, // INS_asimdins_ir_r
-        4207, // INS_asimdins_iv_v
-        4211, // IRG_64i_dp_2src
-        4219, // ISB_bi_barriers
-        4223, // LD1R_asisdlso_r1
-        4227, // LD1R_asisdlsop_r1_i
-        4235, // LD1R_asisdlsop_rx1_r
-        4240, // LD1_asisdlse_r1_1v
-        4244, // LD1_asisdlse_r2_2v
-        4248, // LD1_asisdlse_r3_3v
-        4252, // LD1_asisdlse_r4_4v
-        4256, // LD1_asisdlsep_i1_i1
-        4264, // LD1_asisdlsep_i2_i2
-        4272, // LD1_asisdlsep_i3_i3
-        4280, // LD1_asisdlsep_i4_i4
-        4288, // LD1_asisdlsep_r1_r1
-        4293, // LD1_asisdlsep_r2_r2
-        4298, // LD1_asisdlsep_r3_r3
-        4303, // LD1_asisdlsep_r4_r4
-        4308, // LD1_asisdlso_b1_1b
-        4312, // LD1_asisdlso_d1_1d
-        4316, // LD1_asisdlso_h1_1h
-        4320, // LD1_asisdlso_s1_1s
-        4324, // LD1_asisdlsop_b1_i1b
-        4329, // LD1_asisdlsop_bx1_r1b
-        4334, // LD1_asisdlsop_d1_i1d
-        4339, // LD1_asisdlsop_dx1_r1d
-        4344, // LD1_asisdlsop_h1_i1h
-        4349, // LD1_asisdlsop_hx1_r1h
-        4354, // LD1_asisdlsop_s1_i1s
-        4359, // LD1_asisdlsop_sx1_r1s
-        4364, // LD2R_asisdlso_r2
-        4368, // LD2R_asisdlsop_r2_i
-        4376, // LD2R_asisdlsop_rx2_r
-        4381, // LD2_asisdlse_r2
-        4385, // LD2_asisdlsep_i2_i
-        4393, // LD2_asisdlsep_r2_r
-        4398, // LD2_asisdlso_b2_2b
-        4402, // LD2_asisdlso_d2_2d
-        4406, // LD2_asisdlso_h2_2h
-        4410, // LD2_asisdlso_s2_2s
-        4414, // LD2_asisdlsop_b2_i2b
-        4419, // LD2_asisdlsop_bx2_r2b
-        4424, // LD2_asisdlsop_d2_i2d
-        4429, // LD2_asisdlsop_dx2_r2d
-        4434, // LD2_asisdlsop_h2_i2h
-        4439, // LD2_asisdlsop_hx2_r2h
-        4444, // LD2_asisdlsop_s2_i2s
-        4449, // LD2_asisdlsop_sx2_r2s
-        4454, // LD3R_asisdlso_r3
-        4458, // LD3R_asisdlsop_r3_i
-        4466, // LD3R_asisdlsop_rx3_r
-        4471, // LD3_asisdlse_r3
-        4475, // LD3_asisdlsep_i3_i
-        4483, // LD3_asisdlsep_r3_r
-        4488, // LD3_asisdlso_b3_3b
-        4492, // LD3_asisdlso_d3_3d
-        4496, // LD3_asisdlso_h3_3h
-        4500, // LD3_asisdlso_s3_3s
-        4504, // LD3_asisdlsop_b3_i3b
-        4509, // LD3_asisdlsop_bx3_r3b
-        4514, // LD3_asisdlsop_d3_i3d
-        4519, // LD3_asisdlsop_dx3_r3d
-        4524, // LD3_asisdlsop_h3_i3h
-        4529, // LD3_asisdlsop_hx3_r3h
-        4534, // LD3_asisdlsop_s3_i3s
-        4539, // LD3_asisdlsop_sx3_r3s
-        4544, // LD4R_asisdlso_r4
-        4548, // LD4R_asisdlsop_r4_i
-        4556, // LD4R_asisdlsop_rx4_r
-        4561, // LD4_asisdlse_r4
-        4565, // LD4_asisdlsep_i4_i
-        4573, // LD4_asisdlsep_r4_r
-        4578, // LD4_asisdlso_b4_4b
-        4582, // LD4_asisdlso_d4_4d
-        4586, // LD4_asisdlso_h4_4h
-        4590, // LD4_asisdlso_s4_4s
-        4594, // LD4_asisdlsop_b4_i4b
-        4599, // LD4_asisdlsop_bx4_r4b
-        4604, // LD4_asisdlsop_d4_i4d
-        4609, // LD4_asisdlsop_dx4_r4d
-        4614, // LD4_asisdlsop_h4_i4h
-        4619, // LD4_asisdlsop_hx4_r4h
-        4624, // LD4_asisdlsop_s4_i4s
-        4629, // LD4_asisdlsop_sx4_r4s
-        4634, // LD64B_64l_memop
-        4638, // LDADDAB_32_memop
-        4643, // LDADDAH_32_memop
-        4648, // LDADDALB_32_memop
-        4653, // LDADDALH_32_memop
-        4658, // LDADDAL_32_memop
-        4663, // LDADDAL_64_memop
-        4668, // LDADDA_32_memop
-        4673, // LDADDA_64_memop
-        4678, // LDADDB_32_memop
-        4683, // LDADDH_32_memop
-        4688, // LDADDLB_32_memop
-        4693, // LDADDLH_32_memop
-        4698, // LDADDL_32_memop
-        4703, // LDADDL_64_memop
-        4708, // LDADD_32_memop
-        4713, // LDADD_64_memop
-        4718, // LDAP1_asisdlso_d1
-        4722, // LDAPRB_32l_memop
-        4726, // LDAPRH_32l_memop
-        4730, // LDAPR_32l_ldapstl_writeback
-        4735, // LDAPR_32l_memop
-        4739, // LDAPR_64l_ldapstl_writeback
-        4744, // LDAPR_64l_memop
-        4748, // LDAPURB_32_ldapstl_unscaled
-        4754, // LDAPURH_32_ldapstl_unscaled
-        4760, // LDAPURSB_32_ldapstl_unscaled
-        4766, // LDAPURSB_64_ldapstl_unscaled
-        4772, // LDAPURSH_32_ldapstl_unscaled
-        4778, // LDAPURSH_64_ldapstl_unscaled
-        4784, // LDAPURSW_64_ldapstl_unscaled
-        4790, // LDAPUR_32_ldapstl_unscaled
-        4796, // LDAPUR_64_ldapstl_unscaled
-        4802, // LDAPUR_b_ldapstl_simd
-        4808, // LDAPUR_d_ldapstl_simd
-        4814, // LDAPUR_h_ldapstl_simd
-        4820, // LDAPUR_q_ldapstl_simd
-        4826, // LDAPUR_s_ldapstl_simd
-        4832, // LDARB_lr32_ldstord
-        4836, // LDARH_lr32_ldstord
-        4840, // LDAR_lr32_ldstord
-        4844, // LDAR_lr64_ldstord
-        4848, // LDATXR_lr32_ldstexclr_unpriv
-        4852, // LDATXR_lr64_ldstexclr_unpriv
-        4856, // LDAXP_lp32_ldstexclp
-        4861, // LDAXP_lp64_ldstexclp
-        4866, // LDAXRB_lr32_ldstexclr
-        4870, // LDAXRH_lr32_ldstexclr
-        4874, // LDAXR_lr32_ldstexclr
-        4878, // LDAXR_lr64_ldstexclr
-        4882, // LDBFADDAL_16
-        4887, // LDBFADDA_16
-        4892, // LDBFADDL_16
-        4897, // LDBFADD_16
-        4902, // LDBFMAXAL_16
-        4907, // LDBFMAXA_16
-        4912, // LDBFMAXL_16
-        4917, // LDBFMAXNMAL_16
-        4922, // LDBFMAXNMA_16
-        4927, // LDBFMAXNML_16
-        4932, // LDBFMAXNM_16
-        4937, // LDBFMAX_16
-        4942, // LDBFMINAL_16
-        4947, // LDBFMINA_16
-        4952, // LDBFMINL_16
-        4957, // LDBFMINNMAL_16
-        4962, // LDBFMINNMA_16
-        4967, // LDBFMINNML_16
-        4972, // LDBFMINNM_16
-        4977, // LDBFMIN_16
-        4982, // LDCLRAB_32_memop
-        4987, // LDCLRAH_32_memop
-        4992, // LDCLRALB_32_memop
-        4997, // LDCLRALH_32_memop
-        5002, // LDCLRAL_32_memop
-        5007, // LDCLRAL_64_memop
-        5012, // LDCLRA_32_memop
-        5017, // LDCLRA_64_memop
-        5022, // LDCLRB_32_memop
-        5027, // LDCLRH_32_memop
-        5032, // LDCLRLB_32_memop
-        5037, // LDCLRLH_32_memop
-        5042, // LDCLRL_32_memop
-        5047, // LDCLRL_64_memop
-        5052, // LDCLRPAL_128_memop_128
-        5057, // LDCLRPA_128_memop_128
-        5062, // LDCLRPL_128_memop_128
-        5067, // LDCLRP_128_memop_128
-        5072, // LDCLR_32_memop
-        5077, // LDCLR_64_memop
-        5082, // LDEORAB_32_memop
-        5087, // LDEORAH_32_memop
-        5092, // LDEORALB_32_memop
-        5097, // LDEORALH_32_memop
-        5102, // LDEORAL_32_memop
-        5107, // LDEORAL_64_memop
-        5112, // LDEORA_32_memop
-        5117, // LDEORA_64_memop
-        5122, // LDEORB_32_memop
-        5127, // LDEORH_32_memop
-        5132, // LDEORLB_32_memop
-        5137, // LDEORLH_32_memop
-        5142, // LDEORL_32_memop
-        5147, // LDEORL_64_memop
-        5152, // LDEOR_32_memop
-        5157, // LDEOR_64_memop
-        5162, // LDFADDAL_16
-        5167, // LDFADDAL_32
-        5172, // LDFADDAL_64
-        5177, // LDFADDA_16
-        5182, // LDFADDA_32
-        5187, // LDFADDA_64
-        5192, // LDFADDL_16
-        5197, // LDFADDL_32
-        5202, // LDFADDL_64
-        5207, // LDFADD_16
-        5212, // LDFADD_32
-        5217, // LDFADD_64
-        5222, // LDFMAXAL_16
-        5227, // LDFMAXAL_32
-        5232, // LDFMAXAL_64
-        5237, // LDFMAXA_16
-        5242, // LDFMAXA_32
-        5247, // LDFMAXA_64
-        5252, // LDFMAXL_16
-        5257, // LDFMAXL_32
-        5262, // LDFMAXL_64
-        5267, // LDFMAXNMAL_16
-        5272, // LDFMAXNMAL_32
-        5277, // LDFMAXNMAL_64
-        5282, // LDFMAXNMA_16
-        5287, // LDFMAXNMA_32
-        5292, // LDFMAXNMA_64
-        5297, // LDFMAXNML_16
-        5302, // LDFMAXNML_32
-        5307, // LDFMAXNML_64
-        5312, // LDFMAXNM_16
-        5317, // LDFMAXNM_32
-        5322, // LDFMAXNM_64
-        5327, // LDFMAX_16
-        5332, // LDFMAX_32
-        5337, // LDFMAX_64
-        5342, // LDFMINAL_16
-        5347, // LDFMINAL_32
-        5352, // LDFMINAL_64
-        5357, // LDFMINA_16
-        5362, // LDFMINA_32
-        5367, // LDFMINA_64
-        5372, // LDFMINL_16
-        5377, // LDFMINL_32
-        5382, // LDFMINL_64
-        5387, // LDFMINNMAL_16
-        5392, // LDFMINNMAL_32
-        5397, // LDFMINNMAL_64
-        5402, // LDFMINNMA_16
-        5407, // LDFMINNMA_32
-        5412, // LDFMINNMA_64
-        5417, // LDFMINNML_16
-        5422, // LDFMINNML_32
-        5427, // LDFMINNML_64
-        5432, // LDFMINNM_16
-        5437, // LDFMINNM_32
-        5442, // LDFMINNM_64
-        5447, // LDFMIN_16
-        5452, // LDFMIN_32
-        5457, // LDFMIN_64
-        5462, // LDGM_64bulk_ldsttags
-        5466, // LDG_64loffset_ldsttags
-        5472, // LDIAPP_32l_ldiappstilp
-        5477, // LDIAPP_32le_ldiappstilp
-        5483, // LDIAPP_64l_ldiappstilp
-        5488, // LDIAPP_64ls_ldiappstilp
-        5494, // LDLARB_lr32_ldstord
-        5498, // LDLARH_lr32_ldstord
-        5502, // LDLAR_lr32_ldstord
-        5506, // LDLAR_lr64_ldstord
-        5510, // LDNP_32_ldstnapair_offs
-        5518, // LDNP_64_ldstnapair_offs
-        5526, // LDNP_d_ldstnapair_offs
-        5534, // LDNP_q_ldstnapair_offs
-        5542, // LDNP_s_ldstnapair_offs
-        5550, // LDPSW_64_ldstpair_off
-        5558, // LDPSW_64_ldstpair_post
-        5568, // LDPSW_64_ldstpair_pre
-        5576, // LDP_32_ldstpair_off
-        5584, // LDP_32_ldstpair_post
-        5594, // LDP_32_ldstpair_pre
-        5602, // LDP_64_ldstpair_off
-        5610, // LDP_64_ldstpair_post
-        5620, // LDP_64_ldstpair_pre
-        5628, // LDP_d_ldstpair_off
-        5636, // LDP_d_ldstpair_post
-        5646, // LDP_d_ldstpair_pre
-        5654, // LDP_q_ldstpair_off
-        5662, // LDP_q_ldstpair_post
-        5672, // LDP_q_ldstpair_pre
-        5680, // LDP_s_ldstpair_off
-        5688, // LDP_s_ldstpair_post
-        5698, // LDP_s_ldstpair_pre
-        5706, // LDRAA_64_ldst_pac
-        5712, // LDRAA_64w_ldst_pac
-        5718, // LDRAB_64_ldst_pac
-        5724, // LDRAB_64w_ldst_pac
-        5730, // LDRB_32_ldst_immpost
-        5738, // LDRB_32_ldst_immpre
-        5744, // LDRB_32_ldst_pos
-        5750, // LDRB_32b_ldst_regoff
-        5756, // LDRB_32bl_ldst_regoff
-        5762, // LDRH_32_ldst_immpost
-        5770, // LDRH_32_ldst_immpre
-        5776, // LDRH_32_ldst_pos
-        5782, // LDRH_32_ldst_regoff
-        5788, // LDRSB_32_ldst_immpost
-        5796, // LDRSB_32_ldst_immpre
-        5802, // LDRSB_32_ldst_pos
-        5808, // LDRSB_32b_ldst_regoff
-        5814, // LDRSB_32bl_ldst_regoff
-        5820, // LDRSB_64_ldst_immpost
-        5828, // LDRSB_64_ldst_immpre
-        5834, // LDRSB_64_ldst_pos
-        5840, // LDRSB_64b_ldst_regoff
-        5846, // LDRSB_64bl_ldst_regoff
-        5852, // LDRSH_32_ldst_immpost
-        5860, // LDRSH_32_ldst_immpre
-        5866, // LDRSH_32_ldst_pos
-        5872, // LDRSH_32_ldst_regoff
-        5878, // LDRSH_64_ldst_immpost
-        5886, // LDRSH_64_ldst_immpre
-        5892, // LDRSH_64_ldst_pos
-        5898, // LDRSH_64_ldst_regoff
-        5904, // LDRSW_64_ldst_immpost
-        5912, // LDRSW_64_ldst_immpre
-        5918, // LDRSW_64_ldst_pos
-        5924, // LDRSW_64_ldst_regoff
-        5930, // LDRSW_64_loadlit
-        5936, // LDR_32_ldst_immpost
-        5944, // LDR_32_ldst_immpre
-        5950, // LDR_32_ldst_pos
-        5956, // LDR_32_ldst_regoff
-        5962, // LDR_32_loadlit
-        5968, // LDR_64_ldst_immpost
-        5976, // LDR_64_ldst_immpre
-        5982, // LDR_64_ldst_pos
-        5988, // LDR_64_ldst_regoff
-        5994, // LDR_64_loadlit
-        6000, // LDR_b_ldst_immpost
-        6008, // LDR_b_ldst_immpre
-        6014, // LDR_b_ldst_pos
-        6020, // LDR_b_ldst_regoff
-        6026, // LDR_bl_ldst_regoff
-        6032, // LDR_d_ldst_immpost
-        6040, // LDR_d_ldst_immpre
-        6046, // LDR_d_ldst_pos
-        6052, // LDR_d_ldst_regoff
-        6058, // LDR_d_loadlit
-        6064, // LDR_h_ldst_immpost
-        6072, // LDR_h_ldst_immpre
-        6078, // LDR_h_ldst_pos
-        6084, // LDR_h_ldst_regoff
-        6090, // LDR_q_ldst_immpost
-        6098, // LDR_q_ldst_immpre
-        6104, // LDR_q_ldst_pos
-        6110, // LDR_q_ldst_regoff
-        6116, // LDR_q_loadlit
-        6122, // LDR_s_ldst_immpost
-        6130, // LDR_s_ldst_immpre
-        6136, // LDR_s_ldst_pos
-        6142, // LDR_s_ldst_regoff
-        6148, // LDR_s_loadlit
-        6154, // LDSETAB_32_memop
-        6159, // LDSETAH_32_memop
-        6164, // LDSETALB_32_memop
-        6169, // LDSETALH_32_memop
-        6174, // LDSETAL_32_memop
-        6179, // LDSETAL_64_memop
-        6184, // LDSETA_32_memop
-        6189, // LDSETA_64_memop
-        6194, // LDSETB_32_memop
-        6199, // LDSETH_32_memop
-        6204, // LDSETLB_32_memop
-        6209, // LDSETLH_32_memop
-        6214, // LDSETL_32_memop
-        6219, // LDSETL_64_memop
-        6224, // LDSETPAL_128_memop_128
-        6229, // LDSETPA_128_memop_128
-        6234, // LDSETPL_128_memop_128
-        6239, // LDSETP_128_memop_128
-        6244, // LDSET_32_memop
-        6249, // LDSET_64_memop
-        6254, // LDSMAXAB_32_memop
-        6259, // LDSMAXAH_32_memop
-        6264, // LDSMAXALB_32_memop
-        6269, // LDSMAXALH_32_memop
-        6274, // LDSMAXAL_32_memop
-        6279, // LDSMAXAL_64_memop
-        6284, // LDSMAXA_32_memop
-        6289, // LDSMAXA_64_memop
-        6294, // LDSMAXB_32_memop
-        6299, // LDSMAXH_32_memop
-        6304, // LDSMAXLB_32_memop
-        6309, // LDSMAXLH_32_memop
-        6314, // LDSMAXL_32_memop
-        6319, // LDSMAXL_64_memop
-        6324, // LDSMAX_32_memop
-        6329, // LDSMAX_64_memop
-        6334, // LDSMINAB_32_memop
-        6339, // LDSMINAH_32_memop
-        6344, // LDSMINALB_32_memop
-        6349, // LDSMINALH_32_memop
-        6354, // LDSMINAL_32_memop
-        6359, // LDSMINAL_64_memop
-        6364, // LDSMINA_32_memop
-        6369, // LDSMINA_64_memop
-        6374, // LDSMINB_32_memop
-        6379, // LDSMINH_32_memop
-        6384, // LDSMINLB_32_memop
-        6389, // LDSMINLH_32_memop
-        6394, // LDSMINL_32_memop
-        6399, // LDSMINL_64_memop
-        6404, // LDSMIN_32_memop
-        6409, // LDSMIN_64_memop
-        6414, // LDTADDAL_32_memop_unpriv
-        6419, // LDTADDAL_64_memop_unpriv
-        6424, // LDTADDA_32_memop_unpriv
-        6429, // LDTADDA_64_memop_unpriv
-        6434, // LDTADDL_32_memop_unpriv
-        6439, // LDTADDL_64_memop_unpriv
-        6444, // LDTADD_32_memop_unpriv
-        6449, // LDTADD_64_memop_unpriv
-        6454, // LDTCLRAL_32_memop_unpriv
-        6459, // LDTCLRAL_64_memop_unpriv
-        6464, // LDTCLRA_32_memop_unpriv
-        6469, // LDTCLRA_64_memop_unpriv
-        6474, // LDTCLRL_32_memop_unpriv
-        6479, // LDTCLRL_64_memop_unpriv
-        6484, // LDTCLR_32_memop_unpriv
-        6489, // LDTCLR_64_memop_unpriv
-        6494, // LDTNP_64_ldstnapair_offs
-        6502, // LDTNP_q_ldstnapair_offs
-        6510, // LDTP_64_ldstpair_off
-        6518, // LDTP_64_ldstpair_post
-        6528, // LDTP_64_ldstpair_pre
-        6536, // LDTP_q_ldstpair_off
-        6544, // LDTP_q_ldstpair_post
-        6554, // LDTP_q_ldstpair_pre
-        6562, // LDTRB_32_ldst_unpriv
-        6568, // LDTRH_32_ldst_unpriv
-        6574, // LDTRSB_32_ldst_unpriv
-        6580, // LDTRSB_64_ldst_unpriv
-        6586, // LDTRSH_32_ldst_unpriv
-        6592, // LDTRSH_64_ldst_unpriv
-        6598, // LDTRSW_64_ldst_unpriv
-        6604, // LDTR_32_ldst_unpriv
-        6610, // LDTR_64_ldst_unpriv
-        6616, // LDTSETAL_32_memop_unpriv
-        6621, // LDTSETAL_64_memop_unpriv
-        6626, // LDTSETA_32_memop_unpriv
-        6631, // LDTSETA_64_memop_unpriv
-        6636, // LDTSETL_32_memop_unpriv
-        6641, // LDTSETL_64_memop_unpriv
-        6646, // LDTSET_32_memop_unpriv
-        6651, // LDTSET_64_memop_unpriv
-        6656, // LDTXR_lr32_ldstexclr_unpriv
-        6660, // LDTXR_lr64_ldstexclr_unpriv
-        6664, // LDUMAXAB_32_memop
-        6669, // LDUMAXAH_32_memop
-        6674, // LDUMAXALB_32_memop
-        6679, // LDUMAXALH_32_memop
-        6684, // LDUMAXAL_32_memop
-        6689, // LDUMAXAL_64_memop
-        6694, // LDUMAXA_32_memop
-        6699, // LDUMAXA_64_memop
-        6704, // LDUMAXB_32_memop
-        6709, // LDUMAXH_32_memop
-        6714, // LDUMAXLB_32_memop
-        6719, // LDUMAXLH_32_memop
-        6724, // LDUMAXL_32_memop
-        6729, // LDUMAXL_64_memop
-        6734, // LDUMAX_32_memop
-        6739, // LDUMAX_64_memop
-        6744, // LDUMINAB_32_memop
-        6749, // LDUMINAH_32_memop
-        6754, // LDUMINALB_32_memop
-        6759, // LDUMINALH_32_memop
-        6764, // LDUMINAL_32_memop
-        6769, // LDUMINAL_64_memop
-        6774, // LDUMINA_32_memop
-        6779, // LDUMINA_64_memop
-        6784, // LDUMINB_32_memop
-        6789, // LDUMINH_32_memop
-        6794, // LDUMINLB_32_memop
-        6799, // LDUMINLH_32_memop
-        6804, // LDUMINL_32_memop
-        6809, // LDUMINL_64_memop
-        6814, // LDUMIN_32_memop
-        6819, // LDUMIN_64_memop
-        6824, // LDURB_32_ldst_unscaled
-        6830, // LDURH_32_ldst_unscaled
-        6836, // LDURSB_32_ldst_unscaled
-        6842, // LDURSB_64_ldst_unscaled
-        6848, // LDURSH_32_ldst_unscaled
-        6854, // LDURSH_64_ldst_unscaled
-        6860, // LDURSW_64_ldst_unscaled
-        6866, // LDUR_32_ldst_unscaled
-        6872, // LDUR_64_ldst_unscaled
-        6878, // LDUR_b_ldst_unscaled
-        6884, // LDUR_d_ldst_unscaled
-        6890, // LDUR_h_ldst_unscaled
-        6896, // LDUR_q_ldst_unscaled
-        6902, // LDUR_s_ldst_unscaled
-        6908, // LDXP_lp32_ldstexclp
-        6913, // LDXP_lp64_ldstexclp
-        6918, // LDXRB_lr32_ldstexclr
-        6922, // LDXRH_lr32_ldstexclr
-        6926, // LDXR_lr32_ldstexclr
-        6930, // LDXR_lr64_ldstexclr
-        6934, // LSLV_32_dp_2src
-        6939, // LSLV_64_dp_2src
-        6944, // LSRV_32_dp_2src
-        6949, // LSRV_64_dp_2src
-        6954, // LUTI2_asimdtbl_l5
-        6962, // LUTI2_asimdtbl_l6
-        6970, // LUTI4_asimdtbl_l5
-        6978, // LUTI4_asimdtbl_l7
-        6986, // MADDPT_64a_dp_3src
-        6992, // MADD_32a_dp_3src
-        6998, // MADD_64a_dp_3src
-        7004, // MLA_asimdelem_r
-        7009, // MLA_asimdsame_only
-        7014, // MLS_asimdelem_r
-        7019, // MLS_asimdsame_only
-        7024, // MOVI_asimdimm_d2_d
-        7030, // MOVI_asimdimm_d_ds
-        7036, // MOVI_asimdimm_l_hl
-        7044, // MOVI_asimdimm_l_sl
-        7052, // MOVI_asimdimm_m_sm
-        7060, // MOVI_asimdimm_n_b
-        7068, // MOVK_32_movewide
-        7076, // MOVK_64_movewide
-        7084, // MOVN_32_movewide
-        7092, // MOVN_64_movewide
-        7100, // MOVZ_32_movewide
-        7108, // MOVZ_64_movewide
-        7116, // MRRS_rs_systemmovepr
-        7124, // MRS_rs_systemmove
-        7130, // MSRR_sr_systemmovepr
-        7138, // MSR_si_pstate
-        7142, // MSR_sr_systemmove
-        7148, // MSUBPT_64a_dp_3src
-        7154, // MSUB_32a_dp_3src
-        7160, // MSUB_64a_dp_3src
-        7166, // MUL_asimdelem_r
-        7171, // MUL_asimdsame_only
-        7176, // MVNI_asimdimm_l_hl
-        7184, // MVNI_asimdimm_l_sl
-        7192, // MVNI_asimdimm_m_sm
-        7200, // NEG_asimdmisc_r
-        7204, // NEG_asisdmisc_r
-        7208, // NOP_hi_hints
-        7210, // NOT_asimdmisc_r
-        7214, // ORN_32_log_shift
-        7220, // ORN_64_log_shift
-        7226, // ORN_asimdsame_only
-        7231, // ORR_32_log_imm
-        7239, // ORR_32_log_shift
-        7245, // ORR_64_log_imm
-        7253, // ORR_64_log_shift
-        7259, // ORR_asimdimm_l_hl
-        7267, // ORR_asimdimm_l_sl
-        7275, // ORR_asimdsame_only
-        7280, // PACDA_64p_dp_1src
-        7284, // PACDB_64p_dp_1src
-        7288, // PACDZA_64z_dp_1src
-        7291, // PACDZB_64z_dp_1src
-        7294, // PACGA_64p_dp_2src
-        7299, // PACIA171615_64lr_dp_1src
-        7301, // PACIA1716_hi_hints
-        7303, // PACIASPPC_64lr_dp_1src
-        7305, // PACIASP_hi_hints
-        7307, // PACIAZ_hi_hints
-        7309, // PACIA_64p_dp_1src
-        7313, // PACIB171615_64lr_dp_1src
-        7315, // PACIB1716_hi_hints
-        7317, // PACIBSPPC_64lr_dp_1src
-        7319, // PACIBSP_hi_hints
-        7321, // PACIBZ_hi_hints
-        7323, // PACIB_64p_dp_1src
-        7327, // PACIZA_64z_dp_1src
-        7330, // PACIZB_64z_dp_1src
-        7333, // PACM_hi_hints
-        7335, // PACNBIASPPC_64lr_dp_1src
-        7337, // PACNBIBSPPC_64lr_dp_1src
-        7339, // PMULL_asimddiff_l
-        7344, // PMUL_asimdsame_only
-        7349, // PRFM_p_ldst_pos
-        7355, // PRFM_p_ldst_regoff
-        7361, // PRFM_p_loadlit
-        7367, // PRFUM_p_ldst_unscaled
-        7373, // PSB_hc_hints
-        7376, // RADDHN_asimddiff_n
-        7381, // RAX1_vvv2_cryptosha512_3
-        7386, // RBIT_32_dp_1src
-        7390, // RBIT_64_dp_1src
-        7394, // RBIT_asimdmisc_r
-        7398, // RCWCASAL_c64_rcwcomswap
-        7403, // RCWCASA_c64_rcwcomswap
-        7408, // RCWCASL_c64_rcwcomswap
-        7413, // RCWCASPAL_c64_rcwcomswappr
-        7420, // RCWCASPA_c64_rcwcomswappr
-        7427, // RCWCASPL_c64_rcwcomswappr
-        7434, // RCWCASP_c64_rcwcomswappr
-        7441, // RCWCAS_c64_rcwcomswap
-        7446, // RCWCLRAL_64_memop
-        7451, // RCWCLRA_64_memop
-        7456, // RCWCLRL_64_memop
-        7461, // RCWCLRPAL_128_memop_128
-        7466, // RCWCLRPA_128_memop_128
-        7471, // RCWCLRPL_128_memop_128
-        7476, // RCWCLRP_128_memop_128
-        7481, // RCWCLR_64_memop
-        7486, // RCWSCASAL_c64_rcwcomswap
-        7491, // RCWSCASA_c64_rcwcomswap
-        7496, // RCWSCASL_c64_rcwcomswap
-        7501, // RCWSCASPAL_c64_rcwcomswappr
-        7508, // RCWSCASPA_c64_rcwcomswappr
-        7515, // RCWSCASPL_c64_rcwcomswappr
-        7522, // RCWSCASP_c64_rcwcomswappr
-        7529, // RCWSCAS_c64_rcwcomswap
-        7534, // RCWSCLRAL_64_memop
-        7539, // RCWSCLRA_64_memop
-        7544, // RCWSCLRL_64_memop
-        7549, // RCWSCLRPAL_128_memop_128
-        7554, // RCWSCLRPA_128_memop_128
-        7559, // RCWSCLRPL_128_memop_128
-        7564, // RCWSCLRP_128_memop_128
-        7569, // RCWSCLR_64_memop
-        7574, // RCWSETAL_64_memop
-        7579, // RCWSETA_64_memop
-        7584, // RCWSETL_64_memop
-        7589, // RCWSETPAL_128_memop_128
-        7594, // RCWSETPA_128_memop_128
-        7599, // RCWSETPL_128_memop_128
-        7604, // RCWSETP_128_memop_128
-        7609, // RCWSET_64_memop
-        7614, // RCWSSETAL_64_memop
-        7619, // RCWSSETA_64_memop
-        7624, // RCWSSETL_64_memop
-        7629, // RCWSSETPAL_128_memop_128
-        7634, // RCWSSETPA_128_memop_128
-        7639, // RCWSSETPL_128_memop_128
-        7644, // RCWSSETP_128_memop_128
-        7649, // RCWSSET_64_memop
-        7654, // RCWSSWPAL_64_memop
-        7659, // RCWSSWPA_64_memop
-        7664, // RCWSSWPL_64_memop
-        7669, // RCWSSWPPAL_128_memop_128
-        7674, // RCWSSWPPA_128_memop_128
-        7679, // RCWSSWPPL_128_memop_128
-        7684, // RCWSSWPP_128_memop_128
-        7689, // RCWSSWP_64_memop
-        7694, // RCWSWPAL_64_memop
-        7699, // RCWSWPA_64_memop
-        7704, // RCWSWPL_64_memop
-        7709, // RCWSWPPAL_128_memop_128
-        7714, // RCWSWPPA_128_memop_128
-        7719, // RCWSWPPL_128_memop_128
-        7724, // RCWSWPP_128_memop_128
-        7729, // RCWSWP_64_memop
-        7734, // RETAASPPCR_64m_branch_reg
-        7737, // RETAASPPC_only_miscbranch
-        7741, // RETAA_64e_branch_reg
-        7743, // RETABSPPCR_64m_branch_reg
-        7746, // RETABSPPC_only_miscbranch
-        7750, // RETAB_64e_branch_reg
-        7752, // RET_64r_branch_reg
-        7756, // REV16_32_dp_1src
-        7760, // REV16_64_dp_1src
-        7764, // REV16_asimdmisc_r
-        7768, // REV32_64_dp_1src
-        7772, // REV32_asimdmisc_r
-        7776, // REV64_asimdmisc_r
-        7780, // REV_32_dp_1src
-        7784, // REV_64_dp_1src
-        7788, // RMIF_only_rmif
-        7796, // RORV_32_dp_2src
-        7801, // RORV_64_dp_2src
-        7806, // RPRFM_r_ldst_regoff
-        7814, // RSHRN_asimdshf_n
-        7822, // RSUBHN_asimddiff_n
-        7827, // SABAL_asimddiff_l
-        7832, // SABA_asimdsame_only
-        7837, // SABDL_asimddiff_l
-        7842, // SABD_asimdsame_only
-        7847, // SADALP_asimdmisc_p
-        7851, // SADDLP_asimdmisc_p
-        7855, // SADDLV_asimdall_only
-        7859, // SADDL_asimddiff_l
-        7864, // SADDW_asimddiff_w
-        7869, // SBCS_32_addsub_carry
-        7874, // SBCS_64_addsub_carry
-        7879, // SBC_32_addsub_carry
-        7884, // SBC_64_addsub_carry
-        7889, // SBFM_32m_bitfield
-        7899, // SBFM_64m_bitfield
-        7909, // SB_only_barriers
-        7911, // SCVTF_asimdmisc_r
-        7915, // SCVTF_asimdmiscfp16_r
-        7919, // SCVTF_asimdshf_c
-        7927, // SCVTF_asisdmisc_r
-        7931, // SCVTF_asisdmiscfp16_r
-        7935, // SCVTF_asisdshf_c
-        7943, // SCVTF_d32_float2fix
-        7951, // SCVTF_d32_float2int
-        7955, // SCVTF_d64_float2fix
-        7963, // SCVTF_d64_float2int
-        7967, // SCVTF_h32_float2fix
-        7975, // SCVTF_h32_float2int
-        7979, // SCVTF_h64_float2fix
-        7987, // SCVTF_h64_float2int
-        7991, // SCVTF_s32_float2fix
-        7999, // SCVTF_s32_float2int
-        8003, // SCVTF_s64_float2fix
-        8011, // SCVTF_s64_float2int
-        8015, // SCVTF_sisd_32d
-        8019, // SCVTF_sisd_32h
-        8023, // SCVTF_sisd_64h
-        8027, // SCVTF_sisd_64s
-        8031, // SDIV_32_dp_2src
-        8036, // SDIV_64_dp_2src
-        8041, // SDOT_asimdelem_d
-        8046, // SDOT_asimdsame2_d
-        8051, // SETEN_set_memcms
-        8056, // SETETN_set_memcms
-        8061, // SETET_set_memcms
-        8066, // SETE_set_memcms
-        8071, // SETF16_only_setf
-        8074, // SETF8_only_setf
-        8077, // SETGEN_set_memcms
-        8082, // SETGETN_set_memcms
-        8087, // SETGET_set_memcms
-        8092, // SETGE_set_memcms
-        8097, // SETGMN_set_memcms
-        8102, // SETGMTN_set_memcms
-        8107, // SETGMT_set_memcms
-        8112, // SETGM_set_memcms
-        8117, // SETGPN_set_memcms
-        8122, // SETGPTN_set_memcms
-        8127, // SETGPT_set_memcms
-        8132, // SETGP_set_memcms
-        8137, // SETMN_set_memcms
-        8142, // SETMTN_set_memcms
-        8147, // SETMT_set_memcms
-        8152, // SETM_set_memcms
-        8157, // SETPN_set_memcms
-        8162, // SETPTN_set_memcms
-        8167, // SETPT_set_memcms
-        8172, // SETP_set_memcms
-        8177, // SEVL_hi_hints
-        8179, // SEV_hi_hints
-        8181, // SHA1C_qsv_cryptosha3
-        8186, // SHA1H_ss_cryptosha2
-        8190, // SHA1M_qsv_cryptosha3
-        8195, // SHA1P_qsv_cryptosha3
-        8200, // SHA1SU0_vvv_cryptosha3
-        8205, // SHA1SU1_vv_cryptosha2
-        8209, // SHA256H2_qqv_cryptosha3
-        8214, // SHA256H_qqv_cryptosha3
-        8219, // SHA256SU0_vv_cryptosha2
-        8223, // SHA256SU1_vvv_cryptosha3
-        8228, // SHA512H2_qqv_cryptosha512_3
-        8233, // SHA512H_qqv_cryptosha512_3
-        8238, // SHA512SU0_vv2_cryptosha512_2
-        8242, // SHA512SU1_vvv2_cryptosha512_3
-        8247, // SHADD_asimdsame_only
-        8252, // SHLL_asimdmisc_s
-        8260, // SHL_asimdshf_r
-        8268, // SHL_asisdshf_r
-        8276, // SHRN_asimdshf_n
-        8284, // SHSUB_asimdsame_only
-        8289, // SLI_asimdshf_r
-        8297, // SLI_asisdshf_r
-        8305, // SM3PARTW1_vvv4_cryptosha512_3
-        8310, // SM3PARTW2_vvv4_cryptosha512_3
-        8315, // SM3SS1_vvv4_crypto4
-        8321, // SM3TT1A_vvv4_crypto3_imm2
-        8326, // SM3TT1B_vvv4_crypto3_imm2
-        8331, // SM3TT2A_vvv4_crypto3_imm2
-        8336, // SM3TT2B_vvv_crypto3_imm2
-        8341, // SM4EKEY_vvv4_cryptosha512_3
-        8346, // SM4E_vv4_cryptosha512_2
-        8350, // SMADDL_64wa_dp_3src
-        8356, // SMAXP_asimdsame_only
-        8361, // SMAXV_asimdall_only
-        8365, // SMAX_32_dp_2src
-        8370, // SMAX_32_minmax_imm
-        8378, // SMAX_64_dp_2src
-        8383, // SMAX_64_minmax_imm
-        8391, // SMAX_asimdsame_only
-        8396, // SMC_ex_exception
-        8400, // SMINP_asimdsame_only
-        8405, // SMINV_asimdall_only
-        8409, // SMIN_32_dp_2src
-        8414, // SMIN_32_minmax_imm
-        8422, // SMIN_64_dp_2src
-        8427, // SMIN_64_minmax_imm
-        8435, // SMIN_asimdsame_only
-        8440, // SMLAL_asimddiff_l
-        8445, // SMLAL_asimdelem_l
-        8450, // SMLSL_asimddiff_l
-        8455, // SMLSL_asimdelem_l
-        8460, // SMMLA_asimdsame2_g
-        8465, // SMOV_asimdins_w_w
-        8469, // SMOV_asimdins_x_x
-        8473, // SMSUBL_64wa_dp_3src
-        8479, // SMULH_64_dp_3src
-        8484, // SMULL_asimddiff_l
-        8489, // SMULL_asimdelem_l
-        8494, // SQABS_asimdmisc_r
-        8498, // SQABS_asisdmisc_r
-        8502, // SQADD_asimdsame_only
-        8507, // SQADD_asisdsame_only
-        8512, // SQDMLAL_asimddiff_l
-        8517, // SQDMLAL_asimdelem_l
-        8522, // SQDMLAL_asisddiff_only
-        8527, // SQDMLAL_asisdelem_l
-        8532, // SQDMLSL_asimddiff_l
-        8537, // SQDMLSL_asimdelem_l
-        8542, // SQDMLSL_asisddiff_only
-        8547, // SQDMLSL_asisdelem_l
-        8552, // SQDMULH_asimdelem_r
-        8557, // SQDMULH_asimdsame_only
-        8562, // SQDMULH_asisdelem_r
-        8567, // SQDMULH_asisdsame_only
-        8572, // SQDMULL_asimddiff_l
-        8577, // SQDMULL_asimdelem_l
-        8582, // SQDMULL_asisddiff_only
-        8587, // SQDMULL_asisdelem_l
-        8592, // SQNEG_asimdmisc_r
-        8596, // SQNEG_asisdmisc_r
-        8600, // SQRDMLAH_asimdelem_r
-        8605, // SQRDMLAH_asimdsame2_only
-        8610, // SQRDMLAH_asisdelem_r
-        8615, // SQRDMLAH_asisdsame2_only
-        8620, // SQRDMLSH_asimdelem_r
-        8625, // SQRDMLSH_asimdsame2_only
-        8630, // SQRDMLSH_asisdelem_r
-        8635, // SQRDMLSH_asisdsame2_only
-        8640, // SQRDMULH_asimdelem_r
-        8645, // SQRDMULH_asimdsame_only
-        8650, // SQRDMULH_asisdelem_r
-        8655, // SQRDMULH_asisdsame_only
-        8660, // SQRSHL_asimdsame_only
-        8665, // SQRSHL_asisdsame_only
-        8670, // SQRSHRN_asimdshf_n
-        8678, // SQRSHRN_asisdshf_n
-        8686, // SQRSHRUN_asimdshf_n
-        8694, // SQRSHRUN_asisdshf_n
-        8702, // SQSHLU_asimdshf_r
-        8710, // SQSHLU_asisdshf_r
-        8718, // SQSHL_asimdsame_only
-        8723, // SQSHL_asimdshf_r
-        8731, // SQSHL_asisdsame_only
-        8736, // SQSHL_asisdshf_r
-        8744, // SQSHRN_asimdshf_n
-        8752, // SQSHRN_asisdshf_n
-        8760, // SQSHRUN_asimdshf_n
-        8768, // SQSHRUN_asisdshf_n
-        8776, // SQSUB_asimdsame_only
-        8781, // SQSUB_asisdsame_only
-        8786, // SQXTN_asimdmisc_n
-        8790, // SQXTN_asisdmisc_n
-        8794, // SQXTUN_asimdmisc_n
-        8798, // SQXTUN_asisdmisc_n
-        8802, // SRHADD_asimdsame_only
-        8807, // SRI_asimdshf_r
-        8815, // SRI_asisdshf_r
-        8823, // SRSHL_asimdsame_only
-        8828, // SRSHL_asisdsame_only
-        8833, // SRSHR_asimdshf_r
-        8841, // SRSHR_asisdshf_r
-        8849, // SRSRA_asimdshf_r
-        8857, // SRSRA_asisdshf_r
-        8865, // SSHLL_asimdshf_l
-        8873, // SSHL_asimdsame_only
-        8878, // SSHL_asisdsame_only
-        8883, // SSHR_asimdshf_r
-        8891, // SSHR_asisdshf_r
-        8899, // SSRA_asimdshf_r
-        8907, // SSRA_asisdshf_r
-        8915, // SSUBL_asimddiff_l
-        8920, // SSUBW_asimddiff_w
-        8925, // ST1_asisdlse_r1_1v
-        8929, // ST1_asisdlse_r2_2v
-        8933, // ST1_asisdlse_r3_3v
-        8937, // ST1_asisdlse_r4_4v
-        8941, // ST1_asisdlsep_i1_i1
-        8949, // ST1_asisdlsep_i2_i2
-        8957, // ST1_asisdlsep_i3_i3
-        8965, // ST1_asisdlsep_i4_i4
-        8973, // ST1_asisdlsep_r1_r1
-        8978, // ST1_asisdlsep_r2_r2
-        8983, // ST1_asisdlsep_r3_r3
-        8988, // ST1_asisdlsep_r4_r4
-        8993, // ST1_asisdlso_b1_1b
-        8997, // ST1_asisdlso_d1_1d
-        9001, // ST1_asisdlso_h1_1h
-        9005, // ST1_asisdlso_s1_1s
-        9009, // ST1_asisdlsop_b1_i1b
-        9014, // ST1_asisdlsop_bx1_r1b
-        9019, // ST1_asisdlsop_d1_i1d
-        9024, // ST1_asisdlsop_dx1_r1d
-        9029, // ST1_asisdlsop_h1_i1h
-        9034, // ST1_asisdlsop_hx1_r1h
-        9039, // ST1_asisdlsop_s1_i1s
-        9044, // ST1_asisdlsop_sx1_r1s
-        9049, // ST2G_64soffset_ldsttags
-        9055, // ST2G_64spost_ldsttags
-        9063, // ST2G_64spre_ldsttags
-        9069, // ST2_asisdlse_r2
-        9073, // ST2_asisdlsep_i2_i
-        9081, // ST2_asisdlsep_r2_r
-        9086, // ST2_asisdlso_b2_2b
-        9090, // ST2_asisdlso_d2_2d
-        9094, // ST2_asisdlso_h2_2h
-        9098, // ST2_asisdlso_s2_2s
-        9102, // ST2_asisdlsop_b2_i2b
-        9107, // ST2_asisdlsop_bx2_r2b
-        9112, // ST2_asisdlsop_d2_i2d
-        9117, // ST2_asisdlsop_dx2_r2d
-        9122, // ST2_asisdlsop_h2_i2h
-        9127, // ST2_asisdlsop_hx2_r2h
-        9132, // ST2_asisdlsop_s2_i2s
-        9137, // ST2_asisdlsop_sx2_r2s
-        9142, // ST3_asisdlse_r3
-        9146, // ST3_asisdlsep_i3_i
-        9154, // ST3_asisdlsep_r3_r
-        9159, // ST3_asisdlso_b3_3b
-        9163, // ST3_asisdlso_d3_3d
-        9167, // ST3_asisdlso_h3_3h
-        9171, // ST3_asisdlso_s3_3s
-        9175, // ST3_asisdlsop_b3_i3b
-        9180, // ST3_asisdlsop_bx3_r3b
-        9185, // ST3_asisdlsop_d3_i3d
-        9190, // ST3_asisdlsop_dx3_r3d
-        9195, // ST3_asisdlsop_h3_i3h
-        9200, // ST3_asisdlsop_hx3_r3h
-        9205, // ST3_asisdlsop_s3_i3s
-        9210, // ST3_asisdlsop_sx3_r3s
-        9215, // ST4_asisdlse_r4
-        9219, // ST4_asisdlsep_i4_i
-        9227, // ST4_asisdlsep_r4_r
-        9232, // ST4_asisdlso_b4_4b
-        9236, // ST4_asisdlso_d4_4d
-        9240, // ST4_asisdlso_h4_4h
-        9244, // ST4_asisdlso_s4_4s
-        9248, // ST4_asisdlsop_b4_i4b
-        9253, // ST4_asisdlsop_bx4_r4b
-        9258, // ST4_asisdlsop_d4_i4d
-        9263, // ST4_asisdlsop_dx4_r4d
-        9268, // ST4_asisdlsop_h4_i4h
-        9273, // ST4_asisdlsop_hx4_r4h
-        9278, // ST4_asisdlsop_s4_i4s
-        9283, // ST4_asisdlsop_sx4_r4s
-        9288, // ST64BV0_64_memop
-        9293, // ST64BV_64_memop
-        9298, // ST64B_64l_memop
-        9302, // STBFADDL_16
-        9306, // STBFADD_16
-        9310, // STBFMAXL_16
-        9314, // STBFMAXNML_16
-        9318, // STBFMAXNM_16
-        9322, // STBFMAX_16
-        9326, // STBFMINL_16
-        9330, // STBFMINNML_16
-        9334, // STBFMINNM_16
-        9338, // STBFMIN_16
-        9342, // STFADDL_16
-        9346, // STFADDL_32
-        9350, // STFADDL_64
-        9354, // STFADD_16
-        9358, // STFADD_32
-        9362, // STFADD_64
-        9366, // STFMAXL_16
-        9370, // STFMAXL_32
-        9374, // STFMAXL_64
-        9378, // STFMAXNML_16
-        9382, // STFMAXNML_32
-        9386, // STFMAXNML_64
-        9390, // STFMAXNM_16
-        9394, // STFMAXNM_32
-        9398, // STFMAXNM_64
-        9402, // STFMAX_16
-        9406, // STFMAX_32
-        9410, // STFMAX_64
-        9414, // STFMINL_16
-        9418, // STFMINL_32
-        9422, // STFMINL_64
-        9426, // STFMINNML_16
-        9430, // STFMINNML_32
-        9434, // STFMINNML_64
-        9438, // STFMINNM_16
-        9442, // STFMINNM_32
-        9446, // STFMINNM_64
-        9450, // STFMIN_16
-        9454, // STFMIN_32
-        9458, // STFMIN_64
-        9462, // STGM_64bulk_ldsttags
-        9466, // STGP_64_ldstpair_off
-        9474, // STGP_64_ldstpair_post
-        9484, // STGP_64_ldstpair_pre
-        9492, // STG_64soffset_ldsttags
-        9498, // STG_64spost_ldsttags
-        9506, // STG_64spre_ldsttags
-        9512, // STILP_32s_ldiappstilp
-        9517, // STILP_32se_ldiappstilp
-        9522, // STILP_64s_ldiappstilp
-        9527, // STILP_64ss_ldiappstilp
-        9532, // STL1_asisdlso_d1
-        9536, // STLLRB_sl32_ldstord
-        9540, // STLLRH_sl32_ldstord
-        9544, // STLLR_sl32_ldstord
-        9548, // STLLR_sl64_ldstord
-        9552, // STLRB_sl32_ldstord
-        9556, // STLRH_sl32_ldstord
-        9560, // STLR_32s_ldapstl_writeback
-        9564, // STLR_64s_ldapstl_writeback
-        9568, // STLR_sl32_ldstord
-        9572, // STLR_sl64_ldstord
-        9576, // STLTXR_sr32_ldstexclr_unpriv
-        9581, // STLTXR_sr64_ldstexclr_unpriv
-        9586, // STLURB_32_ldapstl_unscaled
-        9592, // STLURH_32_ldapstl_unscaled
-        9598, // STLUR_32_ldapstl_unscaled
-        9604, // STLUR_64_ldapstl_unscaled
-        9610, // STLUR_b_ldapstl_simd
-        9616, // STLUR_d_ldapstl_simd
-        9622, // STLUR_h_ldapstl_simd
-        9628, // STLUR_q_ldapstl_simd
-        9634, // STLUR_s_ldapstl_simd
-        9640, // STLXP_sp32_ldstexclp
-        9646, // STLXP_sp64_ldstexclp
-        9652, // STLXRB_sr32_ldstexclr
-        9657, // STLXRH_sr32_ldstexclr
-        9662, // STLXR_sr32_ldstexclr
-        9667, // STLXR_sr64_ldstexclr
-        9672, // STNP_32_ldstnapair_offs
-        9680, // STNP_64_ldstnapair_offs
-        9688, // STNP_d_ldstnapair_offs
-        9696, // STNP_q_ldstnapair_offs
-        9704, // STNP_s_ldstnapair_offs
-        9712, // STP_32_ldstpair_off
-        9720, // STP_32_ldstpair_post
-        9730, // STP_32_ldstpair_pre
-        9738, // STP_64_ldstpair_off
-        9746, // STP_64_ldstpair_post
-        9756, // STP_64_ldstpair_pre
-        9764, // STP_d_ldstpair_off
-        9772, // STP_d_ldstpair_post
-        9782, // STP_d_ldstpair_pre
-        9790, // STP_q_ldstpair_off
-        9798, // STP_q_ldstpair_post
-        9808, // STP_q_ldstpair_pre
-        9816, // STP_s_ldstpair_off
-        9824, // STP_s_ldstpair_post
-        9834, // STP_s_ldstpair_pre
-        9842, // STRB_32_ldst_immpost
-        9850, // STRB_32_ldst_immpre
-        9856, // STRB_32_ldst_pos
-        9862, // STRB_32b_ldst_regoff
-        9868, // STRB_32bl_ldst_regoff
-        9874, // STRH_32_ldst_immpost
-        9882, // STRH_32_ldst_immpre
-        9888, // STRH_32_ldst_pos
-        9894, // STRH_32_ldst_regoff
-        9900, // STR_32_ldst_immpost
-        9908, // STR_32_ldst_immpre
-        9914, // STR_32_ldst_pos
-        9920, // STR_32_ldst_regoff
-        9926, // STR_64_ldst_immpost
-        9934, // STR_64_ldst_immpre
-        9940, // STR_64_ldst_pos
-        9946, // STR_64_ldst_regoff
-        9952, // STR_b_ldst_immpost
-        9960, // STR_b_ldst_immpre
-        9966, // STR_b_ldst_pos
-        9972, // STR_b_ldst_regoff
-        9978, // STR_bl_ldst_regoff
-        9984, // STR_d_ldst_immpost
-        9992, // STR_d_ldst_immpre
-        9998, // STR_d_ldst_pos
-        10004, // STR_d_ldst_regoff
-        10010, // STR_h_ldst_immpost
-        10018, // STR_h_ldst_immpre
-        10024, // STR_h_ldst_pos
-        10030, // STR_h_ldst_regoff
-        10036, // STR_q_ldst_immpost
-        10044, // STR_q_ldst_immpre
-        10050, // STR_q_ldst_pos
-        10056, // STR_q_ldst_regoff
-        10062, // STR_s_ldst_immpost
-        10070, // STR_s_ldst_immpre
-        10076, // STR_s_ldst_pos
-        10082, // STR_s_ldst_regoff
-        10088, // STSHH_hi_hints
-        10091, // STTNP_64_ldstnapair_offs
-        10099, // STTNP_q_ldstnapair_offs
-        10107, // STTP_64_ldstpair_off
-        10115, // STTP_64_ldstpair_post
-        10125, // STTP_64_ldstpair_pre
-        10133, // STTP_q_ldstpair_off
-        10141, // STTP_q_ldstpair_post
-        10151, // STTP_q_ldstpair_pre
-        10159, // STTRB_32_ldst_unpriv
-        10165, // STTRH_32_ldst_unpriv
-        10171, // STTR_32_ldst_unpriv
-        10177, // STTR_64_ldst_unpriv
-        10183, // STTXR_sr32_ldstexclr_unpriv
-        10188, // STTXR_sr64_ldstexclr_unpriv
-        10193, // STURB_32_ldst_unscaled
-        10199, // STURH_32_ldst_unscaled
-        10205, // STUR_32_ldst_unscaled
-        10211, // STUR_64_ldst_unscaled
-        10217, // STUR_b_ldst_unscaled
-        10223, // STUR_d_ldst_unscaled
-        10229, // STUR_h_ldst_unscaled
-        10235, // STUR_q_ldst_unscaled
-        10241, // STUR_s_ldst_unscaled
-        10247, // STXP_sp32_ldstexclp
-        10253, // STXP_sp64_ldstexclp
-        10259, // STXRB_sr32_ldstexclr
-        10264, // STXRH_sr32_ldstexclr
-        10269, // STXR_sr32_ldstexclr
-        10274, // STXR_sr64_ldstexclr
-        10279, // STZ2G_64soffset_ldsttags
-        10285, // STZ2G_64spost_ldsttags
-        10293, // STZ2G_64spre_ldsttags
-        10299, // STZGM_64bulk_ldsttags
-        10303, // STZG_64soffset_ldsttags
-        10309, // STZG_64spost_ldsttags
-        10317, // STZG_64spre_ldsttags
-        10323, // SUBG_64_addsub_immtags
-        10333, // SUBHN_asimddiff_n
-        10338, // SUBPS_64s_dp_2src
-        10343, // SUBPT_64_addsub_pt
-        10349, // SUBP_64s_dp_2src
-        10354, // SUBS_32_addsub_shift
-        10360, // SUBS_32s_addsub_ext
-        10366, // SUBS_32s_addsub_imm
-        10376, // SUBS_64_addsub_shift
-        10382, // SUBS_64s_addsub_ext
-        10388, // SUBS_64s_addsub_imm
-        10398, // SUB_32_addsub_ext
-        10404, // SUB_32_addsub_imm
-        10414, // SUB_32_addsub_shift
-        10420, // SUB_64_addsub_ext
-        10426, // SUB_64_addsub_imm
-        10436, // SUB_64_addsub_shift
-        10442, // SUB_asimdsame_only
-        10447, // SUB_asisdsame_only
-        10452, // SUDOT_asimdelem_d
-        10457, // SUQADD_asimdmisc_r
-        10461, // SUQADD_asisdmisc_r
-        10465, // SVC_ex_exception
-        10469, // SWPAB_32_memop
-        10474, // SWPAH_32_memop
-        10479, // SWPALB_32_memop
-        10484, // SWPALH_32_memop
-        10489, // SWPAL_32_memop
-        10494, // SWPAL_64_memop
-        10499, // SWPA_32_memop
-        10504, // SWPA_64_memop
-        10509, // SWPB_32_memop
-        10514, // SWPH_32_memop
-        10519, // SWPLB_32_memop
-        10524, // SWPLH_32_memop
-        10529, // SWPL_32_memop
-        10534, // SWPL_64_memop
-        10539, // SWPPAL_128_memop_128
-        10544, // SWPPA_128_memop_128
-        10549, // SWPPL_128_memop_128
-        10554, // SWPP_128_memop_128
-        10559, // SWPTAL_32_memop_unpriv
-        10564, // SWPTAL_64_memop_unpriv
-        10569, // SWPTA_32_memop_unpriv
-        10574, // SWPTA_64_memop_unpriv
-        10579, // SWPTL_32_memop_unpriv
-        10584, // SWPTL_64_memop_unpriv
-        10589, // SWPT_32_memop_unpriv
-        10594, // SWPT_64_memop_unpriv
-        10599, // SWP_32_memop
-        10604, // SWP_64_memop
-        10609, // SYSL_rc_systeminstrs
-        10621, // SYSP_cr_syspairinstrs
-        10633, // SYS_cr_systeminstrs
-        10645, // TBL_asimdtbl_l1_1
-        10653, // TBL_asimdtbl_l2_2
-        10661, // TBL_asimdtbl_l3_3
-        10669, // TBL_asimdtbl_l4_4
-        10677, // TBNZ_only_testbranch
-        10685, // TBX_asimdtbl_l1_1
-        10693, // TBX_asimdtbl_l2_2
-        10701, // TBX_asimdtbl_l3_3
-        10709, // TBX_asimdtbl_l4_4
-        10717, // TBZ_only_testbranch
-        10725, // TCANCEL_ex_exception
-        10729, // TCOMMIT_only_barriers
-        10731, // TRN1_asimdperm_only
-        10736, // TRN2_asimdperm_only
-        10741, // TSB_hc_hints
-        10744, // TSTART_br_systemresult
-        10747, // TTEST_br_systemresult
-        10750, // UABAL_asimddiff_l
-        10755, // UABA_asimdsame_only
-        10760, // UABDL_asimddiff_l
-        10765, // UABD_asimdsame_only
-        10770, // UADALP_asimdmisc_p
-        10774, // UADDLP_asimdmisc_p
-        10778, // UADDLV_asimdall_only
-        10782, // UADDL_asimddiff_l
-        10787, // UADDW_asimddiff_w
-        10792, // UBFM_32m_bitfield
-        10802, // UBFM_64m_bitfield
-        10812, // UCVTF_asimdmisc_r
-        10816, // UCVTF_asimdmiscfp16_r
-        10820, // UCVTF_asimdshf_c
-        10828, // UCVTF_asisdmisc_r
-        10832, // UCVTF_asisdmiscfp16_r
-        10836, // UCVTF_asisdshf_c
-        10844, // UCVTF_d32_float2fix
-        10852, // UCVTF_d32_float2int
-        10856, // UCVTF_d64_float2fix
-        10864, // UCVTF_d64_float2int
-        10868, // UCVTF_h32_float2fix
-        10876, // UCVTF_h32_float2int
-        10880, // UCVTF_h64_float2fix
-        10888, // UCVTF_h64_float2int
-        10892, // UCVTF_s32_float2fix
-        10900, // UCVTF_s32_float2int
-        10904, // UCVTF_s64_float2fix
-        10912, // UCVTF_s64_float2int
-        10916, // UCVTF_sisd_32d
-        10920, // UCVTF_sisd_32h
-        10924, // UCVTF_sisd_64h
-        10928, // UCVTF_sisd_64s
-        10932, // UDF_only_perm_undef
-        10936, // UDIV_32_dp_2src
-        10941, // UDIV_64_dp_2src
-        10946, // UDOT_asimdelem_d
-        10951, // UDOT_asimdsame2_d
-        10956, // UHADD_asimdsame_only
-        10961, // UHSUB_asimdsame_only
-        10966, // UMADDL_64wa_dp_3src
-        10972, // UMAXP_asimdsame_only
-        10977, // UMAXV_asimdall_only
-        10981, // UMAX_32_dp_2src
-        10986, // UMAX_32u_minmax_imm
-        10994, // UMAX_64_dp_2src
-        10999, // UMAX_64u_minmax_imm
-        11007, // UMAX_asimdsame_only
-        11012, // UMINP_asimdsame_only
-        11017, // UMINV_asimdall_only
-        11021, // UMIN_32_dp_2src
-        11026, // UMIN_32u_minmax_imm
-        11034, // UMIN_64_dp_2src
-        11039, // UMIN_64u_minmax_imm
-        11047, // UMIN_asimdsame_only
-        11052, // UMLAL_asimddiff_l
-        11057, // UMLAL_asimdelem_l
-        11062, // UMLSL_asimddiff_l
-        11067, // UMLSL_asimdelem_l
-        11072, // UMMLA_asimdsame2_g
-        11077, // UMOV_asimdins_w_w
-        11081, // UMOV_asimdins_x_x
-        11085, // UMSUBL_64wa_dp_3src
-        11091, // UMULH_64_dp_3src
-        11096, // UMULL_asimddiff_l
-        11101, // UMULL_asimdelem_l
-        11106, // UQADD_asimdsame_only
-        11111, // UQADD_asisdsame_only
-        11116, // UQRSHL_asimdsame_only
-        11121, // UQRSHL_asisdsame_only
-        11126, // UQRSHRN_asimdshf_n
-        11134, // UQRSHRN_asisdshf_n
-        11142, // UQSHL_asimdsame_only
-        11147, // UQSHL_asimdshf_r
-        11155, // UQSHL_asisdsame_only
-        11160, // UQSHL_asisdshf_r
-        11168, // UQSHRN_asimdshf_n
-        11176, // UQSHRN_asisdshf_n
-        11184, // UQSUB_asimdsame_only
-        11189, // UQSUB_asisdsame_only
-        11194, // UQXTN_asimdmisc_n
-        11198, // UQXTN_asisdmisc_n
-        11202, // URECPE_asimdmisc_r
-        11206, // URHADD_asimdsame_only
-        11211, // URSHL_asimdsame_only
-        11216, // URSHL_asisdsame_only
-        11221, // URSHR_asimdshf_r
-        11229, // URSHR_asisdshf_r
-        11237, // URSQRTE_asimdmisc_r
-        11241, // URSRA_asimdshf_r
-        11249, // URSRA_asisdshf_r
-        11257, // USDOT_asimdelem_d
-        11262, // USDOT_asimdsame2_d
-        11267, // USHLL_asimdshf_l
-        11275, // USHL_asimdsame_only
-        11280, // USHL_asisdsame_only
-        11285, // USHR_asimdshf_r
-        11293, // USHR_asisdshf_r
-        11301, // USMMLA_asimdsame2_g
-        11306, // USQADD_asimdmisc_r
-        11310, // USQADD_asisdmisc_r
-        11314, // USRA_asimdshf_r
-        11322, // USRA_asisdshf_r
-        11330, // USUBL_asimddiff_l
-        11335, // USUBW_asimddiff_w
-        11340, // UZP1_asimdperm_only
-        11345, // UZP2_asimdperm_only
-        11350, // WFET_only_systeminstrswithreg
-        11353, // WFE_hi_hints
-        11355, // WFIT_only_systeminstrswithreg
-        11358, // WFI_hi_hints
-        11360, // XAFLAG_m_pstate
-        11362, // XAR_vvv2_crypto3_imm6
-        11372, // XPACD_64z_dp_1src
-        11375, // XPACI_64z_dp_1src
-        11378, // XPACLRI_hi_hints
-        11380, // XTN_asimdmisc_n
-        11384, // YIELD_hi_hints
-        11386, // ZIP1_asimdperm_only
-        11391, // ZIP2_asimdperm_only
+        108, // ADDV_asimdall_only
+        113, // ADD_32_addsub_ext
+        119, // ADD_32_addsub_imm
+        125, // ADD_32_addsub_shift
+        131, // ADD_64_addsub_ext
+        137, // ADD_64_addsub_imm
+        143, // ADD_64_addsub_shift
+        149, // ADD_asimdsame_only
+        155, // ADD_asisdsame_only
+        160, // ADRP_only_pcreladdr
+        164, // ADR_only_pcreladdr
+        168, // AESD_b_cryptoaes
+        173, // AESE_b_cryptoaes
+        178, // AESIMC_b_cryptoaes
+        183, // AESMC_b_cryptoaes
+        188, // ANDS_32_log_shift
+        194, // ANDS_32s_log_imm
+        199, // ANDS_64_log_shift
+        205, // ANDS_64s_log_imm
+        210, // AND_32_log_imm
+        215, // AND_32_log_shift
+        221, // AND_64_log_imm
+        226, // AND_64_log_shift
+        232, // AND_asimdsame_only
+        238, // ASRV_32_dp_2src
+        243, // ASRV_64_dp_2src
+        248, // AUTDA_64p_dp_1src
+        252, // AUTDB_64p_dp_1src
+        256, // AUTDZA_64z_dp_1src
+        259, // AUTDZB_64z_dp_1src
+        262, // AUTIA171615_64lr_dp_1src
+        264, // AUTIA1716_hi_hints
+        266, // AUTIASPPCR_64lrr_dp_1src
+        269, // AUTIASPPC_only_dp_1src_imm
+        272, // AUTIASP_hi_hints
+        274, // AUTIAZ_hi_hints
+        276, // AUTIA_64p_dp_1src
+        280, // AUTIB171615_64lr_dp_1src
+        282, // AUTIB1716_hi_hints
+        284, // AUTIBSPPCR_64lrr_dp_1src
+        287, // AUTIBSPPC_only_dp_1src_imm
+        290, // AUTIBSP_hi_hints
+        292, // AUTIBZ_hi_hints
+        294, // AUTIB_64p_dp_1src
+        298, // AUTIZA_64z_dp_1src
+        301, // AUTIZB_64z_dp_1src
+        304, // AXFLAG_m_pstate
+        306, // BCAX_vvv16_crypto4
+        313, // BC_only_condbranch
+        316, // BF1CVTL_asimdmisc_v
+        321, // BF2CVTL_asimdmisc_v
+        326, // BFCVTN_asimdmisc_4s
+        331, // BFCVT_bs_floatdp1
+        335, // BFDOT_asimdelem_e
+        341, // BFDOT_asimdsame2_d
+        347, // BFMLAL_asimdelem_f
+        353, // BFMLAL_asimdsame2_f
+        359, // BFMMLA_asimdsame2_e
+        365, // BFM_32m_bitfield
+        371, // BFM_64m_bitfield
+        377, // BICS_32_log_shift
+        383, // BICS_64_log_shift
+        389, // BIC_32_log_shift
+        395, // BIC_64_log_shift
+        401, // BIC_asimdimm_l_hl
+        407, // BIC_asimdimm_l_sl
+        413, // BIC_asimdsame_only
+        419, // BIF_asimdsame_only
+        425, // BIT_asimdsame_only
+        431, // BLRAAZ_64_branch_reg
+        434, // BLRAA_64p_branch_reg
+        438, // BLRABZ_64_branch_reg
+        441, // BLRAB_64p_branch_reg
+        445, // BLR_64_branch_reg
+        448, // BL_only_branch_imm
+        451, // BRAAZ_64_branch_reg
+        454, // BRAA_64p_branch_reg
+        458, // BRABZ_64_branch_reg
+        461, // BRAB_64p_branch_reg
+        465, // BRK_ex_exception
+        468, // BR_64_branch_reg
+        471, // BSL_asimdsame_only
+        477, // BTI_hb_hints
+        480, // B_only_branch_imm
+        483, // B_only_condbranch
+        486, // CASAB_c32_comswap
+        491, // CASAH_c32_comswap
+        496, // CASALB_c32_comswap
+        501, // CASALH_c32_comswap
+        506, // CASALT_c64_comswap_unpriv
+        511, // CASAL_c32_comswap
+        516, // CASAL_c64_comswap
+        521, // CASAT_c64_comswap_unpriv
+        526, // CASA_c32_comswap
+        531, // CASA_c64_comswap
+        536, // CASB_c32_comswap
+        541, // CASH_c32_comswap
+        546, // CASLB_c32_comswap
+        551, // CASLH_c32_comswap
+        556, // CASLT_c64_comswap_unpriv
+        561, // CASL_c32_comswap
+        566, // CASL_c64_comswap
+        571, // CASPALT_cp64_comswappr_unpriv
+        578, // CASPAL_cp32_comswappr
+        585, // CASPAL_cp64_comswappr
+        592, // CASPAT_cp64_comswappr_unpriv
+        599, // CASPA_cp32_comswappr
+        606, // CASPA_cp64_comswappr
+        613, // CASPLT_cp64_comswappr_unpriv
+        620, // CASPL_cp32_comswappr
+        627, // CASPL_cp64_comswappr
+        634, // CASPT_cp64_comswappr_unpriv
+        641, // CASP_cp32_comswappr
+        648, // CASP_cp64_comswappr
+        655, // CAST_c64_comswap_unpriv
+        660, // CAS_c32_comswap
+        665, // CAS_c64_comswap
+        670, // CBBEQ_8_regs
+        675, // CBBGE_8_regs
+        680, // CBBGT_8_regs
+        685, // CBBHI_8_regs
+        690, // CBBHS_8_regs
+        695, // CBBNE_8_regs
+        700, // CBEQ_32_imm
+        705, // CBEQ_32_regs
+        710, // CBEQ_64_imm
+        715, // CBEQ_64_regs
+        720, // CBGE_32_regs
+        725, // CBGE_64_regs
+        730, // CBGT_32_imm
+        735, // CBGT_32_regs
+        740, // CBGT_64_imm
+        745, // CBGT_64_regs
+        750, // CBHEQ_16_regs
+        755, // CBHGE_16_regs
+        760, // CBHGT_16_regs
+        765, // CBHHI_16_regs
+        770, // CBHHS_16_regs
+        775, // CBHI_32_imm
+        780, // CBHI_32_regs
+        785, // CBHI_64_imm
+        790, // CBHI_64_regs
+        795, // CBHNE_16_regs
+        800, // CBHS_32_regs
+        805, // CBHS_64_regs
+        810, // CBLO_32_imm
+        815, // CBLO_64_imm
+        820, // CBLT_32_imm
+        825, // CBLT_64_imm
+        830, // CBNE_32_imm
+        835, // CBNE_32_regs
+        840, // CBNE_64_imm
+        845, // CBNE_64_regs
+        850, // CBNZ_32_compbranch
+        854, // CBNZ_64_compbranch
+        858, // CBZ_32_compbranch
+        862, // CBZ_64_compbranch
+        866, // CCMN_32_condcmp_imm
+        872, // CCMN_32_condcmp_reg
+        878, // CCMN_64_condcmp_imm
+        884, // CCMN_64_condcmp_reg
+        890, // CCMP_32_condcmp_imm
+        896, // CCMP_32_condcmp_reg
+        902, // CCMP_64_condcmp_imm
+        908, // CCMP_64_condcmp_reg
+        914, // CFINV_m_pstate
+        916, // CHKFEAT_hf_hints
+        919, // CLRBHB_hi_hints
+        921, // CLREX_bn_barriers
+        924, // CLS_32_dp_1src
+        928, // CLS_64_dp_1src
+        932, // CLS_asimdmisc_r
+        937, // CLZ_32_dp_1src
+        941, // CLZ_64_dp_1src
+        945, // CLZ_asimdmisc_r
+        950, // CMEQ_asimdmisc_z
+        956, // CMEQ_asimdsame_only
+        962, // CMEQ_asisdmisc_z
+        967, // CMEQ_asisdsame_only
+        972, // CMGE_asimdmisc_z
+        978, // CMGE_asimdsame_only
+        984, // CMGE_asisdmisc_z
+        989, // CMGE_asisdsame_only
+        994, // CMGT_asimdmisc_z
+        1000, // CMGT_asimdsame_only
+        1006, // CMGT_asisdmisc_z
+        1011, // CMGT_asisdsame_only
+        1016, // CMHI_asimdsame_only
+        1022, // CMHI_asisdsame_only
+        1027, // CMHS_asimdsame_only
+        1033, // CMHS_asisdsame_only
+        1038, // CMLE_asimdmisc_z
+        1044, // CMLE_asisdmisc_z
+        1049, // CMLT_asimdmisc_z
+        1055, // CMLT_asisdmisc_z
+        1060, // CMTST_asimdsame_only
+        1066, // CMTST_asisdsame_only
+        1071, // CNT_32_dp_1src
+        1075, // CNT_64_dp_1src
+        1079, // CNT_asimdmisc_r
+        1084, // CPYEN_cpy_memcms
+        1089, // CPYERN_cpy_memcms
+        1094, // CPYERTN_cpy_memcms
+        1099, // CPYERTRN_cpy_memcms
+        1104, // CPYERTWN_cpy_memcms
+        1109, // CPYERT_cpy_memcms
+        1114, // CPYETN_cpy_memcms
+        1119, // CPYETRN_cpy_memcms
+        1124, // CPYETWN_cpy_memcms
+        1129, // CPYET_cpy_memcms
+        1134, // CPYEWN_cpy_memcms
+        1139, // CPYEWTN_cpy_memcms
+        1144, // CPYEWTRN_cpy_memcms
+        1149, // CPYEWTWN_cpy_memcms
+        1154, // CPYEWT_cpy_memcms
+        1159, // CPYE_cpy_memcms
+        1164, // CPYFEN_cpy_memcms
+        1169, // CPYFERN_cpy_memcms
+        1174, // CPYFERTN_cpy_memcms
+        1179, // CPYFERTRN_cpy_memcms
+        1184, // CPYFERTWN_cpy_memcms
+        1189, // CPYFERT_cpy_memcms
+        1194, // CPYFETN_cpy_memcms
+        1199, // CPYFETRN_cpy_memcms
+        1204, // CPYFETWN_cpy_memcms
+        1209, // CPYFET_cpy_memcms
+        1214, // CPYFEWN_cpy_memcms
+        1219, // CPYFEWTN_cpy_memcms
+        1224, // CPYFEWTRN_cpy_memcms
+        1229, // CPYFEWTWN_cpy_memcms
+        1234, // CPYFEWT_cpy_memcms
+        1239, // CPYFE_cpy_memcms
+        1244, // CPYFMN_cpy_memcms
+        1249, // CPYFMRN_cpy_memcms
+        1254, // CPYFMRTN_cpy_memcms
+        1259, // CPYFMRTRN_cpy_memcms
+        1264, // CPYFMRTWN_cpy_memcms
+        1269, // CPYFMRT_cpy_memcms
+        1274, // CPYFMTN_cpy_memcms
+        1279, // CPYFMTRN_cpy_memcms
+        1284, // CPYFMTWN_cpy_memcms
+        1289, // CPYFMT_cpy_memcms
+        1294, // CPYFMWN_cpy_memcms
+        1299, // CPYFMWTN_cpy_memcms
+        1304, // CPYFMWTRN_cpy_memcms
+        1309, // CPYFMWTWN_cpy_memcms
+        1314, // CPYFMWT_cpy_memcms
+        1319, // CPYFM_cpy_memcms
+        1324, // CPYFPN_cpy_memcms
+        1329, // CPYFPRN_cpy_memcms
+        1334, // CPYFPRTN_cpy_memcms
+        1339, // CPYFPRTRN_cpy_memcms
+        1344, // CPYFPRTWN_cpy_memcms
+        1349, // CPYFPRT_cpy_memcms
+        1354, // CPYFPTN_cpy_memcms
+        1359, // CPYFPTRN_cpy_memcms
+        1364, // CPYFPTWN_cpy_memcms
+        1369, // CPYFPT_cpy_memcms
+        1374, // CPYFPWN_cpy_memcms
+        1379, // CPYFPWTN_cpy_memcms
+        1384, // CPYFPWTRN_cpy_memcms
+        1389, // CPYFPWTWN_cpy_memcms
+        1394, // CPYFPWT_cpy_memcms
+        1399, // CPYFP_cpy_memcms
+        1404, // CPYMN_cpy_memcms
+        1409, // CPYMRN_cpy_memcms
+        1414, // CPYMRTN_cpy_memcms
+        1419, // CPYMRTRN_cpy_memcms
+        1424, // CPYMRTWN_cpy_memcms
+        1429, // CPYMRT_cpy_memcms
+        1434, // CPYMTN_cpy_memcms
+        1439, // CPYMTRN_cpy_memcms
+        1444, // CPYMTWN_cpy_memcms
+        1449, // CPYMT_cpy_memcms
+        1454, // CPYMWN_cpy_memcms
+        1459, // CPYMWTN_cpy_memcms
+        1464, // CPYMWTRN_cpy_memcms
+        1469, // CPYMWTWN_cpy_memcms
+        1474, // CPYMWT_cpy_memcms
+        1479, // CPYM_cpy_memcms
+        1484, // CPYPN_cpy_memcms
+        1489, // CPYPRN_cpy_memcms
+        1494, // CPYPRTN_cpy_memcms
+        1499, // CPYPRTRN_cpy_memcms
+        1504, // CPYPRTWN_cpy_memcms
+        1509, // CPYPRT_cpy_memcms
+        1514, // CPYPTN_cpy_memcms
+        1519, // CPYPTRN_cpy_memcms
+        1524, // CPYPTWN_cpy_memcms
+        1529, // CPYPT_cpy_memcms
+        1534, // CPYPWN_cpy_memcms
+        1539, // CPYPWTN_cpy_memcms
+        1544, // CPYPWTRN_cpy_memcms
+        1549, // CPYPWTWN_cpy_memcms
+        1554, // CPYPWT_cpy_memcms
+        1559, // CPYP_cpy_memcms
+        1564, // CRC32B_32c_dp_2src
+        1569, // CRC32CB_32c_dp_2src
+        1574, // CRC32CH_32c_dp_2src
+        1579, // CRC32CW_32c_dp_2src
+        1584, // CRC32CX_64c_dp_2src
+        1589, // CRC32H_32c_dp_2src
+        1594, // CRC32W_32c_dp_2src
+        1599, // CRC32X_64c_dp_2src
+        1604, // CSDB_hi_hints
+        1606, // CSEL_32_condsel
+        1612, // CSEL_64_condsel
+        1618, // CSINC_32_condsel
+        1624, // CSINC_64_condsel
+        1630, // CSINV_32_condsel
+        1636, // CSINV_64_condsel
+        1642, // CSNEG_32_condsel
+        1648, // CSNEG_64_condsel
+        1654, // CTZ_32_dp_1src
+        1658, // CTZ_64_dp_1src
+        1662, // DCPS1_dc_exception
+        1665, // DCPS2_dc_exception
+        1668, // DCPS3_dc_exception
+        1671, // DGH_hi_hints
+        1673, // DMB_bo_barriers
+        1676, // DRPS_64e_branch_reg
+        1678, // DSB_bo_barriers
+        1681, // DSB_bon_barriers
+        1684, // DUP_asimdins_dr_r
+        1689, // DUP_asimdins_dv_v
+        1694, // DUP_asisdone_only
+        1699, // EON_32_log_shift
+        1705, // EON_64_log_shift
+        1711, // EOR3_vvv16_crypto4
+        1718, // EOR_32_log_imm
+        1723, // EOR_32_log_shift
+        1729, // EOR_64_log_imm
+        1734, // EOR_64_log_shift
+        1740, // EOR_asimdsame_only
+        1746, // ERETAA_64e_branch_reg
+        1748, // ERETAB_64e_branch_reg
+        1750, // ERET_64e_branch_reg
+        1752, // ESB_hi_hints
+        1754, // EXTR_32_extract
+        1760, // EXTR_64_extract
+        1766, // EXT_asimdext_only
+        1773, // F1CVTL_asimdmisc_v
+        1778, // F2CVTL_asimdmisc_v
+        1783, // FABD_asimdsame_only
+        1789, // FABD_asimdsamefp16_only
+        1795, // FABD_asisdsame_only
+        1800, // FABD_asisdsamefp16_only
+        1805, // FABS_asimdmisc_r
+        1810, // FABS_asimdmiscfp16_r
+        1815, // FABS_d_floatdp1
+        1819, // FABS_h_floatdp1
+        1823, // FABS_s_floatdp1
+        1827, // FACGE_asimdsame_only
+        1833, // FACGE_asimdsamefp16_only
+        1839, // FACGE_asisdsame_only
+        1844, // FACGE_asisdsamefp16_only
+        1849, // FACGT_asimdsame_only
+        1855, // FACGT_asimdsamefp16_only
+        1861, // FACGT_asisdsame_only
+        1866, // FACGT_asisdsamefp16_only
+        1871, // FADDP_asimdsame_only
+        1877, // FADDP_asimdsamefp16_only
+        1883, // FADDP_asisdpair_only_h
+        1888, // FADDP_asisdpair_only_sd
+        1893, // FADD_asimdsame_only
+        1899, // FADD_asimdsamefp16_only
+        1905, // FADD_d_floatdp2
+        1910, // FADD_h_floatdp2
+        1915, // FADD_s_floatdp2
+        1920, // FAMAX_asimdsame_only
+        1926, // FAMAX_asimdsamefp16_only
+        1932, // FAMIN_asimdsame_only
+        1938, // FAMIN_asimdsamefp16_only
+        1944, // FCADD_asimdsame2_c
+        1951, // FCCMPE_d_floatccmp
+        1957, // FCCMPE_h_floatccmp
+        1963, // FCCMPE_s_floatccmp
+        1969, // FCCMP_d_floatccmp
+        1975, // FCCMP_h_floatccmp
+        1981, // FCCMP_s_floatccmp
+        1987, // FCMEQ_asimdmisc_fz
+        1993, // FCMEQ_asimdmiscfp16_fz
+        1999, // FCMEQ_asimdsame_only
+        2005, // FCMEQ_asimdsamefp16_only
+        2011, // FCMEQ_asisdmisc_fz
+        2016, // FCMEQ_asisdmiscfp16_fz
+        2021, // FCMEQ_asisdsame_only
+        2026, // FCMEQ_asisdsamefp16_only
+        2031, // FCMGE_asimdmisc_fz
+        2037, // FCMGE_asimdmiscfp16_fz
+        2043, // FCMGE_asimdsame_only
+        2049, // FCMGE_asimdsamefp16_only
+        2055, // FCMGE_asisdmisc_fz
+        2060, // FCMGE_asisdmiscfp16_fz
+        2065, // FCMGE_asisdsame_only
+        2070, // FCMGE_asisdsamefp16_only
+        2075, // FCMGT_asimdmisc_fz
+        2081, // FCMGT_asimdmiscfp16_fz
+        2087, // FCMGT_asimdsame_only
+        2093, // FCMGT_asimdsamefp16_only
+        2099, // FCMGT_asisdmisc_fz
+        2104, // FCMGT_asisdmiscfp16_fz
+        2109, // FCMGT_asisdsame_only
+        2114, // FCMGT_asisdsamefp16_only
+        2119, // FCMLA_advsimd_elt
+        2126, // FCMLA_asimdsame2_c
+        2133, // FCMLE_asimdmisc_fz
+        2139, // FCMLE_asimdmiscfp16_fz
+        2145, // FCMLE_asisdmisc_fz
+        2150, // FCMLE_asisdmiscfp16_fz
+        2155, // FCMLT_asimdmisc_fz
+        2161, // FCMLT_asimdmiscfp16_fz
+        2167, // FCMLT_asisdmisc_fz
+        2172, // FCMLT_asisdmiscfp16_fz
+        2177, // FCMPE_d_floatcmp
+        2181, // FCMPE_dz_floatcmp
+        2185, // FCMPE_h_floatcmp
+        2189, // FCMPE_hz_floatcmp
+        2193, // FCMPE_s_floatcmp
+        2197, // FCMPE_sz_floatcmp
+        2201, // FCMP_d_floatcmp
+        2205, // FCMP_dz_floatcmp
+        2209, // FCMP_h_floatcmp
+        2213, // FCMP_hz_floatcmp
+        2217, // FCMP_s_floatcmp
+        2221, // FCMP_sz_floatcmp
+        2225, // FCSEL_d_floatsel
+        2231, // FCSEL_h_floatsel
+        2237, // FCSEL_s_floatsel
+        2243, // FCVTAS_32d_float2int
+        2247, // FCVTAS_32h_float2int
+        2251, // FCVTAS_32s_float2int
+        2255, // FCVTAS_64d_float2int
+        2259, // FCVTAS_64h_float2int
+        2263, // FCVTAS_64s_float2int
+        2267, // FCVTAS_asimdmisc_r
+        2272, // FCVTAS_asimdmiscfp16_r
+        2277, // FCVTAS_asisdmisc_r
+        2281, // FCVTAS_asisdmiscfp16_r
+        2285, // FCVTAS_sisd_32d
+        2289, // FCVTAS_sisd_32h
+        2293, // FCVTAS_sisd_64h
+        2297, // FCVTAS_sisd_64s
+        2301, // FCVTAU_32d_float2int
+        2305, // FCVTAU_32h_float2int
+        2309, // FCVTAU_32s_float2int
+        2313, // FCVTAU_64d_float2int
+        2317, // FCVTAU_64h_float2int
+        2321, // FCVTAU_64s_float2int
+        2325, // FCVTAU_asimdmisc_r
+        2330, // FCVTAU_asimdmiscfp16_r
+        2335, // FCVTAU_asisdmisc_r
+        2339, // FCVTAU_asisdmiscfp16_r
+        2343, // FCVTAU_sisd_32d
+        2347, // FCVTAU_sisd_32h
+        2351, // FCVTAU_sisd_64h
+        2355, // FCVTAU_sisd_64s
+        2359, // FCVTL_asimdmisc_l
+        2364, // FCVTMS_32d_float2int
+        2368, // FCVTMS_32h_float2int
+        2372, // FCVTMS_32s_float2int
+        2376, // FCVTMS_64d_float2int
+        2380, // FCVTMS_64h_float2int
+        2384, // FCVTMS_64s_float2int
+        2388, // FCVTMS_asimdmisc_r
+        2393, // FCVTMS_asimdmiscfp16_r
+        2398, // FCVTMS_asisdmisc_r
+        2402, // FCVTMS_asisdmiscfp16_r
+        2406, // FCVTMS_sisd_32d
+        2410, // FCVTMS_sisd_32h
+        2414, // FCVTMS_sisd_64h
+        2418, // FCVTMS_sisd_64s
+        2422, // FCVTMU_32d_float2int
+        2426, // FCVTMU_32h_float2int
+        2430, // FCVTMU_32s_float2int
+        2434, // FCVTMU_64d_float2int
+        2438, // FCVTMU_64h_float2int
+        2442, // FCVTMU_64s_float2int
+        2446, // FCVTMU_asimdmisc_r
+        2451, // FCVTMU_asimdmiscfp16_r
+        2456, // FCVTMU_asisdmisc_r
+        2460, // FCVTMU_asisdmiscfp16_r
+        2464, // FCVTMU_sisd_32d
+        2468, // FCVTMU_sisd_32h
+        2472, // FCVTMU_sisd_64h
+        2476, // FCVTMU_sisd_64s
+        2480, // FCVTNS_32d_float2int
+        2484, // FCVTNS_32h_float2int
+        2488, // FCVTNS_32s_float2int
+        2492, // FCVTNS_64d_float2int
+        2496, // FCVTNS_64h_float2int
+        2500, // FCVTNS_64s_float2int
+        2504, // FCVTNS_asimdmisc_r
+        2509, // FCVTNS_asimdmiscfp16_r
+        2514, // FCVTNS_asisdmisc_r
+        2518, // FCVTNS_asisdmiscfp16_r
+        2522, // FCVTNS_sisd_32d
+        2526, // FCVTNS_sisd_32h
+        2530, // FCVTNS_sisd_64h
+        2534, // FCVTNS_sisd_64s
+        2538, // FCVTNU_32d_float2int
+        2542, // FCVTNU_32h_float2int
+        2546, // FCVTNU_32s_float2int
+        2550, // FCVTNU_64d_float2int
+        2554, // FCVTNU_64h_float2int
+        2558, // FCVTNU_64s_float2int
+        2562, // FCVTNU_asimdmisc_r
+        2567, // FCVTNU_asimdmiscfp16_r
+        2572, // FCVTNU_asisdmisc_r
+        2576, // FCVTNU_asisdmiscfp16_r
+        2580, // FCVTNU_sisd_32d
+        2584, // FCVTNU_sisd_32h
+        2588, // FCVTNU_sisd_64h
+        2592, // FCVTNU_sisd_64s
+        2596, // FCVTN_asimdmisc_n
+        2601, // FCVTN_asimdsame2_d
+        2607, // FCVTN_asimdsame2_h
+        2613, // FCVTPS_32d_float2int
+        2617, // FCVTPS_32h_float2int
+        2621, // FCVTPS_32s_float2int
+        2625, // FCVTPS_64d_float2int
+        2629, // FCVTPS_64h_float2int
+        2633, // FCVTPS_64s_float2int
+        2637, // FCVTPS_asimdmisc_r
+        2642, // FCVTPS_asimdmiscfp16_r
+        2647, // FCVTPS_asisdmisc_r
+        2651, // FCVTPS_asisdmiscfp16_r
+        2655, // FCVTPS_sisd_32d
+        2659, // FCVTPS_sisd_32h
+        2663, // FCVTPS_sisd_64h
+        2667, // FCVTPS_sisd_64s
+        2671, // FCVTPU_32d_float2int
+        2675, // FCVTPU_32h_float2int
+        2679, // FCVTPU_32s_float2int
+        2683, // FCVTPU_64d_float2int
+        2687, // FCVTPU_64h_float2int
+        2691, // FCVTPU_64s_float2int
+        2695, // FCVTPU_asimdmisc_r
+        2700, // FCVTPU_asimdmiscfp16_r
+        2705, // FCVTPU_asisdmisc_r
+        2709, // FCVTPU_asisdmiscfp16_r
+        2713, // FCVTPU_sisd_32d
+        2717, // FCVTPU_sisd_32h
+        2721, // FCVTPU_sisd_64h
+        2725, // FCVTPU_sisd_64s
+        2729, // FCVTXN_asimdmisc_n
+        2734, // FCVTXN_asisdmisc_n
+        2738, // FCVTZS_32d_float2fix
+        2743, // FCVTZS_32d_float2int
+        2747, // FCVTZS_32h_float2fix
+        2752, // FCVTZS_32h_float2int
+        2756, // FCVTZS_32s_float2fix
+        2761, // FCVTZS_32s_float2int
+        2765, // FCVTZS_64d_float2fix
+        2770, // FCVTZS_64d_float2int
+        2774, // FCVTZS_64h_float2fix
+        2779, // FCVTZS_64h_float2int
+        2783, // FCVTZS_64s_float2fix
+        2788, // FCVTZS_64s_float2int
+        2792, // FCVTZS_asimdmisc_r
+        2797, // FCVTZS_asimdmiscfp16_r
+        2802, // FCVTZS_asimdshf_c
+        2808, // FCVTZS_asisdmisc_r
+        2812, // FCVTZS_asisdmiscfp16_r
+        2816, // FCVTZS_asisdshf_c
+        2821, // FCVTZS_sisd_32d
+        2825, // FCVTZS_sisd_32h
+        2829, // FCVTZS_sisd_64h
+        2833, // FCVTZS_sisd_64s
+        2837, // FCVTZU_32d_float2fix
+        2842, // FCVTZU_32d_float2int
+        2846, // FCVTZU_32h_float2fix
+        2851, // FCVTZU_32h_float2int
+        2855, // FCVTZU_32s_float2fix
+        2860, // FCVTZU_32s_float2int
+        2864, // FCVTZU_64d_float2fix
+        2869, // FCVTZU_64d_float2int
+        2873, // FCVTZU_64h_float2fix
+        2878, // FCVTZU_64h_float2int
+        2882, // FCVTZU_64s_float2fix
+        2887, // FCVTZU_64s_float2int
+        2891, // FCVTZU_asimdmisc_r
+        2896, // FCVTZU_asimdmiscfp16_r
+        2901, // FCVTZU_asimdshf_c
+        2907, // FCVTZU_asisdmisc_r
+        2911, // FCVTZU_asisdmiscfp16_r
+        2915, // FCVTZU_asisdshf_c
+        2920, // FCVTZU_sisd_32d
+        2924, // FCVTZU_sisd_32h
+        2928, // FCVTZU_sisd_64h
+        2932, // FCVTZU_sisd_64s
+        2936, // FCVT_dh_floatdp1
+        2940, // FCVT_ds_floatdp1
+        2944, // FCVT_hd_floatdp1
+        2948, // FCVT_hs_floatdp1
+        2952, // FCVT_sd_floatdp1
+        2956, // FCVT_sh_floatdp1
+        2960, // FDIV_asimdsame_only
+        2966, // FDIV_asimdsamefp16_only
+        2972, // FDIV_d_floatdp2
+        2977, // FDIV_h_floatdp2
+        2982, // FDIV_s_floatdp2
+        2987, // FDOT_asimdelem_d
+        2993, // FDOT_asimdelem_g
+        2999, // FDOT_asimdsame2_d
+        3005, // FDOT_asimdsame2_dd
+        3011, // FJCVTZS_32d_float2int
+        3015, // FMADD_d_floatdp3
+        3021, // FMADD_h_floatdp3
+        3027, // FMADD_s_floatdp3
+        3033, // FMAXNMP_asimdsame_only
+        3039, // FMAXNMP_asimdsamefp16_only
+        3045, // FMAXNMP_asisdpair_only_h
+        3050, // FMAXNMP_asisdpair_only_sd
+        3055, // FMAXNMV_asimdall_only_h
+        3060, // FMAXNMV_asimdall_only_sd
+        3065, // FMAXNM_asimdsame_only
+        3071, // FMAXNM_asimdsamefp16_only
+        3077, // FMAXNM_d_floatdp2
+        3082, // FMAXNM_h_floatdp2
+        3087, // FMAXNM_s_floatdp2
+        3092, // FMAXP_asimdsame_only
+        3098, // FMAXP_asimdsamefp16_only
+        3104, // FMAXP_asisdpair_only_h
+        3109, // FMAXP_asisdpair_only_sd
+        3114, // FMAXV_asimdall_only_h
+        3119, // FMAXV_asimdall_only_sd
+        3124, // FMAX_asimdsame_only
+        3130, // FMAX_asimdsamefp16_only
+        3136, // FMAX_d_floatdp2
+        3141, // FMAX_h_floatdp2
+        3146, // FMAX_s_floatdp2
+        3151, // FMINNMP_asimdsame_only
+        3157, // FMINNMP_asimdsamefp16_only
+        3163, // FMINNMP_asisdpair_only_h
+        3168, // FMINNMP_asisdpair_only_sd
+        3173, // FMINNMV_asimdall_only_h
+        3178, // FMINNMV_asimdall_only_sd
+        3183, // FMINNM_asimdsame_only
+        3189, // FMINNM_asimdsamefp16_only
+        3195, // FMINNM_d_floatdp2
+        3200, // FMINNM_h_floatdp2
+        3205, // FMINNM_s_floatdp2
+        3210, // FMINP_asimdsame_only
+        3216, // FMINP_asimdsamefp16_only
+        3222, // FMINP_asisdpair_only_h
+        3227, // FMINP_asisdpair_only_sd
+        3232, // FMINV_asimdall_only_h
+        3237, // FMINV_asimdall_only_sd
+        3242, // FMIN_asimdsame_only
+        3248, // FMIN_asimdsamefp16_only
+        3254, // FMIN_d_floatdp2
+        3259, // FMIN_h_floatdp2
+        3264, // FMIN_s_floatdp2
+        3269, // FMLAL2_asimdelem_lh
+        3275, // FMLAL2_asimdsame_f
+        3281, // FMLALB_asimdelem_h
+        3287, // FMLALB_asimdsame2_j
+        3293, // FMLALLBB_asimdelem_j
+        3299, // FMLALLBB_asimdsame2_g
+        3305, // FMLALLBT_asimdelem_j
+        3311, // FMLALLBT_asimdsame2_g
+        3317, // FMLALLTB_asimdelem_j
+        3323, // FMLALLTB_asimdsame2_g
+        3329, // FMLALLTT_asimdelem_j
+        3335, // FMLALLTT_asimdsame2_g
+        3341, // FMLALT_asimdelem_h
+        3347, // FMLALT_asimdsame2_j
+        3353, // FMLAL_asimdelem_lh
+        3359, // FMLAL_asimdsame_f
+        3365, // FMLA_asimdelem_r_sd
+        3371, // FMLA_asimdelem_rh_h
+        3377, // FMLA_asimdsame_only
+        3383, // FMLA_asimdsamefp16_only
+        3389, // FMLA_asisdelem_r_sd
+        3395, // FMLA_asisdelem_rh_h
+        3401, // FMLSL2_asimdelem_lh
+        3407, // FMLSL2_asimdsame_f
+        3413, // FMLSL_asimdelem_lh
+        3419, // FMLSL_asimdsame_f
+        3425, // FMLS_asimdelem_r_sd
+        3431, // FMLS_asimdelem_rh_h
+        3437, // FMLS_asimdsame_only
+        3443, // FMLS_asimdsamefp16_only
+        3449, // FMLS_asisdelem_r_sd
+        3455, // FMLS_asisdelem_rh_h
+        3461, // FMMLA_asimd_fp8fp16
+        3467, // FMMLA_asimd_fp8fp32
+        3473, // FMOV_32h_float2int
+        3477, // FMOV_32s_float2int
+        3481, // FMOV_64d_float2int
+        3485, // FMOV_64h_float2int
+        3489, // FMOV_64vx_float2int
+        3494, // FMOV_asimdimm_d2_d
+        3499, // FMOV_asimdimm_h_h
+        3504, // FMOV_asimdimm_s_s
+        3509, // FMOV_d64_float2int
+        3513, // FMOV_d_floatdp1
+        3517, // FMOV_d_floatimm
+        3521, // FMOV_h32_float2int
+        3525, // FMOV_h64_float2int
+        3529, // FMOV_h_floatdp1
+        3533, // FMOV_h_floatimm
+        3537, // FMOV_s32_float2int
+        3541, // FMOV_s_floatdp1
+        3545, // FMOV_s_floatimm
+        3549, // FMOV_v64i_float2int
+        3554, // FMSUB_d_floatdp3
+        3560, // FMSUB_h_floatdp3
+        3566, // FMSUB_s_floatdp3
+        3572, // FMULX_asimdelem_r_sd
+        3578, // FMULX_asimdelem_rh_h
+        3584, // FMULX_asimdsame_only
+        3590, // FMULX_asimdsamefp16_only
+        3596, // FMULX_asisdelem_r_sd
+        3602, // FMULX_asisdelem_rh_h
+        3608, // FMULX_asisdsame_only
+        3613, // FMULX_asisdsamefp16_only
+        3618, // FMUL_asimdelem_r_sd
+        3624, // FMUL_asimdelem_rh_h
+        3630, // FMUL_asimdsame_only
+        3636, // FMUL_asimdsamefp16_only
+        3642, // FMUL_asisdelem_r_sd
+        3648, // FMUL_asisdelem_rh_h
+        3654, // FMUL_d_floatdp2
+        3659, // FMUL_h_floatdp2
+        3664, // FMUL_s_floatdp2
+        3669, // FNEG_asimdmisc_r
+        3674, // FNEG_asimdmiscfp16_r
+        3679, // FNEG_d_floatdp1
+        3683, // FNEG_h_floatdp1
+        3687, // FNEG_s_floatdp1
+        3691, // FNMADD_d_floatdp3
+        3697, // FNMADD_h_floatdp3
+        3703, // FNMADD_s_floatdp3
+        3709, // FNMSUB_d_floatdp3
+        3715, // FNMSUB_h_floatdp3
+        3721, // FNMSUB_s_floatdp3
+        3727, // FNMUL_d_floatdp2
+        3732, // FNMUL_h_floatdp2
+        3737, // FNMUL_s_floatdp2
+        3742, // FRECPE_asimdmisc_r
+        3747, // FRECPE_asimdmiscfp16_r
+        3752, // FRECPE_asisdmisc_r
+        3756, // FRECPE_asisdmiscfp16_r
+        3760, // FRECPS_asimdsame_only
+        3766, // FRECPS_asimdsamefp16_only
+        3772, // FRECPS_asisdsame_only
+        3777, // FRECPS_asisdsamefp16_only
+        3782, // FRECPX_asisdmisc_r
+        3786, // FRECPX_asisdmiscfp16_r
+        3790, // FRINT32X_asimdmisc_r
+        3795, // FRINT32X_d_floatdp1
+        3799, // FRINT32X_s_floatdp1
+        3803, // FRINT32Z_asimdmisc_r
+        3808, // FRINT32Z_d_floatdp1
+        3812, // FRINT32Z_s_floatdp1
+        3816, // FRINT64X_asimdmisc_r
+        3821, // FRINT64X_d_floatdp1
+        3825, // FRINT64X_s_floatdp1
+        3829, // FRINT64Z_asimdmisc_r
+        3834, // FRINT64Z_d_floatdp1
+        3838, // FRINT64Z_s_floatdp1
+        3842, // FRINTA_asimdmisc_r
+        3847, // FRINTA_asimdmiscfp16_r
+        3852, // FRINTA_d_floatdp1
+        3856, // FRINTA_h_floatdp1
+        3860, // FRINTA_s_floatdp1
+        3864, // FRINTI_asimdmisc_r
+        3869, // FRINTI_asimdmiscfp16_r
+        3874, // FRINTI_d_floatdp1
+        3878, // FRINTI_h_floatdp1
+        3882, // FRINTI_s_floatdp1
+        3886, // FRINTM_asimdmisc_r
+        3891, // FRINTM_asimdmiscfp16_r
+        3896, // FRINTM_d_floatdp1
+        3900, // FRINTM_h_floatdp1
+        3904, // FRINTM_s_floatdp1
+        3908, // FRINTN_asimdmisc_r
+        3913, // FRINTN_asimdmiscfp16_r
+        3918, // FRINTN_d_floatdp1
+        3922, // FRINTN_h_floatdp1
+        3926, // FRINTN_s_floatdp1
+        3930, // FRINTP_asimdmisc_r
+        3935, // FRINTP_asimdmiscfp16_r
+        3940, // FRINTP_d_floatdp1
+        3944, // FRINTP_h_floatdp1
+        3948, // FRINTP_s_floatdp1
+        3952, // FRINTX_asimdmisc_r
+        3957, // FRINTX_asimdmiscfp16_r
+        3962, // FRINTX_d_floatdp1
+        3966, // FRINTX_h_floatdp1
+        3970, // FRINTX_s_floatdp1
+        3974, // FRINTZ_asimdmisc_r
+        3979, // FRINTZ_asimdmiscfp16_r
+        3984, // FRINTZ_d_floatdp1
+        3988, // FRINTZ_h_floatdp1
+        3992, // FRINTZ_s_floatdp1
+        3996, // FRSQRTE_asimdmisc_r
+        4001, // FRSQRTE_asimdmiscfp16_r
+        4006, // FRSQRTE_asisdmisc_r
+        4010, // FRSQRTE_asisdmiscfp16_r
+        4014, // FRSQRTS_asimdsame_only
+        4020, // FRSQRTS_asimdsamefp16_only
+        4026, // FRSQRTS_asisdsame_only
+        4031, // FRSQRTS_asisdsamefp16_only
+        4036, // FSCALE_asimdsame_only
+        4042, // FSCALE_asimdsamefp16_only
+        4048, // FSQRT_asimdmisc_r
+        4053, // FSQRT_asimdmiscfp16_r
+        4058, // FSQRT_d_floatdp1
+        4062, // FSQRT_h_floatdp1
+        4066, // FSQRT_s_floatdp1
+        4070, // FSUB_asimdsame_only
+        4076, // FSUB_asimdsamefp16_only
+        4082, // FSUB_d_floatdp2
+        4087, // FSUB_h_floatdp2
+        4092, // FSUB_s_floatdp2
+        4097, // GCSB_hd_hints
+        4100, // GCSSTR_64_ldst_gcs
+        4104, // GCSSTTR_64_ldst_gcs
+        4108, // GMI_64g_dp_2src
+        4113, // HINT_hm_hints
+        4116, // HLT_ex_exception
+        4119, // HVC_ex_exception
+        4122, // INS_asimdins_ir_r
+        4127, // INS_asimdins_iv_v
+        4132, // IRG_64i_dp_2src
+        4137, // ISB_bi_barriers
+        4140, // LD1R_asisdlso_r1
+        4145, // LD1R_asisdlsop_r1_i
+        4151, // LD1R_asisdlsop_rx1_r
+        4157, // LD1_asisdlse_r1_1v
+        4162, // LD1_asisdlse_r2_2v
+        4167, // LD1_asisdlse_r3_3v
+        4172, // LD1_asisdlse_r4_4v
+        4177, // LD1_asisdlsep_i1_i1
+        4183, // LD1_asisdlsep_i2_i2
+        4189, // LD1_asisdlsep_i3_i3
+        4195, // LD1_asisdlsep_i4_i4
+        4201, // LD1_asisdlsep_r1_r1
+        4207, // LD1_asisdlsep_r2_r2
+        4213, // LD1_asisdlsep_r3_r3
+        4219, // LD1_asisdlsep_r4_r4
+        4225, // LD1_asisdlso_b1_1b
+        4230, // LD1_asisdlso_d1_1d
+        4235, // LD1_asisdlso_h1_1h
+        4240, // LD1_asisdlso_s1_1s
+        4245, // LD1_asisdlsop_b1_i1b
+        4251, // LD1_asisdlsop_bx1_r1b
+        4257, // LD1_asisdlsop_d1_i1d
+        4263, // LD1_asisdlsop_dx1_r1d
+        4269, // LD1_asisdlsop_h1_i1h
+        4275, // LD1_asisdlsop_hx1_r1h
+        4281, // LD1_asisdlsop_s1_i1s
+        4287, // LD1_asisdlsop_sx1_r1s
+        4293, // LD2R_asisdlso_r2
+        4298, // LD2R_asisdlsop_r2_i
+        4304, // LD2R_asisdlsop_rx2_r
+        4310, // LD2_asisdlse_r2
+        4315, // LD2_asisdlsep_i2_i
+        4321, // LD2_asisdlsep_r2_r
+        4327, // LD2_asisdlso_b2_2b
+        4332, // LD2_asisdlso_d2_2d
+        4337, // LD2_asisdlso_h2_2h
+        4342, // LD2_asisdlso_s2_2s
+        4347, // LD2_asisdlsop_b2_i2b
+        4353, // LD2_asisdlsop_bx2_r2b
+        4359, // LD2_asisdlsop_d2_i2d
+        4365, // LD2_asisdlsop_dx2_r2d
+        4371, // LD2_asisdlsop_h2_i2h
+        4377, // LD2_asisdlsop_hx2_r2h
+        4383, // LD2_asisdlsop_s2_i2s
+        4389, // LD2_asisdlsop_sx2_r2s
+        4395, // LD3R_asisdlso_r3
+        4400, // LD3R_asisdlsop_r3_i
+        4406, // LD3R_asisdlsop_rx3_r
+        4412, // LD3_asisdlse_r3
+        4417, // LD3_asisdlsep_i3_i
+        4423, // LD3_asisdlsep_r3_r
+        4429, // LD3_asisdlso_b3_3b
+        4434, // LD3_asisdlso_d3_3d
+        4439, // LD3_asisdlso_h3_3h
+        4444, // LD3_asisdlso_s3_3s
+        4449, // LD3_asisdlsop_b3_i3b
+        4455, // LD3_asisdlsop_bx3_r3b
+        4461, // LD3_asisdlsop_d3_i3d
+        4467, // LD3_asisdlsop_dx3_r3d
+        4473, // LD3_asisdlsop_h3_i3h
+        4479, // LD3_asisdlsop_hx3_r3h
+        4485, // LD3_asisdlsop_s3_i3s
+        4491, // LD3_asisdlsop_sx3_r3s
+        4497, // LD4R_asisdlso_r4
+        4502, // LD4R_asisdlsop_r4_i
+        4508, // LD4R_asisdlsop_rx4_r
+        4514, // LD4_asisdlse_r4
+        4519, // LD4_asisdlsep_i4_i
+        4525, // LD4_asisdlsep_r4_r
+        4531, // LD4_asisdlso_b4_4b
+        4536, // LD4_asisdlso_d4_4d
+        4541, // LD4_asisdlso_h4_4h
+        4546, // LD4_asisdlso_s4_4s
+        4551, // LD4_asisdlsop_b4_i4b
+        4557, // LD4_asisdlsop_bx4_r4b
+        4563, // LD4_asisdlsop_d4_i4d
+        4569, // LD4_asisdlsop_dx4_r4d
+        4575, // LD4_asisdlsop_h4_i4h
+        4581, // LD4_asisdlsop_hx4_r4h
+        4587, // LD4_asisdlsop_s4_i4s
+        4593, // LD4_asisdlsop_sx4_r4s
+        4599, // LD64B_64l_memop
+        4603, // LDADDAB_32_memop
+        4608, // LDADDAH_32_memop
+        4613, // LDADDALB_32_memop
+        4618, // LDADDALH_32_memop
+        4623, // LDADDAL_32_memop
+        4628, // LDADDAL_64_memop
+        4633, // LDADDA_32_memop
+        4638, // LDADDA_64_memop
+        4643, // LDADDB_32_memop
+        4648, // LDADDH_32_memop
+        4653, // LDADDLB_32_memop
+        4658, // LDADDLH_32_memop
+        4663, // LDADDL_32_memop
+        4668, // LDADDL_64_memop
+        4673, // LDADD_32_memop
+        4678, // LDADD_64_memop
+        4683, // LDAP1_asisdlso_d1
+        4688, // LDAPRB_32l_memop
+        4692, // LDAPRH_32l_memop
+        4696, // LDAPR_32l_ldapstl_writeback
+        4701, // LDAPR_32l_memop
+        4705, // LDAPR_64l_ldapstl_writeback
+        4710, // LDAPR_64l_memop
+        4714, // LDAPURB_32_ldapstl_unscaled
+        4718, // LDAPURH_32_ldapstl_unscaled
+        4722, // LDAPURSB_32_ldapstl_unscaled
+        4726, // LDAPURSB_64_ldapstl_unscaled
+        4730, // LDAPURSH_32_ldapstl_unscaled
+        4734, // LDAPURSH_64_ldapstl_unscaled
+        4738, // LDAPURSW_64_ldapstl_unscaled
+        4742, // LDAPUR_32_ldapstl_unscaled
+        4746, // LDAPUR_64_ldapstl_unscaled
+        4750, // LDAPUR_b_ldapstl_simd
+        4754, // LDAPUR_d_ldapstl_simd
+        4758, // LDAPUR_h_ldapstl_simd
+        4762, // LDAPUR_q_ldapstl_simd
+        4766, // LDAPUR_s_ldapstl_simd
+        4770, // LDARB_lr32_ldstord
+        4774, // LDARH_lr32_ldstord
+        4778, // LDAR_lr32_ldstord
+        4782, // LDAR_lr64_ldstord
+        4786, // LDATXR_lr32_ldstexclr_unpriv
+        4790, // LDATXR_lr64_ldstexclr_unpriv
+        4794, // LDAXP_lp32_ldstexclp
+        4799, // LDAXP_lp64_ldstexclp
+        4804, // LDAXRB_lr32_ldstexclr
+        4808, // LDAXRH_lr32_ldstexclr
+        4812, // LDAXR_lr32_ldstexclr
+        4816, // LDAXR_lr64_ldstexclr
+        4820, // LDBFADDAL_16
+        4825, // LDBFADDA_16
+        4830, // LDBFADDL_16
+        4835, // LDBFADD_16
+        4840, // LDBFMAXAL_16
+        4845, // LDBFMAXA_16
+        4850, // LDBFMAXL_16
+        4855, // LDBFMAXNMAL_16
+        4860, // LDBFMAXNMA_16
+        4865, // LDBFMAXNML_16
+        4870, // LDBFMAXNM_16
+        4875, // LDBFMAX_16
+        4880, // LDBFMINAL_16
+        4885, // LDBFMINA_16
+        4890, // LDBFMINL_16
+        4895, // LDBFMINNMAL_16
+        4900, // LDBFMINNMA_16
+        4905, // LDBFMINNML_16
+        4910, // LDBFMINNM_16
+        4915, // LDBFMIN_16
+        4920, // LDCLRAB_32_memop
+        4925, // LDCLRAH_32_memop
+        4930, // LDCLRALB_32_memop
+        4935, // LDCLRALH_32_memop
+        4940, // LDCLRAL_32_memop
+        4945, // LDCLRAL_64_memop
+        4950, // LDCLRA_32_memop
+        4955, // LDCLRA_64_memop
+        4960, // LDCLRB_32_memop
+        4965, // LDCLRH_32_memop
+        4970, // LDCLRLB_32_memop
+        4975, // LDCLRLH_32_memop
+        4980, // LDCLRL_32_memop
+        4985, // LDCLRL_64_memop
+        4990, // LDCLRPAL_128_memop_128
+        4995, // LDCLRPA_128_memop_128
+        5000, // LDCLRPL_128_memop_128
+        5005, // LDCLRP_128_memop_128
+        5010, // LDCLR_32_memop
+        5015, // LDCLR_64_memop
+        5020, // LDEORAB_32_memop
+        5025, // LDEORAH_32_memop
+        5030, // LDEORALB_32_memop
+        5035, // LDEORALH_32_memop
+        5040, // LDEORAL_32_memop
+        5045, // LDEORAL_64_memop
+        5050, // LDEORA_32_memop
+        5055, // LDEORA_64_memop
+        5060, // LDEORB_32_memop
+        5065, // LDEORH_32_memop
+        5070, // LDEORLB_32_memop
+        5075, // LDEORLH_32_memop
+        5080, // LDEORL_32_memop
+        5085, // LDEORL_64_memop
+        5090, // LDEOR_32_memop
+        5095, // LDEOR_64_memop
+        5100, // LDFADDAL_16
+        5105, // LDFADDAL_32
+        5110, // LDFADDAL_64
+        5115, // LDFADDA_16
+        5120, // LDFADDA_32
+        5125, // LDFADDA_64
+        5130, // LDFADDL_16
+        5135, // LDFADDL_32
+        5140, // LDFADDL_64
+        5145, // LDFADD_16
+        5150, // LDFADD_32
+        5155, // LDFADD_64
+        5160, // LDFMAXAL_16
+        5165, // LDFMAXAL_32
+        5170, // LDFMAXAL_64
+        5175, // LDFMAXA_16
+        5180, // LDFMAXA_32
+        5185, // LDFMAXA_64
+        5190, // LDFMAXL_16
+        5195, // LDFMAXL_32
+        5200, // LDFMAXL_64
+        5205, // LDFMAXNMAL_16
+        5210, // LDFMAXNMAL_32
+        5215, // LDFMAXNMAL_64
+        5220, // LDFMAXNMA_16
+        5225, // LDFMAXNMA_32
+        5230, // LDFMAXNMA_64
+        5235, // LDFMAXNML_16
+        5240, // LDFMAXNML_32
+        5245, // LDFMAXNML_64
+        5250, // LDFMAXNM_16
+        5255, // LDFMAXNM_32
+        5260, // LDFMAXNM_64
+        5265, // LDFMAX_16
+        5270, // LDFMAX_32
+        5275, // LDFMAX_64
+        5280, // LDFMINAL_16
+        5285, // LDFMINAL_32
+        5290, // LDFMINAL_64
+        5295, // LDFMINA_16
+        5300, // LDFMINA_32
+        5305, // LDFMINA_64
+        5310, // LDFMINL_16
+        5315, // LDFMINL_32
+        5320, // LDFMINL_64
+        5325, // LDFMINNMAL_16
+        5330, // LDFMINNMAL_32
+        5335, // LDFMINNMAL_64
+        5340, // LDFMINNMA_16
+        5345, // LDFMINNMA_32
+        5350, // LDFMINNMA_64
+        5355, // LDFMINNML_16
+        5360, // LDFMINNML_32
+        5365, // LDFMINNML_64
+        5370, // LDFMINNM_16
+        5375, // LDFMINNM_32
+        5380, // LDFMINNM_64
+        5385, // LDFMIN_16
+        5390, // LDFMIN_32
+        5395, // LDFMIN_64
+        5400, // LDGM_64bulk_ldsttags
+        5404, // LDG_64loffset_ldsttags
+        5408, // LDIAPP_32l_ldiappstilp
+        5413, // LDIAPP_32le_ldiappstilp
+        5419, // LDIAPP_64l_ldiappstilp
+        5424, // LDIAPP_64ls_ldiappstilp
+        5430, // LDLARB_lr32_ldstord
+        5434, // LDLARH_lr32_ldstord
+        5438, // LDLAR_lr32_ldstord
+        5442, // LDLAR_lr64_ldstord
+        5446, // LDNP_32_ldstnapair_offs
+        5451, // LDNP_64_ldstnapair_offs
+        5456, // LDNP_d_ldstnapair_offs
+        5461, // LDNP_q_ldstnapair_offs
+        5466, // LDNP_s_ldstnapair_offs
+        5471, // LDPSW_64_ldstpair_off
+        5476, // LDPSW_64_ldstpair_post
+        5482, // LDPSW_64_ldstpair_pre
+        5487, // LDP_32_ldstpair_off
+        5492, // LDP_32_ldstpair_post
+        5498, // LDP_32_ldstpair_pre
+        5503, // LDP_64_ldstpair_off
+        5508, // LDP_64_ldstpair_post
+        5514, // LDP_64_ldstpair_pre
+        5519, // LDP_d_ldstpair_off
+        5524, // LDP_d_ldstpair_post
+        5530, // LDP_d_ldstpair_pre
+        5535, // LDP_q_ldstpair_off
+        5540, // LDP_q_ldstpair_post
+        5546, // LDP_q_ldstpair_pre
+        5551, // LDP_s_ldstpair_off
+        5556, // LDP_s_ldstpair_post
+        5562, // LDP_s_ldstpair_pre
+        5567, // LDRAA_64_ldst_pac
+        5571, // LDRAA_64w_ldst_pac
+        5575, // LDRAB_64_ldst_pac
+        5579, // LDRAB_64w_ldst_pac
+        5583, // LDRB_32_ldst_immpost
+        5588, // LDRB_32_ldst_immpre
+        5592, // LDRB_32_ldst_pos
+        5596, // LDRB_32b_ldst_regoff
+        5600, // LDRB_32bl_ldst_regoff
+        5604, // LDRH_32_ldst_immpost
+        5609, // LDRH_32_ldst_immpre
+        5613, // LDRH_32_ldst_pos
+        5617, // LDRH_32_ldst_regoff
+        5621, // LDRSB_32_ldst_immpost
+        5626, // LDRSB_32_ldst_immpre
+        5630, // LDRSB_32_ldst_pos
+        5634, // LDRSB_32b_ldst_regoff
+        5638, // LDRSB_32bl_ldst_regoff
+        5642, // LDRSB_64_ldst_immpost
+        5647, // LDRSB_64_ldst_immpre
+        5651, // LDRSB_64_ldst_pos
+        5655, // LDRSB_64b_ldst_regoff
+        5659, // LDRSB_64bl_ldst_regoff
+        5663, // LDRSH_32_ldst_immpost
+        5668, // LDRSH_32_ldst_immpre
+        5672, // LDRSH_32_ldst_pos
+        5676, // LDRSH_32_ldst_regoff
+        5680, // LDRSH_64_ldst_immpost
+        5685, // LDRSH_64_ldst_immpre
+        5689, // LDRSH_64_ldst_pos
+        5693, // LDRSH_64_ldst_regoff
+        5697, // LDRSW_64_ldst_immpost
+        5702, // LDRSW_64_ldst_immpre
+        5706, // LDRSW_64_ldst_pos
+        5710, // LDRSW_64_ldst_regoff
+        5714, // LDRSW_64_loadlit
+        5718, // LDR_32_ldst_immpost
+        5723, // LDR_32_ldst_immpre
+        5727, // LDR_32_ldst_pos
+        5731, // LDR_32_ldst_regoff
+        5735, // LDR_32_loadlit
+        5739, // LDR_64_ldst_immpost
+        5744, // LDR_64_ldst_immpre
+        5748, // LDR_64_ldst_pos
+        5752, // LDR_64_ldst_regoff
+        5756, // LDR_64_loadlit
+        5760, // LDR_b_ldst_immpost
+        5765, // LDR_b_ldst_immpre
+        5769, // LDR_b_ldst_pos
+        5773, // LDR_b_ldst_regoff
+        5777, // LDR_bl_ldst_regoff
+        5781, // LDR_d_ldst_immpost
+        5786, // LDR_d_ldst_immpre
+        5790, // LDR_d_ldst_pos
+        5794, // LDR_d_ldst_regoff
+        5798, // LDR_d_loadlit
+        5802, // LDR_h_ldst_immpost
+        5807, // LDR_h_ldst_immpre
+        5811, // LDR_h_ldst_pos
+        5815, // LDR_h_ldst_regoff
+        5819, // LDR_q_ldst_immpost
+        5824, // LDR_q_ldst_immpre
+        5828, // LDR_q_ldst_pos
+        5832, // LDR_q_ldst_regoff
+        5836, // LDR_q_loadlit
+        5840, // LDR_s_ldst_immpost
+        5845, // LDR_s_ldst_immpre
+        5849, // LDR_s_ldst_pos
+        5853, // LDR_s_ldst_regoff
+        5857, // LDR_s_loadlit
+        5861, // LDSETAB_32_memop
+        5866, // LDSETAH_32_memop
+        5871, // LDSETALB_32_memop
+        5876, // LDSETALH_32_memop
+        5881, // LDSETAL_32_memop
+        5886, // LDSETAL_64_memop
+        5891, // LDSETA_32_memop
+        5896, // LDSETA_64_memop
+        5901, // LDSETB_32_memop
+        5906, // LDSETH_32_memop
+        5911, // LDSETLB_32_memop
+        5916, // LDSETLH_32_memop
+        5921, // LDSETL_32_memop
+        5926, // LDSETL_64_memop
+        5931, // LDSETPAL_128_memop_128
+        5936, // LDSETPA_128_memop_128
+        5941, // LDSETPL_128_memop_128
+        5946, // LDSETP_128_memop_128
+        5951, // LDSET_32_memop
+        5956, // LDSET_64_memop
+        5961, // LDSMAXAB_32_memop
+        5966, // LDSMAXAH_32_memop
+        5971, // LDSMAXALB_32_memop
+        5976, // LDSMAXALH_32_memop
+        5981, // LDSMAXAL_32_memop
+        5986, // LDSMAXAL_64_memop
+        5991, // LDSMAXA_32_memop
+        5996, // LDSMAXA_64_memop
+        6001, // LDSMAXB_32_memop
+        6006, // LDSMAXH_32_memop
+        6011, // LDSMAXLB_32_memop
+        6016, // LDSMAXLH_32_memop
+        6021, // LDSMAXL_32_memop
+        6026, // LDSMAXL_64_memop
+        6031, // LDSMAX_32_memop
+        6036, // LDSMAX_64_memop
+        6041, // LDSMINAB_32_memop
+        6046, // LDSMINAH_32_memop
+        6051, // LDSMINALB_32_memop
+        6056, // LDSMINALH_32_memop
+        6061, // LDSMINAL_32_memop
+        6066, // LDSMINAL_64_memop
+        6071, // LDSMINA_32_memop
+        6076, // LDSMINA_64_memop
+        6081, // LDSMINB_32_memop
+        6086, // LDSMINH_32_memop
+        6091, // LDSMINLB_32_memop
+        6096, // LDSMINLH_32_memop
+        6101, // LDSMINL_32_memop
+        6106, // LDSMINL_64_memop
+        6111, // LDSMIN_32_memop
+        6116, // LDSMIN_64_memop
+        6121, // LDTADDAL_32_memop_unpriv
+        6126, // LDTADDAL_64_memop_unpriv
+        6131, // LDTADDA_32_memop_unpriv
+        6136, // LDTADDA_64_memop_unpriv
+        6141, // LDTADDL_32_memop_unpriv
+        6146, // LDTADDL_64_memop_unpriv
+        6151, // LDTADD_32_memop_unpriv
+        6156, // LDTADD_64_memop_unpriv
+        6161, // LDTCLRAL_32_memop_unpriv
+        6166, // LDTCLRAL_64_memop_unpriv
+        6171, // LDTCLRA_32_memop_unpriv
+        6176, // LDTCLRA_64_memop_unpriv
+        6181, // LDTCLRL_32_memop_unpriv
+        6186, // LDTCLRL_64_memop_unpriv
+        6191, // LDTCLR_32_memop_unpriv
+        6196, // LDTCLR_64_memop_unpriv
+        6201, // LDTNP_64_ldstnapair_offs
+        6206, // LDTNP_q_ldstnapair_offs
+        6211, // LDTP_64_ldstpair_off
+        6216, // LDTP_64_ldstpair_post
+        6222, // LDTP_64_ldstpair_pre
+        6227, // LDTP_q_ldstpair_off
+        6232, // LDTP_q_ldstpair_post
+        6238, // LDTP_q_ldstpair_pre
+        6243, // LDTRB_32_ldst_unpriv
+        6247, // LDTRH_32_ldst_unpriv
+        6251, // LDTRSB_32_ldst_unpriv
+        6255, // LDTRSB_64_ldst_unpriv
+        6259, // LDTRSH_32_ldst_unpriv
+        6263, // LDTRSH_64_ldst_unpriv
+        6267, // LDTRSW_64_ldst_unpriv
+        6271, // LDTR_32_ldst_unpriv
+        6275, // LDTR_64_ldst_unpriv
+        6279, // LDTSETAL_32_memop_unpriv
+        6284, // LDTSETAL_64_memop_unpriv
+        6289, // LDTSETA_32_memop_unpriv
+        6294, // LDTSETA_64_memop_unpriv
+        6299, // LDTSETL_32_memop_unpriv
+        6304, // LDTSETL_64_memop_unpriv
+        6309, // LDTSET_32_memop_unpriv
+        6314, // LDTSET_64_memop_unpriv
+        6319, // LDTXR_lr32_ldstexclr_unpriv
+        6323, // LDTXR_lr64_ldstexclr_unpriv
+        6327, // LDUMAXAB_32_memop
+        6332, // LDUMAXAH_32_memop
+        6337, // LDUMAXALB_32_memop
+        6342, // LDUMAXALH_32_memop
+        6347, // LDUMAXAL_32_memop
+        6352, // LDUMAXAL_64_memop
+        6357, // LDUMAXA_32_memop
+        6362, // LDUMAXA_64_memop
+        6367, // LDUMAXB_32_memop
+        6372, // LDUMAXH_32_memop
+        6377, // LDUMAXLB_32_memop
+        6382, // LDUMAXLH_32_memop
+        6387, // LDUMAXL_32_memop
+        6392, // LDUMAXL_64_memop
+        6397, // LDUMAX_32_memop
+        6402, // LDUMAX_64_memop
+        6407, // LDUMINAB_32_memop
+        6412, // LDUMINAH_32_memop
+        6417, // LDUMINALB_32_memop
+        6422, // LDUMINALH_32_memop
+        6427, // LDUMINAL_32_memop
+        6432, // LDUMINAL_64_memop
+        6437, // LDUMINA_32_memop
+        6442, // LDUMINA_64_memop
+        6447, // LDUMINB_32_memop
+        6452, // LDUMINH_32_memop
+        6457, // LDUMINLB_32_memop
+        6462, // LDUMINLH_32_memop
+        6467, // LDUMINL_32_memop
+        6472, // LDUMINL_64_memop
+        6477, // LDUMIN_32_memop
+        6482, // LDUMIN_64_memop
+        6487, // LDURB_32_ldst_unscaled
+        6491, // LDURH_32_ldst_unscaled
+        6495, // LDURSB_32_ldst_unscaled
+        6499, // LDURSB_64_ldst_unscaled
+        6503, // LDURSH_32_ldst_unscaled
+        6507, // LDURSH_64_ldst_unscaled
+        6511, // LDURSW_64_ldst_unscaled
+        6515, // LDUR_32_ldst_unscaled
+        6519, // LDUR_64_ldst_unscaled
+        6523, // LDUR_b_ldst_unscaled
+        6527, // LDUR_d_ldst_unscaled
+        6531, // LDUR_h_ldst_unscaled
+        6535, // LDUR_q_ldst_unscaled
+        6539, // LDUR_s_ldst_unscaled
+        6543, // LDXP_lp32_ldstexclp
+        6548, // LDXP_lp64_ldstexclp
+        6553, // LDXRB_lr32_ldstexclr
+        6557, // LDXRH_lr32_ldstexclr
+        6561, // LDXR_lr32_ldstexclr
+        6565, // LDXR_lr64_ldstexclr
+        6569, // LSLV_32_dp_2src
+        6574, // LSLV_64_dp_2src
+        6579, // LSRV_32_dp_2src
+        6584, // LSRV_64_dp_2src
+        6589, // LUTI2_asimdtbl_l5
+        6595, // LUTI2_asimdtbl_l6
+        6601, // LUTI4_asimdtbl_l5
+        6607, // LUTI4_asimdtbl_l7
+        6613, // MADDPT_64a_dp_3src
+        6619, // MADD_32a_dp_3src
+        6625, // MADD_64a_dp_3src
+        6631, // MLA_asimdelem_r
+        6637, // MLA_asimdsame_only
+        6643, // MLS_asimdelem_r
+        6649, // MLS_asimdsame_only
+        6655, // MOVI_asimdimm_d2_d
+        6660, // MOVI_asimdimm_d_ds
+        6664, // MOVI_asimdimm_l_hl
+        6670, // MOVI_asimdimm_l_sl
+        6676, // MOVI_asimdimm_m_sm
+        6682, // MOVI_asimdimm_n_b
+        6688, // MOVK_32_movewide
+        6693, // MOVK_64_movewide
+        6698, // MOVN_32_movewide
+        6703, // MOVN_64_movewide
+        6708, // MOVZ_32_movewide
+        6713, // MOVZ_64_movewide
+        6718, // MRRS_rs_systemmovepr
+        6723, // MRS_rs_systemmove
+        6727, // MSRR_sr_systemmovepr
+        6732, // MSR_si_pstate
+        6736, // MSR_sr_systemmove
+        6740, // MSUBPT_64a_dp_3src
+        6746, // MSUB_32a_dp_3src
+        6752, // MSUB_64a_dp_3src
+        6758, // MUL_asimdelem_r
+        6764, // MUL_asimdsame_only
+        6770, // MVNI_asimdimm_l_hl
+        6776, // MVNI_asimdimm_l_sl
+        6782, // MVNI_asimdimm_m_sm
+        6788, // NEG_asimdmisc_r
+        6793, // NEG_asisdmisc_r
+        6797, // NOP_hi_hints
+        6799, // NOT_asimdmisc_r
+        6804, // ORN_32_log_shift
+        6810, // ORN_64_log_shift
+        6816, // ORN_asimdsame_only
+        6822, // ORR_32_log_imm
+        6827, // ORR_32_log_shift
+        6833, // ORR_64_log_imm
+        6838, // ORR_64_log_shift
+        6844, // ORR_asimdimm_l_hl
+        6850, // ORR_asimdimm_l_sl
+        6856, // ORR_asimdsame_only
+        6862, // PACDA_64p_dp_1src
+        6866, // PACDB_64p_dp_1src
+        6870, // PACDZA_64z_dp_1src
+        6873, // PACDZB_64z_dp_1src
+        6876, // PACGA_64p_dp_2src
+        6881, // PACIA171615_64lr_dp_1src
+        6883, // PACIA1716_hi_hints
+        6885, // PACIASPPC_64lr_dp_1src
+        6887, // PACIASP_hi_hints
+        6889, // PACIAZ_hi_hints
+        6891, // PACIA_64p_dp_1src
+        6895, // PACIB171615_64lr_dp_1src
+        6897, // PACIB1716_hi_hints
+        6899, // PACIBSPPC_64lr_dp_1src
+        6901, // PACIBSP_hi_hints
+        6903, // PACIBZ_hi_hints
+        6905, // PACIB_64p_dp_1src
+        6909, // PACIZA_64z_dp_1src
+        6912, // PACIZB_64z_dp_1src
+        6915, // PACM_hi_hints
+        6917, // PACNBIASPPC_64lr_dp_1src
+        6919, // PACNBIBSPPC_64lr_dp_1src
+        6921, // PMULL_asimddiff_l
+        6927, // PMUL_asimdsame_only
+        6933, // PRFM_p_ldst_pos
+        6937, // PRFM_p_ldst_regoff
+        6941, // PRFM_p_loadlit
+        6945, // PRFUM_p_ldst_unscaled
+        6949, // PSB_hc_hints
+        6952, // RADDHN_asimddiff_n
+        6958, // RAX1_vvv2_cryptosha512_3
+        6964, // RBIT_32_dp_1src
+        6968, // RBIT_64_dp_1src
+        6972, // RBIT_asimdmisc_r
+        6977, // RCWCASAL_c64_rcwcomswap
+        6982, // RCWCASA_c64_rcwcomswap
+        6987, // RCWCASL_c64_rcwcomswap
+        6992, // RCWCASPAL_c64_rcwcomswappr
+        6999, // RCWCASPA_c64_rcwcomswappr
+        7006, // RCWCASPL_c64_rcwcomswappr
+        7013, // RCWCASP_c64_rcwcomswappr
+        7020, // RCWCAS_c64_rcwcomswap
+        7025, // RCWCLRAL_64_memop
+        7030, // RCWCLRA_64_memop
+        7035, // RCWCLRL_64_memop
+        7040, // RCWCLRPAL_128_memop_128
+        7045, // RCWCLRPA_128_memop_128
+        7050, // RCWCLRPL_128_memop_128
+        7055, // RCWCLRP_128_memop_128
+        7060, // RCWCLR_64_memop
+        7065, // RCWSCASAL_c64_rcwcomswap
+        7070, // RCWSCASA_c64_rcwcomswap
+        7075, // RCWSCASL_c64_rcwcomswap
+        7080, // RCWSCASPAL_c64_rcwcomswappr
+        7087, // RCWSCASPA_c64_rcwcomswappr
+        7094, // RCWSCASPL_c64_rcwcomswappr
+        7101, // RCWSCASP_c64_rcwcomswappr
+        7108, // RCWSCAS_c64_rcwcomswap
+        7113, // RCWSCLRAL_64_memop
+        7118, // RCWSCLRA_64_memop
+        7123, // RCWSCLRL_64_memop
+        7128, // RCWSCLRPAL_128_memop_128
+        7133, // RCWSCLRPA_128_memop_128
+        7138, // RCWSCLRPL_128_memop_128
+        7143, // RCWSCLRP_128_memop_128
+        7148, // RCWSCLR_64_memop
+        7153, // RCWSETAL_64_memop
+        7158, // RCWSETA_64_memop
+        7163, // RCWSETL_64_memop
+        7168, // RCWSETPAL_128_memop_128
+        7173, // RCWSETPA_128_memop_128
+        7178, // RCWSETPL_128_memop_128
+        7183, // RCWSETP_128_memop_128
+        7188, // RCWSET_64_memop
+        7193, // RCWSSETAL_64_memop
+        7198, // RCWSSETA_64_memop
+        7203, // RCWSSETL_64_memop
+        7208, // RCWSSETPAL_128_memop_128
+        7213, // RCWSSETPA_128_memop_128
+        7218, // RCWSSETPL_128_memop_128
+        7223, // RCWSSETP_128_memop_128
+        7228, // RCWSSET_64_memop
+        7233, // RCWSSWPAL_64_memop
+        7238, // RCWSSWPA_64_memop
+        7243, // RCWSSWPL_64_memop
+        7248, // RCWSSWPPAL_128_memop_128
+        7253, // RCWSSWPPA_128_memop_128
+        7258, // RCWSSWPPL_128_memop_128
+        7263, // RCWSSWPP_128_memop_128
+        7268, // RCWSSWP_64_memop
+        7273, // RCWSWPAL_64_memop
+        7278, // RCWSWPA_64_memop
+        7283, // RCWSWPL_64_memop
+        7288, // RCWSWPPAL_128_memop_128
+        7293, // RCWSWPPA_128_memop_128
+        7298, // RCWSWPPL_128_memop_128
+        7303, // RCWSWPP_128_memop_128
+        7308, // RCWSWP_64_memop
+        7313, // RETAASPPCR_64m_branch_reg
+        7316, // RETAASPPC_only_miscbranch
+        7319, // RETAA_64e_branch_reg
+        7321, // RETABSPPCR_64m_branch_reg
+        7324, // RETABSPPC_only_miscbranch
+        7327, // RETAB_64e_branch_reg
+        7329, // RET_64r_branch_reg
+        7332, // REV16_32_dp_1src
+        7336, // REV16_64_dp_1src
+        7340, // REV16_asimdmisc_r
+        7345, // REV32_64_dp_1src
+        7349, // REV32_asimdmisc_r
+        7354, // REV64_asimdmisc_r
+        7359, // REV_32_dp_1src
+        7363, // REV_64_dp_1src
+        7367, // RMIF_only_rmif
+        7372, // RORV_32_dp_2src
+        7377, // RORV_64_dp_2src
+        7382, // RPRFM_r_ldst_regoff
+        7387, // RSHRN_asimdshf_n
+        7393, // RSUBHN_asimddiff_n
+        7399, // SABAL_asimddiff_l
+        7405, // SABA_asimdsame_only
+        7411, // SABDL_asimddiff_l
+        7417, // SABD_asimdsame_only
+        7423, // SADALP_asimdmisc_p
+        7428, // SADDLP_asimdmisc_p
+        7433, // SADDLV_asimdall_only
+        7438, // SADDL_asimddiff_l
+        7444, // SADDW_asimddiff_w
+        7450, // SBCS_32_addsub_carry
+        7455, // SBCS_64_addsub_carry
+        7460, // SBC_32_addsub_carry
+        7465, // SBC_64_addsub_carry
+        7470, // SBFM_32m_bitfield
+        7476, // SBFM_64m_bitfield
+        7482, // SB_only_barriers
+        7484, // SCVTF_asimdmisc_r
+        7489, // SCVTF_asimdmiscfp16_r
+        7494, // SCVTF_asimdshf_c
+        7500, // SCVTF_asisdmisc_r
+        7504, // SCVTF_asisdmiscfp16_r
+        7508, // SCVTF_asisdshf_c
+        7513, // SCVTF_d32_float2fix
+        7518, // SCVTF_d32_float2int
+        7522, // SCVTF_d64_float2fix
+        7527, // SCVTF_d64_float2int
+        7531, // SCVTF_h32_float2fix
+        7536, // SCVTF_h32_float2int
+        7540, // SCVTF_h64_float2fix
+        7545, // SCVTF_h64_float2int
+        7549, // SCVTF_s32_float2fix
+        7554, // SCVTF_s32_float2int
+        7558, // SCVTF_s64_float2fix
+        7563, // SCVTF_s64_float2int
+        7567, // SCVTF_sisd_32d
+        7571, // SCVTF_sisd_32h
+        7575, // SCVTF_sisd_64h
+        7579, // SCVTF_sisd_64s
+        7583, // SDIV_32_dp_2src
+        7588, // SDIV_64_dp_2src
+        7593, // SDOT_asimdelem_d
+        7599, // SDOT_asimdsame2_d
+        7605, // SETEN_set_memcms
+        7610, // SETETN_set_memcms
+        7615, // SETET_set_memcms
+        7620, // SETE_set_memcms
+        7625, // SETF16_only_setf
+        7628, // SETF8_only_setf
+        7631, // SETGEN_set_memcms
+        7636, // SETGETN_set_memcms
+        7641, // SETGET_set_memcms
+        7646, // SETGE_set_memcms
+        7651, // SETGMN_set_memcms
+        7656, // SETGMTN_set_memcms
+        7661, // SETGMT_set_memcms
+        7666, // SETGM_set_memcms
+        7671, // SETGPN_set_memcms
+        7676, // SETGPTN_set_memcms
+        7681, // SETGPT_set_memcms
+        7686, // SETGP_set_memcms
+        7691, // SETMN_set_memcms
+        7696, // SETMTN_set_memcms
+        7701, // SETMT_set_memcms
+        7706, // SETM_set_memcms
+        7711, // SETPN_set_memcms
+        7716, // SETPTN_set_memcms
+        7721, // SETPT_set_memcms
+        7726, // SETP_set_memcms
+        7731, // SEVL_hi_hints
+        7733, // SEV_hi_hints
+        7735, // SHA1C_qsv_cryptosha3
+        7741, // SHA1H_ss_cryptosha2
+        7745, // SHA1M_qsv_cryptosha3
+        7751, // SHA1P_qsv_cryptosha3
+        7757, // SHA1SU0_vvv_cryptosha3
+        7763, // SHA1SU1_vv_cryptosha2
+        7768, // SHA256H2_qqv_cryptosha3
+        7774, // SHA256H_qqv_cryptosha3
+        7780, // SHA256SU0_vv_cryptosha2
+        7785, // SHA256SU1_vvv_cryptosha3
+        7791, // SHA512H2_qqv_cryptosha512_3
+        7797, // SHA512H_qqv_cryptosha512_3
+        7803, // SHA512SU0_vv2_cryptosha512_2
+        7808, // SHA512SU1_vvv2_cryptosha512_3
+        7814, // SHADD_asimdsame_only
+        7820, // SHLL_asimdmisc_s
+        7826, // SHL_asimdshf_r
+        7832, // SHL_asisdshf_r
+        7837, // SHRN_asimdshf_n
+        7843, // SHSUB_asimdsame_only
+        7849, // SLI_asimdshf_r
+        7855, // SLI_asisdshf_r
+        7860, // SM3PARTW1_vvv4_cryptosha512_3
+        7866, // SM3PARTW2_vvv4_cryptosha512_3
+        7872, // SM3SS1_vvv4_crypto4
+        7879, // SM3TT1A_vvv4_crypto3_imm2
+        7885, // SM3TT1B_vvv4_crypto3_imm2
+        7891, // SM3TT2A_vvv4_crypto3_imm2
+        7897, // SM3TT2B_vvv_crypto3_imm2
+        7903, // SM4EKEY_vvv4_cryptosha512_3
+        7909, // SM4E_vv4_cryptosha512_2
+        7914, // SMADDL_64wa_dp_3src
+        7920, // SMAXP_asimdsame_only
+        7926, // SMAXV_asimdall_only
+        7931, // SMAX_32_dp_2src
+        7936, // SMAX_32_minmax_imm
+        7941, // SMAX_64_dp_2src
+        7946, // SMAX_64_minmax_imm
+        7951, // SMAX_asimdsame_only
+        7957, // SMC_ex_exception
+        7960, // SMINP_asimdsame_only
+        7966, // SMINV_asimdall_only
+        7971, // SMIN_32_dp_2src
+        7976, // SMIN_32_minmax_imm
+        7981, // SMIN_64_dp_2src
+        7986, // SMIN_64_minmax_imm
+        7991, // SMIN_asimdsame_only
+        7997, // SMLAL_asimddiff_l
+        8003, // SMLAL_asimdelem_l
+        8009, // SMLSL_asimddiff_l
+        8015, // SMLSL_asimdelem_l
+        8021, // SMMLA_asimdsame2_g
+        8027, // SMOV_asimdins_w_w
+        8032, // SMOV_asimdins_x_x
+        8037, // SMSUBL_64wa_dp_3src
+        8043, // SMULH_64_dp_3src
+        8048, // SMULL_asimddiff_l
+        8054, // SMULL_asimdelem_l
+        8060, // SQABS_asimdmisc_r
+        8065, // SQABS_asisdmisc_r
+        8069, // SQADD_asimdsame_only
+        8075, // SQADD_asisdsame_only
+        8080, // SQDMLAL_asimddiff_l
+        8086, // SQDMLAL_asimdelem_l
+        8092, // SQDMLAL_asisddiff_only
+        8097, // SQDMLAL_asisdelem_l
+        8103, // SQDMLSL_asimddiff_l
+        8109, // SQDMLSL_asimdelem_l
+        8115, // SQDMLSL_asisddiff_only
+        8120, // SQDMLSL_asisdelem_l
+        8126, // SQDMULH_asimdelem_r
+        8132, // SQDMULH_asimdsame_only
+        8138, // SQDMULH_asisdelem_r
+        8144, // SQDMULH_asisdsame_only
+        8149, // SQDMULL_asimddiff_l
+        8155, // SQDMULL_asimdelem_l
+        8161, // SQDMULL_asisddiff_only
+        8166, // SQDMULL_asisdelem_l
+        8172, // SQNEG_asimdmisc_r
+        8177, // SQNEG_asisdmisc_r
+        8181, // SQRDMLAH_asimdelem_r
+        8187, // SQRDMLAH_asimdsame2_only
+        8193, // SQRDMLAH_asisdelem_r
+        8199, // SQRDMLAH_asisdsame2_only
+        8204, // SQRDMLSH_asimdelem_r
+        8210, // SQRDMLSH_asimdsame2_only
+        8216, // SQRDMLSH_asisdelem_r
+        8222, // SQRDMLSH_asisdsame2_only
+        8227, // SQRDMULH_asimdelem_r
+        8233, // SQRDMULH_asimdsame_only
+        8239, // SQRDMULH_asisdelem_r
+        8245, // SQRDMULH_asisdsame_only
+        8250, // SQRSHL_asimdsame_only
+        8256, // SQRSHL_asisdsame_only
+        8261, // SQRSHRN_asimdshf_n
+        8267, // SQRSHRN_asisdshf_n
+        8272, // SQRSHRUN_asimdshf_n
+        8278, // SQRSHRUN_asisdshf_n
+        8283, // SQSHLU_asimdshf_r
+        8289, // SQSHLU_asisdshf_r
+        8294, // SQSHL_asimdsame_only
+        8300, // SQSHL_asimdshf_r
+        8306, // SQSHL_asisdsame_only
+        8311, // SQSHL_asisdshf_r
+        8316, // SQSHRN_asimdshf_n
+        8322, // SQSHRN_asisdshf_n
+        8327, // SQSHRUN_asimdshf_n
+        8333, // SQSHRUN_asisdshf_n
+        8338, // SQSUB_asimdsame_only
+        8344, // SQSUB_asisdsame_only
+        8349, // SQXTN_asimdmisc_n
+        8354, // SQXTN_asisdmisc_n
+        8358, // SQXTUN_asimdmisc_n
+        8363, // SQXTUN_asisdmisc_n
+        8367, // SRHADD_asimdsame_only
+        8373, // SRI_asimdshf_r
+        8379, // SRI_asisdshf_r
+        8384, // SRSHL_asimdsame_only
+        8390, // SRSHL_asisdsame_only
+        8395, // SRSHR_asimdshf_r
+        8401, // SRSHR_asisdshf_r
+        8406, // SRSRA_asimdshf_r
+        8412, // SRSRA_asisdshf_r
+        8417, // SSHLL_asimdshf_l
+        8423, // SSHL_asimdsame_only
+        8429, // SSHL_asisdsame_only
+        8434, // SSHR_asimdshf_r
+        8440, // SSHR_asisdshf_r
+        8445, // SSRA_asimdshf_r
+        8451, // SSRA_asisdshf_r
+        8456, // SSUBL_asimddiff_l
+        8462, // SSUBW_asimddiff_w
+        8468, // ST1_asisdlse_r1_1v
+        8473, // ST1_asisdlse_r2_2v
+        8478, // ST1_asisdlse_r3_3v
+        8483, // ST1_asisdlse_r4_4v
+        8488, // ST1_asisdlsep_i1_i1
+        8494, // ST1_asisdlsep_i2_i2
+        8500, // ST1_asisdlsep_i3_i3
+        8506, // ST1_asisdlsep_i4_i4
+        8512, // ST1_asisdlsep_r1_r1
+        8518, // ST1_asisdlsep_r2_r2
+        8524, // ST1_asisdlsep_r3_r3
+        8530, // ST1_asisdlsep_r4_r4
+        8536, // ST1_asisdlso_b1_1b
+        8541, // ST1_asisdlso_d1_1d
+        8546, // ST1_asisdlso_h1_1h
+        8551, // ST1_asisdlso_s1_1s
+        8556, // ST1_asisdlsop_b1_i1b
+        8562, // ST1_asisdlsop_bx1_r1b
+        8568, // ST1_asisdlsop_d1_i1d
+        8574, // ST1_asisdlsop_dx1_r1d
+        8580, // ST1_asisdlsop_h1_i1h
+        8586, // ST1_asisdlsop_hx1_r1h
+        8592, // ST1_asisdlsop_s1_i1s
+        8598, // ST1_asisdlsop_sx1_r1s
+        8604, // ST2G_64soffset_ldsttags
+        8608, // ST2G_64spost_ldsttags
+        8613, // ST2G_64spre_ldsttags
+        8617, // ST2_asisdlse_r2
+        8622, // ST2_asisdlsep_i2_i
+        8628, // ST2_asisdlsep_r2_r
+        8634, // ST2_asisdlso_b2_2b
+        8639, // ST2_asisdlso_d2_2d
+        8644, // ST2_asisdlso_h2_2h
+        8649, // ST2_asisdlso_s2_2s
+        8654, // ST2_asisdlsop_b2_i2b
+        8660, // ST2_asisdlsop_bx2_r2b
+        8666, // ST2_asisdlsop_d2_i2d
+        8672, // ST2_asisdlsop_dx2_r2d
+        8678, // ST2_asisdlsop_h2_i2h
+        8684, // ST2_asisdlsop_hx2_r2h
+        8690, // ST2_asisdlsop_s2_i2s
+        8696, // ST2_asisdlsop_sx2_r2s
+        8702, // ST3_asisdlse_r3
+        8707, // ST3_asisdlsep_i3_i
+        8713, // ST3_asisdlsep_r3_r
+        8719, // ST3_asisdlso_b3_3b
+        8724, // ST3_asisdlso_d3_3d
+        8729, // ST3_asisdlso_h3_3h
+        8734, // ST3_asisdlso_s3_3s
+        8739, // ST3_asisdlsop_b3_i3b
+        8745, // ST3_asisdlsop_bx3_r3b
+        8751, // ST3_asisdlsop_d3_i3d
+        8757, // ST3_asisdlsop_dx3_r3d
+        8763, // ST3_asisdlsop_h3_i3h
+        8769, // ST3_asisdlsop_hx3_r3h
+        8775, // ST3_asisdlsop_s3_i3s
+        8781, // ST3_asisdlsop_sx3_r3s
+        8787, // ST4_asisdlse_r4
+        8792, // ST4_asisdlsep_i4_i
+        8798, // ST4_asisdlsep_r4_r
+        8804, // ST4_asisdlso_b4_4b
+        8809, // ST4_asisdlso_d4_4d
+        8814, // ST4_asisdlso_h4_4h
+        8819, // ST4_asisdlso_s4_4s
+        8824, // ST4_asisdlsop_b4_i4b
+        8830, // ST4_asisdlsop_bx4_r4b
+        8836, // ST4_asisdlsop_d4_i4d
+        8842, // ST4_asisdlsop_dx4_r4d
+        8848, // ST4_asisdlsop_h4_i4h
+        8854, // ST4_asisdlsop_hx4_r4h
+        8860, // ST4_asisdlsop_s4_i4s
+        8866, // ST4_asisdlsop_sx4_r4s
+        8872, // ST64BV0_64_memop
+        8877, // ST64BV_64_memop
+        8882, // ST64B_64l_memop
+        8886, // STBFADDL_16
+        8890, // STBFADD_16
+        8894, // STBFMAXL_16
+        8898, // STBFMAXNML_16
+        8902, // STBFMAXNM_16
+        8906, // STBFMAX_16
+        8910, // STBFMINL_16
+        8914, // STBFMINNML_16
+        8918, // STBFMINNM_16
+        8922, // STBFMIN_16
+        8926, // STFADDL_16
+        8930, // STFADDL_32
+        8934, // STFADDL_64
+        8938, // STFADD_16
+        8942, // STFADD_32
+        8946, // STFADD_64
+        8950, // STFMAXL_16
+        8954, // STFMAXL_32
+        8958, // STFMAXL_64
+        8962, // STFMAXNML_16
+        8966, // STFMAXNML_32
+        8970, // STFMAXNML_64
+        8974, // STFMAXNM_16
+        8978, // STFMAXNM_32
+        8982, // STFMAXNM_64
+        8986, // STFMAX_16
+        8990, // STFMAX_32
+        8994, // STFMAX_64
+        8998, // STFMINL_16
+        9002, // STFMINL_32
+        9006, // STFMINL_64
+        9010, // STFMINNML_16
+        9014, // STFMINNML_32
+        9018, // STFMINNML_64
+        9022, // STFMINNM_16
+        9026, // STFMINNM_32
+        9030, // STFMINNM_64
+        9034, // STFMIN_16
+        9038, // STFMIN_32
+        9042, // STFMIN_64
+        9046, // STGM_64bulk_ldsttags
+        9050, // STGP_64_ldstpair_off
+        9055, // STGP_64_ldstpair_post
+        9061, // STGP_64_ldstpair_pre
+        9066, // STG_64soffset_ldsttags
+        9070, // STG_64spost_ldsttags
+        9075, // STG_64spre_ldsttags
+        9079, // STILP_32s_ldiappstilp
+        9084, // STILP_32se_ldiappstilp
+        9089, // STILP_64s_ldiappstilp
+        9094, // STILP_64ss_ldiappstilp
+        9099, // STL1_asisdlso_d1
+        9104, // STLLRB_sl32_ldstord
+        9108, // STLLRH_sl32_ldstord
+        9112, // STLLR_sl32_ldstord
+        9116, // STLLR_sl64_ldstord
+        9120, // STLRB_sl32_ldstord
+        9124, // STLRH_sl32_ldstord
+        9128, // STLR_32s_ldapstl_writeback
+        9132, // STLR_64s_ldapstl_writeback
+        9136, // STLR_sl32_ldstord
+        9140, // STLR_sl64_ldstord
+        9144, // STLTXR_sr32_ldstexclr_unpriv
+        9149, // STLTXR_sr64_ldstexclr_unpriv
+        9154, // STLURB_32_ldapstl_unscaled
+        9158, // STLURH_32_ldapstl_unscaled
+        9162, // STLUR_32_ldapstl_unscaled
+        9166, // STLUR_64_ldapstl_unscaled
+        9170, // STLUR_b_ldapstl_simd
+        9174, // STLUR_d_ldapstl_simd
+        9178, // STLUR_h_ldapstl_simd
+        9182, // STLUR_q_ldapstl_simd
+        9186, // STLUR_s_ldapstl_simd
+        9190, // STLXP_sp32_ldstexclp
+        9196, // STLXP_sp64_ldstexclp
+        9202, // STLXRB_sr32_ldstexclr
+        9207, // STLXRH_sr32_ldstexclr
+        9212, // STLXR_sr32_ldstexclr
+        9217, // STLXR_sr64_ldstexclr
+        9222, // STNP_32_ldstnapair_offs
+        9227, // STNP_64_ldstnapair_offs
+        9232, // STNP_d_ldstnapair_offs
+        9237, // STNP_q_ldstnapair_offs
+        9242, // STNP_s_ldstnapair_offs
+        9247, // STP_32_ldstpair_off
+        9252, // STP_32_ldstpair_post
+        9258, // STP_32_ldstpair_pre
+        9263, // STP_64_ldstpair_off
+        9268, // STP_64_ldstpair_post
+        9274, // STP_64_ldstpair_pre
+        9279, // STP_d_ldstpair_off
+        9284, // STP_d_ldstpair_post
+        9290, // STP_d_ldstpair_pre
+        9295, // STP_q_ldstpair_off
+        9300, // STP_q_ldstpair_post
+        9306, // STP_q_ldstpair_pre
+        9311, // STP_s_ldstpair_off
+        9316, // STP_s_ldstpair_post
+        9322, // STP_s_ldstpair_pre
+        9327, // STRB_32_ldst_immpost
+        9332, // STRB_32_ldst_immpre
+        9336, // STRB_32_ldst_pos
+        9340, // STRB_32b_ldst_regoff
+        9344, // STRB_32bl_ldst_regoff
+        9348, // STRH_32_ldst_immpost
+        9353, // STRH_32_ldst_immpre
+        9357, // STRH_32_ldst_pos
+        9361, // STRH_32_ldst_regoff
+        9365, // STR_32_ldst_immpost
+        9370, // STR_32_ldst_immpre
+        9374, // STR_32_ldst_pos
+        9378, // STR_32_ldst_regoff
+        9382, // STR_64_ldst_immpost
+        9387, // STR_64_ldst_immpre
+        9391, // STR_64_ldst_pos
+        9395, // STR_64_ldst_regoff
+        9399, // STR_b_ldst_immpost
+        9404, // STR_b_ldst_immpre
+        9408, // STR_b_ldst_pos
+        9412, // STR_b_ldst_regoff
+        9416, // STR_bl_ldst_regoff
+        9420, // STR_d_ldst_immpost
+        9425, // STR_d_ldst_immpre
+        9429, // STR_d_ldst_pos
+        9433, // STR_d_ldst_regoff
+        9437, // STR_h_ldst_immpost
+        9442, // STR_h_ldst_immpre
+        9446, // STR_h_ldst_pos
+        9450, // STR_h_ldst_regoff
+        9454, // STR_q_ldst_immpost
+        9459, // STR_q_ldst_immpre
+        9463, // STR_q_ldst_pos
+        9467, // STR_q_ldst_regoff
+        9471, // STR_s_ldst_immpost
+        9476, // STR_s_ldst_immpre
+        9480, // STR_s_ldst_pos
+        9484, // STR_s_ldst_regoff
+        9488, // STSHH_hi_hints
+        9491, // STTNP_64_ldstnapair_offs
+        9496, // STTNP_q_ldstnapair_offs
+        9501, // STTP_64_ldstpair_off
+        9506, // STTP_64_ldstpair_post
+        9512, // STTP_64_ldstpair_pre
+        9517, // STTP_q_ldstpair_off
+        9522, // STTP_q_ldstpair_post
+        9528, // STTP_q_ldstpair_pre
+        9533, // STTRB_32_ldst_unpriv
+        9537, // STTRH_32_ldst_unpriv
+        9541, // STTR_32_ldst_unpriv
+        9545, // STTR_64_ldst_unpriv
+        9549, // STTXR_sr32_ldstexclr_unpriv
+        9554, // STTXR_sr64_ldstexclr_unpriv
+        9559, // STURB_32_ldst_unscaled
+        9563, // STURH_32_ldst_unscaled
+        9567, // STUR_32_ldst_unscaled
+        9571, // STUR_64_ldst_unscaled
+        9575, // STUR_b_ldst_unscaled
+        9579, // STUR_d_ldst_unscaled
+        9583, // STUR_h_ldst_unscaled
+        9587, // STUR_q_ldst_unscaled
+        9591, // STUR_s_ldst_unscaled
+        9595, // STXP_sp32_ldstexclp
+        9601, // STXP_sp64_ldstexclp
+        9607, // STXRB_sr32_ldstexclr
+        9612, // STXRH_sr32_ldstexclr
+        9617, // STXR_sr32_ldstexclr
+        9622, // STXR_sr64_ldstexclr
+        9627, // STZ2G_64soffset_ldsttags
+        9631, // STZ2G_64spost_ldsttags
+        9636, // STZ2G_64spre_ldsttags
+        9640, // STZGM_64bulk_ldsttags
+        9644, // STZG_64soffset_ldsttags
+        9648, // STZG_64spost_ldsttags
+        9653, // STZG_64spre_ldsttags
+        9657, // SUBG_64_addsub_immtags
+        9663, // SUBHN_asimddiff_n
+        9669, // SUBPS_64s_dp_2src
+        9674, // SUBPT_64_addsub_pt
+        9680, // SUBP_64s_dp_2src
+        9685, // SUBS_32_addsub_shift
+        9691, // SUBS_32s_addsub_ext
+        9697, // SUBS_32s_addsub_imm
+        9703, // SUBS_64_addsub_shift
+        9709, // SUBS_64s_addsub_ext
+        9715, // SUBS_64s_addsub_imm
+        9721, // SUB_32_addsub_ext
+        9727, // SUB_32_addsub_imm
+        9733, // SUB_32_addsub_shift
+        9739, // SUB_64_addsub_ext
+        9745, // SUB_64_addsub_imm
+        9751, // SUB_64_addsub_shift
+        9757, // SUB_asimdsame_only
+        9763, // SUB_asisdsame_only
+        9768, // SUDOT_asimdelem_d
+        9774, // SUQADD_asimdmisc_r
+        9779, // SUQADD_asisdmisc_r
+        9783, // SVC_ex_exception
+        9786, // SWPAB_32_memop
+        9791, // SWPAH_32_memop
+        9796, // SWPALB_32_memop
+        9801, // SWPALH_32_memop
+        9806, // SWPAL_32_memop
+        9811, // SWPAL_64_memop
+        9816, // SWPA_32_memop
+        9821, // SWPA_64_memop
+        9826, // SWPB_32_memop
+        9831, // SWPH_32_memop
+        9836, // SWPLB_32_memop
+        9841, // SWPLH_32_memop
+        9846, // SWPL_32_memop
+        9851, // SWPL_64_memop
+        9856, // SWPPAL_128_memop_128
+        9861, // SWPPA_128_memop_128
+        9866, // SWPPL_128_memop_128
+        9871, // SWPP_128_memop_128
+        9876, // SWPTAL_32_memop_unpriv
+        9881, // SWPTAL_64_memop_unpriv
+        9886, // SWPTA_32_memop_unpriv
+        9891, // SWPTA_64_memop_unpriv
+        9896, // SWPTL_32_memop_unpriv
+        9901, // SWPTL_64_memop_unpriv
+        9906, // SWPT_32_memop_unpriv
+        9911, // SWPT_64_memop_unpriv
+        9916, // SWP_32_memop
+        9921, // SWP_64_memop
+        9926, // SYSL_rc_systeminstrs
+        9933, // SYSP_cr_syspairinstrs
+        9940, // SYS_cr_systeminstrs
+        9947, // TBL_asimdtbl_l1_1
+        9953, // TBL_asimdtbl_l2_2
+        9959, // TBL_asimdtbl_l3_3
+        9965, // TBL_asimdtbl_l4_4
+        9971, // TBNZ_only_testbranch
+        9976, // TBX_asimdtbl_l1_1
+        9982, // TBX_asimdtbl_l2_2
+        9988, // TBX_asimdtbl_l3_3
+        9994, // TBX_asimdtbl_l4_4
+        10000, // TBZ_only_testbranch
+        10005, // TCANCEL_ex_exception
+        10008, // TCOMMIT_only_barriers
+        10010, // TRN1_asimdperm_only
+        10016, // TRN2_asimdperm_only
+        10022, // TSB_hc_hints
+        10025, // TSTART_br_systemresult
+        10028, // TTEST_br_systemresult
+        10031, // UABAL_asimddiff_l
+        10037, // UABA_asimdsame_only
+        10043, // UABDL_asimddiff_l
+        10049, // UABD_asimdsame_only
+        10055, // UADALP_asimdmisc_p
+        10060, // UADDLP_asimdmisc_p
+        10065, // UADDLV_asimdall_only
+        10070, // UADDL_asimddiff_l
+        10076, // UADDW_asimddiff_w
+        10082, // UBFM_32m_bitfield
+        10088, // UBFM_64m_bitfield
+        10094, // UCVTF_asimdmisc_r
+        10099, // UCVTF_asimdmiscfp16_r
+        10104, // UCVTF_asimdshf_c
+        10110, // UCVTF_asisdmisc_r
+        10114, // UCVTF_asisdmiscfp16_r
+        10118, // UCVTF_asisdshf_c
+        10123, // UCVTF_d32_float2fix
+        10128, // UCVTF_d32_float2int
+        10132, // UCVTF_d64_float2fix
+        10137, // UCVTF_d64_float2int
+        10141, // UCVTF_h32_float2fix
+        10146, // UCVTF_h32_float2int
+        10150, // UCVTF_h64_float2fix
+        10155, // UCVTF_h64_float2int
+        10159, // UCVTF_s32_float2fix
+        10164, // UCVTF_s32_float2int
+        10168, // UCVTF_s64_float2fix
+        10173, // UCVTF_s64_float2int
+        10177, // UCVTF_sisd_32d
+        10181, // UCVTF_sisd_32h
+        10185, // UCVTF_sisd_64h
+        10189, // UCVTF_sisd_64s
+        10193, // UDF_only_perm_undef
+        10196, // UDIV_32_dp_2src
+        10201, // UDIV_64_dp_2src
+        10206, // UDOT_asimdelem_d
+        10212, // UDOT_asimdsame2_d
+        10218, // UHADD_asimdsame_only
+        10224, // UHSUB_asimdsame_only
+        10230, // UMADDL_64wa_dp_3src
+        10236, // UMAXP_asimdsame_only
+        10242, // UMAXV_asimdall_only
+        10247, // UMAX_32_dp_2src
+        10252, // UMAX_32u_minmax_imm
+        10257, // UMAX_64_dp_2src
+        10262, // UMAX_64u_minmax_imm
+        10267, // UMAX_asimdsame_only
+        10273, // UMINP_asimdsame_only
+        10279, // UMINV_asimdall_only
+        10284, // UMIN_32_dp_2src
+        10289, // UMIN_32u_minmax_imm
+        10294, // UMIN_64_dp_2src
+        10299, // UMIN_64u_minmax_imm
+        10304, // UMIN_asimdsame_only
+        10310, // UMLAL_asimddiff_l
+        10316, // UMLAL_asimdelem_l
+        10322, // UMLSL_asimddiff_l
+        10328, // UMLSL_asimdelem_l
+        10334, // UMMLA_asimdsame2_g
+        10340, // UMOV_asimdins_w_w
+        10345, // UMOV_asimdins_x_x
+        10350, // UMSUBL_64wa_dp_3src
+        10356, // UMULH_64_dp_3src
+        10361, // UMULL_asimddiff_l
+        10367, // UMULL_asimdelem_l
+        10373, // UQADD_asimdsame_only
+        10379, // UQADD_asisdsame_only
+        10384, // UQRSHL_asimdsame_only
+        10390, // UQRSHL_asisdsame_only
+        10395, // UQRSHRN_asimdshf_n
+        10401, // UQRSHRN_asisdshf_n
+        10406, // UQSHL_asimdsame_only
+        10412, // UQSHL_asimdshf_r
+        10418, // UQSHL_asisdsame_only
+        10423, // UQSHL_asisdshf_r
+        10428, // UQSHRN_asimdshf_n
+        10434, // UQSHRN_asisdshf_n
+        10439, // UQSUB_asimdsame_only
+        10445, // UQSUB_asisdsame_only
+        10450, // UQXTN_asimdmisc_n
+        10455, // UQXTN_asisdmisc_n
+        10459, // URECPE_asimdmisc_r
+        10464, // URHADD_asimdsame_only
+        10470, // URSHL_asimdsame_only
+        10476, // URSHL_asisdsame_only
+        10481, // URSHR_asimdshf_r
+        10487, // URSHR_asisdshf_r
+        10492, // URSQRTE_asimdmisc_r
+        10497, // URSRA_asimdshf_r
+        10503, // URSRA_asisdshf_r
+        10508, // USDOT_asimdelem_d
+        10514, // USDOT_asimdsame2_d
+        10520, // USHLL_asimdshf_l
+        10526, // USHL_asimdsame_only
+        10532, // USHL_asisdsame_only
+        10537, // USHR_asimdshf_r
+        10543, // USHR_asisdshf_r
+        10548, // USMMLA_asimdsame2_g
+        10554, // USQADD_asimdmisc_r
+        10559, // USQADD_asisdmisc_r
+        10563, // USRA_asimdshf_r
+        10569, // USRA_asisdshf_r
+        10574, // USUBL_asimddiff_l
+        10580, // USUBW_asimddiff_w
+        10586, // UZP1_asimdperm_only
+        10592, // UZP2_asimdperm_only
+        10598, // WFET_only_systeminstrswithreg
+        10601, // WFE_hi_hints
+        10603, // WFIT_only_systeminstrswithreg
+        10606, // WFI_hi_hints
+        10608, // XAFLAG_m_pstate
+        10610, // XAR_vvv2_crypto3_imm6
+        10617, // XPACD_64z_dp_1src
+        10620, // XPACI_64z_dp_1src
+        10623, // XPACLRI_hi_hints
+        10625, // XTN_asimdmisc_n
+        10630, // YIELD_hi_hints
+        10632, // ZIP1_asimdperm_only
+        10638, // ZIP2_asimdperm_only
     };
     /// <summary>
     /// Decoder table to get the instruction details
     /// </summary>
-    public static ReadOnlySpan<byte> Buffer => new byte[45584]
+    public static ReadOnlySpan<byte> Buffer => new byte[42576]
     {
         // Undefined
         0,0,0,0,0,0,0,0,
         // ABS_32_dp_1src                 - ABS         Wd, Wn
-        1,0,1,0,4,14,2,1,
-        1,19,0,0,
-        1,19,0,5,
+        1,0,1,0,4,14,0,2,
+        1,19,0,0,0,0,0,0,
+        1,19,0,5,0,0,0,0,
         // ABS_64_dp_1src                 - ABS         Xd, Xn
-        2,0,1,0,4,14,2,1,
-        1,17,0,0,
-        1,17,0,5,
+        2,0,1,0,4,14,0,2,
+        1,17,0,0,0,0,0,0,
+        1,17,0,5,0,0,0,0,
         // ABS_asimdmisc_r                - ABS         Vd.T, Vn.T
-        3,0,1,0,1,2,2,1,
+        3,0,1,0,1,2,2,2,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // ABS_asisdmisc_r                - ABS         Dd, Dn
-        4,0,1,0,1,2,2,1,
+        4,0,1,0,1,2,0,2,
         1,26,0,0,
         1,26,0,5,
         // ADCS_32_addsub_carry           - ADCS        Wd, Wn, Wm
-        5,0,3,0,4,0,3,1,
+        5,0,3,0,4,0,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // ADCS_64_addsub_carry           - ADCS        Xd, Xn, Xm
-        6,0,3,0,4,0,3,1,
+        6,0,3,0,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // ADC_32_addsub_carry            - ADC         Wd, Wn, Wm
-        7,0,2,0,4,0,3,1,
+        7,0,2,0,4,0,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // ADC_64_addsub_carry            - ADC         Xd, Xn, Xm
-        8,0,2,0,4,0,3,1,
+        8,0,2,0,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // ADDG_64_addsub_immtags         - ADDG        Xd|SP, Xn|SP, #uimm6, #uimm4
-        9,0,5,0,4,49,4,0,
-        1,18,0,0,0,0,0,0,
-        1,18,0,5,0,0,0,0,
-        4,1,6,1,16,6,0,0,
-        4,1,4,1,10,4,0,0,
+        9,0,5,0,4,49,0,4,
+        1,18,0,0,
+        1,18,0,5,
+        4,1,6,1,
+        4,1,4,1,
         // ADDHN_asimddiff_n              - ADDHN       Vd.Tb, Vn.Ta, Vm.Ta
-        10,0,6,0,1,2,3,1,
+        10,0,6,0,1,2,4,3,
+        38,25,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // ADDPT_64_addsub_pt             - ADDPT       Xd|SP, Xn|SP, Xm {, LSL #amount}
-        11,0,8,0,4,12,4,1,
+        11,0,8,0,4,12,0,4,
         1,18,0,0,
         1,18,0,5,
         1,17,0,16,
         8,5,0,106,
         // ADDP_asimdsame_only            - ADDP        Vd.T, Vn.T, Vm.T
-        12,0,7,0,1,2,3,1,
+        12,0,7,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // ADDP_asisdpair_only            - ADDP        Dd, Vn.2D
-        13,0,7,0,1,2,2,1,
+        13,0,7,0,1,2,2,2,
+        7,0,0,0,
         1,26,0,0,
         1,27,0,5,
         // ADDS_32_addsub_shift           - ADDS        Wd, Wn, Wm {, shift, #amount}
-        14,0,9,0,4,0,4,1,
+        14,0,9,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,2,86,202,
         // ADDS_32s_addsub_ext            - ADDS        Wd, Wn|WSP, Wm {, extend, {#amount}}
-        15,0,9,0,4,0,4,1,
+        15,0,9,0,4,0,0,4,
         1,19,0,0,
         1,20,0,5,
         1,19,0,16,
-        9,109,106,0,
+        9,109,106,202,
         // ADDS_32s_addsub_imm            - ADDS        Wd, Wn|WSP, #imm {, shift}
-        16,0,9,0,4,0,4,0,
-        1,19,0,0,0,0,0,0,
-        1,20,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
-        8,1,54,0,0,0,0,0,
+        16,0,9,0,4,0,0,4,
+        1,19,0,0,
+        1,20,0,5,
+        4,1,12,1,
+        8,1,54,0,
         // ADDS_64_addsub_shift           - ADDS        Xd, Xn, Xm {, shift, #amount}
-        17,0,9,0,4,0,4,1,
+        17,0,9,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,2,86,202,
         // ADDS_64s_addsub_ext            - ADDS        Xd, Xn|SP, Rm {, extend, {#amount}}
-        18,0,9,0,4,0,4,1,
+        18,0,9,0,4,0,0,4,
         1,17,0,0,
         1,18,0,5,
         1,21,0,16,
-        9,109,106,0,
+        9,109,106,202,
         // ADDS_64s_addsub_imm            - ADDS        Xd, Xn|SP, #imm {, shift}
-        19,0,9,0,4,0,4,0,
-        1,17,0,0,0,0,0,0,
-        1,18,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
-        8,1,54,0,0,0,0,0,
+        19,0,9,0,4,0,0,4,
+        1,17,0,0,
+        1,18,0,5,
+        4,1,12,1,
+        8,1,54,0,
         // ADDV_asimdall_only             - ADDV        Vd, Vn.T
-        20,0,10,0,1,2,2,1,
+        20,0,10,0,1,2,2,2,
+        35,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // ADD_32_addsub_ext              - ADD         Wd|WSP, Wn|WSP, Wm {, extend, {#amount}}
-        21,0,4,0,4,0,4,1,
+        21,0,4,0,4,0,0,4,
         1,20,0,0,
         1,20,0,5,
         1,19,0,16,
         9,109,106,0,
         // ADD_32_addsub_imm              - ADD         Wd|WSP, Wn|WSP, #imm {, shift}
-        22,0,4,0,4,0,4,0,
-        1,20,0,0,0,0,0,0,
-        1,20,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
-        8,1,54,0,0,0,0,0,
+        22,0,4,0,4,0,0,4,
+        1,20,0,0,
+        1,20,0,5,
+        4,1,12,1,
+        8,1,54,0,
         // ADD_32_addsub_shift            - ADD         Wd, Wn, Wm {, shift, #amount}
-        23,0,4,0,4,0,4,1,
+        23,0,4,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,2,86,202,
         // ADD_64_addsub_ext              - ADD         Xd|SP, Xn|SP, Rm {, extend, {#amount}}
-        24,0,4,0,4,0,4,1,
+        24,0,4,0,4,0,0,4,
         1,18,0,0,
         1,18,0,5,
         1,21,0,16,
-        9,109,106,0,
+        9,109,106,202,
         // ADD_64_addsub_imm              - ADD         Xd|SP, Xn|SP, #imm {, shift}
-        25,0,4,0,4,0,4,0,
-        1,18,0,0,0,0,0,0,
-        1,18,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
-        8,1,54,0,0,0,0,0,
+        25,0,4,0,4,0,0,4,
+        1,18,0,0,
+        1,18,0,5,
+        4,1,12,1,
+        8,1,54,0,
         // ADD_64_addsub_shift            - ADD         Xd, Xn, Xm {, shift, #amount}
-        26,0,4,0,4,0,4,1,
+        26,0,4,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,2,86,202,
         // ADD_asimdsame_only             - ADD         Vd.T, Vn.T, Vm.T
-        27,0,4,0,1,2,3,1,
+        27,0,4,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // ADD_asisdsame_only             - ADD         Dd, Dn, Dm
-        28,0,4,0,1,2,3,1,
+        28,0,4,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // ADRP_only_pcreladdr            - ADRP        Xd, label
-        29,0,12,0,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        7,3,21,2,5,19,29,2,
+        29,0,12,0,4,0,0,2,
+        1,17,0,0,
+        7,3,21,2,
         // ADR_only_pcreladdr             - ADR         Xd, label
-        30,0,11,0,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        7,1,21,2,5,19,29,2,
+        30,0,11,0,4,0,0,2,
+        1,17,0,0,
+        7,1,21,2,
         // AESD_b_cryptoaes               - AESD        Vd.16B, Vn.16B
-        31,0,13,0,1,1,2,1,
+        31,0,13,0,1,1,2,2,
+        5,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // AESE_b_cryptoaes               - AESE        Vd.16B, Vn.16B
-        32,0,14,0,1,1,2,1,
+        32,0,14,0,1,1,2,2,
+        5,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // AESIMC_b_cryptoaes             - AESIMC      Vd.16B, Vn.16B
-        33,0,15,0,1,1,2,1,
+        33,0,15,0,1,1,2,2,
+        5,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // AESMC_b_cryptoaes              - AESMC       Vd.16B, Vn.16B
-        34,0,16,0,1,1,2,1,
+        34,0,16,0,1,1,2,2,
+        5,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // ANDS_32_log_shift              - ANDS        Wd, Wn, Wm {, shift, #amount}
-        35,0,18,0,4,0,4,1,
+        35,0,18,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,3,86,202,
         // ANDS_32s_log_imm               - ANDS        Wd, Wn, #imm
-        36,0,18,0,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
+        36,0,18,0,4,0,0,3,
+        1,19,0,0,
+        1,19,0,5,
+        4,1,12,1,
         // ANDS_64_log_shift              - ANDS        Xd, Xn, Xm {, shift, #amount}
-        37,0,18,0,4,0,4,1,
+        37,0,18,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,3,86,202,
         // ANDS_64s_log_imm               - ANDS        Xd, Xn, #imm
-        38,0,18,0,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,13,1,10,13,0,0,
+        38,0,18,0,4,0,0,3,
+        1,17,0,0,
+        1,17,0,5,
+        4,1,13,1,
         // AND_32_log_imm                 - AND         Wd|WSP, Wn, #imm
-        39,0,17,0,4,0,3,0,
-        1,20,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
+        39,0,17,0,4,0,0,3,
+        1,20,0,0,
+        1,19,0,5,
+        4,1,12,1,
         // AND_32_log_shift               - AND         Wd, Wn, Wm {, shift, #amount}
-        40,0,17,0,4,0,4,1,
+        40,0,17,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,3,86,202,
         // AND_64_log_imm                 - AND         Xd|SP, Xn, #imm
-        41,0,17,0,4,0,3,0,
-        1,18,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,13,1,10,13,0,0,
+        41,0,17,0,4,0,0,3,
+        1,18,0,0,
+        1,17,0,5,
+        4,1,13,1,
         // AND_64_log_shift               - AND         Xd, Xn, Xm {, shift, #amount}
-        42,0,17,0,4,0,4,1,
+        42,0,17,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,3,86,202,
         // AND_asimdsame_only             - AND         Vd.T, Vn.T, Vm.T
-        43,0,17,0,1,2,3,1,
+        43,0,17,0,1,2,2,3,
+        18,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // ASRV_32_dp_2src                - ASRV        Wd, Wn, Wm
-        44,0,19,0,4,0,3,1,
+        44,0,19,0,4,0,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // ASRV_64_dp_2src                - ASRV        Xd, Xn, Xm
-        45,0,19,0,4,0,3,1,
+        45,0,19,0,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // AUTDA_64p_dp_1src              - AUTDA       Xd, Xn|SP
-        46,0,20,0,4,51,2,1,
+        46,0,20,0,4,51,0,2,
         1,17,0,0,
         1,18,0,5,
         // AUTDB_64p_dp_1src              - AUTDB       Xd, Xn|SP
-        47,0,21,0,4,51,2,1,
+        47,0,21,0,4,51,0,2,
         1,17,0,0,
         1,18,0,5,
         // AUTDZA_64z_dp_1src             - AUTDZA      Xd
-        48,0,22,0,4,51,1,1,
+        48,0,22,0,4,51,0,1,
         1,17,0,0,
         // AUTDZB_64z_dp_1src             - AUTDZB      Xd
-        49,0,23,0,4,51,1,1,
+        49,0,23,0,4,51,0,1,
         1,17,0,0,
         // AUTIA171615_64lr_dp_1src       - AUTIA171615
-        50,0,26,0,4,52,0,1,
+        50,0,26,0,4,52,0,0,
         // AUTIA1716_hi_hints             - AUTIA1716  
-        51,0,25,0,6,51,0,1,
+        51,0,25,0,6,51,0,0,
         // AUTIASPPCR_64lrr_dp_1src       - AUTIASPPCR  Xn
-        52,0,29,0,4,52,1,1,
+        52,0,29,0,4,52,0,1,
         1,17,0,5,
         // AUTIASPPC_only_dp_1src_imm     - AUTIASPPC   label
-        53,0,28,0,4,52,1,0,
-        7,2,16,1,5,16,0,0,
+        53,0,28,0,4,52,0,1,
+        7,2,16,1,
         // AUTIASP_hi_hints               - AUTIASP    
-        54,0,27,0,6,51,0,1,
+        54,0,27,0,6,51,0,0,
         // AUTIAZ_hi_hints                - AUTIAZ     
-        55,0,30,0,6,51,0,1,
+        55,0,30,0,6,51,0,0,
         // AUTIA_64p_dp_1src              - AUTIA       Xd, Xn|SP
-        56,0,24,0,4,51,2,1,
+        56,0,24,0,4,51,0,2,
         1,17,0,0,
         1,18,0,5,
         // AUTIB171615_64lr_dp_1src       - AUTIB171615
-        57,0,33,0,4,52,0,1,
+        57,0,33,0,4,52,0,0,
         // AUTIB1716_hi_hints             - AUTIB1716  
-        58,0,32,0,6,51,0,1,
+        58,0,32,0,6,51,0,0,
         // AUTIBSPPCR_64lrr_dp_1src       - AUTIBSPPCR  Xn
-        59,0,36,0,4,52,1,1,
+        59,0,36,0,4,52,0,1,
         1,17,0,5,
         // AUTIBSPPC_only_dp_1src_imm     - AUTIBSPPC   label
-        60,0,35,0,4,52,1,0,
-        7,2,16,1,5,16,0,0,
+        60,0,35,0,4,52,0,1,
+        7,2,16,1,
         // AUTIBSP_hi_hints               - AUTIBSP    
-        61,0,34,0,6,51,0,1,
+        61,0,34,0,6,51,0,0,
         // AUTIBZ_hi_hints                - AUTIBZ     
-        62,0,37,0,6,51,0,1,
+        62,0,37,0,6,51,0,0,
         // AUTIB_64p_dp_1src              - AUTIB       Xd, Xn|SP
-        63,0,31,0,4,51,2,1,
+        63,0,31,0,4,51,0,2,
         1,17,0,0,
         1,18,0,5,
         // AUTIZA_64z_dp_1src             - AUTIZA      Xd
-        64,0,38,0,4,51,1,1,
+        64,0,38,0,4,51,0,1,
         1,17,0,0,
         // AUTIZB_64z_dp_1src             - AUTIZB      Xd
-        65,0,39,0,4,51,1,1,
+        65,0,39,0,4,51,0,1,
         1,17,0,0,
         // AXFLAG_m_pstate                - AXFLAG     
-        66,0,40,0,6,32,0,1,
+        66,0,40,0,6,32,0,0,
         // BCAX_vvv16_crypto4             - BCAX        Vd.16B, Vn.16B, Vm.16B, Va.16B
-        67,0,43,0,1,60,4,1,
+        67,0,43,0,1,60,2,4,
+        5,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         1,27,0,10,
         // BC_only_condbranch             - BC          condlabel
-        68,0,42,0,4,34,1,1,
+        68,0,42,0,4,34,0,1,
         10,65,0,4,
         // BF1CVTL_asimdmisc_v            - BF1CVTL     Vd.8H, Vn.Ta
-        69,0,44,0,1,23,2,1,
+        69,0,44,0,1,23,4,2,
+        11,18,0,0,
         1,27,0,0,
         1,27,0,5,
         // BF2CVTL_asimdmisc_v            - BF2CVTL     Vd.8H, Vn.Ta
-        70,0,45,0,1,23,2,1,
+        70,0,45,0,1,23,4,2,
+        11,18,0,0,
         1,27,0,0,
         1,27,0,5,
         // BFCVTN_asimdmisc_4s            - BFCVTN      Vd.Ta, Vn.4S
-        71,0,47,0,1,7,2,1,
+        71,0,47,0,1,7,4,2,
+        17,10,0,0,
         1,27,0,0,
         1,27,0,5,
         // BFCVT_bs_floatdp1              - BFCVT       Hd, Sn
-        72,0,46,0,2,7,2,1,
+        72,0,46,0,2,7,0,2,
         1,24,0,0,
         1,25,0,5,
         // BFDOT_asimdelem_e              - BFDOT       Vd.Ta, Vn.Tb, Vm.2H[index]
-        73,0,48,0,1,7,3,1,
+        73,0,48,0,1,7,6,3,
+        16,17,8,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,0,16,
+        1,27,3,16,
         // BFDOT_asimdsame2_d             - BFDOT       Vd.Ta, Vn.Tb, Vm.Tb
-        74,0,48,0,1,7,3,1,
+        74,0,48,0,1,7,4,3,
+        16,17,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // BFMLAL_asimdelem_f             - BFMLAL      btVd.4S, Vn.8H, Vm.H[index]
-        75,0,50,0,1,7,3,1,
+        75,0,50,0,1,7,4,3,
+        11,3,0,0,
         1,23,0,0,
         1,27,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // BFMLAL_asimdsame2_f            - BFMLAL      btVd.4S, Vn.8H, Vm.8H
-        76,0,50,0,1,7,3,1,
+        76,0,50,0,1,7,2,3,
+        11,0,0,0,
         1,23,0,0,
         1,27,0,5,
         1,27,0,16,
         // BFMMLA_asimdsame2_e            - BFMMLA      Vd.4S, Vn.8H, Vm.8H
-        77,0,51,0,1,7,3,1,
+        77,0,51,0,1,7,4,3,
+        10,11,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // BFM_32m_bitfield               - BFM         Wd, Wn, #immr, #imms
-        78,0,49,0,4,0,4,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,6,1,16,6,0,0,
-        4,1,6,1,10,6,0,0,
+        78,0,49,0,4,0,0,4,
+        1,19,0,0,
+        1,19,0,5,
+        4,1,6,1,
+        4,1,6,1,
         // BFM_64m_bitfield               - BFM         Xd, Xn, #immr, #imms
-        79,0,49,0,4,0,4,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,6,1,16,6,0,0,
-        4,1,6,1,10,6,0,0,
+        79,0,49,0,4,0,0,4,
+        1,17,0,0,
+        1,17,0,5,
+        4,1,6,1,
+        4,1,6,1,
         // BICS_32_log_shift              - BICS        Wd, Wn, Wm {, shift, #amount}
-        80,0,53,0,4,0,4,1,
+        80,0,53,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,3,86,202,
         // BICS_64_log_shift              - BICS        Xd, Xn, Xm {, shift, #amount}
-        81,0,53,0,4,0,4,1,
+        81,0,53,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,3,86,202,
         // BIC_32_log_shift               - BIC         Wd, Wn, Wm {, shift, #amount}
-        82,0,52,0,4,0,4,1,
+        82,0,52,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,3,86,202,
         // BIC_64_log_shift               - BIC         Xd, Xn, Xm {, shift, #amount}
-        83,0,52,0,4,0,4,1,
+        83,0,52,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,3,86,202,
         // BIC_asimdimm_l_hl              - BIC         Vd.T, #imm8 {, LSL #amount}
-        84,0,52,0,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        4,1,8,2,16,3,5,5,
-        8,6,0,45,0,0,0,0,
+        84,0,52,0,1,2,2,3,
+        17,0,0,0,
+        1,27,0,0,
+        4,1,8,2,
+        8,6,0,45,
         // BIC_asimdimm_l_sl              - BIC         Vd.T, #imm8 {, LSL #amount}
-        85,0,52,0,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        4,1,8,2,16,3,5,5,
-        8,6,0,77,0,0,0,0,
+        85,0,52,0,1,2,2,3,
+        16,0,0,0,
+        1,27,0,0,
+        4,1,8,2,
+        8,6,0,77,
         // BIC_asimdsame_only             - BIC         Vd.T, Vn.T, Vm.T
-        86,0,52,0,1,2,3,1,
+        86,0,52,0,1,2,2,3,
+        18,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // BIF_asimdsame_only             - BIF         Vd.T, Vn.T, Vm.T
-        87,0,54,0,1,2,3,1,
+        87,0,54,0,1,2,2,3,
+        18,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // BIT_asimdsame_only             - BIT         Vd.T, Vn.T, Vm.T
-        88,0,55,0,1,2,3,1,
+        88,0,55,0,1,2,2,3,
+        18,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // BLRAAZ_64_branch_reg           - BLRAAZ      Xn
-        89,0,59,0,4,51,1,1,
+        89,0,59,0,4,51,0,1,
         1,17,0,5,
         // BLRAA_64p_branch_reg           - BLRAA       Xn, Xm|SP
-        90,0,58,0,4,51,2,1,
+        90,0,58,0,4,51,0,2,
         1,17,0,5,
         1,18,0,0,
         // BLRABZ_64_branch_reg           - BLRABZ      Xn
-        91,0,61,0,4,51,1,1,
+        91,0,61,0,4,51,0,1,
         1,17,0,5,
         // BLRAB_64p_branch_reg           - BLRAB       Xn, Xm|SP
-        92,0,60,0,4,51,2,1,
+        92,0,60,0,4,51,0,2,
         1,17,0,5,
         1,18,0,0,
         // BLR_64_branch_reg              - BLR         Xn
-        93,0,57,0,4,0,1,1,
+        93,0,57,0,4,0,0,1,
         1,17,0,5,
         // BL_only_branch_imm             - BL          label
-        94,0,56,0,4,0,1,0,
-        7,1,26,1,0,26,0,0,
+        94,0,56,0,4,0,0,1,
+        7,1,26,1,
         // BRAAZ_64_branch_reg            - BRAAZ       Xn
-        95,0,64,0,4,51,1,1,
+        95,0,64,0,4,51,0,1,
         1,17,0,5,
         // BRAA_64p_branch_reg            - BRAA        Xn, Xm|SP
-        96,0,63,0,4,51,2,1,
+        96,0,63,0,4,51,0,2,
         1,17,0,5,
         1,18,0,0,
         // BRABZ_64_branch_reg            - BRABZ       Xn
-        97,0,66,0,4,51,1,1,
+        97,0,66,0,4,51,0,1,
         1,17,0,5,
         // BRAB_64p_branch_reg            - BRAB        Xn, Xm|SP
-        98,0,65,0,4,51,2,1,
+        98,0,65,0,4,51,0,2,
         1,17,0,5,
         1,18,0,0,
         // BRK_ex_exception               - BRK         #imm
-        99,0,67,0,6,0,1,0,
-        4,1,16,1,5,16,0,0,
+        99,0,67,0,6,0,0,1,
+        4,1,16,1,
         // BR_64_branch_reg               - BR          Xn
-        100,0,62,0,4,0,1,1,
+        100,0,62,0,4,0,0,1,
         1,17,0,5,
         // BSL_asimdsame_only             - BSL         Vd.T, Vn.T, Vm.T
-        101,0,68,0,1,2,3,1,
+        101,0,68,0,1,2,2,3,
+        18,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // BTI_hb_hints                   - BTI         {targets}
-        102,0,69,0,6,8,1,1,
+        102,0,69,0,6,8,0,1,
         10,2,6,2,
         // B_only_branch_imm              - B           label
-        103,0,41,0,4,0,1,0,
-        7,1,26,1,0,26,0,0,
+        103,0,41,0,4,0,0,1,
+        7,1,26,1,
         // B_only_condbranch              - B           condlabel
-        104,0,41,0,4,0,1,1,
+        104,0,41,0,4,0,0,1,
         10,65,0,4,
         // CASAB_c32_comswap              - CASAB       Ws, Wt, [Xn|SP{, #0}]
-        105,0,72,0,4,44,3,1,
+        105,0,72,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CASAH_c32_comswap              - CASAH       Ws, Wt, [Xn|SP{, #0}]
-        106,0,73,0,4,44,3,1,
+        106,0,73,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CASALB_c32_comswap             - CASALB      Ws, Wt, [Xn|SP{, #0}]
-        107,0,75,0,4,44,3,1,
+        107,0,75,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CASALH_c32_comswap             - CASALH      Ws, Wt, [Xn|SP{, #0}]
-        108,0,76,0,4,44,3,1,
+        108,0,76,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CASALT_c64_comswap_unpriv      - CASALT      Xs, Xt, [Xn|SP{, #0}]
-        109,0,77,0,4,47,3,1,
+        109,0,77,0,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,5,165,0,
         // CASAL_c32_comswap              - CASAL       Ws, Wt, [Xn|SP{, #0}]
-        110,0,74,0,4,44,3,1,
+        110,0,74,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CASAL_c64_comswap              - CASAL       Xs, Xt, [Xn|SP{, #0}]
-        111,0,74,0,4,44,3,1,
+        111,0,74,0,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,5,165,0,
         // CASAT_c64_comswap_unpriv       - CASAT       Xs, Xt, [Xn|SP{, #0}]
-        112,0,78,0,4,47,3,1,
+        112,0,78,0,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,5,165,0,
         // CASA_c32_comswap               - CASA        Ws, Wt, [Xn|SP{, #0}]
-        113,0,71,0,4,44,3,1,
+        113,0,71,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CASA_c64_comswap               - CASA        Xs, Xt, [Xn|SP{, #0}]
-        114,0,71,0,4,44,3,1,
+        114,0,71,0,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,5,165,0,
         // CASB_c32_comswap               - CASB        Ws, Wt, [Xn|SP{, #0}]
-        115,0,79,0,4,44,3,1,
+        115,0,79,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CASH_c32_comswap               - CASH        Ws, Wt, [Xn|SP{, #0}]
-        116,0,80,0,4,44,3,1,
+        116,0,80,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CASLB_c32_comswap              - CASLB       Ws, Wt, [Xn|SP{, #0}]
-        117,0,82,0,4,44,3,1,
+        117,0,82,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CASLH_c32_comswap              - CASLH       Ws, Wt, [Xn|SP{, #0}]
-        118,0,83,0,4,44,3,1,
+        118,0,83,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CASLT_c64_comswap_unpriv       - CASLT       Xs, Xt, [Xn|SP{, #0}]
-        119,0,84,0,4,47,3,1,
+        119,0,84,0,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,5,165,0,
         // CASL_c32_comswap               - CASL        Ws, Wt, [Xn|SP{, #0}]
-        120,0,81,0,4,44,3,1,
+        120,0,81,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CASL_c64_comswap               - CASL        Xs, Xt, [Xn|SP{, #0}]
-        121,0,81,0,4,44,3,1,
+        121,0,81,0,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,5,165,0,
         // CASPALT_cp64_comswappr_unpriv  - CASPALT     Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]
-        122,0,88,0,4,47,5,1,
+        122,0,88,0,4,47,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,5,165,0,
         // CASPAL_cp32_comswappr          - CASPAL      Ws, W(s+1), Wt, W(t+1), [Xn|SP{, #0}]
-        123,0,87,0,4,44,5,1,
+        123,0,87,0,4,44,0,5,
         1,19,0,16,
         1,19,0,16,
         1,19,0,0,
         1,19,0,0,
         3,5,165,0,
         // CASPAL_cp64_comswappr          - CASPAL      Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]
-        124,0,87,0,4,44,5,1,
+        124,0,87,0,4,44,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,5,165,0,
         // CASPAT_cp64_comswappr_unpriv   - CASPAT      Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]
-        125,0,89,0,4,47,5,1,
+        125,0,89,0,4,47,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,5,165,0,
         // CASPA_cp32_comswappr           - CASPA       Ws, W(s+1), Wt, W(t+1), [Xn|SP{, #0}]
-        126,0,86,0,4,44,5,1,
+        126,0,86,0,4,44,0,5,
         1,19,0,16,
         1,19,0,16,
         1,19,0,0,
         1,19,0,0,
         3,5,165,0,
         // CASPA_cp64_comswappr           - CASPA       Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]
-        127,0,86,0,4,44,5,1,
+        127,0,86,0,4,44,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,5,165,0,
         // CASPLT_cp64_comswappr_unpriv   - CASPLT      Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]
-        128,0,91,0,4,47,5,1,
+        128,0,91,0,4,47,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,5,165,0,
         // CASPL_cp32_comswappr           - CASPL       Ws, W(s+1), Wt, W(t+1), [Xn|SP{, #0}]
-        129,0,90,0,4,44,5,1,
+        129,0,90,0,4,44,0,5,
         1,19,0,16,
         1,19,0,16,
         1,19,0,0,
         1,19,0,0,
         3,5,165,0,
         // CASPL_cp64_comswappr           - CASPL       Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]
-        130,0,90,0,4,44,5,1,
+        130,0,90,0,4,44,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,5,165,0,
         // CASPT_cp64_comswappr_unpriv    - CASPT       Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]
-        131,0,92,0,4,47,5,1,
+        131,0,92,0,4,47,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,5,165,0,
         // CASP_cp32_comswappr            - CASP        Ws, W(s+1), Wt, W(t+1), [Xn|SP{, #0}]
-        132,0,85,0,4,44,5,1,
+        132,0,85,0,4,44,0,5,
         1,19,0,16,
         1,19,0,16,
         1,19,0,0,
         1,19,0,0,
         3,5,165,0,
         // CASP_cp64_comswappr            - CASP        Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]
-        133,0,85,0,4,44,5,1,
+        133,0,85,0,4,44,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,5,165,0,
         // CAST_c64_comswap_unpriv        - CAST        Xs, Xt, [Xn|SP{, #0}]
-        134,0,93,0,4,47,3,1,
+        134,0,93,0,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,5,165,0,
         // CAS_c32_comswap                - CAS         Ws, Wt, [Xn|SP{, #0}]
-        135,0,70,0,4,44,3,1,
+        135,0,70,0,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // CAS_c64_comswap                - CAS         Xs, Xt, [Xn|SP{, #0}]
-        136,0,70,0,4,44,3,1,
+        136,0,70,0,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,5,165,0,
         // CBBEQ_8_regs                   - CBBEQ       Wt, Wm, label
-        137,0,94,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        137,0,94,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBBGE_8_regs                   - CBBGE       Wt, Wm, label
-        138,0,95,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        138,0,95,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBBGT_8_regs                   - CBBGT       Wt, Wm, label
-        139,0,96,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        139,0,96,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBBHI_8_regs                   - CBBHI       Wt, Wm, label
-        140,0,97,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        140,0,97,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBBHS_8_regs                   - CBBHS       Wt, Wm, label
-        141,0,98,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        141,0,98,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBBNE_8_regs                   - CBBNE       Wt, Wm, label
-        142,0,99,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        142,0,99,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBEQ_32_imm                    - CBEQ        Wt, #imm, label
-        143,0,100,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        143,0,100,0,4,11,0,3,
+        1,19,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBEQ_32_regs                   - CBEQ        Wt, Wm, label
-        144,0,100,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        144,0,100,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBEQ_64_imm                    - CBEQ        Xt, #imm, label
-        145,0,100,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        145,0,100,0,4,11,0,3,
+        1,17,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBEQ_64_regs                   - CBEQ        Xt, Xm, label
-        146,0,100,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        146,0,100,0,4,11,0,3,
+        1,17,0,0,
+        1,17,0,16,
+        7,1,9,1,
         // CBGE_32_regs                   - CBGE        Wt, Wm, label
-        147,0,101,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        147,0,101,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBGE_64_regs                   - CBGE        Xt, Xm, label
-        148,0,101,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        148,0,101,0,4,11,0,3,
+        1,17,0,0,
+        1,17,0,16,
+        7,1,9,1,
         // CBGT_32_imm                    - CBGT        Wt, #imm, label
-        149,0,102,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        149,0,102,0,4,11,0,3,
+        1,19,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBGT_32_regs                   - CBGT        Wt, Wm, label
-        150,0,102,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        150,0,102,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBGT_64_imm                    - CBGT        Xt, #imm, label
-        151,0,102,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        151,0,102,0,4,11,0,3,
+        1,17,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBGT_64_regs                   - CBGT        Xt, Xm, label
-        152,0,102,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        152,0,102,0,4,11,0,3,
+        1,17,0,0,
+        1,17,0,16,
+        7,1,9,1,
         // CBHEQ_16_regs                  - CBHEQ       Wt, Wm, label
-        153,0,103,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        153,0,103,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBHGE_16_regs                  - CBHGE       Wt, Wm, label
-        154,0,104,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        154,0,104,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBHGT_16_regs                  - CBHGT       Wt, Wm, label
-        155,0,105,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        155,0,105,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBHHI_16_regs                  - CBHHI       Wt, Wm, label
-        156,0,106,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        156,0,106,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBHHS_16_regs                  - CBHHS       Wt, Wm, label
-        157,0,107,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        157,0,107,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBHI_32_imm                    - CBHI        Wt, #imm, label
-        158,0,108,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        158,0,108,0,4,11,0,3,
+        1,19,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBHI_32_regs                   - CBHI        Wt, Wm, label
-        159,0,108,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        159,0,108,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBHI_64_imm                    - CBHI        Xt, #imm, label
-        160,0,108,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        160,0,108,0,4,11,0,3,
+        1,17,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBHI_64_regs                   - CBHI        Xt, Xm, label
-        161,0,108,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        161,0,108,0,4,11,0,3,
+        1,17,0,0,
+        1,17,0,16,
+        7,1,9,1,
         // CBHNE_16_regs                  - CBHNE       Wt, Wm, label
-        162,0,109,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        162,0,109,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBHS_32_regs                   - CBHS        Wt, Wm, label
-        163,0,110,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        163,0,110,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBHS_64_regs                   - CBHS        Xt, Xm, label
-        164,0,110,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        164,0,110,0,4,11,0,3,
+        1,17,0,0,
+        1,17,0,16,
+        7,1,9,1,
         // CBLO_32_imm                    - CBLO        Wt, #imm, label
-        165,0,111,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        165,0,111,0,4,11,0,3,
+        1,19,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBLO_64_imm                    - CBLO        Xt, #imm, label
-        166,0,111,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        166,0,111,0,4,11,0,3,
+        1,17,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBLT_32_imm                    - CBLT        Wt, #imm, label
-        167,0,112,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        167,0,112,0,4,11,0,3,
+        1,19,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBLT_64_imm                    - CBLT        Xt, #imm, label
-        168,0,112,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        168,0,112,0,4,11,0,3,
+        1,17,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBNE_32_imm                    - CBNE        Wt, #imm, label
-        169,0,113,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        169,0,113,0,4,11,0,3,
+        1,19,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBNE_32_regs                   - CBNE        Wt, Wm, label
-        170,0,113,0,4,11,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        170,0,113,0,4,11,0,3,
+        1,19,0,0,
+        1,19,0,16,
+        7,1,9,1,
         // CBNE_64_imm                    - CBNE        Xt, #imm, label
-        171,0,113,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        7,1,9,1,5,9,0,0,
+        171,0,113,0,4,11,0,3,
+        1,17,0,0,
+        4,1,6,1,
+        7,1,9,1,
         // CBNE_64_regs                   - CBNE        Xt, Xm, label
-        172,0,113,0,4,11,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,16,0,0,0,0,
-        7,1,9,1,5,9,0,0,
+        172,0,113,0,4,11,0,3,
+        1,17,0,0,
+        1,17,0,16,
+        7,1,9,1,
         // CBNZ_32_compbranch             - CBNZ        Wt, label
-        173,0,114,0,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        7,1,19,1,5,19,0,0,
+        173,0,114,0,4,0,0,2,
+        1,19,0,0,
+        7,1,19,1,
         // CBNZ_64_compbranch             - CBNZ        Xt, label
-        174,0,114,0,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        7,1,19,1,5,19,0,0,
+        174,0,114,0,4,0,0,2,
+        1,17,0,0,
+        7,1,19,1,
         // CBZ_32_compbranch              - CBZ         Wt, label
-        175,0,115,0,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        7,1,19,1,5,19,0,0,
+        175,0,115,0,4,0,0,2,
+        1,19,0,0,
+        7,1,19,1,
         // CBZ_64_compbranch              - CBZ         Xt, label
-        176,0,115,0,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        7,1,19,1,5,19,0,0,
+        176,0,115,0,4,0,0,2,
+        1,17,0,0,
+        7,1,19,1,
         // CCMN_32_condcmp_imm            - CCMN        Wn, #imm, #nzcv, cond
-        177,0,116,0,4,0,4,0,
-        1,19,0,5,0,0,0,0,
-        4,1,5,1,16,5,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        177,0,116,0,4,0,0,4,
+        1,19,0,5,
+        4,1,5,1,
+        4,1,4,1,
+        10,65,12,4,
         // CCMN_32_condcmp_reg            - CCMN        Wn, Wm, #nzcv, cond
-        178,0,116,0,4,0,4,0,
-        1,19,0,5,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        178,0,116,0,4,0,0,4,
+        1,19,0,5,
+        1,19,0,16,
+        4,1,4,1,
+        10,65,12,4,
         // CCMN_64_condcmp_imm            - CCMN        Xn, #imm, #nzcv, cond
-        179,0,116,0,4,0,4,0,
-        1,17,0,5,0,0,0,0,
-        4,1,5,1,16,5,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        179,0,116,0,4,0,0,4,
+        1,17,0,5,
+        4,1,5,1,
+        4,1,4,1,
+        10,65,12,4,
         // CCMN_64_condcmp_reg            - CCMN        Xn, Xm, #nzcv, cond
-        180,0,116,0,4,0,4,0,
-        1,17,0,5,0,0,0,0,
-        1,17,0,16,0,0,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        180,0,116,0,4,0,0,4,
+        1,17,0,5,
+        1,17,0,16,
+        4,1,4,1,
+        10,65,12,4,
         // CCMP_32_condcmp_imm            - CCMP        Wn, #imm, #nzcv, cond
-        181,0,117,0,4,0,4,0,
-        1,19,0,5,0,0,0,0,
-        4,1,5,1,16,5,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        181,0,117,0,4,0,0,4,
+        1,19,0,5,
+        4,1,5,1,
+        4,1,4,1,
+        10,65,12,4,
         // CCMP_32_condcmp_reg            - CCMP        Wn, Wm, #nzcv, cond
-        182,0,117,0,4,0,4,0,
-        1,19,0,5,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        182,0,117,0,4,0,0,4,
+        1,19,0,5,
+        1,19,0,16,
+        4,1,4,1,
+        10,65,12,4,
         // CCMP_64_condcmp_imm            - CCMP        Xn, #imm, #nzcv, cond
-        183,0,117,0,4,0,4,0,
-        1,17,0,5,0,0,0,0,
-        4,1,5,1,16,5,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        183,0,117,0,4,0,0,4,
+        1,17,0,5,
+        4,1,5,1,
+        4,1,4,1,
+        10,65,12,4,
         // CCMP_64_condcmp_reg            - CCMP        Xn, Xm, #nzcv, cond
-        184,0,117,0,4,0,4,0,
-        1,17,0,5,0,0,0,0,
-        1,17,0,16,0,0,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        184,0,117,0,4,0,0,4,
+        1,17,0,5,
+        1,17,0,16,
+        4,1,4,1,
+        10,65,12,4,
         // CFINV_m_pstate                 - CFINV      
-        185,0,118,0,6,31,0,1,
+        185,0,118,0,6,31,0,0,
         // CHKFEAT_hf_hints               - CHKFEAT     X16
-        186,0,119,0,6,9,1,1,
-        12,1,0,0,
+        186,0,119,0,6,9,0,1,
+        12,1,0,5,
         // CLRBHB_hi_hints                - CLRBHB     
-        187,0,120,0,6,10,0,1,
+        187,0,120,0,6,10,0,0,
         // CLREX_bn_barriers              - CLREX       {#imm}
-        188,0,121,0,6,0,1,0,
-        4,1,4,1,8,4,0,0,
+        188,0,121,0,6,0,0,1,
+        4,1,4,1,
         // CLS_32_dp_1src                 - CLS         Wd, Wn
-        189,0,122,0,4,0,2,1,
+        189,0,122,0,4,0,0,2,
         1,19,0,0,
         1,19,0,5,
         // CLS_64_dp_1src                 - CLS         Xd, Xn
-        190,0,122,0,4,0,2,1,
+        190,0,122,0,4,0,0,2,
         1,17,0,0,
         1,17,0,5,
         // CLS_asimdmisc_r                - CLS         Vd.T, Vn.T
-        191,0,122,0,1,2,2,1,
+        191,0,122,0,1,2,2,2,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // CLZ_32_dp_1src                 - CLZ         Wd, Wn
-        192,0,123,0,4,0,2,1,
+        192,0,123,0,4,0,0,2,
         1,19,0,0,
         1,19,0,5,
         // CLZ_64_dp_1src                 - CLZ         Xd, Xn
-        193,0,123,0,4,0,2,1,
+        193,0,123,0,4,0,0,2,
         1,17,0,0,
         1,17,0,5,
         // CLZ_asimdmisc_r                - CLZ         Vd.T, Vn.T
-        194,0,123,0,1,2,2,1,
+        194,0,123,0,1,2,2,2,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // CMEQ_asimdmisc_z               - CMEQ        Vd.T, Vn.T, #0
-        195,0,124,0,1,2,3,1,
+        195,0,124,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,9,0,0,
+        4,9,0,1,
         // CMEQ_asimdsame_only            - CMEQ        Vd.T, Vn.T, Vm.T
-        196,0,124,0,1,2,3,1,
+        196,0,124,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // CMEQ_asisdmisc_z               - CMEQ        Dd, Dn, #0
-        197,0,124,0,1,2,3,1,
+        197,0,124,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
-        4,9,0,0,
+        4,9,0,16,
         // CMEQ_asisdsame_only            - CMEQ        Dd, Dn, Dm
-        198,0,124,0,1,2,3,1,
+        198,0,124,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // CMGE_asimdmisc_z               - CMGE        Vd.T, Vn.T, #0
-        199,0,125,0,1,2,3,1,
+        199,0,125,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,9,0,0,
+        4,9,0,16,
         // CMGE_asimdsame_only            - CMGE        Vd.T, Vn.T, Vm.T
-        200,0,125,0,1,2,3,1,
+        200,0,125,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // CMGE_asisdmisc_z               - CMGE        Dd, Dn, #0
-        201,0,125,0,1,2,3,1,
+        201,0,125,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
-        4,9,0,0,
+        4,9,0,16,
         // CMGE_asisdsame_only            - CMGE        Dd, Dn, Dm
-        202,0,125,0,1,2,3,1,
+        202,0,125,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // CMGT_asimdmisc_z               - CMGT        Vd.T, Vn.T, #0
-        203,0,126,0,1,2,3,1,
+        203,0,126,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,9,0,0,
+        4,9,0,16,
         // CMGT_asimdsame_only            - CMGT        Vd.T, Vn.T, Vm.T
-        204,0,126,0,1,2,3,1,
+        204,0,126,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // CMGT_asisdmisc_z               - CMGT        Dd, Dn, #0
-        205,0,126,0,1,2,3,1,
+        205,0,126,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
-        4,9,0,0,
+        4,9,0,16,
         // CMGT_asisdsame_only            - CMGT        Dd, Dn, Dm
-        206,0,126,0,1,2,3,1,
+        206,0,126,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // CMHI_asimdsame_only            - CMHI        Vd.T, Vn.T, Vm.T
-        207,0,127,0,1,2,3,1,
+        207,0,127,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // CMHI_asisdsame_only            - CMHI        Dd, Dn, Dm
-        208,0,127,0,1,2,3,1,
+        208,0,127,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // CMHS_asimdsame_only            - CMHS        Vd.T, Vn.T, Vm.T
-        209,0,128,0,1,2,3,1,
+        209,0,128,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // CMHS_asisdsame_only            - CMHS        Dd, Dn, Dm
-        210,0,128,0,1,2,3,1,
+        210,0,128,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // CMLE_asimdmisc_z               - CMLE        Vd.T, Vn.T, #0
-        211,0,129,0,1,2,3,1,
+        211,0,129,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,9,0,0,
+        4,9,0,16,
         // CMLE_asisdmisc_z               - CMLE        Dd, Dn, #0
-        212,0,129,0,1,2,3,1,
+        212,0,129,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
-        4,9,0,0,
+        4,9,0,16,
         // CMLT_asimdmisc_z               - CMLT        Vd.T, Vn.T, #0
-        213,0,130,0,1,2,3,1,
+        213,0,130,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,9,0,0,
+        4,9,0,16,
         // CMLT_asisdmisc_z               - CMLT        Dd, Dn, #0
-        214,0,130,0,1,2,3,1,
+        214,0,130,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
-        4,9,0,0,
+        4,9,0,16,
         // CMTST_asimdsame_only           - CMTST       Vd.T, Vn.T, Vm.T
-        215,0,131,0,1,2,3,1,
+        215,0,131,0,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // CMTST_asisdsame_only           - CMTST       Dd, Dn, Dm
-        216,0,131,0,1,2,3,1,
+        216,0,131,0,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // CNT_32_dp_1src                 - CNT         Wd, Wn
-        217,0,132,0,4,14,2,1,
+        217,0,132,0,4,14,0,2,
         1,19,0,0,
         1,19,0,5,
         // CNT_64_dp_1src                 - CNT         Xd, Xn
-        218,0,132,0,4,14,2,1,
+        218,0,132,0,4,14,0,2,
         1,17,0,0,
         1,17,0,5,
         // CNT_asimdmisc_r                - CNT         Vd.T, Vn.T
-        219,0,132,0,1,2,2,1,
+        219,0,132,0,1,2,2,2,
+        34,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // CPYEN_cpy_memcms               - CPYEN       [Xd]!, [Xs]!, Xn!
-        220,0,134,0,4,48,3,1,
+        220,0,134,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYERN_cpy_memcms              - CPYERN      [Xd]!, [Xs]!, Xn!
-        221,0,135,0,4,48,3,1,
+        221,0,135,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYERTN_cpy_memcms             - CPYERTN     [Xd]!, [Xs]!, Xn!
-        222,0,137,0,4,48,3,1,
+        222,0,137,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYERTRN_cpy_memcms            - CPYERTRN    [Xd]!, [Xs]!, Xn!
-        223,0,138,0,4,48,3,1,
+        223,0,138,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYERTWN_cpy_memcms            - CPYERTWN    [Xd]!, [Xs]!, Xn!
-        224,0,139,0,4,48,3,1,
+        224,0,139,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYERT_cpy_memcms              - CPYERT      [Xd]!, [Xs]!, Xn!
-        225,0,136,0,4,48,3,1,
+        225,0,136,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYETN_cpy_memcms              - CPYETN      [Xd]!, [Xs]!, Xn!
-        226,0,141,0,4,48,3,1,
+        226,0,141,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYETRN_cpy_memcms             - CPYETRN     [Xd]!, [Xs]!, Xn!
-        227,0,142,0,4,48,3,1,
+        227,0,142,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYETWN_cpy_memcms             - CPYETWN     [Xd]!, [Xs]!, Xn!
-        228,0,143,0,4,48,3,1,
+        228,0,143,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYET_cpy_memcms               - CPYET       [Xd]!, [Xs]!, Xn!
-        229,0,140,0,4,48,3,1,
+        229,0,140,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYEWN_cpy_memcms              - CPYEWN      [Xd]!, [Xs]!, Xn!
-        230,0,144,0,4,48,3,1,
+        230,0,144,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYEWTN_cpy_memcms             - CPYEWTN     [Xd]!, [Xs]!, Xn!
-        231,0,146,0,4,48,3,1,
+        231,0,146,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYEWTRN_cpy_memcms            - CPYEWTRN    [Xd]!, [Xs]!, Xn!
-        232,0,147,0,4,48,3,1,
+        232,0,147,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYEWTWN_cpy_memcms            - CPYEWTWN    [Xd]!, [Xs]!, Xn!
-        233,0,148,0,4,48,3,1,
+        233,0,148,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYEWT_cpy_memcms              - CPYEWT      [Xd]!, [Xs]!, Xn!
-        234,0,145,0,4,48,3,1,
+        234,0,145,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYE_cpy_memcms                - CPYE        [Xd]!, [Xs]!, Xn!
-        235,0,133,0,4,48,3,1,
+        235,0,133,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFEN_cpy_memcms              - CPYFEN      [Xd]!, [Xs]!, Xn!
-        236,0,150,0,4,48,3,1,
+        236,0,150,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFERN_cpy_memcms             - CPYFERN     [Xd]!, [Xs]!, Xn!
-        237,0,151,0,4,48,3,1,
+        237,0,151,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFERTN_cpy_memcms            - CPYFERTN    [Xd]!, [Xs]!, Xn!
-        238,0,153,0,4,48,3,1,
+        238,0,153,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFERTRN_cpy_memcms           - CPYFERTRN   [Xd]!, [Xs]!, Xn!
-        239,0,154,0,4,48,3,1,
+        239,0,154,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFERTWN_cpy_memcms           - CPYFERTWN   [Xd]!, [Xs]!, Xn!
-        240,0,155,0,4,48,3,1,
+        240,0,155,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFERT_cpy_memcms             - CPYFERT     [Xd]!, [Xs]!, Xn!
-        241,0,152,0,4,48,3,1,
+        241,0,152,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFETN_cpy_memcms             - CPYFETN     [Xd]!, [Xs]!, Xn!
-        242,0,157,0,4,48,3,1,
+        242,0,157,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFETRN_cpy_memcms            - CPYFETRN    [Xd]!, [Xs]!, Xn!
-        243,0,158,0,4,48,3,1,
+        243,0,158,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFETWN_cpy_memcms            - CPYFETWN    [Xd]!, [Xs]!, Xn!
-        244,0,159,0,4,48,3,1,
+        244,0,159,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFET_cpy_memcms              - CPYFET      [Xd]!, [Xs]!, Xn!
-        245,0,156,0,4,48,3,1,
+        245,0,156,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFEWN_cpy_memcms             - CPYFEWN     [Xd]!, [Xs]!, Xn!
-        246,0,160,0,4,48,3,1,
+        246,0,160,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFEWTN_cpy_memcms            - CPYFEWTN    [Xd]!, [Xs]!, Xn!
-        247,0,162,0,4,48,3,1,
+        247,0,162,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFEWTRN_cpy_memcms           - CPYFEWTRN   [Xd]!, [Xs]!, Xn!
-        248,0,163,0,4,48,3,1,
+        248,0,163,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFEWTWN_cpy_memcms           - CPYFEWTWN   [Xd]!, [Xs]!, Xn!
-        249,0,164,0,4,48,3,1,
+        249,0,164,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFEWT_cpy_memcms             - CPYFEWT     [Xd]!, [Xs]!, Xn!
-        250,0,161,0,4,48,3,1,
+        250,0,161,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFE_cpy_memcms               - CPYFE       [Xd]!, [Xs]!, Xn!
-        251,0,149,0,4,48,3,1,
+        251,0,149,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMN_cpy_memcms              - CPYFMN      [Xd]!, [Xs]!, Xn!
-        252,0,166,0,4,48,3,1,
+        252,0,166,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMRN_cpy_memcms             - CPYFMRN     [Xd]!, [Xs]!, Xn!
-        253,0,167,0,4,48,3,1,
+        253,0,167,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMRTN_cpy_memcms            - CPYFMRTN    [Xd]!, [Xs]!, Xn!
-        254,0,169,0,4,48,3,1,
+        254,0,169,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMRTRN_cpy_memcms           - CPYFMRTRN   [Xd]!, [Xs]!, Xn!
-        255,0,170,0,4,48,3,1,
+        255,0,170,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMRTWN_cpy_memcms           - CPYFMRTWN   [Xd]!, [Xs]!, Xn!
-        0,1,171,0,4,48,3,1,
+        0,1,171,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMRT_cpy_memcms             - CPYFMRT     [Xd]!, [Xs]!, Xn!
-        1,1,168,0,4,48,3,1,
+        1,1,168,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMTN_cpy_memcms             - CPYFMTN     [Xd]!, [Xs]!, Xn!
-        2,1,173,0,4,48,3,1,
+        2,1,173,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMTRN_cpy_memcms            - CPYFMTRN    [Xd]!, [Xs]!, Xn!
-        3,1,174,0,4,48,3,1,
+        3,1,174,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMTWN_cpy_memcms            - CPYFMTWN    [Xd]!, [Xs]!, Xn!
-        4,1,175,0,4,48,3,1,
+        4,1,175,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMT_cpy_memcms              - CPYFMT      [Xd]!, [Xs]!, Xn!
-        5,1,172,0,4,48,3,1,
+        5,1,172,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMWN_cpy_memcms             - CPYFMWN     [Xd]!, [Xs]!, Xn!
-        6,1,176,0,4,48,3,1,
+        6,1,176,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMWTN_cpy_memcms            - CPYFMWTN    [Xd]!, [Xs]!, Xn!
-        7,1,178,0,4,48,3,1,
+        7,1,178,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMWTRN_cpy_memcms           - CPYFMWTRN   [Xd]!, [Xs]!, Xn!
-        8,1,179,0,4,48,3,1,
+        8,1,179,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMWTWN_cpy_memcms           - CPYFMWTWN   [Xd]!, [Xs]!, Xn!
-        9,1,180,0,4,48,3,1,
+        9,1,180,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFMWT_cpy_memcms             - CPYFMWT     [Xd]!, [Xs]!, Xn!
-        10,1,177,0,4,48,3,1,
+        10,1,177,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFM_cpy_memcms               - CPYFM       [Xd]!, [Xs]!, Xn!
-        11,1,165,0,4,48,3,1,
+        11,1,165,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPN_cpy_memcms              - CPYFPN      [Xd]!, [Xs]!, Xn!
-        12,1,182,0,4,48,3,1,
+        12,1,182,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPRN_cpy_memcms             - CPYFPRN     [Xd]!, [Xs]!, Xn!
-        13,1,183,0,4,48,3,1,
+        13,1,183,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPRTN_cpy_memcms            - CPYFPRTN    [Xd]!, [Xs]!, Xn!
-        14,1,185,0,4,48,3,1,
+        14,1,185,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPRTRN_cpy_memcms           - CPYFPRTRN   [Xd]!, [Xs]!, Xn!
-        15,1,186,0,4,48,3,1,
+        15,1,186,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPRTWN_cpy_memcms           - CPYFPRTWN   [Xd]!, [Xs]!, Xn!
-        16,1,187,0,4,48,3,1,
+        16,1,187,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPRT_cpy_memcms             - CPYFPRT     [Xd]!, [Xs]!, Xn!
-        17,1,184,0,4,48,3,1,
+        17,1,184,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPTN_cpy_memcms             - CPYFPTN     [Xd]!, [Xs]!, Xn!
-        18,1,189,0,4,48,3,1,
+        18,1,189,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPTRN_cpy_memcms            - CPYFPTRN    [Xd]!, [Xs]!, Xn!
-        19,1,190,0,4,48,3,1,
+        19,1,190,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPTWN_cpy_memcms            - CPYFPTWN    [Xd]!, [Xs]!, Xn!
-        20,1,191,0,4,48,3,1,
+        20,1,191,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPT_cpy_memcms              - CPYFPT      [Xd]!, [Xs]!, Xn!
-        21,1,188,0,4,48,3,1,
+        21,1,188,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPWN_cpy_memcms             - CPYFPWN     [Xd]!, [Xs]!, Xn!
-        22,1,192,0,4,48,3,1,
+        22,1,192,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPWTN_cpy_memcms            - CPYFPWTN    [Xd]!, [Xs]!, Xn!
-        23,1,194,0,4,48,3,1,
+        23,1,194,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPWTRN_cpy_memcms           - CPYFPWTRN   [Xd]!, [Xs]!, Xn!
-        24,1,195,0,4,48,3,1,
+        24,1,195,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPWTWN_cpy_memcms           - CPYFPWTWN   [Xd]!, [Xs]!, Xn!
-        25,1,196,0,4,48,3,1,
+        25,1,196,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFPWT_cpy_memcms             - CPYFPWT     [Xd]!, [Xs]!, Xn!
-        26,1,193,0,4,48,3,1,
+        26,1,193,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYFP_cpy_memcms               - CPYFP       [Xd]!, [Xs]!, Xn!
-        27,1,181,0,4,48,3,1,
+        27,1,181,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMN_cpy_memcms               - CPYMN       [Xd]!, [Xs]!, Xn!
-        28,1,198,0,4,48,3,1,
+        28,1,198,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMRN_cpy_memcms              - CPYMRN      [Xd]!, [Xs]!, Xn!
-        29,1,199,0,4,48,3,1,
+        29,1,199,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMRTN_cpy_memcms             - CPYMRTN     [Xd]!, [Xs]!, Xn!
-        30,1,201,0,4,48,3,1,
+        30,1,201,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMRTRN_cpy_memcms            - CPYMRTRN    [Xd]!, [Xs]!, Xn!
-        31,1,202,0,4,48,3,1,
+        31,1,202,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMRTWN_cpy_memcms            - CPYMRTWN    [Xd]!, [Xs]!, Xn!
-        32,1,203,0,4,48,3,1,
+        32,1,203,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMRT_cpy_memcms              - CPYMRT      [Xd]!, [Xs]!, Xn!
-        33,1,200,0,4,48,3,1,
+        33,1,200,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMTN_cpy_memcms              - CPYMTN      [Xd]!, [Xs]!, Xn!
-        34,1,205,0,4,48,3,1,
+        34,1,205,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMTRN_cpy_memcms             - CPYMTRN     [Xd]!, [Xs]!, Xn!
-        35,1,206,0,4,48,3,1,
+        35,1,206,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMTWN_cpy_memcms             - CPYMTWN     [Xd]!, [Xs]!, Xn!
-        36,1,207,0,4,48,3,1,
+        36,1,207,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMT_cpy_memcms               - CPYMT       [Xd]!, [Xs]!, Xn!
-        37,1,204,0,4,48,3,1,
+        37,1,204,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMWN_cpy_memcms              - CPYMWN      [Xd]!, [Xs]!, Xn!
-        38,1,208,0,4,48,3,1,
+        38,1,208,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMWTN_cpy_memcms             - CPYMWTN     [Xd]!, [Xs]!, Xn!
-        39,1,210,0,4,48,3,1,
+        39,1,210,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMWTRN_cpy_memcms            - CPYMWTRN    [Xd]!, [Xs]!, Xn!
-        40,1,211,0,4,48,3,1,
+        40,1,211,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMWTWN_cpy_memcms            - CPYMWTWN    [Xd]!, [Xs]!, Xn!
-        41,1,212,0,4,48,3,1,
+        41,1,212,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYMWT_cpy_memcms              - CPYMWT      [Xd]!, [Xs]!, Xn!
-        42,1,209,0,4,48,3,1,
+        42,1,209,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYM_cpy_memcms                - CPYM        [Xd]!, [Xs]!, Xn!
-        43,1,197,0,4,48,3,1,
+        43,1,197,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPN_cpy_memcms               - CPYPN       [Xd]!, [Xs]!, Xn!
-        44,1,214,0,4,48,3,1,
+        44,1,214,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPRN_cpy_memcms              - CPYPRN      [Xd]!, [Xs]!, Xn!
-        45,1,215,0,4,48,3,1,
+        45,1,215,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPRTN_cpy_memcms             - CPYPRTN     [Xd]!, [Xs]!, Xn!
-        46,1,217,0,4,48,3,1,
+        46,1,217,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPRTRN_cpy_memcms            - CPYPRTRN    [Xd]!, [Xs]!, Xn!
-        47,1,218,0,4,48,3,1,
+        47,1,218,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPRTWN_cpy_memcms            - CPYPRTWN    [Xd]!, [Xs]!, Xn!
-        48,1,219,0,4,48,3,1,
+        48,1,219,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPRT_cpy_memcms              - CPYPRT      [Xd]!, [Xs]!, Xn!
-        49,1,216,0,4,48,3,1,
+        49,1,216,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPTN_cpy_memcms              - CPYPTN      [Xd]!, [Xs]!, Xn!
-        50,1,221,0,4,48,3,1,
+        50,1,221,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPTRN_cpy_memcms             - CPYPTRN     [Xd]!, [Xs]!, Xn!
-        51,1,222,0,4,48,3,1,
+        51,1,222,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPTWN_cpy_memcms             - CPYPTWN     [Xd]!, [Xs]!, Xn!
-        52,1,223,0,4,48,3,1,
+        52,1,223,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPT_cpy_memcms               - CPYPT       [Xd]!, [Xs]!, Xn!
-        53,1,220,0,4,48,3,1,
+        53,1,220,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPWN_cpy_memcms              - CPYPWN      [Xd]!, [Xs]!, Xn!
-        54,1,224,0,4,48,3,1,
+        54,1,224,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPWTN_cpy_memcms             - CPYPWTN     [Xd]!, [Xs]!, Xn!
-        55,1,226,0,4,48,3,1,
+        55,1,226,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPWTRN_cpy_memcms            - CPYPWTRN    [Xd]!, [Xs]!, Xn!
-        56,1,227,0,4,48,3,1,
+        56,1,227,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPWTWN_cpy_memcms            - CPYPWTWN    [Xd]!, [Xs]!, Xn!
-        57,1,228,0,4,48,3,1,
+        57,1,228,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYPWT_cpy_memcms              - CPYPWT      [Xd]!, [Xs]!, Xn!
-        58,1,225,0,4,48,3,1,
+        58,1,225,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CPYP_cpy_memcms                - CPYP        [Xd]!, [Xs]!, Xn!
-        59,1,213,0,4,48,3,1,
+        59,1,213,0,4,48,0,3,
         3,1,160,128,
         3,1,176,128,
         1,17,0,5,
         // CRC32B_32c_dp_2src             - CRC32B      Wd, Wn, Wm
-        60,1,229,0,4,13,3,1,
+        60,1,229,0,4,13,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // CRC32CB_32c_dp_2src            - CRC32CB     Wd, Wn, Wm
-        61,1,230,0,4,13,3,1,
+        61,1,230,0,4,13,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // CRC32CH_32c_dp_2src            - CRC32CH     Wd, Wn, Wm
-        62,1,231,0,4,13,3,1,
+        62,1,231,0,4,13,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // CRC32CW_32c_dp_2src            - CRC32CW     Wd, Wn, Wm
-        63,1,232,0,4,13,3,1,
+        63,1,232,0,4,13,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // CRC32CX_64c_dp_2src            - CRC32CX     Wd, Wn, Xm
-        64,1,233,0,4,13,3,1,
+        64,1,233,0,4,13,0,3,
         1,19,0,0,
         1,19,0,5,
         1,17,0,16,
         // CRC32H_32c_dp_2src             - CRC32H      Wd, Wn, Wm
-        65,1,234,0,4,13,3,1,
+        65,1,234,0,4,13,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // CRC32W_32c_dp_2src             - CRC32W      Wd, Wn, Wm
-        66,1,235,0,4,13,3,1,
+        66,1,235,0,4,13,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // CRC32X_64c_dp_2src             - CRC32X      Wd, Wn, Xm
-        67,1,236,0,4,13,3,1,
+        67,1,236,0,4,13,0,3,
         1,19,0,0,
         1,19,0,5,
         1,17,0,16,
         // CSDB_hi_hints                  - CSDB       
-        68,1,237,0,6,0,0,1,
+        68,1,237,0,6,0,0,0,
         // CSEL_32_condsel                - CSEL        Wd, Wn, Wm, cond
-        69,1,238,0,4,0,4,1,
+        69,1,238,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         10,65,12,4,
         // CSEL_64_condsel                - CSEL        Xd, Xn, Xm, cond
-        70,1,238,0,4,0,4,1,
+        70,1,238,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         10,65,12,4,
         // CSINC_32_condsel               - CSINC       Wd, Wn, Wm, cond
-        71,1,239,0,4,0,4,1,
+        71,1,239,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         10,65,12,4,
         // CSINC_64_condsel               - CSINC       Xd, Xn, Xm, cond
-        72,1,239,0,4,0,4,1,
+        72,1,239,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         10,65,12,4,
         // CSINV_32_condsel               - CSINV       Wd, Wn, Wm, cond
-        73,1,240,0,4,0,4,1,
+        73,1,240,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         10,65,12,4,
         // CSINV_64_condsel               - CSINV       Xd, Xn, Xm, cond
-        74,1,240,0,4,0,4,1,
+        74,1,240,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         10,65,12,4,
         // CSNEG_32_condsel               - CSNEG       Wd, Wn, Wm, cond
-        75,1,241,0,4,0,4,1,
+        75,1,241,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         10,65,12,4,
         // CSNEG_64_condsel               - CSNEG       Xd, Xn, Xm, cond
-        76,1,241,0,4,0,4,1,
+        76,1,241,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         10,65,12,4,
         // CTZ_32_dp_1src                 - CTZ         Wd, Wn
-        77,1,242,0,4,14,2,1,
+        77,1,242,0,4,14,0,2,
         1,19,0,0,
         1,19,0,5,
         // CTZ_64_dp_1src                 - CTZ         Xd, Xn
-        78,1,242,0,4,14,2,1,
+        78,1,242,0,4,14,0,2,
         1,17,0,0,
         1,17,0,5,
         // DCPS1_dc_exception             - DCPS1       {#imm}
-        79,1,243,0,6,0,1,0,
-        4,1,16,1,5,16,0,0,
+        79,1,243,0,6,0,0,1,
+        4,1,16,1,
         // DCPS2_dc_exception             - DCPS2       {#imm}
-        80,1,244,0,6,0,1,0,
-        4,1,16,1,5,16,0,0,
+        80,1,244,0,6,0,0,1,
+        4,1,16,1,
         // DCPS3_dc_exception             - DCPS3       {#imm}
-        81,1,245,0,6,0,1,0,
-        4,1,16,1,5,16,0,0,
+        81,1,245,0,6,0,0,1,
+        4,1,16,1,
         // DGH_hi_hints                   - DGH        
-        82,1,246,0,6,16,0,1,
+        82,1,246,0,6,16,0,0,
         // DMB_bo_barriers                - DMB         (option|#imm)
-        83,1,247,0,6,0,1,1,
+        83,1,247,0,6,0,0,1,
         10,70,8,4,
         // DRPS_64e_branch_reg            - DRPS       
-        84,1,248,0,6,0,0,1,
+        84,1,248,0,6,0,0,0,
         // DSB_bo_barriers                - DSB         (option|#imm)
-        85,1,249,0,6,0,1,1,
+        85,1,249,0,6,0,0,1,
         10,70,8,4,
         // DSB_bon_barriers               - DSB         optionnXS
-        86,1,249,0,6,71,1,1,
+        86,1,249,0,6,71,0,1,
         10,67,8,4,
         // DUP_asimdins_dr_r              - DUP         Vd.T, Rn
-        87,1,250,0,1,2,2,1,
+        87,1,250,0,1,2,2,2,
+        46,0,0,0,
         1,27,0,0,
         1,21,0,5,
         // DUP_asimdins_dv_v              - DUP         Vd.T, Vn.Ts[index]
-        88,1,250,0,1,2,2,1,
+        88,1,250,0,1,2,4,2,
+        46,40,0,0,
         1,27,0,0,
-        1,27,2,5,
+        1,27,13,5,
         // DUP_asisdone_only              - DUP         Vd, Vn.T[index]
-        89,1,250,0,1,2,2,1,
+        89,1,250,0,1,2,2,2,
+        40,0,0,0,
         1,22,0,0,
-        1,27,2,5,
+        1,27,13,5,
         // EON_32_log_shift               - EON         Wd, Wn, Wm {, shift, #amount}
-        90,1,251,0,4,0,4,1,
+        90,1,251,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,3,86,202,
         // EON_64_log_shift               - EON         Xd, Xn, Xm {, shift, #amount}
-        91,1,251,0,4,0,4,1,
+        91,1,251,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,3,86,202,
         // EOR3_vvv16_crypto4             - EOR3        Vd.16B, Vn.16B, Vm.16B, Va.16B
-        92,1,253,0,1,60,4,1,
+        92,1,253,0,1,60,2,4,
+        5,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         1,27,0,10,
         // EOR_32_log_imm                 - EOR         Wd|WSP, Wn, #imm
-        93,1,252,0,4,0,3,0,
-        1,20,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
+        93,1,252,0,4,0,0,3,
+        1,20,0,0,
+        1,19,0,5,
+        4,1,12,1,
         // EOR_32_log_shift               - EOR         Wd, Wn, Wm {, shift, #amount}
-        94,1,252,0,4,0,4,1,
+        94,1,252,0,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,3,86,202,
         // EOR_64_log_imm                 - EOR         Xd|SP, Xn, #imm
-        95,1,252,0,4,0,3,0,
-        1,18,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,13,1,10,13,0,0,
+        95,1,252,0,4,0,0,3,
+        1,18,0,0,
+        1,17,0,5,
+        4,1,13,1,
         // EOR_64_log_shift               - EOR         Xd, Xn, Xm {, shift, #amount}
-        96,1,252,0,4,0,4,1,
+        96,1,252,0,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,3,86,202,
         // EOR_asimdsame_only             - EOR         Vd.T, Vn.T, Vm.T
-        97,1,252,0,1,2,3,1,
+        97,1,252,0,1,2,2,3,
+        18,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // ERETAA_64e_branch_reg          - ERETAA     
-        98,1,255,0,4,51,0,1,
+        98,1,255,0,4,51,0,0,
         // ERETAB_64e_branch_reg          - ERETAB     
-        99,1,0,1,4,51,0,1,
+        99,1,0,1,4,51,0,0,
         // ERET_64e_branch_reg            - ERET       
-        100,1,254,0,6,0,0,1,
+        100,1,254,0,6,0,0,0,
         // ESB_hi_hints                   - ESB        
-        101,1,1,1,6,54,0,1,
+        101,1,1,1,6,54,0,0,
         // EXTR_32_extract                - EXTR        Wd, Wn, Wm, #lsb
-        102,1,3,1,4,0,4,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        1,19,0,16,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        102,1,3,1,4,0,0,4,
+        1,19,0,0,
+        1,19,0,5,
+        1,19,0,16,
+        4,1,6,1,
         // EXTR_64_extract                - EXTR        Xd, Xn, Xm, #lsb
-        103,1,3,1,4,0,4,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        1,17,0,16,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        103,1,3,1,4,0,0,4,
+        1,17,0,0,
+        1,17,0,5,
+        1,17,0,16,
+        4,1,6,1,
         // EXT_asimdext_only              - EXT         Vd.T, Vn.T, Vm.T, #index
-        104,1,2,1,1,2,4,1,
+        104,1,2,1,1,2,2,4,
+        18,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         4,13,0,0,
         // F1CVTL_asimdmisc_v             - F1CVTL      Vd.8H, Vn.Ta
-        105,1,4,1,1,23,2,1,
+        105,1,4,1,1,23,4,2,
+        11,18,0,0,
         1,27,0,0,
         1,27,0,5,
         // F2CVTL_asimdmisc_v             - F2CVTL      Vd.8H, Vn.Ta
-        106,1,5,1,1,23,2,1,
+        106,1,5,1,1,23,4,2,
+        11,18,0,0,
         1,27,0,0,
         1,27,0,5,
         // FABD_asimdsame_only            - FABD        Vd.T, Vn.T, Vm.T
-        107,1,6,1,1,2,3,1,
+        107,1,6,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FABD_asimdsamefp16_only        - FABD        Vd.T, Vn.T, Vm.T
-        108,1,6,1,1,4,3,1,
+        108,1,6,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FABD_asisdsame_only            - FABD        Vd, Vn, Vm
-        109,1,6,1,1,2,3,1,
+        109,1,6,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // FABD_asisdsamefp16_only        - FABD        Hd, Hn, Hm
-        110,1,6,1,1,4,3,1,
+        110,1,6,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FABS_asimdmisc_r               - FABS        Vd.T, Vn.T
-        111,1,7,1,1,2,2,1,
+        111,1,7,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FABS_asimdmiscfp16_r           - FABS        Vd.T, Vn.T
-        112,1,7,1,1,4,2,1,
+        112,1,7,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FABS_d_floatdp1                - FABS        Dd, Dn
-        113,1,7,1,2,0,2,1,
+        113,1,7,1,2,0,0,2,
         1,26,0,0,
         1,26,0,5,
         // FABS_h_floatdp1                - FABS        Hd, Hn
-        114,1,7,1,2,0,2,1,
+        114,1,7,1,2,0,0,2,
         1,24,0,0,
         1,24,0,5,
         // FABS_s_floatdp1                - FABS        Sd, Sn
-        115,1,7,1,2,0,2,1,
+        115,1,7,1,2,0,0,2,
         1,25,0,0,
         1,25,0,5,
         // FACGE_asimdsame_only           - FACGE       Vd.T, Vn.T, Vm.T
-        116,1,8,1,1,2,3,1,
+        116,1,8,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FACGE_asimdsamefp16_only       - FACGE       Vd.T, Vn.T, Vm.T
-        117,1,8,1,1,4,3,1,
+        117,1,8,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FACGE_asisdsame_only           - FACGE       Vd, Vn, Vm
-        118,1,8,1,1,2,3,1,
+        118,1,8,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // FACGE_asisdsamefp16_only       - FACGE       Hd, Hn, Hm
-        119,1,8,1,1,4,3,1,
+        119,1,8,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FACGT_asimdsame_only           - FACGT       Vd.T, Vn.T, Vm.T
-        120,1,9,1,1,2,3,1,
+        120,1,9,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FACGT_asimdsamefp16_only       - FACGT       Vd.T, Vn.T, Vm.T
-        121,1,9,1,1,4,3,1,
+        121,1,9,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FACGT_asisdsame_only           - FACGT       Vd, Vn, Vm
-        122,1,9,1,1,2,3,1,
+        122,1,9,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // FACGT_asisdsamefp16_only       - FACGT       Hd, Hn, Hm
-        123,1,9,1,1,4,3,1,
+        123,1,9,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FADDP_asimdsame_only           - FADDP       Vd.T, Vn.T, Vm.T
-        124,1,11,1,1,2,3,1,
+        124,1,11,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FADDP_asimdsamefp16_only       - FADDP       Vd.T, Vn.T, Vm.T
-        125,1,11,1,1,4,3,1,
+        125,1,11,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FADDP_asisdpair_only_h         - FADDP       Hd, Vn.2H
-        126,1,11,1,1,4,2,1,
+        126,1,11,1,1,4,2,2,
+        8,0,0,0,
         1,24,0,0,
         1,27,0,5,
         // FADDP_asisdpair_only_sd        - FADDP       Vd, Vn.T
-        127,1,11,1,1,2,2,1,
+        127,1,11,1,1,2,2,2,
+        13,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // FADD_asimdsame_only            - FADD        Vd.T, Vn.T, Vm.T
-        128,1,10,1,1,2,3,1,
+        128,1,10,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FADD_asimdsamefp16_only        - FADD        Vd.T, Vn.T, Vm.T
-        129,1,10,1,1,4,3,1,
+        129,1,10,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FADD_d_floatdp2                - FADD        Dd, Dn, Dm
-        130,1,10,1,2,0,3,1,
+        130,1,10,1,2,0,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // FADD_h_floatdp2                - FADD        Hd, Hn, Hm
-        131,1,10,1,2,0,3,1,
+        131,1,10,1,2,0,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FADD_s_floatdp2                - FADD        Sd, Sn, Sm
-        132,1,10,1,2,0,3,1,
+        132,1,10,1,2,0,0,3,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         // FAMAX_asimdsame_only           - FAMAX       Vd.T, Vn.T, Vm.T
-        133,1,12,1,1,3,3,1,
+        133,1,12,1,1,3,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FAMAX_asimdsamefp16_only       - FAMAX       Vd.T, Vn.T, Vm.T
-        134,1,12,1,1,3,3,1,
+        134,1,12,1,1,3,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FAMIN_asimdsame_only           - FAMIN       Vd.T, Vn.T, Vm.T
-        135,1,13,1,1,3,3,1,
+        135,1,13,1,1,3,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FAMIN_asimdsamefp16_only       - FAMIN       Vd.T, Vn.T, Vm.T
-        136,1,13,1,1,3,3,1,
+        136,1,13,1,1,3,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FCADD_asimdsame2_c             - FCADD       Vd.T, Vn.T, Vm.T, #rotate
-        137,1,14,1,1,20,4,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        1,27,0,16,0,0,0,0,
-        4,7,1,1,12,1,0,0,
+        137,1,14,1,1,20,2,4,
+        30,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        1,27,0,16,
+        4,7,1,1,
         // FCCMPE_d_floatccmp             - FCCMPE      Dn, Dm, #nzcv, cond
-        138,1,16,1,2,0,4,0,
-        1,26,0,5,0,0,0,0,
-        1,26,0,16,0,0,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        138,1,16,1,2,0,0,4,
+        1,26,0,5,
+        1,26,0,16,
+        4,1,4,1,
+        10,65,12,4,
         // FCCMPE_h_floatccmp             - FCCMPE      Hn, Hm, #nzcv, cond
-        139,1,16,1,2,0,4,0,
-        1,24,0,5,0,0,0,0,
-        1,24,0,16,0,0,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        139,1,16,1,2,0,0,4,
+        1,24,0,5,
+        1,24,0,16,
+        4,1,4,1,
+        10,65,12,4,
         // FCCMPE_s_floatccmp             - FCCMPE      Sn, Sm, #nzcv, cond
-        140,1,16,1,2,0,4,0,
-        1,25,0,5,0,0,0,0,
-        1,25,0,16,0,0,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        140,1,16,1,2,0,0,4,
+        1,25,0,5,
+        1,25,0,16,
+        4,1,4,1,
+        10,65,12,4,
         // FCCMP_d_floatccmp              - FCCMP       Dn, Dm, #nzcv, cond
-        141,1,15,1,2,0,4,0,
-        1,26,0,5,0,0,0,0,
-        1,26,0,16,0,0,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        141,1,15,1,2,0,0,4,
+        1,26,0,5,
+        1,26,0,16,
+        4,1,4,1,
+        10,65,12,4,
         // FCCMP_h_floatccmp              - FCCMP       Hn, Hm, #nzcv, cond
-        142,1,15,1,2,0,4,0,
-        1,24,0,5,0,0,0,0,
-        1,24,0,16,0,0,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        142,1,15,1,2,0,0,4,
+        1,24,0,5,
+        1,24,0,16,
+        4,1,4,1,
+        10,65,12,4,
         // FCCMP_s_floatccmp              - FCCMP       Sn, Sm, #nzcv, cond
-        143,1,15,1,2,0,4,0,
-        1,25,0,5,0,0,0,0,
-        1,25,0,16,0,0,0,0,
-        4,1,4,1,0,4,0,0,
-        10,65,12,4,0,0,0,0,
+        143,1,15,1,2,0,0,4,
+        1,25,0,5,
+        1,25,0,16,
+        4,1,4,1,
+        10,65,12,4,
         // FCMEQ_asimdmisc_fz             - FCMEQ       Vd.T, Vn.T, #0.0
-        144,1,17,1,1,2,3,1,
+        144,1,17,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,10,0,0,
+        4,10,4,1,
         // FCMEQ_asimdmiscfp16_fz         - FCMEQ       Vd.T, Vn.T, #0.0
-        145,1,17,1,1,4,3,1,
+        145,1,17,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,10,0,0,
+        4,10,4,1,
         // FCMEQ_asimdsame_only           - FCMEQ       Vd.T, Vn.T, Vm.T
-        146,1,17,1,1,2,3,1,
+        146,1,17,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FCMEQ_asimdsamefp16_only       - FCMEQ       Vd.T, Vn.T, Vm.T
-        147,1,17,1,1,4,3,1,
+        147,1,17,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FCMEQ_asisdmisc_fz             - FCMEQ       Vd, Vn, #0.0
-        148,1,17,1,1,2,3,1,
+        148,1,17,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMEQ_asisdmiscfp16_fz         - FCMEQ       Hd, Hn, #0.0
-        149,1,17,1,1,4,3,1,
+        149,1,17,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMEQ_asisdsame_only           - FCMEQ       Vd, Vn, Vm
-        150,1,17,1,1,2,3,1,
+        150,1,17,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // FCMEQ_asisdsamefp16_only       - FCMEQ       Hd, Hn, Hm
-        151,1,17,1,1,4,3,1,
+        151,1,17,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FCMGE_asimdmisc_fz             - FCMGE       Vd.T, Vn.T, #0.0
-        152,1,18,1,1,2,3,1,
+        152,1,18,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMGE_asimdmiscfp16_fz         - FCMGE       Vd.T, Vn.T, #0.0
-        153,1,18,1,1,4,3,1,
+        153,1,18,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMGE_asimdsame_only           - FCMGE       Vd.T, Vn.T, Vm.T
-        154,1,18,1,1,2,3,1,
+        154,1,18,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FCMGE_asimdsamefp16_only       - FCMGE       Vd.T, Vn.T, Vm.T
-        155,1,18,1,1,4,3,1,
+        155,1,18,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FCMGE_asisdmisc_fz             - FCMGE       Vd, Vn, #0.0
-        156,1,18,1,1,2,3,1,
+        156,1,18,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMGE_asisdmiscfp16_fz         - FCMGE       Hd, Hn, #0.0
-        157,1,18,1,1,4,3,1,
+        157,1,18,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMGE_asisdsame_only           - FCMGE       Vd, Vn, Vm
-        158,1,18,1,1,2,3,1,
+        158,1,18,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // FCMGE_asisdsamefp16_only       - FCMGE       Hd, Hn, Hm
-        159,1,18,1,1,4,3,1,
+        159,1,18,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FCMGT_asimdmisc_fz             - FCMGT       Vd.T, Vn.T, #0.0
-        160,1,19,1,1,2,3,1,
+        160,1,19,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMGT_asimdmiscfp16_fz         - FCMGT       Vd.T, Vn.T, #0.0
-        161,1,19,1,1,4,3,1,
+        161,1,19,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMGT_asimdsame_only           - FCMGT       Vd.T, Vn.T, Vm.T
-        162,1,19,1,1,2,3,1,
+        162,1,19,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FCMGT_asimdsamefp16_only       - FCMGT       Vd.T, Vn.T, Vm.T
-        163,1,19,1,1,4,3,1,
+        163,1,19,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FCMGT_asisdmisc_fz             - FCMGT       Vd, Vn, #0.0
-        164,1,19,1,1,2,3,1,
+        164,1,19,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMGT_asisdmiscfp16_fz         - FCMGT       Hd, Hn, #0.0
-        165,1,19,1,1,4,3,1,
+        165,1,19,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMGT_asisdsame_only           - FCMGT       Vd, Vn, Vm
-        166,1,19,1,1,2,3,1,
+        166,1,19,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // FCMGT_asisdsamefp16_only       - FCMGT       Hd, Hn, Hm
-        167,1,19,1,1,4,3,1,
+        167,1,19,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FCMLA_advsimd_elt              - FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate
-        168,1,20,1,1,20,4,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        1,27,3,16,0,0,0,0,
-        4,8,2,1,13,2,0,0,
+        168,1,20,1,1,20,4,4,
+        29,22,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        1,27,10,16,
+        4,8,2,1,
         // FCMLA_asimdsame2_c             - FCMLA       Vd.T, Vn.T, Vm.T, #rotate
-        169,1,20,1,1,20,4,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        1,27,0,16,0,0,0,0,
-        4,8,2,1,11,2,0,0,
+        169,1,20,1,1,20,2,4,
+        30,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        1,27,0,16,
+        4,8,2,1,
         // FCMLE_asimdmisc_fz             - FCMLE       Vd.T, Vn.T, #0.0
-        170,1,21,1,1,2,3,1,
+        170,1,21,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMLE_asimdmiscfp16_fz         - FCMLE       Vd.T, Vn.T, #0.0
-        171,1,21,1,1,4,3,1,
+        171,1,21,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMLE_asisdmisc_fz             - FCMLE       Vd, Vn, #0.0
-        172,1,21,1,1,2,3,1,
+        172,1,21,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMLE_asisdmiscfp16_fz         - FCMLE       Hd, Hn, #0.0
-        173,1,21,1,1,4,3,1,
+        173,1,21,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMLT_asimdmisc_fz             - FCMLT       Vd.T, Vn.T, #0.0
-        174,1,22,1,1,2,3,1,
+        174,1,22,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMLT_asimdmiscfp16_fz         - FCMLT       Vd.T, Vn.T, #0.0
-        175,1,22,1,1,4,3,1,
+        175,1,22,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMLT_asisdmisc_fz             - FCMLT       Vd, Vn, #0.0
-        176,1,22,1,1,2,3,1,
+        176,1,22,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMLT_asisdmiscfp16_fz         - FCMLT       Hd, Hn, #0.0
-        177,1,22,1,1,4,3,1,
+        177,1,22,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMPE_d_floatcmp               - FCMPE       Dn, Dm
-        178,1,24,1,2,0,2,1,
+        178,1,24,1,2,0,0,2,
         1,26,0,5,
         1,26,0,16,
         // FCMPE_dz_floatcmp              - FCMPE       Dn, #0.0
-        179,1,24,1,2,0,2,1,
+        179,1,24,1,2,0,0,2,
         1,26,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMPE_h_floatcmp               - FCMPE       Hn, Hm
-        180,1,24,1,2,0,2,1,
+        180,1,24,1,2,0,0,2,
         1,24,0,5,
         1,24,0,16,
         // FCMPE_hz_floatcmp              - FCMPE       Hn, #0.0
-        181,1,24,1,2,0,2,1,
+        181,1,24,1,2,0,0,2,
         1,24,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMPE_s_floatcmp               - FCMPE       Sn, Sm
-        182,1,24,1,2,0,2,1,
+        182,1,24,1,2,0,0,2,
         1,25,0,5,
         1,25,0,16,
         // FCMPE_sz_floatcmp              - FCMPE       Sn, #0.0
-        183,1,24,1,2,0,2,1,
+        183,1,24,1,2,0,0,2,
         1,25,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMP_d_floatcmp                - FCMP        Dn, Dm
-        184,1,23,1,2,0,2,1,
+        184,1,23,1,2,0,0,2,
         1,26,0,5,
         1,26,0,16,
         // FCMP_dz_floatcmp               - FCMP        Dn, #0.0
-        185,1,23,1,2,0,2,1,
+        185,1,23,1,2,0,0,2,
         1,26,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMP_h_floatcmp                - FCMP        Hn, Hm
-        186,1,23,1,2,0,2,1,
+        186,1,23,1,2,0,0,2,
         1,24,0,5,
         1,24,0,16,
         // FCMP_hz_floatcmp               - FCMP        Hn, #0.0
-        187,1,23,1,2,0,2,1,
+        187,1,23,1,2,0,0,2,
         1,24,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCMP_s_floatcmp                - FCMP        Sn, Sm
-        188,1,23,1,2,0,2,1,
+        188,1,23,1,2,0,0,2,
         1,25,0,5,
         1,25,0,16,
         // FCMP_sz_floatcmp               - FCMP        Sn, #0.0
-        189,1,23,1,2,0,2,1,
+        189,1,23,1,2,0,0,2,
         1,25,0,5,
-        4,10,0,0,
+        4,10,0,16,
         // FCSEL_d_floatsel               - FCSEL       Dd, Dn, Dm, cond
-        190,1,25,1,2,0,4,1,
+        190,1,25,1,2,0,0,4,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         10,65,12,4,
         // FCSEL_h_floatsel               - FCSEL       Hd, Hn, Hm, cond
-        191,1,25,1,2,0,4,1,
+        191,1,25,1,2,0,0,4,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         10,65,12,4,
         // FCSEL_s_floatsel               - FCSEL       Sd, Sn, Sm, cond
-        192,1,25,1,2,0,4,1,
+        192,1,25,1,2,0,0,4,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         10,65,12,4,
         // FCVTAS_32d_float2int           - FCVTAS      Wd, Dn
-        193,1,27,1,2,0,2,1,
+        193,1,27,1,2,0,0,2,
         1,19,0,0,
         1,26,0,5,
         // FCVTAS_32h_float2int           - FCVTAS      Wd, Hn
-        194,1,27,1,2,0,2,1,
+        194,1,27,1,2,0,0,2,
         1,19,0,0,
         1,24,0,5,
         // FCVTAS_32s_float2int           - FCVTAS      Wd, Sn
-        195,1,27,1,2,0,2,1,
+        195,1,27,1,2,0,0,2,
         1,19,0,0,
         1,25,0,5,
         // FCVTAS_64d_float2int           - FCVTAS      Xd, Dn
-        196,1,27,1,2,0,2,1,
+        196,1,27,1,2,0,0,2,
         1,17,0,0,
         1,26,0,5,
         // FCVTAS_64h_float2int           - FCVTAS      Xd, Hn
-        197,1,27,1,2,0,2,1,
+        197,1,27,1,2,0,0,2,
         1,17,0,0,
         1,24,0,5,
         // FCVTAS_64s_float2int           - FCVTAS      Xd, Sn
-        198,1,27,1,2,0,2,1,
+        198,1,27,1,2,0,0,2,
         1,17,0,0,
         1,25,0,5,
         // FCVTAS_asimdmisc_r             - FCVTAS      Vd.T, Vn.T
-        199,1,27,1,1,2,2,1,
+        199,1,27,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTAS_asimdmiscfp16_r         - FCVTAS      Vd.T, Vn.T
-        200,1,27,1,1,4,2,1,
+        200,1,27,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTAS_asisdmisc_r             - FCVTAS      Vd, Vn
-        201,1,27,1,1,2,2,1,
+        201,1,27,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FCVTAS_asisdmiscfp16_r         - FCVTAS      Hd, Hn
-        202,1,27,1,1,4,2,1,
+        202,1,27,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FCVTAS_sisd_32d                - FCVTAS      Sd, Dn
-        203,1,27,1,2,27,2,1,
+        203,1,27,1,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVTAS_sisd_32h                - FCVTAS      Sd, Hn
-        204,1,27,1,2,27,2,1,
+        204,1,27,1,2,27,0,2,
         1,25,0,0,
         1,24,0,5,
         // FCVTAS_sisd_64h                - FCVTAS      Dd, Hn
-        205,1,27,1,2,27,2,1,
+        205,1,27,1,2,27,0,2,
         1,26,0,0,
         1,24,0,5,
         // FCVTAS_sisd_64s                - FCVTAS      Dd, Sn
-        206,1,27,1,2,27,2,1,
+        206,1,27,1,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // FCVTAU_32d_float2int           - FCVTAU      Wd, Dn
-        207,1,28,1,2,0,2,1,
+        207,1,28,1,2,0,0,2,
         1,19,0,0,
         1,26,0,5,
         // FCVTAU_32h_float2int           - FCVTAU      Wd, Hn
-        208,1,28,1,2,0,2,1,
+        208,1,28,1,2,0,0,2,
         1,19,0,0,
         1,24,0,5,
         // FCVTAU_32s_float2int           - FCVTAU      Wd, Sn
-        209,1,28,1,2,0,2,1,
+        209,1,28,1,2,0,0,2,
         1,19,0,0,
         1,25,0,5,
         // FCVTAU_64d_float2int           - FCVTAU      Xd, Dn
-        210,1,28,1,2,0,2,1,
+        210,1,28,1,2,0,0,2,
         1,17,0,0,
         1,26,0,5,
         // FCVTAU_64h_float2int           - FCVTAU      Xd, Hn
-        211,1,28,1,2,0,2,1,
+        211,1,28,1,2,0,0,2,
         1,17,0,0,
         1,24,0,5,
         // FCVTAU_64s_float2int           - FCVTAU      Xd, Sn
-        212,1,28,1,2,0,2,1,
+        212,1,28,1,2,0,0,2,
         1,17,0,0,
         1,25,0,5,
         // FCVTAU_asimdmisc_r             - FCVTAU      Vd.T, Vn.T
-        213,1,28,1,1,2,2,1,
+        213,1,28,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTAU_asimdmiscfp16_r         - FCVTAU      Vd.T, Vn.T
-        214,1,28,1,1,4,2,1,
+        214,1,28,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTAU_asisdmisc_r             - FCVTAU      Vd, Vn
-        215,1,28,1,1,2,2,1,
+        215,1,28,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FCVTAU_asisdmiscfp16_r         - FCVTAU      Hd, Hn
-        216,1,28,1,1,4,2,1,
+        216,1,28,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FCVTAU_sisd_32d                - FCVTAU      Sd, Dn
-        217,1,28,1,2,27,2,1,
+        217,1,28,1,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVTAU_sisd_32h                - FCVTAU      Sd, Hn
-        218,1,28,1,2,27,2,1,
+        218,1,28,1,2,27,0,2,
         1,25,0,0,
         1,24,0,5,
         // FCVTAU_sisd_64h                - FCVTAU      Dd, Hn
-        219,1,28,1,2,27,2,1,
+        219,1,28,1,2,27,0,2,
         1,26,0,0,
         1,24,0,5,
         // FCVTAU_sisd_64s                - FCVTAU      Dd, Sn
-        220,1,28,1,2,27,2,1,
+        220,1,28,1,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // FCVTL_asimdmisc_l              - FCVTL       Vd.Ta, Vn.Tb
-        221,1,29,1,1,2,2,1,
+        221,1,29,1,1,2,4,2,
+        14,21,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTMS_32d_float2int           - FCVTMS      Wd, Dn
-        222,1,30,1,2,0,2,1,
+        222,1,30,1,2,0,0,2,
         1,19,0,0,
         1,26,0,5,
         // FCVTMS_32h_float2int           - FCVTMS      Wd, Hn
-        223,1,30,1,2,0,2,1,
+        223,1,30,1,2,0,0,2,
         1,19,0,0,
         1,24,0,5,
         // FCVTMS_32s_float2int           - FCVTMS      Wd, Sn
-        224,1,30,1,2,0,2,1,
+        224,1,30,1,2,0,0,2,
         1,19,0,0,
         1,25,0,5,
         // FCVTMS_64d_float2int           - FCVTMS      Xd, Dn
-        225,1,30,1,2,0,2,1,
+        225,1,30,1,2,0,0,2,
         1,17,0,0,
         1,26,0,5,
         // FCVTMS_64h_float2int           - FCVTMS      Xd, Hn
-        226,1,30,1,2,0,2,1,
+        226,1,30,1,2,0,0,2,
         1,17,0,0,
         1,24,0,5,
         // FCVTMS_64s_float2int           - FCVTMS      Xd, Sn
-        227,1,30,1,2,0,2,1,
+        227,1,30,1,2,0,0,2,
         1,17,0,0,
         1,25,0,5,
         // FCVTMS_asimdmisc_r             - FCVTMS      Vd.T, Vn.T
-        228,1,30,1,1,2,2,1,
+        228,1,30,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTMS_asimdmiscfp16_r         - FCVTMS      Vd.T, Vn.T
-        229,1,30,1,1,4,2,1,
+        229,1,30,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTMS_asisdmisc_r             - FCVTMS      Vd, Vn
-        230,1,30,1,1,2,2,1,
+        230,1,30,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FCVTMS_asisdmiscfp16_r         - FCVTMS      Hd, Hn
-        231,1,30,1,1,4,2,1,
+        231,1,30,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FCVTMS_sisd_32d                - FCVTMS      Sd, Dn
-        232,1,30,1,2,27,2,1,
+        232,1,30,1,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVTMS_sisd_32h                - FCVTMS      Sd, Hn
-        233,1,30,1,2,27,2,1,
+        233,1,30,1,2,27,0,2,
         1,25,0,0,
         1,24,0,5,
         // FCVTMS_sisd_64h                - FCVTMS      Dd, Hn
-        234,1,30,1,2,27,2,1,
+        234,1,30,1,2,27,0,2,
         1,26,0,0,
         1,24,0,5,
         // FCVTMS_sisd_64s                - FCVTMS      Dd, Sn
-        235,1,30,1,2,27,2,1,
+        235,1,30,1,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // FCVTMU_32d_float2int           - FCVTMU      Wd, Dn
-        236,1,31,1,2,0,2,1,
+        236,1,31,1,2,0,0,2,
         1,19,0,0,
         1,26,0,5,
         // FCVTMU_32h_float2int           - FCVTMU      Wd, Hn
-        237,1,31,1,2,0,2,1,
+        237,1,31,1,2,0,0,2,
         1,19,0,0,
         1,24,0,5,
         // FCVTMU_32s_float2int           - FCVTMU      Wd, Sn
-        238,1,31,1,2,0,2,1,
+        238,1,31,1,2,0,0,2,
         1,19,0,0,
         1,25,0,5,
         // FCVTMU_64d_float2int           - FCVTMU      Xd, Dn
-        239,1,31,1,2,0,2,1,
+        239,1,31,1,2,0,0,2,
         1,17,0,0,
         1,26,0,5,
         // FCVTMU_64h_float2int           - FCVTMU      Xd, Hn
-        240,1,31,1,2,0,2,1,
+        240,1,31,1,2,0,0,2,
         1,17,0,0,
         1,24,0,5,
         // FCVTMU_64s_float2int           - FCVTMU      Xd, Sn
-        241,1,31,1,2,0,2,1,
+        241,1,31,1,2,0,0,2,
         1,17,0,0,
         1,25,0,5,
         // FCVTMU_asimdmisc_r             - FCVTMU      Vd.T, Vn.T
-        242,1,31,1,1,2,2,1,
+        242,1,31,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTMU_asimdmiscfp16_r         - FCVTMU      Vd.T, Vn.T
-        243,1,31,1,1,4,2,1,
+        243,1,31,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTMU_asisdmisc_r             - FCVTMU      Vd, Vn
-        244,1,31,1,1,2,2,1,
+        244,1,31,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FCVTMU_asisdmiscfp16_r         - FCVTMU      Hd, Hn
-        245,1,31,1,1,4,2,1,
+        245,1,31,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FCVTMU_sisd_32d                - FCVTMU      Sd, Dn
-        246,1,31,1,2,27,2,1,
+        246,1,31,1,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVTMU_sisd_32h                - FCVTMU      Sd, Hn
-        247,1,31,1,2,27,2,1,
+        247,1,31,1,2,27,0,2,
         1,25,0,0,
         1,24,0,5,
         // FCVTMU_sisd_64h                - FCVTMU      Dd, Hn
-        248,1,31,1,2,27,2,1,
+        248,1,31,1,2,27,0,2,
         1,26,0,0,
         1,24,0,5,
         // FCVTMU_sisd_64s                - FCVTMU      Dd, Sn
-        249,1,31,1,2,27,2,1,
+        249,1,31,1,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // FCVTNS_32d_float2int           - FCVTNS      Wd, Dn
-        250,1,33,1,2,0,2,1,
+        250,1,33,1,2,0,0,2,
         1,19,0,0,
         1,26,0,5,
         // FCVTNS_32h_float2int           - FCVTNS      Wd, Hn
-        251,1,33,1,2,0,2,1,
+        251,1,33,1,2,0,0,2,
         1,19,0,0,
         1,24,0,5,
         // FCVTNS_32s_float2int           - FCVTNS      Wd, Sn
-        252,1,33,1,2,0,2,1,
+        252,1,33,1,2,0,0,2,
         1,19,0,0,
         1,25,0,5,
         // FCVTNS_64d_float2int           - FCVTNS      Xd, Dn
-        253,1,33,1,2,0,2,1,
+        253,1,33,1,2,0,0,2,
         1,17,0,0,
         1,26,0,5,
         // FCVTNS_64h_float2int           - FCVTNS      Xd, Hn
-        254,1,33,1,2,0,2,1,
+        254,1,33,1,2,0,0,2,
         1,17,0,0,
         1,24,0,5,
         // FCVTNS_64s_float2int           - FCVTNS      Xd, Sn
-        255,1,33,1,2,0,2,1,
+        255,1,33,1,2,0,0,2,
         1,17,0,0,
         1,25,0,5,
         // FCVTNS_asimdmisc_r             - FCVTNS      Vd.T, Vn.T
-        0,2,33,1,1,2,2,1,
+        0,2,33,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTNS_asimdmiscfp16_r         - FCVTNS      Vd.T, Vn.T
-        1,2,33,1,1,4,2,1,
+        1,2,33,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTNS_asisdmisc_r             - FCVTNS      Vd, Vn
-        2,2,33,1,1,2,2,1,
+        2,2,33,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FCVTNS_asisdmiscfp16_r         - FCVTNS      Hd, Hn
-        3,2,33,1,1,4,2,1,
+        3,2,33,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FCVTNS_sisd_32d                - FCVTNS      Sd, Dn
-        4,2,33,1,2,27,2,1,
+        4,2,33,1,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVTNS_sisd_32h                - FCVTNS      Sd, Hn
-        5,2,33,1,2,27,2,1,
+        5,2,33,1,2,27,0,2,
         1,25,0,0,
         1,24,0,5,
         // FCVTNS_sisd_64h                - FCVTNS      Dd, Hn
-        6,2,33,1,2,27,2,1,
+        6,2,33,1,2,27,0,2,
         1,26,0,0,
         1,24,0,5,
         // FCVTNS_sisd_64s                - FCVTNS      Dd, Sn
-        7,2,33,1,2,27,2,1,
+        7,2,33,1,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // FCVTNU_32d_float2int           - FCVTNU      Wd, Dn
-        8,2,34,1,2,0,2,1,
+        8,2,34,1,2,0,0,2,
         1,19,0,0,
         1,26,0,5,
         // FCVTNU_32h_float2int           - FCVTNU      Wd, Hn
-        9,2,34,1,2,0,2,1,
+        9,2,34,1,2,0,0,2,
         1,19,0,0,
         1,24,0,5,
         // FCVTNU_32s_float2int           - FCVTNU      Wd, Sn
-        10,2,34,1,2,0,2,1,
+        10,2,34,1,2,0,0,2,
         1,19,0,0,
         1,25,0,5,
         // FCVTNU_64d_float2int           - FCVTNU      Xd, Dn
-        11,2,34,1,2,0,2,1,
+        11,2,34,1,2,0,0,2,
         1,17,0,0,
         1,26,0,5,
         // FCVTNU_64h_float2int           - FCVTNU      Xd, Hn
-        12,2,34,1,2,0,2,1,
+        12,2,34,1,2,0,0,2,
         1,17,0,0,
         1,24,0,5,
         // FCVTNU_64s_float2int           - FCVTNU      Xd, Sn
-        13,2,34,1,2,0,2,1,
+        13,2,34,1,2,0,0,2,
         1,17,0,0,
         1,25,0,5,
         // FCVTNU_asimdmisc_r             - FCVTNU      Vd.T, Vn.T
-        14,2,34,1,1,2,2,1,
+        14,2,34,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTNU_asimdmiscfp16_r         - FCVTNU      Vd.T, Vn.T
-        15,2,34,1,1,4,2,1,
+        15,2,34,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTNU_asisdmisc_r             - FCVTNU      Vd, Vn
-        16,2,34,1,1,2,2,1,
+        16,2,34,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FCVTNU_asisdmiscfp16_r         - FCVTNU      Hd, Hn
-        17,2,34,1,1,4,2,1,
+        17,2,34,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FCVTNU_sisd_32d                - FCVTNU      Sd, Dn
-        18,2,34,1,2,27,2,1,
+        18,2,34,1,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVTNU_sisd_32h                - FCVTNU      Sd, Hn
-        19,2,34,1,2,27,2,1,
+        19,2,34,1,2,27,0,2,
         1,25,0,0,
         1,24,0,5,
         // FCVTNU_sisd_64h                - FCVTNU      Dd, Hn
-        20,2,34,1,2,27,2,1,
+        20,2,34,1,2,27,0,2,
         1,26,0,0,
         1,24,0,5,
         // FCVTNU_sisd_64s                - FCVTNU      Dd, Sn
-        21,2,34,1,2,27,2,1,
+        21,2,34,1,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // FCVTN_asimdmisc_n              - FCVTN       Vd.Tb, Vn.Ta
-        22,2,32,1,1,2,2,1,
+        22,2,32,1,1,2,4,2,
+        21,14,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTN_asimdsame2_d             - FCVTN       Vd.Ta, Vn.Tb, Vm.Tb
-        23,2,32,1,1,23,3,1,
+        23,2,32,1,1,23,4,3,
+        18,17,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FCVTN_asimdsame2_h             - FCVTN       Vd.Ta, Vn.4S, Vm.4S
-        24,2,32,1,1,23,3,1,
+        24,2,32,1,1,23,4,3,
+        18,10,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FCVTPS_32d_float2int           - FCVTPS      Wd, Dn
-        25,2,35,1,2,0,2,1,
+        25,2,35,1,2,0,0,2,
         1,19,0,0,
         1,26,0,5,
         // FCVTPS_32h_float2int           - FCVTPS      Wd, Hn
-        26,2,35,1,2,0,2,1,
+        26,2,35,1,2,0,0,2,
         1,19,0,0,
         1,24,0,5,
         // FCVTPS_32s_float2int           - FCVTPS      Wd, Sn
-        27,2,35,1,2,0,2,1,
+        27,2,35,1,2,0,0,2,
         1,19,0,0,
         1,25,0,5,
         // FCVTPS_64d_float2int           - FCVTPS      Xd, Dn
-        28,2,35,1,2,0,2,1,
+        28,2,35,1,2,0,0,2,
         1,17,0,0,
         1,26,0,5,
         // FCVTPS_64h_float2int           - FCVTPS      Xd, Hn
-        29,2,35,1,2,0,2,1,
+        29,2,35,1,2,0,0,2,
         1,17,0,0,
         1,24,0,5,
         // FCVTPS_64s_float2int           - FCVTPS      Xd, Sn
-        30,2,35,1,2,0,2,1,
+        30,2,35,1,2,0,0,2,
         1,17,0,0,
         1,25,0,5,
         // FCVTPS_asimdmisc_r             - FCVTPS      Vd.T, Vn.T
-        31,2,35,1,1,2,2,1,
+        31,2,35,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTPS_asimdmiscfp16_r         - FCVTPS      Vd.T, Vn.T
-        32,2,35,1,1,4,2,1,
+        32,2,35,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTPS_asisdmisc_r             - FCVTPS      Vd, Vn
-        33,2,35,1,1,2,2,1,
+        33,2,35,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FCVTPS_asisdmiscfp16_r         - FCVTPS      Hd, Hn
-        34,2,35,1,1,4,2,1,
+        34,2,35,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FCVTPS_sisd_32d                - FCVTPS      Sd, Dn
-        35,2,35,1,2,27,2,1,
+        35,2,35,1,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVTPS_sisd_32h                - FCVTPS      Sd, Hn
-        36,2,35,1,2,27,2,1,
+        36,2,35,1,2,27,0,2,
         1,25,0,0,
         1,24,0,5,
         // FCVTPS_sisd_64h                - FCVTPS      Dd, Hn
-        37,2,35,1,2,27,2,1,
+        37,2,35,1,2,27,0,2,
         1,26,0,0,
         1,24,0,5,
         // FCVTPS_sisd_64s                - FCVTPS      Dd, Sn
-        38,2,35,1,2,27,2,1,
+        38,2,35,1,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // FCVTPU_32d_float2int           - FCVTPU      Wd, Dn
-        39,2,36,1,2,0,2,1,
+        39,2,36,1,2,0,0,2,
         1,19,0,0,
         1,26,0,5,
         // FCVTPU_32h_float2int           - FCVTPU      Wd, Hn
-        40,2,36,1,2,0,2,1,
+        40,2,36,1,2,0,0,2,
         1,19,0,0,
         1,24,0,5,
         // FCVTPU_32s_float2int           - FCVTPU      Wd, Sn
-        41,2,36,1,2,0,2,1,
+        41,2,36,1,2,0,0,2,
         1,19,0,0,
         1,25,0,5,
         // FCVTPU_64d_float2int           - FCVTPU      Xd, Dn
-        42,2,36,1,2,0,2,1,
+        42,2,36,1,2,0,0,2,
         1,17,0,0,
         1,26,0,5,
         // FCVTPU_64h_float2int           - FCVTPU      Xd, Hn
-        43,2,36,1,2,0,2,1,
+        43,2,36,1,2,0,0,2,
         1,17,0,0,
         1,24,0,5,
         // FCVTPU_64s_float2int           - FCVTPU      Xd, Sn
-        44,2,36,1,2,0,2,1,
+        44,2,36,1,2,0,0,2,
         1,17,0,0,
         1,25,0,5,
         // FCVTPU_asimdmisc_r             - FCVTPU      Vd.T, Vn.T
-        45,2,36,1,1,2,2,1,
+        45,2,36,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTPU_asimdmiscfp16_r         - FCVTPU      Vd.T, Vn.T
-        46,2,36,1,1,4,2,1,
+        46,2,36,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTPU_asisdmisc_r             - FCVTPU      Vd, Vn
-        47,2,36,1,1,2,2,1,
+        47,2,36,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FCVTPU_asisdmiscfp16_r         - FCVTPU      Hd, Hn
-        48,2,36,1,1,4,2,1,
+        48,2,36,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FCVTPU_sisd_32d                - FCVTPU      Sd, Dn
-        49,2,36,1,2,27,2,1,
+        49,2,36,1,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVTPU_sisd_32h                - FCVTPU      Sd, Hn
-        50,2,36,1,2,27,2,1,
+        50,2,36,1,2,27,0,2,
         1,25,0,0,
         1,24,0,5,
         // FCVTPU_sisd_64h                - FCVTPU      Dd, Hn
-        51,2,36,1,2,27,2,1,
+        51,2,36,1,2,27,0,2,
         1,26,0,0,
         1,24,0,5,
         // FCVTPU_sisd_64s                - FCVTPU      Dd, Sn
-        52,2,36,1,2,27,2,1,
+        52,2,36,1,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // FCVTXN_asimdmisc_n             - FCVTXN      Vd.Tb, Vn.2D
-        53,2,37,1,1,2,2,1,
+        53,2,37,1,1,2,4,2,
+        16,7,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTXN_asisdmisc_n             - FCVTXN      Sd, Dn
-        54,2,37,1,1,2,2,1,
+        54,2,37,1,1,2,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVTZS_32d_float2fix           - FCVTZS      Wd, Dn, #fbits
-        55,2,38,1,2,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        55,2,38,1,2,0,0,3,
+        1,19,0,0,
+        1,26,0,5,
+        4,1,6,1,
         // FCVTZS_32d_float2int           - FCVTZS      Wd, Dn
-        56,2,38,1,2,0,2,1,
+        56,2,38,1,2,0,0,2,
         1,19,0,0,
         1,26,0,5,
         // FCVTZS_32h_float2fix           - FCVTZS      Wd, Hn, #fbits
-        57,2,38,1,2,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,24,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        57,2,38,1,2,0,0,3,
+        1,19,0,0,
+        1,24,0,5,
+        4,1,6,1,
         // FCVTZS_32h_float2int           - FCVTZS      Wd, Hn
-        58,2,38,1,2,0,2,1,
+        58,2,38,1,2,0,0,2,
         1,19,0,0,
         1,24,0,5,
         // FCVTZS_32s_float2fix           - FCVTZS      Wd, Sn, #fbits
-        59,2,38,1,2,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,25,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        59,2,38,1,2,0,0,3,
+        1,19,0,0,
+        1,25,0,5,
+        4,1,6,1,
         // FCVTZS_32s_float2int           - FCVTZS      Wd, Sn
-        60,2,38,1,2,0,2,1,
+        60,2,38,1,2,0,0,2,
         1,19,0,0,
         1,25,0,5,
         // FCVTZS_64d_float2fix           - FCVTZS      Xd, Dn, #fbits
-        61,2,38,1,2,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        61,2,38,1,2,0,0,3,
+        1,17,0,0,
+        1,26,0,5,
+        4,1,6,1,
         // FCVTZS_64d_float2int           - FCVTZS      Xd, Dn
-        62,2,38,1,2,0,2,1,
+        62,2,38,1,2,0,0,2,
         1,17,0,0,
         1,26,0,5,
         // FCVTZS_64h_float2fix           - FCVTZS      Xd, Hn, #fbits
-        63,2,38,1,2,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,24,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        63,2,38,1,2,0,0,3,
+        1,17,0,0,
+        1,24,0,5,
+        4,1,6,1,
         // FCVTZS_64h_float2int           - FCVTZS      Xd, Hn
-        64,2,38,1,2,0,2,1,
+        64,2,38,1,2,0,0,2,
         1,17,0,0,
         1,24,0,5,
         // FCVTZS_64s_float2fix           - FCVTZS      Xd, Sn, #fbits
-        65,2,38,1,2,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,25,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        65,2,38,1,2,0,0,3,
+        1,17,0,0,
+        1,25,0,5,
+        4,1,6,1,
         // FCVTZS_64s_float2int           - FCVTZS      Xd, Sn
-        66,2,38,1,2,0,2,1,
+        66,2,38,1,2,0,0,2,
         1,17,0,0,
         1,25,0,5,
         // FCVTZS_asimdmisc_r             - FCVTZS      Vd.T, Vn.T
-        67,2,38,1,1,2,2,1,
+        67,2,38,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTZS_asimdmiscfp16_r         - FCVTZS      Vd.T, Vn.T
-        68,2,38,1,1,4,2,1,
+        68,2,38,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTZS_asimdshf_c              - FCVTZS      Vd.T, Vn.T, #fbits
-        69,2,38,1,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,4,7,1,16,7,0,0,
+        69,2,38,1,1,2,2,3,
+        43,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,4,7,1,
         // FCVTZS_asisdmisc_r             - FCVTZS      Vd, Vn
-        70,2,38,1,1,2,2,1,
+        70,2,38,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FCVTZS_asisdmiscfp16_r         - FCVTZS      Hd, Hn
-        71,2,38,1,1,4,2,1,
+        71,2,38,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FCVTZS_asisdshf_c              - FCVTZS      Vd, Vn, #fbits
-        72,2,38,1,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,4,7,1,16,7,0,0,
+        72,2,38,1,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,4,7,1,
         // FCVTZS_sisd_32d                - FCVTZS      Sd, Dn
-        73,2,38,1,2,27,2,1,
+        73,2,38,1,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVTZS_sisd_32h                - FCVTZS      Sd, Hn
-        74,2,38,1,2,27,2,1,
+        74,2,38,1,2,27,0,2,
         1,25,0,0,
         1,24,0,5,
         // FCVTZS_sisd_64h                - FCVTZS      Dd, Hn
-        75,2,38,1,2,27,2,1,
+        75,2,38,1,2,27,0,2,
         1,26,0,0,
         1,24,0,5,
         // FCVTZS_sisd_64s                - FCVTZS      Dd, Sn
-        76,2,38,1,2,27,2,1,
+        76,2,38,1,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // FCVTZU_32d_float2fix           - FCVTZU      Wd, Dn, #fbits
-        77,2,39,1,2,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        77,2,39,1,2,0,0,3,
+        1,19,0,0,
+        1,26,0,5,
+        4,1,6,1,
         // FCVTZU_32d_float2int           - FCVTZU      Wd, Dn
-        78,2,39,1,2,0,2,1,
+        78,2,39,1,2,0,0,2,
         1,19,0,0,
         1,26,0,5,
         // FCVTZU_32h_float2fix           - FCVTZU      Wd, Hn, #fbits
-        79,2,39,1,2,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,24,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        79,2,39,1,2,0,0,3,
+        1,19,0,0,
+        1,24,0,5,
+        4,1,6,1,
         // FCVTZU_32h_float2int           - FCVTZU      Wd, Hn
-        80,2,39,1,2,0,2,1,
+        80,2,39,1,2,0,0,2,
         1,19,0,0,
         1,24,0,5,
         // FCVTZU_32s_float2fix           - FCVTZU      Wd, Sn, #fbits
-        81,2,39,1,2,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,25,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        81,2,39,1,2,0,0,3,
+        1,19,0,0,
+        1,25,0,5,
+        4,1,6,1,
         // FCVTZU_32s_float2int           - FCVTZU      Wd, Sn
-        82,2,39,1,2,0,2,1,
+        82,2,39,1,2,0,0,2,
         1,19,0,0,
         1,25,0,5,
         // FCVTZU_64d_float2fix           - FCVTZU      Xd, Dn, #fbits
-        83,2,39,1,2,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        83,2,39,1,2,0,0,3,
+        1,17,0,0,
+        1,26,0,5,
+        4,1,6,1,
         // FCVTZU_64d_float2int           - FCVTZU      Xd, Dn
-        84,2,39,1,2,0,2,1,
+        84,2,39,1,2,0,0,2,
         1,17,0,0,
         1,26,0,5,
         // FCVTZU_64h_float2fix           - FCVTZU      Xd, Hn, #fbits
-        85,2,39,1,2,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,24,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        85,2,39,1,2,0,0,3,
+        1,17,0,0,
+        1,24,0,5,
+        4,1,6,1,
         // FCVTZU_64h_float2int           - FCVTZU      Xd, Hn
-        86,2,39,1,2,0,2,1,
+        86,2,39,1,2,0,0,2,
         1,17,0,0,
         1,24,0,5,
         // FCVTZU_64s_float2fix           - FCVTZU      Xd, Sn, #fbits
-        87,2,39,1,2,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,25,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        87,2,39,1,2,0,0,3,
+        1,17,0,0,
+        1,25,0,5,
+        4,1,6,1,
         // FCVTZU_64s_float2int           - FCVTZU      Xd, Sn
-        88,2,39,1,2,0,2,1,
+        88,2,39,1,2,0,0,2,
         1,17,0,0,
         1,25,0,5,
         // FCVTZU_asimdmisc_r             - FCVTZU      Vd.T, Vn.T
-        89,2,39,1,1,2,2,1,
+        89,2,39,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTZU_asimdmiscfp16_r         - FCVTZU      Vd.T, Vn.T
-        90,2,39,1,1,4,2,1,
+        90,2,39,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FCVTZU_asimdshf_c              - FCVTZU      Vd.T, Vn.T, #fbits
-        91,2,39,1,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,4,7,1,16,7,0,0,
+        91,2,39,1,1,2,2,3,
+        43,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,4,7,1,
         // FCVTZU_asisdmisc_r             - FCVTZU      Vd, Vn
-        92,2,39,1,1,2,2,1,
+        92,2,39,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FCVTZU_asisdmiscfp16_r         - FCVTZU      Hd, Hn
-        93,2,39,1,1,4,2,1,
+        93,2,39,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FCVTZU_asisdshf_c              - FCVTZU      Vd, Vn, #fbits
-        94,2,39,1,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,4,7,1,16,7,0,0,
+        94,2,39,1,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,4,7,1,
         // FCVTZU_sisd_32d                - FCVTZU      Sd, Dn
-        95,2,39,1,2,27,2,1,
+        95,2,39,1,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVTZU_sisd_32h                - FCVTZU      Sd, Hn
-        96,2,39,1,2,27,2,1,
+        96,2,39,1,2,27,0,2,
         1,25,0,0,
         1,24,0,5,
         // FCVTZU_sisd_64h                - FCVTZU      Dd, Hn
-        97,2,39,1,2,27,2,1,
+        97,2,39,1,2,27,0,2,
         1,26,0,0,
         1,24,0,5,
         // FCVTZU_sisd_64s                - FCVTZU      Dd, Sn
-        98,2,39,1,2,27,2,1,
+        98,2,39,1,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // FCVT_dh_floatdp1               - FCVT        Dd, Hn
-        99,2,26,1,2,22,2,1,
+        99,2,26,1,2,22,0,2,
         1,26,0,0,
         1,24,0,5,
         // FCVT_ds_floatdp1               - FCVT        Dd, Sn
-        100,2,26,1,2,22,2,1,
+        100,2,26,1,2,22,0,2,
         1,26,0,0,
         1,25,0,5,
         // FCVT_hd_floatdp1               - FCVT        Hd, Dn
-        101,2,26,1,2,22,2,1,
+        101,2,26,1,2,22,0,2,
         1,24,0,0,
         1,26,0,5,
         // FCVT_hs_floatdp1               - FCVT        Hd, Sn
-        102,2,26,1,2,22,2,1,
+        102,2,26,1,2,22,0,2,
         1,24,0,0,
         1,25,0,5,
         // FCVT_sd_floatdp1               - FCVT        Sd, Dn
-        103,2,26,1,2,22,2,1,
+        103,2,26,1,2,22,0,2,
         1,25,0,0,
         1,26,0,5,
         // FCVT_sh_floatdp1               - FCVT        Sd, Hn
-        104,2,26,1,2,22,2,1,
+        104,2,26,1,2,22,0,2,
         1,25,0,0,
         1,24,0,5,
         // FDIV_asimdsame_only            - FDIV        Vd.T, Vn.T, Vm.T
-        105,2,40,1,1,2,3,1,
+        105,2,40,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FDIV_asimdsamefp16_only        - FDIV        Vd.T, Vn.T, Vm.T
-        106,2,40,1,1,4,3,1,
+        106,2,40,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FDIV_d_floatdp2                - FDIV        Dd, Dn, Dm
-        107,2,40,1,2,0,3,1,
+        107,2,40,1,2,0,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // FDIV_h_floatdp2                - FDIV        Hd, Hn, Hm
-        108,2,40,1,2,0,3,1,
+        108,2,40,1,2,0,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FDIV_s_floatdp2                - FDIV        Sd, Sn, Sm
-        109,2,40,1,2,0,3,1,
+        109,2,40,1,2,0,0,3,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         // FDOT_asimdelem_d               - FDOT        Vd.Ta, Vn.Tb, Vm.4B[index]
-        110,2,41,1,1,25,3,1,
+        110,2,41,1,1,25,6,3,
+        16,18,9,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,0,16,
+        1,27,3,16,
         // FDOT_asimdelem_g               - FDOT        Vd.Ta, Vn.Tb, Vm.2B[index]
-        111,2,41,1,1,24,3,1,
+        111,2,41,1,1,24,6,3,
+        17,18,6,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FDOT_asimdsame2_d              - FDOT        Vd.Ta, Vn.Tb, Vm.Tb
-        112,2,41,1,1,24,3,1,
+        112,2,41,1,1,24,4,3,
+        17,18,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FDOT_asimdsame2_dd             - FDOT        Vd.Ta, Vn.Tb, Vm.Tb
-        113,2,41,1,1,25,3,1,
+        113,2,41,1,1,25,4,3,
+        16,18,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FJCVTZS_32d_float2int          - FJCVTZS     Wd, Dn
-        114,2,42,1,2,36,2,1,
+        114,2,42,1,2,36,0,2,
         1,19,0,0,
         1,26,0,5,
         // FMADD_d_floatdp3               - FMADD       Dd, Dn, Dm, Da
-        115,2,43,1,2,0,4,1,
+        115,2,43,1,2,0,0,4,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         1,26,0,10,
         // FMADD_h_floatdp3               - FMADD       Hd, Hn, Hm, Ha
-        116,2,43,1,2,0,4,1,
+        116,2,43,1,2,0,0,4,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         1,24,0,10,
         // FMADD_s_floatdp3               - FMADD       Sd, Sn, Sm, Sa
-        117,2,43,1,2,0,4,1,
+        117,2,43,1,2,0,0,4,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         1,25,0,10,
         // FMAXNMP_asimdsame_only         - FMAXNMP     Vd.T, Vn.T, Vm.T
-        118,2,46,1,1,2,3,1,
+        118,2,46,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMAXNMP_asimdsamefp16_only     - FMAXNMP     Vd.T, Vn.T, Vm.T
-        119,2,46,1,1,4,3,1,
+        119,2,46,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMAXNMP_asisdpair_only_h       - FMAXNMP     Hd, Vn.2H
-        120,2,46,1,1,4,2,1,
+        120,2,46,1,1,4,2,2,
+        8,0,0,0,
         1,24,0,0,
         1,27,0,5,
         // FMAXNMP_asisdpair_only_sd      - FMAXNMP     Vd, Vn.T
-        121,2,46,1,1,2,2,1,
+        121,2,46,1,1,2,2,2,
+        13,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // FMAXNMV_asimdall_only_h        - FMAXNMV     Vd, Vn.T
-        122,2,47,1,1,4,2,1,
+        122,2,47,1,1,4,4,2,
+        3,17,0,0,
         1,27,0,0,
         1,27,0,5,
         // FMAXNMV_asimdall_only_sd       - FMAXNMV     Sd, Vn.4S
-        123,2,47,1,1,2,2,1,
+        123,2,47,1,1,2,2,2,
+        10,0,0,0,
         1,25,0,0,
         1,27,0,5,
         // FMAXNM_asimdsame_only          - FMAXNM      Vd.T, Vn.T, Vm.T
-        124,2,45,1,1,2,3,1,
+        124,2,45,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMAXNM_asimdsamefp16_only      - FMAXNM      Vd.T, Vn.T, Vm.T
-        125,2,45,1,1,4,3,1,
+        125,2,45,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMAXNM_d_floatdp2              - FMAXNM      Dd, Dn, Dm
-        126,2,45,1,2,0,3,1,
+        126,2,45,1,2,0,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // FMAXNM_h_floatdp2              - FMAXNM      Hd, Hn, Hm
-        127,2,45,1,2,0,3,1,
+        127,2,45,1,2,0,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FMAXNM_s_floatdp2              - FMAXNM      Sd, Sn, Sm
-        128,2,45,1,2,0,3,1,
+        128,2,45,1,2,0,0,3,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         // FMAXP_asimdsame_only           - FMAXP       Vd.T, Vn.T, Vm.T
-        129,2,48,1,1,2,3,1,
+        129,2,48,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMAXP_asimdsamefp16_only       - FMAXP       Vd.T, Vn.T, Vm.T
-        130,2,48,1,1,4,3,1,
+        130,2,48,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMAXP_asisdpair_only_h         - FMAXP       Hd, Vn.2H
-        131,2,48,1,1,4,2,1,
+        131,2,48,1,1,4,2,2,
+        8,0,0,0,
         1,24,0,0,
         1,27,0,5,
         // FMAXP_asisdpair_only_sd        - FMAXP       Vd, Vn.T
-        132,2,48,1,1,2,2,1,
+        132,2,48,1,1,2,2,2,
+        13,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // FMAXV_asimdall_only_h          - FMAXV       Vd, Vn.T
-        133,2,49,1,1,4,2,1,
+        133,2,49,1,1,4,4,2,
+        3,17,0,0,
         1,27,0,0,
         1,27,0,5,
         // FMAXV_asimdall_only_sd         - FMAXV       Sd, Vn.4S
-        134,2,49,1,1,2,2,1,
+        134,2,49,1,1,2,2,2,
+        10,0,0,0,
         1,25,0,0,
         1,27,0,5,
         // FMAX_asimdsame_only            - FMAX        Vd.T, Vn.T, Vm.T
-        135,2,44,1,1,2,3,1,
+        135,2,44,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMAX_asimdsamefp16_only        - FMAX        Vd.T, Vn.T, Vm.T
-        136,2,44,1,1,4,3,1,
+        136,2,44,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMAX_d_floatdp2                - FMAX        Dd, Dn, Dm
-        137,2,44,1,2,0,3,1,
+        137,2,44,1,2,0,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // FMAX_h_floatdp2                - FMAX        Hd, Hn, Hm
-        138,2,44,1,2,0,3,1,
+        138,2,44,1,2,0,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FMAX_s_floatdp2                - FMAX        Sd, Sn, Sm
-        139,2,44,1,2,0,3,1,
+        139,2,44,1,2,0,0,3,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         // FMINNMP_asimdsame_only         - FMINNMP     Vd.T, Vn.T, Vm.T
-        140,2,52,1,1,2,3,1,
+        140,2,52,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMINNMP_asimdsamefp16_only     - FMINNMP     Vd.T, Vn.T, Vm.T
-        141,2,52,1,1,4,3,1,
+        141,2,52,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMINNMP_asisdpair_only_h       - FMINNMP     Hd, Vn.2H
-        142,2,52,1,1,4,2,1,
+        142,2,52,1,1,4,2,2,
+        8,0,0,0,
         1,24,0,0,
         1,27,0,5,
         // FMINNMP_asisdpair_only_sd      - FMINNMP     Vd, Vn.T
-        143,2,52,1,1,2,2,1,
+        143,2,52,1,1,2,2,2,
+        13,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // FMINNMV_asimdall_only_h        - FMINNMV     Vd, Vn.T
-        144,2,53,1,1,4,2,1,
+        144,2,53,1,1,4,4,2,
+        3,17,0,0,
         1,27,0,0,
         1,27,0,5,
         // FMINNMV_asimdall_only_sd       - FMINNMV     Sd, Vn.4S
-        145,2,53,1,1,2,2,1,
+        145,2,53,1,1,2,2,2,
+        10,0,0,0,
         1,25,0,0,
         1,27,0,5,
         // FMINNM_asimdsame_only          - FMINNM      Vd.T, Vn.T, Vm.T
-        146,2,51,1,1,2,3,1,
+        146,2,51,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMINNM_asimdsamefp16_only      - FMINNM      Vd.T, Vn.T, Vm.T
-        147,2,51,1,1,4,3,1,
+        147,2,51,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMINNM_d_floatdp2              - FMINNM      Dd, Dn, Dm
-        148,2,51,1,2,0,3,1,
+        148,2,51,1,2,0,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // FMINNM_h_floatdp2              - FMINNM      Hd, Hn, Hm
-        149,2,51,1,2,0,3,1,
+        149,2,51,1,2,0,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FMINNM_s_floatdp2              - FMINNM      Sd, Sn, Sm
-        150,2,51,1,2,0,3,1,
+        150,2,51,1,2,0,0,3,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         // FMINP_asimdsame_only           - FMINP       Vd.T, Vn.T, Vm.T
-        151,2,54,1,1,2,3,1,
+        151,2,54,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMINP_asimdsamefp16_only       - FMINP       Vd.T, Vn.T, Vm.T
-        152,2,54,1,1,4,3,1,
+        152,2,54,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMINP_asisdpair_only_h         - FMINP       Hd, Vn.2H
-        153,2,54,1,1,4,2,1,
+        153,2,54,1,1,4,2,2,
+        8,0,0,0,
         1,24,0,0,
         1,27,0,5,
         // FMINP_asisdpair_only_sd        - FMINP       Vd, Vn.T
-        154,2,54,1,1,2,2,1,
+        154,2,54,1,1,2,2,2,
+        13,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // FMINV_asimdall_only_h          - FMINV       Vd, Vn.T
-        155,2,55,1,1,4,2,1,
+        155,2,55,1,1,4,4,2,
+        3,17,0,0,
         1,27,0,0,
         1,27,0,5,
         // FMINV_asimdall_only_sd         - FMINV       Sd, Vn.4S
-        156,2,55,1,1,2,2,1,
+        156,2,55,1,1,2,2,2,
+        10,0,0,0,
         1,25,0,0,
         1,27,0,5,
         // FMIN_asimdsame_only            - FMIN        Vd.T, Vn.T, Vm.T
-        157,2,50,1,1,2,3,1,
+        157,2,50,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMIN_asimdsamefp16_only        - FMIN        Vd.T, Vn.T, Vm.T
-        158,2,50,1,1,4,3,1,
+        158,2,50,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMIN_d_floatdp2                - FMIN        Dd, Dn, Dm
-        159,2,50,1,2,0,3,1,
+        159,2,50,1,2,0,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // FMIN_h_floatdp2                - FMIN        Hd, Hn, Hm
-        160,2,50,1,2,0,3,1,
+        160,2,50,1,2,0,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FMIN_s_floatdp2                - FMIN        Sd, Sn, Sm
-        161,2,50,1,2,0,3,1,
+        161,2,50,1,2,0,0,3,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         // FMLAL2_asimdelem_lh            - FMLAL2      Vd.Ta, Vn.Tb, Vm.H[index]
-        162,2,58,1,1,21,3,1,
+        162,2,58,1,1,21,6,3,
+        16,15,3,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMLAL2_asimdsame_f             - FMLAL2      Vd.Ta, Vn.Tb, Vm.Tb
-        163,2,58,1,1,21,3,1,
+        163,2,58,1,1,21,4,3,
+        16,15,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLALB_asimdelem_h             - FMLALB      Vd.8H, Vn.16B, Vm.B[index]
-        164,2,59,1,1,26,3,1,
+        164,2,59,1,1,26,6,3,
+        11,5,1,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,4,16,
+        1,43,17,16,
         // FMLALB_asimdsame2_j            - FMLALB      Vd.8H, Vn.16B, Vm.16B
-        165,2,59,1,1,26,3,1,
+        165,2,59,1,1,26,4,3,
+        11,5,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLALLBB_asimdelem_j           - FMLALLBB    Vd.4S, Vn.16B, Vm.B[index]
-        166,2,60,1,1,26,3,1,
+        166,2,60,1,1,26,6,3,
+        10,5,1,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,4,16,
+        1,43,17,16,
         // FMLALLBB_asimdsame2_g          - FMLALLBB    Vd.4S, Vn.16B, Vm.16B
-        167,2,60,1,1,26,3,1,
+        167,2,60,1,1,26,4,3,
+        10,5,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLALLBT_asimdelem_j           - FMLALLBT    Vd.4S, Vn.16B, Vm.B[index]
-        168,2,61,1,1,26,3,1,
+        168,2,61,1,1,26,6,3,
+        10,5,1,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,4,16,
+        1,43,17,16,
         // FMLALLBT_asimdsame2_g          - FMLALLBT    Vd.4S, Vn.16B, Vm.16B
-        169,2,61,1,1,26,3,1,
+        169,2,61,1,1,26,4,3,
+        10,5,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLALLTB_asimdelem_j           - FMLALLTB    Vd.4S, Vn.16B, Vm.B[index]
-        170,2,62,1,1,26,3,1,
+        170,2,62,1,1,26,6,3,
+        10,5,1,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,4,16,
+        1,43,17,16,
         // FMLALLTB_asimdsame2_g          - FMLALLTB    Vd.4S, Vn.16B, Vm.16B
-        171,2,62,1,1,26,3,1,
+        171,2,62,1,1,26,4,3,
+        10,5,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLALLTT_asimdelem_j           - FMLALLTT    Vd.4S, Vn.16B, Vm.B[index]
-        172,2,63,1,1,26,3,1,
+        172,2,63,1,1,26,6,3,
+        10,5,1,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,4,16,
+        1,43,17,16,
         // FMLALLTT_asimdsame2_g          - FMLALLTT    Vd.4S, Vn.16B, Vm.16B
-        173,2,63,1,1,26,3,1,
+        173,2,63,1,1,26,4,3,
+        10,5,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLALT_asimdelem_h             - FMLALT      Vd.8H, Vn.16B, Vm.B[index]
-        174,2,64,1,1,26,3,1,
+        174,2,64,1,1,26,6,3,
+        11,5,1,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,4,16,
+        1,43,17,16,
         // FMLALT_asimdsame2_j            - FMLALT      Vd.8H, Vn.16B, Vm.16B
-        175,2,64,1,1,26,3,1,
+        175,2,64,1,1,26,4,3,
+        11,5,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLAL_asimdelem_lh             - FMLAL       Vd.Ta, Vn.Tb, Vm.H[index]
-        176,2,57,1,1,21,3,1,
+        176,2,57,1,1,21,6,3,
+        16,15,3,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMLAL_asimdsame_f              - FMLAL       Vd.Ta, Vn.Tb, Vm.Tb
-        177,2,57,1,1,21,3,1,
+        177,2,57,1,1,21,4,3,
+        16,15,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLA_asimdelem_r_sd            - FMLA        Vd.T, Vn.T, Vm.Ts[index]
-        178,2,56,1,1,2,3,1,
+        178,2,56,1,1,2,4,3,
+        26,12,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,5,16,
+        1,27,9,16,
         // FMLA_asimdelem_rh_h            - FMLA        Vd.T, Vn.T, Vm.H[index]
-        179,2,56,1,1,4,3,1,
+        179,2,56,1,1,4,4,3,
+        17,3,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMLA_asimdsame_only            - FMLA        Vd.T, Vn.T, Vm.T
-        180,2,56,1,1,2,3,1,
+        180,2,56,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLA_asimdsamefp16_only        - FMLA        Vd.T, Vn.T, Vm.T
-        181,2,56,1,1,4,3,1,
+        181,2,56,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLA_asisdelem_r_sd            - FMLA        Vd, Vn, Vm.Ts[index]
-        182,2,56,1,1,2,3,1,
+        182,2,56,1,1,2,2,3,
+        12,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,27,5,16,
+        1,27,9,16,
         // FMLA_asisdelem_rh_h            - FMLA        Hd, Hn, Vm.H[index]
-        183,2,56,1,1,4,3,1,
+        183,2,56,1,1,4,2,3,
+        3,0,0,0,
         1,24,0,0,
         1,24,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMLSL2_asimdelem_lh            - FMLSL2      Vd.Ta, Vn.Tb, Vm.H[index]
-        184,2,67,1,1,21,3,1,
+        184,2,67,1,1,21,6,3,
+        16,15,3,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMLSL2_asimdsame_f             - FMLSL2      Vd.Ta, Vn.Tb, Vm.Tb
-        185,2,67,1,1,21,3,1,
+        185,2,67,1,1,21,4,3,
+        16,15,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLSL_asimdelem_lh             - FMLSL       Vd.Ta, Vn.Tb, Vm.H[index]
-        186,2,66,1,1,21,3,1,
+        186,2,66,1,1,21,6,3,
+        16,15,3,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMLSL_asimdsame_f              - FMLSL       Vd.Ta, Vn.Tb, Vm.Tb
-        187,2,66,1,1,21,3,1,
+        187,2,66,1,1,21,4,3,
+        16,15,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLS_asimdelem_r_sd            - FMLS        Vd.T, Vn.T, Vm.Ts[index]
-        188,2,65,1,1,2,3,1,
+        188,2,65,1,1,2,4,3,
+        26,12,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,5,16,
+        1,27,9,16,
         // FMLS_asimdelem_rh_h            - FMLS        Vd.T, Vn.T, Vm.H[index]
-        189,2,65,1,1,4,3,1,
+        189,2,65,1,1,4,4,3,
+        17,3,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMLS_asimdsame_only            - FMLS        Vd.T, Vn.T, Vm.T
-        190,2,65,1,1,2,3,1,
+        190,2,65,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLS_asimdsamefp16_only        - FMLS        Vd.T, Vn.T, Vm.T
-        191,2,65,1,1,4,3,1,
+        191,2,65,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMLS_asisdelem_r_sd            - FMLS        Vd, Vn, Vm.Ts[index]
-        192,2,65,1,1,2,3,1,
+        192,2,65,1,1,2,2,3,
+        12,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,27,5,16,
+        1,27,9,16,
         // FMLS_asisdelem_rh_h            - FMLS        Hd, Hn, Vm.H[index]
-        193,2,65,1,1,4,3,1,
+        193,2,65,1,1,4,2,3,
+        3,0,0,0,
         1,24,0,0,
         1,24,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMMLA_asimd_fp8fp16            - FMMLA       Vd.8H, Vn.16B, Vm.16B
-        194,2,68,1,1,18,3,1,
+        194,2,68,1,1,18,4,3,
+        11,5,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMMLA_asimd_fp8fp32            - FMMLA       Vd.4S, Vn.16B, Vm.16B
-        195,2,68,1,1,19,3,1,
+        195,2,68,1,1,19,4,3,
+        10,5,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMOV_32h_float2int             - FMOV        Wd, Hn
-        196,2,69,1,2,0,2,1,
+        196,2,69,1,2,0,0,2,
         1,19,0,0,
         1,24,0,5,
         // FMOV_32s_float2int             - FMOV        Wd, Sn
-        197,2,69,1,2,0,2,1,
+        197,2,69,1,2,0,0,2,
         1,19,0,0,
         1,25,0,5,
         // FMOV_64d_float2int             - FMOV        Xd, Dn
-        198,2,69,1,2,0,2,1,
+        198,2,69,1,2,0,0,2,
         1,17,0,0,
         1,26,0,5,
         // FMOV_64h_float2int             - FMOV        Xd, Hn
-        199,2,69,1,2,0,2,1,
+        199,2,69,1,2,0,0,2,
         1,17,0,0,
         1,24,0,5,
         // FMOV_64vx_float2int            - FMOV        Xd, Vn.D[1]
-        200,2,69,1,2,0,2,1,
+        200,2,69,1,2,0,2,2,
+        2,0,0,0,
         1,17,0,0,
-        1,27,6,5,
+        1,27,1,5,
         // FMOV_asimdimm_d2_d             - FMOV        Vd.2D, #imm
-        201,2,69,1,1,2,2,0,
-        1,27,0,0,0,0,0,0,
-        4,14,8,2,16,3,5,5,
+        201,2,69,1,1,2,2,2,
+        7,0,0,0,
+        1,27,0,0,
+        4,14,8,2,
         // FMOV_asimdimm_h_h              - FMOV        Vd.T, #imm
-        202,2,69,1,1,4,2,0,
-        1,27,0,0,0,0,0,0,
-        4,14,8,2,16,3,5,5,
+        202,2,69,1,1,4,2,2,
+        17,0,0,0,
+        1,27,0,0,
+        4,14,8,2,
         // FMOV_asimdimm_s_s              - FMOV        Vd.T, #imm
-        203,2,69,1,1,2,2,0,
-        1,27,0,0,0,0,0,0,
-        4,14,8,2,16,3,5,5,
+        203,2,69,1,1,2,2,2,
+        16,0,0,0,
+        1,27,0,0,
+        4,14,8,2,
         // FMOV_d64_float2int             - FMOV        Dd, Xn
-        204,2,69,1,2,0,2,1,
+        204,2,69,1,2,0,0,2,
         1,26,0,0,
         1,17,0,5,
         // FMOV_d_floatdp1                - FMOV        Dd, Dn
-        205,2,69,1,2,0,2,1,
+        205,2,69,1,2,0,0,2,
         1,26,0,0,
         1,26,0,5,
         // FMOV_d_floatimm                - FMOV        Dd, #imm
-        206,2,69,1,2,0,2,0,
-        1,26,0,0,0,0,0,0,
-        4,1,8,1,13,8,0,0,
+        206,2,69,1,2,0,0,2,
+        1,26,0,0,
+        4,1,8,1,
         // FMOV_h32_float2int             - FMOV        Hd, Wn
-        207,2,69,1,2,0,2,1,
+        207,2,69,1,2,0,0,2,
         1,24,0,0,
         1,19,0,5,
         // FMOV_h64_float2int             - FMOV        Hd, Xn
-        208,2,69,1,2,0,2,1,
+        208,2,69,1,2,0,0,2,
         1,24,0,0,
         1,17,0,5,
         // FMOV_h_floatdp1                - FMOV        Hd, Hn
-        209,2,69,1,2,0,2,1,
+        209,2,69,1,2,0,0,2,
         1,24,0,0,
         1,24,0,5,
         // FMOV_h_floatimm                - FMOV        Hd, #imm
-        210,2,69,1,2,0,2,0,
-        1,24,0,0,0,0,0,0,
-        4,1,8,1,13,8,0,0,
+        210,2,69,1,2,0,0,2,
+        1,24,0,0,
+        4,1,8,1,
         // FMOV_s32_float2int             - FMOV        Sd, Wn
-        211,2,69,1,2,0,2,1,
+        211,2,69,1,2,0,0,2,
         1,25,0,0,
         1,19,0,5,
         // FMOV_s_floatdp1                - FMOV        Sd, Sn
-        212,2,69,1,2,0,2,1,
+        212,2,69,1,2,0,0,2,
         1,25,0,0,
         1,25,0,5,
         // FMOV_s_floatimm                - FMOV        Sd, #imm
-        213,2,69,1,2,0,2,0,
-        1,25,0,0,0,0,0,0,
-        4,1,8,1,13,8,0,0,
+        213,2,69,1,2,0,0,2,
+        1,25,0,0,
+        4,1,8,1,
         // FMOV_v64i_float2int            - FMOV        Vd.D[1], Xn
-        214,2,69,1,2,0,2,1,
-        1,27,6,0,
+        214,2,69,1,2,0,2,2,
+        2,0,0,0,
+        1,27,1,0,
         1,17,0,5,
         // FMSUB_d_floatdp3               - FMSUB       Dd, Dn, Dm, Da
-        215,2,70,1,2,0,4,1,
+        215,2,70,1,2,0,0,4,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         1,26,0,10,
         // FMSUB_h_floatdp3               - FMSUB       Hd, Hn, Hm, Ha
-        216,2,70,1,2,0,4,1,
+        216,2,70,1,2,0,0,4,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         1,24,0,10,
         // FMSUB_s_floatdp3               - FMSUB       Sd, Sn, Sm, Sa
-        217,2,70,1,2,0,4,1,
+        217,2,70,1,2,0,0,4,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         1,25,0,10,
         // FMULX_asimdelem_r_sd           - FMULX       Vd.T, Vn.T, Vm.Ts[index]
-        218,2,72,1,1,2,3,1,
+        218,2,72,1,1,2,4,3,
+        26,12,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,5,16,
+        1,27,9,16,
         // FMULX_asimdelem_rh_h           - FMULX       Vd.T, Vn.T, Vm.H[index]
-        219,2,72,1,1,4,3,1,
+        219,2,72,1,1,4,4,3,
+        17,3,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMULX_asimdsame_only           - FMULX       Vd.T, Vn.T, Vm.T
-        220,2,72,1,1,2,3,1,
+        220,2,72,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMULX_asimdsamefp16_only       - FMULX       Vd.T, Vn.T, Vm.T
-        221,2,72,1,1,4,3,1,
+        221,2,72,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMULX_asisdelem_r_sd           - FMULX       Vd, Vn, Vm.Ts[index]
-        222,2,72,1,1,2,3,1,
+        222,2,72,1,1,2,2,3,
+        12,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,27,5,16,
+        1,27,9,16,
         // FMULX_asisdelem_rh_h           - FMULX       Hd, Hn, Vm.H[index]
-        223,2,72,1,1,4,3,1,
+        223,2,72,1,1,4,2,3,
+        3,0,0,0,
         1,24,0,0,
         1,24,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMULX_asisdsame_only           - FMULX       Vd, Vn, Vm
-        224,2,72,1,1,2,3,1,
+        224,2,72,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // FMULX_asisdsamefp16_only       - FMULX       Hd, Hn, Hm
-        225,2,72,1,1,4,3,1,
+        225,2,72,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FMUL_asimdelem_r_sd            - FMUL        Vd.T, Vn.T, Vm.Ts[index]
-        226,2,71,1,1,2,3,1,
+        226,2,71,1,1,2,4,3,
+        26,12,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,5,16,
+        1,27,9,16,
         // FMUL_asimdelem_rh_h            - FMUL        Vd.T, Vn.T, Vm.H[index]
-        227,2,71,1,1,4,3,1,
+        227,2,71,1,1,4,4,3,
+        17,3,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMUL_asimdsame_only            - FMUL        Vd.T, Vn.T, Vm.T
-        228,2,71,1,1,2,3,1,
+        228,2,71,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMUL_asimdsamefp16_only        - FMUL        Vd.T, Vn.T, Vm.T
-        229,2,71,1,1,4,3,1,
+        229,2,71,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FMUL_asisdelem_r_sd            - FMUL        Vd, Vn, Vm.Ts[index]
-        230,2,71,1,1,2,3,1,
+        230,2,71,1,1,2,2,3,
+        12,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,27,5,16,
+        1,27,9,16,
         // FMUL_asisdelem_rh_h            - FMUL        Hd, Hn, Vm.H[index]
-        231,2,71,1,1,4,3,1,
+        231,2,71,1,1,4,2,3,
+        3,0,0,0,
         1,24,0,0,
         1,24,0,5,
-        1,43,1,16,
+        1,43,7,16,
         // FMUL_d_floatdp2                - FMUL        Dd, Dn, Dm
-        232,2,71,1,2,0,3,1,
+        232,2,71,1,2,0,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // FMUL_h_floatdp2                - FMUL        Hd, Hn, Hm
-        233,2,71,1,2,0,3,1,
+        233,2,71,1,2,0,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FMUL_s_floatdp2                - FMUL        Sd, Sn, Sm
-        234,2,71,1,2,0,3,1,
+        234,2,71,1,2,0,0,3,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         // FNEG_asimdmisc_r               - FNEG        Vd.T, Vn.T
-        235,2,73,1,1,2,2,1,
+        235,2,73,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FNEG_asimdmiscfp16_r           - FNEG        Vd.T, Vn.T
-        236,2,73,1,1,4,2,1,
+        236,2,73,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FNEG_d_floatdp1                - FNEG        Dd, Dn
-        237,2,73,1,2,0,2,1,
+        237,2,73,1,2,0,0,2,
         1,26,0,0,
         1,26,0,5,
         // FNEG_h_floatdp1                - FNEG        Hd, Hn
-        238,2,73,1,2,0,2,1,
+        238,2,73,1,2,0,0,2,
         1,24,0,0,
         1,24,0,5,
         // FNEG_s_floatdp1                - FNEG        Sd, Sn
-        239,2,73,1,2,0,2,1,
+        239,2,73,1,2,0,0,2,
         1,25,0,0,
         1,25,0,5,
         // FNMADD_d_floatdp3              - FNMADD      Dd, Dn, Dm, Da
-        240,2,74,1,2,0,4,1,
+        240,2,74,1,2,0,0,4,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         1,26,0,10,
         // FNMADD_h_floatdp3              - FNMADD      Hd, Hn, Hm, Ha
-        241,2,74,1,2,0,4,1,
+        241,2,74,1,2,0,0,4,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         1,24,0,10,
         // FNMADD_s_floatdp3              - FNMADD      Sd, Sn, Sm, Sa
-        242,2,74,1,2,0,4,1,
+        242,2,74,1,2,0,0,4,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         1,25,0,10,
         // FNMSUB_d_floatdp3              - FNMSUB      Dd, Dn, Dm, Da
-        243,2,75,1,2,0,4,1,
+        243,2,75,1,2,0,0,4,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         1,26,0,10,
         // FNMSUB_h_floatdp3              - FNMSUB      Hd, Hn, Hm, Ha
-        244,2,75,1,2,0,4,1,
+        244,2,75,1,2,0,0,4,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         1,24,0,10,
         // FNMSUB_s_floatdp3              - FNMSUB      Sd, Sn, Sm, Sa
-        245,2,75,1,2,0,4,1,
+        245,2,75,1,2,0,0,4,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         1,25,0,10,
         // FNMUL_d_floatdp2               - FNMUL       Dd, Dn, Dm
-        246,2,76,1,2,0,3,1,
+        246,2,76,1,2,0,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // FNMUL_h_floatdp2               - FNMUL       Hd, Hn, Hm
-        247,2,76,1,2,0,3,1,
+        247,2,76,1,2,0,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FNMUL_s_floatdp2               - FNMUL       Sd, Sn, Sm
-        248,2,76,1,2,0,3,1,
+        248,2,76,1,2,0,0,3,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         // FRECPE_asimdmisc_r             - FRECPE      Vd.T, Vn.T
-        249,2,77,1,1,2,2,1,
+        249,2,77,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRECPE_asimdmiscfp16_r         - FRECPE      Vd.T, Vn.T
-        250,2,77,1,1,4,2,1,
+        250,2,77,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRECPE_asisdmisc_r             - FRECPE      Vd, Vn
-        251,2,77,1,1,2,2,1,
+        251,2,77,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FRECPE_asisdmiscfp16_r         - FRECPE      Hd, Hn
-        252,2,77,1,1,4,2,1,
+        252,2,77,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FRECPS_asimdsame_only          - FRECPS      Vd.T, Vn.T, Vm.T
-        253,2,78,1,1,2,3,1,
+        253,2,78,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FRECPS_asimdsamefp16_only      - FRECPS      Vd.T, Vn.T, Vm.T
-        254,2,78,1,1,4,3,1,
+        254,2,78,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FRECPS_asisdsame_only          - FRECPS      Vd, Vn, Vm
-        255,2,78,1,1,2,3,1,
+        255,2,78,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // FRECPS_asisdsamefp16_only      - FRECPS      Hd, Hn, Hm
-        0,3,78,1,1,4,3,1,
+        0,3,78,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FRECPX_asisdmisc_r             - FRECPX      Vd, Vn
-        1,3,79,1,1,2,2,1,
+        1,3,79,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FRECPX_asisdmiscfp16_r         - FRECPX      Hd, Hn
-        2,3,79,1,1,4,2,1,
+        2,3,79,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FRINT32X_asimdmisc_r           - FRINT32X    Vd.T, Vn.T
-        3,3,80,1,1,30,2,1,
+        3,3,80,1,1,30,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINT32X_d_floatdp1            - FRINT32X    Dd, Dn
-        4,3,80,1,2,30,2,1,
+        4,3,80,1,2,30,0,2,
         1,26,0,0,
         1,26,0,5,
         // FRINT32X_s_floatdp1            - FRINT32X    Sd, Sn
-        5,3,80,1,2,30,2,1,
+        5,3,80,1,2,30,0,2,
         1,25,0,0,
         1,25,0,5,
         // FRINT32Z_asimdmisc_r           - FRINT32Z    Vd.T, Vn.T
-        6,3,81,1,1,30,2,1,
+        6,3,81,1,1,30,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINT32Z_d_floatdp1            - FRINT32Z    Dd, Dn
-        7,3,81,1,2,30,2,1,
+        7,3,81,1,2,30,0,2,
         1,26,0,0,
         1,26,0,5,
         // FRINT32Z_s_floatdp1            - FRINT32Z    Sd, Sn
-        8,3,81,1,2,30,2,1,
+        8,3,81,1,2,30,0,2,
         1,25,0,0,
         1,25,0,5,
         // FRINT64X_asimdmisc_r           - FRINT64X    Vd.T, Vn.T
-        9,3,82,1,1,30,2,1,
+        9,3,82,1,1,30,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINT64X_d_floatdp1            - FRINT64X    Dd, Dn
-        10,3,82,1,2,30,2,1,
+        10,3,82,1,2,30,0,2,
         1,26,0,0,
         1,26,0,5,
         // FRINT64X_s_floatdp1            - FRINT64X    Sd, Sn
-        11,3,82,1,2,30,2,1,
+        11,3,82,1,2,30,0,2,
         1,25,0,0,
         1,25,0,5,
         // FRINT64Z_asimdmisc_r           - FRINT64Z    Vd.T, Vn.T
-        12,3,83,1,1,30,2,1,
+        12,3,83,1,1,30,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINT64Z_d_floatdp1            - FRINT64Z    Dd, Dn
-        13,3,83,1,2,30,2,1,
+        13,3,83,1,2,30,0,2,
         1,26,0,0,
         1,26,0,5,
         // FRINT64Z_s_floatdp1            - FRINT64Z    Sd, Sn
-        14,3,83,1,2,30,2,1,
+        14,3,83,1,2,30,0,2,
         1,25,0,0,
         1,25,0,5,
         // FRINTA_asimdmisc_r             - FRINTA      Vd.T, Vn.T
-        15,3,84,1,1,2,2,1,
+        15,3,84,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTA_asimdmiscfp16_r         - FRINTA      Vd.T, Vn.T
-        16,3,84,1,1,4,2,1,
+        16,3,84,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTA_d_floatdp1              - FRINTA      Dd, Dn
-        17,3,84,1,2,0,2,1,
+        17,3,84,1,2,0,0,2,
         1,26,0,0,
         1,26,0,5,
         // FRINTA_h_floatdp1              - FRINTA      Hd, Hn
-        18,3,84,1,2,0,2,1,
+        18,3,84,1,2,0,0,2,
         1,24,0,0,
         1,24,0,5,
         // FRINTA_s_floatdp1              - FRINTA      Sd, Sn
-        19,3,84,1,2,0,2,1,
+        19,3,84,1,2,0,0,2,
         1,25,0,0,
         1,25,0,5,
         // FRINTI_asimdmisc_r             - FRINTI      Vd.T, Vn.T
-        20,3,85,1,1,2,2,1,
+        20,3,85,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTI_asimdmiscfp16_r         - FRINTI      Vd.T, Vn.T
-        21,3,85,1,1,4,2,1,
+        21,3,85,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTI_d_floatdp1              - FRINTI      Dd, Dn
-        22,3,85,1,2,0,2,1,
+        22,3,85,1,2,0,0,2,
         1,26,0,0,
         1,26,0,5,
         // FRINTI_h_floatdp1              - FRINTI      Hd, Hn
-        23,3,85,1,2,0,2,1,
+        23,3,85,1,2,0,0,2,
         1,24,0,0,
         1,24,0,5,
         // FRINTI_s_floatdp1              - FRINTI      Sd, Sn
-        24,3,85,1,2,0,2,1,
+        24,3,85,1,2,0,0,2,
         1,25,0,0,
         1,25,0,5,
         // FRINTM_asimdmisc_r             - FRINTM      Vd.T, Vn.T
-        25,3,86,1,1,2,2,1,
+        25,3,86,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTM_asimdmiscfp16_r         - FRINTM      Vd.T, Vn.T
-        26,3,86,1,1,4,2,1,
+        26,3,86,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTM_d_floatdp1              - FRINTM      Dd, Dn
-        27,3,86,1,2,0,2,1,
+        27,3,86,1,2,0,0,2,
         1,26,0,0,
         1,26,0,5,
         // FRINTM_h_floatdp1              - FRINTM      Hd, Hn
-        28,3,86,1,2,0,2,1,
+        28,3,86,1,2,0,0,2,
         1,24,0,0,
         1,24,0,5,
         // FRINTM_s_floatdp1              - FRINTM      Sd, Sn
-        29,3,86,1,2,0,2,1,
+        29,3,86,1,2,0,0,2,
         1,25,0,0,
         1,25,0,5,
         // FRINTN_asimdmisc_r             - FRINTN      Vd.T, Vn.T
-        30,3,87,1,1,2,2,1,
+        30,3,87,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTN_asimdmiscfp16_r         - FRINTN      Vd.T, Vn.T
-        31,3,87,1,1,4,2,1,
+        31,3,87,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTN_d_floatdp1              - FRINTN      Dd, Dn
-        32,3,87,1,2,0,2,1,
+        32,3,87,1,2,0,0,2,
         1,26,0,0,
         1,26,0,5,
         // FRINTN_h_floatdp1              - FRINTN      Hd, Hn
-        33,3,87,1,2,0,2,1,
+        33,3,87,1,2,0,0,2,
         1,24,0,0,
         1,24,0,5,
         // FRINTN_s_floatdp1              - FRINTN      Sd, Sn
-        34,3,87,1,2,0,2,1,
+        34,3,87,1,2,0,0,2,
         1,25,0,0,
         1,25,0,5,
         // FRINTP_asimdmisc_r             - FRINTP      Vd.T, Vn.T
-        35,3,88,1,1,2,2,1,
+        35,3,88,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTP_asimdmiscfp16_r         - FRINTP      Vd.T, Vn.T
-        36,3,88,1,1,4,2,1,
+        36,3,88,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTP_d_floatdp1              - FRINTP      Dd, Dn
-        37,3,88,1,2,0,2,1,
+        37,3,88,1,2,0,0,2,
         1,26,0,0,
         1,26,0,5,
         // FRINTP_h_floatdp1              - FRINTP      Hd, Hn
-        38,3,88,1,2,0,2,1,
+        38,3,88,1,2,0,0,2,
         1,24,0,0,
         1,24,0,5,
         // FRINTP_s_floatdp1              - FRINTP      Sd, Sn
-        39,3,88,1,2,0,2,1,
+        39,3,88,1,2,0,0,2,
         1,25,0,0,
         1,25,0,5,
         // FRINTX_asimdmisc_r             - FRINTX      Vd.T, Vn.T
-        40,3,89,1,1,2,2,1,
+        40,3,89,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTX_asimdmiscfp16_r         - FRINTX      Vd.T, Vn.T
-        41,3,89,1,1,4,2,1,
+        41,3,89,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTX_d_floatdp1              - FRINTX      Dd, Dn
-        42,3,89,1,2,0,2,1,
+        42,3,89,1,2,0,0,2,
         1,26,0,0,
         1,26,0,5,
         // FRINTX_h_floatdp1              - FRINTX      Hd, Hn
-        43,3,89,1,2,0,2,1,
+        43,3,89,1,2,0,0,2,
         1,24,0,0,
         1,24,0,5,
         // FRINTX_s_floatdp1              - FRINTX      Sd, Sn
-        44,3,89,1,2,0,2,1,
+        44,3,89,1,2,0,0,2,
         1,25,0,0,
         1,25,0,5,
         // FRINTZ_asimdmisc_r             - FRINTZ      Vd.T, Vn.T
-        45,3,90,1,1,2,2,1,
+        45,3,90,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTZ_asimdmiscfp16_r         - FRINTZ      Vd.T, Vn.T
-        46,3,90,1,1,4,2,1,
+        46,3,90,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRINTZ_d_floatdp1              - FRINTZ      Dd, Dn
-        47,3,90,1,2,0,2,1,
+        47,3,90,1,2,0,0,2,
         1,26,0,0,
         1,26,0,5,
         // FRINTZ_h_floatdp1              - FRINTZ      Hd, Hn
-        48,3,90,1,2,0,2,1,
+        48,3,90,1,2,0,0,2,
         1,24,0,0,
         1,24,0,5,
         // FRINTZ_s_floatdp1              - FRINTZ      Sd, Sn
-        49,3,90,1,2,0,2,1,
+        49,3,90,1,2,0,0,2,
         1,25,0,0,
         1,25,0,5,
         // FRSQRTE_asimdmisc_r            - FRSQRTE     Vd.T, Vn.T
-        50,3,91,1,1,2,2,1,
+        50,3,91,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRSQRTE_asimdmiscfp16_r        - FRSQRTE     Vd.T, Vn.T
-        51,3,91,1,1,4,2,1,
+        51,3,91,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FRSQRTE_asisdmisc_r            - FRSQRTE     Vd, Vn
-        52,3,91,1,1,2,2,1,
+        52,3,91,1,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // FRSQRTE_asisdmiscfp16_r        - FRSQRTE     Hd, Hn
-        53,3,91,1,1,4,2,1,
+        53,3,91,1,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // FRSQRTS_asimdsame_only         - FRSQRTS     Vd.T, Vn.T, Vm.T
-        54,3,92,1,1,2,3,1,
+        54,3,92,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FRSQRTS_asimdsamefp16_only     - FRSQRTS     Vd.T, Vn.T, Vm.T
-        55,3,92,1,1,4,3,1,
+        55,3,92,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FRSQRTS_asisdsame_only         - FRSQRTS     Vd, Vn, Vm
-        56,3,92,1,1,2,3,1,
+        56,3,92,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // FRSQRTS_asisdsamefp16_only     - FRSQRTS     Hd, Hn, Hm
-        57,3,92,1,1,4,3,1,
+        57,3,92,1,1,4,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FSCALE_asimdsame_only          - FSCALE      Vd.T, Vn.T, Vm.T
-        58,3,93,1,1,23,3,1,
+        58,3,93,1,1,23,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FSCALE_asimdsamefp16_only      - FSCALE      Vd.T, Vn.T, Vm.T
-        59,3,93,1,1,23,3,1,
+        59,3,93,1,1,23,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FSQRT_asimdmisc_r              - FSQRT       Vd.T, Vn.T
-        60,3,94,1,1,2,2,1,
+        60,3,94,1,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FSQRT_asimdmiscfp16_r          - FSQRT       Vd.T, Vn.T
-        61,3,94,1,1,4,2,1,
+        61,3,94,1,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // FSQRT_d_floatdp1               - FSQRT       Dd, Dn
-        62,3,94,1,2,0,2,1,
+        62,3,94,1,2,0,0,2,
         1,26,0,0,
         1,26,0,5,
         // FSQRT_h_floatdp1               - FSQRT       Hd, Hn
-        63,3,94,1,2,0,2,1,
+        63,3,94,1,2,0,0,2,
         1,24,0,0,
         1,24,0,5,
         // FSQRT_s_floatdp1               - FSQRT       Sd, Sn
-        64,3,94,1,2,0,2,1,
+        64,3,94,1,2,0,0,2,
         1,25,0,0,
         1,25,0,5,
         // FSUB_asimdsame_only            - FSUB        Vd.T, Vn.T, Vm.T
-        65,3,95,1,1,2,3,1,
+        65,3,95,1,1,2,2,3,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FSUB_asimdsamefp16_only        - FSUB        Vd.T, Vn.T, Vm.T
-        66,3,95,1,1,4,3,1,
+        66,3,95,1,1,4,2,3,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // FSUB_d_floatdp2                - FSUB        Dd, Dn, Dm
-        67,3,95,1,2,0,3,1,
+        67,3,95,1,2,0,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // FSUB_h_floatdp2                - FSUB        Hd, Hn, Hm
-        68,3,95,1,2,0,3,1,
+        68,3,95,1,2,0,0,3,
         1,24,0,0,
         1,24,0,5,
         1,24,0,16,
         // FSUB_s_floatdp2                - FSUB        Sd, Sn, Sm
-        69,3,95,1,2,0,3,1,
+        69,3,95,1,2,0,0,3,
         1,25,0,0,
         1,25,0,5,
         1,25,0,16,
         // GCSB_hd_hints                  - GCSB        DSYNC
-        70,3,96,1,6,33,1,1,
+        70,3,96,1,6,33,0,1,
         12,2,0,0,
         // GCSSTR_64_ldst_gcs             - GCSSTR      Xt, [Xn|SP]
-        71,3,97,1,4,33,2,1,
+        71,3,97,1,4,33,0,2,
         1,17,0,0,
         3,1,165,0,
         // GCSSTTR_64_ldst_gcs            - GCSSTTR     Xt, [Xn|SP]
-        72,3,98,1,4,33,2,1,
+        72,3,98,1,4,33,0,2,
         1,17,0,0,
         3,1,165,0,
         // GMI_64g_dp_2src                - GMI         Xd, Xn|SP, Xm
-        73,3,99,1,4,49,3,1,
+        73,3,99,1,4,49,0,3,
         1,17,0,0,
         1,18,0,5,
         1,17,0,16,
         // HINT_hm_hints                  - HINT        #imm
-        74,3,100,1,6,0,1,0,
-        4,1,7,1,5,7,0,0,
+        74,3,100,1,6,0,0,1,
+        4,1,7,1,
         // HLT_ex_exception               - HLT         #imm
-        75,3,101,1,6,0,1,0,
-        4,1,16,1,5,16,0,0,
+        75,3,101,1,6,0,0,1,
+        4,1,16,1,
         // HVC_ex_exception               - HVC         #imm
-        76,3,102,1,6,0,1,0,
-        4,1,16,1,5,16,0,0,
+        76,3,102,1,6,0,0,1,
+        4,1,16,1,
         // INS_asimdins_ir_r              - INS         Vd.Ts[index], Rn
-        77,3,103,1,1,2,2,1,
-        1,27,2,0,
+        77,3,103,1,1,2,2,2,
+        40,0,0,0,
+        1,27,13,0,
         1,21,0,5,
         // INS_asimdins_iv_v              - INS         Vd.Ts[index1], Vn.Ts[index2]
-        78,3,103,1,1,2,2,1,
-        1,27,2,0,
-        1,27,7,5,
+        78,3,103,1,1,2,2,2,
+        40,0,0,0,
+        1,27,13,0,
+        1,27,18,5,
         // IRG_64i_dp_2src                - IRG         Xd|SP, Xn|SP, {Xm}
-        79,3,104,1,4,49,3,0,
-        1,18,0,0,0,0,0,0,
-        1,18,0,5,0,0,0,0,
-        2,1,0,17,0,16,0,0,
+        79,3,104,1,4,49,0,3,
+        1,18,0,0,
+        1,18,0,5,
+        2,1,0,17,
         // ISB_bi_barriers                - ISB         {option, #imm}
-        80,3,105,1,6,0,1,0,
-        4,18,4,1,8,4,0,0,
+        80,3,105,1,6,0,0,1,
+        4,18,4,1,
         // LD1R_asisdlso_r1               - LD1R        {Vt.T}, [Xn|SP]
-        81,3,107,1,1,2,2,1,
-        2,1,0,27,
+        81,3,107,1,1,2,2,2,
+        28,0,0,0,
+        2,1,4,27,
         3,1,165,0,
         // LD1R_asisdlsop_r1_i            - LD1R        {Vt.T}, [Xn|SP], imm
-        82,3,107,1,1,2,3,0,
-        2,1,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,34,74,4,1,2,4,8,
+        82,3,107,1,1,2,2,3,
+        28,0,0,0,
+        2,1,4,27,
+        3,1,165,0,
+        5,34,74,4,
         // LD1R_asisdlsop_rx1_r           - LD1R        {Vt.T}, [Xn|SP], Xm
-        83,3,107,1,1,2,3,1,
-        2,1,0,27,
+        83,3,107,1,1,2,2,3,
+        28,0,0,0,
+        2,1,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD1_asisdlse_r1_1v             - LD1         {Vt.T}, [Xn|SP]
-        84,3,106,1,1,2,2,1,
-        2,1,0,27,
+        84,3,106,1,1,2,2,2,
+        28,0,0,0,
+        2,1,4,27,
         3,1,165,0,
         // LD1_asisdlse_r2_2v             - LD1         {Vt.T, Vt2.T}, [Xn|SP]
-        85,3,106,1,1,2,2,1,
-        2,2,0,27,
+        85,3,106,1,1,2,2,2,
+        28,0,0,0,
+        2,2,4,27,
         3,1,165,0,
         // LD1_asisdlse_r3_3v             - LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP]
-        86,3,106,1,1,2,2,1,
-        2,3,0,27,
+        86,3,106,1,1,2,2,2,
+        28,0,0,0,
+        2,3,4,27,
         3,1,165,0,
         // LD1_asisdlse_r4_4v             - LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP]
-        87,3,106,1,1,2,2,1,
-        2,4,0,27,
+        87,3,106,1,1,2,2,2,
+        28,0,0,0,
+        2,4,4,27,
         3,1,165,0,
         // LD1_asisdlsep_i1_i1            - LD1         {Vt.T}, [Xn|SP], imm
-        88,3,106,1,1,2,3,0,
-        2,1,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,8,16,0,0,
+        88,3,106,1,1,2,2,3,
+        28,0,0,0,
+        2,1,4,27,
+        3,1,165,0,
+        5,33,62,2,
         // LD1_asisdlsep_i2_i2            - LD1         {Vt.T, Vt2.T}, [Xn|SP], imm
-        89,3,106,1,1,2,3,0,
-        2,2,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,16,32,0,0,
+        89,3,106,1,1,2,2,3,
+        28,0,0,0,
+        2,2,4,27,
+        3,1,165,0,
+        5,33,62,2,
         // LD1_asisdlsep_i3_i3            - LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm
-        90,3,106,1,1,2,3,0,
-        2,3,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,24,48,0,0,
+        90,3,106,1,1,2,2,3,
+        28,0,0,0,
+        2,3,4,27,
+        3,1,165,0,
+        5,33,62,2,
         // LD1_asisdlsep_i4_i4            - LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm
-        91,3,106,1,1,2,3,0,
-        2,4,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,32,64,0,0,
+        91,3,106,1,1,2,2,3,
+        28,0,0,0,
+        2,4,4,27,
+        3,1,165,0,
+        5,33,62,2,
         // LD1_asisdlsep_r1_r1            - LD1         {Vt.T}, [Xn|SP], Xm
-        92,3,106,1,1,2,3,1,
-        2,1,0,27,
+        92,3,106,1,1,2,2,3,
+        28,0,0,0,
+        2,1,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD1_asisdlsep_r2_r2            - LD1         {Vt.T, Vt2.T}, [Xn|SP], Xm
-        93,3,106,1,1,2,3,1,
-        2,2,0,27,
+        93,3,106,1,1,2,2,3,
+        28,0,0,0,
+        2,2,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD1_asisdlsep_r3_r3            - LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm
-        94,3,106,1,1,2,3,1,
-        2,3,0,27,
+        94,3,106,1,1,2,2,3,
+        28,0,0,0,
+        2,3,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD1_asisdlsep_r4_r4            - LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm
-        95,3,106,1,1,2,3,1,
-        2,4,0,27,
+        95,3,106,1,1,2,2,3,
+        28,0,0,0,
+        2,4,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD1_asisdlso_b1_1b             - LD1         {Vt.B}[index], [Xn|SP]
-        96,3,106,1,1,2,2,1,
-        2,129,0,27,
+        96,3,106,1,1,2,2,2,
+        1,0,0,0,
+        2,177,4,27,
         3,1,165,0,
         // LD1_asisdlso_d1_1d             - LD1         {Vt.D}[index], [Xn|SP]
-        97,3,106,1,1,2,2,1,
-        2,145,0,27,
+        97,3,106,1,1,2,2,2,
+        2,0,0,0,
+        2,33,4,27,
         3,1,165,0,
         // LD1_asisdlso_h1_1h             - LD1         {Vt.H}[index], [Xn|SP]
-        98,3,106,1,1,2,2,1,
-        2,129,0,27,
+        98,3,106,1,1,2,2,2,
+        3,0,0,0,
+        2,177,4,27,
         3,1,165,0,
         // LD1_asisdlso_s1_1s             - LD1         {Vt.S}[index], [Xn|SP]
-        99,3,106,1,1,2,2,1,
-        2,161,0,27,
+        99,3,106,1,1,2,2,2,
+        4,0,0,0,
+        2,97,4,27,
         3,1,165,0,
         // LD1_asisdlsop_b1_i1b           - LD1         {Vt.B}[index], [Xn|SP], #1
-        100,3,106,1,1,2,3,1,
-        2,129,0,27,
+        100,3,106,1,1,2,2,3,
+        1,0,0,0,
+        2,177,4,27,
         3,1,165,0,
-        4,9,1,0,
+        4,9,1,16,
         // LD1_asisdlsop_bx1_r1b          - LD1         {Vt.B}[index], [Xn|SP], Xm
-        101,3,106,1,1,2,3,1,
-        2,129,0,27,
+        101,3,106,1,1,2,2,3,
+        1,0,0,0,
+        2,177,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD1_asisdlsop_d1_i1d           - LD1         {Vt.D}[index], [Xn|SP], #8
-        102,3,106,1,1,2,3,1,
-        2,145,0,27,
+        102,3,106,1,1,2,2,3,
+        2,0,0,0,
+        2,33,4,27,
         3,1,165,0,
-        4,9,8,0,
+        4,9,8,16,
         // LD1_asisdlsop_dx1_r1d          - LD1         {Vt.D}[index], [Xn|SP], Xm
-        103,3,106,1,1,2,3,1,
-        2,145,0,27,
+        103,3,106,1,1,2,2,3,
+        2,0,0,0,
+        2,33,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD1_asisdlsop_h1_i1h           - LD1         {Vt.H}[index], [Xn|SP], #2
-        104,3,106,1,1,2,3,1,
-        2,129,0,27,
+        104,3,106,1,1,2,2,3,
+        3,0,0,0,
+        2,177,4,27,
         3,1,165,0,
-        4,9,2,0,
+        4,9,2,16,
         // LD1_asisdlsop_hx1_r1h          - LD1         {Vt.H}[index], [Xn|SP], Xm
-        105,3,106,1,1,2,3,1,
-        2,129,0,27,
+        105,3,106,1,1,2,2,3,
+        3,0,0,0,
+        2,177,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD1_asisdlsop_s1_i1s           - LD1         {Vt.S}[index], [Xn|SP], #4
-        106,3,106,1,1,2,3,1,
-        2,161,0,27,
+        106,3,106,1,1,2,2,3,
+        4,0,0,0,
+        2,97,4,27,
         3,1,165,0,
-        4,9,4,0,
+        4,9,4,16,
         // LD1_asisdlsop_sx1_r1s          - LD1         {Vt.S}[index], [Xn|SP], Xm
-        107,3,106,1,1,2,3,1,
-        2,161,0,27,
+        107,3,106,1,1,2,2,3,
+        4,0,0,0,
+        2,97,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD2R_asisdlso_r2               - LD2R        {Vt.T, Vt2.T}, [Xn|SP]
-        108,3,109,1,1,2,2,1,
-        2,2,0,27,
+        108,3,109,1,1,2,2,2,
+        28,0,0,0,
+        2,2,4,27,
         3,1,165,0,
         // LD2R_asisdlsop_r2_i            - LD2R        {Vt.T, Vt2.T}, [Xn|SP], imm
-        109,3,109,1,1,2,3,0,
-        2,2,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,34,74,4,2,4,8,16,
+        109,3,109,1,1,2,2,3,
+        28,0,0,0,
+        2,2,4,27,
+        3,1,165,0,
+        5,34,74,4,
         // LD2R_asisdlsop_rx2_r           - LD2R        {Vt.T, Vt2.T}, [Xn|SP], Xm
-        110,3,109,1,1,2,3,1,
-        2,2,0,27,
+        110,3,109,1,1,2,2,3,
+        28,0,0,0,
+        2,2,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD2_asisdlse_r2                - LD2         {Vt.T, Vt2.T}, [Xn|SP]
-        111,3,108,1,1,2,2,1,
-        2,2,0,27,
+        111,3,108,1,1,2,2,2,
+        27,0,0,0,
+        2,2,4,27,
         3,1,165,0,
         // LD2_asisdlsep_i2_i             - LD2         {Vt.T, Vt2.T}, [Xn|SP], imm
-        112,3,108,1,1,2,3,0,
-        2,2,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,16,32,0,0,
+        112,3,108,1,1,2,2,3,
+        27,0,0,0,
+        2,2,4,27,
+        3,1,165,0,
+        5,33,62,2,
         // LD2_asisdlsep_r2_r             - LD2         {Vt.T, Vt2.T}, [Xn|SP], Xm
-        113,3,108,1,1,2,3,1,
-        2,2,0,27,
+        113,3,108,1,1,2,2,3,
+        27,0,0,0,
+        2,2,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD2_asisdlso_b2_2b             - LD2         {Vt.B, Vt2.B}[index], [Xn|SP]
-        114,3,108,1,1,2,2,1,
-        2,130,0,27,
+        114,3,108,1,1,2,2,2,
+        1,0,0,0,
+        2,178,4,27,
         3,1,165,0,
         // LD2_asisdlso_d2_2d             - LD2         {Vt.D, Vt2.D}[index], [Xn|SP]
-        115,3,108,1,1,2,2,1,
-        2,146,0,27,
+        115,3,108,1,1,2,2,2,
+        2,0,0,0,
+        2,34,4,27,
         3,1,165,0,
         // LD2_asisdlso_h2_2h             - LD2         {Vt.H, Vt2.H}[index], [Xn|SP]
-        116,3,108,1,1,2,2,1,
-        2,130,0,27,
+        116,3,108,1,1,2,2,2,
+        3,0,0,0,
+        2,178,4,27,
         3,1,165,0,
         // LD2_asisdlso_s2_2s             - LD2         {Vt.S, Vt2.S}[index], [Xn|SP]
-        117,3,108,1,1,2,2,1,
-        2,162,0,27,
+        117,3,108,1,1,2,2,2,
+        4,0,0,0,
+        2,98,4,27,
         3,1,165,0,
         // LD2_asisdlsop_b2_i2b           - LD2         {Vt.B, Vt2.B}[index], [Xn|SP], #2
-        118,3,108,1,1,2,3,1,
-        2,130,0,27,
+        118,3,108,1,1,2,2,3,
+        1,0,0,0,
+        2,178,4,27,
         3,1,165,0,
-        4,9,2,0,
+        4,9,2,16,
         // LD2_asisdlsop_bx2_r2b          - LD2         {Vt.B, Vt2.B}[index], [Xn|SP], Xm
-        119,3,108,1,1,2,3,1,
-        2,130,0,27,
+        119,3,108,1,1,2,2,3,
+        1,0,0,0,
+        2,178,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD2_asisdlsop_d2_i2d           - LD2         {Vt.D, Vt2.D}[index], [Xn|SP], #16
-        120,3,108,1,1,2,3,1,
-        2,146,0,27,
+        120,3,108,1,1,2,2,3,
+        2,0,0,0,
+        2,34,4,27,
         3,1,165,0,
-        4,9,16,0,
+        4,9,16,16,
         // LD2_asisdlsop_dx2_r2d          - LD2         {Vt.D, Vt2.D}[index], [Xn|SP], Xm
-        121,3,108,1,1,2,3,1,
-        2,146,0,27,
+        121,3,108,1,1,2,2,3,
+        2,0,0,0,
+        2,34,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD2_asisdlsop_h2_i2h           - LD2         {Vt.H, Vt2.H}[index], [Xn|SP], #4
-        122,3,108,1,1,2,3,1,
-        2,130,0,27,
+        122,3,108,1,1,2,2,3,
+        3,0,0,0,
+        2,178,4,27,
         3,1,165,0,
-        4,9,4,0,
+        4,9,4,16,
         // LD2_asisdlsop_hx2_r2h          - LD2         {Vt.H, Vt2.H}[index], [Xn|SP], Xm
-        123,3,108,1,1,2,3,1,
-        2,130,0,27,
+        123,3,108,1,1,2,2,3,
+        3,0,0,0,
+        2,178,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD2_asisdlsop_s2_i2s           - LD2         {Vt.S, Vt2.S}[index], [Xn|SP], #8
-        124,3,108,1,1,2,3,1,
-        2,162,0,27,
+        124,3,108,1,1,2,2,3,
+        4,0,0,0,
+        2,98,4,27,
         3,1,165,0,
-        4,9,8,0,
+        4,9,8,16,
         // LD2_asisdlsop_sx2_r2s          - LD2         {Vt.S, Vt2.S}[index], [Xn|SP], Xm
-        125,3,108,1,1,2,3,1,
-        2,162,0,27,
+        125,3,108,1,1,2,2,3,
+        4,0,0,0,
+        2,98,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD3R_asisdlso_r3               - LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP]
-        126,3,111,1,1,2,2,1,
-        2,3,0,27,
+        126,3,111,1,1,2,2,2,
+        28,0,0,0,
+        2,3,4,27,
         3,1,165,0,
         // LD3R_asisdlsop_r3_i            - LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm
-        127,3,111,1,1,2,3,0,
-        2,3,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,34,74,4,3,6,12,24,
+        127,3,111,1,1,2,2,3,
+        28,0,0,0,
+        2,3,4,27,
+        3,1,165,0,
+        5,34,74,4,
         // LD3R_asisdlsop_rx3_r           - LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm
-        128,3,111,1,1,2,3,1,
-        2,3,0,27,
+        128,3,111,1,1,2,2,3,
+        28,0,0,0,
+        2,3,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD3_asisdlse_r3                - LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP]
-        129,3,110,1,1,2,2,1,
-        2,3,0,27,
+        129,3,110,1,1,2,2,2,
+        27,0,0,0,
+        2,3,4,27,
         3,1,165,0,
         // LD3_asisdlsep_i3_i             - LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm
-        130,3,110,1,1,2,3,0,
-        2,3,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,24,48,0,0,
+        130,3,110,1,1,2,2,3,
+        27,0,0,0,
+        2,3,4,27,
+        3,1,165,0,
+        5,33,62,2,
         // LD3_asisdlsep_r3_r             - LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm
-        131,3,110,1,1,2,3,1,
-        2,3,0,27,
+        131,3,110,1,1,2,2,3,
+        27,0,0,0,
+        2,3,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD3_asisdlso_b3_3b             - LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP]
-        132,3,110,1,1,2,2,1,
-        2,131,0,27,
+        132,3,110,1,1,2,2,2,
+        1,0,0,0,
+        2,179,4,27,
         3,1,165,0,
         // LD3_asisdlso_d3_3d             - LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP]
-        133,3,110,1,1,2,2,1,
-        2,147,0,27,
+        133,3,110,1,1,2,2,2,
+        2,0,0,0,
+        2,35,4,27,
         3,1,165,0,
         // LD3_asisdlso_h3_3h             - LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP]
-        134,3,110,1,1,2,2,1,
-        2,131,0,27,
+        134,3,110,1,1,2,2,2,
+        3,0,0,0,
+        2,179,4,27,
         3,1,165,0,
         // LD3_asisdlso_s3_3s             - LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP]
-        135,3,110,1,1,2,2,1,
-        2,163,0,27,
+        135,3,110,1,1,2,2,2,
+        4,0,0,0,
+        2,99,4,27,
         3,1,165,0,
         // LD3_asisdlsop_b3_i3b           - LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3
-        136,3,110,1,1,2,3,1,
-        2,131,0,27,
+        136,3,110,1,1,2,2,3,
+        1,0,0,0,
+        2,179,4,27,
         3,1,165,0,
-        4,9,3,0,
+        4,9,3,16,
         // LD3_asisdlsop_bx3_r3b          - LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm
-        137,3,110,1,1,2,3,1,
-        2,131,0,27,
+        137,3,110,1,1,2,2,3,
+        1,0,0,0,
+        2,179,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD3_asisdlsop_d3_i3d           - LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24
-        138,3,110,1,1,2,3,1,
-        2,147,0,27,
+        138,3,110,1,1,2,2,3,
+        2,0,0,0,
+        2,35,4,27,
         3,1,165,0,
-        4,9,24,0,
+        4,9,24,16,
         // LD3_asisdlsop_dx3_r3d          - LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], Xm
-        139,3,110,1,1,2,3,1,
-        2,147,0,27,
+        139,3,110,1,1,2,2,3,
+        2,0,0,0,
+        2,35,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD3_asisdlsop_h3_i3h           - LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6
-        140,3,110,1,1,2,3,1,
-        2,131,0,27,
+        140,3,110,1,1,2,2,3,
+        3,0,0,0,
+        2,179,4,27,
         3,1,165,0,
-        4,9,6,0,
+        4,9,6,16,
         // LD3_asisdlsop_hx3_r3h          - LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm
-        141,3,110,1,1,2,3,1,
-        2,131,0,27,
+        141,3,110,1,1,2,2,3,
+        3,0,0,0,
+        2,179,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD3_asisdlsop_s3_i3s           - LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12
-        142,3,110,1,1,2,3,1,
-        2,163,0,27,
+        142,3,110,1,1,2,2,3,
+        4,0,0,0,
+        2,99,4,27,
         3,1,165,0,
-        4,9,12,0,
+        4,9,12,16,
         // LD3_asisdlsop_sx3_r3s          - LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm
-        143,3,110,1,1,2,3,1,
-        2,163,0,27,
+        143,3,110,1,1,2,2,3,
+        4,0,0,0,
+        2,99,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD4R_asisdlso_r4               - LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP]
-        144,3,113,1,1,2,2,1,
-        2,4,0,27,
+        144,3,113,1,1,2,2,2,
+        28,0,0,0,
+        2,4,4,27,
         3,1,165,0,
         // LD4R_asisdlsop_r4_i            - LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm
-        145,3,113,1,1,2,3,0,
-        2,4,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,34,74,4,4,8,16,32,
+        145,3,113,1,1,2,2,3,
+        28,0,0,0,
+        2,4,4,27,
+        3,1,165,0,
+        5,34,74,4,
         // LD4R_asisdlsop_rx4_r           - LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm
-        146,3,113,1,1,2,3,1,
-        2,4,0,27,
+        146,3,113,1,1,2,2,3,
+        28,0,0,0,
+        2,4,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD4_asisdlse_r4                - LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP]
-        147,3,112,1,1,2,2,1,
-        2,4,0,27,
+        147,3,112,1,1,2,2,2,
+        27,0,0,0,
+        2,4,4,27,
         3,1,165,0,
         // LD4_asisdlsep_i4_i             - LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm
-        148,3,112,1,1,2,3,0,
-        2,4,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,32,64,0,0,
+        148,3,112,1,1,2,2,3,
+        27,0,0,0,
+        2,4,4,27,
+        3,1,165,0,
+        5,33,62,2,
         // LD4_asisdlsep_r4_r             - LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm
-        149,3,112,1,1,2,3,1,
-        2,4,0,27,
+        149,3,112,1,1,2,2,3,
+        27,0,0,0,
+        2,4,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD4_asisdlso_b4_4b             - LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP]
-        150,3,112,1,1,2,2,1,
-        2,132,0,27,
+        150,3,112,1,1,2,2,2,
+        1,0,0,0,
+        2,180,4,27,
         3,1,165,0,
         // LD4_asisdlso_d4_4d             - LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP]
-        151,3,112,1,1,2,2,1,
-        2,148,0,27,
+        151,3,112,1,1,2,2,2,
+        2,0,0,0,
+        2,36,4,27,
         3,1,165,0,
         // LD4_asisdlso_h4_4h             - LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP]
-        152,3,112,1,1,2,2,1,
-        2,132,0,27,
+        152,3,112,1,1,2,2,2,
+        3,0,0,0,
+        2,180,4,27,
         3,1,165,0,
         // LD4_asisdlso_s4_4s             - LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP]
-        153,3,112,1,1,2,2,1,
-        2,164,0,27,
+        153,3,112,1,1,2,2,2,
+        4,0,0,0,
+        2,100,4,27,
         3,1,165,0,
         // LD4_asisdlsop_b4_i4b           - LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4
-        154,3,112,1,1,2,3,1,
-        2,132,0,27,
+        154,3,112,1,1,2,2,3,
+        1,0,0,0,
+        2,180,4,27,
         3,1,165,0,
-        4,9,4,0,
+        4,9,4,16,
         // LD4_asisdlsop_bx4_r4b          - LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm
-        155,3,112,1,1,2,3,1,
-        2,132,0,27,
+        155,3,112,1,1,2,2,3,
+        1,0,0,0,
+        2,180,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD4_asisdlsop_d4_i4d           - LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32
-        156,3,112,1,1,2,3,1,
-        2,148,0,27,
+        156,3,112,1,1,2,2,3,
+        2,0,0,0,
+        2,36,4,27,
         3,1,165,0,
-        4,9,32,0,
+        4,9,32,16,
         // LD4_asisdlsop_dx4_r4d          - LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm
-        157,3,112,1,1,2,3,1,
-        2,148,0,27,
+        157,3,112,1,1,2,2,3,
+        2,0,0,0,
+        2,36,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD4_asisdlsop_h4_i4h           - LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8
-        158,3,112,1,1,2,3,1,
-        2,132,0,27,
+        158,3,112,1,1,2,2,3,
+        3,0,0,0,
+        2,180,4,27,
         3,1,165,0,
-        4,9,8,0,
+        4,9,8,16,
         // LD4_asisdlsop_hx4_r4h          - LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm
-        159,3,112,1,1,2,3,1,
-        2,132,0,27,
+        159,3,112,1,1,2,2,3,
+        3,0,0,0,
+        2,180,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD4_asisdlsop_s4_i4s           - LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16
-        160,3,112,1,1,2,3,1,
-        2,164,0,27,
+        160,3,112,1,1,2,2,3,
+        4,0,0,0,
+        2,100,4,27,
         3,1,165,0,
-        4,9,16,0,
+        4,9,16,16,
         // LD4_asisdlsop_sx4_r4s          - LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm
-        161,3,112,1,1,2,3,1,
-        2,164,0,27,
+        161,3,112,1,1,2,2,3,
+        4,0,0,0,
+        2,100,4,27,
         3,1,165,0,
         1,17,0,16,
         // LD64B_64l_memop                - LD64B       Xt, [Xn|SP{, #0}]
-        162,3,114,1,4,41,2,1,
+        162,3,114,1,4,41,0,2,
         1,17,0,0,
         3,5,165,0,
         // LDADDAB_32_memop               - LDADDAB     Ws, Wt, [Xn|SP]
-        163,3,117,1,4,44,3,1,
+        163,3,117,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADDAH_32_memop               - LDADDAH     Ws, Wt, [Xn|SP]
-        164,3,118,1,4,44,3,1,
+        164,3,118,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADDALB_32_memop              - LDADDALB    Ws, Wt, [Xn|SP]
-        165,3,120,1,4,44,3,1,
+        165,3,120,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADDALH_32_memop              - LDADDALH    Ws, Wt, [Xn|SP]
-        166,3,121,1,4,44,3,1,
+        166,3,121,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADDAL_32_memop               - LDADDAL     Ws, Wt, [Xn|SP]
-        167,3,119,1,4,44,3,1,
+        167,3,119,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADDAL_64_memop               - LDADDAL     Xs, Xt, [Xn|SP]
-        168,3,119,1,4,44,3,1,
+        168,3,119,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDADDA_32_memop                - LDADDA      Ws, Wt, [Xn|SP]
-        169,3,116,1,4,44,3,1,
+        169,3,116,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADDA_64_memop                - LDADDA      Xs, Xt, [Xn|SP]
-        170,3,116,1,4,44,3,1,
+        170,3,116,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDADDB_32_memop                - LDADDB      Ws, Wt, [Xn|SP]
-        171,3,122,1,4,44,3,1,
+        171,3,122,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADDH_32_memop                - LDADDH      Ws, Wt, [Xn|SP]
-        172,3,123,1,4,44,3,1,
+        172,3,123,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADDLB_32_memop               - LDADDLB     Ws, Wt, [Xn|SP]
-        173,3,125,1,4,44,3,1,
+        173,3,125,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADDLH_32_memop               - LDADDLH     Ws, Wt, [Xn|SP]
-        174,3,126,1,4,44,3,1,
+        174,3,126,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADDL_32_memop                - LDADDL      Ws, Wt, [Xn|SP]
-        175,3,124,1,4,44,3,1,
+        175,3,124,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADDL_64_memop                - LDADDL      Xs, Xt, [Xn|SP]
-        176,3,124,1,4,44,3,1,
+        176,3,124,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDADD_32_memop                 - LDADD       Ws, Wt, [Xn|SP]
-        177,3,115,1,4,44,3,1,
+        177,3,115,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDADD_64_memop                 - LDADD       Xs, Xt, [Xn|SP]
-        178,3,115,1,4,44,3,1,
+        178,3,115,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDAP1_asisdlso_d1              - LDAP1       {Vt.D}[index], [Xn|SP]
-        179,3,127,1,1,5,2,1,
-        2,145,0,27,
+        179,3,127,1,1,5,2,2,
+        2,0,0,0,
+        2,33,0,27,
         3,1,165,0,
         // LDAPRB_32l_memop               - LDAPRB      Wt, [Xn|SP{, #0}]
-        180,3,129,1,4,38,2,1,
+        180,3,129,1,4,38,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDAPRH_32l_memop               - LDAPRH      Wt, [Xn|SP{, #0}]
-        181,3,130,1,4,38,2,1,
+        181,3,130,1,4,38,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDAPR_32l_ldapstl_writeback    - LDAPR       Wt, [Xn|SP], #4
-        182,3,128,1,4,40,3,1,
+        182,3,128,1,4,40,0,3,
         1,19,0,0,
         3,1,165,0,
         4,9,4,0,
         // LDAPR_32l_memop                - LDAPR       Wt, [Xn|SP{, #0}]
-        183,3,128,1,4,38,2,1,
+        183,3,128,1,4,38,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDAPR_64l_ldapstl_writeback    - LDAPR       Xt, [Xn|SP], #8
-        184,3,128,1,4,40,3,1,
+        184,3,128,1,4,40,0,3,
         1,17,0,0,
         3,1,165,0,
         4,9,8,0,
         // LDAPR_64l_memop                - LDAPR       Xt, [Xn|SP{, #0}]
-        185,3,128,1,4,38,2,1,
+        185,3,128,1,4,38,0,2,
         1,17,0,0,
         3,5,165,0,
         // LDAPURB_32_ldapstl_unscaled    - LDAPURB     Wt, [Xn|SP{, #simm}]
-        186,3,132,1,4,39,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        186,3,132,1,4,39,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDAPURH_32_ldapstl_unscaled    - LDAPURH     Wt, [Xn|SP{, #simm}]
-        187,3,133,1,4,39,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        187,3,133,1,4,39,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDAPURSB_32_ldapstl_unscaled   - LDAPURSB    Wt, [Xn|SP{, #simm}]
-        188,3,134,1,4,39,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        188,3,134,1,4,39,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDAPURSB_64_ldapstl_unscaled   - LDAPURSB    Xt, [Xn|SP{, #simm}]
-        189,3,134,1,4,39,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        189,3,134,1,4,39,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDAPURSH_32_ldapstl_unscaled   - LDAPURSH    Wt, [Xn|SP{, #simm}]
-        190,3,135,1,4,39,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        190,3,135,1,4,39,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDAPURSH_64_ldapstl_unscaled   - LDAPURSH    Xt, [Xn|SP{, #simm}]
-        191,3,135,1,4,39,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        191,3,135,1,4,39,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDAPURSW_64_ldapstl_unscaled   - LDAPURSW    Xt, [Xn|SP{, #simm}]
-        192,3,136,1,4,39,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        192,3,136,1,4,39,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDAPUR_32_ldapstl_unscaled     - LDAPUR      Wt, [Xn|SP{, #simm}]
-        193,3,131,1,4,39,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        193,3,131,1,4,39,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDAPUR_64_ldapstl_unscaled     - LDAPUR      Xt, [Xn|SP{, #simm}]
-        194,3,131,1,4,39,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        194,3,131,1,4,39,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDAPUR_b_ldapstl_simd          - LDAPUR      Bt, [Xn|SP{, #simm}]
-        195,3,131,1,3,28,2,0,
-        1,23,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        195,3,131,1,3,28,0,2,
+        1,23,0,0,
+        3,5,165,1,
         // LDAPUR_d_ldapstl_simd          - LDAPUR      Dt, [Xn|SP{, #simm}]
-        196,3,131,1,3,28,2,0,
-        1,26,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        196,3,131,1,3,28,0,2,
+        1,26,0,0,
+        3,5,165,1,
         // LDAPUR_h_ldapstl_simd          - LDAPUR      Ht, [Xn|SP{, #simm}]
-        197,3,131,1,3,28,2,0,
-        1,24,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        197,3,131,1,3,28,0,2,
+        1,24,0,0,
+        3,5,165,1,
         // LDAPUR_q_ldapstl_simd          - LDAPUR      Qt, [Xn|SP{, #simm}]
-        198,3,131,1,3,28,2,0,
-        1,28,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        198,3,131,1,3,28,0,2,
+        1,28,0,0,
+        3,5,165,1,
         // LDAPUR_s_ldapstl_simd          - LDAPUR      St, [Xn|SP{, #simm}]
-        199,3,131,1,3,28,2,0,
-        1,25,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        199,3,131,1,3,28,0,2,
+        1,25,0,0,
+        3,5,165,1,
         // LDARB_lr32_ldstord             - LDARB       Wt, [Xn|SP{, #0}]
-        200,3,138,1,4,0,2,1,
+        200,3,138,1,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDARH_lr32_ldstord             - LDARH       Wt, [Xn|SP{, #0}]
-        201,3,139,1,4,0,2,1,
+        201,3,139,1,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDAR_lr32_ldstord              - LDAR        Wt, [Xn|SP{, #0}]
-        202,3,137,1,4,0,2,1,
+        202,3,137,1,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDAR_lr64_ldstord              - LDAR        Xt, [Xn|SP{, #0}]
-        203,3,137,1,4,0,2,1,
+        203,3,137,1,4,0,0,2,
         1,17,0,0,
         3,5,165,0,
         // LDATXR_lr32_ldstexclr_unpriv   - LDATXR      Wt, [Xn|SP{, #0}]
-        204,3,140,1,4,47,2,1,
+        204,3,140,1,4,47,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDATXR_lr64_ldstexclr_unpriv   - LDATXR      Xt, [Xn|SP{, #0}]
-        205,3,140,1,4,47,2,1,
+        205,3,140,1,4,47,0,2,
         1,17,0,0,
         3,5,165,0,
         // LDAXP_lp32_ldstexclp           - LDAXP       Wt1, Wt2, [Xn|SP{, #0}]
-        206,3,141,1,4,0,3,1,
+        206,3,141,1,4,0,0,3,
         1,19,0,0,
         1,19,0,10,
         3,5,165,0,
         // LDAXP_lp64_ldstexclp           - LDAXP       Xt1, Xt2, [Xn|SP{, #0}]
-        207,3,141,1,4,0,3,1,
+        207,3,141,1,4,0,0,3,
         1,17,0,0,
         1,17,0,10,
         3,5,165,0,
         // LDAXRB_lr32_ldstexclr          - LDAXRB      Wt, [Xn|SP{, #0}]
-        208,3,143,1,4,0,2,1,
+        208,3,143,1,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDAXRH_lr32_ldstexclr          - LDAXRH      Wt, [Xn|SP{, #0}]
-        209,3,144,1,4,0,2,1,
+        209,3,144,1,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDAXR_lr32_ldstexclr           - LDAXR       Wt, [Xn|SP{, #0}]
-        210,3,142,1,4,0,2,1,
+        210,3,142,1,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDAXR_lr64_ldstexclr           - LDAXR       Xt, [Xn|SP{, #0}]
-        211,3,142,1,4,0,2,1,
+        211,3,142,1,4,0,0,2,
         1,17,0,0,
         3,5,165,0,
         // LDBFADDAL_16                   - LDBFADDAL   Hs, Ht, [Xn|SP]
-        212,3,147,1,1,46,3,1,
+        212,3,147,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFADDA_16                    - LDBFADDA    Hs, Ht, [Xn|SP]
-        213,3,146,1,1,46,3,1,
+        213,3,146,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFADDL_16                    - LDBFADDL    Hs, Ht, [Xn|SP]
-        214,3,148,1,1,46,3,1,
+        214,3,148,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFADD_16                     - LDBFADD     Hs, Ht, [Xn|SP]
-        215,3,145,1,1,46,3,1,
+        215,3,145,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMAXAL_16                   - LDBFMAXAL   Hs, Ht, [Xn|SP]
-        216,3,151,1,1,46,3,1,
+        216,3,151,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMAXA_16                    - LDBFMAXA    Hs, Ht, [Xn|SP]
-        217,3,150,1,1,46,3,1,
+        217,3,150,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMAXL_16                    - LDBFMAXL    Hs, Ht, [Xn|SP]
-        218,3,152,1,1,46,3,1,
+        218,3,152,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMAXNMAL_16                 - LDBFMAXNMAL Hs, Ht, [Xn|SP]
-        219,3,155,1,1,46,3,1,
+        219,3,155,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMAXNMA_16                  - LDBFMAXNMA  Hs, Ht, [Xn|SP]
-        220,3,154,1,1,46,3,1,
+        220,3,154,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMAXNML_16                  - LDBFMAXNML  Hs, Ht, [Xn|SP]
-        221,3,156,1,1,46,3,1,
+        221,3,156,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMAXNM_16                   - LDBFMAXNM   Hs, Ht, [Xn|SP]
-        222,3,153,1,1,46,3,1,
+        222,3,153,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMAX_16                     - LDBFMAX     Hs, Ht, [Xn|SP]
-        223,3,149,1,1,46,3,1,
+        223,3,149,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMINAL_16                   - LDBFMINAL   Hs, Ht, [Xn|SP]
-        224,3,159,1,1,46,3,1,
+        224,3,159,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMINA_16                    - LDBFMINA    Hs, Ht, [Xn|SP]
-        225,3,158,1,1,46,3,1,
+        225,3,158,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMINL_16                    - LDBFMINL    Hs, Ht, [Xn|SP]
-        226,3,160,1,1,46,3,1,
+        226,3,160,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMINNMAL_16                 - LDBFMINNMAL Hs, Ht, [Xn|SP]
-        227,3,163,1,1,46,3,1,
+        227,3,163,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMINNMA_16                  - LDBFMINNMA  Hs, Ht, [Xn|SP]
-        228,3,162,1,1,46,3,1,
+        228,3,162,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMINNML_16                  - LDBFMINNML  Hs, Ht, [Xn|SP]
-        229,3,164,1,1,46,3,1,
+        229,3,164,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMINNM_16                   - LDBFMINNM   Hs, Ht, [Xn|SP]
-        230,3,161,1,1,46,3,1,
+        230,3,161,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDBFMIN_16                     - LDBFMIN     Hs, Ht, [Xn|SP]
-        231,3,157,1,1,46,3,1,
+        231,3,157,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDCLRAB_32_memop               - LDCLRAB     Ws, Wt, [Xn|SP]
-        232,3,167,1,4,44,3,1,
+        232,3,167,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLRAH_32_memop               - LDCLRAH     Ws, Wt, [Xn|SP]
-        233,3,168,1,4,44,3,1,
+        233,3,168,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLRALB_32_memop              - LDCLRALB    Ws, Wt, [Xn|SP]
-        234,3,170,1,4,44,3,1,
+        234,3,170,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLRALH_32_memop              - LDCLRALH    Ws, Wt, [Xn|SP]
-        235,3,171,1,4,44,3,1,
+        235,3,171,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLRAL_32_memop               - LDCLRAL     Ws, Wt, [Xn|SP]
-        236,3,169,1,4,44,3,1,
+        236,3,169,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLRAL_64_memop               - LDCLRAL     Xs, Xt, [Xn|SP]
-        237,3,169,1,4,44,3,1,
+        237,3,169,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDCLRA_32_memop                - LDCLRA      Ws, Wt, [Xn|SP]
-        238,3,166,1,4,44,3,1,
+        238,3,166,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLRA_64_memop                - LDCLRA      Xs, Xt, [Xn|SP]
-        239,3,166,1,4,44,3,1,
+        239,3,166,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDCLRB_32_memop                - LDCLRB      Ws, Wt, [Xn|SP]
-        240,3,172,1,4,44,3,1,
+        240,3,172,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLRH_32_memop                - LDCLRH      Ws, Wt, [Xn|SP]
-        241,3,173,1,4,44,3,1,
+        241,3,173,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLRLB_32_memop               - LDCLRLB     Ws, Wt, [Xn|SP]
-        242,3,175,1,4,44,3,1,
+        242,3,175,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLRLH_32_memop               - LDCLRLH     Ws, Wt, [Xn|SP]
-        243,3,176,1,4,44,3,1,
+        243,3,176,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLRL_32_memop                - LDCLRL      Ws, Wt, [Xn|SP]
-        244,3,174,1,4,44,3,1,
+        244,3,174,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLRL_64_memop                - LDCLRL      Xs, Xt, [Xn|SP]
-        245,3,174,1,4,44,3,1,
+        245,3,174,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDCLRPAL_128_memop_128         - LDCLRPAL    Xt1, Xt2, [Xn|SP]
-        246,3,179,1,4,45,3,1,
+        246,3,179,1,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // LDCLRPA_128_memop_128          - LDCLRPA     Xt1, Xt2, [Xn|SP]
-        247,3,178,1,4,45,3,1,
+        247,3,178,1,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // LDCLRPL_128_memop_128          - LDCLRPL     Xt1, Xt2, [Xn|SP]
-        248,3,180,1,4,45,3,1,
+        248,3,180,1,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // LDCLRP_128_memop_128           - LDCLRP      Xt1, Xt2, [Xn|SP]
-        249,3,177,1,4,45,3,1,
+        249,3,177,1,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // LDCLR_32_memop                 - LDCLR       Ws, Wt, [Xn|SP]
-        250,3,165,1,4,44,3,1,
+        250,3,165,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDCLR_64_memop                 - LDCLR       Xs, Xt, [Xn|SP]
-        251,3,165,1,4,44,3,1,
+        251,3,165,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDEORAB_32_memop               - LDEORAB     Ws, Wt, [Xn|SP]
-        252,3,183,1,4,44,3,1,
+        252,3,183,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEORAH_32_memop               - LDEORAH     Ws, Wt, [Xn|SP]
-        253,3,184,1,4,44,3,1,
+        253,3,184,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEORALB_32_memop              - LDEORALB    Ws, Wt, [Xn|SP]
-        254,3,186,1,4,44,3,1,
+        254,3,186,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEORALH_32_memop              - LDEORALH    Ws, Wt, [Xn|SP]
-        255,3,187,1,4,44,3,1,
+        255,3,187,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEORAL_32_memop               - LDEORAL     Ws, Wt, [Xn|SP]
-        0,4,185,1,4,44,3,1,
+        0,4,185,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEORAL_64_memop               - LDEORAL     Xs, Xt, [Xn|SP]
-        1,4,185,1,4,44,3,1,
+        1,4,185,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDEORA_32_memop                - LDEORA      Ws, Wt, [Xn|SP]
-        2,4,182,1,4,44,3,1,
+        2,4,182,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEORA_64_memop                - LDEORA      Xs, Xt, [Xn|SP]
-        3,4,182,1,4,44,3,1,
+        3,4,182,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDEORB_32_memop                - LDEORB      Ws, Wt, [Xn|SP]
-        4,4,188,1,4,44,3,1,
+        4,4,188,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEORH_32_memop                - LDEORH      Ws, Wt, [Xn|SP]
-        5,4,189,1,4,44,3,1,
+        5,4,189,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEORLB_32_memop               - LDEORLB     Ws, Wt, [Xn|SP]
-        6,4,191,1,4,44,3,1,
+        6,4,191,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEORLH_32_memop               - LDEORLH     Ws, Wt, [Xn|SP]
-        7,4,192,1,4,44,3,1,
+        7,4,192,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEORL_32_memop                - LDEORL      Ws, Wt, [Xn|SP]
-        8,4,190,1,4,44,3,1,
+        8,4,190,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEORL_64_memop                - LDEORL      Xs, Xt, [Xn|SP]
-        9,4,190,1,4,44,3,1,
+        9,4,190,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDEOR_32_memop                 - LDEOR       Ws, Wt, [Xn|SP]
-        10,4,181,1,4,44,3,1,
+        10,4,181,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDEOR_64_memop                 - LDEOR       Xs, Xt, [Xn|SP]
-        11,4,181,1,4,44,3,1,
+        11,4,181,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDFADDAL_16                    - LDFADDAL    Hs, Ht, [Xn|SP]
-        12,4,195,1,1,46,3,1,
+        12,4,195,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFADDAL_32                    - LDFADDAL    Ss, St, [Xn|SP]
-        13,4,195,1,1,46,3,1,
+        13,4,195,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFADDAL_64                    - LDFADDAL    Ds, Dt, [Xn|SP]
-        14,4,195,1,1,46,3,1,
+        14,4,195,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFADDA_16                     - LDFADDA     Hs, Ht, [Xn|SP]
-        15,4,194,1,1,46,3,1,
+        15,4,194,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFADDA_32                     - LDFADDA     Ss, St, [Xn|SP]
-        16,4,194,1,1,46,3,1,
+        16,4,194,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFADDA_64                     - LDFADDA     Ds, Dt, [Xn|SP]
-        17,4,194,1,1,46,3,1,
+        17,4,194,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFADDL_16                     - LDFADDL     Hs, Ht, [Xn|SP]
-        18,4,196,1,1,46,3,1,
+        18,4,196,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFADDL_32                     - LDFADDL     Ss, St, [Xn|SP]
-        19,4,196,1,1,46,3,1,
+        19,4,196,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFADDL_64                     - LDFADDL     Ds, Dt, [Xn|SP]
-        20,4,196,1,1,46,3,1,
+        20,4,196,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFADD_16                      - LDFADD      Hs, Ht, [Xn|SP]
-        21,4,193,1,1,46,3,1,
+        21,4,193,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFADD_32                      - LDFADD      Ss, St, [Xn|SP]
-        22,4,193,1,1,46,3,1,
+        22,4,193,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFADD_64                      - LDFADD      Ds, Dt, [Xn|SP]
-        23,4,193,1,1,46,3,1,
+        23,4,193,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMAXAL_16                    - LDFMAXAL    Hs, Ht, [Xn|SP]
-        24,4,199,1,1,46,3,1,
+        24,4,199,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMAXAL_32                    - LDFMAXAL    Ss, St, [Xn|SP]
-        25,4,199,1,1,46,3,1,
+        25,4,199,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMAXAL_64                    - LDFMAXAL    Ds, Dt, [Xn|SP]
-        26,4,199,1,1,46,3,1,
+        26,4,199,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMAXA_16                     - LDFMAXA     Hs, Ht, [Xn|SP]
-        27,4,198,1,1,46,3,1,
+        27,4,198,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMAXA_32                     - LDFMAXA     Ss, St, [Xn|SP]
-        28,4,198,1,1,46,3,1,
+        28,4,198,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMAXA_64                     - LDFMAXA     Ds, Dt, [Xn|SP]
-        29,4,198,1,1,46,3,1,
+        29,4,198,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMAXL_16                     - LDFMAXL     Hs, Ht, [Xn|SP]
-        30,4,200,1,1,46,3,1,
+        30,4,200,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMAXL_32                     - LDFMAXL     Ss, St, [Xn|SP]
-        31,4,200,1,1,46,3,1,
+        31,4,200,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMAXL_64                     - LDFMAXL     Ds, Dt, [Xn|SP]
-        32,4,200,1,1,46,3,1,
+        32,4,200,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMAXNMAL_16                  - LDFMAXNMAL  Hs, Ht, [Xn|SP]
-        33,4,203,1,1,46,3,1,
+        33,4,203,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMAXNMAL_32                  - LDFMAXNMAL  Ss, St, [Xn|SP]
-        34,4,203,1,1,46,3,1,
+        34,4,203,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMAXNMAL_64                  - LDFMAXNMAL  Ds, Dt, [Xn|SP]
-        35,4,203,1,1,46,3,1,
+        35,4,203,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMAXNMA_16                   - LDFMAXNMA   Hs, Ht, [Xn|SP]
-        36,4,202,1,1,46,3,1,
+        36,4,202,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMAXNMA_32                   - LDFMAXNMA   Ss, St, [Xn|SP]
-        37,4,202,1,1,46,3,1,
+        37,4,202,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMAXNMA_64                   - LDFMAXNMA   Ds, Dt, [Xn|SP]
-        38,4,202,1,1,46,3,1,
+        38,4,202,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMAXNML_16                   - LDFMAXNML   Hs, Ht, [Xn|SP]
-        39,4,204,1,1,46,3,1,
+        39,4,204,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMAXNML_32                   - LDFMAXNML   Ss, St, [Xn|SP]
-        40,4,204,1,1,46,3,1,
+        40,4,204,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMAXNML_64                   - LDFMAXNML   Ds, Dt, [Xn|SP]
-        41,4,204,1,1,46,3,1,
+        41,4,204,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMAXNM_16                    - LDFMAXNM    Hs, Ht, [Xn|SP]
-        42,4,201,1,1,46,3,1,
+        42,4,201,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMAXNM_32                    - LDFMAXNM    Ss, St, [Xn|SP]
-        43,4,201,1,1,46,3,1,
+        43,4,201,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMAXNM_64                    - LDFMAXNM    Ds, Dt, [Xn|SP]
-        44,4,201,1,1,46,3,1,
+        44,4,201,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMAX_16                      - LDFMAX      Hs, Ht, [Xn|SP]
-        45,4,197,1,1,46,3,1,
+        45,4,197,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMAX_32                      - LDFMAX      Ss, St, [Xn|SP]
-        46,4,197,1,1,46,3,1,
+        46,4,197,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMAX_64                      - LDFMAX      Ds, Dt, [Xn|SP]
-        47,4,197,1,1,46,3,1,
+        47,4,197,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMINAL_16                    - LDFMINAL    Hs, Ht, [Xn|SP]
-        48,4,207,1,1,46,3,1,
+        48,4,207,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMINAL_32                    - LDFMINAL    Ss, St, [Xn|SP]
-        49,4,207,1,1,46,3,1,
+        49,4,207,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMINAL_64                    - LDFMINAL    Ds, Dt, [Xn|SP]
-        50,4,207,1,1,46,3,1,
+        50,4,207,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMINA_16                     - LDFMINA     Hs, Ht, [Xn|SP]
-        51,4,206,1,1,46,3,1,
+        51,4,206,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMINA_32                     - LDFMINA     Ss, St, [Xn|SP]
-        52,4,206,1,1,46,3,1,
+        52,4,206,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMINA_64                     - LDFMINA     Ds, Dt, [Xn|SP]
-        53,4,206,1,1,46,3,1,
+        53,4,206,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMINL_16                     - LDFMINL     Hs, Ht, [Xn|SP]
-        54,4,208,1,1,46,3,1,
+        54,4,208,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMINL_32                     - LDFMINL     Ss, St, [Xn|SP]
-        55,4,208,1,1,46,3,1,
+        55,4,208,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMINL_64                     - LDFMINL     Ds, Dt, [Xn|SP]
-        56,4,208,1,1,46,3,1,
+        56,4,208,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMINNMAL_16                  - LDFMINNMAL  Hs, Ht, [Xn|SP]
-        57,4,211,1,1,46,3,1,
+        57,4,211,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMINNMAL_32                  - LDFMINNMAL  Ss, St, [Xn|SP]
-        58,4,211,1,1,46,3,1,
+        58,4,211,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMINNMAL_64                  - LDFMINNMAL  Ds, Dt, [Xn|SP]
-        59,4,211,1,1,46,3,1,
+        59,4,211,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMINNMA_16                   - LDFMINNMA   Hs, Ht, [Xn|SP]
-        60,4,210,1,1,46,3,1,
+        60,4,210,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMINNMA_32                   - LDFMINNMA   Ss, St, [Xn|SP]
-        61,4,210,1,1,46,3,1,
+        61,4,210,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMINNMA_64                   - LDFMINNMA   Ds, Dt, [Xn|SP]
-        62,4,210,1,1,46,3,1,
+        62,4,210,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMINNML_16                   - LDFMINNML   Hs, Ht, [Xn|SP]
-        63,4,212,1,1,46,3,1,
+        63,4,212,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMINNML_32                   - LDFMINNML   Ss, St, [Xn|SP]
-        64,4,212,1,1,46,3,1,
+        64,4,212,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMINNML_64                   - LDFMINNML   Ds, Dt, [Xn|SP]
-        65,4,212,1,1,46,3,1,
+        65,4,212,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMINNM_16                    - LDFMINNM    Hs, Ht, [Xn|SP]
-        66,4,209,1,1,46,3,1,
+        66,4,209,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMINNM_32                    - LDFMINNM    Ss, St, [Xn|SP]
-        67,4,209,1,1,46,3,1,
+        67,4,209,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMINNM_64                    - LDFMINNM    Ds, Dt, [Xn|SP]
-        68,4,209,1,1,46,3,1,
+        68,4,209,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDFMIN_16                      - LDFMIN      Hs, Ht, [Xn|SP]
-        69,4,205,1,1,46,3,1,
+        69,4,205,1,1,46,0,3,
         1,24,0,16,
         1,24,0,0,
         3,1,165,0,
         // LDFMIN_32                      - LDFMIN      Ss, St, [Xn|SP]
-        70,4,205,1,1,46,3,1,
+        70,4,205,1,1,46,0,3,
         1,25,0,16,
         1,25,0,0,
         3,1,165,0,
         // LDFMIN_64                      - LDFMIN      Ds, Dt, [Xn|SP]
-        71,4,205,1,1,46,3,1,
+        71,4,205,1,1,46,0,3,
         1,26,0,16,
         1,26,0,0,
         3,1,165,0,
         // LDGM_64bulk_ldsttags           - LDGM        Xt, [Xn|SP]
-        72,4,214,1,4,50,2,1,
+        72,4,214,1,4,50,0,2,
         1,17,0,0,
         3,1,165,0,
         // LDG_64loffset_ldsttags         - LDG         Xt, [Xn|SP{, #simm}]
-        73,4,213,1,4,49,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        73,4,213,1,4,49,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDIAPP_32l_ldiappstilp         - LDIAPP      Wt1, Wt2, [Xn|SP]
-        74,4,215,1,4,40,3,1,
+        74,4,215,1,4,40,0,3,
         1,19,0,0,
         1,19,0,16,
         3,1,165,0,
         // LDIAPP_32le_ldiappstilp        - LDIAPP      Wt1, Wt2, [Xn|SP], #8
-        75,4,215,1,4,40,4,1,
+        75,4,215,1,4,40,0,4,
         1,19,0,0,
         1,19,0,16,
         3,1,165,0,
-        4,9,8,0,
+        4,9,8,10,
         // LDIAPP_64l_ldiappstilp         - LDIAPP      Xt1, Xt2, [Xn|SP]
-        76,4,215,1,4,40,3,1,
+        76,4,215,1,4,40,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // LDIAPP_64ls_ldiappstilp        - LDIAPP      Xt1, Xt2, [Xn|SP], #16
-        77,4,215,1,4,40,4,1,
+        77,4,215,1,4,40,0,4,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
-        4,9,16,0,
+        4,9,16,10,
         // LDLARB_lr32_ldstord            - LDLARB      Wt, [Xn|SP{, #0}]
-        78,4,217,1,4,37,2,1,
+        78,4,217,1,4,37,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDLARH_lr32_ldstord            - LDLARH      Wt, [Xn|SP{, #0}]
-        79,4,218,1,4,37,2,1,
+        79,4,218,1,4,37,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDLAR_lr32_ldstord             - LDLAR       Wt, [Xn|SP{, #0}]
-        80,4,216,1,4,37,2,1,
+        80,4,216,1,4,37,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDLAR_lr64_ldstord             - LDLAR       Xt, [Xn|SP{, #0}]
-        81,4,216,1,4,37,2,1,
+        81,4,216,1,4,37,0,2,
         1,17,0,0,
         3,5,165,0,
         // LDNP_32_ldstnapair_offs        - LDNP        Wt1, Wt2, [Xn|SP{, #imm}]
-        82,4,219,1,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        82,4,219,1,4,0,0,3,
+        1,19,0,0,
+        1,19,0,10,
+        3,5,165,1,
         // LDNP_64_ldstnapair_offs        - LDNP        Xt1, Xt2, [Xn|SP{, #imm}]
-        83,4,219,1,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        83,4,219,1,4,0,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,5,165,1,
         // LDNP_d_ldstnapair_offs         - LDNP        Dt1, Dt2, [Xn|SP{, #imm}]
-        84,4,219,1,3,22,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        84,4,219,1,3,22,0,3,
+        1,26,0,0,
+        1,26,0,10,
+        3,5,165,1,
         // LDNP_q_ldstnapair_offs         - LDNP        Qt1, Qt2, [Xn|SP{, #imm}]
-        85,4,219,1,3,22,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        85,4,219,1,3,22,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,5,165,1,
         // LDNP_s_ldstnapair_offs         - LDNP        St1, St2, [Xn|SP{, #imm}]
-        86,4,219,1,3,22,3,0,
-        1,25,0,0,0,0,0,0,
-        1,25,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        86,4,219,1,3,22,0,3,
+        1,25,0,0,
+        1,25,0,10,
+        3,5,165,1,
         // LDPSW_64_ldstpair_off          - LDPSW       Xt1, Xt2, [Xn|SP{, #imm}]
-        87,4,221,1,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        87,4,221,1,4,0,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,5,165,1,
         // LDPSW_64_ldstpair_post         - LDPSW       Xt1, Xt2, [Xn|SP], #imm
-        88,4,221,1,4,0,4,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        88,4,221,1,4,0,0,4,
+        1,17,0,0,
+        1,17,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // LDPSW_64_ldstpair_pre          - LDPSW       Xt1, Xt2, [Xn|SP, #imm]!
-        89,4,221,1,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        89,4,221,1,4,0,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,4,165,129,
         // LDP_32_ldstpair_off            - LDP         Wt1, Wt2, [Xn|SP{, #imm}]
-        90,4,220,1,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        90,4,220,1,4,0,0,3,
+        1,19,0,0,
+        1,19,0,10,
+        3,5,165,1,
         // LDP_32_ldstpair_post           - LDP         Wt1, Wt2, [Xn|SP], #imm
-        91,4,220,1,4,0,4,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        91,4,220,1,4,0,0,4,
+        1,19,0,0,
+        1,19,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // LDP_32_ldstpair_pre            - LDP         Wt1, Wt2, [Xn|SP, #imm]!
-        92,4,220,1,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        92,4,220,1,4,0,0,3,
+        1,19,0,0,
+        1,19,0,10,
+        3,4,165,129,
         // LDP_64_ldstpair_off            - LDP         Xt1, Xt2, [Xn|SP{, #imm}]
-        93,4,220,1,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        93,4,220,1,4,0,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,5,165,1,
         // LDP_64_ldstpair_post           - LDP         Xt1, Xt2, [Xn|SP], #imm
-        94,4,220,1,4,0,4,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        94,4,220,1,4,0,0,4,
+        1,17,0,0,
+        1,17,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // LDP_64_ldstpair_pre            - LDP         Xt1, Xt2, [Xn|SP, #imm]!
-        95,4,220,1,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        95,4,220,1,4,0,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,4,165,129,
         // LDP_d_ldstpair_off             - LDP         Dt1, Dt2, [Xn|SP{, #imm}]
-        96,4,220,1,3,22,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        96,4,220,1,3,22,0,3,
+        1,26,0,0,
+        1,26,0,10,
+        3,5,165,1,
         // LDP_d_ldstpair_post            - LDP         Dt1, Dt2, [Xn|SP], #imm
-        97,4,220,1,3,22,4,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        97,4,220,1,3,22,0,4,
+        1,26,0,0,
+        1,26,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // LDP_d_ldstpair_pre             - LDP         Dt1, Dt2, [Xn|SP, #imm]!
-        98,4,220,1,3,22,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        98,4,220,1,3,22,0,3,
+        1,26,0,0,
+        1,26,0,10,
+        3,4,165,129,
         // LDP_q_ldstpair_off             - LDP         Qt1, Qt2, [Xn|SP{, #imm}]
-        99,4,220,1,3,22,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        99,4,220,1,3,22,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,5,165,1,
         // LDP_q_ldstpair_post            - LDP         Qt1, Qt2, [Xn|SP], #imm
-        100,4,220,1,3,22,4,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        100,4,220,1,3,22,0,4,
+        1,28,0,0,
+        1,28,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // LDP_q_ldstpair_pre             - LDP         Qt1, Qt2, [Xn|SP, #imm]!
-        101,4,220,1,3,22,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        101,4,220,1,3,22,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,4,165,129,
         // LDP_s_ldstpair_off             - LDP         St1, St2, [Xn|SP{, #imm}]
-        102,4,220,1,3,22,3,0,
-        1,25,0,0,0,0,0,0,
-        1,25,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        102,4,220,1,3,22,0,3,
+        1,25,0,0,
+        1,25,0,10,
+        3,5,165,1,
         // LDP_s_ldstpair_post            - LDP         St1, St2, [Xn|SP], #imm
-        103,4,220,1,3,22,4,0,
-        1,25,0,0,0,0,0,0,
-        1,25,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        103,4,220,1,3,22,0,4,
+        1,25,0,0,
+        1,25,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // LDP_s_ldstpair_pre             - LDP         St1, St2, [Xn|SP, #imm]!
-        104,4,220,1,3,22,3,0,
-        1,25,0,0,0,0,0,0,
-        1,25,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        104,4,220,1,3,22,0,3,
+        1,25,0,0,
+        1,25,0,10,
+        3,4,165,129,
         // LDRAA_64_ldst_pac              - LDRAA       Xt, [Xn|SP{, #simm}]
-        105,4,223,1,5,51,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,2,22,1,12,9,
+        105,4,223,1,5,51,0,2,
+        1,17,0,0,
+        3,5,165,2,
         // LDRAA_64w_ldst_pac             - LDRAA       Xt, [Xn|SP{, #simm}]!
-        106,4,223,1,5,51,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,130,22,1,12,9,
+        106,4,223,1,5,51,0,2,
+        1,17,0,0,
+        3,5,165,130,
         // LDRAB_64_ldst_pac              - LDRAB       Xt, [Xn|SP{, #simm}]
-        107,4,224,1,5,51,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,2,22,1,12,9,
+        107,4,224,1,5,51,0,2,
+        1,17,0,0,
+        3,5,165,2,
         // LDRAB_64w_ldst_pac             - LDRAB       Xt, [Xn|SP{, #simm}]!
-        108,4,224,1,5,51,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,130,22,1,12,9,
+        108,4,224,1,5,51,0,2,
+        1,17,0,0,
+        3,5,165,130,
         // LDRB_32_ldst_immpost           - LDRB        Wt, [Xn|SP], #simm
-        109,4,225,1,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        109,4,225,1,4,0,0,3,
+        1,19,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDRB_32_ldst_immpre            - LDRB        Wt, [Xn|SP, #simm]!
-        110,4,225,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        110,4,225,1,4,0,0,2,
+        1,19,0,0,
+        3,4,165,129,
         // LDRB_32_ldst_pos               - LDRB        Wt, [Xn|SP{, #pimm}]
-        111,4,225,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        111,4,225,1,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDRB_32b_ldst_regoff           - LDRB        Wt, [Xn|SP, (Wm|Xm), extend{, amount}]
-        112,4,225,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,8,165,1,16,5,0,0,
+        112,4,225,1,4,0,0,2,
+        1,19,0,0,
+        3,8,165,1,
         // LDRB_32bl_ldst_regoff          - LDRB        Wt, [Xn|SP, Xm{, LSLamount}]
-        113,4,225,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,7,165,1,16,5,0,0,
+        113,4,225,1,4,0,0,2,
+        1,19,0,0,
+        3,7,165,1,
         // LDRH_32_ldst_immpost           - LDRH        Wt, [Xn|SP], #simm
-        114,4,226,1,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        114,4,226,1,4,0,0,3,
+        1,19,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDRH_32_ldst_immpre            - LDRH        Wt, [Xn|SP, #simm]!
-        115,4,226,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        115,4,226,1,4,0,0,2,
+        1,19,0,0,
+        3,4,165,129,
         // LDRH_32_ldst_pos               - LDRH        Wt, [Xn|SP{, #pimm}]
-        116,4,226,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        116,4,226,1,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDRH_32_ldst_regoff            - LDRH        Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        117,4,226,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,24,165,1,16,5,0,0,
+        117,4,226,1,4,0,0,2,
+        1,19,0,0,
+        3,24,165,1,
         // LDRSB_32_ldst_immpost          - LDRSB       Wt, [Xn|SP], #simm
-        118,4,227,1,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        118,4,227,1,4,0,0,3,
+        1,19,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDRSB_32_ldst_immpre           - LDRSB       Wt, [Xn|SP, #simm]!
-        119,4,227,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        119,4,227,1,4,0,0,2,
+        1,19,0,0,
+        3,4,165,129,
         // LDRSB_32_ldst_pos              - LDRSB       Wt, [Xn|SP{, #pimm}]
-        120,4,227,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        120,4,227,1,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDRSB_32b_ldst_regoff          - LDRSB       Wt, [Xn|SP, (Wm|Xm), extend{, amount}]
-        121,4,227,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,8,165,1,16,5,0,0,
+        121,4,227,1,4,0,0,2,
+        1,19,0,0,
+        3,8,165,1,
         // LDRSB_32bl_ldst_regoff         - LDRSB       Wt, [Xn|SP, Xm{, LSLamount}]
-        122,4,227,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,7,165,1,16,5,0,0,
+        122,4,227,1,4,0,0,2,
+        1,19,0,0,
+        3,7,165,1,
         // LDRSB_64_ldst_immpost          - LDRSB       Xt, [Xn|SP], #simm
-        123,4,227,1,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        123,4,227,1,4,0,0,3,
+        1,17,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDRSB_64_ldst_immpre           - LDRSB       Xt, [Xn|SP, #simm]!
-        124,4,227,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        124,4,227,1,4,0,0,2,
+        1,17,0,0,
+        3,4,165,129,
         // LDRSB_64_ldst_pos              - LDRSB       Xt, [Xn|SP{, #pimm}]
-        125,4,227,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        125,4,227,1,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDRSB_64b_ldst_regoff          - LDRSB       Xt, [Xn|SP, (Wm|Xm), extend{, amount}]
-        126,4,227,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,8,165,1,16,5,0,0,
+        126,4,227,1,4,0,0,2,
+        1,17,0,0,
+        3,8,165,1,
         // LDRSB_64bl_ldst_regoff         - LDRSB       Xt, [Xn|SP, Xm{, LSLamount}]
-        127,4,227,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,7,165,1,16,5,0,0,
+        127,4,227,1,4,0,0,2,
+        1,17,0,0,
+        3,7,165,1,
         // LDRSH_32_ldst_immpost          - LDRSH       Wt, [Xn|SP], #simm
-        128,4,228,1,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        128,4,228,1,4,0,0,3,
+        1,19,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDRSH_32_ldst_immpre           - LDRSH       Wt, [Xn|SP, #simm]!
-        129,4,228,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        129,4,228,1,4,0,0,2,
+        1,19,0,0,
+        3,4,165,129,
         // LDRSH_32_ldst_pos              - LDRSH       Wt, [Xn|SP{, #pimm}]
-        130,4,228,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        130,4,228,1,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDRSH_32_ldst_regoff           - LDRSH       Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        131,4,228,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,24,165,1,16,5,0,0,
+        131,4,228,1,4,0,0,2,
+        1,19,0,0,
+        3,24,165,1,
         // LDRSH_64_ldst_immpost          - LDRSH       Xt, [Xn|SP], #simm
-        132,4,228,1,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        132,4,228,1,4,0,0,3,
+        1,17,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDRSH_64_ldst_immpre           - LDRSH       Xt, [Xn|SP, #simm]!
-        133,4,228,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        133,4,228,1,4,0,0,2,
+        1,17,0,0,
+        3,4,165,129,
         // LDRSH_64_ldst_pos              - LDRSH       Xt, [Xn|SP{, #pimm}]
-        134,4,228,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        134,4,228,1,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDRSH_64_ldst_regoff           - LDRSH       Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        135,4,228,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,24,165,1,16,5,0,0,
+        135,4,228,1,4,0,0,2,
+        1,17,0,0,
+        3,24,165,1,
         // LDRSW_64_ldst_immpost          - LDRSW       Xt, [Xn|SP], #simm
-        136,4,229,1,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        136,4,229,1,4,0,0,3,
+        1,17,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDRSW_64_ldst_immpre           - LDRSW       Xt, [Xn|SP, #simm]!
-        137,4,229,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        137,4,229,1,4,0,0,2,
+        1,17,0,0,
+        3,4,165,129,
         // LDRSW_64_ldst_pos              - LDRSW       Xt, [Xn|SP{, #pimm}]
-        138,4,229,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        138,4,229,1,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDRSW_64_ldst_regoff           - LDRSW       Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        139,4,229,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,40,165,1,16,5,0,0,
+        139,4,229,1,4,0,0,2,
+        1,17,0,0,
+        3,40,165,1,
         // LDRSW_64_loadlit               - LDRSW       Xt, label
-        140,4,229,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        7,1,19,1,5,19,0,0,
+        140,4,229,1,4,0,0,2,
+        1,17,0,0,
+        7,1,19,1,
         // LDR_32_ldst_immpost            - LDR         Wt, [Xn|SP], #simm
-        141,4,222,1,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        141,4,222,1,4,0,0,3,
+        1,19,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDR_32_ldst_immpre             - LDR         Wt, [Xn|SP, #simm]!
-        142,4,222,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        142,4,222,1,4,0,0,2,
+        1,19,0,0,
+        3,4,165,129,
         // LDR_32_ldst_pos                - LDR         Wt, [Xn|SP{, #pimm}]
-        143,4,222,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        143,4,222,1,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDR_32_ldst_regoff             - LDR         Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        144,4,222,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,40,165,1,16,5,0,0,
+        144,4,222,1,4,0,0,2,
+        1,19,0,0,
+        3,40,165,1,
         // LDR_32_loadlit                 - LDR         Wt, label
-        145,4,222,1,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        7,1,19,1,5,19,0,0,
+        145,4,222,1,4,0,0,2,
+        1,19,0,0,
+        7,1,19,1,
         // LDR_64_ldst_immpost            - LDR         Xt, [Xn|SP], #simm
-        146,4,222,1,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        146,4,222,1,4,0,0,3,
+        1,17,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDR_64_ldst_immpre             - LDR         Xt, [Xn|SP, #simm]!
-        147,4,222,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        147,4,222,1,4,0,0,2,
+        1,17,0,0,
+        3,4,165,129,
         // LDR_64_ldst_pos                - LDR         Xt, [Xn|SP{, #pimm}]
-        148,4,222,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        148,4,222,1,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDR_64_ldst_regoff             - LDR         Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        149,4,222,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,56,165,1,16,5,0,0,
+        149,4,222,1,4,0,0,2,
+        1,17,0,0,
+        3,56,165,1,
         // LDR_64_loadlit                 - LDR         Xt, label
-        150,4,222,1,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        7,1,19,1,5,19,0,0,
+        150,4,222,1,4,0,0,2,
+        1,17,0,0,
+        7,1,19,1,
         // LDR_b_ldst_immpost             - LDR         Bt, [Xn|SP], #simm
-        151,4,222,1,3,22,3,0,
-        1,23,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        151,4,222,1,3,22,0,3,
+        1,23,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDR_b_ldst_immpre              - LDR         Bt, [Xn|SP, #simm]!
-        152,4,222,1,3,22,2,0,
-        1,23,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        152,4,222,1,3,22,0,2,
+        1,23,0,0,
+        3,4,165,129,
         // LDR_b_ldst_pos                 - LDR         Bt, [Xn|SP{, #pimm}]
-        153,4,222,1,3,22,2,0,
-        1,23,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        153,4,222,1,3,22,0,2,
+        1,23,0,0,
+        3,5,165,1,
         // LDR_b_ldst_regoff              - LDR         Bt, [Xn|SP, (Wm|Xm), extend{, amount}]
-        154,4,222,1,3,22,2,0,
-        1,23,0,0,0,0,0,0,
-        3,8,165,1,16,5,0,0,
+        154,4,222,1,3,22,0,2,
+        1,23,0,0,
+        3,8,165,1,
         // LDR_bl_ldst_regoff             - LDR         Bt, [Xn|SP, Xm{, LSLamount}]
-        155,4,222,1,3,22,2,0,
-        1,23,0,0,0,0,0,0,
-        3,7,165,1,16,5,0,0,
+        155,4,222,1,3,22,0,2,
+        1,23,0,0,
+        3,7,165,1,
         // LDR_d_ldst_immpost             - LDR         Dt, [Xn|SP], #simm
-        156,4,222,1,3,22,3,0,
-        1,26,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        156,4,222,1,3,22,0,3,
+        1,26,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDR_d_ldst_immpre              - LDR         Dt, [Xn|SP, #simm]!
-        157,4,222,1,3,22,2,0,
-        1,26,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        157,4,222,1,3,22,0,2,
+        1,26,0,0,
+        3,4,165,129,
         // LDR_d_ldst_pos                 - LDR         Dt, [Xn|SP{, #pimm}]
-        158,4,222,1,3,22,2,0,
-        1,26,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        158,4,222,1,3,22,0,2,
+        1,26,0,0,
+        3,5,165,1,
         // LDR_d_ldst_regoff              - LDR         Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        159,4,222,1,3,22,2,0,
-        1,26,0,0,0,0,0,0,
-        3,56,165,1,16,5,0,0,
+        159,4,222,1,3,22,0,2,
+        1,26,0,0,
+        3,56,165,1,
         // LDR_d_loadlit                  - LDR         Dt, label
-        160,4,222,1,3,22,2,0,
-        1,26,0,0,0,0,0,0,
-        7,1,19,1,5,19,0,0,
+        160,4,222,1,3,22,0,2,
+        1,26,0,0,
+        7,1,19,1,
         // LDR_h_ldst_immpost             - LDR         Ht, [Xn|SP], #simm
-        161,4,222,1,3,22,3,0,
-        1,24,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        161,4,222,1,3,22,0,3,
+        1,24,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDR_h_ldst_immpre              - LDR         Ht, [Xn|SP, #simm]!
-        162,4,222,1,3,22,2,0,
-        1,24,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        162,4,222,1,3,22,0,2,
+        1,24,0,0,
+        3,4,165,129,
         // LDR_h_ldst_pos                 - LDR         Ht, [Xn|SP{, #pimm}]
-        163,4,222,1,3,22,2,0,
-        1,24,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        163,4,222,1,3,22,0,2,
+        1,24,0,0,
+        3,5,165,1,
         // LDR_h_ldst_regoff              - LDR         Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        164,4,222,1,3,22,2,0,
-        1,24,0,0,0,0,0,0,
-        3,24,165,1,16,5,0,0,
+        164,4,222,1,3,22,0,2,
+        1,24,0,0,
+        3,24,165,1,
         // LDR_q_ldst_immpost             - LDR         Qt, [Xn|SP], #simm
-        165,4,222,1,3,22,3,0,
-        1,28,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        165,4,222,1,3,22,0,3,
+        1,28,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDR_q_ldst_immpre              - LDR         Qt, [Xn|SP, #simm]!
-        166,4,222,1,3,22,2,0,
-        1,28,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        166,4,222,1,3,22,0,2,
+        1,28,0,0,
+        3,4,165,129,
         // LDR_q_ldst_pos                 - LDR         Qt, [Xn|SP{, #pimm}]
-        167,4,222,1,3,22,2,0,
-        1,28,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        167,4,222,1,3,22,0,2,
+        1,28,0,0,
+        3,5,165,1,
         // LDR_q_ldst_regoff              - LDR         Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        168,4,222,1,3,22,2,0,
-        1,28,0,0,0,0,0,0,
-        3,72,165,1,16,5,0,0,
+        168,4,222,1,3,22,0,2,
+        1,28,0,0,
+        3,72,165,1,
         // LDR_q_loadlit                  - LDR         Qt, label
-        169,4,222,1,3,22,2,0,
-        1,28,0,0,0,0,0,0,
-        7,1,19,1,5,19,0,0,
+        169,4,222,1,3,22,0,2,
+        1,28,0,0,
+        7,1,19,1,
         // LDR_s_ldst_immpost             - LDR         St, [Xn|SP], #simm
-        170,4,222,1,3,22,3,0,
-        1,25,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        170,4,222,1,3,22,0,3,
+        1,25,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // LDR_s_ldst_immpre              - LDR         St, [Xn|SP, #simm]!
-        171,4,222,1,3,22,2,0,
-        1,25,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        171,4,222,1,3,22,0,2,
+        1,25,0,0,
+        3,4,165,129,
         // LDR_s_ldst_pos                 - LDR         St, [Xn|SP{, #pimm}]
-        172,4,222,1,3,22,2,0,
-        1,25,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        172,4,222,1,3,22,0,2,
+        1,25,0,0,
+        3,5,165,1,
         // LDR_s_ldst_regoff              - LDR         St, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        173,4,222,1,3,22,2,0,
-        1,25,0,0,0,0,0,0,
-        3,40,165,1,16,5,0,0,
+        173,4,222,1,3,22,0,2,
+        1,25,0,0,
+        3,40,165,1,
         // LDR_s_loadlit                  - LDR         St, label
-        174,4,222,1,3,22,2,0,
-        1,25,0,0,0,0,0,0,
-        7,1,19,1,5,19,0,0,
+        174,4,222,1,3,22,0,2,
+        1,25,0,0,
+        7,1,19,1,
         // LDSETAB_32_memop               - LDSETAB     Ws, Wt, [Xn|SP]
-        175,4,232,1,4,44,3,1,
+        175,4,232,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSETAH_32_memop               - LDSETAH     Ws, Wt, [Xn|SP]
-        176,4,233,1,4,44,3,1,
+        176,4,233,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSETALB_32_memop              - LDSETALB    Ws, Wt, [Xn|SP]
-        177,4,235,1,4,44,3,1,
+        177,4,235,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSETALH_32_memop              - LDSETALH    Ws, Wt, [Xn|SP]
-        178,4,236,1,4,44,3,1,
+        178,4,236,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSETAL_32_memop               - LDSETAL     Ws, Wt, [Xn|SP]
-        179,4,234,1,4,44,3,1,
+        179,4,234,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSETAL_64_memop               - LDSETAL     Xs, Xt, [Xn|SP]
-        180,4,234,1,4,44,3,1,
+        180,4,234,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDSETA_32_memop                - LDSETA      Ws, Wt, [Xn|SP]
-        181,4,231,1,4,44,3,1,
+        181,4,231,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSETA_64_memop                - LDSETA      Xs, Xt, [Xn|SP]
-        182,4,231,1,4,44,3,1,
+        182,4,231,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDSETB_32_memop                - LDSETB      Ws, Wt, [Xn|SP]
-        183,4,237,1,4,44,3,1,
+        183,4,237,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSETH_32_memop                - LDSETH      Ws, Wt, [Xn|SP]
-        184,4,238,1,4,44,3,1,
+        184,4,238,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSETLB_32_memop               - LDSETLB     Ws, Wt, [Xn|SP]
-        185,4,240,1,4,44,3,1,
+        185,4,240,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSETLH_32_memop               - LDSETLH     Ws, Wt, [Xn|SP]
-        186,4,241,1,4,44,3,1,
+        186,4,241,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSETL_32_memop                - LDSETL      Ws, Wt, [Xn|SP]
-        187,4,239,1,4,44,3,1,
+        187,4,239,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSETL_64_memop                - LDSETL      Xs, Xt, [Xn|SP]
-        188,4,239,1,4,44,3,1,
+        188,4,239,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDSETPAL_128_memop_128         - LDSETPAL    Xt1, Xt2, [Xn|SP]
-        189,4,244,1,4,45,3,1,
+        189,4,244,1,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // LDSETPA_128_memop_128          - LDSETPA     Xt1, Xt2, [Xn|SP]
-        190,4,243,1,4,45,3,1,
+        190,4,243,1,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // LDSETPL_128_memop_128          - LDSETPL     Xt1, Xt2, [Xn|SP]
-        191,4,245,1,4,45,3,1,
+        191,4,245,1,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // LDSETP_128_memop_128           - LDSETP      Xt1, Xt2, [Xn|SP]
-        192,4,242,1,4,45,3,1,
+        192,4,242,1,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // LDSET_32_memop                 - LDSET       Ws, Wt, [Xn|SP]
-        193,4,230,1,4,44,3,1,
+        193,4,230,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSET_64_memop                 - LDSET       Xs, Xt, [Xn|SP]
-        194,4,230,1,4,44,3,1,
+        194,4,230,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDSMAXAB_32_memop              - LDSMAXAB    Ws, Wt, [Xn|SP]
-        195,4,248,1,4,44,3,1,
+        195,4,248,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAXAH_32_memop              - LDSMAXAH    Ws, Wt, [Xn|SP]
-        196,4,249,1,4,44,3,1,
+        196,4,249,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAXALB_32_memop             - LDSMAXALB   Ws, Wt, [Xn|SP]
-        197,4,251,1,4,44,3,1,
+        197,4,251,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAXALH_32_memop             - LDSMAXALH   Ws, Wt, [Xn|SP]
-        198,4,252,1,4,44,3,1,
+        198,4,252,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAXAL_32_memop              - LDSMAXAL    Ws, Wt, [Xn|SP]
-        199,4,250,1,4,44,3,1,
+        199,4,250,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAXAL_64_memop              - LDSMAXAL    Xs, Xt, [Xn|SP]
-        200,4,250,1,4,44,3,1,
+        200,4,250,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDSMAXA_32_memop               - LDSMAXA     Ws, Wt, [Xn|SP]
-        201,4,247,1,4,44,3,1,
+        201,4,247,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAXA_64_memop               - LDSMAXA     Xs, Xt, [Xn|SP]
-        202,4,247,1,4,44,3,1,
+        202,4,247,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDSMAXB_32_memop               - LDSMAXB     Ws, Wt, [Xn|SP]
-        203,4,253,1,4,44,3,1,
+        203,4,253,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAXH_32_memop               - LDSMAXH     Ws, Wt, [Xn|SP]
-        204,4,254,1,4,44,3,1,
+        204,4,254,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAXLB_32_memop              - LDSMAXLB    Ws, Wt, [Xn|SP]
-        205,4,0,2,4,44,3,1,
+        205,4,0,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAXLH_32_memop              - LDSMAXLH    Ws, Wt, [Xn|SP]
-        206,4,1,2,4,44,3,1,
+        206,4,1,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAXL_32_memop               - LDSMAXL     Ws, Wt, [Xn|SP]
-        207,4,255,1,4,44,3,1,
+        207,4,255,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAXL_64_memop               - LDSMAXL     Xs, Xt, [Xn|SP]
-        208,4,255,1,4,44,3,1,
+        208,4,255,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDSMAX_32_memop                - LDSMAX      Ws, Wt, [Xn|SP]
-        209,4,246,1,4,44,3,1,
+        209,4,246,1,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMAX_64_memop                - LDSMAX      Xs, Xt, [Xn|SP]
-        210,4,246,1,4,44,3,1,
+        210,4,246,1,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDSMINAB_32_memop              - LDSMINAB    Ws, Wt, [Xn|SP]
-        211,4,4,2,4,44,3,1,
+        211,4,4,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMINAH_32_memop              - LDSMINAH    Ws, Wt, [Xn|SP]
-        212,4,5,2,4,44,3,1,
+        212,4,5,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMINALB_32_memop             - LDSMINALB   Ws, Wt, [Xn|SP]
-        213,4,7,2,4,44,3,1,
+        213,4,7,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMINALH_32_memop             - LDSMINALH   Ws, Wt, [Xn|SP]
-        214,4,8,2,4,44,3,1,
+        214,4,8,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMINAL_32_memop              - LDSMINAL    Ws, Wt, [Xn|SP]
-        215,4,6,2,4,44,3,1,
+        215,4,6,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMINAL_64_memop              - LDSMINAL    Xs, Xt, [Xn|SP]
-        216,4,6,2,4,44,3,1,
+        216,4,6,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDSMINA_32_memop               - LDSMINA     Ws, Wt, [Xn|SP]
-        217,4,3,2,4,44,3,1,
+        217,4,3,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMINA_64_memop               - LDSMINA     Xs, Xt, [Xn|SP]
-        218,4,3,2,4,44,3,1,
+        218,4,3,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDSMINB_32_memop               - LDSMINB     Ws, Wt, [Xn|SP]
-        219,4,9,2,4,44,3,1,
+        219,4,9,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMINH_32_memop               - LDSMINH     Ws, Wt, [Xn|SP]
-        220,4,10,2,4,44,3,1,
+        220,4,10,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMINLB_32_memop              - LDSMINLB    Ws, Wt, [Xn|SP]
-        221,4,12,2,4,44,3,1,
+        221,4,12,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMINLH_32_memop              - LDSMINLH    Ws, Wt, [Xn|SP]
-        222,4,13,2,4,44,3,1,
+        222,4,13,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMINL_32_memop               - LDSMINL     Ws, Wt, [Xn|SP]
-        223,4,11,2,4,44,3,1,
+        223,4,11,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMINL_64_memop               - LDSMINL     Xs, Xt, [Xn|SP]
-        224,4,11,2,4,44,3,1,
+        224,4,11,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDSMIN_32_memop                - LDSMIN      Ws, Wt, [Xn|SP]
-        225,4,2,2,4,44,3,1,
+        225,4,2,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDSMIN_64_memop                - LDSMIN      Xs, Xt, [Xn|SP]
-        226,4,2,2,4,44,3,1,
+        226,4,2,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTADDAL_32_memop_unpriv       - LDTADDAL    Ws, Wt, [Xn|SP]
-        227,4,16,2,4,47,3,1,
+        227,4,16,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTADDAL_64_memop_unpriv       - LDTADDAL    Xs, Xt, [Xn|SP]
-        228,4,16,2,4,47,3,1,
+        228,4,16,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTADDA_32_memop_unpriv        - LDTADDA     Ws, Wt, [Xn|SP]
-        229,4,15,2,4,47,3,1,
+        229,4,15,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTADDA_64_memop_unpriv        - LDTADDA     Xs, Xt, [Xn|SP]
-        230,4,15,2,4,47,3,1,
+        230,4,15,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTADDL_32_memop_unpriv        - LDTADDL     Ws, Wt, [Xn|SP]
-        231,4,17,2,4,47,3,1,
+        231,4,17,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTADDL_64_memop_unpriv        - LDTADDL     Xs, Xt, [Xn|SP]
-        232,4,17,2,4,47,3,1,
+        232,4,17,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTADD_32_memop_unpriv         - LDTADD      Ws, Wt, [Xn|SP]
-        233,4,14,2,4,47,3,1,
+        233,4,14,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTADD_64_memop_unpriv         - LDTADD      Xs, Xt, [Xn|SP]
-        234,4,14,2,4,47,3,1,
+        234,4,14,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTCLRAL_32_memop_unpriv       - LDTCLRAL    Ws, Wt, [Xn|SP]
-        235,4,20,2,4,47,3,1,
+        235,4,20,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTCLRAL_64_memop_unpriv       - LDTCLRAL    Xs, Xt, [Xn|SP]
-        236,4,20,2,4,47,3,1,
+        236,4,20,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTCLRA_32_memop_unpriv        - LDTCLRA     Ws, Wt, [Xn|SP]
-        237,4,19,2,4,47,3,1,
+        237,4,19,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTCLRA_64_memop_unpriv        - LDTCLRA     Xs, Xt, [Xn|SP]
-        238,4,19,2,4,47,3,1,
+        238,4,19,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTCLRL_32_memop_unpriv        - LDTCLRL     Ws, Wt, [Xn|SP]
-        239,4,21,2,4,47,3,1,
+        239,4,21,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTCLRL_64_memop_unpriv        - LDTCLRL     Xs, Xt, [Xn|SP]
-        240,4,21,2,4,47,3,1,
+        240,4,21,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTCLR_32_memop_unpriv         - LDTCLR      Ws, Wt, [Xn|SP]
-        241,4,18,2,4,47,3,1,
+        241,4,18,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTCLR_64_memop_unpriv         - LDTCLR      Xs, Xt, [Xn|SP]
-        242,4,18,2,4,47,3,1,
+        242,4,18,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTNP_64_ldstnapair_offs       - LDTNP       Xt1, Xt2, [Xn|SP{, #imm}]
-        243,4,22,2,4,47,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        243,4,22,2,4,47,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,5,165,1,
         // LDTNP_q_ldstnapair_offs        - LDTNP       Qt1, Qt2, [Xn|SP{, #imm}]
-        244,4,22,2,3,29,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        244,4,22,2,3,29,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,5,165,1,
         // LDTP_64_ldstpair_off           - LDTP        Xt1, Xt2, [Xn|SP{, #imm}]
-        245,4,23,2,4,47,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        245,4,23,2,4,47,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,5,165,1,
         // LDTP_64_ldstpair_post          - LDTP        Xt1, Xt2, [Xn|SP], #imm
-        246,4,23,2,4,47,4,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        246,4,23,2,4,47,0,4,
+        1,17,0,0,
+        1,17,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // LDTP_64_ldstpair_pre           - LDTP        Xt1, Xt2, [Xn|SP, #imm]!
-        247,4,23,2,4,47,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        247,4,23,2,4,47,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,4,165,129,
         // LDTP_q_ldstpair_off            - LDTP        Qt1, Qt2, [Xn|SP{, #imm}]
-        248,4,23,2,3,29,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        248,4,23,2,3,29,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,5,165,1,
         // LDTP_q_ldstpair_post           - LDTP        Qt1, Qt2, [Xn|SP], #imm
-        249,4,23,2,3,29,4,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        249,4,23,2,3,29,0,4,
+        1,28,0,0,
+        1,28,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // LDTP_q_ldstpair_pre            - LDTP        Qt1, Qt2, [Xn|SP, #imm]!
-        250,4,23,2,3,29,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        250,4,23,2,3,29,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,4,165,129,
         // LDTRB_32_ldst_unpriv           - LDTRB       Wt, [Xn|SP{, #simm}]
-        251,4,25,2,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        251,4,25,2,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDTRH_32_ldst_unpriv           - LDTRH       Wt, [Xn|SP{, #simm}]
-        252,4,26,2,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        252,4,26,2,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDTRSB_32_ldst_unpriv          - LDTRSB      Wt, [Xn|SP{, #simm}]
-        253,4,27,2,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        253,4,27,2,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDTRSB_64_ldst_unpriv          - LDTRSB      Xt, [Xn|SP{, #simm}]
-        254,4,27,2,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        254,4,27,2,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDTRSH_32_ldst_unpriv          - LDTRSH      Wt, [Xn|SP{, #simm}]
-        255,4,28,2,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        255,4,28,2,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDTRSH_64_ldst_unpriv          - LDTRSH      Xt, [Xn|SP{, #simm}]
-        0,5,28,2,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        0,5,28,2,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDTRSW_64_ldst_unpriv          - LDTRSW      Xt, [Xn|SP{, #simm}]
-        1,5,29,2,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        1,5,29,2,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDTR_32_ldst_unpriv            - LDTR        Wt, [Xn|SP{, #simm}]
-        2,5,24,2,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        2,5,24,2,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDTR_64_ldst_unpriv            - LDTR        Xt, [Xn|SP{, #simm}]
-        3,5,24,2,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        3,5,24,2,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDTSETAL_32_memop_unpriv       - LDTSETAL    Ws, Wt, [Xn|SP]
-        4,5,32,2,4,47,3,1,
+        4,5,32,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTSETAL_64_memop_unpriv       - LDTSETAL    Xs, Xt, [Xn|SP]
-        5,5,32,2,4,47,3,1,
+        5,5,32,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTSETA_32_memop_unpriv        - LDTSETA     Ws, Wt, [Xn|SP]
-        6,5,31,2,4,47,3,1,
+        6,5,31,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTSETA_64_memop_unpriv        - LDTSETA     Xs, Xt, [Xn|SP]
-        7,5,31,2,4,47,3,1,
+        7,5,31,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTSETL_32_memop_unpriv        - LDTSETL     Ws, Wt, [Xn|SP]
-        8,5,33,2,4,47,3,1,
+        8,5,33,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTSETL_64_memop_unpriv        - LDTSETL     Xs, Xt, [Xn|SP]
-        9,5,33,2,4,47,3,1,
+        9,5,33,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTSET_32_memop_unpriv         - LDTSET      Ws, Wt, [Xn|SP]
-        10,5,30,2,4,47,3,1,
+        10,5,30,2,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDTSET_64_memop_unpriv         - LDTSET      Xs, Xt, [Xn|SP]
-        11,5,30,2,4,47,3,1,
+        11,5,30,2,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDTXR_lr32_ldstexclr_unpriv    - LDTXR       Wt, [Xn|SP{, #0}]
-        12,5,34,2,4,47,2,1,
+        12,5,34,2,4,47,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDTXR_lr64_ldstexclr_unpriv    - LDTXR       Xt, [Xn|SP{, #0}]
-        13,5,34,2,4,47,2,1,
+        13,5,34,2,4,47,0,2,
         1,17,0,0,
         3,5,165,0,
         // LDUMAXAB_32_memop              - LDUMAXAB    Ws, Wt, [Xn|SP]
-        14,5,37,2,4,44,3,1,
+        14,5,37,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAXAH_32_memop              - LDUMAXAH    Ws, Wt, [Xn|SP]
-        15,5,38,2,4,44,3,1,
+        15,5,38,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAXALB_32_memop             - LDUMAXALB   Ws, Wt, [Xn|SP]
-        16,5,40,2,4,44,3,1,
+        16,5,40,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAXALH_32_memop             - LDUMAXALH   Ws, Wt, [Xn|SP]
-        17,5,41,2,4,44,3,1,
+        17,5,41,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAXAL_32_memop              - LDUMAXAL    Ws, Wt, [Xn|SP]
-        18,5,39,2,4,44,3,1,
+        18,5,39,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAXAL_64_memop              - LDUMAXAL    Xs, Xt, [Xn|SP]
-        19,5,39,2,4,44,3,1,
+        19,5,39,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDUMAXA_32_memop               - LDUMAXA     Ws, Wt, [Xn|SP]
-        20,5,36,2,4,44,3,1,
+        20,5,36,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAXA_64_memop               - LDUMAXA     Xs, Xt, [Xn|SP]
-        21,5,36,2,4,44,3,1,
+        21,5,36,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDUMAXB_32_memop               - LDUMAXB     Ws, Wt, [Xn|SP]
-        22,5,42,2,4,44,3,1,
+        22,5,42,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAXH_32_memop               - LDUMAXH     Ws, Wt, [Xn|SP]
-        23,5,43,2,4,44,3,1,
+        23,5,43,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAXLB_32_memop              - LDUMAXLB    Ws, Wt, [Xn|SP]
-        24,5,45,2,4,44,3,1,
+        24,5,45,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAXLH_32_memop              - LDUMAXLH    Ws, Wt, [Xn|SP]
-        25,5,46,2,4,44,3,1,
+        25,5,46,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAXL_32_memop               - LDUMAXL     Ws, Wt, [Xn|SP]
-        26,5,44,2,4,44,3,1,
+        26,5,44,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAXL_64_memop               - LDUMAXL     Xs, Xt, [Xn|SP]
-        27,5,44,2,4,44,3,1,
+        27,5,44,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDUMAX_32_memop                - LDUMAX      Ws, Wt, [Xn|SP]
-        28,5,35,2,4,44,3,1,
+        28,5,35,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMAX_64_memop                - LDUMAX      Xs, Xt, [Xn|SP]
-        29,5,35,2,4,44,3,1,
+        29,5,35,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDUMINAB_32_memop              - LDUMINAB    Ws, Wt, [Xn|SP]
-        30,5,49,2,4,44,3,1,
+        30,5,49,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMINAH_32_memop              - LDUMINAH    Ws, Wt, [Xn|SP]
-        31,5,50,2,4,44,3,1,
+        31,5,50,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMINALB_32_memop             - LDUMINALB   Ws, Wt, [Xn|SP]
-        32,5,52,2,4,44,3,1,
+        32,5,52,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMINALH_32_memop             - LDUMINALH   Ws, Wt, [Xn|SP]
-        33,5,53,2,4,44,3,1,
+        33,5,53,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMINAL_32_memop              - LDUMINAL    Ws, Wt, [Xn|SP]
-        34,5,51,2,4,44,3,1,
+        34,5,51,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMINAL_64_memop              - LDUMINAL    Xs, Xt, [Xn|SP]
-        35,5,51,2,4,44,3,1,
+        35,5,51,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDUMINA_32_memop               - LDUMINA     Ws, Wt, [Xn|SP]
-        36,5,48,2,4,44,3,1,
+        36,5,48,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMINA_64_memop               - LDUMINA     Xs, Xt, [Xn|SP]
-        37,5,48,2,4,44,3,1,
+        37,5,48,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDUMINB_32_memop               - LDUMINB     Ws, Wt, [Xn|SP]
-        38,5,54,2,4,44,3,1,
+        38,5,54,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMINH_32_memop               - LDUMINH     Ws, Wt, [Xn|SP]
-        39,5,55,2,4,44,3,1,
+        39,5,55,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMINLB_32_memop              - LDUMINLB    Ws, Wt, [Xn|SP]
-        40,5,57,2,4,44,3,1,
+        40,5,57,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMINLH_32_memop              - LDUMINLH    Ws, Wt, [Xn|SP]
-        41,5,58,2,4,44,3,1,
+        41,5,58,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMINL_32_memop               - LDUMINL     Ws, Wt, [Xn|SP]
-        42,5,56,2,4,44,3,1,
+        42,5,56,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMINL_64_memop               - LDUMINL     Xs, Xt, [Xn|SP]
-        43,5,56,2,4,44,3,1,
+        43,5,56,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDUMIN_32_memop                - LDUMIN      Ws, Wt, [Xn|SP]
-        44,5,47,2,4,44,3,1,
+        44,5,47,2,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // LDUMIN_64_memop                - LDUMIN      Xs, Xt, [Xn|SP]
-        45,5,47,2,4,44,3,1,
+        45,5,47,2,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // LDURB_32_ldst_unscaled         - LDURB       Wt, [Xn|SP{, #simm}]
-        46,5,60,2,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        46,5,60,2,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDURH_32_ldst_unscaled         - LDURH       Wt, [Xn|SP{, #simm}]
-        47,5,61,2,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        47,5,61,2,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDURSB_32_ldst_unscaled        - LDURSB      Wt, [Xn|SP{, #simm}]
-        48,5,62,2,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        48,5,62,2,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDURSB_64_ldst_unscaled        - LDURSB      Xt, [Xn|SP{, #simm}]
-        49,5,62,2,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        49,5,62,2,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDURSH_32_ldst_unscaled        - LDURSH      Wt, [Xn|SP{, #simm}]
-        50,5,63,2,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        50,5,63,2,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDURSH_64_ldst_unscaled        - LDURSH      Xt, [Xn|SP{, #simm}]
-        51,5,63,2,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        51,5,63,2,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDURSW_64_ldst_unscaled        - LDURSW      Xt, [Xn|SP{, #simm}]
-        52,5,64,2,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        52,5,64,2,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDUR_32_ldst_unscaled          - LDUR        Wt, [Xn|SP{, #simm}]
-        53,5,59,2,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        53,5,59,2,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // LDUR_64_ldst_unscaled          - LDUR        Xt, [Xn|SP{, #simm}]
-        54,5,59,2,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        54,5,59,2,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // LDUR_b_ldst_unscaled           - LDUR        Bt, [Xn|SP{, #simm}]
-        55,5,59,2,3,22,2,0,
-        1,23,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        55,5,59,2,3,22,0,2,
+        1,23,0,0,
+        3,5,165,1,
         // LDUR_d_ldst_unscaled           - LDUR        Dt, [Xn|SP{, #simm}]
-        56,5,59,2,3,22,2,0,
-        1,26,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        56,5,59,2,3,22,0,2,
+        1,26,0,0,
+        3,5,165,1,
         // LDUR_h_ldst_unscaled           - LDUR        Ht, [Xn|SP{, #simm}]
-        57,5,59,2,3,22,2,0,
-        1,24,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        57,5,59,2,3,22,0,2,
+        1,24,0,0,
+        3,5,165,1,
         // LDUR_q_ldst_unscaled           - LDUR        Qt, [Xn|SP{, #simm}]
-        58,5,59,2,3,22,2,0,
-        1,28,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        58,5,59,2,3,22,0,2,
+        1,28,0,0,
+        3,5,165,1,
         // LDUR_s_ldst_unscaled           - LDUR        St, [Xn|SP{, #simm}]
-        59,5,59,2,3,22,2,0,
-        1,25,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        59,5,59,2,3,22,0,2,
+        1,25,0,0,
+        3,5,165,1,
         // LDXP_lp32_ldstexclp            - LDXP        Wt1, Wt2, [Xn|SP{, #0}]
-        60,5,65,2,4,0,3,1,
+        60,5,65,2,4,0,0,3,
         1,19,0,0,
         1,19,0,10,
         3,5,165,0,
         // LDXP_lp64_ldstexclp            - LDXP        Xt1, Xt2, [Xn|SP{, #0}]
-        61,5,65,2,4,0,3,1,
+        61,5,65,2,4,0,0,3,
         1,17,0,0,
         1,17,0,10,
         3,5,165,0,
         // LDXRB_lr32_ldstexclr           - LDXRB       Wt, [Xn|SP{, #0}]
-        62,5,67,2,4,0,2,1,
+        62,5,67,2,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDXRH_lr32_ldstexclr           - LDXRH       Wt, [Xn|SP{, #0}]
-        63,5,68,2,4,0,2,1,
+        63,5,68,2,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDXR_lr32_ldstexclr            - LDXR        Wt, [Xn|SP{, #0}]
-        64,5,66,2,4,0,2,1,
+        64,5,66,2,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // LDXR_lr64_ldstexclr            - LDXR        Xt, [Xn|SP{, #0}]
-        65,5,66,2,4,0,2,1,
+        65,5,66,2,4,0,0,2,
         1,17,0,0,
         3,5,165,0,
         // LSLV_32_dp_2src                - LSLV        Wd, Wn, Wm
-        66,5,69,2,4,0,3,1,
+        66,5,69,2,4,0,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // LSLV_64_dp_2src                - LSLV        Xd, Xn, Xm
-        67,5,69,2,4,0,3,1,
+        67,5,69,2,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // LSRV_32_dp_2src                - LSRV        Wd, Wn, Wm
-        68,5,70,2,4,0,3,1,
+        68,5,70,2,4,0,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // LSRV_64_dp_2src                - LSRV        Xd, Xn, Xm
-        69,5,70,2,4,0,3,1,
+        69,5,70,2,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // LUTI2_asimdtbl_l5              - LUTI2       Vd.16B, {Vn.16B}, Vm[index]
-        70,5,71,2,1,6,3,0,
-        1,27,0,0,0,0,0,0,
-        2,1,0,27,0,5,0,0,
-        1,27,11,16,0,0,0,0,
+        70,5,71,2,1,6,2,3,
+        5,0,0,0,
+        1,27,0,0,
+        2,1,0,27,
+        1,27,5,16,
         // LUTI2_asimdtbl_l6              - LUTI2       Vd.8H, {Vn.8H}, Vm[index]
-        71,5,71,2,1,6,3,0,
-        1,27,0,0,0,0,0,0,
-        2,1,0,27,0,5,0,0,
-        1,27,12,16,0,0,0,0,
+        71,5,71,2,1,6,2,3,
+        11,0,0,0,
+        1,27,0,0,
+        2,1,0,27,
+        1,27,8,16,
         // LUTI4_asimdtbl_l5              - LUTI4       Vd.16B, {Vn.16B}, Vm[index]
-        72,5,72,2,1,6,3,0,
-        1,27,0,0,0,0,0,0,
-        2,1,0,27,0,5,0,0,
-        1,27,11,16,0,0,0,0,
+        72,5,72,2,1,6,2,3,
+        5,0,0,0,
+        1,27,0,0,
+        2,1,0,27,
+        1,27,5,16,
         // LUTI4_asimdtbl_l7              - LUTI4       Vd.8H, {Vn1.8H, Vn2.8H}, Vm[index]
-        73,5,72,2,1,6,3,0,
-        1,27,0,0,0,0,0,0,
-        2,2,0,27,0,5,0,0,
-        1,27,11,16,0,0,0,0,
+        73,5,72,2,1,6,2,3,
+        11,0,0,0,
+        1,27,0,0,
+        2,2,0,27,
+        1,27,5,16,
         // MADDPT_64a_dp_3src             - MADDPT      Xd, Xn, Xm, Xa
-        74,5,74,2,4,12,4,1,
+        74,5,74,2,4,12,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         1,17,0,10,
         // MADD_32a_dp_3src               - MADD        Wd, Wn, Wm, Wa
-        75,5,73,2,4,0,4,1,
+        75,5,73,2,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         1,19,0,10,
         // MADD_64a_dp_3src               - MADD        Xd, Xn, Xm, Xa
-        76,5,73,2,4,0,4,1,
+        76,5,73,2,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         1,17,0,10,
         // MLA_asimdelem_r                - MLA         Vd.T, Vn.T, Vm.Ts[index]
-        77,5,75,2,1,2,3,1,
+        77,5,75,2,1,2,4,3,
+        31,22,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // MLA_asimdsame_only             - MLA         Vd.T, Vn.T, Vm.T
-        78,5,75,2,1,2,3,1,
+        78,5,75,2,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // MLS_asimdelem_r                - MLS         Vd.T, Vn.T, Vm.Ts[index]
-        79,5,76,2,1,2,3,1,
+        79,5,76,2,1,2,4,3,
+        31,22,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // MLS_asimdsame_only             - MLS         Vd.T, Vn.T, Vm.T
-        80,5,76,2,1,2,3,1,
+        80,5,76,2,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // MOVI_asimdimm_d2_d             - MOVI        Vd.2D, #imm
-        81,5,77,2,1,2,2,0,
-        1,27,0,0,0,0,0,0,
-        4,14,8,2,16,3,5,5,
+        81,5,77,2,1,2,2,2,
+        7,0,0,0,
+        1,27,0,0,
+        4,14,8,2,
         // MOVI_asimdimm_d_ds             - MOVI        Dd, #imm
-        82,5,77,2,1,2,2,0,
-        1,26,0,0,0,0,0,0,
-        4,14,8,2,16,3,5,5,
+        82,5,77,2,1,2,0,2,
+        1,26,0,0,
+        4,14,8,2,
         // MOVI_asimdimm_l_hl             - MOVI        Vd.T, #imm8 {, LSL #amount}
-        83,5,77,2,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        4,1,8,2,16,3,5,5,
-        8,6,0,45,0,0,0,0,
+        83,5,77,2,1,2,2,3,
+        17,0,0,0,
+        1,27,0,0,
+        4,1,8,2,
+        8,6,0,45,
         // MOVI_asimdimm_l_sl             - MOVI        Vd.T, #imm8 {, LSL #amount}
-        84,5,77,2,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        4,1,8,2,16,3,5,5,
-        8,6,0,77,0,0,0,0,
+        84,5,77,2,1,2,2,3,
+        16,0,0,0,
+        1,27,0,0,
+        4,1,8,2,
+        8,6,0,77,
         // MOVI_asimdimm_m_sm             - MOVI        Vd.T, #imm8, MSL #amount
-        85,5,77,2,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        4,1,8,2,16,3,5,5,
-        8,7,0,44,0,0,0,0,
+        85,5,77,2,1,2,2,3,
+        16,0,0,0,
+        1,27,0,0,
+        4,1,8,2,
+        8,7,0,44,
         // MOVI_asimdimm_n_b              - MOVI        Vd.T, #imm8 {, LSL #0}
-        86,5,77,2,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        4,1,8,2,16,3,5,5,
-        8,4,0,0,0,0,0,0,
+        86,5,77,2,1,2,2,3,
+        18,0,0,0,
+        1,27,0,0,
+        4,1,8,2,
+        8,4,0,0,
         // MOVK_32_movewide               - MOVK        Wd, #imm {, LSL #shift}
-        87,5,78,2,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        4,1,16,1,5,16,0,0,
-        8,5,0,85,0,0,0,0,
+        87,5,78,2,4,0,0,3,
+        1,19,0,0,
+        4,1,16,1,
+        8,5,0,85,
         // MOVK_64_movewide               - MOVK        Xd, #imm {, LSL #shift}
-        88,5,78,2,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        4,1,16,1,5,16,0,0,
-        8,5,0,85,0,0,0,0,
+        88,5,78,2,4,0,0,3,
+        1,17,0,0,
+        4,1,16,1,
+        8,5,0,85,
         // MOVN_32_movewide               - MOVN        Wd, #imm {, LSL #shift}
-        89,5,79,2,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        4,1,16,1,5,16,0,0,
-        8,5,0,85,0,0,0,0,
+        89,5,79,2,4,0,0,3,
+        1,19,0,0,
+        4,1,16,1,
+        8,5,0,85,
         // MOVN_64_movewide               - MOVN        Xd, #imm {, LSL #shift}
-        90,5,79,2,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        4,1,16,1,5,16,0,0,
-        8,5,0,85,0,0,0,0,
+        90,5,79,2,4,0,0,3,
+        1,17,0,0,
+        4,1,16,1,
+        8,5,0,85,
         // MOVZ_32_movewide               - MOVZ        Wd, #imm {, LSL #shift}
-        91,5,80,2,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        4,1,16,1,5,16,0,0,
-        8,5,0,85,0,0,0,0,
+        91,5,80,2,4,0,0,3,
+        1,19,0,0,
+        4,1,16,1,
+        8,5,0,85,
         // MOVZ_64_movewide               - MOVZ        Xd, #imm {, LSL #shift}
-        92,5,80,2,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        4,1,16,1,5,16,0,0,
-        8,5,0,85,0,0,0,0,
+        92,5,80,2,4,0,0,3,
+        1,17,0,0,
+        4,1,16,1,
+        8,5,0,85,
         // MRRS_rs_systemmovepr           - MRRS        Xt, Xt+1, (systemreg|Sop0_op1_Cn_Cm_op2)
-        93,5,81,2,6,66,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,0,0,0,0,0,
-        4,15,15,1,5,15,0,0,
+        93,5,81,2,6,66,0,3,
+        1,17,0,0,
+        1,17,0,0,
+        4,15,15,1,
         // MRS_rs_systemmove              - MRS         Xt, (systemreg|Sop0_op1_Cn_Cm_op2)
-        94,5,82,2,6,0,2,0,
-        1,17,0,0,0,0,0,0,
-        4,15,15,1,5,15,0,0,
+        94,5,82,2,6,0,0,2,
+        1,17,0,0,
+        4,15,15,1,
         // MSRR_sr_systemmovepr           - MSRR        (systemreg|Sop0_op1_Cn_Cm_op2), Xt, Xt+1
-        95,5,84,2,6,66,3,0,
-        4,15,15,1,5,15,0,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,0,0,0,0,0,
+        95,5,84,2,6,66,0,3,
+        4,15,15,1,
+        1,17,0,0,
+        1,17,0,0,
         // MSR_si_pstate                  - MSR         pstatefield, #imm
-        96,5,83,2,6,0,2,1,
-        11,0,0,0,
+        96,5,83,2,6,0,0,2,
+        11,15,15,1,
         4,16,0,0,
         // MSR_sr_systemmove              - MSR         (systemreg|Sop0_op1_Cn_Cm_op2), Xt
-        97,5,83,2,6,0,2,0,
-        4,15,15,1,5,15,0,0,
-        1,17,0,0,0,0,0,0,
+        97,5,83,2,6,0,0,2,
+        4,15,15,1,
+        1,17,0,0,
         // MSUBPT_64a_dp_3src             - MSUBPT      Xd, Xn, Xm, Xa
-        98,5,86,2,4,12,4,1,
+        98,5,86,2,4,12,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         1,17,0,10,
         // MSUB_32a_dp_3src               - MSUB        Wd, Wn, Wm, Wa
-        99,5,85,2,4,0,4,1,
+        99,5,85,2,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         1,19,0,10,
         // MSUB_64a_dp_3src               - MSUB        Xd, Xn, Xm, Xa
-        100,5,85,2,4,0,4,1,
+        100,5,85,2,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         1,17,0,10,
         // MUL_asimdelem_r                - MUL         Vd.T, Vn.T, Vm.Ts[index]
-        101,5,87,2,1,2,3,1,
+        101,5,87,2,1,2,4,3,
+        31,22,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // MUL_asimdsame_only             - MUL         Vd.T, Vn.T, Vm.T
-        102,5,87,2,1,2,3,1,
+        102,5,87,2,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // MVNI_asimdimm_l_hl             - MVNI        Vd.T, #imm8 {, LSL #amount}
-        103,5,88,2,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        4,1,8,2,16,3,5,5,
-        8,6,0,45,0,0,0,0,
+        103,5,88,2,1,2,2,3,
+        17,0,0,0,
+        1,27,0,0,
+        4,1,8,2,
+        8,6,0,45,
         // MVNI_asimdimm_l_sl             - MVNI        Vd.T, #imm8 {, LSL #amount}
-        104,5,88,2,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        4,1,8,2,16,3,5,5,
-        8,6,0,77,0,0,0,0,
+        104,5,88,2,1,2,2,3,
+        16,0,0,0,
+        1,27,0,0,
+        4,1,8,2,
+        8,6,0,77,
         // MVNI_asimdimm_m_sm             - MVNI        Vd.T, #imm8, MSL #amount
-        105,5,88,2,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        4,1,8,2,16,3,5,5,
-        8,7,0,44,0,0,0,0,
+        105,5,88,2,1,2,2,3,
+        16,0,0,0,
+        1,27,0,0,
+        4,1,8,2,
+        8,7,0,44,
         // NEG_asimdmisc_r                - NEG         Vd.T, Vn.T
-        106,5,89,2,1,2,2,1,
+        106,5,89,2,1,2,2,2,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // NEG_asisdmisc_r                - NEG         Dd, Dn
-        107,5,89,2,1,2,2,1,
+        107,5,89,2,1,2,0,2,
         1,26,0,0,
         1,26,0,5,
         // NOP_hi_hints                   - NOP        
-        108,5,90,2,6,0,0,1,
+        108,5,90,2,6,0,0,0,
         // NOT_asimdmisc_r                - NOT         Vd.T, Vn.T
-        109,5,91,2,1,2,2,1,
+        109,5,91,2,1,2,2,2,
+        18,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // ORN_32_log_shift               - ORN         Wd, Wn, Wm {, shift, #amount}
-        110,5,92,2,4,0,4,1,
+        110,5,92,2,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,3,86,202,
         // ORN_64_log_shift               - ORN         Xd, Xn, Xm {, shift, #amount}
-        111,5,92,2,4,0,4,1,
+        111,5,92,2,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,3,86,202,
         // ORN_asimdsame_only             - ORN         Vd.T, Vn.T, Vm.T
-        112,5,92,2,1,2,3,1,
+        112,5,92,2,1,2,2,3,
+        18,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // ORR_32_log_imm                 - ORR         Wd|WSP, Wn, #imm
-        113,5,93,2,4,0,3,0,
-        1,20,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
+        113,5,93,2,4,0,0,3,
+        1,20,0,0,
+        1,19,0,5,
+        4,1,12,1,
         // ORR_32_log_shift               - ORR         Wd, Wn, Wm {, shift, #amount}
-        114,5,93,2,4,0,4,1,
+        114,5,93,2,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,3,86,202,
         // ORR_64_log_imm                 - ORR         Xd|SP, Xn, #imm
-        115,5,93,2,4,0,3,0,
-        1,18,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,13,1,10,13,0,0,
+        115,5,93,2,4,0,0,3,
+        1,18,0,0,
+        1,17,0,5,
+        4,1,13,1,
         // ORR_64_log_shift               - ORR         Xd, Xn, Xm {, shift, #amount}
-        116,5,93,2,4,0,4,1,
+        116,5,93,2,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,3,86,202,
         // ORR_asimdimm_l_hl              - ORR         Vd.T, #imm8 {, LSL #amount}
-        117,5,93,2,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        4,1,8,2,16,3,5,5,
-        8,6,0,45,0,0,0,0,
+        117,5,93,2,1,2,2,3,
+        17,0,0,0,
+        1,27,0,0,
+        4,1,8,2,
+        8,6,0,45,
         // ORR_asimdimm_l_sl              - ORR         Vd.T, #imm8 {, LSL #amount}
-        118,5,93,2,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        4,1,8,2,16,3,5,5,
-        8,6,0,77,0,0,0,0,
+        118,5,93,2,1,2,2,3,
+        16,0,0,0,
+        1,27,0,0,
+        4,1,8,2,
+        8,6,0,77,
         // ORR_asimdsame_only             - ORR         Vd.T, Vn.T, Vm.T
-        119,5,93,2,1,2,3,1,
+        119,5,93,2,1,2,2,3,
+        18,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // PACDA_64p_dp_1src              - PACDA       Xd, Xn|SP
-        120,5,94,2,4,51,2,1,
+        120,5,94,2,4,51,0,2,
         1,17,0,0,
         1,18,0,5,
         // PACDB_64p_dp_1src              - PACDB       Xd, Xn|SP
-        121,5,95,2,4,51,2,1,
+        121,5,95,2,4,51,0,2,
         1,17,0,0,
         1,18,0,5,
         // PACDZA_64z_dp_1src             - PACDZA      Xd
-        122,5,96,2,4,51,1,1,
+        122,5,96,2,4,51,0,1,
         1,17,0,0,
         // PACDZB_64z_dp_1src             - PACDZB      Xd
-        123,5,97,2,4,51,1,1,
+        123,5,97,2,4,51,0,1,
         1,17,0,0,
         // PACGA_64p_dp_2src              - PACGA       Xd, Xn, Xm|SP
-        124,5,98,2,4,51,3,1,
+        124,5,98,2,4,51,0,3,
         1,17,0,0,
         1,17,0,5,
         1,18,0,16,
         // PACIA171615_64lr_dp_1src       - PACIA171615
-        125,5,101,2,4,52,0,1,
+        125,5,101,2,4,52,0,0,
         // PACIA1716_hi_hints             - PACIA1716  
-        126,5,100,2,6,51,0,1,
+        126,5,100,2,6,51,0,0,
         // PACIASPPC_64lr_dp_1src         - PACIASPPC  
-        127,5,103,2,4,52,0,1,
+        127,5,103,2,4,52,0,0,
         // PACIASP_hi_hints               - PACIASP    
-        128,5,102,2,6,51,0,1,
+        128,5,102,2,6,51,0,0,
         // PACIAZ_hi_hints                - PACIAZ     
-        129,5,104,2,6,51,0,1,
+        129,5,104,2,6,51,0,0,
         // PACIA_64p_dp_1src              - PACIA       Xd, Xn|SP
-        130,5,99,2,4,51,2,1,
+        130,5,99,2,4,51,0,2,
         1,17,0,0,
         1,18,0,5,
         // PACIB171615_64lr_dp_1src       - PACIB171615
-        131,5,107,2,4,52,0,1,
+        131,5,107,2,4,52,0,0,
         // PACIB1716_hi_hints             - PACIB1716  
-        132,5,106,2,6,51,0,1,
+        132,5,106,2,6,51,0,0,
         // PACIBSPPC_64lr_dp_1src         - PACIBSPPC  
-        133,5,109,2,4,52,0,1,
+        133,5,109,2,4,52,0,0,
         // PACIBSP_hi_hints               - PACIBSP    
-        134,5,108,2,6,51,0,1,
+        134,5,108,2,6,51,0,0,
         // PACIBZ_hi_hints                - PACIBZ     
-        135,5,110,2,6,51,0,1,
+        135,5,110,2,6,51,0,0,
         // PACIB_64p_dp_1src              - PACIB       Xd, Xn|SP
-        136,5,105,2,4,51,2,1,
+        136,5,105,2,4,51,0,2,
         1,17,0,0,
         1,18,0,5,
         // PACIZA_64z_dp_1src             - PACIZA      Xd
-        137,5,111,2,4,51,1,1,
+        137,5,111,2,4,51,0,1,
         1,17,0,0,
         // PACIZB_64z_dp_1src             - PACIZB      Xd
-        138,5,112,2,4,51,1,1,
+        138,5,112,2,4,51,0,1,
         1,17,0,0,
         // PACM_hi_hints                  - PACM       
-        139,5,113,2,6,52,0,1,
+        139,5,113,2,6,52,0,0,
         // PACNBIASPPC_64lr_dp_1src       - PACNBIASPPC
-        140,5,114,2,4,52,0,1,
+        140,5,114,2,4,52,0,0,
         // PACNBIBSPPC_64lr_dp_1src       - PACNBIBSPPC
-        141,5,115,2,4,52,0,1,
+        141,5,115,2,4,52,0,0,
         // PMULL_asimddiff_l              - PMULL       Vd.Ta, Vn.Tb, Vm.Tb
-        142,5,117,2,1,2,3,1,
+        142,5,117,2,1,2,4,3,
+        24,33,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // PMUL_asimdsame_only            - PMUL        Vd.T, Vn.T, Vm.T
-        143,5,116,2,1,2,3,1,
+        143,5,116,2,1,2,2,3,
+        34,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // PRFM_p_ldst_pos                - PRFM        (prfop|#imm5), [Xn|SP{, #pimm}]
-        144,5,118,2,4,0,2,0,
-        10,87,0,5,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        144,5,118,2,4,0,0,2,
+        10,87,0,5,
+        3,5,165,1,
         // PRFM_p_ldst_regoff             - PRFM        (prfop|#imm5), [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        145,5,118,2,4,0,2,0,
-        10,87,0,5,0,0,0,0,
-        3,56,165,1,16,5,0,0,
+        145,5,118,2,4,0,0,2,
+        10,87,0,5,
+        3,56,165,1,
         // PRFM_p_loadlit                 - PRFM        (prfop|#imm5), label
-        146,5,118,2,4,0,2,0,
-        10,87,0,5,0,0,0,0,
-        7,1,19,1,5,19,0,0,
+        146,5,118,2,4,0,0,2,
+        10,87,0,5,
+        7,1,19,1,
         // PRFUM_p_ldst_unscaled          - PRFUM       (prfop|#imm5), [Xn|SP{, #simm}]
-        147,5,119,2,4,0,2,0,
-        10,87,0,5,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        147,5,119,2,4,0,0,2,
+        10,87,0,5,
+        3,5,165,1,
         // PSB_hc_hints                   - PSB         CSYNC
-        148,5,120,2,6,64,1,1,
-        12,3,0,0,
+        148,5,120,2,6,64,0,1,
+        12,3,0,5,
         // RADDHN_asimddiff_n             - RADDHN      Vd.Tb, Vn.Ta, Vm.Ta
-        149,5,121,2,1,2,3,1,
+        149,5,121,2,1,2,4,3,
+        38,25,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // RAX1_vvv2_cryptosha512_3       - RAX1        Vd.2D, Vn.2D, Vm.2D
-        150,5,122,2,1,60,3,1,
+        150,5,122,2,1,60,2,3,
+        7,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // RBIT_32_dp_1src                - RBIT        Wd, Wn
-        151,5,123,2,4,0,2,1,
+        151,5,123,2,4,0,0,2,
         1,19,0,0,
         1,19,0,5,
         // RBIT_64_dp_1src                - RBIT        Xd, Xn
-        152,5,123,2,4,0,2,1,
+        152,5,123,2,4,0,0,2,
         1,17,0,0,
         1,17,0,5,
         // RBIT_asimdmisc_r               - RBIT        Vd.T, Vn.T
-        153,5,123,2,1,2,2,1,
+        153,5,123,2,1,2,2,2,
+        18,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // RCWCASAL_c64_rcwcomswap        - RCWCASAL    Xs, Xt, [Xn|SP]
-        154,5,126,2,4,67,3,1,
+        154,5,126,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWCASA_c64_rcwcomswap         - RCWCASA     Xs, Xt, [Xn|SP]
-        155,5,125,2,4,67,3,1,
+        155,5,125,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWCASL_c64_rcwcomswap         - RCWCASL     Xs, Xt, [Xn|SP]
-        156,5,127,2,4,67,3,1,
+        156,5,127,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWCASPAL_c64_rcwcomswappr     - RCWCASPAL   Xs, X(s+1), Xt, X(t+1), [Xn|SP]
-        157,5,130,2,4,15,5,1,
+        157,5,130,2,4,15,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,1,165,0,
         // RCWCASPA_c64_rcwcomswappr      - RCWCASPA    Xs, X(s+1), Xt, X(t+1), [Xn|SP]
-        158,5,129,2,4,15,5,1,
+        158,5,129,2,4,15,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,1,165,0,
         // RCWCASPL_c64_rcwcomswappr      - RCWCASPL    Xs, X(s+1), Xt, X(t+1), [Xn|SP]
-        159,5,131,2,4,15,5,1,
+        159,5,131,2,4,15,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,1,165,0,
         // RCWCASP_c64_rcwcomswappr       - RCWCASP     Xs, X(s+1), Xt, X(t+1), [Xn|SP]
-        160,5,128,2,4,15,5,1,
+        160,5,128,2,4,15,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,1,165,0,
         // RCWCAS_c64_rcwcomswap          - RCWCAS      Xs, Xt, [Xn|SP]
-        161,5,124,2,4,67,3,1,
+        161,5,124,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWCLRAL_64_memop              - RCWCLRAL    Xs, Xt, [Xn|SP]
-        162,5,134,2,4,67,3,1,
+        162,5,134,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWCLRA_64_memop               - RCWCLRA     Xs, Xt, [Xn|SP]
-        163,5,133,2,4,67,3,1,
+        163,5,133,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWCLRL_64_memop               - RCWCLRL     Xs, Xt, [Xn|SP]
-        164,5,135,2,4,67,3,1,
+        164,5,135,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWCLRPAL_128_memop_128        - RCWCLRPAL   Xt1, Xt2, [Xn|SP]
-        165,5,138,2,4,15,3,1,
+        165,5,138,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWCLRPA_128_memop_128         - RCWCLRPA    Xt1, Xt2, [Xn|SP]
-        166,5,137,2,4,15,3,1,
+        166,5,137,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWCLRPL_128_memop_128         - RCWCLRPL    Xt1, Xt2, [Xn|SP]
-        167,5,139,2,4,15,3,1,
+        167,5,139,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWCLRP_128_memop_128          - RCWCLRP     Xt1, Xt2, [Xn|SP]
-        168,5,136,2,4,15,3,1,
+        168,5,136,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWCLR_64_memop                - RCWCLR      Xs, Xt, [Xn|SP]
-        169,5,132,2,4,67,3,1,
+        169,5,132,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSCASAL_c64_rcwcomswap       - RCWSCASAL   Xs, Xt, [Xn|SP]
-        170,5,142,2,4,67,3,1,
+        170,5,142,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSCASA_c64_rcwcomswap        - RCWSCASA    Xs, Xt, [Xn|SP]
-        171,5,141,2,4,67,3,1,
+        171,5,141,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSCASL_c64_rcwcomswap        - RCWSCASL    Xs, Xt, [Xn|SP]
-        172,5,143,2,4,67,3,1,
+        172,5,143,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSCASPAL_c64_rcwcomswappr    - RCWSCASPAL  Xs, X(s+1), Xt, X(t+1), [Xn|SP]
-        173,5,146,2,4,15,5,1,
+        173,5,146,2,4,15,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,1,165,0,
         // RCWSCASPA_c64_rcwcomswappr     - RCWSCASPA   Xs, X(s+1), Xt, X(t+1), [Xn|SP]
-        174,5,145,2,4,15,5,1,
+        174,5,145,2,4,15,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,1,165,0,
         // RCWSCASPL_c64_rcwcomswappr     - RCWSCASPL   Xs, X(s+1), Xt, X(t+1), [Xn|SP]
-        175,5,147,2,4,15,5,1,
+        175,5,147,2,4,15,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,1,165,0,
         // RCWSCASP_c64_rcwcomswappr      - RCWSCASP    Xs, X(s+1), Xt, X(t+1), [Xn|SP]
-        176,5,144,2,4,15,5,1,
+        176,5,144,2,4,15,0,5,
         1,17,0,16,
         1,17,0,16,
         1,17,0,0,
         1,17,0,0,
         3,1,165,0,
         // RCWSCAS_c64_rcwcomswap         - RCWSCAS     Xs, Xt, [Xn|SP]
-        177,5,140,2,4,67,3,1,
+        177,5,140,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSCLRAL_64_memop             - RCWSCLRAL   Xs, Xt, [Xn|SP]
-        178,5,150,2,4,67,3,1,
+        178,5,150,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSCLRA_64_memop              - RCWSCLRA    Xs, Xt, [Xn|SP]
-        179,5,149,2,4,67,3,1,
+        179,5,149,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSCLRL_64_memop              - RCWSCLRL    Xs, Xt, [Xn|SP]
-        180,5,151,2,4,67,3,1,
+        180,5,151,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSCLRPAL_128_memop_128       - RCWSCLRPAL  Xt1, Xt2, [Xn|SP]
-        181,5,154,2,4,15,3,1,
+        181,5,154,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSCLRPA_128_memop_128        - RCWSCLRPA   Xt1, Xt2, [Xn|SP]
-        182,5,153,2,4,15,3,1,
+        182,5,153,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSCLRPL_128_memop_128        - RCWSCLRPL   Xt1, Xt2, [Xn|SP]
-        183,5,155,2,4,15,3,1,
+        183,5,155,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSCLRP_128_memop_128         - RCWSCLRP    Xt1, Xt2, [Xn|SP]
-        184,5,152,2,4,15,3,1,
+        184,5,152,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSCLR_64_memop               - RCWSCLR     Xs, Xt, [Xn|SP]
-        185,5,148,2,4,67,3,1,
+        185,5,148,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSETAL_64_memop              - RCWSETAL    Xs, Xt, [Xn|SP]
-        186,5,158,2,4,67,3,1,
+        186,5,158,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSETA_64_memop               - RCWSETA     Xs, Xt, [Xn|SP]
-        187,5,157,2,4,67,3,1,
+        187,5,157,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSETL_64_memop               - RCWSETL     Xs, Xt, [Xn|SP]
-        188,5,159,2,4,67,3,1,
+        188,5,159,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSETPAL_128_memop_128        - RCWSETPAL   Xt1, Xt2, [Xn|SP]
-        189,5,162,2,4,15,3,1,
+        189,5,162,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSETPA_128_memop_128         - RCWSETPA    Xt1, Xt2, [Xn|SP]
-        190,5,161,2,4,15,3,1,
+        190,5,161,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSETPL_128_memop_128         - RCWSETPL    Xt1, Xt2, [Xn|SP]
-        191,5,163,2,4,15,3,1,
+        191,5,163,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSETP_128_memop_128          - RCWSETP     Xt1, Xt2, [Xn|SP]
-        192,5,160,2,4,15,3,1,
+        192,5,160,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSET_64_memop                - RCWSET      Xs, Xt, [Xn|SP]
-        193,5,156,2,4,67,3,1,
+        193,5,156,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSSETAL_64_memop             - RCWSSETAL   Xs, Xt, [Xn|SP]
-        194,5,166,2,4,67,3,1,
+        194,5,166,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSSETA_64_memop              - RCWSSETA    Xs, Xt, [Xn|SP]
-        195,5,165,2,4,67,3,1,
+        195,5,165,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSSETL_64_memop              - RCWSSETL    Xs, Xt, [Xn|SP]
-        196,5,167,2,4,67,3,1,
+        196,5,167,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSSETPAL_128_memop_128       - RCWSSETPAL  Xt1, Xt2, [Xn|SP]
-        197,5,170,2,4,15,3,1,
+        197,5,170,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSSETPA_128_memop_128        - RCWSSETPA   Xt1, Xt2, [Xn|SP]
-        198,5,169,2,4,15,3,1,
+        198,5,169,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSSETPL_128_memop_128        - RCWSSETPL   Xt1, Xt2, [Xn|SP]
-        199,5,171,2,4,15,3,1,
+        199,5,171,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSSETP_128_memop_128         - RCWSSETP    Xt1, Xt2, [Xn|SP]
-        200,5,168,2,4,15,3,1,
+        200,5,168,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSSET_64_memop               - RCWSSET     Xs, Xt, [Xn|SP]
-        201,5,164,2,4,67,3,1,
+        201,5,164,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSSWPAL_64_memop             - RCWSSWPAL   Xs, Xt, [Xn|SP]
-        202,5,174,2,4,67,3,1,
+        202,5,174,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSSWPA_64_memop              - RCWSSWPA    Xs, Xt, [Xn|SP]
-        203,5,173,2,4,67,3,1,
+        203,5,173,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSSWPL_64_memop              - RCWSSWPL    Xs, Xt, [Xn|SP]
-        204,5,175,2,4,67,3,1,
+        204,5,175,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSSWPPAL_128_memop_128       - RCWSSWPPAL  Xt1, Xt2, [Xn|SP]
-        205,5,178,2,4,15,3,1,
+        205,5,178,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSSWPPA_128_memop_128        - RCWSSWPPA   Xt1, Xt2, [Xn|SP]
-        206,5,177,2,4,15,3,1,
+        206,5,177,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSSWPPL_128_memop_128        - RCWSSWPPL   Xt1, Xt2, [Xn|SP]
-        207,5,179,2,4,15,3,1,
+        207,5,179,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSSWPP_128_memop_128         - RCWSSWPP    Xt1, Xt2, [Xn|SP]
-        208,5,176,2,4,15,3,1,
+        208,5,176,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSSWP_64_memop               - RCWSSWP     Xs, Xt, [Xn|SP]
-        209,5,172,2,4,67,3,1,
+        209,5,172,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSWPAL_64_memop              - RCWSWPAL    Xs, Xt, [Xn|SP]
-        210,5,182,2,4,67,3,1,
+        210,5,182,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSWPA_64_memop               - RCWSWPA     Xs, Xt, [Xn|SP]
-        211,5,181,2,4,67,3,1,
+        211,5,181,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSWPL_64_memop               - RCWSWPL     Xs, Xt, [Xn|SP]
-        212,5,183,2,4,67,3,1,
+        212,5,183,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RCWSWPPAL_128_memop_128        - RCWSWPPAL   Xt1, Xt2, [Xn|SP]
-        213,5,186,2,4,15,3,1,
+        213,5,186,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSWPPA_128_memop_128         - RCWSWPPA    Xt1, Xt2, [Xn|SP]
-        214,5,185,2,4,15,3,1,
+        214,5,185,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSWPPL_128_memop_128         - RCWSWPPL    Xt1, Xt2, [Xn|SP]
-        215,5,187,2,4,15,3,1,
+        215,5,187,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSWPP_128_memop_128          - RCWSWPP     Xt1, Xt2, [Xn|SP]
-        216,5,184,2,4,15,3,1,
+        216,5,184,2,4,15,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // RCWSWP_64_memop                - RCWSWP      Xs, Xt, [Xn|SP]
-        217,5,180,2,4,67,3,1,
+        217,5,180,2,4,67,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // RETAASPPCR_64m_branch_reg      - RETAASPPCR  Xm
-        218,5,191,2,4,52,1,1,
+        218,5,191,2,4,52,0,1,
         1,17,0,0,
         // RETAASPPC_only_miscbranch      - RETAASPPC   label
-        219,5,190,2,4,52,1,0,
-        7,2,16,1,5,16,0,0,
+        219,5,190,2,4,52,0,1,
+        7,2,16,1,
         // RETAA_64e_branch_reg           - RETAA      
-        220,5,189,2,4,51,0,1,
+        220,5,189,2,4,51,0,0,
         // RETABSPPCR_64m_branch_reg      - RETABSPPCR  Xm
-        221,5,194,2,4,52,1,1,
+        221,5,194,2,4,52,0,1,
         1,17,0,0,
         // RETABSPPC_only_miscbranch      - RETABSPPC   label
-        222,5,193,2,4,52,1,0,
-        7,2,16,1,5,16,0,0,
+        222,5,193,2,4,52,0,1,
+        7,2,16,1,
         // RETAB_64e_branch_reg           - RETAB      
-        223,5,192,2,4,51,0,1,
+        223,5,192,2,4,51,0,0,
         // RET_64r_branch_reg             - RET         {Xn}
-        224,5,188,2,4,0,1,0,
-        2,1,0,17,0,5,0,0,
+        224,5,188,2,4,0,0,1,
+        2,1,16,17,
         // REV16_32_dp_1src               - REV16       Wd, Wn
-        225,5,196,2,4,0,2,1,
+        225,5,196,2,4,0,0,2,
         1,19,0,0,
         1,19,0,5,
         // REV16_64_dp_1src               - REV16       Xd, Xn
-        226,5,196,2,4,0,2,1,
+        226,5,196,2,4,0,0,2,
         1,17,0,0,
         1,17,0,5,
         // REV16_asimdmisc_r              - REV16       Vd.T, Vn.T
-        227,5,196,2,1,2,2,1,
+        227,5,196,2,1,2,2,2,
+        34,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // REV32_64_dp_1src               - REV32       Xd, Xn
-        228,5,197,2,4,0,2,1,
+        228,5,197,2,4,0,0,2,
         1,17,0,0,
         1,17,0,5,
         // REV32_asimdmisc_r              - REV32       Vd.T, Vn.T
-        229,5,197,2,1,2,2,1,
+        229,5,197,2,1,2,2,2,
+        36,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // REV64_asimdmisc_r              - REV64       Vd.T, Vn.T
-        230,5,198,2,1,2,2,1,
+        230,5,198,2,1,2,2,2,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // REV_32_dp_1src                 - REV         Wd, Wn
-        231,5,195,2,4,0,2,1,
+        231,5,195,2,4,0,0,2,
         1,19,0,0,
         1,19,0,5,
         // REV_64_dp_1src                 - REV         Xd, Xn
-        232,5,195,2,4,0,2,1,
+        232,5,195,2,4,0,0,2,
         1,17,0,0,
         1,17,0,5,
         // RMIF_only_rmif                 - RMIF        Xn, #shift, #mask
-        233,5,199,2,4,31,3,0,
-        1,17,0,5,0,0,0,0,
-        4,1,6,1,15,6,0,0,
-        4,1,4,1,0,4,0,0,
+        233,5,199,2,4,31,0,3,
+        1,17,0,5,
+        4,1,6,1,
+        4,1,4,1,
         // RORV_32_dp_2src                - RORV        Wd, Wn, Wm
-        234,5,200,2,4,0,3,1,
+        234,5,200,2,4,0,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // RORV_64_dp_2src                - RORV        Xd, Xn, Xm
-        235,5,200,2,4,0,3,1,
+        235,5,200,2,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // RPRFM_r_ldst_regoff            - RPRFM       (rprfop|#imm6), Xm, [Xn|SP]
-        236,5,201,2,4,56,3,0,
-        4,17,9,2,12,4,0,5,
-        1,17,0,16,0,0,0,0,
-        3,1,165,0,0,0,0,0,
+        236,5,201,2,4,56,0,3,
+        4,17,9,2,
+        1,17,0,16,
+        3,1,165,0,
         // RSHRN_asimdshf_n               - RSHRN       Vd.Tb, Vn.Ta, #shift
-        237,5,202,2,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        237,5,202,2,1,2,4,3,
+        45,39,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,3,7,1,
         // RSUBHN_asimddiff_n             - RSUBHN      Vd.Tb, Vn.Ta, Vm.Ta
-        238,5,203,2,1,2,3,1,
+        238,5,203,2,1,2,4,3,
+        38,25,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SABAL_asimddiff_l              - SABAL       Vd.Ta, Vn.Tb, Vm.Tb
-        239,5,205,2,1,2,3,1,
+        239,5,205,2,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SABA_asimdsame_only            - SABA        Vd.T, Vn.T, Vm.T
-        240,5,204,2,1,2,3,1,
+        240,5,204,2,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SABDL_asimddiff_l              - SABDL       Vd.Ta, Vn.Tb, Vm.Tb
-        241,5,207,2,1,2,3,1,
+        241,5,207,2,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SABD_asimdsame_only            - SABD        Vd.T, Vn.T, Vm.T
-        242,5,206,2,1,2,3,1,
+        242,5,206,2,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SADALP_asimdmisc_p             - SADALP      Vd.Ta, Vn.Tb
-        243,5,208,2,1,2,2,1,
+        243,5,208,2,1,2,4,2,
+        32,38,0,0,
         1,27,0,0,
         1,27,0,5,
         // SADDLP_asimdmisc_p             - SADDLP      Vd.Ta, Vn.Tb
-        244,5,210,2,1,2,2,1,
+        244,5,210,2,1,2,4,2,
+        32,38,0,0,
         1,27,0,0,
         1,27,0,5,
         // SADDLV_asimdall_only           - SADDLV      Vd, Vn.T
-        245,5,211,2,1,2,2,1,
+        245,5,211,2,1,2,2,2,
+        35,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // SADDL_asimddiff_l              - SADDL       Vd.Ta, Vn.Tb, Vm.Tb
-        246,5,209,2,1,2,3,1,
+        246,5,209,2,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SADDW_asimddiff_w              - SADDW       Vd.Ta, Vn.Ta, Vm.Tb
-        247,5,212,2,1,2,3,1,
+        247,5,212,2,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SBCS_32_addsub_carry           - SBCS        Wd, Wn, Wm
-        248,5,215,2,4,0,3,1,
+        248,5,215,2,4,0,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // SBCS_64_addsub_carry           - SBCS        Xd, Xn, Xm
-        249,5,215,2,4,0,3,1,
+        249,5,215,2,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // SBC_32_addsub_carry            - SBC         Wd, Wn, Wm
-        250,5,214,2,4,0,3,1,
+        250,5,214,2,4,0,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // SBC_64_addsub_carry            - SBC         Xd, Xn, Xm
-        251,5,214,2,4,0,3,1,
+        251,5,214,2,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // SBFM_32m_bitfield              - SBFM        Wd, Wn, #immr, #imms
-        252,5,216,2,4,0,4,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,6,1,16,6,0,0,
-        4,1,6,1,10,6,0,0,
+        252,5,216,2,4,0,0,4,
+        1,19,0,0,
+        1,19,0,5,
+        4,1,6,1,
+        4,1,6,1,
         // SBFM_64m_bitfield              - SBFM        Xd, Xn, #immr, #imms
-        253,5,216,2,4,0,4,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,6,1,16,6,0,0,
-        4,1,6,1,10,6,0,0,
+        253,5,216,2,4,0,0,4,
+        1,17,0,0,
+        1,17,0,5,
+        4,1,6,1,
+        4,1,6,1,
         // SB_only_barriers               - SB         
-        254,5,213,2,6,57,0,1,
+        254,5,213,2,6,57,0,0,
         // SCVTF_asimdmisc_r              - SCVTF       Vd.T, Vn.T
-        255,5,217,2,1,2,2,1,
+        255,5,217,2,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // SCVTF_asimdmiscfp16_r          - SCVTF       Vd.T, Vn.T
-        0,6,217,2,1,4,2,1,
+        0,6,217,2,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // SCVTF_asimdshf_c               - SCVTF       Vd.T, Vn.T, #fbits
-        1,6,217,2,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,4,7,1,16,7,0,0,
+        1,6,217,2,1,2,2,3,
+        43,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,4,7,1,
         // SCVTF_asisdmisc_r              - SCVTF       Vd, Vn
-        2,6,217,2,1,2,2,1,
+        2,6,217,2,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // SCVTF_asisdmiscfp16_r          - SCVTF       Hd, Hn
-        3,6,217,2,1,4,2,1,
+        3,6,217,2,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // SCVTF_asisdshf_c               - SCVTF       Vd, Vn, #fbits
-        4,6,217,2,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,4,7,1,16,7,0,0,
+        4,6,217,2,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,4,7,1,
         // SCVTF_d32_float2fix            - SCVTF       Dd, Wn, #fbits
-        5,6,217,2,2,0,3,0,
-        1,26,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        5,6,217,2,2,0,0,3,
+        1,26,0,0,
+        1,19,0,5,
+        4,1,6,1,
         // SCVTF_d32_float2int            - SCVTF       Dd, Wn
-        6,6,217,2,2,0,2,1,
+        6,6,217,2,2,0,0,2,
         1,26,0,0,
         1,19,0,5,
         // SCVTF_d64_float2fix            - SCVTF       Dd, Xn, #fbits
-        7,6,217,2,2,0,3,0,
-        1,26,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        7,6,217,2,2,0,0,3,
+        1,26,0,0,
+        1,17,0,5,
+        4,1,6,1,
         // SCVTF_d64_float2int            - SCVTF       Dd, Xn
-        8,6,217,2,2,0,2,1,
+        8,6,217,2,2,0,0,2,
         1,26,0,0,
         1,17,0,5,
         // SCVTF_h32_float2fix            - SCVTF       Hd, Wn, #fbits
-        9,6,217,2,2,0,3,0,
-        1,24,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        9,6,217,2,2,0,0,3,
+        1,24,0,0,
+        1,19,0,5,
+        4,1,6,1,
         // SCVTF_h32_float2int            - SCVTF       Hd, Wn
-        10,6,217,2,2,0,2,1,
+        10,6,217,2,2,0,0,2,
         1,24,0,0,
         1,19,0,5,
         // SCVTF_h64_float2fix            - SCVTF       Hd, Xn, #fbits
-        11,6,217,2,2,0,3,0,
-        1,24,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        11,6,217,2,2,0,0,3,
+        1,24,0,0,
+        1,17,0,5,
+        4,1,6,1,
         // SCVTF_h64_float2int            - SCVTF       Hd, Xn
-        12,6,217,2,2,0,2,1,
+        12,6,217,2,2,0,0,2,
         1,24,0,0,
         1,17,0,5,
         // SCVTF_s32_float2fix            - SCVTF       Sd, Wn, #fbits
-        13,6,217,2,2,0,3,0,
-        1,25,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        13,6,217,2,2,0,0,3,
+        1,25,0,0,
+        1,19,0,5,
+        4,1,6,1,
         // SCVTF_s32_float2int            - SCVTF       Sd, Wn
-        14,6,217,2,2,0,2,1,
+        14,6,217,2,2,0,0,2,
         1,25,0,0,
         1,19,0,5,
         // SCVTF_s64_float2fix            - SCVTF       Sd, Xn, #fbits
-        15,6,217,2,2,0,3,0,
-        1,25,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        15,6,217,2,2,0,0,3,
+        1,25,0,0,
+        1,17,0,5,
+        4,1,6,1,
         // SCVTF_s64_float2int            - SCVTF       Sd, Xn
-        16,6,217,2,2,0,2,1,
+        16,6,217,2,2,0,0,2,
         1,25,0,0,
         1,17,0,5,
         // SCVTF_sisd_32d                 - SCVTF       Dd, Sn
-        17,6,217,2,2,27,2,1,
+        17,6,217,2,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // SCVTF_sisd_32h                 - SCVTF       Hd, Sn
-        18,6,217,2,2,27,2,1,
+        18,6,217,2,2,27,0,2,
         1,24,0,0,
         1,25,0,5,
         // SCVTF_sisd_64h                 - SCVTF       Hd, Dn
-        19,6,217,2,2,27,2,1,
+        19,6,217,2,2,27,0,2,
         1,24,0,0,
         1,26,0,5,
         // SCVTF_sisd_64s                 - SCVTF       Sd, Dn
-        20,6,217,2,2,27,2,1,
+        20,6,217,2,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // SDIV_32_dp_2src                - SDIV        Wd, Wn, Wm
-        21,6,218,2,4,0,3,1,
+        21,6,218,2,4,0,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // SDIV_64_dp_2src                - SDIV        Xd, Xn, Xm
-        22,6,218,2,4,0,3,1,
+        22,6,218,2,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // SDOT_asimdelem_d               - SDOT        Vd.Ta, Vn.Tb, Vm.4B[index]
-        23,6,219,2,1,17,3,1,
+        23,6,219,2,1,17,6,3,
+        16,18,9,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,0,16,
+        1,27,3,16,
         // SDOT_asimdsame2_d              - SDOT        Vd.Ta, Vn.Tb, Vm.Tb
-        24,6,219,2,1,17,3,1,
+        24,6,219,2,1,17,4,3,
+        16,18,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SETEN_set_memcms               - SETEN       [Xd]!, Xn!, Xs
-        25,6,221,2,4,48,3,1,
+        25,6,221,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETETN_set_memcms              - SETETN      [Xd]!, Xn!, Xs
-        26,6,223,2,4,48,3,1,
+        26,6,223,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETET_set_memcms               - SETET       [Xd]!, Xn!, Xs
-        27,6,222,2,4,48,3,1,
+        27,6,222,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETE_set_memcms                - SETE        [Xd]!, Xn!, Xs
-        28,6,220,2,4,48,3,1,
+        28,6,220,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETF16_only_setf               - SETF16      Wn
-        29,6,224,2,4,31,1,1,
+        29,6,224,2,4,31,0,1,
         1,19,0,5,
         // SETF8_only_setf                - SETF8       Wn
-        30,6,225,2,4,31,1,1,
+        30,6,225,2,4,31,0,1,
         1,19,0,5,
         // SETGEN_set_memcms              - SETGEN      [Xd]!, Xn!, Xs
-        31,6,227,2,4,48,3,1,
+        31,6,227,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETGETN_set_memcms             - SETGETN     [Xd]!, Xn!, Xs
-        32,6,229,2,4,48,3,1,
+        32,6,229,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETGET_set_memcms              - SETGET      [Xd]!, Xn!, Xs
-        33,6,228,2,4,48,3,1,
+        33,6,228,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETGE_set_memcms               - SETGE       [Xd]!, Xn!, Xs
-        34,6,226,2,4,48,3,1,
+        34,6,226,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETGMN_set_memcms              - SETGMN      [Xd]!, Xn!, Xs
-        35,6,231,2,4,48,3,1,
+        35,6,231,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETGMTN_set_memcms             - SETGMTN     [Xd]!, Xn!, Xs
-        36,6,233,2,4,48,3,1,
+        36,6,233,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETGMT_set_memcms              - SETGMT      [Xd]!, Xn!, Xs
-        37,6,232,2,4,48,3,1,
+        37,6,232,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETGM_set_memcms               - SETGM       [Xd]!, Xn!, Xs
-        38,6,230,2,4,48,3,1,
+        38,6,230,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETGPN_set_memcms              - SETGPN      [Xd]!, Xn!, Xs
-        39,6,235,2,4,48,3,1,
+        39,6,235,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETGPTN_set_memcms             - SETGPTN     [Xd]!, Xn!, Xs
-        40,6,237,2,4,48,3,1,
+        40,6,237,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETGPT_set_memcms              - SETGPT      [Xd]!, Xn!, Xs
-        41,6,236,2,4,48,3,1,
+        41,6,236,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETGP_set_memcms               - SETGP       [Xd]!, Xn!, Xs
-        42,6,234,2,4,48,3,1,
+        42,6,234,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETMN_set_memcms               - SETMN       [Xd]!, Xn!, Xs
-        43,6,239,2,4,48,3,1,
+        43,6,239,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETMTN_set_memcms              - SETMTN      [Xd]!, Xn!, Xs
-        44,6,241,2,4,48,3,1,
+        44,6,241,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETMT_set_memcms               - SETMT       [Xd]!, Xn!, Xs
-        45,6,240,2,4,48,3,1,
+        45,6,240,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETM_set_memcms                - SETM        [Xd]!, Xn!, Xs
-        46,6,238,2,4,48,3,1,
+        46,6,238,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETPN_set_memcms               - SETPN       [Xd]!, Xn!, Xs
-        47,6,243,2,4,48,3,1,
+        47,6,243,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETPTN_set_memcms              - SETPTN      [Xd]!, Xn!, Xs
-        48,6,245,2,4,48,3,1,
+        48,6,245,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETPT_set_memcms               - SETPT       [Xd]!, Xn!, Xs
-        49,6,244,2,4,48,3,1,
+        49,6,244,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SETP_set_memcms                - SETP        [Xd]!, Xn!, Xs
-        50,6,242,2,4,48,3,1,
+        50,6,242,2,4,48,0,3,
         3,1,160,128,
         1,17,0,5,
         1,17,0,16,
         // SEVL_hi_hints                  - SEVL       
-        51,6,247,2,6,0,0,1,
+        51,6,247,2,6,0,0,0,
         // SEV_hi_hints                   - SEV        
-        52,6,246,2,6,0,0,1,
+        52,6,246,2,6,0,0,0,
         // SHA1C_qsv_cryptosha3           - SHA1C       Qd, Sn, Vm.4S
-        53,6,248,2,1,58,3,1,
+        53,6,248,2,1,58,2,3,
+        10,0,0,0,
         1,28,0,0,
         1,25,0,5,
         1,27,0,16,
         // SHA1H_ss_cryptosha2            - SHA1H       Sd, Sn
-        54,6,249,2,1,58,2,1,
+        54,6,249,2,1,58,0,2,
         1,25,0,0,
         1,25,0,5,
         // SHA1M_qsv_cryptosha3           - SHA1M       Qd, Sn, Vm.4S
-        55,6,250,2,1,58,3,1,
+        55,6,250,2,1,58,2,3,
+        10,0,0,0,
         1,28,0,0,
         1,25,0,5,
         1,27,0,16,
         // SHA1P_qsv_cryptosha3           - SHA1P       Qd, Sn, Vm.4S
-        56,6,251,2,1,58,3,1,
+        56,6,251,2,1,58,2,3,
+        10,0,0,0,
         1,28,0,0,
         1,25,0,5,
         1,27,0,16,
         // SHA1SU0_vvv_cryptosha3         - SHA1SU0     Vd.4S, Vn.4S, Vm.4S
-        57,6,252,2,1,58,3,1,
+        57,6,252,2,1,58,2,3,
+        10,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SHA1SU1_vv_cryptosha2          - SHA1SU1     Vd.4S, Vn.4S
-        58,6,253,2,1,58,2,1,
+        58,6,253,2,1,58,2,2,
+        10,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // SHA256H2_qqv_cryptosha3        - SHA256H2    Qd, Qn, Vm.4S
-        59,6,255,2,1,59,3,1,
+        59,6,255,2,1,59,2,3,
+        10,0,0,0,
         1,28,0,0,
         1,28,0,5,
         1,27,0,16,
         // SHA256H_qqv_cryptosha3         - SHA256H     Qd, Qn, Vm.4S
-        60,6,254,2,1,59,3,1,
+        60,6,254,2,1,59,2,3,
+        10,0,0,0,
         1,28,0,0,
         1,28,0,5,
         1,27,0,16,
         // SHA256SU0_vv_cryptosha2        - SHA256SU0   Vd.4S, Vn.4S
-        61,6,0,3,1,59,2,1,
+        61,6,0,3,1,59,2,2,
+        10,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // SHA256SU1_vvv_cryptosha3       - SHA256SU1   Vd.4S, Vn.4S, Vm.4S
-        62,6,1,3,1,59,3,1,
+        62,6,1,3,1,59,2,3,
+        10,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SHA512H2_qqv_cryptosha512_3    - SHA512H2    Qd, Qn, Vm.2D
-        63,6,3,3,1,61,3,1,
+        63,6,3,3,1,61,2,3,
+        7,0,0,0,
         1,28,0,0,
         1,28,0,5,
         1,27,0,16,
         // SHA512H_qqv_cryptosha512_3     - SHA512H     Qd, Qn, Vm.2D
-        64,6,2,3,1,61,3,1,
+        64,6,2,3,1,61,2,3,
+        7,0,0,0,
         1,28,0,0,
         1,28,0,5,
         1,27,0,16,
         // SHA512SU0_vv2_cryptosha512_2   - SHA512SU0   Vd.2D, Vn.2D
-        65,6,4,3,1,61,2,1,
+        65,6,4,3,1,61,2,2,
+        7,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // SHA512SU1_vvv2_cryptosha512_3  - SHA512SU1   Vd.2D, Vn.2D, Vm.2D
-        66,6,5,3,1,61,3,1,
+        66,6,5,3,1,61,2,3,
+        7,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SHADD_asimdsame_only           - SHADD       Vd.T, Vn.T, Vm.T
-        67,6,6,3,1,2,3,1,
+        67,6,6,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SHLL_asimdmisc_s               - SHLL        Vd.Ta, Vn.Tb, #shift
-        68,6,8,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,12,2,1,22,2,0,0,
+        68,6,8,3,1,2,4,3,
+        25,38,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,12,2,1,
         // SHL_asimdshf_r                 - SHL         Vd.T, Vn.T, #shift
-        69,6,7,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,6,7,1,16,7,0,0,
+        69,6,7,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,6,7,1,
         // SHL_asisdshf_r                 - SHL         Dd, Dn, #shift
-        70,6,7,3,1,2,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,7,1,16,7,0,0,
+        70,6,7,3,1,2,0,3,
+        1,26,0,0,
+        1,26,0,5,
+        4,1,7,1,
         // SHRN_asimdshf_n                - SHRN        Vd.Tb, Vn.Ta, #shift
-        71,6,9,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        71,6,9,3,1,2,4,3,
+        45,39,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,3,7,1,
         // SHSUB_asimdsame_only           - SHSUB       Vd.T, Vn.T, Vm.T
-        72,6,10,3,1,2,3,1,
+        72,6,10,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SLI_asimdshf_r                 - SLI         Vd.T, Vn.T, #shift
-        73,6,11,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,6,7,1,16,7,0,0,
+        73,6,11,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,6,7,1,
         // SLI_asisdshf_r                 - SLI         Dd, Dn, #shift
-        74,6,11,3,1,2,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,7,1,16,7,0,0,
+        74,6,11,3,1,2,0,3,
+        1,26,0,0,
+        1,26,0,5,
+        4,1,7,1,
         // SM3PARTW1_vvv4_cryptosha512_3  - SM3PARTW1   Vd.4S, Vn.4S, Vm.4S
-        75,6,12,3,1,62,3,1,
+        75,6,12,3,1,62,2,3,
+        10,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SM3PARTW2_vvv4_cryptosha512_3  - SM3PARTW2   Vd.4S, Vn.4S, Vm.4S
-        76,6,13,3,1,62,3,1,
+        76,6,13,3,1,62,2,3,
+        10,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SM3SS1_vvv4_crypto4            - SM3SS1      Vd.4S, Vn.4S, Vm.4S, Va.4S
-        77,6,14,3,1,62,4,1,
+        77,6,14,3,1,62,2,4,
+        10,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         1,27,0,10,
         // SM3TT1A_vvv4_crypto3_imm2      - SM3TT1A     Vd.4S, Vn.4S, Vm.S[imm2]
-        78,6,15,3,1,62,3,1,
+        78,6,15,3,1,62,4,3,
+        10,4,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,14,16,
+        1,27,4,16,
         // SM3TT1B_vvv4_crypto3_imm2      - SM3TT1B     Vd.4S, Vn.4S, Vm.S[imm2]
-        79,6,16,3,1,62,3,1,
+        79,6,16,3,1,62,4,3,
+        10,4,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,14,16,
+        1,27,4,16,
         // SM3TT2A_vvv4_crypto3_imm2      - SM3TT2A     Vd.4S, Vn.4S, Vm.S[imm2]
-        80,6,17,3,1,62,3,1,
+        80,6,17,3,1,62,4,3,
+        10,4,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,14,16,
+        1,27,4,16,
         // SM3TT2B_vvv_crypto3_imm2       - SM3TT2B     Vd.4S, Vn.4S, Vm.S[imm2]
-        81,6,18,3,1,62,3,1,
+        81,6,18,3,1,62,4,3,
+        10,4,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,14,16,
+        1,27,4,16,
         // SM4EKEY_vvv4_cryptosha512_3    - SM4EKEY     Vd.4S, Vn.4S, Vm.4S
-        82,6,20,3,1,63,3,1,
+        82,6,20,3,1,63,2,3,
+        10,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SM4E_vv4_cryptosha512_2        - SM4E        Vd.4S, Vn.4S
-        83,6,19,3,1,63,2,1,
+        83,6,19,3,1,63,2,2,
+        10,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // SMADDL_64wa_dp_3src            - SMADDL      Xd, Wn, Wm, Xa
-        84,6,21,3,4,0,4,1,
+        84,6,21,3,4,0,0,4,
         1,17,0,0,
         1,19,0,5,
         1,19,0,16,
         1,17,0,10,
         // SMAXP_asimdsame_only           - SMAXP       Vd.T, Vn.T, Vm.T
-        85,6,23,3,1,2,3,1,
+        85,6,23,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SMAXV_asimdall_only            - SMAXV       Vd, Vn.T
-        86,6,24,3,1,2,2,1,
+        86,6,24,3,1,2,2,2,
+        35,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // SMAX_32_dp_2src                - SMAX        Wd, Wn, Wm
-        87,6,22,3,4,14,3,1,
+        87,6,22,3,4,14,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // SMAX_32_minmax_imm             - SMAX        Wd, Wn, #simm
-        88,6,22,3,4,14,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,136,1,10,8,0,0,
+        88,6,22,3,4,14,0,3,
+        1,19,0,0,
+        1,19,0,5,
+        4,1,136,1,
         // SMAX_64_dp_2src                - SMAX        Xd, Xn, Xm
-        89,6,22,3,4,14,3,1,
+        89,6,22,3,4,14,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // SMAX_64_minmax_imm             - SMAX        Xd, Xn, #simm
-        90,6,22,3,4,14,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,136,1,10,8,0,0,
+        90,6,22,3,4,14,0,3,
+        1,17,0,0,
+        1,17,0,5,
+        4,1,136,1,
         // SMAX_asimdsame_only            - SMAX        Vd.T, Vn.T, Vm.T
-        91,6,22,3,1,2,3,1,
+        91,6,22,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SMC_ex_exception               - SMC         #imm
-        92,6,25,3,6,0,1,0,
-        4,1,16,1,5,16,0,0,
+        92,6,25,3,6,0,0,1,
+        4,1,16,1,
         // SMINP_asimdsame_only           - SMINP       Vd.T, Vn.T, Vm.T
-        93,6,27,3,1,2,3,1,
+        93,6,27,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SMINV_asimdall_only            - SMINV       Vd, Vn.T
-        94,6,28,3,1,2,2,1,
+        94,6,28,3,1,2,2,2,
+        35,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // SMIN_32_dp_2src                - SMIN        Wd, Wn, Wm
-        95,6,26,3,4,14,3,1,
+        95,6,26,3,4,14,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // SMIN_32_minmax_imm             - SMIN        Wd, Wn, #simm
-        96,6,26,3,4,14,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,136,1,10,8,0,0,
+        96,6,26,3,4,14,0,3,
+        1,19,0,0,
+        1,19,0,5,
+        4,1,136,1,
         // SMIN_64_dp_2src                - SMIN        Xd, Xn, Xm
-        97,6,26,3,4,14,3,1,
+        97,6,26,3,4,14,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // SMIN_64_minmax_imm             - SMIN        Xd, Xn, #simm
-        98,6,26,3,4,14,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,136,1,10,8,0,0,
+        98,6,26,3,4,14,0,3,
+        1,17,0,0,
+        1,17,0,5,
+        4,1,136,1,
         // SMIN_asimdsame_only            - SMIN        Vd.T, Vn.T, Vm.T
-        99,6,26,3,1,2,3,1,
+        99,6,26,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SMLAL_asimddiff_l              - SMLAL       Vd.Ta, Vn.Tb, Vm.Tb
-        100,6,29,3,1,2,3,1,
+        100,6,29,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SMLAL_asimdelem_l              - SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index]
-        101,6,29,3,1,2,3,1,
+        101,6,29,3,1,2,6,3,
+        23,31,22,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SMLSL_asimddiff_l              - SMLSL       Vd.Ta, Vn.Tb, Vm.Tb
-        102,6,30,3,1,2,3,1,
+        102,6,30,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SMLSL_asimdelem_l              - SMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index]
-        103,6,30,3,1,2,3,1,
+        103,6,30,3,1,2,6,3,
+        23,31,22,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SMMLA_asimdsame2_g             - SMMLA       Vd.4S, Vn.16B, Vm.16B
-        104,6,31,3,1,35,3,1,
+        104,6,31,3,1,35,4,3,
+        10,5,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SMOV_asimdins_w_w              - SMOV        Wd, Vn.Ts[index]
-        105,6,32,3,1,2,2,1,
+        105,6,32,3,1,2,2,2,
+        42,0,0,0,
         1,19,0,0,
         1,27,15,5,
         // SMOV_asimdins_x_x              - SMOV        Xd, Vn.Ts[index]
-        106,6,32,3,1,2,2,1,
+        106,6,32,3,1,2,2,2,
+        41,0,0,0,
         1,17,0,0,
-        1,27,16,5,
+        1,27,14,5,
         // SMSUBL_64wa_dp_3src            - SMSUBL      Xd, Wn, Wm, Xa
-        107,6,33,3,4,0,4,1,
+        107,6,33,3,4,0,0,4,
         1,17,0,0,
         1,19,0,5,
         1,19,0,16,
         1,17,0,10,
         // SMULH_64_dp_3src               - SMULH       Xd, Xn, Xm
-        108,6,34,3,4,0,3,1,
+        108,6,34,3,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // SMULL_asimddiff_l              - SMULL       Vd.Ta, Vn.Tb, Vm.Tb
-        109,6,35,3,1,2,3,1,
+        109,6,35,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SMULL_asimdelem_l              - SMULL       Vd.Ta, Vn.Tb, Vm.Ts[index]
-        110,6,35,3,1,2,3,1,
+        110,6,35,3,1,2,6,3,
+        23,31,22,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQABS_asimdmisc_r              - SQABS       Vd.T, Vn.T
-        111,6,36,3,1,2,2,1,
+        111,6,36,3,1,2,2,2,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // SQABS_asisdmisc_r              - SQABS       Vd, Vn
-        112,6,36,3,1,2,2,1,
+        112,6,36,3,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // SQADD_asimdsame_only           - SQADD       Vd.T, Vn.T, Vm.T
-        113,6,37,3,1,2,3,1,
+        113,6,37,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SQADD_asisdsame_only           - SQADD       Vd, Vn, Vm
-        114,6,37,3,1,2,3,1,
+        114,6,37,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // SQDMLAL_asimddiff_l            - SQDMLAL     Vd.Ta, Vn.Tb, Vm.Tb
-        115,6,38,3,1,2,3,1,
+        115,6,38,3,1,2,4,3,
+        23,31,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SQDMLAL_asimdelem_l            - SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index]
-        116,6,38,3,1,2,3,1,
+        116,6,38,3,1,2,6,3,
+        23,31,22,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQDMLAL_asisddiff_only         - SQDMLAL     Vad, Vbn, Vbm
-        117,6,38,3,1,2,3,1,
+        117,6,38,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // SQDMLAL_asisdelem_l            - SQDMLAL     Vad, Vbn, Vm.Ts[index]
-        118,6,38,3,1,2,3,1,
+        118,6,38,3,1,2,2,3,
+        22,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQDMLSL_asimddiff_l            - SQDMLSL     Vd.Ta, Vn.Tb, Vm.Tb
-        119,6,39,3,1,2,3,1,
+        119,6,39,3,1,2,4,3,
+        23,31,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SQDMLSL_asimdelem_l            - SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index]
-        120,6,39,3,1,2,3,1,
+        120,6,39,3,1,2,6,3,
+        23,31,22,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQDMLSL_asisddiff_only         - SQDMLSL     Vad, Vbn, Vbm
-        121,6,39,3,1,2,3,1,
+        121,6,39,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // SQDMLSL_asisdelem_l            - SQDMLSL     Vad, Vbn, Vm.Ts[index]
-        122,6,39,3,1,2,3,1,
+        122,6,39,3,1,2,2,3,
+        22,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQDMULH_asimdelem_r            - SQDMULH     Vd.T, Vn.T, Vm.Ts[index]
-        123,6,40,3,1,2,3,1,
+        123,6,40,3,1,2,4,3,
+        31,22,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQDMULH_asimdsame_only         - SQDMULH     Vd.T, Vn.T, Vm.T
-        124,6,40,3,1,2,3,1,
+        124,6,40,3,1,2,2,3,
+        31,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SQDMULH_asisdelem_r            - SQDMULH     Vd, Vn, Vm.Ts[index]
-        125,6,40,3,1,2,3,1,
+        125,6,40,3,1,2,2,3,
+        22,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQDMULH_asisdsame_only         - SQDMULH     Vd, Vn, Vm
-        126,6,40,3,1,2,3,1,
+        126,6,40,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // SQDMULL_asimddiff_l            - SQDMULL     Vd.Ta, Vn.Tb, Vm.Tb
-        127,6,41,3,1,2,3,1,
+        127,6,41,3,1,2,4,3,
+        23,31,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SQDMULL_asimdelem_l            - SQDMULL     Vd.Ta, Vn.Tb, Vm.Ts[index]
-        128,6,41,3,1,2,3,1,
+        128,6,41,3,1,2,6,3,
+        23,31,22,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQDMULL_asisddiff_only         - SQDMULL     Vad, Vbn, Vbm
-        129,6,41,3,1,2,3,1,
+        129,6,41,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // SQDMULL_asisdelem_l            - SQDMULL     Vad, Vbn, Vm.Ts[index]
-        130,6,41,3,1,2,3,1,
+        130,6,41,3,1,2,2,3,
+        22,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQNEG_asimdmisc_r              - SQNEG       Vd.T, Vn.T
-        131,6,42,3,1,2,2,1,
+        131,6,42,3,1,2,2,2,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // SQNEG_asisdmisc_r              - SQNEG       Vd, Vn
-        132,6,42,3,1,2,2,1,
+        132,6,42,3,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // SQRDMLAH_asimdelem_r           - SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index]
-        133,6,43,3,1,55,3,1,
+        133,6,43,3,1,55,4,3,
+        31,22,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQRDMLAH_asimdsame2_only       - SQRDMLAH    Vd.T, Vn.T, Vm.T
-        134,6,43,3,1,55,3,1,
+        134,6,43,3,1,55,2,3,
+        31,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SQRDMLAH_asisdelem_r           - SQRDMLAH    Vd, Vn, Vm.Ts[index]
-        135,6,43,3,1,55,3,1,
+        135,6,43,3,1,55,2,3,
+        22,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQRDMLAH_asisdsame2_only       - SQRDMLAH    Vd, Vn, Vm
-        136,6,43,3,1,55,3,1,
+        136,6,43,3,1,55,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // SQRDMLSH_asimdelem_r           - SQRDMLSH    Vd.T, Vn.T, Vm.Ts[index]
-        137,6,44,3,1,55,3,1,
+        137,6,44,3,1,55,4,3,
+        31,22,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQRDMLSH_asimdsame2_only       - SQRDMLSH    Vd.T, Vn.T, Vm.T
-        138,6,44,3,1,55,3,1,
+        138,6,44,3,1,55,2,3,
+        31,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SQRDMLSH_asisdelem_r           - SQRDMLSH    Vd, Vn, Vm.Ts[index]
-        139,6,44,3,1,55,3,1,
+        139,6,44,3,1,55,2,3,
+        22,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQRDMLSH_asisdsame2_only       - SQRDMLSH    Vd, Vn, Vm
-        140,6,44,3,1,55,3,1,
+        140,6,44,3,1,55,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // SQRDMULH_asimdelem_r           - SQRDMULH    Vd.T, Vn.T, Vm.Ts[index]
-        141,6,45,3,1,2,3,1,
+        141,6,45,3,1,2,4,3,
+        31,22,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQRDMULH_asimdsame_only        - SQRDMULH    Vd.T, Vn.T, Vm.T
-        142,6,45,3,1,2,3,1,
+        142,6,45,3,1,2,2,3,
+        31,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SQRDMULH_asisdelem_r           - SQRDMULH    Vd, Vn, Vm.Ts[index]
-        143,6,45,3,1,2,3,1,
+        143,6,45,3,1,2,2,3,
+        22,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // SQRDMULH_asisdsame_only        - SQRDMULH    Vd, Vn, Vm
-        144,6,45,3,1,2,3,1,
+        144,6,45,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // SQRSHL_asimdsame_only          - SQRSHL      Vd.T, Vn.T, Vm.T
-        145,6,46,3,1,2,3,1,
+        145,6,46,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SQRSHL_asisdsame_only          - SQRSHL      Vd, Vn, Vm
-        146,6,46,3,1,2,3,1,
+        146,6,46,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // SQRSHRN_asimdshf_n             - SQRSHRN     Vd.Tb, Vn.Ta, #shift
-        147,6,47,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        147,6,47,3,1,2,4,3,
+        45,39,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,3,7,1,
         // SQRSHRN_asisdshf_n             - SQRSHRN     Vbd, Van, #shift
-        148,6,47,3,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        148,6,47,3,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,3,7,1,
         // SQRSHRUN_asimdshf_n            - SQRSHRUN    Vd.Tb, Vn.Ta, #shift
-        149,6,48,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        149,6,48,3,1,2,4,3,
+        45,39,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,3,7,1,
         // SQRSHRUN_asisdshf_n            - SQRSHRUN    Vbd, Van, #shift
-        150,6,48,3,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        150,6,48,3,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,3,7,1,
         // SQSHLU_asimdshf_r              - SQSHLU      Vd.T, Vn.T, #shift
-        151,6,50,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,6,7,1,16,7,0,0,
+        151,6,50,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,6,7,1,
         // SQSHLU_asisdshf_r              - SQSHLU      Vd, Vn, #shift
-        152,6,50,3,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,6,7,1,16,7,0,0,
+        152,6,50,3,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,6,7,1,
         // SQSHL_asimdsame_only           - SQSHL       Vd.T, Vn.T, Vm.T
-        153,6,49,3,1,2,3,1,
+        153,6,49,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SQSHL_asimdshf_r               - SQSHL       Vd.T, Vn.T, #shift
-        154,6,49,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,6,7,1,16,7,0,0,
+        154,6,49,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,6,7,1,
         // SQSHL_asisdsame_only           - SQSHL       Vd, Vn, Vm
-        155,6,49,3,1,2,3,1,
+        155,6,49,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // SQSHL_asisdshf_r               - SQSHL       Vd, Vn, #shift
-        156,6,49,3,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,6,7,1,16,7,0,0,
+        156,6,49,3,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,6,7,1,
         // SQSHRN_asimdshf_n              - SQSHRN      Vd.Tb, Vn.Ta, #shift
-        157,6,51,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        157,6,51,3,1,2,4,3,
+        45,39,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,3,7,1,
         // SQSHRN_asisdshf_n              - SQSHRN      Vbd, Van, #shift
-        158,6,51,3,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        158,6,51,3,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,3,7,1,
         // SQSHRUN_asimdshf_n             - SQSHRUN     Vd.Tb, Vn.Ta, #shift
-        159,6,52,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        159,6,52,3,1,2,4,3,
+        45,39,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,3,7,1,
         // SQSHRUN_asisdshf_n             - SQSHRUN     Vbd, Van, #shift
-        160,6,52,3,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        160,6,52,3,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,3,7,1,
         // SQSUB_asimdsame_only           - SQSUB       Vd.T, Vn.T, Vm.T
-        161,6,53,3,1,2,3,1,
+        161,6,53,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SQSUB_asisdsame_only           - SQSUB       Vd, Vn, Vm
-        162,6,53,3,1,2,3,1,
+        162,6,53,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // SQXTN_asimdmisc_n              - SQXTN       Vd.Tb, Vn.Ta
-        163,6,54,3,1,2,2,1,
+        163,6,54,3,1,2,4,2,
+        38,25,0,0,
         1,27,0,0,
         1,27,0,5,
         // SQXTN_asisdmisc_n              - SQXTN       Vbd, Van
-        164,6,54,3,1,2,2,1,
+        164,6,54,3,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // SQXTUN_asimdmisc_n             - SQXTUN      Vd.Tb, Vn.Ta
-        165,6,55,3,1,2,2,1,
+        165,6,55,3,1,2,4,2,
+        38,25,0,0,
         1,27,0,0,
         1,27,0,5,
         // SQXTUN_asisdmisc_n             - SQXTUN      Vbd, Van
-        166,6,55,3,1,2,2,1,
+        166,6,55,3,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // SRHADD_asimdsame_only          - SRHADD      Vd.T, Vn.T, Vm.T
-        167,6,56,3,1,2,3,1,
+        167,6,56,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SRI_asimdshf_r                 - SRI         Vd.T, Vn.T, #shift
-        168,6,57,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,2,7,1,16,7,0,0,
+        168,6,57,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,2,7,1,
         // SRI_asisdshf_r                 - SRI         Dd, Dn, #shift
-        169,6,57,3,1,2,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,7,1,16,7,0,0,
+        169,6,57,3,1,2,0,3,
+        1,26,0,0,
+        1,26,0,5,
+        4,1,7,1,
         // SRSHL_asimdsame_only           - SRSHL       Vd.T, Vn.T, Vm.T
-        170,6,58,3,1,2,3,1,
+        170,6,58,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SRSHL_asisdsame_only           - SRSHL       Dd, Dn, Dm
-        171,6,58,3,1,2,3,1,
+        171,6,58,3,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // SRSHR_asimdshf_r               - SRSHR       Vd.T, Vn.T, #shift
-        172,6,59,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,2,7,1,16,7,0,0,
+        172,6,59,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,2,7,1,
         // SRSHR_asisdshf_r               - SRSHR       Dd, Dn, #shift
-        173,6,59,3,1,2,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,7,1,16,7,0,0,
+        173,6,59,3,1,2,0,3,
+        1,26,0,0,
+        1,26,0,5,
+        4,1,7,1,
         // SRSRA_asimdshf_r               - SRSRA       Vd.T, Vn.T, #shift
-        174,6,60,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,2,7,1,16,7,0,0,
+        174,6,60,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,2,7,1,
         // SRSRA_asisdshf_r               - SRSRA       Dd, Dn, #shift
-        175,6,60,3,1,2,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,7,1,16,7,0,0,
+        175,6,60,3,1,2,0,3,
+        1,26,0,0,
+        1,26,0,5,
+        4,1,7,1,
         // SSHLL_asimdshf_l               - SSHLL       Vd.Ta, Vn.Tb, #shift
-        176,6,62,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,5,7,1,16,7,0,0,
+        176,6,62,3,1,2,4,3,
+        39,45,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,5,7,1,
         // SSHL_asimdsame_only            - SSHL        Vd.T, Vn.T, Vm.T
-        177,6,61,3,1,2,3,1,
+        177,6,61,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SSHL_asisdsame_only            - SSHL        Dd, Dn, Dm
-        178,6,61,3,1,2,3,1,
+        178,6,61,3,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // SSHR_asimdshf_r                - SSHR        Vd.T, Vn.T, #shift
-        179,6,63,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,2,7,1,16,7,0,0,
+        179,6,63,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,2,7,1,
         // SSHR_asisdshf_r                - SSHR        Dd, Dn, #shift
-        180,6,63,3,1,2,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,7,1,16,7,0,0,
+        180,6,63,3,1,2,0,3,
+        1,26,0,0,
+        1,26,0,5,
+        4,1,7,1,
         // SSRA_asimdshf_r                - SSRA        Vd.T, Vn.T, #shift
-        181,6,64,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,2,7,1,16,7,0,0,
+        181,6,64,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,2,7,1,
         // SSRA_asisdshf_r                - SSRA        Dd, Dn, #shift
-        182,6,64,3,1,2,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,7,1,16,7,0,0,
+        182,6,64,3,1,2,0,3,
+        1,26,0,0,
+        1,26,0,5,
+        4,1,7,1,
         // SSUBL_asimddiff_l              - SSUBL       Vd.Ta, Vn.Tb, Vm.Tb
-        183,6,65,3,1,2,3,1,
+        183,6,65,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SSUBW_asimddiff_w              - SSUBW       Vd.Ta, Vn.Ta, Vm.Tb
-        184,6,66,3,1,2,3,1,
+        184,6,66,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // ST1_asisdlse_r1_1v             - ST1         {Vt.T}, [Xn|SP]
-        185,6,67,3,1,2,2,1,
+        185,6,67,3,1,2,2,2,
+        28,0,0,0,
         2,1,0,27,
         3,1,165,0,
         // ST1_asisdlse_r2_2v             - ST1         {Vt.T, Vt2.T}, [Xn|SP]
-        186,6,67,3,1,2,2,1,
+        186,6,67,3,1,2,2,2,
+        28,0,0,0,
         2,2,0,27,
         3,1,165,0,
         // ST1_asisdlse_r3_3v             - ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP]
-        187,6,67,3,1,2,2,1,
+        187,6,67,3,1,2,2,2,
+        28,0,0,0,
         2,3,0,27,
         3,1,165,0,
         // ST1_asisdlse_r4_4v             - ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP]
-        188,6,67,3,1,2,2,1,
+        188,6,67,3,1,2,2,2,
+        28,0,0,0,
         2,4,0,27,
         3,1,165,0,
         // ST1_asisdlsep_i1_i1            - ST1         {Vt.T}, [Xn|SP], imm
-        189,6,67,3,1,2,3,0,
-        2,1,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,8,16,0,0,
+        189,6,67,3,1,2,2,3,
+        28,0,0,0,
+        2,1,0,27,
+        3,1,165,0,
+        5,33,62,2,
         // ST1_asisdlsep_i2_i2            - ST1         {Vt.T, Vt2.T}, [Xn|SP], imm
-        190,6,67,3,1,2,3,0,
-        2,2,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,16,32,0,0,
+        190,6,67,3,1,2,2,3,
+        28,0,0,0,
+        2,2,0,27,
+        3,1,165,0,
+        5,33,62,2,
         // ST1_asisdlsep_i3_i3            - ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm
-        191,6,67,3,1,2,3,0,
-        2,3,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,24,48,0,0,
+        191,6,67,3,1,2,2,3,
+        28,0,0,0,
+        2,3,0,27,
+        3,1,165,0,
+        5,33,62,2,
         // ST1_asisdlsep_i4_i4            - ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm
-        192,6,67,3,1,2,3,0,
-        2,4,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,32,64,0,0,
+        192,6,67,3,1,2,2,3,
+        28,0,0,0,
+        2,4,0,27,
+        3,1,165,0,
+        5,33,62,2,
         // ST1_asisdlsep_r1_r1            - ST1         {Vt.T}, [Xn|SP], Xm
-        193,6,67,3,1,2,3,1,
+        193,6,67,3,1,2,2,3,
+        28,0,0,0,
         2,1,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST1_asisdlsep_r2_r2            - ST1         {Vt.T, Vt2.T}, [Xn|SP], Xm
-        194,6,67,3,1,2,3,1,
+        194,6,67,3,1,2,2,3,
+        28,0,0,0,
         2,2,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST1_asisdlsep_r3_r3            - ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm
-        195,6,67,3,1,2,3,1,
+        195,6,67,3,1,2,2,3,
+        28,0,0,0,
         2,3,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST1_asisdlsep_r4_r4            - ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm
-        196,6,67,3,1,2,3,1,
+        196,6,67,3,1,2,2,3,
+        28,0,0,0,
         2,4,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST1_asisdlso_b1_1b             - ST1         {Vt.B}[index], [Xn|SP]
-        197,6,67,3,1,2,2,1,
-        2,129,0,27,
+        197,6,67,3,1,2,2,2,
+        1,0,0,0,
+        2,177,0,27,
         3,1,165,0,
         // ST1_asisdlso_d1_1d             - ST1         {Vt.D}[index], [Xn|SP]
-        198,6,67,3,1,2,2,1,
-        2,145,0,27,
+        198,6,67,3,1,2,2,2,
+        2,0,0,0,
+        2,33,0,27,
         3,1,165,0,
         // ST1_asisdlso_h1_1h             - ST1         {Vt.H}[index], [Xn|SP]
-        199,6,67,3,1,2,2,1,
-        2,129,0,27,
+        199,6,67,3,1,2,2,2,
+        3,0,0,0,
+        2,177,0,27,
         3,1,165,0,
         // ST1_asisdlso_s1_1s             - ST1         {Vt.S}[index], [Xn|SP]
-        200,6,67,3,1,2,2,1,
-        2,161,0,27,
+        200,6,67,3,1,2,2,2,
+        4,0,0,0,
+        2,97,0,27,
         3,1,165,0,
         // ST1_asisdlsop_b1_i1b           - ST1         {Vt.B}[index], [Xn|SP], #1
-        201,6,67,3,1,2,3,1,
-        2,129,0,27,
+        201,6,67,3,1,2,2,3,
+        1,0,0,0,
+        2,177,0,27,
         3,1,165,0,
-        4,9,1,0,
+        4,9,1,16,
         // ST1_asisdlsop_bx1_r1b          - ST1         {Vt.B}[index], [Xn|SP], Xm
-        202,6,67,3,1,2,3,1,
-        2,129,0,27,
+        202,6,67,3,1,2,2,3,
+        1,0,0,0,
+        2,177,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST1_asisdlsop_d1_i1d           - ST1         {Vt.D}[index], [Xn|SP], #8
-        203,6,67,3,1,2,3,1,
-        2,145,0,27,
+        203,6,67,3,1,2,2,3,
+        2,0,0,0,
+        2,33,0,27,
         3,1,165,0,
-        4,9,8,0,
+        4,9,8,16,
         // ST1_asisdlsop_dx1_r1d          - ST1         {Vt.D}[index], [Xn|SP], Xm
-        204,6,67,3,1,2,3,1,
-        2,145,0,27,
+        204,6,67,3,1,2,2,3,
+        2,0,0,0,
+        2,33,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST1_asisdlsop_h1_i1h           - ST1         {Vt.H}[index], [Xn|SP], #2
-        205,6,67,3,1,2,3,1,
-        2,129,0,27,
+        205,6,67,3,1,2,2,3,
+        3,0,0,0,
+        2,177,0,27,
         3,1,165,0,
-        4,9,2,0,
+        4,9,2,16,
         // ST1_asisdlsop_hx1_r1h          - ST1         {Vt.H}[index], [Xn|SP], Xm
-        206,6,67,3,1,2,3,1,
-        2,129,0,27,
+        206,6,67,3,1,2,2,3,
+        3,0,0,0,
+        2,177,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST1_asisdlsop_s1_i1s           - ST1         {Vt.S}[index], [Xn|SP], #4
-        207,6,67,3,1,2,3,1,
-        2,161,0,27,
+        207,6,67,3,1,2,2,3,
+        4,0,0,0,
+        2,97,0,27,
         3,1,165,0,
-        4,9,4,0,
+        4,9,4,16,
         // ST1_asisdlsop_sx1_r1s          - ST1         {Vt.S}[index], [Xn|SP], Xm
-        208,6,67,3,1,2,3,1,
-        2,161,0,27,
+        208,6,67,3,1,2,2,3,
+        4,0,0,0,
+        2,97,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST2G_64soffset_ldsttags        - ST2G        Xt|SP, [Xn|SP{, #simm}]
-        209,6,69,3,4,49,2,0,
-        1,18,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        209,6,69,3,4,49,0,2,
+        1,18,0,0,
+        3,5,165,1,
         // ST2G_64spost_ldsttags          - ST2G        Xt|SP, [Xn|SP], #simm
-        210,6,69,3,4,49,3,0,
-        1,18,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        210,6,69,3,4,49,0,3,
+        1,18,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // ST2G_64spre_ldsttags           - ST2G        Xt|SP, [Xn|SP, #simm]!
-        211,6,69,3,4,49,2,0,
-        1,18,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        211,6,69,3,4,49,0,2,
+        1,18,0,0,
+        3,4,165,129,
         // ST2_asisdlse_r2                - ST2         {Vt.T, Vt2.T}, [Xn|SP]
-        212,6,68,3,1,2,2,1,
+        212,6,68,3,1,2,2,2,
+        27,0,0,0,
         2,2,0,27,
         3,1,165,0,
         // ST2_asisdlsep_i2_i             - ST2         {Vt.T, Vt2.T}, [Xn|SP], imm
-        213,6,68,3,1,2,3,0,
-        2,2,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,16,32,0,0,
+        213,6,68,3,1,2,2,3,
+        27,0,0,0,
+        2,2,0,27,
+        3,1,165,0,
+        5,33,62,2,
         // ST2_asisdlsep_r2_r             - ST2         {Vt.T, Vt2.T}, [Xn|SP], Xm
-        214,6,68,3,1,2,3,1,
+        214,6,68,3,1,2,2,3,
+        27,0,0,0,
         2,2,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST2_asisdlso_b2_2b             - ST2         {Vt.B, Vt2.B}[index], [Xn|SP]
-        215,6,68,3,1,2,2,1,
-        2,130,0,27,
+        215,6,68,3,1,2,2,2,
+        1,0,0,0,
+        2,178,0,27,
         3,1,165,0,
         // ST2_asisdlso_d2_2d             - ST2         {Vt.D, Vt2.D}[index], [Xn|SP]
-        216,6,68,3,1,2,2,1,
-        2,146,0,27,
+        216,6,68,3,1,2,2,2,
+        2,0,0,0,
+        2,34,0,27,
         3,1,165,0,
         // ST2_asisdlso_h2_2h             - ST2         {Vt.H, Vt2.H}[index], [Xn|SP]
-        217,6,68,3,1,2,2,1,
-        2,130,0,27,
+        217,6,68,3,1,2,2,2,
+        3,0,0,0,
+        2,178,0,27,
         3,1,165,0,
         // ST2_asisdlso_s2_2s             - ST2         {Vt.S, Vt2.S}[index], [Xn|SP]
-        218,6,68,3,1,2,2,1,
-        2,162,0,27,
+        218,6,68,3,1,2,2,2,
+        4,0,0,0,
+        2,98,0,27,
         3,1,165,0,
         // ST2_asisdlsop_b2_i2b           - ST2         {Vt.B, Vt2.B}[index], [Xn|SP], #2
-        219,6,68,3,1,2,3,1,
-        2,130,0,27,
+        219,6,68,3,1,2,2,3,
+        1,0,0,0,
+        2,178,0,27,
         3,1,165,0,
-        4,9,2,0,
+        4,9,2,16,
         // ST2_asisdlsop_bx2_r2b          - ST2         {Vt.B, Vt2.B}[index], [Xn|SP], Xm
-        220,6,68,3,1,2,3,1,
-        2,130,0,27,
+        220,6,68,3,1,2,2,3,
+        1,0,0,0,
+        2,178,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST2_asisdlsop_d2_i2d           - ST2         {Vt.D, Vt2.D}[index], [Xn|SP], #16
-        221,6,68,3,1,2,3,1,
-        2,146,0,27,
+        221,6,68,3,1,2,2,3,
+        2,0,0,0,
+        2,34,0,27,
         3,1,165,0,
-        4,9,16,0,
+        4,9,16,16,
         // ST2_asisdlsop_dx2_r2d          - ST2         {Vt.D, Vt2.D}[index], [Xn|SP], Xm
-        222,6,68,3,1,2,3,1,
-        2,146,0,27,
+        222,6,68,3,1,2,2,3,
+        2,0,0,0,
+        2,34,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST2_asisdlsop_h2_i2h           - ST2         {Vt.H, Vt2.H}[index], [Xn|SP], #4
-        223,6,68,3,1,2,3,1,
-        2,130,0,27,
+        223,6,68,3,1,2,2,3,
+        3,0,0,0,
+        2,178,0,27,
         3,1,165,0,
-        4,9,4,0,
+        4,9,4,16,
         // ST2_asisdlsop_hx2_r2h          - ST2         {Vt.H, Vt2.H}[index], [Xn|SP], Xm
-        224,6,68,3,1,2,3,1,
-        2,130,0,27,
+        224,6,68,3,1,2,2,3,
+        3,0,0,0,
+        2,178,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST2_asisdlsop_s2_i2s           - ST2         {Vt.S, Vt2.S}[index], [Xn|SP], #8
-        225,6,68,3,1,2,3,1,
-        2,162,0,27,
+        225,6,68,3,1,2,2,3,
+        4,0,0,0,
+        2,98,0,27,
         3,1,165,0,
-        4,9,8,0,
+        4,9,8,16,
         // ST2_asisdlsop_sx2_r2s          - ST2         {Vt.S, Vt2.S}[index], [Xn|SP], Xm
-        226,6,68,3,1,2,3,1,
-        2,162,0,27,
+        226,6,68,3,1,2,2,3,
+        4,0,0,0,
+        2,98,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST3_asisdlse_r3                - ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP]
-        227,6,70,3,1,2,2,1,
+        227,6,70,3,1,2,2,2,
+        27,0,0,0,
         2,3,0,27,
         3,1,165,0,
         // ST3_asisdlsep_i3_i             - ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm
-        228,6,70,3,1,2,3,0,
-        2,3,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,24,48,0,0,
+        228,6,70,3,1,2,2,3,
+        27,0,0,0,
+        2,3,0,27,
+        3,1,165,0,
+        5,33,62,2,
         // ST3_asisdlsep_r3_r             - ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm
-        229,6,70,3,1,2,3,1,
+        229,6,70,3,1,2,2,3,
+        27,0,0,0,
         2,3,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST3_asisdlso_b3_3b             - ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP]
-        230,6,70,3,1,2,2,1,
-        2,131,0,27,
+        230,6,70,3,1,2,2,2,
+        1,0,0,0,
+        2,179,0,27,
         3,1,165,0,
         // ST3_asisdlso_d3_3d             - ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP]
-        231,6,70,3,1,2,2,1,
-        2,147,0,27,
+        231,6,70,3,1,2,2,2,
+        2,0,0,0,
+        2,35,0,27,
         3,1,165,0,
         // ST3_asisdlso_h3_3h             - ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP]
-        232,6,70,3,1,2,2,1,
-        2,131,0,27,
+        232,6,70,3,1,2,2,2,
+        3,0,0,0,
+        2,179,0,27,
         3,1,165,0,
         // ST3_asisdlso_s3_3s             - ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP]
-        233,6,70,3,1,2,2,1,
-        2,163,0,27,
+        233,6,70,3,1,2,2,2,
+        4,0,0,0,
+        2,99,0,27,
         3,1,165,0,
         // ST3_asisdlsop_b3_i3b           - ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3
-        234,6,70,3,1,2,3,1,
-        2,131,0,27,
+        234,6,70,3,1,2,2,3,
+        1,0,0,0,
+        2,179,0,27,
         3,1,165,0,
-        4,9,3,0,
+        4,9,3,16,
         // ST3_asisdlsop_bx3_r3b          - ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm
-        235,6,70,3,1,2,3,1,
-        2,131,0,27,
+        235,6,70,3,1,2,2,3,
+        1,0,0,0,
+        2,179,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST3_asisdlsop_d3_i3d           - ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24
-        236,6,70,3,1,2,3,1,
-        2,147,0,27,
+        236,6,70,3,1,2,2,3,
+        2,0,0,0,
+        2,35,0,27,
         3,1,165,0,
-        4,9,24,0,
+        4,9,24,16,
         // ST3_asisdlsop_dx3_r3d          - ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], Xm
-        237,6,70,3,1,2,3,1,
-        2,147,0,27,
+        237,6,70,3,1,2,2,3,
+        2,0,0,0,
+        2,35,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST3_asisdlsop_h3_i3h           - ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6
-        238,6,70,3,1,2,3,1,
-        2,131,0,27,
+        238,6,70,3,1,2,2,3,
+        3,0,0,0,
+        2,179,0,27,
         3,1,165,0,
-        4,9,6,0,
+        4,9,6,16,
         // ST3_asisdlsop_hx3_r3h          - ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm
-        239,6,70,3,1,2,3,1,
-        2,131,0,27,
+        239,6,70,3,1,2,2,3,
+        3,0,0,0,
+        2,179,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST3_asisdlsop_s3_i3s           - ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12
-        240,6,70,3,1,2,3,1,
-        2,163,0,27,
+        240,6,70,3,1,2,2,3,
+        4,0,0,0,
+        2,99,0,27,
         3,1,165,0,
-        4,9,12,0,
+        4,9,12,16,
         // ST3_asisdlsop_sx3_r3s          - ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm
-        241,6,70,3,1,2,3,1,
-        2,163,0,27,
+        241,6,70,3,1,2,2,3,
+        4,0,0,0,
+        2,99,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST4_asisdlse_r4                - ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP]
-        242,6,71,3,1,2,2,1,
+        242,6,71,3,1,2,2,2,
+        27,0,0,0,
         2,4,0,27,
         3,1,165,0,
         // ST4_asisdlsep_i4_i             - ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm
-        243,6,71,3,1,2,3,0,
-        2,4,0,27,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        5,33,62,2,32,64,0,0,
+        243,6,71,3,1,2,2,3,
+        27,0,0,0,
+        2,4,0,27,
+        3,1,165,0,
+        5,33,62,2,
         // ST4_asisdlsep_r4_r             - ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm
-        244,6,71,3,1,2,3,1,
+        244,6,71,3,1,2,2,3,
+        27,0,0,0,
         2,4,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST4_asisdlso_b4_4b             - ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP]
-        245,6,71,3,1,2,2,1,
-        2,132,0,27,
+        245,6,71,3,1,2,2,2,
+        1,0,0,0,
+        2,180,0,27,
         3,1,165,0,
         // ST4_asisdlso_d4_4d             - ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP]
-        246,6,71,3,1,2,2,1,
-        2,148,0,27,
+        246,6,71,3,1,2,2,2,
+        2,0,0,0,
+        2,36,0,27,
         3,1,165,0,
         // ST4_asisdlso_h4_4h             - ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP]
-        247,6,71,3,1,2,2,1,
-        2,132,0,27,
+        247,6,71,3,1,2,2,2,
+        3,0,0,0,
+        2,180,0,27,
         3,1,165,0,
         // ST4_asisdlso_s4_4s             - ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP]
-        248,6,71,3,1,2,2,1,
-        2,164,0,27,
+        248,6,71,3,1,2,2,2,
+        4,0,0,0,
+        2,100,0,27,
         3,1,165,0,
         // ST4_asisdlsop_b4_i4b           - ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4
-        249,6,71,3,1,2,3,1,
-        2,132,0,27,
+        249,6,71,3,1,2,2,3,
+        1,0,0,0,
+        2,180,0,27,
         3,1,165,0,
-        4,9,4,0,
+        4,9,4,16,
         // ST4_asisdlsop_bx4_r4b          - ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm
-        250,6,71,3,1,2,3,1,
-        2,132,0,27,
+        250,6,71,3,1,2,2,3,
+        1,0,0,0,
+        2,180,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST4_asisdlsop_d4_i4d           - ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32
-        251,6,71,3,1,2,3,1,
-        2,148,0,27,
+        251,6,71,3,1,2,2,3,
+        2,0,0,0,
+        2,36,0,27,
         3,1,165,0,
-        4,9,32,0,
+        4,9,32,16,
         // ST4_asisdlsop_dx4_r4d          - ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm
-        252,6,71,3,1,2,3,1,
-        2,148,0,27,
+        252,6,71,3,1,2,2,3,
+        2,0,0,0,
+        2,36,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST4_asisdlsop_h4_i4h           - ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8
-        253,6,71,3,1,2,3,1,
-        2,132,0,27,
+        253,6,71,3,1,2,2,3,
+        3,0,0,0,
+        2,180,0,27,
         3,1,165,0,
-        4,9,8,0,
+        4,9,8,16,
         // ST4_asisdlsop_hx4_r4h          - ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm
-        254,6,71,3,1,2,3,1,
-        2,132,0,27,
+        254,6,71,3,1,2,2,3,
+        3,0,0,0,
+        2,180,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST4_asisdlsop_s4_i4s           - ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16
-        255,6,71,3,1,2,3,1,
-        2,164,0,27,
+        255,6,71,3,1,2,2,3,
+        4,0,0,0,
+        2,100,0,27,
         3,1,165,0,
-        4,9,16,0,
+        4,9,16,16,
         // ST4_asisdlsop_sx4_r4s          - ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm
-        0,7,71,3,1,2,3,1,
-        2,164,0,27,
+        0,7,71,3,1,2,2,3,
+        4,0,0,0,
+        2,100,0,27,
         3,1,165,0,
         1,17,0,16,
         // ST64BV0_64_memop               - ST64BV0     Xs, Xt, [Xn|SP]
-        1,7,74,3,4,42,3,1,
+        1,7,74,3,4,42,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // ST64BV_64_memop                - ST64BV      Xs, Xt, [Xn|SP]
-        2,7,73,3,4,43,3,1,
+        2,7,73,3,4,43,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // ST64B_64l_memop                - ST64B       Xt, [Xn|SP{, #0}]
-        3,7,72,3,4,41,2,1,
+        3,7,72,3,4,41,0,2,
         1,17,0,0,
         3,5,165,0,
         // STBFADDL_16                    - STBFADDL    Hs, [Xn|SP]
-        4,7,76,3,1,46,2,1,
+        4,7,76,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STBFADD_16                     - STBFADD     Hs, [Xn|SP]
-        5,7,75,3,1,46,2,1,
+        5,7,75,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STBFMAXL_16                    - STBFMAXL    Hs, [Xn|SP]
-        6,7,78,3,1,46,2,1,
+        6,7,78,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STBFMAXNML_16                  - STBFMAXNML  Hs, [Xn|SP]
-        7,7,80,3,1,46,2,1,
+        7,7,80,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STBFMAXNM_16                   - STBFMAXNM   Hs, [Xn|SP]
-        8,7,79,3,1,46,2,1,
+        8,7,79,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STBFMAX_16                     - STBFMAX     Hs, [Xn|SP]
-        9,7,77,3,1,46,2,1,
+        9,7,77,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STBFMINL_16                    - STBFMINL    Hs, [Xn|SP]
-        10,7,82,3,1,46,2,1,
+        10,7,82,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STBFMINNML_16                  - STBFMINNML  Hs, [Xn|SP]
-        11,7,84,3,1,46,2,1,
+        11,7,84,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STBFMINNM_16                   - STBFMINNM   Hs, [Xn|SP]
-        12,7,83,3,1,46,2,1,
+        12,7,83,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STBFMIN_16                     - STBFMIN     Hs, [Xn|SP]
-        13,7,81,3,1,46,2,1,
+        13,7,81,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STFADDL_16                     - STFADDL     Hs, [Xn|SP]
-        14,7,86,3,1,46,2,1,
+        14,7,86,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STFADDL_32                     - STFADDL     Ss, [Xn|SP]
-        15,7,86,3,1,46,2,1,
+        15,7,86,3,1,46,0,2,
         1,25,0,16,
         3,1,165,0,
         // STFADDL_64                     - STFADDL     Ds, [Xn|SP]
-        16,7,86,3,1,46,2,1,
+        16,7,86,3,1,46,0,2,
         1,26,0,16,
         3,1,165,0,
         // STFADD_16                      - STFADD      Hs, [Xn|SP]
-        17,7,85,3,1,46,2,1,
+        17,7,85,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STFADD_32                      - STFADD      Ss, [Xn|SP]
-        18,7,85,3,1,46,2,1,
+        18,7,85,3,1,46,0,2,
         1,25,0,16,
         3,1,165,0,
         // STFADD_64                      - STFADD      Ds, [Xn|SP]
-        19,7,85,3,1,46,2,1,
+        19,7,85,3,1,46,0,2,
         1,26,0,16,
         3,1,165,0,
         // STFMAXL_16                     - STFMAXL     Hs, [Xn|SP]
-        20,7,88,3,1,46,2,1,
+        20,7,88,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STFMAXL_32                     - STFMAXL     Ss, [Xn|SP]
-        21,7,88,3,1,46,2,1,
+        21,7,88,3,1,46,0,2,
         1,25,0,16,
         3,1,165,0,
         // STFMAXL_64                     - STFMAXL     Ds, [Xn|SP]
-        22,7,88,3,1,46,2,1,
+        22,7,88,3,1,46,0,2,
         1,26,0,16,
         3,1,165,0,
         // STFMAXNML_16                   - STFMAXNML   Hs, [Xn|SP]
-        23,7,90,3,1,46,2,1,
+        23,7,90,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STFMAXNML_32                   - STFMAXNML   Ss, [Xn|SP]
-        24,7,90,3,1,46,2,1,
+        24,7,90,3,1,46,0,2,
         1,25,0,16,
         3,1,165,0,
         // STFMAXNML_64                   - STFMAXNML   Ds, [Xn|SP]
-        25,7,90,3,1,46,2,1,
+        25,7,90,3,1,46,0,2,
         1,26,0,16,
         3,1,165,0,
         // STFMAXNM_16                    - STFMAXNM    Hs, [Xn|SP]
-        26,7,89,3,1,46,2,1,
+        26,7,89,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STFMAXNM_32                    - STFMAXNM    Ss, [Xn|SP]
-        27,7,89,3,1,46,2,1,
+        27,7,89,3,1,46,0,2,
         1,25,0,16,
         3,1,165,0,
         // STFMAXNM_64                    - STFMAXNM    Ds, [Xn|SP]
-        28,7,89,3,1,46,2,1,
+        28,7,89,3,1,46,0,2,
         1,26,0,16,
         3,1,165,0,
         // STFMAX_16                      - STFMAX      Hs, [Xn|SP]
-        29,7,87,3,1,46,2,1,
+        29,7,87,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STFMAX_32                      - STFMAX      Ss, [Xn|SP]
-        30,7,87,3,1,46,2,1,
+        30,7,87,3,1,46,0,2,
         1,25,0,16,
         3,1,165,0,
         // STFMAX_64                      - STFMAX      Ds, [Xn|SP]
-        31,7,87,3,1,46,2,1,
+        31,7,87,3,1,46,0,2,
         1,26,0,16,
         3,1,165,0,
         // STFMINL_16                     - STFMINL     Hs, [Xn|SP]
-        32,7,92,3,1,46,2,1,
+        32,7,92,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STFMINL_32                     - STFMINL     Ss, [Xn|SP]
-        33,7,92,3,1,46,2,1,
+        33,7,92,3,1,46,0,2,
         1,25,0,16,
         3,1,165,0,
         // STFMINL_64                     - STFMINL     Ds, [Xn|SP]
-        34,7,92,3,1,46,2,1,
+        34,7,92,3,1,46,0,2,
         1,26,0,16,
         3,1,165,0,
         // STFMINNML_16                   - STFMINNML   Hs, [Xn|SP]
-        35,7,94,3,1,46,2,1,
+        35,7,94,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STFMINNML_32                   - STFMINNML   Ss, [Xn|SP]
-        36,7,94,3,1,46,2,1,
+        36,7,94,3,1,46,0,2,
         1,25,0,16,
         3,1,165,0,
         // STFMINNML_64                   - STFMINNML   Ds, [Xn|SP]
-        37,7,94,3,1,46,2,1,
+        37,7,94,3,1,46,0,2,
         1,26,0,16,
         3,1,165,0,
         // STFMINNM_16                    - STFMINNM    Hs, [Xn|SP]
-        38,7,93,3,1,46,2,1,
+        38,7,93,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STFMINNM_32                    - STFMINNM    Ss, [Xn|SP]
-        39,7,93,3,1,46,2,1,
+        39,7,93,3,1,46,0,2,
         1,25,0,16,
         3,1,165,0,
         // STFMINNM_64                    - STFMINNM    Ds, [Xn|SP]
-        40,7,93,3,1,46,2,1,
+        40,7,93,3,1,46,0,2,
         1,26,0,16,
         3,1,165,0,
         // STFMIN_16                      - STFMIN      Hs, [Xn|SP]
-        41,7,91,3,1,46,2,1,
+        41,7,91,3,1,46,0,2,
         1,24,0,16,
         3,1,165,0,
         // STFMIN_32                      - STFMIN      Ss, [Xn|SP]
-        42,7,91,3,1,46,2,1,
+        42,7,91,3,1,46,0,2,
         1,25,0,16,
         3,1,165,0,
         // STFMIN_64                      - STFMIN      Ds, [Xn|SP]
-        43,7,91,3,1,46,2,1,
+        43,7,91,3,1,46,0,2,
         1,26,0,16,
         3,1,165,0,
         // STGM_64bulk_ldsttags           - STGM        Xt, [Xn|SP]
-        44,7,96,3,4,50,2,1,
+        44,7,96,3,4,50,0,2,
         1,17,0,0,
         3,1,165,0,
         // STGP_64_ldstpair_off           - STGP        Xt1, Xt2, [Xn|SP{, #imm}]
-        45,7,97,3,4,49,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        45,7,97,3,4,49,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,5,165,1,
         // STGP_64_ldstpair_post          - STGP        Xt1, Xt2, [Xn|SP], #imm
-        46,7,97,3,4,49,4,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        46,7,97,3,4,49,0,4,
+        1,17,0,0,
+        1,17,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // STGP_64_ldstpair_pre           - STGP        Xt1, Xt2, [Xn|SP, #imm]!
-        47,7,97,3,4,49,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        47,7,97,3,4,49,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,4,165,129,
         // STG_64soffset_ldsttags         - STG         Xt|SP, [Xn|SP{, #simm}]
-        48,7,95,3,4,49,2,0,
-        1,18,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        48,7,95,3,4,49,0,2,
+        1,18,0,0,
+        3,5,165,1,
         // STG_64spost_ldsttags           - STG         Xt|SP, [Xn|SP], #simm
-        49,7,95,3,4,49,3,0,
-        1,18,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        49,7,95,3,4,49,0,3,
+        1,18,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STG_64spre_ldsttags            - STG         Xt|SP, [Xn|SP, #simm]!
-        50,7,95,3,4,49,2,0,
-        1,18,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        50,7,95,3,4,49,0,2,
+        1,18,0,0,
+        3,4,165,129,
         // STILP_32s_ldiappstilp          - STILP       Wt1, Wt2, [Xn|SP]
-        51,7,98,3,4,40,3,1,
+        51,7,98,3,4,40,0,3,
         1,19,0,0,
         1,19,0,16,
         3,1,165,0,
         // STILP_32se_ldiappstilp         - STILP       Wt1, Wt2, [Xn|SP, #-8]!
-        52,7,98,3,4,40,3,1,
+        52,7,98,3,4,40,0,3,
         1,19,0,0,
         1,19,0,16,
         3,3,165,248,
         // STILP_64s_ldiappstilp          - STILP       Xt1, Xt2, [Xn|SP]
-        53,7,98,3,4,40,3,1,
+        53,7,98,3,4,40,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // STILP_64ss_ldiappstilp         - STILP       Xt1, Xt2, [Xn|SP, #-16]!
-        54,7,98,3,4,40,3,1,
+        54,7,98,3,4,40,0,3,
         1,17,0,0,
         1,17,0,16,
         3,3,165,240,
         // STL1_asisdlso_d1               - STL1        {Vt.D}[index], [Xn|SP]
-        55,7,99,3,1,5,2,1,
-        2,145,0,27,
+        55,7,99,3,1,5,2,2,
+        2,0,0,0,
+        2,33,0,27,
         3,1,165,0,
         // STLLRB_sl32_ldstord            - STLLRB      Wt, [Xn|SP{, #0}]
-        56,7,101,3,4,37,2,1,
+        56,7,101,3,4,37,0,2,
         1,19,0,0,
         3,5,165,0,
         // STLLRH_sl32_ldstord            - STLLRH      Wt, [Xn|SP{, #0}]
-        57,7,102,3,4,37,2,1,
+        57,7,102,3,4,37,0,2,
         1,19,0,0,
         3,5,165,0,
         // STLLR_sl32_ldstord             - STLLR       Wt, [Xn|SP{, #0}]
-        58,7,100,3,4,37,2,1,
+        58,7,100,3,4,37,0,2,
         1,19,0,0,
         3,5,165,0,
         // STLLR_sl64_ldstord             - STLLR       Xt, [Xn|SP{, #0}]
-        59,7,100,3,4,37,2,1,
+        59,7,100,3,4,37,0,2,
         1,17,0,0,
         3,5,165,0,
         // STLRB_sl32_ldstord             - STLRB       Wt, [Xn|SP{, #0}]
-        60,7,104,3,4,0,2,1,
+        60,7,104,3,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // STLRH_sl32_ldstord             - STLRH       Wt, [Xn|SP{, #0}]
-        61,7,105,3,4,0,2,1,
+        61,7,105,3,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // STLR_32s_ldapstl_writeback     - STLR        Wt, [Xn|SP, #-4]!
-        62,7,103,3,4,40,2,1,
+        62,7,103,3,4,40,0,2,
         1,19,0,0,
         3,3,165,252,
         // STLR_64s_ldapstl_writeback     - STLR        Xt, [Xn|SP, #-8]!
-        63,7,103,3,4,40,2,1,
+        63,7,103,3,4,40,0,2,
         1,17,0,0,
         3,3,165,248,
         // STLR_sl32_ldstord              - STLR        Wt, [Xn|SP{, #0}]
-        64,7,103,3,4,0,2,1,
+        64,7,103,3,4,0,0,2,
         1,19,0,0,
         3,5,165,0,
         // STLR_sl64_ldstord              - STLR        Xt, [Xn|SP{, #0}]
-        65,7,103,3,4,0,2,1,
+        65,7,103,3,4,0,0,2,
         1,17,0,0,
         3,5,165,0,
         // STLTXR_sr32_ldstexclr_unpriv   - STLTXR      Ws, Wt, [Xn|SP{, #0}]
-        66,7,106,3,4,47,3,1,
+        66,7,106,3,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // STLTXR_sr64_ldstexclr_unpriv   - STLTXR      Ws, Xt, [Xn|SP{, #0}]
-        67,7,106,3,4,47,3,1,
+        67,7,106,3,4,47,0,3,
         1,19,0,16,
         1,17,0,0,
         3,5,165,0,
         // STLURB_32_ldapstl_unscaled     - STLURB      Wt, [Xn|SP{, #simm}]
-        68,7,108,3,4,39,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        68,7,108,3,4,39,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STLURH_32_ldapstl_unscaled     - STLURH      Wt, [Xn|SP{, #simm}]
-        69,7,109,3,4,39,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        69,7,109,3,4,39,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STLUR_32_ldapstl_unscaled      - STLUR       Wt, [Xn|SP{, #simm}]
-        70,7,107,3,4,39,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        70,7,107,3,4,39,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STLUR_64_ldapstl_unscaled      - STLUR       Xt, [Xn|SP{, #simm}]
-        71,7,107,3,4,39,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        71,7,107,3,4,39,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // STLUR_b_ldapstl_simd           - STLUR       Bt, [Xn|SP{, #simm}]
-        72,7,107,3,3,28,2,0,
-        1,23,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        72,7,107,3,3,28,0,2,
+        1,23,0,0,
+        3,5,165,1,
         // STLUR_d_ldapstl_simd           - STLUR       Dt, [Xn|SP{, #simm}]
-        73,7,107,3,3,28,2,0,
-        1,26,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        73,7,107,3,3,28,0,2,
+        1,26,0,0,
+        3,5,165,1,
         // STLUR_h_ldapstl_simd           - STLUR       Ht, [Xn|SP{, #simm}]
-        74,7,107,3,3,28,2,0,
-        1,24,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        74,7,107,3,3,28,0,2,
+        1,24,0,0,
+        3,5,165,1,
         // STLUR_q_ldapstl_simd           - STLUR       Qt, [Xn|SP{, #simm}]
-        75,7,107,3,3,28,2,0,
-        1,28,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        75,7,107,3,3,28,0,2,
+        1,28,0,0,
+        3,5,165,1,
         // STLUR_s_ldapstl_simd           - STLUR       St, [Xn|SP{, #simm}]
-        76,7,107,3,3,28,2,0,
-        1,25,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        76,7,107,3,3,28,0,2,
+        1,25,0,0,
+        3,5,165,1,
         // STLXP_sp32_ldstexclp           - STLXP       Ws, Wt1, Wt2, [Xn|SP{, #0}]
-        77,7,110,3,4,0,4,1,
+        77,7,110,3,4,0,0,4,
         1,19,0,16,
         1,19,0,0,
         1,19,0,10,
         3,5,165,0,
         // STLXP_sp64_ldstexclp           - STLXP       Ws, Xt1, Xt2, [Xn|SP{, #0}]
-        78,7,110,3,4,0,4,1,
+        78,7,110,3,4,0,0,4,
         1,19,0,16,
         1,17,0,0,
         1,17,0,10,
         3,5,165,0,
         // STLXRB_sr32_ldstexclr          - STLXRB      Ws, Wt, [Xn|SP{, #0}]
-        79,7,112,3,4,0,3,1,
+        79,7,112,3,4,0,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // STLXRH_sr32_ldstexclr          - STLXRH      Ws, Wt, [Xn|SP{, #0}]
-        80,7,113,3,4,0,3,1,
+        80,7,113,3,4,0,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // STLXR_sr32_ldstexclr           - STLXR       Ws, Wt, [Xn|SP{, #0}]
-        81,7,111,3,4,0,3,1,
+        81,7,111,3,4,0,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // STLXR_sr64_ldstexclr           - STLXR       Ws, Xt, [Xn|SP{, #0}]
-        82,7,111,3,4,0,3,1,
+        82,7,111,3,4,0,0,3,
         1,19,0,16,
         1,17,0,0,
         3,5,165,0,
         // STNP_32_ldstnapair_offs        - STNP        Wt1, Wt2, [Xn|SP{, #imm}]
-        83,7,114,3,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        83,7,114,3,4,0,0,3,
+        1,19,0,0,
+        1,19,0,10,
+        3,5,165,1,
         // STNP_64_ldstnapair_offs        - STNP        Xt1, Xt2, [Xn|SP{, #imm}]
-        84,7,114,3,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        84,7,114,3,4,0,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,5,165,1,
         // STNP_d_ldstnapair_offs         - STNP        Dt1, Dt2, [Xn|SP{, #imm}]
-        85,7,114,3,3,22,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        85,7,114,3,3,22,0,3,
+        1,26,0,0,
+        1,26,0,10,
+        3,5,165,1,
         // STNP_q_ldstnapair_offs         - STNP        Qt1, Qt2, [Xn|SP{, #imm}]
-        86,7,114,3,3,22,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        86,7,114,3,3,22,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,5,165,1,
         // STNP_s_ldstnapair_offs         - STNP        St1, St2, [Xn|SP{, #imm}]
-        87,7,114,3,3,22,3,0,
-        1,25,0,0,0,0,0,0,
-        1,25,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        87,7,114,3,3,22,0,3,
+        1,25,0,0,
+        1,25,0,10,
+        3,5,165,1,
         // STP_32_ldstpair_off            - STP         Wt1, Wt2, [Xn|SP{, #imm}]
-        88,7,115,3,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        88,7,115,3,4,0,0,3,
+        1,19,0,0,
+        1,19,0,10,
+        3,5,165,1,
         // STP_32_ldstpair_post           - STP         Wt1, Wt2, [Xn|SP], #imm
-        89,7,115,3,4,0,4,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        89,7,115,3,4,0,0,4,
+        1,19,0,0,
+        1,19,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // STP_32_ldstpair_pre            - STP         Wt1, Wt2, [Xn|SP, #imm]!
-        90,7,115,3,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        90,7,115,3,4,0,0,3,
+        1,19,0,0,
+        1,19,0,10,
+        3,4,165,129,
         // STP_64_ldstpair_off            - STP         Xt1, Xt2, [Xn|SP{, #imm}]
-        91,7,115,3,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        91,7,115,3,4,0,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,5,165,1,
         // STP_64_ldstpair_post           - STP         Xt1, Xt2, [Xn|SP], #imm
-        92,7,115,3,4,0,4,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        92,7,115,3,4,0,0,4,
+        1,17,0,0,
+        1,17,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // STP_64_ldstpair_pre            - STP         Xt1, Xt2, [Xn|SP, #imm]!
-        93,7,115,3,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        93,7,115,3,4,0,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,4,165,129,
         // STP_d_ldstpair_off             - STP         Dt1, Dt2, [Xn|SP{, #imm}]
-        94,7,115,3,3,22,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        94,7,115,3,3,22,0,3,
+        1,26,0,0,
+        1,26,0,10,
+        3,5,165,1,
         // STP_d_ldstpair_post            - STP         Dt1, Dt2, [Xn|SP], #imm
-        95,7,115,3,3,22,4,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        95,7,115,3,3,22,0,4,
+        1,26,0,0,
+        1,26,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // STP_d_ldstpair_pre             - STP         Dt1, Dt2, [Xn|SP, #imm]!
-        96,7,115,3,3,22,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        96,7,115,3,3,22,0,3,
+        1,26,0,0,
+        1,26,0,10,
+        3,4,165,129,
         // STP_q_ldstpair_off             - STP         Qt1, Qt2, [Xn|SP{, #imm}]
-        97,7,115,3,3,22,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        97,7,115,3,3,22,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,5,165,1,
         // STP_q_ldstpair_post            - STP         Qt1, Qt2, [Xn|SP], #imm
-        98,7,115,3,3,22,4,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        98,7,115,3,3,22,0,4,
+        1,28,0,0,
+        1,28,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // STP_q_ldstpair_pre             - STP         Qt1, Qt2, [Xn|SP, #imm]!
-        99,7,115,3,3,22,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        99,7,115,3,3,22,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,4,165,129,
         // STP_s_ldstpair_off             - STP         St1, St2, [Xn|SP{, #imm}]
-        100,7,115,3,3,22,3,0,
-        1,25,0,0,0,0,0,0,
-        1,25,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        100,7,115,3,3,22,0,3,
+        1,25,0,0,
+        1,25,0,10,
+        3,5,165,1,
         // STP_s_ldstpair_post            - STP         St1, St2, [Xn|SP], #imm
-        101,7,115,3,3,22,4,0,
-        1,25,0,0,0,0,0,0,
-        1,25,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        101,7,115,3,3,22,0,4,
+        1,25,0,0,
+        1,25,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // STP_s_ldstpair_pre             - STP         St1, St2, [Xn|SP, #imm]!
-        102,7,115,3,3,22,3,0,
-        1,25,0,0,0,0,0,0,
-        1,25,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        102,7,115,3,3,22,0,3,
+        1,25,0,0,
+        1,25,0,10,
+        3,4,165,129,
         // STRB_32_ldst_immpost           - STRB        Wt, [Xn|SP], #simm
-        103,7,117,3,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        103,7,117,3,4,0,0,3,
+        1,19,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STRB_32_ldst_immpre            - STRB        Wt, [Xn|SP, #simm]!
-        104,7,117,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        104,7,117,3,4,0,0,2,
+        1,19,0,0,
+        3,4,165,129,
         // STRB_32_ldst_pos               - STRB        Wt, [Xn|SP{, #pimm}]
-        105,7,117,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        105,7,117,3,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STRB_32b_ldst_regoff           - STRB        Wt, [Xn|SP, (Wm|Xm), extend{, amount}]
-        106,7,117,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,8,165,1,16,5,0,0,
+        106,7,117,3,4,0,0,2,
+        1,19,0,0,
+        3,8,165,1,
         // STRB_32bl_ldst_regoff          - STRB        Wt, [Xn|SP, Xm{, LSLamount}]
-        107,7,117,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,7,165,1,16,5,0,0,
+        107,7,117,3,4,0,0,2,
+        1,19,0,0,
+        3,7,165,1,
         // STRH_32_ldst_immpost           - STRH        Wt, [Xn|SP], #simm
-        108,7,118,3,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        108,7,118,3,4,0,0,3,
+        1,19,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STRH_32_ldst_immpre            - STRH        Wt, [Xn|SP, #simm]!
-        109,7,118,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        109,7,118,3,4,0,0,2,
+        1,19,0,0,
+        3,4,165,129,
         // STRH_32_ldst_pos               - STRH        Wt, [Xn|SP{, #pimm}]
-        110,7,118,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        110,7,118,3,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STRH_32_ldst_regoff            - STRH        Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        111,7,118,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,24,165,1,16,5,0,0,
+        111,7,118,3,4,0,0,2,
+        1,19,0,0,
+        3,24,165,1,
         // STR_32_ldst_immpost            - STR         Wt, [Xn|SP], #simm
-        112,7,116,3,4,0,3,0,
-        1,19,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        112,7,116,3,4,0,0,3,
+        1,19,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STR_32_ldst_immpre             - STR         Wt, [Xn|SP, #simm]!
-        113,7,116,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        113,7,116,3,4,0,0,2,
+        1,19,0,0,
+        3,4,165,129,
         // STR_32_ldst_pos                - STR         Wt, [Xn|SP{, #pimm}]
-        114,7,116,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        114,7,116,3,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STR_32_ldst_regoff             - STR         Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        115,7,116,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,40,165,1,16,5,0,0,
+        115,7,116,3,4,0,0,2,
+        1,19,0,0,
+        3,40,165,1,
         // STR_64_ldst_immpost            - STR         Xt, [Xn|SP], #simm
-        116,7,116,3,4,0,3,0,
-        1,17,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        116,7,116,3,4,0,0,3,
+        1,17,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STR_64_ldst_immpre             - STR         Xt, [Xn|SP, #simm]!
-        117,7,116,3,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        117,7,116,3,4,0,0,2,
+        1,17,0,0,
+        3,4,165,129,
         // STR_64_ldst_pos                - STR         Xt, [Xn|SP{, #pimm}]
-        118,7,116,3,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        118,7,116,3,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // STR_64_ldst_regoff             - STR         Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        119,7,116,3,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,56,165,1,16,5,0,0,
+        119,7,116,3,4,0,0,2,
+        1,17,0,0,
+        3,56,165,1,
         // STR_b_ldst_immpost             - STR         Bt, [Xn|SP], #simm
-        120,7,116,3,3,22,3,0,
-        1,23,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        120,7,116,3,3,22,0,3,
+        1,23,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STR_b_ldst_immpre              - STR         Bt, [Xn|SP, #simm]!
-        121,7,116,3,3,22,2,0,
-        1,23,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        121,7,116,3,3,22,0,2,
+        1,23,0,0,
+        3,4,165,129,
         // STR_b_ldst_pos                 - STR         Bt, [Xn|SP{, #pimm}]
-        122,7,116,3,3,22,2,0,
-        1,23,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        122,7,116,3,3,22,0,2,
+        1,23,0,0,
+        3,5,165,1,
         // STR_b_ldst_regoff              - STR         Bt, [Xn|SP, (Wm|Xm), extend{, amount}]
-        123,7,116,3,3,22,2,0,
-        1,23,0,0,0,0,0,0,
-        3,8,165,1,16,5,0,0,
+        123,7,116,3,3,22,0,2,
+        1,23,0,0,
+        3,8,165,1,
         // STR_bl_ldst_regoff             - STR         Bt, [Xn|SP, Xm{, LSLamount}]
-        124,7,116,3,3,22,2,0,
-        1,23,0,0,0,0,0,0,
-        3,7,165,1,16,5,0,0,
+        124,7,116,3,3,22,0,2,
+        1,23,0,0,
+        3,7,165,1,
         // STR_d_ldst_immpost             - STR         Dt, [Xn|SP], #simm
-        125,7,116,3,3,22,3,0,
-        1,26,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        125,7,116,3,3,22,0,3,
+        1,26,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STR_d_ldst_immpre              - STR         Dt, [Xn|SP, #simm]!
-        126,7,116,3,3,22,2,0,
-        1,26,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        126,7,116,3,3,22,0,2,
+        1,26,0,0,
+        3,4,165,129,
         // STR_d_ldst_pos                 - STR         Dt, [Xn|SP{, #pimm}]
-        127,7,116,3,3,22,2,0,
-        1,26,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        127,7,116,3,3,22,0,2,
+        1,26,0,0,
+        3,5,165,1,
         // STR_d_ldst_regoff              - STR         Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        128,7,116,3,3,22,2,0,
-        1,26,0,0,0,0,0,0,
-        3,56,165,1,16,5,0,0,
+        128,7,116,3,3,22,0,2,
+        1,26,0,0,
+        3,56,165,1,
         // STR_h_ldst_immpost             - STR         Ht, [Xn|SP], #simm
-        129,7,116,3,3,22,3,0,
-        1,24,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        129,7,116,3,3,22,0,3,
+        1,24,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STR_h_ldst_immpre              - STR         Ht, [Xn|SP, #simm]!
-        130,7,116,3,3,22,2,0,
-        1,24,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        130,7,116,3,3,22,0,2,
+        1,24,0,0,
+        3,4,165,129,
         // STR_h_ldst_pos                 - STR         Ht, [Xn|SP{, #pimm}]
-        131,7,116,3,3,22,2,0,
-        1,24,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        131,7,116,3,3,22,0,2,
+        1,24,0,0,
+        3,5,165,1,
         // STR_h_ldst_regoff              - STR         Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        132,7,116,3,3,22,2,0,
-        1,24,0,0,0,0,0,0,
-        3,24,165,1,16,5,0,0,
+        132,7,116,3,3,22,0,2,
+        1,24,0,0,
+        3,24,165,1,
         // STR_q_ldst_immpost             - STR         Qt, [Xn|SP], #simm
-        133,7,116,3,3,22,3,0,
-        1,28,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        133,7,116,3,3,22,0,3,
+        1,28,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STR_q_ldst_immpre              - STR         Qt, [Xn|SP, #simm]!
-        134,7,116,3,3,22,2,0,
-        1,28,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        134,7,116,3,3,22,0,2,
+        1,28,0,0,
+        3,4,165,129,
         // STR_q_ldst_pos                 - STR         Qt, [Xn|SP{, #pimm}]
-        135,7,116,3,3,22,2,0,
-        1,28,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        135,7,116,3,3,22,0,2,
+        1,28,0,0,
+        3,5,165,1,
         // STR_q_ldst_regoff              - STR         Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        136,7,116,3,3,22,2,0,
-        1,28,0,0,0,0,0,0,
-        3,72,165,1,16,5,0,0,
+        136,7,116,3,3,22,0,2,
+        1,28,0,0,
+        3,72,165,1,
         // STR_s_ldst_immpost             - STR         St, [Xn|SP], #simm
-        137,7,116,3,3,22,3,0,
-        1,25,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        137,7,116,3,3,22,0,3,
+        1,25,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STR_s_ldst_immpre              - STR         St, [Xn|SP, #simm]!
-        138,7,116,3,3,22,2,0,
-        1,25,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        138,7,116,3,3,22,0,2,
+        1,25,0,0,
+        3,4,165,129,
         // STR_s_ldst_pos                 - STR         St, [Xn|SP{, #pimm}]
-        139,7,116,3,3,22,2,0,
-        1,25,0,0,0,0,0,0,
-        3,5,165,1,10,12,0,0,
+        139,7,116,3,3,22,0,2,
+        1,25,0,0,
+        3,5,165,1,
         // STR_s_ldst_regoff              - STR         St, [Xn|SP, (Wm|Xm){, extend, {amount}}]
-        140,7,116,3,3,22,2,0,
-        1,25,0,0,0,0,0,0,
-        3,40,165,1,16,5,0,0,
+        140,7,116,3,3,22,0,2,
+        1,25,0,0,
+        3,40,165,1,
         // STSHH_hi_hints                 - STSHH       policy
-        141,7,119,3,6,53,1,1,
+        141,7,119,3,6,53,0,1,
         10,20,5,1,
         // STTNP_64_ldstnapair_offs       - STTNP       Xt1, Xt2, [Xn|SP{, #imm}]
-        142,7,120,3,4,47,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        142,7,120,3,4,47,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,5,165,1,
         // STTNP_q_ldstnapair_offs        - STTNP       Qt1, Qt2, [Xn|SP{, #imm}]
-        143,7,120,3,3,29,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        143,7,120,3,3,29,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,5,165,1,
         // STTP_64_ldstpair_off           - STTP        Xt1, Xt2, [Xn|SP{, #imm}]
-        144,7,121,3,4,47,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        144,7,121,3,4,47,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,5,165,1,
         // STTP_64_ldstpair_post          - STTP        Xt1, Xt2, [Xn|SP], #imm
-        145,7,121,3,4,47,4,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        145,7,121,3,4,47,0,4,
+        1,17,0,0,
+        1,17,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // STTP_64_ldstpair_pre           - STTP        Xt1, Xt2, [Xn|SP, #imm]!
-        146,7,121,3,4,47,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        146,7,121,3,4,47,0,3,
+        1,17,0,0,
+        1,17,0,10,
+        3,4,165,129,
         // STTP_q_ldstpair_off            - STTP        Qt1, Qt2, [Xn|SP{, #imm}]
-        147,7,121,3,3,29,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,5,165,1,15,7,0,0,
+        147,7,121,3,3,29,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,5,165,1,
         // STTP_q_ldstpair_post           - STTP        Qt1, Qt2, [Xn|SP], #imm
-        148,7,121,3,3,29,4,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,7,1,15,7,0,0,
+        148,7,121,3,3,29,0,4,
+        1,28,0,0,
+        1,28,0,10,
+        3,1,165,0,
+        4,1,7,1,
         // STTP_q_ldstpair_pre            - STTP        Qt1, Qt2, [Xn|SP, #imm]!
-        149,7,121,3,3,29,3,0,
-        1,28,0,0,0,0,0,0,
-        1,28,0,10,0,0,0,0,
-        3,4,165,129,15,7,0,0,
+        149,7,121,3,3,29,0,3,
+        1,28,0,0,
+        1,28,0,10,
+        3,4,165,129,
         // STTRB_32_ldst_unpriv           - STTRB       Wt, [Xn|SP{, #simm}]
-        150,7,123,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        150,7,123,3,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STTRH_32_ldst_unpriv           - STTRH       Wt, [Xn|SP{, #simm}]
-        151,7,124,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        151,7,124,3,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STTR_32_ldst_unpriv            - STTR        Wt, [Xn|SP{, #simm}]
-        152,7,122,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        152,7,122,3,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STTR_64_ldst_unpriv            - STTR        Xt, [Xn|SP{, #simm}]
-        153,7,122,3,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        153,7,122,3,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // STTXR_sr32_ldstexclr_unpriv    - STTXR       Ws, Wt, [Xn|SP{, #0}]
-        154,7,125,3,4,47,3,1,
+        154,7,125,3,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // STTXR_sr64_ldstexclr_unpriv    - STTXR       Ws, Xt, [Xn|SP{, #0}]
-        155,7,125,3,4,47,3,1,
+        155,7,125,3,4,47,0,3,
         1,19,0,16,
         1,17,0,0,
         3,5,165,0,
         // STURB_32_ldst_unscaled         - STURB       Wt, [Xn|SP{, #simm}]
-        156,7,127,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        156,7,127,3,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STURH_32_ldst_unscaled         - STURH       Wt, [Xn|SP{, #simm}]
-        157,7,128,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        157,7,128,3,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STUR_32_ldst_unscaled          - STUR        Wt, [Xn|SP{, #simm}]
-        158,7,126,3,4,0,2,0,
-        1,19,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        158,7,126,3,4,0,0,2,
+        1,19,0,0,
+        3,5,165,1,
         // STUR_64_ldst_unscaled          - STUR        Xt, [Xn|SP{, #simm}]
-        159,7,126,3,4,0,2,0,
-        1,17,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        159,7,126,3,4,0,0,2,
+        1,17,0,0,
+        3,5,165,1,
         // STUR_b_ldst_unscaled           - STUR        Bt, [Xn|SP{, #simm}]
-        160,7,126,3,3,22,2,0,
-        1,23,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        160,7,126,3,3,22,0,2,
+        1,23,0,0,
+        3,5,165,1,
         // STUR_d_ldst_unscaled           - STUR        Dt, [Xn|SP{, #simm}]
-        161,7,126,3,3,22,2,0,
-        1,26,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        161,7,126,3,3,22,0,2,
+        1,26,0,0,
+        3,5,165,1,
         // STUR_h_ldst_unscaled           - STUR        Ht, [Xn|SP{, #simm}]
-        162,7,126,3,3,22,2,0,
-        1,24,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        162,7,126,3,3,22,0,2,
+        1,24,0,0,
+        3,5,165,1,
         // STUR_q_ldst_unscaled           - STUR        Qt, [Xn|SP{, #simm}]
-        163,7,126,3,3,22,2,0,
-        1,28,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        163,7,126,3,3,22,0,2,
+        1,28,0,0,
+        3,5,165,1,
         // STUR_s_ldst_unscaled           - STUR        St, [Xn|SP{, #simm}]
-        164,7,126,3,3,22,2,0,
-        1,25,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        164,7,126,3,3,22,0,2,
+        1,25,0,0,
+        3,5,165,1,
         // STXP_sp32_ldstexclp            - STXP        Ws, Wt1, Wt2, [Xn|SP{, #0}]
-        165,7,129,3,4,0,4,1,
+        165,7,129,3,4,0,0,4,
         1,19,0,16,
         1,19,0,0,
         1,19,0,10,
         3,5,165,0,
         // STXP_sp64_ldstexclp            - STXP        Ws, Xt1, Xt2, [Xn|SP{, #0}]
-        166,7,129,3,4,0,4,1,
+        166,7,129,3,4,0,0,4,
         1,19,0,16,
         1,17,0,0,
         1,17,0,10,
         3,5,165,0,
         // STXRB_sr32_ldstexclr           - STXRB       Ws, Wt, [Xn|SP{, #0}]
-        167,7,131,3,4,0,3,1,
+        167,7,131,3,4,0,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // STXRH_sr32_ldstexclr           - STXRH       Ws, Wt, [Xn|SP{, #0}]
-        168,7,132,3,4,0,3,1,
+        168,7,132,3,4,0,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // STXR_sr32_ldstexclr            - STXR        Ws, Wt, [Xn|SP{, #0}]
-        169,7,130,3,4,0,3,1,
+        169,7,130,3,4,0,0,3,
         1,19,0,16,
         1,19,0,0,
         3,5,165,0,
         // STXR_sr64_ldstexclr            - STXR        Ws, Xt, [Xn|SP{, #0}]
-        170,7,130,3,4,0,3,1,
+        170,7,130,3,4,0,0,3,
         1,19,0,16,
         1,17,0,0,
         3,5,165,0,
         // STZ2G_64soffset_ldsttags       - STZ2G       Xt|SP, [Xn|SP{, #simm}]
-        171,7,133,3,4,49,2,0,
-        1,18,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        171,7,133,3,4,49,0,2,
+        1,18,0,0,
+        3,5,165,1,
         // STZ2G_64spost_ldsttags         - STZ2G       Xt|SP, [Xn|SP], #simm
-        172,7,133,3,4,49,3,0,
-        1,18,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        172,7,133,3,4,49,0,3,
+        1,18,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STZ2G_64spre_ldsttags          - STZ2G       Xt|SP, [Xn|SP, #simm]!
-        173,7,133,3,4,49,2,0,
-        1,18,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        173,7,133,3,4,49,0,2,
+        1,18,0,0,
+        3,4,165,129,
         // STZGM_64bulk_ldsttags          - STZGM       Xt, [Xn|SP]
-        174,7,135,3,4,50,2,1,
+        174,7,135,3,4,50,0,2,
         1,17,0,0,
         3,1,165,0,
         // STZG_64soffset_ldsttags        - STZG        Xt|SP, [Xn|SP{, #simm}]
-        175,7,134,3,4,49,2,0,
-        1,18,0,0,0,0,0,0,
-        3,5,165,1,12,9,0,0,
+        175,7,134,3,4,49,0,2,
+        1,18,0,0,
+        3,5,165,1,
         // STZG_64spost_ldsttags          - STZG        Xt|SP, [Xn|SP], #simm
-        176,7,134,3,4,49,3,0,
-        1,18,0,0,0,0,0,0,
-        3,1,165,0,0,0,0,0,
-        4,1,137,1,12,9,0,0,
+        176,7,134,3,4,49,0,3,
+        1,18,0,0,
+        3,1,165,0,
+        4,1,137,1,
         // STZG_64spre_ldsttags           - STZG        Xt|SP, [Xn|SP, #simm]!
-        177,7,134,3,4,49,2,0,
-        1,18,0,0,0,0,0,0,
-        3,4,165,129,12,9,0,0,
+        177,7,134,3,4,49,0,2,
+        1,18,0,0,
+        3,4,165,129,
         // SUBG_64_addsub_immtags         - SUBG        Xd|SP, Xn|SP, #uimm6, #uimm4
-        178,7,137,3,4,49,4,0,
-        1,18,0,0,0,0,0,0,
-        1,18,0,5,0,0,0,0,
-        4,1,6,1,16,6,0,0,
-        4,1,4,1,10,4,0,0,
+        178,7,137,3,4,49,0,4,
+        1,18,0,0,
+        1,18,0,5,
+        4,1,6,1,
+        4,1,4,1,
         // SUBHN_asimddiff_n              - SUBHN       Vd.Tb, Vn.Ta, Vm.Ta
-        179,7,138,3,1,2,3,1,
+        179,7,138,3,1,2,4,3,
+        38,25,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SUBPS_64s_dp_2src              - SUBPS       Xd, Xn|SP, Xm|SP
-        180,7,140,3,4,49,3,1,
+        180,7,140,3,4,49,0,3,
         1,17,0,0,
         1,18,0,5,
         1,18,0,16,
         // SUBPT_64_addsub_pt             - SUBPT       Xd|SP, Xn|SP, Xm {, LSL #amount}
-        181,7,141,3,4,12,4,1,
+        181,7,141,3,4,12,0,4,
         1,18,0,0,
         1,18,0,5,
         1,17,0,16,
         8,5,0,106,
         // SUBP_64s_dp_2src               - SUBP        Xd, Xn|SP, Xm|SP
-        182,7,139,3,4,49,3,1,
+        182,7,139,3,4,49,0,3,
         1,17,0,0,
         1,18,0,5,
         1,18,0,16,
         // SUBS_32_addsub_shift           - SUBS        Wd, Wn, Wm {, shift, #amount}
-        183,7,142,3,4,0,4,1,
+        183,7,142,3,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,2,86,202,
         // SUBS_32s_addsub_ext            - SUBS        Wd, Wn|WSP, Wm {, extend, {#amount}}
-        184,7,142,3,4,0,4,1,
+        184,7,142,3,4,0,0,4,
         1,19,0,0,
         1,20,0,5,
         1,19,0,16,
-        9,109,106,0,
+        9,109,106,202,
         // SUBS_32s_addsub_imm            - SUBS        Wd, Wn|WSP, #imm {, shift}
-        185,7,142,3,4,0,4,0,
-        1,19,0,0,0,0,0,0,
-        1,20,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
-        8,1,54,0,0,0,0,0,
+        185,7,142,3,4,0,0,4,
+        1,19,0,0,
+        1,20,0,5,
+        4,1,12,1,
+        8,1,54,0,
         // SUBS_64_addsub_shift           - SUBS        Xd, Xn, Xm {, shift, #amount}
-        186,7,142,3,4,0,4,1,
+        186,7,142,3,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,2,86,202,
         // SUBS_64s_addsub_ext            - SUBS        Xd, Xn|SP, Rm {, extend, {#amount}}
-        187,7,142,3,4,0,4,1,
+        187,7,142,3,4,0,0,4,
         1,17,0,0,
         1,18,0,5,
         1,21,0,16,
-        9,109,106,0,
+        9,109,106,202,
         // SUBS_64s_addsub_imm            - SUBS        Xd, Xn|SP, #imm {, shift}
-        188,7,142,3,4,0,4,0,
-        1,17,0,0,0,0,0,0,
-        1,18,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
-        8,1,54,0,0,0,0,0,
+        188,7,142,3,4,0,0,4,
+        1,17,0,0,
+        1,18,0,5,
+        4,1,12,1,
+        8,1,54,0,
         // SUB_32_addsub_ext              - SUB         Wd|WSP, Wn|WSP, Wm {, extend, {#amount}}
-        189,7,136,3,4,0,4,1,
+        189,7,136,3,4,0,0,4,
         1,20,0,0,
         1,20,0,5,
         1,19,0,16,
         9,109,106,0,
         // SUB_32_addsub_imm              - SUB         Wd|WSP, Wn|WSP, #imm {, shift}
-        190,7,136,3,4,0,4,0,
-        1,20,0,0,0,0,0,0,
-        1,20,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
-        8,1,54,0,0,0,0,0,
+        190,7,136,3,4,0,0,4,
+        1,20,0,0,
+        1,20,0,5,
+        4,1,12,1,
+        8,1,54,0,
         // SUB_32_addsub_shift            - SUB         Wd, Wn, Wm {, shift, #amount}
-        191,7,136,3,4,0,4,1,
+        191,7,136,3,4,0,0,4,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         8,2,86,202,
         // SUB_64_addsub_ext              - SUB         Xd|SP, Xn|SP, Rm {, extend, {#amount}}
-        192,7,136,3,4,0,4,1,
+        192,7,136,3,4,0,0,4,
         1,18,0,0,
         1,18,0,5,
         1,21,0,16,
-        9,109,106,0,
+        9,109,106,202,
         // SUB_64_addsub_imm              - SUB         Xd|SP, Xn|SP, #imm {, shift}
-        193,7,136,3,4,0,4,0,
-        1,18,0,0,0,0,0,0,
-        1,18,0,5,0,0,0,0,
-        4,1,12,1,10,12,0,0,
-        8,1,54,0,0,0,0,0,
+        193,7,136,3,4,0,0,4,
+        1,18,0,0,
+        1,18,0,5,
+        4,1,12,1,
+        8,1,54,0,
         // SUB_64_addsub_shift            - SUB         Xd, Xn, Xm {, shift, #amount}
-        194,7,136,3,4,0,4,1,
+        194,7,136,3,4,0,0,4,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         8,2,86,202,
         // SUB_asimdsame_only             - SUB         Vd.T, Vn.T, Vm.T
-        195,7,136,3,1,2,3,1,
+        195,7,136,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // SUB_asisdsame_only             - SUB         Dd, Dn, Dm
-        196,7,136,3,1,2,3,1,
+        196,7,136,3,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // SUDOT_asimdelem_d              - SUDOT       Vd.Ta, Vn.Tb, Vm.4B[index]
-        197,7,143,3,1,35,3,1,
+        197,7,143,3,1,35,6,3,
+        16,18,9,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,0,16,
+        1,27,3,16,
         // SUQADD_asimdmisc_r             - SUQADD      Vd.T, Vn.T
-        198,7,144,3,1,2,2,1,
+        198,7,144,3,1,2,2,2,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // SUQADD_asisdmisc_r             - SUQADD      Vd, Vn
-        199,7,144,3,1,2,2,1,
+        199,7,144,3,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // SVC_ex_exception               - SVC         #imm
-        200,7,145,3,6,0,1,0,
-        4,1,16,1,5,16,0,0,
+        200,7,145,3,6,0,0,1,
+        4,1,16,1,
         // SWPAB_32_memop                 - SWPAB       Ws, Wt, [Xn|SP]
-        201,7,148,3,4,44,3,1,
+        201,7,148,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPAH_32_memop                 - SWPAH       Ws, Wt, [Xn|SP]
-        202,7,149,3,4,44,3,1,
+        202,7,149,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPALB_32_memop                - SWPALB      Ws, Wt, [Xn|SP]
-        203,7,151,3,4,44,3,1,
+        203,7,151,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPALH_32_memop                - SWPALH      Ws, Wt, [Xn|SP]
-        204,7,152,3,4,44,3,1,
+        204,7,152,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPAL_32_memop                 - SWPAL       Ws, Wt, [Xn|SP]
-        205,7,150,3,4,44,3,1,
+        205,7,150,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPAL_64_memop                 - SWPAL       Xs, Xt, [Xn|SP]
-        206,7,150,3,4,44,3,1,
+        206,7,150,3,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // SWPA_32_memop                  - SWPA        Ws, Wt, [Xn|SP]
-        207,7,147,3,4,44,3,1,
+        207,7,147,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPA_64_memop                  - SWPA        Xs, Xt, [Xn|SP]
-        208,7,147,3,4,44,3,1,
+        208,7,147,3,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // SWPB_32_memop                  - SWPB        Ws, Wt, [Xn|SP]
-        209,7,153,3,4,44,3,1,
+        209,7,153,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPH_32_memop                  - SWPH        Ws, Wt, [Xn|SP]
-        210,7,154,3,4,44,3,1,
+        210,7,154,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPLB_32_memop                 - SWPLB       Ws, Wt, [Xn|SP]
-        211,7,156,3,4,44,3,1,
+        211,7,156,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPLH_32_memop                 - SWPLH       Ws, Wt, [Xn|SP]
-        212,7,157,3,4,44,3,1,
+        212,7,157,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPL_32_memop                  - SWPL        Ws, Wt, [Xn|SP]
-        213,7,155,3,4,44,3,1,
+        213,7,155,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPL_64_memop                  - SWPL        Xs, Xt, [Xn|SP]
-        214,7,155,3,4,44,3,1,
+        214,7,155,3,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // SWPPAL_128_memop_128           - SWPPAL      Xt1, Xt2, [Xn|SP]
-        215,7,160,3,4,45,3,1,
+        215,7,160,3,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // SWPPA_128_memop_128            - SWPPA       Xt1, Xt2, [Xn|SP]
-        216,7,159,3,4,45,3,1,
+        216,7,159,3,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // SWPPL_128_memop_128            - SWPPL       Xt1, Xt2, [Xn|SP]
-        217,7,161,3,4,45,3,1,
+        217,7,161,3,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // SWPP_128_memop_128             - SWPP        Xt1, Xt2, [Xn|SP]
-        218,7,158,3,4,45,3,1,
+        218,7,158,3,4,45,0,3,
         1,17,0,0,
         1,17,0,16,
         3,1,165,0,
         // SWPTAL_32_memop_unpriv         - SWPTAL      Ws, Wt, [Xn|SP]
-        219,7,164,3,4,47,3,1,
+        219,7,164,3,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPTAL_64_memop_unpriv         - SWPTAL      Xs, Xt, [Xn|SP]
-        220,7,164,3,4,47,3,1,
+        220,7,164,3,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // SWPTA_32_memop_unpriv          - SWPTA       Ws, Wt, [Xn|SP]
-        221,7,163,3,4,47,3,1,
+        221,7,163,3,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPTA_64_memop_unpriv          - SWPTA       Xs, Xt, [Xn|SP]
-        222,7,163,3,4,47,3,1,
+        222,7,163,3,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // SWPTL_32_memop_unpriv          - SWPTL       Ws, Wt, [Xn|SP]
-        223,7,165,3,4,47,3,1,
+        223,7,165,3,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPTL_64_memop_unpriv          - SWPTL       Xs, Xt, [Xn|SP]
-        224,7,165,3,4,47,3,1,
+        224,7,165,3,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // SWPT_32_memop_unpriv           - SWPT        Ws, Wt, [Xn|SP]
-        225,7,162,3,4,47,3,1,
+        225,7,162,3,4,47,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWPT_64_memop_unpriv           - SWPT        Xs, Xt, [Xn|SP]
-        226,7,162,3,4,47,3,1,
+        226,7,162,3,4,47,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // SWP_32_memop                   - SWP         Ws, Wt, [Xn|SP]
-        227,7,146,3,4,44,3,1,
+        227,7,146,3,4,44,0,3,
         1,19,0,16,
         1,19,0,0,
         3,1,165,0,
         // SWP_64_memop                   - SWP         Xs, Xt, [Xn|SP]
-        228,7,146,3,4,44,3,1,
+        228,7,146,3,4,44,0,3,
         1,17,0,16,
         1,17,0,0,
         3,1,165,0,
         // SYSL_rc_systeminstrs           - SYSL        Xt, #op1, Cn, Cm, #op2
-        229,7,167,3,6,0,5,0,
-        1,17,0,0,0,0,0,0,
-        4,1,3,1,16,3,0,0,
-        1,46,0,12,0,0,0,0,
-        1,46,0,8,0,0,0,0,
-        4,1,3,1,5,3,0,0,
+        229,7,167,3,6,0,0,5,
+        1,17,0,0,
+        4,1,3,1,
+        1,46,0,12,
+        1,46,0,8,
+        4,1,3,1,
         // SYSP_cr_syspairinstrs          - SYSP        #op1, Cn, Cm, #op2, {Xt1, Xt2}
-        230,7,168,3,6,65,5,0,
-        4,1,3,1,16,3,0,0,
-        1,46,0,12,0,0,0,0,
-        1,46,0,8,0,0,0,0,
-        4,1,3,1,5,3,0,0,
-        2,2,0,17,0,0,0,0,
+        230,7,168,3,6,65,0,5,
+        4,1,3,1,
+        1,46,0,12,
+        1,46,0,8,
+        4,1,3,1,
+        2,2,3,17,
         // SYS_cr_systeminstrs            - SYS         #op1, Cn, Cm, #op2, {Xt}
-        231,7,166,3,6,0,5,0,
-        4,1,3,1,16,3,0,0,
-        1,46,0,12,0,0,0,0,
-        1,46,0,8,0,0,0,0,
-        4,1,3,1,5,3,0,0,
-        2,1,0,17,0,0,0,0,
+        231,7,166,3,6,0,0,5,
+        4,1,3,1,
+        1,46,0,12,
+        1,46,0,8,
+        4,1,3,1,
+        2,1,3,17,
         // TBL_asimdtbl_l1_1              - TBL         Vd.Ta, {Vn.16B}, Vm.Ta
-        232,7,169,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        2,1,0,27,0,5,0,0,
-        1,27,0,16,0,0,0,0,
+        232,7,169,3,1,2,4,3,
+        18,5,0,0,
+        1,27,0,0,
+        2,1,0,27,
+        1,27,0,16,
         // TBL_asimdtbl_l2_2              - TBL         Vd.Ta, {Vn.16B, Vn+1.16B}, Vm.Ta
-        233,7,169,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        2,2,0,27,0,5,0,0,
-        1,27,0,16,0,0,0,0,
+        233,7,169,3,1,2,4,3,
+        18,5,0,0,
+        1,27,0,0,
+        2,2,0,27,
+        1,27,0,16,
         // TBL_asimdtbl_l3_3              - TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta
-        234,7,169,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        2,3,0,27,0,5,0,0,
-        1,27,0,16,0,0,0,0,
+        234,7,169,3,1,2,4,3,
+        18,5,0,0,
+        1,27,0,0,
+        2,3,0,27,
+        1,27,0,16,
         // TBL_asimdtbl_l4_4              - TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta
-        235,7,169,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        2,4,0,27,0,5,0,0,
-        1,27,0,16,0,0,0,0,
+        235,7,169,3,1,2,4,3,
+        18,5,0,0,
+        1,27,0,0,
+        2,4,0,27,
+        1,27,0,16,
         // TBNZ_only_testbranch           - TBNZ        Rt, #imm, label
-        236,7,170,3,4,0,3,0,
-        1,21,0,0,0,0,0,0,
-        4,1,6,2,19,5,31,1,
-        7,1,14,1,5,14,0,0,
+        236,7,170,3,4,0,0,3,
+        1,21,0,0,
+        4,1,6,2,
+        7,1,14,1,
         // TBX_asimdtbl_l1_1              - TBX         Vd.Ta, {Vn.16B}, Vm.Ta
-        237,7,171,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        2,1,0,27,0,5,0,0,
-        1,27,0,16,0,0,0,0,
+        237,7,171,3,1,2,4,3,
+        18,5,0,0,
+        1,27,0,0,
+        2,1,6,27,
+        1,27,0,16,
         // TBX_asimdtbl_l2_2              - TBX         Vd.Ta, {Vn.16B, Vn+1.16B}, Vm.Ta
-        238,7,171,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        2,2,0,27,0,5,0,0,
-        1,27,0,16,0,0,0,0,
+        238,7,171,3,1,2,4,3,
+        18,5,0,0,
+        1,27,0,0,
+        2,2,6,27,
+        1,27,0,16,
         // TBX_asimdtbl_l3_3              - TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta
-        239,7,171,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        2,3,0,27,0,5,0,0,
-        1,27,0,16,0,0,0,0,
+        239,7,171,3,1,2,4,3,
+        18,5,0,0,
+        1,27,0,0,
+        2,3,6,27,
+        1,27,0,16,
         // TBX_asimdtbl_l4_4              - TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta
-        240,7,171,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        2,4,0,27,0,5,0,0,
-        1,27,0,16,0,0,0,0,
+        240,7,171,3,1,2,4,3,
+        18,5,0,0,
+        1,27,0,0,
+        2,4,6,27,
+        1,27,0,16,
         // TBZ_only_testbranch            - TBZ         Rt, #imm, label
-        241,7,172,3,4,0,3,0,
-        1,21,0,0,0,0,0,0,
-        4,1,6,2,19,5,31,1,
-        7,1,14,1,5,14,0,0,
+        241,7,172,3,4,0,0,3,
+        1,21,0,0,
+        4,1,6,2,
+        7,1,14,1,
         // TCANCEL_ex_exception           - TCANCEL     #imm
-        242,7,173,3,6,68,1,0,
-        4,1,16,1,5,16,0,0,
+        242,7,173,3,6,68,0,1,
+        4,1,16,1,
         // TCOMMIT_only_barriers          - TCOMMIT    
-        243,7,174,3,6,68,0,1,
+        243,7,174,3,6,68,0,0,
         // TRN1_asimdperm_only            - TRN1        Vd.T, Vn.T, Vm.T
-        244,7,175,3,1,2,3,1,
+        244,7,175,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // TRN2_asimdperm_only            - TRN2        Vd.T, Vn.T, Vm.T
-        245,7,176,3,1,2,3,1,
+        245,7,176,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // TSB_hc_hints                   - TSB         CSYNC
-        246,7,177,3,6,69,1,1,
+        246,7,177,3,6,69,0,1,
         12,3,0,0,
         // TSTART_br_systemresult         - TSTART      Xt
-        247,7,178,3,6,68,1,1,
+        247,7,178,3,6,68,0,1,
         1,17,0,0,
         // TTEST_br_systemresult          - TTEST       Xt
-        248,7,179,3,6,68,1,1,
+        248,7,179,3,6,68,0,1,
         1,17,0,0,
         // UABAL_asimddiff_l              - UABAL       Vd.Ta, Vn.Tb, Vm.Tb
-        249,7,181,3,1,2,3,1,
+        249,7,181,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UABA_asimdsame_only            - UABA        Vd.T, Vn.T, Vm.T
-        250,7,180,3,1,2,3,1,
+        250,7,180,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UABDL_asimddiff_l              - UABDL       Vd.Ta, Vn.Tb, Vm.Tb
-        251,7,183,3,1,2,3,1,
+        251,7,183,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UABD_asimdsame_only            - UABD        Vd.T, Vn.T, Vm.T
-        252,7,182,3,1,2,3,1,
+        252,7,182,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UADALP_asimdmisc_p             - UADALP      Vd.Ta, Vn.Tb
-        253,7,184,3,1,2,2,1,
+        253,7,184,3,1,2,4,2,
+        32,38,0,0,
         1,27,0,0,
         1,27,0,5,
         // UADDLP_asimdmisc_p             - UADDLP      Vd.Ta, Vn.Tb
-        254,7,186,3,1,2,2,1,
+        254,7,186,3,1,2,4,2,
+        32,38,0,0,
         1,27,0,0,
         1,27,0,5,
         // UADDLV_asimdall_only           - UADDLV      Vd, Vn.T
-        255,7,187,3,1,2,2,1,
+        255,7,187,3,1,2,2,2,
+        35,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // UADDL_asimddiff_l              - UADDL       Vd.Ta, Vn.Tb, Vm.Tb
-        0,8,185,3,1,2,3,1,
+        0,8,185,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UADDW_asimddiff_w              - UADDW       Vd.Ta, Vn.Ta, Vm.Tb
-        1,8,188,3,1,2,3,1,
+        1,8,188,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UBFM_32m_bitfield              - UBFM        Wd, Wn, #immr, #imms
-        2,8,189,3,4,0,4,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,6,1,16,6,0,0,
-        4,1,6,1,10,6,0,0,
+        2,8,189,3,4,0,0,4,
+        1,19,0,0,
+        1,19,0,5,
+        4,1,6,1,
+        4,1,6,1,
         // UBFM_64m_bitfield              - UBFM        Xd, Xn, #immr, #imms
-        3,8,189,3,4,0,4,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,6,1,16,6,0,0,
-        4,1,6,1,10,6,0,0,
+        3,8,189,3,4,0,0,4,
+        1,17,0,0,
+        1,17,0,5,
+        4,1,6,1,
+        4,1,6,1,
         // UCVTF_asimdmisc_r              - UCVTF       Vd.T, Vn.T
-        4,8,190,3,1,2,2,1,
+        4,8,190,3,1,2,2,2,
+        19,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // UCVTF_asimdmiscfp16_r          - UCVTF       Vd.T, Vn.T
-        5,8,190,3,1,4,2,1,
+        5,8,190,3,1,4,2,2,
+        17,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // UCVTF_asimdshf_c               - UCVTF       Vd.T, Vn.T, #fbits
-        6,8,190,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,4,7,1,16,7,0,0,
+        6,8,190,3,1,2,2,3,
+        43,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,4,7,1,
         // UCVTF_asisdmisc_r              - UCVTF       Vd, Vn
-        7,8,190,3,1,2,2,1,
+        7,8,190,3,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // UCVTF_asisdmiscfp16_r          - UCVTF       Hd, Hn
-        8,8,190,3,1,4,2,1,
+        8,8,190,3,1,4,0,2,
         1,24,0,0,
         1,24,0,5,
         // UCVTF_asisdshf_c               - UCVTF       Vd, Vn, #fbits
-        9,8,190,3,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,4,7,1,16,7,0,0,
+        9,8,190,3,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,4,7,1,
         // UCVTF_d32_float2fix            - UCVTF       Dd, Wn, #fbits
-        10,8,190,3,2,0,3,0,
-        1,26,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        10,8,190,3,2,0,0,3,
+        1,26,0,0,
+        1,19,0,5,
+        4,1,6,1,
         // UCVTF_d32_float2int            - UCVTF       Dd, Wn
-        11,8,190,3,2,0,2,1,
+        11,8,190,3,2,0,0,2,
         1,26,0,0,
         1,19,0,5,
         // UCVTF_d64_float2fix            - UCVTF       Dd, Xn, #fbits
-        12,8,190,3,2,0,3,0,
-        1,26,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        12,8,190,3,2,0,0,3,
+        1,26,0,0,
+        1,17,0,5,
+        4,1,6,1,
         // UCVTF_d64_float2int            - UCVTF       Dd, Xn
-        13,8,190,3,2,0,2,1,
+        13,8,190,3,2,0,0,2,
         1,26,0,0,
         1,17,0,5,
         // UCVTF_h32_float2fix            - UCVTF       Hd, Wn, #fbits
-        14,8,190,3,2,0,3,0,
-        1,24,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        14,8,190,3,2,0,0,3,
+        1,24,0,0,
+        1,19,0,5,
+        4,1,6,1,
         // UCVTF_h32_float2int            - UCVTF       Hd, Wn
-        15,8,190,3,2,0,2,1,
+        15,8,190,3,2,0,0,2,
         1,24,0,0,
         1,19,0,5,
         // UCVTF_h64_float2fix            - UCVTF       Hd, Xn, #fbits
-        16,8,190,3,2,0,3,0,
-        1,24,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        16,8,190,3,2,0,0,3,
+        1,24,0,0,
+        1,17,0,5,
+        4,1,6,1,
         // UCVTF_h64_float2int            - UCVTF       Hd, Xn
-        17,8,190,3,2,0,2,1,
+        17,8,190,3,2,0,0,2,
         1,24,0,0,
         1,17,0,5,
         // UCVTF_s32_float2fix            - UCVTF       Sd, Wn, #fbits
-        18,8,190,3,2,0,3,0,
-        1,25,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        18,8,190,3,2,0,0,3,
+        1,25,0,0,
+        1,19,0,5,
+        4,1,6,1,
         // UCVTF_s32_float2int            - UCVTF       Sd, Wn
-        19,8,190,3,2,0,2,1,
+        19,8,190,3,2,0,0,2,
         1,25,0,0,
         1,19,0,5,
         // UCVTF_s64_float2fix            - UCVTF       Sd, Xn, #fbits
-        20,8,190,3,2,0,3,0,
-        1,25,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        20,8,190,3,2,0,0,3,
+        1,25,0,0,
+        1,17,0,5,
+        4,1,6,1,
         // UCVTF_s64_float2int            - UCVTF       Sd, Xn
-        21,8,190,3,2,0,2,1,
+        21,8,190,3,2,0,0,2,
         1,25,0,0,
         1,17,0,5,
         // UCVTF_sisd_32d                 - UCVTF       Dd, Sn
-        22,8,190,3,2,27,2,1,
+        22,8,190,3,2,27,0,2,
         1,26,0,0,
         1,25,0,5,
         // UCVTF_sisd_32h                 - UCVTF       Hd, Sn
-        23,8,190,3,2,27,2,1,
+        23,8,190,3,2,27,0,2,
         1,24,0,0,
         1,25,0,5,
         // UCVTF_sisd_64h                 - UCVTF       Hd, Dn
-        24,8,190,3,2,27,2,1,
+        24,8,190,3,2,27,0,2,
         1,24,0,0,
         1,26,0,5,
         // UCVTF_sisd_64s                 - UCVTF       Sd, Dn
-        25,8,190,3,2,27,2,1,
+        25,8,190,3,2,27,0,2,
         1,25,0,0,
         1,26,0,5,
         // UDF_only_perm_undef            - UDF         #imm
-        26,8,191,3,4,0,1,0,
-        4,1,16,1,0,16,0,0,
+        26,8,191,3,4,0,0,1,
+        4,1,16,1,
         // UDIV_32_dp_2src                - UDIV        Wd, Wn, Wm
-        27,8,192,3,4,0,3,1,
+        27,8,192,3,4,0,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // UDIV_64_dp_2src                - UDIV        Xd, Xn, Xm
-        28,8,192,3,4,0,3,1,
+        28,8,192,3,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // UDOT_asimdelem_d               - UDOT        Vd.Ta, Vn.Tb, Vm.4B[index]
-        29,8,193,3,1,17,3,1,
+        29,8,193,3,1,17,6,3,
+        16,18,9,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,0,16,
+        1,27,3,16,
         // UDOT_asimdsame2_d              - UDOT        Vd.Ta, Vn.Tb, Vm.Tb
-        30,8,193,3,1,17,3,1,
+        30,8,193,3,1,17,4,3,
+        16,18,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UHADD_asimdsame_only           - UHADD       Vd.T, Vn.T, Vm.T
-        31,8,194,3,1,2,3,1,
+        31,8,194,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UHSUB_asimdsame_only           - UHSUB       Vd.T, Vn.T, Vm.T
-        32,8,195,3,1,2,3,1,
+        32,8,195,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UMADDL_64wa_dp_3src            - UMADDL      Xd, Wn, Wm, Xa
-        33,8,196,3,4,0,4,1,
+        33,8,196,3,4,0,0,4,
         1,17,0,0,
         1,19,0,5,
         1,19,0,16,
         1,17,0,10,
         // UMAXP_asimdsame_only           - UMAXP       Vd.T, Vn.T, Vm.T
-        34,8,198,3,1,2,3,1,
+        34,8,198,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UMAXV_asimdall_only            - UMAXV       Vd, Vn.T
-        35,8,199,3,1,2,2,1,
+        35,8,199,3,1,2,2,2,
+        35,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // UMAX_32_dp_2src                - UMAX        Wd, Wn, Wm
-        36,8,197,3,4,14,3,1,
+        36,8,197,3,4,14,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // UMAX_32u_minmax_imm            - UMAX        Wd, Wn, #uimm
-        37,8,197,3,4,14,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,8,1,10,8,0,0,
+        37,8,197,3,4,14,0,3,
+        1,19,0,0,
+        1,19,0,5,
+        4,1,8,1,
         // UMAX_64_dp_2src                - UMAX        Xd, Xn, Xm
-        38,8,197,3,4,14,3,1,
+        38,8,197,3,4,14,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // UMAX_64u_minmax_imm            - UMAX        Xd, Xn, #uimm
-        39,8,197,3,4,14,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,8,1,10,8,0,0,
+        39,8,197,3,4,14,0,3,
+        1,17,0,0,
+        1,17,0,5,
+        4,1,8,1,
         // UMAX_asimdsame_only            - UMAX        Vd.T, Vn.T, Vm.T
-        40,8,197,3,1,2,3,1,
+        40,8,197,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UMINP_asimdsame_only           - UMINP       Vd.T, Vn.T, Vm.T
-        41,8,201,3,1,2,3,1,
+        41,8,201,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UMINV_asimdall_only            - UMINV       Vd, Vn.T
-        42,8,202,3,1,2,2,1,
+        42,8,202,3,1,2,2,2,
+        35,0,0,0,
         1,22,0,0,
         1,27,0,5,
         // UMIN_32_dp_2src                - UMIN        Wd, Wn, Wm
-        43,8,200,3,4,14,3,1,
+        43,8,200,3,4,14,0,3,
         1,19,0,0,
         1,19,0,5,
         1,19,0,16,
         // UMIN_32u_minmax_imm            - UMIN        Wd, Wn, #uimm
-        44,8,200,3,4,14,3,0,
-        1,19,0,0,0,0,0,0,
-        1,19,0,5,0,0,0,0,
-        4,1,8,1,10,8,0,0,
+        44,8,200,3,4,14,0,3,
+        1,19,0,0,
+        1,19,0,5,
+        4,1,8,1,
         // UMIN_64_dp_2src                - UMIN        Xd, Xn, Xm
-        45,8,200,3,4,14,3,1,
+        45,8,200,3,4,14,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // UMIN_64u_minmax_imm            - UMIN        Xd, Xn, #uimm
-        46,8,200,3,4,14,3,0,
-        1,17,0,0,0,0,0,0,
-        1,17,0,5,0,0,0,0,
-        4,1,8,1,10,8,0,0,
+        46,8,200,3,4,14,0,3,
+        1,17,0,0,
+        1,17,0,5,
+        4,1,8,1,
         // UMIN_asimdsame_only            - UMIN        Vd.T, Vn.T, Vm.T
-        47,8,200,3,1,2,3,1,
+        47,8,200,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UMLAL_asimddiff_l              - UMLAL       Vd.Ta, Vn.Tb, Vm.Tb
-        48,8,203,3,1,2,3,1,
+        48,8,203,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UMLAL_asimdelem_l              - UMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index]
-        49,8,203,3,1,2,3,1,
+        49,8,203,3,1,2,6,3,
+        23,31,22,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // UMLSL_asimddiff_l              - UMLSL       Vd.Ta, Vn.Tb, Vm.Tb
-        50,8,204,3,1,2,3,1,
+        50,8,204,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UMLSL_asimdelem_l              - UMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index]
-        51,8,204,3,1,2,3,1,
+        51,8,204,3,1,2,6,3,
+        23,31,22,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // UMMLA_asimdsame2_g             - UMMLA       Vd.4S, Vn.16B, Vm.16B
-        52,8,205,3,1,35,3,1,
+        52,8,205,3,1,35,4,3,
+        10,5,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UMOV_asimdins_w_w              - UMOV        Wd, Vn.Ts[index]
-        53,8,206,3,1,2,2,1,
+        53,8,206,3,1,2,2,2,
+        41,0,0,0,
         1,19,0,0,
-        1,27,16,5,
+        1,27,14,5,
         // UMOV_asimdins_x_x              - UMOV        Xd, Vn.D[index]
-        54,8,206,3,1,2,2,1,
+        54,8,206,3,1,2,2,2,
+        2,0,0,0,
         1,17,0,0,
-        1,27,17,5,
+        1,27,12,5,
         // UMSUBL_64wa_dp_3src            - UMSUBL      Xd, Wn, Wm, Xa
-        55,8,207,3,4,0,4,1,
+        55,8,207,3,4,0,0,4,
         1,17,0,0,
         1,19,0,5,
         1,19,0,16,
         1,17,0,10,
         // UMULH_64_dp_3src               - UMULH       Xd, Xn, Xm
-        56,8,208,3,4,0,3,1,
+        56,8,208,3,4,0,0,3,
         1,17,0,0,
         1,17,0,5,
         1,17,0,16,
         // UMULL_asimddiff_l              - UMULL       Vd.Ta, Vn.Tb, Vm.Tb
-        57,8,209,3,1,2,3,1,
+        57,8,209,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UMULL_asimdelem_l              - UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index]
-        58,8,209,3,1,2,3,1,
+        58,8,209,3,1,2,6,3,
+        23,31,22,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,13,0,
+        1,59,16,0,
         // UQADD_asimdsame_only           - UQADD       Vd.T, Vn.T, Vm.T
-        59,8,210,3,1,2,3,1,
+        59,8,210,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UQADD_asisdsame_only           - UQADD       Vd, Vn, Vm
-        60,8,210,3,1,2,3,1,
+        60,8,210,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // UQRSHL_asimdsame_only          - UQRSHL      Vd.T, Vn.T, Vm.T
-        61,8,211,3,1,2,3,1,
+        61,8,211,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UQRSHL_asisdsame_only          - UQRSHL      Vd, Vn, Vm
-        62,8,211,3,1,2,3,1,
+        62,8,211,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // UQRSHRN_asimdshf_n             - UQRSHRN     Vd.Tb, Vn.Ta, #shift
-        63,8,212,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        63,8,212,3,1,2,4,3,
+        45,39,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,3,7,1,
         // UQRSHRN_asisdshf_n             - UQRSHRN     Vbd, Van, #shift
-        64,8,212,3,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        64,8,212,3,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,3,7,1,
         // UQSHL_asimdsame_only           - UQSHL       Vd.T, Vn.T, Vm.T
-        65,8,213,3,1,2,3,1,
+        65,8,213,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UQSHL_asimdshf_r               - UQSHL       Vd.T, Vn.T, #shift
-        66,8,213,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,6,7,1,16,7,0,0,
+        66,8,213,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,6,7,1,
         // UQSHL_asisdsame_only           - UQSHL       Vd, Vn, Vm
-        67,8,213,3,1,2,3,1,
+        67,8,213,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // UQSHL_asisdshf_r               - UQSHL       Vd, Vn, #shift
-        68,8,213,3,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,6,7,1,16,7,0,0,
+        68,8,213,3,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,6,7,1,
         // UQSHRN_asimdshf_n              - UQSHRN      Vd.Tb, Vn.Ta, #shift
-        69,8,214,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        69,8,214,3,1,2,4,3,
+        45,39,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,3,7,1,
         // UQSHRN_asisdshf_n              - UQSHRN      Vbd, Van, #shift
-        70,8,214,3,1,2,3,0,
-        1,22,0,0,0,0,0,0,
-        1,22,0,5,0,0,0,0,
-        4,3,7,1,16,7,0,0,
+        70,8,214,3,1,2,0,3,
+        1,22,0,0,
+        1,22,0,5,
+        4,3,7,1,
         // UQSUB_asimdsame_only           - UQSUB       Vd.T, Vn.T, Vm.T
-        71,8,215,3,1,2,3,1,
+        71,8,215,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UQSUB_asisdsame_only           - UQSUB       Vd, Vn, Vm
-        72,8,215,3,1,2,3,1,
+        72,8,215,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
         1,22,0,16,
         // UQXTN_asimdmisc_n              - UQXTN       Vd.Tb, Vn.Ta
-        73,8,216,3,1,2,2,1,
+        73,8,216,3,1,2,4,2,
+        38,25,0,0,
         1,27,0,0,
         1,27,0,5,
         // UQXTN_asisdmisc_n              - UQXTN       Vbd, Van
-        74,8,216,3,1,2,2,1,
+        74,8,216,3,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // URECPE_asimdmisc_r             - URECPE      Vd.T, Vn.T
-        75,8,217,3,1,2,2,1,
+        75,8,217,3,1,2,2,2,
+        20,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // URHADD_asimdsame_only          - URHADD      Vd.T, Vn.T, Vm.T
-        76,8,218,3,1,2,3,1,
+        76,8,218,3,1,2,2,3,
+        38,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // URSHL_asimdsame_only           - URSHL       Vd.T, Vn.T, Vm.T
-        77,8,219,3,1,2,3,1,
+        77,8,219,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // URSHL_asisdsame_only           - URSHL       Dd, Dn, Dm
-        78,8,219,3,1,2,3,1,
+        78,8,219,3,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // URSHR_asimdshf_r               - URSHR       Vd.T, Vn.T, #shift
-        79,8,220,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,2,7,1,16,7,0,0,
+        79,8,220,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,2,7,1,
         // URSHR_asisdshf_r               - URSHR       Dd, Dn, #shift
-        80,8,220,3,1,2,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,7,1,16,7,0,0,
+        80,8,220,3,1,2,0,3,
+        1,26,0,0,
+        1,26,0,5,
+        4,1,7,1,
         // URSQRTE_asimdmisc_r            - URSQRTE     Vd.T, Vn.T
-        81,8,221,3,1,2,2,1,
+        81,8,221,3,1,2,2,2,
+        20,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // URSRA_asimdshf_r               - URSRA       Vd.T, Vn.T, #shift
-        82,8,222,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,2,7,1,16,7,0,0,
-        // URSRA_asisdshf_r               - URSRA       Dd, Dn, #shift
-        83,8,222,3,1,2,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,7,1,16,7,0,0,
-        // USDOT_asimdelem_d              - USDOT       Vd.Ta, Vn.Tb, Vm.4B[index]
-        84,8,223,3,1,35,3,1,
+        82,8,222,3,1,2,2,3,
+        44,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,27,0,16,
+        4,2,7,1,
+        // URSRA_asisdshf_r               - URSRA       Dd, Dn, #shift
+        83,8,222,3,1,2,0,3,
+        1,26,0,0,
+        1,26,0,5,
+        4,1,7,1,
+        // USDOT_asimdelem_d              - USDOT       Vd.Ta, Vn.Tb, Vm.4B[index]
+        84,8,223,3,1,35,6,3,
+        16,18,9,0,
+        1,27,0,0,
+        1,27,0,5,
+        1,27,3,16,
         // USDOT_asimdsame2_d             - USDOT       Vd.Ta, Vn.Tb, Vm.Tb
-        85,8,223,3,1,35,3,1,
+        85,8,223,3,1,35,4,3,
+        16,18,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // USHLL_asimdshf_l               - USHLL       Vd.Ta, Vn.Tb, #shift
-        86,8,225,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,5,7,1,16,7,0,0,
+        86,8,225,3,1,2,4,3,
+        39,45,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,5,7,1,
         // USHL_asimdsame_only            - USHL        Vd.T, Vn.T, Vm.T
-        87,8,224,3,1,2,3,1,
+        87,8,224,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // USHL_asisdsame_only            - USHL        Dd, Dn, Dm
-        88,8,224,3,1,2,3,1,
+        88,8,224,3,1,2,0,3,
         1,26,0,0,
         1,26,0,5,
         1,26,0,16,
         // USHR_asimdshf_r                - USHR        Vd.T, Vn.T, #shift
-        89,8,226,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,2,7,1,16,7,0,0,
+        89,8,226,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,2,7,1,
         // USHR_asisdshf_r                - USHR        Dd, Dn, #shift
-        90,8,226,3,1,2,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,7,1,16,7,0,0,
+        90,8,226,3,1,2,0,3,
+        1,26,0,0,
+        1,26,0,5,
+        4,1,7,1,
         // USMMLA_asimdsame2_g            - USMMLA      Vd.4S, Vn.16B, Vm.16B
-        91,8,227,3,1,35,3,1,
+        91,8,227,3,1,35,4,3,
+        10,5,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // USQADD_asimdmisc_r             - USQADD      Vd.T, Vn.T
-        92,8,228,3,1,2,2,1,
+        92,8,228,3,1,2,2,2,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         // USQADD_asisdmisc_r             - USQADD      Vd, Vn
-        93,8,228,3,1,2,2,1,
+        93,8,228,3,1,2,0,2,
         1,22,0,0,
         1,22,0,5,
         // USRA_asimdshf_r                - USRA        Vd.T, Vn.T, #shift
-        94,8,229,3,1,2,3,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        4,2,7,1,16,7,0,0,
+        94,8,229,3,1,2,2,3,
+        44,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        4,2,7,1,
         // USRA_asisdshf_r                - USRA        Dd, Dn, #shift
-        95,8,229,3,1,2,3,0,
-        1,26,0,0,0,0,0,0,
-        1,26,0,5,0,0,0,0,
-        4,1,7,1,16,7,0,0,
+        95,8,229,3,1,2,0,3,
+        1,26,0,0,
+        1,26,0,5,
+        4,1,7,1,
         // USUBL_asimddiff_l              - USUBL       Vd.Ta, Vn.Tb, Vm.Tb
-        96,8,230,3,1,2,3,1,
+        96,8,230,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // USUBW_asimddiff_w              - USUBW       Vd.Ta, Vn.Ta, Vm.Tb
-        97,8,231,3,1,2,3,1,
+        97,8,231,3,1,2,4,3,
+        25,38,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UZP1_asimdperm_only            - UZP1        Vd.T, Vn.T, Vm.T
-        98,8,232,3,1,2,3,1,
+        98,8,232,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // UZP2_asimdperm_only            - UZP2        Vd.T, Vn.T, Vm.T
-        99,8,233,3,1,2,3,1,
+        99,8,233,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // WFET_only_systeminstrswithreg  - WFET        Xt
-        100,8,235,3,6,70,1,1,
+        100,8,235,3,6,70,0,1,
         1,17,0,0,
         // WFE_hi_hints                   - WFE        
-        101,8,234,3,6,0,0,1,
+        101,8,234,3,6,0,0,0,
         // WFIT_only_systeminstrswithreg  - WFIT        Xt
-        102,8,237,3,6,70,1,1,
+        102,8,237,3,6,70,0,1,
         1,17,0,0,
         // WFI_hi_hints                   - WFI        
-        103,8,236,3,6,0,0,1,
+        103,8,236,3,6,0,0,0,
         // XAFLAG_m_pstate                - XAFLAG     
-        104,8,238,3,6,32,0,1,
+        104,8,238,3,6,32,0,0,
         // XAR_vvv2_crypto3_imm6          - XAR         Vd.2D, Vn.2D, Vm.2D, #imm6
-        105,8,239,3,1,60,4,0,
-        1,27,0,0,0,0,0,0,
-        1,27,0,5,0,0,0,0,
-        1,27,0,16,0,0,0,0,
-        4,1,6,1,10,6,0,0,
+        105,8,239,3,1,60,2,4,
+        7,0,0,0,
+        1,27,0,0,
+        1,27,0,5,
+        1,27,0,16,
+        4,1,6,1,
         // XPACD_64z_dp_1src              - XPACD       Xd
-        106,8,240,3,4,51,1,1,
+        106,8,240,3,4,51,0,1,
         1,17,0,0,
         // XPACI_64z_dp_1src              - XPACI       Xd
-        107,8,241,3,4,51,1,1,
+        107,8,241,3,4,51,0,1,
         1,17,0,0,
         // XPACLRI_hi_hints               - XPACLRI    
-        108,8,242,3,6,51,0,1,
+        108,8,242,3,6,51,0,0,
         // XTN_asimdmisc_n                - XTN         Vd.Tb, Vn.Ta
-        109,8,243,3,1,2,2,1,
+        109,8,243,3,1,2,4,2,
+        38,25,0,0,
         1,27,0,0,
         1,27,0,5,
         // YIELD_hi_hints                 - YIELD      
-        110,8,244,3,6,0,0,1,
+        110,8,244,3,6,0,0,0,
         // ZIP1_asimdperm_only            - ZIP1        Vd.T, Vn.T, Vm.T
-        111,8,245,3,1,2,3,1,
+        111,8,245,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
         // ZIP2_asimdperm_only            - ZIP2        Vd.T, Vn.T, Vm.T
-        112,8,246,3,1,2,3,1,
+        112,8,246,3,1,2,2,3,
+        37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,

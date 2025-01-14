@@ -18,7 +18,7 @@ public readonly unsafe struct Arm64Operands : IEnumerable<Arm64Operand>
         get
         {
             ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual((uint)index, (uint)Count);
-            return _instruction.IsOperandEncodingSize8Bytes ? new Arm64Operand(*((ulong*)_instruction.OperandsPtr + index), _instruction.RawValue) : new Arm64Operand(*((uint*)_instruction.OperandsPtr + index), _instruction.RawValue);
+            return _instruction.IsOperandEncodingSize4Bytes ? new Arm64Operand(*((ulong*)_instruction.OperandsPtr + index), _instruction.RawValue) : new Arm64Operand(*((uint*)_instruction.OperandsPtr + index), _instruction.RawValue);
         }
     }
 
@@ -32,22 +32,22 @@ public readonly unsafe struct Arm64Operands : IEnumerable<Arm64Operand>
     public struct Enumerator : IEnumerator<Arm64Operand>
     {
         private readonly byte* _operandPtr;
-        private readonly bool _isOperandEncodingSize8Bytes;
+        private readonly bool _isOperandEncodingSize4Bytes;
         private readonly int _count;
         private readonly Arm64RawInstruction _rawValue;
         private int _index;
         public Enumerator(Arm64Operands operands)
         {
             _operandPtr = operands._instruction.OperandsPtr;
-            _isOperandEncodingSize8Bytes = operands._instruction.IsOperandEncodingSize8Bytes;
+            _isOperandEncodingSize4Bytes = operands._instruction.IsOperandEncodingSize4Bytes;
             _count = operands.Count;
             _rawValue = operands._instruction.RawValue;
             _index = -1;
         }
         public Arm64Operand Current => (uint)_index < (uint)_count ?
-            _isOperandEncodingSize8Bytes
-                ? new Arm64Operand(*((ulong*)_operandPtr + _index), _rawValue)
-                : new Arm64Operand(*((uint*)_operandPtr + _index), _rawValue) : throw new InvalidOperationException();
+            _isOperandEncodingSize4Bytes
+                ? new Arm64Operand(*((uint*)_operandPtr + _index), _rawValue)
+                : new Arm64Operand(*((ulong*)_operandPtr + _index), _rawValue) : throw new InvalidOperationException();
 
         object IEnumerator.Current => Current;
 

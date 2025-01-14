@@ -116,7 +116,7 @@ public readonly record struct Arm64Register<#= kind #> : <#= kind == "V" ? "IArm
     /// <summary>
     /// Gets the <#= size #> x <#= vkind #> <#= kind #> register.
     /// </summary>
-    public Arm64RegisterV<#= size #><#= vkind #> T<#= size #><#= vkind #> => new(Index);
+    public Arm64RegisterV<#= size #><#= vkind #> T_<#= size #><#= vkind #> => new(Index);
 <# } // foreach size #>
 <# } // foreach vector #>
 <# } // if kind == V #>
