@@ -26,7 +26,7 @@ internal enum Arm64RegisterIndexEncodingKind : byte
     Std4,
     /// <summary>
     /// Special size:M:Rm encoding
-    /// size:(23:2),M:(20:1),Rm:(19:4)
+    /// size:(22:2),M:(20:1),Rm:(16:4)
     /// With Size:
     /// * BitFields = 00, Value = RESERVED
     /// * BitFields = 01, Value = UInt('0':Rm)

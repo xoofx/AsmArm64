@@ -3,7 +3,10 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
+using System.Numerics;
+using System.Text;
 using System.Text.RegularExpressions;
+using AsmArm64.CodeGen.Model;
 
 namespace AsmArm64.CodeGen;
 
@@ -24,6 +27,8 @@ partial class Arm64Processor
         GenerateInstructionIdDecoderTable();
         GenerateInstructionDecoderTable();
         GenerateInstructionIdTests();
+        GenerateVectorArrangements();
+        GenerateDynamicRegister();
     }
 
     private void GenerateMnemonicEnum()
@@ -368,7 +373,307 @@ partial class Arm64Processor
         }
         w.CloseBraceBlock();
     }
-    
+
+    private void GenerateVectorArrangements()
+    {
+        using var w = GetWriter("Arm64VectorArrangementHelper.gen.cs");
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteSummary("Decode vector arrangements from raw instruction.");
+        w.WriteLine("static class Arm64VectorArrangementHelper");
+        w.OpenBraceBlock();
+        {
+            // ---------------------------------------------
+            // Write the VectorArrangement decoding
+            // ---------------------------------------------
+            // public static bool TryDecode(Arm64RawInstruction rawValue, byte valueArrangementIndex, out Arm64RegisterVKind vKind, out int elementCount)
+            // {
+            //     switch (valueArrangementIndex)
+            //     {
+            //         case 0:
+            //             return TryDecodeFromBitValues((rawValue >> 10) & 0x1F, 14, out vKind, out elementCount);
+            //         default:
+            //             elementCount = 0;
+            //             vKind = Arm64RegisterVKind.Default;
+            //             return false;
+            //     }
+            // }
+
+            w.WriteLine("public static bool TryDecode(Arm64RawInstruction rawValue, byte valueArrangementIndex, out Arm64RegisterVKind vKind, out int elementCount)");
+            w.OpenBraceBlock();
+            {
+                w.WriteLine("switch (valueArrangementIndex)");
+                w.OpenBraceBlock();
+                {
+                    var builder = new StringBuilder();
+                    foreach (var vectorArrangement in _instructionSet.VectorArrangements)
+                    {
+                        w.WriteLine($"case {vectorArrangement.Index}:");
+                        w.Indent();
+
+                        if (vectorArrangement.Encoding.Count > 0)
+                        {
+                            builder.Clear();
+                            // We start from the lowest bits to the highest bits
+                            int accumulation = 0;
+                            for (var i = vectorArrangement.Encoding.Count - 1; i >= 0; i--)
+                            {
+                                var bitRange = vectorArrangement.Encoding[i];
+                                var mask = ((1U << bitRange.Width) - 1) << accumulation;
+
+                                if (i < vectorArrangement.Encoding.Count - 1)
+                                {
+                                    builder.Append(" | ");
+                                }
+
+                                builder.Append($"((rawValue >> {bitRange.LowBit - accumulation}) & 0x{mask:X})");
+                                accumulation += bitRange.Width;
+                            }
+
+                            w.WriteLine($"return TryDecodeFromBitValues({builder}, {vectorArrangement.VectorArrangementValuesIndex}, out vKind, out elementCount);");
+                        }
+                        else
+                        {
+                            var (vKind, elementCount) = GetVKindAndElementCount(vectorArrangement.ArrangementKind);
+                            w.WriteLine($"vKind = Arm64RegisterVKind.{vKind};");
+                            w.WriteLine($"elementCount = {elementCount};");
+                            w.WriteLine("return true;");
+                        }
+                        w.UnIndent();
+                    }
+                }
+                w.CloseBraceBlock();
+                w.WriteLine();
+                w.WriteLine("elementCount = 0;");
+                w.WriteLine("vKind = Arm64RegisterVKind.Default;");
+                w.WriteLine("return false;");
+            }
+            w.CloseBraceBlock();
+
+            // ---------------------------------------------
+            // Write the VectorArrangementValues decoding
+            // ---------------------------------------------
+            // private static bool TryDecodeFromBitValues(uint bitValues, byte valueArrangementValuesIndex, out Arm64RegisterVKind vKind, out int elementCount)
+            // {
+            //     switch (valueArrangementValuesIndex)
+            //     {
+            //         case 0:
+            //             switch (bitValues)
+            //             {
+            //                 case 0:
+            //                     vKind = Arm64RegisterVKind.D;
+            //                     elementCount = 16;
+            //                     return true;
+            //                     break;
+            //             }
+
+            //             break;
+            //     }
+            //     elementCount = 0;
+            //     vKind = Arm64RegisterVKind.Default;
+            //     return false;
+            // }
+
+            w.WriteLine("public static bool TryDecodeFromBitValues(uint bitValues, byte valueArrangementValuesIndex, out Arm64RegisterVKind vKind, out int elementCount)");
+            w.OpenBraceBlock();
+            {
+                w.WriteLine("switch (valueArrangementValuesIndex)");
+                w.OpenBraceBlock();
+                {
+                    foreach(var vectorArrangementValues in _instructionSet.VectorArrangementValues)
+                    {
+                        w.WriteLine($"case {vectorArrangementValues.Index}:");
+                        w.Indent();
+                        if (vectorArrangementValues.MappingKind == BitValuesMappingKind.Regular)
+                        {
+                            w.WriteLine($"switch (bitValues)");
+                            w.OpenBraceBlock();
+                            {
+                                foreach (var value in vectorArrangementValues.Items)
+                                {
+                                    if (value.Kind == Arm64RegisterVectorArrangementEncodingKind.Reserved || value.Kind == Arm64RegisterVectorArrangementEncodingKind.None)
+                                    {
+                                        continue;
+                                    }
+                                    w.WriteLine($"case {value.BitValue}:");
+                                    w.Indent();
+                                    var (vKind, elementCount) = GetVKindAndElementCount(value.Kind);
+                                    w.WriteLine($"vKind = Arm64RegisterVKind.{vKind};");
+                                    w.WriteLine($"elementCount = {elementCount};");
+                                    w.WriteLine("return true;");
+                                    w.UnIndent();
+                                }
+                            }
+                            w.CloseBraceBlock();
+                            w.WriteLine("break;");
+                        }
+                        else
+                        {
+                            Debug.Assert(vectorArrangementValues.MappingKind == BitValuesMappingKind.Masked);
+
+                            // Order from the highest number of bits sets to the lowest number
+                            // If the mask is 0, it means that all bits are sets
+                            var values = vectorArrangementValues.Items.Where(x => x.Kind != Arm64RegisterVectorArrangementEncodingKind.Reserved).OrderByDescending(x => BitOperations.PopCount(x.MaskValue == 0 ? uint.MaxValue : x.MaskValue)).ToList();
+
+                            foreach (var value in values)
+                            {
+                                w.WriteLine(value.MaskValue == 0
+                                    ? $"if (bitValues == {value.BitValue})"
+                                    : $"if ((bitValues & 0x{value.MaskValue:x}) == {value.BitValue})"
+                                );
+                                w.OpenBraceBlock();
+                                {
+                                    var (vKind, elementCount) = GetVKindAndElementCount(value.Kind);
+                                    w.WriteLine($"vKind = Arm64RegisterVKind.{vKind};");
+                                    w.WriteLine($"elementCount = {elementCount};");
+                                    w.WriteLine("return true;");
+                                }
+                                w.CloseBraceBlock();
+                            }
+
+                            w.WriteLine("break;");
+                        }
+                        w.UnIndent();
+                    }
+                }
+                w.CloseBraceBlock();
+                w.WriteLine();
+                w.WriteLine("elementCount = 0;");
+                w.WriteLine("vKind = Arm64RegisterVKind.Default;");
+                w.WriteLine("return false;");
+            }
+            w.CloseBraceBlock();
+        }
+        w.CloseBraceBlock();
+    }
+
+    private void GenerateDynamicRegister()
+    {
+        using var w = GetWriter("Arm64DynamicRegisterHelper.gen.cs");
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteSummary("Decode dynamic register from raw instruction.");
+        w.WriteLine("static class Arm64DynamicRegisterHelper");
+        w.OpenBraceBlock();
+        {
+            w.WriteLine("public static bool TryDecode(Arm64RawInstruction rawValue, byte dynamicSelectorIndex, out Arm64RegisterEncodingKind registerEncodingKind)");
+            w.OpenBraceBlock();
+            {
+                w.WriteLine("switch (dynamicSelectorIndex)");
+                w.OpenBraceBlock();
+                {
+                    var builder = new StringBuilder();
+                    foreach (var dynamicRegisterSelector in _instructionSet.DynamicRegisterSelectorList)
+                    {
+                        w.WriteLine($"case {dynamicRegisterSelector.Index}:");
+                        w.OpenBraceBlock();
+                        {
+                            var bitRange = dynamicRegisterSelector.BitEncoding;
+                            var mask = ((1U << bitRange.Width) - 1);
+                            w.WriteLine($"var bitValues = (rawValue >> {bitRange.LowBit}) & 0x{mask:X};");
+
+                            if (dynamicRegisterSelector.MappingKind == BitValuesMappingKind.Regular)
+                            {
+                                w.WriteLine($"switch (bitValues)");
+                                w.OpenBraceBlock();
+                                {
+                                    foreach (var value in dynamicRegisterSelector.BitValues)
+                                    {
+                                        if (value.RegisterKind == Arm64RegisterEncodingKind.None)
+                                        {
+                                            continue;
+                                        }
+
+                                        w.WriteLine($"case {value.BitValue}:");
+                                        w.Indent();
+                                        w.WriteLine($"registerEncodingKind = Arm64RegisterEncodingKind.{value.RegisterKind};");
+                                        w.WriteLine("return true;");
+                                        w.UnIndent();
+                                    }
+                                }
+                                w.CloseBraceBlock();
+                                w.WriteLine("break;");
+                            }
+                            else
+                            {
+                                Debug.Assert(dynamicRegisterSelector.MappingKind == BitValuesMappingKind.Masked);
+
+                                // Order from the highest number of bits sets to the lowest number
+                                // If the mask is 0, it means that all bits are sets
+                                var values = dynamicRegisterSelector.BitValues.Where(x => x.RegisterKind != Arm64RegisterEncodingKind.None).OrderByDescending(x => BitOperations.PopCount(x.MaskValue == 0 ? uint.MaxValue : x.MaskValue))
+                                    .ToList();
+
+                                foreach (var value in values)
+                                {
+                                    w.WriteLine(value.MaskValue == 0
+                                        ? $"if (bitValues == {value.BitValue})"
+                                        : $"if ((bitValues & 0x{value.MaskValue:x}) == {value.BitValue})"
+                                    );
+                                    w.OpenBraceBlock();
+                                    {
+                                        w.WriteLine($"registerEncodingKind = Arm64RegisterEncodingKind.{value.RegisterKind};");
+                                        w.WriteLine("return true;");
+                                    }
+                                    w.CloseBraceBlock();
+                                }
+
+                                w.WriteLine("break;");
+                            }
+                        }
+                        w.CloseBraceBlock();
+                    }
+                }
+                w.CloseBraceBlock();
+                w.WriteLine();
+                w.WriteLine("registerEncodingKind = Arm64RegisterEncodingKind.None;");
+                w.WriteLine("return false;");
+            }
+            w.CloseBraceBlock();
+        }
+        w.CloseBraceBlock();
+    }
+
+    private (string VKind, int ElementCount) GetVKindAndElementCount(Arm64RegisterVectorArrangementEncodingKind kind)
+    {
+        switch (kind)
+        {
+            case Arm64RegisterVectorArrangementEncodingKind.B:
+                return ("B", 0);
+            case Arm64RegisterVectorArrangementEncodingKind.H:
+                return ("H", 0);
+            case Arm64RegisterVectorArrangementEncodingKind.S:
+                return ("S", 0);
+            case Arm64RegisterVectorArrangementEncodingKind.D:
+                return ("D", 0);
+            case Arm64RegisterVectorArrangementEncodingKind.T_16B:
+                return ("B", 16);
+            case Arm64RegisterVectorArrangementEncodingKind.T_8B:
+                return ("B", 8);
+            case Arm64RegisterVectorArrangementEncodingKind.T_4B:
+                return ("B", 4);
+            case Arm64RegisterVectorArrangementEncodingKind.T_2B:
+                return ("B", 2);
+            case Arm64RegisterVectorArrangementEncodingKind.T_2H:
+                return ("H", 2);
+            case Arm64RegisterVectorArrangementEncodingKind.T_4H:
+                return ("H", 4);
+            case Arm64RegisterVectorArrangementEncodingKind.T_8H:
+                return ("H", 8);
+            case Arm64RegisterVectorArrangementEncodingKind.T_2S:
+                return ("S", 2);
+            case Arm64RegisterVectorArrangementEncodingKind.T_4S:
+                return ("S", 4);
+            case Arm64RegisterVectorArrangementEncodingKind.T_1D:
+                return ("D", 1);
+            case Arm64RegisterVectorArrangementEncodingKind.T_2D:
+                return ("D", 2);
+            case Arm64RegisterVectorArrangementEncodingKind.T_1Q:
+                return ("Q", 1);
+            default:
+                throw new ArgumentOutOfRangeException(nameof(kind), kind, null);
+        }
+    }
+
     private static string EscapeHtmlEntities(string text) => text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
 
     private CodeWriter GetWriter(string fileName, bool isTest = false)

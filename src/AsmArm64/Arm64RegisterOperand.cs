@@ -22,15 +22,50 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
 
         var value = rawValue >> bitIndex;
         var encodingIndex = (Arm64RegisterIndexEncodingKind)((byte)(descriptor >> 12) & 0xF); ;
-        int registerIndex = (int)(
-            encodingIndex == Arm64RegisterIndexEncodingKind.Std5
-                ? value & 0b11111
-                : encodingIndex == Arm64RegisterIndexEncodingKind.Std4
-                    ? value & 0b1111
-                    : throw new NotImplementedException());
+        int registerIndex;
+        switch (encodingIndex)
+        {
+            case Arm64RegisterIndexEncodingKind.Std5:
+                registerIndex = (int)(value & 0b11111);
+                break;
+            case Arm64RegisterIndexEncodingKind.Std4:
+                registerIndex = (int)(value & 0b1111);
+                break;
+            case Arm64RegisterIndexEncodingKind.SpecialMRm:
+            {
+                // Special size:M:Rm encoding
+                // size:(22:2),M:(20:1),Rm:(16:4)
+                // With Size:
+                // * BitFields = 00, Value = RESERVED
+                // * BitFields = 01, Value = UInt('0':Rm)
+                // * BitFields = 10, Value = UInt(M:Rm)
+                // * BitFields = 11, Value = RESERVED
+                var size = (rawValue >> 22) & 0b11;
+                switch (size)
+                {
+                    case 1:
+                        registerIndex = (int)((rawValue >> 16) & 0b1111);
+                        break;
+                    case 2:
+                        registerIndex = (int)((rawValue >> 16) & 0b11111);
+                        break;
+                    default:
+                        encodingKind = Arm64RegisterEncodingKind.None;
+                        registerIndex = 0;
+                        break;
+                }
+            }
+                break;
+            default:
+                encodingKind = Arm64RegisterEncodingKind.None;
+                registerIndex = 0;
+                break;
+        }
 
         Arm64RegisterKind registerKind;
         Arm64RegisterVKind vKind = Arm64RegisterVKind.Default;
+        int elementCount = 0;
+        encodedDynamic:
         switch (encodingKind)
         {
             case Arm64RegisterEncodingKind.X:
@@ -65,29 +100,37 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
                 break;
             case Arm64RegisterEncodingKind.V:
                 registerKind = Arm64RegisterKind.V;
+                // buffer[4] = (byte)VectorArrangementLocalIndex;
                 var vectorArrangementIndex = (byte)(descriptor >> 32);
+                if (vectorArrangementIndex != 0)
+                {
+                    if (!Arm64VectorArrangementHelper.TryDecode(rawValue, vectorArrangementIndex, out vKind, out elementCount))
+                    {
+                        registerKind = Arm64RegisterKind.Invalid;
+                    }
+                    else
+                    {
+                        registerKind = elementCount == 0 ? Arm64RegisterKind.VTypedScalar : Arm64RegisterKind.VTyped;
+                    }
+                }
                 break;
             case Arm64RegisterEncodingKind.DynamicXOrW:
-            {
-                registerKind = Arm64RegisterKind.X; // TODO
-                var dynamicSelectorIndex = (byte)(descriptor >> 32);
-                break;
-            }
             case Arm64RegisterEncodingKind.DynamicVScalar:
             {
-                registerKind = Arm64RegisterKind.V; // TODO
                 var dynamicSelectorIndex = (byte)(descriptor >> 32);
-                break;
+                Arm64DynamicRegisterHelper.TryDecode(rawValue, dynamicSelectorIndex, out encodingKind);
+                goto encodedDynamic;
             }
-            case Arm64RegisterEncodingKind.Z:
             case Arm64RegisterEncodingKind.C:
                 registerKind = Arm64RegisterKind.C;
                 break;
+            case Arm64RegisterEncodingKind.Z: // TODO: SVE / SVE2
             default:
-                throw new ArgumentOutOfRangeException();
+                registerKind = Arm64RegisterKind.Invalid;
+                break;
         }
 
-        Value = Arm64RegisterAny.Create(registerKind, vKind, registerIndex);
+        Value = Arm64RegisterAny.Create(registerKind, vKind, elementCount, registerIndex);
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Register;

@@ -276,13 +276,19 @@ sealed class DynamicRegisterSelector
 {
     public int Index { get; set; }
 
-    public int SelectorSize { get; set; }
+    public BitValuesMappingKind MappingKind { get; set; }
+
+    public int BitSize { get; set; }
+
+    public BitRange BitEncoding { get; set; }
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<BitRange> SelectorEncoding { get; } = new();
+    public List<BitValueToRegister> BitValues { get; } = new();
 
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<BitValueToRegister> MapBitValueToRegister { get; } = new();
+    public void UpdateKindFromItems()
+    {
+        MappingKind = BitValues.Any(x => x.RegisterKind != Arm64RegisterEncodingKind.None && x.MaskValue != 0) ? BitValuesMappingKind.Masked : BitValuesMappingKind.Regular;
+    }
 
     [JsonIgnore]
     internal List<RegisterOperandDescriptor> RegisterDescriptors { get; } = new();
@@ -293,18 +299,16 @@ sealed class DynamicRegisterSelector
     public override string ToString()
     {
         var builder = new StringBuilder();
-        builder.Append($"DynamicXorW[{SelectorSize}](");
-        builder.Append(string.Join(", ", SelectorEncoding));
-        builder.Append(") -> {");
-        for (int i = 0; i < MapBitValueToRegister.Count; i++)
+        builder.Append($"DynamicXorW[{BitSize}]{BitEncoding} -> {{");
+        for (int i = 0; i < BitValues.Count; i++)
         {
             if (i > 0)
             {
                 builder.Append(", ");
             }
-            builder.Append(MapBitValueToRegister[i]);
+            builder.Append(BitValues[i]);
         }
-        builder.Append("}");
+        builder.Append('}');
         return builder.ToString();
     }
 }
@@ -418,14 +422,76 @@ readonly record struct BitRange(int LowBit, int Width)
     public override string ToString() => $"({LowBit}:{Width})";
 }
 
-readonly record struct BitValueToRegister(string BitValues, Arm64RegisterEncodingKind RegisterKind)
+record BitValueToRegister : BitValueBase
 {
-    public override string ToString() => $"{BitValues} -> {RegisterKind}";
+    public BitValueToRegister(string bitValuesAsText, Arm64RegisterEncodingKind registerKind)  : base(bitValuesAsText)
+    {
+        this.RegisterKind = registerKind;
+    }
+
+    public Arm64RegisterEncodingKind RegisterKind { get; init; }
+
+    public override string ToString() => $"{BitValuesAsText} -> {RegisterKind}";
+
 }
 
-readonly record struct VectorArrangementValue(Arm64RegisterVectorArrangementEncodingKind Kind, string BitValues)
+abstract record BitValueBase
 {
-    public override string ToString() => $"{Kind} = {BitValues}";
+    protected BitValueBase(string bitValuesAsText)
+    {
+        this.BitValuesAsText = bitValuesAsText;
+
+        if (bitValuesAsText.Contains('x'))
+        {
+            uint maskValue = 0;
+            uint value = 0;
+            foreach (var c in bitValuesAsText)
+            {
+                Debug.Assert(c == '0' || c == '1' || c == 'x');
+                maskValue <<= 1;
+                maskValue |= (c == 'x') ? 0U : 1;
+                value <<= 1;
+                value |= (c == '1') ? 1U : 0;
+            }
+            MaskValue = maskValue;
+            BitValue = value;
+        }
+        else
+        {
+            uint value = 0;
+            foreach (var c in bitValuesAsText)
+            {
+                Debug.Assert(c == '0' || c == '1');
+                value <<= 1;
+                value |= (c == '1') ? 1U : 0;
+            }
+            BitValue = value;
+        }
+
+        BitCount = bitValuesAsText.Length;
+    }
+
+    public string BitValuesAsText { get; init; }
+
+    [JsonIgnore]
+    public int BitCount { get; set; }
+
+    public uint MaskValue { get; set; }
+
+    public uint BitValue { get; set; }
+}
+
+
+record VectorArrangementValue : BitValueBase
+{
+    public VectorArrangementValue(string bitValuesAsText, Arm64RegisterVectorArrangementEncodingKind kind) : base(bitValuesAsText)
+    {
+        this.Kind = kind;
+    }
+
+    public Arm64RegisterVectorArrangementEncodingKind Kind { get; init; }
+
+    public override string ToString() => $"{BitValuesAsText} -> {Kind}";
 }
 
 record VectorArrangement
@@ -581,6 +647,20 @@ record VectorArrangement
     }
 }
 
+[JsonConverter(typeof(JsonStringEnumConverter))]
+enum BitValuesMappingKind
+{
+    None,
+    /// <summary>
+    /// The <see cref="VectorArrangementValue"/> are regular value (no mask).
+    /// </summary>
+    Regular,
+    /// <summary>
+    /// The <see cref="VectorArrangementValue"/> are masked values (They have xxx bits not to take into account)
+    /// </summary>
+    Masked
+}
+
 sealed class VectorArrangementValues
 {
     [JsonIgnore]
@@ -588,8 +668,15 @@ sealed class VectorArrangementValues
 
     public int Index { get; set; }
 
+    public BitValuesMappingKind MappingKind { get; set; }
+
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<VectorArrangementValue> Items { get; } = new();
+
+    public void UpdateKindFromItems()
+    {
+        MappingKind = Items.Any(x => x.Kind != Arm64RegisterVectorArrangementEncodingKind.Reserved && x.MaskValue != 0) ? BitValuesMappingKind.Masked : BitValuesMappingKind.Regular;
+    }
 
     public override int GetHashCode()
     {

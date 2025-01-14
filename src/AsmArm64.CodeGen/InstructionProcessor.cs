@@ -275,6 +275,15 @@ internal sealed class InstructionProcessor
                     var index = vectorArrangement.Index;
                     instruction.VectorArrangementIndices.Add(index);
                 }
+
+                //if (instruction.VectorArrangements.Count > 1)
+                //{
+                //    Console.WriteLine($"Instruction {instruction.Id} {instruction.FullSyntax}");
+                //    foreach (var vArrange in instruction.VectorArrangements)
+                //    {
+                //        Console.WriteLine($"  {vArrange}");
+                //    }
+                //}
             }
         }
         
@@ -1055,7 +1064,10 @@ internal sealed class InstructionProcessor
     {
         var symbol = register.TextElements[0].Symbol!;
         var dynamicDescriptor = new DynamicRegisterSelector();
-        dynamicDescriptor.SelectorSize = CollectEncodingForSymbol(instruction, symbol.BitValueNames, dynamicDescriptor.SelectorEncoding);
+        var encoding = new List<BitRange>();
+        dynamicDescriptor.BitSize = CollectEncodingForSymbol(instruction, symbol.BitValueNames, encoding);
+        Debug.Assert(encoding.Count == 1);
+        dynamicDescriptor.BitEncoding = encoding[0];
 
         foreach (var bitValue in symbol.BitValues)
         {
@@ -1071,9 +1083,11 @@ internal sealed class InstructionProcessor
                 _ => throw new NotSupportedException($"Unsupported dynamic register value `{bitValue.Value}` in instruction `{instruction.Id}`")
             };
 
-            dynamicDescriptor.MapBitValueToRegister.Add(new(string.Concat(bitValue.BitFields), registerOperandKind));
+            dynamicDescriptor.BitValues.Add(new(string.Concat(bitValue.BitFields), registerOperandKind));
         }
         Debug.Assert(register.TextElements.Count == 2 && register.TextElements[1].Symbol is not null, $"Invalid encoding for instruction {instruction.Id}");
+
+        dynamicDescriptor.UpdateKindFromItems();
 
         var id = dynamicDescriptor.Id;
         if (!_dynamicRegisterSelectors.TryGetValue(id, out var existingDescriptor))
@@ -1180,9 +1194,10 @@ internal sealed class InstructionProcessor
             {
                 var elementKind = ParseArrangementKind(bitValue.Value);
                 var bitValues = string.Concat(bitValue.BitFields);
-                var element = new VectorArrangementValue(elementKind, bitValues);
+                var element = new VectorArrangementValue(bitValues, elementKind);
                 values.Items.Add(element);
             }
+            values.UpdateKindFromItems();
 
             var id = values.Id;
 

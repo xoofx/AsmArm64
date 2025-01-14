@@ -18,7 +18,7 @@ public readonly record struct Arm64RegisterAny : IArm64Register
 
     public static Arm64RegisterAny Create(Arm64RegisterKind kind, int index) => new((uint) kind << 8 | (uint) index);
 
-    public static Arm64RegisterAny Create(Arm64RegisterKind kind, Arm64RegisterVKind vKind, int index) => new((uint)vKind << 16 | (uint)kind << 8 | (uint)index);
+    public static Arm64RegisterAny Create(Arm64RegisterKind kind, Arm64RegisterVKind vKind, int elementCount, int index) => new( (uint)elementCount << 24 | (uint)vKind << 16 | (uint)kind << 8 | (uint)index);
     
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind) (_value >> 8);
