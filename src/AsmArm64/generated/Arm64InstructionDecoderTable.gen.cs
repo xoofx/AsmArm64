@@ -2590,7 +2590,7 @@ partial class Arm64InstructionDecoderTable
         16,0,0,0,
         1,27,0,0,
         4,1,8,2,
-        8,6,0,77,
+        8,6,0,76,
         // BIC_asimdsame_only             - BIC         Vd.T, Vn.T, Vm.T
         86,0,52,0,1,2,2,3,
         18,0,0,0,
@@ -2657,7 +2657,7 @@ partial class Arm64InstructionDecoderTable
         1,27,0,16,
         // BTI_hb_hints                   - BTI         {targets}
         102,0,69,0,6,8,0,1,
-        10,2,6,2,
+        10,2,5,2,
         // B_only_branch_imm              - B           label
         103,0,41,0,4,0,0,1,
         7,1,26,1,
@@ -3950,7 +3950,7 @@ partial class Arm64InstructionDecoderTable
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
-        4,13,0,0,
+        4,1,5,2,
         // F1CVTL_asimdmisc_v             - F1CVTL      Vd.8H, Vn.Ta
         105,1,4,1,1,23,4,2,
         11,18,0,0,
@@ -4128,7 +4128,7 @@ partial class Arm64InstructionDecoderTable
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
-        4,7,1,1,
+        4,1,1,1,
         // FCCMPE_d_floatccmp             - FCCMPE      Dn, Dm, #nzcv, cond
         138,1,16,1,2,0,0,4,
         1,26,0,5,
@@ -4303,14 +4303,14 @@ partial class Arm64InstructionDecoderTable
         1,27,0,0,
         1,27,0,5,
         1,27,10,16,
-        4,8,2,1,
+        4,1,2,1,
         // FCMLA_asimdsame2_c             - FCMLA       Vd.T, Vn.T, Vm.T, #rotate
         169,1,20,1,1,20,2,4,
         37,0,0,0,
         1,27,0,0,
         1,27,0,5,
         1,27,0,16,
-        4,8,2,1,
+        4,1,2,1,
         // FCMLE_asimdmisc_fz             - FCMLE       Vd.T, Vn.T, #0.0
         170,1,21,1,1,2,2,3,
         19,0,0,0,
@@ -4985,7 +4985,7 @@ partial class Arm64InstructionDecoderTable
         45,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,4,7,1,
+        4,1,7,1,
         // FCVTZS_asisdmisc_r             - FCVTZS      Vd, Vn
         70,2,38,1,1,2,0,2,
         1,22,0,0,
@@ -4998,7 +4998,7 @@ partial class Arm64InstructionDecoderTable
         72,2,38,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,4,7,1,
+        4,1,7,1,
         // FCVTZS_sisd_32d                - FCVTZS      Sd, Dn
         73,2,38,1,2,27,0,2,
         1,25,0,0,
@@ -5084,7 +5084,7 @@ partial class Arm64InstructionDecoderTable
         45,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,4,7,1,
+        4,1,7,1,
         // FCVTZU_asisdmisc_r             - FCVTZU      Vd, Vn
         92,2,39,1,1,2,0,2,
         1,22,0,0,
@@ -5097,7 +5097,7 @@ partial class Arm64InstructionDecoderTable
         94,2,39,1,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,4,7,1,
+        4,1,7,1,
         // FCVTZU_sisd_32d                - FCVTZU      Sd, Dn
         95,2,39,1,2,27,0,2,
         1,25,0,0,
@@ -8853,7 +8853,7 @@ partial class Arm64InstructionDecoderTable
         16,0,0,0,
         1,27,0,0,
         4,1,8,2,
-        8,6,0,77,
+        8,6,0,76,
         // MOVI_asimdimm_m_sm             - MOVI        Vd.T, #imm8, MSL #amount
         85,5,77,2,1,2,2,3,
         16,0,0,0,
@@ -8959,7 +8959,7 @@ partial class Arm64InstructionDecoderTable
         16,0,0,0,
         1,27,0,0,
         4,1,8,2,
-        8,6,0,77,
+        8,6,0,76,
         // MVNI_asimdimm_m_sm             - MVNI        Vd.T, #imm8, MSL #amount
         105,5,88,2,1,2,2,3,
         16,0,0,0,
@@ -9033,7 +9033,7 @@ partial class Arm64InstructionDecoderTable
         16,0,0,0,
         1,27,0,0,
         4,1,8,2,
-        8,6,0,77,
+        8,6,0,76,
         // ORR_asimdsame_only             - ORR         Vd.T, Vn.T, Vm.T
         119,5,93,2,1,2,2,3,
         18,0,0,0,
@@ -9570,7 +9570,7 @@ partial class Arm64InstructionDecoderTable
         44,39,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // RSUBHN_asimddiff_n             - RSUBHN      Vd.Tb, Vn.Ta, Vm.Ta
         238,5,203,2,1,2,4,3,
         32,25,0,0,
@@ -9677,7 +9677,7 @@ partial class Arm64InstructionDecoderTable
         45,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,4,7,1,
+        4,1,7,1,
         // SCVTF_asisdmisc_r              - SCVTF       Vd, Vn
         2,6,217,2,1,2,0,2,
         1,22,0,0,
@@ -9690,7 +9690,7 @@ partial class Arm64InstructionDecoderTable
         4,6,217,2,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,4,7,1,
+        4,1,7,1,
         // SCVTF_d32_float2fix            - SCVTF       Dd, Wn, #fbits
         5,6,217,2,2,0,0,3,
         1,26,0,0,
@@ -10003,13 +10003,13 @@ partial class Arm64InstructionDecoderTable
         25,32,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,12,2,1,
+        4,1,2,1,
         // SHL_asimdshf_r                 - SHL         Vd.T, Vn.T, #shift
         69,6,7,3,1,2,2,3,
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,6,7,1,
+        4,1,7,1,
         // SHL_asisdshf_r                 - SHL         Dd, Dn, #shift
         70,6,7,3,1,2,0,3,
         1,26,0,0,
@@ -10020,7 +10020,7 @@ partial class Arm64InstructionDecoderTable
         44,39,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // SHSUB_asimdsame_only           - SHSUB       Vd.T, Vn.T, Vm.T
         72,6,10,3,1,2,2,3,
         32,0,0,0,
@@ -10032,7 +10032,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,6,7,1,
+        4,1,7,1,
         // SLI_asisdshf_r                 - SLI         Dd, Dn, #shift
         74,6,11,3,1,2,0,3,
         1,26,0,0,
@@ -10444,34 +10444,34 @@ partial class Arm64InstructionDecoderTable
         44,39,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // SQRSHRN_asisdshf_n             - SQRSHRN     Vbd, Van, #shift
         148,6,47,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // SQRSHRUN_asimdshf_n            - SQRSHRUN    Vd.Tb, Vn.Ta, #shift
         149,6,48,3,1,2,4,3,
         44,39,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // SQRSHRUN_asisdshf_n            - SQRSHRUN    Vbd, Van, #shift
         150,6,48,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // SQSHLU_asimdshf_r              - SQSHLU      Vd.T, Vn.T, #shift
         151,6,50,3,1,2,2,3,
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,6,7,1,
+        4,1,7,1,
         // SQSHLU_asisdshf_r              - SQSHLU      Vd, Vn, #shift
         152,6,50,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,6,7,1,
+        4,1,7,1,
         // SQSHL_asimdsame_only           - SQSHL       Vd.T, Vn.T, Vm.T
         153,6,49,3,1,2,2,3,
         31,0,0,0,
@@ -10483,7 +10483,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,6,7,1,
+        4,1,7,1,
         // SQSHL_asisdsame_only           - SQSHL       Vd, Vn, Vm
         155,6,49,3,1,2,0,3,
         1,22,0,0,
@@ -10493,29 +10493,29 @@ partial class Arm64InstructionDecoderTable
         156,6,49,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,6,7,1,
+        4,1,7,1,
         // SQSHRN_asimdshf_n              - SQSHRN      Vd.Tb, Vn.Ta, #shift
         157,6,51,3,1,2,4,3,
         44,39,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // SQSHRN_asisdshf_n              - SQSHRN      Vbd, Van, #shift
         158,6,51,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // SQSHRUN_asimdshf_n             - SQSHRUN     Vd.Tb, Vn.Ta, #shift
         159,6,52,3,1,2,4,3,
         44,39,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // SQSHRUN_asisdshf_n             - SQSHRUN     Vbd, Van, #shift
         160,6,52,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // SQSUB_asimdsame_only           - SQSUB       Vd.T, Vn.T, Vm.T
         161,6,53,3,1,2,2,3,
         31,0,0,0,
@@ -10556,7 +10556,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,2,7,1,
+        4,1,7,1,
         // SRI_asisdshf_r                 - SRI         Dd, Dn, #shift
         169,6,57,3,1,2,0,3,
         1,26,0,0,
@@ -10578,7 +10578,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,2,7,1,
+        4,1,7,1,
         // SRSHR_asisdshf_r               - SRSHR       Dd, Dn, #shift
         173,6,59,3,1,2,0,3,
         1,26,0,0,
@@ -10589,7 +10589,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,2,7,1,
+        4,1,7,1,
         // SRSRA_asisdshf_r               - SRSRA       Dd, Dn, #shift
         175,6,60,3,1,2,0,3,
         1,26,0,0,
@@ -10600,7 +10600,7 @@ partial class Arm64InstructionDecoderTable
         39,44,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,5,7,1,
+        4,1,7,1,
         // SSHL_asimdsame_only            - SSHL        Vd.T, Vn.T, Vm.T
         177,6,61,3,1,2,2,3,
         31,0,0,0,
@@ -10617,7 +10617,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,2,7,1,
+        4,1,7,1,
         // SSHR_asisdshf_r                - SSHR        Dd, Dn, #shift
         180,6,63,3,1,2,0,3,
         1,26,0,0,
@@ -10628,7 +10628,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,2,7,1,
+        4,1,7,1,
         // SSRA_asisdshf_r                - SSRA        Dd, Dn, #shift
         182,6,64,3,1,2,0,3,
         1,26,0,0,
@@ -12287,7 +12287,7 @@ partial class Arm64InstructionDecoderTable
         45,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,4,7,1,
+        4,1,7,1,
         // UCVTF_asisdmisc_r              - UCVTF       Vd, Vn
         7,8,190,3,1,2,0,2,
         1,22,0,0,
@@ -12300,7 +12300,7 @@ partial class Arm64InstructionDecoderTable
         9,8,190,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,4,7,1,
+        4,1,7,1,
         // UCVTF_d32_float2fix            - UCVTF       Dd, Wn, #fbits
         10,8,190,3,2,0,0,3,
         1,26,0,0,
@@ -12578,12 +12578,12 @@ partial class Arm64InstructionDecoderTable
         44,39,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // UQRSHRN_asisdshf_n             - UQRSHRN     Vbd, Van, #shift
         64,8,212,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // UQSHL_asimdsame_only           - UQSHL       Vd.T, Vn.T, Vm.T
         65,8,213,3,1,2,2,3,
         31,0,0,0,
@@ -12595,7 +12595,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,6,7,1,
+        4,1,7,1,
         // UQSHL_asisdsame_only           - UQSHL       Vd, Vn, Vm
         67,8,213,3,1,2,0,3,
         1,22,0,0,
@@ -12605,18 +12605,18 @@ partial class Arm64InstructionDecoderTable
         68,8,213,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,6,7,1,
+        4,1,7,1,
         // UQSHRN_asimdshf_n              - UQSHRN      Vd.Tb, Vn.Ta, #shift
         69,8,214,3,1,2,4,3,
         44,39,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // UQSHRN_asisdshf_n              - UQSHRN      Vbd, Van, #shift
         70,8,214,3,1,2,0,3,
         1,22,0,0,
         1,22,0,5,
-        4,3,7,1,
+        4,1,7,1,
         // UQSUB_asimdsame_only           - UQSUB       Vd.T, Vn.T, Vm.T
         71,8,215,3,1,2,2,3,
         31,0,0,0,
@@ -12664,7 +12664,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,2,7,1,
+        4,1,7,1,
         // URSHR_asisdshf_r               - URSHR       Dd, Dn, #shift
         80,8,220,3,1,2,0,3,
         1,26,0,0,
@@ -12680,7 +12680,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,2,7,1,
+        4,1,7,1,
         // URSRA_asisdshf_r               - URSRA       Dd, Dn, #shift
         83,8,222,3,1,2,0,3,
         1,26,0,0,
@@ -12703,7 +12703,7 @@ partial class Arm64InstructionDecoderTable
         39,44,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,5,7,1,
+        4,1,7,1,
         // USHL_asimdsame_only            - USHL        Vd.T, Vn.T, Vm.T
         87,8,224,3,1,2,2,3,
         31,0,0,0,
@@ -12720,7 +12720,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,2,7,1,
+        4,1,7,1,
         // USHR_asisdshf_r                - USHR        Dd, Dn, #shift
         90,8,226,3,1,2,0,3,
         1,26,0,0,
@@ -12746,7 +12746,7 @@ partial class Arm64InstructionDecoderTable
         43,0,0,0,
         1,27,0,0,
         1,27,0,5,
-        4,2,7,1,
+        4,1,7,1,
         // USRA_asisdshf_r                - USRA        Dd, Dn, #shift
         95,8,229,3,1,2,0,3,
         1,26,0,0,

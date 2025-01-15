@@ -2,6 +2,7 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -419,11 +420,11 @@ internal sealed class InstructionProcessor
             var symbol = operandItem.TextElements[2].Symbol;
             Debug.Assert(symbol is not null);
 
-            var encoding = new List<BitRange>();
-            CollectEncodingForSymbol(instruction, symbol, encoding);
-            Debug.Assert(encoding.Count == 1);
-            shiftOperandDescriptor.AmountEncoding = encoding[0];
-            Debug.Assert(symbol.BitValues.Count == 2 && symbol.BitValues[0].Value == "8" && symbol.BitValues[1].Value == "16");
+            Debug.Assert(symbol.BitRanges.Count == 1);
+            shiftOperandDescriptor.AmountEncoding = symbol.BitRanges[0];
+            Debug.Assert(symbol.Selector is not null && symbol.Selector.BitValues.Count == 2);
+            // TODO
+            //Debug.Assert(symbol.BitValues.Count == 2 && symbol.BitValues[0].Text == "8" && symbol.BitValues[1].Text == "16");
 
             return shiftOperandDescriptor;
         }
@@ -437,13 +438,8 @@ internal sealed class InstructionProcessor
         var name0 = elt0.Text;
         var symbol0 = elt0.Symbol!;
 
-        var bitValuesId = $"[{string.Join("\n", symbol0.BitValues.Select(x => $"({x})"))}]";
         if (name0 == "cond" || name0 == "condlabel")
         {
-            const string expectedId =
-                "[(BitFields = 0000, Value = EQ)\n(BitFields = 0001, Value = NE)\n(BitFields = 0010, Value = CS)\n(BitFields = 0011, Value = CC)\n(BitFields = 0100, Value = MI)\n(BitFields = 0101, Value = PL)\n(BitFields = 0110, Value = VS)\n(BitFields = 0111, Value = VC)\n(BitFields = 1000, Value = HI)\n(BitFields = 1001, Value = LS)\n(BitFields = 1010, Value = GE)\n(BitFields = 1011, Value = LT)\n(BitFields = 1100, Value = GT)\n(BitFields = 1101, Value = LE)\n(BitFields = 1110, Value = AL)\n(BitFields = 1111, Value = NV)]";
-            Debug.Assert(bitValuesId == expectedId);
-
             var enumOperandDescriptor = new EnumOperandDescriptor()
             {
                 EnumKind = Arm64EnumEncodingKind.Conditional,
@@ -451,11 +447,11 @@ internal sealed class InstructionProcessor
                 BitSize = 4,
             };
 
-            var encoding = new List<BitRange>();
-            var size = CollectEncodingForSymbol(instruction, symbol0, encoding);
-            Debug.Assert(size == 4);
-            Debug.Assert(encoding.Count == 1);
-            enumOperandDescriptor.EnumEncoding = encoding[0];
+            // TODO: check bit values
+
+            Debug.Assert(symbol0.BitSize == 4);
+            Debug.Assert(symbol0.BitRanges.Count == 1);
+            enumOperandDescriptor.EnumEncoding = symbol0.BitRanges[0];
 
             return enumOperandDescriptor;
         }
@@ -510,7 +506,7 @@ internal sealed class InstructionProcessor
         {
             if (name0 == "shift")
             {
-                Debug.Assert(symbol0 is not null && symbol0.BitValues.Count == 2 && symbol0.BitValues[0].Value == "LSL #0" && symbol0.BitValues[1].Value == "LSL #12");
+                Debug.Assert(symbol0 is not null && symbol0.Selector is not null && symbol0.Selector.BitValues.Count == 2 && symbol0.Selector.BitValues[0].Text == "LSL #0" && symbol0.Selector.BitValues[1].Text == "LSL #12");
 
                 var shiftOperandDescriptor = new ShiftOperandDescriptor()
                 {
@@ -519,11 +515,9 @@ internal sealed class InstructionProcessor
                     IsOptional = true,
                 };
 
-                var encoding = new List<BitRange>();
-                var size = CollectEncodingForSymbol(instruction, symbol0, encoding);
-                Debug.Assert(size == 1);
-                Debug.Assert(encoding.Count == 1);
-                shiftOperandDescriptor.ShiftEncoding = encoding[0];
+                Debug.Assert(symbol0.BitSize == 1);
+                Debug.Assert(symbol0.BitRanges.Count == 1);
+                shiftOperandDescriptor.ShiftEncoding = symbol0.BitRanges[0];
                 
                 return shiftOperandDescriptor;
             }
@@ -548,19 +542,18 @@ internal sealed class InstructionProcessor
                         var symbol = item0.TextElements[2].Symbol;
                         Debug.Assert(symbol is not null);
 
-                        var encoding = new List<BitRange>();
-                        CollectEncodingForSymbol(instruction, symbol, encoding);
-                        Debug.Assert(encoding.Count == 1);
-                        shiftOperandDescriptor.AmountEncoding = encoding[0];
+                        Debug.Assert(symbol.BitRanges.Count == 1);
+                        shiftOperandDescriptor.AmountEncoding = symbol.BitRanges[0];
 
                         // Detect if Lsl is scaled by 8
-                        if (symbol.BitValues.Count > 0)
+                        if (symbol.Selector is not null)
                         {
-                            for (int i = 0; i < symbol.BitValues.Count; i++)
+                            var bitValues = symbol.Selector.BitValues;
+                            for (int i = 0; i < bitValues.Count; i++)
                             {
                                 var expectedBitValue = i * 8;
-                                var actualBitValue = int.Parse(symbol.BitValues[i].Value);
-                                Debug.Assert(expectedBitValue == actualBitValue);
+                                var bitValue = bitValues[i];
+                                Debug.Assert(expectedBitValue == bitValue.IntegerValue);
                             }
                             shiftOperandDescriptor.ShiftKind = Arm64ShiftEncodingKind.LslScale8;
                         }
@@ -580,19 +573,17 @@ internal sealed class InstructionProcessor
             else if (name0 == "targets")
             {
                 Debug.Assert(symbol0 is not null);
-                var encoding = new List<BitRange>();
-                CollectEncodingForSymbol(instruction, symbol0!, encoding);
-                Debug.Assert(encoding.Count == 1);
+                Debug.Assert(symbol0.BitRanges.Count == 1);
 
                 var bti = new EnumOperandDescriptor()
                 {
                     EnumKind = Arm64EnumEncodingKind.Bti,
                     Name = name0,
                     IsOptional = true,
-                    EnumEncoding = encoding[0]
+                    EnumEncoding = symbol0.BitRanges[0]
                 };
 
-                Debug.Assert(bti.EnumEncoding == new BitRange(6, 2));
+                Debug.Assert(bti.EnumEncoding == new BitRange(5, 2));
                 return bti;
             }
             else if (name0 == "imm")
@@ -611,7 +602,7 @@ internal sealed class InstructionProcessor
                 // extend, {amount}
 
                 Debug.Assert(symbol0 is not null);
-                Debug.Assert(symbol0.BitValues.Count == 8 && symbol0.BitValues[0].Value == "UXTB" && symbol0.BitValues[^1].Value == "SXTX");
+                Debug.Assert(symbol0.Selector is not null && symbol0.Selector.BitValues.Count == 8 && symbol0.Selector.BitValues[0].Text == "UXTB" && symbol0.Selector.BitValues[^1].Text == "SXTX");
 
                 var extend = new ExtendOperandDescriptor()
                 {
@@ -619,17 +610,12 @@ internal sealed class InstructionProcessor
                     IsOptional = true,
                 };
 
-                var encoding = new List<BitRange>();
-                CollectEncodingForSymbol(instruction, symbol0, encoding);
-                Debug.Assert(encoding.Count == 1);
-                extend.ExtendEncoding = encoding[0];
+                Debug.Assert(symbol0.BitRanges.Count == 1);
+                extend.ExtendEncoding = symbol0.BitRanges[0];
 
-                encoding.Clear();
                 var amountSymbol = ((OptionalGroupOperandItem)item1).Items[0].TextElements[0].Symbol!;
-                Debug.Assert(amountSymbol is not null);
-                CollectEncodingForSymbol(instruction, amountSymbol, encoding);
-                Debug.Assert(encoding.Count == 1);
-                extend.AmountEncoding = encoding[0];
+                Debug.Assert(amountSymbol.BitRanges.Count == 1);
+                extend.AmountEncoding = amountSymbol.BitRanges[0];
 
                 return extend;
             }
@@ -643,25 +629,20 @@ internal sealed class InstructionProcessor
                     IsOptional = true,
                 };
 
-                Debug.Assert(symbol0 is not null && symbol0.BitValues.Count == 4 && symbol0.BitValues[0].Value == "LSL" && symbol0.BitValues[1].Value == "LSR" && symbol0.BitValues[2].Value == "ASR" && (
-                    symbol0.BitValues[3].Value == "RESERVED" || symbol0.BitValues[3].Value == "ROR"));
+                Debug.Assert(symbol0 is not null && symbol0.Selector is not null && symbol0.Selector.BitValues.Count >= 3 && symbol0.Selector.BitValues[0].Text == "LSL" && symbol0.Selector.BitValues[1].Text == "LSR" && symbol0.Selector.BitValues[2].Text == "ASR" && (symbol0.Selector.BitValues.Count == 3 || symbol0.Selector.BitValues[3].Text == "ROR"));
 
-                shiftOperandDescriptor.ShiftKind = symbol0.BitValues[3].Value == "RESERVED" ? Arm64ShiftEncodingKind.Shift3 : Arm64ShiftEncodingKind.Shift4;
+                shiftOperandDescriptor.ShiftKind = symbol0.Selector.BitValues.Count == 3 ? Arm64ShiftEncodingKind.Shift3 : Arm64ShiftEncodingKind.Shift4;
                 
-                var encoding = new List<BitRange>();
-                var size = CollectEncodingForSymbol(instruction, symbol0, encoding);
-                Debug.Assert(size == 2);
-                Debug.Assert(encoding.Count == 1);
-                shiftOperandDescriptor.ShiftEncoding = encoding[0];
+                Debug.Assert(symbol0.BitSize == 2);
+                Debug.Assert(symbol0.BitRanges.Count == 1);
+                shiftOperandDescriptor.ShiftEncoding = symbol0.BitRanges[0];
                 
                 var amountSymbol = item1.TextElements[0].Symbol;
                 Debug.Assert(amountSymbol is not null);
 
-                encoding.Clear();
-                CollectEncodingForSymbol(instruction, amountSymbol, encoding);
-                Debug.Assert(encoding.Count == 1);
-                shiftOperandDescriptor.AmountEncoding = encoding[0];
-                Debug.Assert(amountSymbol.BitValues.Count == 0);
+                Debug.Assert(amountSymbol.BitRanges.Count == 1);
+                shiftOperandDescriptor.AmountEncoding = amountSymbol.BitRanges[0];
+                Debug.Assert(amountSymbol.Selector is null);
 
                 return shiftOperandDescriptor;
             }
@@ -674,12 +655,12 @@ internal sealed class InstructionProcessor
                     IsOptional = true,
                 };
 
-                Debug.Assert(item1.TextElements[0].Symbol is not null);
-                var encoding = new List<BitRange>();
-                isbOption.BitSize = CollectEncodingForSymbol(instruction, item1.TextElements[0].Symbol!, encoding);
-                Debug.Assert(isbOption.BitSize == 4);
-                Debug.Assert(encoding.Count == 1);
-                isbOption.Encoding.AddRange(encoding);
+                var optionSymbol = item1.TextElements[0].Symbol;
+                Debug.Assert(optionSymbol is not null);
+                Debug.Assert(optionSymbol.BitSize == 4);
+                Debug.Assert(optionSymbol.BitRanges.Count == 1);
+                isbOption.BitSize = optionSymbol.BitSize;
+                isbOption.Encoding.Add(optionSymbol.BitRanges[0]);
 
                 return isbOption;
             }
@@ -764,8 +745,11 @@ internal sealed class InstructionProcessor
         }
         else
         {
-            if (symbol.BitValues.Count == 0 && name == "label")
+            var selector = symbol.Selector;
+            if (name == "label")
             {
+                Debug.Assert(selector is null);
+
                 if (!InstructionIdToLabelOffsetKind.TryGetValue(instruction.Id, out var labelOffsetKind))
                 {
                     labelOffsetKind = Arm64LabelEncodingKind.StandardOffset;
@@ -786,23 +770,25 @@ internal sealed class InstructionProcessor
 
                 return label;
             }
-            else if (symbol.BitValues.Count > 0)
+            else if (selector is not null)
             {
                 var descriptor = new ImmediateByteValuesOperandDescriptor()
                 {
                     Name = name,
                 };
-                descriptor.BitSize = CollectEncodingForSymbol(instruction, symbol, descriptor.Encoding);
+                descriptor.BitSize = symbol.BitSize;
+                descriptor.Encoding.AddRange(symbol.BitRanges);
 
-                Debug.Assert(symbol.BitValues.Count <= 4);
 
-                for (var i = 0; i < symbol.BitValues.Count; i++)
+                Debug.Assert(selector.BitValues.Count <= 4);
+
+                for (var i = 0; i < selector.BitValues.Count; i++)
                 {
-                    var bitValue = symbol.BitValues[i];
-                    var encodingValue = bitValue.GetBitFieldsAsInt();
+                    var bitValue = selector.BitValues[i];
+                    var encodingValue = bitValue.BitSelectorValue;
                     Debug.Assert(i == encodingValue);
-                    Debug.Assert(bitValue.Value.StartsWith("#"));
-                    var userValue = byte.Parse(bitValue.Value.Substring(1));
+                    Debug.Assert(bitValue.Text.StartsWith("#"));
+                    var userValue = bitValue.IntegerValue;
 
                     descriptor.Values.Add(userValue);
                 }
@@ -839,7 +825,9 @@ internal sealed class InstructionProcessor
             Debug.Assert(instruction.Id == "MRRS_rs_systemmovepr" || instruction.Id == "MRS_rs_systemmove" || instruction.Id == "MSR_sr_systemmove" || instruction.Id == "MSRR_sr_systemmovepr");
 
             immediate.ImmediateKind = Arm64ImmediateEncodingKind.SystemRegister;
-            immediate.BitSize = CollectEncodingForSymbol(instruction, item0.TextElements[0].Symbol!, immediate.Encoding);
+            var symbol = item0.TextElements[0].Symbol!;
+            immediate.BitSize = symbol.BitSize;
+            immediate.Encoding.AddRange(symbol.BitRanges);
 
             return immediate;
         }
@@ -854,10 +842,9 @@ internal sealed class InstructionProcessor
                 AllowImmediate = true,
             };
 
-            var encoding = new List<BitRange>();
-            enumDesc.BitSize = CollectEncodingForSymbol(instruction, name.Symbol!, encoding);
-            Debug.Assert(encoding.Count == 1);
-            enumDesc.EnumEncoding = encoding[0];
+            enumDesc.BitSize = name.Symbol!.BitSize;
+            Debug.Assert(name.Symbol!.BitRanges.Count == 1);
+            enumDesc.EnumEncoding = name.Symbol!.BitRanges[0];
 
             CollectEnumValues(name.Symbol!, _barrierOperationLimitEnumValues);
 
@@ -876,10 +863,9 @@ internal sealed class InstructionProcessor
                 AllowImmediate = true,
             };
 
-            var encoding = new List<BitRange>();
-            enumDesc.BitSize = CollectEncodingForSymbol(instruction, name.Symbol!, encoding);
-            Debug.Assert(encoding.Count == 1);
-            enumDesc.EnumEncoding = encoding[0];
+            enumDesc.BitSize = name.Symbol!.BitSize;
+            Debug.Assert(name.Symbol!.BitRanges.Count == 1);
+            enumDesc.EnumEncoding = name.Symbol!.BitRanges[0];
 
             CollectEnumValues(name.Symbol!, _prefetchOperationEnumValues);
 
@@ -889,7 +875,9 @@ internal sealed class InstructionProcessor
         {
             // Select RPRFM_r_ldst_regoff - (rprfop|#imm6)
             immediate.ImmediateKind = Arm64ImmediateEncodingKind.RangePrefetchOperation;
-            immediate.BitSize = CollectEncodingForSymbol(instruction, name.Symbol!, immediate.Encoding);
+            immediate.BitSize = name.Symbol!.BitSize;
+            immediate.Encoding.AddRange(name.Symbol!.BitRanges);
+
             CollectEnumValues(name.Symbol!, _rangePrefetchOperationEnumValues);
 
             return immediate;
@@ -898,11 +886,7 @@ internal sealed class InstructionProcessor
         {
             var imm = selectOperand.Items[1].TextElements[0];
             Console.WriteLine($"Unsupported Select instruction {instruction.Id} - {selectOperand} -> ({name.Text}|{imm.Text})");
-
-            foreach (var keyVal in name.Symbol!.BitValues)
-            {
-                Console.WriteLine($"  {string.Join(":", keyVal.BitFields)} = {keyVal.Value}");
-            }
+            Console.WriteLine($"{name.Symbol}");
             throw new NotSupportedException($"Unsupported Select instruction {instruction.Id} - {selectOperand}");
         }
     }
@@ -923,7 +907,7 @@ internal sealed class InstructionProcessor
         for (int i = 0; i < register.TextElements.Count; i++)
         {
             var textElement = register.TextElements[i];
-            if (textElement.Symbol is not null && textElement.Symbol.BitInfos.Count == 1 && textElement.Symbol.BitInfos[0].Name.StartsWith("R"))
+            if (textElement.Symbol is not null && textElement.Symbol.BitNames.Count == 1 && textElement.Symbol.BitNames[0].StartsWith("R"))
             {
                 indexOfIndexEncoding = i;
                 break;
@@ -955,7 +939,7 @@ internal sealed class InstructionProcessor
                 kind = Arm64RegisterEncodingKind.C;
                 break;
             case 'V':
-                if (indexOfIndexEncoding != 0 && elt0.Symbol is not null && elt0.Symbol.BitValues.Count > 0)
+                if (indexOfIndexEncoding != 0 && elt0.Symbol is not null && elt0.Symbol.Selector is not null)
                 {
                     // This is not a vector but a scalar register
                     kind = Arm64RegisterEncodingKind.DynamicVScalar;
@@ -1009,14 +993,13 @@ internal sealed class InstructionProcessor
         
 
         var symbol = register.TextElements[indexOfIndexEncoding].Symbol;
-        if (symbol is not null && symbol.BitInfos.Count > 0)
+        if (symbol is not null && symbol.BitNames.Count > 0)
         {
-            var encoding = new List<BitRange>();
-            int size = CollectEncodingForSymbol(instruction, symbol, encoding);
+            int size = symbol.BitSize;
 
-            if (symbol.BitValues.Count == 0 && (encoding.Count == 1 && (size == 5 || size == 4)))
+            if (symbol.Selector is null && (symbol.BitRanges.Count == 1 && (size == 5 || size == 4)))
             {
-                descriptor.LowBitIndexEncoding = encoding[0].LowBit;
+                descriptor.LowBitIndexEncoding = symbol.BitRanges[0].LowBit;
                 descriptor.RegisterIndexEncodingKind = size == 4
                     ? Arm64RegisterIndexEncodingKind.Std4
                     : Arm64RegisterIndexEncodingKind.Std5;
@@ -1029,17 +1012,36 @@ internal sealed class InstructionProcessor
                 // BitFields = 01, Value = UInt('0':Rm)
                 // BitFields = 10, Value = UInt(M:Rm)
                 // BitFields = 11, Value = RESERVED
-                var encodingSignature = $"Match `{string.Join(":", symbol.BitValueNames)}` {{{string.Join("|", symbol.BitValues)}}} - {string.Join(",", encoding)}";
-                var expectedSignature = "Match `size` {BitFields = 00, Value = RESERVED|BitFields = 01, Value = UInt('0':Rm)|BitFields = 10, Value = UInt(M:Rm)|BitFields = 11, Value = RESERVED} - (22:2),(16:5)";
-                if (encodingSignature != expectedSignature)
-                {
-                    var errorMessage = new StringBuilder();
-                    errorMessage.AppendLine($"Unsupported register encoding:");
-                    errorMessage.AppendLine($"  Expecting: {expectedSignature}");
-                    errorMessage.AppendLine($"      Found: {encodingSignature}");
-                    throw new NotSupportedException(errorMessage.ToString());
-                }
-                else
+
+                var selector = symbol.Selector;
+                Debug.Assert(selector is not null);
+
+                // TODO: Handle selector for SpecialMRm - It should not be different from DynamicSelector in the end for the register index
+
+                //var checkSpecialMRm =
+                //        selector.BitNames.Count == 1
+                //        && selector.BitNames[0] == "size"
+                //        && selector.BitValues.Count == 4
+                //        && selector.BitValues[0].Text == "RESERVED"
+                //        && selector.BitValues[1].Text == "UInt('0':Rm)"
+                //        && selector.BitValues[1].BitItems.Count == 2
+                //        && selector.BitValues[1].BitItems[0]  == new BitValueItem(BitValueItemKind.Bit0, default)
+                //        && selector.BitValues[1].BitItems[1] == new BitValueItem(BitValueItemKind.BitRange, new(16, 4))
+                //        && selector.BitValues[2].Text == "UInt(M:Rm)"
+                //        && selector.BitValues[2].BitItems.Count == 2
+                //        && selector.BitValues[2].BitItems[0] == new BitValueItem(BitValueItemKind.BitRange, new(20, 1))
+                //        && selector.BitValues[2].BitItems[1] == new BitValueItem(BitValueItemKind.BitRange, new(16, 4))
+                //        && selector.BitValues[3].Text == "RESERVED"
+                //    ;
+
+                //if (!checkSpecialMRm)
+                //{
+                //    var errorMessage = new StringBuilder();
+                //    errorMessage.AppendLine($"Unsupported register encoding:");
+                //    errorMessage.AppendLine($"{symbol}");
+                //    throw new NotSupportedException(errorMessage.ToString());
+                //}
+                //else
                 {
                     descriptor.RegisterIndexEncodingKind = Arm64RegisterIndexEncodingKind.SpecialMRm;
                 }
@@ -1064,14 +1066,16 @@ internal sealed class InstructionProcessor
     {
         var symbol = register.TextElements[0].Symbol!;
         var dynamicDescriptor = new DynamicRegisterSelector();
-        var encoding = new List<BitRange>();
-        dynamicDescriptor.BitSize = CollectEncodingForSymbol(instruction, symbol.BitValueNames, encoding);
-        Debug.Assert(encoding.Count == 1);
-        dynamicDescriptor.BitEncoding = encoding[0];
+        Debug.Assert(symbol.Selector is not null);
 
-        foreach (var bitValue in symbol.BitValues)
+        var selector = symbol.Selector;
+        dynamicDescriptor.BitSize = selector.BitSize;
+        Debug.Assert(selector.BitRanges.Count == 1);
+        dynamicDescriptor.BitEncoding = selector.BitRanges[0];
+
+        foreach (var bitValue in selector.BitValues)
         {
-            var registerOperandKind = bitValue.Value switch
+            var registerOperandKind = bitValue.Text switch
             {
                 "B" => Arm64RegisterEncodingKind.B,
                 "S" => Arm64RegisterEncodingKind.S,
@@ -1080,10 +1084,10 @@ internal sealed class InstructionProcessor
                 "W" => Arm64RegisterEncodingKind.W,
                 "X" => Arm64RegisterEncodingKind.X,
                 "RESERVED" => Arm64RegisterEncodingKind.None,
-                _ => throw new NotSupportedException($"Unsupported dynamic register value `{bitValue.Value}` in instruction `{instruction.Id}`")
+                _ => throw new NotSupportedException($"Unsupported dynamic register value `{bitValue.Text}` in instruction `{instruction.Id}`")
             };
 
-            dynamicDescriptor.BitValues.Add(new(string.Concat(bitValue.BitFields), registerOperandKind));
+            dynamicDescriptor.BitValues.Add(new(string.Concat(bitValue.BitSelectorAsText), registerOperandKind));
         }
         Debug.Assert(register.TextElements.Count == 2 && register.TextElements[1].Symbol is not null, $"Invalid encoding for instruction {instruction.Id}");
 
@@ -1119,16 +1123,12 @@ internal sealed class InstructionProcessor
         }
         else
         {
-            var encoding = new List<BitRange>();
-            var size = CollectEncodingForSymbol(instruction, symbol, encoding);
+            var size = symbol.BitSize;
 
-            builder.Append($"Immediate Indexer Size: {size} bits, Encoding: {string.Join(",", encoding)}\n");
-            if (symbol.BitValues.Count > 0)
+            builder.Append($"Immediate Indexer Size: {size} bits, Encoding: {string.Join(",", symbol.BitRanges)}\n");
+            if (symbol.Selector is not null)
             {
-                foreach (var bitValue in symbol.BitValues)
-                {
-                    builder.Append($"  {bitValue}\n");
-                }
+                builder.Append($" Selector: {symbol.Selector}");
             }
         }
 
@@ -1146,6 +1146,8 @@ internal sealed class InstructionProcessor
         {
             descriptors = _indexers[index].Descriptors;
         }
+        Console.WriteLine($"Indexer {indexerId} -> {instruction.Id} {instruction.FullSyntax}");
+        
         descriptors.Add(descriptor);
 
         return index;
@@ -1181,19 +1183,21 @@ internal sealed class InstructionProcessor
             ArrangementKind = ParseArrangementKind(text)
         };
 
-        if (symbol is not null && symbol.BitValues.Count > 0)
+        if (symbol is not null && symbol.Selector is not null)
         {
             Debug.Assert(vectorArrangement.ArrangementKind == Arm64RegisterVectorArrangementEncodingKind.T);
 
-            vectorArrangement.BitSize = CollectEncodingForSymbol(instruction, symbol, vectorArrangement.Encoding);
+            vectorArrangement.BitSize = symbol.BitSize;
+            vectorArrangement.Encoding.AddRange(symbol.BitRanges);
             Debug.Assert(vectorArrangement.Encoding.Count <= 2);
             Debug.Assert(vectorArrangement.Encoding.All(x => x.IsSmallEncoding));
 
             var values = new VectorArrangementValues();
-            foreach (var bitValue in symbol.BitValues)
+            var selector = symbol.Selector;
+            foreach (var bitValue in selector.BitValues)
             {
-                var elementKind = ParseArrangementKind(bitValue.Value);
-                var bitValues = string.Concat(bitValue.BitFields);
+                var elementKind = ParseArrangementKind(bitValue.Text);
+                var bitValues = string.Concat(bitValue.BitSelectorAsText);
                 var element = new VectorArrangementValue(bitValues, elementKind);
                 values.Items.Add(element);
             }
@@ -1362,7 +1366,8 @@ internal sealed class InstructionProcessor
             Debug.Assert(item.TextElements.Count == 1);
             var symbol = item.TextElements[0].Symbol;
             Debug.Assert(symbol != null);
-            immediate.BitSize = CollectEncodingForSymbol(instruction, symbol, immediate.Encoding);
+            immediate.BitSize = symbol.BitSize;
+            immediate.Encoding.AddRange(symbol.BitRanges);
             if (immediate.Encoding.Count == 3)
             {
                 Debug.Assert(instruction.Id == "MSR_si_pstate");
@@ -1372,88 +1377,89 @@ internal sealed class InstructionProcessor
             Debug.Assert(immediate.Encoding.Count > 0 && immediate.Encoding.Count <= 2);
             immediate.ImmediateKind = Arm64ImmediateEncodingKind.Regular;
 
-            if (symbol.BitValues.Count != 0)
+            if (symbol.Selector is not null)
             {
-                var kind = $"[{string.Join(",", symbol.BitValues.Select(bitValue => $"{bitValue.BitFields[0]} = {bitValue.Value}"))}]";
-                if (immediate.BitSize == 7 && immediate.Encoding[0] == new BitRange(16, 7) && symbol.BitValues.Count == 4 && symbol.BitValueNames.Count == 1 && symbol.BitValueNames[0] == "immh")
-                {
-                    switch (kind)
-                    {
-                        case "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]":
-                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType0;
-                            break;
-                        case "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = RESERVED]":
-                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType1;
-                            break;
-                        case "[0001 = RESERVED,001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]":
-                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType2;
-                            break;
-                        case "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = RESERVED]":
-                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType3;
-                            break;
-                        case "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = UInt(immh:immb) - 64]":
-                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType4;
-                            break;
-                        default:
-                            throw new NotSupportedException($"Unsupported immediate kind `{kind}` in instruction `{instruction.Id}`");
-                    }
-                }
-                else if (symbol.BitValueNames.Count == 1 && symbol.BitValueNames[0] == "rot")
-                {
-                    switch (kind)
-                    {
-                        case "[0 = 90,1 = 270]":
-                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.Rotate90Or270;
-                            break;
-                        case "[00 = 0,01 = 90,10 = 180,11 = 270]":
-                            immediate.ImmediateKind = Arm64ImmediateEncodingKind.Rotate0Or90Or180Or270;
-                            break;
-                        default:
-                            throw new NotSupportedException($"Unsupported immediate kind `{kind}` in instruction `{instruction.Id}`");
-                    }
-                }
-                else if (symbol.BitValueNames.Count == 1 && symbol.BitValueNames[0] == "cmode<0>" && immediate.Encoding.Count == 1)
-                {
-                    Debug.Assert(immediate.Encoding[0] == new BitRange(12,4));
-                    immediate.ImmediateKind = Arm64ImmediateEncodingKind.EnumAmount8Or16;
-                    immediate.BitSize = 1;
-                    immediate.Encoding[0] = new BitRange(12, 1);
-                }
-                else if (instruction.Id == "SHLL_asimdmisc_s")
-                {
-                    // Special immediate #shift Size: 2 in instruction id SHLL_asimdmisc_s - [(23:2)] - Selector: size
-                    // 00 = 8
-                    // 01 = 16
-                    // 10 = 32
-                    // 11 = RESERVED
-                    Debug.Assert(symbol.BitValues.Count == 4);
-                    immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdLeftShift8Or16Or32;
-                }
-                else if (instruction.Id == "EXT_asimdext_only")
-                {
-                    // special immediate #index Size: 5 in instruction id EXT_asimdext_only - [(30:1),(14:4)] - Selector: Q,imm4<3>
-                    // 0:0 = UInt(imm4<2:0>)
-                    // 0:1 = RESERVED
-                    // 1:x = UInt(imm4)
-                    immediate.Encoding.Clear();
-                    immediate.BitSize = 0;
-                    immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdExtIndex;
-                }
-                else
-                {
-                    Console.WriteLine($"Unsupported special immediate {item} Size: {immediate.BitSize} in instruction id {instruction.Id} - [{string.Join(",", immediate.Encoding)}] - Selector: {string.Join(",", symbol.BitValueNames)}");
-                    foreach (var bitValue in symbol.BitValues)
-                    {
-                        Console.WriteLine($"  {string.Join(":", bitValue.BitFields)} = {bitValue.Value}");
-                    }
+                // TODO: use the new selector
 
-                    _hasErrors = true;
-                }
+                //var kind = $"[{string.Join(",", symbol.BitValues.Select(bitValue => $"{bitValue.BitSelectorAsText} = {bitValue.Text}"))}]";
+                //if (immediate.BitSize == 7 && immediate.Encoding[0] == new BitRange(16, 7) && symbol.BitValues.Count == 4 && symbol.BitSelectorNames.Count == 1 && symbol.BitSelectorNames[0] == "immh")
+                //{
+                //    switch (kind)
+                //    {
+                //        case "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]":
+                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType0;
+                //            break;
+                //        case "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = RESERVED]":
+                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType1;
+                //            break;
+                //        case "[0001 = RESERVED,001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]":
+                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType2;
+                //            break;
+                //        case "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = RESERVED]":
+                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType3;
+                //            break;
+                //        case "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = UInt(immh:immb) - 64]":
+                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType4;
+                //            break;
+                //        default:
+                //            throw new NotSupportedException($"Unsupported immediate kind `{kind}` in instruction `{instruction.Id}`");
+                //    }
+                //}
+                //else if (symbol.BitSelectorNames.Count == 1 && symbol.BitSelectorNames[0] == "rot")
+                //{
+                //    switch (kind)
+                //    {
+                //        case "[0 = 90,1 = 270]":
+                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.Rotate90Or270;
+                //            break;
+                //        case "[00 = 0,01 = 90,10 = 180,11 = 270]":
+                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.Rotate0Or90Or180Or270;
+                //            break;
+                //        default:
+                //            throw new NotSupportedException($"Unsupported immediate kind `{kind}` in instruction `{instruction.Id}`");
+                //    }
+                //}
+                //else if (symbol.BitSelectorNames.Count == 1 && symbol.BitSelectorNames[0] == "cmode<0>" && immediate.Encoding.Count == 1)
+                //{
+                //    Debug.Assert(immediate.Encoding[0] == new BitRange(12,4));
+                //    immediate.ImmediateKind = Arm64ImmediateEncodingKind.EnumAmount8Or16;
+                //    immediate.BitSize = 1;
+                //    immediate.Encoding[0] = new BitRange(12, 1);
+                //}
+                //else if (instruction.Id == "SHLL_asimdmisc_s")
+                //{
+                //    // Special immediate #shift Size: 2 in instruction id SHLL_asimdmisc_s - [(23:2)] - Selector: size
+                //    // 00 = 8
+                //    // 01 = 16
+                //    // 10 = 32
+                //    // 11 = RESERVED
+                //    Debug.Assert(symbol.BitValues.Count == 4);
+                //    immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdLeftShift8Or16Or32;
+                //}
+                //else if (instruction.Id == "EXT_asimdext_only")
+                //{
+                //    // special immediate #index Size: 5 in instruction id EXT_asimdext_only - [(30:1),(14:4)] - Selector: Q,imm4<3>
+                //    // 0:0 = UInt(imm4<2:0>)
+                //    // 0:1 = RESERVED
+                //    // 1:x = UInt(imm4)
+                //    immediate.Encoding.Clear();
+                //    immediate.BitSize = 0;
+                //    immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdExtIndex;
+                //}
+                //else
+                //{
+                //    Console.WriteLine($"Unsupported special immediate {item} Size: {immediate.BitSize} in instruction id {instruction.Id} - [{string.Join(",", immediate.Encoding)}] - Selector: {string.Join(",", symbol.BitSelectorNames)}");
+                //    foreach (var bitValue in symbol.BitValues)
+                //    {
+                //        Console.WriteLine($"  {string.Join(":", bitValue.BitSelectorAsText)} = {bitValue.Text}");
+                //    }
+
+                //    _hasErrors = true;
+                //}
             }
             else
             {
-                var kind = string.Join(":", symbol.BitInfos.Select(x => x.Name));
-                if (kind == "a:b:c:d:e:f:g:h")
+                if (symbol.EncodedInText == "a:b:c:d:e:f:g:h")
                 {
                     if (immediate.Name == "imm")
                     {
@@ -1462,9 +1468,9 @@ internal sealed class InstructionProcessor
                         immediate.ImmediateKind = Arm64ImmediateEncodingKind.Imm64;
                     }
                 }
-                else if (symbol.BitInfos.Count > 3)
+                else if (symbol.BitRanges.Count > 3)
                 {
-                    Console.WriteLine($"Watch out special immediate #{immediate.Name} Size: {immediate.BitSize} in instruction id {instruction.Id} - [{string.Join(",", immediate.Encoding)}] - Selector: {string.Join(":", symbol.BitInfos.Select(x => x.Name))}");
+                    Console.WriteLine($"Watch out special immediate #{immediate.Name} Size: {immediate.BitSize} in instruction id {instruction.Id} - Symbol: {symbol}");
                     _hasErrors = true;
                 }
             }
@@ -1638,8 +1644,8 @@ internal sealed class InstructionProcessor
         var extendSymbol = extend.TextElements[0].Symbol!;
         var amountSymbol = amount.TextElements[0].Symbol!;
 
-        var extendBitRange = instruction.BitRangeMap[extendSymbol.BitInfos[0].Name];
-        var amountBitRange = instruction.BitRangeMap[amountSymbol.BitInfos[0].Name];
+        var extendBitRange = instruction.BitRangeMap[extendSymbol.BitNames[0]];
+        var amountBitRange = instruction.BitRangeMap[amountSymbol.BitNames[0]];
 
         // The bits are always at the same location, so we don't need to encode them
         // But we just verify it here
@@ -1648,131 +1654,44 @@ internal sealed class InstructionProcessor
 
         Arm64MemoryExtendEncodingKind extendKind = Arm64MemoryExtendEncodingKind.NoLsl;
 
-        if (extendSymbol.BitValues.Count == 3)
+        if (extendSymbol.Selector!.BitValues.Count == 3)
         {
             extendKind = Arm64MemoryExtendEncodingKind.NoLsl;
         }
         else
         {
-            Debug.Assert(extendSymbol.BitValues.Count == 4);
-            Debug.Assert(amountSymbol.BitValues.Count == 2);
-            Debug.Assert(amountSymbol.BitValues[0].Value == "#0"); // Always 0
-            extendKind = amountSymbol.BitValues[1].Value switch
+            Debug.Assert(extendSymbol.Selector.BitValues.Count == 4);
+            Debug.Assert(amountSymbol.Selector!.BitValues.Count == 2);
+            Debug.Assert(amountSymbol.Selector.BitValues[0].Text == "#0"); // Always 0
+            extendKind = amountSymbol.Selector.BitValues[1].Text switch
             {
                 "#1" => Arm64MemoryExtendEncodingKind.Shift1,
                 "#2" => Arm64MemoryExtendEncodingKind.Shift2,
                 "#3" => Arm64MemoryExtendEncodingKind.Shift3,
                 "#4" => Arm64MemoryExtendEncodingKind.Shift4,
-                _ => throw new NotSupportedException($"Unsupported amount {amountSymbol.BitValues[1].Value}")
+                _ => throw new NotSupportedException($"Unsupported amount {amountSymbol.Selector.BitValues[1].Text}")
             };
         }
 
         return extendKind;
     }
-
-    private static int CollectEncodingForSymbol(Instruction instruction, List<string> bitNames, List<BitRange> encoding)
-    {
-        int size = 0;
-        foreach (var bitName in bitNames)
-        {
-            var bitRangeInfo = instruction.BitRangeMap[bitName];
-
-            if (encoding.Count > 0)
-            {
-                var previousEncoding = encoding[^1];
-                if (previousEncoding.LowBit - 1 == bitRangeInfo.HiBit)
-                {
-                    // Merge with previous encoding
-                    encoding[^1] = new(bitRangeInfo.HiBit - bitRangeInfo.Width + 1, previousEncoding.Width + bitRangeInfo.Width);
-                    size += bitRangeInfo.Width;
-                    continue;
-                }
-            }
-
-            encoding.Add(new(bitRangeInfo.HiBit - bitRangeInfo.Width + 1, bitRangeInfo.Width));
-            size += bitRangeInfo.Width;
-        }
-        
-        // We support a maximum of 3 bit-range encodings
-        if (encoding.Count > 3)
-        {
-            throw new NotSupportedException($"Maximum number of encoding reached {encoding.Count} for instruction {instruction.Id} for symbol {string.Join(",", bitNames)}");
-        }
-
-        return size;
-    }
-
-    private static int CollectEncodingForSymbol(Instruction instruction, EncodingSymbol symbol, List<BitRange> encoding)
-    {
-        int size = 0;
-        var currentBitRanges = new List<BitRange>();
-        encoding.Clear();
-        foreach (var encodingBitInfo in symbol.BitInfos)
-        {
-            var originalBitRangeInfo = instruction.BitRangeMap[encodingBitInfo.Name];
-
-            currentBitRanges.Clear();
-            if (encodingBitInfo.BitIndices.Count == 0)
-            {
-                currentBitRanges.Add(new BitRange(originalBitRangeInfo.HiBit - originalBitRangeInfo.Width + 1, originalBitRangeInfo.Width));
-            }
-            else
-            {
-                foreach (var bitIndex in encodingBitInfo.BitIndices)
-                {
-                    var bitRange = new BitRange()
-                    {
-                        LowBit = originalBitRangeInfo.HiBit - originalBitRangeInfo.Width + 1 + bitIndex,
-                        Width = 1,
-                    };
-                    currentBitRanges.Add(bitRange);
-                }
-            }
-
-            foreach (var bitRange in currentBitRanges)
-            {
-                if (encoding.Count > 0)
-                {
-                    var previousBitRange = encoding[^1];
-                    if (previousBitRange.LowBit == bitRange.LowBit + bitRange.Width)
-                    {
-                        // Merge with previous encoding
-                        encoding[^1] = new(bitRange.LowBit, previousBitRange.Width + bitRange.Width);
-                        size += bitRange.Width;
-                        continue;
-                    }
-                }
-
-                encoding.Add(bitRange);
-                size += bitRange.Width;
-            }
-        }
-
-        // We support a maximum of 3 bit-range encodings
-        if (encoding.Count > 3)
-        {
-            throw new NotSupportedException($"Maximum number of encoding reached {encoding.Count} for instruction {instruction.Id} for symbol {symbol}");
-        }
-
-        return size;
-    }
+  
 
     private void CollectEnumValues(EncodingSymbol symbol, Dictionary<string, int> enumToInt)
     {
-        foreach (var keyVal in symbol.BitValues)
+        foreach (var bitValue in symbol.Selector!.BitValues)
         {
-            var value = keyVal.Value;
-            if (value == "RESERVED" || keyVal.BitFields.Contains("x")) continue;
+            if (bitValue.Kind == EncodingBitValueKind.Reserved) continue;
 
-            var bitValue = keyVal.GetBitFieldsAsInt();
+            var intValue = (int)bitValue.BitSelectorValue;
 
-            if (!enumToInt.TryGetValue(value, out var previousValue))
+            if (!enumToInt.TryGetValue(bitValue.Text, out var previousValue))
             {
-                enumToInt.Add(value, bitValue);
+                enumToInt.Add(bitValue.Text, intValue);
             }
             else
             {
-                Debug.Assert(previousValue == bitValue);
+                Debug.Assert(previousValue == intValue);
             }
         }
     }

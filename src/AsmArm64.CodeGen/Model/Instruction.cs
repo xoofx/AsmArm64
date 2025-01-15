@@ -122,7 +122,7 @@ class Instruction : IJsonOnDeserialized
         }
     }
 
-    public void Build()
+    public void Initialize()
     {
         var name = Name.TrimEnd('_');
         var indexOfUnderscore = name.IndexOf('_');
@@ -163,11 +163,10 @@ class Instruction : IJsonOnDeserialized
         BitfieldValueForTest |= BitfieldValue;
 
         UpdateBitRangeMap();
-
-        UpdateSignature();
     }
 
-    public void UpdateSignature()
+    
+    public void UpdateSignatureFromOperands()
     {
         var builder = new StringBuilder();
         for (var i = 0; i < Operands.Count; i++)

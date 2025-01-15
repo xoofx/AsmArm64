@@ -419,6 +419,39 @@ readonly record struct BitRange(int LowBit, int Width)
         return (byte)(LowBit | (Width << 5));
     }
 
+    public bool Contains(BitRange other) => LowBit <= other.LowBit && LowBit + Width - 1 >= other.LowBit + other.Width - 1;
+
+    public BitRange EncodeRelativeTo(List<BitRange> bitRanges)
+    {
+        var lowBit = LowBit;
+        var width = Width;
+        bool rangeFound = false;
+        for (var i = 0; i < bitRanges.Count; i++)
+        {
+            var bitRange = bitRanges[i];
+            if (this.LowBit >= bitRange.LowBit && this.LowBit <= bitRange.LowBit + bitRange.Width - 1)
+            {
+                lowBit -= bitRange.LowBit;
+
+                // Shift the width with the lower width
+                for (int j = i + 1; j < bitRanges.Count; j++)
+                {
+                    lowBit += bitRanges[j].Width;
+                }
+
+                rangeFound = true;
+                break;
+            }
+        }
+
+        if (!rangeFound)
+        {
+            throw new InvalidOperationException($"Cannot encode {this} relative to {string.Join(", ", bitRanges)}");
+        }
+
+        return new BitRange(lowBit, width);
+    }
+
     public override string ToString() => $"({LowBit}:{Width})";
 }
 

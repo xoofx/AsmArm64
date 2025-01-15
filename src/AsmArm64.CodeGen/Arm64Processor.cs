@@ -16,7 +16,6 @@ namespace AsmArm64.CodeGen;
 // Feature
 // Docvars ideas
 // https://github.com/google/EXEgesis/blob/master/exegesis/arm/xml/docvars.cc
-
 public partial class Arm64Processor
 {
     private readonly string _baseSpecsFolder;
@@ -309,11 +308,7 @@ public partial class Arm64Processor
                     instruction.DocVars[docVar.Key] = docVar.Value;
                 }
 
-                mapEncodingIdToInfo.TryGetValue(encodingName, out var encodingInfo);
 
-                var operands = ParseOperands(encoding, encodingInfo);
-                instruction.Operands.AddRange(operands);
-                
                 encodingBitFields.Clear();
                 ProcessBitFields(encoding, encodingBitFields);
 
@@ -327,7 +322,20 @@ public partial class Arm64Processor
                     instruction.Add(bitField);
                 }
 
-                instruction.Build();
+                instruction.Initialize();
+
+                if (mapEncodingIdToInfo.TryGetValue(encodingName, out var encodingInfo))
+                {
+                    foreach (var symbol in encodingInfo.Symbols.Values)
+                    {
+                        symbol.Initialize(instruction.BitRangeMap);
+                    }
+                }
+                
+                var operands = ParseOperands(encoding, encodingInfo);
+                instruction.Operands.AddRange(operands);
+                instruction.UpdateSignatureFromOperands();
+
                 _instructions.Add(instruction);
             }
         }

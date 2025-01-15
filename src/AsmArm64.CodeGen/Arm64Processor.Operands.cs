@@ -3,6 +3,7 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using AsmArm64.CodeGen.Model;
@@ -12,7 +13,6 @@ namespace AsmArm64.CodeGen;
 // Check https://github.com/CensoredUsername/dynasm-rs/blob/master/tools/aarch64_gen_opmap.py for ideas
 // https://github.com/wdamron/arm/blob/main/INSTRUCTIONS.md
 // https://github.com/wdamron/arm/blob/main/encoding.go
-
 partial class Arm64Processor
 {
     private HashSet<string> _allParameterNames = new();
@@ -296,7 +296,7 @@ partial class Arm64Processor
                 {
                     if (elt.Symbol is not null)
                     {
-                        bitNames.AddRange(elt.Symbol.BitInfos.Select(x => x.Name));
+                        bitNames.AddRange(elt.Symbol.BitNames);
                     }
                 }
 
@@ -319,7 +319,7 @@ partial class Arm64Processor
                 }
                 else
                 {
-                    bool isEnum = elt0.Symbol is not null && elt0.Symbol.BitValues.Count > 0 && elt0.Symbol.BitValues.All(x => MatchEnum.IsMatch(x.Value));
+                    bool isEnum = elt0.Symbol is not null && elt0.Symbol.Selector is not null && elt0.Symbol.Selector.BitValues.All(x => x.Kind == EncodingBitValueKind.Text || x.Kind == EncodingBitValueKind.Reserved);
                     // TODO: Detect Enum kind (e.g. LSL #<amount>)
                     operandItem = isEnum
                         ? new EnumOperandItem()
@@ -446,51 +446,16 @@ partial class Arm64Processor
             };
             _allParameterNames.Add(name);
             // 
-            var encodedIn = accountElement.Attribute("encodedin")!.Value;
-
-            int index = 0;
-            while (index < encodedIn.Length)
-            {
-                var match = MatchIdentifier.Match(encodedIn, index, encodedIn.Length - index);
-                if (!match.Success)
-                {
-                    break;
-                }
-                var bitName = match.Value;
-                index += match.Length;
-                var bitInfo = new EncodingBitInfo() { Name = bitName };
-                if (index < encodedIn.Length)
-                {
-                    var c = encodedIn[index];
-                    if (c == ':')
-                    {
-                        index++;
-                    }
-                    else if (c == '<')
-                    {
-                        var indexOfEndGroup = encodedIn.IndexOf('>', index);
-                        var bits = encodedIn.Substring(index + 1, indexOfEndGroup - index - 1);
-                        bitInfo.BitIndices.AddRange(bits.Split(':').Select(int.Parse));
-                        index = indexOfEndGroup + 1;
-                        if (index < encodedIn.Length && encodedIn[index] == ':')
-                        {
-                            index++;
-                        }
-                    }
-                    else
-                    {
-                        Debug.Assert(false); // ???
-                    }
-                }
-
-                encodingSymbol.BitInfos.Add(bitInfo);
-            }
+            encodingSymbol.EncodedInText = accountElement.Attribute("encodedin")!.Value;
 
             var tableElement = accountElement.Element("table");
             if (tableElement is not null)
             {
                 Debug.Assert(tableElement.Attribute("class")?.Value == "valuetable");
 
+                var selector = new EncodingSymbolSelector();
+                encodingSymbol.Selector = selector;
+                
                 // Collect the fields used to match
                 var thead = tableElement.Descendants("thead").First();
                 foreach (var entry in thead.Descendants("entry"))
@@ -498,7 +463,7 @@ partial class Arm64Processor
                     var cls = entry.Attribute("class")!.Value;
                     if (cls == "bitfield")
                     {
-                        encodingSymbol.BitValueNames.Add(entry.Value);
+                        selector.BitNames.Add(entry.Value);
                     }
                 }
 
@@ -506,19 +471,21 @@ partial class Arm64Processor
                 var tbody = tableElement.Descendants("tbody").First();
                 var rows = tbody.Elements("row").ToList();
 
+                var bitFieldsBuilder = new StringBuilder();
                 foreach (var row in rows)
                 {
                     var bitValue = new EncodingBitValue();
+                    bitFieldsBuilder.Clear();
                     foreach (var entry in row.Elements("entry"))
                     {
                         var cls = entry.Attribute("class")?.Value;
                         if (cls == "bitfield")
                         {
-                            bitValue.BitFields.Add(entry.Value);
+                            bitFieldsBuilder.Append(entry.Value);
                         }
                         else if (cls == "symbol")
                         {
-                            bitValue.Value = entry.Value;
+                            bitValue.Text = entry.Value;
                         }
                         else if (cls == "feature" || cls == "description")
                         {
@@ -529,7 +496,9 @@ partial class Arm64Processor
                             Debug.Assert(false);
                         }
                     }
-                    encodingSymbol.BitValues.Add(bitValue);
+                    bitValue.BitSelectorAsText = bitFieldsBuilder.ToString();
+
+                    selector.BitValues.Add(bitValue);
                 }
             }
 
