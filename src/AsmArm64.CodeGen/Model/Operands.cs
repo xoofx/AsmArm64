@@ -235,7 +235,7 @@ class EncodingSymbolsInfo
     public Dictionary<string, EncodingSymbol> Symbols { get; } = new();
 }
 
-[DebuggerDisplay("Link = {Link}, BitInfos = {BitInfosDebuggerDisplay}, BitValues = {BitValues.Count}")]
+[DebuggerDisplay("Link = {Link}, EncodedIn = {EncodedInText}, BitRanges = {BitRanges.Count}")]
 class EncodingSymbol
 {
     public required string Link { get; init; } = string.Empty;
@@ -276,7 +276,6 @@ class EncodingSymbol
             bitSize += bitItem.Range.Width;
         }
         BitRanges.Compact();
-
         BitSize = bitSize;
 
         if (Selector is not null)
