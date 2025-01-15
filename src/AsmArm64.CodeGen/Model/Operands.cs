@@ -288,6 +288,21 @@ class EncodingSymbol
 
             foreach (var bitValue in Selector.BitValues)
             {
+                // Remove any leading 0 as we will mask them out anyway when decoding
+                for (var i = 0; i < bitValue.BitItems.Count; i++)
+                {
+                    var bitItem = bitValue.BitItems[i];
+                    if (bitItem.Kind == BitValueItemKind.Bit0)
+                    {
+                        bitValue.BitItems.RemoveAt(i);
+                        i--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
                 bool allBitRange = true;
                 for (var i = 0; i < bitValue.BitItems.Count; i++)
                 {
@@ -333,7 +348,7 @@ class EncodingSymbol
     public override string ToString()
     {
         var builder = new StringBuilder();
-        builder.Append($"Symbol Name: {Name}, Link: {Link}, EncodedIn: {EncodedInText}, BitRanges: ({string.Join(", ", BitRanges)})");
+        builder.Append($"Symbol Name: {Name}, Link: {Link}, EncodedIn: {EncodedInText}, BitRanges: [{string.Join(", ", BitRanges)}]");
         if (Selector is not null)
         {
             builder.AppendLine();
@@ -402,7 +417,7 @@ record EncodingSymbolSelector
 
     public void ToString(StringBuilder builder, bool indent = false)
     {
-        builder.AppendLine($"{(indent?"  " : string.Empty)}Selector BitNames: ({string.Join(", ", BitNames)}), BitRanges: ({string.Join(", ", BitRanges)})");
+        builder.AppendLine($"{(indent?"  " : string.Empty)}Selector BitNames: [{string.Join(", ", BitNames)}], BitRanges: [{string.Join(", ", BitRanges)}]");
         for (var i = 0; i < BitValues.Count; i++)
         {
             var bitValue = BitValues[i];
@@ -591,9 +606,9 @@ record EncodingBitValue
         builder.Append(Kind);
         if (BitSelectorMask != 0)
         {
-            builder.Append($" SelectorMask(0x{BitSelectorMask:X}");
+            builder.Append($" Mask(0x{BitSelectorMask:X})");
         }
-        builder.Append($" SelectorValue(0x{BitSelectorValue:X}) -> ");
+        builder.Append($" Select(0x{BitSelectorValue:X}) -> ");
 
         switch (Kind)
         {
@@ -684,6 +699,8 @@ readonly record struct BitValueItem(BitValueItemKind Kind, BitRange Range)
             }
         }
     }
+
+    public override string ToString() => Kind == BitValueItemKind.BitRange ? $"({Kind} - {Range})" : Kind.ToString();
 
     private static readonly Regex MatchName = new("^(?<name>[A-Za-z][A-Za-z0-9_]*)(<(?<bitIndices>[^>]+)>)?");
 }
