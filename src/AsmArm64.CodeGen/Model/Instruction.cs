@@ -75,7 +75,7 @@ class Instruction : IJsonOnDeserialized
     public List<int> VectorArrangementIndices { get; } = new();
     
     [JsonIgnore]
-    public List<VectorArrangement> VectorArrangements { get; } = new();
+    public List<EncodingVectorArrangementExtract> VectorArrangements { get; } = new();
     
     [JsonIgnore]
     public Dictionary<string, BitRangeInfo> BitRangeMap { get; } = new();
@@ -164,7 +164,6 @@ class Instruction : IJsonOnDeserialized
 
         UpdateBitRangeMap();
     }
-
     
     public void UpdateSignatureFromOperands()
     {

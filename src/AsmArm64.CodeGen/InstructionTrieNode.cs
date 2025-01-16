@@ -271,8 +271,6 @@ class InstructionTrieNode
 
                             length = newLength;
                         }
-
-                        return (0, 0);
                     }
                 );
             }

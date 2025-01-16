@@ -39,23 +39,26 @@ abstract class OperandDescriptor(Arm64OperandKind kind)
     protected internal abstract void EncodeImpl(Span<byte> buffer);
 }
 
-interface IIndexableOperandDescriptor
+sealed class RegisterGroupOperandDescriptor() : OperandDescriptor(Arm64OperandKind.RegisterGroup)
 {
-    int IndexerId { get; set; }
-}
-
-sealed class RegisterGroupOperandDescriptor() : OperandDescriptor(Arm64OperandKind.RegisterGroup), IIndexableOperandDescriptor
-{
+    private int _indexerIndex;
     public required int Count { get; set; }
 
-    public int IndexerId { get; set; }
+    public int IndexerIndex
+    {
+        get => IndexerExtract?.Index ?? _indexerIndex;
+        set => _indexerIndex = value;
+    }
+
+    [JsonIgnore]
+    public EncodingSymbolExtract? IndexerExtract { get; set; }
 
     public required RegisterOperandDescriptor Register { get; init; }
 
     public override string ToString() => $"Group {Name}, Count: {Count}, {Register}";
     protected internal override void EncodeImpl(Span<byte> buffer)
     {
-        buffer[1] = (byte)((byte)Count | (byte)IndexerId << 4);
+        buffer[1] = (byte)((byte)Count | (byte)IndexerIndex << 4);
         Register.EncodeImpl(buffer.Slice(2));
     }
 }
@@ -272,55 +275,19 @@ sealed class ConstOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Const
     }
 }
 
-sealed class DynamicRegisterSelector
-{
-    public int Index { get; set; }
-
-    public BitValuesMappingKind MappingKind { get; set; }
-
-    public int BitSize { get; set; }
-
-    public BitRange BitEncoding { get; set; }
-
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<BitValueToRegister> BitValues { get; } = new();
-
-    public void UpdateKindFromItems()
-    {
-        MappingKind = BitValues.Any(x => x.RegisterKind != Arm64RegisterEncodingKind.None && x.MaskValue != 0) ? BitValuesMappingKind.Masked : BitValuesMappingKind.Regular;
-    }
-
-    [JsonIgnore]
-    internal List<RegisterOperandDescriptor> RegisterDescriptors { get; } = new();
-
-    [JsonIgnore]
-    public string Id => ToString();
-
-    public override string ToString()
-    {
-        var builder = new StringBuilder();
-        builder.Append($"DynamicXorW[{BitSize}]{BitEncoding} -> {{");
-        for (int i = 0; i < BitValues.Count; i++)
-        {
-            if (i > 0)
-            {
-                builder.Append(", ");
-            }
-            builder.Append(BitValues[i]);
-        }
-        builder.Append('}');
-        return builder.ToString();
-    }
-}
-
-sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Register), IIndexableOperandDescriptor
+sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Register)
 {
     private int _dynamicRegisterSelectorIndex;
+    private int _indexerIndex;
     public Arm64RegisterEncodingKind RegisterKind { get; set; }
 
     public Arm64RegisterIndexEncodingKind RegisterIndexEncodingKind { get; set; }
 
-    public int IndexerId { get; set; }
+    public int IndexerIndex
+    {
+        get => IndexerExtract?.Index ?? _indexerIndex;
+        set => _indexerIndex = value;
+    }
 
     /// <summary>
     /// Only valid for Regular5 and Regular4
@@ -338,11 +305,14 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
     /// </summary>
     public int VectorArrangementLocalIndex { get; set; }
 
+    [JsonIgnore]
+    public EncodingSymbolExtract? IndexerExtract { get; set; }
+
     /// <summary>
     /// If the operand kind is <see cref="Arm64RegisterEncodingKind.DynamicXOrW"/>, then the kind of register is selected dynamically
     /// </summary>
     [JsonIgnore]
-    public DynamicRegisterSelector? DynamicRegisterXOrWSelector { get; set; }
+    public EncodingSymbolExtract? DynamicRegisterXOrWSelector { get; set; }
 
     [JsonIgnore]
     public bool IsSimpleEncoding => RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.SpecialMRm;
@@ -360,7 +330,7 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
     protected internal override void EncodeImpl(Span<byte> buffer)
     {
         buffer[1] = (byte)((byte)RegisterKind | ((byte)RegisterIndexEncodingKind << 4));
-        buffer[2] = (byte)IndexerId;
+        buffer[2] = (byte)IndexerIndex;
         buffer[3] = (byte)LowBitIndexEncoding;
         if (RegisterKind == Arm64RegisterEncodingKind.V)
         {
@@ -408,7 +378,7 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
 readonly record struct BitRange(int LowBit, int Width)
 {
     /// <summary>
-    /// If a bit range is small encoding, it can be encoded in a single byte (5 bits for LowBit, 3 bits for Width)
+    /// If a bitrange is small encoding, it can be encoded in a single byte (5 bits for LowBit, 3 bits for Width)
     /// </summary>
     [JsonIgnore]
     public bool IsSmallEncoding => Width < 8; // Could be slightly improved if Width is encoded with always + 1
@@ -512,248 +482,4 @@ abstract record BitValueBase
     public uint MaskValue { get; set; }
 
     public uint BitValue { get; set; }
-}
-
-
-record VectorArrangementValue : BitValueBase
-{
-    public VectorArrangementValue(string bitValuesAsText, Arm64RegisterVectorArrangementEncodingKind kind) : base(bitValuesAsText)
-    {
-        this.Kind = kind;
-    }
-
-    public Arm64RegisterVectorArrangementEncodingKind Kind { get; init; }
-
-    public override string ToString() => $"{BitValuesAsText} -> {Kind}";
-}
-
-record VectorArrangement
-{
-    private int _vectorArrangementValuesIndex;
-
-    /// <summary>
-    /// Index in the global list of <see cref="InstructionSet.VectorArrangements"/>
-    /// </summary>
-    public int Index { get; set; }
-
-    public Arm64RegisterVectorArrangementEncodingKind ArrangementKind { get; set; }
-
-    public int BitSize { get; set; }
-
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<BitRange> Encoding { get; } = new();
-
-    /// <summary>
-    /// Gets or sets the index of the vector arrangement values in the <see cref="InstructionSet.VectorArrangementValues"/>
-    /// </summary>
-    public int VectorArrangementValuesIndex
-    {
-        get => Values?.Index ?? _vectorArrangementValuesIndex;
-        set => _vectorArrangementValuesIndex = value;
-    }
-
-    [JsonIgnore]
-    public VectorArrangementValues? Values { get; set; }
-
-    [JsonIgnore]
-    public string Id
-    {
-        get
-        {
-            var builder = new StringBuilder();
-            builder.Append($"{ArrangementKind}-{BitSize}-{string.Join(":", Encoding)}");
-            if (Values != null)
-            {
-                builder.Append($"-{Values.Id}");
-            }
-
-            return builder.ToString();
-        }
-    }
-
-    // Maximum 4 bytes encoded
-    public void Encode(Span<byte> buffer)
-    {
-        buffer[0] = (byte)((byte)ArrangementKind | (byte)BitSize << 4);
-        buffer[1] = (byte)Encoding.Count;
-        int index = 2;
-        Debug.Assert(Encoding.Count <= 2);
-        for (int i = 0; i < Encoding.Count; i++)
-        {
-            var bitRange = Encoding[i];
-            buffer[index] = bitRange.ToSmallEncoding();
-            index++;
-        }
-    }
-
-    public override int GetHashCode()
-    {
-        var hash = new HashCode();
-        hash.Add(ArrangementKind);
-        hash.Add(BitSize);
-        foreach (var bitRange in Encoding)
-        {
-            hash.Add(bitRange);
-        }
-
-        var values = Values;
-        if (values is not null)
-        {
-            foreach (var item in values.Items)
-            {
-                hash.Add(item);
-            }
-        }
-        return hash.ToHashCode();
-    }
-
-    public virtual bool Equals(VectorArrangement? other)
-    {
-        if (other == null)
-        {
-            return false;
-        }
-        if (ArrangementKind != other.ArrangementKind)
-        {
-            return false;
-        }
-        if (BitSize != other.BitSize)
-        {
-            return false;
-        }
-        if (Encoding.Count != other.Encoding.Count)
-        {
-            return false;
-        }
-
-        for (int i = 0; i < Encoding.Count; i++)
-        {
-            if (Encoding[i] != other.Encoding[i])
-            {
-                return false;
-            }
-        }
-
-        if (Values is null && other.Values is null)
-        {
-            return true;
-        }
-
-        if (Values is null || other.Values is null)
-        {
-            return false;
-        }
-
-        return Values.Equals(other.Values);
-    }
-
-    public override string ToString()
-    {
-        if (Encoding.Count == 0 && Values is null)
-        {
-            return ArrangementKind.ToString();
-        }
-        var builder = new StringBuilder();
-        builder.Append(ArrangementKind);
-
-        builder.Append($"(Size: {BitSize}, Encoding: ");
-
-        builder.Append("[");
-        for (var i = 0; i < Encoding.Count; i++)
-        {
-            var bitRange = Encoding[i];
-            if (i > 0) builder.Append(",");
-            builder.Append(bitRange);
-        }
-        builder.Append("], Values: ");
-
-        builder.Append("{");
-        for (var i = 0; i < Values!.Items.Count; i++)
-        {
-            var item = Values.Items[i];
-            if (i > 0) builder.Append(",");
-            builder.Append(item);
-        }
-        builder.Append("}");
-
-        return builder.ToString();
-    }
-}
-
-[JsonConverter(typeof(JsonStringEnumConverter))]
-enum BitValuesMappingKind
-{
-    None,
-    /// <summary>
-    /// The <see cref="VectorArrangementValue"/> are regular value (no mask).
-    /// </summary>
-    Regular,
-    /// <summary>
-    /// The <see cref="VectorArrangementValue"/> are masked values (They have xxx bits not to take into account)
-    /// </summary>
-    Masked
-}
-
-sealed class VectorArrangementValues
-{
-    [JsonIgnore]
-    public string Id => ToString();
-
-    public int Index { get; set; }
-
-    public BitValuesMappingKind MappingKind { get; set; }
-
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<VectorArrangementValue> Items { get; } = new();
-
-    public void UpdateKindFromItems()
-    {
-        MappingKind = Items.Any(x => x.Kind != Arm64RegisterVectorArrangementEncodingKind.Reserved && x.MaskValue != 0) ? BitValuesMappingKind.Masked : BitValuesMappingKind.Regular;
-    }
-
-    public override int GetHashCode()
-    {
-        var hash = new HashCode();
-        foreach (var item in Items)
-        {
-            hash.Add(item);
-        }
-        return hash.ToHashCode();
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (obj is not VectorArrangementValues other)
-        {
-            return false;
-        }
-        if (Items.Count != other.Items.Count)
-        {
-            return false;
-        }
-        for (int i = 0; i < Items.Count; i++)
-        {
-            if (this.Items[i] != other.Items[i])
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public override string ToString()
-    {
-        var builder = new StringBuilder();
-        builder.Append("{");
-        for (int i = 0; i < Items.Count; i++)
-        {
-            if (i > 0)
-            {
-                builder.Append(", ");
-            }
-            builder.Append(this.Items[i]);
-        }
-        builder.Append("}");
-        return builder.ToString();
-    }
 }

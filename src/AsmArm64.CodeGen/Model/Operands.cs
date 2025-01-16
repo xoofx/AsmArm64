@@ -19,7 +19,7 @@ sealed class Operand
     public required OperandKind Kind { get; init; }
 
     public OperandDescriptor? Descriptor { get; set; }
-    
+
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<OperandItem> Items { get; } = new();
 
@@ -363,7 +363,11 @@ class EncodingSymbol
 /// </summary>
 record EncodingSymbolSelector
 {
+    public int Index { get; set; }
+
     public int BitSize { get; set; }
+
+    public EncodingSymbolSelectorKind Kind { get; set; }
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<string> BitNames { get; } = new();
@@ -373,7 +377,28 @@ record EncodingSymbolSelector
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<EncodingBitValue> BitValues { get; } = new();
+    
+    /// <summary>
+    /// A list of action when the index of this class is assigned
+    /// </summary>
+    [JsonIgnore]
+    public List<Action<int>> OnIndexAssigned { get; } = new();
 
+    public void AppendUniqueId(StringBuilder builder)
+    {
+        builder.Append(BitSize);
+        builder.Append(' ');
+        builder.Append($"[{string.Join(",", BitRanges)}] ");
+        builder.Append('[');
+        for (var i = 0; i < BitValues.Count; i++)
+        {
+            var bitValue = BitValues[i];
+            if (i > 0) builder.Append(',');
+            bitValue.AppendUniqueId(builder);
+        }
+        builder.Append(']');
+    }
+    
     public void Initialize(Dictionary<string, BitRangeInfo> map)
     {
         // Either we have nothing to initialize or we have been already initialized
@@ -413,6 +438,9 @@ record EncodingSymbolSelector
         {
             bitValue.Initialize(map);
         }
+
+        // Update the kind
+        Kind = BitValues.Any(x => x.Kind != EncodingBitValueKind.Reserved && x.BitSelectorMask != 0) ? EncodingSymbolSelectorKind.Masked : EncodingSymbolSelectorKind.Regular;
     }
 
     public void ToString(StringBuilder builder, bool indent = false)
@@ -463,7 +491,13 @@ record EncodingBitValue
     public int Addend { get; set; }
 
     public bool HasNegativeExtract { get; set; }
-    
+
+    public void AppendUniqueId(StringBuilder builder)
+    {
+        // We assume that the other fields are decoded from this
+        builder.Append($"({Kind} {Text} {BitSelectorAsText})");
+    }
+
     public void Initialize(Dictionary<string, BitRangeInfo> bitRangeMap)
     {
         Debug.Assert(BitItems.Count == 0);
@@ -674,7 +708,7 @@ readonly record struct BitValueItem(BitValueItemKind Kind, BitRange Range)
                         if (bitItems.Count > 0 && bitItems[^1].Kind == BitValueItemKind.BitRange && bitItems[^1].Range.LowBit == bitRange.LowBit + bitIndex + 1)
                         {
                             // Merge with previous range
-                            bitItems[^1] = new(BitValueItemKind.BitRange, new BitRange(bitRange.LowBit, bitItems[^1].Range.Width + 1));
+                            bitItems[^1] = new(BitValueItemKind.BitRange, new BitRange(bitRange.LowBit + bitIndex, bitItems[^1].Range.Width + 1));
                         }
                         else
                         {
@@ -763,3 +797,123 @@ sealed class BitRangeList : List<BitRange>
         }
     }
 }
+
+[JsonPolymorphic(TypeDiscriminatorPropertyName = "$kindExtract")]
+[JsonDerivedType(typeof(EncodingSymbolExtract), typeDiscriminator: "symbol")]
+[JsonDerivedType(typeof(EncodingVectorArrangementExtract), typeDiscriminator: "vector-arrangement")]
+[JsonDerivedType(typeof(EncodingIndexerExtract), typeDiscriminator: "indexer")]
+record EncodingSymbolExtract
+{
+    private int _selectorIndex;
+    public int Index { get; set; }
+
+    /// <summary>
+    /// A list of action when the index of this symbol is assigned
+    /// </summary>
+    [JsonIgnore]
+    public List<Action<int>> OnIndexAssigned { get; } = new();
+
+    public int BitSize { get; set; }
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<BitRange> BitRanges { get; } = new();
+
+    public int SelectorIndex
+    {
+        get => Selector?.Index ?? _selectorIndex;
+        set => _selectorIndex = value;
+    }
+
+    [JsonIgnore]
+    public EncodingSymbolSelector? Selector { get; set; }
+
+    /// <summary>
+    /// Track usage of this symbol extract (for tracing it back in the codegen).
+    /// </summary>
+    [JsonIgnore]
+    public List<(Instruction Instruction, OperandItem OperandItem)> Usages { get; } = new();
+
+    public void AppendUniqueId(StringBuilder builder)
+    {
+        builder.Append(BitSize);
+        builder.Append(' ');
+        builder.Append($"[{string.Join(",", BitRanges)}] ");
+    }
+}
+
+record EncodingVectorArrangementExtract : EncodingSymbolExtract
+{
+    public Arm64RegisterVectorArrangementEncodingKind Kind { get; set; }
+    
+    public static Arm64RegisterVectorArrangementEncodingKind ParseArrangementKind(string text)
+    {
+        switch (text)
+        {
+            case "16B":
+                return Arm64RegisterVectorArrangementEncodingKind.T_16B;
+            case "8B":
+                return Arm64RegisterVectorArrangementEncodingKind.T_8B;
+            case "4B":
+                return Arm64RegisterVectorArrangementEncodingKind.T_4B;
+            case "2B":
+                return Arm64RegisterVectorArrangementEncodingKind.T_2B;
+            case "2H":
+                return Arm64RegisterVectorArrangementEncodingKind.T_2H;
+            case "4H":
+                return Arm64RegisterVectorArrangementEncodingKind.T_4H;
+            case "8H":
+                return Arm64RegisterVectorArrangementEncodingKind.T_8H;
+            case "2S":
+                return Arm64RegisterVectorArrangementEncodingKind.T_2S;
+            case "4S":
+                return Arm64RegisterVectorArrangementEncodingKind.T_4S;
+            case "2D":
+                return Arm64RegisterVectorArrangementEncodingKind.T_2D;
+            case "1D":
+                return Arm64RegisterVectorArrangementEncodingKind.T_1D;
+            case "1Q":
+                return Arm64RegisterVectorArrangementEncodingKind.T_1Q;
+            case "T":
+                return Arm64RegisterVectorArrangementEncodingKind.T;
+            case "D":
+                return Arm64RegisterVectorArrangementEncodingKind.D;
+            case "H":
+                return Arm64RegisterVectorArrangementEncodingKind.H;
+            case "B":
+                return Arm64RegisterVectorArrangementEncodingKind.B;
+            case "S":
+                return Arm64RegisterVectorArrangementEncodingKind.S;
+            case "RESERVED":
+                return Arm64RegisterVectorArrangementEncodingKind.Reserved;
+            default:
+                if (text.StartsWith("T"))
+                {
+                    return Arm64RegisterVectorArrangementEncodingKind.T;
+                }
+                else
+                {
+                    throw new NotSupportedException($"Unsupported arrangement `{text}`");
+                }
+        }
+    }
+}
+
+record EncodingIndexerExtract : EncodingSymbolExtract
+{
+    public string? FixedIndex { get; set; }
+}
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
+enum EncodingSymbolSelectorKind
+{
+    None,
+    /// <summary>
+    /// No mask used by the encoding selector.
+    /// </summary>
+    Regular,
+    /// <summary>
+    /// Mask used by the encoding selector.
+    /// </summary>
+    Masked
+}
+

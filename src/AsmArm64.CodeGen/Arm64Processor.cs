@@ -512,7 +512,6 @@ public partial class Arm64Processor
                         break;
                     default:
                         throw new InvalidOperationException($"Invalid bit value {value}");
-                        break;
                 }
             }
             else if (value.Length == 0)

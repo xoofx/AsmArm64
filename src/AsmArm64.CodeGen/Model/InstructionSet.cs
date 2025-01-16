@@ -3,6 +3,7 @@
 // See license.txt file in the project root for full license information.
 
 using System.Collections;
+using System.Diagnostics;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -14,16 +15,7 @@ namespace AsmArm64.CodeGen.Model;
 class InstructionSet
 {
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<VectorArrangementValues> VectorArrangementValues { get; } = new();
-
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<VectorArrangement> VectorArrangements { get; } = new();
-
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<string> IndexerIdList { get; } = new();
-    
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<DynamicRegisterSelector> DynamicRegisterSelectorList { get; } = new();
+    public List<EncodingSymbolExtractMap> ExtractMaps { get; } = new();
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<Instruction> Instructions { get; } = new();
@@ -33,6 +25,7 @@ class InstructionSet
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     internal List<string> OrderedInstructionClass { get; } = new();
+
 
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
@@ -47,6 +40,26 @@ class InstructionSet
         WriteIndented = true,
     };
 
+    public EncodingSymbolExtractMap GetOrCreateExtractMap(EncodingSymbolExtractMapKind kind)
+    {
+        var extractMap = ExtractMaps.FirstOrDefault(x => x.Kind == kind);
+        if (extractMap == null)
+        {
+            extractMap = new EncodingSymbolExtractMap { Kind = kind };
+            ExtractMaps.Add(extractMap);
+        }
+
+        return extractMap;
+    }
+
+    public void AssignExtraMapIndices()
+    {
+        foreach (var extractMap in ExtractMaps)
+        {
+            extractMap.AssignIndices();
+        }
+    }
+    
     public static InstructionSet ReadJson(string filename)
     {
         using var stream = File.OpenRead(filename);

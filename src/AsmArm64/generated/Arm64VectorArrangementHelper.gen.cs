@@ -9,869 +9,1762 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
+
+using System.Runtime.CompilerServices;
+
 namespace AsmArm64;
 
 /// <summary>
-/// Decode vector arrangements from raw instruction.
+/// Decode VectorArrangement class.
 /// </summary>
 static class Arm64VectorArrangementHelper
 {
-    public static bool TryDecode(Arm64RawInstruction rawValue, byte valueArrangementIndex, out Arm64RegisterVKind vKind, out int elementCount)
+    public static bool TryDecode(Arm64RawInstruction rawValue, byte mapIndex, out Arm64RegisterVKind vKind, out int elementCount)
     {
-        switch (valueArrangementIndex)
+        switch (mapIndex)
         {
+            // FADDP_asisdpair_only_sd       : FADDP       Vd, Vn.T <- Operand: Vn.T
             case 1:
+            {
+                var bitValue = ((rawValue >> 22) & 0x1);
+                return TryDecodeFromBitValues(bitValue, 2, out vKind,out elementCount);
+            }
+            // FCVTL_asimdmisc_l             : FCVTL       Vd.Ta, Vn.Tb <- Operand: Vd.Ta
+            case 2:
+            {
+                var bitValue = ((rawValue >> 22) & 0x1);
+                return TryDecodeFromBitValues(bitValue, 5, out vKind,out elementCount);
+            }
+            // FMLA_asimdelem_r_sd           : FMLA        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            case 3:
+            {
+                var bitValue = ((rawValue >> 22) & 0x1);
+                return TryDecodeFromBitValues(bitValue, 7, out vKind,out elementCount);
+            }
+            // FMLAL2_asimdelem_lh           : FMLAL2      Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vn.Tb
+            case 4:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                return TryDecodeFromBitValues(bitValue, 1, out vKind,out elementCount);
+            }
+            // BFDOT_asimdelem_e             : BFDOT       Vd.Ta, Vn.Tb, Vm.2H[index] <- Operand: Vd.Ta
+            case 5:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                return TryDecodeFromBitValues(bitValue, 3, out vKind,out elementCount);
+            }
+            // BFCVTN_asimdmisc_4s           : BFCVTN      Vd.Ta, Vn.4S <- Operand: Vd.Ta
+            case 6:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                return TryDecodeFromBitValues(bitValue, 4, out vKind,out elementCount);
+            }
+            // AND_asimdsame_only            : AND         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            case 7:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                return TryDecodeFromBitValues(bitValue, 6, out vKind,out elementCount);
+            }
+            // FABD_asimdsame_only           : FABD        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            case 8:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
+                return TryDecodeFromBitValues(bitValue, 8, out vKind,out elementCount);
+            }
+            // URECPE_asimdmisc_r            : URECPE      Vd.T, Vn.T <- Operand: Vd.T
+            case 9:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
+                return TryDecodeFromBitValues(bitValue, 9, out vKind,out elementCount);
+            }
+            // FCVTL_asimdmisc_l             : FCVTL       Vd.Ta, Vn.Tb <- Operand: Vn.Tb
+            case 10:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
+                return TryDecodeFromBitValues(bitValue, 11, out vKind,out elementCount);
+            }
+            // SMLAL_asimdelem_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            case 11:
+            {
+                var bitValue = ((rawValue >> 22) & 0x3);
+                return TryDecodeFromBitValues(bitValue, 12, out vKind,out elementCount);
+            }
+            // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            case 12:
+            {
+                var bitValue = ((rawValue >> 22) & 0x3);
+                return TryDecodeFromBitValues(bitValue, 13, out vKind,out elementCount);
+            }
+            // ADDHN_asimddiff_n             : ADDHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
+            case 13:
+            {
+                var bitValue = ((rawValue >> 22) & 0x3);
+                return TryDecodeFromBitValues(bitValue, 14, out vKind,out elementCount);
+            }
+            // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vm.Ts[index]
+            case 14:
+            {
+                var bitValue = ((rawValue >> 22) & 0x3);
+                return TryDecodeFromBitValues(bitValue, 15, out vKind,out elementCount);
+            }
+            // FMLA_asimdelem_r_sd           : FMLA        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            case 15:
+            {
+                var bitValue = ((rawValue >> 22) & 0x1) | ((rawValue >> 29) & 0x2);
+                return TryDecodeFromBitValues(bitValue, 10, out vKind,out elementCount);
+            }
+            // LD1R_asisdlso_r1              : LD1R        {Vt.T}, [Xn|SP] <- Operand: Vt.T
+            case 16:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 9) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 21, out vKind,out elementCount);
+            }
+            // LD2_asisdlse_r2               : LD2         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt.T
+            case 17:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 9) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 22, out vKind,out elementCount);
+            }
+            // SADALP_asimdmisc_p            : SADALP      Vd.Ta, Vn.Tb <- Operand: Vd.Ta
+            case 18:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 16, out vKind,out elementCount);
+            }
+            // FCADD_asimdsame2_c            : FCADD       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vd.T
+            case 19:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 17, out vKind,out elementCount);
+            }
+            // MLA_asimdelem_r               : MLA         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            case 20:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 18, out vKind,out elementCount);
+            }
+            // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vd.T
+            case 21:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 19, out vKind,out elementCount);
+            }
+            // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            case 22:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 20, out vKind,out elementCount);
+            }
+            // ABS_asimdmisc_r               : ABS         Vd.T, Vn.T <- Operand: Vd.T
+            case 23:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 22, out vKind,out elementCount);
+            }
+            // ADDHN_asimddiff_n             : ADDHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
+            case 24:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 23, out vKind,out elementCount);
+            }
+            // ADDV_asimdall_only            : ADDV        Vd, Vn.T <- Operand: Vn.T
+            case 25:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 24, out vKind,out elementCount);
+            }
+            // REV32_asimdmisc_r             : REV32       Vd.T, Vn.T <- Operand: Vd.T
+            case 26:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 25, out vKind,out elementCount);
+            }
+            // CNT_asimdmisc_r               : CNT         Vd.T, Vn.T <- Operand: Vd.T
+            case 27:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
+                return TryDecodeFromBitValues(bitValue, 26, out vKind,out elementCount);
+            }
+            // RSHRN_asimdshf_n              : RSHRN       Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            case 28:
+            {
+                var bitValue = ((rawValue >> 19) & 0xF);
+                return TryDecodeFromBitValues(bitValue, 27, out vKind,out elementCount);
+            }
+            // DUP_asimdins_dv_v             : DUP         Vd.T, Vn.Ts[index] <- Operand: Vn.Ts[index]
+            case 29:
+            {
+                var bitValue = ((rawValue >> 16) & 0x1F);
+                return TryDecodeFromBitValues(bitValue, 31, out vKind,out elementCount);
+            }
+            // SMOV_asimdins_x_x             : SMOV        Xd, Vn.Ts[index] <- Operand: Vn.Ts[index]
+            case 30:
+            {
+                var bitValue = ((rawValue >> 16) & 0x1F);
+                return TryDecodeFromBitValues(bitValue, 32, out vKind,out elementCount);
+            }
+            // SMOV_asimdins_w_w             : SMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
+            case 31:
+            {
+                var bitValue = ((rawValue >> 16) & 0x1F);
+                return TryDecodeFromBitValues(bitValue, 33, out vKind,out elementCount);
+            }
+            // FCVTZS_asimdshf_c             : FCVTZS      Vd.T, Vn.T, #fbits <- Operand: Vd.T
+            case 32:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
+                return TryDecodeFromBitValues(bitValue, 28, out vKind,out elementCount);
+            }
+            // SHL_asimdshf_r                : SHL         Vd.T, Vn.T, #shift <- Operand: Vd.T
+            case 33:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
+                return TryDecodeFromBitValues(bitValue, 29, out vKind,out elementCount);
+            }
+            // RSHRN_asimdshf_n              : RSHRN       Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            case 34:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
+                return TryDecodeFromBitValues(bitValue, 30, out vKind,out elementCount);
+            }
+            // DUP_asimdins_dr_r             : DUP         Vd.T, Rn <- Operand: Vd.T
+            case 35:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 15) & 0x3E);
+                return TryDecodeFromBitValues(bitValue, 34, out vKind,out elementCount);
+            }
+            // FMLALB_asimdelem_h            : FMLALB      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLBB_asimdelem_j          : FMLALLBB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLBT_asimdelem_j          : FMLALLBT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLTB_asimdelem_j          : FMLALLTB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLTT_asimdelem_j          : FMLALLTT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALT_asimdelem_h            : FMLALT      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // LD1_asisdlso_b1_1b            : LD1         {Vt.B}[index], [Xn|SP] <- Operand: Vt.B
+            // LD1_asisdlsop_b1_i1b          : LD1         {Vt.B}[index], [Xn|SP], #1 <- Operand: Vt.B
+            // LD1_asisdlsop_bx1_r1b         : LD1         {Vt.B}[index], [Xn|SP], Xm <- Operand: Vt.B
+            // LD2_asisdlso_b2_2b            : LD2         {Vt.B, Vt2.B}[index], [Xn|SP] <- Operand: Vt.B
+            // LD2_asisdlso_b2_2b            : LD2         {Vt.B, Vt2.B}[index], [Xn|SP] <- Operand: Vt2.B
+            // LD2_asisdlsop_b2_i2b          : LD2         {Vt.B, Vt2.B}[index], [Xn|SP], #2 <- Operand: Vt.B
+            // LD2_asisdlsop_b2_i2b          : LD2         {Vt.B, Vt2.B}[index], [Xn|SP], #2 <- Operand: Vt2.B
+            // LD2_asisdlsop_bx2_r2b         : LD2         {Vt.B, Vt2.B}[index], [Xn|SP], Xm <- Operand: Vt.B
+            // LD2_asisdlsop_bx2_r2b         : LD2         {Vt.B, Vt2.B}[index], [Xn|SP], Xm <- Operand: Vt2.B
+            // LD3_asisdlso_b3_3b            : LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP] <- Operand: Vt.B
+            // LD3_asisdlso_b3_3b            : LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP] <- Operand: Vt2.B
+            // LD3_asisdlso_b3_3b            : LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP] <- Operand: Vt3.B
+            // LD3_asisdlsop_b3_i3b          : LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3 <- Operand: Vt.B
+            // LD3_asisdlsop_b3_i3b          : LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3 <- Operand: Vt2.B
+            // LD3_asisdlsop_b3_i3b          : LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3 <- Operand: Vt3.B
+            // LD3_asisdlsop_bx3_r3b         : LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm <- Operand: Vt.B
+            // LD3_asisdlsop_bx3_r3b         : LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm <- Operand: Vt2.B
+            // LD3_asisdlsop_bx3_r3b         : LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm <- Operand: Vt3.B
+            // LD4_asisdlso_b4_4b            : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP] <- Operand: Vt.B
+            // LD4_asisdlso_b4_4b            : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP] <- Operand: Vt2.B
+            // LD4_asisdlso_b4_4b            : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP] <- Operand: Vt3.B
+            // LD4_asisdlso_b4_4b            : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP] <- Operand: Vt4.B
+            // LD4_asisdlsop_b4_i4b          : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4 <- Operand: Vt.B
+            // LD4_asisdlsop_b4_i4b          : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4 <- Operand: Vt2.B
+            // LD4_asisdlsop_b4_i4b          : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4 <- Operand: Vt3.B
+            // LD4_asisdlsop_b4_i4b          : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4 <- Operand: Vt4.B
+            // LD4_asisdlsop_bx4_r4b         : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: Vt.B
+            // LD4_asisdlsop_bx4_r4b         : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: Vt2.B
+            // LD4_asisdlsop_bx4_r4b         : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: Vt3.B
+            // LD4_asisdlsop_bx4_r4b         : LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: Vt4.B
+            // ST1_asisdlso_b1_1b            : ST1         {Vt.B}[index], [Xn|SP] <- Operand: Vt.B
+            // ST1_asisdlsop_b1_i1b          : ST1         {Vt.B}[index], [Xn|SP], #1 <- Operand: Vt.B
+            // ST1_asisdlsop_bx1_r1b         : ST1         {Vt.B}[index], [Xn|SP], Xm <- Operand: Vt.B
+            // ST2_asisdlso_b2_2b            : ST2         {Vt.B, Vt2.B}[index], [Xn|SP] <- Operand: Vt.B
+            // ST2_asisdlso_b2_2b            : ST2         {Vt.B, Vt2.B}[index], [Xn|SP] <- Operand: Vt2.B
+            // ST2_asisdlsop_b2_i2b          : ST2         {Vt.B, Vt2.B}[index], [Xn|SP], #2 <- Operand: Vt.B
+            // ST2_asisdlsop_b2_i2b          : ST2         {Vt.B, Vt2.B}[index], [Xn|SP], #2 <- Operand: Vt2.B
+            // ST2_asisdlsop_bx2_r2b         : ST2         {Vt.B, Vt2.B}[index], [Xn|SP], Xm <- Operand: Vt.B
+            // ST2_asisdlsop_bx2_r2b         : ST2         {Vt.B, Vt2.B}[index], [Xn|SP], Xm <- Operand: Vt2.B
+            // ST3_asisdlso_b3_3b            : ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP] <- Operand: Vt.B
+            // ST3_asisdlso_b3_3b            : ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP] <- Operand: Vt2.B
+            // ST3_asisdlso_b3_3b            : ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP] <- Operand: Vt3.B
+            // ST3_asisdlsop_b3_i3b          : ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3 <- Operand: Vt.B
+            // ST3_asisdlsop_b3_i3b          : ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3 <- Operand: Vt2.B
+            // ST3_asisdlsop_b3_i3b          : ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3 <- Operand: Vt3.B
+            // ST3_asisdlsop_bx3_r3b         : ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm <- Operand: Vt.B
+            // ST3_asisdlsop_bx3_r3b         : ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm <- Operand: Vt2.B
+            // ST3_asisdlsop_bx3_r3b         : ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm <- Operand: Vt3.B
+            // ST4_asisdlso_b4_4b            : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP] <- Operand: Vt.B
+            // ST4_asisdlso_b4_4b            : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP] <- Operand: Vt2.B
+            // ST4_asisdlso_b4_4b            : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP] <- Operand: Vt3.B
+            // ST4_asisdlso_b4_4b            : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP] <- Operand: Vt4.B
+            // ST4_asisdlsop_b4_i4b          : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4 <- Operand: Vt.B
+            // ST4_asisdlsop_b4_i4b          : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4 <- Operand: Vt2.B
+            // ST4_asisdlsop_b4_i4b          : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4 <- Operand: Vt3.B
+            // ST4_asisdlsop_b4_i4b          : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4 <- Operand: Vt4.B
+            // ST4_asisdlsop_bx4_r4b         : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: Vt.B
+            // ST4_asisdlsop_bx4_r4b         : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: Vt2.B
+            // ST4_asisdlsop_bx4_r4b         : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: Vt3.B
+            // ST4_asisdlsop_bx4_r4b         : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: Vt4.B
+            case 36:
+            {
                 vKind = Arm64RegisterVKind.B;
                 elementCount = 0;
                 return true;
-            case 2:
+            }
+            // FMOV_64vx_float2int           : FMOV        Xd, Vn.D[1] <- Operand: Vn.D[1]
+            // FMOV_v64i_float2int           : FMOV        Vd.D[1], Xn <- Operand: Vd.D[1]
+            // LD1_asisdlso_d1_1d            : LD1         {Vt.D}[index], [Xn|SP] <- Operand: Vt.D
+            // LD1_asisdlsop_d1_i1d          : LD1         {Vt.D}[index], [Xn|SP], #8 <- Operand: Vt.D
+            // LD1_asisdlsop_dx1_r1d         : LD1         {Vt.D}[index], [Xn|SP], Xm <- Operand: Vt.D
+            // LD2_asisdlso_d2_2d            : LD2         {Vt.D, Vt2.D}[index], [Xn|SP] <- Operand: Vt.D
+            // LD2_asisdlso_d2_2d            : LD2         {Vt.D, Vt2.D}[index], [Xn|SP] <- Operand: Vt2.D
+            // LD2_asisdlsop_d2_i2d          : LD2         {Vt.D, Vt2.D}[index], [Xn|SP], #16 <- Operand: Vt.D
+            // LD2_asisdlsop_d2_i2d          : LD2         {Vt.D, Vt2.D}[index], [Xn|SP], #16 <- Operand: Vt2.D
+            // LD2_asisdlsop_dx2_r2d         : LD2         {Vt.D, Vt2.D}[index], [Xn|SP], Xm <- Operand: Vt.D
+            // LD2_asisdlsop_dx2_r2d         : LD2         {Vt.D, Vt2.D}[index], [Xn|SP], Xm <- Operand: Vt2.D
+            // LD3_asisdlso_d3_3d            : LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP] <- Operand: Vt.D
+            // LD3_asisdlso_d3_3d            : LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP] <- Operand: Vt2.D
+            // LD3_asisdlso_d3_3d            : LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP] <- Operand: Vt3.D
+            // LD3_asisdlsop_d3_i3d          : LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24 <- Operand: Vt.D
+            // LD3_asisdlsop_d3_i3d          : LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24 <- Operand: Vt2.D
+            // LD3_asisdlsop_d3_i3d          : LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24 <- Operand: Vt3.D
+            // LD3_asisdlsop_dx3_r3d         : LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], Xm <- Operand: Vt.D
+            // LD3_asisdlsop_dx3_r3d         : LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], Xm <- Operand: Vt2.D
+            // LD3_asisdlsop_dx3_r3d         : LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], Xm <- Operand: Vt3.D
+            // LD4_asisdlso_d4_4d            : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP] <- Operand: Vt.D
+            // LD4_asisdlso_d4_4d            : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP] <- Operand: Vt2.D
+            // LD4_asisdlso_d4_4d            : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP] <- Operand: Vt3.D
+            // LD4_asisdlso_d4_4d            : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP] <- Operand: Vt4.D
+            // LD4_asisdlsop_d4_i4d          : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32 <- Operand: Vt.D
+            // LD4_asisdlsop_d4_i4d          : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32 <- Operand: Vt2.D
+            // LD4_asisdlsop_d4_i4d          : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32 <- Operand: Vt3.D
+            // LD4_asisdlsop_d4_i4d          : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32 <- Operand: Vt4.D
+            // LD4_asisdlsop_dx4_r4d         : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm <- Operand: Vt.D
+            // LD4_asisdlsop_dx4_r4d         : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm <- Operand: Vt2.D
+            // LD4_asisdlsop_dx4_r4d         : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm <- Operand: Vt3.D
+            // LD4_asisdlsop_dx4_r4d         : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm <- Operand: Vt4.D
+            // LDAP1_asisdlso_d1             : LDAP1       {Vt.D}[index], [Xn|SP] <- Operand: Vt.D
+            // ST1_asisdlso_d1_1d            : ST1         {Vt.D}[index], [Xn|SP] <- Operand: Vt.D
+            // ST1_asisdlsop_d1_i1d          : ST1         {Vt.D}[index], [Xn|SP], #8 <- Operand: Vt.D
+            // ST1_asisdlsop_dx1_r1d         : ST1         {Vt.D}[index], [Xn|SP], Xm <- Operand: Vt.D
+            // ST2_asisdlso_d2_2d            : ST2         {Vt.D, Vt2.D}[index], [Xn|SP] <- Operand: Vt.D
+            // ST2_asisdlso_d2_2d            : ST2         {Vt.D, Vt2.D}[index], [Xn|SP] <- Operand: Vt2.D
+            // ST2_asisdlsop_d2_i2d          : ST2         {Vt.D, Vt2.D}[index], [Xn|SP], #16 <- Operand: Vt.D
+            // ST2_asisdlsop_d2_i2d          : ST2         {Vt.D, Vt2.D}[index], [Xn|SP], #16 <- Operand: Vt2.D
+            // ST2_asisdlsop_dx2_r2d         : ST2         {Vt.D, Vt2.D}[index], [Xn|SP], Xm <- Operand: Vt.D
+            // ST2_asisdlsop_dx2_r2d         : ST2         {Vt.D, Vt2.D}[index], [Xn|SP], Xm <- Operand: Vt2.D
+            // ST3_asisdlso_d3_3d            : ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP] <- Operand: Vt.D
+            // ST3_asisdlso_d3_3d            : ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP] <- Operand: Vt2.D
+            // ST3_asisdlso_d3_3d            : ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP] <- Operand: Vt3.D
+            // ST3_asisdlsop_d3_i3d          : ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24 <- Operand: Vt.D
+            // ST3_asisdlsop_d3_i3d          : ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24 <- Operand: Vt2.D
+            // ST3_asisdlsop_d3_i3d          : ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24 <- Operand: Vt3.D
+            // ST3_asisdlsop_dx3_r3d         : ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], Xm <- Operand: Vt.D
+            // ST3_asisdlsop_dx3_r3d         : ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], Xm <- Operand: Vt2.D
+            // ST3_asisdlsop_dx3_r3d         : ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], Xm <- Operand: Vt3.D
+            // ST4_asisdlso_d4_4d            : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP] <- Operand: Vt.D
+            // ST4_asisdlso_d4_4d            : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP] <- Operand: Vt2.D
+            // ST4_asisdlso_d4_4d            : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP] <- Operand: Vt3.D
+            // ST4_asisdlso_d4_4d            : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP] <- Operand: Vt4.D
+            // ST4_asisdlsop_d4_i4d          : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32 <- Operand: Vt.D
+            // ST4_asisdlsop_d4_i4d          : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32 <- Operand: Vt2.D
+            // ST4_asisdlsop_d4_i4d          : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32 <- Operand: Vt3.D
+            // ST4_asisdlsop_d4_i4d          : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32 <- Operand: Vt4.D
+            // ST4_asisdlsop_dx4_r4d         : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm <- Operand: Vt.D
+            // ST4_asisdlsop_dx4_r4d         : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm <- Operand: Vt2.D
+            // ST4_asisdlsop_dx4_r4d         : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm <- Operand: Vt3.D
+            // ST4_asisdlsop_dx4_r4d         : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm <- Operand: Vt4.D
+            // STL1_asisdlso_d1              : STL1        {Vt.D}[index], [Xn|SP] <- Operand: Vt.D
+            // UMOV_asimdins_x_x             : UMOV        Xd, Vn.D[index] <- Operand: Vn.D[index]
+            case 37:
+            {
                 vKind = Arm64RegisterVKind.D;
                 elementCount = 0;
                 return true;
-            case 3:
+            }
+            // BFMLAL_asimdelem_f            : BFMLAL      btVd.4S, Vn.8H, Vm.H[index] <- Operand: Vm.H[index]
+            // FMAXNMV_asimdall_only_h       : FMAXNMV     Vd, Vn.T <- Operand: Vd
+            // FMAXV_asimdall_only_h         : FMAXV       Vd, Vn.T <- Operand: Vd
+            // FMINNMV_asimdall_only_h       : FMINNMV     Vd, Vn.T <- Operand: Vd
+            // FMINV_asimdall_only_h         : FMINV       Vd, Vn.T <- Operand: Vd
+            // FMLA_asimdelem_rh_h           : FMLA        Vd.T, Vn.T, Vm.H[index] <- Operand: Vm.H[index]
+            // FMLA_asisdelem_rh_h           : FMLA        Hd, Hn, Vm.H[index] <- Operand: Vm.H[index]
+            // FMLAL_asimdelem_lh            : FMLAL       Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vm.H[index]
+            // FMLAL2_asimdelem_lh           : FMLAL2      Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vm.H[index]
+            // FMLS_asimdelem_rh_h           : FMLS        Vd.T, Vn.T, Vm.H[index] <- Operand: Vm.H[index]
+            // FMLS_asisdelem_rh_h           : FMLS        Hd, Hn, Vm.H[index] <- Operand: Vm.H[index]
+            // FMLSL_asimdelem_lh            : FMLSL       Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vm.H[index]
+            // FMLSL2_asimdelem_lh           : FMLSL2      Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vm.H[index]
+            // FMUL_asimdelem_rh_h           : FMUL        Vd.T, Vn.T, Vm.H[index] <- Operand: Vm.H[index]
+            // FMUL_asisdelem_rh_h           : FMUL        Hd, Hn, Vm.H[index] <- Operand: Vm.H[index]
+            // FMULX_asimdelem_rh_h          : FMULX       Vd.T, Vn.T, Vm.H[index] <- Operand: Vm.H[index]
+            // FMULX_asisdelem_rh_h          : FMULX       Hd, Hn, Vm.H[index] <- Operand: Vm.H[index]
+            // LD1_asisdlso_h1_1h            : LD1         {Vt.H}[index], [Xn|SP] <- Operand: Vt.H
+            // LD1_asisdlsop_h1_i1h          : LD1         {Vt.H}[index], [Xn|SP], #2 <- Operand: Vt.H
+            // LD1_asisdlsop_hx1_r1h         : LD1         {Vt.H}[index], [Xn|SP], Xm <- Operand: Vt.H
+            // LD2_asisdlso_h2_2h            : LD2         {Vt.H, Vt2.H}[index], [Xn|SP] <- Operand: Vt.H
+            // LD2_asisdlso_h2_2h            : LD2         {Vt.H, Vt2.H}[index], [Xn|SP] <- Operand: Vt2.H
+            // LD2_asisdlsop_h2_i2h          : LD2         {Vt.H, Vt2.H}[index], [Xn|SP], #4 <- Operand: Vt.H
+            // LD2_asisdlsop_h2_i2h          : LD2         {Vt.H, Vt2.H}[index], [Xn|SP], #4 <- Operand: Vt2.H
+            // LD2_asisdlsop_hx2_r2h         : LD2         {Vt.H, Vt2.H}[index], [Xn|SP], Xm <- Operand: Vt.H
+            // LD2_asisdlsop_hx2_r2h         : LD2         {Vt.H, Vt2.H}[index], [Xn|SP], Xm <- Operand: Vt2.H
+            // LD3_asisdlso_h3_3h            : LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP] <- Operand: Vt.H
+            // LD3_asisdlso_h3_3h            : LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP] <- Operand: Vt2.H
+            // LD3_asisdlso_h3_3h            : LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP] <- Operand: Vt3.H
+            // LD3_asisdlsop_h3_i3h          : LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6 <- Operand: Vt.H
+            // LD3_asisdlsop_h3_i3h          : LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6 <- Operand: Vt2.H
+            // LD3_asisdlsop_h3_i3h          : LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6 <- Operand: Vt3.H
+            // LD3_asisdlsop_hx3_r3h         : LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm <- Operand: Vt.H
+            // LD3_asisdlsop_hx3_r3h         : LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm <- Operand: Vt2.H
+            // LD3_asisdlsop_hx3_r3h         : LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm <- Operand: Vt3.H
+            // LD4_asisdlso_h4_4h            : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP] <- Operand: Vt.H
+            // LD4_asisdlso_h4_4h            : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP] <- Operand: Vt2.H
+            // LD4_asisdlso_h4_4h            : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP] <- Operand: Vt3.H
+            // LD4_asisdlso_h4_4h            : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP] <- Operand: Vt4.H
+            // LD4_asisdlsop_h4_i4h          : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8 <- Operand: Vt.H
+            // LD4_asisdlsop_h4_i4h          : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8 <- Operand: Vt2.H
+            // LD4_asisdlsop_h4_i4h          : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8 <- Operand: Vt3.H
+            // LD4_asisdlsop_h4_i4h          : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8 <- Operand: Vt4.H
+            // LD4_asisdlsop_hx4_r4h         : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: Vt.H
+            // LD4_asisdlsop_hx4_r4h         : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: Vt2.H
+            // LD4_asisdlsop_hx4_r4h         : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: Vt3.H
+            // LD4_asisdlsop_hx4_r4h         : LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: Vt4.H
+            // ST1_asisdlso_h1_1h            : ST1         {Vt.H}[index], [Xn|SP] <- Operand: Vt.H
+            // ST1_asisdlsop_h1_i1h          : ST1         {Vt.H}[index], [Xn|SP], #2 <- Operand: Vt.H
+            // ST1_asisdlsop_hx1_r1h         : ST1         {Vt.H}[index], [Xn|SP], Xm <- Operand: Vt.H
+            // ST2_asisdlso_h2_2h            : ST2         {Vt.H, Vt2.H}[index], [Xn|SP] <- Operand: Vt.H
+            // ST2_asisdlso_h2_2h            : ST2         {Vt.H, Vt2.H}[index], [Xn|SP] <- Operand: Vt2.H
+            // ST2_asisdlsop_h2_i2h          : ST2         {Vt.H, Vt2.H}[index], [Xn|SP], #4 <- Operand: Vt.H
+            // ST2_asisdlsop_h2_i2h          : ST2         {Vt.H, Vt2.H}[index], [Xn|SP], #4 <- Operand: Vt2.H
+            // ST2_asisdlsop_hx2_r2h         : ST2         {Vt.H, Vt2.H}[index], [Xn|SP], Xm <- Operand: Vt.H
+            // ST2_asisdlsop_hx2_r2h         : ST2         {Vt.H, Vt2.H}[index], [Xn|SP], Xm <- Operand: Vt2.H
+            // ST3_asisdlso_h3_3h            : ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP] <- Operand: Vt.H
+            // ST3_asisdlso_h3_3h            : ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP] <- Operand: Vt2.H
+            // ST3_asisdlso_h3_3h            : ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP] <- Operand: Vt3.H
+            // ST3_asisdlsop_h3_i3h          : ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6 <- Operand: Vt.H
+            // ST3_asisdlsop_h3_i3h          : ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6 <- Operand: Vt2.H
+            // ST3_asisdlsop_h3_i3h          : ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6 <- Operand: Vt3.H
+            // ST3_asisdlsop_hx3_r3h         : ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm <- Operand: Vt.H
+            // ST3_asisdlsop_hx3_r3h         : ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm <- Operand: Vt2.H
+            // ST3_asisdlsop_hx3_r3h         : ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm <- Operand: Vt3.H
+            // ST4_asisdlso_h4_4h            : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP] <- Operand: Vt.H
+            // ST4_asisdlso_h4_4h            : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP] <- Operand: Vt2.H
+            // ST4_asisdlso_h4_4h            : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP] <- Operand: Vt3.H
+            // ST4_asisdlso_h4_4h            : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP] <- Operand: Vt4.H
+            // ST4_asisdlsop_h4_i4h          : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8 <- Operand: Vt.H
+            // ST4_asisdlsop_h4_i4h          : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8 <- Operand: Vt2.H
+            // ST4_asisdlsop_h4_i4h          : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8 <- Operand: Vt3.H
+            // ST4_asisdlsop_h4_i4h          : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8 <- Operand: Vt4.H
+            // ST4_asisdlsop_hx4_r4h         : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: Vt.H
+            // ST4_asisdlsop_hx4_r4h         : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: Vt2.H
+            // ST4_asisdlsop_hx4_r4h         : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: Vt3.H
+            // ST4_asisdlsop_hx4_r4h         : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: Vt4.H
+            case 38:
+            {
                 vKind = Arm64RegisterVKind.H;
                 elementCount = 0;
                 return true;
-            case 4:
+            }
+            // LD1_asisdlso_s1_1s            : LD1         {Vt.S}[index], [Xn|SP] <- Operand: Vt.S
+            // LD1_asisdlsop_s1_i1s          : LD1         {Vt.S}[index], [Xn|SP], #4 <- Operand: Vt.S
+            // LD1_asisdlsop_sx1_r1s         : LD1         {Vt.S}[index], [Xn|SP], Xm <- Operand: Vt.S
+            // LD2_asisdlso_s2_2s            : LD2         {Vt.S, Vt2.S}[index], [Xn|SP] <- Operand: Vt.S
+            // LD2_asisdlso_s2_2s            : LD2         {Vt.S, Vt2.S}[index], [Xn|SP] <- Operand: Vt2.S
+            // LD2_asisdlsop_s2_i2s          : LD2         {Vt.S, Vt2.S}[index], [Xn|SP], #8 <- Operand: Vt.S
+            // LD2_asisdlsop_s2_i2s          : LD2         {Vt.S, Vt2.S}[index], [Xn|SP], #8 <- Operand: Vt2.S
+            // LD2_asisdlsop_sx2_r2s         : LD2         {Vt.S, Vt2.S}[index], [Xn|SP], Xm <- Operand: Vt.S
+            // LD2_asisdlsop_sx2_r2s         : LD2         {Vt.S, Vt2.S}[index], [Xn|SP], Xm <- Operand: Vt2.S
+            // LD3_asisdlso_s3_3s            : LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP] <- Operand: Vt.S
+            // LD3_asisdlso_s3_3s            : LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP] <- Operand: Vt2.S
+            // LD3_asisdlso_s3_3s            : LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP] <- Operand: Vt3.S
+            // LD3_asisdlsop_s3_i3s          : LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12 <- Operand: Vt.S
+            // LD3_asisdlsop_s3_i3s          : LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12 <- Operand: Vt2.S
+            // LD3_asisdlsop_s3_i3s          : LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12 <- Operand: Vt3.S
+            // LD3_asisdlsop_sx3_r3s         : LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm <- Operand: Vt.S
+            // LD3_asisdlsop_sx3_r3s         : LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm <- Operand: Vt2.S
+            // LD3_asisdlsop_sx3_r3s         : LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm <- Operand: Vt3.S
+            // LD4_asisdlso_s4_4s            : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP] <- Operand: Vt.S
+            // LD4_asisdlso_s4_4s            : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP] <- Operand: Vt2.S
+            // LD4_asisdlso_s4_4s            : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP] <- Operand: Vt3.S
+            // LD4_asisdlso_s4_4s            : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP] <- Operand: Vt4.S
+            // LD4_asisdlsop_s4_i4s          : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16 <- Operand: Vt.S
+            // LD4_asisdlsop_s4_i4s          : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16 <- Operand: Vt2.S
+            // LD4_asisdlsop_s4_i4s          : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16 <- Operand: Vt3.S
+            // LD4_asisdlsop_s4_i4s          : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16 <- Operand: Vt4.S
+            // LD4_asisdlsop_sx4_r4s         : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt.S
+            // LD4_asisdlsop_sx4_r4s         : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt2.S
+            // LD4_asisdlsop_sx4_r4s         : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt3.S
+            // LD4_asisdlsop_sx4_r4s         : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt4.S
+            // SM3TT1A_vvv4_crypto3_imm2     : SM3TT1A     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vm.S[imm2]
+            // SM3TT1B_vvv4_crypto3_imm2     : SM3TT1B     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vm.S[imm2]
+            // SM3TT2A_vvv4_crypto3_imm2     : SM3TT2A     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vm.S[imm2]
+            // SM3TT2B_vvv_crypto3_imm2      : SM3TT2B     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vm.S[imm2]
+            // ST1_asisdlso_s1_1s            : ST1         {Vt.S}[index], [Xn|SP] <- Operand: Vt.S
+            // ST1_asisdlsop_s1_i1s          : ST1         {Vt.S}[index], [Xn|SP], #4 <- Operand: Vt.S
+            // ST1_asisdlsop_sx1_r1s         : ST1         {Vt.S}[index], [Xn|SP], Xm <- Operand: Vt.S
+            // ST2_asisdlso_s2_2s            : ST2         {Vt.S, Vt2.S}[index], [Xn|SP] <- Operand: Vt.S
+            // ST2_asisdlso_s2_2s            : ST2         {Vt.S, Vt2.S}[index], [Xn|SP] <- Operand: Vt2.S
+            // ST2_asisdlsop_s2_i2s          : ST2         {Vt.S, Vt2.S}[index], [Xn|SP], #8 <- Operand: Vt.S
+            // ST2_asisdlsop_s2_i2s          : ST2         {Vt.S, Vt2.S}[index], [Xn|SP], #8 <- Operand: Vt2.S
+            // ST2_asisdlsop_sx2_r2s         : ST2         {Vt.S, Vt2.S}[index], [Xn|SP], Xm <- Operand: Vt.S
+            // ST2_asisdlsop_sx2_r2s         : ST2         {Vt.S, Vt2.S}[index], [Xn|SP], Xm <- Operand: Vt2.S
+            // ST3_asisdlso_s3_3s            : ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP] <- Operand: Vt.S
+            // ST3_asisdlso_s3_3s            : ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP] <- Operand: Vt2.S
+            // ST3_asisdlso_s3_3s            : ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP] <- Operand: Vt3.S
+            // ST3_asisdlsop_s3_i3s          : ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12 <- Operand: Vt.S
+            // ST3_asisdlsop_s3_i3s          : ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12 <- Operand: Vt2.S
+            // ST3_asisdlsop_s3_i3s          : ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12 <- Operand: Vt3.S
+            // ST3_asisdlsop_sx3_r3s         : ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm <- Operand: Vt.S
+            // ST3_asisdlsop_sx3_r3s         : ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm <- Operand: Vt2.S
+            // ST3_asisdlsop_sx3_r3s         : ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm <- Operand: Vt3.S
+            // ST4_asisdlso_s4_4s            : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP] <- Operand: Vt.S
+            // ST4_asisdlso_s4_4s            : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP] <- Operand: Vt2.S
+            // ST4_asisdlso_s4_4s            : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP] <- Operand: Vt3.S
+            // ST4_asisdlso_s4_4s            : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP] <- Operand: Vt4.S
+            // ST4_asisdlsop_s4_i4s          : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16 <- Operand: Vt.S
+            // ST4_asisdlsop_s4_i4s          : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16 <- Operand: Vt2.S
+            // ST4_asisdlsop_s4_i4s          : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16 <- Operand: Vt3.S
+            // ST4_asisdlsop_s4_i4s          : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16 <- Operand: Vt4.S
+            // ST4_asisdlsop_sx4_r4s         : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt.S
+            // ST4_asisdlsop_sx4_r4s         : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt2.S
+            // ST4_asisdlsop_sx4_r4s         : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt3.S
+            // ST4_asisdlsop_sx4_r4s         : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt4.S
+            case 39:
+            {
                 vKind = Arm64RegisterVKind.S;
                 elementCount = 0;
                 return true;
-            case 5:
+            }
+            // AESD_b_cryptoaes              : AESD        Vd.16B, Vn.16B <- Operand: Vd.16B
+            // AESD_b_cryptoaes              : AESD        Vd.16B, Vn.16B <- Operand: Vn.16B
+            // AESE_b_cryptoaes              : AESE        Vd.16B, Vn.16B <- Operand: Vd.16B
+            // AESE_b_cryptoaes              : AESE        Vd.16B, Vn.16B <- Operand: Vn.16B
+            // AESIMC_b_cryptoaes            : AESIMC      Vd.16B, Vn.16B <- Operand: Vd.16B
+            // AESIMC_b_cryptoaes            : AESIMC      Vd.16B, Vn.16B <- Operand: Vn.16B
+            // AESMC_b_cryptoaes             : AESMC       Vd.16B, Vn.16B <- Operand: Vd.16B
+            // AESMC_b_cryptoaes             : AESMC       Vd.16B, Vn.16B <- Operand: Vn.16B
+            // BCAX_vvv16_crypto4            : BCAX        Vd.16B, Vn.16B, Vm.16B, Va.16B <- Operand: Vd.16B
+            // BCAX_vvv16_crypto4            : BCAX        Vd.16B, Vn.16B, Vm.16B, Va.16B <- Operand: Vn.16B
+            // BCAX_vvv16_crypto4            : BCAX        Vd.16B, Vn.16B, Vm.16B, Va.16B <- Operand: Vm.16B
+            // BCAX_vvv16_crypto4            : BCAX        Vd.16B, Vn.16B, Vm.16B, Va.16B <- Operand: Va.16B
+            // EOR3_vvv16_crypto4            : EOR3        Vd.16B, Vn.16B, Vm.16B, Va.16B <- Operand: Vd.16B
+            // EOR3_vvv16_crypto4            : EOR3        Vd.16B, Vn.16B, Vm.16B, Va.16B <- Operand: Vn.16B
+            // EOR3_vvv16_crypto4            : EOR3        Vd.16B, Vn.16B, Vm.16B, Va.16B <- Operand: Vm.16B
+            // EOR3_vvv16_crypto4            : EOR3        Vd.16B, Vn.16B, Vm.16B, Va.16B <- Operand: Va.16B
+            // FMLALB_asimdelem_h            : FMLALB      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vn.16B
+            // FMLALB_asimdsame2_j           : FMLALB      Vd.8H, Vn.16B, Vm.16B <- Operand: Vn.16B
+            // FMLALB_asimdsame2_j           : FMLALB      Vd.8H, Vn.16B, Vm.16B <- Operand: Vm.16B
+            // FMLALLBB_asimdelem_j          : FMLALLBB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vn.16B
+            // FMLALLBB_asimdsame2_g         : FMLALLBB    Vd.4S, Vn.16B, Vm.16B <- Operand: Vn.16B
+            // FMLALLBB_asimdsame2_g         : FMLALLBB    Vd.4S, Vn.16B, Vm.16B <- Operand: Vm.16B
+            // FMLALLBT_asimdelem_j          : FMLALLBT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vn.16B
+            // FMLALLBT_asimdsame2_g         : FMLALLBT    Vd.4S, Vn.16B, Vm.16B <- Operand: Vn.16B
+            // FMLALLBT_asimdsame2_g         : FMLALLBT    Vd.4S, Vn.16B, Vm.16B <- Operand: Vm.16B
+            // FMLALLTB_asimdelem_j          : FMLALLTB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vn.16B
+            // FMLALLTB_asimdsame2_g         : FMLALLTB    Vd.4S, Vn.16B, Vm.16B <- Operand: Vn.16B
+            // FMLALLTB_asimdsame2_g         : FMLALLTB    Vd.4S, Vn.16B, Vm.16B <- Operand: Vm.16B
+            // FMLALLTT_asimdelem_j          : FMLALLTT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vn.16B
+            // FMLALLTT_asimdsame2_g         : FMLALLTT    Vd.4S, Vn.16B, Vm.16B <- Operand: Vn.16B
+            // FMLALLTT_asimdsame2_g         : FMLALLTT    Vd.4S, Vn.16B, Vm.16B <- Operand: Vm.16B
+            // FMLALT_asimdelem_h            : FMLALT      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vn.16B
+            // FMLALT_asimdsame2_j           : FMLALT      Vd.8H, Vn.16B, Vm.16B <- Operand: Vn.16B
+            // FMLALT_asimdsame2_j           : FMLALT      Vd.8H, Vn.16B, Vm.16B <- Operand: Vm.16B
+            // FMMLA_asimd_fp8fp16           : FMMLA       Vd.8H, Vn.16B, Vm.16B <- Operand: Vn.16B
+            // FMMLA_asimd_fp8fp16           : FMMLA       Vd.8H, Vn.16B, Vm.16B <- Operand: Vm.16B
+            // FMMLA_asimd_fp8fp32           : FMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vn.16B
+            // FMMLA_asimd_fp8fp32           : FMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vm.16B
+            // LUTI2_asimdtbl_l5             : LUTI2       Vd.16B, {Vn.16B}, Vm[index] <- Operand: Vd.16B
+            // LUTI2_asimdtbl_l5             : LUTI2       Vd.16B, {Vn.16B}, Vm[index] <- Operand: Vn.16B
+            // LUTI4_asimdtbl_l5             : LUTI4       Vd.16B, {Vn.16B}, Vm[index] <- Operand: Vd.16B
+            // LUTI4_asimdtbl_l5             : LUTI4       Vd.16B, {Vn.16B}, Vm[index] <- Operand: Vn.16B
+            // SMMLA_asimdsame2_g            : SMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vn.16B
+            // SMMLA_asimdsame2_g            : SMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vm.16B
+            // TBL_asimdtbl_l1_1             : TBL         Vd.Ta, {Vn.16B}, Vm.Ta <- Operand: Vn.16B
+            // TBL_asimdtbl_l2_2             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B}, Vm.Ta <- Operand: Vn.16B
+            // TBL_asimdtbl_l2_2             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B}, Vm.Ta <- Operand: Vn+1.16B
+            // TBL_asimdtbl_l3_3             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta <- Operand: Vn.16B
+            // TBL_asimdtbl_l3_3             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta <- Operand: Vn+1.16B
+            // TBL_asimdtbl_l3_3             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta <- Operand: Vn+2.16B
+            // TBL_asimdtbl_l4_4             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vn.16B
+            // TBL_asimdtbl_l4_4             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vn+1.16B
+            // TBL_asimdtbl_l4_4             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vn+2.16B
+            // TBL_asimdtbl_l4_4             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vn+3.16B
+            // TBX_asimdtbl_l1_1             : TBX         Vd.Ta, {Vn.16B}, Vm.Ta <- Operand: Vn.16B
+            // TBX_asimdtbl_l2_2             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B}, Vm.Ta <- Operand: Vn.16B
+            // TBX_asimdtbl_l2_2             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B}, Vm.Ta <- Operand: Vn+1.16B
+            // TBX_asimdtbl_l3_3             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta <- Operand: Vn.16B
+            // TBX_asimdtbl_l3_3             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta <- Operand: Vn+1.16B
+            // TBX_asimdtbl_l3_3             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta <- Operand: Vn+2.16B
+            // TBX_asimdtbl_l4_4             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vn.16B
+            // TBX_asimdtbl_l4_4             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vn+1.16B
+            // TBX_asimdtbl_l4_4             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vn+2.16B
+            // TBX_asimdtbl_l4_4             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vn+3.16B
+            // UMMLA_asimdsame2_g            : UMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vn.16B
+            // UMMLA_asimdsame2_g            : UMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vm.16B
+            // USMMLA_asimdsame2_g           : USMMLA      Vd.4S, Vn.16B, Vm.16B <- Operand: Vn.16B
+            // USMMLA_asimdsame2_g           : USMMLA      Vd.4S, Vn.16B, Vm.16B <- Operand: Vm.16B
+            case 40:
+            {
                 vKind = Arm64RegisterVKind.B;
                 elementCount = 16;
                 return true;
-            case 6:
+            }
+            // FDOT_asimdelem_g              : FDOT        Vd.Ta, Vn.Tb, Vm.2B[index] <- Operand: Vm.2B[index]
+            case 41:
+            {
                 vKind = Arm64RegisterVKind.B;
                 elementCount = 2;
                 return true;
-            case 7:
+            }
+            // ADDP_asisdpair_only           : ADDP        Dd, Vn.2D <- Operand: Vn.2D
+            // FCVTXN_asimdmisc_n            : FCVTXN      Vd.Tb, Vn.2D <- Operand: Vn.2D
+            // FMOV_asimdimm_d2_d            : FMOV        Vd.2D, #imm <- Operand: Vd.2D
+            // MOVI_asimdimm_d2_d            : MOVI        Vd.2D, #imm <- Operand: Vd.2D
+            // RAX1_vvv2_cryptosha512_3      : RAX1        Vd.2D, Vn.2D, Vm.2D <- Operand: Vd.2D
+            // RAX1_vvv2_cryptosha512_3      : RAX1        Vd.2D, Vn.2D, Vm.2D <- Operand: Vn.2D
+            // RAX1_vvv2_cryptosha512_3      : RAX1        Vd.2D, Vn.2D, Vm.2D <- Operand: Vm.2D
+            // SHA512H_qqv_cryptosha512_3    : SHA512H     Qd, Qn, Vm.2D <- Operand: Vm.2D
+            // SHA512H2_qqv_cryptosha512_3   : SHA512H2    Qd, Qn, Vm.2D <- Operand: Vm.2D
+            // SHA512SU0_vv2_cryptosha512_2  : SHA512SU0   Vd.2D, Vn.2D <- Operand: Vd.2D
+            // SHA512SU0_vv2_cryptosha512_2  : SHA512SU0   Vd.2D, Vn.2D <- Operand: Vn.2D
+            // SHA512SU1_vvv2_cryptosha512_3 : SHA512SU1   Vd.2D, Vn.2D, Vm.2D <- Operand: Vd.2D
+            // SHA512SU1_vvv2_cryptosha512_3 : SHA512SU1   Vd.2D, Vn.2D, Vm.2D <- Operand: Vn.2D
+            // SHA512SU1_vvv2_cryptosha512_3 : SHA512SU1   Vd.2D, Vn.2D, Vm.2D <- Operand: Vm.2D
+            // XAR_vvv2_crypto3_imm6         : XAR         Vd.2D, Vn.2D, Vm.2D, #imm6 <- Operand: Vd.2D
+            // XAR_vvv2_crypto3_imm6         : XAR         Vd.2D, Vn.2D, Vm.2D, #imm6 <- Operand: Vn.2D
+            // XAR_vvv2_crypto3_imm6         : XAR         Vd.2D, Vn.2D, Vm.2D, #imm6 <- Operand: Vm.2D
+            case 42:
+            {
                 vKind = Arm64RegisterVKind.D;
                 elementCount = 2;
                 return true;
-            case 8:
+            }
+            // BFDOT_asimdelem_e             : BFDOT       Vd.Ta, Vn.Tb, Vm.2H[index] <- Operand: Vm.2H[index]
+            // FADDP_asisdpair_only_h        : FADDP       Hd, Vn.2H <- Operand: Vn.2H
+            // FMAXNMP_asisdpair_only_h      : FMAXNMP     Hd, Vn.2H <- Operand: Vn.2H
+            // FMAXP_asisdpair_only_h        : FMAXP       Hd, Vn.2H <- Operand: Vn.2H
+            // FMINNMP_asisdpair_only_h      : FMINNMP     Hd, Vn.2H <- Operand: Vn.2H
+            // FMINP_asisdpair_only_h        : FMINP       Hd, Vn.2H <- Operand: Vn.2H
+            case 43:
+            {
                 vKind = Arm64RegisterVKind.H;
                 elementCount = 2;
                 return true;
-            case 9:
+            }
+            // FDOT_asimdelem_d              : FDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vm.4B[index]
+            // SDOT_asimdelem_d              : SDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vm.4B[index]
+            // SUDOT_asimdelem_d             : SUDOT       Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vm.4B[index]
+            // UDOT_asimdelem_d              : UDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vm.4B[index]
+            // USDOT_asimdelem_d             : USDOT       Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vm.4B[index]
+            case 44:
+            {
                 vKind = Arm64RegisterVKind.B;
                 elementCount = 4;
                 return true;
-            case 10:
+            }
+            // BFCVTN_asimdmisc_4s           : BFCVTN      Vd.Ta, Vn.4S <- Operand: Vn.4S
+            // BFMMLA_asimdsame2_e           : BFMMLA      Vd.4S, Vn.8H, Vm.8H <- Operand: Vd.4S
+            // FCVTN_asimdsame2_h            : FCVTN       Vd.Ta, Vn.4S, Vm.4S <- Operand: Vn.4S
+            // FCVTN_asimdsame2_h            : FCVTN       Vd.Ta, Vn.4S, Vm.4S <- Operand: Vm.4S
+            // FMAXNMV_asimdall_only_sd      : FMAXNMV     Sd, Vn.4S <- Operand: Vn.4S
+            // FMAXV_asimdall_only_sd        : FMAXV       Sd, Vn.4S <- Operand: Vn.4S
+            // FMINNMV_asimdall_only_sd      : FMINNMV     Sd, Vn.4S <- Operand: Vn.4S
+            // FMINV_asimdall_only_sd        : FMINV       Sd, Vn.4S <- Operand: Vn.4S
+            // FMLALLBB_asimdelem_j          : FMLALLBB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vd.4S
+            // FMLALLBB_asimdsame2_g         : FMLALLBB    Vd.4S, Vn.16B, Vm.16B <- Operand: Vd.4S
+            // FMLALLBT_asimdelem_j          : FMLALLBT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vd.4S
+            // FMLALLBT_asimdsame2_g         : FMLALLBT    Vd.4S, Vn.16B, Vm.16B <- Operand: Vd.4S
+            // FMLALLTB_asimdelem_j          : FMLALLTB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vd.4S
+            // FMLALLTB_asimdsame2_g         : FMLALLTB    Vd.4S, Vn.16B, Vm.16B <- Operand: Vd.4S
+            // FMLALLTT_asimdelem_j          : FMLALLTT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vd.4S
+            // FMLALLTT_asimdsame2_g         : FMLALLTT    Vd.4S, Vn.16B, Vm.16B <- Operand: Vd.4S
+            // FMMLA_asimd_fp8fp32           : FMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vd.4S
+            // SHA1C_qsv_cryptosha3          : SHA1C       Qd, Sn, Vm.4S <- Operand: Vm.4S
+            // SHA1M_qsv_cryptosha3          : SHA1M       Qd, Sn, Vm.4S <- Operand: Vm.4S
+            // SHA1P_qsv_cryptosha3          : SHA1P       Qd, Sn, Vm.4S <- Operand: Vm.4S
+            // SHA1SU0_vvv_cryptosha3        : SHA1SU0     Vd.4S, Vn.4S, Vm.4S <- Operand: Vd.4S
+            // SHA1SU0_vvv_cryptosha3        : SHA1SU0     Vd.4S, Vn.4S, Vm.4S <- Operand: Vn.4S
+            // SHA1SU0_vvv_cryptosha3        : SHA1SU0     Vd.4S, Vn.4S, Vm.4S <- Operand: Vm.4S
+            // SHA1SU1_vv_cryptosha2         : SHA1SU1     Vd.4S, Vn.4S <- Operand: Vd.4S
+            // SHA1SU1_vv_cryptosha2         : SHA1SU1     Vd.4S, Vn.4S <- Operand: Vn.4S
+            // SHA256H_qqv_cryptosha3        : SHA256H     Qd, Qn, Vm.4S <- Operand: Vm.4S
+            // SHA256H2_qqv_cryptosha3       : SHA256H2    Qd, Qn, Vm.4S <- Operand: Vm.4S
+            // SHA256SU0_vv_cryptosha2       : SHA256SU0   Vd.4S, Vn.4S <- Operand: Vd.4S
+            // SHA256SU0_vv_cryptosha2       : SHA256SU0   Vd.4S, Vn.4S <- Operand: Vn.4S
+            // SHA256SU1_vvv_cryptosha3      : SHA256SU1   Vd.4S, Vn.4S, Vm.4S <- Operand: Vd.4S
+            // SHA256SU1_vvv_cryptosha3      : SHA256SU1   Vd.4S, Vn.4S, Vm.4S <- Operand: Vn.4S
+            // SHA256SU1_vvv_cryptosha3      : SHA256SU1   Vd.4S, Vn.4S, Vm.4S <- Operand: Vm.4S
+            // SM3PARTW1_vvv4_cryptosha512_3 : SM3PARTW1   Vd.4S, Vn.4S, Vm.4S <- Operand: Vd.4S
+            // SM3PARTW1_vvv4_cryptosha512_3 : SM3PARTW1   Vd.4S, Vn.4S, Vm.4S <- Operand: Vn.4S
+            // SM3PARTW1_vvv4_cryptosha512_3 : SM3PARTW1   Vd.4S, Vn.4S, Vm.4S <- Operand: Vm.4S
+            // SM3PARTW2_vvv4_cryptosha512_3 : SM3PARTW2   Vd.4S, Vn.4S, Vm.4S <- Operand: Vd.4S
+            // SM3PARTW2_vvv4_cryptosha512_3 : SM3PARTW2   Vd.4S, Vn.4S, Vm.4S <- Operand: Vn.4S
+            // SM3PARTW2_vvv4_cryptosha512_3 : SM3PARTW2   Vd.4S, Vn.4S, Vm.4S <- Operand: Vm.4S
+            // SM3SS1_vvv4_crypto4           : SM3SS1      Vd.4S, Vn.4S, Vm.4S, Va.4S <- Operand: Vd.4S
+            // SM3SS1_vvv4_crypto4           : SM3SS1      Vd.4S, Vn.4S, Vm.4S, Va.4S <- Operand: Vn.4S
+            // SM3SS1_vvv4_crypto4           : SM3SS1      Vd.4S, Vn.4S, Vm.4S, Va.4S <- Operand: Vm.4S
+            // SM3SS1_vvv4_crypto4           : SM3SS1      Vd.4S, Vn.4S, Vm.4S, Va.4S <- Operand: Va.4S
+            // SM3TT1A_vvv4_crypto3_imm2     : SM3TT1A     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vd.4S
+            // SM3TT1A_vvv4_crypto3_imm2     : SM3TT1A     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vn.4S
+            // SM3TT1B_vvv4_crypto3_imm2     : SM3TT1B     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vd.4S
+            // SM3TT1B_vvv4_crypto3_imm2     : SM3TT1B     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vn.4S
+            // SM3TT2A_vvv4_crypto3_imm2     : SM3TT2A     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vd.4S
+            // SM3TT2A_vvv4_crypto3_imm2     : SM3TT2A     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vn.4S
+            // SM3TT2B_vvv_crypto3_imm2      : SM3TT2B     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vd.4S
+            // SM3TT2B_vvv_crypto3_imm2      : SM3TT2B     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vn.4S
+            // SM4E_vv4_cryptosha512_2       : SM4E        Vd.4S, Vn.4S <- Operand: Vd.4S
+            // SM4E_vv4_cryptosha512_2       : SM4E        Vd.4S, Vn.4S <- Operand: Vn.4S
+            // SM4EKEY_vvv4_cryptosha512_3   : SM4EKEY     Vd.4S, Vn.4S, Vm.4S <- Operand: Vd.4S
+            // SM4EKEY_vvv4_cryptosha512_3   : SM4EKEY     Vd.4S, Vn.4S, Vm.4S <- Operand: Vn.4S
+            // SM4EKEY_vvv4_cryptosha512_3   : SM4EKEY     Vd.4S, Vn.4S, Vm.4S <- Operand: Vm.4S
+            // SMMLA_asimdsame2_g            : SMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vd.4S
+            // UMMLA_asimdsame2_g            : UMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vd.4S
+            // USMMLA_asimdsame2_g           : USMMLA      Vd.4S, Vn.16B, Vm.16B <- Operand: Vd.4S
+            case 45:
+            {
                 vKind = Arm64RegisterVKind.S;
                 elementCount = 4;
                 return true;
-            case 11:
+            }
+            // BF1CVTL_asimdmisc_v           : BF1CVTL     Vd.8H, Vn.Ta <- Operand: Vd.8H
+            // BF2CVTL_asimdmisc_v           : BF2CVTL     Vd.8H, Vn.Ta <- Operand: Vd.8H
+            // BFMLAL_asimdelem_f            : BFMLAL      btVd.4S, Vn.8H, Vm.H[index] <- Operand: Vn.8H
+            // BFMLAL_asimdsame2_f           : BFMLAL      btVd.4S, Vn.8H, Vm.8H <- Operand: Vn.8H
+            // BFMLAL_asimdsame2_f           : BFMLAL      btVd.4S, Vn.8H, Vm.8H <- Operand: Vm.8H
+            // BFMMLA_asimdsame2_e           : BFMMLA      Vd.4S, Vn.8H, Vm.8H <- Operand: Vn.8H
+            // BFMMLA_asimdsame2_e           : BFMMLA      Vd.4S, Vn.8H, Vm.8H <- Operand: Vm.8H
+            // F1CVTL_asimdmisc_v            : F1CVTL      Vd.8H, Vn.Ta <- Operand: Vd.8H
+            // F2CVTL_asimdmisc_v            : F2CVTL      Vd.8H, Vn.Ta <- Operand: Vd.8H
+            // FMLALB_asimdelem_h            : FMLALB      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vd.8H
+            // FMLALB_asimdsame2_j           : FMLALB      Vd.8H, Vn.16B, Vm.16B <- Operand: Vd.8H
+            // FMLALT_asimdelem_h            : FMLALT      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vd.8H
+            // FMLALT_asimdsame2_j           : FMLALT      Vd.8H, Vn.16B, Vm.16B <- Operand: Vd.8H
+            // FMMLA_asimd_fp8fp16           : FMMLA       Vd.8H, Vn.16B, Vm.16B <- Operand: Vd.8H
+            // LUTI2_asimdtbl_l6             : LUTI2       Vd.8H, {Vn.8H}, Vm[index] <- Operand: Vd.8H
+            // LUTI2_asimdtbl_l6             : LUTI2       Vd.8H, {Vn.8H}, Vm[index] <- Operand: Vn.8H
+            // LUTI4_asimdtbl_l7             : LUTI4       Vd.8H, {Vn1.8H, Vn2.8H}, Vm[index] <- Operand: Vd.8H
+            // LUTI4_asimdtbl_l7             : LUTI4       Vd.8H, {Vn1.8H, Vn2.8H}, Vm[index] <- Operand: Vn1.8H
+            // LUTI4_asimdtbl_l7             : LUTI4       Vd.8H, {Vn1.8H, Vn2.8H}, Vm[index] <- Operand: Vn2.8H
+            case 46:
+            {
                 vKind = Arm64RegisterVKind.H;
                 elementCount = 8;
                 return true;
-            case 12:
-                return TryDecodeFromBitValues(((rawValue >> 22) & 0x1), 16, out vKind, out elementCount);
-            case 13:
-                return TryDecodeFromBitValues(((rawValue >> 22) & 0x1), 22, out vKind, out elementCount);
-            case 14:
-                return TryDecodeFromBitValues(((rawValue >> 22) & 0x1), 26, out vKind, out elementCount);
-            case 15:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1), 12, out vKind, out elementCount);
-            case 16:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1), 10, out vKind, out elementCount);
-            case 17:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1), 1, out vKind, out elementCount);
-            case 18:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1), 6, out vKind, out elementCount);
-            case 19:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2), 3, out vKind, out elementCount);
-            case 20:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2), 24, out vKind, out elementCount);
-            case 21:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2), 27, out vKind, out elementCount);
-            case 22:
-                return TryDecodeFromBitValues(((rawValue >> 22) & 0x3), 11, out vKind, out elementCount);
-            case 23:
-                return TryDecodeFromBitValues(((rawValue >> 22) & 0x3), 13, out vKind, out elementCount);
-            case 24:
-                return TryDecodeFromBitValues(((rawValue >> 22) & 0x3), 33, out vKind, out elementCount);
-            case 25:
-                return TryDecodeFromBitValues(((rawValue >> 22) & 0x3), 8, out vKind, out elementCount);
-            case 26:
-                return TryDecodeFromBitValues(((rawValue >> 22) & 0x1) | ((rawValue >> 29) & 0x2), 17, out vKind, out elementCount);
-            case 27:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 9) & 0x6), 2, out vKind, out elementCount);
-            case 28:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 9) & 0x6), 5, out vKind, out elementCount);
-            case 29:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6), 25, out vKind, out elementCount);
-            case 30:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6), 19, out vKind, out elementCount);
-            case 31:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6), 2, out vKind, out elementCount);
-            case 32:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6), 4, out vKind, out elementCount);
-            case 33:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6), 28, out vKind, out elementCount);
-            case 34:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6), 29, out vKind, out elementCount);
-            case 35:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6), 20, out vKind, out elementCount);
-            case 36:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6), 30, out vKind, out elementCount);
-            case 37:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6), 21, out vKind, out elementCount);
-            case 38:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6), 7, out vKind, out elementCount);
-            case 39:
-                return TryDecodeFromBitValues(((rawValue >> 19) & 0xF), 14, out vKind, out elementCount);
-            case 40:
-                return TryDecodeFromBitValues(((rawValue >> 16) & 0x1F), 23, out vKind, out elementCount);
-            case 41:
-                return TryDecodeFromBitValues(((rawValue >> 16) & 0x1F), 32, out vKind, out elementCount);
-            case 42:
-                return TryDecodeFromBitValues(((rawValue >> 16) & 0x1F), 34, out vKind, out elementCount);
-            case 43:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E), 9, out vKind, out elementCount);
-            case 44:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E), 15, out vKind, out elementCount);
-            case 45:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E), 18, out vKind, out elementCount);
-            case 46:
-                return TryDecodeFromBitValues(((rawValue >> 30) & 0x1) | ((rawValue >> 15) & 0x3E), 31, out vKind, out elementCount);
+            }
         }
         
-        elementCount = 0;
-        vKind = Arm64RegisterVKind.Default;
+        vKind = default;
+        elementCount = default;
         return false;
     }
-    public static bool TryDecodeFromBitValues(uint bitValues, byte valueArrangementValuesIndex, out Arm64RegisterVKind vKind, out int elementCount)
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static bool TryDecodeFromBitValues(uint bitValue, byte selectorIndex, out Arm64RegisterVKind vKind, out int elementCount)
     {
-        switch (valueArrangementValuesIndex)
+        switch (selectorIndex)
         {
             case 1:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
                 {
                     case 0:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 1:
+                    {
                         vKind = Arm64RegisterVKind.H;
                         elementCount = 4;
                         return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
+                    }
                 }
                 break;
+            }
             case 2:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
                 {
                     case 0:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    case 2:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    case 3:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    case 4:
+                    {
                         vKind = Arm64RegisterVKind.S;
                         elementCount = 2;
                         return true;
-                    case 5:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    case 7:
+                    }
+                    case 1:
+                    {
                         vKind = Arm64RegisterVKind.D;
                         elementCount = 2;
                         return true;
+                    }
                 }
                 break;
+            }
             case 3:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
                 {
                     case 0:
+                    {
                         vKind = Arm64RegisterVKind.S;
                         elementCount = 2;
                         return true;
+                    }
                     case 1:
+                    {
                         vKind = Arm64RegisterVKind.S;
                         elementCount = 4;
                         return true;
-                    case 3:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
+                    }
                 }
                 break;
+            }
             case 4:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
                 {
                     case 0:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
                         return true;
+                    }
                     case 1:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    case 2:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    case 3:
+                    {
                         vKind = Arm64RegisterVKind.H;
                         elementCount = 8;
                         return true;
-                    case 4:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    case 5:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
+                    }
                 }
                 break;
+            }
             case 5:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
                 {
                     case 0:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
                         return true;
+                    }
                     case 1:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    case 2:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    case 3:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    case 4:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    case 5:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    case 6:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 1;
-                        return true;
-                    case 7:
+                    {
                         vKind = Arm64RegisterVKind.D;
                         elementCount = 2;
                         return true;
+                    }
                 }
                 break;
+            }
             case 6:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
                 {
                     case 0:
+                    {
                         vKind = Arm64RegisterVKind.B;
                         elementCount = 8;
                         return true;
+                    }
                     case 1:
+                    {
                         vKind = Arm64RegisterVKind.B;
                         elementCount = 16;
                         return true;
+                    }
                 }
                 break;
+            }
             case 7:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
                 {
-                    case 2:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    case 3:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    case 4:
+                    case 0:
+                    {
                         vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
+                        elementCount = 0;
                         return true;
-                    case 5:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 0;
                         return true;
+                    }
                 }
                 break;
+            }
             case 8:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
                 {
                     case 0:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
                         return true;
+                    }
                     case 1:
+                    {
                         vKind = Arm64RegisterVKind.S;
                         elementCount = 4;
                         return true;
-                    case 2:
+                    }
+                    case 3:
+                    {
                         vKind = Arm64RegisterVKind.D;
                         elementCount = 2;
                         return true;
+                    }
                 }
                 break;
+            }
             case 9:
-                if (bitValues == 2)
+            {
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
                 {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 8;
-                    return true;
-                }
-                if (bitValues == 3)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 16;
-                    return true;
-                }
-                if ((bitValues & 0x1d) == 4)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitValues & 0x1d) == 5)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitValues & 0x19) == 8)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 2;
-                    return true;
-                }
-                if ((bitValues & 0x19) == 9)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitValues & 0x11) == 17)
-                {
-                    vKind = Arm64RegisterVKind.D;
-                    elementCount = 2;
-                    return true;
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
                 }
                 break;
+            }
             case 10:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
                 {
                     case 0:
+                    {
                         vKind = Arm64RegisterVKind.S;
                         elementCount = 2;
                         return true;
-                    case 1:
+                    }
+                    case 2:
+                    {
                         vKind = Arm64RegisterVKind.S;
                         elementCount = 4;
                         return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
                 }
                 break;
+            }
             case 11:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
                 {
-                    case 1:
+                    case 0:
+                    {
                         vKind = Arm64RegisterVKind.H;
-                        elementCount = 0;
+                        elementCount = 4;
                         return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
                     case 2:
+                    {
                         vKind = Arm64RegisterVKind.S;
-                        elementCount = 0;
+                        elementCount = 2;
                         return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
                 }
                 break;
+            }
             case 12:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
                 {
-                    case 0:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 2;
-                        return true;
                     case 1:
-                        vKind = Arm64RegisterVKind.H;
+                    {
+                        vKind = Arm64RegisterVKind.S;
                         elementCount = 4;
                         return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
                 }
                 break;
+            }
             case 13:
-                switch (bitValues)
-                {
-                    case 1:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    case 2:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                }
-                break;
-            case 14:
-                if (bitValues == 1)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitValues & 0xe) == 2)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitValues & 0xc) == 4)
-                {
-                    vKind = Arm64RegisterVKind.D;
-                    elementCount = 2;
-                    return true;
-                }
-                break;
-            case 15:
-                if (bitValues == 2)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 8;
-                    return true;
-                }
-                if (bitValues == 3)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 16;
-                    return true;
-                }
-                if ((bitValues & 0x1d) == 4)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitValues & 0x1d) == 5)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitValues & 0x19) == 8)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 2;
-                    return true;
-                }
-                if ((bitValues & 0x19) == 9)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 4;
-                    return true;
-                }
-                break;
-            case 16:
-                switch (bitValues)
+            {
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
                 {
                     case 0:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 0;
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
                         return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 0;
-                        return true;
-                }
-                break;
-            case 17:
-                switch (bitValues)
-                {
-                    case 0:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    case 2:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
+                    }
                     case 3:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                }
-                break;
-            case 18:
-                if ((bitValues & 0x1d) == 4)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitValues & 0x1d) == 5)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitValues & 0x19) == 8)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 2;
-                    return true;
-                }
-                if ((bitValues & 0x19) == 9)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitValues & 0x11) == 17)
-                {
-                    vKind = Arm64RegisterVKind.D;
-                    elementCount = 2;
-                    return true;
-                }
-                break;
-            case 19:
-                switch (bitValues)
-                {
-                    case 0:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    case 2:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    case 3:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    case 5:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                }
-                break;
-            case 20:
-                switch (bitValues)
-                {
-                    case 0:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                }
-                break;
-            case 21:
-                switch (bitValues)
-                {
-                    case 2:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    case 3:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    case 4:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    case 5:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    case 7:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                }
-                break;
-            case 22:
-                switch (bitValues)
-                {
-                    case 0:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                }
-                break;
-            case 23:
-                if ((bitValues & 0xf) == 8)
-                {
-                    vKind = Arm64RegisterVKind.D;
-                    elementCount = 0;
-                    return true;
-                }
-                if ((bitValues & 0x7) == 4)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 0;
-                    return true;
-                }
-                if ((bitValues & 0x3) == 2)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 0;
-                    return true;
-                }
-                if ((bitValues & 0x1) == 1)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 0;
-                    return true;
-                }
-                break;
-            case 24:
-                switch (bitValues)
-                {
-                    case 0:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                }
-                break;
-            case 25:
-                switch (bitValues)
-                {
-                    case 0:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    case 2:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    case 3:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    case 4:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 1;
-                        return true;
-                    case 5:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                }
-                break;
-            case 26:
-                switch (bitValues)
-                {
-                    case 0:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                }
-                break;
-            case 27:
-                switch (bitValues)
-                {
-                    case 0:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    case 2:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    case 3:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                }
-                break;
-            case 28:
-                switch (bitValues)
-                {
-                    case 0:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    case 2:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    case 3:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                }
-                break;
-            case 29:
-                switch (bitValues)
-                {
-                    case 0:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    case 1:
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    case 6:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 1;
-                        return true;
-                    case 7:
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                }
-                break;
-            case 30:
-                switch (bitValues)
-                {
-                    case 2:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    case 3:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    case 5:
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                }
-                break;
-            case 31:
-                if ((bitValues & 0x1f) == 17)
-                {
-                    vKind = Arm64RegisterVKind.D;
-                    elementCount = 2;
-                    return true;
-                }
-                if ((bitValues & 0xf) == 8)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 2;
-                    return true;
-                }
-                if ((bitValues & 0xf) == 9)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitValues & 0x7) == 4)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitValues & 0x7) == 5)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitValues & 0x3) == 2)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitValues & 0x3) == 3)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 16;
-                    return true;
-                }
-                break;
-            case 32:
-                if ((bitValues & 0x7) == 4)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 0;
-                    return true;
-                }
-                if ((bitValues & 0x3) == 2)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 0;
-                    return true;
-                }
-                if ((bitValues & 0x1) == 1)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 0;
-                    return true;
-                }
-                break;
-            case 33:
-                switch (bitValues)
-                {
-                    case 0:
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    case 3:
+                    {
                         vKind = Arm64RegisterVKind.Q;
                         elementCount = 1;
                         return true;
+                    }
                 }
                 break;
-            case 34:
-                if ((bitValues & 0x3) == 2)
+            }
+            case 14:
+            {
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 15:
+            {
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 0;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 0;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 16:
+            {
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 1;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 17:
+            {
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 7:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 18:
+            {
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 19:
+            {
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 20:
+            {
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 6:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 1;
+                        return true;
+                    }
+                    case 7:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 21:
+            {
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 6:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 1;
+                        return true;
+                    }
+                    case 7:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 22:
+            {
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 7:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 23:
+            {
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 24:
+            {
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 25:
+            {
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 26:
+            {
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                }
+                break;
+            }
+            case 27:
+            {
+                var bitsToTest = (bitValue & 0xF);
+                if (bitsToTest == 1)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0xe) == 2)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0xc) == 4)
+                {
+                    vKind = Arm64RegisterVKind.D;
+                    elementCount = 2;
+                    return true;
+                }
+                break;
+            }
+            case 28:
+            {
+                var bitsToTest = (bitValue & 0x1F);
+                if ((bitsToTest & 0x1d) == 4)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x1d) == 5)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 8)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 2;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 9)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x11) == 17)
+                {
+                    vKind = Arm64RegisterVKind.D;
+                    elementCount = 2;
+                    return true;
+                }
+                break;
+            }
+            case 29:
+            {
+                var bitsToTest = (bitValue & 0x1F);
+                if (bitsToTest == 2)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 8;
+                    return true;
+                }
+                if (bitsToTest == 3)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 16;
+                    return true;
+                }
+                if ((bitsToTest & 0x1d) == 4)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x1d) == 5)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 8)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 2;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 9)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x11) == 17)
+                {
+                    vKind = Arm64RegisterVKind.D;
+                    elementCount = 2;
+                    return true;
+                }
+                break;
+            }
+            case 30:
+            {
+                var bitsToTest = (bitValue & 0x1F);
+                if (bitsToTest == 2)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 8;
+                    return true;
+                }
+                if (bitsToTest == 3)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 16;
+                    return true;
+                }
+                if ((bitsToTest & 0x1d) == 4)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x1d) == 5)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 8)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 2;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 9)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 4;
+                    return true;
+                }
+                break;
+            }
+            case 31:
+            {
+                var bitsToTest = (bitValue & 0x1F);
+                if ((bitsToTest & 0xf) == 8)
+                {
+                    vKind = Arm64RegisterVKind.D;
+                    elementCount = 0;
+                    return true;
+                }
+                if ((bitsToTest & 0x7) == 4)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 0;
+                    return true;
+                }
+                if ((bitsToTest & 0x3) == 2)
                 {
                     vKind = Arm64RegisterVKind.H;
                     elementCount = 0;
                     return true;
                 }
-                if ((bitValues & 0x1) == 1)
+                if ((bitsToTest & 0x1) == 1)
                 {
                     vKind = Arm64RegisterVKind.B;
                     elementCount = 0;
                     return true;
                 }
                 break;
+            }
+            case 32:
+            {
+                var bitsToTest = (bitValue & 0x1F);
+                if ((bitsToTest & 0x7) == 4)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 0;
+                    return true;
+                }
+                if ((bitsToTest & 0x3) == 2)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 0;
+                    return true;
+                }
+                if ((bitsToTest & 0x1) == 1)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 0;
+                    return true;
+                }
+                break;
+            }
+            case 33:
+            {
+                var bitsToTest = (bitValue & 0x1F);
+                if ((bitsToTest & 0x3) == 2)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 0;
+                    return true;
+                }
+                if ((bitsToTest & 0x1) == 1)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 0;
+                    return true;
+                }
+                break;
+            }
+            case 34:
+            {
+                var bitsToTest = (bitValue & 0x3F);
+                if ((bitsToTest & 0x1f) == 17)
+                {
+                    vKind = Arm64RegisterVKind.D;
+                    elementCount = 2;
+                    return true;
+                }
+                if ((bitsToTest & 0xf) == 8)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 2;
+                    return true;
+                }
+                if ((bitsToTest & 0xf) == 9)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x7) == 4)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x7) == 5)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0x3) == 2)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0x3) == 3)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 16;
+                    return true;
+                }
+                break;
+            }
         }
         
-        elementCount = 0;
-        vKind = Arm64RegisterVKind.Default;
+        vKind = default;
+        elementCount = default;
         return false;
     }
 }

@@ -19,7 +19,6 @@ internal sealed class InstructionProcessor
 {
     private readonly InstructionSet _instructionSet;
     private readonly List<Instruction> _instructions;
-    private readonly Dictionary<string, (VectorArrangementValues Values, HashSet<string> Variations, int Count, List<VectorArrangement> Arrangements)> _vectorArrangementItemsUsage = new();
     private readonly Dictionary<string, List<Instruction>> _memoryOperands = new();
     private readonly Dictionary<string, List<Instruction>> _immediateBitShiftSimdSpecial = new();
 
@@ -29,19 +28,20 @@ internal sealed class InstructionProcessor
     private readonly Dictionary<string, int> _prefetchOperationEnumValues = new();
     private readonly Dictionary<string, int> _rangePrefetchOperationEnumValues = new();
 
-    private readonly Dictionary<string, VectorArrangement> _mapIdToVectorArrangements = new();
-
-    private readonly Dictionary<string, DynamicRegisterSelector> _dynamicRegisterSelectors = new();
-
-    private readonly List<(string Id, List<IIndexableOperandDescriptor> Descriptors)> _indexers = new();
-
+    private readonly EncodingSymbolExtractMap _vectorArrangements = new();
+    private readonly EncodingSymbolExtractMap _dynamicRegisterSelectors = new();
+    private readonly EncodingSymbolExtractMap _indexers = new();
     private bool _hasErrors;
-    
+
     public InstructionProcessor(InstructionSet instructionSet)
     {
         _instructionSet = instructionSet;
         _instructions = instructionSet.Instructions;
         InstructionEncodingBuffer = new MemoryStream();
+
+        _vectorArrangements = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.VectorArrangement);
+        _dynamicRegisterSelectors = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.DynamicRegister);
+        _indexers = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.Indexer);
     }
 
     public List<int> InstructionEncodingOffsets { get; } = new();
@@ -52,7 +52,7 @@ internal sealed class InstructionProcessor
     {
         int maxOperandCount = 0;
         Dictionary<OperandKind, HashSet<string>> operandSignatures = new();
-        
+
         foreach (var instruction in _instructions)
         {
             maxOperandCount = Math.Max(maxOperandCount, instruction.Operands.Count);
@@ -95,7 +95,7 @@ internal sealed class InstructionProcessor
         //    Console.WriteLine($"Operand count: {pair.Key} -> {pair.Value.Count}");
         //}
     }
-    
+
     public void Run()
     {
         // Order instructions by their id
@@ -153,35 +153,35 @@ internal sealed class InstructionProcessor
                             operand.Descriptor = ProcessRegister(instruction, (RegisterOperandItem)operand.Items[0]);
                             break;
                         case OperandKind.RegisterGroup:
-                        {
-                            Debug.Assert(operand.Items.Count == 1);
-                            operand.Descriptor = ProcessRegisterGroup(instruction, (RegisterGroupOperandItem)operand.Items[0]);
-                            break;
-                        }
+                            {
+                                Debug.Assert(operand.Items.Count == 1);
+                                operand.Descriptor = ProcessRegisterGroup(instruction, (RegisterGroupOperandItem)operand.Items[0]);
+                                break;
+                            }
                         case OperandKind.ConstAndImmediate:
-                        {
-                            Debug.Assert(operand.Items.Count == 1);
-                            operand.Descriptor = ProcessConstAndImmediate(instruction, (ConstAndImmediateOperandItem)operand.Items[0]);
-                            break;
-                        }
+                            {
+                                Debug.Assert(operand.Items.Count == 1);
+                                operand.Descriptor = ProcessConstAndImmediate(instruction, (ConstAndImmediateOperandItem)operand.Items[0]);
+                                break;
+                            }
                         case OperandKind.Immediate:
-                        {
-                            Debug.Assert(operand.Items.Count == 1);
-                            operand.Descriptor = ProcessImmediate(instruction, (ImmediateOperandItem)operand.Items[0]);
-                            break;
-                        }
+                            {
+                                Debug.Assert(operand.Items.Count == 1);
+                                operand.Descriptor = ProcessImmediate(instruction, (ImmediateOperandItem)operand.Items[0]);
+                                break;
+                            }
                         case OperandKind.Memory:
-                        {
-                            operand.Descriptor = ProcessMemory(instruction, operand, operandIndex);
-                            break;
-                        }
+                            {
+                                operand.Descriptor = ProcessMemory(instruction, operand, operandIndex);
+                                break;
+                            }
                         case OperandKind.Select:
-                        {
-                            Debug.Assert(operand.Items.Count == 1);
-                            var selectOperand = (SelectOperandItem)operand.Items[0];
-                            operand.Descriptor = ProcessSelectOperand(instruction, selectOperand);
-                            break;
-                        }
+                            {
+                                Debug.Assert(operand.Items.Count == 1);
+                                var selectOperand = (SelectOperandItem)operand.Items[0];
+                                operand.Descriptor = ProcessSelectOperand(instruction, selectOperand);
+                                break;
+                            }
                         case OperandKind.Value:
                             Debug.Assert(operand.Items.Count == 1);
                             var selectedValue = (ValueOperandItem)operand.Items[0];
@@ -216,54 +216,8 @@ internal sealed class InstructionProcessor
 
         }
 
-        foreach (var vectorArrangementItems in _vectorArrangementItemsUsage.OrderByDescending(x => x.Value.Count).ThenBy(x => x.Key))
-        {
-            var values = vectorArrangementItems.Value.Values;
-            values.Index = _instructionSet.VectorArrangementValues.Count + 1;
-
-            foreach (var descriptor in vectorArrangementItems.Value.Arrangements)
-            {
-                descriptor.VectorArrangementValuesIndex = values.Index;
-            }
-
-            //Console.WriteLine($"[{values.Index}] VectorArrangement {vectorArrangementItems.Key} - {values}");
-            //foreach (var variation in vectorArrangementItems.Value.Variations.Order())
-            //{
-            //    Console.WriteLine($"  {variation}");
-            //}
-            _instructionSet.VectorArrangementValues.Add(values);
-        }
-
         // Sort the indexers at the end and order them by their id to make them easier to read
-        _indexers.Sort((x, y) => string.Compare(x.Id, y.Id, StringComparison.Ordinal));
-        for (var i = 0; i < _indexers.Count; i++)
-        {
-            var pair = _indexers[i];
-            int indexerId = i + 1; // 0 is reserved for no indexer
-            foreach (var descriptor in pair.Descriptors)
-            {
-                descriptor.IndexerId = indexerId;
-            }
-            _instructionSet.IndexerIdList.Add(pair.Id);
-        }
-
-        var dynamicRegisterSelectors = _dynamicRegisterSelectors.Values.OrderBy(selector => selector.Id).ToList();
-        for (int i = 0; i < dynamicRegisterSelectors.Count; i++)
-        {
-            var descriptor = dynamicRegisterSelectors[i];
-            var index = _instructionSet.DynamicRegisterSelectorList.Count + 1;
-            descriptor.Index = index;
-            _instructionSet.DynamicRegisterSelectorList.Add(descriptor);
-        }
-
-        // Vector arrangements
-        var vectorArrangements = _mapIdToVectorArrangements.OrderBy(x => x.Key).Select(x => x.Value).ToList();
-        for (int i = 0; i < vectorArrangements.Count; i++)
-        {
-            var vectorArrangement = vectorArrangements[i];
-            vectorArrangement.Index = _instructionSet.VectorArrangements.Count + 1;
-            _instructionSet.VectorArrangements.Add(vectorArrangement);
-        }
+        _instructionSet.AssignExtraMapIndices();
 
         // Vector Arrangement indices
         foreach (var instruction in _instructions)
@@ -287,7 +241,7 @@ internal sealed class InstructionProcessor
                 //}
             }
         }
-        
+
         //Console.WriteLine($"Vector Arrangements: {vectorArrangements.Count}");
 
         //foreach (var pair in _memoryOperands.OrderBy(x => x.Key))
@@ -349,7 +303,7 @@ internal sealed class InstructionProcessor
                 // Encode the operand
                 operand.Descriptor!.Encode(allOperands.Slice(operandIndex * 8, 8));
             }
-            
+
             // Detect if operands can be all encoded into uint
             var spanULong = MemoryMarshal.Cast<byte, ulong>(allOperands);
             instruction.UseOperandEncoding8Bytes = instruction.Operands.Count != 0;
@@ -518,7 +472,7 @@ internal sealed class InstructionProcessor
                 Debug.Assert(symbol0.BitSize == 1);
                 Debug.Assert(symbol0.BitRanges.Count == 1);
                 shiftOperandDescriptor.ShiftEncoding = symbol0.BitRanges[0];
-                
+
                 return shiftOperandDescriptor;
             }
             else if (name0 == "LSL")
@@ -583,7 +537,7 @@ internal sealed class InstructionProcessor
                     EnumEncoding = symbol0.BitRanges[0]
                 };
 
-                Debug.Assert(bti.EnumEncoding == new BitRange(5, 2));
+                Debug.Assert(bti.EnumEncoding == new BitRange(6, 2));
                 return bti;
             }
             else if (name0 == "imm")
@@ -632,11 +586,11 @@ internal sealed class InstructionProcessor
                 Debug.Assert(symbol0 is not null && symbol0.Selector is not null && symbol0.Selector.BitValues.Count >= 3 && symbol0.Selector.BitValues[0].Text == "LSL" && symbol0.Selector.BitValues[1].Text == "LSR" && symbol0.Selector.BitValues[2].Text == "ASR" && (symbol0.Selector.BitValues.Count == 3 || symbol0.Selector.BitValues[3].Text == "ROR"));
 
                 shiftOperandDescriptor.ShiftKind = symbol0.Selector.BitValues.Count == 3 ? Arm64ShiftEncodingKind.Shift3 : Arm64ShiftEncodingKind.Shift4;
-                
+
                 Debug.Assert(symbol0.BitSize == 2);
                 Debug.Assert(symbol0.BitRanges.Count == 1);
                 shiftOperandDescriptor.ShiftEncoding = symbol0.BitRanges[0];
-                
+
                 var amountSymbol = item1.TextElements[0].Symbol;
                 Debug.Assert(amountSymbol is not null);
 
@@ -741,6 +695,7 @@ internal sealed class InstructionProcessor
         {
             Console.WriteLine($"Instruction {instruction.Id} {selectedValue} <<<<");
 
+            _hasErrors = true;
             return null;
         }
         else
@@ -756,7 +711,7 @@ internal sealed class InstructionProcessor
                     Console.WriteLine($"Unsupported label kind for instruction {instruction.Id}");
                     _hasErrors = true;
                 }
-                
+
                 var immediate = ProcessImmediate(instruction, selectedValue);
 
                 var label = new LabelOperandDescriptor
@@ -805,7 +760,7 @@ internal sealed class InstructionProcessor
 
         throw new InvalidOperationException($"Value {selectedValue} not supported");
     }
-    
+
     private OperandDescriptor ProcessSelectOperand(Instruction instruction, SelectOperandItem selectOperand)
     {
         Debug.Assert(selectOperand.Items.Count == 2);
@@ -896,13 +851,13 @@ internal sealed class InstructionProcessor
         var elt0 = register.TextElements[0];
         var name0 = elt0.Text;
         var isSP = name0.EndsWith("SP");
-        Debug.Assert(!isSP || name0.Contains('|') );
+        Debug.Assert(!isSP || name0.Contains('|'));
 
         int indexOfIndexEncoding = 0;
 
         Arm64RegisterEncodingKind kind;
 
-        DynamicRegisterSelector? dynamicDescriptor = null;
+        EncodingSymbolExtract? dynamicDescriptor = null;
 
         for (int i = 0; i < register.TextElements.Count; i++)
         {
@@ -981,7 +936,7 @@ internal sealed class InstructionProcessor
 
         if (dynamicDescriptor is not null)
         {
-            dynamicDescriptor.RegisterDescriptors.Add(descriptor);
+            
         }
 
         var registerNameBuilder = new StringBuilder();
@@ -990,7 +945,7 @@ internal sealed class InstructionProcessor
             registerNameBuilder.Append(textElement.Text);
         }
         descriptor.Name = registerNameBuilder.ToString();
-        
+
 
         var symbol = register.TextElements[indexOfIndexEncoding].Symbol;
         if (symbol is not null && symbol.BitNames.Count > 0)
@@ -1056,23 +1011,22 @@ internal sealed class InstructionProcessor
         {
             descriptor.VectorArrangementLocalIndex = GetVectorArrangementLocalIndex(instruction, register);
         }
-        
-        descriptor.IndexerId = ProcessIndexer(instruction, register, descriptor);
+
+        descriptor.IndexerExtract = ProcessIndexer(instruction, register);
 
         return descriptor;
     }
 
-    private DynamicRegisterSelector ParseDynamicRegister(Instruction instruction, RegisterOperandItem register)
+    private EncodingSymbolExtract ParseDynamicRegister(Instruction instruction, RegisterOperandItem register)
     {
         var symbol = register.TextElements[0].Symbol!;
-        var dynamicDescriptor = new DynamicRegisterSelector();
-        Debug.Assert(symbol.Selector is not null);
-
         var selector = symbol.Selector;
-        dynamicDescriptor.BitSize = selector.BitSize;
-        Debug.Assert(selector.BitRanges.Count == 1);
-        dynamicDescriptor.BitEncoding = selector.BitRanges[0];
+        Debug.Assert(selector is not null);
+        
+        var map = _dynamicRegisterSelectors.GetOrCreateExtract<EncodingSymbolExtract>(symbol);
+        map.Usages.Add((instruction, register));
 
+        // Check values
         foreach (var bitValue in selector.BitValues)
         {
             var registerOperandKind = bitValue.Text switch
@@ -1086,71 +1040,36 @@ internal sealed class InstructionProcessor
                 "RESERVED" => Arm64RegisterEncodingKind.None,
                 _ => throw new NotSupportedException($"Unsupported dynamic register value `{bitValue.Text}` in instruction `{instruction.Id}`")
             };
-
-            dynamicDescriptor.BitValues.Add(new(string.Concat(bitValue.BitSelectorAsText), registerOperandKind));
-        }
-        Debug.Assert(register.TextElements.Count == 2 && register.TextElements[1].Symbol is not null, $"Invalid encoding for instruction {instruction.Id}");
-
-        dynamicDescriptor.UpdateKindFromItems();
-
-        var id = dynamicDescriptor.Id;
-        if (!_dynamicRegisterSelectors.TryGetValue(id, out var existingDescriptor))
-        {
-            existingDescriptor = dynamicDescriptor;
-            _dynamicRegisterSelectors.Add(id, existingDescriptor);
         }
 
-        return existingDescriptor;
+        return map;
     }
 
-    private int ProcessIndexer(Instruction instruction, OperandItem item, IIndexableOperandDescriptor descriptor)
+    private EncodingSymbolExtract? ProcessIndexer(Instruction instruction, OperandItem item)
     {
         var indexer = item.Indexer;
         if (indexer is null)
         {
-            return 0;
+            return null;
         }
-        
+
         Debug.Assert(indexer.TextElements.Count == 1);
         var text = indexer.TextElements[0].Text;
         var symbol = indexer.TextElements[0].Symbol;
-
-        var builder = new StringBuilder();
-        if (symbol is null)
+        EncodingIndexerExtract indexerExtract;
+        if (symbol is not null)
         {
-            // Fixed indexer
-            builder.Append($"Fixed Indexer {text}\n");
+            indexerExtract = _indexers.GetOrCreateExtract<EncodingIndexerExtract>(symbol!);
         }
         else
         {
-            var size = symbol.BitSize;
-
-            builder.Append($"Immediate Indexer Size: {size} bits, Encoding: {string.Join(",", symbol.BitRanges)}\n");
-            if (symbol.Selector is not null)
-            {
-                builder.Append($" Selector: {symbol.Selector}");
-            }
+            var intValue = int.Parse(text);
+            indexerExtract = _indexers.GetOrCreateExtract<EncodingIndexerExtract>(text);
+            indexerExtract.FixedIndex = text;
+            
         }
-
-        var indexerId = builder.ToString().Trim();
-
-        var index = _indexers.FindIndex(x => x.Id.Equals(indexerId, StringComparison.Ordinal));
-        List<IIndexableOperandDescriptor> descriptors;
-        if (index < 0)
-        {
-            index = _indexers.Count;
-            descriptors = new List<IIndexableOperandDescriptor>();
-            _indexers.Add((indexerId, descriptors));
-        }
-        else
-        {
-            descriptors = _indexers[index].Descriptors;
-        }
-        Console.WriteLine($"Indexer {indexerId} -> {instruction.Id} {instruction.FullSyntax}");
-        
-        descriptors.Add(descriptor);
-
-        return index;
+        indexerExtract.Usages.Add((instruction, item));
+        return indexerExtract;
     }
 
     private int GetVectorArrangementLocalIndex(Instruction instruction, RegisterOperandItem register)
@@ -1178,116 +1097,35 @@ internal sealed class InstructionProcessor
             symbol = null;
         }
 
-        var vectorArrangement = new VectorArrangement
+        var kind = EncodingVectorArrangementExtract.ParseArrangementKind(text);
+
+        EncodingVectorArrangementExtract vectorArrangement;
+
+        if (kind == Arm64RegisterVectorArrangementEncodingKind.T)
         {
-            ArrangementKind = ParseArrangementKind(text)
-        };
-
-        if (symbol is not null && symbol.Selector is not null)
-        {
-            Debug.Assert(vectorArrangement.ArrangementKind == Arm64RegisterVectorArrangementEncodingKind.T);
-
-            vectorArrangement.BitSize = symbol.BitSize;
-            vectorArrangement.Encoding.AddRange(symbol.BitRanges);
-            Debug.Assert(vectorArrangement.Encoding.Count <= 2);
-            Debug.Assert(vectorArrangement.Encoding.All(x => x.IsSmallEncoding));
-
-            var values = new VectorArrangementValues();
-            var selector = symbol.Selector;
-            foreach (var bitValue in selector.BitValues)
-            {
-                var elementKind = ParseArrangementKind(bitValue.Text);
-                var bitValues = string.Concat(bitValue.BitSelectorAsText);
-                var element = new VectorArrangementValue(bitValues, elementKind);
-                values.Items.Add(element);
-            }
-            values.UpdateKindFromItems();
-
-            var id = values.Id;
-
-            if (!_vectorArrangementItemsUsage.TryGetValue(id, out var valuesAndCount))
-            {
-                valuesAndCount = (values, new HashSet<string>(), 0, new List<VectorArrangement>());
-                _vectorArrangementItemsUsage.Add(id, valuesAndCount);
-            }
-
-            vectorArrangement.Values = valuesAndCount.Values;
-            valuesAndCount.Variations.Add(vectorArrangement.Id);
-            valuesAndCount.Arrangements.Add(vectorArrangement);
-            _vectorArrangementItemsUsage[id] = (valuesAndCount.Values, valuesAndCount.Variations,  valuesAndCount.Count + 1, valuesAndCount.Arrangements);
+            Debug.Assert(symbol is not null);
+            vectorArrangement = _vectorArrangements.GetOrCreateExtract<EncodingVectorArrangementExtract>(symbol);
         }
-
-        var vectorArrangementId = vectorArrangement.Id;
-        if (!_mapIdToVectorArrangements.TryGetValue(vectorArrangementId, out var existingArrangement))
+        else
         {
-            existingArrangement = vectorArrangement;
-            _mapIdToVectorArrangements.Add(vectorArrangementId, existingArrangement);
+            vectorArrangement = _vectorArrangements.GetOrCreateExtract<EncodingVectorArrangementExtract>(kind.ToString());
         }
+        vectorArrangement.Usages.Add((instruction, register));
+
+        vectorArrangement.Kind = kind;
 
         var indexOfArrangement = instruction.VectorArrangements.IndexOf(vectorArrangement);
         if (indexOfArrangement < 0)
         {
             indexOfArrangement = instruction.VectorArrangements.Count;
-            instruction.VectorArrangements.Add(existingArrangement);
-            Debug.Assert(instruction.VectorArrangements.Count <= 3); // Maximum 3 vector arrangements allowed per instruction
+            instruction.VectorArrangements.Add(vectorArrangement);
+            Debug.Assert(instruction.VectorArrangements.Count <= 4); // Maximum 3 vector arrangements allowed per instruction
         }
 
         // Always used index + 1 (0 is reserved for null / no vector arrangement)
         return indexOfArrangement + 1;
     }
-    
-    private static Arm64RegisterVectorArrangementEncodingKind ParseArrangementKind(string text)
-    {
-        switch (text)
-        {
-            case "16B":
-                return Arm64RegisterVectorArrangementEncodingKind.T_16B;
-            case "8B":
-                return Arm64RegisterVectorArrangementEncodingKind.T_8B;
-            case "4B":
-                return Arm64RegisterVectorArrangementEncodingKind.T_4B;
-            case "2B":
-                return Arm64RegisterVectorArrangementEncodingKind.T_2B;
-            case "2H":
-                return Arm64RegisterVectorArrangementEncodingKind.T_2H;
-            case "4H":
-                return Arm64RegisterVectorArrangementEncodingKind.T_4H;
-            case "8H":
-                return Arm64RegisterVectorArrangementEncodingKind.T_8H;
-            case "2S":
-                return Arm64RegisterVectorArrangementEncodingKind.T_2S;
-            case "4S":
-                return Arm64RegisterVectorArrangementEncodingKind.T_4S;
-            case "2D":
-                return Arm64RegisterVectorArrangementEncodingKind.T_2D;
-            case "1D":
-                return Arm64RegisterVectorArrangementEncodingKind.T_1D;
-            case "1Q":
-                return Arm64RegisterVectorArrangementEncodingKind.T_1Q;
-            case "T":
-                return Arm64RegisterVectorArrangementEncodingKind.T;
-            case "D":
-                return Arm64RegisterVectorArrangementEncodingKind.D;
-            case "H":
-                return Arm64RegisterVectorArrangementEncodingKind.H;
-            case "B":
-                return Arm64RegisterVectorArrangementEncodingKind.B;
-            case "S":
-                return Arm64RegisterVectorArrangementEncodingKind.S;
-            case "RESERVED":
-                return Arm64RegisterVectorArrangementEncodingKind.Reserved;
-            default:
-                if (text.StartsWith("T"))
-                {
-                    return Arm64RegisterVectorArrangementEncodingKind.T;
-                }
-                else
-                {
-                    throw new NotSupportedException($"Unsupported arrangement `{text}`");
-                }
-        }
-    }
-    
+
     private RegisterGroupOperandDescriptor ProcessRegisterGroup(Instruction instruction, RegisterGroupOperandItem group)
     {
         var descriptors = new List<RegisterOperandDescriptor>();
@@ -1306,7 +1144,7 @@ internal sealed class InstructionProcessor
             ids.Add(descriptor.ToString());
         }
 
-        Debug.Assert(ids.Count == 1);
+        //Debug.Assert(ids.Count == 1);
         if (group.Items.Count == 0 || group.Items.Count > 4)
         {
             throw new NotSupportedException(
@@ -1320,7 +1158,7 @@ internal sealed class InstructionProcessor
             Name = descriptors[0].Name,
         };
 
-        registerGroup.IndexerId = ProcessIndexer(instruction, group, registerGroup);
+        registerGroup.IndexerExtract = ProcessIndexer(instruction, group);
 
         return registerGroup;
     }
@@ -1337,7 +1175,7 @@ internal sealed class InstructionProcessor
         {
             immediate.IsSigned = true;
         }
-        
+
         var c = item.TextElements[0].Text[0];
         if (char.IsAsciiDigit(c) || c == '-')
         {
@@ -1566,7 +1404,7 @@ internal sealed class InstructionProcessor
             if (items.Count == 3)
             {
                 var item2 = (OptionalGroupOperandItem)items[2];
-                
+
                 if (item2.Items.Count == 1)
                 {
                     // Addressing [Xn|SP,Xm{,LSLamount}]
@@ -1675,7 +1513,7 @@ internal sealed class InstructionProcessor
 
         return extendKind;
     }
-  
+
 
     private void CollectEnumValues(EncodingSymbol symbol, Dictionary<string, int> enumToInt)
     {

@@ -13,7 +13,6 @@ namespace AsmArm64.CodeGen;
 // Feature
 // Docvars ideas
 // https://github.com/google/EXEgesis/blob/master/exegesis/arm/xml/docvars.cc
-
 partial class Arm64Processor
 {
     private void GenerateCode()
@@ -27,8 +26,11 @@ partial class Arm64Processor
         GenerateInstructionIdDecoderTable();
         GenerateInstructionDecoderTable();
         GenerateInstructionIdTests();
+
+        // Write extracts
         GenerateVectorArrangements();
         GenerateDynamicRegister();
+        GenerateIndexers();
     }
 
     private void GenerateMnemonicEnum()
@@ -376,19 +378,84 @@ partial class Arm64Processor
 
     private void GenerateVectorArrangements()
     {
-        using var w = GetWriter("Arm64VectorArrangementHelper.gen.cs");
+        var vectorArrangements = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.VectorArrangement);
+
+        GenerateEncodingSymbolExtractMap<EncodingVectorArrangementExtract>(vectorArrangements,
+            "Arm64VectorArrangementHelper",
+            [("Arm64RegisterVKind", "vKind"), ("int", "elementCount")],
+            (w, extract) =>
+            {
+                var (vKind, elementCount) = GetVKindAndElementCount(extract.Kind);
+                w.WriteLine($"vKind = Arm64RegisterVKind.{vKind};");
+                w.WriteLine($"elementCount = {elementCount};");
+            },
+            (w, selector, bitValue) =>
+            {
+                var kind = EncodingVectorArrangementExtract.ParseArrangementKind(bitValue.Text);
+                var (vKind, elementCount) = GetVKindAndElementCount(kind);
+                w.WriteLine($"vKind = Arm64RegisterVKind.{vKind};");
+                w.WriteLine($"elementCount = {elementCount};");
+            }
+        );
+    }
+
+    private void GenerateDynamicRegister()
+    {
+        var dynamicRegisterMap = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.DynamicRegister);
+
+        GenerateEncodingSymbolExtractMap<EncodingSymbolExtract>(dynamicRegisterMap,
+            "Arm64DynamicRegisterHelper",
+            [("Arm64RegisterEncodingKind", "registerEncodingKind")],
+            (w, extract) =>
+            {
+                // We don't have any bit ranges for dynamic registers
+            },
+            (w, selector, bitValue) =>
+            {
+                w.WriteLine($"registerEncodingKind = Arm64RegisterEncodingKind.{bitValue.Text};");
+            }
+        );
+    }
+    
+    private void GenerateIndexers()
+    {
+        var indexerMap = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.Indexer);
+
+        GenerateEncodingSymbolExtractMap<EncodingIndexerExtract>(indexerMap,
+            "Arm64IndexerHelper",
+            [("int", "index")],
+            (w, extract) =>
+            {
+                w.WriteLine($"index = {extract.FixedIndex};");
+            },
+            (w, selector, bitValue) =>
+            {
+                w.WriteLine($"index = {bitValue.Text};");
+            }
+        );
+    }
+    
+    private void GenerateEncodingSymbolExtractMap<TExtract>(EncodingSymbolExtractMap map, string name, List<(string ParameterType, string ParameterName)> parameters,
+            Action<CodeWriter, TExtract> writeBitToSelector,
+            Action<CodeWriter, EncodingSymbolSelector, EncodingBitValue> writeSelector
+        ) where TExtract : EncodingSymbolExtract
+    {
+        using var w = GetWriter($"{name}.gen.cs");
+        w.WriteLine();
+        w.WriteLine("using System.Runtime.CompilerServices;");
+        w.WriteLine();
         w.WriteLine("namespace AsmArm64;");
         w.WriteLine();
-        w.WriteSummary("Decode vector arrangements from raw instruction.");
-        w.WriteLine("static class Arm64VectorArrangementHelper");
+        w.WriteSummary($"Decode {map.Kind} class.");
+        w.WriteLine($"static class {name}");
         w.OpenBraceBlock();
         {
             // ---------------------------------------------
             // Write the VectorArrangement decoding
             // ---------------------------------------------
-            // public static bool TryDecode(Arm64RawInstruction rawValue, byte valueArrangementIndex, out Arm64RegisterVKind vKind, out int elementCount)
+            // public static bool TryDecode(Arm64RawInstruction rawValue, byte mapIndex, out Arm64RegisterVKind vKind, out int elementCount)
             // {
-            //     switch (valueArrangementIndex)
+            //     switch (mapIndex)
             //     {
             //         case 0:
             //             return TryDecodeFromBitValues((rawValue >> 10) & 0x1F, 14, out vKind, out elementCount);
@@ -399,53 +466,55 @@ partial class Arm64Processor
             //     }
             // }
 
-            w.WriteLine("public static bool TryDecode(Arm64RawInstruction rawValue, byte valueArrangementIndex, out Arm64RegisterVKind vKind, out int elementCount)");
+            var parameterSignature = string.Join(", ", parameters.Select(x => $"out {x.ParameterType} {x.ParameterName}"));
+            w.WriteLine($"public static bool TryDecode(Arm64RawInstruction rawValue, byte mapIndex, {parameterSignature})");
             w.OpenBraceBlock();
             {
-                w.WriteLine("switch (valueArrangementIndex)");
+                w.WriteLine("switch (mapIndex)");
                 w.OpenBraceBlock();
                 {
                     var builder = new StringBuilder();
-                    foreach (var vectorArrangement in _instructionSet.VectorArrangements)
+                    foreach (var extract in map.ExtractList)
                     {
-                        w.WriteLine($"case {vectorArrangement.Index}:");
-                        w.Indent();
-
-                        if (vectorArrangement.Encoding.Count > 0)
+                        // Dump all usages for debugging
+                        foreach (var usage in extract.Usages.OrderBy(x => x.Instruction.Id))
                         {
-                            builder.Clear();
-                            // We start from the lowest bits to the highest bits
-                            int accumulation = 0;
-                            for (var i = vectorArrangement.Encoding.Count - 1; i >= 0; i--)
+                            w.WriteLine($"// {usage.Instruction.Id,-30}: {usage.Instruction.FullSyntax} <- Operand: {usage.OperandItem}");
+                        }
+                        
+                        w.WriteLine($"case {extract.Index}:");
+                        w.OpenBraceBlock();
+
+                        if (extract.BitRanges.Count > 0)
+                        {
+                            var bitValueExtractString = ExtractBitRangeString(extract.BitRanges, "rawValue", "bitValue");
+                            w.WriteLine(bitValueExtractString);
+
+                            if (extract.SelectorIndex == 0)
                             {
-                                var bitRange = vectorArrangement.Encoding[i];
-                                var mask = ((1U << bitRange.Width) - 1) << accumulation;
-
-                                if (i < vectorArrangement.Encoding.Count - 1)
-                                {
-                                    builder.Append(" | ");
-                                }
-
-                                builder.Append($"((rawValue >> {bitRange.LowBit - accumulation}) & 0x{mask:X})");
-                                accumulation += bitRange.Width;
+                                Debug.Assert(parameters.Count == 1, "We support only one parameter when no selector");
+                                w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})bitValue;");
+                                w.WriteLine($"return true;");
                             }
-
-                            w.WriteLine($"return TryDecodeFromBitValues({builder}, {vectorArrangement.VectorArrangementValuesIndex}, out vKind, out elementCount);");
+                            else
+                            {
+                                w.WriteLine($"return TryDecodeFromBitValues(bitValue, {extract.SelectorIndex}, {string.Join(",", parameters.Select(x => $"out {x.ParameterName}"))});");
+                            }
                         }
                         else
                         {
-                            var (vKind, elementCount) = GetVKindAndElementCount(vectorArrangement.ArrangementKind);
-                            w.WriteLine($"vKind = Arm64RegisterVKind.{vKind};");
-                            w.WriteLine($"elementCount = {elementCount};");
+                            writeBitToSelector(w, (TExtract)extract);
                             w.WriteLine("return true;");
                         }
-                        w.UnIndent();
+                        w.CloseBraceBlock();
                     }
                 }
                 w.CloseBraceBlock();
                 w.WriteLine();
-                w.WriteLine("elementCount = 0;");
-                w.WriteLine("vKind = Arm64RegisterVKind.Default;");
+                foreach (var parameter in parameters)
+                {
+                    w.WriteLine($"{parameter.ParameterName} = default;");
+                }
                 w.WriteLine("return false;");
             }
             w.CloseBraceBlock();
@@ -474,121 +543,46 @@ partial class Arm64Processor
             //     return false;
             // }
 
-            w.WriteLine("public static bool TryDecodeFromBitValues(uint bitValues, byte valueArrangementValuesIndex, out Arm64RegisterVKind vKind, out int elementCount)");
-            w.OpenBraceBlock();
+            if (map.SelectorList.Count > 0)
             {
-                w.WriteLine("switch (valueArrangementValuesIndex)");
-                w.OpenBraceBlock();
-                {
-                    foreach(var vectorArrangementValues in _instructionSet.VectorArrangementValues)
-                    {
-                        w.WriteLine($"case {vectorArrangementValues.Index}:");
-                        w.Indent();
-                        if (vectorArrangementValues.MappingKind == BitValuesMappingKind.Regular)
-                        {
-                            w.WriteLine($"switch (bitValues)");
-                            w.OpenBraceBlock();
-                            {
-                                foreach (var value in vectorArrangementValues.Items)
-                                {
-                                    if (value.Kind == Arm64RegisterVectorArrangementEncodingKind.Reserved || value.Kind == Arm64RegisterVectorArrangementEncodingKind.None)
-                                    {
-                                        continue;
-                                    }
-                                    w.WriteLine($"case {value.BitValue}:");
-                                    w.Indent();
-                                    var (vKind, elementCount) = GetVKindAndElementCount(value.Kind);
-                                    w.WriteLine($"vKind = Arm64RegisterVKind.{vKind};");
-                                    w.WriteLine($"elementCount = {elementCount};");
-                                    w.WriteLine("return true;");
-                                    w.UnIndent();
-                                }
-                            }
-                            w.CloseBraceBlock();
-                            w.WriteLine("break;");
-                        }
-                        else
-                        {
-                            Debug.Assert(vectorArrangementValues.MappingKind == BitValuesMappingKind.Masked);
-
-                            // Order from the highest number of bits sets to the lowest number
-                            // If the mask is 0, it means that all bits are sets
-                            var values = vectorArrangementValues.Items.Where(x => x.Kind != Arm64RegisterVectorArrangementEncodingKind.Reserved).OrderByDescending(x => BitOperations.PopCount(x.MaskValue == 0 ? uint.MaxValue : x.MaskValue)).ToList();
-
-                            foreach (var value in values)
-                            {
-                                w.WriteLine(value.MaskValue == 0
-                                    ? $"if (bitValues == {value.BitValue})"
-                                    : $"if ((bitValues & 0x{value.MaskValue:x}) == {value.BitValue})"
-                                );
-                                w.OpenBraceBlock();
-                                {
-                                    var (vKind, elementCount) = GetVKindAndElementCount(value.Kind);
-                                    w.WriteLine($"vKind = Arm64RegisterVKind.{vKind};");
-                                    w.WriteLine($"elementCount = {elementCount};");
-                                    w.WriteLine("return true;");
-                                }
-                                w.CloseBraceBlock();
-                            }
-
-                            w.WriteLine("break;");
-                        }
-                        w.UnIndent();
-                    }
-                }
-                w.CloseBraceBlock();
                 w.WriteLine();
-                w.WriteLine("elementCount = 0;");
-                w.WriteLine("vKind = Arm64RegisterVKind.Default;");
-                w.WriteLine("return false;");
-            }
-            w.CloseBraceBlock();
-        }
-        w.CloseBraceBlock();
-    }
-
-    private void GenerateDynamicRegister()
-    {
-        using var w = GetWriter("Arm64DynamicRegisterHelper.gen.cs");
-        w.WriteLine("namespace AsmArm64;");
-        w.WriteLine();
-        w.WriteSummary("Decode dynamic register from raw instruction.");
-        w.WriteLine("static class Arm64DynamicRegisterHelper");
-        w.OpenBraceBlock();
-        {
-            w.WriteLine("public static bool TryDecode(Arm64RawInstruction rawValue, byte dynamicSelectorIndex, out Arm64RegisterEncodingKind registerEncodingKind)");
-            w.OpenBraceBlock();
-            {
-                w.WriteLine("switch (dynamicSelectorIndex)");
+                // We inline aggressively because the selectorIndex is a constant passed as it seems that the vast majority of selectorIndex are unique to an extract.
+                w.WriteLine("[MethodImpl(MethodImplOptions.AggressiveInlining)]");
+                w.WriteLine($"public static bool TryDecodeFromBitValues(uint bitValue, byte selectorIndex, {parameterSignature})");
                 w.OpenBraceBlock();
                 {
-                    var builder = new StringBuilder();
-                    foreach (var dynamicRegisterSelector in _instructionSet.DynamicRegisterSelectorList)
+                    w.WriteLine("switch (selectorIndex)");
+                    w.OpenBraceBlock();
                     {
-                        w.WriteLine($"case {dynamicRegisterSelector.Index}:");
-                        w.OpenBraceBlock();
+                        foreach (var selector in map.SelectorList)
                         {
-                            var bitRange = dynamicRegisterSelector.BitEncoding;
-                            var mask = ((1U << bitRange.Width) - 1);
-                            w.WriteLine($"var bitValues = (rawValue >> {bitRange.LowBit}) & 0x{mask:X};");
+                            w.WriteLine($"case {selector.Index}:");
+                            w.OpenBraceBlock();
+                            w.WriteLine(ExtractBitRangeString(selector.BitRanges, "bitValue", "bitsToTest"));
 
-                            if (dynamicRegisterSelector.MappingKind == BitValuesMappingKind.Regular)
+                            if (selector.Kind == EncodingSymbolSelectorKind.Regular)
                             {
-                                w.WriteLine($"switch (bitValues)");
+                                w.WriteLine($"switch (bitsToTest)");
                                 w.OpenBraceBlock();
                                 {
-                                    foreach (var value in dynamicRegisterSelector.BitValues)
+                                    foreach (var bitValue in selector.BitValues)
                                     {
-                                        if (value.RegisterKind == Arm64RegisterEncodingKind.None)
+                                        w.WriteLine($"case {bitValue.BitSelectorValue}:");
+                                        w.OpenBraceBlock();
+                                        if (bitValue.Kind == EncodingBitValueKind.BitExtract)
                                         {
-                                            continue;
+                                            var bitRanges = bitValue.BitItems.Select(x => x.Range).ToList();
+                                            var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
+                                            Debug.Assert(parameters.Count == 1);
+                                            w.WriteLine(bitValueExtractString);
+                                            w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
                                         }
-
-                                        w.WriteLine($"case {value.BitValue}:");
-                                        w.Indent();
-                                        w.WriteLine($"registerEncodingKind = Arm64RegisterEncodingKind.{value.RegisterKind};");
+                                        else
+                                        {
+                                            writeSelector(w, selector, bitValue);
+                                        }
                                         w.WriteLine("return true;");
-                                        w.UnIndent();
+                                        w.CloseBraceBlock();
                                     }
                                 }
                                 w.CloseBraceBlock();
@@ -596,22 +590,32 @@ partial class Arm64Processor
                             }
                             else
                             {
-                                Debug.Assert(dynamicRegisterSelector.MappingKind == BitValuesMappingKind.Masked);
+                                Debug.Assert(selector.Kind == EncodingSymbolSelectorKind.Masked);
 
                                 // Order from the highest number of bits sets to the lowest number
                                 // If the mask is 0, it means that all bits are sets
-                                var values = dynamicRegisterSelector.BitValues.Where(x => x.RegisterKind != Arm64RegisterEncodingKind.None).OrderByDescending(x => BitOperations.PopCount(x.MaskValue == 0 ? uint.MaxValue : x.MaskValue))
-                                    .ToList();
+                                var bitValues = selector.BitValues.OrderByDescending(x => BitOperations.PopCount(x.BitSelectorMask == 0 ? uint.MaxValue : x.BitSelectorMask)).ToList();
 
-                                foreach (var value in values)
+                                foreach (var bitValue in bitValues)
                                 {
-                                    w.WriteLine(value.MaskValue == 0
-                                        ? $"if (bitValues == {value.BitValue})"
-                                        : $"if ((bitValues & 0x{value.MaskValue:x}) == {value.BitValue})"
+                                    w.WriteLine(bitValue.BitSelectorMask == 0
+                                        ? $"if (bitsToTest == {bitValue.BitSelectorValue})"
+                                        : $"if ((bitsToTest & 0x{bitValue.BitSelectorMask:x}) == {bitValue.BitSelectorValue})"
                                     );
                                     w.OpenBraceBlock();
                                     {
-                                        w.WriteLine($"registerEncodingKind = Arm64RegisterEncodingKind.{value.RegisterKind};");
+                                        if (bitValue.Kind == EncodingBitValueKind.BitExtract)
+                                        {
+                                            var bitRanges = bitValue.BitItems.Select(x => x.Range).ToList();
+                                            var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
+                                            Debug.Assert(parameters.Count == 1);
+                                            w.WriteLine(bitValueExtractString);
+                                            w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
+                                        }
+                                        else
+                                        {
+                                            writeSelector(w, selector, bitValue);
+                                        }
                                         w.WriteLine("return true;");
                                     }
                                     w.CloseBraceBlock();
@@ -619,20 +623,57 @@ partial class Arm64Processor
 
                                 w.WriteLine("break;");
                             }
+
+                            w.CloseBraceBlock();
                         }
-                        w.CloseBraceBlock();
                     }
+                    w.CloseBraceBlock();
+                    w.WriteLine();
+                    foreach (var parameter in parameters)
+                    {
+                        w.WriteLine($"{parameter.ParameterName} = default;");
+                    }
+
+                    w.WriteLine("return false;");
                 }
                 w.CloseBraceBlock();
-                w.WriteLine();
-                w.WriteLine("registerEncodingKind = Arm64RegisterEncodingKind.None;");
-                w.WriteLine("return false;");
             }
-            w.CloseBraceBlock();
         }
         w.CloseBraceBlock();
     }
 
+    private string ExtractBitRangeString(List<BitRange> bitRanges, string inputValue, string outputValue)
+    {
+        StringBuilder builder = new();
+        builder.Clear();
+        // We start from the lowest bits to the highest bits
+        int accumulation = 0;
+        for (var i = bitRanges.Count - 1; i >= 0; i--)
+        {
+            var bitRange = bitRanges[i];
+            var mask = ((1U << bitRange.Width) - 1) << accumulation;
+
+            if (i < bitRanges.Count - 1)
+            {
+                builder.Append(" | ");
+            }
+
+            var shift = bitRange.LowBit - accumulation;
+
+            if (shift > 0)
+            {
+                builder.Append($"(({inputValue} >> {shift}) & 0x{mask:X})");
+            }
+            else
+            {
+                builder.Append($"({inputValue} & 0x{mask:X})");
+            }
+            accumulation += bitRange.Width;
+        }
+
+        return $"var {outputValue} = {builder};";
+    }
+    
     private (string VKind, int ElementCount) GetVKindAndElementCount(Arm64RegisterVectorArrangementEncodingKind kind)
     {
         switch (kind)
