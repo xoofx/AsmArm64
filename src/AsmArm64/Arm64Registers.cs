@@ -99,7 +99,7 @@ public readonly record struct Arm64RegisterX : IArm64Register
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64RegisterX(int index) => _value = ((uint)Arm64RegisterKind.X << 8) | (uint)index;
+    internal Arm64RegisterX(int index) => _value = ((uint)Arm64RegisterKind.X << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -292,7 +292,7 @@ public readonly record struct Arm64RegisterW : IArm64Register
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64RegisterW(int index) => _value = ((uint)Arm64RegisterKind.W << 8) | (uint)index;
+    internal Arm64RegisterW(int index) => _value = ((uint)Arm64RegisterKind.W << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -485,7 +485,7 @@ public readonly record struct Arm64RegisterC : IArm64Register
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64RegisterC(int index) => _value = ((uint)Arm64RegisterKind.C << 8) | (uint)index;
+    internal Arm64RegisterC(int index) => _value = ((uint)Arm64RegisterKind.C << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -598,7 +598,7 @@ public readonly record struct Arm64RegisterSP : IArm64Register
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64RegisterSP(int index) => _value = ((uint)Arm64RegisterKind.SP << 8) | (uint)index;
+    internal Arm64RegisterSP(int index) => _value = ((uint)Arm64RegisterKind.SP << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -636,7 +636,7 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64RegisterV(int index) => _value = ((uint)Arm64RegisterKind.V << 8) | (uint)index;
+    internal Arm64RegisterV(int index) => _value = ((uint)Arm64RegisterKind.V << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -917,6 +917,11 @@ public readonly record struct Arm64RegisterV_B : IArm64RegisterVTyped
     /// </summary>
     public Indexed this[int elementIndex] => new(Index, elementIndex);
 
+    /// <summary>
+    /// Gets the base register of this vector typed register.
+    /// </summary>
+    public Arm64RegisterV BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -1027,6 +1032,11 @@ public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
     /// <inheritdoc />
     public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_B BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -1042,7 +1052,7 @@ public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
-    
+
     /// <summary>
     /// Gets the indexed element of this vector packed register.
     /// </summary>
@@ -1123,7 +1133,6 @@ public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
     }
 }
 
-
 /// <summary>
 /// Represents an ARM64 an arranged 4 x B, 8-bit vector register
 /// </summary>
@@ -1146,6 +1155,11 @@ public readonly record struct Arm64RegisterV_4B : IArm64RegisterVPacked
     /// <inheritdoc />
     public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_B BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -1161,7 +1175,7 @@ public readonly record struct Arm64RegisterV_4B : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
-    
+
     /// <summary>
     /// Gets the indexed element of this vector packed register.
     /// </summary>
@@ -1242,7 +1256,6 @@ public readonly record struct Arm64RegisterV_4B : IArm64RegisterVPacked
     }
 }
 
-
 /// <summary>
 /// Represents an ARM64 an arranged 8 x B, 8-bit vector register
 /// </summary>
@@ -1265,6 +1278,11 @@ public readonly record struct Arm64RegisterV_8B : IArm64RegisterVPacked
     /// <inheritdoc />
     public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_B BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -1280,8 +1298,7 @@ public readonly record struct Arm64RegisterV_8B : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
-    }
-
+}
 
 /// <summary>
 /// Represents an ARM64 an arranged 16 x B, 8-bit vector register
@@ -1305,6 +1322,11 @@ public readonly record struct Arm64RegisterV_16B : IArm64RegisterVPacked
     /// <inheritdoc />
     public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_B BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -1320,8 +1342,7 @@ public readonly record struct Arm64RegisterV_16B : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
-    }
-
+}
 /// <summary>
 /// Represents an ARM64 a vector typed with Half-precision 16-bit floating-point register (V.H arrangement).
 /// </summary>
@@ -1345,6 +1366,11 @@ public readonly record struct Arm64RegisterV_H : IArm64RegisterVTyped
     /// Gets the indexed element of this vector typed register.
     /// </summary>
     public Indexed this[int elementIndex] => new(Index, elementIndex);
+
+    /// <summary>
+    /// Gets the base register of this vector typed register.
+    /// </summary>
+    public Arm64RegisterV BaseRegister => new(Index);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -1652,6 +1678,11 @@ public readonly record struct Arm64RegisterV_2H : IArm64RegisterVPacked
     /// <inheritdoc />
     public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_H BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -1667,7 +1698,7 @@ public readonly record struct Arm64RegisterV_2H : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
-    
+
     /// <summary>
     /// Gets the indexed element of this vector packed register.
     /// </summary>
@@ -1748,7 +1779,6 @@ public readonly record struct Arm64RegisterV_2H : IArm64RegisterVPacked
     }
 }
 
-
 /// <summary>
 /// Represents an ARM64 an arranged 4 x H, Half-precision 16-bit floating-point register
 /// </summary>
@@ -1771,6 +1801,11 @@ public readonly record struct Arm64RegisterV_4H : IArm64RegisterVPacked
     /// <inheritdoc />
     public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_H BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -1786,8 +1821,7 @@ public readonly record struct Arm64RegisterV_4H : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
-    }
-
+}
 
 /// <summary>
 /// Represents an ARM64 an arranged 8 x H, Half-precision 16-bit floating-point register
@@ -1811,6 +1845,11 @@ public readonly record struct Arm64RegisterV_8H : IArm64RegisterVPacked
     /// <inheritdoc />
     public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_H BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -1826,8 +1865,7 @@ public readonly record struct Arm64RegisterV_8H : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
-    }
-
+}
 /// <summary>
 /// Represents an ARM64 a vector typed with Single-precision 32-bit floating-point register (V.S arrangement).
 /// </summary>
@@ -1851,6 +1889,11 @@ public readonly record struct Arm64RegisterV_S : IArm64RegisterVTyped
     /// Gets the indexed element of this vector typed register.
     /// </summary>
     public Indexed this[int elementIndex] => new(Index, elementIndex);
+
+    /// <summary>
+    /// Gets the base register of this vector typed register.
+    /// </summary>
+    public Arm64RegisterV BaseRegister => new(Index);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -2158,6 +2201,11 @@ public readonly record struct Arm64RegisterV_2S : IArm64RegisterVPacked
     /// <inheritdoc />
     public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_S BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -2173,8 +2221,7 @@ public readonly record struct Arm64RegisterV_2S : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
-    }
-
+}
 
 /// <summary>
 /// Represents an ARM64 an arranged 4 x S, Single-precision 32-bit floating-point register
@@ -2198,6 +2245,11 @@ public readonly record struct Arm64RegisterV_4S : IArm64RegisterVPacked
     /// <inheritdoc />
     public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_S BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -2213,8 +2265,7 @@ public readonly record struct Arm64RegisterV_4S : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
-    }
-
+}
 /// <summary>
 /// Represents an ARM64 a vector typed with Double-precision 64-bit floating-point register (V.D arrangement).
 /// </summary>
@@ -2238,6 +2289,11 @@ public readonly record struct Arm64RegisterV_D : IArm64RegisterVTyped
     /// Gets the indexed element of this vector typed register.
     /// </summary>
     public Indexed this[int elementIndex] => new(Index, elementIndex);
+
+    /// <summary>
+    /// Gets the base register of this vector typed register.
+    /// </summary>
+    public Arm64RegisterV BaseRegister => new(Index);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -2545,6 +2601,11 @@ public readonly record struct Arm64RegisterV_2D : IArm64RegisterVPacked
     /// <inheritdoc />
     public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_D BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -2560,8 +2621,7 @@ public readonly record struct Arm64RegisterV_2D : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
-    }
-
+}
 
 /// <summary>
 /// Represents an ARM64 a Double-precision 64-bit floating-point register (Q arrangement).

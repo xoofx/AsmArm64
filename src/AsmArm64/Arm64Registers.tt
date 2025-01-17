@@ -102,7 +102,7 @@ public readonly record struct Arm64Register<#= kind #> : <#= kind == "V" ? "IArm
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64Register<#= kind #>(int index) => _value = ((uint)Arm64RegisterKind.<#= kind #> << 8) | (uint)index;
+    internal Arm64Register<#= kind #>(int index) => _value = ((uint)Arm64RegisterKind.<#= kind #> << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -220,6 +220,11 @@ public readonly record struct Arm64RegisterV_<#= kind #> : IArm64RegisterVTyped
     /// Gets the indexed element of this vector typed register.
     /// </summary>
     public Indexed this[int elementIndex] => new(Index, elementIndex);
+
+    /// <summary>
+    /// Gets the base register of this vector typed register.
+    /// </summary>
+    public Arm64RegisterV BaseRegister => new(Index);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -378,6 +383,11 @@ public readonly record struct Arm64RegisterV_<#= size #><#= kind #> : IArm64Regi
     /// <inheritdoc />
     public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_<#= kind #> BaseRegister => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -393,7 +403,7 @@ public readonly record struct Arm64RegisterV_<#= size #><#= kind #> : IArm64Regi
         charsWritten = result ? text.Length : 0;
         return result;
     }
-    <# var combo = $"{size}{kind}"; if (combo == "2B" || combo == "4B" || combo == "2H") {#>
+<# var combo = $"{size}{kind}"; if (combo == "2B" || combo == "4B" || combo == "2H") {#>
 
     /// <summary>
     /// Gets the indexed element of this vector packed register.
@@ -475,7 +485,6 @@ public readonly record struct Arm64RegisterV_<#= size #><#= kind #> : IArm64Regi
     }
 <# } // if combo == "2B" || combo == "4B" || combo == "2H" #>
 }
-
 <# } } // foreach size / kind #>
 
 partial class Arm64Factory
