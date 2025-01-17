@@ -495,7 +495,7 @@ record EncodingBitValue
     public void AppendUniqueId(StringBuilder builder)
     {
         // We assume that the other fields are decoded from this
-        builder.Append($"({Kind} {Text} {BitSelectorAsText})");
+        builder.Append($"({Kind} {BitSelectorAsText} -> `{Text}`)");
     }
 
     public void Initialize(Dictionary<string, BitRangeInfo> bitRangeMap)
@@ -573,7 +573,6 @@ record EncodingBitValue
                     addend = int.Parse(span.Slice(match.Index, match.Length));
                     if (negative)
                     {
-                        addend = -addend;
                         negative = false;
                     }
                     span = span.Slice(match.Index + match.Length);

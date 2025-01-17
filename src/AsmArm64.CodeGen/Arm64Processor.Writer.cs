@@ -31,6 +31,7 @@ partial class Arm64Processor
         GenerateVectorArrangements();
         GenerateDynamicRegister();
         GenerateIndexers();
+        GenerateImmediates();
     }
 
     private void GenerateMnemonicEnum()
@@ -434,7 +435,26 @@ partial class Arm64Processor
             }
         );
     }
-    
+
+    private void GenerateImmediates()
+    {
+        var immediateMap = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.Immediate);
+
+        GenerateEncodingSymbolExtractMap<EncodingIndexerExtract>(immediateMap,
+            "Arm64ImmediateHelper",
+            [("int", "imm")],
+            (w, extract) =>
+            {
+                throw new InvalidOperationException("Immediate should have bit ranges");
+            },
+            (w, selector, bitValue) =>
+            {
+                w.WriteLine($"imm = (int){bitValue.Text};");
+            }
+        );
+    }
+
+
     private void GenerateEncodingSymbolExtractMap<TExtract>(EncodingSymbolExtractMap map, string name, List<(string ParameterType, string ParameterName)> parameters,
             Action<CodeWriter, TExtract> writeBitToSelector,
             Action<CodeWriter, EncodingSymbolSelector, EncodingBitValue> writeSelector
@@ -575,7 +595,17 @@ partial class Arm64Processor
                                             var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
                                             Debug.Assert(parameters.Count == 1);
                                             w.WriteLine(bitValueExtractString);
-                                            w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
+                                            
+                                            if (bitValue.Addend != 0)
+                                            {
+                                                w.WriteLine(bitValue.HasNegativeExtract
+                                                    ? $"{parameters[0].ParameterName} = {bitValue.Addend} - ({parameters[0].ParameterType})extractedValue;"
+                                                    : $"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue - {bitValue.Addend};");
+                                            }
+                                            else
+                                            {
+                                                w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
+                                            }
                                         }
                                         else
                                         {
@@ -610,7 +640,16 @@ partial class Arm64Processor
                                             var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
                                             Debug.Assert(parameters.Count == 1);
                                             w.WriteLine(bitValueExtractString);
-                                            w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
+                                            if (bitValue.Addend != 0)
+                                            {
+                                                w.WriteLine(bitValue.HasNegativeExtract
+                                                    ? $"{parameters[0].ParameterName} = {bitValue.Addend} - ({parameters[0].ParameterType})extractedValue;"
+                                                    : $"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue - {bitValue.Addend};");
+                                            }
+                                            else
+                                            {
+                                                w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
+                                            }
                                         }
                                         else
                                         {

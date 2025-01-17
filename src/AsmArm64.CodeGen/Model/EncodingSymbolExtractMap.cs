@@ -14,6 +14,7 @@ enum EncodingSymbolExtractMapKind
     VectorArrangement,
     DynamicRegister,
     Indexer,
+    Immediate,
 }
 
 class EncodingSymbolExtractMap

@@ -65,6 +65,7 @@ sealed class RegisterGroupOperandDescriptor() : OperandDescriptor(Arm64OperandKi
 
 sealed class ImmediateOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Immediate)
 {
+    private int _extractIndex;
     public Arm64ImmediateEncodingKind ImmediateKind { get; set; }
 
     public sbyte FixedValue { get; set; }
@@ -75,6 +76,15 @@ sealed class ImmediateOperandDescriptor() : OperandDescriptor(Arm64OperandKind.I
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<BitRange> Encoding { get; } = new();
+
+    public int ExtractIndex
+    {
+        get => Extract?.Index ?? _extractIndex;
+        set => _extractIndex = value;
+    }
+
+    [JsonIgnore]
+    public EncodingSymbolExtract? Extract { get; set; }
 
     public override string ToString() => $"Imm {Name}, Signed: {IsSigned}, Size {BitSize}, Encoding: {string.Join(", ", Encoding)}";
 

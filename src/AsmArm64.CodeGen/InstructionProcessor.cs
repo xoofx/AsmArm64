@@ -31,6 +31,8 @@ internal sealed class InstructionProcessor
     private readonly EncodingSymbolExtractMap _vectorArrangements = new();
     private readonly EncodingSymbolExtractMap _dynamicRegisterSelectors = new();
     private readonly EncodingSymbolExtractMap _indexers = new();
+    private readonly EncodingSymbolExtractMap _immediates = new();
+
     private bool _hasErrors;
 
     public InstructionProcessor(InstructionSet instructionSet)
@@ -42,6 +44,7 @@ internal sealed class InstructionProcessor
         _vectorArrangements = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.VectorArrangement);
         _dynamicRegisterSelectors = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.DynamicRegister);
         _indexers = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.Indexer);
+        _immediates = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.Immediate);
     }
 
     public List<int> InstructionEncodingOffsets { get; } = new();
@@ -691,71 +694,63 @@ internal sealed class InstructionProcessor
     {
         var name = selectedValue.TextElements[0].Text;
         var symbol = selectedValue.TextElements[0].Symbol;
-        if (symbol is null)
-        {
-            Console.WriteLine($"Instruction {instruction.Id} {selectedValue} <<<<");
+        Debug.Assert(symbol is not null);
 
-            _hasErrors = true;
-            return null;
+        var selector = symbol.Selector;
+        if (name == "label")
+        {
+            Debug.Assert(selector is null);
+
+            if (!InstructionIdToLabelOffsetKind.TryGetValue(instruction.Id, out var labelOffsetKind))
+            {
+                labelOffsetKind = Arm64LabelEncodingKind.StandardOffset;
+                Console.WriteLine($"Unsupported label kind for instruction {instruction.Id}");
+                _hasErrors = true;
+            }
+
+            var immediate = ProcessImmediate(instruction, selectedValue);
+
+            var label = new LabelOperandDescriptor
+            {
+                LabelKind = labelOffsetKind,
+                Name = name,
+                BitSize = immediate.BitSize
+            };
+
+            label.Encoding.AddRange(immediate.Encoding);
+
+            return label;
+        }
+        else if (selector is not null)
+        {
+            var descriptor = new ImmediateByteValuesOperandDescriptor()
+            {
+                Name = name,
+            };
+            descriptor.BitSize = symbol.BitSize;
+            descriptor.Encoding.AddRange(symbol.BitRanges);
+
+
+            Debug.Assert(selector.BitValues.Count <= 4);
+
+            for (var i = 0; i < selector.BitValues.Count; i++)
+            {
+                var bitValue = selector.BitValues[i];
+                var encodingValue = bitValue.BitSelectorValue;
+                Debug.Assert(i == encodingValue);
+                Debug.Assert(bitValue.Text.StartsWith("#"));
+                var userValue = bitValue.IntegerValue;
+
+                descriptor.Values.Add(userValue);
+            }
+
+            Debug.Assert(descriptor.Encoding.Count == 1 || descriptor.Encoding.Count == 2);
+            Debug.Assert(descriptor.Encoding.All(x => x.IsSmallEncoding));
+            return descriptor;
         }
         else
         {
-            var selector = symbol.Selector;
-            if (name == "label")
-            {
-                Debug.Assert(selector is null);
-
-                if (!InstructionIdToLabelOffsetKind.TryGetValue(instruction.Id, out var labelOffsetKind))
-                {
-                    labelOffsetKind = Arm64LabelEncodingKind.StandardOffset;
-                    Console.WriteLine($"Unsupported label kind for instruction {instruction.Id}");
-                    _hasErrors = true;
-                }
-
-                var immediate = ProcessImmediate(instruction, selectedValue);
-
-                var label = new LabelOperandDescriptor
-                {
-                    LabelKind = labelOffsetKind,
-                    Name = name,
-                    BitSize = immediate.BitSize
-                };
-
-                label.Encoding.AddRange(immediate.Encoding);
-
-                return label;
-            }
-            else if (selector is not null)
-            {
-                var descriptor = new ImmediateByteValuesOperandDescriptor()
-                {
-                    Name = name,
-                };
-                descriptor.BitSize = symbol.BitSize;
-                descriptor.Encoding.AddRange(symbol.BitRanges);
-
-
-                Debug.Assert(selector.BitValues.Count <= 4);
-
-                for (var i = 0; i < selector.BitValues.Count; i++)
-                {
-                    var bitValue = selector.BitValues[i];
-                    var encodingValue = bitValue.BitSelectorValue;
-                    Debug.Assert(i == encodingValue);
-                    Debug.Assert(bitValue.Text.StartsWith("#"));
-                    var userValue = bitValue.IntegerValue;
-
-                    descriptor.Values.Add(userValue);
-                }
-
-                Debug.Assert(descriptor.Encoding.Count == 1 || descriptor.Encoding.Count == 2);
-                Debug.Assert(descriptor.Encoding.All(x => x.IsSmallEncoding));
-                return descriptor;
-            }
-            else
-            {
-                Debug.Assert(false, $"Operand {selectedValue} is not supported in instruction {instruction.Id}. Symbol: {symbol}");
-            }
+            Debug.Assert(false, $"Operand {selectedValue} is not supported in instruction {instruction.Id}. Symbol: {symbol}");
         }
 
         throw new InvalidOperationException($"Value {selectedValue} not supported");
@@ -1217,83 +1212,14 @@ internal sealed class InstructionProcessor
 
             if (symbol.Selector is not null)
             {
-                // TODO: use the new selector
 
-                //var kind = $"[{string.Join(",", symbol.BitValues.Select(bitValue => $"{bitValue.BitSelectorAsText} = {bitValue.Text}"))}]";
-                //if (immediate.BitSize == 7 && immediate.Encoding[0] == new BitRange(16, 7) && symbol.BitValues.Count == 4 && symbol.BitSelectorNames.Count == 1 && symbol.BitSelectorNames[0] == "immh")
-                //{
-                //    switch (kind)
-                //    {
-                //        case "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]":
-                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType0;
-                //            break;
-                //        case "[0001 = 16 - UInt(immh:immb),001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = RESERVED]":
-                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType1;
-                //            break;
-                //        case "[0001 = RESERVED,001x = 32 - UInt(immh:immb),01xx = 64 - UInt(immh:immb),1xxx = 128 - UInt(immh:immb)]":
-                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType2;
-                //            break;
-                //        case "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = RESERVED]":
-                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType3;
-                //            break;
-                //        case "[0001 = UInt(immh:immb) - 8,001x = UInt(immh:immb) - 16,01xx = UInt(immh:immb) - 32,1xxx = UInt(immh:immb) - 64]":
-                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdBitShiftType4;
-                //            break;
-                //        default:
-                //            throw new NotSupportedException($"Unsupported immediate kind `{kind}` in instruction `{instruction.Id}`");
-                //    }
-                //}
-                //else if (symbol.BitSelectorNames.Count == 1 && symbol.BitSelectorNames[0] == "rot")
-                //{
-                //    switch (kind)
-                //    {
-                //        case "[0 = 90,1 = 270]":
-                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.Rotate90Or270;
-                //            break;
-                //        case "[00 = 0,01 = 90,10 = 180,11 = 270]":
-                //            immediate.ImmediateKind = Arm64ImmediateEncodingKind.Rotate0Or90Or180Or270;
-                //            break;
-                //        default:
-                //            throw new NotSupportedException($"Unsupported immediate kind `{kind}` in instruction `{instruction.Id}`");
-                //    }
-                //}
-                //else if (symbol.BitSelectorNames.Count == 1 && symbol.BitSelectorNames[0] == "cmode<0>" && immediate.Encoding.Count == 1)
-                //{
-                //    Debug.Assert(immediate.Encoding[0] == new BitRange(12,4));
-                //    immediate.ImmediateKind = Arm64ImmediateEncodingKind.EnumAmount8Or16;
-                //    immediate.BitSize = 1;
-                //    immediate.Encoding[0] = new BitRange(12, 1);
-                //}
-                //else if (instruction.Id == "SHLL_asimdmisc_s")
-                //{
-                //    // Special immediate #shift Size: 2 in instruction id SHLL_asimdmisc_s - [(23:2)] - Selector: size
-                //    // 00 = 8
-                //    // 01 = 16
-                //    // 10 = 32
-                //    // 11 = RESERVED
-                //    Debug.Assert(symbol.BitValues.Count == 4);
-                //    immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdLeftShift8Or16Or32;
-                //}
-                //else if (instruction.Id == "EXT_asimdext_only")
-                //{
-                //    // special immediate #index Size: 5 in instruction id EXT_asimdext_only - [(30:1),(14:4)] - Selector: Q,imm4<3>
-                //    // 0:0 = UInt(imm4<2:0>)
-                //    // 0:1 = RESERVED
-                //    // 1:x = UInt(imm4)
-                //    immediate.Encoding.Clear();
-                //    immediate.BitSize = 0;
-                //    immediate.ImmediateKind = Arm64ImmediateEncodingKind.SimdExtIndex;
-                //}
-                //else
-                //{
-                //    Console.WriteLine($"Unsupported special immediate {item} Size: {immediate.BitSize} in instruction id {instruction.Id} - [{string.Join(",", immediate.Encoding)}] - Selector: {string.Join(",", symbol.BitSelectorNames)}");
-                //    foreach (var bitValue in symbol.BitValues)
-                //    {
-                //        Console.WriteLine($"  {string.Join(":", bitValue.BitSelectorAsText)} = {bitValue.Text}");
-                //    }
+                if (immediate.BitSize == 7 && immediate.Encoding[0] == new BitRange(16, 7) && symbol.Selector.BitValues.Count == 4 && symbol.Selector.BitNames.Count == 1 && symbol.Selector.BitNames[0] == "immh")
+                {
 
-                //    _hasErrors = true;
-                //}
+                }
+
+                immediate.ImmediateKind = Arm64ImmediateEncodingKind.BitMapExtract;
+                immediate.Extract = _immediates.GetOrCreateExtract<EncodingSymbolExtract>(symbol);
             }
             else
             {
