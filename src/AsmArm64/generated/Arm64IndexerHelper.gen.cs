@@ -161,13 +161,42 @@ static class Arm64IndexerHelper
             case 9:
             {
                 var bitValue = ((rawValue >> 11) & 0x1) | ((rawValue >> 20) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 1, out index);
+                var bitsToTest = ((bitValue >> 1) & 0x3);
+                if (bitsToTest == 2)
+                {
+                    var extractedValue = (bitValue & 0x1);
+                    index = (int)extractedValue;
+                    return true;
+                }
+                if ((bitsToTest & 0x2) == 0)
+                {
+                    var extractedValue = ((bitValue >> 1) & 0x1) | (bitValue & 0x2);
+                    index = (int)extractedValue;
+                    return true;
+                }
+                break;
             }
             // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vm.Ts[index]
             case 10:
             {
                 var bitValue = ((rawValue >> 21) & 0x1) | ((rawValue >> 10) & 0x2) | ((rawValue >> 20) & 0xC);
-                return TryDecodeFromBitValues(bitValue, 2, out index);
+                var bitsToTest = ((bitValue >> 2) & 0x3);
+                switch (bitsToTest)
+                {
+                    case 1:
+                    {
+                        var extractedValue = ((bitValue >> 1) & 0x3);
+                        index = (int)extractedValue;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        var extractedValue = ((bitValue >> 1) & 0x1);
+                        index = (int)extractedValue;
+                        return true;
+                    }
+                }
+                break;
             }
             // LD1_asisdlso_b1_1b            : LD1         {Vt.B}[index], [Xn|SP] <- Operand: {Vt.B}[index]
             // LD1_asisdlso_h1_1h            : LD1         {Vt.H}[index], [Xn|SP] <- Operand: {Vt.H}[index]
@@ -237,137 +266,6 @@ static class Arm64IndexerHelper
             case 13:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
-                return TryDecodeFromBitValues(bitValue, 4, out index);
-            }
-            // SMOV_asimdins_x_x             : SMOV        Xd, Vn.Ts[index] <- Operand: Vn.Ts[index]
-            // UMOV_asimdins_w_w             : UMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
-            case 14:
-            {
-                var bitValue = ((rawValue >> 16) & 0x1F);
-                return TryDecodeFromBitValues(bitValue, 5, out index);
-            }
-            // SMOV_asimdins_w_w             : SMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
-            case 15:
-            {
-                var bitValue = ((rawValue >> 16) & 0x1F);
-                return TryDecodeFromBitValues(bitValue, 6, out index);
-            }
-            // MLA_asimdelem_r               : MLA         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // MLS_asimdelem_r               : MLS         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // MUL_asimdelem_r               : MUL         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SMLAL_asimdelem_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SMLSL_asimdelem_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SMULL_asimdelem_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQDMLAL_asimdelem_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQDMLAL_asisdelem_l           : SQDMLAL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQDMLSL_asimdelem_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQDMLSL_asisdelem_l           : SQDMLSL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQDMULH_asimdelem_r           : SQDMULH     Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQDMULH_asisdelem_r           : SQDMULH     Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQDMULL_asimdelem_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQDMULL_asisdelem_l           : SQDMULL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQRDMLAH_asimdelem_r          : SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQRDMLAH_asisdelem_r          : SQRDMLAH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQRDMLSH_asimdelem_r          : SQRDMLSH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQRDMLSH_asisdelem_r          : SQRDMLSH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQRDMULH_asimdelem_r          : SQRDMULH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // SQRDMULH_asisdelem_r          : SQRDMULH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // UMLAL_asimdelem_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // UMLSL_asimdelem_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            case 16:
-            {
-                var bitValue = ((rawValue >> 20) & 0x3) | ((rawValue >> 9) & 0x4) | ((rawValue >> 19) & 0x18);
-                return TryDecodeFromBitValues(bitValue, 3, out index);
-            }
-            // FMLALB_asimdelem_h            : FMLALB      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            // FMLALLBB_asimdelem_j          : FMLALLBB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            // FMLALLBT_asimdelem_j          : FMLALLBT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            // FMLALLTB_asimdelem_j          : FMLALLTB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            // FMLALLTT_asimdelem_j          : FMLALLTT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            // FMLALT_asimdelem_h            : FMLALT      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            case 17:
-            {
-                var bitValue = ((rawValue >> 16) & 0x3F) | ((rawValue >> 5) & 0x40);
-                index = (int)bitValue;
-                return true;
-            }
-            // INS_asimdins_iv_v             : INS         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vn.Ts[index2]
-            case 18:
-            {
-                var bitValue = ((rawValue >> 11) & 0xF) | ((rawValue >> 12) & 0x1F0);
-                return TryDecodeFromBitValues(bitValue, 7, out index);
-            }
-        }
-        
-        index = default;
-        return false;
-    }
-    
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static bool TryDecodeFromBitValues(uint bitValue, byte selectorIndex, out int index)
-    {
-        switch (selectorIndex)
-        {
-            case 1:
-            {
-                var bitsToTest = ((bitValue >> 1) & 0x3);
-                if (bitsToTest == 2)
-                {
-                    var extractedValue = (bitValue & 0x1);
-                    index = (int)extractedValue;
-                    return true;
-                }
-                if ((bitsToTest & 0x2) == 0)
-                {
-                    var extractedValue = ((bitValue >> 1) & 0x1) | (bitValue & 0x2);
-                    index = (int)extractedValue;
-                    return true;
-                }
-                break;
-            }
-            case 2:
-            {
-                var bitsToTest = ((bitValue >> 2) & 0x3);
-                switch (bitsToTest)
-                {
-                    case 1:
-                    {
-                        var extractedValue = ((bitValue >> 1) & 0x3);
-                        index = (int)extractedValue;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        var extractedValue = ((bitValue >> 1) & 0x1);
-                        index = (int)extractedValue;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 3:
-            {
-                var bitsToTest = ((bitValue >> 3) & 0x3);
-                switch (bitsToTest)
-                {
-                    case 1:
-                    {
-                        var extractedValue = ((bitValue >> 2) & 0x7);
-                        index = (int)extractedValue;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        var extractedValue = ((bitValue >> 2) & 0x3);
-                        index = (int)extractedValue;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 4:
-            {
                 var bitsToTest = (bitValue & 0x1F);
                 if ((bitsToTest & 0xf) == 8)
                 {
@@ -395,8 +293,11 @@ static class Arm64IndexerHelper
                 }
                 break;
             }
-            case 5:
+            // SMOV_asimdins_x_x             : SMOV        Xd, Vn.Ts[index] <- Operand: Vn.Ts[index]
+            // UMOV_asimdins_w_w             : UMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
+            case 14:
             {
+                var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
                 if ((bitsToTest & 0x7) == 4)
                 {
@@ -418,8 +319,10 @@ static class Arm64IndexerHelper
                 }
                 break;
             }
-            case 6:
+            // SMOV_asimdins_w_w             : SMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
+            case 15:
             {
+                var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
                 if ((bitsToTest & 0x3) == 2)
                 {
@@ -435,8 +338,66 @@ static class Arm64IndexerHelper
                 }
                 break;
             }
-            case 7:
+            // MLA_asimdelem_r               : MLA         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // MLS_asimdelem_r               : MLS         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // MUL_asimdelem_r               : MUL         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMLAL_asimdelem_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMLSL_asimdelem_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMULL_asimdelem_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLAL_asimdelem_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLAL_asisdelem_l           : SQDMLAL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLSL_asimdelem_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLSL_asisdelem_l           : SQDMLSL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMULH_asimdelem_r           : SQDMULH     Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMULH_asisdelem_r           : SQDMULH     Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMULL_asimdelem_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMULL_asisdelem_l           : SQDMULL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMLAH_asimdelem_r          : SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMLAH_asisdelem_r          : SQRDMLAH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMLSH_asimdelem_r          : SQRDMLSH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMLSH_asisdelem_r          : SQRDMLSH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMULH_asimdelem_r          : SQRDMULH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMULH_asisdelem_r          : SQRDMULH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMLAL_asimdelem_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMLSL_asimdelem_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            case 16:
             {
+                var bitValue = ((rawValue >> 20) & 0x3) | ((rawValue >> 9) & 0x4) | ((rawValue >> 19) & 0x18);
+                var bitsToTest = ((bitValue >> 3) & 0x3);
+                switch (bitsToTest)
+                {
+                    case 1:
+                    {
+                        var extractedValue = ((bitValue >> 2) & 0x7);
+                        index = (int)extractedValue;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        var extractedValue = ((bitValue >> 2) & 0x3);
+                        index = (int)extractedValue;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // FMLALB_asimdelem_h            : FMLALB      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLBB_asimdelem_j          : FMLALLBB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLBT_asimdelem_j          : FMLALLBT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLTB_asimdelem_j          : FMLALLTB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLTT_asimdelem_j          : FMLALLTT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALT_asimdelem_h            : FMLALT      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            case 17:
+            {
+                var bitValue = ((rawValue >> 16) & 0x3F) | ((rawValue >> 5) & 0x40);
+                index = (int)bitValue;
+                return true;
+            }
+            // INS_asimdins_iv_v             : INS         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vn.Ts[index2]
+            case 18:
+            {
+                var bitValue = ((rawValue >> 11) & 0xF) | ((rawValue >> 12) & 0x1F0);
                 var bitsToTest = ((bitValue >> 4) & 0x1F);
                 if ((bitsToTest & 0xf) == 8)
                 {

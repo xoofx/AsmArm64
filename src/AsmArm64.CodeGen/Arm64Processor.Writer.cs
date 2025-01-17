@@ -35,7 +35,6 @@ partial class Arm64Processor
         GenerateProcessStateField();
         GenerateRegisterIndex();
     }
-
     
     private void GenerateMnemonicEnum()
     {
@@ -557,7 +556,8 @@ partial class Arm64Processor
                             }
                             else
                             {
-                                w.WriteLine($"return TryDecodeFromBitValues(bitValue, {extract.SelectorIndex}, {string.Join(",", parameters.Select(x => $"out {x.ParameterName}"))});");
+                                WriteSelectorCode(w, extract.Selector!, parameters, writeSelector);
+                                //w.WriteLine($"return TryDecodeFromBitValues(bitValue, {extract.SelectorIndex}, {string.Join(",", parameters.Select(x => $"out {x.ParameterName}"))});");
                             }
                         }
                         else
@@ -602,122 +602,127 @@ partial class Arm64Processor
             //     return false;
             // }
 
-            if (map.SelectorList.Count > 0)
+            //if (map.SelectorList.Count > 0)
+            //{
+            //    w.WriteLine();
+            //    // We inline aggressively because the selectorIndex is a constant passed as it seems that the vast majority of selectorIndex are unique to an extract.
+            //    w.WriteLine("[MethodImpl(MethodImplOptions.AggressiveInlining)]");
+            //    w.WriteLine($"public static bool TryDecodeFromBitValues(uint bitValue, byte selectorIndex, {parameterSignature})");
+            //    w.OpenBraceBlock();
+            //    {
+            //        w.WriteLine("switch (selectorIndex)");
+            //        w.OpenBraceBlock();
+            //        {
+            //            foreach (var selector in map.SelectorList)
+            //            {
+            //                w.WriteLine($"case {selector.Index}:");
+            //                w.OpenBraceBlock();
+            //                WriteSelectorCode(w, selector, parameters, writeSelector);
+
+            //                w.CloseBraceBlock();
+            //            }
+            //        }
+            //        w.CloseBraceBlock();
+            //        w.WriteLine();
+            //        foreach (var parameter in parameters)
+            //        {
+            //            w.WriteLine($"{parameter.ParameterName} = default;");
+            //        }
+
+            //        w.WriteLine("return false;");
+            //    }
+            //    w.CloseBraceBlock();
+            //}
+        }
+        w.CloseBraceBlock();
+    }
+
+    private void WriteSelectorCode(CodeWriter w, EncodingSymbolSelector selector, List<(string ParameterType, string ParameterName)> parameters, Action<CodeWriter, EncodingSymbolSelector, EncodingBitValue> writeSelector)
+    {
+        w.WriteLine(ExtractBitRangeString(selector.BitRanges, "bitValue", "bitsToTest"));
+
+        if (selector.Kind == EncodingSymbolSelectorKind.Regular)
+        {
+            w.WriteLine($"switch (bitsToTest)");
+            w.OpenBraceBlock();
             {
-                w.WriteLine();
-                // We inline aggressively because the selectorIndex is a constant passed as it seems that the vast majority of selectorIndex are unique to an extract.
-                w.WriteLine("[MethodImpl(MethodImplOptions.AggressiveInlining)]");
-                w.WriteLine($"public static bool TryDecodeFromBitValues(uint bitValue, byte selectorIndex, {parameterSignature})");
-                w.OpenBraceBlock();
+                foreach (var bitValue in selector.BitValues)
                 {
-                    w.WriteLine("switch (selectorIndex)");
+                    w.WriteLine($"case {bitValue.BitSelectorValue}:");
                     w.OpenBraceBlock();
+                    if (bitValue.Kind == EncodingBitValueKind.BitExtract)
                     {
-                        foreach (var selector in map.SelectorList)
-                        {
-                            w.WriteLine($"case {selector.Index}:");
-                            w.OpenBraceBlock();
-                            w.WriteLine(ExtractBitRangeString(selector.BitRanges, "bitValue", "bitsToTest"));
-
-                            if (selector.Kind == EncodingSymbolSelectorKind.Regular)
-                            {
-                                w.WriteLine($"switch (bitsToTest)");
-                                w.OpenBraceBlock();
-                                {
-                                    foreach (var bitValue in selector.BitValues)
-                                    {
-                                        w.WriteLine($"case {bitValue.BitSelectorValue}:");
-                                        w.OpenBraceBlock();
-                                        if (bitValue.Kind == EncodingBitValueKind.BitExtract)
-                                        {
-                                            var bitRanges = bitValue.BitItems.Select(x => x.Range).ToList();
-                                            var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
-                                            Debug.Assert(parameters.Count == 1);
-                                            w.WriteLine(bitValueExtractString);
+                        var bitRanges = bitValue.BitItems.Select(x => x.Range).ToList();
+                        var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
+                        Debug.Assert(parameters.Count == 1);
+                        w.WriteLine(bitValueExtractString);
                                             
-                                            if (bitValue.Addend != 0)
-                                            {
-                                                w.WriteLine(bitValue.HasNegativeExtract
-                                                    ? $"{parameters[0].ParameterName} = {bitValue.Addend} - ({parameters[0].ParameterType})extractedValue;"
-                                                    : $"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue - {bitValue.Addend};");
-                                            }
-                                            else
-                                            {
-                                                w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
-                                            }
-                                        }
-                                        else
-                                        {
-                                            writeSelector(w, selector, bitValue);
-                                        }
-                                        w.WriteLine("return true;");
-                                        w.CloseBraceBlock();
-                                    }
-                                }
-                                w.CloseBraceBlock();
-                                w.WriteLine("break;");
-                            }
-                            else
-                            {
-                                Debug.Assert(selector.Kind == EncodingSymbolSelectorKind.Masked);
-
-                                // Order from the highest number of bits sets to the lowest number
-                                // If the mask is 0, it means that all bits are sets
-                                var bitValues = selector.BitValues.OrderByDescending(x => BitOperations.PopCount(x.BitSelectorMask == 0 ? uint.MaxValue : x.BitSelectorMask)).ToList();
-
-                                foreach (var bitValue in bitValues)
-                                {
-                                    w.WriteLine(bitValue.BitSelectorMask == 0
-                                        ? $"if (bitsToTest == {bitValue.BitSelectorValue})"
-                                        : $"if ((bitsToTest & 0x{bitValue.BitSelectorMask:x}) == {bitValue.BitSelectorValue})"
-                                    );
-                                    w.OpenBraceBlock();
-                                    {
-                                        if (bitValue.Kind == EncodingBitValueKind.BitExtract)
-                                        {
-                                            var bitRanges = bitValue.BitItems.Select(x => x.Range).ToList();
-                                            var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
-                                            Debug.Assert(parameters.Count == 1);
-                                            w.WriteLine(bitValueExtractString);
-                                            if (bitValue.Addend != 0)
-                                            {
-                                                w.WriteLine(bitValue.HasNegativeExtract
-                                                    ? $"{parameters[0].ParameterName} = {bitValue.Addend} - ({parameters[0].ParameterType})extractedValue;"
-                                                    : $"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue - {bitValue.Addend};");
-                                            }
-                                            else
-                                            {
-                                                w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
-                                            }
-                                        }
-                                        else
-                                        {
-                                            writeSelector(w, selector, bitValue);
-                                        }
-                                        w.WriteLine("return true;");
-                                    }
-                                    w.CloseBraceBlock();
-                                }
-
-                                w.WriteLine("break;");
-                            }
-
-                            w.CloseBraceBlock();
+                        if (bitValue.Addend != 0)
+                        {
+                            w.WriteLine(bitValue.HasNegativeExtract
+                                ? $"{parameters[0].ParameterName} = {bitValue.Addend} - ({parameters[0].ParameterType})extractedValue;"
+                                : $"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue - {bitValue.Addend};");
+                        }
+                        else
+                        {
+                            w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
                         }
                     }
-                    w.CloseBraceBlock();
-                    w.WriteLine();
-                    foreach (var parameter in parameters)
+                    else
                     {
-                        w.WriteLine($"{parameter.ParameterName} = default;");
+                        writeSelector(w, selector, bitValue);
                     }
+                    w.WriteLine("return true;");
+                    w.CloseBraceBlock();
+                }
+            }
+            w.CloseBraceBlock();
+            w.WriteLine("break;");
+        }
+        else
+        {
+            Debug.Assert(selector.Kind == EncodingSymbolSelectorKind.Masked);
 
-                    w.WriteLine("return false;");
+            // Order from the highest number of bits sets to the lowest number
+            // If the mask is 0, it means that all bits are sets
+            var bitValues = selector.BitValues.OrderByDescending(x => BitOperations.PopCount(x.BitSelectorMask == 0 ? uint.MaxValue : x.BitSelectorMask)).ToList();
+
+            foreach (var bitValue in bitValues)
+            {
+                w.WriteLine(bitValue.BitSelectorMask == 0
+                    ? $"if (bitsToTest == {bitValue.BitSelectorValue})"
+                    : $"if ((bitsToTest & 0x{bitValue.BitSelectorMask:x}) == {bitValue.BitSelectorValue})"
+                );
+                w.OpenBraceBlock();
+                {
+                    if (bitValue.Kind == EncodingBitValueKind.BitExtract)
+                    {
+                        var bitRanges = bitValue.BitItems.Select(x => x.Range).ToList();
+                        var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
+                        Debug.Assert(parameters.Count == 1);
+                        w.WriteLine(bitValueExtractString);
+                        if (bitValue.Addend != 0)
+                        {
+                            w.WriteLine(bitValue.HasNegativeExtract
+                                ? $"{parameters[0].ParameterName} = {bitValue.Addend} - ({parameters[0].ParameterType})extractedValue;"
+                                : $"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue - {bitValue.Addend};");
+                        }
+                        else
+                        {
+                            w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
+                        }
+                    }
+                    else
+                    {
+                        writeSelector(w, selector, bitValue);
+                    }
+                    w.WriteLine("return true;");
                 }
                 w.CloseBraceBlock();
             }
+
+            w.WriteLine("break;");
         }
-        w.CloseBraceBlock();
     }
 
     private string ExtractBitRangeString(List<BitRange> bitRanges, string inputValue, string outputValue)

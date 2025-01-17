@@ -2,12 +2,9 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Xml;
-using System.Xml.Linq;
 using AsmArm64.CodeGen.Model;
 
 namespace AsmArm64.CodeGen;
@@ -20,8 +17,6 @@ internal sealed class InstructionProcessor
     private readonly InstructionSet _instructionSet;
     private readonly List<Instruction> _instructions;
     private readonly Dictionary<string, List<Instruction>> _memoryOperands = new();
-    private readonly Dictionary<string, List<Instruction>> _immediateBitShiftSimdSpecial = new();
-
     private readonly Dictionary<int, List<Instruction>> _operandCountToInstructions = new();
 
     private readonly Dictionary<string, int> _barrierOperationLimitEnumValues = new();
@@ -425,7 +420,6 @@ internal sealed class InstructionProcessor
             Debug.Assert(symbol0.BitRanges.Count == 1);
             enumOperandDescriptor.EnumEncoding = symbol0.BitRanges[0];
 
-            Console.WriteLine($"{instruction.Id} {instruction.FullSyntax}");
             return enumOperandDescriptor;
         }
         else if (instruction.Id == "STSHH_hi_hints")
@@ -976,13 +970,38 @@ internal sealed class InstructionProcessor
             Debug.Assert(false, $"No encoding found for {instruction.Id}");
         }
 
+        descriptor.IndexerExtract = ProcessIndexer(instruction, register);
+
         if (kind == Arm64RegisterEncodingKind.V && register.TextElements.Count > 1)
         {
             descriptor.VectorArrangementLocalIndex = GetVectorArrangementLocalIndex(instruction, register);
         }
 
-        descriptor.IndexerExtract = ProcessIndexer(instruction, register);
+        //if (descriptor.IndexerExtract is not null)
+        //{
+        //    if (descriptor.VectorArrangementLocalIndex != 0)
+        //    {
+        //        var vectorExtract = instruction.VectorArrangements[descriptor.VectorArrangementLocalIndex - 1];
+        //        Console.WriteLine($"Indexer {register} - {instruction.Id} {instruction.FullSyntax} -> ");
 
+        //        var selector = vectorExtract.Selector;
+        //        if (selector is not null)
+        //        {
+        //            var names = selector.BitValues.SelectMany(x => x.Text).ToHashSet();
+
+        //            foreach (var name in names.Order())
+        //            {
+        //                Console.WriteLine($"  {name}");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine($"  {vectorExtract.Kind}");
+                    
+        //        }
+        //    }
+        //}
+        
         return descriptor;
     }
 
@@ -1128,6 +1147,22 @@ internal sealed class InstructionProcessor
         };
 
         registerGroup.IndexerExtract = ProcessIndexer(instruction, group);
+
+        //if (registerGroup.IndexerExtract is not null)
+        //{
+        //    Console.WriteLine($"GROUP {group} - {instruction.Id} {instruction.FullSyntax} -> ");
+
+        //    var selector = registerGroup.IndexerExtract.Selector;
+        //    if (selector is not null)
+        //    {
+        //        var names = selector.BitValues.SelectMany(x => x.Text).ToHashSet();
+
+        //        foreach (var name in names.Order())
+        //        {
+        //            Console.WriteLine($"  {name}");
+        //        }
+        //    }
+        //}
 
         return registerGroup;
     }

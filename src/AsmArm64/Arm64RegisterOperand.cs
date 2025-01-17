@@ -17,7 +17,7 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
         var encodingKind = (Arm64RegisterEncodingKind)((byte)(descriptor >> 8) & 0xF);
         var encodingIndex = (Arm64RegisterIndexEncodingKind)((byte)(descriptor >> 12) & 0xF); ;
         // buffer[2] = (byte)IndexerIndex;
-        var indexerId = (byte)(descriptor >> 16); // TODO: handle it
+        var elementIndexerId = (byte)(descriptor >> 16); // TODO: handle it
         // if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.BitMapExtract)
         // {
         //     Debug.Assert(RegisterIndexExtractIndex != 0);
@@ -107,7 +107,7 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
                     }
                     else
                     {
-                        registerKind = elementCount == 0 ? Arm64RegisterKind.VTypedScalar : Arm64RegisterKind.VTyped;
+                        registerKind = elementCount == 0 ? Arm64RegisterKind.VTyped : Arm64RegisterKind.VPacked;
                     }
                 }
                 break;
@@ -132,7 +132,8 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
                 break;
         }
 
-        Value = Arm64RegisterAny.Create(registerKind, vKind, elementCount, registerIndex);
+        Arm64IndexerHelper.TryDecode(rawValue, elementIndexerId, out var elementIndex);
+        Value = Arm64RegisterAny.Create(registerKind, registerIndex, vKind, elementCount, elementIndex);
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Register;

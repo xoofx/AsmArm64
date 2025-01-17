@@ -10441,7 +10441,7 @@ partial class Arm64InstructionDecoderTable
         26,14,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // MLA_asimdsame_only             - MLA         Vd.T, Vn.T, Vm.T
         173,6,75,2,1,2,2,3,
         20,0,0,0,
@@ -10453,7 +10453,7 @@ partial class Arm64InstructionDecoderTable
         26,14,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // MLS_asimdsame_only             - MLS         Vd.T, Vn.T, Vm.T
         175,6,76,2,1,2,2,3,
         20,0,0,0,
@@ -10498,7 +10498,7 @@ partial class Arm64InstructionDecoderTable
         26,14,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // MUL_asimdsame_only             - MUL         Vd.T, Vn.T, Vm.T
         183,6,87,2,1,2,2,3,
         20,0,0,0,
@@ -10997,7 +10997,7 @@ partial class Arm64InstructionDecoderTable
         13,26,14,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SMLAL_asimddiff_l              - SMLAL       Vd.Ta, Vn.Tb, Vm.Tb
         19,7,29,3,1,2,4,3,
         11,20,0,0,
@@ -11009,7 +11009,7 @@ partial class Arm64InstructionDecoderTable
         13,26,14,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SMLSL_asimddiff_l              - SMLSL       Vd.Ta, Vn.Tb, Vm.Tb
         21,7,30,3,1,2,4,3,
         11,20,0,0,
@@ -11037,7 +11037,7 @@ partial class Arm64InstructionDecoderTable
         13,26,14,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SMULL_asimddiff_l              - SMULL       Vd.Ta, Vn.Tb, Vm.Tb
         26,7,35,3,1,2,4,3,
         11,20,0,0,
@@ -11069,13 +11069,13 @@ partial class Arm64InstructionDecoderTable
         14,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQDMLAL_asimdelem_l            - SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index]
         32,7,38,3,1,2,6,3,
         13,26,14,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQDMLAL_asisddiff_only         - SQDMLAL     Vad, Vbn, Vbm
         33,7,38,3,1,2,0,3,
         1,22,0,0,
@@ -11092,13 +11092,13 @@ partial class Arm64InstructionDecoderTable
         14,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQDMLSL_asimdelem_l            - SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index]
         36,7,39,3,1,2,6,3,
         13,26,14,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQDMLSL_asisddiff_only         - SQDMLSL     Vad, Vbn, Vbm
         37,7,39,3,1,2,0,3,
         1,22,0,0,
@@ -11115,13 +11115,13 @@ partial class Arm64InstructionDecoderTable
         14,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQDMULH_asimdelem_r            - SQDMULH     Vd.T, Vn.T, Vm.Ts[index]
         40,7,40,3,1,2,4,3,
         26,14,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQDMULH_asisdsame_only         - SQDMULH     Vd, Vn, Vm
         41,7,40,3,1,2,0,3,
         1,22,0,0,
@@ -11138,13 +11138,13 @@ partial class Arm64InstructionDecoderTable
         13,26,14,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQDMULL_asisdelem_l            - SQDMULL     Vad, Vbn, Vm.Ts[index]
         44,7,41,3,1,2,2,3,
         14,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQDMULL_asisddiff_only         - SQDMULL     Vad, Vbn, Vbm
         45,7,41,3,1,2,0,3,
         1,22,0,0,
@@ -11170,13 +11170,13 @@ partial class Arm64InstructionDecoderTable
         14,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQRDMLAH_asimdelem_r           - SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index]
         50,7,43,3,1,55,4,3,
         26,14,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQRDMLAH_asisdsame2_only       - SQRDMLAH    Vd, Vn, Vm
         51,7,43,3,1,55,0,3,
         1,22,0,0,
@@ -11193,13 +11193,13 @@ partial class Arm64InstructionDecoderTable
         14,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQRDMLSH_asimdelem_r           - SQRDMLSH    Vd.T, Vn.T, Vm.Ts[index]
         54,7,44,3,1,55,4,3,
         26,14,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQRDMLSH_asisdsame2_only       - SQRDMLSH    Vd, Vn, Vm
         55,7,44,3,1,55,0,3,
         1,22,0,0,
@@ -11216,13 +11216,13 @@ partial class Arm64InstructionDecoderTable
         14,0,0,0,
         1,22,0,0,
         1,22,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQRDMULH_asimdelem_r           - SQRDMULH    Vd.T, Vn.T, Vm.Ts[index]
         58,7,45,3,1,2,4,3,
         26,14,0,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // SQRDMULH_asisdsame_only        - SQRDMULH    Vd, Vn, Vm
         59,7,45,3,1,2,0,3,
         1,22,0,0,
@@ -12526,7 +12526,7 @@ partial class Arm64InstructionDecoderTable
         13,26,14,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // UMLAL_asimddiff_l              - UMLAL       Vd.Ta, Vn.Tb, Vm.Tb
         60,8,203,3,1,2,4,3,
         11,20,0,0,
@@ -12538,7 +12538,7 @@ partial class Arm64InstructionDecoderTable
         13,26,14,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // UMLSL_asimddiff_l              - UMLSL       Vd.Ta, Vn.Tb, Vm.Tb
         62,8,204,3,1,2,4,3,
         11,20,0,0,
@@ -12566,7 +12566,7 @@ partial class Arm64InstructionDecoderTable
         13,26,14,0,
         1,27,0,0,
         1,27,0,5,
-        1,59,16,0,
+        1,59,16,1,
         // UMULL_asimddiff_l              - UMULL       Vd.Ta, Vn.Tb, Vm.Tb
         67,8,209,3,1,2,4,3,
         11,20,0,0,

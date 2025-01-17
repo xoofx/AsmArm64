@@ -31,14 +31,46 @@ static class Arm64VectorArrangementHelper
             case 1:
             {
                 var bitValue = ((rawValue >> 22) & 0x1);
-                return TryDecodeFromBitValues(bitValue, 2, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // FCVTL_asimdmisc_l             : FCVTL       Vd.Ta, Vn.Tb <- Operand: Vd.Ta
             // FCVTN_asimdmisc_n             : FCVTN       Vd.Tb, Vn.Ta <- Operand: Vn.Ta
             case 2:
             {
                 var bitValue = ((rawValue >> 22) & 0x1);
-                return TryDecodeFromBitValues(bitValue, 5, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // FMLA_asimdelem_r_sd           : FMLA        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // FMLA_asisdelem_r_sd           : FMLA        Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
@@ -51,7 +83,23 @@ static class Arm64VectorArrangementHelper
             case 3:
             {
                 var bitValue = ((rawValue >> 22) & 0x1);
-                return TryDecodeFromBitValues(bitValue, 7, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 0;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 0;
+                        return true;
+                    }
+                }
+                break;
             }
             // FMLAL_asimdelem_lh            : FMLAL       Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vn.Tb
             // FMLAL_asimdsame_f             : FMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
@@ -68,7 +116,23 @@ static class Arm64VectorArrangementHelper
             case 4:
             {
                 var bitValue = ((rawValue >> 30) & 0x1);
-                return TryDecodeFromBitValues(bitValue, 1, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
             }
             // BFDOT_asimdelem_e             : BFDOT       Vd.Ta, Vn.Tb, Vm.2H[index] <- Operand: Vd.Ta
             // BFDOT_asimdsame2_d            : BFDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
@@ -100,7 +164,23 @@ static class Arm64VectorArrangementHelper
             case 5:
             {
                 var bitValue = ((rawValue >> 30) & 0x1);
-                return TryDecodeFromBitValues(bitValue, 3, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
             }
             // BFCVTN_asimdmisc_4s           : BFCVTN      Vd.Ta, Vn.4S <- Operand: Vd.Ta
             // BFDOT_asimdelem_e             : BFDOT       Vd.Ta, Vn.Tb, Vm.2H[index] <- Operand: Vn.Tb
@@ -269,7 +349,23 @@ static class Arm64VectorArrangementHelper
             case 6:
             {
                 var bitValue = ((rawValue >> 30) & 0x1);
-                return TryDecodeFromBitValues(bitValue, 4, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                }
+                break;
             }
             // AND_asimdsame_only            : AND         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // AND_asimdsame_only            : AND         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
@@ -344,7 +440,23 @@ static class Arm64VectorArrangementHelper
             case 7:
             {
                 var bitValue = ((rawValue >> 30) & 0x1);
-                return TryDecodeFromBitValues(bitValue, 6, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                }
+                break;
             }
             // FABD_asimdsame_only           : FABD        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // FABD_asimdsame_only           : FABD        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
@@ -496,7 +608,29 @@ static class Arm64VectorArrangementHelper
             case 8:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
-                return TryDecodeFromBitValues(bitValue, 8, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // URECPE_asimdmisc_r            : URECPE      Vd.T, Vn.T <- Operand: Vd.T
             // URECPE_asimdmisc_r            : URECPE      Vd.T, Vn.T <- Operand: Vn.T
@@ -505,14 +639,58 @@ static class Arm64VectorArrangementHelper
             case 9:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
-                return TryDecodeFromBitValues(bitValue, 9, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
             }
             // FCVTL_asimdmisc_l             : FCVTL       Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             // FCVTN_asimdmisc_n             : FCVTN       Vd.Tb, Vn.Ta <- Operand: Vd.Tb
             case 10:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
-                return TryDecodeFromBitValues(bitValue, 11, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
             }
             // ADDHN_asimddiff_n             : ADDHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
             // ADDHN_asimddiff_n             : ADDHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
@@ -552,13 +730,51 @@ static class Arm64VectorArrangementHelper
             case 11:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
-                return TryDecodeFromBitValues(bitValue, 12, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             case 12:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
-                return TryDecodeFromBitValues(bitValue, 13, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.Q;
+                        elementCount = 1;
+                        return true;
+                    }
+                }
+                break;
             }
             // SMLAL_asimdelem_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             // SMLSL_asimdelem_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
@@ -575,7 +791,23 @@ static class Arm64VectorArrangementHelper
             case 13:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
-                return TryDecodeFromBitValues(bitValue, 14, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vm.Ts[index]
             // MLA_asimdelem_r               : MLA         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
@@ -604,7 +836,23 @@ static class Arm64VectorArrangementHelper
             case 14:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
-                return TryDecodeFromBitValues(bitValue, 15, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 0;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 0;
+                        return true;
+                    }
+                }
+                break;
             }
             // FMLA_asimdelem_r_sd           : FMLA        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
             // FMLA_asimdelem_r_sd           : FMLA        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
@@ -617,7 +865,29 @@ static class Arm64VectorArrangementHelper
             case 15:
             {
                 var bitValue = ((rawValue >> 22) & 0x1) | ((rawValue >> 29) & 0x2);
-                return TryDecodeFromBitValues(bitValue, 10, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // LD1_asisdlse_r1_1v            : LD1         {Vt.T}, [Xn|SP] <- Operand: Vt.T
             // LD1_asisdlse_r2_2v            : LD1         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt.T
@@ -712,7 +982,59 @@ static class Arm64VectorArrangementHelper
             case 16:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 9) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 17, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 6:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 1;
+                        return true;
+                    }
+                    case 7:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // LD2_asisdlse_r2               : LD2         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt.T
             // LD2_asisdlse_r2               : LD2         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt2.T
@@ -771,7 +1093,53 @@ static class Arm64VectorArrangementHelper
             case 17:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 9) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 18, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 7:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // SADALP_asimdmisc_p            : SADALP      Vd.Ta, Vn.Tb <- Operand: Vd.Ta
             // SADDLP_asimdmisc_p            : SADDLP      Vd.Ta, Vn.Tb <- Operand: Vd.Ta
@@ -780,7 +1148,47 @@ static class Arm64VectorArrangementHelper
             case 18:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 16, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 1;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // ABS_asimdmisc_r               : ABS         Vd.T, Vn.T <- Operand: Vd.T
             // ABS_asimdmisc_r               : ABS         Vd.T, Vn.T <- Operand: Vn.T
@@ -888,7 +1296,53 @@ static class Arm64VectorArrangementHelper
             case 19:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 18, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 7:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // ADDHN_asimddiff_n             : ADDHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
             // CLS_asimdmisc_r               : CLS         Vd.T, Vn.T <- Operand: Vd.T
@@ -1007,7 +1461,47 @@ static class Arm64VectorArrangementHelper
             case 20:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 19, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
             }
             // ADDV_asimdall_only            : ADDV        Vd, Vn.T <- Operand: Vn.T
             // SADDLV_asimdall_only          : SADDLV      Vd, Vn.T <- Operand: Vn.T
@@ -1019,21 +1513,111 @@ static class Arm64VectorArrangementHelper
             case 21:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 20, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
             }
             // REV32_asimdmisc_r             : REV32       Vd.T, Vn.T <- Operand: Vd.T
             // REV32_asimdmisc_r             : REV32       Vd.T, Vn.T <- Operand: Vn.T
             case 22:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 21, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                }
+                break;
             }
             // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             case 23:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 22, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                    case 6:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 1;
+                        return true;
+                    }
+                    case 7:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // CNT_asimdmisc_r               : CNT         Vd.T, Vn.T <- Operand: Vd.T
             // CNT_asimdmisc_r               : CNT         Vd.T, Vn.T <- Operand: Vn.T
@@ -1045,7 +1629,23 @@ static class Arm64VectorArrangementHelper
             case 24:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 23, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                }
+                break;
             }
             // FCADD_asimdsame2_c            : FCADD       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vd.T
             // FCADD_asimdsame2_c            : FCADD       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vn.T
@@ -1056,7 +1656,41 @@ static class Arm64VectorArrangementHelper
             case 25:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 24, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 7:
+                    {
+                        vKind = Arm64RegisterVKind.D;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
             }
             // MLA_asimdelem_r               : MLA         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
             // MLA_asimdelem_r               : MLA         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
@@ -1102,14 +1736,64 @@ static class Arm64VectorArrangementHelper
             case 26:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 25, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 4:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
             }
             // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vd.T
             // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vn.T
             case 27:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
-                return TryDecodeFromBitValues(bitValue, 26, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x7);
+                switch (bitsToTest)
+                {
+                    case 2:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
+                        return true;
+                    }
+                    case 5:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
             }
             // RSHRN_asimdshf_n              : RSHRN       Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // SHRN_asimdshf_n               : SHRN        Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
@@ -1124,7 +1808,26 @@ static class Arm64VectorArrangementHelper
             case 28:
             {
                 var bitValue = ((rawValue >> 19) & 0xF);
-                return TryDecodeFromBitValues(bitValue, 27, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0xF);
+                if (bitsToTest == 1)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0xe) == 2)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0xc) == 4)
+                {
+                    vKind = Arm64RegisterVKind.D;
+                    elementCount = 2;
+                    return true;
+                }
+                break;
             }
             // DUP_asimdins_dv_v             : DUP         Vd.T, Vn.Ts[index] <- Operand: Vn.Ts[index]
             // DUP_asisdone_only             : DUP         Vd, Vn.T[index] <- Operand: Vn.T[index]
@@ -1134,20 +1837,77 @@ static class Arm64VectorArrangementHelper
             case 29:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
-                return TryDecodeFromBitValues(bitValue, 31, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1F);
+                if ((bitsToTest & 0xf) == 8)
+                {
+                    vKind = Arm64RegisterVKind.D;
+                    elementCount = 0;
+                    return true;
+                }
+                if ((bitsToTest & 0x7) == 4)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 0;
+                    return true;
+                }
+                if ((bitsToTest & 0x3) == 2)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 0;
+                    return true;
+                }
+                if ((bitsToTest & 0x1) == 1)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 0;
+                    return true;
+                }
+                break;
             }
             // SMOV_asimdins_x_x             : SMOV        Xd, Vn.Ts[index] <- Operand: Vn.Ts[index]
             // UMOV_asimdins_w_w             : UMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
             case 30:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
-                return TryDecodeFromBitValues(bitValue, 32, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1F);
+                if ((bitsToTest & 0x7) == 4)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 0;
+                    return true;
+                }
+                if ((bitsToTest & 0x3) == 2)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 0;
+                    return true;
+                }
+                if ((bitsToTest & 0x1) == 1)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 0;
+                    return true;
+                }
+                break;
             }
             // SMOV_asimdins_w_w             : SMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
             case 31:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
-                return TryDecodeFromBitValues(bitValue, 33, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1F);
+                if ((bitsToTest & 0x3) == 2)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 0;
+                    return true;
+                }
+                if ((bitsToTest & 0x1) == 1)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 0;
+                    return true;
+                }
+                break;
             }
             // SHL_asimdshf_r                : SHL         Vd.T, Vn.T, #shift <- Operand: Vd.T
             // SHL_asimdshf_r                : SHL         Vd.T, Vn.T, #shift <- Operand: Vn.T
@@ -1180,7 +1940,50 @@ static class Arm64VectorArrangementHelper
             case 32:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
-                return TryDecodeFromBitValues(bitValue, 28, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1F);
+                if (bitsToTest == 2)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 8;
+                    return true;
+                }
+                if (bitsToTest == 3)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 16;
+                    return true;
+                }
+                if ((bitsToTest & 0x1d) == 4)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x1d) == 5)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 8)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 2;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 9)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x11) == 17)
+                {
+                    vKind = Arm64RegisterVKind.D;
+                    elementCount = 2;
+                    return true;
+                }
+                break;
             }
             // RSHRN_asimdshf_n              : RSHRN       Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // SHRN_asimdshf_n               : SHRN        Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
@@ -1195,7 +1998,44 @@ static class Arm64VectorArrangementHelper
             case 33:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
-                return TryDecodeFromBitValues(bitValue, 29, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1F);
+                if (bitsToTest == 2)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 8;
+                    return true;
+                }
+                if (bitsToTest == 3)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 16;
+                    return true;
+                }
+                if ((bitsToTest & 0x1d) == 4)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x1d) == 5)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 8)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 2;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 9)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 4;
+                    return true;
+                }
+                break;
             }
             // FCVTZS_asimdshf_c             : FCVTZS      Vd.T, Vn.T, #fbits <- Operand: Vd.T
             // FCVTZS_asimdshf_c             : FCVTZS      Vd.T, Vn.T, #fbits <- Operand: Vn.T
@@ -1208,14 +2048,88 @@ static class Arm64VectorArrangementHelper
             case 34:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
-                return TryDecodeFromBitValues(bitValue, 30, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x1F);
+                if ((bitsToTest & 0x1d) == 4)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x1d) == 5)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 8)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 2;
+                    return true;
+                }
+                if ((bitsToTest & 0x19) == 9)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x11) == 17)
+                {
+                    vKind = Arm64RegisterVKind.D;
+                    elementCount = 2;
+                    return true;
+                }
+                break;
             }
             // DUP_asimdins_dr_r             : DUP         Vd.T, Rn <- Operand: Vd.T
             // DUP_asimdins_dv_v             : DUP         Vd.T, Vn.Ts[index] <- Operand: Vd.T
             case 35:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 15) & 0x3E);
-                return TryDecodeFromBitValues(bitValue, 34, out vKind,out elementCount);
+                var bitsToTest = (bitValue & 0x3F);
+                if ((bitsToTest & 0x1f) == 17)
+                {
+                    vKind = Arm64RegisterVKind.D;
+                    elementCount = 2;
+                    return true;
+                }
+                if ((bitsToTest & 0xf) == 8)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 2;
+                    return true;
+                }
+                if ((bitsToTest & 0xf) == 9)
+                {
+                    vKind = Arm64RegisterVKind.S;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x7) == 4)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 4;
+                    return true;
+                }
+                if ((bitsToTest & 0x7) == 5)
+                {
+                    vKind = Arm64RegisterVKind.H;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0x3) == 2)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 8;
+                    return true;
+                }
+                if ((bitsToTest & 0x3) == 3)
+                {
+                    vKind = Arm64RegisterVKind.B;
+                    elementCount = 16;
+                    return true;
+                }
+                break;
             }
             // FMLALB_asimdelem_h            : FMLALB      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
             // FMLALLBB_asimdelem_j          : FMLALLBB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
@@ -1728,1022 +2642,6 @@ static class Arm64VectorArrangementHelper
                 vKind = Arm64RegisterVKind.H;
                 elementCount = 8;
                 return true;
-            }
-        }
-        
-        vKind = default;
-        elementCount = default;
-        return false;
-    }
-    
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static bool TryDecodeFromBitValues(uint bitValue, byte selectorIndex, out Arm64RegisterVKind vKind, out int elementCount)
-    {
-        switch (selectorIndex)
-        {
-            case 1:
-            {
-                var bitsToTest = (bitValue & 0x1);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 2:
-            {
-                var bitsToTest = (bitValue & 0x1);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 3:
-            {
-                var bitsToTest = (bitValue & 0x1);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 4:
-            {
-                var bitsToTest = (bitValue & 0x1);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 5:
-            {
-                var bitsToTest = (bitValue & 0x1);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 6:
-            {
-                var bitsToTest = (bitValue & 0x1);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 7:
-            {
-                var bitsToTest = (bitValue & 0x1);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 0;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 0;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 8:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 9:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 10:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 11:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 12:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 13:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.Q;
-                        elementCount = 1;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 14:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 15:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 0;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 0;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 16:
-            {
-                var bitsToTest = (bitValue & 0x7);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 4:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 1;
-                        return true;
-                    }
-                    case 5:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 17:
-            {
-                var bitsToTest = (bitValue & 0x7);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 4:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 5:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 6:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 1;
-                        return true;
-                    }
-                    case 7:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 18:
-            {
-                var bitsToTest = (bitValue & 0x7);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 4:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 5:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 7:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 19:
-            {
-                var bitsToTest = (bitValue & 0x7);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 4:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 5:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 20:
-            {
-                var bitsToTest = (bitValue & 0x7);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 5:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 21:
-            {
-                var bitsToTest = (bitValue & 0x7);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 22:
-            {
-                var bitsToTest = (bitValue & 0x7);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    }
-                    case 6:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 1;
-                        return true;
-                    }
-                    case 7:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 23:
-            {
-                var bitsToTest = (bitValue & 0x7);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        vKind = Arm64RegisterVKind.B;
-                        elementCount = 16;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 24:
-            {
-                var bitsToTest = (bitValue & 0x7);
-                switch (bitsToTest)
-                {
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 4:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 5:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 7:
-                    {
-                        vKind = Arm64RegisterVKind.D;
-                        elementCount = 2;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 25:
-            {
-                var bitsToTest = (bitValue & 0x7);
-                switch (bitsToTest)
-                {
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 4:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 2;
-                        return true;
-                    }
-                    case 5:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 26:
-            {
-                var bitsToTest = (bitValue & 0x7);
-                switch (bitsToTest)
-                {
-                    case 2:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 4;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        vKind = Arm64RegisterVKind.H;
-                        elementCount = 8;
-                        return true;
-                    }
-                    case 5:
-                    {
-                        vKind = Arm64RegisterVKind.S;
-                        elementCount = 4;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 27:
-            {
-                var bitsToTest = (bitValue & 0xF);
-                if (bitsToTest == 1)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitsToTest & 0xe) == 2)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitsToTest & 0xc) == 4)
-                {
-                    vKind = Arm64RegisterVKind.D;
-                    elementCount = 2;
-                    return true;
-                }
-                break;
-            }
-            case 28:
-            {
-                var bitsToTest = (bitValue & 0x1F);
-                if (bitsToTest == 2)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 8;
-                    return true;
-                }
-                if (bitsToTest == 3)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 16;
-                    return true;
-                }
-                if ((bitsToTest & 0x1d) == 4)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitsToTest & 0x1d) == 5)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitsToTest & 0x19) == 8)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 2;
-                    return true;
-                }
-                if ((bitsToTest & 0x19) == 9)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitsToTest & 0x11) == 17)
-                {
-                    vKind = Arm64RegisterVKind.D;
-                    elementCount = 2;
-                    return true;
-                }
-                break;
-            }
-            case 29:
-            {
-                var bitsToTest = (bitValue & 0x1F);
-                if (bitsToTest == 2)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 8;
-                    return true;
-                }
-                if (bitsToTest == 3)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 16;
-                    return true;
-                }
-                if ((bitsToTest & 0x1d) == 4)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitsToTest & 0x1d) == 5)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitsToTest & 0x19) == 8)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 2;
-                    return true;
-                }
-                if ((bitsToTest & 0x19) == 9)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 4;
-                    return true;
-                }
-                break;
-            }
-            case 30:
-            {
-                var bitsToTest = (bitValue & 0x1F);
-                if ((bitsToTest & 0x1d) == 4)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitsToTest & 0x1d) == 5)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitsToTest & 0x19) == 8)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 2;
-                    return true;
-                }
-                if ((bitsToTest & 0x19) == 9)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitsToTest & 0x11) == 17)
-                {
-                    vKind = Arm64RegisterVKind.D;
-                    elementCount = 2;
-                    return true;
-                }
-                break;
-            }
-            case 31:
-            {
-                var bitsToTest = (bitValue & 0x1F);
-                if ((bitsToTest & 0xf) == 8)
-                {
-                    vKind = Arm64RegisterVKind.D;
-                    elementCount = 0;
-                    return true;
-                }
-                if ((bitsToTest & 0x7) == 4)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 0;
-                    return true;
-                }
-                if ((bitsToTest & 0x3) == 2)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 0;
-                    return true;
-                }
-                if ((bitsToTest & 0x1) == 1)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 0;
-                    return true;
-                }
-                break;
-            }
-            case 32:
-            {
-                var bitsToTest = (bitValue & 0x1F);
-                if ((bitsToTest & 0x7) == 4)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 0;
-                    return true;
-                }
-                if ((bitsToTest & 0x3) == 2)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 0;
-                    return true;
-                }
-                if ((bitsToTest & 0x1) == 1)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 0;
-                    return true;
-                }
-                break;
-            }
-            case 33:
-            {
-                var bitsToTest = (bitValue & 0x1F);
-                if ((bitsToTest & 0x3) == 2)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 0;
-                    return true;
-                }
-                if ((bitsToTest & 0x1) == 1)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 0;
-                    return true;
-                }
-                break;
-            }
-            case 34:
-            {
-                var bitsToTest = (bitValue & 0x3F);
-                if ((bitsToTest & 0x1f) == 17)
-                {
-                    vKind = Arm64RegisterVKind.D;
-                    elementCount = 2;
-                    return true;
-                }
-                if ((bitsToTest & 0xf) == 8)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 2;
-                    return true;
-                }
-                if ((bitsToTest & 0xf) == 9)
-                {
-                    vKind = Arm64RegisterVKind.S;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitsToTest & 0x7) == 4)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 4;
-                    return true;
-                }
-                if ((bitsToTest & 0x7) == 5)
-                {
-                    vKind = Arm64RegisterVKind.H;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitsToTest & 0x3) == 2)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 8;
-                    return true;
-                }
-                if ((bitsToTest & 0x3) == 3)
-                {
-                    vKind = Arm64RegisterVKind.B;
-                    elementCount = 16;
-                    return true;
-                }
-                break;
             }
         }
         

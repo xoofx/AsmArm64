@@ -41,11 +41,19 @@ public enum Arm64RegisterKind : byte
     /// <summary>
     /// Vector Typed register (Vn.8B, Vn.16B, Vn.4H, Vn.8H, Vn.2S, Vn.4S, Vn.2D).
     /// </summary>
+    VPacked,
+    /// <summary>
+    /// Vector Indexed register (Vn.2B[0], Vn.4B[1], Vn.2H[2]).
+    /// </summary>
+    VPackedIndexed,
+    /// <summary>
+    /// Vector Typed register (Vn.B, Vn.H, Vn.S, Vn.D).
+    /// </summary>
     VTyped,
     /// <summary>
-    /// Vector Typed register (Vn.B, Vn.H, Vn.S, Vn.2D).
+    /// Vector Indexed register (Vn.B[0], Vn.H[1], Vn.S[2], Vn.D[0]).
     /// </summary>
-    VTypedScalar,
+    VTypedIndexed,
     /// <summary>
     /// Vector Scalar element (e.g. H0 / S0 / D0).
     /// </summary>
@@ -91,7 +99,7 @@ public readonly record struct Arm64RegisterX : IArm64Register
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64RegisterX(int index) => _value = (uint)Arm64RegisterKind.X << 8 | (uint)index;
+    private Arm64RegisterX(int index) => _value = ((uint)Arm64RegisterKind.X << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -284,7 +292,7 @@ public readonly record struct Arm64RegisterW : IArm64Register
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64RegisterW(int index) => _value = (uint)Arm64RegisterKind.W << 8 | (uint)index;
+    private Arm64RegisterW(int index) => _value = ((uint)Arm64RegisterKind.W << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -477,7 +485,7 @@ public readonly record struct Arm64RegisterC : IArm64Register
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64RegisterC(int index) => _value = (uint)Arm64RegisterKind.C << 8 | (uint)index;
+    private Arm64RegisterC(int index) => _value = ((uint)Arm64RegisterKind.C << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -590,7 +598,7 @@ public readonly record struct Arm64RegisterSP : IArm64Register
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64RegisterSP(int index) => _value = (uint)Arm64RegisterKind.SP << 8 | (uint)index;
+    private Arm64RegisterSP(int index) => _value = ((uint)Arm64RegisterKind.SP << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -628,7 +636,7 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64RegisterV(int index) => _value = (uint)Arm64RegisterKind.V << 8 | (uint)index;
+    private Arm64RegisterV(int index) => _value = ((uint)Arm64RegisterKind.V << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -642,57 +650,72 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     /// <summary>
     /// Gets the V.B register.
     /// </summary>
-    public Arm64RegisterVTypedScalarB B => new(Index);
+    public Arm64RegisterV_B B => new(Index);
+
+    /// <summary>
+    /// Gets the 2 x B V register.
+    /// </summary>
+    public Arm64RegisterV_2B T_2B => new(Index);
+
+    /// <summary>
+    /// Gets the 4 x B V register.
+    /// </summary>
+    public Arm64RegisterV_4B T_4B => new(Index);
 
     /// <summary>
     /// Gets the 8 x B V register.
     /// </summary>
-    public Arm64RegisterV8B T_8B => new(Index);
+    public Arm64RegisterV_8B T_8B => new(Index);
 
     /// <summary>
     /// Gets the 16 x B V register.
     /// </summary>
-    public Arm64RegisterV16B T_16B => new(Index);
+    public Arm64RegisterV_16B T_16B => new(Index);
 
     /// <summary>
     /// Gets the V.H register.
     /// </summary>
-    public Arm64RegisterVTypedScalarH H => new(Index);
+    public Arm64RegisterV_H H => new(Index);
+
+    /// <summary>
+    /// Gets the 2 x H V register.
+    /// </summary>
+    public Arm64RegisterV_2H T_2H => new(Index);
 
     /// <summary>
     /// Gets the 4 x H V register.
     /// </summary>
-    public Arm64RegisterV4H T_4H => new(Index);
+    public Arm64RegisterV_4H T_4H => new(Index);
 
     /// <summary>
     /// Gets the 8 x H V register.
     /// </summary>
-    public Arm64RegisterV8H T_8H => new(Index);
+    public Arm64RegisterV_8H T_8H => new(Index);
 
     /// <summary>
     /// Gets the V.S register.
     /// </summary>
-    public Arm64RegisterVTypedScalarS S => new(Index);
+    public Arm64RegisterV_S S => new(Index);
 
     /// <summary>
     /// Gets the 2 x S V register.
     /// </summary>
-    public Arm64RegisterV2S T_2S => new(Index);
+    public Arm64RegisterV_2S T_2S => new(Index);
 
     /// <summary>
     /// Gets the 4 x S V register.
     /// </summary>
-    public Arm64RegisterV4S T_4S => new(Index);
+    public Arm64RegisterV_4S T_4S => new(Index);
 
     /// <summary>
     /// Gets the V.D register.
     /// </summary>
-    public Arm64RegisterVTypedScalarD D => new(Index);
+    public Arm64RegisterV_D D => new(Index);
 
     /// <summary>
     /// Gets the 2 x D V register.
     /// </summary>
-    public Arm64RegisterV2D T_2D => new(Index);
+    public Arm64RegisterV_2D T_2D => new(Index);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -873,12 +896,12 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
 /// <summary>
 /// Represents an ARM64 a vector typed with 8-bit vector register (V.B arrangement).
 /// </summary>
-public readonly record struct Arm64RegisterVTypedScalarB : IArm64RegisterVTypedScalar
+public readonly record struct Arm64RegisterV_B : IArm64RegisterVTyped
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterVTypedScalarB(int index) => _value = (uint)Arm64RegisterVKind.B << 16 | (uint)Arm64RegisterKind.VTypedScalar << 8 | (uint)index;
+    internal Arm64RegisterV_B(int index) => _value = ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VTyped << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -888,6 +911,11 @@ public readonly record struct Arm64RegisterVTypedScalarB : IArm64RegisterVTypedS
 
     /// <inheritdoc />
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <summary>
+    /// Gets the indexed element of this vector typed register.
+    /// </summary>
+    public Indexed this[int elementIndex] => new(Index, elementIndex);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -903,6 +931,206 @@ public readonly record struct Arm64RegisterVTypedScalarB : IArm64RegisterVTypedS
         var result = text.AsSpan().TryCopyTo(destination);
         charsWritten = result ? text.Length : 0;
         return result;
+    }
+
+    /// <summary>
+    /// Represents an ARM64 a vector indexed with 8-bit vector register (V.B arrangement).
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    {
+        private readonly uint _value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VTypedIndexed << 8) | (uint)registerIndex;
+
+        /// <inheritdoc />
+        public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+        /// <inheritdoc />
+        public int Index => (byte)_value;
+
+        /// <inheritdoc />
+        public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+        /// <inheritdoc />
+        public int ElementIndex => (byte)(_value >> 28);
+
+        /// <inheritdoc />
+        public override string ToString() => ToString(null, null);
+
+        /// <inheritdoc />
+        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+}
+
+/// <summary>
+/// Represents an ARM64 an arranged 2 x B, 8-bit vector register
+/// </summary>
+public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
+{
+    private readonly uint _value;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal Arm64RegisterV_2B(int index) => _value = (1U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+
+    /// <inheritdoc />
+    public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+    /// <inheritdoc />
+    public int Index => (byte)_value;
+
+    /// <inheritdoc />
+    public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <inheritdoc />
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+
+    /// <inheritdoc />
+    public override string ToString() => ToString(null, null);
+
+    /// <inheritdoc />
+    public string ToString(string? format, IFormatProvider? formatProvider) => this.ToText((format ??= "L") == "H");
+
+    /// <inheritdoc />
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
+    }
+    
+    /// <summary>
+    /// Gets the indexed element of this vector packed register.
+    /// </summary>
+    public Indexed this[int elementIndex] => new(Index, elementIndex);
+
+    /// <summary>
+    /// Represents an ARM64 a vector indexed with (V.B arrangement).
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterVPacked, IArm64RegisterVIndexed
+    {
+        private readonly uint _value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (1U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
+
+        /// <inheritdoc />
+        public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+        /// <inheritdoc />
+        public int Index => (byte)_value;
+
+        /// <inheritdoc />
+        public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+        /// <inheritdoc />
+        public int ElementCount => (byte)((_value >> 24) & 0xF) << 1;
+
+        /// <inheritdoc />
+        public int ElementIndex => (byte)(_value >> 28);
+
+        /// <inheritdoc />
+        public override string ToString() => ToString(null, null);
+
+        /// <inheritdoc />
+        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+}
+
+
+/// <summary>
+/// Represents an ARM64 an arranged 4 x B, 8-bit vector register
+/// </summary>
+public readonly record struct Arm64RegisterV_4B : IArm64RegisterVPacked
+{
+    private readonly uint _value;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal Arm64RegisterV_4B(int index) => _value = (2U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+
+    /// <inheritdoc />
+    public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+    /// <inheritdoc />
+    public int Index => (byte)_value;
+
+    /// <inheritdoc />
+    public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <inheritdoc />
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+
+    /// <inheritdoc />
+    public override string ToString() => ToString(null, null);
+
+    /// <inheritdoc />
+    public string ToString(string? format, IFormatProvider? formatProvider) => this.ToText((format ??= "L") == "H");
+
+    /// <inheritdoc />
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
+    }
+    
+    /// <summary>
+    /// Gets the indexed element of this vector packed register.
+    /// </summary>
+    public Indexed this[int elementIndex] => new(Index, elementIndex);
+
+    /// <summary>
+    /// Represents an ARM64 a vector indexed with (V.B arrangement).
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterVPacked, IArm64RegisterVIndexed
+    {
+        private readonly uint _value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (2U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
+
+        /// <inheritdoc />
+        public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+        /// <inheritdoc />
+        public int Index => (byte)_value;
+
+        /// <inheritdoc />
+        public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+        /// <inheritdoc />
+        public int ElementCount => (byte)((_value >> 24) & 0xF) << 1;
+
+        /// <inheritdoc />
+        public int ElementIndex => (byte)(_value >> 28);
+
+        /// <inheritdoc />
+        public override string ToString() => ToString(null, null);
+
+        /// <inheritdoc />
+        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 
@@ -910,12 +1138,12 @@ public readonly record struct Arm64RegisterVTypedScalarB : IArm64RegisterVTypedS
 /// <summary>
 /// Represents an ARM64 an arranged 8 x B, 8-bit vector register
 /// </summary>
-public readonly record struct Arm64RegisterV8B : IArm64RegisterVTyped
+public readonly record struct Arm64RegisterV_8B : IArm64RegisterVPacked
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV8B(int index) => _value = 8U << 24 | (uint)Arm64RegisterVKind.B << 16 | (uint)Arm64RegisterKind.VTyped << 8 | (uint)index;
+    internal Arm64RegisterV_8B(int index) => _value = (4U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -927,7 +1155,7 @@ public readonly record struct Arm64RegisterV8B : IArm64RegisterVTyped
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)(_value >> 24);
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -944,17 +1172,18 @@ public readonly record struct Arm64RegisterV8B : IArm64RegisterVTyped
         charsWritten = result ? text.Length : 0;
         return result;
     }
-}
+    }
+
 
 /// <summary>
 /// Represents an ARM64 an arranged 16 x B, 8-bit vector register
 /// </summary>
-public readonly record struct Arm64RegisterV16B : IArm64RegisterVTyped
+public readonly record struct Arm64RegisterV_16B : IArm64RegisterVPacked
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV16B(int index) => _value = 16U << 24 | (uint)Arm64RegisterVKind.B << 16 | (uint)Arm64RegisterKind.VTyped << 8 | (uint)index;
+    internal Arm64RegisterV_16B(int index) => _value = (8U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -966,7 +1195,7 @@ public readonly record struct Arm64RegisterV16B : IArm64RegisterVTyped
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)(_value >> 24);
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -983,16 +1212,17 @@ public readonly record struct Arm64RegisterV16B : IArm64RegisterVTyped
         charsWritten = result ? text.Length : 0;
         return result;
     }
-}
+    }
+
 /// <summary>
 /// Represents an ARM64 a vector typed with Half-precision 16-bit floating-point register (V.H arrangement).
 /// </summary>
-public readonly record struct Arm64RegisterVTypedScalarH : IArm64RegisterVTypedScalar
+public readonly record struct Arm64RegisterV_H : IArm64RegisterVTyped
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterVTypedScalarH(int index) => _value = (uint)Arm64RegisterVKind.H << 16 | (uint)Arm64RegisterKind.VTypedScalar << 8 | (uint)index;
+    internal Arm64RegisterV_H(int index) => _value = ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VTyped << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1002,6 +1232,11 @@ public readonly record struct Arm64RegisterVTypedScalarH : IArm64RegisterVTypedS
 
     /// <inheritdoc />
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <summary>
+    /// Gets the indexed element of this vector typed register.
+    /// </summary>
+    public Indexed this[int elementIndex] => new(Index, elementIndex);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -1017,18 +1252,53 @@ public readonly record struct Arm64RegisterVTypedScalarH : IArm64RegisterVTypedS
         var result = text.AsSpan().TryCopyTo(destination);
         charsWritten = result ? text.Length : 0;
         return result;
+    }
+
+    /// <summary>
+    /// Represents an ARM64 a vector indexed with Half-precision 16-bit floating-point register (V.H arrangement).
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    {
+        private readonly uint _value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VTypedIndexed << 8) | (uint)registerIndex;
+
+        /// <inheritdoc />
+        public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+        /// <inheritdoc />
+        public int Index => (byte)_value;
+
+        /// <inheritdoc />
+        public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+        /// <inheritdoc />
+        public int ElementIndex => (byte)(_value >> 28);
+
+        /// <inheritdoc />
+        public override string ToString() => ToString(null, null);
+
+        /// <inheritdoc />
+        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 
 /// <summary>
 /// Represents an ARM64 a Half-precision 16-bit floating-point register (H arrangement).
 /// </summary>
-public readonly record struct Arm64RegisterVScalarH : IArm64RegisterVScalar
+public readonly record struct Arm64RegisterH : IArm64RegisterVScalar
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterVScalarH(int index) => _value = (uint)Arm64RegisterVKind.H << 16 | (uint)Arm64RegisterKind.VScalar << 8 | (uint)index;
+    internal Arm64RegisterH(int index) => _value = ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VScalar << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1058,173 +1328,256 @@ public readonly record struct Arm64RegisterVScalarH : IArm64RegisterVScalar
     /// <summary>
     /// Gets the H0 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H0 => new(0);
+    public static Arm64RegisterH H0 => new(0);
 
     /// <summary>
     /// Gets the H1 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H1 => new(1);
+    public static Arm64RegisterH H1 => new(1);
 
     /// <summary>
     /// Gets the H2 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H2 => new(2);
+    public static Arm64RegisterH H2 => new(2);
 
     /// <summary>
     /// Gets the H3 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H3 => new(3);
+    public static Arm64RegisterH H3 => new(3);
 
     /// <summary>
     /// Gets the H4 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H4 => new(4);
+    public static Arm64RegisterH H4 => new(4);
 
     /// <summary>
     /// Gets the H5 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H5 => new(5);
+    public static Arm64RegisterH H5 => new(5);
 
     /// <summary>
     /// Gets the H6 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H6 => new(6);
+    public static Arm64RegisterH H6 => new(6);
 
     /// <summary>
     /// Gets the H7 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H7 => new(7);
+    public static Arm64RegisterH H7 => new(7);
 
     /// <summary>
     /// Gets the H8 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H8 => new(8);
+    public static Arm64RegisterH H8 => new(8);
 
     /// <summary>
     /// Gets the H9 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H9 => new(9);
+    public static Arm64RegisterH H9 => new(9);
 
     /// <summary>
     /// Gets the H10 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H10 => new(10);
+    public static Arm64RegisterH H10 => new(10);
 
     /// <summary>
     /// Gets the H11 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H11 => new(11);
+    public static Arm64RegisterH H11 => new(11);
 
     /// <summary>
     /// Gets the H12 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H12 => new(12);
+    public static Arm64RegisterH H12 => new(12);
 
     /// <summary>
     /// Gets the H13 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H13 => new(13);
+    public static Arm64RegisterH H13 => new(13);
 
     /// <summary>
     /// Gets the H14 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H14 => new(14);
+    public static Arm64RegisterH H14 => new(14);
 
     /// <summary>
     /// Gets the H15 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H15 => new(15);
+    public static Arm64RegisterH H15 => new(15);
 
     /// <summary>
     /// Gets the H16 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H16 => new(16);
+    public static Arm64RegisterH H16 => new(16);
 
     /// <summary>
     /// Gets the H17 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H17 => new(17);
+    public static Arm64RegisterH H17 => new(17);
 
     /// <summary>
     /// Gets the H18 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H18 => new(18);
+    public static Arm64RegisterH H18 => new(18);
 
     /// <summary>
     /// Gets the H19 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H19 => new(19);
+    public static Arm64RegisterH H19 => new(19);
 
     /// <summary>
     /// Gets the H20 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H20 => new(20);
+    public static Arm64RegisterH H20 => new(20);
 
     /// <summary>
     /// Gets the H21 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H21 => new(21);
+    public static Arm64RegisterH H21 => new(21);
 
     /// <summary>
     /// Gets the H22 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H22 => new(22);
+    public static Arm64RegisterH H22 => new(22);
 
     /// <summary>
     /// Gets the H23 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H23 => new(23);
+    public static Arm64RegisterH H23 => new(23);
 
     /// <summary>
     /// Gets the H24 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H24 => new(24);
+    public static Arm64RegisterH H24 => new(24);
 
     /// <summary>
     /// Gets the H25 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H25 => new(25);
+    public static Arm64RegisterH H25 => new(25);
 
     /// <summary>
     /// Gets the H26 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H26 => new(26);
+    public static Arm64RegisterH H26 => new(26);
 
     /// <summary>
     /// Gets the H27 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H27 => new(27);
+    public static Arm64RegisterH H27 => new(27);
 
     /// <summary>
     /// Gets the H28 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H28 => new(28);
+    public static Arm64RegisterH H28 => new(28);
 
     /// <summary>
     /// Gets the H29 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H29 => new(29);
+    public static Arm64RegisterH H29 => new(29);
 
     /// <summary>
     /// Gets the H30 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H30 => new(30);
+    public static Arm64RegisterH H30 => new(30);
 
     /// <summary>
     /// Gets the H31 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H31 => new(31);
+    public static Arm64RegisterH H31 => new(31);
 }
+
+/// <summary>
+/// Represents an ARM64 an arranged 2 x H, Half-precision 16-bit floating-point register
+/// </summary>
+public readonly record struct Arm64RegisterV_2H : IArm64RegisterVPacked
+{
+    private readonly uint _value;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal Arm64RegisterV_2H(int index) => _value = (1U << 24) | ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+
+    /// <inheritdoc />
+    public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+    /// <inheritdoc />
+    public int Index => (byte)_value;
+
+    /// <inheritdoc />
+    public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <inheritdoc />
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+
+    /// <inheritdoc />
+    public override string ToString() => ToString(null, null);
+
+    /// <inheritdoc />
+    public string ToString(string? format, IFormatProvider? formatProvider) => this.ToText((format ??= "L") == "H");
+
+    /// <inheritdoc />
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
+    }
+    
+    /// <summary>
+    /// Gets the indexed element of this vector packed register.
+    /// </summary>
+    public Indexed this[int elementIndex] => new(Index, elementIndex);
+
+    /// <summary>
+    /// Represents an ARM64 a vector indexed with (V.H arrangement).
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterVPacked, IArm64RegisterVIndexed
+    {
+        private readonly uint _value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (1U << 24) | ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
+
+        /// <inheritdoc />
+        public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+        /// <inheritdoc />
+        public int Index => (byte)_value;
+
+        /// <inheritdoc />
+        public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+        /// <inheritdoc />
+        public int ElementCount => (byte)((_value >> 24) & 0xF) << 1;
+
+        /// <inheritdoc />
+        public int ElementIndex => (byte)(_value >> 28);
+
+        /// <inheritdoc />
+        public override string ToString() => ToString(null, null);
+
+        /// <inheritdoc />
+        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+}
+
 
 /// <summary>
 /// Represents an ARM64 an arranged 4 x H, Half-precision 16-bit floating-point register
 /// </summary>
-public readonly record struct Arm64RegisterV4H : IArm64RegisterVTyped
+public readonly record struct Arm64RegisterV_4H : IArm64RegisterVPacked
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV4H(int index) => _value = 4U << 24 | (uint)Arm64RegisterVKind.H << 16 | (uint)Arm64RegisterKind.VTyped << 8 | (uint)index;
+    internal Arm64RegisterV_4H(int index) => _value = (2U << 24) | ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1236,7 +1589,7 @@ public readonly record struct Arm64RegisterV4H : IArm64RegisterVTyped
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)(_value >> 24);
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -1253,17 +1606,18 @@ public readonly record struct Arm64RegisterV4H : IArm64RegisterVTyped
         charsWritten = result ? text.Length : 0;
         return result;
     }
-}
+    }
+
 
 /// <summary>
 /// Represents an ARM64 an arranged 8 x H, Half-precision 16-bit floating-point register
 /// </summary>
-public readonly record struct Arm64RegisterV8H : IArm64RegisterVTyped
+public readonly record struct Arm64RegisterV_8H : IArm64RegisterVPacked
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV8H(int index) => _value = 8U << 24 | (uint)Arm64RegisterVKind.H << 16 | (uint)Arm64RegisterKind.VTyped << 8 | (uint)index;
+    internal Arm64RegisterV_8H(int index) => _value = (4U << 24) | ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1275,7 +1629,7 @@ public readonly record struct Arm64RegisterV8H : IArm64RegisterVTyped
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)(_value >> 24);
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -1292,16 +1646,17 @@ public readonly record struct Arm64RegisterV8H : IArm64RegisterVTyped
         charsWritten = result ? text.Length : 0;
         return result;
     }
-}
+    }
+
 /// <summary>
 /// Represents an ARM64 a vector typed with Single-precision 32-bit floating-point register (V.S arrangement).
 /// </summary>
-public readonly record struct Arm64RegisterVTypedScalarS : IArm64RegisterVTypedScalar
+public readonly record struct Arm64RegisterV_S : IArm64RegisterVTyped
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterVTypedScalarS(int index) => _value = (uint)Arm64RegisterVKind.S << 16 | (uint)Arm64RegisterKind.VTypedScalar << 8 | (uint)index;
+    internal Arm64RegisterV_S(int index) => _value = ((uint)Arm64RegisterVKind.S << 16) | ((uint)Arm64RegisterKind.VTyped << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1311,6 +1666,11 @@ public readonly record struct Arm64RegisterVTypedScalarS : IArm64RegisterVTypedS
 
     /// <inheritdoc />
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <summary>
+    /// Gets the indexed element of this vector typed register.
+    /// </summary>
+    public Indexed this[int elementIndex] => new(Index, elementIndex);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -1326,18 +1686,53 @@ public readonly record struct Arm64RegisterVTypedScalarS : IArm64RegisterVTypedS
         var result = text.AsSpan().TryCopyTo(destination);
         charsWritten = result ? text.Length : 0;
         return result;
+    }
+
+    /// <summary>
+    /// Represents an ARM64 a vector indexed with Single-precision 32-bit floating-point register (V.S arrangement).
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    {
+        private readonly uint _value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | ((uint)Arm64RegisterVKind.S << 16) | ((uint)Arm64RegisterKind.VTypedIndexed << 8) | (uint)registerIndex;
+
+        /// <inheritdoc />
+        public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+        /// <inheritdoc />
+        public int Index => (byte)_value;
+
+        /// <inheritdoc />
+        public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+        /// <inheritdoc />
+        public int ElementIndex => (byte)(_value >> 28);
+
+        /// <inheritdoc />
+        public override string ToString() => ToString(null, null);
+
+        /// <inheritdoc />
+        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 
 /// <summary>
 /// Represents an ARM64 a Single-precision 32-bit floating-point register (S arrangement).
 /// </summary>
-public readonly record struct Arm64RegisterVScalarS : IArm64RegisterVScalar
+public readonly record struct Arm64RegisterS : IArm64RegisterVScalar
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterVScalarS(int index) => _value = (uint)Arm64RegisterVKind.S << 16 | (uint)Arm64RegisterKind.VScalar << 8 | (uint)index;
+    internal Arm64RegisterS(int index) => _value = ((uint)Arm64RegisterVKind.S << 16) | ((uint)Arm64RegisterKind.VScalar << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1367,173 +1762,173 @@ public readonly record struct Arm64RegisterVScalarS : IArm64RegisterVScalar
     /// <summary>
     /// Gets the S0 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S0 => new(0);
+    public static Arm64RegisterS S0 => new(0);
 
     /// <summary>
     /// Gets the S1 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S1 => new(1);
+    public static Arm64RegisterS S1 => new(1);
 
     /// <summary>
     /// Gets the S2 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S2 => new(2);
+    public static Arm64RegisterS S2 => new(2);
 
     /// <summary>
     /// Gets the S3 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S3 => new(3);
+    public static Arm64RegisterS S3 => new(3);
 
     /// <summary>
     /// Gets the S4 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S4 => new(4);
+    public static Arm64RegisterS S4 => new(4);
 
     /// <summary>
     /// Gets the S5 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S5 => new(5);
+    public static Arm64RegisterS S5 => new(5);
 
     /// <summary>
     /// Gets the S6 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S6 => new(6);
+    public static Arm64RegisterS S6 => new(6);
 
     /// <summary>
     /// Gets the S7 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S7 => new(7);
+    public static Arm64RegisterS S7 => new(7);
 
     /// <summary>
     /// Gets the S8 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S8 => new(8);
+    public static Arm64RegisterS S8 => new(8);
 
     /// <summary>
     /// Gets the S9 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S9 => new(9);
+    public static Arm64RegisterS S9 => new(9);
 
     /// <summary>
     /// Gets the S10 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S10 => new(10);
+    public static Arm64RegisterS S10 => new(10);
 
     /// <summary>
     /// Gets the S11 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S11 => new(11);
+    public static Arm64RegisterS S11 => new(11);
 
     /// <summary>
     /// Gets the S12 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S12 => new(12);
+    public static Arm64RegisterS S12 => new(12);
 
     /// <summary>
     /// Gets the S13 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S13 => new(13);
+    public static Arm64RegisterS S13 => new(13);
 
     /// <summary>
     /// Gets the S14 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S14 => new(14);
+    public static Arm64RegisterS S14 => new(14);
 
     /// <summary>
     /// Gets the S15 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S15 => new(15);
+    public static Arm64RegisterS S15 => new(15);
 
     /// <summary>
     /// Gets the S16 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S16 => new(16);
+    public static Arm64RegisterS S16 => new(16);
 
     /// <summary>
     /// Gets the S17 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S17 => new(17);
+    public static Arm64RegisterS S17 => new(17);
 
     /// <summary>
     /// Gets the S18 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S18 => new(18);
+    public static Arm64RegisterS S18 => new(18);
 
     /// <summary>
     /// Gets the S19 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S19 => new(19);
+    public static Arm64RegisterS S19 => new(19);
 
     /// <summary>
     /// Gets the S20 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S20 => new(20);
+    public static Arm64RegisterS S20 => new(20);
 
     /// <summary>
     /// Gets the S21 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S21 => new(21);
+    public static Arm64RegisterS S21 => new(21);
 
     /// <summary>
     /// Gets the S22 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S22 => new(22);
+    public static Arm64RegisterS S22 => new(22);
 
     /// <summary>
     /// Gets the S23 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S23 => new(23);
+    public static Arm64RegisterS S23 => new(23);
 
     /// <summary>
     /// Gets the S24 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S24 => new(24);
+    public static Arm64RegisterS S24 => new(24);
 
     /// <summary>
     /// Gets the S25 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S25 => new(25);
+    public static Arm64RegisterS S25 => new(25);
 
     /// <summary>
     /// Gets the S26 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S26 => new(26);
+    public static Arm64RegisterS S26 => new(26);
 
     /// <summary>
     /// Gets the S27 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S27 => new(27);
+    public static Arm64RegisterS S27 => new(27);
 
     /// <summary>
     /// Gets the S28 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S28 => new(28);
+    public static Arm64RegisterS S28 => new(28);
 
     /// <summary>
     /// Gets the S29 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S29 => new(29);
+    public static Arm64RegisterS S29 => new(29);
 
     /// <summary>
     /// Gets the S30 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S30 => new(30);
+    public static Arm64RegisterS S30 => new(30);
 
     /// <summary>
     /// Gets the S31 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S31 => new(31);
+    public static Arm64RegisterS S31 => new(31);
 }
 
 /// <summary>
 /// Represents an ARM64 an arranged 2 x S, Single-precision 32-bit floating-point register
 /// </summary>
-public readonly record struct Arm64RegisterV2S : IArm64RegisterVTyped
+public readonly record struct Arm64RegisterV_2S : IArm64RegisterVPacked
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV2S(int index) => _value = 2U << 24 | (uint)Arm64RegisterVKind.S << 16 | (uint)Arm64RegisterKind.VTyped << 8 | (uint)index;
+    internal Arm64RegisterV_2S(int index) => _value = (1U << 24) | ((uint)Arm64RegisterVKind.S << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1545,7 +1940,7 @@ public readonly record struct Arm64RegisterV2S : IArm64RegisterVTyped
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)(_value >> 24);
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -1562,17 +1957,18 @@ public readonly record struct Arm64RegisterV2S : IArm64RegisterVTyped
         charsWritten = result ? text.Length : 0;
         return result;
     }
-}
+    }
+
 
 /// <summary>
 /// Represents an ARM64 an arranged 4 x S, Single-precision 32-bit floating-point register
 /// </summary>
-public readonly record struct Arm64RegisterV4S : IArm64RegisterVTyped
+public readonly record struct Arm64RegisterV_4S : IArm64RegisterVPacked
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV4S(int index) => _value = 4U << 24 | (uint)Arm64RegisterVKind.S << 16 | (uint)Arm64RegisterKind.VTyped << 8 | (uint)index;
+    internal Arm64RegisterV_4S(int index) => _value = (2U << 24) | ((uint)Arm64RegisterVKind.S << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1584,7 +1980,7 @@ public readonly record struct Arm64RegisterV4S : IArm64RegisterVTyped
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)(_value >> 24);
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -1601,16 +1997,17 @@ public readonly record struct Arm64RegisterV4S : IArm64RegisterVTyped
         charsWritten = result ? text.Length : 0;
         return result;
     }
-}
+    }
+
 /// <summary>
 /// Represents an ARM64 a vector typed with Double-precision 64-bit floating-point register (V.D arrangement).
 /// </summary>
-public readonly record struct Arm64RegisterVTypedScalarD : IArm64RegisterVTypedScalar
+public readonly record struct Arm64RegisterV_D : IArm64RegisterVTyped
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterVTypedScalarD(int index) => _value = (uint)Arm64RegisterVKind.D << 16 | (uint)Arm64RegisterKind.VTypedScalar << 8 | (uint)index;
+    internal Arm64RegisterV_D(int index) => _value = ((uint)Arm64RegisterVKind.D << 16) | ((uint)Arm64RegisterKind.VTyped << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1620,6 +2017,11 @@ public readonly record struct Arm64RegisterVTypedScalarD : IArm64RegisterVTypedS
 
     /// <inheritdoc />
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <summary>
+    /// Gets the indexed element of this vector typed register.
+    /// </summary>
+    public Indexed this[int elementIndex] => new(Index, elementIndex);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -1635,18 +2037,53 @@ public readonly record struct Arm64RegisterVTypedScalarD : IArm64RegisterVTypedS
         var result = text.AsSpan().TryCopyTo(destination);
         charsWritten = result ? text.Length : 0;
         return result;
+    }
+
+    /// <summary>
+    /// Represents an ARM64 a vector indexed with Double-precision 64-bit floating-point register (V.D arrangement).
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    {
+        private readonly uint _value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | ((uint)Arm64RegisterVKind.D << 16) | ((uint)Arm64RegisterKind.VTypedIndexed << 8) | (uint)registerIndex;
+
+        /// <inheritdoc />
+        public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+        /// <inheritdoc />
+        public int Index => (byte)_value;
+
+        /// <inheritdoc />
+        public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+        /// <inheritdoc />
+        public int ElementIndex => (byte)(_value >> 28);
+
+        /// <inheritdoc />
+        public override string ToString() => ToString(null, null);
+
+        /// <inheritdoc />
+        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 
 /// <summary>
 /// Represents an ARM64 a Double-precision 64-bit floating-point register (D arrangement).
 /// </summary>
-public readonly record struct Arm64RegisterVScalarD : IArm64RegisterVScalar
+public readonly record struct Arm64RegisterD : IArm64RegisterVScalar
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterVScalarD(int index) => _value = (uint)Arm64RegisterVKind.D << 16 | (uint)Arm64RegisterKind.VScalar << 8 | (uint)index;
+    internal Arm64RegisterD(int index) => _value = ((uint)Arm64RegisterVKind.D << 16) | ((uint)Arm64RegisterKind.VScalar << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1676,173 +2113,173 @@ public readonly record struct Arm64RegisterVScalarD : IArm64RegisterVScalar
     /// <summary>
     /// Gets the D0 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D0 => new(0);
+    public static Arm64RegisterD D0 => new(0);
 
     /// <summary>
     /// Gets the D1 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D1 => new(1);
+    public static Arm64RegisterD D1 => new(1);
 
     /// <summary>
     /// Gets the D2 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D2 => new(2);
+    public static Arm64RegisterD D2 => new(2);
 
     /// <summary>
     /// Gets the D3 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D3 => new(3);
+    public static Arm64RegisterD D3 => new(3);
 
     /// <summary>
     /// Gets the D4 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D4 => new(4);
+    public static Arm64RegisterD D4 => new(4);
 
     /// <summary>
     /// Gets the D5 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D5 => new(5);
+    public static Arm64RegisterD D5 => new(5);
 
     /// <summary>
     /// Gets the D6 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D6 => new(6);
+    public static Arm64RegisterD D6 => new(6);
 
     /// <summary>
     /// Gets the D7 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D7 => new(7);
+    public static Arm64RegisterD D7 => new(7);
 
     /// <summary>
     /// Gets the D8 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D8 => new(8);
+    public static Arm64RegisterD D8 => new(8);
 
     /// <summary>
     /// Gets the D9 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D9 => new(9);
+    public static Arm64RegisterD D9 => new(9);
 
     /// <summary>
     /// Gets the D10 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D10 => new(10);
+    public static Arm64RegisterD D10 => new(10);
 
     /// <summary>
     /// Gets the D11 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D11 => new(11);
+    public static Arm64RegisterD D11 => new(11);
 
     /// <summary>
     /// Gets the D12 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D12 => new(12);
+    public static Arm64RegisterD D12 => new(12);
 
     /// <summary>
     /// Gets the D13 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D13 => new(13);
+    public static Arm64RegisterD D13 => new(13);
 
     /// <summary>
     /// Gets the D14 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D14 => new(14);
+    public static Arm64RegisterD D14 => new(14);
 
     /// <summary>
     /// Gets the D15 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D15 => new(15);
+    public static Arm64RegisterD D15 => new(15);
 
     /// <summary>
     /// Gets the D16 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D16 => new(16);
+    public static Arm64RegisterD D16 => new(16);
 
     /// <summary>
     /// Gets the D17 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D17 => new(17);
+    public static Arm64RegisterD D17 => new(17);
 
     /// <summary>
     /// Gets the D18 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D18 => new(18);
+    public static Arm64RegisterD D18 => new(18);
 
     /// <summary>
     /// Gets the D19 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D19 => new(19);
+    public static Arm64RegisterD D19 => new(19);
 
     /// <summary>
     /// Gets the D20 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D20 => new(20);
+    public static Arm64RegisterD D20 => new(20);
 
     /// <summary>
     /// Gets the D21 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D21 => new(21);
+    public static Arm64RegisterD D21 => new(21);
 
     /// <summary>
     /// Gets the D22 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D22 => new(22);
+    public static Arm64RegisterD D22 => new(22);
 
     /// <summary>
     /// Gets the D23 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D23 => new(23);
+    public static Arm64RegisterD D23 => new(23);
 
     /// <summary>
     /// Gets the D24 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D24 => new(24);
+    public static Arm64RegisterD D24 => new(24);
 
     /// <summary>
     /// Gets the D25 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D25 => new(25);
+    public static Arm64RegisterD D25 => new(25);
 
     /// <summary>
     /// Gets the D26 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D26 => new(26);
+    public static Arm64RegisterD D26 => new(26);
 
     /// <summary>
     /// Gets the D27 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D27 => new(27);
+    public static Arm64RegisterD D27 => new(27);
 
     /// <summary>
     /// Gets the D28 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D28 => new(28);
+    public static Arm64RegisterD D28 => new(28);
 
     /// <summary>
     /// Gets the D29 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D29 => new(29);
+    public static Arm64RegisterD D29 => new(29);
 
     /// <summary>
     /// Gets the D30 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D30 => new(30);
+    public static Arm64RegisterD D30 => new(30);
 
     /// <summary>
     /// Gets the D31 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D31 => new(31);
+    public static Arm64RegisterD D31 => new(31);
 }
 
 /// <summary>
 /// Represents an ARM64 an arranged 2 x D, Double-precision 64-bit floating-point register
 /// </summary>
-public readonly record struct Arm64RegisterV2D : IArm64RegisterVTyped
+public readonly record struct Arm64RegisterV_2D : IArm64RegisterVPacked
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV2D(int index) => _value = 2U << 24 | (uint)Arm64RegisterVKind.D << 16 | (uint)Arm64RegisterKind.VTyped << 8 | (uint)index;
+    internal Arm64RegisterV_2D(int index) => _value = (1U << 24) | ((uint)Arm64RegisterVKind.D << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1854,7 +2291,7 @@ public readonly record struct Arm64RegisterV2D : IArm64RegisterVTyped
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)(_value >> 24);
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -1871,17 +2308,18 @@ public readonly record struct Arm64RegisterV2D : IArm64RegisterVTyped
         charsWritten = result ? text.Length : 0;
         return result;
     }
-}
+    }
+
 
 /// <summary>
 /// Represents an ARM64 a Double-precision 64-bit floating-point register (Q arrangement).
 /// </summary>
-public readonly record struct Arm64RegisterVScalarQ : IArm64RegisterVScalar
+public readonly record struct Arm64RegisterQ : IArm64RegisterVScalar
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterVScalarQ(int index) => _value = (uint)Arm64RegisterVKind.Q << 16 | (uint)Arm64RegisterKind.VScalar << 8 | (uint)index;
+    internal Arm64RegisterQ(int index) => _value = ((uint)Arm64RegisterVKind.Q << 16) | ((uint)Arm64RegisterKind.VScalar << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1911,162 +2349,162 @@ public readonly record struct Arm64RegisterVScalarQ : IArm64RegisterVScalar
     /// <summary>
     /// Gets the Q0 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q0 => new(0);
+    public static Arm64RegisterQ Q0 => new(0);
 
     /// <summary>
     /// Gets the Q1 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q1 => new(1);
+    public static Arm64RegisterQ Q1 => new(1);
 
     /// <summary>
     /// Gets the Q2 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q2 => new(2);
+    public static Arm64RegisterQ Q2 => new(2);
 
     /// <summary>
     /// Gets the Q3 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q3 => new(3);
+    public static Arm64RegisterQ Q3 => new(3);
 
     /// <summary>
     /// Gets the Q4 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q4 => new(4);
+    public static Arm64RegisterQ Q4 => new(4);
 
     /// <summary>
     /// Gets the Q5 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q5 => new(5);
+    public static Arm64RegisterQ Q5 => new(5);
 
     /// <summary>
     /// Gets the Q6 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q6 => new(6);
+    public static Arm64RegisterQ Q6 => new(6);
 
     /// <summary>
     /// Gets the Q7 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q7 => new(7);
+    public static Arm64RegisterQ Q7 => new(7);
 
     /// <summary>
     /// Gets the Q8 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q8 => new(8);
+    public static Arm64RegisterQ Q8 => new(8);
 
     /// <summary>
     /// Gets the Q9 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q9 => new(9);
+    public static Arm64RegisterQ Q9 => new(9);
 
     /// <summary>
     /// Gets the Q10 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q10 => new(10);
+    public static Arm64RegisterQ Q10 => new(10);
 
     /// <summary>
     /// Gets the Q11 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q11 => new(11);
+    public static Arm64RegisterQ Q11 => new(11);
 
     /// <summary>
     /// Gets the Q12 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q12 => new(12);
+    public static Arm64RegisterQ Q12 => new(12);
 
     /// <summary>
     /// Gets the Q13 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q13 => new(13);
+    public static Arm64RegisterQ Q13 => new(13);
 
     /// <summary>
     /// Gets the Q14 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q14 => new(14);
+    public static Arm64RegisterQ Q14 => new(14);
 
     /// <summary>
     /// Gets the Q15 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q15 => new(15);
+    public static Arm64RegisterQ Q15 => new(15);
 
     /// <summary>
     /// Gets the Q16 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q16 => new(16);
+    public static Arm64RegisterQ Q16 => new(16);
 
     /// <summary>
     /// Gets the Q17 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q17 => new(17);
+    public static Arm64RegisterQ Q17 => new(17);
 
     /// <summary>
     /// Gets the Q18 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q18 => new(18);
+    public static Arm64RegisterQ Q18 => new(18);
 
     /// <summary>
     /// Gets the Q19 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q19 => new(19);
+    public static Arm64RegisterQ Q19 => new(19);
 
     /// <summary>
     /// Gets the Q20 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q20 => new(20);
+    public static Arm64RegisterQ Q20 => new(20);
 
     /// <summary>
     /// Gets the Q21 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q21 => new(21);
+    public static Arm64RegisterQ Q21 => new(21);
 
     /// <summary>
     /// Gets the Q22 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q22 => new(22);
+    public static Arm64RegisterQ Q22 => new(22);
 
     /// <summary>
     /// Gets the Q23 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q23 => new(23);
+    public static Arm64RegisterQ Q23 => new(23);
 
     /// <summary>
     /// Gets the Q24 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q24 => new(24);
+    public static Arm64RegisterQ Q24 => new(24);
 
     /// <summary>
     /// Gets the Q25 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q25 => new(25);
+    public static Arm64RegisterQ Q25 => new(25);
 
     /// <summary>
     /// Gets the Q26 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q26 => new(26);
+    public static Arm64RegisterQ Q26 => new(26);
 
     /// <summary>
     /// Gets the Q27 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q27 => new(27);
+    public static Arm64RegisterQ Q27 => new(27);
 
     /// <summary>
     /// Gets the Q28 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q28 => new(28);
+    public static Arm64RegisterQ Q28 => new(28);
 
     /// <summary>
     /// Gets the Q29 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q29 => new(29);
+    public static Arm64RegisterQ Q29 => new(29);
 
     /// <summary>
     /// Gets the Q30 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q30 => new(30);
+    public static Arm64RegisterQ Q30 => new(30);
 
     /// <summary>
     /// Gets the Q31 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q31 => new(31);
+    public static Arm64RegisterQ Q31 => new(31);
 }
 
 partial class Arm64Factory
@@ -2528,515 +2966,515 @@ partial class Arm64Factory
     /// <summary>
     /// Gets the H0 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H0 => Arm64RegisterVScalarH.H0;
+    public static Arm64RegisterH H0 => Arm64RegisterH.H0;
     /// <summary>
     /// Gets the H1 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H1 => Arm64RegisterVScalarH.H1;
+    public static Arm64RegisterH H1 => Arm64RegisterH.H1;
     /// <summary>
     /// Gets the H2 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H2 => Arm64RegisterVScalarH.H2;
+    public static Arm64RegisterH H2 => Arm64RegisterH.H2;
     /// <summary>
     /// Gets the H3 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H3 => Arm64RegisterVScalarH.H3;
+    public static Arm64RegisterH H3 => Arm64RegisterH.H3;
     /// <summary>
     /// Gets the H4 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H4 => Arm64RegisterVScalarH.H4;
+    public static Arm64RegisterH H4 => Arm64RegisterH.H4;
     /// <summary>
     /// Gets the H5 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H5 => Arm64RegisterVScalarH.H5;
+    public static Arm64RegisterH H5 => Arm64RegisterH.H5;
     /// <summary>
     /// Gets the H6 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H6 => Arm64RegisterVScalarH.H6;
+    public static Arm64RegisterH H6 => Arm64RegisterH.H6;
     /// <summary>
     /// Gets the H7 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H7 => Arm64RegisterVScalarH.H7;
+    public static Arm64RegisterH H7 => Arm64RegisterH.H7;
     /// <summary>
     /// Gets the H8 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H8 => Arm64RegisterVScalarH.H8;
+    public static Arm64RegisterH H8 => Arm64RegisterH.H8;
     /// <summary>
     /// Gets the H9 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H9 => Arm64RegisterVScalarH.H9;
+    public static Arm64RegisterH H9 => Arm64RegisterH.H9;
     /// <summary>
     /// Gets the H10 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H10 => Arm64RegisterVScalarH.H10;
+    public static Arm64RegisterH H10 => Arm64RegisterH.H10;
     /// <summary>
     /// Gets the H11 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H11 => Arm64RegisterVScalarH.H11;
+    public static Arm64RegisterH H11 => Arm64RegisterH.H11;
     /// <summary>
     /// Gets the H12 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H12 => Arm64RegisterVScalarH.H12;
+    public static Arm64RegisterH H12 => Arm64RegisterH.H12;
     /// <summary>
     /// Gets the H13 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H13 => Arm64RegisterVScalarH.H13;
+    public static Arm64RegisterH H13 => Arm64RegisterH.H13;
     /// <summary>
     /// Gets the H14 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H14 => Arm64RegisterVScalarH.H14;
+    public static Arm64RegisterH H14 => Arm64RegisterH.H14;
     /// <summary>
     /// Gets the H15 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H15 => Arm64RegisterVScalarH.H15;
+    public static Arm64RegisterH H15 => Arm64RegisterH.H15;
     /// <summary>
     /// Gets the H16 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H16 => Arm64RegisterVScalarH.H16;
+    public static Arm64RegisterH H16 => Arm64RegisterH.H16;
     /// <summary>
     /// Gets the H17 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H17 => Arm64RegisterVScalarH.H17;
+    public static Arm64RegisterH H17 => Arm64RegisterH.H17;
     /// <summary>
     /// Gets the H18 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H18 => Arm64RegisterVScalarH.H18;
+    public static Arm64RegisterH H18 => Arm64RegisterH.H18;
     /// <summary>
     /// Gets the H19 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H19 => Arm64RegisterVScalarH.H19;
+    public static Arm64RegisterH H19 => Arm64RegisterH.H19;
     /// <summary>
     /// Gets the H20 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H20 => Arm64RegisterVScalarH.H20;
+    public static Arm64RegisterH H20 => Arm64RegisterH.H20;
     /// <summary>
     /// Gets the H21 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H21 => Arm64RegisterVScalarH.H21;
+    public static Arm64RegisterH H21 => Arm64RegisterH.H21;
     /// <summary>
     /// Gets the H22 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H22 => Arm64RegisterVScalarH.H22;
+    public static Arm64RegisterH H22 => Arm64RegisterH.H22;
     /// <summary>
     /// Gets the H23 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H23 => Arm64RegisterVScalarH.H23;
+    public static Arm64RegisterH H23 => Arm64RegisterH.H23;
     /// <summary>
     /// Gets the H24 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H24 => Arm64RegisterVScalarH.H24;
+    public static Arm64RegisterH H24 => Arm64RegisterH.H24;
     /// <summary>
     /// Gets the H25 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H25 => Arm64RegisterVScalarH.H25;
+    public static Arm64RegisterH H25 => Arm64RegisterH.H25;
     /// <summary>
     /// Gets the H26 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H26 => Arm64RegisterVScalarH.H26;
+    public static Arm64RegisterH H26 => Arm64RegisterH.H26;
     /// <summary>
     /// Gets the H27 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H27 => Arm64RegisterVScalarH.H27;
+    public static Arm64RegisterH H27 => Arm64RegisterH.H27;
     /// <summary>
     /// Gets the H28 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H28 => Arm64RegisterVScalarH.H28;
+    public static Arm64RegisterH H28 => Arm64RegisterH.H28;
     /// <summary>
     /// Gets the H29 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H29 => Arm64RegisterVScalarH.H29;
+    public static Arm64RegisterH H29 => Arm64RegisterH.H29;
     /// <summary>
     /// Gets the H30 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H30 => Arm64RegisterVScalarH.H30;
+    public static Arm64RegisterH H30 => Arm64RegisterH.H30;
     /// <summary>
     /// Gets the H31 register.
     /// </summary>
-    public static Arm64RegisterVScalarH H31 => Arm64RegisterVScalarH.H31;
+    public static Arm64RegisterH H31 => Arm64RegisterH.H31;
     /// <summary>
     /// Gets the S0 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S0 => Arm64RegisterVScalarS.S0;
+    public static Arm64RegisterS S0 => Arm64RegisterS.S0;
     /// <summary>
     /// Gets the S1 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S1 => Arm64RegisterVScalarS.S1;
+    public static Arm64RegisterS S1 => Arm64RegisterS.S1;
     /// <summary>
     /// Gets the S2 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S2 => Arm64RegisterVScalarS.S2;
+    public static Arm64RegisterS S2 => Arm64RegisterS.S2;
     /// <summary>
     /// Gets the S3 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S3 => Arm64RegisterVScalarS.S3;
+    public static Arm64RegisterS S3 => Arm64RegisterS.S3;
     /// <summary>
     /// Gets the S4 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S4 => Arm64RegisterVScalarS.S4;
+    public static Arm64RegisterS S4 => Arm64RegisterS.S4;
     /// <summary>
     /// Gets the S5 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S5 => Arm64RegisterVScalarS.S5;
+    public static Arm64RegisterS S5 => Arm64RegisterS.S5;
     /// <summary>
     /// Gets the S6 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S6 => Arm64RegisterVScalarS.S6;
+    public static Arm64RegisterS S6 => Arm64RegisterS.S6;
     /// <summary>
     /// Gets the S7 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S7 => Arm64RegisterVScalarS.S7;
+    public static Arm64RegisterS S7 => Arm64RegisterS.S7;
     /// <summary>
     /// Gets the S8 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S8 => Arm64RegisterVScalarS.S8;
+    public static Arm64RegisterS S8 => Arm64RegisterS.S8;
     /// <summary>
     /// Gets the S9 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S9 => Arm64RegisterVScalarS.S9;
+    public static Arm64RegisterS S9 => Arm64RegisterS.S9;
     /// <summary>
     /// Gets the S10 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S10 => Arm64RegisterVScalarS.S10;
+    public static Arm64RegisterS S10 => Arm64RegisterS.S10;
     /// <summary>
     /// Gets the S11 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S11 => Arm64RegisterVScalarS.S11;
+    public static Arm64RegisterS S11 => Arm64RegisterS.S11;
     /// <summary>
     /// Gets the S12 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S12 => Arm64RegisterVScalarS.S12;
+    public static Arm64RegisterS S12 => Arm64RegisterS.S12;
     /// <summary>
     /// Gets the S13 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S13 => Arm64RegisterVScalarS.S13;
+    public static Arm64RegisterS S13 => Arm64RegisterS.S13;
     /// <summary>
     /// Gets the S14 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S14 => Arm64RegisterVScalarS.S14;
+    public static Arm64RegisterS S14 => Arm64RegisterS.S14;
     /// <summary>
     /// Gets the S15 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S15 => Arm64RegisterVScalarS.S15;
+    public static Arm64RegisterS S15 => Arm64RegisterS.S15;
     /// <summary>
     /// Gets the S16 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S16 => Arm64RegisterVScalarS.S16;
+    public static Arm64RegisterS S16 => Arm64RegisterS.S16;
     /// <summary>
     /// Gets the S17 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S17 => Arm64RegisterVScalarS.S17;
+    public static Arm64RegisterS S17 => Arm64RegisterS.S17;
     /// <summary>
     /// Gets the S18 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S18 => Arm64RegisterVScalarS.S18;
+    public static Arm64RegisterS S18 => Arm64RegisterS.S18;
     /// <summary>
     /// Gets the S19 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S19 => Arm64RegisterVScalarS.S19;
+    public static Arm64RegisterS S19 => Arm64RegisterS.S19;
     /// <summary>
     /// Gets the S20 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S20 => Arm64RegisterVScalarS.S20;
+    public static Arm64RegisterS S20 => Arm64RegisterS.S20;
     /// <summary>
     /// Gets the S21 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S21 => Arm64RegisterVScalarS.S21;
+    public static Arm64RegisterS S21 => Arm64RegisterS.S21;
     /// <summary>
     /// Gets the S22 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S22 => Arm64RegisterVScalarS.S22;
+    public static Arm64RegisterS S22 => Arm64RegisterS.S22;
     /// <summary>
     /// Gets the S23 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S23 => Arm64RegisterVScalarS.S23;
+    public static Arm64RegisterS S23 => Arm64RegisterS.S23;
     /// <summary>
     /// Gets the S24 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S24 => Arm64RegisterVScalarS.S24;
+    public static Arm64RegisterS S24 => Arm64RegisterS.S24;
     /// <summary>
     /// Gets the S25 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S25 => Arm64RegisterVScalarS.S25;
+    public static Arm64RegisterS S25 => Arm64RegisterS.S25;
     /// <summary>
     /// Gets the S26 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S26 => Arm64RegisterVScalarS.S26;
+    public static Arm64RegisterS S26 => Arm64RegisterS.S26;
     /// <summary>
     /// Gets the S27 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S27 => Arm64RegisterVScalarS.S27;
+    public static Arm64RegisterS S27 => Arm64RegisterS.S27;
     /// <summary>
     /// Gets the S28 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S28 => Arm64RegisterVScalarS.S28;
+    public static Arm64RegisterS S28 => Arm64RegisterS.S28;
     /// <summary>
     /// Gets the S29 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S29 => Arm64RegisterVScalarS.S29;
+    public static Arm64RegisterS S29 => Arm64RegisterS.S29;
     /// <summary>
     /// Gets the S30 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S30 => Arm64RegisterVScalarS.S30;
+    public static Arm64RegisterS S30 => Arm64RegisterS.S30;
     /// <summary>
     /// Gets the S31 register.
     /// </summary>
-    public static Arm64RegisterVScalarS S31 => Arm64RegisterVScalarS.S31;
+    public static Arm64RegisterS S31 => Arm64RegisterS.S31;
     /// <summary>
     /// Gets the D0 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D0 => Arm64RegisterVScalarD.D0;
+    public static Arm64RegisterD D0 => Arm64RegisterD.D0;
     /// <summary>
     /// Gets the D1 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D1 => Arm64RegisterVScalarD.D1;
+    public static Arm64RegisterD D1 => Arm64RegisterD.D1;
     /// <summary>
     /// Gets the D2 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D2 => Arm64RegisterVScalarD.D2;
+    public static Arm64RegisterD D2 => Arm64RegisterD.D2;
     /// <summary>
     /// Gets the D3 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D3 => Arm64RegisterVScalarD.D3;
+    public static Arm64RegisterD D3 => Arm64RegisterD.D3;
     /// <summary>
     /// Gets the D4 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D4 => Arm64RegisterVScalarD.D4;
+    public static Arm64RegisterD D4 => Arm64RegisterD.D4;
     /// <summary>
     /// Gets the D5 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D5 => Arm64RegisterVScalarD.D5;
+    public static Arm64RegisterD D5 => Arm64RegisterD.D5;
     /// <summary>
     /// Gets the D6 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D6 => Arm64RegisterVScalarD.D6;
+    public static Arm64RegisterD D6 => Arm64RegisterD.D6;
     /// <summary>
     /// Gets the D7 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D7 => Arm64RegisterVScalarD.D7;
+    public static Arm64RegisterD D7 => Arm64RegisterD.D7;
     /// <summary>
     /// Gets the D8 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D8 => Arm64RegisterVScalarD.D8;
+    public static Arm64RegisterD D8 => Arm64RegisterD.D8;
     /// <summary>
     /// Gets the D9 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D9 => Arm64RegisterVScalarD.D9;
+    public static Arm64RegisterD D9 => Arm64RegisterD.D9;
     /// <summary>
     /// Gets the D10 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D10 => Arm64RegisterVScalarD.D10;
+    public static Arm64RegisterD D10 => Arm64RegisterD.D10;
     /// <summary>
     /// Gets the D11 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D11 => Arm64RegisterVScalarD.D11;
+    public static Arm64RegisterD D11 => Arm64RegisterD.D11;
     /// <summary>
     /// Gets the D12 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D12 => Arm64RegisterVScalarD.D12;
+    public static Arm64RegisterD D12 => Arm64RegisterD.D12;
     /// <summary>
     /// Gets the D13 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D13 => Arm64RegisterVScalarD.D13;
+    public static Arm64RegisterD D13 => Arm64RegisterD.D13;
     /// <summary>
     /// Gets the D14 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D14 => Arm64RegisterVScalarD.D14;
+    public static Arm64RegisterD D14 => Arm64RegisterD.D14;
     /// <summary>
     /// Gets the D15 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D15 => Arm64RegisterVScalarD.D15;
+    public static Arm64RegisterD D15 => Arm64RegisterD.D15;
     /// <summary>
     /// Gets the D16 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D16 => Arm64RegisterVScalarD.D16;
+    public static Arm64RegisterD D16 => Arm64RegisterD.D16;
     /// <summary>
     /// Gets the D17 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D17 => Arm64RegisterVScalarD.D17;
+    public static Arm64RegisterD D17 => Arm64RegisterD.D17;
     /// <summary>
     /// Gets the D18 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D18 => Arm64RegisterVScalarD.D18;
+    public static Arm64RegisterD D18 => Arm64RegisterD.D18;
     /// <summary>
     /// Gets the D19 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D19 => Arm64RegisterVScalarD.D19;
+    public static Arm64RegisterD D19 => Arm64RegisterD.D19;
     /// <summary>
     /// Gets the D20 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D20 => Arm64RegisterVScalarD.D20;
+    public static Arm64RegisterD D20 => Arm64RegisterD.D20;
     /// <summary>
     /// Gets the D21 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D21 => Arm64RegisterVScalarD.D21;
+    public static Arm64RegisterD D21 => Arm64RegisterD.D21;
     /// <summary>
     /// Gets the D22 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D22 => Arm64RegisterVScalarD.D22;
+    public static Arm64RegisterD D22 => Arm64RegisterD.D22;
     /// <summary>
     /// Gets the D23 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D23 => Arm64RegisterVScalarD.D23;
+    public static Arm64RegisterD D23 => Arm64RegisterD.D23;
     /// <summary>
     /// Gets the D24 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D24 => Arm64RegisterVScalarD.D24;
+    public static Arm64RegisterD D24 => Arm64RegisterD.D24;
     /// <summary>
     /// Gets the D25 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D25 => Arm64RegisterVScalarD.D25;
+    public static Arm64RegisterD D25 => Arm64RegisterD.D25;
     /// <summary>
     /// Gets the D26 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D26 => Arm64RegisterVScalarD.D26;
+    public static Arm64RegisterD D26 => Arm64RegisterD.D26;
     /// <summary>
     /// Gets the D27 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D27 => Arm64RegisterVScalarD.D27;
+    public static Arm64RegisterD D27 => Arm64RegisterD.D27;
     /// <summary>
     /// Gets the D28 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D28 => Arm64RegisterVScalarD.D28;
+    public static Arm64RegisterD D28 => Arm64RegisterD.D28;
     /// <summary>
     /// Gets the D29 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D29 => Arm64RegisterVScalarD.D29;
+    public static Arm64RegisterD D29 => Arm64RegisterD.D29;
     /// <summary>
     /// Gets the D30 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D30 => Arm64RegisterVScalarD.D30;
+    public static Arm64RegisterD D30 => Arm64RegisterD.D30;
     /// <summary>
     /// Gets the D31 register.
     /// </summary>
-    public static Arm64RegisterVScalarD D31 => Arm64RegisterVScalarD.D31;
+    public static Arm64RegisterD D31 => Arm64RegisterD.D31;
     /// <summary>
     /// Gets the Q0 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q0 => Arm64RegisterVScalarQ.Q0;
+    public static Arm64RegisterQ Q0 => Arm64RegisterQ.Q0;
     /// <summary>
     /// Gets the Q1 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q1 => Arm64RegisterVScalarQ.Q1;
+    public static Arm64RegisterQ Q1 => Arm64RegisterQ.Q1;
     /// <summary>
     /// Gets the Q2 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q2 => Arm64RegisterVScalarQ.Q2;
+    public static Arm64RegisterQ Q2 => Arm64RegisterQ.Q2;
     /// <summary>
     /// Gets the Q3 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q3 => Arm64RegisterVScalarQ.Q3;
+    public static Arm64RegisterQ Q3 => Arm64RegisterQ.Q3;
     /// <summary>
     /// Gets the Q4 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q4 => Arm64RegisterVScalarQ.Q4;
+    public static Arm64RegisterQ Q4 => Arm64RegisterQ.Q4;
     /// <summary>
     /// Gets the Q5 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q5 => Arm64RegisterVScalarQ.Q5;
+    public static Arm64RegisterQ Q5 => Arm64RegisterQ.Q5;
     /// <summary>
     /// Gets the Q6 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q6 => Arm64RegisterVScalarQ.Q6;
+    public static Arm64RegisterQ Q6 => Arm64RegisterQ.Q6;
     /// <summary>
     /// Gets the Q7 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q7 => Arm64RegisterVScalarQ.Q7;
+    public static Arm64RegisterQ Q7 => Arm64RegisterQ.Q7;
     /// <summary>
     /// Gets the Q8 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q8 => Arm64RegisterVScalarQ.Q8;
+    public static Arm64RegisterQ Q8 => Arm64RegisterQ.Q8;
     /// <summary>
     /// Gets the Q9 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q9 => Arm64RegisterVScalarQ.Q9;
+    public static Arm64RegisterQ Q9 => Arm64RegisterQ.Q9;
     /// <summary>
     /// Gets the Q10 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q10 => Arm64RegisterVScalarQ.Q10;
+    public static Arm64RegisterQ Q10 => Arm64RegisterQ.Q10;
     /// <summary>
     /// Gets the Q11 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q11 => Arm64RegisterVScalarQ.Q11;
+    public static Arm64RegisterQ Q11 => Arm64RegisterQ.Q11;
     /// <summary>
     /// Gets the Q12 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q12 => Arm64RegisterVScalarQ.Q12;
+    public static Arm64RegisterQ Q12 => Arm64RegisterQ.Q12;
     /// <summary>
     /// Gets the Q13 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q13 => Arm64RegisterVScalarQ.Q13;
+    public static Arm64RegisterQ Q13 => Arm64RegisterQ.Q13;
     /// <summary>
     /// Gets the Q14 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q14 => Arm64RegisterVScalarQ.Q14;
+    public static Arm64RegisterQ Q14 => Arm64RegisterQ.Q14;
     /// <summary>
     /// Gets the Q15 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q15 => Arm64RegisterVScalarQ.Q15;
+    public static Arm64RegisterQ Q15 => Arm64RegisterQ.Q15;
     /// <summary>
     /// Gets the Q16 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q16 => Arm64RegisterVScalarQ.Q16;
+    public static Arm64RegisterQ Q16 => Arm64RegisterQ.Q16;
     /// <summary>
     /// Gets the Q17 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q17 => Arm64RegisterVScalarQ.Q17;
+    public static Arm64RegisterQ Q17 => Arm64RegisterQ.Q17;
     /// <summary>
     /// Gets the Q18 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q18 => Arm64RegisterVScalarQ.Q18;
+    public static Arm64RegisterQ Q18 => Arm64RegisterQ.Q18;
     /// <summary>
     /// Gets the Q19 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q19 => Arm64RegisterVScalarQ.Q19;
+    public static Arm64RegisterQ Q19 => Arm64RegisterQ.Q19;
     /// <summary>
     /// Gets the Q20 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q20 => Arm64RegisterVScalarQ.Q20;
+    public static Arm64RegisterQ Q20 => Arm64RegisterQ.Q20;
     /// <summary>
     /// Gets the Q21 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q21 => Arm64RegisterVScalarQ.Q21;
+    public static Arm64RegisterQ Q21 => Arm64RegisterQ.Q21;
     /// <summary>
     /// Gets the Q22 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q22 => Arm64RegisterVScalarQ.Q22;
+    public static Arm64RegisterQ Q22 => Arm64RegisterQ.Q22;
     /// <summary>
     /// Gets the Q23 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q23 => Arm64RegisterVScalarQ.Q23;
+    public static Arm64RegisterQ Q23 => Arm64RegisterQ.Q23;
     /// <summary>
     /// Gets the Q24 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q24 => Arm64RegisterVScalarQ.Q24;
+    public static Arm64RegisterQ Q24 => Arm64RegisterQ.Q24;
     /// <summary>
     /// Gets the Q25 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q25 => Arm64RegisterVScalarQ.Q25;
+    public static Arm64RegisterQ Q25 => Arm64RegisterQ.Q25;
     /// <summary>
     /// Gets the Q26 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q26 => Arm64RegisterVScalarQ.Q26;
+    public static Arm64RegisterQ Q26 => Arm64RegisterQ.Q26;
     /// <summary>
     /// Gets the Q27 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q27 => Arm64RegisterVScalarQ.Q27;
+    public static Arm64RegisterQ Q27 => Arm64RegisterQ.Q27;
     /// <summary>
     /// Gets the Q28 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q28 => Arm64RegisterVScalarQ.Q28;
+    public static Arm64RegisterQ Q28 => Arm64RegisterQ.Q28;
     /// <summary>
     /// Gets the Q29 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q29 => Arm64RegisterVScalarQ.Q29;
+    public static Arm64RegisterQ Q29 => Arm64RegisterQ.Q29;
     /// <summary>
     /// Gets the Q30 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q30 => Arm64RegisterVScalarQ.Q30;
+    public static Arm64RegisterQ Q30 => Arm64RegisterQ.Q30;
     /// <summary>
     /// Gets the Q31 register.
     /// </summary>
-    public static Arm64RegisterVScalarQ Q31 => Arm64RegisterVScalarQ.Q31;
+    public static Arm64RegisterQ Q31 => Arm64RegisterQ.Q31;
 }
 
 partial class Arm64Extensions
@@ -3381,9 +3819,9 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterVTypedScalarB register, bool upperCase = false) => upperCase ? RegisterVTypedScalarBUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVTypedScalarBLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_B register, bool upperCase = false) => upperCase ? RegisterV_BUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV_BLowerNames[ValidateRegisterIndex(register.Index)];
 
-    private static readonly string[] RegisterVTypedScalarBLowerNames = [
+    private static readonly string[] RegisterV_BLowerNames = [
         "V0.b",
         "V1.b",
         "V2.b",
@@ -3418,7 +3856,7 @@ partial class Arm64Extensions
         "V31.b",
         ];
 
-    private static readonly string[] RegisterVTypedScalarBUpperNames = [
+    private static readonly string[] RegisterV_BUpperNames = [
         "v0.B",
         "v1.B",
         "v2.B",
@@ -3456,7 +3894,157 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterV8B register, bool upperCase = false) => upperCase ? RegisterV8BUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV8BLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_2B register, bool upperCase = false) => upperCase ? RegisterV2BUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV2BLowerNames[ValidateRegisterIndex(register.Index)];
+
+    private static readonly string[] RegisterV2BLowerNames = [
+        "v0.2b",
+        "v1.2b",
+        "v2.2b",
+        "v3.2b",
+        "v4.2b",
+        "v5.2b",
+        "v6.2b",
+        "v7.2b",
+        "v8.2b",
+        "v9.2b",
+        "v10.2b",
+        "v11.2b",
+        "v12.2b",
+        "v13.2b",
+        "v14.2b",
+        "v15.2b",
+        "v16.2b",
+        "v17.2b",
+        "v18.2b",
+        "v19.2b",
+        "v20.2b",
+        "v21.2b",
+        "v22.2b",
+        "v23.2b",
+        "v24.2b",
+        "v25.2b",
+        "v26.2b",
+        "v27.2b",
+        "v28.2b",
+        "v29.2b",
+        "v30.2b",
+        "v31.2b",
+        ];
+
+    private static readonly string[] RegisterV2BUpperNames = [
+        "V0.2B",
+        "V1.2B",
+        "V2.2B",
+        "V3.2B",
+        "V4.2B",
+        "V5.2B",
+        "V6.2B",
+        "V7.2B",
+        "V8.2B",
+        "V9.2B",
+        "V10.2B",
+        "V11.2B",
+        "V12.2B",
+        "V13.2B",
+        "V14.2B",
+        "V15.2B",
+        "V16.2B",
+        "V17.2B",
+        "V18.2B",
+        "V19.2B",
+        "V20.2B",
+        "V21.2B",
+        "V22.2B",
+        "V23.2B",
+        "V24.2B",
+        "V25.2B",
+        "V26.2B",
+        "V27.2B",
+        "V28.2B",
+        "V29.2B",
+        "V30.2B",
+        "V31.2B",
+        ];
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV_4B register, bool upperCase = false) => upperCase ? RegisterV4BUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV4BLowerNames[ValidateRegisterIndex(register.Index)];
+
+    private static readonly string[] RegisterV4BLowerNames = [
+        "v0.4b",
+        "v1.4b",
+        "v2.4b",
+        "v3.4b",
+        "v4.4b",
+        "v5.4b",
+        "v6.4b",
+        "v7.4b",
+        "v8.4b",
+        "v9.4b",
+        "v10.4b",
+        "v11.4b",
+        "v12.4b",
+        "v13.4b",
+        "v14.4b",
+        "v15.4b",
+        "v16.4b",
+        "v17.4b",
+        "v18.4b",
+        "v19.4b",
+        "v20.4b",
+        "v21.4b",
+        "v22.4b",
+        "v23.4b",
+        "v24.4b",
+        "v25.4b",
+        "v26.4b",
+        "v27.4b",
+        "v28.4b",
+        "v29.4b",
+        "v30.4b",
+        "v31.4b",
+        ];
+
+    private static readonly string[] RegisterV4BUpperNames = [
+        "V0.4B",
+        "V1.4B",
+        "V2.4B",
+        "V3.4B",
+        "V4.4B",
+        "V5.4B",
+        "V6.4B",
+        "V7.4B",
+        "V8.4B",
+        "V9.4B",
+        "V10.4B",
+        "V11.4B",
+        "V12.4B",
+        "V13.4B",
+        "V14.4B",
+        "V15.4B",
+        "V16.4B",
+        "V17.4B",
+        "V18.4B",
+        "V19.4B",
+        "V20.4B",
+        "V21.4B",
+        "V22.4B",
+        "V23.4B",
+        "V24.4B",
+        "V25.4B",
+        "V26.4B",
+        "V27.4B",
+        "V28.4B",
+        "V29.4B",
+        "V30.4B",
+        "V31.4B",
+        ];
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV_8B register, bool upperCase = false) => upperCase ? RegisterV8BUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV8BLowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterV8BLowerNames = [
         "v0.8b",
@@ -3531,7 +4119,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterV16B register, bool upperCase = false) => upperCase ? RegisterV16BUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV16BLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_16B register, bool upperCase = false) => upperCase ? RegisterV16BUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV16BLowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterV16BLowerNames = [
         "v0.16b",
@@ -3605,7 +4193,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterVScalarH register, bool upperCase = false) => upperCase ? RegisterVScalarHUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalarHLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterH register, bool upperCase = false) => upperCase ? RegisterVScalarHUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalarHLowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterVScalarHLowerNames = [
         "h0",
@@ -3679,9 +4267,9 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterVTypedScalarH register, bool upperCase = false) => upperCase ? RegisterVTypedScalarHUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVTypedScalarHLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_H register, bool upperCase = false) => upperCase ? RegisterV_HUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV_HLowerNames[ValidateRegisterIndex(register.Index)];
 
-    private static readonly string[] RegisterVTypedScalarHLowerNames = [
+    private static readonly string[] RegisterV_HLowerNames = [
         "V0.h",
         "V1.h",
         "V2.h",
@@ -3716,7 +4304,7 @@ partial class Arm64Extensions
         "V31.h",
         ];
 
-    private static readonly string[] RegisterVTypedScalarHUpperNames = [
+    private static readonly string[] RegisterV_HUpperNames = [
         "v0.H",
         "v1.H",
         "v2.H",
@@ -3754,7 +4342,82 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterV4H register, bool upperCase = false) => upperCase ? RegisterV4HUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV4HLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_2H register, bool upperCase = false) => upperCase ? RegisterV2HUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV2HLowerNames[ValidateRegisterIndex(register.Index)];
+
+    private static readonly string[] RegisterV2HLowerNames = [
+        "v0.2h",
+        "v1.2h",
+        "v2.2h",
+        "v3.2h",
+        "v4.2h",
+        "v5.2h",
+        "v6.2h",
+        "v7.2h",
+        "v8.2h",
+        "v9.2h",
+        "v10.2h",
+        "v11.2h",
+        "v12.2h",
+        "v13.2h",
+        "v14.2h",
+        "v15.2h",
+        "v16.2h",
+        "v17.2h",
+        "v18.2h",
+        "v19.2h",
+        "v20.2h",
+        "v21.2h",
+        "v22.2h",
+        "v23.2h",
+        "v24.2h",
+        "v25.2h",
+        "v26.2h",
+        "v27.2h",
+        "v28.2h",
+        "v29.2h",
+        "v30.2h",
+        "v31.2h",
+        ];
+
+    private static readonly string[] RegisterV2HUpperNames = [
+        "V0.2H",
+        "V1.2H",
+        "V2.2H",
+        "V3.2H",
+        "V4.2H",
+        "V5.2H",
+        "V6.2H",
+        "V7.2H",
+        "V8.2H",
+        "V9.2H",
+        "V10.2H",
+        "V11.2H",
+        "V12.2H",
+        "V13.2H",
+        "V14.2H",
+        "V15.2H",
+        "V16.2H",
+        "V17.2H",
+        "V18.2H",
+        "V19.2H",
+        "V20.2H",
+        "V21.2H",
+        "V22.2H",
+        "V23.2H",
+        "V24.2H",
+        "V25.2H",
+        "V26.2H",
+        "V27.2H",
+        "V28.2H",
+        "V29.2H",
+        "V30.2H",
+        "V31.2H",
+        ];
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV_4H register, bool upperCase = false) => upperCase ? RegisterV4HUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV4HLowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterV4HLowerNames = [
         "v0.4h",
@@ -3829,7 +4492,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterV8H register, bool upperCase = false) => upperCase ? RegisterV8HUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV8HLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_8H register, bool upperCase = false) => upperCase ? RegisterV8HUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV8HLowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterV8HLowerNames = [
         "v0.8h",
@@ -3903,7 +4566,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterVScalarS register, bool upperCase = false) => upperCase ? RegisterVScalarSUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalarSLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterS register, bool upperCase = false) => upperCase ? RegisterVScalarSUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalarSLowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterVScalarSLowerNames = [
         "s0",
@@ -3977,9 +4640,9 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterVTypedScalarS register, bool upperCase = false) => upperCase ? RegisterVTypedScalarSUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVTypedScalarSLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_S register, bool upperCase = false) => upperCase ? RegisterV_SUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV_SLowerNames[ValidateRegisterIndex(register.Index)];
 
-    private static readonly string[] RegisterVTypedScalarSLowerNames = [
+    private static readonly string[] RegisterV_SLowerNames = [
         "V0.s",
         "V1.s",
         "V2.s",
@@ -4014,7 +4677,7 @@ partial class Arm64Extensions
         "V31.s",
         ];
 
-    private static readonly string[] RegisterVTypedScalarSUpperNames = [
+    private static readonly string[] RegisterV_SUpperNames = [
         "v0.S",
         "v1.S",
         "v2.S",
@@ -4052,7 +4715,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterV2S register, bool upperCase = false) => upperCase ? RegisterV2SUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV2SLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_2S register, bool upperCase = false) => upperCase ? RegisterV2SUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV2SLowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterV2SLowerNames = [
         "v0.2s",
@@ -4127,7 +4790,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterV4S register, bool upperCase = false) => upperCase ? RegisterV4SUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV4SLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_4S register, bool upperCase = false) => upperCase ? RegisterV4SUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV4SLowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterV4SLowerNames = [
         "v0.4s",
@@ -4201,7 +4864,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterVScalarD register, bool upperCase = false) => upperCase ? RegisterVScalarDUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalarDLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterD register, bool upperCase = false) => upperCase ? RegisterVScalarDUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalarDLowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterVScalarDLowerNames = [
         "d0",
@@ -4275,9 +4938,9 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterVTypedScalarD register, bool upperCase = false) => upperCase ? RegisterVTypedScalarDUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVTypedScalarDLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_D register, bool upperCase = false) => upperCase ? RegisterV_DUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV_DLowerNames[ValidateRegisterIndex(register.Index)];
 
-    private static readonly string[] RegisterVTypedScalarDLowerNames = [
+    private static readonly string[] RegisterV_DLowerNames = [
         "V0.d",
         "V1.d",
         "V2.d",
@@ -4312,7 +4975,7 @@ partial class Arm64Extensions
         "V31.d",
         ];
 
-    private static readonly string[] RegisterVTypedScalarDUpperNames = [
+    private static readonly string[] RegisterV_DUpperNames = [
         "v0.D",
         "v1.D",
         "v2.D",
@@ -4350,7 +5013,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterV2D register, bool upperCase = false) => upperCase ? RegisterV2DUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV2DLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_2D register, bool upperCase = false) => upperCase ? RegisterV2DUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV2DLowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterV2DLowerNames = [
         "v0.2d",
@@ -4424,7 +5087,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterVScalarQ register, bool upperCase = false) => upperCase ? RegisterVScalarQUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalarQLowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterQ register, bool upperCase = false) => upperCase ? RegisterVScalarQUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalarQLowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterVScalarQLowerNames = [
         "q0",

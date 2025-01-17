@@ -49,21 +49,6 @@ static class Arm64RegisterIndexHelper
             case 1:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F) | ((rawValue >> 17) & 0x60);
-                return TryDecodeFromBitValues(bitValue, 1, out regIndex);
-            }
-        }
-        
-        regIndex = default;
-        return false;
-    }
-    
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static bool TryDecodeFromBitValues(uint bitValue, byte selectorIndex, out int regIndex)
-    {
-        switch (selectorIndex)
-        {
-            case 1:
-            {
                 var bitsToTest = ((bitValue >> 5) & 0x3);
                 switch (bitsToTest)
                 {

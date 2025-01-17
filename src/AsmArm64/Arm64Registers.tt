@@ -7,8 +7,8 @@
 <#
     var registerKinds = new string[] { "X", "W", "C", "SP", "V" };
     var vectors = new (string Name, string Description, int[] Sizes) [] {
-        ("B", "8-bit vector register", new int[] {8, 16}),
-        ("H", "Half-precision 16-bit floating-point register", new int[] {4, 8}),
+        ("B", "8-bit vector register", new int[] {2, 4, 8, 16}),
+        ("H", "Half-precision 16-bit floating-point register", new int[] {2, 4, 8}),
         ("S", "Single-precision 32-bit floating-point register", new int[] {2, 4}),
         ("D", "Double-precision 64-bit floating-point register", new int[] {2}),
         ("Q", "Double-precision 64-bit floating-point register", new int[0])
@@ -57,11 +57,19 @@ public enum Arm64RegisterKind : byte
     /// <summary>
     /// Vector Typed register (Vn.8B, Vn.16B, Vn.4H, Vn.8H, Vn.2S, Vn.4S, Vn.2D).
     /// </summary>
+    VPacked,
+    /// <summary>
+    /// Vector Indexed register (Vn.2B[0], Vn.4B[1], Vn.2H[2]).
+    /// </summary>
+    VPackedIndexed,
+    /// <summary>
+    /// Vector Typed register (Vn.B, Vn.H, Vn.S, Vn.D).
+    /// </summary>
     VTyped,
     /// <summary>
-    /// Vector Typed register (Vn.B, Vn.H, Vn.S, Vn.2D).
+    /// Vector Indexed register (Vn.B[0], Vn.H[1], Vn.S[2], Vn.D[0]).
     /// </summary>
-    VTypedScalar,
+    VTypedIndexed,
     /// <summary>
     /// Vector Scalar element (e.g. H0 / S0 / D0).
     /// </summary>
@@ -94,7 +102,7 @@ public readonly record struct Arm64Register<#= kind #> : <#= kind == "V" ? "IArm
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private Arm64Register<#= kind #>(int index) => _value = (uint)Arm64RegisterKind.<#= kind #> << 8 | (uint)index;
+    private Arm64Register<#= kind #>(int index) => _value = ((uint)Arm64RegisterKind.<#= kind #> << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -110,13 +118,13 @@ public readonly record struct Arm64Register<#= kind #> : <#= kind == "V" ? "IArm
     /// <summary>
     /// Gets the V.<#= vkind #> register.
     /// </summary>
-    public Arm64RegisterVTypedScalar<#= vkind #> <#= vkind #> => new(Index);
+    public Arm64RegisterV_<#= vkind #> <#= vkind #> => new(Index);
 <# foreach(var size in vector.Sizes) { #>
 
     /// <summary>
     /// Gets the <#= size #> x <#= vkind #> <#= kind #> register.
     /// </summary>
-    public Arm64RegisterV<#= size #><#= vkind #> T_<#= size #><#= vkind #> => new(Index);
+    public Arm64RegisterV_<#= size #><#= vkind #> T_<#= size #><#= vkind #> => new(Index);
 <# } // foreach size #>
 <# } // foreach vector #>
 <# } // if kind == V #>
@@ -192,12 +200,12 @@ public readonly record struct Arm64Register<#= kind #> : <#= kind == "V" ? "IArm
 /// <summary>
 /// Represents an ARM64 a vector typed with <#= vector.Description #> (V.<#= kind #> arrangement).
 /// </summary>
-public readonly record struct Arm64RegisterVTypedScalar<#= kind #> : IArm64RegisterVTypedScalar
+public readonly record struct Arm64RegisterV_<#= kind #> : IArm64RegisterVTyped
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterVTypedScalar<#= kind #>(int index) => _value = (uint)Arm64RegisterVKind.<#= kind #> << 16 | (uint)Arm64RegisterKind.VTypedScalar << 8 | (uint)index;
+    internal Arm64RegisterV_<#= kind #>(int index) => _value = ((uint)Arm64RegisterVKind.<#= kind #> << 16) | ((uint)Arm64RegisterKind.VTyped << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -207,6 +215,11 @@ public readonly record struct Arm64RegisterVTypedScalar<#= kind #> : IArm64Regis
 
     /// <inheritdoc />
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <summary>
+    /// Gets the indexed element of this vector typed register.
+    /// </summary>
+    public Indexed this[int elementIndex] => new(Index, elementIndex);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -223,19 +236,54 @@ public readonly record struct Arm64RegisterVTypedScalar<#= kind #> : IArm64Regis
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Represents an ARM64 a vector indexed with <#= vector.Description #> (V.<#= kind #> arrangement).
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    {
+        private readonly uint _value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | ((uint)Arm64RegisterVKind.<#= kind #> << 16) | ((uint)Arm64RegisterKind.VTypedIndexed << 8) | (uint)registerIndex;
+
+        /// <inheritdoc />
+        public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+        /// <inheritdoc />
+        public int Index => (byte)_value;
+
+        /// <inheritdoc />
+        public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+        /// <inheritdoc />
+        public int ElementIndex => (byte)(_value >> 28);
+
+        /// <inheritdoc />
+        public override string ToString() => ToString(null, null);
+
+        /// <inheritdoc />
+        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 }
 <# } // if (kind != "Q") { #>
-
 <# if (kind != "B") { #>
+
 /// <summary>
 /// Represents an ARM64 a <#= vector.Description #> (<#= kind #> arrangement).
 /// </summary>
-public readonly record struct Arm64RegisterVScalar<#= kind #> : IArm64RegisterVScalar
+public readonly record struct Arm64Register<#= kind #> : IArm64RegisterVScalar
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterVScalar<#= kind #>(int index) => _value = (uint)Arm64RegisterVKind.<#= kind #> << 16 | (uint)Arm64RegisterKind.VScalar << 8 | (uint)index;
+    internal Arm64Register<#= kind #>(int index) => _value = ((uint)Arm64RegisterVKind.<#= kind #> << 16) | ((uint)Arm64RegisterKind.VScalar << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -266,7 +314,7 @@ public readonly record struct Arm64RegisterVScalar<#= kind #> : IArm64RegisterVS
     /// <summary>
     /// Gets the <#= kind #><#= i #> register.
     /// </summary>
-    public static Arm64RegisterVScalar<#= kind #> <#= kind #><#= i #> => new(<#= i #>);
+    public static Arm64Register<#= kind #> <#= kind #><#= i #> => new(<#= i #>);
 <# } #>
 }
 <# } // if (kind != "B") #>
@@ -275,12 +323,12 @@ public readonly record struct Arm64RegisterVScalar<#= kind #> : IArm64RegisterVS
 /// <summary>
 /// Represents an ARM64 an arranged <#= size #> x <#= kind #>, <#= vector.Description #>
 /// </summary>
-public readonly record struct Arm64RegisterV<#= size #><#= kind #> : IArm64RegisterVTyped
+public readonly record struct Arm64RegisterV_<#= size #><#= kind #> : IArm64RegisterVPacked
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV<#= size #><#= kind #>(int index) => _value = <#= size #>U << 24 | (uint)Arm64RegisterVKind.<#= kind #> << 16 | (uint)Arm64RegisterKind.VTyped << 8 | (uint)index;
+    internal Arm64RegisterV_<#= size #><#= kind #>(int index) => _value = (<#= size/2 #>U << 24) | ((uint)Arm64RegisterVKind.<#= kind #> << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -292,7 +340,7 @@ public readonly record struct Arm64RegisterV<#= size #><#= kind #> : IArm64Regis
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)(_value >> 24);
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -309,7 +357,53 @@ public readonly record struct Arm64RegisterV<#= size #><#= kind #> : IArm64Regis
         charsWritten = result ? text.Length : 0;
         return result;
     }
+    <# var combo = $"{size}{kind}"; if (combo == "2B" || combo == "4B" || combo == "2H") {#>
+
+    /// <summary>
+    /// Gets the indexed element of this vector packed register.
+    /// </summary>
+    public Indexed this[int elementIndex] => new(Index, elementIndex);
+
+    /// <summary>
+    /// Represents an ARM64 a vector indexed with (V.<#= kind #> arrangement).
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterVPacked, IArm64RegisterVIndexed
+    {
+        private readonly uint _value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (<#= size/2 #>U << 24) | ((uint)Arm64RegisterVKind.<#= kind #> << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
+
+        /// <inheritdoc />
+        public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+        /// <inheritdoc />
+        public int Index => (byte)_value;
+
+        /// <inheritdoc />
+        public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+        /// <inheritdoc />
+        public int ElementCount => (byte)((_value >> 24) & 0xF) << 1;
+
+        /// <inheritdoc />
+        public int ElementIndex => (byte)(_value >> 28);
+
+        /// <inheritdoc />
+        public override string ToString() => ToString(null, null);
+
+        /// <inheritdoc />
+        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+<# } // if combo == "2B" || combo == "4B" || combo == "2H" #>
 }
+
 <# } } // foreach size / kind #>
 
 partial class Arm64Factory
@@ -344,7 +438,7 @@ partial class Arm64Factory
     /// <summary>
     /// Gets the <#= vkind #><#= i #> register.
     /// </summary>
-    public static Arm64RegisterVScalar<#= vkind #> <#= vkind #><#= i #> => Arm64RegisterVScalar<#= vkind #>.<#= vkind #><#= i #>;
+    public static Arm64Register<#= vkind #> <#= vkind #><#= i #> => Arm64Register<#= vkind #>.<#= vkind #><#= i #>;
 <# } // for #>
 <# } // foreach vector #>
 }
@@ -393,7 +487,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the <#= kind #> register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterVScalar<#= vkind #> register, bool upperCase = false) => upperCase ? RegisterVScalar<#= vkind #>UpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalar<#= vkind #>LowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64Register<#= vkind #> register, bool upperCase = false) => upperCase ? RegisterVScalar<#= vkind #>UpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalar<#= vkind #>LowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterVScalar<#= vkind #>LowerNames = [
     <# for(int i = 0; i < 32; i++) { #>
@@ -411,15 +505,15 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the <#= kind #> register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterVTypedScalar<#= vkind #> register, bool upperCase = false) => upperCase ? RegisterVTypedScalar<#= vkind #>UpperNames[ValidateRegisterIndex(register.Index)] : RegisterVTypedScalar<#= vkind #>LowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_<#= vkind #> register, bool upperCase = false) => upperCase ? RegisterV_<#= vkind #>UpperNames[ValidateRegisterIndex(register.Index)] : RegisterV_<#= vkind #>LowerNames[ValidateRegisterIndex(register.Index)];
 
-    private static readonly string[] RegisterVTypedScalar<#= vkind #>LowerNames = [
+    private static readonly string[] RegisterV_<#= vkind #>LowerNames = [
     <# for(int i = 0; i < 32; i++) { #>
     "V<#= i #>.<#= vkind.ToLowerInvariant() #>",
     <# } #>
     ];
 
-    private static readonly string[] RegisterVTypedScalar<#= vkind #>UpperNames = [
+    private static readonly string[] RegisterV_<#= vkind #>UpperNames = [
     <# for(int i = 0; i < 32; i++) { #>
     "v<#= i #>.<#= vkind #>",
     <# } #>
@@ -430,7 +524,7 @@ partial class Arm64Extensions
     /// <summary>
     /// Converts the <#= kind #> register to a string.
     /// </summary>
-    public static string ToText(this Arm64RegisterV<#= size #><#= vkind #> register, bool upperCase = false) => upperCase ? RegisterV<#= size #><#= vkind #>UpperNames[ValidateRegisterIndex(register.Index)] : RegisterV<#= size #><#= vkind #>LowerNames[ValidateRegisterIndex(register.Index)];
+    public static string ToText(this Arm64RegisterV_<#= size #><#= vkind #> register, bool upperCase = false) => upperCase ? RegisterV<#= size #><#= vkind #>UpperNames[ValidateRegisterIndex(register.Index)] : RegisterV<#= size #><#= vkind #>LowerNames[ValidateRegisterIndex(register.Index)];
 
     private static readonly string[] RegisterV<#= size #><#= vkind #>LowerNames = [
     <# for(int i = 0; i < 32; i++) { #>

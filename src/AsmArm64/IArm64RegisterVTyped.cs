@@ -5,12 +5,6 @@
 namespace AsmArm64;
 
 /// <summary>
-/// Defines the interface for a typed arrangement of a vector register.
+/// Defines the interface for a vector typed scalar register (V0.S, V1.D...etc.)
 /// </summary>
-public interface IArm64RegisterVTyped : IArm64RegisterV
-{
-    /// <summary>
-    /// Gets the number of valid elements in the vector register.
-    /// </summary>
-    int ElementCount { get; }
-}
+public interface IArm64RegisterVTyped : IArm64RegisterV;

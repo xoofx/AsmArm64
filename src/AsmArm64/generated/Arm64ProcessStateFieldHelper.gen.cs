@@ -27,21 +27,6 @@ static class Arm64ProcessStateFieldHelper
             case 1:
             {
                 var bitValue = ((rawValue >> 5) & 0x7) | ((rawValue >> 13) & 0x38) | ((rawValue >> 2) & 0x3C0);
-                return TryDecodeFromBitValues(bitValue, 1, out processStateField);
-            }
-        }
-        
-        processStateField = default;
-        return false;
-    }
-    
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static bool TryDecodeFromBitValues(uint bitValue, byte selectorIndex, out Arm64ProcessStateField processStateField)
-    {
-        switch (selectorIndex)
-        {
-            case 1:
-            {
                 var bitsToTest = (bitValue & 0x3FF);
                 if ((bitsToTest & 0x3bf) == 8)
                 {

@@ -4,6 +4,8 @@
 
 namespace AsmArm64;
 
+using static Arm64Factory;
+
 public struct Entry
 {
     // Header
@@ -24,4 +26,10 @@ public struct Entry
     public readonly record struct EntryIndex(uint Value);
 
     public readonly record struct KeyEntryIndex(uint Key, EntryIndex Index);
+
+
+    public static Arm64RegisterV_2B.Indexed Test()
+    {
+        return V0.T_2B[0];
+    }
 }

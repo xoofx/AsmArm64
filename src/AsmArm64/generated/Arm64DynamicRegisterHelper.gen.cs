@@ -106,14 +106,42 @@ static class Arm64DynamicRegisterHelper
             case 1:
             {
                 var bitValue = ((rawValue >> 22) & 0x1);
-                return TryDecodeFromBitValues(bitValue, 1, out registerEncodingKind);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.S;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.D;
+                        return true;
+                    }
+                }
+                break;
             }
             // TBNZ_only_testbranch          : TBNZ        Rt, #imm, label <- Operand: Rt
             // TBZ_only_testbranch           : TBZ         Rt, #imm, label <- Operand: Rt
             case 2:
             {
                 var bitValue = ((rawValue >> 31) & 0x1);
-                return TryDecodeFromBitValues(bitValue, 2, out registerEncodingKind);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.W;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.X;
+                        return true;
+                    }
+                }
+                break;
             }
             // SQABS_asisdmisc_r             : SQABS       Vd, Vn <- Operand: Vd
             // SQABS_asisdmisc_r             : SQABS       Vd, Vn <- Operand: Vn
@@ -150,7 +178,31 @@ static class Arm64DynamicRegisterHelper
             case 3:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
-                return TryDecodeFromBitValues(bitValue, 3, out registerEncodingKind);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.B;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.H;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.S;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.D;
+                        return true;
+                    }
+                }
+                break;
             }
             // ADDV_asimdall_only            : ADDV        Vd, Vn.T <- Operand: Vd
             // SMAXV_asimdall_only           : SMAXV       Vd, Vn.T <- Operand: Vd
@@ -163,7 +215,26 @@ static class Arm64DynamicRegisterHelper
             case 4:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
-                return TryDecodeFromBitValues(bitValue, 4, out registerEncodingKind);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.B;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.H;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.S;
+                        return true;
+                    }
+                }
+                break;
             }
             // SADDLV_asimdall_only          : SADDLV      Vd, Vn.T <- Operand: Vd
             // SQXTN_asisdmisc_n             : SQXTN       Vbd, Van <- Operand: Van
@@ -173,7 +244,26 @@ static class Arm64DynamicRegisterHelper
             case 5:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
-                return TryDecodeFromBitValues(bitValue, 5, out registerEncodingKind);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.H;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.S;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.D;
+                        return true;
+                    }
+                }
+                break;
             }
             // SQDMLAL_asisddiff_only        : SQDMLAL     Vad, Vbn, Vbm <- Operand: Vbn
             // SQDMLAL_asisddiff_only        : SQDMLAL     Vad, Vbn, Vbm <- Operand: Vbm
@@ -207,7 +297,21 @@ static class Arm64DynamicRegisterHelper
             case 6:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
-                return TryDecodeFromBitValues(bitValue, 6, out registerEncodingKind);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 1:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.H;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.S;
+                        return true;
+                    }
+                }
+                break;
             }
             // SQDMLAL_asisddiff_only        : SQDMLAL     Vad, Vbn, Vbm <- Operand: Vad
             // SQDMLAL_asisdelem_l           : SQDMLAL     Vad, Vbn, Vm.Ts[index] <- Operand: Vad
@@ -218,7 +322,21 @@ static class Arm64DynamicRegisterHelper
             case 7:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
-                return TryDecodeFromBitValues(bitValue, 7, out registerEncodingKind);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 1:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.S;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        registerEncodingKind = Arm64RegisterEncodingKind.D;
+                        return true;
+                    }
+                }
+                break;
             }
             // ADD_64_addsub_ext             : ADD         Xd|SP, Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
             // ADDS_64s_addsub_ext           : ADDS        Xd, Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
@@ -227,226 +345,6 @@ static class Arm64DynamicRegisterHelper
             case 8:
             {
                 var bitValue = ((rawValue >> 13) & 0x7);
-                return TryDecodeFromBitValues(bitValue, 8, out registerEncodingKind);
-            }
-            // SQSHL_asisdshf_r              : SQSHL       Vd, Vn, #shift <- Operand: Vd
-            // SQSHL_asisdshf_r              : SQSHL       Vd, Vn, #shift <- Operand: Vn
-            // SQSHLU_asisdshf_r             : SQSHLU      Vd, Vn, #shift <- Operand: Vd
-            // SQSHLU_asisdshf_r             : SQSHLU      Vd, Vn, #shift <- Operand: Vn
-            // UQSHL_asisdshf_r              : UQSHL       Vd, Vn, #shift <- Operand: Vd
-            // UQSHL_asisdshf_r              : UQSHL       Vd, Vn, #shift <- Operand: Vn
-            case 9:
-            {
-                var bitValue = ((rawValue >> 19) & 0xF);
-                return TryDecodeFromBitValues(bitValue, 9, out registerEncodingKind);
-            }
-            // SQRSHRN_asisdshf_n            : SQRSHRN     Vbd, Van, #shift <- Operand: Vbd
-            // SQRSHRUN_asisdshf_n           : SQRSHRUN    Vbd, Van, #shift <- Operand: Vbd
-            // SQSHRN_asisdshf_n             : SQSHRN      Vbd, Van, #shift <- Operand: Vbd
-            // SQSHRUN_asisdshf_n            : SQSHRUN     Vbd, Van, #shift <- Operand: Vbd
-            // UQRSHRN_asisdshf_n            : UQRSHRN     Vbd, Van, #shift <- Operand: Vbd
-            // UQSHRN_asisdshf_n             : UQSHRN      Vbd, Van, #shift <- Operand: Vbd
-            case 10:
-            {
-                var bitValue = ((rawValue >> 19) & 0xF);
-                return TryDecodeFromBitValues(bitValue, 10, out registerEncodingKind);
-            }
-            // SQRSHRN_asisdshf_n            : SQRSHRN     Vbd, Van, #shift <- Operand: Van
-            // SQRSHRUN_asisdshf_n           : SQRSHRUN    Vbd, Van, #shift <- Operand: Van
-            // SQSHRN_asisdshf_n             : SQSHRN      Vbd, Van, #shift <- Operand: Van
-            // SQSHRUN_asisdshf_n            : SQSHRUN     Vbd, Van, #shift <- Operand: Van
-            // UQRSHRN_asisdshf_n            : UQRSHRN     Vbd, Van, #shift <- Operand: Van
-            // UQSHRN_asisdshf_n             : UQSHRN      Vbd, Van, #shift <- Operand: Van
-            case 11:
-            {
-                var bitValue = ((rawValue >> 19) & 0xF);
-                return TryDecodeFromBitValues(bitValue, 11, out registerEncodingKind);
-            }
-            // FCVTZS_asisdshf_c             : FCVTZS      Vd, Vn, #fbits <- Operand: Vd
-            // FCVTZS_asisdshf_c             : FCVTZS      Vd, Vn, #fbits <- Operand: Vn
-            // FCVTZU_asisdshf_c             : FCVTZU      Vd, Vn, #fbits <- Operand: Vd
-            // FCVTZU_asisdshf_c             : FCVTZU      Vd, Vn, #fbits <- Operand: Vn
-            // SCVTF_asisdshf_c              : SCVTF       Vd, Vn, #fbits <- Operand: Vd
-            // SCVTF_asisdshf_c              : SCVTF       Vd, Vn, #fbits <- Operand: Vn
-            // UCVTF_asisdshf_c              : UCVTF       Vd, Vn, #fbits <- Operand: Vd
-            // UCVTF_asisdshf_c              : UCVTF       Vd, Vn, #fbits <- Operand: Vn
-            case 12:
-            {
-                var bitValue = ((rawValue >> 19) & 0xF);
-                return TryDecodeFromBitValues(bitValue, 12, out registerEncodingKind);
-            }
-            // DUP_asisdone_only             : DUP         Vd, Vn.T[index] <- Operand: Vd
-            case 13:
-            {
-                var bitValue = ((rawValue >> 16) & 0x1F);
-                return TryDecodeFromBitValues(bitValue, 13, out registerEncodingKind);
-            }
-            // DUP_asimdins_dr_r             : DUP         Vd.T, Rn <- Operand: Rn
-            // INS_asimdins_ir_r             : INS         Vd.Ts[index], Rn <- Operand: Rn
-            case 14:
-            {
-                var bitValue = ((rawValue >> 16) & 0x1F);
-                return TryDecodeFromBitValues(bitValue, 14, out registerEncodingKind);
-            }
-        }
-        
-        registerEncodingKind = default;
-        return false;
-    }
-    
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static bool TryDecodeFromBitValues(uint bitValue, byte selectorIndex, out Arm64RegisterEncodingKind registerEncodingKind)
-    {
-        switch (selectorIndex)
-        {
-            case 1:
-            {
-                var bitsToTest = (bitValue & 0x1);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.S;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.D;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 2:
-            {
-                var bitsToTest = (bitValue & 0x1);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.W;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.X;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 3:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.B;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.H;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.S;
-                        return true;
-                    }
-                    case 3:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.D;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 4:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.B;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.H;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.S;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 5:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 0:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.H;
-                        return true;
-                    }
-                    case 1:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.S;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.D;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 6:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 1:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.H;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.S;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 7:
-            {
-                var bitsToTest = (bitValue & 0x3);
-                switch (bitsToTest)
-                {
-                    case 1:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.S;
-                        return true;
-                    }
-                    case 2:
-                    {
-                        registerEncodingKind = Arm64RegisterEncodingKind.D;
-                        return true;
-                    }
-                }
-                break;
-            }
-            case 8:
-            {
                 var bitsToTest = (bitValue & 0x7);
                 if (bitsToTest == 2)
                 {
@@ -475,8 +373,15 @@ static class Arm64DynamicRegisterHelper
                 }
                 break;
             }
+            // SQSHL_asisdshf_r              : SQSHL       Vd, Vn, #shift <- Operand: Vd
+            // SQSHL_asisdshf_r              : SQSHL       Vd, Vn, #shift <- Operand: Vn
+            // SQSHLU_asisdshf_r             : SQSHLU      Vd, Vn, #shift <- Operand: Vd
+            // SQSHLU_asisdshf_r             : SQSHLU      Vd, Vn, #shift <- Operand: Vn
+            // UQSHL_asisdshf_r              : UQSHL       Vd, Vn, #shift <- Operand: Vd
+            // UQSHL_asisdshf_r              : UQSHL       Vd, Vn, #shift <- Operand: Vn
             case 9:
             {
+                var bitValue = ((rawValue >> 19) & 0xF);
                 var bitsToTest = (bitValue & 0xF);
                 if (bitsToTest == 1)
                 {
@@ -500,8 +405,15 @@ static class Arm64DynamicRegisterHelper
                 }
                 break;
             }
+            // SQRSHRN_asisdshf_n            : SQRSHRN     Vbd, Van, #shift <- Operand: Vbd
+            // SQRSHRUN_asisdshf_n           : SQRSHRUN    Vbd, Van, #shift <- Operand: Vbd
+            // SQSHRN_asisdshf_n             : SQSHRN      Vbd, Van, #shift <- Operand: Vbd
+            // SQSHRUN_asisdshf_n            : SQSHRUN     Vbd, Van, #shift <- Operand: Vbd
+            // UQRSHRN_asisdshf_n            : UQRSHRN     Vbd, Van, #shift <- Operand: Vbd
+            // UQSHRN_asisdshf_n             : UQSHRN      Vbd, Van, #shift <- Operand: Vbd
             case 10:
             {
+                var bitValue = ((rawValue >> 19) & 0xF);
                 var bitsToTest = (bitValue & 0xF);
                 if (bitsToTest == 1)
                 {
@@ -520,8 +432,15 @@ static class Arm64DynamicRegisterHelper
                 }
                 break;
             }
+            // SQRSHRN_asisdshf_n            : SQRSHRN     Vbd, Van, #shift <- Operand: Van
+            // SQRSHRUN_asisdshf_n           : SQRSHRUN    Vbd, Van, #shift <- Operand: Van
+            // SQSHRN_asisdshf_n             : SQSHRN      Vbd, Van, #shift <- Operand: Van
+            // SQSHRUN_asisdshf_n            : SQSHRUN     Vbd, Van, #shift <- Operand: Van
+            // UQRSHRN_asisdshf_n            : UQRSHRN     Vbd, Van, #shift <- Operand: Van
+            // UQSHRN_asisdshf_n             : UQSHRN      Vbd, Van, #shift <- Operand: Van
             case 11:
             {
+                var bitValue = ((rawValue >> 19) & 0xF);
                 var bitsToTest = (bitValue & 0xF);
                 if (bitsToTest == 1)
                 {
@@ -540,8 +459,17 @@ static class Arm64DynamicRegisterHelper
                 }
                 break;
             }
+            // FCVTZS_asisdshf_c             : FCVTZS      Vd, Vn, #fbits <- Operand: Vd
+            // FCVTZS_asisdshf_c             : FCVTZS      Vd, Vn, #fbits <- Operand: Vn
+            // FCVTZU_asisdshf_c             : FCVTZU      Vd, Vn, #fbits <- Operand: Vd
+            // FCVTZU_asisdshf_c             : FCVTZU      Vd, Vn, #fbits <- Operand: Vn
+            // SCVTF_asisdshf_c              : SCVTF       Vd, Vn, #fbits <- Operand: Vd
+            // SCVTF_asisdshf_c              : SCVTF       Vd, Vn, #fbits <- Operand: Vn
+            // UCVTF_asisdshf_c              : UCVTF       Vd, Vn, #fbits <- Operand: Vd
+            // UCVTF_asisdshf_c              : UCVTF       Vd, Vn, #fbits <- Operand: Vn
             case 12:
             {
+                var bitValue = ((rawValue >> 19) & 0xF);
                 var bitsToTest = (bitValue & 0xF);
                 if ((bitsToTest & 0xe) == 2)
                 {
@@ -560,8 +488,10 @@ static class Arm64DynamicRegisterHelper
                 }
                 break;
             }
+            // DUP_asisdone_only             : DUP         Vd, Vn.T[index] <- Operand: Vd
             case 13:
             {
+                var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
                 if ((bitsToTest & 0xf) == 8)
                 {
@@ -585,8 +515,11 @@ static class Arm64DynamicRegisterHelper
                 }
                 break;
             }
+            // DUP_asimdins_dr_r             : DUP         Vd.T, Rn <- Operand: Rn
+            // INS_asimdins_ir_r             : INS         Vd.Ts[index], Rn <- Operand: Rn
             case 14:
             {
+                var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
                 if ((bitsToTest & 0xf) == 8)
                 {
