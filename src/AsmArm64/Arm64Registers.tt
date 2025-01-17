@@ -149,6 +149,18 @@ public readonly record struct Arm64Register<#= kind #> : <#= kind == "V" ? "IArm
     /// Converts this register to an any register.
     /// </summary>
     public static implicit operator Arm64RegisterAny(Arm64Register<#= kind #> register) => Unsafe.BitCast<Arm64Register<#= kind #>, Arm64RegisterAny>(register);
+
+    /// <summary>
+    /// Converts an any register register to a <#= kind #> register.
+    /// </summary>
+    public static explicit operator Arm64Register<#= kind #>(Arm64RegisterAny register)
+    {
+        if (register.Kind != Arm64RegisterKind.<#= kind #> || register.VKind != Arm64RegisterVKind.Default)
+        {
+            throw new InvalidCastException($"Invalid cast from {register.Kind} to Arm64RegisterKind.<#= kind #>");
+        }
+        return Unsafe.BitCast<Arm64RegisterAny, Arm64Register<#= kind #>>(register);
+    }
 <# if (kind == "SP") { #>
 
     /// <summary>
@@ -253,6 +265,18 @@ public readonly record struct Arm64RegisterV_<#= kind #> : IArm64RegisterVTyped
     public static implicit operator Arm64RegisterAny(Arm64RegisterV_<#= kind #> register) => Unsafe.BitCast<Arm64RegisterV_<#= kind #>, Arm64RegisterAny>(register);
 
     /// <summary>
+    /// Converts an any register to a V.<#= kind #> register.
+    /// </summary>
+    public static explicit operator Arm64RegisterV_<#= kind #>(Arm64RegisterAny register)
+    {
+        if (register.Kind != Arm64RegisterKind.VTyped || register.VKind != Arm64RegisterVKind.<#= kind #>)
+        {
+            throw new InvalidCastException($"Invalid cast from {register.Kind}/{register.VKind} to Arm64RegisterV_<#= kind #>");
+        }
+        return Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_<#= kind #>>(register);
+    }
+
+    /// <summary>
     /// Represents an ARM64 a vector indexed with <#= vector.Description #> (V.<#= kind #> arrangement).
     /// </summary>
     public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
@@ -326,6 +350,18 @@ public readonly record struct Arm64RegisterV_<#= kind #> : IArm64RegisterVTyped
         /// Converts this register to an any register.
         /// </summary>
         public static implicit operator Arm64RegisterAny(Indexed register) => Unsafe.BitCast<Indexed, Arm64RegisterAny>(register);
+
+        /// <summary>
+        /// Converts an any register to a V.<#= kind #> register.
+        /// </summary>
+        public static explicit operator Indexed(Arm64RegisterAny register)
+        {
+            if (register.Kind != Arm64RegisterKind.VTypedIndexed || register.VKind != Arm64RegisterVKind.<#= kind #>)
+            {
+                throw new InvalidCastException($"Invalid cast from {register.Kind}/{register.VKind} to Arm64RegisterV_<#= kind #>.Indexed");
+            }
+            return Unsafe.BitCast<Arm64RegisterAny, Indexed>(register);
+        }
     }
 }
 <# } // if (kind != "Q") { #>
@@ -370,6 +406,18 @@ public readonly record struct Arm64Register<#= kind #> : IArm64RegisterVScalar
     /// Converts this register to an any register.
     /// </summary>
     public static implicit operator Arm64RegisterAny(Arm64Register<#= kind #> register) => Unsafe.BitCast<Arm64Register<#= kind #>, Arm64RegisterAny>(register);
+
+    /// <summary>
+    /// Converts an any register to a V.<#= kind #> register.
+    /// </summary>
+    public static explicit operator Arm64Register<#= kind #>(Arm64RegisterAny register)
+    {
+        if (register.Kind != Arm64RegisterKind.VScalar || register.VKind != Arm64RegisterVKind.<#= kind #>)
+        {
+            throw new InvalidCastException($"Invalid cast from {register.Kind}/{register.VKind} to Arm64Register<#= kind #>");
+        }
+        return Unsafe.BitCast<Arm64RegisterAny, Arm64Register<#= kind #>>(register);
+    }
 <# for(int i = 0; i < 32; i++) { #>
 
     /// <summary>
@@ -428,6 +476,18 @@ public readonly record struct Arm64RegisterV_<#= size #><#= kind #> : IArm64Regi
     /// Converts this register to an any register.
     /// </summary>
     public static implicit operator Arm64RegisterAny(Arm64RegisterV_<#= size #><#= kind #> register) => Unsafe.BitCast<Arm64RegisterV_<#= size #><#= kind #>, Arm64RegisterAny>(register);
+
+    /// <summary>
+    /// Converts an any register to a V.<#= kind #> register.
+    /// </summary>
+    public static explicit operator Arm64RegisterV_<#= size #><#= kind #>(Arm64RegisterAny register)
+    {
+        if (register.Kind != Arm64RegisterKind.VPacked || register.VKind != Arm64RegisterVKind.<#= kind #>)
+        {
+            throw new InvalidCastException($"Invalid cast from {register.Kind}/{register.VKind} to Arm64RegisterV_<#= size #><#= kind #>");
+        }
+        return Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_<#= size #><#= kind #>>(register);
+    }
 <# var combo = $"{size}{kind}"; if (combo == "2B" || combo == "4B" || combo == "2H") {#>
 
     /// <summary>
@@ -512,6 +572,18 @@ public readonly record struct Arm64RegisterV_<#= size #><#= kind #> : IArm64Regi
         /// Converts this register to an any register.
         /// </summary>
         public static implicit operator Arm64RegisterAny(Indexed register) => Unsafe.BitCast<Indexed, Arm64RegisterAny>(register);
+
+        /// <summary>
+        /// Converts an any register to a V.<#= kind #> register.
+        /// </summary>
+        public static explicit operator Indexed(Arm64RegisterAny register)
+        {
+            if (register.Kind != Arm64RegisterKind.VPackedIndexed || register.VKind != Arm64RegisterVKind.<#= kind #>)
+            {
+                throw new InvalidCastException($"Invalid cast from {register.Kind}/{register.VKind} to Arm64RegisterV_<#= size #><#= kind #>.Indexed");
+            }
+            return Unsafe.BitCast<Arm64RegisterAny, Indexed>(register);
+        }
     }
 <# } // if combo == "2B" || combo == "4B" || combo == "2H" #>
 }

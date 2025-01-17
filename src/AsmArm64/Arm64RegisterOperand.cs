@@ -17,7 +17,7 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
         var encodingKind = (Arm64RegisterEncodingKind)((byte)(descriptor >> 8) & 0xF);
         var encodingIndex = (Arm64RegisterIndexEncodingKind)((byte)(descriptor >> 12) & 0xF); ;
         // buffer[2] = (byte)IndexerIndex;
-        var elementIndexerId = (byte)(descriptor >> 16); // TODO: handle it
+        var elementIndexerId = (byte)(descriptor >> 16);
         // if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.BitMapExtract)
         // {
         //     Debug.Assert(RegisterIndexExtractIndex != 0);
@@ -132,7 +132,10 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
                 break;
         }
 
+        // We can decode the indexer
         Arm64IndexerHelper.TryDecode(rawValue, elementIndexerId, out var elementIndex);
+
+        // Create an any register that we can cast later.
         Value = Arm64RegisterAny.Create(registerKind, registerIndex, vKind, elementCount, elementIndex);
     }
 
