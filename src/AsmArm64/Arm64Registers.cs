@@ -955,16 +955,52 @@ public readonly record struct Arm64RegisterV_B : IArm64RegisterVTyped
         /// <inheritdoc />
         public int ElementIndex => (byte)(_value >> 28);
 
+        /// <summary>
+        /// Gets the base register of this indexed vector register.
+        /// </summary>
+        public Arm64RegisterV_B BaseRegister => new(Index);
+
         /// <inheritdoc />
         public override string ToString() => ToString(null, null);
 
         /// <inheritdoc />
-        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+        [SkipLocalsInit]
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            Span<char> localText = stackalloc char[16];
+            return !TryFormat(localText, out var charsWritten, format, formatProvider) ? string.Empty : localText.Slice(0, charsWritten).ToString();
+        }
 
         /// <inheritdoc />
         public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
         {
-            throw new System.NotImplementedException();
+            if (!BaseRegister.TryFormat(destination, out var tempWritten, format, provider))
+            {
+                charsWritten = 0;
+                return false;
+            }
+            // [1] to [16] (3 to 4 characters)
+            if (destination.Length < tempWritten + 4)
+            {
+                charsWritten = 0;
+                return false;
+            }
+            destination[tempWritten] = '[';
+            if (ElementIndex >= 10)
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex / 10);
+                destination[tempWritten + 2] = (char)('0' + ElementIndex % 10);
+                charsWritten = tempWritten + 3;
+            }
+            else
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex);
+                charsWritten = tempWritten + 2;
+            }
+            destination[charsWritten] = ']';
+
+            charsWritten++;
+            return true;
         }
     }
 }
@@ -1037,16 +1073,52 @@ public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
         /// <inheritdoc />
         public int ElementIndex => (byte)(_value >> 28);
 
+        /// <summary>
+        /// Gets the base register of this indexed vector register.
+        /// </summary>
+        public Arm64RegisterV_2B BaseRegister => new(Index);
+
         /// <inheritdoc />
         public override string ToString() => ToString(null, null);
 
         /// <inheritdoc />
-        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+        [SkipLocalsInit]
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            Span<char> localText = stackalloc char[16];
+            return !TryFormat(localText, out var charsWritten, format, formatProvider) ? string.Empty : localText.Slice(0, charsWritten).ToString();
+        }
 
         /// <inheritdoc />
         public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
         {
-            throw new System.NotImplementedException();
+            if (!BaseRegister.TryFormat(destination, out var tempWritten, format, provider))
+            {
+                charsWritten = 0;
+                return false;
+            }
+            // [1] to [16] (3 to 4 characters)
+            if (destination.Length < tempWritten + 4)
+            {
+                charsWritten = 0;
+                return false;
+            }
+            destination[tempWritten] = '[';
+            if (ElementIndex >= 10)
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex / 10);
+                destination[tempWritten + 2] = (char)('0' + ElementIndex % 10);
+                charsWritten = tempWritten + 3;
+            }
+            else
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex);
+                charsWritten = tempWritten + 2;
+            }
+            destination[charsWritten] = ']';
+
+            charsWritten++;
+            return true;
         }
     }
 }
@@ -1120,16 +1192,52 @@ public readonly record struct Arm64RegisterV_4B : IArm64RegisterVPacked
         /// <inheritdoc />
         public int ElementIndex => (byte)(_value >> 28);
 
+        /// <summary>
+        /// Gets the base register of this indexed vector register.
+        /// </summary>
+        public Arm64RegisterV_4B BaseRegister => new(Index);
+
         /// <inheritdoc />
         public override string ToString() => ToString(null, null);
 
         /// <inheritdoc />
-        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+        [SkipLocalsInit]
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            Span<char> localText = stackalloc char[16];
+            return !TryFormat(localText, out var charsWritten, format, formatProvider) ? string.Empty : localText.Slice(0, charsWritten).ToString();
+        }
 
         /// <inheritdoc />
         public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
         {
-            throw new System.NotImplementedException();
+            if (!BaseRegister.TryFormat(destination, out var tempWritten, format, provider))
+            {
+                charsWritten = 0;
+                return false;
+            }
+            // [1] to [16] (3 to 4 characters)
+            if (destination.Length < tempWritten + 4)
+            {
+                charsWritten = 0;
+                return false;
+            }
+            destination[tempWritten] = '[';
+            if (ElementIndex >= 10)
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex / 10);
+                destination[tempWritten + 2] = (char)('0' + ElementIndex % 10);
+                charsWritten = tempWritten + 3;
+            }
+            else
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex);
+                charsWritten = tempWritten + 2;
+            }
+            destination[charsWritten] = ']';
+
+            charsWritten++;
+            return true;
         }
     }
 }
@@ -1276,16 +1384,52 @@ public readonly record struct Arm64RegisterV_H : IArm64RegisterVTyped
         /// <inheritdoc />
         public int ElementIndex => (byte)(_value >> 28);
 
+        /// <summary>
+        /// Gets the base register of this indexed vector register.
+        /// </summary>
+        public Arm64RegisterV_H BaseRegister => new(Index);
+
         /// <inheritdoc />
         public override string ToString() => ToString(null, null);
 
         /// <inheritdoc />
-        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+        [SkipLocalsInit]
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            Span<char> localText = stackalloc char[16];
+            return !TryFormat(localText, out var charsWritten, format, formatProvider) ? string.Empty : localText.Slice(0, charsWritten).ToString();
+        }
 
         /// <inheritdoc />
         public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
         {
-            throw new System.NotImplementedException();
+            if (!BaseRegister.TryFormat(destination, out var tempWritten, format, provider))
+            {
+                charsWritten = 0;
+                return false;
+            }
+            // [1] to [16] (3 to 4 characters)
+            if (destination.Length < tempWritten + 4)
+            {
+                charsWritten = 0;
+                return false;
+            }
+            destination[tempWritten] = '[';
+            if (ElementIndex >= 10)
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex / 10);
+                destination[tempWritten + 2] = (char)('0' + ElementIndex % 10);
+                charsWritten = tempWritten + 3;
+            }
+            else
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex);
+                charsWritten = tempWritten + 2;
+            }
+            destination[charsWritten] = ']';
+
+            charsWritten++;
+            return true;
         }
     }
 }
@@ -1554,16 +1698,52 @@ public readonly record struct Arm64RegisterV_2H : IArm64RegisterVPacked
         /// <inheritdoc />
         public int ElementIndex => (byte)(_value >> 28);
 
+        /// <summary>
+        /// Gets the base register of this indexed vector register.
+        /// </summary>
+        public Arm64RegisterV_2H BaseRegister => new(Index);
+
         /// <inheritdoc />
         public override string ToString() => ToString(null, null);
 
         /// <inheritdoc />
-        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+        [SkipLocalsInit]
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            Span<char> localText = stackalloc char[16];
+            return !TryFormat(localText, out var charsWritten, format, formatProvider) ? string.Empty : localText.Slice(0, charsWritten).ToString();
+        }
 
         /// <inheritdoc />
         public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
         {
-            throw new System.NotImplementedException();
+            if (!BaseRegister.TryFormat(destination, out var tempWritten, format, provider))
+            {
+                charsWritten = 0;
+                return false;
+            }
+            // [1] to [16] (3 to 4 characters)
+            if (destination.Length < tempWritten + 4)
+            {
+                charsWritten = 0;
+                return false;
+            }
+            destination[tempWritten] = '[';
+            if (ElementIndex >= 10)
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex / 10);
+                destination[tempWritten + 2] = (char)('0' + ElementIndex % 10);
+                charsWritten = tempWritten + 3;
+            }
+            else
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex);
+                charsWritten = tempWritten + 2;
+            }
+            destination[charsWritten] = ']';
+
+            charsWritten++;
+            return true;
         }
     }
 }
@@ -1710,16 +1890,52 @@ public readonly record struct Arm64RegisterV_S : IArm64RegisterVTyped
         /// <inheritdoc />
         public int ElementIndex => (byte)(_value >> 28);
 
+        /// <summary>
+        /// Gets the base register of this indexed vector register.
+        /// </summary>
+        public Arm64RegisterV_S BaseRegister => new(Index);
+
         /// <inheritdoc />
         public override string ToString() => ToString(null, null);
 
         /// <inheritdoc />
-        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+        [SkipLocalsInit]
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            Span<char> localText = stackalloc char[16];
+            return !TryFormat(localText, out var charsWritten, format, formatProvider) ? string.Empty : localText.Slice(0, charsWritten).ToString();
+        }
 
         /// <inheritdoc />
         public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
         {
-            throw new System.NotImplementedException();
+            if (!BaseRegister.TryFormat(destination, out var tempWritten, format, provider))
+            {
+                charsWritten = 0;
+                return false;
+            }
+            // [1] to [16] (3 to 4 characters)
+            if (destination.Length < tempWritten + 4)
+            {
+                charsWritten = 0;
+                return false;
+            }
+            destination[tempWritten] = '[';
+            if (ElementIndex >= 10)
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex / 10);
+                destination[tempWritten + 2] = (char)('0' + ElementIndex % 10);
+                charsWritten = tempWritten + 3;
+            }
+            else
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex);
+                charsWritten = tempWritten + 2;
+            }
+            destination[charsWritten] = ']';
+
+            charsWritten++;
+            return true;
         }
     }
 }
@@ -2061,16 +2277,52 @@ public readonly record struct Arm64RegisterV_D : IArm64RegisterVTyped
         /// <inheritdoc />
         public int ElementIndex => (byte)(_value >> 28);
 
+        /// <summary>
+        /// Gets the base register of this indexed vector register.
+        /// </summary>
+        public Arm64RegisterV_D BaseRegister => new(Index);
+
         /// <inheritdoc />
         public override string ToString() => ToString(null, null);
 
         /// <inheritdoc />
-        public string ToString(string? format, IFormatProvider? formatProvider) => throw new System.NotImplementedException();
+        [SkipLocalsInit]
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            Span<char> localText = stackalloc char[16];
+            return !TryFormat(localText, out var charsWritten, format, formatProvider) ? string.Empty : localText.Slice(0, charsWritten).ToString();
+        }
 
         /// <inheritdoc />
         public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
         {
-            throw new System.NotImplementedException();
+            if (!BaseRegister.TryFormat(destination, out var tempWritten, format, provider))
+            {
+                charsWritten = 0;
+                return false;
+            }
+            // [1] to [16] (3 to 4 characters)
+            if (destination.Length < tempWritten + 4)
+            {
+                charsWritten = 0;
+                return false;
+            }
+            destination[tempWritten] = '[';
+            if (ElementIndex >= 10)
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex / 10);
+                destination[tempWritten + 2] = (char)('0' + ElementIndex % 10);
+                charsWritten = tempWritten + 3;
+            }
+            else
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex);
+                charsWritten = tempWritten + 2;
+            }
+            destination[charsWritten] = ']';
+
+            charsWritten++;
+            return true;
         }
     }
 }
