@@ -24,72 +24,252 @@ static class Arm64DynamicRegisterHelper
         switch (mapIndex)
         {
             // FABD_asisdsame_only           : FABD        Vd, Vn, Vm <- Operand: Vd
+            // FABD_asisdsame_only           : FABD        Vd, Vn, Vm <- Operand: Vn
+            // FABD_asisdsame_only           : FABD        Vd, Vn, Vm <- Operand: Vm
+            // FACGE_asisdsame_only          : FACGE       Vd, Vn, Vm <- Operand: Vd
+            // FACGE_asisdsame_only          : FACGE       Vd, Vn, Vm <- Operand: Vn
+            // FACGE_asisdsame_only          : FACGE       Vd, Vn, Vm <- Operand: Vm
+            // FACGT_asisdsame_only          : FACGT       Vd, Vn, Vm <- Operand: Vd
+            // FACGT_asisdsame_only          : FACGT       Vd, Vn, Vm <- Operand: Vn
+            // FACGT_asisdsame_only          : FACGT       Vd, Vn, Vm <- Operand: Vm
+            // FADDP_asisdpair_only_sd       : FADDP       Vd, Vn.T <- Operand: Vd
+            // FCMEQ_asisdmisc_fz            : FCMEQ       Vd, Vn, #0.0 <- Operand: Vd
+            // FCMEQ_asisdmisc_fz            : FCMEQ       Vd, Vn, #0.0 <- Operand: Vn
+            // FCMEQ_asisdsame_only          : FCMEQ       Vd, Vn, Vm <- Operand: Vd
+            // FCMEQ_asisdsame_only          : FCMEQ       Vd, Vn, Vm <- Operand: Vn
+            // FCMEQ_asisdsame_only          : FCMEQ       Vd, Vn, Vm <- Operand: Vm
+            // FCMGE_asisdmisc_fz            : FCMGE       Vd, Vn, #0.0 <- Operand: Vd
+            // FCMGE_asisdmisc_fz            : FCMGE       Vd, Vn, #0.0 <- Operand: Vn
+            // FCMGE_asisdsame_only          : FCMGE       Vd, Vn, Vm <- Operand: Vd
+            // FCMGE_asisdsame_only          : FCMGE       Vd, Vn, Vm <- Operand: Vn
+            // FCMGE_asisdsame_only          : FCMGE       Vd, Vn, Vm <- Operand: Vm
+            // FCMGT_asisdmisc_fz            : FCMGT       Vd, Vn, #0.0 <- Operand: Vd
+            // FCMGT_asisdmisc_fz            : FCMGT       Vd, Vn, #0.0 <- Operand: Vn
+            // FCMGT_asisdsame_only          : FCMGT       Vd, Vn, Vm <- Operand: Vd
+            // FCMGT_asisdsame_only          : FCMGT       Vd, Vn, Vm <- Operand: Vn
+            // FCMGT_asisdsame_only          : FCMGT       Vd, Vn, Vm <- Operand: Vm
+            // FCMLE_asisdmisc_fz            : FCMLE       Vd, Vn, #0.0 <- Operand: Vd
+            // FCMLE_asisdmisc_fz            : FCMLE       Vd, Vn, #0.0 <- Operand: Vn
+            // FCMLT_asisdmisc_fz            : FCMLT       Vd, Vn, #0.0 <- Operand: Vd
+            // FCMLT_asisdmisc_fz            : FCMLT       Vd, Vn, #0.0 <- Operand: Vn
+            // FCVTAS_asisdmisc_r            : FCVTAS      Vd, Vn <- Operand: Vd
+            // FCVTAS_asisdmisc_r            : FCVTAS      Vd, Vn <- Operand: Vn
+            // FCVTAU_asisdmisc_r            : FCVTAU      Vd, Vn <- Operand: Vd
+            // FCVTAU_asisdmisc_r            : FCVTAU      Vd, Vn <- Operand: Vn
+            // FCVTMS_asisdmisc_r            : FCVTMS      Vd, Vn <- Operand: Vd
+            // FCVTMS_asisdmisc_r            : FCVTMS      Vd, Vn <- Operand: Vn
+            // FCVTMU_asisdmisc_r            : FCVTMU      Vd, Vn <- Operand: Vd
+            // FCVTMU_asisdmisc_r            : FCVTMU      Vd, Vn <- Operand: Vn
+            // FCVTNS_asisdmisc_r            : FCVTNS      Vd, Vn <- Operand: Vd
+            // FCVTNS_asisdmisc_r            : FCVTNS      Vd, Vn <- Operand: Vn
+            // FCVTNU_asisdmisc_r            : FCVTNU      Vd, Vn <- Operand: Vd
+            // FCVTNU_asisdmisc_r            : FCVTNU      Vd, Vn <- Operand: Vn
+            // FCVTPS_asisdmisc_r            : FCVTPS      Vd, Vn <- Operand: Vd
+            // FCVTPS_asisdmisc_r            : FCVTPS      Vd, Vn <- Operand: Vn
+            // FCVTPU_asisdmisc_r            : FCVTPU      Vd, Vn <- Operand: Vd
+            // FCVTPU_asisdmisc_r            : FCVTPU      Vd, Vn <- Operand: Vn
+            // FCVTZS_asisdmisc_r            : FCVTZS      Vd, Vn <- Operand: Vd
+            // FCVTZS_asisdmisc_r            : FCVTZS      Vd, Vn <- Operand: Vn
+            // FCVTZU_asisdmisc_r            : FCVTZU      Vd, Vn <- Operand: Vd
+            // FCVTZU_asisdmisc_r            : FCVTZU      Vd, Vn <- Operand: Vn
+            // FMAXNMP_asisdpair_only_sd     : FMAXNMP     Vd, Vn.T <- Operand: Vd
+            // FMAXP_asisdpair_only_sd       : FMAXP       Vd, Vn.T <- Operand: Vd
+            // FMINNMP_asisdpair_only_sd     : FMINNMP     Vd, Vn.T <- Operand: Vd
+            // FMINP_asisdpair_only_sd       : FMINP       Vd, Vn.T <- Operand: Vd
+            // FMLA_asisdelem_r_sd           : FMLA        Vd, Vn, Vm.Ts[index] <- Operand: Vd
+            // FMLA_asisdelem_r_sd           : FMLA        Vd, Vn, Vm.Ts[index] <- Operand: Vn
+            // FMLS_asisdelem_r_sd           : FMLS        Vd, Vn, Vm.Ts[index] <- Operand: Vd
+            // FMLS_asisdelem_r_sd           : FMLS        Vd, Vn, Vm.Ts[index] <- Operand: Vn
+            // FMUL_asisdelem_r_sd           : FMUL        Vd, Vn, Vm.Ts[index] <- Operand: Vd
+            // FMUL_asisdelem_r_sd           : FMUL        Vd, Vn, Vm.Ts[index] <- Operand: Vn
+            // FMULX_asisdelem_r_sd          : FMULX       Vd, Vn, Vm.Ts[index] <- Operand: Vd
+            // FMULX_asisdelem_r_sd          : FMULX       Vd, Vn, Vm.Ts[index] <- Operand: Vn
+            // FMULX_asisdsame_only          : FMULX       Vd, Vn, Vm <- Operand: Vd
+            // FMULX_asisdsame_only          : FMULX       Vd, Vn, Vm <- Operand: Vn
+            // FMULX_asisdsame_only          : FMULX       Vd, Vn, Vm <- Operand: Vm
+            // FRECPE_asisdmisc_r            : FRECPE      Vd, Vn <- Operand: Vd
+            // FRECPE_asisdmisc_r            : FRECPE      Vd, Vn <- Operand: Vn
+            // FRECPS_asisdsame_only         : FRECPS      Vd, Vn, Vm <- Operand: Vd
+            // FRECPS_asisdsame_only         : FRECPS      Vd, Vn, Vm <- Operand: Vn
+            // FRECPS_asisdsame_only         : FRECPS      Vd, Vn, Vm <- Operand: Vm
+            // FRECPX_asisdmisc_r            : FRECPX      Vd, Vn <- Operand: Vd
+            // FRECPX_asisdmisc_r            : FRECPX      Vd, Vn <- Operand: Vn
+            // FRSQRTE_asisdmisc_r           : FRSQRTE     Vd, Vn <- Operand: Vd
+            // FRSQRTE_asisdmisc_r           : FRSQRTE     Vd, Vn <- Operand: Vn
+            // FRSQRTS_asisdsame_only        : FRSQRTS     Vd, Vn, Vm <- Operand: Vd
+            // FRSQRTS_asisdsame_only        : FRSQRTS     Vd, Vn, Vm <- Operand: Vn
+            // FRSQRTS_asisdsame_only        : FRSQRTS     Vd, Vn, Vm <- Operand: Vm
+            // SCVTF_asisdmisc_r             : SCVTF       Vd, Vn <- Operand: Vd
+            // SCVTF_asisdmisc_r             : SCVTF       Vd, Vn <- Operand: Vn
+            // UCVTF_asisdmisc_r             : UCVTF       Vd, Vn <- Operand: Vd
+            // UCVTF_asisdmisc_r             : UCVTF       Vd, Vn <- Operand: Vn
             case 1:
             {
                 var bitValue = ((rawValue >> 22) & 0x1);
                 return TryDecodeFromBitValues(bitValue, 1, out registerEncodingKind);
             }
             // TBNZ_only_testbranch          : TBNZ        Rt, #imm, label <- Operand: Rt
+            // TBZ_only_testbranch           : TBZ         Rt, #imm, label <- Operand: Rt
             case 2:
             {
                 var bitValue = ((rawValue >> 31) & 0x1);
                 return TryDecodeFromBitValues(bitValue, 2, out registerEncodingKind);
             }
             // SQABS_asisdmisc_r             : SQABS       Vd, Vn <- Operand: Vd
+            // SQABS_asisdmisc_r             : SQABS       Vd, Vn <- Operand: Vn
+            // SQADD_asisdsame_only          : SQADD       Vd, Vn, Vm <- Operand: Vd
+            // SQADD_asisdsame_only          : SQADD       Vd, Vn, Vm <- Operand: Vn
+            // SQADD_asisdsame_only          : SQADD       Vd, Vn, Vm <- Operand: Vm
+            // SQNEG_asisdmisc_r             : SQNEG       Vd, Vn <- Operand: Vd
+            // SQNEG_asisdmisc_r             : SQNEG       Vd, Vn <- Operand: Vn
+            // SQRSHL_asisdsame_only         : SQRSHL      Vd, Vn, Vm <- Operand: Vd
+            // SQRSHL_asisdsame_only         : SQRSHL      Vd, Vn, Vm <- Operand: Vn
+            // SQRSHL_asisdsame_only         : SQRSHL      Vd, Vn, Vm <- Operand: Vm
+            // SQSHL_asisdsame_only          : SQSHL       Vd, Vn, Vm <- Operand: Vd
+            // SQSHL_asisdsame_only          : SQSHL       Vd, Vn, Vm <- Operand: Vn
+            // SQSHL_asisdsame_only          : SQSHL       Vd, Vn, Vm <- Operand: Vm
+            // SQSUB_asisdsame_only          : SQSUB       Vd, Vn, Vm <- Operand: Vd
+            // SQSUB_asisdsame_only          : SQSUB       Vd, Vn, Vm <- Operand: Vn
+            // SQSUB_asisdsame_only          : SQSUB       Vd, Vn, Vm <- Operand: Vm
+            // SUQADD_asisdmisc_r            : SUQADD      Vd, Vn <- Operand: Vd
+            // SUQADD_asisdmisc_r            : SUQADD      Vd, Vn <- Operand: Vn
+            // UQADD_asisdsame_only          : UQADD       Vd, Vn, Vm <- Operand: Vd
+            // UQADD_asisdsame_only          : UQADD       Vd, Vn, Vm <- Operand: Vn
+            // UQADD_asisdsame_only          : UQADD       Vd, Vn, Vm <- Operand: Vm
+            // UQRSHL_asisdsame_only         : UQRSHL      Vd, Vn, Vm <- Operand: Vd
+            // UQRSHL_asisdsame_only         : UQRSHL      Vd, Vn, Vm <- Operand: Vn
+            // UQRSHL_asisdsame_only         : UQRSHL      Vd, Vn, Vm <- Operand: Vm
+            // UQSHL_asisdsame_only          : UQSHL       Vd, Vn, Vm <- Operand: Vd
+            // UQSHL_asisdsame_only          : UQSHL       Vd, Vn, Vm <- Operand: Vn
+            // UQSHL_asisdsame_only          : UQSHL       Vd, Vn, Vm <- Operand: Vm
+            // UQSUB_asisdsame_only          : UQSUB       Vd, Vn, Vm <- Operand: Vd
+            // UQSUB_asisdsame_only          : UQSUB       Vd, Vn, Vm <- Operand: Vn
+            // UQSUB_asisdsame_only          : UQSUB       Vd, Vn, Vm <- Operand: Vm
+            // USQADD_asisdmisc_r            : USQADD      Vd, Vn <- Operand: Vd
+            // USQADD_asisdmisc_r            : USQADD      Vd, Vn <- Operand: Vn
             case 3:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 return TryDecodeFromBitValues(bitValue, 3, out registerEncodingKind);
             }
             // ADDV_asimdall_only            : ADDV        Vd, Vn.T <- Operand: Vd
+            // SMAXV_asimdall_only           : SMAXV       Vd, Vn.T <- Operand: Vd
+            // SMINV_asimdall_only           : SMINV       Vd, Vn.T <- Operand: Vd
+            // SQXTN_asisdmisc_n             : SQXTN       Vbd, Van <- Operand: Vbd
+            // SQXTUN_asisdmisc_n            : SQXTUN      Vbd, Van <- Operand: Vbd
+            // UMAXV_asimdall_only           : UMAXV       Vd, Vn.T <- Operand: Vd
+            // UMINV_asimdall_only           : UMINV       Vd, Vn.T <- Operand: Vd
+            // UQXTN_asisdmisc_n             : UQXTN       Vbd, Van <- Operand: Vbd
             case 4:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 return TryDecodeFromBitValues(bitValue, 4, out registerEncodingKind);
             }
             // SADDLV_asimdall_only          : SADDLV      Vd, Vn.T <- Operand: Vd
+            // SQXTN_asisdmisc_n             : SQXTN       Vbd, Van <- Operand: Van
+            // SQXTUN_asisdmisc_n            : SQXTUN      Vbd, Van <- Operand: Van
+            // UADDLV_asimdall_only          : UADDLV      Vd, Vn.T <- Operand: Vd
+            // UQXTN_asisdmisc_n             : UQXTN       Vbd, Van <- Operand: Van
             case 5:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 return TryDecodeFromBitValues(bitValue, 5, out registerEncodingKind);
             }
             // SQDMLAL_asisddiff_only        : SQDMLAL     Vad, Vbn, Vbm <- Operand: Vbn
+            // SQDMLAL_asisddiff_only        : SQDMLAL     Vad, Vbn, Vbm <- Operand: Vbm
+            // SQDMLAL_asisdelem_l           : SQDMLAL     Vad, Vbn, Vm.Ts[index] <- Operand: Vbn
+            // SQDMLSL_asisddiff_only        : SQDMLSL     Vad, Vbn, Vbm <- Operand: Vbn
+            // SQDMLSL_asisddiff_only        : SQDMLSL     Vad, Vbn, Vbm <- Operand: Vbm
+            // SQDMLSL_asisdelem_l           : SQDMLSL     Vad, Vbn, Vm.Ts[index] <- Operand: Vbn
+            // SQDMULH_asisdelem_r           : SQDMULH     Vd, Vn, Vm.Ts[index] <- Operand: Vd
+            // SQDMULH_asisdelem_r           : SQDMULH     Vd, Vn, Vm.Ts[index] <- Operand: Vn
+            // SQDMULH_asisdsame_only        : SQDMULH     Vd, Vn, Vm <- Operand: Vd
+            // SQDMULH_asisdsame_only        : SQDMULH     Vd, Vn, Vm <- Operand: Vn
+            // SQDMULH_asisdsame_only        : SQDMULH     Vd, Vn, Vm <- Operand: Vm
+            // SQDMULL_asisddiff_only        : SQDMULL     Vad, Vbn, Vbm <- Operand: Vbn
+            // SQDMULL_asisddiff_only        : SQDMULL     Vad, Vbn, Vbm <- Operand: Vbm
+            // SQDMULL_asisdelem_l           : SQDMULL     Vad, Vbn, Vm.Ts[index] <- Operand: Vbn
+            // SQRDMLAH_asisdelem_r          : SQRDMLAH    Vd, Vn, Vm.Ts[index] <- Operand: Vd
+            // SQRDMLAH_asisdelem_r          : SQRDMLAH    Vd, Vn, Vm.Ts[index] <- Operand: Vn
+            // SQRDMLAH_asisdsame2_only      : SQRDMLAH    Vd, Vn, Vm <- Operand: Vd
+            // SQRDMLAH_asisdsame2_only      : SQRDMLAH    Vd, Vn, Vm <- Operand: Vn
+            // SQRDMLAH_asisdsame2_only      : SQRDMLAH    Vd, Vn, Vm <- Operand: Vm
+            // SQRDMLSH_asisdelem_r          : SQRDMLSH    Vd, Vn, Vm.Ts[index] <- Operand: Vd
+            // SQRDMLSH_asisdelem_r          : SQRDMLSH    Vd, Vn, Vm.Ts[index] <- Operand: Vn
+            // SQRDMLSH_asisdsame2_only      : SQRDMLSH    Vd, Vn, Vm <- Operand: Vd
+            // SQRDMLSH_asisdsame2_only      : SQRDMLSH    Vd, Vn, Vm <- Operand: Vn
+            // SQRDMLSH_asisdsame2_only      : SQRDMLSH    Vd, Vn, Vm <- Operand: Vm
+            // SQRDMULH_asisdelem_r          : SQRDMULH    Vd, Vn, Vm.Ts[index] <- Operand: Vd
+            // SQRDMULH_asisdelem_r          : SQRDMULH    Vd, Vn, Vm.Ts[index] <- Operand: Vn
+            // SQRDMULH_asisdsame_only       : SQRDMULH    Vd, Vn, Vm <- Operand: Vd
+            // SQRDMULH_asisdsame_only       : SQRDMULH    Vd, Vn, Vm <- Operand: Vn
+            // SQRDMULH_asisdsame_only       : SQRDMULH    Vd, Vn, Vm <- Operand: Vm
             case 6:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 return TryDecodeFromBitValues(bitValue, 6, out registerEncodingKind);
             }
             // SQDMLAL_asisddiff_only        : SQDMLAL     Vad, Vbn, Vbm <- Operand: Vad
+            // SQDMLAL_asisdelem_l           : SQDMLAL     Vad, Vbn, Vm.Ts[index] <- Operand: Vad
+            // SQDMLSL_asisddiff_only        : SQDMLSL     Vad, Vbn, Vbm <- Operand: Vad
+            // SQDMLSL_asisdelem_l           : SQDMLSL     Vad, Vbn, Vm.Ts[index] <- Operand: Vad
+            // SQDMULL_asisddiff_only        : SQDMULL     Vad, Vbn, Vbm <- Operand: Vad
+            // SQDMULL_asisdelem_l           : SQDMULL     Vad, Vbn, Vm.Ts[index] <- Operand: Vad
             case 7:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 return TryDecodeFromBitValues(bitValue, 7, out registerEncodingKind);
             }
+            // ADD_64_addsub_ext             : ADD         Xd|SP, Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
             // ADDS_64s_addsub_ext           : ADDS        Xd, Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
+            // SUB_64_addsub_ext             : SUB         Xd|SP, Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
+            // SUBS_64s_addsub_ext           : SUBS        Xd, Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
             case 8:
             {
                 var bitValue = ((rawValue >> 13) & 0x7);
                 return TryDecodeFromBitValues(bitValue, 8, out registerEncodingKind);
             }
+            // SQSHL_asisdshf_r              : SQSHL       Vd, Vn, #shift <- Operand: Vd
+            // SQSHL_asisdshf_r              : SQSHL       Vd, Vn, #shift <- Operand: Vn
             // SQSHLU_asisdshf_r             : SQSHLU      Vd, Vn, #shift <- Operand: Vd
+            // SQSHLU_asisdshf_r             : SQSHLU      Vd, Vn, #shift <- Operand: Vn
+            // UQSHL_asisdshf_r              : UQSHL       Vd, Vn, #shift <- Operand: Vd
+            // UQSHL_asisdshf_r              : UQSHL       Vd, Vn, #shift <- Operand: Vn
             case 9:
             {
                 var bitValue = ((rawValue >> 19) & 0xF);
                 return TryDecodeFromBitValues(bitValue, 9, out registerEncodingKind);
             }
             // SQRSHRN_asisdshf_n            : SQRSHRN     Vbd, Van, #shift <- Operand: Vbd
+            // SQRSHRUN_asisdshf_n           : SQRSHRUN    Vbd, Van, #shift <- Operand: Vbd
+            // SQSHRN_asisdshf_n             : SQSHRN      Vbd, Van, #shift <- Operand: Vbd
+            // SQSHRUN_asisdshf_n            : SQSHRUN     Vbd, Van, #shift <- Operand: Vbd
+            // UQRSHRN_asisdshf_n            : UQRSHRN     Vbd, Van, #shift <- Operand: Vbd
+            // UQSHRN_asisdshf_n             : UQSHRN      Vbd, Van, #shift <- Operand: Vbd
             case 10:
             {
                 var bitValue = ((rawValue >> 19) & 0xF);
                 return TryDecodeFromBitValues(bitValue, 10, out registerEncodingKind);
             }
             // SQRSHRN_asisdshf_n            : SQRSHRN     Vbd, Van, #shift <- Operand: Van
+            // SQRSHRUN_asisdshf_n           : SQRSHRUN    Vbd, Van, #shift <- Operand: Van
+            // SQSHRN_asisdshf_n             : SQSHRN      Vbd, Van, #shift <- Operand: Van
+            // SQSHRUN_asisdshf_n            : SQSHRUN     Vbd, Van, #shift <- Operand: Van
+            // UQRSHRN_asisdshf_n            : UQRSHRN     Vbd, Van, #shift <- Operand: Van
+            // UQSHRN_asisdshf_n             : UQSHRN      Vbd, Van, #shift <- Operand: Van
             case 11:
             {
                 var bitValue = ((rawValue >> 19) & 0xF);
                 return TryDecodeFromBitValues(bitValue, 11, out registerEncodingKind);
             }
             // FCVTZS_asisdshf_c             : FCVTZS      Vd, Vn, #fbits <- Operand: Vd
+            // FCVTZS_asisdshf_c             : FCVTZS      Vd, Vn, #fbits <- Operand: Vn
+            // FCVTZU_asisdshf_c             : FCVTZU      Vd, Vn, #fbits <- Operand: Vd
+            // FCVTZU_asisdshf_c             : FCVTZU      Vd, Vn, #fbits <- Operand: Vn
+            // SCVTF_asisdshf_c              : SCVTF       Vd, Vn, #fbits <- Operand: Vd
+            // SCVTF_asisdshf_c              : SCVTF       Vd, Vn, #fbits <- Operand: Vn
+            // UCVTF_asisdshf_c              : UCVTF       Vd, Vn, #fbits <- Operand: Vd
+            // UCVTF_asisdshf_c              : UCVTF       Vd, Vn, #fbits <- Operand: Vn
             case 12:
             {
                 var bitValue = ((rawValue >> 19) & 0xF);
@@ -102,6 +282,7 @@ static class Arm64DynamicRegisterHelper
                 return TryDecodeFromBitValues(bitValue, 13, out registerEncodingKind);
             }
             // DUP_asimdins_dr_r             : DUP         Vd.T, Rn <- Operand: Rn
+            // INS_asimdins_ir_r             : INS         Vd.Ts[index], Rn <- Operand: Rn
             case 14:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);

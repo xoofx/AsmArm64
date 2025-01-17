@@ -15,6 +15,8 @@ enum EncodingSymbolExtractMapKind
     DynamicRegister,
     Indexer,
     Immediate,
+    ProcessStateField,
+    RegisterIndex,
 }
 
 class EncodingSymbolExtractMap
@@ -122,6 +124,6 @@ class EncodingSymbolExtractMap
             }
         }
 
-        return encodingSymbolExtract;
+        return (TExtract)existingExtract;
     }
 }

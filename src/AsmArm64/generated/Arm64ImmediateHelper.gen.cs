@@ -23,52 +23,105 @@ static class Arm64ImmediateHelper
     {
         switch (mapIndex)
         {
+            // FCADD_asimdsame2_c            : FCADD       Vd.T, Vn.T, Vm.T, #rotate <- Operand: #rotate
             case 1:
             {
                 var bitValue = ((rawValue >> 12) & 0x1);
                 return TryDecodeFromBitValues(bitValue, 1, out imm);
             }
+            // MSR_si_pstate                 : MSR         pstatefield, #imm <- Operand: #imm
             case 2:
+            {
+                var bitValue = ((rawValue >> 5) & 0x7) | ((rawValue >> 13) & 0x38) | ((rawValue >> 2) & 0x3C0);
+                imm = (int)bitValue;
+                return true;
+            }
+            // FCMLA_asimdsame2_c            : FCMLA       Vd.T, Vn.T, Vm.T, #rotate <- Operand: #rotate
+            case 3:
             {
                 var bitValue = ((rawValue >> 11) & 0x3);
                 return TryDecodeFromBitValues(bitValue, 2, out imm);
             }
-            case 3:
+            // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: #rotate
+            case 4:
             {
                 var bitValue = ((rawValue >> 13) & 0x3);
                 return TryDecodeFromBitValues(bitValue, 2, out imm);
             }
-            case 4:
+            // SHLL_asimdmisc_s              : SHLL        Vd.Ta, Vn.Tb, #shift <- Operand: #shift
+            case 5:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 return TryDecodeFromBitValues(bitValue, 3, out imm);
             }
-            case 5:
+            // EXT_asimdext_only             : EXT         Vd.T, Vn.T, Vm.T, #index <- Operand: #index
+            case 6:
             {
                 var bitValue = ((rawValue >> 11) & 0xF) | ((rawValue >> 26) & 0x10);
                 return TryDecodeFromBitValues(bitValue, 4, out imm);
             }
-            case 6:
+            // SRI_asimdshf_r                : SRI         Vd.T, Vn.T, #shift <- Operand: #shift
+            // SRSHR_asimdshf_r              : SRSHR       Vd.T, Vn.T, #shift <- Operand: #shift
+            // SRSRA_asimdshf_r              : SRSRA       Vd.T, Vn.T, #shift <- Operand: #shift
+            // SSHR_asimdshf_r               : SSHR        Vd.T, Vn.T, #shift <- Operand: #shift
+            // SSRA_asimdshf_r               : SSRA        Vd.T, Vn.T, #shift <- Operand: #shift
+            // URSHR_asimdshf_r              : URSHR       Vd.T, Vn.T, #shift <- Operand: #shift
+            // URSRA_asimdshf_r              : URSRA       Vd.T, Vn.T, #shift <- Operand: #shift
+            // USHR_asimdshf_r               : USHR        Vd.T, Vn.T, #shift <- Operand: #shift
+            // USRA_asimdshf_r               : USRA        Vd.T, Vn.T, #shift <- Operand: #shift
+            case 7:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 return TryDecodeFromBitValues(bitValue, 5, out imm);
             }
-            case 7:
+            // RSHRN_asimdshf_n              : RSHRN       Vd.Tb, Vn.Ta, #shift <- Operand: #shift
+            // SHRN_asimdshf_n               : SHRN        Vd.Tb, Vn.Ta, #shift <- Operand: #shift
+            // SQRSHRN_asimdshf_n            : SQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: #shift
+            // SQRSHRN_asisdshf_n            : SQRSHRN     Vbd, Van, #shift <- Operand: #shift
+            // SQRSHRUN_asimdshf_n           : SQRSHRUN    Vd.Tb, Vn.Ta, #shift <- Operand: #shift
+            // SQRSHRUN_asisdshf_n           : SQRSHRUN    Vbd, Van, #shift <- Operand: #shift
+            // SQSHRN_asimdshf_n             : SQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: #shift
+            // SQSHRN_asisdshf_n             : SQSHRN      Vbd, Van, #shift <- Operand: #shift
+            // SQSHRUN_asimdshf_n            : SQSHRUN     Vd.Tb, Vn.Ta, #shift <- Operand: #shift
+            // SQSHRUN_asisdshf_n            : SQSHRUN     Vbd, Van, #shift <- Operand: #shift
+            // UQRSHRN_asimdshf_n            : UQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: #shift
+            // UQRSHRN_asisdshf_n            : UQRSHRN     Vbd, Van, #shift <- Operand: #shift
+            // UQSHRN_asimdshf_n             : UQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: #shift
+            // UQSHRN_asisdshf_n             : UQSHRN      Vbd, Van, #shift <- Operand: #shift
+            case 8:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 return TryDecodeFromBitValues(bitValue, 6, out imm);
             }
-            case 8:
+            // SHL_asimdshf_r                : SHL         Vd.T, Vn.T, #shift <- Operand: #shift
+            // SLI_asimdshf_r                : SLI         Vd.T, Vn.T, #shift <- Operand: #shift
+            // SQSHL_asimdshf_r              : SQSHL       Vd.T, Vn.T, #shift <- Operand: #shift
+            // SQSHL_asisdshf_r              : SQSHL       Vd, Vn, #shift <- Operand: #shift
+            // SQSHLU_asimdshf_r             : SQSHLU      Vd.T, Vn.T, #shift <- Operand: #shift
+            // SQSHLU_asisdshf_r             : SQSHLU      Vd, Vn, #shift <- Operand: #shift
+            // UQSHL_asimdshf_r              : UQSHL       Vd.T, Vn.T, #shift <- Operand: #shift
+            // UQSHL_asisdshf_r              : UQSHL       Vd, Vn, #shift <- Operand: #shift
+            case 9:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 return TryDecodeFromBitValues(bitValue, 7, out imm);
             }
-            case 9:
+            // SSHLL_asimdshf_l              : SSHLL       Vd.Ta, Vn.Tb, #shift <- Operand: #shift
+            // USHLL_asimdshf_l              : USHLL       Vd.Ta, Vn.Tb, #shift <- Operand: #shift
+            case 10:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 return TryDecodeFromBitValues(bitValue, 8, out imm);
             }
-            case 10:
+            // FCVTZS_asimdshf_c             : FCVTZS      Vd.T, Vn.T, #fbits <- Operand: #fbits
+            // FCVTZS_asisdshf_c             : FCVTZS      Vd, Vn, #fbits <- Operand: #fbits
+            // FCVTZU_asimdshf_c             : FCVTZU      Vd.T, Vn.T, #fbits <- Operand: #fbits
+            // FCVTZU_asisdshf_c             : FCVTZU      Vd, Vn, #fbits <- Operand: #fbits
+            // SCVTF_asimdshf_c              : SCVTF       Vd.T, Vn.T, #fbits <- Operand: #fbits
+            // SCVTF_asisdshf_c              : SCVTF       Vd, Vn, #fbits <- Operand: #fbits
+            // UCVTF_asimdshf_c              : UCVTF       Vd.T, Vn.T, #fbits <- Operand: #fbits
+            // UCVTF_asisdshf_c              : UCVTF       Vd, Vn, #fbits <- Operand: #fbits
+            case 11:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 return TryDecodeFromBitValues(bitValue, 9, out imm);

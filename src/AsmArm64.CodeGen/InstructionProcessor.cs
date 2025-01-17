@@ -28,10 +28,12 @@ internal sealed class InstructionProcessor
     private readonly Dictionary<string, int> _prefetchOperationEnumValues = new();
     private readonly Dictionary<string, int> _rangePrefetchOperationEnumValues = new();
 
-    private readonly EncodingSymbolExtractMap _vectorArrangements = new();
-    private readonly EncodingSymbolExtractMap _dynamicRegisterSelectors = new();
-    private readonly EncodingSymbolExtractMap _indexers = new();
-    private readonly EncodingSymbolExtractMap _immediates = new();
+    private readonly EncodingSymbolExtractMap _vectorArrangements;
+    private readonly EncodingSymbolExtractMap _dynamicRegisterSelectors;
+    private readonly EncodingSymbolExtractMap _indexers;
+    private readonly EncodingSymbolExtractMap _immediates;
+    private readonly EncodingSymbolExtractMap _processStateFields;
+    private readonly EncodingSymbolExtractMap _registerIndex;
 
     private bool _hasErrors;
 
@@ -45,6 +47,8 @@ internal sealed class InstructionProcessor
         _dynamicRegisterSelectors = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.DynamicRegister);
         _indexers = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.Indexer);
         _immediates = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.Immediate);
+        _processStateFields = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.ProcessStateField);
+        _registerIndex = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.RegisterIndex);
     }
 
     public List<int> InstructionEncodingOffsets { get; } = new();
@@ -102,7 +106,7 @@ internal sealed class InstructionProcessor
     public void Run()
     {
         // Order instructions by their id
-        _instructions.Sort((a, b) => string.Compare(a.Id, b.Id, StringComparison.Ordinal));
+        //_instructions.Sort((a, b) => string.Compare(a.Id, b.Id, StringComparison.Ordinal));
 
         // Assign ids and collect mnemonics
         for (int i = 0; i < _instructions.Count; i++)
@@ -401,15 +405,12 @@ internal sealed class InstructionProcessor
             {
                 EnumKind = Arm64EnumEncodingKind.Conditional,
                 Name = name0,
-                BitSize = 4,
+                BitSize = symbol0.BitSize,
             };
-
-            // TODO: check bit values
 
             Debug.Assert(symbol0.BitSize == 4);
             Debug.Assert(symbol0.BitRanges.Count == 1);
             enumOperandDescriptor.EnumEncoding = symbol0.BitRanges[0];
-
             return enumOperandDescriptor;
         }
         else if (instruction.Id == "DSB_bon_barriers")
@@ -418,10 +419,13 @@ internal sealed class InstructionProcessor
             {
                 EnumKind = Arm64EnumEncodingKind.DataSynchronizationOption,
                 Name = name0,
-                BitSize = 4,
-                EnumEncoding = new BitRange(8, 4)
+                BitSize = symbol0.BitSize,
             };
+            Debug.Assert(symbol0.BitSize == 2);
+            Debug.Assert(symbol0.BitRanges.Count == 1);
+            enumOperandDescriptor.EnumEncoding = symbol0.BitRanges[0];
 
+            Console.WriteLine($"{instruction.Id} {instruction.FullSyntax}");
             return enumOperandDescriptor;
         }
         else if (instruction.Id == "STSHH_hi_hints")
@@ -430,9 +434,11 @@ internal sealed class InstructionProcessor
             {
                 EnumKind = Arm64EnumEncodingKind.StoredSharedHintPolicy,
                 Name = name0,
-                BitSize = 1,
-                EnumEncoding = new BitRange(5, 1)
+                BitSize = symbol0.BitSize,
             };
+            Debug.Assert(symbol0.BitSize == 1);
+            Debug.Assert(symbol0.BitRanges.Count == 1);
+            enumOperandDescriptor.EnumEncoding = symbol0.BitRanges[0];
 
             return enumOperandDescriptor;
         }
@@ -442,7 +448,10 @@ internal sealed class InstructionProcessor
             {
                 Name = name0,
             };
+            enumOperandDescriptor.BitMapExtract = _processStateFields.GetOrCreateExtract<EncodingSymbolExtract>(symbol0);
+            enumOperandDescriptor.BitMapExtract.Usages.Add((instruction, enumOperand));
 
+            // Console.WriteLine($"{instruction.Id} {instruction.FullSyntax}");
             return enumOperandDescriptor;
         }
 
@@ -947,54 +956,19 @@ internal sealed class InstructionProcessor
         {
             int size = symbol.BitSize;
 
-            if (symbol.Selector is null && (symbol.BitRanges.Count == 1 && (size == 5 || size == 4)))
+            if (symbol.Selector is null)
             {
+                Debug.Assert(symbol.BitRanges.Count == 1 && (size == 5 || size == 4));
                 descriptor.LowBitIndexEncoding = symbol.BitRanges[0].LowBit;
                 descriptor.RegisterIndexEncodingKind = size == 4
                     ? Arm64RegisterIndexEncodingKind.Std4
                     : Arm64RegisterIndexEncodingKind.Std5;
             }
-            else //if (symbol.BitInfos.Count != 1 || size != 5 || symbol.BitValues.Count != 0)
+            else
             {
-                // There is a special case
-                // (23:2),(20:1),(19:4)
-                // BitFields = 00, Value = RESERVED
-                // BitFields = 01, Value = UInt('0':Rm)
-                // BitFields = 10, Value = UInt(M:Rm)
-                // BitFields = 11, Value = RESERVED
-
-                var selector = symbol.Selector;
-                Debug.Assert(selector is not null);
-
-                // TODO: Handle selector for SpecialMRm - It should not be different from DynamicSelector in the end for the register index
-
-                //var checkSpecialMRm =
-                //        selector.BitNames.Count == 1
-                //        && selector.BitNames[0] == "size"
-                //        && selector.BitValues.Count == 4
-                //        && selector.BitValues[0].Text == "RESERVED"
-                //        && selector.BitValues[1].Text == "UInt('0':Rm)"
-                //        && selector.BitValues[1].BitItems.Count == 2
-                //        && selector.BitValues[1].BitItems[0]  == new BitValueItem(BitValueItemKind.Bit0, default)
-                //        && selector.BitValues[1].BitItems[1] == new BitValueItem(BitValueItemKind.BitRange, new(16, 4))
-                //        && selector.BitValues[2].Text == "UInt(M:Rm)"
-                //        && selector.BitValues[2].BitItems.Count == 2
-                //        && selector.BitValues[2].BitItems[0] == new BitValueItem(BitValueItemKind.BitRange, new(20, 1))
-                //        && selector.BitValues[2].BitItems[1] == new BitValueItem(BitValueItemKind.BitRange, new(16, 4))
-                //        && selector.BitValues[3].Text == "RESERVED"
-                //    ;
-
-                //if (!checkSpecialMRm)
-                //{
-                //    var errorMessage = new StringBuilder();
-                //    errorMessage.AppendLine($"Unsupported register encoding:");
-                //    errorMessage.AppendLine($"{symbol}");
-                //    throw new NotSupportedException(errorMessage.ToString());
-                //}
-                //else
-                {
-                    descriptor.RegisterIndexEncodingKind = Arm64RegisterIndexEncodingKind.SpecialMRm;
-                }
+                descriptor.RegisterIndexEncodingKind = Arm64RegisterIndexEncodingKind.BitMapExtract;
+                descriptor.RegisterIndexExtract = _registerIndex.GetOrCreateExtract<EncodingSymbolExtract>(symbol);
+                descriptor.RegisterIndexExtract.Usages.Add((instruction, register));
             }
         }
         else
@@ -1201,28 +1175,17 @@ internal sealed class InstructionProcessor
             Debug.Assert(symbol != null);
             immediate.BitSize = symbol.BitSize;
             immediate.Encoding.AddRange(symbol.BitRanges);
-            if (immediate.Encoding.Count == 3)
-            {
-                Debug.Assert(instruction.Id == "MSR_si_pstate");
-                immediate.ImmediateKind = Arm64ImmediateEncodingKind.PStateField;
-                return immediate;
-            }
-            Debug.Assert(immediate.Encoding.Count > 0 && immediate.Encoding.Count <= 2);
             immediate.ImmediateKind = Arm64ImmediateEncodingKind.Regular;
 
-            if (symbol.Selector is not null)
+            if (symbol.Selector is not null || immediate.Encoding.Count >= 3)
             {
-
-                if (immediate.BitSize == 7 && immediate.Encoding[0] == new BitRange(16, 7) && symbol.Selector.BitValues.Count == 4 && symbol.Selector.BitNames.Count == 1 && symbol.Selector.BitNames[0] == "immh")
-                {
-
-                }
-
                 immediate.ImmediateKind = Arm64ImmediateEncodingKind.BitMapExtract;
                 immediate.Extract = _immediates.GetOrCreateExtract<EncodingSymbolExtract>(symbol);
+                immediate.Extract.Usages.Add((instruction, item));
             }
             else
             {
+                Debug.Assert(immediate.Encoding.Count > 0 && immediate.Encoding.Count <= 2);
                 if (symbol.EncodedInText == "a:b:c:d:e:f:g:h")
                 {
                     if (immediate.Name == "imm")
@@ -1314,8 +1277,8 @@ internal sealed class InstructionProcessor
                 Debug.Assert(selectOperandItem.Items.Count == 2);
                 var firstReg = ProcessRegister(instruction, (RegisterOperandItem)selectOperandItem.Items[0]);
                 var secondReg = ProcessRegister(instruction, (RegisterOperandItem)selectOperandItem.Items[1]);
-                Debug.Assert(firstReg.RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.SpecialMRm);
-                Debug.Assert(secondReg.RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.SpecialMRm);
+                Debug.Assert(firstReg.RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.BitMapExtract);
+                Debug.Assert(secondReg.RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.BitMapExtract);
                 Debug.Assert(firstReg.LowBitIndexEncoding == secondReg.LowBitIndexEncoding);
                 kind = Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend;
                 indexRegisterOrImmediate = firstReg;

@@ -24,66 +24,531 @@ static class Arm64VectorArrangementHelper
         switch (mapIndex)
         {
             // FADDP_asisdpair_only_sd       : FADDP       Vd, Vn.T <- Operand: Vn.T
+            // FMAXNMP_asisdpair_only_sd     : FMAXNMP     Vd, Vn.T <- Operand: Vn.T
+            // FMAXP_asisdpair_only_sd       : FMAXP       Vd, Vn.T <- Operand: Vn.T
+            // FMINNMP_asisdpair_only_sd     : FMINNMP     Vd, Vn.T <- Operand: Vn.T
+            // FMINP_asisdpair_only_sd       : FMINP       Vd, Vn.T <- Operand: Vn.T
             case 1:
             {
                 var bitValue = ((rawValue >> 22) & 0x1);
                 return TryDecodeFromBitValues(bitValue, 2, out vKind,out elementCount);
             }
             // FCVTL_asimdmisc_l             : FCVTL       Vd.Ta, Vn.Tb <- Operand: Vd.Ta
+            // FCVTN_asimdmisc_n             : FCVTN       Vd.Tb, Vn.Ta <- Operand: Vn.Ta
             case 2:
             {
                 var bitValue = ((rawValue >> 22) & 0x1);
                 return TryDecodeFromBitValues(bitValue, 5, out vKind,out elementCount);
             }
             // FMLA_asimdelem_r_sd           : FMLA        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // FMLA_asisdelem_r_sd           : FMLA        Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // FMLS_asimdelem_r_sd           : FMLS        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // FMLS_asisdelem_r_sd           : FMLS        Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // FMUL_asimdelem_r_sd           : FMUL        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // FMUL_asisdelem_r_sd           : FMUL        Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // FMULX_asimdelem_r_sd          : FMULX       Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // FMULX_asisdelem_r_sd          : FMULX       Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
             case 3:
             {
                 var bitValue = ((rawValue >> 22) & 0x1);
                 return TryDecodeFromBitValues(bitValue, 7, out vKind,out elementCount);
             }
+            // FMLAL_asimdelem_lh            : FMLAL       Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vn.Tb
+            // FMLAL_asimdsame_f             : FMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // FMLAL_asimdsame_f             : FMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // FMLAL2_asimdelem_lh           : FMLAL2      Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vn.Tb
+            // FMLAL2_asimdsame_f            : FMLAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // FMLAL2_asimdsame_f            : FMLAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // FMLSL_asimdelem_lh            : FMLSL       Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vn.Tb
+            // FMLSL_asimdsame_f             : FMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // FMLSL_asimdsame_f             : FMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // FMLSL2_asimdelem_lh           : FMLSL2      Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vn.Tb
+            // FMLSL2_asimdsame_f            : FMLSL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // FMLSL2_asimdsame_f            : FMLSL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             case 4:
             {
                 var bitValue = ((rawValue >> 30) & 0x1);
                 return TryDecodeFromBitValues(bitValue, 1, out vKind,out elementCount);
             }
             // BFDOT_asimdelem_e             : BFDOT       Vd.Ta, Vn.Tb, Vm.2H[index] <- Operand: Vd.Ta
+            // BFDOT_asimdsame2_d            : BFDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // BIC_asimdimm_l_sl             : BIC         Vd.T, #imm8 {, LSL #amount} <- Operand: Vd.T
+            // FCVTXN_asimdmisc_n            : FCVTXN      Vd.Tb, Vn.2D <- Operand: Vd.Tb
+            // FDOT_asimdelem_d              : FDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vd.Ta
+            // FDOT_asimdsame2_dd            : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // FMLAL_asimdelem_lh            : FMLAL       Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vd.Ta
+            // FMLAL_asimdsame_f             : FMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // FMLAL2_asimdelem_lh           : FMLAL2      Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vd.Ta
+            // FMLAL2_asimdsame_f            : FMLAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // FMLSL_asimdelem_lh            : FMLSL       Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vd.Ta
+            // FMLSL_asimdsame_f             : FMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // FMLSL2_asimdelem_lh           : FMLSL2      Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vd.Ta
+            // FMLSL2_asimdsame_f            : FMLSL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // FMOV_asimdimm_s_s             : FMOV        Vd.T, #imm <- Operand: Vd.T
+            // MOVI_asimdimm_l_sl            : MOVI        Vd.T, #imm8 {, LSL #amount} <- Operand: Vd.T
+            // MOVI_asimdimm_m_sm            : MOVI        Vd.T, #imm8, MSL #amount <- Operand: Vd.T
+            // MVNI_asimdimm_l_sl            : MVNI        Vd.T, #imm8 {, LSL #amount} <- Operand: Vd.T
+            // MVNI_asimdimm_m_sm            : MVNI        Vd.T, #imm8, MSL #amount <- Operand: Vd.T
+            // ORR_asimdimm_l_sl             : ORR         Vd.T, #imm8 {, LSL #amount} <- Operand: Vd.T
+            // SDOT_asimdelem_d              : SDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vd.Ta
+            // SDOT_asimdsame2_d             : SDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SUDOT_asimdelem_d             : SUDOT       Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vd.Ta
+            // UDOT_asimdelem_d              : UDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vd.Ta
+            // UDOT_asimdsame2_d             : UDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // USDOT_asimdelem_d             : USDOT       Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vd.Ta
+            // USDOT_asimdsame2_d            : USDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             case 5:
             {
                 var bitValue = ((rawValue >> 30) & 0x1);
                 return TryDecodeFromBitValues(bitValue, 3, out vKind,out elementCount);
             }
             // BFCVTN_asimdmisc_4s           : BFCVTN      Vd.Ta, Vn.4S <- Operand: Vd.Ta
+            // BFDOT_asimdelem_e             : BFDOT       Vd.Ta, Vn.Tb, Vm.2H[index] <- Operand: Vn.Tb
+            // BFDOT_asimdsame2_d            : BFDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // BFDOT_asimdsame2_d            : BFDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // BIC_asimdimm_l_hl             : BIC         Vd.T, #imm8 {, LSL #amount} <- Operand: Vd.T
+            // FABD_asimdsamefp16_only       : FABD        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FABD_asimdsamefp16_only       : FABD        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FABD_asimdsamefp16_only       : FABD        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FABS_asimdmiscfp16_r          : FABS        Vd.T, Vn.T <- Operand: Vd.T
+            // FABS_asimdmiscfp16_r          : FABS        Vd.T, Vn.T <- Operand: Vn.T
+            // FACGE_asimdsamefp16_only      : FACGE       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FACGE_asimdsamefp16_only      : FACGE       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FACGE_asimdsamefp16_only      : FACGE       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FACGT_asimdsamefp16_only      : FACGT       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FACGT_asimdsamefp16_only      : FACGT       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FACGT_asimdsamefp16_only      : FACGT       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FADD_asimdsamefp16_only       : FADD        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FADD_asimdsamefp16_only       : FADD        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FADD_asimdsamefp16_only       : FADD        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FADDP_asimdsamefp16_only      : FADDP       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FADDP_asimdsamefp16_only      : FADDP       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FADDP_asimdsamefp16_only      : FADDP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FAMAX_asimdsamefp16_only      : FAMAX       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FAMAX_asimdsamefp16_only      : FAMAX       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FAMAX_asimdsamefp16_only      : FAMAX       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FAMIN_asimdsamefp16_only      : FAMIN       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FAMIN_asimdsamefp16_only      : FAMIN       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FAMIN_asimdsamefp16_only      : FAMIN       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FCMEQ_asimdmiscfp16_fz        : FCMEQ       Vd.T, Vn.T, #0.0 <- Operand: Vd.T
+            // FCMEQ_asimdmiscfp16_fz        : FCMEQ       Vd.T, Vn.T, #0.0 <- Operand: Vn.T
+            // FCMEQ_asimdsamefp16_only      : FCMEQ       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FCMEQ_asimdsamefp16_only      : FCMEQ       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FCMEQ_asimdsamefp16_only      : FCMEQ       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FCMGE_asimdmiscfp16_fz        : FCMGE       Vd.T, Vn.T, #0.0 <- Operand: Vd.T
+            // FCMGE_asimdmiscfp16_fz        : FCMGE       Vd.T, Vn.T, #0.0 <- Operand: Vn.T
+            // FCMGE_asimdsamefp16_only      : FCMGE       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FCMGE_asimdsamefp16_only      : FCMGE       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FCMGE_asimdsamefp16_only      : FCMGE       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FCMGT_asimdmiscfp16_fz        : FCMGT       Vd.T, Vn.T, #0.0 <- Operand: Vd.T
+            // FCMGT_asimdmiscfp16_fz        : FCMGT       Vd.T, Vn.T, #0.0 <- Operand: Vn.T
+            // FCMGT_asimdsamefp16_only      : FCMGT       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FCMGT_asimdsamefp16_only      : FCMGT       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FCMGT_asimdsamefp16_only      : FCMGT       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FCMLE_asimdmiscfp16_fz        : FCMLE       Vd.T, Vn.T, #0.0 <- Operand: Vd.T
+            // FCMLE_asimdmiscfp16_fz        : FCMLE       Vd.T, Vn.T, #0.0 <- Operand: Vn.T
+            // FCMLT_asimdmiscfp16_fz        : FCMLT       Vd.T, Vn.T, #0.0 <- Operand: Vd.T
+            // FCMLT_asimdmiscfp16_fz        : FCMLT       Vd.T, Vn.T, #0.0 <- Operand: Vn.T
+            // FCVTAS_asimdmiscfp16_r        : FCVTAS      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTAS_asimdmiscfp16_r        : FCVTAS      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTAU_asimdmiscfp16_r        : FCVTAU      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTAU_asimdmiscfp16_r        : FCVTAU      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTMS_asimdmiscfp16_r        : FCVTMS      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTMS_asimdmiscfp16_r        : FCVTMS      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTMU_asimdmiscfp16_r        : FCVTMU      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTMU_asimdmiscfp16_r        : FCVTMU      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTN_asimdsame2_d            : FCVTN       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // FCVTN_asimdsame2_d            : FCVTN       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // FCVTNS_asimdmiscfp16_r        : FCVTNS      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTNS_asimdmiscfp16_r        : FCVTNS      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTNU_asimdmiscfp16_r        : FCVTNU      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTNU_asimdmiscfp16_r        : FCVTNU      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTPS_asimdmiscfp16_r        : FCVTPS      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTPS_asimdmiscfp16_r        : FCVTPS      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTPU_asimdmiscfp16_r        : FCVTPU      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTPU_asimdmiscfp16_r        : FCVTPU      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTZS_asimdmiscfp16_r        : FCVTZS      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTZS_asimdmiscfp16_r        : FCVTZS      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTZU_asimdmiscfp16_r        : FCVTZU      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTZU_asimdmiscfp16_r        : FCVTZU      Vd.T, Vn.T <- Operand: Vn.T
+            // FDIV_asimdsamefp16_only       : FDIV        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FDIV_asimdsamefp16_only       : FDIV        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FDIV_asimdsamefp16_only       : FDIV        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FDOT_asimdelem_g              : FDOT        Vd.Ta, Vn.Tb, Vm.2B[index] <- Operand: Vd.Ta
+            // FDOT_asimdsame2_d             : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // FMAX_asimdsamefp16_only       : FMAX        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMAX_asimdsamefp16_only       : FMAX        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMAX_asimdsamefp16_only       : FMAX        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMAXNM_asimdsamefp16_only     : FMAXNM      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMAXNM_asimdsamefp16_only     : FMAXNM      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMAXNM_asimdsamefp16_only     : FMAXNM      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMAXNMP_asimdsamefp16_only    : FMAXNMP     Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMAXNMP_asimdsamefp16_only    : FMAXNMP     Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMAXNMP_asimdsamefp16_only    : FMAXNMP     Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMAXNMV_asimdall_only_h       : FMAXNMV     Vd, Vn.T <- Operand: Vn.T
+            // FMAXP_asimdsamefp16_only      : FMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMAXP_asimdsamefp16_only      : FMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMAXP_asimdsamefp16_only      : FMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMAXV_asimdall_only_h         : FMAXV       Vd, Vn.T <- Operand: Vn.T
+            // FMIN_asimdsamefp16_only       : FMIN        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMIN_asimdsamefp16_only       : FMIN        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMIN_asimdsamefp16_only       : FMIN        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMINNM_asimdsamefp16_only     : FMINNM      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMINNM_asimdsamefp16_only     : FMINNM      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMINNM_asimdsamefp16_only     : FMINNM      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMINNMP_asimdsamefp16_only    : FMINNMP     Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMINNMP_asimdsamefp16_only    : FMINNMP     Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMINNMP_asimdsamefp16_only    : FMINNMP     Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMINNMV_asimdall_only_h       : FMINNMV     Vd, Vn.T <- Operand: Vn.T
+            // FMINP_asimdsamefp16_only      : FMINP       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMINP_asimdsamefp16_only      : FMINP       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMINP_asimdsamefp16_only      : FMINP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMINV_asimdall_only_h         : FMINV       Vd, Vn.T <- Operand: Vn.T
+            // FMLA_asimdelem_rh_h           : FMLA        Vd.T, Vn.T, Vm.H[index] <- Operand: Vd.T
+            // FMLA_asimdelem_rh_h           : FMLA        Vd.T, Vn.T, Vm.H[index] <- Operand: Vn.T
+            // FMLA_asimdsamefp16_only       : FMLA        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMLA_asimdsamefp16_only       : FMLA        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMLA_asimdsamefp16_only       : FMLA        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMLS_asimdelem_rh_h           : FMLS        Vd.T, Vn.T, Vm.H[index] <- Operand: Vd.T
+            // FMLS_asimdelem_rh_h           : FMLS        Vd.T, Vn.T, Vm.H[index] <- Operand: Vn.T
+            // FMLS_asimdsamefp16_only       : FMLS        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMLS_asimdsamefp16_only       : FMLS        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMLS_asimdsamefp16_only       : FMLS        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMOV_asimdimm_h_h             : FMOV        Vd.T, #imm <- Operand: Vd.T
+            // FMUL_asimdelem_rh_h           : FMUL        Vd.T, Vn.T, Vm.H[index] <- Operand: Vd.T
+            // FMUL_asimdelem_rh_h           : FMUL        Vd.T, Vn.T, Vm.H[index] <- Operand: Vn.T
+            // FMUL_asimdsamefp16_only       : FMUL        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMUL_asimdsamefp16_only       : FMUL        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMUL_asimdsamefp16_only       : FMUL        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMULX_asimdelem_rh_h          : FMULX       Vd.T, Vn.T, Vm.H[index] <- Operand: Vd.T
+            // FMULX_asimdelem_rh_h          : FMULX       Vd.T, Vn.T, Vm.H[index] <- Operand: Vn.T
+            // FMULX_asimdsamefp16_only      : FMULX       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMULX_asimdsamefp16_only      : FMULX       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMULX_asimdsamefp16_only      : FMULX       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FNEG_asimdmiscfp16_r          : FNEG        Vd.T, Vn.T <- Operand: Vd.T
+            // FNEG_asimdmiscfp16_r          : FNEG        Vd.T, Vn.T <- Operand: Vn.T
+            // FRECPE_asimdmiscfp16_r        : FRECPE      Vd.T, Vn.T <- Operand: Vd.T
+            // FRECPE_asimdmiscfp16_r        : FRECPE      Vd.T, Vn.T <- Operand: Vn.T
+            // FRECPS_asimdsamefp16_only     : FRECPS      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FRECPS_asimdsamefp16_only     : FRECPS      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FRECPS_asimdsamefp16_only     : FRECPS      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FRINTA_asimdmiscfp16_r        : FRINTA      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTA_asimdmiscfp16_r        : FRINTA      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTI_asimdmiscfp16_r        : FRINTI      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTI_asimdmiscfp16_r        : FRINTI      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTM_asimdmiscfp16_r        : FRINTM      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTM_asimdmiscfp16_r        : FRINTM      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTN_asimdmiscfp16_r        : FRINTN      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTN_asimdmiscfp16_r        : FRINTN      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTP_asimdmiscfp16_r        : FRINTP      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTP_asimdmiscfp16_r        : FRINTP      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTX_asimdmiscfp16_r        : FRINTX      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTX_asimdmiscfp16_r        : FRINTX      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTZ_asimdmiscfp16_r        : FRINTZ      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTZ_asimdmiscfp16_r        : FRINTZ      Vd.T, Vn.T <- Operand: Vn.T
+            // FRSQRTE_asimdmiscfp16_r       : FRSQRTE     Vd.T, Vn.T <- Operand: Vd.T
+            // FRSQRTE_asimdmiscfp16_r       : FRSQRTE     Vd.T, Vn.T <- Operand: Vn.T
+            // FRSQRTS_asimdsamefp16_only    : FRSQRTS     Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FRSQRTS_asimdsamefp16_only    : FRSQRTS     Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FRSQRTS_asimdsamefp16_only    : FRSQRTS     Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FSCALE_asimdsamefp16_only     : FSCALE      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FSCALE_asimdsamefp16_only     : FSCALE      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FSCALE_asimdsamefp16_only     : FSCALE      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FSQRT_asimdmiscfp16_r         : FSQRT       Vd.T, Vn.T <- Operand: Vd.T
+            // FSQRT_asimdmiscfp16_r         : FSQRT       Vd.T, Vn.T <- Operand: Vn.T
+            // FSUB_asimdsamefp16_only       : FSUB        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FSUB_asimdsamefp16_only       : FSUB        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FSUB_asimdsamefp16_only       : FSUB        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // MOVI_asimdimm_l_hl            : MOVI        Vd.T, #imm8 {, LSL #amount} <- Operand: Vd.T
+            // MVNI_asimdimm_l_hl            : MVNI        Vd.T, #imm8 {, LSL #amount} <- Operand: Vd.T
+            // ORR_asimdimm_l_hl             : ORR         Vd.T, #imm8 {, LSL #amount} <- Operand: Vd.T
+            // SCVTF_asimdmiscfp16_r         : SCVTF       Vd.T, Vn.T <- Operand: Vd.T
+            // SCVTF_asimdmiscfp16_r         : SCVTF       Vd.T, Vn.T <- Operand: Vn.T
+            // UCVTF_asimdmiscfp16_r         : UCVTF       Vd.T, Vn.T <- Operand: Vd.T
+            // UCVTF_asimdmiscfp16_r         : UCVTF       Vd.T, Vn.T <- Operand: Vn.T
             case 6:
             {
                 var bitValue = ((rawValue >> 30) & 0x1);
                 return TryDecodeFromBitValues(bitValue, 4, out vKind,out elementCount);
             }
             // AND_asimdsame_only            : AND         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // AND_asimdsame_only            : AND         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // AND_asimdsame_only            : AND         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // BF1CVTL_asimdmisc_v           : BF1CVTL     Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // BF2CVTL_asimdmisc_v           : BF2CVTL     Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // BIC_asimdsame_only            : BIC         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // BIC_asimdsame_only            : BIC         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // BIC_asimdsame_only            : BIC         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // BIF_asimdsame_only            : BIF         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // BIF_asimdsame_only            : BIF         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // BIF_asimdsame_only            : BIF         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // BIT_asimdsame_only            : BIT         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // BIT_asimdsame_only            : BIT         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // BIT_asimdsame_only            : BIT         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // BSL_asimdsame_only            : BSL         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // BSL_asimdsame_only            : BSL         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // BSL_asimdsame_only            : BSL         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // EOR_asimdsame_only            : EOR         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // EOR_asimdsame_only            : EOR         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // EOR_asimdsame_only            : EOR         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // EXT_asimdext_only             : EXT         Vd.T, Vn.T, Vm.T, #index <- Operand: Vd.T
+            // EXT_asimdext_only             : EXT         Vd.T, Vn.T, Vm.T, #index <- Operand: Vn.T
+            // EXT_asimdext_only             : EXT         Vd.T, Vn.T, Vm.T, #index <- Operand: Vm.T
+            // F1CVTL_asimdmisc_v            : F1CVTL      Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // F2CVTL_asimdmisc_v            : F2CVTL      Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // FCVTN_asimdsame2_d            : FCVTN       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // FCVTN_asimdsame2_h            : FCVTN       Vd.Ta, Vn.4S, Vm.4S <- Operand: Vd.Ta
+            // FDOT_asimdelem_d              : FDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vn.Tb
+            // FDOT_asimdelem_g              : FDOT        Vd.Ta, Vn.Tb, Vm.2B[index] <- Operand: Vn.Tb
+            // FDOT_asimdsame2_d             : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // FDOT_asimdsame2_d             : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // FDOT_asimdsame2_dd            : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // FDOT_asimdsame2_dd            : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // MOVI_asimdimm_n_b             : MOVI        Vd.T, #imm8 {, LSL #0} <- Operand: Vd.T
+            // NOT_asimdmisc_r               : NOT         Vd.T, Vn.T <- Operand: Vd.T
+            // NOT_asimdmisc_r               : NOT         Vd.T, Vn.T <- Operand: Vn.T
+            // ORN_asimdsame_only            : ORN         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // ORN_asimdsame_only            : ORN         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // ORN_asimdsame_only            : ORN         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // ORR_asimdsame_only            : ORR         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // ORR_asimdsame_only            : ORR         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // ORR_asimdsame_only            : ORR         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // RBIT_asimdmisc_r              : RBIT        Vd.T, Vn.T <- Operand: Vd.T
+            // RBIT_asimdmisc_r              : RBIT        Vd.T, Vn.T <- Operand: Vn.T
+            // SDOT_asimdelem_d              : SDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vn.Tb
+            // SDOT_asimdsame2_d             : SDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SDOT_asimdsame2_d             : SDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SUDOT_asimdelem_d             : SUDOT       Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vn.Tb
+            // TBL_asimdtbl_l1_1             : TBL         Vd.Ta, {Vn.16B}, Vm.Ta <- Operand: Vd.Ta
+            // TBL_asimdtbl_l1_1             : TBL         Vd.Ta, {Vn.16B}, Vm.Ta <- Operand: Vm.Ta
+            // TBL_asimdtbl_l2_2             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B}, Vm.Ta <- Operand: Vd.Ta
+            // TBL_asimdtbl_l2_2             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B}, Vm.Ta <- Operand: Vm.Ta
+            // TBL_asimdtbl_l3_3             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta <- Operand: Vd.Ta
+            // TBL_asimdtbl_l3_3             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta <- Operand: Vm.Ta
+            // TBL_asimdtbl_l4_4             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vd.Ta
+            // TBL_asimdtbl_l4_4             : TBL         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vm.Ta
+            // TBX_asimdtbl_l1_1             : TBX         Vd.Ta, {Vn.16B}, Vm.Ta <- Operand: Vd.Ta
+            // TBX_asimdtbl_l1_1             : TBX         Vd.Ta, {Vn.16B}, Vm.Ta <- Operand: Vm.Ta
+            // TBX_asimdtbl_l2_2             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B}, Vm.Ta <- Operand: Vd.Ta
+            // TBX_asimdtbl_l2_2             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B}, Vm.Ta <- Operand: Vm.Ta
+            // TBX_asimdtbl_l3_3             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta <- Operand: Vd.Ta
+            // TBX_asimdtbl_l3_3             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B}, Vm.Ta <- Operand: Vm.Ta
+            // TBX_asimdtbl_l4_4             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vd.Ta
+            // TBX_asimdtbl_l4_4             : TBX         Vd.Ta, {Vn.16B, Vn+1.16B, Vn+2.16B, Vn+3.16B}, Vm.Ta <- Operand: Vm.Ta
+            // UDOT_asimdelem_d              : UDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vn.Tb
+            // UDOT_asimdsame2_d             : UDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UDOT_asimdsame2_d             : UDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // USDOT_asimdelem_d             : USDOT       Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vn.Tb
+            // USDOT_asimdsame2_d            : USDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // USDOT_asimdsame2_d            : USDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             case 7:
             {
                 var bitValue = ((rawValue >> 30) & 0x1);
                 return TryDecodeFromBitValues(bitValue, 6, out vKind,out elementCount);
             }
             // FABD_asimdsame_only           : FABD        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FABD_asimdsame_only           : FABD        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FABD_asimdsame_only           : FABD        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FABS_asimdmisc_r              : FABS        Vd.T, Vn.T <- Operand: Vd.T
+            // FABS_asimdmisc_r              : FABS        Vd.T, Vn.T <- Operand: Vn.T
+            // FACGE_asimdsame_only          : FACGE       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FACGE_asimdsame_only          : FACGE       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FACGE_asimdsame_only          : FACGE       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FACGT_asimdsame_only          : FACGT       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FACGT_asimdsame_only          : FACGT       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FACGT_asimdsame_only          : FACGT       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FADD_asimdsame_only           : FADD        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FADD_asimdsame_only           : FADD        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FADD_asimdsame_only           : FADD        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FADDP_asimdsame_only          : FADDP       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FADDP_asimdsame_only          : FADDP       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FADDP_asimdsame_only          : FADDP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FAMAX_asimdsame_only          : FAMAX       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FAMAX_asimdsame_only          : FAMAX       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FAMAX_asimdsame_only          : FAMAX       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FAMIN_asimdsame_only          : FAMIN       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FAMIN_asimdsame_only          : FAMIN       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FAMIN_asimdsame_only          : FAMIN       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FCMEQ_asimdmisc_fz            : FCMEQ       Vd.T, Vn.T, #0.0 <- Operand: Vd.T
+            // FCMEQ_asimdmisc_fz            : FCMEQ       Vd.T, Vn.T, #0.0 <- Operand: Vn.T
+            // FCMEQ_asimdsame_only          : FCMEQ       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FCMEQ_asimdsame_only          : FCMEQ       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FCMEQ_asimdsame_only          : FCMEQ       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FCMGE_asimdmisc_fz            : FCMGE       Vd.T, Vn.T, #0.0 <- Operand: Vd.T
+            // FCMGE_asimdmisc_fz            : FCMGE       Vd.T, Vn.T, #0.0 <- Operand: Vn.T
+            // FCMGE_asimdsame_only          : FCMGE       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FCMGE_asimdsame_only          : FCMGE       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FCMGE_asimdsame_only          : FCMGE       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FCMGT_asimdmisc_fz            : FCMGT       Vd.T, Vn.T, #0.0 <- Operand: Vd.T
+            // FCMGT_asimdmisc_fz            : FCMGT       Vd.T, Vn.T, #0.0 <- Operand: Vn.T
+            // FCMGT_asimdsame_only          : FCMGT       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FCMGT_asimdsame_only          : FCMGT       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FCMGT_asimdsame_only          : FCMGT       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FCMLE_asimdmisc_fz            : FCMLE       Vd.T, Vn.T, #0.0 <- Operand: Vd.T
+            // FCMLE_asimdmisc_fz            : FCMLE       Vd.T, Vn.T, #0.0 <- Operand: Vn.T
+            // FCMLT_asimdmisc_fz            : FCMLT       Vd.T, Vn.T, #0.0 <- Operand: Vd.T
+            // FCMLT_asimdmisc_fz            : FCMLT       Vd.T, Vn.T, #0.0 <- Operand: Vn.T
+            // FCVTAS_asimdmisc_r            : FCVTAS      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTAS_asimdmisc_r            : FCVTAS      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTAU_asimdmisc_r            : FCVTAU      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTAU_asimdmisc_r            : FCVTAU      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTMS_asimdmisc_r            : FCVTMS      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTMS_asimdmisc_r            : FCVTMS      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTMU_asimdmisc_r            : FCVTMU      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTMU_asimdmisc_r            : FCVTMU      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTNS_asimdmisc_r            : FCVTNS      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTNS_asimdmisc_r            : FCVTNS      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTNU_asimdmisc_r            : FCVTNU      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTNU_asimdmisc_r            : FCVTNU      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTPS_asimdmisc_r            : FCVTPS      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTPS_asimdmisc_r            : FCVTPS      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTPU_asimdmisc_r            : FCVTPU      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTPU_asimdmisc_r            : FCVTPU      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTZS_asimdmisc_r            : FCVTZS      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTZS_asimdmisc_r            : FCVTZS      Vd.T, Vn.T <- Operand: Vn.T
+            // FCVTZU_asimdmisc_r            : FCVTZU      Vd.T, Vn.T <- Operand: Vd.T
+            // FCVTZU_asimdmisc_r            : FCVTZU      Vd.T, Vn.T <- Operand: Vn.T
+            // FDIV_asimdsame_only           : FDIV        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FDIV_asimdsame_only           : FDIV        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FDIV_asimdsame_only           : FDIV        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMAX_asimdsame_only           : FMAX        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMAX_asimdsame_only           : FMAX        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMAX_asimdsame_only           : FMAX        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMAXNM_asimdsame_only         : FMAXNM      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMAXNM_asimdsame_only         : FMAXNM      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMAXNM_asimdsame_only         : FMAXNM      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMAXNMP_asimdsame_only        : FMAXNMP     Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMAXNMP_asimdsame_only        : FMAXNMP     Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMAXNMP_asimdsame_only        : FMAXNMP     Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMAXP_asimdsame_only          : FMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMAXP_asimdsame_only          : FMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMAXP_asimdsame_only          : FMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMIN_asimdsame_only           : FMIN        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMIN_asimdsame_only           : FMIN        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMIN_asimdsame_only           : FMIN        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMINNM_asimdsame_only         : FMINNM      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMINNM_asimdsame_only         : FMINNM      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMINNM_asimdsame_only         : FMINNM      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMINNMP_asimdsame_only        : FMINNMP     Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMINNMP_asimdsame_only        : FMINNMP     Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMINNMP_asimdsame_only        : FMINNMP     Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMINP_asimdsame_only          : FMINP       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMINP_asimdsame_only          : FMINP       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMINP_asimdsame_only          : FMINP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMLA_asimdsame_only           : FMLA        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMLA_asimdsame_only           : FMLA        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMLA_asimdsame_only           : FMLA        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMLS_asimdsame_only           : FMLS        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMLS_asimdsame_only           : FMLS        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMLS_asimdsame_only           : FMLS        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMUL_asimdsame_only           : FMUL        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMUL_asimdsame_only           : FMUL        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMUL_asimdsame_only           : FMUL        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FMULX_asimdsame_only          : FMULX       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FMULX_asimdsame_only          : FMULX       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FMULX_asimdsame_only          : FMULX       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FNEG_asimdmisc_r              : FNEG        Vd.T, Vn.T <- Operand: Vd.T
+            // FNEG_asimdmisc_r              : FNEG        Vd.T, Vn.T <- Operand: Vn.T
+            // FRECPE_asimdmisc_r            : FRECPE      Vd.T, Vn.T <- Operand: Vd.T
+            // FRECPE_asimdmisc_r            : FRECPE      Vd.T, Vn.T <- Operand: Vn.T
+            // FRECPS_asimdsame_only         : FRECPS      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FRECPS_asimdsame_only         : FRECPS      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FRECPS_asimdsame_only         : FRECPS      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FRINT32X_asimdmisc_r          : FRINT32X    Vd.T, Vn.T <- Operand: Vd.T
+            // FRINT32X_asimdmisc_r          : FRINT32X    Vd.T, Vn.T <- Operand: Vn.T
+            // FRINT32Z_asimdmisc_r          : FRINT32Z    Vd.T, Vn.T <- Operand: Vd.T
+            // FRINT32Z_asimdmisc_r          : FRINT32Z    Vd.T, Vn.T <- Operand: Vn.T
+            // FRINT64X_asimdmisc_r          : FRINT64X    Vd.T, Vn.T <- Operand: Vd.T
+            // FRINT64X_asimdmisc_r          : FRINT64X    Vd.T, Vn.T <- Operand: Vn.T
+            // FRINT64Z_asimdmisc_r          : FRINT64Z    Vd.T, Vn.T <- Operand: Vd.T
+            // FRINT64Z_asimdmisc_r          : FRINT64Z    Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTA_asimdmisc_r            : FRINTA      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTA_asimdmisc_r            : FRINTA      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTI_asimdmisc_r            : FRINTI      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTI_asimdmisc_r            : FRINTI      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTM_asimdmisc_r            : FRINTM      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTM_asimdmisc_r            : FRINTM      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTN_asimdmisc_r            : FRINTN      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTN_asimdmisc_r            : FRINTN      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTP_asimdmisc_r            : FRINTP      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTP_asimdmisc_r            : FRINTP      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTX_asimdmisc_r            : FRINTX      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTX_asimdmisc_r            : FRINTX      Vd.T, Vn.T <- Operand: Vn.T
+            // FRINTZ_asimdmisc_r            : FRINTZ      Vd.T, Vn.T <- Operand: Vd.T
+            // FRINTZ_asimdmisc_r            : FRINTZ      Vd.T, Vn.T <- Operand: Vn.T
+            // FRSQRTE_asimdmisc_r           : FRSQRTE     Vd.T, Vn.T <- Operand: Vd.T
+            // FRSQRTE_asimdmisc_r           : FRSQRTE     Vd.T, Vn.T <- Operand: Vn.T
+            // FRSQRTS_asimdsame_only        : FRSQRTS     Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FRSQRTS_asimdsame_only        : FRSQRTS     Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FRSQRTS_asimdsame_only        : FRSQRTS     Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FSCALE_asimdsame_only         : FSCALE      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FSCALE_asimdsame_only         : FSCALE      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FSCALE_asimdsame_only         : FSCALE      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // FSQRT_asimdmisc_r             : FSQRT       Vd.T, Vn.T <- Operand: Vd.T
+            // FSQRT_asimdmisc_r             : FSQRT       Vd.T, Vn.T <- Operand: Vn.T
+            // FSUB_asimdsame_only           : FSUB        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // FSUB_asimdsame_only           : FSUB        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // FSUB_asimdsame_only           : FSUB        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SCVTF_asimdmisc_r             : SCVTF       Vd.T, Vn.T <- Operand: Vd.T
+            // SCVTF_asimdmisc_r             : SCVTF       Vd.T, Vn.T <- Operand: Vn.T
+            // UCVTF_asimdmisc_r             : UCVTF       Vd.T, Vn.T <- Operand: Vd.T
+            // UCVTF_asimdmisc_r             : UCVTF       Vd.T, Vn.T <- Operand: Vn.T
             case 8:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
                 return TryDecodeFromBitValues(bitValue, 8, out vKind,out elementCount);
             }
             // URECPE_asimdmisc_r            : URECPE      Vd.T, Vn.T <- Operand: Vd.T
+            // URECPE_asimdmisc_r            : URECPE      Vd.T, Vn.T <- Operand: Vn.T
+            // URSQRTE_asimdmisc_r           : URSQRTE     Vd.T, Vn.T <- Operand: Vd.T
+            // URSQRTE_asimdmisc_r           : URSQRTE     Vd.T, Vn.T <- Operand: Vn.T
             case 9:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
                 return TryDecodeFromBitValues(bitValue, 9, out vKind,out elementCount);
             }
             // FCVTL_asimdmisc_l             : FCVTL       Vd.Ta, Vn.Tb <- Operand: Vn.Tb
+            // FCVTN_asimdmisc_n             : FCVTN       Vd.Tb, Vn.Ta <- Operand: Vd.Tb
             case 10:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
                 return TryDecodeFromBitValues(bitValue, 11, out vKind,out elementCount);
             }
             // ADDHN_asimddiff_n             : ADDHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
+            // ADDHN_asimddiff_n             : ADDHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
+            // RADDHN_asimddiff_n            : RADDHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
+            // RADDHN_asimddiff_n            : RADDHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
+            // RSUBHN_asimddiff_n            : RSUBHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
+            // RSUBHN_asimddiff_n            : RSUBHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
+            // SABAL_asimddiff_l             : SABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SABDL_asimddiff_l             : SABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SADDL_asimddiff_l             : SADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SADDW_asimddiff_w             : SADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
+            // SADDW_asimddiff_w             : SADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
+            // SHLL_asimdmisc_s              : SHLL        Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
+            // SMLAL_asimddiff_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SMLSL_asimddiff_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SMULL_asimddiff_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SQXTN_asimdmisc_n             : SQXTN       Vd.Tb, Vn.Ta <- Operand: Vn.Ta
+            // SQXTUN_asimdmisc_n            : SQXTUN      Vd.Tb, Vn.Ta <- Operand: Vn.Ta
+            // SSUBL_asimddiff_l             : SSUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SSUBW_asimddiff_w             : SSUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
+            // SSUBW_asimddiff_w             : SSUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
+            // SUBHN_asimddiff_n             : SUBHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
+            // SUBHN_asimddiff_n             : SUBHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
+            // UABAL_asimddiff_l             : UABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UABDL_asimddiff_l             : UABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UADDL_asimddiff_l             : UADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UADDW_asimddiff_w             : UADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
+            // UADDW_asimddiff_w             : UADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
+            // UMLAL_asimddiff_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UMLSL_asimddiff_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UMULL_asimddiff_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UQXTN_asimdmisc_n             : UQXTN       Vd.Tb, Vn.Ta <- Operand: Vn.Ta
+            // USUBL_asimddiff_l             : USUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // USUBW_asimddiff_w             : USUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
+            // USUBW_asimddiff_w             : USUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
+            // XTN_asimdmisc_n               : XTN         Vd.Tb, Vn.Ta <- Operand: Vn.Ta
             case 11:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
@@ -96,108 +561,583 @@ static class Arm64VectorArrangementHelper
                 return TryDecodeFromBitValues(bitValue, 13, out vKind,out elementCount);
             }
             // SMLAL_asimdelem_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // SMLSL_asimdelem_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // SMULL_asimdelem_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // SQDMLAL_asimddiff_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SQDMLAL_asimdelem_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // SQDMLSL_asimddiff_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SQDMLSL_asimdelem_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // SQDMULL_asimddiff_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SQDMULL_asimdelem_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // UMLAL_asimdelem_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // UMLSL_asimdelem_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             case 13:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 return TryDecodeFromBitValues(bitValue, 14, out vKind,out elementCount);
             }
             // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vm.Ts[index]
+            // MLA_asimdelem_r               : MLA         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // MLS_asimdelem_r               : MLS         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // MUL_asimdelem_r               : MUL         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMLAL_asimdelem_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMLSL_asimdelem_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMULL_asimdelem_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLAL_asimdelem_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLAL_asisdelem_l           : SQDMLAL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLSL_asimdelem_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLSL_asisdelem_l           : SQDMLSL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMULH_asimdelem_r           : SQDMULH     Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMULH_asisdelem_r           : SQDMULH     Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMULL_asimdelem_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMULL_asisdelem_l           : SQDMULL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMLAH_asimdelem_r          : SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMLAH_asisdelem_r          : SQRDMLAH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMLSH_asimdelem_r          : SQRDMLSH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMLSH_asisdelem_r          : SQRDMLSH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMULH_asimdelem_r          : SQRDMULH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQRDMULH_asisdelem_r          : SQRDMULH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMLAL_asimdelem_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMLSL_asimdelem_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             case 14:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 return TryDecodeFromBitValues(bitValue, 15, out vKind,out elementCount);
             }
             // FMLA_asimdelem_r_sd           : FMLA        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            // FMLA_asimdelem_r_sd           : FMLA        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
+            // FMLS_asimdelem_r_sd           : FMLS        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            // FMLS_asimdelem_r_sd           : FMLS        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
+            // FMUL_asimdelem_r_sd           : FMUL        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            // FMUL_asimdelem_r_sd           : FMUL        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
+            // FMULX_asimdelem_r_sd          : FMULX       Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            // FMULX_asimdelem_r_sd          : FMULX       Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
             case 15:
             {
                 var bitValue = ((rawValue >> 22) & 0x1) | ((rawValue >> 29) & 0x2);
                 return TryDecodeFromBitValues(bitValue, 10, out vKind,out elementCount);
             }
+            // LD1_asisdlse_r1_1v            : LD1         {Vt.T}, [Xn|SP] <- Operand: Vt.T
+            // LD1_asisdlse_r2_2v            : LD1         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt.T
+            // LD1_asisdlse_r2_2v            : LD1         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt2.T
+            // LD1_asisdlse_r3_3v            : LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt.T
+            // LD1_asisdlse_r3_3v            : LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt2.T
+            // LD1_asisdlse_r3_3v            : LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt3.T
+            // LD1_asisdlse_r4_4v            : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt.T
+            // LD1_asisdlse_r4_4v            : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt2.T
+            // LD1_asisdlse_r4_4v            : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt3.T
+            // LD1_asisdlse_r4_4v            : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt4.T
+            // LD1_asisdlsep_i1_i1           : LD1         {Vt.T}, [Xn|SP], imm <- Operand: Vt.T
+            // LD1_asisdlsep_i2_i2           : LD1         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: Vt.T
+            // LD1_asisdlsep_i2_i2           : LD1         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // LD1_asisdlsep_i3_i3           : LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt.T
+            // LD1_asisdlsep_i3_i3           : LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // LD1_asisdlsep_i3_i3           : LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt3.T
+            // LD1_asisdlsep_i4_i4           : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt.T
+            // LD1_asisdlsep_i4_i4           : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // LD1_asisdlsep_i4_i4           : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt3.T
+            // LD1_asisdlsep_i4_i4           : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt4.T
+            // LD1_asisdlsep_r1_r1           : LD1         {Vt.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // LD1_asisdlsep_r2_r2           : LD1         {Vt.T, Vt2.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // LD1_asisdlsep_r2_r2           : LD1         {Vt.T, Vt2.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // LD1_asisdlsep_r3_r3           : LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // LD1_asisdlsep_r3_r3           : LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // LD1_asisdlsep_r3_r3           : LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt3.T
+            // LD1_asisdlsep_r4_r4           : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // LD1_asisdlsep_r4_r4           : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // LD1_asisdlsep_r4_r4           : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt3.T
+            // LD1_asisdlsep_r4_r4           : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt4.T
             // LD1R_asisdlso_r1              : LD1R        {Vt.T}, [Xn|SP] <- Operand: Vt.T
+            // LD1R_asisdlsop_r1_i           : LD1R        {Vt.T}, [Xn|SP], imm <- Operand: Vt.T
+            // LD1R_asisdlsop_rx1_r          : LD1R        {Vt.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // LD2R_asisdlso_r2              : LD2R        {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt.T
+            // LD2R_asisdlso_r2              : LD2R        {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt2.T
+            // LD2R_asisdlsop_r2_i           : LD2R        {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: Vt.T
+            // LD2R_asisdlsop_r2_i           : LD2R        {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // LD2R_asisdlsop_rx2_r          : LD2R        {Vt.T, Vt2.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // LD2R_asisdlsop_rx2_r          : LD2R        {Vt.T, Vt2.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // LD3R_asisdlso_r3              : LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt.T
+            // LD3R_asisdlso_r3              : LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt2.T
+            // LD3R_asisdlso_r3              : LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt3.T
+            // LD3R_asisdlsop_r3_i           : LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt.T
+            // LD3R_asisdlsop_r3_i           : LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // LD3R_asisdlsop_r3_i           : LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt3.T
+            // LD3R_asisdlsop_rx3_r          : LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // LD3R_asisdlsop_rx3_r          : LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // LD3R_asisdlsop_rx3_r          : LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt3.T
+            // LD4R_asisdlso_r4              : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt.T
+            // LD4R_asisdlso_r4              : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt2.T
+            // LD4R_asisdlso_r4              : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt3.T
+            // LD4R_asisdlso_r4              : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt4.T
+            // LD4R_asisdlsop_r4_i           : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt.T
+            // LD4R_asisdlsop_r4_i           : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // LD4R_asisdlsop_r4_i           : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt3.T
+            // LD4R_asisdlsop_r4_i           : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt4.T
+            // LD4R_asisdlsop_rx4_r          : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // LD4R_asisdlsop_rx4_r          : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // LD4R_asisdlsop_rx4_r          : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt3.T
+            // LD4R_asisdlsop_rx4_r          : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt4.T
+            // ST1_asisdlse_r1_1v            : ST1         {Vt.T}, [Xn|SP] <- Operand: Vt.T
+            // ST1_asisdlse_r2_2v            : ST1         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt.T
+            // ST1_asisdlse_r2_2v            : ST1         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt2.T
+            // ST1_asisdlse_r3_3v            : ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt.T
+            // ST1_asisdlse_r3_3v            : ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt2.T
+            // ST1_asisdlse_r3_3v            : ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt3.T
+            // ST1_asisdlse_r4_4v            : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt.T
+            // ST1_asisdlse_r4_4v            : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt2.T
+            // ST1_asisdlse_r4_4v            : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt3.T
+            // ST1_asisdlse_r4_4v            : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt4.T
+            // ST1_asisdlsep_i1_i1           : ST1         {Vt.T}, [Xn|SP], imm <- Operand: Vt.T
+            // ST1_asisdlsep_i2_i2           : ST1         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: Vt.T
+            // ST1_asisdlsep_i2_i2           : ST1         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // ST1_asisdlsep_i3_i3           : ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt.T
+            // ST1_asisdlsep_i3_i3           : ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // ST1_asisdlsep_i3_i3           : ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt3.T
+            // ST1_asisdlsep_i4_i4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt.T
+            // ST1_asisdlsep_i4_i4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // ST1_asisdlsep_i4_i4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt3.T
+            // ST1_asisdlsep_i4_i4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt4.T
+            // ST1_asisdlsep_r1_r1           : ST1         {Vt.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // ST1_asisdlsep_r2_r2           : ST1         {Vt.T, Vt2.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // ST1_asisdlsep_r2_r2           : ST1         {Vt.T, Vt2.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // ST1_asisdlsep_r3_r3           : ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // ST1_asisdlsep_r3_r3           : ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // ST1_asisdlsep_r3_r3           : ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt3.T
+            // ST1_asisdlsep_r4_r4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // ST1_asisdlsep_r4_r4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // ST1_asisdlsep_r4_r4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt3.T
+            // ST1_asisdlsep_r4_r4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt4.T
             case 16:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 9) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 17, out vKind,out elementCount);
             }
             // LD2_asisdlse_r2               : LD2         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt.T
+            // LD2_asisdlse_r2               : LD2         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt2.T
+            // LD2_asisdlsep_i2_i            : LD2         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: Vt.T
+            // LD2_asisdlsep_i2_i            : LD2         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // LD2_asisdlsep_r2_r            : LD2         {Vt.T, Vt2.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // LD2_asisdlsep_r2_r            : LD2         {Vt.T, Vt2.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // LD3_asisdlse_r3               : LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt.T
+            // LD3_asisdlse_r3               : LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt2.T
+            // LD3_asisdlse_r3               : LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt3.T
+            // LD3_asisdlsep_i3_i            : LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt.T
+            // LD3_asisdlsep_i3_i            : LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // LD3_asisdlsep_i3_i            : LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt3.T
+            // LD3_asisdlsep_r3_r            : LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // LD3_asisdlsep_r3_r            : LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // LD3_asisdlsep_r3_r            : LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt3.T
+            // LD4_asisdlse_r4               : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt.T
+            // LD4_asisdlse_r4               : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt2.T
+            // LD4_asisdlse_r4               : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt3.T
+            // LD4_asisdlse_r4               : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt4.T
+            // LD4_asisdlsep_i4_i            : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt.T
+            // LD4_asisdlsep_i4_i            : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // LD4_asisdlsep_i4_i            : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt3.T
+            // LD4_asisdlsep_i4_i            : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt4.T
+            // LD4_asisdlsep_r4_r            : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // LD4_asisdlsep_r4_r            : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // LD4_asisdlsep_r4_r            : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt3.T
+            // LD4_asisdlsep_r4_r            : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt4.T
+            // ST2_asisdlse_r2               : ST2         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt.T
+            // ST2_asisdlse_r2               : ST2         {Vt.T, Vt2.T}, [Xn|SP] <- Operand: Vt2.T
+            // ST2_asisdlsep_i2_i            : ST2         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: Vt.T
+            // ST2_asisdlsep_i2_i            : ST2         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // ST2_asisdlsep_r2_r            : ST2         {Vt.T, Vt2.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // ST2_asisdlsep_r2_r            : ST2         {Vt.T, Vt2.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // ST3_asisdlse_r3               : ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt.T
+            // ST3_asisdlse_r3               : ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt2.T
+            // ST3_asisdlse_r3               : ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP] <- Operand: Vt3.T
+            // ST3_asisdlsep_i3_i            : ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt.T
+            // ST3_asisdlsep_i3_i            : ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // ST3_asisdlsep_i3_i            : ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: Vt3.T
+            // ST3_asisdlsep_r3_r            : ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // ST3_asisdlsep_r3_r            : ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // ST3_asisdlsep_r3_r            : ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], Xm <- Operand: Vt3.T
+            // ST4_asisdlse_r4               : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt.T
+            // ST4_asisdlse_r4               : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt2.T
+            // ST4_asisdlse_r4               : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt3.T
+            // ST4_asisdlse_r4               : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP] <- Operand: Vt4.T
+            // ST4_asisdlsep_i4_i            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt.T
+            // ST4_asisdlsep_i4_i            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt2.T
+            // ST4_asisdlsep_i4_i            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt3.T
+            // ST4_asisdlsep_i4_i            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: Vt4.T
+            // ST4_asisdlsep_r4_r            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt.T
+            // ST4_asisdlsep_r4_r            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt2.T
+            // ST4_asisdlsep_r4_r            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt3.T
+            // ST4_asisdlsep_r4_r            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt4.T
             case 17:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 9) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 18, out vKind,out elementCount);
             }
             // SADALP_asimdmisc_p            : SADALP      Vd.Ta, Vn.Tb <- Operand: Vd.Ta
+            // SADDLP_asimdmisc_p            : SADDLP      Vd.Ta, Vn.Tb <- Operand: Vd.Ta
+            // UADALP_asimdmisc_p            : UADALP      Vd.Ta, Vn.Tb <- Operand: Vd.Ta
+            // UADDLP_asimdmisc_p            : UADDLP      Vd.Ta, Vn.Tb <- Operand: Vd.Ta
             case 18:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 16, out vKind,out elementCount);
             }
             // ABS_asimdmisc_r               : ABS         Vd.T, Vn.T <- Operand: Vd.T
+            // ABS_asimdmisc_r               : ABS         Vd.T, Vn.T <- Operand: Vn.T
+            // ADD_asimdsame_only            : ADD         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // ADD_asimdsame_only            : ADD         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // ADD_asimdsame_only            : ADD         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // ADDP_asimdsame_only           : ADDP        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // ADDP_asimdsame_only           : ADDP        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // ADDP_asimdsame_only           : ADDP        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // CMEQ_asimdmisc_z              : CMEQ        Vd.T, Vn.T, #0 <- Operand: Vd.T
+            // CMEQ_asimdmisc_z              : CMEQ        Vd.T, Vn.T, #0 <- Operand: Vn.T
+            // CMEQ_asimdsame_only           : CMEQ        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // CMEQ_asimdsame_only           : CMEQ        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // CMEQ_asimdsame_only           : CMEQ        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // CMGE_asimdmisc_z              : CMGE        Vd.T, Vn.T, #0 <- Operand: Vd.T
+            // CMGE_asimdmisc_z              : CMGE        Vd.T, Vn.T, #0 <- Operand: Vn.T
+            // CMGE_asimdsame_only           : CMGE        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // CMGE_asimdsame_only           : CMGE        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // CMGE_asimdsame_only           : CMGE        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // CMGT_asimdmisc_z              : CMGT        Vd.T, Vn.T, #0 <- Operand: Vd.T
+            // CMGT_asimdmisc_z              : CMGT        Vd.T, Vn.T, #0 <- Operand: Vn.T
+            // CMGT_asimdsame_only           : CMGT        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // CMGT_asimdsame_only           : CMGT        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // CMGT_asimdsame_only           : CMGT        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // CMHI_asimdsame_only           : CMHI        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // CMHI_asimdsame_only           : CMHI        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // CMHI_asimdsame_only           : CMHI        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // CMHS_asimdsame_only           : CMHS        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // CMHS_asimdsame_only           : CMHS        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // CMHS_asimdsame_only           : CMHS        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // CMLE_asimdmisc_z              : CMLE        Vd.T, Vn.T, #0 <- Operand: Vd.T
+            // CMLE_asimdmisc_z              : CMLE        Vd.T, Vn.T, #0 <- Operand: Vn.T
+            // CMLT_asimdmisc_z              : CMLT        Vd.T, Vn.T, #0 <- Operand: Vd.T
+            // CMLT_asimdmisc_z              : CMLT        Vd.T, Vn.T, #0 <- Operand: Vn.T
+            // CMTST_asimdsame_only          : CMTST       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // CMTST_asimdsame_only          : CMTST       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // CMTST_asimdsame_only          : CMTST       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // NEG_asimdmisc_r               : NEG         Vd.T, Vn.T <- Operand: Vd.T
+            // NEG_asimdmisc_r               : NEG         Vd.T, Vn.T <- Operand: Vn.T
+            // SQABS_asimdmisc_r             : SQABS       Vd.T, Vn.T <- Operand: Vd.T
+            // SQABS_asimdmisc_r             : SQABS       Vd.T, Vn.T <- Operand: Vn.T
+            // SQADD_asimdsame_only          : SQADD       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SQADD_asimdsame_only          : SQADD       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SQADD_asimdsame_only          : SQADD       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SQNEG_asimdmisc_r             : SQNEG       Vd.T, Vn.T <- Operand: Vd.T
+            // SQNEG_asimdmisc_r             : SQNEG       Vd.T, Vn.T <- Operand: Vn.T
+            // SQRSHL_asimdsame_only         : SQRSHL      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SQRSHL_asimdsame_only         : SQRSHL      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SQRSHL_asimdsame_only         : SQRSHL      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SQSHL_asimdsame_only          : SQSHL       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SQSHL_asimdsame_only          : SQSHL       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SQSHL_asimdsame_only          : SQSHL       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SQSUB_asimdsame_only          : SQSUB       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SQSUB_asimdsame_only          : SQSUB       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SQSUB_asimdsame_only          : SQSUB       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SRSHL_asimdsame_only          : SRSHL       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SRSHL_asimdsame_only          : SRSHL       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SRSHL_asimdsame_only          : SRSHL       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SSHL_asimdsame_only           : SSHL        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SSHL_asimdsame_only           : SSHL        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SSHL_asimdsame_only           : SSHL        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SUB_asimdsame_only            : SUB         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SUB_asimdsame_only            : SUB         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SUB_asimdsame_only            : SUB         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SUQADD_asimdmisc_r            : SUQADD      Vd.T, Vn.T <- Operand: Vd.T
+            // SUQADD_asimdmisc_r            : SUQADD      Vd.T, Vn.T <- Operand: Vn.T
+            // TRN1_asimdperm_only           : TRN1        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // TRN1_asimdperm_only           : TRN1        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // TRN1_asimdperm_only           : TRN1        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // TRN2_asimdperm_only           : TRN2        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // TRN2_asimdperm_only           : TRN2        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // TRN2_asimdperm_only           : TRN2        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UQADD_asimdsame_only          : UQADD       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UQADD_asimdsame_only          : UQADD       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UQADD_asimdsame_only          : UQADD       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UQRSHL_asimdsame_only         : UQRSHL      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UQRSHL_asimdsame_only         : UQRSHL      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UQRSHL_asimdsame_only         : UQRSHL      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UQSHL_asimdsame_only          : UQSHL       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UQSHL_asimdsame_only          : UQSHL       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UQSHL_asimdsame_only          : UQSHL       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UQSUB_asimdsame_only          : UQSUB       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UQSUB_asimdsame_only          : UQSUB       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UQSUB_asimdsame_only          : UQSUB       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // URSHL_asimdsame_only          : URSHL       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // URSHL_asimdsame_only          : URSHL       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // URSHL_asimdsame_only          : URSHL       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // USHL_asimdsame_only           : USHL        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // USHL_asimdsame_only           : USHL        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // USHL_asimdsame_only           : USHL        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // USQADD_asimdmisc_r            : USQADD      Vd.T, Vn.T <- Operand: Vd.T
+            // USQADD_asimdmisc_r            : USQADD      Vd.T, Vn.T <- Operand: Vn.T
+            // UZP1_asimdperm_only           : UZP1        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UZP1_asimdperm_only           : UZP1        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UZP1_asimdperm_only           : UZP1        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UZP2_asimdperm_only           : UZP2        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UZP2_asimdperm_only           : UZP2        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UZP2_asimdperm_only           : UZP2        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // ZIP1_asimdperm_only           : ZIP1        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // ZIP1_asimdperm_only           : ZIP1        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // ZIP1_asimdperm_only           : ZIP1        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // ZIP2_asimdperm_only           : ZIP2        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // ZIP2_asimdperm_only           : ZIP2        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // ZIP2_asimdperm_only           : ZIP2        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             case 19:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 18, out vKind,out elementCount);
             }
             // ADDHN_asimddiff_n             : ADDHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
+            // CLS_asimdmisc_r               : CLS         Vd.T, Vn.T <- Operand: Vd.T
+            // CLS_asimdmisc_r               : CLS         Vd.T, Vn.T <- Operand: Vn.T
+            // CLZ_asimdmisc_r               : CLZ         Vd.T, Vn.T <- Operand: Vd.T
+            // CLZ_asimdmisc_r               : CLZ         Vd.T, Vn.T <- Operand: Vn.T
+            // MLA_asimdsame_only            : MLA         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // MLA_asimdsame_only            : MLA         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // MLA_asimdsame_only            : MLA         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // MLS_asimdsame_only            : MLS         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // MLS_asimdsame_only            : MLS         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // MLS_asimdsame_only            : MLS         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // MUL_asimdsame_only            : MUL         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // MUL_asimdsame_only            : MUL         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // MUL_asimdsame_only            : MUL         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // RADDHN_asimddiff_n            : RADDHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
+            // REV64_asimdmisc_r             : REV64       Vd.T, Vn.T <- Operand: Vd.T
+            // REV64_asimdmisc_r             : REV64       Vd.T, Vn.T <- Operand: Vn.T
+            // RSUBHN_asimddiff_n            : RSUBHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
+            // SABA_asimdsame_only           : SABA        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SABA_asimdsame_only           : SABA        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SABA_asimdsame_only           : SABA        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SABAL_asimddiff_l             : SABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SABAL_asimddiff_l             : SABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SABD_asimdsame_only           : SABD        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SABD_asimdsame_only           : SABD        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SABD_asimdsame_only           : SABD        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SABDL_asimddiff_l             : SABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SABDL_asimddiff_l             : SABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SADALP_asimdmisc_p            : SADALP      Vd.Ta, Vn.Tb <- Operand: Vn.Tb
+            // SADDL_asimddiff_l             : SADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SADDL_asimddiff_l             : SADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SADDLP_asimdmisc_p            : SADDLP      Vd.Ta, Vn.Tb <- Operand: Vn.Tb
+            // SADDW_asimddiff_w             : SADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
+            // SHADD_asimdsame_only          : SHADD       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SHADD_asimdsame_only          : SHADD       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SHADD_asimdsame_only          : SHADD       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SHLL_asimdmisc_s              : SHLL        Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
+            // SHSUB_asimdsame_only          : SHSUB       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SHSUB_asimdsame_only          : SHSUB       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SHSUB_asimdsame_only          : SHSUB       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SMAX_asimdsame_only           : SMAX        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SMAX_asimdsame_only           : SMAX        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SMAX_asimdsame_only           : SMAX        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SMAXP_asimdsame_only          : SMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SMAXP_asimdsame_only          : SMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SMAXP_asimdsame_only          : SMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SMIN_asimdsame_only           : SMIN        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SMIN_asimdsame_only           : SMIN        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SMIN_asimdsame_only           : SMIN        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SMINP_asimdsame_only          : SMINP       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SMINP_asimdsame_only          : SMINP       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SMINP_asimdsame_only          : SMINP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SMLAL_asimddiff_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SMLAL_asimddiff_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SMLSL_asimddiff_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SMLSL_asimddiff_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SMULL_asimddiff_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SMULL_asimddiff_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SQXTN_asimdmisc_n             : SQXTN       Vd.Tb, Vn.Ta <- Operand: Vd.Tb
+            // SQXTUN_asimdmisc_n            : SQXTUN      Vd.Tb, Vn.Ta <- Operand: Vd.Tb
+            // SRHADD_asimdsame_only         : SRHADD      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SRHADD_asimdsame_only         : SRHADD      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SRHADD_asimdsame_only         : SRHADD      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SSUBL_asimddiff_l             : SSUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SSUBL_asimddiff_l             : SSUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SSUBW_asimddiff_w             : SSUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
+            // SUBHN_asimddiff_n             : SUBHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
+            // UABA_asimdsame_only           : UABA        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UABA_asimdsame_only           : UABA        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UABA_asimdsame_only           : UABA        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UABAL_asimddiff_l             : UABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UABAL_asimddiff_l             : UABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UABD_asimdsame_only           : UABD        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UABD_asimdsame_only           : UABD        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UABD_asimdsame_only           : UABD        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UABDL_asimddiff_l             : UABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UABDL_asimddiff_l             : UABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UADALP_asimdmisc_p            : UADALP      Vd.Ta, Vn.Tb <- Operand: Vn.Tb
+            // UADDL_asimddiff_l             : UADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UADDL_asimddiff_l             : UADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UADDLP_asimdmisc_p            : UADDLP      Vd.Ta, Vn.Tb <- Operand: Vn.Tb
+            // UADDW_asimddiff_w             : UADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
+            // UHADD_asimdsame_only          : UHADD       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UHADD_asimdsame_only          : UHADD       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UHADD_asimdsame_only          : UHADD       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UHSUB_asimdsame_only          : UHSUB       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UHSUB_asimdsame_only          : UHSUB       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UHSUB_asimdsame_only          : UHSUB       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UMAX_asimdsame_only           : UMAX        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UMAX_asimdsame_only           : UMAX        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UMAX_asimdsame_only           : UMAX        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UMAXP_asimdsame_only          : UMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UMAXP_asimdsame_only          : UMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UMAXP_asimdsame_only          : UMAXP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UMIN_asimdsame_only           : UMIN        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UMIN_asimdsame_only           : UMIN        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UMIN_asimdsame_only           : UMIN        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UMINP_asimdsame_only          : UMINP       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // UMINP_asimdsame_only          : UMINP       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // UMINP_asimdsame_only          : UMINP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UMLAL_asimddiff_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UMLAL_asimddiff_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UMLSL_asimddiff_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UMLSL_asimddiff_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UMULL_asimddiff_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UMULL_asimddiff_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UQXTN_asimdmisc_n             : UQXTN       Vd.Tb, Vn.Ta <- Operand: Vd.Tb
+            // URHADD_asimdsame_only         : URHADD      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // URHADD_asimdsame_only         : URHADD      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // URHADD_asimdsame_only         : URHADD      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // USUBL_asimddiff_l             : USUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // USUBL_asimddiff_l             : USUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // USUBW_asimddiff_w             : USUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
+            // XTN_asimdmisc_n               : XTN         Vd.Tb, Vn.Ta <- Operand: Vd.Tb
             case 20:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 19, out vKind,out elementCount);
             }
             // ADDV_asimdall_only            : ADDV        Vd, Vn.T <- Operand: Vn.T
+            // SADDLV_asimdall_only          : SADDLV      Vd, Vn.T <- Operand: Vn.T
+            // SMAXV_asimdall_only           : SMAXV       Vd, Vn.T <- Operand: Vn.T
+            // SMINV_asimdall_only           : SMINV       Vd, Vn.T <- Operand: Vn.T
+            // UADDLV_asimdall_only          : UADDLV      Vd, Vn.T <- Operand: Vn.T
+            // UMAXV_asimdall_only           : UMAXV       Vd, Vn.T <- Operand: Vn.T
+            // UMINV_asimdall_only           : UMINV       Vd, Vn.T <- Operand: Vn.T
             case 21:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 20, out vKind,out elementCount);
             }
             // REV32_asimdmisc_r             : REV32       Vd.T, Vn.T <- Operand: Vd.T
+            // REV32_asimdmisc_r             : REV32       Vd.T, Vn.T <- Operand: Vn.T
             case 22:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 21, out vKind,out elementCount);
             }
             // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             case 23:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 22, out vKind,out elementCount);
             }
             // CNT_asimdmisc_r               : CNT         Vd.T, Vn.T <- Operand: Vd.T
+            // CNT_asimdmisc_r               : CNT         Vd.T, Vn.T <- Operand: Vn.T
+            // PMUL_asimdsame_only           : PMUL        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // PMUL_asimdsame_only           : PMUL        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // PMUL_asimdsame_only           : PMUL        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // REV16_asimdmisc_r             : REV16       Vd.T, Vn.T <- Operand: Vd.T
+            // REV16_asimdmisc_r             : REV16       Vd.T, Vn.T <- Operand: Vn.T
             case 24:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 23, out vKind,out elementCount);
             }
             // FCADD_asimdsame2_c            : FCADD       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vd.T
+            // FCADD_asimdsame2_c            : FCADD       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vn.T
+            // FCADD_asimdsame2_c            : FCADD       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vm.T
+            // FCMLA_asimdsame2_c            : FCMLA       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vd.T
+            // FCMLA_asimdsame2_c            : FCMLA       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vn.T
+            // FCMLA_asimdsame2_c            : FCMLA       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vm.T
             case 25:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 24, out vKind,out elementCount);
             }
             // MLA_asimdelem_r               : MLA         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            // MLA_asimdelem_r               : MLA         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
+            // MLS_asimdelem_r               : MLS         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            // MLS_asimdelem_r               : MLS         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
+            // MUL_asimdelem_r               : MUL         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            // MUL_asimdelem_r               : MUL         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
+            // SMLAL_asimdelem_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SMLSL_asimdelem_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SMULL_asimdelem_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SQDMLAL_asimddiff_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SQDMLAL_asimddiff_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SQDMLAL_asimdelem_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SQDMLSL_asimddiff_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SQDMLSL_asimddiff_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SQDMLSL_asimdelem_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SQDMULH_asimdelem_r           : SQDMULH     Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            // SQDMULH_asimdelem_r           : SQDMULH     Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
+            // SQDMULH_asimdsame_only        : SQDMULH     Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SQDMULH_asimdsame_only        : SQDMULH     Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SQDMULH_asimdsame_only        : SQDMULH     Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SQDMULL_asimddiff_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SQDMULL_asimddiff_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SQDMULL_asimdelem_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SQRDMLAH_asimdelem_r          : SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            // SQRDMLAH_asimdelem_r          : SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
+            // SQRDMLAH_asimdsame2_only      : SQRDMLAH    Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SQRDMLAH_asimdsame2_only      : SQRDMLAH    Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SQRDMLAH_asimdsame2_only      : SQRDMLAH    Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SQRDMLSH_asimdelem_r          : SQRDMLSH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            // SQRDMLSH_asimdelem_r          : SQRDMLSH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
+            // SQRDMLSH_asimdsame2_only      : SQRDMLSH    Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SQRDMLSH_asimdsame2_only      : SQRDMLSH    Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SQRDMLSH_asimdsame2_only      : SQRDMLSH    Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // SQRDMULH_asimdelem_r          : SQRDMULH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
+            // SQRDMULH_asimdelem_r          : SQRDMULH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
+            // SQRDMULH_asimdsame_only       : SQRDMULH    Vd.T, Vn.T, Vm.T <- Operand: Vd.T
+            // SQRDMULH_asimdsame_only       : SQRDMULH    Vd.T, Vn.T, Vm.T <- Operand: Vn.T
+            // SQRDMULH_asimdsame_only       : SQRDMULH    Vd.T, Vn.T, Vm.T <- Operand: Vm.T
+            // UMLAL_asimdelem_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // UMLSL_asimdelem_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             case 26:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 25, out vKind,out elementCount);
             }
             // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vd.T
+            // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vn.T
             case 27:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 return TryDecodeFromBitValues(bitValue, 26, out vKind,out elementCount);
             }
             // RSHRN_asimdshf_n              : RSHRN       Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // SHRN_asimdshf_n               : SHRN        Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // SQRSHRN_asimdshf_n            : SQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // SQRSHRUN_asimdshf_n           : SQRSHRUN    Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // SQSHRN_asimdshf_n             : SQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // SQSHRUN_asimdshf_n            : SQSHRUN     Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // SSHLL_asimdshf_l              : SSHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
+            // UQRSHRN_asimdshf_n            : UQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // UQSHRN_asimdshf_n             : UQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // USHLL_asimdshf_l              : USHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
             case 28:
             {
                 var bitValue = ((rawValue >> 19) & 0xF);
                 return TryDecodeFromBitValues(bitValue, 27, out vKind,out elementCount);
             }
             // DUP_asimdins_dv_v             : DUP         Vd.T, Vn.Ts[index] <- Operand: Vn.Ts[index]
+            // DUP_asisdone_only             : DUP         Vd, Vn.T[index] <- Operand: Vn.T[index]
+            // INS_asimdins_ir_r             : INS         Vd.Ts[index], Rn <- Operand: Vd.Ts[index]
+            // INS_asimdins_iv_v             : INS         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vd.Ts[index1]
+            // INS_asimdins_iv_v             : INS         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vn.Ts[index2]
             case 29:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
                 return TryDecodeFromBitValues(bitValue, 31, out vKind,out elementCount);
             }
             // SMOV_asimdins_x_x             : SMOV        Xd, Vn.Ts[index] <- Operand: Vn.Ts[index]
+            // UMOV_asimdins_w_w             : UMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
             case 30:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
@@ -210,24 +1150,68 @@ static class Arm64VectorArrangementHelper
                 return TryDecodeFromBitValues(bitValue, 33, out vKind,out elementCount);
             }
             // SHL_asimdshf_r                : SHL         Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // SHL_asimdshf_r                : SHL         Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // SLI_asimdshf_r                : SLI         Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // SLI_asimdshf_r                : SLI         Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // SQSHL_asimdshf_r              : SQSHL       Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // SQSHL_asimdshf_r              : SQSHL       Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // SQSHLU_asimdshf_r             : SQSHLU      Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // SQSHLU_asimdshf_r             : SQSHLU      Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // SRI_asimdshf_r                : SRI         Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // SRI_asimdshf_r                : SRI         Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // SRSHR_asimdshf_r              : SRSHR       Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // SRSHR_asimdshf_r              : SRSHR       Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // SRSRA_asimdshf_r              : SRSRA       Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // SRSRA_asimdshf_r              : SRSRA       Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // SSHR_asimdshf_r               : SSHR        Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // SSHR_asimdshf_r               : SSHR        Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // SSRA_asimdshf_r               : SSRA        Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // SSRA_asimdshf_r               : SSRA        Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // UQSHL_asimdshf_r              : UQSHL       Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // UQSHL_asimdshf_r              : UQSHL       Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // URSHR_asimdshf_r              : URSHR       Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // URSHR_asimdshf_r              : URSHR       Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // URSRA_asimdshf_r              : URSRA       Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // URSRA_asimdshf_r              : URSRA       Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // USHR_asimdshf_r               : USHR        Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // USHR_asimdshf_r               : USHR        Vd.T, Vn.T, #shift <- Operand: Vn.T
+            // USRA_asimdshf_r               : USRA        Vd.T, Vn.T, #shift <- Operand: Vd.T
+            // USRA_asimdshf_r               : USRA        Vd.T, Vn.T, #shift <- Operand: Vn.T
             case 32:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
                 return TryDecodeFromBitValues(bitValue, 28, out vKind,out elementCount);
             }
             // RSHRN_asimdshf_n              : RSHRN       Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // SHRN_asimdshf_n               : SHRN        Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // SQRSHRN_asimdshf_n            : SQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // SQRSHRUN_asimdshf_n           : SQRSHRUN    Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // SQSHRN_asimdshf_n             : SQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // SQSHRUN_asimdshf_n            : SQSHRUN     Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // SSHLL_asimdshf_l              : SSHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
+            // UQRSHRN_asimdshf_n            : UQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // UQSHRN_asimdshf_n             : UQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // USHLL_asimdshf_l              : USHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
             case 33:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
                 return TryDecodeFromBitValues(bitValue, 29, out vKind,out elementCount);
             }
             // FCVTZS_asimdshf_c             : FCVTZS      Vd.T, Vn.T, #fbits <- Operand: Vd.T
+            // FCVTZS_asimdshf_c             : FCVTZS      Vd.T, Vn.T, #fbits <- Operand: Vn.T
+            // FCVTZU_asimdshf_c             : FCVTZU      Vd.T, Vn.T, #fbits <- Operand: Vd.T
+            // FCVTZU_asimdshf_c             : FCVTZU      Vd.T, Vn.T, #fbits <- Operand: Vn.T
+            // SCVTF_asimdshf_c              : SCVTF       Vd.T, Vn.T, #fbits <- Operand: Vd.T
+            // SCVTF_asimdshf_c              : SCVTF       Vd.T, Vn.T, #fbits <- Operand: Vn.T
+            // UCVTF_asimdshf_c              : UCVTF       Vd.T, Vn.T, #fbits <- Operand: Vd.T
+            // UCVTF_asimdshf_c              : UCVTF       Vd.T, Vn.T, #fbits <- Operand: Vn.T
             case 34:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
                 return TryDecodeFromBitValues(bitValue, 30, out vKind,out elementCount);
             }
             // DUP_asimdins_dr_r             : DUP         Vd.T, Rn <- Operand: Vd.T
+            // DUP_asimdins_dv_v             : DUP         Vd.T, Vn.Ts[index] <- Operand: Vd.T
             case 35:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 15) & 0x3E);

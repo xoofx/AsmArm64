@@ -11,57 +11,51 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
 {
     internal Arm64RegisterOperand(Arm64Operand operand)
     {
-        // buffer[1] = (byte)((byte)RegisterKind | ((byte)RegisterIndexEncodingKind << 4));
-        // buffer[2] = (byte)IndexerId;
-        // buffer[3] = (byte)LowBitIndexEncoding;
         var descriptor = operand.Descriptor;
         var rawValue = operand.RawValue;
+        // buffer[1] = (byte)((byte)RegisterKind | ((byte)RegisterIndexEncodingKind << 4));
         var encodingKind = (Arm64RegisterEncodingKind)((byte)(descriptor >> 8) & 0xF);
-        var indexerId = (byte)(descriptor >> 16);
-        var bitIndex = (byte)(descriptor >> 24);
-
-        var value = rawValue >> bitIndex;
         var encodingIndex = (Arm64RegisterIndexEncodingKind)((byte)(descriptor >> 12) & 0xF); ;
+        // buffer[2] = (byte)IndexerIndex;
+        var indexerId = (byte)(descriptor >> 16); // TODO: handle it
+        // if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.BitMapExtract)
+        // {
+        //     Debug.Assert(RegisterIndexExtractIndex != 0);
+        //     buffer[3] = (byte)RegisterIndexExtractIndex;
+        // }
+        // else
+        // {
+        //     buffer[3] = (byte)LowBitIndexEncoding;
+        // }
         int registerIndex;
         switch (encodingIndex)
         {
             case Arm64RegisterIndexEncodingKind.Std5:
+            {
+                var bitIndex = (byte)(descriptor >> 24);
+                var value = rawValue >> bitIndex;
                 registerIndex = (int)(value & 0b11111);
                 break;
+            }
             case Arm64RegisterIndexEncodingKind.Std4:
+            {
+                var bitIndex = (byte)(descriptor >> 24);
+                var value = rawValue >> bitIndex;
                 registerIndex = (int)(value & 0b1111);
                 break;
-            case Arm64RegisterIndexEncodingKind.SpecialMRm:
-            {
-                // Special size:M:Rm encoding
-                // size:(22:2),M:(20:1),Rm:(16:4)
-                // With Size:
-                // * BitFields = 00, Value = RESERVED
-                // * BitFields = 01, Value = UInt('0':Rm)
-                // * BitFields = 10, Value = UInt(M:Rm)
-                // * BitFields = 11, Value = RESERVED
-                var size = (rawValue >> 22) & 0b11;
-                switch (size)
-                {
-                    case 1:
-                        registerIndex = (int)((rawValue >> 16) & 0b1111);
-                        break;
-                    case 2:
-                        registerIndex = (int)((rawValue >> 16) & 0b11111);
-                        break;
-                    default:
-                        encodingKind = Arm64RegisterEncodingKind.None;
-                        registerIndex = 0;
-                        break;
-                }
             }
-                break;
+            case Arm64RegisterIndexEncodingKind.BitMapExtract:
+            {
+                Arm64RegisterIndexHelper.TryDecode(rawValue, (byte)(descriptor >> 24), out registerIndex);
+            }
+            break;
             default:
                 encodingKind = Arm64RegisterEncodingKind.None;
                 registerIndex = 0;
                 break;
         }
 
+        // Register kind
         Arm64RegisterKind registerKind;
         Arm64RegisterVKind vKind = Arm64RegisterVKind.Default;
         int elementCount = 0;
@@ -100,7 +94,10 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
                 break;
             case Arm64RegisterEncodingKind.V:
                 registerKind = Arm64RegisterKind.V;
-                // buffer[4] = (byte)VectorArrangementLocalIndex;
+                // if (RegisterKind == Arm64RegisterEncodingKind.V)
+                // {
+                //     buffer[4] = (byte)VectorArrangementLocalIndex;
+                // }
                 var vectorArrangementIndex = (byte)(descriptor >> 32);
                 if (vectorArrangementIndex != 0)
                 {
@@ -117,6 +114,11 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
             case Arm64RegisterEncodingKind.DynamicXOrW:
             case Arm64RegisterEncodingKind.DynamicVScalar:
             {
+                // else if (RegisterKind == Arm64RegisterEncodingKind.DynamicXOrW || RegisterKind == Arm64RegisterEncodingKind.DynamicVScalar)
+                // {
+                //     buffer[4] = (byte)DynamicRegisterSelectorIndex;
+                //     Debug.Assert(VectorArrangementLocalIndex == 0);
+                // }
                 var dynamicSelectorIndex = (byte)(descriptor >> 32);
                 Arm64DynamicRegisterHelper.TryDecode(rawValue, dynamicSelectorIndex, out encodingKind);
                 goto encodedDynamic;

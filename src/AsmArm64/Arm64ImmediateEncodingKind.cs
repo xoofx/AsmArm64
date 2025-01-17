@@ -38,8 +38,6 @@ enum Arm64ImmediateEncodingKind : byte
     /// </summary>
     SystemRegister = 15,
 
-    PStateField = 16,
-
     RangePrefetchOperation = 17,
     /// <summary>
     /// Option for ISB instruction

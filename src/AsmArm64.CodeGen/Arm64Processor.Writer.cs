@@ -32,8 +32,11 @@ partial class Arm64Processor
         GenerateDynamicRegister();
         GenerateIndexers();
         GenerateImmediates();
+        GenerateProcessStateField();
+        GenerateRegisterIndex();
     }
 
+    
     private void GenerateMnemonicEnum()
     {
         using var w = GetWriter("Arm64Mnemonic.gen.cs");
@@ -455,6 +458,42 @@ partial class Arm64Processor
     }
 
 
+    private void GenerateProcessStateField()
+    {
+        var processStateFields = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.ProcessStateField);
+
+        GenerateEncodingSymbolExtractMap<EncodingSymbolExtract>(processStateFields,
+            "Arm64ProcessStateFieldHelper",
+            [("Arm64ProcessStateField", "processStateField")],
+            (w, extract) =>
+            {
+                // We don't have any bit ranges for dynamic registers
+            },
+            (w, selector, bitValue) =>
+            {
+                w.WriteLine($"processStateField = Arm64ProcessStateField.{bitValue.Text};");
+            }
+        );
+    }
+
+    private void GenerateRegisterIndex()
+    {
+        var immediateMap = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.RegisterIndex);
+
+        GenerateEncodingSymbolExtractMap<EncodingIndexerExtract>(immediateMap,
+            "Arm64RegisterIndexHelper",
+            [("int", "regIndex")],
+            (w, extract) =>
+            {
+                throw new InvalidOperationException("Immediate should have bit ranges");
+            },
+            (w, selector, bitValue) =>
+            {
+                w.WriteLine($"regIndex = (int){bitValue.Text};");
+            }
+        );
+    }
+    
     private void GenerateEncodingSymbolExtractMap<TExtract>(EncodingSymbolExtractMap map, string name, List<(string ParameterType, string ParameterName)> parameters,
             Action<CodeWriter, TExtract> writeBitToSelector,
             Action<CodeWriter, EncodingSymbolSelector, EncodingBitValue> writeSelector

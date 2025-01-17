@@ -92,7 +92,7 @@ sealed class ImmediateOperandDescriptor() : OperandDescriptor(Arm64OperandKind.I
     {
         buffer[1] = (byte)ImmediateKind;
 
-        if (ImmediateKind == Arm64ImmediateEncodingKind.FixedFloatZero || ImmediateKind == Arm64ImmediateEncodingKind.PStateField)
+        if (ImmediateKind == Arm64ImmediateEncodingKind.FixedFloatZero)
         {
             return;
         }
@@ -100,6 +100,13 @@ sealed class ImmediateOperandDescriptor() : OperandDescriptor(Arm64OperandKind.I
         if (ImmediateKind == Arm64ImmediateEncodingKind.FixedInt)
         {
             buffer[2] = (byte)FixedValue;
+            return;
+        }
+
+        if (ImmediateKind == Arm64ImmediateEncodingKind.BitMapExtract)
+        {
+            Debug.Assert(ExtractIndex != 0);
+            buffer[2] = (byte)ExtractIndex;
             return;
         }
 
@@ -138,6 +145,16 @@ sealed class EnumOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Enum)
 
 sealed class PStateFieldOperandDescriptor() : OperandDescriptor(Arm64OperandKind.PStateField)
 {
+    private int _extractIndex;
+
+    public int ExtractIndex
+    {
+        get => BitMapExtract?.Index ?? _extractIndex;
+        set => _extractIndex = value;
+    }
+    
+    public EncodingSymbolExtract? BitMapExtract { get; set; }
+    
     protected internal override void EncodeImpl(Span<byte> buffer)
     {
     }
@@ -289,6 +306,7 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
 {
     private int _dynamicRegisterSelectorIndex;
     private int _indexerIndex;
+    private int _registerIndexExtractIndex;
     public Arm64RegisterEncodingKind RegisterKind { get; set; }
 
     public Arm64RegisterIndexEncodingKind RegisterIndexEncodingKind { get; set; }
@@ -315,6 +333,12 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
     /// </summary>
     public int VectorArrangementLocalIndex { get; set; }
 
+    public int RegisterIndexExtractIndex
+    {
+        get => RegisterIndexExtract?.Index ?? _registerIndexExtractIndex;
+        set => _registerIndexExtractIndex = value;
+    }
+
     [JsonIgnore]
     public EncodingSymbolExtract? IndexerExtract { get; set; }
 
@@ -325,8 +349,11 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
     public EncodingSymbolExtract? DynamicRegisterXOrWSelector { get; set; }
 
     [JsonIgnore]
-    public bool IsSimpleEncoding => RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.SpecialMRm;
-    
+    public bool IsSimpleEncoding => RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.BitMapExtract;
+
+    [JsonIgnore]
+    public EncodingSymbolExtract RegisterIndexExtract { get; set; }
+
     public BitRange GetIndexEncoding()
     {
         if (!IsSimpleEncoding) throw new InvalidOperationException("Cannot get index encoding for non-simple encoding");
@@ -341,7 +368,16 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
     {
         buffer[1] = (byte)((byte)RegisterKind | ((byte)RegisterIndexEncodingKind << 4));
         buffer[2] = (byte)IndexerIndex;
-        buffer[3] = (byte)LowBitIndexEncoding;
+        if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.BitMapExtract)
+        {
+            Debug.Assert(RegisterIndexExtractIndex != 0);
+            buffer[3] = (byte)RegisterIndexExtractIndex;
+        }
+        else
+        {
+            buffer[3] = (byte)LowBitIndexEncoding;
+        }
+
         if (RegisterKind == Arm64RegisterEncodingKind.V)
         {
             buffer[4] = (byte)VectorArrangementLocalIndex;
