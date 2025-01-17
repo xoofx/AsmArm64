@@ -124,6 +124,11 @@ public readonly record struct Arm64RegisterX : IArm64Register
     }
 
     /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterX register) => Unsafe.BitCast<Arm64RegisterX, Arm64RegisterAny>(register);
+
+    /// <summary>
     /// Gets the X0 register.
     /// </summary>
     public static Arm64RegisterX X0 => new(0);
@@ -315,6 +320,11 @@ public readonly record struct Arm64RegisterW : IArm64Register
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterW register) => Unsafe.BitCast<Arm64RegisterW, Arm64RegisterAny>(register);
 
     /// <summary>
     /// Gets the W0 register.
@@ -510,6 +520,11 @@ public readonly record struct Arm64RegisterC : IArm64Register
     }
 
     /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterC register) => Unsafe.BitCast<Arm64RegisterC, Arm64RegisterAny>(register);
+
+    /// <summary>
     /// Gets the C0 register.
     /// </summary>
     public static Arm64RegisterC C0 => new(0);
@@ -623,6 +638,11 @@ public readonly record struct Arm64RegisterSP : IArm64Register
     }
 
     /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterSP register) => Unsafe.BitCast<Arm64RegisterSP, Arm64RegisterAny>(register);
+
+    /// <summary>
     /// Gets the SP register.
     /// </summary>
     public static Arm64RegisterSP SP => new(31);
@@ -732,6 +752,11 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV register) => Unsafe.BitCast<Arm64RegisterV, Arm64RegisterAny>(register);
 
     /// <summary>
     /// Gets the V0 register.
@@ -939,6 +964,11 @@ public readonly record struct Arm64RegisterV_B : IArm64RegisterVTyped
     }
 
     /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_B register) => Unsafe.BitCast<Arm64RegisterV_B, Arm64RegisterAny>(register);
+
+    /// <summary>
     /// Represents an ARM64 a vector indexed with 8-bit vector register (V.B arrangement).
     /// </summary>
     public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
@@ -1007,6 +1037,11 @@ public readonly record struct Arm64RegisterV_B : IArm64RegisterVTyped
             charsWritten++;
             return true;
         }
+
+        /// <summary>
+        /// Converts this register to an any register.
+        /// </summary>
+        public static implicit operator Arm64RegisterAny(Indexed register) => Unsafe.BitCast<Indexed, Arm64RegisterAny>(register);
     }
 }
 
@@ -1052,6 +1087,11 @@ public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_2B register) => Unsafe.BitCast<Arm64RegisterV_2B, Arm64RegisterAny>(register);
 
     /// <summary>
     /// Gets the indexed element of this vector packed register.
@@ -1130,6 +1170,11 @@ public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
             charsWritten++;
             return true;
         }
+
+        /// <summary>
+        /// Converts this register to an any register.
+        /// </summary>
+        public static implicit operator Arm64RegisterAny(Indexed register) => Unsafe.BitCast<Indexed, Arm64RegisterAny>(register);
     }
 }
 
@@ -1175,6 +1220,11 @@ public readonly record struct Arm64RegisterV_4B : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_4B register) => Unsafe.BitCast<Arm64RegisterV_4B, Arm64RegisterAny>(register);
 
     /// <summary>
     /// Gets the indexed element of this vector packed register.
@@ -1253,6 +1303,11 @@ public readonly record struct Arm64RegisterV_4B : IArm64RegisterVPacked
             charsWritten++;
             return true;
         }
+
+        /// <summary>
+        /// Converts this register to an any register.
+        /// </summary>
+        public static implicit operator Arm64RegisterAny(Indexed register) => Unsafe.BitCast<Indexed, Arm64RegisterAny>(register);
     }
 }
 
@@ -1298,6 +1353,11 @@ public readonly record struct Arm64RegisterV_8B : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_8B register) => Unsafe.BitCast<Arm64RegisterV_8B, Arm64RegisterAny>(register);
 }
 
 /// <summary>
@@ -1342,6 +1402,11 @@ public readonly record struct Arm64RegisterV_16B : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_16B register) => Unsafe.BitCast<Arm64RegisterV_16B, Arm64RegisterAny>(register);
 }
 /// <summary>
 /// Represents an ARM64 a vector typed with Half-precision 16-bit floating-point register (V.H arrangement).
@@ -1387,6 +1452,11 @@ public readonly record struct Arm64RegisterV_H : IArm64RegisterVTyped
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_H register) => Unsafe.BitCast<Arm64RegisterV_H, Arm64RegisterAny>(register);
 
     /// <summary>
     /// Represents an ARM64 a vector indexed with Half-precision 16-bit floating-point register (V.H arrangement).
@@ -1457,6 +1527,11 @@ public readonly record struct Arm64RegisterV_H : IArm64RegisterVTyped
             charsWritten++;
             return true;
         }
+
+        /// <summary>
+        /// Converts this register to an any register.
+        /// </summary>
+        public static implicit operator Arm64RegisterAny(Indexed register) => Unsafe.BitCast<Indexed, Arm64RegisterAny>(register);
     }
 }
 
@@ -1494,6 +1569,11 @@ public readonly record struct Arm64RegisterH : IArm64RegisterVScalar
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterH register) => Unsafe.BitCast<Arm64RegisterH, Arm64RegisterAny>(register);
 
     /// <summary>
     /// Gets the H0 register.
@@ -1700,6 +1780,11 @@ public readonly record struct Arm64RegisterV_2H : IArm64RegisterVPacked
     }
 
     /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_2H register) => Unsafe.BitCast<Arm64RegisterV_2H, Arm64RegisterAny>(register);
+
+    /// <summary>
     /// Gets the indexed element of this vector packed register.
     /// </summary>
     public Indexed this[int elementIndex] => new(Index, elementIndex);
@@ -1776,6 +1861,11 @@ public readonly record struct Arm64RegisterV_2H : IArm64RegisterVPacked
             charsWritten++;
             return true;
         }
+
+        /// <summary>
+        /// Converts this register to an any register.
+        /// </summary>
+        public static implicit operator Arm64RegisterAny(Indexed register) => Unsafe.BitCast<Indexed, Arm64RegisterAny>(register);
     }
 }
 
@@ -1821,6 +1911,11 @@ public readonly record struct Arm64RegisterV_4H : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_4H register) => Unsafe.BitCast<Arm64RegisterV_4H, Arm64RegisterAny>(register);
 }
 
 /// <summary>
@@ -1865,6 +1960,11 @@ public readonly record struct Arm64RegisterV_8H : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_8H register) => Unsafe.BitCast<Arm64RegisterV_8H, Arm64RegisterAny>(register);
 }
 /// <summary>
 /// Represents an ARM64 a vector typed with Single-precision 32-bit floating-point register (V.S arrangement).
@@ -1910,6 +2010,11 @@ public readonly record struct Arm64RegisterV_S : IArm64RegisterVTyped
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_S register) => Unsafe.BitCast<Arm64RegisterV_S, Arm64RegisterAny>(register);
 
     /// <summary>
     /// Represents an ARM64 a vector indexed with Single-precision 32-bit floating-point register (V.S arrangement).
@@ -1980,6 +2085,11 @@ public readonly record struct Arm64RegisterV_S : IArm64RegisterVTyped
             charsWritten++;
             return true;
         }
+
+        /// <summary>
+        /// Converts this register to an any register.
+        /// </summary>
+        public static implicit operator Arm64RegisterAny(Indexed register) => Unsafe.BitCast<Indexed, Arm64RegisterAny>(register);
     }
 }
 
@@ -2017,6 +2127,11 @@ public readonly record struct Arm64RegisterS : IArm64RegisterVScalar
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterS register) => Unsafe.BitCast<Arm64RegisterS, Arm64RegisterAny>(register);
 
     /// <summary>
     /// Gets the S0 register.
@@ -2221,6 +2336,11 @@ public readonly record struct Arm64RegisterV_2S : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_2S register) => Unsafe.BitCast<Arm64RegisterV_2S, Arm64RegisterAny>(register);
 }
 
 /// <summary>
@@ -2265,6 +2385,11 @@ public readonly record struct Arm64RegisterV_4S : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_4S register) => Unsafe.BitCast<Arm64RegisterV_4S, Arm64RegisterAny>(register);
 }
 /// <summary>
 /// Represents an ARM64 a vector typed with Double-precision 64-bit floating-point register (V.D arrangement).
@@ -2310,6 +2435,11 @@ public readonly record struct Arm64RegisterV_D : IArm64RegisterVTyped
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_D register) => Unsafe.BitCast<Arm64RegisterV_D, Arm64RegisterAny>(register);
 
     /// <summary>
     /// Represents an ARM64 a vector indexed with Double-precision 64-bit floating-point register (V.D arrangement).
@@ -2380,6 +2510,11 @@ public readonly record struct Arm64RegisterV_D : IArm64RegisterVTyped
             charsWritten++;
             return true;
         }
+
+        /// <summary>
+        /// Converts this register to an any register.
+        /// </summary>
+        public static implicit operator Arm64RegisterAny(Indexed register) => Unsafe.BitCast<Indexed, Arm64RegisterAny>(register);
     }
 }
 
@@ -2417,6 +2552,11 @@ public readonly record struct Arm64RegisterD : IArm64RegisterVScalar
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterD register) => Unsafe.BitCast<Arm64RegisterD, Arm64RegisterAny>(register);
 
     /// <summary>
     /// Gets the D0 register.
@@ -2621,6 +2761,11 @@ public readonly record struct Arm64RegisterV_2D : IArm64RegisterVPacked
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_2D register) => Unsafe.BitCast<Arm64RegisterV_2D, Arm64RegisterAny>(register);
 }
 
 /// <summary>
@@ -2657,6 +2802,11 @@ public readonly record struct Arm64RegisterQ : IArm64RegisterVScalar
         charsWritten = result ? text.Length : 0;
         return result;
     }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterQ register) => Unsafe.BitCast<Arm64RegisterQ, Arm64RegisterAny>(register);
 
     /// <summary>
     /// Gets the Q0 register.

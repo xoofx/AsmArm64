@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 namespace AsmArm64;
 
 /// <summary>
-/// Represents an ARM64 register.
+/// Represents an ARM64 register in a generic way.
 /// </summary>
 public readonly record struct Arm64RegisterAny : IArm64RegisterVPacked, IArm64RegisterVIndexed
 {
@@ -16,7 +16,7 @@ public readonly record struct Arm64RegisterAny : IArm64RegisterVPacked, IArm64Re
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private Arm64RegisterAny(uint index) => _value = index;
 
-    public static Arm64RegisterAny Create(Arm64RegisterKind kind, int index, Arm64RegisterVKind vKind, int elementCount, int elementIndex) => new(((uint)elementIndex << 28) | ((uint)(elementCount >> 1) << 24) | ((uint)vKind << 16) | ((uint)vKind << 8) | (uint)index);
+    public static Arm64RegisterAny Create(Arm64RegisterKind kind, int index, Arm64RegisterVKind vKind, int elementCount, int elementIndex) => new(((uint)(byte)elementIndex << 28) | ((uint)((byte)elementCount >> 1) << 24) | ((uint)(byte)vKind << 16) | ((uint)(byte)kind << 8) | (byte)index);
     
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind) (_value >> 8);
@@ -58,16 +58,80 @@ partial class Arm64Extensions
         return register.Kind switch
         {
             Arm64RegisterKind.Invalid => "??",
+            Arm64RegisterKind.C => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterC>(register).ToText(upper),
             Arm64RegisterKind.X => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterX>(register).ToText(upper),
             Arm64RegisterKind.W => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterW>(register).ToText(upper),
             Arm64RegisterKind.SP => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterSP>(register).ToText(upper),
             Arm64RegisterKind.V => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV>(register).ToText(upper),
-            Arm64RegisterKind.VTyped => throw new NotImplementedException(),
-            Arm64RegisterKind.VScalar => throw new NotImplementedException(),
-            Arm64RegisterKind.C => throw new NotImplementedException(),
-            Arm64RegisterKind.VPacked => throw new NotImplementedException(),
-            Arm64RegisterKind.VPackedIndexed => throw new NotImplementedException(),
-            Arm64RegisterKind.VTypedIndexed => throw new NotImplementedException(),
+            Arm64RegisterKind.VTyped => register.VKind switch
+            {
+                Arm64RegisterVKind.B => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_B>(register).ToText(upper),
+                Arm64RegisterVKind.H => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_H>(register).ToText(upper),
+                Arm64RegisterVKind.S => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_S>(register).ToText(upper),
+                Arm64RegisterVKind.D => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_D>(register).ToText(upper),
+                _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid VKind {register.VKind}")
+            },
+            Arm64RegisterKind.VScalar => register.VKind switch
+            {
+                Arm64RegisterVKind.H => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterH>(register).ToText(upper),
+                Arm64RegisterVKind.S => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterS>(register).ToText(upper),
+                Arm64RegisterVKind.D => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterD>(register).ToText(upper),
+                Arm64RegisterVKind.Q => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterQ>(register).ToText(upper),
+                _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid VKind {register.VKind}")
+            },
+            Arm64RegisterKind.VPacked => register.VKind switch
+            {
+                Arm64RegisterVKind.B => register.ElementCount switch
+                {
+                    2 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_2B>(register).ToText(upper),
+                    4 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_4B>(register).ToText(upper),
+                    8 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_8B>(register).ToText(upper),
+                    16 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_16B>(register).ToText(upper),
+                    _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid ElementCount {register.ElementCount}")
+                },
+                Arm64RegisterVKind.H => register.ElementCount switch
+                {
+                    2 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_2H>(register).ToText(upper),
+                    4 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_4H>(register).ToText(upper),
+                    8 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_8H>(register).ToText(upper),
+                    _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid ElementCount {register.ElementCount}")
+                },
+                Arm64RegisterVKind.S => register.ElementCount switch
+                {
+                    2 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_2S>(register).ToText(upper),
+                    4 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_4S>(register).ToText(upper),
+                    _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid ElementCount {register.ElementCount}")
+                },
+                Arm64RegisterVKind.D => register.ElementCount switch
+                {
+                    2 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_2D>(register).ToText(upper),
+                    _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid ElementCount {register.ElementCount}")
+                },
+                _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid VKind {register.VKind}")
+            },
+            Arm64RegisterKind.VPackedIndexed => register.VKind switch
+            {
+                Arm64RegisterVKind.B => register.ElementCount switch
+                {
+                    2 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_2B.Indexed>(register).ToString(upper ? "H" : "L", null),
+                    4 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_4B.Indexed>(register).ToString(upper ? "H" : "L", null),
+                    _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid ElementCount {register.ElementCount}")
+                },
+                Arm64RegisterVKind.H => register.ElementCount switch
+                {
+                    2 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_2H.Indexed>(register).ToString(upper ? "H" : "L", null),
+                    _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid ElementCount {register.ElementCount}")
+                },
+                _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid VKind {register.VKind}")
+            },
+            Arm64RegisterKind.VTypedIndexed => register.VKind switch
+            {
+                Arm64RegisterVKind.B => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_B.Indexed>(register).ToString(upper ? "H" : "L", null),
+                Arm64RegisterVKind.H => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_H.Indexed>(register).ToString(upper ? "H" : "L", null),
+                Arm64RegisterVKind.S => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_S.Indexed>(register).ToString(upper ? "H" : "L", null),
+                Arm64RegisterVKind.D => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_D.Indexed>(register).ToString(upper ? "H" : "L", null),
+                _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid VKind {register.VKind}")
+            },
             _ => throw new ArgumentOutOfRangeException()
         };
     }
