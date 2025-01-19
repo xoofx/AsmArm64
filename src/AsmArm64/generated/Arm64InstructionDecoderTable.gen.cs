@@ -2936,7 +2936,7 @@ partial class Arm64InstructionDecoderTable
         156,0,118,0,6,31,1,0,
         // CHKFEAT_hf_hints               - CHKFEAT     X16
         157,0,119,0,6,9,0,1,
-        1,1,0,0,
+        1,65,0,16,
         // CLRBHB_hi_hints                - CLRBHB     
         158,0,120,0,6,10,1,0,
         // CLREX_bn_barriers              - CLREX       {#imm}
