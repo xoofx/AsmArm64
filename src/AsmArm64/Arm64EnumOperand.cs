@@ -143,7 +143,7 @@ public readonly struct Arm64EnumOperand : IArm64Operand
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static explicit operator Arm64EnumOperand(Arm64Operand operand)
     {
-        if (operand.Kind != Arm64OperandKind.Label) ThrowInvalidCast(operand.Kind);
+        if (operand.Kind != Arm64OperandKind.Enum) ThrowInvalidCast(operand.Kind);
         return new Arm64EnumOperand(operand);
     }
     
