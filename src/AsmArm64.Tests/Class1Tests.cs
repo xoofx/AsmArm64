@@ -72,6 +72,12 @@ public class Class1Test
 
         // 00 00 00 94 -> bl #0
         Print(0x94000000U);
+
+        // e5 59 0f d5 -> sys #7, c5, c9, #7, {x5}
+        Print(0xD50F59E5U);
+
+        // [0x21,0x70,0xdf,0x4c]
+        Print(0x4CDF7021U);
     }
 
     static Arm64Instruction Print(uint rawValue)
