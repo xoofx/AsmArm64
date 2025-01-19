@@ -104,23 +104,25 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
             return false;
         }
 
-        if (format.Length == 0)
-        {
-            format = "x";
-        }
-
         var length = 1;
         destination[0] = '#';
-        if (format.Length == 1 && (format[0] == 'x' || format[0] == 'X' || format[0] == 'H' || format[0] == 'L'))
+        if (format.Length == 1)
         {
-            if (destination.Length <= 3)
+            if (format[0] == 'x' || format[0] == 'X')
             {
-                charsWritten = 0;
-                return false;
+                if (destination.Length <= 3)
+                {
+                    charsWritten = 0;
+                    return false;
+                }
+                destination[1] = '0';
+                destination[2] = 'x';
+                length = 3;
             }
-            destination[1] = '0';
-            destination[2] = 'x';
-            length = 3;
+            else if (format[0] == 'H' || format[0] == 'L')
+            {
+                format = "0";
+            }
         }
 
         var result = Value.TryFormat(destination.Slice(length), out var numberWritten, format, provider);
