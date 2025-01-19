@@ -70,12 +70,6 @@ class Instruction : IJsonOnDeserialized
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<Operand> Operands { get; } = new();
-
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<int> VectorArrangementIndices { get; } = new();
-    
-    [JsonIgnore]
-    public List<EncodingVectorArrangementExtract> VectorArrangements { get; } = new();
     
     [JsonIgnore]
     public Dictionary<string, BitRangeInfo> BitRangeMap { get; } = new();
@@ -88,16 +82,8 @@ class Instruction : IJsonOnDeserialized
         MemoryMarshal.Write(buffer.Slice(2), (ushort)MnemonicIndex);
         buffer[4] = (byte)InstructionClassIndex;
         buffer[5] = (byte)FeatureExpressionIdIndex;
-        buffer[6] = (byte)((VectorArrangementIndices.Count << 1) | (UseOperandEncoding8Bytes ? 1 : 0));
+        buffer[6] = (byte)(UseOperandEncoding8Bytes ? 1 : 0);
         buffer[7] = (byte)Operands.Count;
-    }
-
-    public void EncodeVectorArrangementIndices(Span<byte> buffer)
-    {
-        for (var i = 0; i < VectorArrangementIndices.Count; i++)
-        {
-            buffer[i] = (byte)VectorArrangementIndices[i];
-        }
     }
     
     public void Add(BitRangeInfo bitRangeInfo)

@@ -17,7 +17,9 @@ public static partial class Arm64Extensions
         "lsl",
         "lsr",
         "asr",
-        "ror"
+        "ror",
+        "msl",
+        "???"
     ];
 
     private static readonly string[] ShiftTypeUpper =
@@ -25,7 +27,9 @@ public static partial class Arm64Extensions
         "LSL",
         "LSR",
         "ASR",
-        "ROR"
+        "ROR",
+        "MSL",
+        "???"
     ];
     
     /// <summary>

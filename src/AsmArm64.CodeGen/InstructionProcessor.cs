@@ -221,29 +221,6 @@ internal sealed class InstructionProcessor
         // Sort the indexers at the end and order them by their id to make them easier to read
         _instructionSet.AssignExtraMapIndices();
 
-        // Vector Arrangement indices
-        foreach (var instruction in _instructions)
-        {
-            if (instruction.VectorArrangements.Count > 0)
-            {
-                instruction.VectorArrangementIndices.Clear();
-                foreach (var vectorArrangement in instruction.VectorArrangements)
-                {
-                    var index = vectorArrangement.Index;
-                    instruction.VectorArrangementIndices.Add(index);
-                }
-
-                //if (instruction.VectorArrangements.Count > 1)
-                //{
-                //    Console.WriteLine($"Instruction {instruction.Id} {instruction.FullSyntax}");
-                //    foreach (var vArrange in instruction.VectorArrangements)
-                //    {
-                //        Console.WriteLine($"  {vArrange}");
-                //    }
-                //}
-            }
-        }
-
         //Console.WriteLine($"Vector Arrangements: {vectorArrangements.Count}");
 
         //foreach (var pair in _memoryOperands.OrderBy(x => x.Key))
@@ -280,23 +257,9 @@ internal sealed class InstructionProcessor
     {
         Span<byte> buffer = stackalloc byte[8];
         Span<byte> allOperands = new byte[8 * 16]; // 16 operands max (should be much lower, like 5)
-        allOperands.Clear();
         foreach (var instruction in _instructions)
         {
-            // Encode the instruction decoding
-            RecordInstructionBufferOffset();
-            buffer.Clear();
-            instruction.Encode(buffer);
-            Write(buffer);
-
-            // Encode vector arrangement indices
-            if (instruction.VectorArrangementIndices.Count > 0)
-            {
-                buffer.Clear();
-                var vBuffer = buffer.Slice(0, 4);
-                instruction.EncodeVectorArrangementIndices(vBuffer);
-                Write(vBuffer);
-            }
+            allOperands.Clear();
 
             // Encode the operands locally
             for (var operandIndex = 0; operandIndex < instruction.Operands.Count; operandIndex++)
@@ -308,17 +271,24 @@ internal sealed class InstructionProcessor
 
             // Detect if operands can be all encoded into uint
             var spanULong = MemoryMarshal.Cast<byte, ulong>(allOperands);
-            instruction.UseOperandEncoding8Bytes = instruction.Operands.Count != 0;
+            instruction.UseOperandEncoding8Bytes = instruction.Operands.Count == 0;
             for (int i = 0; i < instruction.Operands.Count; i++)
             {
                 var value = spanULong[i];
                 if (value > uint.MaxValue)
                 {
-                    instruction.UseOperandEncoding8Bytes = false;
+                    instruction.UseOperandEncoding8Bytes = true;
                     break;
                 }
             }
 
+            // Encode the instruction decoding
+            RecordInstructionBufferOffset();
+            buffer.Clear();
+            instruction.Encode(buffer);
+            Write(buffer);
+            
+            // Encode vector arrangement indices
             // Encode the operands
             var encodingSize = instruction.UseOperandEncoding8Bytes ? 8 : 4;
             for (int i = 0; i < instruction.Operands.Count; i++)
@@ -726,30 +696,7 @@ internal sealed class InstructionProcessor
         }
         else if (selector is not null)
         {
-            var descriptor = new ImmediateByteValuesOperandDescriptor()
-            {
-                Name = name,
-            };
-            descriptor.BitSize = symbol.BitSize;
-            descriptor.Encoding.AddRange(symbol.BitRanges);
-
-
-            Debug.Assert(selector.BitValues.Count <= 4);
-
-            for (var i = 0; i < selector.BitValues.Count; i++)
-            {
-                var bitValue = selector.BitValues[i];
-                var encodingValue = bitValue.BitSelectorValue;
-                Debug.Assert(i == encodingValue);
-                Debug.Assert(bitValue.Text.StartsWith("#"));
-                var userValue = bitValue.IntegerValue;
-
-                descriptor.Values.Add(userValue);
-            }
-
-            Debug.Assert(descriptor.Encoding.Count == 1 || descriptor.Encoding.Count == 2);
-            Debug.Assert(descriptor.Encoding.All(x => x.IsSmallEncoding));
-            return descriptor;
+            return ProcessImmediate(instruction, selectedValue);
         }
         else
         {
@@ -974,7 +921,7 @@ internal sealed class InstructionProcessor
 
         if (kind == Arm64RegisterEncodingKind.V && register.TextElements.Count > 1)
         {
-            descriptor.VectorArrangementLocalIndex = GetVectorArrangementLocalIndex(instruction, register);
+            descriptor.VectorArrangement = GetVectorArrangement(instruction, register);
         }
 
         //if (descriptor.IndexerExtract is not null)
@@ -1060,7 +1007,7 @@ internal sealed class InstructionProcessor
         return indexerExtract;
     }
 
-    private int GetVectorArrangementLocalIndex(Instruction instruction, RegisterOperandItem register)
+    private EncodingVectorArrangementExtract GetVectorArrangement(Instruction instruction, RegisterOperandItem register)
     {
         // Detect arrangement
         int index;
@@ -1099,19 +1046,10 @@ internal sealed class InstructionProcessor
             vectorArrangement = _vectorArrangements.GetOrCreateExtract<EncodingVectorArrangementExtract>(kind.ToString());
         }
         vectorArrangement.Usages.Add((instruction, register));
-
         vectorArrangement.Kind = kind;
 
-        var indexOfArrangement = instruction.VectorArrangements.IndexOf(vectorArrangement);
-        if (indexOfArrangement < 0)
-        {
-            indexOfArrangement = instruction.VectorArrangements.Count;
-            instruction.VectorArrangements.Add(vectorArrangement);
-            Debug.Assert(instruction.VectorArrangements.Count <= 4); // Maximum 3 vector arrangements allowed per instruction
-        }
-
         // Always used index + 1 (0 is reserved for null / no vector arrangement)
-        return indexOfArrangement + 1;
+        return vectorArrangement;
     }
 
     private RegisterGroupOperandDescriptor ProcessRegisterGroup(Instruction instruction, RegisterGroupOperandItem group)
@@ -1204,7 +1142,6 @@ internal sealed class InstructionProcessor
         }
         else
         {
-
             Debug.Assert(item.TextElements.Count == 1);
             var symbol = item.TextElements[0].Symbol;
             Debug.Assert(symbol != null);
@@ -1276,7 +1213,7 @@ internal sealed class InstructionProcessor
             if (imm.Kind == OperandItemKind.Immediate)
             {
                 immediate = ProcessImmediate(instruction, (ImmediateOperandItem)imm);
-                kind = immediate.FixedValue != 0 ? Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate : Arm64MemoryEncodingKind.BaseRegisterXnOrSPAndImmediate;
+                kind = immediate.FixedValue != 0 ? Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate : Arm64MemoryEncodingKind.BaseRegisterAndImmediate;
                 fixedValue = immediate.FixedValue;
             }
             else if (imm.Kind == OperandItemKind.OptionalGroup)

@@ -33,6 +33,18 @@ public readonly record struct Arm64RegisterAny : IArm64RegisterVPacked, IArm64Re
     /// <inheritdoc />
     public int ElementIndex => (byte)(_value >> 28);
 
+    /// <summary>
+    /// Gets whether this register is empty.
+    /// </summary>
+    public bool IsEmpty => _value == 0;
+
+    public Arm64RegisterAny Next()
+    {
+        var index = (Index + 1) & 0b11111;
+        var value = _value & 0xFFFF_FF00 | (uint)index;
+        return new(value);
+    }
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 

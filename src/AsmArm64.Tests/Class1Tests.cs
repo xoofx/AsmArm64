@@ -24,7 +24,7 @@ public class Class1Test
     }
 
     [TestMethod]
-    public void TryDecodeAdd()
+    public void DecodeArm64Simple()
     {
         // add x12, x7, x1
         var rawInstruction = 0x8B0100EC;
@@ -32,51 +32,46 @@ public class Class1Test
         Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
 
         // add x12, x7, x1, LSL 30
-        var rawInstruction2 = 0x8B0178EC;
-        var instruction2 = Arm64Instruction.Decode(rawInstruction2);
-        Assert.AreEqual(Arm64Mnemonic.ADD, instruction2.Mnemonic);
-        
-        Console.Write(Arm64Mnemonic.ADD.ToText());
+        Print(0x8B0178ECU);
 
-        for(int i = 0; i < instruction2.OperandCount; i++)
-        {
-            Console.Write(i == 0 ? " " : ", ");
+        // 80 00 80 92 -> mov x0, #-5
+        Print(0x92800080U);
 
-            var operand = instruction2.GetOperand(i);
-            switch (operand.Kind)
-            {
-                case Arm64OperandKind.Register:
-                    var register = (Arm64RegisterOperand) operand;
-                    Console.Write(register);
-                    break;
-                //case Arm64OperandKind.RegisterGroup:
-                //    break;
-                //case Arm64OperandKind.Memory:
-                //    break;
-                //case Arm64OperandKind.Immediate:
-                //    break;
-                //case Arm64OperandKind.ImmediateByteValues:
-                //    break;
-                //case Arm64OperandKind.FixedImmediate:
-                //    break;
-                //case Arm64OperandKind.Label:
-                //    break;
-                case Arm64OperandKind.Shift:
-                    var shift = (Arm64ShiftOperand)operand;
-                    Console.Write(shift);
-                    break;
-                //case Arm64OperandKind.Extend:
-                //    break;
-                //case Arm64OperandKind.Enum:
-                //    break;
-                //case Arm64OperandKind.PStateField:
-                //    break;
-                //case Arm64OperandKind.Const:
-                //    break;
-                default:
-                    Console.Write(operand.Kind);
-                    break;
-            }
-        }
+        // 41 00 80 D2 -> mov x1, #2
+        Print(0xD2800041U);
+
+        // 22 40 C0 3C -> LDR Q2, [x1, #4]
+        Print(0x3CC04022U);
+
+        // 22 C8 64 F8 -> ldr x2, [x1, w4, sxtw]
+        Print(0xF864C822U);
+
+        // 20 78 62 F8 -> ldr x0, [x1, x2, lsl #3]
+        Print(0xF8627820U);
+
+        // e0 6b 61 f8 -> ldr x0, [sp, x1]
+        Print(0xF8616BE0U);
+
+        // E0 5B 61 F8 -> ldr x0, [sp, w1, uxtw #3]
+        Print(0xF8615BE0U);
+
+        // 20 0C 02 8B -> add x0, x1, x2, lsl #3
+        Print(0x8B020C20U);
+
+        // 41 70 23 8B -> add x1, x2, x3, uxtx #4
+        Print(0x8B237041U);
+
+        // 20 EC 22 8B    add x0, x1, x2, sxtx #3
+        Print(0x8B22EC20U);
+
+        // 20 B0 A2 0D    st4 {v0.s, v1.s, v2.s, v3.s}[1], [x1], x2
+        Print(0x0DA2B020);
+    }
+
+    static Arm64Instruction Print(uint rawValue)
+    {
+        var instruction = Arm64Instruction.Decode(rawValue);
+        Console.WriteLine($"{string.Join(" ", BitConverter.GetBytes(rawValue).Select(x => x.ToString("X2")))} -> {instruction}");
+        return instruction;
     }
 }

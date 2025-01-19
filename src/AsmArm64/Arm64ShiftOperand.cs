@@ -2,12 +2,13 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace AsmArm64;
 
-public readonly struct Arm64ShiftOperand : IArm64Operand, ISpanFormattable
+public readonly struct Arm64ShiftOperand : IArm64Operand
 {
     internal Arm64ShiftOperand(Arm64Operand operand)
     {
@@ -69,19 +70,51 @@ public readonly struct Arm64ShiftOperand : IArm64Operand, ISpanFormattable
     /// <inheritdoc />
     public string ToString(string? format, IFormatProvider? formatProvider)
     {
-        // TODO: avoid alloc
-        return $"{ShiftKind.ToText(format == "H")} #{Amount:0}";
+        // 8 ~= Shift max 3, amount maximum 2 digits, 1 space, 1 #
+        Span<char> span = stackalloc char[8];
+        var result = TryFormat(span, out var written, format, formatProvider);
+        Debug.Assert(result);
+        return span.Slice(0, written).ToString();
     }
 
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format,
         IFormatProvider? provider)
+        => TryFormat(destination, out charsWritten, out _, format, provider);
+    
+    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        // TODO: avoid alloc
-        var text = $"{ShiftKind.ToText(format.Length >= 1 && format[0] == 'H')} #{Amount:0}";
-        var result = text.AsSpan().TryCopyTo(destination);
-        charsWritten = result ? text.Length : 0;
-        return result;
+        isDefaultValue = IsDefault;
+        
+        var shiftText = ShiftKind.ToText(format.Length >= 1 && format[0] == 'H');
+        if (destination.Length < shiftText.Length)
+        {
+            charsWritten = 0;
+            return false;
+        }
+        shiftText.AsSpan().CopyTo(destination);
+        var written = shiftText.Length;
+
+        if (Amount != 0)
+        {
+            if (destination.Length <= written + 1)
+            {
+                charsWritten = 0;
+                return false;
+            }
+            destination[written] = (char)' ';
+            destination[written + 1] = '#';
+            written += 2;
+            if (!Amount.TryFormat(destination.Slice(written), out var digitWritten, format, provider))
+            {
+                charsWritten = 0;
+                return false;
+            }
+            written += digitWritten;
+        }
+        
+        charsWritten = written;
+        return true;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

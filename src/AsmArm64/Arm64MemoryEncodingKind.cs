@@ -7,30 +7,45 @@ using System.Text.Json.Serialization;
 namespace AsmArm64;
 
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum Arm64MemoryEncodingKind : byte
+enum Arm64MemoryEncodingKind : byte
 {
     None,
-    // 1 [Xd]!
-    // 1 [Xs]!
+    /// <summary>
+    /// [Xd]!
+    /// </summary>
     BaseRegisterXn,
-    // 1 [Xn|SP]
+    /// <summary>
+    /// [Xn|SP]
+    /// </summary>
     BaseRegister,
-    // 2 [Xn|SP,#-16]!
-    // 2 [Xn|SP,#-4]!
-    // 2 [Xn|SP,#-8]!
+    /// <summary>
+    /// [Xn|SP,#-16]!
+    /// [Xn|SP,#-4]!
+    /// [Xn|SP,#-8]!
+    /// </summary>
     BaseRegisterAndFixedImmediate,
-    // 2 [Xn|SP,#imm]!
-    // 2 [Xn|SP,#simm]!
-    BaseRegisterXnOrSPAndImmediate,
-    // 2 [Xn|SP{,#imm}]
-    // 2 [Xn|SP{,#pimm}]
-    // 2 [Xn|SP{,#simm}]
-    // 2 [Xn|SP{,#simm}]!
+    /// <summary>
+    /// [Xn|SP,#imm]!
+    /// [Xn|SP,#simm]!
+    /// </summary>
+    BaseRegisterAndImmediate,
+    /// <summary>
+    /// [Xn|SP{,#imm}]
+    /// [Xn|SP{,#pimm}]
+    /// [Xn|SP{,#simm}]
+    /// [Xn|SP{,#simm}]!
+    /// </summary>
     BaseRegisterAndImmediateOptional,
-    // 3 [Xn|SP,(Wm|Xm){,extend,{amount}}]
+    /// <summary>
+    /// [Xn|SP,(Wm|Xm){,extend,{amount}}]
+    /// </summary>
     BaseRegisterAndIndexWmOrXmAndExtendOptional,
-    // 3 [Xn|SP,Xm{,LSLamount}]
+    /// <summary>
+    /// [Xn|SP,Xm{,LSL amount}]
+    /// </summary>
     BaseRegisterAndIndexXmAndLslAmount,
-    // 4 [Xn|SP,(Wm|Xm),extend,{amount}]
+    /// <summary>
+    /// [Xn|SP,(Wm|Xm),extend,{amount}]
+    /// </summary>
     BaseRegisterAndIndexWmOrXmAndExtend,
 }

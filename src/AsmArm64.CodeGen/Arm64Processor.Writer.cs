@@ -299,11 +299,6 @@ partial class Arm64Processor
                         var instruction = _instructions[indexInOffset - 1];
                         w.WriteLine($"// {instruction.Id,-30} - {instruction.Mnemonic,-11}{(instruction.OperandsSyntax.Length > 0 ? $" {instruction.OperandsSyntax}" : string.Empty)}");
                         nextWrapping.Push(instruction.UseOperandEncoding8Bytes ? 8 : 4);
-
-                        if (instruction.VectorArrangementIndices.Count > 0)
-                        {
-                            nextWrapping.Push(4); // We want to separate the vector arrangement on its own line
-                        }
                     }
                     indexInOffset++;
                 }
@@ -451,7 +446,7 @@ partial class Arm64Processor
             },
             (w, selector, bitValue) =>
             {
-                w.WriteLine($"imm = (int){bitValue.Text};");
+                w.WriteLine($"imm = (int){bitValue.Text.TrimStart('#')};");
             }
         );
     }

@@ -4,7 +4,9 @@
 
 namespace AsmArm64;
 
-public interface IArm64Operand
+public interface IArm64Operand : ISpanFormattable
 {
     Arm64OperandKind Kind { get; }
+    
+    bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider);
 }

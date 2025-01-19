@@ -43,15 +43,225 @@ static class Arm64ImmediateHelper
                 }
                 break;
             }
-            // MSR_si_pstate                 : MSR         pstatefield, #imm <- Operand: #imm
+            // LD1_asisdlsep_i2_i2           : LD1         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: imm
+            // LD2_asisdlsep_i2_i            : LD2         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: imm
+            // ST1_asisdlsep_i2_i2           : ST1         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: imm
+            // ST2_asisdlsep_i2_i            : ST2         {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: imm
             case 2:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        imm = (int)16;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        imm = (int)32;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // LD1_asisdlsep_i3_i3           : LD1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: imm
+            // LD3_asisdlsep_i3_i            : LD3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: imm
+            // ST1_asisdlsep_i3_i3           : ST1         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: imm
+            // ST3_asisdlsep_i3_i            : ST3         {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: imm
+            case 3:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        imm = (int)24;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        imm = (int)48;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // LD1_asisdlsep_i4_i4           : LD1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: imm
+            // LD4_asisdlsep_i4_i            : LD4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: imm
+            // ST1_asisdlsep_i4_i4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: imm
+            // ST4_asisdlsep_i4_i            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: imm
+            case 4:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        imm = (int)32;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        imm = (int)64;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // LD1_asisdlsep_i1_i1           : LD1         {Vt.T}, [Xn|SP], imm <- Operand: imm
+            // ST1_asisdlsep_i1_i1           : ST1         {Vt.T}, [Xn|SP], imm <- Operand: imm
+            case 5:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        imm = (int)8;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        imm = (int)16;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // MSR_si_pstate                 : MSR         pstatefield, #imm <- Operand: #imm
+            case 6:
             {
                 var bitValue = ((rawValue >> 5) & 0x7) | ((rawValue >> 13) & 0x38) | ((rawValue >> 2) & 0x3C0);
                 imm = (int)bitValue;
                 return true;
             }
+            // LD1R_asisdlsop_r1_i           : LD1R        {Vt.T}, [Xn|SP], imm <- Operand: imm
+            case 7:
+            {
+                var bitValue = ((rawValue >> 10) & 0x3);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        imm = (int)1;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        imm = (int)2;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        imm = (int)4;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        imm = (int)8;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // LD2R_asisdlsop_r2_i           : LD2R        {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: imm
+            case 8:
+            {
+                var bitValue = ((rawValue >> 10) & 0x3);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        imm = (int)2;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        imm = (int)4;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        imm = (int)8;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        imm = (int)16;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // LD3R_asisdlsop_r3_i           : LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: imm
+            case 9:
+            {
+                var bitValue = ((rawValue >> 10) & 0x3);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        imm = (int)3;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        imm = (int)6;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        imm = (int)12;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        imm = (int)24;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // LD4R_asisdlsop_r4_i           : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: imm
+            case 10:
+            {
+                var bitValue = ((rawValue >> 10) & 0x3);
+                var bitsToTest = (bitValue & 0x3);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        imm = (int)4;
+                        return true;
+                    }
+                    case 1:
+                    {
+                        imm = (int)8;
+                        return true;
+                    }
+                    case 2:
+                    {
+                        imm = (int)16;
+                        return true;
+                    }
+                    case 3:
+                    {
+                        imm = (int)32;
+                        return true;
+                    }
+                }
+                break;
+            }
             // FCMLA_asimdsame2_c            : FCMLA       Vd.T, Vn.T, Vm.T, #rotate <- Operand: #rotate
-            case 3:
+            case 11:
             {
                 var bitValue = ((rawValue >> 11) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -81,7 +291,7 @@ static class Arm64ImmediateHelper
                 break;
             }
             // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: #rotate
-            case 4:
+            case 12:
             {
                 var bitValue = ((rawValue >> 13) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -111,7 +321,7 @@ static class Arm64ImmediateHelper
                 break;
             }
             // SHLL_asimdmisc_s              : SHLL        Vd.Ta, Vn.Tb, #shift <- Operand: #shift
-            case 5:
+            case 13:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -136,7 +346,7 @@ static class Arm64ImmediateHelper
                 break;
             }
             // EXT_asimdext_only             : EXT         Vd.T, Vn.T, Vm.T, #index <- Operand: #index
-            case 6:
+            case 14:
             {
                 var bitValue = ((rawValue >> 11) & 0xF) | ((rawValue >> 26) & 0x10);
                 var bitsToTest = ((bitValue >> 3) & 0x3);
@@ -163,7 +373,7 @@ static class Arm64ImmediateHelper
             // URSRA_asimdshf_r              : URSRA       Vd.T, Vn.T, #shift <- Operand: #shift
             // USHR_asimdshf_r               : USHR        Vd.T, Vn.T, #shift <- Operand: #shift
             // USRA_asimdshf_r               : USRA        Vd.T, Vn.T, #shift <- Operand: #shift
-            case 7:
+            case 15:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 var bitsToTest = ((bitValue >> 3) & 0xF);
@@ -207,7 +417,7 @@ static class Arm64ImmediateHelper
             // UQRSHRN_asisdshf_n            : UQRSHRN     Vbd, Van, #shift <- Operand: #shift
             // UQSHRN_asimdshf_n             : UQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // UQSHRN_asisdshf_n             : UQSHRN      Vbd, Van, #shift <- Operand: #shift
-            case 8:
+            case 16:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 var bitsToTest = ((bitValue >> 3) & 0xF);
@@ -239,7 +449,7 @@ static class Arm64ImmediateHelper
             // SQSHLU_asisdshf_r             : SQSHLU      Vd, Vn, #shift <- Operand: #shift
             // UQSHL_asimdshf_r              : UQSHL       Vd.T, Vn.T, #shift <- Operand: #shift
             // UQSHL_asisdshf_r              : UQSHL       Vd, Vn, #shift <- Operand: #shift
-            case 9:
+            case 17:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 var bitsToTest = ((bitValue >> 3) & 0xF);
@@ -271,7 +481,7 @@ static class Arm64ImmediateHelper
             }
             // SSHLL_asimdshf_l              : SSHLL       Vd.Ta, Vn.Tb, #shift <- Operand: #shift
             // USHLL_asimdshf_l              : USHLL       Vd.Ta, Vn.Tb, #shift <- Operand: #shift
-            case 10:
+            case 18:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 var bitsToTest = ((bitValue >> 3) & 0xF);
@@ -303,7 +513,7 @@ static class Arm64ImmediateHelper
             // SCVTF_asisdshf_c              : SCVTF       Vd, Vn, #fbits <- Operand: #fbits
             // UCVTF_asimdshf_c              : UCVTF       Vd.T, Vn.T, #fbits <- Operand: #fbits
             // UCVTF_asisdshf_c              : UCVTF       Vd, Vn, #fbits <- Operand: #fbits
-            case 11:
+            case 19:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 var bitsToTest = ((bitValue >> 3) & 0xF);

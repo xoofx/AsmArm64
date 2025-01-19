@@ -14,7 +14,6 @@ namespace AsmArm64.CodeGen.Model;
 [JsonDerivedType(typeof(ImmediateOperandDescriptor), typeDiscriminator: "imm")]
 [JsonDerivedType(typeof(MemoryOperandDescriptor), typeDiscriminator: "mem")]
 [JsonDerivedType(typeof(LabelOperandDescriptor), typeDiscriminator: "label")]
-[JsonDerivedType(typeof(ImmediateByteValuesOperandDescriptor), typeDiscriminator: "imm-values")]
 [JsonDerivedType(typeof(ShiftOperandDescriptor), typeDiscriminator: "shift")]
 [JsonDerivedType(typeof(ExtendOperandDescriptor), typeDiscriminator: "extend")]
 [JsonDerivedType(typeof(EnumOperandDescriptor), typeDiscriminator: "enum")]
@@ -32,7 +31,7 @@ abstract class OperandDescriptor(Arm64OperandKind kind)
     public void Encode(Span<byte> buffer)
     {
         Debug.Assert((byte)Kind <= 0xF);
-        buffer[0] = (byte)Kind;
+        buffer[0] = (byte)((byte)Kind | (IsOptional ? 0x80 : 0));
         EncodeImpl(buffer);
     }
 
@@ -58,7 +57,10 @@ sealed class RegisterGroupOperandDescriptor() : OperandDescriptor(Arm64OperandKi
     public override string ToString() => $"Group {Name}, Count: {Count}, {Register}";
     protected internal override void EncodeImpl(Span<byte> buffer)
     {
-        buffer[1] = (byte)((byte)Count | (byte)IndexerIndex << 4);
+        Debug.Assert(Count >= 1 && Count <= 4);
+        buffer[1] = (byte)Count;
+        buffer[2] = (byte)IndexerIndex;
+        // Register.EncodeImpl starts to encode at offset 1, so we need to skip the first byte
         Register.EncodeImpl(buffer.Slice(2));
     }
 }
@@ -110,7 +112,7 @@ sealed class ImmediateOperandDescriptor() : OperandDescriptor(Arm64OperandKind.I
             return;
         }
 
-        buffer[2] = (byte)(BitSize | (IsSigned ? 0x80 : 0x00));
+        buffer[2] = (byte)(IsSigned ? 0x01 : 0x00);
         buffer[3] = (byte)Encoding.Count;
         //4,5,6,7
         Debug.Assert(Encoding.Count <= 2);
@@ -182,43 +184,6 @@ sealed class LabelOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Label
             var bitRange = Encoding[i];
             buffer[4 + i * 2] = (byte)bitRange.LowBit;
             buffer[5 + i * 2] = (byte)bitRange.Width;
-        }
-    }
-}
-
-sealed class ImmediateByteValuesOperandDescriptor() : OperandDescriptor(Arm64OperandKind.ImmediateByteValues)
-{
-    public int BitSize { get; set; }
-
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<BitRange> Encoding { get; } = new();
-
-    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
-    public List<int> Values { get; } = new();
-
-    public override string ToString()
-    {
-        var builder = new StringBuilder();
-        builder.Append($"ByteValues {Name}, Size {BitSize}, Encoding: {string.Join(", ", Encoding)}, Values: [{string.Join(", ", Values)}]");
-        return builder.ToString();
-    }
-
-    protected internal override void EncodeImpl(Span<byte> buffer)
-    {
-        buffer[1] = (byte)(BitSize | (Encoding.Count << 5));
-        int index = 2;
-        Debug.Assert(Encoding.Count <= 2);
-        for (int i = 0; i < Encoding.Count; i++)
-        {
-            var bitRange = Encoding[i];
-            buffer[index] = bitRange.ToSmallEncoding();
-            index++;
-        }
-        buffer[index] = (byte)Values.Count;
-        index++;
-        for (int i = 0; i < Values.Count; i++)
-        {
-            buffer[index + i] = (byte)Values[i];
         }
     }
 }
@@ -307,6 +272,7 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
     private int _dynamicRegisterSelectorIndex;
     private int _indexerIndex;
     private int _registerIndexExtractIndex;
+    private int _vectorArrangementIndex;
     public Arm64RegisterEncodingKind RegisterKind { get; set; }
 
     public Arm64RegisterIndexEncodingKind RegisterIndexEncodingKind { get; set; }
@@ -328,19 +294,23 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
         set => _dynamicRegisterSelectorIndex = value;
     }
 
-    /// <summary>
-    /// If > 0, this is an index (-1) to the <see cref="Instruction.VectorArrangements"/> / <see cref="Instruction.VectorArrangementIndices"/>
-    /// </summary>
-    public int VectorArrangementLocalIndex { get; set; }
-
     public int RegisterIndexExtractIndex
     {
         get => RegisterIndexExtract?.Index ?? _registerIndexExtractIndex;
         set => _registerIndexExtractIndex = value;
     }
 
+    public int VectorArrangementIndex
+    {
+        get => VectorArrangement?.Index ?? _vectorArrangementIndex;
+        set => _vectorArrangementIndex = value;
+    }
+
     [JsonIgnore]
     public EncodingSymbolExtract? IndexerExtract { get; set; }
+
+    [JsonIgnore]
+    public EncodingVectorArrangementExtract? VectorArrangement { get; set; }
 
     /// <summary>
     /// If the operand kind is <see cref="Arm64RegisterEncodingKind.DynamicXOrW"/>, then the kind of register is selected dynamically
@@ -352,7 +322,7 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
     public bool IsSimpleEncoding => RegisterIndexEncodingKind != Arm64RegisterIndexEncodingKind.BitMapExtract;
 
     [JsonIgnore]
-    public EncodingSymbolExtract RegisterIndexExtract { get; set; }
+    public EncodingSymbolExtract? RegisterIndexExtract { get; set; }
 
     public BitRange GetIndexEncoding()
     {
@@ -380,12 +350,13 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
 
         if (RegisterKind == Arm64RegisterEncodingKind.V)
         {
-            buffer[4] = (byte)VectorArrangementLocalIndex;
+            buffer[4] = (byte)VectorArrangementIndex;
+            Debug.Assert(DynamicRegisterSelectorIndex == 0);
         }
         else if (RegisterKind == Arm64RegisterEncodingKind.DynamicXOrW || RegisterKind == Arm64RegisterEncodingKind.DynamicVScalar)
         {
             buffer[4] = (byte)DynamicRegisterSelectorIndex;
-            Debug.Assert(VectorArrangementLocalIndex == 0);
+            Debug.Assert(VectorArrangementIndex == 0);
         }
     }
 
@@ -402,9 +373,9 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
             builder.Append($" {DynamicRegisterXOrWSelector}");
         }
 
-        if (RegisterKind == Arm64RegisterEncodingKind.V && VectorArrangementLocalIndex != 0)
+        if (RegisterKind == Arm64RegisterEncodingKind.V && VectorArrangementIndex != 0)
         {
-            builder.Append($".{VectorArrangementLocalIndex}");
+            builder.Append($".{VectorArrangementIndex}");
         }
 
         if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Std4)

@@ -84,6 +84,12 @@ public struct RORShiftKind : IArm64ShiftKind
     public override string ToString() => this.ToText();
 }
 
+public struct MSLShiftKind : IArm64ShiftKind
+{
+    public Arm64ShiftKind ShiftKind => Arm64ShiftKind.MSL;
+
+    public override string ToString() => this.ToText();
+}
 
 /// <summary>
 /// A shift type that supports only LSL, LSR, ASR.
@@ -147,6 +153,8 @@ partial class Arm64Factory
     public static ASRShiftKind ASR => default;
 
     public static RORShiftKind ROR => default;
+
+    public static MSLShiftKind MSL => default;
 
     public const Arm64FixedShiftKind LSL0 = Arm64FixedShiftKind.LSL0;
 

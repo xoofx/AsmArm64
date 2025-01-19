@@ -33,35 +33,27 @@ public enum Arm64OperandKind : byte
     /// </summary>
     Immediate = 4,
     /// <summary>
-    /// Immediate byte values.
-    /// </summary>
-    ImmediateByteValues = 5,
-    /// <summary>
-    /// A fixed immediate value.
-    /// </summary>
-    FixedImmediate = 6,
-    /// <summary>
     /// Label.
     /// </summary>
-    Label = 7,
+    Label = 5,
     /// <summary>
     /// Shift.
     /// </summary>
-    Shift = 8,
+    Shift = 6,
     /// <summary>
     /// Shift.
     /// </summary>
-    Extend = 9,
+    Extend = 7,
     /// <summary>
     /// An enum value
     /// </summary>
-    Enum = 10,
+    Enum = 8,
     /// <summary>
     /// A PState field value used by MSR (immediate) instruction.
     /// </summary>
-    PStateField = 11,
+    PStateField = 9,
     /// <summary>
     /// A const value but not actually a real operand.
     /// </summary>
-    Const = 12,
+    Const = 10,
 }

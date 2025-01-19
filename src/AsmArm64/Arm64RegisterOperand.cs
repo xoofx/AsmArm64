@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace AsmArm64;
 
-public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
+public readonly struct Arm64RegisterOperand : IArm64Operand
 {
     internal Arm64RegisterOperand(Arm64Operand operand)
     {
@@ -96,7 +96,8 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
                 registerKind = Arm64RegisterKind.V;
                 // if (RegisterKind == Arm64RegisterEncodingKind.V)
                 // {
-                //     buffer[4] = (byte)VectorArrangementLocalIndex;
+                //     buffer[4] = (byte)VectorArrangementIndex;
+                //     Debug.Assert(DynamicRegisterSelectorIndex == 0);
                 // }
                 var vectorArrangementIndex = (byte)(descriptor >> 32);
                 if (vectorArrangementIndex != 0)
@@ -117,7 +118,7 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
                 // else if (RegisterKind == Arm64RegisterEncodingKind.DynamicXOrW || RegisterKind == Arm64RegisterEncodingKind.DynamicVScalar)
                 // {
                 //     buffer[4] = (byte)DynamicRegisterSelectorIndex;
-                //     Debug.Assert(VectorArrangementLocalIndex == 0);
+                //     Debug.Assert(VectorArrangementIndex == 0);
                 // }
                 var dynamicSelectorIndex = (byte)(descriptor >> 32);
                 Arm64DynamicRegisterHelper.TryDecode(rawValue, dynamicSelectorIndex, out encodingKind);
@@ -140,7 +141,7 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Register;
-    
+
     public Arm64RegisterAny Value { get; }
 
     /// <inheritdoc />
@@ -152,7 +153,11 @@ public readonly struct Arm64RegisterOperand : IArm64Operand, ISpanFormattable
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format,
         IFormatProvider? provider)
+        => TryFormat(destination, out charsWritten, out _, format, provider);
+
+    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
+        isDefaultValue = false;
         return Value.TryFormat(destination, out charsWritten, format, provider);
     }
 

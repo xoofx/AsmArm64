@@ -14,11 +14,10 @@ using EntryIndex = int;
 /// <summary>
 /// Encoded instruction table for ARM64.
 /// </summary>
-public readonly unsafe struct Arm64Instruction
+public readonly unsafe struct Arm64Instruction : ISpanFormattable
 {
     internal readonly ulong Descriptor;
     internal readonly byte* OperandsPtr;
-    internal readonly uint VectorArrangements;
     internal readonly Arm64RawInstruction RawValue;
 
     private Arm64Instruction(ulong descriptor, byte* operandsPtr, Arm64RawInstruction rawValue)
@@ -27,15 +26,9 @@ public readonly unsafe struct Arm64Instruction
         // MemoryMarshal.Write(buffer.Slice(2), (ushort)MnemonicIndex);
         // buffer[4] = (byte)InstructionClassIndex;
         // buffer[5] = (byte)FeatureExpressionIdIndex;
-        // buffer[6] = (byte)((VectorArrangementIndices.Count << 1) | (UseOperandEncoding8Bytes ? 1 : 0));
+        // buffer[6] = (byte)(UseOperandEncoding8Bytes ? 1 : 0);
         // buffer[7] = (byte)Operands.Count;
         Descriptor = descriptor;
-        var vectorArrangementCount = (descriptor >> (48 + 1)) & 0b11; // No more than 3 vector arrangements
-        if (vectorArrangementCount > 0)
-        {
-            VectorArrangements = *(uint*)operandsPtr;
-            operandsPtr += sizeof(uint);
-        }
         OperandsPtr = operandsPtr;
         RawValue = rawValue;
     }
@@ -57,7 +50,80 @@ public readonly unsafe struct Arm64Instruction
         ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual((uint)index, (uint)OperandCount);
         return IsOperandEncodingSize4Bytes ? new Arm64Operand(*((uint*)OperandsPtr + index), RawValue) : new Arm64Operand(*((ulong*)OperandsPtr + index), RawValue);
     }
-    
+
+    public override string ToString() => ToString(null, null);
+
+    public string ToString(string? format, IFormatProvider? formatProvider)
+    {
+        Span<char> buffer = stackalloc char[256];
+        var result = TryFormat(buffer, out var charsWritten, format.AsSpan(), formatProvider);
+        Debug.Assert(result);
+        return buffer.Slice(0, charsWritten).ToString();
+    }
+
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        var mnemonic = this.Mnemonic.ToText(format.Length == 1 && format[0] == 'H');
+        if (destination.Length < mnemonic.Length)
+        {
+            charsWritten = 0;
+            return false;
+        }
+        mnemonic.AsSpan().CopyTo(destination);
+        var written = mnemonic.Length;
+        if (destination.Length <= written)
+        {
+            charsWritten = 0;
+            return false;
+        }
+
+        for (int i = 0; i < OperandCount; i++)
+        {
+            int previousCharsWritten = written;
+
+            if (i > 0)
+            {
+                if (destination.Length <= written)
+                {
+                    charsWritten = 0;
+                    return false;
+                }
+
+                destination[written] = (char)',';
+                written++;
+            }
+
+            if (destination.Length <= written)
+            {
+                charsWritten = 0;
+                return false;
+            }
+
+            destination[written] = (char)' ';
+            written++;
+            var operand = GetOperand(i);
+            if (!operand.TryFormat(destination.Slice(written), out var operandWritten, out var isDefaultValue, format, provider))
+            {
+                charsWritten = 0;
+                return false;
+            }
+
+            // If the argument is actually optional and is the default value, we don't write it
+            // So we roll back the written chars. Because TryFormat is expensive as it decode the operand, we don't want to call it twice (decode for default and decode for format)
+            if (operand.IsOptional && isDefaultValue)
+            {
+                written = previousCharsWritten;
+            }
+            else
+            {
+                written += operandWritten;
+            }
+        }
+
+        charsWritten = written;
+        return true;
+    }
+
     public static Arm64Instruction Decode(Arm64RawInstruction instruction)
     {
         var id = DecodeId(instruction);
@@ -184,7 +250,7 @@ public readonly unsafe struct Arm64Instruction
         //public EntryIndex[] Indices;  // ArrayLength
     }
 
-    public readonly record struct KeyEntryIndex(uint Key, EntryIndex Index);
+    private readonly record struct KeyEntryIndex(uint Key, EntryIndex Index);
     
     enum TrieTableKind : byte
     {

@@ -692,13 +692,13 @@ partial class Arm64Extensions
 
     private static readonly string[] RegisterV_<#= vkind #>LowerNames = [
     <# for(int i = 0; i < 32; i++) { #>
-    "V<#= i #>.<#= vkind.ToLowerInvariant() #>",
+    "v<#= i #>.<#= vkind.ToLowerInvariant() #>",
     <# } #>
     ];
 
     private static readonly string[] RegisterV_<#= vkind #>UpperNames = [
     <# for(int i = 0; i < 32; i++) { #>
-    "v<#= i #>.<#= vkind #>",
+    "V<#= i #>.<#= vkind #>",
     <# } #>
     ];
 <# } // if (vkind != "Q") #>
