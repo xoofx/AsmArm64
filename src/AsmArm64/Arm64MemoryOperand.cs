@@ -36,7 +36,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         var extendEncodingKind = (Arm64MemoryExtendEncodingKind)((byte)(descriptor >> 12) & 0xF);
 
         var baseRegisterEncodingIndex = (byte)(descriptor >> 16);
-        int baseRegisterIndex = Arm64DecodingHelper.GetSmallBitRangeValue(baseRegisterEncodingIndex, rawValue);
+        int baseRegisterIndex = Arm64DecodingHelper.GetSmallBitRange(baseRegisterEncodingIndex, rawValue);
 
         BaseRegister = baseRegisterIndex == 31 && memoryKind != Arm64MemoryEncodingKind.BaseRegisterXn
             ? Arm64RegisterAny.Create(Arm64RegisterKind.SP, baseRegisterIndex, Arm64RegisterVKind.Default, 0, 0)
@@ -55,11 +55,11 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
             int value = 0;
             if (indexRegisterOrImmediateCount == 1)
             {
-                value = Arm64DecodingHelper.DecodeBitRange1(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), 0);
+                value = Arm64DecodingHelper.GetBitRange1(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), 0);
             }
             else if (indexRegisterOrImmediateCount == 2)
             {
-                value = Arm64DecodingHelper.DecodeBitRange2(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), (byte)(descriptor >> 48), (byte)(descriptor >> 56), 0);
+                value = Arm64DecodingHelper.GetBitRange2(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), (byte)(descriptor >> 48), (byte)(descriptor >> 56), 0);
             }
 
             switch (memoryKind)
@@ -158,7 +158,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         IFormatProvider? provider)
         => TryFormat(destination, out charsWritten, out _, format, provider);
 
-    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider)
+    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null)
     {
         isDefaultValue = false;
         // At minimum we need [x0] ~= 4 characters

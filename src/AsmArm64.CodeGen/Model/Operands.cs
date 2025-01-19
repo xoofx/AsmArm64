@@ -384,6 +384,13 @@ record EncodingSymbolSelector
     [JsonIgnore]
     public List<Action<int>> OnIndexAssigned { get; } = new();
 
+    public string GetId()
+    {
+        var builder = new StringBuilder();
+        AppendUniqueId(builder);
+        return builder.ToString();
+    }
+
     public void AppendUniqueId(StringBuilder builder)
     {
         builder.Append(BitSize);

@@ -51,7 +51,7 @@ public readonly struct Arm64RegisterGroupOperand : IArm64Operand
         IFormatProvider? provider)
         => TryFormat(destination, out charsWritten, out _, format, provider);
 
-    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider)
+    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null)
     {
         isDefaultValue = false;
         return Value.TryFormat(destination, out charsWritten, format, provider);

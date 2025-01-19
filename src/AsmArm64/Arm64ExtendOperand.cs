@@ -17,8 +17,8 @@ public readonly struct Arm64ExtendOperand : IArm64Operand
         var descriptor = operand.Descriptor;
         var rawValue = operand.RawValue;
 
-        ExtendKind = (Arm64ExtendKind)(Arm64DecodingHelper.GetSmallBitRangeValue((byte)(descriptor >> 8), rawValue) + 1); // Add 1 to skip None
-        Amount = Arm64DecodingHelper.GetSmallBitRangeValue((byte)(descriptor >> 16), rawValue);
+        ExtendKind = (Arm64ExtendKind)(Arm64DecodingHelper.GetSmallBitRange((byte)(descriptor >> 8), rawValue) + 1); // Add 1 to skip None
+        Amount = Arm64DecodingHelper.GetSmallBitRange((byte)(descriptor >> 16), rawValue);
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Shift;
@@ -47,7 +47,7 @@ public readonly struct Arm64ExtendOperand : IArm64Operand
         IFormatProvider? provider)
         => TryFormat(destination, out charsWritten, out _, format, provider);
     
-    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider)
+    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null)
     {
         isDefaultValue = IsDefault;
         

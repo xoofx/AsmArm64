@@ -23,6 +23,10 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
         //     Debug.Assert(RegisterIndexExtractIndex != 0);
         //     buffer[3] = (byte)RegisterIndexExtractIndex;
         // }
+        // else if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Fixed)
+        // {
+        //     buffer[3] = (byte)FixedRegisterIndex;
+        // }
         // else
         // {
         //     buffer[3] = (byte)LowBitIndexEncoding;
@@ -47,8 +51,11 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
             case Arm64RegisterIndexEncodingKind.BitMapExtract:
             {
                 Arm64RegisterIndexHelper.TryDecode(rawValue, (byte)(descriptor >> 24), out registerIndex);
+                break;
             }
-            break;
+            case Arm64RegisterIndexEncodingKind.Fixed:
+                registerIndex = (byte)(descriptor >> 24);
+                break;
             default:
                 encodingKind = Arm64RegisterEncodingKind.None;
                 registerIndex = 0;
@@ -155,7 +162,7 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
         IFormatProvider? provider)
         => TryFormat(destination, out charsWritten, out _, format, provider);
 
-    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider)
+    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null)
     {
         isDefaultValue = false;
         return Value.TryFormat(destination, out charsWritten, format, provider);

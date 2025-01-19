@@ -19,9 +19,8 @@ internal sealed class InstructionProcessor
     private readonly Dictionary<string, List<Instruction>> _memoryOperands = new();
     private readonly Dictionary<int, List<Instruction>> _operandCountToInstructions = new();
 
-    private readonly Dictionary<string, int> _barrierOperationLimitEnumValues = new();
-    private readonly Dictionary<string, int> _prefetchOperationEnumValues = new();
-    private readonly Dictionary<string, int> _rangePrefetchOperationEnumValues = new();
+    internal readonly Dictionary<string, int> PrefetchOperationEnumValues = new();
+    internal readonly Dictionary<string, int> RangePrefetchOperationEnumValues = new();
 
     private readonly EncodingSymbolExtractMap _vectorArrangements;
     private readonly EncodingSymbolExtractMap _dynamicRegisterSelectors;
@@ -314,19 +313,29 @@ internal sealed class InstructionProcessor
     private OperandDescriptor ProcessConst(Instruction instruction, ConstOperandItem constOperand)
     {
         var text = constOperand.TextElements[0].Text;
-        var descriptor = new ConstOperandDescriptor()
+        if (text == "X16")
+        {
+            var registerDescriptor = new RegisterOperandDescriptor()
+            {
+                Name = text,
+                RegisterKind = Arm64RegisterEncodingKind.X,
+                FixedRegisterIndex = 16,
+            };
+            return registerDescriptor;
+        }
+        
+        var enumDescriptor = new EnumOperandDescriptor()
         {
             Name = text,
-            ConstKind = text switch
+            EnumKind = text switch
             {
-                "X16" => Arm64ConstEncodingKind.X16,
-                "CSYNC" => Arm64ConstEncodingKind.CSYNC,
-                "DSYNC" => Arm64ConstEncodingKind.DSYNC,
+                "CSYNC" => Arm64EnumKind.CodeSync,
+                "DSYNC" => Arm64EnumKind.DataSync,
                 _ => throw new InvalidOperationException($"Unsupported const operand `{constOperand}`")
             }
         };
 
-        return descriptor;
+        return enumDescriptor;
     }
 
     private OperandDescriptor? ProcessConstAndImmediate(Instruction instruction, ConstAndImmediateOperandItem operandItem)
@@ -358,6 +367,8 @@ internal sealed class InstructionProcessor
         throw new InvalidOperationException($"Unsupported const and immediate operand `{operandItem}`");
     }
 
+    private static readonly HashSet<string> enums = new();
+
     private OperandDescriptor? ProcessEnum(Instruction instruction, EnumOperandItem enumOperand)
     {
         var elt0 = enumOperand.TextElements[0];
@@ -368,7 +379,7 @@ internal sealed class InstructionProcessor
         {
             var enumOperandDescriptor = new EnumOperandDescriptor()
             {
-                EnumKind = Arm64EnumEncodingKind.Conditional,
+                EnumKind = Arm64EnumKind.Conditional,
                 Name = name0,
                 BitSize = symbol0.BitSize,
             };
@@ -376,13 +387,14 @@ internal sealed class InstructionProcessor
             Debug.Assert(symbol0.BitSize == 4);
             Debug.Assert(symbol0.BitRanges.Count == 1);
             enumOperandDescriptor.EnumEncoding = symbol0.BitRanges[0];
+
             return enumOperandDescriptor;
         }
         else if (instruction.Id == "DSB_bon_barriers")
         {
             var enumOperandDescriptor = new EnumOperandDescriptor
             {
-                EnumKind = Arm64EnumEncodingKind.DataSynchronizationOption,
+                EnumKind = Arm64EnumKind.DataSynchronizationOption,
                 Name = name0,
                 BitSize = symbol0.BitSize,
             };
@@ -396,7 +408,7 @@ internal sealed class InstructionProcessor
         {
             var enumOperandDescriptor = new EnumOperandDescriptor
             {
-                EnumKind = Arm64EnumEncodingKind.StoredSharedHintPolicy,
+                EnumKind = Arm64EnumKind.StoredSharedHintPolicy,
                 Name = name0,
                 BitSize = symbol0.BitSize,
             };
@@ -408,9 +420,10 @@ internal sealed class InstructionProcessor
         }
         else if (instruction.Id == "MSR_si_pstate")
         {
-            var enumOperandDescriptor = new PStateFieldOperandDescriptor()
+            var enumOperandDescriptor = new EnumOperandDescriptor()
             {
                 Name = name0,
+                EnumKind = Arm64EnumKind.ProcessStateField,
             };
             enumOperandDescriptor.BitMapExtract = _processStateFields.GetOrCreateExtract<EncodingSymbolExtract>(symbol0);
             enumOperandDescriptor.BitMapExtract.Usages.Add((instruction, enumOperand));
@@ -507,13 +520,14 @@ internal sealed class InstructionProcessor
 
                 var bti = new EnumOperandDescriptor()
                 {
-                    EnumKind = Arm64EnumEncodingKind.Bti,
+                    EnumKind = Arm64EnumKind.BranchTargetIdentification,
                     Name = name0,
                     IsOptional = true,
                     EnumEncoding = symbol0.BitRanges[0]
                 };
 
                 Debug.Assert(bti.EnumEncoding == new BitRange(6, 2));
+
                 return bti;
             }
             else if (name0 == "imm")
@@ -591,6 +605,8 @@ internal sealed class InstructionProcessor
                 Debug.Assert(optionSymbol.BitRanges.Count == 1);
                 isbOption.BitSize = optionSymbol.BitSize;
                 isbOption.Encoding.Add(optionSymbol.BitRanges[0]);
+
+                Console.WriteLine(optionSymbol.Selector);
 
                 return isbOption;
             }
@@ -737,7 +753,7 @@ internal sealed class InstructionProcessor
             // Select DSB_bo_barriers - (option|#imm)
             var enumDesc = new EnumOperandDescriptor()
             {
-                EnumKind = Arm64EnumEncodingKind.BarrierOperationLimit,
+                EnumKind = Arm64EnumKind.BarrierOperationLimit,
                 Name = name.Text,
                 AllowImmediate = true,
             };
@@ -745,9 +761,7 @@ internal sealed class InstructionProcessor
             enumDesc.BitSize = name.Symbol!.BitSize;
             Debug.Assert(name.Symbol!.BitRanges.Count == 1);
             enumDesc.EnumEncoding = name.Symbol!.BitRanges[0];
-
-            CollectEnumValues(name.Symbol!, _barrierOperationLimitEnumValues);
-
+            
             return enumDesc;
         }
         else if (instruction.Id == "PRFM_p_ldst_pos" || instruction.Id == "PRFM_p_loadlit" || instruction.Id == "PRFM_p_ldst_regoff" || instruction.Id == "PRFUM_p_ldst_unscaled")
@@ -758,7 +772,7 @@ internal sealed class InstructionProcessor
             // Select PRFUM_p_ldst_unscaled - (prfop|#imm5)
             var enumDesc = new EnumOperandDescriptor()
             {
-                EnumKind = Arm64EnumEncodingKind.PrefetchOperation,
+                EnumKind = Arm64EnumKind.PrefetchOperation,
                 Name = name.Text,
                 AllowImmediate = true,
             };
@@ -767,19 +781,23 @@ internal sealed class InstructionProcessor
             Debug.Assert(name.Symbol!.BitRanges.Count == 1);
             enumDesc.EnumEncoding = name.Symbol!.BitRanges[0];
 
-            CollectEnumValues(name.Symbol!, _prefetchOperationEnumValues);
+            CollectEnumValues(name.Symbol!, PrefetchOperationEnumValues);
 
             return enumDesc;
         }
         else if (instruction.Id == "RPRFM_r_ldst_regoff")
         {
             // Select RPRFM_r_ldst_regoff - (rprfop|#imm6)
-            immediate.ImmediateKind = Arm64ImmediateEncodingKind.RangePrefetchOperation;
-            immediate.BitSize = name.Symbol!.BitSize;
-            immediate.Encoding.AddRange(name.Symbol!.BitRanges);
+            var enumDesc = new EnumOperandDescriptor()
+            {
+                EnumKind = Arm64EnumKind.RangePrefetchOperation,
+                Name = name.Text,
+                AllowImmediate = true,
+            };
 
-            CollectEnumValues(name.Symbol!, _rangePrefetchOperationEnumValues);
+            enumDesc.BitSize = name.Symbol!.BitSize;
 
+            CollectEnumValues(name.Symbol!, RangePrefetchOperationEnumValues);
             return immediate;
         }
         else

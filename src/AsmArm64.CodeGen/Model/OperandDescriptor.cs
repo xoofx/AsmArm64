@@ -17,8 +17,6 @@ namespace AsmArm64.CodeGen.Model;
 [JsonDerivedType(typeof(ShiftOperandDescriptor), typeDiscriminator: "shift")]
 [JsonDerivedType(typeof(ExtendOperandDescriptor), typeDiscriminator: "extend")]
 [JsonDerivedType(typeof(EnumOperandDescriptor), typeDiscriminator: "enum")]
-[JsonDerivedType(typeof(PStateFieldOperandDescriptor), typeDiscriminator: "pstate")]
-[JsonDerivedType(typeof(ConstOperandDescriptor), typeDiscriminator: "const")]
 abstract class OperandDescriptor(Arm64OperandKind kind)
 {
     [JsonIgnore]
@@ -127,7 +125,9 @@ sealed class ImmediateOperandDescriptor() : OperandDescriptor(Arm64OperandKind.I
 
 sealed class EnumOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Enum)
 {
-    public Arm64EnumEncodingKind EnumKind { get; set; }
+    private int _extractIndex;
+
+    public Arm64EnumKind EnumKind { get; set; }
 
     public int BitSize { get; set; }
 
@@ -135,30 +135,29 @@ sealed class EnumOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Enum)
 
     public bool AllowImmediate { get; set; }
 
-    public override string ToString() => $"Enum {Name}, Kind: {EnumKind}, Size {BitSize}, Encoding: {EnumEncoding}, AllowImmediate: {AllowImmediate}";
-
-    protected internal override void EncodeImpl(Span<byte> buffer)
-    {
-        buffer[1] = (byte)((byte)EnumKind | ((byte)BitSize << 4));
-        buffer[2] = (byte)EnumEncoding.LowBit;
-        buffer[3] = (byte)EnumEncoding.Width;
-    }
-}
-
-sealed class PStateFieldOperandDescriptor() : OperandDescriptor(Arm64OperandKind.PStateField)
-{
-    private int _extractIndex;
-
     public int ExtractIndex
     {
         get => BitMapExtract?.Index ?? _extractIndex;
         set => _extractIndex = value;
     }
-    
+
+    [JsonIgnore]
     public EncodingSymbolExtract? BitMapExtract { get; set; }
     
+    public override string ToString() => $"Enum {Name}, Kind: {EnumKind}, Size {BitSize}, Encoding: {EnumEncoding}, AllowImmediate: {AllowImmediate}";
+
     protected internal override void EncodeImpl(Span<byte> buffer)
     {
+        buffer[1] = (byte)EnumKind;
+        if (EnumKind == Arm64EnumKind.ProcessStateField)
+        {
+            buffer[2] = (byte)ExtractIndex;
+        }
+        else if (EnumKind != Arm64EnumKind.RangePrefetchOperation)
+        {
+            buffer[2] = (byte)EnumEncoding.LowBit;
+            buffer[3] = (byte)EnumEncoding.Width;
+        }
     }
 }
 
@@ -256,17 +255,6 @@ sealed class ExtendOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Exte
     }
 }
 
-sealed class ConstOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Const)
-{
-    public Arm64ConstEncodingKind ConstKind { get; set; }
-
-    public override string ToString() => $"Const {ConstKind}";
-    protected internal override void EncodeImpl(Span<byte> buffer)
-    {
-        buffer[1] = (byte)ConstKind;
-    }
-}
-
 sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Register)
 {
     private int _dynamicRegisterSelectorIndex;
@@ -287,6 +275,11 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
     /// Only valid for Regular5 and Regular4
     /// </summary>
     public int LowBitIndexEncoding { get; set; }
+
+    /// <summary>
+    /// Only valid for Fixed encoding.
+    /// </summary>
+    public int FixedRegisterIndex { get; set; }
 
     public int DynamicRegisterSelectorIndex
     {
@@ -343,11 +336,15 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
             Debug.Assert(RegisterIndexExtractIndex != 0);
             buffer[3] = (byte)RegisterIndexExtractIndex;
         }
+        else if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Fixed)
+        {
+            buffer[3] = (byte)FixedRegisterIndex;
+        }
         else
         {
             buffer[3] = (byte)LowBitIndexEncoding;
         }
-
+        
         if (RegisterKind == Arm64RegisterEncodingKind.V)
         {
             buffer[4] = (byte)VectorArrangementIndex;

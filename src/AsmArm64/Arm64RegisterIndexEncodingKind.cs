@@ -28,4 +28,8 @@ internal enum Arm64RegisterIndexEncodingKind : byte
     /// Special encoding
     /// </summary>
     BitMapExtract,
+    /// <summary>
+    /// Fixed register.
+    /// </summary>
+    Fixed,
 }

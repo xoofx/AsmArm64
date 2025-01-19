@@ -10,7 +10,7 @@ namespace AsmArm64;
 internal static class Arm64DecodingHelper
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static byte GetSmallBitRangeValue(byte bitRange, uint v)
+    public static byte GetSmallBitRange(byte bitRange, uint v)
     {
         var bitIndex = bitRange & 0b11111;
         var width = bitRange >> 5;
@@ -18,14 +18,14 @@ internal static class Arm64DecodingHelper
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static byte Get1BitRangeValue(byte bitRange, uint v)
+    public static byte Get1SmallBitRange(byte bitRange, uint v)
     {
         var bitIndex = bitRange & 0b11111;
         return ((byte)((v >> bitIndex) & 1));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static int DecodeBitRange1(Arm64RawInstruction rawValue, byte bitIndex, byte size, byte isSigned)
+    public static int GetBitRange1(Arm64RawInstruction rawValue, byte bitIndex, byte size, byte isSigned)
     {
         // 1. Extract the bits
         uint mask = (1U << size) - 1U; // size is lower than 31 so no need to handle overflow
@@ -49,7 +49,7 @@ internal static class Arm64DecodingHelper
     }
     
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static int DecodeBitRange2(
+    public static int GetBitRange2(
         Arm64RawInstruction rawValue,
         byte bitIndex1,
         byte size1,

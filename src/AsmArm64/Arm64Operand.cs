@@ -38,7 +38,7 @@ public readonly struct Arm64Operand : IArm64Operand
         IFormatProvider? provider)
         => TryFormat(destination, out charsWritten, out _, format, provider);
     
-    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider)
+    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null)
     {
         switch (Kind)
         {
@@ -54,16 +54,12 @@ public readonly struct Arm64Operand : IArm64Operand
                 return ((Arm64ExtendOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
             case Arm64OperandKind.RegisterGroup:
                 return ((Arm64RegisterGroupOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
-
-            case Arm64OperandKind.None:
             case Arm64OperandKind.Label:
+                return ((Arm64LabelOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
             case Arm64OperandKind.Enum:
-            case Arm64OperandKind.PStateField:
-            case Arm64OperandKind.Const:
+                return ((Arm64EnumOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
             default:
                 throw new InvalidOperationException($"Unexpected kind {Kind}");
         }
     }
-
-
 }

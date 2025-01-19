@@ -10,7 +10,7 @@ namespace AsmArm64;
 /// Can be encoded in 3 bits
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum Arm64EnumEncodingKind : byte
+public enum Arm64EnumKind : byte
 {
     /// <summary>
     /// No enum encoding
@@ -23,7 +23,7 @@ public enum Arm64EnumEncodingKind : byte
     /// <summary>
     /// Branch Target Identification.
     /// </summary>
-    Bti = 2,
+    BranchTargetIdentification = 2,
     /// <summary>
     /// The data synchronization option defined by DSB instruction.
     /// </summary>
@@ -35,14 +35,25 @@ public enum Arm64EnumEncodingKind : byte
     /// <summary>
     /// The PSTATE field used by MSR (immediate) instruction.
     /// </summary>
-    PStateField = 5,
+    ProcessStateField = 5,
     /// <summary>
     /// A barrier operation limit used by DMB_bo_barriers and DSB_bo_barriers instructions.
     /// </summary>
     BarrierOperationLimit = 6,
     /// <summary>
-    /// 
+    /// The prefetch operation used by PRFM instruction.
     /// </summary>
     PrefetchOperation = 7,
-
+    /// <summary>
+    /// The range prefetch operation used by RPRFM instruction.
+    /// </summary>
+    RangePrefetchOperation = 8,
+    /// <summary>
+    /// Used by instruction: GCSB_hd_hints -> GCSB DSYNC
+    /// </summary>
+    DataSync,
+    /// <summary>
+    /// Used by instruction: PSB_hc_hints -> PSB CSYNC and TSB_hc_hints -> TSB CSYNC
+    /// </summary>
+    CodeSync,
 }

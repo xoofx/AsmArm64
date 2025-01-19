@@ -62,6 +62,9 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
     }
 
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        => TryFormat(destination, out charsWritten, format, provider, null);
+
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel)
     {
         var mnemonic = this.Mnemonic.ToText(format.Length == 1 && format[0] == 'H');
         if (destination.Length < mnemonic.Length)
@@ -102,7 +105,7 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
             destination[written] = (char)' ';
             written++;
             var operand = GetOperand(i);
-            if (!operand.TryFormat(destination.Slice(written), out var operandWritten, out var isDefaultValue, format, provider))
+            if (!operand.TryFormat(destination.Slice(written), out var operandWritten, out var isDefaultValue, format, provider, tryResolveLabel))
             {
                 charsWritten = 0;
                 return false;
@@ -123,6 +126,7 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
         charsWritten = written;
         return true;
     }
+
 
     public static Arm64Instruction Decode(Arm64RawInstruction instruction)
     {

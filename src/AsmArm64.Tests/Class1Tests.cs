@@ -66,6 +66,12 @@ public class Class1Test
 
         // 20 B0 A2 0D    st4 {v0.s, v1.s, v2.s, v3.s}[1], [x1], x2
         Print(0x0DA2B020);
+
+        // 02 00 00 94 -> bl #8
+        Print(0x94000002U);
+
+        // 00 00 00 94 -> bl #0
+        Print(0x94000000U);
     }
 
     static Arm64Instruction Print(uint rawValue)

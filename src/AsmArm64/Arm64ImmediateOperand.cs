@@ -47,7 +47,6 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
                 break;
             case Arm64ImmediateEncodingKind.Regular:
             case Arm64ImmediateEncodingKind.SystemRegister:
-            case Arm64ImmediateEncodingKind.RangePrefetchOperation:
             case Arm64ImmediateEncodingKind.IsbOption:
             case Arm64ImmediateEncodingKind.Imm64:
                 // buffer[2] = (byte)(IsSigned ? 0x01 : 0x00);
@@ -65,8 +64,8 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
 
                 Debug.Assert(encodingCount <= 2);
                 Value = encodingCount == 1
-                    ? Arm64DecodingHelper.DecodeBitRange1(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), isSigned)
-                    : Arm64DecodingHelper.DecodeBitRange2(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), (byte)(descriptor >> 48), (byte)(descriptor >> 56), isSigned);
+                    ? Arm64DecodingHelper.GetBitRange1(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), isSigned)
+                    : Arm64DecodingHelper.GetBitRange2(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), (byte)(descriptor >> 48), (byte)(descriptor >> 56), isSigned);
                 break;
             default:
                 Value = 0;
@@ -95,7 +94,7 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
         IFormatProvider? provider) =>
         TryFormat(destination, out charsWritten, out _, format, provider);
 
-    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider)
+    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null)
     {
         isDefaultValue = false;
 

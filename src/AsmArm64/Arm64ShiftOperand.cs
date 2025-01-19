@@ -18,7 +18,7 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
         var descriptor = operand.Descriptor;
         var rawValue = operand.RawValue;
 
-        var amount = Arm64DecodingHelper.GetSmallBitRangeValue((byte)(descriptor >> 24), rawValue);
+        var amount = Arm64DecodingHelper.GetSmallBitRange((byte)(descriptor >> 24), rawValue);
 
         var shiftEncodingKind = (Arm64ShiftEncodingKind)((byte)(descriptor >> 8));
         ShiftKind = Arm64ShiftKind.LSL;
@@ -33,7 +33,7 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
                 amount = (byte)(amount << 3);
                 break;
             case Arm64ShiftEncodingKind.Fixed:
-                amount = Arm64DecodingHelper.Get1BitRangeValue((byte)(descriptor >> 16), rawValue) == 0 ? (byte)0 : (byte)12;
+                amount = Arm64DecodingHelper.Get1SmallBitRange((byte)(descriptor >> 16), rawValue) == 0 ? (byte)0 : (byte)12;
                 break;
             case Arm64ShiftEncodingKind.Msl:
                 ShiftKind = Arm64ShiftKind.MSL;
@@ -41,7 +41,7 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
                 break;
             case Arm64ShiftEncodingKind.Shift3:
             case Arm64ShiftEncodingKind.Shift4:
-                var shiftKind = (Arm64ShiftKind)Arm64DecodingHelper.GetSmallBitRangeValue((byte)(descriptor >> 16), rawValue);
+                var shiftKind = (Arm64ShiftKind)Arm64DecodingHelper.GetSmallBitRange((byte)(descriptor >> 16), rawValue);
                 if (shiftEncodingKind == Arm64ShiftEncodingKind.Shift3 && shiftKind == Arm64ShiftKind.ROR)
                 {
                     shiftKind = Arm64ShiftKind.Invalid;
@@ -82,7 +82,7 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
         IFormatProvider? provider)
         => TryFormat(destination, out charsWritten, out _, format, provider);
     
-    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider)
+    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null)
     {
         isDefaultValue = IsDefault;
         

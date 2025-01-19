@@ -37,8 +37,6 @@ enum Arm64ImmediateEncodingKind : byte
     /// A system register used my MRS and MSR.
     /// </summary>
     SystemRegister = 15,
-
-    RangePrefetchOperation = 17,
     /// <summary>
     /// Option for ISB instruction
     /// </summary>

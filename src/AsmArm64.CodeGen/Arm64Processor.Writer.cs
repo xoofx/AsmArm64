@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml;
 using AsmArm64.CodeGen.Model;
 
 namespace AsmArm64.CodeGen;
@@ -34,8 +35,11 @@ partial class Arm64Processor
         GenerateImmediates();
         GenerateProcessStateField();
         GenerateRegisterIndex();
+
+        // Generate enums
+        GenerateEnums();
     }
-    
+
     private void GenerateMnemonicEnum()
     {
         using var w = GetWriter("Arm64Mnemonic.gen.cs");
@@ -374,6 +378,77 @@ partial class Arm64Processor
         w.CloseBraceBlock();
     }
 
+
+    private void GenerateEnums()
+    {
+        GenerateEnums("Arm64PrefetchOperationKind", "The kind of prefetch operation for the PRFM instruction.", _instructionProcessor.PrefetchOperationEnumValues, PrefetchOperationEnumDescriptions);
+        GenerateEnums("Arm64RangePrefetchOperationKind", "The kind of range prefetch operation for the RPRFM instruction.", _instructionProcessor.RangePrefetchOperationEnumValues, RangePrefetchOperationDescriptions);
+    }
+    
+    public static readonly Dictionary<string, string> PrefetchOperationEnumDescriptions = new Dictionary<string, string>
+    {
+        { "PLDL1KEEP", "Prefetch Data Level 1, keep in cache." },
+        { "PLDL1STRM", "Prefetch Data Level 1, stream (do not retain in cache)." },
+        { "PLDL2KEEP", "Prefetch Data Level 2, keep in cache." },
+        { "PLDL2STRM", "Prefetch Data Level 2, stream (do not retain in cache)." },
+        { "PLDL3KEEP", "Prefetch Data Level 3, keep in cache." },
+        { "PLDL3STRM", "Prefetch Data Level 3, stream (do not retain in cache)." },
+        { "PLDSLCKEEP", "Prefetch Data SLC (System Level Cache), keep in cache." },
+        { "PLDSLCSTRM", "Prefetch Data SLC (System Level Cache), stream (do not retain in cache)." },
+        { "PLIL1KEEP", "Prefetch Instruction Level 1, keep in cache." },
+        { "PLIL1STRM", "Prefetch Instruction Level 1, stream (do not retain in cache)." },
+        { "PLIL2KEEP", "Prefetch Instruction Level 2, keep in cache." },
+        { "PLIL2STRM", "Prefetch Instruction Level 2, stream (do not retain in cache)." },
+        { "PLIL3KEEP", "Prefetch Instruction Level 3, keep in cache." },
+        { "PLIL3STRM", "Prefetch Instruction Level 3, stream (do not retain in cache)." },
+        { "PLISLCKEEP", "Prefetch Instruction SLC (System Level Cache), keep in cache." },
+        { "PLISLCSTRM", "Prefetch Instruction SLC (System Level Cache), stream (do not retain in cache)." },
+        { "PSTL1KEEP", "Prefetch Store Level 1, keep in cache." },
+        { "PSTL1STRM", "Prefetch Store Level 1, stream (do not retain in cache)." },
+        { "PSTL2KEEP", "Prefetch Store Level 2, keep in cache." },
+        { "PSTL2STRM", "Prefetch Store Level 2, stream (do not retain in cache)." },
+        { "PSTL3KEEP", "Prefetch Store Level 3, keep in cache." },
+        { "PSTL3STRM", "Prefetch Store Level 3, stream (do not retain in cache)." },
+        { "PSTSLCKEEP", "Prefetch Store SLC (System Level Cache), keep in cache." },
+        { "PSTSLCSTRM", "Prefetch Store SLC (System Level Cache), stream (do not retain in cache)." },
+        { "IR", "Immediate Read." }
+    };
+
+    public static readonly Dictionary<string, string> RangePrefetchOperationDescriptions = new Dictionary<string, string>
+    {
+        { "PLDKEEP", "Prefetch Load, keep in cache." },
+        { "PSTKEEP", "Prefetch Store, keep in cache." },
+        { "PLDSTRM", "Prefetch Load, stream (do not retain in cache)." },
+        { "PSTSTRM", "Prefetch Store, stream (do not retain in cache)." }
+    };
+
+    private void GenerateEnums(string name, string summary, Dictionary<string, int> enums, Dictionary<string, string> description)
+    {
+        using var w = GetWriter($"{name}.gen.cs");
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteSummary(summary);
+        w.WriteLine($"public enum {name} : byte");
+        w.OpenBraceBlock();
+        {
+            w.WriteSummary("Not a valid value.");
+            w.WriteLine("None = 0,");
+            foreach (var pair in enums.OrderBy(x => x.Value))
+            {
+                if (description.TryGetValue(pair.Key, out var itemSummary))
+                {
+                    w.WriteSummary(itemSummary);
+                }
+                else
+                {
+                    Console.WriteLine($"No summary found for enum {name} - item: {pair.Key}");
+                }
+                w.WriteLine($"{pair.Key} = {pair.Value + 1},");
+            }
+        }
+        w.CloseBraceBlock();
+    }
+    
     private void GenerateVectorArrangements()
     {
         var vectorArrangements = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.VectorArrangement);
