@@ -1130,6 +1130,220 @@ public readonly record struct Arm64RegisterV_B : IArm64RegisterVTyped
 }
 
 /// <summary>
+/// Represents an ARM64 a 8-bit vector register (B arrangement).
+/// </summary>
+public readonly record struct Arm64RegisterB : IArm64RegisterVScalar
+{
+    private readonly uint _value;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal Arm64RegisterB(int index) => _value = ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VScalar << 8) | (uint)index;
+
+    /// <inheritdoc />
+    public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+    /// <inheritdoc />
+    public int Index => (byte)_value;
+
+    /// <inheritdoc />
+    public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <inheritdoc />
+    public override string ToString() => ToString(null, null);
+
+    /// <inheritdoc />
+    public string ToString(string? format, IFormatProvider? formatProvider) => this.ToText((format ??= "L") == "H");
+
+    /// <inheritdoc />
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
+    }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterB register) => Unsafe.BitCast<Arm64RegisterB, Arm64RegisterAny>(register);
+
+    /// <summary>
+    /// Converts an any register to a V.B register.
+    /// </summary>
+    public static explicit operator Arm64RegisterB(Arm64RegisterAny register)
+    {
+        if (register.Kind != Arm64RegisterKind.VScalar || register.VKind != Arm64RegisterVKind.B)
+        {
+            throw new InvalidCastException($"Invalid cast from {register.Kind}/{register.VKind} to Arm64RegisterB");
+        }
+        return Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterB>(register);
+    }
+
+    /// <summary>
+    /// Gets the B0 register.
+    /// </summary>
+    public static Arm64RegisterB B0 => new(0);
+
+    /// <summary>
+    /// Gets the B1 register.
+    /// </summary>
+    public static Arm64RegisterB B1 => new(1);
+
+    /// <summary>
+    /// Gets the B2 register.
+    /// </summary>
+    public static Arm64RegisterB B2 => new(2);
+
+    /// <summary>
+    /// Gets the B3 register.
+    /// </summary>
+    public static Arm64RegisterB B3 => new(3);
+
+    /// <summary>
+    /// Gets the B4 register.
+    /// </summary>
+    public static Arm64RegisterB B4 => new(4);
+
+    /// <summary>
+    /// Gets the B5 register.
+    /// </summary>
+    public static Arm64RegisterB B5 => new(5);
+
+    /// <summary>
+    /// Gets the B6 register.
+    /// </summary>
+    public static Arm64RegisterB B6 => new(6);
+
+    /// <summary>
+    /// Gets the B7 register.
+    /// </summary>
+    public static Arm64RegisterB B7 => new(7);
+
+    /// <summary>
+    /// Gets the B8 register.
+    /// </summary>
+    public static Arm64RegisterB B8 => new(8);
+
+    /// <summary>
+    /// Gets the B9 register.
+    /// </summary>
+    public static Arm64RegisterB B9 => new(9);
+
+    /// <summary>
+    /// Gets the B10 register.
+    /// </summary>
+    public static Arm64RegisterB B10 => new(10);
+
+    /// <summary>
+    /// Gets the B11 register.
+    /// </summary>
+    public static Arm64RegisterB B11 => new(11);
+
+    /// <summary>
+    /// Gets the B12 register.
+    /// </summary>
+    public static Arm64RegisterB B12 => new(12);
+
+    /// <summary>
+    /// Gets the B13 register.
+    /// </summary>
+    public static Arm64RegisterB B13 => new(13);
+
+    /// <summary>
+    /// Gets the B14 register.
+    /// </summary>
+    public static Arm64RegisterB B14 => new(14);
+
+    /// <summary>
+    /// Gets the B15 register.
+    /// </summary>
+    public static Arm64RegisterB B15 => new(15);
+
+    /// <summary>
+    /// Gets the B16 register.
+    /// </summary>
+    public static Arm64RegisterB B16 => new(16);
+
+    /// <summary>
+    /// Gets the B17 register.
+    /// </summary>
+    public static Arm64RegisterB B17 => new(17);
+
+    /// <summary>
+    /// Gets the B18 register.
+    /// </summary>
+    public static Arm64RegisterB B18 => new(18);
+
+    /// <summary>
+    /// Gets the B19 register.
+    /// </summary>
+    public static Arm64RegisterB B19 => new(19);
+
+    /// <summary>
+    /// Gets the B20 register.
+    /// </summary>
+    public static Arm64RegisterB B20 => new(20);
+
+    /// <summary>
+    /// Gets the B21 register.
+    /// </summary>
+    public static Arm64RegisterB B21 => new(21);
+
+    /// <summary>
+    /// Gets the B22 register.
+    /// </summary>
+    public static Arm64RegisterB B22 => new(22);
+
+    /// <summary>
+    /// Gets the B23 register.
+    /// </summary>
+    public static Arm64RegisterB B23 => new(23);
+
+    /// <summary>
+    /// Gets the B24 register.
+    /// </summary>
+    public static Arm64RegisterB B24 => new(24);
+
+    /// <summary>
+    /// Gets the B25 register.
+    /// </summary>
+    public static Arm64RegisterB B25 => new(25);
+
+    /// <summary>
+    /// Gets the B26 register.
+    /// </summary>
+    public static Arm64RegisterB B26 => new(26);
+
+    /// <summary>
+    /// Gets the B27 register.
+    /// </summary>
+    public static Arm64RegisterB B27 => new(27);
+
+    /// <summary>
+    /// Gets the B28 register.
+    /// </summary>
+    public static Arm64RegisterB B28 => new(28);
+
+    /// <summary>
+    /// Gets the B29 register.
+    /// </summary>
+    public static Arm64RegisterB B29 => new(29);
+
+    /// <summary>
+    /// Gets the B30 register.
+    /// </summary>
+    public static Arm64RegisterB B30 => new(30);
+
+    /// <summary>
+    /// Gets the B31 register.
+    /// </summary>
+    public static Arm64RegisterB B31 => new(31);
+}
+
+
+/// <summary>
 /// Represents an ARM64 an arranged 2 x B, 8-bit vector register
 /// </summary>
 public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
@@ -1928,6 +2142,7 @@ public readonly record struct Arm64RegisterH : IArm64RegisterVScalar
     public static Arm64RegisterH H31 => new(31);
 }
 
+
 /// <summary>
 /// Represents an ARM64 an arranged 2 x H, Half-precision 16-bit floating-point register
 /// </summary>
@@ -2570,6 +2785,7 @@ public readonly record struct Arm64RegisterS : IArm64RegisterVScalar
     public static Arm64RegisterS S31 => new(31);
 }
 
+
 /// <summary>
 /// Represents an ARM64 an arranged 2 x S, Single-precision 32-bit floating-point register
 /// </summary>
@@ -3055,6 +3271,7 @@ public readonly record struct Arm64RegisterD : IArm64RegisterVScalar
     public static Arm64RegisterD D31 => new(31);
 }
 
+
 /// <summary>
 /// Represents an ARM64 an arranged 2 x D, Double-precision 64-bit floating-point register
 /// </summary>
@@ -3328,6 +3545,7 @@ public readonly record struct Arm64RegisterQ : IArm64RegisterVScalar
     /// </summary>
     public static Arm64RegisterQ Q31 => new(31);
 }
+
 
 partial class Arm64Factory
 {
@@ -4638,6 +4856,80 @@ partial class Arm64Extensions
         "V30",
         "V31",
     ];
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterB register, bool upperCase = false) => upperCase ? RegisterVScalarBUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVScalarBLowerNames[ValidateRegisterIndex(register.Index)];
+
+    private static readonly string[] RegisterVScalarBLowerNames = [
+        "b0",
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15",
+        "b16",
+        "b17",
+        "b18",
+        "b19",
+        "b20",
+        "b21",
+        "b22",
+        "b23",
+        "b24",
+        "b25",
+        "b26",
+        "b27",
+        "b28",
+        "b29",
+        "b30",
+        "b31",
+        ];
+
+    private static readonly string[] RegisterVScalarBUpperNames = [
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10",
+        "B11",
+        "B12",
+        "B13",
+        "B14",
+        "B15",
+        "B16",
+        "B17",
+        "B18",
+        "B19",
+        "B20",
+        "B21",
+        "B22",
+        "B23",
+        "B24",
+        "B25",
+        "B26",
+        "B27",
+        "B28",
+        "B29",
+        "B30",
+        "B31",
+        ];
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>

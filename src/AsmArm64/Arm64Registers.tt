@@ -365,7 +365,6 @@ public readonly record struct Arm64RegisterV_<#= kind #> : IArm64RegisterVTyped
     }
 }
 <# } // if (kind != "Q") { #>
-<# if (kind != "B") { #>
 
 /// <summary>
 /// Represents an ARM64 a <#= vector.Description #> (<#= kind #> arrangement).
@@ -426,7 +425,7 @@ public readonly record struct Arm64Register<#= kind #> : IArm64RegisterVScalar
     public static Arm64Register<#= kind #> <#= kind #><#= i #> => new(<#= i #>);
 <# } #>
 }
-<# } // if (kind != "B") #>
+
 <# foreach(var size in vector.Sizes) { #>
 
 /// <summary>
@@ -666,7 +665,6 @@ partial class Arm64Extensions
     ];
 <# if (kind == "V") { #>
 <# foreach(var vector in vectors) { var vkind = vector.Name; #>
-<# if (vkind != "B") { #>
     /// <summary>
     /// Converts the <#= kind #> register to a string.
     /// </summary>
@@ -683,7 +681,6 @@ partial class Arm64Extensions
     "<#= vkind #><#= i #>",
     <# } #>
     ];
-<# } // if (vkind != "B") #>
 <# if (vkind != "Q") { #>
     /// <summary>
     /// Converts the <#= kind #> register to a string.

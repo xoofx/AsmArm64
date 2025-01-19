@@ -85,6 +85,7 @@ partial class Arm64Extensions
             },
             Arm64RegisterKind.VScalar => register.VKind switch
             {
+                Arm64RegisterVKind.B => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterB>(register).ToText(upper),
                 Arm64RegisterVKind.H => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterH>(register).ToText(upper),
                 Arm64RegisterVKind.S => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterS>(register).ToText(upper),
                 Arm64RegisterVKind.D => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterD>(register).ToText(upper),
