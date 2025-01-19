@@ -319,6 +319,7 @@ internal sealed class InstructionProcessor
             {
                 Name = text,
                 RegisterKind = Arm64RegisterEncodingKind.X,
+                RegisterIndexEncodingKind = Arm64RegisterIndexEncodingKind.Fixed,
                 FixedRegisterIndex = 16,
             };
             return registerDescriptor;
