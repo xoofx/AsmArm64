@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsmArm64.CodeGen", "AsmArm6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsmArm64.Bench", "AsmArm64.Bench\AsmArm64.Bench.csproj", "{6F0668E8-4F4F-4A95-9100-07EE3D1EED3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsmArm64.Tests.CodeGen", "AsmArm64.Tests.CodeGen\AsmArm64.Tests.CodeGen.csproj", "{DC020C5F-5B06-4A9A-8953-0A040B3EFC34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{6F0668E8-4F4F-4A95-9100-07EE3D1EED3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F0668E8-4F4F-4A95-9100-07EE3D1EED3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F0668E8-4F4F-4A95-9100-07EE3D1EED3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC020C5F-5B06-4A9A-8953-0A040B3EFC34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC020C5F-5B06-4A9A-8953-0A040B3EFC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC020C5F-5B06-4A9A-8953-0A040B3EFC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC020C5F-5B06-4A9A-8953-0A040B3EFC34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
