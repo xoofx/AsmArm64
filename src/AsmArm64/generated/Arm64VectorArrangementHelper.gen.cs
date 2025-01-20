@@ -400,7 +400,11 @@ static class Arm64VectorArrangementHelper
             // FDOT_asimdsame2_d             : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // FDOT_asimdsame2_dd            : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // FDOT_asimdsame2_dd            : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // MOV_orr_asimdsame_only        : MOV         Vd.T, Vn.T <- Operand: Vd.T
+            // MOV_orr_asimdsame_only        : MOV         Vd.T, Vn.T <- Operand: Vn.T
             // MOVI_asimdimm_n_b             : MOVI        Vd.T, #imm8 {, LSL #0} <- Operand: Vd.T
+            // MVN_not_asimdmisc_r           : MVN         Vd.T, Vn.T <- Operand: Vd.T
+            // MVN_not_asimdmisc_r           : MVN         Vd.T, Vn.T <- Operand: Vn.T
             // NOT_asimdmisc_r               : NOT         Vd.T, Vn.T <- Operand: Vd.T
             // NOT_asimdmisc_r               : NOT         Vd.T, Vn.T <- Operand: Vn.T
             // ORN_asimdsame_only            : ORN         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
@@ -1802,9 +1806,11 @@ static class Arm64VectorArrangementHelper
             // SQSHRN_asimdshf_n             : SQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // SQSHRUN_asimdshf_n            : SQSHRUN     Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // SSHLL_asimdshf_l              : SSHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
+            // SXTL_sshll_asimdshf_l         : SXTL        Vd.Ta, Vn.Tb <- Operand: Vd.Ta
             // UQRSHRN_asimdshf_n            : UQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // UQSHRN_asimdshf_n             : UQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // USHLL_asimdshf_l              : USHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
+            // UXTL_ushll_asimdshf_l         : UXTL        Vd.Ta, Vn.Tb <- Operand: Vd.Ta
             case 28:
             {
                 var bitValue = ((rawValue >> 19) & 0xF);
@@ -1834,6 +1840,10 @@ static class Arm64VectorArrangementHelper
             // INS_asimdins_ir_r             : INS         Vd.Ts[index], Rn <- Operand: Vd.Ts[index]
             // INS_asimdins_iv_v             : INS         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vd.Ts[index1]
             // INS_asimdins_iv_v             : INS         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vn.Ts[index2]
+            // MOV_dup_asisdone_only         : MOV         Vd, Vn.T[index] <- Operand: Vn.T[index]
+            // MOV_ins_asimdins_ir_r         : MOV         Vd.Ts[index], Rn <- Operand: Vd.Ts[index]
+            // MOV_ins_asimdins_iv_v         : MOV         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vd.Ts[index1]
+            // MOV_ins_asimdins_iv_v         : MOV         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vn.Ts[index2]
             case 29:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
@@ -1992,9 +2002,11 @@ static class Arm64VectorArrangementHelper
             // SQSHRN_asimdshf_n             : SQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // SQSHRUN_asimdshf_n            : SQSHRUN     Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // SSHLL_asimdshf_l              : SSHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
+            // SXTL_sshll_asimdshf_l         : SXTL        Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             // UQRSHRN_asimdshf_n            : UQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // UQSHRN_asimdshf_n             : UQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // USHLL_asimdshf_l              : USHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
+            // UXTL_ushll_asimdshf_l         : UXTL        Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             case 33:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
@@ -2236,6 +2248,7 @@ static class Arm64VectorArrangementHelper
             // LD4_asisdlsop_dx4_r4d         : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm <- Operand: Vt3.D
             // LD4_asisdlsop_dx4_r4d         : LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm <- Operand: Vt4.D
             // LDAP1_asisdlso_d1             : LDAP1       {Vt.D}[index], [Xn|SP] <- Operand: Vt.D
+            // MOV_umov_asimdins_x_x         : MOV         Xd, Vn.D[index] <- Operand: Vn.D[index]
             // ST1_asisdlso_d1_1d            : ST1         {Vt.D}[index], [Xn|SP] <- Operand: Vt.D
             // ST1_asisdlsop_d1_i1d          : ST1         {Vt.D}[index], [Xn|SP], #8 <- Operand: Vt.D
             // ST1_asisdlsop_dx1_r1d         : ST1         {Vt.D}[index], [Xn|SP], Xm <- Operand: Vt.D
@@ -2387,6 +2400,7 @@ static class Arm64VectorArrangementHelper
             // LD4_asisdlsop_sx4_r4s         : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt2.S
             // LD4_asisdlsop_sx4_r4s         : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt3.S
             // LD4_asisdlsop_sx4_r4s         : LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt4.S
+            // MOV_umov_asimdins_w_w         : MOV         Wd, Vn.S[index] <- Operand: Vn.S[index]
             // SM3TT1A_vvv4_crypto3_imm2     : SM3TT1A     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vm.S[imm2]
             // SM3TT1B_vvv4_crypto3_imm2     : SM3TT1B     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vm.S[imm2]
             // SM3TT2A_vvv4_crypto3_imm2     : SM3TT2A     Vd.4S, Vn.4S, Vm.S[imm2] <- Operand: Vm.S[imm2]

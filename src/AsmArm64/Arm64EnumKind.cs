@@ -56,4 +56,8 @@ public enum Arm64EnumKind : byte
     /// Used by instruction: PSB_hc_hints -> PSB CSYNC and TSB_hc_hints -> TSB CSYNC
     /// </summary>
     CodeSync,
+    /// <summary>
+    /// Restriction by context (RCTX).
+    /// </summary>
+    RestrictionByContext
 }

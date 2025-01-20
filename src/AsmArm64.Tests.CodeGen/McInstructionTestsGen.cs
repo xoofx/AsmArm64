@@ -2,7 +2,9 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+using System.Diagnostics;
 using System.Formats.Tar;
+using System.IO.Compression;
 using System.Text.RegularExpressions;
 using AsmArm64.CodeGen;
 
@@ -32,13 +34,14 @@ public partial class McInstructionTestsGen
 
     public void ProcessFilesFromTar(string archiveFilePath)
     {
-        using var stream = File.OpenRead(archiveFilePath);
-        using var tarReader = new TarReader(stream, true);
+        using var fileStream = File.OpenRead(archiveFilePath);
+        using var gzStream = new GZipStream(fileStream, CompressionMode.Decompress);
+        using var tarReader = new TarReader(gzStream, true);
         while (true)
         {
             var entry = tarReader.GetNextEntry();
             if (entry == null) break;
-            if (entry.Name.Contains("/test/MC/AArch64/") && entry.EntryType == TarEntryType.RegularFile)
+            if (entry.Name.Contains("/tests/MC/AArch64/") && entry.EntryType == TarEntryType.RegularFile && Path.GetExtension(entry.Name) == ".yaml")
             {
                 ProcessFile(entry.Name, entry.DataStream!);
             }
@@ -71,6 +74,7 @@ public partial class McInstructionTestsGen
                 {
                     w.WriteLine("[DataRow(new byte[] { " + string.Join(", ", encoding.Encoding.Split(',').Select(x => x.Trim())) + " }, \"" + encoding.Asm + "\")]");
                 }
+
                 w.WriteLine($"public void {pair.Key}(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);");
             }
             w.CloseBraceBlock();
@@ -79,40 +83,34 @@ public partial class McInstructionTestsGen
 
     private void ProcessFile(string fileName, Stream stream)
     {
-        // CHECK: adr x0, #0          // encoding: [0x00,0x00,0x00,0x10]
-
-        // CHECK-INST: abs     x0, x0
-        // CHECK-ENCODING: [0x00,0x20,0xc0,0xda]
-
         var normalizedName = RegexFileName().Match(fileName).Groups["name"].Value;
         normalizedName = RegexNonWords().Replace(normalizedName, "_");
-
-        using var reader = new StreamReader(stream);
-        string previousLine = string.Empty;
-        while (true)
+        if (normalizedName.EndsWith("_yaml"))
         {
-            var line = reader.ReadLine();
-            if (line == null) break;
+            normalizedName = normalizedName.Substring(0, normalizedName.Length - "_yaml".Length);
+        }
 
-            if ((line.StartsWith("// CHECK: ", StringComparison.Ordinal) || line.StartsWith("; CHECK: ")) && line.Contains("encoding: [", StringComparison.Ordinal))
-            {
-                var testInstruction = ProcessCheck(line, previousLine);
-                if (testInstruction != null)
-                {
-                    AddTestInstruction(normalizedName, testInstruction);
-                    TestCount++;
-                }
-            }
-            else if (line.StartsWith("// CHECK-INST: ", StringComparison.Ordinal))
-            {
-                // TODO
-            }
-            else if (line.StartsWith("// CHECK-ENCODING: ", StringComparison.Ordinal))
-            {
-                // TODO
-            }
+        // Don't process SME/SVE for now
+        if (normalizedName.Contains("SME", StringComparison.Ordinal) || normalizedName.Contains("SVE", StringComparison.Ordinal))
+        {
+            return;
+        }
 
-            previousLine = line;
+        SharpYaml.Serialization.Serializer serializer = new();
+        var testCases = (List<object>)((Dictionary<object, object>)serializer.Deserialize(stream)!)["test_cases"];
+        foreach (var testCase in testCases.OfType<Dictionary<object, object>>())
+        {
+            var input = (Dictionary<object, object>)(testCase["input"]);
+            var bytes = ((List<object>)input["bytes"]).Select(x => (int)x).ToArray();
+            
+            var expected = (Dictionary<object, object>)(testCase["expected"]);
+            var insns = (List<object>)expected["insns"];
+            Debug.Assert(insns.Count == 1);
+            var insn = (Dictionary<object, object>)insns[0];
+            var asm = (string)insn["asm_text"];
+
+            AddTestInstruction(normalizedName, new(asm, string.Join(", ", bytes.Select(v => $"0x{v:x2}"))));
+            TestCount++;
         }
     }
 
@@ -123,85 +121,8 @@ public partial class McInstructionTestsGen
             list = new();
             _mapFileNameToTestInstructions.Add(name, list);
         }
+
         list.Add(testInstruction);
-    }
-
-
-    private TestInstruction? ProcessCheck(string line, string previousLine)
-    {
-        // After "// CHECK: "
-        var regex = RegexAsmEncoding();
-        var match = regex.Match(line);
-        if (!match.Success)
-        {
-            return null;
-        }
-
-        var asm = match.Groups["asm"].Value;
-        if (string.IsNullOrWhiteSpace(asm))
-        {
-            asm = previousLine;
-        }
-        var encoding = match.Groups["encoding"].Value;
-
-        var values = encoding.Split(',');
-        bool isSupportedHexadecimal = values.All(x => x.StartsWith("0x"));
-
-        if (!isSupportedHexadecimal)
-        {
-            return null;
-        }
-
-        asm = asm.Replace("//", string.Empty);
-        asm = asm.Replace(";", string.Empty);
-        asm = asm.Trim();
-        asm = RegexSpaces().Replace(asm, " ");
-        asm = asm.Replace("{ ", "{");
-        asm = asm.Replace(" }", "}");
-
-        var matchV = RegexVectorInstruction().Match(asm);
-        if (matchV.Success)
-        {
-            var mnemonic = matchV.Groups["instruction"].Value;
-            var vCount = matchV.Groups["vcount"].Value;
-            var vType = matchV.Groups["vtype"].Value;
-            var operands = matchV.Groups["operands"].Value;
-
-            var regexVector = RegexVector();
-            var newOperands = regexVector.Replace(operands, m =>
-            {
-                var indexAfterVector = m.Index + m.Length;
-                if (indexAfterVector < operands.Length)
-                {
-                    var nc = operands[indexAfterVector];
-                    if (nc == '[') // If there is a vector with an index, we put only the vType but not the vCount
-                    {
-                        return $"{m.Value}.{vType}";
-                    }
-                    else
-                    {
-                        return $"{m.Value}.{vCount}{vType}";
-                    }
-                }
-                else
-                {
-                    return $"{m.Value}.{vCount}{vType}";
-                }
-            });
-
-            var newAsm = $"{mnemonic} {newOperands}"; // Separate line to allow debugging before assigning it back to asm
-            asm = newAsm;
-        }
-
-        if (asm.Contains("{{"))
-        {
-            // We don't support it yet
-            return null;
-        }
-
-        //Console.WriteLine($"  {asm} => {string.Join(",", values)}");
-
-        return new(asm, encoding);
     }
 
     private CodeWriter GetWriter(string filePath, bool isTest = false)
@@ -228,27 +149,12 @@ public partial class McInstructionTestsGen
         return w;
     }
 
-    [GeneratedRegex(@"CHECK:(?<asm>.*)encoding:\s*\[(?<encoding>[^\]]+)\]?")]
-    private static partial Regex RegexAsmEncoding();
-
-    [GeneratedRegex(@"\s+")]
-    private static partial Regex RegexSpaces();
-    
-    [GeneratedRegex(@"^(?<instruction>\w+)\.(?<vcount>\d+)(?<vtype>\w)\s+(?<operands>.+)")]
-    private static partial Regex RegexVectorInstruction();
-
-
-    [GeneratedRegex(@"\b(?<vector>v\d+)\b")]
-    private static partial Regex RegexVector();
-
-    [GeneratedRegex(@"/test/MC/AArch64/(?<name>.*)")]
+    [GeneratedRegex(@"/tests/MC/AArch64/(?<name>.*)")]
     private static partial Regex RegexFileName();
 
 
     [GeneratedRegex(@"\W+")]
     private static partial Regex RegexNonWords();
-    
+
     private record TestInstruction(string Asm, string Encoding);
-
-
 }

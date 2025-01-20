@@ -25,6 +25,10 @@ public enum Arm64Feature : byte
     /// </summary>
     AES,
     /// <summary>
+    /// Feature `ASMv8p2`.
+    /// </summary>
+    ASMv8p2,
+    /// <summary>
     /// Feature `AdvSIMD`.
     /// </summary>
     AdvSIMD,
@@ -32,6 +36,10 @@ public enum Arm64Feature : byte
     /// Feature `BF16`.
     /// </summary>
     BF16,
+    /// <summary>
+    /// Feature `BRBE`.
+    /// </summary>
+    BRBE,
     /// <summary>
     /// Feature `BTI`.
     /// </summary>
@@ -145,6 +153,10 @@ public enum Arm64Feature : byte
     /// </summary>
     I8MM,
     /// <summary>
+    /// Feature `ITE`.
+    /// </summary>
+    ITE,
+    /// <summary>
     /// Feature `JSCVT`.
     /// </summary>
     JSCVT,
@@ -229,6 +241,10 @@ public enum Arm64Feature : byte
     /// </summary>
     RDM,
     /// <summary>
+    /// Feature `RME_GPC3`.
+    /// </summary>
+    RME_GPC3,
+    /// <summary>
     /// Feature `RPRFM`.
     /// </summary>
     RPRFM,
@@ -261,9 +277,21 @@ public enum Arm64Feature : byte
     /// </summary>
     SM4,
     /// <summary>
+    /// Feature `SME`.
+    /// </summary>
+    SME,
+    /// <summary>
     /// Feature `SPE`.
     /// </summary>
     SPE,
+    /// <summary>
+    /// Feature `SPECRES`.
+    /// </summary>
+    SPECRES,
+    /// <summary>
+    /// Feature `SPECRES2`.
+    /// </summary>
+    SPECRES2,
     /// <summary>
     /// Feature `SYSINSTR128`.
     /// </summary>

@@ -17,5 +17,7 @@ partial class McInstructionTests
     [TestMethod]
     [DataRow(new byte[] { 0x3f, 0x40, 0x00, 0xd5 }, "xaflag")]
     [DataRow(new byte[] { 0x5f, 0x40, 0x00, 0xd5 }, "axflag")]
+    [DataRow(new byte[] { 0x3f, 0x40, 0x00, 0xd5 }, "xaflag")]
+    [DataRow(new byte[] { 0x5f, 0x40, 0x00, 0xd5 }, "axflag")]
     public void armv8_5a_altnzcv_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

@@ -25,9 +25,10 @@ partial class Arm64Processor
         GenerateFeatures();
         GenerateFeatureExpressions();
         GenerateInstructionIdDecoderTable();
+        GenerateInstructionIdDynamicDecoder();
         GenerateInstructionDecoderTable();
         GenerateInstructionIdTests();
-
+        
         // Write extracts
         GenerateVectorArrangements();
         GenerateDynamicRegister();
@@ -52,10 +53,10 @@ partial class Arm64Processor
         {
             w.WriteSummary("This mnemonic is invalid.");
             w.WriteLine("Invalid,");
-            foreach (var mnemonic in _instructionSet.OrderedMnemonics)
+            foreach (var mnemonic in InstructionSet.OrderedMnemonics)
             {
                 w.WriteSummary($"This `{mnemonic}` mnemonic.");
-                w.WriteLine($"{mnemonic} = {_instructionSet.OrderedMnemonics.IndexOf(mnemonic) + 1},");
+                w.WriteLine($"{mnemonic} = {InstructionSet.OrderedMnemonics.IndexOf(mnemonic) + 1},");
             }
         }
         w.CloseBraceBlock();
@@ -67,7 +68,7 @@ partial class Arm64Processor
             w.OpenBraceBlock();
             {
                 w.WriteLine("\"???\",");
-                foreach (var mnemonic in _instructionSet.OrderedMnemonics)
+                foreach (var mnemonic in InstructionSet.OrderedMnemonics)
                 {
                     w.WriteLine($"\"{mnemonic.ToLowerInvariant()}\",");
                 }
@@ -78,7 +79,7 @@ partial class Arm64Processor
             w.OpenBraceBlock();
             {
                 w.WriteLine("\"???\",");
-                foreach (var mnemonic in _instructionSet.OrderedMnemonics)
+                foreach (var mnemonic in InstructionSet.OrderedMnemonics)
                 {
                     w.WriteLine($"\"{mnemonic.ToUpperInvariant()}\",");
                 }
@@ -103,7 +104,7 @@ partial class Arm64Processor
         foreach (var instruction in _instructions)
         {
             w.WriteSummary($"Instruction `{instruction.Mnemonic}` - {instruction.Summary}.");
-            w.WriteLine($"{instruction.Id} = {instruction.IdIndex},");
+            w.WriteLine($"{instruction.Id} = {instruction.Index},");
         }
         w.CloseBraceBlock();
     }
@@ -119,10 +120,10 @@ partial class Arm64Processor
         w.OpenBraceBlock();
         w.WriteSummary("The instruction class is invalid / unknown.");
         w.WriteLine("Invalid,");
-        foreach (var iClass in _instructionSet.OrderedInstructionClass)
+        foreach (var iClass in InstructionSet.OrderedInstructionClass)
         {
             w.WriteSummary($"Class `{iClass}`.");
-            w.WriteLine($"{iClass} = {_instructionSet.OrderedInstructionClass.IndexOf(iClass) + 1},");
+            w.WriteLine($"{iClass} = {InstructionSet.OrderedInstructionClass.IndexOf(iClass) + 1},");
         }
         w.CloseBraceBlock();
     }
@@ -253,6 +254,69 @@ partial class Arm64Processor
         {
             var buffer = _tableGenEncoder.Buffer;
             WriteBuffer(w, buffer, "Buffer", "Decoder table to get an instruction id from a raw ARM64 instruction uint");
+        }
+        w.CloseBraceBlock();
+    }
+
+    private void GenerateInstructionIdDynamicDecoder()
+    {
+        using var w = GetWriter("Arm64InstructionIdDynamicDecoder.gen.cs");
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteLine("static partial class Arm64InstructionIdDynamicDecoder");
+        w.OpenBraceBlock();
+        {
+            var instructionWithDynamicDecoding = new List<(Instruction, List<(AliasInfo, Instruction)>)>();
+            foreach (var instruction in _instructions)
+            {
+                if (!instruction.HasAliasesInAndRequiringDynamicResolution)
+                {
+                    continue;
+                }
+
+                var list = new List<(AliasInfo, Instruction)>();
+                foreach (var alias in instruction.AliasesIn)
+                {
+                    var targetInstruction = MapIdToInstruction[alias.InstructionId];
+                    if (targetInstruction.IsAliasWithDynamicCondition)
+                    {
+                        list.Add((alias, targetInstruction));
+                    }
+                }
+                Debug.Assert(list.Count > 0);
+                instructionWithDynamicDecoding.Add((instruction, list));
+            }
+
+            w.WriteLine("public static Arm64InstructionId ResolveBetterAlias(Arm64InstructionId id, Arm64RawInstruction rawValue)");
+            {
+                w.Indent();
+                w.WriteLine("=> id switch");
+                w.OpenBraceBlock();
+                {
+                    foreach (var instructionPair in instructionWithDynamicDecoding)
+                    {
+                        var instruction = instructionPair.Item1;
+                        w.WriteLine($"Arm64InstructionId.{instruction.Id} => Resolve_{instruction.Id}(rawValue),");
+                    }
+                    w.WriteLine("_ => throw new InvalidOperationException($\"Invalid instruction id {id} not supported by dynamic better alias resolution\")");
+                }
+                w.CloseBraceBlockStatement();
+                w.UnIndent();
+            }
+
+            w.WriteLine();
+
+            foreach (var instructionPair in instructionWithDynamicDecoding)
+            {
+                var instruction = instructionPair.Item1;
+                w.WriteDoc("<summary>");
+                foreach (var aliasPair in instructionPair.Item2)
+                {
+                    w.WriteDoc($"Condition: {aliasPair.Item1.Condition.Replace("&", "&amp;", StringComparison.Ordinal).Replace("<", "&lt;", StringComparison.Ordinal)} => {aliasPair.Item2.Id}");
+                }
+                w.WriteDoc("</summary>");
+                w.WriteLine($"private static partial Arm64InstructionId Resolve_{instruction.Id}(Arm64RawInstruction rawValue);");
+            }
         }
         w.CloseBraceBlock();
     }
@@ -451,7 +515,7 @@ partial class Arm64Processor
     
     private void GenerateVectorArrangements()
     {
-        var vectorArrangements = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.VectorArrangement);
+        var vectorArrangements = InstructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.VectorArrangement);
 
         GenerateEncodingSymbolExtractMap<EncodingVectorArrangementExtract>(vectorArrangements,
             "Arm64VectorArrangementHelper",
@@ -474,7 +538,7 @@ partial class Arm64Processor
 
     private void GenerateDynamicRegister()
     {
-        var dynamicRegisterMap = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.DynamicRegister);
+        var dynamicRegisterMap = InstructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.DynamicRegister);
 
         GenerateEncodingSymbolExtractMap<EncodingSymbolExtract>(dynamicRegisterMap,
             "Arm64DynamicRegisterHelper",
@@ -492,7 +556,7 @@ partial class Arm64Processor
     
     private void GenerateIndexers()
     {
-        var indexerMap = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.Indexer);
+        var indexerMap = InstructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.Indexer);
 
         GenerateEncodingSymbolExtractMap<EncodingIndexerExtract>(indexerMap,
             "Arm64IndexerHelper",
@@ -510,7 +574,7 @@ partial class Arm64Processor
 
     private void GenerateImmediates()
     {
-        var immediateMap = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.Immediate);
+        var immediateMap = InstructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.Immediate);
 
         GenerateEncodingSymbolExtractMap<EncodingIndexerExtract>(immediateMap,
             "Arm64ImmediateHelper",
@@ -529,7 +593,7 @@ partial class Arm64Processor
 
     private void GenerateProcessStateField()
     {
-        var processStateFields = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.ProcessStateField);
+        var processStateFields = InstructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.ProcessStateField);
 
         GenerateEncodingSymbolExtractMap<EncodingSymbolExtract>(processStateFields,
             "Arm64ProcessStateFieldHelper",
@@ -547,7 +611,7 @@ partial class Arm64Processor
 
     private void GenerateRegisterIndex()
     {
-        var immediateMap = _instructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.RegisterIndex);
+        var immediateMap = InstructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.RegisterIndex);
 
         GenerateEncodingSymbolExtractMap<EncodingIndexerExtract>(immediateMap,
             "Arm64RegisterIndexHelper",

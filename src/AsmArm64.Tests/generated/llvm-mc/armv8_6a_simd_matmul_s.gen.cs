@@ -24,5 +24,14 @@ partial class McInstructionTests
     [DataRow(new byte[] { 0x3f, 0xf8, 0xa2, 0x4f }, "usdot v31.4s, v1.16b, v2.4b[3]")]
     [DataRow(new byte[] { 0x3f, 0xf8, 0x22, 0x0f }, "sudot v31.2s, v1.8b, v2.4b[3]")]
     [DataRow(new byte[] { 0x3f, 0xf8, 0x22, 0x4f }, "sudot v31.4s, v1.16b, v2.4b[3]")]
+    [DataRow(new byte[] { 0x01, 0xa6, 0x9f, 0x4e }, "smmla v1.4s, v16.16b, v31.16b")]
+    [DataRow(new byte[] { 0x01, 0xa6, 0x9f, 0x6e }, "ummla v1.4s, v16.16b, v31.16b")]
+    [DataRow(new byte[] { 0x01, 0xae, 0x9f, 0x4e }, "usmmla v1.4s, v16.16b, v31.16b")]
+    [DataRow(new byte[] { 0xe3, 0x9d, 0x9e, 0x0e }, "usdot v3.2s, v15.8b, v30.8b")]
+    [DataRow(new byte[] { 0xe3, 0x9d, 0x9e, 0x4e }, "usdot v3.4s, v15.16b, v30.16b")]
+    [DataRow(new byte[] { 0x3f, 0xf8, 0xa2, 0x0f }, "usdot v31.2s, v1.8b, v2.4b[3]")]
+    [DataRow(new byte[] { 0x3f, 0xf8, 0xa2, 0x4f }, "usdot v31.4s, v1.16b, v2.4b[3]")]
+    [DataRow(new byte[] { 0x3f, 0xf8, 0x22, 0x0f }, "sudot v31.2s, v1.8b, v2.4b[3]")]
+    [DataRow(new byte[] { 0x3f, 0xf8, 0x22, 0x4f }, "sudot v31.4s, v1.16b, v2.4b[3]")]
     public void armv8_6a_simd_matmul_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

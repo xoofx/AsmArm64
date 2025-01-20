@@ -106,7 +106,6 @@ internal sealed class InstructionProcessor
         for (int i = 0; i < _instructions.Count; i++)
         {
             var instruction = _instructions[i];
-            instruction.IdIndex = i + 1;
             if (!_instructionSet.OrderedMnemonics.Contains(instruction.Mnemonic))
             {
                 _instructionSet.OrderedMnemonics.Add(instruction.Mnemonic);
@@ -328,13 +327,21 @@ internal sealed class InstructionProcessor
         var enumDescriptor = new EnumOperandDescriptor()
         {
             Name = text,
-            EnumKind = text switch
-            {
-                "CSYNC" => Arm64EnumKind.CodeSync,
-                "DSYNC" => Arm64EnumKind.DataSync,
-                _ => throw new InvalidOperationException($"Unsupported const operand `{constOperand}`")
-            }
         };
+        switch (text)
+        {
+            case "CSYNC":
+                enumDescriptor.EnumKind = Arm64EnumKind.CodeSync;
+                break;
+            case "DSYNC":
+                enumDescriptor.EnumKind = Arm64EnumKind.DataSync;
+                break;
+            case "RCTX":
+                enumDescriptor.EnumKind = Arm64EnumKind.RestrictionByContext;
+                break;
+            default:
+                throw new NotSupportedException($"Unsupported const enum {text}");
+        }
 
         return enumDescriptor;
     }
@@ -432,8 +439,17 @@ internal sealed class InstructionProcessor
             // Console.WriteLine($"{instruction.Id} {instruction.FullSyntax}");
             return enumOperandDescriptor;
         }
+        else
+        {
+            var enumOperandDescriptor = new EnumOperandDescriptor()
+            {
+                Name = name0,
+                EnumKind = Arm64EnumKind.None,
+            };
 
-        throw new InvalidOperationException($"Unsupported enum operand `{enumOperand}`");
+            Console.WriteLine($"Enum to support {enumOperand} - {instruction.Id}");
+            return enumOperandDescriptor;
+        }
     }
 
     private OperandDescriptor ProcessOptionalGroup(Instruction instruction, OptionalGroupOperandItem optionalGroup)
@@ -448,6 +464,18 @@ internal sealed class InstructionProcessor
 
         if (items.Count == 1)
         {
+            if ((instruction.Id == "SMSTART_msr_si_pstate" || instruction.Id == "SMSTOP_msr_si_pstate") && name0 == "option")
+            {
+                var desc = new EnumOperandDescriptor()
+                {
+                    EnumKind = Arm64EnumKind.None,
+                    Name = name0,
+                    IsOptional = true,
+                };
+
+                Console.WriteLine($"TODO support {{option}} for {instruction.Id}");
+                return desc;
+            }
             if (name0 == "shift")
             {
                 Debug.Assert(symbol0 is not null && symbol0.Selector is not null && symbol0.Selector.BitValues.Count == 2 && symbol0.Selector.BitValues[0].Text == "LSL #0" && symbol0.Selector.BitValues[1].Text == "LSL #12");
@@ -678,6 +706,30 @@ internal sealed class InstructionProcessor
         { "RETABSPPC_only_miscbranch", Arm64LabelEncodingKind.NegativeEncodedAsUnsigned },
         { "TBNZ_only_testbranch", Arm64LabelEncodingKind.StandardOffset },
         { "TBZ_only_testbranch", Arm64LabelEncodingKind.StandardOffset },
+        { "CBBLE_cbbge_8_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBBLO_cbbhi_8_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBBLS_cbbhs_8_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBBLT_cbbgt_8_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBGE_cbgt_32_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBGE_cbgt_64_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHLE_cbhge_16_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHLO_cbhhi_16_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHLS_cbhhs_16_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHLT_cbhgt_16_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHS_cbhi_32_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBHS_cbhi_64_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLE_cblt_32_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLE_cblt_64_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLE_cbge_32_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLE_cbge_64_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLO_cbhi_32_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLO_cbhi_64_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLS_cblo_32_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLS_cblo_64_imm", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLS_cbhs_32_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLS_cbhs_64_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLT_cbgt_32_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "CBLT_cbgt_64_regs", Arm64LabelEncodingKind.StandardOffset },
     };
 
     private OperandDescriptor ProcessValue(Instruction instruction, ValueOperandItem selectedValue)

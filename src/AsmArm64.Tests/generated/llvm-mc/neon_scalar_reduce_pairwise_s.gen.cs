@@ -17,6 +17,7 @@ partial class McInstructionTests
     [TestMethod]
     [DataRow(new byte[] { 0x20, 0xb8, 0xf1, 0x5e }, "addp d0, v1.2d")]
     [DataRow(new byte[] { 0x72, 0xd8, 0x30, 0x5e }, "faddp h18, v3.2h")]
+    [DataRow(new byte[] { 0x72, 0xd8, 0x30, 0x5e }, "faddp h18, v3.2h")]
     [DataRow(new byte[] { 0x53, 0xd8, 0x30, 0x7e }, "faddp s19, v2.2s")]
     [DataRow(new byte[] { 0x34, 0xd8, 0x70, 0x7e }, "faddp d20, v1.2d")]
     public void neon_scalar_reduce_pairwise_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);

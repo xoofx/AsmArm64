@@ -16,10 +16,15 @@ partial class McInstructionTests
 {
     [TestMethod]
     [DataRow(new byte[] { 0xb4, 0x8e, 0xf6, 0x7e }, "cmeq d20, d21, d22")]
+    [DataRow(new byte[] { 0xb4, 0x9a, 0xe0, 0x5e }, "cmeq d20, d21, #0")]
     [DataRow(new byte[] { 0xb4, 0x3e, 0xf6, 0x7e }, "cmhs d20, d21, d22")]
     [DataRow(new byte[] { 0xb4, 0x3e, 0xf6, 0x5e }, "cmge d20, d21, d22")]
+    [DataRow(new byte[] { 0xb4, 0x8a, 0xe0, 0x7e }, "cmge d20, d21, #0")]
     [DataRow(new byte[] { 0xb4, 0x36, 0xf6, 0x7e }, "cmhi d20, d21, d22")]
     [DataRow(new byte[] { 0xb4, 0x36, 0xf6, 0x5e }, "cmgt d20, d21, d22")]
+    [DataRow(new byte[] { 0xb4, 0x8a, 0xe0, 0x5e }, "cmgt d20, d21, #0")]
+    [DataRow(new byte[] { 0xb4, 0x9a, 0xe0, 0x7e }, "cmle d20, d21, #0")]
+    [DataRow(new byte[] { 0xb4, 0xaa, 0xe0, 0x5e }, "cmlt d20, d21, #0")]
     [DataRow(new byte[] { 0xb4, 0x8e, 0xf6, 0x5e }, "cmtst d20, d21, d22")]
     public void neon_scalar_compare_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

@@ -17,5 +17,11 @@ partial class McInstructionTests
     [TestMethod]
     [DataRow(new byte[] { 0x1f, 0x25, 0x03, 0xd5 }, "chkfeat x16")]
     [DataRow(new byte[] { 0x1f, 0x25, 0x03, 0xd5 }, "chkfeat x16")]
+    [DataRow(new byte[] { 0x1f, 0x25, 0x03, 0xd5 }, "chkfeat x16")]
+    [DataRow(new byte[] { 0x1f, 0x25, 0x03, 0xd5 }, "chkfeat x16")]
+    [DataRow(new byte[] { 0x1f, 0x25, 0x03, 0xd5 }, "chkfeat x16")]
+    [DataRow(new byte[] { 0x1f, 0x25, 0x03, 0xd5 }, "chkfeat x16")]
+    [DataRow(new byte[] { 0x1f, 0x25, 0x03, 0xd5 }, "chkfeat x16")]
+    [DataRow(new byte[] { 0x1f, 0x25, 0x03, 0xd5 }, "chkfeat x16")]
     public void armv9_4a_chk_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

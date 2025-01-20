@@ -15,8 +15,7 @@ namespace AsmArm64.CodeGen;
 // https://github.com/wdamron/arm/blob/main/encoding.go
 partial class Arm64Processor
 {
-    private HashSet<string> _allParameterNames = new();
-
+    private readonly HashSet<string> _allParameterNames = new();
     private static readonly Regex MatchMnemonic = new(@"^(\w+\.?)(\{)?");
     private static readonly Regex MatchSpace = new(@"\s+");
     private static readonly Regex MatchIdentifier = new(@"\w+");
@@ -300,6 +299,7 @@ partial class Arm64Processor
                     }
                 }
 
+                bool isEnum = elt0.Symbol is not null && elt0.Symbol.Selector is not null && elt0.Symbol.Selector.BitValues.All(x => x.Kind == EncodingBitValueKind.Text || x.Kind == EncodingBitValueKind.Reserved);
                 if (elt0.Text == "#")
                 {
                     operandItem = new ImmediateOperandItem();
@@ -313,13 +313,12 @@ partial class Arm64Processor
                 {
                     operandItem = new RegisterOperandItem();
                 }
-                else if (bitNames.Count == 1 && bitNames[0].StartsWith("CR", StringComparison.Ordinal))
+                else if (bitNames.Count == 1 && bitNames[0].StartsWith("CR", StringComparison.Ordinal) && !isEnum)
                 {
                     operandItem = new RegisterOperandItem();
                 }
                 else
                 {
-                    bool isEnum = elt0.Symbol is not null && elt0.Symbol.Selector is not null && elt0.Symbol.Selector.BitValues.All(x => x.Kind == EncodingBitValueKind.Text || x.Kind == EncodingBitValueKind.Reserved);
                     // TODO: Detect Enum kind (e.g. LSL #<amount>)
                     operandItem = isEnum
                         ? new EnumOperandItem()

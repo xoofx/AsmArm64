@@ -16,5 +16,7 @@ partial class McInstructionTests
 {
     [TestMethod]
     [DataRow(new byte[] { 0x27, 0x7c, 0x0b, 0xd5 }, "dc cvap, x7")]
+    [DataRow(new byte[] { 0x27, 0x7c, 0x0b, 0xd5 }, "dc cvap, x7")]
+    [DataRow(new byte[] { 0x27, 0x7c, 0x0b, 0xd5 }, "dc cvap, x7")]
     public void armv8_2a_persistent_memory_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

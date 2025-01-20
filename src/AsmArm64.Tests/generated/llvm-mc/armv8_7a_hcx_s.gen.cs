@@ -17,5 +17,7 @@ partial class McInstructionTests
     [TestMethod]
     [DataRow(new byte[] { 0x42, 0x12, 0x3c, 0xd5 }, "mrs x2, HCRX_EL2")]
     [DataRow(new byte[] { 0x43, 0x12, 0x1c, 0xd5 }, "msr HCRX_EL2, x3")]
+    [DataRow(new byte[] { 0x42, 0x12, 0x3c, 0xd5 }, "mrs x2, HCRX_EL2")]
+    [DataRow(new byte[] { 0x43, 0x12, 0x1c, 0xd5 }, "msr HCRX_EL2, x3")]
     public void armv8_7a_hcx_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

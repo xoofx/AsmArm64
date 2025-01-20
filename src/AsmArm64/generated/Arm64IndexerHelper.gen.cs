@@ -185,7 +185,7 @@ static class Arm64IndexerHelper
                 {
                     case 1:
                     {
-                        var extractedValue = ((bitValue >> 1) & 0x3);
+                        var extractedValue = (bitValue & 0x3);
                         index = (int)extractedValue;
                         return true;
                     }
@@ -252,6 +252,8 @@ static class Arm64IndexerHelper
                 index = (int)bitValue;
                 return true;
             }
+            // MOV_umov_asimdins_w_w         : MOV         Wd, Vn.S[index] <- Operand: Vn.S[index]
+            // MOV_umov_asimdins_x_x         : MOV         Xd, Vn.D[index] <- Operand: Vn.D[index]
             // UMOV_asimdins_x_x             : UMOV        Xd, Vn.D[index] <- Operand: Vn.D[index]
             case 12:
             {
@@ -263,6 +265,9 @@ static class Arm64IndexerHelper
             // DUP_asisdone_only             : DUP         Vd, Vn.T[index] <- Operand: Vn.T[index]
             // INS_asimdins_ir_r             : INS         Vd.Ts[index], Rn <- Operand: Vd.Ts[index]
             // INS_asimdins_iv_v             : INS         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vd.Ts[index1]
+            // MOV_dup_asisdone_only         : MOV         Vd, Vn.T[index] <- Operand: Vn.T[index]
+            // MOV_ins_asimdins_ir_r         : MOV         Vd.Ts[index], Rn <- Operand: Vd.Ts[index]
+            // MOV_ins_asimdins_iv_v         : MOV         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vd.Ts[index1]
             case 13:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
@@ -369,13 +374,13 @@ static class Arm64IndexerHelper
                 {
                     case 1:
                     {
-                        var extractedValue = ((bitValue >> 2) & 0x7);
+                        var extractedValue = (bitValue & 0x7);
                         index = (int)extractedValue;
                         return true;
                     }
                     case 2:
                     {
-                        var extractedValue = ((bitValue >> 2) & 0x3);
+                        var extractedValue = ((bitValue >> 1) & 0x3);
                         index = (int)extractedValue;
                         return true;
                     }
@@ -395,6 +400,7 @@ static class Arm64IndexerHelper
                 return true;
             }
             // INS_asimdins_iv_v             : INS         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vn.Ts[index2]
+            // MOV_ins_asimdins_iv_v         : MOV         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vn.Ts[index2]
             case 18:
             {
                 var bitValue = ((rawValue >> 11) & 0xF) | ((rawValue >> 12) & 0x1F0);

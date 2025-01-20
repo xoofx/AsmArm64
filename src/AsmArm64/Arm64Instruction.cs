@@ -128,17 +128,17 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
     }
 
 
-    public static Arm64Instruction Decode(Arm64RawInstruction instruction)
+    public static Arm64Instruction Decode(Arm64RawInstruction rawInstruction)
     {
-        var id = DecodeId(instruction);
+        var id = DecodeId(rawInstruction);
         var offset = Arm64InstructionDecoderTable.InstructionIdToBufferOffset[(int) id];
         var buffer = (byte*)Unsafe.AsPointer(ref Unsafe.Add(ref MemoryMarshal.GetReference(Arm64InstructionDecoderTable.Buffer), offset * 4));
         var descriptor = (ulong*) buffer;
         var operands = buffer + sizeof(ulong);
-        return new Arm64Instruction(*descriptor, operands, instruction);
+        return new Arm64Instruction(*descriptor, operands, rawInstruction);
     }
 
-    public static unsafe Arm64InstructionId DecodeId(Arm64RawInstruction instruction)
+    public static unsafe Arm64InstructionId DecodeId(Arm64RawInstruction rawInstruction)
     {
         ref byte buffer = ref MemoryMarshal.GetReference(Arm64InstructionIdDecoderTable.Buffer);
 
@@ -164,10 +164,10 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
                 offset += sizeof(int);
             }
 
-            var key = instruction & bitMask;
+            var key = rawInstruction & bitMask;
             if (kind == TrieTableKind.SmallArray)
             {
-                for(int i = 0; i < arrayLength; i++)
+                for (int i = 0; i < arrayLength; i++)
                 {
                     ref var keyEntryIndex = ref Unsafe.As<byte, KeyEntryIndex>(ref Unsafe.Add(ref buffer, offset + i * sizeof(KeyEntryIndex)));
                     if (keyEntryIndex.Key == key)
@@ -207,8 +207,18 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
         }
 
         return Arm64InstructionId.Invalid;
-    return_offset:
-        return (Arm64InstructionId)(offset & ~0x8000_0000u);
+
+        return_offset:
+        {
+            uint id = unchecked((uint)offset) & ~0x8000_0000U;
+            if ((id & 0x4000_0000U) != 0)
+            {
+                id &= ~0x4000_0000U;
+                return (Arm64InstructionId)Arm64InstructionIdDynamicDecoder.ResolveBetterAlias((Arm64InstructionId)(id), rawInstruction);
+            }
+
+            return (Arm64InstructionId)(id);
+        }
     }
 
     private readonly struct EntryHeader

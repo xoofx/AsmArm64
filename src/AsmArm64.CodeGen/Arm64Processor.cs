@@ -16,13 +16,14 @@ namespace AsmArm64.CodeGen;
 // Feature
 // Docvars ideas
 // https://github.com/google/EXEgesis/blob/master/exegesis/arm/xml/docvars.cc
-public partial class Arm64Processor
+partial class Arm64Processor
 {
     private readonly string _baseSpecsFolder;
     private readonly string _basedOutputFolder;
     private readonly string _basedOutputTestFolder;
 
-    private readonly InstructionSet _instructionSet = new();
+    public readonly InstructionSet InstructionSet = new();
+
     private readonly List<Instruction> _instructions;
     private readonly InstructionProcessor _instructionProcessor;
 
@@ -32,15 +33,16 @@ public partial class Arm64Processor
     private readonly List<InstructionTrieNode> _allNodes = new();
     private readonly Dictionary<string, int> _mapFeatureExpressionIdToIndex = new();
 
-    private readonly TableGenEncoder _tableGenEncoder = new();
+    private readonly TableGenEncoder _tableGenEncoder;
     private readonly Dictionary<uint, List<Instruction>> _instructionsWithSameBitValue;
-
+    
     public Arm64Processor(string baseSpecsFolder)
     {
         _baseSpecsFolder = baseSpecsFolder;
-        _instructions = _instructionSet.Instructions;
+        _instructions = InstructionSet.Instructions;
         _instructionsWithSameBitValue = new();
-        _instructionProcessor = new(_instructionSet);
+        _instructionProcessor = new(InstructionSet);
+        _tableGenEncoder = new(InstructionSet);
 
         var basePath = Path.GetDirectoryName(AppContext.BaseDirectory); // src\AsmArm64.CodeGen\bin\Debug\net8.0
         basePath = Path.GetDirectoryName(basePath); // src\AsmArm64.CodeGen\bin\Debug
@@ -60,6 +62,11 @@ public partial class Arm64Processor
         }
     }
 
+    /// <summary>
+    /// Map of instruction id to instructions
+    /// </summary>
+    internal Dictionary<string, Instruction> MapIdToInstruction { get; } = new();
+
     public void Run()
     {
         LoadInstructions();
@@ -71,10 +78,7 @@ public partial class Arm64Processor
 
         ProcessInstructions();
 
-        _instructionSet.WriteJson("instructions.json");
-
-        //var isa2 = InstructionSet.ReadJson("instructions.json");
-        //isa2.WriteJson("instructions2.json");
+        InstructionSet.WriteJson("instructions.json");
 
         //return;
 
@@ -130,7 +134,150 @@ public partial class Arm64Processor
             throw new InvalidOperationException("Errors processing files");
         }
 
+        // Fill out the map once we are done processing all instructions
+        foreach (var instruction in _instructions)
+        {
+            MapIdToInstruction.Add(instruction.Id, instruction);
+
+        }
+        
+        // Discard instructions that have an alias that should be always preferred
+        for (var i = 0; i < _instructions.Count; i++)
+        {
+            var instruction = _instructions[i];
+            instruction.Index = i + 1;
+
+            if (instruction.Alias != null)
+            {
+                var target = MapIdToInstruction[instruction.Alias.InstructionId];
+                target.AliasesIn.Add(new AliasInfo(instruction.Id, instruction.Alias.Condition) {IsOut = false});
+            }
+        }
+        
+        foreach (var instruction in _instructions)
+        {
+            if (instruction.AliasesIn.Count > 0)
+            {
+                //Console.WriteLine($"Instruction {instruction.Id} - {instruction.FullSyntax} is aliased by:");
+
+                foreach (var alias in instruction.AliasesIn)
+                {
+                    var targetInstruction = MapIdToInstruction[alias.InstructionId];
+                    if (targetInstruction.BitfieldMask == instruction.BitfieldMask)
+                    {
+                        // Instruction that are aliased and have the same fields are problematic.
+                        // We need to detect if:
+                        // - the instruction needs to be discarded (there is a preferred instructions that we should always use)
+                        // - the instruction is aliased with a dynamic condition
+                        
+                        if (alias.IsAlways)
+                        {
+                            //Console.WriteLine($"  --- The instruction {instruction.Id}` is discarded in favor of {alias.InstructionId} when {alias.Condition}");
+                            Debug.Assert(!instruction.IsAliasWithDynamicCondition);
+                            instruction.IsDiscardedByPreferredAlias = true;
+                        }
+                        else if (alias.IsNever)
+                        {
+                            //Console.WriteLine($"  --- The alias {alias.InstructionId} is discarded - Same Mask");
+                            Debug.Assert(!targetInstruction.IsAliasWithDynamicCondition);
+                            targetInstruction.IsDiscardedByPreferredAlias = true;
+                        }
+                        else
+                        {
+                            //Console.WriteLine($"  ??? The alias {alias.InstructionId} is kept - {alias.Condition}");
+                            Debug.Assert(!targetInstruction.IsDiscardedByPreferredAlias);
+                            targetInstruction.IsAliasWithDynamicCondition = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        DetectConflictingAliases();
+
+        foreach (var instruction in _instructions)
+        {
+            if (instruction.AliasesIn.Count == 0) continue;
+
+            foreach (var alias in instruction.AliasesIn)
+            {
+                var targetInstruction = MapIdToInstruction[alias.InstructionId];
+                if (targetInstruction.IsAliasWithDynamicCondition)
+                {
+                    Debug.Assert(!instruction.IsDiscardedByPreferredAlias); // An instruction cannot be discarded
+                    Debug.Assert(!instruction.IsAliasWithDynamicCondition);
+                    instruction.HasAliasesInAndRequiringDynamicResolution = true;
+                    break;
+                }
+            }
+        }
+
+        //foreach (var instruction in _instructions)
+        //{
+        //    if (instruction.IsDiscardedByPreferredAlias)
+        //    {
+        //        Console.WriteLine($"DISCARD {instruction.Id}");
+        //    }
+        //    else if (instruction.IsAliasWithDynamicCondition)
+        //    {
+        //        Console.WriteLine($"ALIAS-COND {instruction.Id}");
+        //    }
+        //}
+
         MarkInstructionsNotTestableByBitFieldValue();
+    }
+
+
+    private void DetectConflictingAliases()
+    {
+        var mapSameBitMask = new Dictionary<(uint, uint), List<Instruction>>();
+
+        // Collect instructions with the same bit mask/bit value
+        foreach (var instruction in _instructions)
+        {
+            if (instruction.IsDiscardedByPreferredAlias || instruction.IsAliasWithDynamicCondition)
+            {
+                continue;
+            }
+
+            var key = (instruction.BitfieldMask, instruction.BitfieldValue);
+            if (!mapSameBitMask.TryGetValue(key, out var list))
+            {
+                list = new List<Instruction>();
+                mapSameBitMask.Add(key, list);
+            }
+
+            list.Add(instruction);
+        }
+
+        // Delete all instructions that have a single representation
+        foreach (var keyPair in mapSameBitMask.ToList())
+        {
+            if (keyPair.Value.Count == 1)
+            {
+                mapSameBitMask.Remove(keyPair.Key);
+            }
+        }
+
+        // Check the remaining conflicting instructions and check that they refer to the same alias.
+        // In that case, we can mark them as requiring a dynamic condition during instruction decoding.
+        var aliases = new HashSet<string>();
+        foreach (var keyPair in mapSameBitMask)
+        {
+            aliases.Clear();
+            var conflictingInstructions = keyPair.Value;
+            foreach (var instruction in conflictingInstructions)
+            {
+                Debug.Assert(instruction.Alias is not null,
+                    $"Unexpected state the instruction {instruction.Id} with others ({string.Join(",", conflictingInstructions.Select(x => x.Id != instruction.Id))}) is required to have an alias");
+                aliases.Add(instruction.Alias.InstructionId);
+
+                // Mark the instruction conflicting requiring a dynamic condition so that it won't be included in the trie builder later.
+                instruction.IsAliasWithDynamicCondition = true;
+            }
+
+            Debug.Assert(aliases.Count == 1, $"The instructions cannot have different aliases target\n  {string.Join("\n  ", conflictingInstructions.Select(x => $"{x.Id} => {x.Alias!.InstructionId}"))}");
+        }
     }
     
     private void BuildTrie()
@@ -139,6 +286,11 @@ public partial class Arm64Processor
         _allNodes.Add(rootTrie);
         for (int i = 0; i < _instructions.Count; i++)
         {
+            var instruction = _instructions[i];
+            if (instruction.IsDiscardedByPreferredAlias || instruction.IsAliasWithDynamicCondition)
+            {
+                continue;
+            }
             rootTrie.InstructionIndices.Add(i);
         }
 
@@ -256,7 +408,7 @@ public partial class Arm64Processor
             {
                 var encodingName = encoding.Attribute("name")?.Value!;
                 var docVars = GetDocVars(encoding);
-                
+               
                 string mnemonic = docVars["mnemonic"];
                 int? dataType = null;
                 string? alias = null;
@@ -269,15 +421,6 @@ public partial class Arm64Processor
                 docVars.TryGetValue("alias_mnemonic", out alias);
                 docVars.TryGetValue("instr-class", out instrClass);
 
-                if (alias != null)
-                {
-                    //if (alias != null)
-                    //{
-                    //    Console.WriteLine($"Alias: {mnemonic} -> {alias}");
-                    //}
-                    continue;
-                }
-
                 Debug.Assert(encodingName != null);
                 Debug.Assert(mnemonic != null);
 
@@ -287,6 +430,7 @@ public partial class Arm64Processor
                 var instruction = new Instruction
                 {
                     Filename = fileName,
+                    Id = Instruction.NormalizeId(encodingName),
                     Name = encodingName,
                     Mnemonic = mnemonic,
                     Summary = summary,
@@ -297,7 +441,20 @@ public partial class Arm64Processor
                 {
                     instruction.FeatureRequirement = archVariants[0];
                 }
-                
+
+                var equivalentToElt = encoding.Element("equivalent_to");
+                if (equivalentToElt is not null)
+                {
+                    var aliasCond = equivalentToElt.Element("aliascond")!.Value!;
+                    var asmTemplate = equivalentToElt.Element("asmtemplate")!;
+                    var href = asmTemplate.Element("a")!.Attribute("href")!.Value!;
+                    var targetId = Instruction.NormalizeId(href.Substring(href.IndexOf('#') + 1));
+
+                    instruction.Alias = new(targetId, aliasCond) { IsOut = true };
+                    Debug.Assert(alias is not null);
+                    instruction.Mnemonic = alias!;
+                }
+
                 // Add doc vars
                 foreach (var docVar in parentDocVars)
                 {
@@ -323,6 +480,8 @@ public partial class Arm64Processor
                 }
 
                 instruction.Initialize();
+
+                var instructionId = instruction.Id;
 
                 if (mapEncodingIdToInfo.TryGetValue(encodingName, out var encodingInfo))
                 {

@@ -18,5 +18,8 @@ partial class McInstructionTests
     [DataRow(new byte[] { 0x80, 0x73, 0x0b, 0xd5 }, "cfp rctx, x0")]
     [DataRow(new byte[] { 0xa1, 0x73, 0x0b, 0xd5 }, "dvp rctx, x1")]
     [DataRow(new byte[] { 0xe2, 0x73, 0x0b, 0xd5 }, "cpp rctx, x2")]
+    [DataRow(new byte[] { 0x80, 0x73, 0x0b, 0xd5 }, "cfp rctx, x0")]
+    [DataRow(new byte[] { 0xa1, 0x73, 0x0b, 0xd5 }, "dvp rctx, x1")]
+    [DataRow(new byte[] { 0xe2, 0x73, 0x0b, 0xd5 }, "cpp rctx, x2")]
     public void armv8_5a_predres_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

@@ -62,6 +62,10 @@ partial class Arm64Architecture
     /// </summary>
     public static readonly Arm64Architecture ARMv9_0_A = new(Arm64ArchitectureId.ARMv9_0_A, 9, 0, Arm64ArchitectureProfile.A);
     /// <summary>
+    /// Architecture ARMv9_2_A.
+    /// </summary>
+    public static readonly Arm64Architecture ARMv9_2_A = new(Arm64ArchitectureId.ARMv9_2_A, 9, 2, Arm64ArchitectureProfile.A);
+    /// <summary>
     /// Architecture ARMv9_4_A.
     /// </summary>
     public static readonly Arm64Architecture ARMv9_4_A = new(Arm64ArchitectureId.ARMv9_4_A, 9, 4, Arm64ArchitectureProfile.A);
@@ -94,6 +98,7 @@ partial class Arm64Architecture
             Arm64ArchitectureId.ARMv8_8_A => ARMv8_8_A,
             Arm64ArchitectureId.ARMv8_9_A => ARMv8_9_A,
             Arm64ArchitectureId.ARMv9_0_A => ARMv9_0_A,
+            Arm64ArchitectureId.ARMv9_2_A => ARMv9_2_A,
             Arm64ArchitectureId.ARMv9_4_A => ARMv9_4_A,
             Arm64ArchitectureId.ARMv9_5_A => ARMv9_5_A,
             Arm64ArchitectureId.ARMv9_6_A => ARMv9_6_A,

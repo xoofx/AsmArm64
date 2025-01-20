@@ -24,5 +24,7 @@ partial class McInstructionTests
     [DataRow(new byte[] { 0x62, 0x40, 0x60, 0x1e }, "fmov d2, d3")]
     [DataRow(new byte[] { 0xe2, 0x03, 0xc0, 0x3d }, "ldr q2, [sp]")]
     [DataRow(new byte[] { 0x20, 0x1c, 0xa1, 0x0e }, "mov v0.8b, v1.8b")]
+    [DataRow(new byte[] { 0x06, 0x00, 0x00, 0x8b }, "add x6, x0, x0")]
+    [DataRow(new byte[] { 0x06, 0x00, 0x00, 0x8b }, "add x6, x0, x0")]
     public void dot_req_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

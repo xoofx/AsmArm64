@@ -62,6 +62,9 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
                 break;
         }
 
+        // We can decode the indexer
+        Arm64IndexerHelper.TryDecode(rawValue, elementIndexerId, out var elementIndex);
+
         // Register kind
         Arm64RegisterKind registerKind;
         Arm64RegisterVKind vKind = Arm64RegisterVKind.Default;
@@ -72,12 +75,14 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
             case Arm64RegisterEncodingKind.X:
                 registerKind = Arm64RegisterKind.X;
                 break;
+            case Arm64RegisterEncodingKind.W:
+                registerKind = Arm64RegisterKind.W;
+                break;
             case Arm64RegisterEncodingKind.XOrSP:
                 registerKind = registerIndex == 31 ? Arm64RegisterKind.SP : Arm64RegisterKind.X;
                 break;
-            case Arm64RegisterEncodingKind.W:
             case Arm64RegisterEncodingKind.WOrWSP:
-                registerKind = registerIndex == 31 ? Arm64RegisterKind.SP : Arm64RegisterKind.W;
+                registerKind = registerIndex == 31 ? Arm64RegisterKind.WSP : Arm64RegisterKind.W;
                 break;
             case Arm64RegisterEncodingKind.B:
                 registerKind = Arm64RegisterKind.VScalar;
@@ -115,7 +120,9 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
                     }
                     else
                     {
-                        registerKind = elementCount == 0 ? Arm64RegisterKind.VTyped : Arm64RegisterKind.VPacked;
+                        registerKind = elementCount == 0
+                            ? elementIndexerId != 0 ? Arm64RegisterKind.VTypedIndexed : Arm64RegisterKind.VTyped
+                            : elementIndexerId != 0 ? Arm64RegisterKind.VPackedIndexed : Arm64RegisterKind.VPacked;
                     }
                 }
                 break;
@@ -139,9 +146,6 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
                 registerKind = Arm64RegisterKind.Invalid;
                 break;
         }
-
-        // We can decode the indexer
-        Arm64IndexerHelper.TryDecode(rawValue, elementIndexerId, out var elementIndex);
 
         // Create an any register that we can cast later.
         Value = Arm64RegisterAny.Create(registerKind, registerIndex, vKind, elementCount, elementIndex);

@@ -17,5 +17,7 @@ partial class McInstructionTests
     [TestMethod]
     [DataRow(new byte[] { 0x11, 0x10, 0x03, 0xd5 }, "wfet x17")]
     [DataRow(new byte[] { 0x23, 0x10, 0x03, 0xd5 }, "wfit x3")]
+    [DataRow(new byte[] { 0x11, 0x10, 0x03, 0xd5 }, "wfet x17")]
+    [DataRow(new byte[] { 0x23, 0x10, 0x03, 0xd5 }, "wfit x3")]
     public void armv8_7a_wfxt_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

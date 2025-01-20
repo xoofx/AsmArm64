@@ -74,6 +74,7 @@ partial class Arm64Extensions
             Arm64RegisterKind.X => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterX>(register).ToText(upper),
             Arm64RegisterKind.W => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterW>(register).ToText(upper),
             Arm64RegisterKind.SP => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterSP>(register).ToText(upper),
+            Arm64RegisterKind.WSP => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterWSP>(register).ToText(upper),
             Arm64RegisterKind.V => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV>(register).ToText(upper),
             Arm64RegisterKind.VTyped => register.VKind switch
             {
@@ -118,6 +119,11 @@ partial class Arm64Extensions
                 Arm64RegisterVKind.D => register.ElementCount switch
                 {
                     2 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_2D>(register).ToText(upper),
+                    _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid ElementCount {register.ElementCount}")
+                },
+                Arm64RegisterVKind.Q => register.ElementCount switch
+                {
+                    1 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_1Q>(register).ToText(upper),
                     _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid ElementCount {register.ElementCount}")
                 },
                 _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid VKind {register.VKind}")

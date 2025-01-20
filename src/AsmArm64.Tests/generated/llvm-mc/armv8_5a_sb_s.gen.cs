@@ -16,5 +16,6 @@ partial class McInstructionTests
 {
     [TestMethod]
     [DataRow(new byte[] { 0xff, 0x30, 0x03, 0xd5 }, "sb")]
+    [DataRow(new byte[] { 0xff, 0x30, 0x03, 0xd5 }, "sb")]
     public void armv8_5a_sb_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

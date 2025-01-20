@@ -16,5 +16,6 @@ partial class McInstructionTests
 {
     [TestMethod]
     [DataRow(new byte[] { 0x00, 0x00, 0x7e, 0x1e }, "fjcvtzs w0, d0")]
+    [DataRow(new byte[] { 0x00, 0x00, 0x7e, 0x1e }, "fjcvtzs w0, d0")]
     public void armv8_3a_js_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

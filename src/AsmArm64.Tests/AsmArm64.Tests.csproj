@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="generated\" />
+    <Folder Include="generated\llvm-mc\" />
   </ItemGroup>
 
 </Project>

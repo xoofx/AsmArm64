@@ -16,5 +16,7 @@ partial class McInstructionTests
 {
     [TestMethod]
     [DataRow(new byte[] { 0x40, 0x53, 0x38, 0xd5 }, "mrs x0, ERXGSR_EL1")]
+    [DataRow(new byte[] { 0x40, 0x53, 0x38, 0xd5 }, "mrs x0, ERXGSR_EL1")]
+    [DataRow(new byte[] { 0x40, 0x53, 0x38, 0xd5 }, "mrs x0, ERXGSR_EL1")]
     public void armv8_9a_rasv2_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

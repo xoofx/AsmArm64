@@ -17,5 +17,9 @@ partial class McInstructionTests
     [TestMethod]
     [DataRow(new byte[] { 0xc0, 0x73, 0x0b, 0xd5 }, "cosp rctx, x0")]
     [DataRow(new byte[] { 0xc0, 0x73, 0x0b, 0xd5 }, "cosp rctx, x0")]
+    [DataRow(new byte[] { 0xc0, 0x73, 0x0b, 0xd5 }, "cosp rctx, x0")]
+    [DataRow(new byte[] { 0xc0, 0x73, 0x0b, 0xd5 }, "cosp rctx, x0")]
+    [DataRow(new byte[] { 0xc0, 0x73, 0x0b, 0xd5 }, "cosp rctx, x0")]
+    [DataRow(new byte[] { 0xc0, 0x73, 0x0b, 0xd5 }, "cosp rctx, x0")]
     public void armv8_9a_specres2_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

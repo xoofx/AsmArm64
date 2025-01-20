@@ -17,5 +17,9 @@ partial class McInstructionTests
     [TestMethod]
     [DataRow(new byte[] { 0x01, 0x79, 0x08, 0xd5 }, "at s1e1rp, x1")]
     [DataRow(new byte[] { 0x22, 0x79, 0x08, 0xd5 }, "at s1e1wp, x2")]
+    [DataRow(new byte[] { 0x01, 0x79, 0x08, 0xd5 }, "at s1e1rp, x1")]
+    [DataRow(new byte[] { 0x22, 0x79, 0x08, 0xd5 }, "at s1e1wp, x2")]
+    [DataRow(new byte[] { 0x01, 0x79, 0x08, 0xd5 }, "at s1e1rp, x1")]
+    [DataRow(new byte[] { 0x22, 0x79, 0x08, 0xd5 }, "at s1e1wp, x2")]
     public void armv8_2a_at_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

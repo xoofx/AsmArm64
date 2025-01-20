@@ -7,16 +7,19 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using AsmArm64.CodeGen.Model;
 
 namespace AsmArm64.CodeGen;
 
 class TableGenEncoder
 {
+    private readonly InstructionSet _instructionSet;
     private byte[] _buffer;
     private uint _offset;
 
-    public TableGenEncoder()
+    public TableGenEncoder(InstructionSet instructionSet)
     {
+        _instructionSet = instructionSet;
         _buffer = new byte[256 * 1024];
     }
 
@@ -103,8 +106,15 @@ class TableGenEncoder
     private EntryIndex GetTerminalEntryIndex(InstructionTrieNode trieNode)
     {
         Debug.Assert(trieNode.IsTerminal);
-        var index = (uint)(trieNode.InstructionIndices[0] + 1);
-        return new EntryIndex(index | 0x8000_0000U);
+        var instructionIndex = trieNode.InstructionIndices[0];
+        var index = (uint)(instructionIndex + 1) | 0x8000_0000U;
+        if (_instructionSet.Instructions[instructionIndex].HasAliasesInAndRequiringDynamicResolution)
+        {
+            // Allow the decoder to resolve further the instruction manually
+            index |= 0x4000_0000U;
+        }
+        
+        return new EntryIndex(index);
     }
 
     public struct EntryHeader

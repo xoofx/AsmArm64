@@ -14,10 +14,9 @@ namespace AsmArm64.CodeGen.Model;
 
 class Instruction : IJsonOnDeserialized
 {
-    public string Id { get; set; } = string.Empty;
+    public required string Id { get; set; } = string.Empty;
 
-    [JsonIgnore]
-    public int IdIndex { get; set; }
+    public int Index { get; set; }
 
     public string Mnemonic { get; set; } = string.Empty;
 
@@ -26,6 +25,32 @@ class Instruction : IJsonOnDeserialized
 
     public string Name { get; set; } = string.Empty;
 
+    /// <summary>
+    /// <c>true</c> if this instruction has been discarded by an alias that is preferred.
+    /// </summary>
+    public bool IsDiscardedByPreferredAlias { get; set; }
+
+    /// <summary>
+    /// <c>true</c> if this instruction is an alias with a dynamic condition.
+    /// </summary>
+    public bool IsAliasWithDynamicCondition { get; set; }
+    
+    /// <summary>
+    /// <c>true</c> if this instruction is aliased by other instructions from <see cref="AliasesIn"/> and require a dynamic resolution.
+    /// </summary>
+    public bool HasAliasesInAndRequiringDynamicResolution { get; set; }
+    
+    /// <summary>
+    /// When not null, this instruction instance is an alias for another instruction defined by <see cref="AliasInfo.InstructionId"/>. when the given <see cref="AliasInfo.Condition"/> is met.
+    /// </summary>
+    public AliasInfo? Alias { get; set; }
+    
+    /// <summary>
+    /// Gets the list of instructions this instruction is aliased from.
+    /// </summary>
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<AliasInfo> AliasesIn { get; } = new();
+    
     /// <summary>
     /// Gets or sets the syntax of the operands of this instruction.
     /// </summary>
@@ -78,7 +103,7 @@ class Instruction : IJsonOnDeserialized
     
     public void Encode(Span<byte> buffer)
     {
-        MemoryMarshal.Write(buffer, (ushort)IdIndex);
+        MemoryMarshal.Write(buffer, (ushort)Index);
         MemoryMarshal.Write(buffer.Slice(2), (ushort)MnemonicIndex);
         buffer[4] = (byte)InstructionClassIndex;
         buffer[5] = (byte)FeatureExpressionIdIndex;
@@ -108,12 +133,16 @@ class Instruction : IJsonOnDeserialized
         }
     }
 
+    public static string NormalizeId(string nameToNormalize)
+    {
+        var name = nameToNormalize.TrimEnd('_');
+        var indexOfUnderscore = name.IndexOf('_');
+        var id = indexOfUnderscore > 0 ? $"{name.Substring(0, indexOfUnderscore).ToUpperInvariant()}{name.Substring(indexOfUnderscore).ToLowerInvariant()}" : name.ToUpperInvariant();
+        return id;
+    }
+    
     public void Initialize()
     {
-        var name = Name.TrimEnd('_');
-        var indexOfUnderscore = name.IndexOf('_');
-        Id = indexOfUnderscore > 0 ? $"{name.Substring(0, indexOfUnderscore).ToUpperInvariant()}{name.Substring(indexOfUnderscore).ToLowerInvariant()}" : name.ToUpperInvariant();
-        
         foreach (var bitfieldInfo in BitRanges)
         {
             var fieldSets = bitfieldInfo.BitFieldSet;
@@ -217,3 +246,15 @@ class Instruction : IJsonOnDeserialized
         UpdateBitRangeMap();
     }
 }
+
+record AliasInfo(string InstructionId, string Condition)
+{
+    public required bool IsOut { get; init; }
+
+    public bool IsAlways => Condition.Equals("Unconditionally", StringComparison.OrdinalIgnoreCase);
+
+    public bool IsNever => Condition.Equals("Never", StringComparison.OrdinalIgnoreCase);
+
+    public bool IsSpecial => !IsAlways && !IsNever;
+}
+

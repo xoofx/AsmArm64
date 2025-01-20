@@ -340,6 +340,8 @@ static class Arm64DynamicRegisterHelper
             }
             // ADD_64_addsub_ext             : ADD         Xd|SP, Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
             // ADDS_64s_addsub_ext           : ADDS        Xd, Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
+            // CMN_adds_64s_addsub_ext       : CMN         Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
+            // CMP_subs_64s_addsub_ext       : CMP         Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
             // SUB_64_addsub_ext             : SUB         Xd|SP, Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
             // SUBS_64s_addsub_ext           : SUBS        Xd, Xn|SP, Rm {, extend, {#amount}} <- Operand: Rm
             case 8:
@@ -489,6 +491,7 @@ static class Arm64DynamicRegisterHelper
                 break;
             }
             // DUP_asisdone_only             : DUP         Vd, Vn.T[index] <- Operand: Vd
+            // MOV_dup_asisdone_only         : MOV         Vd, Vn.T[index] <- Operand: Vd
             case 13:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
@@ -517,6 +520,7 @@ static class Arm64DynamicRegisterHelper
             }
             // DUP_asimdins_dr_r             : DUP         Vd.T, Rn <- Operand: Rn
             // INS_asimdins_ir_r             : INS         Vd.Ts[index], Rn <- Operand: Rn
+            // MOV_ins_asimdins_ir_r         : MOV         Vd.Ts[index], Rn <- Operand: Rn
             case 14:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);

@@ -31,9 +31,13 @@ public enum Arm64RegisterKind : byte
     /// </summary>
     C,
     /// <summary>
-    /// Stack pointer register.
+    /// 32-bit Stack pointer register.
     /// </summary>
     SP,
+    /// <summary>
+    /// 32-bit Stack pointer register.
+    /// </summary>
+    WSP,
     /// <summary>
     /// Vector register.
     /// </summary>
@@ -642,7 +646,7 @@ public readonly record struct Arm64RegisterC : IArm64Register
 }
 
 /// <summary>
-/// Represents an ARM64 SP Stack pointer register.
+/// Represents an ARM64 SP 32-bit Stack pointer register.
 /// </summary>
 public readonly record struct Arm64RegisterSP : IArm64Register
 {
@@ -694,6 +698,61 @@ public readonly record struct Arm64RegisterSP : IArm64Register
     /// Gets the SP register.
     /// </summary>
     public static Arm64RegisterSP SP => new(31);
+}
+
+/// <summary>
+/// Represents an ARM64 WSP 32-bit Stack pointer register.
+/// </summary>
+public readonly record struct Arm64RegisterWSP : IArm64Register
+{
+    private readonly uint _value;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal Arm64RegisterWSP(int index) => _value = ((uint)Arm64RegisterKind.WSP << 8) | (uint)index;
+
+    /// <inheritdoc />
+    public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+    /// <inheritdoc />
+    public int Index => (byte)_value;
+
+    /// <inheritdoc />
+    public override string ToString() => ToString(null, null);
+
+    /// <inheritdoc />
+    public string ToString(string? format, IFormatProvider? formatProvider) => this.ToText((format ??= "L") == "H");
+
+    /// <inheritdoc />
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
+    }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterWSP register) => Unsafe.BitCast<Arm64RegisterWSP, Arm64RegisterAny>(register);
+
+    /// <summary>
+    /// Converts an any register register to a WSP register.
+    /// </summary>
+    public static explicit operator Arm64RegisterWSP(Arm64RegisterAny register)
+    {
+        if (register.Kind != Arm64RegisterKind.WSP || register.VKind != Arm64RegisterVKind.Default)
+        {
+            throw new InvalidCastException($"Invalid cast from {register.Kind} to Arm64RegisterKind.WSP");
+        }
+        return Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterWSP>(register);
+    }
+
+    /// <summary>
+    /// Gets the WSP register.
+    /// </summary>
+    public static Arm64RegisterWSP WSP => new(31);
 }
 
 /// <summary>
@@ -3332,6 +3391,156 @@ public readonly record struct Arm64RegisterV_2D : IArm64RegisterVPacked
         return Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_2D>(register);
     }
 }
+/// <summary>
+/// Represents an ARM64 a vector typed with Double-precision 64-bit floating-point register (V.Q arrangement).
+/// </summary>
+public readonly record struct Arm64RegisterV_Q : IArm64RegisterVTyped
+{
+    private readonly uint _value;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal Arm64RegisterV_Q(int index) => _value = ((uint)Arm64RegisterVKind.Q << 16) | ((uint)Arm64RegisterKind.VTyped << 8) | (uint)index;
+
+    /// <inheritdoc />
+    public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+    /// <inheritdoc />
+    public int Index => (byte)_value;
+
+    /// <inheritdoc />
+    public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <summary>
+    /// Gets the indexed element of this vector typed register.
+    /// </summary>
+    public Indexed this[int elementIndex] => new(Index, elementIndex);
+
+    /// <summary>
+    /// Gets the base register of this vector typed register.
+    /// </summary>
+    public Arm64RegisterV BaseRegister => new(Index);
+
+    /// <inheritdoc />
+    public override string ToString() => ToString(null, null);
+
+    /// <inheritdoc />
+    public string ToString(string? format, IFormatProvider? formatProvider) => this.ToText((format ??= "L") == "H");
+
+    /// <inheritdoc />
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
+    }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_Q register) => Unsafe.BitCast<Arm64RegisterV_Q, Arm64RegisterAny>(register);
+
+    /// <summary>
+    /// Converts an any register to a V.Q register.
+    /// </summary>
+    public static explicit operator Arm64RegisterV_Q(Arm64RegisterAny register)
+    {
+        if (register.Kind != Arm64RegisterKind.VTyped || register.VKind != Arm64RegisterVKind.Q)
+        {
+            throw new InvalidCastException($"Invalid cast from {register.Kind}/{register.VKind} to Arm64RegisterV_Q");
+        }
+        return Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_Q>(register);
+    }
+
+    /// <summary>
+    /// Represents an ARM64 a vector indexed with Double-precision 64-bit floating-point register (V.Q arrangement).
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    {
+        private readonly uint _value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | ((uint)Arm64RegisterVKind.Q << 16) | ((uint)Arm64RegisterKind.VTypedIndexed << 8) | (uint)registerIndex;
+
+        /// <inheritdoc />
+        public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+        /// <inheritdoc />
+        public int Index => (byte)_value;
+
+        /// <inheritdoc />
+        public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+        /// <inheritdoc />
+        public int ElementIndex => (byte)(_value >> 28);
+
+        /// <summary>
+        /// Gets the base register of this indexed vector register.
+        /// </summary>
+        public Arm64RegisterV_Q BaseRegister => new(Index);
+
+        /// <inheritdoc />
+        public override string ToString() => ToString(null, null);
+
+        /// <inheritdoc />
+        [SkipLocalsInit]
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            Span<char> localText = stackalloc char[16];
+            return !TryFormat(localText, out var charsWritten, format, formatProvider) ? string.Empty : localText.Slice(0, charsWritten).ToString();
+        }
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        {
+            if (!BaseRegister.TryFormat(destination, out var tempWritten, format, provider))
+            {
+                charsWritten = 0;
+                return false;
+            }
+            // [1] to [16] (3 to 4 characters)
+            if (destination.Length < tempWritten + 4)
+            {
+                charsWritten = 0;
+                return false;
+            }
+            destination[tempWritten] = '[';
+            if (ElementIndex >= 10)
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex / 10);
+                destination[tempWritten + 2] = (char)('0' + ElementIndex % 10);
+                charsWritten = tempWritten + 3;
+            }
+            else
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex);
+                charsWritten = tempWritten + 2;
+            }
+            destination[charsWritten] = ']';
+
+            charsWritten++;
+            return true;
+        }
+
+        /// <summary>
+        /// Converts this register to an any register.
+        /// </summary>
+        public static implicit operator Arm64RegisterAny(Indexed register) => Unsafe.BitCast<Indexed, Arm64RegisterAny>(register);
+
+        /// <summary>
+        /// Converts an any register to a V.Q register.
+        /// </summary>
+        public static explicit operator Indexed(Arm64RegisterAny register)
+        {
+            if (register.Kind != Arm64RegisterKind.VTypedIndexed || register.VKind != Arm64RegisterVKind.Q)
+            {
+                throw new InvalidCastException($"Invalid cast from {register.Kind}/{register.VKind} to Arm64RegisterV_Q.Indexed");
+            }
+            return Unsafe.BitCast<Arm64RegisterAny, Indexed>(register);
+        }
+    }
+}
 
 /// <summary>
 /// Represents an ARM64 a Double-precision 64-bit floating-point register (Q arrangement).
@@ -3546,6 +3755,67 @@ public readonly record struct Arm64RegisterQ : IArm64RegisterVScalar
     public static Arm64RegisterQ Q31 => new(31);
 }
 
+
+/// <summary>
+/// Represents an ARM64 an arranged 1 x Q, Double-precision 64-bit floating-point register
+/// </summary>
+public readonly record struct Arm64RegisterV_1Q : IArm64RegisterVPacked
+{
+    private readonly uint _value;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal Arm64RegisterV_1Q(int index) => _value = (0U << 24) | ((uint)Arm64RegisterVKind.Q << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+
+    /// <inheritdoc />
+    public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+    /// <inheritdoc />
+    public int Index => (byte)_value;
+
+    /// <inheritdoc />
+    public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <inheritdoc />
+    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_Q BaseRegister => new(Index);
+
+    /// <inheritdoc />
+    public override string ToString() => ToString(null, null);
+
+    /// <inheritdoc />
+    public string ToString(string? format, IFormatProvider? formatProvider) => this.ToText((format ??= "L") == "H");
+
+    /// <inheritdoc />
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
+    }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_1Q register) => Unsafe.BitCast<Arm64RegisterV_1Q, Arm64RegisterAny>(register);
+
+    /// <summary>
+    /// Converts an any register to a V.Q register.
+    /// </summary>
+    public static explicit operator Arm64RegisterV_1Q(Arm64RegisterAny register)
+    {
+        if (register.Kind != Arm64RegisterKind.VPacked || register.VKind != Arm64RegisterVKind.Q)
+        {
+            throw new InvalidCastException($"Invalid cast from {register.Kind}/{register.VKind} to Arm64RegisterV_1Q");
+        }
+        return Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_1Q>(register);
+    }
+}
 
 partial class Arm64Factory
 {
@@ -3874,6 +4144,10 @@ partial class Arm64Factory
     /// Gets the SP register.
     /// </summary>
     public static Arm64RegisterSP SP =>  Arm64RegisterSP.SP;
+    /// <summary>
+    /// Gets the WSP register.
+    /// </summary>
+    public static Arm64RegisterWSP WSP =>  Arm64RegisterWSP.WSP;
     /// <summary>
     /// Gets the V0 register.
     /// </summary>
@@ -4783,6 +5057,79 @@ partial class Arm64Extensions
         "SP", // 31
     ];
     /// <summary>
+    /// Converts the WSP register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterWSP register, bool upperCase = false) => upperCase ? RegisterWSPUpperNames[ValidateRegisterIndex(register.Index)] : RegisterWSPLowerNames[ValidateRegisterIndex(register.Index)];
+    private static readonly string[] RegisterWSPLowerNames = [
+        "??", // 0
+        "??", // 1
+        "??", // 2
+        "??", // 3
+        "??", // 4
+        "??", // 5
+        "??", // 6
+        "??", // 7
+        "??", // 8
+        "??", // 9
+        "??", // 10
+        "??", // 11
+        "??", // 12
+        "??", // 13
+        "??", // 14
+        "??", // 15
+        "??", // 16
+        "??", // 17
+        "??", // 18
+        "??", // 19
+        "??", // 20
+        "??", // 21
+        "??", // 22
+        "??", // 23
+        "??", // 24
+        "??", // 25
+        "??", // 26
+        "??", // 27
+        "??", // 28
+        "??", // 29
+        "??", // 30
+        "wsp", // 31
+    ];
+
+    private static readonly string[] RegisterWSPUpperNames = [
+        "??", // 0
+        "??", // 1
+        "??", // 2
+        "??", // 3
+        "??", // 4
+        "??", // 5
+        "??", // 6
+        "??", // 7
+        "??", // 8
+        "??", // 9
+        "??", // 10
+        "??", // 11
+        "??", // 12
+        "??", // 13
+        "??", // 14
+        "??", // 15
+        "??", // 16
+        "??", // 17
+        "??", // 18
+        "??", // 19
+        "??", // 20
+        "??", // 21
+        "??", // 22
+        "??", // 23
+        "??", // 24
+        "??", // 25
+        "??", // 26
+        "??", // 27
+        "??", // 28
+        "??", // 29
+        "??", // 30
+        "WSP", // 31
+    ];
+    /// <summary>
     /// Converts the V register to a string.
     /// </summary>
     public static string ToText(this Arm64RegisterV register, bool upperCase = false) => upperCase ? RegisterVUpperNames[ValidateRegisterIndex(register.Index)] : RegisterVLowerNames[ValidateRegisterIndex(register.Index)];
@@ -4930,6 +5277,7 @@ partial class Arm64Extensions
         "B30",
         "B31",
         ];
+
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
@@ -5004,6 +5352,7 @@ partial class Arm64Extensions
         "V30.B",
         "V31.B",
         ];
+
 
     /// <summary>
     /// Converts the V register to a string.
@@ -5378,6 +5727,7 @@ partial class Arm64Extensions
         "H30",
         "H31",
         ];
+
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
@@ -5452,6 +5802,7 @@ partial class Arm64Extensions
         "V30.H",
         "V31.H",
         ];
+
 
     /// <summary>
     /// Converts the V register to a string.
@@ -5751,6 +6102,7 @@ partial class Arm64Extensions
         "S30",
         "S31",
         ];
+
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
@@ -5825,6 +6177,7 @@ partial class Arm64Extensions
         "V30.S",
         "V31.S",
         ];
+
 
     /// <summary>
     /// Converts the V register to a string.
@@ -6049,6 +6402,7 @@ partial class Arm64Extensions
         "D30",
         "D31",
         ];
+
     /// <summary>
     /// Converts the V register to a string.
     /// </summary>
@@ -6123,6 +6477,7 @@ partial class Arm64Extensions
         "V30.D",
         "V31.D",
         ];
+
 
     /// <summary>
     /// Converts the V register to a string.
@@ -6271,5 +6626,156 @@ partial class Arm64Extensions
         "Q29",
         "Q30",
         "Q31",
+        ];
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV_Q register, bool upperCase = false) => upperCase ? RegisterV_QUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV_QLowerNames[ValidateRegisterIndex(register.Index)];
+
+    private static readonly string[] RegisterV_QLowerNames = [
+        "v0.q",
+        "v1.q",
+        "v2.q",
+        "v3.q",
+        "v4.q",
+        "v5.q",
+        "v6.q",
+        "v7.q",
+        "v8.q",
+        "v9.q",
+        "v10.q",
+        "v11.q",
+        "v12.q",
+        "v13.q",
+        "v14.q",
+        "v15.q",
+        "v16.q",
+        "v17.q",
+        "v18.q",
+        "v19.q",
+        "v20.q",
+        "v21.q",
+        "v22.q",
+        "v23.q",
+        "v24.q",
+        "v25.q",
+        "v26.q",
+        "v27.q",
+        "v28.q",
+        "v29.q",
+        "v30.q",
+        "v31.q",
+        ];
+
+    private static readonly string[] RegisterV_QUpperNames = [
+        "V0.Q",
+        "V1.Q",
+        "V2.Q",
+        "V3.Q",
+        "V4.Q",
+        "V5.Q",
+        "V6.Q",
+        "V7.Q",
+        "V8.Q",
+        "V9.Q",
+        "V10.Q",
+        "V11.Q",
+        "V12.Q",
+        "V13.Q",
+        "V14.Q",
+        "V15.Q",
+        "V16.Q",
+        "V17.Q",
+        "V18.Q",
+        "V19.Q",
+        "V20.Q",
+        "V21.Q",
+        "V22.Q",
+        "V23.Q",
+        "V24.Q",
+        "V25.Q",
+        "V26.Q",
+        "V27.Q",
+        "V28.Q",
+        "V29.Q",
+        "V30.Q",
+        "V31.Q",
+        ];
+
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV_1Q register, bool upperCase = false) => upperCase ? RegisterV1QUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV1QLowerNames[ValidateRegisterIndex(register.Index)];
+
+    private static readonly string[] RegisterV1QLowerNames = [
+        "v0.1q",
+        "v1.1q",
+        "v2.1q",
+        "v3.1q",
+        "v4.1q",
+        "v5.1q",
+        "v6.1q",
+        "v7.1q",
+        "v8.1q",
+        "v9.1q",
+        "v10.1q",
+        "v11.1q",
+        "v12.1q",
+        "v13.1q",
+        "v14.1q",
+        "v15.1q",
+        "v16.1q",
+        "v17.1q",
+        "v18.1q",
+        "v19.1q",
+        "v20.1q",
+        "v21.1q",
+        "v22.1q",
+        "v23.1q",
+        "v24.1q",
+        "v25.1q",
+        "v26.1q",
+        "v27.1q",
+        "v28.1q",
+        "v29.1q",
+        "v30.1q",
+        "v31.1q",
+        ];
+
+    private static readonly string[] RegisterV1QUpperNames = [
+        "V0.1Q",
+        "V1.1Q",
+        "V2.1Q",
+        "V3.1Q",
+        "V4.1Q",
+        "V5.1Q",
+        "V6.1Q",
+        "V7.1Q",
+        "V8.1Q",
+        "V9.1Q",
+        "V10.1Q",
+        "V11.1Q",
+        "V12.1Q",
+        "V13.1Q",
+        "V14.1Q",
+        "V15.1Q",
+        "V16.1Q",
+        "V17.1Q",
+        "V18.1Q",
+        "V19.1Q",
+        "V20.1Q",
+        "V21.1Q",
+        "V22.1Q",
+        "V23.1Q",
+        "V24.1Q",
+        "V25.1Q",
+        "V26.1Q",
+        "V27.1Q",
+        "V28.1Q",
+        "V29.1Q",
+        "V30.1Q",
+        "V31.1Q",
         ];
 }

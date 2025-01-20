@@ -10,7 +10,7 @@ internal class Program
     {
         var generator = new McInstructionTestsGen();
 
-        generator.ProcessFilesFromTar(@"C:\code\AsmArm64\tmp\llvm-19.1.7.src.tar");
+        generator.ProcessFilesFromTar(@"C:\Users\alexa\Downloads\capstone-6.0.0-Alpha1.tar.gz");
         generator.GenerateTests();
         Console.WriteLine($"Test Count = {generator.TestCount}");
     }

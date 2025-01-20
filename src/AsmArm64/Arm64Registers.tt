@@ -5,13 +5,13 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 <#
-    var registerKinds = new string[] { "X", "W", "C", "SP", "V" };
+    var registerKinds = new string[] { "X", "W", "C", "SP", "WSP", "V" };
     var vectors = new (string Name, string Description, int[] Sizes) [] {
         ("B", "8-bit vector register", new int[] {2, 4, 8, 16}),
         ("H", "Half-precision 16-bit floating-point register", new int[] {2, 4, 8}),
         ("S", "Single-precision 32-bit floating-point register", new int[] {2, 4}),
         ("D", "Double-precision 64-bit floating-point register", new int[] {2}),
-        ("Q", "Double-precision 64-bit floating-point register", new int[0])
+        ("Q", "Double-precision 64-bit floating-point register", new int[] {1})
     };
 
     var registerKindNames = new Dictionary<string, string>
@@ -20,7 +20,8 @@
         { "XZ","Zero 64-bit register" },
         { "W", "32-bit general-purpose register" },
         { "WZ","Zero 32-bit register" },
-        { "SP", "Stack pointer register" },
+        { "SP", "32-bit Stack pointer register" },
+        { "WSP", "32-bit Stack pointer register" },
         { "C", "Control Register" },
         { "V", "Vector register" },
         { "H", "Half-precision 16-bit floating-point register" },
@@ -161,7 +162,7 @@ public readonly record struct Arm64Register<#= kind #> : <#= kind == "V" ? "IArm
         }
         return Unsafe.BitCast<Arm64RegisterAny, Arm64Register<#= kind #>>(register);
     }
-<# if (kind == "SP") { #>
+<# if (kind == "SP" || kind == "WSP") { #>
 
     /// <summary>
     /// Gets the <#= kind #> register.
@@ -213,7 +214,6 @@ public readonly record struct Arm64Register<#= kind #> : <#= kind == "V" ? "IArm
 }
 <# } // foreach kind #>
 <# foreach(var vector in vectors) { var kind = vector.Name; #>
-<# if (kind != "Q") { #>
 /// <summary>
 /// Represents an ARM64 a vector typed with <#= vector.Description #> (V.<#= kind #> arrangement).
 /// </summary>
@@ -364,7 +364,6 @@ public readonly record struct Arm64RegisterV_<#= kind #> : IArm64RegisterVTyped
         }
     }
 }
-<# } // if (kind != "Q") { #>
 
 /// <summary>
 /// Represents an ARM64 a <#= vector.Description #> (<#= kind #> arrangement).
@@ -600,11 +599,11 @@ partial class Arm64Factory
     /// </summary>
     public static Arm64RegisterW WZR => Arm64RegisterW.WZR;
 <# foreach(var kind in registerKinds) { #>
-<# if (kind == "SP") { #>
+<# if (kind == "SP" || kind == "WSP") { #>
     /// <summary>
     /// Gets the <#= kind #> register.
     /// </summary>
-    public static Arm64Register<#= kind #> <#= kind #> =>  Arm64RegisterSP.SP;
+    public static Arm64Register<#= kind #> <#= kind #> =>  Arm64Register<#= kind #>.<#= kind #>;
 <# } else { #>
 <# for(int i = 0; i < ((kind == "X" || kind == "W") ? 31 : (kind == "C" ? 16 : 32)); i++) { #>
     /// <summary>
@@ -632,19 +631,19 @@ partial class Arm64Extensions
     /// Converts the <#= kind #> register to a string.
     /// </summary>
     public static string ToText(this Arm64Register<#= kind #> register, bool upperCase = false) => upperCase ? Register<#= kind #>UpperNames[ValidateRegisterIndex(register.Index)] : Register<#= kind #>LowerNames[ValidateRegisterIndex(register.Index)];
-<# if (kind == "SP") { #>
-    private static readonly string[] RegisterSPLowerNames = [
+<# if (kind == "SP" || kind == "WSP") { #>
+    private static readonly string[] Register<#= kind #>LowerNames = [
 <# for(int i = 0; i < 31; i++) { #>
         "??", // <#= i #>
 <# } #>
-        "sp", // 31
+        "<#= kind.ToLowerInvariant() #>", // 31
     ];
 
-    private static readonly string[] RegisterSPUpperNames = [
+    private static readonly string[] Register<#= kind #>UpperNames = [
 <# for(int i = 0; i < 31; i++) { #>
         "??", // <#= i #>
 <# } #>
-        "SP", // 31
+        "<#= kind #>", // 31
     ];
 <# } else { #>
 
@@ -681,7 +680,7 @@ partial class Arm64Extensions
     "<#= vkind #><#= i #>",
     <# } #>
     ];
-<# if (vkind != "Q") { #>
+
     /// <summary>
     /// Converts the <#= kind #> register to a string.
     /// </summary>
@@ -698,7 +697,7 @@ partial class Arm64Extensions
     "V<#= i #>.<#= vkind #>",
     <# } #>
     ];
-<# } // if (vkind != "Q") #>
+
 <# foreach(var size in vector.Sizes) { #>
 
     /// <summary>

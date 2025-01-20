@@ -326,7 +326,7 @@ class EncodingSymbol
                         var previous = bitValue.BitItems[i - 1];
                         if (current.Range.LowBit + current.Range.Width == previous.Range.LowBit)
                         {
-                            bitValue.BitItems[i - 1] = new(BitValueItemKind.BitRange, new(previous.Range.LowBit, previous.Range.Width + current.Range.Width));
+                            bitValue.BitItems[i - 1] = new(BitValueItemKind.BitRange, new(current.Range.LowBit, previous.Range.Width + current.Range.Width));
                             bitValue.BitItems.RemoveAt(i);
                         }
                     }
