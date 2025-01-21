@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="..\AsmArm64\Arm64EnumKind.cs" Link="Arm64EnumKind.cs" />
     <Compile Include="..\AsmArm64\Arm64ImmediateEncodingKind.cs" Link="Model\Arm64ImmediateEncodingKind.cs" />
+    <Compile Include="..\AsmArm64\Arm64ImmediateValueEncodingKind.cs" Link="Model\Arm64ImmediateValueEncodingKind.cs" />
     <Compile Include="..\AsmArm64\Arm64LabelEncodingKind.cs" Link="Model\Arm64LabelEncodingKind.cs" />
     <Compile Include="..\AsmArm64\Arm64MemoryEncodingKind.cs" Link="Model\Arm64MemoryEncodingKind.cs" />
     <Compile Include="..\AsmArm64\Arm64MemoryExtendEncodingKind.cs" Link="Model\Arm64MemoryExtendEncodingKind.cs" />

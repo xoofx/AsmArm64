@@ -17,6 +17,6 @@ public partial class McInstructionTests
         Assert.AreNotEqual(Arm64InstructionId.Invalid, instruction.Id, "Unable to decode instruction");
 
         var instructionToString = instruction.ToString();
-        Assert.AreEqual(expectedAsm, instructionToString, "asm not matching");
+        Assert.AreEqual(expectedAsm, instructionToString, $"asm not matching - {instruction.Id}");
     }
 }

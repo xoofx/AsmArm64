@@ -17,7 +17,7 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
 
         // buffer[1] = (byte)ImmediateKind;
         var immediateKind = (Arm64ImmediateEncodingKind)(descriptor >> 8);
-
+        var valueEncodingKind = Arm64ImmediateValueEncodingKind.None;
         switch (immediateKind)
         {
             case Arm64ImmediateEncodingKind.FixedFloatZero:
@@ -36,20 +36,32 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
                 Value = (int)(byte)(descriptor >> 16);
                 break;
             case Arm64ImmediateEncodingKind.BitMapExtract:
+            {
+                // buffer[2] = (byte)((byte)ValueEncodingKind | (byte)(IsSigned ? 0x80 : 0x00));
                 // if (ImmediateKind == Arm64ImmediateEncodingKind.BitMapExtract)
                 // {
                 //     Debug.Assert(ExtractIndex != 0);
-                //     buffer[2] = (byte)ExtractIndex;
+                //     buffer[3] = (byte)ExtractIndex;
                 //     return;
                 // }
-                Arm64ImmediateHelper.TryDecode(rawValue, (byte)(descriptor >> 16), out var value);
+                var b2 = (byte)(descriptor >> 16);
+                valueEncodingKind = (Arm64ImmediateValueEncodingKind)(b2 & 0x7F);
+                var isSigned = (byte)(b2 >> 7);
+                Arm64ImmediateHelper.TryDecode(rawValue, (byte)(descriptor >> 24), out var value);
                 Value = value;
                 break;
+            }
             case Arm64ImmediateEncodingKind.Regular:
-            case Arm64ImmediateEncodingKind.SystemRegister:
             case Arm64ImmediateEncodingKind.IsbOption:
             case Arm64ImmediateEncodingKind.Imm64:
-                // buffer[2] = (byte)(IsSigned ? 0x01 : 0x00);
+            {
+                // buffer[2] = (byte)((byte)ValueEncodingKind | (byte)(IsSigned ? 0x80 : 0x00));
+                // if (ImmediateKind == Arm64ImmediateEncodingKind.BitMapExtract)
+                // {
+                //     Debug.Assert(ExtractIndex != 0);
+                //     buffer[3] = (byte)ExtractIndex;
+                //     return;
+                // }
                 // buffer[3] = (byte)Encoding.Count;
                 // //4,5,6,7
                 // Debug.Assert(Encoding.Count <= 2);
@@ -59,23 +71,41 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
                 //     buffer[4 + i * 2] = (byte)bitRange.LowBit;
                 //     buffer[5 + i * 2] = (byte)bitRange.Width;
                 // }
-                var isSigned = (byte)(descriptor >> 16);
+                var b2 = (byte)(descriptor >> 16);
+                valueEncodingKind = (Arm64ImmediateValueEncodingKind)(b2 & 0x7F);
+                var isSigned = (byte)(b2 >> 7);
                 var encodingCount = (byte)(descriptor >> 24);
 
                 Debug.Assert(encodingCount <= 2);
                 Value = encodingCount == 1
                     ? Arm64DecodingHelper.GetBitRange1(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), isSigned)
                     : Arm64DecodingHelper.GetBitRange2(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), (byte)(descriptor >> 48), (byte)(descriptor >> 56), isSigned);
+
                 break;
+            }
             default:
                 Value = 0;
                 break;
+        }
+
+        if (valueEncodingKind != Arm64ImmediateValueEncodingKind.None)
+        {
+            if (valueEncodingKind == Arm64ImmediateValueEncodingKind.SignedFloatExp3Mantissa4)
+            {
+                IsFloat = true;
+            }
+
+            Value = Arm64ImmediateValueHelper.DecodeValue(valueEncodingKind, Value);
         }
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Immediate;
     
     public int Value { get; }
+
+    public bool IsFloat { get; }
+
+    public float ValueAsFloat => BitConverter.Int32BitsToSingle(Value);
     
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -106,28 +136,38 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
 
         var length = 1;
         destination[0] = '#';
-        if (format.Length == 1)
-        {
-            if (format[0] == 'x' || format[0] == 'X')
-            {
-                if (destination.Length <= 3)
-                {
-                    charsWritten = 0;
-                    return false;
-                }
-                destination[1] = '0';
-                destination[2] = 'x';
-                length = 3;
-            }
-            else if (format[0] == 'H' || format[0] == 'L')
-            {
-                format = "0";
-            }
-        }
 
-        var result = Value.TryFormat(destination.Slice(length), out var numberWritten, format, provider);
-        charsWritten = result ? length + numberWritten : 0;
-        return result;
+        if (IsFloat)
+        {
+            var result = ValueAsFloat.TryFormat(destination.Slice(length), out var numberWritten, "0.00000000", provider);
+            charsWritten = result ? length + numberWritten : 0;
+            return result;
+        }
+        else
+        {
+            if (format.Length == 1)
+            {
+                if (format[0] == 'x' || format[0] == 'X')
+                {
+                    if (destination.Length <= 3)
+                    {
+                        charsWritten = 0;
+                        return false;
+                    }
+                    destination[1] = '0';
+                    destination[2] = 'x';
+                    length = 3;
+                }
+                else if (format[0] == 'H' || format[0] == 'L')
+                {
+                    format = "0";
+                }
+            }
+
+            var result = Value.TryFormat(destination.Slice(length), out var numberWritten, format, provider);
+            charsWritten = result ? length + numberWritten : 0;
+            return result;
+        }
     }
 
     public static explicit operator Arm64ImmediateOperand(Arm64Operand operand)

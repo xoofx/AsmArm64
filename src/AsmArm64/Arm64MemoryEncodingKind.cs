@@ -30,6 +30,10 @@ enum Arm64MemoryEncodingKind : byte
     /// </summary>
     BaseRegisterAndImmediate,
     /// <summary>
+    /// [Xn|SP{,#0}]
+    /// </summary>
+    BaseRegisterAndFixedImmediateOptional,
+    /// <summary>
     /// [Xn|SP{,#imm}]
     /// [Xn|SP{,#pimm}]
     /// [Xn|SP{,#simm}]

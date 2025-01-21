@@ -15,6 +15,9 @@ namespace AsmArm64.CodeGen.Model;
 class InstructionSet
 {
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<SystemRegister> SystemRegisters { get; } = new();
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<EncodingSymbolExtractMap> ExtractMaps { get; } = new();
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
@@ -25,8 +28,8 @@ class InstructionSet
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     internal List<string> OrderedInstructionClass { get; } = new();
-
-
+    
+    
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         TypeInfoResolver = new DefaultJsonTypeInfoResolver

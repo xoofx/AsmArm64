@@ -50,7 +50,21 @@ public readonly struct Arm64EnumOperand : IArm64Operand
 
     public int Value { get; }
 
-    public Arm64ConditionalKind AsConditional => EnumKind == Arm64EnumKind.Conditional ? (Arm64ConditionalKind)(Value + 1) : Arm64ConditionalKind.None;
+    public Arm64ConditionalKind AsConditional
+    {
+        get
+        {
+            if (EnumKind == Arm64EnumKind.Conditional)
+            {
+                return (Arm64ConditionalKind)(Value + 1);
+            }
+            else if (EnumKind == Arm64EnumKind.InvertedConditional)
+            {
+                return ((Arm64ConditionalKind)(Value + 1)).Invert();
+            }
+            return Arm64ConditionalKind.None;
+        }
+    }
 
     public Arm64DataSynchronizationKind AsDataSynchronization => EnumKind == Arm64EnumKind.DataSynchronizationOption ? (Arm64DataSynchronizationKind)(Value + 1) : Arm64DataSynchronizationKind.None;
 
@@ -97,6 +111,7 @@ public readonly struct Arm64EnumOperand : IArm64Operand
         if (EnumKind switch
             {
                 Arm64EnumKind.Conditional => Enum.TryFormat(AsConditional, destination, out charsWritten),
+                Arm64EnumKind.InvertedConditional => Enum.TryFormat(AsConditional, destination, out charsWritten),
                 Arm64EnumKind.DataSynchronizationOption => Enum.TryFormat(AsDataSynchronization, destination, out charsWritten),
                 Arm64EnumKind.StoredSharedHintPolicy => Enum.TryFormat(AsStoredSharedHintPolicy, destination, out charsWritten),
                 Arm64EnumKind.BranchTargetIdentification => Enum.TryFormat(AsBranchTargetIdentification, destination, out charsWritten),

@@ -247,6 +247,8 @@ class EncodingSymbol
     /// </summary>
     public string EncodedInText { get; set; } = string.Empty;
 
+    public bool IsSignedImmediate { get; set; }
+
     public int BitSize { get; set; }
 
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]

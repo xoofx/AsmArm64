@@ -44,6 +44,8 @@ public readonly struct Arm64Operand : IArm64Operand
         {
             case Arm64OperandKind.Register:
                 return ((Arm64RegisterOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
+            case Arm64OperandKind.SystemRegister:
+                return ((Arm64SystemRegisterOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
             case Arm64OperandKind.Immediate:
                 return ((Arm64ImmediateOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
             case Arm64OperandKind.Shift:

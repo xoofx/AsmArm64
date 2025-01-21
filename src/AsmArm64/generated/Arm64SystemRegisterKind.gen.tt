@@ -1,0 +1,27 @@
+<#
+var kinds = new List<(string, int)>(){
+        ("APAS", 1),
+        ("AT", 2),
+        ("BRB", 3),
+        ("CFP", 4),
+        ("COSP", 5),
+        ("CPP", 6),
+        ("DC", 7),
+        ("DVP", 8),
+        ("GCSPOPCX", 9),
+        ("GCSPOPM", 10),
+        ("GCSPOPX", 11),
+        ("GCSPUSHM", 12),
+        ("GCSPUSHX", 13),
+        ("GCSSS1", 14),
+        ("GCSSS2", 15),
+        ("IC", 16),
+        ("MRRS", 17),
+        ("MRS", 18),
+        ("MSR", 19),
+        ("MSRR", 20),
+        ("TLBI", 21),
+        ("TLBIP", 22),
+        ("TRCIT", 23),
+};
+#>

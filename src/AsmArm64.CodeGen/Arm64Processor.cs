@@ -18,7 +18,8 @@ namespace AsmArm64.CodeGen;
 // https://github.com/google/EXEgesis/blob/master/exegesis/arm/xml/docvars.cc
 partial class Arm64Processor
 {
-    private readonly string _baseSpecsFolder;
+    private readonly string _isaBaseSpecsFolder;
+    private readonly string _registerSpecsFolder;
     private readonly string _basedOutputFolder;
     private readonly string _basedOutputTestFolder;
 
@@ -36,12 +37,13 @@ partial class Arm64Processor
     private readonly TableGenEncoder _tableGenEncoder;
     private readonly Dictionary<uint, List<Instruction>> _instructionsWithSameBitValue;
     
-    public Arm64Processor(string baseSpecsFolder)
+    public Arm64Processor(string isaBaseSpecsFolder, string registerSpecsFolder)
     {
-        _baseSpecsFolder = baseSpecsFolder;
+        _isaBaseSpecsFolder = isaBaseSpecsFolder;
+        _registerSpecsFolder = registerSpecsFolder;
         _instructions = InstructionSet.Instructions;
         _instructionsWithSameBitValue = new();
-        _instructionProcessor = new(InstructionSet);
+        _instructionProcessor = new(InstructionSet, _systemRegisterUsageKinds);
         _tableGenEncoder = new(InstructionSet);
 
         var basePath = Path.GetDirectoryName(AppContext.BaseDirectory); // src\AsmArm64.CodeGen\bin\Debug\net8.0
@@ -50,9 +52,9 @@ partial class Arm64Processor
         basePath = Path.GetDirectoryName(basePath); // src\AsmArm64.CodeGen
         basePath = Path.GetDirectoryName(basePath); // src
         _basedOutputFolder = Path.Combine(basePath!, "AsmArm64");
-        if (!Directory.Exists(_baseSpecsFolder))
+        if (!Directory.Exists(_isaBaseSpecsFolder))
         {
-            throw new ArgumentException($"Generated folder `{_baseSpecsFolder}` doesn't exist");
+            throw new ArgumentException($"Generated folder `{_isaBaseSpecsFolder}` doesn't exist");
         }
 
         _basedOutputTestFolder = Path.Combine(basePath!, "AsmArm64.Tests");
@@ -69,6 +71,8 @@ partial class Arm64Processor
 
     public void Run()
     {
+        ProcessSystemRegisters();
+
         LoadInstructions();
 
         //foreach (var paramName in _allParameterNames.Order())
@@ -80,14 +84,13 @@ partial class Arm64Processor
 
         InstructionSet.WriteJson("instructions.json");
 
-        //return;
+        GenerateCode();
 
         BuildTrie();
-        
-        GenerateCode();
+
+        GenerateDecoderTables();
     }
-
-
+    
     private void ProcessInstructions()
     {
         _instructionProcessor.DumpAllOperands();
@@ -108,7 +111,7 @@ partial class Arm64Processor
                      //"mortlachindex.xml"
                  })
         {
-            var xdoc = XDocument.Load(Path.Combine(_baseSpecsFolder, index));
+            var xdoc = XDocument.Load(Path.Combine(_isaBaseSpecsFolder, index), LoadOptions.PreserveWhitespace);
 
             var ids = xdoc.Descendants("iform")
                 .Attributes("iformfile")
@@ -370,7 +373,7 @@ partial class Arm64Processor
 
     private void ProcessInstructionFile(string fileName)
     {
-        var xdoc = XDocument.Load(Path.Combine(_baseSpecsFolder, fileName));
+        var xdoc = XDocument.Load(Path.Combine(_isaBaseSpecsFolder, fileName), LoadOptions.PreserveWhitespace);
         var iclasses = xdoc.Descendants("iclass").ToList();
 
         //if (iclasses.Count > 1)
@@ -385,7 +388,7 @@ partial class Arm64Processor
             summary = desc.Descendants("brief").First().Descendants("para").First().Value;
         }
 
-        var mapEncodingIdToInfo = ParseEncodingInfo(xdoc);
+        var mapEncodingIdToInfo = ParseEncodingInfo(fileName, xdoc);
         
         var bitFields = new List<BitRangeInfo>();
         var encodingBitFields = new List<BitRangeInfo>();
@@ -447,6 +450,13 @@ partial class Arm64Processor
                 {
                     var aliasCond = equivalentToElt.Element("aliascond")!.Value!;
                     var asmTemplate = equivalentToElt.Element("asmtemplate")!;
+
+                    var asmText = asmTemplate.Value;
+                    //if (asmText.Contains(" MOD ") || asmText.Contains("-<") || asmText.Contains(">-") || asmText.Contains("+<") || asmText.Contains(">+"))
+                    //{
+                    //    Console.WriteLine($"WARNING {instruction.Id} => {asmText}");
+                    //}
+
                     var href = asmTemplate.Element("a")!.Attribute("href")!.Value!;
                     var targetId = Instruction.NormalizeId(href.Substring(href.IndexOf('#') + 1));
 

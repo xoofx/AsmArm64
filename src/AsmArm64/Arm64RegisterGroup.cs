@@ -93,14 +93,15 @@ public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
             return true;
         }
 
-        if (destination.Length == 0)
+        if (destination.Length <= 1)
         {
             charsWritten = 0;
             return false;
         }
 
         destination[0] = '{';
-        var written = 1;
+        destination[1] = ' ';
+        var written = 2;
         var register = BaseRegister;
         for (int i = 0; i < Count; i++)
         {
@@ -125,13 +126,14 @@ public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
             register = register.Next();
         }
 
-        if (destination.Length <= written)
+        if (destination.Length <= written + 1)
         {
             charsWritten = 0;
             return false;
         }
-        destination[written] = '}';
-        written++;
+        destination[written] = ' ';
+        destination[written + 1] = '}';
+        written += 2;
 
         if (HasIndexer)
         {

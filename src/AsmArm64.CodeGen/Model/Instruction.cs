@@ -68,6 +68,8 @@ class Instruction : IJsonOnDeserialized
 
     public string InstructionClass { get; set; } = string.Empty;
 
+    internal bool IsSystem => InstructionClass.Equals("System", StringComparison.OrdinalIgnoreCase);
+
     [JsonIgnore]
     public byte InstructionClassIndex { get; set; } 
 

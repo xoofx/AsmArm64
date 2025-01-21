@@ -15,6 +15,7 @@ namespace AsmArm64.CodeGen;
 internal sealed class InstructionProcessor
 {
     private readonly InstructionSet _instructionSet;
+    private readonly HashSet<string> _systemRegisterKinds;
     private readonly List<Instruction> _instructions;
     private readonly Dictionary<string, List<Instruction>> _memoryOperands = new();
     private readonly Dictionary<int, List<Instruction>> _operandCountToInstructions = new();
@@ -31,9 +32,10 @@ internal sealed class InstructionProcessor
 
     private bool _hasErrors;
 
-    public InstructionProcessor(InstructionSet instructionSet)
+    public InstructionProcessor(InstructionSet instructionSet, HashSet<string> systemRegisterKinds)
     {
         _instructionSet = instructionSet;
+        _systemRegisterKinds = systemRegisterKinds;
         _instructions = instructionSet.Instructions;
         InstructionEncodingBuffer = new MemoryStream();
 
@@ -135,7 +137,18 @@ internal sealed class InstructionProcessor
 
         foreach (var instruction in _instructions)
         {
-
+            //if (instruction.IsSystem)
+            //{
+            //    if (_systemRegisterKinds.Contains(instruction.Mnemonic))
+            //    {
+            //        Console.WriteLine($"SYS {instruction.Id} - {instruction.FullSyntax}");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"SYSTEM {instruction.Id} - {instruction.FullSyntax}");
+            //    }
+            //}
+            
             //bool hasMemory = instruction.Operands.Any(x => x.Kind == OperandKind.Memory);
             //if (hasMemory)
             //{
@@ -398,6 +411,21 @@ internal sealed class InstructionProcessor
 
             return enumOperandDescriptor;
         }
+        else if (name0 == "invcond")
+        {
+            var enumOperandDescriptor = new EnumOperandDescriptor()
+            {
+                EnumKind = Arm64EnumKind.InvertedConditional,
+                Name = name0,
+                BitSize = symbol0.BitSize,
+            };
+
+            Debug.Assert(symbol0.BitSize == 4);
+            Debug.Assert(symbol0.BitRanges.Count == 1);
+            enumOperandDescriptor.EnumEncoding = symbol0.BitRanges[0];
+
+            return enumOperandDescriptor;
+        }
         else if (instruction.Id == "DSB_bon_barriers")
         {
             var enumOperandDescriptor = new EnumOperandDescriptor
@@ -438,6 +466,26 @@ internal sealed class InstructionProcessor
 
             // Console.WriteLine($"{instruction.Id} {instruction.FullSyntax}");
             return enumOperandDescriptor;
+        }
+        else if (instruction.IsSystem)
+        {
+            var systemRegisterDesc = new SystemRegisterOperandDescriptor()
+            {
+                Name = name0,
+            };
+            
+            Debug.Assert(instruction.Alias is not null);
+            Debug.Assert(instruction.Alias.InstructionId == "SYS_cr_systeminstrs" || instruction.Alias.InstructionId == "SYSP_cr_syspairinstrs");
+
+            var lookupResult = Arm64Processor.RegisteredSystemRegisterUsageKinds.TryGetValue(instruction.Mnemonic, out var kindIndex);
+            Debug.Assert(lookupResult, "System register kind was not found");
+
+            systemRegisterDesc.SystemRegisterKindIndex = (byte)kindIndex;
+            systemRegisterDesc.Encoding = new BitRange(5, 16);
+
+            // TODO: Add kind
+
+            return systemRegisterDesc;
         }
         else
         {
@@ -793,12 +841,21 @@ internal sealed class InstructionProcessor
             // Select MSRR_sr_systemmovepr - (systemreg|Sop0_op1_Cn_Cm_op2)
             Debug.Assert(instruction.Id == "MRRS_rs_systemmovepr" || instruction.Id == "MRS_rs_systemmove" || instruction.Id == "MSR_sr_systemmove" || instruction.Id == "MSRR_sr_systemmovepr");
 
-            immediate.ImmediateKind = Arm64ImmediateEncodingKind.SystemRegister;
-            var symbol = item0.TextElements[0].Symbol!;
-            immediate.BitSize = symbol.BitSize;
-            immediate.Encoding.AddRange(symbol.BitRanges);
+            var systemRegister = new SystemRegisterOperandDescriptor()
+            {
+                Name = name.Text,
+            };
 
-            return immediate;
+            var lookupResult = Arm64Processor.RegisteredSystemRegisterUsageKinds.TryGetValue(instruction.Mnemonic, out var kindIndex);
+            Debug.Assert(lookupResult, $"Invalid instruction {instruction.Id} / {instruction.Mnemonic} not a system register");
+
+            systemRegister.SystemRegisterKindIndex = (byte)kindIndex;
+            immediate = ProcessImmediate(instruction, selectOperand.Items[0]);
+            Debug.Assert(immediate.Encoding.Count == 1);
+            Debug.Assert(immediate.Encoding[0] == new BitRange(5, 15));
+            systemRegister.Encoding = new BitRange(5, 16); // We want 16 bits, not just 15 bits
+
+            return systemRegister;
         }
         else if (instruction.Id == "DMB_bo_barriers" || instruction.Id == "DSB_bo_barriers")
         {
@@ -1204,11 +1261,13 @@ internal sealed class InstructionProcessor
                 Debug.Assert(fixedValueStr.EndsWith("0.0"));
                 immediate.ImmediateKind = Arm64ImmediateEncodingKind.FixedFloatZero;
                 immediate.FixedValue = 0;
+                immediate.HasFixedValue = true;
             }
             else
             {
                 immediate.ImmediateKind = Arm64ImmediateEncodingKind.FixedInt;
                 immediate.FixedValue = sbyte.Parse(fixedValueStr);
+                immediate.HasFixedValue = true;
             }
         }
         else
@@ -1219,6 +1278,13 @@ internal sealed class InstructionProcessor
             immediate.BitSize = symbol.BitSize;
             immediate.Encoding.AddRange(symbol.BitRanges);
             immediate.ImmediateKind = Arm64ImmediateEncodingKind.Regular;
+            immediate.IsSigned = symbol.IsSignedImmediate;
+
+            // Try to find a special value encoding
+            if (MappingTables.TryGetImmediateEncoding(instruction.Id, immediate.Name, out var valueEncoding))
+            {
+                immediate.ValueEncodingKind = valueEncoding;
+            }
 
             if (symbol.Selector is not null || immediate.Encoding.Count >= 3)
             {
@@ -1260,13 +1326,16 @@ internal sealed class InstructionProcessor
         Arm64MemoryEncodingKind kind;
         var extendKind = Arm64MemoryExtendEncodingKind.NoLsl;
         sbyte fixedValue = 0;
+        bool signedImmediate = false;
+        var immediateValueEncodingKind = Arm64ImmediateValueEncodingKind.None;
 
         // 1 [Xd]!
         // 1 [Xn|SP]
         // 1 [Xs]!
         if (items.Count == 1)
         {
-            kind = Arm64MemoryEncodingKind.BaseRegisterXn;
+            var isSp = items[0].TextElements[0].Text.Contains("|SP");
+            kind = isSp ? Arm64MemoryEncodingKind.BaseRegister : Arm64MemoryEncodingKind.BaseRegisterXn;
         }
         else if (items.Count == 2)
         {
@@ -1284,21 +1353,26 @@ internal sealed class InstructionProcessor
             if (imm.Kind == OperandItemKind.Immediate)
             {
                 immediate = ProcessImmediate(instruction, (ImmediateOperandItem)imm);
-                kind = immediate.FixedValue != 0 ? Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate : Arm64MemoryEncodingKind.BaseRegisterAndImmediate;
+                kind = immediate.ImmediateKind == Arm64ImmediateEncodingKind.FixedInt ? Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate : Arm64MemoryEncodingKind.BaseRegisterAndImmediate;
                 fixedValue = immediate.FixedValue;
+                var symbol = imm.TextElements[0].Symbol;
+                immediateValueEncodingKind = immediate.ValueEncodingKind;
+                signedImmediate = immediate.IsSigned;
             }
             else if (imm.Kind == OperandItemKind.OptionalGroup)
             {
                 var group = (OptionalGroupOperandItem)imm;
                 Debug.Assert(group.Items.Count == 1);
                 immediate = ProcessImmediate(instruction, (ImmediateOperandItem)group.Items[0]);
-                kind = Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional;
+                kind = immediate.ImmediateKind == Arm64ImmediateEncodingKind.FixedInt ? Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional : Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional;
+                fixedValue = immediate.FixedValue;
+                immediateValueEncodingKind = immediate.ValueEncodingKind;
+                signedImmediate = immediate.IsSigned;
             }
             else
             {
                 throw new ArgumentOutOfRangeException($"Unsupported operand `{imm}` in {instruction.Id}");
             }
-
             indexRegisterOrImmediate = immediate;
         }
         else if (items.Count == 3 || items.Count == 4)
@@ -1379,6 +1453,8 @@ internal sealed class InstructionProcessor
             FixedValue = fixedValue,
             IsPreIncrement = operand.HasBang,
             ExtendKind = extendKind,
+            SignedImmediate = signedImmediate,
+            ImmediateValueEncodingKind = immediateValueEncodingKind,
         };
 
         Debug.Assert(baseRegister.IsSimpleEncoding);

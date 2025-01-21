@@ -19,35 +19,39 @@ public enum Arm64EnumKind : byte
     /// <summary>
     /// The Arm64Conditional enum encoding.
     /// </summary>
-    Conditional = 1,
+    Conditional,
+    /// <summary>
+    /// The Arm64Conditional enum encoding.
+    /// </summary>
+    InvertedConditional,
     /// <summary>
     /// Branch Target Identification.
     /// </summary>
-    BranchTargetIdentification = 2,
+    BranchTargetIdentification,
     /// <summary>
     /// The data synchronization option defined by DSB instruction.
     /// </summary>
-    DataSynchronizationOption = 3,
+    DataSynchronizationOption,
     /// <summary>
     /// The policy defined by the STSHH instruction (Store Shared Hint). (KEEP or STRM)
     /// </summary>
-    StoredSharedHintPolicy = 4,
+    StoredSharedHintPolicy,
     /// <summary>
     /// The PSTATE field used by MSR (immediate) instruction.
     /// </summary>
-    ProcessStateField = 5,
+    ProcessStateField,
     /// <summary>
     /// A barrier operation limit used by DMB_bo_barriers and DSB_bo_barriers instructions.
     /// </summary>
-    BarrierOperationLimit = 6,
+    BarrierOperationLimit,
     /// <summary>
     /// The prefetch operation used by PRFM instruction.
     /// </summary>
-    PrefetchOperation = 7,
+    PrefetchOperation,
     /// <summary>
     /// The range prefetch operation used by RPRFM instruction.
     /// </summary>
-    RangePrefetchOperation = 8,
+    RangePrefetchOperation,
     /// <summary>
     /// Used by instruction: GCSB_hd_hints -> GCSB DSYNC
     /// </summary>

@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 namespace AsmArm64;
 
 /// <summary>
-/// Can be encoded in 5 bits
+/// The encoding kind for an immediate value.
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 enum Arm64ImmediateEncodingKind : byte
@@ -24,21 +24,17 @@ enum Arm64ImmediateEncodingKind : byte
     /// <summary>
     /// A fixed value
     /// </summary>
-    FixedInt = 9,
+    FixedInt = 3,
     /// <summary>
     /// A fixed value that is a float
     /// </summary>
-    FixedFloatZero = 10,
+    FixedFloatZero = 4,
     /// <summary>
     /// 64-bit immediate 'aaaaaaaabbbbbbbbccccccccddddddddeeeeeeeeffffffffgggggggghhhhhhhh'
     /// </summary>
-    Imm64 = 14,
-    /// <summary>
-    /// A system register used my MRS and MSR.
-    /// </summary>
-    SystemRegister = 15,
+    Imm64 = 5,
     /// <summary>
     /// Option for ISB instruction
     /// </summary>
-    IsbOption = 18,
+    IsbOption = 6,
 }

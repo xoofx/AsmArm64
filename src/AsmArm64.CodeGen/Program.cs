@@ -8,7 +8,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var processor = new Arm64Processor(@"C:\code\AsmArm64\tmp\ISA_A64_xml_A_profile-2024-12");
+        var processor = new Arm64Processor(@"C:\code\AsmArm64\tmp\ISA_A64_xml_A_profile-2024-12", @"C:\code\AsmArm64\tmp\SysReg_xml_A_profile-2024-12\SysReg_xml_A_profile-2024-12");
         processor.Run();
     }
 }

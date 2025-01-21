@@ -17,6 +17,7 @@ namespace AsmArm64.CodeGen.Model;
 [JsonDerivedType(typeof(ShiftOperandDescriptor), typeDiscriminator: "shift")]
 [JsonDerivedType(typeof(ExtendOperandDescriptor), typeDiscriminator: "extend")]
 [JsonDerivedType(typeof(EnumOperandDescriptor), typeDiscriminator: "enum")]
+[JsonDerivedType(typeof(SystemRegisterOperandDescriptor), typeDiscriminator: "sysreg")]
 abstract class OperandDescriptor(Arm64OperandKind kind)
 {
     [JsonIgnore]
@@ -68,6 +69,10 @@ sealed class ImmediateOperandDescriptor() : OperandDescriptor(Arm64OperandKind.I
     private int _extractIndex;
     public Arm64ImmediateEncodingKind ImmediateKind { get; set; }
 
+    public Arm64ImmediateValueEncodingKind ValueEncodingKind { get; set; }
+
+    public bool HasFixedValue { get; set; }
+
     public sbyte FixedValue { get; set; }
 
     public int BitSize { get; set; }
@@ -103,14 +108,15 @@ sealed class ImmediateOperandDescriptor() : OperandDescriptor(Arm64OperandKind.I
             return;
         }
 
+        buffer[2] = (byte)((byte)ValueEncodingKind | (byte)(IsSigned ? 0x80 : 0x00));
+
         if (ImmediateKind == Arm64ImmediateEncodingKind.BitMapExtract)
         {
             Debug.Assert(ExtractIndex != 0);
-            buffer[2] = (byte)ExtractIndex;
+            buffer[3] = (byte)ExtractIndex;
             return;
         }
 
-        buffer[2] = (byte)(IsSigned ? 0x01 : 0x00);
         buffer[3] = (byte)Encoding.Count;
         //4,5,6,7
         Debug.Assert(Encoding.Count <= 2);
@@ -195,6 +201,8 @@ sealed class MemoryOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Memo
 
     public Arm64MemoryExtendEncodingKind ExtendKind { get; set; }
 
+    public Arm64ImmediateValueEncodingKind ImmediateValueEncodingKind { get; set; }
+
     public sbyte FixedValue { get; set; }
 
     public bool IsPreIncrement { get; set; }
@@ -202,17 +210,19 @@ sealed class MemoryOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Memo
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<BitRange> IndexRegisterOrImmediate { get; } = new();
 
+    public bool SignedImmediate { get; set; }
+
     protected internal override void EncodeImpl(Span<byte> buffer)
     {
         buffer[1] = (byte)((byte)MemoryEncodingKind | ((byte)ExtendKind << 4));
         buffer[2] = (byte)BaseRegister.ToSmallEncoding();
-        if (MemoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate)
+        if (MemoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate || MemoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional)
         {
             buffer[3] = (byte)FixedValue;
         }
         else
         {
-            buffer[3] = (byte)(IndexRegisterOrImmediate.Count | (IsPreIncrement ? 0x80 : 0));
+            buffer[3] = (byte)((byte)ImmediateValueEncodingKind | (IsPreIncrement ? 0x80 : 0) | (SignedImmediate ? 0x40 : 0) | (IndexRegisterOrImmediate.Count == 2 ? 0x20 : 0));
             int index = 4;
             for (int i = 0; i < IndexRegisterOrImmediate.Count; i++)
             {
@@ -252,6 +262,19 @@ sealed class ExtendOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Exte
     {
         buffer[1] = (byte)ExtendEncoding.ToSmallEncoding();
         buffer[2] = (byte)AmountEncoding.ToSmallEncoding();
+    }
+}
+
+sealed class SystemRegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.SystemRegister)
+{
+    public byte SystemRegisterKindIndex { get; set; }
+
+    public BitRange Encoding { get; set; }
+
+    protected internal override void EncodeImpl(Span<byte> buffer)
+    {
+        // We don't need to encode the position, as it is always BitRange(5, 16)
+        buffer[1] = SystemRegisterKindIndex;
     }
 }
 

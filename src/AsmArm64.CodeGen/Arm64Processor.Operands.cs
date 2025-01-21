@@ -13,6 +13,7 @@ namespace AsmArm64.CodeGen;
 // Check https://github.com/CensoredUsername/dynasm-rs/blob/master/tools/aarch64_gen_opmap.py for ideas
 // https://github.com/wdamron/arm/blob/main/INSTRUCTIONS.md
 // https://github.com/wdamron/arm/blob/main/encoding.go
+// https://developer.arm.com/Architectures/A-Profile%20Architecture
 partial class Arm64Processor
 {
     private readonly HashSet<string> _allParameterNames = new();
@@ -24,7 +25,6 @@ partial class Arm64Processor
     private List<Operand> ParseOperands(XElement encodingElt, EncodingSymbolsInfo? rawEncodingInfo)
     {
         var asmTemplate = encodingElt.Element("asmtemplate")!;
-
         var items = new List<RawAsmTemplateItem>();
 
         foreach (var elt in asmTemplate.Elements())
@@ -425,7 +425,7 @@ partial class Arm64Processor
         }
     }
     
-    private Dictionary<string, EncodingSymbolsInfo> ParseEncodingInfo(XDocument doc)
+    private Dictionary<string, EncodingSymbolsInfo> ParseEncodingInfo(string filenameContext, XDocument doc)
     {
         var explanations = doc.Descendants("explanation").ToList();
 
@@ -501,6 +501,42 @@ partial class Arm64Processor
                 }
             }
 
+            if (accountElement.Name == "account")
+            {
+                var introElt = accountElement.Element("intro");
+                if (introElt is not null)
+                {
+                    //// immediate.*encoded in the.*field as ... /\d+.
+                    //var match = MatchEncodingDividedBy.Match(introElt.Value);
+                    //if (match.Success)
+                    //{
+                    //    var divideBy = int.Parse(match.Groups["divide_by"].Value);
+                    //    encodingSymbol.ValueEncoding = divideBy switch
+                    //    {
+                    //        2 => Arm64ImmediateValueEncodingKind.ValueDivideBy2,
+                    //        4 => Arm64ImmediateValueEncodingKind.ValueDivideBy4,
+                    //        8 => Arm64ImmediateValueEncodingKind.ValueDivideBy8,
+                    //        16 => Arm64ImmediateValueEncodingKind.ValueDivideBy16,
+                    //        _ => throw new ArgumentOutOfRangeException($"Unexpected immediate encoding {divideBy}")
+                    //    };
+                    //}
+                    //else if (introElt.Value.EndsWith("in the range 1 to 64-<lsb>.") || introElt.Value.EndsWith("in the range 1 to 32-<lsb>."))
+                    //{
+                    //    encodingSymbol.ValueEncoding = Arm64ImmediateValueEncodingKind.ValuePlus1ShiftLeft6;
+                    //}
+                    //else if (introElt.Value.Contains("signed floating-point constant with 3-bit exponent and normalized 4 bits of precision"))
+                    //{
+                    //    encodingSymbol.ValueEncoding = Arm64ImmediateValueEncodingKind.SignedFloatExp3Mantissa4;
+                    //}
+
+                    if (introElt.Value.Contains("signed immediate"))
+                    {
+                        encodingSymbol.IsSignedImmediate = true;
+                    }
+                    //Console.WriteLine($"{filenameContext} -> {introElt.Value}");
+                }
+            }
+
             var enclist = explanation.Attribute("enclist")!.Value.Split(",").Select(x => x.Trim()).ToList();
             foreach (var enc in enclist)
             {
@@ -518,6 +554,8 @@ partial class Arm64Processor
 
         return mapEncodingIdToInfo;
     }
+
+    private static readonly Regex MatchEncodingDividedBy = new(@"immediate.*encoded in the.*field as.*/(?<divide_by>\d+)\.");
 
 
     private class ParsingState

@@ -94,3 +94,31 @@ public enum Arm64ConditionalKind : byte
     /// </summary>
     NV = 16,
 }
+
+
+partial class Arm64Extensions
+{
+    public static Arm64ConditionalKind Invert(this Arm64ConditionalKind kind)
+    {
+        return kind switch
+        {
+            Arm64ConditionalKind.EQ => Arm64ConditionalKind.NE,
+            Arm64ConditionalKind.NE => Arm64ConditionalKind.EQ,
+            Arm64ConditionalKind.CS => Arm64ConditionalKind.CC,
+            Arm64ConditionalKind.CC => Arm64ConditionalKind.CS,
+            Arm64ConditionalKind.MI => Arm64ConditionalKind.PL,
+            Arm64ConditionalKind.PL => Arm64ConditionalKind.MI,
+            Arm64ConditionalKind.VS => Arm64ConditionalKind.VC,
+            Arm64ConditionalKind.VC => Arm64ConditionalKind.VS,
+            Arm64ConditionalKind.HI => Arm64ConditionalKind.LS,
+            Arm64ConditionalKind.LS => Arm64ConditionalKind.HI,
+            Arm64ConditionalKind.GE => Arm64ConditionalKind.LT,
+            Arm64ConditionalKind.LT => Arm64ConditionalKind.GE,
+            Arm64ConditionalKind.GT => Arm64ConditionalKind.LE,
+            Arm64ConditionalKind.LE => Arm64ConditionalKind.GT,
+            Arm64ConditionalKind.AL => Arm64ConditionalKind.NV,
+            Arm64ConditionalKind.NV => Arm64ConditionalKind.AL,
+            _ => kind,
+        };
+    }
+}

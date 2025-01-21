@@ -10,6 +10,8 @@ namespace AsmArm64;
 
 public readonly struct Arm64MemoryOperand : IArm64Operand
 {
+    private readonly bool _hasOptionalImmediateOrExtend;
+
     internal Arm64MemoryOperand(Arm64Operand operand)
     {
         var descriptor = operand.Descriptor;
@@ -23,7 +25,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         // }
         // else
         // {
-        //     buffer[3] = (byte)(IndexRegisterOrImmediate.Count | (IsPreIncrement ? 0x80 : 0));
+        //     buffer[3] = (byte)((byte)ImmediateValueEncodingKind | (IsPreIncrement ? 0x80 : 0) | (SignedImmediate ? 0x40 : 0) | (IndexRegisterOrImmediate.Count == 2 ? 0x20 : 0));
         //     int index = 4;
         //     for (int i = 0; i < IndexRegisterOrImmediate.Count; i++)
         //     {
@@ -42,24 +44,31 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
             ? Arm64RegisterAny.Create(Arm64RegisterKind.SP, baseRegisterIndex, Arm64RegisterVKind.Default, 0, 0)
             : Arm64RegisterAny.Create(Arm64RegisterKind.X, baseRegisterIndex, Arm64RegisterVKind.Default, 0, 0);
         
-        if (memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate)
+        if (memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate || memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional)
         {
             Immediate = (int)(byte)(descriptor >> 24);
         }
         else
         {
             var v = (byte)(descriptor >> 24);
-            var indexRegisterOrImmediateCount = v & 0x7F;
+            var indexRegisterOrImmediateCount = (v & 0x20) != 0 ? 2 : 1;
             IsPreIncrement = (v & 0x80) != 0;
+            byte isSigned = (byte)((v >> 6) & 1);
+            var immediateValueEncodingKind = (Arm64ImmediateValueEncodingKind)(v & 0x1F);
 
             int value = 0;
             if (indexRegisterOrImmediateCount == 1)
             {
-                value = Arm64DecodingHelper.GetBitRange1(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), 0);
+                value = Arm64DecodingHelper.GetBitRange1(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), isSigned);
             }
-            else if (indexRegisterOrImmediateCount == 2)
+            else
             {
-                value = Arm64DecodingHelper.GetBitRange2(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), (byte)(descriptor >> 48), (byte)(descriptor >> 56), 0);
+                value = Arm64DecodingHelper.GetBitRange2(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), (byte)(descriptor >> 48), (byte)(descriptor >> 56), isSigned);
+            }
+
+            if (immediateValueEncodingKind != Arm64ImmediateValueEncodingKind.None)
+            {
+                value = Arm64ImmediateValueHelper.DecodeValue(immediateValueEncodingKind, value);
             }
 
             switch (memoryKind)
@@ -68,13 +77,21 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                 case Arm64MemoryEncodingKind.BaseRegister:
                     MemoryKind = Arm64MemoryOperandKind.BaseRegister;
                     break;
-                case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
+
                 case Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional:
+                    _hasOptionalImmediateOrExtend = true;
+                    goto case Arm64MemoryEncodingKind.BaseRegisterAndImmediate;
+
+                case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
                     MemoryKind = Arm64MemoryOperandKind.BaseRegisterWithImmediate;
                     Immediate = value;
                     break;
-                case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
+
                 case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional:
+                    _hasOptionalImmediateOrExtend = true;
+                    goto case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend;
+                    
+                case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
                 case Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount:
                     MemoryKind = Arm64MemoryOperandKind.BaseRegisterWithIndexAndExtend;
 
@@ -177,35 +194,40 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
 
         if (MemoryKind >= Arm64MemoryOperandKind.BaseRegisterWithImmediate)
         {
-            if (destination.Length <= written + 1)
-            {
-                charsWritten = 0;
-                return false;
-            }
-            destination[written] = ',';
-            destination[written + 1] = ' ';
-            written += 2;
-
             if (MemoryKind == Arm64MemoryOperandKind.BaseRegisterWithImmediate)
             {
-                // Add #
-                if (destination.Length <= written)
+                if (!_hasOptionalImmediateOrExtend || this.Immediate != 0)
                 {
-                    charsWritten = 0;
-                    return false;
-                }
-                destination[written] = '#';
-                written++;
+                    if (destination.Length <= written + 2)
+                    {
+                        charsWritten = 0;
+                        return false;
+                    }
+                    destination[written] = ',';
+                    destination[written + 1] = ' ';
+                    destination[written + 2] = '#';
+                    written += 3;
 
-                if (!Immediate.TryFormat(destination.Slice(written), out var immediateWritten, format, provider))
-                {
-                    charsWritten = 0;
-                    return false;
+                    if (!Immediate.TryFormat(destination.Slice(written), out var immediateWritten, format, provider))
+                    {
+                        charsWritten = 0;
+                        return false;
+                    }
+
+                    written += immediateWritten;
                 }
-                written += immediateWritten;
             }
             else
             {
+                if (destination.Length <= written + 1)
+                {
+                    charsWritten = 0;
+                    return false;
+                }
+                destination[written] = ',';
+                destination[written + 1] = ' ';
+                written += 2;
+
                 if (!IndexRegister.TryFormat(destination.Slice(written), out var indexWritten, format, provider))
                 {
                     charsWritten = 0;
@@ -213,7 +235,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                 }
                 written += indexWritten;
 
-                if (Extend.Kind != Arm64ExtendKind.None && !Extend.IsDefault)
+                if (Extend.Kind != Arm64ExtendKind.None && (!_hasOptionalImmediateOrExtend || !Extend.IsDefault))
                 {
                     if (destination.Length <= written + 1)
                     {
@@ -240,7 +262,20 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
             return false;
         }
         destination[written] = ']';
-        charsWritten = written + 1;
+        written++;
+
+        if (IsPreIncrement)
+        {
+            if (destination.Length <= written)
+            {
+                charsWritten = 0;
+                return false;
+            }
+            destination[written] = '!';
+            written++;
+        }
+
+        charsWritten = written;
         return true;
     }
 

@@ -41,6 +41,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <InternalsVisibleTo Include="AsmArm64.Tests" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,6 +54,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Arm64Registers.tt</DependentUpon>
     </None>
+    <None Update="Arm64SystemRegisterKind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Arm64SystemRegisterKind.gen.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -64,6 +69,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Arm64Registers.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Arm64SystemRegisterKind.gen.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64SystemRegisterKind.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

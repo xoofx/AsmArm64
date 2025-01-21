@@ -6,50 +6,44 @@ using System.Text.Json.Serialization;
 
 namespace AsmArm64;
 
-/// <summary>
-/// The kind of ARM64 operand.
-/// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum Arm64OperandKind : byte
+enum Arm64ImmediateValueEncodingKind : byte
 {
-    /// <summary>
-    /// Operand is not defined.
-    /// </summary>
     None,
     /// <summary>
-    /// Register
+    /// value / 2
     /// </summary>
-    Register = 1,
+    ValueDivideBy2,
     /// <summary>
-    /// Register group {X0,X1...}
+    /// value / 4
     /// </summary>
-    RegisterGroup = 2,
+    ValueDivideBy4,
     /// <summary>
-    /// SystemRegister
+    /// value / 8
     /// </summary>
-    SystemRegister = 3,
+    ValueDivideBy8,
     /// <summary>
-    /// A memory operand
+    /// value / 16
     /// </summary>
-    Memory = 4,
+    ValueDivideBy16,
     /// <summary>
-    /// An immediate
+    /// (value + 1) &gt;&gt; 6
     /// </summary>
-    Immediate = 5,
+    ValuePlus1ShiftLeft6,
     /// <summary>
-    /// Label.
+    /// 1 bit sign, 3 bits exponent, 4 bits mantissa
     /// </summary>
-    Label = 6,
+    SignedFloatExp3Mantissa4,
     /// <summary>
-    /// Shift.
+    /// (32 - value) &amp; 0x1F
     /// </summary>
-    Shift = 7,
+    MinusValuePlus32Mod32,
     /// <summary>
-    /// Shift.
+    /// (64 - value) &amp; 0x3F
     /// </summary>
-    Extend = 8,
+    MinusValuePlus64Mod64,
     /// <summary>
-    /// An enum value
+    /// lsb + width - 1
     /// </summary>
-    Enum = 9,
+    LsbPlusWidthMinus1
 }

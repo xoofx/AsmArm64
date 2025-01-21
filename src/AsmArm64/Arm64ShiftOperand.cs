@@ -95,23 +95,20 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
         shiftText.AsSpan().CopyTo(destination);
         var written = shiftText.Length;
 
-        if (Amount != 0)
+        if (destination.Length <= written + 1)
         {
-            if (destination.Length <= written + 1)
-            {
-                charsWritten = 0;
-                return false;
-            }
-            destination[written] = (char)' ';
-            destination[written + 1] = '#';
-            written += 2;
-            if (!Amount.TryFormat(destination.Slice(written), out var digitWritten, format, provider))
-            {
-                charsWritten = 0;
-                return false;
-            }
-            written += digitWritten;
+            charsWritten = 0;
+            return false;
         }
+        destination[written] = (char)' ';
+        destination[written + 1] = '#';
+        written += 2;
+        if (!Amount.TryFormat(destination.Slice(written), out var digitWritten, format, provider))
+        {
+            charsWritten = 0;
+            return false;
+        }
+        written += digitWritten;
         
         charsWritten = written;
         return true;
