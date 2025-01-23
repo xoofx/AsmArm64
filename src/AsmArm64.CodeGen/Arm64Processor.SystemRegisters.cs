@@ -58,12 +58,11 @@ partial class Arm64Processor
             foreach (var register in doc.Descendants("register"))
             {
                 var executionState = register.Attribute("execution_state");
-                if (executionState is null)
+                if (executionState is null || executionState.Value != "AArch64")
                 {
                     //Console.WriteLine($"Xml file skipped {xmlFile} because no execution state");
                     continue;
                 }
-                if (executionState.Value != "AArch64") continue;
                 
                 var regGenericName = register.Element("reg_short_name")!.Value;
                 var description = register.Element("reg_long_name")!.Value;

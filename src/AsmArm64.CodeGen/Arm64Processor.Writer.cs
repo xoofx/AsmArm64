@@ -454,9 +454,11 @@ partial class Arm64Processor
     private void GenerateEnums()
     {
         GenerateEnums("Arm64PrefetchOperationKind", "The kind of prefetch operation for the PRFM instruction.", _instructionProcessor.PrefetchOperationEnumValues, PrefetchOperationEnumDescriptions);
-        GenerateEnums("Arm64RangePrefetchOperationKind", "The kind of range prefetch operation for the RPRFM instruction.", _instructionProcessor.RangePrefetchOperationEnumValues, RangePrefetchOperationDescriptions);
+
+        // Don't generate this enum as it is changed manually
+        //GenerateEnums("Arm64RangePrefetchOperationKind", "The kind of range prefetch operation for the RPRFM instruction.", _instructionProcessor.RangePrefetchOperationEnumValues, RangePrefetchOperationDescriptions);
     }
-    
+
     public static readonly Dictionary<string, string> PrefetchOperationEnumDescriptions = new Dictionary<string, string>
     {
         { "PLDL1KEEP", "Prefetch Data Level 1, keep in cache." },

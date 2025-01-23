@@ -6348,7 +6348,7 @@ partial class Arm64InstructionDecoderTable
         1,17,0,16,
         // RPRFM_r_ldst_regoff            - RPRFM       (rprfop|#imm6), Xm, [Xn|SP]
         74,3,249,2,4,61,0,3,
-        5,0,0,0,
+        9,9,0,0,
         1,17,0,16,
         4,2,165,0,
         // SB_only_barriers               - SB         

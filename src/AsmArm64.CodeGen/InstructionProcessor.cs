@@ -828,10 +828,6 @@ internal sealed class InstructionProcessor
         Debug.Assert(selectOperand.Items.Count == 2);
         var item0 = selectOperand.Items[0];
         var name = item0.TextElements[0];
-        var immediate = new ImmediateOperandDescriptor()
-        {
-            Name = name.Text,
-        };
 
         if (item0.TextElements[0].Text == "systemreg")
         {
@@ -850,7 +846,7 @@ internal sealed class InstructionProcessor
             Debug.Assert(lookupResult, $"Invalid instruction {instruction.Id} / {instruction.Mnemonic} not a system register");
 
             systemRegister.SystemRegisterKindIndex = (byte)kindIndex;
-            immediate = ProcessImmediate(instruction, selectOperand.Items[0]);
+            var immediate = ProcessImmediate(instruction, selectOperand.Items[0]);
             Debug.Assert(immediate.Encoding.Count == 1);
             Debug.Assert(immediate.Encoding[0] == new BitRange(5, 15));
             systemRegister.Encoding = new BitRange(5, 16); // We want 16 bits, not just 15 bits
@@ -908,7 +904,7 @@ internal sealed class InstructionProcessor
             enumDesc.BitSize = name.Symbol!.BitSize;
 
             CollectEnumValues(name.Symbol!, RangePrefetchOperationEnumValues);
-            return immediate;
+            return enumDesc;
         }
         else
         {

@@ -17,23 +17,23 @@ namespace AsmArm64;
 public enum Arm64RangePrefetchOperationKind : byte
 {
     /// <summary>
-    /// Not a valid value.
+    /// Not specified via an enum but through an immediate.
     /// </summary>
     None = 0,
     /// <summary>
     /// Prefetch Load, keep in cache.
     /// </summary>
-    PLDKEEP = 153,
+    PLDKEEP = 0 + 1,
     /// <summary>
     /// Prefetch Store, keep in cache.
     /// </summary>
-    PSTKEEP = 154,
+    PSTKEEP = 1 + 1,
     /// <summary>
     /// Prefetch Load, stream (do not retain in cache).
     /// </summary>
-    PLDSTRM = 157,
+    PLDSTRM = 4 + 1,
     /// <summary>
     /// Prefetch Store, stream (do not retain in cache).
     /// </summary>
-    PSTSTRM = 158,
+    PSTSTRM = 5 + 1,
 }

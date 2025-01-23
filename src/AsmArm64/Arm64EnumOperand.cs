@@ -31,7 +31,23 @@ public readonly struct Arm64EnumOperand : IArm64Operand
         {
             case Arm64EnumKind.RangePrefetchOperation:
                 // (12:4),(0:5)
-                Value = Arm64DecodingHelper.GetBitRange2(rawValue, 12, 4, 0, 5, 0);
+                // option: 13-15
+                // S: 12
+                // Rt: 0-4
+                // imm6 option<2>:option<0>:S:Rt<2:0>
+                var value = (rawValue & 0x7) | ((rawValue >> 9) & 0x18) | ((rawValue >> 10) & 0x20);
+                switch ((Arm64RangePrefetchOperationKind)value + 1)
+                {
+                    case Arm64RangePrefetchOperationKind.PLDKEEP:
+                    case Arm64RangePrefetchOperationKind.PSTKEEP:
+                    case Arm64RangePrefetchOperationKind.PLDSTRM:
+                    case Arm64RangePrefetchOperationKind.PSTSTRM:
+                        break;
+                    default:
+                        IsImmediate = true;
+                        break;
+                }
+                Value = (int)value;
                 break;
             case Arm64EnumKind.ProcessStateField:
                 Arm64ProcessStateFieldHelper.TryDecode(rawValue, (byte)(descriptor >> 16), out var processStateField);
@@ -49,6 +65,8 @@ public readonly struct Arm64EnumOperand : IArm64Operand
     public Arm64EnumKind EnumKind { get; }
 
     public int Value { get; }
+
+    public bool IsImmediate { get; }
 
     public Arm64ConditionalKind AsConditional
     {
@@ -72,11 +90,11 @@ public readonly struct Arm64EnumOperand : IArm64Operand
     
     public Arm64BranchTargetIdentificationKind AsBranchTargetIdentification => EnumKind == Arm64EnumKind.BranchTargetIdentification ? (Arm64BranchTargetIdentificationKind)(Value + 1) : Arm64BranchTargetIdentificationKind.None;
 
-    public Arm64BarrierOperationLimitKind AsBarrierOperationLimit => EnumKind == Arm64EnumKind.BarrierOperationLimit ? (Arm64BarrierOperationLimitKind)(Value + 1) : Arm64BarrierOperationLimitKind.None;
+    public Arm64BarrierOperationLimitKind AsBarrierOperationLimit => EnumKind == Arm64EnumKind.BarrierOperationLimit ? (Arm64BarrierOperationLimitKind)(Value) : Arm64BarrierOperationLimitKind.None;
 
     public Arm64PrefetchOperationKind AsPrefetchOperation => EnumKind == Arm64EnumKind.PrefetchOperation ? (Arm64PrefetchOperationKind)(Value + 1) : Arm64PrefetchOperationKind.None;
 
-    public Arm64RangePrefetchOperationKind AsRangePrefetchOperation => EnumKind == Arm64EnumKind.RangePrefetchOperation ? (Arm64RangePrefetchOperationKind)(Value + 1) : Arm64RangePrefetchOperationKind.None;
+    public Arm64RangePrefetchOperationKind AsRangePrefetchOperation => !IsImmediate && EnumKind == Arm64EnumKind.RangePrefetchOperation ? (Arm64RangePrefetchOperationKind)(Value + 1) : Arm64RangePrefetchOperationKind.None;
 
     public Arm64ProcessStateField AsProcessStateField => EnumKind == Arm64EnumKind.ProcessStateField ? (Arm64ProcessStateField)(Value + 1) : Arm64ProcessStateField.None;
 
@@ -108,21 +126,25 @@ public readonly struct Arm64EnumOperand : IArm64Operand
 
         var isUpperCase = format.Length == 1 && format[0] == 'H';
         charsWritten = 0;
-        if (EnumKind switch
-            {
-                Arm64EnumKind.Conditional => Enum.TryFormat(AsConditional, destination, out charsWritten),
-                Arm64EnumKind.InvertedConditional => Enum.TryFormat(AsConditional, destination, out charsWritten),
-                Arm64EnumKind.DataSynchronizationOption => Enum.TryFormat(AsDataSynchronization, destination, out charsWritten),
-                Arm64EnumKind.StoredSharedHintPolicy => Enum.TryFormat(AsStoredSharedHintPolicy, destination, out charsWritten),
-                Arm64EnumKind.BranchTargetIdentification => Enum.TryFormat(AsBranchTargetIdentification, destination, out charsWritten),
-                Arm64EnumKind.BarrierOperationLimit => Enum.TryFormat(AsBarrierOperationLimit, destination, out charsWritten),
-                Arm64EnumKind.PrefetchOperation => Enum.TryFormat(AsPrefetchOperation, destination, out charsWritten),
-                Arm64EnumKind.RangePrefetchOperation => Enum.TryFormat(AsRangePrefetchOperation, destination, out charsWritten),
-                Arm64EnumKind.ProcessStateField => Enum.TryFormat(AsProcessStateField, destination, out charsWritten),
-                Arm64EnumKind.CodeSync => Enum.TryFormat(AsCodeSync, destination, out charsWritten),
-                Arm64EnumKind.DataSync => Enum.TryFormat(AsDataSync, destination, out charsWritten),
-                _ => false
-            })
+        if (IsImmediate)
+        {
+            return destination.TryWrite($"#{Value}", out charsWritten);
+        }
+        else if (EnumKind switch
+                 {
+                     Arm64EnumKind.Conditional => Enum.TryFormat(AsConditional, destination, out charsWritten),
+                     Arm64EnumKind.InvertedConditional => Enum.TryFormat(AsConditional, destination, out charsWritten),
+                     Arm64EnumKind.DataSynchronizationOption => Enum.TryFormat(AsDataSynchronization, destination, out charsWritten),
+                     Arm64EnumKind.StoredSharedHintPolicy => Enum.TryFormat(AsStoredSharedHintPolicy, destination, out charsWritten),
+                     Arm64EnumKind.BranchTargetIdentification => Enum.TryFormat(AsBranchTargetIdentification, destination, out charsWritten),
+                     Arm64EnumKind.BarrierOperationLimit => Enum.TryFormat(AsBarrierOperationLimit, destination, out charsWritten),
+                     Arm64EnumKind.PrefetchOperation => Enum.TryFormat(AsPrefetchOperation, destination, out charsWritten),
+                     Arm64EnumKind.RangePrefetchOperation => Enum.TryFormat(AsRangePrefetchOperation, destination, out charsWritten),
+                     Arm64EnumKind.ProcessStateField => Enum.TryFormat(AsProcessStateField, destination, out charsWritten),
+                     Arm64EnumKind.CodeSync => Enum.TryFormat(AsCodeSync, destination, out charsWritten),
+                     Arm64EnumKind.DataSync => Enum.TryFormat(AsDataSync, destination, out charsWritten),
+                     _ => false
+                 })
         {
             // TODO: Optimize with precalculated string
             var span = destination.Slice(0, charsWritten);

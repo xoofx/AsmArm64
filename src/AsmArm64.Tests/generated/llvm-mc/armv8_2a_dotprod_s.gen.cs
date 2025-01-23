@@ -185,15 +185,5 @@ partial class McInstructionTests
     [DataRow(new byte[] { 0x20, 0xe8, 0xa2, 0x4f }, "sdot v0.4s, v1.16b, v2.4b[3]")]
     [DataRow(new byte[] { 0x20, 0xe0, 0x82, 0x2f }, "udot v0.2s, v1.8b, v2.4b[0]")]
     [DataRow(new byte[] { 0x20, 0xe8, 0x82, 0x6f }, "udot v0.4s, v1.16b, v2.4b[2]")]
-    [DataRow(new byte[] { 0x20, 0x94, 0x82, 0x2e }, "udot v0.2s, v1.8b, v2.8b")]
-    [DataRow(new byte[] { 0x20, 0x94, 0x82, 0x0e }, "sdot v0.2s, v1.8b, v2.8b")]
-    [DataRow(new byte[] { 0x20, 0x94, 0x82, 0x6e }, "udot v0.4s, v1.16b, v2.16b")]
-    [DataRow(new byte[] { 0x20, 0x94, 0x82, 0x4e }, "sdot v0.4s, v1.16b, v2.16b")]
-    [DataRow(new byte[] { 0x20, 0xe0, 0x82, 0x2f }, "udot v0.2s, v1.8b, v2.4b[0]")]
-    [DataRow(new byte[] { 0x20, 0xe0, 0xa2, 0x0f }, "sdot v0.2s, v1.8b, v2.4b[1]")]
-    [DataRow(new byte[] { 0x20, 0xe8, 0x82, 0x6f }, "udot v0.4s, v1.16b, v2.4b[2]")]
-    [DataRow(new byte[] { 0x20, 0xe8, 0xa2, 0x4f }, "sdot v0.4s, v1.16b, v2.4b[3]")]
-    [DataRow(new byte[] { 0x20, 0xe0, 0x82, 0x2f }, "udot v0.2s, v1.8b, v2.4b[0]")]
-    [DataRow(new byte[] { 0x20, 0xe8, 0x82, 0x6f }, "udot v0.4s, v1.16b, v2.4b[2]")]
     public void armv8_2a_dotprod_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

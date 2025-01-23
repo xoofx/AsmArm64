@@ -102,12 +102,26 @@ public partial class McInstructionTestsGen
         {
             var input = (Dictionary<object, object>)(testCase["input"]);
             var bytes = ((List<object>)input["bytes"]).Select(x => (int)x).ToArray();
+            var options = (List<object>)(input["options"]);
+
             
             var expected = (Dictionary<object, object>)(testCase["expected"]);
             var insns = (List<object>)expected["insns"];
             Debug.Assert(insns.Count == 1);
             var insn = (Dictionary<object, object>)insns[0];
             var asm = (string)insn["asm_text"];
+            // options.Contains("specrestrict") ||
+            if (options.Contains("v8r"))
+            {
+                continue;
+            }
+
+            if (asm.Contains("msr") || asm.Contains("mrs"))
+            {
+                // specrestrict
+                // v8r
+                //Console.WriteLine($"{asm} -> {string.Join(",", options)}");
+            }
 
             AddTestInstruction(normalizedName, new(asm, string.Join(", ", bytes.Select(v => $"0x{v:x2}"))));
             TestCount++;
