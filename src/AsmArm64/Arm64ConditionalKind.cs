@@ -27,7 +27,7 @@ public enum Arm64ConditionalKind : byte
     /// <summary>
     /// Carry set/unsigned higher or same (C == 1).
     /// </summary>
-    CS = 3,
+    HS = 3, // CS or HS?
 
     /// <summary>
     /// Carry clear/unsigned lower (C == 0).
@@ -104,8 +104,8 @@ partial class Arm64Extensions
         {
             Arm64ConditionalKind.EQ => Arm64ConditionalKind.NE,
             Arm64ConditionalKind.NE => Arm64ConditionalKind.EQ,
-            Arm64ConditionalKind.CS => Arm64ConditionalKind.CC,
-            Arm64ConditionalKind.CC => Arm64ConditionalKind.CS,
+            Arm64ConditionalKind.HS => Arm64ConditionalKind.CC,
+            Arm64ConditionalKind.CC => Arm64ConditionalKind.HS,
             Arm64ConditionalKind.MI => Arm64ConditionalKind.PL,
             Arm64ConditionalKind.PL => Arm64ConditionalKind.MI,
             Arm64ConditionalKind.VS => Arm64ConditionalKind.VC,

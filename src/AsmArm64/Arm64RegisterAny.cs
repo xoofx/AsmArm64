@@ -2,6 +2,8 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+using System.Diagnostics;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 
 namespace AsmArm64;
@@ -16,8 +18,16 @@ public readonly record struct Arm64RegisterAny : IArm64RegisterVPacked, IArm64Re
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private Arm64RegisterAny(uint index) => _value = index;
 
-    public static Arm64RegisterAny Create(Arm64RegisterKind kind, int index, Arm64RegisterVKind vKind, int elementCount, int elementIndex) => new(((uint)(byte)elementIndex << 28) | ((uint)((byte)elementCount >> 1) << 24) | ((uint)(byte)vKind << 16) | ((uint)(byte)kind << 8) | (byte)index);
-    
+    public static Arm64RegisterAny Create(Arm64RegisterKind kind, int index, Arm64RegisterVKind vKind, int elementCount, int elementIndex)
+    {
+        return new Arm64RegisterAny(
+            ((uint) (byte) elementIndex << 28)
+            | ((uint) ((byte) ToElementShift(elementCount)) << 24)
+            | ((uint) (byte) vKind << 16)
+            | ((uint) (byte) kind << 8)
+            | (byte) index);
+    }
+
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind) (_value >> 8);
 
@@ -28,7 +38,7 @@ public readonly record struct Arm64RegisterAny : IArm64RegisterVPacked, IArm64Re
     public int Index => (byte) _value;
 
     /// <inheritdoc />
-    public int ElementCount => (byte)(((_value >> 24) & 0xF) << 1);
+    public int ElementCount => (byte)ToElementCount((_value >> 24) & 0xF);
 
     /// <inheritdoc />
     public int ElementIndex => (byte)(_value >> 28);
@@ -60,6 +70,27 @@ public readonly record struct Arm64RegisterAny : IArm64RegisterVPacked, IArm64Re
         var result = text.AsSpan().TryCopyTo(destination);
         charsWritten = result ? text.Length : 0;
         return result;
+    }
+
+    internal static uint ToElementShift(int elementCount)
+    {
+        Debug.Assert(elementCount == 0 || BitOperations.IsPow2(elementCount), $"Element {elementCount} is not valid");
+        // 0 = 0
+        if (elementCount == 0) return 0;
+        // Maximum 16 elements
+        // 1 = 1
+        // 2 = 2
+        // 4 = 3
+        // 8 = 4
+        // 16 = 5
+        return (uint)(BitOperations.TrailingZeroCount(elementCount) + 1);
+
+    }
+
+    internal static int ToElementCount(uint elementShift)
+    {
+        Debug.Assert(elementShift <= 5);
+        return elementShift == 0 ? 0 : 1 << ((int)elementShift - 1);
     }
 }
 
@@ -119,6 +150,7 @@ partial class Arm64Extensions
                 Arm64RegisterVKind.D => register.ElementCount switch
                 {
                     2 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_2D>(register).ToText(upper),
+                    1 => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_1D>(register).ToText(upper),
                     _ => throw new ArgumentOutOfRangeException(nameof(register), $"Invalid ElementCount {register.ElementCount}")
                 },
                 Arm64RegisterVKind.Q => register.ElementCount switch

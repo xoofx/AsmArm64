@@ -86,7 +86,7 @@ public readonly struct Arm64SystemRegister : IEquatable<Arm64SystemRegister>, IS
         var crm = (sysValue >> 3) & 0b1111;
         var op2 = (sysValue) & 0b111;
         
-        return destination.TryWrite(provider, $"SYS{op0}_{op1}_{crn}_{crm}_{op2}", out charsWritten);
+        return destination.TryWrite(provider, $"S{op0}_{op1}_C{crn}_C{crm}_{op2}", out charsWritten);
     }
 
     public static implicit operator Arm64SystemRegister(Arm64SystemRegisterKnownId id) => new(id);

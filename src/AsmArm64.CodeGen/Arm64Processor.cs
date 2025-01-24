@@ -192,6 +192,14 @@ partial class Arm64Processor
                             targetInstruction.IsAliasWithDynamicCondition = true;
                         }
                     }
+                    else
+                    {
+                        Debug.Assert(
+                            BitOperations.PopCount(targetInstruction.BitfieldMask) >
+                            BitOperations.PopCount(instruction.BitfieldMask),
+                            $"Alias {targetInstruction.Id} is not more selective with its BitfieldMask than {instruction.Id}");
+
+                    }
                 }
             }
         }

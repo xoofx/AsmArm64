@@ -10,10 +10,15 @@ namespace AsmArm64;
 
 public readonly struct Arm64ImmediateOperand : IArm64Operand
 {
+    private readonly bool _displayAsHex;
+    private readonly bool _is32;
+
     internal Arm64ImmediateOperand(Arm64Operand operand)
     {
         var descriptor = operand.Descriptor;
         var rawValue = operand.RawValue;
+
+        _is32 = true;
 
         // buffer[1] = (byte)ImmediateKind;
         var immediateKind = (Arm64ImmediateEncodingKind)(descriptor >> 8);
@@ -25,6 +30,7 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
                 // {
                 //     return;
                 // }
+                IsFloat = true;
                 Value = 0;
                 break;
             case Arm64ImmediateEncodingKind.FixedInt:
@@ -95,17 +101,24 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
                 IsFloat = true;
             }
 
-            Value = Arm64ImmediateValueHelper.DecodeValue(valueEncodingKind, Value);
+            Value = Arm64ImmediateValueHelper.DecodeValue(valueEncodingKind, (int)Value);
+            _displayAsHex = valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask32 || valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64;
+            if (valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64)
+            {
+                _is32 = false;
+            }
         }
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Immediate;
     
-    public int Value { get; }
+    public long Value { get; }
 
+    public int ValueAsInt => (int)Value;
+    
     public bool IsFloat { get; }
 
-    public float ValueAsFloat => BitConverter.Int32BitsToSingle(Value);
+    public float ValueAsFloat => BitConverter.Int32BitsToSingle(ValueAsInt);
     
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -139,12 +152,17 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
 
         if (IsFloat)
         {
-            var result = ValueAsFloat.TryFormat(destination.Slice(length), out var numberWritten, "0.00000000", provider);
+            var result = ValueAsFloat.TryFormat(destination.Slice(length), out var numberWritten, Value == 0 ? "0.0" : "0.00000000", provider);
             charsWritten = result ? length + numberWritten : 0;
             return result;
         }
         else
         {
+            if (_displayAsHex)
+            {
+                format = "x";
+            }
+
             if (format.Length == 1)
             {
                 if (format[0] == 'x' || format[0] == 'X')
@@ -164,9 +182,18 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
                 }
             }
 
-            var result = Value.TryFormat(destination.Slice(length), out var numberWritten, format, provider);
-            charsWritten = result ? length + numberWritten : 0;
-            return result;
+            if (_is32)
+            {
+                var result = ValueAsInt.TryFormat(destination.Slice(length), out var numberWritten, format, provider);
+                charsWritten = result ? length + numberWritten : 0;
+                return result;
+            }
+            else
+            {
+                var result = Value.TryFormat(destination.Slice(length), out var numberWritten, format, provider);
+                charsWritten = result ? length + numberWritten : 0;
+                return result;
+            }
         }
     }
 

@@ -10,7 +10,7 @@
         ("B", "8-bit vector register", new int[] {2, 4, 8, 16}),
         ("H", "Half-precision 16-bit floating-point register", new int[] {2, 4, 8}),
         ("S", "Single-precision 32-bit floating-point register", new int[] {2, 4}),
-        ("D", "Double-precision 64-bit floating-point register", new int[] {2}),
+        ("D", "Double-precision 64-bit floating-point register", new int[] {1, 2}),
         ("Q", "Double-precision 64-bit floating-point register", new int[] {1})
     };
 
@@ -27,6 +27,17 @@
         { "H", "Half-precision 16-bit floating-point register" },
         { "S", "Single-precision 32-bit floating-point register" },
         { "D", "Double-precision 64-bit floating-point register" },
+    };
+
+    var toElementShift = (int a) => a switch
+    {
+        0 => 0,
+        1 => 1,
+        2 => 2,
+        4 => 3,
+        8 => 4,
+        16 => 5,
+        _ => throw new InvalidOperationException($"Value {a} is not supported as an element count")
     };
 #>
 // Copyright (c) Alexandre Mutel. All rights reserved.
@@ -435,7 +446,7 @@ public readonly record struct Arm64RegisterV_<#= size #><#= kind #> : IArm64Regi
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV_<#= size #><#= kind #>(int index) => _value = (<#= size/2 #>U << 24) | ((uint)Arm64RegisterVKind.<#= kind #> << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+    internal Arm64RegisterV_<#= size #><#= kind #>(int index) => _value = (<#= toElementShift(size) #>U << 24) | ((uint)Arm64RegisterVKind.<#= kind #> << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -447,7 +458,7 @@ public readonly record struct Arm64RegisterV_<#= size #><#= kind #> : IArm64Regi
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -501,7 +512,7 @@ public readonly record struct Arm64RegisterV_<#= size #><#= kind #> : IArm64Regi
         private readonly uint _value;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (<#= size/2 #>U << 24) | ((uint)Arm64RegisterVKind.<#= kind #> << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (<#= toElementShift(size) #>U << 24) | ((uint)Arm64RegisterVKind.<#= kind #> << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
 
         /// <inheritdoc />
         public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);

@@ -37,13 +37,27 @@ enum Arm64ImmediateValueEncodingKind : byte
     /// <summary>
     /// (32 - value) &amp; 0x1F
     /// </summary>
-    MinusValuePlus32Mod32,
+    _32_Minus_Value_Mod32,
     /// <summary>
     /// (64 - value) &amp; 0x3F
     /// </summary>
-    MinusValuePlus64Mod64,
+    _64_Minus_Value_Mod64,
+    /// <summary>
+    /// (32 - value)
+    /// </summary>
+    _32_Minus_Value,
+    /// <summary>
+    /// (64 - value)
+    /// </summary>
+    _64_Minus_Value,
     /// <summary>
     /// lsb + width - 1
     /// </summary>
-    LsbPlusWidthMinus1
+    LsbPlusWidthMinus1,
+    /// <summary>
+    /// value &amp; 0x3F
+    /// </summary>
+    ValueMod64Plus1,
+    DecodeBitMask32,
+    DecodeBitMask64,
 }

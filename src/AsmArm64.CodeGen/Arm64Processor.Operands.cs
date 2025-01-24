@@ -447,6 +447,8 @@ partial class Arm64Processor
             // 
             encodingSymbol.EncodedInText = accountElement.Attribute("encodedin")!.Value;
 
+            var enclist = explanation.Attribute("enclist")!.Value.Split(",").Select(x => x.Trim()).ToList();
+
             var tableElement = accountElement.Element("table");
             if (tableElement is not null)
             {
@@ -501,6 +503,8 @@ partial class Arm64Processor
                 }
             }
 
+
+
             if (accountElement.Name == "account")
             {
                 var introElt = accountElement.Element("intro");
@@ -529,6 +533,13 @@ partial class Arm64Processor
                     //    encodingSymbol.ValueEncoding = Arm64ImmediateValueEncodingKind.SignedFloatExp3Mantissa4;
                     //}
 
+                    if (introElt.Value.Contains("encoded as"))
+                    {
+                        Console.WriteLine($"{filenameContext} {string.Join(",", enclist)}");
+                        Console.WriteLine($" -> {introElt.Value.Substring(introElt.Value.IndexOf("encoded as", StringComparison.Ordinal)).Trim()}");
+                    }
+
+
                     if (introElt.Value.Contains("signed immediate"))
                     {
                         encodingSymbol.IsSignedImmediate = true;
@@ -537,7 +548,6 @@ partial class Arm64Processor
                 }
             }
 
-            var enclist = explanation.Attribute("enclist")!.Value.Split(",").Select(x => x.Trim()).ToList();
             foreach (var enc in enclist)
             {
                 if (!mapEncodingIdToInfo.TryGetValue(enc, out var encodingInfo))

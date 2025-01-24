@@ -840,6 +840,11 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     public Arm64RegisterV_D D => new(Index);
 
     /// <summary>
+    /// Gets the 1 x D V register.
+    /// </summary>
+    public Arm64RegisterV_1D T_1D => new(Index);
+
+    /// <summary>
     /// Gets the 2 x D V register.
     /// </summary>
     public Arm64RegisterV_2D T_2D => new(Index);
@@ -1410,7 +1415,7 @@ public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV_2B(int index) => _value = (1U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+    internal Arm64RegisterV_2B(int index) => _value = (2U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1422,7 +1427,7 @@ public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -1475,7 +1480,7 @@ public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
         private readonly uint _value;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (1U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (2U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
 
         /// <inheritdoc />
         public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1567,7 +1572,7 @@ public readonly record struct Arm64RegisterV_4B : IArm64RegisterVPacked
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV_4B(int index) => _value = (2U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+    internal Arm64RegisterV_4B(int index) => _value = (3U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1579,7 +1584,7 @@ public readonly record struct Arm64RegisterV_4B : IArm64RegisterVPacked
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -1632,7 +1637,7 @@ public readonly record struct Arm64RegisterV_4B : IArm64RegisterVPacked
         private readonly uint _value;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (2U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (3U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
 
         /// <inheritdoc />
         public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1736,7 +1741,7 @@ public readonly record struct Arm64RegisterV_8B : IArm64RegisterVPacked
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -1785,7 +1790,7 @@ public readonly record struct Arm64RegisterV_16B : IArm64RegisterVPacked
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV_16B(int index) => _value = (8U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+    internal Arm64RegisterV_16B(int index) => _value = (5U << 24) | ((uint)Arm64RegisterVKind.B << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -1797,7 +1802,7 @@ public readonly record struct Arm64RegisterV_16B : IArm64RegisterVPacked
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -2210,7 +2215,7 @@ public readonly record struct Arm64RegisterV_2H : IArm64RegisterVPacked
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV_2H(int index) => _value = (1U << 24) | ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+    internal Arm64RegisterV_2H(int index) => _value = (2U << 24) | ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -2222,7 +2227,7 @@ public readonly record struct Arm64RegisterV_2H : IArm64RegisterVPacked
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -2275,7 +2280,7 @@ public readonly record struct Arm64RegisterV_2H : IArm64RegisterVPacked
         private readonly uint _value;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (1U << 24) | ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | (2U << 24) | ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VPackedIndexed << 8) | (uint)registerIndex;
 
         /// <inheritdoc />
         public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -2367,7 +2372,7 @@ public readonly record struct Arm64RegisterV_4H : IArm64RegisterVPacked
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV_4H(int index) => _value = (2U << 24) | ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+    internal Arm64RegisterV_4H(int index) => _value = (3U << 24) | ((uint)Arm64RegisterVKind.H << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -2379,7 +2384,7 @@ public readonly record struct Arm64RegisterV_4H : IArm64RegisterVPacked
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -2440,7 +2445,7 @@ public readonly record struct Arm64RegisterV_8H : IArm64RegisterVPacked
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -2853,7 +2858,7 @@ public readonly record struct Arm64RegisterV_2S : IArm64RegisterVPacked
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV_2S(int index) => _value = (1U << 24) | ((uint)Arm64RegisterVKind.S << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+    internal Arm64RegisterV_2S(int index) => _value = (2U << 24) | ((uint)Arm64RegisterVKind.S << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -2865,7 +2870,7 @@ public readonly record struct Arm64RegisterV_2S : IArm64RegisterVPacked
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -2914,7 +2919,7 @@ public readonly record struct Arm64RegisterV_4S : IArm64RegisterVPacked
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV_4S(int index) => _value = (2U << 24) | ((uint)Arm64RegisterVKind.S << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+    internal Arm64RegisterV_4S(int index) => _value = (3U << 24) | ((uint)Arm64RegisterVKind.S << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -2926,7 +2931,7 @@ public readonly record struct Arm64RegisterV_4S : IArm64RegisterVPacked
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -3332,14 +3337,14 @@ public readonly record struct Arm64RegisterD : IArm64RegisterVScalar
 
 
 /// <summary>
-/// Represents an ARM64 an arranged 2 x D, Double-precision 64-bit floating-point register
+/// Represents an ARM64 an arranged 1 x D, Double-precision 64-bit floating-point register
 /// </summary>
-public readonly record struct Arm64RegisterV_2D : IArm64RegisterVPacked
+public readonly record struct Arm64RegisterV_1D : IArm64RegisterVPacked
 {
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV_2D(int index) => _value = (1U << 24) | ((uint)Arm64RegisterVKind.D << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+    internal Arm64RegisterV_1D(int index) => _value = (1U << 24) | ((uint)Arm64RegisterVKind.D << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -3351,7 +3356,68 @@ public readonly record struct Arm64RegisterV_2D : IArm64RegisterVPacked
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
+
+    /// <summary>
+    /// Gets the base register of this vector packed register.
+    /// </summary>
+    public Arm64RegisterV_D BaseRegister => new(Index);
+
+    /// <inheritdoc />
+    public override string ToString() => ToString(null, null);
+
+    /// <inheritdoc />
+    public string ToString(string? format, IFormatProvider? formatProvider) => this.ToText((format ??= "L") == "H");
+
+    /// <inheritdoc />
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        if (format.Length != 1) format = "L";
+        var text = this.ToText(format[0] == 'H');
+        var result = text.AsSpan().TryCopyTo(destination);
+        charsWritten = result ? text.Length : 0;
+        return result;
+    }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    public static implicit operator Arm64RegisterAny(Arm64RegisterV_1D register) => Unsafe.BitCast<Arm64RegisterV_1D, Arm64RegisterAny>(register);
+
+    /// <summary>
+    /// Converts an any register to a V.D register.
+    /// </summary>
+    public static explicit operator Arm64RegisterV_1D(Arm64RegisterAny register)
+    {
+        if (register.Kind != Arm64RegisterKind.VPacked || register.VKind != Arm64RegisterVKind.D)
+        {
+            throw new InvalidCastException($"Invalid cast from {register.Kind}/{register.VKind} to Arm64RegisterV_1D");
+        }
+        return Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_1D>(register);
+    }
+}
+
+/// <summary>
+/// Represents an ARM64 an arranged 2 x D, Double-precision 64-bit floating-point register
+/// </summary>
+public readonly record struct Arm64RegisterV_2D : IArm64RegisterVPacked
+{
+    private readonly uint _value;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal Arm64RegisterV_2D(int index) => _value = (2U << 24) | ((uint)Arm64RegisterVKind.D << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+
+    /// <inheritdoc />
+    public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+    /// <inheritdoc />
+    public int Index => (byte)_value;
+
+    /// <inheritdoc />
+    public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+    /// <inheritdoc />
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -3764,7 +3830,7 @@ public readonly record struct Arm64RegisterV_1Q : IArm64RegisterVPacked
     private readonly uint _value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal Arm64RegisterV_1Q(int index) => _value = (0U << 24) | ((uint)Arm64RegisterVKind.Q << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
+    internal Arm64RegisterV_1Q(int index) => _value = (1U << 24) | ((uint)Arm64RegisterVKind.Q << 16) | ((uint)Arm64RegisterKind.VPacked << 8) | (uint)index;
 
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -3776,7 +3842,7 @@ public readonly record struct Arm64RegisterV_1Q : IArm64RegisterVPacked
     public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
 
     /// <inheritdoc />
-    public int ElementCount => (int)((_value >> 24) & 0xF) << 1;
+    public int ElementCount => Arm64RegisterAny.ToElementCount((_value >> 24) & 0xF);
 
     /// <summary>
     /// Gets the base register of this vector packed register.
@@ -6478,6 +6544,81 @@ partial class Arm64Extensions
         "V31.D",
         ];
 
+
+    /// <summary>
+    /// Converts the V register to a string.
+    /// </summary>
+    public static string ToText(this Arm64RegisterV_1D register, bool upperCase = false) => upperCase ? RegisterV1DUpperNames[ValidateRegisterIndex(register.Index)] : RegisterV1DLowerNames[ValidateRegisterIndex(register.Index)];
+
+    private static readonly string[] RegisterV1DLowerNames = [
+        "v0.1d",
+        "v1.1d",
+        "v2.1d",
+        "v3.1d",
+        "v4.1d",
+        "v5.1d",
+        "v6.1d",
+        "v7.1d",
+        "v8.1d",
+        "v9.1d",
+        "v10.1d",
+        "v11.1d",
+        "v12.1d",
+        "v13.1d",
+        "v14.1d",
+        "v15.1d",
+        "v16.1d",
+        "v17.1d",
+        "v18.1d",
+        "v19.1d",
+        "v20.1d",
+        "v21.1d",
+        "v22.1d",
+        "v23.1d",
+        "v24.1d",
+        "v25.1d",
+        "v26.1d",
+        "v27.1d",
+        "v28.1d",
+        "v29.1d",
+        "v30.1d",
+        "v31.1d",
+        ];
+
+    private static readonly string[] RegisterV1DUpperNames = [
+        "V0.1D",
+        "V1.1D",
+        "V2.1D",
+        "V3.1D",
+        "V4.1D",
+        "V5.1D",
+        "V6.1D",
+        "V7.1D",
+        "V8.1D",
+        "V9.1D",
+        "V10.1D",
+        "V11.1D",
+        "V12.1D",
+        "V13.1D",
+        "V14.1D",
+        "V15.1D",
+        "V16.1D",
+        "V17.1D",
+        "V18.1D",
+        "V19.1D",
+        "V20.1D",
+        "V21.1D",
+        "V22.1D",
+        "V23.1D",
+        "V24.1D",
+        "V25.1D",
+        "V26.1D",
+        "V27.1D",
+        "V28.1D",
+        "V29.1D",
+        "V30.1D",
+        "V31.1D",
+        ];
 
     /// <summary>
     /// Converts the V register to a string.

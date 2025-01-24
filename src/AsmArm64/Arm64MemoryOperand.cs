@@ -68,7 +68,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
 
             if (immediateValueEncodingKind != Arm64ImmediateValueEncodingKind.None)
             {
-                value = Arm64ImmediateValueHelper.DecodeValue(immediateValueEncodingKind, value);
+                value = (int)Arm64ImmediateValueHelper.DecodeValue(immediateValueEncodingKind, (int)value);
             }
 
             switch (memoryKind)
