@@ -353,7 +353,7 @@ static class Arm64ImmediateHelper
                 var bitsToTest = ((bitValue >> 3) & 0x3);
                 if (bitsToTest == 0)
                 {
-                    var extractedValue = (bitValue & 0x1) | ((bitValue >> 1) & 0x2);
+                    var extractedValue = (bitValue & 0x7);
                     imm = (int)extractedValue;
                     return true;
                 }

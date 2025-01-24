@@ -711,17 +711,30 @@ readonly record struct BitValueItem(BitValueItemKind Kind, BitRange Range)
                 {
                     var indices = matchBitIndices.Value.Split(':').Select(x => int.Parse(x)).ToArray();
 
-                    foreach (var bitIndex in indices)
+                    Debug.Assert(indices.Length == 1 || indices.Length == 2);
+
+                    BitRange range;
+
+                    if (indices.Length == 1)
                     {
-                        if (bitItems.Count > 0 && bitItems[^1].Kind == BitValueItemKind.BitRange && bitItems[^1].Range.LowBit == bitRange.LowBit + bitIndex + 1)
-                        {
-                            // Merge with previous range
-                            bitItems[^1] = new(BitValueItemKind.BitRange, new BitRange(bitRange.LowBit + bitIndex, bitItems[^1].Range.Width + 1));
-                        }
-                        else
-                        {
-                            bitItems.Add(new(BitValueItemKind.BitRange, new BitRange(bitRange.LowBit + bitIndex, 1)));
-                        }
+                        var bitIndex = indices[0];
+                        range = new BitRange(bitRange.LowBit + bitIndex, 1);
+                    }
+                    else
+                    {
+                        var bitIndex = indices[1];
+                        var bitWidth = indices[0] - bitIndex + 1;
+                        range = new BitRange(bitRange.LowBit + bitIndex, bitWidth);
+                    }
+
+                    if (bitItems.Count > 0 && bitItems[^1].Kind == BitValueItemKind.BitRange && bitItems[^1].Range.LowBit == range.LowBit + range.Width)
+                    {
+                        // Merge with previous range
+                        bitItems[^1] = new(BitValueItemKind.BitRange, new BitRange(range.LowBit, bitItems[^1].Range.Width + range.Width));
+                    }
+                    else
+                    {
+                        bitItems.Add(new(BitValueItemKind.BitRange, range));
                     }
                 }
                 else

@@ -553,8 +553,38 @@ partial class Arm64Processor
                     selector.BitValues.Add(bitValue);
                 }
             }
+            else if (enclist.Contains("MOV_UMOV_asimdins_W_w") && name == "<index>")
+            {
+                // We fake an encoding that is missing from the XML
+                // <entry class="bitfield">xx</entry>
+                // <entry class="symbol">UInt(imm5&lt;4:3&gt;)</entry>
 
+                var selector = new EncodingSymbolSelector();
+                encodingSymbol.Selector = selector;
+                selector.BitNames.Add("imm5");
 
+                var bitValue = new EncodingBitValue
+                {
+                    BitSelectorAsText = "xx1xx",
+                    Text = "UInt(imm5<4:3>)"
+                };
+                selector.BitValues.Add(bitValue);
+            }
+            else if (enclist.Contains("MOV_UMOV_asimdins_X_x") && name == "<index>")
+            {
+                // We fake an encoding that is missing from the XML
+                // <entry class="bitfield">xx</entry>
+                // <entry class="symbol">UInt(imm5&lt;4:3&gt;)</entry>
+                var selector = new EncodingSymbolSelector();
+                encodingSymbol.Selector = selector;
+                selector.BitNames.Add("imm5");
+                var bitValue = new EncodingBitValue
+                {
+                    BitSelectorAsText = "x10xx",
+                    Text = "UInt(imm5<4>)"
+                };
+                selector.BitValues.Add(bitValue);
+            }
 
             if (accountElement.Name == "account")
             {
