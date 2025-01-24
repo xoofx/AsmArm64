@@ -66,10 +66,25 @@ public readonly struct Arm64SystemRegister : IEquatable<Arm64SystemRegister>, IS
         {
             var text = Arm64SystemRegisterTable.GetNameById(id);
 
-            if (text.AsSpan().TryCopyTo(destination))
+            if ((Kind & (Arm64SystemRegisterKind.AT | Arm64SystemRegisterKind.TLBI)) != 0)
             {
-                charsWritten = text.Length;
+                int lowerWritten = text.AsSpan().ToLowerInvariant(destination);
+                if (lowerWritten < 0)
+                {
+                    charsWritten = 0;
+                    return false;
+                }
+
+                charsWritten = lowerWritten;
                 return true;
+            }
+            else
+            {
+                if (text.AsSpan().TryCopyTo(destination))
+                {
+                    charsWritten = text.Length;
+                    return true;
+                }
             }
 
             charsWritten = 0;

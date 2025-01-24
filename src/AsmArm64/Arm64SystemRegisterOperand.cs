@@ -19,7 +19,8 @@ public readonly struct Arm64SystemRegisterOperand : IArm64Operand
 
         var rawKindIndex = (byte)(descriptor >> 8);
         Arm64SystemRegisterKind systemRegisterKind = rawKindIndex > 0 ? (Arm64SystemRegisterKind)(1 << (rawKindIndex - 1)) : Arm64SystemRegisterKind.Unknown;
-
+        RegisterKind = systemRegisterKind;
+        
         var registerValue = (ushort)(rawValue >> 5);
         var register = new Arm64SystemRegister(registerValue);
         if (register.Id == Arm64SystemRegisterKnownId.DBGDTRRX_EL0 && (systemRegisterKind & Arm64SystemRegisterKind.MSR) != 0)
@@ -32,6 +33,8 @@ public readonly struct Arm64SystemRegisterOperand : IArm64Operand
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.SystemRegister;
+
+    public Arm64SystemRegisterKind RegisterKind { get; }
 
     public Arm64SystemRegister Value { get; }
 
