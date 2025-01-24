@@ -171,7 +171,7 @@ static class Arm64IndexerHelper
                 }
                 if ((bitsToTest & 0x2) == 0)
                 {
-                    var extractedValue = ((bitValue >> 1) & 0x1) | (bitValue & 0x2);
+                    var extractedValue = ((bitValue >> 1) & 0x1) | ((bitValue << 1) & 0x2);
                     index = (int)extractedValue;
                     return true;
                 }

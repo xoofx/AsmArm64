@@ -919,6 +919,10 @@ partial class Arm64Processor
             {
                 builder.Append($"(({inputValue} >> {shift}) & 0x{mask:X})");
             }
+            else if (shift < 0)
+            {
+                builder.Append($"(({inputValue} << {-shift}) & 0x{mask:X})");
+            }
             else
             {
                 builder.Append($"({inputValue} & 0x{mask:X})");
