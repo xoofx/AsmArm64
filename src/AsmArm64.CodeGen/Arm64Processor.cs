@@ -73,6 +73,8 @@ partial class Arm64Processor
     {
         ProcessSystemRegisters();
 
+        ProcessSysOp_For_DC_and_AT();
+
         LoadInstructions();
 
         //foreach (var paramName in _allParameterNames.Order())
@@ -438,6 +440,11 @@ partial class Arm64Processor
                 instrClass ??= baseInstrClass ?? "Other";
                 instrClass = $"{char.ToUpperInvariant(instrClass[0])}{instrClass.Substring(1)}";
 
+                bool process2ndInstructionVariation = false;
+                string? multiInstructionSymbol = null;
+
+                add_instruction_variation:
+
                 var instruction = new Instruction
                 {
                     Filename = fileName,
@@ -447,6 +454,7 @@ partial class Arm64Processor
                     Summary = summary,
                     InstructionClass = instrClass,
                 };
+
                 Debug.Assert(archVariants.Count <= 1);
                 if (archVariants.Count == 1)
                 {
@@ -497,24 +505,57 @@ partial class Arm64Processor
                     instruction.Add(bitField);
                 }
 
+                mapEncodingIdToInfo.TryGetValue(encodingName, out var encodingInfo);
+                DetectMultiInstruction(encoding, encodingInfo, out multiInstructionSymbol, out var multiInstructionPostFixes);
+
+                // If we have a variation, encode the variation as a bit field
+                if (multiInstructionSymbol is not null)
+                {
+                    var result = mapEncodingIdToInfo.TryGetValue(encodingName, out var encodingInfoForVariation);
+                    Debug.Assert(result);
+                    var variationSymbol = encodingInfoForVariation!.Symbols[multiInstructionSymbol];
+                    var bitEncodingNameVariation = variationSymbol.EncodedInText;
+                    var bitFieldSet = instruction.BitRanges.First(x => x.Name == bitEncodingNameVariation).BitFieldSet;
+                    Debug.Assert(bitFieldSet.Count == 1);
+                    Debug.Assert(bitFieldSet[0] == BitKind.NotSet);
+                    // Replace the bit field with a 0 or 1 depending on the variation
+                    bitFieldSet[0] = process2ndInstructionVariation ? BitKind.One : BitKind.Zero;
+                    Debug.Assert(multiInstructionPostFixes is not null);
+                    PatchInstructionWithPostFix(instruction, multiInstructionPostFixes[process2ndInstructionVariation ? 1 : 0]);
+                }
+                
                 instruction.Initialize();
 
-                var instructionId = instruction.Id;
-
-                if (mapEncodingIdToInfo.TryGetValue(encodingName, out var encodingInfo))
+                if (encodingInfo is not null)
                 {
                     foreach (var symbol in encodingInfo.Symbols.Values)
                     {
                         symbol.Initialize(instruction.BitRangeMap);
                     }
                 }
-                
+
                 var operands = ParseOperands(encoding, encodingInfo);
                 instruction.Operands.AddRange(operands);
                 instruction.UpdateSignatureFromOperands();
-
                 _instructions.Add(instruction);
+
+                if (!process2ndInstructionVariation && multiInstructionSymbol is not null)
+                {
+                    process2ndInstructionVariation = true;
+                    goto add_instruction_variation;
+                }
             }
+        }
+    }
+
+    private void PatchInstructionWithPostFix(Instruction instruction, string postFix)
+    {
+        // Add a post fix (2) to the instruction id / mnemonic if we have a variation
+        if (!string.IsNullOrEmpty(postFix))
+        {
+            var indexOfUnderscore = instruction.Id.IndexOf('_');
+            instruction.Id = $"{instruction.Id.Substring(0, indexOfUnderscore)}{postFix}{instruction.Id.Substring(indexOfUnderscore)}";
+            instruction.Mnemonic += postFix;
         }
     }
 

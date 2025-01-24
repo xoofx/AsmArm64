@@ -21,6 +21,10 @@ internal enum Arm64RegisterIndexEncodingKind : byte
     /// </summary>
     Std5,
     /// <summary>
+    /// Standard 5 bit encoding + 1.
+    /// </summary>
+    Std5Plus1,
+    /// <summary>
     /// Standard 4 bit encoding.
     /// </summary>
     Std4,

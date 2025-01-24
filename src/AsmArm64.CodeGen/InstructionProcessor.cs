@@ -5,6 +5,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using AsmArm64.CodeGen.Model;
 
 namespace AsmArm64.CodeGen;
@@ -510,7 +511,25 @@ internal sealed class InstructionProcessor
         var name0 = elt0.Text;
         var symbol0 = elt0.Symbol;
 
-        if (items.Count == 1)
+        if (items.All(x => x.Kind == OperandItemKind.Register))
+        {
+            Debug.Assert(items.Count == 1 || items.Count == 2);
+            var descriptor1 = ProcessRegister(instruction, (RegisterOperandItem)items[0]);
+            bool isPaired = false;
+
+            if (items.Count == 2)
+            {
+                var descriptor2 = ProcessRegister(instruction, (RegisterOperandItem)items[1]);
+                Debug.Assert(descriptor1.IsSimpleEncoding && descriptor2.IsSimpleEncoding && descriptor1.LowBitIndexEncoding == descriptor2.LowBitIndexEncoding);
+                isPaired = true;
+            }
+
+            descriptor1.IsOptional = true;
+            descriptor1.IsPaired = isPaired;
+
+            return descriptor1;
+        }
+        else if (items.Count == 1)
         {
             if ((instruction.Id == "SMSTART_msr_si_pstate" || instruction.Id == "SMSTOP_msr_si_pstate") && name0 == "option")
             {
@@ -920,12 +939,22 @@ internal sealed class InstructionProcessor
         }
     }
 
+    private static readonly Regex RegexMatchRegisterPlus = new Regex(@"[XW]\(?[st]\+(?<plus>\d)\)?");
+
     private RegisterOperandDescriptor ProcessRegister(Instruction instruction, RegisterOperandItem register)
     {
         var elt0 = register.TextElements[0];
         var name0 = elt0.Text;
         var isSP = name0.EndsWith("SP");
         Debug.Assert(!isSP || name0.Contains('|'));
+        bool isPlusOneRegister = false;
+
+        var matchPlus = RegexMatchRegisterPlus.Match(name0);
+        if (matchPlus.Success)
+        {
+            Debug.Assert(matchPlus.Groups["plus"].Value == "1", "Support only for register encoding + 1 for now");
+            isPlusOneRegister = true;
+        }
 
         int indexOfIndexEncoding = 0;
 
@@ -1029,13 +1058,17 @@ internal sealed class InstructionProcessor
             if (symbol.Selector is null)
             {
                 Debug.Assert(symbol.BitRanges.Count == 1 && (size == 5 || size == 4));
+                Debug.Assert(!isPlusOneRegister || size == 5);
                 descriptor.LowBitIndexEncoding = symbol.BitRanges[0].LowBit;
                 descriptor.RegisterIndexEncodingKind = size == 4
                     ? Arm64RegisterIndexEncodingKind.Std4
-                    : Arm64RegisterIndexEncodingKind.Std5;
+                    : isPlusOneRegister
+                        ? Arm64RegisterIndexEncodingKind.Std5Plus1
+                        : Arm64RegisterIndexEncodingKind.Std5;
             }
             else
             {
+                Debug.Assert(!isPlusOneRegister);
                 descriptor.RegisterIndexEncodingKind = Arm64RegisterIndexEncodingKind.BitMapExtract;
                 descriptor.RegisterIndexExtract = _registerIndex.GetOrCreateExtract<EncodingSymbolExtract>(symbol);
                 descriptor.RegisterIndexExtract.Usages.Add((instruction, register));
@@ -1467,7 +1500,7 @@ internal sealed class InstructionProcessor
         {
             Debug.Assert(indexDesc.IsSimpleEncoding);
             memoryOperandDescriptor.IndexRegisterOrImmediate.Add(indexDesc.GetIndexEncoding());
-            Debug.Assert(indexDesc.RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Std5);
+            Debug.Assert(indexDesc.RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Std5 | indexDesc.RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Std5Plus1);
         }
         else if (indexRegisterOrImmediate is ImmediateOperandDescriptor immediate)
         {

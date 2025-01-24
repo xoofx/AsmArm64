@@ -219,6 +219,7 @@ sealed class MemoryOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Memo
         if (MemoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate || MemoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional)
         {
             buffer[3] = (byte)FixedValue;
+            buffer[4] = (byte) (IsPreIncrement ? 0x80 : 0);
         }
         else
         {
@@ -344,6 +345,8 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
     [JsonIgnore]
     public EncodingSymbolExtract? RegisterIndexExtract { get; set; }
 
+    public bool IsPaired { get; set; }
+
     public BitRange GetIndexEncoding()
     {
         if (!IsSimpleEncoding) throw new InvalidOperationException("Cannot get index encoding for non-simple encoding");
@@ -351,13 +354,14 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
         {
             Arm64RegisterIndexEncodingKind.Std4 => new BitRange(LowBitIndexEncoding, 4),
             Arm64RegisterIndexEncodingKind.Std5 => new BitRange(LowBitIndexEncoding, 5),
+            Arm64RegisterIndexEncodingKind.Std5Plus1 => new BitRange(LowBitIndexEncoding, 5),
             _ => throw new InvalidOperationException("Cannot get index encoding for non-simple encoding")
         };
     }
     protected internal override void EncodeImpl(Span<byte> buffer)
     {
         buffer[1] = (byte)((byte)RegisterKind | ((byte)RegisterIndexEncodingKind << 4));
-        buffer[2] = (byte)IndexerIndex;
+        buffer[2] = (byte)((byte)IndexerIndex | (byte)(IsOptional ? 0x80  : 0) | (byte)(IsPaired ? 0x40 : 0));
         if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.BitMapExtract)
         {
             Debug.Assert(RegisterIndexExtractIndex != 0);

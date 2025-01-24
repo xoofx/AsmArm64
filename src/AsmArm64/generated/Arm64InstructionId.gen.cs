@@ -4713,4851 +4713,5103 @@ public enum Arm64InstructionId : ushort
     /// </summary>
     ADDHN_asimddiff_n = 1173,
     /// <summary>
+    /// Instruction `ADDHN2` - Add returning high narrow.
+    /// </summary>
+    ADDHN2_asimddiff_n = 1174,
+    /// <summary>
     /// Instruction `ADDP` - Add pair of elements (scalar).
     /// </summary>
-    ADDP_asisdpair_only = 1174,
+    ADDP_asisdpair_only = 1175,
     /// <summary>
     /// Instruction `ADDP` - Add pairwise (vector).
     /// </summary>
-    ADDP_asimdsame_only = 1175,
+    ADDP_asimdsame_only = 1176,
     /// <summary>
     /// Instruction `ADDV` - Add across vector.
     /// </summary>
-    ADDV_asimdall_only = 1176,
+    ADDV_asimdall_only = 1177,
     /// <summary>
     /// Instruction `AESD` - AES single round decryption.
     /// </summary>
-    AESD_b_cryptoaes = 1177,
+    AESD_b_cryptoaes = 1178,
     /// <summary>
     /// Instruction `AESE` - AES single round encryption.
     /// </summary>
-    AESE_b_cryptoaes = 1178,
+    AESE_b_cryptoaes = 1179,
     /// <summary>
     /// Instruction `AESIMC` - AES inverse mix columns.
     /// </summary>
-    AESIMC_b_cryptoaes = 1179,
+    AESIMC_b_cryptoaes = 1180,
     /// <summary>
     /// Instruction `AESMC` - AES mix columns.
     /// </summary>
-    AESMC_b_cryptoaes = 1180,
+    AESMC_b_cryptoaes = 1181,
     /// <summary>
     /// Instruction `AND` - Bitwise AND (vector).
     /// </summary>
-    AND_asimdsame_only = 1181,
+    AND_asimdsame_only = 1182,
     /// <summary>
     /// Instruction `BCAX` - Bit clear and exclusive-OR.
     /// </summary>
-    BCAX_vvv16_crypto4 = 1182,
+    BCAX_vvv16_crypto4 = 1183,
     /// <summary>
     /// Instruction `BF1CVTL` - 8-bit floating-point convert to BFloat16 (vector).
     /// </summary>
-    BF1CVTL_asimdmisc_v = 1183,
+    BF1CVTL_asimdmisc_v = 1184,
+    /// <summary>
+    /// Instruction `BF1CVTL2` - 8-bit floating-point convert to BFloat16 (vector).
+    /// </summary>
+    BF1CVTL2_asimdmisc_v = 1185,
     /// <summary>
     /// Instruction `BF2CVTL` - 8-bit floating-point convert to BFloat16 (vector).
     /// </summary>
-    BF2CVTL_asimdmisc_v = 1184,
+    BF2CVTL_asimdmisc_v = 1186,
+    /// <summary>
+    /// Instruction `BF2CVTL2` - 8-bit floating-point convert to BFloat16 (vector).
+    /// </summary>
+    BF2CVTL2_asimdmisc_v = 1187,
     /// <summary>
     /// Instruction `BFCVT` - Floating-point convert from single-precision to BFloat16 format (scalar).
     /// </summary>
-    BFCVT_bs_floatdp1 = 1185,
+    BFCVT_bs_floatdp1 = 1188,
     /// <summary>
     /// Instruction `BFCVTN` - Floating-point convert from single-precision to BFloat16 format (vector).
     /// </summary>
-    BFCVTN_asimdmisc_4s = 1186,
+    BFCVTN_asimdmisc_4s = 1189,
+    /// <summary>
+    /// Instruction `BFCVTN2` - Floating-point convert from single-precision to BFloat16 format (vector).
+    /// </summary>
+    BFCVTN2_asimdmisc_4s = 1190,
     /// <summary>
     /// Instruction `BFDOT` - BFloat16 floating-point dot product (vector, by element).
     /// </summary>
-    BFDOT_asimdelem_e = 1187,
+    BFDOT_asimdelem_e = 1191,
     /// <summary>
     /// Instruction `BFDOT` - BFloat16 floating-point dot product (vector).
     /// </summary>
-    BFDOT_asimdsame2_d = 1188,
+    BFDOT_asimdsame2_d = 1192,
     /// <summary>
-    /// Instruction `BFMLAL` - BFloat16 floating-point widening multiply-add long (by element).
+    /// Instruction `BFMLALB` - BFloat16 floating-point widening multiply-add long (by element).
     /// </summary>
-    BFMLAL_asimdelem_f = 1189,
+    BFMLALB_asimdelem_f = 1193,
     /// <summary>
-    /// Instruction `BFMLAL` - BFloat16 floating-point widening multiply-add long (vector).
+    /// Instruction `BFMLALT` - BFloat16 floating-point widening multiply-add long (by element).
     /// </summary>
-    BFMLAL_asimdsame2_f = 1190,
+    BFMLALT_asimdelem_f = 1194,
+    /// <summary>
+    /// Instruction `BFMLALB` - BFloat16 floating-point widening multiply-add long (vector).
+    /// </summary>
+    BFMLALB_asimdsame2_f = 1195,
+    /// <summary>
+    /// Instruction `BFMLALT` - BFloat16 floating-point widening multiply-add long (vector).
+    /// </summary>
+    BFMLALT_asimdsame2_f = 1196,
     /// <summary>
     /// Instruction `BFMMLA` - BFloat16 floating-point matrix multiply-accumulate into 2x2 matrix.
     /// </summary>
-    BFMMLA_asimdsame2_e = 1191,
+    BFMMLA_asimdsame2_e = 1197,
     /// <summary>
     /// Instruction `BIC` - Bitwise bit clear (vector, immediate).
     /// </summary>
-    BIC_asimdimm_l_hl = 1192,
+    BIC_asimdimm_l_hl = 1198,
     /// <summary>
     /// Instruction `BIC` - Bitwise bit clear (vector, immediate).
     /// </summary>
-    BIC_asimdimm_l_sl = 1193,
+    BIC_asimdimm_l_sl = 1199,
     /// <summary>
     /// Instruction `BIC` - Bitwise bit clear (vector, register).
     /// </summary>
-    BIC_asimdsame_only = 1194,
+    BIC_asimdsame_only = 1200,
     /// <summary>
     /// Instruction `BIF` - Bitwise insert if false.
     /// </summary>
-    BIF_asimdsame_only = 1195,
+    BIF_asimdsame_only = 1201,
     /// <summary>
     /// Instruction `BIT` - Bitwise insert if true.
     /// </summary>
-    BIT_asimdsame_only = 1196,
+    BIT_asimdsame_only = 1202,
     /// <summary>
     /// Instruction `BSL` - Bitwise select.
     /// </summary>
-    BSL_asimdsame_only = 1197,
+    BSL_asimdsame_only = 1203,
     /// <summary>
     /// Instruction `CLS` - Count leading sign bits (vector).
     /// </summary>
-    CLS_asimdmisc_r = 1198,
+    CLS_asimdmisc_r = 1204,
     /// <summary>
     /// Instruction `CLZ` - Count leading zero bits (vector).
     /// </summary>
-    CLZ_asimdmisc_r = 1199,
+    CLZ_asimdmisc_r = 1205,
     /// <summary>
     /// Instruction `CMEQ` - Compare bitwise equal (vector).
     /// </summary>
-    CMEQ_asisdsame_only = 1200,
+    CMEQ_asisdsame_only = 1206,
     /// <summary>
     /// Instruction `CMEQ` - Compare bitwise equal (vector).
     /// </summary>
-    CMEQ_asimdsame_only = 1201,
+    CMEQ_asimdsame_only = 1207,
     /// <summary>
     /// Instruction `CMEQ` - Compare bitwise equal to zero (vector).
     /// </summary>
-    CMEQ_asisdmisc_z = 1202,
+    CMEQ_asisdmisc_z = 1208,
     /// <summary>
     /// Instruction `CMEQ` - Compare bitwise equal to zero (vector).
     /// </summary>
-    CMEQ_asimdmisc_z = 1203,
+    CMEQ_asimdmisc_z = 1209,
     /// <summary>
     /// Instruction `CMGE` - Compare signed greater than or equal (vector).
     /// </summary>
-    CMGE_asisdsame_only = 1204,
+    CMGE_asisdsame_only = 1210,
     /// <summary>
     /// Instruction `CMGE` - Compare signed greater than or equal (vector).
     /// </summary>
-    CMGE_asimdsame_only = 1205,
+    CMGE_asimdsame_only = 1211,
     /// <summary>
     /// Instruction `CMGE` - Compare signed greater than or equal to zero (vector).
     /// </summary>
-    CMGE_asisdmisc_z = 1206,
+    CMGE_asisdmisc_z = 1212,
     /// <summary>
     /// Instruction `CMGE` - Compare signed greater than or equal to zero (vector).
     /// </summary>
-    CMGE_asimdmisc_z = 1207,
+    CMGE_asimdmisc_z = 1213,
     /// <summary>
     /// Instruction `CMGT` - Compare signed greater than (vector).
     /// </summary>
-    CMGT_asisdsame_only = 1208,
+    CMGT_asisdsame_only = 1214,
     /// <summary>
     /// Instruction `CMGT` - Compare signed greater than (vector).
     /// </summary>
-    CMGT_asimdsame_only = 1209,
+    CMGT_asimdsame_only = 1215,
     /// <summary>
     /// Instruction `CMGT` - Compare signed greater than zero (vector).
     /// </summary>
-    CMGT_asisdmisc_z = 1210,
+    CMGT_asisdmisc_z = 1216,
     /// <summary>
     /// Instruction `CMGT` - Compare signed greater than zero (vector).
     /// </summary>
-    CMGT_asimdmisc_z = 1211,
+    CMGT_asimdmisc_z = 1217,
     /// <summary>
     /// Instruction `CMHI` - Compare unsigned higher (vector).
     /// </summary>
-    CMHI_asisdsame_only = 1212,
+    CMHI_asisdsame_only = 1218,
     /// <summary>
     /// Instruction `CMHI` - Compare unsigned higher (vector).
     /// </summary>
-    CMHI_asimdsame_only = 1213,
+    CMHI_asimdsame_only = 1219,
     /// <summary>
     /// Instruction `CMHS` - Compare unsigned higher or same (vector).
     /// </summary>
-    CMHS_asisdsame_only = 1214,
+    CMHS_asisdsame_only = 1220,
     /// <summary>
     /// Instruction `CMHS` - Compare unsigned higher or same (vector).
     /// </summary>
-    CMHS_asimdsame_only = 1215,
+    CMHS_asimdsame_only = 1221,
     /// <summary>
     /// Instruction `CMLE` - Compare signed less than or equal to zero (vector).
     /// </summary>
-    CMLE_asisdmisc_z = 1216,
+    CMLE_asisdmisc_z = 1222,
     /// <summary>
     /// Instruction `CMLE` - Compare signed less than or equal to zero (vector).
     /// </summary>
-    CMLE_asimdmisc_z = 1217,
+    CMLE_asimdmisc_z = 1223,
     /// <summary>
     /// Instruction `CMLT` - Compare signed less than zero (vector).
     /// </summary>
-    CMLT_asisdmisc_z = 1218,
+    CMLT_asisdmisc_z = 1224,
     /// <summary>
     /// Instruction `CMLT` - Compare signed less than zero (vector).
     /// </summary>
-    CMLT_asimdmisc_z = 1219,
+    CMLT_asimdmisc_z = 1225,
     /// <summary>
     /// Instruction `CMTST` - Compare bitwise test bits nonzero (vector).
     /// </summary>
-    CMTST_asisdsame_only = 1220,
+    CMTST_asisdsame_only = 1226,
     /// <summary>
     /// Instruction `CMTST` - Compare bitwise test bits nonzero (vector).
     /// </summary>
-    CMTST_asimdsame_only = 1221,
+    CMTST_asimdsame_only = 1227,
     /// <summary>
     /// Instruction `CNT` - Population count per byte.
     /// </summary>
-    CNT_asimdmisc_r = 1222,
+    CNT_asimdmisc_r = 1228,
     /// <summary>
     /// Instruction `DUP` - Duplicate vector element to vector or scalar.
     /// </summary>
-    DUP_asisdone_only = 1223,
+    DUP_asisdone_only = 1229,
     /// <summary>
     /// Instruction `DUP` - Duplicate vector element to vector or scalar.
     /// </summary>
-    DUP_asimdins_dv_v = 1224,
+    DUP_asimdins_dv_v = 1230,
     /// <summary>
     /// Instruction `DUP` - Duplicate general-purpose register to vector.
     /// </summary>
-    DUP_asimdins_dr_r = 1225,
+    DUP_asimdins_dr_r = 1231,
     /// <summary>
     /// Instruction `EOR` - Bitwise exclusive-OR (vector).
     /// </summary>
-    EOR_asimdsame_only = 1226,
+    EOR_asimdsame_only = 1232,
     /// <summary>
     /// Instruction `EOR3` - Three-way exclusive-OR.
     /// </summary>
-    EOR3_vvv16_crypto4 = 1227,
+    EOR3_vvv16_crypto4 = 1233,
     /// <summary>
     /// Instruction `EXT` - Extract vector from pair of vectors.
     /// </summary>
-    EXT_asimdext_only = 1228,
+    EXT_asimdext_only = 1234,
     /// <summary>
     /// Instruction `F1CVTL` - 8-bit floating-point convert to half-precision (vector).
     /// </summary>
-    F1CVTL_asimdmisc_v = 1229,
+    F1CVTL_asimdmisc_v = 1235,
+    /// <summary>
+    /// Instruction `F1CVTL2` - 8-bit floating-point convert to half-precision (vector).
+    /// </summary>
+    F1CVTL2_asimdmisc_v = 1236,
     /// <summary>
     /// Instruction `F2CVTL` - 8-bit floating-point convert to half-precision (vector).
     /// </summary>
-    F2CVTL_asimdmisc_v = 1230,
+    F2CVTL_asimdmisc_v = 1237,
+    /// <summary>
+    /// Instruction `F2CVTL2` - 8-bit floating-point convert to half-precision (vector).
+    /// </summary>
+    F2CVTL2_asimdmisc_v = 1238,
     /// <summary>
     /// Instruction `FABD` - Floating-point absolute difference (vector).
     /// </summary>
-    FABD_asisdsamefp16_only = 1231,
+    FABD_asisdsamefp16_only = 1239,
     /// <summary>
     /// Instruction `FABD` - Floating-point absolute difference (vector).
     /// </summary>
-    FABD_asisdsame_only = 1232,
+    FABD_asisdsame_only = 1240,
     /// <summary>
     /// Instruction `FABD` - Floating-point absolute difference (vector).
     /// </summary>
-    FABD_asimdsamefp16_only = 1233,
+    FABD_asimdsamefp16_only = 1241,
     /// <summary>
     /// Instruction `FABD` - Floating-point absolute difference (vector).
     /// </summary>
-    FABD_asimdsame_only = 1234,
+    FABD_asimdsame_only = 1242,
     /// <summary>
     /// Instruction `FABS` - Floating-point absolute value (scalar).
     /// </summary>
-    FABS_h_floatdp1 = 1235,
+    FABS_h_floatdp1 = 1243,
     /// <summary>
     /// Instruction `FABS` - Floating-point absolute value (scalar).
     /// </summary>
-    FABS_s_floatdp1 = 1236,
+    FABS_s_floatdp1 = 1244,
     /// <summary>
     /// Instruction `FABS` - Floating-point absolute value (scalar).
     /// </summary>
-    FABS_d_floatdp1 = 1237,
+    FABS_d_floatdp1 = 1245,
     /// <summary>
     /// Instruction `FABS` - Floating-point absolute value (vector).
     /// </summary>
-    FABS_asimdmiscfp16_r = 1238,
+    FABS_asimdmiscfp16_r = 1246,
     /// <summary>
     /// Instruction `FABS` - Floating-point absolute value (vector).
     /// </summary>
-    FABS_asimdmisc_r = 1239,
+    FABS_asimdmisc_r = 1247,
     /// <summary>
     /// Instruction `FACGE` - Floating-point absolute compare greater than or equal (vector).
     /// </summary>
-    FACGE_asisdsamefp16_only = 1240,
+    FACGE_asisdsamefp16_only = 1248,
     /// <summary>
     /// Instruction `FACGE` - Floating-point absolute compare greater than or equal (vector).
     /// </summary>
-    FACGE_asisdsame_only = 1241,
+    FACGE_asisdsame_only = 1249,
     /// <summary>
     /// Instruction `FACGE` - Floating-point absolute compare greater than or equal (vector).
     /// </summary>
-    FACGE_asimdsamefp16_only = 1242,
+    FACGE_asimdsamefp16_only = 1250,
     /// <summary>
     /// Instruction `FACGE` - Floating-point absolute compare greater than or equal (vector).
     /// </summary>
-    FACGE_asimdsame_only = 1243,
+    FACGE_asimdsame_only = 1251,
     /// <summary>
     /// Instruction `FACGT` - Floating-point absolute compare greater than (vector).
     /// </summary>
-    FACGT_asisdsamefp16_only = 1244,
+    FACGT_asisdsamefp16_only = 1252,
     /// <summary>
     /// Instruction `FACGT` - Floating-point absolute compare greater than (vector).
     /// </summary>
-    FACGT_asisdsame_only = 1245,
+    FACGT_asisdsame_only = 1253,
     /// <summary>
     /// Instruction `FACGT` - Floating-point absolute compare greater than (vector).
     /// </summary>
-    FACGT_asimdsamefp16_only = 1246,
+    FACGT_asimdsamefp16_only = 1254,
     /// <summary>
     /// Instruction `FACGT` - Floating-point absolute compare greater than (vector).
     /// </summary>
-    FACGT_asimdsame_only = 1247,
+    FACGT_asimdsame_only = 1255,
     /// <summary>
     /// Instruction `FADD` - Floating-point add (scalar).
     /// </summary>
-    FADD_h_floatdp2 = 1248,
+    FADD_h_floatdp2 = 1256,
     /// <summary>
     /// Instruction `FADD` - Floating-point add (scalar).
     /// </summary>
-    FADD_s_floatdp2 = 1249,
+    FADD_s_floatdp2 = 1257,
     /// <summary>
     /// Instruction `FADD` - Floating-point add (scalar).
     /// </summary>
-    FADD_d_floatdp2 = 1250,
+    FADD_d_floatdp2 = 1258,
     /// <summary>
     /// Instruction `FADD` - Floating-point add (vector).
     /// </summary>
-    FADD_asimdsamefp16_only = 1251,
+    FADD_asimdsamefp16_only = 1259,
     /// <summary>
     /// Instruction `FADD` - Floating-point add (vector).
     /// </summary>
-    FADD_asimdsame_only = 1252,
+    FADD_asimdsame_only = 1260,
     /// <summary>
     /// Instruction `FADDP` - Floating-point add pair of elements (scalar).
     /// </summary>
-    FADDP_asisdpair_only_h = 1253,
+    FADDP_asisdpair_only_h = 1261,
     /// <summary>
     /// Instruction `FADDP` - Floating-point add pair of elements (scalar).
     /// </summary>
-    FADDP_asisdpair_only_sd = 1254,
+    FADDP_asisdpair_only_sd = 1262,
     /// <summary>
     /// Instruction `FADDP` - Floating-point add pairwise (vector).
     /// </summary>
-    FADDP_asimdsamefp16_only = 1255,
+    FADDP_asimdsamefp16_only = 1263,
     /// <summary>
     /// Instruction `FADDP` - Floating-point add pairwise (vector).
     /// </summary>
-    FADDP_asimdsame_only = 1256,
+    FADDP_asimdsame_only = 1264,
     /// <summary>
     /// Instruction `FAMAX` - Floating-point absolute maximum.
     /// </summary>
-    FAMAX_asimdsamefp16_only = 1257,
+    FAMAX_asimdsamefp16_only = 1265,
     /// <summary>
     /// Instruction `FAMAX` - Floating-point absolute maximum.
     /// </summary>
-    FAMAX_asimdsame_only = 1258,
+    FAMAX_asimdsame_only = 1266,
     /// <summary>
     /// Instruction `FAMIN` - Floating-point absolute minimum.
     /// </summary>
-    FAMIN_asimdsamefp16_only = 1259,
+    FAMIN_asimdsamefp16_only = 1267,
     /// <summary>
     /// Instruction `FAMIN` - Floating-point absolute minimum.
     /// </summary>
-    FAMIN_asimdsame_only = 1260,
+    FAMIN_asimdsame_only = 1268,
     /// <summary>
     /// Instruction `FCADD` - Floating-point complex add.
     /// </summary>
-    FCADD_asimdsame2_c = 1261,
+    FCADD_asimdsame2_c = 1269,
     /// <summary>
     /// Instruction `FCCMP` - Floating-point conditional quiet compare (scalar).
     /// </summary>
-    FCCMP_h_floatccmp = 1262,
+    FCCMP_h_floatccmp = 1270,
     /// <summary>
     /// Instruction `FCCMP` - Floating-point conditional quiet compare (scalar).
     /// </summary>
-    FCCMP_s_floatccmp = 1263,
+    FCCMP_s_floatccmp = 1271,
     /// <summary>
     /// Instruction `FCCMP` - Floating-point conditional quiet compare (scalar).
     /// </summary>
-    FCCMP_d_floatccmp = 1264,
+    FCCMP_d_floatccmp = 1272,
     /// <summary>
     /// Instruction `FCCMPE` - Floating-point conditional signaling compare (scalar).
     /// </summary>
-    FCCMPE_h_floatccmp = 1265,
+    FCCMPE_h_floatccmp = 1273,
     /// <summary>
     /// Instruction `FCCMPE` - Floating-point conditional signaling compare (scalar).
     /// </summary>
-    FCCMPE_s_floatccmp = 1266,
+    FCCMPE_s_floatccmp = 1274,
     /// <summary>
     /// Instruction `FCCMPE` - Floating-point conditional signaling compare (scalar).
     /// </summary>
-    FCCMPE_d_floatccmp = 1267,
+    FCCMPE_d_floatccmp = 1275,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal (vector).
     /// </summary>
-    FCMEQ_asisdsamefp16_only = 1268,
+    FCMEQ_asisdsamefp16_only = 1276,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal (vector).
     /// </summary>
-    FCMEQ_asisdsame_only = 1269,
+    FCMEQ_asisdsame_only = 1277,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal (vector).
     /// </summary>
-    FCMEQ_asimdsamefp16_only = 1270,
+    FCMEQ_asimdsamefp16_only = 1278,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal (vector).
     /// </summary>
-    FCMEQ_asimdsame_only = 1271,
+    FCMEQ_asimdsame_only = 1279,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal to zero (vector).
     /// </summary>
-    FCMEQ_asisdmiscfp16_fz = 1272,
+    FCMEQ_asisdmiscfp16_fz = 1280,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal to zero (vector).
     /// </summary>
-    FCMEQ_asisdmisc_fz = 1273,
+    FCMEQ_asisdmisc_fz = 1281,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal to zero (vector).
     /// </summary>
-    FCMEQ_asimdmiscfp16_fz = 1274,
+    FCMEQ_asimdmiscfp16_fz = 1282,
     /// <summary>
     /// Instruction `FCMEQ` - Floating-point compare equal to zero (vector).
     /// </summary>
-    FCMEQ_asimdmisc_fz = 1275,
+    FCMEQ_asimdmisc_fz = 1283,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal (vector).
     /// </summary>
-    FCMGE_asisdsamefp16_only = 1276,
+    FCMGE_asisdsamefp16_only = 1284,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal (vector).
     /// </summary>
-    FCMGE_asisdsame_only = 1277,
+    FCMGE_asisdsame_only = 1285,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal (vector).
     /// </summary>
-    FCMGE_asimdsamefp16_only = 1278,
+    FCMGE_asimdsamefp16_only = 1286,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal (vector).
     /// </summary>
-    FCMGE_asimdsame_only = 1279,
+    FCMGE_asimdsame_only = 1287,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal to zero (vector).
     /// </summary>
-    FCMGE_asisdmiscfp16_fz = 1280,
+    FCMGE_asisdmiscfp16_fz = 1288,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal to zero (vector).
     /// </summary>
-    FCMGE_asisdmisc_fz = 1281,
+    FCMGE_asisdmisc_fz = 1289,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal to zero (vector).
     /// </summary>
-    FCMGE_asimdmiscfp16_fz = 1282,
+    FCMGE_asimdmiscfp16_fz = 1290,
     /// <summary>
     /// Instruction `FCMGE` - Floating-point compare greater than or equal to zero (vector).
     /// </summary>
-    FCMGE_asimdmisc_fz = 1283,
+    FCMGE_asimdmisc_fz = 1291,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than (vector).
     /// </summary>
-    FCMGT_asisdsamefp16_only = 1284,
+    FCMGT_asisdsamefp16_only = 1292,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than (vector).
     /// </summary>
-    FCMGT_asisdsame_only = 1285,
+    FCMGT_asisdsame_only = 1293,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than (vector).
     /// </summary>
-    FCMGT_asimdsamefp16_only = 1286,
+    FCMGT_asimdsamefp16_only = 1294,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than (vector).
     /// </summary>
-    FCMGT_asimdsame_only = 1287,
+    FCMGT_asimdsame_only = 1295,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than zero (vector).
     /// </summary>
-    FCMGT_asisdmiscfp16_fz = 1288,
+    FCMGT_asisdmiscfp16_fz = 1296,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than zero (vector).
     /// </summary>
-    FCMGT_asisdmisc_fz = 1289,
+    FCMGT_asisdmisc_fz = 1297,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than zero (vector).
     /// </summary>
-    FCMGT_asimdmiscfp16_fz = 1290,
+    FCMGT_asimdmiscfp16_fz = 1298,
     /// <summary>
     /// Instruction `FCMGT` - Floating-point compare greater than zero (vector).
     /// </summary>
-    FCMGT_asimdmisc_fz = 1291,
+    FCMGT_asimdmisc_fz = 1299,
     /// <summary>
     /// Instruction `FCMLA` - Floating-point complex multiply accumulate.
     /// </summary>
-    FCMLA_asimdsame2_c = 1292,
+    FCMLA_asimdsame2_c = 1300,
     /// <summary>
     /// Instruction `FCMLA` - Floating-point complex multiply accumulate (by element).
     /// </summary>
-    FCMLA_advsimd_elt = 1293,
+    FCMLA_advsimd_elt = 1301,
     /// <summary>
     /// Instruction `FCMLE` - Floating-point compare less than or equal to zero (vector).
     /// </summary>
-    FCMLE_asisdmiscfp16_fz = 1294,
+    FCMLE_asisdmiscfp16_fz = 1302,
     /// <summary>
     /// Instruction `FCMLE` - Floating-point compare less than or equal to zero (vector).
     /// </summary>
-    FCMLE_asisdmisc_fz = 1295,
+    FCMLE_asisdmisc_fz = 1303,
     /// <summary>
     /// Instruction `FCMLE` - Floating-point compare less than or equal to zero (vector).
     /// </summary>
-    FCMLE_asimdmiscfp16_fz = 1296,
+    FCMLE_asimdmiscfp16_fz = 1304,
     /// <summary>
     /// Instruction `FCMLE` - Floating-point compare less than or equal to zero (vector).
     /// </summary>
-    FCMLE_asimdmisc_fz = 1297,
+    FCMLE_asimdmisc_fz = 1305,
     /// <summary>
     /// Instruction `FCMLT` - Floating-point compare less than zero (vector).
     /// </summary>
-    FCMLT_asisdmiscfp16_fz = 1298,
+    FCMLT_asisdmiscfp16_fz = 1306,
     /// <summary>
     /// Instruction `FCMLT` - Floating-point compare less than zero (vector).
     /// </summary>
-    FCMLT_asisdmisc_fz = 1299,
+    FCMLT_asisdmisc_fz = 1307,
     /// <summary>
     /// Instruction `FCMLT` - Floating-point compare less than zero (vector).
     /// </summary>
-    FCMLT_asimdmiscfp16_fz = 1300,
+    FCMLT_asimdmiscfp16_fz = 1308,
     /// <summary>
     /// Instruction `FCMLT` - Floating-point compare less than zero (vector).
     /// </summary>
-    FCMLT_asimdmisc_fz = 1301,
+    FCMLT_asimdmisc_fz = 1309,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_h_floatcmp = 1302,
+    FCMP_h_floatcmp = 1310,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_hz_floatcmp = 1303,
+    FCMP_hz_floatcmp = 1311,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_s_floatcmp = 1304,
+    FCMP_s_floatcmp = 1312,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_sz_floatcmp = 1305,
+    FCMP_sz_floatcmp = 1313,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_d_floatcmp = 1306,
+    FCMP_d_floatcmp = 1314,
     /// <summary>
     /// Instruction `FCMP` - Floating-point quiet compare (scalar).
     /// </summary>
-    FCMP_dz_floatcmp = 1307,
+    FCMP_dz_floatcmp = 1315,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_h_floatcmp = 1308,
+    FCMPE_h_floatcmp = 1316,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_hz_floatcmp = 1309,
+    FCMPE_hz_floatcmp = 1317,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_s_floatcmp = 1310,
+    FCMPE_s_floatcmp = 1318,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_sz_floatcmp = 1311,
+    FCMPE_sz_floatcmp = 1319,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_d_floatcmp = 1312,
+    FCMPE_d_floatcmp = 1320,
     /// <summary>
     /// Instruction `FCMPE` - Floating-point signaling compare (scalar).
     /// </summary>
-    FCMPE_dz_floatcmp = 1313,
+    FCMPE_dz_floatcmp = 1321,
     /// <summary>
     /// Instruction `FCSEL` - Floating-point conditional select (scalar).
     /// </summary>
-    FCSEL_h_floatsel = 1314,
+    FCSEL_h_floatsel = 1322,
     /// <summary>
     /// Instruction `FCSEL` - Floating-point conditional select (scalar).
     /// </summary>
-    FCSEL_s_floatsel = 1315,
+    FCSEL_s_floatsel = 1323,
     /// <summary>
     /// Instruction `FCSEL` - Floating-point conditional select (scalar).
     /// </summary>
-    FCSEL_d_floatsel = 1316,
+    FCSEL_d_floatsel = 1324,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_sh_floatdp1 = 1317,
+    FCVT_sh_floatdp1 = 1325,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_dh_floatdp1 = 1318,
+    FCVT_dh_floatdp1 = 1326,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_hs_floatdp1 = 1319,
+    FCVT_hs_floatdp1 = 1327,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_ds_floatdp1 = 1320,
+    FCVT_ds_floatdp1 = 1328,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_hd_floatdp1 = 1321,
+    FCVT_hd_floatdp1 = 1329,
     /// <summary>
     /// Instruction `FCVT` - Floating-point convert precision (scalar).
     /// </summary>
-    FCVT_sd_floatdp1 = 1322,
+    FCVT_sd_floatdp1 = 1330,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAS_sisd_32h = 1323,
+    FCVTAS_sisd_32h = 1331,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAS_sisd_64h = 1324,
+    FCVTAS_sisd_64h = 1332,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAS_sisd_64s = 1325,
+    FCVTAS_sisd_64s = 1333,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAS_sisd_32d = 1326,
+    FCVTAS_sisd_32d = 1334,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_32h_float2int = 1327,
+    FCVTAS_32h_float2int = 1335,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_64h_float2int = 1328,
+    FCVTAS_64h_float2int = 1336,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_32s_float2int = 1329,
+    FCVTAS_32s_float2int = 1337,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_64s_float2int = 1330,
+    FCVTAS_64s_float2int = 1338,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_32d_float2int = 1331,
+    FCVTAS_32d_float2int = 1339,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAS_64d_float2int = 1332,
+    FCVTAS_64d_float2int = 1340,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAS_asisdmiscfp16_r = 1333,
+    FCVTAS_asisdmiscfp16_r = 1341,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAS_asisdmisc_r = 1334,
+    FCVTAS_asisdmisc_r = 1342,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAS_asimdmiscfp16_r = 1335,
+    FCVTAS_asimdmiscfp16_r = 1343,
     /// <summary>
     /// Instruction `FCVTAS` - Floating-point convert to signed integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAS_asimdmisc_r = 1336,
+    FCVTAS_asimdmisc_r = 1344,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAU_sisd_32h = 1337,
+    FCVTAU_sisd_32h = 1345,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAU_sisd_64h = 1338,
+    FCVTAU_sisd_64h = 1346,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAU_sisd_64s = 1339,
+    FCVTAU_sisd_64s = 1347,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar SIMD&FP).
     /// </summary>
-    FCVTAU_sisd_32d = 1340,
+    FCVTAU_sisd_32d = 1348,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_32h_float2int = 1341,
+    FCVTAU_32h_float2int = 1349,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_64h_float2int = 1342,
+    FCVTAU_64h_float2int = 1350,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_32s_float2int = 1343,
+    FCVTAU_32s_float2int = 1351,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_64s_float2int = 1344,
+    FCVTAU_64s_float2int = 1352,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_32d_float2int = 1345,
+    FCVTAU_32d_float2int = 1353,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (scalar).
     /// </summary>
-    FCVTAU_64d_float2int = 1346,
+    FCVTAU_64d_float2int = 1354,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAU_asisdmiscfp16_r = 1347,
+    FCVTAU_asisdmiscfp16_r = 1355,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAU_asisdmisc_r = 1348,
+    FCVTAU_asisdmisc_r = 1356,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAU_asimdmiscfp16_r = 1349,
+    FCVTAU_asimdmiscfp16_r = 1357,
     /// <summary>
     /// Instruction `FCVTAU` - Floating-point convert to unsigned integer, rounding to nearest with ties to away (vector).
     /// </summary>
-    FCVTAU_asimdmisc_r = 1350,
+    FCVTAU_asimdmisc_r = 1358,
     /// <summary>
     /// Instruction `FCVTL` - Floating-point convert to higher precision long (vector).
     /// </summary>
-    FCVTL_asimdmisc_l = 1351,
+    FCVTL_asimdmisc_l = 1359,
+    /// <summary>
+    /// Instruction `FCVTL2` - Floating-point convert to higher precision long (vector).
+    /// </summary>
+    FCVTL2_asimdmisc_l = 1360,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMS_sisd_32h = 1352,
+    FCVTMS_sisd_32h = 1361,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMS_sisd_64h = 1353,
+    FCVTMS_sisd_64h = 1362,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMS_sisd_64s = 1354,
+    FCVTMS_sisd_64s = 1363,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMS_sisd_32d = 1355,
+    FCVTMS_sisd_32d = 1364,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_32h_float2int = 1356,
+    FCVTMS_32h_float2int = 1365,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_64h_float2int = 1357,
+    FCVTMS_64h_float2int = 1366,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_32s_float2int = 1358,
+    FCVTMS_32s_float2int = 1367,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_64s_float2int = 1359,
+    FCVTMS_64s_float2int = 1368,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_32d_float2int = 1360,
+    FCVTMS_32d_float2int = 1369,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMS_64d_float2int = 1361,
+    FCVTMS_64d_float2int = 1370,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMS_asisdmiscfp16_r = 1362,
+    FCVTMS_asisdmiscfp16_r = 1371,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMS_asisdmisc_r = 1363,
+    FCVTMS_asisdmisc_r = 1372,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMS_asimdmiscfp16_r = 1364,
+    FCVTMS_asimdmiscfp16_r = 1373,
     /// <summary>
     /// Instruction `FCVTMS` - Floating-point convert to signed integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMS_asimdmisc_r = 1365,
+    FCVTMS_asimdmisc_r = 1374,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMU_sisd_32h = 1366,
+    FCVTMU_sisd_32h = 1375,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMU_sisd_64h = 1367,
+    FCVTMU_sisd_64h = 1376,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMU_sisd_64s = 1368,
+    FCVTMU_sisd_64s = 1377,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTMU_sisd_32d = 1369,
+    FCVTMU_sisd_32d = 1378,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_32h_float2int = 1370,
+    FCVTMU_32h_float2int = 1379,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_64h_float2int = 1371,
+    FCVTMU_64h_float2int = 1380,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_32s_float2int = 1372,
+    FCVTMU_32s_float2int = 1381,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_64s_float2int = 1373,
+    FCVTMU_64s_float2int = 1382,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_32d_float2int = 1374,
+    FCVTMU_32d_float2int = 1383,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (scalar).
     /// </summary>
-    FCVTMU_64d_float2int = 1375,
+    FCVTMU_64d_float2int = 1384,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMU_asisdmiscfp16_r = 1376,
+    FCVTMU_asisdmiscfp16_r = 1385,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMU_asisdmisc_r = 1377,
+    FCVTMU_asisdmisc_r = 1386,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMU_asimdmiscfp16_r = 1378,
+    FCVTMU_asimdmiscfp16_r = 1387,
     /// <summary>
     /// Instruction `FCVTMU` - Floating-point convert to unsigned integer, rounding toward minus infinity (vector).
     /// </summary>
-    FCVTMU_asimdmisc_r = 1379,
+    FCVTMU_asimdmisc_r = 1388,
     /// <summary>
     /// Instruction `FCVTN` - Half-precision to 8-bit floating-point convert and narrow (vector).
     /// </summary>
-    FCVTN_asimdsame2_d = 1380,
+    FCVTN_asimdsame2_d = 1389,
     /// <summary>
     /// Instruction `FCVTN` - Floating-point convert to lower precision narrow (vector).
     /// </summary>
-    FCVTN_asimdmisc_n = 1381,
+    FCVTN_asimdmisc_n = 1390,
+    /// <summary>
+    /// Instruction `FCVTN2` - Floating-point convert to lower precision narrow (vector).
+    /// </summary>
+    FCVTN2_asimdmisc_n = 1391,
     /// <summary>
     /// Instruction `FCVTN` - Single-precision to 8-bit floating-point convert and narrow (vector).
     /// </summary>
-    FCVTN_asimdsame2_h = 1382,
+    FCVTN_asimdsame2_h = 1392,
+    /// <summary>
+    /// Instruction `FCVTN2` - Single-precision to 8-bit floating-point convert and narrow (vector).
+    /// </summary>
+    FCVTN2_asimdsame2_h = 1393,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNS_sisd_32h = 1383,
+    FCVTNS_sisd_32h = 1394,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNS_sisd_64h = 1384,
+    FCVTNS_sisd_64h = 1395,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNS_sisd_64s = 1385,
+    FCVTNS_sisd_64s = 1396,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNS_sisd_32d = 1386,
+    FCVTNS_sisd_32d = 1397,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_32h_float2int = 1387,
+    FCVTNS_32h_float2int = 1398,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_64h_float2int = 1388,
+    FCVTNS_64h_float2int = 1399,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_32s_float2int = 1389,
+    FCVTNS_32s_float2int = 1400,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_64s_float2int = 1390,
+    FCVTNS_64s_float2int = 1401,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_32d_float2int = 1391,
+    FCVTNS_32d_float2int = 1402,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNS_64d_float2int = 1392,
+    FCVTNS_64d_float2int = 1403,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNS_asisdmiscfp16_r = 1393,
+    FCVTNS_asisdmiscfp16_r = 1404,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNS_asisdmisc_r = 1394,
+    FCVTNS_asisdmisc_r = 1405,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNS_asimdmiscfp16_r = 1395,
+    FCVTNS_asimdmiscfp16_r = 1406,
     /// <summary>
     /// Instruction `FCVTNS` - Floating-point convert to signed integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNS_asimdmisc_r = 1396,
+    FCVTNS_asimdmisc_r = 1407,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNU_sisd_32h = 1397,
+    FCVTNU_sisd_32h = 1408,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNU_sisd_64h = 1398,
+    FCVTNU_sisd_64h = 1409,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNU_sisd_64s = 1399,
+    FCVTNU_sisd_64s = 1410,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar SIMD&FP).
     /// </summary>
-    FCVTNU_sisd_32d = 1400,
+    FCVTNU_sisd_32d = 1411,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_32h_float2int = 1401,
+    FCVTNU_32h_float2int = 1412,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_64h_float2int = 1402,
+    FCVTNU_64h_float2int = 1413,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_32s_float2int = 1403,
+    FCVTNU_32s_float2int = 1414,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_64s_float2int = 1404,
+    FCVTNU_64s_float2int = 1415,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_32d_float2int = 1405,
+    FCVTNU_32d_float2int = 1416,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (scalar).
     /// </summary>
-    FCVTNU_64d_float2int = 1406,
+    FCVTNU_64d_float2int = 1417,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNU_asisdmiscfp16_r = 1407,
+    FCVTNU_asisdmiscfp16_r = 1418,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNU_asisdmisc_r = 1408,
+    FCVTNU_asisdmisc_r = 1419,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNU_asimdmiscfp16_r = 1409,
+    FCVTNU_asimdmiscfp16_r = 1420,
     /// <summary>
     /// Instruction `FCVTNU` - Floating-point convert to unsigned integer, rounding to nearest with ties to even (vector).
     /// </summary>
-    FCVTNU_asimdmisc_r = 1410,
+    FCVTNU_asimdmisc_r = 1421,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPS_sisd_32h = 1411,
+    FCVTPS_sisd_32h = 1422,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPS_sisd_64h = 1412,
+    FCVTPS_sisd_64h = 1423,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPS_sisd_64s = 1413,
+    FCVTPS_sisd_64s = 1424,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPS_sisd_32d = 1414,
+    FCVTPS_sisd_32d = 1425,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_32h_float2int = 1415,
+    FCVTPS_32h_float2int = 1426,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_64h_float2int = 1416,
+    FCVTPS_64h_float2int = 1427,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_32s_float2int = 1417,
+    FCVTPS_32s_float2int = 1428,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_64s_float2int = 1418,
+    FCVTPS_64s_float2int = 1429,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_32d_float2int = 1419,
+    FCVTPS_32d_float2int = 1430,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPS_64d_float2int = 1420,
+    FCVTPS_64d_float2int = 1431,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPS_asisdmiscfp16_r = 1421,
+    FCVTPS_asisdmiscfp16_r = 1432,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPS_asisdmisc_r = 1422,
+    FCVTPS_asisdmisc_r = 1433,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPS_asimdmiscfp16_r = 1423,
+    FCVTPS_asimdmiscfp16_r = 1434,
     /// <summary>
     /// Instruction `FCVTPS` - Floating-point convert to signed integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPS_asimdmisc_r = 1424,
+    FCVTPS_asimdmisc_r = 1435,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPU_sisd_32h = 1425,
+    FCVTPU_sisd_32h = 1436,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPU_sisd_64h = 1426,
+    FCVTPU_sisd_64h = 1437,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPU_sisd_64s = 1427,
+    FCVTPU_sisd_64s = 1438,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar SIMD&FP).
     /// </summary>
-    FCVTPU_sisd_32d = 1428,
+    FCVTPU_sisd_32d = 1439,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_32h_float2int = 1429,
+    FCVTPU_32h_float2int = 1440,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_64h_float2int = 1430,
+    FCVTPU_64h_float2int = 1441,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_32s_float2int = 1431,
+    FCVTPU_32s_float2int = 1442,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_64s_float2int = 1432,
+    FCVTPU_64s_float2int = 1443,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_32d_float2int = 1433,
+    FCVTPU_32d_float2int = 1444,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (scalar).
     /// </summary>
-    FCVTPU_64d_float2int = 1434,
+    FCVTPU_64d_float2int = 1445,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPU_asisdmiscfp16_r = 1435,
+    FCVTPU_asisdmiscfp16_r = 1446,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPU_asisdmisc_r = 1436,
+    FCVTPU_asisdmisc_r = 1447,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPU_asimdmiscfp16_r = 1437,
+    FCVTPU_asimdmiscfp16_r = 1448,
     /// <summary>
     /// Instruction `FCVTPU` - Floating-point convert to unsigned integer, rounding toward plus infinity (vector).
     /// </summary>
-    FCVTPU_asimdmisc_r = 1438,
+    FCVTPU_asimdmisc_r = 1449,
     /// <summary>
     /// Instruction `FCVTXN` - Floating-point convert to lower precision narrow, rounding to odd (vector).
     /// </summary>
-    FCVTXN_asisdmisc_n = 1439,
+    FCVTXN_asisdmisc_n = 1450,
     /// <summary>
     /// Instruction `FCVTXN` - Floating-point convert to lower precision narrow, rounding to odd (vector).
     /// </summary>
-    FCVTXN_asimdmisc_n = 1440,
+    FCVTXN_asimdmisc_n = 1451,
+    /// <summary>
+    /// Instruction `FCVTXN2` - Floating-point convert to lower precision narrow, rounding to odd (vector).
+    /// </summary>
+    FCVTXN2_asimdmisc_n = 1452,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZS_sisd_32h = 1441,
+    FCVTZS_sisd_32h = 1453,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZS_sisd_64h = 1442,
+    FCVTZS_sisd_64h = 1454,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZS_sisd_64s = 1443,
+    FCVTZS_sisd_64s = 1455,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZS_sisd_32d = 1444,
+    FCVTZS_sisd_32d = 1456,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32h_float2fix = 1445,
+    FCVTZS_32h_float2fix = 1457,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64h_float2fix = 1446,
+    FCVTZS_64h_float2fix = 1458,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32s_float2fix = 1447,
+    FCVTZS_32s_float2fix = 1459,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64s_float2fix = 1448,
+    FCVTZS_64s_float2fix = 1460,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32d_float2fix = 1449,
+    FCVTZS_32d_float2fix = 1461,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64d_float2fix = 1450,
+    FCVTZS_64d_float2fix = 1462,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32h_float2int = 1451,
+    FCVTZS_32h_float2int = 1463,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64h_float2int = 1452,
+    FCVTZS_64h_float2int = 1464,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32s_float2int = 1453,
+    FCVTZS_32s_float2int = 1465,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64s_float2int = 1454,
+    FCVTZS_64s_float2int = 1466,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_32d_float2int = 1455,
+    FCVTZS_32d_float2int = 1467,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZS_64d_float2int = 1456,
+    FCVTZS_64d_float2int = 1468,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asisdshf_c = 1457,
+    FCVTZS_asisdshf_c = 1469,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed fixed-point, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asimdshf_c = 1458,
+    FCVTZS_asimdshf_c = 1470,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asisdmiscfp16_r = 1459,
+    FCVTZS_asisdmiscfp16_r = 1471,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asisdmisc_r = 1460,
+    FCVTZS_asisdmisc_r = 1472,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asimdmiscfp16_r = 1461,
+    FCVTZS_asimdmiscfp16_r = 1473,
     /// <summary>
     /// Instruction `FCVTZS` - Floating-point convert to signed integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZS_asimdmisc_r = 1462,
+    FCVTZS_asimdmisc_r = 1474,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZU_sisd_32h = 1463,
+    FCVTZU_sisd_32h = 1475,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZU_sisd_64h = 1464,
+    FCVTZU_sisd_64h = 1476,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZU_sisd_64s = 1465,
+    FCVTZU_sisd_64s = 1477,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar SIMD&FP).
     /// </summary>
-    FCVTZU_sisd_32d = 1466,
+    FCVTZU_sisd_32d = 1478,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32h_float2fix = 1467,
+    FCVTZU_32h_float2fix = 1479,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64h_float2fix = 1468,
+    FCVTZU_64h_float2fix = 1480,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32s_float2fix = 1469,
+    FCVTZU_32s_float2fix = 1481,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64s_float2fix = 1470,
+    FCVTZU_64s_float2fix = 1482,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32d_float2fix = 1471,
+    FCVTZU_32d_float2fix = 1483,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64d_float2fix = 1472,
+    FCVTZU_64d_float2fix = 1484,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32h_float2int = 1473,
+    FCVTZU_32h_float2int = 1485,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64h_float2int = 1474,
+    FCVTZU_64h_float2int = 1486,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32s_float2int = 1475,
+    FCVTZU_32s_float2int = 1487,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64s_float2int = 1476,
+    FCVTZU_64s_float2int = 1488,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_32d_float2int = 1477,
+    FCVTZU_32d_float2int = 1489,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (scalar).
     /// </summary>
-    FCVTZU_64d_float2int = 1478,
+    FCVTZU_64d_float2int = 1490,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asisdshf_c = 1479,
+    FCVTZU_asisdshf_c = 1491,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned fixed-point, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asimdshf_c = 1480,
+    FCVTZU_asimdshf_c = 1492,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asisdmiscfp16_r = 1481,
+    FCVTZU_asisdmiscfp16_r = 1493,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asisdmisc_r = 1482,
+    FCVTZU_asisdmisc_r = 1494,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asimdmiscfp16_r = 1483,
+    FCVTZU_asimdmiscfp16_r = 1495,
     /// <summary>
     /// Instruction `FCVTZU` - Floating-point convert to unsigned integer, rounding toward zero (vector).
     /// </summary>
-    FCVTZU_asimdmisc_r = 1484,
+    FCVTZU_asimdmisc_r = 1496,
     /// <summary>
     /// Instruction `FDIV` - Floating-point divide (scalar).
     /// </summary>
-    FDIV_h_floatdp2 = 1485,
+    FDIV_h_floatdp2 = 1497,
     /// <summary>
     /// Instruction `FDIV` - Floating-point divide (scalar).
     /// </summary>
-    FDIV_s_floatdp2 = 1486,
+    FDIV_s_floatdp2 = 1498,
     /// <summary>
     /// Instruction `FDIV` - Floating-point divide (scalar).
     /// </summary>
-    FDIV_d_floatdp2 = 1487,
+    FDIV_d_floatdp2 = 1499,
     /// <summary>
     /// Instruction `FDIV` - Floating-point divide (vector).
     /// </summary>
-    FDIV_asimdsamefp16_only = 1488,
+    FDIV_asimdsamefp16_only = 1500,
     /// <summary>
     /// Instruction `FDIV` - Floating-point divide (vector).
     /// </summary>
-    FDIV_asimdsame_only = 1489,
+    FDIV_asimdsame_only = 1501,
     /// <summary>
     /// Instruction `FDOT` - 8-bit floating-point dot product to half-precision (vector, by element).
     /// </summary>
-    FDOT_asimdelem_g = 1490,
+    FDOT_asimdelem_g = 1502,
     /// <summary>
     /// Instruction `FDOT` - 8-bit floating-point dot product to half-precision (vector).
     /// </summary>
-    FDOT_asimdsame2_d = 1491,
+    FDOT_asimdsame2_d = 1503,
     /// <summary>
     /// Instruction `FDOT` - 8-bit floating-point dot product to single-precision (vector, by element).
     /// </summary>
-    FDOT_asimdelem_d = 1492,
+    FDOT_asimdelem_d = 1504,
     /// <summary>
     /// Instruction `FDOT` - 8-bit floating-point dot product to single-precision (vector).
     /// </summary>
-    FDOT_asimdsame2_dd = 1493,
+    FDOT_asimdsame2_dd = 1505,
     /// <summary>
     /// Instruction `FJCVTZS` - Floating-point Javascript convert to signed fixed-point, rounding toward zero.
     /// </summary>
-    FJCVTZS_32d_float2int = 1494,
+    FJCVTZS_32d_float2int = 1506,
     /// <summary>
     /// Instruction `FMADD` - Floating-point fused multiply-add (scalar).
     /// </summary>
-    FMADD_h_floatdp3 = 1495,
+    FMADD_h_floatdp3 = 1507,
     /// <summary>
     /// Instruction `FMADD` - Floating-point fused multiply-add (scalar).
     /// </summary>
-    FMADD_s_floatdp3 = 1496,
+    FMADD_s_floatdp3 = 1508,
     /// <summary>
     /// Instruction `FMADD` - Floating-point fused multiply-add (scalar).
     /// </summary>
-    FMADD_d_floatdp3 = 1497,
+    FMADD_d_floatdp3 = 1509,
     /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (scalar).
     /// </summary>
-    FMAX_h_floatdp2 = 1498,
+    FMAX_h_floatdp2 = 1510,
     /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (scalar).
     /// </summary>
-    FMAX_s_floatdp2 = 1499,
+    FMAX_s_floatdp2 = 1511,
     /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (scalar).
     /// </summary>
-    FMAX_d_floatdp2 = 1500,
+    FMAX_d_floatdp2 = 1512,
     /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (vector).
     /// </summary>
-    FMAX_asimdsamefp16_only = 1501,
+    FMAX_asimdsamefp16_only = 1513,
     /// <summary>
     /// Instruction `FMAX` - Floating-point maximum (vector).
     /// </summary>
-    FMAX_asimdsame_only = 1502,
+    FMAX_asimdsame_only = 1514,
     /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (scalar).
     /// </summary>
-    FMAXNM_h_floatdp2 = 1503,
+    FMAXNM_h_floatdp2 = 1515,
     /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (scalar).
     /// </summary>
-    FMAXNM_s_floatdp2 = 1504,
+    FMAXNM_s_floatdp2 = 1516,
     /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (scalar).
     /// </summary>
-    FMAXNM_d_floatdp2 = 1505,
+    FMAXNM_d_floatdp2 = 1517,
     /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (vector).
     /// </summary>
-    FMAXNM_asimdsamefp16_only = 1506,
+    FMAXNM_asimdsamefp16_only = 1518,
     /// <summary>
     /// Instruction `FMAXNM` - Floating-point maximum number (vector).
     /// </summary>
-    FMAXNM_asimdsame_only = 1507,
+    FMAXNM_asimdsame_only = 1519,
     /// <summary>
     /// Instruction `FMAXNMP` - Floating-point maximum number of pair of elements (scalar).
     /// </summary>
-    FMAXNMP_asisdpair_only_h = 1508,
+    FMAXNMP_asisdpair_only_h = 1520,
     /// <summary>
     /// Instruction `FMAXNMP` - Floating-point maximum number of pair of elements (scalar).
     /// </summary>
-    FMAXNMP_asisdpair_only_sd = 1509,
+    FMAXNMP_asisdpair_only_sd = 1521,
     /// <summary>
     /// Instruction `FMAXNMP` - Floating-point maximum number pairwise (vector).
     /// </summary>
-    FMAXNMP_asimdsamefp16_only = 1510,
+    FMAXNMP_asimdsamefp16_only = 1522,
     /// <summary>
     /// Instruction `FMAXNMP` - Floating-point maximum number pairwise (vector).
     /// </summary>
-    FMAXNMP_asimdsame_only = 1511,
+    FMAXNMP_asimdsame_only = 1523,
     /// <summary>
     /// Instruction `FMAXNMV` - Floating-point maximum number across vector.
     /// </summary>
-    FMAXNMV_asimdall_only_h = 1512,
+    FMAXNMV_asimdall_only_h = 1524,
     /// <summary>
     /// Instruction `FMAXNMV` - Floating-point maximum number across vector.
     /// </summary>
-    FMAXNMV_asimdall_only_sd = 1513,
+    FMAXNMV_asimdall_only_sd = 1525,
     /// <summary>
     /// Instruction `FMAXP` - Floating-point maximum of pair of elements (scalar).
     /// </summary>
-    FMAXP_asisdpair_only_h = 1514,
+    FMAXP_asisdpair_only_h = 1526,
     /// <summary>
     /// Instruction `FMAXP` - Floating-point maximum of pair of elements (scalar).
     /// </summary>
-    FMAXP_asisdpair_only_sd = 1515,
+    FMAXP_asisdpair_only_sd = 1527,
     /// <summary>
     /// Instruction `FMAXP` - Floating-point maximum pairwise (vector).
     /// </summary>
-    FMAXP_asimdsamefp16_only = 1516,
+    FMAXP_asimdsamefp16_only = 1528,
     /// <summary>
     /// Instruction `FMAXP` - Floating-point maximum pairwise (vector).
     /// </summary>
-    FMAXP_asimdsame_only = 1517,
+    FMAXP_asimdsame_only = 1529,
     /// <summary>
     /// Instruction `FMAXV` - Floating-point maximum across vector.
     /// </summary>
-    FMAXV_asimdall_only_h = 1518,
+    FMAXV_asimdall_only_h = 1530,
     /// <summary>
     /// Instruction `FMAXV` - Floating-point maximum across vector.
     /// </summary>
-    FMAXV_asimdall_only_sd = 1519,
+    FMAXV_asimdall_only_sd = 1531,
     /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (scalar).
     /// </summary>
-    FMIN_h_floatdp2 = 1520,
+    FMIN_h_floatdp2 = 1532,
     /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (scalar).
     /// </summary>
-    FMIN_s_floatdp2 = 1521,
+    FMIN_s_floatdp2 = 1533,
     /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (scalar).
     /// </summary>
-    FMIN_d_floatdp2 = 1522,
+    FMIN_d_floatdp2 = 1534,
     /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (vector).
     /// </summary>
-    FMIN_asimdsamefp16_only = 1523,
+    FMIN_asimdsamefp16_only = 1535,
     /// <summary>
     /// Instruction `FMIN` - Floating-point minimum (vector).
     /// </summary>
-    FMIN_asimdsame_only = 1524,
+    FMIN_asimdsame_only = 1536,
     /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (scalar).
     /// </summary>
-    FMINNM_h_floatdp2 = 1525,
+    FMINNM_h_floatdp2 = 1537,
     /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (scalar).
     /// </summary>
-    FMINNM_s_floatdp2 = 1526,
+    FMINNM_s_floatdp2 = 1538,
     /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (scalar).
     /// </summary>
-    FMINNM_d_floatdp2 = 1527,
+    FMINNM_d_floatdp2 = 1539,
     /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (vector).
     /// </summary>
-    FMINNM_asimdsamefp16_only = 1528,
+    FMINNM_asimdsamefp16_only = 1540,
     /// <summary>
     /// Instruction `FMINNM` - Floating-point minimum number (vector).
     /// </summary>
-    FMINNM_asimdsame_only = 1529,
+    FMINNM_asimdsame_only = 1541,
     /// <summary>
     /// Instruction `FMINNMP` - Floating-point minimum number of pair of elements (scalar).
     /// </summary>
-    FMINNMP_asisdpair_only_h = 1530,
+    FMINNMP_asisdpair_only_h = 1542,
     /// <summary>
     /// Instruction `FMINNMP` - Floating-point minimum number of pair of elements (scalar).
     /// </summary>
-    FMINNMP_asisdpair_only_sd = 1531,
+    FMINNMP_asisdpair_only_sd = 1543,
     /// <summary>
     /// Instruction `FMINNMP` - Floating-point minimum number pairwise (vector).
     /// </summary>
-    FMINNMP_asimdsamefp16_only = 1532,
+    FMINNMP_asimdsamefp16_only = 1544,
     /// <summary>
     /// Instruction `FMINNMP` - Floating-point minimum number pairwise (vector).
     /// </summary>
-    FMINNMP_asimdsame_only = 1533,
+    FMINNMP_asimdsame_only = 1545,
     /// <summary>
     /// Instruction `FMINNMV` - Floating-point minimum number across vector.
     /// </summary>
-    FMINNMV_asimdall_only_h = 1534,
+    FMINNMV_asimdall_only_h = 1546,
     /// <summary>
     /// Instruction `FMINNMV` - Floating-point minimum number across vector.
     /// </summary>
-    FMINNMV_asimdall_only_sd = 1535,
+    FMINNMV_asimdall_only_sd = 1547,
     /// <summary>
     /// Instruction `FMINP` - Floating-point minimum of pair of elements (scalar).
     /// </summary>
-    FMINP_asisdpair_only_h = 1536,
+    FMINP_asisdpair_only_h = 1548,
     /// <summary>
     /// Instruction `FMINP` - Floating-point minimum of pair of elements (scalar).
     /// </summary>
-    FMINP_asisdpair_only_sd = 1537,
+    FMINP_asisdpair_only_sd = 1549,
     /// <summary>
     /// Instruction `FMINP` - Floating-point minimum pairwise (vector).
     /// </summary>
-    FMINP_asimdsamefp16_only = 1538,
+    FMINP_asimdsamefp16_only = 1550,
     /// <summary>
     /// Instruction `FMINP` - Floating-point minimum pairwise (vector).
     /// </summary>
-    FMINP_asimdsame_only = 1539,
+    FMINP_asimdsame_only = 1551,
     /// <summary>
     /// Instruction `FMINV` - Floating-point minimum across vector.
     /// </summary>
-    FMINV_asimdall_only_h = 1540,
+    FMINV_asimdall_only_h = 1552,
     /// <summary>
     /// Instruction `FMINV` - Floating-point minimum across vector.
     /// </summary>
-    FMINV_asimdall_only_sd = 1541,
+    FMINV_asimdall_only_sd = 1553,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (by element).
     /// </summary>
-    FMLA_asisdelem_rh_h = 1542,
+    FMLA_asisdelem_rh_h = 1554,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (by element).
     /// </summary>
-    FMLA_asisdelem_r_sd = 1543,
+    FMLA_asisdelem_r_sd = 1555,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (by element).
     /// </summary>
-    FMLA_asimdelem_rh_h = 1544,
+    FMLA_asimdelem_rh_h = 1556,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (by element).
     /// </summary>
-    FMLA_asimdelem_r_sd = 1545,
+    FMLA_asimdelem_r_sd = 1557,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (vector).
     /// </summary>
-    FMLA_asimdsamefp16_only = 1546,
+    FMLA_asimdsamefp16_only = 1558,
     /// <summary>
     /// Instruction `FMLA` - Floating-point fused multiply-add to accumulator (vector).
     /// </summary>
-    FMLA_asimdsame_only = 1547,
+    FMLA_asimdsame_only = 1559,
     /// <summary>
     /// Instruction `FMLAL` - Floating-point fused multiply-add long to accumulator (by element).
     /// </summary>
-    FMLAL_asimdelem_lh = 1548,
+    FMLAL_asimdelem_lh = 1560,
     /// <summary>
     /// Instruction `FMLAL2` - Floating-point fused multiply-add long to accumulator (by element).
     /// </summary>
-    FMLAL2_asimdelem_lh = 1549,
+    FMLAL2_asimdelem_lh = 1561,
     /// <summary>
     /// Instruction `FMLAL` - Floating-point fused multiply-add long to accumulator (vector).
     /// </summary>
-    FMLAL_asimdsame_f = 1550,
+    FMLAL_asimdsame_f = 1562,
     /// <summary>
     /// Instruction `FMLAL2` - Floating-point fused multiply-add long to accumulator (vector).
     /// </summary>
-    FMLAL2_asimdsame_f = 1551,
+    FMLAL2_asimdsame_f = 1563,
     /// <summary>
     /// Instruction `FMLALB` - 8-bit floating-point multiply-add long to half-precision (vector, by element).
     /// </summary>
-    FMLALB_asimdelem_h = 1552,
+    FMLALB_asimdelem_h = 1564,
     /// <summary>
     /// Instruction `FMLALT` - 8-bit floating-point multiply-add long to half-precision (vector, by element).
     /// </summary>
-    FMLALT_asimdelem_h = 1553,
+    FMLALT_asimdelem_h = 1565,
     /// <summary>
     /// Instruction `FMLALB` - 8-bit floating-point multiply-add long to half-precision (vector).
     /// </summary>
-    FMLALB_asimdsame2_j = 1554,
+    FMLALB_asimdsame2_j = 1566,
     /// <summary>
     /// Instruction `FMLALT` - 8-bit floating-point multiply-add long to half-precision (vector).
     /// </summary>
-    FMLALT_asimdsame2_j = 1555,
+    FMLALT_asimdsame2_j = 1567,
     /// <summary>
     /// Instruction `FMLALLBB` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
-    FMLALLBB_asimdelem_j = 1556,
+    FMLALLBB_asimdelem_j = 1568,
     /// <summary>
     /// Instruction `FMLALLBT` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
-    FMLALLBT_asimdelem_j = 1557,
+    FMLALLBT_asimdelem_j = 1569,
     /// <summary>
     /// Instruction `FMLALLTB` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
-    FMLALLTB_asimdelem_j = 1558,
+    FMLALLTB_asimdelem_j = 1570,
     /// <summary>
     /// Instruction `FMLALLTT` - 8-bit floating-point multiply-add long-long to single-precision (vector, by element).
     /// </summary>
-    FMLALLTT_asimdelem_j = 1559,
+    FMLALLTT_asimdelem_j = 1571,
     /// <summary>
     /// Instruction `FMLALLBB` - 8-bit floating-point multiply-add long-long to single-precision (vector).
     /// </summary>
-    FMLALLBB_asimdsame2_g = 1560,
+    FMLALLBB_asimdsame2_g = 1572,
     /// <summary>
     /// Instruction `FMLALLBT` - 8-bit floating-point multiply-add long-long to single-precision (vector).
     /// </summary>
-    FMLALLBT_asimdsame2_g = 1561,
+    FMLALLBT_asimdsame2_g = 1573,
     /// <summary>
     /// Instruction `FMLALLTB` - 8-bit floating-point multiply-add long-long to single-precision (vector).
     /// </summary>
-    FMLALLTB_asimdsame2_g = 1562,
+    FMLALLTB_asimdsame2_g = 1574,
     /// <summary>
     /// Instruction `FMLALLTT` - 8-bit floating-point multiply-add long-long to single-precision (vector).
     /// </summary>
-    FMLALLTT_asimdsame2_g = 1563,
+    FMLALLTT_asimdsame2_g = 1575,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (by element).
     /// </summary>
-    FMLS_asisdelem_rh_h = 1564,
+    FMLS_asisdelem_rh_h = 1576,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (by element).
     /// </summary>
-    FMLS_asisdelem_r_sd = 1565,
+    FMLS_asisdelem_r_sd = 1577,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (by element).
     /// </summary>
-    FMLS_asimdelem_rh_h = 1566,
+    FMLS_asimdelem_rh_h = 1578,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (by element).
     /// </summary>
-    FMLS_asimdelem_r_sd = 1567,
+    FMLS_asimdelem_r_sd = 1579,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (vector).
     /// </summary>
-    FMLS_asimdsamefp16_only = 1568,
+    FMLS_asimdsamefp16_only = 1580,
     /// <summary>
     /// Instruction `FMLS` - Floating-point fused multiply-subtract from accumulator (vector).
     /// </summary>
-    FMLS_asimdsame_only = 1569,
+    FMLS_asimdsame_only = 1581,
     /// <summary>
     /// Instruction `FMLSL` - Floating-point fused multiply-subtract long from accumulator (by element).
     /// </summary>
-    FMLSL_asimdelem_lh = 1570,
+    FMLSL_asimdelem_lh = 1582,
     /// <summary>
     /// Instruction `FMLSL2` - Floating-point fused multiply-subtract long from accumulator (by element).
     /// </summary>
-    FMLSL2_asimdelem_lh = 1571,
+    FMLSL2_asimdelem_lh = 1583,
     /// <summary>
     /// Instruction `FMLSL` - Floating-point fused multiply-subtract long from accumulator (vector).
     /// </summary>
-    FMLSL_asimdsame_f = 1572,
+    FMLSL_asimdsame_f = 1584,
     /// <summary>
     /// Instruction `FMLSL2` - Floating-point fused multiply-subtract long from accumulator (vector).
     /// </summary>
-    FMLSL2_asimdsame_f = 1573,
+    FMLSL2_asimdsame_f = 1585,
     /// <summary>
     /// Instruction `FMMLA` - 8-bit floating-point matrix multiply-accumulate into 2x2 half-precision matrix.
     /// </summary>
-    FMMLA_asimd_fp8fp16 = 1574,
+    FMMLA_asimd_fp8fp16 = 1586,
     /// <summary>
     /// Instruction `FMMLA` - 8-bit floating-point matrix multiply-accumulate into 2x2 single-precision matrix.
     /// </summary>
-    FMMLA_asimd_fp8fp32 = 1575,
+    FMMLA_asimd_fp8fp32 = 1587,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_32h_float2int = 1576,
+    FMOV_32h_float2int = 1588,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_64h_float2int = 1577,
+    FMOV_64h_float2int = 1589,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_h32_float2int = 1578,
+    FMOV_h32_float2int = 1590,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_s32_float2int = 1579,
+    FMOV_s32_float2int = 1591,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_32s_float2int = 1580,
+    FMOV_32s_float2int = 1592,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_h64_float2int = 1581,
+    FMOV_h64_float2int = 1593,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_d64_float2int = 1582,
+    FMOV_d64_float2int = 1594,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_v64i_float2int = 1583,
+    FMOV_v64i_float2int = 1595,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_64d_float2int = 1584,
+    FMOV_64d_float2int = 1596,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move to or from general-purpose register without conversion.
     /// </summary>
-    FMOV_64vx_float2int = 1585,
+    FMOV_64vx_float2int = 1597,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move register without conversion.
     /// </summary>
-    FMOV_h_floatdp1 = 1586,
+    FMOV_h_floatdp1 = 1598,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move register without conversion.
     /// </summary>
-    FMOV_s_floatdp1 = 1587,
+    FMOV_s_floatdp1 = 1599,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move register without conversion.
     /// </summary>
-    FMOV_d_floatdp1 = 1588,
+    FMOV_d_floatdp1 = 1600,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (scalar).
     /// </summary>
-    FMOV_h_floatimm = 1589,
+    FMOV_h_floatimm = 1601,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (scalar).
     /// </summary>
-    FMOV_s_floatimm = 1590,
+    FMOV_s_floatimm = 1602,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (scalar).
     /// </summary>
-    FMOV_d_floatimm = 1591,
+    FMOV_d_floatimm = 1603,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (vector).
     /// </summary>
-    FMOV_asimdimm_h_h = 1592,
+    FMOV_asimdimm_h_h = 1604,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (vector).
     /// </summary>
-    FMOV_asimdimm_s_s = 1593,
+    FMOV_asimdimm_s_s = 1605,
     /// <summary>
     /// Instruction `FMOV` - Floating-point move immediate (vector).
     /// </summary>
-    FMOV_asimdimm_d2_d = 1594,
+    FMOV_asimdimm_d2_d = 1606,
     /// <summary>
     /// Instruction `FMSUB` - Floating-point fused multiply-subtract (scalar).
     /// </summary>
-    FMSUB_h_floatdp3 = 1595,
+    FMSUB_h_floatdp3 = 1607,
     /// <summary>
     /// Instruction `FMSUB` - Floating-point fused multiply-subtract (scalar).
     /// </summary>
-    FMSUB_s_floatdp3 = 1596,
+    FMSUB_s_floatdp3 = 1608,
     /// <summary>
     /// Instruction `FMSUB` - Floating-point fused multiply-subtract (scalar).
     /// </summary>
-    FMSUB_d_floatdp3 = 1597,
+    FMSUB_d_floatdp3 = 1609,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (by element).
     /// </summary>
-    FMUL_asisdelem_rh_h = 1598,
+    FMUL_asisdelem_rh_h = 1610,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (by element).
     /// </summary>
-    FMUL_asisdelem_r_sd = 1599,
+    FMUL_asisdelem_r_sd = 1611,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (by element).
     /// </summary>
-    FMUL_asimdelem_rh_h = 1600,
+    FMUL_asimdelem_rh_h = 1612,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (by element).
     /// </summary>
-    FMUL_asimdelem_r_sd = 1601,
+    FMUL_asimdelem_r_sd = 1613,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (scalar).
     /// </summary>
-    FMUL_h_floatdp2 = 1602,
+    FMUL_h_floatdp2 = 1614,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (scalar).
     /// </summary>
-    FMUL_s_floatdp2 = 1603,
+    FMUL_s_floatdp2 = 1615,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (scalar).
     /// </summary>
-    FMUL_d_floatdp2 = 1604,
+    FMUL_d_floatdp2 = 1616,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (vector).
     /// </summary>
-    FMUL_asimdsamefp16_only = 1605,
+    FMUL_asimdsamefp16_only = 1617,
     /// <summary>
     /// Instruction `FMUL` - Floating-point multiply (vector).
     /// </summary>
-    FMUL_asimdsame_only = 1606,
+    FMUL_asimdsame_only = 1618,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended.
     /// </summary>
-    FMULX_asisdsamefp16_only = 1607,
+    FMULX_asisdsamefp16_only = 1619,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended.
     /// </summary>
-    FMULX_asisdsame_only = 1608,
+    FMULX_asisdsame_only = 1620,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended.
     /// </summary>
-    FMULX_asimdsamefp16_only = 1609,
+    FMULX_asimdsamefp16_only = 1621,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended.
     /// </summary>
-    FMULX_asimdsame_only = 1610,
+    FMULX_asimdsame_only = 1622,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended (by element).
     /// </summary>
-    FMULX_asisdelem_rh_h = 1611,
+    FMULX_asisdelem_rh_h = 1623,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended (by element).
     /// </summary>
-    FMULX_asisdelem_r_sd = 1612,
+    FMULX_asisdelem_r_sd = 1624,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended (by element).
     /// </summary>
-    FMULX_asimdelem_rh_h = 1613,
+    FMULX_asimdelem_rh_h = 1625,
     /// <summary>
     /// Instruction `FMULX` - Floating-point multiply extended (by element).
     /// </summary>
-    FMULX_asimdelem_r_sd = 1614,
+    FMULX_asimdelem_r_sd = 1626,
     /// <summary>
     /// Instruction `FNEG` - Floating-point negate (scalar).
     /// </summary>
-    FNEG_h_floatdp1 = 1615,
+    FNEG_h_floatdp1 = 1627,
     /// <summary>
     /// Instruction `FNEG` - Floating-point negate (scalar).
     /// </summary>
-    FNEG_s_floatdp1 = 1616,
+    FNEG_s_floatdp1 = 1628,
     /// <summary>
     /// Instruction `FNEG` - Floating-point negate (scalar).
     /// </summary>
-    FNEG_d_floatdp1 = 1617,
+    FNEG_d_floatdp1 = 1629,
     /// <summary>
     /// Instruction `FNEG` - Floating-point negate (vector).
     /// </summary>
-    FNEG_asimdmiscfp16_r = 1618,
+    FNEG_asimdmiscfp16_r = 1630,
     /// <summary>
     /// Instruction `FNEG` - Floating-point negate (vector).
     /// </summary>
-    FNEG_asimdmisc_r = 1619,
+    FNEG_asimdmisc_r = 1631,
     /// <summary>
     /// Instruction `FNMADD` - Floating-point negated fused multiply-add (scalar).
     /// </summary>
-    FNMADD_h_floatdp3 = 1620,
+    FNMADD_h_floatdp3 = 1632,
     /// <summary>
     /// Instruction `FNMADD` - Floating-point negated fused multiply-add (scalar).
     /// </summary>
-    FNMADD_s_floatdp3 = 1621,
+    FNMADD_s_floatdp3 = 1633,
     /// <summary>
     /// Instruction `FNMADD` - Floating-point negated fused multiply-add (scalar).
     /// </summary>
-    FNMADD_d_floatdp3 = 1622,
+    FNMADD_d_floatdp3 = 1634,
     /// <summary>
     /// Instruction `FNMSUB` - Floating-point negated fused multiply-subtract (scalar).
     /// </summary>
-    FNMSUB_h_floatdp3 = 1623,
+    FNMSUB_h_floatdp3 = 1635,
     /// <summary>
     /// Instruction `FNMSUB` - Floating-point negated fused multiply-subtract (scalar).
     /// </summary>
-    FNMSUB_s_floatdp3 = 1624,
+    FNMSUB_s_floatdp3 = 1636,
     /// <summary>
     /// Instruction `FNMSUB` - Floating-point negated fused multiply-subtract (scalar).
     /// </summary>
-    FNMSUB_d_floatdp3 = 1625,
+    FNMSUB_d_floatdp3 = 1637,
     /// <summary>
     /// Instruction `FNMUL` - Floating-point multiply-negate (scalar).
     /// </summary>
-    FNMUL_h_floatdp2 = 1626,
+    FNMUL_h_floatdp2 = 1638,
     /// <summary>
     /// Instruction `FNMUL` - Floating-point multiply-negate (scalar).
     /// </summary>
-    FNMUL_s_floatdp2 = 1627,
+    FNMUL_s_floatdp2 = 1639,
     /// <summary>
     /// Instruction `FNMUL` - Floating-point multiply-negate (scalar).
     /// </summary>
-    FNMUL_d_floatdp2 = 1628,
+    FNMUL_d_floatdp2 = 1640,
     /// <summary>
     /// Instruction `FRECPE` - Floating-point reciprocal estimate.
     /// </summary>
-    FRECPE_asisdmiscfp16_r = 1629,
+    FRECPE_asisdmiscfp16_r = 1641,
     /// <summary>
     /// Instruction `FRECPE` - Floating-point reciprocal estimate.
     /// </summary>
-    FRECPE_asisdmisc_r = 1630,
+    FRECPE_asisdmisc_r = 1642,
     /// <summary>
     /// Instruction `FRECPE` - Floating-point reciprocal estimate.
     /// </summary>
-    FRECPE_asimdmiscfp16_r = 1631,
+    FRECPE_asimdmiscfp16_r = 1643,
     /// <summary>
     /// Instruction `FRECPE` - Floating-point reciprocal estimate.
     /// </summary>
-    FRECPE_asimdmisc_r = 1632,
+    FRECPE_asimdmisc_r = 1644,
     /// <summary>
     /// Instruction `FRECPS` - Floating-point reciprocal step.
     /// </summary>
-    FRECPS_asisdsamefp16_only = 1633,
+    FRECPS_asisdsamefp16_only = 1645,
     /// <summary>
     /// Instruction `FRECPS` - Floating-point reciprocal step.
     /// </summary>
-    FRECPS_asisdsame_only = 1634,
+    FRECPS_asisdsame_only = 1646,
     /// <summary>
     /// Instruction `FRECPS` - Floating-point reciprocal step.
     /// </summary>
-    FRECPS_asimdsamefp16_only = 1635,
+    FRECPS_asimdsamefp16_only = 1647,
     /// <summary>
     /// Instruction `FRECPS` - Floating-point reciprocal step.
     /// </summary>
-    FRECPS_asimdsame_only = 1636,
+    FRECPS_asimdsame_only = 1648,
     /// <summary>
     /// Instruction `FRECPX` - Floating-point reciprocal exponent (scalar).
     /// </summary>
-    FRECPX_asisdmiscfp16_r = 1637,
+    FRECPX_asisdmiscfp16_r = 1649,
     /// <summary>
     /// Instruction `FRECPX` - Floating-point reciprocal exponent (scalar).
     /// </summary>
-    FRECPX_asisdmisc_r = 1638,
+    FRECPX_asisdmisc_r = 1650,
     /// <summary>
     /// Instruction `FRINT32X` - Floating-point round to 32-bit integer, using current rounding mode (scalar).
     /// </summary>
-    FRINT32X_s_floatdp1 = 1639,
+    FRINT32X_s_floatdp1 = 1651,
     /// <summary>
     /// Instruction `FRINT32X` - Floating-point round to 32-bit integer, using current rounding mode (scalar).
     /// </summary>
-    FRINT32X_d_floatdp1 = 1640,
+    FRINT32X_d_floatdp1 = 1652,
     /// <summary>
     /// Instruction `FRINT32X` - Floating-point round to 32-bit integer, using current rounding mode (vector).
     /// </summary>
-    FRINT32X_asimdmisc_r = 1641,
+    FRINT32X_asimdmisc_r = 1653,
     /// <summary>
     /// Instruction `FRINT32Z` - Floating-point round to 32-bit integer toward zero (scalar).
     /// </summary>
-    FRINT32Z_s_floatdp1 = 1642,
+    FRINT32Z_s_floatdp1 = 1654,
     /// <summary>
     /// Instruction `FRINT32Z` - Floating-point round to 32-bit integer toward zero (scalar).
     /// </summary>
-    FRINT32Z_d_floatdp1 = 1643,
+    FRINT32Z_d_floatdp1 = 1655,
     /// <summary>
     /// Instruction `FRINT32Z` - Floating-point round to 32-bit integer toward zero (vector).
     /// </summary>
-    FRINT32Z_asimdmisc_r = 1644,
+    FRINT32Z_asimdmisc_r = 1656,
     /// <summary>
     /// Instruction `FRINT64X` - Floating-point round to 64-bit integer, using current rounding mode (scalar).
     /// </summary>
-    FRINT64X_s_floatdp1 = 1645,
+    FRINT64X_s_floatdp1 = 1657,
     /// <summary>
     /// Instruction `FRINT64X` - Floating-point round to 64-bit integer, using current rounding mode (scalar).
     /// </summary>
-    FRINT64X_d_floatdp1 = 1646,
+    FRINT64X_d_floatdp1 = 1658,
     /// <summary>
     /// Instruction `FRINT64X` - Floating-point round to 64-bit integer, using current rounding mode (vector).
     /// </summary>
-    FRINT64X_asimdmisc_r = 1647,
+    FRINT64X_asimdmisc_r = 1659,
     /// <summary>
     /// Instruction `FRINT64Z` - Floating-point round to 64-bit integer toward zero (scalar).
     /// </summary>
-    FRINT64Z_s_floatdp1 = 1648,
+    FRINT64Z_s_floatdp1 = 1660,
     /// <summary>
     /// Instruction `FRINT64Z` - Floating-point round to 64-bit integer toward zero (scalar).
     /// </summary>
-    FRINT64Z_d_floatdp1 = 1649,
+    FRINT64Z_d_floatdp1 = 1661,
     /// <summary>
     /// Instruction `FRINT64Z` - Floating-point round to 64-bit integer toward zero (vector).
     /// </summary>
-    FRINT64Z_asimdmisc_r = 1650,
+    FRINT64Z_asimdmisc_r = 1662,
     /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (scalar).
     /// </summary>
-    FRINTA_h_floatdp1 = 1651,
+    FRINTA_h_floatdp1 = 1663,
     /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (scalar).
     /// </summary>
-    FRINTA_s_floatdp1 = 1652,
+    FRINTA_s_floatdp1 = 1664,
     /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (scalar).
     /// </summary>
-    FRINTA_d_floatdp1 = 1653,
+    FRINTA_d_floatdp1 = 1665,
     /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (vector).
     /// </summary>
-    FRINTA_asimdmiscfp16_r = 1654,
+    FRINTA_asimdmiscfp16_r = 1666,
     /// <summary>
     /// Instruction `FRINTA` - Floating-point round to integral, to nearest with ties to away (vector).
     /// </summary>
-    FRINTA_asimdmisc_r = 1655,
+    FRINTA_asimdmisc_r = 1667,
     /// <summary>
     /// Instruction `FRINTI` - Floating-point round to integral, using current rounding mode (scalar).
     /// </summary>
-    FRINTI_h_floatdp1 = 1656,
+    FRINTI_h_floatdp1 = 1668,
     /// <summary>
     /// Instruction `FRINTI` - Floating-point round to integral, using current rounding mode (scalar).
     /// </summary>
-    FRINTI_s_floatdp1 = 1657,
+    FRINTI_s_floatdp1 = 1669,
     /// <summary>
     /// Instruction `FRINTI` - Floating-point round to integral, using current rounding mode (scalar).
     /// </summary>
-    FRINTI_d_floatdp1 = 1658,
+    FRINTI_d_floatdp1 = 1670,
     /// <summary>
     /// Instruction `FRINTI` - Floating-point round to integral, using current rounding mode (vector).
     /// </summary>
-    FRINTI_asimdmiscfp16_r = 1659,
+    FRINTI_asimdmiscfp16_r = 1671,
     /// <summary>
     /// Instruction `FRINTI` - Floating-point round to integral, using current rounding mode (vector).
     /// </summary>
-    FRINTI_asimdmisc_r = 1660,
+    FRINTI_asimdmisc_r = 1672,
     /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (scalar).
     /// </summary>
-    FRINTM_h_floatdp1 = 1661,
+    FRINTM_h_floatdp1 = 1673,
     /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (scalar).
     /// </summary>
-    FRINTM_s_floatdp1 = 1662,
+    FRINTM_s_floatdp1 = 1674,
     /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (scalar).
     /// </summary>
-    FRINTM_d_floatdp1 = 1663,
+    FRINTM_d_floatdp1 = 1675,
     /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (vector).
     /// </summary>
-    FRINTM_asimdmiscfp16_r = 1664,
+    FRINTM_asimdmiscfp16_r = 1676,
     /// <summary>
     /// Instruction `FRINTM` - Floating-point round to integral, toward minus infinity (vector).
     /// </summary>
-    FRINTM_asimdmisc_r = 1665,
+    FRINTM_asimdmisc_r = 1677,
     /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (scalar).
     /// </summary>
-    FRINTN_h_floatdp1 = 1666,
+    FRINTN_h_floatdp1 = 1678,
     /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (scalar).
     /// </summary>
-    FRINTN_s_floatdp1 = 1667,
+    FRINTN_s_floatdp1 = 1679,
     /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (scalar).
     /// </summary>
-    FRINTN_d_floatdp1 = 1668,
+    FRINTN_d_floatdp1 = 1680,
     /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (vector).
     /// </summary>
-    FRINTN_asimdmiscfp16_r = 1669,
+    FRINTN_asimdmiscfp16_r = 1681,
     /// <summary>
     /// Instruction `FRINTN` - Floating-point round to integral, to nearest with ties to even (vector).
     /// </summary>
-    FRINTN_asimdmisc_r = 1670,
+    FRINTN_asimdmisc_r = 1682,
     /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (scalar).
     /// </summary>
-    FRINTP_h_floatdp1 = 1671,
+    FRINTP_h_floatdp1 = 1683,
     /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (scalar).
     /// </summary>
-    FRINTP_s_floatdp1 = 1672,
+    FRINTP_s_floatdp1 = 1684,
     /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (scalar).
     /// </summary>
-    FRINTP_d_floatdp1 = 1673,
+    FRINTP_d_floatdp1 = 1685,
     /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (vector).
     /// </summary>
-    FRINTP_asimdmiscfp16_r = 1674,
+    FRINTP_asimdmiscfp16_r = 1686,
     /// <summary>
     /// Instruction `FRINTP` - Floating-point round to integral, toward plus infinity (vector).
     /// </summary>
-    FRINTP_asimdmisc_r = 1675,
+    FRINTP_asimdmisc_r = 1687,
     /// <summary>
     /// Instruction `FRINTX` - Floating-point round to integral exact, using current rounding mode (scalar).
     /// </summary>
-    FRINTX_h_floatdp1 = 1676,
+    FRINTX_h_floatdp1 = 1688,
     /// <summary>
     /// Instruction `FRINTX` - Floating-point round to integral exact, using current rounding mode (scalar).
     /// </summary>
-    FRINTX_s_floatdp1 = 1677,
+    FRINTX_s_floatdp1 = 1689,
     /// <summary>
     /// Instruction `FRINTX` - Floating-point round to integral exact, using current rounding mode (scalar).
     /// </summary>
-    FRINTX_d_floatdp1 = 1678,
+    FRINTX_d_floatdp1 = 1690,
     /// <summary>
     /// Instruction `FRINTX` - Floating-point round to integral exact, using current rounding mode (vector).
     /// </summary>
-    FRINTX_asimdmiscfp16_r = 1679,
+    FRINTX_asimdmiscfp16_r = 1691,
     /// <summary>
     /// Instruction `FRINTX` - Floating-point round to integral exact, using current rounding mode (vector).
     /// </summary>
-    FRINTX_asimdmisc_r = 1680,
+    FRINTX_asimdmisc_r = 1692,
     /// <summary>
     /// Instruction `FRINTZ` - Floating-point round to integral, toward zero (scalar).
     /// </summary>
-    FRINTZ_h_floatdp1 = 1681,
+    FRINTZ_h_floatdp1 = 1693,
     /// <summary>
     /// Instruction `FRINTZ` - Floating-point round to integral, toward zero (scalar).
     /// </summary>
-    FRINTZ_s_floatdp1 = 1682,
+    FRINTZ_s_floatdp1 = 1694,
     /// <summary>
     /// Instruction `FRINTZ` - Floating-point round to integral, toward zero (scalar).
     /// </summary>
-    FRINTZ_d_floatdp1 = 1683,
+    FRINTZ_d_floatdp1 = 1695,
     /// <summary>
     /// Instruction `FRINTZ` - Floating-point round to integral, toward zero (vector).
     /// </summary>
-    FRINTZ_asimdmiscfp16_r = 1684,
+    FRINTZ_asimdmiscfp16_r = 1696,
     /// <summary>
     /// Instruction `FRINTZ` - Floating-point round to integral, toward zero (vector).
     /// </summary>
-    FRINTZ_asimdmisc_r = 1685,
+    FRINTZ_asimdmisc_r = 1697,
     /// <summary>
     /// Instruction `FRSQRTE` - Floating-point reciprocal square root estimate.
     /// </summary>
-    FRSQRTE_asisdmiscfp16_r = 1686,
+    FRSQRTE_asisdmiscfp16_r = 1698,
     /// <summary>
     /// Instruction `FRSQRTE` - Floating-point reciprocal square root estimate.
     /// </summary>
-    FRSQRTE_asisdmisc_r = 1687,
+    FRSQRTE_asisdmisc_r = 1699,
     /// <summary>
     /// Instruction `FRSQRTE` - Floating-point reciprocal square root estimate.
     /// </summary>
-    FRSQRTE_asimdmiscfp16_r = 1688,
+    FRSQRTE_asimdmiscfp16_r = 1700,
     /// <summary>
     /// Instruction `FRSQRTE` - Floating-point reciprocal square root estimate.
     /// </summary>
-    FRSQRTE_asimdmisc_r = 1689,
+    FRSQRTE_asimdmisc_r = 1701,
     /// <summary>
     /// Instruction `FRSQRTS` - Floating-point reciprocal square root step.
     /// </summary>
-    FRSQRTS_asisdsamefp16_only = 1690,
+    FRSQRTS_asisdsamefp16_only = 1702,
     /// <summary>
     /// Instruction `FRSQRTS` - Floating-point reciprocal square root step.
     /// </summary>
-    FRSQRTS_asisdsame_only = 1691,
+    FRSQRTS_asisdsame_only = 1703,
     /// <summary>
     /// Instruction `FRSQRTS` - Floating-point reciprocal square root step.
     /// </summary>
-    FRSQRTS_asimdsamefp16_only = 1692,
+    FRSQRTS_asimdsamefp16_only = 1704,
     /// <summary>
     /// Instruction `FRSQRTS` - Floating-point reciprocal square root step.
     /// </summary>
-    FRSQRTS_asimdsame_only = 1693,
+    FRSQRTS_asimdsame_only = 1705,
     /// <summary>
     /// Instruction `FSCALE` - Floating-point adjust exponent by vector.
     /// </summary>
-    FSCALE_asimdsamefp16_only = 1694,
+    FSCALE_asimdsamefp16_only = 1706,
     /// <summary>
     /// Instruction `FSCALE` - Floating-point adjust exponent by vector.
     /// </summary>
-    FSCALE_asimdsame_only = 1695,
+    FSCALE_asimdsame_only = 1707,
     /// <summary>
     /// Instruction `FSQRT` - Floating-point square root (scalar).
     /// </summary>
-    FSQRT_h_floatdp1 = 1696,
+    FSQRT_h_floatdp1 = 1708,
     /// <summary>
     /// Instruction `FSQRT` - Floating-point square root (scalar).
     /// </summary>
-    FSQRT_s_floatdp1 = 1697,
+    FSQRT_s_floatdp1 = 1709,
     /// <summary>
     /// Instruction `FSQRT` - Floating-point square root (scalar).
     /// </summary>
-    FSQRT_d_floatdp1 = 1698,
+    FSQRT_d_floatdp1 = 1710,
     /// <summary>
     /// Instruction `FSQRT` - Floating-point square root (vector).
     /// </summary>
-    FSQRT_asimdmiscfp16_r = 1699,
+    FSQRT_asimdmiscfp16_r = 1711,
     /// <summary>
     /// Instruction `FSQRT` - Floating-point square root (vector).
     /// </summary>
-    FSQRT_asimdmisc_r = 1700,
+    FSQRT_asimdmisc_r = 1712,
     /// <summary>
     /// Instruction `FSUB` - Floating-point subtract (scalar).
     /// </summary>
-    FSUB_h_floatdp2 = 1701,
+    FSUB_h_floatdp2 = 1713,
     /// <summary>
     /// Instruction `FSUB` - Floating-point subtract (scalar).
     /// </summary>
-    FSUB_s_floatdp2 = 1702,
+    FSUB_s_floatdp2 = 1714,
     /// <summary>
     /// Instruction `FSUB` - Floating-point subtract (scalar).
     /// </summary>
-    FSUB_d_floatdp2 = 1703,
+    FSUB_d_floatdp2 = 1715,
     /// <summary>
     /// Instruction `FSUB` - Floating-point subtract (vector).
     /// </summary>
-    FSUB_asimdsamefp16_only = 1704,
+    FSUB_asimdsamefp16_only = 1716,
     /// <summary>
     /// Instruction `FSUB` - Floating-point subtract (vector).
     /// </summary>
-    FSUB_asimdsame_only = 1705,
+    FSUB_asimdsame_only = 1717,
     /// <summary>
     /// Instruction `INS` - Insert vector element from another vector element.
     /// </summary>
-    INS_asimdins_iv_v = 1706,
+    INS_asimdins_iv_v = 1718,
     /// <summary>
     /// Instruction `INS` - Insert vector element from general-purpose register.
     /// </summary>
-    INS_asimdins_ir_r = 1707,
+    INS_asimdins_ir_r = 1719,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlse_r1_1v = 1708,
+    LD1_asisdlse_r1_1v = 1720,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlse_r2_2v = 1709,
+    LD1_asisdlse_r2_2v = 1721,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlse_r3_3v = 1710,
+    LD1_asisdlse_r3_3v = 1722,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlse_r4_4v = 1711,
+    LD1_asisdlse_r4_4v = 1723,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_i1_i1 = 1712,
+    LD1_asisdlsep_i1_i1 = 1724,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_r1_r1 = 1713,
+    LD1_asisdlsep_r1_r1 = 1725,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_i2_i2 = 1714,
+    LD1_asisdlsep_i2_i2 = 1726,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_r2_r2 = 1715,
+    LD1_asisdlsep_r2_r2 = 1727,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_i3_i3 = 1716,
+    LD1_asisdlsep_i3_i3 = 1728,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_r3_r3 = 1717,
+    LD1_asisdlsep_r3_r3 = 1729,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_i4_i4 = 1718,
+    LD1_asisdlsep_i4_i4 = 1730,
     /// <summary>
     /// Instruction `LD1` - Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
-    LD1_asisdlsep_r4_r4 = 1719,
+    LD1_asisdlsep_r4_r4 = 1731,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlso_b1_1b = 1720,
+    LD1_asisdlso_b1_1b = 1732,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlso_h1_1h = 1721,
+    LD1_asisdlso_h1_1h = 1733,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlso_s1_1s = 1722,
+    LD1_asisdlso_s1_1s = 1734,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlso_d1_1d = 1723,
+    LD1_asisdlso_d1_1d = 1735,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_b1_i1b = 1724,
+    LD1_asisdlsop_b1_i1b = 1736,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_bx1_r1b = 1725,
+    LD1_asisdlsop_bx1_r1b = 1737,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_d1_i1d = 1726,
+    LD1_asisdlsop_d1_i1d = 1738,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_dx1_r1d = 1727,
+    LD1_asisdlsop_dx1_r1d = 1739,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_h1_i1h = 1728,
+    LD1_asisdlsop_h1_i1h = 1740,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_hx1_r1h = 1729,
+    LD1_asisdlsop_hx1_r1h = 1741,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_s1_i1s = 1730,
+    LD1_asisdlsop_s1_i1s = 1742,
     /// <summary>
     /// Instruction `LD1` - Load one single-element structure to one lane of one register.
     /// </summary>
-    LD1_asisdlsop_sx1_r1s = 1731,
+    LD1_asisdlsop_sx1_r1s = 1743,
     /// <summary>
     /// Instruction `LD1R` - Load one single-element structure and replicate to all lanes (of one register).
     /// </summary>
-    LD1R_asisdlso_r1 = 1732,
+    LD1R_asisdlso_r1 = 1744,
     /// <summary>
     /// Instruction `LD1R` - Load one single-element structure and replicate to all lanes (of one register).
     /// </summary>
-    LD1R_asisdlsop_r1_i = 1733,
+    LD1R_asisdlsop_r1_i = 1745,
     /// <summary>
     /// Instruction `LD1R` - Load one single-element structure and replicate to all lanes (of one register).
     /// </summary>
-    LD1R_asisdlsop_rx1_r = 1734,
+    LD1R_asisdlsop_rx1_r = 1746,
     /// <summary>
     /// Instruction `LD2` - Load multiple 2-element structures to two registers.
     /// </summary>
-    LD2_asisdlse_r2 = 1735,
+    LD2_asisdlse_r2 = 1747,
     /// <summary>
     /// Instruction `LD2` - Load multiple 2-element structures to two registers.
     /// </summary>
-    LD2_asisdlsep_i2_i = 1736,
+    LD2_asisdlsep_i2_i = 1748,
     /// <summary>
     /// Instruction `LD2` - Load multiple 2-element structures to two registers.
     /// </summary>
-    LD2_asisdlsep_r2_r = 1737,
+    LD2_asisdlsep_r2_r = 1749,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlso_b2_2b = 1738,
+    LD2_asisdlso_b2_2b = 1750,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlso_h2_2h = 1739,
+    LD2_asisdlso_h2_2h = 1751,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlso_s2_2s = 1740,
+    LD2_asisdlso_s2_2s = 1752,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlso_d2_2d = 1741,
+    LD2_asisdlso_d2_2d = 1753,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_b2_i2b = 1742,
+    LD2_asisdlsop_b2_i2b = 1754,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_bx2_r2b = 1743,
+    LD2_asisdlsop_bx2_r2b = 1755,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_h2_i2h = 1744,
+    LD2_asisdlsop_h2_i2h = 1756,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_hx2_r2h = 1745,
+    LD2_asisdlsop_hx2_r2h = 1757,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_s2_i2s = 1746,
+    LD2_asisdlsop_s2_i2s = 1758,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_sx2_r2s = 1747,
+    LD2_asisdlsop_sx2_r2s = 1759,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_d2_i2d = 1748,
+    LD2_asisdlsop_d2_i2d = 1760,
     /// <summary>
     /// Instruction `LD2` - Load single 2-element structure to one lane of two registers.
     /// </summary>
-    LD2_asisdlsop_dx2_r2d = 1749,
+    LD2_asisdlsop_dx2_r2d = 1761,
     /// <summary>
     /// Instruction `LD2R` - Load single 2-element structure and replicate to all lanes of two registers.
     /// </summary>
-    LD2R_asisdlso_r2 = 1750,
+    LD2R_asisdlso_r2 = 1762,
     /// <summary>
     /// Instruction `LD2R` - Load single 2-element structure and replicate to all lanes of two registers.
     /// </summary>
-    LD2R_asisdlsop_r2_i = 1751,
+    LD2R_asisdlsop_r2_i = 1763,
     /// <summary>
     /// Instruction `LD2R` - Load single 2-element structure and replicate to all lanes of two registers.
     /// </summary>
-    LD2R_asisdlsop_rx2_r = 1752,
+    LD2R_asisdlsop_rx2_r = 1764,
     /// <summary>
     /// Instruction `LD3` - Load multiple 3-element structures to three registers.
     /// </summary>
-    LD3_asisdlse_r3 = 1753,
+    LD3_asisdlse_r3 = 1765,
     /// <summary>
     /// Instruction `LD3` - Load multiple 3-element structures to three registers.
     /// </summary>
-    LD3_asisdlsep_i3_i = 1754,
+    LD3_asisdlsep_i3_i = 1766,
     /// <summary>
     /// Instruction `LD3` - Load multiple 3-element structures to three registers.
     /// </summary>
-    LD3_asisdlsep_r3_r = 1755,
+    LD3_asisdlsep_r3_r = 1767,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlso_b3_3b = 1756,
+    LD3_asisdlso_b3_3b = 1768,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlso_h3_3h = 1757,
+    LD3_asisdlso_h3_3h = 1769,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlso_s3_3s = 1758,
+    LD3_asisdlso_s3_3s = 1770,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlso_d3_3d = 1759,
+    LD3_asisdlso_d3_3d = 1771,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_b3_i3b = 1760,
+    LD3_asisdlsop_b3_i3b = 1772,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_bx3_r3b = 1761,
+    LD3_asisdlsop_bx3_r3b = 1773,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_h3_i3h = 1762,
+    LD3_asisdlsop_h3_i3h = 1774,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_hx3_r3h = 1763,
+    LD3_asisdlsop_hx3_r3h = 1775,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_s3_i3s = 1764,
+    LD3_asisdlsop_s3_i3s = 1776,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_sx3_r3s = 1765,
+    LD3_asisdlsop_sx3_r3s = 1777,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_d3_i3d = 1766,
+    LD3_asisdlsop_d3_i3d = 1778,
     /// <summary>
     /// Instruction `LD3` - Load single 3-element structure to one lane of three registers.
     /// </summary>
-    LD3_asisdlsop_dx3_r3d = 1767,
+    LD3_asisdlsop_dx3_r3d = 1779,
     /// <summary>
     /// Instruction `LD3R` - Load single 3-element structure and replicate to all lanes of three registers.
     /// </summary>
-    LD3R_asisdlso_r3 = 1768,
+    LD3R_asisdlso_r3 = 1780,
     /// <summary>
     /// Instruction `LD3R` - Load single 3-element structure and replicate to all lanes of three registers.
     /// </summary>
-    LD3R_asisdlsop_r3_i = 1769,
+    LD3R_asisdlsop_r3_i = 1781,
     /// <summary>
     /// Instruction `LD3R` - Load single 3-element structure and replicate to all lanes of three registers.
     /// </summary>
-    LD3R_asisdlsop_rx3_r = 1770,
+    LD3R_asisdlsop_rx3_r = 1782,
     /// <summary>
     /// Instruction `LD4` - Load multiple 4-element structures to four registers.
     /// </summary>
-    LD4_asisdlse_r4 = 1771,
+    LD4_asisdlse_r4 = 1783,
     /// <summary>
     /// Instruction `LD4` - Load multiple 4-element structures to four registers.
     /// </summary>
-    LD4_asisdlsep_i4_i = 1772,
+    LD4_asisdlsep_i4_i = 1784,
     /// <summary>
     /// Instruction `LD4` - Load multiple 4-element structures to four registers.
     /// </summary>
-    LD4_asisdlsep_r4_r = 1773,
+    LD4_asisdlsep_r4_r = 1785,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlso_b4_4b = 1774,
+    LD4_asisdlso_b4_4b = 1786,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlso_h4_4h = 1775,
+    LD4_asisdlso_h4_4h = 1787,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlso_s4_4s = 1776,
+    LD4_asisdlso_s4_4s = 1788,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlso_d4_4d = 1777,
+    LD4_asisdlso_d4_4d = 1789,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_b4_i4b = 1778,
+    LD4_asisdlsop_b4_i4b = 1790,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_bx4_r4b = 1779,
+    LD4_asisdlsop_bx4_r4b = 1791,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_h4_i4h = 1780,
+    LD4_asisdlsop_h4_i4h = 1792,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_hx4_r4h = 1781,
+    LD4_asisdlsop_hx4_r4h = 1793,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_s4_i4s = 1782,
+    LD4_asisdlsop_s4_i4s = 1794,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_sx4_r4s = 1783,
+    LD4_asisdlsop_sx4_r4s = 1795,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_d4_i4d = 1784,
+    LD4_asisdlsop_d4_i4d = 1796,
     /// <summary>
     /// Instruction `LD4` - Load single 4-element structure to one lane of four registers.
     /// </summary>
-    LD4_asisdlsop_dx4_r4d = 1785,
+    LD4_asisdlsop_dx4_r4d = 1797,
     /// <summary>
     /// Instruction `LD4R` - Load single 4-element structure and replicate to all lanes of four registers.
     /// </summary>
-    LD4R_asisdlso_r4 = 1786,
+    LD4R_asisdlso_r4 = 1798,
     /// <summary>
     /// Instruction `LD4R` - Load single 4-element structure and replicate to all lanes of four registers.
     /// </summary>
-    LD4R_asisdlsop_r4_i = 1787,
+    LD4R_asisdlsop_r4_i = 1799,
     /// <summary>
     /// Instruction `LD4R` - Load single 4-element structure and replicate to all lanes of four registers.
     /// </summary>
-    LD4R_asisdlsop_rx4_r = 1788,
+    LD4R_asisdlsop_rx4_r = 1800,
     /// <summary>
     /// Instruction `LDAP1` - Load-acquire RCpc one single-element structure to one lane of one register.
     /// </summary>
-    LDAP1_asisdlso_d1 = 1789,
+    LDAP1_asisdlso_d1 = 1801,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
     /// </summary>
-    LDAPUR_b_ldapstl_simd = 1790,
+    LDAPUR_b_ldapstl_simd = 1802,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
     /// </summary>
-    LDAPUR_h_ldapstl_simd = 1791,
+    LDAPUR_h_ldapstl_simd = 1803,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
     /// </summary>
-    LDAPUR_s_ldapstl_simd = 1792,
+    LDAPUR_s_ldapstl_simd = 1804,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
     /// </summary>
-    LDAPUR_d_ldapstl_simd = 1793,
+    LDAPUR_d_ldapstl_simd = 1805,
     /// <summary>
     /// Instruction `LDAPUR` - Load-acquire RCpc SIMD&FP register (unscaled offset).
     /// </summary>
-    LDAPUR_q_ldapstl_simd = 1794,
+    LDAPUR_q_ldapstl_simd = 1806,
     /// <summary>
     /// Instruction `LDBFADD` - BFloat16 floating-point add in memory.
     /// </summary>
-    LDBFADD_16 = 1795,
+    LDBFADD_16 = 1807,
     /// <summary>
     /// Instruction `LDBFADDA` - BFloat16 floating-point add in memory.
     /// </summary>
-    LDBFADDA_16 = 1796,
+    LDBFADDA_16 = 1808,
     /// <summary>
     /// Instruction `LDBFADDAL` - BFloat16 floating-point add in memory.
     /// </summary>
-    LDBFADDAL_16 = 1797,
+    LDBFADDAL_16 = 1809,
     /// <summary>
     /// Instruction `LDBFADDL` - BFloat16 floating-point add in memory.
     /// </summary>
-    LDBFADDL_16 = 1798,
+    LDBFADDL_16 = 1810,
     /// <summary>
     /// Instruction `LDBFMAX` - BFloat16 floating-point atomic maximum in memory.
     /// </summary>
-    LDBFMAX_16 = 1799,
+    LDBFMAX_16 = 1811,
     /// <summary>
     /// Instruction `LDBFMAXA` - BFloat16 floating-point atomic maximum in memory.
     /// </summary>
-    LDBFMAXA_16 = 1800,
+    LDBFMAXA_16 = 1812,
     /// <summary>
     /// Instruction `LDBFMAXAL` - BFloat16 floating-point atomic maximum in memory.
     /// </summary>
-    LDBFMAXAL_16 = 1801,
+    LDBFMAXAL_16 = 1813,
     /// <summary>
     /// Instruction `LDBFMAXL` - BFloat16 floating-point atomic maximum in memory.
     /// </summary>
-    LDBFMAXL_16 = 1802,
+    LDBFMAXL_16 = 1814,
     /// <summary>
     /// Instruction `LDBFMAXNM` - BFloat16 floating-point atomic maximum number in memory.
     /// </summary>
-    LDBFMAXNM_16 = 1803,
+    LDBFMAXNM_16 = 1815,
     /// <summary>
     /// Instruction `LDBFMAXNMA` - BFloat16 floating-point atomic maximum number in memory.
     /// </summary>
-    LDBFMAXNMA_16 = 1804,
+    LDBFMAXNMA_16 = 1816,
     /// <summary>
     /// Instruction `LDBFMAXNMAL` - BFloat16 floating-point atomic maximum number in memory.
     /// </summary>
-    LDBFMAXNMAL_16 = 1805,
+    LDBFMAXNMAL_16 = 1817,
     /// <summary>
     /// Instruction `LDBFMAXNML` - BFloat16 floating-point atomic maximum number in memory.
     /// </summary>
-    LDBFMAXNML_16 = 1806,
+    LDBFMAXNML_16 = 1818,
     /// <summary>
     /// Instruction `LDBFMIN` - BFloat16 floating-point atomic minimum in memory.
     /// </summary>
-    LDBFMIN_16 = 1807,
+    LDBFMIN_16 = 1819,
     /// <summary>
     /// Instruction `LDBFMINA` - BFloat16 floating-point atomic minimum in memory.
     /// </summary>
-    LDBFMINA_16 = 1808,
+    LDBFMINA_16 = 1820,
     /// <summary>
     /// Instruction `LDBFMINAL` - BFloat16 floating-point atomic minimum in memory.
     /// </summary>
-    LDBFMINAL_16 = 1809,
+    LDBFMINAL_16 = 1821,
     /// <summary>
     /// Instruction `LDBFMINL` - BFloat16 floating-point atomic minimum in memory.
     /// </summary>
-    LDBFMINL_16 = 1810,
+    LDBFMINL_16 = 1822,
     /// <summary>
     /// Instruction `LDBFMINNM` - BFloat16 floating-point atomic minimum number in memory.
     /// </summary>
-    LDBFMINNM_16 = 1811,
+    LDBFMINNM_16 = 1823,
     /// <summary>
     /// Instruction `LDBFMINNMA` - BFloat16 floating-point atomic minimum number in memory.
     /// </summary>
-    LDBFMINNMA_16 = 1812,
+    LDBFMINNMA_16 = 1824,
     /// <summary>
     /// Instruction `LDBFMINNMAL` - BFloat16 floating-point atomic minimum number in memory.
     /// </summary>
-    LDBFMINNMAL_16 = 1813,
+    LDBFMINNMAL_16 = 1825,
     /// <summary>
     /// Instruction `LDBFMINNML` - BFloat16 floating-point atomic minimum number in memory.
     /// </summary>
-    LDBFMINNML_16 = 1814,
+    LDBFMINNML_16 = 1826,
     /// <summary>
     /// Instruction `LDFADD` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADD_16 = 1815,
+    LDFADD_16 = 1827,
     /// <summary>
     /// Instruction `LDFADDA` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDA_16 = 1816,
+    LDFADDA_16 = 1828,
     /// <summary>
     /// Instruction `LDFADDAL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDAL_16 = 1817,
+    LDFADDAL_16 = 1829,
     /// <summary>
     /// Instruction `LDFADDL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDL_16 = 1818,
+    LDFADDL_16 = 1830,
     /// <summary>
     /// Instruction `LDFADD` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADD_32 = 1819,
+    LDFADD_32 = 1831,
     /// <summary>
     /// Instruction `LDFADDA` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDA_32 = 1820,
+    LDFADDA_32 = 1832,
     /// <summary>
     /// Instruction `LDFADDAL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDAL_32 = 1821,
+    LDFADDAL_32 = 1833,
     /// <summary>
     /// Instruction `LDFADDL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDL_32 = 1822,
+    LDFADDL_32 = 1834,
     /// <summary>
     /// Instruction `LDFADD` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADD_64 = 1823,
+    LDFADD_64 = 1835,
     /// <summary>
     /// Instruction `LDFADDA` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDA_64 = 1824,
+    LDFADDA_64 = 1836,
     /// <summary>
     /// Instruction `LDFADDAL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDAL_64 = 1825,
+    LDFADDAL_64 = 1837,
     /// <summary>
     /// Instruction `LDFADDL` - Floating-point atomic add in memory.
     /// </summary>
-    LDFADDL_64 = 1826,
+    LDFADDL_64 = 1838,
     /// <summary>
     /// Instruction `LDFMAX` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAX_16 = 1827,
+    LDFMAX_16 = 1839,
     /// <summary>
     /// Instruction `LDFMAXA` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXA_16 = 1828,
+    LDFMAXA_16 = 1840,
     /// <summary>
     /// Instruction `LDFMAXAL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXAL_16 = 1829,
+    LDFMAXAL_16 = 1841,
     /// <summary>
     /// Instruction `LDFMAXL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXL_16 = 1830,
+    LDFMAXL_16 = 1842,
     /// <summary>
     /// Instruction `LDFMAX` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAX_32 = 1831,
+    LDFMAX_32 = 1843,
     /// <summary>
     /// Instruction `LDFMAXA` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXA_32 = 1832,
+    LDFMAXA_32 = 1844,
     /// <summary>
     /// Instruction `LDFMAXAL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXAL_32 = 1833,
+    LDFMAXAL_32 = 1845,
     /// <summary>
     /// Instruction `LDFMAXL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXL_32 = 1834,
+    LDFMAXL_32 = 1846,
     /// <summary>
     /// Instruction `LDFMAX` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAX_64 = 1835,
+    LDFMAX_64 = 1847,
     /// <summary>
     /// Instruction `LDFMAXA` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXA_64 = 1836,
+    LDFMAXA_64 = 1848,
     /// <summary>
     /// Instruction `LDFMAXAL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXAL_64 = 1837,
+    LDFMAXAL_64 = 1849,
     /// <summary>
     /// Instruction `LDFMAXL` - Floating-point atomic maximum in memory.
     /// </summary>
-    LDFMAXL_64 = 1838,
+    LDFMAXL_64 = 1850,
     /// <summary>
     /// Instruction `LDFMAXNM` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNM_16 = 1839,
+    LDFMAXNM_16 = 1851,
     /// <summary>
     /// Instruction `LDFMAXNMA` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMA_16 = 1840,
+    LDFMAXNMA_16 = 1852,
     /// <summary>
     /// Instruction `LDFMAXNMAL` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMAL_16 = 1841,
+    LDFMAXNMAL_16 = 1853,
     /// <summary>
     /// Instruction `LDFMAXNML` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNML_16 = 1842,
+    LDFMAXNML_16 = 1854,
     /// <summary>
     /// Instruction `LDFMAXNM` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNM_32 = 1843,
+    LDFMAXNM_32 = 1855,
     /// <summary>
     /// Instruction `LDFMAXNMA` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMA_32 = 1844,
+    LDFMAXNMA_32 = 1856,
     /// <summary>
     /// Instruction `LDFMAXNMAL` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMAL_32 = 1845,
+    LDFMAXNMAL_32 = 1857,
     /// <summary>
     /// Instruction `LDFMAXNML` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNML_32 = 1846,
+    LDFMAXNML_32 = 1858,
     /// <summary>
     /// Instruction `LDFMAXNM` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNM_64 = 1847,
+    LDFMAXNM_64 = 1859,
     /// <summary>
     /// Instruction `LDFMAXNMA` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMA_64 = 1848,
+    LDFMAXNMA_64 = 1860,
     /// <summary>
     /// Instruction `LDFMAXNMAL` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNMAL_64 = 1849,
+    LDFMAXNMAL_64 = 1861,
     /// <summary>
     /// Instruction `LDFMAXNML` - Floating-point atomic maximum number in memory.
     /// </summary>
-    LDFMAXNML_64 = 1850,
+    LDFMAXNML_64 = 1862,
     /// <summary>
     /// Instruction `LDFMIN` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMIN_16 = 1851,
+    LDFMIN_16 = 1863,
     /// <summary>
     /// Instruction `LDFMINA` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINA_16 = 1852,
+    LDFMINA_16 = 1864,
     /// <summary>
     /// Instruction `LDFMINAL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINAL_16 = 1853,
+    LDFMINAL_16 = 1865,
     /// <summary>
     /// Instruction `LDFMINL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINL_16 = 1854,
+    LDFMINL_16 = 1866,
     /// <summary>
     /// Instruction `LDFMIN` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMIN_32 = 1855,
+    LDFMIN_32 = 1867,
     /// <summary>
     /// Instruction `LDFMINA` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINA_32 = 1856,
+    LDFMINA_32 = 1868,
     /// <summary>
     /// Instruction `LDFMINAL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINAL_32 = 1857,
+    LDFMINAL_32 = 1869,
     /// <summary>
     /// Instruction `LDFMINL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINL_32 = 1858,
+    LDFMINL_32 = 1870,
     /// <summary>
     /// Instruction `LDFMIN` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMIN_64 = 1859,
+    LDFMIN_64 = 1871,
     /// <summary>
     /// Instruction `LDFMINA` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINA_64 = 1860,
+    LDFMINA_64 = 1872,
     /// <summary>
     /// Instruction `LDFMINAL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINAL_64 = 1861,
+    LDFMINAL_64 = 1873,
     /// <summary>
     /// Instruction `LDFMINL` - Floating-point atomic minimum in memory.
     /// </summary>
-    LDFMINL_64 = 1862,
+    LDFMINL_64 = 1874,
     /// <summary>
     /// Instruction `LDFMINNM` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNM_16 = 1863,
+    LDFMINNM_16 = 1875,
     /// <summary>
     /// Instruction `LDFMINNMA` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMA_16 = 1864,
+    LDFMINNMA_16 = 1876,
     /// <summary>
     /// Instruction `LDFMINNMAL` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMAL_16 = 1865,
+    LDFMINNMAL_16 = 1877,
     /// <summary>
     /// Instruction `LDFMINNML` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNML_16 = 1866,
+    LDFMINNML_16 = 1878,
     /// <summary>
     /// Instruction `LDFMINNM` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNM_32 = 1867,
+    LDFMINNM_32 = 1879,
     /// <summary>
     /// Instruction `LDFMINNMA` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMA_32 = 1868,
+    LDFMINNMA_32 = 1880,
     /// <summary>
     /// Instruction `LDFMINNMAL` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMAL_32 = 1869,
+    LDFMINNMAL_32 = 1881,
     /// <summary>
     /// Instruction `LDFMINNML` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNML_32 = 1870,
+    LDFMINNML_32 = 1882,
     /// <summary>
     /// Instruction `LDFMINNM` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNM_64 = 1871,
+    LDFMINNM_64 = 1883,
     /// <summary>
     /// Instruction `LDFMINNMA` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMA_64 = 1872,
+    LDFMINNMA_64 = 1884,
     /// <summary>
     /// Instruction `LDFMINNMAL` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNMAL_64 = 1873,
+    LDFMINNMAL_64 = 1885,
     /// <summary>
     /// Instruction `LDFMINNML` - Floating-point atomic minimum number in memory.
     /// </summary>
-    LDFMINNML_64 = 1874,
+    LDFMINNML_64 = 1886,
     /// <summary>
     /// Instruction `LDNP` - Load pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    LDNP_s_ldstnapair_offs = 1875,
+    LDNP_s_ldstnapair_offs = 1887,
     /// <summary>
     /// Instruction `LDNP` - Load pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    LDNP_d_ldstnapair_offs = 1876,
+    LDNP_d_ldstnapair_offs = 1888,
     /// <summary>
     /// Instruction `LDNP` - Load pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    LDNP_q_ldstnapair_offs = 1877,
+    LDNP_q_ldstnapair_offs = 1889,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_s_ldstpair_post = 1878,
+    LDP_s_ldstpair_post = 1890,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_d_ldstpair_post = 1879,
+    LDP_d_ldstpair_post = 1891,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_q_ldstpair_post = 1880,
+    LDP_q_ldstpair_post = 1892,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_s_ldstpair_pre = 1881,
+    LDP_s_ldstpair_pre = 1893,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_d_ldstpair_pre = 1882,
+    LDP_d_ldstpair_pre = 1894,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_q_ldstpair_pre = 1883,
+    LDP_q_ldstpair_pre = 1895,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_s_ldstpair_off = 1884,
+    LDP_s_ldstpair_off = 1896,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_d_ldstpair_off = 1885,
+    LDP_d_ldstpair_off = 1897,
     /// <summary>
     /// Instruction `LDP` - Load pair of SIMD&FP registers.
     /// </summary>
-    LDP_q_ldstpair_off = 1886,
+    LDP_q_ldstpair_off = 1898,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_b_ldst_immpost = 1887,
+    LDR_b_ldst_immpost = 1899,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_h_ldst_immpost = 1888,
+    LDR_h_ldst_immpost = 1900,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_s_ldst_immpost = 1889,
+    LDR_s_ldst_immpost = 1901,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_d_ldst_immpost = 1890,
+    LDR_d_ldst_immpost = 1902,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_q_ldst_immpost = 1891,
+    LDR_q_ldst_immpost = 1903,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_b_ldst_immpre = 1892,
+    LDR_b_ldst_immpre = 1904,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_h_ldst_immpre = 1893,
+    LDR_h_ldst_immpre = 1905,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_s_ldst_immpre = 1894,
+    LDR_s_ldst_immpre = 1906,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_d_ldst_immpre = 1895,
+    LDR_d_ldst_immpre = 1907,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_q_ldst_immpre = 1896,
+    LDR_q_ldst_immpre = 1908,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_b_ldst_pos = 1897,
+    LDR_b_ldst_pos = 1909,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_h_ldst_pos = 1898,
+    LDR_h_ldst_pos = 1910,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_s_ldst_pos = 1899,
+    LDR_s_ldst_pos = 1911,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_d_ldst_pos = 1900,
+    LDR_d_ldst_pos = 1912,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (immediate offset).
     /// </summary>
-    LDR_q_ldst_pos = 1901,
+    LDR_q_ldst_pos = 1913,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (PC-relative literal).
     /// </summary>
-    LDR_s_loadlit = 1902,
+    LDR_s_loadlit = 1914,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (PC-relative literal).
     /// </summary>
-    LDR_d_loadlit = 1903,
+    LDR_d_loadlit = 1915,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (PC-relative literal).
     /// </summary>
-    LDR_q_loadlit = 1904,
+    LDR_q_loadlit = 1916,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_b_ldst_regoff = 1905,
+    LDR_b_ldst_regoff = 1917,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_bl_ldst_regoff = 1906,
+    LDR_bl_ldst_regoff = 1918,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_h_ldst_regoff = 1907,
+    LDR_h_ldst_regoff = 1919,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_s_ldst_regoff = 1908,
+    LDR_s_ldst_regoff = 1920,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_d_ldst_regoff = 1909,
+    LDR_d_ldst_regoff = 1921,
     /// <summary>
     /// Instruction `LDR` - Load SIMD&FP register (register offset).
     /// </summary>
-    LDR_q_ldst_regoff = 1910,
+    LDR_q_ldst_regoff = 1922,
     /// <summary>
     /// Instruction `LDTNP` - Load unprivileged pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    LDTNP_q_ldstnapair_offs = 1911,
+    LDTNP_q_ldstnapair_offs = 1923,
     /// <summary>
     /// Instruction `LDTP` - Load unprivileged pair of SIMD&FP registers.
     /// </summary>
-    LDTP_q_ldstpair_post = 1912,
+    LDTP_q_ldstpair_post = 1924,
     /// <summary>
     /// Instruction `LDTP` - Load unprivileged pair of SIMD&FP registers.
     /// </summary>
-    LDTP_q_ldstpair_pre = 1913,
+    LDTP_q_ldstpair_pre = 1925,
     /// <summary>
     /// Instruction `LDTP` - Load unprivileged pair of SIMD&FP registers.
     /// </summary>
-    LDTP_q_ldstpair_off = 1914,
+    LDTP_q_ldstpair_off = 1926,
     /// <summary>
     /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
     /// </summary>
-    LDUR_b_ldst_unscaled = 1915,
+    LDUR_b_ldst_unscaled = 1927,
     /// <summary>
     /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
     /// </summary>
-    LDUR_h_ldst_unscaled = 1916,
+    LDUR_h_ldst_unscaled = 1928,
     /// <summary>
     /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
     /// </summary>
-    LDUR_s_ldst_unscaled = 1917,
+    LDUR_s_ldst_unscaled = 1929,
     /// <summary>
     /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
     /// </summary>
-    LDUR_d_ldst_unscaled = 1918,
+    LDUR_d_ldst_unscaled = 1930,
     /// <summary>
     /// Instruction `LDUR` - Load SIMD&FP register (unscaled offset).
     /// </summary>
-    LDUR_q_ldst_unscaled = 1919,
+    LDUR_q_ldst_unscaled = 1931,
     /// <summary>
     /// Instruction `LUTI2` - Lookup table read with 2-bit indices.
     /// </summary>
-    LUTI2_asimdtbl_l5 = 1920,
+    LUTI2_asimdtbl_l5 = 1932,
     /// <summary>
     /// Instruction `LUTI2` - Lookup table read with 2-bit indices.
     /// </summary>
-    LUTI2_asimdtbl_l6 = 1921,
+    LUTI2_asimdtbl_l6 = 1933,
     /// <summary>
     /// Instruction `LUTI4` - Lookup table read with 4-bit indices.
     /// </summary>
-    LUTI4_asimdtbl_l5 = 1922,
+    LUTI4_asimdtbl_l5 = 1934,
     /// <summary>
     /// Instruction `LUTI4` - Lookup table read with 4-bit indices.
     /// </summary>
-    LUTI4_asimdtbl_l7 = 1923,
+    LUTI4_asimdtbl_l7 = 1935,
     /// <summary>
     /// Instruction `MLA` - Multiply-add to accumulator (vector, by element).
     /// </summary>
-    MLA_asimdelem_r = 1924,
+    MLA_asimdelem_r = 1936,
     /// <summary>
     /// Instruction `MLA` - Multiply-add to accumulator (vector).
     /// </summary>
-    MLA_asimdsame_only = 1925,
+    MLA_asimdsame_only = 1937,
     /// <summary>
     /// Instruction `MLS` - Multiply-subtract from accumulator (vector, by element).
     /// </summary>
-    MLS_asimdelem_r = 1926,
+    MLS_asimdelem_r = 1938,
     /// <summary>
     /// Instruction `MLS` - Multiply-subtract from accumulator (vector).
     /// </summary>
-    MLS_asimdsame_only = 1927,
+    MLS_asimdsame_only = 1939,
     /// <summary>
     /// Instruction `MOV` - Move vector element to another vector element.
     /// </summary>
-    MOV_ins_asimdins_iv_v = 1928,
+    MOV_ins_asimdins_iv_v = 1940,
     /// <summary>
     /// Instruction `MOV` - Move general-purpose register to a vector element.
     /// </summary>
-    MOV_ins_asimdins_ir_r = 1929,
+    MOV_ins_asimdins_ir_r = 1941,
     /// <summary>
     /// Instruction `MOV` - Move vector element to scalar.
     /// </summary>
-    MOV_dup_asisdone_only = 1930,
+    MOV_dup_asisdone_only = 1942,
     /// <summary>
     /// Instruction `MOV` - Move vector element to general-purpose register.
     /// </summary>
-    MOV_umov_asimdins_w_w = 1931,
+    MOV_umov_asimdins_w_w = 1943,
     /// <summary>
     /// Instruction `MOV` - Move vector element to general-purpose register.
     /// </summary>
-    MOV_umov_asimdins_x_x = 1932,
+    MOV_umov_asimdins_x_x = 1944,
     /// <summary>
     /// Instruction `MOV` - Move vector.
     /// </summary>
-    MOV_orr_asimdsame_only = 1933,
+    MOV_orr_asimdsame_only = 1945,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_n_b = 1934,
+    MOVI_asimdimm_n_b = 1946,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_l_hl = 1935,
+    MOVI_asimdimm_l_hl = 1947,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_l_sl = 1936,
+    MOVI_asimdimm_l_sl = 1948,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_m_sm = 1937,
+    MOVI_asimdimm_m_sm = 1949,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_d_ds = 1938,
+    MOVI_asimdimm_d_ds = 1950,
     /// <summary>
     /// Instruction `MOVI` - Move immediate (vector).
     /// </summary>
-    MOVI_asimdimm_d2_d = 1939,
+    MOVI_asimdimm_d2_d = 1951,
     /// <summary>
     /// Instruction `MUL` - Multiply (vector, by element).
     /// </summary>
-    MUL_asimdelem_r = 1940,
+    MUL_asimdelem_r = 1952,
     /// <summary>
     /// Instruction `MUL` - Multiply (vector).
     /// </summary>
-    MUL_asimdsame_only = 1941,
+    MUL_asimdsame_only = 1953,
     /// <summary>
     /// Instruction `MVN` - Bitwise NOT (vector).
     /// </summary>
-    MVN_not_asimdmisc_r = 1942,
+    MVN_not_asimdmisc_r = 1954,
     /// <summary>
     /// Instruction `MVNI` - Move inverted immediate (vector).
     /// </summary>
-    MVNI_asimdimm_l_hl = 1943,
+    MVNI_asimdimm_l_hl = 1955,
     /// <summary>
     /// Instruction `MVNI` - Move inverted immediate (vector).
     /// </summary>
-    MVNI_asimdimm_l_sl = 1944,
+    MVNI_asimdimm_l_sl = 1956,
     /// <summary>
     /// Instruction `MVNI` - Move inverted immediate (vector).
     /// </summary>
-    MVNI_asimdimm_m_sm = 1945,
+    MVNI_asimdimm_m_sm = 1957,
     /// <summary>
     /// Instruction `NEG` - Negate (vector).
     /// </summary>
-    NEG_asisdmisc_r = 1946,
+    NEG_asisdmisc_r = 1958,
     /// <summary>
     /// Instruction `NEG` - Negate (vector).
     /// </summary>
-    NEG_asimdmisc_r = 1947,
+    NEG_asimdmisc_r = 1959,
     /// <summary>
     /// Instruction `NOT` - Bitwise NOT (vector).
     /// </summary>
-    NOT_asimdmisc_r = 1948,
+    NOT_asimdmisc_r = 1960,
     /// <summary>
     /// Instruction `ORN` - Bitwise inclusive OR NOT (vector).
     /// </summary>
-    ORN_asimdsame_only = 1949,
+    ORN_asimdsame_only = 1961,
     /// <summary>
     /// Instruction `ORR` - Bitwise inclusive OR (vector, immediate).
     /// </summary>
-    ORR_asimdimm_l_hl = 1950,
+    ORR_asimdimm_l_hl = 1962,
     /// <summary>
     /// Instruction `ORR` - Bitwise inclusive OR (vector, immediate).
     /// </summary>
-    ORR_asimdimm_l_sl = 1951,
+    ORR_asimdimm_l_sl = 1963,
     /// <summary>
     /// Instruction `ORR` - Bitwise inclusive OR (vector, register).
     /// </summary>
-    ORR_asimdsame_only = 1952,
+    ORR_asimdsame_only = 1964,
     /// <summary>
     /// Instruction `PMUL` - Polynomial multiply.
     /// </summary>
-    PMUL_asimdsame_only = 1953,
+    PMUL_asimdsame_only = 1965,
     /// <summary>
     /// Instruction `PMULL` - Polynomial multiply long.
     /// </summary>
-    PMULL_asimddiff_l = 1954,
+    PMULL_asimddiff_l = 1966,
+    /// <summary>
+    /// Instruction `PMULL2` - Polynomial multiply long.
+    /// </summary>
+    PMULL2_asimddiff_l = 1967,
     /// <summary>
     /// Instruction `RADDHN` - Rounding add returning high narrow.
     /// </summary>
-    RADDHN_asimddiff_n = 1955,
+    RADDHN_asimddiff_n = 1968,
+    /// <summary>
+    /// Instruction `RADDHN2` - Rounding add returning high narrow.
+    /// </summary>
+    RADDHN2_asimddiff_n = 1969,
     /// <summary>
     /// Instruction `RAX1` - Rotate and exclusive-OR.
     /// </summary>
-    RAX1_vvv2_cryptosha512_3 = 1956,
+    RAX1_vvv2_cryptosha512_3 = 1970,
     /// <summary>
     /// Instruction `RBIT` - Reverse bit order (vector).
     /// </summary>
-    RBIT_asimdmisc_r = 1957,
+    RBIT_asimdmisc_r = 1971,
     /// <summary>
     /// Instruction `REV16` - Reverse elements in 16-bit halfwords (vector).
     /// </summary>
-    REV16_asimdmisc_r = 1958,
+    REV16_asimdmisc_r = 1972,
     /// <summary>
     /// Instruction `REV32` - Reverse elements in 32-bit words (vector).
     /// </summary>
-    REV32_asimdmisc_r = 1959,
+    REV32_asimdmisc_r = 1973,
     /// <summary>
     /// Instruction `REV64` - Reverse elements in 64-bit doublewords (vector).
     /// </summary>
-    REV64_asimdmisc_r = 1960,
+    REV64_asimdmisc_r = 1974,
     /// <summary>
     /// Instruction `RSHRN` - Rounding shift right narrow (immediate).
     /// </summary>
-    RSHRN_asimdshf_n = 1961,
+    RSHRN_asimdshf_n = 1975,
+    /// <summary>
+    /// Instruction `RSHRN2` - Rounding shift right narrow (immediate).
+    /// </summary>
+    RSHRN2_asimdshf_n = 1976,
     /// <summary>
     /// Instruction `RSUBHN` - Rounding subtract returning high narrow.
     /// </summary>
-    RSUBHN_asimddiff_n = 1962,
+    RSUBHN_asimddiff_n = 1977,
+    /// <summary>
+    /// Instruction `RSUBHN2` - Rounding subtract returning high narrow.
+    /// </summary>
+    RSUBHN2_asimddiff_n = 1978,
     /// <summary>
     /// Instruction `SABA` - Signed absolute difference and accumulate.
     /// </summary>
-    SABA_asimdsame_only = 1963,
+    SABA_asimdsame_only = 1979,
     /// <summary>
     /// Instruction `SABAL` - Signed absolute difference and accumulate long.
     /// </summary>
-    SABAL_asimddiff_l = 1964,
+    SABAL_asimddiff_l = 1980,
+    /// <summary>
+    /// Instruction `SABAL2` - Signed absolute difference and accumulate long.
+    /// </summary>
+    SABAL2_asimddiff_l = 1981,
     /// <summary>
     /// Instruction `SABD` - Signed absolute difference.
     /// </summary>
-    SABD_asimdsame_only = 1965,
+    SABD_asimdsame_only = 1982,
     /// <summary>
     /// Instruction `SABDL` - Signed absolute difference long.
     /// </summary>
-    SABDL_asimddiff_l = 1966,
+    SABDL_asimddiff_l = 1983,
+    /// <summary>
+    /// Instruction `SABDL2` - Signed absolute difference long.
+    /// </summary>
+    SABDL2_asimddiff_l = 1984,
     /// <summary>
     /// Instruction `SADALP` - Signed add and accumulate long pairwise.
     /// </summary>
-    SADALP_asimdmisc_p = 1967,
+    SADALP_asimdmisc_p = 1985,
     /// <summary>
     /// Instruction `SADDL` - Signed add long (vector).
     /// </summary>
-    SADDL_asimddiff_l = 1968,
+    SADDL_asimddiff_l = 1986,
+    /// <summary>
+    /// Instruction `SADDL2` - Signed add long (vector).
+    /// </summary>
+    SADDL2_asimddiff_l = 1987,
     /// <summary>
     /// Instruction `SADDLP` - Signed add long pairwise.
     /// </summary>
-    SADDLP_asimdmisc_p = 1969,
+    SADDLP_asimdmisc_p = 1988,
     /// <summary>
     /// Instruction `SADDLV` - Signed add long across vector.
     /// </summary>
-    SADDLV_asimdall_only = 1970,
+    SADDLV_asimdall_only = 1989,
     /// <summary>
     /// Instruction `SADDW` - Signed add wide.
     /// </summary>
-    SADDW_asimddiff_w = 1971,
+    SADDW_asimddiff_w = 1990,
+    /// <summary>
+    /// Instruction `SADDW2` - Signed add wide.
+    /// </summary>
+    SADDW2_asimddiff_w = 1991,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    SCVTF_sisd_32h = 1972,
+    SCVTF_sisd_32h = 1992,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    SCVTF_sisd_32d = 1973,
+    SCVTF_sisd_32d = 1993,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    SCVTF_sisd_64h = 1974,
+    SCVTF_sisd_64h = 1994,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    SCVTF_sisd_64s = 1975,
+    SCVTF_sisd_64s = 1995,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_h32_float2fix = 1976,
+    SCVTF_h32_float2fix = 1996,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_h64_float2fix = 1977,
+    SCVTF_h64_float2fix = 1997,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_s32_float2fix = 1978,
+    SCVTF_s32_float2fix = 1998,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_s64_float2fix = 1979,
+    SCVTF_s64_float2fix = 1999,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_d32_float2fix = 1980,
+    SCVTF_d32_float2fix = 2000,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (scalar).
     /// </summary>
-    SCVTF_d64_float2fix = 1981,
+    SCVTF_d64_float2fix = 2001,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_h32_float2int = 1982,
+    SCVTF_h32_float2int = 2002,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_s32_float2int = 1983,
+    SCVTF_s32_float2int = 2003,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_d32_float2int = 1984,
+    SCVTF_d32_float2int = 2004,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_h64_float2int = 1985,
+    SCVTF_h64_float2int = 2005,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_s64_float2int = 1986,
+    SCVTF_s64_float2int = 2006,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (scalar).
     /// </summary>
-    SCVTF_d64_float2int = 1987,
+    SCVTF_d64_float2int = 2007,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (vector).
     /// </summary>
-    SCVTF_asisdshf_c = 1988,
+    SCVTF_asisdshf_c = 2008,
     /// <summary>
     /// Instruction `SCVTF` - Signed fixed-point convert to floating-point (vector).
     /// </summary>
-    SCVTF_asimdshf_c = 1989,
+    SCVTF_asimdshf_c = 2009,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (vector).
     /// </summary>
-    SCVTF_asisdmiscfp16_r = 1990,
+    SCVTF_asisdmiscfp16_r = 2010,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (vector).
     /// </summary>
-    SCVTF_asisdmisc_r = 1991,
+    SCVTF_asisdmisc_r = 2011,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (vector).
     /// </summary>
-    SCVTF_asimdmiscfp16_r = 1992,
+    SCVTF_asimdmiscfp16_r = 2012,
     /// <summary>
     /// Instruction `SCVTF` - Signed integer convert to floating-point (vector).
     /// </summary>
-    SCVTF_asimdmisc_r = 1993,
+    SCVTF_asimdmisc_r = 2013,
     /// <summary>
     /// Instruction `SDOT` - Dot product signed arithmetic (vector, by element).
     /// </summary>
-    SDOT_asimdelem_d = 1994,
+    SDOT_asimdelem_d = 2014,
     /// <summary>
     /// Instruction `SDOT` - Dot product signed arithmetic (vector).
     /// </summary>
-    SDOT_asimdsame2_d = 1995,
+    SDOT_asimdsame2_d = 2015,
     /// <summary>
     /// Instruction `SHA1C` - SHA1 hash update (choose).
     /// </summary>
-    SHA1C_qsv_cryptosha3 = 1996,
+    SHA1C_qsv_cryptosha3 = 2016,
     /// <summary>
     /// Instruction `SHA1H` - SHA1 fixed rotate.
     /// </summary>
-    SHA1H_ss_cryptosha2 = 1997,
+    SHA1H_ss_cryptosha2 = 2017,
     /// <summary>
     /// Instruction `SHA1M` - SHA1 hash update (majority).
     /// </summary>
-    SHA1M_qsv_cryptosha3 = 1998,
+    SHA1M_qsv_cryptosha3 = 2018,
     /// <summary>
     /// Instruction `SHA1P` - SHA1 hash update (parity).
     /// </summary>
-    SHA1P_qsv_cryptosha3 = 1999,
+    SHA1P_qsv_cryptosha3 = 2019,
     /// <summary>
     /// Instruction `SHA1SU0` - SHA1 schedule update 0.
     /// </summary>
-    SHA1SU0_vvv_cryptosha3 = 2000,
+    SHA1SU0_vvv_cryptosha3 = 2020,
     /// <summary>
     /// Instruction `SHA1SU1` - SHA1 schedule update 1.
     /// </summary>
-    SHA1SU1_vv_cryptosha2 = 2001,
+    SHA1SU1_vv_cryptosha2 = 2021,
     /// <summary>
     /// Instruction `SHA256H` - SHA256 hash update (part 1).
     /// </summary>
-    SHA256H_qqv_cryptosha3 = 2002,
+    SHA256H_qqv_cryptosha3 = 2022,
     /// <summary>
     /// Instruction `SHA256H2` - SHA256 hash update (part 2).
     /// </summary>
-    SHA256H2_qqv_cryptosha3 = 2003,
+    SHA256H2_qqv_cryptosha3 = 2023,
     /// <summary>
     /// Instruction `SHA256SU0` - SHA256 schedule update 0.
     /// </summary>
-    SHA256SU0_vv_cryptosha2 = 2004,
+    SHA256SU0_vv_cryptosha2 = 2024,
     /// <summary>
     /// Instruction `SHA256SU1` - SHA256 schedule update 1.
     /// </summary>
-    SHA256SU1_vvv_cryptosha3 = 2005,
+    SHA256SU1_vvv_cryptosha3 = 2025,
     /// <summary>
     /// Instruction `SHA512H` - SHA512 hash update part 1.
     /// </summary>
-    SHA512H_qqv_cryptosha512_3 = 2006,
+    SHA512H_qqv_cryptosha512_3 = 2026,
     /// <summary>
     /// Instruction `SHA512H2` - SHA512 hash update part 2.
     /// </summary>
-    SHA512H2_qqv_cryptosha512_3 = 2007,
+    SHA512H2_qqv_cryptosha512_3 = 2027,
     /// <summary>
     /// Instruction `SHA512SU0` - SHA512 schedule update 0.
     /// </summary>
-    SHA512SU0_vv2_cryptosha512_2 = 2008,
+    SHA512SU0_vv2_cryptosha512_2 = 2028,
     /// <summary>
     /// Instruction `SHA512SU1` - SHA512 schedule update 1.
     /// </summary>
-    SHA512SU1_vvv2_cryptosha512_3 = 2009,
+    SHA512SU1_vvv2_cryptosha512_3 = 2029,
     /// <summary>
     /// Instruction `SHADD` - Signed halving add.
     /// </summary>
-    SHADD_asimdsame_only = 2010,
+    SHADD_asimdsame_only = 2030,
     /// <summary>
     /// Instruction `SHL` - Shift left (immediate).
     /// </summary>
-    SHL_asisdshf_r = 2011,
+    SHL_asisdshf_r = 2031,
     /// <summary>
     /// Instruction `SHL` - Shift left (immediate).
     /// </summary>
-    SHL_asimdshf_r = 2012,
+    SHL_asimdshf_r = 2032,
     /// <summary>
     /// Instruction `SHLL` - Shift left long (by element size).
     /// </summary>
-    SHLL_asimdmisc_s = 2013,
+    SHLL_asimdmisc_s = 2033,
+    /// <summary>
+    /// Instruction `SHLL2` - Shift left long (by element size).
+    /// </summary>
+    SHLL2_asimdmisc_s = 2034,
     /// <summary>
     /// Instruction `SHRN` - Shift right narrow (immediate).
     /// </summary>
-    SHRN_asimdshf_n = 2014,
+    SHRN_asimdshf_n = 2035,
+    /// <summary>
+    /// Instruction `SHRN2` - Shift right narrow (immediate).
+    /// </summary>
+    SHRN2_asimdshf_n = 2036,
     /// <summary>
     /// Instruction `SHSUB` - Signed halving subtract.
     /// </summary>
-    SHSUB_asimdsame_only = 2015,
+    SHSUB_asimdsame_only = 2037,
     /// <summary>
     /// Instruction `SLI` - Shift left and insert (immediate).
     /// </summary>
-    SLI_asisdshf_r = 2016,
+    SLI_asisdshf_r = 2038,
     /// <summary>
     /// Instruction `SLI` - Shift left and insert (immediate).
     /// </summary>
-    SLI_asimdshf_r = 2017,
+    SLI_asimdshf_r = 2039,
     /// <summary>
     /// Instruction `SM3PARTW1` - SM3PARTW1.
     /// </summary>
-    SM3PARTW1_vvv4_cryptosha512_3 = 2018,
+    SM3PARTW1_vvv4_cryptosha512_3 = 2040,
     /// <summary>
     /// Instruction `SM3PARTW2` - SM3PARTW2.
     /// </summary>
-    SM3PARTW2_vvv4_cryptosha512_3 = 2019,
+    SM3PARTW2_vvv4_cryptosha512_3 = 2041,
     /// <summary>
     /// Instruction `SM3SS1` - SM3SS1.
     /// </summary>
-    SM3SS1_vvv4_crypto4 = 2020,
+    SM3SS1_vvv4_crypto4 = 2042,
     /// <summary>
     /// Instruction `SM3TT1A` - SM3TT1A.
     /// </summary>
-    SM3TT1A_vvv4_crypto3_imm2 = 2021,
+    SM3TT1A_vvv4_crypto3_imm2 = 2043,
     /// <summary>
     /// Instruction `SM3TT1B` - SM3TT1B.
     /// </summary>
-    SM3TT1B_vvv4_crypto3_imm2 = 2022,
+    SM3TT1B_vvv4_crypto3_imm2 = 2044,
     /// <summary>
     /// Instruction `SM3TT2A` - SM3TT2A.
     /// </summary>
-    SM3TT2A_vvv4_crypto3_imm2 = 2023,
+    SM3TT2A_vvv4_crypto3_imm2 = 2045,
     /// <summary>
     /// Instruction `SM3TT2B` - SM3TT2B.
     /// </summary>
-    SM3TT2B_vvv_crypto3_imm2 = 2024,
+    SM3TT2B_vvv_crypto3_imm2 = 2046,
     /// <summary>
     /// Instruction `SM4E` - SM4 encode.
     /// </summary>
-    SM4E_vv4_cryptosha512_2 = 2025,
+    SM4E_vv4_cryptosha512_2 = 2047,
     /// <summary>
     /// Instruction `SM4EKEY` - SM4 key.
     /// </summary>
-    SM4EKEY_vvv4_cryptosha512_3 = 2026,
+    SM4EKEY_vvv4_cryptosha512_3 = 2048,
     /// <summary>
     /// Instruction `SMAX` - Signed maximum (vector).
     /// </summary>
-    SMAX_asimdsame_only = 2027,
+    SMAX_asimdsame_only = 2049,
     /// <summary>
     /// Instruction `SMAXP` - Signed maximum pairwise.
     /// </summary>
-    SMAXP_asimdsame_only = 2028,
+    SMAXP_asimdsame_only = 2050,
     /// <summary>
     /// Instruction `SMAXV` - Signed maximum across vector.
     /// </summary>
-    SMAXV_asimdall_only = 2029,
+    SMAXV_asimdall_only = 2051,
     /// <summary>
     /// Instruction `SMIN` - Signed minimum (vector).
     /// </summary>
-    SMIN_asimdsame_only = 2030,
+    SMIN_asimdsame_only = 2052,
     /// <summary>
     /// Instruction `SMINP` - Signed minimum pairwise.
     /// </summary>
-    SMINP_asimdsame_only = 2031,
+    SMINP_asimdsame_only = 2053,
     /// <summary>
     /// Instruction `SMINV` - Signed minimum across vector.
     /// </summary>
-    SMINV_asimdall_only = 2032,
+    SMINV_asimdall_only = 2054,
     /// <summary>
     /// Instruction `SMLAL` - Signed multiply-add long (vector, by element).
     /// </summary>
-    SMLAL_asimdelem_l = 2033,
+    SMLAL_asimdelem_l = 2055,
+    /// <summary>
+    /// Instruction `SMLAL2` - Signed multiply-add long (vector, by element).
+    /// </summary>
+    SMLAL2_asimdelem_l = 2056,
     /// <summary>
     /// Instruction `SMLAL` - Signed multiply-add long (vector).
     /// </summary>
-    SMLAL_asimddiff_l = 2034,
+    SMLAL_asimddiff_l = 2057,
+    /// <summary>
+    /// Instruction `SMLAL2` - Signed multiply-add long (vector).
+    /// </summary>
+    SMLAL2_asimddiff_l = 2058,
     /// <summary>
     /// Instruction `SMLSL` - Signed multiply-subtract long (vector, by element).
     /// </summary>
-    SMLSL_asimdelem_l = 2035,
+    SMLSL_asimdelem_l = 2059,
+    /// <summary>
+    /// Instruction `SMLSL2` - Signed multiply-subtract long (vector, by element).
+    /// </summary>
+    SMLSL2_asimdelem_l = 2060,
     /// <summary>
     /// Instruction `SMLSL` - Signed multiply-subtract long (vector).
     /// </summary>
-    SMLSL_asimddiff_l = 2036,
+    SMLSL_asimddiff_l = 2061,
+    /// <summary>
+    /// Instruction `SMLSL2` - Signed multiply-subtract long (vector).
+    /// </summary>
+    SMLSL2_asimddiff_l = 2062,
     /// <summary>
     /// Instruction `SMMLA` - Signed 8-bit integer matrix multiply-accumulate (vector).
     /// </summary>
-    SMMLA_asimdsame2_g = 2037,
+    SMMLA_asimdsame2_g = 2063,
     /// <summary>
     /// Instruction `SMOV` - Signed move vector element to general-purpose register.
     /// </summary>
-    SMOV_asimdins_w_w = 2038,
+    SMOV_asimdins_w_w = 2064,
     /// <summary>
     /// Instruction `SMOV` - Signed move vector element to general-purpose register.
     /// </summary>
-    SMOV_asimdins_x_x = 2039,
+    SMOV_asimdins_x_x = 2065,
     /// <summary>
     /// Instruction `SMULL` - Signed multiply long (vector, by element).
     /// </summary>
-    SMULL_asimdelem_l = 2040,
+    SMULL_asimdelem_l = 2066,
+    /// <summary>
+    /// Instruction `SMULL2` - Signed multiply long (vector, by element).
+    /// </summary>
+    SMULL2_asimdelem_l = 2067,
     /// <summary>
     /// Instruction `SMULL` - Signed multiply long (vector).
     /// </summary>
-    SMULL_asimddiff_l = 2041,
+    SMULL_asimddiff_l = 2068,
+    /// <summary>
+    /// Instruction `SMULL2` - Signed multiply long (vector).
+    /// </summary>
+    SMULL2_asimddiff_l = 2069,
     /// <summary>
     /// Instruction `SQABS` - Signed saturating absolute value.
     /// </summary>
-    SQABS_asisdmisc_r = 2042,
+    SQABS_asisdmisc_r = 2070,
     /// <summary>
     /// Instruction `SQABS` - Signed saturating absolute value.
     /// </summary>
-    SQABS_asimdmisc_r = 2043,
+    SQABS_asimdmisc_r = 2071,
     /// <summary>
     /// Instruction `SQADD` - Signed saturating add.
     /// </summary>
-    SQADD_asisdsame_only = 2044,
+    SQADD_asisdsame_only = 2072,
     /// <summary>
     /// Instruction `SQADD` - Signed saturating add.
     /// </summary>
-    SQADD_asimdsame_only = 2045,
+    SQADD_asimdsame_only = 2073,
     /// <summary>
     /// Instruction `SQDMLAL` - Signed saturating doubling multiply-add long (by element).
     /// </summary>
-    SQDMLAL_asisdelem_l = 2046,
+    SQDMLAL_asisdelem_l = 2074,
     /// <summary>
     /// Instruction `SQDMLAL` - Signed saturating doubling multiply-add long (by element).
     /// </summary>
-    SQDMLAL_asimdelem_l = 2047,
+    SQDMLAL_asimdelem_l = 2075,
+    /// <summary>
+    /// Instruction `SQDMLAL2` - Signed saturating doubling multiply-add long (by element).
+    /// </summary>
+    SQDMLAL2_asimdelem_l = 2076,
     /// <summary>
     /// Instruction `SQDMLAL` - Signed saturating doubling multiply-add long.
     /// </summary>
-    SQDMLAL_asisddiff_only = 2048,
+    SQDMLAL_asisddiff_only = 2077,
     /// <summary>
     /// Instruction `SQDMLAL` - Signed saturating doubling multiply-add long.
     /// </summary>
-    SQDMLAL_asimddiff_l = 2049,
+    SQDMLAL_asimddiff_l = 2078,
+    /// <summary>
+    /// Instruction `SQDMLAL2` - Signed saturating doubling multiply-add long.
+    /// </summary>
+    SQDMLAL2_asimddiff_l = 2079,
     /// <summary>
     /// Instruction `SQDMLSL` - Signed saturating doubling multiply-subtract long (by element).
     /// </summary>
-    SQDMLSL_asisdelem_l = 2050,
+    SQDMLSL_asisdelem_l = 2080,
     /// <summary>
     /// Instruction `SQDMLSL` - Signed saturating doubling multiply-subtract long (by element).
     /// </summary>
-    SQDMLSL_asimdelem_l = 2051,
+    SQDMLSL_asimdelem_l = 2081,
+    /// <summary>
+    /// Instruction `SQDMLSL2` - Signed saturating doubling multiply-subtract long (by element).
+    /// </summary>
+    SQDMLSL2_asimdelem_l = 2082,
     /// <summary>
     /// Instruction `SQDMLSL` - Signed saturating doubling multiply-subtract long.
     /// </summary>
-    SQDMLSL_asisddiff_only = 2052,
+    SQDMLSL_asisddiff_only = 2083,
     /// <summary>
     /// Instruction `SQDMLSL` - Signed saturating doubling multiply-subtract long.
     /// </summary>
-    SQDMLSL_asimddiff_l = 2053,
+    SQDMLSL_asimddiff_l = 2084,
+    /// <summary>
+    /// Instruction `SQDMLSL2` - Signed saturating doubling multiply-subtract long.
+    /// </summary>
+    SQDMLSL2_asimddiff_l = 2085,
     /// <summary>
     /// Instruction `SQDMULH` - Signed saturating doubling multiply returning high half (by element).
     /// </summary>
-    SQDMULH_asisdelem_r = 2054,
+    SQDMULH_asisdelem_r = 2086,
     /// <summary>
     /// Instruction `SQDMULH` - Signed saturating doubling multiply returning high half (by element).
     /// </summary>
-    SQDMULH_asimdelem_r = 2055,
+    SQDMULH_asimdelem_r = 2087,
     /// <summary>
     /// Instruction `SQDMULH` - Signed saturating doubling multiply returning high half.
     /// </summary>
-    SQDMULH_asisdsame_only = 2056,
+    SQDMULH_asisdsame_only = 2088,
     /// <summary>
     /// Instruction `SQDMULH` - Signed saturating doubling multiply returning high half.
     /// </summary>
-    SQDMULH_asimdsame_only = 2057,
+    SQDMULH_asimdsame_only = 2089,
     /// <summary>
     /// Instruction `SQDMULL` - Signed saturating doubling multiply long (by element).
     /// </summary>
-    SQDMULL_asimdelem_l = 2058,
+    SQDMULL_asimdelem_l = 2090,
+    /// <summary>
+    /// Instruction `SQDMULL2` - Signed saturating doubling multiply long (by element).
+    /// </summary>
+    SQDMULL2_asimdelem_l = 2091,
     /// <summary>
     /// Instruction `SQDMULL` - Signed saturating doubling multiply long (by element).
     /// </summary>
-    SQDMULL_asisdelem_l = 2059,
+    SQDMULL_asisdelem_l = 2092,
     /// <summary>
     /// Instruction `SQDMULL` - Signed saturating doubling multiply long.
     /// </summary>
-    SQDMULL_asisddiff_only = 2060,
+    SQDMULL_asisddiff_only = 2093,
     /// <summary>
     /// Instruction `SQDMULL` - Signed saturating doubling multiply long.
     /// </summary>
-    SQDMULL_asimddiff_l = 2061,
+    SQDMULL_asimddiff_l = 2094,
+    /// <summary>
+    /// Instruction `SQDMULL2` - Signed saturating doubling multiply long.
+    /// </summary>
+    SQDMULL2_asimddiff_l = 2095,
     /// <summary>
     /// Instruction `SQNEG` - Signed saturating negate.
     /// </summary>
-    SQNEG_asisdmisc_r = 2062,
+    SQNEG_asisdmisc_r = 2096,
     /// <summary>
     /// Instruction `SQNEG` - Signed saturating negate.
     /// </summary>
-    SQNEG_asimdmisc_r = 2063,
+    SQNEG_asimdmisc_r = 2097,
     /// <summary>
     /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply accumulate returning high half (by element).
     /// </summary>
-    SQRDMLAH_asisdelem_r = 2064,
+    SQRDMLAH_asisdelem_r = 2098,
     /// <summary>
     /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply accumulate returning high half (by element).
     /// </summary>
-    SQRDMLAH_asimdelem_r = 2065,
+    SQRDMLAH_asimdelem_r = 2099,
     /// <summary>
     /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply accumulate returning high half (vector).
     /// </summary>
-    SQRDMLAH_asisdsame2_only = 2066,
+    SQRDMLAH_asisdsame2_only = 2100,
     /// <summary>
     /// Instruction `SQRDMLAH` - Signed saturating rounding doubling multiply accumulate returning high half (vector).
     /// </summary>
-    SQRDMLAH_asimdsame2_only = 2067,
+    SQRDMLAH_asimdsame2_only = 2101,
     /// <summary>
     /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply subtract returning high half (by element).
     /// </summary>
-    SQRDMLSH_asisdelem_r = 2068,
+    SQRDMLSH_asisdelem_r = 2102,
     /// <summary>
     /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply subtract returning high half (by element).
     /// </summary>
-    SQRDMLSH_asimdelem_r = 2069,
+    SQRDMLSH_asimdelem_r = 2103,
     /// <summary>
     /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply subtract returning high half (vector).
     /// </summary>
-    SQRDMLSH_asisdsame2_only = 2070,
+    SQRDMLSH_asisdsame2_only = 2104,
     /// <summary>
     /// Instruction `SQRDMLSH` - Signed saturating rounding doubling multiply subtract returning high half (vector).
     /// </summary>
-    SQRDMLSH_asimdsame2_only = 2071,
+    SQRDMLSH_asimdsame2_only = 2105,
     /// <summary>
     /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply returning high half (by element).
     /// </summary>
-    SQRDMULH_asisdelem_r = 2072,
+    SQRDMULH_asisdelem_r = 2106,
     /// <summary>
     /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply returning high half (by element).
     /// </summary>
-    SQRDMULH_asimdelem_r = 2073,
+    SQRDMULH_asimdelem_r = 2107,
     /// <summary>
     /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply returning high half.
     /// </summary>
-    SQRDMULH_asisdsame_only = 2074,
+    SQRDMULH_asisdsame_only = 2108,
     /// <summary>
     /// Instruction `SQRDMULH` - Signed saturating rounding doubling multiply returning high half.
     /// </summary>
-    SQRDMULH_asimdsame_only = 2075,
+    SQRDMULH_asimdsame_only = 2109,
     /// <summary>
     /// Instruction `SQRSHL` - Signed saturating rounding shift left (register).
     /// </summary>
-    SQRSHL_asisdsame_only = 2076,
+    SQRSHL_asisdsame_only = 2110,
     /// <summary>
     /// Instruction `SQRSHL` - Signed saturating rounding shift left (register).
     /// </summary>
-    SQRSHL_asimdsame_only = 2077,
+    SQRSHL_asimdsame_only = 2111,
     /// <summary>
     /// Instruction `SQRSHRN` - Signed saturating rounded shift right narrow (immediate).
     /// </summary>
-    SQRSHRN_asisdshf_n = 2078,
+    SQRSHRN_asisdshf_n = 2112,
     /// <summary>
     /// Instruction `SQRSHRN` - Signed saturating rounded shift right narrow (immediate).
     /// </summary>
-    SQRSHRN_asimdshf_n = 2079,
+    SQRSHRN_asimdshf_n = 2113,
+    /// <summary>
+    /// Instruction `SQRSHRN2` - Signed saturating rounded shift right narrow (immediate).
+    /// </summary>
+    SQRSHRN2_asimdshf_n = 2114,
     /// <summary>
     /// Instruction `SQRSHRUN` - Signed saturating rounded shift right unsigned narrow (immediate).
     /// </summary>
-    SQRSHRUN_asisdshf_n = 2080,
+    SQRSHRUN_asisdshf_n = 2115,
     /// <summary>
     /// Instruction `SQRSHRUN` - Signed saturating rounded shift right unsigned narrow (immediate).
     /// </summary>
-    SQRSHRUN_asimdshf_n = 2081,
+    SQRSHRUN_asimdshf_n = 2116,
+    /// <summary>
+    /// Instruction `SQRSHRUN2` - Signed saturating rounded shift right unsigned narrow (immediate).
+    /// </summary>
+    SQRSHRUN2_asimdshf_n = 2117,
     /// <summary>
     /// Instruction `SQSHL` - Signed saturating shift left (immediate).
     /// </summary>
-    SQSHL_asisdshf_r = 2082,
+    SQSHL_asisdshf_r = 2118,
     /// <summary>
     /// Instruction `SQSHL` - Signed saturating shift left (immediate).
     /// </summary>
-    SQSHL_asimdshf_r = 2083,
+    SQSHL_asimdshf_r = 2119,
     /// <summary>
     /// Instruction `SQSHL` - Signed saturating shift left (register).
     /// </summary>
-    SQSHL_asisdsame_only = 2084,
+    SQSHL_asisdsame_only = 2120,
     /// <summary>
     /// Instruction `SQSHL` - Signed saturating shift left (register).
     /// </summary>
-    SQSHL_asimdsame_only = 2085,
+    SQSHL_asimdsame_only = 2121,
     /// <summary>
     /// Instruction `SQSHLU` - Signed saturating shift left unsigned (immediate).
     /// </summary>
-    SQSHLU_asisdshf_r = 2086,
+    SQSHLU_asisdshf_r = 2122,
     /// <summary>
     /// Instruction `SQSHLU` - Signed saturating shift left unsigned (immediate).
     /// </summary>
-    SQSHLU_asimdshf_r = 2087,
+    SQSHLU_asimdshf_r = 2123,
     /// <summary>
     /// Instruction `SQSHRN` - Signed saturating shift right narrow (immediate).
     /// </summary>
-    SQSHRN_asisdshf_n = 2088,
+    SQSHRN_asisdshf_n = 2124,
     /// <summary>
     /// Instruction `SQSHRN` - Signed saturating shift right narrow (immediate).
     /// </summary>
-    SQSHRN_asimdshf_n = 2089,
+    SQSHRN_asimdshf_n = 2125,
+    /// <summary>
+    /// Instruction `SQSHRN2` - Signed saturating shift right narrow (immediate).
+    /// </summary>
+    SQSHRN2_asimdshf_n = 2126,
     /// <summary>
     /// Instruction `SQSHRUN` - Signed saturating shift right unsigned narrow (immediate).
     /// </summary>
-    SQSHRUN_asisdshf_n = 2090,
+    SQSHRUN_asisdshf_n = 2127,
     /// <summary>
     /// Instruction `SQSHRUN` - Signed saturating shift right unsigned narrow (immediate).
     /// </summary>
-    SQSHRUN_asimdshf_n = 2091,
+    SQSHRUN_asimdshf_n = 2128,
+    /// <summary>
+    /// Instruction `SQSHRUN2` - Signed saturating shift right unsigned narrow (immediate).
+    /// </summary>
+    SQSHRUN2_asimdshf_n = 2129,
     /// <summary>
     /// Instruction `SQSUB` - Signed saturating subtract.
     /// </summary>
-    SQSUB_asisdsame_only = 2092,
+    SQSUB_asisdsame_only = 2130,
     /// <summary>
     /// Instruction `SQSUB` - Signed saturating subtract.
     /// </summary>
-    SQSUB_asimdsame_only = 2093,
+    SQSUB_asimdsame_only = 2131,
     /// <summary>
     /// Instruction `SQXTN` - Signed saturating extract narrow.
     /// </summary>
-    SQXTN_asisdmisc_n = 2094,
+    SQXTN_asisdmisc_n = 2132,
     /// <summary>
     /// Instruction `SQXTN` - Signed saturating extract narrow.
     /// </summary>
-    SQXTN_asimdmisc_n = 2095,
+    SQXTN_asimdmisc_n = 2133,
+    /// <summary>
+    /// Instruction `SQXTN2` - Signed saturating extract narrow.
+    /// </summary>
+    SQXTN2_asimdmisc_n = 2134,
     /// <summary>
     /// Instruction `SQXTUN` - Signed saturating extract unsigned narrow.
     /// </summary>
-    SQXTUN_asisdmisc_n = 2096,
+    SQXTUN_asisdmisc_n = 2135,
     /// <summary>
     /// Instruction `SQXTUN` - Signed saturating extract unsigned narrow.
     /// </summary>
-    SQXTUN_asimdmisc_n = 2097,
+    SQXTUN_asimdmisc_n = 2136,
+    /// <summary>
+    /// Instruction `SQXTUN2` - Signed saturating extract unsigned narrow.
+    /// </summary>
+    SQXTUN2_asimdmisc_n = 2137,
     /// <summary>
     /// Instruction `SRHADD` - Signed rounding halving add.
     /// </summary>
-    SRHADD_asimdsame_only = 2098,
+    SRHADD_asimdsame_only = 2138,
     /// <summary>
     /// Instruction `SRI` - Shift right and insert (immediate).
     /// </summary>
-    SRI_asisdshf_r = 2099,
+    SRI_asisdshf_r = 2139,
     /// <summary>
     /// Instruction `SRI` - Shift right and insert (immediate).
     /// </summary>
-    SRI_asimdshf_r = 2100,
+    SRI_asimdshf_r = 2140,
     /// <summary>
     /// Instruction `SRSHL` - Signed rounding shift left (register).
     /// </summary>
-    SRSHL_asisdsame_only = 2101,
+    SRSHL_asisdsame_only = 2141,
     /// <summary>
     /// Instruction `SRSHL` - Signed rounding shift left (register).
     /// </summary>
-    SRSHL_asimdsame_only = 2102,
+    SRSHL_asimdsame_only = 2142,
     /// <summary>
     /// Instruction `SRSHR` - Signed rounding shift right (immediate).
     /// </summary>
-    SRSHR_asisdshf_r = 2103,
+    SRSHR_asisdshf_r = 2143,
     /// <summary>
     /// Instruction `SRSHR` - Signed rounding shift right (immediate).
     /// </summary>
-    SRSHR_asimdshf_r = 2104,
+    SRSHR_asimdshf_r = 2144,
     /// <summary>
     /// Instruction `SRSRA` - Signed rounding shift right and accumulate (immediate).
     /// </summary>
-    SRSRA_asisdshf_r = 2105,
+    SRSRA_asisdshf_r = 2145,
     /// <summary>
     /// Instruction `SRSRA` - Signed rounding shift right and accumulate (immediate).
     /// </summary>
-    SRSRA_asimdshf_r = 2106,
+    SRSRA_asimdshf_r = 2146,
     /// <summary>
     /// Instruction `SSHL` - Signed shift left (register).
     /// </summary>
-    SSHL_asisdsame_only = 2107,
+    SSHL_asisdsame_only = 2147,
     /// <summary>
     /// Instruction `SSHL` - Signed shift left (register).
     /// </summary>
-    SSHL_asimdsame_only = 2108,
+    SSHL_asimdsame_only = 2148,
     /// <summary>
     /// Instruction `SSHLL` - Signed shift left long (immediate).
     /// </summary>
-    SSHLL_asimdshf_l = 2109,
+    SSHLL_asimdshf_l = 2149,
+    /// <summary>
+    /// Instruction `SSHLL2` - Signed shift left long (immediate).
+    /// </summary>
+    SSHLL2_asimdshf_l = 2150,
     /// <summary>
     /// Instruction `SSHR` - Signed shift right (immediate).
     /// </summary>
-    SSHR_asisdshf_r = 2110,
+    SSHR_asisdshf_r = 2151,
     /// <summary>
     /// Instruction `SSHR` - Signed shift right (immediate).
     /// </summary>
-    SSHR_asimdshf_r = 2111,
+    SSHR_asimdshf_r = 2152,
     /// <summary>
     /// Instruction `SSRA` - Signed shift right and accumulate (immediate).
     /// </summary>
-    SSRA_asisdshf_r = 2112,
+    SSRA_asisdshf_r = 2153,
     /// <summary>
     /// Instruction `SSRA` - Signed shift right and accumulate (immediate).
     /// </summary>
-    SSRA_asimdshf_r = 2113,
+    SSRA_asimdshf_r = 2154,
     /// <summary>
     /// Instruction `SSUBL` - Signed subtract long.
     /// </summary>
-    SSUBL_asimddiff_l = 2114,
+    SSUBL_asimddiff_l = 2155,
+    /// <summary>
+    /// Instruction `SSUBL2` - Signed subtract long.
+    /// </summary>
+    SSUBL2_asimddiff_l = 2156,
     /// <summary>
     /// Instruction `SSUBW` - Signed subtract wide.
     /// </summary>
-    SSUBW_asimddiff_w = 2115,
+    SSUBW_asimddiff_w = 2157,
+    /// <summary>
+    /// Instruction `SSUBW2` - Signed subtract wide.
+    /// </summary>
+    SSUBW2_asimddiff_w = 2158,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlse_r1_1v = 2116,
+    ST1_asisdlse_r1_1v = 2159,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlse_r2_2v = 2117,
+    ST1_asisdlse_r2_2v = 2160,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlse_r3_3v = 2118,
+    ST1_asisdlse_r3_3v = 2161,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlse_r4_4v = 2119,
+    ST1_asisdlse_r4_4v = 2162,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_i1_i1 = 2120,
+    ST1_asisdlsep_i1_i1 = 2163,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_r1_r1 = 2121,
+    ST1_asisdlsep_r1_r1 = 2164,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_i2_i2 = 2122,
+    ST1_asisdlsep_i2_i2 = 2165,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_r2_r2 = 2123,
+    ST1_asisdlsep_r2_r2 = 2166,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_i3_i3 = 2124,
+    ST1_asisdlsep_i3_i3 = 2167,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_r3_r3 = 2125,
+    ST1_asisdlsep_r3_r3 = 2168,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_i4_i4 = 2126,
+    ST1_asisdlsep_i4_i4 = 2169,
     /// <summary>
     /// Instruction `ST1` - Store multiple single-element structures from one, two, three, or four registers.
     /// </summary>
-    ST1_asisdlsep_r4_r4 = 2127,
+    ST1_asisdlsep_r4_r4 = 2170,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlso_b1_1b = 2128,
+    ST1_asisdlso_b1_1b = 2171,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlso_h1_1h = 2129,
+    ST1_asisdlso_h1_1h = 2172,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlso_s1_1s = 2130,
+    ST1_asisdlso_s1_1s = 2173,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlso_d1_1d = 2131,
+    ST1_asisdlso_d1_1d = 2174,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_b1_i1b = 2132,
+    ST1_asisdlsop_b1_i1b = 2175,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_bx1_r1b = 2133,
+    ST1_asisdlsop_bx1_r1b = 2176,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_h1_i1h = 2134,
+    ST1_asisdlsop_h1_i1h = 2177,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_hx1_r1h = 2135,
+    ST1_asisdlsop_hx1_r1h = 2178,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_s1_i1s = 2136,
+    ST1_asisdlsop_s1_i1s = 2179,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_sx1_r1s = 2137,
+    ST1_asisdlsop_sx1_r1s = 2180,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_d1_i1d = 2138,
+    ST1_asisdlsop_d1_i1d = 2181,
     /// <summary>
     /// Instruction `ST1` - Store a single-element structure from one lane of one register.
     /// </summary>
-    ST1_asisdlsop_dx1_r1d = 2139,
+    ST1_asisdlsop_dx1_r1d = 2182,
     /// <summary>
     /// Instruction `ST2` - Store multiple 2-element structures from two registers.
     /// </summary>
-    ST2_asisdlse_r2 = 2140,
+    ST2_asisdlse_r2 = 2183,
     /// <summary>
     /// Instruction `ST2` - Store multiple 2-element structures from two registers.
     /// </summary>
-    ST2_asisdlsep_i2_i = 2141,
+    ST2_asisdlsep_i2_i = 2184,
     /// <summary>
     /// Instruction `ST2` - Store multiple 2-element structures from two registers.
     /// </summary>
-    ST2_asisdlsep_r2_r = 2142,
+    ST2_asisdlsep_r2_r = 2185,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlso_b2_2b = 2143,
+    ST2_asisdlso_b2_2b = 2186,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlso_h2_2h = 2144,
+    ST2_asisdlso_h2_2h = 2187,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlso_s2_2s = 2145,
+    ST2_asisdlso_s2_2s = 2188,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlso_d2_2d = 2146,
+    ST2_asisdlso_d2_2d = 2189,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_b2_i2b = 2147,
+    ST2_asisdlsop_b2_i2b = 2190,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_bx2_r2b = 2148,
+    ST2_asisdlsop_bx2_r2b = 2191,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_h2_i2h = 2149,
+    ST2_asisdlsop_h2_i2h = 2192,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_hx2_r2h = 2150,
+    ST2_asisdlsop_hx2_r2h = 2193,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_s2_i2s = 2151,
+    ST2_asisdlsop_s2_i2s = 2194,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_sx2_r2s = 2152,
+    ST2_asisdlsop_sx2_r2s = 2195,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_d2_i2d = 2153,
+    ST2_asisdlsop_d2_i2d = 2196,
     /// <summary>
     /// Instruction `ST2` - Store single 2-element structure from one lane of two registers.
     /// </summary>
-    ST2_asisdlsop_dx2_r2d = 2154,
+    ST2_asisdlsop_dx2_r2d = 2197,
     /// <summary>
     /// Instruction `ST3` - Store multiple 3-element structures from three registers.
     /// </summary>
-    ST3_asisdlse_r3 = 2155,
+    ST3_asisdlse_r3 = 2198,
     /// <summary>
     /// Instruction `ST3` - Store multiple 3-element structures from three registers.
     /// </summary>
-    ST3_asisdlsep_i3_i = 2156,
+    ST3_asisdlsep_i3_i = 2199,
     /// <summary>
     /// Instruction `ST3` - Store multiple 3-element structures from three registers.
     /// </summary>
-    ST3_asisdlsep_r3_r = 2157,
+    ST3_asisdlsep_r3_r = 2200,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlso_b3_3b = 2158,
+    ST3_asisdlso_b3_3b = 2201,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlso_h3_3h = 2159,
+    ST3_asisdlso_h3_3h = 2202,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlso_s3_3s = 2160,
+    ST3_asisdlso_s3_3s = 2203,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlso_d3_3d = 2161,
+    ST3_asisdlso_d3_3d = 2204,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_b3_i3b = 2162,
+    ST3_asisdlsop_b3_i3b = 2205,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_bx3_r3b = 2163,
+    ST3_asisdlsop_bx3_r3b = 2206,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_h3_i3h = 2164,
+    ST3_asisdlsop_h3_i3h = 2207,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_hx3_r3h = 2165,
+    ST3_asisdlsop_hx3_r3h = 2208,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_s3_i3s = 2166,
+    ST3_asisdlsop_s3_i3s = 2209,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_sx3_r3s = 2167,
+    ST3_asisdlsop_sx3_r3s = 2210,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_d3_i3d = 2168,
+    ST3_asisdlsop_d3_i3d = 2211,
     /// <summary>
     /// Instruction `ST3` - Store single 3-element structure from one lane of three registers.
     /// </summary>
-    ST3_asisdlsop_dx3_r3d = 2169,
+    ST3_asisdlsop_dx3_r3d = 2212,
     /// <summary>
     /// Instruction `ST4` - Store multiple 4-element structures from four registers.
     /// </summary>
-    ST4_asisdlse_r4 = 2170,
+    ST4_asisdlse_r4 = 2213,
     /// <summary>
     /// Instruction `ST4` - Store multiple 4-element structures from four registers.
     /// </summary>
-    ST4_asisdlsep_i4_i = 2171,
+    ST4_asisdlsep_i4_i = 2214,
     /// <summary>
     /// Instruction `ST4` - Store multiple 4-element structures from four registers.
     /// </summary>
-    ST4_asisdlsep_r4_r = 2172,
+    ST4_asisdlsep_r4_r = 2215,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlso_b4_4b = 2173,
+    ST4_asisdlso_b4_4b = 2216,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlso_h4_4h = 2174,
+    ST4_asisdlso_h4_4h = 2217,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlso_s4_4s = 2175,
+    ST4_asisdlso_s4_4s = 2218,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlso_d4_4d = 2176,
+    ST4_asisdlso_d4_4d = 2219,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_b4_i4b = 2177,
+    ST4_asisdlsop_b4_i4b = 2220,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_bx4_r4b = 2178,
+    ST4_asisdlsop_bx4_r4b = 2221,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_h4_i4h = 2179,
+    ST4_asisdlsop_h4_i4h = 2222,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_hx4_r4h = 2180,
+    ST4_asisdlsop_hx4_r4h = 2223,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_s4_i4s = 2181,
+    ST4_asisdlsop_s4_i4s = 2224,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_sx4_r4s = 2182,
+    ST4_asisdlsop_sx4_r4s = 2225,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_d4_i4d = 2183,
+    ST4_asisdlsop_d4_i4d = 2226,
     /// <summary>
     /// Instruction `ST4` - Store single 4-element structure from one lane of four registers.
     /// </summary>
-    ST4_asisdlsop_dx4_r4d = 2184,
+    ST4_asisdlsop_dx4_r4d = 2227,
     /// <summary>
     /// Instruction `STBFADD` - BFloat16 floating-point atomic add in memory, without return.
     /// </summary>
-    STBFADD_16 = 2185,
+    STBFADD_16 = 2228,
     /// <summary>
     /// Instruction `STBFADDL` - BFloat16 floating-point atomic add in memory, without return.
     /// </summary>
-    STBFADDL_16 = 2186,
+    STBFADDL_16 = 2229,
     /// <summary>
     /// Instruction `STBFMAX` - BFloat16 floating-point atomic maximum in memory, without return.
     /// </summary>
-    STBFMAX_16 = 2187,
+    STBFMAX_16 = 2230,
     /// <summary>
     /// Instruction `STBFMAXL` - BFloat16 floating-point atomic maximum in memory, without return.
     /// </summary>
-    STBFMAXL_16 = 2188,
+    STBFMAXL_16 = 2231,
     /// <summary>
     /// Instruction `STBFMAXNM` - BFloat16 floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STBFMAXNM_16 = 2189,
+    STBFMAXNM_16 = 2232,
     /// <summary>
     /// Instruction `STBFMAXNML` - BFloat16 floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STBFMAXNML_16 = 2190,
+    STBFMAXNML_16 = 2233,
     /// <summary>
     /// Instruction `STBFMIN` - BFloat16 floating-point atomic minimum in memory, without return.
     /// </summary>
-    STBFMIN_16 = 2191,
+    STBFMIN_16 = 2234,
     /// <summary>
     /// Instruction `STBFMINL` - BFloat16 floating-point atomic minimum in memory, without return.
     /// </summary>
-    STBFMINL_16 = 2192,
+    STBFMINL_16 = 2235,
     /// <summary>
     /// Instruction `STBFMINNM` - BFloat16 floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STBFMINNM_16 = 2193,
+    STBFMINNM_16 = 2236,
     /// <summary>
     /// Instruction `STBFMINNML` - BFloat16 floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STBFMINNML_16 = 2194,
+    STBFMINNML_16 = 2237,
     /// <summary>
     /// Instruction `STFADD` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADD_16 = 2195,
+    STFADD_16 = 2238,
     /// <summary>
     /// Instruction `STFADDL` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADDL_16 = 2196,
+    STFADDL_16 = 2239,
     /// <summary>
     /// Instruction `STFADD` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADD_32 = 2197,
+    STFADD_32 = 2240,
     /// <summary>
     /// Instruction `STFADDL` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADDL_32 = 2198,
+    STFADDL_32 = 2241,
     /// <summary>
     /// Instruction `STFADD` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADD_64 = 2199,
+    STFADD_64 = 2242,
     /// <summary>
     /// Instruction `STFADDL` - Floating-point atomic add in memory, without return.
     /// </summary>
-    STFADDL_64 = 2200,
+    STFADDL_64 = 2243,
     /// <summary>
     /// Instruction `STFMAX` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAX_16 = 2201,
+    STFMAX_16 = 2244,
     /// <summary>
     /// Instruction `STFMAXL` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAXL_16 = 2202,
+    STFMAXL_16 = 2245,
     /// <summary>
     /// Instruction `STFMAX` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAX_32 = 2203,
+    STFMAX_32 = 2246,
     /// <summary>
     /// Instruction `STFMAXL` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAXL_32 = 2204,
+    STFMAXL_32 = 2247,
     /// <summary>
     /// Instruction `STFMAX` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAX_64 = 2205,
+    STFMAX_64 = 2248,
     /// <summary>
     /// Instruction `STFMAXL` - Floating-point atomic maximum in memory, without return.
     /// </summary>
-    STFMAXL_64 = 2206,
+    STFMAXL_64 = 2249,
     /// <summary>
     /// Instruction `STFMAXNM` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNM_16 = 2207,
+    STFMAXNM_16 = 2250,
     /// <summary>
     /// Instruction `STFMAXNML` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNML_16 = 2208,
+    STFMAXNML_16 = 2251,
     /// <summary>
     /// Instruction `STFMAXNM` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNM_32 = 2209,
+    STFMAXNM_32 = 2252,
     /// <summary>
     /// Instruction `STFMAXNML` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNML_32 = 2210,
+    STFMAXNML_32 = 2253,
     /// <summary>
     /// Instruction `STFMAXNM` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNM_64 = 2211,
+    STFMAXNM_64 = 2254,
     /// <summary>
     /// Instruction `STFMAXNML` - Floating-point atomic maximum number in memory, without return.
     /// </summary>
-    STFMAXNML_64 = 2212,
+    STFMAXNML_64 = 2255,
     /// <summary>
     /// Instruction `STFMIN` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMIN_16 = 2213,
+    STFMIN_16 = 2256,
     /// <summary>
     /// Instruction `STFMINL` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMINL_16 = 2214,
+    STFMINL_16 = 2257,
     /// <summary>
     /// Instruction `STFMIN` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMIN_32 = 2215,
+    STFMIN_32 = 2258,
     /// <summary>
     /// Instruction `STFMINL` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMINL_32 = 2216,
+    STFMINL_32 = 2259,
     /// <summary>
     /// Instruction `STFMIN` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMIN_64 = 2217,
+    STFMIN_64 = 2260,
     /// <summary>
     /// Instruction `STFMINL` - Floating-point atomic minimum in memory, without return.
     /// </summary>
-    STFMINL_64 = 2218,
+    STFMINL_64 = 2261,
     /// <summary>
     /// Instruction `STFMINNM` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNM_16 = 2219,
+    STFMINNM_16 = 2262,
     /// <summary>
     /// Instruction `STFMINNML` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNML_16 = 2220,
+    STFMINNML_16 = 2263,
     /// <summary>
     /// Instruction `STFMINNM` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNM_32 = 2221,
+    STFMINNM_32 = 2264,
     /// <summary>
     /// Instruction `STFMINNML` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNML_32 = 2222,
+    STFMINNML_32 = 2265,
     /// <summary>
     /// Instruction `STFMINNM` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNM_64 = 2223,
+    STFMINNM_64 = 2266,
     /// <summary>
     /// Instruction `STFMINNML` - Floating-point atomic minimum number in memory, without return.
     /// </summary>
-    STFMINNML_64 = 2224,
+    STFMINNML_64 = 2267,
     /// <summary>
     /// Instruction `STL1` - Store-release a single-element structure from one lane of one register.
     /// </summary>
-    STL1_asisdlso_d1 = 2225,
+    STL1_asisdlso_d1 = 2268,
     /// <summary>
     /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
     /// </summary>
-    STLUR_b_ldapstl_simd = 2226,
+    STLUR_b_ldapstl_simd = 2269,
     /// <summary>
     /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
     /// </summary>
-    STLUR_h_ldapstl_simd = 2227,
+    STLUR_h_ldapstl_simd = 2270,
     /// <summary>
     /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
     /// </summary>
-    STLUR_s_ldapstl_simd = 2228,
+    STLUR_s_ldapstl_simd = 2271,
     /// <summary>
     /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
     /// </summary>
-    STLUR_d_ldapstl_simd = 2229,
+    STLUR_d_ldapstl_simd = 2272,
     /// <summary>
     /// Instruction `STLUR` - Store-release SIMD&FP register (unscaled offset).
     /// </summary>
-    STLUR_q_ldapstl_simd = 2230,
+    STLUR_q_ldapstl_simd = 2273,
     /// <summary>
     /// Instruction `STNP` - Store pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    STNP_s_ldstnapair_offs = 2231,
+    STNP_s_ldstnapair_offs = 2274,
     /// <summary>
     /// Instruction `STNP` - Store pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    STNP_d_ldstnapair_offs = 2232,
+    STNP_d_ldstnapair_offs = 2275,
     /// <summary>
     /// Instruction `STNP` - Store pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    STNP_q_ldstnapair_offs = 2233,
+    STNP_q_ldstnapair_offs = 2276,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_s_ldstpair_post = 2234,
+    STP_s_ldstpair_post = 2277,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_d_ldstpair_post = 2235,
+    STP_d_ldstpair_post = 2278,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_q_ldstpair_post = 2236,
+    STP_q_ldstpair_post = 2279,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_s_ldstpair_pre = 2237,
+    STP_s_ldstpair_pre = 2280,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_d_ldstpair_pre = 2238,
+    STP_d_ldstpair_pre = 2281,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_q_ldstpair_pre = 2239,
+    STP_q_ldstpair_pre = 2282,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_s_ldstpair_off = 2240,
+    STP_s_ldstpair_off = 2283,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_d_ldstpair_off = 2241,
+    STP_d_ldstpair_off = 2284,
     /// <summary>
     /// Instruction `STP` - Store pair of SIMD&FP registers.
     /// </summary>
-    STP_q_ldstpair_off = 2242,
+    STP_q_ldstpair_off = 2285,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_b_ldst_immpost = 2243,
+    STR_b_ldst_immpost = 2286,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_h_ldst_immpost = 2244,
+    STR_h_ldst_immpost = 2287,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_s_ldst_immpost = 2245,
+    STR_s_ldst_immpost = 2288,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_d_ldst_immpost = 2246,
+    STR_d_ldst_immpost = 2289,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_q_ldst_immpost = 2247,
+    STR_q_ldst_immpost = 2290,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_b_ldst_immpre = 2248,
+    STR_b_ldst_immpre = 2291,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_h_ldst_immpre = 2249,
+    STR_h_ldst_immpre = 2292,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_s_ldst_immpre = 2250,
+    STR_s_ldst_immpre = 2293,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_d_ldst_immpre = 2251,
+    STR_d_ldst_immpre = 2294,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_q_ldst_immpre = 2252,
+    STR_q_ldst_immpre = 2295,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_b_ldst_pos = 2253,
+    STR_b_ldst_pos = 2296,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_h_ldst_pos = 2254,
+    STR_h_ldst_pos = 2297,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_s_ldst_pos = 2255,
+    STR_s_ldst_pos = 2298,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_d_ldst_pos = 2256,
+    STR_d_ldst_pos = 2299,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (immediate offset).
     /// </summary>
-    STR_q_ldst_pos = 2257,
+    STR_q_ldst_pos = 2300,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_b_ldst_regoff = 2258,
+    STR_b_ldst_regoff = 2301,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_bl_ldst_regoff = 2259,
+    STR_bl_ldst_regoff = 2302,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_h_ldst_regoff = 2260,
+    STR_h_ldst_regoff = 2303,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_s_ldst_regoff = 2261,
+    STR_s_ldst_regoff = 2304,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_d_ldst_regoff = 2262,
+    STR_d_ldst_regoff = 2305,
     /// <summary>
     /// Instruction `STR` - Store SIMD&FP register (register offset).
     /// </summary>
-    STR_q_ldst_regoff = 2263,
+    STR_q_ldst_regoff = 2306,
     /// <summary>
     /// Instruction `STTNP` - Store unprivileged pair of SIMD&FP registers, with non-temporal hint.
     /// </summary>
-    STTNP_q_ldstnapair_offs = 2264,
+    STTNP_q_ldstnapair_offs = 2307,
     /// <summary>
     /// Instruction `STTP` - Store unprivileged pair of SIMD&FP registers.
     /// </summary>
-    STTP_q_ldstpair_post = 2265,
+    STTP_q_ldstpair_post = 2308,
     /// <summary>
     /// Instruction `STTP` - Store unprivileged pair of SIMD&FP registers.
     /// </summary>
-    STTP_q_ldstpair_pre = 2266,
+    STTP_q_ldstpair_pre = 2309,
     /// <summary>
     /// Instruction `STTP` - Store unprivileged pair of SIMD&FP registers.
     /// </summary>
-    STTP_q_ldstpair_off = 2267,
+    STTP_q_ldstpair_off = 2310,
     /// <summary>
     /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
     /// </summary>
-    STUR_b_ldst_unscaled = 2268,
+    STUR_b_ldst_unscaled = 2311,
     /// <summary>
     /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
     /// </summary>
-    STUR_h_ldst_unscaled = 2269,
+    STUR_h_ldst_unscaled = 2312,
     /// <summary>
     /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
     /// </summary>
-    STUR_s_ldst_unscaled = 2270,
+    STUR_s_ldst_unscaled = 2313,
     /// <summary>
     /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
     /// </summary>
-    STUR_d_ldst_unscaled = 2271,
+    STUR_d_ldst_unscaled = 2314,
     /// <summary>
     /// Instruction `STUR` - Store SIMD&FP register (unscaled offset).
     /// </summary>
-    STUR_q_ldst_unscaled = 2272,
+    STUR_q_ldst_unscaled = 2315,
     /// <summary>
     /// Instruction `SUB` - Subtract (vector).
     /// </summary>
-    SUB_asisdsame_only = 2273,
+    SUB_asisdsame_only = 2316,
     /// <summary>
     /// Instruction `SUB` - Subtract (vector).
     /// </summary>
-    SUB_asimdsame_only = 2274,
+    SUB_asimdsame_only = 2317,
     /// <summary>
     /// Instruction `SUBHN` - Subtract returning high narrow.
     /// </summary>
-    SUBHN_asimddiff_n = 2275,
+    SUBHN_asimddiff_n = 2318,
+    /// <summary>
+    /// Instruction `SUBHN2` - Subtract returning high narrow.
+    /// </summary>
+    SUBHN2_asimddiff_n = 2319,
     /// <summary>
     /// Instruction `SUDOT` - Dot product with signed and unsigned integers (vector, by element).
     /// </summary>
-    SUDOT_asimdelem_d = 2276,
+    SUDOT_asimdelem_d = 2320,
     /// <summary>
     /// Instruction `SUQADD` - Signed saturating accumulate of unsigned value.
     /// </summary>
-    SUQADD_asisdmisc_r = 2277,
+    SUQADD_asisdmisc_r = 2321,
     /// <summary>
     /// Instruction `SUQADD` - Signed saturating accumulate of unsigned value.
     /// </summary>
-    SUQADD_asimdmisc_r = 2278,
+    SUQADD_asimdmisc_r = 2322,
     /// <summary>
     /// Instruction `SXTL` - Signed extend long.
     /// </summary>
-    SXTL_sshll_asimdshf_l = 2279,
+    SXTL_sshll_asimdshf_l = 2323,
+    /// <summary>
+    /// Instruction `SXTL2` - Signed extend long.
+    /// </summary>
+    SXTL2_sshll_asimdshf_l = 2324,
     /// <summary>
     /// Instruction `TBL` - Table vector lookup.
     /// </summary>
-    TBL_asimdtbl_l1_1 = 2280,
+    TBL_asimdtbl_l1_1 = 2325,
     /// <summary>
     /// Instruction `TBL` - Table vector lookup.
     /// </summary>
-    TBL_asimdtbl_l2_2 = 2281,
+    TBL_asimdtbl_l2_2 = 2326,
     /// <summary>
     /// Instruction `TBL` - Table vector lookup.
     /// </summary>
-    TBL_asimdtbl_l3_3 = 2282,
+    TBL_asimdtbl_l3_3 = 2327,
     /// <summary>
     /// Instruction `TBL` - Table vector lookup.
     /// </summary>
-    TBL_asimdtbl_l4_4 = 2283,
+    TBL_asimdtbl_l4_4 = 2328,
     /// <summary>
     /// Instruction `TBX` - Table vector lookup extension.
     /// </summary>
-    TBX_asimdtbl_l1_1 = 2284,
+    TBX_asimdtbl_l1_1 = 2329,
     /// <summary>
     /// Instruction `TBX` - Table vector lookup extension.
     /// </summary>
-    TBX_asimdtbl_l2_2 = 2285,
+    TBX_asimdtbl_l2_2 = 2330,
     /// <summary>
     /// Instruction `TBX` - Table vector lookup extension.
     /// </summary>
-    TBX_asimdtbl_l3_3 = 2286,
+    TBX_asimdtbl_l3_3 = 2331,
     /// <summary>
     /// Instruction `TBX` - Table vector lookup extension.
     /// </summary>
-    TBX_asimdtbl_l4_4 = 2287,
+    TBX_asimdtbl_l4_4 = 2332,
     /// <summary>
     /// Instruction `TRN1` - Transpose vectors (primary).
     /// </summary>
-    TRN1_asimdperm_only = 2288,
+    TRN1_asimdperm_only = 2333,
     /// <summary>
     /// Instruction `TRN2` - Transpose vectors (secondary).
     /// </summary>
-    TRN2_asimdperm_only = 2289,
+    TRN2_asimdperm_only = 2334,
     /// <summary>
     /// Instruction `UABA` - Unsigned absolute difference and accumulate.
     /// </summary>
-    UABA_asimdsame_only = 2290,
+    UABA_asimdsame_only = 2335,
     /// <summary>
     /// Instruction `UABAL` - Unsigned absolute difference and accumulate long.
     /// </summary>
-    UABAL_asimddiff_l = 2291,
+    UABAL_asimddiff_l = 2336,
+    /// <summary>
+    /// Instruction `UABAL2` - Unsigned absolute difference and accumulate long.
+    /// </summary>
+    UABAL2_asimddiff_l = 2337,
     /// <summary>
     /// Instruction `UABD` - Unsigned absolute difference (vector).
     /// </summary>
-    UABD_asimdsame_only = 2292,
+    UABD_asimdsame_only = 2338,
     /// <summary>
     /// Instruction `UABDL` - Unsigned absolute difference long.
     /// </summary>
-    UABDL_asimddiff_l = 2293,
+    UABDL_asimddiff_l = 2339,
+    /// <summary>
+    /// Instruction `UABDL2` - Unsigned absolute difference long.
+    /// </summary>
+    UABDL2_asimddiff_l = 2340,
     /// <summary>
     /// Instruction `UADALP` - Unsigned add and accumulate long pairwise.
     /// </summary>
-    UADALP_asimdmisc_p = 2294,
+    UADALP_asimdmisc_p = 2341,
     /// <summary>
     /// Instruction `UADDL` - Unsigned add long (vector).
     /// </summary>
-    UADDL_asimddiff_l = 2295,
+    UADDL_asimddiff_l = 2342,
+    /// <summary>
+    /// Instruction `UADDL2` - Unsigned add long (vector).
+    /// </summary>
+    UADDL2_asimddiff_l = 2343,
     /// <summary>
     /// Instruction `UADDLP` - Unsigned add long pairwise.
     /// </summary>
-    UADDLP_asimdmisc_p = 2296,
+    UADDLP_asimdmisc_p = 2344,
     /// <summary>
     /// Instruction `UADDLV` - Unsigned sum long across vector.
     /// </summary>
-    UADDLV_asimdall_only = 2297,
+    UADDLV_asimdall_only = 2345,
     /// <summary>
     /// Instruction `UADDW` - Unsigned add wide.
     /// </summary>
-    UADDW_asimddiff_w = 2298,
+    UADDW_asimddiff_w = 2346,
+    /// <summary>
+    /// Instruction `UADDW2` - Unsigned add wide.
+    /// </summary>
+    UADDW2_asimddiff_w = 2347,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    UCVTF_sisd_32h = 2299,
+    UCVTF_sisd_32h = 2348,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    UCVTF_sisd_32d = 2300,
+    UCVTF_sisd_32d = 2349,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    UCVTF_sisd_64h = 2301,
+    UCVTF_sisd_64h = 2350,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar SIMD&FP).
     /// </summary>
-    UCVTF_sisd_64s = 2302,
+    UCVTF_sisd_64s = 2351,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_h32_float2fix = 2303,
+    UCVTF_h32_float2fix = 2352,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_h64_float2fix = 2304,
+    UCVTF_h64_float2fix = 2353,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_s32_float2fix = 2305,
+    UCVTF_s32_float2fix = 2354,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_s64_float2fix = 2306,
+    UCVTF_s64_float2fix = 2355,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_d32_float2fix = 2307,
+    UCVTF_d32_float2fix = 2356,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (scalar).
     /// </summary>
-    UCVTF_d64_float2fix = 2308,
+    UCVTF_d64_float2fix = 2357,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_h32_float2int = 2309,
+    UCVTF_h32_float2int = 2358,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_s32_float2int = 2310,
+    UCVTF_s32_float2int = 2359,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_d32_float2int = 2311,
+    UCVTF_d32_float2int = 2360,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_h64_float2int = 2312,
+    UCVTF_h64_float2int = 2361,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_s64_float2int = 2313,
+    UCVTF_s64_float2int = 2362,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (scalar).
     /// </summary>
-    UCVTF_d64_float2int = 2314,
+    UCVTF_d64_float2int = 2363,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (vector).
     /// </summary>
-    UCVTF_asisdshf_c = 2315,
+    UCVTF_asisdshf_c = 2364,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned fixed-point convert to floating-point (vector).
     /// </summary>
-    UCVTF_asimdshf_c = 2316,
+    UCVTF_asimdshf_c = 2365,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (vector).
     /// </summary>
-    UCVTF_asisdmiscfp16_r = 2317,
+    UCVTF_asisdmiscfp16_r = 2366,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (vector).
     /// </summary>
-    UCVTF_asisdmisc_r = 2318,
+    UCVTF_asisdmisc_r = 2367,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (vector).
     /// </summary>
-    UCVTF_asimdmiscfp16_r = 2319,
+    UCVTF_asimdmiscfp16_r = 2368,
     /// <summary>
     /// Instruction `UCVTF` - Unsigned integer convert to floating-point (vector).
     /// </summary>
-    UCVTF_asimdmisc_r = 2320,
+    UCVTF_asimdmisc_r = 2369,
     /// <summary>
     /// Instruction `UDOT` - Dot product unsigned arithmetic (vector, by element).
     /// </summary>
-    UDOT_asimdelem_d = 2321,
+    UDOT_asimdelem_d = 2370,
     /// <summary>
     /// Instruction `UDOT` - Dot product unsigned arithmetic (vector).
     /// </summary>
-    UDOT_asimdsame2_d = 2322,
+    UDOT_asimdsame2_d = 2371,
     /// <summary>
     /// Instruction `UHADD` - Unsigned halving add.
     /// </summary>
-    UHADD_asimdsame_only = 2323,
+    UHADD_asimdsame_only = 2372,
     /// <summary>
     /// Instruction `UHSUB` - Unsigned halving subtract.
     /// </summary>
-    UHSUB_asimdsame_only = 2324,
+    UHSUB_asimdsame_only = 2373,
     /// <summary>
     /// Instruction `UMAX` - Unsigned maximum (vector).
     /// </summary>
-    UMAX_asimdsame_only = 2325,
+    UMAX_asimdsame_only = 2374,
     /// <summary>
     /// Instruction `UMAXP` - Unsigned maximum pairwise.
     /// </summary>
-    UMAXP_asimdsame_only = 2326,
+    UMAXP_asimdsame_only = 2375,
     /// <summary>
     /// Instruction `UMAXV` - Unsigned maximum across vector.
     /// </summary>
-    UMAXV_asimdall_only = 2327,
+    UMAXV_asimdall_only = 2376,
     /// <summary>
     /// Instruction `UMIN` - Unsigned minimum (vector).
     /// </summary>
-    UMIN_asimdsame_only = 2328,
+    UMIN_asimdsame_only = 2377,
     /// <summary>
     /// Instruction `UMINP` - Unsigned minimum pairwise.
     /// </summary>
-    UMINP_asimdsame_only = 2329,
+    UMINP_asimdsame_only = 2378,
     /// <summary>
     /// Instruction `UMINV` - Unsigned minimum across vector.
     /// </summary>
-    UMINV_asimdall_only = 2330,
+    UMINV_asimdall_only = 2379,
     /// <summary>
     /// Instruction `UMLAL` - Unsigned multiply-add long (vector, by element).
     /// </summary>
-    UMLAL_asimdelem_l = 2331,
+    UMLAL_asimdelem_l = 2380,
+    /// <summary>
+    /// Instruction `UMLAL2` - Unsigned multiply-add long (vector, by element).
+    /// </summary>
+    UMLAL2_asimdelem_l = 2381,
     /// <summary>
     /// Instruction `UMLAL` - Unsigned multiply-add long (vector).
     /// </summary>
-    UMLAL_asimddiff_l = 2332,
+    UMLAL_asimddiff_l = 2382,
+    /// <summary>
+    /// Instruction `UMLAL2` - Unsigned multiply-add long (vector).
+    /// </summary>
+    UMLAL2_asimddiff_l = 2383,
     /// <summary>
     /// Instruction `UMLSL` - Unsigned multiply-subtract long (vector, by element).
     /// </summary>
-    UMLSL_asimdelem_l = 2333,
+    UMLSL_asimdelem_l = 2384,
+    /// <summary>
+    /// Instruction `UMLSL2` - Unsigned multiply-subtract long (vector, by element).
+    /// </summary>
+    UMLSL2_asimdelem_l = 2385,
     /// <summary>
     /// Instruction `UMLSL` - Unsigned multiply-subtract long (vector).
     /// </summary>
-    UMLSL_asimddiff_l = 2334,
+    UMLSL_asimddiff_l = 2386,
+    /// <summary>
+    /// Instruction `UMLSL2` - Unsigned multiply-subtract long (vector).
+    /// </summary>
+    UMLSL2_asimddiff_l = 2387,
     /// <summary>
     /// Instruction `UMMLA` - Unsigned 8-bit integer matrix multiply-accumulate (vector).
     /// </summary>
-    UMMLA_asimdsame2_g = 2335,
+    UMMLA_asimdsame2_g = 2388,
     /// <summary>
     /// Instruction `UMOV` - Unsigned move vector element to general-purpose register.
     /// </summary>
-    UMOV_asimdins_w_w = 2336,
+    UMOV_asimdins_w_w = 2389,
     /// <summary>
     /// Instruction `UMOV` - Unsigned move vector element to general-purpose register.
     /// </summary>
-    UMOV_asimdins_x_x = 2337,
+    UMOV_asimdins_x_x = 2390,
     /// <summary>
     /// Instruction `UMULL` - Unsigned multiply long (vector, by element).
     /// </summary>
-    UMULL_asimdelem_l = 2338,
+    UMULL_asimdelem_l = 2391,
+    /// <summary>
+    /// Instruction `UMULL2` - Unsigned multiply long (vector, by element).
+    /// </summary>
+    UMULL2_asimdelem_l = 2392,
     /// <summary>
     /// Instruction `UMULL` - Unsigned multiply long (vector).
     /// </summary>
-    UMULL_asimddiff_l = 2339,
+    UMULL_asimddiff_l = 2393,
+    /// <summary>
+    /// Instruction `UMULL2` - Unsigned multiply long (vector).
+    /// </summary>
+    UMULL2_asimddiff_l = 2394,
     /// <summary>
     /// Instruction `UQADD` - Unsigned saturating add.
     /// </summary>
-    UQADD_asisdsame_only = 2340,
+    UQADD_asisdsame_only = 2395,
     /// <summary>
     /// Instruction `UQADD` - Unsigned saturating add.
     /// </summary>
-    UQADD_asimdsame_only = 2341,
+    UQADD_asimdsame_only = 2396,
     /// <summary>
     /// Instruction `UQRSHL` - Unsigned saturating rounding shift left (register).
     /// </summary>
-    UQRSHL_asisdsame_only = 2342,
+    UQRSHL_asisdsame_only = 2397,
     /// <summary>
     /// Instruction `UQRSHL` - Unsigned saturating rounding shift left (register).
     /// </summary>
-    UQRSHL_asimdsame_only = 2343,
+    UQRSHL_asimdsame_only = 2398,
     /// <summary>
     /// Instruction `UQRSHRN` - Unsigned saturating rounded shift right narrow (immediate).
     /// </summary>
-    UQRSHRN_asisdshf_n = 2344,
+    UQRSHRN_asisdshf_n = 2399,
     /// <summary>
     /// Instruction `UQRSHRN` - Unsigned saturating rounded shift right narrow (immediate).
     /// </summary>
-    UQRSHRN_asimdshf_n = 2345,
+    UQRSHRN_asimdshf_n = 2400,
+    /// <summary>
+    /// Instruction `UQRSHRN2` - Unsigned saturating rounded shift right narrow (immediate).
+    /// </summary>
+    UQRSHRN2_asimdshf_n = 2401,
     /// <summary>
     /// Instruction `UQSHL` - Unsigned saturating shift left (immediate).
     /// </summary>
-    UQSHL_asisdshf_r = 2346,
+    UQSHL_asisdshf_r = 2402,
     /// <summary>
     /// Instruction `UQSHL` - Unsigned saturating shift left (immediate).
     /// </summary>
-    UQSHL_asimdshf_r = 2347,
+    UQSHL_asimdshf_r = 2403,
     /// <summary>
     /// Instruction `UQSHL` - Unsigned saturating shift left (register).
     /// </summary>
-    UQSHL_asisdsame_only = 2348,
+    UQSHL_asisdsame_only = 2404,
     /// <summary>
     /// Instruction `UQSHL` - Unsigned saturating shift left (register).
     /// </summary>
-    UQSHL_asimdsame_only = 2349,
+    UQSHL_asimdsame_only = 2405,
     /// <summary>
     /// Instruction `UQSHRN` - Unsigned saturating shift right narrow (immediate).
     /// </summary>
-    UQSHRN_asisdshf_n = 2350,
+    UQSHRN_asisdshf_n = 2406,
     /// <summary>
     /// Instruction `UQSHRN` - Unsigned saturating shift right narrow (immediate).
     /// </summary>
-    UQSHRN_asimdshf_n = 2351,
+    UQSHRN_asimdshf_n = 2407,
+    /// <summary>
+    /// Instruction `UQSHRN2` - Unsigned saturating shift right narrow (immediate).
+    /// </summary>
+    UQSHRN2_asimdshf_n = 2408,
     /// <summary>
     /// Instruction `UQSUB` - Unsigned saturating subtract.
     /// </summary>
-    UQSUB_asisdsame_only = 2352,
+    UQSUB_asisdsame_only = 2409,
     /// <summary>
     /// Instruction `UQSUB` - Unsigned saturating subtract.
     /// </summary>
-    UQSUB_asimdsame_only = 2353,
+    UQSUB_asimdsame_only = 2410,
     /// <summary>
     /// Instruction `UQXTN` - Unsigned saturating extract narrow.
     /// </summary>
-    UQXTN_asisdmisc_n = 2354,
+    UQXTN_asisdmisc_n = 2411,
     /// <summary>
     /// Instruction `UQXTN` - Unsigned saturating extract narrow.
     /// </summary>
-    UQXTN_asimdmisc_n = 2355,
+    UQXTN_asimdmisc_n = 2412,
+    /// <summary>
+    /// Instruction `UQXTN2` - Unsigned saturating extract narrow.
+    /// </summary>
+    UQXTN2_asimdmisc_n = 2413,
     /// <summary>
     /// Instruction `URECPE` - Unsigned reciprocal estimate.
     /// </summary>
-    URECPE_asimdmisc_r = 2356,
+    URECPE_asimdmisc_r = 2414,
     /// <summary>
     /// Instruction `URHADD` - Unsigned rounding halving add.
     /// </summary>
-    URHADD_asimdsame_only = 2357,
+    URHADD_asimdsame_only = 2415,
     /// <summary>
     /// Instruction `URSHL` - Unsigned rounding shift left (register).
     /// </summary>
-    URSHL_asisdsame_only = 2358,
+    URSHL_asisdsame_only = 2416,
     /// <summary>
     /// Instruction `URSHL` - Unsigned rounding shift left (register).
     /// </summary>
-    URSHL_asimdsame_only = 2359,
+    URSHL_asimdsame_only = 2417,
     /// <summary>
     /// Instruction `URSHR` - Unsigned rounding shift right (immediate).
     /// </summary>
-    URSHR_asisdshf_r = 2360,
+    URSHR_asisdshf_r = 2418,
     /// <summary>
     /// Instruction `URSHR` - Unsigned rounding shift right (immediate).
     /// </summary>
-    URSHR_asimdshf_r = 2361,
+    URSHR_asimdshf_r = 2419,
     /// <summary>
     /// Instruction `URSQRTE` - Unsigned reciprocal square root estimate.
     /// </summary>
-    URSQRTE_asimdmisc_r = 2362,
+    URSQRTE_asimdmisc_r = 2420,
     /// <summary>
     /// Instruction `URSRA` - Unsigned rounding shift right and accumulate (immediate).
     /// </summary>
-    URSRA_asisdshf_r = 2363,
+    URSRA_asisdshf_r = 2421,
     /// <summary>
     /// Instruction `URSRA` - Unsigned rounding shift right and accumulate (immediate).
     /// </summary>
-    URSRA_asimdshf_r = 2364,
+    URSRA_asimdshf_r = 2422,
     /// <summary>
     /// Instruction `USDOT` - Dot product with unsigned and signed integers (vector, by element).
     /// </summary>
-    USDOT_asimdelem_d = 2365,
+    USDOT_asimdelem_d = 2423,
     /// <summary>
     /// Instruction `USDOT` - Dot product with unsigned and signed integers (vector).
     /// </summary>
-    USDOT_asimdsame2_d = 2366,
+    USDOT_asimdsame2_d = 2424,
     /// <summary>
     /// Instruction `USHL` - Unsigned shift left (register).
     /// </summary>
-    USHL_asisdsame_only = 2367,
+    USHL_asisdsame_only = 2425,
     /// <summary>
     /// Instruction `USHL` - Unsigned shift left (register).
     /// </summary>
-    USHL_asimdsame_only = 2368,
+    USHL_asimdsame_only = 2426,
     /// <summary>
     /// Instruction `USHLL` - Unsigned shift left long (immediate).
     /// </summary>
-    USHLL_asimdshf_l = 2369,
+    USHLL_asimdshf_l = 2427,
+    /// <summary>
+    /// Instruction `USHLL2` - Unsigned shift left long (immediate).
+    /// </summary>
+    USHLL2_asimdshf_l = 2428,
     /// <summary>
     /// Instruction `USHR` - Unsigned shift right (immediate).
     /// </summary>
-    USHR_asisdshf_r = 2370,
+    USHR_asisdshf_r = 2429,
     /// <summary>
     /// Instruction `USHR` - Unsigned shift right (immediate).
     /// </summary>
-    USHR_asimdshf_r = 2371,
+    USHR_asimdshf_r = 2430,
     /// <summary>
     /// Instruction `USMMLA` - Unsigned and signed 8-bit integer matrix multiply-accumulate (vector).
     /// </summary>
-    USMMLA_asimdsame2_g = 2372,
+    USMMLA_asimdsame2_g = 2431,
     /// <summary>
     /// Instruction `USQADD` - Unsigned saturating accumulate of signed value.
     /// </summary>
-    USQADD_asisdmisc_r = 2373,
+    USQADD_asisdmisc_r = 2432,
     /// <summary>
     /// Instruction `USQADD` - Unsigned saturating accumulate of signed value.
     /// </summary>
-    USQADD_asimdmisc_r = 2374,
+    USQADD_asimdmisc_r = 2433,
     /// <summary>
     /// Instruction `USRA` - Unsigned shift right and accumulate (immediate).
     /// </summary>
-    USRA_asisdshf_r = 2375,
+    USRA_asisdshf_r = 2434,
     /// <summary>
     /// Instruction `USRA` - Unsigned shift right and accumulate (immediate).
     /// </summary>
-    USRA_asimdshf_r = 2376,
+    USRA_asimdshf_r = 2435,
     /// <summary>
     /// Instruction `USUBL` - Unsigned subtract long.
     /// </summary>
-    USUBL_asimddiff_l = 2377,
+    USUBL_asimddiff_l = 2436,
+    /// <summary>
+    /// Instruction `USUBL2` - Unsigned subtract long.
+    /// </summary>
+    USUBL2_asimddiff_l = 2437,
     /// <summary>
     /// Instruction `USUBW` - Unsigned subtract wide.
     /// </summary>
-    USUBW_asimddiff_w = 2378,
+    USUBW_asimddiff_w = 2438,
+    /// <summary>
+    /// Instruction `USUBW2` - Unsigned subtract wide.
+    /// </summary>
+    USUBW2_asimddiff_w = 2439,
     /// <summary>
     /// Instruction `UXTL` - Unsigned extend long.
     /// </summary>
-    UXTL_ushll_asimdshf_l = 2379,
+    UXTL_ushll_asimdshf_l = 2440,
+    /// <summary>
+    /// Instruction `UXTL2` - Unsigned extend long.
+    /// </summary>
+    UXTL2_ushll_asimdshf_l = 2441,
     /// <summary>
     /// Instruction `UZP1` - Unzip vectors (primary).
     /// </summary>
-    UZP1_asimdperm_only = 2380,
+    UZP1_asimdperm_only = 2442,
     /// <summary>
     /// Instruction `UZP2` - Unzip vectors (secondary).
     /// </summary>
-    UZP2_asimdperm_only = 2381,
+    UZP2_asimdperm_only = 2443,
     /// <summary>
     /// Instruction `XAR` - Exclusive-OR and rotate.
     /// </summary>
-    XAR_vvv2_crypto3_imm6 = 2382,
+    XAR_vvv2_crypto3_imm6 = 2444,
     /// <summary>
     /// Instruction `XTN` - Extract narrow.
     /// </summary>
-    XTN_asimdmisc_n = 2383,
+    XTN_asimdmisc_n = 2445,
+    /// <summary>
+    /// Instruction `XTN2` - Extract narrow.
+    /// </summary>
+    XTN2_asimdmisc_n = 2446,
     /// <summary>
     /// Instruction `ZIP1` - Zip vectors (primary).
     /// </summary>
-    ZIP1_asimdperm_only = 2384,
+    ZIP1_asimdperm_only = 2447,
     /// <summary>
     /// Instruction `ZIP2` - Zip vectors (secondary).
     /// </summary>
-    ZIP2_asimdperm_only = 2385,
+    ZIP2_asimdperm_only = 2448,
 }

@@ -14,6 +14,10 @@ namespace AsmArm64.CodeGen.Model;
 
 class InstructionSet
 {
+
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<SysDynamicDispatchEntry> SysDynamicDispatchEntries { get; } = new();
+
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<SystemRegister> SystemRegisters { get; } = new();
 

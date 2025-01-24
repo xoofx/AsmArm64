@@ -22,6 +22,62 @@ partial class Arm64Processor
     private static readonly Regex MatchIdentifier = new(@"\w+");
     private static readonly Regex MatchEnum = new(@"^[a-zA-Z][a-zA-Z0-9_\|]*(\s+#\d+)?$");
 
+    private void DetectMultiInstruction(XElement encodingElt, EncodingSymbolsInfo? rawEncodingInfo, out string? multiInstructionSymbol, out string[]? multiInstructionPostFixes)
+    {
+        // TODO: This code is slightly duplicated with ParseOperands
+        var asmTemplate = encodingElt.Element("asmtemplate")!;
+        var items = new List<RawAsmTemplateItem>();
+
+        foreach (var elt in asmTemplate.Elements())
+        {
+            if (elt.Name == "text")
+            {
+                var text = elt.Value.Trim();
+                items.Add(new RawAsmTemplateItem(RawAsmTemplateItemKind.Text, text));
+            }
+            else if (elt.Name == "a")
+            {
+                var link = elt.Attribute("link")!.Value.Trim();
+                var text = elt.Value.Trim();
+                items.Add(new RawAsmTemplateItemLink(RawAsmTemplateItemKind.Link, text, link, rawEncodingInfo!.Symbols[link]));
+            }
+            else
+            {
+                throw new InvalidOperationException($"Unsupported element <{elt.Name}> in asmtemplate - {elt}");
+            }
+        }
+
+        var instructionId = rawEncodingInfo?.Name;
+        var mnemonic = items[0].Text;
+        var match = MatchMnemonic.Match(mnemonic);
+        Debug.Assert(match.Success);
+        bool hasMultipleMnemonics = match.Groups[2].Success;
+        // Discard the mnemonic (and the potential '{')
+        items[0] = new RawAsmTemplateItem(RawAsmTemplateItemKind.Text, mnemonic.Substring(match.Index + match.Length));
+
+        multiInstructionSymbol = null;
+        multiInstructionPostFixes = null;
+
+        if (hasMultipleMnemonics)
+        {
+            items.RemoveAt(0);
+            var link = (RawAsmTemplateItemLink)items[0];
+            multiInstructionSymbol = link.Link;
+            multiInstructionPostFixes = new string[2];
+            multiInstructionPostFixes[0] = "";
+            multiInstructionPostFixes[1] = link.Text;
+        }
+        else if (mnemonic == "BFMLAL")
+        {
+            Debug.Assert(items[1].Text == "<bt>");
+            var link = (RawAsmTemplateItemLink)items[1];
+            multiInstructionSymbol = link.Link;
+            multiInstructionPostFixes = new string[2];
+            multiInstructionPostFixes[0] = "B";
+            multiInstructionPostFixes[1] = "T";
+        }
+    }
+    
     private List<Operand> ParseOperands(XElement encodingElt, EncodingSymbolsInfo? rawEncodingInfo)
     {
         var asmTemplate = encodingElt.Element("asmtemplate")!;
@@ -54,34 +110,28 @@ partial class Arm64Processor
         // Discard the mnemonic (and the potential '{')
         items[0] = new RawAsmTemplateItem(RawAsmTemplateItemKind.Text, mnemonic.Substring(match.Index + match.Length));
 
-        string? multiOption = null;
-        int multiOptionCount = 0;
-
         if (hasMultipleMnemonics)
         {
             items.RemoveAt(0);
-            var link = (RawAsmTemplateItemLink)items[0];
-            multiOption = link.Link;
-            multiOptionCount = int.Parse(link.Text);
             items.RemoveAt(0);
             Debug.Assert(items[0].Text.StartsWith("}"));
             items[0] = new(RawAsmTemplateItemKind.Text, MatchSpace.Replace(items[0].Text.Substring(1).Trim(), string.Empty));
-            if (items[0].Text.Length == 0)
-            {
-                items.RemoveAt(0);
-            }
+        }
+        else if (mnemonic == "BFMLAL")
+        {
+            Debug.Assert(items[1].Text == "<bt>");
+            items.RemoveAt(0); // Remove mnemonic
+            items.RemoveAt(0); // Remove <bt>
+        }
+
+        var newText = MatchSpace.Replace(items[0].Text, string.Empty);
+        if (string.IsNullOrEmpty(newText))
+        {
+            items.RemoveAt(0);
         }
         else
         {
-            var newText = MatchSpace.Replace(items[0].Text, string.Empty);
-            if (string.IsNullOrEmpty(newText))
-            {
-                items.RemoveAt(0);
-            }
-            else
-            {
-                items[0] = new(RawAsmTemplateItemKind.Text, newText);
-            }
+            items[0] = new(RawAsmTemplateItemKind.Text, newText);
         }
 
         // Remove any spaces from the text to ease the parsing after
@@ -366,9 +416,10 @@ partial class Arm64Processor
                     if (popState)
                     {
                         // Don't create a group without parameters (can happen for {,#0} where #0 is discarded by the parser above)
-                        var allRegisters = state.PendingParameters.All(x => x.Kind == OperandItemKind.Register);
+                        // We expect a register group to be the first operand, otherwise it is an optional register
+                        var isRegisterGroup = state.PendingParameters.All(x => x.Kind == OperandItemKind.Register && x.TextElements[0].Text.StartsWith("V"));
 
-                        GroupOperandItemBase group = allRegisters
+                        GroupOperandItemBase group = isRegisterGroup
                             ? new RegisterGroupOperandItem() { IsOptional = state.CurrentStateKind == ParsingStateKind.Optional }
                             : new OptionalGroupOperandItem() { IsOptional = state.CurrentStateKind == ParsingStateKind.Optional };
                         
@@ -533,13 +584,12 @@ partial class Arm64Processor
                     //    encodingSymbol.ValueEncoding = Arm64ImmediateValueEncodingKind.SignedFloatExp3Mantissa4;
                     //}
 
-                    if (introElt.Value.Contains("encoded as"))
-                    {
-                        Console.WriteLine($"{filenameContext} {string.Join(",", enclist)}");
-                        Console.WriteLine($" -> {introElt.Value.Substring(introElt.Value.IndexOf("encoded as", StringComparison.Ordinal)).Trim()}");
-                    }
-
-
+                    //if (introElt.Value.Contains("encoded as"))
+                    //{
+                    //    Console.WriteLine($"{filenameContext} {string.Join(",", enclist)}");
+                    //    Console.WriteLine($" -> {introElt.Value.Substring(introElt.Value.IndexOf("encoded as", StringComparison.Ordinal)).Trim()}");
+                    //}
+                    
                     if (introElt.Value.Contains(" signed immediate"))
                     {
                         encodingSymbol.IsSignedImmediate = true;

@@ -323,7 +323,32 @@ partial class Arm64Processor
                     w.WriteDoc($"Condition: {aliasPair.Item1.Condition.Replace("&", "&amp;", StringComparison.Ordinal).Replace("<", "&lt;", StringComparison.Ordinal)} => {aliasPair.Item2.Id}");
                 }
                 w.WriteDoc("</summary>");
-                w.WriteLine($"private static partial Arm64InstructionId Resolve_{instruction.Id}(Arm64RawInstruction rawValue);");
+                if (instruction.Id == "SYS_cr_systeminstrs")
+                {
+                    w.WriteLine($"private static Arm64InstructionId Resolve_{instruction.Id}(Arm64RawInstruction rawValue)");
+                    w.OpenBraceBlock();
+                    {
+                        w.WriteLine($"var sysValue = (rawValue >> 5) & 0b_111_1111_1111_111;");
+                        w.WriteLine("return sysValue switch");
+                        w.OpenBraceBlock();
+                        {
+                            foreach (var sysEncoding in InstructionSet.SysDynamicDispatchEntries)
+                            {
+                                foreach (var encoding in sysEncoding.Encodings)
+                                {
+                                    w.WriteLine($"0b{encoding} => Arm64InstructionId.{sysEncoding.Category}_sys_cr_systeminstrs,");
+                                }
+                            }
+                            w.WriteLine("_ => Arm64InstructionId.SYS_cr_systeminstrs,");
+                        }
+                        w.CloseBraceBlockStatement();
+                    }
+                    w.CloseBraceBlock();
+                }
+                else
+                {
+                    w.WriteLine($"private static partial Arm64InstructionId Resolve_{instruction.Id}(Arm64RawInstruction rawValue);");
+                }
             }
         }
         w.CloseBraceBlock();
@@ -567,6 +592,9 @@ partial class Arm64Processor
     private void GenerateIndexers()
     {
         var indexerMap = InstructionSet.ExtractMaps.First(x => x.Kind == EncodingSymbolExtractMapKind.Indexer);
+
+        // We support encoding only up to 63 items (RegisterIndexer in register operand encoding)
+        Debug.Assert(indexerMap.ExtractList.Count <= 63);
 
         GenerateEncodingSymbolExtractMap<EncodingIndexerExtract>(indexerMap,
             "Arm64IndexerHelper",

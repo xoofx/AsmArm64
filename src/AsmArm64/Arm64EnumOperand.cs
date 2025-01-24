@@ -142,21 +142,47 @@ public readonly struct Arm64EnumOperand : IArm64Operand
         {
             return destination.TryWrite($"#{Value}", out charsWritten);
         }
-        else if (EnumKind switch
-                 {
-                     Arm64EnumKind.Conditional => Enum.TryFormat(AsConditional, destination, out charsWritten),
-                     Arm64EnumKind.InvertedConditional => Enum.TryFormat(AsConditional, destination, out charsWritten),
-                     Arm64EnumKind.DataSynchronizationOption => Enum.TryFormat(AsDataSynchronization, destination, out charsWritten),
-                     Arm64EnumKind.StoredSharedHintPolicy => Enum.TryFormat(AsStoredSharedHintPolicy, destination, out charsWritten),
-                     Arm64EnumKind.BranchTargetIdentification => Enum.TryFormat(AsBranchTargetIdentification, destination, out charsWritten),
-                     Arm64EnumKind.BarrierOperationLimit => Enum.TryFormat(AsBarrierOperationLimit, destination, out charsWritten),
-                     Arm64EnumKind.PrefetchOperation => Enum.TryFormat(AsPrefetchOperation, destination, out charsWritten),
-                     Arm64EnumKind.RangePrefetchOperation => Enum.TryFormat(AsRangePrefetchOperation, destination, out charsWritten),
-                     Arm64EnumKind.ProcessStateField => Enum.TryFormat(AsProcessStateField, destination, out charsWritten),
-                     Arm64EnumKind.CodeSync => Enum.TryFormat(AsCodeSync, destination, out charsWritten),
-                     Arm64EnumKind.DataSync => Enum.TryFormat(AsDataSync, destination, out charsWritten),
-                     _ => false
-                 })
+            bool result;
+            switch (EnumKind)
+            {
+                case Arm64EnumKind.Conditional:
+                case Arm64EnumKind.InvertedConditional:
+                    result = Enum.TryFormat(AsConditional, destination, out charsWritten);
+                    break;
+                case Arm64EnumKind.DataSynchronizationOption:
+                    result = Enum.TryFormat(AsDataSynchronization, destination, out charsWritten);
+                    break;
+                case Arm64EnumKind.StoredSharedHintPolicy:
+                    result = Enum.TryFormat(AsStoredSharedHintPolicy, destination, out charsWritten);
+                    break;
+                case Arm64EnumKind.BranchTargetIdentification:
+                    isDefaultValue = AsBranchTargetIdentification == Arm64BranchTargetIdentificationKind.Absent;
+                    result = Enum.TryFormat(AsBranchTargetIdentification, destination, out charsWritten);
+                    break;
+                case Arm64EnumKind.BarrierOperationLimit:
+                    result = Enum.TryFormat(AsBarrierOperationLimit, destination, out charsWritten);
+                    break;
+                case Arm64EnumKind.PrefetchOperation:
+                    result = Enum.TryFormat(AsPrefetchOperation, destination, out charsWritten);
+                    break;
+                case Arm64EnumKind.RangePrefetchOperation:
+                    result = Enum.TryFormat(AsRangePrefetchOperation, destination, out charsWritten);
+                    break;
+                case Arm64EnumKind.ProcessStateField:
+                    result = Enum.TryFormat(AsProcessStateField, destination, out charsWritten);
+                    break;
+                case Arm64EnumKind.CodeSync:
+                    result = Enum.TryFormat(AsCodeSync, destination, out charsWritten);
+                    break;
+                case Arm64EnumKind.DataSync:
+                    result = Enum.TryFormat(AsDataSync, destination, out charsWritten);
+                    break;
+                default:
+                    result = false;
+                    break;
+            }
+
+        if (result)
         {
             // TODO: Optimize with precalculated string
             var span = destination.Slice(0, charsWritten);

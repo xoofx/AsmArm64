@@ -50,7 +50,9 @@ static class Arm64VectorArrangementHelper
                 break;
             }
             // FCVTL_asimdmisc_l             : FCVTL       Vd.Ta, Vn.Tb <- Operand: Vd.Ta
+            // FCVTL2_asimdmisc_l            : FCVTL2      Vd.Ta, Vn.Tb <- Operand: Vd.Ta
             // FCVTN_asimdmisc_n             : FCVTN       Vd.Tb, Vn.Ta <- Operand: Vn.Ta
+            // FCVTN2_asimdmisc_n            : FCVTN2      Vd.Tb, Vn.Ta <- Operand: Vn.Ta
             case 2:
             {
                 var bitValue = ((rawValue >> 22) & 0x1);
@@ -138,6 +140,7 @@ static class Arm64VectorArrangementHelper
             // BFDOT_asimdsame2_d            : BFDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // BIC_asimdimm_l_sl             : BIC         Vd.T, #imm8 {, LSL #amount} <- Operand: Vd.T
             // FCVTXN_asimdmisc_n            : FCVTXN      Vd.Tb, Vn.2D <- Operand: Vd.Tb
+            // FCVTXN2_asimdmisc_n           : FCVTXN2     Vd.Tb, Vn.2D <- Operand: Vd.Tb
             // FDOT_asimdelem_d              : FDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vd.Ta
             // FDOT_asimdsame2_dd            : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // FMLAL_asimdelem_lh            : FMLAL       Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vd.Ta
@@ -183,6 +186,7 @@ static class Arm64VectorArrangementHelper
                 break;
             }
             // BFCVTN_asimdmisc_4s           : BFCVTN      Vd.Ta, Vn.4S <- Operand: Vd.Ta
+            // BFCVTN2_asimdmisc_4s          : BFCVTN2     Vd.Ta, Vn.4S <- Operand: Vd.Ta
             // BFDOT_asimdelem_e             : BFDOT       Vd.Ta, Vn.Tb, Vm.2H[index] <- Operand: Vn.Tb
             // BFDOT_asimdsame2_d            : BFDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // BFDOT_asimdsame2_d            : BFDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
@@ -371,7 +375,9 @@ static class Arm64VectorArrangementHelper
             // AND_asimdsame_only            : AND         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // AND_asimdsame_only            : AND         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // BF1CVTL_asimdmisc_v           : BF1CVTL     Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // BF1CVTL2_asimdmisc_v          : BF1CVTL2    Vd.8H, Vn.Ta <- Operand: Vn.Ta
             // BF2CVTL_asimdmisc_v           : BF2CVTL     Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // BF2CVTL2_asimdmisc_v          : BF2CVTL2    Vd.8H, Vn.Ta <- Operand: Vn.Ta
             // BIC_asimdsame_only            : BIC         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // BIC_asimdsame_only            : BIC         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // BIC_asimdsame_only            : BIC         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
@@ -391,9 +397,12 @@ static class Arm64VectorArrangementHelper
             // EXT_asimdext_only             : EXT         Vd.T, Vn.T, Vm.T, #index <- Operand: Vn.T
             // EXT_asimdext_only             : EXT         Vd.T, Vn.T, Vm.T, #index <- Operand: Vm.T
             // F1CVTL_asimdmisc_v            : F1CVTL      Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // F1CVTL2_asimdmisc_v           : F1CVTL2     Vd.8H, Vn.Ta <- Operand: Vn.Ta
             // F2CVTL_asimdmisc_v            : F2CVTL      Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // F2CVTL2_asimdmisc_v           : F2CVTL2     Vd.8H, Vn.Ta <- Operand: Vn.Ta
             // FCVTN_asimdsame2_d            : FCVTN       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // FCVTN_asimdsame2_h            : FCVTN       Vd.Ta, Vn.4S, Vm.4S <- Operand: Vd.Ta
+            // FCVTN2_asimdsame2_h           : FCVTN2      Vd.Ta, Vn.4S, Vm.4S <- Operand: Vd.Ta
             // FDOT_asimdelem_d              : FDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vn.Tb
             // FDOT_asimdelem_g              : FDOT        Vd.Ta, Vn.Tb, Vm.2B[index] <- Operand: Vn.Tb
             // FDOT_asimdsame2_d             : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
@@ -662,7 +671,9 @@ static class Arm64VectorArrangementHelper
                 break;
             }
             // FCVTL_asimdmisc_l             : FCVTL       Vd.Ta, Vn.Tb <- Operand: Vn.Tb
+            // FCVTL2_asimdmisc_l            : FCVTL2      Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             // FCVTN_asimdmisc_n             : FCVTN       Vd.Tb, Vn.Ta <- Operand: Vd.Tb
+            // FCVTN2_asimdmisc_n            : FCVTN2      Vd.Tb, Vn.Ta <- Operand: Vd.Tb
             case 10:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
@@ -698,39 +709,74 @@ static class Arm64VectorArrangementHelper
             }
             // ADDHN_asimddiff_n             : ADDHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
             // ADDHN_asimddiff_n             : ADDHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
+            // ADDHN2_asimddiff_n            : ADDHN2      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
+            // ADDHN2_asimddiff_n            : ADDHN2      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
             // RADDHN_asimddiff_n            : RADDHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
             // RADDHN_asimddiff_n            : RADDHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
+            // RADDHN2_asimddiff_n           : RADDHN2     Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
+            // RADDHN2_asimddiff_n           : RADDHN2     Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
             // RSUBHN_asimddiff_n            : RSUBHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
             // RSUBHN_asimddiff_n            : RSUBHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
+            // RSUBHN2_asimddiff_n           : RSUBHN2     Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
+            // RSUBHN2_asimddiff_n           : RSUBHN2     Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
             // SABAL_asimddiff_l             : SABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SABAL2_asimddiff_l            : SABAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // SABDL_asimddiff_l             : SABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SABDL2_asimddiff_l            : SABDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // SADDL_asimddiff_l             : SADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SADDL2_asimddiff_l            : SADDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // SADDW_asimddiff_w             : SADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
             // SADDW_asimddiff_w             : SADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
+            // SADDW2_asimddiff_w            : SADDW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
+            // SADDW2_asimddiff_w            : SADDW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
             // SHLL_asimdmisc_s              : SHLL        Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
+            // SHLL2_asimdmisc_s             : SHLL2       Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
             // SMLAL_asimddiff_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SMLAL2_asimddiff_l            : SMLAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // SMLSL_asimddiff_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SMLSL2_asimddiff_l            : SMLSL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // SMULL_asimddiff_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SMULL2_asimddiff_l            : SMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // SQXTN_asimdmisc_n             : SQXTN       Vd.Tb, Vn.Ta <- Operand: Vn.Ta
+            // SQXTN2_asimdmisc_n            : SQXTN2      Vd.Tb, Vn.Ta <- Operand: Vn.Ta
             // SQXTUN_asimdmisc_n            : SQXTUN      Vd.Tb, Vn.Ta <- Operand: Vn.Ta
+            // SQXTUN2_asimdmisc_n           : SQXTUN2     Vd.Tb, Vn.Ta <- Operand: Vn.Ta
             // SSUBL_asimddiff_l             : SSUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SSUBL2_asimddiff_l            : SSUBL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // SSUBW_asimddiff_w             : SSUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
             // SSUBW_asimddiff_w             : SSUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
+            // SSUBW2_asimddiff_w            : SSUBW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
+            // SSUBW2_asimddiff_w            : SSUBW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
             // SUBHN_asimddiff_n             : SUBHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
             // SUBHN_asimddiff_n             : SUBHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
+            // SUBHN2_asimddiff_n            : SUBHN2      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vn.Ta
+            // SUBHN2_asimddiff_n            : SUBHN2      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vm.Ta
             // UABAL_asimddiff_l             : UABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UABAL2_asimddiff_l            : UABAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // UABDL_asimddiff_l             : UABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UABDL2_asimddiff_l            : UABDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // UADDL_asimddiff_l             : UADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UADDL2_asimddiff_l            : UADDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // UADDW_asimddiff_w             : UADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
             // UADDW_asimddiff_w             : UADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
+            // UADDW2_asimddiff_w            : UADDW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
+            // UADDW2_asimddiff_w            : UADDW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
             // UMLAL_asimddiff_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UMLAL2_asimddiff_l            : UMLAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // UMLSL_asimddiff_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UMLSL2_asimddiff_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // UMULL_asimddiff_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // UMULL2_asimddiff_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // UQXTN_asimdmisc_n             : UQXTN       Vd.Tb, Vn.Ta <- Operand: Vn.Ta
+            // UQXTN2_asimdmisc_n            : UQXTN2      Vd.Tb, Vn.Ta <- Operand: Vn.Ta
             // USUBL_asimddiff_l             : USUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // USUBL2_asimddiff_l            : USUBL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // USUBW_asimddiff_w             : USUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
             // USUBW_asimddiff_w             : USUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
+            // USUBW2_asimddiff_w            : USUBW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vd.Ta
+            // USUBW2_asimddiff_w            : USUBW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
             // XTN_asimdmisc_n               : XTN         Vd.Tb, Vn.Ta <- Operand: Vn.Ta
+            // XTN2_asimdmisc_n              : XTN2        Vd.Tb, Vn.Ta <- Operand: Vn.Ta
             case 11:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
@@ -759,6 +805,7 @@ static class Arm64VectorArrangementHelper
                 break;
             }
             // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // PMULL2_asimddiff_l            : PMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             case 12:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
@@ -781,17 +828,29 @@ static class Arm64VectorArrangementHelper
                 break;
             }
             // SMLAL_asimdelem_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // SMLAL2_asimdelem_l            : SMLAL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             // SMLSL_asimdelem_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // SMLSL2_asimdelem_l            : SMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             // SMULL_asimdelem_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // SMULL2_asimdelem_l            : SMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             // SQDMLAL_asimddiff_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // SQDMLAL_asimdelem_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // SQDMLAL2_asimddiff_l          : SQDMLAL2    Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SQDMLAL2_asimdelem_l          : SQDMLAL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             // SQDMLSL_asimddiff_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // SQDMLSL_asimdelem_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // SQDMLSL2_asimddiff_l          : SQDMLSL2    Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SQDMLSL2_asimdelem_l          : SQDMLSL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             // SQDMULL_asimddiff_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // SQDMULL_asimdelem_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // SQDMULL2_asimddiff_l          : SQDMULL2    Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
+            // SQDMULL2_asimdelem_l          : SQDMULL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             // UMLAL_asimdelem_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // UMLAL2_asimdelem_l            : UMLAL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             // UMLSL_asimdelem_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // UMLSL2_asimdelem_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
+            // UMULL2_asimdelem_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             case 13:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
@@ -818,16 +877,22 @@ static class Arm64VectorArrangementHelper
             // MLS_asimdelem_r               : MLS         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // MUL_asimdelem_r               : MUL         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SMLAL_asimdelem_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMLAL2_asimdelem_l            : SMLAL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SMLSL_asimdelem_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMLSL2_asimdelem_l            : SMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SMULL_asimdelem_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMULL2_asimdelem_l            : SMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMLAL_asimdelem_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMLAL_asisdelem_l           : SQDMLAL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLAL2_asimdelem_l          : SQDMLAL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMLSL_asimdelem_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMLSL_asisdelem_l           : SQDMLSL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLSL2_asimdelem_l          : SQDMLSL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMULH_asimdelem_r           : SQDMULH     Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMULH_asisdelem_r           : SQDMULH     Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMULL_asimdelem_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMULL_asisdelem_l           : SQDMULL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMULL2_asimdelem_l          : SQDMULL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQRDMLAH_asimdelem_r          : SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQRDMLAH_asisdelem_r          : SQRDMLAH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQRDMLSH_asimdelem_r          : SQRDMLSH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
@@ -835,8 +900,11 @@ static class Arm64VectorArrangementHelper
             // SQRDMULH_asimdelem_r          : SQRDMULH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQRDMULH_asisdelem_r          : SQRDMULH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMLAL_asimdelem_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMLAL2_asimdelem_l            : UMLAL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMLSL_asimdelem_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMLSL2_asimdelem_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMULL2_asimdelem_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             case 14:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
@@ -1349,6 +1417,7 @@ static class Arm64VectorArrangementHelper
                 break;
             }
             // ADDHN_asimddiff_n             : ADDHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
+            // ADDHN2_asimddiff_n            : ADDHN2      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
             // CLS_asimdmisc_r               : CLS         Vd.T, Vn.T <- Operand: Vd.T
             // CLS_asimdmisc_r               : CLS         Vd.T, Vn.T <- Operand: Vn.T
             // CLZ_asimdmisc_r               : CLZ         Vd.T, Vn.T <- Operand: Vd.T
@@ -1363,28 +1432,38 @@ static class Arm64VectorArrangementHelper
             // MUL_asimdsame_only            : MUL         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // MUL_asimdsame_only            : MUL         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // RADDHN_asimddiff_n            : RADDHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
+            // RADDHN2_asimddiff_n           : RADDHN2     Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
             // REV64_asimdmisc_r             : REV64       Vd.T, Vn.T <- Operand: Vd.T
             // REV64_asimdmisc_r             : REV64       Vd.T, Vn.T <- Operand: Vn.T
             // RSUBHN_asimddiff_n            : RSUBHN      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
+            // RSUBHN2_asimddiff_n           : RSUBHN2     Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
             // SABA_asimdsame_only           : SABA        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // SABA_asimdsame_only           : SABA        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // SABA_asimdsame_only           : SABA        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // SABAL_asimddiff_l             : SABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // SABAL_asimddiff_l             : SABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SABAL2_asimddiff_l            : SABAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SABAL2_asimddiff_l            : SABAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // SABD_asimdsame_only           : SABD        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // SABD_asimdsame_only           : SABD        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // SABD_asimdsame_only           : SABD        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // SABDL_asimddiff_l             : SABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // SABDL_asimddiff_l             : SABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SABDL2_asimddiff_l            : SABDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SABDL2_asimddiff_l            : SABDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // SADALP_asimdmisc_p            : SADALP      Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             // SADDL_asimddiff_l             : SADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // SADDL_asimddiff_l             : SADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SADDL2_asimddiff_l            : SADDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SADDL2_asimddiff_l            : SADDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // SADDLP_asimdmisc_p            : SADDLP      Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             // SADDW_asimddiff_w             : SADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
+            // SADDW2_asimddiff_w            : SADDW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
             // SHADD_asimdsame_only          : SHADD       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // SHADD_asimdsame_only          : SHADD       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // SHADD_asimdsame_only          : SHADD       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // SHLL_asimdmisc_s              : SHLL        Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
+            // SHLL2_asimdmisc_s             : SHLL2       Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
             // SHSUB_asimdsame_only          : SHSUB       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // SHSUB_asimdsame_only          : SHSUB       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // SHSUB_asimdsame_only          : SHSUB       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
@@ -1402,34 +1481,53 @@ static class Arm64VectorArrangementHelper
             // SMINP_asimdsame_only          : SMINP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // SMLAL_asimddiff_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // SMLAL_asimddiff_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SMLAL2_asimddiff_l            : SMLAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SMLAL2_asimddiff_l            : SMLAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // SMLSL_asimddiff_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // SMLSL_asimddiff_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SMLSL2_asimddiff_l            : SMLSL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SMLSL2_asimddiff_l            : SMLSL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // SMULL_asimddiff_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // SMULL_asimddiff_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SMULL2_asimddiff_l            : SMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SMULL2_asimddiff_l            : SMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // SQXTN_asimdmisc_n             : SQXTN       Vd.Tb, Vn.Ta <- Operand: Vd.Tb
+            // SQXTN2_asimdmisc_n            : SQXTN2      Vd.Tb, Vn.Ta <- Operand: Vd.Tb
             // SQXTUN_asimdmisc_n            : SQXTUN      Vd.Tb, Vn.Ta <- Operand: Vd.Tb
+            // SQXTUN2_asimdmisc_n           : SQXTUN2     Vd.Tb, Vn.Ta <- Operand: Vd.Tb
             // SRHADD_asimdsame_only         : SRHADD      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // SRHADD_asimdsame_only         : SRHADD      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // SRHADD_asimdsame_only         : SRHADD      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // SSUBL_asimddiff_l             : SSUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // SSUBL_asimddiff_l             : SSUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SSUBL2_asimddiff_l            : SSUBL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SSUBL2_asimddiff_l            : SSUBL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // SSUBW_asimddiff_w             : SSUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
+            // SSUBW2_asimddiff_w            : SSUBW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
             // SUBHN_asimddiff_n             : SUBHN       Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
+            // SUBHN2_asimddiff_n            : SUBHN2      Vd.Tb, Vn.Ta, Vm.Ta <- Operand: Vd.Tb
             // UABA_asimdsame_only           : UABA        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // UABA_asimdsame_only           : UABA        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // UABA_asimdsame_only           : UABA        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // UABAL_asimddiff_l             : UABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // UABAL_asimddiff_l             : UABAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UABAL2_asimddiff_l            : UABAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UABAL2_asimddiff_l            : UABAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // UABD_asimdsame_only           : UABD        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // UABD_asimdsame_only           : UABD        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // UABD_asimdsame_only           : UABD        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // UABDL_asimddiff_l             : UABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // UABDL_asimddiff_l             : UABDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UABDL2_asimddiff_l            : UABDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UABDL2_asimddiff_l            : UABDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // UADALP_asimdmisc_p            : UADALP      Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             // UADDL_asimddiff_l             : UADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // UADDL_asimddiff_l             : UADDL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UADDL2_asimddiff_l            : UADDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UADDL2_asimddiff_l            : UADDL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // UADDLP_asimdmisc_p            : UADDLP      Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             // UADDW_asimddiff_w             : UADDW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
+            // UADDW2_asimddiff_w            : UADDW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
             // UHADD_asimdsame_only          : UHADD       Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // UHADD_asimdsame_only          : UHADD       Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // UHADD_asimdsame_only          : UHADD       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
@@ -1450,18 +1548,29 @@ static class Arm64VectorArrangementHelper
             // UMINP_asimdsame_only          : UMINP       Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // UMLAL_asimddiff_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // UMLAL_asimddiff_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UMLAL2_asimddiff_l            : UMLAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UMLAL2_asimddiff_l            : UMLAL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // UMLSL_asimddiff_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // UMLSL_asimddiff_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UMLSL2_asimddiff_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UMLSL2_asimddiff_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // UMULL_asimddiff_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // UMULL_asimddiff_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // UMULL2_asimddiff_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // UMULL2_asimddiff_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // UQXTN_asimdmisc_n             : UQXTN       Vd.Tb, Vn.Ta <- Operand: Vd.Tb
+            // UQXTN2_asimdmisc_n            : UQXTN2      Vd.Tb, Vn.Ta <- Operand: Vd.Tb
             // URHADD_asimdsame_only         : URHADD      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // URHADD_asimdsame_only         : URHADD      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // URHADD_asimdsame_only         : URHADD      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // USUBL_asimddiff_l             : USUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // USUBL_asimddiff_l             : USUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // USUBL2_asimddiff_l            : USUBL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // USUBL2_asimddiff_l            : USUBL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // USUBW_asimddiff_w             : USUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
+            // USUBW2_asimddiff_w            : USUBW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
             // XTN_asimdmisc_n               : XTN         Vd.Tb, Vn.Ta <- Operand: Vd.Tb
+            // XTN2_asimdmisc_n              : XTN2        Vd.Tb, Vn.Ta <- Operand: Vd.Tb
             case 20:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
@@ -1590,6 +1699,8 @@ static class Arm64VectorArrangementHelper
             }
             // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // PMULL2_asimddiff_l            : PMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // PMULL2_asimddiff_l            : PMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             case 23:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
@@ -1703,14 +1814,23 @@ static class Arm64VectorArrangementHelper
             // MUL_asimdelem_r               : MUL         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
             // MUL_asimdelem_r               : MUL         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
             // SMLAL_asimdelem_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SMLAL2_asimdelem_l            : SMLAL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // SMLSL_asimdelem_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SMLSL2_asimdelem_l            : SMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // SMULL_asimdelem_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SMULL2_asimdelem_l            : SMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // SQDMLAL_asimddiff_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // SQDMLAL_asimddiff_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // SQDMLAL_asimdelem_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SQDMLAL2_asimddiff_l          : SQDMLAL2    Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SQDMLAL2_asimddiff_l          : SQDMLAL2    Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SQDMLAL2_asimdelem_l          : SQDMLAL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // SQDMLSL_asimddiff_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // SQDMLSL_asimddiff_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // SQDMLSL_asimdelem_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SQDMLSL2_asimddiff_l          : SQDMLSL2    Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SQDMLSL2_asimddiff_l          : SQDMLSL2    Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SQDMLSL2_asimdelem_l          : SQDMLSL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // SQDMULH_asimdelem_r           : SQDMULH     Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
             // SQDMULH_asimdelem_r           : SQDMULH     Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
             // SQDMULH_asimdsame_only        : SQDMULH     Vd.T, Vn.T, Vm.T <- Operand: Vd.T
@@ -1719,6 +1839,9 @@ static class Arm64VectorArrangementHelper
             // SQDMULL_asimddiff_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // SQDMULL_asimddiff_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // SQDMULL_asimdelem_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // SQDMULL2_asimddiff_l          : SQDMULL2    Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
+            // SQDMULL2_asimddiff_l          : SQDMULL2    Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
+            // SQDMULL2_asimdelem_l          : SQDMULL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // SQRDMLAH_asimdelem_r          : SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
             // SQRDMLAH_asimdelem_r          : SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
             // SQRDMLAH_asimdsame2_only      : SQRDMLAH    Vd.T, Vn.T, Vm.T <- Operand: Vd.T
@@ -1735,8 +1858,11 @@ static class Arm64VectorArrangementHelper
             // SQRDMULH_asimdsame_only       : SQRDMULH    Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // SQRDMULH_asimdsame_only       : SQRDMULH    Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // UMLAL_asimdelem_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // UMLAL2_asimdelem_l            : UMLAL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // UMLSL_asimdelem_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // UMLSL2_asimdelem_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
+            // UMULL2_asimdelem_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             case 26:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
@@ -1800,17 +1926,29 @@ static class Arm64VectorArrangementHelper
                 break;
             }
             // RSHRN_asimdshf_n              : RSHRN       Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // RSHRN2_asimdshf_n             : RSHRN2      Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // SHRN_asimdshf_n               : SHRN        Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // SHRN2_asimdshf_n              : SHRN2       Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // SQRSHRN_asimdshf_n            : SQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // SQRSHRN2_asimdshf_n           : SQRSHRN2    Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // SQRSHRUN_asimdshf_n           : SQRSHRUN    Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // SQRSHRUN2_asimdshf_n          : SQRSHRUN2   Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // SQSHRN_asimdshf_n             : SQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // SQSHRN2_asimdshf_n            : SQSHRN2     Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // SQSHRUN_asimdshf_n            : SQSHRUN     Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // SQSHRUN2_asimdshf_n           : SQSHRUN2    Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // SSHLL_asimdshf_l              : SSHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
+            // SSHLL2_asimdshf_l             : SSHLL2      Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
             // SXTL_sshll_asimdshf_l         : SXTL        Vd.Ta, Vn.Tb <- Operand: Vd.Ta
+            // SXTL2_sshll_asimdshf_l        : SXTL2       Vd.Ta, Vn.Tb <- Operand: Vd.Ta
             // UQRSHRN_asimdshf_n            : UQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // UQRSHRN2_asimdshf_n           : UQRSHRN2    Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // UQSHRN_asimdshf_n             : UQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
+            // UQSHRN2_asimdshf_n            : UQSHRN2     Vd.Tb, Vn.Ta, #shift <- Operand: Vn.Ta
             // USHLL_asimdshf_l              : USHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
+            // USHLL2_asimdshf_l             : USHLL2      Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
             // UXTL_ushll_asimdshf_l         : UXTL        Vd.Ta, Vn.Tb <- Operand: Vd.Ta
+            // UXTL2_ushll_asimdshf_l        : UXTL2       Vd.Ta, Vn.Tb <- Operand: Vd.Ta
             case 28:
             {
                 var bitValue = ((rawValue >> 19) & 0xF);
@@ -1996,17 +2134,29 @@ static class Arm64VectorArrangementHelper
                 break;
             }
             // RSHRN_asimdshf_n              : RSHRN       Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // RSHRN2_asimdshf_n             : RSHRN2      Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // SHRN_asimdshf_n               : SHRN        Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // SHRN2_asimdshf_n              : SHRN2       Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // SQRSHRN_asimdshf_n            : SQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // SQRSHRN2_asimdshf_n           : SQRSHRN2    Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // SQRSHRUN_asimdshf_n           : SQRSHRUN    Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // SQRSHRUN2_asimdshf_n          : SQRSHRUN2   Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // SQSHRN_asimdshf_n             : SQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // SQSHRN2_asimdshf_n            : SQSHRN2     Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // SQSHRUN_asimdshf_n            : SQSHRUN     Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // SQSHRUN2_asimdshf_n           : SQSHRUN2    Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // SSHLL_asimdshf_l              : SSHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
+            // SSHLL2_asimdshf_l             : SSHLL2      Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
             // SXTL_sshll_asimdshf_l         : SXTL        Vd.Ta, Vn.Tb <- Operand: Vn.Tb
+            // SXTL2_sshll_asimdshf_l        : SXTL2       Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             // UQRSHRN_asimdshf_n            : UQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // UQRSHRN2_asimdshf_n           : UQRSHRN2    Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // UQSHRN_asimdshf_n             : UQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
+            // UQSHRN2_asimdshf_n            : UQSHRN2     Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // USHLL_asimdshf_l              : USHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
+            // USHLL2_asimdshf_l             : USHLL2      Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
             // UXTL_ushll_asimdshf_l         : UXTL        Vd.Ta, Vn.Tb <- Operand: Vn.Tb
+            // UXTL2_ushll_asimdshf_l        : UXTL2       Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             case 33:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
@@ -2287,7 +2437,8 @@ static class Arm64VectorArrangementHelper
                 elementCount = 0;
                 return true;
             }
-            // BFMLAL_asimdelem_f            : BFMLAL      btVd.4S, Vn.8H, Vm.H[index] <- Operand: Vm.H[index]
+            // BFMLALB_asimdelem_f           : BFMLALB     Vd.4S, Vn.8H, Vm.H[index] <- Operand: Vm.H[index]
+            // BFMLALT_asimdelem_f           : BFMLALT     Vd.4S, Vn.8H, Vm.H[index] <- Operand: Vm.H[index]
             // FMAXNMV_asimdall_only_h       : FMAXNMV     Vd, Vn.T <- Operand: Vd
             // FMAXV_asimdall_only_h         : FMAXV       Vd, Vn.T <- Operand: Vd
             // FMINNMV_asimdall_only_h       : FMINNMV     Vd, Vn.T <- Operand: Vd
@@ -2524,6 +2675,7 @@ static class Arm64VectorArrangementHelper
             }
             // ADDP_asisdpair_only           : ADDP        Dd, Vn.2D <- Operand: Vn.2D
             // FCVTXN_asimdmisc_n            : FCVTXN      Vd.Tb, Vn.2D <- Operand: Vn.2D
+            // FCVTXN2_asimdmisc_n           : FCVTXN2     Vd.Tb, Vn.2D <- Operand: Vn.2D
             // FMOV_asimdimm_d2_d            : FMOV        Vd.2D, #imm <- Operand: Vd.2D
             // MOVI_asimdimm_d2_d            : MOVI        Vd.2D, #imm <- Operand: Vd.2D
             // RAX1_vvv2_cryptosha512_3      : RAX1        Vd.2D, Vn.2D, Vm.2D <- Operand: Vd.2D
@@ -2569,9 +2721,16 @@ static class Arm64VectorArrangementHelper
                 return true;
             }
             // BFCVTN_asimdmisc_4s           : BFCVTN      Vd.Ta, Vn.4S <- Operand: Vn.4S
+            // BFCVTN2_asimdmisc_4s          : BFCVTN2     Vd.Ta, Vn.4S <- Operand: Vn.4S
+            // BFMLALB_asimdelem_f           : BFMLALB     Vd.4S, Vn.8H, Vm.H[index] <- Operand: Vd.4S
+            // BFMLALB_asimdsame2_f          : BFMLALB     Vd.4S, Vn.8H, Vm.8H <- Operand: Vd.4S
+            // BFMLALT_asimdelem_f           : BFMLALT     Vd.4S, Vn.8H, Vm.H[index] <- Operand: Vd.4S
+            // BFMLALT_asimdsame2_f          : BFMLALT     Vd.4S, Vn.8H, Vm.8H <- Operand: Vd.4S
             // BFMMLA_asimdsame2_e           : BFMMLA      Vd.4S, Vn.8H, Vm.8H <- Operand: Vd.4S
             // FCVTN_asimdsame2_h            : FCVTN       Vd.Ta, Vn.4S, Vm.4S <- Operand: Vn.4S
             // FCVTN_asimdsame2_h            : FCVTN       Vd.Ta, Vn.4S, Vm.4S <- Operand: Vm.4S
+            // FCVTN2_asimdsame2_h           : FCVTN2      Vd.Ta, Vn.4S, Vm.4S <- Operand: Vn.4S
+            // FCVTN2_asimdsame2_h           : FCVTN2      Vd.Ta, Vn.4S, Vm.4S <- Operand: Vm.4S
             // FMAXNMV_asimdall_only_sd      : FMAXNMV     Sd, Vn.4S <- Operand: Vn.4S
             // FMAXV_asimdall_only_sd        : FMAXV       Sd, Vn.4S <- Operand: Vn.4S
             // FMINNMV_asimdall_only_sd      : FMINNMV     Sd, Vn.4S <- Operand: Vn.4S
@@ -2633,14 +2792,21 @@ static class Arm64VectorArrangementHelper
                 return true;
             }
             // BF1CVTL_asimdmisc_v           : BF1CVTL     Vd.8H, Vn.Ta <- Operand: Vd.8H
+            // BF1CVTL2_asimdmisc_v          : BF1CVTL2    Vd.8H, Vn.Ta <- Operand: Vd.8H
             // BF2CVTL_asimdmisc_v           : BF2CVTL     Vd.8H, Vn.Ta <- Operand: Vd.8H
-            // BFMLAL_asimdelem_f            : BFMLAL      btVd.4S, Vn.8H, Vm.H[index] <- Operand: Vn.8H
-            // BFMLAL_asimdsame2_f           : BFMLAL      btVd.4S, Vn.8H, Vm.8H <- Operand: Vn.8H
-            // BFMLAL_asimdsame2_f           : BFMLAL      btVd.4S, Vn.8H, Vm.8H <- Operand: Vm.8H
+            // BF2CVTL2_asimdmisc_v          : BF2CVTL2    Vd.8H, Vn.Ta <- Operand: Vd.8H
+            // BFMLALB_asimdelem_f           : BFMLALB     Vd.4S, Vn.8H, Vm.H[index] <- Operand: Vn.8H
+            // BFMLALB_asimdsame2_f          : BFMLALB     Vd.4S, Vn.8H, Vm.8H <- Operand: Vn.8H
+            // BFMLALB_asimdsame2_f          : BFMLALB     Vd.4S, Vn.8H, Vm.8H <- Operand: Vm.8H
+            // BFMLALT_asimdelem_f           : BFMLALT     Vd.4S, Vn.8H, Vm.H[index] <- Operand: Vn.8H
+            // BFMLALT_asimdsame2_f          : BFMLALT     Vd.4S, Vn.8H, Vm.8H <- Operand: Vn.8H
+            // BFMLALT_asimdsame2_f          : BFMLALT     Vd.4S, Vn.8H, Vm.8H <- Operand: Vm.8H
             // BFMMLA_asimdsame2_e           : BFMMLA      Vd.4S, Vn.8H, Vm.8H <- Operand: Vn.8H
             // BFMMLA_asimdsame2_e           : BFMMLA      Vd.4S, Vn.8H, Vm.8H <- Operand: Vm.8H
             // F1CVTL_asimdmisc_v            : F1CVTL      Vd.8H, Vn.Ta <- Operand: Vd.8H
+            // F1CVTL2_asimdmisc_v           : F1CVTL2     Vd.8H, Vn.Ta <- Operand: Vd.8H
             // F2CVTL_asimdmisc_v            : F2CVTL      Vd.8H, Vn.Ta <- Operand: Vd.8H
+            // F2CVTL2_asimdmisc_v           : F2CVTL2     Vd.8H, Vn.Ta <- Operand: Vd.8H
             // FMLALB_asimdelem_h            : FMLALB      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vd.8H
             // FMLALB_asimdsame2_j           : FMLALB      Vd.8H, Vn.16B, Vm.16B <- Operand: Vd.8H
             // FMLALT_asimdelem_h            : FMLALT      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vd.8H

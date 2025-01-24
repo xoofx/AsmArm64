@@ -66,7 +66,7 @@ public readonly struct Arm64SystemRegister : IEquatable<Arm64SystemRegister>, IS
         {
             var text = Arm64SystemRegisterTable.GetNameById(id);
 
-            if ((Kind & (Arm64SystemRegisterKind.AT | Arm64SystemRegisterKind.TLBI)) != 0)
+            if ((Kind & (Arm64SystemRegisterKind.AT | Arm64SystemRegisterKind.TLBI | Arm64SystemRegisterKind.DC)) != 0)
             {
                 int lowerWritten = text.AsSpan().ToLowerInvariant(destination);
                 if (lowerWritten < 0)

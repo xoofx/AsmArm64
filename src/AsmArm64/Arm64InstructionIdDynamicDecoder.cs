@@ -164,14 +164,6 @@ internal static partial class Arm64InstructionIdDynamicDecoder
         return BFXPreferred(sf, opc, imms, immr) ? Arm64InstructionId.SBFX_sbfm_64m_bitfield : Arm64InstructionId.SBFM_64m_bitfield;
     }
 
-    private static partial Arm64InstructionId Resolve_SYS_cr_systeminstrs(Arm64RawInstruction rawValue)
-    {
-        // Condition: SysOp(op1, '0111', CRm, op2) == Sys_DC => DC_sys_cr_systeminstrs
-        // Condition: SysOp(op1, '0111', CRm, op2) == Sys_IC => IC_sys_cr_systeminstrs
-        // TODO:
-        return Arm64InstructionId.SYS_cr_systeminstrs;
-    }
-
     private static partial Arm64InstructionId Resolve_UBFM_32m_bitfield(Arm64RawInstruction rawValue)
     {
         // Condition: UInt(imms) + 1 == UInt(immr) => LSL_ubfm_32m_bitfield

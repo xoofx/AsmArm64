@@ -22,6 +22,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         // if (MemoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate)
         // {
         //     buffer[3] = (byte)FixedValue;
+        //     buffer[4] = (byte) (IsPreIncrement ? 0x80 : 0);
         // }
         // else
         // {
@@ -46,7 +47,10 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         
         if (memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate || memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional)
         {
-            Immediate = (int)(byte)(descriptor >> 24);
+            MemoryKind = Arm64MemoryOperandKind.BaseRegisterWithImmediate;
+            Immediate = (int)(sbyte)(descriptor >> 24);
+            IsPreIncrement = (((byte)(descriptor >> 32)) & 0x80) != 0;
+            _hasOptionalImmediateOrExtend = memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional;
         }
         else
         {

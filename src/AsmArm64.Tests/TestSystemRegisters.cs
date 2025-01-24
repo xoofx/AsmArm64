@@ -13,7 +13,7 @@ public class TestSystemRegisters
         {
             Arm64SystemRegister register = Arm64SystemRegisterKnownId.ACCDATA_EL1;
             Assert.AreEqual("ACCDATA_EL1", register.ToString());
-            Assert.AreEqual("SYS3_0_13_0_5", register.ToString("G"));
+            Assert.AreEqual("S3_0_C13_C0_5", register.ToString("G"));
             Assert.AreEqual(Arm64SystemRegisterKind.MRS | Arm64SystemRegisterKind.MSR, register.Kind);
             Assert.AreEqual(Arm64SystemRegisterKnownId.ACCDATA_EL1, register.Id);
             Assert.AreEqual(50_821, register.Value);
@@ -22,7 +22,7 @@ public class TestSystemRegisters
         {
             Arm64SystemRegister register = Arm64SystemRegisterKnownId.ZVA;
             Assert.AreEqual("ZVA", register.ToString());
-            Assert.AreEqual("SYS1_3_7_4_1", register.ToString("G"));
+            Assert.AreEqual("S1_3_C7_C4_1", register.ToString("G"));
             Assert.AreEqual(Arm64SystemRegisterKind.DC, register.Kind);
             Assert.AreEqual(Arm64SystemRegisterKnownId.ZVA, register.Id);
             Assert.AreEqual(23457, register.Value);

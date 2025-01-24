@@ -321,6 +321,7 @@ static class Arm64ImmediateHelper
                 break;
             }
             // SHLL_asimdmisc_s              : SHLL        Vd.Ta, Vn.Tb, #shift <- Operand: #shift
+            // SHLL2_asimdmisc_s             : SHLL2       Vd.Ta, Vn.Tb, #shift <- Operand: #shift
             case 13:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
@@ -404,19 +405,27 @@ static class Arm64ImmediateHelper
                 break;
             }
             // RSHRN_asimdshf_n              : RSHRN       Vd.Tb, Vn.Ta, #shift <- Operand: #shift
+            // RSHRN2_asimdshf_n             : RSHRN2      Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // SHRN_asimdshf_n               : SHRN        Vd.Tb, Vn.Ta, #shift <- Operand: #shift
+            // SHRN2_asimdshf_n              : SHRN2       Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // SQRSHRN_asimdshf_n            : SQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // SQRSHRN_asisdshf_n            : SQRSHRN     Vbd, Van, #shift <- Operand: #shift
+            // SQRSHRN2_asimdshf_n           : SQRSHRN2    Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // SQRSHRUN_asimdshf_n           : SQRSHRUN    Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // SQRSHRUN_asisdshf_n           : SQRSHRUN    Vbd, Van, #shift <- Operand: #shift
+            // SQRSHRUN2_asimdshf_n          : SQRSHRUN2   Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // SQSHRN_asimdshf_n             : SQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // SQSHRN_asisdshf_n             : SQSHRN      Vbd, Van, #shift <- Operand: #shift
+            // SQSHRN2_asimdshf_n            : SQSHRN2     Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // SQSHRUN_asimdshf_n            : SQSHRUN     Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // SQSHRUN_asisdshf_n            : SQSHRUN     Vbd, Van, #shift <- Operand: #shift
+            // SQSHRUN2_asimdshf_n           : SQSHRUN2    Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // UQRSHRN_asimdshf_n            : UQRSHRN     Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // UQRSHRN_asisdshf_n            : UQRSHRN     Vbd, Van, #shift <- Operand: #shift
+            // UQRSHRN2_asimdshf_n           : UQRSHRN2    Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // UQSHRN_asimdshf_n             : UQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // UQSHRN_asisdshf_n             : UQSHRN      Vbd, Van, #shift <- Operand: #shift
+            // UQSHRN2_asimdshf_n            : UQSHRN2     Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             case 16:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
@@ -480,7 +489,9 @@ static class Arm64ImmediateHelper
                 break;
             }
             // SSHLL_asimdshf_l              : SSHLL       Vd.Ta, Vn.Tb, #shift <- Operand: #shift
+            // SSHLL2_asimdshf_l             : SSHLL2      Vd.Ta, Vn.Tb, #shift <- Operand: #shift
             // USHLL_asimdshf_l              : USHLL       Vd.Ta, Vn.Tb, #shift <- Operand: #shift
+            // USHLL2_asimdshf_l             : USHLL2      Vd.Ta, Vn.Tb, #shift <- Operand: #shift
             case 18:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);

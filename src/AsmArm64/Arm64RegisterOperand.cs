@@ -16,8 +16,11 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
         // buffer[1] = (byte)((byte)RegisterKind | ((byte)RegisterIndexEncodingKind << 4));
         var encodingKind = (Arm64RegisterEncodingKind)((byte)(descriptor >> 8) & 0xF);
         var encodingIndex = (Arm64RegisterIndexEncodingKind)((byte)(descriptor >> 12) & 0xF); ;
-        // buffer[2] = (byte)IndexerIndex;
-        var elementIndexerId = (byte)(descriptor >> 16);
+        // buffer[2] = (byte)((byte)IndexerIndex | (byte)(IsOptional ? 0x80  : 0) | (byte)(IsPaired ? 0x40 : 0));
+        var elt2 = (byte)(descriptor >> 16);
+        var elementIndexerId = (byte)(elt2 & 0x3F);
+        IsOptional = (elt2 & 0x80) != 0;
+        IsPaired = (elt2 & 0x40) != 0;
         // if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.BitMapExtract)
         // {
         //     Debug.Assert(RegisterIndexExtractIndex != 0);
@@ -35,10 +38,15 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
         switch (encodingIndex)
         {
             case Arm64RegisterIndexEncodingKind.Std5:
+            case Arm64RegisterIndexEncodingKind.Std5Plus1:
             {
                 var bitIndex = (byte)(descriptor >> 24);
                 var value = rawValue >> bitIndex;
                 registerIndex = (int)(value & 0b11111);
+                if (encodingIndex == Arm64RegisterIndexEncodingKind.Std5Plus1)
+                {
+                    registerIndex = (registerIndex + 1) & 0x3F;
+                }
                 break;
             }
             case Arm64RegisterIndexEncodingKind.Std4:
@@ -155,6 +163,12 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
 
     public Arm64RegisterAny Value { get; }
 
+    public bool IsOptional { get; }
+
+    public bool IsPaired { get; }
+
+    public bool IsZeroRegister => (Value.Kind == Arm64RegisterKind.X || Value.Kind == Arm64RegisterKind.W) && Value.Index == 31;
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -168,7 +182,7 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
 
     public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null)
     {
-        isDefaultValue = false;
+        isDefaultValue = IsOptional && IsZeroRegister;
         return Value.TryFormat(destination, out charsWritten, format, provider);
     }
 

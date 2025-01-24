@@ -158,7 +158,30 @@ static class MappingTables
 
         { "TST_ands_32s_log_imm", new() { { "imm", DecodeBitMask32 } }},
         { "TST_ands_64s_log_imm", new() { { "imm", DecodeBitMask64 } }},
+
+        { "STG_64spre_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+        { "STZ2G_64spre_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+        { "ST2G_64spre_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+        { "STZG_64soffset_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+        { "STG_64soffset_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+        { "STZ2G_64soffset_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+        { "ST2G_64soffset_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+        { "STZG_64spost_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+        { "STG_64spost_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+        { "STZ2G_64spost_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+        { "ST2G_64spost_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+        { "STGP_64_ldstpair_off", new() { { "imm", ValueDivideBy16 } }},
+        { "STGP_64_ldstpair_post", new() { { "imm", ValueDivideBy16 } }},
+        { "STGP_64_ldstpair_pre", new() { { "imm", ValueDivideBy16 } }},
+        { "STZG_64spre_ldsttags", new() { { "simm", ValueDivideBy16 } }},
+
+        { "LDG_64loffset_ldsttags", new() { { "simm", ValueDivideBy16 } }},
         
+        { "ADDG_64_addsub_immtags", new() { { "uimm6", ValueDivideBy16 } }},
+        { "SUBG_64_addsub_immtags", new() { { "uimm6", ValueDivideBy16 } }},
+
+        
+
         // 
 
         // LSL_ubfm_32m_bitfield => UBFM  <Wd>, <Wn>, #(-<shift>  MOD  32), #(31-<shift>)

@@ -123,7 +123,8 @@ static class Arm64IndexerHelper
                 index = (int)bitValue;
                 return true;
             }
-            // BFMLAL_asimdelem_f            : BFMLAL      btVd.4S, Vn.8H, Vm.H[index] <- Operand: Vm.H[index]
+            // BFMLALB_asimdelem_f           : BFMLALB     Vd.4S, Vn.8H, Vm.H[index] <- Operand: Vm.H[index]
+            // BFMLALT_asimdelem_f           : BFMLALT     Vd.4S, Vn.8H, Vm.H[index] <- Operand: Vm.H[index]
             // FDOT_asimdelem_g              : FDOT        Vd.Ta, Vn.Tb, Vm.2B[index] <- Operand: Vm.2B[index]
             // FMLA_asimdelem_rh_h           : FMLA        Vd.T, Vn.T, Vm.H[index] <- Operand: Vm.H[index]
             // FMLA_asisdelem_rh_h           : FMLA        Hd, Hn, Vm.H[index] <- Operand: Vm.H[index]
@@ -347,16 +348,22 @@ static class Arm64IndexerHelper
             // MLS_asimdelem_r               : MLS         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // MUL_asimdelem_r               : MUL         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SMLAL_asimdelem_l             : SMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMLAL2_asimdelem_l            : SMLAL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SMLSL_asimdelem_l             : SMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMLSL2_asimdelem_l            : SMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SMULL_asimdelem_l             : SMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SMULL2_asimdelem_l            : SMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMLAL_asimdelem_l           : SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMLAL_asisdelem_l           : SQDMLAL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLAL2_asimdelem_l          : SQDMLAL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMLSL_asimdelem_l           : SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMLSL_asisdelem_l           : SQDMLSL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMLSL2_asimdelem_l          : SQDMLSL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMULH_asimdelem_r           : SQDMULH     Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMULH_asisdelem_r           : SQDMULH     Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMULL_asimdelem_l           : SQDMULL     Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQDMULL_asisdelem_l           : SQDMULL     Vad, Vbn, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // SQDMULL2_asimdelem_l          : SQDMULL2    Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQRDMLAH_asimdelem_r          : SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQRDMLAH_asisdelem_r          : SQRDMLAH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQRDMLSH_asimdelem_r          : SQRDMLSH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
@@ -364,8 +371,11 @@ static class Arm64IndexerHelper
             // SQRDMULH_asimdelem_r          : SQRDMULH    Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // SQRDMULH_asisdelem_r          : SQRDMULH    Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMLAL_asimdelem_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMLAL2_asimdelem_l            : UMLAL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMLSL_asimdelem_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMLSL2_asimdelem_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
+            // UMULL2_asimdelem_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             case 16:
             {
                 var bitValue = ((rawValue >> 20) & 0x3) | ((rawValue >> 9) & 0x4) | ((rawValue >> 19) & 0x18);
