@@ -53,6 +53,18 @@ public readonly struct Arm64EnumOperand : IArm64Operand
                 Arm64ProcessStateFieldHelper.TryDecode(rawValue, (byte)(descriptor >> 16), out var processStateField);
                 Value = (int)processStateField;
                 break;
+            case Arm64EnumKind.BarrierOperationLimit:
+                Value = Arm64DecodingHelper.GetBitRange1(rawValue, (byte)(descriptor >> 16), (byte)(descriptor >> 24), 0);
+
+                if (Value == 0)
+                {
+                    IsImmediate = true;
+                }
+                else if (!Enum.IsDefined((Arm64BarrierOperationLimitKind)Value))
+                {
+                    EnumKind = Arm64EnumKind.None;
+                }
+                break;
             default:
                 // Regular encoding
                 Value = Arm64DecodingHelper.GetBitRange1(rawValue, (byte)(descriptor >> 16), (byte)(descriptor >> 24), 0);

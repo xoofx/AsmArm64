@@ -17,60 +17,60 @@ public enum Arm64BarrierOperationLimitKind : byte
     /// <summary>
     /// Outer Shareable Load. Ensures the completion of load memory accesses in the outer shareable domain.
     /// </summary>
-    OSHLD = 1,
+    OSHLD = 0b0001,
 
     /// <summary>
     /// Outer Shareable Store. Ensures the completion of store memory accesses in the outer shareable domain.
     /// </summary>
-    OSHST = 2,
+    OSHST = 0b0010,
 
     /// <summary>
     /// Outer Shareable. Ensures the completion of all memory accesses in the outer shareable domain.
     /// </summary>
-    OSH = 3,
+    OSH = 0b0011,
 
     /// <summary>
     /// Non-Shareable Load. Ensures the completion of load memory accesses in the non-shareable domain.
     /// </summary>
-    NSHLD = 4,
+    NSHLD = 0b0101,
 
     /// <summary>
     /// Non-Shareable Store. Ensures the completion of store memory accesses in the non-shareable domain.
     /// </summary>
-    NSHST = 5,
+    NSHST = 0b0110,
 
     /// <summary>
     /// Non-Shareable. Ensures the completion of all memory accesses in the non-shareable domain.
     /// </summary>
-    NSH = 6,
+    NSH = 0b0111,
 
     /// <summary>
     /// Inner Shareable Load. Ensures the completion of load memory accesses in the inner shareable domain.
     /// </summary>
-    ISHLD = 7,
+    ISHLD = 0b1001,
 
     /// <summary>
     /// Inner Shareable Store. Ensures the completion of store memory accesses in the inner shareable domain.
     /// </summary>
-    ISHST = 8,
+    ISHST = 0b1010,
 
     /// <summary>
     /// Inner Shareable. Ensures the completion of all memory accesses in the inner shareable domain.
     /// </summary>
-    ISH = 9,
+    ISH = 0b1011,
 
     /// <summary>
     /// Load. Ensures the completion of load memory accesses across all domains.
     /// </summary>
-    LD = 10,
+    LD = 0b1101,
 
     /// <summary>
     /// Store. Ensures the completion of store memory accesses across all domains.
     /// </summary>
-    ST = 11,
+    ST = 0b1110,
 
     /// <summary>
     /// Full system scope. Ensures the completion of all memory accesses across all domains.
     /// </summary>
-    SY = 12,
+    SY = 0b1111,
 }
