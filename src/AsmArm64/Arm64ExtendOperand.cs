@@ -14,10 +14,24 @@ public readonly struct Arm64ExtendOperand : IArm64Operand
     {
         // buffer[1] = (byte)ExtendEncoding.ToSmallEncoding();
         // buffer[2] = (byte)AmountEncoding.ToSmallEncoding();
+        // buffer[3] = (byte)(Is64Bit ? 1 : 0);
         var descriptor = operand.Descriptor;
         var rawValue = operand.RawValue;
 
-        ExtendKind = (Arm64ExtendKind)(Arm64DecodingHelper.GetSmallBitRange((byte)(descriptor >> 8), rawValue) + 1); // Add 1 to skip None
+        bool is64Bit = ((descriptor >> 24) & 1) != 0;
+
+        var option = Arm64DecodingHelper.GetSmallBitRange((byte)(descriptor >> 8), rawValue);
+        // if is64Bit and option == 0b011 && Rd or Rn == 31 => LSL
+        // if is32Bit and option == 0b010 && Rd or Rn == 31 => LSL
+        if (((is64Bit && option == 0b011) || option == 0b010) && (rawValue & 0b11111) == 0b11111 || ((rawValue >> 5) & 0b11111) == 0b11111)
+        {
+            ExtendKind = Arm64ExtendKind.LSL;
+        }
+        else
+        {
+            ExtendKind = (Arm64ExtendKind)(option + 1);
+        }
+
         Amount = Arm64DecodingHelper.GetSmallBitRange((byte)(descriptor >> 16), rawValue);
     }
 

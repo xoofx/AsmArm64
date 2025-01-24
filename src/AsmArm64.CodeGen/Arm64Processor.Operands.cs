@@ -540,7 +540,7 @@ partial class Arm64Processor
                     }
 
 
-                    if (introElt.Value.Contains("signed immediate"))
+                    if (introElt.Value.Contains(" signed immediate"))
                     {
                         encodingSymbol.IsSignedImmediate = true;
                     }

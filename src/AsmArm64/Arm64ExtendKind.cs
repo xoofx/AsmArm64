@@ -61,7 +61,7 @@ partial class Arm64Extensions
     public static string ToText(this Arm64ExtendKind kind, bool upper) => upper ? ExtendTextUpper[(int)kind] : ExtendTextLower[(int)kind];
 }
 
-public readonly record struct Arm64Extend(Arm64ExtendKind Kind, byte Amount) : IArm64Extend , ISpanFormattable
+public readonly record struct Arm64MemoryExtend(Arm64ExtendKind Kind, byte Amount) : IArm64Extend , ISpanFormattable
 {
     public bool IsEmpty => Kind == Arm64ExtendKind.None;
 
@@ -93,13 +93,14 @@ public readonly record struct Arm64Extend(Arm64ExtendKind Kind, byte Amount) : I
             return false;
         }
 
-        if (Kind != Arm64ExtendKind.LSL && Amount != 0)
+        if (Amount != 0 || Kind == Arm64ExtendKind.LSL)
         {
             if (destination.Length <= written + 1)
             {
                 charsWritten = 0;
                 return false;
             }
+
             destination[written] = ' ';
             destination[written + 1] = '#';
             written += 2;
@@ -108,6 +109,7 @@ public readonly record struct Arm64Extend(Arm64ExtendKind Kind, byte Amount) : I
                 charsWritten = 0;
                 return false;
             }
+
             written += digitWritten;
         }
 

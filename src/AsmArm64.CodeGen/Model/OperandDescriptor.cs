@@ -257,11 +257,15 @@ sealed class ExtendOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Exte
 
     public BitRange AmountEncoding { get; set; }
 
-    public override string ToString() => $"Extend {ExtendEncoding}, {AmountEncoding}";
+    public bool Is64Bit { get; set; }
+
+    public override string ToString() => $"Extend {ExtendEncoding}, {AmountEncoding}, Is64Bit: {Is64Bit}";
+
     protected internal override void EncodeImpl(Span<byte> buffer)
     {
         buffer[1] = (byte)ExtendEncoding.ToSmallEncoding();
         buffer[2] = (byte)AmountEncoding.ToSmallEncoding();
+        buffer[3] = (byte)(Is64Bit ? 1 : 0);
     }
 }
 

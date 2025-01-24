@@ -637,7 +637,12 @@ internal sealed class InstructionProcessor
                 var amountSymbol = ((OptionalGroupOperandItem)item1).Items[0].TextElements[0].Symbol!;
                 Debug.Assert(amountSymbol.BitRanges.Count == 1);
                 extend.AmountEncoding = amountSymbol.BitRanges[0];
-
+                //extend.Is64Bit
+                int indexOfLSL = symbol0.Selector.BitValues.FindIndex(x => x.Text.Contains("LSL"));
+                Debug.Assert(indexOfLSL >= 0);
+                var extendText = symbol0.Selector.BitValues[indexOfLSL].Text;
+                Debug.Assert(extendText == "LSL|UXTW" || extendText == "LSL|UXTX");
+                extend.Is64Bit = extendText == "LSL|UXTX";
                 return extend;
             }
             else if (name0 == "shift")
@@ -1424,6 +1429,7 @@ internal sealed class InstructionProcessor
                     var extend = item2.Items[0];
                     var amount = ((OptionalGroupOperandItem)item2.Items[1]).Items[0];
                     extendKind = DetectMemoryExtendKind(instruction, extend, amount);
+                    kind = Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional;
                 }
             }
             else

@@ -136,7 +136,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
 
                     IndexRegister = Arm64RegisterAny.Create(registerKind, value, Arm64RegisterVKind.Default, 0, 0);
 
-                    Extend = new Arm64Extend(extendKind, amount);
+                    Extend = new Arm64MemoryExtend(extendKind, amount);
 
                     break;
             }
@@ -156,7 +156,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
 
     public int Immediate { get; }
 
-    public Arm64Extend Extend { get; }
+    public Arm64MemoryExtend Extend { get; }
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
