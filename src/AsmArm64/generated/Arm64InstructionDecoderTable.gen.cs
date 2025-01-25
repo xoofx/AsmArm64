@@ -77,2398 +77,2398 @@ partial class Arm64InstructionDecoderTable
         311, // AXFLAG_m_pstate
         313, // B_only_branch_imm
         317, // B_only_condbranch
-        320, // BC_only_condbranch
-        323, // BFC_bfm_32m_bitfield
-        331, // BFC_bfm_64m_bitfield
-        339, // BFI_bfm_32m_bitfield
-        349, // BFI_bfm_64m_bitfield
-        359, // BFM_32m_bitfield
-        369, // BFM_64m_bitfield
-        379, // BFXIL_bfm_32m_bitfield
-        389, // BFXIL_bfm_64m_bitfield
-        399, // BIC_32_log_shift
-        405, // BIC_64_log_shift
-        411, // BICS_32_log_shift
-        417, // BICS_64_log_shift
-        423, // BL_only_branch_imm
-        427, // BLR_64_branch_reg
-        430, // BLRAA_64p_branch_reg
-        434, // BLRAAZ_64_branch_reg
-        437, // BLRAB_64p_branch_reg
-        441, // BLRABZ_64_branch_reg
-        444, // BR_64_branch_reg
-        447, // BRAA_64p_branch_reg
-        451, // BRAAZ_64_branch_reg
-        454, // BRAB_64p_branch_reg
-        458, // BRABZ_64_branch_reg
-        461, // BRB_sys_cr_systeminstrs
-        464, // BRK_ex_exception
-        468, // BTI_hb_hints
-        471, // CAS_c32_comswap
-        476, // CASA_c32_comswap
-        481, // CASAL_c32_comswap
-        486, // CASL_c32_comswap
-        491, // CAS_c64_comswap
-        496, // CASA_c64_comswap
-        501, // CASAL_c64_comswap
-        506, // CASL_c64_comswap
-        511, // CASB_c32_comswap
-        516, // CASAB_c32_comswap
-        521, // CASALB_c32_comswap
-        526, // CASLB_c32_comswap
-        531, // CASH_c32_comswap
-        536, // CASAH_c32_comswap
-        541, // CASALH_c32_comswap
-        546, // CASLH_c32_comswap
-        551, // CASP_cp32_comswappr
-        558, // CASPA_cp32_comswappr
-        565, // CASPAL_cp32_comswappr
-        572, // CASPL_cp32_comswappr
-        579, // CASP_cp64_comswappr
-        586, // CASPA_cp64_comswappr
-        593, // CASPAL_cp64_comswappr
-        600, // CASPL_cp64_comswappr
-        607, // CASPT_cp64_comswappr_unpriv
-        614, // CASPAT_cp64_comswappr_unpriv
-        621, // CASPALT_cp64_comswappr_unpriv
-        628, // CASPLT_cp64_comswappr_unpriv
-        635, // CAST_c64_comswap_unpriv
-        640, // CASAT_c64_comswap_unpriv
-        645, // CASALT_c64_comswap_unpriv
-        650, // CASLT_c64_comswap_unpriv
-        655, // CBGT_32_imm
-        663, // CBLT_32_imm
-        671, // CBHI_32_imm
-        679, // CBLO_32_imm
-        687, // CBEQ_32_imm
-        695, // CBNE_32_imm
-        703, // CBGT_64_imm
-        711, // CBLT_64_imm
-        719, // CBHI_64_imm
-        727, // CBLO_64_imm
-        735, // CBEQ_64_imm
-        743, // CBNE_64_imm
-        751, // CBGT_32_regs
-        759, // CBGE_32_regs
-        767, // CBHI_32_regs
-        775, // CBHS_32_regs
-        783, // CBEQ_32_regs
-        791, // CBNE_32_regs
-        799, // CBGT_64_regs
-        807, // CBGE_64_regs
-        815, // CBHI_64_regs
-        823, // CBHS_64_regs
-        831, // CBEQ_64_regs
-        839, // CBNE_64_regs
-        847, // CBBGT_8_regs
-        855, // CBBGE_8_regs
-        863, // CBBHI_8_regs
-        871, // CBBHS_8_regs
-        879, // CBBEQ_8_regs
-        887, // CBBNE_8_regs
-        895, // CBBLE_cbbge_8_regs
-        903, // CBBLO_cbbhi_8_regs
-        911, // CBBLS_cbbhs_8_regs
-        919, // CBBLT_cbbgt_8_regs
-        927, // CBGE_cbgt_32_imm
-        935, // CBGE_cbgt_64_imm
-        943, // CBHGT_16_regs
-        951, // CBHGE_16_regs
-        959, // CBHHI_16_regs
-        967, // CBHHS_16_regs
-        975, // CBHEQ_16_regs
-        983, // CBHNE_16_regs
-        991, // CBHLE_cbhge_16_regs
-        999, // CBHLO_cbhhi_16_regs
-        1007, // CBHLS_cbhhs_16_regs
-        1015, // CBHLT_cbhgt_16_regs
-        1023, // CBHS_cbhi_32_imm
-        1031, // CBHS_cbhi_64_imm
-        1039, // CBLE_cblt_32_imm
-        1047, // CBLE_cblt_64_imm
-        1055, // CBLE_cbge_32_regs
-        1063, // CBLE_cbge_64_regs
-        1071, // CBLO_cbhi_32_regs
-        1079, // CBLO_cbhi_64_regs
-        1087, // CBLS_cblo_32_imm
-        1095, // CBLS_cblo_64_imm
-        1103, // CBLS_cbhs_32_regs
-        1111, // CBLS_cbhs_64_regs
-        1119, // CBLT_cbgt_32_regs
-        1127, // CBLT_cbgt_64_regs
-        1135, // CBNZ_32_compbranch
-        1141, // CBNZ_64_compbranch
-        1147, // CBZ_32_compbranch
-        1153, // CBZ_64_compbranch
-        1159, // CCMN_32_condcmp_imm
-        1169, // CCMN_64_condcmp_imm
-        1179, // CCMN_32_condcmp_reg
-        1189, // CCMN_64_condcmp_reg
-        1199, // CCMP_32_condcmp_imm
-        1209, // CCMP_64_condcmp_imm
-        1219, // CCMP_32_condcmp_reg
-        1229, // CCMP_64_condcmp_reg
-        1239, // CFINV_m_pstate
-        1241, // CFP_sys_cr_systeminstrs
-        1245, // CHKFEAT_hf_hints
-        1248, // CINC_csinc_32_condsel
-        1253, // CINC_csinc_64_condsel
-        1258, // CINV_csinv_32_condsel
-        1263, // CINV_csinv_64_condsel
-        1268, // CLRBHB_hi_hints
-        1270, // CLREX_bn_barriers
-        1274, // CLS_32_dp_1src
-        1278, // CLS_64_dp_1src
-        1282, // CLZ_32_dp_1src
-        1286, // CLZ_64_dp_1src
-        1290, // CMN_adds_32s_addsub_ext
-        1295, // CMN_adds_64s_addsub_ext
-        1303, // CMN_adds_32s_addsub_imm
-        1311, // CMN_adds_64s_addsub_imm
-        1319, // CMN_adds_32_addsub_shift
-        1324, // CMN_adds_64_addsub_shift
-        1329, // CMP_subs_32s_addsub_ext
-        1334, // CMP_subs_64s_addsub_ext
-        1342, // CMP_subs_32s_addsub_imm
-        1350, // CMP_subs_64s_addsub_imm
-        1358, // CMP_subs_32_addsub_shift
-        1363, // CMP_subs_64_addsub_shift
-        1368, // CMPP_subps_64s_dp_2src
-        1372, // CNEG_csneg_32_condsel
-        1377, // CNEG_csneg_64_condsel
-        1382, // CNT_32_dp_1src
-        1386, // CNT_64_dp_1src
-        1390, // COSP_sys_cr_systeminstrs
-        1394, // CPP_sys_cr_systeminstrs
-        1398, // CPYFP_cpy_memcms
-        1403, // CPYFM_cpy_memcms
-        1408, // CPYFE_cpy_memcms
-        1413, // CPYFPN_cpy_memcms
-        1418, // CPYFMN_cpy_memcms
-        1423, // CPYFEN_cpy_memcms
-        1428, // CPYFPRN_cpy_memcms
-        1433, // CPYFMRN_cpy_memcms
-        1438, // CPYFERN_cpy_memcms
-        1443, // CPYFPRT_cpy_memcms
-        1448, // CPYFMRT_cpy_memcms
-        1453, // CPYFERT_cpy_memcms
-        1458, // CPYFPRTN_cpy_memcms
-        1463, // CPYFMRTN_cpy_memcms
-        1468, // CPYFERTN_cpy_memcms
-        1473, // CPYFPRTRN_cpy_memcms
-        1478, // CPYFMRTRN_cpy_memcms
-        1483, // CPYFERTRN_cpy_memcms
-        1488, // CPYFPRTWN_cpy_memcms
-        1493, // CPYFMRTWN_cpy_memcms
-        1498, // CPYFERTWN_cpy_memcms
-        1503, // CPYFPT_cpy_memcms
-        1508, // CPYFMT_cpy_memcms
-        1513, // CPYFET_cpy_memcms
-        1518, // CPYFPTN_cpy_memcms
-        1523, // CPYFMTN_cpy_memcms
-        1528, // CPYFETN_cpy_memcms
-        1533, // CPYFPTRN_cpy_memcms
-        1538, // CPYFMTRN_cpy_memcms
-        1543, // CPYFETRN_cpy_memcms
-        1548, // CPYFPTWN_cpy_memcms
-        1553, // CPYFMTWN_cpy_memcms
-        1558, // CPYFETWN_cpy_memcms
-        1563, // CPYFPWN_cpy_memcms
-        1568, // CPYFMWN_cpy_memcms
-        1573, // CPYFEWN_cpy_memcms
-        1578, // CPYFPWT_cpy_memcms
-        1583, // CPYFMWT_cpy_memcms
-        1588, // CPYFEWT_cpy_memcms
-        1593, // CPYFPWTN_cpy_memcms
-        1598, // CPYFMWTN_cpy_memcms
-        1603, // CPYFEWTN_cpy_memcms
-        1608, // CPYFPWTRN_cpy_memcms
-        1613, // CPYFMWTRN_cpy_memcms
-        1618, // CPYFEWTRN_cpy_memcms
-        1623, // CPYFPWTWN_cpy_memcms
-        1628, // CPYFMWTWN_cpy_memcms
-        1633, // CPYFEWTWN_cpy_memcms
-        1638, // CPYP_cpy_memcms
-        1643, // CPYM_cpy_memcms
-        1648, // CPYE_cpy_memcms
-        1653, // CPYPN_cpy_memcms
-        1658, // CPYMN_cpy_memcms
-        1663, // CPYEN_cpy_memcms
-        1668, // CPYPRN_cpy_memcms
-        1673, // CPYMRN_cpy_memcms
-        1678, // CPYERN_cpy_memcms
-        1683, // CPYPRT_cpy_memcms
-        1688, // CPYMRT_cpy_memcms
-        1693, // CPYERT_cpy_memcms
-        1698, // CPYPRTN_cpy_memcms
-        1703, // CPYMRTN_cpy_memcms
-        1708, // CPYERTN_cpy_memcms
-        1713, // CPYPRTRN_cpy_memcms
-        1718, // CPYMRTRN_cpy_memcms
-        1723, // CPYERTRN_cpy_memcms
-        1728, // CPYPRTWN_cpy_memcms
-        1733, // CPYMRTWN_cpy_memcms
-        1738, // CPYERTWN_cpy_memcms
-        1743, // CPYPT_cpy_memcms
-        1748, // CPYMT_cpy_memcms
-        1753, // CPYET_cpy_memcms
-        1758, // CPYPTN_cpy_memcms
-        1763, // CPYMTN_cpy_memcms
-        1768, // CPYETN_cpy_memcms
-        1773, // CPYPTRN_cpy_memcms
-        1778, // CPYMTRN_cpy_memcms
-        1783, // CPYETRN_cpy_memcms
-        1788, // CPYPTWN_cpy_memcms
-        1793, // CPYMTWN_cpy_memcms
-        1798, // CPYETWN_cpy_memcms
-        1803, // CPYPWN_cpy_memcms
-        1808, // CPYMWN_cpy_memcms
-        1813, // CPYEWN_cpy_memcms
-        1818, // CPYPWT_cpy_memcms
-        1823, // CPYMWT_cpy_memcms
-        1828, // CPYEWT_cpy_memcms
-        1833, // CPYPWTN_cpy_memcms
-        1838, // CPYMWTN_cpy_memcms
-        1843, // CPYEWTN_cpy_memcms
-        1848, // CPYPWTRN_cpy_memcms
-        1853, // CPYMWTRN_cpy_memcms
-        1858, // CPYEWTRN_cpy_memcms
-        1863, // CPYPWTWN_cpy_memcms
-        1868, // CPYMWTWN_cpy_memcms
-        1873, // CPYEWTWN_cpy_memcms
-        1878, // CRC32B_32c_dp_2src
-        1883, // CRC32H_32c_dp_2src
-        1888, // CRC32W_32c_dp_2src
-        1893, // CRC32X_64c_dp_2src
-        1898, // CRC32CB_32c_dp_2src
-        1903, // CRC32CH_32c_dp_2src
-        1908, // CRC32CW_32c_dp_2src
-        1913, // CRC32CX_64c_dp_2src
-        1918, // CSDB_hi_hints
-        1920, // CSEL_32_condsel
-        1926, // CSEL_64_condsel
-        1932, // CSET_csinc_32_condsel
-        1936, // CSET_csinc_64_condsel
-        1940, // CSETM_csinv_32_condsel
-        1944, // CSETM_csinv_64_condsel
-        1948, // CSINC_32_condsel
-        1954, // CSINC_64_condsel
-        1960, // CSINV_32_condsel
-        1966, // CSINV_64_condsel
-        1972, // CSNEG_32_condsel
-        1978, // CSNEG_64_condsel
-        1984, // CTZ_32_dp_1src
-        1988, // CTZ_64_dp_1src
-        1992, // DC_sys_cr_systeminstrs
-        1996, // DCPS1_dc_exception
-        2000, // DCPS2_dc_exception
-        2004, // DCPS3_dc_exception
-        2008, // DGH_hi_hints
-        2010, // DMB_bo_barriers
-        2013, // DRPS_64e_branch_reg
-        2015, // DSB_bo_barriers
-        2018, // DSB_bon_barriers
-        2021, // DVP_sys_cr_systeminstrs
-        2025, // EON_32_log_shift
-        2031, // EON_64_log_shift
-        2037, // EOR_32_log_imm
-        2045, // EOR_64_log_imm
-        2053, // EOR_32_log_shift
-        2059, // EOR_64_log_shift
-        2065, // ERET_64e_branch_reg
-        2067, // ERETAA_64e_branch_reg
-        2069, // ERETAB_64e_branch_reg
-        2071, // ESB_hi_hints
-        2073, // EXTR_32_extract
-        2083, // EXTR_64_extract
-        2093, // GCSB_hd_hints
-        2096, // GCSPOPCX_sys_cr_systeminstrs
-        2098, // GCSPOPM_sysl_rc_systeminstrs
-        2101, // GCSPOPX_sys_cr_systeminstrs
-        2103, // GCSPUSHM_sys_cr_systeminstrs
-        2106, // GCSPUSHX_sys_cr_systeminstrs
-        2108, // GCSSS1_sys_cr_systeminstrs
-        2111, // GCSSS2_sysl_rc_systeminstrs
-        2114, // GCSSTR_64_ldst_gcs
-        2118, // GCSSTTR_64_ldst_gcs
-        2122, // GMI_64g_dp_2src
-        2127, // HINT_hm_hints
-        2131, // HLT_ex_exception
-        2135, // HVC_ex_exception
-        2139, // IC_sys_cr_systeminstrs
-        2143, // IRG_64i_dp_2src
-        2148, // ISB_bi_barriers
-        2152, // LD64B_64l_memop
-        2156, // LDADD_32_memop
-        2161, // LDADDA_32_memop
-        2166, // LDADDAL_32_memop
-        2171, // LDADDL_32_memop
-        2176, // LDADD_64_memop
-        2181, // LDADDA_64_memop
-        2186, // LDADDAL_64_memop
-        2191, // LDADDL_64_memop
-        2196, // LDADDB_32_memop
-        2201, // LDADDAB_32_memop
-        2206, // LDADDALB_32_memop
-        2211, // LDADDLB_32_memop
-        2216, // LDADDH_32_memop
-        2221, // LDADDAH_32_memop
-        2226, // LDADDALH_32_memop
-        2231, // LDADDLH_32_memop
-        2236, // LDAPR_32l_ldapstl_writeback
-        2241, // LDAPR_64l_ldapstl_writeback
-        2246, // LDAPR_32l_memop
-        2250, // LDAPR_64l_memop
-        2254, // LDAPRB_32l_memop
-        2258, // LDAPRH_32l_memop
-        2262, // LDAPUR_32_ldapstl_unscaled
-        2268, // LDAPUR_64_ldapstl_unscaled
-        2274, // LDAPURB_32_ldapstl_unscaled
-        2280, // LDAPURH_32_ldapstl_unscaled
-        2286, // LDAPURSB_32_ldapstl_unscaled
-        2292, // LDAPURSB_64_ldapstl_unscaled
-        2298, // LDAPURSH_32_ldapstl_unscaled
-        2304, // LDAPURSH_64_ldapstl_unscaled
-        2310, // LDAPURSW_64_ldapstl_unscaled
-        2316, // LDAR_lr32_ldstord
-        2320, // LDAR_lr64_ldstord
-        2324, // LDARB_lr32_ldstord
-        2328, // LDARH_lr32_ldstord
-        2332, // LDATXR_lr32_ldstexclr_unpriv
-        2336, // LDATXR_lr64_ldstexclr_unpriv
-        2340, // LDAXP_lp32_ldstexclp
-        2345, // LDAXP_lp64_ldstexclp
-        2350, // LDAXR_lr32_ldstexclr
-        2354, // LDAXR_lr64_ldstexclr
-        2358, // LDAXRB_lr32_ldstexclr
-        2362, // LDAXRH_lr32_ldstexclr
-        2366, // LDCLR_32_memop
-        2371, // LDCLRA_32_memop
-        2376, // LDCLRAL_32_memop
-        2381, // LDCLRL_32_memop
-        2386, // LDCLR_64_memop
-        2391, // LDCLRA_64_memop
-        2396, // LDCLRAL_64_memop
-        2401, // LDCLRL_64_memop
-        2406, // LDCLRB_32_memop
-        2411, // LDCLRAB_32_memop
-        2416, // LDCLRALB_32_memop
-        2421, // LDCLRLB_32_memop
-        2426, // LDCLRH_32_memop
-        2431, // LDCLRAH_32_memop
-        2436, // LDCLRALH_32_memop
-        2441, // LDCLRLH_32_memop
-        2446, // LDCLRP_128_memop_128
-        2451, // LDCLRPA_128_memop_128
-        2456, // LDCLRPAL_128_memop_128
-        2461, // LDCLRPL_128_memop_128
-        2466, // LDEOR_32_memop
-        2471, // LDEORA_32_memop
-        2476, // LDEORAL_32_memop
-        2481, // LDEORL_32_memop
-        2486, // LDEOR_64_memop
-        2491, // LDEORA_64_memop
-        2496, // LDEORAL_64_memop
-        2501, // LDEORL_64_memop
-        2506, // LDEORB_32_memop
-        2511, // LDEORAB_32_memop
-        2516, // LDEORALB_32_memop
-        2521, // LDEORLB_32_memop
-        2526, // LDEORH_32_memop
-        2531, // LDEORAH_32_memop
-        2536, // LDEORALH_32_memop
-        2541, // LDEORLH_32_memop
-        2546, // LDG_64loffset_ldsttags
-        2552, // LDGM_64bulk_ldsttags
-        2556, // LDIAPP_32le_ldiappstilp
-        2562, // LDIAPP_32l_ldiappstilp
-        2567, // LDIAPP_64ls_ldiappstilp
-        2573, // LDIAPP_64l_ldiappstilp
-        2578, // LDLAR_lr32_ldstord
-        2582, // LDLAR_lr64_ldstord
-        2586, // LDLARB_lr32_ldstord
-        2590, // LDLARH_lr32_ldstord
-        2594, // LDNP_32_ldstnapair_offs
-        2602, // LDNP_64_ldstnapair_offs
-        2610, // LDP_32_ldstpair_post
-        2620, // LDP_64_ldstpair_post
-        2630, // LDP_32_ldstpair_pre
-        2638, // LDP_64_ldstpair_pre
-        2646, // LDP_32_ldstpair_off
-        2654, // LDP_64_ldstpair_off
-        2662, // LDPSW_64_ldstpair_post
-        2672, // LDPSW_64_ldstpair_pre
-        2680, // LDPSW_64_ldstpair_off
-        2688, // LDR_32_ldst_immpost
-        2696, // LDR_64_ldst_immpost
-        2704, // LDR_32_ldst_immpre
-        2710, // LDR_64_ldst_immpre
-        2716, // LDR_32_ldst_pos
-        2722, // LDR_64_ldst_pos
-        2728, // LDR_32_loadlit
-        2734, // LDR_64_loadlit
-        2740, // LDR_32_ldst_regoff
-        2746, // LDR_64_ldst_regoff
-        2752, // LDRAA_64_ldst_pac
-        2758, // LDRAA_64w_ldst_pac
-        2764, // LDRAB_64_ldst_pac
-        2770, // LDRAB_64w_ldst_pac
-        2776, // LDRB_32_ldst_immpost
-        2784, // LDRB_32_ldst_immpre
-        2790, // LDRB_32_ldst_pos
-        2796, // LDRB_32b_ldst_regoff
-        2802, // LDRB_32bl_ldst_regoff
-        2808, // LDRH_32_ldst_immpost
-        2816, // LDRH_32_ldst_immpre
-        2822, // LDRH_32_ldst_pos
-        2828, // LDRH_32_ldst_regoff
-        2834, // LDRSB_32_ldst_immpost
-        2842, // LDRSB_64_ldst_immpost
-        2850, // LDRSB_32_ldst_immpre
-        2856, // LDRSB_64_ldst_immpre
-        2862, // LDRSB_32_ldst_pos
-        2868, // LDRSB_64_ldst_pos
-        2874, // LDRSB_32b_ldst_regoff
-        2880, // LDRSB_32bl_ldst_regoff
-        2886, // LDRSB_64b_ldst_regoff
-        2892, // LDRSB_64bl_ldst_regoff
-        2898, // LDRSH_32_ldst_immpost
-        2906, // LDRSH_64_ldst_immpost
-        2914, // LDRSH_32_ldst_immpre
-        2920, // LDRSH_64_ldst_immpre
-        2926, // LDRSH_32_ldst_pos
-        2932, // LDRSH_64_ldst_pos
-        2938, // LDRSH_32_ldst_regoff
-        2944, // LDRSH_64_ldst_regoff
-        2950, // LDRSW_64_ldst_immpost
-        2958, // LDRSW_64_ldst_immpre
-        2964, // LDRSW_64_ldst_pos
-        2970, // LDRSW_64_loadlit
-        2976, // LDRSW_64_ldst_regoff
-        2982, // LDSET_32_memop
-        2987, // LDSETA_32_memop
-        2992, // LDSETAL_32_memop
-        2997, // LDSETL_32_memop
-        3002, // LDSET_64_memop
-        3007, // LDSETA_64_memop
-        3012, // LDSETAL_64_memop
-        3017, // LDSETL_64_memop
-        3022, // LDSETB_32_memop
-        3027, // LDSETAB_32_memop
-        3032, // LDSETALB_32_memop
-        3037, // LDSETLB_32_memop
-        3042, // LDSETH_32_memop
-        3047, // LDSETAH_32_memop
-        3052, // LDSETALH_32_memop
-        3057, // LDSETLH_32_memop
-        3062, // LDSETP_128_memop_128
-        3067, // LDSETPA_128_memop_128
-        3072, // LDSETPAL_128_memop_128
-        3077, // LDSETPL_128_memop_128
-        3082, // LDSMAX_32_memop
-        3087, // LDSMAXA_32_memop
-        3092, // LDSMAXAL_32_memop
-        3097, // LDSMAXL_32_memop
-        3102, // LDSMAX_64_memop
-        3107, // LDSMAXA_64_memop
-        3112, // LDSMAXAL_64_memop
-        3117, // LDSMAXL_64_memop
-        3122, // LDSMAXB_32_memop
-        3127, // LDSMAXAB_32_memop
-        3132, // LDSMAXALB_32_memop
-        3137, // LDSMAXLB_32_memop
-        3142, // LDSMAXH_32_memop
-        3147, // LDSMAXAH_32_memop
-        3152, // LDSMAXALH_32_memop
-        3157, // LDSMAXLH_32_memop
-        3162, // LDSMIN_32_memop
-        3167, // LDSMINA_32_memop
-        3172, // LDSMINAL_32_memop
-        3177, // LDSMINL_32_memop
-        3182, // LDSMIN_64_memop
-        3187, // LDSMINA_64_memop
-        3192, // LDSMINAL_64_memop
-        3197, // LDSMINL_64_memop
-        3202, // LDSMINB_32_memop
-        3207, // LDSMINAB_32_memop
-        3212, // LDSMINALB_32_memop
-        3217, // LDSMINLB_32_memop
-        3222, // LDSMINH_32_memop
-        3227, // LDSMINAH_32_memop
-        3232, // LDSMINALH_32_memop
-        3237, // LDSMINLH_32_memop
-        3242, // LDTADD_32_memop_unpriv
-        3247, // LDTADDA_32_memop_unpriv
-        3252, // LDTADDAL_32_memop_unpriv
-        3257, // LDTADDL_32_memop_unpriv
-        3262, // LDTADD_64_memop_unpriv
-        3267, // LDTADDA_64_memop_unpriv
-        3272, // LDTADDAL_64_memop_unpriv
-        3277, // LDTADDL_64_memop_unpriv
-        3282, // LDTCLR_32_memop_unpriv
-        3287, // LDTCLRA_32_memop_unpriv
-        3292, // LDTCLRAL_32_memop_unpriv
-        3297, // LDTCLRL_32_memop_unpriv
-        3302, // LDTCLR_64_memop_unpriv
-        3307, // LDTCLRA_64_memop_unpriv
-        3312, // LDTCLRAL_64_memop_unpriv
-        3317, // LDTCLRL_64_memop_unpriv
-        3322, // LDTNP_64_ldstnapair_offs
-        3330, // LDTP_64_ldstpair_post
-        3340, // LDTP_64_ldstpair_pre
-        3348, // LDTP_64_ldstpair_off
-        3356, // LDTR_32_ldst_unpriv
-        3362, // LDTR_64_ldst_unpriv
-        3368, // LDTRB_32_ldst_unpriv
-        3374, // LDTRH_32_ldst_unpriv
-        3380, // LDTRSB_32_ldst_unpriv
-        3386, // LDTRSB_64_ldst_unpriv
-        3392, // LDTRSH_32_ldst_unpriv
-        3398, // LDTRSH_64_ldst_unpriv
-        3404, // LDTRSW_64_ldst_unpriv
-        3410, // LDTSET_32_memop_unpriv
-        3415, // LDTSETA_32_memop_unpriv
-        3420, // LDTSETAL_32_memop_unpriv
-        3425, // LDTSETL_32_memop_unpriv
-        3430, // LDTSET_64_memop_unpriv
-        3435, // LDTSETA_64_memop_unpriv
-        3440, // LDTSETAL_64_memop_unpriv
-        3445, // LDTSETL_64_memop_unpriv
-        3450, // LDTXR_lr32_ldstexclr_unpriv
-        3454, // LDTXR_lr64_ldstexclr_unpriv
-        3458, // LDUMAX_32_memop
-        3463, // LDUMAXA_32_memop
-        3468, // LDUMAXAL_32_memop
-        3473, // LDUMAXL_32_memop
-        3478, // LDUMAX_64_memop
-        3483, // LDUMAXA_64_memop
-        3488, // LDUMAXAL_64_memop
-        3493, // LDUMAXL_64_memop
-        3498, // LDUMAXB_32_memop
-        3503, // LDUMAXAB_32_memop
-        3508, // LDUMAXALB_32_memop
-        3513, // LDUMAXLB_32_memop
-        3518, // LDUMAXH_32_memop
-        3523, // LDUMAXAH_32_memop
-        3528, // LDUMAXALH_32_memop
-        3533, // LDUMAXLH_32_memop
-        3538, // LDUMIN_32_memop
-        3543, // LDUMINA_32_memop
-        3548, // LDUMINAL_32_memop
-        3553, // LDUMINL_32_memop
-        3558, // LDUMIN_64_memop
-        3563, // LDUMINA_64_memop
-        3568, // LDUMINAL_64_memop
-        3573, // LDUMINL_64_memop
-        3578, // LDUMINB_32_memop
-        3583, // LDUMINAB_32_memop
-        3588, // LDUMINALB_32_memop
-        3593, // LDUMINLB_32_memop
-        3598, // LDUMINH_32_memop
-        3603, // LDUMINAH_32_memop
-        3608, // LDUMINALH_32_memop
-        3613, // LDUMINLH_32_memop
-        3618, // LDUR_32_ldst_unscaled
-        3624, // LDUR_64_ldst_unscaled
-        3630, // LDURB_32_ldst_unscaled
-        3636, // LDURH_32_ldst_unscaled
-        3642, // LDURSB_32_ldst_unscaled
-        3648, // LDURSB_64_ldst_unscaled
-        3654, // LDURSH_32_ldst_unscaled
-        3660, // LDURSH_64_ldst_unscaled
-        3666, // LDURSW_64_ldst_unscaled
-        3672, // LDXP_lp32_ldstexclp
-        3677, // LDXP_lp64_ldstexclp
-        3682, // LDXR_lr32_ldstexclr
-        3686, // LDXR_lr64_ldstexclr
-        3690, // LDXRB_lr32_ldstexclr
-        3694, // LDXRH_lr32_ldstexclr
-        3698, // LSL_ubfm_32m_bitfield
-        3706, // LSL_ubfm_64m_bitfield
-        3714, // LSL_lslv_32_dp_2src
-        3719, // LSL_lslv_64_dp_2src
-        3724, // LSLV_32_dp_2src
-        3729, // LSLV_64_dp_2src
-        3734, // LSR_ubfm_32m_bitfield
-        3742, // LSR_ubfm_64m_bitfield
-        3750, // LSR_lsrv_32_dp_2src
-        3755, // LSR_lsrv_64_dp_2src
-        3760, // LSRV_32_dp_2src
-        3765, // LSRV_64_dp_2src
-        3770, // MADD_32a_dp_3src
-        3776, // MADD_64a_dp_3src
-        3782, // MADDPT_64a_dp_3src
-        3788, // MNEG_msub_32a_dp_3src
-        3793, // MNEG_msub_64a_dp_3src
-        3798, // MOV_orr_32_log_imm
-        3804, // MOV_orr_64_log_imm
-        3810, // MOV_movn_32_movewide
-        3816, // MOV_movn_64_movewide
-        3822, // MOV_orr_32_log_shift
-        3826, // MOV_orr_64_log_shift
-        3830, // MOV_add_32_addsub_imm
-        3834, // MOV_add_64_addsub_imm
-        3838, // MOV_movz_32_movewide
-        3844, // MOV_movz_64_movewide
-        3850, // MOVK_32_movewide
-        3858, // MOVK_64_movewide
-        3866, // MOVN_32_movewide
-        3874, // MOVN_64_movewide
-        3882, // MOVZ_32_movewide
-        3890, // MOVZ_64_movewide
-        3898, // MRRS_rs_systemmovepr
-        3903, // MRS_rs_systemmove
-        3907, // MSR_si_pstate
-        3911, // MSR_sr_systemmove
-        3915, // MSRR_sr_systemmovepr
-        3920, // MSUB_32a_dp_3src
-        3926, // MSUB_64a_dp_3src
-        3932, // MSUBPT_64a_dp_3src
-        3938, // MUL_madd_32a_dp_3src
-        3943, // MUL_madd_64a_dp_3src
-        3948, // MVN_orn_32_log_shift
-        3953, // MVN_orn_64_log_shift
-        3958, // NEG_sub_32_addsub_shift
-        3963, // NEG_sub_64_addsub_shift
-        3968, // NEGS_subs_32_addsub_shift
-        3973, // NEGS_subs_64_addsub_shift
-        3978, // NGC_sbc_32_addsub_carry
-        3982, // NGC_sbc_64_addsub_carry
-        3986, // NGCS_sbcs_32_addsub_carry
-        3990, // NGCS_sbcs_64_addsub_carry
-        3994, // NOP_hi_hints
-        3996, // ORN_32_log_shift
-        4002, // ORN_64_log_shift
-        4008, // ORR_32_log_imm
-        4016, // ORR_64_log_imm
-        4024, // ORR_32_log_shift
-        4030, // ORR_64_log_shift
-        4036, // PACDA_64p_dp_1src
-        4040, // PACDZA_64z_dp_1src
-        4043, // PACDB_64p_dp_1src
-        4047, // PACDZB_64z_dp_1src
-        4050, // PACGA_64p_dp_2src
-        4055, // PACIA_64p_dp_1src
-        4059, // PACIZA_64z_dp_1src
-        4062, // PACIA1716_hi_hints
-        4064, // PACIASP_hi_hints
-        4066, // PACIAZ_hi_hints
-        4068, // PACIA171615_64lr_dp_1src
-        4070, // PACIASPPC_64lr_dp_1src
-        4072, // PACIB_64p_dp_1src
-        4076, // PACIZB_64z_dp_1src
-        4079, // PACIB1716_hi_hints
-        4081, // PACIBSP_hi_hints
-        4083, // PACIBZ_hi_hints
-        4085, // PACIB171615_64lr_dp_1src
-        4087, // PACIBSPPC_64lr_dp_1src
-        4089, // PACM_hi_hints
-        4091, // PACNBIASPPC_64lr_dp_1src
-        4093, // PACNBIBSPPC_64lr_dp_1src
-        4095, // PRFM_p_ldst_pos
-        4101, // PRFM_p_loadlit
-        4107, // PRFM_p_ldst_regoff
-        4113, // PRFUM_p_ldst_unscaled
-        4119, // PSB_hc_hints
-        4122, // PSSBB_dsb_bo_barriers
-        4124, // RBIT_32_dp_1src
-        4128, // RBIT_64_dp_1src
-        4132, // RCWCAS_c64_rcwcomswap
-        4137, // RCWCASA_c64_rcwcomswap
-        4142, // RCWCASAL_c64_rcwcomswap
-        4147, // RCWCASL_c64_rcwcomswap
-        4152, // RCWCASP_c64_rcwcomswappr
-        4159, // RCWCASPA_c64_rcwcomswappr
-        4166, // RCWCASPAL_c64_rcwcomswappr
-        4173, // RCWCASPL_c64_rcwcomswappr
-        4180, // RCWCLR_64_memop
-        4185, // RCWCLRA_64_memop
-        4190, // RCWCLRAL_64_memop
-        4195, // RCWCLRL_64_memop
-        4200, // RCWCLRP_128_memop_128
-        4205, // RCWCLRPA_128_memop_128
-        4210, // RCWCLRPAL_128_memop_128
-        4215, // RCWCLRPL_128_memop_128
-        4220, // RCWSCAS_c64_rcwcomswap
-        4225, // RCWSCASA_c64_rcwcomswap
-        4230, // RCWSCASAL_c64_rcwcomswap
-        4235, // RCWSCASL_c64_rcwcomswap
-        4240, // RCWSCASP_c64_rcwcomswappr
-        4247, // RCWSCASPA_c64_rcwcomswappr
-        4254, // RCWSCASPAL_c64_rcwcomswappr
-        4261, // RCWSCASPL_c64_rcwcomswappr
-        4268, // RCWSCLR_64_memop
-        4273, // RCWSCLRA_64_memop
-        4278, // RCWSCLRAL_64_memop
-        4283, // RCWSCLRL_64_memop
-        4288, // RCWSCLRP_128_memop_128
-        4293, // RCWSCLRPA_128_memop_128
-        4298, // RCWSCLRPAL_128_memop_128
-        4303, // RCWSCLRPL_128_memop_128
-        4308, // RCWSET_64_memop
-        4313, // RCWSETA_64_memop
-        4318, // RCWSETAL_64_memop
-        4323, // RCWSETL_64_memop
-        4328, // RCWSETP_128_memop_128
-        4333, // RCWSETPA_128_memop_128
-        4338, // RCWSETPAL_128_memop_128
-        4343, // RCWSETPL_128_memop_128
-        4348, // RCWSSET_64_memop
-        4353, // RCWSSETA_64_memop
-        4358, // RCWSSETAL_64_memop
-        4363, // RCWSSETL_64_memop
-        4368, // RCWSSETP_128_memop_128
-        4373, // RCWSSETPA_128_memop_128
-        4378, // RCWSSETPAL_128_memop_128
-        4383, // RCWSSETPL_128_memop_128
-        4388, // RCWSSWP_64_memop
-        4393, // RCWSSWPA_64_memop
-        4398, // RCWSSWPAL_64_memop
-        4403, // RCWSSWPL_64_memop
-        4408, // RCWSSWPP_128_memop_128
-        4413, // RCWSSWPPA_128_memop_128
-        4418, // RCWSSWPPAL_128_memop_128
-        4423, // RCWSSWPPL_128_memop_128
-        4428, // RCWSWP_64_memop
-        4433, // RCWSWPA_64_memop
-        4438, // RCWSWPAL_64_memop
-        4443, // RCWSWPL_64_memop
-        4448, // RCWSWPP_128_memop_128
-        4453, // RCWSWPPA_128_memop_128
-        4458, // RCWSWPPAL_128_memop_128
-        4463, // RCWSWPPL_128_memop_128
-        4468, // RET_64r_branch_reg
-        4471, // RETAA_64e_branch_reg
-        4473, // RETAB_64e_branch_reg
-        4475, // RETAASPPC_only_miscbranch
-        4479, // RETABSPPC_only_miscbranch
-        4483, // RETAASPPCR_64m_branch_reg
-        4486, // RETABSPPCR_64m_branch_reg
-        4489, // REV_32_dp_1src
-        4493, // REV_64_dp_1src
-        4497, // REV16_32_dp_1src
-        4501, // REV16_64_dp_1src
-        4505, // REV32_64_dp_1src
-        4509, // REV64_rev_64_dp_1src
-        4513, // RMIF_only_rmif
-        4521, // ROR_extr_32_extract
-        4529, // ROR_extr_64_extract
-        4537, // ROR_rorv_32_dp_2src
-        4542, // ROR_rorv_64_dp_2src
-        4547, // RORV_32_dp_2src
-        4552, // RORV_64_dp_2src
-        4557, // RPRFM_r_ldst_regoff
-        4562, // SB_only_barriers
-        4564, // SBC_32_addsub_carry
-        4569, // SBC_64_addsub_carry
-        4574, // SBCS_32_addsub_carry
-        4579, // SBCS_64_addsub_carry
-        4584, // SBFIZ_sbfm_32m_bitfield
-        4594, // SBFIZ_sbfm_64m_bitfield
-        4604, // SBFM_32m_bitfield
-        4614, // SBFM_64m_bitfield
-        4624, // SBFX_sbfm_32m_bitfield
-        4634, // SBFX_sbfm_64m_bitfield
-        4644, // SDIV_32_dp_2src
-        4649, // SDIV_64_dp_2src
-        4654, // SETF8_only_setf
-        4657, // SETF16_only_setf
-        4660, // SETGP_set_memcms
-        4665, // SETGM_set_memcms
-        4670, // SETGE_set_memcms
-        4675, // SETGPN_set_memcms
-        4680, // SETGMN_set_memcms
-        4685, // SETGEN_set_memcms
-        4690, // SETGPT_set_memcms
-        4695, // SETGMT_set_memcms
-        4700, // SETGET_set_memcms
-        4705, // SETGPTN_set_memcms
-        4710, // SETGMTN_set_memcms
-        4715, // SETGETN_set_memcms
-        4720, // SETP_set_memcms
-        4725, // SETM_set_memcms
-        4730, // SETE_set_memcms
-        4735, // SETPN_set_memcms
-        4740, // SETMN_set_memcms
-        4745, // SETEN_set_memcms
-        4750, // SETPT_set_memcms
-        4755, // SETMT_set_memcms
-        4760, // SETET_set_memcms
-        4765, // SETPTN_set_memcms
-        4770, // SETMTN_set_memcms
-        4775, // SETETN_set_memcms
-        4780, // SEV_hi_hints
-        4782, // SEVL_hi_hints
-        4784, // SMADDL_64wa_dp_3src
-        4790, // SMAX_32_minmax_imm
-        4798, // SMAX_64_minmax_imm
-        4806, // SMAX_32_dp_2src
-        4811, // SMAX_64_dp_2src
-        4816, // SMC_ex_exception
-        4820, // SMIN_32_minmax_imm
-        4828, // SMIN_64_minmax_imm
-        4836, // SMIN_32_dp_2src
-        4841, // SMIN_64_dp_2src
-        4846, // SMNEGL_smsubl_64wa_dp_3src
-        4851, // SMSTART_msr_si_pstate
-        4854, // SMSTOP_msr_si_pstate
-        4857, // SMSUBL_64wa_dp_3src
-        4863, // SMULH_64_dp_3src
-        4868, // SMULL_smaddl_64wa_dp_3src
-        4873, // SSBB_dsb_bo_barriers
-        4875, // ST2G_64spost_ldsttags
-        4883, // ST2G_64spre_ldsttags
-        4889, // ST2G_64soffset_ldsttags
-        4895, // ST64B_64l_memop
-        4899, // ST64BV_64_memop
-        4904, // ST64BV0_64_memop
-        4909, // STADD_ldadd_32_memop
-        4913, // STADDL_ldaddl_32_memop
-        4917, // STADD_ldadd_64_memop
-        4921, // STADDL_ldaddl_64_memop
-        4925, // STADDB_ldaddb_32_memop
-        4929, // STADDLB_ldaddlb_32_memop
-        4933, // STADDH_ldaddh_32_memop
-        4937, // STADDLH_ldaddlh_32_memop
-        4941, // STCLR_ldclr_32_memop
-        4945, // STCLRL_ldclrl_32_memop
-        4949, // STCLR_ldclr_64_memop
-        4953, // STCLRL_ldclrl_64_memop
-        4957, // STCLRB_ldclrb_32_memop
-        4961, // STCLRLB_ldclrlb_32_memop
-        4965, // STCLRH_ldclrh_32_memop
-        4969, // STCLRLH_ldclrlh_32_memop
-        4973, // STEOR_ldeor_32_memop
-        4977, // STEORL_ldeorl_32_memop
-        4981, // STEOR_ldeor_64_memop
-        4985, // STEORL_ldeorl_64_memop
-        4989, // STEORB_ldeorb_32_memop
-        4993, // STEORLB_ldeorlb_32_memop
-        4997, // STEORH_ldeorh_32_memop
-        5001, // STEORLH_ldeorlh_32_memop
-        5005, // STG_64spost_ldsttags
-        5013, // STG_64spre_ldsttags
-        5019, // STG_64soffset_ldsttags
-        5025, // STGM_64bulk_ldsttags
-        5029, // STGP_64_ldstpair_post
-        5039, // STGP_64_ldstpair_pre
-        5047, // STGP_64_ldstpair_off
-        5055, // STILP_32se_ldiappstilp
-        5063, // STILP_32s_ldiappstilp
-        5068, // STILP_64ss_ldiappstilp
-        5076, // STILP_64s_ldiappstilp
-        5081, // STLLR_sl32_ldstord
-        5085, // STLLR_sl64_ldstord
-        5089, // STLLRB_sl32_ldstord
-        5093, // STLLRH_sl32_ldstord
-        5097, // STLR_sl32_ldstord
-        5101, // STLR_sl64_ldstord
-        5105, // STLR_32s_ldapstl_writeback
-        5111, // STLR_64s_ldapstl_writeback
-        5117, // STLRB_sl32_ldstord
-        5121, // STLRH_sl32_ldstord
-        5125, // STLTXR_sr32_ldstexclr_unpriv
-        5130, // STLTXR_sr64_ldstexclr_unpriv
-        5135, // STLUR_32_ldapstl_unscaled
-        5141, // STLUR_64_ldapstl_unscaled
-        5147, // STLURB_32_ldapstl_unscaled
-        5153, // STLURH_32_ldapstl_unscaled
-        5159, // STLXP_sp32_ldstexclp
-        5165, // STLXP_sp64_ldstexclp
-        5171, // STLXR_sr32_ldstexclr
-        5176, // STLXR_sr64_ldstexclr
-        5181, // STLXRB_sr32_ldstexclr
-        5186, // STLXRH_sr32_ldstexclr
-        5191, // STNP_32_ldstnapair_offs
-        5199, // STNP_64_ldstnapair_offs
-        5207, // STP_32_ldstpair_post
-        5217, // STP_64_ldstpair_post
-        5227, // STP_32_ldstpair_pre
-        5235, // STP_64_ldstpair_pre
-        5243, // STP_32_ldstpair_off
-        5251, // STP_64_ldstpair_off
-        5259, // STR_32_ldst_immpost
-        5267, // STR_64_ldst_immpost
-        5275, // STR_32_ldst_immpre
-        5281, // STR_64_ldst_immpre
-        5287, // STR_32_ldst_pos
-        5293, // STR_64_ldst_pos
-        5299, // STR_32_ldst_regoff
-        5305, // STR_64_ldst_regoff
-        5311, // STRB_32_ldst_immpost
-        5319, // STRB_32_ldst_immpre
-        5325, // STRB_32_ldst_pos
-        5331, // STRB_32b_ldst_regoff
-        5337, // STRB_32bl_ldst_regoff
-        5343, // STRH_32_ldst_immpost
-        5351, // STRH_32_ldst_immpre
-        5357, // STRH_32_ldst_pos
-        5363, // STRH_32_ldst_regoff
-        5369, // STSET_ldset_32_memop
-        5373, // STSETL_ldsetl_32_memop
-        5377, // STSET_ldset_64_memop
-        5381, // STSETL_ldsetl_64_memop
-        5385, // STSETB_ldsetb_32_memop
-        5389, // STSETLB_ldsetlb_32_memop
-        5393, // STSETH_ldseth_32_memop
-        5397, // STSETLH_ldsetlh_32_memop
-        5401, // STSHH_hi_hints
-        5404, // STSMAX_ldsmax_32_memop
-        5408, // STSMAXL_ldsmaxl_32_memop
-        5412, // STSMAX_ldsmax_64_memop
-        5416, // STSMAXL_ldsmaxl_64_memop
-        5420, // STSMAXB_ldsmaxb_32_memop
-        5424, // STSMAXLB_ldsmaxlb_32_memop
-        5428, // STSMAXH_ldsmaxh_32_memop
-        5432, // STSMAXLH_ldsmaxlh_32_memop
-        5436, // STSMIN_ldsmin_32_memop
-        5440, // STSMINL_ldsminl_32_memop
-        5444, // STSMIN_ldsmin_64_memop
-        5448, // STSMINL_ldsminl_64_memop
-        5452, // STSMINB_ldsminb_32_memop
-        5456, // STSMINLB_ldsminlb_32_memop
-        5460, // STSMINH_ldsminh_32_memop
-        5464, // STSMINLH_ldsminlh_32_memop
-        5468, // STTADD_ldtadd_32_memop_unpriv
-        5472, // STTADDL_ldtaddl_32_memop_unpriv
-        5476, // STTADD_ldtadd_64_memop_unpriv
-        5480, // STTADDL_ldtaddl_64_memop_unpriv
-        5484, // STTCLR_ldtclr_32_memop_unpriv
-        5488, // STTCLRL_ldtclrl_32_memop_unpriv
-        5492, // STTCLR_ldtclr_64_memop_unpriv
-        5496, // STTCLRL_ldtclrl_64_memop_unpriv
-        5500, // STTNP_64_ldstnapair_offs
-        5508, // STTP_64_ldstpair_post
-        5518, // STTP_64_ldstpair_pre
-        5526, // STTP_64_ldstpair_off
-        5534, // STTR_32_ldst_unpriv
-        5540, // STTR_64_ldst_unpriv
-        5546, // STTRB_32_ldst_unpriv
-        5552, // STTRH_32_ldst_unpriv
-        5558, // STTSET_ldtset_32_memop_unpriv
-        5562, // STTSETL_ldtsetl_32_memop_unpriv
-        5566, // STTSET_ldtset_64_memop_unpriv
-        5570, // STTSETL_ldtsetl_64_memop_unpriv
-        5574, // STTXR_sr32_ldstexclr_unpriv
-        5579, // STTXR_sr64_ldstexclr_unpriv
-        5584, // STUMAX_ldumax_32_memop
-        5588, // STUMAXL_ldumaxl_32_memop
-        5592, // STUMAX_ldumax_64_memop
-        5596, // STUMAXL_ldumaxl_64_memop
-        5600, // STUMAXB_ldumaxb_32_memop
-        5604, // STUMAXLB_ldumaxlb_32_memop
-        5608, // STUMAXH_ldumaxh_32_memop
-        5612, // STUMAXLH_ldumaxlh_32_memop
-        5616, // STUMIN_ldumin_32_memop
-        5620, // STUMINL_lduminl_32_memop
-        5624, // STUMIN_ldumin_64_memop
-        5628, // STUMINL_lduminl_64_memop
-        5632, // STUMINB_lduminb_32_memop
-        5636, // STUMINLB_lduminlb_32_memop
-        5640, // STUMINH_lduminh_32_memop
-        5644, // STUMINLH_lduminlh_32_memop
-        5648, // STUR_32_ldst_unscaled
-        5654, // STUR_64_ldst_unscaled
-        5660, // STURB_32_ldst_unscaled
-        5666, // STURH_32_ldst_unscaled
-        5672, // STXP_sp32_ldstexclp
-        5678, // STXP_sp64_ldstexclp
-        5684, // STXR_sr32_ldstexclr
-        5689, // STXR_sr64_ldstexclr
-        5694, // STXRB_sr32_ldstexclr
-        5699, // STXRH_sr32_ldstexclr
-        5704, // STZ2G_64spost_ldsttags
-        5712, // STZ2G_64spre_ldsttags
-        5718, // STZ2G_64soffset_ldsttags
-        5724, // STZG_64spost_ldsttags
-        5732, // STZG_64spre_ldsttags
-        5738, // STZG_64soffset_ldsttags
-        5744, // STZGM_64bulk_ldsttags
-        5748, // SUB_32_addsub_ext
-        5754, // SUB_64_addsub_ext
-        5764, // SUB_32_addsub_imm
-        5774, // SUB_64_addsub_imm
-        5784, // SUB_32_addsub_shift
-        5790, // SUB_64_addsub_shift
-        5796, // SUBG_64_addsub_immtags
-        5806, // SUBP_64s_dp_2src
-        5811, // SUBPS_64s_dp_2src
-        5816, // SUBPT_64_addsub_pt
-        5822, // SUBS_32s_addsub_ext
-        5828, // SUBS_64s_addsub_ext
-        5838, // SUBS_32s_addsub_imm
-        5848, // SUBS_64s_addsub_imm
-        5858, // SUBS_32_addsub_shift
-        5864, // SUBS_64_addsub_shift
-        5870, // SVC_ex_exception
-        5874, // SWP_32_memop
-        5879, // SWPA_32_memop
-        5884, // SWPAL_32_memop
-        5889, // SWPL_32_memop
-        5894, // SWP_64_memop
-        5899, // SWPA_64_memop
-        5904, // SWPAL_64_memop
-        5909, // SWPL_64_memop
-        5914, // SWPB_32_memop
-        5919, // SWPAB_32_memop
-        5924, // SWPALB_32_memop
-        5929, // SWPLB_32_memop
-        5934, // SWPH_32_memop
-        5939, // SWPAH_32_memop
-        5944, // SWPALH_32_memop
-        5949, // SWPLH_32_memop
-        5954, // SWPP_128_memop_128
-        5959, // SWPPA_128_memop_128
-        5964, // SWPPAL_128_memop_128
-        5969, // SWPPL_128_memop_128
-        5974, // SWPT_32_memop_unpriv
-        5979, // SWPTA_32_memop_unpriv
-        5984, // SWPTAL_32_memop_unpriv
-        5989, // SWPTL_32_memop_unpriv
-        5994, // SWPT_64_memop_unpriv
-        5999, // SWPTA_64_memop_unpriv
-        6004, // SWPTAL_64_memop_unpriv
-        6009, // SWPTL_64_memop_unpriv
-        6014, // SXTB_sbfm_32m_bitfield
-        6018, // SXTB_sbfm_64m_bitfield
-        6022, // SXTH_sbfm_32m_bitfield
-        6026, // SXTH_sbfm_64m_bitfield
-        6030, // SXTW_sbfm_64m_bitfield
-        6034, // SYS_cr_systeminstrs
-        6046, // SYSL_rc_systeminstrs
-        6058, // SYSP_cr_syspairinstrs
-        6070, // TBNZ_only_testbranch
-        6078, // TBZ_only_testbranch
-        6086, // TCANCEL_ex_exception
-        6090, // TCOMMIT_only_barriers
-        6092, // TLBI_sys_cr_systeminstrs
-        6096, // TLBIP_sysp_cr_syspairinstrs
-        6100, // TRCIT_sys_cr_systeminstrs
-        6103, // TSB_hc_hints
-        6106, // TST_ands_32s_log_imm
-        6112, // TST_ands_64s_log_imm
-        6118, // TST_ands_32_log_shift
-        6123, // TST_ands_64_log_shift
-        6128, // TSTART_br_systemresult
-        6131, // TTEST_br_systemresult
-        6134, // UBFIZ_ubfm_32m_bitfield
-        6144, // UBFIZ_ubfm_64m_bitfield
-        6154, // UBFM_32m_bitfield
-        6164, // UBFM_64m_bitfield
-        6174, // UBFX_ubfm_32m_bitfield
-        6184, // UBFX_ubfm_64m_bitfield
-        6194, // UDF_only_perm_undef
-        6198, // UDIV_32_dp_2src
-        6203, // UDIV_64_dp_2src
-        6208, // UMADDL_64wa_dp_3src
-        6214, // UMAX_32u_minmax_imm
-        6222, // UMAX_64u_minmax_imm
-        6230, // UMAX_32_dp_2src
-        6235, // UMAX_64_dp_2src
-        6240, // UMIN_32u_minmax_imm
-        6248, // UMIN_64u_minmax_imm
-        6256, // UMIN_32_dp_2src
-        6261, // UMIN_64_dp_2src
-        6266, // UMNEGL_umsubl_64wa_dp_3src
-        6271, // UMSUBL_64wa_dp_3src
-        6277, // UMULH_64_dp_3src
-        6282, // UMULL_umaddl_64wa_dp_3src
-        6287, // UXTB_ubfm_32m_bitfield
-        6291, // UXTH_ubfm_32m_bitfield
-        6295, // WFE_hi_hints
-        6297, // WFET_only_systeminstrswithreg
-        6300, // WFI_hi_hints
-        6302, // WFIT_only_systeminstrswithreg
-        6305, // XAFLAG_m_pstate
-        6307, // XPACD_64z_dp_1src
-        6310, // XPACI_64z_dp_1src
-        6313, // XPACLRI_hi_hints
-        6315, // YIELD_hi_hints
-        6317, // ABS_asisdmisc_r
-        6321, // ABS_asimdmisc_r
-        6327, // ADD_asisdsame_only
-        6332, // ADD_asimdsame_only
-        6340, // ADDHN_asimddiff_n
-        6348, // ADDHN2_asimddiff_n
-        6356, // ADDP_asisdpair_only
-        6362, // ADDP_asimdsame_only
-        6370, // ADDV_asimdall_only
-        6376, // AESD_b_cryptoaes
-        6382, // AESE_b_cryptoaes
-        6388, // AESIMC_b_cryptoaes
-        6394, // AESMC_b_cryptoaes
-        6400, // AND_asimdsame_only
-        6408, // BCAX_vvv16_crypto4
-        6418, // BF1CVTL_asimdmisc_v
-        6424, // BF1CVTL2_asimdmisc_v
-        6430, // BF2CVTL_asimdmisc_v
-        6436, // BF2CVTL2_asimdmisc_v
-        6442, // BFCVT_bs_floatdp1
-        6446, // BFCVTN_asimdmisc_4s
-        6452, // BFCVTN2_asimdmisc_4s
-        6458, // BFDOT_asimdelem_e
-        6466, // BFDOT_asimdsame2_d
-        6474, // BFMLALB_asimdelem_f
-        6482, // BFMLALT_asimdelem_f
-        6490, // BFMLALB_asimdsame2_f
-        6498, // BFMLALT_asimdsame2_f
-        6506, // BFMMLA_asimdsame2_e
-        6514, // BIC_asimdimm_l_hl
-        6522, // BIC_asimdimm_l_sl
-        6530, // BIC_asimdsame_only
-        6538, // BIF_asimdsame_only
-        6546, // BIT_asimdsame_only
-        6554, // BSL_asimdsame_only
-        6562, // CLS_asimdmisc_r
-        6568, // CLZ_asimdmisc_r
-        6574, // CMEQ_asisdsame_only
-        6579, // CMEQ_asimdsame_only
-        6587, // CMEQ_asisdmisc_z
-        6592, // CMEQ_asimdmisc_z
-        6600, // CMGE_asisdsame_only
-        6605, // CMGE_asimdsame_only
-        6613, // CMGE_asisdmisc_z
-        6618, // CMGE_asimdmisc_z
-        6626, // CMGT_asisdsame_only
-        6631, // CMGT_asimdsame_only
-        6639, // CMGT_asisdmisc_z
-        6644, // CMGT_asimdmisc_z
-        6652, // CMHI_asisdsame_only
-        6657, // CMHI_asimdsame_only
-        6665, // CMHS_asisdsame_only
-        6670, // CMHS_asimdsame_only
-        6678, // CMLE_asisdmisc_z
-        6683, // CMLE_asimdmisc_z
-        6691, // CMLT_asisdmisc_z
-        6696, // CMLT_asimdmisc_z
-        6704, // CMTST_asisdsame_only
-        6709, // CMTST_asimdsame_only
-        6717, // CNT_asimdmisc_r
-        6723, // DUP_asisdone_only
-        6729, // DUP_asimdins_dv_v
-        6735, // DUP_asimdins_dr_r
-        6741, // EOR_asimdsame_only
-        6749, // EOR3_vvv16_crypto4
-        6759, // EXT_asimdext_only
-        6769, // F1CVTL_asimdmisc_v
-        6775, // F1CVTL2_asimdmisc_v
-        6781, // F2CVTL_asimdmisc_v
-        6787, // F2CVTL2_asimdmisc_v
-        6793, // FABD_asisdsamefp16_only
-        6798, // FABD_asisdsame_only
-        6806, // FABD_asimdsamefp16_only
-        6814, // FABD_asimdsame_only
-        6822, // FABS_h_floatdp1
-        6826, // FABS_s_floatdp1
-        6830, // FABS_d_floatdp1
-        6834, // FABS_asimdmiscfp16_r
-        6840, // FABS_asimdmisc_r
-        6846, // FACGE_asisdsamefp16_only
-        6851, // FACGE_asisdsame_only
-        6859, // FACGE_asimdsamefp16_only
-        6867, // FACGE_asimdsame_only
-        6875, // FACGT_asisdsamefp16_only
-        6880, // FACGT_asisdsame_only
-        6888, // FACGT_asimdsamefp16_only
-        6896, // FACGT_asimdsame_only
-        6904, // FADD_h_floatdp2
-        6909, // FADD_s_floatdp2
-        6914, // FADD_d_floatdp2
-        6919, // FADD_asimdsamefp16_only
-        6927, // FADD_asimdsame_only
-        6935, // FADDP_asisdpair_only_h
-        6941, // FADDP_asisdpair_only_sd
-        6947, // FADDP_asimdsamefp16_only
-        6955, // FADDP_asimdsame_only
-        6963, // FAMAX_asimdsamefp16_only
-        6971, // FAMAX_asimdsame_only
-        6979, // FAMIN_asimdsamefp16_only
-        6987, // FAMIN_asimdsame_only
-        6995, // FCADD_asimdsame2_c
-        7005, // FCCMP_h_floatccmp
-        7015, // FCCMP_s_floatccmp
-        7025, // FCCMP_d_floatccmp
-        7035, // FCCMPE_h_floatccmp
-        7045, // FCCMPE_s_floatccmp
-        7055, // FCCMPE_d_floatccmp
-        7065, // FCMEQ_asisdsamefp16_only
-        7070, // FCMEQ_asisdsame_only
-        7078, // FCMEQ_asimdsamefp16_only
-        7086, // FCMEQ_asimdsame_only
-        7094, // FCMEQ_asisdmiscfp16_fz
-        7099, // FCMEQ_asisdmisc_fz
-        7107, // FCMEQ_asimdmiscfp16_fz
-        7115, // FCMEQ_asimdmisc_fz
-        7123, // FCMGE_asisdsamefp16_only
-        7128, // FCMGE_asisdsame_only
-        7136, // FCMGE_asimdsamefp16_only
-        7144, // FCMGE_asimdsame_only
-        7152, // FCMGE_asisdmiscfp16_fz
-        7157, // FCMGE_asisdmisc_fz
-        7165, // FCMGE_asimdmiscfp16_fz
-        7173, // FCMGE_asimdmisc_fz
-        7181, // FCMGT_asisdsamefp16_only
-        7186, // FCMGT_asisdsame_only
-        7194, // FCMGT_asimdsamefp16_only
-        7202, // FCMGT_asimdsame_only
-        7210, // FCMGT_asisdmiscfp16_fz
-        7215, // FCMGT_asisdmisc_fz
-        7223, // FCMGT_asimdmiscfp16_fz
-        7231, // FCMGT_asimdmisc_fz
-        7239, // FCMLA_asimdsame2_c
-        7249, // FCMLA_advsimd_elt
-        7259, // FCMLE_asisdmiscfp16_fz
-        7264, // FCMLE_asisdmisc_fz
-        7272, // FCMLE_asimdmiscfp16_fz
-        7280, // FCMLE_asimdmisc_fz
-        7288, // FCMLT_asisdmiscfp16_fz
-        7293, // FCMLT_asisdmisc_fz
-        7301, // FCMLT_asimdmiscfp16_fz
-        7309, // FCMLT_asimdmisc_fz
-        7317, // FCMP_h_floatcmp
-        7321, // FCMP_hz_floatcmp
-        7325, // FCMP_s_floatcmp
-        7329, // FCMP_sz_floatcmp
-        7333, // FCMP_d_floatcmp
-        7337, // FCMP_dz_floatcmp
-        7341, // FCMPE_h_floatcmp
-        7345, // FCMPE_hz_floatcmp
-        7349, // FCMPE_s_floatcmp
-        7353, // FCMPE_sz_floatcmp
-        7357, // FCMPE_d_floatcmp
-        7361, // FCMPE_dz_floatcmp
-        7365, // FCSEL_h_floatsel
-        7371, // FCSEL_s_floatsel
-        7377, // FCSEL_d_floatsel
-        7383, // FCVT_sh_floatdp1
-        7387, // FCVT_dh_floatdp1
-        7391, // FCVT_hs_floatdp1
-        7395, // FCVT_ds_floatdp1
-        7399, // FCVT_hd_floatdp1
-        7403, // FCVT_sd_floatdp1
-        7407, // FCVTAS_sisd_32h
-        7411, // FCVTAS_sisd_64h
-        7415, // FCVTAS_sisd_64s
-        7419, // FCVTAS_sisd_32d
-        7423, // FCVTAS_32h_float2int
-        7427, // FCVTAS_64h_float2int
-        7431, // FCVTAS_32s_float2int
-        7435, // FCVTAS_64s_float2int
-        7439, // FCVTAS_32d_float2int
-        7443, // FCVTAS_64d_float2int
-        7447, // FCVTAS_asisdmiscfp16_r
-        7451, // FCVTAS_asisdmisc_r
-        7457, // FCVTAS_asimdmiscfp16_r
-        7463, // FCVTAS_asimdmisc_r
-        7469, // FCVTAU_sisd_32h
-        7473, // FCVTAU_sisd_64h
-        7477, // FCVTAU_sisd_64s
-        7481, // FCVTAU_sisd_32d
-        7485, // FCVTAU_32h_float2int
-        7489, // FCVTAU_64h_float2int
-        7493, // FCVTAU_32s_float2int
-        7497, // FCVTAU_64s_float2int
-        7501, // FCVTAU_32d_float2int
-        7505, // FCVTAU_64d_float2int
-        7509, // FCVTAU_asisdmiscfp16_r
-        7513, // FCVTAU_asisdmisc_r
-        7519, // FCVTAU_asimdmiscfp16_r
-        7525, // FCVTAU_asimdmisc_r
-        7531, // FCVTL_asimdmisc_l
-        7537, // FCVTL2_asimdmisc_l
-        7543, // FCVTMS_sisd_32h
-        7547, // FCVTMS_sisd_64h
-        7551, // FCVTMS_sisd_64s
-        7555, // FCVTMS_sisd_32d
-        7559, // FCVTMS_32h_float2int
-        7563, // FCVTMS_64h_float2int
-        7567, // FCVTMS_32s_float2int
-        7571, // FCVTMS_64s_float2int
-        7575, // FCVTMS_32d_float2int
-        7579, // FCVTMS_64d_float2int
-        7583, // FCVTMS_asisdmiscfp16_r
-        7587, // FCVTMS_asisdmisc_r
-        7593, // FCVTMS_asimdmiscfp16_r
-        7599, // FCVTMS_asimdmisc_r
-        7605, // FCVTMU_sisd_32h
-        7609, // FCVTMU_sisd_64h
-        7613, // FCVTMU_sisd_64s
-        7617, // FCVTMU_sisd_32d
-        7621, // FCVTMU_32h_float2int
-        7625, // FCVTMU_64h_float2int
-        7629, // FCVTMU_32s_float2int
-        7633, // FCVTMU_64s_float2int
-        7637, // FCVTMU_32d_float2int
-        7641, // FCVTMU_64d_float2int
-        7645, // FCVTMU_asisdmiscfp16_r
-        7649, // FCVTMU_asisdmisc_r
-        7655, // FCVTMU_asimdmiscfp16_r
-        7661, // FCVTMU_asimdmisc_r
-        7667, // FCVTN_asimdsame2_d
-        7675, // FCVTN_asimdmisc_n
-        7681, // FCVTN2_asimdmisc_n
-        7687, // FCVTN_asimdsame2_h
-        7695, // FCVTN2_asimdsame2_h
-        7703, // FCVTNS_sisd_32h
-        7707, // FCVTNS_sisd_64h
-        7711, // FCVTNS_sisd_64s
-        7715, // FCVTNS_sisd_32d
-        7719, // FCVTNS_32h_float2int
-        7723, // FCVTNS_64h_float2int
-        7727, // FCVTNS_32s_float2int
-        7731, // FCVTNS_64s_float2int
-        7735, // FCVTNS_32d_float2int
-        7739, // FCVTNS_64d_float2int
-        7743, // FCVTNS_asisdmiscfp16_r
-        7747, // FCVTNS_asisdmisc_r
-        7753, // FCVTNS_asimdmiscfp16_r
-        7759, // FCVTNS_asimdmisc_r
-        7765, // FCVTNU_sisd_32h
-        7769, // FCVTNU_sisd_64h
-        7773, // FCVTNU_sisd_64s
-        7777, // FCVTNU_sisd_32d
-        7781, // FCVTNU_32h_float2int
-        7785, // FCVTNU_64h_float2int
-        7789, // FCVTNU_32s_float2int
-        7793, // FCVTNU_64s_float2int
-        7797, // FCVTNU_32d_float2int
-        7801, // FCVTNU_64d_float2int
-        7805, // FCVTNU_asisdmiscfp16_r
-        7809, // FCVTNU_asisdmisc_r
-        7815, // FCVTNU_asimdmiscfp16_r
-        7821, // FCVTNU_asimdmisc_r
-        7827, // FCVTPS_sisd_32h
-        7831, // FCVTPS_sisd_64h
-        7835, // FCVTPS_sisd_64s
-        7839, // FCVTPS_sisd_32d
-        7843, // FCVTPS_32h_float2int
-        7847, // FCVTPS_64h_float2int
-        7851, // FCVTPS_32s_float2int
-        7855, // FCVTPS_64s_float2int
-        7859, // FCVTPS_32d_float2int
-        7863, // FCVTPS_64d_float2int
-        7867, // FCVTPS_asisdmiscfp16_r
-        7871, // FCVTPS_asisdmisc_r
-        7877, // FCVTPS_asimdmiscfp16_r
-        7883, // FCVTPS_asimdmisc_r
-        7889, // FCVTPU_sisd_32h
-        7893, // FCVTPU_sisd_64h
-        7897, // FCVTPU_sisd_64s
-        7901, // FCVTPU_sisd_32d
-        7905, // FCVTPU_32h_float2int
-        7909, // FCVTPU_64h_float2int
-        7913, // FCVTPU_32s_float2int
-        7917, // FCVTPU_64s_float2int
-        7921, // FCVTPU_32d_float2int
-        7925, // FCVTPU_64d_float2int
-        7929, // FCVTPU_asisdmiscfp16_r
-        7933, // FCVTPU_asisdmisc_r
-        7939, // FCVTPU_asimdmiscfp16_r
-        7945, // FCVTPU_asimdmisc_r
-        7951, // FCVTXN_asisdmisc_n
-        7955, // FCVTXN_asimdmisc_n
-        7961, // FCVTXN2_asimdmisc_n
-        7967, // FCVTZS_sisd_32h
-        7971, // FCVTZS_sisd_64h
-        7975, // FCVTZS_sisd_64s
-        7979, // FCVTZS_sisd_32d
-        7983, // FCVTZS_32h_float2fix
-        7991, // FCVTZS_64h_float2fix
-        7999, // FCVTZS_32s_float2fix
-        8007, // FCVTZS_64s_float2fix
-        8015, // FCVTZS_32d_float2fix
-        8023, // FCVTZS_64d_float2fix
-        8031, // FCVTZS_32h_float2int
-        8035, // FCVTZS_64h_float2int
-        8039, // FCVTZS_32s_float2int
-        8043, // FCVTZS_64s_float2int
-        8047, // FCVTZS_32d_float2int
-        8051, // FCVTZS_64d_float2int
-        8055, // FCVTZS_asisdshf_c
-        8063, // FCVTZS_asimdshf_c
-        8071, // FCVTZS_asisdmiscfp16_r
-        8075, // FCVTZS_asisdmisc_r
-        8081, // FCVTZS_asimdmiscfp16_r
-        8087, // FCVTZS_asimdmisc_r
-        8093, // FCVTZU_sisd_32h
-        8097, // FCVTZU_sisd_64h
-        8101, // FCVTZU_sisd_64s
-        8105, // FCVTZU_sisd_32d
-        8109, // FCVTZU_32h_float2fix
-        8117, // FCVTZU_64h_float2fix
-        8125, // FCVTZU_32s_float2fix
-        8133, // FCVTZU_64s_float2fix
-        8141, // FCVTZU_32d_float2fix
-        8149, // FCVTZU_64d_float2fix
-        8157, // FCVTZU_32h_float2int
-        8161, // FCVTZU_64h_float2int
-        8165, // FCVTZU_32s_float2int
-        8169, // FCVTZU_64s_float2int
-        8173, // FCVTZU_32d_float2int
-        8177, // FCVTZU_64d_float2int
-        8181, // FCVTZU_asisdshf_c
-        8189, // FCVTZU_asimdshf_c
-        8197, // FCVTZU_asisdmiscfp16_r
-        8201, // FCVTZU_asisdmisc_r
-        8207, // FCVTZU_asimdmiscfp16_r
-        8213, // FCVTZU_asimdmisc_r
-        8219, // FDIV_h_floatdp2
-        8224, // FDIV_s_floatdp2
-        8229, // FDIV_d_floatdp2
-        8234, // FDIV_asimdsamefp16_only
-        8242, // FDIV_asimdsame_only
-        8250, // FDOT_asimdelem_g
-        8258, // FDOT_asimdsame2_d
-        8266, // FDOT_asimdelem_d
-        8274, // FDOT_asimdsame2_dd
-        8282, // FJCVTZS_32d_float2int
-        8286, // FMADD_h_floatdp3
-        8292, // FMADD_s_floatdp3
-        8298, // FMADD_d_floatdp3
-        8304, // FMAX_h_floatdp2
-        8309, // FMAX_s_floatdp2
-        8314, // FMAX_d_floatdp2
-        8319, // FMAX_asimdsamefp16_only
-        8327, // FMAX_asimdsame_only
-        8335, // FMAXNM_h_floatdp2
-        8340, // FMAXNM_s_floatdp2
-        8345, // FMAXNM_d_floatdp2
-        8350, // FMAXNM_asimdsamefp16_only
-        8358, // FMAXNM_asimdsame_only
-        8366, // FMAXNMP_asisdpair_only_h
-        8372, // FMAXNMP_asisdpair_only_sd
-        8378, // FMAXNMP_asimdsamefp16_only
-        8386, // FMAXNMP_asimdsame_only
-        8394, // FMAXNMV_asimdall_only_h
-        8400, // FMAXNMV_asimdall_only_sd
-        8406, // FMAXP_asisdpair_only_h
-        8412, // FMAXP_asisdpair_only_sd
-        8418, // FMAXP_asimdsamefp16_only
-        8426, // FMAXP_asimdsame_only
-        8434, // FMAXV_asimdall_only_h
-        8440, // FMAXV_asimdall_only_sd
-        8446, // FMIN_h_floatdp2
-        8451, // FMIN_s_floatdp2
-        8456, // FMIN_d_floatdp2
-        8461, // FMIN_asimdsamefp16_only
-        8469, // FMIN_asimdsame_only
-        8477, // FMINNM_h_floatdp2
-        8482, // FMINNM_s_floatdp2
-        8487, // FMINNM_d_floatdp2
-        8492, // FMINNM_asimdsamefp16_only
-        8500, // FMINNM_asimdsame_only
-        8508, // FMINNMP_asisdpair_only_h
-        8514, // FMINNMP_asisdpair_only_sd
-        8520, // FMINNMP_asimdsamefp16_only
-        8528, // FMINNMP_asimdsame_only
-        8536, // FMINNMV_asimdall_only_h
-        8542, // FMINNMV_asimdall_only_sd
-        8548, // FMINP_asisdpair_only_h
-        8554, // FMINP_asisdpair_only_sd
-        8560, // FMINP_asimdsamefp16_only
-        8568, // FMINP_asimdsame_only
-        8576, // FMINV_asimdall_only_h
-        8582, // FMINV_asimdall_only_sd
-        8588, // FMLA_asisdelem_rh_h
-        8596, // FMLA_asisdelem_r_sd
-        8604, // FMLA_asimdelem_rh_h
-        8612, // FMLA_asimdelem_r_sd
-        8620, // FMLA_asimdsamefp16_only
-        8628, // FMLA_asimdsame_only
-        8636, // FMLAL_asimdelem_lh
-        8644, // FMLAL2_asimdelem_lh
-        8652, // FMLAL_asimdsame_f
-        8660, // FMLAL2_asimdsame_f
-        8668, // FMLALB_asimdelem_h
-        8676, // FMLALT_asimdelem_h
-        8684, // FMLALB_asimdsame2_j
-        8692, // FMLALT_asimdsame2_j
-        8700, // FMLALLBB_asimdelem_j
-        8708, // FMLALLBT_asimdelem_j
-        8716, // FMLALLTB_asimdelem_j
-        8724, // FMLALLTT_asimdelem_j
-        8732, // FMLALLBB_asimdsame2_g
-        8740, // FMLALLBT_asimdsame2_g
-        8748, // FMLALLTB_asimdsame2_g
-        8756, // FMLALLTT_asimdsame2_g
-        8764, // FMLS_asisdelem_rh_h
-        8772, // FMLS_asisdelem_r_sd
-        8780, // FMLS_asimdelem_rh_h
-        8788, // FMLS_asimdelem_r_sd
-        8796, // FMLS_asimdsamefp16_only
-        8804, // FMLS_asimdsame_only
-        8812, // FMLSL_asimdelem_lh
-        8820, // FMLSL2_asimdelem_lh
-        8828, // FMLSL_asimdsame_f
-        8836, // FMLSL2_asimdsame_f
-        8844, // FMMLA_asimd_fp8fp16
-        8852, // FMMLA_asimd_fp8fp32
-        8860, // FMOV_32h_float2int
-        8864, // FMOV_64h_float2int
-        8868, // FMOV_h32_float2int
-        8872, // FMOV_s32_float2int
-        8876, // FMOV_32s_float2int
-        8880, // FMOV_h64_float2int
-        8884, // FMOV_d64_float2int
-        8888, // FMOV_v64i_float2int
-        8894, // FMOV_64d_float2int
-        8898, // FMOV_64vx_float2int
-        8904, // FMOV_h_floatdp1
-        8908, // FMOV_s_floatdp1
-        8912, // FMOV_d_floatdp1
-        8916, // FMOV_h_floatimm
-        8922, // FMOV_s_floatimm
-        8928, // FMOV_d_floatimm
-        8934, // FMOV_asimdimm_h_h
-        8940, // FMOV_asimdimm_s_s
-        8946, // FMOV_asimdimm_d2_d
-        8952, // FMSUB_h_floatdp3
-        8958, // FMSUB_s_floatdp3
-        8964, // FMSUB_d_floatdp3
-        8970, // FMUL_asisdelem_rh_h
-        8978, // FMUL_asisdelem_r_sd
-        8986, // FMUL_asimdelem_rh_h
-        8994, // FMUL_asimdelem_r_sd
-        9002, // FMUL_h_floatdp2
-        9007, // FMUL_s_floatdp2
-        9012, // FMUL_d_floatdp2
-        9017, // FMUL_asimdsamefp16_only
-        9025, // FMUL_asimdsame_only
-        9033, // FMULX_asisdsamefp16_only
-        9038, // FMULX_asisdsame_only
-        9046, // FMULX_asimdsamefp16_only
-        9054, // FMULX_asimdsame_only
-        9062, // FMULX_asisdelem_rh_h
-        9070, // FMULX_asisdelem_r_sd
-        9078, // FMULX_asimdelem_rh_h
-        9086, // FMULX_asimdelem_r_sd
-        9094, // FNEG_h_floatdp1
-        9098, // FNEG_s_floatdp1
-        9102, // FNEG_d_floatdp1
-        9106, // FNEG_asimdmiscfp16_r
-        9112, // FNEG_asimdmisc_r
-        9118, // FNMADD_h_floatdp3
-        9124, // FNMADD_s_floatdp3
-        9130, // FNMADD_d_floatdp3
-        9136, // FNMSUB_h_floatdp3
-        9142, // FNMSUB_s_floatdp3
-        9148, // FNMSUB_d_floatdp3
-        9154, // FNMUL_h_floatdp2
-        9159, // FNMUL_s_floatdp2
-        9164, // FNMUL_d_floatdp2
-        9169, // FRECPE_asisdmiscfp16_r
-        9173, // FRECPE_asisdmisc_r
-        9179, // FRECPE_asimdmiscfp16_r
-        9185, // FRECPE_asimdmisc_r
-        9191, // FRECPS_asisdsamefp16_only
-        9196, // FRECPS_asisdsame_only
-        9204, // FRECPS_asimdsamefp16_only
-        9212, // FRECPS_asimdsame_only
-        9220, // FRECPX_asisdmiscfp16_r
-        9224, // FRECPX_asisdmisc_r
-        9230, // FRINT32X_s_floatdp1
-        9234, // FRINT32X_d_floatdp1
-        9238, // FRINT32X_asimdmisc_r
-        9244, // FRINT32Z_s_floatdp1
-        9248, // FRINT32Z_d_floatdp1
-        9252, // FRINT32Z_asimdmisc_r
-        9258, // FRINT64X_s_floatdp1
-        9262, // FRINT64X_d_floatdp1
-        9266, // FRINT64X_asimdmisc_r
-        9272, // FRINT64Z_s_floatdp1
-        9276, // FRINT64Z_d_floatdp1
-        9280, // FRINT64Z_asimdmisc_r
-        9286, // FRINTA_h_floatdp1
-        9290, // FRINTA_s_floatdp1
-        9294, // FRINTA_d_floatdp1
-        9298, // FRINTA_asimdmiscfp16_r
-        9304, // FRINTA_asimdmisc_r
-        9310, // FRINTI_h_floatdp1
-        9314, // FRINTI_s_floatdp1
-        9318, // FRINTI_d_floatdp1
-        9322, // FRINTI_asimdmiscfp16_r
-        9328, // FRINTI_asimdmisc_r
-        9334, // FRINTM_h_floatdp1
-        9338, // FRINTM_s_floatdp1
-        9342, // FRINTM_d_floatdp1
-        9346, // FRINTM_asimdmiscfp16_r
-        9352, // FRINTM_asimdmisc_r
-        9358, // FRINTN_h_floatdp1
-        9362, // FRINTN_s_floatdp1
-        9366, // FRINTN_d_floatdp1
-        9370, // FRINTN_asimdmiscfp16_r
-        9376, // FRINTN_asimdmisc_r
-        9382, // FRINTP_h_floatdp1
-        9386, // FRINTP_s_floatdp1
-        9390, // FRINTP_d_floatdp1
-        9394, // FRINTP_asimdmiscfp16_r
-        9400, // FRINTP_asimdmisc_r
-        9406, // FRINTX_h_floatdp1
-        9410, // FRINTX_s_floatdp1
-        9414, // FRINTX_d_floatdp1
-        9418, // FRINTX_asimdmiscfp16_r
-        9424, // FRINTX_asimdmisc_r
-        9430, // FRINTZ_h_floatdp1
-        9434, // FRINTZ_s_floatdp1
-        9438, // FRINTZ_d_floatdp1
-        9442, // FRINTZ_asimdmiscfp16_r
-        9448, // FRINTZ_asimdmisc_r
-        9454, // FRSQRTE_asisdmiscfp16_r
-        9458, // FRSQRTE_asisdmisc_r
-        9464, // FRSQRTE_asimdmiscfp16_r
-        9470, // FRSQRTE_asimdmisc_r
-        9476, // FRSQRTS_asisdsamefp16_only
-        9481, // FRSQRTS_asisdsame_only
-        9489, // FRSQRTS_asimdsamefp16_only
-        9497, // FRSQRTS_asimdsame_only
-        9505, // FSCALE_asimdsamefp16_only
-        9513, // FSCALE_asimdsame_only
-        9521, // FSQRT_h_floatdp1
-        9525, // FSQRT_s_floatdp1
-        9529, // FSQRT_d_floatdp1
-        9533, // FSQRT_asimdmiscfp16_r
-        9539, // FSQRT_asimdmisc_r
-        9545, // FSUB_h_floatdp2
-        9550, // FSUB_s_floatdp2
-        9555, // FSUB_d_floatdp2
-        9560, // FSUB_asimdsamefp16_only
-        9568, // FSUB_asimdsame_only
-        9576, // INS_asimdins_iv_v
-        9582, // INS_asimdins_ir_r
-        9588, // LD1_asisdlse_r1_1v
-        9594, // LD1_asisdlse_r2_2v
-        9600, // LD1_asisdlse_r3_3v
-        9606, // LD1_asisdlse_r4_4v
-        9612, // LD1_asisdlsep_i1_i1
-        9620, // LD1_asisdlsep_r1_r1
-        9628, // LD1_asisdlsep_i2_i2
-        9636, // LD1_asisdlsep_r2_r2
-        9644, // LD1_asisdlsep_i3_i3
-        9652, // LD1_asisdlsep_r3_r3
-        9660, // LD1_asisdlsep_i4_i4
-        9668, // LD1_asisdlsep_r4_r4
-        9676, // LD1_asisdlso_b1_1b
-        9682, // LD1_asisdlso_h1_1h
-        9688, // LD1_asisdlso_s1_1s
-        9694, // LD1_asisdlso_d1_1d
-        9700, // LD1_asisdlsop_b1_i1b
-        9708, // LD1_asisdlsop_bx1_r1b
-        9716, // LD1_asisdlsop_d1_i1d
-        9724, // LD1_asisdlsop_dx1_r1d
-        9732, // LD1_asisdlsop_h1_i1h
-        9740, // LD1_asisdlsop_hx1_r1h
-        9748, // LD1_asisdlsop_s1_i1s
-        9756, // LD1_asisdlsop_sx1_r1s
-        9764, // LD1R_asisdlso_r1
-        9770, // LD1R_asisdlsop_r1_i
-        9778, // LD1R_asisdlsop_rx1_r
-        9786, // LD2_asisdlse_r2
-        9792, // LD2_asisdlsep_i2_i
-        9800, // LD2_asisdlsep_r2_r
-        9808, // LD2_asisdlso_b2_2b
-        9814, // LD2_asisdlso_h2_2h
-        9820, // LD2_asisdlso_s2_2s
-        9826, // LD2_asisdlso_d2_2d
-        9832, // LD2_asisdlsop_b2_i2b
-        9840, // LD2_asisdlsop_bx2_r2b
-        9848, // LD2_asisdlsop_h2_i2h
-        9856, // LD2_asisdlsop_hx2_r2h
-        9864, // LD2_asisdlsop_s2_i2s
-        9872, // LD2_asisdlsop_sx2_r2s
-        9880, // LD2_asisdlsop_d2_i2d
-        9888, // LD2_asisdlsop_dx2_r2d
-        9896, // LD2R_asisdlso_r2
-        9902, // LD2R_asisdlsop_r2_i
-        9910, // LD2R_asisdlsop_rx2_r
-        9918, // LD3_asisdlse_r3
-        9924, // LD3_asisdlsep_i3_i
-        9932, // LD3_asisdlsep_r3_r
-        9940, // LD3_asisdlso_b3_3b
-        9946, // LD3_asisdlso_h3_3h
-        9952, // LD3_asisdlso_s3_3s
-        9958, // LD3_asisdlso_d3_3d
-        9964, // LD3_asisdlsop_b3_i3b
-        9972, // LD3_asisdlsop_bx3_r3b
-        9980, // LD3_asisdlsop_h3_i3h
-        9988, // LD3_asisdlsop_hx3_r3h
-        9996, // LD3_asisdlsop_s3_i3s
-        10004, // LD3_asisdlsop_sx3_r3s
-        10012, // LD3_asisdlsop_d3_i3d
-        10020, // LD3_asisdlsop_dx3_r3d
-        10028, // LD3R_asisdlso_r3
-        10034, // LD3R_asisdlsop_r3_i
-        10042, // LD3R_asisdlsop_rx3_r
-        10050, // LD4_asisdlse_r4
-        10056, // LD4_asisdlsep_i4_i
-        10064, // LD4_asisdlsep_r4_r
-        10072, // LD4_asisdlso_b4_4b
-        10078, // LD4_asisdlso_h4_4h
-        10084, // LD4_asisdlso_s4_4s
-        10090, // LD4_asisdlso_d4_4d
-        10096, // LD4_asisdlsop_b4_i4b
-        10104, // LD4_asisdlsop_bx4_r4b
-        10112, // LD4_asisdlsop_h4_i4h
-        10120, // LD4_asisdlsop_hx4_r4h
-        10128, // LD4_asisdlsop_s4_i4s
-        10136, // LD4_asisdlsop_sx4_r4s
-        10144, // LD4_asisdlsop_d4_i4d
-        10152, // LD4_asisdlsop_dx4_r4d
-        10160, // LD4R_asisdlso_r4
-        10166, // LD4R_asisdlsop_r4_i
-        10174, // LD4R_asisdlsop_rx4_r
-        10182, // LDAP1_asisdlso_d1
-        10188, // LDAPUR_b_ldapstl_simd
-        10194, // LDAPUR_h_ldapstl_simd
-        10200, // LDAPUR_s_ldapstl_simd
-        10206, // LDAPUR_d_ldapstl_simd
-        10212, // LDAPUR_q_ldapstl_simd
-        10218, // LDBFADD_16
-        10223, // LDBFADDA_16
-        10228, // LDBFADDAL_16
-        10233, // LDBFADDL_16
-        10238, // LDBFMAX_16
-        10243, // LDBFMAXA_16
-        10248, // LDBFMAXAL_16
-        10253, // LDBFMAXL_16
-        10258, // LDBFMAXNM_16
-        10263, // LDBFMAXNMA_16
-        10268, // LDBFMAXNMAL_16
-        10273, // LDBFMAXNML_16
-        10278, // LDBFMIN_16
-        10283, // LDBFMINA_16
-        10288, // LDBFMINAL_16
-        10293, // LDBFMINL_16
-        10298, // LDBFMINNM_16
-        10303, // LDBFMINNMA_16
-        10308, // LDBFMINNMAL_16
-        10313, // LDBFMINNML_16
-        10318, // LDFADD_16
-        10323, // LDFADDA_16
-        10328, // LDFADDAL_16
-        10333, // LDFADDL_16
-        10338, // LDFADD_32
-        10343, // LDFADDA_32
-        10348, // LDFADDAL_32
-        10353, // LDFADDL_32
-        10358, // LDFADD_64
-        10363, // LDFADDA_64
-        10368, // LDFADDAL_64
-        10373, // LDFADDL_64
-        10378, // LDFMAX_16
-        10383, // LDFMAXA_16
-        10388, // LDFMAXAL_16
-        10393, // LDFMAXL_16
-        10398, // LDFMAX_32
-        10403, // LDFMAXA_32
-        10408, // LDFMAXAL_32
-        10413, // LDFMAXL_32
-        10418, // LDFMAX_64
-        10423, // LDFMAXA_64
-        10428, // LDFMAXAL_64
-        10433, // LDFMAXL_64
-        10438, // LDFMAXNM_16
-        10443, // LDFMAXNMA_16
-        10448, // LDFMAXNMAL_16
-        10453, // LDFMAXNML_16
-        10458, // LDFMAXNM_32
-        10463, // LDFMAXNMA_32
-        10468, // LDFMAXNMAL_32
-        10473, // LDFMAXNML_32
-        10478, // LDFMAXNM_64
-        10483, // LDFMAXNMA_64
-        10488, // LDFMAXNMAL_64
-        10493, // LDFMAXNML_64
-        10498, // LDFMIN_16
-        10503, // LDFMINA_16
-        10508, // LDFMINAL_16
-        10513, // LDFMINL_16
-        10518, // LDFMIN_32
-        10523, // LDFMINA_32
-        10528, // LDFMINAL_32
-        10533, // LDFMINL_32
-        10538, // LDFMIN_64
-        10543, // LDFMINA_64
-        10548, // LDFMINAL_64
-        10553, // LDFMINL_64
-        10558, // LDFMINNM_16
-        10563, // LDFMINNMA_16
-        10568, // LDFMINNMAL_16
-        10573, // LDFMINNML_16
-        10578, // LDFMINNM_32
-        10583, // LDFMINNMA_32
-        10588, // LDFMINNMAL_32
-        10593, // LDFMINNML_32
-        10598, // LDFMINNM_64
-        10603, // LDFMINNMA_64
-        10608, // LDFMINNMAL_64
-        10613, // LDFMINNML_64
-        10618, // LDNP_s_ldstnapair_offs
-        10626, // LDNP_d_ldstnapair_offs
-        10634, // LDNP_q_ldstnapair_offs
-        10642, // LDP_s_ldstpair_post
-        10652, // LDP_d_ldstpair_post
-        10662, // LDP_q_ldstpair_post
-        10672, // LDP_s_ldstpair_pre
-        10680, // LDP_d_ldstpair_pre
-        10688, // LDP_q_ldstpair_pre
-        10696, // LDP_s_ldstpair_off
-        10704, // LDP_d_ldstpair_off
-        10712, // LDP_q_ldstpair_off
-        10720, // LDR_b_ldst_immpost
-        10728, // LDR_h_ldst_immpost
-        10736, // LDR_s_ldst_immpost
-        10744, // LDR_d_ldst_immpost
-        10752, // LDR_q_ldst_immpost
-        10760, // LDR_b_ldst_immpre
-        10766, // LDR_h_ldst_immpre
-        10772, // LDR_s_ldst_immpre
-        10778, // LDR_d_ldst_immpre
-        10784, // LDR_q_ldst_immpre
-        10790, // LDR_b_ldst_pos
-        10796, // LDR_h_ldst_pos
-        10802, // LDR_s_ldst_pos
-        10808, // LDR_d_ldst_pos
-        10814, // LDR_q_ldst_pos
-        10820, // LDR_s_loadlit
-        10826, // LDR_d_loadlit
-        10832, // LDR_q_loadlit
-        10838, // LDR_b_ldst_regoff
-        10844, // LDR_bl_ldst_regoff
-        10850, // LDR_h_ldst_regoff
-        10856, // LDR_s_ldst_regoff
-        10862, // LDR_d_ldst_regoff
-        10868, // LDR_q_ldst_regoff
-        10874, // LDTNP_q_ldstnapair_offs
-        10882, // LDTP_q_ldstpair_post
-        10892, // LDTP_q_ldstpair_pre
-        10900, // LDTP_q_ldstpair_off
-        10908, // LDUR_b_ldst_unscaled
-        10914, // LDUR_h_ldst_unscaled
-        10920, // LDUR_s_ldst_unscaled
-        10926, // LDUR_d_ldst_unscaled
-        10932, // LDUR_q_ldst_unscaled
-        10938, // LUTI2_asimdtbl_l5
-        10946, // LUTI2_asimdtbl_l6
-        10954, // LUTI4_asimdtbl_l5
-        10962, // LUTI4_asimdtbl_l7
-        10970, // MLA_asimdelem_r
-        10978, // MLA_asimdsame_only
-        10986, // MLS_asimdelem_r
-        10994, // MLS_asimdsame_only
-        11002, // MOV_ins_asimdins_iv_v
-        11008, // MOV_ins_asimdins_ir_r
-        11014, // MOV_dup_asisdone_only
-        11020, // MOV_umov_asimdins_w_w
-        11026, // MOV_umov_asimdins_x_x
-        11032, // MOV_orr_asimdsame_only
-        11038, // MOVI_asimdimm_n_b
-        11046, // MOVI_asimdimm_l_hl
-        11054, // MOVI_asimdimm_l_sl
-        11062, // MOVI_asimdimm_m_sm
-        11070, // MOVI_asimdimm_d_ds
-        11076, // MOVI_asimdimm_d2_d
-        11082, // MUL_asimdelem_r
-        11090, // MUL_asimdsame_only
-        11098, // MVN_not_asimdmisc_r
-        11104, // MVNI_asimdimm_l_hl
-        11112, // MVNI_asimdimm_l_sl
-        11120, // MVNI_asimdimm_m_sm
-        11128, // NEG_asisdmisc_r
-        11132, // NEG_asimdmisc_r
-        11138, // NOT_asimdmisc_r
-        11144, // ORN_asimdsame_only
-        11152, // ORR_asimdimm_l_hl
-        11160, // ORR_asimdimm_l_sl
-        11168, // ORR_asimdsame_only
-        11176, // PMUL_asimdsame_only
-        11184, // PMULL_asimddiff_l
-        11192, // PMULL2_asimddiff_l
-        11200, // RADDHN_asimddiff_n
-        11208, // RADDHN2_asimddiff_n
-        11216, // RAX1_vvv2_cryptosha512_3
-        11224, // RBIT_asimdmisc_r
-        11230, // REV16_asimdmisc_r
-        11236, // REV32_asimdmisc_r
-        11242, // REV64_asimdmisc_r
-        11248, // RSHRN_asimdshf_n
-        11256, // RSHRN2_asimdshf_n
-        11264, // RSUBHN_asimddiff_n
-        11272, // RSUBHN2_asimddiff_n
-        11280, // SABA_asimdsame_only
-        11288, // SABAL_asimddiff_l
-        11296, // SABAL2_asimddiff_l
-        11304, // SABD_asimdsame_only
-        11312, // SABDL_asimddiff_l
-        11320, // SABDL2_asimddiff_l
-        11328, // SADALP_asimdmisc_p
-        11334, // SADDL_asimddiff_l
-        11342, // SADDL2_asimddiff_l
-        11350, // SADDLP_asimdmisc_p
-        11356, // SADDLV_asimdall_only
-        11362, // SADDW_asimddiff_w
-        11370, // SADDW2_asimddiff_w
-        11378, // SCVTF_sisd_32h
-        11382, // SCVTF_sisd_32d
-        11386, // SCVTF_sisd_64h
-        11390, // SCVTF_sisd_64s
-        11394, // SCVTF_h32_float2fix
-        11402, // SCVTF_h64_float2fix
-        11410, // SCVTF_s32_float2fix
-        11418, // SCVTF_s64_float2fix
-        11426, // SCVTF_d32_float2fix
-        11434, // SCVTF_d64_float2fix
-        11442, // SCVTF_h32_float2int
-        11446, // SCVTF_s32_float2int
-        11450, // SCVTF_d32_float2int
-        11454, // SCVTF_h64_float2int
-        11458, // SCVTF_s64_float2int
-        11462, // SCVTF_d64_float2int
-        11466, // SCVTF_asisdshf_c
-        11474, // SCVTF_asimdshf_c
-        11482, // SCVTF_asisdmiscfp16_r
-        11486, // SCVTF_asisdmisc_r
-        11492, // SCVTF_asimdmiscfp16_r
-        11498, // SCVTF_asimdmisc_r
-        11504, // SDOT_asimdelem_d
-        11512, // SDOT_asimdsame2_d
-        11520, // SHA1C_qsv_cryptosha3
-        11528, // SHA1H_ss_cryptosha2
-        11532, // SHA1M_qsv_cryptosha3
-        11540, // SHA1P_qsv_cryptosha3
-        11548, // SHA1SU0_vvv_cryptosha3
-        11556, // SHA1SU1_vv_cryptosha2
-        11562, // SHA256H_qqv_cryptosha3
-        11570, // SHA256H2_qqv_cryptosha3
-        11578, // SHA256SU0_vv_cryptosha2
-        11584, // SHA256SU1_vvv_cryptosha3
-        11592, // SHA512H_qqv_cryptosha512_3
-        11600, // SHA512H2_qqv_cryptosha512_3
-        11608, // SHA512SU0_vv2_cryptosha512_2
-        11614, // SHA512SU1_vvv2_cryptosha512_3
-        11622, // SHADD_asimdsame_only
-        11630, // SHL_asisdshf_r
-        11638, // SHL_asimdshf_r
-        11646, // SHLL_asimdmisc_s
-        11654, // SHLL2_asimdmisc_s
-        11662, // SHRN_asimdshf_n
-        11670, // SHRN2_asimdshf_n
-        11678, // SHSUB_asimdsame_only
-        11686, // SLI_asisdshf_r
-        11694, // SLI_asimdshf_r
-        11702, // SM3PARTW1_vvv4_cryptosha512_3
-        11710, // SM3PARTW2_vvv4_cryptosha512_3
-        11718, // SM3SS1_vvv4_crypto4
-        11728, // SM3TT1A_vvv4_crypto3_imm2
-        11736, // SM3TT1B_vvv4_crypto3_imm2
-        11744, // SM3TT2A_vvv4_crypto3_imm2
-        11752, // SM3TT2B_vvv_crypto3_imm2
-        11760, // SM4E_vv4_cryptosha512_2
-        11766, // SM4EKEY_vvv4_cryptosha512_3
-        11774, // SMAX_asimdsame_only
-        11782, // SMAXP_asimdsame_only
-        11790, // SMAXV_asimdall_only
-        11796, // SMIN_asimdsame_only
-        11804, // SMINP_asimdsame_only
-        11812, // SMINV_asimdall_only
-        11818, // SMLAL_asimdelem_l
-        11826, // SMLAL2_asimdelem_l
-        11834, // SMLAL_asimddiff_l
-        11842, // SMLAL2_asimddiff_l
-        11850, // SMLSL_asimdelem_l
-        11858, // SMLSL2_asimdelem_l
-        11866, // SMLSL_asimddiff_l
-        11874, // SMLSL2_asimddiff_l
-        11882, // SMMLA_asimdsame2_g
-        11890, // SMOV_asimdins_w_w
-        11896, // SMOV_asimdins_x_x
-        11902, // SMULL_asimdelem_l
-        11910, // SMULL2_asimdelem_l
-        11918, // SMULL_asimddiff_l
-        11926, // SMULL2_asimddiff_l
-        11934, // SQABS_asisdmisc_r
-        11940, // SQABS_asimdmisc_r
-        11946, // SQADD_asisdsame_only
-        11954, // SQADD_asimdsame_only
-        11962, // SQDMLAL_asisdelem_l
-        11970, // SQDMLAL_asimdelem_l
-        11978, // SQDMLAL2_asimdelem_l
-        11986, // SQDMLAL_asisddiff_only
-        11994, // SQDMLAL_asimddiff_l
-        12002, // SQDMLAL2_asimddiff_l
-        12010, // SQDMLSL_asisdelem_l
-        12018, // SQDMLSL_asimdelem_l
-        12026, // SQDMLSL2_asimdelem_l
-        12034, // SQDMLSL_asisddiff_only
-        12042, // SQDMLSL_asimddiff_l
-        12050, // SQDMLSL2_asimddiff_l
-        12058, // SQDMULH_asisdelem_r
-        12066, // SQDMULH_asimdelem_r
-        12074, // SQDMULH_asisdsame_only
-        12082, // SQDMULH_asimdsame_only
-        12090, // SQDMULL_asimdelem_l
-        12098, // SQDMULL2_asimdelem_l
-        12106, // SQDMULL_asisdelem_l
-        12114, // SQDMULL_asisddiff_only
-        12122, // SQDMULL_asimddiff_l
-        12130, // SQDMULL2_asimddiff_l
-        12138, // SQNEG_asisdmisc_r
-        12144, // SQNEG_asimdmisc_r
-        12150, // SQRDMLAH_asisdelem_r
-        12158, // SQRDMLAH_asimdelem_r
-        12166, // SQRDMLAH_asisdsame2_only
-        12174, // SQRDMLAH_asimdsame2_only
-        12182, // SQRDMLSH_asisdelem_r
-        12190, // SQRDMLSH_asimdelem_r
-        12198, // SQRDMLSH_asisdsame2_only
-        12206, // SQRDMLSH_asimdsame2_only
-        12214, // SQRDMULH_asisdelem_r
-        12222, // SQRDMULH_asimdelem_r
-        12230, // SQRDMULH_asisdsame_only
-        12238, // SQRDMULH_asimdsame_only
-        12246, // SQRSHL_asisdsame_only
-        12254, // SQRSHL_asimdsame_only
-        12262, // SQRSHRN_asisdshf_n
-        12270, // SQRSHRN_asimdshf_n
-        12278, // SQRSHRN2_asimdshf_n
-        12286, // SQRSHRUN_asisdshf_n
-        12294, // SQRSHRUN_asimdshf_n
-        12302, // SQRSHRUN2_asimdshf_n
-        12310, // SQSHL_asisdshf_r
-        12318, // SQSHL_asimdshf_r
-        12326, // SQSHL_asisdsame_only
-        12334, // SQSHL_asimdsame_only
-        12342, // SQSHLU_asisdshf_r
-        12350, // SQSHLU_asimdshf_r
-        12358, // SQSHRN_asisdshf_n
-        12366, // SQSHRN_asimdshf_n
-        12374, // SQSHRN2_asimdshf_n
-        12382, // SQSHRUN_asisdshf_n
-        12390, // SQSHRUN_asimdshf_n
-        12398, // SQSHRUN2_asimdshf_n
-        12406, // SQSUB_asisdsame_only
-        12414, // SQSUB_asimdsame_only
-        12422, // SQXTN_asisdmisc_n
-        12428, // SQXTN_asimdmisc_n
-        12434, // SQXTN2_asimdmisc_n
-        12440, // SQXTUN_asisdmisc_n
-        12446, // SQXTUN_asimdmisc_n
-        12452, // SQXTUN2_asimdmisc_n
-        12458, // SRHADD_asimdsame_only
-        12466, // SRI_asisdshf_r
-        12474, // SRI_asimdshf_r
-        12482, // SRSHL_asisdsame_only
-        12487, // SRSHL_asimdsame_only
-        12495, // SRSHR_asisdshf_r
-        12503, // SRSHR_asimdshf_r
-        12511, // SRSRA_asisdshf_r
-        12519, // SRSRA_asimdshf_r
-        12527, // SSHL_asisdsame_only
-        12532, // SSHL_asimdsame_only
-        12540, // SSHLL_asimdshf_l
-        12548, // SSHLL2_asimdshf_l
-        12556, // SSHR_asisdshf_r
-        12564, // SSHR_asimdshf_r
-        12572, // SSRA_asisdshf_r
-        12580, // SSRA_asimdshf_r
-        12588, // SSUBL_asimddiff_l
-        12596, // SSUBL2_asimddiff_l
-        12604, // SSUBW_asimddiff_w
-        12612, // SSUBW2_asimddiff_w
-        12620, // ST1_asisdlse_r1_1v
-        12626, // ST1_asisdlse_r2_2v
-        12632, // ST1_asisdlse_r3_3v
-        12638, // ST1_asisdlse_r4_4v
-        12644, // ST1_asisdlsep_i1_i1
-        12652, // ST1_asisdlsep_r1_r1
-        12660, // ST1_asisdlsep_i2_i2
-        12668, // ST1_asisdlsep_r2_r2
-        12676, // ST1_asisdlsep_i3_i3
-        12684, // ST1_asisdlsep_r3_r3
-        12692, // ST1_asisdlsep_i4_i4
-        12700, // ST1_asisdlsep_r4_r4
-        12708, // ST1_asisdlso_b1_1b
-        12714, // ST1_asisdlso_h1_1h
-        12720, // ST1_asisdlso_s1_1s
-        12726, // ST1_asisdlso_d1_1d
-        12732, // ST1_asisdlsop_b1_i1b
-        12740, // ST1_asisdlsop_bx1_r1b
-        12748, // ST1_asisdlsop_h1_i1h
-        12756, // ST1_asisdlsop_hx1_r1h
-        12764, // ST1_asisdlsop_s1_i1s
-        12772, // ST1_asisdlsop_sx1_r1s
-        12780, // ST1_asisdlsop_d1_i1d
-        12788, // ST1_asisdlsop_dx1_r1d
-        12796, // ST2_asisdlse_r2
-        12802, // ST2_asisdlsep_i2_i
-        12810, // ST2_asisdlsep_r2_r
-        12818, // ST2_asisdlso_b2_2b
-        12824, // ST2_asisdlso_h2_2h
-        12830, // ST2_asisdlso_s2_2s
-        12836, // ST2_asisdlso_d2_2d
-        12842, // ST2_asisdlsop_b2_i2b
-        12850, // ST2_asisdlsop_bx2_r2b
-        12858, // ST2_asisdlsop_h2_i2h
-        12866, // ST2_asisdlsop_hx2_r2h
-        12874, // ST2_asisdlsop_s2_i2s
-        12882, // ST2_asisdlsop_sx2_r2s
-        12890, // ST2_asisdlsop_d2_i2d
-        12898, // ST2_asisdlsop_dx2_r2d
-        12906, // ST3_asisdlse_r3
-        12912, // ST3_asisdlsep_i3_i
-        12920, // ST3_asisdlsep_r3_r
-        12928, // ST3_asisdlso_b3_3b
-        12934, // ST3_asisdlso_h3_3h
-        12940, // ST3_asisdlso_s3_3s
-        12946, // ST3_asisdlso_d3_3d
-        12952, // ST3_asisdlsop_b3_i3b
-        12960, // ST3_asisdlsop_bx3_r3b
-        12968, // ST3_asisdlsop_h3_i3h
-        12976, // ST3_asisdlsop_hx3_r3h
-        12984, // ST3_asisdlsop_s3_i3s
-        12992, // ST3_asisdlsop_sx3_r3s
-        13000, // ST3_asisdlsop_d3_i3d
-        13008, // ST3_asisdlsop_dx3_r3d
-        13016, // ST4_asisdlse_r4
-        13022, // ST4_asisdlsep_i4_i
-        13030, // ST4_asisdlsep_r4_r
-        13038, // ST4_asisdlso_b4_4b
-        13044, // ST4_asisdlso_h4_4h
-        13050, // ST4_asisdlso_s4_4s
-        13056, // ST4_asisdlso_d4_4d
-        13062, // ST4_asisdlsop_b4_i4b
-        13070, // ST4_asisdlsop_bx4_r4b
-        13078, // ST4_asisdlsop_h4_i4h
-        13086, // ST4_asisdlsop_hx4_r4h
-        13094, // ST4_asisdlsop_s4_i4s
-        13102, // ST4_asisdlsop_sx4_r4s
-        13110, // ST4_asisdlsop_d4_i4d
-        13118, // ST4_asisdlsop_dx4_r4d
-        13126, // STBFADD_16
-        13130, // STBFADDL_16
-        13134, // STBFMAX_16
-        13138, // STBFMAXL_16
-        13142, // STBFMAXNM_16
-        13146, // STBFMAXNML_16
-        13150, // STBFMIN_16
-        13154, // STBFMINL_16
-        13158, // STBFMINNM_16
-        13162, // STBFMINNML_16
-        13166, // STFADD_16
-        13170, // STFADDL_16
-        13174, // STFADD_32
-        13178, // STFADDL_32
-        13182, // STFADD_64
-        13186, // STFADDL_64
-        13190, // STFMAX_16
-        13194, // STFMAXL_16
-        13198, // STFMAX_32
-        13202, // STFMAXL_32
-        13206, // STFMAX_64
-        13210, // STFMAXL_64
-        13214, // STFMAXNM_16
-        13218, // STFMAXNML_16
-        13222, // STFMAXNM_32
-        13226, // STFMAXNML_32
-        13230, // STFMAXNM_64
-        13234, // STFMAXNML_64
-        13238, // STFMIN_16
-        13242, // STFMINL_16
-        13246, // STFMIN_32
-        13250, // STFMINL_32
-        13254, // STFMIN_64
-        13258, // STFMINL_64
-        13262, // STFMINNM_16
-        13266, // STFMINNML_16
-        13270, // STFMINNM_32
-        13274, // STFMINNML_32
-        13278, // STFMINNM_64
-        13282, // STFMINNML_64
-        13286, // STL1_asisdlso_d1
-        13292, // STLUR_b_ldapstl_simd
-        13298, // STLUR_h_ldapstl_simd
-        13304, // STLUR_s_ldapstl_simd
-        13310, // STLUR_d_ldapstl_simd
-        13316, // STLUR_q_ldapstl_simd
-        13322, // STNP_s_ldstnapair_offs
-        13330, // STNP_d_ldstnapair_offs
-        13338, // STNP_q_ldstnapair_offs
-        13346, // STP_s_ldstpair_post
-        13356, // STP_d_ldstpair_post
-        13366, // STP_q_ldstpair_post
-        13376, // STP_s_ldstpair_pre
-        13384, // STP_d_ldstpair_pre
-        13392, // STP_q_ldstpair_pre
-        13400, // STP_s_ldstpair_off
-        13408, // STP_d_ldstpair_off
-        13416, // STP_q_ldstpair_off
-        13424, // STR_b_ldst_immpost
-        13432, // STR_h_ldst_immpost
-        13440, // STR_s_ldst_immpost
-        13448, // STR_d_ldst_immpost
-        13456, // STR_q_ldst_immpost
-        13464, // STR_b_ldst_immpre
-        13470, // STR_h_ldst_immpre
-        13476, // STR_s_ldst_immpre
-        13482, // STR_d_ldst_immpre
-        13488, // STR_q_ldst_immpre
-        13494, // STR_b_ldst_pos
-        13500, // STR_h_ldst_pos
-        13506, // STR_s_ldst_pos
-        13512, // STR_d_ldst_pos
-        13518, // STR_q_ldst_pos
-        13524, // STR_b_ldst_regoff
-        13530, // STR_bl_ldst_regoff
-        13536, // STR_h_ldst_regoff
-        13542, // STR_s_ldst_regoff
-        13548, // STR_d_ldst_regoff
-        13554, // STR_q_ldst_regoff
-        13560, // STTNP_q_ldstnapair_offs
-        13568, // STTP_q_ldstpair_post
-        13578, // STTP_q_ldstpair_pre
-        13586, // STTP_q_ldstpair_off
-        13594, // STUR_b_ldst_unscaled
-        13600, // STUR_h_ldst_unscaled
-        13606, // STUR_s_ldst_unscaled
-        13612, // STUR_d_ldst_unscaled
-        13618, // STUR_q_ldst_unscaled
-        13624, // SUB_asisdsame_only
-        13629, // SUB_asimdsame_only
-        13637, // SUBHN_asimddiff_n
-        13645, // SUBHN2_asimddiff_n
-        13653, // SUDOT_asimdelem_d
-        13661, // SUQADD_asisdmisc_r
-        13667, // SUQADD_asimdmisc_r
-        13673, // SXTL_sshll_asimdshf_l
-        13679, // SXTL2_sshll_asimdshf_l
-        13685, // TBL_asimdtbl_l1_1
-        13693, // TBL_asimdtbl_l2_2
-        13701, // TBL_asimdtbl_l3_3
-        13709, // TBL_asimdtbl_l4_4
-        13717, // TBX_asimdtbl_l1_1
-        13725, // TBX_asimdtbl_l2_2
-        13733, // TBX_asimdtbl_l3_3
-        13741, // TBX_asimdtbl_l4_4
-        13749, // TRN1_asimdperm_only
-        13757, // TRN2_asimdperm_only
-        13765, // UABA_asimdsame_only
-        13773, // UABAL_asimddiff_l
-        13781, // UABAL2_asimddiff_l
-        13789, // UABD_asimdsame_only
-        13797, // UABDL_asimddiff_l
-        13805, // UABDL2_asimddiff_l
-        13813, // UADALP_asimdmisc_p
-        13819, // UADDL_asimddiff_l
-        13827, // UADDL2_asimddiff_l
-        13835, // UADDLP_asimdmisc_p
-        13841, // UADDLV_asimdall_only
-        13847, // UADDW_asimddiff_w
-        13855, // UADDW2_asimddiff_w
-        13863, // UCVTF_sisd_32h
-        13867, // UCVTF_sisd_32d
-        13871, // UCVTF_sisd_64h
-        13875, // UCVTF_sisd_64s
-        13879, // UCVTF_h32_float2fix
-        13887, // UCVTF_h64_float2fix
-        13895, // UCVTF_s32_float2fix
-        13903, // UCVTF_s64_float2fix
-        13911, // UCVTF_d32_float2fix
-        13919, // UCVTF_d64_float2fix
-        13927, // UCVTF_h32_float2int
-        13931, // UCVTF_s32_float2int
-        13935, // UCVTF_d32_float2int
-        13939, // UCVTF_h64_float2int
-        13943, // UCVTF_s64_float2int
-        13947, // UCVTF_d64_float2int
-        13951, // UCVTF_asisdshf_c
-        13959, // UCVTF_asimdshf_c
-        13967, // UCVTF_asisdmiscfp16_r
-        13971, // UCVTF_asisdmisc_r
-        13977, // UCVTF_asimdmiscfp16_r
-        13983, // UCVTF_asimdmisc_r
-        13989, // UDOT_asimdelem_d
-        13997, // UDOT_asimdsame2_d
-        14005, // UHADD_asimdsame_only
-        14013, // UHSUB_asimdsame_only
-        14021, // UMAX_asimdsame_only
-        14029, // UMAXP_asimdsame_only
-        14037, // UMAXV_asimdall_only
-        14043, // UMIN_asimdsame_only
-        14051, // UMINP_asimdsame_only
-        14059, // UMINV_asimdall_only
-        14065, // UMLAL_asimdelem_l
-        14073, // UMLAL2_asimdelem_l
-        14081, // UMLAL_asimddiff_l
-        14089, // UMLAL2_asimddiff_l
-        14097, // UMLSL_asimdelem_l
-        14105, // UMLSL2_asimdelem_l
-        14113, // UMLSL_asimddiff_l
-        14121, // UMLSL2_asimddiff_l
-        14129, // UMMLA_asimdsame2_g
-        14137, // UMOV_asimdins_w_w
-        14143, // UMOV_asimdins_x_x
-        14149, // UMULL_asimdelem_l
-        14157, // UMULL2_asimdelem_l
-        14165, // UMULL_asimddiff_l
-        14173, // UMULL2_asimddiff_l
-        14181, // UQADD_asisdsame_only
-        14189, // UQADD_asimdsame_only
-        14197, // UQRSHL_asisdsame_only
-        14205, // UQRSHL_asimdsame_only
-        14213, // UQRSHRN_asisdshf_n
-        14221, // UQRSHRN_asimdshf_n
-        14229, // UQRSHRN2_asimdshf_n
-        14237, // UQSHL_asisdshf_r
-        14245, // UQSHL_asimdshf_r
-        14253, // UQSHL_asisdsame_only
-        14261, // UQSHL_asimdsame_only
-        14269, // UQSHRN_asisdshf_n
-        14277, // UQSHRN_asimdshf_n
-        14285, // UQSHRN2_asimdshf_n
-        14293, // UQSUB_asisdsame_only
-        14301, // UQSUB_asimdsame_only
-        14309, // UQXTN_asisdmisc_n
-        14315, // UQXTN_asimdmisc_n
-        14321, // UQXTN2_asimdmisc_n
-        14327, // URECPE_asimdmisc_r
-        14333, // URHADD_asimdsame_only
-        14341, // URSHL_asisdsame_only
-        14346, // URSHL_asimdsame_only
-        14354, // URSHR_asisdshf_r
-        14362, // URSHR_asimdshf_r
-        14370, // URSQRTE_asimdmisc_r
-        14376, // URSRA_asisdshf_r
-        14384, // URSRA_asimdshf_r
-        14392, // USDOT_asimdelem_d
-        14400, // USDOT_asimdsame2_d
-        14408, // USHL_asisdsame_only
-        14413, // USHL_asimdsame_only
-        14421, // USHLL_asimdshf_l
-        14429, // USHLL2_asimdshf_l
-        14437, // USHR_asisdshf_r
-        14445, // USHR_asimdshf_r
-        14453, // USMMLA_asimdsame2_g
-        14461, // USQADD_asisdmisc_r
-        14467, // USQADD_asimdmisc_r
-        14473, // USRA_asisdshf_r
-        14481, // USRA_asimdshf_r
-        14489, // USUBL_asimddiff_l
-        14497, // USUBL2_asimddiff_l
-        14505, // USUBW_asimddiff_w
-        14513, // USUBW2_asimddiff_w
-        14521, // UXTL_ushll_asimdshf_l
-        14527, // UXTL2_ushll_asimdshf_l
-        14533, // UZP1_asimdperm_only
-        14541, // UZP2_asimdperm_only
-        14549, // XAR_vvv2_crypto3_imm6
-        14559, // XTN_asimdmisc_n
-        14565, // XTN2_asimdmisc_n
-        14571, // ZIP1_asimdperm_only
-        14579, // ZIP2_asimdperm_only
+        323, // BC_only_condbranch
+        329, // BFC_bfm_32m_bitfield
+        337, // BFC_bfm_64m_bitfield
+        345, // BFI_bfm_32m_bitfield
+        355, // BFI_bfm_64m_bitfield
+        365, // BFM_32m_bitfield
+        375, // BFM_64m_bitfield
+        385, // BFXIL_bfm_32m_bitfield
+        395, // BFXIL_bfm_64m_bitfield
+        405, // BIC_32_log_shift
+        411, // BIC_64_log_shift
+        417, // BICS_32_log_shift
+        423, // BICS_64_log_shift
+        429, // BL_only_branch_imm
+        433, // BLR_64_branch_reg
+        436, // BLRAA_64p_branch_reg
+        440, // BLRAAZ_64_branch_reg
+        443, // BLRAB_64p_branch_reg
+        447, // BLRABZ_64_branch_reg
+        450, // BR_64_branch_reg
+        453, // BRAA_64p_branch_reg
+        457, // BRAAZ_64_branch_reg
+        460, // BRAB_64p_branch_reg
+        464, // BRABZ_64_branch_reg
+        467, // BRB_sys_cr_systeminstrs
+        470, // BRK_ex_exception
+        474, // BTI_hb_hints
+        477, // CAS_c32_comswap
+        482, // CASA_c32_comswap
+        487, // CASAL_c32_comswap
+        492, // CASL_c32_comswap
+        497, // CAS_c64_comswap
+        502, // CASA_c64_comswap
+        507, // CASAL_c64_comswap
+        512, // CASL_c64_comswap
+        517, // CASB_c32_comswap
+        522, // CASAB_c32_comswap
+        527, // CASALB_c32_comswap
+        532, // CASLB_c32_comswap
+        537, // CASH_c32_comswap
+        542, // CASAH_c32_comswap
+        547, // CASALH_c32_comswap
+        552, // CASLH_c32_comswap
+        557, // CASP_cp32_comswappr
+        564, // CASPA_cp32_comswappr
+        571, // CASPAL_cp32_comswappr
+        578, // CASPL_cp32_comswappr
+        585, // CASP_cp64_comswappr
+        592, // CASPA_cp64_comswappr
+        599, // CASPAL_cp64_comswappr
+        606, // CASPL_cp64_comswappr
+        613, // CASPT_cp64_comswappr_unpriv
+        620, // CASPAT_cp64_comswappr_unpriv
+        627, // CASPALT_cp64_comswappr_unpriv
+        634, // CASPLT_cp64_comswappr_unpriv
+        641, // CAST_c64_comswap_unpriv
+        646, // CASAT_c64_comswap_unpriv
+        651, // CASALT_c64_comswap_unpriv
+        656, // CASLT_c64_comswap_unpriv
+        661, // CBGT_32_imm
+        669, // CBLT_32_imm
+        677, // CBHI_32_imm
+        685, // CBLO_32_imm
+        693, // CBEQ_32_imm
+        701, // CBNE_32_imm
+        709, // CBGT_64_imm
+        717, // CBLT_64_imm
+        725, // CBHI_64_imm
+        733, // CBLO_64_imm
+        741, // CBEQ_64_imm
+        749, // CBNE_64_imm
+        757, // CBGT_32_regs
+        765, // CBGE_32_regs
+        773, // CBHI_32_regs
+        781, // CBHS_32_regs
+        789, // CBEQ_32_regs
+        797, // CBNE_32_regs
+        805, // CBGT_64_regs
+        813, // CBGE_64_regs
+        821, // CBHI_64_regs
+        829, // CBHS_64_regs
+        837, // CBEQ_64_regs
+        845, // CBNE_64_regs
+        853, // CBBGT_8_regs
+        861, // CBBGE_8_regs
+        869, // CBBHI_8_regs
+        877, // CBBHS_8_regs
+        885, // CBBEQ_8_regs
+        893, // CBBNE_8_regs
+        901, // CBBLE_cbbge_8_regs
+        909, // CBBLO_cbbhi_8_regs
+        917, // CBBLS_cbbhs_8_regs
+        925, // CBBLT_cbbgt_8_regs
+        933, // CBGE_cbgt_32_imm
+        941, // CBGE_cbgt_64_imm
+        949, // CBHGT_16_regs
+        957, // CBHGE_16_regs
+        965, // CBHHI_16_regs
+        973, // CBHHS_16_regs
+        981, // CBHEQ_16_regs
+        989, // CBHNE_16_regs
+        997, // CBHLE_cbhge_16_regs
+        1005, // CBHLO_cbhhi_16_regs
+        1013, // CBHLS_cbhhs_16_regs
+        1021, // CBHLT_cbhgt_16_regs
+        1029, // CBHS_cbhi_32_imm
+        1037, // CBHS_cbhi_64_imm
+        1045, // CBLE_cblt_32_imm
+        1053, // CBLE_cblt_64_imm
+        1061, // CBLE_cbge_32_regs
+        1069, // CBLE_cbge_64_regs
+        1077, // CBLO_cbhi_32_regs
+        1085, // CBLO_cbhi_64_regs
+        1093, // CBLS_cblo_32_imm
+        1101, // CBLS_cblo_64_imm
+        1109, // CBLS_cbhs_32_regs
+        1117, // CBLS_cbhs_64_regs
+        1125, // CBLT_cbgt_32_regs
+        1133, // CBLT_cbgt_64_regs
+        1141, // CBNZ_32_compbranch
+        1147, // CBNZ_64_compbranch
+        1153, // CBZ_32_compbranch
+        1159, // CBZ_64_compbranch
+        1165, // CCMN_32_condcmp_imm
+        1175, // CCMN_64_condcmp_imm
+        1185, // CCMN_32_condcmp_reg
+        1195, // CCMN_64_condcmp_reg
+        1205, // CCMP_32_condcmp_imm
+        1215, // CCMP_64_condcmp_imm
+        1225, // CCMP_32_condcmp_reg
+        1235, // CCMP_64_condcmp_reg
+        1245, // CFINV_m_pstate
+        1247, // CFP_sys_cr_systeminstrs
+        1251, // CHKFEAT_hf_hints
+        1254, // CINC_csinc_32_condsel
+        1259, // CINC_csinc_64_condsel
+        1264, // CINV_csinv_32_condsel
+        1269, // CINV_csinv_64_condsel
+        1274, // CLRBHB_hi_hints
+        1276, // CLREX_bn_barriers
+        1280, // CLS_32_dp_1src
+        1284, // CLS_64_dp_1src
+        1288, // CLZ_32_dp_1src
+        1292, // CLZ_64_dp_1src
+        1296, // CMN_adds_32s_addsub_ext
+        1301, // CMN_adds_64s_addsub_ext
+        1309, // CMN_adds_32s_addsub_imm
+        1317, // CMN_adds_64s_addsub_imm
+        1325, // CMN_adds_32_addsub_shift
+        1330, // CMN_adds_64_addsub_shift
+        1335, // CMP_subs_32s_addsub_ext
+        1340, // CMP_subs_64s_addsub_ext
+        1348, // CMP_subs_32s_addsub_imm
+        1356, // CMP_subs_64s_addsub_imm
+        1364, // CMP_subs_32_addsub_shift
+        1369, // CMP_subs_64_addsub_shift
+        1374, // CMPP_subps_64s_dp_2src
+        1378, // CNEG_csneg_32_condsel
+        1383, // CNEG_csneg_64_condsel
+        1388, // CNT_32_dp_1src
+        1392, // CNT_64_dp_1src
+        1396, // COSP_sys_cr_systeminstrs
+        1400, // CPP_sys_cr_systeminstrs
+        1404, // CPYFP_cpy_memcms
+        1409, // CPYFM_cpy_memcms
+        1414, // CPYFE_cpy_memcms
+        1419, // CPYFPN_cpy_memcms
+        1424, // CPYFMN_cpy_memcms
+        1429, // CPYFEN_cpy_memcms
+        1434, // CPYFPRN_cpy_memcms
+        1439, // CPYFMRN_cpy_memcms
+        1444, // CPYFERN_cpy_memcms
+        1449, // CPYFPRT_cpy_memcms
+        1454, // CPYFMRT_cpy_memcms
+        1459, // CPYFERT_cpy_memcms
+        1464, // CPYFPRTN_cpy_memcms
+        1469, // CPYFMRTN_cpy_memcms
+        1474, // CPYFERTN_cpy_memcms
+        1479, // CPYFPRTRN_cpy_memcms
+        1484, // CPYFMRTRN_cpy_memcms
+        1489, // CPYFERTRN_cpy_memcms
+        1494, // CPYFPRTWN_cpy_memcms
+        1499, // CPYFMRTWN_cpy_memcms
+        1504, // CPYFERTWN_cpy_memcms
+        1509, // CPYFPT_cpy_memcms
+        1514, // CPYFMT_cpy_memcms
+        1519, // CPYFET_cpy_memcms
+        1524, // CPYFPTN_cpy_memcms
+        1529, // CPYFMTN_cpy_memcms
+        1534, // CPYFETN_cpy_memcms
+        1539, // CPYFPTRN_cpy_memcms
+        1544, // CPYFMTRN_cpy_memcms
+        1549, // CPYFETRN_cpy_memcms
+        1554, // CPYFPTWN_cpy_memcms
+        1559, // CPYFMTWN_cpy_memcms
+        1564, // CPYFETWN_cpy_memcms
+        1569, // CPYFPWN_cpy_memcms
+        1574, // CPYFMWN_cpy_memcms
+        1579, // CPYFEWN_cpy_memcms
+        1584, // CPYFPWT_cpy_memcms
+        1589, // CPYFMWT_cpy_memcms
+        1594, // CPYFEWT_cpy_memcms
+        1599, // CPYFPWTN_cpy_memcms
+        1604, // CPYFMWTN_cpy_memcms
+        1609, // CPYFEWTN_cpy_memcms
+        1614, // CPYFPWTRN_cpy_memcms
+        1619, // CPYFMWTRN_cpy_memcms
+        1624, // CPYFEWTRN_cpy_memcms
+        1629, // CPYFPWTWN_cpy_memcms
+        1634, // CPYFMWTWN_cpy_memcms
+        1639, // CPYFEWTWN_cpy_memcms
+        1644, // CPYP_cpy_memcms
+        1649, // CPYM_cpy_memcms
+        1654, // CPYE_cpy_memcms
+        1659, // CPYPN_cpy_memcms
+        1664, // CPYMN_cpy_memcms
+        1669, // CPYEN_cpy_memcms
+        1674, // CPYPRN_cpy_memcms
+        1679, // CPYMRN_cpy_memcms
+        1684, // CPYERN_cpy_memcms
+        1689, // CPYPRT_cpy_memcms
+        1694, // CPYMRT_cpy_memcms
+        1699, // CPYERT_cpy_memcms
+        1704, // CPYPRTN_cpy_memcms
+        1709, // CPYMRTN_cpy_memcms
+        1714, // CPYERTN_cpy_memcms
+        1719, // CPYPRTRN_cpy_memcms
+        1724, // CPYMRTRN_cpy_memcms
+        1729, // CPYERTRN_cpy_memcms
+        1734, // CPYPRTWN_cpy_memcms
+        1739, // CPYMRTWN_cpy_memcms
+        1744, // CPYERTWN_cpy_memcms
+        1749, // CPYPT_cpy_memcms
+        1754, // CPYMT_cpy_memcms
+        1759, // CPYET_cpy_memcms
+        1764, // CPYPTN_cpy_memcms
+        1769, // CPYMTN_cpy_memcms
+        1774, // CPYETN_cpy_memcms
+        1779, // CPYPTRN_cpy_memcms
+        1784, // CPYMTRN_cpy_memcms
+        1789, // CPYETRN_cpy_memcms
+        1794, // CPYPTWN_cpy_memcms
+        1799, // CPYMTWN_cpy_memcms
+        1804, // CPYETWN_cpy_memcms
+        1809, // CPYPWN_cpy_memcms
+        1814, // CPYMWN_cpy_memcms
+        1819, // CPYEWN_cpy_memcms
+        1824, // CPYPWT_cpy_memcms
+        1829, // CPYMWT_cpy_memcms
+        1834, // CPYEWT_cpy_memcms
+        1839, // CPYPWTN_cpy_memcms
+        1844, // CPYMWTN_cpy_memcms
+        1849, // CPYEWTN_cpy_memcms
+        1854, // CPYPWTRN_cpy_memcms
+        1859, // CPYMWTRN_cpy_memcms
+        1864, // CPYEWTRN_cpy_memcms
+        1869, // CPYPWTWN_cpy_memcms
+        1874, // CPYMWTWN_cpy_memcms
+        1879, // CPYEWTWN_cpy_memcms
+        1884, // CRC32B_32c_dp_2src
+        1889, // CRC32H_32c_dp_2src
+        1894, // CRC32W_32c_dp_2src
+        1899, // CRC32X_64c_dp_2src
+        1904, // CRC32CB_32c_dp_2src
+        1909, // CRC32CH_32c_dp_2src
+        1914, // CRC32CW_32c_dp_2src
+        1919, // CRC32CX_64c_dp_2src
+        1924, // CSDB_hi_hints
+        1926, // CSEL_32_condsel
+        1932, // CSEL_64_condsel
+        1938, // CSET_csinc_32_condsel
+        1942, // CSET_csinc_64_condsel
+        1946, // CSETM_csinv_32_condsel
+        1950, // CSETM_csinv_64_condsel
+        1954, // CSINC_32_condsel
+        1960, // CSINC_64_condsel
+        1966, // CSINV_32_condsel
+        1972, // CSINV_64_condsel
+        1978, // CSNEG_32_condsel
+        1984, // CSNEG_64_condsel
+        1990, // CTZ_32_dp_1src
+        1994, // CTZ_64_dp_1src
+        1998, // DC_sys_cr_systeminstrs
+        2002, // DCPS1_dc_exception
+        2006, // DCPS2_dc_exception
+        2010, // DCPS3_dc_exception
+        2014, // DGH_hi_hints
+        2016, // DMB_bo_barriers
+        2019, // DRPS_64e_branch_reg
+        2021, // DSB_bo_barriers
+        2024, // DSB_bon_barriers
+        2027, // DVP_sys_cr_systeminstrs
+        2031, // EON_32_log_shift
+        2037, // EON_64_log_shift
+        2043, // EOR_32_log_imm
+        2051, // EOR_64_log_imm
+        2059, // EOR_32_log_shift
+        2065, // EOR_64_log_shift
+        2071, // ERET_64e_branch_reg
+        2073, // ERETAA_64e_branch_reg
+        2075, // ERETAB_64e_branch_reg
+        2077, // ESB_hi_hints
+        2079, // EXTR_32_extract
+        2089, // EXTR_64_extract
+        2099, // GCSB_hd_hints
+        2102, // GCSPOPCX_sys_cr_systeminstrs
+        2104, // GCSPOPM_sysl_rc_systeminstrs
+        2107, // GCSPOPX_sys_cr_systeminstrs
+        2109, // GCSPUSHM_sys_cr_systeminstrs
+        2112, // GCSPUSHX_sys_cr_systeminstrs
+        2114, // GCSSS1_sys_cr_systeminstrs
+        2117, // GCSSS2_sysl_rc_systeminstrs
+        2120, // GCSSTR_64_ldst_gcs
+        2124, // GCSSTTR_64_ldst_gcs
+        2128, // GMI_64g_dp_2src
+        2133, // HINT_hm_hints
+        2137, // HLT_ex_exception
+        2141, // HVC_ex_exception
+        2145, // IC_sys_cr_systeminstrs
+        2149, // IRG_64i_dp_2src
+        2154, // ISB_bi_barriers
+        2158, // LD64B_64l_memop
+        2162, // LDADD_32_memop
+        2167, // LDADDA_32_memop
+        2172, // LDADDAL_32_memop
+        2177, // LDADDL_32_memop
+        2182, // LDADD_64_memop
+        2187, // LDADDA_64_memop
+        2192, // LDADDAL_64_memop
+        2197, // LDADDL_64_memop
+        2202, // LDADDB_32_memop
+        2207, // LDADDAB_32_memop
+        2212, // LDADDALB_32_memop
+        2217, // LDADDLB_32_memop
+        2222, // LDADDH_32_memop
+        2227, // LDADDAH_32_memop
+        2232, // LDADDALH_32_memop
+        2237, // LDADDLH_32_memop
+        2242, // LDAPR_32l_ldapstl_writeback
+        2247, // LDAPR_64l_ldapstl_writeback
+        2252, // LDAPR_32l_memop
+        2256, // LDAPR_64l_memop
+        2260, // LDAPRB_32l_memop
+        2264, // LDAPRH_32l_memop
+        2268, // LDAPUR_32_ldapstl_unscaled
+        2274, // LDAPUR_64_ldapstl_unscaled
+        2280, // LDAPURB_32_ldapstl_unscaled
+        2286, // LDAPURH_32_ldapstl_unscaled
+        2292, // LDAPURSB_32_ldapstl_unscaled
+        2298, // LDAPURSB_64_ldapstl_unscaled
+        2304, // LDAPURSH_32_ldapstl_unscaled
+        2310, // LDAPURSH_64_ldapstl_unscaled
+        2316, // LDAPURSW_64_ldapstl_unscaled
+        2322, // LDAR_lr32_ldstord
+        2326, // LDAR_lr64_ldstord
+        2330, // LDARB_lr32_ldstord
+        2334, // LDARH_lr32_ldstord
+        2338, // LDATXR_lr32_ldstexclr_unpriv
+        2342, // LDATXR_lr64_ldstexclr_unpriv
+        2346, // LDAXP_lp32_ldstexclp
+        2351, // LDAXP_lp64_ldstexclp
+        2356, // LDAXR_lr32_ldstexclr
+        2360, // LDAXR_lr64_ldstexclr
+        2364, // LDAXRB_lr32_ldstexclr
+        2368, // LDAXRH_lr32_ldstexclr
+        2372, // LDCLR_32_memop
+        2377, // LDCLRA_32_memop
+        2382, // LDCLRAL_32_memop
+        2387, // LDCLRL_32_memop
+        2392, // LDCLR_64_memop
+        2397, // LDCLRA_64_memop
+        2402, // LDCLRAL_64_memop
+        2407, // LDCLRL_64_memop
+        2412, // LDCLRB_32_memop
+        2417, // LDCLRAB_32_memop
+        2422, // LDCLRALB_32_memop
+        2427, // LDCLRLB_32_memop
+        2432, // LDCLRH_32_memop
+        2437, // LDCLRAH_32_memop
+        2442, // LDCLRALH_32_memop
+        2447, // LDCLRLH_32_memop
+        2452, // LDCLRP_128_memop_128
+        2457, // LDCLRPA_128_memop_128
+        2462, // LDCLRPAL_128_memop_128
+        2467, // LDCLRPL_128_memop_128
+        2472, // LDEOR_32_memop
+        2477, // LDEORA_32_memop
+        2482, // LDEORAL_32_memop
+        2487, // LDEORL_32_memop
+        2492, // LDEOR_64_memop
+        2497, // LDEORA_64_memop
+        2502, // LDEORAL_64_memop
+        2507, // LDEORL_64_memop
+        2512, // LDEORB_32_memop
+        2517, // LDEORAB_32_memop
+        2522, // LDEORALB_32_memop
+        2527, // LDEORLB_32_memop
+        2532, // LDEORH_32_memop
+        2537, // LDEORAH_32_memop
+        2542, // LDEORALH_32_memop
+        2547, // LDEORLH_32_memop
+        2552, // LDG_64loffset_ldsttags
+        2558, // LDGM_64bulk_ldsttags
+        2562, // LDIAPP_32le_ldiappstilp
+        2568, // LDIAPP_32l_ldiappstilp
+        2573, // LDIAPP_64ls_ldiappstilp
+        2579, // LDIAPP_64l_ldiappstilp
+        2584, // LDLAR_lr32_ldstord
+        2588, // LDLAR_lr64_ldstord
+        2592, // LDLARB_lr32_ldstord
+        2596, // LDLARH_lr32_ldstord
+        2600, // LDNP_32_ldstnapair_offs
+        2608, // LDNP_64_ldstnapair_offs
+        2616, // LDP_32_ldstpair_post
+        2626, // LDP_64_ldstpair_post
+        2636, // LDP_32_ldstpair_pre
+        2644, // LDP_64_ldstpair_pre
+        2652, // LDP_32_ldstpair_off
+        2660, // LDP_64_ldstpair_off
+        2668, // LDPSW_64_ldstpair_post
+        2678, // LDPSW_64_ldstpair_pre
+        2686, // LDPSW_64_ldstpair_off
+        2694, // LDR_32_ldst_immpost
+        2702, // LDR_64_ldst_immpost
+        2710, // LDR_32_ldst_immpre
+        2716, // LDR_64_ldst_immpre
+        2722, // LDR_32_ldst_pos
+        2728, // LDR_64_ldst_pos
+        2734, // LDR_32_loadlit
+        2740, // LDR_64_loadlit
+        2746, // LDR_32_ldst_regoff
+        2752, // LDR_64_ldst_regoff
+        2758, // LDRAA_64_ldst_pac
+        2764, // LDRAA_64w_ldst_pac
+        2770, // LDRAB_64_ldst_pac
+        2776, // LDRAB_64w_ldst_pac
+        2782, // LDRB_32_ldst_immpost
+        2790, // LDRB_32_ldst_immpre
+        2796, // LDRB_32_ldst_pos
+        2802, // LDRB_32b_ldst_regoff
+        2808, // LDRB_32bl_ldst_regoff
+        2814, // LDRH_32_ldst_immpost
+        2822, // LDRH_32_ldst_immpre
+        2828, // LDRH_32_ldst_pos
+        2834, // LDRH_32_ldst_regoff
+        2840, // LDRSB_32_ldst_immpost
+        2848, // LDRSB_64_ldst_immpost
+        2856, // LDRSB_32_ldst_immpre
+        2862, // LDRSB_64_ldst_immpre
+        2868, // LDRSB_32_ldst_pos
+        2874, // LDRSB_64_ldst_pos
+        2880, // LDRSB_32b_ldst_regoff
+        2886, // LDRSB_32bl_ldst_regoff
+        2892, // LDRSB_64b_ldst_regoff
+        2898, // LDRSB_64bl_ldst_regoff
+        2904, // LDRSH_32_ldst_immpost
+        2912, // LDRSH_64_ldst_immpost
+        2920, // LDRSH_32_ldst_immpre
+        2926, // LDRSH_64_ldst_immpre
+        2932, // LDRSH_32_ldst_pos
+        2938, // LDRSH_64_ldst_pos
+        2944, // LDRSH_32_ldst_regoff
+        2950, // LDRSH_64_ldst_regoff
+        2956, // LDRSW_64_ldst_immpost
+        2964, // LDRSW_64_ldst_immpre
+        2970, // LDRSW_64_ldst_pos
+        2976, // LDRSW_64_loadlit
+        2982, // LDRSW_64_ldst_regoff
+        2988, // LDSET_32_memop
+        2993, // LDSETA_32_memop
+        2998, // LDSETAL_32_memop
+        3003, // LDSETL_32_memop
+        3008, // LDSET_64_memop
+        3013, // LDSETA_64_memop
+        3018, // LDSETAL_64_memop
+        3023, // LDSETL_64_memop
+        3028, // LDSETB_32_memop
+        3033, // LDSETAB_32_memop
+        3038, // LDSETALB_32_memop
+        3043, // LDSETLB_32_memop
+        3048, // LDSETH_32_memop
+        3053, // LDSETAH_32_memop
+        3058, // LDSETALH_32_memop
+        3063, // LDSETLH_32_memop
+        3068, // LDSETP_128_memop_128
+        3073, // LDSETPA_128_memop_128
+        3078, // LDSETPAL_128_memop_128
+        3083, // LDSETPL_128_memop_128
+        3088, // LDSMAX_32_memop
+        3093, // LDSMAXA_32_memop
+        3098, // LDSMAXAL_32_memop
+        3103, // LDSMAXL_32_memop
+        3108, // LDSMAX_64_memop
+        3113, // LDSMAXA_64_memop
+        3118, // LDSMAXAL_64_memop
+        3123, // LDSMAXL_64_memop
+        3128, // LDSMAXB_32_memop
+        3133, // LDSMAXAB_32_memop
+        3138, // LDSMAXALB_32_memop
+        3143, // LDSMAXLB_32_memop
+        3148, // LDSMAXH_32_memop
+        3153, // LDSMAXAH_32_memop
+        3158, // LDSMAXALH_32_memop
+        3163, // LDSMAXLH_32_memop
+        3168, // LDSMIN_32_memop
+        3173, // LDSMINA_32_memop
+        3178, // LDSMINAL_32_memop
+        3183, // LDSMINL_32_memop
+        3188, // LDSMIN_64_memop
+        3193, // LDSMINA_64_memop
+        3198, // LDSMINAL_64_memop
+        3203, // LDSMINL_64_memop
+        3208, // LDSMINB_32_memop
+        3213, // LDSMINAB_32_memop
+        3218, // LDSMINALB_32_memop
+        3223, // LDSMINLB_32_memop
+        3228, // LDSMINH_32_memop
+        3233, // LDSMINAH_32_memop
+        3238, // LDSMINALH_32_memop
+        3243, // LDSMINLH_32_memop
+        3248, // LDTADD_32_memop_unpriv
+        3253, // LDTADDA_32_memop_unpriv
+        3258, // LDTADDAL_32_memop_unpriv
+        3263, // LDTADDL_32_memop_unpriv
+        3268, // LDTADD_64_memop_unpriv
+        3273, // LDTADDA_64_memop_unpriv
+        3278, // LDTADDAL_64_memop_unpriv
+        3283, // LDTADDL_64_memop_unpriv
+        3288, // LDTCLR_32_memop_unpriv
+        3293, // LDTCLRA_32_memop_unpriv
+        3298, // LDTCLRAL_32_memop_unpriv
+        3303, // LDTCLRL_32_memop_unpriv
+        3308, // LDTCLR_64_memop_unpriv
+        3313, // LDTCLRA_64_memop_unpriv
+        3318, // LDTCLRAL_64_memop_unpriv
+        3323, // LDTCLRL_64_memop_unpriv
+        3328, // LDTNP_64_ldstnapair_offs
+        3336, // LDTP_64_ldstpair_post
+        3346, // LDTP_64_ldstpair_pre
+        3354, // LDTP_64_ldstpair_off
+        3362, // LDTR_32_ldst_unpriv
+        3368, // LDTR_64_ldst_unpriv
+        3374, // LDTRB_32_ldst_unpriv
+        3380, // LDTRH_32_ldst_unpriv
+        3386, // LDTRSB_32_ldst_unpriv
+        3392, // LDTRSB_64_ldst_unpriv
+        3398, // LDTRSH_32_ldst_unpriv
+        3404, // LDTRSH_64_ldst_unpriv
+        3410, // LDTRSW_64_ldst_unpriv
+        3416, // LDTSET_32_memop_unpriv
+        3421, // LDTSETA_32_memop_unpriv
+        3426, // LDTSETAL_32_memop_unpriv
+        3431, // LDTSETL_32_memop_unpriv
+        3436, // LDTSET_64_memop_unpriv
+        3441, // LDTSETA_64_memop_unpriv
+        3446, // LDTSETAL_64_memop_unpriv
+        3451, // LDTSETL_64_memop_unpriv
+        3456, // LDTXR_lr32_ldstexclr_unpriv
+        3460, // LDTXR_lr64_ldstexclr_unpriv
+        3464, // LDUMAX_32_memop
+        3469, // LDUMAXA_32_memop
+        3474, // LDUMAXAL_32_memop
+        3479, // LDUMAXL_32_memop
+        3484, // LDUMAX_64_memop
+        3489, // LDUMAXA_64_memop
+        3494, // LDUMAXAL_64_memop
+        3499, // LDUMAXL_64_memop
+        3504, // LDUMAXB_32_memop
+        3509, // LDUMAXAB_32_memop
+        3514, // LDUMAXALB_32_memop
+        3519, // LDUMAXLB_32_memop
+        3524, // LDUMAXH_32_memop
+        3529, // LDUMAXAH_32_memop
+        3534, // LDUMAXALH_32_memop
+        3539, // LDUMAXLH_32_memop
+        3544, // LDUMIN_32_memop
+        3549, // LDUMINA_32_memop
+        3554, // LDUMINAL_32_memop
+        3559, // LDUMINL_32_memop
+        3564, // LDUMIN_64_memop
+        3569, // LDUMINA_64_memop
+        3574, // LDUMINAL_64_memop
+        3579, // LDUMINL_64_memop
+        3584, // LDUMINB_32_memop
+        3589, // LDUMINAB_32_memop
+        3594, // LDUMINALB_32_memop
+        3599, // LDUMINLB_32_memop
+        3604, // LDUMINH_32_memop
+        3609, // LDUMINAH_32_memop
+        3614, // LDUMINALH_32_memop
+        3619, // LDUMINLH_32_memop
+        3624, // LDUR_32_ldst_unscaled
+        3630, // LDUR_64_ldst_unscaled
+        3636, // LDURB_32_ldst_unscaled
+        3642, // LDURH_32_ldst_unscaled
+        3648, // LDURSB_32_ldst_unscaled
+        3654, // LDURSB_64_ldst_unscaled
+        3660, // LDURSH_32_ldst_unscaled
+        3666, // LDURSH_64_ldst_unscaled
+        3672, // LDURSW_64_ldst_unscaled
+        3678, // LDXP_lp32_ldstexclp
+        3683, // LDXP_lp64_ldstexclp
+        3688, // LDXR_lr32_ldstexclr
+        3692, // LDXR_lr64_ldstexclr
+        3696, // LDXRB_lr32_ldstexclr
+        3700, // LDXRH_lr32_ldstexclr
+        3704, // LSL_ubfm_32m_bitfield
+        3712, // LSL_ubfm_64m_bitfield
+        3720, // LSL_lslv_32_dp_2src
+        3725, // LSL_lslv_64_dp_2src
+        3730, // LSLV_32_dp_2src
+        3735, // LSLV_64_dp_2src
+        3740, // LSR_ubfm_32m_bitfield
+        3748, // LSR_ubfm_64m_bitfield
+        3756, // LSR_lsrv_32_dp_2src
+        3761, // LSR_lsrv_64_dp_2src
+        3766, // LSRV_32_dp_2src
+        3771, // LSRV_64_dp_2src
+        3776, // MADD_32a_dp_3src
+        3782, // MADD_64a_dp_3src
+        3788, // MADDPT_64a_dp_3src
+        3794, // MNEG_msub_32a_dp_3src
+        3799, // MNEG_msub_64a_dp_3src
+        3804, // MOV_orr_32_log_imm
+        3810, // MOV_orr_64_log_imm
+        3816, // MOV_movn_32_movewide
+        3822, // MOV_movn_64_movewide
+        3828, // MOV_orr_32_log_shift
+        3832, // MOV_orr_64_log_shift
+        3836, // MOV_add_32_addsub_imm
+        3840, // MOV_add_64_addsub_imm
+        3844, // MOV_movz_32_movewide
+        3850, // MOV_movz_64_movewide
+        3856, // MOVK_32_movewide
+        3864, // MOVK_64_movewide
+        3872, // MOVN_32_movewide
+        3880, // MOVN_64_movewide
+        3888, // MOVZ_32_movewide
+        3896, // MOVZ_64_movewide
+        3904, // MRRS_rs_systemmovepr
+        3909, // MRS_rs_systemmove
+        3913, // MSR_si_pstate
+        3917, // MSR_sr_systemmove
+        3921, // MSRR_sr_systemmovepr
+        3926, // MSUB_32a_dp_3src
+        3932, // MSUB_64a_dp_3src
+        3938, // MSUBPT_64a_dp_3src
+        3944, // MUL_madd_32a_dp_3src
+        3949, // MUL_madd_64a_dp_3src
+        3954, // MVN_orn_32_log_shift
+        3959, // MVN_orn_64_log_shift
+        3964, // NEG_sub_32_addsub_shift
+        3969, // NEG_sub_64_addsub_shift
+        3974, // NEGS_subs_32_addsub_shift
+        3979, // NEGS_subs_64_addsub_shift
+        3984, // NGC_sbc_32_addsub_carry
+        3988, // NGC_sbc_64_addsub_carry
+        3992, // NGCS_sbcs_32_addsub_carry
+        3996, // NGCS_sbcs_64_addsub_carry
+        4000, // NOP_hi_hints
+        4002, // ORN_32_log_shift
+        4008, // ORN_64_log_shift
+        4014, // ORR_32_log_imm
+        4022, // ORR_64_log_imm
+        4030, // ORR_32_log_shift
+        4036, // ORR_64_log_shift
+        4042, // PACDA_64p_dp_1src
+        4046, // PACDZA_64z_dp_1src
+        4049, // PACDB_64p_dp_1src
+        4053, // PACDZB_64z_dp_1src
+        4056, // PACGA_64p_dp_2src
+        4061, // PACIA_64p_dp_1src
+        4065, // PACIZA_64z_dp_1src
+        4068, // PACIA1716_hi_hints
+        4070, // PACIASP_hi_hints
+        4072, // PACIAZ_hi_hints
+        4074, // PACIA171615_64lr_dp_1src
+        4076, // PACIASPPC_64lr_dp_1src
+        4078, // PACIB_64p_dp_1src
+        4082, // PACIZB_64z_dp_1src
+        4085, // PACIB1716_hi_hints
+        4087, // PACIBSP_hi_hints
+        4089, // PACIBZ_hi_hints
+        4091, // PACIB171615_64lr_dp_1src
+        4093, // PACIBSPPC_64lr_dp_1src
+        4095, // PACM_hi_hints
+        4097, // PACNBIASPPC_64lr_dp_1src
+        4099, // PACNBIBSPPC_64lr_dp_1src
+        4101, // PRFM_p_ldst_pos
+        4107, // PRFM_p_loadlit
+        4113, // PRFM_p_ldst_regoff
+        4119, // PRFUM_p_ldst_unscaled
+        4125, // PSB_hc_hints
+        4128, // PSSBB_dsb_bo_barriers
+        4130, // RBIT_32_dp_1src
+        4134, // RBIT_64_dp_1src
+        4138, // RCWCAS_c64_rcwcomswap
+        4143, // RCWCASA_c64_rcwcomswap
+        4148, // RCWCASAL_c64_rcwcomswap
+        4153, // RCWCASL_c64_rcwcomswap
+        4158, // RCWCASP_c64_rcwcomswappr
+        4165, // RCWCASPA_c64_rcwcomswappr
+        4172, // RCWCASPAL_c64_rcwcomswappr
+        4179, // RCWCASPL_c64_rcwcomswappr
+        4186, // RCWCLR_64_memop
+        4191, // RCWCLRA_64_memop
+        4196, // RCWCLRAL_64_memop
+        4201, // RCWCLRL_64_memop
+        4206, // RCWCLRP_128_memop_128
+        4211, // RCWCLRPA_128_memop_128
+        4216, // RCWCLRPAL_128_memop_128
+        4221, // RCWCLRPL_128_memop_128
+        4226, // RCWSCAS_c64_rcwcomswap
+        4231, // RCWSCASA_c64_rcwcomswap
+        4236, // RCWSCASAL_c64_rcwcomswap
+        4241, // RCWSCASL_c64_rcwcomswap
+        4246, // RCWSCASP_c64_rcwcomswappr
+        4253, // RCWSCASPA_c64_rcwcomswappr
+        4260, // RCWSCASPAL_c64_rcwcomswappr
+        4267, // RCWSCASPL_c64_rcwcomswappr
+        4274, // RCWSCLR_64_memop
+        4279, // RCWSCLRA_64_memop
+        4284, // RCWSCLRAL_64_memop
+        4289, // RCWSCLRL_64_memop
+        4294, // RCWSCLRP_128_memop_128
+        4299, // RCWSCLRPA_128_memop_128
+        4304, // RCWSCLRPAL_128_memop_128
+        4309, // RCWSCLRPL_128_memop_128
+        4314, // RCWSET_64_memop
+        4319, // RCWSETA_64_memop
+        4324, // RCWSETAL_64_memop
+        4329, // RCWSETL_64_memop
+        4334, // RCWSETP_128_memop_128
+        4339, // RCWSETPA_128_memop_128
+        4344, // RCWSETPAL_128_memop_128
+        4349, // RCWSETPL_128_memop_128
+        4354, // RCWSSET_64_memop
+        4359, // RCWSSETA_64_memop
+        4364, // RCWSSETAL_64_memop
+        4369, // RCWSSETL_64_memop
+        4374, // RCWSSETP_128_memop_128
+        4379, // RCWSSETPA_128_memop_128
+        4384, // RCWSSETPAL_128_memop_128
+        4389, // RCWSSETPL_128_memop_128
+        4394, // RCWSSWP_64_memop
+        4399, // RCWSSWPA_64_memop
+        4404, // RCWSSWPAL_64_memop
+        4409, // RCWSSWPL_64_memop
+        4414, // RCWSSWPP_128_memop_128
+        4419, // RCWSSWPPA_128_memop_128
+        4424, // RCWSSWPPAL_128_memop_128
+        4429, // RCWSSWPPL_128_memop_128
+        4434, // RCWSWP_64_memop
+        4439, // RCWSWPA_64_memop
+        4444, // RCWSWPAL_64_memop
+        4449, // RCWSWPL_64_memop
+        4454, // RCWSWPP_128_memop_128
+        4459, // RCWSWPPA_128_memop_128
+        4464, // RCWSWPPAL_128_memop_128
+        4469, // RCWSWPPL_128_memop_128
+        4474, // RET_64r_branch_reg
+        4477, // RETAA_64e_branch_reg
+        4479, // RETAB_64e_branch_reg
+        4481, // RETAASPPC_only_miscbranch
+        4485, // RETABSPPC_only_miscbranch
+        4489, // RETAASPPCR_64m_branch_reg
+        4492, // RETABSPPCR_64m_branch_reg
+        4495, // REV_32_dp_1src
+        4499, // REV_64_dp_1src
+        4503, // REV16_32_dp_1src
+        4507, // REV16_64_dp_1src
+        4511, // REV32_64_dp_1src
+        4515, // REV64_rev_64_dp_1src
+        4519, // RMIF_only_rmif
+        4527, // ROR_extr_32_extract
+        4535, // ROR_extr_64_extract
+        4543, // ROR_rorv_32_dp_2src
+        4548, // ROR_rorv_64_dp_2src
+        4553, // RORV_32_dp_2src
+        4558, // RORV_64_dp_2src
+        4563, // RPRFM_r_ldst_regoff
+        4568, // SB_only_barriers
+        4570, // SBC_32_addsub_carry
+        4575, // SBC_64_addsub_carry
+        4580, // SBCS_32_addsub_carry
+        4585, // SBCS_64_addsub_carry
+        4590, // SBFIZ_sbfm_32m_bitfield
+        4600, // SBFIZ_sbfm_64m_bitfield
+        4610, // SBFM_32m_bitfield
+        4620, // SBFM_64m_bitfield
+        4630, // SBFX_sbfm_32m_bitfield
+        4640, // SBFX_sbfm_64m_bitfield
+        4650, // SDIV_32_dp_2src
+        4655, // SDIV_64_dp_2src
+        4660, // SETF8_only_setf
+        4663, // SETF16_only_setf
+        4666, // SETGP_set_memcms
+        4671, // SETGM_set_memcms
+        4676, // SETGE_set_memcms
+        4681, // SETGPN_set_memcms
+        4686, // SETGMN_set_memcms
+        4691, // SETGEN_set_memcms
+        4696, // SETGPT_set_memcms
+        4701, // SETGMT_set_memcms
+        4706, // SETGET_set_memcms
+        4711, // SETGPTN_set_memcms
+        4716, // SETGMTN_set_memcms
+        4721, // SETGETN_set_memcms
+        4726, // SETP_set_memcms
+        4731, // SETM_set_memcms
+        4736, // SETE_set_memcms
+        4741, // SETPN_set_memcms
+        4746, // SETMN_set_memcms
+        4751, // SETEN_set_memcms
+        4756, // SETPT_set_memcms
+        4761, // SETMT_set_memcms
+        4766, // SETET_set_memcms
+        4771, // SETPTN_set_memcms
+        4776, // SETMTN_set_memcms
+        4781, // SETETN_set_memcms
+        4786, // SEV_hi_hints
+        4788, // SEVL_hi_hints
+        4790, // SMADDL_64wa_dp_3src
+        4796, // SMAX_32_minmax_imm
+        4804, // SMAX_64_minmax_imm
+        4812, // SMAX_32_dp_2src
+        4817, // SMAX_64_dp_2src
+        4822, // SMC_ex_exception
+        4826, // SMIN_32_minmax_imm
+        4834, // SMIN_64_minmax_imm
+        4842, // SMIN_32_dp_2src
+        4847, // SMIN_64_dp_2src
+        4852, // SMNEGL_smsubl_64wa_dp_3src
+        4857, // SMSTART_msr_si_pstate
+        4860, // SMSTOP_msr_si_pstate
+        4863, // SMSUBL_64wa_dp_3src
+        4869, // SMULH_64_dp_3src
+        4874, // SMULL_smaddl_64wa_dp_3src
+        4879, // SSBB_dsb_bo_barriers
+        4881, // ST2G_64spost_ldsttags
+        4889, // ST2G_64spre_ldsttags
+        4895, // ST2G_64soffset_ldsttags
+        4901, // ST64B_64l_memop
+        4905, // ST64BV_64_memop
+        4910, // ST64BV0_64_memop
+        4915, // STADD_ldadd_32_memop
+        4919, // STADDL_ldaddl_32_memop
+        4923, // STADD_ldadd_64_memop
+        4927, // STADDL_ldaddl_64_memop
+        4931, // STADDB_ldaddb_32_memop
+        4935, // STADDLB_ldaddlb_32_memop
+        4939, // STADDH_ldaddh_32_memop
+        4943, // STADDLH_ldaddlh_32_memop
+        4947, // STCLR_ldclr_32_memop
+        4951, // STCLRL_ldclrl_32_memop
+        4955, // STCLR_ldclr_64_memop
+        4959, // STCLRL_ldclrl_64_memop
+        4963, // STCLRB_ldclrb_32_memop
+        4967, // STCLRLB_ldclrlb_32_memop
+        4971, // STCLRH_ldclrh_32_memop
+        4975, // STCLRLH_ldclrlh_32_memop
+        4979, // STEOR_ldeor_32_memop
+        4983, // STEORL_ldeorl_32_memop
+        4987, // STEOR_ldeor_64_memop
+        4991, // STEORL_ldeorl_64_memop
+        4995, // STEORB_ldeorb_32_memop
+        4999, // STEORLB_ldeorlb_32_memop
+        5003, // STEORH_ldeorh_32_memop
+        5007, // STEORLH_ldeorlh_32_memop
+        5011, // STG_64spost_ldsttags
+        5019, // STG_64spre_ldsttags
+        5025, // STG_64soffset_ldsttags
+        5031, // STGM_64bulk_ldsttags
+        5035, // STGP_64_ldstpair_post
+        5045, // STGP_64_ldstpair_pre
+        5053, // STGP_64_ldstpair_off
+        5061, // STILP_32se_ldiappstilp
+        5069, // STILP_32s_ldiappstilp
+        5074, // STILP_64ss_ldiappstilp
+        5082, // STILP_64s_ldiappstilp
+        5087, // STLLR_sl32_ldstord
+        5091, // STLLR_sl64_ldstord
+        5095, // STLLRB_sl32_ldstord
+        5099, // STLLRH_sl32_ldstord
+        5103, // STLR_sl32_ldstord
+        5107, // STLR_sl64_ldstord
+        5111, // STLR_32s_ldapstl_writeback
+        5117, // STLR_64s_ldapstl_writeback
+        5123, // STLRB_sl32_ldstord
+        5127, // STLRH_sl32_ldstord
+        5131, // STLTXR_sr32_ldstexclr_unpriv
+        5136, // STLTXR_sr64_ldstexclr_unpriv
+        5141, // STLUR_32_ldapstl_unscaled
+        5147, // STLUR_64_ldapstl_unscaled
+        5153, // STLURB_32_ldapstl_unscaled
+        5159, // STLURH_32_ldapstl_unscaled
+        5165, // STLXP_sp32_ldstexclp
+        5171, // STLXP_sp64_ldstexclp
+        5177, // STLXR_sr32_ldstexclr
+        5182, // STLXR_sr64_ldstexclr
+        5187, // STLXRB_sr32_ldstexclr
+        5192, // STLXRH_sr32_ldstexclr
+        5197, // STNP_32_ldstnapair_offs
+        5205, // STNP_64_ldstnapair_offs
+        5213, // STP_32_ldstpair_post
+        5223, // STP_64_ldstpair_post
+        5233, // STP_32_ldstpair_pre
+        5241, // STP_64_ldstpair_pre
+        5249, // STP_32_ldstpair_off
+        5257, // STP_64_ldstpair_off
+        5265, // STR_32_ldst_immpost
+        5273, // STR_64_ldst_immpost
+        5281, // STR_32_ldst_immpre
+        5287, // STR_64_ldst_immpre
+        5293, // STR_32_ldst_pos
+        5299, // STR_64_ldst_pos
+        5305, // STR_32_ldst_regoff
+        5311, // STR_64_ldst_regoff
+        5317, // STRB_32_ldst_immpost
+        5325, // STRB_32_ldst_immpre
+        5331, // STRB_32_ldst_pos
+        5337, // STRB_32b_ldst_regoff
+        5343, // STRB_32bl_ldst_regoff
+        5349, // STRH_32_ldst_immpost
+        5357, // STRH_32_ldst_immpre
+        5363, // STRH_32_ldst_pos
+        5369, // STRH_32_ldst_regoff
+        5375, // STSET_ldset_32_memop
+        5379, // STSETL_ldsetl_32_memop
+        5383, // STSET_ldset_64_memop
+        5387, // STSETL_ldsetl_64_memop
+        5391, // STSETB_ldsetb_32_memop
+        5395, // STSETLB_ldsetlb_32_memop
+        5399, // STSETH_ldseth_32_memop
+        5403, // STSETLH_ldsetlh_32_memop
+        5407, // STSHH_hi_hints
+        5410, // STSMAX_ldsmax_32_memop
+        5414, // STSMAXL_ldsmaxl_32_memop
+        5418, // STSMAX_ldsmax_64_memop
+        5422, // STSMAXL_ldsmaxl_64_memop
+        5426, // STSMAXB_ldsmaxb_32_memop
+        5430, // STSMAXLB_ldsmaxlb_32_memop
+        5434, // STSMAXH_ldsmaxh_32_memop
+        5438, // STSMAXLH_ldsmaxlh_32_memop
+        5442, // STSMIN_ldsmin_32_memop
+        5446, // STSMINL_ldsminl_32_memop
+        5450, // STSMIN_ldsmin_64_memop
+        5454, // STSMINL_ldsminl_64_memop
+        5458, // STSMINB_ldsminb_32_memop
+        5462, // STSMINLB_ldsminlb_32_memop
+        5466, // STSMINH_ldsminh_32_memop
+        5470, // STSMINLH_ldsminlh_32_memop
+        5474, // STTADD_ldtadd_32_memop_unpriv
+        5478, // STTADDL_ldtaddl_32_memop_unpriv
+        5482, // STTADD_ldtadd_64_memop_unpriv
+        5486, // STTADDL_ldtaddl_64_memop_unpriv
+        5490, // STTCLR_ldtclr_32_memop_unpriv
+        5494, // STTCLRL_ldtclrl_32_memop_unpriv
+        5498, // STTCLR_ldtclr_64_memop_unpriv
+        5502, // STTCLRL_ldtclrl_64_memop_unpriv
+        5506, // STTNP_64_ldstnapair_offs
+        5514, // STTP_64_ldstpair_post
+        5524, // STTP_64_ldstpair_pre
+        5532, // STTP_64_ldstpair_off
+        5540, // STTR_32_ldst_unpriv
+        5546, // STTR_64_ldst_unpriv
+        5552, // STTRB_32_ldst_unpriv
+        5558, // STTRH_32_ldst_unpriv
+        5564, // STTSET_ldtset_32_memop_unpriv
+        5568, // STTSETL_ldtsetl_32_memop_unpriv
+        5572, // STTSET_ldtset_64_memop_unpriv
+        5576, // STTSETL_ldtsetl_64_memop_unpriv
+        5580, // STTXR_sr32_ldstexclr_unpriv
+        5585, // STTXR_sr64_ldstexclr_unpriv
+        5590, // STUMAX_ldumax_32_memop
+        5594, // STUMAXL_ldumaxl_32_memop
+        5598, // STUMAX_ldumax_64_memop
+        5602, // STUMAXL_ldumaxl_64_memop
+        5606, // STUMAXB_ldumaxb_32_memop
+        5610, // STUMAXLB_ldumaxlb_32_memop
+        5614, // STUMAXH_ldumaxh_32_memop
+        5618, // STUMAXLH_ldumaxlh_32_memop
+        5622, // STUMIN_ldumin_32_memop
+        5626, // STUMINL_lduminl_32_memop
+        5630, // STUMIN_ldumin_64_memop
+        5634, // STUMINL_lduminl_64_memop
+        5638, // STUMINB_lduminb_32_memop
+        5642, // STUMINLB_lduminlb_32_memop
+        5646, // STUMINH_lduminh_32_memop
+        5650, // STUMINLH_lduminlh_32_memop
+        5654, // STUR_32_ldst_unscaled
+        5660, // STUR_64_ldst_unscaled
+        5666, // STURB_32_ldst_unscaled
+        5672, // STURH_32_ldst_unscaled
+        5678, // STXP_sp32_ldstexclp
+        5684, // STXP_sp64_ldstexclp
+        5690, // STXR_sr32_ldstexclr
+        5695, // STXR_sr64_ldstexclr
+        5700, // STXRB_sr32_ldstexclr
+        5705, // STXRH_sr32_ldstexclr
+        5710, // STZ2G_64spost_ldsttags
+        5718, // STZ2G_64spre_ldsttags
+        5724, // STZ2G_64soffset_ldsttags
+        5730, // STZG_64spost_ldsttags
+        5738, // STZG_64spre_ldsttags
+        5744, // STZG_64soffset_ldsttags
+        5750, // STZGM_64bulk_ldsttags
+        5754, // SUB_32_addsub_ext
+        5760, // SUB_64_addsub_ext
+        5770, // SUB_32_addsub_imm
+        5780, // SUB_64_addsub_imm
+        5790, // SUB_32_addsub_shift
+        5796, // SUB_64_addsub_shift
+        5802, // SUBG_64_addsub_immtags
+        5812, // SUBP_64s_dp_2src
+        5817, // SUBPS_64s_dp_2src
+        5822, // SUBPT_64_addsub_pt
+        5828, // SUBS_32s_addsub_ext
+        5834, // SUBS_64s_addsub_ext
+        5844, // SUBS_32s_addsub_imm
+        5854, // SUBS_64s_addsub_imm
+        5864, // SUBS_32_addsub_shift
+        5870, // SUBS_64_addsub_shift
+        5876, // SVC_ex_exception
+        5880, // SWP_32_memop
+        5885, // SWPA_32_memop
+        5890, // SWPAL_32_memop
+        5895, // SWPL_32_memop
+        5900, // SWP_64_memop
+        5905, // SWPA_64_memop
+        5910, // SWPAL_64_memop
+        5915, // SWPL_64_memop
+        5920, // SWPB_32_memop
+        5925, // SWPAB_32_memop
+        5930, // SWPALB_32_memop
+        5935, // SWPLB_32_memop
+        5940, // SWPH_32_memop
+        5945, // SWPAH_32_memop
+        5950, // SWPALH_32_memop
+        5955, // SWPLH_32_memop
+        5960, // SWPP_128_memop_128
+        5965, // SWPPA_128_memop_128
+        5970, // SWPPAL_128_memop_128
+        5975, // SWPPL_128_memop_128
+        5980, // SWPT_32_memop_unpriv
+        5985, // SWPTA_32_memop_unpriv
+        5990, // SWPTAL_32_memop_unpriv
+        5995, // SWPTL_32_memop_unpriv
+        6000, // SWPT_64_memop_unpriv
+        6005, // SWPTA_64_memop_unpriv
+        6010, // SWPTAL_64_memop_unpriv
+        6015, // SWPTL_64_memop_unpriv
+        6020, // SXTB_sbfm_32m_bitfield
+        6024, // SXTB_sbfm_64m_bitfield
+        6028, // SXTH_sbfm_32m_bitfield
+        6032, // SXTH_sbfm_64m_bitfield
+        6036, // SXTW_sbfm_64m_bitfield
+        6040, // SYS_cr_systeminstrs
+        6052, // SYSL_rc_systeminstrs
+        6064, // SYSP_cr_syspairinstrs
+        6076, // TBNZ_only_testbranch
+        6084, // TBZ_only_testbranch
+        6092, // TCANCEL_ex_exception
+        6096, // TCOMMIT_only_barriers
+        6098, // TLBI_sys_cr_systeminstrs
+        6102, // TLBIP_sysp_cr_syspairinstrs
+        6106, // TRCIT_sys_cr_systeminstrs
+        6109, // TSB_hc_hints
+        6112, // TST_ands_32s_log_imm
+        6118, // TST_ands_64s_log_imm
+        6124, // TST_ands_32_log_shift
+        6129, // TST_ands_64_log_shift
+        6134, // TSTART_br_systemresult
+        6137, // TTEST_br_systemresult
+        6140, // UBFIZ_ubfm_32m_bitfield
+        6150, // UBFIZ_ubfm_64m_bitfield
+        6160, // UBFM_32m_bitfield
+        6170, // UBFM_64m_bitfield
+        6180, // UBFX_ubfm_32m_bitfield
+        6190, // UBFX_ubfm_64m_bitfield
+        6200, // UDF_only_perm_undef
+        6204, // UDIV_32_dp_2src
+        6209, // UDIV_64_dp_2src
+        6214, // UMADDL_64wa_dp_3src
+        6220, // UMAX_32u_minmax_imm
+        6228, // UMAX_64u_minmax_imm
+        6236, // UMAX_32_dp_2src
+        6241, // UMAX_64_dp_2src
+        6246, // UMIN_32u_minmax_imm
+        6254, // UMIN_64u_minmax_imm
+        6262, // UMIN_32_dp_2src
+        6267, // UMIN_64_dp_2src
+        6272, // UMNEGL_umsubl_64wa_dp_3src
+        6277, // UMSUBL_64wa_dp_3src
+        6283, // UMULH_64_dp_3src
+        6288, // UMULL_umaddl_64wa_dp_3src
+        6293, // UXTB_ubfm_32m_bitfield
+        6297, // UXTH_ubfm_32m_bitfield
+        6301, // WFE_hi_hints
+        6303, // WFET_only_systeminstrswithreg
+        6306, // WFI_hi_hints
+        6308, // WFIT_only_systeminstrswithreg
+        6311, // XAFLAG_m_pstate
+        6313, // XPACD_64z_dp_1src
+        6316, // XPACI_64z_dp_1src
+        6319, // XPACLRI_hi_hints
+        6321, // YIELD_hi_hints
+        6323, // ABS_asisdmisc_r
+        6327, // ABS_asimdmisc_r
+        6333, // ADD_asisdsame_only
+        6338, // ADD_asimdsame_only
+        6346, // ADDHN_asimddiff_n
+        6354, // ADDHN2_asimddiff_n
+        6362, // ADDP_asisdpair_only
+        6368, // ADDP_asimdsame_only
+        6376, // ADDV_asimdall_only
+        6382, // AESD_b_cryptoaes
+        6388, // AESE_b_cryptoaes
+        6394, // AESIMC_b_cryptoaes
+        6400, // AESMC_b_cryptoaes
+        6406, // AND_asimdsame_only
+        6414, // BCAX_vvv16_crypto4
+        6424, // BF1CVTL_asimdmisc_v
+        6430, // BF1CVTL2_asimdmisc_v
+        6436, // BF2CVTL_asimdmisc_v
+        6442, // BF2CVTL2_asimdmisc_v
+        6448, // BFCVT_bs_floatdp1
+        6452, // BFCVTN_asimdmisc_4s
+        6458, // BFCVTN2_asimdmisc_4s
+        6464, // BFDOT_asimdelem_e
+        6472, // BFDOT_asimdsame2_d
+        6480, // BFMLALB_asimdelem_f
+        6488, // BFMLALT_asimdelem_f
+        6496, // BFMLALB_asimdsame2_f
+        6504, // BFMLALT_asimdsame2_f
+        6512, // BFMMLA_asimdsame2_e
+        6520, // BIC_asimdimm_l_hl
+        6528, // BIC_asimdimm_l_sl
+        6536, // BIC_asimdsame_only
+        6544, // BIF_asimdsame_only
+        6552, // BIT_asimdsame_only
+        6560, // BSL_asimdsame_only
+        6568, // CLS_asimdmisc_r
+        6574, // CLZ_asimdmisc_r
+        6580, // CMEQ_asisdsame_only
+        6585, // CMEQ_asimdsame_only
+        6593, // CMEQ_asisdmisc_z
+        6598, // CMEQ_asimdmisc_z
+        6606, // CMGE_asisdsame_only
+        6611, // CMGE_asimdsame_only
+        6619, // CMGE_asisdmisc_z
+        6624, // CMGE_asimdmisc_z
+        6632, // CMGT_asisdsame_only
+        6637, // CMGT_asimdsame_only
+        6645, // CMGT_asisdmisc_z
+        6650, // CMGT_asimdmisc_z
+        6658, // CMHI_asisdsame_only
+        6663, // CMHI_asimdsame_only
+        6671, // CMHS_asisdsame_only
+        6676, // CMHS_asimdsame_only
+        6684, // CMLE_asisdmisc_z
+        6689, // CMLE_asimdmisc_z
+        6697, // CMLT_asisdmisc_z
+        6702, // CMLT_asimdmisc_z
+        6710, // CMTST_asisdsame_only
+        6715, // CMTST_asimdsame_only
+        6723, // CNT_asimdmisc_r
+        6729, // DUP_asisdone_only
+        6735, // DUP_asimdins_dv_v
+        6741, // DUP_asimdins_dr_r
+        6747, // EOR_asimdsame_only
+        6755, // EOR3_vvv16_crypto4
+        6765, // EXT_asimdext_only
+        6775, // F1CVTL_asimdmisc_v
+        6781, // F1CVTL2_asimdmisc_v
+        6787, // F2CVTL_asimdmisc_v
+        6793, // F2CVTL2_asimdmisc_v
+        6799, // FABD_asisdsamefp16_only
+        6804, // FABD_asisdsame_only
+        6812, // FABD_asimdsamefp16_only
+        6820, // FABD_asimdsame_only
+        6828, // FABS_h_floatdp1
+        6832, // FABS_s_floatdp1
+        6836, // FABS_d_floatdp1
+        6840, // FABS_asimdmiscfp16_r
+        6846, // FABS_asimdmisc_r
+        6852, // FACGE_asisdsamefp16_only
+        6857, // FACGE_asisdsame_only
+        6865, // FACGE_asimdsamefp16_only
+        6873, // FACGE_asimdsame_only
+        6881, // FACGT_asisdsamefp16_only
+        6886, // FACGT_asisdsame_only
+        6894, // FACGT_asimdsamefp16_only
+        6902, // FACGT_asimdsame_only
+        6910, // FADD_h_floatdp2
+        6915, // FADD_s_floatdp2
+        6920, // FADD_d_floatdp2
+        6925, // FADD_asimdsamefp16_only
+        6933, // FADD_asimdsame_only
+        6941, // FADDP_asisdpair_only_h
+        6947, // FADDP_asisdpair_only_sd
+        6953, // FADDP_asimdsamefp16_only
+        6961, // FADDP_asimdsame_only
+        6969, // FAMAX_asimdsamefp16_only
+        6977, // FAMAX_asimdsame_only
+        6985, // FAMIN_asimdsamefp16_only
+        6993, // FAMIN_asimdsame_only
+        7001, // FCADD_asimdsame2_c
+        7011, // FCCMP_h_floatccmp
+        7021, // FCCMP_s_floatccmp
+        7031, // FCCMP_d_floatccmp
+        7041, // FCCMPE_h_floatccmp
+        7051, // FCCMPE_s_floatccmp
+        7061, // FCCMPE_d_floatccmp
+        7071, // FCMEQ_asisdsamefp16_only
+        7076, // FCMEQ_asisdsame_only
+        7084, // FCMEQ_asimdsamefp16_only
+        7092, // FCMEQ_asimdsame_only
+        7100, // FCMEQ_asisdmiscfp16_fz
+        7105, // FCMEQ_asisdmisc_fz
+        7113, // FCMEQ_asimdmiscfp16_fz
+        7121, // FCMEQ_asimdmisc_fz
+        7129, // FCMGE_asisdsamefp16_only
+        7134, // FCMGE_asisdsame_only
+        7142, // FCMGE_asimdsamefp16_only
+        7150, // FCMGE_asimdsame_only
+        7158, // FCMGE_asisdmiscfp16_fz
+        7163, // FCMGE_asisdmisc_fz
+        7171, // FCMGE_asimdmiscfp16_fz
+        7179, // FCMGE_asimdmisc_fz
+        7187, // FCMGT_asisdsamefp16_only
+        7192, // FCMGT_asisdsame_only
+        7200, // FCMGT_asimdsamefp16_only
+        7208, // FCMGT_asimdsame_only
+        7216, // FCMGT_asisdmiscfp16_fz
+        7221, // FCMGT_asisdmisc_fz
+        7229, // FCMGT_asimdmiscfp16_fz
+        7237, // FCMGT_asimdmisc_fz
+        7245, // FCMLA_asimdsame2_c
+        7255, // FCMLA_advsimd_elt
+        7265, // FCMLE_asisdmiscfp16_fz
+        7270, // FCMLE_asisdmisc_fz
+        7278, // FCMLE_asimdmiscfp16_fz
+        7286, // FCMLE_asimdmisc_fz
+        7294, // FCMLT_asisdmiscfp16_fz
+        7299, // FCMLT_asisdmisc_fz
+        7307, // FCMLT_asimdmiscfp16_fz
+        7315, // FCMLT_asimdmisc_fz
+        7323, // FCMP_h_floatcmp
+        7327, // FCMP_hz_floatcmp
+        7331, // FCMP_s_floatcmp
+        7335, // FCMP_sz_floatcmp
+        7339, // FCMP_d_floatcmp
+        7343, // FCMP_dz_floatcmp
+        7347, // FCMPE_h_floatcmp
+        7351, // FCMPE_hz_floatcmp
+        7355, // FCMPE_s_floatcmp
+        7359, // FCMPE_sz_floatcmp
+        7363, // FCMPE_d_floatcmp
+        7367, // FCMPE_dz_floatcmp
+        7371, // FCSEL_h_floatsel
+        7377, // FCSEL_s_floatsel
+        7383, // FCSEL_d_floatsel
+        7389, // FCVT_sh_floatdp1
+        7393, // FCVT_dh_floatdp1
+        7397, // FCVT_hs_floatdp1
+        7401, // FCVT_ds_floatdp1
+        7405, // FCVT_hd_floatdp1
+        7409, // FCVT_sd_floatdp1
+        7413, // FCVTAS_sisd_32h
+        7417, // FCVTAS_sisd_64h
+        7421, // FCVTAS_sisd_64s
+        7425, // FCVTAS_sisd_32d
+        7429, // FCVTAS_32h_float2int
+        7433, // FCVTAS_64h_float2int
+        7437, // FCVTAS_32s_float2int
+        7441, // FCVTAS_64s_float2int
+        7445, // FCVTAS_32d_float2int
+        7449, // FCVTAS_64d_float2int
+        7453, // FCVTAS_asisdmiscfp16_r
+        7457, // FCVTAS_asisdmisc_r
+        7463, // FCVTAS_asimdmiscfp16_r
+        7469, // FCVTAS_asimdmisc_r
+        7475, // FCVTAU_sisd_32h
+        7479, // FCVTAU_sisd_64h
+        7483, // FCVTAU_sisd_64s
+        7487, // FCVTAU_sisd_32d
+        7491, // FCVTAU_32h_float2int
+        7495, // FCVTAU_64h_float2int
+        7499, // FCVTAU_32s_float2int
+        7503, // FCVTAU_64s_float2int
+        7507, // FCVTAU_32d_float2int
+        7511, // FCVTAU_64d_float2int
+        7515, // FCVTAU_asisdmiscfp16_r
+        7519, // FCVTAU_asisdmisc_r
+        7525, // FCVTAU_asimdmiscfp16_r
+        7531, // FCVTAU_asimdmisc_r
+        7537, // FCVTL_asimdmisc_l
+        7543, // FCVTL2_asimdmisc_l
+        7549, // FCVTMS_sisd_32h
+        7553, // FCVTMS_sisd_64h
+        7557, // FCVTMS_sisd_64s
+        7561, // FCVTMS_sisd_32d
+        7565, // FCVTMS_32h_float2int
+        7569, // FCVTMS_64h_float2int
+        7573, // FCVTMS_32s_float2int
+        7577, // FCVTMS_64s_float2int
+        7581, // FCVTMS_32d_float2int
+        7585, // FCVTMS_64d_float2int
+        7589, // FCVTMS_asisdmiscfp16_r
+        7593, // FCVTMS_asisdmisc_r
+        7599, // FCVTMS_asimdmiscfp16_r
+        7605, // FCVTMS_asimdmisc_r
+        7611, // FCVTMU_sisd_32h
+        7615, // FCVTMU_sisd_64h
+        7619, // FCVTMU_sisd_64s
+        7623, // FCVTMU_sisd_32d
+        7627, // FCVTMU_32h_float2int
+        7631, // FCVTMU_64h_float2int
+        7635, // FCVTMU_32s_float2int
+        7639, // FCVTMU_64s_float2int
+        7643, // FCVTMU_32d_float2int
+        7647, // FCVTMU_64d_float2int
+        7651, // FCVTMU_asisdmiscfp16_r
+        7655, // FCVTMU_asisdmisc_r
+        7661, // FCVTMU_asimdmiscfp16_r
+        7667, // FCVTMU_asimdmisc_r
+        7673, // FCVTN_asimdsame2_d
+        7681, // FCVTN_asimdmisc_n
+        7687, // FCVTN2_asimdmisc_n
+        7693, // FCVTN_asimdsame2_h
+        7701, // FCVTN2_asimdsame2_h
+        7709, // FCVTNS_sisd_32h
+        7713, // FCVTNS_sisd_64h
+        7717, // FCVTNS_sisd_64s
+        7721, // FCVTNS_sisd_32d
+        7725, // FCVTNS_32h_float2int
+        7729, // FCVTNS_64h_float2int
+        7733, // FCVTNS_32s_float2int
+        7737, // FCVTNS_64s_float2int
+        7741, // FCVTNS_32d_float2int
+        7745, // FCVTNS_64d_float2int
+        7749, // FCVTNS_asisdmiscfp16_r
+        7753, // FCVTNS_asisdmisc_r
+        7759, // FCVTNS_asimdmiscfp16_r
+        7765, // FCVTNS_asimdmisc_r
+        7771, // FCVTNU_sisd_32h
+        7775, // FCVTNU_sisd_64h
+        7779, // FCVTNU_sisd_64s
+        7783, // FCVTNU_sisd_32d
+        7787, // FCVTNU_32h_float2int
+        7791, // FCVTNU_64h_float2int
+        7795, // FCVTNU_32s_float2int
+        7799, // FCVTNU_64s_float2int
+        7803, // FCVTNU_32d_float2int
+        7807, // FCVTNU_64d_float2int
+        7811, // FCVTNU_asisdmiscfp16_r
+        7815, // FCVTNU_asisdmisc_r
+        7821, // FCVTNU_asimdmiscfp16_r
+        7827, // FCVTNU_asimdmisc_r
+        7833, // FCVTPS_sisd_32h
+        7837, // FCVTPS_sisd_64h
+        7841, // FCVTPS_sisd_64s
+        7845, // FCVTPS_sisd_32d
+        7849, // FCVTPS_32h_float2int
+        7853, // FCVTPS_64h_float2int
+        7857, // FCVTPS_32s_float2int
+        7861, // FCVTPS_64s_float2int
+        7865, // FCVTPS_32d_float2int
+        7869, // FCVTPS_64d_float2int
+        7873, // FCVTPS_asisdmiscfp16_r
+        7877, // FCVTPS_asisdmisc_r
+        7883, // FCVTPS_asimdmiscfp16_r
+        7889, // FCVTPS_asimdmisc_r
+        7895, // FCVTPU_sisd_32h
+        7899, // FCVTPU_sisd_64h
+        7903, // FCVTPU_sisd_64s
+        7907, // FCVTPU_sisd_32d
+        7911, // FCVTPU_32h_float2int
+        7915, // FCVTPU_64h_float2int
+        7919, // FCVTPU_32s_float2int
+        7923, // FCVTPU_64s_float2int
+        7927, // FCVTPU_32d_float2int
+        7931, // FCVTPU_64d_float2int
+        7935, // FCVTPU_asisdmiscfp16_r
+        7939, // FCVTPU_asisdmisc_r
+        7945, // FCVTPU_asimdmiscfp16_r
+        7951, // FCVTPU_asimdmisc_r
+        7957, // FCVTXN_asisdmisc_n
+        7961, // FCVTXN_asimdmisc_n
+        7967, // FCVTXN2_asimdmisc_n
+        7973, // FCVTZS_sisd_32h
+        7977, // FCVTZS_sisd_64h
+        7981, // FCVTZS_sisd_64s
+        7985, // FCVTZS_sisd_32d
+        7989, // FCVTZS_32h_float2fix
+        7997, // FCVTZS_64h_float2fix
+        8005, // FCVTZS_32s_float2fix
+        8013, // FCVTZS_64s_float2fix
+        8021, // FCVTZS_32d_float2fix
+        8029, // FCVTZS_64d_float2fix
+        8037, // FCVTZS_32h_float2int
+        8041, // FCVTZS_64h_float2int
+        8045, // FCVTZS_32s_float2int
+        8049, // FCVTZS_64s_float2int
+        8053, // FCVTZS_32d_float2int
+        8057, // FCVTZS_64d_float2int
+        8061, // FCVTZS_asisdshf_c
+        8069, // FCVTZS_asimdshf_c
+        8077, // FCVTZS_asisdmiscfp16_r
+        8081, // FCVTZS_asisdmisc_r
+        8087, // FCVTZS_asimdmiscfp16_r
+        8093, // FCVTZS_asimdmisc_r
+        8099, // FCVTZU_sisd_32h
+        8103, // FCVTZU_sisd_64h
+        8107, // FCVTZU_sisd_64s
+        8111, // FCVTZU_sisd_32d
+        8115, // FCVTZU_32h_float2fix
+        8123, // FCVTZU_64h_float2fix
+        8131, // FCVTZU_32s_float2fix
+        8139, // FCVTZU_64s_float2fix
+        8147, // FCVTZU_32d_float2fix
+        8155, // FCVTZU_64d_float2fix
+        8163, // FCVTZU_32h_float2int
+        8167, // FCVTZU_64h_float2int
+        8171, // FCVTZU_32s_float2int
+        8175, // FCVTZU_64s_float2int
+        8179, // FCVTZU_32d_float2int
+        8183, // FCVTZU_64d_float2int
+        8187, // FCVTZU_asisdshf_c
+        8195, // FCVTZU_asimdshf_c
+        8203, // FCVTZU_asisdmiscfp16_r
+        8207, // FCVTZU_asisdmisc_r
+        8213, // FCVTZU_asimdmiscfp16_r
+        8219, // FCVTZU_asimdmisc_r
+        8225, // FDIV_h_floatdp2
+        8230, // FDIV_s_floatdp2
+        8235, // FDIV_d_floatdp2
+        8240, // FDIV_asimdsamefp16_only
+        8248, // FDIV_asimdsame_only
+        8256, // FDOT_asimdelem_g
+        8264, // FDOT_asimdsame2_d
+        8272, // FDOT_asimdelem_d
+        8280, // FDOT_asimdsame2_dd
+        8288, // FJCVTZS_32d_float2int
+        8292, // FMADD_h_floatdp3
+        8298, // FMADD_s_floatdp3
+        8304, // FMADD_d_floatdp3
+        8310, // FMAX_h_floatdp2
+        8315, // FMAX_s_floatdp2
+        8320, // FMAX_d_floatdp2
+        8325, // FMAX_asimdsamefp16_only
+        8333, // FMAX_asimdsame_only
+        8341, // FMAXNM_h_floatdp2
+        8346, // FMAXNM_s_floatdp2
+        8351, // FMAXNM_d_floatdp2
+        8356, // FMAXNM_asimdsamefp16_only
+        8364, // FMAXNM_asimdsame_only
+        8372, // FMAXNMP_asisdpair_only_h
+        8378, // FMAXNMP_asisdpair_only_sd
+        8384, // FMAXNMP_asimdsamefp16_only
+        8392, // FMAXNMP_asimdsame_only
+        8400, // FMAXNMV_asimdall_only_h
+        8406, // FMAXNMV_asimdall_only_sd
+        8412, // FMAXP_asisdpair_only_h
+        8418, // FMAXP_asisdpair_only_sd
+        8424, // FMAXP_asimdsamefp16_only
+        8432, // FMAXP_asimdsame_only
+        8440, // FMAXV_asimdall_only_h
+        8446, // FMAXV_asimdall_only_sd
+        8452, // FMIN_h_floatdp2
+        8457, // FMIN_s_floatdp2
+        8462, // FMIN_d_floatdp2
+        8467, // FMIN_asimdsamefp16_only
+        8475, // FMIN_asimdsame_only
+        8483, // FMINNM_h_floatdp2
+        8488, // FMINNM_s_floatdp2
+        8493, // FMINNM_d_floatdp2
+        8498, // FMINNM_asimdsamefp16_only
+        8506, // FMINNM_asimdsame_only
+        8514, // FMINNMP_asisdpair_only_h
+        8520, // FMINNMP_asisdpair_only_sd
+        8526, // FMINNMP_asimdsamefp16_only
+        8534, // FMINNMP_asimdsame_only
+        8542, // FMINNMV_asimdall_only_h
+        8548, // FMINNMV_asimdall_only_sd
+        8554, // FMINP_asisdpair_only_h
+        8560, // FMINP_asisdpair_only_sd
+        8566, // FMINP_asimdsamefp16_only
+        8574, // FMINP_asimdsame_only
+        8582, // FMINV_asimdall_only_h
+        8588, // FMINV_asimdall_only_sd
+        8594, // FMLA_asisdelem_rh_h
+        8602, // FMLA_asisdelem_r_sd
+        8610, // FMLA_asimdelem_rh_h
+        8618, // FMLA_asimdelem_r_sd
+        8626, // FMLA_asimdsamefp16_only
+        8634, // FMLA_asimdsame_only
+        8642, // FMLAL_asimdelem_lh
+        8650, // FMLAL2_asimdelem_lh
+        8658, // FMLAL_asimdsame_f
+        8666, // FMLAL2_asimdsame_f
+        8674, // FMLALB_asimdelem_h
+        8682, // FMLALT_asimdelem_h
+        8690, // FMLALB_asimdsame2_j
+        8698, // FMLALT_asimdsame2_j
+        8706, // FMLALLBB_asimdelem_j
+        8714, // FMLALLBT_asimdelem_j
+        8722, // FMLALLTB_asimdelem_j
+        8730, // FMLALLTT_asimdelem_j
+        8738, // FMLALLBB_asimdsame2_g
+        8746, // FMLALLBT_asimdsame2_g
+        8754, // FMLALLTB_asimdsame2_g
+        8762, // FMLALLTT_asimdsame2_g
+        8770, // FMLS_asisdelem_rh_h
+        8778, // FMLS_asisdelem_r_sd
+        8786, // FMLS_asimdelem_rh_h
+        8794, // FMLS_asimdelem_r_sd
+        8802, // FMLS_asimdsamefp16_only
+        8810, // FMLS_asimdsame_only
+        8818, // FMLSL_asimdelem_lh
+        8826, // FMLSL2_asimdelem_lh
+        8834, // FMLSL_asimdsame_f
+        8842, // FMLSL2_asimdsame_f
+        8850, // FMMLA_asimd_fp8fp16
+        8858, // FMMLA_asimd_fp8fp32
+        8866, // FMOV_32h_float2int
+        8870, // FMOV_64h_float2int
+        8874, // FMOV_h32_float2int
+        8878, // FMOV_s32_float2int
+        8882, // FMOV_32s_float2int
+        8886, // FMOV_h64_float2int
+        8890, // FMOV_d64_float2int
+        8894, // FMOV_v64i_float2int
+        8900, // FMOV_64d_float2int
+        8904, // FMOV_64vx_float2int
+        8910, // FMOV_h_floatdp1
+        8914, // FMOV_s_floatdp1
+        8918, // FMOV_d_floatdp1
+        8922, // FMOV_h_floatimm
+        8928, // FMOV_s_floatimm
+        8934, // FMOV_d_floatimm
+        8940, // FMOV_asimdimm_h_h
+        8946, // FMOV_asimdimm_s_s
+        8952, // FMOV_asimdimm_d2_d
+        8958, // FMSUB_h_floatdp3
+        8964, // FMSUB_s_floatdp3
+        8970, // FMSUB_d_floatdp3
+        8976, // FMUL_asisdelem_rh_h
+        8984, // FMUL_asisdelem_r_sd
+        8992, // FMUL_asimdelem_rh_h
+        9000, // FMUL_asimdelem_r_sd
+        9008, // FMUL_h_floatdp2
+        9013, // FMUL_s_floatdp2
+        9018, // FMUL_d_floatdp2
+        9023, // FMUL_asimdsamefp16_only
+        9031, // FMUL_asimdsame_only
+        9039, // FMULX_asisdsamefp16_only
+        9044, // FMULX_asisdsame_only
+        9052, // FMULX_asimdsamefp16_only
+        9060, // FMULX_asimdsame_only
+        9068, // FMULX_asisdelem_rh_h
+        9076, // FMULX_asisdelem_r_sd
+        9084, // FMULX_asimdelem_rh_h
+        9092, // FMULX_asimdelem_r_sd
+        9100, // FNEG_h_floatdp1
+        9104, // FNEG_s_floatdp1
+        9108, // FNEG_d_floatdp1
+        9112, // FNEG_asimdmiscfp16_r
+        9118, // FNEG_asimdmisc_r
+        9124, // FNMADD_h_floatdp3
+        9130, // FNMADD_s_floatdp3
+        9136, // FNMADD_d_floatdp3
+        9142, // FNMSUB_h_floatdp3
+        9148, // FNMSUB_s_floatdp3
+        9154, // FNMSUB_d_floatdp3
+        9160, // FNMUL_h_floatdp2
+        9165, // FNMUL_s_floatdp2
+        9170, // FNMUL_d_floatdp2
+        9175, // FRECPE_asisdmiscfp16_r
+        9179, // FRECPE_asisdmisc_r
+        9185, // FRECPE_asimdmiscfp16_r
+        9191, // FRECPE_asimdmisc_r
+        9197, // FRECPS_asisdsamefp16_only
+        9202, // FRECPS_asisdsame_only
+        9210, // FRECPS_asimdsamefp16_only
+        9218, // FRECPS_asimdsame_only
+        9226, // FRECPX_asisdmiscfp16_r
+        9230, // FRECPX_asisdmisc_r
+        9236, // FRINT32X_s_floatdp1
+        9240, // FRINT32X_d_floatdp1
+        9244, // FRINT32X_asimdmisc_r
+        9250, // FRINT32Z_s_floatdp1
+        9254, // FRINT32Z_d_floatdp1
+        9258, // FRINT32Z_asimdmisc_r
+        9264, // FRINT64X_s_floatdp1
+        9268, // FRINT64X_d_floatdp1
+        9272, // FRINT64X_asimdmisc_r
+        9278, // FRINT64Z_s_floatdp1
+        9282, // FRINT64Z_d_floatdp1
+        9286, // FRINT64Z_asimdmisc_r
+        9292, // FRINTA_h_floatdp1
+        9296, // FRINTA_s_floatdp1
+        9300, // FRINTA_d_floatdp1
+        9304, // FRINTA_asimdmiscfp16_r
+        9310, // FRINTA_asimdmisc_r
+        9316, // FRINTI_h_floatdp1
+        9320, // FRINTI_s_floatdp1
+        9324, // FRINTI_d_floatdp1
+        9328, // FRINTI_asimdmiscfp16_r
+        9334, // FRINTI_asimdmisc_r
+        9340, // FRINTM_h_floatdp1
+        9344, // FRINTM_s_floatdp1
+        9348, // FRINTM_d_floatdp1
+        9352, // FRINTM_asimdmiscfp16_r
+        9358, // FRINTM_asimdmisc_r
+        9364, // FRINTN_h_floatdp1
+        9368, // FRINTN_s_floatdp1
+        9372, // FRINTN_d_floatdp1
+        9376, // FRINTN_asimdmiscfp16_r
+        9382, // FRINTN_asimdmisc_r
+        9388, // FRINTP_h_floatdp1
+        9392, // FRINTP_s_floatdp1
+        9396, // FRINTP_d_floatdp1
+        9400, // FRINTP_asimdmiscfp16_r
+        9406, // FRINTP_asimdmisc_r
+        9412, // FRINTX_h_floatdp1
+        9416, // FRINTX_s_floatdp1
+        9420, // FRINTX_d_floatdp1
+        9424, // FRINTX_asimdmiscfp16_r
+        9430, // FRINTX_asimdmisc_r
+        9436, // FRINTZ_h_floatdp1
+        9440, // FRINTZ_s_floatdp1
+        9444, // FRINTZ_d_floatdp1
+        9448, // FRINTZ_asimdmiscfp16_r
+        9454, // FRINTZ_asimdmisc_r
+        9460, // FRSQRTE_asisdmiscfp16_r
+        9464, // FRSQRTE_asisdmisc_r
+        9470, // FRSQRTE_asimdmiscfp16_r
+        9476, // FRSQRTE_asimdmisc_r
+        9482, // FRSQRTS_asisdsamefp16_only
+        9487, // FRSQRTS_asisdsame_only
+        9495, // FRSQRTS_asimdsamefp16_only
+        9503, // FRSQRTS_asimdsame_only
+        9511, // FSCALE_asimdsamefp16_only
+        9519, // FSCALE_asimdsame_only
+        9527, // FSQRT_h_floatdp1
+        9531, // FSQRT_s_floatdp1
+        9535, // FSQRT_d_floatdp1
+        9539, // FSQRT_asimdmiscfp16_r
+        9545, // FSQRT_asimdmisc_r
+        9551, // FSUB_h_floatdp2
+        9556, // FSUB_s_floatdp2
+        9561, // FSUB_d_floatdp2
+        9566, // FSUB_asimdsamefp16_only
+        9574, // FSUB_asimdsame_only
+        9582, // INS_asimdins_iv_v
+        9588, // INS_asimdins_ir_r
+        9594, // LD1_asisdlse_r1_1v
+        9600, // LD1_asisdlse_r2_2v
+        9606, // LD1_asisdlse_r3_3v
+        9612, // LD1_asisdlse_r4_4v
+        9618, // LD1_asisdlsep_i1_i1
+        9626, // LD1_asisdlsep_r1_r1
+        9634, // LD1_asisdlsep_i2_i2
+        9642, // LD1_asisdlsep_r2_r2
+        9650, // LD1_asisdlsep_i3_i3
+        9658, // LD1_asisdlsep_r3_r3
+        9666, // LD1_asisdlsep_i4_i4
+        9674, // LD1_asisdlsep_r4_r4
+        9682, // LD1_asisdlso_b1_1b
+        9688, // LD1_asisdlso_h1_1h
+        9694, // LD1_asisdlso_s1_1s
+        9700, // LD1_asisdlso_d1_1d
+        9706, // LD1_asisdlsop_b1_i1b
+        9714, // LD1_asisdlsop_bx1_r1b
+        9722, // LD1_asisdlsop_d1_i1d
+        9730, // LD1_asisdlsop_dx1_r1d
+        9738, // LD1_asisdlsop_h1_i1h
+        9746, // LD1_asisdlsop_hx1_r1h
+        9754, // LD1_asisdlsop_s1_i1s
+        9762, // LD1_asisdlsop_sx1_r1s
+        9770, // LD1R_asisdlso_r1
+        9776, // LD1R_asisdlsop_r1_i
+        9784, // LD1R_asisdlsop_rx1_r
+        9792, // LD2_asisdlse_r2
+        9798, // LD2_asisdlsep_i2_i
+        9806, // LD2_asisdlsep_r2_r
+        9814, // LD2_asisdlso_b2_2b
+        9820, // LD2_asisdlso_h2_2h
+        9826, // LD2_asisdlso_s2_2s
+        9832, // LD2_asisdlso_d2_2d
+        9838, // LD2_asisdlsop_b2_i2b
+        9846, // LD2_asisdlsop_bx2_r2b
+        9854, // LD2_asisdlsop_h2_i2h
+        9862, // LD2_asisdlsop_hx2_r2h
+        9870, // LD2_asisdlsop_s2_i2s
+        9878, // LD2_asisdlsop_sx2_r2s
+        9886, // LD2_asisdlsop_d2_i2d
+        9894, // LD2_asisdlsop_dx2_r2d
+        9902, // LD2R_asisdlso_r2
+        9908, // LD2R_asisdlsop_r2_i
+        9916, // LD2R_asisdlsop_rx2_r
+        9924, // LD3_asisdlse_r3
+        9930, // LD3_asisdlsep_i3_i
+        9938, // LD3_asisdlsep_r3_r
+        9946, // LD3_asisdlso_b3_3b
+        9952, // LD3_asisdlso_h3_3h
+        9958, // LD3_asisdlso_s3_3s
+        9964, // LD3_asisdlso_d3_3d
+        9970, // LD3_asisdlsop_b3_i3b
+        9978, // LD3_asisdlsop_bx3_r3b
+        9986, // LD3_asisdlsop_h3_i3h
+        9994, // LD3_asisdlsop_hx3_r3h
+        10002, // LD3_asisdlsop_s3_i3s
+        10010, // LD3_asisdlsop_sx3_r3s
+        10018, // LD3_asisdlsop_d3_i3d
+        10026, // LD3_asisdlsop_dx3_r3d
+        10034, // LD3R_asisdlso_r3
+        10040, // LD3R_asisdlsop_r3_i
+        10048, // LD3R_asisdlsop_rx3_r
+        10056, // LD4_asisdlse_r4
+        10062, // LD4_asisdlsep_i4_i
+        10070, // LD4_asisdlsep_r4_r
+        10078, // LD4_asisdlso_b4_4b
+        10084, // LD4_asisdlso_h4_4h
+        10090, // LD4_asisdlso_s4_4s
+        10096, // LD4_asisdlso_d4_4d
+        10102, // LD4_asisdlsop_b4_i4b
+        10110, // LD4_asisdlsop_bx4_r4b
+        10118, // LD4_asisdlsop_h4_i4h
+        10126, // LD4_asisdlsop_hx4_r4h
+        10134, // LD4_asisdlsop_s4_i4s
+        10142, // LD4_asisdlsop_sx4_r4s
+        10150, // LD4_asisdlsop_d4_i4d
+        10158, // LD4_asisdlsop_dx4_r4d
+        10166, // LD4R_asisdlso_r4
+        10172, // LD4R_asisdlsop_r4_i
+        10180, // LD4R_asisdlsop_rx4_r
+        10188, // LDAP1_asisdlso_d1
+        10194, // LDAPUR_b_ldapstl_simd
+        10200, // LDAPUR_h_ldapstl_simd
+        10206, // LDAPUR_s_ldapstl_simd
+        10212, // LDAPUR_d_ldapstl_simd
+        10218, // LDAPUR_q_ldapstl_simd
+        10224, // LDBFADD_16
+        10229, // LDBFADDA_16
+        10234, // LDBFADDAL_16
+        10239, // LDBFADDL_16
+        10244, // LDBFMAX_16
+        10249, // LDBFMAXA_16
+        10254, // LDBFMAXAL_16
+        10259, // LDBFMAXL_16
+        10264, // LDBFMAXNM_16
+        10269, // LDBFMAXNMA_16
+        10274, // LDBFMAXNMAL_16
+        10279, // LDBFMAXNML_16
+        10284, // LDBFMIN_16
+        10289, // LDBFMINA_16
+        10294, // LDBFMINAL_16
+        10299, // LDBFMINL_16
+        10304, // LDBFMINNM_16
+        10309, // LDBFMINNMA_16
+        10314, // LDBFMINNMAL_16
+        10319, // LDBFMINNML_16
+        10324, // LDFADD_16
+        10329, // LDFADDA_16
+        10334, // LDFADDAL_16
+        10339, // LDFADDL_16
+        10344, // LDFADD_32
+        10349, // LDFADDA_32
+        10354, // LDFADDAL_32
+        10359, // LDFADDL_32
+        10364, // LDFADD_64
+        10369, // LDFADDA_64
+        10374, // LDFADDAL_64
+        10379, // LDFADDL_64
+        10384, // LDFMAX_16
+        10389, // LDFMAXA_16
+        10394, // LDFMAXAL_16
+        10399, // LDFMAXL_16
+        10404, // LDFMAX_32
+        10409, // LDFMAXA_32
+        10414, // LDFMAXAL_32
+        10419, // LDFMAXL_32
+        10424, // LDFMAX_64
+        10429, // LDFMAXA_64
+        10434, // LDFMAXAL_64
+        10439, // LDFMAXL_64
+        10444, // LDFMAXNM_16
+        10449, // LDFMAXNMA_16
+        10454, // LDFMAXNMAL_16
+        10459, // LDFMAXNML_16
+        10464, // LDFMAXNM_32
+        10469, // LDFMAXNMA_32
+        10474, // LDFMAXNMAL_32
+        10479, // LDFMAXNML_32
+        10484, // LDFMAXNM_64
+        10489, // LDFMAXNMA_64
+        10494, // LDFMAXNMAL_64
+        10499, // LDFMAXNML_64
+        10504, // LDFMIN_16
+        10509, // LDFMINA_16
+        10514, // LDFMINAL_16
+        10519, // LDFMINL_16
+        10524, // LDFMIN_32
+        10529, // LDFMINA_32
+        10534, // LDFMINAL_32
+        10539, // LDFMINL_32
+        10544, // LDFMIN_64
+        10549, // LDFMINA_64
+        10554, // LDFMINAL_64
+        10559, // LDFMINL_64
+        10564, // LDFMINNM_16
+        10569, // LDFMINNMA_16
+        10574, // LDFMINNMAL_16
+        10579, // LDFMINNML_16
+        10584, // LDFMINNM_32
+        10589, // LDFMINNMA_32
+        10594, // LDFMINNMAL_32
+        10599, // LDFMINNML_32
+        10604, // LDFMINNM_64
+        10609, // LDFMINNMA_64
+        10614, // LDFMINNMAL_64
+        10619, // LDFMINNML_64
+        10624, // LDNP_s_ldstnapair_offs
+        10632, // LDNP_d_ldstnapair_offs
+        10640, // LDNP_q_ldstnapair_offs
+        10648, // LDP_s_ldstpair_post
+        10658, // LDP_d_ldstpair_post
+        10668, // LDP_q_ldstpair_post
+        10678, // LDP_s_ldstpair_pre
+        10686, // LDP_d_ldstpair_pre
+        10694, // LDP_q_ldstpair_pre
+        10702, // LDP_s_ldstpair_off
+        10710, // LDP_d_ldstpair_off
+        10718, // LDP_q_ldstpair_off
+        10726, // LDR_b_ldst_immpost
+        10734, // LDR_h_ldst_immpost
+        10742, // LDR_s_ldst_immpost
+        10750, // LDR_d_ldst_immpost
+        10758, // LDR_q_ldst_immpost
+        10766, // LDR_b_ldst_immpre
+        10772, // LDR_h_ldst_immpre
+        10778, // LDR_s_ldst_immpre
+        10784, // LDR_d_ldst_immpre
+        10790, // LDR_q_ldst_immpre
+        10796, // LDR_b_ldst_pos
+        10802, // LDR_h_ldst_pos
+        10808, // LDR_s_ldst_pos
+        10814, // LDR_d_ldst_pos
+        10820, // LDR_q_ldst_pos
+        10826, // LDR_s_loadlit
+        10832, // LDR_d_loadlit
+        10838, // LDR_q_loadlit
+        10844, // LDR_b_ldst_regoff
+        10850, // LDR_bl_ldst_regoff
+        10856, // LDR_h_ldst_regoff
+        10862, // LDR_s_ldst_regoff
+        10868, // LDR_d_ldst_regoff
+        10874, // LDR_q_ldst_regoff
+        10880, // LDTNP_q_ldstnapair_offs
+        10888, // LDTP_q_ldstpair_post
+        10898, // LDTP_q_ldstpair_pre
+        10906, // LDTP_q_ldstpair_off
+        10914, // LDUR_b_ldst_unscaled
+        10920, // LDUR_h_ldst_unscaled
+        10926, // LDUR_s_ldst_unscaled
+        10932, // LDUR_d_ldst_unscaled
+        10938, // LDUR_q_ldst_unscaled
+        10944, // LUTI2_asimdtbl_l5
+        10952, // LUTI2_asimdtbl_l6
+        10960, // LUTI4_asimdtbl_l5
+        10968, // LUTI4_asimdtbl_l7
+        10976, // MLA_asimdelem_r
+        10984, // MLA_asimdsame_only
+        10992, // MLS_asimdelem_r
+        11000, // MLS_asimdsame_only
+        11008, // MOV_ins_asimdins_iv_v
+        11014, // MOV_ins_asimdins_ir_r
+        11020, // MOV_dup_asisdone_only
+        11026, // MOV_umov_asimdins_w_w
+        11032, // MOV_umov_asimdins_x_x
+        11038, // MOV_orr_asimdsame_only
+        11044, // MOVI_asimdimm_n_b
+        11052, // MOVI_asimdimm_l_hl
+        11060, // MOVI_asimdimm_l_sl
+        11068, // MOVI_asimdimm_m_sm
+        11076, // MOVI_asimdimm_d_ds
+        11082, // MOVI_asimdimm_d2_d
+        11088, // MUL_asimdelem_r
+        11096, // MUL_asimdsame_only
+        11104, // MVN_not_asimdmisc_r
+        11110, // MVNI_asimdimm_l_hl
+        11118, // MVNI_asimdimm_l_sl
+        11126, // MVNI_asimdimm_m_sm
+        11134, // NEG_asisdmisc_r
+        11138, // NEG_asimdmisc_r
+        11144, // NOT_asimdmisc_r
+        11150, // ORN_asimdsame_only
+        11158, // ORR_asimdimm_l_hl
+        11166, // ORR_asimdimm_l_sl
+        11174, // ORR_asimdsame_only
+        11182, // PMUL_asimdsame_only
+        11190, // PMULL_asimddiff_l
+        11198, // PMULL2_asimddiff_l
+        11206, // RADDHN_asimddiff_n
+        11214, // RADDHN2_asimddiff_n
+        11222, // RAX1_vvv2_cryptosha512_3
+        11230, // RBIT_asimdmisc_r
+        11236, // REV16_asimdmisc_r
+        11242, // REV32_asimdmisc_r
+        11248, // REV64_asimdmisc_r
+        11254, // RSHRN_asimdshf_n
+        11262, // RSHRN2_asimdshf_n
+        11270, // RSUBHN_asimddiff_n
+        11278, // RSUBHN2_asimddiff_n
+        11286, // SABA_asimdsame_only
+        11294, // SABAL_asimddiff_l
+        11302, // SABAL2_asimddiff_l
+        11310, // SABD_asimdsame_only
+        11318, // SABDL_asimddiff_l
+        11326, // SABDL2_asimddiff_l
+        11334, // SADALP_asimdmisc_p
+        11340, // SADDL_asimddiff_l
+        11348, // SADDL2_asimddiff_l
+        11356, // SADDLP_asimdmisc_p
+        11362, // SADDLV_asimdall_only
+        11368, // SADDW_asimddiff_w
+        11376, // SADDW2_asimddiff_w
+        11384, // SCVTF_sisd_32h
+        11388, // SCVTF_sisd_32d
+        11392, // SCVTF_sisd_64h
+        11396, // SCVTF_sisd_64s
+        11400, // SCVTF_h32_float2fix
+        11408, // SCVTF_h64_float2fix
+        11416, // SCVTF_s32_float2fix
+        11424, // SCVTF_s64_float2fix
+        11432, // SCVTF_d32_float2fix
+        11440, // SCVTF_d64_float2fix
+        11448, // SCVTF_h32_float2int
+        11452, // SCVTF_s32_float2int
+        11456, // SCVTF_d32_float2int
+        11460, // SCVTF_h64_float2int
+        11464, // SCVTF_s64_float2int
+        11468, // SCVTF_d64_float2int
+        11472, // SCVTF_asisdshf_c
+        11480, // SCVTF_asimdshf_c
+        11488, // SCVTF_asisdmiscfp16_r
+        11492, // SCVTF_asisdmisc_r
+        11498, // SCVTF_asimdmiscfp16_r
+        11504, // SCVTF_asimdmisc_r
+        11510, // SDOT_asimdelem_d
+        11518, // SDOT_asimdsame2_d
+        11526, // SHA1C_qsv_cryptosha3
+        11534, // SHA1H_ss_cryptosha2
+        11538, // SHA1M_qsv_cryptosha3
+        11546, // SHA1P_qsv_cryptosha3
+        11554, // SHA1SU0_vvv_cryptosha3
+        11562, // SHA1SU1_vv_cryptosha2
+        11568, // SHA256H_qqv_cryptosha3
+        11576, // SHA256H2_qqv_cryptosha3
+        11584, // SHA256SU0_vv_cryptosha2
+        11590, // SHA256SU1_vvv_cryptosha3
+        11598, // SHA512H_qqv_cryptosha512_3
+        11606, // SHA512H2_qqv_cryptosha512_3
+        11614, // SHA512SU0_vv2_cryptosha512_2
+        11620, // SHA512SU1_vvv2_cryptosha512_3
+        11628, // SHADD_asimdsame_only
+        11636, // SHL_asisdshf_r
+        11644, // SHL_asimdshf_r
+        11652, // SHLL_asimdmisc_s
+        11660, // SHLL2_asimdmisc_s
+        11668, // SHRN_asimdshf_n
+        11676, // SHRN2_asimdshf_n
+        11684, // SHSUB_asimdsame_only
+        11692, // SLI_asisdshf_r
+        11700, // SLI_asimdshf_r
+        11708, // SM3PARTW1_vvv4_cryptosha512_3
+        11716, // SM3PARTW2_vvv4_cryptosha512_3
+        11724, // SM3SS1_vvv4_crypto4
+        11734, // SM3TT1A_vvv4_crypto3_imm2
+        11742, // SM3TT1B_vvv4_crypto3_imm2
+        11750, // SM3TT2A_vvv4_crypto3_imm2
+        11758, // SM3TT2B_vvv_crypto3_imm2
+        11766, // SM4E_vv4_cryptosha512_2
+        11772, // SM4EKEY_vvv4_cryptosha512_3
+        11780, // SMAX_asimdsame_only
+        11788, // SMAXP_asimdsame_only
+        11796, // SMAXV_asimdall_only
+        11802, // SMIN_asimdsame_only
+        11810, // SMINP_asimdsame_only
+        11818, // SMINV_asimdall_only
+        11824, // SMLAL_asimdelem_l
+        11832, // SMLAL2_asimdelem_l
+        11840, // SMLAL_asimddiff_l
+        11848, // SMLAL2_asimddiff_l
+        11856, // SMLSL_asimdelem_l
+        11864, // SMLSL2_asimdelem_l
+        11872, // SMLSL_asimddiff_l
+        11880, // SMLSL2_asimddiff_l
+        11888, // SMMLA_asimdsame2_g
+        11896, // SMOV_asimdins_w_w
+        11902, // SMOV_asimdins_x_x
+        11908, // SMULL_asimdelem_l
+        11916, // SMULL2_asimdelem_l
+        11924, // SMULL_asimddiff_l
+        11932, // SMULL2_asimddiff_l
+        11940, // SQABS_asisdmisc_r
+        11946, // SQABS_asimdmisc_r
+        11952, // SQADD_asisdsame_only
+        11960, // SQADD_asimdsame_only
+        11968, // SQDMLAL_asisdelem_l
+        11976, // SQDMLAL_asimdelem_l
+        11984, // SQDMLAL2_asimdelem_l
+        11992, // SQDMLAL_asisddiff_only
+        12000, // SQDMLAL_asimddiff_l
+        12008, // SQDMLAL2_asimddiff_l
+        12016, // SQDMLSL_asisdelem_l
+        12024, // SQDMLSL_asimdelem_l
+        12032, // SQDMLSL2_asimdelem_l
+        12040, // SQDMLSL_asisddiff_only
+        12048, // SQDMLSL_asimddiff_l
+        12056, // SQDMLSL2_asimddiff_l
+        12064, // SQDMULH_asisdelem_r
+        12072, // SQDMULH_asimdelem_r
+        12080, // SQDMULH_asisdsame_only
+        12088, // SQDMULH_asimdsame_only
+        12096, // SQDMULL_asimdelem_l
+        12104, // SQDMULL2_asimdelem_l
+        12112, // SQDMULL_asisdelem_l
+        12120, // SQDMULL_asisddiff_only
+        12128, // SQDMULL_asimddiff_l
+        12136, // SQDMULL2_asimddiff_l
+        12144, // SQNEG_asisdmisc_r
+        12150, // SQNEG_asimdmisc_r
+        12156, // SQRDMLAH_asisdelem_r
+        12164, // SQRDMLAH_asimdelem_r
+        12172, // SQRDMLAH_asisdsame2_only
+        12180, // SQRDMLAH_asimdsame2_only
+        12188, // SQRDMLSH_asisdelem_r
+        12196, // SQRDMLSH_asimdelem_r
+        12204, // SQRDMLSH_asisdsame2_only
+        12212, // SQRDMLSH_asimdsame2_only
+        12220, // SQRDMULH_asisdelem_r
+        12228, // SQRDMULH_asimdelem_r
+        12236, // SQRDMULH_asisdsame_only
+        12244, // SQRDMULH_asimdsame_only
+        12252, // SQRSHL_asisdsame_only
+        12260, // SQRSHL_asimdsame_only
+        12268, // SQRSHRN_asisdshf_n
+        12276, // SQRSHRN_asimdshf_n
+        12284, // SQRSHRN2_asimdshf_n
+        12292, // SQRSHRUN_asisdshf_n
+        12300, // SQRSHRUN_asimdshf_n
+        12308, // SQRSHRUN2_asimdshf_n
+        12316, // SQSHL_asisdshf_r
+        12324, // SQSHL_asimdshf_r
+        12332, // SQSHL_asisdsame_only
+        12340, // SQSHL_asimdsame_only
+        12348, // SQSHLU_asisdshf_r
+        12356, // SQSHLU_asimdshf_r
+        12364, // SQSHRN_asisdshf_n
+        12372, // SQSHRN_asimdshf_n
+        12380, // SQSHRN2_asimdshf_n
+        12388, // SQSHRUN_asisdshf_n
+        12396, // SQSHRUN_asimdshf_n
+        12404, // SQSHRUN2_asimdshf_n
+        12412, // SQSUB_asisdsame_only
+        12420, // SQSUB_asimdsame_only
+        12428, // SQXTN_asisdmisc_n
+        12434, // SQXTN_asimdmisc_n
+        12440, // SQXTN2_asimdmisc_n
+        12446, // SQXTUN_asisdmisc_n
+        12452, // SQXTUN_asimdmisc_n
+        12458, // SQXTUN2_asimdmisc_n
+        12464, // SRHADD_asimdsame_only
+        12472, // SRI_asisdshf_r
+        12480, // SRI_asimdshf_r
+        12488, // SRSHL_asisdsame_only
+        12493, // SRSHL_asimdsame_only
+        12501, // SRSHR_asisdshf_r
+        12509, // SRSHR_asimdshf_r
+        12517, // SRSRA_asisdshf_r
+        12525, // SRSRA_asimdshf_r
+        12533, // SSHL_asisdsame_only
+        12538, // SSHL_asimdsame_only
+        12546, // SSHLL_asimdshf_l
+        12554, // SSHLL2_asimdshf_l
+        12562, // SSHR_asisdshf_r
+        12570, // SSHR_asimdshf_r
+        12578, // SSRA_asisdshf_r
+        12586, // SSRA_asimdshf_r
+        12594, // SSUBL_asimddiff_l
+        12602, // SSUBL2_asimddiff_l
+        12610, // SSUBW_asimddiff_w
+        12618, // SSUBW2_asimddiff_w
+        12626, // ST1_asisdlse_r1_1v
+        12632, // ST1_asisdlse_r2_2v
+        12638, // ST1_asisdlse_r3_3v
+        12644, // ST1_asisdlse_r4_4v
+        12650, // ST1_asisdlsep_i1_i1
+        12658, // ST1_asisdlsep_r1_r1
+        12666, // ST1_asisdlsep_i2_i2
+        12674, // ST1_asisdlsep_r2_r2
+        12682, // ST1_asisdlsep_i3_i3
+        12690, // ST1_asisdlsep_r3_r3
+        12698, // ST1_asisdlsep_i4_i4
+        12706, // ST1_asisdlsep_r4_r4
+        12714, // ST1_asisdlso_b1_1b
+        12720, // ST1_asisdlso_h1_1h
+        12726, // ST1_asisdlso_s1_1s
+        12732, // ST1_asisdlso_d1_1d
+        12738, // ST1_asisdlsop_b1_i1b
+        12746, // ST1_asisdlsop_bx1_r1b
+        12754, // ST1_asisdlsop_h1_i1h
+        12762, // ST1_asisdlsop_hx1_r1h
+        12770, // ST1_asisdlsop_s1_i1s
+        12778, // ST1_asisdlsop_sx1_r1s
+        12786, // ST1_asisdlsop_d1_i1d
+        12794, // ST1_asisdlsop_dx1_r1d
+        12802, // ST2_asisdlse_r2
+        12808, // ST2_asisdlsep_i2_i
+        12816, // ST2_asisdlsep_r2_r
+        12824, // ST2_asisdlso_b2_2b
+        12830, // ST2_asisdlso_h2_2h
+        12836, // ST2_asisdlso_s2_2s
+        12842, // ST2_asisdlso_d2_2d
+        12848, // ST2_asisdlsop_b2_i2b
+        12856, // ST2_asisdlsop_bx2_r2b
+        12864, // ST2_asisdlsop_h2_i2h
+        12872, // ST2_asisdlsop_hx2_r2h
+        12880, // ST2_asisdlsop_s2_i2s
+        12888, // ST2_asisdlsop_sx2_r2s
+        12896, // ST2_asisdlsop_d2_i2d
+        12904, // ST2_asisdlsop_dx2_r2d
+        12912, // ST3_asisdlse_r3
+        12918, // ST3_asisdlsep_i3_i
+        12926, // ST3_asisdlsep_r3_r
+        12934, // ST3_asisdlso_b3_3b
+        12940, // ST3_asisdlso_h3_3h
+        12946, // ST3_asisdlso_s3_3s
+        12952, // ST3_asisdlso_d3_3d
+        12958, // ST3_asisdlsop_b3_i3b
+        12966, // ST3_asisdlsop_bx3_r3b
+        12974, // ST3_asisdlsop_h3_i3h
+        12982, // ST3_asisdlsop_hx3_r3h
+        12990, // ST3_asisdlsop_s3_i3s
+        12998, // ST3_asisdlsop_sx3_r3s
+        13006, // ST3_asisdlsop_d3_i3d
+        13014, // ST3_asisdlsop_dx3_r3d
+        13022, // ST4_asisdlse_r4
+        13028, // ST4_asisdlsep_i4_i
+        13036, // ST4_asisdlsep_r4_r
+        13044, // ST4_asisdlso_b4_4b
+        13050, // ST4_asisdlso_h4_4h
+        13056, // ST4_asisdlso_s4_4s
+        13062, // ST4_asisdlso_d4_4d
+        13068, // ST4_asisdlsop_b4_i4b
+        13076, // ST4_asisdlsop_bx4_r4b
+        13084, // ST4_asisdlsop_h4_i4h
+        13092, // ST4_asisdlsop_hx4_r4h
+        13100, // ST4_asisdlsop_s4_i4s
+        13108, // ST4_asisdlsop_sx4_r4s
+        13116, // ST4_asisdlsop_d4_i4d
+        13124, // ST4_asisdlsop_dx4_r4d
+        13132, // STBFADD_16
+        13136, // STBFADDL_16
+        13140, // STBFMAX_16
+        13144, // STBFMAXL_16
+        13148, // STBFMAXNM_16
+        13152, // STBFMAXNML_16
+        13156, // STBFMIN_16
+        13160, // STBFMINL_16
+        13164, // STBFMINNM_16
+        13168, // STBFMINNML_16
+        13172, // STFADD_16
+        13176, // STFADDL_16
+        13180, // STFADD_32
+        13184, // STFADDL_32
+        13188, // STFADD_64
+        13192, // STFADDL_64
+        13196, // STFMAX_16
+        13200, // STFMAXL_16
+        13204, // STFMAX_32
+        13208, // STFMAXL_32
+        13212, // STFMAX_64
+        13216, // STFMAXL_64
+        13220, // STFMAXNM_16
+        13224, // STFMAXNML_16
+        13228, // STFMAXNM_32
+        13232, // STFMAXNML_32
+        13236, // STFMAXNM_64
+        13240, // STFMAXNML_64
+        13244, // STFMIN_16
+        13248, // STFMINL_16
+        13252, // STFMIN_32
+        13256, // STFMINL_32
+        13260, // STFMIN_64
+        13264, // STFMINL_64
+        13268, // STFMINNM_16
+        13272, // STFMINNML_16
+        13276, // STFMINNM_32
+        13280, // STFMINNML_32
+        13284, // STFMINNM_64
+        13288, // STFMINNML_64
+        13292, // STL1_asisdlso_d1
+        13298, // STLUR_b_ldapstl_simd
+        13304, // STLUR_h_ldapstl_simd
+        13310, // STLUR_s_ldapstl_simd
+        13316, // STLUR_d_ldapstl_simd
+        13322, // STLUR_q_ldapstl_simd
+        13328, // STNP_s_ldstnapair_offs
+        13336, // STNP_d_ldstnapair_offs
+        13344, // STNP_q_ldstnapair_offs
+        13352, // STP_s_ldstpair_post
+        13362, // STP_d_ldstpair_post
+        13372, // STP_q_ldstpair_post
+        13382, // STP_s_ldstpair_pre
+        13390, // STP_d_ldstpair_pre
+        13398, // STP_q_ldstpair_pre
+        13406, // STP_s_ldstpair_off
+        13414, // STP_d_ldstpair_off
+        13422, // STP_q_ldstpair_off
+        13430, // STR_b_ldst_immpost
+        13438, // STR_h_ldst_immpost
+        13446, // STR_s_ldst_immpost
+        13454, // STR_d_ldst_immpost
+        13462, // STR_q_ldst_immpost
+        13470, // STR_b_ldst_immpre
+        13476, // STR_h_ldst_immpre
+        13482, // STR_s_ldst_immpre
+        13488, // STR_d_ldst_immpre
+        13494, // STR_q_ldst_immpre
+        13500, // STR_b_ldst_pos
+        13506, // STR_h_ldst_pos
+        13512, // STR_s_ldst_pos
+        13518, // STR_d_ldst_pos
+        13524, // STR_q_ldst_pos
+        13530, // STR_b_ldst_regoff
+        13536, // STR_bl_ldst_regoff
+        13542, // STR_h_ldst_regoff
+        13548, // STR_s_ldst_regoff
+        13554, // STR_d_ldst_regoff
+        13560, // STR_q_ldst_regoff
+        13566, // STTNP_q_ldstnapair_offs
+        13574, // STTP_q_ldstpair_post
+        13584, // STTP_q_ldstpair_pre
+        13592, // STTP_q_ldstpair_off
+        13600, // STUR_b_ldst_unscaled
+        13606, // STUR_h_ldst_unscaled
+        13612, // STUR_s_ldst_unscaled
+        13618, // STUR_d_ldst_unscaled
+        13624, // STUR_q_ldst_unscaled
+        13630, // SUB_asisdsame_only
+        13635, // SUB_asimdsame_only
+        13643, // SUBHN_asimddiff_n
+        13651, // SUBHN2_asimddiff_n
+        13659, // SUDOT_asimdelem_d
+        13667, // SUQADD_asisdmisc_r
+        13673, // SUQADD_asimdmisc_r
+        13679, // SXTL_sshll_asimdshf_l
+        13685, // SXTL2_sshll_asimdshf_l
+        13691, // TBL_asimdtbl_l1_1
+        13699, // TBL_asimdtbl_l2_2
+        13707, // TBL_asimdtbl_l3_3
+        13715, // TBL_asimdtbl_l4_4
+        13723, // TBX_asimdtbl_l1_1
+        13731, // TBX_asimdtbl_l2_2
+        13739, // TBX_asimdtbl_l3_3
+        13747, // TBX_asimdtbl_l4_4
+        13755, // TRN1_asimdperm_only
+        13763, // TRN2_asimdperm_only
+        13771, // UABA_asimdsame_only
+        13779, // UABAL_asimddiff_l
+        13787, // UABAL2_asimddiff_l
+        13795, // UABD_asimdsame_only
+        13803, // UABDL_asimddiff_l
+        13811, // UABDL2_asimddiff_l
+        13819, // UADALP_asimdmisc_p
+        13825, // UADDL_asimddiff_l
+        13833, // UADDL2_asimddiff_l
+        13841, // UADDLP_asimdmisc_p
+        13847, // UADDLV_asimdall_only
+        13853, // UADDW_asimddiff_w
+        13861, // UADDW2_asimddiff_w
+        13869, // UCVTF_sisd_32h
+        13873, // UCVTF_sisd_32d
+        13877, // UCVTF_sisd_64h
+        13881, // UCVTF_sisd_64s
+        13885, // UCVTF_h32_float2fix
+        13893, // UCVTF_h64_float2fix
+        13901, // UCVTF_s32_float2fix
+        13909, // UCVTF_s64_float2fix
+        13917, // UCVTF_d32_float2fix
+        13925, // UCVTF_d64_float2fix
+        13933, // UCVTF_h32_float2int
+        13937, // UCVTF_s32_float2int
+        13941, // UCVTF_d32_float2int
+        13945, // UCVTF_h64_float2int
+        13949, // UCVTF_s64_float2int
+        13953, // UCVTF_d64_float2int
+        13957, // UCVTF_asisdshf_c
+        13965, // UCVTF_asimdshf_c
+        13973, // UCVTF_asisdmiscfp16_r
+        13977, // UCVTF_asisdmisc_r
+        13983, // UCVTF_asimdmiscfp16_r
+        13989, // UCVTF_asimdmisc_r
+        13995, // UDOT_asimdelem_d
+        14003, // UDOT_asimdsame2_d
+        14011, // UHADD_asimdsame_only
+        14019, // UHSUB_asimdsame_only
+        14027, // UMAX_asimdsame_only
+        14035, // UMAXP_asimdsame_only
+        14043, // UMAXV_asimdall_only
+        14049, // UMIN_asimdsame_only
+        14057, // UMINP_asimdsame_only
+        14065, // UMINV_asimdall_only
+        14071, // UMLAL_asimdelem_l
+        14079, // UMLAL2_asimdelem_l
+        14087, // UMLAL_asimddiff_l
+        14095, // UMLAL2_asimddiff_l
+        14103, // UMLSL_asimdelem_l
+        14111, // UMLSL2_asimdelem_l
+        14119, // UMLSL_asimddiff_l
+        14127, // UMLSL2_asimddiff_l
+        14135, // UMMLA_asimdsame2_g
+        14143, // UMOV_asimdins_w_w
+        14149, // UMOV_asimdins_x_x
+        14155, // UMULL_asimdelem_l
+        14163, // UMULL2_asimdelem_l
+        14171, // UMULL_asimddiff_l
+        14179, // UMULL2_asimddiff_l
+        14187, // UQADD_asisdsame_only
+        14195, // UQADD_asimdsame_only
+        14203, // UQRSHL_asisdsame_only
+        14211, // UQRSHL_asimdsame_only
+        14219, // UQRSHRN_asisdshf_n
+        14227, // UQRSHRN_asimdshf_n
+        14235, // UQRSHRN2_asimdshf_n
+        14243, // UQSHL_asisdshf_r
+        14251, // UQSHL_asimdshf_r
+        14259, // UQSHL_asisdsame_only
+        14267, // UQSHL_asimdsame_only
+        14275, // UQSHRN_asisdshf_n
+        14283, // UQSHRN_asimdshf_n
+        14291, // UQSHRN2_asimdshf_n
+        14299, // UQSUB_asisdsame_only
+        14307, // UQSUB_asimdsame_only
+        14315, // UQXTN_asisdmisc_n
+        14321, // UQXTN_asimdmisc_n
+        14327, // UQXTN2_asimdmisc_n
+        14333, // URECPE_asimdmisc_r
+        14339, // URHADD_asimdsame_only
+        14347, // URSHL_asisdsame_only
+        14352, // URSHL_asimdsame_only
+        14360, // URSHR_asisdshf_r
+        14368, // URSHR_asimdshf_r
+        14376, // URSQRTE_asimdmisc_r
+        14382, // URSRA_asisdshf_r
+        14390, // URSRA_asimdshf_r
+        14398, // USDOT_asimdelem_d
+        14406, // USDOT_asimdsame2_d
+        14414, // USHL_asisdsame_only
+        14419, // USHL_asimdsame_only
+        14427, // USHLL_asimdshf_l
+        14435, // USHLL2_asimdshf_l
+        14443, // USHR_asisdshf_r
+        14451, // USHR_asimdshf_r
+        14459, // USMMLA_asimdsame2_g
+        14467, // USQADD_asisdmisc_r
+        14473, // USQADD_asimdmisc_r
+        14479, // USRA_asisdshf_r
+        14487, // USRA_asimdshf_r
+        14495, // USUBL_asimddiff_l
+        14503, // USUBL2_asimddiff_l
+        14511, // USUBW_asimddiff_w
+        14519, // USUBW2_asimddiff_w
+        14527, // UXTL_ushll_asimdshf_l
+        14533, // UXTL2_ushll_asimdshf_l
+        14539, // UZP1_asimdperm_only
+        14547, // UZP2_asimdperm_only
+        14555, // XAR_vvv2_crypto3_imm6
+        14565, // XTN_asimdmisc_n
+        14571, // XTN2_asimdmisc_n
+        14577, // ZIP1_asimdperm_only
+        14585, // ZIP2_asimdperm_only
     };
     /// <summary>
     /// Decoder table to get the instruction details
     /// </summary>
-    public static ReadOnlySpan<byte> Buffer => new byte[58348]
+    public static ReadOnlySpan<byte> Buffer => new byte[58372]
     {
         // Undefined
         0,0,0,0,0,0,0,0,
@@ -2734,12 +2734,14 @@ partial class Arm64InstructionDecoderTable
         // B_only_branch_imm              - B           label
         60,0,45,0,4,0,1,1,
         6,1,26,1,0,26,0,0,
-        // B_only_condbranch              - B           condlabel
-        61,0,45,0,4,0,0,1,
-        9,1,0,4,
-        // BC_only_condbranch             - BC          condlabel
-        62,0,46,0,4,37,0,1,
-        9,1,0,4,
+        // B_only_condbranch              - B           cond, label
+        61,0,45,0,4,0,1,2,
+        9,1,0,4,0,0,0,0,
+        6,1,19,1,5,19,0,0,
+        // BC_only_condbranch             - BC          cond, label
+        62,0,46,0,4,37,1,2,
+        9,1,0,4,0,0,0,0,
+        6,1,19,1,5,19,0,0,
         // BFC_bfm_32m_bitfield           - BFC         Wd, #lsb, #width
         63,0,52,0,4,2,1,3,
         1,19,0,0,0,0,0,0,
@@ -8001,12 +8003,12 @@ partial class Arm64InstructionDecoderTable
         169,4,59,0,1,8,1,3,
         1,27,0,0,45,0,0,0,
         1,27,0,5,46,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // BFMLALT_asimdelem_f            - BFMLALT     Vd.4S, Vn.8H, Vm.H[index]
         170,4,60,0,1,8,1,3,
         1,27,0,0,45,0,0,0,
         1,27,0,5,46,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // BFMLALB_asimdsame2_f           - BFMLALB     Vd.4S, Vn.8H, Vm.8H
         171,4,59,0,1,8,1,3,
         1,27,0,0,45,0,0,0,
@@ -8177,11 +8179,11 @@ partial class Arm64InstructionDecoderTable
         // DUP_asisdone_only              - DUP         Vd, Vn.T[index]
         205,4,28,1,1,3,1,2,
         1,22,0,0,13,0,0,0,
-        1,27,15,5,29,0,0,0,
+        1,27,17,5,29,0,0,0,
         // DUP_asimdins_dv_v              - DUP         Vd.T, Vn.Ts[index]
         206,4,28,1,1,3,1,2,
         1,27,0,0,35,0,0,0,
-        1,27,15,5,29,0,0,0,
+        1,27,17,5,29,0,0,0,
         // DUP_asimdins_dr_r              - DUP         Vd.T, Rn
         207,4,28,1,1,3,1,2,
         1,27,0,0,35,0,0,0,
@@ -8534,7 +8536,7 @@ partial class Arm64InstructionDecoderTable
         21,5,57,1,1,23,1,4,
         1,27,0,0,27,0,0,0,
         1,27,0,5,27,0,0,0,
-        1,27,10,16,14,0,0,0,
+        1,27,12,16,14,0,0,0,
         5,2,0,12,0,0,0,0,
         // FCMLE_asisdmiscfp16_fz         - FCMLE       Hd, Hn, #0.0
         22,5,58,1,1,5,0,3,
@@ -9378,7 +9380,7 @@ partial class Arm64InstructionDecoderTable
         222,5,81,1,1,27,1,3,
         1,27,0,0,6,0,0,0,
         1,27,0,5,7,0,0,0,
-        1,59,7,16,41,0,0,0,
+        1,59,8,16,41,0,0,0,
         // FDOT_asimdsame2_d              - FDOT        Vd.Ta, Vn.Tb, Vm.Tb
         223,5,81,1,1,27,1,3,
         1,27,0,0,6,0,0,0,
@@ -9486,7 +9488,7 @@ partial class Arm64InstructionDecoderTable
         1,27,0,16,8,0,0,0,
         // FMAXNMV_asimdall_only_h        - FMAXNMV     Vd, Vn.T
         244,5,87,1,1,5,1,2,
-        1,27,0,0,38,0,0,0,
+        1,24,0,0,0,0,0,0,
         1,27,0,5,6,0,0,0,
         // FMAXNMV_asimdall_only_sd       - FMAXNMV     Sd, Vn.4S
         245,5,87,1,1,3,1,2,
@@ -9512,7 +9514,7 @@ partial class Arm64InstructionDecoderTable
         1,27,0,16,8,0,0,0,
         // FMAXV_asimdall_only_h          - FMAXV       Vd, Vn.T
         250,5,89,1,1,5,1,2,
-        1,27,0,0,38,0,0,0,
+        1,24,0,0,0,0,0,0,
         1,27,0,5,6,0,0,0,
         // FMAXV_asimdall_only_sd         - FMAXV       Sd, Vn.4S
         251,5,89,1,1,3,1,2,
@@ -9588,7 +9590,7 @@ partial class Arm64InstructionDecoderTable
         1,27,0,16,8,0,0,0,
         // FMINNMV_asimdall_only_h        - FMINNMV     Vd, Vn.T
         10,6,93,1,1,5,1,2,
-        1,27,0,0,38,0,0,0,
+        1,24,0,0,0,0,0,0,
         1,27,0,5,6,0,0,0,
         // FMINNMV_asimdall_only_sd       - FMINNMV     Sd, Vn.4S
         11,6,93,1,1,3,1,2,
@@ -9614,7 +9616,7 @@ partial class Arm64InstructionDecoderTable
         1,27,0,16,8,0,0,0,
         // FMINV_asimdall_only_h          - FMINV       Vd, Vn.T
         16,6,95,1,1,5,1,2,
-        1,27,0,0,38,0,0,0,
+        1,24,0,0,0,0,0,0,
         1,27,0,5,6,0,0,0,
         // FMINV_asimdall_only_sd         - FMINV       Sd, Vn.4S
         17,6,95,1,1,3,1,2,
@@ -9624,22 +9626,22 @@ partial class Arm64InstructionDecoderTable
         18,6,96,1,1,5,1,3,
         1,24,0,0,0,0,0,0,
         1,24,0,5,0,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMLA_asisdelem_r_sd            - FMLA        Vd, Vn, Vm.Ts[index]
         19,6,96,1,1,3,1,3,
         1,22,0,0,1,0,0,0,
         1,22,0,5,1,0,0,0,
-        1,27,9,16,3,0,0,0,
+        1,27,10,16,3,0,0,0,
         // FMLA_asimdelem_rh_h            - FMLA        Vd.T, Vn.T, Vm.H[index]
         20,6,96,1,1,5,1,3,
         1,27,0,0,6,0,0,0,
         1,27,0,5,6,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMLA_asimdelem_r_sd            - FMLA        Vd.T, Vn.T, Vm.Ts[index]
         21,6,96,1,1,3,1,3,
         1,27,0,0,15,0,0,0,
         1,27,0,5,15,0,0,0,
-        1,27,9,16,3,0,0,0,
+        1,27,10,16,3,0,0,0,
         // FMLA_asimdsamefp16_only        - FMLA        Vd.T, Vn.T, Vm.T
         22,6,96,1,1,5,1,3,
         1,27,0,0,6,0,0,0,
@@ -9654,12 +9656,12 @@ partial class Arm64InstructionDecoderTable
         24,6,97,1,1,24,1,3,
         1,27,0,0,5,0,0,0,
         1,27,0,5,4,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMLAL2_asimdelem_lh            - FMLAL2      Vd.Ta, Vn.Tb, Vm.H[index]
         25,6,98,1,1,24,1,3,
         1,27,0,0,5,0,0,0,
         1,27,0,5,4,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMLAL_asimdsame_f              - FMLAL       Vd.Ta, Vn.Tb, Vm.Tb
         26,6,97,1,1,24,1,3,
         1,27,0,0,5,0,0,0,
@@ -9674,12 +9676,12 @@ partial class Arm64InstructionDecoderTable
         28,6,99,1,1,29,1,3,
         1,27,0,0,46,0,0,0,
         1,27,0,5,40,0,0,0,
-        1,59,19,16,36,0,0,0,
+        1,75,11,1,36,0,0,0,
         // FMLALT_asimdelem_h             - FMLALT      Vd.8H, Vn.16B, Vm.B[index]
         29,6,104,1,1,29,1,3,
         1,27,0,0,46,0,0,0,
         1,27,0,5,40,0,0,0,
-        1,59,19,16,36,0,0,0,
+        1,75,11,1,36,0,0,0,
         // FMLALB_asimdsame2_j            - FMLALB      Vd.8H, Vn.16B, Vm.16B
         30,6,99,1,1,29,1,3,
         1,27,0,0,46,0,0,0,
@@ -9694,22 +9696,22 @@ partial class Arm64InstructionDecoderTable
         32,6,100,1,1,29,1,3,
         1,27,0,0,45,0,0,0,
         1,27,0,5,40,0,0,0,
-        1,59,19,16,36,0,0,0,
+        1,75,11,1,36,0,0,0,
         // FMLALLBT_asimdelem_j           - FMLALLBT    Vd.4S, Vn.16B, Vm.B[index]
         33,6,101,1,1,29,1,3,
         1,27,0,0,45,0,0,0,
         1,27,0,5,40,0,0,0,
-        1,59,19,16,36,0,0,0,
+        1,75,11,1,36,0,0,0,
         // FMLALLTB_asimdelem_j           - FMLALLTB    Vd.4S, Vn.16B, Vm.B[index]
         34,6,102,1,1,29,1,3,
         1,27,0,0,45,0,0,0,
         1,27,0,5,40,0,0,0,
-        1,59,19,16,36,0,0,0,
+        1,75,11,1,36,0,0,0,
         // FMLALLTT_asimdelem_j           - FMLALLTT    Vd.4S, Vn.16B, Vm.B[index]
         35,6,103,1,1,29,1,3,
         1,27,0,0,45,0,0,0,
         1,27,0,5,40,0,0,0,
-        1,59,19,16,36,0,0,0,
+        1,75,11,1,36,0,0,0,
         // FMLALLBB_asimdsame2_g          - FMLALLBB    Vd.4S, Vn.16B, Vm.16B
         36,6,100,1,1,29,1,3,
         1,27,0,0,45,0,0,0,
@@ -9734,22 +9736,22 @@ partial class Arm64InstructionDecoderTable
         40,6,105,1,1,5,1,3,
         1,24,0,0,0,0,0,0,
         1,24,0,5,0,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMLS_asisdelem_r_sd            - FMLS        Vd, Vn, Vm.Ts[index]
         41,6,105,1,1,3,1,3,
         1,22,0,0,1,0,0,0,
         1,22,0,5,1,0,0,0,
-        1,27,9,16,3,0,0,0,
+        1,27,10,16,3,0,0,0,
         // FMLS_asimdelem_rh_h            - FMLS        Vd.T, Vn.T, Vm.H[index]
         42,6,105,1,1,5,1,3,
         1,27,0,0,6,0,0,0,
         1,27,0,5,6,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMLS_asimdelem_r_sd            - FMLS        Vd.T, Vn.T, Vm.Ts[index]
         43,6,105,1,1,3,1,3,
         1,27,0,0,15,0,0,0,
         1,27,0,5,15,0,0,0,
-        1,27,9,16,3,0,0,0,
+        1,27,10,16,3,0,0,0,
         // FMLS_asimdsamefp16_only        - FMLS        Vd.T, Vn.T, Vm.T
         44,6,105,1,1,5,1,3,
         1,27,0,0,6,0,0,0,
@@ -9764,12 +9766,12 @@ partial class Arm64InstructionDecoderTable
         46,6,106,1,1,24,1,3,
         1,27,0,0,5,0,0,0,
         1,27,0,5,4,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMLSL2_asimdelem_lh            - FMLSL2      Vd.Ta, Vn.Tb, Vm.H[index]
         47,6,107,1,1,24,1,3,
         1,27,0,0,5,0,0,0,
         1,27,0,5,4,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMLSL_asimdsame_f              - FMLSL       Vd.Ta, Vn.Tb, Vm.Tb
         48,6,106,1,1,24,1,3,
         1,27,0,0,5,0,0,0,
@@ -9888,22 +9890,22 @@ partial class Arm64InstructionDecoderTable
         74,6,111,1,1,5,1,3,
         1,24,0,0,0,0,0,0,
         1,24,0,5,0,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMUL_asisdelem_r_sd            - FMUL        Vd, Vn, Vm.Ts[index]
         75,6,111,1,1,3,1,3,
         1,22,0,0,1,0,0,0,
         1,22,0,5,1,0,0,0,
-        1,27,9,16,3,0,0,0,
+        1,27,10,16,3,0,0,0,
         // FMUL_asimdelem_rh_h            - FMUL        Vd.T, Vn.T, Vm.H[index]
         76,6,111,1,1,5,1,3,
         1,27,0,0,6,0,0,0,
         1,27,0,5,6,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMUL_asimdelem_r_sd            - FMUL        Vd.T, Vn.T, Vm.Ts[index]
         77,6,111,1,1,3,1,3,
         1,27,0,0,15,0,0,0,
         1,27,0,5,15,0,0,0,
-        1,27,9,16,3,0,0,0,
+        1,27,10,16,3,0,0,0,
         // FMUL_h_floatdp2                - FMUL        Hd, Hn, Hm
         78,6,111,1,2,0,0,3,
         1,24,0,0,
@@ -9953,22 +9955,22 @@ partial class Arm64InstructionDecoderTable
         87,6,112,1,1,5,1,3,
         1,24,0,0,0,0,0,0,
         1,24,0,5,0,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMULX_asisdelem_r_sd           - FMULX       Vd, Vn, Vm.Ts[index]
         88,6,112,1,1,3,1,3,
         1,22,0,0,1,0,0,0,
         1,22,0,5,1,0,0,0,
-        1,27,9,16,3,0,0,0,
+        1,27,10,16,3,0,0,0,
         // FMULX_asimdelem_rh_h           - FMULX       Vd.T, Vn.T, Vm.H[index]
         89,6,112,1,1,5,1,3,
         1,27,0,0,6,0,0,0,
         1,27,0,5,6,0,0,0,
-        1,59,7,16,38,0,0,0,
+        1,59,8,16,38,0,0,0,
         // FMULX_asimdelem_r_sd           - FMULX       Vd.T, Vn.T, Vm.Ts[index]
         90,6,112,1,1,3,1,3,
         1,27,0,0,15,0,0,0,
         1,27,0,5,15,0,0,0,
-        1,27,9,16,3,0,0,0,
+        1,27,10,16,3,0,0,0,
         // FNEG_h_floatdp1                - FNEG        Hd, Hn
         91,6,113,1,2,0,0,2,
         1,24,0,0,
@@ -10365,11 +10367,11 @@ partial class Arm64InstructionDecoderTable
         1,27,0,16,8,0,0,0,
         // INS_asimdins_iv_v              - INS         Vd.Ts[index1], Vn.Ts[index2]
         182,6,151,1,1,3,1,2,
-        1,27,15,0,29,0,0,0,
-        1,27,20,5,29,0,0,0,
+        1,27,17,0,29,0,0,0,
+        1,27,21,5,29,0,0,0,
         // INS_asimdins_ir_r              - INS         Vd.Ts[index], Rn
         183,6,151,1,1,3,1,2,
-        1,27,15,0,29,0,0,0,
+        1,27,17,0,29,0,0,0,
         1,21,0,5,14,0,0,0,
         // LD1_asisdlse_r1_1v             - LD1         {Vt.T}, [Xn|SP]
         184,6,154,1,1,3,1,2,
@@ -10429,15 +10431,15 @@ partial class Arm64InstructionDecoderTable
         1,17,0,16,0,0,0,0,
         // LD1_asisdlso_b1_1b             - LD1         {Vt.B}[index], [Xn|SP]
         196,6,154,1,1,3,1,2,
-        2,1,11,27,0,0,36,0,
+        2,1,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         // LD1_asisdlso_h1_1h             - LD1         {Vt.H}[index], [Xn|SP]
         197,6,154,1,1,3,1,2,
-        2,1,11,27,0,0,38,0,
+        2,1,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         // LD1_asisdlso_s1_1s             - LD1         {Vt.S}[index], [Xn|SP]
         198,6,154,1,1,3,1,2,
-        2,1,6,27,0,0,39,0,
+        2,1,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         // LD1_asisdlso_d1_1d             - LD1         {Vt.D}[index], [Xn|SP]
         199,6,154,1,1,3,1,2,
@@ -10445,12 +10447,12 @@ partial class Arm64InstructionDecoderTable
         4,2,165,0,0,0,0,0,
         // LD1_asisdlsop_b1_i1b           - LD1         {Vt.B}[index], [Xn|SP], #1
         200,6,154,1,1,3,1,3,
-        2,1,11,27,0,0,36,0,
+        2,1,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         5,3,1,0,0,0,0,0,
         // LD1_asisdlsop_bx1_r1b          - LD1         {Vt.B}[index], [Xn|SP], Xm
         201,6,154,1,1,3,1,3,
-        2,1,11,27,0,0,36,0,
+        2,1,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD1_asisdlsop_d1_i1d           - LD1         {Vt.D}[index], [Xn|SP], #8
@@ -10465,22 +10467,22 @@ partial class Arm64InstructionDecoderTable
         1,17,0,16,0,0,0,0,
         // LD1_asisdlsop_h1_i1h           - LD1         {Vt.H}[index], [Xn|SP], #2
         204,6,154,1,1,3,1,3,
-        2,1,11,27,0,0,38,0,
+        2,1,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         5,3,2,0,0,0,0,0,
         // LD1_asisdlsop_hx1_r1h          - LD1         {Vt.H}[index], [Xn|SP], Xm
         205,6,154,1,1,3,1,3,
-        2,1,11,27,0,0,38,0,
+        2,1,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD1_asisdlsop_s1_i1s           - LD1         {Vt.S}[index], [Xn|SP], #4
         206,6,154,1,1,3,1,3,
-        2,1,6,27,0,0,39,0,
+        2,1,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         5,3,4,0,0,0,0,0,
         // LD1_asisdlsop_sx1_r1s          - LD1         {Vt.S}[index], [Xn|SP], Xm
         207,6,154,1,1,3,1,3,
-        2,1,6,27,0,0,39,0,
+        2,1,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD1R_asisdlso_r1               - LD1R        {Vt.T}, [Xn|SP]
@@ -10513,15 +10515,15 @@ partial class Arm64InstructionDecoderTable
         1,17,0,16,0,0,0,0,
         // LD2_asisdlso_b2_2b             - LD2         {Vt.B, Vt2.B}[index], [Xn|SP]
         214,6,156,1,1,3,1,2,
-        2,2,11,27,0,0,36,0,
+        2,2,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         // LD2_asisdlso_h2_2h             - LD2         {Vt.H, Vt2.H}[index], [Xn|SP]
         215,6,156,1,1,3,1,2,
-        2,2,11,27,0,0,38,0,
+        2,2,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         // LD2_asisdlso_s2_2s             - LD2         {Vt.S, Vt2.S}[index], [Xn|SP]
         216,6,156,1,1,3,1,2,
-        2,2,6,27,0,0,39,0,
+        2,2,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         // LD2_asisdlso_d2_2d             - LD2         {Vt.D, Vt2.D}[index], [Xn|SP]
         217,6,156,1,1,3,1,2,
@@ -10529,32 +10531,32 @@ partial class Arm64InstructionDecoderTable
         4,2,165,0,0,0,0,0,
         // LD2_asisdlsop_b2_i2b           - LD2         {Vt.B, Vt2.B}[index], [Xn|SP], #2
         218,6,156,1,1,3,1,3,
-        2,2,11,27,0,0,36,0,
+        2,2,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         5,3,2,0,0,0,0,0,
         // LD2_asisdlsop_bx2_r2b          - LD2         {Vt.B, Vt2.B}[index], [Xn|SP], Xm
         219,6,156,1,1,3,1,3,
-        2,2,11,27,0,0,36,0,
+        2,2,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD2_asisdlsop_h2_i2h           - LD2         {Vt.H, Vt2.H}[index], [Xn|SP], #4
         220,6,156,1,1,3,1,3,
-        2,2,11,27,0,0,38,0,
+        2,2,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         5,3,4,0,0,0,0,0,
         // LD2_asisdlsop_hx2_r2h          - LD2         {Vt.H, Vt2.H}[index], [Xn|SP], Xm
         221,6,156,1,1,3,1,3,
-        2,2,11,27,0,0,38,0,
+        2,2,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD2_asisdlsop_s2_i2s           - LD2         {Vt.S, Vt2.S}[index], [Xn|SP], #8
         222,6,156,1,1,3,1,3,
-        2,2,6,27,0,0,39,0,
+        2,2,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         5,3,8,0,0,0,0,0,
         // LD2_asisdlsop_sx2_r2s          - LD2         {Vt.S, Vt2.S}[index], [Xn|SP], Xm
         223,6,156,1,1,3,1,3,
-        2,2,6,27,0,0,39,0,
+        2,2,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD2_asisdlsop_d2_i2d           - LD2         {Vt.D, Vt2.D}[index], [Xn|SP], #16
@@ -10597,15 +10599,15 @@ partial class Arm64InstructionDecoderTable
         1,17,0,16,0,0,0,0,
         // LD3_asisdlso_b3_3b             - LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP]
         232,6,158,1,1,3,1,2,
-        2,3,11,27,0,0,36,0,
+        2,3,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         // LD3_asisdlso_h3_3h             - LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP]
         233,6,158,1,1,3,1,2,
-        2,3,11,27,0,0,38,0,
+        2,3,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         // LD3_asisdlso_s3_3s             - LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP]
         234,6,158,1,1,3,1,2,
-        2,3,6,27,0,0,39,0,
+        2,3,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         // LD3_asisdlso_d3_3d             - LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP]
         235,6,158,1,1,3,1,2,
@@ -10613,32 +10615,32 @@ partial class Arm64InstructionDecoderTable
         4,2,165,0,0,0,0,0,
         // LD3_asisdlsop_b3_i3b           - LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3
         236,6,158,1,1,3,1,3,
-        2,3,11,27,0,0,36,0,
+        2,3,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         5,3,3,0,0,0,0,0,
         // LD3_asisdlsop_bx3_r3b          - LD3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm
         237,6,158,1,1,3,1,3,
-        2,3,11,27,0,0,36,0,
+        2,3,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD3_asisdlsop_h3_i3h           - LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6
         238,6,158,1,1,3,1,3,
-        2,3,11,27,0,0,38,0,
+        2,3,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         5,3,6,0,0,0,0,0,
         // LD3_asisdlsop_hx3_r3h          - LD3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm
         239,6,158,1,1,3,1,3,
-        2,3,11,27,0,0,38,0,
+        2,3,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD3_asisdlsop_s3_i3s           - LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12
         240,6,158,1,1,3,1,3,
-        2,3,6,27,0,0,39,0,
+        2,3,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         5,3,12,0,0,0,0,0,
         // LD3_asisdlsop_sx3_r3s          - LD3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm
         241,6,158,1,1,3,1,3,
-        2,3,6,27,0,0,39,0,
+        2,3,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD3_asisdlsop_d3_i3d           - LD3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24
@@ -10681,15 +10683,15 @@ partial class Arm64InstructionDecoderTable
         1,17,0,16,0,0,0,0,
         // LD4_asisdlso_b4_4b             - LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP]
         250,6,160,1,1,3,1,2,
-        2,4,11,27,0,0,36,0,
+        2,4,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         // LD4_asisdlso_h4_4h             - LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP]
         251,6,160,1,1,3,1,2,
-        2,4,11,27,0,0,38,0,
+        2,4,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         // LD4_asisdlso_s4_4s             - LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP]
         252,6,160,1,1,3,1,2,
-        2,4,6,27,0,0,39,0,
+        2,4,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         // LD4_asisdlso_d4_4d             - LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP]
         253,6,160,1,1,3,1,2,
@@ -10697,32 +10699,32 @@ partial class Arm64InstructionDecoderTable
         4,2,165,0,0,0,0,0,
         // LD4_asisdlsop_b4_i4b           - LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4
         254,6,160,1,1,3,1,3,
-        2,4,11,27,0,0,36,0,
+        2,4,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         5,3,4,0,0,0,0,0,
         // LD4_asisdlsop_bx4_r4b          - LD4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm
         255,6,160,1,1,3,1,3,
-        2,4,11,27,0,0,36,0,
+        2,4,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD4_asisdlsop_h4_i4h           - LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8
         0,7,160,1,1,3,1,3,
-        2,4,11,27,0,0,38,0,
+        2,4,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         5,3,8,0,0,0,0,0,
         // LD4_asisdlsop_hx4_r4h          - LD4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm
         1,7,160,1,1,3,1,3,
-        2,4,11,27,0,0,38,0,
+        2,4,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD4_asisdlsop_s4_i4s           - LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16
         2,7,160,1,1,3,1,3,
-        2,4,6,27,0,0,39,0,
+        2,4,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         5,3,16,0,0,0,0,0,
         // LD4_asisdlsop_sx4_r4s          - LD4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm
         3,7,160,1,1,3,1,3,
-        2,4,6,27,0,0,39,0,
+        2,4,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // LD4_asisdlsop_d4_i4d           - LD4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32
@@ -11387,12 +11389,12 @@ partial class Arm64InstructionDecoderTable
         141,7,121,2,1,7,1,3,
         1,27,0,0,46,0,0,0,
         2,1,0,27,0,5,46,0,
-        1,27,8,16,0,0,0,0,
+        1,27,9,16,0,0,0,0,
         // LUTI4_asimdtbl_l5              - LUTI4       Vd.16B, {Vn.16B}, Vm[index]
         142,7,122,2,1,7,1,3,
         1,27,0,0,40,0,0,0,
         2,1,0,27,0,5,40,0,
-        1,27,5,16,0,0,0,0,
+        1,27,6,16,0,0,0,0,
         // LUTI4_asimdtbl_l7              - LUTI4       Vd.8H, {Vn1.8H, Vn2.8H}, Vm[index]
         143,7,122,2,1,7,1,3,
         1,27,0,0,46,0,0,0,
@@ -11402,7 +11404,7 @@ partial class Arm64InstructionDecoderTable
         144,7,125,2,1,3,1,3,
         1,27,0,0,26,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // MLA_asimdsame_only             - MLA         Vd.T, Vn.T, Vm.T
         145,7,125,2,1,3,1,3,
         1,27,0,0,20,0,0,0,
@@ -11412,7 +11414,7 @@ partial class Arm64InstructionDecoderTable
         146,7,126,2,1,3,1,3,
         1,27,0,0,26,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // MLS_asimdsame_only             - MLS         Vd.T, Vn.T, Vm.T
         147,7,126,2,1,3,1,3,
         1,27,0,0,20,0,0,0,
@@ -11420,24 +11422,24 @@ partial class Arm64InstructionDecoderTable
         1,27,0,16,20,0,0,0,
         // MOV_ins_asimdins_iv_v          - MOV         Vd.Ts[index1], Vn.Ts[index2]
         148,7,128,2,1,3,1,2,
-        1,27,15,0,29,0,0,0,
-        1,27,20,5,29,0,0,0,
+        1,27,17,0,29,0,0,0,
+        1,27,21,5,29,0,0,0,
         // MOV_ins_asimdins_ir_r          - MOV         Vd.Ts[index], Rn
         149,7,128,2,1,3,1,2,
-        1,27,15,0,29,0,0,0,
+        1,27,17,0,29,0,0,0,
         1,21,0,5,14,0,0,0,
         // MOV_dup_asisdone_only          - MOV         Vd, Vn.T[index]
         150,7,128,2,1,3,1,2,
         1,22,0,0,13,0,0,0,
-        1,27,15,5,29,0,0,0,
+        1,27,17,5,29,0,0,0,
         // MOV_umov_asimdins_w_w          - MOV         Wd, Vn.S[index]
         151,7,128,2,1,3,1,2,
         1,19,0,0,0,0,0,0,
-        1,27,14,5,39,0,0,0,
+        1,27,16,5,39,0,0,0,
         // MOV_umov_asimdins_x_x          - MOV         Xd, Vn.D[index]
         152,7,128,2,1,3,1,2,
         1,17,0,0,0,0,0,0,
-        1,27,13,5,37,0,0,0,
+        1,27,15,5,37,0,0,0,
         // MOV_orr_asimdsame_only         - MOV         Vd.T, Vn.T
         153,7,128,2,1,3,1,2,
         1,27,0,0,7,0,0,0,
@@ -11474,7 +11476,7 @@ partial class Arm64InstructionDecoderTable
         160,7,139,2,1,3,1,3,
         1,27,0,0,26,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // MUL_asimdsame_only             - MUL         Vd.T, Vn.T, Vm.T
         161,7,139,2,1,3,1,3,
         1,27,0,0,20,0,0,0,
@@ -11958,12 +11960,12 @@ partial class Arm64InstructionDecoderTable
         7,8,99,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SMLAL2_asimdelem_l             - SMLAL2      Vd.Ta, Vn.Tb, Vm.Ts[index]
         8,8,100,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SMLAL_asimddiff_l              - SMLAL       Vd.Ta, Vn.Tb, Vm.Tb
         9,8,99,3,1,3,1,3,
         1,27,0,0,11,0,0,0,
@@ -11978,12 +11980,12 @@ partial class Arm64InstructionDecoderTable
         11,8,101,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SMLSL2_asimdelem_l             - SMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index]
         12,8,102,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SMLSL_asimddiff_l              - SMLSL       Vd.Ta, Vn.Tb, Vm.Tb
         13,8,101,3,1,3,1,3,
         1,27,0,0,11,0,0,0,
@@ -12002,21 +12004,21 @@ partial class Arm64InstructionDecoderTable
         // SMOV_asimdins_w_w              - SMOV        Wd, Vn.Ts[index]
         16,8,105,3,1,3,1,2,
         1,19,0,0,0,0,0,0,
-        1,27,17,5,31,0,0,0,
+        1,27,19,5,31,0,0,0,
         // SMOV_asimdins_x_x              - SMOV        Xd, Vn.Ts[index]
         17,8,105,3,1,3,1,2,
         1,17,0,0,0,0,0,0,
-        1,27,16,5,30,0,0,0,
+        1,27,18,5,30,0,0,0,
         // SMULL_asimdelem_l              - SMULL       Vd.Ta, Vn.Tb, Vm.Ts[index]
         18,8,110,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SMULL2_asimdelem_l             - SMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index]
         19,8,111,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SMULL_asimddiff_l              - SMULL       Vd.Ta, Vn.Tb, Vm.Tb
         20,8,110,3,1,3,1,3,
         1,27,0,0,11,0,0,0,
@@ -12049,17 +12051,17 @@ partial class Arm64InstructionDecoderTable
         26,8,114,3,1,3,1,3,
         1,22,0,0,7,0,0,0,
         1,22,0,5,6,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQDMLAL_asimdelem_l            - SQDMLAL     Vd.Ta, Vn.Tb, Vm.Ts[index]
         27,8,114,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQDMLAL2_asimdelem_l           - SQDMLAL2    Vd.Ta, Vn.Tb, Vm.Ts[index]
         28,8,115,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQDMLAL_asisddiff_only         - SQDMLAL     Vad, Vbn, Vbm
         29,8,114,3,1,3,1,3,
         1,22,0,0,7,0,0,0,
@@ -12079,17 +12081,17 @@ partial class Arm64InstructionDecoderTable
         32,8,116,3,1,3,1,3,
         1,22,0,0,7,0,0,0,
         1,22,0,5,6,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQDMLSL_asimdelem_l            - SQDMLSL     Vd.Ta, Vn.Tb, Vm.Ts[index]
         33,8,116,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQDMLSL2_asimdelem_l           - SQDMLSL2    Vd.Ta, Vn.Tb, Vm.Ts[index]
         34,8,117,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQDMLSL_asisddiff_only         - SQDMLSL     Vad, Vbn, Vbm
         35,8,116,3,1,3,1,3,
         1,22,0,0,7,0,0,0,
@@ -12109,12 +12111,12 @@ partial class Arm64InstructionDecoderTable
         38,8,118,3,1,3,1,3,
         1,22,0,0,6,0,0,0,
         1,22,0,5,6,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQDMULH_asimdelem_r            - SQDMULH     Vd.T, Vn.T, Vm.Ts[index]
         39,8,118,3,1,3,1,3,
         1,27,0,0,26,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQDMULH_asisdsame_only         - SQDMULH     Vd, Vn, Vm
         40,8,118,3,1,3,1,3,
         1,22,0,0,6,0,0,0,
@@ -12129,17 +12131,17 @@ partial class Arm64InstructionDecoderTable
         42,8,119,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQDMULL2_asimdelem_l           - SQDMULL2    Vd.Ta, Vn.Tb, Vm.Ts[index]
         43,8,120,3,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQDMULL_asisdelem_l            - SQDMULL     Vad, Vbn, Vm.Ts[index]
         44,8,119,3,1,3,1,3,
         1,22,0,0,7,0,0,0,
         1,22,0,5,6,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQDMULL_asisddiff_only         - SQDMULL     Vad, Vbn, Vbm
         45,8,119,3,1,3,1,3,
         1,22,0,0,7,0,0,0,
@@ -12167,12 +12169,12 @@ partial class Arm64InstructionDecoderTable
         50,8,122,3,1,59,1,3,
         1,22,0,0,6,0,0,0,
         1,22,0,5,6,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQRDMLAH_asimdelem_r           - SQRDMLAH    Vd.T, Vn.T, Vm.Ts[index]
         51,8,122,3,1,59,1,3,
         1,27,0,0,26,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQRDMLAH_asisdsame2_only       - SQRDMLAH    Vd, Vn, Vm
         52,8,122,3,1,59,1,3,
         1,22,0,0,6,0,0,0,
@@ -12187,12 +12189,12 @@ partial class Arm64InstructionDecoderTable
         54,8,123,3,1,59,1,3,
         1,22,0,0,6,0,0,0,
         1,22,0,5,6,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQRDMLSH_asimdelem_r           - SQRDMLSH    Vd.T, Vn.T, Vm.Ts[index]
         55,8,123,3,1,59,1,3,
         1,27,0,0,26,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQRDMLSH_asisdsame2_only       - SQRDMLSH    Vd, Vn, Vm
         56,8,123,3,1,59,1,3,
         1,22,0,0,6,0,0,0,
@@ -12207,12 +12209,12 @@ partial class Arm64InstructionDecoderTable
         58,8,124,3,1,3,1,3,
         1,22,0,0,6,0,0,0,
         1,22,0,5,6,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQRDMULH_asimdelem_r           - SQRDMULH    Vd.T, Vn.T, Vm.Ts[index]
         59,8,124,3,1,3,1,3,
         1,27,0,0,26,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // SQRDMULH_asisdsame_only        - SQRDMULH    Vd, Vn, Vm
         60,8,124,3,1,3,1,3,
         1,22,0,0,6,0,0,0,
@@ -12520,15 +12522,15 @@ partial class Arm64InstructionDecoderTable
         1,17,0,16,0,0,0,0,
         // ST1_asisdlso_b1_1b             - ST1         {Vt.B}[index], [Xn|SP]
         123,8,156,3,1,3,1,2,
-        2,1,11,27,0,0,36,0,
+        2,1,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         // ST1_asisdlso_h1_1h             - ST1         {Vt.H}[index], [Xn|SP]
         124,8,156,3,1,3,1,2,
-        2,1,11,27,0,0,38,0,
+        2,1,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         // ST1_asisdlso_s1_1s             - ST1         {Vt.S}[index], [Xn|SP]
         125,8,156,3,1,3,1,2,
-        2,1,6,27,0,0,39,0,
+        2,1,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         // ST1_asisdlso_d1_1d             - ST1         {Vt.D}[index], [Xn|SP]
         126,8,156,3,1,3,1,2,
@@ -12536,32 +12538,32 @@ partial class Arm64InstructionDecoderTable
         4,2,165,0,0,0,0,0,
         // ST1_asisdlsop_b1_i1b           - ST1         {Vt.B}[index], [Xn|SP], #1
         127,8,156,3,1,3,1,3,
-        2,1,11,27,0,0,36,0,
+        2,1,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         5,3,1,0,0,0,0,0,
         // ST1_asisdlsop_bx1_r1b          - ST1         {Vt.B}[index], [Xn|SP], Xm
         128,8,156,3,1,3,1,3,
-        2,1,11,27,0,0,36,0,
+        2,1,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST1_asisdlsop_h1_i1h           - ST1         {Vt.H}[index], [Xn|SP], #2
         129,8,156,3,1,3,1,3,
-        2,1,11,27,0,0,38,0,
+        2,1,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         5,3,2,0,0,0,0,0,
         // ST1_asisdlsop_hx1_r1h          - ST1         {Vt.H}[index], [Xn|SP], Xm
         130,8,156,3,1,3,1,3,
-        2,1,11,27,0,0,38,0,
+        2,1,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST1_asisdlsop_s1_i1s           - ST1         {Vt.S}[index], [Xn|SP], #4
         131,8,156,3,1,3,1,3,
-        2,1,6,27,0,0,39,0,
+        2,1,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         5,3,4,0,0,0,0,0,
         // ST1_asisdlsop_sx1_r1s          - ST1         {Vt.S}[index], [Xn|SP], Xm
         132,8,156,3,1,3,1,3,
-        2,1,6,27,0,0,39,0,
+        2,1,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST1_asisdlsop_d1_i1d           - ST1         {Vt.D}[index], [Xn|SP], #8
@@ -12590,15 +12592,15 @@ partial class Arm64InstructionDecoderTable
         1,17,0,16,0,0,0,0,
         // ST2_asisdlso_b2_2b             - ST2         {Vt.B, Vt2.B}[index], [Xn|SP]
         138,8,157,3,1,3,1,2,
-        2,2,11,27,0,0,36,0,
+        2,2,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         // ST2_asisdlso_h2_2h             - ST2         {Vt.H, Vt2.H}[index], [Xn|SP]
         139,8,157,3,1,3,1,2,
-        2,2,11,27,0,0,38,0,
+        2,2,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         // ST2_asisdlso_s2_2s             - ST2         {Vt.S, Vt2.S}[index], [Xn|SP]
         140,8,157,3,1,3,1,2,
-        2,2,6,27,0,0,39,0,
+        2,2,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         // ST2_asisdlso_d2_2d             - ST2         {Vt.D, Vt2.D}[index], [Xn|SP]
         141,8,157,3,1,3,1,2,
@@ -12606,32 +12608,32 @@ partial class Arm64InstructionDecoderTable
         4,2,165,0,0,0,0,0,
         // ST2_asisdlsop_b2_i2b           - ST2         {Vt.B, Vt2.B}[index], [Xn|SP], #2
         142,8,157,3,1,3,1,3,
-        2,2,11,27,0,0,36,0,
+        2,2,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         5,3,2,0,0,0,0,0,
         // ST2_asisdlsop_bx2_r2b          - ST2         {Vt.B, Vt2.B}[index], [Xn|SP], Xm
         143,8,157,3,1,3,1,3,
-        2,2,11,27,0,0,36,0,
+        2,2,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST2_asisdlsop_h2_i2h           - ST2         {Vt.H, Vt2.H}[index], [Xn|SP], #4
         144,8,157,3,1,3,1,3,
-        2,2,11,27,0,0,38,0,
+        2,2,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         5,3,4,0,0,0,0,0,
         // ST2_asisdlsop_hx2_r2h          - ST2         {Vt.H, Vt2.H}[index], [Xn|SP], Xm
         145,8,157,3,1,3,1,3,
-        2,2,11,27,0,0,38,0,
+        2,2,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST2_asisdlsop_s2_i2s           - ST2         {Vt.S, Vt2.S}[index], [Xn|SP], #8
         146,8,157,3,1,3,1,3,
-        2,2,6,27,0,0,39,0,
+        2,2,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         5,3,8,0,0,0,0,0,
         // ST2_asisdlsop_sx2_r2s          - ST2         {Vt.S, Vt2.S}[index], [Xn|SP], Xm
         147,8,157,3,1,3,1,3,
-        2,2,6,27,0,0,39,0,
+        2,2,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST2_asisdlsop_d2_i2d           - ST2         {Vt.D, Vt2.D}[index], [Xn|SP], #16
@@ -12660,15 +12662,15 @@ partial class Arm64InstructionDecoderTable
         1,17,0,16,0,0,0,0,
         // ST3_asisdlso_b3_3b             - ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP]
         153,8,159,3,1,3,1,2,
-        2,3,11,27,0,0,36,0,
+        2,3,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         // ST3_asisdlso_h3_3h             - ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP]
         154,8,159,3,1,3,1,2,
-        2,3,11,27,0,0,38,0,
+        2,3,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         // ST3_asisdlso_s3_3s             - ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP]
         155,8,159,3,1,3,1,2,
-        2,3,6,27,0,0,39,0,
+        2,3,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         // ST3_asisdlso_d3_3d             - ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP]
         156,8,159,3,1,3,1,2,
@@ -12676,32 +12678,32 @@ partial class Arm64InstructionDecoderTable
         4,2,165,0,0,0,0,0,
         // ST3_asisdlsop_b3_i3b           - ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3
         157,8,159,3,1,3,1,3,
-        2,3,11,27,0,0,36,0,
+        2,3,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         5,3,3,0,0,0,0,0,
         // ST3_asisdlsop_bx3_r3b          - ST3         {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm
         158,8,159,3,1,3,1,3,
-        2,3,11,27,0,0,36,0,
+        2,3,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST3_asisdlsop_h3_i3h           - ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6
         159,8,159,3,1,3,1,3,
-        2,3,11,27,0,0,38,0,
+        2,3,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         5,3,6,0,0,0,0,0,
         // ST3_asisdlsop_hx3_r3h          - ST3         {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm
         160,8,159,3,1,3,1,3,
-        2,3,11,27,0,0,38,0,
+        2,3,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST3_asisdlsop_s3_i3s           - ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12
         161,8,159,3,1,3,1,3,
-        2,3,6,27,0,0,39,0,
+        2,3,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         5,3,12,0,0,0,0,0,
         // ST3_asisdlsop_sx3_r3s          - ST3         {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm
         162,8,159,3,1,3,1,3,
-        2,3,6,27,0,0,39,0,
+        2,3,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST3_asisdlsop_d3_i3d           - ST3         {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24
@@ -12730,15 +12732,15 @@ partial class Arm64InstructionDecoderTable
         1,17,0,16,0,0,0,0,
         // ST4_asisdlso_b4_4b             - ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP]
         168,8,160,3,1,3,1,2,
-        2,4,11,27,0,0,36,0,
+        2,4,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         // ST4_asisdlso_h4_4h             - ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP]
         169,8,160,3,1,3,1,2,
-        2,4,11,27,0,0,38,0,
+        2,4,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         // ST4_asisdlso_s4_4s             - ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP]
         170,8,160,3,1,3,1,2,
-        2,4,6,27,0,0,39,0,
+        2,4,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         // ST4_asisdlso_d4_4d             - ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP]
         171,8,160,3,1,3,1,2,
@@ -12746,32 +12748,32 @@ partial class Arm64InstructionDecoderTable
         4,2,165,0,0,0,0,0,
         // ST4_asisdlsop_b4_i4b           - ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4
         172,8,160,3,1,3,1,3,
-        2,4,11,27,0,0,36,0,
+        2,4,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         5,3,4,0,0,0,0,0,
         // ST4_asisdlsop_bx4_r4b          - ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm
         173,8,160,3,1,3,1,3,
-        2,4,11,27,0,0,36,0,
+        2,4,13,27,0,0,36,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST4_asisdlsop_h4_i4h           - ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8
         174,8,160,3,1,3,1,3,
-        2,4,11,27,0,0,38,0,
+        2,4,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         5,3,8,0,0,0,0,0,
         // ST4_asisdlsop_hx4_r4h          - ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm
         175,8,160,3,1,3,1,3,
-        2,4,11,27,0,0,38,0,
+        2,4,13,27,0,0,38,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST4_asisdlsop_s4_i4s           - ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16
         176,8,160,3,1,3,1,3,
-        2,4,6,27,0,0,39,0,
+        2,4,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         5,3,16,0,0,0,0,0,
         // ST4_asisdlsop_sx4_r4s          - ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm
         177,8,160,3,1,3,1,3,
-        2,4,6,27,0,0,39,0,
+        2,4,7,27,0,0,39,0,
         4,2,165,0,0,0,0,0,
         1,17,0,16,0,0,0,0,
         // ST4_asisdlsop_d4_i4d           - ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32
@@ -13462,12 +13464,12 @@ partial class Arm64InstructionDecoderTable
         76,9,106,4,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // UMLAL2_asimdelem_l             - UMLAL2      Vd.Ta, Vn.Tb, Vm.Ts[index]
         77,9,107,4,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // UMLAL_asimddiff_l              - UMLAL       Vd.Ta, Vn.Tb, Vm.Tb
         78,9,106,4,1,3,1,3,
         1,27,0,0,11,0,0,0,
@@ -13482,12 +13484,12 @@ partial class Arm64InstructionDecoderTable
         80,9,108,4,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // UMLSL2_asimdelem_l             - UMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index]
         81,9,109,4,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // UMLSL_asimddiff_l              - UMLSL       Vd.Ta, Vn.Tb, Vm.Tb
         82,9,108,4,1,3,1,3,
         1,27,0,0,11,0,0,0,
@@ -13506,21 +13508,21 @@ partial class Arm64InstructionDecoderTable
         // UMOV_asimdins_w_w              - UMOV        Wd, Vn.Ts[index]
         85,9,112,4,1,3,1,2,
         1,19,0,0,0,0,0,0,
-        1,27,16,5,30,0,0,0,
+        1,27,18,5,30,0,0,0,
         // UMOV_asimdins_x_x              - UMOV        Xd, Vn.D[index]
         86,9,112,4,1,3,1,2,
         1,17,0,0,0,0,0,0,
-        1,27,12,5,37,0,0,0,
+        1,27,14,5,37,0,0,0,
         // UMULL_asimdelem_l              - UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index]
         87,9,115,4,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // UMULL2_asimdelem_l             - UMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index]
         88,9,116,4,1,3,1,3,
         1,27,0,0,13,0,0,0,
         1,27,0,5,26,0,0,0,
-        1,75,18,1,14,0,0,0,
+        1,75,20,2,14,0,0,0,
         // UMULL_asimddiff_l              - UMULL       Vd.Ta, Vn.Tb, Vm.Tb
         89,9,115,4,1,3,1,3,
         1,27,0,0,11,0,0,0,

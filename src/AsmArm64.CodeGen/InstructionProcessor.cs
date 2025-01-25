@@ -975,6 +975,13 @@ internal sealed class InstructionProcessor
         }
 
         var c = char.ToUpperInvariant(name0[0]);
+
+        // Fix special case for H hardcoded in a special way
+        if (name0 == "V" && register.TextElements[0].Symbol is not null && register.TextElements[0].Symbol!.Link == "V_hv")
+        {
+            c = 'H';
+        }
+
         switch (c)
         {
             case 'X':
@@ -1188,14 +1195,6 @@ internal sealed class InstructionProcessor
 
         var text = register.TextElements[index].Text;
         var symbol = register.TextElements[index].Symbol;
-
-        // Fix special case for H hardcoded in a special way
-        if (text == "V" && symbol is not null && symbol.Link == "V_hv")
-        {
-            text = "H";
-            symbol = null;
-        }
-
         var kind = EncodingVectorArrangementExtract.ParseArrangementKind(text);
 
         EncodingVectorArrangementExtract vectorArrangement;
