@@ -585,6 +585,46 @@ partial class Arm64Processor
                 };
                 selector.BitValues.Add(bitValue);
             }
+            else if (enclist.Contains("LUTI4_asimdtbl_L5") && name == "<index>")
+            {
+                // For the "Byte" variant: is the vector segment index, in the range 0 to 1
+                var selector = new EncodingSymbolSelector();
+                encodingSymbol.Selector = selector;
+                selector.BitNames.Add("len");
+                var bitValue = new EncodingBitValue
+                {
+                    BitSelectorAsText = "x1",
+                    Text = "UInt(len<1>)"
+                };
+                selector.BitValues.Add(bitValue);
+            }
+            else if ((enclist.Contains("FMLALLBB_asimdelem_J")
+                      || enclist.Contains("FMLALLBT_asimdelem_J")
+                      || enclist.Contains("FMLALLTB_asimdelem_J")
+                      || enclist.Contains("FMLALLTT_asimdelem_J")
+                      || enclist.Contains("FMLALB_asimdelem_H")
+                      || enclist.Contains("FMLALT_asimdelem_H")
+                      ))
+            {
+                if (name == "<index>")
+                {
+                    // Is the element index, in the range 0 to 15, encoded in the "H:L:M:Rm<3>" fields
+                    encodingSymbol.EncodedInText = "H:L:M:Rm<3>";
+                }
+                else if (name == "<Vm>")
+                {
+                    // Is the name of the second SIMD & FP source register, in the range V0 to V7, encoded in the "Rm<2:0>" field
+                    var selector = new EncodingSymbolSelector();
+                    encodingSymbol.Selector = selector;
+                    selector.BitNames.Add("Rm<2:0>");
+                    //var bitValue = new EncodingBitValue
+                    //{
+                    //    BitSelectorAsText = "xxx",
+                    //    Text = "UInt(len<1>)"
+                    //};
+                    //selector.BitValues.Add(bitValue);
+                }
+            }
 
             if (accountElement.Name == "account")
             {
