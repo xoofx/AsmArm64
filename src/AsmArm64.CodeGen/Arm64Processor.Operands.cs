@@ -634,6 +634,38 @@ partial class Arm64Processor
                     //selector.BitValues.Add(bitValue);
                 }
             }
+            else if (enclist.Contains("ST3_asisdlso_H3_3h")
+                     || enclist.Contains("ST3_asisdlsop_H3_i3h")
+                     || enclist.Contains("ST3_asisdlsop_HX3_r3h")
+                     || enclist.Contains("ST4_asisdlso_H4_4h")
+                     || enclist.Contains("ST4_asisdlsop_H4_i4h")
+                     || enclist.Contains("ST4_asisdlsop_HX4_r4h")
+                    || enclist.Contains("LD3_asisdlso_H3_3h")
+                    || enclist.Contains("LD3_asisdlsop_H3_i3h")
+                    || enclist.Contains("LD3_asisdlsop_HX3_r3h")
+                    || enclist.Contains("LD4_asisdlso_H4_4h")
+                    || enclist.Contains("LD4_asisdlsop_H4_i4h")
+                    || enclist.Contains("LD4_asisdlsop_HX4_r4h")
+                     || enclist.Contains("ST1_asisdlso_H1_1h")
+                     || enclist.Contains("ST1_asisdlsop_H1_i1h")
+                        || enclist.Contains("ST1_asisdlsop_HX1_r1h")
+                     || enclist.Contains("ST2_asisdlso_H2_2h")
+                     || enclist.Contains("ST2_asisdlsop_H2_i2h")
+                    || enclist.Contains("ST2_asisdlsop_HX2_r2h")
+                    || enclist.Contains("LD1_asisdlso_H1_1h")
+                    || enclist.Contains("LD1_asisdlsop_H1_i1h")
+                    || enclist.Contains("LD1_asisdlsop_HX1_r1h")
+                     || enclist.Contains("LD2_asisdlso_H2_2h")
+                        || enclist.Contains("LD2_asisdlsop_H2_i2h")
+                     || enclist.Contains("LD2_asisdlsop_HX2_r2h")
+                     )
+            {
+                if (name == "<index>")
+                {
+                    Debug.Assert(encodingSymbol.EncodedInText == "Q:S:size");
+                    encodingSymbol.EncodedInText += "<1>";
+                }
+            }
 
             if (accountElement.Name == "account")
             {
