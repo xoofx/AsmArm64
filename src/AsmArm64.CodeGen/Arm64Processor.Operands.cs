@@ -137,6 +137,15 @@ partial class Arm64Processor
         // Remove any spaces from the text to ease the parsing after
         items.ForEach(x => x.Text = MatchSpace.Replace(x.Text, ""));
 
+        
+        if (instructionId == "BC_only_condbranch" || instructionId == "B_only_condbranch")
+        {
+            Debug.Assert(items.Count == 3);
+            Debug.Assert(string.IsNullOrEmpty(items[1].Text) && items[1].Kind == RawAsmTemplateItemKind.Text);
+            // We introduce a fake , between the condition B.EQ and the label to have the correct number of operands
+            items[1] = new RawAsmTemplateItem(RawAsmTemplateItemKind.Text, ",");
+        }
+        
         var states = new Stack<ParsingState>();
         states.Push(new ParsingState() { CurrentStateKind = ParsingStateKind.Global });
         var operands = new List<Operand>();

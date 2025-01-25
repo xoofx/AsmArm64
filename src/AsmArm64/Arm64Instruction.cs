@@ -80,11 +80,13 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
             return false;
         }
 
+        bool isSpecialCondition = Id == Arm64InstructionId.BC_only_condbranch || Id == Arm64InstructionId.B_only_condbranch;
+
         for (int i = 0; i < OperandCount; i++)
         {
             int previousCharsWritten = written;
 
-            if (i > 0)
+            if (!isSpecialCondition && i > 0)
             {
                 if (destination.Length <= written)
                 {
@@ -102,7 +104,7 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
                 return false;
             }
 
-            destination[written] = (char)' ';
+            destination[written] = isSpecialCondition && i == 0 ? (char)'.' : (char)' ';
             written++;
             var operand = GetOperand(i);
             if (!operand.TryFormat(destination.Slice(written), out var operandWritten, out var isDefaultValue, format, provider, tryResolveLabel))

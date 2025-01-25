@@ -802,6 +802,8 @@ internal sealed class InstructionProcessor
         { "CBLS_cbhs_64_regs", Arm64LabelEncodingKind.StandardOffset },
         { "CBLT_cbgt_32_regs", Arm64LabelEncodingKind.StandardOffset },
         { "CBLT_cbgt_64_regs", Arm64LabelEncodingKind.StandardOffset },
+        { "B_only_condbranch", Arm64LabelEncodingKind.StandardOffset },
+        { "BC_only_condbranch", Arm64LabelEncodingKind.StandardOffset },
     };
 
     private OperandDescriptor ProcessValue(Instruction instruction, ValueOperandItem selectedValue)
