@@ -14,17 +14,22 @@ enum Arm64LabelEncodingKind : byte
 {
     None,
     /// <summary>
+    /// A signed offset.
+    /// </summary>
+    ByteOffset = 1,
+
+    /// <summary>
     /// A signed offset multiplied by 4
     /// </summary>
-    StandardOffset = 1,
+    OffsetMul4 = 2,
 
     /// <summary>
     /// A negative offset multiplied by 4 encoded as an unsigned value
     /// </summary>
-    NegativeEncodedAsUnsigned = 2,
+    NegativeEncodedAsUnsigned = 3,
 
     /// <summary>
     /// A signed offset multiplied by 4096 encoded as an unsigned value
     /// </summary>
-    PageOffset = 3,
+    PageOffset = 4,
 }

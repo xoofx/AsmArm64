@@ -36,30 +36,30 @@ public readonly struct Arm64Operand : IArm64Operand
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format,
         IFormatProvider? provider)
-        => TryFormat(destination, out charsWritten, out _, format, provider);
+        => TryFormat(default, destination, out charsWritten, out _, format, provider, null);
     
-    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null)
+    public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel)
     {
         switch (Kind)
         {
             case Arm64OperandKind.Register:
-                return ((Arm64RegisterOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
+                return ((Arm64RegisterOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
             case Arm64OperandKind.SystemRegister:
-                return ((Arm64SystemRegisterOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
+                return ((Arm64SystemRegisterOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
             case Arm64OperandKind.Immediate:
-                return ((Arm64ImmediateOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
+                return ((Arm64ImmediateOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
             case Arm64OperandKind.Shift:
-                return ((Arm64ShiftOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
+                return ((Arm64ShiftOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
             case Arm64OperandKind.Memory:
-                return ((Arm64MemoryOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
+                return ((Arm64MemoryOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
             case Arm64OperandKind.Extend:
-                return ((Arm64ExtendOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
+                return ((Arm64ExtendOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
             case Arm64OperandKind.RegisterGroup:
-                return ((Arm64RegisterGroupOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
+                return ((Arm64RegisterGroupOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
             case Arm64OperandKind.Label:
-                return ((Arm64LabelOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
+                return ((Arm64LabelOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
             case Arm64OperandKind.Enum:
-                return ((Arm64EnumOperand)this).TryFormat(destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
+                return ((Arm64EnumOperand)this).TryFormat(instruction, destination, out charsWritten, out isDefaultValue, format, provider, tryResolveLabel);
             default:
                 throw new InvalidOperationException($"Unexpected kind {Kind}");
         }

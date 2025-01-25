@@ -12,6 +12,7 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
 {
     private readonly bool _displayAsHex;
     private readonly bool _is32;
+    private readonly bool _isOptional;
 
     internal Arm64ImmediateOperand(Arm64Operand operand)
     {
@@ -20,8 +21,10 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
 
         _is32 = true;
 
-        // buffer[1] = (byte)ImmediateKind;
-        var immediateKind = (Arm64ImmediateEncodingKind)(descriptor >> 8);
+        // buffer[1] = (byte)((byte)ImmediateKind | (byte)(IsOptional ? 0x80 : 0));
+        var b1 = (byte)(descriptor >> 8);
+        var immediateKind = (Arm64ImmediateEncodingKind)(b1 & 0x7F);
+        _isOptional = (b1 & 0x80) != 0;
         var valueEncodingKind = Arm64ImmediateValueEncodingKind.None;
         switch (immediateKind)
         {
@@ -85,7 +88,6 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
                 Value = encodingCount == 1
                     ? Arm64DecodingHelper.GetBitRange1(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), isSigned)
                     : Arm64DecodingHelper.GetBitRange2(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), (byte)(descriptor >> 48), (byte)(descriptor >> 56), isSigned);
-
                 break;
             }
             default:
@@ -100,11 +102,18 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
                 IsFloat = true;
             }
 
-            Value = Arm64ImmediateValueHelper.DecodeValue(valueEncodingKind, (int)Value);
-            _displayAsHex = valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask32 || valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64 || valueEncodingKind == Arm64ImmediateValueEncodingKind.ValueImm64;
-            if (valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64 || valueEncodingKind == Arm64ImmediateValueEncodingKind.ValueImm64)
+            if (valueEncodingKind == Arm64ImmediateValueEncodingKind.ValueMsrImmediate)
             {
-                _is32 = false;
+                Value = Arm64ImmediateValueHelper.DecodeMsrImmediateValue(rawValue, (int)Value);
+            }
+            else
+            {
+                Value = Arm64ImmediateValueHelper.DecodeValue(valueEncodingKind, (int)Value);
+                _displayAsHex = valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask32 || valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64 || valueEncodingKind == Arm64ImmediateValueEncodingKind.ValueImm64;
+                if (valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64 || valueEncodingKind == Arm64ImmediateValueEncodingKind.ValueImm64 || valueEncodingKind == Arm64ImmediateValueEncodingKind.ValueShiftWide64)
+                {
+                    _is32 = false;
+                }
             }
         }
     }
@@ -134,11 +143,11 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format,
         IFormatProvider? provider) =>
-        TryFormat(destination, out charsWritten, out _, format, provider);
+        TryFormat(default, destination, out charsWritten, out _, format, provider, null);
 
-    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null)
+    public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel)
     {
-        isDefaultValue = false;
+        isDefaultValue = _isOptional && Value == 0;
 
         if (destination.Length <= 1)
         {

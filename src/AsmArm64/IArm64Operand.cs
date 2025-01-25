@@ -8,7 +8,7 @@ public interface IArm64Operand : ISpanFormattable
 {
     Arm64OperandKind Kind { get; }
     
-    bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel);
+    bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null);
 }
 
-public delegate bool TryResolveLabelDelegate(int offset, out string? label);
+public delegate bool TryResolveLabelDelegate(long offset, out string? label);

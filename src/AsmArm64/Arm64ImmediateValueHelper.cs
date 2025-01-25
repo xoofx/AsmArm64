@@ -12,6 +12,28 @@ namespace AsmArm64;
 
 internal static class Arm64ImmediateValueHelper
 {
+    public static long DecodeMsrImmediateValue(uint rawValue, int value)
+    {
+        // Encoded to 1 bit when pstateField is ALLINT, PM, SVCRSM, SVCRSMZA, or SVCRZA.
+        // CRm:op1:op2
+        // CRm: (b: 8, w: 4)
+        // op1: (b: 16, w: 3)
+        // op2: (b: 5, w: 3)
+        Arm64ProcessStateFieldHelper.TryDecode(rawValue, 1, out var processStateField);
+
+        switch (processStateField)
+        {
+            case Arm64ProcessStateField.ALLINT:
+            case Arm64ProcessStateField.PM:
+            case Arm64ProcessStateField.SVCRSM:
+            case Arm64ProcessStateField.SVCRSMZA:
+            case Arm64ProcessStateField.SVCRZA:
+                return value & 1;
+            default:
+                return value;
+        }
+    }
+
     public static long DecodeValue(Arm64ImmediateValueEncodingKind valueEncodingKind, int value)
     {
         switch (valueEncodingKind)
@@ -53,6 +75,10 @@ internal static class Arm64ImmediateValueHelper
                 return DecodeImmediateBitMask64(value);
             case Arm64ImmediateValueEncodingKind.ValueImm64:
                 return DecodeImmediate64(value);
+            case Arm64ImmediateValueEncodingKind.InvertValueShiftWide32:
+                return ~(uint)((int)value >> 2) << ((value & 0x3) << 4);
+            case Arm64ImmediateValueEncodingKind.ValueShiftWide64:
+                return ((long)value >> 2) << ((value & 0x3) << 4);
             default:
                 throw new ArgumentOutOfRangeException(nameof(valueEncodingKind), valueEncodingKind, null);
         }

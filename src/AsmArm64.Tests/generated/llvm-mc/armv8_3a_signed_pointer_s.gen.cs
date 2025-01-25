@@ -102,8 +102,8 @@ partial class McInstructionTests
     [DataRow(new byte[] { 0x20, 0x0c, 0xe0, 0xf8 }, "ldrab x0, [x1, #-4096]!")]
     [DataRow(new byte[] { 0x20, 0x04, 0x20, 0xf8 }, "ldraa x0, [x1]")]
     [DataRow(new byte[] { 0x20, 0x04, 0xa0, 0xf8 }, "ldrab x0, [x1]")]
-    [DataRow(new byte[] { 0x20, 0x0c, 0x20, 0xf8 }, "ldraa x0, [x1, #0]!")]
-    [DataRow(new byte[] { 0x20, 0x0c, 0xa0, 0xf8 }, "ldrab x0, [x1, #0]!")]
+    [DataRow(new byte[] { 0x20, 0x0c, 0x20, 0xf8 }, "ldraa x0, [x1]!")]
+    [DataRow(new byte[] { 0x20, 0x0c, 0xa0, 0xf8 }, "ldrab x0, [x1]!")]
     [DataRow(new byte[] { 0xff, 0x0f, 0x60, 0xf8 }, "ldraa xzr, [sp, #-4096]!")]
     [DataRow(new byte[] { 0xff, 0x0f, 0xe0, 0xf8 }, "ldrab xzr, [sp, #-4096]!")]
     public void armv8_3a_signed_pointer_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);

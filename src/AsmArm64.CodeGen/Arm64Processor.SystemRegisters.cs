@@ -17,6 +17,9 @@ partial class Arm64Processor
     private readonly HashSet<string> _systemRegisterUsageKinds = new HashSet<string>();
     private readonly HashSet<ushort> _systemRegisterValues = new();
 
+    private readonly HashSet<string> _systemRegistersNotHandled = new();
+    private readonly HashSet<string> _systemRegistersHandled = new();
+
     // Register with same values
     // DBGDTRRX_EL0 <- used by MRS
     // DBGDTRTX_EL0 <- used by MSR
@@ -57,14 +60,15 @@ partial class Arm64Processor
             var doc = XDocument.Load(xmlFile, LoadOptions.PreserveWhitespace);
             foreach (var register in doc.Descendants("register"))
             {
+                var regGenericName = register.Element("reg_short_name")!.Value;
                 var executionState = register.Attribute("execution_state");
                 if (executionState is null || executionState.Value != "AArch64")
                 {
+                    _systemRegistersNotHandled.Add(regGenericName);
                     //Console.WriteLine($"Xml file skipped {xmlFile} because no execution state");
                     continue;
                 }
                 
-                var regGenericName = register.Element("reg_short_name")!.Value;
                 var description = register.Element("reg_long_name")!.Value;
 
                 var accessors = register.Descendants("access_mechanism").ToList();
@@ -104,7 +108,11 @@ partial class Arm64Processor
                     }
                     
                     var encoding = accessor.Element("encoding");
-                    if (encoding is null) continue;
+                    if (encoding is null)
+                    {
+                        _systemRegistersNotHandled.Add(regGenericName);
+                        continue;
+                    }
 
                     // <acc_array var="m">
                     //     <acc_array_range>0-15</acc_array_range>
@@ -126,6 +134,7 @@ partial class Arm64Processor
                         else
                         {
                             Console.WriteLine($"Weird range for {encoding}");
+                            _systemRegistersNotHandled.Add(regGenericName);
                             continue;
                         }
                     }
@@ -144,6 +153,7 @@ partial class Arm64Processor
                     if (names[0]!.Value != "op0" || names[1]!.Value != "op1" || names[2]!.Value != "CRn" || names[3]!.Value != "CRm" || names[4]!.Value != "op2")
                     {
                         Debug.Assert(false, $"Weird list of operators for {encoding}");
+                        _systemRegistersNotHandled.Add(regGenericName);
                         continue;
                     }
 
@@ -155,13 +165,17 @@ partial class Arm64Processor
                     {
                         //Console.WriteLine($"SKIPPED {regName} -> {bitsAsText} <- Accessor: {accessorName}");
                         //Debug.Assert(false, $"Weird varName for {encoding}");
+                        _systemRegistersNotHandled.Add(regGenericName);
                         continue;
                     }
 
                     Debug.Assert(!bitsAsText.Contains('x'));
 
+                    _systemRegistersHandled.Add(regGenericName);
+
                     if (requiresNameVariation)
                     {
+
                         var builder = new StringBuilder();
                         for (int varIndex = start; varIndex <= end; varIndex++)
                         {
@@ -204,6 +218,7 @@ partial class Arm64Processor
                     {
                         AddRegister(regName, description, kind, bitsAsText);
                     }
+
                 }
             }
         }
@@ -233,6 +248,20 @@ partial class Arm64Processor
             Console.WriteLine($"  [\"{kind}\"] = {kindIndex},");
             hasErrors = true;
         }
+
+
+        // Print system registers that are not handled (without an encoding)
+        //if (_systemRegistersNotHandled.Count > 0)
+        //{
+        //    Console.WriteLine("// System registers not handled");
+        //    foreach (var trcRegister in _systemRegistersNotHandled.OrderBy(x => x))
+        //    {
+        //        if (!_systemRegistersHandled.Contains(trcRegister))
+        //        {
+        //            Console.WriteLine($"// {trcRegister}");
+        //        }
+        //    }
+        //}
 
         Console.WriteLine($"Number of system registers: {InstructionSet.SystemRegisters.Count}");
 

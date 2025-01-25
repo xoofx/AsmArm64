@@ -666,6 +666,11 @@ partial class Arm64Processor
                     encodingSymbol.EncodedInText += "<1>";
                 }
             }
+            else if (enclist.Contains("MSR_SI_pstate") && name == "<imm>")
+            {
+                Debug.Assert(encodingSymbol.EncodedInText == "CRm:op1:op2");
+                encodingSymbol.EncodedInText = "CRm";
+            }
 
             if (accountElement.Name == "account")
             {

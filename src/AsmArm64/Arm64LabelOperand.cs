@@ -34,11 +34,11 @@ public readonly struct Arm64LabelOperand : IArm64Operand
 
         byte isSigned = labelKind != Arm64LabelEncodingKind.NegativeEncodedAsUnsigned ? (byte)1U : (byte)0U;
 
-        int offset = encodingCount == 1
+        long offset = encodingCount == 1
             ? Arm64DecodingHelper.GetBitRange1(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), isSigned)
             : Arm64DecodingHelper.GetBitRange2(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), (byte)(descriptor >> 48), (byte)(descriptor >> 56), isSigned);
 
-        Offset = labelKind == Arm64LabelEncodingKind.PageOffset ? offset << 12 : offset << 2;
+        Offset = labelKind == Arm64LabelEncodingKind.PageOffset ? offset << 12 : labelKind == Arm64LabelEncodingKind.ByteOffset ? offset : offset << 2;
 
         if (labelKind == Arm64LabelEncodingKind.NegativeEncodedAsUnsigned)
         {
@@ -48,7 +48,7 @@ public readonly struct Arm64LabelOperand : IArm64Operand
 
     public Arm64OperandKind Kind => Arm64OperandKind.Label;
 
-    public int Offset { get; }
+    public long Offset { get; }
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -66,9 +66,9 @@ public readonly struct Arm64LabelOperand : IArm64Operand
     /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format,
         IFormatProvider? provider)
-        => TryFormat(destination, out charsWritten, out _, format, provider);
+        => TryFormat(default, destination, out charsWritten, out _, format, provider, null);
     
-    public bool TryFormat(Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel = null)
+    public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel)
     {
         isDefaultValue = false;
 

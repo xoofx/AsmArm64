@@ -65,5 +65,19 @@ enum Arm64ImmediateValueEncodingKind : byte
     /// <summary>
     /// 8-bit `abcdefgh` to `aaaaaaaabbbbbbbbccccccccddddddddeeeeeeeeffffffffgggggggghhhhhhhh`
     /// </summary>
-    ValueImm64
+    ValueImm64,
+    /// <summary>
+    /// Is a 4-bit unsigned immediate, in the range 0 to 15, encoded in the "CRm" field. Restricted to the range 0 to 1, encoded in "CRm&gt;0>", when &gt;pstatefield> is ALLINT, PM, SVCRSM, SVCRSMZA, or SVCRZA.
+    /// </summary>
+    ValueMsrImmediate,
+
+    /// <summary>
+    /// The lowest 2 bits encode a shift: * 16 for 32 bit and bitwise inverse
+    /// </summary>
+    InvertValueShiftWide32,
+
+    /// <summary>
+    /// The lowest 2 bits encode a shift: * 16 for 64 bit
+    /// </summary>
+    ValueShiftWide64,
 }

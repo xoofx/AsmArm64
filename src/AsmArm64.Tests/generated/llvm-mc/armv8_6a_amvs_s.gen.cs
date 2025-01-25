@@ -15,7 +15,7 @@ namespace AsmArm64.Tests;
 partial class McInstructionTests
 {
     [TestMethod]
-    [DataRow(new byte[] { 0xc0, 0xd2, 0x1b, 0xd5 }, "msr S3_3_C13_C2_6, x0")]
+    [DataRow(new byte[] { 0xc0, 0xd2, 0x1b, 0xd5 }, "msr AMCG1IDR_EL0, x0")]
     [DataRow(new byte[] { 0xc0, 0xd2, 0x3b, 0xd5 }, "mrs x0, AMCG1IDR_EL0")]
     [DataRow(new byte[] { 0x00, 0xd8, 0x1c, 0xd5 }, "msr AMEVCNTVOFF00_EL2, x0")]
     [DataRow(new byte[] { 0x20, 0xd8, 0x1c, 0xd5 }, "msr AMEVCNTVOFF01_EL2, x0")]
@@ -81,7 +81,7 @@ partial class McInstructionTests
     [DataRow(new byte[] { 0xa0, 0xdb, 0x3c, 0xd5 }, "mrs x0, AMEVCNTVOFF113_EL2")]
     [DataRow(new byte[] { 0xc0, 0xdb, 0x3c, 0xd5 }, "mrs x0, AMEVCNTVOFF114_EL2")]
     [DataRow(new byte[] { 0xe0, 0xdb, 0x3c, 0xd5 }, "mrs x0, AMEVCNTVOFF115_EL2")]
-    [DataRow(new byte[] { 0xc0, 0xd2, 0x1b, 0xd5 }, "msr S3_3_C13_C2_6, x0")]
+    [DataRow(new byte[] { 0xc0, 0xd2, 0x1b, 0xd5 }, "msr AMCG1IDR_EL0, x0")]
     [DataRow(new byte[] { 0xc0, 0xd2, 0x3b, 0xd5 }, "mrs x0, AMCG1IDR_EL0")]
     [DataRow(new byte[] { 0x00, 0xd8, 0x1c, 0xd5 }, "msr AMEVCNTVOFF00_EL2, x0")]
     [DataRow(new byte[] { 0x20, 0xd8, 0x1c, 0xd5 }, "msr AMEVCNTVOFF01_EL2, x0")]
@@ -147,7 +147,7 @@ partial class McInstructionTests
     [DataRow(new byte[] { 0xa0, 0xdb, 0x3c, 0xd5 }, "mrs x0, AMEVCNTVOFF113_EL2")]
     [DataRow(new byte[] { 0xc0, 0xdb, 0x3c, 0xd5 }, "mrs x0, AMEVCNTVOFF114_EL2")]
     [DataRow(new byte[] { 0xe0, 0xdb, 0x3c, 0xd5 }, "mrs x0, AMEVCNTVOFF115_EL2")]
-    [DataRow(new byte[] { 0xc0, 0xd2, 0x1b, 0xd5 }, "msr S3_3_C13_C2_6, x0")]
+    [DataRow(new byte[] { 0xc0, 0xd2, 0x1b, 0xd5 }, "msr AMCG1IDR_EL0, x0")]
     [DataRow(new byte[] { 0xc0, 0xd2, 0x3b, 0xd5 }, "mrs x0, AMCG1IDR_EL0")]
     [DataRow(new byte[] { 0x00, 0xd8, 0x1c, 0xd5 }, "msr AMEVCNTVOFF00_EL2, x0")]
     [DataRow(new byte[] { 0x20, 0xd8, 0x1c, 0xd5 }, "msr AMEVCNTVOFF01_EL2, x0")]

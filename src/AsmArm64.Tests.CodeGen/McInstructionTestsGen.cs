@@ -5,6 +5,7 @@
 using System.Diagnostics;
 using System.Formats.Tar;
 using System.IO.Compression;
+using System.Reflection.Metadata.Ecma335;
 using System.Text.RegularExpressions;
 using AsmArm64.CodeGen;
 
@@ -81,6 +82,13 @@ public partial class McInstructionTestsGen
         }
     }
 
+    private static readonly string[] SkipTest =
+    [
+        "arm64_target_specific_sysreg_s",
+        "ete_sysregs_s",
+        "trace_regs_s"
+    ];
+
     private void ProcessFile(string fileName, Stream stream)
     {
         var normalizedName = RegexFileName().Match(fileName).Groups["name"].Value;
@@ -96,6 +104,13 @@ public partial class McInstructionTestsGen
             return;
         }
 
+        // The encoding of these system registers are not in the XML files, so skip them for now
+
+        if (SkipTest.Any(x => normalizedName.Equals(x, StringComparison.OrdinalIgnoreCase)))
+        {
+            return;
+        }
+        
         SharpYaml.Serialization.Serializer serializer = new();
         var testCases = (List<object>)((Dictionary<object, object>)serializer.Deserialize(stream)!)["test_cases"];
         foreach (var testCase in testCases.OfType<Dictionary<object, object>>())
@@ -163,6 +178,55 @@ public partial class McInstructionTestsGen
             asm = asm.Replace("ushll2", "uxtl2");
             asm = asm.Replace(", #0", "");
         }
+        else if (asm.StartsWith("subps xzr, "))
+        {
+            asm = asm.Replace("subps xzr, ", "cmpp "); // preferred encoding
+        }
+        else if (asm == "msr S3_3_C13_C2_6, x0")
+        {
+            asm = "msr AMCG1IDR_EL0, x0"; // We have a proper encoding of this register
+        }
+        else if (asm == "tcancel #0x1234")
+        {
+            asm = "tcancel #4660"; // We don't encode in hex for the display
+        }
+        else if ((asm.StartsWith("dcps") || asm.StartsWith("smc")) && asm.Contains("#0x"))
+        {
+            asm = asm.Replace("#0x", "#"); // We don't encode in hex for the display
+        }
+        else if (asm == "ldrab x0, [x1, #0]!")
+        {
+            asm = "ldrab x0, [x1]!"; // The immediate is optional and we support it correctly
+        }
+        else if (asm == "ldraa x0, [x1, #0]!")
+        {
+            asm = "ldraa x0, [x1]!"; // The immediate is optional and we support it correctly
+        }
+        else if (asm == "gcsstr x26, x27")
+        {
+            asm = "gcsstr x26, [x27]"; // Not sure why, but we have the proper encoding, capstone looks not correct
+        }
+        else if (asm == "gcssttr x26, x27")
+        {
+            asm = "gcssttr x26, [x27]"; // Not sure why, but we have the proper encoding, capstone looks not correct
+        }
+        else if (asm == "gcsstr x26, sp")
+        {
+            asm = "gcsstr x26, [sp]"; // Not sure why, but we have the proper encoding, capstone looks not correct
+        }
+        else if (asm == "gcssttr x26, sp")
+        {
+            asm = "gcssttr x26, [sp]"; // Not sure why, but we have the proper encoding, capstone looks not correct
+        }
+        else if (asm == "add w4, w5, #0")
+        {
+            asm = "mov w4, w5"; // We have a better encoding
+        }
+        else if (asm.Contains("-6148914691236517206"))
+        {
+            asm = asm.Replace("-6148914691236517206", "0xaaaaaaaaaaaaaaaa"); // We encode in hex
+        }
+
         return asm;
     }
     

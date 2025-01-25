@@ -133,15 +133,8 @@ static class Arm64ImmediateHelper
                 }
                 break;
             }
-            // MSR_si_pstate                 : MSR         pstatefield, #imm <- Operand: #imm
-            case 6:
-            {
-                var bitValue = ((rawValue >> 5) & 0x7) | ((rawValue >> 13) & 0x38) | ((rawValue >> 2) & 0x3C0);
-                imm = (int)bitValue;
-                return true;
-            }
             // LD1R_asisdlsop_r1_i           : LD1R        {Vt.T}, [Xn|SP], imm <- Operand: imm
-            case 7:
+            case 6:
             {
                 var bitValue = ((rawValue >> 10) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -171,7 +164,7 @@ static class Arm64ImmediateHelper
                 break;
             }
             // LD2R_asisdlsop_r2_i           : LD2R        {Vt.T, Vt2.T}, [Xn|SP], imm <- Operand: imm
-            case 8:
+            case 7:
             {
                 var bitValue = ((rawValue >> 10) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -201,7 +194,7 @@ static class Arm64ImmediateHelper
                 break;
             }
             // LD3R_asisdlsop_r3_i           : LD3R        {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm <- Operand: imm
-            case 9:
+            case 8:
             {
                 var bitValue = ((rawValue >> 10) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -231,7 +224,7 @@ static class Arm64ImmediateHelper
                 break;
             }
             // LD4R_asisdlsop_r4_i           : LD4R        {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm <- Operand: imm
-            case 10:
+            case 9:
             {
                 var bitValue = ((rawValue >> 10) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -261,7 +254,7 @@ static class Arm64ImmediateHelper
                 break;
             }
             // FCMLA_asimdsame2_c            : FCMLA       Vd.T, Vn.T, Vm.T, #rotate <- Operand: #rotate
-            case 11:
+            case 10:
             {
                 var bitValue = ((rawValue >> 11) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -291,7 +284,7 @@ static class Arm64ImmediateHelper
                 break;
             }
             // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: #rotate
-            case 12:
+            case 11:
             {
                 var bitValue = ((rawValue >> 13) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -322,7 +315,7 @@ static class Arm64ImmediateHelper
             }
             // SHLL_asimdmisc_s              : SHLL        Vd.Ta, Vn.Tb, #shift <- Operand: #shift
             // SHLL2_asimdmisc_s             : SHLL2       Vd.Ta, Vn.Tb, #shift <- Operand: #shift
-            case 13:
+            case 12:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -347,7 +340,7 @@ static class Arm64ImmediateHelper
                 break;
             }
             // EXT_asimdext_only             : EXT         Vd.T, Vn.T, Vm.T, #index <- Operand: #index
-            case 14:
+            case 13:
             {
                 var bitValue = ((rawValue >> 11) & 0xF) | ((rawValue >> 26) & 0x10);
                 var bitsToTest = ((bitValue >> 3) & 0x3);
@@ -374,7 +367,7 @@ static class Arm64ImmediateHelper
             // URSRA_asimdshf_r              : URSRA       Vd.T, Vn.T, #shift <- Operand: #shift
             // USHR_asimdshf_r               : USHR        Vd.T, Vn.T, #shift <- Operand: #shift
             // USRA_asimdshf_r               : USRA        Vd.T, Vn.T, #shift <- Operand: #shift
-            case 15:
+            case 14:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 var bitsToTest = ((bitValue >> 3) & 0xF);
@@ -426,7 +419,7 @@ static class Arm64ImmediateHelper
             // UQSHRN_asimdshf_n             : UQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: #shift
             // UQSHRN_asisdshf_n             : UQSHRN      Vbd, Van, #shift <- Operand: #shift
             // UQSHRN2_asimdshf_n            : UQSHRN2     Vd.Tb, Vn.Ta, #shift <- Operand: #shift
-            case 16:
+            case 15:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 var bitsToTest = ((bitValue >> 3) & 0xF);
@@ -458,7 +451,7 @@ static class Arm64ImmediateHelper
             // SQSHLU_asisdshf_r             : SQSHLU      Vd, Vn, #shift <- Operand: #shift
             // UQSHL_asimdshf_r              : UQSHL       Vd.T, Vn.T, #shift <- Operand: #shift
             // UQSHL_asisdshf_r              : UQSHL       Vd, Vn, #shift <- Operand: #shift
-            case 17:
+            case 16:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 var bitsToTest = ((bitValue >> 3) & 0xF);
@@ -492,7 +485,7 @@ static class Arm64ImmediateHelper
             // SSHLL2_asimdshf_l             : SSHLL2      Vd.Ta, Vn.Tb, #shift <- Operand: #shift
             // USHLL_asimdshf_l              : USHLL       Vd.Ta, Vn.Tb, #shift <- Operand: #shift
             // USHLL2_asimdshf_l             : USHLL2      Vd.Ta, Vn.Tb, #shift <- Operand: #shift
-            case 18:
+            case 17:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 var bitsToTest = ((bitValue >> 3) & 0xF);
@@ -524,7 +517,7 @@ static class Arm64ImmediateHelper
             // SCVTF_asisdshf_c              : SCVTF       Vd, Vn, #fbits <- Operand: #fbits
             // UCVTF_asimdshf_c              : UCVTF       Vd.T, Vn.T, #fbits <- Operand: #fbits
             // UCVTF_asisdshf_c              : UCVTF       Vd, Vn, #fbits <- Operand: #fbits
-            case 19:
+            case 18:
             {
                 var bitValue = ((rawValue >> 16) & 0x7F);
                 var bitsToTest = ((bitValue >> 3) & 0xF);

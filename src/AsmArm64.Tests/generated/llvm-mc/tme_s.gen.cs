@@ -18,6 +18,6 @@ partial class McInstructionTests
     [DataRow(new byte[] { 0x63, 0x30, 0x23, 0xd5 }, "tstart x3")]
     [DataRow(new byte[] { 0x64, 0x31, 0x23, 0xd5 }, "ttest x4")]
     [DataRow(new byte[] { 0x7f, 0x30, 0x03, 0xd5 }, "tcommit")]
-    [DataRow(new byte[] { 0x80, 0x46, 0x62, 0xd4 }, "tcancel #0x1234")]
+    [DataRow(new byte[] { 0x80, 0x46, 0x62, 0xd4 }, "tcancel #4660")]
     public void tme_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

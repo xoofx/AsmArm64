@@ -107,7 +107,7 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
             destination[written] = isSpecialCondition && i == 0 ? (char)'.' : (char)' ';
             written++;
             var operand = GetOperand(i);
-            if (!operand.TryFormat(destination.Slice(written), out var operandWritten, out var isDefaultValue, format, provider, tryResolveLabel))
+            if (!operand.TryFormat(this, destination.Slice(written), out var operandWritten, out var isDefaultValue, format, provider, tryResolveLabel))
             {
                 charsWritten = 0;
                 return false;

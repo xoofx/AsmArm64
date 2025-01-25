@@ -95,7 +95,7 @@ sealed class ImmediateOperandDescriptor() : OperandDescriptor(Arm64OperandKind.I
 
     protected internal override void EncodeImpl(Span<byte> buffer)
     {
-        buffer[1] = (byte)ImmediateKind;
+        buffer[1] = (byte)((byte)ImmediateKind | (byte)(IsOptional? 0x80 : 0));
 
         if (ImmediateKind == Arm64ImmediateEncodingKind.FixedFloatZero)
         {

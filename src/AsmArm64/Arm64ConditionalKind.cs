@@ -32,7 +32,7 @@ public enum Arm64ConditionalKind : byte
     /// <summary>
     /// Carry clear/unsigned lower (C == 0).
     /// </summary>
-    CC = 4,
+    LO = 4, // CC or LO?
 
     /// <summary>
     /// Minus/negative (N == 1).
@@ -104,8 +104,8 @@ partial class Arm64Extensions
         {
             Arm64ConditionalKind.EQ => Arm64ConditionalKind.NE,
             Arm64ConditionalKind.NE => Arm64ConditionalKind.EQ,
-            Arm64ConditionalKind.HS => Arm64ConditionalKind.CC,
-            Arm64ConditionalKind.CC => Arm64ConditionalKind.HS,
+            Arm64ConditionalKind.HS => Arm64ConditionalKind.LO,
+            Arm64ConditionalKind.LO => Arm64ConditionalKind.HS,
             Arm64ConditionalKind.MI => Arm64ConditionalKind.PL,
             Arm64ConditionalKind.PL => Arm64ConditionalKind.MI,
             Arm64ConditionalKind.VS => Arm64ConditionalKind.VC,
