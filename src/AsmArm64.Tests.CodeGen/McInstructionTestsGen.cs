@@ -104,7 +104,6 @@ public partial class McInstructionTestsGen
             var bytes = ((List<object>)input["bytes"]).Select(x => (int)x).ToArray();
             var options = (List<object>)(input["options"]);
 
-            
             var expected = (Dictionary<object, object>)(testCase["expected"]);
             var insns = (List<object>)expected["insns"];
             Debug.Assert(insns.Count == 1);
@@ -116,18 +115,57 @@ public partial class McInstructionTestsGen
                 continue;
             }
 
-            if (asm.Contains("msr") || asm.Contains("mrs"))
-            {
-                // specrestrict
-                // v8r
-                //Console.WriteLine($"{asm} -> {string.Join(",", options)}");
-            }
+            asm = ReplaceWithBetterAsm(asm);
 
             AddTestInstruction(normalizedName, new(asm, string.Join(", ", bytes.Select(v => $"0x{v:x2}"))));
             TestCount++;
         }
     }
 
+    /// <summary>
+    /// Replaces some ASM text with better ones as per the XML specs.
+    /// </summary>
+    private string ReplaceWithBetterAsm(string asm)
+    {
+        if (asm.StartsWith("retaasppc x"))
+        {
+            asm = asm.Replace("retaasppc", "retaasppcr");
+        }
+        else if (asm.StartsWith("retabsppc x"))
+        {
+            asm = asm.Replace("retabsppc", "retabsppcr");
+        }
+        else if (asm.StartsWith("autiasppc x"))
+        {
+            asm = asm.Replace("autiasppc", "autiasppcr");
+        }
+        else if (asm.StartsWith("autibsppc x"))
+        {
+            asm = asm.Replace("autibsppc", "autibsppcr");
+        }
+        else if (asm.StartsWith("sshll ") && asm.EndsWith("#0"))
+        {
+            asm = asm.Replace("sshll", "sxtl");
+            asm = asm.Replace(", #0", "");
+        }
+        else if (asm.StartsWith("sshll2 ") && asm.EndsWith("#0"))
+        {
+            asm = asm.Replace("sshll2", "sxtl2");
+            asm = asm.Replace(", #0", "");
+        }
+        else if (asm.StartsWith("ushll ") && asm.EndsWith("#0"))
+        {
+            asm = asm.Replace("ushll", "uxtl");
+            asm = asm.Replace(", #0", "");
+        }
+        else if (asm.StartsWith("ushll2 ") && asm.EndsWith("#0"))
+        {
+            asm = asm.Replace("ushll2", "uxtl2");
+            asm = asm.Replace(", #0", "");
+        }
+        return asm;
+    }
+    
     private void AddTestInstruction(string name, TestInstruction testInstruction)
     {
         if (!_mapFileNameToTestInstructions.TryGetValue(name, out var list))

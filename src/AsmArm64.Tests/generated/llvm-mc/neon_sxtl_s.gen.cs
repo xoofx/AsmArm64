@@ -15,11 +15,11 @@ namespace AsmArm64.Tests;
 partial class McInstructionTests
 {
     [TestMethod]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x08, 0x0f }, "sshll v0.8h, v1.8b, #0")]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x10, 0x0f }, "sshll v0.4s, v1.4h, #0")]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x20, 0x0f }, "sshll v0.2d, v1.2s, #0")]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x08, 0x4f }, "sshll2 v0.8h, v1.16b, #0")]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x10, 0x4f }, "sshll2 v0.4s, v1.8h, #0")]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x20, 0x4f }, "sshll2 v0.2d, v1.4s, #0")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x08, 0x0f }, "sxtl v0.8h, v1.8b")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x10, 0x0f }, "sxtl v0.4s, v1.4h")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x20, 0x0f }, "sxtl v0.2d, v1.2s")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x08, 0x4f }, "sxtl2 v0.8h, v1.16b")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x10, 0x4f }, "sxtl2 v0.4s, v1.8h")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x20, 0x4f }, "sxtl2 v0.2d, v1.4s")]
     public void neon_sxtl_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }

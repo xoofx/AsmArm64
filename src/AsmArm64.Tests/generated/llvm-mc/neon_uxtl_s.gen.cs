@@ -15,11 +15,11 @@ namespace AsmArm64.Tests;
 partial class McInstructionTests
 {
     [TestMethod]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x08, 0x2f }, "ushll v0.8h, v1.8b, #0")]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x10, 0x2f }, "ushll v0.4s, v1.4h, #0")]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x20, 0x2f }, "ushll v0.2d, v1.2s, #0")]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x08, 0x6f }, "ushll2 v0.8h, v1.16b, #0")]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x10, 0x6f }, "ushll2 v0.4s, v1.8h, #0")]
-    [DataRow(new byte[] { 0x20, 0xa4, 0x20, 0x6f }, "ushll2 v0.2d, v1.4s, #0")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x08, 0x2f }, "uxtl v0.8h, v1.8b")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x10, 0x2f }, "uxtl v0.4s, v1.4h")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x20, 0x2f }, "uxtl v0.2d, v1.2s")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x08, 0x6f }, "uxtl2 v0.8h, v1.16b")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x10, 0x6f }, "uxtl2 v0.4s, v1.8h")]
+    [DataRow(new byte[] { 0x20, 0xa4, 0x20, 0x6f }, "uxtl2 v0.2d, v1.4s")]
     public void neon_uxtl_s(byte[] code, string expectedAsm) => VerifyAsm(code, expectedAsm);
 }
