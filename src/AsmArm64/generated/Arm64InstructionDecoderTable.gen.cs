@@ -5710,7 +5710,7 @@ partial class Arm64InstructionDecoderTable
         // MOV_orr_32_log_imm             - MOV         Wd|WSP, #imm
         173,2,128,2,4,0,1,2,
         1,20,0,0,0,0,0,0,
-        5,1,0,1,10,12,0,0,
+        5,1,15,1,10,12,0,0,
         // MOV_orr_64_log_imm             - MOV         Xd|SP, #imm
         174,2,128,2,4,0,1,2,
         1,18,0,0,0,0,0,0,
@@ -5742,7 +5742,7 @@ partial class Arm64InstructionDecoderTable
         // MOV_movz_32_movewide           - MOV         Wd, #imm
         181,2,128,2,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        5,1,0,2,5,16,21,2,
+        5,1,20,2,5,16,21,2,
         // MOV_movz_64_movewide           - MOV         Xd, #imm
         182,2,128,2,4,0,1,2,
         1,17,0,0,0,0,0,0,

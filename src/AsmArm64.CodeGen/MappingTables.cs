@@ -153,6 +153,7 @@ static class MappingTables
         { "ORR_32_log_imm", new() { { "imm", DecodeBitMask32 } }},
         { "ORR_64_log_imm", new() { { "imm", DecodeBitMask64 } }},
 
+        { "MOV_orr_32_log_imm", new() { { "imm", DecodeBitMask32 } }},
         { "MOV_orr_64_log_imm", new() { { "imm", DecodeBitMask64 } }},
         
         { "EOR_32_log_imm", new() { { "imm", DecodeBitMask32 } }},
@@ -206,9 +207,9 @@ static class MappingTables
 
         { "PRFM_p_ldst_pos", new() { { "pimm", ValueDivideBy8 } }},
 
-        
         { "MOV_movn_32_movewide", new() { { "imm", InvertValueShiftWide32 } }},
         { "MOV_movz_64_movewide", new() { { "imm", ValueShiftWide64 } }},
+        { "MOV_movz_32_movewide", new() { { "imm", ValueShiftWide64 } }},
 
         // LSL_ubfm_32m_bitfield => UBFM  <Wd>, <Wn>, #(-<shift>  MOD  32), #(31-<shift>)
         // LSL_ubfm_64m_bitfield => UBFM  <Xd>, <Xn>, #(-<shift>  MOD  64), #(63-<shift>)

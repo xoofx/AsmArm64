@@ -101,7 +101,7 @@ internal static partial class Arm64InstructionIdDynamicDecoder
         // hw: 21:2
         var imm16 = (ushort)(rawValue >> 5);
         var hw = (rawValue >> 21) & 0x3;
-        return !(imm16 == 0 && hw != 0) && imm16 != 0xFFFF ? Arm64InstructionId.MOV_movn_32_movewide : Arm64InstructionId.MOV_movz_32_movewide;
+        return !(imm16 == 0 && hw != 0) && imm16 != 0xFFFF ? Arm64InstructionId.MOV_movn_32_movewide : Arm64InstructionId.MOVN_32_movewide;
     }
 
     private static partial Arm64InstructionId Resolve_MOVN_64_movewide(Arm64RawInstruction rawValue)
@@ -111,7 +111,7 @@ internal static partial class Arm64InstructionIdDynamicDecoder
         // hw: 21:2
         var imm16 = (ushort)(rawValue >> 5);
         var hw = (rawValue >> 21) & 0x3;
-        return !(imm16 == 0 && hw != 0) ? Arm64InstructionId.MOV_movn_64_movewide : Arm64InstructionId.MOV_movz_64_movewide;
+        return !(imm16 == 0 && hw != 0) ? Arm64InstructionId.MOV_movn_64_movewide : Arm64InstructionId.MOVN_64_movewide;
     }
 
     private static partial Arm64InstructionId Resolve_MOVZ_32_movewide(Arm64RawInstruction rawValue)
@@ -121,7 +121,7 @@ internal static partial class Arm64InstructionIdDynamicDecoder
         // hw: 21:2
         var imm16 = (ushort)(rawValue >> 5);
         var hw = (rawValue >> 21) & 0x3;
-        return !(imm16 == 0 && hw != 0) ? Arm64InstructionId.MOV_movz_32_movewide : Arm64InstructionId.MOV_movn_32_movewide;
+        return !(imm16 == 0 && hw != 0) ? Arm64InstructionId.MOV_movz_32_movewide : Arm64InstructionId.MOVZ_32_movewide;
     }
 
     private static partial Arm64InstructionId Resolve_MOVZ_64_movewide(Arm64RawInstruction rawValue)
@@ -131,7 +131,7 @@ internal static partial class Arm64InstructionIdDynamicDecoder
         // hw: 21:2
         var imm16 = (ushort)(rawValue >> 5);
         var hw = (rawValue >> 21) & 0x3;
-        return !(imm16 == 0 && hw != 0) ? Arm64InstructionId.MOV_movz_64_movewide : Arm64InstructionId.MOV_movn_64_movewide;
+        return !(imm16 == 0 && hw != 0) ? Arm64InstructionId.MOV_movz_64_movewide : Arm64InstructionId.MOVZ_64_movewide;
     }
 
     private static partial Arm64InstructionId Resolve_SBFM_32m_bitfield(Arm64RawInstruction rawValue)

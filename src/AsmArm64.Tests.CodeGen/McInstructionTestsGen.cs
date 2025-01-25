@@ -259,7 +259,10 @@ public partial class McInstructionTestsGen
         {
             asm = "bfc xzr, #10, #11"; // We have a better encoding
         }
-
+        else if (asm == "mov w3, #983055")
+        {
+            asm = "mov w3, #0xf000f"; // We use hex encoding for bitmask
+        }
         
         return asm;
     }
