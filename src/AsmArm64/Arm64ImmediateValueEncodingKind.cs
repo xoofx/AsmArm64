@@ -50,6 +50,8 @@ enum Arm64ImmediateValueEncodingKind : byte
     /// (64 - value)
     /// </summary>
     _64_Minus_Value,
+    _128_Minus_Value,
+    Value_Minus_64,
     /// <summary>
     /// lsb + width - 1
     /// </summary>

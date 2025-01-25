@@ -37,6 +37,10 @@ internal static class Arm64ImmediateValueHelper
                 return 32 - value;
             case Arm64ImmediateValueEncodingKind._64_Minus_Value:
                 return 64 - value;
+            case Arm64ImmediateValueEncodingKind.Value_Minus_64:
+                return value - 64;
+            case Arm64ImmediateValueEncodingKind._128_Minus_Value:
+                return 128 - value;
             case Arm64ImmediateValueEncodingKind.SignedFloatExp3Mantissa4:
                 return VFPExpandImm32(value);
             case Arm64ImmediateValueEncodingKind.LsbPlusWidthMinus1:

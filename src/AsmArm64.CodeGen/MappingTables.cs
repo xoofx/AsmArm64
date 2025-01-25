@@ -180,8 +180,20 @@ static class MappingTables
         { "ADDG_64_addsub_immtags", new() { { "uimm6", ValueDivideBy16 } }},
         { "SUBG_64_addsub_immtags", new() { { "uimm6", ValueDivideBy16 } }},
 
-        
 
+        { "SRSRA_asisdshf_r", new() { { "shift", _128_Minus_Value } }},
+        { "SRI_asisdshf_r", new() { { "shift", _128_Minus_Value } }},
+        { "SSRA_asisdshf_r", new() { { "shift", _128_Minus_Value } }},
+        { "SSHR_asisdshf_r", new() { { "shift", _128_Minus_Value } }},
+        { "USRA_asisdshf_r", new() { { "shift", _128_Minus_Value } }},
+
+        { "URSHR_asisdshf_r", new() { { "shift", _128_Minus_Value } }},
+        { "USHR_asisdshf_r", new() { { "shift", _128_Minus_Value } }},
+        { "URSRA_asisdshf_r", new() { { "shift", _128_Minus_Value } }},
+        { "SRSHR_asisdshf_r", new() { { "shift", _128_Minus_Value } }},
+
+        { "SLI_asisdshf_r", new() { { "shift", Value_Minus_64 } }},
+        { "SHL_asisdshf_r", new() { { "shift", Value_Minus_64 } }},
         // 
 
         // LSL_ubfm_32m_bitfield => UBFM  <Wd>, <Wn>, #(-<shift>  MOD  32), #(31-<shift>)
