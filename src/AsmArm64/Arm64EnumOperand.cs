@@ -108,7 +108,7 @@ public readonly struct Arm64EnumOperand : IArm64Operand
 
     public Arm64RangePrefetchOperationKind AsRangePrefetchOperation => !IsImmediate && EnumKind == Arm64EnumKind.RangePrefetchOperation ? (Arm64RangePrefetchOperationKind)(Value + 1) : Arm64RangePrefetchOperationKind.None;
 
-    public Arm64ProcessStateField AsProcessStateField => EnumKind == Arm64EnumKind.ProcessStateField ? (Arm64ProcessStateField)(Value + 1) : Arm64ProcessStateField.None;
+    public Arm64ProcessStateField AsProcessStateField => EnumKind == Arm64EnumKind.ProcessStateField ? (Arm64ProcessStateField)Value : Arm64ProcessStateField.None;
 
     public Arm64CodeSyncKind AsCodeSync => EnumKind == Arm64EnumKind.CodeSync ? Arm64CodeSyncKind.CSYNC : Arm64CodeSyncKind.None;
 
