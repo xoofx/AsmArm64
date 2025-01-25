@@ -114,6 +114,8 @@ public readonly struct Arm64EnumOperand : IArm64Operand
 
     public Arm64DataSyncKind AsDataSync => EnumKind == Arm64EnumKind.DataSync ? Arm64DataSyncKind.DSYNC : Arm64DataSyncKind.None;
 
+    public Arm64RestrictionByContextKind AsRestrictionByContext => EnumKind == Arm64EnumKind.RestrictionByContext ? Arm64RestrictionByContextKind.RCTX : Arm64RestrictionByContextKind.None;
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -176,6 +178,9 @@ public readonly struct Arm64EnumOperand : IArm64Operand
                     break;
                 case Arm64EnumKind.DataSync:
                     result = Enum.TryFormat(AsDataSync, destination, out charsWritten);
+                    break;
+                case Arm64EnumKind.RestrictionByContext:
+                    result = Enum.TryFormat(AsRestrictionByContext, destination, out charsWritten);
                     break;
                 default:
                     result = false;

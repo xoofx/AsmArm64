@@ -15,3 +15,11 @@ public enum Arm64DataSyncKind
     None,
     DSYNC
 }
+
+
+
+public enum Arm64RestrictionByContextKind
+{
+    None,
+    RCTX
+}
