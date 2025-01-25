@@ -85,13 +85,25 @@ static class Arm64IndexerHelper
                 return true;
             }
             // LUTI2_asimdtbl_l5             : LUTI2       Vd.16B, {Vn.16B}, Vm[index] <- Operand: Vm[index]
-            // LUTI4_asimdtbl_l5             : LUTI4       Vd.16B, {Vn.16B}, Vm[index] <- Operand: Vm[index]
             // LUTI4_asimdtbl_l7             : LUTI4       Vd.8H, {Vn1.8H, Vn2.8H}, Vm[index] <- Operand: Vm[index]
             case 5:
             {
                 var bitValue = ((rawValue >> 13) & 0x3);
                 index = (int)bitValue;
                 return true;
+            }
+            // LUTI4_asimdtbl_l5             : LUTI4       Vd.16B, {Vn.16B}, Vm[index] <- Operand: Vm[index]
+            case 6:
+            {
+                var bitValue = ((rawValue >> 13) & 0x3);
+                var bitsToTest = (bitValue & 0x3);
+                if ((bitsToTest & 0x1) == 1)
+                {
+                    var extractedValue = ((bitValue >> 1) & 0x1);
+                    index = (int)extractedValue;
+                    return true;
+                }
+                break;
             }
             // LD1_asisdlso_s1_1s            : LD1         {Vt.S}[index], [Xn|SP] <- Operand: {Vt.S}[index]
             // LD1_asisdlsop_s1_i1s          : LD1         {Vt.S}[index], [Xn|SP], #4 <- Operand: {Vt.S}[index]
@@ -117,7 +129,7 @@ static class Arm64IndexerHelper
             // ST4_asisdlso_s4_4s            : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP] <- Operand: {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index]
             // ST4_asisdlsop_s4_i4s          : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16 <- Operand: {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index]
             // ST4_asisdlsop_sx4_r4s         : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index]
-            case 6:
+            case 7:
             {
                 var bitValue = ((rawValue >> 12) & 0x1) | ((rawValue >> 29) & 0x2);
                 index = (int)bitValue;
@@ -138,14 +150,14 @@ static class Arm64IndexerHelper
             // FMUL_asisdelem_rh_h           : FMUL        Hd, Hn, Vm.H[index] <- Operand: Vm.H[index]
             // FMULX_asimdelem_rh_h          : FMULX       Vd.T, Vn.T, Vm.H[index] <- Operand: Vm.H[index]
             // FMULX_asisdelem_rh_h          : FMULX       Hd, Hn, Vm.H[index] <- Operand: Vm.H[index]
-            case 7:
+            case 8:
             {
                 var bitValue = ((rawValue >> 20) & 0x3) | ((rawValue >> 9) & 0x4);
                 index = (int)bitValue;
                 return true;
             }
             // LUTI2_asimdtbl_l6             : LUTI2       Vd.8H, {Vn.8H}, Vm[index] <- Operand: Vm[index]
-            case 8:
+            case 9:
             {
                 var bitValue = ((rawValue >> 12) & 0x7);
                 index = (int)bitValue;
@@ -159,7 +171,7 @@ static class Arm64IndexerHelper
             // FMUL_asisdelem_r_sd           : FMUL        Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // FMULX_asimdelem_r_sd          : FMULX       Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // FMULX_asisdelem_r_sd          : FMULX       Vd, Vn, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            case 9:
+            case 10:
             {
                 var bitValue = ((rawValue >> 11) & 0x1) | ((rawValue >> 20) & 0x6);
                 var bitsToTest = ((bitValue >> 1) & 0x3);
@@ -177,8 +189,20 @@ static class Arm64IndexerHelper
                 }
                 break;
             }
+            // FMLALB_asimdelem_h            : FMLALB      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLBB_asimdelem_j          : FMLALLBB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLBT_asimdelem_j          : FMLALLBT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLTB_asimdelem_j          : FMLALLTB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLTT_asimdelem_j          : FMLALLTT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALT_asimdelem_h            : FMLALT      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            case 11:
+            {
+                var bitValue = ((rawValue >> 19) & 0x7) | ((rawValue >> 8) & 0x8);
+                index = (int)bitValue;
+                return true;
+            }
             // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vm.Ts[index]
-            case 10:
+            case 12:
             {
                 var bitValue = ((rawValue >> 21) & 0x1) | ((rawValue >> 10) & 0x2) | ((rawValue >> 20) & 0xC);
                 var bitsToTest = ((bitValue >> 2) & 0x3);
@@ -247,21 +271,21 @@ static class Arm64IndexerHelper
             // ST4_asisdlsop_bx4_r4b         : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index]
             // ST4_asisdlsop_h4_i4h          : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8 <- Operand: {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index]
             // ST4_asisdlsop_hx4_r4h         : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index]
-            case 11:
+            case 13:
             {
                 var bitValue = ((rawValue >> 10) & 0x7) | ((rawValue >> 27) & 0x8);
                 index = (int)bitValue;
                 return true;
             }
             // UMOV_asimdins_x_x             : UMOV        Xd, Vn.D[index] <- Operand: Vn.D[index]
-            case 12:
+            case 14:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
                 index = (int)bitValue;
                 return true;
             }
             // MOV_umov_asimdins_x_x         : MOV         Xd, Vn.D[index] <- Operand: Vn.D[index]
-            case 13:
+            case 15:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
@@ -274,7 +298,7 @@ static class Arm64IndexerHelper
                 break;
             }
             // MOV_umov_asimdins_w_w         : MOV         Wd, Vn.S[index] <- Operand: Vn.S[index]
-            case 14:
+            case 16:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
@@ -293,7 +317,7 @@ static class Arm64IndexerHelper
             // MOV_dup_asisdone_only         : MOV         Vd, Vn.T[index] <- Operand: Vn.T[index]
             // MOV_ins_asimdins_ir_r         : MOV         Vd.Ts[index], Rn <- Operand: Vd.Ts[index]
             // MOV_ins_asimdins_iv_v         : MOV         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vd.Ts[index1]
-            case 15:
+            case 17:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
@@ -325,7 +349,7 @@ static class Arm64IndexerHelper
             }
             // SMOV_asimdins_x_x             : SMOV        Xd, Vn.Ts[index] <- Operand: Vn.Ts[index]
             // UMOV_asimdins_w_w             : UMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
-            case 16:
+            case 18:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
@@ -350,7 +374,7 @@ static class Arm64IndexerHelper
                 break;
             }
             // SMOV_asimdins_w_w             : SMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
-            case 17:
+            case 19:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
@@ -400,7 +424,7 @@ static class Arm64IndexerHelper
             // UMLSL2_asimdelem_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMULL2_asimdelem_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            case 18:
+            case 20:
             {
                 var bitValue = ((rawValue >> 20) & 0x3) | ((rawValue >> 9) & 0x4) | ((rawValue >> 19) & 0x18);
                 var bitsToTest = ((bitValue >> 3) & 0x3);
@@ -421,21 +445,9 @@ static class Arm64IndexerHelper
                 }
                 break;
             }
-            // FMLALB_asimdelem_h            : FMLALB      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            // FMLALLBB_asimdelem_j          : FMLALLBB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            // FMLALLBT_asimdelem_j          : FMLALLBT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            // FMLALLTB_asimdelem_j          : FMLALLTB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            // FMLALLTT_asimdelem_j          : FMLALLTT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            // FMLALT_asimdelem_h            : FMLALT      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
-            case 19:
-            {
-                var bitValue = ((rawValue >> 16) & 0x3F) | ((rawValue >> 5) & 0x40);
-                index = (int)bitValue;
-                return true;
-            }
             // INS_asimdins_iv_v             : INS         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vn.Ts[index2]
             // MOV_ins_asimdins_iv_v         : MOV         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vn.Ts[index2]
-            case 20:
+            case 21:
             {
                 var bitValue = ((rawValue >> 11) & 0xF) | ((rawValue >> 12) & 0x1F0);
                 var bitsToTest = ((bitValue >> 4) & 0x1F);

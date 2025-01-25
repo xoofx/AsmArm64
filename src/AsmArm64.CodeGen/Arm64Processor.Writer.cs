@@ -811,45 +811,54 @@ partial class Arm64Processor
 
     private void WriteSelectorCode(CodeWriter w, EncodingSymbolSelector selector, List<(string ParameterType, string ParameterName)> parameters, Action<CodeWriter, EncodingSymbolSelector, EncodingBitValue> writeSelector)
     {
-        w.WriteLine(ExtractBitRangeString(selector.BitRanges, "bitValue", "bitsToTest"));
+        var outputSelectorValue = selector.BitValues.Count == 0 ? "extractedValue" : "bitsToTest";
+        w.WriteLine(ExtractBitRangeString(selector.BitRanges, "bitValue", outputSelectorValue));
 
         if (selector.Kind == EncodingSymbolSelectorKind.Regular)
         {
-            w.WriteLine($"switch (bitsToTest)");
-            w.OpenBraceBlock();
+            if (selector.BitValues.Count == 0)
             {
-                foreach (var bitValue in selector.BitValues)
+                w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType}){outputSelectorValue};");
+                w.WriteLine("return true;");
+            }
+            else
+            {
+                w.WriteLine($"switch (bitsToTest)");
+                w.OpenBraceBlock();
                 {
-                    w.WriteLine($"case {bitValue.BitSelectorValue}:");
-                    w.OpenBraceBlock();
-                    if (bitValue.Kind == EncodingBitValueKind.BitExtract)
+                    foreach (var bitValue in selector.BitValues)
                     {
-                        var bitRanges = bitValue.BitItems.Select(x => x.Range).ToList();
-                        var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
-                        Debug.Assert(parameters.Count == 1);
-                        w.WriteLine(bitValueExtractString);
-                                            
-                        if (bitValue.Addend != 0)
+                        w.WriteLine($"case {bitValue.BitSelectorValue}:");
+                        w.OpenBraceBlock();
+                        if (bitValue.Kind == EncodingBitValueKind.BitExtract)
                         {
-                            w.WriteLine(bitValue.HasNegativeExtract
-                                ? $"{parameters[0].ParameterName} = {bitValue.Addend} - ({parameters[0].ParameterType})extractedValue;"
-                                : $"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue - {bitValue.Addend};");
+                            var bitRanges = bitValue.BitItems.Select(x => x.Range).ToList();
+                            var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
+                            Debug.Assert(parameters.Count == 1);
+                            w.WriteLine(bitValueExtractString);
+
+                            if (bitValue.Addend != 0)
+                            {
+                                w.WriteLine(bitValue.HasNegativeExtract
+                                    ? $"{parameters[0].ParameterName} = {bitValue.Addend} - ({parameters[0].ParameterType})extractedValue;"
+                                    : $"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue - {bitValue.Addend};");
+                            }
+                            else
+                            {
+                                w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
+                            }
                         }
                         else
                         {
-                            w.WriteLine($"{parameters[0].ParameterName} = ({parameters[0].ParameterType})extractedValue;");
+                            writeSelector(w, selector, bitValue);
                         }
+                        w.WriteLine("return true;");
+                        w.CloseBraceBlock();
                     }
-                    else
-                    {
-                        writeSelector(w, selector, bitValue);
-                    }
-                    w.WriteLine("return true;");
-                    w.CloseBraceBlock();
                 }
+                w.CloseBraceBlock();
+                w.WriteLine("break;");
             }
-            w.CloseBraceBlock();
-            w.WriteLine("break;");
         }
         else
         {

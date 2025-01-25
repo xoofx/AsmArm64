@@ -107,6 +107,7 @@ partial class Arm64Extensions
             Arm64RegisterKind.SP => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterSP>(register).ToText(upper),
             Arm64RegisterKind.WSP => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterWSP>(register).ToText(upper),
             Arm64RegisterKind.V => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV>(register).ToText(upper),
+            Arm64RegisterKind.VIndexed => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV.Indexed>(register).ToString(upper ? "H" : "L", null),
             Arm64RegisterKind.VTyped => register.VKind switch
             {
                 Arm64RegisterVKind.B => Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterV_B>(register).ToText(upper),

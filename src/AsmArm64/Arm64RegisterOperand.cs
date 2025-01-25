@@ -133,6 +133,10 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
                             : elementIndexerId != 0 ? Arm64RegisterKind.VPackedIndexed : Arm64RegisterKind.VPacked;
                     }
                 }
+                else
+                {
+                    registerKind = elementIndexerId != 0 ? Arm64RegisterKind.VIndexed : Arm64RegisterKind.V;
+                }
                 break;
             case Arm64RegisterEncodingKind.DynamicXOrW:
             case Arm64RegisterEncodingKind.DynamicVScalar:

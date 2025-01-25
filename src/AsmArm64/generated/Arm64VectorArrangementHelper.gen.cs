@@ -2439,10 +2439,6 @@ static class Arm64VectorArrangementHelper
             }
             // BFMLALB_asimdelem_f           : BFMLALB     Vd.4S, Vn.8H, Vm.H[index] <- Operand: Vm.H[index]
             // BFMLALT_asimdelem_f           : BFMLALT     Vd.4S, Vn.8H, Vm.H[index] <- Operand: Vm.H[index]
-            // FMAXNMV_asimdall_only_h       : FMAXNMV     Vd, Vn.T <- Operand: Vd
-            // FMAXV_asimdall_only_h         : FMAXV       Vd, Vn.T <- Operand: Vd
-            // FMINNMV_asimdall_only_h       : FMINNMV     Vd, Vn.T <- Operand: Vd
-            // FMINV_asimdall_only_h         : FMINV       Vd, Vn.T <- Operand: Vd
             // FMLA_asimdelem_rh_h           : FMLA        Vd.T, Vn.T, Vm.H[index] <- Operand: Vm.H[index]
             // FMLA_asisdelem_rh_h           : FMLA        Hd, Hn, Vm.H[index] <- Operand: Vm.H[index]
             // FMLAL_asimdelem_lh            : FMLAL       Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vm.H[index]

@@ -23,6 +23,19 @@ static class Arm64RegisterIndexHelper
     {
         switch (mapIndex)
         {
+            // FMLALB_asimdelem_h            : FMLALB      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLBB_asimdelem_j          : FMLALLBB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLBT_asimdelem_j          : FMLALLBT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLTB_asimdelem_j          : FMLALLTB    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALLTT_asimdelem_j          : FMLALLTT    Vd.4S, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            // FMLALT_asimdelem_h            : FMLALT      Vd.8H, Vn.16B, Vm.B[index] <- Operand: Vm.B[index]
+            case 1:
+            {
+                var bitValue = ((rawValue >> 16) & 0xF);
+                var extractedValue = (bitValue & 0x7);
+                regIndex = (int)extractedValue;
+                return true;
+            }
             // MLA_asimdelem_r               : MLA         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // MLS_asimdelem_r               : MLS         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // MUL_asimdelem_r               : MUL         Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vm.Ts[index]
@@ -55,7 +68,7 @@ static class Arm64RegisterIndexHelper
             // UMLSL2_asimdelem_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMULL2_asimdelem_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            case 1:
+            case 2:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F) | ((rawValue >> 17) & 0x60);
                 var bitsToTest = ((bitValue >> 5) & 0x3);

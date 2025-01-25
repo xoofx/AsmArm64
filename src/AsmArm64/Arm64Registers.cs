@@ -43,6 +43,10 @@ public enum Arm64RegisterKind : byte
     /// </summary>
     V,
     /// <summary>
+    /// Vector Indexed register (Vn[0]).
+    /// </summary>
+    VIndexed,
+    /// <summary>
     /// Vector Typed register (Vn.8B, Vn.16B, Vn.4H, Vn.8H, Vn.2S, Vn.4S, Vn.2D).
     /// </summary>
     VPacked,
@@ -771,6 +775,11 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     /// <inheritdoc />
     public int Index => (byte)_value;
 
+    /// <summary>
+    /// Gets the indexed element of this vector typed register.
+    /// </summary>
+    public Indexed this[int elementIndex] => new(Index, elementIndex);
+
     /// <inheritdoc />
     public Arm64RegisterVKind VKind => Arm64RegisterVKind.Default;
 
@@ -1041,6 +1050,94 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     /// Gets the V31 register.
     /// </summary>
     public static Arm64RegisterV V31 => new(31);
+
+    /// <summary>
+    /// Represents an ARM64 a vector indexed with (V.V arrangement).
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    {
+        private readonly uint _value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal Indexed(int registerIndex, int elementIndex) => _value = ((uint)elementIndex << 28) | ((uint)Arm64RegisterKind.VIndexed << 8) | (uint)registerIndex;
+
+        /// <inheritdoc />
+        public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+        /// <inheritdoc />
+        public int Index => (byte)_value;
+
+        /// <inheritdoc />
+        public Arm64RegisterVKind VKind => (Arm64RegisterVKind)(_value >> 16);
+
+        /// <inheritdoc />
+        public int ElementIndex => (byte)(_value >> 28);
+
+        /// <summary>
+        /// Gets the base register of this indexed vector register.
+        /// </summary>
+        public Arm64RegisterV BaseRegister => new(Index);
+
+        /// <inheritdoc />
+        public override string ToString() => ToString(null, null);
+
+        /// <inheritdoc />
+        [SkipLocalsInit]
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            Span<char> localText = stackalloc char[16];
+            return !TryFormat(localText, out var charsWritten, format, formatProvider) ? string.Empty : localText.Slice(0, charsWritten).ToString();
+        }
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        {
+            if (!BaseRegister.TryFormat(destination, out var tempWritten, format, provider))
+            {
+                charsWritten = 0;
+                return false;
+            }
+            // [1] to [16] (3 to 4 characters)
+            if (destination.Length < tempWritten + 4)
+            {
+                charsWritten = 0;
+                return false;
+            }
+            destination[tempWritten] = '[';
+            if (ElementIndex >= 10)
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex / 10);
+                destination[tempWritten + 2] = (char)('0' + ElementIndex % 10);
+                charsWritten = tempWritten + 3;
+            }
+            else
+            {
+                destination[tempWritten + 1] = (char)('0' + ElementIndex);
+                charsWritten = tempWritten + 2;
+            }
+            destination[charsWritten] = ']';
+
+            charsWritten++;
+            return true;
+        }
+
+        /// <summary>
+        /// Converts this register to an any register.
+        /// </summary>
+        public static implicit operator Arm64RegisterAny(Indexed register) => Unsafe.BitCast<Indexed, Arm64RegisterAny>(register);
+
+        /// <summary>
+        /// Converts an any register to a V.V register.
+        /// </summary>
+        public static explicit operator Indexed(Arm64RegisterAny register)
+        {
+            if (register.Kind != Arm64RegisterKind.VIndexed || register.VKind != Arm64RegisterVKind.Default)
+            {
+                throw new InvalidCastException($"Invalid cast from {register.Kind}/{register.VKind} to Arm64RegisterV.Indexed");
+            }
+            return Unsafe.BitCast<Arm64RegisterAny, Indexed>(register);
+        }
+    }
 }
 /// <summary>
 /// Represents an ARM64 a vector typed with 8-bit vector register (V.B arrangement).
