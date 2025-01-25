@@ -130,6 +130,11 @@ public partial class McInstructionTestsGen
                 continue;
             }
 
+            if (asm.EndsWith('>'))
+            {
+
+            }
+
             asm = ReplaceWithBetterAsm(asm);
 
             AddTestInstruction(normalizedName, new(asm, string.Join(", ", bytes.Select(v => $"0x{v:x2}"))));
@@ -190,9 +195,9 @@ public partial class McInstructionTestsGen
         {
             asm = "tcancel #4660"; // We don't encode in hex for the display
         }
-        else if ((asm.StartsWith("dcps") || asm.StartsWith("smc")) && asm.Contains("#0x"))
+        else if ((asm.StartsWith("dcps") || asm.StartsWith("brk") || asm.StartsWith("hvc") || asm.StartsWith("hlt") || asm.StartsWith("svc") || asm.StartsWith("smc")) && RegexHex.IsMatch(asm))
         {
-            asm = asm.Replace("#0x", "#"); // We don't encode in hex for the display
+            asm = RegexHex.Replace(asm, m => $"{Convert.ToUInt32(m.Value, 16)}"); // We don't encode in hex for the display
         }
         else if (asm == "ldrab x0, [x1, #0]!")
         {
@@ -226,14 +231,41 @@ public partial class McInstructionTestsGen
         {
             asm = asm.Replace("-6148914691236517206", "0xaaaaaaaaaaaaaaaa"); // We encode in hex
         }
-        else if (asm == "brk #0xc")
+        else if (asm == "bfi x4, xzr, #1, #6")
         {
-            asm = "brk #12"; // We don't encode in hex for the display
+            asm = "bfc x4, #1, #6"; // We have a better encoding
+        }
+        else if (asm == "bfi x0, xzr, #5, #9")
+        {
+            asm = "bfc x0, #5, #9"; // We have a better encoding
+        }
+        else if (asm == "bfxil w3, wzr, #0, #32")
+        {
+            asm = "bfc w3, #0, #32"; // We have a better encoding
+        }
+        else if (asm == "bfi x4, xzr, #1, #6")
+        {
+            asm = "bfc x4, #1, #6"; // We have a better encoding
+        }
+        else if (asm == "bfi wzr, wzr, #31, #1")
+        {
+            asm = "bfc wzr, #31, #1"; // We have a better encoding
+        }
+        else if (asm == "bfi xzr, xzr, #63, #1")
+        {
+            asm = "bfc xzr, #63, #1"; // We have a better encoding
+        }
+        else if (asm == "bfi xzr, xzr, #10, #11")
+        {
+            asm = "bfc xzr, #10, #11"; // We have a better encoding
         }
 
+        
         return asm;
     }
-    
+
+    private static readonly Regex RegexHex = new(@"0x[0-9a-fA-F]+");
+
     private void AddTestInstruction(string name, TestInstruction testInstruction)
     {
         if (!_mapFileNameToTestInstructions.TryGetValue(name, out var list))

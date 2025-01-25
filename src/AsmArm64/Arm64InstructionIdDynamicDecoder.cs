@@ -145,7 +145,7 @@ internal static partial class Arm64InstructionIdDynamicDecoder
             return Arm64InstructionId.SBFIZ_sbfm_32m_bitfield;
         }
         var sf = (rawValue >> 31) & 1;
-        var opc = (rawValue >> 29) & 3;
+        var opc = (rawValue >> 30) & 1;
         return BFXPreferred(sf, opc, imms, immr) ? Arm64InstructionId.SBFX_sbfm_32m_bitfield : Arm64InstructionId.SBFM_32m_bitfield;
     }
 
@@ -160,7 +160,7 @@ internal static partial class Arm64InstructionIdDynamicDecoder
             return Arm64InstructionId.SBFIZ_sbfm_64m_bitfield;
         }
         var sf = (rawValue >> 31) & 1;
-        var opc = (rawValue >> 29) & 3;
+        var opc = (rawValue >> 30) & 1;
         return BFXPreferred(sf, opc, imms, immr) ? Arm64InstructionId.SBFX_sbfm_64m_bitfield : Arm64InstructionId.SBFM_64m_bitfield;
     }
 
@@ -182,7 +182,7 @@ internal static partial class Arm64InstructionIdDynamicDecoder
         }
 
         var sf = (rawValue >> 31) & 1;
-        var opc = (rawValue >> 29) & 3;
+        var opc = (rawValue >> 30) & 1;
         return BFXPreferred(sf, opc, imms, immr) ? Arm64InstructionId.UBFX_ubfm_32m_bitfield : Arm64InstructionId.UBFM_32m_bitfield;
     }
 
@@ -204,7 +204,7 @@ internal static partial class Arm64InstructionIdDynamicDecoder
         }
 
         var sf = (rawValue >> 31) & 1;
-        var opc = (rawValue >> 29) & 3;
+        var opc = (rawValue >> 30) & 1;
         return BFXPreferred(sf, opc, imms, immr) ? Arm64InstructionId.UBFX_ubfm_64m_bitfield : Arm64InstructionId.UBFM_64m_bitfield;
     }
 
@@ -233,7 +233,7 @@ internal static partial class Arm64InstructionIdDynamicDecoder
         }
         // if imms == sf:'11111' then
         //     return FALSE;
-        if (imms == (byte)((byte)(sf << 5) | (byte)0x1F))
+        if (imms == (byte)((byte)(sf << 5) | (byte)0b11111))
         {
             return false;
         }
@@ -244,14 +244,14 @@ internal static partial class Arm64InstructionIdDynamicDecoder
             //     // must not match 32-bit UXT[BH] or SXT[BH]
             //     if sf == '0' &amp;&amp; imms IN {'000111', '001111'} then
             //         return FALSE;
-            if (sf == 0 && (imms == 7 || imms == 15))
+            if (sf == 0 && (imms == 0b111 || imms == 0b1111))
             {
                 return false;
             }
             //     // must not match 64-bit SXT[BHW]
             //     if sf:uns == '10' &amp;&amp; imms IN {'000111', '001111', '011111'} then
             //         return FALSE;
-            if (sf == 1 && uns == 0 && (imms == 7 || imms == 15 || imms == 31))
+            if (sf == 1 && uns == 0 && (imms == 0b111 || imms == 0b1111 || imms == 0b11111))
             {
                 return false;
             }
