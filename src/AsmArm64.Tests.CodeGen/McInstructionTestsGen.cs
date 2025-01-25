@@ -226,6 +226,10 @@ public partial class McInstructionTestsGen
         {
             asm = asm.Replace("-6148914691236517206", "0xaaaaaaaaaaaaaaaa"); // We encode in hex
         }
+        else if (asm == "brk #0xc")
+        {
+            asm = "brk #12"; // We don't encode in hex for the display
+        }
 
         return asm;
     }

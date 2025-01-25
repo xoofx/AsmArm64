@@ -662,6 +662,14 @@ internal sealed class InstructionProcessor
                 var extendText = symbol0.Selector.BitValues[indexOfLSL].Text;
                 Debug.Assert(extendText == "LSL|UXTW" || extendText == "LSL|UXTX");
                 extend.Is64Bit = extendText == "LSL|UXTX";
+                if (instruction.Id == "ADD_32_addsub_ext" || instruction.Id == "ADD_64_addsub_ext" || instruction.Id == "SUB_32_addsub_ext" || instruction.Id == "SUB_64_addsub_ext")
+                {
+                    extend.EncodingKind = Arm64ExtendEncodingKind.PreferLSLIfRdOrRnIs11111;
+                }
+                else
+                {
+                    extend.EncodingKind = Arm64ExtendEncodingKind.PreferLSLIfRnIs11111;
+                }
                 return extend;
             }
             else if (name0 == "shift")

@@ -14,22 +14,42 @@ public readonly struct Arm64ExtendOperand : IArm64Operand
     {
         // buffer[1] = (byte)ExtendEncoding.ToSmallEncoding();
         // buffer[2] = (byte)AmountEncoding.ToSmallEncoding();
-        // buffer[3] = (byte)(Is64Bit ? 1 : 0);
+        // buffer[3] = (byte)((byte)EncodingKind | (byte)(Is64Bit ? 0x80 : 0));
         var descriptor = operand.Descriptor;
         var rawValue = operand.RawValue;
 
-        bool is64Bit = ((descriptor >> 24) & 1) != 0;
+        var b3 = (byte)(descriptor >> 24);
+        bool is64Bit = (b3 & 0x80) != 0;
+        var encodingKind = (Arm64ExtendEncodingKind)(b3 & 0x7F);
 
         var option = Arm64DecodingHelper.GetSmallBitRange((byte)(descriptor >> 8), rawValue);
-        // if is64Bit and option == 0b011 && Rd or Rn == 31 => LSL
-        // if is32Bit and option == 0b010 && Rd or Rn == 31 => LSL
-        if (((is64Bit && option == 0b011) || option == 0b010) && ((rawValue & 0b11111) == 0b11111 || ((rawValue >> 5) & 0b11111) == 0b11111))
-         {
-            ExtendKind = Arm64ExtendKind.LSL;
+        var isRn31 = ((rawValue >> 5) & 0b11111) == 0b11111;
+        var isPotentialLSL = ((is64Bit && option == 0b011) || (!is64Bit && option == 0b010));
+
+        //Debug.Assert(encodingKind == Arm64ExtendEncodingKind.PreferLSLIfRdOrRnIs11111);
+
+        if (encodingKind == Arm64ExtendEncodingKind.PreferLSLIfRnIs11111)
+        {
+            if (isPotentialLSL && isRn31)
+            {
+                ExtendKind = Arm64ExtendKind.LSL;
+            }
+            else
+            {
+                ExtendKind = (Arm64ExtendKind)(option + 1);
+            }
         }
         else
         {
-            ExtendKind = (Arm64ExtendKind)(option + 1);
+            var isRd31 = (rawValue & 0b11111) == 0b11111;
+            if (isPotentialLSL && (isRn31 || isRd31))
+            {
+                ExtendKind = Arm64ExtendKind.LSL;
+            }
+            else
+            {
+                ExtendKind = (Arm64ExtendKind)(option + 1);
+            }
         }
 
         Amount = Arm64DecodingHelper.GetSmallBitRange((byte)(descriptor >> 16), rawValue);
