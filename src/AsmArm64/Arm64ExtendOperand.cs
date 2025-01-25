@@ -23,8 +23,8 @@ public readonly struct Arm64ExtendOperand : IArm64Operand
         var option = Arm64DecodingHelper.GetSmallBitRange((byte)(descriptor >> 8), rawValue);
         // if is64Bit and option == 0b011 && Rd or Rn == 31 => LSL
         // if is32Bit and option == 0b010 && Rd or Rn == 31 => LSL
-        if (((is64Bit && option == 0b011) || option == 0b010) && (rawValue & 0b11111) == 0b11111 || ((rawValue >> 5) & 0b11111) == 0b11111)
-        {
+        if (((is64Bit && option == 0b011) || option == 0b010) && ((rawValue & 0b11111) == 0b11111 || ((rawValue >> 5) & 0b11111) == 0b11111))
+         {
             ExtendKind = Arm64ExtendKind.LSL;
         }
         else
