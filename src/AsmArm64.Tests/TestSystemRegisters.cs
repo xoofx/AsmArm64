@@ -21,7 +21,7 @@ public class TestSystemRegisters
 
         {
             Arm64SystemRegister register = Arm64SystemRegisterKnownId.ZVA;
-            Assert.AreEqual("ZVA", register.ToString());
+            Assert.AreEqual("zva", register.ToString());
             Assert.AreEqual("S1_3_C7_C4_1", register.ToString("G"));
             Assert.AreEqual(Arm64SystemRegisterKind.DC, register.Kind);
             Assert.AreEqual(Arm64SystemRegisterKnownId.ZVA, register.Id);
