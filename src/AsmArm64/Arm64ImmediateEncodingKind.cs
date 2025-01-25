@@ -30,11 +30,7 @@ enum Arm64ImmediateEncodingKind : byte
     /// </summary>
     FixedFloatZero = 4,
     /// <summary>
-    /// 64-bit immediate 'aaaaaaaabbbbbbbbccccccccddddddddeeeeeeeeffffffffgggggggghhhhhhhh'
-    /// </summary>
-    Imm64 = 5,
-    /// <summary>
     /// Option for ISB instruction
     /// </summary>
-    IsbOption = 6,
+    IsbOption = 5,
 }

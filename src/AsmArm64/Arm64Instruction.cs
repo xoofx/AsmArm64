@@ -181,9 +181,8 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
                     }
                 }
             }
-            else
+            else if (kind == TrieTableKind.Hash)
             {
-                Debug.Assert(kind == TrieTableKind.Hash);
                 var hashMultiplier = Unsafe.As<byte, ulong>(ref Unsafe.Add(ref buffer, offset));
                 offset += sizeof(ulong);
                 var index = (int)(((uint)(key >> shift) * hashMultiplier) % arrayLength);
@@ -194,6 +193,20 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
                     offset = keyEntryIndex.Index;
                     if (offset < 0) goto return_offset;
                     if (offset > 0) goto nextHeader;
+                }
+            }
+            else if (kind == TrieTableKind.SmallArrayWithNotBitMask)
+            {
+                for (int i = 0; i < arrayLength; i++)
+                {
+                    ref var keyEntryIndex = ref Unsafe.As<byte, KeyEntryIndexWithNotBitMask>(ref Unsafe.Add(ref buffer, offset + i * sizeof(KeyEntryIndexWithNotBitMask)));
+                    if (keyEntryIndex.Key == key && (keyEntryIndex.NotBitMask == 0 || (rawInstruction & keyEntryIndex.NotBitMask) != keyEntryIndex.NotBitValue))
+                    {
+                        offset = keyEntryIndex.Index;
+                        if (offset < 0) goto return_offset;
+                        if (offset > 0) goto nextHeader;
+                        break;
+                    }
                 }
             }
 
@@ -267,11 +280,14 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
     }
 
     private readonly record struct KeyEntryIndex(uint Key, EntryIndex Index);
-    
+
+    private readonly record struct KeyEntryIndexWithNotBitMask(uint Key, EntryIndex Index, uint NotBitMask, uint NotBitValue);
+
     enum TrieTableKind : byte
     {
         Hash = 0,
         SmallArray = 1,
-        Terminal = 2
+        Terminal = 2,
+        SmallArrayWithNotBitMask = 3,
     }
 }

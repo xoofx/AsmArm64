@@ -59,7 +59,6 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
             }
             case Arm64ImmediateEncodingKind.Regular:
             case Arm64ImmediateEncodingKind.IsbOption:
-            case Arm64ImmediateEncodingKind.Imm64:
             {
                 // buffer[2] = (byte)((byte)ValueEncodingKind | (byte)(IsSigned ? 0x80 : 0x00));
                 // if (ImmediateKind == Arm64ImmediateEncodingKind.BitMapExtract)
@@ -102,8 +101,8 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
             }
 
             Value = Arm64ImmediateValueHelper.DecodeValue(valueEncodingKind, (int)Value);
-            _displayAsHex = valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask32 || valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64;
-            if (valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64)
+            _displayAsHex = valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask32 || valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64 || valueEncodingKind == Arm64ImmediateValueEncodingKind.ValueImm64;
+            if (valueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64 || valueEncodingKind == Arm64ImmediateValueEncodingKind.ValueImm64)
             {
                 _is32 = false;
             }

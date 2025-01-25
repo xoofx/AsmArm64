@@ -83,6 +83,13 @@ class Instruction : IJsonOnDeserialized
     public uint BitfieldValue { get; set; }
 
     [JsonConverter(typeof(JsonUIntToHexConverter))]
+    public uint NotBitfieldMask { get; set; }
+
+    [JsonConverter(typeof(JsonUIntToHexConverter))]
+    public uint NotBitfieldValue { get; set; }
+
+
+    [JsonConverter(typeof(JsonUIntToHexConverter))]
     public uint BitfieldValueForTest { get; set; }
 
     public bool IsBitFieldValueTestable { get; set; } = true;
@@ -148,10 +155,11 @@ class Instruction : IJsonOnDeserialized
         foreach (var bitfieldInfo in BitRanges)
         {
             var fieldSets = bitfieldInfo.BitFieldSet;
+            var lowBit = bitfieldInfo.HiBit - (bitfieldInfo.Width - 1);
 
             if (bitfieldInfo.Condition == BitRangeCondition.AllNonZero)
             {
-                BitfieldValueForTest |= 1U << bitfieldInfo.HiBit - (bitfieldInfo.Width - 1);
+                BitfieldValueForTest |= 1U << lowBit;
             }
 
             var mask = 0u;
@@ -173,8 +181,33 @@ class Instruction : IJsonOnDeserialized
                 }
             }
 
-            BitfieldMask |= mask << bitfieldInfo.HiBit - (bitfieldInfo.Width - 1);
-            BitfieldValue |= value << bitfieldInfo.HiBit - (bitfieldInfo.Width - 1);
+            BitfieldMask |= mask << lowBit;
+            BitfieldValue |= value << lowBit;
+
+            if (bitfieldInfo.Condition != BitRangeCondition.None)
+            {
+                mask = (1U << (bitfieldInfo.Width + 1)) - 1;
+                switch (bitfieldInfo.Condition)
+                {
+                    case BitRangeCondition.AllNonZero:
+                        NotBitfieldMask |= mask << lowBit;
+                        break;
+                    case BitRangeCondition.AllNonOne:
+                        NotBitfieldMask |= mask << lowBit;
+                        NotBitfieldValue |= mask << lowBit;
+                        break;
+                    case BitRangeCondition.AllNon111x:
+                        NotBitfieldMask |= 0b1110U << lowBit;
+                        NotBitfieldValue |= 0b1110U << bitfieldInfo.HiBit - (bitfieldInfo.Width - 1);
+                        break;
+                    case BitRangeCondition.AllNon11xxx:
+                        NotBitfieldMask |= 0b11000U << lowBit;
+                        NotBitfieldValue |= 0b11000U << lowBit;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
         }
 
         BitfieldValueForTest |= BitfieldValue;
@@ -224,7 +257,7 @@ class Instruction : IJsonOnDeserialized
     public override string ToString()
     {
         var builder = new StringBuilder();
-        builder.Append($"{Name,-32} {Mnemonic,-12} Mask: 0x{BitfieldMask:X8}, Bits: 0x{BitfieldValue:X8}");
+        builder.Append($"{Id,-32} {Mnemonic,-12} Mask: 0x{BitfieldMask:X8}, Bits: 0x{BitfieldValue:X8}");
 
         foreach (var bitField in BitRanges)
         {

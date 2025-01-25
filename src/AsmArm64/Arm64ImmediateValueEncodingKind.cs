@@ -62,4 +62,8 @@ enum Arm64ImmediateValueEncodingKind : byte
     ValueMod64Plus1,
     DecodeBitMask32,
     DecodeBitMask64,
+    /// <summary>
+    /// 8-bit `abcdefgh` to `aaaaaaaabbbbbbbbccccccccddddddddeeeeeeeeffffffffgggggggghhhhhhhh`
+    /// </summary>
+    ValueImm64
 }

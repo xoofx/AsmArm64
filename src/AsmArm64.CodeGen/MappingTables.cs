@@ -194,6 +194,10 @@ static class MappingTables
 
         { "SLI_asisdshf_r", new() { { "shift", Value_Minus_64 } }},
         { "SHL_asisdshf_r", new() { { "shift", Value_Minus_64 } }},
+
+
+        { "MOVI_asimdimm_d_ds", new() { { "imm", ValueImm64 } }},
+        { "MOVI_asimdimm_d2_d", new() { { "imm", ValueImm64 } }},
         // 
 
         // LSL_ubfm_32m_bitfield => UBFM  <Wd>, <Wn>, #(-<shift>  MOD  32), #(31-<shift>)

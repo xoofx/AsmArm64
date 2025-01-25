@@ -28,6 +28,10 @@ class InstructionTrieNode
 
     public int RightShift;
 
+    public uint NotBitMask;
+
+    public uint NotBitValue;
+    
     public readonly Dictionary<uint, InstructionTrieNode> MaskToSubEncoder;
 
     public InstructionTrieNode? ElseBranch;
@@ -55,6 +59,9 @@ class InstructionTrieNode
             //Console.WriteLine($"{new string(' ', level * 2)}0x{Key:X8} -> {instructions[InstructionIndices[0]]}");
 
             task.Increment(1);
+            var instruction = instructions[InstructionIndices[0]];
+            NotBitMask = instruction.NotBitfieldMask;
+            NotBitValue = instruction.NotBitfieldValue;
             TableKind = TrieTableKind.Terminal;
             return;
         }
@@ -201,10 +208,11 @@ class InstructionTrieNode
         {
             EncoderArrayLength = (uint)MaskToSubEncoder.Keys.Count;
             progressTask.Increment(1.0);
-            TableKind = TrieTableKind.SmallArray;
+            TableKind = MaskToSubEncoder.Values.Any(x => x.NotBitMask != 0) ? TrieTableKind.SmallArrayWithNotBitMask : TrieTableKind.SmallArray;
         }
         else
         {
+            Debug.Assert(MaskToSubEncoder.Values.Any(x => x.NotBitMask == 0));
             TableKind = TrieTableKind.Hash;
 
             // Prepare the keys
@@ -318,7 +326,14 @@ class InstructionTrieNode
     public void Print(TextWriter writer, List<Instruction> instructions, int level = 0)
     {
         var builder = new StringBuilder();
-        builder.Append($"{new string(' ', level * 2)}[{level}] BitMask: 0x{BitMask:X8}, Instructions: {InstructionIndices.Count}");
+        builder.Append($"{new string(' ', level * 2)}[{level}] BitMask: 0x{BitMask:X8}");
+
+        if (NotBitMask != 0)
+        {
+            builder.Append($", NotBitMask: 0x{NotBitMask:X8}, NotBitValue: 0x{NotBitValue:X8}");
+        }
+
+        builder.Append($", Instructions: {InstructionIndices.Count}");
 
         if (MaskToSubEncoder.Count > 0)
         {

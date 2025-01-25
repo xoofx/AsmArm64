@@ -4278,7 +4278,7 @@ partial class Arm64InstructionDecoderTable
         129,17,128,16,
         // ISB_bi_barriers                - ISB         {option, #imm}
         126,1,153,1,6,0,1,1,
-        133,6,0,1,8,4,0,0,
+        133,5,0,1,8,4,0,0,
         // LD64B_64l_memop                - LD64B       Xt, [Xn|SP{, #0}]
         127,1,162,1,4,45,0,2,
         1,17,0,0,
@@ -9859,15 +9859,15 @@ partial class Arm64InstructionDecoderTable
         // FMOV_asimdimm_h_h              - FMOV        Vd.T, #imm
         68,6,109,1,1,5,1,2,
         1,27,0,0,6,0,0,0,
-        5,5,6,2,16,3,5,5,
+        5,1,6,2,16,3,5,5,
         // FMOV_asimdimm_s_s              - FMOV        Vd.T, #imm
         69,6,109,1,1,3,1,2,
         1,27,0,0,5,0,0,0,
-        5,5,6,2,16,3,5,5,
+        5,1,6,2,16,3,5,5,
         // FMOV_asimdimm_d2_d             - FMOV        Vd.2D, #imm
         70,6,109,1,1,3,1,2,
         1,27,0,0,42,0,0,0,
-        5,5,6,2,16,3,5,5,
+        5,1,6,2,16,3,5,5,
         // FMSUB_h_floatdp3               - FMSUB       Hd, Hn, Hm, Ha
         71,6,110,1,2,0,0,4,
         1,24,0,0,
@@ -11467,11 +11467,11 @@ partial class Arm64InstructionDecoderTable
         // MOVI_asimdimm_d_ds             - MOVI        Dd, #imm
         158,7,129,2,1,3,1,2,
         1,26,0,0,0,0,0,0,
-        5,5,0,2,16,3,5,5,
+        5,1,17,2,16,3,5,5,
         // MOVI_asimdimm_d2_d             - MOVI        Vd.2D, #imm
         159,7,129,2,1,3,1,2,
         1,27,0,0,42,0,0,0,
-        5,5,0,2,16,3,5,5,
+        5,1,17,2,16,3,5,5,
         // MUL_asimdelem_r                - MUL         Vd.T, Vn.T, Vm.Ts[index]
         160,7,139,2,1,3,1,3,
         1,27,0,0,26,0,0,0,

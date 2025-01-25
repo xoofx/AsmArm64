@@ -51,6 +51,8 @@ internal static class Arm64ImmediateValueHelper
                 return DecodeImmediateBitMask32(value);
             case Arm64ImmediateValueEncodingKind.DecodeBitMask64:
                 return DecodeImmediateBitMask64(value);
+            case Arm64ImmediateValueEncodingKind.ValueImm64:
+                return DecodeImmediate64(value);
             default:
                 throw new ArgumentOutOfRangeException(nameof(valueEncodingKind), valueEncodingKind, null);
         }
@@ -235,5 +237,24 @@ internal static class Arm64ImmediateValueHelper
         int frac = (imm8 & 0xF) << (F - 4);
         int sign = (imm8 >> 7) & 1;
         return (sign << (N-1)) | exp << F | frac;
+    }
+
+    private static long DecodeImmediate64(int value)
+    {
+        // 8-bit `abcdefgh` to `aaaaaaaabbbbbbbbccccccccddddddddeeeeeeeeffffffffgggggggghhhhhhhh`
+        long result = 0;
+        for (int i = 0; i < 8; i++)
+        {
+            // Extract the `i-th` bit from `value`.
+            int bit = (value >> i) & 1;
+
+            // Repeat the bit 8 times to form a byte.
+            long repeatedBit = bit == 1 ? 0xFF : 0x00;
+
+            // Place the repeated byte in the correct position.
+            result |= (repeatedBit << (i * 8));
+        }
+
+        return result;
     }
 }

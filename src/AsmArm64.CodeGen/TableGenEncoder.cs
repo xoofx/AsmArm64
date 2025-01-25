@@ -53,9 +53,21 @@ class TableGenEncoder
         }
 
         var offset = _offset;
-        for (int i = 0; i < entry.ArrayLength; i++)
+        bool isRegularEntry = trieNode.TableKind == TrieTableKind.Hash || trieNode.TableKind == TrieTableKind.SmallArray;
+
+        if (isRegularEntry)
         {
-            Append(new KeyEntryIndex());
+            for (int i = 0; i < entry.ArrayLength; i++)
+            {
+                Append(new KeyEntryIndex());
+            }
+        }
+        else
+        {
+            for (int i = 0; i < entry.ArrayLength; i++)
+            {
+                Append(new KeyEntryIndexWithNonBitMask());
+            }
         }
 
         var keys = trieNode.MaskToSubEncoder.Keys.Order().ToArray();
@@ -77,6 +89,17 @@ class TableGenEncoder
                 {
                     var key = keys[i];
                     Unsafe.Add(ref Unsafe.As<byte, KeyEntryIndex>(ref _buffer[offset]), i) = new KeyEntryIndex((uint)key, Encode(trieNode.MaskToSubEncoder[key]));
+                }
+
+                break;
+
+            case TrieTableKind.SmallArrayWithNotBitMask:
+                Debug.Assert(keys.Length == entry.ArrayLength);
+                for (int i = 0; i < keys.Length; i++)
+                {
+                    var key = keys[i];
+                    var nextTrieNode = trieNode.MaskToSubEncoder[key];
+                    Unsafe.Add(ref Unsafe.As<byte, KeyEntryIndexWithNonBitMask>(ref _buffer[offset]), i) = new KeyEntryIndexWithNonBitMask((uint)key, Encode(nextTrieNode), nextTrieNode.NotBitMask, nextTrieNode.NotBitValue);
                 }
 
                 break;
@@ -168,4 +191,6 @@ class TableGenEncoder
     public readonly record struct EntryIndex(uint Value);
 
     public readonly record struct KeyEntryIndex(uint Key, EntryIndex Index);
+
+    public readonly record struct KeyEntryIndexWithNonBitMask(uint Key, EntryIndex Index, uint NotBitMask, uint NotBitValue);
 }

@@ -1330,20 +1330,6 @@ internal sealed class InstructionProcessor
             else
             {
                 Debug.Assert(immediate.Encoding.Count > 0 && immediate.Encoding.Count <= 2);
-                if (symbol.EncodedInText == "a:b:c:d:e:f:g:h")
-                {
-                    if (immediate.Name == "imm")
-                    {
-                        // 64-bit immediate 'aaaaaaaabbbbbbbbccccccccddddddddeeeeeeeeffffffffgggggggghhhhhhhh'
-                        // immediate.Name == "imm"
-                        immediate.ImmediateKind = Arm64ImmediateEncodingKind.Imm64;
-                    }
-                }
-                else if (symbol.BitRanges.Count > 3)
-                {
-                    Console.WriteLine($"Watch out special immediate #{immediate.Name} Size: {immediate.BitSize} in instruction id {instruction.Id} - Symbol: {symbol}");
-                    _hasErrors = true;
-                }
             }
         }
 

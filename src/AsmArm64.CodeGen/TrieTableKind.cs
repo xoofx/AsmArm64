@@ -8,5 +8,6 @@ enum TrieTableKind : byte
 {
     Hash = 0,
     SmallArray = 1,
-    Terminal = 2
+    Terminal = 2,
+    SmallArrayWithNotBitMask = 3,
 }

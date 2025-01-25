@@ -39,6 +39,11 @@ public readonly struct Arm64LabelOperand : IArm64Operand
             : Arm64DecodingHelper.GetBitRange2(rawValue, (byte)(descriptor >> 32), (byte)(descriptor >> 40), (byte)(descriptor >> 48), (byte)(descriptor >> 56), isSigned);
 
         Offset = labelKind == Arm64LabelEncodingKind.PageOffset ? offset << 12 : offset << 2;
+
+        if (labelKind == Arm64LabelEncodingKind.NegativeEncodedAsUnsigned)
+        {
+            Offset = -Offset;
+        }
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Label;
