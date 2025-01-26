@@ -684,16 +684,16 @@ partial class Arm64Processor
                     //    var divideBy = int.Parse(match.Groups["divide_by"].Value);
                     //    encodingSymbol.ValueEncoding = divideBy switch
                     //    {
-                    //        2 => Arm64ImmediateValueEncodingKind.ValueDivideBy2,
-                    //        4 => Arm64ImmediateValueEncodingKind.ValueDivideBy4,
-                    //        8 => Arm64ImmediateValueEncodingKind.ValueDivideBy8,
-                    //        16 => Arm64ImmediateValueEncodingKind.ValueDivideBy16,
+                    //        2 => Arm64ImmediateValueEncodingKind.ValueMulBy2,
+                    //        4 => Arm64ImmediateValueEncodingKind.ValueMulBy4,
+                    //        8 => Arm64ImmediateValueEncodingKind.ValueMulBy8,
+                    //        16 => Arm64ImmediateValueEncodingKind.ValueMulBy16,
                     //        _ => throw new ArgumentOutOfRangeException($"Unexpected immediate encoding {divideBy}")
                     //    };
                     //}
                     //else if (introElt.Value.EndsWith("in the range 1 to 64-<lsb>.") || introElt.Value.EndsWith("in the range 1 to 32-<lsb>."))
                     //{
-                    //    encodingSymbol.ValueEncoding = Arm64ImmediateValueEncodingKind.ValuePlus1ShiftLeft6;
+                    //    encodingSymbol.ValueEncoding = Arm64ImmediateValueEncodingKind.ValueImmsPlus1;
                     //}
                     //else if (introElt.Value.Contains("signed floating-point constant with 3-bit exponent and normalized 4 bits of precision"))
                     //{

@@ -63,7 +63,14 @@ partial class Arm64Extensions
 
 public readonly record struct Arm64MemoryExtend(Arm64ExtendKind Kind, byte Amount) : IArm64Extend , ISpanFormattable
 {
-    public bool IsEmpty => Kind == Arm64ExtendKind.None;
+    private readonly bool _isAmountVisible;
+
+    public Arm64MemoryExtend(Arm64ExtendKind Kind, bool zeroAmountVisible) : this(Kind, 0)
+    {
+        _isAmountVisible = zeroAmountVisible;
+    }
+
+    public bool IsZeroAmountVisible => _isAmountVisible;
 
     public bool IsDefault => Amount == 0 && (Kind == Arm64ExtendKind.LSL || Kind == Arm64ExtendKind.UXTX);
 
@@ -93,7 +100,7 @@ public readonly record struct Arm64MemoryExtend(Arm64ExtendKind Kind, byte Amoun
             return false;
         }
 
-        if (Amount != 0 || Kind == Arm64ExtendKind.LSL)
+        if (Amount != 0 || Kind == Arm64ExtendKind.LSL || _isAmountVisible)
         {
             if (destination.Length <= written + 1)
             {

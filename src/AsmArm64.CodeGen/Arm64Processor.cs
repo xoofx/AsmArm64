@@ -586,7 +586,7 @@ partial class Arm64Processor
                 //Console.WriteLine($"Instruction with equivalent BitFieldValue: 0x{bitPair.Key:X8}");
                 //foreach (var instruction in instructions)
                 //{
-                //    Console.WriteLine($"  {instruction}");
+                //    Console.WriteLine($"  {instruction} - Discarded: {instruction.IsDiscardedByPreferredAlias}, Dynamic Resolution: {instruction.HasAliasesInAndRequiringDynamicResolution}");
                 //}
 
                 // For example for the following instructions:

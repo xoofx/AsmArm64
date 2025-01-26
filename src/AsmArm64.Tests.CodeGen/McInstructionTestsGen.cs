@@ -130,11 +130,6 @@ public partial class McInstructionTestsGen
                 continue;
             }
 
-            if (asm.EndsWith('>'))
-            {
-
-            }
-
             asm = ReplaceWithBetterAsm(asm);
 
             AddTestInstruction(normalizedName, new(asm, string.Join(", ", bytes.Select(v => $"0x{v:x2}"))));
@@ -147,6 +142,9 @@ public partial class McInstructionTestsGen
     /// </summary>
     private string ReplaceWithBetterAsm(string asm)
     {
+        // Replace multiple spaces with a single space (and normalize them)
+        asm = MatchSpace.Replace(asm, " ");
+
         if (asm.StartsWith("retaasppc x"))
         {
             asm = asm.Replace("retaasppc", "retaasppcr");
@@ -263,11 +261,42 @@ public partial class McInstructionTestsGen
         {
             asm = "mov w3, #0xf000f"; // We use hex encoding for bitmask
         }
+        else if (asm == "bfxil xzr, xzr, #10, #11")
+        {
+            asm = "bfc xzr, #54, #21"; // We have a better encoding
+        }
+        else if (asm == "dfb")
+        {
+            asm = "dsb #12"; // Not sure what is dfb, but dsb is the correct instruction here
+        }
+        else if (asm == "msr TEECR32_EL1, x12")
+        {
+            asm = "msr S2_2_C0_C0_0, x12"; // We don't have this register, so we encode with a default encoding.
+        }
+        else if (asm == "msr TEEHBR32_EL1, x12")
+        {
+            asm = "msr S2_2_C1_C0_0, x12"; // We don't have this register, so we encode with a default encoding.
+        }
+        else if (asm == "mrs x9, TEECR32_EL1")
+        {
+            asm = "mrs x9, S2_2_C0_C0_0"; // We don't have this register, so we encode with a default encoding.
+        }
+        else if (asm == "mrs x9, TEEHBR32_EL1")
+        {
+            asm = "mrs x9, S2_2_C1_C0_0"; // We don't have this register, so we encode with a default encoding.
+        }
+        else if (asm == "sys #3, c9, c2, #1, x4")
+        {
+            asm = "tlbi S1_3_C9_C2_1, x4"; // We have a better encoding
+        }
+
         
         return asm;
     }
 
     private static readonly Regex RegexHex = new(@"0x[0-9a-fA-F]+");
+
+    private static readonly Regex MatchSpace = new(@"\s+");
 
     private void AddTestInstruction(string name, TestInstruction testInstruction)
     {

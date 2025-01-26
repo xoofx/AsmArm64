@@ -569,6 +569,18 @@ internal sealed class InstructionProcessor
                     IsOptional = true,
                 };
 
+                switch (instruction.Id)
+                {
+                    case "MOVK_32_movewide":
+                    case "MOVK_64_movewide":
+                    case "MOVN_32_movewide":
+                    case "MOVN_64_movewide":
+                    case "MOVZ_32_movewide":
+                    case "MOVZ_64_movewide":
+                        shiftOperandDescriptor.ShiftKind = Arm64ShiftEncodingKind.LslScale16;
+                        break;
+                }
+
                 if (item0.TextElements.Count == 3)
                 {
                     Debug.Assert(item0.TextElements[1].Text == " #");

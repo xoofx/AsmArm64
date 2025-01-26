@@ -461,7 +461,56 @@ partial class Arm64Processor
                 // Some instructions are not testable
                 if (instruction.IsBitFieldValueTestable)
                 {
-                    w.WriteLine($"[DataRow(0x{instruction.BitfieldValueForTest:X8}U, Arm64InstructionId.{instruction.Id})]");
+                    string? preferredId = null;
+
+                    if (instruction.IsDiscardedByPreferredAlias)
+                    {
+                        Debug.Assert(instruction.AliasesIn.Count == 1);
+                        preferredId = instruction.AliasesIn[0].InstructionId;
+                        //Console.WriteLine($"Is discard {instruction.Id} {instruction.FullSyntax}");
+                    }
+                    else
+                    {
+                        switch (instruction.Id)
+                        {
+                            case "LSL_ubfm_32m_bitfield":
+                                preferredId = "UBFX_ubfm_32m_bitfield";
+                                break;
+                            case "SBFIZ_sbfm_64m_bitfield":
+                                preferredId = "SBFX_sbfm_64m_bitfield";
+                                break;
+                            case "EXTR_64_extract":
+                                preferredId = "ROR_extr_64_extract";
+                                break;
+                            case "BFI_bfm_64m_bitfield":
+                                preferredId = "BFXIL_bfm_64m_bitfield";
+                                break;
+                            case "SBFIZ_sbfm_32m_bitfield":
+                                preferredId = "SBFX_sbfm_32m_bitfield";
+                                break;
+                            case "EXTR_32_extract":
+                                preferredId = "ROR_extr_32_extract";
+                                break;
+                            case "LSL_ubfm_64m_bitfield":
+                                preferredId = "UBFX_ubfm_64m_bitfield";
+                                break;
+                            case "DC_sys_cr_systeminstrs":
+                                preferredId = "SYS_cr_systeminstrs";
+                                break;
+                            case "BFI_bfm_32m_bitfield":
+                                preferredId = "BFXIL_bfm_32m_bitfield";
+                                break;
+
+                        }
+                    }
+
+                    var preferredInstruction = instruction;
+                    if (preferredId != null)
+                    {
+                        preferredInstruction = MapIdToInstruction[preferredId];
+                    }
+
+                    w.WriteLine($"[DataRow(0x{instruction.BitfieldValueForTest:X8}U, Arm64InstructionId.{preferredInstruction.Id})]");
                 }
             }
             w.WriteLine($"public void Test(uint instruction, Arm64InstructionId expected)");

@@ -56,13 +56,9 @@ public readonly struct Arm64EnumOperand : IArm64Operand
             case Arm64EnumKind.BarrierOperationLimit:
                 Value = Arm64DecodingHelper.GetBitRange1(rawValue, (byte)(descriptor >> 16), (byte)(descriptor >> 24), 0);
 
-                if (Value == 0)
+                if (Value == 0 || !Enum.IsDefined((Arm64BarrierOperationLimitKind)Value))
                 {
                     IsImmediate = true;
-                }
-                else if (!Enum.IsDefined((Arm64BarrierOperationLimitKind)Value))
-                {
-                    EnumKind = Arm64EnumKind.None;
                 }
                 break;
             default:
@@ -138,7 +134,8 @@ public readonly struct Arm64EnumOperand : IArm64Operand
     {
         isDefaultValue = false;
 
-        var isUpperCase = format.Length == 1 && format[0] == 'H';
+        // keepCasing is used to keep the casing of the format
+        var forceLowerCase = format.Length == 0 || format[0] != 'H';
         charsWritten = 0;
         if (IsImmediate)
         {
@@ -173,7 +170,7 @@ public readonly struct Arm64EnumOperand : IArm64Operand
                 break;
             case Arm64EnumKind.ProcessStateField:
                 result = Enum.TryFormat(AsProcessStateField, destination, out charsWritten);
-                isUpperCase = true;
+                forceLowerCase = false;
                 break;
             case Arm64EnumKind.CodeSync:
                 result = Enum.TryFormat(AsCodeSync, destination, out charsWritten);
@@ -193,14 +190,7 @@ public readonly struct Arm64EnumOperand : IArm64Operand
         {
             // TODO: Optimize with precalculated string
             var span = destination.Slice(0, charsWritten);
-            if (isUpperCase)
-            {
-                for (var i = 0; i < span.Length; i++)
-                {
-                    span[i] = char.ToUpperInvariant(span[i]);
-                }
-            }
-            else
+            if (forceLowerCase)
             {
                 for (var i = 0; i < span.Length; i++)
                 {

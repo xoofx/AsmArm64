@@ -32,6 +32,9 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
             case Arm64ShiftEncodingKind.LslScale8:
                 amount = (byte)(amount << 3);
                 break;
+            case Arm64ShiftEncodingKind.LslScale16:
+                amount = (byte)(amount << 4);
+                break;
             case Arm64ShiftEncodingKind.Fixed:
                 amount = Arm64DecodingHelper.Get1SmallBitRange((byte)(descriptor >> 16), rawValue) == 0 ? (byte)0 : (byte)12;
                 break;

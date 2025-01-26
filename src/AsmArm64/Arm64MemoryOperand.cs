@@ -10,7 +10,8 @@ namespace AsmArm64;
 
 public readonly struct Arm64MemoryOperand : IArm64Operand
 {
-    private readonly bool _hasOptionalImmediateOrExtend;
+    private readonly bool _hasOptionalImmediate;
+    private readonly bool _hasOptionalExtend;
 
     internal Arm64MemoryOperand(Arm64Operand operand)
     {
@@ -50,7 +51,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
             MemoryKind = Arm64MemoryOperandKind.BaseRegisterWithImmediate;
             Immediate = (int)(sbyte)(descriptor >> 24);
             IsPreIncrement = (((byte)(descriptor >> 32)) & 0x80) != 0;
-            _hasOptionalImmediateOrExtend = memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional;
+            _hasOptionalImmediate = memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional;
         }
         else
         {
@@ -83,7 +84,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                     break;
 
                 case Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional:
-                    _hasOptionalImmediateOrExtend = true;
+                    _hasOptionalImmediate = true;
                     goto case Arm64MemoryEncodingKind.BaseRegisterAndImmediate;
 
                 case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
@@ -92,11 +93,11 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                     break;
 
                 case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional:
-                    _hasOptionalImmediateOrExtend = true;
-                    goto case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend;
-                    
-                case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
                 case Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount:
+                    _hasOptionalExtend = true;
+                    goto case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend;
+
+                case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
                     MemoryKind = Arm64MemoryOperandKind.BaseRegisterWithIndexAndExtend;
 
                     //Debug.Assert(extendBitRange.HiBit == 15 && extendBitRange.Width == 3);
@@ -108,25 +109,17 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                         ? Arm64RegisterKind.W
                         : Arm64RegisterKind.X;
 
-                    if (amount != 0)
-                    {
-                        amount = extendEncodingKind switch
-                        {
-                            Arm64MemoryExtendEncodingKind.Shift1 => 1,
-                            Arm64MemoryExtendEncodingKind.Shift2 => 2,
-                            Arm64MemoryExtendEncodingKind.Shift3 => 3,
-                            Arm64MemoryExtendEncodingKind.Shift4 => 4,
-                            _ => 0
-                        };
-                    }
+                    bool isZeroAmount;
 
                     Arm64ExtendKind extendKind;
                     if (memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount)
                     {
+                        isZeroAmount = true;
                         extendKind = Arm64ExtendKind.LSL;
                     }
                     else
                     {
+                        isZeroAmount = extendEncodingKind == Arm64MemoryExtendEncodingKind.NoLsl;
                         extendKind = option switch
                         {
                             0b010 => Arm64ExtendKind.UXTW,
@@ -135,12 +128,51 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                             0b111 => Arm64ExtendKind.SXTX,
                             _ => Arm64ExtendKind.None,
                         };
+                    }
 
+                    bool isZeroAmountVisible = false;
+                    if (isZeroAmount)
+                    {
+                        isZeroAmountVisible = extendKind == Arm64ExtendKind.LSL || amount != 0;
+                        if (extendKind == Arm64ExtendKind.LSL && amount != 0)
+                        {
+                            _hasOptionalExtend = false;
+                        }
+                    }
+                    else
+                    {
+                        if (amount != 0)
+                        {
+                            switch (extendEncodingKind)
+                            {
+                                case Arm64MemoryExtendEncodingKind.Shift1:
+                                    amount = 1;
+                                    break;
+                                case Arm64MemoryExtendEncodingKind.Shift2:
+                                    amount = 2;
+                                    break;
+                                case Arm64MemoryExtendEncodingKind.Shift3:
+                                    amount = 3;
+                                    break;
+                                case Arm64MemoryExtendEncodingKind.Shift4:
+                                    amount = 4;
+                                    break;
+                                default:
+                                    Debug.Assert(false, "This should not happen");
+                                    amount = 0;
+                                    break;
+                            }
+
+                            if (amount != 0 && extendKind == Arm64ExtendKind.UXTX)
+                            {
+                                extendKind = Arm64ExtendKind.LSL;
+                            }
+                        }
                     }
 
                     IndexRegister = Arm64RegisterAny.Create(registerKind, value, Arm64RegisterVKind.Default, 0, 0);
 
-                    Extend = new Arm64MemoryExtend(extendKind, amount);
+                    Extend = isZeroAmount ? new Arm64MemoryExtend(extendKind, isZeroAmountVisible) : new Arm64MemoryExtend(extendKind, amount);
 
                     break;
             }
@@ -200,7 +232,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         {
             if (MemoryKind == Arm64MemoryOperandKind.BaseRegisterWithImmediate)
             {
-                if (!_hasOptionalImmediateOrExtend || this.Immediate != 0)
+                if (!_hasOptionalImmediate || this.Immediate != 0)
                 {
                     if (destination.Length <= written + 2)
                     {
@@ -239,7 +271,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                 }
                 written += indexWritten;
 
-                if (Extend.Kind != Arm64ExtendKind.None && (!_hasOptionalImmediateOrExtend || !Extend.IsDefault))
+                if (Extend.Kind != Arm64ExtendKind.None && (!_hasOptionalExtend || !Extend.IsDefault))
                 {
                     if (destination.Length <= written + 1)
                     {

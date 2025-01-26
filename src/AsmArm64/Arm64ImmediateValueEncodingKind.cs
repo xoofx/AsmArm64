@@ -11,25 +11,29 @@ enum Arm64ImmediateValueEncodingKind : byte
 {
     None,
     /// <summary>
-    /// value / 2
+    /// value * 2
     /// </summary>
-    ValueDivideBy2,
+    ValueMulBy2,
     /// <summary>
-    /// value / 4
+    /// value * 4
     /// </summary>
-    ValueDivideBy4,
+    ValueMulBy4,
     /// <summary>
-    /// value / 8
+    /// value * 8
     /// </summary>
-    ValueDivideBy8,
+    ValueMulBy8,
     /// <summary>
-    /// value / 16
+    /// value * 16
     /// </summary>
-    ValueDivideBy16,
+    ValueMulBy16,
     /// <summary>
-    /// (value + 1) &gt;&gt; 6
+    /// width = imms - immr + 1
     /// </summary>
-    ValuePlus1ShiftLeft6,
+    ValueImmsMinusImmrPlus1,
+    /// <summary>
+    /// width = imms + 1
+    /// </summary>
+    ValueImmsPlus1,
     /// <summary>
     /// 1 bit sign, 3 bits exponent, 4 bits mantissa
     /// </summary>
@@ -52,10 +56,6 @@ enum Arm64ImmediateValueEncodingKind : byte
     _64_Minus_Value,
     _128_Minus_Value,
     Value_Minus_64,
-    /// <summary>
-    /// lsb + width - 1
-    /// </summary>
-    LsbPlusWidthMinus1,
     /// <summary>
     /// value &amp; 0x3F
     /// </summary>

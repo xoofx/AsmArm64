@@ -40,17 +40,20 @@ internal static class Arm64ImmediateValueHelper
         {
             case Arm64ImmediateValueEncodingKind.None:
                 return value;
-            case Arm64ImmediateValueEncodingKind.ValueDivideBy2:
+            case Arm64ImmediateValueEncodingKind.ValueMulBy2:
                 return value * 2;
-            case Arm64ImmediateValueEncodingKind.ValueDivideBy4:
+            case Arm64ImmediateValueEncodingKind.ValueMulBy4:
                 return value * 4;
-            case Arm64ImmediateValueEncodingKind.ValueDivideBy8:
+            case Arm64ImmediateValueEncodingKind.ValueMulBy8:
                 return value * 8;
-            case Arm64ImmediateValueEncodingKind.ValueDivideBy16:
+            case Arm64ImmediateValueEncodingKind.ValueMulBy16:
                 return value * 16;
-            case Arm64ImmediateValueEncodingKind.ValuePlus1ShiftLeft6:
-                var v1 = value >> 6;
-                return v1 + 1;
+            case Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1:
+                // encoded in imms:immr (reversed from the order in the instruction)
+                return ((value >> 6) & 0b111_1111) - (value & 0b111_111) + 1;
+            case Arm64ImmediateValueEncodingKind.ValueImmsPlus1:
+                // encoded in imms:immr (reversed from the order in the instruction)
+                return ((value >> 6) & 0b111_1111) + 1;
             case Arm64ImmediateValueEncodingKind._32_Minus_Value_Mod32:
                 return ((32 - value) & 0x1F);
             case Arm64ImmediateValueEncodingKind._64_Minus_Value_Mod64:
@@ -65,8 +68,6 @@ internal static class Arm64ImmediateValueHelper
                 return 128 - value;
             case Arm64ImmediateValueEncodingKind.SignedFloatExp3Mantissa4:
                 return VFPExpandImm32(value);
-            case Arm64ImmediateValueEncodingKind.LsbPlusWidthMinus1:
-                return (value >> 6) - (value & 0x3F) + 1;
             case Arm64ImmediateValueEncodingKind.ValueMod64Plus1:
                 return (value & 0x3F) + 1;
             case Arm64ImmediateValueEncodingKind.DecodeBitMask32:
