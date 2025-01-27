@@ -30,6 +30,7 @@ partial class Arm64Processor
         GenerateFeatureExpressions();
         GenerateInstructionIdDynamicDecoder();
         GenerateInstructionIdTests();
+        GenerateAssembler();
         
         // Write extracts
         GenerateVectorArrangements();
@@ -877,7 +878,7 @@ partial class Arm64Processor
                 {
                     foreach (var bitValue in selector.BitValues)
                     {
-                        w.WriteLine($"case {bitValue.BitSelectorValue}:");
+                        w.WriteLine($"case {bitValue.LocalBitSelectorValue}:");
                         w.OpenBraceBlock();
                         if (bitValue.Kind == EncodingBitValueKind.BitExtract)
                         {
@@ -915,13 +916,13 @@ partial class Arm64Processor
 
             // Order from the highest number of bits sets to the lowest number
             // If the mask is 0, it means that all bits are sets
-            var bitValues = selector.BitValues.OrderByDescending(x => BitOperations.PopCount(x.BitSelectorMask == 0 ? uint.MaxValue : x.BitSelectorMask)).ToList();
+            var bitValues = selector.BitValues.OrderByDescending(x => BitOperations.PopCount(x.LocalBitSelectorMask == 0 ? uint.MaxValue : x.LocalBitSelectorMask)).ToList();
 
             foreach (var bitValue in bitValues)
             {
-                w.WriteLine(bitValue.BitSelectorMask == 0
-                    ? $"if (bitsToTest == {bitValue.BitSelectorValue})"
-                    : $"if ((bitsToTest & 0x{bitValue.BitSelectorMask:x}) == {bitValue.BitSelectorValue})"
+                w.WriteLine(bitValue.LocalBitSelectorMask == 0
+                    ? $"if (bitsToTest == {bitValue.LocalBitSelectorValue})"
+                    : $"if ((bitsToTest & 0x{bitValue.LocalBitSelectorMask:x}) == {bitValue.LocalBitSelectorValue})"
                 );
                 w.OpenBraceBlock();
                 {
@@ -991,7 +992,7 @@ partial class Arm64Processor
         return $"var {outputValue} = {builder};";
     }
     
-    private (string VKind, int ElementCount) GetVKindAndElementCount(Arm64RegisterVectorArrangementEncodingKind kind)
+    private static (string VKind, int ElementCount) GetVKindAndElementCount(Arm64RegisterVectorArrangementEncodingKind kind)
     {
         switch (kind)
         {

@@ -377,6 +377,11 @@ record EncodingSymbolSelector
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public BitRangeList BitRanges { get; } = new();
 
+    /// <summary>
+    /// Gets the mask of the bits covered by <see cref="BitRanges"/> of this selector.
+    /// </summary>
+    public uint BitEncodingMask { get; set; }
+
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<EncodingBitValue> BitValues { get; } = new();
     
@@ -442,14 +447,21 @@ record EncodingSymbolSelector
         }
 
         BitSize = bitSize;
+
+        // Calculate the mask
+        BitEncodingMask = 0;
+        foreach (var bitRange in BitRanges)
+        {
+            BitEncodingMask |= ((1U << bitRange.Width) - 1) << bitRange.LowBit;
+        }
         
         foreach (var bitValue in BitValues)
         {
-            bitValue.Initialize(map);
+            bitValue.Initialize(map, BitRanges);
         }
 
         // Update the kind
-        Kind = BitValues.Any(x => x.Kind != EncodingBitValueKind.Reserved && x.BitSelectorMask != 0) ? EncodingSymbolSelectorKind.Masked : EncodingSymbolSelectorKind.Regular;
+        Kind = BitValues.Any(x => x.Kind != EncodingBitValueKind.Reserved && x.LocalBitSelectorMask != 0) ? EncodingSymbolSelectorKind.Masked : EncodingSymbolSelectorKind.Regular;
     }
 
     public void ToString(StringBuilder builder, bool indent = false)
@@ -480,9 +492,13 @@ record EncodingBitValue
 
     public int FloatValue { get; set; }
 
-    public int BitSelectorSize { get; set; }
+    public int LocalBitSelectorSize { get; set; }
 
-    public string BitSelectorAsText { get; set; } = string.Empty;
+    public string LocalBitSelectorAsText { get; set; } = string.Empty;
+
+    public uint LocalBitSelectorMask { get; set; }
+
+    public uint LocalBitSelectorValue { get; set; }
 
     public uint BitSelectorMask { get; set; }
 
@@ -504,18 +520,18 @@ record EncodingBitValue
     public void AppendUniqueId(StringBuilder builder)
     {
         // We assume that the other fields are decoded from this
-        builder.Append($"({Kind} {BitSelectorAsText} -> `{Text}`)");
+        builder.Append($"({Kind} {LocalBitSelectorAsText} -> `{Text}`)");
     }
 
-    public void Initialize(Dictionary<string, BitRangeInfo> bitRangeMap)
+    public void Initialize(Dictionary<string, BitRangeInfo> bitRangeMap, BitRangeList bitRangeList)
     {
         Debug.Assert(BitItems.Count == 0);
 
-        if (BitSelectorAsText.Contains('x'))
+        if (LocalBitSelectorAsText.Contains('x'))
         {
             uint maskValue = 0;
             uint value = 0;
-            foreach (var c in BitSelectorAsText)
+            foreach (var c in LocalBitSelectorAsText)
             {
                 Debug.Assert(c == '0' || c == '1' || c == 'x');
                 maskValue <<= 1;
@@ -523,22 +539,33 @@ record EncodingBitValue
                 value <<= 1;
                 value |= (c == '1') ? 1U : 0;
             }
-            BitSelectorMask = maskValue;
-            BitSelectorValue = value;
+            LocalBitSelectorMask = maskValue;
+            LocalBitSelectorValue = value;
         }
         else
         {
             uint value = 0;
-            foreach (var c in BitSelectorAsText)
+            foreach (var c in LocalBitSelectorAsText)
             {
                 Debug.Assert(c == '0' || c == '1');
                 value <<= 1;
                 value |= (c == '1') ? 1U : 0;
             }
-            BitSelectorValue = value;
+            LocalBitSelectorValue = value;
         }
 
-        BitSelectorSize = BitSelectorAsText.Length;
+        LocalBitSelectorSize = LocalBitSelectorAsText.Length;
+
+        // Calculate the full mask/selector value based on the actual position in a uint with the bitRangeList
+        int bitPosition = 0;
+        var localBitSelectorMask = LocalBitSelectorMask == 0 ? ((1U << LocalBitSelectorSize) - 1) : LocalBitSelectorMask;
+        for (int i = bitRangeList.Count - 1; i >= 0; i--)
+        {
+            var bitRange = bitRangeList[i];
+            BitSelectorValue |= ((LocalBitSelectorValue >> bitPosition) & ((1U << bitRange.Width) - 1)) << bitRange.LowBit;
+            BitSelectorMask |= ((localBitSelectorMask >> bitPosition) & ((1U << bitRange.Width) - 1)) << bitRange.LowBit;
+            bitPosition += bitRange.Width;
+        }
 
         if (Text == "RESERVED")
         {
@@ -646,11 +673,11 @@ record EncodingBitValue
     {
         var builder = new StringBuilder();
         builder.Append(Kind);
-        if (BitSelectorMask != 0)
+        if (LocalBitSelectorMask != 0)
         {
-            builder.Append($" Mask(0x{BitSelectorMask:X})");
+            builder.Append($" Mask(0x{LocalBitSelectorMask:X})");
         }
-        builder.Append($" Select(0x{BitSelectorValue:X}) -> ");
+        builder.Append($" Select(0x{LocalBitSelectorValue:X}) -> ");
 
         switch (Kind)
         {

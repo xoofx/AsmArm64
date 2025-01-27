@@ -1491,13 +1491,29 @@ internal sealed class InstructionProcessor
         var memoryOperandDescriptor = new MemoryOperandDescriptor()
         {
             MemoryEncodingKind = kind,
-            Name = "mem", // TODO: name it better between src/dst
             FixedValue = fixedValue,
             IsPreIncrement = operand.HasBang,
             ExtendKind = extendKind,
             SignedImmediate = signedImmediate,
             ImmediateValueEncodingKind = immediateValueEncodingKind,
         };
+
+        if (instruction.Mnemonic.StartsWith("LD"))
+        {
+            memoryOperandDescriptor.Name = "src";
+        }
+        else if (instruction.Mnemonic.StartsWith("ST"))
+        {
+            memoryOperandDescriptor.Name = "dst";
+        }
+        else if (instruction.Mnemonic.StartsWith("CPY"))
+        {
+            memoryOperandDescriptor.Name = baseRegister.Name.EndsWith("d") ? "dst" : "src";
+        }
+        else
+        {
+            memoryOperandDescriptor.Name = "mem";
+        }
 
         Debug.Assert(baseRegister.IsSimpleEncoding);
         memoryOperandDescriptor.BaseRegister = baseRegister.GetIndexEncoding();
@@ -1571,7 +1587,7 @@ internal sealed class InstructionProcessor
         {
             if (bitValue.Kind == EncodingBitValueKind.Reserved) continue;
 
-            var intValue = (int)bitValue.BitSelectorValue;
+            var intValue = (int)bitValue.LocalBitSelectorValue;
 
             if (!enumToInt.TryGetValue(bitValue.Text, out var previousValue))
             {

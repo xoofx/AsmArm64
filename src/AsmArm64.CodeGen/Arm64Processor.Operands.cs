@@ -557,7 +557,7 @@ partial class Arm64Processor
                             Debug.Assert(false);
                         }
                     }
-                    bitValue.BitSelectorAsText = bitFieldsBuilder.ToString();
+                    bitValue.LocalBitSelectorAsText = bitFieldsBuilder.ToString();
 
                     selector.BitValues.Add(bitValue);
                 }
@@ -574,7 +574,7 @@ partial class Arm64Processor
 
                 var bitValue = new EncodingBitValue
                 {
-                    BitSelectorAsText = "xx1xx",
+                    LocalBitSelectorAsText = "xx1xx",
                     Text = "UInt(imm5<4:3>)"
                 };
                 selector.BitValues.Add(bitValue);
@@ -589,7 +589,7 @@ partial class Arm64Processor
                 selector.BitNames.Add("imm5");
                 var bitValue = new EncodingBitValue
                 {
-                    BitSelectorAsText = "x10xx",
+                    LocalBitSelectorAsText = "x10xx",
                     Text = "UInt(imm5<4>)"
                 };
                 selector.BitValues.Add(bitValue);
@@ -602,7 +602,7 @@ partial class Arm64Processor
                 selector.BitNames.Add("len");
                 var bitValue = new EncodingBitValue
                 {
-                    BitSelectorAsText = "x1",
+                    LocalBitSelectorAsText = "x1",
                     Text = "UInt(len<1>)"
                 };
                 selector.BitValues.Add(bitValue);

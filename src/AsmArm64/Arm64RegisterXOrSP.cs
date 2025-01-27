@@ -4,20 +4,16 @@
 
 namespace AsmArm64;
 
-public enum Arm64CodeSyncKind
+public readonly struct Arm64RegisterXOrSP
 {
-    None,
-    CSYNC
 }
 
-public enum Arm64DataSyncKind
+public readonly struct Arm64RegisterXOrW
 {
-    None,
-    DSYNC
+
 }
 
-public enum Arm64RestrictionByContextKind
+public readonly struct Arm64RegisterWOrWSP
 {
-    None,
-    RCTX
+
 }

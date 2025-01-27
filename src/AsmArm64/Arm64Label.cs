@@ -4,20 +4,4 @@
 
 namespace AsmArm64;
 
-public enum Arm64CodeSyncKind
-{
-    None,
-    CSYNC
-}
-
-public enum Arm64DataSyncKind
-{
-    None,
-    DSYNC
-}
-
-public enum Arm64RestrictionByContextKind
-{
-    None,
-    RCTX
-}
+public record struct Arm64Label(); // TODO

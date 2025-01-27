@@ -4,20 +4,11 @@
 
 namespace AsmArm64;
 
-public enum Arm64CodeSyncKind
+public enum Arm64MemoryKind : byte
 {
     None,
-    CSYNC
-}
-
-public enum Arm64DataSyncKind
-{
-    None,
-    DSYNC
-}
-
-public enum Arm64RestrictionByContextKind
-{
-    None,
-    RCTX
+    BaseRegisterXn,
+    BaseRegister,
+    BaseRegisterWithImmediate,
+    BaseRegisterWithIndexAndExtend,
 }

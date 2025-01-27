@@ -48,7 +48,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         
         if (memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate || memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional)
         {
-            MemoryKind = Arm64MemoryOperandKind.BaseRegisterWithImmediate;
+            MemoryKind = Arm64MemoryKind.BaseRegisterWithImmediate;
             Immediate = (int)(sbyte)(descriptor >> 24);
             IsPreIncrement = (((byte)(descriptor >> 32)) & 0x80) != 0;
             _hasOptionalImmediate = memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional;
@@ -79,8 +79,11 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
             switch (memoryKind)
             {
                 case Arm64MemoryEncodingKind.BaseRegisterXn:
+                    MemoryKind = Arm64MemoryKind.BaseRegisterXn;
+                    break;
+
                 case Arm64MemoryEncodingKind.BaseRegister:
-                    MemoryKind = Arm64MemoryOperandKind.BaseRegister;
+                    MemoryKind = Arm64MemoryKind.BaseRegister;
                     break;
 
                 case Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional:
@@ -88,7 +91,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                     goto case Arm64MemoryEncodingKind.BaseRegisterAndImmediate;
 
                 case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
-                    MemoryKind = Arm64MemoryOperandKind.BaseRegisterWithImmediate;
+                    MemoryKind = Arm64MemoryKind.BaseRegisterWithImmediate;
                     Immediate = value;
                     break;
 
@@ -98,7 +101,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                     goto case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend;
 
                 case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
-                    MemoryKind = Arm64MemoryOperandKind.BaseRegisterWithIndexAndExtend;
+                    MemoryKind = Arm64MemoryKind.BaseRegisterWithIndexAndExtend;
 
                     //Debug.Assert(extendBitRange.HiBit == 15 && extendBitRange.Width == 3);
                     //Debug.Assert(amountBitRange.HiBit == 12 && amountBitRange.Width == 1);
@@ -182,7 +185,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
 
     public Arm64OperandKind Kind => Arm64OperandKind.Memory;
 
-    public Arm64MemoryOperandKind MemoryKind { get; }
+    public Arm64MemoryKind MemoryKind { get; }
 
     public Arm64RegisterAny BaseRegister { get; }
 
@@ -228,9 +231,9 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         }
         var written = baseWritten + 1;
 
-        if (MemoryKind >= Arm64MemoryOperandKind.BaseRegisterWithImmediate)
+        if (MemoryKind >= Arm64MemoryKind.BaseRegisterWithImmediate)
         {
-            if (MemoryKind == Arm64MemoryOperandKind.BaseRegisterWithImmediate)
+            if (MemoryKind == Arm64MemoryKind.BaseRegisterWithImmediate)
             {
                 if (!_hasOptionalImmediate || this.Immediate != 0)
                 {
@@ -323,12 +326,4 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
     
     [DoesNotReturn, MethodImpl(MethodImplOptions.NoInlining)]
     private static void ThrowInvalidCast(Arm64OperandKind kind) => throw new InvalidCastException($"Cannot cast Operand `{kind}` to {nameof(Arm64MemoryOperand)}");
-}
-
-public enum Arm64MemoryOperandKind : byte
-{
-    None,
-    BaseRegister,
-    BaseRegisterWithImmediate,
-    BaseRegisterWithIndexAndExtend,
 }
