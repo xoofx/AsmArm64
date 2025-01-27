@@ -106,7 +106,7 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
         destination[written] = (char)' ';
         destination[written + 1] = '#';
         written += 2;
-        if (!Amount.TryFormat(destination.Slice(written), out var digitWritten, format, provider))
+        if (!Amount.TryFormat(destination.Slice(written), out var digitWritten, "G", provider))
         {
             charsWritten = 0;
             return false;
