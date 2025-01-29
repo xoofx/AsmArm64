@@ -4,6 +4,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using AsmArm64.CodeGen.Model;
@@ -49,10 +50,13 @@ partial class Arm64Processor
         var mapMnemonicToInstructions = new Dictionary<string, List<Instruction>>();
         foreach (var instruction in instructions)
         {
-            if (!mapMnemonicToInstructions.TryGetValue(instruction.Mnemonic, out var list))
+            if (instruction.Id.StartsWith("SMS")) continue; // TODO: skip SMSTART/SMSTOP
+
+            var mnemonic = GetInstructionMnemonic(instruction);
+            if (!mapMnemonicToInstructions.TryGetValue(mnemonic, out var list))
             {
                 list = new List<Instruction>();
-                mapMnemonicToInstructions.Add(instruction.Mnemonic, list);
+                mapMnemonicToInstructions.Add(mnemonic, list);
             }
             list.Add(instruction);
         }
@@ -74,7 +78,7 @@ partial class Arm64Processor
 
     private void WriteInstructionVariation(CodeWriter w, InstructionVariation instructionVariation)
     {
-        var instruction = instructionVariation.Instructions[0];
+        var instruction = instructionVariation.Instruction;
 
         w.WriteSummary(EscapeHtmlEntities(instruction.Summary));
         w.WriteLine($"[Arm64LinkInstructionId(Arm64InstructionId.{instruction.Id}), MethodImpl(MethodImplOptions.AggressiveInlining)]");
@@ -89,35 +93,79 @@ partial class Arm64Processor
                 w.Write(", ");
             }
 
-            w.Write($"{operand.OperandType} {operand.OperandName}");
+            operand.WriterParameters(w);
         }
 
         w.WriteLine(")");
         w.OpenBraceBlock();
         {
-            w.WriteLine($"uint raw = 0x{instructionVariation.BitfieldValue:X8}U; // Encoding for: {instruction.Id}");
+            w.Write($"uint raw = 0x{instructionVariation.BitfieldValue:X8}U; // Encoding for: {instruction.Id}");
+            if (instructionVariation.ElseVariation is not null)
+            {
+                w.WriteLine($" and memory variation with 0x{instructionVariation.ElseVariation.BitfieldValue:X8} {instructionVariation.ElseVariation.Instruction.Id}");
+            }
+            else
+            {
+                w.WriteLine();
+
+            }
             w.WriteLine("return raw;");
         }
         w.CloseBraceBlock();
     }
 
 
+    private bool TryGetCombinedInstructionVariations(string mnemonic, string id1, string id2, List<Instruction> instructions, [NotNullWhen(true)] out InstructionVariation? variation)
+    {
+        variation = null;
+        var i1 = instructions.Find(x => x.Id == id1);
+        if (i1 is null)
+        {
+            return false;
+        }
+        instructions.Remove(i1);
+        var i2 = instructions.First(x => x.Id == id2)!;
+        instructions.Remove(i2);
+        
+        var v1 = new List<InstructionVariation>();
+        GetInstructionVariations(mnemonic, i1, v1);
+
+        var v2 = new List<InstructionVariation>();
+        GetInstructionVariations(mnemonic, i2, v2);
+
+        Debug.Assert(v1.Count == 1);
+        Debug.Assert(v2.Count == 1);
+
+        variation = v1[0];
+        variation.ElseVariation = v2[0];
+        return true;
+    }
+
+    private static readonly List<(string Mnemonic, string Id1, string Id2)> CombinedInstructionList =
+    [
+        ("LDR", "LDR_b_ldst_regoff", "LDR_bl_ldst_regoff"),
+        ("STR", "STR_b_ldst_regoff", "STR_bl_ldst_regoff"),
+        ("LDRB", "LDRB_32b_ldst_regoff", "LDRB_32bl_ldst_regoff"),
+        ("LDRSB", "LDRSB_32b_ldst_regoff", "LDRSB_32bl_ldst_regoff"),
+        ("LDRSB", "LDRSB_64b_ldst_regoff", "LDRSB_64bl_ldst_regoff"),
+        ("STRB", "STRB_32b_ldst_regoff", "STRB_32bl_ldst_regoff"),
+    ];
+
     private void GetInstructionVariations(string mnemonic, List<Instruction> instructions, List<InstructionVariation> variations)
     {
-        if (instructions.Count == 2)
+        // Special case where instructions are combined because of memory operand differing only with LSL / EXTEND
+        foreach (var combined in CombinedInstructionList)
         {
-            // TODO: handle potential merge
-            foreach (var instruction in instructions)
+            if (combined.Mnemonic  == mnemonic
+                && TryGetCombinedInstructionVariations(mnemonic, combined.Id1, combined.Id2, instructions, out var variation))
             {
-                GetInstructionVariations(mnemonic, instruction, variations);
+                variations.Add(variation);
             }
         }
-        else
+
+        foreach (var instruction in instructions)
         {
-            foreach (var instruction in instructions)
-            {
-                GetInstructionVariations(mnemonic, instruction, variations);
-            }
+            GetInstructionVariations(mnemonic, instruction, variations);
         }
     }
 
@@ -141,10 +189,9 @@ partial class Arm64Processor
             var instructionVariation = new InstructionVariation()
             {
                 Mnemonic = mnemonic,
-                BitfieldValue = instruction.BitfieldValue
+                BitfieldValue = instruction.BitfieldValue,
+                Instruction = instruction,
             };
-
-            instructionVariation.Instructions.Add(instruction);
 
             foreach (var operandVariations in allOperandVariations)
             {
@@ -155,7 +202,7 @@ partial class Arm64Processor
         }
         else
         {
-            var encodingSymbolExtracts = allOperandVariations.SelectMany(x => x.Where(y => y.EncodingExtract is not null).Select(z => z.EncodingExtract!)).Distinct().ToList();
+            var encodingSymbolExtracts = allOperandVariations.SelectMany(x => x.Select(z => z.EncodingExtract)).Distinct().ToList();
 
             // Slightly more complicated case. We have one producer of a variation.
             if (encodingSymbolExtracts.Count == 1)
@@ -168,9 +215,9 @@ partial class Arm64Processor
                     var instructionVariation = new InstructionVariation()
                     {
                         Mnemonic = mnemonic,
-                        BitfieldValue = instruction.BitfieldValue
+                        BitfieldValue = instruction.BitfieldValue,
+                        Instruction = instruction,
                     };
-                    instructionVariation.Instructions.Add(instruction);
 
                     foreach (var allOperandVariation in allOperandVariations)
                     {
@@ -184,6 +231,8 @@ partial class Arm64Processor
             }
             else
             {
+                encodingSymbolExtracts = encodingSymbolExtracts.Where(x => x is not null).ToList();
+
                 // More complicated case. We have multiple producer of variations, but they are all sharing the same encoding
                 // For example, Vn.T has {8B} and implies that Vd is {B}:
                 //
@@ -194,13 +243,8 @@ partial class Arm64Processor
                 //     [2] Vn.4H,   H
                 //     [3] Vn.8H,   H
                 //     [4] Vn.4S,   S
-                var bestEncodingExtra = encodingSymbolExtracts.OrderByDescending(x =>
-                {
-                    Debug.Assert(x.Selector is not null);
-                    return x.Selector!.BitSize;
-                }).First();
-
-                var selector = bestEncodingExtra.Selector!;
+                var bestEncodingExtra = encodingSymbolExtracts.Where(x => x.Selector is not null).OrderByDescending(x => x.Selector!.BitSize).First();
+                var selector = bestEncodingExtra!.Selector!;
 
                 // For now, we only support a selector that is overlapping with all other selectors
                 // So that we can "merge" their output instead of "multiplying" their output
@@ -243,8 +287,8 @@ partial class Arm64Processor
                     {
                         Mnemonic = mnemonic,
                         BitfieldValue = instruction.BitfieldValue,
+                        Instruction = instruction,
                     };
-                    instructionVariation.Instructions.Add(instruction);
 
                     foreach (var listOfVariationForOneOperand in allOperandVariations)
                     {
@@ -278,7 +322,7 @@ partial class Arm64Processor
                 }
 
                 // Uncomment the following code to print the variations
-                Console.WriteLine($"Instruction {instruction.Id} - {instruction.FullSyntax} - Count Selectors: {encodingSymbolExtracts.Count} - Encoding Variations: {encodingVariations.Count}");
+                //Console.WriteLine($"Instruction {instruction.Id} - {instruction.FullSyntax} - Count Selectors: {encodingSymbolExtracts.Count} - Encoding Variations: {encodingVariations.Count}");
                 //for (var i = 0; i < encodingVariations.Count; i++)
                 //{
                 //    var variationList = encodingVariations[i];
@@ -300,14 +344,7 @@ partial class Arm64Processor
                 GetRegisterOperandVariation((RegisterOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.RegisterGroup:
-                operandVariations.Add(
-                    new OperandVariation()
-                    {
-                        Descriptor = descriptor,
-                        OperandName = GetNormalizedOperandName(descriptor.Name),
-                        OperandType = $"RegisterGroup{((RegisterGroupOperandDescriptor)descriptor).Count}",
-                    }
-                );
+                GetRegisterGroupOperandVariation((RegisterGroupOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.SystemRegister:
                 operandVariations.Add(
@@ -331,14 +368,7 @@ partial class Arm64Processor
                 
                 break;
             case Arm64OperandKind.Immediate:
-                operandVariations.Add(
-                    new OperandVariation()
-                    {
-                        Descriptor = descriptor,
-                        OperandName = GetNormalizedOperandName(descriptor.Name),
-                        OperandType = "long", // TODO: handle different sizes
-                    }
-                );
+                GetImmediateVariation((ImmediateOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Label:
                 operandVariations.Add(
@@ -357,42 +387,175 @@ partial class Arm64Processor
                 GetExtendOperandVariations((ExtendOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Enum:
-                operandVariations.Add(
-                    new OperandVariation()
-                    {
-                        Descriptor = descriptor,
-                        OperandName = GetNormalizedOperandName(descriptor.Name),
-                        OperandType = "Enum",
-                    }
-                );
+                GetEnumVariations((EnumOperandDescriptor)descriptor, operandVariations);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
     }
 
+    private void GetEnumVariations(EnumOperandDescriptor descriptor, List<OperandVariation> operandVariations)
+    {
+        string enumType;
+        switch (descriptor.EnumKind)
+        {
+            case Arm64EnumKind.Conditional:
+            case Arm64EnumKind.InvertedConditional:
+                enumType = "Arm64ConditionalKind";
+                break;
+            case Arm64EnumKind.BranchTargetIdentification:
+                enumType = "Arm64BranchTargetIdentificationKind";
+                break;
+            case Arm64EnumKind.DataSynchronizationOption:
+                enumType = "Arm64DataSynchronizationKind";
+                break;
+            case Arm64EnumKind.StoredSharedHintPolicy:
+                enumType = "Arm64StoredSharedHintPolicyKind";
+                break;
+            case Arm64EnumKind.ProcessStateField:
+                enumType = "Arm64ProcessStateField";
+                break;
+            case Arm64EnumKind.BarrierOperationLimit:
+                enumType = "Arm64BarrierOperationLimitKind";
+                break;
+            case Arm64EnumKind.PrefetchOperation:
+                enumType = "Arm64PrefetchOperationKind";
+                break;
+            case Arm64EnumKind.RangePrefetchOperation:
+                enumType = "Arm64RangePrefetchOperationKind";
+                break;
+            case Arm64EnumKind.DataSync:
+                enumType = "Arm64DataSyncKind";
+                break;
+            case Arm64EnumKind.CodeSync:
+                enumType = "Arm64CodeSyncKind";
+                break;
+            case Arm64EnumKind.RestrictionByContext:
+                enumType = "Arm64RestrictionByContextKind";
+                break;
+            default:
+                throw new ArgumentOutOfRangeException($"Invalid enum kind  {descriptor.EnumKind}");
+        }
+
+        var name = GetNormalizedOperandName(descriptor.Name);
+        operandVariations.Add(
+            new OperandVariation()
+            {
+                Descriptor = descriptor,
+                OperandName = name,
+                OperandType = enumType,
+            }
+        );
+         
+        // We don't create variation as it would conflict with other variations.
+        // Instead, user will have to cast to enum in order to pass a value
+
+        //if (descriptor.AllowImmediate)
+        //{
+        //    operandVariations.Add(
+        //        new OperandVariation()
+        //        {
+        //            Descriptor = descriptor,
+        //            OperandName = name,
+        //            OperandType = "int",
+        //        }
+        //    );
+        //}
+    }
+
+    private void GetImmediateVariation(ImmediateOperandDescriptor descriptor, List<OperandVariation> operandVariations)
+    {
+        var name = GetNormalizedOperandName(descriptor.Name);
+        if (descriptor.Name == "0.0")
+        {
+            name = "zero";
+        }
+        else if (!descriptor.Name.Contains('.') && char.IsAsciiDigit(descriptor.Name[0]))
+        {
+            name = $"value{descriptor.Name}";
+        }
+
+        var operandType = "int";
+        if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.ValueImm64)
+        {
+            operandType = "ulong";
+        }
+        else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask32)
+        {
+            operandType = "Arm64LogicalImmediate32";
+        }
+        else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64)
+        {
+            operandType = "Arm64LogicalImmediate64";
+        }
+
+        var operandVariation = new OperandVariation
+        {
+            Descriptor = descriptor,
+            OperandName = name,
+            OperandType = operandType
+        };
+        
+        if (descriptor.IsOptional)
+        {
+            operandVariation.DefaultValue = "0";
+        }
+        
+        operandVariations.Add(operandVariation);
+    }
+
+
     private void GetShiftOperandVariations(ShiftOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
-        operandVariations.Add(new OperandVariation2
+        var operandType = descriptor.ShiftKind switch
+        {
+            Arm64ShiftEncodingKind.Fixed => "LSLShiftKind",
+            Arm64ShiftEncodingKind.Shift3 => "Arm64ShiftKind3",
+            Arm64ShiftEncodingKind.Shift4 => "Arm64ShiftKind4",
+            Arm64ShiftEncodingKind.Lsl0 => "LSLShiftKind",
+            Arm64ShiftEncodingKind.Lsl => "LSLShiftKind",
+            Arm64ShiftEncodingKind.LslScale8 => "LSLShiftKind",
+            Arm64ShiftEncodingKind.Msl => "MSLShiftKind",
+            Arm64ShiftEncodingKind.LslScale16 => "LSLShiftKind",
+            _ => throw new ArgumentOutOfRangeException()
+        };
+
+        var operandVariation = new OperandVariation
         {
             Descriptor = descriptor,
             OperandName = GetNormalizedOperandName(descriptor.Name),
-            OperandType = "Arm64ShiftType",
+            OperandType = operandType,
             OperandName2 = "amount",
             OperandType2 = "int"
-        });
+        };
+
+        if (descriptor.IsOptional)
+        {
+            operandVariation.DefaultValue = "default";
+            operandVariation.DefaultValue2 = "0";
+        }
+
+        operandVariations.Add(operandVariation);
     }
 
     private void GetExtendOperandVariations(ExtendOperandDescriptor descriptor, List<OperandVariation> variations)
     {
-        variations.Add(new OperandVariation2
+        var operandVariation = new OperandVariation
         {
             Descriptor = descriptor,
             OperandName = GetNormalizedOperandName(descriptor.Name),
-            OperandType = "Arm64ExtendType",
+            OperandType = "Arm64ExtendKind",
             OperandName2 = "amount",
             OperandType2 = "int"
-        });
+        };
+
+        if (descriptor.IsOptional)
+        {
+            operandVariation.DefaultValue = "Arm64ExtendKind.LSL";
+            operandVariation.DefaultValue2 = "0";
+        }
+
+        variations.Add(operandVariation);
     }
 
     private static string GetMemoryOperandType(MemoryOperandDescriptor memory)
@@ -426,6 +589,28 @@ partial class Arm64Processor
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
+        }
+    }
+
+
+    private void GetRegisterGroupOperandVariation(RegisterGroupOperandDescriptor descriptor, List<OperandVariation> operandVariations)
+    {
+        var registerVariations = new List<OperandVariation>();
+        GetRegisterOperandVariation(descriptor.Register, registerVariations);
+        foreach (var registerVariation in registerVariations)
+        {
+            var operandName = GetNormalizedOperandName(descriptor.Name);
+            var operandType = $"Arm64RegisterGroup{descriptor.Count}<{registerVariation.OperandType}>";
+            operandVariations.Add(new OperandVariation
+            {
+                Descriptor = descriptor,
+                OperandName = operandName,
+                OperandType = operandType,
+                BitfieldMask = registerVariation.BitfieldMask,
+                BitfieldSets = registerVariation.BitfieldSets,
+                BitValue = registerVariation.BitValue,
+                EncodingExtract = registerVariation.EncodingExtract,
+            });
         }
     }
 
@@ -481,10 +666,12 @@ partial class Arm64Processor
                 Debug.Assert(dynamicRegisterExtract is not null);
                 var dynamicRegisterSelector = dynamicRegisterExtract.Selector;
                 Debug.Assert(dynamicRegisterSelector is not null);
+                Debug.Assert(dynamicRegisterSelector.BitValues.Count > 0);
 
                 foreach (var bitValue in dynamicRegisterSelector.BitValues)
                 {
                     var registerType = $"{baseType}{bitValue.Text}";
+                    Debug.Assert(!string.IsNullOrEmpty(bitValue.Text));
 
                     if (register.IndexerExtract != null)
                     {
@@ -502,7 +689,7 @@ partial class Arm64Processor
                         BitValue = bitValue
                     });
                 }
-                break;
+                return;
             case Arm64RegisterEncodingKind.V:
                 baseType = "Arm64RegisterV";
                 var vectorArrangement = register.VectorArrangement;
@@ -574,16 +761,29 @@ partial class Arm64Processor
         return name.Replace('.', '_').Replace('|', '_').Replace('(', '_').Replace('+', '_').Replace(")", "");
     }
 
+    private static string GetInstructionMnemonic(Instruction instruction)
+    {
+        // Special casing for MOV_MOVN that would conflict with MOV_movz
+        if (instruction.Id == "MOV_movn_32_movewide" || instruction.Id == "MOV_movn_64_movewide")
+        {
+            return "MOV_MOVN";
+        }
+
+        return instruction.Mnemonic;
+    }
+
 
     private class InstructionVariation
     {
         public required string Mnemonic { get; init; }
 
+        public required Instruction Instruction { get; init; }
+
         public uint BitfieldValue { get; set; }
+        
+        public List<OperandVariation> Operands { get; } = new();
 
-        public List<Instruction> Instructions = new();
-
-        public List<OperandVariation> Operands = new();
+        public InstructionVariation? ElseVariation { get; set; }
     }
 
     private record OperandVariation
@@ -592,21 +792,39 @@ partial class Arm64Processor
 
         public EncodingSymbolExtract? EncodingExtract { get; init; }
 
-        public required string OperandName { get; init; }
-
         public required string OperandType { get; init; }
 
+        public required string OperandName { get; init; }
+        
+        public string? OperandType2 { get; init; }
+
+        public string? OperandName2 { get; init; }
+        
         public uint BitfieldMask { get; set; }
 
-        public uint BitfieldSets { get; set; }
+        public uint BitfieldSets { get; init; }
 
-        public EncodingBitValue? BitValue { get; set; }
-    }
+        public EncodingBitValue? BitValue { get; init; }
 
-    private record OperandVariation2 : OperandVariation
-    {
-        public required string OperandName2 { get; init; }
+        public string? DefaultValue { get; set; }
 
-        public required string OperandType2 { get; init; }
+        public string? DefaultValue2 { get; set; }
+        
+        public void WriterParameters(CodeWriter writer)
+        {
+            writer.Write($"{OperandType} {OperandName}");
+            if (Descriptor.IsOptional)
+            {
+                writer.Write($" = {DefaultValue ?? "default"}");
+            }
+            if (OperandType2 is not null)
+            {
+                writer.Write($", {OperandType2} {OperandName2}");
+                if (Descriptor.IsOptional)
+                {
+                    writer.Write($" = {DefaultValue2 ?? "default"}");
+                }
+            }
+        }
     }
 }

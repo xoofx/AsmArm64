@@ -36,7 +36,7 @@ public readonly struct Arm64EnumOperand : IArm64Operand
                 // Rt: 0-4
                 // imm6 option<2>:option<0>:S:Rt<2:0>
                 var value = (rawValue & 0x7) | ((rawValue >> 9) & 0x18) | ((rawValue >> 10) & 0x20);
-                switch ((Arm64RangePrefetchOperationKind)value + 1)
+                switch ((Arm64RangePrefetchOperationKind)value)
                 {
                     case Arm64RangePrefetchOperationKind.PLDKEEP:
                     case Arm64RangePrefetchOperationKind.PSTKEEP:
@@ -92,25 +92,25 @@ public readonly struct Arm64EnumOperand : IArm64Operand
         }
     }
 
-    public Arm64DataSynchronizationKind AsDataSynchronization => EnumKind == Arm64EnumKind.DataSynchronizationOption ? (Arm64DataSynchronizationKind)(Value + 1) : Arm64DataSynchronizationKind.None;
+    public Arm64DataSynchronizationKind AsDataSynchronization => EnumKind == Arm64EnumKind.DataSynchronizationOption ?  (Arm64DataSynchronizationKind)(Value) : Arm64DataSynchronizationKind.Undefined;
 
-    public Arm64StoredSharedHintPolicyKind AsStoredSharedHintPolicy => EnumKind == Arm64EnumKind.StoredSharedHintPolicy ? (Arm64StoredSharedHintPolicyKind)(Value + 1) : Arm64StoredSharedHintPolicyKind.None;
+    public Arm64StoredSharedHintPolicyKind AsStoredSharedHintPolicy => EnumKind == Arm64EnumKind.StoredSharedHintPolicy ? (Arm64StoredSharedHintPolicyKind)(Value) : Arm64StoredSharedHintPolicyKind.Undefined;
     
-    public Arm64BranchTargetIdentificationKind AsBranchTargetIdentification => EnumKind == Arm64EnumKind.BranchTargetIdentification ? (Arm64BranchTargetIdentificationKind)(Value + 1) : Arm64BranchTargetIdentificationKind.None;
+    public Arm64BranchTargetIdentificationKind AsBranchTargetIdentification => EnumKind == Arm64EnumKind.BranchTargetIdentification ? (Arm64BranchTargetIdentificationKind)(Value) : Arm64BranchTargetIdentificationKind.Undefined;
 
-    public Arm64BarrierOperationLimitKind AsBarrierOperationLimit => EnumKind == Arm64EnumKind.BarrierOperationLimit ? (Arm64BarrierOperationLimitKind)(Value) : Arm64BarrierOperationLimitKind.None;
+    public Arm64BarrierOperationLimitKind AsBarrierOperationLimit => EnumKind == Arm64EnumKind.BarrierOperationLimit ? (Arm64BarrierOperationLimitKind)(Value) : Arm64BarrierOperationLimitKind.Undefined;
 
-    public Arm64PrefetchOperationKind AsPrefetchOperation => EnumKind == Arm64EnumKind.PrefetchOperation ? (Arm64PrefetchOperationKind)(Value + 1) : Arm64PrefetchOperationKind.None;
+    public Arm64PrefetchOperationKind AsPrefetchOperation => EnumKind == Arm64EnumKind.PrefetchOperation ? (Arm64PrefetchOperationKind)(Value) : Arm64PrefetchOperationKind.Undefined;
 
-    public Arm64RangePrefetchOperationKind AsRangePrefetchOperation => !IsImmediate && EnumKind == Arm64EnumKind.RangePrefetchOperation ? (Arm64RangePrefetchOperationKind)(Value + 1) : Arm64RangePrefetchOperationKind.None;
+    public Arm64RangePrefetchOperationKind AsRangePrefetchOperation => !IsImmediate && EnumKind == Arm64EnumKind.RangePrefetchOperation ? (Arm64RangePrefetchOperationKind)(Value) : Arm64RangePrefetchOperationKind.Undefined;
 
-    public Arm64ProcessStateField AsProcessStateField => EnumKind == Arm64EnumKind.ProcessStateField ? (Arm64ProcessStateField)Value : Arm64ProcessStateField.None;
+    public Arm64ProcessStateField AsProcessStateField => EnumKind == Arm64EnumKind.ProcessStateField ? (Arm64ProcessStateField)Value : Arm64ProcessStateField.Undefined;
 
-    public Arm64CodeSyncKind AsCodeSync => EnumKind == Arm64EnumKind.CodeSync ? Arm64CodeSyncKind.CSYNC : Arm64CodeSyncKind.None;
+    public Arm64CodeSyncKind AsCodeSync => EnumKind == Arm64EnumKind.CodeSync ? Arm64CodeSyncKind.CSYNC : Arm64CodeSyncKind.Undefined;
 
-    public Arm64DataSyncKind AsDataSync => EnumKind == Arm64EnumKind.DataSync ? Arm64DataSyncKind.DSYNC : Arm64DataSyncKind.None;
+    public Arm64DataSyncKind AsDataSync => EnumKind == Arm64EnumKind.DataSync ? Arm64DataSyncKind.DSYNC : Arm64DataSyncKind.Undefined;
 
-    public Arm64RestrictionByContextKind AsRestrictionByContext => EnumKind == Arm64EnumKind.RestrictionByContext ? Arm64RestrictionByContextKind.RCTX : Arm64RestrictionByContextKind.None;
+    public Arm64RestrictionByContextKind AsRestrictionByContext => EnumKind == Arm64EnumKind.RestrictionByContext ? Arm64RestrictionByContextKind.RCTX : Arm64RestrictionByContextKind.Undefined;
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);

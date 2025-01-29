@@ -10,27 +10,27 @@ namespace AsmArm64;
 public enum Arm64BranchTargetIdentificationKind : byte
 {
     /// <summary>
-    /// No branch target identification specified.
-    /// </summary>
-    None,
-
-    /// <summary>
     /// No BTI tag present at the target address.
     /// </summary>
-    Absent = 1,
+    Absent = 0,
 
     /// <summary>
     /// BTI with the "C" tag. Indicates a target address for indirect calls.
     /// </summary>
-    C = 2,
+    C = 1,
 
     /// <summary>
     /// BTI with the "J" tag. Indicates a target address for indirect jumps.
     /// </summary>
-    J = 3,
+    J = 2,
 
     /// <summary>
     /// BTI with the "JC" tag. Indicates a target address for both indirect jumps and calls.
     /// </summary>
-    JC = 4,
+    JC = 3,
+
+    /// <summary>
+    /// The branch target identification kind is undefined.
+    /// </summary>
+    Undefined = 0xFF
 }

@@ -234,7 +234,7 @@ public readonly record struct Arm64Register<#= kind #> : <#= kind == "V" ? "IArm
     /// <summary>
     /// Represents an ARM64 a vector indexed with (V.<#= kind #> arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 
@@ -387,7 +387,7 @@ public readonly record struct Arm64RegisterV_<#= kind #> : IArm64RegisterVTyped
     /// <summary>
     /// Represents an ARM64 a vector indexed with <#= vector.Description #> (V.<#= kind #> arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 
@@ -604,7 +604,7 @@ public readonly record struct Arm64RegisterV_<#= size #><#= kind #> : IArm64Regi
     /// <summary>
     /// Represents an ARM64 a vector indexed with (V.<#= kind #> arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVPacked, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 

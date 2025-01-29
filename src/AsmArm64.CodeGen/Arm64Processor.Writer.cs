@@ -581,7 +581,6 @@ partial class Arm64Processor
         w.OpenBraceBlock();
         {
             w.WriteSummary("Not a valid value.");
-            w.WriteLine("None = 0,");
             foreach (var pair in enums.OrderBy(x => x.Value))
             {
                 if (description.TryGetValue(pair.Key, out var itemSummary))
@@ -592,8 +591,9 @@ partial class Arm64Processor
                 {
                     Console.WriteLine($"No summary found for enum {name} - item: {pair.Key}");
                 }
-                w.WriteLine($"{pair.Key} = {pair.Value + 1},");
+                w.WriteLine($"{pair.Key} = {pair.Value},");
             }
+            w.WriteLine("Undefined = 0xFF,");
         }
         w.CloseBraceBlock();
     }

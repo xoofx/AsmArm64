@@ -10,17 +10,17 @@ namespace AsmArm64;
 public enum Arm64StoredSharedHintPolicyKind : byte
 {
     /// <summary>
-    /// No shared hint policy specified.
-    /// </summary>
-    None,
-
-    /// <summary>
     /// KEEP policy. Indicates that the data should remain in the cache for future access.
     /// </summary>
-    KEEP = 1,
+    KEEP = 0,
 
     /// <summary>
     /// STRM (Stream) policy. Indicates that the data should be treated as streaming and not retained in the cache.
     /// </summary>
-    STRM = 2,
+    STRM = 1,
+
+    /// <summary>
+    /// The shared hint policy kind is undefined.
+    /// </summary>
+    Undefined = 0xFF
 }

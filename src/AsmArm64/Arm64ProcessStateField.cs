@@ -8,18 +8,18 @@ namespace AsmArm64;
 
 public enum Arm64ProcessStateField : byte
 {
-    None,
-    ALLINT,
-    PM,
-    SVCRSM,
-    SVCRZA,
-    SVCRSMZA,
-    UAO,
-    PAN,
-    SPSel,
-    SSBS,
-    DIT,
-    TCO,
-    DAIFSet,
-    DAIFClr
+    ALLINT = 0,
+    PM = 1,
+    SVCRSM = 2,
+    SVCRZA = 3,
+    SVCRSMZA = 4,
+    UAO = 5,
+    PAN = 6,
+    SPSel = 7,
+    SSBS = 8,
+    DIT = 9,
+    TCO = 10,
+    DAIFSet= 11,
+    DAIFClr = 12,
+    Undefined = 0xFF,
 }

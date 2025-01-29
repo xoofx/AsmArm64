@@ -89,7 +89,7 @@ static partial class Arm64InstructionFactory
     /// Load pair of SIMD&amp;FP registers
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_s_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64BaseMemoryAccessor src, long imm)
+    public static uint LDP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0x2CC00000U; // Encoding for: LDP_s_ldstpair_post
         return raw;
@@ -98,7 +98,7 @@ static partial class Arm64InstructionFactory
     /// Load pair of SIMD&amp;FP registers
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_d_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64BaseMemoryAccessor src, long imm)
+    public static uint LDP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0x6CC00000U; // Encoding for: LDP_d_ldstpair_post
         return raw;
@@ -107,7 +107,7 @@ static partial class Arm64InstructionFactory
     /// Load pair of SIMD&amp;FP registers
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_q_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor src, long imm)
+    public static uint LDP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0xACC00000U; // Encoding for: LDP_q_ldstpair_post
         return raw;
@@ -167,10 +167,19 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Load SIMD&amp;FP register (register offset)
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDR(Arm64RegisterB Bt, Arm64RegisterExtendMemoryAccessor src)
+    {
+        uint raw = 0x3C600800U; // Encoding for: LDR_b_ldst_regoff and memory variation with 0x3C606800 LDR_bl_ldst_regoff
+        return raw;
+    }
+    /// <summary>
     /// Load SIMD&amp;FP register (immediate offset)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterB Bt, Arm64BaseMemoryAccessor src, long simm)
+    public static uint LDR(Arm64RegisterB Bt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0x3C400400U; // Encoding for: LDR_b_ldst_immpost
         return raw;
@@ -179,7 +188,7 @@ static partial class Arm64InstructionFactory
     /// Load SIMD&amp;FP register (immediate offset)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_h_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterH Ht, Arm64BaseMemoryAccessor src, long simm)
+    public static uint LDR(Arm64RegisterH Ht, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0x7C400400U; // Encoding for: LDR_h_ldst_immpost
         return raw;
@@ -188,7 +197,7 @@ static partial class Arm64InstructionFactory
     /// Load SIMD&amp;FP register (immediate offset)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterS St, Arm64BaseMemoryAccessor src, long simm)
+    public static uint LDR(Arm64RegisterS St, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0xBC400400U; // Encoding for: LDR_s_ldst_immpost
         return raw;
@@ -197,7 +206,7 @@ static partial class Arm64InstructionFactory
     /// Load SIMD&amp;FP register (immediate offset)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterD Dt, Arm64BaseMemoryAccessor src, long simm)
+    public static uint LDR(Arm64RegisterD Dt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0xFC400400U; // Encoding for: LDR_d_ldst_immpost
         return raw;
@@ -206,7 +215,7 @@ static partial class Arm64InstructionFactory
     /// Load SIMD&amp;FP register (immediate offset)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterQ Qt, Arm64BaseMemoryAccessor src, long simm)
+    public static uint LDR(Arm64RegisterQ Qt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0x3CC00400U; // Encoding for: LDR_q_ldst_immpost
         return raw;
@@ -331,24 +340,6 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Load SIMD&amp;FP register (register offset)
     /// </summary>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterB Bt, Arm64RegisterExtendMemoryAccessor src)
-    {
-        uint raw = 0x3C600800U; // Encoding for: LDR_b_ldst_regoff
-        return raw;
-    }
-    /// <summary>
-    /// Load SIMD&amp;FP register (register offset)
-    /// </summary>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDR_bl_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterB Bt, Arm64RegisterExtendMemoryAccessor src)
-    {
-        uint raw = 0x3C606800U; // Encoding for: LDR_bl_ldst_regoff
-        return raw;
-    }
-    /// <summary>
-    /// Load SIMD&amp;FP register (register offset)
-    /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterH Ht, Arm64OptionalRegisterExtendMemoryAccessor src)
     {
@@ -395,7 +386,7 @@ static partial class Arm64InstructionFactory
     /// Load unprivileged pair of SIMD&amp;FP registers
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTP_q_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor src, long imm)
+    public static uint LDTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0xECC00000U; // Encoding for: LDTP_q_ldstpair_post
         return raw;
@@ -539,7 +530,7 @@ static partial class Arm64InstructionFactory
     /// Store pair of SIMD&amp;FP registers
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_s_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64BaseMemoryAccessor dst, long imm)
+    public static uint STP(Arm64RegisterS St1, Arm64RegisterS St2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0x2C800000U; // Encoding for: STP_s_ldstpair_post
         return raw;
@@ -548,7 +539,7 @@ static partial class Arm64InstructionFactory
     /// Store pair of SIMD&amp;FP registers
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_d_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64BaseMemoryAccessor dst, long imm)
+    public static uint STP(Arm64RegisterD Dt1, Arm64RegisterD Dt2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0x6C800000U; // Encoding for: STP_d_ldstpair_post
         return raw;
@@ -557,7 +548,7 @@ static partial class Arm64InstructionFactory
     /// Store pair of SIMD&amp;FP registers
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_q_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor dst, long imm)
+    public static uint STP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0xAC800000U; // Encoding for: STP_q_ldstpair_post
         return raw;
@@ -617,10 +608,19 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Store SIMD&amp;FP register (register offset)
+    /// </summary>
+    [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint STR(Arm64RegisterB Bt, Arm64RegisterExtendMemoryAccessor dst)
+    {
+        uint raw = 0x3C200800U; // Encoding for: STR_b_ldst_regoff and memory variation with 0x3C206800 STR_bl_ldst_regoff
+        return raw;
+    }
+    /// <summary>
     /// Store SIMD&amp;FP register (immediate offset)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterB Bt, Arm64BaseMemoryAccessor dst, long simm)
+    public static uint STR(Arm64RegisterB Bt, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0x3C000400U; // Encoding for: STR_b_ldst_immpost
         return raw;
@@ -629,7 +629,7 @@ static partial class Arm64InstructionFactory
     /// Store SIMD&amp;FP register (immediate offset)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_h_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterH Ht, Arm64BaseMemoryAccessor dst, long simm)
+    public static uint STR(Arm64RegisterH Ht, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0x7C000400U; // Encoding for: STR_h_ldst_immpost
         return raw;
@@ -638,7 +638,7 @@ static partial class Arm64InstructionFactory
     /// Store SIMD&amp;FP register (immediate offset)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_s_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterS St, Arm64BaseMemoryAccessor dst, long simm)
+    public static uint STR(Arm64RegisterS St, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xBC000400U; // Encoding for: STR_s_ldst_immpost
         return raw;
@@ -647,7 +647,7 @@ static partial class Arm64InstructionFactory
     /// Store SIMD&amp;FP register (immediate offset)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_d_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterD Dt, Arm64BaseMemoryAccessor dst, long simm)
+    public static uint STR(Arm64RegisterD Dt, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xFC000400U; // Encoding for: STR_d_ldst_immpost
         return raw;
@@ -656,7 +656,7 @@ static partial class Arm64InstructionFactory
     /// Store SIMD&amp;FP register (immediate offset)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_q_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterQ Qt, Arm64BaseMemoryAccessor dst, long simm)
+    public static uint STR(Arm64RegisterQ Qt, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0x3C800400U; // Encoding for: STR_q_ldst_immpost
         return raw;
@@ -754,24 +754,6 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Store SIMD&amp;FP register (register offset)
     /// </summary>
-    [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterB Bt, Arm64RegisterExtendMemoryAccessor dst)
-    {
-        uint raw = 0x3C200800U; // Encoding for: STR_b_ldst_regoff
-        return raw;
-    }
-    /// <summary>
-    /// Store SIMD&amp;FP register (register offset)
-    /// </summary>
-    [Arm64LinkInstructionId(Arm64InstructionId.STR_bl_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterB Bt, Arm64RegisterExtendMemoryAccessor dst)
-    {
-        uint raw = 0x3C206800U; // Encoding for: STR_bl_ldst_regoff
-        return raw;
-    }
-    /// <summary>
-    /// Store SIMD&amp;FP register (register offset)
-    /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterH Ht, Arm64OptionalRegisterExtendMemoryAccessor dst)
     {
@@ -818,7 +800,7 @@ static partial class Arm64InstructionFactory
     /// Store unprivileged pair of SIMD&amp;FP registers
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.STTP_q_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor dst, long imm)
+    public static uint STTP(Arm64RegisterQ Qt1, Arm64RegisterQ Qt2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0xEC800000U; // Encoding for: STTP_q_ldstpair_post
         return raw;

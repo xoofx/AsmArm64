@@ -19,105 +19,105 @@ public enum Arm64PrefetchOperationKind : byte
     /// <summary>
     /// Not a valid value.
     /// </summary>
-    None = 0,
     /// <summary>
     /// Prefetch Data Level 1, keep in cache.
     /// </summary>
-    PLDL1KEEP = 1,
+    PLDL1KEEP = 0,
     /// <summary>
     /// Prefetch Data Level 1, stream (do not retain in cache).
     /// </summary>
-    PLDL1STRM = 2,
+    PLDL1STRM = 1,
     /// <summary>
     /// Prefetch Data Level 2, keep in cache.
     /// </summary>
-    PLDL2KEEP = 3,
+    PLDL2KEEP = 2,
     /// <summary>
     /// Prefetch Data Level 2, stream (do not retain in cache).
     /// </summary>
-    PLDL2STRM = 4,
+    PLDL2STRM = 3,
     /// <summary>
     /// Prefetch Data Level 3, keep in cache.
     /// </summary>
-    PLDL3KEEP = 5,
+    PLDL3KEEP = 4,
     /// <summary>
     /// Prefetch Data Level 3, stream (do not retain in cache).
     /// </summary>
-    PLDL3STRM = 6,
+    PLDL3STRM = 5,
     /// <summary>
     /// Prefetch Data SLC (System Level Cache), keep in cache.
     /// </summary>
-    PLDSLCKEEP = 7,
+    PLDSLCKEEP = 6,
     /// <summary>
     /// Prefetch Data SLC (System Level Cache), stream (do not retain in cache).
     /// </summary>
-    PLDSLCSTRM = 8,
+    PLDSLCSTRM = 7,
     /// <summary>
     /// Prefetch Instruction Level 1, keep in cache.
     /// </summary>
-    PLIL1KEEP = 9,
+    PLIL1KEEP = 8,
     /// <summary>
     /// Prefetch Instruction Level 1, stream (do not retain in cache).
     /// </summary>
-    PLIL1STRM = 10,
+    PLIL1STRM = 9,
     /// <summary>
     /// Prefetch Instruction Level 2, keep in cache.
     /// </summary>
-    PLIL2KEEP = 11,
+    PLIL2KEEP = 10,
     /// <summary>
     /// Prefetch Instruction Level 2, stream (do not retain in cache).
     /// </summary>
-    PLIL2STRM = 12,
+    PLIL2STRM = 11,
     /// <summary>
     /// Prefetch Instruction Level 3, keep in cache.
     /// </summary>
-    PLIL3KEEP = 13,
+    PLIL3KEEP = 12,
     /// <summary>
     /// Prefetch Instruction Level 3, stream (do not retain in cache).
     /// </summary>
-    PLIL3STRM = 14,
+    PLIL3STRM = 13,
     /// <summary>
     /// Prefetch Instruction SLC (System Level Cache), keep in cache.
     /// </summary>
-    PLISLCKEEP = 15,
+    PLISLCKEEP = 14,
     /// <summary>
     /// Prefetch Instruction SLC (System Level Cache), stream (do not retain in cache).
     /// </summary>
-    PLISLCSTRM = 16,
+    PLISLCSTRM = 15,
     /// <summary>
     /// Prefetch Store Level 1, keep in cache.
     /// </summary>
-    PSTL1KEEP = 17,
+    PSTL1KEEP = 16,
     /// <summary>
     /// Prefetch Store Level 1, stream (do not retain in cache).
     /// </summary>
-    PSTL1STRM = 18,
+    PSTL1STRM = 17,
     /// <summary>
     /// Prefetch Store Level 2, keep in cache.
     /// </summary>
-    PSTL2KEEP = 19,
+    PSTL2KEEP = 18,
     /// <summary>
     /// Prefetch Store Level 2, stream (do not retain in cache).
     /// </summary>
-    PSTL2STRM = 20,
+    PSTL2STRM = 19,
     /// <summary>
     /// Prefetch Store Level 3, keep in cache.
     /// </summary>
-    PSTL3KEEP = 21,
+    PSTL3KEEP = 20,
     /// <summary>
     /// Prefetch Store Level 3, stream (do not retain in cache).
     /// </summary>
-    PSTL3STRM = 22,
+    PSTL3STRM = 21,
     /// <summary>
     /// Prefetch Store SLC (System Level Cache), keep in cache.
     /// </summary>
-    PSTSLCKEEP = 23,
+    PSTSLCKEEP = 22,
     /// <summary>
     /// Prefetch Store SLC (System Level Cache), stream (do not retain in cache).
     /// </summary>
-    PSTSLCSTRM = 24,
+    PSTSLCSTRM = 23,
     /// <summary>
     /// Immediate Read.
     /// </summary>
-    IR = 25,
+    IR = 24,
+    Undefined = 0xFF,
 }

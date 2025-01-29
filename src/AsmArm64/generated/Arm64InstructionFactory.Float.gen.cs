@@ -80,7 +80,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point conditional quiet compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMP_h_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCCMP(Arm64RegisterH Hn, Arm64RegisterH Hm, long nzcv, Enum cond)
+    public static uint FCCMP(Arm64RegisterH Hn, Arm64RegisterH Hm, int nzcv, Arm64ConditionalKind cond)
     {
         uint raw = 0x1EE00400U; // Encoding for: FCCMP_h_floatccmp
         return raw;
@@ -89,7 +89,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point conditional quiet compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMP_s_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCCMP(Arm64RegisterS Sn, Arm64RegisterS Sm, long nzcv, Enum cond)
+    public static uint FCCMP(Arm64RegisterS Sn, Arm64RegisterS Sm, int nzcv, Arm64ConditionalKind cond)
     {
         uint raw = 0x1E200400U; // Encoding for: FCCMP_s_floatccmp
         return raw;
@@ -98,7 +98,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point conditional quiet compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMP_d_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCCMP(Arm64RegisterD Dn, Arm64RegisterD Dm, long nzcv, Enum cond)
+    public static uint FCCMP(Arm64RegisterD Dn, Arm64RegisterD Dm, int nzcv, Arm64ConditionalKind cond)
     {
         uint raw = 0x1E600400U; // Encoding for: FCCMP_d_floatccmp
         return raw;
@@ -107,7 +107,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point conditional signaling compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMPE_h_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCCMPE(Arm64RegisterH Hn, Arm64RegisterH Hm, long nzcv, Enum cond)
+    public static uint FCCMPE(Arm64RegisterH Hn, Arm64RegisterH Hm, int nzcv, Arm64ConditionalKind cond)
     {
         uint raw = 0x1EE00410U; // Encoding for: FCCMPE_h_floatccmp
         return raw;
@@ -116,7 +116,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point conditional signaling compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMPE_s_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCCMPE(Arm64RegisterS Sn, Arm64RegisterS Sm, long nzcv, Enum cond)
+    public static uint FCCMPE(Arm64RegisterS Sn, Arm64RegisterS Sm, int nzcv, Arm64ConditionalKind cond)
     {
         uint raw = 0x1E200410U; // Encoding for: FCCMPE_s_floatccmp
         return raw;
@@ -125,7 +125,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point conditional signaling compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCCMPE_d_floatccmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCCMPE(Arm64RegisterD Dn, Arm64RegisterD Dm, long nzcv, Enum cond)
+    public static uint FCCMPE(Arm64RegisterD Dn, Arm64RegisterD Dm, int nzcv, Arm64ConditionalKind cond)
     {
         uint raw = 0x1E600410U; // Encoding for: FCCMPE_d_floatccmp
         return raw;
@@ -143,7 +143,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point quiet compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMP_hz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMP(Arm64RegisterH Hn, long 0_0)
+    public static uint FCMP(Arm64RegisterH Hn, int zero)
     {
         uint raw = 0x1EE02008U; // Encoding for: FCMP_hz_floatcmp
         return raw;
@@ -161,7 +161,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point quiet compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMP_sz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMP(Arm64RegisterS Sn, long 0_0)
+    public static uint FCMP(Arm64RegisterS Sn, int zero)
     {
         uint raw = 0x1E202008U; // Encoding for: FCMP_sz_floatcmp
         return raw;
@@ -179,7 +179,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point quiet compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMP_dz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMP(Arm64RegisterD Dn, long 0_0)
+    public static uint FCMP(Arm64RegisterD Dn, int zero)
     {
         uint raw = 0x1E602008U; // Encoding for: FCMP_dz_floatcmp
         return raw;
@@ -197,7 +197,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point signaling compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMPE_hz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMPE(Arm64RegisterH Hn, long 0_0)
+    public static uint FCMPE(Arm64RegisterH Hn, int zero)
     {
         uint raw = 0x1EE02018U; // Encoding for: FCMPE_hz_floatcmp
         return raw;
@@ -215,7 +215,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point signaling compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMPE_sz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMPE(Arm64RegisterS Sn, long 0_0)
+    public static uint FCMPE(Arm64RegisterS Sn, int zero)
     {
         uint raw = 0x1E202018U; // Encoding for: FCMPE_sz_floatcmp
         return raw;
@@ -233,7 +233,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point signaling compare (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMPE_dz_floatcmp), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMPE(Arm64RegisterD Dn, long 0_0)
+    public static uint FCMPE(Arm64RegisterD Dn, int zero)
     {
         uint raw = 0x1E602018U; // Encoding for: FCMPE_dz_floatcmp
         return raw;
@@ -242,7 +242,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point conditional select (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCSEL_h_floatsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCSEL(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Enum cond)
+    public static uint FCSEL(Arm64RegisterH Hd, Arm64RegisterH Hn, Arm64RegisterH Hm, Arm64ConditionalKind cond)
     {
         uint raw = 0x1EE00C00U; // Encoding for: FCSEL_h_floatsel
         return raw;
@@ -251,7 +251,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point conditional select (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCSEL_s_floatsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCSEL(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Enum cond)
+    public static uint FCSEL(Arm64RegisterS Sd, Arm64RegisterS Sn, Arm64RegisterS Sm, Arm64ConditionalKind cond)
     {
         uint raw = 0x1E200C00U; // Encoding for: FCSEL_s_floatsel
         return raw;
@@ -260,7 +260,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point conditional select (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCSEL_d_floatsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCSEL(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Enum cond)
+    public static uint FCSEL(Arm64RegisterD Dd, Arm64RegisterD Dn, Arm64RegisterD Dm, Arm64ConditionalKind cond)
     {
         uint raw = 0x1E600C00U; // Encoding for: FCSEL_d_floatsel
         return raw;
@@ -1079,7 +1079,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterH Hn, long fbits)
+    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterH Hn, int fbits)
     {
         uint raw = 0x1ED80000U; // Encoding for: FCVTZS_32h_float2fix
         return raw;
@@ -1088,7 +1088,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterH Hn, long fbits)
+    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterH Hn, int fbits)
     {
         uint raw = 0x9ED80000U; // Encoding for: FCVTZS_64h_float2fix
         return raw;
@@ -1097,7 +1097,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterS Sn, long fbits)
+    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterS Sn, int fbits)
     {
         uint raw = 0x1E180000U; // Encoding for: FCVTZS_32s_float2fix
         return raw;
@@ -1106,7 +1106,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterS Sn, long fbits)
+    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterS Sn, int fbits)
     {
         uint raw = 0x9E180000U; // Encoding for: FCVTZS_64s_float2fix
         return raw;
@@ -1115,7 +1115,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterD Dn, long fbits)
+    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterD Dn, int fbits)
     {
         uint raw = 0x1E580000U; // Encoding for: FCVTZS_32d_float2fix
         return raw;
@@ -1124,7 +1124,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to signed fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterD Dn, long fbits)
+    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterD Dn, int fbits)
     {
         uint raw = 0x9E580000U; // Encoding for: FCVTZS_64d_float2fix
         return raw;
@@ -1223,7 +1223,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterH Hn, long fbits)
+    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterH Hn, int fbits)
     {
         uint raw = 0x1ED90000U; // Encoding for: FCVTZU_32h_float2fix
         return raw;
@@ -1232,7 +1232,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterH Hn, long fbits)
+    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterH Hn, int fbits)
     {
         uint raw = 0x9ED90000U; // Encoding for: FCVTZU_64h_float2fix
         return raw;
@@ -1241,7 +1241,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterS Sn, long fbits)
+    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterS Sn, int fbits)
     {
         uint raw = 0x1E190000U; // Encoding for: FCVTZU_32s_float2fix
         return raw;
@@ -1250,7 +1250,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterS Sn, long fbits)
+    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterS Sn, int fbits)
     {
         uint raw = 0x9E190000U; // Encoding for: FCVTZU_64s_float2fix
         return raw;
@@ -1259,7 +1259,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterD Dn, long fbits)
+    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterD Dn, int fbits)
     {
         uint raw = 0x1E590000U; // Encoding for: FCVTZU_32d_float2fix
         return raw;
@@ -1268,7 +1268,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point convert to unsigned fixed-point, rounding toward zero (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterD Dn, long fbits)
+    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterD Dn, int fbits)
     {
         uint raw = 0x9E590000U; // Encoding for: FCVTZU_64d_float2fix
         return raw;
@@ -1619,7 +1619,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point move immediate (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_h_floatimm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FMOV(Arm64RegisterH Hd, long imm)
+    public static uint FMOV(Arm64RegisterH Hd, int imm)
     {
         uint raw = 0x1EE01000U; // Encoding for: FMOV_h_floatimm
         return raw;
@@ -1628,7 +1628,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point move immediate (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_s_floatimm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FMOV(Arm64RegisterS Sd, long imm)
+    public static uint FMOV(Arm64RegisterS Sd, int imm)
     {
         uint raw = 0x1E201000U; // Encoding for: FMOV_s_floatimm
         return raw;
@@ -1637,7 +1637,7 @@ static partial class Arm64InstructionFactory
     /// Floating-point move immediate (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_d_floatimm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FMOV(Arm64RegisterD Dd, long imm)
+    public static uint FMOV(Arm64RegisterD Dd, int imm)
     {
         uint raw = 0x1E601000U; // Encoding for: FMOV_d_floatimm
         return raw;
@@ -2159,7 +2159,7 @@ static partial class Arm64InstructionFactory
     /// Signed fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_h32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, long fbits)
+    public static uint SCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, int fbits)
     {
         uint raw = 0x1EC20000U; // Encoding for: SCVTF_h32_float2fix
         return raw;
@@ -2168,7 +2168,7 @@ static partial class Arm64InstructionFactory
     /// Signed fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_h64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, long fbits)
+    public static uint SCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, int fbits)
     {
         uint raw = 0x9EC20000U; // Encoding for: SCVTF_h64_float2fix
         return raw;
@@ -2177,7 +2177,7 @@ static partial class Arm64InstructionFactory
     /// Signed fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_s32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, long fbits)
+    public static uint SCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, int fbits)
     {
         uint raw = 0x1E020000U; // Encoding for: SCVTF_s32_float2fix
         return raw;
@@ -2186,7 +2186,7 @@ static partial class Arm64InstructionFactory
     /// Signed fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_s64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, long fbits)
+    public static uint SCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, int fbits)
     {
         uint raw = 0x9E020000U; // Encoding for: SCVTF_s64_float2fix
         return raw;
@@ -2195,7 +2195,7 @@ static partial class Arm64InstructionFactory
     /// Signed fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_d32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, long fbits)
+    public static uint SCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, int fbits)
     {
         uint raw = 0x1E420000U; // Encoding for: SCVTF_d32_float2fix
         return raw;
@@ -2204,7 +2204,7 @@ static partial class Arm64InstructionFactory
     /// Signed fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_d64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, long fbits)
+    public static uint SCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, int fbits)
     {
         uint raw = 0x9E420000U; // Encoding for: SCVTF_d64_float2fix
         return raw;
@@ -2303,7 +2303,7 @@ static partial class Arm64InstructionFactory
     /// Unsigned fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_h32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, long fbits)
+    public static uint UCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, int fbits)
     {
         uint raw = 0x1EC30000U; // Encoding for: UCVTF_h32_float2fix
         return raw;
@@ -2312,7 +2312,7 @@ static partial class Arm64InstructionFactory
     /// Unsigned fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_h64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, long fbits)
+    public static uint UCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, int fbits)
     {
         uint raw = 0x9EC30000U; // Encoding for: UCVTF_h64_float2fix
         return raw;
@@ -2321,7 +2321,7 @@ static partial class Arm64InstructionFactory
     /// Unsigned fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_s32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, long fbits)
+    public static uint UCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, int fbits)
     {
         uint raw = 0x1E030000U; // Encoding for: UCVTF_s32_float2fix
         return raw;
@@ -2330,7 +2330,7 @@ static partial class Arm64InstructionFactory
     /// Unsigned fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_s64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, long fbits)
+    public static uint UCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, int fbits)
     {
         uint raw = 0x9E030000U; // Encoding for: UCVTF_s64_float2fix
         return raw;
@@ -2339,7 +2339,7 @@ static partial class Arm64InstructionFactory
     /// Unsigned fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_d32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, long fbits)
+    public static uint UCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, int fbits)
     {
         uint raw = 0x1E430000U; // Encoding for: UCVTF_d32_float2fix
         return raw;
@@ -2348,7 +2348,7 @@ static partial class Arm64InstructionFactory
     /// Unsigned fixed-point convert to floating-point (scalar)
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_d64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, long fbits)
+    public static uint UCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, int fbits)
     {
         uint raw = 0x9E430000U; // Encoding for: UCVTF_d64_float2fix
         return raw;

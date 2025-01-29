@@ -4,20 +4,20 @@
 
 namespace AsmArm64;
 
-public enum Arm64CodeSyncKind
+public enum Arm64CodeSyncKind : byte
 {
-    None,
-    CSYNC
+    CSYNC = 0,
+    Undefined = 0xFF,
 }
 
-public enum Arm64DataSyncKind
+public enum Arm64DataSyncKind : byte
 {
-    None,
-    DSYNC
+    DSYNC = 0, 
+    Undefined = 0xFF,
 }
 
-public enum Arm64RestrictionByContextKind
+public enum Arm64RestrictionByContextKind : byte
 {
-    None,
-    RCTX
+    RCTX = 0,
+    Undefined = 0xFF,
 }

@@ -36,21 +36,6 @@ public enum Arm64ShiftKind : byte
     Invalid,
 }
 
-/// <summary>
-/// Defines the type for a fixed shift of an ARM64 instruction.
-/// </summary>
-public enum Arm64FixedShiftKind : byte
-{
-    /// <summary>
-    /// Logical shift left of 0.
-    /// </summary>
-    LSL0,
-    /// <summary>
-    /// Logical shift left of 12.
-    /// </summary>
-    LSL12,
-}
-
 public interface IArm64ShiftKind
 {
     Arm64ShiftKind ShiftKind { get; }
@@ -61,6 +46,8 @@ public struct LSLShiftKind : IArm64ShiftKind
     public Arm64ShiftKind ShiftKind => Arm64ShiftKind.LSL;
 
     public override string ToString() => this.ToText();
+
+    public static implicit operator Arm64ExtendKind(LSLShiftKind shiftKind) => Arm64ExtendKind.LSL;
 }
 
 public struct LSRShiftKind : IArm64ShiftKind
@@ -155,8 +142,4 @@ partial class Arm64Factory
     public static RORShiftKind ROR => default;
 
     public static MSLShiftKind MSL => default;
-
-    public const Arm64FixedShiftKind LSL0 = Arm64FixedShiftKind.LSL0;
-
-    public const Arm64FixedShiftKind LSL12 = Arm64FixedShiftKind.LSL12;
 }

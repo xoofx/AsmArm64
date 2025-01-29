@@ -10,27 +10,27 @@ namespace AsmArm64;
 public enum Arm64DataSynchronizationKind : byte
 {
     /// <summary>
-    /// No data synchronization operation.
-    /// </summary>
-    None,
-
-    /// <summary>
     /// Outer Shareable. Ensures the completion of memory accesses in the outer shareable domain.
     /// </summary>
-    OSH = 1,
+    OSH = 0,
 
     /// <summary>
     /// Non-Shareable. Ensures the completion of memory accesses in the non-shareable domain.
     /// </summary>
-    NSH = 2,
+    NSH = 1,
 
     /// <summary>
     /// Inner Shareable. Ensures the completion of memory accesses in the inner shareable domain.
     /// </summary>
-    ISH = 3,
+    ISH = 2,
 
     /// <summary>
     /// Full system scope. Ensures the completion of memory accesses across all domains.
     /// </summary>
-    SY = 4,
+    SY = 3,
+
+    /// <summary>
+    /// The data synchronization kind is undefined.
+    /// </summary>
+    Undefined = 0xFF
 }

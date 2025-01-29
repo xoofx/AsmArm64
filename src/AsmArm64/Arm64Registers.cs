@@ -1054,7 +1054,7 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     /// <summary>
     /// Represents an ARM64 a vector indexed with (V.V arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 
@@ -1204,7 +1204,7 @@ public readonly record struct Arm64RegisterV_B : IArm64RegisterVTyped
     /// <summary>
     /// Represents an ARM64 a vector indexed with 8-bit vector register (V.B arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 
@@ -1572,7 +1572,7 @@ public readonly record struct Arm64RegisterV_2B : IArm64RegisterVPacked
     /// <summary>
     /// Represents an ARM64 a vector indexed with (V.B arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVPacked, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 
@@ -1729,7 +1729,7 @@ public readonly record struct Arm64RegisterV_4B : IArm64RegisterVPacked
     /// <summary>
     /// Represents an ARM64 a vector indexed with (V.B arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVPacked, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 
@@ -2004,7 +2004,7 @@ public readonly record struct Arm64RegisterV_H : IArm64RegisterVTyped
     /// <summary>
     /// Represents an ARM64 a vector indexed with Half-precision 16-bit floating-point register (V.H arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 
@@ -2372,7 +2372,7 @@ public readonly record struct Arm64RegisterV_2H : IArm64RegisterVPacked
     /// <summary>
     /// Represents an ARM64 a vector indexed with (V.H arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVPacked, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 
@@ -2647,7 +2647,7 @@ public readonly record struct Arm64RegisterV_S : IArm64RegisterVTyped
     /// <summary>
     /// Represents an ARM64 a vector indexed with Single-precision 32-bit floating-point register (V.S arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 
@@ -3133,7 +3133,7 @@ public readonly record struct Arm64RegisterV_D : IArm64RegisterVTyped
     /// <summary>
     /// Represents an ARM64 a vector indexed with Double-precision 64-bit floating-point register (V.D arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 
@@ -3619,7 +3619,7 @@ public readonly record struct Arm64RegisterV_Q : IArm64RegisterVTyped
     /// <summary>
     /// Represents an ARM64 a vector indexed with Double-precision 64-bit floating-point register (V.Q arrangement).
     /// </summary>
-    public readonly record struct Indexed : IArm64RegisterVTyped, IArm64RegisterVIndexed
+    public readonly record struct Indexed : IArm64RegisterVIndexed
     {
         private readonly uint _value;
 

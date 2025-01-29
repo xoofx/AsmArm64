@@ -107,7 +107,7 @@ static partial class Arm64InstructionFactory
     /// Breakpoint instruction
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.BRK_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BRK(long imm)
+    public static uint BRK(int imm)
     {
         uint raw = 0xD4200000U; // Encoding for: BRK_ex_exception
         return raw;
@@ -116,7 +116,7 @@ static partial class Arm64InstructionFactory
     /// Branch target identification
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.BTI_hb_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BTI(Enum targets)
+    public static uint BTI(Arm64BranchTargetIdentificationKind targets = default)
     {
         uint raw = 0xD503241FU; // Encoding for: BTI_hb_hints
         return raw;
@@ -134,7 +134,7 @@ static partial class Arm64InstructionFactory
     /// Control flow prediction restriction by context
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.CFP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CFP(Enum RCTX, Arm64RegisterX Xt)
+    public static uint CFP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B7380U; // Encoding for: CFP_sys_cr_systeminstrs
         return raw;
@@ -161,7 +161,7 @@ static partial class Arm64InstructionFactory
     /// Clear exclusive
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.CLREX_bn_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CLREX(long imm)
+    public static uint CLREX(int imm = 0)
     {
         uint raw = 0xD503305FU; // Encoding for: CLREX_bn_barriers
         return raw;
@@ -170,7 +170,7 @@ static partial class Arm64InstructionFactory
     /// Clear other speculative prediction restriction by context
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.COSP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint COSP(Enum RCTX, Arm64RegisterX Xt)
+    public static uint COSP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73C0U; // Encoding for: COSP_sys_cr_systeminstrs
         return raw;
@@ -179,7 +179,7 @@ static partial class Arm64InstructionFactory
     /// Cache prefetch prediction restriction by context
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.CPP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CPP(Enum RCTX, Arm64RegisterX Xt)
+    public static uint CPP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73E0U; // Encoding for: CPP_sys_cr_systeminstrs
         return raw;
@@ -206,7 +206,7 @@ static partial class Arm64InstructionFactory
     /// Debug change PE state to EL1
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS1_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DCPS1(long imm)
+    public static uint DCPS1(int imm = 0)
     {
         uint raw = 0xD4A00001U; // Encoding for: DCPS1_dc_exception
         return raw;
@@ -215,7 +215,7 @@ static partial class Arm64InstructionFactory
     /// Debug change PE state to EL2
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS2_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DCPS2(long imm)
+    public static uint DCPS2(int imm = 0)
     {
         uint raw = 0xD4A00002U; // Encoding for: DCPS2_dc_exception
         return raw;
@@ -224,7 +224,7 @@ static partial class Arm64InstructionFactory
     /// Debug change PE state to EL3
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS3_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DCPS3(long imm)
+    public static uint DCPS3(int imm = 0)
     {
         uint raw = 0xD4A00003U; // Encoding for: DCPS3_dc_exception
         return raw;
@@ -242,7 +242,7 @@ static partial class Arm64InstructionFactory
     /// Data memory barrier
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.DMB_bo_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DMB(Enum option)
+    public static uint DMB(Arm64BarrierOperationLimitKind option)
     {
         uint raw = 0xD50330BFU; // Encoding for: DMB_bo_barriers
         return raw;
@@ -260,7 +260,7 @@ static partial class Arm64InstructionFactory
     /// Data synchronization barrier
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.DSB_bo_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DSB(Enum option)
+    public static uint DSB(Arm64BarrierOperationLimitKind option)
     {
         uint raw = 0xD503309FU; // Encoding for: DSB_bo_barriers
         return raw;
@@ -269,7 +269,7 @@ static partial class Arm64InstructionFactory
     /// Data synchronization barrier
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.DSB_bon_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DSB(Enum option)
+    public static uint DSB(Arm64DataSynchronizationKind option)
     {
         uint raw = 0xD503323FU; // Encoding for: DSB_bon_barriers
         return raw;
@@ -278,7 +278,7 @@ static partial class Arm64InstructionFactory
     /// Data value prediction restriction by context
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.DVP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DVP(Enum RCTX, Arm64RegisterX Xt)
+    public static uint DVP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73A0U; // Encoding for: DVP_sys_cr_systeminstrs
         return raw;
@@ -305,7 +305,7 @@ static partial class Arm64InstructionFactory
     /// Guarded Control Stack barrier
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSB_hd_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint GCSB(Enum DSYNC)
+    public static uint GCSB(Arm64DataSyncKind DSYNC)
     {
         uint raw = 0xD503227FU; // Encoding for: GCSB_hd_hints
         return raw;
@@ -323,7 +323,7 @@ static partial class Arm64InstructionFactory
     /// Guarded Control Stack pop
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSPOPM_sysl_rc_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint GCSPOPM(Arm64RegisterX Xt)
+    public static uint GCSPOPM(Arm64RegisterX Xt = default)
     {
         uint raw = 0xD52B7720U; // Encoding for: GCSPOPM_sysl_rc_systeminstrs
         return raw;
@@ -377,7 +377,7 @@ static partial class Arm64InstructionFactory
     /// Hint instruction
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.HINT_hm_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint HINT(long imm)
+    public static uint HINT(int imm)
     {
         uint raw = 0xD503201FU; // Encoding for: HINT_hm_hints
         return raw;
@@ -386,7 +386,7 @@ static partial class Arm64InstructionFactory
     /// Halt instruction
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.HLT_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint HLT(long imm)
+    public static uint HLT(int imm)
     {
         uint raw = 0xD4400000U; // Encoding for: HLT_ex_exception
         return raw;
@@ -395,7 +395,7 @@ static partial class Arm64InstructionFactory
     /// Hypervisor call
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.HVC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint HVC(long imm)
+    public static uint HVC(int imm)
     {
         uint raw = 0xD4000002U; // Encoding for: HVC_ex_exception
         return raw;
@@ -404,7 +404,7 @@ static partial class Arm64InstructionFactory
     /// Instruction cache operation
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.IC_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint IC(Arm64SystemRegister ic_op, Arm64RegisterX Xt)
+    public static uint IC(Arm64SystemRegister ic_op, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5087000U; // Encoding for: IC_sys_cr_systeminstrs
         return raw;
@@ -413,7 +413,7 @@ static partial class Arm64InstructionFactory
     /// Instruction synchronization barrier
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.ISB_bi_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ISB(long option)
+    public static uint ISB(int option = 0)
     {
         uint raw = 0xD50330DFU; // Encoding for: ISB_bi_barriers
         return raw;
@@ -440,7 +440,7 @@ static partial class Arm64InstructionFactory
     /// Move immediate value to special register
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.MSR_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MSR(Enum pstatefield, long imm)
+    public static uint MSR(Arm64ProcessStateField pstatefield, int imm)
     {
         uint raw = 0xD500401FU; // Encoding for: MSR_si_pstate
         return raw;
@@ -539,7 +539,7 @@ static partial class Arm64InstructionFactory
     /// Profiling synchronization barrier
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.PSB_hc_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint PSB(Enum CSYNC)
+    public static uint PSB(Arm64CodeSyncKind CSYNC)
     {
         uint raw = 0xD503223FU; // Encoding for: PSB_hc_hints
         return raw;
@@ -584,27 +584,9 @@ static partial class Arm64InstructionFactory
     /// Secure monitor call
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.SMC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMC(long imm)
+    public static uint SMC(int imm)
     {
         uint raw = 0xD4000003U; // Encoding for: SMC_ex_exception
-        return raw;
-    }
-    /// <summary>
-    /// Enables access to Streaming SVE mode and SME architectural state
-    /// </summary>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMSTART_msr_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMSTART(Enum option)
-    {
-        uint raw = 0xD503417FU; // Encoding for: SMSTART_msr_si_pstate
-        return raw;
-    }
-    /// <summary>
-    /// Disables access to Streaming SVE mode and SME architectural state
-    /// </summary>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMSTOP_msr_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMSTOP(Enum option)
-    {
-        uint raw = 0xD503407FU; // Encoding for: SMSTOP_msr_si_pstate
         return raw;
     }
     /// <summary>
@@ -620,7 +602,7 @@ static partial class Arm64InstructionFactory
     /// Store shared hint
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.STSHH_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STSHH(Enum policy)
+    public static uint STSHH(Arm64StoredSharedHintPolicyKind policy)
     {
         uint raw = 0xD503261FU; // Encoding for: STSHH_hi_hints
         return raw;
@@ -629,7 +611,7 @@ static partial class Arm64InstructionFactory
     /// Supervisor call
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.SVC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SVC(long imm)
+    public static uint SVC(int imm)
     {
         uint raw = 0xD4000001U; // Encoding for: SVC_ex_exception
         return raw;
@@ -638,7 +620,7 @@ static partial class Arm64InstructionFactory
     /// System instruction
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.SYS_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SYS(long op1, Arm64RegisterC Cn, Arm64RegisterC Cm, long op2, Arm64RegisterX Xt)
+    public static uint SYS(int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5080000U; // Encoding for: SYS_cr_systeminstrs
         return raw;
@@ -647,7 +629,7 @@ static partial class Arm64InstructionFactory
     /// System instruction with result
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.SYSL_rc_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SYSL(Arm64RegisterX Xt, long op1, Arm64RegisterC Cn, Arm64RegisterC Cm, long op2)
+    public static uint SYSL(Arm64RegisterX Xt, int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2)
     {
         uint raw = 0xD5280000U; // Encoding for: SYSL_rc_systeminstrs
         return raw;
@@ -656,7 +638,7 @@ static partial class Arm64InstructionFactory
     /// 128-bit system instruction
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.SYSP_cr_syspairinstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SYSP(long op1, Arm64RegisterC Cn, Arm64RegisterC Cm, long op2, Arm64RegisterX Xt1)
+    public static uint SYSP(int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2, Arm64RegisterX Xt1 = default)
     {
         uint raw = 0xD5480000U; // Encoding for: SYSP_cr_syspairinstrs
         return raw;
@@ -665,7 +647,7 @@ static partial class Arm64InstructionFactory
     /// Cancel current transaction
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.TCANCEL_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint TCANCEL(long imm)
+    public static uint TCANCEL(int imm)
     {
         uint raw = 0xD4600000U; // Encoding for: TCANCEL_ex_exception
         return raw;
@@ -683,7 +665,7 @@ static partial class Arm64InstructionFactory
     /// TLB invalidate operation
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.TLBI_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint TLBI(Arm64SystemRegister tlbi_op, Arm64RegisterX Xt)
+    public static uint TLBI(Arm64SystemRegister tlbi_op, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5088000U; // Encoding for: TLBI_sys_cr_systeminstrs
         return raw;
@@ -692,7 +674,7 @@ static partial class Arm64InstructionFactory
     /// TLB invalidate pair operation
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.TLBIP_sysp_cr_syspairinstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint TLBIP(Arm64SystemRegister tlbip_op, Arm64RegisterX Xt1)
+    public static uint TLBIP(Arm64SystemRegister tlbip_op, Arm64RegisterX Xt1 = default)
     {
         uint raw = 0xD5488000U; // Encoding for: TLBIP_sysp_cr_syspairinstrs
         return raw;
@@ -710,7 +692,7 @@ static partial class Arm64InstructionFactory
     /// Trace synchronization barrier
     /// </summary>
     [Arm64LinkInstructionId(Arm64InstructionId.TSB_hc_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint TSB(Enum CSYNC)
+    public static uint TSB(Arm64CodeSyncKind CSYNC)
     {
         uint raw = 0xD503225FU; // Encoding for: TSB_hc_hints
         return raw;

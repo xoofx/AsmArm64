@@ -7,7 +7,7 @@ namespace AsmArm64;
 /// <summary>
 /// Defines the interface for a typed arrangement of a vector register.
 /// </summary>
-public interface IArm64RegisterVPacked : IArm64RegisterVTyped
+public interface IArm64RegisterVPacked : IArm64RegisterV
 {
     /// <summary>
     /// Gets the number of valid elements in the vector register.

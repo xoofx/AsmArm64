@@ -7,7 +7,7 @@ namespace AsmArm64;
 /// <summary>
 /// Defines the interface for a vector register with an index (V0.S[1], V1.D[0]...etc.)
 /// </summary>
-public interface IArm64RegisterVIndexed : IArm64RegisterVTyped
+public interface IArm64RegisterVIndexed : IArm64RegisterV
 {
     /// <summary>
     /// Gets the index of the element in the vector register.

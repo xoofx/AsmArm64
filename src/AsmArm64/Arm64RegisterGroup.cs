@@ -19,6 +19,23 @@ public interface IArm64RegisterGroup : ISpanFormattable
     int Count { get; }
 }
 
+public readonly record struct Arm64RegisterGroup1<TReg> where TReg : struct, IArm64RegisterV
+{
+}
+
+public readonly record struct Arm64RegisterGroup2<TReg> where TReg : struct, IArm64RegisterV
+{
+}
+
+public readonly record struct Arm64RegisterGroup3<TReg> where TReg : struct, IArm64RegisterV
+{
+}
+
+public readonly record struct Arm64RegisterGroup4<TReg> where TReg : struct, IArm64RegisterV
+{
+}
+
+
 public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
 {
     private readonly Arm64RegisterAny _baseRegister;

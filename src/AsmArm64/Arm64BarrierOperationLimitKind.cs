@@ -12,7 +12,7 @@ public enum Arm64BarrierOperationLimitKind : byte
     /// <summary>
     /// No barrier operation specified.
     /// </summary>
-    None,
+    Undefined,
 
     /// <summary>
     /// Outer Shareable Load. Ensures the completion of load memory accesses in the outer shareable domain.

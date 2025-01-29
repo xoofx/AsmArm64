@@ -47,17 +47,17 @@ static partial class Arm64Factory
 
 public struct Arm64MemoryAccessorFactory
 {
-    public Arm64BaseMemoryAccessor this[Arm64RegisterXOrSP baseRegister] => default;
+    public Arm64BaseMemoryAccessor this[Arm64RegisterXOrSP baseRegister] => default; // TODO
+    
+    public Arm64BaseXnMemoryAccessor this[Arm64RegisterX baseRegister] => default; // TODO
 
-    public Arm64BaseXnMemoryAccessor this[Arm64RegisterX baseRegister] => default;
+    public Arm64ImmediateMemoryAccessor this[Arm64RegisterXOrSP baseRegister, int immediate] => default; // TODO
 
-    public Arm64ImmediateMemoryAccessor this[Arm64RegisterXOrSP baseRegister, int immediate] => new(baseRegister, immediate, false);
-    
-    public Arm64OptionalImmediateMemoryAccessor this[Arm64RegisterXOrSP baseRegister, int? immediate = null] => new(baseRegister, immediate, false);
-    
-    public Arm64RegisterExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterAny indexRegister, Arm64MemoryExtend extend, bool isPreIncrement = false] => new(baseRegister, indexRegister, extend, isPreIncrement);
-    
-    public Arm64OptionalRegisterExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterAny indexRegister, Arm64MemoryExtend? extend = null, bool isPreIncrement = false] => new(baseRegister, indexRegister, extend, isPreIncrement);
+    public Arm64OptionalImmediateMemoryAccessor this[Arm64RegisterXOrSP baseRegister, int? immediate = null] => default; // TODO
+
+    public Arm64RegisterExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterAny indexRegister, Arm64MemoryExtend extend, bool isPreIncrement = false] => default;
+
+    public Arm64OptionalRegisterExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterAny indexRegister, Arm64MemoryExtend? extend = null, bool isPreIncrement = false] => default;
 }
 
 public record struct Arm64BaseMemoryAccessor : IArm64MemoryAccessor
