@@ -109,6 +109,15 @@ partial class Arm64Processor
                 w.WriteLine();
 
             }
+
+            foreach (var operand in instructionVariation.Operands)
+            {
+                if (operand.GetEncoding != null)
+                {
+                    w.WriteLine($"raw |= {operand.GetEncoding(operand.OperandName)};");
+                }
+            }
+
             w.WriteLine("return raw;");
         }
         w.CloseBraceBlock();
@@ -622,6 +631,8 @@ partial class Arm64Processor
 
         var operandName = GetNormalizedOperandName(register.Name);
 
+        var indexEncoding = GetRegisterIndexEncoding(register);
+
         switch (kind)
         {
             case Arm64RegisterEncodingKind.X:
@@ -686,7 +697,8 @@ partial class Arm64Processor
                         OperandType = registerType,
                         BitfieldMask = bitValue.BitSelectorMask,
                         BitfieldSets = bitValue.BitSelectorValue,
-                        BitValue = bitValue
+                        BitValue = bitValue,
+                        GetEncoding = indexEncoding,
                     });
                 }
                 return;
@@ -717,7 +729,8 @@ partial class Arm64Processor
                                 OperandType = vArrangementType,
                                 BitfieldMask = bitValue.BitSelectorMask,
                                 BitfieldSets = bitValue.BitSelectorValue,
-                                BitValue = bitValue
+                                BitValue = bitValue,
+                                GetEncoding = indexEncoding,
                             });
                         }
 
@@ -752,9 +765,35 @@ partial class Arm64Processor
         {
             Descriptor = register,
             OperandName = operandName,
-            OperandType = baseType
+            OperandType = baseType,
+            GetEncoding = indexEncoding,
         });
     }
+
+
+    private static GetEncodingDelegate? GetRegisterIndexEncoding(RegisterOperandDescriptor register)
+    {
+        switch (register.RegisterIndexEncodingKind)
+        {
+            case Arm64RegisterIndexEncodingKind.None:
+                break;
+            case Arm64RegisterIndexEncodingKind.Std5:
+            case Arm64RegisterIndexEncodingKind.Std4:
+                return (name) => $"(uint)({name}.Index << {register.LowBitIndexEncoding})";
+            case Arm64RegisterIndexEncodingKind.Std5Plus1:
+                return null;
+            case Arm64RegisterIndexEncodingKind.BitMapExtract:
+                break;
+            case Arm64RegisterIndexEncodingKind.Fixed:
+                break;
+            default:
+                Debug.Assert(false,"register", $"RegisterIndexEncodingKind `{register.RegisterIndexEncodingKind}` is not supported");
+                break;
+        }
+
+        return null;
+    }
+
     
     private static string GetNormalizedOperandName(string name)
     {
@@ -809,6 +848,8 @@ partial class Arm64Processor
         public string? DefaultValue { get; set; }
 
         public string? DefaultValue2 { get; set; }
+
+        public GetEncodingDelegate? GetEncoding { get; set; }
         
         public void WriterParameters(CodeWriter writer)
         {
@@ -827,4 +868,6 @@ partial class Arm64Processor
             }
         }
     }
+
+    private delegate string GetEncodingDelegate(string parameterName);
 }

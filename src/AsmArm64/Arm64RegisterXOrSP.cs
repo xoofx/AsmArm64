@@ -6,14 +6,15 @@ namespace AsmArm64;
 
 public readonly struct Arm64RegisterXOrSP
 {
+    public int Index { get; }
 }
 
 public readonly struct Arm64RegisterXOrW
 {
-
+    public int Index { get; }
 }
 
 public readonly struct Arm64RegisterWOrWSP
 {
-
+    public int Index { get; }
 }

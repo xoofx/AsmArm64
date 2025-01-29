@@ -20,6 +20,7 @@ static partial class Arm64InstructionFactory
     public static uint APAS(Arm64RegisterX Xt)
     {
         uint raw = 0xD50E7000U; // Encoding for: APAS_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -29,6 +30,7 @@ static partial class Arm64InstructionFactory
     public static uint AT(Arm64SystemRegister at_op, Arm64RegisterX Xt)
     {
         uint raw = 0xD5087800U; // Encoding for: AT_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -137,6 +139,7 @@ static partial class Arm64InstructionFactory
     public static uint CFP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B7380U; // Encoding for: CFP_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -173,6 +176,7 @@ static partial class Arm64InstructionFactory
     public static uint COSP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73C0U; // Encoding for: COSP_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -182,6 +186,7 @@ static partial class Arm64InstructionFactory
     public static uint CPP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73E0U; // Encoding for: CPP_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -200,6 +205,7 @@ static partial class Arm64InstructionFactory
     public static uint DC(Arm64SystemRegister dc_op, Arm64RegisterX Xt)
     {
         uint raw = 0xD5087000U; // Encoding for: DC_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -281,6 +287,7 @@ static partial class Arm64InstructionFactory
     public static uint DVP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73A0U; // Encoding for: DVP_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -326,6 +333,7 @@ static partial class Arm64InstructionFactory
     public static uint GCSPOPM(Arm64RegisterX Xt = default)
     {
         uint raw = 0xD52B7720U; // Encoding for: GCSPOPM_sysl_rc_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -344,6 +352,7 @@ static partial class Arm64InstructionFactory
     public static uint GCSPUSHM(Arm64RegisterX Xt)
     {
         uint raw = 0xD50B7700U; // Encoding for: GCSPUSHM_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -362,6 +371,7 @@ static partial class Arm64InstructionFactory
     public static uint GCSSS1(Arm64RegisterX Xt)
     {
         uint raw = 0xD50B7740U; // Encoding for: GCSSS1_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -371,6 +381,7 @@ static partial class Arm64InstructionFactory
     public static uint GCSSS2(Arm64RegisterX Xt)
     {
         uint raw = 0xD52B7760U; // Encoding for: GCSSS2_sysl_rc_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -407,6 +418,7 @@ static partial class Arm64InstructionFactory
     public static uint IC(Arm64SystemRegister ic_op, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5087000U; // Encoding for: IC_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -425,6 +437,7 @@ static partial class Arm64InstructionFactory
     public static uint MRRS(Arm64RegisterX Xt, Arm64RegisterX Xt_1, Arm64SystemRegister systemreg)
     {
         uint raw = 0xD5700000U; // Encoding for: MRRS_rs_systemmovepr
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -434,6 +447,7 @@ static partial class Arm64InstructionFactory
     public static uint MRS(Arm64RegisterX Xt, Arm64SystemRegister systemreg)
     {
         uint raw = 0xD5300000U; // Encoding for: MRS_rs_systemmove
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -452,6 +466,7 @@ static partial class Arm64InstructionFactory
     public static uint MSR(Arm64SystemRegister systemreg, Arm64RegisterX Xt)
     {
         uint raw = 0xD5100000U; // Encoding for: MSR_sr_systemmove
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -461,6 +476,7 @@ static partial class Arm64InstructionFactory
     public static uint MSRR(Arm64SystemRegister systemreg, Arm64RegisterX Xt, Arm64RegisterX Xt_1)
     {
         uint raw = 0xD5500000U; // Encoding for: MSRR_sr_systemmovepr
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -623,6 +639,9 @@ static partial class Arm64InstructionFactory
     public static uint SYS(int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5080000U; // Encoding for: SYS_cr_systeminstrs
+        raw |= (uint)(Cn.Index << 12);
+        raw |= (uint)(Cm.Index << 8);
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -632,6 +651,9 @@ static partial class Arm64InstructionFactory
     public static uint SYSL(Arm64RegisterX Xt, int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2)
     {
         uint raw = 0xD5280000U; // Encoding for: SYSL_rc_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Cn.Index << 12);
+        raw |= (uint)(Cm.Index << 8);
         return raw;
     }
     /// <summary>
@@ -641,6 +663,9 @@ static partial class Arm64InstructionFactory
     public static uint SYSP(int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2, Arm64RegisterX Xt1 = default)
     {
         uint raw = 0xD5480000U; // Encoding for: SYSP_cr_syspairinstrs
+        raw |= (uint)(Cn.Index << 12);
+        raw |= (uint)(Cm.Index << 8);
+        raw |= (uint)(Xt1.Index << 0);
         return raw;
     }
     /// <summary>
@@ -668,6 +693,7 @@ static partial class Arm64InstructionFactory
     public static uint TLBI(Arm64SystemRegister tlbi_op, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5088000U; // Encoding for: TLBI_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -677,6 +703,7 @@ static partial class Arm64InstructionFactory
     public static uint TLBIP(Arm64SystemRegister tlbip_op, Arm64RegisterX Xt1 = default)
     {
         uint raw = 0xD5488000U; // Encoding for: TLBIP_sysp_cr_syspairinstrs
+        raw |= (uint)(Xt1.Index << 0);
         return raw;
     }
     /// <summary>
@@ -686,6 +713,7 @@ static partial class Arm64InstructionFactory
     public static uint TRCIT(Arm64RegisterX Xt)
     {
         uint raw = 0xD50B72E0U; // Encoding for: TRCIT_sys_cr_systeminstrs
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -704,6 +732,7 @@ static partial class Arm64InstructionFactory
     public static uint TSTART(Arm64RegisterX Xt)
     {
         uint raw = 0xD5233060U; // Encoding for: TSTART_br_systemresult
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -713,6 +742,7 @@ static partial class Arm64InstructionFactory
     public static uint TTEST(Arm64RegisterX Xt)
     {
         uint raw = 0xD5233160U; // Encoding for: TTEST_br_systemresult
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -731,6 +761,7 @@ static partial class Arm64InstructionFactory
     public static uint WFET(Arm64RegisterX Xt)
     {
         uint raw = 0xD5031000U; // Encoding for: WFET_only_systeminstrswithreg
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
@@ -749,6 +780,7 @@ static partial class Arm64InstructionFactory
     public static uint WFIT(Arm64RegisterX Xt)
     {
         uint raw = 0xD5031020U; // Encoding for: WFIT_only_systeminstrswithreg
+        raw |= (uint)(Xt.Index << 0);
         return raw;
     }
     /// <summary>
