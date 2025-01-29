@@ -9,457 +9,499 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
+using System.Collections.Specialized;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 namespace AsmArm64;
 static partial class Arm64InstructionFactory
 {
     /// <summary>
-    /// Absolute value
+    /// Absolute value.
     /// </summary>
+    /// <remarks><code>ABS Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ABS_32_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ABS(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x5AC02000U; // Encoding for: ABS_32_dp_1src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Absolute value
+    /// Absolute value.
     /// </summary>
+    /// <remarks><code>ABS Xd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ABS_64_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ABS(Arm64RegisterX Xd, Arm64RegisterX Xn)
     {
         uint raw = 0xDAC02000U; // Encoding for: ABS_64_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Add with carry
+    /// Add with carry.
     /// </summary>
+    /// <remarks><code>ADC Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADC_32_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADC(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1A000000U; // Encoding for: ADC_32_addsub_carry
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add with carry
+    /// Add with carry.
     /// </summary>
+    /// <remarks><code>ADC Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADC_64_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADC(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9A000000U; // Encoding for: ADC_64_addsub_carry
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add with carry, setting flags
+    /// Add with carry, setting flags.
     /// </summary>
+    /// <remarks><code>ADCS Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADCS_32_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADCS(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x3A000000U; // Encoding for: ADCS_32_addsub_carry
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add with carry, setting flags
+    /// Add with carry, setting flags.
     /// </summary>
+    /// <remarks><code>ADCS Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADCS_64_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADCS(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0xBA000000U; // Encoding for: ADCS_64_addsub_carry
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add extended and scaled register
+    /// Add extended and scaled register.
     /// </summary>
+    /// <remarks><code>ADD Wd|WSP, Wn|WSP, Wm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADD_32_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADD(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterWOrWSP Wn_WSP, Arm64RegisterW Wm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
         uint raw = 0x0B200000U; // Encoding for: ADD_32_addsub_ext
-        raw |= (uint)(Wd_WSP.Index << 0);
+        raw |= (uint)(Wd_WSP.Index);
         raw |= (uint)(Wn_WSP.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add extended and scaled register
+    /// Add extended and scaled register.
     /// </summary>
+    /// <remarks><code>ADD Xd|SP, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADD_64_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADD(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
         uint raw = 0x8B200000U; // Encoding for: ADD_64_addsub_ext
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         raw |= (uint)(Rm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add immediate value
+    /// Add immediate value.
     /// </summary>
+    /// <remarks><code>ADD Wd|WSP, Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADD_32_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADD(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterWOrWSP Wn_WSP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
         uint raw = 0x11000000U; // Encoding for: ADD_32_addsub_imm
-        raw |= (uint)(Wd_WSP.Index << 0);
+        raw |= (uint)(Wd_WSP.Index);
         raw |= (uint)(Wn_WSP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Add immediate value
+    /// Add immediate value.
     /// </summary>
+    /// <remarks><code>ADD Xd|SP, Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADD_64_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADD(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
         uint raw = 0x91000000U; // Encoding for: ADD_64_addsub_imm
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Add optionally-shifted register
+    /// Add optionally-shifted register.
     /// </summary>
+    /// <remarks><code>ADD Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADD_32_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADD(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0x0B000000U; // Encoding for: ADD_32_addsub_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add optionally-shifted register
+    /// Add optionally-shifted register.
     /// </summary>
+    /// <remarks><code>ADD Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADD_64_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADD(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0x8B000000U; // Encoding for: ADD_64_addsub_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add with tag
+    /// Add with tag.
     /// </summary>
+    /// <remarks><code>ADDG Xd|SP, Xn|SP, #uimm6, #uimm4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDG_64_addsub_immtags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADDG(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, int uimm6, int uimm4)
     {
         uint raw = 0x91800000U; // Encoding for: ADDG_64_addsub_immtags
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Add checked pointer
+    /// Add checked pointer.
     /// </summary>
+    /// <remarks><code>ADDPT Xd|SP, Xn|SP, Xm {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDPT_64_addsub_pt), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADDPT(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Xm, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x9A002000U; // Encoding for: ADDPT_64_addsub_pt
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add extended and scaled register, setting flags
+    /// Add extended and scaled register, setting flags.
     /// </summary>
+    /// <remarks><code>ADDS Wd, Wn|WSP, Wm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDS_32s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADDS(Arm64RegisterW Wd, Arm64RegisterWOrWSP Wn_WSP, Arm64RegisterW Wm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
         uint raw = 0x2B200000U; // Encoding for: ADDS_32s_addsub_ext
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn_WSP.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add extended and scaled register, setting flags
+    /// Add extended and scaled register, setting flags.
     /// </summary>
+    /// <remarks><code>ADDS Xd, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDS_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADDS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
         uint raw = 0xAB200000U; // Encoding for: ADDS_64s_addsub_ext
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         raw |= (uint)(Rm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add immediate value, setting flags
+    /// Add immediate value, setting flags.
     /// </summary>
+    /// <remarks><code>ADDS Wd, Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDS_32s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADDS(Arm64RegisterW Wd, Arm64RegisterWOrWSP Wn_WSP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
         uint raw = 0x31000000U; // Encoding for: ADDS_32s_addsub_imm
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn_WSP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Add immediate value, setting flags
+    /// Add immediate value, setting flags.
     /// </summary>
+    /// <remarks><code>ADDS Xd, Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDS_64s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADDS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
         uint raw = 0xB1000000U; // Encoding for: ADDS_64s_addsub_imm
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Add optionally-shifted register, setting flags
+    /// Add optionally-shifted register, setting flags.
     /// </summary>
+    /// <remarks><code>ADDS Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDS_32_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADDS(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0x2B000000U; // Encoding for: ADDS_32_addsub_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Add optionally-shifted register, setting flags
+    /// Add optionally-shifted register, setting flags.
     /// </summary>
+    /// <remarks><code>ADDS Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDS_64_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADDS(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0xAB000000U; // Encoding for: ADDS_64_addsub_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Form PC-relative address
+    /// Form PC-relative address.
     /// </summary>
+    /// <remarks><code>ADR Xd, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADR_only_pcreladdr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADR(Arm64RegisterX Xd, Arm64Label label)
     {
         uint raw = 0x10000000U; // Encoding for: ADR_only_pcreladdr
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Form PC-relative address to 4KB page
+    /// Form PC-relative address to 4KB page.
     /// </summary>
+    /// <remarks><code>ADRP Xd, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADRP_only_pcreladdr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADRP(Arm64RegisterX Xd, Arm64Label label)
     {
         uint raw = 0x90000000U; // Encoding for: ADRP_only_pcreladdr
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Bitwise AND (immediate)
+    /// Bitwise AND (immediate).
     /// </summary>
+    /// <remarks><code>AND Wd|WSP, Wn, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AND_32_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AND(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterW Wn, Arm64LogicalImmediate32 imm)
     {
         uint raw = 0x12000000U; // Encoding for: AND_32_log_imm
-        raw |= (uint)(Wd_WSP.Index << 0);
+        raw |= (uint)(Wd_WSP.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitwise AND (immediate)
+    /// Bitwise AND (immediate).
     /// </summary>
+    /// <remarks><code>AND Xd|SP, Xn, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AND_64_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AND(Arm64RegisterXOrSP Xd_SP, Arm64RegisterX Xn, Arm64LogicalImmediate64 imm)
     {
         uint raw = 0x92000000U; // Encoding for: AND_64_log_imm
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitwise AND (shifted register)
+    /// Bitwise AND (shifted register).
     /// </summary>
+    /// <remarks><code>AND Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AND_32_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AND(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0x0A000000U; // Encoding for: AND_32_log_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise AND (shifted register)
+    /// Bitwise AND (shifted register).
     /// </summary>
+    /// <remarks><code>AND Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AND_64_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AND(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0x8A000000U; // Encoding for: AND_64_log_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise AND (immediate), setting flags
+    /// Bitwise AND (immediate), setting flags.
     /// </summary>
+    /// <remarks><code>ANDS Wd, Wn, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ANDS_32s_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ANDS(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64LogicalImmediate32 imm)
     {
         uint raw = 0x72000000U; // Encoding for: ANDS_32s_log_imm
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitwise AND (immediate), setting flags
+    /// Bitwise AND (immediate), setting flags.
     /// </summary>
+    /// <remarks><code>ANDS Xd, Xn, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ANDS_64s_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ANDS(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64LogicalImmediate64 imm)
     {
         uint raw = 0xF2000000U; // Encoding for: ANDS_64s_log_imm
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitwise AND (shifted register), setting flags
+    /// Bitwise AND (shifted register), setting flags.
     /// </summary>
+    /// <remarks><code>ANDS Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ANDS_32_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ANDS(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0x6A000000U; // Encoding for: ANDS_32_log_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise AND (shifted register), setting flags
+    /// Bitwise AND (shifted register), setting flags.
     /// </summary>
+    /// <remarks><code>ANDS Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ANDS_64_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ANDS(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0xEA000000U; // Encoding for: ANDS_64_log_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Arithmetic shift right (immediate)
+    /// Arithmetic shift right (immediate).
     /// </summary>
+    /// <remarks><code>ASR Wd, Wn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ASR_sbfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ASR(Arm64RegisterW Wd, Arm64RegisterW Wn, int shift)
     {
         uint raw = 0x13007C00U; // Encoding for: ASR_sbfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Arithmetic shift right (immediate)
+    /// Arithmetic shift right (immediate).
     /// </summary>
+    /// <remarks><code>ASR Xd, Xn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ASR_sbfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ASR(Arm64RegisterX Xd, Arm64RegisterX Xn, int shift)
     {
         uint raw = 0x9340FC00U; // Encoding for: ASR_sbfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Arithmetic shift right (register)
+    /// Arithmetic shift right (register).
     /// </summary>
+    /// <remarks><code>ASR Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ASR_asrv_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ASR(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC02800U; // Encoding for: ASR_asrv_32_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Arithmetic shift right (register)
+    /// Arithmetic shift right (register).
     /// </summary>
+    /// <remarks><code>ASR Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ASR_asrv_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ASR(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC02800U; // Encoding for: ASR_asrv_64_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Authenticate data address, using key A
+    /// Authenticate data address, using key A.
     /// </summary>
+    /// <remarks><code>AUTDA Xd, Xn|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTDA_64p_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTDA(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP)
     {
         uint raw = 0xDAC11800U; // Encoding for: AUTDA_64p_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Authenticate data address, using key B
+    /// Authenticate data address, using key B.
     /// </summary>
+    /// <remarks><code>AUTDB Xd, Xn|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTDB_64p_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTDB(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP)
     {
         uint raw = 0xDAC11C00U; // Encoding for: AUTDB_64p_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Authenticate data address, using key A
+    /// Authenticate data address, using key A.
     /// </summary>
+    /// <remarks><code>AUTDZA Xd</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTDZA_64z_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTDZA(Arm64RegisterX Xd)
     {
         uint raw = 0xDAC13BE0U; // Encoding for: AUTDZA_64z_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Authenticate data address, using key B
+    /// Authenticate data address, using key B.
     /// </summary>
+    /// <remarks><code>AUTDZB Xd</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTDZB_64z_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTDZB(Arm64RegisterX Xd)
     {
         uint raw = 0xDAC13FE0U; // Encoding for: AUTDZB_64z_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key A
+    /// Authenticate instruction address, using key A.
     /// </summary>
+    /// <remarks><code>AUTIA Xd, Xn|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIA_64p_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIA(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP)
     {
         uint raw = 0xDAC11000U; // Encoding for: AUTIA_64p_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key A
+    /// Authenticate instruction address, using key A.
     /// </summary>
+    /// <remarks><code>AUTIA171615 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIA171615_64lr_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIA171615()
     {
@@ -467,8 +509,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Authenticate return address using key A, using an immediate offset
+    /// Authenticate return address using key A, using an immediate offset.
     /// </summary>
+    /// <remarks><code>AUTIASPPC label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIASPPC_only_dp_1src_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIASPPC(Arm64Label label)
     {
@@ -476,8 +519,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Authenticate return address using key A, using a register
+    /// Authenticate return address using key A, using a register.
     /// </summary>
+    /// <remarks><code>AUTIASPPCR Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIASPPCR_64lrr_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIASPPCR(Arm64RegisterX Xn)
     {
@@ -486,19 +530,21 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key B
+    /// Authenticate instruction address, using key B.
     /// </summary>
+    /// <remarks><code>AUTIB Xd, Xn|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIB_64p_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIB(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP)
     {
         uint raw = 0xDAC11400U; // Encoding for: AUTIB_64p_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key B
+    /// Authenticate instruction address, using key B.
     /// </summary>
+    /// <remarks><code>AUTIB171615 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIB171615_64lr_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIB171615()
     {
@@ -506,8 +552,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Authenticate return address using key B, using an immediate offset
+    /// Authenticate return address using key B, using an immediate offset.
     /// </summary>
+    /// <remarks><code>AUTIBSPPC label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIBSPPC_only_dp_1src_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIBSPPC(Arm64Label label)
     {
@@ -515,8 +562,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Authenticate return address using key B, using a register
+    /// Authenticate return address using key B, using a register.
     /// </summary>
+    /// <remarks><code>AUTIBSPPCR Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIBSPPCR(Arm64RegisterX Xn)
     {
@@ -525,28 +573,31 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key A
+    /// Authenticate instruction address, using key A.
     /// </summary>
+    /// <remarks><code>AUTIZA Xd</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIZA_64z_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIZA(Arm64RegisterX Xd)
     {
         uint raw = 0xDAC133E0U; // Encoding for: AUTIZA_64z_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key B
+    /// Authenticate instruction address, using key B.
     /// </summary>
+    /// <remarks><code>AUTIZB Xd</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIZB_64z_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIZB(Arm64RegisterX Xd)
     {
         uint raw = 0xDAC137E0U; // Encoding for: AUTIZB_64z_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Branch
+    /// Branch.
     /// </summary>
+    /// <remarks><code>B label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.B_only_branch_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint B(Arm64Label label)
     {
@@ -554,8 +605,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Branch conditionally
+    /// Branch conditionally.
     /// </summary>
+    /// <remarks><code>B cond, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.B_only_condbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint B(Arm64ConditionalKind cond, Arm64Label label)
     {
@@ -563,8 +615,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Branch consistent conditionally
+    /// Branch consistent conditionally.
     /// </summary>
+    /// <remarks><code>BC cond, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BC_only_condbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BC(Arm64ConditionalKind cond, Arm64Label label)
     {
@@ -572,142 +625,155 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Bitfield clear
+    /// Bitfield clear.
     /// </summary>
+    /// <remarks><code>BFC Wd, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFC_bfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BFC(Arm64RegisterW Wd, int lsb, int width)
     {
         uint raw = 0x330003E0U; // Encoding for: BFC_bfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         return raw;
     }
     /// <summary>
-    /// Bitfield clear
+    /// Bitfield clear.
     /// </summary>
+    /// <remarks><code>BFC Xd, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFC_bfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BFC(Arm64RegisterX Xd, int lsb, int width)
     {
         uint raw = 0xB34003E0U; // Encoding for: BFC_bfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Bitfield insert
+    /// Bitfield insert.
     /// </summary>
+    /// <remarks><code>BFI Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFI_bfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BFI(Arm64RegisterW Wd, Arm64RegisterW Wn, int lsb, int width)
     {
         uint raw = 0x33000000U; // Encoding for: BFI_bfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitfield insert
+    /// Bitfield insert.
     /// </summary>
+    /// <remarks><code>BFI Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFI_bfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BFI(Arm64RegisterX Xd, Arm64RegisterX Xn, int lsb, int width)
     {
         uint raw = 0xB3400000U; // Encoding for: BFI_bfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitfield move
+    /// Bitfield move.
     /// </summary>
+    /// <remarks><code>BFM Wd, Wn, #immr, #imms</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFM_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BFM(Arm64RegisterW Wd, Arm64RegisterW Wn, int immr, int imms)
     {
         uint raw = 0x33000000U; // Encoding for: BFM_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitfield move
+    /// Bitfield move.
     /// </summary>
+    /// <remarks><code>BFM Xd, Xn, #immr, #imms</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFM_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BFM(Arm64RegisterX Xd, Arm64RegisterX Xn, int immr, int imms)
     {
         uint raw = 0xB3400000U; // Encoding for: BFM_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitfield extract and insert at low end
+    /// Bitfield extract and insert at low end.
     /// </summary>
+    /// <remarks><code>BFXIL Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFXIL_bfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BFXIL(Arm64RegisterW Wd, Arm64RegisterW Wn, int lsb, int width)
     {
         uint raw = 0x33000000U; // Encoding for: BFXIL_bfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitfield extract and insert at low end
+    /// Bitfield extract and insert at low end.
     /// </summary>
+    /// <remarks><code>BFXIL Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFXIL_bfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BFXIL(Arm64RegisterX Xd, Arm64RegisterX Xn, int lsb, int width)
     {
         uint raw = 0xB3400000U; // Encoding for: BFXIL_bfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitwise bit clear (shifted register)
+    /// Bitwise bit clear (shifted register).
     /// </summary>
+    /// <remarks><code>BIC Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BIC_32_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BIC(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0x0A200000U; // Encoding for: BIC_32_log_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise bit clear (shifted register)
+    /// Bitwise bit clear (shifted register).
     /// </summary>
+    /// <remarks><code>BIC Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BIC_64_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BIC(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0x8A200000U; // Encoding for: BIC_64_log_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise bit clear (shifted register), setting flags
+    /// Bitwise bit clear (shifted register), setting flags.
     /// </summary>
+    /// <remarks><code>BICS Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BICS_32_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BICS(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0x6A200000U; // Encoding for: BICS_32_log_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise bit clear (shifted register), setting flags
+    /// Bitwise bit clear (shifted register), setting flags.
     /// </summary>
+    /// <remarks><code>BICS Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BICS_64_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BICS(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0xEA200000U; // Encoding for: BICS_64_log_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Branch with link
+    /// Branch with link.
     /// </summary>
+    /// <remarks><code>BL label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BL_only_branch_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BL(Arm64Label label)
     {
@@ -715,8 +781,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Branch with link to register
+    /// Branch with link to register.
     /// </summary>
+    /// <remarks><code>BLR Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BLR_64_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BLR(Arm64RegisterX Xn)
     {
@@ -725,19 +792,21 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Branch with link to register, with pointer authentication
+    /// Branch with link to register, with pointer authentication.
     /// </summary>
+    /// <remarks><code>BLRAA Xn, Xm|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BLRAA_64p_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BLRAA(Arm64RegisterX Xn, Arm64RegisterXOrSP Xm_SP)
     {
         uint raw = 0xD73F0800U; // Encoding for: BLRAA_64p_branch_reg
         raw |= (uint)(Xn.Index << 5);
-        raw |= (uint)(Xm_SP.Index << 0);
+        raw |= (uint)(Xm_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Branch with link to register, with pointer authentication
+    /// Branch with link to register, with pointer authentication.
     /// </summary>
+    /// <remarks><code>BLRAAZ Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BLRAAZ_64_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BLRAAZ(Arm64RegisterX Xn)
     {
@@ -746,19 +815,21 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Branch with link to register, with pointer authentication
+    /// Branch with link to register, with pointer authentication.
     /// </summary>
+    /// <remarks><code>BLRAB Xn, Xm|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BLRAB_64p_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BLRAB(Arm64RegisterX Xn, Arm64RegisterXOrSP Xm_SP)
     {
         uint raw = 0xD73F0C00U; // Encoding for: BLRAB_64p_branch_reg
         raw |= (uint)(Xn.Index << 5);
-        raw |= (uint)(Xm_SP.Index << 0);
+        raw |= (uint)(Xm_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Branch with link to register, with pointer authentication
+    /// Branch with link to register, with pointer authentication.
     /// </summary>
+    /// <remarks><code>BLRABZ Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BLRABZ_64_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BLRABZ(Arm64RegisterX Xn)
     {
@@ -767,8 +838,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Branch to register
+    /// Branch to register.
     /// </summary>
+    /// <remarks><code>BR Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BR_64_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BR(Arm64RegisterX Xn)
     {
@@ -777,19 +849,21 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Branch to register, with pointer authentication
+    /// Branch to register, with pointer authentication.
     /// </summary>
+    /// <remarks><code>BRAA Xn, Xm|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BRAA_64p_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BRAA(Arm64RegisterX Xn, Arm64RegisterXOrSP Xm_SP)
     {
         uint raw = 0xD71F0800U; // Encoding for: BRAA_64p_branch_reg
         raw |= (uint)(Xn.Index << 5);
-        raw |= (uint)(Xm_SP.Index << 0);
+        raw |= (uint)(Xm_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Branch to register, with pointer authentication
+    /// Branch to register, with pointer authentication.
     /// </summary>
+    /// <remarks><code>BRAAZ Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BRAAZ_64_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BRAAZ(Arm64RegisterX Xn)
     {
@@ -798,19 +872,21 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Branch to register, with pointer authentication
+    /// Branch to register, with pointer authentication.
     /// </summary>
+    /// <remarks><code>BRAB Xn, Xm|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BRAB_64p_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BRAB(Arm64RegisterX Xn, Arm64RegisterXOrSP Xm_SP)
     {
         uint raw = 0xD71F0C00U; // Encoding for: BRAB_64p_branch_reg
         raw |= (uint)(Xn.Index << 5);
-        raw |= (uint)(Xm_SP.Index << 0);
+        raw |= (uint)(Xm_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Branch to register, with pointer authentication
+    /// Branch to register, with pointer authentication.
     /// </summary>
+    /// <remarks><code>BRABZ Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BRABZ_64_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BRABZ(Arm64RegisterX Xn)
     {
@@ -819,784 +895,881 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare and swap word or doubleword in memory
+    /// Compare and swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>CAS Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CAS_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CAS(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x88A07C00U; // Encoding for: CAS_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap word or doubleword in memory
+    /// Compare and swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>CAS Xs, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CAS_c64_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CAS(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0xC8A07C00U; // Encoding for: CAS_c64_comswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap word or doubleword in memory
+    /// Compare and swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>CASA Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASA_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x88E07C00U; // Encoding for: CASA_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap word or doubleword in memory
+    /// Compare and swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>CASA Xs, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASA_c64_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0xC8E07C00U; // Encoding for: CASA_c64_comswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap byte in memory
+    /// Compare and swap byte in memory.
     /// </summary>
+    /// <remarks><code>CASAB Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASAB_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASAB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x08E07C00U; // Encoding for: CASAB_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap halfword in memory
+    /// Compare and swap halfword in memory.
     /// </summary>
+    /// <remarks><code>CASAH Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASAH_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASAH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x48E07C00U; // Encoding for: CASAH_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap word or doubleword in memory
+    /// Compare and swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>CASAL Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASAL_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x88E0FC00U; // Encoding for: CASAL_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap word or doubleword in memory
+    /// Compare and swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>CASAL Xs, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASAL_c64_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0xC8E0FC00U; // Encoding for: CASAL_c64_comswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap byte in memory
+    /// Compare and swap byte in memory.
     /// </summary>
+    /// <remarks><code>CASALB Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASALB_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASALB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x08E0FC00U; // Encoding for: CASALB_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap halfword in memory
+    /// Compare and swap halfword in memory.
     /// </summary>
+    /// <remarks><code>CASALH Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASALH_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASALH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x48E0FC00U; // Encoding for: CASALH_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap unprivileged
+    /// Compare and swap unprivileged.
     /// </summary>
+    /// <remarks><code>CASALT Xs, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASALT_c64_comswap_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASALT(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0xC9C0FC00U; // Encoding for: CASALT_c64_comswap_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap unprivileged
+    /// Compare and swap unprivileged.
     /// </summary>
+    /// <remarks><code>CASAT Xs, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASAT_c64_comswap_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASAT(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0xC9C07C00U; // Encoding for: CASAT_c64_comswap_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap byte in memory
+    /// Compare and swap byte in memory.
     /// </summary>
+    /// <remarks><code>CASB Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASB_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x08A07C00U; // Encoding for: CASB_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap halfword in memory
+    /// Compare and swap halfword in memory.
     /// </summary>
+    /// <remarks><code>CASH Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASH_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x48A07C00U; // Encoding for: CASH_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap word or doubleword in memory
+    /// Compare and swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>CASL Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASL_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x88A0FC00U; // Encoding for: CASL_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap word or doubleword in memory
+    /// Compare and swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>CASL Xs, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASL_c64_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0xC8A0FC00U; // Encoding for: CASL_c64_comswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap byte in memory
+    /// Compare and swap byte in memory.
     /// </summary>
+    /// <remarks><code>CASLB Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASLB_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASLB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x08A0FC00U; // Encoding for: CASLB_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap halfword in memory
+    /// Compare and swap halfword in memory.
     /// </summary>
+    /// <remarks><code>CASLH Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASLH_c32_comswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASLH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x48A0FC00U; // Encoding for: CASLH_c32_comswap
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap unprivileged
+    /// Compare and swap unprivileged.
     /// </summary>
+    /// <remarks><code>CASLT Xs, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASLT_c64_comswap_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASLT(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0xC980FC00U; // Encoding for: CASLT_c64_comswap_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair of words or doublewords in memory
+    /// Compare and swap pair of words or doublewords in memory.
     /// </summary>
+    /// <remarks><code>CASP Ws, W(s+1), Wt, W(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASP_cp32_comswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASP(Arm64RegisterW Ws, Arm64RegisterW W_s_1, Arm64RegisterW Wt, Arm64RegisterW W_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x08207C00U; // Encoding for: CASP_cp32_comswappr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw = W_s_1.Index == Ws.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
+        raw |= (uint)(Wt.Index);
+        raw = W_t_1.Index == Wt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair of words or doublewords in memory
+    /// Compare and swap pair of words or doublewords in memory.
     /// </summary>
+    /// <remarks><code>CASP Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASP_cp64_comswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASP(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x48207C00U; // Encoding for: CASP_cp64_comswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair of words or doublewords in memory
+    /// Compare and swap pair of words or doublewords in memory.
     /// </summary>
+    /// <remarks><code>CASPA Ws, W(s+1), Wt, W(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASPA_cp32_comswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASPA(Arm64RegisterW Ws, Arm64RegisterW W_s_1, Arm64RegisterW Wt, Arm64RegisterW W_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x08607C00U; // Encoding for: CASPA_cp32_comswappr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw = W_s_1.Index == Ws.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
+        raw |= (uint)(Wt.Index);
+        raw = W_t_1.Index == Wt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair of words or doublewords in memory
+    /// Compare and swap pair of words or doublewords in memory.
     /// </summary>
+    /// <remarks><code>CASPA Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASPA_cp64_comswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASPA(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x48607C00U; // Encoding for: CASPA_cp64_comswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair of words or doublewords in memory
+    /// Compare and swap pair of words or doublewords in memory.
     /// </summary>
+    /// <remarks><code>CASPAL Ws, W(s+1), Wt, W(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASPAL_cp32_comswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASPAL(Arm64RegisterW Ws, Arm64RegisterW W_s_1, Arm64RegisterW Wt, Arm64RegisterW W_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x0860FC00U; // Encoding for: CASPAL_cp32_comswappr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw = W_s_1.Index == Ws.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
+        raw |= (uint)(Wt.Index);
+        raw = W_t_1.Index == Wt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair of words or doublewords in memory
+    /// Compare and swap pair of words or doublewords in memory.
     /// </summary>
+    /// <remarks><code>CASPAL Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASPAL_cp64_comswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASPAL(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x4860FC00U; // Encoding for: CASPAL_cp64_comswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair unprivileged
+    /// Compare and swap pair unprivileged.
     /// </summary>
+    /// <remarks><code>CASPALT Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASPALT_cp64_comswappr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASPALT(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x49C0FC00U; // Encoding for: CASPALT_cp64_comswappr_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair unprivileged
+    /// Compare and swap pair unprivileged.
     /// </summary>
+    /// <remarks><code>CASPAT Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASPAT_cp64_comswappr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASPAT(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x49C07C00U; // Encoding for: CASPAT_cp64_comswappr_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair of words or doublewords in memory
+    /// Compare and swap pair of words or doublewords in memory.
     /// </summary>
+    /// <remarks><code>CASPL Ws, W(s+1), Wt, W(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASPL_cp32_comswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASPL(Arm64RegisterW Ws, Arm64RegisterW W_s_1, Arm64RegisterW Wt, Arm64RegisterW W_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x0820FC00U; // Encoding for: CASPL_cp32_comswappr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw = W_s_1.Index == Ws.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
+        raw |= (uint)(Wt.Index);
+        raw = W_t_1.Index == Wt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair of words or doublewords in memory
+    /// Compare and swap pair of words or doublewords in memory.
     /// </summary>
+    /// <remarks><code>CASPL Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASPL_cp64_comswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASPL(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x4820FC00U; // Encoding for: CASPL_cp64_comswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair unprivileged
+    /// Compare and swap pair unprivileged.
     /// </summary>
+    /// <remarks><code>CASPLT Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASPLT_cp64_comswappr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASPLT(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x4980FC00U; // Encoding for: CASPLT_cp64_comswappr_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap pair unprivileged
+    /// Compare and swap pair unprivileged.
     /// </summary>
+    /// <remarks><code>CASPT Xs, X(s+1), Xt, X(t+1), [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CASPT_cp64_comswappr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CASPT(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0x49807C00U; // Encoding for: CASPT_cp64_comswappr_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Compare and swap unprivileged
+    /// Compare and swap unprivileged.
     /// </summary>
+    /// <remarks><code>CAST Xs, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CAST_c64_comswap_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CAST(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor mem)
     {
         uint raw = 0xC9807C00U; // Encoding for: CAST_c64_comswap_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare bytes and branch
+    /// Compare bytes and branch.
     /// </summary>
+    /// <remarks><code>CBBEQ Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBEQ_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBBEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74C08000U; // Encoding for: CBBEQ_8_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare bytes and branch
+    /// Compare bytes and branch.
     /// </summary>
+    /// <remarks><code>CBBGE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBGE_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBBGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74208000U; // Encoding for: CBBGE_8_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare bytes and branch
+    /// Compare bytes and branch.
     /// </summary>
+    /// <remarks><code>CBBGT Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBGT_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBBGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74008000U; // Encoding for: CBBGT_8_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare bytes and branch
+    /// Compare bytes and branch.
     /// </summary>
+    /// <remarks><code>CBBHI Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBHI_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBBHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74408000U; // Encoding for: CBBHI_8_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare bytes and branch
+    /// Compare bytes and branch.
     /// </summary>
+    /// <remarks><code>CBBHS Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBHS_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBBHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74608000U; // Encoding for: CBBHS_8_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare bytes and branch
+    /// Compare bytes and branch.
     /// </summary>
+    /// <remarks><code>CBBNE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBBNE_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBBNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74E08000U; // Encoding for: CBBNE_8_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBEQ Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBEQ(Arm64RegisterW Wt, int imm, Arm64Label label)
     {
         uint raw = 0x75C00000U; // Encoding for: CBEQ_32_imm
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBEQ Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBEQ(Arm64RegisterX Xt, int imm, Arm64Label label)
     {
         uint raw = 0xF5C00000U; // Encoding for: CBEQ_64_imm
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBEQ Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74C00000U; // Encoding for: CBEQ_32_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBEQ Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBEQ_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBEQ(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
     {
         uint raw = 0xF4C00000U; // Encoding for: CBEQ_64_regs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBGE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGE_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74200000U; // Encoding for: CBGE_32_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBGE Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGE_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBGE(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
     {
         uint raw = 0xF4200000U; // Encoding for: CBGE_64_regs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBGT Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGT_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBGT(Arm64RegisterW Wt, int imm, Arm64Label label)
     {
         uint raw = 0x75000000U; // Encoding for: CBGT_32_imm
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBGT Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGT_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBGT(Arm64RegisterX Xt, int imm, Arm64Label label)
     {
         uint raw = 0xF5000000U; // Encoding for: CBGT_64_imm
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBGT Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGT_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74000000U; // Encoding for: CBGT_32_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBGT Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBGT_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBGT(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
     {
         uint raw = 0xF4000000U; // Encoding for: CBGT_64_regs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare halfwords and branch
+    /// Compare halfwords and branch.
     /// </summary>
+    /// <remarks><code>CBHEQ Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHEQ_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHEQ(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74C0C000U; // Encoding for: CBHEQ_16_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare halfwords and branch
+    /// Compare halfwords and branch.
     /// </summary>
+    /// <remarks><code>CBHGE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHGE_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHGE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x7420C000U; // Encoding for: CBHGE_16_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare halfwords and branch
+    /// Compare halfwords and branch.
     /// </summary>
+    /// <remarks><code>CBHGT Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHGT_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHGT(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x7400C000U; // Encoding for: CBHGT_16_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare halfwords and branch
+    /// Compare halfwords and branch.
     /// </summary>
+    /// <remarks><code>CBHHI Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHHI_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x7440C000U; // Encoding for: CBHHI_16_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare halfwords and branch
+    /// Compare halfwords and branch.
     /// </summary>
+    /// <remarks><code>CBHHS Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHHS_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x7460C000U; // Encoding for: CBHHS_16_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBHI Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHI_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHI(Arm64RegisterW Wt, int imm, Arm64Label label)
     {
         uint raw = 0x75400000U; // Encoding for: CBHI_32_imm
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBHI Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHI_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHI(Arm64RegisterX Xt, int imm, Arm64Label label)
     {
         uint raw = 0xF5400000U; // Encoding for: CBHI_64_imm
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBHI Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHI_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHI(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74400000U; // Encoding for: CBHI_32_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBHI Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHI_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHI(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
     {
         uint raw = 0xF4400000U; // Encoding for: CBHI_64_regs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare halfwords and branch
+    /// Compare halfwords and branch.
     /// </summary>
+    /// <remarks><code>CBHNE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHNE_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74E0C000U; // Encoding for: CBHNE_16_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBHS Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHS_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHS(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74600000U; // Encoding for: CBHS_32_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBHS Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBHS_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBHS(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
     {
         uint raw = 0xF4600000U; // Encoding for: CBHS_64_regs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBLO Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLO_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBLO(Arm64RegisterW Wt, int imm, Arm64Label label)
     {
         uint raw = 0x75600000U; // Encoding for: CBLO_32_imm
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBLO Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLO_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBLO(Arm64RegisterX Xt, int imm, Arm64Label label)
     {
         uint raw = 0xF5600000U; // Encoding for: CBLO_64_imm
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBLT Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLT_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBLT(Arm64RegisterW Wt, int imm, Arm64Label label)
     {
         uint raw = 0x75200000U; // Encoding for: CBLT_32_imm
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBLT Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBLT_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBLT(Arm64RegisterX Xt, int imm, Arm64Label label)
     {
         uint raw = 0xF5200000U; // Encoding for: CBLT_64_imm
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBNE Wt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNE_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBNE(Arm64RegisterW Wt, int imm, Arm64Label label)
     {
         uint raw = 0x75E00000U; // Encoding for: CBNE_32_imm
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare register with immediate and branch
+    /// Compare register with immediate and branch.
     /// </summary>
+    /// <remarks><code>CBNE Xt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNE_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBNE(Arm64RegisterX Xt, int imm, Arm64Label label)
     {
         uint raw = 0xF5E00000U; // Encoding for: CBNE_64_imm
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBNE Wt, Wm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNE_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBNE(Arm64RegisterW Wt, Arm64RegisterW Wm, Arm64Label label)
     {
         uint raw = 0x74E00000U; // Encoding for: CBNE_32_regs
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare registers and branch
+    /// Compare registers and branch.
     /// </summary>
+    /// <remarks><code>CBNE Xt, Xm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNE_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBNE(Arm64RegisterX Xt, Arm64RegisterX Xm, Arm64Label label)
     {
         uint raw = 0xF4E00000U; // Encoding for: CBNE_64_regs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Compare and branch on nonzero
+    /// Compare and branch on nonzero.
     /// </summary>
+    /// <remarks><code>CBNZ Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNZ_32_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBNZ(Arm64RegisterW Wt, Arm64Label label)
     {
         uint raw = 0x35000000U; // Encoding for: CBNZ_32_compbranch
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and branch on nonzero
+    /// Compare and branch on nonzero.
     /// </summary>
+    /// <remarks><code>CBNZ Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBNZ_64_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBNZ(Arm64RegisterX Xt, Arm64Label label)
     {
         uint raw = 0xB5000000U; // Encoding for: CBNZ_64_compbranch
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and branch on zero
+    /// Compare and branch on zero.
     /// </summary>
+    /// <remarks><code>CBZ Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBZ_32_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBZ(Arm64RegisterW Wt, Arm64Label label)
     {
         uint raw = 0x34000000U; // Encoding for: CBZ_32_compbranch
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Compare and branch on zero
+    /// Compare and branch on zero.
     /// </summary>
+    /// <remarks><code>CBZ Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CBZ_64_compbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CBZ(Arm64RegisterX Xt, Arm64Label label)
     {
         uint raw = 0xB4000000U; // Encoding for: CBZ_64_compbranch
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Conditional compare negative (immediate)
+    /// Conditional compare negative (immediate).
     /// </summary>
+    /// <remarks><code>CCMN Wn, #imm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CCMN_32_condcmp_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CCMN(Arm64RegisterW Wn, int imm, int nzcv, Arm64ConditionalKind cond)
     {
@@ -1605,8 +1778,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Conditional compare negative (immediate)
+    /// Conditional compare negative (immediate).
     /// </summary>
+    /// <remarks><code>CCMN Xn, #imm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CCMN_64_condcmp_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CCMN(Arm64RegisterX Xn, int imm, int nzcv, Arm64ConditionalKind cond)
     {
@@ -1615,8 +1789,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Conditional compare negative (register)
+    /// Conditional compare negative (register).
     /// </summary>
+    /// <remarks><code>CCMN Wn, Wm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CCMN_32_condcmp_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CCMN(Arm64RegisterW Wn, Arm64RegisterW Wm, int nzcv, Arm64ConditionalKind cond)
     {
@@ -1626,8 +1801,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Conditional compare negative (register)
+    /// Conditional compare negative (register).
     /// </summary>
+    /// <remarks><code>CCMN Xn, Xm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CCMN_64_condcmp_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CCMN(Arm64RegisterX Xn, Arm64RegisterX Xm, int nzcv, Arm64ConditionalKind cond)
     {
@@ -1637,8 +1813,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Conditional compare (immediate)
+    /// Conditional compare (immediate).
     /// </summary>
+    /// <remarks><code>CCMP Wn, #imm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CCMP_32_condcmp_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CCMP(Arm64RegisterW Wn, int imm, int nzcv, Arm64ConditionalKind cond)
     {
@@ -1647,8 +1824,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Conditional compare (immediate)
+    /// Conditional compare (immediate).
     /// </summary>
+    /// <remarks><code>CCMP Xn, #imm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CCMP_64_condcmp_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CCMP(Arm64RegisterX Xn, int imm, int nzcv, Arm64ConditionalKind cond)
     {
@@ -1657,8 +1835,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Conditional compare (register)
+    /// Conditional compare (register).
     /// </summary>
+    /// <remarks><code>CCMP Wn, Wm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CCMP_32_condcmp_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CCMP(Arm64RegisterW Wn, Arm64RegisterW Wm, int nzcv, Arm64ConditionalKind cond)
     {
@@ -1668,8 +1847,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Conditional compare (register)
+    /// Conditional compare (register).
     /// </summary>
+    /// <remarks><code>CCMP Xn, Xm, #nzcv, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CCMP_64_condcmp_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CCMP(Arm64RegisterX Xn, Arm64RegisterX Xm, int nzcv, Arm64ConditionalKind cond)
     {
@@ -1679,96 +1859,105 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Conditional increment
+    /// Conditional increment.
     /// </summary>
+    /// <remarks><code>CINC Wd, Wn, invcond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CINC_csinc_32_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CINC(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64ConditionalKind invcond)
     {
         uint raw = 0x1A800400U; // Encoding for: CINC_csinc_32_condsel
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Conditional increment
+    /// Conditional increment.
     /// </summary>
+    /// <remarks><code>CINC Xd, Xn, invcond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CINC_csinc_64_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CINC(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64ConditionalKind invcond)
     {
         uint raw = 0x9A800400U; // Encoding for: CINC_csinc_64_condsel
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Conditional invert
+    /// Conditional invert.
     /// </summary>
+    /// <remarks><code>CINV Wd, Wn, invcond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CINV_csinv_32_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CINV(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64ConditionalKind invcond)
     {
         uint raw = 0x5A800000U; // Encoding for: CINV_csinv_32_condsel
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Conditional invert
+    /// Conditional invert.
     /// </summary>
+    /// <remarks><code>CINV Xd, Xn, invcond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CINV_csinv_64_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CINV(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64ConditionalKind invcond)
     {
         uint raw = 0xDA800000U; // Encoding for: CINV_csinv_64_condsel
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Count leading sign bits
+    /// Count leading sign bits.
     /// </summary>
+    /// <remarks><code>CLS Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CLS_32_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CLS(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x5AC01400U; // Encoding for: CLS_32_dp_1src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Count leading sign bits
+    /// Count leading sign bits.
     /// </summary>
+    /// <remarks><code>CLS Xd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CLS_64_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CLS(Arm64RegisterX Xd, Arm64RegisterX Xn)
     {
         uint raw = 0xDAC01400U; // Encoding for: CLS_64_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Count leading zeros
+    /// Count leading zeros.
     /// </summary>
+    /// <remarks><code>CLZ Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CLZ_32_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CLZ(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x5AC01000U; // Encoding for: CLZ_32_dp_1src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Count leading zeros
+    /// Count leading zeros.
     /// </summary>
+    /// <remarks><code>CLZ Xd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CLZ_64_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CLZ(Arm64RegisterX Xd, Arm64RegisterX Xn)
     {
         uint raw = 0xDAC01000U; // Encoding for: CLZ_64_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Compare negative (extended register)
+    /// Compare negative (extended register).
     /// </summary>
+    /// <remarks><code>CMN Wn|WSP, Wm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMN_adds_32s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMN(Arm64RegisterWOrWSP Wn_WSP, Arm64RegisterW Wm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
@@ -1778,8 +1967,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare negative (extended register)
+    /// Compare negative (extended register).
     /// </summary>
+    /// <remarks><code>CMN Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMN_adds_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMN(Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
@@ -1789,8 +1979,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare negative (immediate)
+    /// Compare negative (immediate).
     /// </summary>
+    /// <remarks><code>CMN Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMN_adds_32s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMN(Arm64RegisterWOrWSP Wn_WSP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
@@ -1799,8 +1990,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare negative (immediate)
+    /// Compare negative (immediate).
     /// </summary>
+    /// <remarks><code>CMN Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMN_adds_64s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMN(Arm64RegisterXOrSP Xn_SP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
@@ -1809,8 +2001,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare negative (shifted register)
+    /// Compare negative (shifted register).
     /// </summary>
+    /// <remarks><code>CMN Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMN_adds_32_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMN(Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
@@ -1820,8 +2013,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare negative (shifted register)
+    /// Compare negative (shifted register).
     /// </summary>
+    /// <remarks><code>CMN Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMN_adds_64_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMN(Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
@@ -1831,8 +2025,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare (extended register)
+    /// Compare (extended register).
     /// </summary>
+    /// <remarks><code>CMP Wn|WSP, Wm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMP_subs_32s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMP(Arm64RegisterWOrWSP Wn_WSP, Arm64RegisterW Wm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
@@ -1842,8 +2037,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare (extended register)
+    /// Compare (extended register).
     /// </summary>
+    /// <remarks><code>CMP Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMP_subs_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMP(Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
@@ -1853,8 +2049,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare (immediate)
+    /// Compare (immediate).
     /// </summary>
+    /// <remarks><code>CMP Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMP_subs_32s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMP(Arm64RegisterWOrWSP Wn_WSP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
@@ -1863,8 +2060,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare (immediate)
+    /// Compare (immediate).
     /// </summary>
+    /// <remarks><code>CMP Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMP_subs_64s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMP(Arm64RegisterXOrSP Xn_SP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
@@ -1873,8 +2071,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare (shifted register)
+    /// Compare (shifted register).
     /// </summary>
+    /// <remarks><code>CMP Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMP_subs_32_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMP(Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
@@ -1884,8 +2083,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare (shifted register)
+    /// Compare (shifted register).
     /// </summary>
+    /// <remarks><code>CMP Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMP_subs_64_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMP(Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
@@ -1895,8 +2095,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Compare with tag
+    /// Compare with tag.
     /// </summary>
+    /// <remarks><code>CMPP Xn|SP, Xm|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMPP_subps_64s_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CMPP(Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrSP Xm_SP)
     {
@@ -1906,52 +2107,57 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Conditional negate
+    /// Conditional negate.
     /// </summary>
+    /// <remarks><code>CNEG Wd, Wn, invcond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CNEG_csneg_32_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CNEG(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64ConditionalKind invcond)
     {
         uint raw = 0x5A800400U; // Encoding for: CNEG_csneg_32_condsel
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Conditional negate
+    /// Conditional negate.
     /// </summary>
+    /// <remarks><code>CNEG Xd, Xn, invcond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CNEG_csneg_64_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CNEG(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64ConditionalKind invcond)
     {
         uint raw = 0xDA800400U; // Encoding for: CNEG_csneg_64_condsel
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Count bits
+    /// Count bits.
     /// </summary>
+    /// <remarks><code>CNT Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CNT_32_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CNT(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x5AC01C00U; // Encoding for: CNT_32_dp_1src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Count bits
+    /// Count bits.
     /// </summary>
+    /// <remarks><code>CNT Xd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CNT_64_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CNT(Arm64RegisterX Xd, Arm64RegisterX Xn)
     {
         uint raw = 0xDAC01C00U; // Encoding for: CNT_64_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Memory copy
+    /// Memory copy.
     /// </summary>
+    /// <remarks><code>CPYE [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYE_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYE(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -1960,8 +2166,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes non-temporal
+    /// Memory copy, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYEN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYEN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYEN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -1970,8 +2177,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads non-temporal
+    /// Memory copy, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYERN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYERN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYERN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -1980,8 +2188,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged
+    /// Memory copy, reads unprivileged.
     /// </summary>
+    /// <remarks><code>CPYERT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYERT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYERT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -1990,8 +2199,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged, reads and writes non-temporal
+    /// Memory copy, reads unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYERTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYERTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYERTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2000,8 +2210,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged and non-temporal
+    /// Memory copy, reads unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYERTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYERTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYERTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2010,8 +2221,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged, writes non-temporal
+    /// Memory copy, reads unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYERTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYERTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYERTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2020,8 +2232,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged
+    /// Memory copy, reads and writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYET [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYET_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYET(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2030,8 +2243,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged and non-temporal
+    /// Memory copy, reads and writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYETN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYETN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYETN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2040,8 +2254,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged, reads non-temporal
+    /// Memory copy, reads and writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYETRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYETRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYETRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2050,8 +2265,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged, writes non-temporal
+    /// Memory copy, reads and writes unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYETWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYETWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYETWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2060,8 +2276,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes non-temporal
+    /// Memory copy, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYEWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYEWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYEWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2070,8 +2287,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged
+    /// Memory copy, writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYEWT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYEWT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYEWT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2080,8 +2298,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged, reads and writes non-temporal
+    /// Memory copy, writes unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYEWTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYEWTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYEWTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2090,8 +2309,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged, reads non-temporal
+    /// Memory copy, writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYEWTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYEWTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYEWTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2100,8 +2320,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged and non-temporal
+    /// Memory copy, writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYEWTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYEWTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYEWTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2110,8 +2331,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only
+    /// Memory copy forward-only.
     /// </summary>
+    /// <remarks><code>CPYFE [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFE_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFE(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2120,8 +2342,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes non-temporal
+    /// Memory copy forward-only, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFEN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFEN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFEN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2130,8 +2353,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads non-temporal
+    /// Memory copy forward-only, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFERN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFERN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFERN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2140,8 +2364,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged
+    /// Memory copy forward-only, reads unprivileged.
     /// </summary>
+    /// <remarks><code>CPYFERT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFERT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFERT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2150,8 +2375,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged, reads and writes non-temporal
+    /// Memory copy forward-only, reads unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFERTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFERTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFERTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2160,8 +2386,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged and non-temporal
+    /// Memory copy forward-only, reads unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFERTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFERTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFERTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2170,8 +2397,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged, writes non-temporal
+    /// Memory copy forward-only, reads unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFERTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFERTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFERTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2180,8 +2408,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged
+    /// Memory copy forward-only, reads and writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYFET [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFET_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFET(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2190,8 +2419,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged and non-temporal
+    /// Memory copy forward-only, reads and writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFETN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFETN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFETN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2200,8 +2430,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged, reads non-temporal
+    /// Memory copy forward-only, reads and writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFETRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFETRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFETRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2210,8 +2441,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged, writes non-temporal
+    /// Memory copy forward-only, reads and writes unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFETWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFETWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFETWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2220,8 +2452,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes non-temporal
+    /// Memory copy forward-only, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFEWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFEWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFEWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2230,8 +2463,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged
+    /// Memory copy forward-only, writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYFEWT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFEWT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFEWT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2240,8 +2474,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged, reads and writes non-temporal
+    /// Memory copy forward-only, writes unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFEWTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFEWTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFEWTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2250,8 +2485,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged, reads non-temporal
+    /// Memory copy forward-only, writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFEWTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFEWTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFEWTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2260,8 +2496,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged and non-temporal
+    /// Memory copy forward-only, writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFEWTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFEWTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFEWTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2270,8 +2507,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only
+    /// Memory copy forward-only.
     /// </summary>
+    /// <remarks><code>CPYFM [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFM_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFM(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2280,8 +2518,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes non-temporal
+    /// Memory copy forward-only, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2290,8 +2529,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads non-temporal
+    /// Memory copy forward-only, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2300,8 +2540,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged
+    /// Memory copy forward-only, reads unprivileged.
     /// </summary>
+    /// <remarks><code>CPYFMRT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMRT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMRT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2310,8 +2551,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged, reads and writes non-temporal
+    /// Memory copy forward-only, reads unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMRTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMRTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMRTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2320,8 +2562,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged and non-temporal
+    /// Memory copy forward-only, reads unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMRTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMRTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMRTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2330,8 +2573,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged, writes non-temporal
+    /// Memory copy forward-only, reads unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMRTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMRTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMRTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2340,8 +2584,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged
+    /// Memory copy forward-only, reads and writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYFMT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2350,8 +2595,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged and non-temporal
+    /// Memory copy forward-only, reads and writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2360,8 +2606,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged, reads non-temporal
+    /// Memory copy forward-only, reads and writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2370,8 +2617,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged, writes non-temporal
+    /// Memory copy forward-only, reads and writes unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2380,8 +2628,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes non-temporal
+    /// Memory copy forward-only, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2390,8 +2639,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged
+    /// Memory copy forward-only, writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYFMWT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMWT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMWT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2400,8 +2650,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged, reads and writes non-temporal
+    /// Memory copy forward-only, writes unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMWTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMWTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMWTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2410,8 +2661,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged, reads non-temporal
+    /// Memory copy forward-only, writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMWTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMWTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMWTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2420,8 +2672,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged and non-temporal
+    /// Memory copy forward-only, writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFMWTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFMWTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFMWTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2430,8 +2683,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only
+    /// Memory copy forward-only.
     /// </summary>
+    /// <remarks><code>CPYFP [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFP_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFP(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2440,8 +2694,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes non-temporal
+    /// Memory copy forward-only, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2450,8 +2705,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads non-temporal
+    /// Memory copy forward-only, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2460,8 +2716,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged
+    /// Memory copy forward-only, reads unprivileged.
     /// </summary>
+    /// <remarks><code>CPYFPRT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPRT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPRT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2470,8 +2727,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged, reads and writes non-temporal
+    /// Memory copy forward-only, reads unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPRTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPRTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPRTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2480,8 +2738,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged and non-temporal
+    /// Memory copy forward-only, reads unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPRTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPRTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPRTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2490,8 +2749,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads unprivileged, writes non-temporal
+    /// Memory copy forward-only, reads unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPRTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPRTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPRTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2500,8 +2760,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged
+    /// Memory copy forward-only, reads and writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYFPT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2510,8 +2771,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged and non-temporal
+    /// Memory copy forward-only, reads and writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2520,8 +2782,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged, reads non-temporal
+    /// Memory copy forward-only, reads and writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2530,8 +2793,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, reads and writes unprivileged, writes non-temporal
+    /// Memory copy forward-only, reads and writes unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2540,8 +2804,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes non-temporal
+    /// Memory copy forward-only, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2550,8 +2815,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged
+    /// Memory copy forward-only, writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYFPWT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPWT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPWT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2560,8 +2826,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged, reads and writes non-temporal
+    /// Memory copy forward-only, writes unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPWTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPWTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPWTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2570,8 +2837,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged, reads non-temporal
+    /// Memory copy forward-only, writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPWTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPWTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPWTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2580,8 +2848,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy forward-only, writes unprivileged and non-temporal
+    /// Memory copy forward-only, writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYFPWTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYFPWTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYFPWTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2590,8 +2859,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy
+    /// Memory copy.
     /// </summary>
+    /// <remarks><code>CPYM [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYM_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYM(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2600,8 +2870,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes non-temporal
+    /// Memory copy, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2610,8 +2881,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads non-temporal
+    /// Memory copy, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2620,8 +2892,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged
+    /// Memory copy, reads unprivileged.
     /// </summary>
+    /// <remarks><code>CPYMRT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMRT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMRT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2630,8 +2903,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged, reads and writes non-temporal
+    /// Memory copy, reads unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMRTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMRTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMRTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2640,8 +2914,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged and non-temporal
+    /// Memory copy, reads unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMRTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMRTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMRTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2650,8 +2925,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged, writes non-temporal
+    /// Memory copy, reads unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMRTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMRTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMRTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2660,8 +2936,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged
+    /// Memory copy, reads and writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYMT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2670,8 +2947,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged and non-temporal
+    /// Memory copy, reads and writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2680,8 +2958,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged, reads non-temporal
+    /// Memory copy, reads and writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2690,8 +2969,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged, writes non-temporal
+    /// Memory copy, reads and writes unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2700,8 +2980,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes non-temporal
+    /// Memory copy, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2710,8 +2991,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged
+    /// Memory copy, writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYMWT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMWT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMWT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2720,8 +3002,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged, reads and writes non-temporal
+    /// Memory copy, writes unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMWTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMWTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMWTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2730,8 +3013,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged, reads non-temporal
+    /// Memory copy, writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMWTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMWTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMWTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2740,8 +3024,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged and non-temporal
+    /// Memory copy, writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYMWTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYMWTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYMWTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2750,8 +3035,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy
+    /// Memory copy.
     /// </summary>
+    /// <remarks><code>CPYP [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYP_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYP(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2760,8 +3046,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes non-temporal
+    /// Memory copy, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2770,8 +3057,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads non-temporal
+    /// Memory copy, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2780,8 +3068,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged
+    /// Memory copy, reads unprivileged.
     /// </summary>
+    /// <remarks><code>CPYPRT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPRT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPRT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2790,8 +3079,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged, reads and writes non-temporal
+    /// Memory copy, reads unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPRTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPRTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPRTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2800,8 +3090,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged and non-temporal
+    /// Memory copy, reads unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPRTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPRTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPRTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2810,8 +3101,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads unprivileged, writes non-temporal
+    /// Memory copy, reads unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPRTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPRTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPRTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2820,8 +3112,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged
+    /// Memory copy, reads and writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYPT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2830,8 +3123,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged and non-temporal
+    /// Memory copy, reads and writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2840,8 +3134,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged, reads non-temporal
+    /// Memory copy, reads and writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2850,8 +3145,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, reads and writes unprivileged, writes non-temporal
+    /// Memory copy, reads and writes unprivileged, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2860,8 +3156,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes non-temporal
+    /// Memory copy, writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2870,8 +3167,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged
+    /// Memory copy, writes unprivileged.
     /// </summary>
+    /// <remarks><code>CPYPWT [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPWT_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPWT(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2880,8 +3178,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged, reads and writes non-temporal
+    /// Memory copy, writes unprivileged, reads and writes non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPWTN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPWTN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPWTN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2890,8 +3189,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged, reads non-temporal
+    /// Memory copy, writes unprivileged, reads non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPWTRN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPWTRN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPWTRN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2900,8 +3200,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory copy, writes unprivileged and non-temporal
+    /// Memory copy, writes unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>CPYPWTWN [Xd]!, [Xs]!, Xn!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPYPWTWN_cpy_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPYPWTWN(Arm64BaseXnMemoryAccessor dst, Arm64BaseXnMemoryAccessor src, Arm64RegisterX Xn)
     {
@@ -2910,332 +3211,361 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// CRC32 checksum
+    /// CRC32 checksum.
     /// </summary>
+    /// <remarks><code>CRC32B Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CRC32B_32c_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CRC32B(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC04000U; // Encoding for: CRC32B_32c_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// CRC32C checksum
+    /// CRC32C checksum.
     /// </summary>
+    /// <remarks><code>CRC32CB Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CRC32CB_32c_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CRC32CB(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC05000U; // Encoding for: CRC32CB_32c_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// CRC32C checksum
+    /// CRC32C checksum.
     /// </summary>
+    /// <remarks><code>CRC32CH Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CRC32CH_32c_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CRC32CH(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC05400U; // Encoding for: CRC32CH_32c_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// CRC32C checksum
+    /// CRC32C checksum.
     /// </summary>
+    /// <remarks><code>CRC32CW Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CRC32CW_32c_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CRC32CW(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC05800U; // Encoding for: CRC32CW_32c_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// CRC32C checksum
+    /// CRC32C checksum.
     /// </summary>
+    /// <remarks><code>CRC32CX Wd, Wn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CRC32CX_64c_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CRC32CX(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC05C00U; // Encoding for: CRC32CX_64c_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// CRC32 checksum
+    /// CRC32 checksum.
     /// </summary>
+    /// <remarks><code>CRC32H Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CRC32H_32c_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CRC32H(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC04400U; // Encoding for: CRC32H_32c_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// CRC32 checksum
+    /// CRC32 checksum.
     /// </summary>
+    /// <remarks><code>CRC32W Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CRC32W_32c_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CRC32W(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC04800U; // Encoding for: CRC32W_32c_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// CRC32 checksum
+    /// CRC32 checksum.
     /// </summary>
+    /// <remarks><code>CRC32X Wd, Wn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CRC32X_64c_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CRC32X(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC04C00U; // Encoding for: CRC32X_64c_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Conditional select
+    /// Conditional select.
     /// </summary>
+    /// <remarks><code>CSEL Wd, Wn, Wm, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSEL_32_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSEL(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ConditionalKind cond)
     {
         uint raw = 0x1A800000U; // Encoding for: CSEL_32_condsel
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Conditional select
+    /// Conditional select.
     /// </summary>
+    /// <remarks><code>CSEL Xd, Xn, Xm, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSEL_64_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSEL(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ConditionalKind cond)
     {
         uint raw = 0x9A800000U; // Encoding for: CSEL_64_condsel
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Conditional set
+    /// Conditional set.
     /// </summary>
+    /// <remarks><code>CSET Wd, invcond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSET_csinc_32_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSET(Arm64RegisterW Wd, Arm64ConditionalKind invcond)
     {
         uint raw = 0x1A9F07E0U; // Encoding for: CSET_csinc_32_condsel
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         return raw;
     }
     /// <summary>
-    /// Conditional set
+    /// Conditional set.
     /// </summary>
+    /// <remarks><code>CSET Xd, invcond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSET_csinc_64_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSET(Arm64RegisterX Xd, Arm64ConditionalKind invcond)
     {
         uint raw = 0x9A9F07E0U; // Encoding for: CSET_csinc_64_condsel
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Conditional set mask
+    /// Conditional set mask.
     /// </summary>
+    /// <remarks><code>CSETM Wd, invcond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSETM_csinv_32_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSETM(Arm64RegisterW Wd, Arm64ConditionalKind invcond)
     {
         uint raw = 0x5A9F03E0U; // Encoding for: CSETM_csinv_32_condsel
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         return raw;
     }
     /// <summary>
-    /// Conditional set mask
+    /// Conditional set mask.
     /// </summary>
+    /// <remarks><code>CSETM Xd, invcond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSETM_csinv_64_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSETM(Arm64RegisterX Xd, Arm64ConditionalKind invcond)
     {
         uint raw = 0xDA9F03E0U; // Encoding for: CSETM_csinv_64_condsel
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Conditional select increment
+    /// Conditional select increment.
     /// </summary>
+    /// <remarks><code>CSINC Wd, Wn, Wm, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSINC_32_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSINC(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ConditionalKind cond)
     {
         uint raw = 0x1A800400U; // Encoding for: CSINC_32_condsel
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Conditional select increment
+    /// Conditional select increment.
     /// </summary>
+    /// <remarks><code>CSINC Xd, Xn, Xm, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSINC_64_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSINC(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ConditionalKind cond)
     {
         uint raw = 0x9A800400U; // Encoding for: CSINC_64_condsel
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Conditional select invert
+    /// Conditional select invert.
     /// </summary>
+    /// <remarks><code>CSINV Wd, Wn, Wm, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSINV_32_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSINV(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ConditionalKind cond)
     {
         uint raw = 0x5A800000U; // Encoding for: CSINV_32_condsel
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Conditional select invert
+    /// Conditional select invert.
     /// </summary>
+    /// <remarks><code>CSINV Xd, Xn, Xm, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSINV_64_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSINV(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ConditionalKind cond)
     {
         uint raw = 0xDA800000U; // Encoding for: CSINV_64_condsel
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Conditional select negation
+    /// Conditional select negation.
     /// </summary>
+    /// <remarks><code>CSNEG Wd, Wn, Wm, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSNEG_32_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSNEG(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ConditionalKind cond)
     {
         uint raw = 0x5A800400U; // Encoding for: CSNEG_32_condsel
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Conditional select negation
+    /// Conditional select negation.
     /// </summary>
+    /// <remarks><code>CSNEG Xd, Xn, Xm, cond</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSNEG_64_condsel), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSNEG(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ConditionalKind cond)
     {
         uint raw = 0xDA800400U; // Encoding for: CSNEG_64_condsel
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Count trailing zeros
+    /// Count trailing zeros.
     /// </summary>
+    /// <remarks><code>CTZ Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CTZ_32_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CTZ(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x5AC01800U; // Encoding for: CTZ_32_dp_1src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Count trailing zeros
+    /// Count trailing zeros.
     /// </summary>
+    /// <remarks><code>CTZ Xd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CTZ_64_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CTZ(Arm64RegisterX Xd, Arm64RegisterX Xn)
     {
         uint raw = 0xDAC01800U; // Encoding for: CTZ_64_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitwise exclusive-OR NOT (shifted register)
+    /// Bitwise exclusive-OR NOT (shifted register).
     /// </summary>
+    /// <remarks><code>EON Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.EON_32_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint EON(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0x4A200000U; // Encoding for: EON_32_log_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise exclusive-OR NOT (shifted register)
+    /// Bitwise exclusive-OR NOT (shifted register).
     /// </summary>
+    /// <remarks><code>EON Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.EON_64_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint EON(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0xCA200000U; // Encoding for: EON_64_log_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise exclusive-OR (immediate)
+    /// Bitwise exclusive-OR (immediate).
     /// </summary>
+    /// <remarks><code>EOR Wd|WSP, Wn, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.EOR_32_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint EOR(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterW Wn, Arm64LogicalImmediate32 imm)
     {
         uint raw = 0x52000000U; // Encoding for: EOR_32_log_imm
-        raw |= (uint)(Wd_WSP.Index << 0);
+        raw |= (uint)(Wd_WSP.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitwise exclusive-OR (immediate)
+    /// Bitwise exclusive-OR (immediate).
     /// </summary>
+    /// <remarks><code>EOR Xd|SP, Xn, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.EOR_64_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint EOR(Arm64RegisterXOrSP Xd_SP, Arm64RegisterX Xn, Arm64LogicalImmediate64 imm)
     {
         uint raw = 0xD2000000U; // Encoding for: EOR_64_log_imm
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitwise exclusive-OR (shifted register)
+    /// Bitwise exclusive-OR (shifted register).
     /// </summary>
+    /// <remarks><code>EOR Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.EOR_32_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint EOR(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0x4A000000U; // Encoding for: EOR_32_log_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise exclusive-OR (shifted register)
+    /// Bitwise exclusive-OR (shifted register).
     /// </summary>
+    /// <remarks><code>EOR Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.EOR_64_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint EOR(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0xCA000000U; // Encoding for: EOR_64_log_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Exception return, with pointer authentication
+    /// Exception return, with pointer authentication.
     /// </summary>
+    /// <remarks><code>ERETAA </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ERETAA_64e_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ERETAA()
     {
@@ -3243,8 +3573,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Exception return, with pointer authentication
+    /// Exception return, with pointer authentication.
     /// </summary>
+    /// <remarks><code>ERETAB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ERETAB_64e_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ERETAB()
     {
@@ -3252,3666 +3583,4007 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Extract register
+    /// Extract register.
     /// </summary>
+    /// <remarks><code>EXTR Wd, Wn, Wm, #lsb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.EXTR_32_extract), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint EXTR(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, int lsb)
     {
         uint raw = 0x13800000U; // Encoding for: EXTR_32_extract
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Extract register
+    /// Extract register.
     /// </summary>
+    /// <remarks><code>EXTR Xd, Xn, Xm, #lsb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.EXTR_64_extract), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint EXTR(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, int lsb)
     {
         uint raw = 0x93C00000U; // Encoding for: EXTR_64_extract
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Guarded Control Stack store register
+    /// Guarded Control Stack store register.
     /// </summary>
+    /// <remarks><code>GCSSTR Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSSTR_64_ldst_gcs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint GCSSTR(Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0xD91F0C00U; // Encoding for: GCSSTR_64_ldst_gcs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Guarded Control Stack store register (unprivileged)
+    /// Guarded Control Stack store register (unprivileged).
     /// </summary>
+    /// <remarks><code>GCSSTTR Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSSTTR_64_ldst_gcs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint GCSSTTR(Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0xD91F1C00U; // Encoding for: GCSSTTR_64_ldst_gcs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Tag mask insert
+    /// Tag mask insert.
     /// </summary>
+    /// <remarks><code>GMI Xd, Xn|SP, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GMI_64g_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint GMI(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC01400U; // Encoding for: GMI_64g_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Insert random tag
+    /// Insert random tag.
     /// </summary>
+    /// <remarks><code>IRG Xd|SP, Xn|SP {, Xm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.IRG_64i_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint IRG(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Xm = default)
     {
         uint raw = 0x9AC01000U; // Encoding for: IRG_64i_dp_2src
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Single-copy atomic 64-byte Load
+    /// Single-copy atomic 64-byte Load.
     /// </summary>
+    /// <remarks><code>LD64B Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD64B_64l_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LD64B(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xF83FD000U; // Encoding for: LD64B_64l_memop
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory
+    /// Atomic add on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDADD Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADD_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADD(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8200000U; // Encoding for: LDADD_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory
+    /// Atomic add on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDADD Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADD_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADD(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8200000U; // Encoding for: LDADD_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory
+    /// Atomic add on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDADDA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDA_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8A00000U; // Encoding for: LDADDA_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory
+    /// Atomic add on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDADDA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8A00000U; // Encoding for: LDADDA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on byte in memory
+    /// Atomic add on byte in memory.
     /// </summary>
+    /// <remarks><code>LDADDAB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDAB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDAB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38A00000U; // Encoding for: LDADDAB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on halfword in memory
+    /// Atomic add on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDADDAH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDAH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDAH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78A00000U; // Encoding for: LDADDAH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory
+    /// Atomic add on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDADDAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDAL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8E00000U; // Encoding for: LDADDAL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory
+    /// Atomic add on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDADDAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8E00000U; // Encoding for: LDADDAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on byte in memory
+    /// Atomic add on byte in memory.
     /// </summary>
+    /// <remarks><code>LDADDALB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDALB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDALB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38E00000U; // Encoding for: LDADDALB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on halfword in memory
+    /// Atomic add on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDADDALH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDALH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDALH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78E00000U; // Encoding for: LDADDALH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on byte in memory
+    /// Atomic add on byte in memory.
     /// </summary>
+    /// <remarks><code>LDADDB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38200000U; // Encoding for: LDADDB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on halfword in memory
+    /// Atomic add on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDADDH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78200000U; // Encoding for: LDADDH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory
+    /// Atomic add on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDADDL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8600000U; // Encoding for: LDADDL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory
+    /// Atomic add on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDADDL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8600000U; // Encoding for: LDADDL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on byte in memory
+    /// Atomic add on byte in memory.
     /// </summary>
+    /// <remarks><code>LDADDLB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDLB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDLB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38600000U; // Encoding for: LDADDLB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on halfword in memory
+    /// Atomic add on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDADDLH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDADDLH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDADDLH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78600000U; // Encoding for: LDADDLH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register
+    /// Load-acquire RCpc register.
     /// </summary>
+    /// <remarks><code>LDAPR Wt, [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPR_32l_ldapstl_writeback), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPR(Arm64RegisterW Wt, Arm64BaseMemoryAccessor src, int value4)
     {
         uint raw = 0x99C00800U; // Encoding for: LDAPR_32l_ldapstl_writeback
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register
+    /// Load-acquire RCpc register.
     /// </summary>
+    /// <remarks><code>LDAPR Xt, [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPR_64l_ldapstl_writeback), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPR(Arm64RegisterX Xt, Arm64BaseMemoryAccessor src, int value8)
     {
         uint raw = 0xD9C00800U; // Encoding for: LDAPR_64l_ldapstl_writeback
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register
+    /// Load-acquire RCpc register.
     /// </summary>
+    /// <remarks><code>LDAPR Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPR_32l_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xB8BFC000U; // Encoding for: LDAPR_32l_memop
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register
+    /// Load-acquire RCpc register.
     /// </summary>
+    /// <remarks><code>LDAPR Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPR_64l_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xF8BFC000U; // Encoding for: LDAPR_64l_memop
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register byte
+    /// Load-acquire RCpc register byte.
     /// </summary>
+    /// <remarks><code>LDAPRB Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPRB_32l_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPRB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x38BFC000U; // Encoding for: LDAPRB_32l_memop
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register halfword
+    /// Load-acquire RCpc register halfword.
     /// </summary>
+    /// <remarks><code>LDAPRH Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPRH_32l_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPRH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x78BFC000U; // Encoding for: LDAPRH_32l_memop
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register (unscaled)
+    /// Load-acquire RCpc register (unscaled).
     /// </summary>
+    /// <remarks><code>LDAPUR Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPUR_32_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPUR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x99400000U; // Encoding for: LDAPUR_32_ldapstl_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register (unscaled)
+    /// Load-acquire RCpc register (unscaled).
     /// </summary>
+    /// <remarks><code>LDAPUR Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPUR_64_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPUR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xD9400000U; // Encoding for: LDAPUR_64_ldapstl_unscaled
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register byte (unscaled)
+    /// Load-acquire RCpc register byte (unscaled).
     /// </summary>
+    /// <remarks><code>LDAPURB Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPURB_32_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPURB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x19400000U; // Encoding for: LDAPURB_32_ldapstl_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register halfword (unscaled)
+    /// Load-acquire RCpc register halfword (unscaled).
     /// </summary>
+    /// <remarks><code>LDAPURH Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPURH_32_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPURH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x59400000U; // Encoding for: LDAPURH_32_ldapstl_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register signed byte (unscaled)
+    /// Load-acquire RCpc register signed byte (unscaled).
     /// </summary>
+    /// <remarks><code>LDAPURSB Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPURSB_32_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPURSB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x19C00000U; // Encoding for: LDAPURSB_32_ldapstl_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register signed byte (unscaled)
+    /// Load-acquire RCpc register signed byte (unscaled).
     /// </summary>
+    /// <remarks><code>LDAPURSB Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPURSB_64_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPURSB(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x19800000U; // Encoding for: LDAPURSB_64_ldapstl_unscaled
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register signed halfword (unscaled)
+    /// Load-acquire RCpc register signed halfword (unscaled).
     /// </summary>
+    /// <remarks><code>LDAPURSH Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPURSH_32_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPURSH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x59C00000U; // Encoding for: LDAPURSH_32_ldapstl_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register signed halfword (unscaled)
+    /// Load-acquire RCpc register signed halfword (unscaled).
     /// </summary>
+    /// <remarks><code>LDAPURSH Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPURSH_64_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPURSH(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x59800000U; // Encoding for: LDAPURSH_64_ldapstl_unscaled
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire RCpc register signed word (unscaled)
+    /// Load-acquire RCpc register signed word (unscaled).
     /// </summary>
+    /// <remarks><code>LDAPURSW Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAPURSW_64_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAPURSW(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x99800000U; // Encoding for: LDAPURSW_64_ldapstl_unscaled
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire register
+    /// Load-acquire register.
     /// </summary>
+    /// <remarks><code>LDAR Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAR_lr32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x88DFFC00U; // Encoding for: LDAR_lr32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire register
+    /// Load-acquire register.
     /// </summary>
+    /// <remarks><code>LDAR Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAR_lr64_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xC8DFFC00U; // Encoding for: LDAR_lr64_ldstord
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire register byte
+    /// Load-acquire register byte.
     /// </summary>
+    /// <remarks><code>LDARB Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDARB_lr32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDARB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x08DFFC00U; // Encoding for: LDARB_lr32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire register halfword
+    /// Load-acquire register halfword.
     /// </summary>
+    /// <remarks><code>LDARH Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDARH_lr32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDARH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x48DFFC00U; // Encoding for: LDARH_lr32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire unprivileged exclusive register
+    /// Load-acquire unprivileged exclusive register.
     /// </summary>
+    /// <remarks><code>LDATXR Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDATXR_lr32_ldstexclr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDATXR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x895FFC00U; // Encoding for: LDATXR_lr32_ldstexclr_unpriv
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire unprivileged exclusive register
+    /// Load-acquire unprivileged exclusive register.
     /// </summary>
+    /// <remarks><code>LDATXR Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDATXR_lr64_ldstexclr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDATXR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xC95FFC00U; // Encoding for: LDATXR_lr64_ldstexclr_unpriv
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire exclusive pair of registers
+    /// Load-acquire exclusive pair of registers.
     /// </summary>
+    /// <remarks><code>LDAXP Wt1, Wt2, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAXP_lp32_ldstexclp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAXP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x887F8000U; // Encoding for: LDAXP_lp32_ldstexclp
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load-acquire exclusive pair of registers
+    /// Load-acquire exclusive pair of registers.
     /// </summary>
+    /// <remarks><code>LDAXP Xt1, Xt2, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAXP_lp64_ldstexclp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAXP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xC87F8000U; // Encoding for: LDAXP_lp64_ldstexclp
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load-acquire exclusive register
+    /// Load-acquire exclusive register.
     /// </summary>
+    /// <remarks><code>LDAXR Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAXR_lr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAXR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x885FFC00U; // Encoding for: LDAXR_lr32_ldstexclr
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire exclusive register
+    /// Load-acquire exclusive register.
     /// </summary>
+    /// <remarks><code>LDAXR Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAXR_lr64_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAXR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xC85FFC00U; // Encoding for: LDAXR_lr64_ldstexclr
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire exclusive register byte
+    /// Load-acquire exclusive register byte.
     /// </summary>
+    /// <remarks><code>LDAXRB Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAXRB_lr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAXRB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x085FFC00U; // Encoding for: LDAXRB_lr32_ldstexclr
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-acquire exclusive register halfword
+    /// Load-acquire exclusive register halfword.
     /// </summary>
+    /// <remarks><code>LDAXRH Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAXRH_lr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDAXRH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x485FFC00U; // Encoding for: LDAXRH_lr32_ldstexclr
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory
+    /// Atomic bit clear on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDCLR Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLR_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLR(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8201000U; // Encoding for: LDCLR_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory
+    /// Atomic bit clear on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDCLR Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLR_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLR(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8201000U; // Encoding for: LDCLR_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory
+    /// Atomic bit clear on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRA_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8A01000U; // Encoding for: LDCLRA_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory
+    /// Atomic bit clear on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8A01000U; // Encoding for: LDCLRA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on byte in memory
+    /// Atomic bit clear on byte in memory.
     /// </summary>
+    /// <remarks><code>LDCLRAB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRAB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRAB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38A01000U; // Encoding for: LDCLRAB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on halfword in memory
+    /// Atomic bit clear on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRAH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRAH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRAH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78A01000U; // Encoding for: LDCLRAH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory
+    /// Atomic bit clear on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRAL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8E01000U; // Encoding for: LDCLRAL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory
+    /// Atomic bit clear on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8E01000U; // Encoding for: LDCLRAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on byte in memory
+    /// Atomic bit clear on byte in memory.
     /// </summary>
+    /// <remarks><code>LDCLRALB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRALB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRALB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38E01000U; // Encoding for: LDCLRALB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on halfword in memory
+    /// Atomic bit clear on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRALH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRALH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRALH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78E01000U; // Encoding for: LDCLRALH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on byte in memory
+    /// Atomic bit clear on byte in memory.
     /// </summary>
+    /// <remarks><code>LDCLRB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38201000U; // Encoding for: LDCLRB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on halfword in memory
+    /// Atomic bit clear on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78201000U; // Encoding for: LDCLRH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory
+    /// Atomic bit clear on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8601000U; // Encoding for: LDCLRL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory
+    /// Atomic bit clear on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8601000U; // Encoding for: LDCLRL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on byte in memory
+    /// Atomic bit clear on byte in memory.
     /// </summary>
+    /// <remarks><code>LDCLRLB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRLB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRLB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38601000U; // Encoding for: LDCLRLB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on halfword in memory
+    /// Atomic bit clear on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRLH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRLH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRLH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78601000U; // Encoding for: LDCLRLH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on quadword in memory
+    /// Atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRP Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRP_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19201000U; // Encoding for: LDCLRP_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on quadword in memory
+    /// Atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRPA Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRPA_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRPA(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19A01000U; // Encoding for: LDCLRPA_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on quadword in memory
+    /// Atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRPAL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRPAL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRPAL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19E01000U; // Encoding for: LDCLRPAL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on quadword in memory
+    /// Atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>LDCLRPL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDCLRPL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDCLRPL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19601000U; // Encoding for: LDCLRPL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory
+    /// Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDEOR Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEOR_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEOR(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8202000U; // Encoding for: LDEOR_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory
+    /// Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDEOR Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEOR_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEOR(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8202000U; // Encoding for: LDEOR_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory
+    /// Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDEORA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORA_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8A02000U; // Encoding for: LDEORA_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory
+    /// Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDEORA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8A02000U; // Encoding for: LDEORA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on byte in memory
+    /// Atomic exclusive-OR on byte in memory.
     /// </summary>
+    /// <remarks><code>LDEORAB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORAB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORAB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38A02000U; // Encoding for: LDEORAB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on halfword in memory
+    /// Atomic exclusive-OR on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDEORAH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORAH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORAH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78A02000U; // Encoding for: LDEORAH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory
+    /// Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDEORAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORAL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8E02000U; // Encoding for: LDEORAL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory
+    /// Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDEORAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8E02000U; // Encoding for: LDEORAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on byte in memory
+    /// Atomic exclusive-OR on byte in memory.
     /// </summary>
+    /// <remarks><code>LDEORALB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORALB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORALB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38E02000U; // Encoding for: LDEORALB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on halfword in memory
+    /// Atomic exclusive-OR on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDEORALH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORALH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORALH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78E02000U; // Encoding for: LDEORALH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on byte in memory
+    /// Atomic exclusive-OR on byte in memory.
     /// </summary>
+    /// <remarks><code>LDEORB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38202000U; // Encoding for: LDEORB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on halfword in memory
+    /// Atomic exclusive-OR on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDEORH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78202000U; // Encoding for: LDEORH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory
+    /// Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDEORL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8602000U; // Encoding for: LDEORL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory
+    /// Atomic exclusive-OR on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDEORL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8602000U; // Encoding for: LDEORL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on byte in memory
+    /// Atomic exclusive-OR on byte in memory.
     /// </summary>
+    /// <remarks><code>LDEORLB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORLB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORLB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38602000U; // Encoding for: LDEORLB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on halfword in memory
+    /// Atomic exclusive-OR on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDEORLH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDEORLH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDEORLH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78602000U; // Encoding for: LDEORLH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load Allocation Tag
+    /// Load Allocation Tag.
     /// </summary>
+    /// <remarks><code>LDG Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDG_64loffset_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDG(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xD9600000U; // Encoding for: LDG_64loffset_ldsttags
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load tag multiple
+    /// Load tag multiple.
     /// </summary>
+    /// <remarks><code>LDGM Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDGM_64bulk_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDGM(Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xD9E00000U; // Encoding for: LDGM_64bulk_ldsttags
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load-Acquire RCpc ordered pair of registers
+    /// Load-Acquire RCpc ordered pair of registers.
     /// </summary>
+    /// <remarks><code>LDIAPP Wt1, Wt2, [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDIAPP_32le_ldiappstilp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDIAPP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64BaseMemoryAccessor src, int value8)
     {
         uint raw = 0x99400800U; // Encoding for: LDIAPP_32le_ldiappstilp
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Load-Acquire RCpc ordered pair of registers
+    /// Load-Acquire RCpc ordered pair of registers.
     /// </summary>
+    /// <remarks><code>LDIAPP Wt1, Wt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDIAPP_32l_ldiappstilp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDIAPP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x99401800U; // Encoding for: LDIAPP_32l_ldiappstilp
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Load-Acquire RCpc ordered pair of registers
+    /// Load-Acquire RCpc ordered pair of registers.
     /// </summary>
+    /// <remarks><code>LDIAPP Xt1, Xt2, [Xn|SP], #16</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDIAPP_64ls_ldiappstilp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDIAPP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src, int value16)
     {
         uint raw = 0xD9400800U; // Encoding for: LDIAPP_64ls_ldiappstilp
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Load-Acquire RCpc ordered pair of registers
+    /// Load-Acquire RCpc ordered pair of registers.
     /// </summary>
+    /// <remarks><code>LDIAPP Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDIAPP_64l_ldiappstilp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDIAPP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xD9401800U; // Encoding for: LDIAPP_64l_ldiappstilp
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Load LOAcquire register
+    /// Load LOAcquire register.
     /// </summary>
+    /// <remarks><code>LDLAR Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDLAR_lr32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDLAR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x88DF7C00U; // Encoding for: LDLAR_lr32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load LOAcquire register
+    /// Load LOAcquire register.
     /// </summary>
+    /// <remarks><code>LDLAR Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDLAR_lr64_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDLAR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xC8DF7C00U; // Encoding for: LDLAR_lr64_ldstord
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load LOAcquire register byte
+    /// Load LOAcquire register byte.
     /// </summary>
+    /// <remarks><code>LDLARB Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDLARB_lr32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDLARB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x08DF7C00U; // Encoding for: LDLARB_lr32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load LOAcquire register halfword
+    /// Load LOAcquire register halfword.
     /// </summary>
+    /// <remarks><code>LDLARH Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDLARH_lr32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDLARH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x48DF7C00U; // Encoding for: LDLARH_lr32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load pair of registers, with non-temporal hint
+    /// Load pair of registers, with non-temporal hint.
     /// </summary>
+    /// <remarks><code>LDNP Wt1, Wt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDNP_32_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDNP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x28400000U; // Encoding for: LDNP_32_ldstnapair_offs
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load pair of registers, with non-temporal hint
+    /// Load pair of registers, with non-temporal hint.
     /// </summary>
+    /// <remarks><code>LDNP Xt1, Xt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDNP_64_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDNP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xA8400000U; // Encoding for: LDNP_64_ldstnapair_offs
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load pair of registers
+    /// Load pair of registers.
     /// </summary>
+    /// <remarks><code>LDP Wt1, Wt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_32_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0x28C00000U; // Encoding for: LDP_32_ldstpair_post
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load pair of registers
+    /// Load pair of registers.
     /// </summary>
+    /// <remarks><code>LDP Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0xA8C00000U; // Encoding for: LDP_64_ldstpair_post
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load pair of registers
+    /// Load pair of registers.
     /// </summary>
+    /// <remarks><code>LDP Wt1, Wt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_32_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0x29C00000U; // Encoding for: LDP_32_ldstpair_pre
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load pair of registers
+    /// Load pair of registers.
     /// </summary>
+    /// <remarks><code>LDP Xt1, Xt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_64_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0xA9C00000U; // Encoding for: LDP_64_ldstpair_pre
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load pair of registers
+    /// Load pair of registers.
     /// </summary>
+    /// <remarks><code>LDP Wt1, Wt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_32_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x29400000U; // Encoding for: LDP_32_ldstpair_off
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load pair of registers
+    /// Load pair of registers.
     /// </summary>
+    /// <remarks><code>LDP Xt1, Xt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_64_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xA9400000U; // Encoding for: LDP_64_ldstpair_off
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load pair of registers signed word
+    /// Load pair of registers signed word.
     /// </summary>
+    /// <remarks><code>LDPSW Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDPSW_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDPSW(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0x68C00000U; // Encoding for: LDPSW_64_ldstpair_post
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load pair of registers signed word
+    /// Load pair of registers signed word.
     /// </summary>
+    /// <remarks><code>LDPSW Xt1, Xt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDPSW_64_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDPSW(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0x69C00000U; // Encoding for: LDPSW_64_ldstpair_pre
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load pair of registers signed word
+    /// Load pair of registers signed word.
     /// </summary>
+    /// <remarks><code>LDPSW Xt1, Xt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDPSW_64_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDPSW(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x69400000U; // Encoding for: LDPSW_64_ldstpair_off
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load register (immediate)
+    /// Load register (immediate).
     /// </summary>
+    /// <remarks><code>LDR Wt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_32_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterW Wt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0xB8400400U; // Encoding for: LDR_32_ldst_immpost
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (immediate)
+    /// Load register (immediate).
     /// </summary>
+    /// <remarks><code>LDR Xt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_64_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterX Xt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0xF8400400U; // Encoding for: LDR_64_ldst_immpost
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (immediate)
+    /// Load register (immediate).
     /// </summary>
+    /// <remarks><code>LDR Wt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_32_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterW Wt, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0xB8400C00U; // Encoding for: LDR_32_ldst_immpre
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (immediate)
+    /// Load register (immediate).
     /// </summary>
+    /// <remarks><code>LDR Xt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_64_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0xF8400C00U; // Encoding for: LDR_64_ldst_immpre
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (immediate)
+    /// Load register (immediate).
     /// </summary>
+    /// <remarks><code>LDR Wt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_32_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xB9400000U; // Encoding for: LDR_32_ldst_pos
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (immediate)
+    /// Load register (immediate).
     /// </summary>
+    /// <remarks><code>LDR Xt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_64_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xF9400000U; // Encoding for: LDR_64_ldst_pos
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (literal)
+    /// Load register (literal).
     /// </summary>
+    /// <remarks><code>LDR Wt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_32_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterW Wt, Arm64Label label)
     {
         uint raw = 0x18000000U; // Encoding for: LDR_32_loadlit
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (literal)
+    /// Load register (literal).
     /// </summary>
+    /// <remarks><code>LDR Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_64_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterX Xt, Arm64Label label)
     {
         uint raw = 0x58000000U; // Encoding for: LDR_64_loadlit
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (register)
+    /// Load register (register).
     /// </summary>
+    /// <remarks><code>LDR Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterW Wt, Arm64OptionalRegisterExtendMemoryAccessor src)
     {
         uint raw = 0xB8600800U; // Encoding for: LDR_32_ldst_regoff
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (register)
+    /// Load register (register).
     /// </summary>
+    /// <remarks><code>LDR Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterX Xt, Arm64OptionalRegisterExtendMemoryAccessor src)
     {
         uint raw = 0xF8600800U; // Encoding for: LDR_64_ldst_regoff
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register byte (register)
+    /// Load register byte (register).
     /// </summary>
+    /// <remarks><code>LDRB Wt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRB(Arm64RegisterW Wt, Arm64RegisterExtendMemoryAccessor src)
     {
         uint raw = 0x38600800U; // Encoding for: LDRB_32b_ldst_regoff and memory variation with 0x38606800 LDRB_32bl_ldst_regoff
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register byte (immediate)
+    /// Load register byte (immediate).
     /// </summary>
+    /// <remarks><code>LDRB Wt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRB_32_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRB(Arm64RegisterW Wt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0x38400400U; // Encoding for: LDRB_32_ldst_immpost
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register byte (immediate)
+    /// Load register byte (immediate).
     /// </summary>
+    /// <remarks><code>LDRB Wt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRB_32_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRB(Arm64RegisterW Wt, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0x38400C00U; // Encoding for: LDRB_32_ldst_immpre
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register byte (immediate)
+    /// Load register byte (immediate).
     /// </summary>
+    /// <remarks><code>LDRB Wt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRB_32_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x39400000U; // Encoding for: LDRB_32_ldst_pos
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register halfword (immediate)
+    /// Load register halfword (immediate).
     /// </summary>
+    /// <remarks><code>LDRH Wt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRH_32_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRH(Arm64RegisterW Wt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0x78400400U; // Encoding for: LDRH_32_ldst_immpost
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register halfword (immediate)
+    /// Load register halfword (immediate).
     /// </summary>
+    /// <remarks><code>LDRH Wt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRH_32_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRH(Arm64RegisterW Wt, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0x78400C00U; // Encoding for: LDRH_32_ldst_immpre
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register halfword (immediate)
+    /// Load register halfword (immediate).
     /// </summary>
+    /// <remarks><code>LDRH Wt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRH_32_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x79400000U; // Encoding for: LDRH_32_ldst_pos
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register halfword (register)
+    /// Load register halfword (register).
     /// </summary>
+    /// <remarks><code>LDRH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRH(Arm64RegisterW Wt, Arm64OptionalRegisterExtendMemoryAccessor src)
     {
         uint raw = 0x78600800U; // Encoding for: LDRH_32_ldst_regoff
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (register)
+    /// Load register signed byte (register).
     /// </summary>
+    /// <remarks><code>LDRSB Wt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterW Wt, Arm64RegisterExtendMemoryAccessor src)
     {
         uint raw = 0x38E00800U; // Encoding for: LDRSB_32b_ldst_regoff and memory variation with 0x38E06800 LDRSB_32bl_ldst_regoff
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (register)
+    /// Load register signed byte (register).
     /// </summary>
+    /// <remarks><code>LDRSB Xt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_64b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterX Xt, Arm64RegisterExtendMemoryAccessor src)
     {
         uint raw = 0x38A00800U; // Encoding for: LDRSB_64b_ldst_regoff and memory variation with 0x38A06800 LDRSB_64bl_ldst_regoff
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (immediate)
+    /// Load register signed byte (immediate).
     /// </summary>
+    /// <remarks><code>LDRSB Wt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_32_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterW Wt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0x38C00400U; // Encoding for: LDRSB_32_ldst_immpost
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (immediate)
+    /// Load register signed byte (immediate).
     /// </summary>
+    /// <remarks><code>LDRSB Xt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_64_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterX Xt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0x38800400U; // Encoding for: LDRSB_64_ldst_immpost
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (immediate)
+    /// Load register signed byte (immediate).
     /// </summary>
+    /// <remarks><code>LDRSB Wt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_32_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterW Wt, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0x38C00C00U; // Encoding for: LDRSB_32_ldst_immpre
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (immediate)
+    /// Load register signed byte (immediate).
     /// </summary>
+    /// <remarks><code>LDRSB Xt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_64_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0x38800C00U; // Encoding for: LDRSB_64_ldst_immpre
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (immediate)
+    /// Load register signed byte (immediate).
     /// </summary>
+    /// <remarks><code>LDRSB Wt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_32_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x39C00000U; // Encoding for: LDRSB_32_ldst_pos
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (immediate)
+    /// Load register signed byte (immediate).
     /// </summary>
+    /// <remarks><code>LDRSB Xt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_64_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x39800000U; // Encoding for: LDRSB_64_ldst_pos
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (immediate)
+    /// Load register signed halfword (immediate).
     /// </summary>
+    /// <remarks><code>LDRSH Wt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_32_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSH(Arm64RegisterW Wt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0x78C00400U; // Encoding for: LDRSH_32_ldst_immpost
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (immediate)
+    /// Load register signed halfword (immediate).
     /// </summary>
+    /// <remarks><code>LDRSH Xt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_64_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSH(Arm64RegisterX Xt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0x78800400U; // Encoding for: LDRSH_64_ldst_immpost
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (immediate)
+    /// Load register signed halfword (immediate).
     /// </summary>
+    /// <remarks><code>LDRSH Wt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_32_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSH(Arm64RegisterW Wt, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0x78C00C00U; // Encoding for: LDRSH_32_ldst_immpre
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (immediate)
+    /// Load register signed halfword (immediate).
     /// </summary>
+    /// <remarks><code>LDRSH Xt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_64_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSH(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0x78800C00U; // Encoding for: LDRSH_64_ldst_immpre
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (immediate)
+    /// Load register signed halfword (immediate).
     /// </summary>
+    /// <remarks><code>LDRSH Wt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_32_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x79C00000U; // Encoding for: LDRSH_32_ldst_pos
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (immediate)
+    /// Load register signed halfword (immediate).
     /// </summary>
+    /// <remarks><code>LDRSH Xt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_64_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSH(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x79800000U; // Encoding for: LDRSH_64_ldst_pos
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (register)
+    /// Load register signed halfword (register).
     /// </summary>
+    /// <remarks><code>LDRSH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSH(Arm64RegisterW Wt, Arm64OptionalRegisterExtendMemoryAccessor src)
     {
         uint raw = 0x78E00800U; // Encoding for: LDRSH_32_ldst_regoff
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (register)
+    /// Load register signed halfword (register).
     /// </summary>
+    /// <remarks><code>LDRSH Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSH(Arm64RegisterX Xt, Arm64OptionalRegisterExtendMemoryAccessor src)
     {
         uint raw = 0x78A00800U; // Encoding for: LDRSH_64_ldst_regoff
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed word (immediate)
+    /// Load register signed word (immediate).
     /// </summary>
+    /// <remarks><code>LDRSW Xt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSW_64_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSW(Arm64RegisterX Xt, Arm64BaseMemoryAccessor src, int simm)
     {
         uint raw = 0xB8800400U; // Encoding for: LDRSW_64_ldst_immpost
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed word (immediate)
+    /// Load register signed word (immediate).
     /// </summary>
+    /// <remarks><code>LDRSW Xt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSW_64_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSW(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0xB8800C00U; // Encoding for: LDRSW_64_ldst_immpre
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed word (immediate)
+    /// Load register signed word (immediate).
     /// </summary>
+    /// <remarks><code>LDRSW Xt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSW_64_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSW(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xB9800000U; // Encoding for: LDRSW_64_ldst_pos
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed word (literal)
+    /// Load register signed word (literal).
     /// </summary>
+    /// <remarks><code>LDRSW Xt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSW_64_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSW(Arm64RegisterX Xt, Arm64Label label)
     {
         uint raw = 0x98000000U; // Encoding for: LDRSW_64_loadlit
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed word (register)
+    /// Load register signed word (register).
     /// </summary>
+    /// <remarks><code>LDRSW Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSW_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSW(Arm64RegisterX Xt, Arm64OptionalRegisterExtendMemoryAccessor src)
     {
         uint raw = 0xB8A00800U; // Encoding for: LDRSW_64_ldst_regoff
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory
+    /// Atomic bit set on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSET Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSET_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSET(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8203000U; // Encoding for: LDSET_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory
+    /// Atomic bit set on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSET Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSET_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSET(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8203000U; // Encoding for: LDSET_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory
+    /// Atomic bit set on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSETA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETA_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8A03000U; // Encoding for: LDSETA_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory
+    /// Atomic bit set on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSETA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8A03000U; // Encoding for: LDSETA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on byte in memory
+    /// Atomic bit set on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSETAB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETAB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETAB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38A03000U; // Encoding for: LDSETAB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on halfword in memory
+    /// Atomic bit set on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSETAH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETAH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETAH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78A03000U; // Encoding for: LDSETAH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory
+    /// Atomic bit set on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSETAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETAL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8E03000U; // Encoding for: LDSETAL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory
+    /// Atomic bit set on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSETAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8E03000U; // Encoding for: LDSETAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on byte in memory
+    /// Atomic bit set on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSETALB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETALB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETALB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38E03000U; // Encoding for: LDSETALB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on halfword in memory
+    /// Atomic bit set on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSETALH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETALH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETALH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78E03000U; // Encoding for: LDSETALH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on byte in memory
+    /// Atomic bit set on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSETB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38203000U; // Encoding for: LDSETB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on halfword in memory
+    /// Atomic bit set on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSETH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78203000U; // Encoding for: LDSETH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory
+    /// Atomic bit set on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSETL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8603000U; // Encoding for: LDSETL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory
+    /// Atomic bit set on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSETL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8603000U; // Encoding for: LDSETL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on byte in memory
+    /// Atomic bit set on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSETLB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETLB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETLB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38603000U; // Encoding for: LDSETLB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on halfword in memory
+    /// Atomic bit set on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSETLH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETLH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETLH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78603000U; // Encoding for: LDSETLH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on quadword in memory
+    /// Atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>LDSETP Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETP_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19203000U; // Encoding for: LDSETP_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on quadword in memory
+    /// Atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>LDSETPA Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETPA_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETPA(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19A03000U; // Encoding for: LDSETPA_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on quadword in memory
+    /// Atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>LDSETPAL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETPAL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETPAL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19E03000U; // Encoding for: LDSETPAL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on quadword in memory
+    /// Atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>LDSETPL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSETPL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSETPL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19603000U; // Encoding for: LDSETPL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory
+    /// Atomic signed maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAX Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAX_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAX(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8204000U; // Encoding for: LDSMAX_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory
+    /// Atomic signed maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAX Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAX_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAX(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8204000U; // Encoding for: LDSMAX_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory
+    /// Atomic signed maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXA_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8A04000U; // Encoding for: LDSMAXA_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory
+    /// Atomic signed maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8A04000U; // Encoding for: LDSMAXA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on byte in memory
+    /// Atomic signed maximum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXAB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXAB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXAB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38A04000U; // Encoding for: LDSMAXAB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on halfword in memory
+    /// Atomic signed maximum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXAH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXAH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXAH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78A04000U; // Encoding for: LDSMAXAH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory
+    /// Atomic signed maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXAL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8E04000U; // Encoding for: LDSMAXAL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory
+    /// Atomic signed maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8E04000U; // Encoding for: LDSMAXAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on byte in memory
+    /// Atomic signed maximum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXALB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXALB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXALB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38E04000U; // Encoding for: LDSMAXALB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on halfword in memory
+    /// Atomic signed maximum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXALH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXALH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXALH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78E04000U; // Encoding for: LDSMAXALH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on byte in memory
+    /// Atomic signed maximum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38204000U; // Encoding for: LDSMAXB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on halfword in memory
+    /// Atomic signed maximum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78204000U; // Encoding for: LDSMAXH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory
+    /// Atomic signed maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8604000U; // Encoding for: LDSMAXL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory
+    /// Atomic signed maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8604000U; // Encoding for: LDSMAXL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on byte in memory
+    /// Atomic signed maximum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXLB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXLB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXLB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38604000U; // Encoding for: LDSMAXLB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on halfword in memory
+    /// Atomic signed maximum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSMAXLH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMAXLH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMAXLH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78604000U; // Encoding for: LDSMAXLH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory
+    /// Atomic signed minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMIN Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMIN_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMIN(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8205000U; // Encoding for: LDSMIN_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory
+    /// Atomic signed minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMIN Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMIN_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMIN(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8205000U; // Encoding for: LDSMIN_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory
+    /// Atomic signed minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMINA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINA_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8A05000U; // Encoding for: LDSMINA_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory
+    /// Atomic signed minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMINA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8A05000U; // Encoding for: LDSMINA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on byte in memory
+    /// Atomic signed minimum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSMINAB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINAB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINAB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38A05000U; // Encoding for: LDSMINAB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on halfword in memory
+    /// Atomic signed minimum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSMINAH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINAH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINAH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78A05000U; // Encoding for: LDSMINAH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory
+    /// Atomic signed minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMINAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINAL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8E05000U; // Encoding for: LDSMINAL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory
+    /// Atomic signed minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMINAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8E05000U; // Encoding for: LDSMINAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on byte in memory
+    /// Atomic signed minimum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSMINALB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINALB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINALB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38E05000U; // Encoding for: LDSMINALB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on halfword in memory
+    /// Atomic signed minimum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSMINALH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINALH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINALH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78E05000U; // Encoding for: LDSMINALH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on byte in memory
+    /// Atomic signed minimum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSMINB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38205000U; // Encoding for: LDSMINB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on halfword in memory
+    /// Atomic signed minimum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSMINH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78205000U; // Encoding for: LDSMINH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory
+    /// Atomic signed minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMINL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8605000U; // Encoding for: LDSMINL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory
+    /// Atomic signed minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDSMINL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8605000U; // Encoding for: LDSMINL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on byte in memory
+    /// Atomic signed minimum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDSMINLB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINLB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINLB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38605000U; // Encoding for: LDSMINLB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on halfword in memory
+    /// Atomic signed minimum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDSMINLH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDSMINLH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDSMINLH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78605000U; // Encoding for: LDSMINLH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged
+    /// Atomic add unprivileged.
     /// </summary>
+    /// <remarks><code>LDTADD Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTADD_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTADD(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19200400U; // Encoding for: LDTADD_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged
+    /// Atomic add unprivileged.
     /// </summary>
+    /// <remarks><code>LDTADD Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTADD_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTADD(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59200400U; // Encoding for: LDTADD_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged
+    /// Atomic add unprivileged.
     /// </summary>
+    /// <remarks><code>LDTADDA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTADDA_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTADDA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19A00400U; // Encoding for: LDTADDA_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged
+    /// Atomic add unprivileged.
     /// </summary>
+    /// <remarks><code>LDTADDA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTADDA_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTADDA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59A00400U; // Encoding for: LDTADDA_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged
+    /// Atomic add unprivileged.
     /// </summary>
+    /// <remarks><code>LDTADDAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTADDAL_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTADDAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19E00400U; // Encoding for: LDTADDAL_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged
+    /// Atomic add unprivileged.
     /// </summary>
+    /// <remarks><code>LDTADDAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTADDAL_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTADDAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59E00400U; // Encoding for: LDTADDAL_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged
+    /// Atomic add unprivileged.
     /// </summary>
+    /// <remarks><code>LDTADDL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTADDL_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTADDL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19600400U; // Encoding for: LDTADDL_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged
+    /// Atomic add unprivileged.
     /// </summary>
+    /// <remarks><code>LDTADDL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTADDL_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTADDL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59600400U; // Encoding for: LDTADDL_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged
+    /// Atomic bit clear unprivileged.
     /// </summary>
+    /// <remarks><code>LDTCLR Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTCLR_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTCLR(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19201400U; // Encoding for: LDTCLR_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged
+    /// Atomic bit clear unprivileged.
     /// </summary>
+    /// <remarks><code>LDTCLR Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTCLR_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTCLR(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59201400U; // Encoding for: LDTCLR_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged
+    /// Atomic bit clear unprivileged.
     /// </summary>
+    /// <remarks><code>LDTCLRA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTCLRA_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTCLRA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19A01400U; // Encoding for: LDTCLRA_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged
+    /// Atomic bit clear unprivileged.
     /// </summary>
+    /// <remarks><code>LDTCLRA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTCLRA_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTCLRA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59A01400U; // Encoding for: LDTCLRA_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged
+    /// Atomic bit clear unprivileged.
     /// </summary>
+    /// <remarks><code>LDTCLRAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTCLRAL_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTCLRAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19E01400U; // Encoding for: LDTCLRAL_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged
+    /// Atomic bit clear unprivileged.
     /// </summary>
+    /// <remarks><code>LDTCLRAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTCLRAL_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTCLRAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59E01400U; // Encoding for: LDTCLRAL_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged
+    /// Atomic bit clear unprivileged.
     /// </summary>
+    /// <remarks><code>LDTCLRL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTCLRL_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTCLRL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19601400U; // Encoding for: LDTCLRL_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged
+    /// Atomic bit clear unprivileged.
     /// </summary>
+    /// <remarks><code>LDTCLRL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTCLRL_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTCLRL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59601400U; // Encoding for: LDTCLRL_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load unprivileged pair of registers, with non-temporal hint
+    /// Load unprivileged pair of registers, with non-temporal hint.
     /// </summary>
+    /// <remarks><code>LDTNP Xt1, Xt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTNP_64_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTNP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xE8400000U; // Encoding for: LDTNP_64_ldstnapair_offs
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load unprivileged pair of registers
+    /// Load unprivileged pair of registers.
     /// </summary>
+    /// <remarks><code>LDTP Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTP_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0xE8C00000U; // Encoding for: LDTP_64_ldstpair_post
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load unprivileged pair of registers
+    /// Load unprivileged pair of registers.
     /// </summary>
+    /// <remarks><code>LDTP Xt1, Xt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTP_64_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64ImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0xE9C00000U; // Encoding for: LDTP_64_ldstpair_pre
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load unprivileged pair of registers
+    /// Load unprivileged pair of registers.
     /// </summary>
+    /// <remarks><code>LDTP Xt1, Xt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTP_64_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xE9400000U; // Encoding for: LDTP_64_ldstpair_off
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load register (unprivileged)
+    /// Load register (unprivileged).
     /// </summary>
+    /// <remarks><code>LDTR Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTR_32_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xB8400800U; // Encoding for: LDTR_32_ldst_unpriv
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (unprivileged)
+    /// Load register (unprivileged).
     /// </summary>
+    /// <remarks><code>LDTR Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTR_64_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xF8400800U; // Encoding for: LDTR_64_ldst_unpriv
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register byte (unprivileged)
+    /// Load register byte (unprivileged).
     /// </summary>
+    /// <remarks><code>LDTRB Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTRB_32_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTRB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x38400800U; // Encoding for: LDTRB_32_ldst_unpriv
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register halfword (unprivileged)
+    /// Load register halfword (unprivileged).
     /// </summary>
+    /// <remarks><code>LDTRH Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTRH_32_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTRH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x78400800U; // Encoding for: LDTRH_32_ldst_unpriv
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (unprivileged)
+    /// Load register signed byte (unprivileged).
     /// </summary>
+    /// <remarks><code>LDTRSB Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTRSB_32_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTRSB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x38C00800U; // Encoding for: LDTRSB_32_ldst_unpriv
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (unprivileged)
+    /// Load register signed byte (unprivileged).
     /// </summary>
+    /// <remarks><code>LDTRSB Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTRSB_64_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTRSB(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x38800800U; // Encoding for: LDTRSB_64_ldst_unpriv
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (unprivileged)
+    /// Load register signed halfword (unprivileged).
     /// </summary>
+    /// <remarks><code>LDTRSH Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTRSH_32_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTRSH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x78C00800U; // Encoding for: LDTRSH_32_ldst_unpriv
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (unprivileged)
+    /// Load register signed halfword (unprivileged).
     /// </summary>
+    /// <remarks><code>LDTRSH Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTRSH_64_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTRSH(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x78800800U; // Encoding for: LDTRSH_64_ldst_unpriv
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed word (unprivileged)
+    /// Load register signed word (unprivileged).
     /// </summary>
+    /// <remarks><code>LDTRSW Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTRSW_64_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTRSW(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xB8800800U; // Encoding for: LDTRSW_64_ldst_unpriv
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged
+    /// Atomic bit set unprivileged.
     /// </summary>
+    /// <remarks><code>LDTSET Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTSET_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTSET(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19203400U; // Encoding for: LDTSET_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged
+    /// Atomic bit set unprivileged.
     /// </summary>
+    /// <remarks><code>LDTSET Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTSET_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTSET(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59203400U; // Encoding for: LDTSET_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged
+    /// Atomic bit set unprivileged.
     /// </summary>
+    /// <remarks><code>LDTSETA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTSETA_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTSETA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19A03400U; // Encoding for: LDTSETA_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged
+    /// Atomic bit set unprivileged.
     /// </summary>
+    /// <remarks><code>LDTSETA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTSETA_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTSETA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59A03400U; // Encoding for: LDTSETA_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged
+    /// Atomic bit set unprivileged.
     /// </summary>
+    /// <remarks><code>LDTSETAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTSETAL_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTSETAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19E03400U; // Encoding for: LDTSETAL_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged
+    /// Atomic bit set unprivileged.
     /// </summary>
+    /// <remarks><code>LDTSETAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTSETAL_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTSETAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59E03400U; // Encoding for: LDTSETAL_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged
+    /// Atomic bit set unprivileged.
     /// </summary>
+    /// <remarks><code>LDTSETL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTSETL_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTSETL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x19603400U; // Encoding for: LDTSETL_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged
+    /// Atomic bit set unprivileged.
     /// </summary>
+    /// <remarks><code>LDTSETL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTSETL_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTSETL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x59603400U; // Encoding for: LDTSETL_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load unprivileged exclusive register
+    /// Load unprivileged exclusive register.
     /// </summary>
+    /// <remarks><code>LDTXR Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTXR_lr32_ldstexclr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTXR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x895F7C00U; // Encoding for: LDTXR_lr32_ldstexclr_unpriv
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load unprivileged exclusive register
+    /// Load unprivileged exclusive register.
     /// </summary>
+    /// <remarks><code>LDTXR Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTXR_lr64_ldstexclr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDTXR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xC95F7C00U; // Encoding for: LDTXR_lr64_ldstexclr_unpriv
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory
+    /// Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAX Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAX_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAX(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8206000U; // Encoding for: LDUMAX_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory
+    /// Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAX Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAX_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAX(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8206000U; // Encoding for: LDUMAX_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory
+    /// Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXA_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8A06000U; // Encoding for: LDUMAXA_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory
+    /// Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8A06000U; // Encoding for: LDUMAXA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on byte in memory
+    /// Atomic unsigned maximum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXAB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXAB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXAB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38A06000U; // Encoding for: LDUMAXAB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on halfword in memory
+    /// Atomic unsigned maximum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXAH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXAH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXAH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78A06000U; // Encoding for: LDUMAXAH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory
+    /// Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXAL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8E06000U; // Encoding for: LDUMAXAL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory
+    /// Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8E06000U; // Encoding for: LDUMAXAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on byte in memory
+    /// Atomic unsigned maximum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXALB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXALB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXALB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38E06000U; // Encoding for: LDUMAXALB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on halfword in memory
+    /// Atomic unsigned maximum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXALH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXALH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXALH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78E06000U; // Encoding for: LDUMAXALH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on byte in memory
+    /// Atomic unsigned maximum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38206000U; // Encoding for: LDUMAXB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on halfword in memory
+    /// Atomic unsigned maximum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78206000U; // Encoding for: LDUMAXH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory
+    /// Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8606000U; // Encoding for: LDUMAXL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory
+    /// Atomic unsigned maximum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8606000U; // Encoding for: LDUMAXL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on byte in memory
+    /// Atomic unsigned maximum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXLB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXLB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXLB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38606000U; // Encoding for: LDUMAXLB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on halfword in memory
+    /// Atomic unsigned maximum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDUMAXLH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMAXLH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMAXLH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78606000U; // Encoding for: LDUMAXLH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory
+    /// Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMIN Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMIN_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMIN(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8207000U; // Encoding for: LDUMIN_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory
+    /// Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMIN Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMIN_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMIN(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8207000U; // Encoding for: LDUMIN_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory
+    /// Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMINA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINA_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8A07000U; // Encoding for: LDUMINA_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory
+    /// Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMINA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8A07000U; // Encoding for: LDUMINA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on byte in memory
+    /// Atomic unsigned minimum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDUMINAB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINAB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINAB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38A07000U; // Encoding for: LDUMINAB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on halfword in memory
+    /// Atomic unsigned minimum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDUMINAH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINAH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINAH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78A07000U; // Encoding for: LDUMINAH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory
+    /// Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMINAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINAL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8E07000U; // Encoding for: LDUMINAL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory
+    /// Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMINAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8E07000U; // Encoding for: LDUMINAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on byte in memory
+    /// Atomic unsigned minimum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDUMINALB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINALB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINALB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38E07000U; // Encoding for: LDUMINALB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on halfword in memory
+    /// Atomic unsigned minimum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDUMINALH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINALH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINALH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78E07000U; // Encoding for: LDUMINALH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on byte in memory
+    /// Atomic unsigned minimum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDUMINB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38207000U; // Encoding for: LDUMINB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on halfword in memory
+    /// Atomic unsigned minimum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDUMINH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78207000U; // Encoding for: LDUMINH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory
+    /// Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMINL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xB8607000U; // Encoding for: LDUMINL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory
+    /// Atomic unsigned minimum on word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>LDUMINL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0xF8607000U; // Encoding for: LDUMINL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on byte in memory
+    /// Atomic unsigned minimum on byte in memory.
     /// </summary>
+    /// <remarks><code>LDUMINLB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINLB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINLB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x38607000U; // Encoding for: LDUMINLB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on halfword in memory
+    /// Atomic unsigned minimum on halfword in memory.
     /// </summary>
+    /// <remarks><code>LDUMINLH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUMINLH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUMINLH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x78607000U; // Encoding for: LDUMINLH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (unscaled)
+    /// Load register (unscaled).
     /// </summary>
+    /// <remarks><code>LDUR Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUR_32_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xB8400000U; // Encoding for: LDUR_32_ldst_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register (unscaled)
+    /// Load register (unscaled).
     /// </summary>
+    /// <remarks><code>LDUR Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDUR_64_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDUR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xF8400000U; // Encoding for: LDUR_64_ldst_unscaled
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register byte (unscaled)
+    /// Load register byte (unscaled).
     /// </summary>
+    /// <remarks><code>LDURB Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDURB_32_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDURB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x38400000U; // Encoding for: LDURB_32_ldst_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register halfword (unscaled)
+    /// Load register halfword (unscaled).
     /// </summary>
+    /// <remarks><code>LDURH Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDURH_32_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDURH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x78400000U; // Encoding for: LDURH_32_ldst_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (unscaled)
+    /// Load register signed byte (unscaled).
     /// </summary>
+    /// <remarks><code>LDURSB Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDURSB_32_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDURSB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x38C00000U; // Encoding for: LDURSB_32_ldst_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (unscaled)
+    /// Load register signed byte (unscaled).
     /// </summary>
+    /// <remarks><code>LDURSB Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDURSB_64_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDURSB(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x38800000U; // Encoding for: LDURSB_64_ldst_unscaled
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (unscaled)
+    /// Load register signed halfword (unscaled).
     /// </summary>
+    /// <remarks><code>LDURSH Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDURSH_32_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDURSH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x78C00000U; // Encoding for: LDURSH_32_ldst_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed halfword (unscaled)
+    /// Load register signed halfword (unscaled).
     /// </summary>
+    /// <remarks><code>LDURSH Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDURSH_64_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDURSH(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x78800000U; // Encoding for: LDURSH_64_ldst_unscaled
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load register signed word (unscaled)
+    /// Load register signed word (unscaled).
     /// </summary>
+    /// <remarks><code>LDURSW Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDURSW_64_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDURSW(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xB8800000U; // Encoding for: LDURSW_64_ldst_unscaled
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load exclusive pair of registers
+    /// Load exclusive pair of registers.
     /// </summary>
+    /// <remarks><code>LDXP Wt1, Wt2, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDXP_lp32_ldstexclp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDXP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x887F0000U; // Encoding for: LDXP_lp32_ldstexclp
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load exclusive pair of registers
+    /// Load exclusive pair of registers.
     /// </summary>
+    /// <remarks><code>LDXP Xt1, Xt2, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDXP_lp64_ldstexclp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDXP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xC87F0000U; // Encoding for: LDXP_lp64_ldstexclp
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Load exclusive register
+    /// Load exclusive register.
     /// </summary>
+    /// <remarks><code>LDXR Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDXR_lr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDXR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x885F7C00U; // Encoding for: LDXR_lr32_ldstexclr
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load exclusive register
+    /// Load exclusive register.
     /// </summary>
+    /// <remarks><code>LDXR Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDXR_lr64_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDXR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xC85F7C00U; // Encoding for: LDXR_lr64_ldstexclr
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Load exclusive register byte
+    /// Load exclusive register byte.
     /// </summary>
+    /// <remarks><code>LDXRB Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDXRB_lr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDXRB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x085F7C00U; // Encoding for: LDXRB_lr32_ldstexclr
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Load exclusive register halfword
+    /// Load exclusive register halfword.
     /// </summary>
+    /// <remarks><code>LDXRH Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDXRH_lr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDXRH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0x485F7C00U; // Encoding for: LDXRH_lr32_ldstexclr
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Logical shift left (immediate)
+    /// Logical shift left (immediate).
     /// </summary>
+    /// <remarks><code>LSL Wd, Wn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LSL_ubfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LSL(Arm64RegisterW Wd, Arm64RegisterW Wn, int shift)
     {
         uint raw = 0x53000000U; // Encoding for: LSL_ubfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Logical shift left (immediate)
+    /// Logical shift left (immediate).
     /// </summary>
+    /// <remarks><code>LSL Xd, Xn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LSL_ubfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LSL(Arm64RegisterX Xd, Arm64RegisterX Xn, int shift)
     {
         uint raw = 0xD3400000U; // Encoding for: LSL_ubfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Logical shift left (register)
+    /// Logical shift left (register).
     /// </summary>
+    /// <remarks><code>LSL Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LSL_lslv_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LSL(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC02000U; // Encoding for: LSL_lslv_32_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Logical shift left (register)
+    /// Logical shift left (register).
     /// </summary>
+    /// <remarks><code>LSL Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LSL_lslv_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LSL(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC02000U; // Encoding for: LSL_lslv_64_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Logical shift right (immediate)
+    /// Logical shift right (immediate).
     /// </summary>
+    /// <remarks><code>LSR Wd, Wn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LSR_ubfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LSR(Arm64RegisterW Wd, Arm64RegisterW Wn, int shift)
     {
         uint raw = 0x53007C00U; // Encoding for: LSR_ubfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Logical shift right (immediate)
+    /// Logical shift right (immediate).
     /// </summary>
+    /// <remarks><code>LSR Xd, Xn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LSR_ubfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LSR(Arm64RegisterX Xd, Arm64RegisterX Xn, int shift)
     {
         uint raw = 0xD340FC00U; // Encoding for: LSR_ubfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Logical shift right (register)
+    /// Logical shift right (register).
     /// </summary>
+    /// <remarks><code>LSR Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LSR_lsrv_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LSR(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC02400U; // Encoding for: LSR_lsrv_32_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Logical shift right (register)
+    /// Logical shift right (register).
     /// </summary>
+    /// <remarks><code>LSR Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LSR_lsrv_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LSR(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC02400U; // Encoding for: LSR_lsrv_64_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Multiply-add
+    /// Multiply-add.
     /// </summary>
+    /// <remarks><code>MADD Wd, Wn, Wm, Wa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MADD_32a_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MADD(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64RegisterW Wa)
     {
         uint raw = 0x1B000000U; // Encoding for: MADD_32a_dp_3src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         raw |= (uint)(Wa.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Multiply-add
+    /// Multiply-add.
     /// </summary>
+    /// <remarks><code>MADD Xd, Xn, Xm, Xa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MADD_64a_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MADD(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64RegisterX Xa)
     {
         uint raw = 0x9B000000U; // Encoding for: MADD_64a_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         raw |= (uint)(Xa.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Multiply-add checked pointer
+    /// Multiply-add checked pointer.
     /// </summary>
+    /// <remarks><code>MADDPT Xd, Xn, Xm, Xa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MADDPT_64a_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MADDPT(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64RegisterX Xa)
     {
         uint raw = 0x9B600000U; // Encoding for: MADDPT_64a_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         raw |= (uint)(Xa.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Multiply-negate
+    /// Multiply-negate.
     /// </summary>
+    /// <remarks><code>MNEG Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MNEG_msub_32a_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MNEG(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1B00FC00U; // Encoding for: MNEG_msub_32a_dp_3src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Multiply-negate
+    /// Multiply-negate.
     /// </summary>
+    /// <remarks><code>MNEG Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MNEG_msub_64a_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MNEG(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9B00FC00U; // Encoding for: MNEG_msub_64a_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Move bitmask immediate value
+    /// Move bitmask immediate value.
     /// </summary>
+    /// <remarks><code>MOV Wd|WSP, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_orr_32_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOV(Arm64RegisterWOrWSP Wd_WSP, Arm64LogicalImmediate32 imm)
     {
         uint raw = 0x320003E0U; // Encoding for: MOV_orr_32_log_imm
-        raw |= (uint)(Wd_WSP.Index << 0);
+        raw |= (uint)(Wd_WSP.Index);
         return raw;
     }
     /// <summary>
-    /// Move bitmask immediate value
+    /// Move bitmask immediate value.
     /// </summary>
+    /// <remarks><code>MOV Xd|SP, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_orr_64_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOV(Arm64RegisterXOrSP Xd_SP, Arm64LogicalImmediate64 imm)
     {
         uint raw = 0xB20003E0U; // Encoding for: MOV_orr_64_log_imm
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Move register value
+    /// Move register value.
     /// </summary>
+    /// <remarks><code>MOV Wd, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_orr_32_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOV(Arm64RegisterW Wd, Arm64RegisterW Wm)
     {
         uint raw = 0x2A0003E0U; // Encoding for: MOV_orr_32_log_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Move register value
+    /// Move register value.
     /// </summary>
+    /// <remarks><code>MOV Xd, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_orr_64_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOV(Arm64RegisterX Xd, Arm64RegisterX Xm)
     {
         uint raw = 0xAA0003E0U; // Encoding for: MOV_orr_64_log_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Move register value to or from SP
+    /// Move register value to or from SP.
     /// </summary>
+    /// <remarks><code>MOV Wd|WSP, Wn|WSP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_add_32_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOV(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterWOrWSP Wn_WSP)
     {
         uint raw = 0x11000000U; // Encoding for: MOV_add_32_addsub_imm
-        raw |= (uint)(Wd_WSP.Index << 0);
+        raw |= (uint)(Wd_WSP.Index);
         raw |= (uint)(Wn_WSP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Move register value to or from SP
+    /// Move register value to or from SP.
     /// </summary>
+    /// <remarks><code>MOV Xd|SP, Xn|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_add_64_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOV(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP)
     {
         uint raw = 0x91000000U; // Encoding for: MOV_add_64_addsub_imm
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Move wide immediate value
+    /// Move wide immediate value.
     /// </summary>
+    /// <remarks><code>MOV Wd, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_movz_32_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOV(Arm64RegisterW Wd, int imm)
     {
         uint raw = 0x52800000U; // Encoding for: MOV_movz_32_movewide
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         return raw;
     }
     /// <summary>
-    /// Move wide immediate value
+    /// Move wide immediate value.
     /// </summary>
+    /// <remarks><code>MOV Xd, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_movz_64_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOV(Arm64RegisterX Xd, int imm)
     {
         uint raw = 0xD2800000U; // Encoding for: MOV_movz_64_movewide
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Move inverted wide immediate value
+    /// Move inverted wide immediate value.
     /// </summary>
+    /// <remarks><code>MOV Wd, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_movn_32_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOV_MOVN(Arm64RegisterW Wd, int imm)
     {
         uint raw = 0x12800000U; // Encoding for: MOV_movn_32_movewide
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         return raw;
     }
     /// <summary>
-    /// Move inverted wide immediate value
+    /// Move inverted wide immediate value.
     /// </summary>
+    /// <remarks><code>MOV Xd, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_movn_64_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOV_MOVN(Arm64RegisterX Xd, int imm)
     {
         uint raw = 0x92800000U; // Encoding for: MOV_movn_64_movewide
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Move wide with keep
+    /// Move wide with keep.
     /// </summary>
+    /// <remarks><code>MOVK Wd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVK_32_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOVK(Arm64RegisterW Wd, int imm, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x72800000U; // Encoding for: MOVK_32_movewide
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         return raw;
     }
     /// <summary>
-    /// Move wide with keep
+    /// Move wide with keep.
     /// </summary>
+    /// <remarks><code>MOVK Xd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVK_64_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOVK(Arm64RegisterX Xd, int imm, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0xF2800000U; // Encoding for: MOVK_64_movewide
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Move wide with NOT
+    /// Move wide with NOT.
     /// </summary>
+    /// <remarks><code>MOVN Wd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVN_32_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOVN(Arm64RegisterW Wd, int imm, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x12800000U; // Encoding for: MOVN_32_movewide
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         return raw;
     }
     /// <summary>
-    /// Move wide with NOT
+    /// Move wide with NOT.
     /// </summary>
+    /// <remarks><code>MOVN Xd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVN_64_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOVN(Arm64RegisterX Xd, int imm, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x92800000U; // Encoding for: MOVN_64_movewide
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Move wide with zero
+    /// Move wide with zero.
     /// </summary>
+    /// <remarks><code>MOVZ Wd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVZ_32_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOVZ(Arm64RegisterW Wd, int imm, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x52800000U; // Encoding for: MOVZ_32_movewide
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         return raw;
     }
     /// <summary>
-    /// Move wide with zero
+    /// Move wide with zero.
     /// </summary>
+    /// <remarks><code>MOVZ Xd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVZ_64_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MOVZ(Arm64RegisterX Xd, int imm, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0xD2800000U; // Encoding for: MOVZ_64_movewide
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Multiply-subtract
+    /// Multiply-subtract.
     /// </summary>
+    /// <remarks><code>MSUB Wd, Wn, Wm, Wa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MSUB_32a_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MSUB(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64RegisterW Wa)
     {
         uint raw = 0x1B008000U; // Encoding for: MSUB_32a_dp_3src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         raw |= (uint)(Wa.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Multiply-subtract
+    /// Multiply-subtract.
     /// </summary>
+    /// <remarks><code>MSUB Xd, Xn, Xm, Xa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MSUB_64a_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MSUB(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64RegisterX Xa)
     {
         uint raw = 0x9B008000U; // Encoding for: MSUB_64a_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         raw |= (uint)(Xa.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Multiply-subtract checked pointer
+    /// Multiply-subtract checked pointer.
     /// </summary>
+    /// <remarks><code>MSUBPT Xd, Xn, Xm, Xa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MSUBPT_64a_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MSUBPT(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64RegisterX Xa)
     {
         uint raw = 0x9B608000U; // Encoding for: MSUBPT_64a_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         raw |= (uint)(Xa.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Multiply
+    /// Multiply.
     /// </summary>
+    /// <remarks><code>MUL Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MUL_madd_32a_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MUL(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1B007C00U; // Encoding for: MUL_madd_32a_dp_3src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Multiply
+    /// Multiply.
     /// </summary>
+    /// <remarks><code>MUL Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MUL_madd_64a_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MUL(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9B007C00U; // Encoding for: MUL_madd_64a_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise NOT
+    /// Bitwise NOT.
     /// </summary>
+    /// <remarks><code>MVN Wd, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVN_orn_32_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MVN(Arm64RegisterW Wd, Arm64RegisterW Wm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0x2A2003E0U; // Encoding for: MVN_orn_32_log_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise NOT
+    /// Bitwise NOT.
     /// </summary>
+    /// <remarks><code>MVN Xd, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVN_orn_64_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MVN(Arm64RegisterX Xd, Arm64RegisterX Xm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0xAA2003E0U; // Encoding for: MVN_orn_64_log_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Negate (shifted register)
+    /// Negate (shifted register).
     /// </summary>
+    /// <remarks><code>NEG Wd, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.NEG_sub_32_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint NEG(Arm64RegisterW Wd, Arm64RegisterW Wm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0x4B0003E0U; // Encoding for: NEG_sub_32_addsub_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Negate (shifted register)
+    /// Negate (shifted register).
     /// </summary>
+    /// <remarks><code>NEG Xd, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.NEG_sub_64_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint NEG(Arm64RegisterX Xd, Arm64RegisterX Xm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0xCB0003E0U; // Encoding for: NEG_sub_64_addsub_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Negate, setting flags
+    /// Negate, setting flags.
     /// </summary>
+    /// <remarks><code>NEGS Wd, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.NEGS_subs_32_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint NEGS(Arm64RegisterW Wd, Arm64RegisterW Wm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0x6B0003E0U; // Encoding for: NEGS_subs_32_addsub_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Negate, setting flags
+    /// Negate, setting flags.
     /// </summary>
+    /// <remarks><code>NEGS Xd, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.NEGS_subs_64_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint NEGS(Arm64RegisterX Xd, Arm64RegisterX Xm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0xEB0003E0U; // Encoding for: NEGS_subs_64_addsub_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Negate with carry
+    /// Negate with carry.
     /// </summary>
+    /// <remarks><code>NGC Wd, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.NGC_sbc_32_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint NGC(Arm64RegisterW Wd, Arm64RegisterW Wm)
     {
         uint raw = 0x5A0003E0U; // Encoding for: NGC_sbc_32_addsub_carry
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Negate with carry
+    /// Negate with carry.
     /// </summary>
+    /// <remarks><code>NGC Xd, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.NGC_sbc_64_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint NGC(Arm64RegisterX Xd, Arm64RegisterX Xm)
     {
         uint raw = 0xDA0003E0U; // Encoding for: NGC_sbc_64_addsub_carry
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Negate with carry, setting flags
+    /// Negate with carry, setting flags.
     /// </summary>
+    /// <remarks><code>NGCS Wd, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.NGCS_sbcs_32_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint NGCS(Arm64RegisterW Wd, Arm64RegisterW Wm)
     {
         uint raw = 0x7A0003E0U; // Encoding for: NGCS_sbcs_32_addsub_carry
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Negate with carry, setting flags
+    /// Negate with carry, setting flags.
     /// </summary>
+    /// <remarks><code>NGCS Xd, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.NGCS_sbcs_64_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint NGCS(Arm64RegisterX Xd, Arm64RegisterX Xm)
     {
         uint raw = 0xFA0003E0U; // Encoding for: NGCS_sbcs_64_addsub_carry
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise OR NOT (shifted register)
+    /// Bitwise OR NOT (shifted register).
     /// </summary>
+    /// <remarks><code>ORN Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORN_32_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ORN(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0x2A200000U; // Encoding for: ORN_32_log_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise OR NOT (shifted register)
+    /// Bitwise OR NOT (shifted register).
     /// </summary>
+    /// <remarks><code>ORN Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORN_64_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ORN(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0xAA200000U; // Encoding for: ORN_64_log_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise OR (immediate)
+    /// Bitwise OR (immediate).
     /// </summary>
+    /// <remarks><code>ORR Wd|WSP, Wn, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_32_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ORR(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterW Wn, Arm64LogicalImmediate32 imm)
     {
         uint raw = 0x32000000U; // Encoding for: ORR_32_log_imm
-        raw |= (uint)(Wd_WSP.Index << 0);
+        raw |= (uint)(Wd_WSP.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitwise OR (immediate)
+    /// Bitwise OR (immediate).
     /// </summary>
+    /// <remarks><code>ORR Xd|SP, Xn, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_64_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ORR(Arm64RegisterXOrSP Xd_SP, Arm64RegisterX Xn, Arm64LogicalImmediate64 imm)
     {
         uint raw = 0xB2000000U; // Encoding for: ORR_64_log_imm
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Bitwise OR (shifted register)
+    /// Bitwise OR (shifted register).
     /// </summary>
+    /// <remarks><code>ORR Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_32_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ORR(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0x2A000000U; // Encoding for: ORR_32_log_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Bitwise OR (shifted register)
+    /// Bitwise OR (shifted register).
     /// </summary>
+    /// <remarks><code>ORR Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_64_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ORR(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
         uint raw = 0xAA000000U; // Encoding for: ORR_64_log_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for data address, using key A
+    /// Pointer Authentication Code for data address, using key A.
     /// </summary>
+    /// <remarks><code>PACDA Xd, Xn|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACDA_64p_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACDA(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP)
     {
         uint raw = 0xDAC10800U; // Encoding for: PACDA_64p_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for data address, using key B
+    /// Pointer Authentication Code for data address, using key B.
     /// </summary>
+    /// <remarks><code>PACDB Xd, Xn|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACDB_64p_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACDB(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP)
     {
         uint raw = 0xDAC10C00U; // Encoding for: PACDB_64p_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for data address, using key A
+    /// Pointer Authentication Code for data address, using key A.
     /// </summary>
+    /// <remarks><code>PACDZA Xd</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACDZA_64z_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACDZA(Arm64RegisterX Xd)
     {
         uint raw = 0xDAC12BE0U; // Encoding for: PACDZA_64z_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for data address, using key B
+    /// Pointer Authentication Code for data address, using key B.
     /// </summary>
+    /// <remarks><code>PACDZB Xd</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACDZB_64z_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACDZB(Arm64RegisterX Xd)
     {
         uint raw = 0xDAC12FE0U; // Encoding for: PACDZB_64z_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code, using generic key
+    /// Pointer Authentication Code, using generic key.
     /// </summary>
+    /// <remarks><code>PACGA Xd, Xn, Xm|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACGA_64p_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACGA(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterXOrSP Xm_SP)
     {
         uint raw = 0x9AC03000U; // Encoding for: PACGA_64p_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm_SP.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key A
+    /// Pointer Authentication Code for instruction address, using key A.
     /// </summary>
+    /// <remarks><code>PACIA Xd, Xn|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIA_64p_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIA(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP)
     {
         uint raw = 0xDAC10000U; // Encoding for: PACIA_64p_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key A
+    /// Pointer Authentication Code for instruction address, using key A.
     /// </summary>
+    /// <remarks><code>PACIA171615 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIA171615_64lr_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIA171615()
     {
@@ -6919,8 +7591,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for return address, using key A
+    /// Pointer Authentication Code for return address, using key A.
     /// </summary>
+    /// <remarks><code>PACIASPPC </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIASPPC_64lr_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIASPPC()
     {
@@ -6928,19 +7601,21 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key B
+    /// Pointer Authentication Code for instruction address, using key B.
     /// </summary>
+    /// <remarks><code>PACIB Xd, Xn|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIB_64p_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIB(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP)
     {
         uint raw = 0xDAC10400U; // Encoding for: PACIB_64p_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key B
+    /// Pointer Authentication Code for instruction address, using key B.
     /// </summary>
+    /// <remarks><code>PACIB171615 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIB171615_64lr_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIB171615()
     {
@@ -6948,8 +7623,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for return address, using key B
+    /// Pointer Authentication Code for return address, using key B.
     /// </summary>
+    /// <remarks><code>PACIBSPPC </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIBSPPC_64lr_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIBSPPC()
     {
@@ -6957,28 +7633,31 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key A
+    /// Pointer Authentication Code for instruction address, using key A.
     /// </summary>
+    /// <remarks><code>PACIZA Xd</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIZA_64z_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIZA(Arm64RegisterX Xd)
     {
         uint raw = 0xDAC123E0U; // Encoding for: PACIZA_64z_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key B
+    /// Pointer Authentication Code for instruction address, using key B.
     /// </summary>
+    /// <remarks><code>PACIZB Xd</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIZB_64z_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIZB(Arm64RegisterX Xd)
     {
         uint raw = 0xDAC127E0U; // Encoding for: PACIZB_64z_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for return address, using key A, not a branch target
+    /// Pointer Authentication Code for return address, using key A, not a branch target.
     /// </summary>
+    /// <remarks><code>PACNBIASPPC </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACNBIASPPC_64lr_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACNBIASPPC()
     {
@@ -6986,8 +7665,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for return address, using key B, not a branch target
+    /// Pointer Authentication Code for return address, using key B, not a branch target.
     /// </summary>
+    /// <remarks><code>PACNBIBSPPC </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACNBIBSPPC_64lr_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACNBIBSPPC()
     {
@@ -6995,8 +7675,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Prefetch memory (immediate)
+    /// Prefetch memory (immediate).
     /// </summary>
+    /// <remarks><code>PRFM (prfop|#imm5), [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PRFM_p_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PRFM(Arm64PrefetchOperationKind prfop, Arm64OptionalImmediateMemoryAccessor mem)
     {
@@ -7004,8 +7685,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Prefetch memory (literal)
+    /// Prefetch memory (literal).
     /// </summary>
+    /// <remarks><code>PRFM (prfop|#imm5), label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PRFM_p_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PRFM(Arm64PrefetchOperationKind prfop, Arm64Label label)
     {
@@ -7013,8 +7695,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Prefetch memory (register)
+    /// Prefetch memory (register).
     /// </summary>
+    /// <remarks><code>PRFM (prfop|#imm5), [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PRFM_p_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PRFM(Arm64PrefetchOperationKind prfop, Arm64OptionalRegisterExtendMemoryAccessor mem)
     {
@@ -7022,8 +7705,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Prefetch memory (unscaled offset)
+    /// Prefetch memory (unscaled offset).
     /// </summary>
+    /// <remarks><code>PRFUM (prfop|#imm5), [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PRFUM_p_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PRFUM(Arm64PrefetchOperationKind prfop, Arm64OptionalImmediateMemoryAccessor mem)
     {
@@ -7031,734 +7715,817 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Reverse bits
+    /// Reverse bits.
     /// </summary>
+    /// <remarks><code>RBIT Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RBIT_32_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RBIT(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x5AC00000U; // Encoding for: RBIT_32_dp_1src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Reverse bits
+    /// Reverse bits.
     /// </summary>
+    /// <remarks><code>RBIT Xd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RBIT_64_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RBIT(Arm64RegisterX Xd, Arm64RegisterX Xn)
     {
         uint raw = 0xDAC00000U; // Encoding for: RBIT_64_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Read check write compare and swap doubleword in memory
+    /// Read check write compare and swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWCAS Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCAS_c64_rcwcomswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCAS(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19200800U; // Encoding for: RCWCAS_c64_rcwcomswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write compare and swap doubleword in memory
+    /// Read check write compare and swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWCASA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCASA_c64_rcwcomswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCASA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19A00800U; // Encoding for: RCWCASA_c64_rcwcomswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write compare and swap doubleword in memory
+    /// Read check write compare and swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWCASAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCASAL_c64_rcwcomswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCASAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19E00800U; // Encoding for: RCWCASAL_c64_rcwcomswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write compare and swap doubleword in memory
+    /// Read check write compare and swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWCASL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCASL_c64_rcwcomswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCASL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19600800U; // Encoding for: RCWCASL_c64_rcwcomswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write compare and swap quadword in memory
+    /// Read check write compare and swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWCASP Xs, X(s+1), Xt, X(t+1), [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCASP_c64_rcwcomswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCASP(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19200C00U; // Encoding for: RCWCASP_c64_rcwcomswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Read check write compare and swap quadword in memory
+    /// Read check write compare and swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWCASPA Xs, X(s+1), Xt, X(t+1), [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCASPA_c64_rcwcomswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCASPA(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19A00C00U; // Encoding for: RCWCASPA_c64_rcwcomswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Read check write compare and swap quadword in memory
+    /// Read check write compare and swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWCASPAL Xs, X(s+1), Xt, X(t+1), [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCASPAL_c64_rcwcomswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCASPAL(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19E00C00U; // Encoding for: RCWCASPAL_c64_rcwcomswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Read check write compare and swap quadword in memory
+    /// Read check write compare and swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWCASPL Xs, X(s+1), Xt, X(t+1), [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCASPL_c64_rcwcomswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCASPL(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19600C00U; // Encoding for: RCWCASPL_c64_rcwcomswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit clear on doubleword in memory
+    /// Read check write atomic bit clear on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWCLR Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCLR_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCLR(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38209000U; // Encoding for: RCWCLR_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit clear on doubleword in memory
+    /// Read check write atomic bit clear on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWCLRA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCLRA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCLRA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38A09000U; // Encoding for: RCWCLRA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit clear on doubleword in memory
+    /// Read check write atomic bit clear on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWCLRAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCLRAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCLRAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38E09000U; // Encoding for: RCWCLRAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit clear on doubleword in memory
+    /// Read check write atomic bit clear on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWCLRL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCLRL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCLRL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38609000U; // Encoding for: RCWCLRL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit clear on quadword in memory
+    /// Read check write atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWCLRP Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCLRP_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCLRP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19209000U; // Encoding for: RCWCLRP_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit clear on quadword in memory
+    /// Read check write atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWCLRPA Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCLRPA_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCLRPA(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19A09000U; // Encoding for: RCWCLRPA_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit clear on quadword in memory
+    /// Read check write atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWCLRPAL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCLRPAL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCLRPAL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19E09000U; // Encoding for: RCWCLRPAL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit clear on quadword in memory
+    /// Read check write atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWCLRPL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWCLRPL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWCLRPL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19609000U; // Encoding for: RCWCLRPL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software compare and swap doubleword in memory
+    /// Read check write software compare and swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCAS Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCAS_c64_rcwcomswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCAS(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59200800U; // Encoding for: RCWSCAS_c64_rcwcomswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software compare and swap doubleword in memory
+    /// Read check write software compare and swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCASA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCASA_c64_rcwcomswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCASA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59A00800U; // Encoding for: RCWSCASA_c64_rcwcomswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software compare and swap doubleword in memory
+    /// Read check write software compare and swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCASAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCASAL_c64_rcwcomswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCASAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59E00800U; // Encoding for: RCWSCASAL_c64_rcwcomswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software compare and swap doubleword in memory
+    /// Read check write software compare and swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCASL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCASL_c64_rcwcomswap), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCASL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59600800U; // Encoding for: RCWSCASL_c64_rcwcomswap
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software compare and swap quadword in memory
+    /// Read check write software compare and swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCASP Xs, X(s+1), Xt, X(t+1), [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCASP_c64_rcwcomswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCASP(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59200C00U; // Encoding for: RCWSCASP_c64_rcwcomswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Read check write software compare and swap quadword in memory
+    /// Read check write software compare and swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCASPA Xs, X(s+1), Xt, X(t+1), [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCASPA_c64_rcwcomswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCASPA(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59A00C00U; // Encoding for: RCWSCASPA_c64_rcwcomswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Read check write software compare and swap quadword in memory
+    /// Read check write software compare and swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCASPAL Xs, X(s+1), Xt, X(t+1), [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCASPAL_c64_rcwcomswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCASPAL(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59E00C00U; // Encoding for: RCWSCASPAL_c64_rcwcomswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Read check write software compare and swap quadword in memory
+    /// Read check write software compare and swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCASPL Xs, X(s+1), Xt, X(t+1), [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCASPL_c64_rcwcomswappr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCASPL(Arm64RegisterX Xs, Arm64RegisterX X_s_1, Arm64RegisterX Xt, Arm64RegisterX X_t_1, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59600C00U; // Encoding for: RCWSCASPL_c64_rcwcomswappr
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        raw |= (uint)(Xt.Index);
+        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit clear on doubleword in memory
+    /// Read check write software atomic bit clear on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCLR Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCLR_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCLR(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78209000U; // Encoding for: RCWSCLR_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit clear on doubleword in memory
+    /// Read check write software atomic bit clear on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCLRA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCLRA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCLRA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78A09000U; // Encoding for: RCWSCLRA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit clear on doubleword in memory
+    /// Read check write software atomic bit clear on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCLRAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCLRAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCLRAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78E09000U; // Encoding for: RCWSCLRAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit clear on doubleword in memory
+    /// Read check write software atomic bit clear on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCLRL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCLRL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCLRL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78609000U; // Encoding for: RCWSCLRL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit clear on quadword in memory
+    /// Read check write software atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCLRP Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCLRP_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCLRP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59209000U; // Encoding for: RCWSCLRP_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit clear on quadword in memory
+    /// Read check write software atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCLRPA Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCLRPA_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCLRPA(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59A09000U; // Encoding for: RCWSCLRPA_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit clear on quadword in memory
+    /// Read check write software atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCLRPAL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCLRPAL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCLRPAL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59E09000U; // Encoding for: RCWSCLRPAL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit clear on quadword in memory
+    /// Read check write software atomic bit clear on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSCLRPL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSCLRPL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSCLRPL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59609000U; // Encoding for: RCWSCLRPL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit set on doubleword in memory
+    /// Read check write atomic bit set on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSET Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSET_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSET(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x3820B000U; // Encoding for: RCWSET_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit set on doubleword in memory
+    /// Read check write atomic bit set on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSETA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSETA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSETA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38A0B000U; // Encoding for: RCWSETA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit set on doubleword in memory
+    /// Read check write atomic bit set on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSETAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSETAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSETAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38E0B000U; // Encoding for: RCWSETAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit set on doubleword in memory
+    /// Read check write atomic bit set on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSETL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSETL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSETL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x3860B000U; // Encoding for: RCWSETL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit set on quadword in memory
+    /// Read check write atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSETP Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSETP_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSETP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x1920B000U; // Encoding for: RCWSETP_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit set on quadword in memory
+    /// Read check write atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSETPA Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSETPA_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSETPA(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19A0B000U; // Encoding for: RCWSETPA_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit set on quadword in memory
+    /// Read check write atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSETPAL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSETPAL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSETPAL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19E0B000U; // Encoding for: RCWSETPAL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write atomic bit set on quadword in memory
+    /// Read check write atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSETPL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSETPL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSETPL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x1960B000U; // Encoding for: RCWSETPL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit set on doubleword in memory
+    /// Read check write software atomic bit set on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSET Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSET_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSET(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x7820B000U; // Encoding for: RCWSSET_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit set on doubleword in memory
+    /// Read check write software atomic bit set on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSETA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSETA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSETA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78A0B000U; // Encoding for: RCWSSETA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit set on doubleword in memory
+    /// Read check write software atomic bit set on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSETAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSETAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSETAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78E0B000U; // Encoding for: RCWSSETAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit set on doubleword in memory
+    /// Read check write software atomic bit set on doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSETL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSETL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSETL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x7860B000U; // Encoding for: RCWSSETL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit set on quadword in memory
+    /// Read check write software atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSETP Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSETP_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSETP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x5920B000U; // Encoding for: RCWSSETP_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit set on quadword in memory
+    /// Read check write software atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSETPA Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSETPA_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSETPA(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59A0B000U; // Encoding for: RCWSSETPA_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit set on quadword in memory
+    /// Read check write software atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSETPAL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSETPAL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSETPAL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59E0B000U; // Encoding for: RCWSSETPAL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software atomic bit set on quadword in memory
+    /// Read check write software atomic bit set on quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSETPL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSETPL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSETPL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x5960B000U; // Encoding for: RCWSSETPL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software swap doubleword in memory
+    /// Read check write software swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSWP Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSWP_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSWP(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x7820A000U; // Encoding for: RCWSSWP_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software swap doubleword in memory
+    /// Read check write software swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSWPA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSWPA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSWPA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78A0A000U; // Encoding for: RCWSSWPA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software swap doubleword in memory
+    /// Read check write software swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSWPAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSWPAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSWPAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78E0A000U; // Encoding for: RCWSSWPAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software swap doubleword in memory
+    /// Read check write software swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSWPL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSWPL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSWPL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x7860A000U; // Encoding for: RCWSSWPL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write software swap quadword in memory
+    /// Read check write software swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSWPP Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSWPP_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSWPP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x5920A000U; // Encoding for: RCWSSWPP_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software swap quadword in memory
+    /// Read check write software swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSWPPA Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSWPPA_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSWPPA(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59A0A000U; // Encoding for: RCWSSWPPA_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software swap quadword in memory
+    /// Read check write software swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSWPPAL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSWPPAL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSWPPAL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59E0A000U; // Encoding for: RCWSSWPPAL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write software swap quadword in memory
+    /// Read check write software swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSSWPPL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSSWPPL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSSWPPL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x5960A000U; // Encoding for: RCWSSWPPL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write swap doubleword in memory
+    /// Read check write swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSWP Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSWP_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSWP(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x3820A000U; // Encoding for: RCWSWP_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write swap doubleword in memory
+    /// Read check write swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSWPA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSWPA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSWPA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38A0A000U; // Encoding for: RCWSWPA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write swap doubleword in memory
+    /// Read check write swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSWPAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSWPAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSWPAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38E0A000U; // Encoding for: RCWSWPAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write swap doubleword in memory
+    /// Read check write swap doubleword in memory.
     /// </summary>
+    /// <remarks><code>RCWSWPL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSWPL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSWPL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x3860A000U; // Encoding for: RCWSWPL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Read check write swap quadword in memory
+    /// Read check write swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSWPP Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSWPP_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSWPP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x1920A000U; // Encoding for: RCWSWPP_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write swap quadword in memory
+    /// Read check write swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSWPPA Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSWPPA_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSWPPA(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19A0A000U; // Encoding for: RCWSWPPA_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write swap quadword in memory
+    /// Read check write swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSWPPAL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSWPPAL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSWPPAL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19E0A000U; // Encoding for: RCWSWPPAL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Read check write swap quadword in memory
+    /// Read check write swap quadword in memory.
     /// </summary>
+    /// <remarks><code>RCWSWPPL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RCWSWPPL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RCWSWPPL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x1960A000U; // Encoding for: RCWSWPPL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Return from subroutine
+    /// Return from subroutine.
     /// </summary>
+    /// <remarks><code>RET {Xn}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RET_64r_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RET(Arm64RegisterX Xn = default)
     {
@@ -7767,8 +8534,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Return from subroutine, with pointer authentication
+    /// Return from subroutine, with pointer authentication.
     /// </summary>
+    /// <remarks><code>RETAA </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RETAA_64e_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RETAA()
     {
@@ -7776,8 +8544,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Return from subroutine, with enhanced pointer authentication using an immediate offset
+    /// Return from subroutine, with enhanced pointer authentication using an immediate offset.
     /// </summary>
+    /// <remarks><code>RETAASPPC label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RETAASPPC_only_miscbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RETAASPPC(Arm64Label label)
     {
@@ -7785,18 +8554,20 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Return from subroutine, with enhanced pointer authentication using a register
+    /// Return from subroutine, with enhanced pointer authentication using a register.
     /// </summary>
+    /// <remarks><code>RETAASPPCR Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RETAASPPCR_64m_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RETAASPPCR(Arm64RegisterX Xm)
     {
         uint raw = 0xD65F0BE0U; // Encoding for: RETAASPPCR_64m_branch_reg
-        raw |= (uint)(Xm.Index << 0);
+        raw |= (uint)(Xm.Index);
         return raw;
     }
     /// <summary>
-    /// Return from subroutine, with pointer authentication
+    /// Return from subroutine, with pointer authentication.
     /// </summary>
+    /// <remarks><code>RETAB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RETAB_64e_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RETAB()
     {
@@ -7804,8 +8575,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Return from subroutine, with enhanced pointer authentication using an immediate offset
+    /// Return from subroutine, with enhanced pointer authentication using an immediate offset.
     /// </summary>
+    /// <remarks><code>RETABSPPC label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RETABSPPC_only_miscbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RETABSPPC(Arm64Label label)
     {
@@ -7813,73 +8585,80 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Return from subroutine, with enhanced pointer authentication using a register
+    /// Return from subroutine, with enhanced pointer authentication using a register.
     /// </summary>
+    /// <remarks><code>RETABSPPCR Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RETABSPPCR_64m_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RETABSPPCR(Arm64RegisterX Xm)
     {
         uint raw = 0xD65F0FE0U; // Encoding for: RETABSPPCR_64m_branch_reg
-        raw |= (uint)(Xm.Index << 0);
+        raw |= (uint)(Xm.Index);
         return raw;
     }
     /// <summary>
-    /// Reverse bytes
+    /// Reverse bytes.
     /// </summary>
+    /// <remarks><code>REV Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.REV_32_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint REV(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x5AC00800U; // Encoding for: REV_32_dp_1src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Reverse bytes
+    /// Reverse bytes.
     /// </summary>
+    /// <remarks><code>REV Xd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.REV_64_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint REV(Arm64RegisterX Xd, Arm64RegisterX Xn)
     {
         uint raw = 0xDAC00C00U; // Encoding for: REV_64_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Reverse bytes in 16-bit halfwords
+    /// Reverse bytes in 16-bit halfwords.
     /// </summary>
+    /// <remarks><code>REV16 Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.REV16_32_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint REV16(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x5AC00400U; // Encoding for: REV16_32_dp_1src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Reverse bytes in 16-bit halfwords
+    /// Reverse bytes in 16-bit halfwords.
     /// </summary>
+    /// <remarks><code>REV16 Xd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.REV16_64_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint REV16(Arm64RegisterX Xd, Arm64RegisterX Xn)
     {
         uint raw = 0xDAC00400U; // Encoding for: REV16_64_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Reverse bytes in 32-bit words
+    /// Reverse bytes in 32-bit words.
     /// </summary>
+    /// <remarks><code>REV32 Xd, Xn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.REV32_64_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint REV32(Arm64RegisterX Xd, Arm64RegisterX Xn)
     {
         uint raw = 0xDAC00800U; // Encoding for: REV32_64_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Rotate, mask insert flags
+    /// Rotate, mask insert flags.
     /// </summary>
+    /// <remarks><code>RMIF Xn, #shift, #mask</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RMIF_only_rmif), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RMIF(Arm64RegisterX Xn, int shift, int mask)
     {
@@ -7888,54 +8667,59 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Rotate right (immediate)
+    /// Rotate right (immediate).
     /// </summary>
+    /// <remarks><code>ROR Wd, Ws, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ROR_extr_32_extract), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ROR(Arm64RegisterW Wd, Arm64RegisterW Ws, int shift)
     {
         uint raw = 0x13800000U; // Encoding for: ROR_extr_32_extract
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Ws.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Rotate right (immediate)
+    /// Rotate right (immediate).
     /// </summary>
+    /// <remarks><code>ROR Xd, Xs, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ROR_extr_64_extract), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ROR(Arm64RegisterX Xd, Arm64RegisterX Xs, int shift)
     {
         uint raw = 0x93C00000U; // Encoding for: ROR_extr_64_extract
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xs.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Rotate right (register)
+    /// Rotate right (register).
     /// </summary>
+    /// <remarks><code>ROR Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ROR_rorv_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ROR(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC02C00U; // Encoding for: ROR_rorv_32_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Rotate right (register)
+    /// Rotate right (register).
     /// </summary>
+    /// <remarks><code>ROR Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ROR_rorv_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ROR(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC02C00U; // Encoding for: ROR_rorv_64_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Range prefetch memory
+    /// Range prefetch memory.
     /// </summary>
+    /// <remarks><code>RPRFM (rprfop|#imm6), Xm, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RPRFM_r_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RPRFM(Arm64RangePrefetchOperationKind rprfop, Arm64RegisterX Xm, Arm64BaseMemoryAccessor mem)
     {
@@ -7944,146 +8728,159 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Subtract with carry
+    /// Subtract with carry.
     /// </summary>
+    /// <remarks><code>SBC Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBC_32_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SBC(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x5A000000U; // Encoding for: SBC_32_addsub_carry
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract with carry
+    /// Subtract with carry.
     /// </summary>
+    /// <remarks><code>SBC Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBC_64_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SBC(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0xDA000000U; // Encoding for: SBC_64_addsub_carry
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract with carry, setting flags
+    /// Subtract with carry, setting flags.
     /// </summary>
+    /// <remarks><code>SBCS Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBCS_32_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SBCS(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x7A000000U; // Encoding for: SBCS_32_addsub_carry
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract with carry, setting flags
+    /// Subtract with carry, setting flags.
     /// </summary>
+    /// <remarks><code>SBCS Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBCS_64_addsub_carry), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SBCS(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0xFA000000U; // Encoding for: SBCS_64_addsub_carry
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Signed bitfield insert in zeros
+    /// Signed bitfield insert in zeros.
     /// </summary>
+    /// <remarks><code>SBFIZ Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SBFIZ(Arm64RegisterW Wd, Arm64RegisterW Wn, int lsb, int width)
     {
         uint raw = 0x13000000U; // Encoding for: SBFIZ_sbfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Signed bitfield insert in zeros
+    /// Signed bitfield insert in zeros.
     /// </summary>
+    /// <remarks><code>SBFIZ Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SBFIZ(Arm64RegisterX Xd, Arm64RegisterX Xn, int lsb, int width)
     {
         uint raw = 0x93400000U; // Encoding for: SBFIZ_sbfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Signed bitfield move
+    /// Signed bitfield move.
     /// </summary>
+    /// <remarks><code>SBFM Wd, Wn, #immr, #imms</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFM_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SBFM(Arm64RegisterW Wd, Arm64RegisterW Wn, int immr, int imms)
     {
         uint raw = 0x13000000U; // Encoding for: SBFM_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Signed bitfield move
+    /// Signed bitfield move.
     /// </summary>
+    /// <remarks><code>SBFM Xd, Xn, #immr, #imms</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFM_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SBFM(Arm64RegisterX Xd, Arm64RegisterX Xn, int immr, int imms)
     {
         uint raw = 0x93400000U; // Encoding for: SBFM_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Signed bitfield extract
+    /// Signed bitfield extract.
     /// </summary>
+    /// <remarks><code>SBFX Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFX_sbfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SBFX(Arm64RegisterW Wd, Arm64RegisterW Wn, int lsb, int width)
     {
         uint raw = 0x13000000U; // Encoding for: SBFX_sbfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Signed bitfield extract
+    /// Signed bitfield extract.
     /// </summary>
+    /// <remarks><code>SBFX Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFX_sbfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SBFX(Arm64RegisterX Xd, Arm64RegisterX Xn, int lsb, int width)
     {
         uint raw = 0x93400000U; // Encoding for: SBFX_sbfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Signed divide
+    /// Signed divide.
     /// </summary>
+    /// <remarks><code>SDIV Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SDIV_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SDIV(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC00C00U; // Encoding for: SDIV_32_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Signed divide
+    /// Signed divide.
     /// </summary>
+    /// <remarks><code>SDIV Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SDIV_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SDIV(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC00C00U; // Encoding for: SDIV_64_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Memory set
+    /// Memory set.
     /// </summary>
+    /// <remarks><code>SETE [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETE_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETE(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8093,8 +8890,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set, non-temporal
+    /// Memory set, non-temporal.
     /// </summary>
+    /// <remarks><code>SETEN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETEN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETEN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8104,8 +8902,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set, unprivileged
+    /// Memory set, unprivileged.
     /// </summary>
+    /// <remarks><code>SETET [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETET_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETET(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8115,8 +8914,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set, unprivileged and non-temporal
+    /// Memory set, unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>SETETN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETETN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETETN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8126,8 +8926,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Evaluation of 8-bit or 16-bit flag values
+    /// Evaluation of 8-bit or 16-bit flag values.
     /// </summary>
+    /// <remarks><code>SETF16 Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETF16_only_setf), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETF16(Arm64RegisterW Wn)
     {
@@ -8136,8 +8937,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Evaluation of 8-bit or 16-bit flag values
+    /// Evaluation of 8-bit or 16-bit flag values.
     /// </summary>
+    /// <remarks><code>SETF8 Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETF8_only_setf), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETF8(Arm64RegisterW Wn)
     {
@@ -8146,8 +8948,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting
+    /// Memory set with tag setting.
     /// </summary>
+    /// <remarks><code>SETGE [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGE_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGE(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8157,8 +8960,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting, non-temporal
+    /// Memory set with tag setting, non-temporal.
     /// </summary>
+    /// <remarks><code>SETGEN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGEN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGEN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8168,8 +8972,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting, unprivileged
+    /// Memory set with tag setting, unprivileged.
     /// </summary>
+    /// <remarks><code>SETGET [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGET_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGET(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8179,8 +8984,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting, unprivileged and non-temporal
+    /// Memory set with tag setting, unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>SETGETN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGETN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGETN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8190,8 +8996,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting
+    /// Memory set with tag setting.
     /// </summary>
+    /// <remarks><code>SETGM [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGM_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGM(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8201,8 +9008,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting, non-temporal
+    /// Memory set with tag setting, non-temporal.
     /// </summary>
+    /// <remarks><code>SETGMN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGMN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGMN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8212,8 +9020,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting, unprivileged
+    /// Memory set with tag setting, unprivileged.
     /// </summary>
+    /// <remarks><code>SETGMT [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGMT_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGMT(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8223,8 +9032,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting, unprivileged and non-temporal
+    /// Memory set with tag setting, unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>SETGMTN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGMTN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGMTN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8234,8 +9044,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting
+    /// Memory set with tag setting.
     /// </summary>
+    /// <remarks><code>SETGP [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGP_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGP(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8245,8 +9056,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting, non-temporal
+    /// Memory set with tag setting, non-temporal.
     /// </summary>
+    /// <remarks><code>SETGPN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGPN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGPN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8256,8 +9068,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting, unprivileged
+    /// Memory set with tag setting, unprivileged.
     /// </summary>
+    /// <remarks><code>SETGPT [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGPT_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGPT(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8267,8 +9080,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set with tag setting, unprivileged and non-temporal
+    /// Memory set with tag setting, unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>SETGPTN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETGPTN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETGPTN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8278,8 +9092,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set
+    /// Memory set.
     /// </summary>
+    /// <remarks><code>SETM [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETM_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETM(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8289,8 +9104,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set, non-temporal
+    /// Memory set, non-temporal.
     /// </summary>
+    /// <remarks><code>SETMN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETMN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETMN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8300,8 +9116,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set, unprivileged
+    /// Memory set, unprivileged.
     /// </summary>
+    /// <remarks><code>SETMT [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETMT_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETMT(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8311,8 +9128,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set, unprivileged and non-temporal
+    /// Memory set, unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>SETMTN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETMTN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETMTN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8322,8 +9140,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set
+    /// Memory set.
     /// </summary>
+    /// <remarks><code>SETP [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETP_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETP(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8333,8 +9152,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set, non-temporal
+    /// Memory set, non-temporal.
     /// </summary>
+    /// <remarks><code>SETPN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETPN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETPN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8344,8 +9164,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set, unprivileged
+    /// Memory set, unprivileged.
     /// </summary>
+    /// <remarks><code>SETPT [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETPT_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETPT(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8355,8 +9176,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Memory set, unprivileged and non-temporal
+    /// Memory set, unprivileged and non-temporal.
     /// </summary>
+    /// <remarks><code>SETPTN [Xd]!, Xn!, Xs</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SETPTN_set_memcms), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SETPTN(Arm64BaseXnMemoryAccessor mem, Arm64RegisterX Xn, Arm64RegisterX Xs)
     {
@@ -8366,211 +9188,230 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Signed multiply-add long
+    /// Signed multiply-add long.
     /// </summary>
+    /// <remarks><code>SMADDL Xd, Wn, Wm, Xa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMADDL_64wa_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMADDL(Arm64RegisterX Xd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64RegisterX Xa)
     {
         uint raw = 0x9B200000U; // Encoding for: SMADDL_64wa_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         raw |= (uint)(Xa.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Signed maximum (immediate)
+    /// Signed maximum (immediate).
     /// </summary>
+    /// <remarks><code>SMAX Wd, Wn, #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMAX_32_minmax_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMAX(Arm64RegisterW Wd, Arm64RegisterW Wn, int simm)
     {
         uint raw = 0x11C00000U; // Encoding for: SMAX_32_minmax_imm
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Signed maximum (immediate)
+    /// Signed maximum (immediate).
     /// </summary>
+    /// <remarks><code>SMAX Xd, Xn, #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMAX_64_minmax_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMAX(Arm64RegisterX Xd, Arm64RegisterX Xn, int simm)
     {
         uint raw = 0x91C00000U; // Encoding for: SMAX_64_minmax_imm
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Signed maximum (register)
+    /// Signed maximum (register).
     /// </summary>
+    /// <remarks><code>SMAX Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMAX_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMAX(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC06000U; // Encoding for: SMAX_32_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Signed maximum (register)
+    /// Signed maximum (register).
     /// </summary>
+    /// <remarks><code>SMAX Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMAX_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMAX(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC06000U; // Encoding for: SMAX_64_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Signed minimum (immediate)
+    /// Signed minimum (immediate).
     /// </summary>
+    /// <remarks><code>SMIN Wd, Wn, #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMIN_32_minmax_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMIN(Arm64RegisterW Wd, Arm64RegisterW Wn, int simm)
     {
         uint raw = 0x11C80000U; // Encoding for: SMIN_32_minmax_imm
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Signed minimum (immediate)
+    /// Signed minimum (immediate).
     /// </summary>
+    /// <remarks><code>SMIN Xd, Xn, #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMIN_64_minmax_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMIN(Arm64RegisterX Xd, Arm64RegisterX Xn, int simm)
     {
         uint raw = 0x91C80000U; // Encoding for: SMIN_64_minmax_imm
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Signed minimum (register)
+    /// Signed minimum (register).
     /// </summary>
+    /// <remarks><code>SMIN Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMIN_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMIN(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC06800U; // Encoding for: SMIN_32_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Signed minimum (register)
+    /// Signed minimum (register).
     /// </summary>
+    /// <remarks><code>SMIN Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMIN_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMIN(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC06800U; // Encoding for: SMIN_64_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Signed multiply-negate long
+    /// Signed multiply-negate long.
     /// </summary>
+    /// <remarks><code>SMNEGL Xd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMNEGL(Arm64RegisterX Xd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x9B20FC00U; // Encoding for: SMNEGL_smsubl_64wa_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Signed multiply high
+    /// Signed multiply high.
     /// </summary>
+    /// <remarks><code>SMULH Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMULH_64_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMULH(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9B407C00U; // Encoding for: SMULH_64_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Signed multiply long
+    /// Signed multiply long.
     /// </summary>
+    /// <remarks><code>SMULL Xd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMULL_smaddl_64wa_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMULL(Arm64RegisterX Xd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x9B207C00U; // Encoding for: SMULL_smaddl_64wa_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tags
+    /// Store Allocation Tags.
     /// </summary>
+    /// <remarks><code>ST2G Xt|SP, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2G_64spost_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ST2G(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xD9A00400U; // Encoding for: ST2G_64spost_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tags
+    /// Store Allocation Tags.
     /// </summary>
+    /// <remarks><code>ST2G Xt|SP, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2G_64spre_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ST2G(Arm64RegisterXOrSP Xt_SP, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0xD9A00C00U; // Encoding for: ST2G_64spre_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tags
+    /// Store Allocation Tags.
     /// </summary>
+    /// <remarks><code>ST2G Xt|SP, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2G_64soffset_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ST2G(Arm64RegisterXOrSP Xt_SP, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xD9A00800U; // Encoding for: ST2G_64soffset_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Single-copy atomic 64-byte store without status result
+    /// Single-copy atomic 64-byte store without status result.
     /// </summary>
+    /// <remarks><code>ST64B Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST64B_64l_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ST64B(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xF83F9000U; // Encoding for: ST64B_64l_memop
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Single-copy atomic 64-byte store with status result
+    /// Single-copy atomic 64-byte store with status result.
     /// </summary>
+    /// <remarks><code>ST64BV Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST64BV_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ST64BV(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0xF820B000U; // Encoding for: ST64BV_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Single-copy atomic 64-byte EL0 store with status result
+    /// Single-copy atomic 64-byte EL0 store with status result.
     /// </summary>
+    /// <remarks><code>ST64BV0 Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST64BV0_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ST64BV0(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0xF820A000U; // Encoding for: ST64BV0_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory, without return
+    /// Atomic add on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STADD Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STADD_ldadd_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STADD(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8579,8 +9420,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory, without return
+    /// Atomic add on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STADD Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STADD_ldadd_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STADD(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -8589,8 +9431,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic add on byte in memory, without return
+    /// Atomic add on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STADDB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STADDB_ldaddb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STADDB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8599,8 +9442,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic add on halfword in memory, without return
+    /// Atomic add on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STADDH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STADDH_ldaddh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STADDH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8609,8 +9453,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory, without return
+    /// Atomic add on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STADDL Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STADDL_ldaddl_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STADDL(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8619,8 +9464,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic add on word or doubleword in memory, without return
+    /// Atomic add on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STADDL Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STADDL_ldaddl_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STADDL(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -8629,8 +9475,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic add on byte in memory, without return
+    /// Atomic add on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STADDLB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STADDLB_ldaddlb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STADDLB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8639,8 +9486,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic add on halfword in memory, without return
+    /// Atomic add on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STADDLH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STADDLH_ldaddlh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STADDLH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8649,8 +9497,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory, without return
+    /// Atomic bit clear on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STCLR Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STCLR_ldclr_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STCLR(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8659,8 +9508,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory, without return
+    /// Atomic bit clear on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STCLR Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STCLR_ldclr_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STCLR(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -8669,8 +9519,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on byte in memory, without return
+    /// Atomic bit clear on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STCLRB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STCLRB_ldclrb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STCLRB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8679,8 +9530,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on halfword in memory, without return
+    /// Atomic bit clear on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STCLRH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STCLRH_ldclrh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STCLRH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8689,8 +9541,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory, without return
+    /// Atomic bit clear on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STCLRL Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STCLRL_ldclrl_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STCLRL(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8699,8 +9552,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on word or doubleword in memory, without return
+    /// Atomic bit clear on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STCLRL Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STCLRL_ldclrl_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STCLRL(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -8709,8 +9563,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on byte in memory, without return
+    /// Atomic bit clear on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STCLRLB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STCLRLB_ldclrlb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STCLRLB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8719,8 +9574,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear on halfword in memory, without return
+    /// Atomic bit clear on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STCLRLH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STCLRLH_ldclrlh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STCLRLH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8729,8 +9585,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory, without return
+    /// Atomic exclusive-OR on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STEOR Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STEOR_ldeor_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STEOR(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8739,8 +9596,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory, without return
+    /// Atomic exclusive-OR on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STEOR Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STEOR_ldeor_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STEOR(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -8749,8 +9607,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on byte in memory, without return
+    /// Atomic exclusive-OR on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STEORB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STEORB_ldeorb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STEORB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8759,8 +9618,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on halfword in memory, without return
+    /// Atomic exclusive-OR on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STEORH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STEORH_ldeorh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STEORH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8769,8 +9629,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory, without return
+    /// Atomic exclusive-OR on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STEORL Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STEORL_ldeorl_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STEORL(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8779,8 +9640,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on word or doubleword in memory, without return
+    /// Atomic exclusive-OR on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STEORL Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STEORL_ldeorl_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STEORL(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -8789,8 +9651,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on byte in memory, without return
+    /// Atomic exclusive-OR on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STEORLB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STEORLB_ldeorlb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STEORLB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8799,8 +9662,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic exclusive-OR on halfword in memory, without return
+    /// Atomic exclusive-OR on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STEORLH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STEORLH_ldeorlh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STEORLH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -8809,603 +9673,661 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tag
+    /// Store Allocation Tag.
     /// </summary>
+    /// <remarks><code>STG Xt|SP, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STG_64spost_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STG(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xD9200400U; // Encoding for: STG_64spost_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tag
+    /// Store Allocation Tag.
     /// </summary>
+    /// <remarks><code>STG Xt|SP, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STG_64spre_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STG(Arm64RegisterXOrSP Xt_SP, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0xD9200C00U; // Encoding for: STG_64spre_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tag
+    /// Store Allocation Tag.
     /// </summary>
+    /// <remarks><code>STG Xt|SP, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STG_64soffset_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STG(Arm64RegisterXOrSP Xt_SP, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xD9200800U; // Encoding for: STG_64soffset_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tag multiple
+    /// Store Allocation Tag multiple.
     /// </summary>
+    /// <remarks><code>STGM Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STGM_64bulk_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STGM(Arm64RegisterX Xt, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0xD9A00000U; // Encoding for: STGM_64bulk_ldsttags
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tag and pair of registers
+    /// Store Allocation Tag and pair of registers.
     /// </summary>
+    /// <remarks><code>STGP Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STGP_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STGP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0x68800000U; // Encoding for: STGP_64_ldstpair_post
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tag and pair of registers
+    /// Store Allocation Tag and pair of registers.
     /// </summary>
+    /// <remarks><code>STGP Xt1, Xt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STGP_64_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STGP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0x69800000U; // Encoding for: STGP_64_ldstpair_pre
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tag and pair of registers
+    /// Store Allocation Tag and pair of registers.
     /// </summary>
+    /// <remarks><code>STGP Xt1, Xt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STGP_64_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STGP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x69000000U; // Encoding for: STGP_64_ldstpair_off
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store-release ordered pair of registers
+    /// Store-release ordered pair of registers.
     /// </summary>
+    /// <remarks><code>STILP Wt1, Wt2, [Xn|SP, #-8]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STILP_32se_ldiappstilp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STILP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0x99000800U; // Encoding for: STILP_32se_ldiappstilp
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Store-release ordered pair of registers
+    /// Store-release ordered pair of registers.
     /// </summary>
+    /// <remarks><code>STILP Wt1, Wt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STILP_32s_ldiappstilp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STILP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x99001800U; // Encoding for: STILP_32s_ldiappstilp
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Store-release ordered pair of registers
+    /// Store-release ordered pair of registers.
     /// </summary>
+    /// <remarks><code>STILP Xt1, Xt2, [Xn|SP, #-16]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STILP_64ss_ldiappstilp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STILP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0xD9000800U; // Encoding for: STILP_64ss_ldiappstilp
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Store-release ordered pair of registers
+    /// Store-release ordered pair of registers.
     /// </summary>
+    /// <remarks><code>STILP Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STILP_64s_ldiappstilp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STILP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0xD9001800U; // Encoding for: STILP_64s_ldiappstilp
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Store LORelease register
+    /// Store LORelease register.
     /// </summary>
+    /// <remarks><code>STLLR Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLLR_sl32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLLR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x889F7C00U; // Encoding for: STLLR_sl32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store LORelease register
+    /// Store LORelease register.
     /// </summary>
+    /// <remarks><code>STLLR Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLLR_sl64_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLLR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xC89F7C00U; // Encoding for: STLLR_sl64_ldstord
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store LORelease register byte
+    /// Store LORelease register byte.
     /// </summary>
+    /// <remarks><code>STLLRB Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLLRB_sl32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLLRB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x089F7C00U; // Encoding for: STLLRB_sl32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store LORelease register halfword
+    /// Store LORelease register halfword.
     /// </summary>
+    /// <remarks><code>STLLRH Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLLRH_sl32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLLRH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x489F7C00U; // Encoding for: STLLRH_sl32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release register
+    /// Store-release register.
     /// </summary>
+    /// <remarks><code>STLR Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLR_sl32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x889FFC00U; // Encoding for: STLR_sl32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release register
+    /// Store-release register.
     /// </summary>
+    /// <remarks><code>STLR Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLR_sl64_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xC89FFC00U; // Encoding for: STLR_sl64_ldstord
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release register
+    /// Store-release register.
     /// </summary>
+    /// <remarks><code>STLR Wt, [Xn|SP, #-4]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLR_32s_ldapstl_writeback), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLR(Arm64RegisterW Wt, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0x99800800U; // Encoding for: STLR_32s_ldapstl_writeback
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release register
+    /// Store-release register.
     /// </summary>
+    /// <remarks><code>STLR Xt, [Xn|SP, #-8]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLR_64s_ldapstl_writeback), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLR(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0xD9800800U; // Encoding for: STLR_64s_ldapstl_writeback
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release register byte
+    /// Store-release register byte.
     /// </summary>
+    /// <remarks><code>STLRB Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLRB_sl32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLRB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x089FFC00U; // Encoding for: STLRB_sl32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release register halfword
+    /// Store-release register halfword.
     /// </summary>
+    /// <remarks><code>STLRH Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLRH_sl32_ldstord), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLRH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x489FFC00U; // Encoding for: STLRH_sl32_ldstord
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release unprivileged exclusive register
+    /// Store-release unprivileged exclusive register.
     /// </summary>
+    /// <remarks><code>STLTXR Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLTXR_sr32_ldstexclr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLTXR(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x8900FC00U; // Encoding for: STLTXR_sr32_ldstexclr_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release unprivileged exclusive register
+    /// Store-release unprivileged exclusive register.
     /// </summary>
+    /// <remarks><code>STLTXR Ws, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLTXR_sr64_ldstexclr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLTXR(Arm64RegisterW Ws, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xC900FC00U; // Encoding for: STLTXR_sr64_ldstexclr_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release register (unscaled)
+    /// Store-release register (unscaled).
     /// </summary>
+    /// <remarks><code>STLUR Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLUR_32_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLUR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x99000000U; // Encoding for: STLUR_32_ldapstl_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release register (unscaled)
+    /// Store-release register (unscaled).
     /// </summary>
+    /// <remarks><code>STLUR Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLUR_64_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLUR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xD9000000U; // Encoding for: STLUR_64_ldapstl_unscaled
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release register byte (unscaled)
+    /// Store-release register byte (unscaled).
     /// </summary>
+    /// <remarks><code>STLURB Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLURB_32_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLURB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x19000000U; // Encoding for: STLURB_32_ldapstl_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release register halfword (unscaled)
+    /// Store-release register halfword (unscaled).
     /// </summary>
+    /// <remarks><code>STLURH Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLURH_32_ldapstl_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLURH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x59000000U; // Encoding for: STLURH_32_ldapstl_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release exclusive pair of registers
+    /// Store-release exclusive pair of registers.
     /// </summary>
+    /// <remarks><code>STLXP Ws, Wt1, Wt2, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLXP_sp32_ldstexclp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLXP(Arm64RegisterW Ws, Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x88208000U; // Encoding for: STLXP_sp32_ldstexclp
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store-release exclusive pair of registers
+    /// Store-release exclusive pair of registers.
     /// </summary>
+    /// <remarks><code>STLXP Ws, Xt1, Xt2, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLXP_sp64_ldstexclp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLXP(Arm64RegisterW Ws, Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xC8208000U; // Encoding for: STLXP_sp64_ldstexclp
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store-release exclusive register
+    /// Store-release exclusive register.
     /// </summary>
+    /// <remarks><code>STLXR Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLXR_sr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLXR(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x8800FC00U; // Encoding for: STLXR_sr32_ldstexclr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release exclusive register
+    /// Store-release exclusive register.
     /// </summary>
+    /// <remarks><code>STLXR Ws, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLXR_sr64_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLXR(Arm64RegisterW Ws, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xC800FC00U; // Encoding for: STLXR_sr64_ldstexclr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release exclusive register byte
+    /// Store-release exclusive register byte.
     /// </summary>
+    /// <remarks><code>STLXRB Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLXRB_sr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLXRB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x0800FC00U; // Encoding for: STLXRB_sr32_ldstexclr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store-release exclusive register halfword
+    /// Store-release exclusive register halfword.
     /// </summary>
+    /// <remarks><code>STLXRH Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STLXRH_sr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STLXRH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x4800FC00U; // Encoding for: STLXRH_sr32_ldstexclr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store pair of registers, with non-temporal hint
+    /// Store pair of registers, with non-temporal hint.
     /// </summary>
+    /// <remarks><code>STNP Wt1, Wt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STNP_32_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STNP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x28000000U; // Encoding for: STNP_32_ldstnapair_offs
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store pair of registers, with non-temporal hint
+    /// Store pair of registers, with non-temporal hint.
     /// </summary>
+    /// <remarks><code>STNP Xt1, Xt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STNP_64_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STNP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xA8000000U; // Encoding for: STNP_64_ldstnapair_offs
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store pair of registers
+    /// Store pair of registers.
     /// </summary>
+    /// <remarks><code>STP Wt1, Wt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_32_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0x28800000U; // Encoding for: STP_32_ldstpair_post
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store pair of registers
+    /// Store pair of registers.
     /// </summary>
+    /// <remarks><code>STP Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0xA8800000U; // Encoding for: STP_64_ldstpair_post
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store pair of registers
+    /// Store pair of registers.
     /// </summary>
+    /// <remarks><code>STP Wt1, Wt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_32_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0x29800000U; // Encoding for: STP_32_ldstpair_pre
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store pair of registers
+    /// Store pair of registers.
     /// </summary>
+    /// <remarks><code>STP Xt1, Xt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_64_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0xA9800000U; // Encoding for: STP_64_ldstpair_pre
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store pair of registers
+    /// Store pair of registers.
     /// </summary>
+    /// <remarks><code>STP Wt1, Wt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_32_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x29000000U; // Encoding for: STP_32_ldstpair_off
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store pair of registers
+    /// Store pair of registers.
     /// </summary>
+    /// <remarks><code>STP Xt1, Xt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_64_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xA9000000U; // Encoding for: STP_64_ldstpair_off
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store register (immediate)
+    /// Store register (immediate).
     /// </summary>
+    /// <remarks><code>STR Wt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_32_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterW Wt, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xB8000400U; // Encoding for: STR_32_ldst_immpost
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register (immediate)
+    /// Store register (immediate).
     /// </summary>
+    /// <remarks><code>STR Xt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_64_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterX Xt, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xF8000400U; // Encoding for: STR_64_ldst_immpost
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register (immediate)
+    /// Store register (immediate).
     /// </summary>
+    /// <remarks><code>STR Wt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_32_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterW Wt, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0xB8000C00U; // Encoding for: STR_32_ldst_immpre
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register (immediate)
+    /// Store register (immediate).
     /// </summary>
+    /// <remarks><code>STR Xt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_64_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0xF8000C00U; // Encoding for: STR_64_ldst_immpre
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register (immediate)
+    /// Store register (immediate).
     /// </summary>
+    /// <remarks><code>STR Wt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_32_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xB9000000U; // Encoding for: STR_32_ldst_pos
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register (immediate)
+    /// Store register (immediate).
     /// </summary>
+    /// <remarks><code>STR Xt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_64_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xF9000000U; // Encoding for: STR_64_ldst_pos
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register (register)
+    /// Store register (register).
     /// </summary>
+    /// <remarks><code>STR Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterW Wt, Arm64OptionalRegisterExtendMemoryAccessor dst)
     {
         uint raw = 0xB8200800U; // Encoding for: STR_32_ldst_regoff
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register (register)
+    /// Store register (register).
     /// </summary>
+    /// <remarks><code>STR Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterX Xt, Arm64OptionalRegisterExtendMemoryAccessor dst)
     {
         uint raw = 0xF8200800U; // Encoding for: STR_64_ldst_regoff
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register byte (register)
+    /// Store register byte (register).
     /// </summary>
+    /// <remarks><code>STRB Wt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STRB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STRB(Arm64RegisterW Wt, Arm64RegisterExtendMemoryAccessor dst)
     {
         uint raw = 0x38200800U; // Encoding for: STRB_32b_ldst_regoff and memory variation with 0x38206800 STRB_32bl_ldst_regoff
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register byte (immediate)
+    /// Store register byte (immediate).
     /// </summary>
+    /// <remarks><code>STRB Wt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STRB_32_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STRB(Arm64RegisterW Wt, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0x38000400U; // Encoding for: STRB_32_ldst_immpost
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register byte (immediate)
+    /// Store register byte (immediate).
     /// </summary>
+    /// <remarks><code>STRB Wt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STRB_32_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STRB(Arm64RegisterW Wt, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0x38000C00U; // Encoding for: STRB_32_ldst_immpre
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register byte (immediate)
+    /// Store register byte (immediate).
     /// </summary>
+    /// <remarks><code>STRB Wt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STRB_32_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STRB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x39000000U; // Encoding for: STRB_32_ldst_pos
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register halfword (immediate)
+    /// Store register halfword (immediate).
     /// </summary>
+    /// <remarks><code>STRH Wt, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STRH_32_ldst_immpost), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STRH(Arm64RegisterW Wt, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0x78000400U; // Encoding for: STRH_32_ldst_immpost
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register halfword (immediate)
+    /// Store register halfword (immediate).
     /// </summary>
+    /// <remarks><code>STRH Wt, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STRH_32_ldst_immpre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STRH(Arm64RegisterW Wt, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0x78000C00U; // Encoding for: STRH_32_ldst_immpre
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register halfword (immediate)
+    /// Store register halfword (immediate).
     /// </summary>
+    /// <remarks><code>STRH Wt, [Xn|SP{, #pimm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STRH_32_ldst_pos), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STRH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x79000000U; // Encoding for: STRH_32_ldst_pos
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register halfword (register)
+    /// Store register halfword (register).
     /// </summary>
+    /// <remarks><code>STRH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STRH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STRH(Arm64RegisterW Wt, Arm64OptionalRegisterExtendMemoryAccessor dst)
     {
         uint raw = 0x78200800U; // Encoding for: STRH_32_ldst_regoff
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory, without return
+    /// Atomic bit set on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSET Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSET_ldset_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSET(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9414,8 +10336,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory, without return
+    /// Atomic bit set on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSET Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSET_ldset_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSET(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9424,8 +10347,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on byte in memory, without return
+    /// Atomic bit set on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STSETB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSETB_ldsetb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSETB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9434,8 +10358,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on halfword in memory, without return
+    /// Atomic bit set on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSETH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSETH_ldseth_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSETH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9444,8 +10369,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory, without return
+    /// Atomic bit set on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSETL Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSETL_ldsetl_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSETL(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9454,8 +10380,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on word or doubleword in memory, without return
+    /// Atomic bit set on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSETL Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSETL_ldsetl_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSETL(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9464,8 +10391,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on byte in memory, without return
+    /// Atomic bit set on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STSETLB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSETLB_ldsetlb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSETLB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9474,8 +10402,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit set on halfword in memory, without return
+    /// Atomic bit set on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSETLH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSETLH_ldsetlh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSETLH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9484,8 +10413,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory, without return
+    /// Atomic signed maximum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMAX Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMAX_ldsmax_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMAX(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9494,8 +10424,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory, without return
+    /// Atomic signed maximum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMAX Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMAX_ldsmax_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMAX(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9504,8 +10435,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on byte in memory, without return
+    /// Atomic signed maximum on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMAXB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMAXB_ldsmaxb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMAXB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9514,8 +10446,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on halfword in memory, without return
+    /// Atomic signed maximum on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMAXH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMAXH_ldsmaxh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMAXH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9524,8 +10457,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory, without return
+    /// Atomic signed maximum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMAXL Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMAXL_ldsmaxl_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMAXL(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9534,8 +10468,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on word or doubleword in memory, without return
+    /// Atomic signed maximum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMAXL Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMAXL_ldsmaxl_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMAXL(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9544,8 +10479,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on byte in memory, without return
+    /// Atomic signed maximum on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMAXLB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMAXLB_ldsmaxlb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMAXLB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9554,8 +10490,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed maximum on halfword in memory, without return
+    /// Atomic signed maximum on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMAXLH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMAXLH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9564,8 +10501,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory, without return
+    /// Atomic signed minimum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMIN Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMIN_ldsmin_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMIN(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9574,8 +10512,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory, without return
+    /// Atomic signed minimum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMIN Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMIN_ldsmin_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMIN(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9584,8 +10523,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on byte in memory, without return
+    /// Atomic signed minimum on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMINB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMINB_ldsminb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMINB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9594,8 +10534,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on halfword in memory, without return
+    /// Atomic signed minimum on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMINH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMINH_ldsminh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMINH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9604,8 +10545,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory, without return
+    /// Atomic signed minimum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMINL Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMINL_ldsminl_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMINL(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9614,8 +10556,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on word or doubleword in memory, without return
+    /// Atomic signed minimum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMINL Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMINL_ldsminl_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMINL(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9624,8 +10567,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on byte in memory, without return
+    /// Atomic signed minimum on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMINLB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMINLB_ldsminlb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMINLB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9634,8 +10578,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic signed minimum on halfword in memory, without return
+    /// Atomic signed minimum on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STSMINLH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSMINLH_ldsminlh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSMINLH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9644,8 +10589,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged, without return
+    /// Atomic add unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTADD Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTADD(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9654,8 +10600,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged, without return
+    /// Atomic add unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTADD Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTADD(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9664,8 +10611,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged, without return
+    /// Atomic add unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTADDL Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTADDL_ldtaddl_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTADDL(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9674,8 +10622,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic add unprivileged, without return
+    /// Atomic add unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTADDL Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTADDL_ldtaddl_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTADDL(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9684,8 +10633,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged, without return
+    /// Atomic bit clear unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTCLR Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTCLR(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9694,8 +10644,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged, without return
+    /// Atomic bit clear unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTCLR Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTCLR(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9704,8 +10655,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged, without return
+    /// Atomic bit clear unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTCLRL Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTCLRL_ldtclrl_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTCLRL(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9714,8 +10666,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit clear unprivileged, without return
+    /// Atomic bit clear unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTCLRL Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTCLRL_ldtclrl_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTCLRL(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9724,92 +10677,101 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Store unprivileged pair of registers, with non-temporal hint
+    /// Store unprivileged pair of registers, with non-temporal hint.
     /// </summary>
+    /// <remarks><code>STTNP Xt1, Xt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTNP_64_ldstnapair_offs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTNP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xE8000000U; // Encoding for: STTNP_64_ldstnapair_offs
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store unprivileged pair of registers
+    /// Store unprivileged pair of registers.
     /// </summary>
+    /// <remarks><code>STTP Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTP_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0xE8800000U; // Encoding for: STTP_64_ldstpair_post
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store unprivileged pair of registers
+    /// Store unprivileged pair of registers.
     /// </summary>
+    /// <remarks><code>STTP Xt1, Xt2, [Xn|SP, #imm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTP_64_ldstpair_pre), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0xE9800000U; // Encoding for: STTP_64_ldstpair_pre
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store unprivileged pair of registers
+    /// Store unprivileged pair of registers.
     /// </summary>
+    /// <remarks><code>STTP Xt1, Xt2, [Xn|SP{, #imm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTP_64_ldstpair_off), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xE9000000U; // Encoding for: STTP_64_ldstpair_off
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store register (unprivileged)
+    /// Store register (unprivileged).
     /// </summary>
+    /// <remarks><code>STTR Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTR_32_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xB8000800U; // Encoding for: STTR_32_ldst_unpriv
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register (unprivileged)
+    /// Store register (unprivileged).
     /// </summary>
+    /// <remarks><code>STTR Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTR_64_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xF8000800U; // Encoding for: STTR_64_ldst_unpriv
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register byte (unprivileged)
+    /// Store register byte (unprivileged).
     /// </summary>
+    /// <remarks><code>STTRB Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTRB_32_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTRB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x38000800U; // Encoding for: STTRB_32_ldst_unpriv
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register halfword (unprivileged)
+    /// Store register halfword (unprivileged).
     /// </summary>
+    /// <remarks><code>STTRH Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTRH_32_ldst_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTRH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x78000800U; // Encoding for: STTRH_32_ldst_unpriv
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged, without return
+    /// Atomic bit set unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTSET Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTSET_ldtset_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTSET(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9818,8 +10780,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged, without return
+    /// Atomic bit set unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTSET Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTSET_ldtset_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTSET(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9828,8 +10791,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged, without return
+    /// Atomic bit set unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTSETL Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTSETL_ldtsetl_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTSETL(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9838,8 +10802,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic bit set unprivileged, without return
+    /// Atomic bit set unprivileged, without return.
     /// </summary>
+    /// <remarks><code>STTSETL Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTSETL_ldtsetl_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTSETL(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9848,30 +10813,33 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Store unprivileged exclusive register
+    /// Store unprivileged exclusive register.
     /// </summary>
+    /// <remarks><code>STTXR Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTXR(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x89007C00U; // Encoding for: STTXR_sr32_ldstexclr_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store unprivileged exclusive register
+    /// Store unprivileged exclusive register.
     /// </summary>
+    /// <remarks><code>STTXR Ws, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STTXR(Arm64RegisterW Ws, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xC9007C00U; // Encoding for: STTXR_sr64_ldstexclr_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory, without return
+    /// Atomic unsigned maximum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMAX Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMAX_ldumax_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMAX(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9880,8 +10848,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory, without return
+    /// Atomic unsigned maximum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMAX Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMAX_ldumax_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMAX(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9890,8 +10859,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on byte in memory, without return
+    /// Atomic unsigned maximum on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMAXB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMAXB_ldumaxb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMAXB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9900,8 +10870,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on halfword in memory, without return
+    /// Atomic unsigned maximum on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMAXH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMAXH_ldumaxh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMAXH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9910,8 +10881,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory, without return
+    /// Atomic unsigned maximum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMAXL Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMAXL_ldumaxl_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMAXL(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9920,8 +10892,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on word or doubleword in memory, without return
+    /// Atomic unsigned maximum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMAXL Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMAXL_ldumaxl_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMAXL(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9930,8 +10903,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on byte in memory, without return
+    /// Atomic unsigned maximum on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMAXLB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMAXLB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9940,8 +10914,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned maximum on halfword in memory, without return
+    /// Atomic unsigned maximum on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMAXLH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMAXLH_ldumaxlh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMAXLH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9950,8 +10925,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory, without return
+    /// Atomic unsigned minimum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMIN Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMIN_ldumin_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMIN(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9960,8 +10936,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory, without return
+    /// Atomic unsigned minimum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMIN Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMIN_ldumin_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMIN(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -9970,8 +10947,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on byte in memory, without return
+    /// Atomic unsigned minimum on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMINB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMINB_lduminb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMINB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9980,8 +10958,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on halfword in memory, without return
+    /// Atomic unsigned minimum on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMINH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMINH_lduminh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMINH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -9990,8 +10969,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory, without return
+    /// Atomic unsigned minimum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMINL Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMINL_lduminl_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMINL(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -10000,8 +10980,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on word or doubleword in memory, without return
+    /// Atomic unsigned minimum on word or doubleword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMINL Xs, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMINL_lduminl_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMINL(Arm64RegisterX Xs, Arm64BaseMemoryAccessor dst)
     {
@@ -10010,8 +10991,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on byte in memory, without return
+    /// Atomic unsigned minimum on byte in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMINLB Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMINLB_lduminlb_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMINLB(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -10020,8 +11002,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Atomic unsigned minimum on halfword in memory, without return
+    /// Atomic unsigned minimum on halfword in memory, without return.
     /// </summary>
+    /// <remarks><code>STUMINLH Ws, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUMINLH_lduminlh_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUMINLH(Arm64RegisterW Ws, Arm64BaseMemoryAccessor dst)
     {
@@ -10030,756 +11013,827 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Store register (unscaled)
+    /// Store register (unscaled).
     /// </summary>
+    /// <remarks><code>STUR Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUR_32_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUR(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xB8000000U; // Encoding for: STUR_32_ldst_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register (unscaled)
+    /// Store register (unscaled).
     /// </summary>
+    /// <remarks><code>STUR Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STUR_64_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STUR(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xF8000000U; // Encoding for: STUR_64_ldst_unscaled
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register byte (unscaled)
+    /// Store register byte (unscaled).
     /// </summary>
+    /// <remarks><code>STURB Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STURB_32_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STURB(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x38000000U; // Encoding for: STURB_32_ldst_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store register halfword (unscaled)
+    /// Store register halfword (unscaled).
     /// </summary>
+    /// <remarks><code>STURH Wt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STURH_32_ldst_unscaled), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STURH(Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x78000000U; // Encoding for: STURH_32_ldst_unscaled
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store exclusive pair of registers
+    /// Store exclusive pair of registers.
     /// </summary>
+    /// <remarks><code>STXP Ws, Wt1, Wt2, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STXP_sp32_ldstexclp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STXP(Arm64RegisterW Ws, Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x88200000U; // Encoding for: STXP_sp32_ldstexclp
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt1.Index << 0);
+        raw |= (uint)(Wt1.Index);
         raw |= (uint)(Wt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store exclusive pair of registers
+    /// Store exclusive pair of registers.
     /// </summary>
+    /// <remarks><code>STXP Ws, Xt1, Xt2, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STXP_sp64_ldstexclp), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STXP(Arm64RegisterW Ws, Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xC8200000U; // Encoding for: STXP_sp64_ldstexclp
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Store exclusive register
+    /// Store exclusive register.
     /// </summary>
+    /// <remarks><code>STXR Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STXR_sr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STXR(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x88007C00U; // Encoding for: STXR_sr32_ldstexclr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store exclusive register
+    /// Store exclusive register.
     /// </summary>
+    /// <remarks><code>STXR Ws, Xt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STXR_sr64_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STXR(Arm64RegisterW Ws, Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xC8007C00U; // Encoding for: STXR_sr64_ldstexclr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Store exclusive register byte
+    /// Store exclusive register byte.
     /// </summary>
+    /// <remarks><code>STXRB Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STXRB_sr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STXRB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x08007C00U; // Encoding for: STXRB_sr32_ldstexclr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store exclusive register halfword
+    /// Store exclusive register halfword.
     /// </summary>
+    /// <remarks><code>STXRH Ws, Wt, [Xn|SP{, #0}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STXRH_sr32_ldstexclr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STXRH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0x48007C00U; // Encoding for: STXRH_sr32_ldstexclr
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tags, zeroing
+    /// Store Allocation Tags, zeroing.
     /// </summary>
+    /// <remarks><code>STZ2G Xt|SP, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STZ2G_64spost_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STZ2G(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xD9E00400U; // Encoding for: STZ2G_64spost_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tags, zeroing
+    /// Store Allocation Tags, zeroing.
     /// </summary>
+    /// <remarks><code>STZ2G Xt|SP, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STZ2G_64spre_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STZ2G(Arm64RegisterXOrSP Xt_SP, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0xD9E00C00U; // Encoding for: STZ2G_64spre_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tags, zeroing
+    /// Store Allocation Tags, zeroing.
     /// </summary>
+    /// <remarks><code>STZ2G Xt|SP, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STZ2G_64soffset_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STZ2G(Arm64RegisterXOrSP Xt_SP, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xD9E00800U; // Encoding for: STZ2G_64soffset_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tag, zeroing
+    /// Store Allocation Tag, zeroing.
     /// </summary>
+    /// <remarks><code>STZG Xt|SP, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STZG_64spost_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STZG(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xD9600400U; // Encoding for: STZG_64spost_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tag, zeroing
+    /// Store Allocation Tag, zeroing.
     /// </summary>
+    /// <remarks><code>STZG Xt|SP, [Xn|SP, #simm]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STZG_64spre_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STZG(Arm64RegisterXOrSP Xt_SP, Arm64ImmediateMemoryAccessorPreIncrement dst)
     {
         uint raw = 0xD9600C00U; // Encoding for: STZG_64spre_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tag, zeroing
+    /// Store Allocation Tag, zeroing.
     /// </summary>
+    /// <remarks><code>STZG Xt|SP, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STZG_64soffset_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STZG(Arm64RegisterXOrSP Xt_SP, Arm64OptionalImmediateMemoryAccessor dst)
     {
         uint raw = 0xD9600800U; // Encoding for: STZG_64soffset_ldsttags
-        raw |= (uint)(Xt_SP.Index << 0);
+        raw |= (uint)(Xt_SP.Index);
         return raw;
     }
     /// <summary>
-    /// Store Allocation Tag and zero multiple
+    /// Store Allocation Tag and zero multiple.
     /// </summary>
+    /// <remarks><code>STZGM Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STZGM_64bulk_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STZGM(Arm64RegisterX Xt, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0xD9200000U; // Encoding for: STZGM_64bulk_ldsttags
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Subtract extended and scaled register
+    /// Subtract extended and scaled register.
     /// </summary>
+    /// <remarks><code>SUB Wd|WSP, Wn|WSP, Wm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUB_32_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUB(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterWOrWSP Wn_WSP, Arm64RegisterW Wm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
         uint raw = 0x4B200000U; // Encoding for: SUB_32_addsub_ext
-        raw |= (uint)(Wd_WSP.Index << 0);
+        raw |= (uint)(Wd_WSP.Index);
         raw |= (uint)(Wn_WSP.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract extended and scaled register
+    /// Subtract extended and scaled register.
     /// </summary>
+    /// <remarks><code>SUB Xd|SP, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUB_64_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUB(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
         uint raw = 0xCB200000U; // Encoding for: SUB_64_addsub_ext
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         raw |= (uint)(Rm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract immediate value
+    /// Subtract immediate value.
     /// </summary>
+    /// <remarks><code>SUB Wd|WSP, Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUB_32_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUB(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterWOrWSP Wn_WSP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
         uint raw = 0x51000000U; // Encoding for: SUB_32_addsub_imm
-        raw |= (uint)(Wd_WSP.Index << 0);
+        raw |= (uint)(Wd_WSP.Index);
         raw |= (uint)(Wn_WSP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Subtract immediate value
+    /// Subtract immediate value.
     /// </summary>
+    /// <remarks><code>SUB Xd|SP, Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUB_64_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUB(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
         uint raw = 0xD1000000U; // Encoding for: SUB_64_addsub_imm
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Subtract optionally-shifted register
+    /// Subtract optionally-shifted register.
     /// </summary>
+    /// <remarks><code>SUB Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUB_32_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUB(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0x4B000000U; // Encoding for: SUB_32_addsub_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract optionally-shifted register
+    /// Subtract optionally-shifted register.
     /// </summary>
+    /// <remarks><code>SUB Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUB_64_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUB(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0xCB000000U; // Encoding for: SUB_64_addsub_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract with tag
+    /// Subtract with tag.
     /// </summary>
+    /// <remarks><code>SUBG Xd|SP, Xn|SP, #uimm6, #uimm4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBG_64_addsub_immtags), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBG(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, int uimm6, int uimm4)
     {
         uint raw = 0xD1800000U; // Encoding for: SUBG_64_addsub_immtags
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Subtract pointer
+    /// Subtract pointer.
     /// </summary>
+    /// <remarks><code>SUBP Xd, Xn|SP, Xm|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBP_64s_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBP(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrSP Xm_SP)
     {
         uint raw = 0x9AC00000U; // Encoding for: SUBP_64s_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         raw |= (uint)(Xm_SP.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract pointer, setting flags
+    /// Subtract pointer, setting flags.
     /// </summary>
+    /// <remarks><code>SUBPS Xd, Xn|SP, Xm|SP</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBPS_64s_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBPS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrSP Xm_SP)
     {
         uint raw = 0xBAC00000U; // Encoding for: SUBPS_64s_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         raw |= (uint)(Xm_SP.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract checked pointer
+    /// Subtract checked pointer.
     /// </summary>
+    /// <remarks><code>SUBPT Xd|SP, Xn|SP, Xm {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBPT_64_addsub_pt), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBPT(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Xm, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0xDA002000U; // Encoding for: SUBPT_64_addsub_pt
-        raw |= (uint)(Xd_SP.Index << 0);
+        raw |= (uint)(Xd_SP.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract extended and scaled register, setting flags
+    /// Subtract extended and scaled register, setting flags.
     /// </summary>
+    /// <remarks><code>SUBS Wd, Wn|WSP, Wm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBS_32s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBS(Arm64RegisterW Wd, Arm64RegisterWOrWSP Wn_WSP, Arm64RegisterW Wm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
         uint raw = 0x6B200000U; // Encoding for: SUBS_32s_addsub_ext
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn_WSP.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract extended and scaled register, setting flags
+    /// Subtract extended and scaled register, setting flags.
     /// </summary>
+    /// <remarks><code>SUBS Xd, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBS_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
     {
         uint raw = 0xEB200000U; // Encoding for: SUBS_64s_addsub_ext
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         raw |= (uint)(Rm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract immediate value, setting flags
+    /// Subtract immediate value, setting flags.
     /// </summary>
+    /// <remarks><code>SUBS Wd, Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBS_32s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBS(Arm64RegisterW Wd, Arm64RegisterWOrWSP Wn_WSP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
         uint raw = 0x71000000U; // Encoding for: SUBS_32s_addsub_imm
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn_WSP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Subtract immediate value, setting flags
+    /// Subtract immediate value, setting flags.
     /// </summary>
+    /// <remarks><code>SUBS Xd, Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBS_64s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, int imm, LSLShiftKind shift = default, int amount = 0)
     {
         uint raw = 0xF1000000U; // Encoding for: SUBS_64s_addsub_imm
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn_SP.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Subtract optionally-shifted register, setting flags
+    /// Subtract optionally-shifted register, setting flags.
     /// </summary>
+    /// <remarks><code>SUBS Wd, Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBS_32_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBS(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0x6B000000U; // Encoding for: SUBS_32_addsub_shift
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Subtract optionally-shifted register, setting flags
+    /// Subtract optionally-shifted register, setting flags.
     /// </summary>
+    /// <remarks><code>SUBS Xd, Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBS_64_addsub_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBS(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind3 shift = default, int amount = 0)
     {
         uint raw = 0xEB000000U; // Encoding for: SUBS_64_addsub_shift
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Swap word or doubleword in memory
+    /// Swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>SWP Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWP_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWP(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0xB8208000U; // Encoding for: SWP_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap word or doubleword in memory
+    /// Swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>SWP Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWP_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWP(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0xF8208000U; // Encoding for: SWP_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap word or doubleword in memory
+    /// Swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>SWPA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPA_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0xB8A08000U; // Encoding for: SWPA_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap word or doubleword in memory
+    /// Swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>SWPA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPA_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0xF8A08000U; // Encoding for: SWPA_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap byte in memory
+    /// Swap byte in memory.
     /// </summary>
+    /// <remarks><code>SWPAB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPAB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPAB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38A08000U; // Encoding for: SWPAB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap halfword in memory
+    /// Swap halfword in memory.
     /// </summary>
+    /// <remarks><code>SWPAH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPAH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPAH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78A08000U; // Encoding for: SWPAH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap word or doubleword in memory
+    /// Swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>SWPAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPAL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0xB8E08000U; // Encoding for: SWPAL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap word or doubleword in memory
+    /// Swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>SWPAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPAL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0xF8E08000U; // Encoding for: SWPAL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap byte in memory
+    /// Swap byte in memory.
     /// </summary>
+    /// <remarks><code>SWPALB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPALB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPALB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38E08000U; // Encoding for: SWPALB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap halfword in memory
+    /// Swap halfword in memory.
     /// </summary>
+    /// <remarks><code>SWPALH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPALH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPALH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78E08000U; // Encoding for: SWPALH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap byte in memory
+    /// Swap byte in memory.
     /// </summary>
+    /// <remarks><code>SWPB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38208000U; // Encoding for: SWPB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap halfword in memory
+    /// Swap halfword in memory.
     /// </summary>
+    /// <remarks><code>SWPH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78208000U; // Encoding for: SWPH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap word or doubleword in memory
+    /// Swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>SWPL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPL_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0xB8608000U; // Encoding for: SWPL_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap word or doubleword in memory
+    /// Swap word or doubleword in memory.
     /// </summary>
+    /// <remarks><code>SWPL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPL_64_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0xF8608000U; // Encoding for: SWPL_64_memop
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap byte in memory
+    /// Swap byte in memory.
     /// </summary>
+    /// <remarks><code>SWPLB Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPLB_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPLB(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x38608000U; // Encoding for: SWPLB_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap halfword in memory
+    /// Swap halfword in memory.
     /// </summary>
+    /// <remarks><code>SWPLH Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPLH_32_memop), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPLH(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x78608000U; // Encoding for: SWPLH_32_memop
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap quadword in memory
+    /// Swap quadword in memory.
     /// </summary>
+    /// <remarks><code>SWPP Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPP_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19208000U; // Encoding for: SWPP_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Swap quadword in memory
+    /// Swap quadword in memory.
     /// </summary>
+    /// <remarks><code>SWPPA Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPPA_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPPA(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19A08000U; // Encoding for: SWPPA_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Swap quadword in memory
+    /// Swap quadword in memory.
     /// </summary>
+    /// <remarks><code>SWPPAL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPPAL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPPAL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19E08000U; // Encoding for: SWPPAL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Swap quadword in memory
+    /// Swap quadword in memory.
     /// </summary>
+    /// <remarks><code>SWPPL Xt1, Xt2, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPPL_128_memop_128), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPPL(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19608000U; // Encoding for: SWPPL_128_memop_128
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         raw |= (uint)(Xt2.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Swap unprivileged
+    /// Swap unprivileged.
     /// </summary>
+    /// <remarks><code>SWPT Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPT_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPT(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19208400U; // Encoding for: SWPT_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap unprivileged
+    /// Swap unprivileged.
     /// </summary>
+    /// <remarks><code>SWPT Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPT_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPT(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59208400U; // Encoding for: SWPT_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap unprivileged
+    /// Swap unprivileged.
     /// </summary>
+    /// <remarks><code>SWPTA Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPTA_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPTA(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19A08400U; // Encoding for: SWPTA_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap unprivileged
+    /// Swap unprivileged.
     /// </summary>
+    /// <remarks><code>SWPTA Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPTA_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPTA(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59A08400U; // Encoding for: SWPTA_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap unprivileged
+    /// Swap unprivileged.
     /// </summary>
+    /// <remarks><code>SWPTAL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPTAL_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPTAL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19E08400U; // Encoding for: SWPTAL_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap unprivileged
+    /// Swap unprivileged.
     /// </summary>
+    /// <remarks><code>SWPTAL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPTAL_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPTAL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59E08400U; // Encoding for: SWPTAL_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap unprivileged
+    /// Swap unprivileged.
     /// </summary>
+    /// <remarks><code>SWPTL Ws, Wt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPTL_32_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPTL(Arm64RegisterW Ws, Arm64RegisterW Wt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x19608400U; // Encoding for: SWPTL_32_memop_unpriv
         raw |= (uint)(Ws.Index << 16);
-        raw |= (uint)(Wt.Index << 0);
+        raw |= (uint)(Wt.Index);
         return raw;
     }
     /// <summary>
-    /// Swap unprivileged
+    /// Swap unprivileged.
     /// </summary>
+    /// <remarks><code>SWPTL Xs, Xt, [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SWPTL_64_memop_unpriv), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SWPTL(Arm64RegisterX Xs, Arm64RegisterX Xt, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0x59608400U; // Encoding for: SWPTL_64_memop_unpriv
         raw |= (uint)(Xs.Index << 16);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Signed extend byte
+    /// Signed extend byte.
     /// </summary>
+    /// <remarks><code>SXTB Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SXTB_sbfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SXTB(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x13001C00U; // Encoding for: SXTB_sbfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Signed extend byte
+    /// Signed extend byte.
     /// </summary>
+    /// <remarks><code>SXTB Xd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SXTB_sbfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SXTB(Arm64RegisterX Xd, Arm64RegisterW Wn)
     {
         uint raw = 0x93401C00U; // Encoding for: SXTB_sbfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Sign extend halfword
+    /// Sign extend halfword.
     /// </summary>
+    /// <remarks><code>SXTH Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SXTH_sbfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SXTH(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x13003C00U; // Encoding for: SXTH_sbfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Sign extend halfword
+    /// Sign extend halfword.
     /// </summary>
+    /// <remarks><code>SXTH Xd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SXTH_sbfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SXTH(Arm64RegisterX Xd, Arm64RegisterW Wn)
     {
         uint raw = 0x93403C00U; // Encoding for: SXTH_sbfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Sign extend word
+    /// Sign extend word.
     /// </summary>
+    /// <remarks><code>SXTW Xd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SXTW_sbfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SXTW(Arm64RegisterX Xd, Arm64RegisterW Wn)
     {
         uint raw = 0x93407C00U; // Encoding for: SXTW_sbfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Test bit and branch if nonzero
+    /// Test bit and branch if nonzero.
     /// </summary>
+    /// <remarks><code>TBNZ Rt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TBNZ_only_testbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TBNZ(Arm64RegisterXOrW Rt, int imm, Arm64Label label)
     {
         uint raw = 0x37000000U; // Encoding for: TBNZ_only_testbranch
-        raw |= (uint)(Rt.Index << 0);
+        if (Rt.Kind == Arm64RegisterKind.X) raw = 0x80000000U;
+        raw |= (uint)(Rt.Index);
         return raw;
     }
     /// <summary>
-    /// Test bit and branch if zero
+    /// Test bit and branch if zero.
     /// </summary>
+    /// <remarks><code>TBZ Rt, #imm, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TBZ_only_testbranch), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TBZ(Arm64RegisterXOrW Rt, int imm, Arm64Label label)
     {
         uint raw = 0x36000000U; // Encoding for: TBZ_only_testbranch
-        raw |= (uint)(Rt.Index << 0);
+        if (Rt.Kind == Arm64RegisterKind.X) raw = 0x80000000U;
+        raw |= (uint)(Rt.Index);
         return raw;
     }
     /// <summary>
-    /// Test bits (immediate)
+    /// Test bits (immediate).
     /// </summary>
+    /// <remarks><code>TST Wn, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TST_ands_32s_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TST(Arm64RegisterW Wn, Arm64LogicalImmediate32 imm)
     {
@@ -10788,8 +11842,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Test bits (immediate)
+    /// Test bits (immediate).
     /// </summary>
+    /// <remarks><code>TST Xn, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TST_ands_64s_log_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TST(Arm64RegisterX Xn, Arm64LogicalImmediate64 imm)
     {
@@ -10798,8 +11853,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Test (shifted register)
+    /// Test (shifted register).
     /// </summary>
+    /// <remarks><code>TST Wn, Wm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TST_ands_32_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TST(Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
@@ -10809,8 +11865,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Test (shifted register)
+    /// Test (shifted register).
     /// </summary>
+    /// <remarks><code>TST Xn, Xm {, shift, #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TST_ands_64_log_shift), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TST(Arm64RegisterX Xn, Arm64RegisterX Xm, Arm64ShiftKind4 shift = default, int amount = 0)
     {
@@ -10820,74 +11877,81 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Unsigned bitfield insert in zeros
+    /// Unsigned bitfield insert in zeros.
     /// </summary>
+    /// <remarks><code>UBFIZ Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFIZ_ubfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UBFIZ(Arm64RegisterW Wd, Arm64RegisterW Wn, int lsb, int width)
     {
         uint raw = 0x53000000U; // Encoding for: UBFIZ_ubfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Unsigned bitfield insert in zeros
+    /// Unsigned bitfield insert in zeros.
     /// </summary>
+    /// <remarks><code>UBFIZ Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFIZ_ubfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UBFIZ(Arm64RegisterX Xd, Arm64RegisterX Xn, int lsb, int width)
     {
         uint raw = 0xD3400000U; // Encoding for: UBFIZ_ubfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Unsigned bitfield move
+    /// Unsigned bitfield move.
     /// </summary>
+    /// <remarks><code>UBFM Wd, Wn, #immr, #imms</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFM_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UBFM(Arm64RegisterW Wd, Arm64RegisterW Wn, int immr, int imms)
     {
         uint raw = 0x53000000U; // Encoding for: UBFM_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Unsigned bitfield move
+    /// Unsigned bitfield move.
     /// </summary>
+    /// <remarks><code>UBFM Xd, Xn, #immr, #imms</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFM_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UBFM(Arm64RegisterX Xd, Arm64RegisterX Xn, int immr, int imms)
     {
         uint raw = 0xD3400000U; // Encoding for: UBFM_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Unsigned bitfield extract
+    /// Unsigned bitfield extract.
     /// </summary>
+    /// <remarks><code>UBFX Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFX_ubfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UBFX(Arm64RegisterW Wd, Arm64RegisterW Wn, int lsb, int width)
     {
         uint raw = 0x53000000U; // Encoding for: UBFX_ubfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Unsigned bitfield extract
+    /// Unsigned bitfield extract.
     /// </summary>
+    /// <remarks><code>UBFX Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFX_ubfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UBFX(Arm64RegisterX Xd, Arm64RegisterX Xn, int lsb, int width)
     {
         uint raw = 0xD3400000U; // Encoding for: UBFX_ubfm_64m_bitfield
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Permanently undefined
+    /// Permanently undefined.
     /// </summary>
+    /// <remarks><code>UDF #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UDF_only_perm_undef), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UDF(int imm)
     {
@@ -10895,223 +11959,242 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Unsigned divide
+    /// Unsigned divide.
     /// </summary>
+    /// <remarks><code>UDIV Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UDIV_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UDIV(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC00800U; // Encoding for: UDIV_32_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Unsigned divide
+    /// Unsigned divide.
     /// </summary>
+    /// <remarks><code>UDIV Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UDIV_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UDIV(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC00800U; // Encoding for: UDIV_64_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Unsigned multiply-add long
+    /// Unsigned multiply-add long.
     /// </summary>
+    /// <remarks><code>UMADDL Xd, Wn, Wm, Xa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMADDL_64wa_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMADDL(Arm64RegisterX Xd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64RegisterX Xa)
     {
         uint raw = 0x9BA00000U; // Encoding for: UMADDL_64wa_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         raw |= (uint)(Xa.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Unsigned maximum (immediate)
+    /// Unsigned maximum (immediate).
     /// </summary>
+    /// <remarks><code>UMAX Wd, Wn, #uimm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMAX_32u_minmax_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMAX(Arm64RegisterW Wd, Arm64RegisterW Wn, int uimm)
     {
         uint raw = 0x11C40000U; // Encoding for: UMAX_32u_minmax_imm
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Unsigned maximum (immediate)
+    /// Unsigned maximum (immediate).
     /// </summary>
+    /// <remarks><code>UMAX Xd, Xn, #uimm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMAX_64u_minmax_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMAX(Arm64RegisterX Xd, Arm64RegisterX Xn, int uimm)
     {
         uint raw = 0x91C40000U; // Encoding for: UMAX_64u_minmax_imm
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Unsigned maximum (register)
+    /// Unsigned maximum (register).
     /// </summary>
+    /// <remarks><code>UMAX Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMAX_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMAX(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC06400U; // Encoding for: UMAX_32_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Unsigned maximum (register)
+    /// Unsigned maximum (register).
     /// </summary>
+    /// <remarks><code>UMAX Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMAX_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMAX(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC06400U; // Encoding for: UMAX_64_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Unsigned minimum (immediate)
+    /// Unsigned minimum (immediate).
     /// </summary>
+    /// <remarks><code>UMIN Wd, Wn, #uimm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMIN_32u_minmax_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMIN(Arm64RegisterW Wd, Arm64RegisterW Wn, int uimm)
     {
         uint raw = 0x11CC0000U; // Encoding for: UMIN_32u_minmax_imm
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Unsigned minimum (immediate)
+    /// Unsigned minimum (immediate).
     /// </summary>
+    /// <remarks><code>UMIN Xd, Xn, #uimm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMIN_64u_minmax_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMIN(Arm64RegisterX Xd, Arm64RegisterX Xn, int uimm)
     {
         uint raw = 0x91CC0000U; // Encoding for: UMIN_64u_minmax_imm
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Unsigned minimum (register)
+    /// Unsigned minimum (register).
     /// </summary>
+    /// <remarks><code>UMIN Wd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMIN_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMIN(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x1AC06C00U; // Encoding for: UMIN_32_dp_2src
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Unsigned minimum (register)
+    /// Unsigned minimum (register).
     /// </summary>
+    /// <remarks><code>UMIN Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMIN_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMIN(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC06C00U; // Encoding for: UMIN_64_dp_2src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Unsigned multiply-negate long
+    /// Unsigned multiply-negate long.
     /// </summary>
+    /// <remarks><code>UMNEGL Xd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMNEGL(Arm64RegisterX Xd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x9BA0FC00U; // Encoding for: UMNEGL_umsubl_64wa_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Unsigned multiply-subtract long
+    /// Unsigned multiply-subtract long.
     /// </summary>
+    /// <remarks><code>UMSUBL Xd, Wn, Wm, Xa</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMSUBL_64wa_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMSUBL(Arm64RegisterX Xd, Arm64RegisterW Wn, Arm64RegisterW Wm, Arm64RegisterX Xa)
     {
         uint raw = 0x9BA08000U; // Encoding for: UMSUBL_64wa_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         raw |= (uint)(Xa.Index << 10);
         return raw;
     }
     /// <summary>
-    /// Unsigned multiply high
+    /// Unsigned multiply high.
     /// </summary>
+    /// <remarks><code>UMULH Xd, Xn, Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMULH_64_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMULH(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9BC07C00U; // Encoding for: UMULH_64_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Xn.Index << 5);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Unsigned multiply long
+    /// Unsigned multiply long.
     /// </summary>
+    /// <remarks><code>UMULL Xd, Wn, Wm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMULL_umaddl_64wa_dp_3src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMULL(Arm64RegisterX Xd, Arm64RegisterW Wn, Arm64RegisterW Wm)
     {
         uint raw = 0x9BA07C00U; // Encoding for: UMULL_umaddl_64wa_dp_3src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         raw |= (uint)(Wn.Index << 5);
         raw |= (uint)(Wm.Index << 16);
         return raw;
     }
     /// <summary>
-    /// Unsigned extend byte
+    /// Unsigned extend byte.
     /// </summary>
+    /// <remarks><code>UXTB Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UXTB_ubfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UXTB(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x53001C00U; // Encoding for: UXTB_ubfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Unsigned extend halfword
+    /// Unsigned extend halfword.
     /// </summary>
+    /// <remarks><code>UXTH Wd, Wn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UXTH_ubfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UXTH(Arm64RegisterW Wd, Arm64RegisterW Wn)
     {
         uint raw = 0x53003C00U; // Encoding for: UXTH_ubfm_32m_bitfield
-        raw |= (uint)(Wd.Index << 0);
+        raw |= (uint)(Wd.Index);
         raw |= (uint)(Wn.Index << 5);
         return raw;
     }
     /// <summary>
-    /// Strip Pointer Authentication Code
+    /// Strip Pointer Authentication Code.
     /// </summary>
+    /// <remarks><code>XPACD Xd</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.XPACD_64z_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint XPACD(Arm64RegisterX Xd)
     {
         uint raw = 0xDAC147E0U; // Encoding for: XPACD_64z_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
     /// <summary>
-    /// Strip Pointer Authentication Code
+    /// Strip Pointer Authentication Code.
     /// </summary>
+    /// <remarks><code>XPACI Xd</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.XPACI_64z_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint XPACI(Arm64RegisterX Xd)
     {
         uint raw = 0xDAC143E0U; // Encoding for: XPACI_64z_dp_1src
-        raw |= (uint)(Xd.Index << 0);
+        raw |= (uint)(Xd.Index);
         return raw;
     }
 }

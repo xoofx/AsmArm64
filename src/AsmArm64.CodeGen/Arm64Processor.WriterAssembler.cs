@@ -80,7 +80,8 @@ partial class Arm64Processor
     {
         var instruction = instructionVariation.Instruction;
 
-        w.WriteSummary(EscapeHtmlEntities(instruction.Summary));
+        w.WriteSummary($"{EscapeHtmlEntities(instruction.Summary)}.");
+        w.WriteDoc($"<remarks><code>{EscapeHtmlEntities(MatchSpace.Replace(instruction.FullSyntax, " "))}</code></remarks>");
         w.WriteLine($"[Arm64LinkInstructionId(Arm64InstructionId.{instruction.Id}), MethodImpl(MethodImplOptions.AggressiveInlining)]");
         w.Write($"public static uint {instructionVariation.Mnemonic}(");
 
@@ -110,11 +111,12 @@ partial class Arm64Processor
 
             }
 
-            foreach (var operand in instructionVariation.Operands)
+            for (var operandIndex = 0; operandIndex < instructionVariation.Operands.Count; operandIndex++)
             {
-                if (operand.GetEncoding != null)
+                var operand = instructionVariation.Operands[operandIndex];
+                foreach(var writeEncoding in operand.WriteEncodings)
                 {
-                    w.WriteLine($"raw |= {operand.GetEncoding(operand.OperandName)};");
+                    writeEncoding(w, "raw", instructionVariation, operand, operandIndex);
                 }
             }
 
@@ -188,7 +190,7 @@ partial class Arm64Processor
 
             var operandVariations = new List<OperandVariation>();
 
-            GetOperandVariations(operand, operandVariations);
+            GetOperandVariations(instruction, operand, operandVariations);
             allOperandVariations.Add(operandVariations);
         }
 
@@ -341,7 +343,7 @@ partial class Arm64Processor
         }
     }
 
-    private void GetOperandVariations(Operand operand, List<OperandVariation> operandVariations)
+    private void GetOperandVariations(Instruction instruction, Operand operand, List<OperandVariation> operandVariations)
     {
         var descriptor = operand.Descriptor;
         Debug.Assert(descriptor is not null);
@@ -350,10 +352,10 @@ partial class Arm64Processor
         switch (descriptor.Kind)
         {
             case Arm64OperandKind.Register:
-                GetRegisterOperandVariation((RegisterOperandDescriptor)descriptor, operandVariations);
+                GetRegisterOperandVariation(instruction, (RegisterOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.RegisterGroup:
-                GetRegisterGroupOperandVariation((RegisterGroupOperandDescriptor)descriptor, operandVariations);
+                GetRegisterGroupOperandVariation(instruction,(RegisterGroupOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.SystemRegister:
                 operandVariations.Add(
@@ -602,15 +604,15 @@ partial class Arm64Processor
     }
 
 
-    private void GetRegisterGroupOperandVariation(RegisterGroupOperandDescriptor descriptor, List<OperandVariation> operandVariations)
+    private void GetRegisterGroupOperandVariation(Instruction instruction, RegisterGroupOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
         var registerVariations = new List<OperandVariation>();
-        GetRegisterOperandVariation(descriptor.Register, registerVariations);
+        GetRegisterOperandVariation(instruction, descriptor.Register, registerVariations);
         foreach (var registerVariation in registerVariations)
         {
             var operandName = GetNormalizedOperandName(descriptor.Name);
             var operandType = $"Arm64RegisterGroup{descriptor.Count}<{registerVariation.OperandType}>";
-            operandVariations.Add(new OperandVariation
+            var operandVariation = new OperandVariation
             {
                 Descriptor = descriptor,
                 OperandName = operandName,
@@ -619,17 +621,21 @@ partial class Arm64Processor
                 BitfieldSets = registerVariation.BitfieldSets,
                 BitValue = registerVariation.BitValue,
                 EncodingExtract = registerVariation.EncodingExtract,
-            });
+            };
+            operandVariation.WriteEncodings.AddRange(registerVariation.WriteEncodings);
+            operandVariations.Add(operandVariation);
         }
     }
 
-    private static void GetRegisterOperandVariation(RegisterOperandDescriptor register, List<OperandVariation> operandVariations)
+    private static void GetRegisterOperandVariation(Instruction instruction, RegisterOperandDescriptor register, List<OperandVariation> operandVariations)
     {
         var kind = register.RegisterKind;
 
         string? baseType;
 
         var operandName = GetNormalizedOperandName(register.Name);
+
+        List<WriteEncodingDelegate> encodings = new();
 
         var indexEncoding = GetRegisterIndexEncoding(register);
 
@@ -649,6 +655,46 @@ partial class Arm64Processor
                 break;
             case Arm64RegisterEncodingKind.DynamicXOrW:
                 baseType = "Arm64RegisterXOrW";
+                var xOrWExtract = register.DynamicRegisterXOrWSelector;
+                Debug.Assert(xOrWExtract is not null);
+                var xOrWSelector = xOrWExtract.Selector;
+                Debug.Assert(xOrWSelector is not null);
+                //Debug.Assert(encoding is null);
+
+                if (xOrWSelector.BitValues.Count == 2)
+                {
+                    var xSet = xOrWSelector.BitValues.Find(x => x.Text == "X");
+                    var wSet = xOrWSelector.BitValues.Find(x => x.Text == "W");
+                    Debug.Assert(wSet!.BitSelectorValue == 0);
+                    encodings.Add((w, variable, instr, op, opIndex) =>
+                    {
+                        w.WriteLine($"if ({op.OperandName}.Kind == Arm64RegisterKind.X) {variable} = 0x{xSet!.BitSelectorValue:X8}U;");
+                    });
+                }
+                else
+                {
+                    //Debug.Assert(xOrWSelector.BitValues.Count == 5, $"Unexpected DynamicXOrW Count = {xOrWSelector.BitValues.Count} while expecting 5");
+                }
+
+                //// For X, this will be handled by Extend
+                //operandVariations.Add(new OperandVariation
+                //{
+                //    Descriptor = register,
+                //    EncodingExtract = null,
+                //    OperandName = operandName,
+                //    OperandType = "Arm64RegisterX",
+                //});
+
+                //// For W, this will be handled by Extend
+                //operandVariations.Add(new OperandVariation
+                //{
+                //    Descriptor = register,
+                //    EncodingExtract = null,
+                //    OperandName = operandName,
+                //    OperandType = "Arm64RegisterW",
+                //});
+
+                //return;
                 break;
             case Arm64RegisterEncodingKind.B:
                 baseType = "Arm64RegisterB";
@@ -689,7 +735,7 @@ partial class Arm64Processor
                         registerType = $"{registerType}.Indexed";
                     }
 
-                    operandVariations.Add(new OperandVariation
+                    var operandVariation = new OperandVariation
                     {
                         Descriptor = register,
                         EncodingExtract = dynamicRegisterExtract,
@@ -698,8 +744,13 @@ partial class Arm64Processor
                         BitfieldMask = bitValue.BitSelectorMask,
                         BitfieldSets = bitValue.BitSelectorValue,
                         BitValue = bitValue,
-                        GetEncoding = indexEncoding,
-                    });
+                    };
+                    if (indexEncoding != null)
+                    {
+                        operandVariation.WriteEncodings.Add(indexEncoding);
+                    }
+
+                    operandVariations.Add(operandVariation);
                 }
                 return;
             case Arm64RegisterEncodingKind.V:
@@ -721,7 +772,7 @@ partial class Arm64Processor
                                 vArrangementType = $"{vArrangementType}.Indexed";
                             }
 
-                            operandVariations.Add(new OperandVariation
+                            var operandVariation = new OperandVariation
                             {
                                 Descriptor = register,
                                 EncodingExtract = vectorArrangement,
@@ -730,8 +781,13 @@ partial class Arm64Processor
                                 BitfieldMask = bitValue.BitSelectorMask,
                                 BitfieldSets = bitValue.BitSelectorValue,
                                 BitValue = bitValue,
-                                GetEncoding = indexEncoding,
-                            });
+                            };
+
+                            if (indexEncoding is not null)
+                            {
+                                operandVariation.WriteEncodings.Add(indexEncoding!);
+                            }
+                            operandVariations.Add(operandVariation);
                         }
 
                         return;
@@ -761,17 +817,22 @@ partial class Arm64Processor
             baseType = $"{baseType}.Indexed";
         }
 
-        operandVariations.Add(new OperandVariation
+        if (indexEncoding is not null)
+        {
+            encodings.Add(indexEncoding);
+        }
+
+        var opVar = new OperandVariation
         {
             Descriptor = register,
             OperandName = operandName,
             OperandType = baseType,
-            GetEncoding = indexEncoding,
-        });
+        };
+        opVar.WriteEncodings.AddRange(encodings);
+        operandVariations.Add(opVar);
     }
-
-
-    private static GetEncodingDelegate? GetRegisterIndexEncoding(RegisterOperandDescriptor register)
+    
+    private static WriteEncodingDelegate? GetRegisterIndexEncoding(RegisterOperandDescriptor register)
     {
         switch (register.RegisterIndexEncodingKind)
         {
@@ -779,9 +840,22 @@ partial class Arm64Processor
                 break;
             case Arm64RegisterIndexEncodingKind.Std5:
             case Arm64RegisterIndexEncodingKind.Std4:
-                return (name) => $"(uint)({name}.Index << {register.LowBitIndexEncoding})";
+            {
+                if (register.LowBitIndexEncoding == 0)
+                {
+                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({op.OperandName}.Index);");
+                }
+                else
+                {
+                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({op.OperandName}.Index << {register.LowBitIndexEncoding});");
+                }
+            }
             case Arm64RegisterIndexEncodingKind.Std5Plus1:
-                return null;
+                return (w, variable, instr, op, opIndex) =>
+                {
+                    var previousOp = instr.Operands[opIndex - 1];
+                    w.WriteLine($"{variable} = {op.OperandName}.Index == {previousOp.OperandName}.Index + 1 ? 0U : throw new {nameof(ArgumentOutOfRangeException)}(nameof({op.OperandName}), $\"Invalid Register. Index `{{{op.OperandName}.Index}}` must be + 1 from operand {previousOp.OperandName} with index `{{{previousOp.OperandName}.Index}}`\");");
+                };
             case Arm64RegisterIndexEncodingKind.BitMapExtract:
                 break;
             case Arm64RegisterIndexEncodingKind.Fixed:
@@ -793,7 +867,6 @@ partial class Arm64Processor
 
         return null;
     }
-
     
     private static string GetNormalizedOperandName(string name)
     {
@@ -849,7 +922,7 @@ partial class Arm64Processor
 
         public string? DefaultValue2 { get; set; }
 
-        public GetEncodingDelegate? GetEncoding { get; set; }
+        public List<WriteEncodingDelegate> WriteEncodings { get; } = new();
         
         public void WriterParameters(CodeWriter writer)
         {
@@ -869,5 +942,5 @@ partial class Arm64Processor
         }
     }
 
-    private delegate string GetEncodingDelegate(string parameterName);
+    private delegate void WriteEncodingDelegate(CodeWriter writer, string variable, InstructionVariation instruction, OperandVariation operand, int operandIndex);
 }

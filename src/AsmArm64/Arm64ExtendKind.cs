@@ -20,6 +20,24 @@ public enum Arm64ExtendKind : byte
     LSL,
 }
 
+public enum Arm64ExtendXKind : byte
+{
+    None,
+    UXTX,
+    SXTX,
+    LSL,
+}
+public enum Arm64ExtendWKind : byte
+{
+    None,
+    UXTB,
+    UXTH,
+    UXTW,
+    SXTB,
+    SXTH,
+    SXTW,
+}
+
 public interface IArm64Extend
 {
     Arm64ExtendKind Kind { get; }

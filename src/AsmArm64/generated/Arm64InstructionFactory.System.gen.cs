@@ -14,28 +14,31 @@ namespace AsmArm64;
 static partial class Arm64InstructionFactory
 {
     /// <summary>
-    /// Associate physical address space
+    /// Associate physical address space.
     /// </summary>
+    /// <remarks><code>APAS Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.APAS_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint APAS(Arm64RegisterX Xt)
     {
         uint raw = 0xD50E7000U; // Encoding for: APAS_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Address translate
+    /// Address translate.
     /// </summary>
+    /// <remarks><code>AT at_op, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AT_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AT(Arm64SystemRegister at_op, Arm64RegisterX Xt)
     {
         uint raw = 0xD5087800U; // Encoding for: AT_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key A
+    /// Authenticate instruction address, using key A.
     /// </summary>
+    /// <remarks><code>AUTIA1716 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIA1716_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIA1716()
     {
@@ -43,8 +46,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key A
+    /// Authenticate instruction address, using key A.
     /// </summary>
+    /// <remarks><code>AUTIASP </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIASP_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIASP()
     {
@@ -52,8 +56,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key A
+    /// Authenticate instruction address, using key A.
     /// </summary>
+    /// <remarks><code>AUTIAZ </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIAZ_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIAZ()
     {
@@ -61,8 +66,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key B
+    /// Authenticate instruction address, using key B.
     /// </summary>
+    /// <remarks><code>AUTIB1716 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIB1716_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIB1716()
     {
@@ -70,8 +76,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key B
+    /// Authenticate instruction address, using key B.
     /// </summary>
+    /// <remarks><code>AUTIBSP </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIBSP_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIBSP()
     {
@@ -79,8 +86,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Authenticate instruction address, using key B
+    /// Authenticate instruction address, using key B.
     /// </summary>
+    /// <remarks><code>AUTIBZ </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AUTIBZ_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AUTIBZ()
     {
@@ -88,8 +96,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Convert floating-point condition flags from Arm to external format
+    /// Convert floating-point condition flags from Arm to external format.
     /// </summary>
+    /// <remarks><code>AXFLAG </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.AXFLAG_m_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint AXFLAG()
     {
@@ -97,8 +106,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Branch record buffer
+    /// Branch record buffer.
     /// </summary>
+    /// <remarks><code>BRB brb_op</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BRB_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BRB(Arm64SystemRegister brb_op)
     {
@@ -106,8 +116,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Breakpoint instruction
+    /// Breakpoint instruction.
     /// </summary>
+    /// <remarks><code>BRK #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BRK_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BRK(int imm)
     {
@@ -115,8 +126,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Branch target identification
+    /// Branch target identification.
     /// </summary>
+    /// <remarks><code>BTI {targets}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BTI_hb_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BTI(Arm64BranchTargetIdentificationKind targets = default)
     {
@@ -124,8 +136,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Invert carry flag
+    /// Invert carry flag.
     /// </summary>
+    /// <remarks><code>CFINV </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CFINV_m_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CFINV()
     {
@@ -133,18 +146,20 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Control flow prediction restriction by context
+    /// Control flow prediction restriction by context.
     /// </summary>
+    /// <remarks><code>CFP RCTX, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CFP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CFP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B7380U; // Encoding for: CFP_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Check feature status
+    /// Check feature status.
     /// </summary>
+    /// <remarks><code>CHKFEAT X16</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CHKFEAT_hf_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CHKFEAT(Arm64RegisterX X16)
     {
@@ -152,8 +167,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Clear branch history
+    /// Clear branch history.
     /// </summary>
+    /// <remarks><code>CLRBHB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CLRBHB_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CLRBHB()
     {
@@ -161,8 +177,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Clear exclusive
+    /// Clear exclusive.
     /// </summary>
+    /// <remarks><code>CLREX {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CLREX_bn_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CLREX(int imm = 0)
     {
@@ -170,28 +187,31 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Clear other speculative prediction restriction by context
+    /// Clear other speculative prediction restriction by context.
     /// </summary>
+    /// <remarks><code>COSP RCTX, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.COSP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint COSP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73C0U; // Encoding for: COSP_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Cache prefetch prediction restriction by context
+    /// Cache prefetch prediction restriction by context.
     /// </summary>
+    /// <remarks><code>CPP RCTX, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CPP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CPP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73E0U; // Encoding for: CPP_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Consumption of speculative data barrier
+    /// Consumption of speculative data barrier.
     /// </summary>
+    /// <remarks><code>CSDB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CSDB_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint CSDB()
     {
@@ -199,18 +219,20 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Data cache operation
+    /// Data cache operation.
     /// </summary>
+    /// <remarks><code>DC dc_op, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DC_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint DC(Arm64SystemRegister dc_op, Arm64RegisterX Xt)
     {
         uint raw = 0xD5087000U; // Encoding for: DC_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Debug change PE state to EL1
+    /// Debug change PE state to EL1.
     /// </summary>
+    /// <remarks><code>DCPS1 {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS1_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint DCPS1(int imm = 0)
     {
@@ -218,8 +240,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Debug change PE state to EL2
+    /// Debug change PE state to EL2.
     /// </summary>
+    /// <remarks><code>DCPS2 {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS2_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint DCPS2(int imm = 0)
     {
@@ -227,8 +250,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Debug change PE state to EL3
+    /// Debug change PE state to EL3.
     /// </summary>
+    /// <remarks><code>DCPS3 {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS3_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint DCPS3(int imm = 0)
     {
@@ -236,8 +260,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Data gathering hint
+    /// Data gathering hint.
     /// </summary>
+    /// <remarks><code>DGH </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DGH_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint DGH()
     {
@@ -245,8 +270,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Data memory barrier
+    /// Data memory barrier.
     /// </summary>
+    /// <remarks><code>DMB (option|#imm)</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DMB_bo_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint DMB(Arm64BarrierOperationLimitKind option)
     {
@@ -254,8 +280,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Debug restore PE state
+    /// Debug restore PE state.
     /// </summary>
+    /// <remarks><code>DRPS </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DRPS_64e_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint DRPS()
     {
@@ -263,8 +290,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Data synchronization barrier
+    /// Data synchronization barrier.
     /// </summary>
+    /// <remarks><code>DSB (option|#imm)</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DSB_bo_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint DSB(Arm64BarrierOperationLimitKind option)
     {
@@ -272,8 +300,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Data synchronization barrier
+    /// Data synchronization barrier.
     /// </summary>
+    /// <remarks><code>DSB optionnXS</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DSB_bon_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint DSB(Arm64DataSynchronizationKind option)
     {
@@ -281,18 +310,20 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Data value prediction restriction by context
+    /// Data value prediction restriction by context.
     /// </summary>
+    /// <remarks><code>DVP RCTX, Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DVP_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint DVP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73A0U; // Encoding for: DVP_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Exception return
+    /// Exception return.
     /// </summary>
+    /// <remarks><code>ERET </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ERET_64e_branch_reg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ERET()
     {
@@ -300,8 +331,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Error synchronization barrier
+    /// Error synchronization barrier.
     /// </summary>
+    /// <remarks><code>ESB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ESB_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ESB()
     {
@@ -309,8 +341,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Guarded Control Stack barrier
+    /// Guarded Control Stack barrier.
     /// </summary>
+    /// <remarks><code>GCSB DSYNC</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSB_hd_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint GCSB(Arm64DataSyncKind DSYNC)
     {
@@ -318,8 +351,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Guarded Control Stack pop and compare exception return record
+    /// Guarded Control Stack pop and compare exception return record.
     /// </summary>
+    /// <remarks><code>GCSPOPCX </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSPOPCX_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint GCSPOPCX()
     {
@@ -327,18 +361,20 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Guarded Control Stack pop
+    /// Guarded Control Stack pop.
     /// </summary>
+    /// <remarks><code>GCSPOPM {Xt}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSPOPM_sysl_rc_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint GCSPOPM(Arm64RegisterX Xt = default)
     {
         uint raw = 0xD52B7720U; // Encoding for: GCSPOPM_sysl_rc_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Guarded Control Stack pop exception return record
+    /// Guarded Control Stack pop exception return record.
     /// </summary>
+    /// <remarks><code>GCSPOPX </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSPOPX_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint GCSPOPX()
     {
@@ -346,18 +382,20 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Guarded Control Stack push
+    /// Guarded Control Stack push.
     /// </summary>
+    /// <remarks><code>GCSPUSHM Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint GCSPUSHM(Arm64RegisterX Xt)
     {
         uint raw = 0xD50B7700U; // Encoding for: GCSPUSHM_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Guarded Control Stack push exception return record
+    /// Guarded Control Stack push exception return record.
     /// </summary>
+    /// <remarks><code>GCSPUSHX </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSPUSHX_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint GCSPUSHX()
     {
@@ -365,28 +403,31 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Guarded Control Stack switch stack 1
+    /// Guarded Control Stack switch stack 1.
     /// </summary>
+    /// <remarks><code>GCSSS1 Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSSS1_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint GCSSS1(Arm64RegisterX Xt)
     {
         uint raw = 0xD50B7740U; // Encoding for: GCSSS1_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Guarded Control Stack switch stack 2
+    /// Guarded Control Stack switch stack 2.
     /// </summary>
+    /// <remarks><code>GCSSS2 Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint GCSSS2(Arm64RegisterX Xt)
     {
         uint raw = 0xD52B7760U; // Encoding for: GCSSS2_sysl_rc_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Hint instruction
+    /// Hint instruction.
     /// </summary>
+    /// <remarks><code>HINT #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.HINT_hm_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint HINT(int imm)
     {
@@ -394,8 +435,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Halt instruction
+    /// Halt instruction.
     /// </summary>
+    /// <remarks><code>HLT #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.HLT_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint HLT(int imm)
     {
@@ -403,8 +445,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Hypervisor call
+    /// Hypervisor call.
     /// </summary>
+    /// <remarks><code>HVC #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.HVC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint HVC(int imm)
     {
@@ -412,18 +455,20 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Instruction cache operation
+    /// Instruction cache operation.
     /// </summary>
+    /// <remarks><code>IC ic_op {, Xt}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.IC_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint IC(Arm64SystemRegister ic_op, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5087000U; // Encoding for: IC_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Instruction synchronization barrier
+    /// Instruction synchronization barrier.
     /// </summary>
+    /// <remarks><code>ISB {option, #imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ISB_bi_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ISB(int option = 0)
     {
@@ -431,28 +476,32 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Move System register to two adjacent general-purpose registers
+    /// Move System register to two adjacent general-purpose registers.
     /// </summary>
+    /// <remarks><code>MRRS Xt, Xt+1, (systemreg|Sop0_op1_Cn_Cm_op2)</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MRRS_rs_systemmovepr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MRRS(Arm64RegisterX Xt, Arm64RegisterX Xt_1, Arm64SystemRegister systemreg)
     {
         uint raw = 0xD5700000U; // Encoding for: MRRS_rs_systemmovepr
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
+        raw = Xt_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(Xt_1), $"Invalid Register. Index `{Xt_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// Move System register to general-purpose register
+    /// Move System register to general-purpose register.
     /// </summary>
+    /// <remarks><code>MRS Xt, (systemreg|Sop0_op1_Cn_Cm_op2)</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MRS_rs_systemmove), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MRS(Arm64RegisterX Xt, Arm64SystemRegister systemreg)
     {
         uint raw = 0xD5300000U; // Encoding for: MRS_rs_systemmove
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Move immediate value to special register
+    /// Move immediate value to special register.
     /// </summary>
+    /// <remarks><code>MSR pstatefield, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MSR_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MSR(Arm64ProcessStateField pstatefield, int imm)
     {
@@ -460,28 +509,32 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Move general-purpose register to System register
+    /// Move general-purpose register to System register.
     /// </summary>
+    /// <remarks><code>MSR (systemreg|Sop0_op1_Cn_Cm_op2), Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MSR_sr_systemmove), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MSR(Arm64SystemRegister systemreg, Arm64RegisterX Xt)
     {
         uint raw = 0xD5100000U; // Encoding for: MSR_sr_systemmove
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Move two adjacent general-purpose registers to System register
+    /// Move two adjacent general-purpose registers to System register.
     /// </summary>
+    /// <remarks><code>MSRR (systemreg|Sop0_op1_Cn_Cm_op2), Xt, Xt+1</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MSRR_sr_systemmovepr), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint MSRR(Arm64SystemRegister systemreg, Arm64RegisterX Xt, Arm64RegisterX Xt_1)
     {
         uint raw = 0xD5500000U; // Encoding for: MSRR_sr_systemmovepr
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
+        raw = Xt_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(Xt_1), $"Invalid Register. Index `{Xt_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>
-    /// No operation
+    /// No operation.
     /// </summary>
+    /// <remarks><code>NOP </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.NOP_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint NOP()
     {
@@ -489,8 +542,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key A
+    /// Pointer Authentication Code for instruction address, using key A.
     /// </summary>
+    /// <remarks><code>PACIA1716 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIA1716_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIA1716()
     {
@@ -498,8 +552,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key A
+    /// Pointer Authentication Code for instruction address, using key A.
     /// </summary>
+    /// <remarks><code>PACIASP </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIASP_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIASP()
     {
@@ -507,8 +562,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key A
+    /// Pointer Authentication Code for instruction address, using key A.
     /// </summary>
+    /// <remarks><code>PACIAZ </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIAZ_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIAZ()
     {
@@ -516,8 +572,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key B
+    /// Pointer Authentication Code for instruction address, using key B.
     /// </summary>
+    /// <remarks><code>PACIB1716 </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIB1716_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIB1716()
     {
@@ -525,8 +582,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key B
+    /// Pointer Authentication Code for instruction address, using key B.
     /// </summary>
+    /// <remarks><code>PACIBSP </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIBSP_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIBSP()
     {
@@ -534,8 +592,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer Authentication Code for instruction address, using key B
+    /// Pointer Authentication Code for instruction address, using key B.
     /// </summary>
+    /// <remarks><code>PACIBZ </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACIBZ_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACIBZ()
     {
@@ -543,8 +602,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Pointer authentication modifier
+    /// Pointer authentication modifier.
     /// </summary>
+    /// <remarks><code>PACM </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PACM_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PACM()
     {
@@ -552,8 +612,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Profiling synchronization barrier
+    /// Profiling synchronization barrier.
     /// </summary>
+    /// <remarks><code>PSB CSYNC</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PSB_hc_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PSB(Arm64CodeSyncKind CSYNC)
     {
@@ -561,8 +622,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Physical speculative store bypass barrier
+    /// Physical speculative store bypass barrier.
     /// </summary>
+    /// <remarks><code>PSSBB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PSSBB_dsb_bo_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PSSBB()
     {
@@ -570,8 +632,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Speculation barrier
+    /// Speculation barrier.
     /// </summary>
+    /// <remarks><code>SB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SB_only_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SB()
     {
@@ -579,8 +642,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Send event
+    /// Send event.
     /// </summary>
+    /// <remarks><code>SEV </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SEV_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SEV()
     {
@@ -588,8 +652,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Send event local
+    /// Send event local.
     /// </summary>
+    /// <remarks><code>SEVL </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SEVL_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SEVL()
     {
@@ -597,8 +662,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Secure monitor call
+    /// Secure monitor call.
     /// </summary>
+    /// <remarks><code>SMC #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMC(int imm)
     {
@@ -606,8 +672,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Speculative store bypass barrier
+    /// Speculative store bypass barrier.
     /// </summary>
+    /// <remarks><code>SSBB </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSBB_dsb_bo_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SSBB()
     {
@@ -615,8 +682,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Store shared hint
+    /// Store shared hint.
     /// </summary>
+    /// <remarks><code>STSHH policy</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STSHH_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STSHH(Arm64StoredSharedHintPolicyKind policy)
     {
@@ -624,8 +692,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Supervisor call
+    /// Supervisor call.
     /// </summary>
+    /// <remarks><code>SVC #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SVC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SVC(int imm)
     {
@@ -633,44 +702,48 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// System instruction
+    /// System instruction.
     /// </summary>
+    /// <remarks><code>SYS #op1, Cn, Cm, #op2 {, Xt}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SYS_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SYS(int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5080000U; // Encoding for: SYS_cr_systeminstrs
         raw |= (uint)(Cn.Index << 12);
         raw |= (uint)(Cm.Index << 8);
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// System instruction with result
+    /// System instruction with result.
     /// </summary>
+    /// <remarks><code>SYSL Xt, #op1, Cn, Cm, #op2</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SYSL_rc_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SYSL(Arm64RegisterX Xt, int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2)
     {
         uint raw = 0xD5280000U; // Encoding for: SYSL_rc_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         raw |= (uint)(Cn.Index << 12);
         raw |= (uint)(Cm.Index << 8);
         return raw;
     }
     /// <summary>
-    /// 128-bit system instruction
+    /// 128-bit system instruction.
     /// </summary>
+    /// <remarks><code>SYSP #op1, Cn, Cm, #op2 {, Xt1, Xt2}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SYSP_cr_syspairinstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SYSP(int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2, Arm64RegisterX Xt1 = default)
     {
         uint raw = 0xD5480000U; // Encoding for: SYSP_cr_syspairinstrs
         raw |= (uint)(Cn.Index << 12);
         raw |= (uint)(Cm.Index << 8);
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         return raw;
     }
     /// <summary>
-    /// Cancel current transaction
+    /// Cancel current transaction.
     /// </summary>
+    /// <remarks><code>TCANCEL #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TCANCEL_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TCANCEL(int imm)
     {
@@ -678,8 +751,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Commit current transaction
+    /// Commit current transaction.
     /// </summary>
+    /// <remarks><code>TCOMMIT </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TCOMMIT_only_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TCOMMIT()
     {
@@ -687,38 +761,42 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// TLB invalidate operation
+    /// TLB invalidate operation.
     /// </summary>
+    /// <remarks><code>TLBI tlbi_op {, Xt}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TLBI_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TLBI(Arm64SystemRegister tlbi_op, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5088000U; // Encoding for: TLBI_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// TLB invalidate pair operation
+    /// TLB invalidate pair operation.
     /// </summary>
+    /// <remarks><code>TLBIP tlbip_op {, Xt1, Xt2}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TLBIP_sysp_cr_syspairinstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TLBIP(Arm64SystemRegister tlbip_op, Arm64RegisterX Xt1 = default)
     {
         uint raw = 0xD5488000U; // Encoding for: TLBIP_sysp_cr_syspairinstrs
-        raw |= (uint)(Xt1.Index << 0);
+        raw |= (uint)(Xt1.Index);
         return raw;
     }
     /// <summary>
-    /// Trace instrumentation
+    /// Trace instrumentation.
     /// </summary>
+    /// <remarks><code>TRCIT Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TRCIT_sys_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TRCIT(Arm64RegisterX Xt)
     {
         uint raw = 0xD50B72E0U; // Encoding for: TRCIT_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Trace synchronization barrier
+    /// Trace synchronization barrier.
     /// </summary>
+    /// <remarks><code>TSB CSYNC</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TSB_hc_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TSB(Arm64CodeSyncKind CSYNC)
     {
@@ -726,28 +804,31 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Start transaction
+    /// Start transaction.
     /// </summary>
+    /// <remarks><code>TSTART Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TSTART_br_systemresult), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TSTART(Arm64RegisterX Xt)
     {
         uint raw = 0xD5233060U; // Encoding for: TSTART_br_systemresult
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Test transaction state
+    /// Test transaction state.
     /// </summary>
+    /// <remarks><code>TTEST Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TTEST_br_systemresult), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint TTEST(Arm64RegisterX Xt)
     {
         uint raw = 0xD5233160U; // Encoding for: TTEST_br_systemresult
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Wait for event
+    /// Wait for event.
     /// </summary>
+    /// <remarks><code>WFE </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.WFE_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint WFE()
     {
@@ -755,18 +836,20 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Wait for event with timeout
+    /// Wait for event with timeout.
     /// </summary>
+    /// <remarks><code>WFET Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.WFET_only_systeminstrswithreg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint WFET(Arm64RegisterX Xt)
     {
         uint raw = 0xD5031000U; // Encoding for: WFET_only_systeminstrswithreg
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Wait for interrupt
+    /// Wait for interrupt.
     /// </summary>
+    /// <remarks><code>WFI </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.WFI_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint WFI()
     {
@@ -774,18 +857,20 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Wait for interrupt with timeout
+    /// Wait for interrupt with timeout.
     /// </summary>
+    /// <remarks><code>WFIT Xt</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.WFIT_only_systeminstrswithreg), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint WFIT(Arm64RegisterX Xt)
     {
         uint raw = 0xD5031020U; // Encoding for: WFIT_only_systeminstrswithreg
-        raw |= (uint)(Xt.Index << 0);
+        raw |= (uint)(Xt.Index);
         return raw;
     }
     /// <summary>
-    /// Convert floating-point condition flags from external format to Arm format
+    /// Convert floating-point condition flags from external format to Arm format.
     /// </summary>
+    /// <remarks><code>XAFLAG </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.XAFLAG_m_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint XAFLAG()
     {
@@ -793,8 +878,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Strip Pointer Authentication Code
+    /// Strip Pointer Authentication Code.
     /// </summary>
+    /// <remarks><code>XPACLRI </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.XPACLRI_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint XPACLRI()
     {
@@ -802,8 +888,9 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Yield
+    /// Yield.
     /// </summary>
+    /// <remarks><code>YIELD </code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.YIELD_hi_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint YIELD()
     {
