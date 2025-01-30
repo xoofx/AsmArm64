@@ -629,7 +629,7 @@ partial class Arm64Processor
             };
             operandVariation.WriteEncodings.AddRange(registerVariation.WriteEncodings);
 
-            GenerateIndexer(descriptor.IndexerExtract, operandVariation);
+            GenerateIndexer(instruction, descriptor.IndexerExtract, operandVariation);
 
             operandVariations.Add(operandVariation);
         }
@@ -758,7 +758,7 @@ partial class Arm64Processor
                     {
                         operandVariation.WriteEncodings.Add(indexEncoding);
                     }
-                    GenerateIndexer(register.IndexerExtract, operandVariation);
+                    GenerateIndexer(instruction, register.IndexerExtract, operandVariation);
                     operandVariations.Add(operandVariation);
                 }
                 return;
@@ -796,7 +796,7 @@ partial class Arm64Processor
                             {
                                 operandVariation.WriteEncodings.Add(indexEncoding!);
                             }
-                            GenerateIndexer(register.IndexerExtract, operandVariation);
+                            GenerateIndexer(instruction, register.IndexerExtract, operandVariation);
                             operandVariations.Add(operandVariation);
                         }
 
@@ -839,53 +839,76 @@ partial class Arm64Processor
             OperandType = baseType,
         };
         opVar.WriteEncodings.AddRange(encodings);
-        GenerateIndexer(register.IndexerExtract, opVar);
+        GenerateIndexer(instruction, register.IndexerExtract, opVar);
         operandVariations.Add(opVar);
     }
 
-    private static void GenerateIndexer(EncodingSymbolExtract? indexerExtract, OperandVariation operandVariation)
+    private static void GenerateIndexer(Instruction instruction, EncodingSymbolExtract? indexerExtract, OperandVariation operandVariation)
     {
         if (indexerExtract is null) return;
 
         var selector = indexerExtract.Selector;
+
+        int bitSize = 0;
+        List<BitRange> bitRanges = new();
+
+        // Support for indexers with an associated vector arrangement
         if (selector is not null)
         {
             // We expect that we generate a selector from a context that has already selected a subset of it (4H => you can only have few bits encoded)
             Debug.Assert(operandVariation.BitfieldMask != 0);
 
+            EncodingBitValue? bitValueFound = null;
+            foreach (var bitValue in selector.BitValues)
+            {
+                var sharedMask = bitValue.BitSelectorMask & operandVariation.BitfieldMask;
+                if (sharedMask != 0 && (bitValue.BitSelectorValue & sharedMask) == (operandVariation.BitfieldSets & sharedMask))
+                {
+                    Debug.Assert(bitValueFound is null); // We don't expect to have multiple bit values that match, so we don't break the loop to make sure
+                    bitValueFound = bitValue;
+                }
+            }
+            
+            Debug.Assert(bitValueFound is not null);
 
-
-
+            bitSize = bitValueFound.LocalBitSelectorSize;
+            bitRanges.AddRange(bitValueFound.BitItems.Select(x => x.Range));
+            //Console.WriteLine($"{instruction.Id} - {instruction.FullSyntax} - {selector}");
         }
         else
         {
-            operandVariation.WriteEncodings.Add(
-                (w, variable, variation, operand, index) =>
-                {
-                    if (indexerExtract.BitRanges.Count == 1)
-                    {
-                        var bitRange = indexerExtract.BitRanges[0];
-                        w.WriteLine($"{variable} |= ((uint)({operandVariation.OperandName}.ElementIndex & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit});");
-                    }
-                    else
-                    {
-                        w.OpenBraceBlock();
-                        w.WriteLine($"// Write the element indexer for {operandVariation.OperandName}");
-                        w.WriteLine($"var elementIndex = {operandVariation.OperandName}.ElementIndex & 0x{((1 << indexerExtract.BitSize) - 1):X};");
-                        for (var i = indexerExtract.BitRanges.Count - 1; i >= 0; i--)
-                        {
-                            var bitRange = indexerExtract.BitRanges[i];
-                            w.WriteLine($"{variable} |= ((uint)(elementIndex & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit});");
-                            if (i > 0)
-                            {
-                                w.WriteLine($"elementIndex >>= {bitRange.Width};");
-                            }
-                        }
-                        w.CloseBraceBlock();
-                    }
-                }
-            );
+            // Otherwise it is a simple indexer
+            bitSize = indexerExtract.BitSize;
+            bitRanges.AddRange(indexerExtract.BitRanges);
         }
+
+        // Write the encoding
+        operandVariation.WriteEncodings.Add(
+            (w, variable, variation, operand, index) =>
+            {
+                if (bitRanges.Count == 1)
+                {
+                    var bitRange = bitRanges[0];
+                    w.WriteLine($"{variable} |= ((uint)({operandVariation.OperandName}.ElementIndex & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit});");
+                }
+                else
+                {
+                    w.OpenBraceBlock();
+                    w.WriteLine($"// Write the element indexer for {operandVariation.OperandName}");
+                    w.WriteLine($"var elementIndex = {operandVariation.OperandName}.ElementIndex & 0x{((1 << bitSize) - 1):X};");
+                    for (var i = bitRanges.Count - 1; i >= 0; i--)
+                    {
+                        var bitRange = bitRanges[i];
+                        w.WriteLine($"{variable} |= ((uint)(elementIndex & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit});");
+                        if (i > 0)
+                        {
+                            w.WriteLine($"elementIndex >>= {bitRange.Width};");
+                        }
+                    }
+                    w.CloseBraceBlock();
+                }
+            }
+        );
     }
     
     private static WriteEncodingDelegate? GetRegisterIndexEncoding(RegisterOperandDescriptor register)
