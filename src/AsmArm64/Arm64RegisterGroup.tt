@@ -1,0 +1,119 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+// Copyright (c) Alexandre Mutel. All rights reserved.
+// Licensed under the BSD-Clause 2 license.
+// See license.txt file in the project root for full license information.
+
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+
+namespace AsmArm64;
+<# for(int i = 1; i <= 4; i++) { #>
+
+/// <summary>
+/// Represents a group of <#= i #> ARM64 registers.
+/// </summary>
+public readonly record struct Arm64RegisterGroup<#= i #><TReg> : IArm64RegisterGroup where TReg : struct, IArm64RegisterV
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64RegisterGroup<#= i #>{TReg}"/> struct.
+    /// </summary>
+    public Arm64RegisterGroup<#= i #>(TReg baseRegister)
+    {
+        BaseRegister = baseRegister;
+    }
+
+    /// <summary>
+    /// Gets the base register of this group
+    /// </summary>
+    public TReg BaseRegister { get; }
+
+    /// <inheritdoc />
+    public int Count => <#= i #>;
+
+    /// <inheritdoc />
+    public Arm64RegisterGroupAny ToAny() => new(BaseRegister.ToAny(), <#= i #>);
+
+    /// <inheritdoc />
+    public bool HasGroupIndex => false;
+
+    /// <inheritdoc />
+    public int GroupIndex => 0;
+
+    public int Index => BaseRegister.Index;
+
+    /// <summary>
+    /// Gets the register at the specified index in the range [0, <#= i #>[.
+    /// </summary>
+    /// <param name="index">The index in the group in the range [0, <#= i #>[..</param>
+    /// <returns>The group indexed.</returns>
+    public Indexed this[int index]
+    {
+        get
+        {
+            ArgumentOutOfRangeException.ThrowIfGreaterThan((uint)index, <#= i #>U, nameof(index));
+            return new(BaseRegister, (uint)index);
+        }
+    }
+
+    /// <inheritdoc />
+    Arm64RegisterAny IArm64RegisterGroup.BaseRegister => BaseRegister.ToAny();
+
+    /// <inheritdoc />
+    public override string ToString()
+        => ToString(null, null);
+
+    /// <inheritdoc />
+    public string ToString(string? format, IFormatProvider? formatProvider)
+        => ToAny().ToString(format, formatProvider);
+
+    /// <inheritdoc />
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        => ToAny().TryFormat(destination, out charsWritten, format, provider);
+
+    /// <summary>
+    /// An indexed register group with the specified base register.
+    /// </summary>
+    public readonly record struct Indexed : IArm64RegisterGroup
+    {
+        private readonly ulong _baseRegisterCountAndIndexer; // Store it in one ulong to avoid stack spilling when extracting base register / indices
+
+        internal Indexed(TReg baseRegister, uint index)
+        {
+            Debug.Assert(Unsafe.SizeOf<TReg>() == sizeof(uint));
+            this._baseRegisterCountAndIndexer = ((ulong)index << 40) | ((ulong)(0x8000_0000U | <#= i #>) << 32) | (ulong)Unsafe.BitCast<TReg, uint>(baseRegister);
+        }
+
+        /// <inheritdoc />
+        public Arm64RegisterAny BaseRegister => Unsafe.BitCast<uint, Arm64RegisterAny>((uint)_baseRegisterCountAndIndexer);
+
+        /// <inheritdoc />
+        public int Count => (byte)(<#= i #>);
+
+        /// <inheritdoc />
+        public Arm64RegisterGroupAny ToAny() => Unsafe.BitCast<Indexed, Arm64RegisterGroupAny>(this);
+
+        /// <inheritdoc />
+        public bool HasGroupIndex => (long)(_baseRegisterCountAndIndexer) < 0;
+
+        /// <inheritdoc />
+        public int GroupIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
+
+        /// <inheritdoc />
+        public override string ToString()
+            => ToString(null, null);
+
+        /// <inheritdoc />
+        public string ToString(string? format, IFormatProvider? formatProvider)
+            => ToAny().ToString(format, formatProvider);
+
+        /// <inheritdoc />
+        public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+            => ToAny().TryFormat(destination, out charsWritten, format, provider);
+    }
+}
+<# } #>

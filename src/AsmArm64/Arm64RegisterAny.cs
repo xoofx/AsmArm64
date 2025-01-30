@@ -38,6 +38,9 @@ public readonly record struct Arm64RegisterAny : IArm64RegisterVPacked, IArm64Re
     public int Index => (byte) _value;
 
     /// <inheritdoc />
+    public Arm64RegisterAny ToAny() => this;
+
+    /// <inheritdoc />
     public int ElementCount => (byte)ToElementCount((_value >> 24) & 0xF);
 
     /// <inheritdoc />

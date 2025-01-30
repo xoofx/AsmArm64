@@ -18,4 +18,10 @@ public interface IArm64Register : ISpanFormattable
     /// Gets the index of the register.
     /// </summary>
     int Index { get; }
+
+    /// <summary>
+    /// Converts this register to an any register.
+    /// </summary>
+    /// <returns>An any register.</returns>
+    public Arm64RegisterAny ToAny();
 }

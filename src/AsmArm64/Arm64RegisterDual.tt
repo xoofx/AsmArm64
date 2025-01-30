@@ -1,0 +1,56 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+// Copyright (c) Alexandre Mutel. All rights reserved.
+// Licensed under the BSD-Clause 2 license.
+// See license.txt file in the project root for full license information.
+
+using System.Runtime.CompilerServices;
+
+namespace AsmArm64;
+<# foreach(var (n1, n2) in new (string, string)[] { ("X", "SP"), ("W", "WSP"), ("X", "W") }) { #>
+
+/// <summary>
+/// Represents a 64-bit register or the stack pointer.
+/// </summary>
+public readonly record struct Arm64Register<#= n1 #>Or<#= n2 #> : IArm64Register
+{
+    private readonly int _value;
+    
+    /// <inheritdoc />
+    public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
+
+    /// <inheritdoc />
+    public int Index => (byte)_value;
+
+    /// <inheritdoc />
+    public Arm64RegisterAny ToAny() => Unsafe.BitCast<Arm64Register<#= n1 #>Or<#= n2 #>, Arm64RegisterAny>(this);
+
+    /// <inheritdoc />
+    public string ToString(string? format, IFormatProvider? formatProvider) => ToAny().ToString(format, formatProvider);
+
+    /// <inheritdoc />
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
+        => ToAny().TryFormat(destination, out charsWritten, format, provider);
+
+    /// <inheritdoc />
+    public override string ToString() => ToString(null, null);
+
+    /// <summary>
+    /// Implicit conversion from <see cref="Arm64Register<#= n1 #>"/> to <see cref="Arm64Register<#= n1 #>Or<#= n2 #>"/>.
+    /// </summary>
+    /// <param name="register">The register to convert.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator Arm64Register<#= n1 #>Or<#= n2 #>(Arm64Register<#= n1 #> register) => Unsafe.BitCast<Arm64Register<#= n1 #>, Arm64Register<#= n1 #>Or<#= n2 #>>(register);
+
+    /// <summary>
+    /// Implicit conversion from <see cref="Arm64Register<#= n2 #>"/> to <see cref="Arm64Register<#= n1 #>Or<#= n2 #>"/>.
+    /// </summary>
+    /// <param name="register">The register to convert.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator Arm64Register<#= n1 #>Or<#= n2 #>(Arm64Register<#= n2 #> register) => Unsafe.BitCast<Arm64Register<#= n2 #>, Arm64Register<#= n1 #>Or<#= n2 #>>(register);
+}
+<# } #>
