@@ -2109,7 +2109,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_D.Index);
         {
             // Write the element indexer for Vd_D
-            var elementIndex = Vd_D.ElementIndex & 0x0;
+            var _i_ = Vd_D.ElementIndex & 0x0;
         }
         raw |= (uint)(Xn.Index << 5);
         return raw;
@@ -2138,7 +2138,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_D.Index << 5);
         {
             // Write the element indexer for Vn_D
-            var elementIndex = Vn_D.ElementIndex & 0x0;
+            var _i_ = Vn_D.ElementIndex & 0x0;
         }
         return raw;
     }

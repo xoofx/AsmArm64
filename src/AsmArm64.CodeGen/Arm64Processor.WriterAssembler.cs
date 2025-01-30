@@ -629,7 +629,7 @@ partial class Arm64Processor
             };
             operandVariation.WriteEncodings.AddRange(registerVariation.WriteEncodings);
 
-            GenerateIndexer(instruction, descriptor.IndexerExtract, operandVariation);
+            GenerateEncodingForExtract(instruction, descriptor.IndexerExtract, operandVariation, true);
 
             operandVariations.Add(operandVariation);
         }
@@ -645,7 +645,6 @@ partial class Arm64Processor
 
         List<WriteEncodingDelegate> encodings = new();
 
-        var indexEncoding = GetRegisterIndexEncoding(register);
 
         switch (kind)
         {
@@ -727,6 +726,8 @@ partial class Arm64Processor
                 baseType = "Arm64RegisterC";
                 break;
             case Arm64RegisterEncodingKind.DynamicVScalar:
+            {
+
                 baseType = "Arm64Register";
                 var dynamicRegisterExtract = register.DynamicRegisterXOrWSelector;
                 Debug.Assert(dynamicRegisterExtract is not null);
@@ -754,14 +755,17 @@ partial class Arm64Processor
                         BitfieldSets = bitValue.BitSelectorValue,
                         BitValue = bitValue,
                     };
+
+                    var indexEncoding = GetRegisterIndexEncoding(instruction, register, operandVariation);
                     if (indexEncoding != null)
                     {
                         operandVariation.WriteEncodings.Add(indexEncoding);
                     }
-                    GenerateIndexer(instruction, register.IndexerExtract, operandVariation);
+                    GenerateEncodingForExtract(instruction, register.IndexerExtract, operandVariation, true);
                     operandVariations.Add(operandVariation);
                 }
                 return;
+            }
             case Arm64RegisterEncodingKind.V:
                 baseType = "Arm64RegisterV";
                 var vectorArrangement = register.VectorArrangement;
@@ -792,11 +796,12 @@ partial class Arm64Processor
                                 BitValue = bitValue,
                             };
 
+                            var indexEncoding = GetRegisterIndexEncoding(instruction, register, operandVariation);
                             if (indexEncoding is not null)
                             {
                                 operandVariation.WriteEncodings.Add(indexEncoding!);
                             }
-                            GenerateIndexer(instruction, register.IndexerExtract, operandVariation);
+                            GenerateEncodingForExtract(instruction, register.IndexerExtract, operandVariation, true);
                             operandVariations.Add(operandVariation);
                         }
 
@@ -827,10 +832,6 @@ partial class Arm64Processor
             baseType = $"{baseType}.Indexed";
         }
 
-        if (indexEncoding is not null)
-        {
-            encodings.Add(indexEncoding);
-        }
 
         var opVar = new OperandVariation
         {
@@ -838,16 +839,22 @@ partial class Arm64Processor
             OperandName = operandName,
             OperandType = baseType,
         };
+
+        var directIndexEncoding = GetRegisterIndexEncoding(instruction, register, opVar);
+        if (directIndexEncoding is not null)
+        {
+            encodings.Add(directIndexEncoding);
+        }
         opVar.WriteEncodings.AddRange(encodings);
-        GenerateIndexer(instruction, register.IndexerExtract, opVar);
+        GenerateEncodingForExtract(instruction, register.IndexerExtract, opVar, true);
         operandVariations.Add(opVar);
     }
 
-    private static void GenerateIndexer(Instruction instruction, EncodingSymbolExtract? indexerExtract, OperandVariation operandVariation)
+    private static void GenerateEncodingForExtract(Instruction instruction, EncodingSymbolExtract? extract, OperandVariation operandVariation, bool isIndexer)
     {
-        if (indexerExtract is null) return;
+        if (extract is null) return;
 
-        var selector = indexerExtract.Selector;
+        var selector = extract.Selector;
 
         int bitSize = 0;
         List<BitRange> bitRanges = new();
@@ -855,32 +862,42 @@ partial class Arm64Processor
         // Support for indexers with an associated vector arrangement
         if (selector is not null)
         {
-            // We expect that we generate a selector from a context that has already selected a subset of it (4H => you can only have few bits encoded)
-            Debug.Assert(operandVariation.BitfieldMask != 0);
-
-            EncodingBitValue? bitValueFound = null;
-            foreach (var bitValue in selector.BitValues)
+            if (selector.BitValues.Count == 0)
             {
-                var sharedMask = bitValue.BitSelectorMask & operandVariation.BitfieldMask;
-                if (sharedMask != 0 && (bitValue.BitSelectorValue & sharedMask) == (operandVariation.BitfieldSets & sharedMask))
-                {
-                    Debug.Assert(bitValueFound is null); // We don't expect to have multiple bit values that match, so we don't break the loop to make sure
-                    bitValueFound = bitValue;
-                }
-            }
-            
-            Debug.Assert(bitValueFound is not null);
+                Debug.Assert(operandVariation.BitfieldMask == 0);
 
-            bitSize = bitValueFound.LocalBitSelectorSize;
-            bitRanges.AddRange(bitValueFound.BitItems.Select(x => x.Range));
-            //Console.WriteLine($"{instruction.Id} - {instruction.FullSyntax} - {selector}");
+                bitSize = selector.BitSize;
+                bitRanges.AddRange(selector.BitRanges);
+            }
+            else
+            {
+                // We expect that we generate a selector from a context that has already selected a subset of it (4H => you can only have few bits encoded)
+                EncodingBitValue? bitValueFound = null;
+                foreach (var bitValue in selector.BitValues)
+                {
+                    var sharedMask = bitValue.BitSelectorMask & operandVariation.BitfieldMask;
+                    if (sharedMask != 0 && (bitValue.BitSelectorValue & sharedMask) == (operandVariation.BitfieldSets & sharedMask))
+                    {
+                        Debug.Assert(bitValueFound is null); // We don't expect to have multiple bit values that match, so we don't break the loop to make sure
+                        bitValueFound = bitValue;
+                    }
+                }
+
+                Debug.Assert(bitValueFound is not null);
+
+                bitSize = bitValueFound.LocalBitSelectorSize;
+                bitRanges.AddRange(bitValueFound.BitItems.Select(x => x.Range));
+                //Console.WriteLine($"{instruction.Id} - {instruction.FullSyntax} - {selector}");
+            }
         }
         else
         {
             // Otherwise it is a simple indexer
-            bitSize = indexerExtract.BitSize;
-            bitRanges.AddRange(indexerExtract.BitRanges);
+            bitSize = extract.BitSize;
+            bitRanges.AddRange(extract.BitRanges);
         }
+
+        var memberName = isIndexer ? "ElementIndex" : "Index";
 
         // Write the encoding
         operandVariation.WriteEncodings.Add(
@@ -889,20 +906,20 @@ partial class Arm64Processor
                 if (bitRanges.Count == 1)
                 {
                     var bitRange = bitRanges[0];
-                    w.WriteLine($"{variable} |= ((uint)({operandVariation.OperandName}.ElementIndex & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit});");
+                    w.WriteLine($"{variable} |= ((uint)({operandVariation.OperandName}.{memberName} & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit});");
                 }
                 else
                 {
                     w.OpenBraceBlock();
-                    w.WriteLine($"// Write the element indexer for {operandVariation.OperandName}");
-                    w.WriteLine($"var elementIndex = {operandVariation.OperandName}.ElementIndex & 0x{((1 << bitSize) - 1):X};");
+                    w.WriteLine($"// Write the {(isIndexer?"element indexer" : "register index")} for {operandVariation.OperandName}");
+                    w.WriteLine($"var _i_ = {operandVariation.OperandName}.{memberName} & 0x{((1 << bitSize) - 1):X};");
                     for (var i = bitRanges.Count - 1; i >= 0; i--)
                     {
                         var bitRange = bitRanges[i];
-                        w.WriteLine($"{variable} |= ((uint)(elementIndex & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit});");
+                        w.WriteLine($"{variable} |= ((uint)(_i_ & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit});");
                         if (i > 0)
                         {
-                            w.WriteLine($"elementIndex >>= {bitRange.Width};");
+                            w.WriteLine($"_i_ >>= {bitRange.Width};");
                         }
                     }
                     w.CloseBraceBlock();
@@ -911,7 +928,7 @@ partial class Arm64Processor
         );
     }
     
-    private static WriteEncodingDelegate? GetRegisterIndexEncoding(RegisterOperandDescriptor register)
+    private static WriteEncodingDelegate? GetRegisterIndexEncoding(Instruction instruction, RegisterOperandDescriptor register, OperandVariation operandVariation)
     {
         switch (register.RegisterIndexEncodingKind)
         {
@@ -932,7 +949,7 @@ partial class Arm64Processor
             {
                 if (register.LowBitIndexEncoding == 0)
                 {
-                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({op.OperandName}.Index) & 0xF;"); // 4 bits
+                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({op.OperandName}.Index) & 0xF;"); // 4 bits so we mask by security
                 }
                 else
                 {
@@ -946,8 +963,10 @@ partial class Arm64Processor
                     w.WriteLine($"{variable} = {op.OperandName}.Index == {previousOp.OperandName}.Index + 1 ? 0U : throw new {nameof(ArgumentOutOfRangeException)}(nameof({op.OperandName}), $\"Invalid Register. Index `{{{op.OperandName}.Index}}` must be + 1 from operand {previousOp.OperandName} with index `{{{previousOp.OperandName}.Index}}`\");");
                 };
             case Arm64RegisterIndexEncodingKind.BitMapExtract:
+                GenerateEncodingForExtract(instruction, register.RegisterIndexExtract, operandVariation, false);
                 break;
             case Arm64RegisterIndexEncodingKind.Fixed:
+                // TODO: verify that the value passed is matching the expected fixed value
                 break;
             default:
                 Debug.Assert(false,"register", $"RegisterIndexEncodingKind `{register.RegisterIndexEncodingKind}` is not supported");

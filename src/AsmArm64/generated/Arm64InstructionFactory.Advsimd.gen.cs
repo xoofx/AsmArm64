@@ -777,10 +777,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_2H.Index << 16);
         {
             // Write the element indexer for Vm_2H
-            var elementIndex = Vm_2H.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_2H.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -797,10 +797,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_2H.Index << 16);
         {
             // Write the element indexer for Vm_2H
-            var elementIndex = Vm_2H.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_2H.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -843,10 +843,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -876,10 +876,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -4077,10 +4077,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -4097,10 +4097,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -5870,10 +5870,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_2B.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_2B
-            var elementIndex = Vm_2B.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_2B.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -5890,10 +5890,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_2B.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_2B
-            var elementIndex = Vm_2B.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_2B.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -5936,10 +5936,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_4B.Index << 16);
         {
             // Write the element indexer for Vm_4B
-            var elementIndex = Vm_4B.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -5956,10 +5956,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_4B.Index << 16);
         {
             // Write the element indexer for Vm_4B
-            var elementIndex = Vm_4B.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -6810,10 +6810,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -6830,10 +6830,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -6864,10 +6864,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -6884,10 +6884,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -6904,10 +6904,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -6924,10 +6924,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7023,10 +7023,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7043,10 +7043,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7089,10 +7089,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7109,10 +7109,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7152,12 +7152,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0FC00000U; // Encoding for: FMLALB_asimdelem_h
         raw |= (uint)(Vd_8H.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
             // Write the element indexer for Vm_B
-            var elementIndex = Vm_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 19);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 19);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7184,12 +7185,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F008000U; // Encoding for: FMLALLBB_asimdelem_j
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
             // Write the element indexer for Vm_B
-            var elementIndex = Vm_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 19);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 19);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7216,12 +7218,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F408000U; // Encoding for: FMLALLBT_asimdelem_j
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
             // Write the element indexer for Vm_B
-            var elementIndex = Vm_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 19);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 19);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7248,12 +7251,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F008000U; // Encoding for: FMLALLTB_asimdelem_j
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
             // Write the element indexer for Vm_B
-            var elementIndex = Vm_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 19);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 19);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7280,12 +7284,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F408000U; // Encoding for: FMLALLTT_asimdelem_j
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
             // Write the element indexer for Vm_B
-            var elementIndex = Vm_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 19);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 19);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7312,12 +7317,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4FC00000U; // Encoding for: FMLALT_asimdelem_h
         raw |= (uint)(Vd_8H.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
             // Write the element indexer for Vm_B
-            var elementIndex = Vm_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 19);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 19);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7347,10 +7353,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7367,10 +7373,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7401,10 +7407,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7421,10 +7427,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7441,10 +7447,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7461,10 +7467,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7560,10 +7566,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7580,10 +7586,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7626,10 +7632,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7646,10 +7652,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7773,10 +7779,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7793,10 +7799,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7827,10 +7833,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7847,10 +7853,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7867,10 +7873,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -7887,10 +7893,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -8090,10 +8096,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -8110,10 +8116,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -8144,10 +8150,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -8164,10 +8170,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_H
-            var elementIndex = Vm_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -8184,10 +8190,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -8204,10 +8210,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_Ts.Index << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -10574,10 +10580,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -10592,10 +10598,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -10610,10 +10616,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -10640,10 +10646,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -10658,10 +10664,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -10702,10 +10708,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -10720,10 +10726,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -10739,10 +10745,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -10757,10 +10763,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -11286,10 +11292,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -11304,10 +11310,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -11322,10 +11328,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -11352,10 +11358,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -11370,10 +11376,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -11389,10 +11395,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -11407,10 +11413,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -11426,10 +11432,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -11444,10 +11450,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -11998,10 +12004,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12016,10 +12022,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12034,10 +12040,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12064,10 +12070,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12082,10 +12088,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -12101,10 +12107,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12119,10 +12125,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -12138,10 +12144,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12156,10 +12162,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -12710,10 +12716,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12728,10 +12734,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12746,10 +12752,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12776,10 +12782,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12794,10 +12800,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -12813,10 +12819,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12831,10 +12837,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -12850,10 +12856,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -12868,10 +12874,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -14211,12 +14217,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F400000U; // Encoding for: MLA_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -14230,12 +14237,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F400000U; // Encoding for: MLA_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -14249,12 +14257,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F800000U; // Encoding for: MLA_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -14268,12 +14277,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F800000U; // Encoding for: MLA_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -14365,12 +14375,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F404000U; // Encoding for: MLS_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -14384,12 +14395,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F404000U; // Encoding for: MLS_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -14403,12 +14415,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F804000U; // Encoding for: MLS_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -14422,12 +14435,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F804000U; // Encoding for: MLS_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -14839,12 +14853,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F408000U; // Encoding for: MUL_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -14858,12 +14873,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F408000U; // Encoding for: MUL_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -14877,12 +14893,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F808000U; // Encoding for: MUL_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -14896,12 +14913,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F808000U; // Encoding for: MUL_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -17221,10 +17239,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_4B.Index << 16);
         {
             // Write the element indexer for Vm_4B
-            var elementIndex = Vm_4B.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -17241,10 +17259,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_4B.Index << 16);
         {
             // Write the element indexer for Vm_4B
-            var elementIndex = Vm_4B.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -18651,12 +18669,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F402000U; // Encoding for: SMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -18670,12 +18689,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F402000U; // Encoding for: SMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -18689,12 +18709,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F802000U; // Encoding for: SMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -18708,12 +18729,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F802000U; // Encoding for: SMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -18805,12 +18827,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F402000U; // Encoding for: SMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -18824,12 +18847,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F402000U; // Encoding for: SMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -18843,12 +18867,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F802000U; // Encoding for: SMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -18862,12 +18887,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F802000U; // Encoding for: SMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -18959,12 +18985,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F406000U; // Encoding for: SMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -18978,12 +19005,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F406000U; // Encoding for: SMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -18997,12 +19025,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F806000U; // Encoding for: SMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19016,12 +19045,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F806000U; // Encoding for: SMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19113,12 +19143,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F406000U; // Encoding for: SMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19132,12 +19163,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F406000U; // Encoding for: SMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19151,12 +19183,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F806000U; // Encoding for: SMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19170,12 +19203,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F806000U; // Encoding for: SMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19345,12 +19379,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F40A000U; // Encoding for: SMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19364,12 +19399,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F40A000U; // Encoding for: SMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19383,12 +19419,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F80A000U; // Encoding for: SMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19402,12 +19439,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F80A000U; // Encoding for: SMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19499,12 +19537,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F40A000U; // Encoding for: SMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19518,12 +19557,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F40A000U; // Encoding for: SMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19537,12 +19577,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F80A000U; // Encoding for: SMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19556,12 +19597,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F80A000U; // Encoding for: SMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19928,12 +19970,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F403000U; // Encoding for: SQDMLAL_asisdelem_l
         raw |= (uint)(Vad.Index);
         raw |= (uint)(Vbn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19947,12 +19990,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F803000U; // Encoding for: SQDMLAL_asisdelem_l
         raw |= (uint)(Vad.Index);
         raw |= (uint)(Vbn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19966,12 +20010,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F403000U; // Encoding for: SQDMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -19985,12 +20030,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F403000U; // Encoding for: SQDMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20004,12 +20050,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F803000U; // Encoding for: SQDMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20023,12 +20070,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F803000U; // Encoding for: SQDMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20120,12 +20168,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F403000U; // Encoding for: SQDMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20139,12 +20188,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F403000U; // Encoding for: SQDMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20158,12 +20208,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F803000U; // Encoding for: SQDMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20177,12 +20228,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F803000U; // Encoding for: SQDMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20248,12 +20300,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F407000U; // Encoding for: SQDMLSL_asisdelem_l
         raw |= (uint)(Vad.Index);
         raw |= (uint)(Vbn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20267,12 +20320,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F807000U; // Encoding for: SQDMLSL_asisdelem_l
         raw |= (uint)(Vad.Index);
         raw |= (uint)(Vbn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20286,12 +20340,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F407000U; // Encoding for: SQDMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20305,12 +20360,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F407000U; // Encoding for: SQDMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20324,12 +20380,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F807000U; // Encoding for: SQDMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20343,12 +20400,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F807000U; // Encoding for: SQDMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20440,12 +20498,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F407000U; // Encoding for: SQDMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20459,12 +20518,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F407000U; // Encoding for: SQDMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20478,12 +20538,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F807000U; // Encoding for: SQDMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20497,12 +20558,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F807000U; // Encoding for: SQDMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20568,12 +20630,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F40C000U; // Encoding for: SQDMULH_asisdelem_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20587,12 +20650,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F80C000U; // Encoding for: SQDMULH_asisdelem_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20606,12 +20670,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F40C000U; // Encoding for: SQDMULH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20625,12 +20690,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F40C000U; // Encoding for: SQDMULH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20644,12 +20710,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F80C000U; // Encoding for: SQDMULH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20663,12 +20730,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F80C000U; // Encoding for: SQDMULH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20760,12 +20828,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F40B000U; // Encoding for: SQDMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20779,12 +20848,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F40B000U; // Encoding for: SQDMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20798,12 +20868,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F80B000U; // Encoding for: SQDMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20817,12 +20888,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F80B000U; // Encoding for: SQDMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20836,12 +20908,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F40B000U; // Encoding for: SQDMULL_asisdelem_l
         raw |= (uint)(Vad.Index);
         raw |= (uint)(Vbn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20855,12 +20928,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F80B000U; // Encoding for: SQDMULL_asisdelem_l
         raw |= (uint)(Vad.Index);
         raw |= (uint)(Vbn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20952,12 +21026,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F40B000U; // Encoding for: SQDMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20971,12 +21046,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F40B000U; // Encoding for: SQDMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -20990,12 +21066,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F80B000U; // Encoding for: SQDMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21009,12 +21086,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F80B000U; // Encoding for: SQDMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21212,12 +21290,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F40D000U; // Encoding for: SQRDMLAH_asisdelem_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21231,12 +21310,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F80D000U; // Encoding for: SQRDMLAH_asisdelem_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21250,12 +21330,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F40D000U; // Encoding for: SQRDMLAH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21269,12 +21350,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F40D000U; // Encoding for: SQRDMLAH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21288,12 +21370,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F80D000U; // Encoding for: SQRDMLAH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21307,12 +21390,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F80D000U; // Encoding for: SQRDMLAH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21404,12 +21488,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F40F000U; // Encoding for: SQRDMLSH_asisdelem_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21423,12 +21508,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F80F000U; // Encoding for: SQRDMLSH_asisdelem_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21442,12 +21528,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F40F000U; // Encoding for: SQRDMLSH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21461,12 +21548,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F40F000U; // Encoding for: SQRDMLSH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21480,12 +21568,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F80F000U; // Encoding for: SQRDMLSH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21499,12 +21588,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F80F000U; // Encoding for: SQRDMLSH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21596,12 +21686,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F40D000U; // Encoding for: SQRDMULH_asisdelem_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21615,12 +21706,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F80D000U; // Encoding for: SQRDMULH_asisdelem_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21634,12 +21726,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F40D000U; // Encoding for: SQRDMULH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21653,12 +21746,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F40D000U; // Encoding for: SQRDMULH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21672,12 +21766,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F80D000U; // Encoding for: SQRDMULH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -21691,12 +21786,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F80D000U; // Encoding for: SQRDMULH_asimdelem_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -25872,10 +25968,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -25890,10 +25986,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -25908,10 +26004,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -25938,10 +26034,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -25956,10 +26052,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -25975,10 +26071,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -25993,10 +26089,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -26012,10 +26108,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26030,10 +26126,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -26312,10 +26408,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26330,10 +26426,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26348,10 +26444,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26378,10 +26474,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26396,10 +26492,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -26415,10 +26511,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26433,10 +26529,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -26452,10 +26548,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26470,10 +26566,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -26752,10 +26848,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26770,10 +26866,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26788,10 +26884,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26818,10 +26914,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26836,10 +26932,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -26855,10 +26951,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26873,10 +26969,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -26892,10 +26988,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -26910,10 +27006,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -27192,10 +27288,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -27210,10 +27306,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -27228,10 +27324,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -27258,10 +27354,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -27276,10 +27372,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_B.Index);
         {
             // Write the element indexer for Vt_B
-            var elementIndex = Vt_B.ElementIndex & 0xF;
-            raw |= ((uint)(elementIndex & 0x7) << 10);
-            elementIndex >>= 3;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(_i_ & 0x7) << 10);
+            _i_ >>= 3;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -27295,10 +27391,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -27313,10 +27409,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_H.Index);
         {
             // Write the element indexer for Vt_H
-            var elementIndex = Vt_H.ElementIndex & 0x7;
-            raw |= ((uint)(elementIndex & 0x3) << 11);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(_i_ & 0x3) << 11);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -27332,10 +27428,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         return raw;
     }
@@ -27350,10 +27446,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vt_S.Index);
         {
             // Write the element indexer for Vt_S
-            var elementIndex = Vt_S.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 12);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 30);
+            var _i_ = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 12);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 30);
         }
         raw |= (uint)(Xm.Index << 16);
         return raw;
@@ -28108,10 +28204,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_4B.Index << 16);
         {
             // Write the element indexer for Vm_4B
-            var elementIndex = Vm_4B.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -28128,10 +28224,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_4B.Index << 16);
         {
             // Write the element indexer for Vm_4B
-            var elementIndex = Vm_4B.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -29990,10 +30086,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_4B.Index << 16);
         {
             // Write the element indexer for Vm_4B
-            var elementIndex = Vm_4B.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30010,10 +30106,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_4B.Index << 16);
         {
             // Write the element indexer for Vm_4B
-            var elementIndex = Vm_4B.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30641,12 +30737,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F402000U; // Encoding for: UMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30660,12 +30757,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F402000U; // Encoding for: UMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30679,12 +30777,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F802000U; // Encoding for: UMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30698,12 +30797,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F802000U; // Encoding for: UMLAL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30795,12 +30895,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F402000U; // Encoding for: UMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30814,12 +30915,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F402000U; // Encoding for: UMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30833,12 +30935,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F802000U; // Encoding for: UMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30852,12 +30955,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F802000U; // Encoding for: UMLAL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30949,12 +31053,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F406000U; // Encoding for: UMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30968,12 +31073,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F406000U; // Encoding for: UMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -30987,12 +31093,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F806000U; // Encoding for: UMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31006,12 +31113,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F806000U; // Encoding for: UMLSL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31103,12 +31211,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F406000U; // Encoding for: UMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31122,12 +31231,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F406000U; // Encoding for: UMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31141,12 +31251,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F806000U; // Encoding for: UMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31160,12 +31271,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F806000U; // Encoding for: UMLSL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31309,12 +31421,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F40A000U; // Encoding for: UMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31328,12 +31441,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F40A000U; // Encoding for: UMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31347,12 +31461,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F80A000U; // Encoding for: UMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31366,12 +31481,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F80A000U; // Encoding for: UMULL_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31463,12 +31579,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F40A000U; // Encoding for: UMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31482,12 +31599,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F40A000U; // Encoding for: UMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x3) << 20);
-            elementIndex >>= 2;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x3) << 20);
+            _i_ >>= 2;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31501,12 +31619,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F80A000U; // Encoding for: UMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -31520,12 +31639,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F80A000U; // Encoding for: UMULL2_asimdelem_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
             // Write the element indexer for Vm_Ts
-            var elementIndex = Vm_Ts.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_Ts.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -33286,10 +33406,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_4B.Index << 16);
         {
             // Write the element indexer for Vm_4B
-            var elementIndex = Vm_4B.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
@@ -33306,10 +33426,10 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vm_4B.Index << 16);
         {
             // Write the element indexer for Vm_4B
-            var elementIndex = Vm_4B.ElementIndex & 0x3;
-            raw |= ((uint)(elementIndex & 0x1) << 21);
-            elementIndex >>= 1;
-            raw |= ((uint)(elementIndex & 0x1) << 11);
+            var _i_ = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(_i_ & 0x1) << 21);
+            _i_ >>= 1;
+            raw |= ((uint)(_i_ & 0x1) << 11);
         }
         return raw;
     }
