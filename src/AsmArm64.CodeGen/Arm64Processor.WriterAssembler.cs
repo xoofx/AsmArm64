@@ -932,8 +932,6 @@ partial class Arm64Processor
     {
         switch (register.RegisterIndexEncodingKind)
         {
-            case Arm64RegisterIndexEncodingKind.None:
-                break;
             case Arm64RegisterIndexEncodingKind.Std5:
             {
                 if (register.LowBitIndexEncoding == 0)
@@ -966,8 +964,10 @@ partial class Arm64Processor
                 GenerateEncodingForExtract(instruction, register.RegisterIndexExtract, operandVariation, false);
                 break;
             case Arm64RegisterIndexEncodingKind.Fixed:
-                // TODO: verify that the value passed is matching the expected fixed value
-                break;
+                return (w, variable, instr, op, opIndex) =>
+                {
+                    w.WriteLine($"if ({operandVariation.OperandName}.Index != {register.FixedRegisterIndex}) throw new {nameof(ArgumentOutOfRangeException)}(nameof({op.OperandName}), $\"Invalid Register. Expecting the fixed index {register.FixedRegisterIndex} instead of {{{operandVariation.OperandName}}}\");");
+                };
             default:
                 Debug.Assert(false,"register", $"RegisterIndexEncodingKind `{register.RegisterIndexEncodingKind}` is not supported");
                 break;

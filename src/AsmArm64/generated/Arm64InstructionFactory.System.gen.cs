@@ -164,6 +164,7 @@ static partial class Arm64InstructionFactory
     public static uint CHKFEAT(Arm64RegisterX X16)
     {
         uint raw = 0xD503251FU; // Encoding for: CHKFEAT_hf_hints
+        if (X16.Index != 16) throw new ArgumentOutOfRangeException(nameof(X16), $"Invalid Register. Expecting the fixed index 16 instead of {X16}");
         return raw;
     }
     /// <summary>
