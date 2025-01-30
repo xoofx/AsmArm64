@@ -25,10 +25,10 @@ public interface IArm64RegisterGroup : ISpanFormattable
     /// <summary>
     /// Gets whether this group has an indexer. (e.g. {v0.S, v1.S, v2.S}[1])
     /// </summary>
-    public bool HasGroupIndex { get; }
+    public bool HasElementIndex { get; }
 
     /// <summary>
-    /// Gets the group indexer if <see cref="HasGroupIndex"/> is true.
+    /// Gets the group indexer if <see cref="HasElementIndex"/> is true.
     /// </summary>
-    public int GroupIndex { get; }
+    public int ElementIndex { get; }
 }

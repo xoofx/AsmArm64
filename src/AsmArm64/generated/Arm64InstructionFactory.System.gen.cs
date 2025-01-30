@@ -709,8 +709,8 @@ static partial class Arm64InstructionFactory
     public static uint SYS(int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5080000U; // Encoding for: SYS_cr_systeminstrs
-        raw |= (uint)(Cn.Index << 12);
-        raw |= (uint)(Cm.Index << 8);
+        raw |= (uint)((Cn.Index & 0xF) << 12);
+        raw |= (uint)((Cm.Index & 0xF) << 8);
         raw |= (uint)(Xt.Index);
         return raw;
     }
@@ -723,8 +723,8 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xD5280000U; // Encoding for: SYSL_rc_systeminstrs
         raw |= (uint)(Xt.Index);
-        raw |= (uint)(Cn.Index << 12);
-        raw |= (uint)(Cm.Index << 8);
+        raw |= (uint)((Cn.Index & 0xF) << 12);
+        raw |= (uint)((Cm.Index & 0xF) << 8);
         return raw;
     }
     /// <summary>
@@ -735,8 +735,8 @@ static partial class Arm64InstructionFactory
     public static uint SYSP(int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2, Arm64RegisterX Xt1 = default)
     {
         uint raw = 0xD5480000U; // Encoding for: SYSP_cr_syspairinstrs
-        raw |= (uint)(Cn.Index << 12);
-        raw |= (uint)(Cm.Index << 8);
+        raw |= (uint)((Cn.Index & 0xF) << 12);
+        raw |= (uint)((Cm.Index & 0xF) << 8);
         raw |= (uint)(Xt1.Index);
         return raw;
     }

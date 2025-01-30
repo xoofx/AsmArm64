@@ -862,7 +862,7 @@ partial class Arm64Processor
     private void WriteSelectorCode(CodeWriter w, EncodingSymbolSelector selector, List<(string ParameterType, string ParameterName)> parameters, Action<CodeWriter, EncodingSymbolSelector, EncodingBitValue> writeSelector)
     {
         var outputSelectorValue = selector.BitValues.Count == 0 ? "extractedValue" : "bitsToTest";
-        w.WriteLine(ExtractBitRangeString(selector.BitRanges, "bitValue", outputSelectorValue));
+        w.WriteLine(ExtractBitRangeString(selector.RelativeBitRanges, "bitValue", outputSelectorValue));
 
         if (selector.Kind == EncodingSymbolSelectorKind.Regular)
         {
@@ -882,7 +882,7 @@ partial class Arm64Processor
                         w.OpenBraceBlock();
                         if (bitValue.Kind == EncodingBitValueKind.BitExtract)
                         {
-                            var bitRanges = bitValue.BitItems.Select(x => x.Range).ToList();
+                            var bitRanges = bitValue.RelativeBitItems.Select(x => x.Range).ToList();
                             var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
                             Debug.Assert(parameters.Count == 1);
                             w.WriteLine(bitValueExtractString);
@@ -928,7 +928,7 @@ partial class Arm64Processor
                 {
                     if (bitValue.Kind == EncodingBitValueKind.BitExtract)
                     {
-                        var bitRanges = bitValue.BitItems.Select(x => x.Range).ToList();
+                        var bitRanges = bitValue.RelativeBitItems.Select(x => x.Range).ToList();
                         var bitValueExtractString = ExtractBitRangeString(bitRanges, "bitValue", "extractedValue");
                         Debug.Assert(parameters.Count == 1);
                         w.WriteLine(bitValueExtractString);

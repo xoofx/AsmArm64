@@ -32,10 +32,10 @@ public readonly record struct Arm64RegisterGroup1<TReg> : IArm64RegisterGroup wh
     public Arm64RegisterGroupAny ToAny() => new(BaseRegister.ToAny(), 1);
 
     /// <inheritdoc />
-    public bool HasGroupIndex => false;
+    public bool HasElementIndex => false;
 
     /// <inheritdoc />
-    public int GroupIndex => 0;
+    public int ElementIndex => 0;
 
     public int Index => BaseRegister.Index;
 
@@ -84,6 +84,11 @@ public readonly record struct Arm64RegisterGroup1<TReg> : IArm64RegisterGroup wh
         /// <inheritdoc />
         public Arm64RegisterAny BaseRegister => Unsafe.BitCast<uint, Arm64RegisterAny>((uint)_baseRegisterCountAndIndexer);
 
+        /// <summary>
+        /// Gets the index of the register in the group.
+        /// </summary>
+        public int Index => BaseRegister.Index;
+
         /// <inheritdoc />
         public int Count => (byte)(1);
 
@@ -91,10 +96,10 @@ public readonly record struct Arm64RegisterGroup1<TReg> : IArm64RegisterGroup wh
         public Arm64RegisterGroupAny ToAny() => Unsafe.BitCast<Indexed, Arm64RegisterGroupAny>(this);
 
         /// <inheritdoc />
-        public bool HasGroupIndex => (long)(_baseRegisterCountAndIndexer) < 0;
+        public bool HasElementIndex => (long)(_baseRegisterCountAndIndexer) < 0;
 
         /// <inheritdoc />
-        public int GroupIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
+        public int ElementIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
 
         /// <inheritdoc />
         public override string ToString()
@@ -135,10 +140,10 @@ public readonly record struct Arm64RegisterGroup2<TReg> : IArm64RegisterGroup wh
     public Arm64RegisterGroupAny ToAny() => new(BaseRegister.ToAny(), 2);
 
     /// <inheritdoc />
-    public bool HasGroupIndex => false;
+    public bool HasElementIndex => false;
 
     /// <inheritdoc />
-    public int GroupIndex => 0;
+    public int ElementIndex => 0;
 
     public int Index => BaseRegister.Index;
 
@@ -187,6 +192,11 @@ public readonly record struct Arm64RegisterGroup2<TReg> : IArm64RegisterGroup wh
         /// <inheritdoc />
         public Arm64RegisterAny BaseRegister => Unsafe.BitCast<uint, Arm64RegisterAny>((uint)_baseRegisterCountAndIndexer);
 
+        /// <summary>
+        /// Gets the index of the register in the group.
+        /// </summary>
+        public int Index => BaseRegister.Index;
+
         /// <inheritdoc />
         public int Count => (byte)(2);
 
@@ -194,10 +204,10 @@ public readonly record struct Arm64RegisterGroup2<TReg> : IArm64RegisterGroup wh
         public Arm64RegisterGroupAny ToAny() => Unsafe.BitCast<Indexed, Arm64RegisterGroupAny>(this);
 
         /// <inheritdoc />
-        public bool HasGroupIndex => (long)(_baseRegisterCountAndIndexer) < 0;
+        public bool HasElementIndex => (long)(_baseRegisterCountAndIndexer) < 0;
 
         /// <inheritdoc />
-        public int GroupIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
+        public int ElementIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
 
         /// <inheritdoc />
         public override string ToString()
@@ -238,10 +248,10 @@ public readonly record struct Arm64RegisterGroup3<TReg> : IArm64RegisterGroup wh
     public Arm64RegisterGroupAny ToAny() => new(BaseRegister.ToAny(), 3);
 
     /// <inheritdoc />
-    public bool HasGroupIndex => false;
+    public bool HasElementIndex => false;
 
     /// <inheritdoc />
-    public int GroupIndex => 0;
+    public int ElementIndex => 0;
 
     public int Index => BaseRegister.Index;
 
@@ -290,6 +300,11 @@ public readonly record struct Arm64RegisterGroup3<TReg> : IArm64RegisterGroup wh
         /// <inheritdoc />
         public Arm64RegisterAny BaseRegister => Unsafe.BitCast<uint, Arm64RegisterAny>((uint)_baseRegisterCountAndIndexer);
 
+        /// <summary>
+        /// Gets the index of the register in the group.
+        /// </summary>
+        public int Index => BaseRegister.Index;
+
         /// <inheritdoc />
         public int Count => (byte)(3);
 
@@ -297,10 +312,10 @@ public readonly record struct Arm64RegisterGroup3<TReg> : IArm64RegisterGroup wh
         public Arm64RegisterGroupAny ToAny() => Unsafe.BitCast<Indexed, Arm64RegisterGroupAny>(this);
 
         /// <inheritdoc />
-        public bool HasGroupIndex => (long)(_baseRegisterCountAndIndexer) < 0;
+        public bool HasElementIndex => (long)(_baseRegisterCountAndIndexer) < 0;
 
         /// <inheritdoc />
-        public int GroupIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
+        public int ElementIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
 
         /// <inheritdoc />
         public override string ToString()
@@ -341,10 +356,10 @@ public readonly record struct Arm64RegisterGroup4<TReg> : IArm64RegisterGroup wh
     public Arm64RegisterGroupAny ToAny() => new(BaseRegister.ToAny(), 4);
 
     /// <inheritdoc />
-    public bool HasGroupIndex => false;
+    public bool HasElementIndex => false;
 
     /// <inheritdoc />
-    public int GroupIndex => 0;
+    public int ElementIndex => 0;
 
     public int Index => BaseRegister.Index;
 
@@ -393,6 +408,11 @@ public readonly record struct Arm64RegisterGroup4<TReg> : IArm64RegisterGroup wh
         /// <inheritdoc />
         public Arm64RegisterAny BaseRegister => Unsafe.BitCast<uint, Arm64RegisterAny>((uint)_baseRegisterCountAndIndexer);
 
+        /// <summary>
+        /// Gets the index of the register in the group.
+        /// </summary>
+        public int Index => BaseRegister.Index;
+
         /// <inheritdoc />
         public int Count => (byte)(4);
 
@@ -400,10 +420,10 @@ public readonly record struct Arm64RegisterGroup4<TReg> : IArm64RegisterGroup wh
         public Arm64RegisterGroupAny ToAny() => Unsafe.BitCast<Indexed, Arm64RegisterGroupAny>(this);
 
         /// <inheritdoc />
-        public bool HasGroupIndex => (long)(_baseRegisterCountAndIndexer) < 0;
+        public bool HasElementIndex => (long)(_baseRegisterCountAndIndexer) < 0;
 
         /// <inheritdoc />
-        public int GroupIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
+        public int ElementIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
 
         /// <inheritdoc />
         public override string ToString()

@@ -285,8 +285,10 @@ class EncodingSymbol
             Selector.Initialize(map);
 
             // Encode the selector relative to the encoding of the symbol
-            Selector.BitRanges.EncodeRelativeTo(BitRanges);
-            Selector.BitRanges.Compact();
+            Selector.RelativeBitRanges.Clear();
+            Selector.RelativeBitRanges.AddRange(Selector.BitRanges);
+            Selector.RelativeBitRanges.EncodeRelativeTo(BitRanges);
+            Selector.RelativeBitRanges.Compact();
 
             foreach (var bitValue in Selector.BitValues)
             {
@@ -311,10 +313,12 @@ class EncodingSymbol
                     var bitItem = bitValue.BitItems[i];
                     if (bitItem.Kind == BitValueItemKind.BitRange)
                     {
-                        bitValue.BitItems[i] = new(bitItem.Kind, bitItem.Range.EncodeRelativeTo(BitRanges));
+                        var relativeItem = new BitValueItem(bitItem.Kind, bitItem.Range.EncodeRelativeTo(BitRanges));
+                        bitValue.RelativeBitItems.Add(relativeItem);
                     }
                     else
                     {
+                        Debug.Assert(bitValue.RelativeBitItems.Count == 0);
                         allBitRange = false;
                     }
                 }
@@ -322,14 +326,14 @@ class EncodingSymbol
                 if (allBitRange)
                 {
                     // Compact the bit items
-                    for (var i = bitValue.BitItems.Count - 1; i >= 1; i--)
+                    for (var i = bitValue.RelativeBitItems.Count - 1; i >= 1; i--)
                     {
-                        var current = bitValue.BitItems[i];
-                        var previous = bitValue.BitItems[i - 1];
+                        var current = bitValue.RelativeBitItems[i];
+                        var previous = bitValue.RelativeBitItems[i - 1];
                         if (current.Range.LowBit + current.Range.Width == previous.Range.LowBit)
                         {
-                            bitValue.BitItems[i - 1] = new(BitValueItemKind.BitRange, new(current.Range.LowBit, previous.Range.Width + current.Range.Width));
-                            bitValue.BitItems.RemoveAt(i);
+                            bitValue.RelativeBitItems[i - 1] = new(BitValueItemKind.BitRange, new(current.Range.LowBit, previous.Range.Width + current.Range.Width));
+                            bitValue.RelativeBitItems.RemoveAt(i);
                         }
                     }
                 }
@@ -374,11 +378,17 @@ record EncodingSymbolSelector
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<string> BitNames { get; } = new();
 
+    /// <summary>
+    /// Gets the bit ranges encoding of relative to the <see cref="EncodingSymbolExtract"/>
+    /// </summary>
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public BitRangeList RelativeBitRanges { get; } = new();
+
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public BitRangeList BitRanges { get; } = new();
 
     /// <summary>
-    /// Gets the mask of the bits covered by <see cref="BitRanges"/> of this selector.
+    /// Gets the mask of the bits covered by <see cref="RelativeBitRanges"/> of this selector.
     /// </summary>
     public uint BitEncodingMask { get; set; }
 
@@ -402,7 +412,7 @@ record EncodingSymbolSelector
     {
         builder.Append(BitSize);
         builder.Append(' ');
-        builder.Append($"[{string.Join(",", BitRanges)}] ");
+        builder.Append($"[{string.Join(",", RelativeBitRanges)}] ");
         builder.Append('[');
         for (var i = 0; i < BitValues.Count; i++)
         {
@@ -509,6 +519,12 @@ record EncodingBitValue
     /// </summary>
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<BitValueItem> BitItems { get; } = new();
+
+    /// <summary>
+    /// Used when <see cref="Kind"/> is <see cref="EncodingBitValueKind.BitExtract"/> relative to the <see cref="EncodingSymbolSelector.BitRanges"/>
+    /// </summary>
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public List<BitValueItem> RelativeBitItems { get; } = new();
 
     /// <summary>
     /// When <see cref="Kind"/> is <see cref="EncodingBitValueKind.BitExtract"/>, this is the addend to apply to the extracted bits.

@@ -775,6 +775,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_2H.Index << 16);
+        {
+            // Write the element indexer for Vm_2H
+            var elementIndex = Vm_2H.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -788,6 +795,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_2H.Index << 16);
+        {
+            // Write the element indexer for Vm_2H
+            var elementIndex = Vm_2H.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -826,7 +840,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0FC0F000U; // Encoding for: BFMLALB_asimdelem_f
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_8H.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -852,7 +873,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4FC0F000U; // Encoding for: BFMLALT_asimdelem_f
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_8H.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -5817,7 +5845,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F400000U; // Encoding for: FDOT_asimdelem_g
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
-        raw |= (uint)(Vm_2B.Index << 16);
+        raw |= (uint)((Vm_2B.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_2B
+            var elementIndex = Vm_2B.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -5830,7 +5865,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F400000U; // Encoding for: FDOT_asimdelem_g
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
-        raw |= (uint)(Vm_2B.Index << 16);
+        raw |= (uint)((Vm_2B.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_2B
+            var elementIndex = Vm_2B.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -5870,6 +5912,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
+        {
+            // Write the element indexer for Vm_4B
+            var elementIndex = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -5883,6 +5932,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
+        {
+            // Write the element indexer for Vm_4B
+            var elementIndex = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -6729,7 +6785,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F001000U; // Encoding for: FMLA_asisdelem_rh_h
         raw |= (uint)(Hd.Index);
         raw |= (uint)(Hn.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -6768,7 +6831,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F001000U; // Encoding for: FMLA_asimdelem_rh_h
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -6781,7 +6851,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F001000U; // Encoding for: FMLA_asimdelem_rh_h
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -6898,7 +6975,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F800000U; // Encoding for: FMLAL_asimdelem_lh
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -6911,7 +6995,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F800000U; // Encoding for: FMLAL_asimdelem_lh
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -6950,7 +7041,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F808000U; // Encoding for: FMLAL2_asimdelem_lh
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -6963,7 +7061,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F808000U; // Encoding for: FMLAL2_asimdelem_lh
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7002,6 +7107,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0FC00000U; // Encoding for: FMLALB_asimdelem_h
         raw |= (uint)(Vd_8H.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        {
+            // Write the element indexer for Vm_B
+            var elementIndex = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 19);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7027,6 +7139,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F008000U; // Encoding for: FMLALLBB_asimdelem_j
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        {
+            // Write the element indexer for Vm_B
+            var elementIndex = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 19);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7052,6 +7171,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F408000U; // Encoding for: FMLALLBT_asimdelem_j
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        {
+            // Write the element indexer for Vm_B
+            var elementIndex = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 19);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7077,6 +7203,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F008000U; // Encoding for: FMLALLTB_asimdelem_j
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        {
+            // Write the element indexer for Vm_B
+            var elementIndex = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 19);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7102,6 +7235,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F408000U; // Encoding for: FMLALLTT_asimdelem_j
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        {
+            // Write the element indexer for Vm_B
+            var elementIndex = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 19);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7127,6 +7267,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4FC00000U; // Encoding for: FMLALT_asimdelem_h
         raw |= (uint)(Vd_8H.Index);
         raw |= (uint)(Vn_16B.Index << 5);
+        {
+            // Write the element indexer for Vm_B
+            var elementIndex = Vm_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 19);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7152,7 +7299,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F005000U; // Encoding for: FMLS_asisdelem_rh_h
         raw |= (uint)(Hd.Index);
         raw |= (uint)(Hn.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7191,7 +7345,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F005000U; // Encoding for: FMLS_asimdelem_rh_h
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7204,7 +7365,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F005000U; // Encoding for: FMLS_asimdelem_rh_h
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7321,7 +7489,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F804000U; // Encoding for: FMLSL_asimdelem_lh
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7334,7 +7509,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F804000U; // Encoding for: FMLSL_asimdelem_lh
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7373,7 +7555,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F80C000U; // Encoding for: FMLSL2_asimdelem_lh
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7386,7 +7575,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F80C000U; // Encoding for: FMLSL2_asimdelem_lh
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7506,7 +7702,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F009000U; // Encoding for: FMUL_asisdelem_rh_h
         raw |= (uint)(Hd.Index);
         raw |= (uint)(Hn.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7545,7 +7748,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F009000U; // Encoding for: FMUL_asimdelem_rh_h
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7558,7 +7768,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F009000U; // Encoding for: FMUL_asimdelem_rh_h
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7779,7 +7996,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F009000U; // Encoding for: FMULX_asisdelem_rh_h
         raw |= (uint)(Hd.Index);
         raw |= (uint)(Hn.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7818,7 +8042,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F009000U; // Encoding for: FMULX_asimdelem_rh_h
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -7831,7 +8062,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F009000U; // Encoding for: FMULX_asimdelem_rh_h
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
-        raw |= (uint)(Vm_H.Index << 16);
+        raw |= (uint)((Vm_H.Index & 0xF) << 16);
+        {
+            // Write the element indexer for Vm_H
+            var elementIndex = Vm_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 20);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -10216,10 +10454,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.B}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlso_b1_1b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D400000U; // Encoding for: LD1_asisdlso_b1_1b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10227,10 +10472,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.H}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlso_h1_1h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D404000U; // Encoding for: LD1_asisdlso_h1_1h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10238,10 +10490,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.S}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlso_s1_1s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D408000U; // Encoding for: LD1_asisdlso_s1_1s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10249,10 +10508,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.D}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlso_d1_1d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D408400U; // Encoding for: LD1_asisdlso_d1_1d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -10260,10 +10520,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.B}[index], [Xn|SP], #1</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_b1_i1b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src, int value1)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, int value1)
     {
         uint raw = 0x0DDF0000U; // Encoding for: LD1_asisdlsop_b1_i1b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10271,10 +10538,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.B}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_bx1_r1b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DC00000U; // Encoding for: LD1_asisdlsop_bx1_r1b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -10283,10 +10557,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.D}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_d1_i1d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src, int value8)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, int value8)
     {
         uint raw = 0x0DDF8400U; // Encoding for: LD1_asisdlsop_d1_i1d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -10294,10 +10569,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.D}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_dx1_r1d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DC08400U; // Encoding for: LD1_asisdlsop_dx1_r1d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -10306,10 +10582,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.H}[index], [Xn|SP], #2</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_h1_i1h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src, int value2)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, int value2)
     {
         uint raw = 0x0DDF4000U; // Encoding for: LD1_asisdlsop_h1_i1h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10317,10 +10600,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.H}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_hx1_r1h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DC04000U; // Encoding for: LD1_asisdlsop_hx1_r1h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -10329,10 +10619,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.S}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_s1_i1s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src, int value4)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, int value4)
     {
         uint raw = 0x0DDF8000U; // Encoding for: LD1_asisdlsop_s1_i1s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10340,10 +10637,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.S}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_sx1_r1s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DC08000U; // Encoding for: LD1_asisdlsop_sx1_r1s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -10862,10 +11166,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.B, Vt2.B}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlso_b2_2b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D600000U; // Encoding for: LD2_asisdlso_b2_2b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10873,10 +11184,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.H, Vt2.H}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlso_h2_2h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D604000U; // Encoding for: LD2_asisdlso_h2_2h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10884,10 +11202,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.S, Vt2.S}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlso_s2_2s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D608000U; // Encoding for: LD2_asisdlso_s2_2s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10895,10 +11220,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.D, Vt2.D}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlso_d2_2d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D608400U; // Encoding for: LD2_asisdlso_d2_2d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -10906,10 +11232,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.B, Vt2.B}[index], [Xn|SP], #2</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_b2_i2b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src, int value2)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, int value2)
     {
         uint raw = 0x0DFF0000U; // Encoding for: LD2_asisdlsop_b2_i2b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10917,10 +11250,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.B, Vt2.B}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_bx2_r2b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DE00000U; // Encoding for: LD2_asisdlsop_bx2_r2b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -10929,10 +11269,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.H, Vt2.H}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_h2_i2h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src, int value4)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, int value4)
     {
         uint raw = 0x0DFF4000U; // Encoding for: LD2_asisdlsop_h2_i2h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10940,10 +11287,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.H, Vt2.H}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_hx2_r2h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DE04000U; // Encoding for: LD2_asisdlsop_hx2_r2h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -10952,10 +11306,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.S, Vt2.S}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_s2_i2s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src, int value8)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, int value8)
     {
         uint raw = 0x0DFF8000U; // Encoding for: LD2_asisdlsop_s2_i2s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -10963,10 +11324,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.S, Vt2.S}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_sx2_r2s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DE08000U; // Encoding for: LD2_asisdlsop_sx2_r2s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -10975,10 +11343,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.D, Vt2.D}[index], [Xn|SP], #16</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_d2_i2d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src, int value16)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, int value16)
     {
         uint raw = 0x0DFF8400U; // Encoding for: LD2_asisdlsop_d2_i2d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -10986,10 +11355,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.D, Vt2.D}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_dx2_r2d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DE08400U; // Encoding for: LD2_asisdlsop_dx2_r2d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -11508,10 +11878,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlso_b3_3b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D402000U; // Encoding for: LD3_asisdlso_b3_3b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -11519,10 +11896,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlso_h3_3h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D406000U; // Encoding for: LD3_asisdlso_h3_3h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -11530,10 +11914,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlso_s3_3s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D40A000U; // Encoding for: LD3_asisdlso_s3_3s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -11541,10 +11932,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlso_d3_3d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D40A400U; // Encoding for: LD3_asisdlso_d3_3d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -11552,10 +11944,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_b3_i3b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src, int value3)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, int value3)
     {
         uint raw = 0x0DDF2000U; // Encoding for: LD3_asisdlsop_b3_i3b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -11563,10 +11962,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_bx3_r3b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DC02000U; // Encoding for: LD3_asisdlsop_bx3_r3b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -11575,10 +11981,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_h3_i3h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src, int value6)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, int value6)
     {
         uint raw = 0x0DDF6000U; // Encoding for: LD3_asisdlsop_h3_i3h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -11586,10 +11999,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_hx3_r3h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DC06000U; // Encoding for: LD3_asisdlsop_hx3_r3h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -11598,10 +12018,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_s3_i3s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src, int value12)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, int value12)
     {
         uint raw = 0x0DDFA000U; // Encoding for: LD3_asisdlsop_s3_i3s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -11609,10 +12036,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_sx3_r3s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DC0A000U; // Encoding for: LD3_asisdlsop_sx3_r3s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -11621,10 +12055,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_d3_i3d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src, int value24)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, int value24)
     {
         uint raw = 0x0DDFA400U; // Encoding for: LD3_asisdlsop_d3_i3d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -11632,10 +12067,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_dx3_r3d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DC0A400U; // Encoding for: LD3_asisdlsop_dx3_r3d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -12154,10 +12590,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlso_b4_4b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D602000U; // Encoding for: LD4_asisdlso_b4_4b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -12165,10 +12608,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlso_h4_4h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D606000U; // Encoding for: LD4_asisdlso_h4_4h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -12176,10 +12626,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlso_s4_4s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D60A000U; // Encoding for: LD4_asisdlso_s4_4s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -12187,10 +12644,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlso_d4_4d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D60A400U; // Encoding for: LD4_asisdlso_d4_4d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -12198,10 +12656,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_b4_i4b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src, int value4)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, int value4)
     {
         uint raw = 0x0DFF2000U; // Encoding for: LD4_asisdlsop_b4_i4b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -12209,10 +12674,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_bx4_r4b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DE02000U; // Encoding for: LD4_asisdlsop_bx4_r4b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -12221,10 +12693,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_h4_i4h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src, int value8)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, int value8)
     {
         uint raw = 0x0DFF6000U; // Encoding for: LD4_asisdlsop_h4_i4h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -12232,10 +12711,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_hx4_r4h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DE06000U; // Encoding for: LD4_asisdlsop_hx4_r4h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -12244,10 +12730,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_s4_i4s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src, int value16)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, int value16)
     {
         uint raw = 0x0DFFA000U; // Encoding for: LD4_asisdlsop_s4_i4s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -12255,10 +12748,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_sx4_r4s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DE0A000U; // Encoding for: LD4_asisdlsop_sx4_r4s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -12267,10 +12767,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_d4_i4d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src, int value32)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, int value32)
     {
         uint raw = 0x0DFFA400U; // Encoding for: LD4_asisdlsop_d4_i4d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -12278,10 +12779,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_dx4_r4d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, Arm64RegisterX Xm)
     {
         uint raw = 0x0DE0A400U; // Encoding for: LD4_asisdlsop_dx4_r4d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -12562,10 +13064,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDAP1 {Vt.D}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDAP1_asisdlso_d1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDAP1(Arm64RegisterGroup1<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor src)
+    public static uint LDAP1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src)
     {
         uint raw = 0x0D418400U; // Encoding for: LDAP1_asisdlso_d1
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -13539,6 +14042,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_16B.Index);
         raw |= (uint)(Vn_16B.Index << 5);
         raw |= (uint)(Vm.Index << 16);
+        raw |= ((uint)(Vm.ElementIndex & 0x3) << 13);
         return raw;
     }
     /// <summary>
@@ -13552,6 +14056,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_8H.Index);
         raw |= (uint)(Vn_8H.Index << 5);
         raw |= (uint)(Vm.Index << 16);
+        raw |= ((uint)(Vm.ElementIndex & 0x7) << 12);
         return raw;
     }
     /// <summary>
@@ -13565,6 +14070,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_16B.Index);
         raw |= (uint)(Vn_16B.Index << 5);
         raw |= (uint)(Vm.Index << 16);
+        raw |= ((uint)(Vm.ElementIndex & 0x1) << 14);
         return raw;
     }
     /// <summary>
@@ -13578,6 +14084,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_8H.Index);
         raw |= (uint)(Vn1_8H.Index << 5);
         raw |= (uint)(Vm.Index << 16);
+        raw |= ((uint)(Vm.ElementIndex & 0x3) << 13);
         return raw;
     }
     /// <summary>
@@ -13986,6 +14493,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0E043C00U; // Encoding for: MOV_umov_asimdins_w_w
         raw |= (uint)(Wd.Index);
         raw |= (uint)(Vn_S.Index << 5);
+        raw |= ((uint)(Vn_S.ElementIndex & 0x3) << 19);
         return raw;
     }
     /// <summary>
@@ -13998,6 +14506,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4E083C00U; // Encoding for: MOV_umov_asimdins_x_x
         raw |= (uint)(Xd.Index);
         raw |= (uint)(Vn_D.Index << 5);
+        raw |= ((uint)(Vn_D.ElementIndex & 0x1) << 20);
         return raw;
     }
     /// <summary>
@@ -16496,6 +17005,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
+        {
+            // Write the element indexer for Vm_4B
+            var elementIndex = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -16509,6 +17025,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
+        {
+            // Write the element indexer for Vm_4B
+            var elementIndex = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -17402,6 +17925,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_4S.Index << 5);
         raw |= (uint)(Vm_S.Index << 16);
+        raw |= ((uint)(Vm_S.ElementIndex & 0x3) << 12);
         return raw;
     }
     /// <summary>
@@ -17415,6 +17939,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_4S.Index << 5);
         raw |= (uint)(Vm_S.Index << 16);
+        raw |= ((uint)(Vm_S.ElementIndex & 0x3) << 12);
         return raw;
     }
     /// <summary>
@@ -17428,6 +17953,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_4S.Index << 5);
         raw |= (uint)(Vm_S.Index << 16);
+        raw |= ((uint)(Vm_S.ElementIndex & 0x3) << 12);
         return raw;
     }
     /// <summary>
@@ -17441,6 +17967,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_4S.Index);
         raw |= (uint)(Vn_4S.Index << 5);
         raw |= (uint)(Vm_S.Index << 16);
+        raw |= ((uint)(Vm_S.ElementIndex & 0x3) << 12);
         return raw;
     }
     /// <summary>
@@ -24574,10 +25101,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.B}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlso_b1_1b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D000000U; // Encoding for: ST1_asisdlso_b1_1b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -24585,10 +25119,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.H}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlso_h1_1h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D004000U; // Encoding for: ST1_asisdlso_h1_1h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -24596,10 +25137,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.S}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlso_s1_1s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D008000U; // Encoding for: ST1_asisdlso_s1_1s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -24607,10 +25155,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.D}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlso_d1_1d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D008400U; // Encoding for: ST1_asisdlso_d1_1d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -24618,10 +25167,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.B}[index], [Xn|SP], #1</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_b1_i1b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst, int value1)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, int value1)
     {
         uint raw = 0x0D9F0000U; // Encoding for: ST1_asisdlsop_b1_i1b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -24629,10 +25185,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.B}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_bx1_r1b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0D800000U; // Encoding for: ST1_asisdlsop_bx1_r1b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -24641,10 +25204,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.H}[index], [Xn|SP], #2</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_h1_i1h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst, int value2)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, int value2)
     {
         uint raw = 0x0D9F4000U; // Encoding for: ST1_asisdlsop_h1_i1h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -24652,10 +25222,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.H}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_hx1_r1h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0D804000U; // Encoding for: ST1_asisdlsop_hx1_r1h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -24664,10 +25241,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.S}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_s1_i1s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst, int value4)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, int value4)
     {
         uint raw = 0x0D9F8000U; // Encoding for: ST1_asisdlsop_s1_i1s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -24675,10 +25259,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.S}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_sx1_r1s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0D808000U; // Encoding for: ST1_asisdlsop_sx1_r1s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -24687,10 +25278,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.D}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_d1_i1d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst, int value8)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, int value8)
     {
         uint raw = 0x0D9F8400U; // Encoding for: ST1_asisdlsop_d1_i1d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -24698,10 +25290,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.D}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_dx1_r1d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0D808400U; // Encoding for: ST1_asisdlsop_dx1_r1d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -24948,10 +25541,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.B, Vt2.B}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlso_b2_2b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D200000U; // Encoding for: ST2_asisdlso_b2_2b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -24959,10 +25559,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.H, Vt2.H}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlso_h2_2h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D204000U; // Encoding for: ST2_asisdlso_h2_2h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -24970,10 +25577,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.S, Vt2.S}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlso_s2_2s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D208000U; // Encoding for: ST2_asisdlso_s2_2s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -24981,10 +25595,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.D, Vt2.D}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlso_d2_2d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D208400U; // Encoding for: ST2_asisdlso_d2_2d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -24992,10 +25607,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.B, Vt2.B}[index], [Xn|SP], #2</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_b2_i2b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst, int value2)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, int value2)
     {
         uint raw = 0x0DBF0000U; // Encoding for: ST2_asisdlsop_b2_i2b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25003,10 +25625,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.B, Vt2.B}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_bx2_r2b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0DA00000U; // Encoding for: ST2_asisdlsop_bx2_r2b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -25015,10 +25644,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.H, Vt2.H}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_h2_i2h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst, int value4)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, int value4)
     {
         uint raw = 0x0DBF4000U; // Encoding for: ST2_asisdlsop_h2_i2h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25026,10 +25662,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.H, Vt2.H}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_hx2_r2h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0DA04000U; // Encoding for: ST2_asisdlsop_hx2_r2h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -25038,10 +25681,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.S, Vt2.S}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_s2_i2s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst, int value8)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, int value8)
     {
         uint raw = 0x0DBF8000U; // Encoding for: ST2_asisdlsop_s2_i2s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25049,10 +25699,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.S, Vt2.S}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_sx2_r2s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0DA08000U; // Encoding for: ST2_asisdlsop_sx2_r2s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -25061,10 +25718,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.D, Vt2.D}[index], [Xn|SP], #16</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_d2_i2d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst, int value16)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, int value16)
     {
         uint raw = 0x0DBF8400U; // Encoding for: ST2_asisdlsop_d2_i2d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -25072,10 +25730,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.D, Vt2.D}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_dx2_r2d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0DA08400U; // Encoding for: ST2_asisdlsop_dx2_r2d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -25322,10 +25981,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlso_b3_3b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D002000U; // Encoding for: ST3_asisdlso_b3_3b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25333,10 +25999,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlso_h3_3h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D006000U; // Encoding for: ST3_asisdlso_h3_3h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25344,10 +26017,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlso_s3_3s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D00A000U; // Encoding for: ST3_asisdlso_s3_3s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25355,10 +26035,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlso_d3_3d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D00A400U; // Encoding for: ST3_asisdlso_d3_3d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -25366,10 +26047,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_b3_i3b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst, int value3)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, int value3)
     {
         uint raw = 0x0D9F2000U; // Encoding for: ST3_asisdlsop_b3_i3b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25377,10 +26065,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_bx3_r3b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0D802000U; // Encoding for: ST3_asisdlsop_bx3_r3b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -25389,10 +26084,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_h3_i3h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst, int value6)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, int value6)
     {
         uint raw = 0x0D9F6000U; // Encoding for: ST3_asisdlsop_h3_i3h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25400,10 +26102,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_hx3_r3h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0D806000U; // Encoding for: ST3_asisdlsop_hx3_r3h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -25412,10 +26121,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_s3_i3s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst, int value12)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, int value12)
     {
         uint raw = 0x0D9FA000U; // Encoding for: ST3_asisdlsop_s3_i3s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25423,10 +26139,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_sx3_r3s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0D80A000U; // Encoding for: ST3_asisdlsop_sx3_r3s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -25435,10 +26158,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_d3_i3d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst, int value24)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, int value24)
     {
         uint raw = 0x0D9FA400U; // Encoding for: ST3_asisdlsop_d3_i3d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -25446,10 +26170,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_dx3_r3d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0D80A400U; // Encoding for: ST3_asisdlsop_dx3_r3d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -25696,10 +26421,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlso_b4_4b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D202000U; // Encoding for: ST4_asisdlso_b4_4b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25707,10 +26439,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlso_h4_4h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D206000U; // Encoding for: ST4_asisdlso_h4_4h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25718,10 +26457,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlso_s4_4s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D20A000U; // Encoding for: ST4_asisdlso_s4_4s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25729,10 +26475,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlso_d4_4d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D20A400U; // Encoding for: ST4_asisdlso_d4_4d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -25740,10 +26487,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_b4_i4b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst, int value4)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, int value4)
     {
         uint raw = 0x0DBF2000U; // Encoding for: ST4_asisdlsop_b4_i4b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25751,10 +26505,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_bx4_r4b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_B> Vt_B, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0DA02000U; // Encoding for: ST4_asisdlsop_bx4_r4b
         raw |= (uint)(Vt_B.Index);
+        {
+            // Write the element indexer for Vt_B
+            var elementIndex = Vt_B.ElementIndex & 0xF;
+            raw |= ((uint)(elementIndex & 0x7) << 10);
+            elementIndex >>= 3;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -25763,10 +26524,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_h4_i4h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst, int value8)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, int value8)
     {
         uint raw = 0x0DBF6000U; // Encoding for: ST4_asisdlsop_h4_i4h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25774,10 +26542,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_hx4_r4h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_H> Vt_H, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0DA06000U; // Encoding for: ST4_asisdlsop_hx4_r4h
         raw |= (uint)(Vt_H.Index);
+        {
+            // Write the element indexer for Vt_H
+            var elementIndex = Vt_H.ElementIndex & 0x7;
+            raw |= ((uint)(elementIndex & 0x3) << 11);
+            elementIndex >>= 2;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -25786,10 +26561,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_s4_i4s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst, int value16)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, int value16)
     {
         uint raw = 0x0DBFA000U; // Encoding for: ST4_asisdlsop_s4_i4s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         return raw;
     }
     /// <summary>
@@ -25797,10 +26579,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_sx4_r4s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_S> Vt_S, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0DA0A000U; // Encoding for: ST4_asisdlsop_sx4_r4s
         raw |= (uint)(Vt_S.Index);
+        {
+            // Write the element indexer for Vt_S
+            var elementIndex = Vt_S.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 12);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 30);
+        }
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -25809,10 +26598,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_d4_i4d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst, int value32)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, int value32)
     {
         uint raw = 0x0DBFA400U; // Encoding for: ST4_asisdlsop_d4_i4d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -25820,10 +26610,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_dx4_r4d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, Arm64RegisterX Xm)
     {
         uint raw = 0x0DA0A400U; // Encoding for: ST4_asisdlsop_dx4_r4d
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         raw |= (uint)(Xm.Index << 16);
         return raw;
     }
@@ -26272,10 +27063,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STL1 {Vt.D}[index], [Xn|SP]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STL1_asisdlso_d1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STL1(Arm64RegisterGroup1<Arm64RegisterV_D> Vt_D, Arm64BaseMemoryAccessor dst)
+    public static uint STL1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst)
     {
         uint raw = 0x0D018400U; // Encoding for: STL1_asisdlso_d1
         raw |= (uint)(Vt_D.Index);
+        raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
         return raw;
     }
     /// <summary>
@@ -26549,6 +27341,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
+        {
+            // Write the element indexer for Vm_4B
+            var elementIndex = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -26562,6 +27361,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
+        {
+            // Write the element indexer for Vm_4B
+            var elementIndex = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -28417,6 +29223,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
+        {
+            // Write the element indexer for Vm_4B
+            var elementIndex = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -28430,6 +29243,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
+        {
+            // Write the element indexer for Vm_4B
+            var elementIndex = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -31528,6 +32348,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
+        {
+            // Write the element indexer for Vm_4B
+            var elementIndex = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>
@@ -31541,6 +32368,13 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
+        {
+            // Write the element indexer for Vm_4B
+            var elementIndex = Vm_4B.ElementIndex & 0x3;
+            raw |= ((uint)(elementIndex & 0x1) << 21);
+            elementIndex >>= 1;
+            raw |= ((uint)(elementIndex & 0x1) << 11);
+        }
         return raw;
     }
     /// <summary>

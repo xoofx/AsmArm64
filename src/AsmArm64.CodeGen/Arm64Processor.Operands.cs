@@ -568,44 +568,51 @@ partial class Arm64Processor
                 // <entry class="bitfield">xx</entry>
                 // <entry class="symbol">UInt(imm5&lt;4:3&gt;)</entry>
 
-                var selector = new EncodingSymbolSelector();
-                encodingSymbol.Selector = selector;
-                selector.BitNames.Add("imm5");
+                encodingSymbol.EncodedInText = "imm5<4:3>";
 
-                var bitValue = new EncodingBitValue
-                {
-                    LocalBitSelectorAsText = "xx1xx",
-                    Text = "UInt(imm5<4:3>)"
-                };
-                selector.BitValues.Add(bitValue);
+                //var selector = new EncodingSymbolSelector();
+                //encodingSymbol.Selector = selector;
+                //selector.BitNames.Add("imm5");
+
+                //var bitValue = new EncodingBitValue
+                //{
+                //    LocalBitSelectorAsText = "xx1xx",
+                //    Text = "UInt(imm5<4:3>)"
+                //};
+                //selector.BitValues.Add(bitValue);
             }
             else if (enclist.Contains("MOV_UMOV_asimdins_X_x") && name == "<index>")
             {
                 // We fake an encoding that is missing from the XML
                 // <entry class="bitfield">xx</entry>
                 // <entry class="symbol">UInt(imm5&lt;4:3&gt;)</entry>
-                var selector = new EncodingSymbolSelector();
-                encodingSymbol.Selector = selector;
-                selector.BitNames.Add("imm5");
-                var bitValue = new EncodingBitValue
-                {
-                    LocalBitSelectorAsText = "x10xx",
-                    Text = "UInt(imm5<4>)"
-                };
-                selector.BitValues.Add(bitValue);
+
+                encodingSymbol.EncodedInText = "imm5<4>";
+
+
+                //var selector = new EncodingSymbolSelector();
+                //encodingSymbol.Selector = selector;
+                //selector.BitNames.Add("imm5");
+                //var bitValue = new EncodingBitValue
+                //{
+                //    LocalBitSelectorAsText = "x10xx",
+                //    Text = "UInt(imm5<4>)"
+                //};
+                //selector.BitValues.Add(bitValue);
             }
             else if (enclist.Contains("LUTI4_asimdtbl_L5") && name == "<index>")
             {
                 // For the "Byte" variant: is the vector segment index, in the range 0 to 1
-                var selector = new EncodingSymbolSelector();
-                encodingSymbol.Selector = selector;
-                selector.BitNames.Add("len");
-                var bitValue = new EncodingBitValue
-                {
-                    LocalBitSelectorAsText = "x1",
-                    Text = "UInt(len<1>)"
-                };
-                selector.BitValues.Add(bitValue);
+                //var selector = new EncodingSymbolSelector();
+                //encodingSymbol.Selector = selector;
+                //selector.BitNames.Add("len");
+                //var bitValue = new EncodingBitValue
+                //{
+                //    LocalBitSelectorAsText = "x1",
+                //    Text = "UInt(len<1>)"
+                //};
+                //selector.BitValues.Add(bitValue);
+                encodingSymbol.EncodedInText = "len<1>";
             }
             else if ((enclist.Contains("FMLALLBB_asimdelem_J")
                       || enclist.Contains("FMLALLBT_asimdelem_J")
@@ -623,15 +630,10 @@ partial class Arm64Processor
                 else if (name == "<Vm>")
                 {
                     // Is the name of the second SIMD & FP source register, in the range V0 to V7, encoded in the "Rm<2:0>" field
+                    // We use a selector here because the encoding is 3 bits and not 4/5 bits.
                     var selector = new EncodingSymbolSelector();
                     encodingSymbol.Selector = selector;
                     selector.BitNames.Add("Rm<2:0>");
-                    //var bitValue = new EncodingBitValue
-                    //{
-                    //    BitSelectorAsText = "xxx",
-                    //    Text = "UInt(len<1>)"
-                    //};
-                    //selector.BitValues.Add(bitValue);
                 }
             }
             else if (enclist.Contains("ST3_asisdlso_H3_3h")

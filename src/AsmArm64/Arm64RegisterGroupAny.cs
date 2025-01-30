@@ -61,9 +61,9 @@ public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
 
     public Arm64RegisterGroupAny ToAny() => this;
 
-    public bool HasGroupIndex => (long)(_baseRegisterCountAndIndexer) < 0;
+    public bool HasElementIndex => (long)(_baseRegisterCountAndIndexer) < 0;
 
-    public int GroupIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
+    public int ElementIndex => (byte)(_baseRegisterCountAndIndexer >> (32 + 8));
     
     public string ToString(string? format, IFormatProvider? formatProvider)
     {
@@ -130,7 +130,7 @@ public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
         destination[written + 1] = '}';
         written += 2;
 
-        if (HasGroupIndex)
+        if (HasElementIndex)
         {
             if (destination.Length <= written)
             {
@@ -139,7 +139,7 @@ public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
             }
             destination[written] = '[';
             written++;
-            if (!GroupIndex.TryFormat(destination.Slice(written), out var writtenIndex, default, provider))
+            if (!ElementIndex.TryFormat(destination.Slice(written), out var writtenIndex, default, provider))
             {
                 charsWritten = 0;
                 return false;

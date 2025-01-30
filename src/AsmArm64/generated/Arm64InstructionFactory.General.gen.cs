@@ -9,8 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Collections.Specialized;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 namespace AsmArm64;
 static partial class Arm64InstructionFactory

@@ -2107,6 +2107,10 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x9EAF0000U; // Encoding for: FMOV_v64i_float2int
         raw |= (uint)(Vd_D.Index);
+        {
+            // Write the element indexer for Vd_D
+            var elementIndex = Vd_D.ElementIndex & 0x0;
+        }
         raw |= (uint)(Xn.Index << 5);
         return raw;
     }
@@ -2132,6 +2136,10 @@ static partial class Arm64InstructionFactory
         uint raw = 0x9EAE0000U; // Encoding for: FMOV_64vx_float2int
         raw |= (uint)(Xd.Index);
         raw |= (uint)(Vn_D.Index << 5);
+        {
+            // Write the element indexer for Vn_D
+            var elementIndex = Vn_D.ElementIndex & 0x0;
+        }
         return raw;
     }
     /// <summary>
