@@ -776,7 +776,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_2H.Index << 16);
         {
-            // Write the element indexer for Vm_2H
+            // Write the element indexer for Vm_2H.ElementIndex
             var _i_ = Vm_2H.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -796,7 +796,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_2H.Index << 16);
         {
-            // Write the element indexer for Vm_2H
+            // Write the element indexer for Vm_2H.ElementIndex
             var _i_ = Vm_2H.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -842,7 +842,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_8H.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -875,7 +875,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_8H.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -914,10 +914,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BIC Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BIC_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BIC(Arm64RegisterV_4H Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint BIC(Arm64RegisterV_4H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x2F009400U; // Encoding for: BIC_asimdimm_l_hl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -925,10 +932,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BIC Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BIC_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BIC(Arm64RegisterV_8H Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint BIC(Arm64RegisterV_8H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x6F009400U; // Encoding for: BIC_asimdimm_l_hl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -936,10 +950,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BIC Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BIC_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BIC(Arm64RegisterV_2S Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint BIC(Arm64RegisterV_2S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x2F001400U; // Encoding for: BIC_asimdimm_l_sl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -947,10 +968,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BIC Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BIC_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BIC(Arm64RegisterV_4S Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint BIC(Arm64RegisterV_4S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x6F001400U; // Encoding for: BIC_asimdimm_l_sl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -1310,11 +1338,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMEQ Dd, Dn, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMEQ_asisdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMEQ(Arm64RegisterD Dd, Arm64RegisterD Dn, int value0)
+    public static uint CMEQ(Arm64RegisterD Dd, Arm64RegisterD Dn, byte value0 = 0)
     {
         uint raw = 0x5EE09800U; // Encoding for: CMEQ_asisdmisc_z
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1322,11 +1351,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMEQ Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMEQ_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMEQ(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int value0)
+    public static uint CMEQ(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte value0 = 0)
     {
         uint raw = 0x0E209800U; // Encoding for: CMEQ_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1334,11 +1364,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMEQ Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMEQ_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMEQ(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int value0)
+    public static uint CMEQ(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte value0 = 0)
     {
         uint raw = 0x4E209800U; // Encoding for: CMEQ_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1346,11 +1377,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMEQ Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMEQ_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMEQ(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int value0)
+    public static uint CMEQ(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte value0 = 0)
     {
         uint raw = 0x0E609800U; // Encoding for: CMEQ_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1358,11 +1390,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMEQ Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMEQ_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMEQ(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int value0)
+    public static uint CMEQ(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte value0 = 0)
     {
         uint raw = 0x4E609800U; // Encoding for: CMEQ_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1370,11 +1403,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMEQ Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMEQ_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMEQ(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int value0)
+    public static uint CMEQ(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte value0 = 0)
     {
         uint raw = 0x0EA09800U; // Encoding for: CMEQ_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1382,11 +1416,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMEQ Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMEQ_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMEQ(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int value0)
+    public static uint CMEQ(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte value0 = 0)
     {
         uint raw = 0x4EA09800U; // Encoding for: CMEQ_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1394,11 +1429,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMEQ Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMEQ_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMEQ(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int value0)
+    public static uint CMEQ(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte value0 = 0)
     {
         uint raw = 0x4EE09800U; // Encoding for: CMEQ_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1510,11 +1546,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGE Dd, Dn, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGE_asisdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGE(Arm64RegisterD Dd, Arm64RegisterD Dn, int value0)
+    public static uint CMGE(Arm64RegisterD Dd, Arm64RegisterD Dn, byte value0 = 0)
     {
         uint raw = 0x7EE08800U; // Encoding for: CMGE_asisdmisc_z
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1522,11 +1559,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGE(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int value0)
+    public static uint CMGE(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte value0 = 0)
     {
         uint raw = 0x2E208800U; // Encoding for: CMGE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1534,11 +1572,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGE(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int value0)
+    public static uint CMGE(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte value0 = 0)
     {
         uint raw = 0x6E208800U; // Encoding for: CMGE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1546,11 +1585,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGE(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int value0)
+    public static uint CMGE(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte value0 = 0)
     {
         uint raw = 0x2E608800U; // Encoding for: CMGE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1558,11 +1598,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGE(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int value0)
+    public static uint CMGE(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte value0 = 0)
     {
         uint raw = 0x6E608800U; // Encoding for: CMGE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1570,11 +1611,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGE(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int value0)
+    public static uint CMGE(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte value0 = 0)
     {
         uint raw = 0x2EA08800U; // Encoding for: CMGE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1582,11 +1624,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGE(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int value0)
+    public static uint CMGE(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte value0 = 0)
     {
         uint raw = 0x6EA08800U; // Encoding for: CMGE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1594,11 +1637,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGE(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int value0)
+    public static uint CMGE(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte value0 = 0)
     {
         uint raw = 0x6EE08800U; // Encoding for: CMGE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1710,11 +1754,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGT Dd, Dn, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGT_asisdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGT(Arm64RegisterD Dd, Arm64RegisterD Dn, int value0)
+    public static uint CMGT(Arm64RegisterD Dd, Arm64RegisterD Dn, byte value0 = 0)
     {
         uint raw = 0x5EE08800U; // Encoding for: CMGT_asisdmisc_z
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1722,11 +1767,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGT(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int value0)
+    public static uint CMGT(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte value0 = 0)
     {
         uint raw = 0x0E208800U; // Encoding for: CMGT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1734,11 +1780,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGT(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int value0)
+    public static uint CMGT(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte value0 = 0)
     {
         uint raw = 0x4E208800U; // Encoding for: CMGT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1746,11 +1793,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGT(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int value0)
+    public static uint CMGT(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte value0 = 0)
     {
         uint raw = 0x0E608800U; // Encoding for: CMGT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1758,11 +1806,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGT(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int value0)
+    public static uint CMGT(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte value0 = 0)
     {
         uint raw = 0x4E608800U; // Encoding for: CMGT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1770,11 +1819,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGT(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int value0)
+    public static uint CMGT(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte value0 = 0)
     {
         uint raw = 0x0EA08800U; // Encoding for: CMGT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1782,11 +1832,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGT(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int value0)
+    public static uint CMGT(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte value0 = 0)
     {
         uint raw = 0x4EA08800U; // Encoding for: CMGT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -1794,11 +1845,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMGT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMGT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMGT(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int value0)
+    public static uint CMGT(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte value0 = 0)
     {
         uint raw = 0x4EE08800U; // Encoding for: CMGT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2014,11 +2066,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLE Dd, Dn, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLE_asisdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLE(Arm64RegisterD Dd, Arm64RegisterD Dn, int value0)
+    public static uint CMLE(Arm64RegisterD Dd, Arm64RegisterD Dn, byte value0 = 0)
     {
         uint raw = 0x7EE09800U; // Encoding for: CMLE_asisdmisc_z
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2026,11 +2079,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLE(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int value0)
+    public static uint CMLE(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte value0 = 0)
     {
         uint raw = 0x2E209800U; // Encoding for: CMLE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2038,11 +2092,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLE(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int value0)
+    public static uint CMLE(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte value0 = 0)
     {
         uint raw = 0x6E209800U; // Encoding for: CMLE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2050,11 +2105,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLE(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int value0)
+    public static uint CMLE(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte value0 = 0)
     {
         uint raw = 0x2E609800U; // Encoding for: CMLE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2062,11 +2118,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLE(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int value0)
+    public static uint CMLE(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte value0 = 0)
     {
         uint raw = 0x6E609800U; // Encoding for: CMLE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2074,11 +2131,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLE(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int value0)
+    public static uint CMLE(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte value0 = 0)
     {
         uint raw = 0x2EA09800U; // Encoding for: CMLE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2086,11 +2144,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLE(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int value0)
+    public static uint CMLE(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte value0 = 0)
     {
         uint raw = 0x6EA09800U; // Encoding for: CMLE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2098,11 +2157,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLE Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLE_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLE(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int value0)
+    public static uint CMLE(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte value0 = 0)
     {
         uint raw = 0x6EE09800U; // Encoding for: CMLE_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2110,11 +2170,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLT Dd, Dn, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLT_asisdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLT(Arm64RegisterD Dd, Arm64RegisterD Dn, int value0)
+    public static uint CMLT(Arm64RegisterD Dd, Arm64RegisterD Dn, byte value0 = 0)
     {
         uint raw = 0x5EE0A800U; // Encoding for: CMLT_asisdmisc_z
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2122,11 +2183,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLT(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int value0)
+    public static uint CMLT(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte value0 = 0)
     {
         uint raw = 0x0E20A800U; // Encoding for: CMLT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2134,11 +2196,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLT(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int value0)
+    public static uint CMLT(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte value0 = 0)
     {
         uint raw = 0x4E20A800U; // Encoding for: CMLT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2146,11 +2209,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLT(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int value0)
+    public static uint CMLT(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte value0 = 0)
     {
         uint raw = 0x0E60A800U; // Encoding for: CMLT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2158,11 +2222,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLT(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int value0)
+    public static uint CMLT(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte value0 = 0)
     {
         uint raw = 0x4E60A800U; // Encoding for: CMLT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2170,11 +2235,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLT(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int value0)
+    public static uint CMLT(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte value0 = 0)
     {
         uint raw = 0x0EA0A800U; // Encoding for: CMLT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2182,11 +2248,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLT(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int value0)
+    public static uint CMLT(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte value0 = 0)
     {
         uint raw = 0x4EA0A800U; // Encoding for: CMLT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2194,11 +2261,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMLT Vd.T, Vn.T, #0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMLT_asimdmisc_z), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMLT(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int value0)
+    public static uint CMLT(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte value0 = 0)
     {
         uint raw = 0x4EE0A800U; // Encoding for: CMLT_asimdmisc_z
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (value0 != 0) throw new ArgumentOutOfRangeException(nameof(value0), $"Invalid Immediate. Expecting the fixed value 0 instead of {value0}");
         return raw;
     }
     /// <summary>
@@ -2549,12 +2617,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>EXT Vd.T, Vn.T, Vm.T, #index</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.EXT_asimdext_only), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint EXT(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, Arm64RegisterV_8B Vm_T, int index)
+    public static uint EXT(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, Arm64RegisterV_8B Vm_T, byte index)
     {
         uint raw = 0x2E000000U; // Encoding for: EXT_asimdext_only
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= ((uint)(index & 0x7) << 11);
         return raw;
     }
     /// <summary>
@@ -2562,12 +2631,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>EXT Vd.T, Vn.T, Vm.T, #index</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.EXT_asimdext_only), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint EXT(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, Arm64RegisterV_16B Vm_T, int index)
+    public static uint EXT(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, Arm64RegisterV_16B Vm_T, byte index)
     {
         uint raw = 0x6E000000U; // Encoding for: EXT_asimdext_only
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= ((uint)(index & 0xF) << 11);
         return raw;
     }
     /// <summary>
@@ -3339,12 +3409,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCADD Vd.T, Vn.T, Vm.T, #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCADD_asimdsame2_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCADD(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, Arm64RegisterV_4H Vm_T, int rotate)
+    public static uint FCADD(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, Arm64RegisterV_4H Vm_T, ushort rotate)
     {
         uint raw = 0x2E40E400U; // Encoding for: FCADD_asimdsame2_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= rotate switch
+        {
+            90 => 0x00000000U,
+            270 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [90, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -3352,12 +3428,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCADD Vd.T, Vn.T, Vm.T, #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCADD_asimdsame2_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCADD(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, Arm64RegisterV_8H Vm_T, int rotate)
+    public static uint FCADD(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, Arm64RegisterV_8H Vm_T, ushort rotate)
     {
         uint raw = 0x6E40E400U; // Encoding for: FCADD_asimdsame2_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= rotate switch
+        {
+            90 => 0x00000000U,
+            270 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [90, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -3365,12 +3447,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCADD Vd.T, Vn.T, Vm.T, #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCADD_asimdsame2_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCADD(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, Arm64RegisterV_2S Vm_T, int rotate)
+    public static uint FCADD(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, Arm64RegisterV_2S Vm_T, ushort rotate)
     {
         uint raw = 0x2E80E400U; // Encoding for: FCADD_asimdsame2_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= rotate switch
+        {
+            90 => 0x00000000U,
+            270 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [90, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -3378,12 +3466,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCADD Vd.T, Vn.T, Vm.T, #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCADD_asimdsame2_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCADD(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, Arm64RegisterV_4S Vm_T, int rotate)
+    public static uint FCADD(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, Arm64RegisterV_4S Vm_T, ushort rotate)
     {
         uint raw = 0x6E80E400U; // Encoding for: FCADD_asimdsame2_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= rotate switch
+        {
+            90 => 0x00000000U,
+            270 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [90, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -3391,12 +3485,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCADD Vd.T, Vn.T, Vm.T, #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCADD_asimdsame2_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCADD(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, Arm64RegisterV_2D Vm_T, int rotate)
+    public static uint FCADD(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, Arm64RegisterV_2D Vm_T, ushort rotate)
     {
         uint raw = 0x6EC0E400U; // Encoding for: FCADD_asimdsame2_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= rotate switch
+        {
+            90 => 0x00000000U,
+            270 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [90, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -3508,11 +3608,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMEQ Hd, Hn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMEQ_asisdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMEQ(Arm64RegisterH Hd, Arm64RegisterH Hn, int zero)
+    public static uint FCMEQ(Arm64RegisterH Hd, Arm64RegisterH Hn, float zero = 0.0f)
     {
         uint raw = 0x5EF8D800U; // Encoding for: FCMEQ_asisdmiscfp16_fz
         raw |= (uint)(Hd.Index);
         raw |= (uint)(Hn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3520,11 +3621,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMEQ Vd, Vn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMEQ_asisdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMEQ(Arm64RegisterS Vd, Arm64RegisterS Vn, int zero)
+    public static uint FCMEQ(Arm64RegisterS Vd, Arm64RegisterS Vn, float zero = 0.0f)
     {
         uint raw = 0x5EA0D800U; // Encoding for: FCMEQ_asisdmisc_fz
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3532,11 +3634,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMEQ Vd, Vn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMEQ_asisdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMEQ(Arm64RegisterD Vd, Arm64RegisterD Vn, int zero)
+    public static uint FCMEQ(Arm64RegisterD Vd, Arm64RegisterD Vn, float zero = 0.0f)
     {
         uint raw = 0x5EE0D800U; // Encoding for: FCMEQ_asisdmisc_fz
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3544,11 +3647,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMEQ Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMEQ_asimdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMEQ(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int zero)
+    public static uint FCMEQ(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, float zero = 0.0f)
     {
         uint raw = 0x0EF8D800U; // Encoding for: FCMEQ_asimdmiscfp16_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3556,11 +3660,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMEQ Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMEQ_asimdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMEQ(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int zero)
+    public static uint FCMEQ(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, float zero = 0.0f)
     {
         uint raw = 0x4EF8D800U; // Encoding for: FCMEQ_asimdmiscfp16_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3568,11 +3673,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMEQ Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMEQ_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMEQ(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int zero)
+    public static uint FCMEQ(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, float zero = 0.0f)
     {
         uint raw = 0x0EA0D800U; // Encoding for: FCMEQ_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3580,11 +3686,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMEQ Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMEQ_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMEQ(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int zero)
+    public static uint FCMEQ(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, float zero = 0.0f)
     {
         uint raw = 0x4EA0D800U; // Encoding for: FCMEQ_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3592,11 +3699,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMEQ Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMEQ_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMEQ(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int zero)
+    public static uint FCMEQ(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, float zero = 0.0f)
     {
         uint raw = 0x4EE0D800U; // Encoding for: FCMEQ_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3708,11 +3816,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGE Hd, Hn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGE_asisdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGE(Arm64RegisterH Hd, Arm64RegisterH Hn, int zero)
+    public static uint FCMGE(Arm64RegisterH Hd, Arm64RegisterH Hn, float zero = 0.0f)
     {
         uint raw = 0x7EF8C800U; // Encoding for: FCMGE_asisdmiscfp16_fz
         raw |= (uint)(Hd.Index);
         raw |= (uint)(Hn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3720,11 +3829,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGE Vd, Vn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGE_asisdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGE(Arm64RegisterS Vd, Arm64RegisterS Vn, int zero)
+    public static uint FCMGE(Arm64RegisterS Vd, Arm64RegisterS Vn, float zero = 0.0f)
     {
         uint raw = 0x7EA0C800U; // Encoding for: FCMGE_asisdmisc_fz
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3732,11 +3842,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGE Vd, Vn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGE_asisdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGE(Arm64RegisterD Vd, Arm64RegisterD Vn, int zero)
+    public static uint FCMGE(Arm64RegisterD Vd, Arm64RegisterD Vn, float zero = 0.0f)
     {
         uint raw = 0x7EE0C800U; // Encoding for: FCMGE_asisdmisc_fz
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3744,11 +3855,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGE Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGE_asimdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGE(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int zero)
+    public static uint FCMGE(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, float zero = 0.0f)
     {
         uint raw = 0x2EF8C800U; // Encoding for: FCMGE_asimdmiscfp16_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3756,11 +3868,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGE Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGE_asimdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGE(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int zero)
+    public static uint FCMGE(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, float zero = 0.0f)
     {
         uint raw = 0x6EF8C800U; // Encoding for: FCMGE_asimdmiscfp16_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3768,11 +3881,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGE Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGE_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGE(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int zero)
+    public static uint FCMGE(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, float zero = 0.0f)
     {
         uint raw = 0x2EA0C800U; // Encoding for: FCMGE_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3780,11 +3894,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGE Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGE_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGE(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int zero)
+    public static uint FCMGE(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, float zero = 0.0f)
     {
         uint raw = 0x6EA0C800U; // Encoding for: FCMGE_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3792,11 +3907,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGE Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGE_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGE(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int zero)
+    public static uint FCMGE(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, float zero = 0.0f)
     {
         uint raw = 0x6EE0C800U; // Encoding for: FCMGE_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3908,11 +4024,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGT Hd, Hn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGT_asisdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGT(Arm64RegisterH Hd, Arm64RegisterH Hn, int zero)
+    public static uint FCMGT(Arm64RegisterH Hd, Arm64RegisterH Hn, float zero = 0.0f)
     {
         uint raw = 0x5EF8C800U; // Encoding for: FCMGT_asisdmiscfp16_fz
         raw |= (uint)(Hd.Index);
         raw |= (uint)(Hn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3920,11 +4037,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGT Vd, Vn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGT_asisdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGT(Arm64RegisterS Vd, Arm64RegisterS Vn, int zero)
+    public static uint FCMGT(Arm64RegisterS Vd, Arm64RegisterS Vn, float zero = 0.0f)
     {
         uint raw = 0x5EA0C800U; // Encoding for: FCMGT_asisdmisc_fz
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3932,11 +4050,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGT Vd, Vn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGT_asisdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGT(Arm64RegisterD Vd, Arm64RegisterD Vn, int zero)
+    public static uint FCMGT(Arm64RegisterD Vd, Arm64RegisterD Vn, float zero = 0.0f)
     {
         uint raw = 0x5EE0C800U; // Encoding for: FCMGT_asisdmisc_fz
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3944,11 +4063,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGT Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGT_asimdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGT(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int zero)
+    public static uint FCMGT(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, float zero = 0.0f)
     {
         uint raw = 0x0EF8C800U; // Encoding for: FCMGT_asimdmiscfp16_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3956,11 +4076,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGT Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGT_asimdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGT(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int zero)
+    public static uint FCMGT(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, float zero = 0.0f)
     {
         uint raw = 0x4EF8C800U; // Encoding for: FCMGT_asimdmiscfp16_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3968,11 +4089,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGT Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGT_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGT(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int zero)
+    public static uint FCMGT(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, float zero = 0.0f)
     {
         uint raw = 0x0EA0C800U; // Encoding for: FCMGT_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3980,11 +4102,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGT Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGT_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGT(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int zero)
+    public static uint FCMGT(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, float zero = 0.0f)
     {
         uint raw = 0x4EA0C800U; // Encoding for: FCMGT_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -3992,11 +4115,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMGT Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMGT_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMGT(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int zero)
+    public static uint FCMGT(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, float zero = 0.0f)
     {
         uint raw = 0x4EE0C800U; // Encoding for: FCMGT_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4004,12 +4128,20 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLA Vd.T, Vn.T, Vm.T, #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLA_asimdsame2_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, Arm64RegisterV_4H Vm_T, int rotate)
+    public static uint FCMLA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, Arm64RegisterV_4H Vm_T, ushort rotate)
     {
         uint raw = 0x2E40C400U; // Encoding for: FCMLA_asimdsame2_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= rotate switch
+        {
+            0 => 0x00000000U,
+            90 => 0x00000800U,
+            180 => 0x00001000U,
+            270 => 0x00001800U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [0, 90, 180, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -4017,12 +4149,20 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLA Vd.T, Vn.T, Vm.T, #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLA_asimdsame2_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, Arm64RegisterV_8H Vm_T, int rotate)
+    public static uint FCMLA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, Arm64RegisterV_8H Vm_T, ushort rotate)
     {
         uint raw = 0x6E40C400U; // Encoding for: FCMLA_asimdsame2_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= rotate switch
+        {
+            0 => 0x00000000U,
+            90 => 0x00000800U,
+            180 => 0x00001000U,
+            270 => 0x00001800U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [0, 90, 180, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -4030,12 +4170,20 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLA Vd.T, Vn.T, Vm.T, #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLA_asimdsame2_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLA(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, Arm64RegisterV_2S Vm_T, int rotate)
+    public static uint FCMLA(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, Arm64RegisterV_2S Vm_T, ushort rotate)
     {
         uint raw = 0x2E80C400U; // Encoding for: FCMLA_asimdsame2_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= rotate switch
+        {
+            0 => 0x00000000U,
+            90 => 0x00000800U,
+            180 => 0x00001000U,
+            270 => 0x00001800U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [0, 90, 180, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -4043,12 +4191,20 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLA Vd.T, Vn.T, Vm.T, #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLA_asimdsame2_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, Arm64RegisterV_4S Vm_T, int rotate)
+    public static uint FCMLA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, Arm64RegisterV_4S Vm_T, ushort rotate)
     {
         uint raw = 0x6E80C400U; // Encoding for: FCMLA_asimdsame2_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= rotate switch
+        {
+            0 => 0x00000000U,
+            90 => 0x00000800U,
+            180 => 0x00001000U,
+            270 => 0x00001800U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [0, 90, 180, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -4056,12 +4212,20 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLA Vd.T, Vn.T, Vm.T, #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLA_asimdsame2_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLA(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, Arm64RegisterV_2D Vm_T, int rotate)
+    public static uint FCMLA(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, Arm64RegisterV_2D Vm_T, ushort rotate)
     {
         uint raw = 0x6EC0C400U; // Encoding for: FCMLA_asimdsame2_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_T.Index << 16);
+        raw |= rotate switch
+        {
+            0 => 0x00000000U,
+            90 => 0x00000800U,
+            180 => 0x00001000U,
+            270 => 0x00001800U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [0, 90, 180, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -4069,19 +4233,27 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLA Vd.T, Vn.T, Vm.Ts[index], #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLA_advsimd_elt), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, Arm64RegisterV_H.Indexed Vm_Ts, int rotate)
+    public static uint FCMLA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, Arm64RegisterV_H.Indexed Vm_Ts, ushort rotate)
     {
         uint raw = 0x2F401000U; // Encoding for: FCMLA_advsimd_elt
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
             raw |= ((uint)(_i_ & 0x1) << 11);
         }
+        raw |= rotate switch
+        {
+            0 => 0x00000000U,
+            90 => 0x00000800U,
+            180 => 0x00001000U,
+            270 => 0x00001800U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [0, 90, 180, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -4089,19 +4261,27 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLA Vd.T, Vn.T, Vm.Ts[index], #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLA_advsimd_elt), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, Arm64RegisterV_H.Indexed Vm_Ts, int rotate)
+    public static uint FCMLA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, Arm64RegisterV_H.Indexed Vm_Ts, ushort rotate)
     {
         uint raw = 0x6F401000U; // Encoding for: FCMLA_advsimd_elt
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
             raw |= ((uint)(_i_ & 0x1) << 11);
         }
+        raw |= rotate switch
+        {
+            0 => 0x00000000U,
+            90 => 0x00000800U,
+            180 => 0x00001000U,
+            270 => 0x00001800U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [0, 90, 180, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -4109,13 +4289,21 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLA Vd.T, Vn.T, Vm.Ts[index], #rotate</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLA_advsimd_elt), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, Arm64RegisterV_S.Indexed Vm_Ts, int rotate)
+    public static uint FCMLA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, Arm64RegisterV_S.Indexed Vm_Ts, ushort rotate)
     {
         uint raw = 0x6F801000U; // Encoding for: FCMLA_advsimd_elt
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         raw |= ((uint)(Vm_Ts.ElementIndex & 0x1) << 11);
+        raw |= rotate switch
+        {
+            0 => 0x00000000U,
+            90 => 0x00000800U,
+            180 => 0x00001000U,
+            270 => 0x00001800U,
+            _ => throw new ArgumentOutOfRangeException(nameof(rotate), "Invalid immediate `{rotate}`. The value must be in [0, 90, 180, 270]")
+        };
         return raw;
     }
     /// <summary>
@@ -4123,11 +4311,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLE Hd, Hn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLE_asisdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLE(Arm64RegisterH Hd, Arm64RegisterH Hn, int zero)
+    public static uint FCMLE(Arm64RegisterH Hd, Arm64RegisterH Hn, float zero = 0.0f)
     {
         uint raw = 0x7EF8D800U; // Encoding for: FCMLE_asisdmiscfp16_fz
         raw |= (uint)(Hd.Index);
         raw |= (uint)(Hn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4135,11 +4324,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLE Vd, Vn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLE_asisdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLE(Arm64RegisterS Vd, Arm64RegisterS Vn, int zero)
+    public static uint FCMLE(Arm64RegisterS Vd, Arm64RegisterS Vn, float zero = 0.0f)
     {
         uint raw = 0x7EA0D800U; // Encoding for: FCMLE_asisdmisc_fz
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4147,11 +4337,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLE Vd, Vn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLE_asisdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLE(Arm64RegisterD Vd, Arm64RegisterD Vn, int zero)
+    public static uint FCMLE(Arm64RegisterD Vd, Arm64RegisterD Vn, float zero = 0.0f)
     {
         uint raw = 0x7EE0D800U; // Encoding for: FCMLE_asisdmisc_fz
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4159,11 +4350,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLE Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLE_asimdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLE(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int zero)
+    public static uint FCMLE(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, float zero = 0.0f)
     {
         uint raw = 0x2EF8D800U; // Encoding for: FCMLE_asimdmiscfp16_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4171,11 +4363,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLE Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLE_asimdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLE(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int zero)
+    public static uint FCMLE(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, float zero = 0.0f)
     {
         uint raw = 0x6EF8D800U; // Encoding for: FCMLE_asimdmiscfp16_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4183,11 +4376,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLE Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLE_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLE(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int zero)
+    public static uint FCMLE(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, float zero = 0.0f)
     {
         uint raw = 0x2EA0D800U; // Encoding for: FCMLE_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4195,11 +4389,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLE Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLE_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLE(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int zero)
+    public static uint FCMLE(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, float zero = 0.0f)
     {
         uint raw = 0x6EA0D800U; // Encoding for: FCMLE_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4207,11 +4402,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLE Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLE_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLE(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int zero)
+    public static uint FCMLE(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, float zero = 0.0f)
     {
         uint raw = 0x6EE0D800U; // Encoding for: FCMLE_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4219,11 +4415,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLT Hd, Hn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLT_asisdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLT(Arm64RegisterH Hd, Arm64RegisterH Hn, int zero)
+    public static uint FCMLT(Arm64RegisterH Hd, Arm64RegisterH Hn, float zero = 0.0f)
     {
         uint raw = 0x5EF8E800U; // Encoding for: FCMLT_asisdmiscfp16_fz
         raw |= (uint)(Hd.Index);
         raw |= (uint)(Hn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4231,11 +4428,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLT Vd, Vn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLT_asisdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLT(Arm64RegisterS Vd, Arm64RegisterS Vn, int zero)
+    public static uint FCMLT(Arm64RegisterS Vd, Arm64RegisterS Vn, float zero = 0.0f)
     {
         uint raw = 0x5EA0E800U; // Encoding for: FCMLT_asisdmisc_fz
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4243,11 +4441,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLT Vd, Vn, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLT_asisdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLT(Arm64RegisterD Vd, Arm64RegisterD Vn, int zero)
+    public static uint FCMLT(Arm64RegisterD Vd, Arm64RegisterD Vn, float zero = 0.0f)
     {
         uint raw = 0x5EE0E800U; // Encoding for: FCMLT_asisdmisc_fz
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4255,11 +4454,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLT Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLT_asimdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLT(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int zero)
+    public static uint FCMLT(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, float zero = 0.0f)
     {
         uint raw = 0x0EF8E800U; // Encoding for: FCMLT_asimdmiscfp16_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4267,11 +4467,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLT Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLT_asimdmiscfp16_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLT(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int zero)
+    public static uint FCMLT(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, float zero = 0.0f)
     {
         uint raw = 0x4EF8E800U; // Encoding for: FCMLT_asimdmiscfp16_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4279,11 +4480,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLT Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLT_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLT(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int zero)
+    public static uint FCMLT(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, float zero = 0.0f)
     {
         uint raw = 0x0EA0E800U; // Encoding for: FCMLT_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4291,11 +4493,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLT Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLT_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLT(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int zero)
+    public static uint FCMLT(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, float zero = 0.0f)
     {
         uint raw = 0x4EA0E800U; // Encoding for: FCMLT_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -4303,11 +4506,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCMLT Vd.T, Vn.T, #0.0</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCMLT_asimdmisc_fz), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCMLT(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int zero)
+    public static uint FCMLT(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, float zero = 0.0f)
     {
         uint raw = 0x4EE0E800U; // Encoding for: FCMLT_asimdmisc_fz
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        if (zero != 0.0f) throw new ArgumentOutOfRangeException(nameof(zero), $"Invalid Immediate. Expecting 0.0f instead of {zero}");
         return raw;
     }
     /// <summary>
@@ -5413,11 +5617,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterH Vd, Arm64RegisterH Vn, int fbits)
+    public static uint FCVTZS(Arm64RegisterH Vd, Arm64RegisterH Vn, byte fbits)
     {
         uint raw = 0x5F10FC00U; // Encoding for: FCVTZS_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5425,11 +5630,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterS Vd, Arm64RegisterS Vn, int fbits)
+    public static uint FCVTZS(Arm64RegisterS Vd, Arm64RegisterS Vn, byte fbits)
     {
         uint raw = 0x5F20FC00U; // Encoding for: FCVTZS_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5437,11 +5643,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterD Vd, Arm64RegisterD Vn, int fbits)
+    public static uint FCVTZS(Arm64RegisterD Vd, Arm64RegisterD Vn, byte fbits)
     {
         uint raw = 0x5F40FC00U; // Encoding for: FCVTZS_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5449,11 +5656,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int fbits)
+    public static uint FCVTZS(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte fbits)
     {
         uint raw = 0x0F10FC00U; // Encoding for: FCVTZS_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5461,11 +5669,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int fbits)
+    public static uint FCVTZS(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte fbits)
     {
         uint raw = 0x4F10FC00U; // Encoding for: FCVTZS_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5473,11 +5682,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int fbits)
+    public static uint FCVTZS(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte fbits)
     {
         uint raw = 0x0F20FC00U; // Encoding for: FCVTZS_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5485,11 +5695,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int fbits)
+    public static uint FCVTZS(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte fbits)
     {
         uint raw = 0x4F20FC00U; // Encoding for: FCVTZS_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5497,11 +5708,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int fbits)
+    public static uint FCVTZS(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte fbits)
     {
         uint raw = 0x4F40FC00U; // Encoding for: FCVTZS_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5605,11 +5817,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterH Vd, Arm64RegisterH Vn, int fbits)
+    public static uint FCVTZU(Arm64RegisterH Vd, Arm64RegisterH Vn, byte fbits)
     {
         uint raw = 0x7F10FC00U; // Encoding for: FCVTZU_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5617,11 +5830,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterS Vd, Arm64RegisterS Vn, int fbits)
+    public static uint FCVTZU(Arm64RegisterS Vd, Arm64RegisterS Vn, byte fbits)
     {
         uint raw = 0x7F20FC00U; // Encoding for: FCVTZU_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5629,11 +5843,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterD Vd, Arm64RegisterD Vn, int fbits)
+    public static uint FCVTZU(Arm64RegisterD Vd, Arm64RegisterD Vn, byte fbits)
     {
         uint raw = 0x7F40FC00U; // Encoding for: FCVTZU_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5641,11 +5856,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int fbits)
+    public static uint FCVTZU(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte fbits)
     {
         uint raw = 0x2F10FC00U; // Encoding for: FCVTZU_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5653,11 +5869,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int fbits)
+    public static uint FCVTZU(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte fbits)
     {
         uint raw = 0x6F10FC00U; // Encoding for: FCVTZU_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5665,11 +5882,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int fbits)
+    public static uint FCVTZU(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte fbits)
     {
         uint raw = 0x2F20FC00U; // Encoding for: FCVTZU_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5677,11 +5895,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int fbits)
+    public static uint FCVTZU(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte fbits)
     {
         uint raw = 0x6F20FC00U; // Encoding for: FCVTZU_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5689,11 +5908,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int fbits)
+    public static uint FCVTZU(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte fbits)
     {
         uint raw = 0x6F40FC00U; // Encoding for: FCVTZU_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -5869,7 +6089,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)((Vm_2B.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_2B
+            // Write the element indexer for Vm_2B.ElementIndex
             var _i_ = Vm_2B.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -5889,7 +6109,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)((Vm_2B.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_2B
+            // Write the element indexer for Vm_2B.ElementIndex
             var _i_ = Vm_2B.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -5935,7 +6155,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
         {
-            // Write the element indexer for Vm_4B
+            // Write the element indexer for Vm_4B.ElementIndex
             var _i_ = Vm_4B.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -5955,7 +6175,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
         {
-            // Write the element indexer for Vm_4B
+            // Write the element indexer for Vm_4B.ElementIndex
             var _i_ = Vm_4B.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -6809,7 +7029,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Hn.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -6829,7 +7049,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -6863,7 +7083,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -6883,7 +7103,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -6903,7 +7123,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -6923,7 +7143,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -7022,7 +7242,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7042,7 +7262,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7088,7 +7308,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7108,7 +7328,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7154,7 +7374,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_16B.Index << 5);
         raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
-            // Write the element indexer for Vm_B
+            // Write the element indexer for Vm_B.ElementIndex
             var _i_ = Vm_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 19);
             _i_ >>= 3;
@@ -7187,7 +7407,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_16B.Index << 5);
         raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
-            // Write the element indexer for Vm_B
+            // Write the element indexer for Vm_B.ElementIndex
             var _i_ = Vm_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 19);
             _i_ >>= 3;
@@ -7220,7 +7440,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_16B.Index << 5);
         raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
-            // Write the element indexer for Vm_B
+            // Write the element indexer for Vm_B.ElementIndex
             var _i_ = Vm_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 19);
             _i_ >>= 3;
@@ -7253,7 +7473,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_16B.Index << 5);
         raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
-            // Write the element indexer for Vm_B
+            // Write the element indexer for Vm_B.ElementIndex
             var _i_ = Vm_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 19);
             _i_ >>= 3;
@@ -7286,7 +7506,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_16B.Index << 5);
         raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
-            // Write the element indexer for Vm_B
+            // Write the element indexer for Vm_B.ElementIndex
             var _i_ = Vm_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 19);
             _i_ >>= 3;
@@ -7319,7 +7539,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_16B.Index << 5);
         raw |= ((uint)(Vm_B.Index & 0x7) << 16);
         {
-            // Write the element indexer for Vm_B
+            // Write the element indexer for Vm_B.ElementIndex
             var _i_ = Vm_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 19);
             _i_ >>= 3;
@@ -7352,7 +7572,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Hn.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7372,7 +7592,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -7406,7 +7626,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7426,7 +7646,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7446,7 +7666,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -7466,7 +7686,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -7565,7 +7785,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7585,7 +7805,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7631,7 +7851,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7651,7 +7871,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7716,10 +7936,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FMOV Vd.T, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_asimdimm_h_h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FMOV(Arm64RegisterV_4H Vd_T, int imm)
+    public static uint FMOV(Arm64RegisterV_4H Vd_T, Arm64FloatImmediate imm)
     {
         uint raw = 0x0F00FC00U; // Encoding for: FMOV_asimdimm_h_h
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm.Value
+            var _i_ = imm.Value & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -7727,10 +7954,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FMOV Vd.T, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_asimdimm_h_h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FMOV(Arm64RegisterV_8H Vd_T, int imm)
+    public static uint FMOV(Arm64RegisterV_8H Vd_T, Arm64FloatImmediate imm)
     {
         uint raw = 0x4F00FC00U; // Encoding for: FMOV_asimdimm_h_h
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm.Value
+            var _i_ = imm.Value & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -7738,10 +7972,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FMOV Vd.T, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_asimdimm_s_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FMOV(Arm64RegisterV_2S Vd_T, int imm)
+    public static uint FMOV(Arm64RegisterV_2S Vd_T, Arm64FloatImmediate imm)
     {
         uint raw = 0x0F00F400U; // Encoding for: FMOV_asimdimm_s_s
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm.Value
+            var _i_ = imm.Value & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -7749,10 +7990,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FMOV Vd.T, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_asimdimm_s_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FMOV(Arm64RegisterV_4S Vd_T, int imm)
+    public static uint FMOV(Arm64RegisterV_4S Vd_T, Arm64FloatImmediate imm)
     {
         uint raw = 0x4F00F400U; // Encoding for: FMOV_asimdimm_s_s
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm.Value
+            var _i_ = imm.Value & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -7760,10 +8008,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FMOV Vd.2D, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FMOV_asimdimm_d2_d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FMOV(Arm64RegisterV_2D Vd_2D, int imm)
+    public static uint FMOV(Arm64RegisterV_2D Vd_2D, Arm64FloatImmediate imm)
     {
         uint raw = 0x6F00F400U; // Encoding for: FMOV_asimdimm_d2_d
         raw |= (uint)(Vd_2D.Index);
+        {
+            // Write the immediate for imm.Value
+            var _i_ = imm.Value & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -7778,7 +8033,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Hn.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7798,7 +8053,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -7832,7 +8087,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7852,7 +8107,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -7872,7 +8127,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -7892,7 +8147,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -8095,7 +8350,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Hn.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -8115,7 +8370,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -8149,7 +8404,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -8169,7 +8424,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)((Vm_H.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_H
+            // Write the element indexer for Vm_H.ElementIndex
             var _i_ = Vm_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -8189,7 +8444,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -8209,7 +8464,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= (uint)(Vm_Ts.Index << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -9838,10 +10093,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF7000U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -9849,10 +10110,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF7000U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -9860,10 +10127,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF7400U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -9871,10 +10144,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF7400U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -9882,10 +10161,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF7800U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -9893,10 +10178,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF7800U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -9904,10 +10195,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF7C00U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -9915,10 +10212,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF7C00U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -10022,10 +10325,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDFA000U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -10033,10 +10342,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDFA000U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -10044,10 +10359,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDFA400U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -10055,10 +10376,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDFA400U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -10066,10 +10393,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDFA800U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -10077,10 +10410,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDFA800U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -10088,10 +10427,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDFAC00U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -10099,10 +10444,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDFAC00U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -10206,10 +10557,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF6000U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -10217,10 +10574,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF6000U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -10228,10 +10591,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF6400U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -10239,10 +10608,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF6400U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -10250,10 +10625,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF6800U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -10261,10 +10642,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF6800U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -10272,10 +10659,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF6C00U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -10283,10 +10676,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF6C00U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -10390,10 +10789,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF2000U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -10401,10 +10806,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF2000U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -10412,10 +10823,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF2400U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -10423,10 +10840,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF2400U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -10434,10 +10857,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF2800U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -10445,10 +10874,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF2800U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -10456,10 +10891,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF2C00U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -10467,10 +10908,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF2C00U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -10579,7 +11026,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D400000U; // Encoding for: LD1_asisdlso_b1_1b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -10597,7 +11044,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D404000U; // Encoding for: LD1_asisdlso_h1_1h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -10615,7 +11062,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D408000U; // Encoding for: LD1_asisdlso_s1_1s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -10640,17 +11087,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.B}[index], [Xn|SP], #1</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_b1_i1b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, int value1)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, byte value1 = 1)
     {
         uint raw = 0x0DDF0000U; // Encoding for: LD1_asisdlsop_b1_i1b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value1 != 1) throw new ArgumentOutOfRangeException(nameof(value1), $"Invalid Immediate. Expecting the fixed value 1 instead of {value1}");
         return raw;
     }
     /// <summary>
@@ -10663,7 +11111,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DC00000U; // Encoding for: LD1_asisdlsop_bx1_r1b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -10677,11 +11125,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.D}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_d1_i1d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, int value8)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, byte value8 = 8)
     {
         uint raw = 0x0DDF8400U; // Encoding for: LD1_asisdlsop_d1_i1d
         raw |= (uint)(Vt_D.Index);
         raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
+        if (value8 != 8) throw new ArgumentOutOfRangeException(nameof(value8), $"Invalid Immediate. Expecting the fixed value 8 instead of {value8}");
         return raw;
     }
     /// <summary>
@@ -10702,17 +11151,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.H}[index], [Xn|SP], #2</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_h1_i1h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, int value2)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, byte value2 = 2)
     {
         uint raw = 0x0DDF4000U; // Encoding for: LD1_asisdlsop_h1_i1h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value2 != 2) throw new ArgumentOutOfRangeException(nameof(value2), $"Invalid Immediate. Expecting the fixed value 2 instead of {value2}");
         return raw;
     }
     /// <summary>
@@ -10725,7 +11175,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DC04000U; // Encoding for: LD1_asisdlsop_hx1_r1h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -10739,17 +11189,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.S}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsop_s1_i1s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, int value4)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, byte value4 = 4)
     {
         uint raw = 0x0DDF8000U; // Encoding for: LD1_asisdlsop_s1_i1s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value4 != 4) throw new ArgumentOutOfRangeException(nameof(value4), $"Invalid Immediate. Expecting the fixed value 4 instead of {value4}");
         return raw;
     }
     /// <summary>
@@ -10762,7 +11213,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DC08000U; // Encoding for: LD1_asisdlsop_sx1_r1s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -10864,10 +11315,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DDFC000U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            1 => 0x00000000U,
+            2 => 0x00000400U,
+            4 => 0x00000800U,
+            8 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [1, 2, 4, 8]")
+        };
         return raw;
     }
     /// <summary>
@@ -10875,10 +11334,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DDFC000U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            1 => 0x00000000U,
+            2 => 0x00000400U,
+            4 => 0x00000800U,
+            8 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [1, 2, 4, 8]")
+        };
         return raw;
     }
     /// <summary>
@@ -10886,10 +11353,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DDFC400U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            1 => 0x00000000U,
+            2 => 0x00000400U,
+            4 => 0x00000800U,
+            8 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [1, 2, 4, 8]")
+        };
         return raw;
     }
     /// <summary>
@@ -10897,10 +11372,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DDFC400U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            1 => 0x00000000U,
+            2 => 0x00000400U,
+            4 => 0x00000800U,
+            8 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [1, 2, 4, 8]")
+        };
         return raw;
     }
     /// <summary>
@@ -10908,10 +11391,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DDFC800U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            1 => 0x00000000U,
+            2 => 0x00000400U,
+            4 => 0x00000800U,
+            8 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [1, 2, 4, 8]")
+        };
         return raw;
     }
     /// <summary>
@@ -10919,10 +11410,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DDFC800U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            1 => 0x00000000U,
+            2 => 0x00000400U,
+            4 => 0x00000800U,
+            8 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [1, 2, 4, 8]")
+        };
         return raw;
     }
     /// <summary>
@@ -10930,10 +11429,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DDFCC00U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            1 => 0x00000000U,
+            2 => 0x00000400U,
+            4 => 0x00000800U,
+            8 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [1, 2, 4, 8]")
+        };
         return raw;
     }
     /// <summary>
@@ -10941,10 +11448,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DDFCC00U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            1 => 0x00000000U,
+            2 => 0x00000400U,
+            4 => 0x00000800U,
+            8 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [1, 2, 4, 8]")
+        };
         return raw;
     }
     /// <summary>
@@ -11125,10 +11640,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF8000U; // Encoding for: LD2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -11136,10 +11657,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF8000U; // Encoding for: LD2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -11147,10 +11674,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF8000U; // Encoding for: LD2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -11158,10 +11691,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF8000U; // Encoding for: LD2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -11169,10 +11708,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF8000U; // Encoding for: LD2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -11180,10 +11725,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF8000U; // Encoding for: LD2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -11191,10 +11742,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF8000U; // Encoding for: LD2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -11291,7 +11848,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D600000U; // Encoding for: LD2_asisdlso_b2_2b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -11309,7 +11866,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D604000U; // Encoding for: LD2_asisdlso_h2_2h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -11327,7 +11884,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D608000U; // Encoding for: LD2_asisdlso_s2_2s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -11352,17 +11909,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.B, Vt2.B}[index], [Xn|SP], #2</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_b2_i2b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, int value2)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, byte value2 = 2)
     {
         uint raw = 0x0DFF0000U; // Encoding for: LD2_asisdlsop_b2_i2b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value2 != 2) throw new ArgumentOutOfRangeException(nameof(value2), $"Invalid Immediate. Expecting the fixed value 2 instead of {value2}");
         return raw;
     }
     /// <summary>
@@ -11375,7 +11933,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DE00000U; // Encoding for: LD2_asisdlsop_bx2_r2b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -11389,17 +11947,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.H, Vt2.H}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_h2_i2h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, int value4)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, byte value4 = 4)
     {
         uint raw = 0x0DFF4000U; // Encoding for: LD2_asisdlsop_h2_i2h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value4 != 4) throw new ArgumentOutOfRangeException(nameof(value4), $"Invalid Immediate. Expecting the fixed value 4 instead of {value4}");
         return raw;
     }
     /// <summary>
@@ -11412,7 +11971,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DE04000U; // Encoding for: LD2_asisdlsop_hx2_r2h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -11426,17 +11985,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.S, Vt2.S}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_s2_i2s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, int value8)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, byte value8 = 8)
     {
         uint raw = 0x0DFF8000U; // Encoding for: LD2_asisdlsop_s2_i2s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value8 != 8) throw new ArgumentOutOfRangeException(nameof(value8), $"Invalid Immediate. Expecting the fixed value 8 instead of {value8}");
         return raw;
     }
     /// <summary>
@@ -11449,7 +12009,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DE08000U; // Encoding for: LD2_asisdlsop_sx2_r2s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -11463,11 +12023,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.D, Vt2.D}[index], [Xn|SP], #16</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsop_d2_i2d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, int value16)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, byte value16 = 16)
     {
         uint raw = 0x0DFF8400U; // Encoding for: LD2_asisdlsop_d2_i2d
         raw |= (uint)(Vt_D.Index);
         raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
+        if (value16 != 16) throw new ArgumentOutOfRangeException(nameof(value16), $"Invalid Immediate. Expecting the fixed value 16 instead of {value16}");
         return raw;
     }
     /// <summary>
@@ -11576,10 +12137,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DFFC000U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            2 => 0x00000000U,
+            4 => 0x00000400U,
+            8 => 0x00000800U,
+            16 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [2, 4, 8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -11587,10 +12156,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DFFC000U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            2 => 0x00000000U,
+            4 => 0x00000400U,
+            8 => 0x00000800U,
+            16 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [2, 4, 8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -11598,10 +12175,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DFFC400U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            2 => 0x00000000U,
+            4 => 0x00000400U,
+            8 => 0x00000800U,
+            16 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [2, 4, 8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -11609,10 +12194,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DFFC400U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            2 => 0x00000000U,
+            4 => 0x00000400U,
+            8 => 0x00000800U,
+            16 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [2, 4, 8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -11620,10 +12213,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DFFC800U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            2 => 0x00000000U,
+            4 => 0x00000400U,
+            8 => 0x00000800U,
+            16 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [2, 4, 8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -11631,10 +12232,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DFFC800U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            2 => 0x00000000U,
+            4 => 0x00000400U,
+            8 => 0x00000800U,
+            16 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [2, 4, 8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -11642,10 +12251,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DFFCC00U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            2 => 0x00000000U,
+            4 => 0x00000400U,
+            8 => 0x00000800U,
+            16 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [2, 4, 8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -11653,10 +12270,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DFFCC00U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            2 => 0x00000000U,
+            4 => 0x00000400U,
+            8 => 0x00000800U,
+            16 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [2, 4, 8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -11837,10 +12462,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF4000U; // Encoding for: LD3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -11848,10 +12479,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF4000U; // Encoding for: LD3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -11859,10 +12496,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF4000U; // Encoding for: LD3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -11870,10 +12513,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF4000U; // Encoding for: LD3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -11881,10 +12530,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF4000U; // Encoding for: LD3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -11892,10 +12547,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF4000U; // Encoding for: LD3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -11903,10 +12564,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF4000U; // Encoding for: LD3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -12003,7 +12670,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D402000U; // Encoding for: LD3_asisdlso_b3_3b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -12021,7 +12688,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D406000U; // Encoding for: LD3_asisdlso_h3_3h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -12039,7 +12706,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D40A000U; // Encoding for: LD3_asisdlso_s3_3s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -12064,17 +12731,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_b3_i3b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, int value3)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, byte value3 = 3)
     {
         uint raw = 0x0DDF2000U; // Encoding for: LD3_asisdlsop_b3_i3b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value3 != 3) throw new ArgumentOutOfRangeException(nameof(value3), $"Invalid Immediate. Expecting the fixed value 3 instead of {value3}");
         return raw;
     }
     /// <summary>
@@ -12087,7 +12755,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DC02000U; // Encoding for: LD3_asisdlsop_bx3_r3b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -12101,17 +12769,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_h3_i3h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, int value6)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, byte value6 = 6)
     {
         uint raw = 0x0DDF6000U; // Encoding for: LD3_asisdlsop_h3_i3h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value6 != 6) throw new ArgumentOutOfRangeException(nameof(value6), $"Invalid Immediate. Expecting the fixed value 6 instead of {value6}");
         return raw;
     }
     /// <summary>
@@ -12124,7 +12793,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DC06000U; // Encoding for: LD3_asisdlsop_hx3_r3h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -12138,17 +12807,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_s3_i3s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, int value12)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, byte value12 = 12)
     {
         uint raw = 0x0DDFA000U; // Encoding for: LD3_asisdlsop_s3_i3s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value12 != 12) throw new ArgumentOutOfRangeException(nameof(value12), $"Invalid Immediate. Expecting the fixed value 12 instead of {value12}");
         return raw;
     }
     /// <summary>
@@ -12161,7 +12831,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DC0A000U; // Encoding for: LD3_asisdlsop_sx3_r3s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -12175,11 +12845,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsop_d3_i3d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, int value24)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, byte value24 = 24)
     {
         uint raw = 0x0DDFA400U; // Encoding for: LD3_asisdlsop_d3_i3d
         raw |= (uint)(Vt_D.Index);
         raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
+        if (value24 != 24) throw new ArgumentOutOfRangeException(nameof(value24), $"Invalid Immediate. Expecting the fixed value 24 instead of {value24}");
         return raw;
     }
     /// <summary>
@@ -12288,10 +12959,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DDFE000U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            3 => 0x00000000U,
+            6 => 0x00000400U,
+            12 => 0x00000800U,
+            24 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [3, 6, 12, 24]")
+        };
         return raw;
     }
     /// <summary>
@@ -12299,10 +12978,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DDFE000U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            3 => 0x00000000U,
+            6 => 0x00000400U,
+            12 => 0x00000800U,
+            24 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [3, 6, 12, 24]")
+        };
         return raw;
     }
     /// <summary>
@@ -12310,10 +12997,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DDFE400U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            3 => 0x00000000U,
+            6 => 0x00000400U,
+            12 => 0x00000800U,
+            24 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [3, 6, 12, 24]")
+        };
         return raw;
     }
     /// <summary>
@@ -12321,10 +13016,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DDFE400U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            3 => 0x00000000U,
+            6 => 0x00000400U,
+            12 => 0x00000800U,
+            24 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [3, 6, 12, 24]")
+        };
         return raw;
     }
     /// <summary>
@@ -12332,10 +13035,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DDFE800U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            3 => 0x00000000U,
+            6 => 0x00000400U,
+            12 => 0x00000800U,
+            24 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [3, 6, 12, 24]")
+        };
         return raw;
     }
     /// <summary>
@@ -12343,10 +13054,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DDFE800U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            3 => 0x00000000U,
+            6 => 0x00000400U,
+            12 => 0x00000800U,
+            24 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [3, 6, 12, 24]")
+        };
         return raw;
     }
     /// <summary>
@@ -12354,10 +13073,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DDFEC00U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            3 => 0x00000000U,
+            6 => 0x00000400U,
+            12 => 0x00000800U,
+            24 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [3, 6, 12, 24]")
+        };
         return raw;
     }
     /// <summary>
@@ -12365,10 +13092,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DDFEC00U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            3 => 0x00000000U,
+            6 => 0x00000400U,
+            12 => 0x00000800U,
+            24 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [3, 6, 12, 24]")
+        };
         return raw;
     }
     /// <summary>
@@ -12549,10 +13284,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF0000U; // Encoding for: LD4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -12560,10 +13301,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF0000U; // Encoding for: LD4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -12571,10 +13318,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF0000U; // Encoding for: LD4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -12582,10 +13335,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF0000U; // Encoding for: LD4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -12593,10 +13352,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0CDF0000U; // Encoding for: LD4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -12604,10 +13369,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF0000U; // Encoding for: LD4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -12615,10 +13386,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4CDF0000U; // Encoding for: LD4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -12715,7 +13492,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D602000U; // Encoding for: LD4_asisdlso_b4_4b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -12733,7 +13510,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D606000U; // Encoding for: LD4_asisdlso_h4_4h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -12751,7 +13528,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D60A000U; // Encoding for: LD4_asisdlso_s4_4s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -12776,17 +13553,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_b4_i4b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, int value4)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor src, byte value4 = 4)
     {
         uint raw = 0x0DFF2000U; // Encoding for: LD4_asisdlsop_b4_i4b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value4 != 4) throw new ArgumentOutOfRangeException(nameof(value4), $"Invalid Immediate. Expecting the fixed value 4 instead of {value4}");
         return raw;
     }
     /// <summary>
@@ -12799,7 +13577,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DE02000U; // Encoding for: LD4_asisdlsop_bx4_r4b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -12813,17 +13591,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_h4_i4h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, int value8)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor src, byte value8 = 8)
     {
         uint raw = 0x0DFF6000U; // Encoding for: LD4_asisdlsop_h4_i4h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value8 != 8) throw new ArgumentOutOfRangeException(nameof(value8), $"Invalid Immediate. Expecting the fixed value 8 instead of {value8}");
         return raw;
     }
     /// <summary>
@@ -12836,7 +13615,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DE06000U; // Encoding for: LD4_asisdlsop_hx4_r4h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -12850,17 +13629,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_s4_i4s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, int value16)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor src, byte value16 = 16)
     {
         uint raw = 0x0DFFA000U; // Encoding for: LD4_asisdlsop_s4_i4s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value16 != 16) throw new ArgumentOutOfRangeException(nameof(value16), $"Invalid Immediate. Expecting the fixed value 16 instead of {value16}");
         return raw;
     }
     /// <summary>
@@ -12873,7 +13653,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DE0A000U; // Encoding for: LD4_asisdlsop_sx4_r4s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -12887,11 +13667,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsop_d4_i4d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, int value32)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor src, byte value32 = 32)
     {
         uint raw = 0x0DFFA400U; // Encoding for: LD4_asisdlsop_d4_i4d
         raw |= (uint)(Vt_D.Index);
         raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
+        if (value32 != 32) throw new ArgumentOutOfRangeException(nameof(value32), $"Invalid Immediate. Expecting the fixed value 32 instead of {value32}");
         return raw;
     }
     /// <summary>
@@ -13000,10 +13781,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DFFE000U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            4 => 0x00000000U,
+            8 => 0x00000400U,
+            16 => 0x00000800U,
+            32 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [4, 8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -13011,10 +13800,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DFFE000U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            4 => 0x00000000U,
+            8 => 0x00000400U,
+            16 => 0x00000800U,
+            32 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [4, 8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -13022,10 +13819,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DFFE400U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            4 => 0x00000000U,
+            8 => 0x00000400U,
+            16 => 0x00000800U,
+            32 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [4, 8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -13033,10 +13838,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DFFE400U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            4 => 0x00000000U,
+            8 => 0x00000400U,
+            16 => 0x00000800U,
+            32 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [4, 8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -13044,10 +13857,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DFFE800U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            4 => 0x00000000U,
+            8 => 0x00000400U,
+            16 => 0x00000800U,
+            32 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [4, 8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -13055,10 +13876,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DFFE800U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            4 => 0x00000000U,
+            8 => 0x00000400U,
+            16 => 0x00000800U,
+            32 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [4, 8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -13066,10 +13895,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x0DFFEC00U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            4 => 0x00000000U,
+            8 => 0x00000400U,
+            16 => 0x00000800U,
+            32 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [4, 8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -13077,10 +13914,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, int imm)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor src, byte imm)
     {
         uint raw = 0x4DFFEC00U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            4 => 0x00000000U,
+            8 => 0x00000400U,
+            16 => 0x00000800U,
+            32 => 0x00000C00U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [4, 8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -14219,7 +15064,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -14239,7 +15084,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -14259,7 +15104,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -14279,7 +15124,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -14377,7 +15222,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -14397,7 +15242,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -14417,7 +15262,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -14437,7 +15282,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -14738,10 +15583,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #0}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_n_b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_8B Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_8B Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x0F00E400U; // Encoding for: MOVI_asimdimm_n_b
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -14749,10 +15601,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #0}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_n_b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_16B Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_16B Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x4F00E400U; // Encoding for: MOVI_asimdimm_n_b
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -14760,10 +15619,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_4H Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_4H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x0F008400U; // Encoding for: MOVI_asimdimm_l_hl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -14771,10 +15637,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_8H Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_8H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x4F008400U; // Encoding for: MOVI_asimdimm_l_hl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -14782,10 +15655,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_2S Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_2S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x0F000400U; // Encoding for: MOVI_asimdimm_l_sl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -14793,10 +15673,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_4S Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_4S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x4F000400U; // Encoding for: MOVI_asimdimm_l_sl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -14804,10 +15691,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8, MSL #amount</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_m_sm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_2S Vd_T, int imm8, MSLShiftKind MSL, int amount)
+    public static uint MOVI(Arm64RegisterV_2S Vd_T, byte imm8, MSLShiftKind MSL, int amount)
     {
         uint raw = 0x0F00C400U; // Encoding for: MOVI_asimdimm_m_sm
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -14815,10 +15709,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8, MSL #amount</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_m_sm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_4S Vd_T, int imm8, MSLShiftKind MSL, int amount)
+    public static uint MOVI(Arm64RegisterV_4S Vd_T, byte imm8, MSLShiftKind MSL, int amount)
     {
         uint raw = 0x4F00C400U; // Encoding for: MOVI_asimdimm_m_sm
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -14826,10 +15727,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Dd, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_d_ds), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterD Dd, ulong imm)
+    public static uint MOVI(Arm64RegisterD Dd, Arm64BitMaskImmediate64 imm)
     {
         uint raw = 0x2F00E400U; // Encoding for: MOVI_asimdimm_d_ds
         raw |= (uint)(Dd.Index);
+        {
+            // Write the immediate for imm.Value
+            var _i_ = imm.Value & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -14837,10 +15745,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.2D, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_d2_d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_2D Vd_2D, ulong imm)
+    public static uint MOVI(Arm64RegisterV_2D Vd_2D, Arm64BitMaskImmediate64 imm)
     {
         uint raw = 0x6F00E400U; // Encoding for: MOVI_asimdimm_d2_d
         raw |= (uint)(Vd_2D.Index);
+        {
+            // Write the immediate for imm.Value
+            var _i_ = imm.Value & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -14855,7 +15770,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -14875,7 +15790,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -14895,7 +15810,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -14915,7 +15830,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -15030,10 +15945,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_4H Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MVNI(Arm64RegisterV_4H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x2F008400U; // Encoding for: MVNI_asimdimm_l_hl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -15041,10 +15963,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_8H Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MVNI(Arm64RegisterV_8H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x6F008400U; // Encoding for: MVNI_asimdimm_l_hl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -15052,10 +15981,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_2S Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MVNI(Arm64RegisterV_2S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x2F000400U; // Encoding for: MVNI_asimdimm_l_sl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -15063,10 +15999,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_4S Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MVNI(Arm64RegisterV_4S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x6F000400U; // Encoding for: MVNI_asimdimm_l_sl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -15074,10 +16017,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8, MSL #amount</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_m_sm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_2S Vd_T, int imm8, MSLShiftKind MSL, int amount)
+    public static uint MVNI(Arm64RegisterV_2S Vd_T, byte imm8, MSLShiftKind MSL, int amount)
     {
         uint raw = 0x2F00C400U; // Encoding for: MVNI_asimdimm_m_sm
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -15085,10 +16035,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8, MSL #amount</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_m_sm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_4S Vd_T, int imm8, MSLShiftKind MSL, int amount)
+    public static uint MVNI(Arm64RegisterV_4S Vd_T, byte imm8, MSLShiftKind MSL, int amount)
     {
         uint raw = 0x6F00C400U; // Encoding for: MVNI_asimdimm_m_sm
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -15218,10 +16175,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ORR Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ORR(Arm64RegisterV_4H Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint ORR(Arm64RegisterV_4H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x0F009400U; // Encoding for: ORR_asimdimm_l_hl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -15229,10 +16193,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ORR Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ORR(Arm64RegisterV_8H Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint ORR(Arm64RegisterV_8H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x4F009400U; // Encoding for: ORR_asimdimm_l_hl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -15240,10 +16211,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ORR Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ORR(Arm64RegisterV_2S Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint ORR(Arm64RegisterV_2S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x0F001400U; // Encoding for: ORR_asimdimm_l_sl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -15251,10 +16229,17 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ORR Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ORR(Arm64RegisterV_4S Vd_T, int imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint ORR(Arm64RegisterV_4S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
     {
         uint raw = 0x4F001400U; // Encoding for: ORR_asimdimm_l_sl
         raw |= (uint)(Vd_T.Index);
+        {
+            // Write the immediate for imm8
+            var _i_ = imm8 & 0xFF;
+            raw |= ((uint)(_i_ & 0x1F) << 5);
+            _i_ >>= 5;
+            raw |= ((uint)(_i_ & 0x7) << 16);
+        }
         return raw;
     }
     /// <summary>
@@ -15755,11 +16740,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint RSHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x0F088C00U; // Encoding for: RSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -15767,11 +16753,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint RSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F088C00U; // Encoding for: RSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -15779,11 +16766,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint RSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x0F108C00U; // Encoding for: RSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -15791,11 +16779,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint RSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F108C00U; // Encoding for: RSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -15803,11 +16792,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint RSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x0F208C00U; // Encoding for: RSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -15815,11 +16805,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint RSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F208C00U; // Encoding for: RSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -15827,11 +16818,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint RSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F088C00U; // Encoding for: RSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -15839,11 +16831,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint RSHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F088C00U; // Encoding for: RSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -15851,11 +16844,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint RSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F108C00U; // Encoding for: RSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -15863,11 +16857,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint RSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F108C00U; // Encoding for: RSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -15875,11 +16870,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint RSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F208C00U; // Encoding for: RSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -15887,11 +16883,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint RSHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F208C00U; // Encoding for: RSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17039,11 +18036,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterH Vd, Arm64RegisterH Vn, int fbits)
+    public static uint SCVTF(Arm64RegisterH Vd, Arm64RegisterH Vn, byte fbits)
     {
         uint raw = 0x5F10E400U; // Encoding for: SCVTF_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17051,11 +18049,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterS Vd, Arm64RegisterS Vn, int fbits)
+    public static uint SCVTF(Arm64RegisterS Vd, Arm64RegisterS Vn, byte fbits)
     {
         uint raw = 0x5F20E400U; // Encoding for: SCVTF_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17063,11 +18062,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterD Vd, Arm64RegisterD Vn, int fbits)
+    public static uint SCVTF(Arm64RegisterD Vd, Arm64RegisterD Vn, byte fbits)
     {
         uint raw = 0x5F40E400U; // Encoding for: SCVTF_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17075,11 +18075,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int fbits)
+    public static uint SCVTF(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte fbits)
     {
         uint raw = 0x0F10E400U; // Encoding for: SCVTF_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17087,11 +18088,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int fbits)
+    public static uint SCVTF(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte fbits)
     {
         uint raw = 0x4F10E400U; // Encoding for: SCVTF_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17099,11 +18101,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int fbits)
+    public static uint SCVTF(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte fbits)
     {
         uint raw = 0x0F20E400U; // Encoding for: SCVTF_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17111,11 +18114,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int fbits)
+    public static uint SCVTF(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte fbits)
     {
         uint raw = 0x4F20E400U; // Encoding for: SCVTF_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17123,11 +18127,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int fbits)
+    public static uint SCVTF(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte fbits)
     {
         uint raw = 0x4F40E400U; // Encoding for: SCVTF_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17238,7 +18243,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
         {
-            // Write the element indexer for Vm_4B
+            // Write the element indexer for Vm_4B.ElementIndex
             var _i_ = Vm_4B.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -17258,7 +18263,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
         {
-            // Write the element indexer for Vm_4B
+            // Write the element indexer for Vm_4B.ElementIndex
             var _i_ = Vm_4B.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -17553,11 +18558,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHL Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHL_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHL(Arm64RegisterD Dd, Arm64RegisterD Dn, int shift)
+    public static uint SHL(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
     {
         uint raw = 0x5F405400U; // Encoding for: SHL_asisdshf_r
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17565,11 +18571,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHL(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint SHL(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x0F085400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17577,11 +18584,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHL(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint SHL(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x4F085400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17589,11 +18597,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHL(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint SHL(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x0F105400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17601,11 +18610,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHL(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint SHL(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x4F105400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17613,11 +18623,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHL(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint SHL(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x0F205400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17625,11 +18636,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHL(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint SHL(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x4F205400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17637,11 +18649,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHL(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint SHL(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x4F405400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17649,11 +18662,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, int shift)
+    public static uint SHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift)
     {
         uint raw = 0x2E213800U; // Encoding for: SHLL_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17661,11 +18681,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, int shift)
+    public static uint SHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift)
     {
         uint raw = 0x6E213800U; // Encoding for: SHLL_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17673,11 +18700,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, int shift)
+    public static uint SHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift)
     {
         uint raw = 0x2E613800U; // Encoding for: SHLL_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17685,11 +18719,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, int shift)
+    public static uint SHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift)
     {
         uint raw = 0x6E613800U; // Encoding for: SHLL_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17697,11 +18738,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, int shift)
+    public static uint SHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift)
     {
         uint raw = 0x2EA13800U; // Encoding for: SHLL_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17709,11 +18757,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, int shift)
+    public static uint SHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, byte shift)
     {
         uint raw = 0x6EA13800U; // Encoding for: SHLL_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17721,11 +18776,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, int shift)
+    public static uint SHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift)
     {
         uint raw = 0x6E213800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17733,11 +18795,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, int shift)
+    public static uint SHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift)
     {
         uint raw = 0x6E213800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17745,11 +18814,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, int shift)
+    public static uint SHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift)
     {
         uint raw = 0x6E613800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17757,11 +18833,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, int shift)
+    public static uint SHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift)
     {
         uint raw = 0x6E613800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17769,11 +18852,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, int shift)
+    public static uint SHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift)
     {
         uint raw = 0x6EA13800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17781,11 +18871,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, int shift)
+    public static uint SHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, byte shift)
     {
         uint raw = 0x6EA13800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= shift switch
+        {
+            8 => 0x00000000U,
+            16 => 0x00400000U,
+            32 => 0x00800000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(shift), "Invalid immediate `{shift}`. The value must be in [8, 16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -17793,11 +18890,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x0F088400U; // Encoding for: SHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17805,11 +18903,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F088400U; // Encoding for: SHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17817,11 +18916,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x0F108400U; // Encoding for: SHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17829,11 +18929,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F108400U; // Encoding for: SHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17841,11 +18942,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x0F208400U; // Encoding for: SHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17853,11 +18955,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F208400U; // Encoding for: SHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17865,11 +18968,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F088400U; // Encoding for: SHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17877,11 +18981,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F088400U; // Encoding for: SHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17889,11 +18994,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F108400U; // Encoding for: SHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17901,11 +19007,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F108400U; // Encoding for: SHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17913,11 +19020,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F208400U; // Encoding for: SHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -17925,11 +19033,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F208400U; // Encoding for: SHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -18015,11 +19124,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SLI Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SLI_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SLI(Arm64RegisterD Dd, Arm64RegisterD Dn, int shift)
+    public static uint SLI(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
     {
         uint raw = 0x7F405400U; // Encoding for: SLI_asisdshf_r
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -18027,11 +19137,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SLI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SLI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SLI(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint SLI(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x2F085400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -18039,11 +19150,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SLI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SLI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SLI(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint SLI(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x6F085400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -18051,11 +19163,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SLI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SLI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SLI(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint SLI(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x2F105400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -18063,11 +19176,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SLI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SLI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SLI(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint SLI(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x6F105400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -18075,11 +19189,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SLI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SLI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SLI(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint SLI(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x2F205400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -18087,11 +19202,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SLI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SLI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SLI(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint SLI(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x6F205400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -18099,11 +19215,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SLI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SLI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SLI(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint SLI(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x6F405400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -18671,7 +19788,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -18691,7 +19808,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -18711,7 +19828,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -18731,7 +19848,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -18829,7 +19946,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -18849,7 +19966,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -18869,7 +19986,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -18889,7 +20006,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -18987,7 +20104,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -19007,7 +20124,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -19027,7 +20144,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -19047,7 +20164,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -19145,7 +20262,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -19165,7 +20282,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -19185,7 +20302,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -19205,7 +20322,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -19381,7 +20498,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -19401,7 +20518,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -19421,7 +20538,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -19441,7 +20558,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -19539,7 +20656,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -19559,7 +20676,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -19579,7 +20696,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -19599,7 +20716,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -19972,7 +21089,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vbn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -19992,7 +21109,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vbn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20012,7 +21129,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20032,7 +21149,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20052,7 +21169,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20072,7 +21189,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20170,7 +21287,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20190,7 +21307,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20210,7 +21327,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20230,7 +21347,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20302,7 +21419,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vbn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20322,7 +21439,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vbn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20342,7 +21459,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20362,7 +21479,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20382,7 +21499,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20402,7 +21519,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20500,7 +21617,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20520,7 +21637,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20540,7 +21657,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20560,7 +21677,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20632,7 +21749,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20652,7 +21769,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20672,7 +21789,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20692,7 +21809,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20712,7 +21829,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20732,7 +21849,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20830,7 +21947,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20850,7 +21967,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20870,7 +21987,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20890,7 +22007,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -20910,7 +22027,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vbn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -20930,7 +22047,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vbn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -21028,7 +22145,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -21048,7 +22165,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -21068,7 +22185,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -21088,7 +22205,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -21292,7 +22409,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -21312,7 +22429,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -21332,7 +22449,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -21352,7 +22469,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -21372,7 +22489,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -21392,7 +22509,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -21490,7 +22607,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -21510,7 +22627,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -21530,7 +22647,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -21550,7 +22667,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -21570,7 +22687,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -21590,7 +22707,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -21688,7 +22805,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -21708,7 +22825,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -21728,7 +22845,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -21748,7 +22865,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -21768,7 +22885,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -21788,7 +22905,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_T.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -22022,11 +23139,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterB Vbd, Arm64RegisterH Van, int shift)
+    public static uint SQRSHRN(Arm64RegisterB Vbd, Arm64RegisterH Van, byte shift)
     {
         uint raw = 0x5F089C00U; // Encoding for: SQRSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22034,11 +23152,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterH Vbd, Arm64RegisterS Van, int shift)
+    public static uint SQRSHRN(Arm64RegisterH Vbd, Arm64RegisterS Van, byte shift)
     {
         uint raw = 0x5F109C00U; // Encoding for: SQRSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22046,11 +23165,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterS Vbd, Arm64RegisterD Van, int shift)
+    public static uint SQRSHRN(Arm64RegisterS Vbd, Arm64RegisterD Van, byte shift)
     {
         uint raw = 0x5F209C00U; // Encoding for: SQRSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22058,11 +23178,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQRSHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x0F089C00U; // Encoding for: SQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22070,11 +23191,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQRSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F089C00U; // Encoding for: SQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22082,11 +23204,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQRSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x0F109C00U; // Encoding for: SQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22094,11 +23217,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQRSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F109C00U; // Encoding for: SQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22106,11 +23230,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQRSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x0F209C00U; // Encoding for: SQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22118,11 +23243,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQRSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F209C00U; // Encoding for: SQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22130,11 +23256,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQRSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F089C00U; // Encoding for: SQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22142,11 +23269,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQRSHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F089C00U; // Encoding for: SQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22154,11 +23282,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQRSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F109C00U; // Encoding for: SQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22166,11 +23295,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQRSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F109C00U; // Encoding for: SQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22178,11 +23308,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQRSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F209C00U; // Encoding for: SQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22190,11 +23321,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQRSHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F209C00U; // Encoding for: SQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22202,11 +23334,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterB Vbd, Arm64RegisterH Van, int shift)
+    public static uint SQRSHRUN(Arm64RegisterB Vbd, Arm64RegisterH Van, byte shift)
     {
         uint raw = 0x7F088C00U; // Encoding for: SQRSHRUN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22214,11 +23347,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterH Vbd, Arm64RegisterS Van, int shift)
+    public static uint SQRSHRUN(Arm64RegisterH Vbd, Arm64RegisterS Van, byte shift)
     {
         uint raw = 0x7F108C00U; // Encoding for: SQRSHRUN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22226,11 +23360,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterS Vbd, Arm64RegisterD Van, int shift)
+    public static uint SQRSHRUN(Arm64RegisterS Vbd, Arm64RegisterD Van, byte shift)
     {
         uint raw = 0x7F208C00U; // Encoding for: SQRSHRUN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22238,11 +23373,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQRSHRUN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x2F088C00U; // Encoding for: SQRSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22250,11 +23386,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQRSHRUN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F088C00U; // Encoding for: SQRSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22262,11 +23399,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQRSHRUN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x2F108C00U; // Encoding for: SQRSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22274,11 +23412,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQRSHRUN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F108C00U; // Encoding for: SQRSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22286,11 +23425,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQRSHRUN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x2F208C00U; // Encoding for: SQRSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22298,11 +23438,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQRSHRUN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F208C00U; // Encoding for: SQRSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22310,11 +23451,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQRSHRUN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F088C00U; // Encoding for: SQRSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22322,11 +23464,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQRSHRUN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F088C00U; // Encoding for: SQRSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22334,11 +23477,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQRSHRUN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F108C00U; // Encoding for: SQRSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22346,11 +23490,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQRSHRUN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F108C00U; // Encoding for: SQRSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22358,11 +23503,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQRSHRUN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F208C00U; // Encoding for: SQRSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22370,11 +23516,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQRSHRUN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F208C00U; // Encoding for: SQRSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22382,11 +23529,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHL Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHL_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHL(Arm64RegisterB Vd, Arm64RegisterB Vn, int shift)
+    public static uint SQSHL(Arm64RegisterB Vd, Arm64RegisterB Vn, byte shift)
     {
         uint raw = 0x5F087400U; // Encoding for: SQSHL_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22394,11 +23542,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHL Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHL_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHL(Arm64RegisterH Vd, Arm64RegisterH Vn, int shift)
+    public static uint SQSHL(Arm64RegisterH Vd, Arm64RegisterH Vn, byte shift)
     {
         uint raw = 0x5F107400U; // Encoding for: SQSHL_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22406,11 +23555,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHL Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHL_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHL(Arm64RegisterS Vd, Arm64RegisterS Vn, int shift)
+    public static uint SQSHL(Arm64RegisterS Vd, Arm64RegisterS Vn, byte shift)
     {
         uint raw = 0x5F207400U; // Encoding for: SQSHL_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22418,11 +23568,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHL Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHL_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHL(Arm64RegisterD Vd, Arm64RegisterD Vn, int shift)
+    public static uint SQSHL(Arm64RegisterD Vd, Arm64RegisterD Vn, byte shift)
     {
         uint raw = 0x5F407400U; // Encoding for: SQSHL_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22430,11 +23581,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHL(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint SQSHL(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x0F087400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22442,11 +23594,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHL(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint SQSHL(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x4F087400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22454,11 +23607,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHL(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint SQSHL(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x0F107400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22466,11 +23620,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHL(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint SQSHL(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x4F107400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22478,11 +23633,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHL(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint SQSHL(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x0F207400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22490,11 +23646,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHL(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint SQSHL(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x4F207400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22502,11 +23659,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHL(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint SQSHL(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x4F407400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22657,11 +23815,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHLU Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHLU_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHLU(Arm64RegisterB Vd, Arm64RegisterB Vn, int shift)
+    public static uint SQSHLU(Arm64RegisterB Vd, Arm64RegisterB Vn, byte shift)
     {
         uint raw = 0x7F086400U; // Encoding for: SQSHLU_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22669,11 +23828,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHLU Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHLU_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHLU(Arm64RegisterH Vd, Arm64RegisterH Vn, int shift)
+    public static uint SQSHLU(Arm64RegisterH Vd, Arm64RegisterH Vn, byte shift)
     {
         uint raw = 0x7F106400U; // Encoding for: SQSHLU_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22681,11 +23841,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHLU Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHLU_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHLU(Arm64RegisterS Vd, Arm64RegisterS Vn, int shift)
+    public static uint SQSHLU(Arm64RegisterS Vd, Arm64RegisterS Vn, byte shift)
     {
         uint raw = 0x7F206400U; // Encoding for: SQSHLU_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22693,11 +23854,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHLU Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHLU_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHLU(Arm64RegisterD Vd, Arm64RegisterD Vn, int shift)
+    public static uint SQSHLU(Arm64RegisterD Vd, Arm64RegisterD Vn, byte shift)
     {
         uint raw = 0x7F406400U; // Encoding for: SQSHLU_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22705,11 +23867,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHLU Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHLU_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHLU(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint SQSHLU(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x2F086400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22717,11 +23880,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHLU Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHLU_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHLU(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint SQSHLU(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x6F086400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22729,11 +23893,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHLU Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHLU_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHLU(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint SQSHLU(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x2F106400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22741,11 +23906,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHLU Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHLU_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHLU(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint SQSHLU(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x6F106400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22753,11 +23919,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHLU Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHLU_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHLU(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint SQSHLU(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x2F206400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22765,11 +23932,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHLU Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHLU_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHLU(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint SQSHLU(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x6F206400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22777,11 +23945,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHLU Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHLU_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHLU(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint SQSHLU(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x6F406400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22789,11 +23958,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterB Vbd, Arm64RegisterH Van, int shift)
+    public static uint SQSHRN(Arm64RegisterB Vbd, Arm64RegisterH Van, byte shift)
     {
         uint raw = 0x5F089400U; // Encoding for: SQSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22801,11 +23971,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterH Vbd, Arm64RegisterS Van, int shift)
+    public static uint SQSHRN(Arm64RegisterH Vbd, Arm64RegisterS Van, byte shift)
     {
         uint raw = 0x5F109400U; // Encoding for: SQSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22813,11 +23984,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterS Vbd, Arm64RegisterD Van, int shift)
+    public static uint SQSHRN(Arm64RegisterS Vbd, Arm64RegisterD Van, byte shift)
     {
         uint raw = 0x5F209400U; // Encoding for: SQSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22825,11 +23997,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQSHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x0F089400U; // Encoding for: SQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22837,11 +24010,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F089400U; // Encoding for: SQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22849,11 +24023,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x0F109400U; // Encoding for: SQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22861,11 +24036,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F109400U; // Encoding for: SQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22873,11 +24049,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x0F209400U; // Encoding for: SQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22885,11 +24062,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F209400U; // Encoding for: SQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22897,11 +24075,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F089400U; // Encoding for: SQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22909,11 +24088,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQSHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x4F089400U; // Encoding for: SQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22921,11 +24101,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F109400U; // Encoding for: SQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22933,11 +24114,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F109400U; // Encoding for: SQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22945,11 +24127,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F209400U; // Encoding for: SQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22957,11 +24140,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQSHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x4F209400U; // Encoding for: SQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22969,11 +24153,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterB Vbd, Arm64RegisterH Van, int shift)
+    public static uint SQSHRUN(Arm64RegisterB Vbd, Arm64RegisterH Van, byte shift)
     {
         uint raw = 0x7F088400U; // Encoding for: SQSHRUN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22981,11 +24166,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterH Vbd, Arm64RegisterS Van, int shift)
+    public static uint SQSHRUN(Arm64RegisterH Vbd, Arm64RegisterS Van, byte shift)
     {
         uint raw = 0x7F108400U; // Encoding for: SQSHRUN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -22993,11 +24179,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterS Vbd, Arm64RegisterD Van, int shift)
+    public static uint SQSHRUN(Arm64RegisterS Vbd, Arm64RegisterD Van, byte shift)
     {
         uint raw = 0x7F208400U; // Encoding for: SQSHRUN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23005,11 +24192,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQSHRUN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x2F088400U; // Encoding for: SQSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23017,11 +24205,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQSHRUN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F088400U; // Encoding for: SQSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23029,11 +24218,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQSHRUN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x2F108400U; // Encoding for: SQSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23041,11 +24231,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQSHRUN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F108400U; // Encoding for: SQSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23053,11 +24244,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQSHRUN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x2F208400U; // Encoding for: SQSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23065,11 +24257,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQSHRUN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F208400U; // Encoding for: SQSHRUN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23077,11 +24270,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQSHRUN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F088400U; // Encoding for: SQSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23089,11 +24283,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint SQSHRUN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F088400U; // Encoding for: SQSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23101,11 +24296,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQSHRUN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F108400U; // Encoding for: SQSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23113,11 +24309,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint SQSHRUN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F108400U; // Encoding for: SQSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23125,11 +24322,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQSHRUN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F208400U; // Encoding for: SQSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23137,11 +24335,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint SQSHRUN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F208400U; // Encoding for: SQSHRUN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23730,11 +24929,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRI Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRI_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRI(Arm64RegisterD Dd, Arm64RegisterD Dn, int shift)
+    public static uint SRI(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
     {
         uint raw = 0x7F404400U; // Encoding for: SRI_asisdshf_r
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23742,11 +24942,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRI(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint SRI(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x2F084400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23754,11 +24955,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRI(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint SRI(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x6F084400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23766,11 +24968,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRI(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint SRI(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x2F104400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23778,11 +24981,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRI(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint SRI(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x6F104400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23790,11 +24994,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRI(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint SRI(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x2F204400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23802,11 +25007,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRI(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint SRI(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x6F204400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23814,11 +25020,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRI Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRI_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRI(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint SRI(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x6F404400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23930,11 +25137,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSHR Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSHR_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, int shift)
+    public static uint SRSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
     {
         uint raw = 0x5F402400U; // Encoding for: SRSHR_asisdshf_r
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23942,11 +25150,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSHR(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint SRSHR(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x0F082400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23954,11 +25163,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSHR(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint SRSHR(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x4F082400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23966,11 +25176,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSHR(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint SRSHR(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x0F102400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23978,11 +25189,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSHR(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint SRSHR(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x4F102400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -23990,11 +25202,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSHR(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint SRSHR(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x0F202400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24002,11 +25215,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSHR(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint SRSHR(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x4F202400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24014,11 +25228,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSHR(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint SRSHR(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x4F402400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24026,11 +25241,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSRA Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSRA_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, int shift)
+    public static uint SRSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
     {
         uint raw = 0x5F403400U; // Encoding for: SRSRA_asisdshf_r
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24038,11 +25254,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSRA(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint SRSRA(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x0F083400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24050,11 +25267,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSRA(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint SRSRA(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x4F083400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24062,11 +25280,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSRA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint SRSRA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x0F103400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24074,11 +25293,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSRA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint SRSRA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x4F103400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24086,11 +25306,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSRA(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint SRSRA(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x0F203400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24098,11 +25319,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSRA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint SRSRA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x4F203400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24110,11 +25332,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSRA(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint SRSRA(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x4F403400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24226,11 +25449,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, int shift)
+    public static uint SSHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift)
     {
         uint raw = 0x0F08A400U; // Encoding for: SSHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24238,11 +25462,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, int shift)
+    public static uint SSHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift)
     {
         uint raw = 0x4F08A400U; // Encoding for: SSHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24250,11 +25475,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, int shift)
+    public static uint SSHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift)
     {
         uint raw = 0x0F10A400U; // Encoding for: SSHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24262,11 +25488,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, int shift)
+    public static uint SSHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift)
     {
         uint raw = 0x4F10A400U; // Encoding for: SSHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24274,11 +25501,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, int shift)
+    public static uint SSHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift)
     {
         uint raw = 0x0F20A400U; // Encoding for: SSHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24286,11 +25514,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, int shift)
+    public static uint SSHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, byte shift)
     {
         uint raw = 0x4F20A400U; // Encoding for: SSHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24298,11 +25527,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, int shift)
+    public static uint SSHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift)
     {
         uint raw = 0x4F08A400U; // Encoding for: SSHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24310,11 +25540,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, int shift)
+    public static uint SSHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift)
     {
         uint raw = 0x4F08A400U; // Encoding for: SSHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24322,11 +25553,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, int shift)
+    public static uint SSHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift)
     {
         uint raw = 0x4F10A400U; // Encoding for: SSHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24334,11 +25566,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, int shift)
+    public static uint SSHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift)
     {
         uint raw = 0x4F10A400U; // Encoding for: SSHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24346,11 +25579,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, int shift)
+    public static uint SSHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift)
     {
         uint raw = 0x4F20A400U; // Encoding for: SSHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24358,11 +25592,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, int shift)
+    public static uint SSHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, byte shift)
     {
         uint raw = 0x4F20A400U; // Encoding for: SSHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24370,11 +25605,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHR Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHR_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, int shift)
+    public static uint SSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
     {
         uint raw = 0x5F400400U; // Encoding for: SSHR_asisdshf_r
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24382,11 +25618,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHR(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint SSHR(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x0F080400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24394,11 +25631,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHR(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint SSHR(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x4F080400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24406,11 +25644,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHR(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint SSHR(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x0F100400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24418,11 +25657,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHR(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint SSHR(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x4F100400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24430,11 +25670,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHR(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint SSHR(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x0F200400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24442,11 +25683,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHR(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint SSHR(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x4F200400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24454,11 +25696,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHR(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint SSHR(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x4F400400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24466,11 +25709,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSRA Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSRA_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, int shift)
+    public static uint SSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
     {
         uint raw = 0x5F401400U; // Encoding for: SSRA_asisdshf_r
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24478,11 +25722,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSRA(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint SSRA(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x0F081400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24490,11 +25735,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSRA(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint SSRA(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x4F081400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24502,11 +25748,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSRA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint SSRA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x0F101400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24514,11 +25761,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSRA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint SSRA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x4F101400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24526,11 +25774,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSRA(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint SSRA(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x0F201400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24538,11 +25787,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSRA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint SSRA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x4F201400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -24550,11 +25800,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSRA(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint SSRA(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x4F401400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -25226,10 +26477,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F7000U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -25237,10 +26494,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F7000U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -25248,10 +26511,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F7400U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -25259,10 +26528,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F7400U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -25270,10 +26545,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F7800U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -25281,10 +26562,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F7800U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -25292,10 +26579,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F7C00U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -25303,10 +26596,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F7C00U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            8 => 0x00000000U,
+            16 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [8, 16]")
+        };
         return raw;
     }
     /// <summary>
@@ -25410,10 +26709,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9FA000U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -25421,10 +26726,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9FA000U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -25432,10 +26743,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9FA400U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -25443,10 +26760,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9FA400U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -25454,10 +26777,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9FA800U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -25465,10 +26794,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9FA800U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -25476,10 +26811,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9FAC00U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -25487,10 +26828,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9FAC00U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -25594,10 +26941,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F6000U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -25605,10 +26958,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F6000U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -25616,10 +26975,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F6400U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -25627,10 +26992,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F6400U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -25638,10 +27009,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F6800U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -25649,10 +27026,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F6800U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -25660,10 +27043,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F6C00U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -25671,10 +27060,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F6C00U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -25778,10 +27173,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F2000U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -25789,10 +27190,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F2000U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -25800,10 +27207,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F2400U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -25811,10 +27224,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F2400U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -25822,10 +27241,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F2800U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -25833,10 +27258,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F2800U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -25844,10 +27275,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F2C00U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -25855,10 +27292,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F2C00U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -25967,7 +27410,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D000000U; // Encoding for: ST1_asisdlso_b1_1b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -25985,7 +27428,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D004000U; // Encoding for: ST1_asisdlso_h1_1h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -26003,7 +27446,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D008000U; // Encoding for: ST1_asisdlso_s1_1s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -26028,17 +27471,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.B}[index], [Xn|SP], #1</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_b1_i1b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, int value1)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, byte value1 = 1)
     {
         uint raw = 0x0D9F0000U; // Encoding for: ST1_asisdlsop_b1_i1b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value1 != 1) throw new ArgumentOutOfRangeException(nameof(value1), $"Invalid Immediate. Expecting the fixed value 1 instead of {value1}");
         return raw;
     }
     /// <summary>
@@ -26051,7 +27495,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D800000U; // Encoding for: ST1_asisdlsop_bx1_r1b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -26065,17 +27509,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.H}[index], [Xn|SP], #2</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_h1_i1h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, int value2)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, byte value2 = 2)
     {
         uint raw = 0x0D9F4000U; // Encoding for: ST1_asisdlsop_h1_i1h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value2 != 2) throw new ArgumentOutOfRangeException(nameof(value2), $"Invalid Immediate. Expecting the fixed value 2 instead of {value2}");
         return raw;
     }
     /// <summary>
@@ -26088,7 +27533,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D804000U; // Encoding for: ST1_asisdlsop_hx1_r1h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -26102,17 +27547,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.S}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_s1_i1s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, int value4)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, byte value4 = 4)
     {
         uint raw = 0x0D9F8000U; // Encoding for: ST1_asisdlsop_s1_i1s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value4 != 4) throw new ArgumentOutOfRangeException(nameof(value4), $"Invalid Immediate. Expecting the fixed value 4 instead of {value4}");
         return raw;
     }
     /// <summary>
@@ -26125,7 +27571,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D808000U; // Encoding for: ST1_asisdlsop_sx1_r1s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -26139,11 +27585,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.D}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsop_d1_i1d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, int value8)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, byte value8 = 8)
     {
         uint raw = 0x0D9F8400U; // Encoding for: ST1_asisdlsop_d1_i1d
         raw |= (uint)(Vt_D.Index);
         raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
+        if (value8 != 8) throw new ArgumentOutOfRangeException(nameof(value8), $"Invalid Immediate. Expecting the fixed value 8 instead of {value8}");
         return raw;
     }
     /// <summary>
@@ -26241,10 +27688,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F8000U; // Encoding for: ST2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -26252,10 +27705,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F8000U; // Encoding for: ST2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -26263,10 +27722,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0CDF8000U; // Encoding for: ST2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -26274,10 +27739,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4CDF8000U; // Encoding for: ST2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -26285,10 +27756,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F8000U; // Encoding for: ST2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -26296,10 +27773,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F8000U; // Encoding for: ST2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -26307,10 +27790,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4CDF8000U; // Encoding for: ST2_asisdlsep_i2_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            16 => 0x00000000U,
+            32 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [16, 32]")
+        };
         return raw;
     }
     /// <summary>
@@ -26407,7 +27896,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D200000U; // Encoding for: ST2_asisdlso_b2_2b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -26425,7 +27914,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D204000U; // Encoding for: ST2_asisdlso_h2_2h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -26443,7 +27932,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D208000U; // Encoding for: ST2_asisdlso_s2_2s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -26468,17 +27957,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.B, Vt2.B}[index], [Xn|SP], #2</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_b2_i2b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, int value2)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, byte value2 = 2)
     {
         uint raw = 0x0DBF0000U; // Encoding for: ST2_asisdlsop_b2_i2b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value2 != 2) throw new ArgumentOutOfRangeException(nameof(value2), $"Invalid Immediate. Expecting the fixed value 2 instead of {value2}");
         return raw;
     }
     /// <summary>
@@ -26491,7 +27981,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DA00000U; // Encoding for: ST2_asisdlsop_bx2_r2b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -26505,17 +27995,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.H, Vt2.H}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_h2_i2h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, int value4)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, byte value4 = 4)
     {
         uint raw = 0x0DBF4000U; // Encoding for: ST2_asisdlsop_h2_i2h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value4 != 4) throw new ArgumentOutOfRangeException(nameof(value4), $"Invalid Immediate. Expecting the fixed value 4 instead of {value4}");
         return raw;
     }
     /// <summary>
@@ -26528,7 +28019,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DA04000U; // Encoding for: ST2_asisdlsop_hx2_r2h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -26542,17 +28033,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.S, Vt2.S}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_s2_i2s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, int value8)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, byte value8 = 8)
     {
         uint raw = 0x0DBF8000U; // Encoding for: ST2_asisdlsop_s2_i2s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value8 != 8) throw new ArgumentOutOfRangeException(nameof(value8), $"Invalid Immediate. Expecting the fixed value 8 instead of {value8}");
         return raw;
     }
     /// <summary>
@@ -26565,7 +28057,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DA08000U; // Encoding for: ST2_asisdlsop_sx2_r2s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -26579,11 +28071,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.D, Vt2.D}[index], [Xn|SP], #16</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsop_d2_i2d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, int value16)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, byte value16 = 16)
     {
         uint raw = 0x0DBF8400U; // Encoding for: ST2_asisdlsop_d2_i2d
         raw |= (uint)(Vt_D.Index);
         raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
+        if (value16 != 16) throw new ArgumentOutOfRangeException(nameof(value16), $"Invalid Immediate. Expecting the fixed value 16 instead of {value16}");
         return raw;
     }
     /// <summary>
@@ -26681,10 +28174,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F4000U; // Encoding for: ST3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -26692,10 +28191,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F4000U; // Encoding for: ST3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -26703,10 +28208,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0CDF4000U; // Encoding for: ST3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -26714,10 +28225,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4CDF4000U; // Encoding for: ST3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -26725,10 +28242,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F4000U; // Encoding for: ST3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -26736,10 +28259,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F4000U; // Encoding for: ST3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -26747,10 +28276,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4CDF4000U; // Encoding for: ST3_asisdlsep_i3_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            24 => 0x00000000U,
+            48 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [24, 48]")
+        };
         return raw;
     }
     /// <summary>
@@ -26847,7 +28382,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D002000U; // Encoding for: ST3_asisdlso_b3_3b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -26865,7 +28400,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D006000U; // Encoding for: ST3_asisdlso_h3_3h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -26883,7 +28418,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D00A000U; // Encoding for: ST3_asisdlso_s3_3s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -26908,17 +28443,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.B, Vt2.B, Vt3.B}[index], [Xn|SP], #3</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_b3_i3b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, int value3)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, byte value3 = 3)
     {
         uint raw = 0x0D9F2000U; // Encoding for: ST3_asisdlsop_b3_i3b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value3 != 3) throw new ArgumentOutOfRangeException(nameof(value3), $"Invalid Immediate. Expecting the fixed value 3 instead of {value3}");
         return raw;
     }
     /// <summary>
@@ -26931,7 +28467,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D802000U; // Encoding for: ST3_asisdlsop_bx3_r3b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -26945,17 +28481,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.H, Vt2.H, Vt3.H}[index], [Xn|SP], #6</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_h3_i3h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, int value6)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, byte value6 = 6)
     {
         uint raw = 0x0D9F6000U; // Encoding for: ST3_asisdlsop_h3_i3h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value6 != 6) throw new ArgumentOutOfRangeException(nameof(value6), $"Invalid Immediate. Expecting the fixed value 6 instead of {value6}");
         return raw;
     }
     /// <summary>
@@ -26968,7 +28505,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D806000U; // Encoding for: ST3_asisdlsop_hx3_r3h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -26982,17 +28519,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.S, Vt2.S, Vt3.S}[index], [Xn|SP], #12</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_s3_i3s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, int value12)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, byte value12 = 12)
     {
         uint raw = 0x0D9FA000U; // Encoding for: ST3_asisdlsop_s3_i3s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value12 != 12) throw new ArgumentOutOfRangeException(nameof(value12), $"Invalid Immediate. Expecting the fixed value 12 instead of {value12}");
         return raw;
     }
     /// <summary>
@@ -27005,7 +28543,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D80A000U; // Encoding for: ST3_asisdlsop_sx3_r3s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -27019,11 +28557,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.D, Vt2.D, Vt3.D}[index], [Xn|SP], #24</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsop_d3_i3d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, int value24)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, byte value24 = 24)
     {
         uint raw = 0x0D9FA400U; // Encoding for: ST3_asisdlsop_d3_i3d
         raw |= (uint)(Vt_D.Index);
         raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
+        if (value24 != 24) throw new ArgumentOutOfRangeException(nameof(value24), $"Invalid Immediate. Expecting the fixed value 24 instead of {value24}");
         return raw;
     }
     /// <summary>
@@ -27121,10 +28660,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F0000U; // Encoding for: ST4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -27132,10 +28677,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F0000U; // Encoding for: ST4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -27143,10 +28694,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0CDF0000U; // Encoding for: ST4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -27154,10 +28711,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4CDF0000U; // Encoding for: ST4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -27165,10 +28728,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x0C9F0000U; // Encoding for: ST4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -27176,10 +28745,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4C9F0000U; // Encoding for: ST4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -27187,10 +28762,16 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, int imm)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_2D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm)
     {
         uint raw = 0x4CDF0000U; // Encoding for: ST4_asisdlsep_i4_i
         raw |= (uint)(Vt_T.Index);
+        raw |= imm switch
+        {
+            32 => 0x00000000U,
+            64 => 0x40000000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(imm), "Invalid immediate `{imm}`. The value must be in [32, 64]")
+        };
         return raw;
     }
     /// <summary>
@@ -27287,7 +28868,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D202000U; // Encoding for: ST4_asisdlso_b4_4b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -27305,7 +28886,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D206000U; // Encoding for: ST4_asisdlso_h4_4h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -27323,7 +28904,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0D20A000U; // Encoding for: ST4_asisdlso_s4_4s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -27348,17 +28929,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], #4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_b4_i4b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, int value4)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_B>.Indexed Vt_B, Arm64BaseMemoryAccessor dst, byte value4 = 4)
     {
         uint raw = 0x0DBF2000U; // Encoding for: ST4_asisdlsop_b4_i4b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value4 != 4) throw new ArgumentOutOfRangeException(nameof(value4), $"Invalid Immediate. Expecting the fixed value 4 instead of {value4}");
         return raw;
     }
     /// <summary>
@@ -27371,7 +28953,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DA02000U; // Encoding for: ST4_asisdlsop_bx4_r4b
         raw |= (uint)(Vt_B.Index);
         {
-            // Write the element indexer for Vt_B
+            // Write the element indexer for Vt_B.ElementIndex
             var _i_ = Vt_B.ElementIndex & 0xF;
             raw |= ((uint)(_i_ & 0x7) << 10);
             _i_ >>= 3;
@@ -27385,17 +28967,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], #8</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_h4_i4h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, int value8)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_H>.Indexed Vt_H, Arm64BaseMemoryAccessor dst, byte value8 = 8)
     {
         uint raw = 0x0DBF6000U; // Encoding for: ST4_asisdlsop_h4_i4h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value8 != 8) throw new ArgumentOutOfRangeException(nameof(value8), $"Invalid Immediate. Expecting the fixed value 8 instead of {value8}");
         return raw;
     }
     /// <summary>
@@ -27408,7 +28991,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DA06000U; // Encoding for: ST4_asisdlsop_hx4_r4h
         raw |= (uint)(Vt_H.Index);
         {
-            // Write the element indexer for Vt_H
+            // Write the element indexer for Vt_H.ElementIndex
             var _i_ = Vt_H.ElementIndex & 0x7;
             raw |= ((uint)(_i_ & 0x3) << 11);
             _i_ >>= 2;
@@ -27422,17 +29005,18 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], #16</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_s4_i4s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, int value16)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_S>.Indexed Vt_S, Arm64BaseMemoryAccessor dst, byte value16 = 16)
     {
         uint raw = 0x0DBFA000U; // Encoding for: ST4_asisdlsop_s4_i4s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
             raw |= ((uint)(_i_ & 0x1) << 30);
         }
+        if (value16 != 16) throw new ArgumentOutOfRangeException(nameof(value16), $"Invalid Immediate. Expecting the fixed value 16 instead of {value16}");
         return raw;
     }
     /// <summary>
@@ -27445,7 +29029,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0DA0A000U; // Encoding for: ST4_asisdlsop_sx4_r4s
         raw |= (uint)(Vt_S.Index);
         {
-            // Write the element indexer for Vt_S
+            // Write the element indexer for Vt_S.ElementIndex
             var _i_ = Vt_S.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 12);
             _i_ >>= 1;
@@ -27459,11 +29043,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], #32</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsop_d4_i4d), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, int value32)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_D>.Indexed Vt_D, Arm64BaseMemoryAccessor dst, byte value32 = 32)
     {
         uint raw = 0x0DBFA400U; // Encoding for: ST4_asisdlsop_d4_i4d
         raw |= (uint)(Vt_D.Index);
         raw |= ((uint)(Vt_D.ElementIndex & 0x1) << 30);
+        if (value32 != 32) throw new ArgumentOutOfRangeException(nameof(value32), $"Invalid Immediate. Expecting the fixed value 32 instead of {value32}");
         return raw;
     }
     /// <summary>
@@ -28203,7 +29788,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
         {
-            // Write the element indexer for Vm_4B
+            // Write the element indexer for Vm_4B.ElementIndex
             var _i_ = Vm_4B.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -28223,7 +29808,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
         {
-            // Write the element indexer for Vm_4B
+            // Write the element indexer for Vm_4B.ElementIndex
             var _i_ = Vm_4B.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -29886,11 +31471,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterH Vd, Arm64RegisterH Vn, int fbits)
+    public static uint UCVTF(Arm64RegisterH Vd, Arm64RegisterH Vn, byte fbits)
     {
         uint raw = 0x7F10E400U; // Encoding for: UCVTF_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -29898,11 +31484,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterS Vd, Arm64RegisterS Vn, int fbits)
+    public static uint UCVTF(Arm64RegisterS Vd, Arm64RegisterS Vn, byte fbits)
     {
         uint raw = 0x7F20E400U; // Encoding for: UCVTF_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -29910,11 +31497,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Vd, Vn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_asisdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterD Vd, Arm64RegisterD Vn, int fbits)
+    public static uint UCVTF(Arm64RegisterD Vd, Arm64RegisterD Vn, byte fbits)
     {
         uint raw = 0x7F40E400U; // Encoding for: UCVTF_asisdshf_c
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -29922,11 +31510,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int fbits)
+    public static uint UCVTF(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte fbits)
     {
         uint raw = 0x2F10E400U; // Encoding for: UCVTF_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -29934,11 +31523,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int fbits)
+    public static uint UCVTF(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte fbits)
     {
         uint raw = 0x6F10E400U; // Encoding for: UCVTF_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -29946,11 +31536,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int fbits)
+    public static uint UCVTF(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte fbits)
     {
         uint raw = 0x2F20E400U; // Encoding for: UCVTF_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -29958,11 +31549,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int fbits)
+    public static uint UCVTF(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte fbits)
     {
         uint raw = 0x6F20E400U; // Encoding for: UCVTF_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -29970,11 +31562,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Vd.T, Vn.T, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_asimdshf_c), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int fbits)
+    public static uint UCVTF(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte fbits)
     {
         uint raw = 0x6F40E400U; // Encoding for: UCVTF_asimdshf_c
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(fbits & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -30085,7 +31678,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
         {
-            // Write the element indexer for Vm_4B
+            // Write the element indexer for Vm_4B.ElementIndex
             var _i_ = Vm_4B.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -30105,7 +31698,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
         {
-            // Write the element indexer for Vm_4B
+            // Write the element indexer for Vm_4B.ElementIndex
             var _i_ = Vm_4B.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -30739,7 +32332,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -30759,7 +32352,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -30779,7 +32372,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -30799,7 +32392,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -30897,7 +32490,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -30917,7 +32510,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -30937,7 +32530,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -30957,7 +32550,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -31055,7 +32648,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -31075,7 +32668,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -31095,7 +32688,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -31115,7 +32708,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -31213,7 +32806,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -31233,7 +32826,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -31253,7 +32846,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -31273,7 +32866,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -31423,7 +33016,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -31443,7 +33036,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -31463,7 +33056,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -31483,7 +33076,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -31581,7 +33174,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -31601,7 +33194,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0xF) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x3) << 20);
             _i_ >>= 2;
@@ -31621,7 +33214,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -31641,7 +33234,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= ((uint)(Vm_Ts.Index & 0x1F) << 16);
         {
-            // Write the element indexer for Vm_Ts
+            // Write the element indexer for Vm_Ts.ElementIndex
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -32018,11 +33611,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterB Vbd, Arm64RegisterH Van, int shift)
+    public static uint UQRSHRN(Arm64RegisterB Vbd, Arm64RegisterH Van, byte shift)
     {
         uint raw = 0x7F089C00U; // Encoding for: UQRSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32030,11 +33624,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterH Vbd, Arm64RegisterS Van, int shift)
+    public static uint UQRSHRN(Arm64RegisterH Vbd, Arm64RegisterS Van, byte shift)
     {
         uint raw = 0x7F109C00U; // Encoding for: UQRSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32042,11 +33637,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterS Vbd, Arm64RegisterD Van, int shift)
+    public static uint UQRSHRN(Arm64RegisterS Vbd, Arm64RegisterD Van, byte shift)
     {
         uint raw = 0x7F209C00U; // Encoding for: UQRSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32054,11 +33650,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint UQRSHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x2F089C00U; // Encoding for: UQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32066,11 +33663,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint UQRSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F089C00U; // Encoding for: UQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32078,11 +33676,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint UQRSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x2F109C00U; // Encoding for: UQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32090,11 +33689,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint UQRSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F109C00U; // Encoding for: UQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32102,11 +33702,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint UQRSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x2F209C00U; // Encoding for: UQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32114,11 +33715,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint UQRSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F209C00U; // Encoding for: UQRSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32126,11 +33728,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint UQRSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F089C00U; // Encoding for: UQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32138,11 +33741,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint UQRSHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F089C00U; // Encoding for: UQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32150,11 +33754,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint UQRSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F109C00U; // Encoding for: UQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32162,11 +33767,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint UQRSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F109C00U; // Encoding for: UQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32174,11 +33780,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint UQRSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F209C00U; // Encoding for: UQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32186,11 +33793,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint UQRSHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F209C00U; // Encoding for: UQRSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32198,11 +33806,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHL Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHL_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHL(Arm64RegisterB Vd, Arm64RegisterB Vn, int shift)
+    public static uint UQSHL(Arm64RegisterB Vd, Arm64RegisterB Vn, byte shift)
     {
         uint raw = 0x7F087400U; // Encoding for: UQSHL_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32210,11 +33819,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHL Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHL_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHL(Arm64RegisterH Vd, Arm64RegisterH Vn, int shift)
+    public static uint UQSHL(Arm64RegisterH Vd, Arm64RegisterH Vn, byte shift)
     {
         uint raw = 0x7F107400U; // Encoding for: UQSHL_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32222,11 +33832,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHL Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHL_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHL(Arm64RegisterS Vd, Arm64RegisterS Vn, int shift)
+    public static uint UQSHL(Arm64RegisterS Vd, Arm64RegisterS Vn, byte shift)
     {
         uint raw = 0x7F207400U; // Encoding for: UQSHL_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32234,11 +33845,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHL Vd, Vn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHL_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHL(Arm64RegisterD Vd, Arm64RegisterD Vn, int shift)
+    public static uint UQSHL(Arm64RegisterD Vd, Arm64RegisterD Vn, byte shift)
     {
         uint raw = 0x7F407400U; // Encoding for: UQSHL_asisdshf_r
         raw |= (uint)(Vd.Index);
         raw |= (uint)(Vn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32246,11 +33858,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHL(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint UQSHL(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x2F087400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32258,11 +33871,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHL(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint UQSHL(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x6F087400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32270,11 +33884,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHL(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint UQSHL(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x2F107400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32282,11 +33897,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHL(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint UQSHL(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x6F107400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32294,11 +33910,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHL(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint UQSHL(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x2F207400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32306,11 +33923,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHL(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint UQSHL(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x6F207400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32318,11 +33936,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHL Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHL_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHL(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint UQSHL(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x6F407400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32473,11 +34092,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterB Vbd, Arm64RegisterH Van, int shift)
+    public static uint UQSHRN(Arm64RegisterB Vbd, Arm64RegisterH Van, byte shift)
     {
         uint raw = 0x7F089400U; // Encoding for: UQSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32485,11 +34105,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterH Vbd, Arm64RegisterS Van, int shift)
+    public static uint UQSHRN(Arm64RegisterH Vbd, Arm64RegisterS Van, byte shift)
     {
         uint raw = 0x7F109400U; // Encoding for: UQSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32497,11 +34118,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN Vbd, Van, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asisdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterS Vbd, Arm64RegisterD Van, int shift)
+    public static uint UQSHRN(Arm64RegisterS Vbd, Arm64RegisterD Van, byte shift)
     {
         uint raw = 0x7F209400U; // Encoding for: UQSHRN_asisdshf_n
         raw |= (uint)(Vbd.Index);
         raw |= (uint)(Van.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32509,11 +34131,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint UQSHRN(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x2F089400U; // Encoding for: UQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32521,11 +34144,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint UQSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F089400U; // Encoding for: UQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32533,11 +34157,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint UQSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x2F109400U; // Encoding for: UQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32545,11 +34170,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint UQSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F109400U; // Encoding for: UQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32557,11 +34183,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint UQSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x2F209400U; // Encoding for: UQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32569,11 +34196,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint UQSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F209400U; // Encoding for: UQSHRN_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32581,11 +34209,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint UQSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F089400U; // Encoding for: UQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32593,11 +34222,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, int shift)
+    public static uint UQSHRN2(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
     {
         uint raw = 0x6F089400U; // Encoding for: UQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32605,11 +34235,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint UQSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F109400U; // Encoding for: UQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32617,11 +34248,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, int shift)
+    public static uint UQSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F109400U; // Encoding for: UQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32629,11 +34261,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint UQSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F209400U; // Encoding for: UQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -32641,11 +34274,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, int shift)
+    public static uint UQSHRN2(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x6F209400U; // Encoding for: UQSHRN2_asimdshf_n
         raw |= (uint)(Vd_Tb.Index);
         raw |= (uint)(Vn_Ta.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33182,11 +34816,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSHR Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSHR_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, int shift)
+    public static uint URSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
     {
         uint raw = 0x7F402400U; // Encoding for: URSHR_asisdshf_r
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33194,11 +34829,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSHR(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint URSHR(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x2F082400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33206,11 +34842,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSHR(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint URSHR(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x6F082400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33218,11 +34855,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSHR(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint URSHR(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x2F102400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33230,11 +34868,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSHR(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint URSHR(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x6F102400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33242,11 +34881,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSHR(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint URSHR(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x2F202400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33254,11 +34894,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSHR(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint URSHR(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x6F202400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33266,11 +34907,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSHR(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint URSHR(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x6F402400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33302,11 +34944,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSRA Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSRA_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, int shift)
+    public static uint URSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
     {
         uint raw = 0x7F403400U; // Encoding for: URSRA_asisdshf_r
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33314,11 +34957,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSRA(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint URSRA(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x2F083400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33326,11 +34970,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSRA(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint URSRA(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x6F083400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33338,11 +34983,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSRA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint URSRA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x2F103400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33350,11 +34996,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSRA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint URSRA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x6F103400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33362,11 +35009,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSRA(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint URSRA(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x2F203400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33374,11 +35022,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSRA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint URSRA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x6F203400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33386,11 +35035,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSRA(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint URSRA(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x6F403400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33405,7 +35055,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
         {
-            // Write the element indexer for Vm_4B
+            // Write the element indexer for Vm_4B.ElementIndex
             var _i_ = Vm_4B.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -33425,7 +35075,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Vn_Tb.Index << 5);
         raw |= (uint)(Vm_4B.Index << 16);
         {
-            // Write the element indexer for Vm_4B
+            // Write the element indexer for Vm_4B.ElementIndex
             var _i_ = Vm_4B.ElementIndex & 0x3;
             raw |= ((uint)(_i_ & 0x1) << 21);
             _i_ >>= 1;
@@ -33568,11 +35218,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, int shift)
+    public static uint USHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift)
     {
         uint raw = 0x2F08A400U; // Encoding for: USHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33580,11 +35231,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, int shift)
+    public static uint USHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift)
     {
         uint raw = 0x6F08A400U; // Encoding for: USHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33592,11 +35244,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, int shift)
+    public static uint USHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift)
     {
         uint raw = 0x2F10A400U; // Encoding for: USHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33604,11 +35257,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, int shift)
+    public static uint USHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift)
     {
         uint raw = 0x6F10A400U; // Encoding for: USHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33616,11 +35270,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, int shift)
+    public static uint USHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift)
     {
         uint raw = 0x2F20A400U; // Encoding for: USHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33628,11 +35283,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, int shift)
+    public static uint USHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, byte shift)
     {
         uint raw = 0x6F20A400U; // Encoding for: USHLL_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33640,11 +35296,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, int shift)
+    public static uint USHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift)
     {
         uint raw = 0x6F08A400U; // Encoding for: USHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33652,11 +35309,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, int shift)
+    public static uint USHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift)
     {
         uint raw = 0x6F08A400U; // Encoding for: USHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33664,11 +35322,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, int shift)
+    public static uint USHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift)
     {
         uint raw = 0x6F10A400U; // Encoding for: USHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33676,11 +35335,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, int shift)
+    public static uint USHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift)
     {
         uint raw = 0x6F10A400U; // Encoding for: USHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33688,11 +35348,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, int shift)
+    public static uint USHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift)
     {
         uint raw = 0x6F20A400U; // Encoding for: USHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33700,11 +35361,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, int shift)
+    public static uint USHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, byte shift)
     {
         uint raw = 0x6F20A400U; // Encoding for: USHLL2_asimdshf_l
         raw |= (uint)(Vd_Ta.Index);
         raw |= (uint)(Vn_Tb.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33712,11 +35374,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHR Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHR_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHR(Arm64RegisterD Dd, Arm64RegisterD Dn, int shift)
+    public static uint USHR(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
     {
         uint raw = 0x7F400400U; // Encoding for: USHR_asisdshf_r
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33724,11 +35387,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHR(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint USHR(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x2F080400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33736,11 +35400,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHR(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint USHR(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x6F080400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33748,11 +35413,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHR(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint USHR(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x2F100400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33760,11 +35426,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHR(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint USHR(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x6F100400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33772,11 +35439,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHR(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint USHR(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x2F200400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33784,11 +35452,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHR(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint USHR(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x6F200400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33796,11 +35465,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHR Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHR_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHR(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint USHR(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x6F400400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33953,11 +35623,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USRA Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USRA_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USRA(Arm64RegisterD Dd, Arm64RegisterD Dn, int shift)
+    public static uint USRA(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
     {
         uint raw = 0x7F401400U; // Encoding for: USRA_asisdshf_r
         raw |= (uint)(Dd.Index);
         raw |= (uint)(Dn.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33965,11 +35636,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USRA(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, int shift)
+    public static uint USRA(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T, byte shift)
     {
         uint raw = 0x2F081400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33977,11 +35649,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USRA(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, int shift)
+    public static uint USRA(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T, byte shift)
     {
         uint raw = 0x6F081400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -33989,11 +35662,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USRA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, int shift)
+    public static uint USRA(Arm64RegisterV_4H Vd_T, Arm64RegisterV_4H Vn_T, byte shift)
     {
         uint raw = 0x2F101400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -34001,11 +35675,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USRA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, int shift)
+    public static uint USRA(Arm64RegisterV_8H Vd_T, Arm64RegisterV_8H Vn_T, byte shift)
     {
         uint raw = 0x6F101400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -34013,11 +35688,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USRA(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, int shift)
+    public static uint USRA(Arm64RegisterV_2S Vd_T, Arm64RegisterV_2S Vn_T, byte shift)
     {
         uint raw = 0x2F201400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -34025,11 +35701,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USRA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, int shift)
+    public static uint USRA(Arm64RegisterV_4S Vd_T, Arm64RegisterV_4S Vn_T, byte shift)
     {
         uint raw = 0x6F201400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -34037,11 +35714,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USRA Vd.T, Vn.T, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USRA_asimdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USRA(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, int shift)
+    public static uint USRA(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T, byte shift)
     {
         uint raw = 0x6F401400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)(Vd_T.Index);
         raw |= (uint)(Vn_T.Index << 5);
+        raw |= ((uint)(shift & 0x7F) << 16);
         return raw;
     }
     /// <summary>
@@ -34687,12 +36365,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>XAR Vd.2D, Vn.2D, Vm.2D, #imm6</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.XAR_vvv2_crypto3_imm6), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint XAR(Arm64RegisterV_2D Vd_2D, Arm64RegisterV_2D Vn_2D, Arm64RegisterV_2D Vm_2D, int imm6)
+    public static uint XAR(Arm64RegisterV_2D Vd_2D, Arm64RegisterV_2D Vn_2D, Arm64RegisterV_2D Vm_2D, byte imm6)
     {
         uint raw = 0xCE800000U; // Encoding for: XAR_vvv2_crypto3_imm6
         raw |= (uint)(Vd_2D.Index);
         raw |= (uint)(Vn_2D.Index << 5);
         raw |= (uint)(Vm_2D.Index << 16);
+        raw |= ((uint)(imm6 & 0x3F) << 10);
         return raw;
     }
     /// <summary>

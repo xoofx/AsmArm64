@@ -70,4 +70,40 @@ public class TestDecodingHelper
             }
         }
     }
+
+    [TestMethod]
+    public void TestFloatImmediate()
+    {
+        for (int i = 0; i <= 255; i++)
+        {
+            var src = (byte)i;
+            var value = Arm64FloatImmediate.DecodeAsFloat(src);
+            var encoded = Arm64FloatImmediate.Encode(value);
+            Assert.AreEqual(src, encoded.Value);
+            //Console.WriteLine($"0x{src:X2} -> {value} ({encoded})");
+        }
+
+        Assert.AreEqual(1.0f, Arm64FloatImmediate.Value1.AsFloat());
+        Assert.AreEqual(2.0f, Arm64FloatImmediate.Value2.AsFloat());
+        Assert.AreEqual(3.0f, Arm64FloatImmediate.Value3.AsFloat());
+        Assert.AreEqual(0.5f, Arm64FloatImmediate.ValueZeroDot5.AsFloat());
+    }
+
+
+    [TestMethod]
+    public void TestBitMaskImmediate64()
+    {
+        for (int i = 0; i <= 255; i++)
+        {
+            var src = (byte)i;
+            var value = Arm64BitMaskImmediate64.DecodeAsMask(src);
+            var encoded = Arm64BitMaskImmediate64.Encode(value);
+            Assert.AreEqual(src, encoded.Value);
+        }
+
+        {
+            var value = Arm64BitMaskImmediate64.DecodeAsMask(0x85);
+            Assert.AreEqual(0xFF_00_00_00__00_FF_00_FF.ToString("X16"), value.ToString("X16"));
+        }
+    }
 }

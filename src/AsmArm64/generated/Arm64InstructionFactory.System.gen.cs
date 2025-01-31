@@ -120,9 +120,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BRK #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BRK_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BRK(int imm)
+    public static uint BRK(ushort imm)
     {
         uint raw = 0xD4200000U; // Encoding for: BRK_ex_exception
+        raw |= ((uint)imm) << 5;
         return raw;
     }
     /// <summary>
@@ -182,9 +183,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CLREX {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CLREX_bn_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CLREX(int imm = 0)
+    public static uint CLREX(byte imm = default)
     {
         uint raw = 0xD503305FU; // Encoding for: CLREX_bn_barriers
+        raw |= ((uint)(imm & 0xF) << 8);
         return raw;
     }
     /// <summary>
@@ -235,9 +237,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>DCPS1 {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS1_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DCPS1(int imm = 0)
+    public static uint DCPS1(ushort imm = default)
     {
         uint raw = 0xD4A00001U; // Encoding for: DCPS1_dc_exception
+        raw |= ((uint)imm) << 5;
         return raw;
     }
     /// <summary>
@@ -245,9 +248,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>DCPS2 {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS2_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DCPS2(int imm = 0)
+    public static uint DCPS2(ushort imm = default)
     {
         uint raw = 0xD4A00002U; // Encoding for: DCPS2_dc_exception
+        raw |= ((uint)imm) << 5;
         return raw;
     }
     /// <summary>
@@ -255,9 +259,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>DCPS3 {#imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DCPS3_dc_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DCPS3(int imm = 0)
+    public static uint DCPS3(ushort imm = default)
     {
         uint raw = 0xD4A00003U; // Encoding for: DCPS3_dc_exception
+        raw |= ((uint)imm) << 5;
         return raw;
     }
     /// <summary>
@@ -430,9 +435,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>HINT #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.HINT_hm_hints), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint HINT(int imm)
+    public static uint HINT(byte imm)
     {
         uint raw = 0xD503201FU; // Encoding for: HINT_hm_hints
+        raw |= ((uint)(imm & 0x7F) << 5);
         return raw;
     }
     /// <summary>
@@ -440,9 +446,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>HLT #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.HLT_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint HLT(int imm)
+    public static uint HLT(ushort imm)
     {
         uint raw = 0xD4400000U; // Encoding for: HLT_ex_exception
+        raw |= ((uint)imm) << 5;
         return raw;
     }
     /// <summary>
@@ -450,9 +457,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>HVC #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.HVC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint HVC(int imm)
+    public static uint HVC(ushort imm)
     {
         uint raw = 0xD4000002U; // Encoding for: HVC_ex_exception
+        raw |= ((uint)imm) << 5;
         return raw;
     }
     /// <summary>
@@ -471,7 +479,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ISB {option, #imm}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ISB_bi_barriers), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ISB(int option = 0)
+    public static uint ISB(byte option = default)
     {
         uint raw = 0xD50330DFU; // Encoding for: ISB_bi_barriers
         return raw;
@@ -504,9 +512,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MSR pstatefield, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MSR_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MSR(Arm64ProcessStateField pstatefield, int imm)
+    public static uint MSR(Arm64ProcessStateField pstatefield, byte imm)
     {
         uint raw = 0xD500401FU; // Encoding for: MSR_si_pstate
+        raw |= ((uint)(imm & 0xF) << 8);
         return raw;
     }
     /// <summary>
@@ -667,9 +676,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMC #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMC(int imm)
+    public static uint SMC(ushort imm)
     {
         uint raw = 0xD4000003U; // Encoding for: SMC_ex_exception
+        raw |= ((uint)imm) << 5;
         return raw;
     }
     /// <summary>
@@ -697,9 +707,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SVC #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SVC_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SVC(int imm)
+    public static uint SVC(ushort imm)
     {
         uint raw = 0xD4000001U; // Encoding for: SVC_ex_exception
+        raw |= ((uint)imm) << 5;
         return raw;
     }
     /// <summary>
@@ -707,11 +718,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SYS #op1, Cn, Cm, #op2 {, Xt}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SYS_cr_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SYS(int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2, Arm64RegisterX Xt = default)
+    public static uint SYS(byte op1, Arm64RegisterC Cn, Arm64RegisterC Cm, byte op2, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5080000U; // Encoding for: SYS_cr_systeminstrs
+        raw |= ((uint)(op1 & 0x7) << 16);
         raw |= (uint)((Cn.Index & 0xF) << 12);
         raw |= (uint)((Cm.Index & 0xF) << 8);
+        raw |= ((uint)(op2 & 0x7) << 5);
         raw |= (uint)(Xt.Index);
         return raw;
     }
@@ -720,12 +733,14 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SYSL Xt, #op1, Cn, Cm, #op2</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SYSL_rc_systeminstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SYSL(Arm64RegisterX Xt, int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2)
+    public static uint SYSL(Arm64RegisterX Xt, byte op1, Arm64RegisterC Cn, Arm64RegisterC Cm, byte op2)
     {
         uint raw = 0xD5280000U; // Encoding for: SYSL_rc_systeminstrs
         raw |= (uint)(Xt.Index);
+        raw |= ((uint)(op1 & 0x7) << 16);
         raw |= (uint)((Cn.Index & 0xF) << 12);
         raw |= (uint)((Cm.Index & 0xF) << 8);
+        raw |= ((uint)(op2 & 0x7) << 5);
         return raw;
     }
     /// <summary>
@@ -733,11 +748,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SYSP #op1, Cn, Cm, #op2 {, Xt1, Xt2}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SYSP_cr_syspairinstrs), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SYSP(int op1, Arm64RegisterC Cn, Arm64RegisterC Cm, int op2, Arm64RegisterX Xt1 = default)
+    public static uint SYSP(byte op1, Arm64RegisterC Cn, Arm64RegisterC Cm, byte op2, Arm64RegisterX Xt1 = default)
     {
         uint raw = 0xD5480000U; // Encoding for: SYSP_cr_syspairinstrs
+        raw |= ((uint)(op1 & 0x7) << 16);
         raw |= (uint)((Cn.Index & 0xF) << 12);
         raw |= (uint)((Cm.Index & 0xF) << 8);
+        raw |= ((uint)(op2 & 0x7) << 5);
         raw |= (uint)(Xt1.Index);
         return raw;
     }
@@ -746,9 +763,10 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>TCANCEL #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.TCANCEL_ex_exception), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint TCANCEL(int imm)
+    public static uint TCANCEL(ushort imm)
     {
         uint raw = 0xD4600000U; // Encoding for: TCANCEL_ex_exception
+        raw |= ((uint)imm) << 5;
         return raw;
     }
     /// <summary>
