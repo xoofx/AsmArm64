@@ -380,15 +380,7 @@ partial class Arm64Processor
                 );
                 break;
             case Arm64OperandKind.Memory:
-                operandVariations.Add(
-                    new OperandVariation()
-                    {
-                        Descriptor = descriptor,
-                        OperandName = GetNormalizedOperandName(descriptor.Name),
-                        OperandType = GetMemoryOperandType((MemoryOperandDescriptor)descriptor),
-                    }
-                );
-                
+                GetMemoryOperandVariation(instruction, (MemoryOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Immediate:
                 GetImmediateVariation(instruction, (ImmediateOperandDescriptor)descriptor, operandVariations);
@@ -415,6 +407,46 @@ partial class Arm64Processor
             default:
                 throw new ArgumentOutOfRangeException();
         }
+    }
+
+    private void GetMemoryOperandVariation(Instruction instruction, MemoryOperandDescriptor descriptor, List<OperandVariation> operandVariations)
+    {
+        var operandVariation = new OperandVariation()
+        {
+            Descriptor = descriptor,
+            OperandName = GetNormalizedOperandName(descriptor.Name),
+            OperandType = GetMemoryOperandType((MemoryOperandDescriptor)descriptor),
+        };
+        
+        operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
+        {
+            w.WriteLine($"{variable} |= (uint){operand.OperandName}.BaseRegister.Index << {descriptor.BaseRegister.LowBit};");
+
+            // We have a register with an immediate or with a register + extend/LSL
+            switch (descriptor.MemoryEncodingKind)
+            {
+                case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
+                    break;
+                case Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional:
+                    break;
+                case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional:
+                    break;
+                case Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount:
+                    break;
+                case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
+                    break;
+                case Arm64MemoryEncodingKind.BaseRegisterXn:
+                case Arm64MemoryEncodingKind.BaseRegister:
+                case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate:
+                case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional:
+                    // Nothing to do for these
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        });
+        
+        operandVariations.Add(operandVariation);
     }
 
     private void GetEnumVariations(EnumOperandDescriptor descriptor, List<OperandVariation> operandVariations)
@@ -1069,8 +1101,8 @@ partial class Arm64Processor
                 {
                     var bitRange = bitRanges[0];
                     w.WriteLine(operandBitSize == 0 || operandBitSize != bitRange.Width
-                        ? $"{variable} |= ((uint)({valuePath} & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit});"
-                        : $"{variable} |= ((uint){valuePath}) << {bitRange.LowBit};");
+                        ? $"{variable} |= (uint)({valuePath} & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit};"
+                        : $"{variable} |= (uint){valuePath} << {bitRange.LowBit};");
                 }
                 else
                 {
@@ -1080,7 +1112,7 @@ partial class Arm64Processor
                     for (var i = bitRanges.Count - 1; i >= 0; i--)
                     {
                         var bitRange = bitRanges[i];
-                        w.WriteLine($"{variable} |= ((uint)(_i_ & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit});");
+                        w.WriteLine($"{variable} |= (uint)(_i_ & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit};");
                         if (i > 0)
                         {
                             w.WriteLine($"_i_ >>= {bitRange.Width};");
@@ -1145,22 +1177,22 @@ partial class Arm64Processor
             {
                 if (register.LowBitIndexEncoding == 0)
                 {
-                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({op.OperandName}.Index);");
+                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint){op.OperandName}.Index;");
                 }
                 else
                 {
-                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({op.OperandName}.Index << {register.LowBitIndexEncoding});");
+                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint){op.OperandName}.Index << {register.LowBitIndexEncoding};");
                 }
             }
             case Arm64RegisterIndexEncodingKind.Std4:
             {
                 if (register.LowBitIndexEncoding == 0)
                 {
-                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({op.OperandName}.Index) & 0xF;"); // 4 bits so we mask by security
+                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({op.OperandName}.Index & 0xF);"); // 4 bits so we mask by security
                 }
                 else
                 {
-                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)(({op.OperandName}.Index & 0xF) << {register.LowBitIndexEncoding});");
+                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({op.OperandName}.Index & 0xF) << {register.LowBitIndexEncoding};");
                 }
             }
             case Arm64RegisterIndexEncodingKind.Std5Plus1:

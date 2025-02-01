@@ -21,7 +21,7 @@ static partial class Arm64InstructionFactory
     public static uint APAS(Arm64RegisterX Xt)
     {
         uint raw = 0xD50E7000U; // Encoding for: APAS_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -32,7 +32,7 @@ static partial class Arm64InstructionFactory
     public static uint AT(Arm64SystemRegister at_op, Arm64RegisterX Xt)
     {
         uint raw = 0xD5087800U; // Encoding for: AT_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -123,7 +123,7 @@ static partial class Arm64InstructionFactory
     public static uint BRK(ushort imm)
     {
         uint raw = 0xD4200000U; // Encoding for: BRK_ex_exception
-        raw |= ((uint)imm) << 5;
+        raw |= (uint)imm << 5;
         return raw;
     }
     /// <summary>
@@ -154,7 +154,7 @@ static partial class Arm64InstructionFactory
     public static uint CFP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B7380U; // Encoding for: CFP_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -186,7 +186,7 @@ static partial class Arm64InstructionFactory
     public static uint CLREX(byte imm = default)
     {
         uint raw = 0xD503305FU; // Encoding for: CLREX_bn_barriers
-        raw |= ((uint)(imm & 0xF) << 8);
+        raw |= (uint)(imm & 0xF) << 8;
         return raw;
     }
     /// <summary>
@@ -197,7 +197,7 @@ static partial class Arm64InstructionFactory
     public static uint COSP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73C0U; // Encoding for: COSP_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -208,7 +208,7 @@ static partial class Arm64InstructionFactory
     public static uint CPP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73E0U; // Encoding for: CPP_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -229,7 +229,7 @@ static partial class Arm64InstructionFactory
     public static uint DC(Arm64SystemRegister dc_op, Arm64RegisterX Xt)
     {
         uint raw = 0xD5087000U; // Encoding for: DC_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -240,7 +240,7 @@ static partial class Arm64InstructionFactory
     public static uint DCPS1(ushort imm = default)
     {
         uint raw = 0xD4A00001U; // Encoding for: DCPS1_dc_exception
-        raw |= ((uint)imm) << 5;
+        raw |= (uint)imm << 5;
         return raw;
     }
     /// <summary>
@@ -251,7 +251,7 @@ static partial class Arm64InstructionFactory
     public static uint DCPS2(ushort imm = default)
     {
         uint raw = 0xD4A00002U; // Encoding for: DCPS2_dc_exception
-        raw |= ((uint)imm) << 5;
+        raw |= (uint)imm << 5;
         return raw;
     }
     /// <summary>
@@ -262,7 +262,7 @@ static partial class Arm64InstructionFactory
     public static uint DCPS3(ushort imm = default)
     {
         uint raw = 0xD4A00003U; // Encoding for: DCPS3_dc_exception
-        raw |= ((uint)imm) << 5;
+        raw |= (uint)imm << 5;
         return raw;
     }
     /// <summary>
@@ -323,7 +323,7 @@ static partial class Arm64InstructionFactory
     public static uint DVP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73A0U; // Encoding for: DVP_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -374,7 +374,7 @@ static partial class Arm64InstructionFactory
     public static uint GCSPOPM(Arm64RegisterX Xt = default)
     {
         uint raw = 0xD52B7720U; // Encoding for: GCSPOPM_sysl_rc_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -395,7 +395,7 @@ static partial class Arm64InstructionFactory
     public static uint GCSPUSHM(Arm64RegisterX Xt)
     {
         uint raw = 0xD50B7700U; // Encoding for: GCSPUSHM_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -416,7 +416,7 @@ static partial class Arm64InstructionFactory
     public static uint GCSSS1(Arm64RegisterX Xt)
     {
         uint raw = 0xD50B7740U; // Encoding for: GCSSS1_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -427,7 +427,7 @@ static partial class Arm64InstructionFactory
     public static uint GCSSS2(Arm64RegisterX Xt)
     {
         uint raw = 0xD52B7760U; // Encoding for: GCSSS2_sysl_rc_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -438,7 +438,7 @@ static partial class Arm64InstructionFactory
     public static uint HINT(byte imm)
     {
         uint raw = 0xD503201FU; // Encoding for: HINT_hm_hints
-        raw |= ((uint)(imm & 0x7F) << 5);
+        raw |= (uint)(imm & 0x7F) << 5;
         return raw;
     }
     /// <summary>
@@ -449,7 +449,7 @@ static partial class Arm64InstructionFactory
     public static uint HLT(ushort imm)
     {
         uint raw = 0xD4400000U; // Encoding for: HLT_ex_exception
-        raw |= ((uint)imm) << 5;
+        raw |= (uint)imm << 5;
         return raw;
     }
     /// <summary>
@@ -460,7 +460,7 @@ static partial class Arm64InstructionFactory
     public static uint HVC(ushort imm)
     {
         uint raw = 0xD4000002U; // Encoding for: HVC_ex_exception
-        raw |= ((uint)imm) << 5;
+        raw |= (uint)imm << 5;
         return raw;
     }
     /// <summary>
@@ -471,7 +471,7 @@ static partial class Arm64InstructionFactory
     public static uint IC(Arm64SystemRegister ic_op, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5087000U; // Encoding for: IC_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -492,7 +492,7 @@ static partial class Arm64InstructionFactory
     public static uint MRRS(Arm64RegisterX Xt, Arm64RegisterX Xt_1, Arm64SystemRegister systemreg)
     {
         uint raw = 0xD5700000U; // Encoding for: MRRS_rs_systemmovepr
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         raw = Xt_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(Xt_1), $"Invalid Register. Index `{Xt_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
@@ -504,7 +504,7 @@ static partial class Arm64InstructionFactory
     public static uint MRS(Arm64RegisterX Xt, Arm64SystemRegister systemreg)
     {
         uint raw = 0xD5300000U; // Encoding for: MRS_rs_systemmove
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -515,7 +515,7 @@ static partial class Arm64InstructionFactory
     public static uint MSR(Arm64ProcessStateField pstatefield, byte imm)
     {
         uint raw = 0xD500401FU; // Encoding for: MSR_si_pstate
-        raw |= ((uint)(imm & 0xF) << 8);
+        raw |= (uint)(imm & 0xF) << 8;
         return raw;
     }
     /// <summary>
@@ -526,7 +526,7 @@ static partial class Arm64InstructionFactory
     public static uint MSR(Arm64SystemRegister systemreg, Arm64RegisterX Xt)
     {
         uint raw = 0xD5100000U; // Encoding for: MSR_sr_systemmove
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -537,7 +537,7 @@ static partial class Arm64InstructionFactory
     public static uint MSRR(Arm64SystemRegister systemreg, Arm64RegisterX Xt, Arm64RegisterX Xt_1)
     {
         uint raw = 0xD5500000U; // Encoding for: MSRR_sr_systemmovepr
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         raw = Xt_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(Xt_1), $"Invalid Register. Index `{Xt_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
@@ -679,7 +679,7 @@ static partial class Arm64InstructionFactory
     public static uint SMC(ushort imm)
     {
         uint raw = 0xD4000003U; // Encoding for: SMC_ex_exception
-        raw |= ((uint)imm) << 5;
+        raw |= (uint)imm << 5;
         return raw;
     }
     /// <summary>
@@ -710,7 +710,7 @@ static partial class Arm64InstructionFactory
     public static uint SVC(ushort imm)
     {
         uint raw = 0xD4000001U; // Encoding for: SVC_ex_exception
-        raw |= ((uint)imm) << 5;
+        raw |= (uint)imm << 5;
         return raw;
     }
     /// <summary>
@@ -721,11 +721,11 @@ static partial class Arm64InstructionFactory
     public static uint SYS(byte op1, Arm64RegisterC Cn, Arm64RegisterC Cm, byte op2, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5080000U; // Encoding for: SYS_cr_systeminstrs
-        raw |= ((uint)(op1 & 0x7) << 16);
-        raw |= (uint)((Cn.Index & 0xF) << 12);
-        raw |= (uint)((Cm.Index & 0xF) << 8);
-        raw |= ((uint)(op2 & 0x7) << 5);
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)(op1 & 0x7) << 16;
+        raw |= (uint)(Cn.Index & 0xF) << 12;
+        raw |= (uint)(Cm.Index & 0xF) << 8;
+        raw |= (uint)(op2 & 0x7) << 5;
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -736,11 +736,11 @@ static partial class Arm64InstructionFactory
     public static uint SYSL(Arm64RegisterX Xt, byte op1, Arm64RegisterC Cn, Arm64RegisterC Cm, byte op2)
     {
         uint raw = 0xD5280000U; // Encoding for: SYSL_rc_systeminstrs
-        raw |= (uint)(Xt.Index);
-        raw |= ((uint)(op1 & 0x7) << 16);
-        raw |= (uint)((Cn.Index & 0xF) << 12);
-        raw |= (uint)((Cm.Index & 0xF) << 8);
-        raw |= ((uint)(op2 & 0x7) << 5);
+        raw |= (uint)Xt.Index;
+        raw |= (uint)(op1 & 0x7) << 16;
+        raw |= (uint)(Cn.Index & 0xF) << 12;
+        raw |= (uint)(Cm.Index & 0xF) << 8;
+        raw |= (uint)(op2 & 0x7) << 5;
         return raw;
     }
     /// <summary>
@@ -751,11 +751,11 @@ static partial class Arm64InstructionFactory
     public static uint SYSP(byte op1, Arm64RegisterC Cn, Arm64RegisterC Cm, byte op2, Arm64RegisterX Xt1 = default)
     {
         uint raw = 0xD5480000U; // Encoding for: SYSP_cr_syspairinstrs
-        raw |= ((uint)(op1 & 0x7) << 16);
-        raw |= (uint)((Cn.Index & 0xF) << 12);
-        raw |= (uint)((Cm.Index & 0xF) << 8);
-        raw |= ((uint)(op2 & 0x7) << 5);
-        raw |= (uint)(Xt1.Index);
+        raw |= (uint)(op1 & 0x7) << 16;
+        raw |= (uint)(Cn.Index & 0xF) << 12;
+        raw |= (uint)(Cm.Index & 0xF) << 8;
+        raw |= (uint)(op2 & 0x7) << 5;
+        raw |= (uint)Xt1.Index;
         return raw;
     }
     /// <summary>
@@ -766,7 +766,7 @@ static partial class Arm64InstructionFactory
     public static uint TCANCEL(ushort imm)
     {
         uint raw = 0xD4600000U; // Encoding for: TCANCEL_ex_exception
-        raw |= ((uint)imm) << 5;
+        raw |= (uint)imm << 5;
         return raw;
     }
     /// <summary>
@@ -787,7 +787,7 @@ static partial class Arm64InstructionFactory
     public static uint TLBI(Arm64SystemRegister tlbi_op, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5088000U; // Encoding for: TLBI_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -798,7 +798,7 @@ static partial class Arm64InstructionFactory
     public static uint TLBIP(Arm64SystemRegister tlbip_op, Arm64RegisterX Xt1 = default)
     {
         uint raw = 0xD5488000U; // Encoding for: TLBIP_sysp_cr_syspairinstrs
-        raw |= (uint)(Xt1.Index);
+        raw |= (uint)Xt1.Index;
         return raw;
     }
     /// <summary>
@@ -809,7 +809,7 @@ static partial class Arm64InstructionFactory
     public static uint TRCIT(Arm64RegisterX Xt)
     {
         uint raw = 0xD50B72E0U; // Encoding for: TRCIT_sys_cr_systeminstrs
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -830,7 +830,7 @@ static partial class Arm64InstructionFactory
     public static uint TSTART(Arm64RegisterX Xt)
     {
         uint raw = 0xD5233060U; // Encoding for: TSTART_br_systemresult
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -841,7 +841,7 @@ static partial class Arm64InstructionFactory
     public static uint TTEST(Arm64RegisterX Xt)
     {
         uint raw = 0xD5233160U; // Encoding for: TTEST_br_systemresult
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -862,7 +862,7 @@ static partial class Arm64InstructionFactory
     public static uint WFET(Arm64RegisterX Xt)
     {
         uint raw = 0xD5031000U; // Encoding for: WFET_only_systeminstrswithreg
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>
@@ -883,7 +883,7 @@ static partial class Arm64InstructionFactory
     public static uint WFIT(Arm64RegisterX Xt)
     {
         uint raw = 0xD5031020U; // Encoding for: WFIT_only_systeminstrswithreg
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
         return raw;
     }
     /// <summary>

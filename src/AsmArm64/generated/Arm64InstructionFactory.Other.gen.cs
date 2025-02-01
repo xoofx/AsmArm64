@@ -21,7 +21,8 @@ static partial class Arm64InstructionFactory
     public static uint LDRAA(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xF8200400U; // Encoding for: LDRAA_64_ldst_pac
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
+        raw |= (uint)src.BaseRegister.Index << 5;
         return raw;
     }
     /// <summary>
@@ -32,7 +33,8 @@ static partial class Arm64InstructionFactory
     public static uint LDRAA(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0xF8200C00U; // Encoding for: LDRAA_64w_ldst_pac
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
+        raw |= (uint)src.BaseRegister.Index << 5;
         return raw;
     }
     /// <summary>
@@ -43,7 +45,8 @@ static partial class Arm64InstructionFactory
     public static uint LDRAB(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
     {
         uint raw = 0xF8A00400U; // Encoding for: LDRAB_64_ldst_pac
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
+        raw |= (uint)src.BaseRegister.Index << 5;
         return raw;
     }
     /// <summary>
@@ -54,7 +57,8 @@ static partial class Arm64InstructionFactory
     public static uint LDRAB(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessorPreIncrement src)
     {
         uint raw = 0xF8A00C00U; // Encoding for: LDRAB_64w_ldst_pac
-        raw |= (uint)(Xt.Index);
+        raw |= (uint)Xt.Index;
+        raw |= (uint)src.BaseRegister.Index << 5;
         return raw;
     }
 }
