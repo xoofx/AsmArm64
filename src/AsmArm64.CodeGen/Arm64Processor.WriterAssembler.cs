@@ -6,6 +6,7 @@ using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using AsmArm64.CodeGen.Model;
+using Microsoft.Win32;
 
 namespace AsmArm64.CodeGen;
 
@@ -77,6 +78,16 @@ partial class Arm64Processor
     private void WriteInstructionVariation(CodeWriter w, InstructionVariation instructionVariation)
     {
         var instruction = instructionVariation.Instruction;
+
+        // Prepare the instructions before writing them (in case we find a variation that matches operands and improve the encoding)
+        for (var i = 0; i < instructionVariation.Operands.Count; i++)
+        {
+            var operand = instructionVariation.Operands[i];
+            foreach (var prepare in operand.PrepareWriteEncodings)
+            {
+                prepare(instructionVariation, operand, i);
+            }
+        }
 
         w.WriteSummary($"{EscapeHtmlEntities(instruction.Summary)}.");
         w.WriteDoc($"<remarks><code>{EscapeHtmlEntities(MatchSpace.Replace(instruction.FullSyntax, " "))}</code></remarks>");
@@ -224,6 +235,7 @@ partial class Arm64Processor
                     var instructionVariation = new InstructionVariation()
                     {
                         Mnemonic = mnemonic,
+                        BitfieldMask = instruction.BitfieldMask,
                         BitfieldValue = instruction.BitfieldValue,
                         Instruction = instruction,
                     };
@@ -231,6 +243,7 @@ partial class Arm64Processor
                     foreach (var allOperandVariation in allOperandVariations)
                     {
                         var operandVariation = allOperandVariation.Count == 1 ? allOperandVariation[0] : allOperandVariation[i];
+                        instructionVariation.BitfieldMask |= operandVariation.BitfieldMask;
                         instructionVariation.BitfieldValue |= operandVariation.BitfieldSets;
                         instructionVariation.Operands.Add(operandVariation);
                     }
@@ -294,6 +307,7 @@ partial class Arm64Processor
                     var instructionVariation = new InstructionVariation()
                     {
                         Mnemonic = mnemonic,
+                        BitfieldMask = instruction.BitfieldMask,
                         BitfieldValue = instruction.BitfieldValue,
                         Instruction = instruction,
                     };
@@ -320,6 +334,7 @@ partial class Arm64Processor
                             Debug.Assert(operandVariation is not null);
                         }
 
+                        instructionVariation.BitfieldMask |= operandVariation.BitfieldMask;
                         instructionVariation.BitfieldValue |= operandVariation.BitfieldSets;
                         instructionVariation.Operands.Add(operandVariation);
                     }
@@ -596,7 +611,7 @@ partial class Arm64Processor
                     else
                     {
                         Debug.Assert(selector.BitValues.All(x => x.Kind == EncodingBitValueKind.Integer));
-                        var valuesPairs = selector.BitValues.Select(x => (Value: x.IntegerValue, BitSets: x.BitSelectorValue)).ToArray();
+                        var valuesPairs = selector.BitValues.Select(x => (Value: x.IntegerValue, BitMask: x.BitSelectorMask, BitSets: x.BitSelectorValue)).ToArray();
                         var maxAbsValue = valuesPairs.Select(x => Math.Abs(x.Value)).Max();
                         if (descriptor.IsSigned)
                         {
@@ -613,7 +628,7 @@ partial class Arm64Processor
                         }
 
                         operandVariation.OperandType = operandType;
-                        GenerateSwitchCaseFromValue(operandVariation.OperandName, valuesPairs.ToList(), operandVariation.WriteEncodings);
+                        GenerateSwitchCaseFromValue(operandVariation.OperandName, valuesPairs.ToList(), operandVariation);
                     }
                 }
                 else
@@ -1077,20 +1092,47 @@ partial class Arm64Processor
         );
     }
 
-    private static void GenerateSwitchCaseFromValue(string valuePath, List<(int Value, uint BitMask)> maps, List<WriteEncodingDelegate> encodings)
+    private static void GenerateSwitchCaseFromValue(string valuePath, List<(int Value, uint BitMask, uint BitSet)> selections, OperandVariation operandVariation)
     {
-        encodings.Add(
-            (w, variable, variation, operand, index) =>
+        operandVariation.PrepareWriteEncodings.Add((instruction, operand, index) =>
             {
-                w.WriteLine($"{variable} |= {valuePath} switch");
-                w.OpenBraceBlock();
-                foreach (var (value, mask) in maps)
+                int? expectedValue = null;
+                foreach (var (value, mask, bitset) in selections)
                 {
-                    w.WriteLine($"{value} => 0x{mask:X8}U,");
+                    var sharedMask = instruction.BitfieldMask & mask;
+                    if (sharedMask != 0 && (instruction.BitfieldValue & sharedMask) == bitset)
+                    {
+                        Debug.Assert(!expectedValue.HasValue);
+                        expectedValue = value;
+                    }
                 }
 
-                w.WriteLine($"_ => throw new {nameof(ArgumentOutOfRangeException)}(nameof({valuePath}), \"Invalid immediate `{{{valuePath}}}`. The value must be in [{string.Join(", ", maps.Select(x => x.Value))}]\")");
-                w.CloseBraceBlockStatement();
+                if (expectedValue.HasValue)
+                {
+                    operand.DefaultValue = $"{expectedValue.Value}";
+                }
+            }
+        );
+
+        operandVariation.WriteEncodings.Add(
+            (w, variable, variation, operand, index) =>
+            {
+                if (operand.DefaultValue != null)
+                {
+                    w.WriteLine($"if ({valuePath} != {operand.DefaultValue}) throw new {nameof(ArgumentOutOfRangeException)}(nameof({valuePath}), $\"Invalid immediate value. Expecting the fixed value {operand.DefaultValue} instead of {{{valuePath}}}\");");
+                }
+                else
+                {
+                    w.WriteLine($"{variable} |= {valuePath} switch");
+                    w.OpenBraceBlock();
+                    foreach (var (value, mask, bitset) in selections)
+                    {
+                        w.WriteLine($"{value} => 0x{bitset:X8}U,");
+                    }
+
+                    w.WriteLine($"_ => throw new {nameof(ArgumentOutOfRangeException)}(nameof({valuePath}), \"Invalid immediate `{{{valuePath}}}`. The value must be in [{string.Join(", ", selections.Select(x => x.Value))}]\")");
+                    w.CloseBraceBlockStatement();
+                }
             }
         );
     }
@@ -1166,6 +1208,8 @@ partial class Arm64Processor
 
         public required Instruction Instruction { get; init; }
 
+        public uint BitfieldMask { get; set; }
+
         public uint BitfieldValue { get; set; }
         
         public List<OperandVariation> Operands { get; } = new();
@@ -1197,6 +1241,8 @@ partial class Arm64Processor
 
         public string? DefaultValue2 { get; set; }
 
+        public List<PrepareWriteEncodingDelegate> PrepareWriteEncodings { get; } = new();
+
         public List<WriteEncodingDelegate> WriteEncodings { get; } = new();
         
         public void WriterParameters(CodeWriter writer)
@@ -1218,4 +1264,6 @@ partial class Arm64Processor
     }
 
     private delegate void WriteEncodingDelegate(CodeWriter writer, string variable, InstructionVariation instruction, OperandVariation operand, int operandIndex);
+
+    private delegate void PrepareWriteEncodingDelegate(InstructionVariation instruction, OperandVariation operand, int operandIndex);
 }

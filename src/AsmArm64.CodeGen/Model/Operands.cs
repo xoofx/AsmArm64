@@ -412,7 +412,7 @@ record EncodingSymbolSelector
     {
         builder.Append(BitSize);
         builder.Append(' ');
-        builder.Append($"[{string.Join(",", RelativeBitRanges)}] ");
+        builder.Append($"[{string.Join(",", BitRanges)}] ");
         builder.Append('[');
         for (var i = 0; i < BitValues.Count; i++)
         {
