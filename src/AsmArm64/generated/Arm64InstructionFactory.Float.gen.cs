@@ -1446,12 +1446,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Wd, Hn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterH Hn, byte fbits)
+    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterH Hn, uint fbits)
     {
         uint raw = 0x1ED80000U; // Encoding for: FCVTZS_32h_float2fix
         raw |= (uint)Wd.Index;
         raw |= (uint)Hn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -1459,12 +1459,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Xd, Hn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterH Hn, byte fbits)
+    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterH Hn, uint fbits)
     {
         uint raw = 0x9ED80000U; // Encoding for: FCVTZS_64h_float2fix
         raw |= (uint)Xd.Index;
         raw |= (uint)Hn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -1472,12 +1472,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Wd, Sn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterS Sn, byte fbits)
+    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterS Sn, uint fbits)
     {
         uint raw = 0x1E180000U; // Encoding for: FCVTZS_32s_float2fix
         raw |= (uint)Wd.Index;
         raw |= (uint)Sn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -1485,12 +1485,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Xd, Sn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterS Sn, byte fbits)
+    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterS Sn, uint fbits)
     {
         uint raw = 0x9E180000U; // Encoding for: FCVTZS_64s_float2fix
         raw |= (uint)Xd.Index;
         raw |= (uint)Sn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -1498,12 +1498,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Wd, Dn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_32d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterD Dn, byte fbits)
+    public static uint FCVTZS(Arm64RegisterW Wd, Arm64RegisterD Dn, uint fbits)
     {
         uint raw = 0x1E580000U; // Encoding for: FCVTZS_32d_float2fix
         raw |= (uint)Wd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -1511,12 +1511,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZS Xd, Dn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZS_64d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterD Dn, byte fbits)
+    public static uint FCVTZS(Arm64RegisterX Xd, Arm64RegisterD Dn, uint fbits)
     {
         uint raw = 0x9E580000U; // Encoding for: FCVTZS_64d_float2fix
         raw |= (uint)Xd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -1644,12 +1644,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Wd, Hn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterH Hn, byte fbits)
+    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterH Hn, uint fbits)
     {
         uint raw = 0x1ED90000U; // Encoding for: FCVTZU_32h_float2fix
         raw |= (uint)Wd.Index;
         raw |= (uint)Hn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -1657,12 +1657,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Xd, Hn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64h_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterH Hn, byte fbits)
+    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterH Hn, uint fbits)
     {
         uint raw = 0x9ED90000U; // Encoding for: FCVTZU_64h_float2fix
         raw |= (uint)Xd.Index;
         raw |= (uint)Hn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -1670,12 +1670,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Wd, Sn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterS Sn, byte fbits)
+    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterS Sn, uint fbits)
     {
         uint raw = 0x1E190000U; // Encoding for: FCVTZU_32s_float2fix
         raw |= (uint)Wd.Index;
         raw |= (uint)Sn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -1683,12 +1683,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Xd, Sn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64s_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterS Sn, byte fbits)
+    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterS Sn, uint fbits)
     {
         uint raw = 0x9E190000U; // Encoding for: FCVTZU_64s_float2fix
         raw |= (uint)Xd.Index;
         raw |= (uint)Sn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -1696,12 +1696,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Wd, Dn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_32d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterD Dn, byte fbits)
+    public static uint FCVTZU(Arm64RegisterW Wd, Arm64RegisterD Dn, uint fbits)
     {
         uint raw = 0x1E590000U; // Encoding for: FCVTZU_32d_float2fix
         raw |= (uint)Wd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -1709,12 +1709,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTZU Xd, Dn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTZU_64d_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterD Dn, byte fbits)
+    public static uint FCVTZU(Arm64RegisterX Xd, Arm64RegisterD Dn, uint fbits)
     {
         uint raw = 0x9E590000U; // Encoding for: FCVTZU_64d_float2fix
         raw |= (uint)Xd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -2954,12 +2954,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Hd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_h32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, byte fbits)
+    public static uint SCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, uint fbits)
     {
         uint raw = 0x1EC20000U; // Encoding for: SCVTF_h32_float2fix
         raw |= (uint)Hd.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -2967,12 +2967,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Hd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_h64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, byte fbits)
+    public static uint SCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, uint fbits)
     {
         uint raw = 0x9EC20000U; // Encoding for: SCVTF_h64_float2fix
         raw |= (uint)Hd.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -2980,12 +2980,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Sd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_s32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, byte fbits)
+    public static uint SCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, uint fbits)
     {
         uint raw = 0x1E020000U; // Encoding for: SCVTF_s32_float2fix
         raw |= (uint)Sd.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -2993,12 +2993,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Sd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_s64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, byte fbits)
+    public static uint SCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, uint fbits)
     {
         uint raw = 0x9E020000U; // Encoding for: SCVTF_s64_float2fix
         raw |= (uint)Sd.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3006,12 +3006,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Dd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_d32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, byte fbits)
+    public static uint SCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, uint fbits)
     {
         uint raw = 0x1E420000U; // Encoding for: SCVTF_d32_float2fix
         raw |= (uint)Dd.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3019,12 +3019,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SCVTF Dd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SCVTF_d64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, byte fbits)
+    public static uint SCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, uint fbits)
     {
         uint raw = 0x9E420000U; // Encoding for: SCVTF_d64_float2fix
         raw |= (uint)Dd.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3152,12 +3152,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Hd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_h32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, byte fbits)
+    public static uint UCVTF(Arm64RegisterH Hd, Arm64RegisterW Wn, uint fbits)
     {
         uint raw = 0x1EC30000U; // Encoding for: UCVTF_h32_float2fix
         raw |= (uint)Hd.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3165,12 +3165,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Hd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_h64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, byte fbits)
+    public static uint UCVTF(Arm64RegisterH Hd, Arm64RegisterX Xn, uint fbits)
     {
         uint raw = 0x9EC30000U; // Encoding for: UCVTF_h64_float2fix
         raw |= (uint)Hd.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3178,12 +3178,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Sd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_s32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, byte fbits)
+    public static uint UCVTF(Arm64RegisterS Sd, Arm64RegisterW Wn, uint fbits)
     {
         uint raw = 0x1E030000U; // Encoding for: UCVTF_s32_float2fix
         raw |= (uint)Sd.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3191,12 +3191,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Sd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_s64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, byte fbits)
+    public static uint UCVTF(Arm64RegisterS Sd, Arm64RegisterX Xn, uint fbits)
     {
         uint raw = 0x9E030000U; // Encoding for: UCVTF_s64_float2fix
         raw |= (uint)Sd.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3204,12 +3204,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Dd, Wn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_d32_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, byte fbits)
+    public static uint UCVTF(Arm64RegisterD Dd, Arm64RegisterW Wn, uint fbits)
     {
         uint raw = 0x1E430000U; // Encoding for: UCVTF_d32_float2fix
         raw |= (uint)Dd.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3217,12 +3217,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UCVTF Dd, Xn, #fbits</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UCVTF_d64_float2fix), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, byte fbits)
+    public static uint UCVTF(Arm64RegisterD Dd, Arm64RegisterX Xn, uint fbits)
     {
         uint raw = 0x9E430000U; // Encoding for: UCVTF_d64_float2fix
         raw |= (uint)Dd.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)(fbits & 0x3F) << 10;
+        raw |= (uint)((64 - fbits) & 0x3F) << 10;
         return raw;
     }
     /// <summary>

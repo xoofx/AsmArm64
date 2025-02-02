@@ -172,12 +172,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ADDG Xd|SP, Xn|SP, #uimm6, #uimm4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDG_64_addsub_immtags), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADDG(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, byte uimm6, byte uimm4)
+    public static uint ADDG(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, uint uimm6, byte uimm4)
     {
         uint raw = 0x91800000U; // Encoding for: ADDG_64_addsub_immtags
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn_SP.Index << 5;
-        raw |= (uint)(uimm6 & 0x3F) << 16;
+        raw |= (uint)((uimm6 >> 4) & 0x3F) << 16;
         raw |= (uint)(uimm4 & 0xF) << 10;
         return raw;
     }
@@ -639,11 +639,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFC Wd, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFC_bfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFC(Arm64RegisterW Wd, byte lsb, ushort width)
+    public static uint BFC(Arm64RegisterW Wd, uint lsb, uint width)
     {
         uint raw = 0x330003E0U; // Encoding for: BFC_bfm_32m_bitfield
         raw |= (uint)Wd.Index;
-        raw |= (uint)(lsb & 0x3F) << 16;
+        raw |= (uint)(((32 - lsb) & 0x1F) & 0x3F) << 16;
         {
             // Write the immediate for width
             var _i_ = width & 0xFFF;
@@ -658,11 +658,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFC Xd, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFC_bfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFC(Arm64RegisterX Xd, byte lsb, ushort width)
+    public static uint BFC(Arm64RegisterX Xd, uint lsb, uint width)
     {
         uint raw = 0xB34003E0U; // Encoding for: BFC_bfm_64m_bitfield
         raw |= (uint)Xd.Index;
-        raw |= (uint)(lsb & 0x3F) << 16;
+        raw |= (uint)(((64 - lsb) & 0x3F) & 0x3F) << 16;
         {
             // Write the immediate for width
             var _i_ = width & 0xFFF;
@@ -677,12 +677,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFI Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFI_bfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFI(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, ushort width)
+    public static uint BFI(Arm64RegisterW Wd, Arm64RegisterW Wn, uint lsb, uint width)
     {
         uint raw = 0x33000000U; // Encoding for: BFI_bfm_32m_bitfield
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(lsb & 0x3F) << 16;
+        raw |= (uint)(((32 - lsb) & 0x1F) & 0x3F) << 16;
         {
             // Write the immediate for width
             var _i_ = width & 0xFFF;
@@ -697,12 +697,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFI Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFI_bfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFI(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, ushort width)
+    public static uint BFI(Arm64RegisterX Xd, Arm64RegisterX Xn, uint lsb, uint width)
     {
         uint raw = 0xB3400000U; // Encoding for: BFI_bfm_64m_bitfield
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)(lsb & 0x3F) << 16;
+        raw |= (uint)(((64 - lsb) & 0x3F) & 0x3F) << 16;
         {
             // Write the immediate for width
             var _i_ = width & 0xFFF;
@@ -745,7 +745,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFXIL Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFXIL_bfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFXIL(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, ushort width)
+    public static uint BFXIL(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, uint width)
     {
         uint raw = 0x33000000U; // Encoding for: BFXIL_bfm_32m_bitfield
         raw |= (uint)Wd.Index;
@@ -765,7 +765,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFXIL Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFXIL_bfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFXIL(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, ushort width)
+    public static uint BFXIL(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, uint width)
     {
         uint raw = 0xB3400000U; // Encoding for: BFXIL_bfm_64m_bitfield
         raw |= (uint)Xd.Index;
@@ -4280,6 +4280,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x99400000U; // Encoding for: LDAPUR_32_ldapstl_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -4292,6 +4293,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD9400000U; // Encoding for: LDAPUR_64_ldapstl_unscaled
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -4304,6 +4306,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x19400000U; // Encoding for: LDAPURB_32_ldapstl_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -4316,6 +4319,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x59400000U; // Encoding for: LDAPURH_32_ldapstl_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -4328,6 +4332,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x19C00000U; // Encoding for: LDAPURSB_32_ldapstl_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -4340,6 +4345,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x19800000U; // Encoding for: LDAPURSB_64_ldapstl_unscaled
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -4352,6 +4358,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x59C00000U; // Encoding for: LDAPURSH_32_ldapstl_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -4364,6 +4371,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x59800000U; // Encoding for: LDAPURSH_64_ldapstl_unscaled
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -4376,6 +4384,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x99800000U; // Encoding for: LDAPURSW_64_ldapstl_unscaled
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -5002,6 +5011,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD9600000U; // Encoding for: LDG_64loffset_ldsttags
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -5129,6 +5139,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt1.Index;
         raw |= (uint)Wt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 2) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -5142,6 +5153,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 3) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -5149,13 +5161,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDP Wt1, Wt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_32_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64BaseMemoryAccessor src, sbyte imm)
+    public static uint LDP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0x28C00000U; // Encoding for: LDP_32_ldstpair_post
         raw |= (uint)Wt1.Index;
         raw |= (uint)Wt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)(imm & 0x7F) << 15;
+        raw |= (uint)((imm >> 2) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -5163,13 +5175,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDP Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDP_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src, sbyte imm)
+    public static uint LDP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0xA8C00000U; // Encoding for: LDP_64_ldstpair_post
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)(imm & 0x7F) << 15;
+        raw |= (uint)((imm >> 3) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -5183,6 +5195,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt1.Index;
         raw |= (uint)Wt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 2) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -5196,6 +5209,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 3) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -5209,6 +5223,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt1.Index;
         raw |= (uint)Wt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 2) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -5222,6 +5237,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 3) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -5229,13 +5245,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDPSW Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDPSW_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDPSW(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src, sbyte imm)
+    public static uint LDPSW(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0x68C00000U; // Encoding for: LDPSW_64_ldstpair_post
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)(imm & 0x7F) << 15;
+        raw |= (uint)((imm >> 2) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -5249,6 +5265,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 2) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -5262,6 +5279,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 2) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -5300,6 +5318,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB8400C00U; // Encoding for: LDR_32_ldst_immpre
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -5312,6 +5331,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8400C00U; // Encoding for: LDR_64_ldst_immpre
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -5324,6 +5344,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB9400000U; // Encoding for: LDR_32_ldst_pos
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 2) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -5336,6 +5357,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF9400000U; // Encoding for: LDR_64_ldst_pos
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 3) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -5419,6 +5441,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38400C00U; // Encoding for: LDRB_32_ldst_immpre
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -5431,6 +5454,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x39400000U; // Encoding for: LDRB_32_ldst_pos
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -5456,6 +5480,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78400C00U; // Encoding for: LDRH_32_ldst_immpre
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -5468,6 +5493,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x79400000U; // Encoding for: LDRH_32_ldst_pos
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -5542,6 +5568,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38C00C00U; // Encoding for: LDRSB_32_ldst_immpre
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -5554,6 +5581,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38800C00U; // Encoding for: LDRSB_64_ldst_immpre
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -5566,6 +5594,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x39C00000U; // Encoding for: LDRSB_32_ldst_pos
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -5578,6 +5607,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x39800000U; // Encoding for: LDRSB_64_ldst_pos
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -5616,6 +5646,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78C00C00U; // Encoding for: LDRSH_32_ldst_immpre
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -5628,6 +5659,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78800C00U; // Encoding for: LDRSH_64_ldst_immpre
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -5640,6 +5672,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x79C00000U; // Encoding for: LDRSH_32_ldst_pos
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 1) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -5652,6 +5685,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x79800000U; // Encoding for: LDRSH_64_ldst_pos
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 1) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -5701,6 +5735,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB8800C00U; // Encoding for: LDRSW_64_ldst_immpre
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -5713,6 +5748,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB9800000U; // Encoding for: LDRSW_64_ldst_pos
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)((src.Immediate >> 2) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -6633,6 +6669,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -6640,13 +6677,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDTP Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDTP_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDTP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src, sbyte imm)
+    public static uint LDTP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor src, int imm)
     {
         uint raw = 0xE8C00000U; // Encoding for: LDTP_64_ldstpair_post
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)(imm & 0x7F) << 15;
+        raw |= (uint)((imm >> 3) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -6660,6 +6697,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -6673,6 +6711,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -6685,6 +6724,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB8400800U; // Encoding for: LDTR_32_ldst_unpriv
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -6697,6 +6737,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8400800U; // Encoding for: LDTR_64_ldst_unpriv
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -6709,6 +6750,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38400800U; // Encoding for: LDTRB_32_ldst_unpriv
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -6721,6 +6763,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78400800U; // Encoding for: LDTRH_32_ldst_unpriv
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -6733,6 +6776,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38C00800U; // Encoding for: LDTRSB_32_ldst_unpriv
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -6745,6 +6789,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38800800U; // Encoding for: LDTRSB_64_ldst_unpriv
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -6757,6 +6802,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78C00800U; // Encoding for: LDTRSH_32_ldst_unpriv
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -6769,6 +6815,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78800800U; // Encoding for: LDTRSH_64_ldst_unpriv
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -6781,6 +6828,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB8800800U; // Encoding for: LDTRSW_64_ldst_unpriv
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -7337,6 +7385,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB8400000U; // Encoding for: LDUR_32_ldst_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -7349,6 +7398,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8400000U; // Encoding for: LDUR_64_ldst_unscaled
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -7361,6 +7411,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38400000U; // Encoding for: LDURB_32_ldst_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -7373,6 +7424,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78400000U; // Encoding for: LDURH_32_ldst_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -7385,6 +7437,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38C00000U; // Encoding for: LDURSB_32_ldst_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -7397,6 +7450,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38800000U; // Encoding for: LDURSB_64_ldst_unscaled
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -7409,6 +7463,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78C00000U; // Encoding for: LDURSH_32_ldst_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -7421,6 +7476,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78800000U; // Encoding for: LDURSH_64_ldst_unscaled
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -7433,6 +7489,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB8800000U; // Encoding for: LDURSW_64_ldst_unscaled
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)(src.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -7514,12 +7571,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LSL Wd, Wn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LSL_ubfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LSL(Arm64RegisterW Wd, Arm64RegisterW Wn, byte shift)
+    public static uint LSL(Arm64RegisterW Wd, Arm64RegisterW Wn, uint shift)
     {
         uint raw = 0x53000000U; // Encoding for: LSL_ubfm_32m_bitfield
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(shift & 0x3F) << 16;
+        raw |= (uint)(((32 - shift) & 0x1F) & 0x3F) << 16;
         return raw;
     }
     /// <summary>
@@ -7527,12 +7584,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LSL Xd, Xn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LSL_ubfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LSL(Arm64RegisterX Xd, Arm64RegisterX Xn, byte shift)
+    public static uint LSL(Arm64RegisterX Xd, Arm64RegisterX Xn, uint shift)
     {
         uint raw = 0xD3400000U; // Encoding for: LSL_ubfm_64m_bitfield
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)(shift & 0x3F) << 16;
+        raw |= (uint)(((64 - shift) & 0x3F) & 0x3F) << 16;
         return raw;
     }
     /// <summary>
@@ -8337,6 +8394,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xF9800000U; // Encoding for: PRFM_p_ldst_pos
         raw |= (uint)mem.BaseRegister.Index << 5;
+        raw |= (uint)((mem.Immediate >> 3) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -8369,6 +8427,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xF8800000U; // Encoding for: PRFUM_p_ldst_unscaled
         raw |= (uint)mem.BaseRegister.Index << 5;
+        raw |= (uint)(mem.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -9510,12 +9569,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SBFIZ Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SBFIZ(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, ushort width)
+    public static uint SBFIZ(Arm64RegisterW Wd, Arm64RegisterW Wn, uint lsb, uint width)
     {
         uint raw = 0x13000000U; // Encoding for: SBFIZ_sbfm_32m_bitfield
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(lsb & 0x3F) << 16;
+        raw |= (uint)(((32 - lsb) & 0x1F) & 0x3F) << 16;
         {
             // Write the immediate for width
             var _i_ = width & 0xFFF;
@@ -9530,12 +9589,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SBFIZ Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SBFIZ(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, ushort width)
+    public static uint SBFIZ(Arm64RegisterX Xd, Arm64RegisterX Xn, uint lsb, uint width)
     {
         uint raw = 0x93400000U; // Encoding for: SBFIZ_sbfm_64m_bitfield
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)(lsb & 0x3F) << 16;
+        raw |= (uint)(((64 - lsb) & 0x3F) & 0x3F) << 16;
         {
             // Write the immediate for width
             var _i_ = width & 0xFFF;
@@ -9578,7 +9637,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SBFX Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFX_sbfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SBFX(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, ushort width)
+    public static uint SBFX(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, uint width)
     {
         uint raw = 0x13000000U; // Encoding for: SBFX_sbfm_32m_bitfield
         raw |= (uint)Wd.Index;
@@ -9598,7 +9657,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SBFX Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFX_sbfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SBFX(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, ushort width)
+    public static uint SBFX(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, uint width)
     {
         uint raw = 0x93400000U; // Encoding for: SBFX_sbfm_64m_bitfield
         raw |= (uint)Xd.Index;
@@ -10135,12 +10194,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2G Xt|SP, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2G_64spost_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2G(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, short simm)
+    public static uint ST2G(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xD9A00400U; // Encoding for: ST2G_64spost_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(simm & 0x1FF) << 12;
+        raw |= (uint)((simm >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -10153,6 +10212,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD9A00C00U; // Encoding for: ST2G_64spre_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -10165,6 +10225,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD9A00800U; // Encoding for: ST2G_64soffset_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -10498,12 +10559,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STG Xt|SP, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STG_64spost_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STG(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, short simm)
+    public static uint STG(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xD9200400U; // Encoding for: STG_64spost_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(simm & 0x1FF) << 12;
+        raw |= (uint)((simm >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -10516,6 +10577,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD9200C00U; // Encoding for: STG_64spre_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -10528,6 +10590,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD9200800U; // Encoding for: STG_64soffset_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -10547,13 +10610,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STGP Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STGP_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STGP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor dst, sbyte imm)
+    public static uint STGP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0x68800000U; // Encoding for: STGP_64_ldstpair_post
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(imm & 0x7F) << 15;
+        raw |= (uint)((imm >> 4) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -10567,6 +10630,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 4) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -10580,6 +10644,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 4) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -10790,6 +10855,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x99000000U; // Encoding for: STLUR_32_ldapstl_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -10802,6 +10868,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD9000000U; // Encoding for: STLUR_64_ldapstl_unscaled
         raw |= (uint)Xt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -10814,6 +10881,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x19000000U; // Encoding for: STLURB_32_ldapstl_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -10826,6 +10894,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x59000000U; // Encoding for: STLURH_32_ldapstl_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -10919,6 +10988,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt1.Index;
         raw |= (uint)Wt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 2) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -10932,6 +11002,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -10939,13 +11010,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STP Wt1, Wt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_32_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64BaseMemoryAccessor dst, sbyte imm)
+    public static uint STP(Arm64RegisterW Wt1, Arm64RegisterW Wt2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0x28800000U; // Encoding for: STP_32_ldstpair_post
         raw |= (uint)Wt1.Index;
         raw |= (uint)Wt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(imm & 0x7F) << 15;
+        raw |= (uint)((imm >> 2) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -10953,13 +11024,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STP Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STP_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor dst, sbyte imm)
+    public static uint STP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0xA8800000U; // Encoding for: STP_64_ldstpair_post
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(imm & 0x7F) << 15;
+        raw |= (uint)((imm >> 3) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -10973,6 +11044,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt1.Index;
         raw |= (uint)Wt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 2) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -10986,6 +11058,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -10999,6 +11072,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt1.Index;
         raw |= (uint)Wt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 2) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -11012,6 +11086,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -11050,6 +11125,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB8000C00U; // Encoding for: STR_32_ldst_immpre
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -11062,6 +11138,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8000C00U; // Encoding for: STR_64_ldst_immpre
         raw |= (uint)Xt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -11074,6 +11151,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB9000000U; // Encoding for: STR_32_ldst_pos
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 2) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -11086,6 +11164,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF9000000U; // Encoding for: STR_64_ldst_pos
         raw |= (uint)Xt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -11147,6 +11226,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38000C00U; // Encoding for: STRB_32_ldst_immpre
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -11159,6 +11239,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x39000000U; // Encoding for: STRB_32_ldst_pos
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -11184,6 +11265,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78000C00U; // Encoding for: STRH_32_ldst_immpre
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -11196,6 +11278,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x79000000U; // Encoding for: STRH_32_ldst_pos
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 1) & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -11605,6 +11688,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -11612,13 +11696,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STTP Xt1, Xt2, [Xn|SP], #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STTP_64_ldstpair_post), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STTP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor dst, sbyte imm)
+    public static uint STTP(Arm64RegisterX Xt1, Arm64RegisterX Xt2, Arm64BaseMemoryAccessor dst, int imm)
     {
         uint raw = 0xE8800000U; // Encoding for: STTP_64_ldstpair_post
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(imm & 0x7F) << 15;
+        raw |= (uint)((imm >> 3) & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -11632,6 +11716,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -11645,6 +11730,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt1.Index;
         raw |= (uint)Xt2.Index << 10;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x7F) << 15;
         return raw;
     }
     /// <summary>
@@ -11657,6 +11743,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB8000800U; // Encoding for: STTR_32_ldst_unpriv
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -11669,6 +11756,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8000800U; // Encoding for: STTR_64_ldst_unpriv
         raw |= (uint)Xt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -11681,6 +11769,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38000800U; // Encoding for: STTRB_32_ldst_unpriv
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -11693,6 +11782,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78000800U; // Encoding for: STTRH_32_ldst_unpriv
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -11971,6 +12061,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB8000000U; // Encoding for: STUR_32_ldst_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -11983,6 +12074,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8000000U; // Encoding for: STUR_64_ldst_unscaled
         raw |= (uint)Xt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -11995,6 +12087,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x38000000U; // Encoding for: STURB_32_ldst_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -12007,6 +12100,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x78000000U; // Encoding for: STURH_32_ldst_unscaled
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)(dst.Immediate & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -12094,12 +12188,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STZ2G Xt|SP, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STZ2G_64spost_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STZ2G(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, short simm)
+    public static uint STZ2G(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xD9E00400U; // Encoding for: STZ2G_64spost_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(simm & 0x1FF) << 12;
+        raw |= (uint)((simm >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -12112,6 +12206,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD9E00C00U; // Encoding for: STZ2G_64spre_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -12124,6 +12219,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD9E00800U; // Encoding for: STZ2G_64soffset_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -12131,12 +12227,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STZG Xt|SP, [Xn|SP], #simm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STZG_64spost_ldsttags), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STZG(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, short simm)
+    public static uint STZG(Arm64RegisterXOrSP Xt_SP, Arm64BaseMemoryAccessor dst, int simm)
     {
         uint raw = 0xD9600400U; // Encoding for: STZG_64spost_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)(simm & 0x1FF) << 12;
+        raw |= (uint)((simm >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -12149,6 +12245,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD9600C00U; // Encoding for: STZG_64spre_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -12161,6 +12258,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD9600800U; // Encoding for: STZG_64soffset_ldsttags
         raw |= (uint)Xt_SP.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)((dst.Immediate >> 4) & 0x1FF) << 12;
         return raw;
     }
     /// <summary>
@@ -12258,12 +12356,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SUBG Xd|SP, Xn|SP, #uimm6, #uimm4</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBG_64_addsub_immtags), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUBG(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, byte uimm6, byte uimm4)
+    public static uint SUBG(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, uint uimm6, byte uimm4)
     {
         uint raw = 0xD1800000U; // Encoding for: SUBG_64_addsub_immtags
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn_SP.Index << 5;
-        raw |= (uint)(uimm6 & 0x3F) << 16;
+        raw |= (uint)((uimm6 >> 4) & 0x3F) << 16;
         raw |= (uint)(uimm4 & 0xF) << 10;
         return raw;
     }
@@ -12899,12 +12997,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UBFIZ Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFIZ_ubfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UBFIZ(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, ushort width)
+    public static uint UBFIZ(Arm64RegisterW Wd, Arm64RegisterW Wn, uint lsb, uint width)
     {
         uint raw = 0x53000000U; // Encoding for: UBFIZ_ubfm_32m_bitfield
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(lsb & 0x3F) << 16;
+        raw |= (uint)(((32 - lsb) & 0x1F) & 0x3F) << 16;
         {
             // Write the immediate for width
             var _i_ = width & 0xFFF;
@@ -12919,12 +13017,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UBFIZ Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFIZ_ubfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UBFIZ(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, ushort width)
+    public static uint UBFIZ(Arm64RegisterX Xd, Arm64RegisterX Xn, uint lsb, uint width)
     {
         uint raw = 0xD3400000U; // Encoding for: UBFIZ_ubfm_64m_bitfield
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)(lsb & 0x3F) << 16;
+        raw |= (uint)(((64 - lsb) & 0x3F) & 0x3F) << 16;
         {
             // Write the immediate for width
             var _i_ = width & 0xFFF;
@@ -12967,7 +13065,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UBFX Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFX_ubfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UBFX(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, ushort width)
+    public static uint UBFX(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, uint width)
     {
         uint raw = 0x53000000U; // Encoding for: UBFX_ubfm_32m_bitfield
         raw |= (uint)Wd.Index;
@@ -12987,7 +13085,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UBFX Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFX_ubfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UBFX(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, ushort width)
+    public static uint UBFX(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, uint width)
     {
         uint raw = 0xD3400000U; // Encoding for: UBFX_ubfm_64m_bitfield
         raw |= (uint)Xd.Index;

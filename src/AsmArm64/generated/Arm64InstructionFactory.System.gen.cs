@@ -512,7 +512,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MSR pstatefield, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MSR_si_pstate), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MSR(Arm64ProcessStateField pstatefield, byte imm)
+    public static uint MSR(Arm64ProcessStateField pstatefield, uint imm)
     {
         uint raw = 0xD500401FU; // Encoding for: MSR_si_pstate
         raw |= (uint)(imm & 0xF) << 8;

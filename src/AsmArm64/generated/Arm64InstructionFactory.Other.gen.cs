@@ -23,6 +23,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8200400U; // Encoding for: LDRAA_64_ldst_pac
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        {
+            // Write the immediate for (src.Immediate >> 3)
+            var _i_ = (src.Immediate >> 3) & 0x3FF;
+            raw |= (uint)(_i_ & 0x1FF) << 12;
+            _i_ >>= 9;
+            raw |= (uint)(_i_ & 0x1) << 22;
+        }
         return raw;
     }
     /// <summary>
@@ -35,6 +42,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8200C00U; // Encoding for: LDRAA_64w_ldst_pac
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        {
+            // Write the immediate for (src.Immediate >> 3)
+            var _i_ = (src.Immediate >> 3) & 0x3FF;
+            raw |= (uint)(_i_ & 0x1FF) << 12;
+            _i_ >>= 9;
+            raw |= (uint)(_i_ & 0x1) << 22;
+        }
         return raw;
     }
     /// <summary>
@@ -47,6 +61,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8A00400U; // Encoding for: LDRAB_64_ldst_pac
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        {
+            // Write the immediate for (src.Immediate >> 3)
+            var _i_ = (src.Immediate >> 3) & 0x3FF;
+            raw |= (uint)(_i_ & 0x1FF) << 12;
+            _i_ >>= 9;
+            raw |= (uint)(_i_ & 0x1) << 22;
+        }
         return raw;
     }
     /// <summary>
@@ -59,6 +80,13 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8A00C00U; // Encoding for: LDRAB_64w_ldst_pac
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
+        {
+            // Write the immediate for (src.Immediate >> 3)
+            var _i_ = (src.Immediate >> 3) & 0x3FF;
+            raw |= (uint)(_i_ & 0x1FF) << 12;
+            _i_ >>= 9;
+            raw |= (uint)(_i_ & 0x1) << 22;
+        }
         return raw;
     }
 }

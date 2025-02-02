@@ -18453,12 +18453,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHL Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHL_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHL(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
+    public static uint SHL(Arm64RegisterD Dd, Arm64RegisterD Dn, uint shift)
     {
         uint raw = 0x5F405400U; // Encoding for: SHL_asisdshf_r
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)((shift - 64) & 0x7F) << 16;
         return raw;
     }
     /// <summary>
@@ -18947,12 +18947,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SLI Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SLI_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SLI(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
+    public static uint SLI(Arm64RegisterD Dd, Arm64RegisterD Dn, uint shift)
     {
         uint raw = 0x7F405400U; // Encoding for: SLI_asisdshf_r
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)((shift - 64) & 0x7F) << 16;
         return raw;
     }
     /// <summary>
@@ -24752,12 +24752,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRI Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRI_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRI(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
+    public static uint SRI(Arm64RegisterD Dd, Arm64RegisterD Dn, uint shift)
     {
         uint raw = 0x7F404400U; // Encoding for: SRI_asisdshf_r
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)((128 - shift) & 0x7F) << 16;
         return raw;
     }
     /// <summary>
@@ -24960,12 +24960,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSHR Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSHR_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
+    public static uint SRSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, uint shift)
     {
         uint raw = 0x5F402400U; // Encoding for: SRSHR_asisdshf_r
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)((128 - shift) & 0x7F) << 16;
         return raw;
     }
     /// <summary>
@@ -25064,12 +25064,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SRSRA Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SRSRA_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SRSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
+    public static uint SRSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, uint shift)
     {
         uint raw = 0x5F403400U; // Encoding for: SRSRA_asisdshf_r
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)((128 - shift) & 0x7F) << 16;
         return raw;
     }
     /// <summary>
@@ -25428,12 +25428,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHR Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHR_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
+    public static uint SSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, uint shift)
     {
         uint raw = 0x5F400400U; // Encoding for: SSHR_asisdshf_r
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)((128 - shift) & 0x7F) << 16;
         return raw;
     }
     /// <summary>
@@ -25532,12 +25532,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSRA Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSRA_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
+    public static uint SSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, uint shift)
     {
         uint raw = 0x5F401400U; // Encoding for: SSRA_asisdshf_r
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)((128 - shift) & 0x7F) << 16;
         return raw;
     }
     /// <summary>
@@ -34622,12 +34622,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSHR Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSHR_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
+    public static uint URSHR(Arm64RegisterD Dd, Arm64RegisterD Dn, uint shift)
     {
         uint raw = 0x7F402400U; // Encoding for: URSHR_asisdshf_r
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)((128 - shift) & 0x7F) << 16;
         return raw;
     }
     /// <summary>
@@ -34750,12 +34750,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>URSRA Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.URSRA_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint URSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
+    public static uint URSRA(Arm64RegisterD Dd, Arm64RegisterD Dn, uint shift)
     {
         uint raw = 0x7F403400U; // Encoding for: URSRA_asisdshf_r
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)((128 - shift) & 0x7F) << 16;
         return raw;
     }
     /// <summary>
@@ -35180,12 +35180,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHR Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHR_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHR(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
+    public static uint USHR(Arm64RegisterD Dd, Arm64RegisterD Dn, uint shift)
     {
         uint raw = 0x7F400400U; // Encoding for: USHR_asisdshf_r
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)((128 - shift) & 0x7F) << 16;
         return raw;
     }
     /// <summary>
@@ -35429,12 +35429,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USRA Dd, Dn, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USRA_asisdshf_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USRA(Arm64RegisterD Dd, Arm64RegisterD Dn, byte shift)
+    public static uint USRA(Arm64RegisterD Dd, Arm64RegisterD Dn, uint shift)
     {
         uint raw = 0x7F401400U; // Encoding for: USRA_asisdshf_r
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)((128 - shift) & 0x7F) << 16;
         return raw;
     }
     /// <summary>

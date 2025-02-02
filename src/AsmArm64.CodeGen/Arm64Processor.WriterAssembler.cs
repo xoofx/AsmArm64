@@ -417,38 +417,113 @@ partial class Arm64Processor
             OperandName = GetNormalizedOperandName(descriptor.Name),
             OperandType = GetMemoryOperandType((MemoryOperandDescriptor)descriptor),
         };
-        
+
         operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
         {
             w.WriteLine($"{variable} |= (uint){operand.OperandName}.BaseRegister.Index << {descriptor.BaseRegister.LowBit};");
-
-            // We have a register with an immediate or with a register + extend/LSL
-            switch (descriptor.MemoryEncodingKind)
-            {
-                case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
-                    break;
-                case Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional:
-                    break;
-                case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional:
-                    break;
-                case Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount:
-                    break;
-                case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
-                    break;
-                case Arm64MemoryEncodingKind.BaseRegisterXn:
-                case Arm64MemoryEncodingKind.BaseRegister:
-                case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate:
-                case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional:
-                    // Nothing to do for these
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         });
-        
+
+        // We have a register with an immediate or with a register + extend/LSL
+        switch (descriptor.MemoryEncodingKind)
+        {
+            case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
+            case Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional:
+
+                var bitSize = descriptor.IndexRegisterOrImmediate.Select(x => x.Width).Sum();
+                string operandName = $"{operandVariation.OperandName}.Immediate";
+                if (descriptor.ImmediateValueEncodingKind != Arm64ImmediateValueEncodingKind.None)
+                {
+                    operandName = GenerateImmediateValueEncoding(descriptor.ImmediateValueEncodingKind, operandName);
+                }
+
+                GenerateBitRangeEncodingFromValue(operandName, "immediate", bitSize, descriptor.IndexRegisterOrImmediate, operandVariation.WriteEncodings);
+                break;
+            case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional:
+                break;
+            case Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount:
+                break;
+            case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
+                break;
+            case Arm64MemoryEncodingKind.BaseRegisterXn:
+            case Arm64MemoryEncodingKind.BaseRegister:
+            case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate:
+            case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional:
+                // Nothing to do for these
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
         operandVariations.Add(operandVariation);
     }
+    
+    private string GenerateImmediateValueEncoding(Arm64ImmediateValueEncodingKind kind, string operandPath)
+    {
+        string operandValue = operandPath;
+        switch (kind)
+        {
+            case Arm64ImmediateValueEncodingKind.ValueMulBy2:
+                operandValue = $"({operandPath} >> 1)";
+                break;
+            case Arm64ImmediateValueEncodingKind.ValueMulBy4:
+                operandValue = $"({operandPath} >> 2)";
+                break;
+            case Arm64ImmediateValueEncodingKind.ValueMulBy8:
+                operandValue = $"({operandPath} >> 3)";
+                break;
+            case Arm64ImmediateValueEncodingKind.ValueMulBy16:
+                operandValue = $"({operandPath} >> 4)";
+                break;
+            case Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1:
+                break;
+            case Arm64ImmediateValueEncodingKind.ValueImmsPlus1:
+                break;
+            case Arm64ImmediateValueEncodingKind._32_Minus_Value_Mod32:
+                operandValue = $"((32 - {operandPath}) & 0x1F)";
+                break;
+            case Arm64ImmediateValueEncodingKind._64_Minus_Value_Mod64:
+                operandValue = $"((64 - {operandPath}) & 0x3F)";
+                break;
+            case Arm64ImmediateValueEncodingKind._32_Minus_Value:
+                operandValue = $"(32 - {operandPath})";
+                break;
+            case Arm64ImmediateValueEncodingKind._64_Minus_Value:
+                operandValue = $"(64 - {operandPath})";
+                break;
+            case Arm64ImmediateValueEncodingKind._128_Minus_Value:
+                operandValue = $"(128 - {operandPath})";
+                break;
+            case Arm64ImmediateValueEncodingKind.Value_Minus_64:
+                operandValue = $"({operandPath} - 64)";
+                break;
+            case Arm64ImmediateValueEncodingKind.ValueMod64Plus1:
+                operandValue = $"(({operandPath} - 1) & 0x3F)";
+                break;
+            case Arm64ImmediateValueEncodingKind.ValueMsrImmediate:
+                // TODO
+                break;
+            case Arm64ImmediateValueEncodingKind.InvertValueShiftWide32:
+                // TODO
+                break;
+            case Arm64ImmediateValueEncodingKind.ValueShiftWide64:
+                // TODO
+                break;
+            case Arm64ImmediateValueEncodingKind.SignedFloatExp3Mantissa4:
+            case Arm64ImmediateValueEncodingKind.DecodeBitMask32:
+            case Arm64ImmediateValueEncodingKind.DecodeBitMask64:
+            case Arm64ImmediateValueEncodingKind.ValueImm64:
+                operandValue = $"{operandPath}.Value";
+                break;
+            case Arm64ImmediateValueEncodingKind.None:
+                // Nothing to do
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(kind), kind, null);
+        }
 
+        return operandValue;
+    }
+    
     private void GetEnumVariations(EnumOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
         string enumType;
@@ -538,26 +613,28 @@ partial class Arm64Processor
 
         var operandTypeBitSize = 0;
 
-        string? operandType;
-        switch (descriptor.BitSize)
+        string? operandType = descriptor.IsSigned ? "int" : "uint";
+
+        // If there is no value encoding, we can use a more precise type
+        if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.None)
         {
-            case <= 8:
-                operandType = descriptor.IsSigned ? "sbyte" : "byte";
-                if (descriptor.BitSize == 8)
-                {
-                    operandTypeBitSize = 8;
-                }
-                break;
-            case <= 16:
-                operandType = descriptor.IsSigned ? "short" : "ushort";
-                if (descriptor.BitSize == 16)
-                {
-                    operandTypeBitSize = 16;
-                }
-                break;
-            default:
-                operandType = descriptor.IsSigned ? "int" : "uint";
-                break;
+            switch (descriptor.BitSize)
+            {
+                case <= 8:
+                    operandType = descriptor.IsSigned ? "sbyte" : "byte";
+                    if (descriptor.BitSize == 8)
+                    {
+                        operandTypeBitSize = 8;
+                    }
+                    break;
+                case <= 16:
+                    operandType = descriptor.IsSigned ? "short" : "ushort";
+                    if (descriptor.BitSize == 16)
+                    {
+                        operandTypeBitSize = 16;
+                    }
+                    break;
+            }
         }
 
         if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.ValueImm64)
@@ -604,13 +681,8 @@ partial class Arm64Processor
             operandVariation.DefaultValue = $"{fixedValue}";
         }
 
-        var operandPath = operandVariation.OperandName;
-        if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask32 || descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64
-            || descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.SignedFloatExp3Mantissa4 || descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.ValueImm64)
-        {
-            operandPath = $"{operandPath}.Value";
-        }
-
+        var operandPath = GenerateImmediateValueEncoding(descriptor.ValueEncodingKind, operandVariation.OperandName);
+        
         switch (descriptor.ImmediateKind)
         {
             case Arm64ImmediateEncodingKind.Regular:
