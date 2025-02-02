@@ -424,12 +424,13 @@ partial class Arm64Processor
         });
 
         // We have a register with an immediate or with a register + extend/LSL
+        var bitSize = descriptor.IndexRegisterOrImmediate.Select(x => x.Width).Sum();
+
         switch (descriptor.MemoryEncodingKind)
         {
             case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
             case Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional:
 
-                var bitSize = descriptor.IndexRegisterOrImmediate.Select(x => x.Width).Sum();
                 string operandName = $"{operandVariation.OperandName}.Immediate";
                 if (descriptor.ImmediateValueEncodingKind != Arm64ImmediateValueEncodingKind.None)
                 {
@@ -439,16 +440,18 @@ partial class Arm64Processor
                 GenerateBitRangeEncodingFromValue(operandName, "immediate", bitSize, descriptor.IndexRegisterOrImmediate, operandVariation.WriteEncodings);
                 break;
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional:
-                break;
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount:
-                break;
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
+                GenerateBitRangeEncodingFromValue($"{operandVariation.OperandName}.IndexRegister.Index", "index register", bitSize, descriptor.IndexRegisterOrImmediate, operandVariation.WriteEncodings, bitSize == 5 ? bitSize : 0);
+                // TODO: add Extend/LSL support
                 break;
             case Arm64MemoryEncodingKind.BaseRegisterXn:
             case Arm64MemoryEncodingKind.BaseRegister:
+                // Nothing to do for these
+                break;
             case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate:
             case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional:
-                // Nothing to do for these
+                // TODO: verify fixed immediate
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
