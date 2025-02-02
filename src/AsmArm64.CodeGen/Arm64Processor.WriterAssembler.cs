@@ -135,13 +135,12 @@ partial class Arm64Processor
     }
 
 
-    private bool TryGetCombinedInstructionVariations(string mnemonic, string id1, string id2, List<Instruction> instructions, [NotNullWhen(true)] out InstructionVariation? variation)
+    private void CombineInstructionVariations(string mnemonic, string id1, string id2, List<Instruction> instructions, List<InstructionVariation> variations)
     {
-        variation = null;
         var i1 = instructions.Find(x => x.Id == id1);
         if (i1 is null)
         {
-            return false;
+            return;
         }
         instructions.Remove(i1);
         var i2 = instructions.First(x => x.Id == id2)!;
@@ -153,12 +152,16 @@ partial class Arm64Processor
         var v2 = new List<InstructionVariation>();
         GetInstructionVariations(mnemonic, i2, v2);
 
-        Debug.Assert(v1.Count == 1);
-        Debug.Assert(v2.Count == 1);
+        Debug.Assert((v1.Count == 1 && v2.Count == 2) || (v1.Count == 2 && v2.Count == 1));
 
-        variation = v1[0];
-        variation.ElseVariation = v2[0];
-        return true;
+        if (v1.Count == 2)
+        {
+            variations.AddRange(v1);
+        }
+        else
+        {
+            variations.AddRange(v2);
+        }
     }
 
     private static readonly List<(string Mnemonic, string Id1, string Id2)> CombinedInstructionList =
@@ -176,10 +179,9 @@ partial class Arm64Processor
         // Special case where instructions are combined because of memory operand differing only with LSL / EXTEND
         foreach (var combined in CombinedInstructionList)
         {
-            if (combined.Mnemonic  == mnemonic
-                && TryGetCombinedInstructionVariations(mnemonic, combined.Id1, combined.Id2, instructions, out var variation))
+            if (combined.Mnemonic  == mnemonic)
             {
-                variations.Add(variation);
+                CombineInstructionVariations(mnemonic, combined.Id1, combined.Id2, instructions, variations);
             }
         }
 
@@ -265,7 +267,7 @@ partial class Arm64Processor
                 //     [2] Vn.4H,   H
                 //     [3] Vn.8H,   H
                 //     [4] Vn.4S,   S
-                var bestEncodingExtra = encodingSymbolExtracts.Where(x => x.Selector is not null).OrderByDescending(x => x.Selector!.BitSize).First();
+                var bestEncodingExtra = encodingSymbolExtracts.Where(x => x?.Selector is not null).OrderByDescending(x => x.Selector!.BitSize).First();
                 var selector = bestEncodingExtra!.Selector!;
 
                 // For now, we only support a selector that is overlapping with all other selectors
@@ -411,11 +413,13 @@ partial class Arm64Processor
 
     private void GetMemoryOperandVariation(Instruction instruction, MemoryOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
+        var operandTypePair = GetMemoryOperandType((MemoryOperandDescriptor)descriptor);
+
         var operandVariation = new OperandVariation()
         {
             Descriptor = descriptor,
             OperandName = GetNormalizedOperandName(descriptor.Name),
-            OperandType = GetMemoryOperandType((MemoryOperandDescriptor)descriptor),
+            OperandType = descriptor.IsPreIncrement ? $"{operandTypePair.Default}.PreIncrement" : operandTypePair.Default,
         };
 
         operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
@@ -456,8 +460,57 @@ partial class Arm64Processor
             default:
                 throw new ArgumentOutOfRangeException();
         }
-
         operandVariations.Add(operandVariation);
+
+        if (operandTypePair.IndexRegisterW is not null)
+        {
+            // var option = (rawValue >> 13) & 0b111;
+            // (option & 1) == 0 -> W else X
+            // operandVariation is X
+            operandVariation.BitfieldMask |= 1 << 13;
+            operandVariation.BitfieldSets |= 1 << 13;
+
+            // Create a fake encoding symbol selector to generate the W/X operand variation
+            var encodingExtract = new EncodingSymbolExtract();
+            encodingExtract.BitRanges.Add(new BitRange(13, 1));
+            var selector = new EncodingSymbolSelector
+            {
+                BitEncodingMask = 1 << 13,
+                BitSize = 1
+            };
+            var bitValueW = new EncodingBitValue()
+            {
+                Text = "W",
+                BitSelectorMask = 1 << 13,
+                BitSelectorValue = 0,
+            };
+            var bitValueX = new EncodingBitValue()
+            {
+                Text = "X",
+                BitSelectorMask = 1 << 13,
+                BitSelectorValue = 1 << 13,
+            };
+            selector.BitValues.Add(bitValueW);
+            selector.BitValues.Add(bitValueX);
+
+            encodingExtract.Selector = selector;
+            
+            operandVariation.EncodingExtract = encodingExtract;
+            operandVariation.BitValue = bitValueX;
+
+            // operandVariation2 is W
+            var operandVariation2 = new OperandVariation()
+            {
+                Descriptor = descriptor,
+                OperandName = operandVariation.OperandName,
+                OperandType = descriptor.IsPreIncrement ? $"{operandTypePair.IndexRegisterW}.PreIncrement" : operandTypePair.IndexRegisterW,
+                BitfieldMask = 1 << 13,
+                EncodingExtract = encodingExtract,
+                BitValue = bitValueW,
+            };
+            operandVariation2.WriteEncodings.AddRange(operandVariation.WriteEncodings);
+            operandVariations.Add(operandVariation2);
+        }
     }
     
     private string GenerateImmediateValueEncoding(Arm64ImmediateValueEncodingKind kind, string operandPath)
@@ -822,35 +875,25 @@ partial class Arm64Processor
         variations.Add(operandVariation);
     }
 
-    private static string GetMemoryOperandType(MemoryOperandDescriptor memory)
+    private static (string Default, string? IndexRegisterW) GetMemoryOperandType(MemoryOperandDescriptor memory)
     {
-        // Arm64BaseMemoryAccessor
-        // Arm64BaseXnMemoryAccessor
-        // Arm64ImmediateMemoryAccessor
-        // Arm64OptionalImmediateMemoryAccessor
-        // Arm64RegisterExtendMemoryAccessor
-        // Arm64OptionalRegisterExtendMemoryAccessor
-
         switch (memory.MemoryEncodingKind)
         {
             case Arm64MemoryEncodingKind.BaseRegisterXn:
-                return "Arm64BaseXnMemoryAccessor";
+                return ("Arm64BaseXMemoryAccessor", null);
             case Arm64MemoryEncodingKind.BaseRegister:
-                return "Arm64BaseMemoryAccessor";
+                return ("Arm64BaseMemoryAccessor", null);
             case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate:
             case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
-                return memory.IsPreIncrement ? "Arm64ImmediateMemoryAccessorPreIncrement" : "Arm64ImmediateMemoryAccessor";
             case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional:
             case Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional:
-                return memory.IsPreIncrement ? "Arm64OptionalImmediateMemoryAccessorPreIncrement" : "Arm64OptionalImmediateMemoryAccessor";
+                return ("Arm64ImmediateMemoryAccessor", null);
                 break;
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount:
+                return ("Arm64RegisterXExtendMemoryAccessor", null);
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
-                return memory.IsPreIncrement ? "Arm64RegisterExtendMemoryAccessorPreIncrement" : "Arm64RegisterExtendMemoryAccessor";
-                break;
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional:
-                return "Arm64OptionalRegisterExtendMemoryAccessor";
-                break;
+                return ("Arm64RegisterXExtendMemoryAccessor", "Arm64RegisterWExtendMemoryAccessor");
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -1328,7 +1371,7 @@ partial class Arm64Processor
     {
         public required OperandDescriptor Descriptor { get; init; }
 
-        public EncodingSymbolExtract? EncodingExtract { get; init; }
+        public EncodingSymbolExtract? EncodingExtract { get; set; }
 
         public required string OperandType { get; set; }
 
@@ -1342,7 +1385,7 @@ partial class Arm64Processor
 
         public uint BitfieldSets { get; set; }
 
-        public EncodingBitValue? BitValue { get; init; }
+        public EncodingBitValue? BitValue { get; set; }
 
         public string? DefaultValue { get; set; }
 

@@ -15,6 +15,8 @@ public interface IArm64MemoryAccessor
     
     Arm64RegisterAny BaseRegister { get; }
 
+    bool IsPreIncrement { get; }
+
     bool HasOptionalOffset { get; }
 }
 
@@ -49,15 +51,13 @@ public struct Arm64MemoryAccessorFactory
 {
     public Arm64BaseMemoryAccessor this[Arm64RegisterXOrSP baseRegister] => default; // TODO
     
-    public Arm64BaseXnMemoryAccessor this[Arm64RegisterX baseRegister] => default; // TODO
+    public Arm64BaseXMemoryAccessor this[Arm64RegisterX baseRegister] => default; // TODO
 
     public Arm64ImmediateMemoryAccessor this[Arm64RegisterXOrSP baseRegister, int immediate] => default; // TODO
 
-    public Arm64OptionalImmediateMemoryAccessor this[Arm64RegisterXOrSP baseRegister, int? immediate = null] => default; // TODO
+    public Arm64RegisterXExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterX indexRegister, Arm64MemoryExtendX extend, bool isPreIncrement = false] => default;
 
-    public Arm64RegisterExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterAny indexRegister, Arm64MemoryExtend extend, bool isPreIncrement = false] => default;
-
-    public Arm64OptionalRegisterExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterAny indexRegister, Arm64MemoryExtend? extend = null, bool isPreIncrement = false] => default;
+    public Arm64RegisterWExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterW indexRegister, Arm64MemoryExtendW extend, bool isPreIncrement = false] => default;
 }
 
 public record struct Arm64BaseMemoryAccessor : IArm64MemoryAccessor
@@ -72,13 +72,14 @@ public record struct Arm64BaseMemoryAccessor : IArm64MemoryAccessor
     public Arm64MemoryOffsetKind OffsetKind => Arm64MemoryOffsetKind.None;
 
     public Arm64RegisterAny BaseRegister { get; }
+    public bool IsPreIncrement => false;
 
     public bool HasOptionalOffset => false;
 }
 
-public record struct Arm64BaseXnMemoryAccessor : IArm64MemoryAccessor
+public record struct Arm64BaseXMemoryAccessor : IArm64MemoryAccessor
 {
-    public Arm64BaseXnMemoryAccessor(Arm64RegisterAny baseRegister)
+    public Arm64BaseXMemoryAccessor(Arm64RegisterAny baseRegister)
     {
         BaseRegister = baseRegister;
     }
@@ -90,6 +91,28 @@ public record struct Arm64BaseXnMemoryAccessor : IArm64MemoryAccessor
     public Arm64RegisterAny BaseRegister { get; }
     
     public bool HasOptionalOffset => false;
+
+    public bool IsPreIncrement => false;
+
+    public PreIncrement Pre => default;
+
+    public record struct PreIncrement : IArm64MemoryAccessor
+    {
+        public PreIncrement(Arm64RegisterAny baseRegister)
+        {
+            BaseRegister = baseRegister;
+        }
+
+        public Arm64MemoryBaseRegisterKind BaseRegisterKind => Arm64MemoryBaseRegisterKind.Register;
+
+        public Arm64MemoryOffsetKind OffsetKind => Arm64MemoryOffsetKind.None;
+
+        public Arm64RegisterAny BaseRegister { get; }
+
+        public bool HasOptionalOffset => false;
+
+        public bool IsPreIncrement => true;
+    }
 }
 
 public record struct Arm64ImmediateMemoryAccessor : IArm64MemoryAccessor
@@ -112,80 +135,33 @@ public record struct Arm64ImmediateMemoryAccessor : IArm64MemoryAccessor
 
     public bool IsPreIncrement => false;
 
-    public Arm64ImmediateMemoryAccessorPreIncrement Pre => default;
-}
-
-public record struct Arm64ImmediateMemoryAccessorPreIncrement : IArm64MemoryAccessor
-{
-    public Arm64ImmediateMemoryAccessorPreIncrement(Arm64RegisterAny baseRegister, int immediate)
+    public PreIncrement Pre => default;
+    
+    public record struct PreIncrement : IArm64MemoryAccessor
     {
-        BaseRegister = baseRegister;
-        Immediate = immediate;
+        public PreIncrement(Arm64RegisterAny baseRegister, int immediate)
+        {
+            BaseRegister = baseRegister;
+            Immediate = immediate;
+        }
+
+        public Arm64MemoryBaseRegisterKind BaseRegisterKind => Arm64MemoryBaseRegisterKind.Register;
+
+        public Arm64MemoryOffsetKind OffsetKind => Arm64MemoryOffsetKind.Immediate;
+
+        public Arm64RegisterAny BaseRegister { get; }
+
+        public bool HasOptionalOffset => false;
+
+        public int Immediate { get; }
+
+        public bool IsPreIncrement => true;
     }
-
-    public Arm64MemoryBaseRegisterKind BaseRegisterKind => Arm64MemoryBaseRegisterKind.Register;
-
-    public Arm64MemoryOffsetKind OffsetKind => Arm64MemoryOffsetKind.Immediate;
-
-    public Arm64RegisterAny BaseRegister { get; }
-
-    public bool HasOptionalOffset => false;
-
-    public int Immediate { get; }
-
-    public  bool IsPreIncrement => true;
 }
 
-public record struct Arm64OptionalImmediateMemoryAccessor : IArm64MemoryAccessor
+public record struct Arm64RegisterXExtendMemoryAccessor : IArm64MemoryAccessor
 {
-    public Arm64OptionalImmediateMemoryAccessor(Arm64RegisterAny baseRegister, int? immediate, bool isPreIncrement)
-    {
-        BaseRegister = baseRegister;
-        Immediate = immediate ?? 0;
-        HasOptionalOffset = immediate.HasValue;
-    }
-
-    public Arm64MemoryBaseRegisterKind BaseRegisterKind => Arm64MemoryBaseRegisterKind.Register;
-
-    public Arm64MemoryOffsetKind OffsetKind => Arm64MemoryOffsetKind.Immediate;
-
-    public Arm64RegisterAny BaseRegister { get; }
-
-    public bool HasOptionalOffset { get; }
-
-    public int Immediate { get; }
-
-    public bool IsPreIncrement => false;
-
-    public Arm64OptionalImmediateMemoryAccessorPreIncrement Pre => default;
-}
-
-
-public record struct Arm64OptionalImmediateMemoryAccessorPreIncrement : IArm64MemoryAccessor
-{
-    public Arm64OptionalImmediateMemoryAccessorPreIncrement(Arm64RegisterAny baseRegister, int? immediate)
-    {
-        BaseRegister = baseRegister;
-        Immediate = immediate ?? 0;
-        HasOptionalOffset = immediate.HasValue;
-    }
-
-    public Arm64MemoryBaseRegisterKind BaseRegisterKind => Arm64MemoryBaseRegisterKind.Register;
-
-    public Arm64MemoryOffsetKind OffsetKind => Arm64MemoryOffsetKind.Immediate;
-
-    public Arm64RegisterAny BaseRegister { get; }
-
-    public bool HasOptionalOffset { get; }
-
-    public int Immediate { get; }
-
-    public bool IsPreIncrement => true;
-}
-
-public record struct Arm64RegisterExtendMemoryAccessor : IArm64MemoryAccessor
-{
-    public Arm64RegisterExtendMemoryAccessor(Arm64RegisterAny baseRegister, Arm64RegisterAny indexRegister, Arm64MemoryExtend extend)
+    public Arm64RegisterXExtendMemoryAccessor(Arm64RegisterAny baseRegister, Arm64RegisterX indexRegister, Arm64MemoryExtend extend)
     {
         BaseRegister = baseRegister;
         IndexRegister = indexRegister;
@@ -204,12 +180,35 @@ public record struct Arm64RegisterExtendMemoryAccessor : IArm64MemoryAccessor
     public Arm64MemoryExtend Extend { get; }
 
     public bool IsPreIncrement => false;
+
+    public PreIncrement Pre => default;
+
+    public record struct PreIncrement : IArm64MemoryAccessor
+    {
+        public PreIncrement(Arm64RegisterAny baseRegister, Arm64RegisterX indexRegister, Arm64MemoryExtend extend)
+        {
+            BaseRegister = baseRegister;
+            IndexRegister = indexRegister;
+            Extend = extend;
+        }
+
+        public Arm64MemoryBaseRegisterKind BaseRegisterKind => Arm64MemoryBaseRegisterKind.Register;
+        public Arm64MemoryOffsetKind OffsetKind => Arm64MemoryOffsetKind.RegisterExtend;
+
+        public Arm64RegisterAny BaseRegister { get; }
+
+        public Arm64RegisterAny IndexRegister { get; }
+
+        public Arm64MemoryExtend Extend { get; }
+        public bool HasOptionalOffset => false;
+
+        public bool IsPreIncrement => true;
+    }
 }
 
-
-public record struct Arm64RegisterExtendMemoryAccessorPreIncrement : IArm64MemoryAccessor
+public record struct Arm64RegisterWExtendMemoryAccessor : IArm64MemoryAccessor
 {
-    public Arm64RegisterExtendMemoryAccessorPreIncrement(Arm64RegisterAny baseRegister, Arm64RegisterAny indexRegister, Arm64MemoryExtend extend)
+    public Arm64RegisterWExtendMemoryAccessor(Arm64RegisterAny baseRegister, Arm64RegisterW indexRegister, Arm64MemoryExtend extend)
     {
         BaseRegister = baseRegister;
         IndexRegister = indexRegister;
@@ -221,50 +220,37 @@ public record struct Arm64RegisterExtendMemoryAccessorPreIncrement : IArm64Memor
 
     public Arm64RegisterAny BaseRegister { get; }
 
-    public Arm64RegisterAny IndexRegister { get; }
-
-    public Arm64MemoryExtend Extend { get; }
     public bool HasOptionalOffset => false;
 
-    public bool IsPreIncrement => true;
-}
-
-public record struct Arm64OptionalRegisterExtendMemoryAccessor : IArm64MemoryAccessor
-{
-    public Arm64OptionalRegisterExtendMemoryAccessor(Arm64RegisterAny baseRegister, Arm64RegisterAny indexRegister, Arm64MemoryExtend? extend, bool isPreIncrement)
-    {
-        BaseRegister = baseRegister;
-        IndexRegister = indexRegister;
-        Extend = extend ?? default;
-        IsPreIncrement = isPreIncrement;
-        HasOptionalOffset = extend.HasValue;
-    }
-    public Arm64MemoryBaseRegisterKind BaseRegisterKind => Arm64MemoryBaseRegisterKind.Register;
-    public Arm64MemoryOffsetKind OffsetKind => Arm64MemoryOffsetKind.RegisterExtend;
-    public Arm64RegisterAny BaseRegister { get; }
-    public bool HasOptionalOffset { get; }
     public Arm64RegisterAny IndexRegister { get; }
-    public Arm64MemoryExtend Extend { get; }
-    public bool IsPreIncrement { get; }
-}
 
-public record struct Arm64OptionalRegisterExtendMemoryAccessorPreIncrement : IArm64MemoryAccessor
-{
-    public Arm64OptionalRegisterExtendMemoryAccessorPreIncrement(Arm64RegisterAny baseRegister, Arm64RegisterAny indexRegister, Arm64MemoryExtend? extend)
-    {
-        BaseRegister = baseRegister;
-        IndexRegister = indexRegister;
-        Extend = extend ?? default;
-        HasOptionalOffset = extend.HasValue;
-    }
-    public Arm64MemoryBaseRegisterKind BaseRegisterKind => Arm64MemoryBaseRegisterKind.Register;
-    public Arm64MemoryOffsetKind OffsetKind => Arm64MemoryOffsetKind.RegisterExtend;
-    public Arm64RegisterAny BaseRegister { get; }
-    public bool HasOptionalOffset { get; }
-    public Arm64RegisterAny IndexRegister { get; }
     public Arm64MemoryExtend Extend { get; }
 
-    public bool IsPreIncrement => true;
+    public bool IsPreIncrement => false;
+
+    public PreIncrement Pre => default;
+
+    public record struct PreIncrement : IArm64MemoryAccessor
+    {
+        public PreIncrement(Arm64RegisterAny baseRegister, Arm64RegisterW indexRegister, Arm64MemoryExtend extend)
+        {
+            BaseRegister = baseRegister;
+            IndexRegister = indexRegister;
+            Extend = extend;
+        }
+
+        public Arm64MemoryBaseRegisterKind BaseRegisterKind => Arm64MemoryBaseRegisterKind.Register;
+        public Arm64MemoryOffsetKind OffsetKind => Arm64MemoryOffsetKind.RegisterExtend;
+
+        public Arm64RegisterAny BaseRegister { get; }
+
+        public Arm64RegisterAny IndexRegister { get; }
+
+        public Arm64MemoryExtend Extend { get; }
+        public bool HasOptionalOffset => false;
+
+        public bool IsPreIncrement => true;
+    }
 }
 
 public record struct Arm64MemoryAccessorAny : IArm64MemoryAccessor

@@ -79,6 +79,18 @@ partial class Arm64Extensions
     public static string ToText(this Arm64ExtendKind kind, bool upper) => upper ? ExtendTextUpper[(int)kind] : ExtendTextLower[(int)kind];
 }
 
+
+public readonly record struct Arm64MemoryExtendX(Arm64ExtendXKind Kind, byte Amount)
+{
+    // TODO
+}
+
+public readonly record struct Arm64MemoryExtendW(Arm64ExtendWKind Kind, byte Amount)
+{
+    // TODO
+}
+
+
 public readonly record struct Arm64MemoryExtend(Arm64ExtendKind Kind, byte Amount) : IArm64Extend , ISpanFormattable
 {
     private readonly bool _isAmountVisible;

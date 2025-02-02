@@ -18,7 +18,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDRAA Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRAA_64_ldst_pac), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDRAA(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
+    public static uint LDRAA(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor src)
     {
         uint raw = 0xF8200400U; // Encoding for: LDRAA_64_ldst_pac
         raw |= (uint)Xt.Index;
@@ -37,7 +37,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDRAA Xt, [Xn|SP{, #simm}]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRAA_64w_ldst_pac), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDRAA(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessorPreIncrement src)
+    public static uint LDRAA(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor.PreIncrement src)
     {
         uint raw = 0xF8200C00U; // Encoding for: LDRAA_64w_ldst_pac
         raw |= (uint)Xt.Index;
@@ -56,7 +56,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDRAB Xt, [Xn|SP{, #simm}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRAB_64_ldst_pac), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDRAB(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessor src)
+    public static uint LDRAB(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor src)
     {
         uint raw = 0xF8A00400U; // Encoding for: LDRAB_64_ldst_pac
         raw |= (uint)Xt.Index;
@@ -75,7 +75,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDRAB Xt, [Xn|SP{, #simm}]!</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRAB_64w_ldst_pac), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDRAB(Arm64RegisterX Xt, Arm64OptionalImmediateMemoryAccessorPreIncrement src)
+    public static uint LDRAB(Arm64RegisterX Xt, Arm64ImmediateMemoryAccessor.PreIncrement src)
     {
         uint raw = 0xF8A00C00U; // Encoding for: LDRAB_64w_ldst_pac
         raw |= (uint)Xt.Index;
