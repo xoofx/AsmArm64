@@ -1365,7 +1365,7 @@ internal sealed class InstructionProcessor
         //Console.WriteLine($"Memory instruction {instruction.Id,-30} - {instruction.Signature}");
 
         Arm64MemoryEncodingKind kind;
-        var extendKind = Arm64MemoryExtendEncodingKind.NoLsl;
+        var extendKind = Arm64MemoryExtendEncodingKind.None;
         sbyte fixedValue = 0;
         bool signedImmediate = false;
         var immediateValueEncodingKind = Arm64ImmediateValueEncodingKind.None;
@@ -1458,6 +1458,7 @@ internal sealed class InstructionProcessor
                     // LDRSB_64bl_ldst_regoff
                     // LDRSB       Xt, [Xn|SP, Xm{, LSLamount}]
                     // NoLsl
+                    extendKind = Arm64MemoryExtendEncodingKind.Shift0;
                 }
                 else
                 {
@@ -1556,14 +1557,17 @@ internal sealed class InstructionProcessor
         Debug.Assert(extendBitRange.HiBit == 15 && extendBitRange.Width == 3);
         Debug.Assert(amountBitRange.HiBit == 12 && amountBitRange.Width == 1);
 
-        Arm64MemoryExtendEncodingKind extendKind = Arm64MemoryExtendEncodingKind.NoLsl;
+        Arm64MemoryExtendEncodingKind extendKind;
 
         if (extendSymbol.Selector!.BitValues.Count == 3)
         {
-            extendKind = Arm64MemoryExtendEncodingKind.NoLsl;
+            //Console.WriteLine($"{instruction.Id} - {instruction.FullSyntax} <- NoLsl - {extendSymbol.Selector}");
+            extendKind = Arm64MemoryExtendEncodingKind.Shift0;
         }
         else
         {
+            //Console.WriteLine($"{instruction.Id} - {instruction.FullSyntax} <- Multiple shifts - {extendSymbol.Selector}");
+
             Debug.Assert(extendSymbol.Selector.BitValues.Count == 4);
             Debug.Assert(amountSymbol.Selector!.BitValues.Count == 2);
             Debug.Assert(amountSymbol.Selector.BitValues[0].Text == "#0"); // Always 0

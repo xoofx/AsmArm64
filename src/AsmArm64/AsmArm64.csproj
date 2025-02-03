@@ -55,6 +55,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Arm64ExtendKind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Arm64ExtendKind.gen.cs</LastGenOutput>
+    </None>
     <None Update="Arm64RegisterDual.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Arm64RegisterDual.cs</LastGenOutput>
@@ -83,6 +87,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Arm64ExtendKind.gen.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64ExtendKind.tt</DependentUpon>
+    </Compile>
     <Compile Update="Arm64RegisterDual.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

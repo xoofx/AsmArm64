@@ -45,7 +45,7 @@ public struct LSLShiftKind : IArm64ShiftKind
 {
     public Arm64ShiftKind ShiftKind => Arm64ShiftKind.LSL;
 
-    public override string ToString() => this.ToText();
+    public override string ToString() => this.ShiftToText();
 
     public static implicit operator Arm64ExtendKind(LSLShiftKind shiftKind) => Arm64ExtendKind.LSL;
 }
@@ -54,28 +54,28 @@ public struct LSRShiftKind : IArm64ShiftKind
 {
     public Arm64ShiftKind ShiftKind => Arm64ShiftKind.LSR;
 
-    public override string ToString() => this.ToText();
+    public override string ToString() => this.ShiftToText();
 }
 
 public struct ASRShiftKind : IArm64ShiftKind
 {
     public Arm64ShiftKind ShiftKind => Arm64ShiftKind.ASR;
 
-    public override string ToString() => this.ToText();
+    public override string ToString() => this.ShiftToText();
 }
 
 public struct RORShiftKind : IArm64ShiftKind
 {
     public Arm64ShiftKind ShiftKind => Arm64ShiftKind.ROR;
 
-    public override string ToString() => this.ToText();
+    public override string ToString() => this.ShiftToText();
 }
 
 public struct MSLShiftKind : IArm64ShiftKind
 {
     public Arm64ShiftKind ShiftKind => Arm64ShiftKind.MSL;
 
-    public override string ToString() => this.ToText();
+    public override string ToString() => this.ShiftToText();
 }
 
 /// <summary>
@@ -95,7 +95,7 @@ public readonly record struct Arm64ShiftKind3 : IArm64ShiftKind
     public Arm64ShiftKind ShiftKind { get; }
 
     /// <inheritdoc />
-    public override string ToString() => this.ToText();
+    public override string ToString() => this.ShiftToText();
     
     public static implicit operator Arm64ShiftKind3(LSLShiftKind shiftKind) => new(Arm64ShiftKind.LSL);
 
@@ -117,7 +117,7 @@ public readonly record struct Arm64ShiftKind3 : IArm64ShiftKind
 /// <param name="ShiftKind">The shift type.</param>
 public readonly record struct Arm64ShiftKind4(Arm64ShiftKind ShiftKind) : IArm64ShiftKind
 {
-    public override string ToString() => this.ToText();
+    public override string ToString() => this.ShiftToText();
 
     public static implicit operator Arm64ShiftKind4(LSLShiftKind shiftKind) => new(Arm64ShiftKind.LSL);
     public static implicit operator Arm64ShiftKind4(LSRShiftKind shiftKind) => new(Arm64ShiftKind.LSR);

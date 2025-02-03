@@ -122,11 +122,11 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                     }
                     else
                     {
-                        isZeroAmount = extendEncodingKind == Arm64MemoryExtendEncodingKind.NoLsl;
+                        isZeroAmount = extendEncodingKind == Arm64MemoryExtendEncodingKind.Shift0;
                         extendKind = option switch
                         {
                             0b010 => Arm64ExtendKind.UXTW,
-                            0b011 => Arm64ExtendKind.UXTX,
+                            0b011 => Arm64ExtendKind.LSL,
                             0b110 => Arm64ExtendKind.SXTW,
                             0b111 => Arm64ExtendKind.SXTX,
                             _ => Arm64ExtendKind.None,
@@ -164,11 +164,6 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                                     Debug.Assert(false, "This should not happen");
                                     amount = 0;
                                     break;
-                            }
-
-                            if (amount != 0 && extendKind == Arm64ExtendKind.UXTX)
-                            {
-                                extendKind = Arm64ExtendKind.LSL;
                             }
                         }
                     }

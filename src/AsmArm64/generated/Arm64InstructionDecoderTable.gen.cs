@@ -4796,11 +4796,11 @@ partial class Arm64InstructionDecoderTable
         // LDR_32_ldst_regoff             - LDR         Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         236,1,14,2,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        4,39,165,0,16,5,0,0,
+        4,55,165,0,16,5,0,0,
         // LDR_64_ldst_regoff             - LDR         Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         237,1,14,2,4,0,1,2,
         1,17,0,0,0,0,0,0,
-        4,55,165,0,16,5,0,0,
+        4,71,165,0,16,5,0,0,
         // LDRAA_64_ldst_pac              - LDRAA       Xt, [Xn|SP{, #simm}]
         238,1,15,2,5,55,1,2,
         1,17,0,0,0,0,0,0,
@@ -4833,11 +4833,11 @@ partial class Arm64InstructionDecoderTable
         // LDRB_32b_ldst_regoff           - LDRB        Wt, [Xn|SP, (Wm|Xm), extend{, amount}]
         245,1,17,2,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        4,9,165,0,16,5,0,0,
+        4,25,165,0,16,5,0,0,
         // LDRB_32bl_ldst_regoff          - LDRB        Wt, [Xn|SP, Xm{, LSLamount}]
         246,1,17,2,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        4,8,165,0,16,5,0,0,
+        4,24,165,0,16,5,0,0,
         // LDRH_32_ldst_immpost           - LDRH        Wt, [Xn|SP], #simm
         247,1,18,2,4,0,1,3,
         1,19,0,0,0,0,0,0,
@@ -4854,7 +4854,7 @@ partial class Arm64InstructionDecoderTable
         // LDRH_32_ldst_regoff            - LDRH        Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         250,1,18,2,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        4,23,165,0,16,5,0,0,
+        4,39,165,0,16,5,0,0,
         // LDRSB_32_ldst_immpost          - LDRSB       Wt, [Xn|SP], #simm
         251,1,19,2,4,0,1,3,
         1,19,0,0,0,0,0,0,
@@ -4884,19 +4884,19 @@ partial class Arm64InstructionDecoderTable
         // LDRSB_32b_ldst_regoff          - LDRSB       Wt, [Xn|SP, (Wm|Xm), extend{, amount}]
         1,2,19,2,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        4,9,165,0,16,5,0,0,
+        4,25,165,0,16,5,0,0,
         // LDRSB_32bl_ldst_regoff         - LDRSB       Wt, [Xn|SP, Xm{, LSLamount}]
         2,2,19,2,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        4,8,165,0,16,5,0,0,
+        4,24,165,0,16,5,0,0,
         // LDRSB_64b_ldst_regoff          - LDRSB       Xt, [Xn|SP, (Wm|Xm), extend{, amount}]
         3,2,19,2,4,0,1,2,
         1,17,0,0,0,0,0,0,
-        4,9,165,0,16,5,0,0,
+        4,25,165,0,16,5,0,0,
         // LDRSB_64bl_ldst_regoff         - LDRSB       Xt, [Xn|SP, Xm{, LSLamount}]
         4,2,19,2,4,0,1,2,
         1,17,0,0,0,0,0,0,
-        4,8,165,0,16,5,0,0,
+        4,24,165,0,16,5,0,0,
         // LDRSH_32_ldst_immpost          - LDRSH       Wt, [Xn|SP], #simm
         5,2,20,2,4,0,1,3,
         1,19,0,0,0,0,0,0,
@@ -4926,11 +4926,11 @@ partial class Arm64InstructionDecoderTable
         // LDRSH_32_ldst_regoff           - LDRSH       Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         11,2,20,2,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        4,23,165,0,16,5,0,0,
+        4,39,165,0,16,5,0,0,
         // LDRSH_64_ldst_regoff           - LDRSH       Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         12,2,20,2,4,0,1,2,
         1,17,0,0,0,0,0,0,
-        4,23,165,0,16,5,0,0,
+        4,39,165,0,16,5,0,0,
         // LDRSW_64_ldst_immpost          - LDRSW       Xt, [Xn|SP], #simm
         13,2,21,2,4,0,1,3,
         1,17,0,0,0,0,0,0,
@@ -4951,7 +4951,7 @@ partial class Arm64InstructionDecoderTable
         // LDRSW_64_ldst_regoff           - LDRSW       Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         17,2,21,2,4,0,1,2,
         1,17,0,0,0,0,0,0,
-        4,39,165,0,16,5,0,0,
+        4,55,165,0,16,5,0,0,
         // LDSET_32_memop                 - LDSET       Ws, Wt, [Xn|SP]
         18,2,22,2,4,48,0,3,
         1,19,0,16,
@@ -5979,7 +5979,7 @@ partial class Arm64InstructionDecoderTable
         // PRFM_p_ldst_regoff             - PRFM        (prfop|#imm5), [Xn|SP, (Wm|Xm){, extend, {amount}}]
         240,2,175,2,4,0,1,2,
         9,8,0,5,0,0,0,0,
-        4,55,165,0,16,5,0,0,
+        4,71,165,0,16,5,0,0,
         // PRFUM_p_ldst_unscaled          - PRFUM       (prfop|#imm5), [Xn|SP{, #simm}]
         241,2,176,2,4,0,1,2,
         9,8,0,5,0,0,0,0,
@@ -7037,11 +7037,11 @@ partial class Arm64InstructionDecoderTable
         // STR_32_ldst_regoff             - STR         Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         210,3,223,3,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        4,39,165,0,16,5,0,0,
+        4,55,165,0,16,5,0,0,
         // STR_64_ldst_regoff             - STR         Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         211,3,223,3,4,0,1,2,
         1,17,0,0,0,0,0,0,
-        4,55,165,0,16,5,0,0,
+        4,71,165,0,16,5,0,0,
         // STRB_32_ldst_immpost           - STRB        Wt, [Xn|SP], #simm
         212,3,224,3,4,0,1,3,
         1,19,0,0,0,0,0,0,
@@ -7058,11 +7058,11 @@ partial class Arm64InstructionDecoderTable
         // STRB_32b_ldst_regoff           - STRB        Wt, [Xn|SP, (Wm|Xm), extend{, amount}]
         215,3,224,3,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        4,9,165,0,16,5,0,0,
+        4,25,165,0,16,5,0,0,
         // STRB_32bl_ldst_regoff          - STRB        Wt, [Xn|SP, Xm{, LSLamount}]
         216,3,224,3,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        4,8,165,0,16,5,0,0,
+        4,24,165,0,16,5,0,0,
         // STRH_32_ldst_immpost           - STRH        Wt, [Xn|SP], #simm
         217,3,225,3,4,0,1,3,
         1,19,0,0,0,0,0,0,
@@ -7079,7 +7079,7 @@ partial class Arm64InstructionDecoderTable
         // STRH_32_ldst_regoff            - STRH        Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         220,3,225,3,4,0,1,2,
         1,19,0,0,0,0,0,0,
-        4,23,165,0,16,5,0,0,
+        4,39,165,0,16,5,0,0,
         // STSET_ldset_32_memop           - STSET       Ws, [Xn|SP]
         221,3,226,3,4,48,0,2,
         1,19,0,16,
@@ -11318,27 +11318,27 @@ partial class Arm64InstructionDecoderTable
         // LDR_b_ldst_regoff              - LDR         Bt, [Xn|SP, (Wm|Xm), extend{, amount}]
         125,7,14,2,3,25,1,2,
         1,23,0,0,0,0,0,0,
-        4,9,165,0,16,5,0,0,
+        4,25,165,0,16,5,0,0,
         // LDR_bl_ldst_regoff             - LDR         Bt, [Xn|SP, Xm{, LSLamount}]
         126,7,14,2,3,25,1,2,
         1,23,0,0,0,0,0,0,
-        4,8,165,0,16,5,0,0,
+        4,24,165,0,16,5,0,0,
         // LDR_h_ldst_regoff              - LDR         Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         127,7,14,2,3,25,1,2,
         1,24,0,0,0,0,0,0,
-        4,23,165,0,16,5,0,0,
+        4,39,165,0,16,5,0,0,
         // LDR_s_ldst_regoff              - LDR         St, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         128,7,14,2,3,25,1,2,
         1,25,0,0,0,0,0,0,
-        4,39,165,0,16,5,0,0,
+        4,55,165,0,16,5,0,0,
         // LDR_d_ldst_regoff              - LDR         Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         129,7,14,2,3,25,1,2,
         1,26,0,0,0,0,0,0,
-        4,55,165,0,16,5,0,0,
+        4,71,165,0,16,5,0,0,
         // LDR_q_ldst_regoff              - LDR         Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         130,7,14,2,3,25,1,2,
         1,28,0,0,0,0,0,0,
-        4,71,165,0,16,5,0,0,
+        4,87,165,0,16,5,0,0,
         // LDTNP_q_ldstnapair_offs        - LDTNP       Qt1, Qt2, [Xn|SP{, #imm}]
         131,7,70,2,3,32,1,3,
         1,28,0,0,0,0,0,0,
@@ -13101,27 +13101,27 @@ partial class Arm64InstructionDecoderTable
         // STR_b_ldst_regoff              - STR         Bt, [Xn|SP, (Wm|Xm), extend{, amount}]
         253,8,223,3,3,25,1,2,
         1,23,0,0,0,0,0,0,
-        4,9,165,0,16,5,0,0,
+        4,25,165,0,16,5,0,0,
         // STR_bl_ldst_regoff             - STR         Bt, [Xn|SP, Xm{, LSLamount}]
         254,8,223,3,3,25,1,2,
         1,23,0,0,0,0,0,0,
-        4,8,165,0,16,5,0,0,
+        4,24,165,0,16,5,0,0,
         // STR_h_ldst_regoff              - STR         Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         255,8,223,3,3,25,1,2,
         1,24,0,0,0,0,0,0,
-        4,23,165,0,16,5,0,0,
+        4,39,165,0,16,5,0,0,
         // STR_s_ldst_regoff              - STR         St, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         0,9,223,3,3,25,1,2,
         1,25,0,0,0,0,0,0,
-        4,39,165,0,16,5,0,0,
+        4,55,165,0,16,5,0,0,
         // STR_d_ldst_regoff              - STR         Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         1,9,223,3,3,25,1,2,
         1,26,0,0,0,0,0,0,
-        4,55,165,0,16,5,0,0,
+        4,71,165,0,16,5,0,0,
         // STR_q_ldst_regoff              - STR         Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]
         2,9,223,3,3,25,1,2,
         1,28,0,0,0,0,0,0,
-        4,71,165,0,16,5,0,0,
+        4,87,165,0,16,5,0,0,
         // STTNP_q_ldstnapair_offs        - STTNP       Qt1, Qt2, [Xn|SP{, #imm}]
         3,9,249,3,3,32,1,3,
         1,28,0,0,0,0,0,0,

@@ -55,9 +55,9 @@ public struct Arm64MemoryAccessorFactory
 
     public Arm64ImmediateMemoryAccessor this[Arm64RegisterXOrSP baseRegister, int immediate] => default; // TODO
 
-    public Arm64RegisterXExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterX indexRegister, Arm64MemoryExtendX extend, bool isPreIncrement = false] => default;
+    public Arm64RegisterXExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterX indexRegister, Arm64ExtendXKind extend = default, byte amount = 0 ] => default;
 
-    public Arm64RegisterWExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterW indexRegister, Arm64MemoryExtendW extend, bool isPreIncrement = false] => default;
+    public Arm64RegisterWExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterW indexRegister, Arm64ExtendWKind extend = default, byte amount = 0] => default;
 }
 
 public record struct Arm64BaseMemoryAccessor : IArm64MemoryAccessor

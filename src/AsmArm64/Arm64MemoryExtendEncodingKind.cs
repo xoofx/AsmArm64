@@ -10,47 +10,52 @@ namespace AsmArm64;
 enum Arm64MemoryExtendEncodingKind : byte
 {
     /// <summary>
-    /// Option:
-    /// 010 = UXTW
-    /// 110 = SXTW
-    /// 111 = SXTX
-    /// Amount: 0 (bit 0, bit 1 is not possible)
+    /// No extend.
     /// </summary>
-    NoLsl = 0,
+    None = 0,
     /// <summary>
     /// Option:
     /// 010 = UXTW
-    /// 011 = UXTX
+    /// 011 = LSL
+    /// 110 = SXTW
+    /// 111 = SXTX
+    /// Amount: 0 (bit 0 - The amount 0 is absent, bit 1: The amount 0 is present)
+    /// </summary>
+    Shift0 = 1,
+    /// <summary>
+    /// Option:
+    /// 010 = UXTW
+    /// 011 = LSL
     /// 110 = SXTW
     /// 111 = SXTX
     /// Amount: 1 (when bit set)
     /// </summary>
-    Shift1 = 1,
+    Shift1 = 2,
     /// <summary>
     /// Option:
     /// 010 = UXTW
-    /// 011 = UXTX
+    /// 011 = LSL
     /// 110 = SXTW
     /// 111 = SXTX
     /// Amount: 2 (when bit set)
     /// </summary>
-    Shift2 = 2,
+    Shift2 = 3,
     /// <summary>
     /// Option:
     /// 010 = UXTW
-    /// 011 = UXTX
+    /// 011 = LSL
     /// 110 = SXTW
     /// 111 = SXTX
     /// Amount: 3 (when bit set)
     /// </summary>
-    Shift3 = 3,
+    Shift3 = 4,
     /// <summary>
     /// Option:
     /// 010 = UXTW
-    /// 011 = UXTX
+    /// 011 = LSL
     /// 110 = SXTW
     /// 111 = SXTX
     /// Amount: 4 (when bit set)
     /// </summary>
-    Shift4 = 4,
+    Shift4 = 5,
 }

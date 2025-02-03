@@ -6,37 +6,6 @@ using System.Diagnostics;
 
 namespace AsmArm64;
 
-public enum Arm64ExtendKind : byte
-{
-    None,
-    UXTB,
-    UXTH,
-    UXTW,
-    UXTX,
-    SXTB,
-    SXTH,
-    SXTW,
-    SXTX,
-    LSL,
-}
-
-public enum Arm64ExtendXKind : byte
-{
-    None,
-    UXTX,
-    SXTX,
-    LSL,
-}
-public enum Arm64ExtendWKind : byte
-{
-    None,
-    UXTB,
-    UXTH,
-    UXTW,
-    SXTB,
-    SXTH,
-    SXTW,
-}
 
 public interface IArm64Extend
 {
@@ -45,51 +14,40 @@ public interface IArm64Extend
     byte Amount { get; }
 }
 
-
-partial class Arm64Extensions
+public readonly struct Arm64ExtendXKind : IArm64ExtendKind
 {
-    private static readonly string[] ExtendTextLower =
-    [
-        "????",
-        "uxtb",
-        "uxth",
-        "uxtw",
-        "uxtx",
-        "sxtb",
-        "sxth",
-        "sxtw",
-        "sxtx",
-        "lsl"
-    ];
+    private Arm64ExtendXKind(Arm64ExtendKind extendKind)
+    {
+        ExtendKind = extendKind;
+    }
 
-    private static readonly string[] ExtendTextUpper =
-    [
-        "????",
-        "UXTB",
-        "UXTH",
-        "UXTW",
-        "UXTX",
-        "SXTB",
-        "SXTH",
-        "SXTW",
-        "SXTX",
-        "LSL"
-    ];
+    public Arm64ExtendKind ExtendKind { get; }
+
+    public override string ToString() => this.ExtendToText();
+
+    public static implicit operator Arm64ExtendXKind(LSLShiftKind shiftKindAsExtendKind) => new(Arm64ExtendKind.LSL);
+
+    public static implicit operator Arm64ExtendXKind(IArm64ExtendKind.LSL extendKind) => new(Arm64ExtendKind.LSL);
+
+    public static implicit operator Arm64ExtendXKind(IArm64ExtendKind.SXTX extendKind) => new(Arm64ExtendKind.SXTX);
+
+}
+
+public readonly struct Arm64ExtendWKind : IArm64ExtendKind
+{
+    private Arm64ExtendWKind(Arm64ExtendKind extendKind)
+    {
+        ExtendKind = extendKind;
+    }
+
+    public Arm64ExtendKind ExtendKind { get; }
+
+    public override string ToString() => this.ExtendToText();
     
-    public static string ToText(this Arm64ExtendKind kind, bool upper) => upper ? ExtendTextUpper[(int)kind] : ExtendTextLower[(int)kind];
+    public static implicit operator Arm64ExtendWKind(IArm64ExtendKind.UXTW extendKind) => new(Arm64ExtendKind.UXTW);
+
+    public static implicit operator Arm64ExtendWKind(IArm64ExtendKind.SXTW extendKind) => new(Arm64ExtendKind.SXTW);
 }
-
-
-public readonly record struct Arm64MemoryExtendX(Arm64ExtendXKind Kind, byte Amount)
-{
-    // TODO
-}
-
-public readonly record struct Arm64MemoryExtendW(Arm64ExtendWKind Kind, byte Amount)
-{
-    // TODO
-}
-
 
 public readonly record struct Arm64MemoryExtend(Arm64ExtendKind Kind, byte Amount) : IArm64Extend , ISpanFormattable
 {

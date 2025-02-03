@@ -46,7 +46,7 @@ public static partial class Arm64Extensions
     /// <param name="shiftType"></param>
     /// <param name="upperCase"></param>
     /// <returns></returns>
-    public static string ToText<T>(this T shiftType, bool upperCase = false) where T : IArm64ShiftKind
+    public static string ShiftToText<T>(this T shiftType, bool upperCase = false) where T : IArm64ShiftKind
         => upperCase ? ShiftTypeUpper[(int)shiftType.ShiftKind] : ShiftTypeLower[(int)shiftType.ShiftKind];
 
 
