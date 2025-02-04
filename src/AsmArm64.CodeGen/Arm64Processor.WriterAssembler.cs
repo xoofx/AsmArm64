@@ -760,9 +760,7 @@ partial class Arm64Processor
             OperandName = name,
             OperandType = enumType,
         };
-
-
-
+        
         if (descriptor.EnumKind == Arm64EnumKind.RangePrefetchOperation)
         {
             // (12:4),(0:5)
@@ -785,6 +783,32 @@ partial class Arm64Processor
             var extract = descriptor.BitMapExtract;
             Debug.Assert(extract is not null);
 
+            var selector = extract.Selector;
+            Debug.Assert(selector is not null);
+            var bitValues = selector.BitValues;
+
+            var localEncodings = new List<WriteEncodingDelegate>();
+            GenerateBitRangeEncodingFromValue($"(uint){operandVariation.OperandName}", "ProcessStateField", selector.BitSize, selector.BitRanges, localEncodings);
+
+            operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
+            {
+                w.WriteLine($"switch ({operandVariation.OperandName})");
+                w.OpenBraceBlock();
+                {
+                    foreach (var bitValue in bitValues)
+                    {
+                        w.WriteLine($"case Arm64ProcessStateField.{bitValue.Text}:");
+                        w.Indent();
+                        w.WriteLine($"{variable} |= 0x{bitValue.BitSelectorValue:X}U;");
+                        w.WriteLine("break;");
+                        w.UnIndent();
+                    }
+                    w.WriteLine("default:");
+                    localEncodings[0](w, variable, variation, operand, index);
+                    w.WriteLine("break;");
+                }
+                w.CloseBraceBlockStatement();
+            });
         }
         else
         {

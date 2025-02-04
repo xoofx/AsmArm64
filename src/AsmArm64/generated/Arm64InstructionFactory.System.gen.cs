@@ -524,6 +524,59 @@ static partial class Arm64InstructionFactory
     public static uint MSR(Arm64ProcessStateField pstatefield, uint imm)
     {
         uint raw = 0xD500401FU; // Encoding for: MSR_si_pstate
+        switch (pstatefield)
+        {
+            case Arm64ProcessStateField.UAO:
+                raw |= 0x60U;
+                break;
+            case Arm64ProcessStateField.PAN:
+                raw |= 0x80U;
+                break;
+            case Arm64ProcessStateField.SPSel:
+                raw |= 0xA0U;
+                break;
+            case Arm64ProcessStateField.ALLINT:
+                raw |= 0x10000U;
+                break;
+            case Arm64ProcessStateField.SSBS:
+                raw |= 0x30020U;
+                break;
+            case Arm64ProcessStateField.DIT:
+                raw |= 0x30040U;
+                break;
+            case Arm64ProcessStateField.TCO:
+                raw |= 0x30080U;
+                break;
+            case Arm64ProcessStateField.DAIFSet:
+                raw |= 0x300C0U;
+                break;
+            case Arm64ProcessStateField.DAIFClr:
+                raw |= 0x300E0U;
+                break;
+            case Arm64ProcessStateField.PM:
+                raw |= 0x10200U;
+                break;
+            case Arm64ProcessStateField.SVCRSM:
+                raw |= 0x30260U;
+                break;
+            case Arm64ProcessStateField.SVCRZA:
+                raw |= 0x30460U;
+                break;
+            case Arm64ProcessStateField.SVCRSMZA:
+                raw |= 0x30660U;
+                break;
+            default:
+            {
+                // Write the ProcessStateField for (uint)pstatefield
+                var _i_ = (uint)pstatefield & 0x3FF;
+                raw |= (uint)(_i_ & 0x7) << 5;
+                _i_ >>= 3;
+                raw |= (uint)(_i_ & 0x7) << 16;
+                _i_ >>= 3;
+                raw |= (uint)(_i_ & 0xF) << 8;
+            }
+            break;
+        };
         raw |= (uint)(imm & 0xF) << 8;
         return raw;
     }
