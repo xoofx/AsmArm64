@@ -761,36 +761,53 @@ partial class Arm64Processor
             OperandType = enumType,
         };
 
-        operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
+
+
+        if (descriptor.EnumKind == Arm64EnumKind.RangePrefetchOperation)
         {
-            if (descriptor.EnumKind == Arm64EnumKind.ProcessStateField)
+            // (12:4),(0:5)
+            // option: 13-15
+            // S: 12
+            // Rt: 0-4
+            // imm6 option<2>:option<0>:S:Rt<2:0>
+            var bitRanges = new List<BitRange>
             {
-                // ExtractBitRange
-                var extract = descriptor.BitMapExtract;
-                Debug.Assert(extract is not null);
+                new(15, 1),
+                new(12, 2),
+                new(0, 3),
+            };
 
-            }
-            else if (descriptor.EnumKind == Arm64EnumKind.RangePrefetchOperation)
-            {
-                
-            }
-            else if (fixedValue is not null)
-            {
-                w.WriteLine($"if ({operand.OperandName} != {fixedValue}) throw new {nameof(ArgumentOutOfRangeException)}(nameof({operand.OperandName}), $\"Invalid enum value '{{{operand.OperandName}}}'. Expecting the fixed value `{fixedValue}`\");");
-            }
-            else
-            {
-                var operandPath = operand.OperandName;
+            GenerateBitRangeEncodingFromValue($"(byte){operandVariation.OperandName}", "immediate", 6, bitRanges, operandVariation.WriteEncodings);
+        }
+        else if (descriptor.EnumKind == Arm64EnumKind.ProcessStateField)
+        {
+            // ExtractBitRange
+            var extract = descriptor.BitMapExtract;
+            Debug.Assert(extract is not null);
 
-                if (descriptor.EnumKind == Arm64EnumKind.InvertedConditional)
+        }
+        else
+        {
+            operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
+            {
+                if (fixedValue is not null)
                 {
-                    operandPath = $"{operandPath}.Invert()";
+                    w.WriteLine($"if ({operand.OperandName} != {fixedValue}) throw new {nameof(ArgumentOutOfRangeException)}(nameof({operand.OperandName}), $\"Invalid enum value '{{{operand.OperandName}}}'. Expecting the fixed value `{fixedValue}`\");");
                 }
+                else
+                {
+                    var operandPath = operand.OperandName;
 
-                Debug.Assert(descriptor.BitSize != 0);
-                w.WriteLine($"{variable} |= (uint)((byte){operandPath} & (byte)0x{(1 << descriptor.BitSize) - 1:X}) << {descriptor.EnumEncoding.LowBit};");
-            }
-        });
+                    if (descriptor.EnumKind == Arm64EnumKind.InvertedConditional)
+                    {
+                        operandPath = $"{operandPath}.Invert()";
+                    }
+
+                    Debug.Assert(descriptor.BitSize != 0);
+                    w.WriteLine($"{variable} |= (uint)((byte){operandPath} & (byte)0x{(1 << descriptor.BitSize) - 1:X}) << {descriptor.EnumEncoding.LowBit};");
+                }
+            });
+        }
         
         operandVariations.Add(operandVariation);
     }
@@ -1376,7 +1393,14 @@ partial class Arm64Processor
                     for (var i = bitRanges.Count - 1; i >= 0; i--)
                     {
                         var bitRange = bitRanges[i];
-                        w.WriteLine($"{variable} |= (uint)(_i_ & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit};");
+                        if (bitRange.LowBit != 0)
+                        {
+                            w.WriteLine($"{variable} |= (uint)(_i_ & 0x{((1 << bitRange.Width) - 1):X}) << {bitRange.LowBit};");
+                        }
+                        else
+                        {
+                            w.WriteLine($"{variable} |= (uint)(_i_ & 0x{((1 << bitRange.Width) - 1):X});");
+                        }
                         if (i > 0)
                         {
                             w.WriteLine($"_i_ >>= {bitRange.Width};");

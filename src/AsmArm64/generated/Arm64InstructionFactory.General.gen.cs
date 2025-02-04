@@ -10047,6 +10047,15 @@ static partial class Arm64InstructionFactory
     public static uint RPRFM(Arm64RangePrefetchOperationKind rprfop, Arm64RegisterX Xm, Arm64BaseMemoryAccessor mem)
     {
         uint raw = 0xF8A04818U; // Encoding for: RPRFM_r_ldst_regoff
+        {
+            // Write the immediate for (byte)rprfop
+            var _i_ = (byte)rprfop & 0x3F;
+            raw |= (uint)(_i_ & 0x7);
+            _i_ >>= 3;
+            raw |= (uint)(_i_ & 0x3) << 12;
+            _i_ >>= 2;
+            raw |= (uint)(_i_ & 0x1) << 15;
+        }
         raw |= (uint)Xm.Index << 16;
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
