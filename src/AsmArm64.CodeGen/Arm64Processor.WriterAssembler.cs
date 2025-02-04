@@ -430,6 +430,7 @@ partial class Arm64Processor
         // We have a register with an immediate or with a register + extend/LSL
         var bitSize = descriptor.IndexRegisterOrImmediate.Select(x => x.Width).Sum();
 
+        bool hasLslOrExtend = false;
         switch (descriptor.MemoryEncodingKind)
         {
             case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
@@ -447,7 +448,7 @@ partial class Arm64Processor
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount:
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
                 GenerateBitRangeEncodingFromValue($"{operandVariation.OperandName}.IndexRegister.Index", "index register", bitSize, descriptor.IndexRegisterOrImmediate, operandVariation.WriteEncodings, bitSize == 5 ? bitSize : 0);
-                // TODO: add Extend/LSL support
+                hasLslOrExtend = true;
                 break;
             case Arm64MemoryEncodingKind.BaseRegisterXn:
             case Arm64MemoryEncodingKind.BaseRegister:
@@ -510,6 +511,117 @@ partial class Arm64Processor
             };
             operandVariation2.WriteEncodings.AddRange(operandVariation.WriteEncodings);
             operandVariations.Add(operandVariation2);
+
+            if (hasLslOrExtend)
+            {
+                AddExtendEncoding(operandVariation, true);
+                AddExtendEncoding(operandVariation2, false);
+            }
+        }
+        else if (hasLslOrExtend)
+        {
+            AddExtendEncoding(operandVariation, true);
+        }
+
+
+        void AddExtendEncoding(OperandVariation operandVariation, bool isX)
+        {
+            operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
+            {
+                //Debug.Assert(extendBitRange.HiBit == 15 && extendBitRange.Width == 3);
+                //Debug.Assert(amountBitRange.HiBit == 12 && amountBitRange.Width == 1);
+                
+                if (isX)
+                {
+                    w.WriteLine($"switch({operand.OperandName}.Extend.Kind)");
+                    w.OpenBraceBlock();
+                    {
+                        if (descriptor.MemoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional)
+                        {
+                            w.WriteLine($"case Arm64ExtendKind.None:");
+                            w.Indent();
+                            {
+                                w.WriteLine($"{variable} |= 0x{(0b011U << 13):X8}U;");
+                                w.WriteLine($"if ({operand.OperandName}.Extend.IsExplicitZeroAmount || {operand.OperandName}.Extend.Amount != 0)");
+                                w.OpenBraceBlock();
+                                {
+                                    w.WriteLine($"throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), $\"Unsupported extend `{{{operand.OperandName}.Extend}}`. A default extend must have a zero amount not explicit set.\");");
+                                }
+                                w.CloseBraceBlock();
+                                w.WriteLine("break;");
+                            }
+                            w.UnIndent();
+                        }
+                        w.WriteLine($"case Arm64ExtendKind.LSL:");
+                        w.Indent();
+                        {
+                            w.WriteLine($"{variable} |= 0x{(0b011U << 13):X8}U;");
+                            w.WriteLine($"if (!{operand.OperandName}.Extend.IsExplicitZeroAmount || {operand.OperandName}.Extend.Amount == 0)");
+                            w.OpenBraceBlock();
+                            {
+                                w.WriteLine($"throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), $\"Unsupported extend `{{{operand.OperandName}.Extend}}`. A LSL extend is expecting an explicit amount.\");");
+                            }
+                            w.CloseBraceBlock();
+                            w.WriteLine("break;");
+                        }
+                        w.UnIndent();
+                        w.WriteLine($"case Arm64ExtendKind.SXTX:");
+                        w.Indent();
+                        {
+                            w.WriteLine($"{variable} |= 0x{(0b111U << 13):X8}U;");
+                            w.WriteLine("break;");
+                        }
+                        w.UnIndent();
+                        w.WriteLine($"default:");
+                        w.Indent();
+                        {
+                            w.WriteLine($"throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), $\"Unsupported extend `{{{operand.OperandName}.Extend.Kind}}`. Only LSL or SXTX are valid for this memory operand.\");");
+                        }
+                        w.UnIndent();
+                    }
+                    w.CloseBraceBlock();
+                }
+                else
+                {
+                    w.WriteLine($"{variable} |= {operand.OperandName}.Extend.Kind switch");
+                    w.OpenBraceBlock();
+                    {
+                        w.WriteLine($"Arm64ExtendKind.UXTW => 0x{(0b010U << 13):X8}U,");
+                        w.WriteLine($"Arm64ExtendKind.SXTW => 0x{(0b110U << 13):X8}U,");
+                        w.WriteLine($"_ => throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), $\"Unsupported extend `{{{operand.OperandName}.Extend.Kind}}`. Only UXTW or SXTW are valid for this memory operand.\"),");
+                    }
+                    w.CloseBraceBlockStatement();
+                }
+
+                if (descriptor.ExtendKind == Arm64MemoryExtendEncodingKind.Shift0)
+                {
+                    w.WriteLine($"if ({operand.OperandName}.Extend.HasExplicitZeroAmount)");
+                    w.OpenBraceBlock();
+                    {
+                        w.WriteLine($"{variable} |= 0x{(1 << 12):X8}U;");
+                    }
+                    w.CloseBraceBlock();
+                }
+                else
+                {
+                    w.WriteLine($"{variable} |= {operand.OperandName}.Extend.Amount switch");
+                    w.OpenBraceBlock();
+
+                    Debug.Assert(descriptor.ExtendKind != Arm64MemoryExtendEncodingKind.None);
+                    string expectedNonZeroValue = descriptor.ExtendKind switch
+                    {
+                        Arm64MemoryExtendEncodingKind.Shift1 => "2",
+                        Arm64MemoryExtendEncodingKind.Shift2 => "4",
+                        Arm64MemoryExtendEncodingKind.Shift3 => "8",
+                        Arm64MemoryExtendEncodingKind.Shift4 => "16",
+                        _ => throw new ArgumentOutOfRangeException(),
+                    };
+                    w.WriteLine($"0 => 0U,");
+                    w.WriteLine($"{expectedNonZeroValue} => 0x{(1 << 12):X8}U,");
+                    w.WriteLine($"_ => throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), $\"Unsupported extend amount `{{{operand.OperandName}.Extend.Amount}}`. Only 0 or {expectedNonZeroValue} are valid for this memory operand.\"),");
+                    w.CloseBraceBlockStatement();
+                }
+            });
         }
     }
     

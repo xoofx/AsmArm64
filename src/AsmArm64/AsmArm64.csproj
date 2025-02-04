@@ -33,6 +33,11 @@
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)../../img/AsmArm64.png" Pack="true" PackagePath="/" />
     <None Include="$(MSBuildThisFileDirectory)../../readme.md" Pack="true" PackagePath="/" />
+    <None Include="Arm64Memory.gen.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64Memory.tt</DependentUpon>
+    </None>
     <None Include="Arm64RegisterDual.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -58,6 +63,10 @@
     <None Update="Arm64ExtendKind.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Arm64ExtendKind.gen.cs</LastGenOutput>
+    </None>
+    <None Update="Arm64Memory.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Arm64Memory.gen.cs</LastGenOutput>
     </None>
     <None Update="Arm64RegisterDual.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -91,6 +100,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Arm64ExtendKind.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Arm64Memory.gen.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Arm64Memory.tt</DependentUpon>
     </Compile>
     <Compile Update="Arm64RegisterDual.cs">
       <DesignTime>True</DesignTime>

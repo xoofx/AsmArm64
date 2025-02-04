@@ -14,7 +14,7 @@ public interface IArm64Extend
     byte Amount { get; }
 }
 
-public readonly struct Arm64ExtendXKind : IArm64ExtendKind
+public readonly record struct Arm64ExtendXKind : IArm64ExtendKind
 {
     private Arm64ExtendXKind(Arm64ExtendKind extendKind)
     {
@@ -33,7 +33,7 @@ public readonly struct Arm64ExtendXKind : IArm64ExtendKind
 
 }
 
-public readonly struct Arm64ExtendWKind : IArm64ExtendKind
+public readonly record struct Arm64ExtendWKind : IArm64ExtendKind
 {
     private Arm64ExtendWKind(Arm64ExtendKind extendKind)
     {
@@ -49,16 +49,34 @@ public readonly struct Arm64ExtendWKind : IArm64ExtendKind
     public static implicit operator Arm64ExtendWKind(IArm64ExtendKind.SXTW extendKind) => new(Arm64ExtendKind.SXTW);
 }
 
-public readonly record struct Arm64MemoryExtend(Arm64ExtendKind Kind, byte Amount) : IArm64Extend , ISpanFormattable
+public readonly record struct Arm64MemoryExtend : IArm64Extend , ISpanFormattable
 {
-    private readonly bool _isAmountVisible;
+    // 10 bits only are used (this is to fit within the Arm64Memory)
+    private readonly ushort _value;
 
-    public Arm64MemoryExtend(Arm64ExtendKind Kind, bool zeroAmountVisible) : this(Kind, 0)
+    private const int LowBitExtendKind = 5;
+    private const int AmountMask = (1 << LowBitExtendKind) - 1;
+    private const int ExtendKindSize = 4;
+    private const int ExtendKindMask = (1 << ExtendKindSize) - 1;
+    private const int LowBitHasExplicitZeroAmount = LowBitExtendKind + ExtendKindSize + 1;
+
+    internal const ushort Mask = (1 << (LowBitHasExplicitZeroAmount + 1)) - 1;
+
+    public Arm64MemoryExtend(Arm64ExtendKind kind, byte amount)
     {
-        _isAmountVisible = zeroAmountVisible;
+        _value = (ushort)(((ushort)kind << LowBitExtendKind) | ((ushort)amount));
     }
 
-    public bool IsZeroAmountVisible => _isAmountVisible;
+    public Arm64MemoryExtend(Arm64ExtendKind kind, bool hasExplicitZeroAmount)
+    {
+        _value = (ushort)(((ushort)kind << LowBitExtendKind) | ((ushort)(hasExplicitZeroAmount ? ((ushort)1 << LowBitHasExplicitZeroAmount) : 0)));
+    }
+
+    public bool HasExplicitZeroAmount => ((_value >> LowBitHasExplicitZeroAmount) & 1) != 0;
+
+    public byte Amount => (byte)(_value & AmountMask);
+
+    public Arm64ExtendKind Kind => (Arm64ExtendKind)((_value >> LowBitExtendKind) & ExtendKindMask);
 
     public bool IsDefault => Amount == 0 && (Kind == Arm64ExtendKind.LSL || Kind == Arm64ExtendKind.UXTX);
 
@@ -88,7 +106,7 @@ public readonly record struct Arm64MemoryExtend(Arm64ExtendKind Kind, byte Amoun
             return false;
         }
 
-        if (Amount != 0 || Kind == Arm64ExtendKind.LSL || _isAmountVisible)
+        if (Amount != 0 || Kind == Arm64ExtendKind.LSL || HasExplicitZeroAmount)
         {
             if (destination.Length <= written + 1)
             {

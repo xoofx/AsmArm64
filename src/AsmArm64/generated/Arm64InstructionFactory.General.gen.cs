@@ -5393,6 +5393,18 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5406,6 +5418,34 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        switch(src.Extend.Kind)
+        {
+            case Arm64ExtendKind.None:
+                raw |= 0x00006000U;
+                if (src.Extend.HasExplicitZeroAmount || src.Extend.Amount != 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A default extend must have a zero amount not explicit set.");
+                }
+                break;
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5419,6 +5459,18 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            8 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5432,6 +5484,34 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        switch(src.Extend.Kind)
+        {
+            case Arm64ExtendKind.None:
+                raw |= 0x00006000U;
+                if (src.Extend.HasExplicitZeroAmount || src.Extend.Amount != 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A default extend must have a zero amount not explicit set.");
+                }
+                break;
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            8 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5445,6 +5525,16 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        if (src.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
         return raw;
     }
     /// <summary>
@@ -5458,6 +5548,25 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        switch(src.Extend.Kind)
+        {
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        if (src.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
         return raw;
     }
     /// <summary>
@@ -5549,6 +5658,18 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5562,6 +5683,34 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        switch(src.Extend.Kind)
+        {
+            case Arm64ExtendKind.None:
+                raw |= 0x00006000U;
+                if (src.Extend.HasExplicitZeroAmount || src.Extend.Amount != 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A default extend must have a zero amount not explicit set.");
+                }
+                break;
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5575,6 +5724,16 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        if (src.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
         return raw;
     }
     /// <summary>
@@ -5588,6 +5747,25 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        switch(src.Extend.Kind)
+        {
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        if (src.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
         return raw;
     }
     /// <summary>
@@ -5601,6 +5779,16 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        if (src.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
         return raw;
     }
     /// <summary>
@@ -5614,6 +5802,25 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        switch(src.Extend.Kind)
+        {
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        if (src.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
         return raw;
     }
     /// <summary>
@@ -5783,6 +5990,18 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5796,6 +6015,34 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        switch(src.Extend.Kind)
+        {
+            case Arm64ExtendKind.None:
+                raw |= 0x00006000U;
+                if (src.Extend.HasExplicitZeroAmount || src.Extend.Amount != 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A default extend must have a zero amount not explicit set.");
+                }
+                break;
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5809,6 +6056,18 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5822,6 +6081,34 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        switch(src.Extend.Kind)
+        {
+            case Arm64ExtendKind.None:
+                raw |= 0x00006000U;
+                if (src.Extend.HasExplicitZeroAmount || src.Extend.Amount != 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A default extend must have a zero amount not explicit set.");
+                }
+                break;
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5885,6 +6172,18 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5898,6 +6197,34 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
+        switch(src.Extend.Kind)
+        {
+            case Arm64ExtendKind.None:
+                raw |= 0x00006000U;
+                if (src.Extend.HasExplicitZeroAmount || src.Extend.Amount != 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A default extend must have a zero amount not explicit set.");
+                }
+                break;
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -8543,6 +8870,18 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8A04800U; // Encoding for: PRFM_p_ldst_regoff
         raw |= (uint)mem.BaseRegister.Index << 5;
         raw |= (uint)mem.IndexRegister.Index << 16;
+        raw |= mem.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend `{mem.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        raw |= mem.Extend.Amount switch
+        {
+            0 => 0U,
+            8 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend amount `{mem.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -8555,6 +8894,34 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF8A06800U; // Encoding for: PRFM_p_ldst_regoff
         raw |= (uint)mem.BaseRegister.Index << 5;
         raw |= (uint)mem.IndexRegister.Index << 16;
+        switch(mem.Extend.Kind)
+        {
+            case Arm64ExtendKind.None:
+                raw |= 0x00006000U;
+                if (mem.Extend.HasExplicitZeroAmount || mem.Extend.Amount != 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend `{mem.Extend}`. A default extend must have a zero amount not explicit set.");
+                }
+                break;
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!mem.Extend.HasExplicitZeroAmount || mem.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend `{mem.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend `{mem.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        raw |= mem.Extend.Amount switch
+        {
+            0 => 0U,
+            8 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend amount `{mem.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -11317,6 +11684,18 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
+        raw |= dst.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        raw |= dst.Extend.Amount switch
+        {
+            0 => 0U,
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -11330,6 +11709,34 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
+        switch(dst.Extend.Kind)
+        {
+            case Arm64ExtendKind.None:
+                raw |= 0x00006000U;
+                if (dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount != 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A default extend must have a zero amount not explicit set.");
+                }
+                break;
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        raw |= dst.Extend.Amount switch
+        {
+            0 => 0U,
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -11343,6 +11750,18 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
+        raw |= dst.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        raw |= dst.Extend.Amount switch
+        {
+            0 => 0U,
+            8 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -11356,6 +11775,34 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
+        switch(dst.Extend.Kind)
+        {
+            case Arm64ExtendKind.None:
+                raw |= 0x00006000U;
+                if (dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount != 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A default extend must have a zero amount not explicit set.");
+                }
+                break;
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        raw |= dst.Extend.Amount switch
+        {
+            0 => 0U,
+            8 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -11369,6 +11816,16 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
+        raw |= dst.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        if (dst.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
         return raw;
     }
     /// <summary>
@@ -11382,6 +11839,25 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
+        switch(dst.Extend.Kind)
+        {
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        if (dst.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
         return raw;
     }
     /// <summary>
@@ -11473,6 +11949,18 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
+        raw |= dst.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
+        raw |= dst.Extend.Amount switch
+        {
+            0 => 0U,
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -11486,6 +11974,34 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
+        switch(dst.Extend.Kind)
+        {
+            case Arm64ExtendKind.None:
+                raw |= 0x00006000U;
+                if (dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount != 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A default extend must have a zero amount not explicit set.");
+                }
+                break;
+            case Arm64ExtendKind.LSL:
+                raw |= 0x00006000U;
+                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
+                }
+                break;
+            case Arm64ExtendKind.SXTX:
+                raw |= 0x0000E000U;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
+        }
+        raw |= dst.Extend.Amount switch
+        {
+            0 => 0U,
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
