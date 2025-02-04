@@ -436,13 +436,13 @@ partial class Arm64Processor
             case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
             case Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional:
 
-                string operandName = $"{operandVariation.OperandName}.Immediate";
+                string operandValue = $"{operandVariation.OperandName}.Immediate";
                 if (descriptor.ImmediateValueEncodingKind != Arm64ImmediateValueEncodingKind.None)
                 {
-                    operandName = GenerateImmediateValueEncoding(descriptor.ImmediateValueEncodingKind, operandName);
+                    operandValue = GenerateImmediateValueEncoding(descriptor.ImmediateValueEncodingKind, operandValue);
                 }
 
-                GenerateBitRangeEncodingFromValue(operandName, "immediate", bitSize, descriptor.IndexRegisterOrImmediate, operandVariation.WriteEncodings);
+                GenerateBitRangeEncodingFromValue(operandValue, "immediate", bitSize, descriptor.IndexRegisterOrImmediate, operandVariation.WriteEncodings);
                 break;
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional:
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount:
@@ -456,7 +456,18 @@ partial class Arm64Processor
                 break;
             case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate:
             case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional:
-                // TODO: verify fixed immediate
+                // If the optional immediate value is 0, let's just use a Arm64BaseMemoryAccessor instead of having an immediate
+                if (descriptor.FixedValue == 0)
+                {
+                    operandVariation.OperandType = descriptor.IsPreIncrement ? "Arm64BaseMemoryAccessor.PreIncrement" : "Arm64BaseMemoryAccessor";
+                }
+                else
+                {
+                    operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
+                    {
+                        w.WriteLine($"if ({operand.OperandName}.Immediate != {descriptor.FixedValue}) throw new {nameof(ArgumentOutOfRangeException)}(nameof({operand.OperandName}), $\"Invalid immediate value '{{{operand.OperandName}.Immediate}}'. Expecting the fixed value `{descriptor.FixedValue}`\");");
+                    });
+                }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -542,7 +553,7 @@ partial class Arm64Processor
                             w.Indent();
                             {
                                 w.WriteLine($"{variable} |= 0x{(0b011U << 13):X8}U;");
-                                w.WriteLine($"if ({operand.OperandName}.Extend.IsExplicitZeroAmount || {operand.OperandName}.Extend.Amount != 0)");
+                                w.WriteLine($"if ({operand.OperandName}.Extend.HasExplicitZeroAmount || {operand.OperandName}.Extend.Amount != 0)");
                                 w.OpenBraceBlock();
                                 {
                                     w.WriteLine($"throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), $\"Unsupported extend `{{{operand.OperandName}.Extend}}`. A default extend must have a zero amount not explicit set.\");");
@@ -556,7 +567,7 @@ partial class Arm64Processor
                         w.Indent();
                         {
                             w.WriteLine($"{variable} |= 0x{(0b011U << 13):X8}U;");
-                            w.WriteLine($"if (!{operand.OperandName}.Extend.IsExplicitZeroAmount || {operand.OperandName}.Extend.Amount == 0)");
+                            w.WriteLine($"if (!{operand.OperandName}.Extend.HasExplicitZeroAmount || {operand.OperandName}.Extend.Amount == 0)");
                             w.OpenBraceBlock();
                             {
                                 w.WriteLine($"throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), $\"Unsupported extend `{{{operand.OperandName}.Extend}}`. A LSL extend is expecting an explicit amount.\");");
