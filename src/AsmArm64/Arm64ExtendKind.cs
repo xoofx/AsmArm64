@@ -52,6 +52,9 @@ public readonly record struct Arm64ExtendWKind : IArm64ExtendKind
 public readonly record struct Arm64MemoryExtend : IArm64Extend , ISpanFormattable
 {
     // 10 bits only are used (this is to fit within the Arm64Memory)
+    // 4 bits for the amount
+    // 5 bits for the kind
+    // 1 bit for the HasExplicitZeroAmount
     private readonly ushort _value;
 
     private const int LowBitExtendKind = 5;
@@ -64,6 +67,10 @@ public readonly record struct Arm64MemoryExtend : IArm64Extend , ISpanFormattabl
 
     public Arm64MemoryExtend(Arm64ExtendKind kind, byte amount)
     {
+        if (amount > 4)
+        {
+            throw new ArgumentOutOfRangeException(nameof(amount), "Amount must be between 0 and 4");
+        }
         _value = (ushort)(((ushort)kind << LowBitExtendKind) | ((ushort)amount));
     }
 

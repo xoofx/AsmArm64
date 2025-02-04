@@ -35,8 +35,8 @@ public interface IArm64MemoryAccessor : ISpanFormattable
 public enum Arm64MemoryBaseRegisterKind
 {
     None,
-    Register,
-    RegisterXn,
+    RegisterXOrSP,
+    RegisterX,
 }
 
 public enum Arm64MemoryOffsetKind
@@ -73,53 +73,56 @@ public readonly record struct Arm64MemoryAccessorAny : IArm64MemoryAccessor
     private const uint Mask2Bits = 0x3;
     internal const uint ExtendValue = 0x2;
     internal const uint ImmediateValue = 0x1;
-    internal const int LowBitImmediateOrExtendKind = 28;
-    internal const uint BaseRegisterOnly = 0x2;
-    internal const uint BaseRegisterXOnly = 0x1;
-    internal const int LowBitKindBaseRegister = 28;
+    internal const int LowBitImmediateOrExtendKind = 30;
+    internal const uint BaseRegisterXOrSP = 0x2;
+    internal const uint BaseRegisterX = 0x1;
+    internal const int LowBitBaseRegisterKind = 28;
     internal const int LowBitPreIncrement = 27;
     internal const int LowBitHasOptionalOffset = 26;
     internal const int LowBitExtend = 12;
+    internal const uint BaseRegisterMask = (1 << LowBitExtend) - 1;
 
-    public Arm64MemoryAccessorAny(Arm64RegisterX baseRegister, bool isPreIncrement)
+    public Arm64MemoryAccessorAny(Arm64RegisterX baseRegister, bool isPreIncrement = false)
     {
         var value = (ulong)Unsafe.BitCast<Arm64RegisterX, uint>(baseRegister);
-        value |= (ulong)BaseRegisterXOnly << LowBitKindBaseRegister;
+        value |= (ulong)BaseRegisterX << LowBitBaseRegisterKind;
         value |= isPreIncrement ? 1UL << LowBitPreIncrement : 0;
         _value = value;
     }
 
-    public Arm64MemoryAccessorAny(Arm64RegisterXOrSP baseRegister, bool isPreIncrement)
+    public Arm64MemoryAccessorAny(Arm64RegisterXOrSP baseRegister, bool isPreIncrement = false)
     {
         var value = (ulong)Unsafe.BitCast<Arm64RegisterXOrSP, uint>(baseRegister);
-        value |= (ulong)BaseRegisterOnly << LowBitKindBaseRegister;
+        value |= (ulong)BaseRegisterXOrSP << LowBitBaseRegisterKind;
         value |= isPreIncrement ? 1UL << LowBitPreIncrement : 0;
         _value = value;
     }
 
-    public Arm64MemoryAccessorAny(Arm64RegisterXOrSP baseRegister, int immediate, bool isPreIncrement, bool hasOptionalOffset = false)
+    public Arm64MemoryAccessorAny(Arm64RegisterXOrSP baseRegister, int immediate, bool isPreIncrement = false, bool hasOptionalOffset = false)
     {
         var value = (ulong)Unsafe.BitCast<Arm64RegisterXOrSP, uint>(baseRegister) | ((ulong)(uint)immediate << 32);
         value |= (ulong)ImmediateValue << LowBitImmediateOrExtendKind;
+        value |= (ulong)BaseRegisterXOrSP << LowBitBaseRegisterKind;
         value |= isPreIncrement ? 1UL << LowBitPreIncrement : 0;
         value |= hasOptionalOffset ? 1UL << LowBitHasOptionalOffset : 0;
         _value = value;
     }
 
-    public Arm64MemoryAccessorAny(Arm64RegisterXOrSP baseRegister, Arm64RegisterXOrW indexRegister, Arm64MemoryExtend extend, bool isPreIncrement, bool hasOptionalOffset = false)
+    public Arm64MemoryAccessorAny(Arm64RegisterXOrSP baseRegister, Arm64RegisterXOrW indexRegister, Arm64MemoryExtend extend, bool isPreIncrement = false, bool hasOptionalOffset = false)
     {
         var value = (ulong)Unsafe.BitCast<Arm64RegisterXOrSP, uint>(baseRegister) | ((ulong)Unsafe.BitCast<Arm64RegisterXOrW, uint>(indexRegister) << 32);
         value |= (ulong)ExtendValue << LowBitImmediateOrExtendKind;
+        value |= (ulong)BaseRegisterXOrSP << LowBitBaseRegisterKind;
         value |= isPreIncrement ? 1UL << LowBitPreIncrement : 0;
         value |= hasOptionalOffset ? 1UL << LowBitHasOptionalOffset : 0;
         value |= (ulong)Unsafe.BitCast<Arm64MemoryExtend, ushort>(extend) << LowBitExtend;
         _value = value;
     }
 
-    public Arm64MemoryBaseRegisterKind BaseRegisterKind => (((uint)_value >> LowBitKindBaseRegister) & Mask2Bits) switch
+    public Arm64MemoryBaseRegisterKind BaseRegisterKind => (((uint)_value >> LowBitBaseRegisterKind) & Mask2Bits) switch
     {
-        BaseRegisterOnly => Arm64MemoryBaseRegisterKind.Register,
-        BaseRegisterXOnly => Arm64MemoryBaseRegisterKind.RegisterXn,
+        BaseRegisterXOrSP => Arm64MemoryBaseRegisterKind.RegisterXOrSP,
+        BaseRegisterX => Arm64MemoryBaseRegisterKind.RegisterX,
         _ => Arm64MemoryBaseRegisterKind.None
     };
 
@@ -130,7 +133,7 @@ public readonly record struct Arm64MemoryAccessorAny : IArm64MemoryAccessor
         _ => Arm64MemoryOffsetKind.None
     };
 
-    public Arm64RegisterAny BaseRegister => Unsafe.BitCast<uint, Arm64RegisterAny>((ushort)_value);
+    public Arm64RegisterAny BaseRegister => Unsafe.BitCast<uint, Arm64RegisterAny>((ushort)_value & BaseRegisterMask);
 
     public bool HasImmediate => ((_value >> LowBitImmediateOrExtendKind) & Mask2Bits) == ImmediateValue;
 
