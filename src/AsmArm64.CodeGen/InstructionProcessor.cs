@@ -631,7 +631,8 @@ internal sealed class InstructionProcessor
                     EnumKind = Arm64EnumKind.BranchTargetIdentification,
                     Name = name0,
                     IsOptional = true,
-                    EnumEncoding = symbol0.BitRanges[0]
+                    EnumEncoding = symbol0.BitRanges[0],
+                    BitSize = 2,
                 };
 
                 Debug.Assert(bti.EnumEncoding == new BitRange(6, 2));

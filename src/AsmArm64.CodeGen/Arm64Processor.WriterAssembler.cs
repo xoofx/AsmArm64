@@ -706,6 +706,7 @@ partial class Arm64Processor
     private void GetEnumVariations(EnumOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
         string enumType;
+        string? fixedValue = null;
         switch (descriptor.EnumKind)
         {
             case Arm64EnumKind.Conditional:
@@ -735,41 +736,63 @@ partial class Arm64Processor
                 break;
             case Arm64EnumKind.DataSync:
                 enumType = "Arm64DataSyncKind";
+                fixedValue = "Arm64DataSyncKind.DSYNC";
                 break;
             case Arm64EnumKind.CodeSync:
                 enumType = "Arm64CodeSyncKind";
+                fixedValue = "Arm64CodeSyncKind.CSYNC";
                 break;
             case Arm64EnumKind.RestrictionByContext:
                 enumType = "Arm64RestrictionByContextKind";
+                fixedValue = "Arm64RestrictionByContextKind.RCTX";
                 break;
             default:
                 throw new ArgumentOutOfRangeException($"Invalid enum kind  {descriptor.EnumKind}");
         }
 
         var name = GetNormalizedOperandName(descriptor.Name);
-        operandVariations.Add(
-            new OperandVariation()
-            {
-                Descriptor = descriptor,
-                OperandName = name,
-                OperandType = enumType,
-            }
-        );
-         
+
         // We don't create variation as it would conflict with other variations.
         // Instead, user will have to cast to enum in order to pass a value
+        var operandVariation = new OperandVariation()
+        {
+            Descriptor = descriptor,
+            OperandName = name,
+            OperandType = enumType,
+        };
 
-        //if (descriptor.AllowImmediate)
-        //{
-        //    operandVariations.Add(
-        //        new OperandVariation()
-        //        {
-        //            Descriptor = descriptor,
-        //            OperandName = name,
-        //            OperandType = "int",
-        //        }
-        //    );
-        //}
+        operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
+        {
+            if (descriptor.EnumKind == Arm64EnumKind.ProcessStateField)
+            {
+                // ExtractBitRange
+                var extract = descriptor.BitMapExtract;
+                Debug.Assert(extract is not null);
+
+            }
+            else if (descriptor.EnumKind == Arm64EnumKind.RangePrefetchOperation)
+            {
+                
+            }
+            else if (fixedValue is not null)
+            {
+                w.WriteLine($"if ({operand.OperandName} != {fixedValue}) throw new {nameof(ArgumentOutOfRangeException)}(nameof({operand.OperandName}), $\"Invalid enum value '{{{operand.OperandName}}}'. Expecting the fixed value `{fixedValue}`\");");
+            }
+            else
+            {
+                var operandPath = operand.OperandName;
+
+                if (descriptor.EnumKind == Arm64EnumKind.InvertedConditional)
+                {
+                    operandPath = $"{operandPath}.Invert()";
+                }
+
+                Debug.Assert(descriptor.BitSize != 0);
+                w.WriteLine($"{variable} |= (uint)((byte){operandPath} & (byte)0x{(1 << descriptor.BitSize) - 1:X}) << {descriptor.EnumEncoding.LowBit};");
+            }
+        });
+        
+        operandVariations.Add(operandVariation);
     }
 
     private void GetImmediateVariation(Instruction instruction, ImmediateOperandDescriptor descriptor, List<OperandVariation> operandVariations)

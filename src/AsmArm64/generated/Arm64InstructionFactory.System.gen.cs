@@ -134,6 +134,7 @@ static partial class Arm64InstructionFactory
     public static uint BTI(Arm64BranchTargetIdentificationKind targets = default)
     {
         uint raw = 0xD503241FU; // Encoding for: BTI_hb_hints
+        raw |= (uint)((byte)targets & (byte)0x3) << 6;
         return raw;
     }
     /// <summary>
@@ -154,6 +155,7 @@ static partial class Arm64InstructionFactory
     public static uint CFP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B7380U; // Encoding for: CFP_sys_cr_systeminstrs
+        if (RCTX != Arm64RestrictionByContextKind.RCTX) throw new ArgumentOutOfRangeException(nameof(RCTX), $"Invalid enum value '{RCTX}'. Expecting the fixed value `Arm64RestrictionByContextKind.RCTX`");
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -197,6 +199,7 @@ static partial class Arm64InstructionFactory
     public static uint COSP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73C0U; // Encoding for: COSP_sys_cr_systeminstrs
+        if (RCTX != Arm64RestrictionByContextKind.RCTX) throw new ArgumentOutOfRangeException(nameof(RCTX), $"Invalid enum value '{RCTX}'. Expecting the fixed value `Arm64RestrictionByContextKind.RCTX`");
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -208,6 +211,7 @@ static partial class Arm64InstructionFactory
     public static uint CPP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73E0U; // Encoding for: CPP_sys_cr_systeminstrs
+        if (RCTX != Arm64RestrictionByContextKind.RCTX) throw new ArgumentOutOfRangeException(nameof(RCTX), $"Invalid enum value '{RCTX}'. Expecting the fixed value `Arm64RestrictionByContextKind.RCTX`");
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -283,6 +287,7 @@ static partial class Arm64InstructionFactory
     public static uint DMB(Arm64BarrierOperationLimitKind option)
     {
         uint raw = 0xD50330BFU; // Encoding for: DMB_bo_barriers
+        raw |= (uint)((byte)option & (byte)0xF) << 8;
         return raw;
     }
     /// <summary>
@@ -303,6 +308,7 @@ static partial class Arm64InstructionFactory
     public static uint DSB(Arm64BarrierOperationLimitKind option)
     {
         uint raw = 0xD503309FU; // Encoding for: DSB_bo_barriers
+        raw |= (uint)((byte)option & (byte)0xF) << 8;
         return raw;
     }
     /// <summary>
@@ -313,6 +319,7 @@ static partial class Arm64InstructionFactory
     public static uint DSB(Arm64DataSynchronizationKind option)
     {
         uint raw = 0xD503323FU; // Encoding for: DSB_bon_barriers
+        raw |= (uint)((byte)option & (byte)0x3) << 10;
         return raw;
     }
     /// <summary>
@@ -323,6 +330,7 @@ static partial class Arm64InstructionFactory
     public static uint DVP(Arm64RestrictionByContextKind RCTX, Arm64RegisterX Xt)
     {
         uint raw = 0xD50B73A0U; // Encoding for: DVP_sys_cr_systeminstrs
+        if (RCTX != Arm64RestrictionByContextKind.RCTX) throw new ArgumentOutOfRangeException(nameof(RCTX), $"Invalid enum value '{RCTX}'. Expecting the fixed value `Arm64RestrictionByContextKind.RCTX`");
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -354,6 +362,7 @@ static partial class Arm64InstructionFactory
     public static uint GCSB(Arm64DataSyncKind DSYNC)
     {
         uint raw = 0xD503227FU; // Encoding for: GCSB_hd_hints
+        if (DSYNC != Arm64DataSyncKind.DSYNC) throw new ArgumentOutOfRangeException(nameof(DSYNC), $"Invalid enum value '{DSYNC}'. Expecting the fixed value `Arm64DataSyncKind.DSYNC`");
         return raw;
     }
     /// <summary>
@@ -629,6 +638,7 @@ static partial class Arm64InstructionFactory
     public static uint PSB(Arm64CodeSyncKind CSYNC)
     {
         uint raw = 0xD503223FU; // Encoding for: PSB_hc_hints
+        if (CSYNC != Arm64CodeSyncKind.CSYNC) throw new ArgumentOutOfRangeException(nameof(CSYNC), $"Invalid enum value '{CSYNC}'. Expecting the fixed value `Arm64CodeSyncKind.CSYNC`");
         return raw;
     }
     /// <summary>
@@ -700,6 +710,7 @@ static partial class Arm64InstructionFactory
     public static uint STSHH(Arm64StoredSharedHintPolicyKind policy)
     {
         uint raw = 0xD503261FU; // Encoding for: STSHH_hi_hints
+        raw |= (uint)((byte)policy & (byte)0x1) << 5;
         return raw;
     }
     /// <summary>
@@ -820,6 +831,7 @@ static partial class Arm64InstructionFactory
     public static uint TSB(Arm64CodeSyncKind CSYNC)
     {
         uint raw = 0xD503225FU; // Encoding for: TSB_hc_hints
+        if (CSYNC != Arm64CodeSyncKind.CSYNC) throw new ArgumentOutOfRangeException(nameof(CSYNC), $"Invalid enum value '{CSYNC}'. Expecting the fixed value `Arm64CodeSyncKind.CSYNC`");
         return raw;
     }
     /// <summary>

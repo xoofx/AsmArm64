@@ -10,89 +10,89 @@ namespace AsmArm64;
 public enum Arm64ConditionalKind : byte
 {
     /// <summary>
-    /// No condition specified.
-    /// </summary>
-    None,
-
-    /// <summary>
     /// Equal (Z == 1).
     /// </summary>
-    EQ = 1,
+    EQ = 0,
 
     /// <summary>
     /// Not equal (Z == 0).
     /// </summary>
-    NE = 2,
+    NE = 1,
 
     /// <summary>
     /// Carry set/unsigned higher or same (C == 1).
     /// </summary>
-    HS = 3, // CS or HS?
+    HS = 2, // CS or HS?
 
     /// <summary>
     /// Carry clear/unsigned lower (C == 0).
     /// </summary>
-    LO = 4, // CC or LO?
+    LO = 3, // CC or LO?
 
     /// <summary>
     /// Minus/negative (N == 1).
     /// </summary>
-    MI = 5,
+    MI = 4,
 
     /// <summary>
     /// Plus/positive or zero (N == 0).
     /// </summary>
-    PL = 6,
+    PL = 5,
 
     /// <summary>
     /// Overflow (V == 1).
     /// </summary>
-    VS = 7,
+    VS = 6,
 
     /// <summary>
     /// No overflow (V == 0).
     /// </summary>
-    VC = 8,
+    VC = 7,
 
     /// <summary>
     /// Unsigned higher (C == 1 and Z == 0).
     /// </summary>
-    HI = 9,
+    HI = 8,
 
     /// <summary>
     /// Unsigned lower or same (C == 0 or Z == 1).
     /// </summary>
-    LS = 10,
+    LS = 9,
 
     /// <summary>
     /// Signed greater than or equal (N == V).
     /// </summary>
-    GE = 11,
+    GE = 10,
 
     /// <summary>
     /// Signed less than (N != V).
     /// </summary>
-    LT = 12,
+    LT = 11,
 
     /// <summary>
     /// Signed greater than (Z == 0 and N == V).
     /// </summary>
-    GT = 13,
+    GT = 12,
 
     /// <summary>
     /// Signed less than or equal (Z == 1 or N != V).
     /// </summary>
-    LE = 14,
+    LE = 13,
 
     /// <summary>
     /// Always (unconditional execution).
     /// </summary>
-    AL = 15,
+    AL = 14,
 
     /// <summary>
     /// Never (this condition is deprecated or not used).
     /// </summary>
-    NV = 16,
+    NV = 15,
+
+    /// <summary>
+    /// Undefined
+    /// </summary>
+    Undefined = 0xFF,
 }
 
 
@@ -118,7 +118,7 @@ partial class Arm64Extensions
             Arm64ConditionalKind.LE => Arm64ConditionalKind.GT,
             Arm64ConditionalKind.AL => Arm64ConditionalKind.NV,
             Arm64ConditionalKind.NV => Arm64ConditionalKind.AL,
-            _ => kind,
+            _ => Arm64ConditionalKind.Undefined,
         };
     }
 }

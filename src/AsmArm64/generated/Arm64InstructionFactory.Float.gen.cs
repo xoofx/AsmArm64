@@ -111,6 +111,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Hn.Index << 5;
         raw |= (uint)Hm.Index << 16;
         raw |= (uint)(nzcv & 0xF) << 0;
+        raw |= (uint)((byte)cond & (byte)0xF) << 12;
         return raw;
     }
     /// <summary>
@@ -124,6 +125,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Sn.Index << 5;
         raw |= (uint)Sm.Index << 16;
         raw |= (uint)(nzcv & 0xF) << 0;
+        raw |= (uint)((byte)cond & (byte)0xF) << 12;
         return raw;
     }
     /// <summary>
@@ -137,6 +139,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Dn.Index << 5;
         raw |= (uint)Dm.Index << 16;
         raw |= (uint)(nzcv & 0xF) << 0;
+        raw |= (uint)((byte)cond & (byte)0xF) << 12;
         return raw;
     }
     /// <summary>
@@ -150,6 +153,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Hn.Index << 5;
         raw |= (uint)Hm.Index << 16;
         raw |= (uint)(nzcv & 0xF) << 0;
+        raw |= (uint)((byte)cond & (byte)0xF) << 12;
         return raw;
     }
     /// <summary>
@@ -163,6 +167,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Sn.Index << 5;
         raw |= (uint)Sm.Index << 16;
         raw |= (uint)(nzcv & 0xF) << 0;
+        raw |= (uint)((byte)cond & (byte)0xF) << 12;
         return raw;
     }
     /// <summary>
@@ -176,6 +181,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Dn.Index << 5;
         raw |= (uint)Dm.Index << 16;
         raw |= (uint)(nzcv & 0xF) << 0;
+        raw |= (uint)((byte)cond & (byte)0xF) << 12;
         return raw;
     }
     /// <summary>
@@ -333,6 +339,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Hd.Index;
         raw |= (uint)Hn.Index << 5;
         raw |= (uint)Hm.Index << 16;
+        raw |= (uint)((byte)cond & (byte)0xF) << 12;
         return raw;
     }
     /// <summary>
@@ -346,6 +353,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Sd.Index;
         raw |= (uint)Sn.Index << 5;
         raw |= (uint)Sm.Index << 16;
+        raw |= (uint)((byte)cond & (byte)0xF) << 12;
         return raw;
     }
     /// <summary>
@@ -359,6 +367,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Dd.Index;
         raw |= (uint)Dn.Index << 5;
         raw |= (uint)Dm.Index << 16;
+        raw |= (uint)((byte)cond & (byte)0xF) << 12;
         return raw;
     }
     /// <summary>
