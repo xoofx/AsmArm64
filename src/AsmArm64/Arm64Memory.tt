@@ -5,12 +5,12 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".gen.cs" #>
 <#
-    var types = new List<string> {
-        "Arm64BaseMemoryAccessor",
-        "Arm64BaseXMemoryAccessor",
-        "Arm64ImmediateMemoryAccessor",
-        "Arm64RegisterXExtendMemoryAccessor",
-        "Arm64RegisterWExtendMemoryAccessor",
+    var types = new List<(string Type, string Summary)> {
+        ("Arm64BaseMemoryAccessor", "only a base register `[XdOrSP]`"),
+        ("Arm64BaseXMemoryAccessor", "only a base register `[Xd]`. Supports PreIncrement via `[Xd]!`"),
+        ("Arm64ImmediateMemoryAccessor", "a base register and an (otptional) immediate `[XdOrSP, #immediate]`. Supports PreIncrement via `[XdOrSP, #immediate]!`"),
+        ("Arm64RegisterXExtendMemoryAccessor", "a base register, an index register <see cref=\"Arm64RegisterX\"/> and an (optional) extend `[XdOrSP, Xn {, EXTEND #amount}]`. Supports PreIncrement via `[XdOrSP, Xn {, EXTEND #amount}]!`"),
+        ("Arm64RegisterWExtendMemoryAccessor", "a base register, an index register <see cref=\"Arm64RegisterW\"/> and an (optional) extend `[XdOrSP, Xn {, EXTEND #amount}]`. Supports PreIncrement via `[XdOrSP, Xn {, EXTEND #amount}]!`"),
     };
 #>
 // Copyright (c) Alexandre Mutel. All rights reserved.
@@ -20,12 +20,18 @@
 using System.Runtime.CompilerServices;
 
 namespace AsmArm64;
-<# foreach(var type in types) { #>
+<# foreach(var (type, summary) in types) { #>
 
+/// <summary>
+/// Represents a memory accessor with <#= summary #>.
+/// </summary>
 public readonly record struct <#= type #> : IArm64MemoryAccessor
 {
     private readonly Arm64MemoryAccessorAny _accessor;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="<#= type #>"/> struct.
+    /// </summary>
 <# if (type == "Arm64BaseMemoryAccessor") { #>
     public <#= type #>(Arm64RegisterXOrSP baseRegister) => _accessor = new(baseRegister, false);
 <# } else if (type == "Arm64BaseXMemoryAccessor") { #>
@@ -38,35 +44,52 @@ public readonly record struct <#= type #> : IArm64MemoryAccessor
     public <#= type #>(Arm64RegisterXOrSP baseRegister, Arm64RegisterW indexRegister, Arm64MemoryExtend extend) => _accessor = new(baseRegister, indexRegister, extend, false);
 <# } #>
 
+    /// <inheritdoc />
     public Arm64MemoryBaseRegisterKind BaseRegisterKind => _accessor.BaseRegisterKind;
 
+    /// <inheritdoc />
     public Arm64MemoryOffsetKind OffsetKind => _accessor.OffsetKind;
 
+    /// <inheritdoc />
     public Arm64RegisterAny BaseRegister => _accessor.BaseRegister;
 
+    /// <inheritdoc />
     public bool IsPreIncrement => _accessor.IsPreIncrement;
 
+    /// <inheritdoc />
     public bool HasOptionalOffset => _accessor.HasOptionalOffset;
 
+    /// <inheritdoc />
     public bool HasImmediate => _accessor.HasImmediate;
 
+    /// <inheritdoc />
     public int Immediate => _accessor.Immediate;
 
+    /// <inheritdoc />
     public bool HasIndexRegister => _accessor.HasIndexRegister;
 
+    /// <inheritdoc />
     public Arm64RegisterAny IndexRegister => _accessor.IndexRegister;
 
+    /// <inheritdoc />
     public bool HasExtend => _accessor.HasExtend;
 
+    /// <inheritdoc />
     public Arm64MemoryExtend Extend => _accessor.Extend;
 
+    /// <inheritdoc />
     public override string ToString() => _accessor.ToString();
 
+    /// <inheritdoc />
     public string ToString(string? format, IFormatProvider? formatProvider) => _accessor.ToString(format, formatProvider);
 
+    /// <inheritdoc />
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider) => _accessor.TryFormat(destination, out charsWritten, format, provider);
 <# if (type != "Arm64BaseMemoryAccessor") { #>
 
+    /// <summary>
+    /// Gets a memory accessor with a pre-increment.
+    /// </summary>
 <# if (type == "Arm64BaseXMemoryAccessor") { #>
     public PreIncrement Pre => new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterX>(_accessor.BaseRegister));
 <# } else if (type == "Arm64ImmediateMemoryAccessor") { #>
@@ -77,6 +100,9 @@ public readonly record struct <#= type #> : IArm64MemoryAccessor
     public PreIncrement Pre => new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterXOrSP>(_accessor.BaseRegister), Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterW>(_accessor.IndexRegister), _accessor.Extend);
 <# } #>
 
+    /// <summary>
+    /// Represents a memory accessor with a pre-increment.
+    /// </summary>
     public readonly record struct PreIncrement : IArm64MemoryAccessor
     {
         private readonly Arm64MemoryAccessorAny _accessor;
@@ -91,32 +117,46 @@ public readonly record struct <#= type #> : IArm64MemoryAccessor
         public PreIncrement(Arm64RegisterXOrSP baseRegister, Arm64RegisterW indexRegister, Arm64MemoryExtend extend) => _accessor = new(baseRegister, indexRegister, extend, true);
 <# } #>
 
+        /// <inheritdoc />
         public Arm64MemoryBaseRegisterKind BaseRegisterKind => _accessor.BaseRegisterKind;
 
+        /// <inheritdoc />
         public Arm64MemoryOffsetKind OffsetKind => _accessor.OffsetKind;
 
+        /// <inheritdoc />
         public Arm64RegisterAny BaseRegister => _accessor.BaseRegister;
 
+        /// <inheritdoc />
         public bool IsPreIncrement => _accessor.IsPreIncrement;
 
+        /// <inheritdoc />
         public bool HasOptionalOffset => _accessor.HasOptionalOffset;
 
+        /// <inheritdoc />
         public bool HasImmediate => _accessor.HasImmediate;
 
+        /// <inheritdoc />
         public int Immediate => _accessor.Immediate;
 
+        /// <inheritdoc />
         public bool HasIndexRegister => _accessor.HasIndexRegister;
 
+        /// <inheritdoc />
         public Arm64RegisterAny IndexRegister => _accessor.IndexRegister;
 
+        /// <inheritdoc />
         public bool HasExtend => _accessor.HasExtend;
 
+        /// <inheritdoc />
         public Arm64MemoryExtend Extend => _accessor.Extend;
 
+        /// <inheritdoc />
         public override string ToString() => _accessor.ToString();
 
+        /// <inheritdoc />
         public string ToString(string? format, IFormatProvider? formatProvider) => _accessor.ToString(format, formatProvider);
 
+        /// <inheritdoc />
         public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider) => _accessor.TryFormat(destination, out charsWritten, format, provider);
     }
 <# } #>

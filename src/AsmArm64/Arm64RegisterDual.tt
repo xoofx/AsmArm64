@@ -52,5 +52,42 @@ public readonly record struct Arm64Register<#= n1 #>Or<#= n2 #> : IArm64Register
     /// <param name="register">The register to convert.</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator Arm64Register<#= n1 #>Or<#= n2 #>(Arm64Register<#= n2 #> register) => Unsafe.BitCast<Arm64Register<#= n2 #>, Arm64Register<#= n1 #>Or<#= n2 #>>(register);
+    
+    /// <summary>
+    /// Implicit conversion from <see cref="Arm64RegisterAny"/> to <see cref="Arm64Register<#= n1 #>Or<#= n2 #>"/>.
+    /// </summary>
+    /// <param name="register">The register to convert.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator Arm64RegisterAny(Arm64Register<#= n1 #>Or<#= n2 #> register) => Unsafe.BitCast<Arm64Register<#= n1 #>Or<#= n2 #>, Arm64RegisterAny>(register);
+
+    /// <summary>
+    /// Explicit conversion from <see cref="Arm64Register<#= n1 #>Or<#= n2 #>"/> to <see cref="Arm64Register<#= n1 #>"/>.
+    /// </summary>
+    /// <param name="register">The register to convert.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Arm64Register<#= n1 #>(Arm64Register<#= n1 #>Or<#= n2 #> register)
+        => register.Kind == Arm64RegisterKind.<#= n1 #>
+            ? Unsafe.BitCast<Arm64Register<#= n1 #>Or<#= n2 #>, Arm64Register<#= n1 #>>(register)
+            : throw new ArgumentOutOfRangeException(nameof(register), $"Invalid register kind {register.Kind}. Cannot cast to <#= n1 #>.");
+
+    /// <summary>
+    /// Explicit conversion from <see cref="Arm64Register<#= n1 #>Or<#= n2 #>"/> to <see cref="Arm64Register<#= n2 #>"/>.
+    /// </summary>
+    /// <param name="register">The register to convert.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Arm64Register<#= n2 #>(Arm64Register<#= n1 #>Or<#= n2 #> register)
+        => register.Kind == Arm64RegisterKind.<#= n2 #>
+            ? Unsafe.BitCast<Arm64Register<#= n1 #>Or<#= n2 #>, Arm64Register<#= n2 #>>(register)
+            : throw new ArgumentOutOfRangeException(nameof(register), $"Invalid register kind {register.Kind}. Cannot cast to <#= n2 #>.");
+
+    /// <summary>
+    /// Explicit conversion from <see cref="Arm64Register<#= n1 #>Or<#= n2 #>"/> to <see cref="Arm64Register<#= n2 #>"/>.
+    /// </summary>
+    /// <param name="register">The register to convert.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Arm64Register<#= n1 #>Or<#= n2 #>(Arm64RegisterAny register)
+        => register.Kind == Arm64RegisterKind.<#= n1 #> || register.Kind == Arm64RegisterKind.<#= n2 #>
+            ? Unsafe.BitCast<Arm64RegisterAny, Arm64Register<#= n1 #>Or<#= n2 #>>(register)
+            : throw new ArgumentOutOfRangeException(nameof(register), $"Invalid register kind {register.Kind}. Cannot cast to <#= n1 #>Or<#= n2 #>.");
 }
 <# } #>

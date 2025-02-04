@@ -10,8 +10,7 @@ namespace AsmArm64;
 
 public readonly struct Arm64MemoryOperand : IArm64Operand
 {
-    private readonly bool _hasOptionalImmediate;
-    private readonly bool _hasOptionalExtend;
+    private readonly Arm64MemoryAccessorAny _accessor;
 
     internal Arm64MemoryOperand(Arm64Operand operand)
     {
@@ -36,30 +35,39 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         //         buffer[index + 1 + i * 2] = (byte)bitRange.Width;
         //     }
         // }
-        var memoryKind = (Arm64MemoryEncodingKind)((byte)(descriptor >> 8) & 0xF);
+        var memoryEncodingKind = (Arm64MemoryEncodingKind)((byte)(descriptor >> 8) & 0xF);
         var extendEncodingKind = (Arm64MemoryExtendEncodingKind)((byte)(descriptor >> 12) & 0xF);
 
         var baseRegisterEncodingIndex = (byte)(descriptor >> 16);
         int baseRegisterIndex = Arm64DecodingHelper.GetSmallBitRange(baseRegisterEncodingIndex, rawValue);
 
-        BaseRegister = baseRegisterIndex == 31 && memoryKind != Arm64MemoryEncodingKind.BaseRegisterXn
+        var baseRegister = baseRegisterIndex == 31 && memoryEncodingKind != Arm64MemoryEncodingKind.BaseRegisterXn
             ? Arm64RegisterAny.Create(Arm64RegisterKind.SP, baseRegisterIndex, Arm64RegisterVKind.Default, 0, 0)
             : Arm64RegisterAny.Create(Arm64RegisterKind.X, baseRegisterIndex, Arm64RegisterVKind.Default, 0, 0);
-        
-        if (memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate || memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional)
+
+        if (memoryEncodingKind == Arm64MemoryEncodingKind.BaseRegister)
         {
-            MemoryKind = Arm64MemoryKind.BaseRegisterWithImmediate;
-            Immediate = (int)(sbyte)(descriptor >> 24);
-            IsPreIncrement = (((byte)(descriptor >> 32)) & 0x80) != 0;
-            _hasOptionalImmediate = memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional;
+            _accessor = new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterXOrSP>(baseRegister));
+        }
+        else if (memoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterXn)
+        {
+            _accessor = new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterX>(baseRegister));
+        }
+        else if (memoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate || memoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional)
+        {
+            var immediate = (int)(sbyte)(descriptor >> 24);
+            var isPreIncrement = (((byte)(descriptor >> 32)) & 0x80) != 0;
+            var hasOptionalImmediate = memoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional;
+            _accessor = new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterXOrSP>(baseRegister), immediate, isPreIncrement, hasOptionalImmediate);
         }
         else
         {
             var v = (byte)(descriptor >> 24);
             var indexRegisterOrImmediateCount = (v & 0x20) != 0 ? 2 : 1;
-            IsPreIncrement = (v & 0x80) != 0;
+            var isPreIncrement = (v & 0x80) != 0;
             byte isSigned = (byte)((v >> 6) & 1);
             var immediateValueEncodingKind = (Arm64ImmediateValueEncodingKind)(v & 0x1F);
+            bool hasOptionalExtend = false;
 
             int value = 0;
             if (indexRegisterOrImmediateCount == 1)
@@ -76,46 +84,35 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                 value = (int)Arm64ImmediateValueHelper.DecodeValue(immediateValueEncodingKind, (int)value);
             }
 
-            switch (memoryKind)
+            switch (memoryEncodingKind)
             {
-                case Arm64MemoryEncodingKind.BaseRegisterXn:
-                    MemoryKind = Arm64MemoryKind.BaseRegisterXn;
-                    break;
-
-                case Arm64MemoryEncodingKind.BaseRegister:
-                    MemoryKind = Arm64MemoryKind.BaseRegister;
-                    break;
-
                 case Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional:
-                    _hasOptionalImmediate = true;
-                    goto case Arm64MemoryEncodingKind.BaseRegisterAndImmediate;
+                    _accessor = new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterXOrSP>(baseRegister), value, isPreIncrement, true);
+                    break;
 
                 case Arm64MemoryEncodingKind.BaseRegisterAndImmediate:
-                    MemoryKind = Arm64MemoryKind.BaseRegisterWithImmediate;
-                    Immediate = value;
+                    _accessor = new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterXOrSP>(baseRegister), value, isPreIncrement, false);
                     break;
 
                 case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional:
                 case Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount:
-                    _hasOptionalExtend = true;
+                    hasOptionalExtend = true;
                     goto case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend;
 
                 case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
-                    MemoryKind = Arm64MemoryKind.BaseRegisterWithIndexAndExtend;
-
                     //Debug.Assert(extendBitRange.HiBit == 15 && extendBitRange.Width == 3);
                     //Debug.Assert(amountBitRange.HiBit == 12 && amountBitRange.Width == 1);
                     var option = (rawValue >> 13) & 0b111;
                     var amount = (byte)((rawValue >> 12) & 1);
 
-                    var registerKind = (option & 1) == 0 && memoryKind != Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount
+                    var registerKind = (option & 1) == 0 && memoryEncodingKind != Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount
                         ? Arm64RegisterKind.W
                         : Arm64RegisterKind.X;
 
                     bool isZeroAmount;
 
                     Arm64ExtendKind extendKind;
-                    if (memoryKind == Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount)
+                    if (memoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount)
                     {
                         isZeroAmount = true;
                         extendKind = Arm64ExtendKind.LSL;
@@ -139,7 +136,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                         isZeroAmountVisible = extendKind == Arm64ExtendKind.LSL || amount != 0;
                         if (extendKind == Arm64ExtendKind.LSL && amount != 0)
                         {
-                            _hasOptionalExtend = false;
+                            hasOptionalExtend = false;
                         }
                     }
                     else
@@ -168,29 +165,31 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
                         }
                     }
 
-                    IndexRegister = Arm64RegisterAny.Create(registerKind, value, Arm64RegisterVKind.Default, 0, 0);
 
-                    Extend = isZeroAmount ? new Arm64MemoryExtend(extendKind, isZeroAmountVisible) : new Arm64MemoryExtend(extendKind, amount);
+                    var indexRegister = Arm64RegisterAny.Create(registerKind, value, Arm64RegisterVKind.Default, 0, 0);
+                    var extend = isZeroAmount ? new Arm64MemoryExtend(extendKind, isZeroAmountVisible) : new Arm64MemoryExtend(extendKind, amount);
 
+                    if (registerKind == Arm64RegisterKind.X)
+                    {
+                        _accessor = new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterXOrSP>(baseRegister), Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterX>(indexRegister), extend, isPreIncrement, hasOptionalExtend);
+                    }
+                    else
+                    {
+                        Debug.Assert(registerKind == Arm64RegisterKind.W);
+                        _accessor = new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterXOrSP>(baseRegister), Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterW>(indexRegister), extend, isPreIncrement, hasOptionalExtend);
+                    }
+
+                    break;
+                default:
+                    Debug.Assert(false, "This should not happen");
                     break;
             }
         }
-
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Memory;
 
-    public Arm64MemoryKind MemoryKind { get; }
-
-    public Arm64RegisterAny BaseRegister { get; }
-
-    public Arm64RegisterAny IndexRegister { get; }
-
-    public bool IsPreIncrement { get; }
-
-    public int Immediate { get; }
-
-    public Arm64MemoryExtend Extend { get; }
+    public Arm64MemoryAccessorAny Accessor => _accessor;
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
@@ -210,108 +209,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
         => TryFormat(default, destination, out charsWritten, out _, format, provider, null);
 
     public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel)
-    {
-        isDefaultValue = false;
-        // At minimum we need [x0] ~= 4 characters
-        if (destination.Length <= 4)
-        {
-            charsWritten = 0;
-            return false;
-        }
-        destination[0] = '[';
-        if (!BaseRegister.TryFormat(destination.Slice(1), out var baseWritten, format, provider))
-        {
-            charsWritten = 0;
-            return false;
-        }
-        var written = baseWritten + 1;
-
-        if (MemoryKind >= Arm64MemoryKind.BaseRegisterWithImmediate)
-        {
-            if (MemoryKind == Arm64MemoryKind.BaseRegisterWithImmediate)
-            {
-                if (!_hasOptionalImmediate || this.Immediate != 0)
-                {
-                    if (destination.Length <= written + 2)
-                    {
-                        charsWritten = 0;
-                        return false;
-                    }
-                    destination[written] = ',';
-                    destination[written + 1] = ' ';
-                    destination[written + 2] = '#';
-                    written += 3;
-
-                    if (!Immediate.TryFormat(destination.Slice(written), out var immediateWritten, format, provider))
-                    {
-                        charsWritten = 0;
-                        return false;
-                    }
-
-                    written += immediateWritten;
-                }
-            }
-            else
-            {
-                if (destination.Length <= written + 1)
-                {
-                    charsWritten = 0;
-                    return false;
-                }
-                destination[written] = ',';
-                destination[written + 1] = ' ';
-                written += 2;
-
-                if (!IndexRegister.TryFormat(destination.Slice(written), out var indexWritten, format, provider))
-                {
-                    charsWritten = 0;
-                    return false;
-                }
-                written += indexWritten;
-
-                if (Extend.Kind != Arm64ExtendKind.None && (!_hasOptionalExtend || !Extend.IsDefault))
-                {
-                    if (destination.Length <= written + 1)
-                    {
-                        charsWritten = 0;
-                        return false;
-                    }
-                    destination[written] = ',';
-                    destination[written + 1] = ' ';
-                    written += 2;
-
-                    if (!Extend.TryFormat(destination.Slice(written), out var extendWritten, format, provider))
-                    {
-                        charsWritten = 0;
-                        return false;
-                    }
-                    written += extendWritten;
-                }
-            }
-        }
-
-        if (destination.Length <= written)
-        {
-            charsWritten = 0;
-            return false;
-        }
-        destination[written] = ']';
-        written++;
-
-        if (IsPreIncrement)
-        {
-            if (destination.Length <= written)
-            {
-                charsWritten = 0;
-                return false;
-            }
-            destination[written] = '!';
-            written++;
-        }
-
-        charsWritten = written;
-        return true;
-    }
+        => _accessor.TryFormat(destination, out charsWritten, out isDefaultValue, format, provider);
 
     public static explicit operator Arm64MemoryOperand(Arm64Operand operand)
     {
