@@ -2220,7 +2220,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x1EE01000U; // Encoding for: FMOV_h_floatimm
         raw |= (uint)Hd.Index;
-        raw |= (uint)imm.Value << 13;
+        raw |= (uint)imm.EncodedValue << 13;
         return raw;
     }
     /// <summary>
@@ -2232,7 +2232,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x1E201000U; // Encoding for: FMOV_s_floatimm
         raw |= (uint)Sd.Index;
-        raw |= (uint)imm.Value << 13;
+        raw |= (uint)imm.EncodedValue << 13;
         return raw;
     }
     /// <summary>
@@ -2244,7 +2244,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x1E601000U; // Encoding for: FMOV_d_floatimm
         raw |= (uint)Dd.Index;
-        raw |= (uint)imm.Value << 13;
+        raw |= (uint)imm.EncodedValue << 13;
         return raw;
     }
     /// <summary>

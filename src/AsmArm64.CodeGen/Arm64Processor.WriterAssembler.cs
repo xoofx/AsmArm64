@@ -688,10 +688,6 @@ partial class Arm64Processor
             case Arm64ImmediateValueEncodingKind.ValueMulBy16:
                 operandValue = $"({operandPath} >> 4)";
                 break;
-            case Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1:
-                break;
-            case Arm64ImmediateValueEncodingKind.ValueImmsPlus1:
-                break;
             case Arm64ImmediateValueEncodingKind._32_Minus_Value_Mod32:
                 operandValue = $"((32 - {operandPath}) & 0x1F)";
                 break;
@@ -713,20 +709,22 @@ partial class Arm64Processor
             case Arm64ImmediateValueEncodingKind.ValueMod64Plus1:
                 operandValue = $"(({operandPath} - 1) & 0x3F)";
                 break;
+            case Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1:
+                // TODO
+                break;
+            case Arm64ImmediateValueEncodingKind.ValueImmsPlus1:
+                // TODO
+                break;
             case Arm64ImmediateValueEncodingKind.ValueMsrImmediate:
                 // TODO
                 break;
             case Arm64ImmediateValueEncodingKind.InvertValueShiftWide32:
-                // TODO
-                break;
             case Arm64ImmediateValueEncodingKind.ValueShiftWide64:
-                // TODO
-                break;
             case Arm64ImmediateValueEncodingKind.SignedFloatExp3Mantissa4:
             case Arm64ImmediateValueEncodingKind.DecodeBitMask32:
             case Arm64ImmediateValueEncodingKind.DecodeBitMask64:
             case Arm64ImmediateValueEncodingKind.ValueImm64:
-                operandValue = $"{operandPath}.Value";
+                operandValue = $"{operandPath}.EncodedValue";
                 break;
             case Arm64ImmediateValueEncodingKind.None:
                 // Nothing to do
@@ -934,6 +932,14 @@ partial class Arm64Processor
         {
             operandType = "Arm64FloatImmediate";
             operandTypeBitSize = 8;
+        }
+        else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.ValueShiftWide64)
+        {
+            operandType = "Arm64ShiftedImmediate64";
+        }
+        else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.InvertValueShiftWide32)
+        {
+            operandType = "Arm64InvertedShiftedImmediate32";
         }
 
         if (descriptor.ImmediateKind == Arm64ImmediateEncodingKind.FixedFloatZero)
@@ -1143,7 +1149,7 @@ partial class Arm64Processor
         operandVariations.Add(operandVariation);
     }
 
-    private void GetExtendOperandVariations(ExtendOperandDescriptor descriptor, List<OperandVariation> variations)
+    private static void GetExtendOperandVariations(ExtendOperandDescriptor descriptor, List<OperandVariation> variations)
     {
         var operandVariation = new OperandVariation
         {

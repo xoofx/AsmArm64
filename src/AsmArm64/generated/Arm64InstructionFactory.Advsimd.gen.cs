@@ -7945,8 +7945,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F00FC00U; // Encoding for: FMOV_asimdimm_h_h
         raw |= (uint)Vd_T.Index;
         {
-            // Write the immediate for imm.Value
-            var _i_ = imm.Value & 0xFF;
+            // Write the immediate for imm.EncodedValue
+            var _i_ = imm.EncodedValue & 0xFF;
             raw |= (uint)(_i_ & 0x1F) << 5;
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
@@ -7963,8 +7963,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F00FC00U; // Encoding for: FMOV_asimdimm_h_h
         raw |= (uint)Vd_T.Index;
         {
-            // Write the immediate for imm.Value
-            var _i_ = imm.Value & 0xFF;
+            // Write the immediate for imm.EncodedValue
+            var _i_ = imm.EncodedValue & 0xFF;
             raw |= (uint)(_i_ & 0x1F) << 5;
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
@@ -7981,8 +7981,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F00F400U; // Encoding for: FMOV_asimdimm_s_s
         raw |= (uint)Vd_T.Index;
         {
-            // Write the immediate for imm.Value
-            var _i_ = imm.Value & 0xFF;
+            // Write the immediate for imm.EncodedValue
+            var _i_ = imm.EncodedValue & 0xFF;
             raw |= (uint)(_i_ & 0x1F) << 5;
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
@@ -7999,8 +7999,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F00F400U; // Encoding for: FMOV_asimdimm_s_s
         raw |= (uint)Vd_T.Index;
         {
-            // Write the immediate for imm.Value
-            var _i_ = imm.Value & 0xFF;
+            // Write the immediate for imm.EncodedValue
+            var _i_ = imm.EncodedValue & 0xFF;
             raw |= (uint)(_i_ & 0x1F) << 5;
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
@@ -8017,8 +8017,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F00F400U; // Encoding for: FMOV_asimdimm_d2_d
         raw |= (uint)Vd_2D.Index;
         {
-            // Write the immediate for imm.Value
-            var _i_ = imm.Value & 0xFF;
+            // Write the immediate for imm.EncodedValue
+            var _i_ = imm.EncodedValue & 0xFF;
             raw |= (uint)(_i_ & 0x1F) << 5;
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
@@ -15639,8 +15639,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F00E400U; // Encoding for: MOVI_asimdimm_d_ds
         raw |= (uint)Dd.Index;
         {
-            // Write the immediate for imm.Value
-            var _i_ = imm.Value & 0xFF;
+            // Write the immediate for imm.EncodedValue
+            var _i_ = imm.EncodedValue & 0xFF;
             raw |= (uint)(_i_ & 0x1F) << 5;
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
@@ -15657,8 +15657,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F00E400U; // Encoding for: MOVI_asimdimm_d2_d
         raw |= (uint)Vd_2D.Index;
         {
-            // Write the immediate for imm.Value
-            var _i_ = imm.Value & 0xFF;
+            // Write the immediate for imm.EncodedValue
+            var _i_ = imm.EncodedValue & 0xFF;
             raw |= (uint)(_i_ & 0x1F) << 5;
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;

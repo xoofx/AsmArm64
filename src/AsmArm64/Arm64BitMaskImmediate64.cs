@@ -8,14 +8,14 @@ namespace AsmArm64;
 
 public readonly record struct Arm64BitMaskImmediate64 : ISpanFormattable
 {
-    internal Arm64BitMaskImmediate64(byte value)
+    internal Arm64BitMaskImmediate64(byte encodedValue)
     {
-        Value = value;
+        EncodedValue = encodedValue;
     }
     
-    public byte Value { get; }
+    public byte EncodedValue { get; }
 
-    public ulong AsMask() => DecodeAsMask(Value);
+    public ulong Value() => DecodeAsMask(EncodedValue);
 
     public static ulong DecodeAsMask(byte imm8)
     {
@@ -84,5 +84,5 @@ public readonly record struct Arm64BitMaskImmediate64 : ISpanFormattable
     }
 
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format = default, IFormatProvider? provider = null)
-        => format.Length == 0 || format[0] == 'X' ? destination.TryWrite(provider, $"0x{AsMask():16X}", out charsWritten) : AsMask().TryFormat(destination, out charsWritten, format, provider);
+        => format.Length == 0 || format[0] == 'X' ? destination.TryWrite(provider, $"0x{Value():16X}", out charsWritten) : Value().TryFormat(destination, out charsWritten, format, provider);
 }

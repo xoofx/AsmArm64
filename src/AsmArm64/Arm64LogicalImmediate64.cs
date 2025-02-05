@@ -8,18 +8,20 @@ namespace AsmArm64;
 
 public readonly record struct Arm64LogicalImmediate64 : ISpanFormattable
 {
-    internal Arm64LogicalImmediate64(int value)
+    internal Arm64LogicalImmediate64(int encodedValue)
     {
-        Value = value;
+        EncodedValue = encodedValue;
     }
 
-    public int Value { get; }
+    public int EncodedValue { get; }
 
-    public int N => (Value >> 12) & 1;
+    public int N => (EncodedValue >> 12) & 1;
 
-    public int ImmR => (Value >> 6) & 0x3f;
+    public int ImmR => (EncodedValue >> 6) & 0x3f;
 
-    public int ImmS => Value & 0x3f;
+    public int ImmS => EncodedValue & 0x3f;
+
+    public ulong Value() => Arm64LogicalImmediateHelper.DecodeLogicalImmediate64((uint)EncodedValue);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Arm64LogicalImmediate64 Encode(ulong value)
@@ -39,5 +41,5 @@ public readonly record struct Arm64LogicalImmediate64 : ISpanFormattable
     }
 
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format = default, IFormatProvider? provider = null)
-        => format.Length == 0 || format[0] == 'X' ? destination.TryWrite(provider, $"0x{Value:16X}", out charsWritten) : Value.TryFormat(destination, out charsWritten, format, provider);
+        => format.Length == 0 || format[0] == 'X' ? destination.TryWrite(provider, $"0x{EncodedValue:16X}", out charsWritten) : EncodedValue.TryFormat(destination, out charsWritten, format, provider);
 }

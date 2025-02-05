@@ -79,14 +79,14 @@ public class TestDecodingHelper
             var src = (byte)i;
             var value = Arm64FloatImmediate.DecodeAsFloat(src);
             var encoded = Arm64FloatImmediate.Encode(value);
-            Assert.AreEqual(src, encoded.Value);
+            Assert.AreEqual(src, encoded.EncodedValue);
             //Console.WriteLine($"0x{src:X2} -> {value} ({encoded})");
         }
 
-        Assert.AreEqual(1.0f, Arm64FloatImmediate.Value1.AsFloat());
-        Assert.AreEqual(2.0f, Arm64FloatImmediate.Value2.AsFloat());
-        Assert.AreEqual(3.0f, Arm64FloatImmediate.Value3.AsFloat());
-        Assert.AreEqual(0.5f, Arm64FloatImmediate.ValueZeroDot5.AsFloat());
+        Assert.AreEqual(1.0f, Arm64FloatImmediate.Value1.Value());
+        Assert.AreEqual(2.0f, Arm64FloatImmediate.Value2.Value());
+        Assert.AreEqual(3.0f, Arm64FloatImmediate.Value3.Value());
+        Assert.AreEqual(0.5f, Arm64FloatImmediate.ValueZeroDot5.Value());
     }
 
 
@@ -98,12 +98,55 @@ public class TestDecodingHelper
             var src = (byte)i;
             var value = Arm64BitMaskImmediate64.DecodeAsMask(src);
             var encoded = Arm64BitMaskImmediate64.Encode(value);
-            Assert.AreEqual(src, encoded.Value);
+            Assert.AreEqual(src, encoded.EncodedValue);
         }
 
         {
             var value = Arm64BitMaskImmediate64.DecodeAsMask(0x85);
             Assert.AreEqual(0xFF_00_00_00__00_FF_00_FF.ToString("X16"), value.ToString("X16"));
         }
+    }
+
+    [TestMethod]
+    public void TestShiftedImmediate32()
+    {
+        Arm64InvertedShiftedImmediate32 value = new(0x1234, 0);
+        Assert.AreEqual(0x1234, value.Value());
+        Assert.AreEqual(0x1234, value.Immediate);
+        Assert.AreEqual(0, value.ShiftLeft);
+
+        value = new(0x1234, 16);
+        Assert.AreEqual(0x1234_0000, value.Value());
+        Assert.AreEqual(0x1234, value.Immediate);
+        Assert.AreEqual(16, value.ShiftLeft);
+
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => value = new(0xFFFF, 0));
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => value = new(0x1234, 1));
+    }
+
+    [TestMethod]
+    public void TestShiftedImmediate64()
+    {
+        Arm64ShiftedImmediate64 value = new(0x1234, 0);
+        Assert.AreEqual(0x1234, value.Value());
+        Assert.AreEqual(0x1234, value.Immediate);
+        Assert.AreEqual(0, value.ShiftLeft);
+
+        value = new(0x1234, 16);
+        Assert.AreEqual(0x1234_0000, value.Value());
+        Assert.AreEqual(0x1234, value.Immediate);
+        Assert.AreEqual(16, value.ShiftLeft);
+
+        value = new(0x1234, 32);
+        Assert.AreEqual(0x1234_0000_0000L, value.Value());
+        Assert.AreEqual(0x1234, value.Immediate);
+        Assert.AreEqual(32, value.ShiftLeft);
+
+        value = new(0x1234, 48);
+        Assert.AreEqual(0x1234_0000_0000_0000L, value.Value());
+        Assert.AreEqual(0x1234, value.Immediate);
+        Assert.AreEqual(48, value.ShiftLeft);
+
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => value = new(0x1234, 1));
     }
 }

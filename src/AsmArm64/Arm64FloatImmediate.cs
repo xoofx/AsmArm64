@@ -8,9 +8,9 @@ namespace AsmArm64;
 
 public readonly record struct Arm64FloatImmediate : ISpanFormattable
 {
-    internal Arm64FloatImmediate(byte value)
+    internal Arm64FloatImmediate(byte encodedValue)
     {
-        Value = value;
+        EncodedValue = encodedValue;
     }
     
     /// <summary>
@@ -33,9 +33,9 @@ public readonly record struct Arm64FloatImmediate : ISpanFormattable
     /// </summary>
     public static Arm64FloatImmediate ValueZeroDot5 => new(0x60);
 
-    public byte Value { get; }
+    public byte EncodedValue { get; }
 
-    public float AsFloat() => DecodeAsFloat(Value);
+    public float Value() => DecodeAsFloat(EncodedValue);
 
     public static float DecodeAsFloat(byte imm8) => BitConverter.Int32BitsToSingle(DecodeAsInt(imm8));
 
@@ -107,7 +107,7 @@ public readonly record struct Arm64FloatImmediate : ISpanFormattable
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format = default, IFormatProvider? provider = null)
     {
         if (format.Length == 0) format = "0.00000000";
-        return DecodeAsFloat(Value).TryFormat(destination, out charsWritten, format, provider);
+        return DecodeAsFloat(EncodedValue).TryFormat(destination, out charsWritten, format, provider);
     }
 
     internal static int DecodeAsInt(byte imm8)

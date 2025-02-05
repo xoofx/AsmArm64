@@ -362,7 +362,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x12000000U; // Encoding for: AND_32_log_imm
         raw |= (uint)Wd_WSP.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(imm.Value & 0xFFF) << 10;
+        raw |= (uint)(imm.EncodedValue & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -375,7 +375,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x92000000U; // Encoding for: AND_64_log_imm
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)imm.Value << 10;
+        raw |= (uint)imm.EncodedValue << 10;
         return raw;
     }
     /// <summary>
@@ -418,7 +418,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x72000000U; // Encoding for: ANDS_32s_log_imm
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(imm.Value & 0xFFF) << 10;
+        raw |= (uint)(imm.EncodedValue & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -431,7 +431,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF2000000U; // Encoding for: ANDS_64s_log_imm
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)imm.Value << 10;
+        raw |= (uint)imm.EncodedValue << 10;
         return raw;
     }
     /// <summary>
@@ -4034,7 +4034,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x52000000U; // Encoding for: EOR_32_log_imm
         raw |= (uint)Wd_WSP.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(imm.Value & 0xFFF) << 10;
+        raw |= (uint)(imm.EncodedValue & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -4047,7 +4047,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD2000000U; // Encoding for: EOR_64_log_imm
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)imm.Value << 10;
+        raw |= (uint)imm.EncodedValue << 10;
         return raw;
     }
     /// <summary>
@@ -8405,7 +8405,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x320003E0U; // Encoding for: MOV_orr_32_log_imm
         raw |= (uint)Wd_WSP.Index;
-        raw |= (uint)(imm.Value & 0xFFF) << 10;
+        raw |= (uint)(imm.EncodedValue & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -8417,7 +8417,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xB20003E0U; // Encoding for: MOV_orr_64_log_imm
         raw |= (uint)Xd_SP.Index;
-        raw |= (uint)imm.Value << 10;
+        raw |= (uint)imm.EncodedValue << 10;
         return raw;
     }
     /// <summary>
@@ -8473,13 +8473,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOV Wd, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_movz_32_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOV(Arm64RegisterW Wd, uint imm)
+    public static uint MOV(Arm64RegisterW Wd, Arm64ShiftedImmediate64 imm)
     {
         uint raw = 0x52800000U; // Encoding for: MOV_movz_32_movewide
         raw |= (uint)Wd.Index;
         {
-            // Write the immediate for imm
-            var _i_ = imm & 0x3FFFF;
+            // Write the immediate for imm.EncodedValue
+            var _i_ = imm.EncodedValue & 0x3FFFF;
             raw |= (uint)(_i_ & 0x3) << 21;
             _i_ >>= 2;
             raw |= (uint)(_i_ & 0xFFFF) << 5;
@@ -8491,13 +8491,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOV Xd, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_movz_64_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOV(Arm64RegisterX Xd, uint imm)
+    public static uint MOV(Arm64RegisterX Xd, Arm64ShiftedImmediate64 imm)
     {
         uint raw = 0xD2800000U; // Encoding for: MOV_movz_64_movewide
         raw |= (uint)Xd.Index;
         {
-            // Write the immediate for imm
-            var _i_ = imm & 0x3FFFF;
+            // Write the immediate for imm.EncodedValue
+            var _i_ = imm.EncodedValue & 0x3FFFF;
             raw |= (uint)(_i_ & 0x3) << 21;
             _i_ >>= 2;
             raw |= (uint)(_i_ & 0xFFFF) << 5;
@@ -8509,13 +8509,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOV Wd, #imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_movn_32_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOV_MOVN(Arm64RegisterW Wd, uint imm)
+    public static uint MOV_MOVN(Arm64RegisterW Wd, Arm64InvertedShiftedImmediate32 imm)
     {
         uint raw = 0x12800000U; // Encoding for: MOV_movn_32_movewide
         raw |= (uint)Wd.Index;
         {
-            // Write the immediate for imm
-            var _i_ = imm & 0x3FFFF;
+            // Write the immediate for imm.EncodedValue
+            var _i_ = imm.EncodedValue & 0x3FFFF;
             raw |= (uint)(_i_ & 0x3) << 21;
             _i_ >>= 2;
             raw |= (uint)(_i_ & 0xFFFF) << 5;
@@ -8858,7 +8858,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x32000000U; // Encoding for: ORR_32_log_imm
         raw |= (uint)Wd_WSP.Index;
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(imm.Value & 0xFFF) << 10;
+        raw |= (uint)(imm.EncodedValue & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -8871,7 +8871,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB2000000U; // Encoding for: ORR_64_log_imm
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)imm.Value << 10;
+        raw |= (uint)imm.EncodedValue << 10;
         return raw;
     }
     /// <summary>
@@ -13964,7 +13964,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x7200001FU; // Encoding for: TST_ands_32s_log_imm
         raw |= (uint)Wn.Index << 5;
-        raw |= (uint)(imm.Value & 0xFFF) << 10;
+        raw |= (uint)(imm.EncodedValue & 0xFFF) << 10;
         return raw;
     }
     /// <summary>
@@ -13976,7 +13976,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xF200001FU; // Encoding for: TST_ands_64s_log_imm
         raw |= (uint)Xn.Index << 5;
-        raw |= (uint)imm.Value << 10;
+        raw |= (uint)imm.EncodedValue << 10;
         return raw;
     }
     /// <summary>
