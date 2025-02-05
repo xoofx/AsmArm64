@@ -100,6 +100,14 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd_WSP.Index;
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTW,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>
@@ -113,6 +121,14 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>
@@ -211,6 +227,14 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTW,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>
@@ -224,6 +248,14 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>
@@ -2186,6 +2218,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2B20001FU; // Encoding for: CMN_adds_32s_addsub_ext
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTW,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>
@@ -2198,6 +2238,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0xAB20001FU; // Encoding for: CMN_adds_64s_addsub_ext
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>
@@ -2264,6 +2312,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6B20001FU; // Encoding for: CMP_subs_32s_addsub_ext
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTW,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>
@@ -2276,6 +2332,14 @@ static partial class Arm64InstructionFactory
         uint raw = 0xEB20001FU; // Encoding for: CMP_subs_64s_addsub_ext
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>
@@ -13185,6 +13249,14 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd_WSP.Index;
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTW,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>
@@ -13198,6 +13270,14 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>
@@ -13322,6 +13402,14 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTW,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>
@@ -13335,6 +13423,14 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend switch
+        {
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
         return raw;
     }
     /// <summary>

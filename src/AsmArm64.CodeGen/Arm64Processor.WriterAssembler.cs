@@ -2,11 +2,8 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
-using System.ComponentModel.Design;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using AsmArm64.CodeGen.Model;
-using Microsoft.Win32;
 
 namespace AsmArm64.CodeGen;
 
@@ -387,7 +384,7 @@ partial class Arm64Processor
                 GetShiftOperandVariations(instruction, (ShiftOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Extend:
-                GetExtendOperandVariations((ExtendOperandDescriptor)descriptor, operandVariations); // TODO
+                GetExtendOperandVariations((ExtendOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Enum:
                 GetEnumVariations((EnumOperandDescriptor)descriptor, operandVariations);
@@ -1163,6 +1160,19 @@ partial class Arm64Processor
             operandVariation.DefaultValue2 = "0";
         }
 
+        operandVariation.WriteEncodings.Add((w, variable, instruction, operand, index) =>
+        {
+            w.WriteLine($"var _extend_ = {operandVariation.OperandName} switch");
+            w.OpenBraceBlock();
+            w.WriteLine($"Arm64ExtendKind.None => throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), \"Invalid extend value `None`. Expecting a valid extend kind\"),");
+            w.WriteLine($"Arm64ExtendKind.LSL => (byte){(descriptor.Is64Bit ? "Arm64ExtendKind.UXTX" : "Arm64ExtendKind.UXTW")},");
+            w.WriteLine($"_ => (byte){operandVariation.OperandName}");
+            w.CloseBraceBlockStatement();
+        });
+
+        GenerateBitRangeEncodingFromValue($"(byte)(_extend_ - 1)", "extend", descriptor.ExtendEncoding, operandVariation.WriteEncodings);
+        GenerateBitRangeEncodingFromValue($"(byte){operandVariation.OperandName2}", "amount", descriptor.AmountEncoding, operandVariation.WriteEncodings);
+        
         variations.Add(operandVariation);
     }
 
