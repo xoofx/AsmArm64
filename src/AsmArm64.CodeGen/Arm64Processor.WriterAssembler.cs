@@ -372,15 +372,7 @@ partial class Arm64Processor
                 GetRegisterGroupOperandVariation(instruction,(RegisterGroupOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.SystemRegister:
-                // TODO
-                operandVariations.Add(
-                    new OperandVariation()
-                    {
-                        Descriptor = descriptor,
-                        OperandName = GetNormalizedOperandName(descriptor.Name),
-                        OperandType = "Arm64SystemRegister"
-                    }
-                );
+                GetSystemRegisterVariation(instruction, (SystemRegisterOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Memory:
                 GetMemoryOperandVariation(instruction, (MemoryOperandDescriptor)descriptor, operandVariations);
@@ -405,6 +397,24 @@ partial class Arm64Processor
         }
     }
 
+    private void GetSystemRegisterVariation(Instruction instruction, SystemRegisterOperandDescriptor descriptor, List<OperandVariation> operandVariations)
+    {
+        var operandVariation = new OperandVariation()
+        {
+            Descriptor = descriptor,
+            OperandName = GetNormalizedOperandName(descriptor.Name),
+            OperandType = "Arm64SystemRegister"
+        };
+
+        var ranges = new List<BitRange>()
+        {
+            descriptor.Encoding
+        };
+        GenerateBitRangeEncodingFromValue($"{operandVariation.OperandName}.Value", "system register", descriptor.Encoding.Width, ranges, operandVariation.WriteEncodings, 16); // Arm64SystemRegister.Value is 16 bits
+
+        operandVariations.Add(operandVariation);
+    }
+    
     private void GetLabelVariation(Instruction instruction, LabelOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
         var operandVariation = new OperandVariation()

@@ -32,6 +32,7 @@ static partial class Arm64InstructionFactory
     public static uint AT(Arm64SystemRegister at_op, Arm64RegisterX Xt)
     {
         uint raw = 0xD5087800U; // Encoding for: AT_sys_cr_systeminstrs
+        raw |= (uint)at_op.Value << 5;
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -113,6 +114,7 @@ static partial class Arm64InstructionFactory
     public static uint BRB(Arm64SystemRegister brb_op)
     {
         uint raw = 0xD5097200U; // Encoding for: BRB_sys_cr_systeminstrs
+        raw |= (uint)brb_op.Value << 5;
         return raw;
     }
     /// <summary>
@@ -233,6 +235,7 @@ static partial class Arm64InstructionFactory
     public static uint DC(Arm64SystemRegister dc_op, Arm64RegisterX Xt)
     {
         uint raw = 0xD5087000U; // Encoding for: DC_sys_cr_systeminstrs
+        raw |= (uint)dc_op.Value << 5;
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -480,6 +483,7 @@ static partial class Arm64InstructionFactory
     public static uint IC(Arm64SystemRegister ic_op, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5087000U; // Encoding for: IC_sys_cr_systeminstrs
+        raw |= (uint)ic_op.Value << 5;
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -503,6 +507,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD5700000U; // Encoding for: MRRS_rs_systemmovepr
         raw |= (uint)Xt.Index;
         raw = Xt_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(Xt_1), $"Invalid Register. Index `{Xt_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        raw |= (uint)systemreg.Value << 5;
         return raw;
     }
     /// <summary>
@@ -514,6 +519,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xD5300000U; // Encoding for: MRS_rs_systemmove
         raw |= (uint)Xt.Index;
+        raw |= (uint)systemreg.Value << 5;
         return raw;
     }
     /// <summary>
@@ -588,6 +594,7 @@ static partial class Arm64InstructionFactory
     public static uint MSR(Arm64SystemRegister systemreg, Arm64RegisterX Xt)
     {
         uint raw = 0xD5100000U; // Encoding for: MSR_sr_systemmove
+        raw |= (uint)systemreg.Value << 5;
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -599,6 +606,7 @@ static partial class Arm64InstructionFactory
     public static uint MSRR(Arm64SystemRegister systemreg, Arm64RegisterX Xt, Arm64RegisterX Xt_1)
     {
         uint raw = 0xD5500000U; // Encoding for: MSRR_sr_systemmovepr
+        raw |= (uint)systemreg.Value << 5;
         raw |= (uint)Xt.Index;
         raw = Xt_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(Xt_1), $"Invalid Register. Index `{Xt_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
@@ -851,6 +859,7 @@ static partial class Arm64InstructionFactory
     public static uint TLBI(Arm64SystemRegister tlbi_op, Arm64RegisterX Xt = default)
     {
         uint raw = 0xD5088000U; // Encoding for: TLBI_sys_cr_systeminstrs
+        raw |= (uint)tlbi_op.Value << 5;
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -862,6 +871,7 @@ static partial class Arm64InstructionFactory
     public static uint TLBIP(Arm64SystemRegister tlbip_op, Arm64RegisterX Xt1 = default)
     {
         uint raw = 0xD5488000U; // Encoding for: TLBIP_sysp_cr_syspairinstrs
+        raw |= (uint)tlbip_op.Value << 5;
         raw |= (uint)Xt1.Index;
         return raw;
     }
