@@ -6,50 +6,10 @@ using System.Diagnostics;
 
 namespace AsmArm64;
 
-
-public interface IArm64Extend
-{
-    Arm64ExtendKind Kind { get; }
-
-    byte Amount { get; }
-}
-
-public readonly record struct Arm64ExtendXKind : IArm64ExtendKind
-{
-    private Arm64ExtendXKind(Arm64ExtendKind extendKind)
-    {
-        ExtendKind = extendKind;
-    }
-
-    public Arm64ExtendKind ExtendKind { get; }
-
-    public override string ToString() => this.ExtendToText();
-
-    public static implicit operator Arm64ExtendXKind(LSLShiftKind shiftKindAsExtendKind) => new(Arm64ExtendKind.LSL);
-
-    public static implicit operator Arm64ExtendXKind(IArm64ExtendKind.LSL extendKind) => new(Arm64ExtendKind.LSL);
-
-    public static implicit operator Arm64ExtendXKind(IArm64ExtendKind.SXTX extendKind) => new(Arm64ExtendKind.SXTX);
-
-}
-
-public readonly record struct Arm64ExtendWKind : IArm64ExtendKind
-{
-    private Arm64ExtendWKind(Arm64ExtendKind extendKind)
-    {
-        ExtendKind = extendKind;
-    }
-
-    public Arm64ExtendKind ExtendKind { get; }
-
-    public override string ToString() => this.ExtendToText();
-    
-    public static implicit operator Arm64ExtendWKind(IArm64ExtendKind.UXTW extendKind) => new(Arm64ExtendKind.UXTW);
-
-    public static implicit operator Arm64ExtendWKind(IArm64ExtendKind.SXTW extendKind) => new(Arm64ExtendKind.SXTW);
-}
-
-public readonly record struct Arm64MemoryExtend : IArm64Extend , ISpanFormattable
+/// <summary>
+/// Represents an ARM64 memory extend operation.
+/// </summary>
+public readonly record struct Arm64MemoryExtend : IArm64MemoryExtend 
 {
     // 10 bits only are used (this is to fit within the Arm64Memory)
     // 4 bits for the amount
@@ -80,10 +40,12 @@ public readonly record struct Arm64MemoryExtend : IArm64Extend , ISpanFormattabl
     }
 
     public bool HasExplicitZeroAmount => ((_value >> LowBitHasExplicitZeroAmount) & 1) != 0;
-
-    public byte Amount => (byte)(_value & AmountMask);
-
+    
+    /// <inheritdoc />
     public Arm64ExtendKind Kind => (Arm64ExtendKind)((_value >> LowBitExtendKind) & ExtendKindMask);
+
+    /// <inheritdoc />
+    public byte Amount => (byte)(_value & AmountMask);
 
     public bool IsDefault => Amount == 0 && (Kind == Arm64ExtendKind.LSL || Kind == Arm64ExtendKind.UXTX);
 
