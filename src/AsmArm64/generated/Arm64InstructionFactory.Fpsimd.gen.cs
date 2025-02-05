@@ -501,10 +501,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDR St, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterS St, Arm64Label label)
+    public static uint LDR(Arm64RegisterS St, Arm64LabelOffset label)
     {
         uint raw = 0x1C000000U; // Encoding for: LDR_s_loadlit
         raw |= (uint)St.Index;
+        raw |= (uint)((label.Value >> 2) & 0x7FFFF) << 5;
         return raw;
     }
     /// <summary>
@@ -512,10 +513,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDR Dt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterD Dt, Arm64Label label)
+    public static uint LDR(Arm64RegisterD Dt, Arm64LabelOffset label)
     {
         uint raw = 0x5C000000U; // Encoding for: LDR_d_loadlit
         raw |= (uint)Dt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x7FFFF) << 5;
         return raw;
     }
     /// <summary>
@@ -523,10 +525,11 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDR Qt, label</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_loadlit), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterQ Qt, Arm64Label label)
+    public static uint LDR(Arm64RegisterQ Qt, Arm64LabelOffset label)
     {
         uint raw = 0x9C000000U; // Encoding for: LDR_q_loadlit
         raw |= (uint)Qt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x7FFFF) << 5;
         return raw;
     }
     /// <summary>

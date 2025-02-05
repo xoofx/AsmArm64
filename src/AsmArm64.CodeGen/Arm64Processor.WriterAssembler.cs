@@ -372,6 +372,7 @@ partial class Arm64Processor
                 GetRegisterGroupOperandVariation(instruction,(RegisterGroupOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.SystemRegister:
+                // TODO
                 operandVariations.Add(
                     new OperandVariation()
                     {
@@ -388,20 +389,13 @@ partial class Arm64Processor
                 GetImmediateVariation(instruction, (ImmediateOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Label:
-                operandVariations.Add(
-                    new OperandVariation()
-                    {
-                        Descriptor = descriptor,
-                        OperandName = GetNormalizedOperandName(descriptor.Name),
-                        OperandType = "Arm64Label",
-                    }
-                );
+                GetLabelVariation(instruction, (LabelOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Shift:
-                GetShiftOperandVariations((ShiftOperandDescriptor)descriptor, operandVariations);
+                GetShiftOperandVariations((ShiftOperandDescriptor)descriptor, operandVariations); // TODO
                 break;
             case Arm64OperandKind.Extend:
-                GetExtendOperandVariations((ExtendOperandDescriptor)descriptor, operandVariations);
+                GetExtendOperandVariations((ExtendOperandDescriptor)descriptor, operandVariations); // TODO
                 break;
             case Arm64OperandKind.Enum:
                 GetEnumVariations((EnumOperandDescriptor)descriptor, operandVariations);
@@ -411,6 +405,44 @@ partial class Arm64Processor
         }
     }
 
+    private void GetLabelVariation(Instruction instruction, LabelOperandDescriptor descriptor, List<OperandVariation> operandVariations)
+    {
+        var operandVariation = new OperandVariation()
+        {
+            Descriptor = descriptor,
+            OperandName = GetNormalizedOperandName(descriptor.Name),
+            OperandType = "Arm64LabelOffset",
+        };
+
+        var originalOperandPath = $"{operandVariation.OperandName}.Value";
+        var operandPath = originalOperandPath;
+
+        switch (descriptor.LabelKind)
+        {
+            case Arm64LabelEncodingKind.ByteOffset:
+                break;
+            case Arm64LabelEncodingKind.OffsetMul4:
+                operandPath = $"({originalOperandPath} >> 2)";
+                break;
+            case Arm64LabelEncodingKind.NegativeEncodedAsUnsigned:
+                operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
+                {
+                    w.WriteLine($"if ({originalOperandPath} > 0) throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), \"The label offset must be negative.\");");
+                });
+                operandPath = $"(-{originalOperandPath} >> 2)";
+                break;
+            case Arm64LabelEncodingKind.PageOffset:
+                operandPath = $"({originalOperandPath} >> 12)";
+                break;
+            default:
+                Debug.Assert(false, $"Invalid label kind {descriptor.LabelKind}");
+                break;
+        }
+
+        GenerateBitRangeEncodingFromValue(operandPath, "label", descriptor.BitSize, descriptor.Encoding, operandVariation.WriteEncodings);
+        operandVariations.Add(operandVariation);
+    }
+    
     private void GetMemoryOperandVariation(Instruction instruction, MemoryOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
         var operandTypePair = GetMemoryOperandType((MemoryOperandDescriptor)descriptor);
