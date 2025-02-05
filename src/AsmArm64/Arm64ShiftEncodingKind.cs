@@ -11,11 +11,6 @@ enum Arm64ShiftEncodingKind : byte
 {
     None,
     /// <summary>
-    /// The shift amount is fixed.
-    /// </summary>
-    Fixed,
-
-    /// <summary>
     /// The shift is encoded with LSL, LSR, ASR.
     /// </summary>
     Shift3,
@@ -26,9 +21,14 @@ enum Arm64ShiftEncodingKind : byte
     Shift4,
 
     /// <summary>
-    /// A zero shift.
+    /// A shift amount if fixed and is zero.
     /// </summary>
     Lsl0,
+
+    /// <summary>
+    /// The shift amount must be zero or 12.
+    /// </summary>
+    Lsl0Or12,
 
     /// <summary>
     /// Only amount is encoded

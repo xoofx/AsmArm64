@@ -925,6 +925,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x1) << 13;
         return raw;
     }
     /// <summary>
@@ -943,6 +944,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x1) << 13;
         return raw;
     }
     /// <summary>
@@ -961,6 +963,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x3) << 13;
         return raw;
     }
     /// <summary>
@@ -979,6 +982,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x3) << 13;
         return raw;
     }
     /// <summary>
@@ -15489,6 +15493,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        if (amount != 0) throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0");
         return raw;
     }
     /// <summary>
@@ -15507,6 +15512,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        if (amount != 0) throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0");
         return raw;
     }
     /// <summary>
@@ -15525,6 +15531,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x1) << 13;
         return raw;
     }
     /// <summary>
@@ -15543,6 +15550,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x1) << 13;
         return raw;
     }
     /// <summary>
@@ -15561,6 +15569,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x3) << 13;
         return raw;
     }
     /// <summary>
@@ -15579,6 +15588,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x3) << 13;
         return raw;
     }
     /// <summary>
@@ -15597,6 +15607,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)(((amount >> 3) - 1) & 0x1) << 12;
         return raw;
     }
     /// <summary>
@@ -15615,6 +15626,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)(((amount >> 3) - 1) & 0x1) << 12;
         return raw;
     }
     /// <summary>
@@ -15851,6 +15863,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x1) << 13;
         return raw;
     }
     /// <summary>
@@ -15869,6 +15882,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x1) << 13;
         return raw;
     }
     /// <summary>
@@ -15887,6 +15901,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x3) << 13;
         return raw;
     }
     /// <summary>
@@ -15905,6 +15920,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x3) << 13;
         return raw;
     }
     /// <summary>
@@ -15923,6 +15939,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)(((amount >> 3) - 1) & 0x1) << 12;
         return raw;
     }
     /// <summary>
@@ -15941,6 +15958,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)(((amount >> 3) - 1) & 0x1) << 12;
         return raw;
     }
     /// <summary>
@@ -16081,6 +16099,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x1) << 13;
         return raw;
     }
     /// <summary>
@@ -16099,6 +16118,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x1) << 13;
         return raw;
     }
     /// <summary>
@@ -16117,6 +16137,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x3) << 13;
         return raw;
     }
     /// <summary>
@@ -16135,6 +16156,7 @@ static partial class Arm64InstructionFactory
             _i_ >>= 5;
             raw |= (uint)(_i_ & 0x7) << 16;
         }
+        raw |= (uint)((amount >> 3) & 0x3) << 13;
         return raw;
     }
     /// <summary>

@@ -384,7 +384,7 @@ partial class Arm64Processor
                 GetLabelVariation(instruction, (LabelOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Shift:
-                GetShiftOperandVariations((ShiftOperandDescriptor)descriptor, operandVariations); // TODO
+                GetShiftOperandVariations(instruction, (ShiftOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Extend:
                 GetExtendOperandVariations((ExtendOperandDescriptor)descriptor, operandVariations); // TODO
@@ -406,11 +406,7 @@ partial class Arm64Processor
             OperandType = "Arm64SystemRegister"
         };
 
-        var ranges = new List<BitRange>()
-        {
-            descriptor.Encoding
-        };
-        GenerateBitRangeEncodingFromValue($"{operandVariation.OperandName}.Value", "system register", descriptor.Encoding.Width, ranges, operandVariation.WriteEncodings, 16); // Arm64SystemRegister.Value is 16 bits
+        GenerateBitRangeEncodingFromValue($"{operandVariation.OperandName}.Value", "system register", descriptor.Encoding, operandVariation.WriteEncodings, 16); // Arm64SystemRegister.Value is 16 bits
 
         operandVariations.Add(operandVariation);
     }
@@ -1051,20 +1047,47 @@ partial class Arm64Processor
         operandVariations.Add(operandVariation);
     }
 
-    private void GetShiftOperandVariations(ShiftOperandDescriptor descriptor, List<OperandVariation> operandVariations)
+    private void GetShiftOperandVariations(Instruction instruction, ShiftOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
-        var operandType = descriptor.ShiftKind switch
+        bool requiresShiftEncoding = false;
+        bool requiresAmountEncoding = false;
+
+        string? operandType;
+        switch (descriptor.ShiftKind)
         {
-            Arm64ShiftEncodingKind.Fixed => "LSLShiftKind",
-            Arm64ShiftEncodingKind.Shift3 => "Arm64ShiftKind3",
-            Arm64ShiftEncodingKind.Shift4 => "Arm64ShiftKind4",
-            Arm64ShiftEncodingKind.Lsl0 => "LSLShiftKind",
-            Arm64ShiftEncodingKind.Lsl => "LSLShiftKind",
-            Arm64ShiftEncodingKind.LslScale8 => "LSLShiftKind",
-            Arm64ShiftEncodingKind.Msl => "MSLShiftKind",
-            Arm64ShiftEncodingKind.LslScale16 => "LSLShiftKind",
-            _ => throw new ArgumentOutOfRangeException()
-        };
+            case Arm64ShiftEncodingKind.Shift3:
+                operandType = "Arm64ShiftKind3";
+                requiresShiftEncoding = true;
+                requiresAmountEncoding = true;
+                break;
+            case Arm64ShiftEncodingKind.Shift4:
+                operandType = "Arm64ShiftKind4";
+                requiresShiftEncoding = true;
+                requiresAmountEncoding = true;
+                break;
+            case Arm64ShiftEncodingKind.Lsl0Or12:
+                operandType = "LSLShiftKind";
+                requiresAmountEncoding = true;
+                break;
+            case Arm64ShiftEncodingKind.Lsl0:
+            case Arm64ShiftEncodingKind.Lsl:
+                operandType = "LSLShiftKind";
+                break;
+            case Arm64ShiftEncodingKind.LslScale8:
+                operandType = "LSLShiftKind";
+                requiresAmountEncoding = true;
+                break;
+            case Arm64ShiftEncodingKind.Msl:
+                operandType = "MSLShiftKind";
+                requiresAmountEncoding = true;
+                break;
+            case Arm64ShiftEncodingKind.LslScale16:
+                operandType = "LSLShiftKind";
+                requiresAmountEncoding = true;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
 
         var operandVariation = new OperandVariation
         {
@@ -1079,6 +1102,45 @@ partial class Arm64Processor
         {
             operandVariation.DefaultValue = "default";
             operandVariation.DefaultValue2 = "0";
+        }
+
+        var amountOperandPath = operandVariation.OperandName2;
+
+        if (requiresShiftEncoding)
+        {
+            Debug.Assert(descriptor.ShiftEncoding.Width != 0);
+            GenerateBitRangeEncodingFromValue($"(byte){operandVariation.OperandName}.ShiftKind", "shift", descriptor.ShiftEncoding, operandVariation.WriteEncodings);
+        }
+
+        if (requiresAmountEncoding)
+        {
+            Debug.Assert(descriptor.AmountEncoding.Width != 0);
+            switch (descriptor.ShiftKind)
+            {
+                case Arm64ShiftEncodingKind.Lsl0Or12:
+                    amountOperandPath = $"({amountOperandPath} == 0 ? 0 : {amountOperandPath} == 12 ? 1 : throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName2}), $\"Invalid amount value '{{{operandVariation.OperandName2}}}'. Expecting 0 or 12\"))";
+                    break;
+                case Arm64ShiftEncodingKind.LslScale8:
+                    amountOperandPath = $"({amountOperandPath} >> 3)";
+                    break;
+                case Arm64ShiftEncodingKind.Msl:
+                    amountOperandPath = $"(({amountOperandPath} >> 3) - 1)";
+                    break;
+                case Arm64ShiftEncodingKind.LslScale16:
+                    amountOperandPath = $"({amountOperandPath} >> 4)";
+                    break;
+            }
+            GenerateBitRangeEncodingFromValue(amountOperandPath, "amount", descriptor.AmountEncoding, operandVariation.WriteEncodings);
+        }
+        else
+        {
+            if (descriptor.ShiftKind == Arm64ShiftEncodingKind.Lsl0)
+            {
+                operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
+                {
+                    w.WriteLine($"if ({operand.OperandName2} != 0) throw new {nameof(ArgumentOutOfRangeException)}(nameof({operand.OperandName2}), $\"Invalid amount value '{{{operand.OperandName2}}}'. Expecting 0\");");
+                });
+            }
         }
 
         operandVariations.Add(operandVariation);
@@ -1437,6 +1499,11 @@ partial class Arm64Processor
         }
 
         GenerateBitRangeEncodingFromValue($"{memberPath}", memberComment, bitSize, bitRanges, operandVariation.WriteEncodings);
+    }
+
+    private static void GenerateBitRangeEncodingFromValue(string valuePath, string comment, BitRange bitRange, List<WriteEncodingDelegate> encodings, int operandBitSize = 0)
+    {
+        GenerateBitRangeEncodingFromValue(valuePath, comment, bitRange.Width, [bitRange], encodings, operandBitSize);
     }
 
     private static void GenerateBitRangeEncodingFromValue(string valuePath, string comment, int bitSize, List<BitRange> bitRanges, List<WriteEncodingDelegate> encodings, int operandBitSize = 0)

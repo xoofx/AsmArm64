@@ -126,6 +126,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd_WSP.Index;
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -139,6 +140,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -152,6 +154,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -165,6 +169,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -231,6 +237,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -244,6 +251,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -257,6 +265,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -270,6 +280,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -345,6 +357,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -358,6 +372,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -397,6 +413,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -410,6 +428,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -814,6 +834,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -827,6 +849,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -840,6 +864,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -853,6 +879,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -2182,6 +2210,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x3100001FU; // Encoding for: CMN_adds_32s_addsub_imm
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -2194,6 +2223,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xB100001FU; // Encoding for: CMN_adds_64s_addsub_imm
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -2206,6 +2236,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2B00001FU; // Encoding for: CMN_adds_32_addsub_shift
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -2218,6 +2250,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0xAB00001FU; // Encoding for: CMN_adds_64_addsub_shift
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -2254,6 +2288,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7100001FU; // Encoding for: CMP_subs_32s_addsub_imm
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -2266,6 +2301,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF100001FU; // Encoding for: CMP_subs_64s_addsub_imm
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -2278,6 +2314,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6B00001FU; // Encoding for: CMP_subs_32_addsub_shift
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -2290,6 +2328,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0xEB00001FU; // Encoding for: CMP_subs_64_addsub_shift
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3901,6 +3941,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3914,6 +3956,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3953,6 +3997,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -3966,6 +4012,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -8438,6 +8486,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x72800000U; // Encoding for: MOVK_32_movewide
         raw |= (uint)Wd.Index;
         raw |= (uint)imm << 5;
+        raw |= (uint)((amount >> 4) & 0x3) << 21;
         return raw;
     }
     /// <summary>
@@ -8450,6 +8499,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF2800000U; // Encoding for: MOVK_64_movewide
         raw |= (uint)Xd.Index;
         raw |= (uint)imm << 5;
+        raw |= (uint)((amount >> 4) & 0x3) << 21;
         return raw;
     }
     /// <summary>
@@ -8462,6 +8512,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x12800000U; // Encoding for: MOVN_32_movewide
         raw |= (uint)Wd.Index;
         raw |= (uint)imm << 5;
+        raw |= (uint)((amount >> 4) & 0x3) << 21;
         return raw;
     }
     /// <summary>
@@ -8474,6 +8525,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x92800000U; // Encoding for: MOVN_64_movewide
         raw |= (uint)Xd.Index;
         raw |= (uint)imm << 5;
+        raw |= (uint)((amount >> 4) & 0x3) << 21;
         return raw;
     }
     /// <summary>
@@ -8486,6 +8538,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x52800000U; // Encoding for: MOVZ_32_movewide
         raw |= (uint)Wd.Index;
         raw |= (uint)imm << 5;
+        raw |= (uint)((amount >> 4) & 0x3) << 21;
         return raw;
     }
     /// <summary>
@@ -8498,6 +8551,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD2800000U; // Encoding for: MOVZ_64_movewide
         raw |= (uint)Xd.Index;
         raw |= (uint)imm << 5;
+        raw |= (uint)((amount >> 4) & 0x3) << 21;
         return raw;
     }
     /// <summary>
@@ -8578,6 +8632,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2A2003E0U; // Encoding for: MVN_orn_32_log_shift
         raw |= (uint)Wd.Index;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -8590,6 +8646,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0xAA2003E0U; // Encoding for: MVN_orn_64_log_shift
         raw |= (uint)Xd.Index;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -8602,6 +8660,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4B0003E0U; // Encoding for: NEG_sub_32_addsub_shift
         raw |= (uint)Wd.Index;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -8614,6 +8674,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0xCB0003E0U; // Encoding for: NEG_sub_64_addsub_shift
         raw |= (uint)Xd.Index;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -8626,6 +8688,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6B0003E0U; // Encoding for: NEGS_subs_32_addsub_shift
         raw |= (uint)Wd.Index;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -8638,6 +8702,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0xEB0003E0U; // Encoding for: NEGS_subs_64_addsub_shift
         raw |= (uint)Xd.Index;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -8699,6 +8765,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -8712,6 +8780,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -8751,6 +8821,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -8764,6 +8836,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -13137,6 +13211,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd_WSP.Index;
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -13150,6 +13225,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -13163,6 +13239,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -13176,6 +13254,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -13268,6 +13348,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn_WSP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -13281,6 +13362,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)(imm & 0xFFF) << 10;
+        raw |= (uint)((amount == 0 ? 0 : amount == 12 ? 1 : throw new ArgumentOutOfRangeException(nameof(amount), $"Invalid amount value '{amount}'. Expecting 0 or 12")) & 0x1) << 22;
         return raw;
     }
     /// <summary>
@@ -13294,6 +13376,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -13307,6 +13391,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -13807,6 +13893,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6A00001FU; // Encoding for: TST_ands_32_log_shift
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)Wm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -13819,6 +13907,8 @@ static partial class Arm64InstructionFactory
         uint raw = 0xEA00001FU; // Encoding for: TST_ands_64_log_shift
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((byte)shift.ShiftKind & 0x3) << 22;
+        raw |= (uint)(amount & 0x3F) << 10;
         return raw;
     }
     /// <summary>

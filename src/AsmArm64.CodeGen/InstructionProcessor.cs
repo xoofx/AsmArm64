@@ -550,13 +550,13 @@ internal sealed class InstructionProcessor
                 var shiftOperandDescriptor = new ShiftOperandDescriptor()
                 {
                     Name = name0,
-                    ShiftKind = Arm64ShiftEncodingKind.Fixed,
+                    ShiftKind = Arm64ShiftEncodingKind.Lsl0Or12,
                     IsOptional = true,
                 };
 
                 Debug.Assert(symbol0.BitSize == 1);
                 Debug.Assert(symbol0.BitRanges.Count == 1);
-                shiftOperandDescriptor.ShiftEncoding = symbol0.BitRanges[0];
+                shiftOperandDescriptor.AmountEncoding = symbol0.BitRanges[0];
 
                 return shiftOperandDescriptor;
             }
