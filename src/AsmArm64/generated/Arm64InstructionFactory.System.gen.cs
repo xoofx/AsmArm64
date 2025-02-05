@@ -583,6 +583,16 @@ static partial class Arm64InstructionFactory
             }
             break;
         };
+        switch (pstatefield)
+        {
+            case Arm64ProcessStateField.ALLINT:
+            case Arm64ProcessStateField.PM:
+            case Arm64ProcessStateField.SVCRSM:
+            case Arm64ProcessStateField.SVCRSMZA:
+            case Arm64ProcessStateField.SVCRZA:
+                imm = imm & 1;
+                break;
+        }
         raw |= (uint)(imm & 0xF) << 8;
         return raw;
     }

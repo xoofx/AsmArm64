@@ -710,13 +710,17 @@ partial class Arm64Processor
                 operandValue = $"(({operandPath} - 1) & 0x3F)";
                 break;
             case Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1:
-                // TODO
+                // encoded in imms:immr (reversed from the order in the instruction)
+                //return ((value >> 6) & 0b111_1111) - (value & 0b111_111) + 1;
+                operandValue = $"(lsb + width - 1)";
                 break;
             case Arm64ImmediateValueEncodingKind.ValueImmsPlus1:
-                // TODO
+                // encoded in imms:immr (reversed from the order in the instruction)
+                //return ((value >> 6) & 0b111_1111) + 1;
+                operandValue = $"(width - 1)";
                 break;
             case Arm64ImmediateValueEncodingKind.ValueMsrImmediate:
-                // TODO
+                // This is handled at encoding time
                 break;
             case Arm64ImmediateValueEncodingKind.InvertValueShiftWide32:
             case Arm64ImmediateValueEncodingKind.ValueShiftWide64:
@@ -966,11 +970,53 @@ partial class Arm64Processor
         }
 
         var operandPath = GenerateImmediateValueEncoding(descriptor.ValueEncodingKind, operandVariation.OperandName);
-        
+
+        var bitSize = descriptor.BitSize;
+        var bitRanges = new List<BitRange>();
+        bitRanges.AddRange(descriptor.Encoding);
+        if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1 || descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.ValueImmsPlus1)
+        {
+            Debug.Assert(descriptor.ImmediateKind == Arm64ImmediateEncodingKind.Regular);
+            Debug.Assert(bitRanges.Count == 2);
+            bitRanges.RemoveAt(1);
+            bitSize = bitRanges[0].Width;
+            operandVariation.OperandType = "byte";
+            operandTypeBitSize = 8;
+        }
+        else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.ValueMsrImmediate)
+        {
+            operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
+            {
+                // switch (processStateField)
+                // {
+                //     case Arm64ProcessStateField.ALLINT:
+                //     case Arm64ProcessStateField.PM:
+                //     case Arm64ProcessStateField.SVCRSM:
+                //     case Arm64ProcessStateField.SVCRSMZA:
+                //     case Arm64ProcessStateField.SVCRZA:
+                //         return value & 1;
+                // }
+
+                w.WriteLine($"switch (pstatefield)");
+                w.OpenBraceBlock();
+
+                w.WriteLine("case Arm64ProcessStateField.ALLINT:");
+                w.WriteLine("case Arm64ProcessStateField.PM:");
+                w.WriteLine("case Arm64ProcessStateField.SVCRSM:");
+                w.WriteLine("case Arm64ProcessStateField.SVCRSMZA:");
+                w.WriteLine("case Arm64ProcessStateField.SVCRZA:");
+                w.Indent();
+                w.WriteLine($"{operandVariation.OperandName} = {operandVariation.OperandName} & 1;");
+                w.WriteLine("break;");
+                w.UnIndent();
+                w.CloseBraceBlock();
+            });
+        }
+
         switch (descriptor.ImmediateKind)
         {
             case Arm64ImmediateEncodingKind.Regular:
-                GenerateBitRangeEncodingFromValue(operandPath, "immediate", descriptor.BitSize, descriptor.Encoding, operandVariation.WriteEncodings, operandTypeBitSize);
+                GenerateBitRangeEncodingFromValue(operandPath, "immediate", bitSize, bitRanges, operandVariation.WriteEncodings, operandTypeBitSize);
                 break;
             case Arm64ImmediateEncodingKind.BitMapExtract:
                 var selector = descriptor.Extract!.Selector;

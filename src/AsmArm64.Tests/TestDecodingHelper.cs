@@ -111,14 +111,16 @@ public class TestDecodingHelper
     public void TestShiftedImmediate32()
     {
         Arm64InvertedShiftedImmediate32 value = new(0x1234, 0);
-        Assert.AreEqual(0x1234, value.Value());
+        Assert.AreEqual(~0x1234, value.Value());
         Assert.AreEqual(0x1234, value.Immediate);
         Assert.AreEqual(0, value.ShiftLeft);
+        Assert.AreEqual($"{~0x1234}", value.ToString());
 
         value = new(0x1234, 16);
-        Assert.AreEqual(0x1234_0000, value.Value());
+        Assert.AreEqual(~0x1234_0000, value.Value());
         Assert.AreEqual(0x1234, value.Immediate);
         Assert.AreEqual(16, value.ShiftLeft);
+        Assert.AreEqual($"{~0x1234_0000}", value.ToString());
 
         Assert.ThrowsException<ArgumentOutOfRangeException>(() => value = new(0xFFFF, 0));
         Assert.ThrowsException<ArgumentOutOfRangeException>(() => value = new(0x1234, 1));
@@ -131,21 +133,25 @@ public class TestDecodingHelper
         Assert.AreEqual(0x1234, value.Value());
         Assert.AreEqual(0x1234, value.Immediate);
         Assert.AreEqual(0, value.ShiftLeft);
+        Assert.AreEqual($"{0x1234}", value.ToString());
 
         value = new(0x1234, 16);
         Assert.AreEqual(0x1234_0000, value.Value());
         Assert.AreEqual(0x1234, value.Immediate);
         Assert.AreEqual(16, value.ShiftLeft);
+        Assert.AreEqual($"{0x1234_0000}", value.ToString());
 
         value = new(0x1234, 32);
         Assert.AreEqual(0x1234_0000_0000L, value.Value());
         Assert.AreEqual(0x1234, value.Immediate);
         Assert.AreEqual(32, value.ShiftLeft);
+        Assert.AreEqual($"{0x1234_0000_0000L}", value.ToString());
 
         value = new(0x1234, 48);
         Assert.AreEqual(0x1234_0000_0000_0000L, value.Value());
         Assert.AreEqual(0x1234, value.Immediate);
         Assert.AreEqual(48, value.ShiftLeft);
+        Assert.AreEqual($"{0x1234_0000_0000_0000L}", value.ToString());
 
         Assert.ThrowsException<ArgumentOutOfRangeException>(() => value = new(0x1234, 1));
     }

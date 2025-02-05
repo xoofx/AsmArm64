@@ -714,18 +714,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFC Wd, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFC_bfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFC(Arm64RegisterW Wd, uint lsb, uint width)
+    public static uint BFC(Arm64RegisterW Wd, uint lsb, byte width)
     {
         uint raw = 0x330003E0U; // Encoding for: BFC_bfm_32m_bitfield
         raw |= (uint)Wd.Index;
         raw |= (uint)(((32 - lsb) & 0x1F) & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -733,18 +727,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFC Xd, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFC_bfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFC(Arm64RegisterX Xd, uint lsb, uint width)
+    public static uint BFC(Arm64RegisterX Xd, uint lsb, byte width)
     {
         uint raw = 0xB34003E0U; // Encoding for: BFC_bfm_64m_bitfield
         raw |= (uint)Xd.Index;
         raw |= (uint)(((64 - lsb) & 0x3F) & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -752,19 +740,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFI Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFI_bfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFI(Arm64RegisterW Wd, Arm64RegisterW Wn, uint lsb, uint width)
+    public static uint BFI(Arm64RegisterW Wd, Arm64RegisterW Wn, uint lsb, byte width)
     {
         uint raw = 0x33000000U; // Encoding for: BFI_bfm_32m_bitfield
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)(((32 - lsb) & 0x1F) & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -772,19 +754,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFI Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFI_bfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFI(Arm64RegisterX Xd, Arm64RegisterX Xn, uint lsb, uint width)
+    public static uint BFI(Arm64RegisterX Xd, Arm64RegisterX Xn, uint lsb, byte width)
     {
         uint raw = 0xB3400000U; // Encoding for: BFI_bfm_64m_bitfield
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)(((64 - lsb) & 0x3F) & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -820,19 +796,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFXIL Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFXIL_bfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFXIL(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, uint width)
+    public static uint BFXIL(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, byte width)
     {
         uint raw = 0x33000000U; // Encoding for: BFXIL_bfm_32m_bitfield
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)(lsb & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((lsb + width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -840,19 +810,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BFXIL Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BFXIL_bfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFXIL(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, uint width)
+    public static uint BFXIL(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, byte width)
     {
         uint raw = 0xB3400000U; // Encoding for: BFXIL_bfm_64m_bitfield
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)(lsb & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((lsb + width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -10325,19 +10289,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SBFIZ Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFIZ_sbfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SBFIZ(Arm64RegisterW Wd, Arm64RegisterW Wn, uint lsb, uint width)
+    public static uint SBFIZ(Arm64RegisterW Wd, Arm64RegisterW Wn, uint lsb, byte width)
     {
         uint raw = 0x13000000U; // Encoding for: SBFIZ_sbfm_32m_bitfield
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)(((32 - lsb) & 0x1F) & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -10345,19 +10303,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SBFIZ Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFIZ_sbfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SBFIZ(Arm64RegisterX Xd, Arm64RegisterX Xn, uint lsb, uint width)
+    public static uint SBFIZ(Arm64RegisterX Xd, Arm64RegisterX Xn, uint lsb, byte width)
     {
         uint raw = 0x93400000U; // Encoding for: SBFIZ_sbfm_64m_bitfield
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)(((64 - lsb) & 0x3F) & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -10393,19 +10345,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SBFX Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFX_sbfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SBFX(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, uint width)
+    public static uint SBFX(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, byte width)
     {
         uint raw = 0x13000000U; // Encoding for: SBFX_sbfm_32m_bitfield
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)(lsb & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((lsb + width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -10413,19 +10359,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SBFX Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SBFX_sbfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SBFX(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, uint width)
+    public static uint SBFX(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, byte width)
     {
         uint raw = 0x93400000U; // Encoding for: SBFX_sbfm_64m_bitfield
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)(lsb & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((lsb + width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -14012,19 +13952,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UBFIZ Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFIZ_ubfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UBFIZ(Arm64RegisterW Wd, Arm64RegisterW Wn, uint lsb, uint width)
+    public static uint UBFIZ(Arm64RegisterW Wd, Arm64RegisterW Wn, uint lsb, byte width)
     {
         uint raw = 0x53000000U; // Encoding for: UBFIZ_ubfm_32m_bitfield
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)(((32 - lsb) & 0x1F) & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -14032,19 +13966,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UBFIZ Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFIZ_ubfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UBFIZ(Arm64RegisterX Xd, Arm64RegisterX Xn, uint lsb, uint width)
+    public static uint UBFIZ(Arm64RegisterX Xd, Arm64RegisterX Xn, uint lsb, byte width)
     {
         uint raw = 0xD3400000U; // Encoding for: UBFIZ_ubfm_64m_bitfield
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)(((64 - lsb) & 0x3F) & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -14080,19 +14008,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UBFX Wd, Wn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFX_ubfm_32m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UBFX(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, uint width)
+    public static uint UBFX(Arm64RegisterW Wd, Arm64RegisterW Wn, byte lsb, byte width)
     {
         uint raw = 0x53000000U; // Encoding for: UBFX_ubfm_32m_bitfield
         raw |= (uint)Wd.Index;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)(lsb & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((lsb + width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
@@ -14100,19 +14022,13 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UBFX Xd, Xn, #lsb, #width</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UBFX_ubfm_64m_bitfield), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UBFX(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, uint width)
+    public static uint UBFX(Arm64RegisterX Xd, Arm64RegisterX Xn, byte lsb, byte width)
     {
         uint raw = 0xD3400000U; // Encoding for: UBFX_ubfm_64m_bitfield
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)(lsb & 0x3F) << 16;
-        {
-            // Write the immediate for width
-            var _i_ = width & 0xFFF;
-            raw |= (uint)(_i_ & 0x3F) << 16;
-            _i_ >>= 6;
-            raw |= (uint)(_i_ & 0x3F) << 10;
-        }
+        raw |= (uint)((lsb + width - 1) & 0x3F) << 10;
         return raw;
     }
     /// <summary>
