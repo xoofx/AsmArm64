@@ -11,6 +11,42 @@ partial class Arm64Processor
 {
     private void GenerateAssembler()
     {
+        var mapClassToMnemonicToInstructionVariations = GenerateInstructionVariations();
+
+        foreach (var (instClass, mapMnemonicToInstructions) in mapClassToMnemonicToInstructionVariations)
+        {
+            WriteInstructions(instClass, mapMnemonicToInstructions);
+        }
+    }
+
+    private void WriteInstructions(string instClass, Dictionary<string, List<InstructionVariation>> mapMnemonicToInstructions)
+    {
+        using var w = GetWriter($"Arm64InstructionFactory.{instClass}.gen.cs");
+
+        w.WriteLine("using System.Runtime.CompilerServices;");
+
+        w.WriteLine("namespace AsmArm64;");
+
+        w.WriteLine("static partial class Arm64InstructionFactory");
+        w.OpenBraceBlock();
+
+        foreach (var pair in mapMnemonicToInstructions.OrderBy(x => x.Key))
+        {
+            foreach (var variation in pair.Value)
+            {
+                WriteInstructionVariation(w, variation);
+            }
+        }
+
+        w.CloseBraceBlock();
+    }
+
+
+    // Returns a map of instruction class to a map of mnemonic to a list of instruction variations
+    private Dictionary<string, Dictionary<string, List<InstructionVariation>>> GenerateInstructionVariations()
+    {
+        var mapClassToMnemonicToInstructionVariations = new Dictionary<string, Dictionary<string, List<InstructionVariation>>>();
+
         var mapClassToInstructions = new Dictionary<string, List<Instruction>>();
 
         foreach (var instruction in _instructions)
@@ -27,49 +63,34 @@ partial class Arm64Processor
 
         foreach (var (instClass, instructions) in mapClassToInstructions)
         {
-            WriteInstructions(instClass, instructions);
-        }
-    }
+            var mnemonicToInstructionVariations = new Dictionary<string, List<InstructionVariation>>();
+            mapClassToMnemonicToInstructionVariations.Add(instClass, mnemonicToInstructionVariations);
 
-    private void WriteInstructions(string instClass, List<Instruction> instructions)
-    {
-        using var w = GetWriter($"Arm64InstructionFactory.{instClass}.gen.cs");
-
-        w.WriteLine("using System.Runtime.CompilerServices;");
-
-        w.WriteLine("namespace AsmArm64;");
-
-        w.WriteLine("static partial class Arm64InstructionFactory");
-        w.OpenBraceBlock();
-
-        // We group by mnemonic, as certain instructions require merging (Instructions with memory operand and different LSL + EXTEND instructions)
-        var mapMnemonicToInstructions = new Dictionary<string, List<Instruction>>();
-        foreach (var instruction in instructions)
-        {
-            if (instruction.Id.StartsWith("SMS")) continue; // TODO: skip SMSTART/SMSTOP
-
-            var mnemonic = GetInstructionMnemonic(instruction);
-            if (!mapMnemonicToInstructions.TryGetValue(mnemonic, out var list))
+            // We group by mnemonic, as certain instructions require merging (Instructions with memory operand and different LSL + EXTEND instructions)
+            var mapMnemonicToInstructions = new Dictionary<string, List<Instruction>>();
+            foreach (var instruction in instructions)
             {
-                list = new List<Instruction>();
-                mapMnemonicToInstructions.Add(mnemonic, list);
+                if (instruction.Id.StartsWith("SMS")) continue; // TODO: skip SMSTART/SMSTOP
+
+                var mnemonic = GetInstructionMnemonic(instruction);
+                if (!mapMnemonicToInstructions.TryGetValue(mnemonic, out var list))
+                {
+                    list = new List<Instruction>();
+                    mapMnemonicToInstructions.Add(mnemonic, list);
+                }
+
+                list.Add(instruction);
             }
-            list.Add(instruction);
-        }
 
-        List<InstructionVariation> variations = new();
-        foreach (var pair in mapMnemonicToInstructions.OrderBy(x => x.Key))
-        {
-            variations.Clear();
-            GetInstructionVariations(pair.Key, pair.Value, variations);
-
-            foreach (var variation in variations)
+            foreach (var pair in mapMnemonicToInstructions.OrderBy(x => x.Key))
             {
-                WriteInstructionVariation(w, variation);
+                List<InstructionVariation> variations = new();
+                GetInstructionVariations(pair.Key, pair.Value, variations);
+                mnemonicToInstructionVariations.Add(pair.Key, variations);
             }
         }
 
-        w.CloseBraceBlock();
+        return mapClassToMnemonicToInstructionVariations;
     }
 
     private void WriteInstructionVariation(CodeWriter w, InstructionVariation instructionVariation)
