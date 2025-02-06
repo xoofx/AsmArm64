@@ -10129,12 +10129,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
     {
         uint raw = 0x0CDF7000U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10155,12 +10155,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
     {
         uint raw = 0x0CDF7400U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10181,12 +10181,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
     {
         uint raw = 0x0CDF7800U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10207,12 +10207,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
+    public static uint LD1(Arm64RegisterGroup1<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
     {
         uint raw = 0x0CDF7C00U; // Encoding for: LD1_asisdlsep_i1_i1
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10337,12 +10337,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x0CDFA000U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10363,12 +10363,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x0CDFA400U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10389,12 +10389,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x0CDFA800U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10415,12 +10415,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
+    public static uint LD1(Arm64RegisterGroup2<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x0CDFAC00U; // Encoding for: LD1_asisdlsep_i2_i2
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10545,12 +10545,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 48)
     {
         uint raw = 0x0CDF6000U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10571,12 +10571,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 48)
     {
         uint raw = 0x0CDF6400U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10597,12 +10597,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 48)
     {
         uint raw = 0x0CDF6800U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10623,12 +10623,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
+    public static uint LD1(Arm64RegisterGroup3<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 48)
     {
         uint raw = 0x0CDF6C00U; // Encoding for: LD1_asisdlsep_i3_i3
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10753,12 +10753,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 64)
     {
         uint raw = 0x0CDF2000U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10779,12 +10779,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 64)
     {
         uint raw = 0x0CDF2400U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10805,12 +10805,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 64)
     {
         uint raw = 0x0CDF2800U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -10831,12 +10831,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
+    public static uint LD1(Arm64RegisterGroup4<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 64)
     {
         uint raw = 0x0CDF2C00U; // Encoding for: LD1_asisdlsep_i4_i4
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -11275,12 +11275,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 1)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
     {
         uint raw = 0x0DDFC000U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 1) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 1 instead of {imm}");
+        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -11288,12 +11288,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 1)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
     {
         uint raw = 0x4DDFC000U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 1) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 1 instead of {imm}");
+        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -11301,12 +11301,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 2)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
     {
         uint raw = 0x0DDFC400U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 2) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 2 instead of {imm}");
+        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -11314,12 +11314,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 2)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
     {
         uint raw = 0x4DDFC400U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 2) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 2 instead of {imm}");
+        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -11327,12 +11327,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 4)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
     {
         uint raw = 0x0DDFC800U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 4) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 4 instead of {imm}");
+        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -11340,12 +11340,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD1R {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD1R_asisdlsop_r1_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 4)
+    public static uint LD1R(Arm64RegisterGroup1<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
     {
         uint raw = 0x4DDFC800U; // Encoding for: LD1R_asisdlsop_r1_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 4) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 4 instead of {imm}");
+        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -11567,12 +11567,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x0CDF8000U; // Encoding for: LD2_asisdlsep_i2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -11593,12 +11593,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x0CDF8400U; // Encoding for: LD2_asisdlsep_i2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -11619,12 +11619,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
+    public static uint LD2(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x0CDF8800U; // Encoding for: LD2_asisdlsep_i2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12063,12 +12063,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 2)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
     {
         uint raw = 0x0DFFC000U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 2) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 2 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12076,12 +12076,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 2)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
     {
         uint raw = 0x4DFFC000U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 2) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 2 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12089,12 +12089,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 4)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
     {
         uint raw = 0x0DFFC400U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 4) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 4 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12102,12 +12102,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 4)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
     {
         uint raw = 0x4DFFC400U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 4) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 4 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12115,12 +12115,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
     {
         uint raw = 0x0DFFC800U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12128,12 +12128,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD2R {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD2R_asisdlsop_r2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
+    public static uint LD2R(Arm64RegisterGroup2<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
     {
         uint raw = 0x4DFFC800U; // Encoding for: LD2R_asisdlsop_r2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12355,12 +12355,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 48)
     {
         uint raw = 0x0CDF4000U; // Encoding for: LD3_asisdlsep_i3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12381,12 +12381,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 48)
     {
         uint raw = 0x0CDF4400U; // Encoding for: LD3_asisdlsep_i3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12407,12 +12407,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
+    public static uint LD3(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 48)
     {
         uint raw = 0x0CDF4800U; // Encoding for: LD3_asisdlsep_i3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12851,12 +12851,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 3)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
     {
         uint raw = 0x0DDFE000U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 3) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 3 instead of {imm}");
+        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12864,12 +12864,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 3)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
     {
         uint raw = 0x4DDFE000U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 3) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 3 instead of {imm}");
+        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12877,12 +12877,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 6)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
     {
         uint raw = 0x0DDFE400U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 6) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 6 instead of {imm}");
+        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12890,12 +12890,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 6)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
     {
         uint raw = 0x4DDFE400U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 6) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 6 instead of {imm}");
+        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12903,12 +12903,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 12)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
     {
         uint raw = 0x0DDFE800U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 12) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 12 instead of {imm}");
+        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -12916,12 +12916,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD3R {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD3R_asisdlsop_r3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 12)
+    public static uint LD3R(Arm64RegisterGroup3<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 24)
     {
         uint raw = 0x4DDFE800U; // Encoding for: LD3R_asisdlsop_r3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 12) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 12 instead of {imm}");
+        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -13143,12 +13143,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 64)
     {
         uint raw = 0x0CDF0000U; // Encoding for: LD4_asisdlsep_i4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -13169,12 +13169,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 64)
     {
         uint raw = 0x0CDF0400U; // Encoding for: LD4_asisdlsep_i4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -13195,12 +13195,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
+    public static uint LD4(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 64)
     {
         uint raw = 0x0CDF0800U; // Encoding for: LD4_asisdlsep_i4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -13639,12 +13639,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 4)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x0DFFE000U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 4) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 4 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -13652,12 +13652,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 4)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_16B> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x4DFFE000U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 4) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 4 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -13665,12 +13665,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x0DFFE400U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -13678,12 +13678,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 8)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_8H> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x4DFFE400U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -13691,12 +13691,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x0DFFE800U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -13704,12 +13704,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LD4R {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LD4R_asisdlsop_r4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 16)
+    public static uint LD4R(Arm64RegisterGroup4<Arm64RegisterV_4S> Vt_T, Arm64BaseMemoryAccessor src, byte imm = 32)
     {
         uint raw = 0x4DFFE800U; // Encoding for: LD4R_asisdlsop_r4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -18579,12 +18579,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift = 8)
+    public static uint SHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift = 32)
     {
         uint raw = 0x2E213800U; // Encoding for: SHLL_asimdmisc_s
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 8) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 8 instead of {shift}");
+        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
         return raw;
     }
     /// <summary>
@@ -18592,12 +18592,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift = 8)
+    public static uint SHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift = 32)
     {
         uint raw = 0x6E213800U; // Encoding for: SHLL_asimdmisc_s
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 8) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 8 instead of {shift}");
+        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
         return raw;
     }
     /// <summary>
@@ -18605,12 +18605,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift = 16)
+    public static uint SHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift = 32)
     {
         uint raw = 0x2E613800U; // Encoding for: SHLL_asimdmisc_s
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 16) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 16 instead of {shift}");
+        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
         return raw;
     }
     /// <summary>
@@ -18618,12 +18618,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift = 16)
+    public static uint SHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift = 32)
     {
         uint raw = 0x6E613800U; // Encoding for: SHLL_asimdmisc_s
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 16) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 16 instead of {shift}");
+        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
         return raw;
     }
     /// <summary>
@@ -18657,12 +18657,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift = 8)
+    public static uint SHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift = 32)
     {
         uint raw = 0x6E213800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 8) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 8 instead of {shift}");
+        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
         return raw;
     }
     /// <summary>
@@ -18670,12 +18670,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift = 8)
+    public static uint SHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift = 32)
     {
         uint raw = 0x6E213800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 8) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 8 instead of {shift}");
+        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
         return raw;
     }
     /// <summary>
@@ -18683,12 +18683,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift = 16)
+    public static uint SHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift = 32)
     {
         uint raw = 0x6E613800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 16) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 16 instead of {shift}");
+        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
         return raw;
     }
     /// <summary>
@@ -18696,12 +18696,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift = 16)
+    public static uint SHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift = 32)
     {
         uint raw = 0x6E613800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 16) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 16 instead of {shift}");
+        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
         return raw;
     }
     /// <summary>
@@ -26354,12 +26354,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 8)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 16)
     {
         uint raw = 0x0C9F7000U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26380,12 +26380,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 8)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 16)
     {
         uint raw = 0x0C9F7400U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26406,12 +26406,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 8)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 16)
     {
         uint raw = 0x0C9F7800U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26432,12 +26432,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i1_i1), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 8)
+    public static uint ST1(Arm64RegisterGroup1<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 16)
     {
         uint raw = 0x0C9F7C00U; // Encoding for: ST1_asisdlsep_i1_i1
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 8) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 8 instead of {imm}");
+        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26562,12 +26562,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 16)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
     {
         uint raw = 0x0C9FA000U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26588,12 +26588,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 16)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
     {
         uint raw = 0x0C9FA400U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26614,12 +26614,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 16)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
     {
         uint raw = 0x0C9FA800U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26640,12 +26640,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i2_i2), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 16)
+    public static uint ST1(Arm64RegisterGroup2<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
     {
         uint raw = 0x0C9FAC00U; // Encoding for: ST1_asisdlsep_i2_i2
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26770,12 +26770,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 24)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 48)
     {
         uint raw = 0x0C9F6000U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26796,12 +26796,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 24)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 48)
     {
         uint raw = 0x0C9F6400U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26822,12 +26822,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 24)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 48)
     {
         uint raw = 0x0C9F6800U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26848,12 +26848,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i3_i3), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 24)
+    public static uint ST1(Arm64RegisterGroup3<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 48)
     {
         uint raw = 0x0C9F6C00U; // Encoding for: ST1_asisdlsep_i3_i3
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -26978,12 +26978,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 64)
     {
         uint raw = 0x0C9F2000U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -27004,12 +27004,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 64)
     {
         uint raw = 0x0C9F2400U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -27030,12 +27030,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 64)
     {
         uint raw = 0x0C9F2800U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -27056,12 +27056,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST1 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST1_asisdlsep_i4_i4), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
+    public static uint ST1(Arm64RegisterGroup4<Arm64RegisterV_1D> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 64)
     {
         uint raw = 0x0C9F2C00U; // Encoding for: ST1_asisdlsep_i4_i4
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -27488,12 +27488,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 16)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
     {
         uint raw = 0x0C9F8000U; // Encoding for: ST2_asisdlsep_i2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -27514,12 +27514,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 16)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
     {
         uint raw = 0x0C9F8400U; // Encoding for: ST2_asisdlsep_i2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -27540,12 +27540,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST2 {Vt.T, Vt2.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST2_asisdlsep_i2_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 16)
+    public static uint ST2(Arm64RegisterGroup2<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
     {
         uint raw = 0x0C9F8800U; // Encoding for: ST2_asisdlsep_i2_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 16) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 16 instead of {imm}");
+        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -27972,12 +27972,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 24)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 48)
     {
         uint raw = 0x0C9F4000U; // Encoding for: ST3_asisdlsep_i3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -27998,12 +27998,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 24)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 48)
     {
         uint raw = 0x0C9F4400U; // Encoding for: ST3_asisdlsep_i3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -28024,12 +28024,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST3 {Vt.T, Vt2.T, Vt3.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST3_asisdlsep_i3_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 24)
+    public static uint ST3(Arm64RegisterGroup3<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 48)
     {
         uint raw = 0x0C9F4800U; // Encoding for: ST3_asisdlsep_i3_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 24) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 24 instead of {imm}");
+        if (imm != 48) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 48 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -28456,12 +28456,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_8B> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 64)
     {
         uint raw = 0x0C9F0000U; // Encoding for: ST4_asisdlsep_i4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -28482,12 +28482,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_4H> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 64)
     {
         uint raw = 0x0C9F0400U; // Encoding for: ST4_asisdlsep_i4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>
@@ -28508,12 +28508,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ST4 {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], imm</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ST4_asisdlsep_i4_i), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 32)
+    public static uint ST4(Arm64RegisterGroup4<Arm64RegisterV_2S> Vt_T, Arm64BaseMemoryAccessor dst, byte imm = 64)
     {
         uint raw = 0x0C9F0800U; // Encoding for: ST4_asisdlsep_i4_i
         raw |= (uint)Vt_T.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
-        if (imm != 32) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 32 instead of {imm}");
+        if (imm != 64) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid immediate value. Expecting the fixed value 64 instead of {imm}");
         return raw;
     }
     /// <summary>

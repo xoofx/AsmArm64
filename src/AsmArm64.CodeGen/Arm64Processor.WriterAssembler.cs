@@ -16,31 +16,9 @@ partial class Arm64Processor
         foreach (var (instClass, mapMnemonicToInstructions) in mapClassToMnemonicToInstructionVariations)
         {
             WriteInstructions(instClass, mapMnemonicToInstructions);
+            WriteInstructionTests(instClass, mapMnemonicToInstructions);
         }
     }
-
-    private void WriteInstructions(string instClass, Dictionary<string, List<InstructionVariation>> mapMnemonicToInstructions)
-    {
-        using var w = GetWriter($"Arm64InstructionFactory.{instClass}.gen.cs");
-
-        w.WriteLine("using System.Runtime.CompilerServices;");
-
-        w.WriteLine("namespace AsmArm64;");
-
-        w.WriteLine("static partial class Arm64InstructionFactory");
-        w.OpenBraceBlock();
-
-        foreach (var pair in mapMnemonicToInstructions.OrderBy(x => x.Key))
-        {
-            foreach (var variation in pair.Value)
-            {
-                WriteInstructionVariation(w, variation);
-            }
-        }
-
-        w.CloseBraceBlock();
-    }
-
 
     // Returns a map of instruction class to a map of mnemonic to a list of instruction variations
     private Dictionary<string, Dictionary<string, List<InstructionVariation>>> GenerateInstructionVariations()
@@ -87,25 +65,50 @@ partial class Arm64Processor
                 List<InstructionVariation> variations = new();
                 GetInstructionVariations(pair.Key, pair.Value, variations);
                 mnemonicToInstructionVariations.Add(pair.Key, variations);
+
+                foreach (var instructionVariation in variations)
+                {
+                    // Prepare the instructions before writing them (in case we find a variation that matches operands and improve the encoding)
+                    for (var i = 0; i < instructionVariation.Operands.Count; i++)
+                    {
+                        var operand = instructionVariation.Operands[i];
+                        foreach (var prepare in operand.PrepareWriteEncodings)
+                        {
+                            prepare(instructionVariation, operand, i);
+                        }
+                    }
+                }
             }
         }
 
         return mapClassToMnemonicToInstructionVariations;
     }
 
+    private void WriteInstructions(string instClass, Dictionary<string, List<InstructionVariation>> mapMnemonicToInstructions)
+    {
+        using var w = GetWriter($"Arm64InstructionFactory.{instClass}.gen.cs");
+
+        w.WriteLine("using System.Runtime.CompilerServices;");
+
+        w.WriteLine("namespace AsmArm64;");
+
+        w.WriteLine("static partial class Arm64InstructionFactory");
+        w.OpenBraceBlock();
+
+        foreach (var pair in mapMnemonicToInstructions.OrderBy(x => x.Key))
+        {
+            foreach (var variation in pair.Value)
+            {
+                WriteInstructionVariation(w, variation);
+            }
+        }
+
+        w.CloseBraceBlock();
+    }
+
     private void WriteInstructionVariation(CodeWriter w, InstructionVariation instructionVariation)
     {
         var instruction = instructionVariation.Instruction;
-
-        // Prepare the instructions before writing them (in case we find a variation that matches operands and improve the encoding)
-        for (var i = 0; i < instructionVariation.Operands.Count; i++)
-        {
-            var operand = instructionVariation.Operands[i];
-            foreach (var prepare in operand.PrepareWriteEncodings)
-            {
-                prepare(instructionVariation, operand, i);
-            }
-        }
 
         w.WriteSummary($"{EscapeHtmlEntities(instruction.Summary)}.");
         w.WriteDoc($"<remarks><code>{EscapeHtmlEntities(MatchSpace.Replace(instruction.FullSyntax, " "))}</code></remarks>");
@@ -151,8 +154,7 @@ partial class Arm64Processor
         }
         w.CloseBraceBlock();
     }
-
-
+    
     private void CombineInstructionVariations(string mnemonic, string id1, string id2, List<Instruction> instructions, List<InstructionVariation> variations)
     {
         var i1 = instructions.Find(x => x.Id == id1);
