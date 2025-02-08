@@ -883,6 +883,16 @@ public readonly record struct Arm64RegisterV : IArm64RegisterV
     /// </summary>
     public Arm64RegisterV_2D T_2D => new(Index);
 
+    /// <summary>
+    /// Gets the V.Q register.
+    /// </summary>
+    public Arm64RegisterV_Q Q => new(Index);
+
+    /// <summary>
+    /// Gets the 1 x Q V register.
+    /// </summary>
+    public Arm64RegisterV_1Q T_1Q => new(Index);
+
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);
 
@@ -4176,6 +4186,7 @@ partial class Arm64Factory
     /// Gets the WZR register.
     /// </summary>
     public static Arm64RegisterW WZR => Arm64RegisterW.WZR;
+
     /// <summary>
     /// Gets the X0 register.
     /// </summary>
@@ -4625,6 +4636,134 @@ partial class Arm64Factory
     /// </summary>
     public static Arm64RegisterV V31 => Arm64RegisterV.V31;
 
+    /// <summary>
+    /// Gets the B0 register.
+    /// </summary>
+    public static Arm64RegisterB B0 => Arm64RegisterB.B0;
+    /// <summary>
+    /// Gets the B1 register.
+    /// </summary>
+    public static Arm64RegisterB B1 => Arm64RegisterB.B1;
+    /// <summary>
+    /// Gets the B2 register.
+    /// </summary>
+    public static Arm64RegisterB B2 => Arm64RegisterB.B2;
+    /// <summary>
+    /// Gets the B3 register.
+    /// </summary>
+    public static Arm64RegisterB B3 => Arm64RegisterB.B3;
+    /// <summary>
+    /// Gets the B4 register.
+    /// </summary>
+    public static Arm64RegisterB B4 => Arm64RegisterB.B4;
+    /// <summary>
+    /// Gets the B5 register.
+    /// </summary>
+    public static Arm64RegisterB B5 => Arm64RegisterB.B5;
+    /// <summary>
+    /// Gets the B6 register.
+    /// </summary>
+    public static Arm64RegisterB B6 => Arm64RegisterB.B6;
+    /// <summary>
+    /// Gets the B7 register.
+    /// </summary>
+    public static Arm64RegisterB B7 => Arm64RegisterB.B7;
+    /// <summary>
+    /// Gets the B8 register.
+    /// </summary>
+    public static Arm64RegisterB B8 => Arm64RegisterB.B8;
+    /// <summary>
+    /// Gets the B9 register.
+    /// </summary>
+    public static Arm64RegisterB B9 => Arm64RegisterB.B9;
+    /// <summary>
+    /// Gets the B10 register.
+    /// </summary>
+    public static Arm64RegisterB B10 => Arm64RegisterB.B10;
+    /// <summary>
+    /// Gets the B11 register.
+    /// </summary>
+    public static Arm64RegisterB B11 => Arm64RegisterB.B11;
+    /// <summary>
+    /// Gets the B12 register.
+    /// </summary>
+    public static Arm64RegisterB B12 => Arm64RegisterB.B12;
+    /// <summary>
+    /// Gets the B13 register.
+    /// </summary>
+    public static Arm64RegisterB B13 => Arm64RegisterB.B13;
+    /// <summary>
+    /// Gets the B14 register.
+    /// </summary>
+    public static Arm64RegisterB B14 => Arm64RegisterB.B14;
+    /// <summary>
+    /// Gets the B15 register.
+    /// </summary>
+    public static Arm64RegisterB B15 => Arm64RegisterB.B15;
+    /// <summary>
+    /// Gets the B16 register.
+    /// </summary>
+    public static Arm64RegisterB B16 => Arm64RegisterB.B16;
+    /// <summary>
+    /// Gets the B17 register.
+    /// </summary>
+    public static Arm64RegisterB B17 => Arm64RegisterB.B17;
+    /// <summary>
+    /// Gets the B18 register.
+    /// </summary>
+    public static Arm64RegisterB B18 => Arm64RegisterB.B18;
+    /// <summary>
+    /// Gets the B19 register.
+    /// </summary>
+    public static Arm64RegisterB B19 => Arm64RegisterB.B19;
+    /// <summary>
+    /// Gets the B20 register.
+    /// </summary>
+    public static Arm64RegisterB B20 => Arm64RegisterB.B20;
+    /// <summary>
+    /// Gets the B21 register.
+    /// </summary>
+    public static Arm64RegisterB B21 => Arm64RegisterB.B21;
+    /// <summary>
+    /// Gets the B22 register.
+    /// </summary>
+    public static Arm64RegisterB B22 => Arm64RegisterB.B22;
+    /// <summary>
+    /// Gets the B23 register.
+    /// </summary>
+    public static Arm64RegisterB B23 => Arm64RegisterB.B23;
+    /// <summary>
+    /// Gets the B24 register.
+    /// </summary>
+    public static Arm64RegisterB B24 => Arm64RegisterB.B24;
+    /// <summary>
+    /// Gets the B25 register.
+    /// </summary>
+    public static Arm64RegisterB B25 => Arm64RegisterB.B25;
+    /// <summary>
+    /// Gets the B26 register.
+    /// </summary>
+    public static Arm64RegisterB B26 => Arm64RegisterB.B26;
+    /// <summary>
+    /// Gets the B27 register.
+    /// </summary>
+    public static Arm64RegisterB B27 => Arm64RegisterB.B27;
+    /// <summary>
+    /// Gets the B28 register.
+    /// </summary>
+    public static Arm64RegisterB B28 => Arm64RegisterB.B28;
+    /// <summary>
+    /// Gets the B29 register.
+    /// </summary>
+    public static Arm64RegisterB B29 => Arm64RegisterB.B29;
+    /// <summary>
+    /// Gets the B30 register.
+    /// </summary>
+    public static Arm64RegisterB B30 => Arm64RegisterB.B30;
+    /// <summary>
+    /// Gets the B31 register.
+    /// </summary>
+    public static Arm64RegisterB B31 => Arm64RegisterB.B31;
     /// <summary>
     /// Gets the H0 register.
     /// </summary>

@@ -134,7 +134,7 @@ public readonly record struct Arm64Register<#= kind #> : <#= kind == "V" ? "IArm
 
     /// <inheritdoc />
     public Arm64RegisterVKind VKind => Arm64RegisterVKind.Default;
-<# foreach(var vector in vectors) { var vkind = vector.Name; if (vkind == "Q") continue; #>
+<# foreach(var vector in vectors) { var vkind = vector.Name; #>
 
     /// <summary>
     /// Gets the V.<#= vkind #> register.
@@ -741,6 +741,7 @@ partial class Arm64Factory
     /// Gets the WZR register.
     /// </summary>
     public static Arm64RegisterW WZR => Arm64RegisterW.WZR;
+
 <# foreach(var kind in registerKinds) { #>
 <# if (kind == "SP" || kind == "WSP") { #>
     /// <summary>
@@ -757,7 +758,7 @@ partial class Arm64Factory
 <# } // else #>
 <# } // foreach kind #>
 
-<# foreach(var vector in vectors) { var vkind = vector.Name; if (vkind == "B") continue; #>
+<# foreach(var vector in vectors) { var vkind = vector.Name; #>
 <# for(int i = 0; i < 32; i++) { #>
     /// <summary>
     /// Gets the <#= vkind #><#= i #> register.

@@ -251,29 +251,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDR Bt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterB Bt, Arm64RegisterWExtendMemoryAccessor src)
-    {
-        uint raw = 0x3C600800U; // Encoding for: LDR_b_ldst_regoff
-        raw |= (uint)Bt.Index;
-        raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)src.IndexRegister.Index << 16;
-        raw |= src.Extend.Kind switch
-        {
-            Arm64ExtendKind.UXTW => 0x00004000U,
-            Arm64ExtendKind.SXTW => 0x0000C000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
-        };
-        if (src.Extend.HasExplicitZeroAmount)
-        {
-            raw |= 0x00001000U;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Load SIMD&amp;FP register (register offset).
-    /// </summary>
-    /// <remarks><code>LDR Bt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterB Bt, Arm64RegisterXExtendMemoryAccessor src)
     {
         uint raw = 0x3C602800U; // Encoding for: LDR_b_ldst_regoff
@@ -295,6 +272,29 @@ static partial class Arm64InstructionFactory
             default:
                 throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
         }
+        if (src.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
+        return raw;
+    }
+    /// <summary>
+    /// Load SIMD&amp;FP register (register offset).
+    /// </summary>
+    /// <remarks><code>LDR Bt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDR(Arm64RegisterB Bt, Arm64RegisterWExtendMemoryAccessor src)
+    {
+        uint raw = 0x3C600800U; // Encoding for: LDR_b_ldst_regoff
+        raw |= (uint)Bt.Index;
+        raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
         if (src.Extend.HasExplicitZeroAmount)
         {
             raw |= 0x00001000U;
@@ -537,31 +537,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDR Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterH Ht, Arm64RegisterWExtendMemoryAccessor src)
-    {
-        uint raw = 0x7C600800U; // Encoding for: LDR_h_ldst_regoff
-        raw |= (uint)Ht.Index;
-        raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)src.IndexRegister.Index << 16;
-        raw |= src.Extend.Kind switch
-        {
-            Arm64ExtendKind.UXTW => 0x00004000U,
-            Arm64ExtendKind.SXTW => 0x0000C000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
-        };
-        raw |= src.Extend.Amount switch
-        {
-            0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
-        };
-        return raw;
-    }
-    /// <summary>
-    /// Load SIMD&amp;FP register (register offset).
-    /// </summary>
-    /// <remarks><code>LDR Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterH Ht, Arm64RegisterXExtendMemoryAccessor src)
     {
         uint raw = 0x7C602800U; // Encoding for: LDR_h_ldst_regoff
@@ -601,12 +576,12 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
-    /// <remarks><code>LDR St, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterS St, Arm64RegisterWExtendMemoryAccessor src)
+    /// <remarks><code>LDR Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDR(Arm64RegisterH Ht, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0xBC600800U; // Encoding for: LDR_s_ldst_regoff
-        raw |= (uint)St.Index;
+        uint raw = 0x7C600800U; // Encoding for: LDR_h_ldst_regoff
+        raw |= (uint)Ht.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
         raw |= src.Extend.Kind switch
@@ -618,8 +593,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -667,12 +642,12 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
-    /// <remarks><code>LDR Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterD Dt, Arm64RegisterWExtendMemoryAccessor src)
+    /// <remarks><code>LDR St, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_s_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDR(Arm64RegisterS St, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0xFC600800U; // Encoding for: LDR_d_ldst_regoff
-        raw |= (uint)Dt.Index;
+        uint raw = 0xBC600800U; // Encoding for: LDR_s_ldst_regoff
+        raw |= (uint)St.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
         raw |= src.Extend.Kind switch
@@ -684,8 +659,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
         };
         return raw;
     }
@@ -733,12 +708,12 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Load SIMD&amp;FP register (register offset).
     /// </summary>
-    /// <remarks><code>LDR Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterQ Qt, Arm64RegisterWExtendMemoryAccessor src)
+    /// <remarks><code>LDR Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_d_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDR(Arm64RegisterD Dt, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0x3CE00800U; // Encoding for: LDR_q_ldst_regoff
-        raw |= (uint)Qt.Index;
+        uint raw = 0xFC600800U; // Encoding for: LDR_d_ldst_regoff
+        raw |= (uint)Dt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
         raw |= src.Extend.Kind switch
@@ -750,8 +725,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            16 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 16 are valid for this memory operand."),
+            8 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
         };
         return raw;
     }
@@ -788,6 +763,31 @@ static partial class Arm64InstructionFactory
             default:
                 throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
         }
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            16 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 16 are valid for this memory operand."),
+        };
+        return raw;
+    }
+    /// <summary>
+    /// Load SIMD&amp;FP register (register offset).
+    /// </summary>
+    /// <remarks><code>LDR Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_q_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDR(Arm64RegisterQ Qt, Arm64RegisterWExtendMemoryAccessor src)
+    {
+        uint raw = 0x3CE00800U; // Encoding for: LDR_q_ldst_regoff
+        raw |= (uint)Qt.Index;
+        raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
@@ -1155,29 +1155,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STR Bt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterB Bt, Arm64RegisterWExtendMemoryAccessor dst)
-    {
-        uint raw = 0x3C200800U; // Encoding for: STR_b_ldst_regoff
-        raw |= (uint)Bt.Index;
-        raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)dst.IndexRegister.Index << 16;
-        raw |= dst.Extend.Kind switch
-        {
-            Arm64ExtendKind.UXTW => 0x00004000U,
-            Arm64ExtendKind.SXTW => 0x0000C000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
-        };
-        if (dst.Extend.HasExplicitZeroAmount)
-        {
-            raw |= 0x00001000U;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Store SIMD&amp;FP register (register offset).
-    /// </summary>
-    /// <remarks><code>STR Bt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterB Bt, Arm64RegisterXExtendMemoryAccessor dst)
     {
         uint raw = 0x3C202800U; // Encoding for: STR_b_ldst_regoff
@@ -1199,6 +1176,29 @@ static partial class Arm64InstructionFactory
             default:
                 throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
         }
+        if (dst.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
+        return raw;
+    }
+    /// <summary>
+    /// Store SIMD&amp;FP register (register offset).
+    /// </summary>
+    /// <remarks><code>STR Bt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint STR(Arm64RegisterB Bt, Arm64RegisterWExtendMemoryAccessor dst)
+    {
+        uint raw = 0x3C200800U; // Encoding for: STR_b_ldst_regoff
+        raw |= (uint)Bt.Index;
+        raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)dst.IndexRegister.Index << 16;
+        raw |= dst.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
         if (dst.Extend.HasExplicitZeroAmount)
         {
             raw |= 0x00001000U;
@@ -1405,31 +1405,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STR Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterH Ht, Arm64RegisterWExtendMemoryAccessor dst)
-    {
-        uint raw = 0x7C200800U; // Encoding for: STR_h_ldst_regoff
-        raw |= (uint)Ht.Index;
-        raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)dst.IndexRegister.Index << 16;
-        raw |= dst.Extend.Kind switch
-        {
-            Arm64ExtendKind.UXTW => 0x00004000U,
-            Arm64ExtendKind.SXTW => 0x0000C000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
-        };
-        raw |= dst.Extend.Amount switch
-        {
-            0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
-        };
-        return raw;
-    }
-    /// <summary>
-    /// Store SIMD&amp;FP register (register offset).
-    /// </summary>
-    /// <remarks><code>STR Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.STR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterH Ht, Arm64RegisterXExtendMemoryAccessor dst)
     {
         uint raw = 0x7C202800U; // Encoding for: STR_h_ldst_regoff
@@ -1469,12 +1444,12 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
-    /// <remarks><code>STR St, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.STR_s_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterS St, Arm64RegisterWExtendMemoryAccessor dst)
+    /// <remarks><code>STR Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.STR_h_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint STR(Arm64RegisterH Ht, Arm64RegisterWExtendMemoryAccessor dst)
     {
-        uint raw = 0xBC200800U; // Encoding for: STR_s_ldst_regoff
-        raw |= (uint)St.Index;
+        uint raw = 0x7C200800U; // Encoding for: STR_h_ldst_regoff
+        raw |= (uint)Ht.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
         raw |= dst.Extend.Kind switch
@@ -1486,8 +1461,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -1535,12 +1510,12 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
-    /// <remarks><code>STR Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.STR_d_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterD Dt, Arm64RegisterWExtendMemoryAccessor dst)
+    /// <remarks><code>STR St, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.STR_s_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint STR(Arm64RegisterS St, Arm64RegisterWExtendMemoryAccessor dst)
     {
-        uint raw = 0xFC200800U; // Encoding for: STR_d_ldst_regoff
-        raw |= (uint)Dt.Index;
+        uint raw = 0xBC200800U; // Encoding for: STR_s_ldst_regoff
+        raw |= (uint)St.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
         raw |= dst.Extend.Kind switch
@@ -1552,8 +1527,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
         };
         return raw;
     }
@@ -1601,12 +1576,12 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Store SIMD&amp;FP register (register offset).
     /// </summary>
-    /// <remarks><code>STR Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.STR_q_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterQ Qt, Arm64RegisterWExtendMemoryAccessor dst)
+    /// <remarks><code>STR Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.STR_d_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint STR(Arm64RegisterD Dt, Arm64RegisterWExtendMemoryAccessor dst)
     {
-        uint raw = 0x3CA00800U; // Encoding for: STR_q_ldst_regoff
-        raw |= (uint)Qt.Index;
+        uint raw = 0xFC200800U; // Encoding for: STR_d_ldst_regoff
+        raw |= (uint)Dt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
         raw |= dst.Extend.Kind switch
@@ -1618,8 +1593,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            16 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 16 are valid for this memory operand."),
+            8 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
         };
         return raw;
     }
@@ -1656,6 +1631,31 @@ static partial class Arm64InstructionFactory
             default:
                 throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
         }
+        raw |= dst.Extend.Amount switch
+        {
+            0 => 0U,
+            16 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 16 are valid for this memory operand."),
+        };
+        return raw;
+    }
+    /// <summary>
+    /// Store SIMD&amp;FP register (register offset).
+    /// </summary>
+    /// <remarks><code>STR Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.STR_q_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint STR(Arm64RegisterQ Qt, Arm64RegisterWExtendMemoryAccessor dst)
+    {
+        uint raw = 0x3CA00800U; // Encoding for: STR_q_ldst_regoff
+        raw |= (uint)Qt.Index;
+        raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)dst.IndexRegister.Index << 16;
+        raw |= dst.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,

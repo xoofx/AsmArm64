@@ -115,17 +115,38 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ADD Xd|SP, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADD_64_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADD(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
+    public static uint ADD(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Rm, Arm64ExtendXKind extend = default, int amount = 0)
     {
         uint raw = 0x8B200000U; // Encoding for: ADD_64_addsub_ext
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
-        var _extend_ = extend switch
+        var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
             Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
-            _ => (byte)extend
+            _ => (byte)extend.ExtendKind
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
+        return raw;
+    }
+    /// <summary>
+    /// Add extended and scaled register.
+    /// </summary>
+    /// <remarks><code>ADD Xd|SP, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.ADD_64_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint ADD(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterW Rm, Arm64ExtendWKind extend = default, int amount = default)
+    {
+        uint raw = 0x8B200000U; // Encoding for: ADD_64_addsub_ext
+        raw |= (uint)Xd_SP.Index;
+        raw |= (uint)Xn_SP.Index << 5;
+        raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend.ExtendKind switch
+        {
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
         raw |= (uint)((byte)amount & 0x7) << 10;
@@ -242,17 +263,38 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ADDS Xd, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDS_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADDS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
+    public static uint ADDS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Rm, Arm64ExtendXKind extend = default, int amount = 0)
     {
         uint raw = 0xAB200000U; // Encoding for: ADDS_64s_addsub_ext
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
-        var _extend_ = extend switch
+        var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
             Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
-            _ => (byte)extend
+            _ => (byte)extend.ExtendKind
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
+        return raw;
+    }
+    /// <summary>
+    /// Add extended and scaled register, setting flags.
+    /// </summary>
+    /// <remarks><code>ADDS Xd, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.ADDS_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint ADDS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, Arm64RegisterW Rm, Arm64ExtendWKind extend = default, int amount = default)
+    {
+        uint raw = 0xAB200000U; // Encoding for: ADDS_64s_addsub_ext
+        raw |= (uint)Xd.Index;
+        raw |= (uint)Xn_SP.Index << 5;
+        raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend.ExtendKind switch
+        {
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
         raw |= (uint)((byte)amount & 0x7) << 10;
@@ -2197,16 +2239,36 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMN Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMN_adds_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMN(Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
+    public static uint CMN(Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Rm, Arm64ExtendXKind extend = default, int amount = 0)
     {
         uint raw = 0xAB20001FU; // Encoding for: CMN_adds_64s_addsub_ext
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
-        var _extend_ = extend switch
+        var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
             Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
-            _ => (byte)extend
+            _ => (byte)extend.ExtendKind
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
+        return raw;
+    }
+    /// <summary>
+    /// Compare negative (extended register).
+    /// </summary>
+    /// <remarks><code>CMN Xn|SP, Rm {, extend, {#amount}}</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CMN_adds_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CMN(Arm64RegisterXOrSP Xn_SP, Arm64RegisterW Rm, Arm64ExtendWKind extend = default, int amount = default)
+    {
+        uint raw = 0xAB20001FU; // Encoding for: CMN_adds_64s_addsub_ext
+        raw |= (uint)Xn_SP.Index << 5;
+        raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend.ExtendKind switch
+        {
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
         raw |= (uint)((byte)amount & 0x7) << 10;
@@ -2291,16 +2353,36 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMP Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMP_subs_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMP(Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
+    public static uint CMP(Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Rm, Arm64ExtendXKind extend = default, int amount = 0)
     {
         uint raw = 0xEB20001FU; // Encoding for: CMP_subs_64s_addsub_ext
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
-        var _extend_ = extend switch
+        var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
             Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
-            _ => (byte)extend
+            _ => (byte)extend.ExtendKind
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
+        return raw;
+    }
+    /// <summary>
+    /// Compare (extended register).
+    /// </summary>
+    /// <remarks><code>CMP Xn|SP, Rm {, extend, {#amount}}</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CMP_subs_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CMP(Arm64RegisterXOrSP Xn_SP, Arm64RegisterW Rm, Arm64ExtendWKind extend = default, int amount = default)
+    {
+        uint raw = 0xEB20001FU; // Encoding for: CMP_subs_64s_addsub_ext
+        raw |= (uint)Xn_SP.Index << 5;
+        raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend.ExtendKind switch
+        {
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
         raw |= (uint)((byte)amount & 0x7) << 10;
@@ -5555,31 +5637,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDR Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
-    {
-        uint raw = 0xB8600800U; // Encoding for: LDR_32_ldst_regoff
-        raw |= (uint)Wt.Index;
-        raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)src.IndexRegister.Index << 16;
-        raw |= src.Extend.Kind switch
-        {
-            Arm64ExtendKind.UXTW => 0x00004000U,
-            Arm64ExtendKind.SXTW => 0x0000C000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
-        };
-        raw |= src.Extend.Amount switch
-        {
-            0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
-        };
-        return raw;
-    }
-    /// <summary>
-    /// Load register (register).
-    /// </summary>
-    /// <remarks><code>LDR Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDR_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterW Wt, Arm64RegisterXExtendMemoryAccessor src)
     {
         uint raw = 0xB8602800U; // Encoding for: LDR_32_ldst_regoff
@@ -5619,12 +5676,12 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Load register (register).
     /// </summary>
-    /// <remarks><code>LDR Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDR_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDR(Arm64RegisterX Xt, Arm64RegisterWExtendMemoryAccessor src)
+    /// <remarks><code>LDR Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDR(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0xF8600800U; // Encoding for: LDR_64_ldst_regoff
-        raw |= (uint)Xt.Index;
+        uint raw = 0xB8600800U; // Encoding for: LDR_32_ldst_regoff
+        raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
         raw |= src.Extend.Kind switch
@@ -5636,8 +5693,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
         };
         return raw;
     }
@@ -5683,14 +5740,14 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Load register byte (register).
+    /// Load register (register).
     /// </summary>
-    /// <remarks><code>LDRB Wt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDRB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDRB(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
+    /// <remarks><code>LDR Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDR_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDR(Arm64RegisterX Xt, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0x38600800U; // Encoding for: LDRB_32b_ldst_regoff
-        raw |= (uint)Wt.Index;
+        uint raw = 0xF8600800U; // Encoding for: LDR_64_ldst_regoff
+        raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
         raw |= src.Extend.Kind switch
@@ -5699,10 +5756,12 @@ static partial class Arm64InstructionFactory
             Arm64ExtendKind.SXTW => 0x0000C000U,
             _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
         };
-        if (src.Extend.HasExplicitZeroAmount)
+        raw |= src.Extend.Amount switch
         {
-            raw |= 0x00001000U;
-        }
+            0 => 0U,
+            8 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5731,6 +5790,29 @@ static partial class Arm64InstructionFactory
             default:
                 throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
         }
+        if (src.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
+        return raw;
+    }
+    /// <summary>
+    /// Load register byte (register).
+    /// </summary>
+    /// <remarks><code>LDRB Wt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDRB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDRB(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
+    {
+        uint raw = 0x38600800U; // Encoding for: LDRB_32b_ldst_regoff
+        raw |= (uint)Wt.Index;
+        raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
         if (src.Extend.HasExplicitZeroAmount)
         {
             raw |= 0x00001000U;
@@ -5820,31 +5902,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDRH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDRH(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
-    {
-        uint raw = 0x78600800U; // Encoding for: LDRH_32_ldst_regoff
-        raw |= (uint)Wt.Index;
-        raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)src.IndexRegister.Index << 16;
-        raw |= src.Extend.Kind switch
-        {
-            Arm64ExtendKind.UXTW => 0x00004000U,
-            Arm64ExtendKind.SXTW => 0x0000C000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
-        };
-        raw |= src.Extend.Amount switch
-        {
-            0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
-        };
-        return raw;
-    }
-    /// <summary>
-    /// Load register halfword (register).
-    /// </summary>
-    /// <remarks><code>LDRH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDRH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRH(Arm64RegisterW Wt, Arm64RegisterXExtendMemoryAccessor src)
     {
         uint raw = 0x78602800U; // Encoding for: LDRH_32_ldst_regoff
@@ -5882,13 +5939,13 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Load register signed byte (register).
+    /// Load register halfword (register).
     /// </summary>
-    /// <remarks><code>LDRSB Wt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDRSB(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
+    /// <remarks><code>LDRH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDRH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDRH(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0x38E00800U; // Encoding for: LDRSB_32b_ldst_regoff
+        uint raw = 0x78600800U; // Encoding for: LDRH_32_ldst_regoff
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
@@ -5898,10 +5955,12 @@ static partial class Arm64InstructionFactory
             Arm64ExtendKind.SXTW => 0x0000C000U,
             _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
         };
-        if (src.Extend.HasExplicitZeroAmount)
+        raw |= src.Extend.Amount switch
         {
-            raw |= 0x00001000U;
-        }
+            0 => 0U,
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -5939,12 +5998,12 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Load register signed byte (register).
     /// </summary>
-    /// <remarks><code>LDRSB Xt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_64b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDRSB(Arm64RegisterX Xt, Arm64RegisterWExtendMemoryAccessor src)
+    /// <remarks><code>LDRSB Wt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDRSB(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0x38A00800U; // Encoding for: LDRSB_64b_ldst_regoff
-        raw |= (uint)Xt.Index;
+        uint raw = 0x38E00800U; // Encoding for: LDRSB_32b_ldst_regoff
+        raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
         raw |= src.Extend.Kind switch
@@ -5985,6 +6044,29 @@ static partial class Arm64InstructionFactory
             default:
                 throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
         }
+        if (src.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
+        return raw;
+    }
+    /// <summary>
+    /// Load register signed byte (register).
+    /// </summary>
+    /// <remarks><code>LDRSB Xt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_64b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDRSB(Arm64RegisterX Xt, Arm64RegisterWExtendMemoryAccessor src)
+    {
+        uint raw = 0x38A00800U; // Encoding for: LDRSB_64b_ldst_regoff
+        raw |= (uint)Xt.Index;
+        raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
         if (src.Extend.HasExplicitZeroAmount)
         {
             raw |= 0x00001000U;
@@ -6152,31 +6234,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDRSH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDRSH(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
-    {
-        uint raw = 0x78E00800U; // Encoding for: LDRSH_32_ldst_regoff
-        raw |= (uint)Wt.Index;
-        raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)src.IndexRegister.Index << 16;
-        raw |= src.Extend.Kind switch
-        {
-            Arm64ExtendKind.UXTW => 0x00004000U,
-            Arm64ExtendKind.SXTW => 0x0000C000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
-        };
-        raw |= src.Extend.Amount switch
-        {
-            0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
-        };
-        return raw;
-    }
-    /// <summary>
-    /// Load register signed halfword (register).
-    /// </summary>
-    /// <remarks><code>LDRSH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSH(Arm64RegisterW Wt, Arm64RegisterXExtendMemoryAccessor src)
     {
         uint raw = 0x78E02800U; // Encoding for: LDRSH_32_ldst_regoff
@@ -6216,12 +6273,12 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Load register signed halfword (register).
     /// </summary>
-    /// <remarks><code>LDRSH Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDRSH(Arm64RegisterX Xt, Arm64RegisterWExtendMemoryAccessor src)
+    /// <remarks><code>LDRSH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDRSH(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0x78A00800U; // Encoding for: LDRSH_64_ldst_regoff
-        raw |= (uint)Xt.Index;
+        uint raw = 0x78E00800U; // Encoding for: LDRSH_32_ldst_regoff
+        raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
         raw |= src.Extend.Kind switch
@@ -6271,6 +6328,31 @@ static partial class Arm64InstructionFactory
             default:
                 throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
         }
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+        };
+        return raw;
+    }
+    /// <summary>
+    /// Load register signed halfword (register).
+    /// </summary>
+    /// <remarks><code>LDRSH Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDRSH_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDRSH(Arm64RegisterX Xt, Arm64RegisterWExtendMemoryAccessor src)
+    {
+        uint raw = 0x78A00800U; // Encoding for: LDRSH_64_ldst_regoff
+        raw |= (uint)Xt.Index;
+        raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
@@ -6335,31 +6417,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>LDRSW Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSW_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint LDRSW(Arm64RegisterX Xt, Arm64RegisterWExtendMemoryAccessor src)
-    {
-        uint raw = 0xB8A00800U; // Encoding for: LDRSW_64_ldst_regoff
-        raw |= (uint)Xt.Index;
-        raw |= (uint)src.BaseRegister.Index << 5;
-        raw |= (uint)src.IndexRegister.Index << 16;
-        raw |= src.Extend.Kind switch
-        {
-            Arm64ExtendKind.UXTW => 0x00004000U,
-            Arm64ExtendKind.SXTW => 0x0000C000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
-        };
-        raw |= src.Extend.Amount switch
-        {
-            0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
-        };
-        return raw;
-    }
-    /// <summary>
-    /// Load register signed word (register).
-    /// </summary>
-    /// <remarks><code>LDRSW Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.LDRSW_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSW(Arm64RegisterX Xt, Arm64RegisterXExtendMemoryAccessor src)
     {
         uint raw = 0xB8A02800U; // Encoding for: LDRSW_64_ldst_regoff
@@ -6388,6 +6445,31 @@ static partial class Arm64InstructionFactory
             default:
                 throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
         }
+        raw |= src.Extend.Amount switch
+        {
+            0 => 0U,
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+        };
+        return raw;
+    }
+    /// <summary>
+    /// Load register signed word (register).
+    /// </summary>
+    /// <remarks><code>LDRSW Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LDRSW_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LDRSW(Arm64RegisterX Xt, Arm64RegisterWExtendMemoryAccessor src)
+    {
+        uint raw = 0xB8A00800U; // Encoding for: LDRSW_64_ldst_regoff
+        raw |= (uint)Xt.Index;
+        raw |= (uint)src.BaseRegister.Index << 5;
+        raw |= (uint)src.IndexRegister.Index << 16;
+        raw |= src.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
@@ -9063,31 +9145,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>PRFM (prfop|#imm5), [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PRFM_p_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint PRFM(Arm64PrefetchOperationKind prfop, Arm64RegisterWExtendMemoryAccessor mem)
-    {
-        uint raw = 0xF8A04800U; // Encoding for: PRFM_p_ldst_regoff
-        raw |= (uint)((byte)prfop & (byte)0x1F) << 0;
-        raw |= (uint)mem.BaseRegister.Index << 5;
-        raw |= (uint)mem.IndexRegister.Index << 16;
-        raw |= mem.Extend.Kind switch
-        {
-            Arm64ExtendKind.UXTW => 0x00004000U,
-            Arm64ExtendKind.SXTW => 0x0000C000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend `{mem.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
-        };
-        raw |= mem.Extend.Amount switch
-        {
-            0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend amount `{mem.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
-        };
-        return raw;
-    }
-    /// <summary>
-    /// Prefetch memory (register).
-    /// </summary>
-    /// <remarks><code>PRFM (prfop|#imm5), [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.PRFM_p_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PRFM(Arm64PrefetchOperationKind prfop, Arm64RegisterXExtendMemoryAccessor mem)
     {
         uint raw = 0xF8A06800U; // Encoding for: PRFM_p_ldst_regoff
@@ -9116,6 +9173,31 @@ static partial class Arm64InstructionFactory
             default:
                 throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend `{mem.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
         }
+        raw |= mem.Extend.Amount switch
+        {
+            0 => 0U,
+            8 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend amount `{mem.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+        };
+        return raw;
+    }
+    /// <summary>
+    /// Prefetch memory (register).
+    /// </summary>
+    /// <remarks><code>PRFM (prfop|#imm5), [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.PRFM_p_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint PRFM(Arm64PrefetchOperationKind prfop, Arm64RegisterWExtendMemoryAccessor mem)
+    {
+        uint raw = 0xF8A04800U; // Encoding for: PRFM_p_ldst_regoff
+        raw |= (uint)((byte)prfop & (byte)0x1F) << 0;
+        raw |= (uint)mem.BaseRegister.Index << 5;
+        raw |= (uint)mem.IndexRegister.Index << 16;
+        raw |= mem.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend `{mem.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
         raw |= mem.Extend.Amount switch
         {
             0 => 0U,
@@ -11872,31 +11954,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STR Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STR_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor dst)
-    {
-        uint raw = 0xB8200800U; // Encoding for: STR_32_ldst_regoff
-        raw |= (uint)Wt.Index;
-        raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)dst.IndexRegister.Index << 16;
-        raw |= dst.Extend.Kind switch
-        {
-            Arm64ExtendKind.UXTW => 0x00004000U,
-            Arm64ExtendKind.SXTW => 0x0000C000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
-        };
-        raw |= dst.Extend.Amount switch
-        {
-            0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
-        };
-        return raw;
-    }
-    /// <summary>
-    /// Store register (register).
-    /// </summary>
-    /// <remarks><code>STR Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.STR_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterW Wt, Arm64RegisterXExtendMemoryAccessor dst)
     {
         uint raw = 0xB8202800U; // Encoding for: STR_32_ldst_regoff
@@ -11936,12 +11993,12 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Store register (register).
     /// </summary>
-    /// <remarks><code>STR Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.STR_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STR(Arm64RegisterX Xt, Arm64RegisterWExtendMemoryAccessor dst)
+    /// <remarks><code>STR Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.STR_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint STR(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor dst)
     {
-        uint raw = 0xF8200800U; // Encoding for: STR_64_ldst_regoff
-        raw |= (uint)Xt.Index;
+        uint raw = 0xB8200800U; // Encoding for: STR_32_ldst_regoff
+        raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
         raw |= dst.Extend.Kind switch
@@ -11953,8 +12010,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
         };
         return raw;
     }
@@ -12000,14 +12057,14 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Store register byte (register).
+    /// Store register (register).
     /// </summary>
-    /// <remarks><code>STRB Wt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.STRB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STRB(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor dst)
+    /// <remarks><code>STR Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.STR_64_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint STR(Arm64RegisterX Xt, Arm64RegisterWExtendMemoryAccessor dst)
     {
-        uint raw = 0x38200800U; // Encoding for: STRB_32b_ldst_regoff
-        raw |= (uint)Wt.Index;
+        uint raw = 0xF8200800U; // Encoding for: STR_64_ldst_regoff
+        raw |= (uint)Xt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
         raw |= dst.Extend.Kind switch
@@ -12016,10 +12073,12 @@ static partial class Arm64InstructionFactory
             Arm64ExtendKind.SXTW => 0x0000C000U,
             _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
         };
-        if (dst.Extend.HasExplicitZeroAmount)
+        raw |= dst.Extend.Amount switch
         {
-            raw |= 0x00001000U;
-        }
+            0 => 0U,
+            8 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+        };
         return raw;
     }
     /// <summary>
@@ -12048,6 +12107,29 @@ static partial class Arm64InstructionFactory
             default:
                 throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
         }
+        if (dst.Extend.HasExplicitZeroAmount)
+        {
+            raw |= 0x00001000U;
+        }
+        return raw;
+    }
+    /// <summary>
+    /// Store register byte (register).
+    /// </summary>
+    /// <remarks><code>STRB Wt, [Xn|SP, (Wm|Xm), extend{, amount}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.STRB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint STRB(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor dst)
+    {
+        uint raw = 0x38200800U; // Encoding for: STRB_32b_ldst_regoff
+        raw |= (uint)Wt.Index;
+        raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)dst.IndexRegister.Index << 16;
+        raw |= dst.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
         if (dst.Extend.HasExplicitZeroAmount)
         {
             raw |= 0x00001000U;
@@ -12137,31 +12219,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>STRH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.STRH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint STRH(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor dst)
-    {
-        uint raw = 0x78200800U; // Encoding for: STRH_32_ldst_regoff
-        raw |= (uint)Wt.Index;
-        raw |= (uint)dst.BaseRegister.Index << 5;
-        raw |= (uint)dst.IndexRegister.Index << 16;
-        raw |= dst.Extend.Kind switch
-        {
-            Arm64ExtendKind.UXTW => 0x00004000U,
-            Arm64ExtendKind.SXTW => 0x0000C000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
-        };
-        raw |= dst.Extend.Amount switch
-        {
-            0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
-        };
-        return raw;
-    }
-    /// <summary>
-    /// Store register halfword (register).
-    /// </summary>
-    /// <remarks><code>STRH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.STRH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STRH(Arm64RegisterW Wt, Arm64RegisterXExtendMemoryAccessor dst)
     {
         uint raw = 0x78202800U; // Encoding for: STRH_32_ldst_regoff
@@ -12190,6 +12247,31 @@ static partial class Arm64InstructionFactory
             default:
                 throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only LSL or SXTX are valid for this memory operand.");
         }
+        raw |= dst.Extend.Amount switch
+        {
+            0 => 0U,
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+        };
+        return raw;
+    }
+    /// <summary>
+    /// Store register halfword (register).
+    /// </summary>
+    /// <remarks><code>STRH Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.STRH_32_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint STRH(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor dst)
+    {
+        uint raw = 0x78200800U; // Encoding for: STRH_32_ldst_regoff
+        raw |= (uint)Wt.Index;
+        raw |= (uint)dst.BaseRegister.Index << 5;
+        raw |= (uint)dst.IndexRegister.Index << 16;
+        raw |= dst.Extend.Kind switch
+        {
+            Arm64ExtendKind.UXTW => 0x00004000U,
+            Arm64ExtendKind.SXTW => 0x0000C000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend.Kind}`. Only UXTW or SXTW are valid for this memory operand."),
+        };
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
@@ -13204,17 +13286,38 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SUB Xd|SP, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUB_64_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUB(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
+    public static uint SUB(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Rm, Arm64ExtendXKind extend = default, int amount = 0)
     {
         uint raw = 0xCB200000U; // Encoding for: SUB_64_addsub_ext
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
-        var _extend_ = extend switch
+        var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
             Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
-            _ => (byte)extend
+            _ => (byte)extend.ExtendKind
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
+        return raw;
+    }
+    /// <summary>
+    /// Subtract extended and scaled register.
+    /// </summary>
+    /// <remarks><code>SUB Xd|SP, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.SUB_64_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint SUB(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterW Rm, Arm64ExtendWKind extend = default, int amount = default)
+    {
+        uint raw = 0xCB200000U; // Encoding for: SUB_64_addsub_ext
+        raw |= (uint)Xd_SP.Index;
+        raw |= (uint)Xn_SP.Index << 5;
+        raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend.ExtendKind switch
+        {
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
         raw |= (uint)((byte)amount & 0x7) << 10;
@@ -13357,17 +13460,38 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SUBS Xd, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBS_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUBS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, Arm64RegisterXOrW Rm, Arm64ExtendKind extend = Arm64ExtendKind.LSL, int amount = 0)
+    public static uint SUBS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Rm, Arm64ExtendXKind extend = default, int amount = 0)
     {
         uint raw = 0xEB200000U; // Encoding for: SUBS_64s_addsub_ext
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn_SP.Index << 5;
         raw |= (uint)Rm.Index << 16;
-        var _extend_ = extend switch
+        var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
             Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
-            _ => (byte)extend
+            _ => (byte)extend.ExtendKind
+        };
+        raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
+        raw |= (uint)((byte)amount & 0x7) << 10;
+        return raw;
+    }
+    /// <summary>
+    /// Subtract extended and scaled register, setting flags.
+    /// </summary>
+    /// <remarks><code>SUBS Xd, Xn|SP, Rm {, extend, {#amount}}</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.SUBS_64s_addsub_ext), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint SUBS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, Arm64RegisterW Rm, Arm64ExtendWKind extend = default, int amount = default)
+    {
+        uint raw = 0xEB200000U; // Encoding for: SUBS_64s_addsub_ext
+        raw |= (uint)Xd.Index;
+        raw |= (uint)Xn_SP.Index << 5;
+        raw |= (uint)Rm.Index << 16;
+        var _extend_ = extend.ExtendKind switch
+        {
+            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
         raw |= (uint)((byte)amount & 0x7) << 10;
@@ -13863,7 +13987,7 @@ static partial class Arm64InstructionFactory
     public static uint TBNZ(Arm64RegisterXOrW Rt, byte imm, Arm64LabelOffset label)
     {
         uint raw = 0x37000000U; // Encoding for: TBNZ_only_testbranch
-        if (Rt.Kind == Arm64RegisterKind.X) raw = 0x80000000U;
+        if (Rt.Kind == Arm64RegisterKind.X) raw |= 0x80000000U;
         raw |= (uint)Rt.Index;
         {
             // Write the immediate for imm
@@ -13883,7 +14007,7 @@ static partial class Arm64InstructionFactory
     public static uint TBZ(Arm64RegisterXOrW Rt, byte imm, Arm64LabelOffset label)
     {
         uint raw = 0x36000000U; // Encoding for: TBZ_only_testbranch
-        if (Rt.Kind == Arm64RegisterKind.X) raw = 0x80000000U;
+        if (Rt.Kind == Arm64RegisterKind.X) raw |= 0x80000000U;
         raw |= (uint)Rt.Index;
         {
             // Write the immediate for imm

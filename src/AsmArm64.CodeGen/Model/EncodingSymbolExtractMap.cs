@@ -17,6 +17,7 @@ enum EncodingSymbolExtractMapKind
     Immediate,
     ProcessStateField,
     RegisterIndex,
+    Extend,
 }
 
 class EncodingSymbolExtractMap

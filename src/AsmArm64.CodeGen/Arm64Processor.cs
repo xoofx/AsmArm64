@@ -508,18 +508,25 @@ partial class Arm64Processor
                 mapEncodingIdToInfo.TryGetValue(encodingName, out var encodingInfo);
                 DetectMultiInstruction(encoding, encodingInfo, out multiInstructionSymbol, out var multiInstructionPostFixes);
 
+                uint checkMask = 0;
+                uint checkValue = 0;
+                string? bitEncodingNameVariation = null;
+
                 // If we have a variation, encode the variation as a bit field
                 if (multiInstructionSymbol is not null)
                 {
-                    var result = mapEncodingIdToInfo.TryGetValue(encodingName, out var encodingInfoForVariation);
-                    Debug.Assert(result);
-                    var variationSymbol = encodingInfoForVariation!.Symbols[multiInstructionSymbol];
-                    var bitEncodingNameVariation = variationSymbol.EncodedInText;
-                    var bitFieldSet = instruction.BitRanges.First(x => x.Name == bitEncodingNameVariation).BitFieldSet;
+                    Debug.Assert(encodingInfo is not null);
+                    var variationSymbol = encodingInfo!.Symbols[multiInstructionSymbol];
+                    bitEncodingNameVariation = variationSymbol.EncodedInText;
+                    var bitRange = instruction.BitRanges.First(x => x.Name == bitEncodingNameVariation);
+                    var bitFieldSet = bitRange.BitFieldSet;
                     Debug.Assert(bitFieldSet.Count == 1);
                     Debug.Assert(bitFieldSet[0] == BitKind.NotSet);
                     // Replace the bit field with a 0 or 1 depending on the variation
                     bitFieldSet[0] = process2ndInstructionVariation ? BitKind.One : BitKind.Zero;
+                    checkMask = 1U << (bitRange.HiBit - bitRange.Width + 1);
+                    checkValue = process2ndInstructionVariation ? checkMask : 0;
+
                     Debug.Assert(multiInstructionPostFixes is not null);
                     PatchInstructionWithPostFix(instruction, multiInstructionPostFixes[process2ndInstructionVariation ? 1 : 0]);
                 }
@@ -531,6 +538,34 @@ partial class Arm64Processor
                     foreach (var symbol in encodingInfo.Symbols.Values)
                     {
                         symbol.Initialize(instruction.BitRangeMap);
+                    }
+                }
+
+                if (multiInstructionSymbol is not null)
+                {
+                    var encodingInfoForVariation = encodingInfo!.Clone();
+                    bool isSelectorChanged = false;
+                    foreach (var symbol in encodingInfoForVariation.Symbols.Values)
+                    {
+                        var selector = symbol.Selector;
+                        if (symbol.EncodedInText != bitEncodingNameVariation && selector is not null && selector.BitNames.Contains(bitEncodingNameVariation))
+                        {
+                            for (var i = selector.BitValues.Count - 1; i >= 0; i--)
+                            {
+                                var bitValue = selector.BitValues[i];
+                                // We remove in the selector values that don't match the current variation
+                                if ((bitValue.BitSelectorMask & checkMask) != 0 && (bitValue.BitSelectorValue & checkMask) != checkValue)
+                                {
+                                    selector.BitValues.RemoveAt(i);
+                                    isSelectorChanged = true;
+                                }
+                            }
+                        }
+                    }
+
+                    if (isSelectorChanged)
+                    {
+                        encodingInfo = encodingInfoForVariation;
                     }
                 }
 

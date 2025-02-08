@@ -3,6 +3,8 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
+using System.Numerics;
+using System.Reflection.Emit;
 using AsmArm64.CodeGen.Model;
 
 namespace AsmArm64.CodeGen;
@@ -221,7 +223,7 @@ partial class Arm64Processor
 
             var operandVariations = new List<OperandVariation>();
 
-            GetOperandVariations(instruction, operand, operandVariations);
+            GetOperandVariations(i, instruction, operand, operandVariations);
             allOperandVariations.Add(operandVariations);
         }
 
@@ -277,55 +279,21 @@ partial class Arm64Processor
             {
                 encodingSymbolExtracts = encodingSymbolExtracts.Where(x => x is not null).ToList();
 
-                // More complicated case. We have multiple producer of variations, but they are all sharing the same encoding
-                // For example, Vn.T has {8B} and implies that Vd is {B}:
-                //
-                // Instruction ADDV_asimdall_only - ADDV        Vd, Vn.T - Count Selectors: 2 - Encoding Variations: 5
-                //         Vn.T,    Vd
-                //     [0] Vn.8B,   B
-                //     [1] Vn.16B,  B
-                //     [2] Vn.4H,   H
-                //     [3] Vn.8H,   H
-                //     [4] Vn.4S,   S
-                var bestEncodingExtra = encodingSymbolExtracts.Where(x => x?.Selector is not null).OrderByDescending(x => x.Selector!.BitSize).First();
-                var selector = bestEncodingExtra!.Selector!;
-
-                // For now, we only support a selector that is overlapping with all other selectors
-                // So that we can "merge" their output instead of "multiplying" their output
-                // After this loop, we have the guarantee that best selector can encode the other selectors and that it forces a value for the other selectors.
-                var otherEncodingExtras = encodingSymbolExtracts.Where(x => x != bestEncodingExtra).ToList();
-                foreach (var otherEncodingExtra in otherEncodingExtras)
+                int maximumVariation = 0;
+                int operandIndexWithMaximumVariation = -1;
+                for (var operandIndex = 0; operandIndex < allOperandVariations.Count; operandIndex++)
                 {
-                    // Check that the encoding both selectors is overlapping
-                    Debug.Assert((selector.BitEncodingMask & otherEncodingExtra.Selector!.BitEncodingMask) != 0);
-                    // Check that the encoding of other selectors are not outside the best selector
-                    Debug.Assert((~selector.BitEncodingMask & otherEncodingExtra.Selector!.BitEncodingMask) == 0);
-                }
-                
-                // Then for each variation of the best selector, we are going to find the associated variations of the other selectors
-                var encodingVariations = new List<List<(EncodingSymbolExtract SymbolExtract, EncodingBitValue SelectedSymbol)>>();
-                
-                foreach (var bitValue in selector.BitValues)
-                {
-                    var bitValuesForVariation = new List<(EncodingSymbolExtract SymbolExtract, EncodingBitValue SelectedSymbol)>
+                    var operandVariations = allOperandVariations[operandIndex];
+                    var variationCount = operandVariations.Count;
+                    if (variationCount > maximumVariation)
                     {
-                        (bestEncodingExtra, bitValue)
-                    };
-
-                    foreach (var otherEncodingExtra in otherEncodingExtras)
-                    {
-                        var otherSelector = otherEncodingExtra.Selector!;
-                        foreach (var otherBitValue in otherSelector.BitValues)
-                        {
-                            var sharedMask = (otherBitValue.BitSelectorMask & bitValue.BitSelectorMask);
-                            if ((sharedMask & bitValue.BitSelectorValue) == (sharedMask & otherBitValue.BitSelectorValue))
-                            {
-                                bitValuesForVariation.Add((otherEncodingExtra, otherBitValue));
-                                break;
-                            }
-                        }
+                        maximumVariation = variationCount;
+                        operandIndexWithMaximumVariation = operandIndex;
                     }
-                    
+                }
+
+                foreach (var operandVariation in allOperandVariations[operandIndexWithMaximumVariation])
+                {
                     var instructionVariation = new InstructionVariation()
                     {
                         Mnemonic = mnemonic,
@@ -334,38 +302,141 @@ partial class Arm64Processor
                         Instruction = instruction,
                     };
 
-                    foreach (var listOfVariationForOneOperand in allOperandVariations)
+                    for (var operandIndex = 0; operandIndex < allOperandVariations.Count; operandIndex++)
                     {
-                        OperandVariation? operandVariation = null;
-                        if (listOfVariationForOneOperand.Count == 1)
+                        var operandVariations = allOperandVariations[operandIndex];
+                        if (operandVariations.Count == 1)
                         {
-                            operandVariation = listOfVariationForOneOperand[0];
+                            instructionVariation.Operands.Add(operandVariations[0]);
+                        }
+                        else if (operandIndex == operandIndexWithMaximumVariation)
+                        {
+                            instructionVariation.BitfieldMask |= operandVariation.BitfieldMask;
+                            instructionVariation.BitfieldValue |= operandVariation.BitfieldSets;
+                            instructionVariation.Operands.Add(operandVariation);
                         }
                         else
                         {
-                            foreach (var operandVariationTry in listOfVariationForOneOperand)
+                            OperandVariation? otherOperandVariation = null;
+                            foreach (var otherOperand in operandVariations)
                             {
-                                var selectedSymbol = bitValuesForVariation.First(x => x.SymbolExtract == operandVariationTry.EncodingExtract).SelectedSymbol;
-                                if (operandVariationTry.BitValue == selectedSymbol)
+                                if (otherOperand.AcceptedBitValues.Any(x => operandVariation.AcceptedBitValues.Any(y =>
                                 {
-                                    operandVariation = operandVariationTry;
-                                    break;
+                                    var sharedMask = x.BitSelectorMask & y.BitSelectorMask;
+
+
+                                    return sharedMask != 0 && (x.BitSelectorValue & sharedMask) == (y.BitSelectorValue & sharedMask);
+                                })))
+                                {
+                                    Debug.Assert(otherOperandVariation is null);
+                                    otherOperandVariation = otherOperand;
                                 }
                             }
-
-                            Debug.Assert(operandVariation is not null);
+                            Debug.Assert(otherOperandVariation is not null);
+                            instructionVariation.Operands.Add(otherOperandVariation);
                         }
-
-                        instructionVariation.BitfieldMask |= operandVariation.BitfieldMask;
-                        instructionVariation.BitfieldValue |= operandVariation.BitfieldSets;
-                        instructionVariation.Operands.Add(operandVariation);
                     }
 
                     variations.Add(instructionVariation);
-
-                    encodingVariations.Add(bitValuesForVariation);
                 }
 
+                /*
+                if (sameBitNameCheck)
+                {
+                   
+                }
+                else
+                {
+                    // More complicated case. We have multiple producer of variations, but they are all sharing the same encoding
+                    // For example, Vn.T has {8B} and implies that Vd is {B}:
+                    //
+                    // Instruction ADDV_asimdall_only - ADDV        Vd, Vn.T - Count Selectors: 2 - Encoding Variations: 5
+                    //         Vn.T,    Vd
+                    //     [0] Vn.8B,   B
+                    //     [1] Vn.16B,  B
+                    //     [2] Vn.4H,   H
+                    //     [3] Vn.8H,   H
+                    //     [4] Vn.4S,   S
+                    var bestEncodingExtra = encodingSymbolExtracts.Where(x => x?.Selector is not null).OrderByDescending(x => x.Selector!.BitSize).First();
+                    var selector = bestEncodingExtra!.Selector!;
+
+                    // For now, we only support a selector that is overlapping with all other selectors
+                    // So that we can "merge" their output instead of "multiplying" their output
+                    // After this loop, we have the guarantee that best selector can encode the other selectors and that it forces a value for the other selectors.
+                    var otherEncodingExtras = encodingSymbolExtracts.Where(x => x != bestEncodingExtra).ToList();
+                    foreach (var otherEncodingExtra in otherEncodingExtras)
+                    {
+                        // Check that the encoding both selectors is overlapping
+                        Debug.Assert((selector.BitEncodingMask & otherEncodingExtra.Selector!.BitEncodingMask) != 0);
+                        // Check that the encoding of other selectors are not outside the best selector
+                        Debug.Assert((~selector.BitEncodingMask & otherEncodingExtra.Selector!.BitEncodingMask) == 0);
+                    }
+
+                    // Then for each variation of the best selector, we are going to find the associated variations of the other selectors
+                    var encodingVariations = new List<List<(EncodingSymbolExtract SymbolExtract, EncodingBitValue SelectedSymbol)>>();
+
+                    foreach (var bitValue in selector.BitValues)
+                    {
+                        var bitValuesForVariation = new List<(EncodingSymbolExtract SymbolExtract, EncodingBitValue SelectedSymbol)>
+                    {
+                        (bestEncodingExtra, bitValue)
+                    };
+
+                        foreach (var otherEncodingExtra in otherEncodingExtras)
+                        {
+                            var otherSelector = otherEncodingExtra.Selector!;
+                            foreach (var otherBitValue in otherSelector.BitValues)
+                            {
+                                var sharedMask = (otherBitValue.BitSelectorMask & bitValue.BitSelectorMask);
+                                if ((sharedMask & bitValue.BitSelectorValue) == (sharedMask & otherBitValue.BitSelectorValue))
+                                {
+                                    bitValuesForVariation.Add((otherEncodingExtra, otherBitValue));
+                                    break;
+                                }
+                            }
+                        }
+
+                        var instructionVariation = new InstructionVariation()
+                        {
+                            Mnemonic = mnemonic,
+                            BitfieldMask = instruction.BitfieldMask,
+                            BitfieldValue = instruction.BitfieldValue,
+                            Instruction = instruction,
+                        };
+
+                        foreach (var listOfVariationForOneOperand in allOperandVariations)
+                        {
+                            OperandVariation? operandVariation = null;
+                            if (listOfVariationForOneOperand.Count == 1)
+                            {
+                                operandVariation = listOfVariationForOneOperand[0];
+                            }
+                            else
+                            {
+                                foreach (var operandVariationTry in listOfVariationForOneOperand)
+                                {
+                                    var selectedSymbol = bitValuesForVariation.First(x => x.SymbolExtract == operandVariationTry.EncodingExtract).SelectedSymbol;
+                                    if (operandVariationTry.AcceptedBitValues.Contains(selectedSymbol))
+                                    {
+                                        operandVariation = operandVariationTry;
+                                        break;
+                                    }
+                                }
+
+                                Debug.Assert(operandVariation is not null);
+                            }
+
+                            instructionVariation.BitfieldMask |= operandVariation.BitfieldMask;
+                            instructionVariation.BitfieldValue |= operandVariation.BitfieldSets;
+                            instructionVariation.Operands.Add(operandVariation);
+                        }
+
+                        variations.Add(instructionVariation);
+
+                        encodingVariations.Add(bitValuesForVariation);
+                    }
+                }
+                */
                 // Uncomment the following code to print the variations
                 //Console.WriteLine($"Instruction {instruction.Id} - {instruction.FullSyntax} - Count Selectors: {encodingSymbolExtracts.Count} - Encoding Variations: {encodingVariations.Count}");
                 //for (var i = 0; i < encodingVariations.Count; i++)
@@ -377,7 +448,7 @@ partial class Arm64Processor
         }
     }
 
-    private void GetOperandVariations(Instruction instruction, Operand operand, List<OperandVariation> operandVariations)
+    private void GetOperandVariations(int operandIndex, Instruction instruction, Operand operand, List<OperandVariation> operandVariations)
     {
         var descriptor = operand.Descriptor;
         Debug.Assert(descriptor is not null);
@@ -386,10 +457,10 @@ partial class Arm64Processor
         switch (descriptor.Kind)
         {
             case Arm64OperandKind.Register:
-                GetRegisterOperandVariation(instruction, (RegisterOperandDescriptor)descriptor, operandVariations);
+                GetRegisterOperandVariation(operandIndex, instruction, (RegisterOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.RegisterGroup:
-                GetRegisterGroupOperandVariation(instruction,(RegisterGroupOperandDescriptor)descriptor, operandVariations);
+                GetRegisterGroupOperandVariation(operandIndex, instruction,(RegisterGroupOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.SystemRegister:
                 GetSystemRegisterVariation(instruction, (SystemRegisterOperandDescriptor)descriptor, operandVariations);
@@ -407,7 +478,7 @@ partial class Arm64Processor
                 GetShiftOperandVariations(instruction, (ShiftOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Extend:
-                GetExtendOperandVariations((ExtendOperandDescriptor)descriptor, operandVariations);
+                GetExtendOperandVariations(instruction, (ExtendOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Enum:
                 GetEnumVariations((EnumOperandDescriptor)descriptor, operandVariations);
@@ -566,7 +637,7 @@ partial class Arm64Processor
             encodingExtract.Selector = selector;
             
             operandVariation.EncodingExtract = encodingExtract;
-            operandVariation.BitValue = bitValueX;
+            operandVariation.AcceptedBitValues.Add(bitValueX);
 
             // operandVariation2 is W
             var operandVariation2 = new OperandVariation()
@@ -576,8 +647,9 @@ partial class Arm64Processor
                 OperandType = descriptor.IsPreIncrement ? $"{operandTypePair.IndexRegisterW}.PreIncrement" : operandTypePair.IndexRegisterW,
                 BitfieldMask = 1 << 13,
                 EncodingExtract = encodingExtract,
-                BitValue = bitValueW,
             };
+            operandVariation2.AcceptedBitValues.Add(bitValueW);
+
             operandVariation2.WriteEncodings.AddRange(operandVariation.WriteEncodings);
             operandVariations.Add(operandVariation2);
 
@@ -1057,8 +1129,8 @@ partial class Arm64Processor
                                 OperandType = operandType,
                                 BitfieldMask = bitValue.BitSelectorMask,
                                 BitfieldSets = bitValue.BitSelectorValue,
-                                BitValue = bitValue,
                             };
+                            newOperandVariation.AcceptedBitValues.Add(bitValue);
 
                             GenerateEncodingForExtract(instruction, descriptor.Extract, newOperandVariation, null, "immediate");
                             operandVariations.Add(newOperandVariation);
@@ -1218,37 +1290,121 @@ partial class Arm64Processor
         operandVariations.Add(operandVariation);
     }
 
-    private static void GetExtendOperandVariations(ExtendOperandDescriptor descriptor, List<OperandVariation> variations)
+    private static void GetExtendOperandVariations(Instruction instruction, ExtendOperandDescriptor descriptor, List<OperandVariation> variations)
     {
-        var operandVariation = new OperandVariation
-        {
-            Descriptor = descriptor,
-            OperandName = GetNormalizedOperandName(descriptor.Name),
-            OperandType = "Arm64ExtendKind",
-            OperandName2 = "amount",
-            OperandType2 = "int"
-        };
+        var dynamicRegisterXOrW = instruction.Operands.Where(x => x.Descriptor is RegisterOperandDescriptor registerDescriptor && registerDescriptor.DynamicRegisterXOrWSelector != null).Select(x => x.Descriptor).FirstOrDefault();
 
-        if (descriptor.IsOptional)
+        if (dynamicRegisterXOrW is null)
         {
-            operandVariation.DefaultValue = "Arm64ExtendKind.LSL";
-            operandVariation.DefaultValue2 = "0";
+            var operandVariation = new OperandVariation
+            {
+                Descriptor = descriptor,
+                OperandName = GetNormalizedOperandName(descriptor.Name),
+                OperandType = "Arm64ExtendKind",
+                OperandName2 = "amount",
+                OperandType2 = "int"
+            };
+
+            if (descriptor.IsOptional)
+            {
+                operandVariation.DefaultValue = "Arm64ExtendKind.LSL";
+                operandVariation.DefaultValue2 = "0";
+            }
+
+            operandVariation.WriteEncodings.Add((w, variable, instruction, operand, index) =>
+            {
+                w.WriteLine($"var _extend_ = {operandVariation.OperandName} switch");
+                w.OpenBraceBlock();
+                w.WriteLine($"Arm64ExtendKind.None => throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), \"Invalid extend value `None`. Expecting a valid extend kind\"),");
+                w.WriteLine($"Arm64ExtendKind.LSL => (byte){(descriptor.Is64Bit ? "Arm64ExtendKind.UXTX" : "Arm64ExtendKind.UXTW")},");
+                w.WriteLine($"_ => (byte){operandVariation.OperandName}");
+                w.CloseBraceBlockStatement();
+            });
+
+            GenerateBitRangeEncodingFromValue($"(byte)(_extend_ - 1)", "extend", descriptor.ExtendEncoding, operandVariation.WriteEncodings);
+            GenerateBitRangeEncodingFromValue($"(byte){operandVariation.OperandName2}", "amount", descriptor.AmountEncoding, operandVariation.WriteEncodings);
+
+            variations.Add(operandVariation);
         }
-
-        operandVariation.WriteEncodings.Add((w, variable, instruction, operand, index) =>
+        else
         {
-            w.WriteLine($"var _extend_ = {operandVariation.OperandName} switch");
-            w.OpenBraceBlock();
-            w.WriteLine($"Arm64ExtendKind.None => throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), \"Invalid extend value `None`. Expecting a valid extend kind\"),");
-            w.WriteLine($"Arm64ExtendKind.LSL => (byte){(descriptor.Is64Bit ? "Arm64ExtendKind.UXTX" : "Arm64ExtendKind.UXTW")},");
-            w.WriteLine($"_ => (byte){operandVariation.OperandName}");
-            w.CloseBraceBlockStatement();
-        });
+            {
+                var operandVariationX = new OperandVariation
+                {
+                    Descriptor = descriptor,
+                    OperandName = GetNormalizedOperandName(descriptor.Name),
+                    OperandType = "Arm64ExtendXKind",
+                    OperandName2 = "amount",
+                    OperandType2 = "int",
+                    EncodingExtract = descriptor.ExtendExtract,
+                };
+                operandVariationX.AcceptedBitValues.AddRange(descriptor.ExtendExtract!.Selector!.BitValues.Where(x => x.Text.EndsWith("X")));
 
-        GenerateBitRangeEncodingFromValue($"(byte)(_extend_ - 1)", "extend", descriptor.ExtendEncoding, operandVariation.WriteEncodings);
-        GenerateBitRangeEncodingFromValue($"(byte){operandVariation.OperandName2}", "amount", descriptor.AmountEncoding, operandVariation.WriteEncodings);
-        
-        variations.Add(operandVariation);
+                if (descriptor.Is64Bit && descriptor.IsOptional)
+                {
+                    operandVariationX.DefaultValue = "default";
+                    operandVariationX.DefaultValue2 = "0";
+                }
+
+                operandVariationX.WriteEncodings.Add((w, variable, instruction, operand, index) =>
+                {
+                    w.WriteLine($"var _extend_ = {operandVariationX.OperandName}.ExtendKind switch");
+                    w.OpenBraceBlock();
+                    if (descriptor.Is64Bit)
+                    {
+                        w.WriteLine($"Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,");
+                        w.WriteLine($"Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,");
+                    }
+                    else
+                    {
+                        w.WriteLine($"Arm64ExtendKind.None => throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariationX.OperandName}), \"Invalid extend value `None`. Expecting a valid extend kind\"),");
+                        w.WriteLine($"Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTW,");
+                    }
+                    w.WriteLine($"_ => (byte){operandVariationX.OperandName}.ExtendKind");
+                    w.CloseBraceBlockStatement();
+                });
+
+                GenerateBitRangeEncodingFromValue($"(byte)(_extend_ - 1)", "extend", descriptor.ExtendEncoding, operandVariationX.WriteEncodings);
+                GenerateBitRangeEncodingFromValue($"(byte){operandVariationX.OperandName2}", "amount", descriptor.AmountEncoding, operandVariationX.WriteEncodings);
+
+                variations.Add(operandVariationX);
+            }
+            {
+                var operandVariationW = new OperandVariation
+                {
+                    Descriptor = descriptor,
+                    OperandName = GetNormalizedOperandName(descriptor.Name),
+                    OperandType = "Arm64ExtendWKind",
+                    OperandName2 = "amount",
+                    OperandType2 = "int",
+                    EncodingExtract = descriptor.ExtendExtract,
+                };
+                operandVariationW.AcceptedBitValues.AddRange(descriptor.ExtendExtract!.Selector!.BitValues.Where(x => !x.Text.EndsWith("X")));
+
+                operandVariationW.WriteEncodings.Add((w, variable, instruction, operand, index) =>
+                {
+                    w.WriteLine($"var _extend_ = {operandVariationW.OperandName}.ExtendKind switch");
+                    w.OpenBraceBlock();
+                    if (descriptor.Is64Bit)
+                    {
+                        w.WriteLine($"Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,");
+                        w.WriteLine($"Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,");
+                    }
+                    else
+                    {
+                        w.WriteLine($"Arm64ExtendKind.None => throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariationW.OperandName}), \"Invalid extend value `None`. Expecting a valid extend kind\"),");
+                        w.WriteLine($"Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTW,");
+                    }
+                    w.WriteLine($"_ => (byte){operandVariationW.OperandName}.ExtendKind");
+                    w.CloseBraceBlockStatement();
+                });
+
+                GenerateBitRangeEncodingFromValue($"(byte)(_extend_ - 1)", "extend", descriptor.ExtendEncoding, operandVariationW.WriteEncodings);
+                GenerateBitRangeEncodingFromValue($"(byte){operandVariationW.OperandName2}", "amount", descriptor.AmountEncoding, operandVariationW.WriteEncodings);
+
+                variations.Add(operandVariationW);
+            }
+        }
     }
 
     private static (string Default, string? IndexRegisterW) GetMemoryOperandType(MemoryOperandDescriptor memory)
@@ -1275,10 +1431,10 @@ partial class Arm64Processor
         }
     }
     
-    private void GetRegisterGroupOperandVariation(Instruction instruction, RegisterGroupOperandDescriptor descriptor, List<OperandVariation> operandVariations)
+    private void GetRegisterGroupOperandVariation(int operandIndex, Instruction instruction, RegisterGroupOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
         var registerVariations = new List<OperandVariation>();
-        GetRegisterOperandVariation(instruction, descriptor.Register, registerVariations);
+        GetRegisterOperandVariation(operandIndex, instruction, descriptor.Register, registerVariations);
         foreach (var registerVariation in registerVariations)
         {
             var operandName = GetNormalizedOperandName(descriptor.Name);
@@ -1296,9 +1452,12 @@ partial class Arm64Processor
                 OperandType = operandType,
                 BitfieldMask = registerVariation.BitfieldMask,
                 BitfieldSets = registerVariation.BitfieldSets,
-                BitValue = registerVariation.BitValue,
                 EncodingExtract = registerVariation.EncodingExtract,
             };
+            operandVariation.AcceptedBitValues.AddRange(registerVariation.AcceptedBitValues);
+
+            // TODO: test variations
+
             operandVariation.WriteEncodings.AddRange(registerVariation.WriteEncodings);
             GenerateEncodingForExtract(instruction, descriptor.IndexerExtract, operandVariation, "ElementIndex", "element indexer");
 
@@ -1306,7 +1465,7 @@ partial class Arm64Processor
         }
     }
 
-    private static void GetRegisterOperandVariation(Instruction instruction, RegisterOperandDescriptor register, List<OperandVariation> operandVariations)
+    private static void GetRegisterOperandVariation(int operandIndex, Instruction instruction, RegisterOperandDescriptor register, List<OperandVariation> operandVariations)
     {
         var kind = register.RegisterKind;
 
@@ -1316,20 +1475,44 @@ partial class Arm64Processor
 
         List<WriteEncodingDelegate> encodings = new();
 
-
+        var testArguments = new List<RegisterTestArgument>();
+        
         switch (kind)
         {
             case Arm64RegisterEncodingKind.X:
                 baseType = "Arm64RegisterX";
+                if (instruction.Id == "CHKFEAT_hf_hints")
+                {
+                    testArguments.Add(new("X", 16));
+                }
+                else
+                {
+                    testArguments.Add(new("X", 0 + operandIndex));
+                    testArguments.Add(new("X", 15 + operandIndex));
+
+                    if (register.Condition != BitRangeCondition.AllNonOne)
+                    {
+                        if (!register.IsOptional) testArguments.Add(new("X", 31));
+                    }
+                }
                 break;
             case Arm64RegisterEncodingKind.XOrSP:
                 baseType = "Arm64RegisterXOrSP";
+                testArguments.Add(new("X", 1 + operandIndex));
+                testArguments.Add(new("X", 17 + operandIndex));
+                testArguments.Add(new("SP", 31));
                 break;
             case Arm64RegisterEncodingKind.W:
                 baseType = "Arm64RegisterW";
+                testArguments.Add(new("W", 0 + operandIndex));
+                testArguments.Add(new("W", 15 + operandIndex));
+                if (!register.IsOptional) testArguments.Add(new("W", 31));
                 break;
             case Arm64RegisterEncodingKind.WOrWSP:
                 baseType = "Arm64RegisterWOrWSP";
+                testArguments.Add(new("W", 1 + operandIndex));
+                testArguments.Add(new("W", 17 + operandIndex));
+                testArguments.Add(new("WSP", 31));
                 break;
             case Arm64RegisterEncodingKind.DynamicXOrW:
                 baseType = "Arm64RegisterXOrW";
@@ -1341,19 +1524,92 @@ partial class Arm64Processor
 
                 if (xOrWSelector.BitValues.Count == 2)
                 {
+                    // Simple case, bit 0 is W, bit 1 is X
                     var xSet = xOrWSelector.BitValues.Find(x => x.Text == "X")!;
                     var wSet = xOrWSelector.BitValues.Find(x => x.Text == "W")!;
                     Debug.Assert(wSet.BitSelectorValue == 0);
                     encodings.Add((w, variable, instr, op, opIndex) =>
                     {
                         Debug.Assert(xSet.BitSelectorValue != 0);
-                        w.WriteLine($"if ({operandName}.Kind == Arm64RegisterKind.X) {variable} = 0x{xSet!.BitSelectorValue:X8}U;");
+                        w.WriteLine($"if ({operandName}.Kind == Arm64RegisterKind.X) {variable} |= 0x{xSet!.BitSelectorValue:X8}U;");
                     });
+
+                    testArguments.Add(new("X", 1 + operandIndex));
+                    testArguments.Add(new("W", 1 + operandIndex));
+                    testArguments.Add(new("X", 14 + operandIndex));
+                    testArguments.Add(new("W", 14 + operandIndex));
+                    if (!register.IsOptional) testArguments.Add(new("X", 31));
+                    if (!register.IsOptional) testArguments.Add(new("W", 31));
                 }
                 else
                 {
-                    //Debug.Assert(xOrWSelector.BitValues.Count == 5, $"Unexpected DynamicXOrW Count = {xOrWSelector.BitValues.Count} while expecting 5");
+                    var operandVariationX = new OperandVariation()
+                    {
+                        Descriptor = register,
+                        EncodingExtract = xOrWExtract,
+                        OperandName = operandName,
+                        OperandType = "Arm64RegisterX",
+                    };
+                    operandVariationX.AcceptedBitValues.AddRange(xOrWSelector.BitValues.Where(x => x.Text == "X"));
+                    operandVariationX.TestArguments.Add(new RegisterTestArgument("X", 1 + operandIndex));
+                    operandVariationX.TestArguments.Add(new RegisterTestArgument("X", 31));
+
+                    var encodingX = GetRegisterIndexEncoding(instruction, register, operandVariationX);
+                    Debug.Assert(encodingX is not null);
+                    operandVariationX.WriteEncodings.Add(encodingX);
+                    
+                    var operandVariationW = new OperandVariation()
+                    {
+                        Descriptor = register,
+                        EncodingExtract = xOrWExtract,
+                        OperandName = operandName,
+                        OperandType = "Arm64RegisterW",
+                    };
+                    operandVariationW.TestArguments.Add(new RegisterTestArgument("W", 1 + operandIndex));
+                    operandVariationW.TestArguments.Add(new RegisterTestArgument("W", 31));
+                    operandVariationW.AcceptedBitValues.AddRange(xOrWSelector.BitValues.Where(x => x.Text == "W"));
+
+                    var encodingW = GetRegisterIndexEncoding(instruction, register, operandVariationW);
+                    Debug.Assert(encodingW is not null);
+                    operandVariationW.WriteEncodings.Add(encodingW);
+                    
+                    operandVariations.Add(operandVariationX);
+                    operandVariations.Add(operandVariationW);
+                    Debug.Assert(register.IndexerExtract is null);
+                    return;
+
+                    //encodings.Add((w, variable, instr, op, opIndex) =>
+                    //    {
+                    //        string? expectingRegister = null;
+                    //        foreach (var bitValue in xOrWSelector.BitValues)
+                    //        {
+                    //            var sharedMask = (bitValue.BitSelectorMask & instr.BitfieldMask);
+                    //            if (sharedMask != 0 && (sharedMask & bitValue.BitSelectorValue) == (sharedMask & instr.BitfieldValue))
+                    //            {
+                    //                if (expectingRegister != null)
+                    //                {
+                    //                    Debug.Assert(expectingRegister == bitValue.Text);
+                    //                }
+                    //                else
+                    //                {
+                    //                    expectingRegister = bitValue.Text;
+                    //                }
+                    //            }
+                    //        }
+
+                    //        if (expectingRegister == null)
+                    //        {
+                    //            Console.WriteLine($"No Matching for {instr.Instruction.Id}");
+                    //        }
+                    //        else
+                    //        {
+                    //            Console.WriteLine($"Matching OK {instr.Instruction.Id} with {expectingRegister}");
+                    //        }
+                    //    }
+                    //);
                 }
+
+
 
                 //// For X, this will be handled by Extend
                 //operandVariations.Add(new OperandVariation
@@ -1377,28 +1633,41 @@ partial class Arm64Processor
                 break;
             case Arm64RegisterEncodingKind.B:
                 baseType = "Arm64RegisterB";
+                testArguments.Add(new("B", 0 + operandIndex));
+                testArguments.Add(new("B", 31));
                 break;
             case Arm64RegisterEncodingKind.H:
                 baseType = "Arm64RegisterH";
+                testArguments.Add(new("H", 0 + operandIndex));
+                testArguments.Add(new("H", 31));
                 break;
             case Arm64RegisterEncodingKind.S:
                 baseType = "Arm64RegisterS";
+                testArguments.Add(new("S", 0 + operandIndex));
+                testArguments.Add(new("S", 31));
                 break;
             case Arm64RegisterEncodingKind.D:
                 baseType = "Arm64RegisterD";
+                testArguments.Add(new("D", 0 + operandIndex));
+                testArguments.Add(new("D", 31));
                 break;
             case Arm64RegisterEncodingKind.Q:
                 baseType = "Arm64RegisterQ";
+                testArguments.Add(new("Q", 0 + operandIndex));
+                testArguments.Add(new("Q", 31));
                 break;
             case Arm64RegisterEncodingKind.Z:
                 baseType = "Arm64RegisterZ";
+                testArguments.Add(new("Z", 0 + operandIndex));
+                testArguments.Add(new("Z", 31));
                 break;
             case Arm64RegisterEncodingKind.C:
                 baseType = "Arm64RegisterC";
+                testArguments.Add(new("C", 0 + operandIndex));
+                testArguments.Add(new("C", 15));
                 break;
             case Arm64RegisterEncodingKind.DynamicVScalar:
             {
-
                 baseType = "Arm64Register";
                 var dynamicRegisterExtract = register.DynamicRegisterXOrWSelector;
                 Debug.Assert(dynamicRegisterExtract is not null);
@@ -1411,9 +1680,17 @@ partial class Arm64Processor
                     var registerType = $"{baseType}{bitValue.Text}";
                     Debug.Assert(!string.IsNullOrEmpty(bitValue.Text));
 
+                    testArguments.Clear();
                     if (register.IndexerExtract != null)
                     {
                         registerType = $"{registerType}.Indexed";
+                        testArguments.Add(new(bitValue.Text, 0 + operandIndex, 0));
+                        testArguments.Add(new(bitValue.Text, 31 + operandIndex, 1));
+                    }
+                    else
+                    {
+                        testArguments.Add(new(bitValue.Text, 1 + operandIndex));
+                        testArguments.Add(new(bitValue.Text, 31 + operandIndex));
                     }
 
                     var operandVariation = new OperandVariation
@@ -1424,10 +1701,11 @@ partial class Arm64Processor
                         OperandType = registerType,
                         BitfieldMask = bitValue.BitSelectorMask,
                         BitfieldSets = bitValue.BitSelectorValue,
-                        BitValue = bitValue,
                     };
+                    operandVariation.AcceptedBitValues.Add(bitValue);
+                    operandVariation.TestArguments.AddRange(testArguments);
 
-                    var indexEncoding = GetRegisterIndexEncoding(instruction, register, operandVariation);
+                        var indexEncoding = GetRegisterIndexEncoding(instruction, register, operandVariation);
                     if (indexEncoding != null)
                     {
                         operandVariation.WriteEncodings.Add(indexEncoding);
@@ -1452,9 +1730,17 @@ partial class Arm64Processor
                         {
                             var vArrangementType = $"{baseType}_{bitValue.Text}";
 
+                            testArguments.Clear();
                             if (register.IndexerExtract != null)
                             {
                                 vArrangementType = $"{vArrangementType}.Indexed";
+                                testArguments.Add(new("V", 0 + operandIndex, bitValue.Text, 0));
+                                testArguments.Add(new("V", 30 + operandIndex, bitValue.Text, 1));
+                            }
+                            else
+                            {
+                                testArguments.Add(new("V", 0 + operandIndex, bitValue.Text));
+                                testArguments.Add(new("V", 30 + operandIndex, bitValue.Text));
                             }
 
                             var operandVariation = new OperandVariation
@@ -1465,8 +1751,9 @@ partial class Arm64Processor
                                 OperandType = vArrangementType,
                                 BitfieldMask = bitValue.BitSelectorMask,
                                 BitfieldSets = bitValue.BitSelectorValue,
-                                BitValue = bitValue,
                             };
+                            operandVariation.AcceptedBitValues.Add(bitValue);
+                            operandVariation.TestArguments.AddRange(testArguments);
 
                             var indexEncoding = GetRegisterIndexEncoding(instruction, register, operandVariation);
                             if (indexEncoding is not null)
@@ -1503,15 +1790,18 @@ partial class Arm64Processor
         if (register.IndexerExtract != null)
         {
             baseType = $"{baseType}.Indexed";
+            var newTestArguments = testArguments.Select(x => new RegisterTestArgument(x.BaseRegisterName, x.Index, x.VKind, 1)).ToList();
+            testArguments.Clear();
+            testArguments.AddRange(newTestArguments);
         }
-
-
+        
         var opVar = new OperandVariation
         {
             Descriptor = register,
             OperandName = operandName,
             OperandType = baseType,
         };
+        opVar.TestArguments.AddRange(testArguments);
 
         var directIndexEncoding = GetRegisterIndexEncoding(instruction, register, opVar);
         if (directIndexEncoding is not null)
@@ -1773,16 +2063,18 @@ partial class Arm64Processor
 
         public uint BitfieldSets { get; set; }
 
-        public EncodingBitValue? BitValue { get; set; }
+        public List<EncodingBitValue> AcceptedBitValues { get; } = new();
 
         public string? DefaultValue { get; set; }
 
         public string? DefaultValue2 { get; set; }
 
+        public List<TestArgument> TestArguments { get; } = new();
+
         public List<PrepareWriteEncodingDelegate> PrepareWriteEncodings { get; } = new();
 
         public List<WriteEncodingDelegate> WriteEncodings { get; } = new();
-        
+
         public void WriterParameters(CodeWriter writer)
         {
             writer.Write($"{OperandType} {OperandName}");

@@ -261,6 +261,8 @@ sealed class ExtendOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Exte
     public bool Is64Bit { get; set; }
 
     public Arm64ExtendEncodingKind  EncodingKind { get; set; }
+    
+    public EncodingSymbolExtract? ExtendExtract { get; set; }
 
     public override string ToString() => $"Extend {ExtendEncoding}, {AmountEncoding}, Is64Bit: {Is64Bit}";
 
@@ -294,6 +296,8 @@ sealed class RegisterOperandDescriptor() : OperandDescriptor(Arm64OperandKind.Re
     public Arm64RegisterEncodingKind RegisterKind { get; set; }
 
     public Arm64RegisterIndexEncodingKind RegisterIndexEncodingKind { get; set; }
+
+    public BitRangeCondition Condition { get; set; }
 
     public int IndexerIndex
     {

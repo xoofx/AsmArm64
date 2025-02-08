@@ -30,6 +30,7 @@ internal sealed class InstructionProcessor
     private readonly EncodingSymbolExtractMap _immediates;
     private readonly EncodingSymbolExtractMap _processStateFields;
     private readonly EncodingSymbolExtractMap _registerIndex;
+    private readonly EncodingSymbolExtractMap _extendExtracts;
 
     private bool _hasErrors;
 
@@ -46,6 +47,7 @@ internal sealed class InstructionProcessor
         _immediates = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.Immediate);
         _processStateFields = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.ProcessStateField);
         _registerIndex = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.RegisterIndex);
+        _extendExtracts = _instructionSet.GetOrCreateExtractMap(EncodingSymbolExtractMapKind.Extend);
     }
 
     public List<int> InstructionEncodingOffsets { get; } = new();
@@ -666,6 +668,9 @@ internal sealed class InstructionProcessor
                 Debug.Assert(symbol0.BitRanges.Count == 1);
                 extend.ExtendEncoding = symbol0.BitRanges[0];
 
+                // We get the extend extract, but we won't use it for the decoding, but only for the encoding / assembler.
+                extend.ExtendExtract = _extendExtracts.GetOrCreateExtract<EncodingSymbolExtract>(symbol0);
+                
                 var amountSymbol = ((OptionalGroupOperandItem)item1).Items[0].TextElements[0].Symbol!;
                 Debug.Assert(amountSymbol.BitRanges.Count == 1);
                 extend.AmountEncoding = amountSymbol.BitRanges[0];
@@ -1067,11 +1072,6 @@ internal sealed class InstructionProcessor
             DynamicRegisterXOrWSelector = dynamicDescriptor
         };
 
-        if (dynamicDescriptor is not null)
-        {
-            
-        }
-
         var registerNameBuilder = new StringBuilder();
         foreach (var textElement in register.TextElements)
         {
@@ -1083,6 +1083,8 @@ internal sealed class InstructionProcessor
         var symbol = register.TextElements[indexOfIndexEncoding].Symbol;
         if (symbol is not null && symbol.BitNames.Count > 0)
         {
+            descriptor.Condition = symbol.Condition;
+
             int size = symbol.BitSize;
 
             if (symbol.Selector is null)

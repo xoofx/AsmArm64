@@ -1037,7 +1037,14 @@ partial class Arm64Processor
 
     private CodeWriter GetWriter(string fileName, bool isTest = false, bool header = true)
     {
-        var sw = new StreamWriter(Path.Combine(isTest ? _basedOutputTestFolder : _basedOutputFolder, "generated", fileName));
+        var fullPath = Path.Combine(isTest ? _basedOutputTestFolder : _basedOutputFolder, "generated", fileName);
+        var dirName = Path.GetDirectoryName(fullPath);
+        if (!string.IsNullOrEmpty(dirName) && !Directory.Exists(dirName))
+        {
+            Directory.CreateDirectory(dirName);
+        }
+        
+        var sw = new StreamWriter(fullPath);
         var w = new CodeWriter(sw);
 
         if (header)

@@ -233,6 +233,23 @@ class EncodingSymbolsInfo
     public required string Name { get; init; } = string.Empty;
 
     public Dictionary<string, EncodingSymbol> Symbols { get; } = new();
+
+
+    public EncodingSymbolsInfo Clone()
+    {
+        var clone = new EncodingSymbolsInfo
+        {
+            Name = Name
+        };
+        foreach (var pair in Symbols)
+        {
+            clone.Symbols.Add(pair.Key, pair.Value.Clone());
+        }
+        return clone;
+    }
+
+
+
 }
 
 [DebuggerDisplay("Link = {Link}, EncodedIn = {EncodedInText}, BitRanges = {BitRanges.Count}")]
@@ -251,6 +268,8 @@ class EncodingSymbol
 
     public int BitSize { get; set; }
 
+    public BitRangeCondition Condition { get; set; }
+
     [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
     public List<string> BitNames { get; } = new();
 
@@ -262,6 +281,25 @@ class EncodingSymbol
     /// </summary>
     public EncodingSymbolSelector? Selector { get; set; }
 
+    public EncodingSymbol Clone()
+    {
+        var clone = new EncodingSymbol
+        {
+            Link = Link,
+            Name = Name,
+            EncodedInText = EncodedInText,
+            IsSignedImmediate = IsSignedImmediate,
+            BitSize = BitSize
+        };
+        clone.BitNames.AddRange(BitNames);
+        clone.BitRanges.AddRange(BitRanges);
+        if (Selector is not null)
+        {
+            clone.Selector = Selector.Clone();
+        }
+        return clone;
+    }
+
     public void Initialize(Dictionary<string, BitRangeInfo> map)
     {
         // Already initialized
@@ -269,6 +307,12 @@ class EncodingSymbol
 
         var bitItems = new List<BitValueItem>();
         BitValueItem.ParseList(EncodedInText, map, bitItems, BitNames);
+
+        // Copy the condition in simple cases (e.g. registers cannot be 31)
+        if (BitNames.Count == 1 && map.TryGetValue(BitNames[0], out var simpleCondition))
+        {
+            Condition = simpleCondition.Condition;
+        }
 
         var bitSize = 0;
         foreach (var bitItem in bitItems)
@@ -367,7 +411,7 @@ class EncodingSymbol
 /// <summary>
 /// A selector associate a set of bits from an encoding to a value
 /// </summary>
-record EncodingSymbolSelector
+class EncodingSymbolSelector
 {
     public int Index { get; set; }
 
@@ -400,6 +444,25 @@ record EncodingSymbolSelector
     /// </summary>
     [JsonIgnore]
     public List<Action<int>> OnIndexAssigned { get; } = new();
+
+    public EncodingSymbolSelector Clone()
+    {
+        var clone = new EncodingSymbolSelector
+        {
+            Index = Index,
+            BitSize = BitSize,
+            Kind = Kind
+        };
+        clone.BitNames.AddRange(BitNames);
+        clone.RelativeBitRanges.AddRange(RelativeBitRanges);
+        clone.BitRanges.AddRange(BitRanges);
+        clone.BitEncodingMask = BitEncodingMask;
+        foreach (var bitValue in BitValues)
+        {
+            clone.BitValues.Add(bitValue.Clone());
+        }
+        return clone;
+    }
 
     public string GetId()
     {
@@ -492,7 +555,7 @@ record EncodingSymbolSelector
     }
 }
 
-record EncodingBitValue
+class EncodingBitValue
 {
     public EncodingBitValueKind Kind { get; set; }
 
@@ -532,6 +595,28 @@ record EncodingBitValue
     public int Addend { get; set; }
 
     public bool HasNegativeExtract { get; set; }
+
+    public EncodingBitValue Clone()
+    {
+        var clone = new EncodingBitValue
+        {
+            Kind = Kind,
+            Text = Text,
+            IntegerValue = IntegerValue,
+            FloatValue = FloatValue,
+            LocalBitSelectorSize = LocalBitSelectorSize,
+            LocalBitSelectorAsText = LocalBitSelectorAsText,
+            LocalBitSelectorMask = LocalBitSelectorMask,
+            LocalBitSelectorValue = LocalBitSelectorValue,
+            BitSelectorMask = BitSelectorMask,
+            BitSelectorValue = BitSelectorValue,
+            Addend = Addend,
+            HasNegativeExtract = HasNegativeExtract
+        };
+        clone.BitItems.AddRange(BitItems);
+        clone.RelativeBitItems.AddRange(RelativeBitItems);
+        return clone;
+    }
 
     public void AppendUniqueId(StringBuilder builder)
     {

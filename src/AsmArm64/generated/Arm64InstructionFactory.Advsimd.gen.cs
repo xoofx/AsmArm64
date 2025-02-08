@@ -231,19 +231,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ADDHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADDHN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8H Vm_Ta)
-    {
-        uint raw = 0x4E204000U; // Encoding for: ADDHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Add returning high narrow.
-    /// </summary>
-    /// <remarks><code>ADDHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.ADDHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADDHN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
     {
         uint raw = 0x0E604000U; // Encoding for: ADDHN_asimddiff_n
@@ -257,48 +244,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ADDHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADDHN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
-    {
-        uint raw = 0x4E604000U; // Encoding for: ADDHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Add returning high narrow.
-    /// </summary>
-    /// <remarks><code>ADDHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.ADDHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADDHN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
     {
         uint raw = 0x0EA04000U; // Encoding for: ADDHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Add returning high narrow.
-    /// </summary>
-    /// <remarks><code>ADDHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.ADDHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADDHN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
-    {
-        uint raw = 0x4EA04000U; // Encoding for: ADDHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Add returning high narrow.
-    /// </summary>
-    /// <remarks><code>ADDHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.ADDHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADDHN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8H Vm_Ta)
-    {
-        uint raw = 0x4E204000U; // Encoding for: ADDHN2_asimddiff_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Ta.Index << 16;
@@ -322,35 +270,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ADDHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADDHN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
-    {
-        uint raw = 0x4E604000U; // Encoding for: ADDHN2_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Add returning high narrow.
-    /// </summary>
-    /// <remarks><code>ADDHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.ADDHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ADDHN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
     {
         uint raw = 0x4E604000U; // Encoding for: ADDHN2_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Add returning high narrow.
-    /// </summary>
-    /// <remarks><code>ADDHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.ADDHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADDHN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
-    {
-        uint raw = 0x4EA04000U; // Encoding for: ADDHN2_asimddiff_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Ta.Index << 16;
@@ -2497,7 +2419,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>DUP Vd.T, Rn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DUP_asimdins_dr_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DUP(Arm64RegisterV_8B Vd_T, Arm64RegisterXOrW Rn)
+    public static uint DUP(Arm64RegisterV_8B Vd_T, Arm64RegisterW Rn)
     {
         uint raw = 0x0E010C00U; // Encoding for: DUP_asimdins_dr_r
         raw |= (uint)Vd_T.Index;
@@ -2509,7 +2431,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>DUP Vd.T, Rn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DUP_asimdins_dr_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DUP(Arm64RegisterV_16B Vd_T, Arm64RegisterXOrW Rn)
+    public static uint DUP(Arm64RegisterV_16B Vd_T, Arm64RegisterW Rn)
     {
         uint raw = 0x4E010C00U; // Encoding for: DUP_asimdins_dr_r
         raw |= (uint)Vd_T.Index;
@@ -2521,7 +2443,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>DUP Vd.T, Rn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DUP_asimdins_dr_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DUP(Arm64RegisterV_4H Vd_T, Arm64RegisterXOrW Rn)
+    public static uint DUP(Arm64RegisterV_4H Vd_T, Arm64RegisterW Rn)
     {
         uint raw = 0x0E020C00U; // Encoding for: DUP_asimdins_dr_r
         raw |= (uint)Vd_T.Index;
@@ -2533,7 +2455,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>DUP Vd.T, Rn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DUP_asimdins_dr_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DUP(Arm64RegisterV_8H Vd_T, Arm64RegisterXOrW Rn)
+    public static uint DUP(Arm64RegisterV_8H Vd_T, Arm64RegisterW Rn)
     {
         uint raw = 0x4E020C00U; // Encoding for: DUP_asimdins_dr_r
         raw |= (uint)Vd_T.Index;
@@ -2545,7 +2467,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>DUP Vd.T, Rn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DUP_asimdins_dr_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DUP(Arm64RegisterV_2S Vd_T, Arm64RegisterXOrW Rn)
+    public static uint DUP(Arm64RegisterV_2S Vd_T, Arm64RegisterW Rn)
     {
         uint raw = 0x0E040C00U; // Encoding for: DUP_asimdins_dr_r
         raw |= (uint)Vd_T.Index;
@@ -2557,7 +2479,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>DUP Vd.T, Rn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DUP_asimdins_dr_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DUP(Arm64RegisterV_4S Vd_T, Arm64RegisterXOrW Rn)
+    public static uint DUP(Arm64RegisterV_4S Vd_T, Arm64RegisterW Rn)
     {
         uint raw = 0x4E040C00U; // Encoding for: DUP_asimdins_dr_r
         raw |= (uint)Vd_T.Index;
@@ -2569,7 +2491,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>DUP Vd.T, Rn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DUP_asimdins_dr_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint DUP(Arm64RegisterV_2D Vd_T, Arm64RegisterXOrW Rn)
+    public static uint DUP(Arm64RegisterV_2D Vd_T, Arm64RegisterX Rn)
     {
         uint raw = 0x4E080C00U; // Encoding for: DUP_asimdins_dr_r
         raw |= (uint)Vd_T.Index;
@@ -4727,45 +4649,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTL Vd.Ta, Vn.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTL_asimdmisc_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb)
-    {
-        uint raw = 0x4E217800U; // Encoding for: FCVTL_asimdmisc_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert to higher precision long (vector).
-    /// </summary>
-    /// <remarks><code>FCVTL Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTL_asimdmisc_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint FCVTL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb)
     {
         uint raw = 0x0E617800U; // Encoding for: FCVTL_asimdmisc_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert to higher precision long (vector).
-    /// </summary>
-    /// <remarks><code>FCVTL Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTL_asimdmisc_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb)
-    {
-        uint raw = 0x4E617800U; // Encoding for: FCVTL_asimdmisc_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert to higher precision long (vector).
-    /// </summary>
-    /// <remarks><code>FCVTL2 Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTL2_asimdmisc_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb)
-    {
-        uint raw = 0x4E217800U; // Encoding for: FCVTL2_asimdmisc_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         return raw;
@@ -4778,18 +4664,6 @@ static partial class Arm64InstructionFactory
     public static uint FCVTL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb)
     {
         uint raw = 0x4E217800U; // Encoding for: FCVTL2_asimdmisc_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert to higher precision long (vector).
-    /// </summary>
-    /// <remarks><code>FCVTL2 Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTL2_asimdmisc_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb)
-    {
-        uint raw = 0x4E617800U; // Encoding for: FCVTL2_asimdmisc_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         return raw;
@@ -5041,33 +4915,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTN Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
-    {
-        uint raw = 0x4E216800U; // Encoding for: FCVTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert to lower precision narrow (vector).
-    /// </summary>
-    /// <remarks><code>FCVTN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint FCVTN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
     {
         uint raw = 0x0E616800U; // Encoding for: FCVTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert to lower precision narrow (vector).
-    /// </summary>
-    /// <remarks><code>FCVTN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
-    {
-        uint raw = 0x4E616800U; // Encoding for: FCVTN_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         return raw;
@@ -5103,33 +4953,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>FCVTN2 Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.FCVTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
-    {
-        uint raw = 0x4E216800U; // Encoding for: FCVTN2_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert to lower precision narrow (vector).
-    /// </summary>
-    /// <remarks><code>FCVTN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint FCVTN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
     {
         uint raw = 0x4E216800U; // Encoding for: FCVTN2_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert to lower precision narrow (vector).
-    /// </summary>
-    /// <remarks><code>FCVTN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
-    {
-        uint raw = 0x4E616800U; // Encoding for: FCVTN2_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         return raw;
@@ -15328,7 +15154,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOV Vd.Ts[index], Rn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_ins_asimdins_ir_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOV(Arm64RegisterV_B.Indexed Vd_Ts, Arm64RegisterXOrW Rn)
+    public static uint MOV(Arm64RegisterV_B.Indexed Vd_Ts, Arm64RegisterW Rn)
     {
         uint raw = 0x4E011C00U; // Encoding for: MOV_ins_asimdins_ir_r
         raw |= (uint)Vd_Ts.Index;
@@ -15341,7 +15167,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOV Vd.Ts[index], Rn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_ins_asimdins_ir_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOV(Arm64RegisterV_H.Indexed Vd_Ts, Arm64RegisterXOrW Rn)
+    public static uint MOV(Arm64RegisterV_H.Indexed Vd_Ts, Arm64RegisterW Rn)
     {
         uint raw = 0x4E021C00U; // Encoding for: MOV_ins_asimdins_ir_r
         raw |= (uint)Vd_Ts.Index;
@@ -15354,7 +15180,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOV Vd.Ts[index], Rn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_ins_asimdins_ir_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOV(Arm64RegisterV_S.Indexed Vd_Ts, Arm64RegisterXOrW Rn)
+    public static uint MOV(Arm64RegisterV_S.Indexed Vd_Ts, Arm64RegisterW Rn)
     {
         uint raw = 0x4E041C00U; // Encoding for: MOV_ins_asimdins_ir_r
         raw |= (uint)Vd_Ts.Index;
@@ -15367,7 +15193,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOV Vd.Ts[index], Rn</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOV_ins_asimdins_ir_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOV(Arm64RegisterV_D.Indexed Vd_Ts, Arm64RegisterXOrW Rn)
+    public static uint MOV(Arm64RegisterV_D.Indexed Vd_Ts, Arm64RegisterX Rn)
     {
         uint raw = 0x4E081C00U; // Encoding for: MOV_ins_asimdins_ir_r
         raw |= (uint)Vd_Ts.Index;
@@ -16229,48 +16055,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>PMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.PMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint PMULL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x4E20E000U; // Encoding for: PMULL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Polynomial multiply long.
-    /// </summary>
-    /// <remarks><code>PMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.PMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint PMULL(Arm64RegisterV_1Q Vd_Ta, Arm64RegisterV_1D Vn_Tb, Arm64RegisterV_1D Vm_Tb)
     {
         uint raw = 0x0EE0E000U; // Encoding for: PMULL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Polynomial multiply long.
-    /// </summary>
-    /// <remarks><code>PMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.PMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint PMULL(Arm64RegisterV_1Q Vd_Ta, Arm64RegisterV_2D Vn_Tb, Arm64RegisterV_2D Vm_Tb)
-    {
-        uint raw = 0x4EE0E000U; // Encoding for: PMULL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Polynomial multiply long.
-    /// </summary>
-    /// <remarks><code>PMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.PMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint PMULL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x4E20E000U; // Encoding for: PMULL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -16284,19 +16071,6 @@ static partial class Arm64InstructionFactory
     public static uint PMULL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
     {
         uint raw = 0x4E20E000U; // Encoding for: PMULL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Polynomial multiply long.
-    /// </summary>
-    /// <remarks><code>PMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.PMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint PMULL2(Arm64RegisterV_1Q Vd_Ta, Arm64RegisterV_1D Vn_Tb, Arm64RegisterV_1D Vm_Tb)
-    {
-        uint raw = 0x4EE0E000U; // Encoding for: PMULL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -16333,19 +16107,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RADDHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RADDHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RADDHN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8H Vm_Ta)
-    {
-        uint raw = 0x6E204000U; // Encoding for: RADDHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding add returning high narrow.
-    /// </summary>
-    /// <remarks><code>RADDHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RADDHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RADDHN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
     {
         uint raw = 0x2E604000U; // Encoding for: RADDHN_asimddiff_n
@@ -16359,48 +16120,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RADDHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RADDHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RADDHN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
-    {
-        uint raw = 0x6E604000U; // Encoding for: RADDHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding add returning high narrow.
-    /// </summary>
-    /// <remarks><code>RADDHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RADDHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RADDHN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
     {
         uint raw = 0x2EA04000U; // Encoding for: RADDHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding add returning high narrow.
-    /// </summary>
-    /// <remarks><code>RADDHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RADDHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RADDHN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
-    {
-        uint raw = 0x6EA04000U; // Encoding for: RADDHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding add returning high narrow.
-    /// </summary>
-    /// <remarks><code>RADDHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RADDHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RADDHN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8H Vm_Ta)
-    {
-        uint raw = 0x6E204000U; // Encoding for: RADDHN2_asimddiff_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Ta.Index << 16;
@@ -16424,35 +16146,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RADDHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RADDHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RADDHN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
-    {
-        uint raw = 0x6E604000U; // Encoding for: RADDHN2_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding add returning high narrow.
-    /// </summary>
-    /// <remarks><code>RADDHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RADDHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RADDHN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
     {
         uint raw = 0x6E604000U; // Encoding for: RADDHN2_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding add returning high narrow.
-    /// </summary>
-    /// <remarks><code>RADDHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RADDHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RADDHN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
-    {
-        uint raw = 0x6EA04000U; // Encoding for: RADDHN2_asimddiff_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Ta.Index << 16;
@@ -16670,19 +16366,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F088C00U; // Encoding for: RSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>RSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x0F108C00U; // Encoding for: RSHRN_asimdshf_n
@@ -16696,48 +16379,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F108C00U; // Encoding for: RSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>RSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x0F208C00U; // Encoding for: RSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>RSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F208C00U; // Encoding for: RSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>RSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F088C00U; // Encoding for: RSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -16761,35 +16405,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F108C00U; // Encoding for: RSHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>RSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F108C00U; // Encoding for: RSHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>RSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F208C00U; // Encoding for: RSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -16826,19 +16444,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSUBHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSUBHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSUBHN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8H Vm_Ta)
-    {
-        uint raw = 0x6E206000U; // Encoding for: RSUBHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>RSUBHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSUBHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RSUBHN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
     {
         uint raw = 0x2E606000U; // Encoding for: RSUBHN_asimddiff_n
@@ -16852,48 +16457,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSUBHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSUBHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSUBHN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
-    {
-        uint raw = 0x6E606000U; // Encoding for: RSUBHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>RSUBHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSUBHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RSUBHN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
     {
         uint raw = 0x2EA06000U; // Encoding for: RSUBHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>RSUBHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSUBHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSUBHN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
-    {
-        uint raw = 0x6EA06000U; // Encoding for: RSUBHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>RSUBHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSUBHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSUBHN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8H Vm_Ta)
-    {
-        uint raw = 0x6E206000U; // Encoding for: RSUBHN2_asimddiff_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Ta.Index << 16;
@@ -16917,35 +16483,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>RSUBHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.RSUBHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSUBHN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
-    {
-        uint raw = 0x6E606000U; // Encoding for: RSUBHN2_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>RSUBHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSUBHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint RSUBHN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
     {
         uint raw = 0x6E606000U; // Encoding for: RSUBHN2_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Rounding subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>RSUBHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.RSUBHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint RSUBHN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
-    {
-        uint raw = 0x6EA06000U; // Encoding for: RSUBHN2_asimddiff_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Ta.Index << 16;
@@ -17060,19 +16600,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SABAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SABAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABAL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x4E205000U; // Encoding for: SABAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>SABAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SABAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x0E605000U; // Encoding for: SABAL_asimddiff_l
@@ -17086,48 +16613,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SABAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SABAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E605000U; // Encoding for: SABAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>SABAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SABAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x0EA05000U; // Encoding for: SABAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>SABAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA05000U; // Encoding for: SABAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>SABAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABAL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x4E205000U; // Encoding for: SABAL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -17151,35 +16639,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SABAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SABAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E605000U; // Encoding for: SABAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>SABAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SABAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E605000U; // Encoding for: SABAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>SABAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABAL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA05000U; // Encoding for: SABAL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -17294,19 +16756,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SABDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SABDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABDL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x4E207000U; // Encoding for: SABDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference long.
-    /// </summary>
-    /// <remarks><code>SABDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SABDL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x0E607000U; // Encoding for: SABDL_asimddiff_l
@@ -17320,48 +16769,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SABDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SABDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABDL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E607000U; // Encoding for: SABDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference long.
-    /// </summary>
-    /// <remarks><code>SABDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SABDL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x0EA07000U; // Encoding for: SABDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference long.
-    /// </summary>
-    /// <remarks><code>SABDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABDL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA07000U; // Encoding for: SABDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference long.
-    /// </summary>
-    /// <remarks><code>SABDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABDL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x4E207000U; // Encoding for: SABDL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -17385,35 +16795,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SABDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SABDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABDL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E607000U; // Encoding for: SABDL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference long.
-    /// </summary>
-    /// <remarks><code>SABDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SABDL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E607000U; // Encoding for: SABDL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed absolute difference long.
-    /// </summary>
-    /// <remarks><code>SABDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SABDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SABDL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA07000U; // Encoding for: SABDL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -17522,19 +16906,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SADDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SADDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x4E200000U; // Encoding for: SADDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add long (vector).
-    /// </summary>
-    /// <remarks><code>SADDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SADDL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x0E600000U; // Encoding for: SADDL_asimddiff_l
@@ -17548,48 +16919,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SADDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SADDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E600000U; // Encoding for: SADDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add long (vector).
-    /// </summary>
-    /// <remarks><code>SADDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SADDL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x0EA00000U; // Encoding for: SADDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add long (vector).
-    /// </summary>
-    /// <remarks><code>SADDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA00000U; // Encoding for: SADDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add long (vector).
-    /// </summary>
-    /// <remarks><code>SADDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x4E200000U; // Encoding for: SADDL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -17613,35 +16945,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SADDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SADDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E600000U; // Encoding for: SADDL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add long (vector).
-    /// </summary>
-    /// <remarks><code>SADDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SADDL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E600000U; // Encoding for: SADDL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add long (vector).
-    /// </summary>
-    /// <remarks><code>SADDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA00000U; // Encoding for: SADDL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -17810,19 +17116,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SADDW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SADDW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDW(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x4E201000U; // Encoding for: SADDW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add wide.
-    /// </summary>
-    /// <remarks><code>SADDW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SADDW(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x0E601000U; // Encoding for: SADDW_asimddiff_w
@@ -17836,48 +17129,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SADDW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SADDW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDW(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E601000U; // Encoding for: SADDW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add wide.
-    /// </summary>
-    /// <remarks><code>SADDW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SADDW(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x0EA01000U; // Encoding for: SADDW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add wide.
-    /// </summary>
-    /// <remarks><code>SADDW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDW(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA01000U; // Encoding for: SADDW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add wide.
-    /// </summary>
-    /// <remarks><code>SADDW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDW2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x4E201000U; // Encoding for: SADDW2_asimddiff_w
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -17901,35 +17155,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SADDW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SADDW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDW2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E601000U; // Encoding for: SADDW2_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add wide.
-    /// </summary>
-    /// <remarks><code>SADDW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SADDW2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E601000U; // Encoding for: SADDW2_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed add wide.
-    /// </summary>
-    /// <remarks><code>SADDW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SADDW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SADDW2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA01000U; // Encoding for: SADDW2_asimddiff_w
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -18592,19 +17820,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift = 32)
-    {
-        uint raw = 0x6E213800U; // Encoding for: SHLL_asimdmisc_s
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
-        return raw;
-    }
-    /// <summary>
-    /// Shift left long (by element size).
-    /// </summary>
-    /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift = 32)
     {
         uint raw = 0x2E613800U; // Encoding for: SHLL_asimdmisc_s
@@ -18618,48 +17833,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift = 32)
-    {
-        uint raw = 0x6E613800U; // Encoding for: SHLL_asimdmisc_s
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
-        return raw;
-    }
-    /// <summary>
-    /// Shift left long (by element size).
-    /// </summary>
-    /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift = 32)
     {
         uint raw = 0x2EA13800U; // Encoding for: SHLL_asimdmisc_s
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
-        return raw;
-    }
-    /// <summary>
-    /// Shift left long (by element size).
-    /// </summary>
-    /// <remarks><code>SHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHLL_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, byte shift = 32)
-    {
-        uint raw = 0x6EA13800U; // Encoding for: SHLL_asimdmisc_s
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
-        return raw;
-    }
-    /// <summary>
-    /// Shift left long (by element size).
-    /// </summary>
-    /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift = 32)
-    {
-        uint raw = 0x6E213800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
@@ -18683,35 +17859,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift = 32)
-    {
-        uint raw = 0x6E613800U; // Encoding for: SHLL2_asimdmisc_s
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
-        return raw;
-    }
-    /// <summary>
-    /// Shift left long (by element size).
-    /// </summary>
-    /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift = 32)
     {
         uint raw = 0x6E613800U; // Encoding for: SHLL2_asimdmisc_s
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
-        return raw;
-    }
-    /// <summary>
-    /// Shift left long (by element size).
-    /// </summary>
-    /// <remarks><code>SHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHLL2_asimdmisc_s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift = 32)
-    {
-        uint raw = 0x6EA13800U; // Encoding for: SHLL2_asimdmisc_s
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         if (shift != 32) throw new ArgumentOutOfRangeException(nameof(shift), $"Invalid immediate value. Expecting the fixed value 32 instead of {shift}");
@@ -18748,19 +17898,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F088400U; // Encoding for: SHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x0F108400U; // Encoding for: SHRN_asimdshf_n
@@ -18774,48 +17911,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F108400U; // Encoding for: SHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x0F208400U; // Encoding for: SHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F208400U; // Encoding for: SHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F088400U; // Encoding for: SHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -18839,35 +17937,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F108400U; // Encoding for: SHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F108400U; // Encoding for: SHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F208400U; // Encoding for: SHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -19646,49 +18718,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMLAL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMLAL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F402000U; // Encoding for: SMLAL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-add long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMLAL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLAL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMLAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
     {
         uint raw = 0x0F802000U; // Encoding for: SMLAL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-add long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMLAL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLAL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F802000U; // Encoding for: SMLAL_asimdelem_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
@@ -19719,35 +18751,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMLAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMLAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLAL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x4E208000U; // Encoding for: SMLAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>SMLAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMLAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x0E608000U; // Encoding for: SMLAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>SMLAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E608000U; // Encoding for: SMLAL_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -19767,39 +18773,6 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Signed multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>SMLAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA08000U; // Encoding for: SMLAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-add long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMLAL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLAL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F402000U; // Encoding for: SMLAL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
     /// Signed multiply-add long (vector, by element).
     /// </summary>
     /// <remarks><code>SMLAL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
@@ -19815,26 +18788,6 @@ static partial class Arm64InstructionFactory
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= (uint)(_i_ & 0x3) << 20;
             _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-add long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMLAL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLAL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLAL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F802000U; // Encoding for: SMLAL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
             raw |= (uint)(_i_ & 0x1) << 11;
         }
         return raw;
@@ -19864,19 +18817,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLAL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x4E208000U; // Encoding for: SMLAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>SMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMLAL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
     {
         uint raw = 0x4E208000U; // Encoding for: SMLAL2_asimddiff_l
@@ -19890,35 +18830,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E608000U; // Encoding for: SMLAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>SMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMLAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E608000U; // Encoding for: SMLAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>SMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLAL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA08000U; // Encoding for: SMLAL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -19962,49 +18876,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMLSL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMLSL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLSL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F406000U; // Encoding for: SMLSL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-subtract long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMLSL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLSL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMLSL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
     {
         uint raw = 0x0F806000U; // Encoding for: SMLSL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-subtract long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMLSL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLSL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLSL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F806000U; // Encoding for: SMLSL_asimdelem_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
@@ -20035,35 +18909,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMLSL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMLSL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLSL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x4E20A000U; // Encoding for: SMLSL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>SMLSL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLSL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMLSL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x0E60A000U; // Encoding for: SMLSL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>SMLSL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLSL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLSL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E60A000U; // Encoding for: SMLSL_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -20083,39 +18931,6 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Signed multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>SMLSL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLSL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLSL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA0A000U; // Encoding for: SMLSL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-subtract long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMLSL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLSL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLSL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F406000U; // Encoding for: SMLSL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
     /// Signed multiply-subtract long (vector, by element).
     /// </summary>
     /// <remarks><code>SMLSL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
@@ -20131,26 +18946,6 @@ static partial class Arm64InstructionFactory
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= (uint)(_i_ & 0x3) << 20;
             _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-subtract long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMLSL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLSL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLSL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F806000U; // Encoding for: SMLSL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
             raw |= (uint)(_i_ & 0x1) << 11;
         }
         return raw;
@@ -20180,19 +18975,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLSL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x4E20A000U; // Encoding for: SMLSL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>SMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMLSL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
     {
         uint raw = 0x4E20A000U; // Encoding for: SMLSL2_asimddiff_l
@@ -20206,35 +18988,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLSL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E60A000U; // Encoding for: SMLSL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>SMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMLSL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E60A000U; // Encoding for: SMLSL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>SMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMLSL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA0A000U; // Encoding for: SMLSL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -20356,49 +19112,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMULL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMULL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMULL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F40A000U; // Encoding for: SMULL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMULL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMULL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMULL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
     {
         uint raw = 0x0F80A000U; // Encoding for: SMULL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMULL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMULL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMULL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F80A000U; // Encoding for: SMULL_asimdelem_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
@@ -20429,35 +19145,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMULL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x4E20C000U; // Encoding for: SMULL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply long (vector).
-    /// </summary>
-    /// <remarks><code>SMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMULL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x0E60C000U; // Encoding for: SMULL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply long (vector).
-    /// </summary>
-    /// <remarks><code>SMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMULL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E60C000U; // Encoding for: SMULL_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -20477,39 +19167,6 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Signed multiply long (vector).
-    /// </summary>
-    /// <remarks><code>SMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMULL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA0C000U; // Encoding for: SMULL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMULL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMULL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMULL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F40A000U; // Encoding for: SMULL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
     /// Signed multiply long (vector, by element).
     /// </summary>
     /// <remarks><code>SMULL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
@@ -20525,26 +19182,6 @@ static partial class Arm64InstructionFactory
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= (uint)(_i_ & 0x3) << 20;
             _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply long (vector, by element).
-    /// </summary>
-    /// <remarks><code>SMULL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMULL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMULL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F80A000U; // Encoding for: SMULL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
             raw |= (uint)(_i_ & 0x1) << 11;
         }
         return raw;
@@ -20574,19 +19211,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMULL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x4E20C000U; // Encoding for: SMULL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply long (vector).
-    /// </summary>
-    /// <remarks><code>SMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMULL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
     {
         uint raw = 0x4E20C000U; // Encoding for: SMULL2_asimddiff_l
@@ -20600,35 +19224,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMULL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E60C000U; // Encoding for: SMULL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply long (vector).
-    /// </summary>
-    /// <remarks><code>SMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SMULL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E60C000U; // Encoding for: SMULL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed multiply long (vector).
-    /// </summary>
-    /// <remarks><code>SMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SMULL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA0C000U; // Encoding for: SMULL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -20987,49 +19585,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQDMLAL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQDMLAL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F403000U; // Encoding for: SQDMLAL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-add long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMLAL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLAL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQDMLAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
     {
         uint raw = 0x0F803000U; // Encoding for: SQDMLAL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-add long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMLAL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLAL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F803000U; // Encoding for: SQDMLAL_asimdelem_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
@@ -21086,58 +19644,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQDMLAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQDMLAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E609000U; // Encoding for: SQDMLAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-add long.
-    /// </summary>
-    /// <remarks><code>SQDMLAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQDMLAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x0EA09000U; // Encoding for: SQDMLAL_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-add long.
-    /// </summary>
-    /// <remarks><code>SQDMLAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA09000U; // Encoding for: SQDMLAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-add long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMLAL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLAL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F403000U; // Encoding for: SQDMLAL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
         return raw;
     }
     /// <summary>
@@ -21156,26 +19668,6 @@ static partial class Arm64InstructionFactory
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= (uint)(_i_ & 0x3) << 20;
             _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-add long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMLAL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLAL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLAL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F803000U; // Encoding for: SQDMLAL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
             raw |= (uint)(_i_ & 0x1) << 11;
         }
         return raw;
@@ -21205,35 +19697,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQDMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQDMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E609000U; // Encoding for: SQDMLAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-add long.
-    /// </summary>
-    /// <remarks><code>SQDMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQDMLAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E609000U; // Encoding for: SQDMLAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-add long.
-    /// </summary>
-    /// <remarks><code>SQDMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLAL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA09000U; // Encoding for: SQDMLAL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -21317,49 +19783,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQDMLSL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQDMLSL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLSL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F407000U; // Encoding for: SQDMLSL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-subtract long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMLSL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLSL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQDMLSL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
     {
         uint raw = 0x0F807000U; // Encoding for: SQDMLSL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-subtract long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMLSL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLSL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLSL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F807000U; // Encoding for: SQDMLSL_asimdelem_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
@@ -21416,58 +19842,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQDMLSL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQDMLSL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLSL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E60B000U; // Encoding for: SQDMLSL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-subtract long.
-    /// </summary>
-    /// <remarks><code>SQDMLSL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLSL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQDMLSL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x0EA0B000U; // Encoding for: SQDMLSL_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-subtract long.
-    /// </summary>
-    /// <remarks><code>SQDMLSL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLSL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLSL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA0B000U; // Encoding for: SQDMLSL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-subtract long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMLSL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLSL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLSL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F407000U; // Encoding for: SQDMLSL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
         return raw;
     }
     /// <summary>
@@ -21486,26 +19866,6 @@ static partial class Arm64InstructionFactory
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= (uint)(_i_ & 0x3) << 20;
             _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-subtract long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMLSL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLSL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLSL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F807000U; // Encoding for: SQDMLSL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
             raw |= (uint)(_i_ & 0x1) << 11;
         }
         return raw;
@@ -21535,35 +19895,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQDMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQDMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLSL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E60B000U; // Encoding for: SQDMLSL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-subtract long.
-    /// </summary>
-    /// <remarks><code>SQDMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQDMLSL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E60B000U; // Encoding for: SQDMLSL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply-subtract long.
-    /// </summary>
-    /// <remarks><code>SQDMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMLSL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA0B000U; // Encoding for: SQDMLSL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -21805,49 +20139,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQDMULL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQDMULL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMULL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F40B000U; // Encoding for: SQDMULL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMULL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMULL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQDMULL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
     {
         uint raw = 0x0F80B000U; // Encoding for: SQDMULL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMULL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMULL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMULL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F80B000U; // Encoding for: SQDMULL_asimdelem_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
@@ -21944,58 +20238,12 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQDMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQDMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMULL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E60D000U; // Encoding for: SQDMULL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply long.
-    /// </summary>
-    /// <remarks><code>SQDMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQDMULL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x0EA0D000U; // Encoding for: SQDMULL_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply long.
-    /// </summary>
-    /// <remarks><code>SQDMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMULL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA0D000U; // Encoding for: SQDMULL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMULL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMULL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMULL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F40B000U; // Encoding for: SQDMULL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
         return raw;
     }
     /// <summary>
@@ -22014,26 +20262,6 @@ static partial class Arm64InstructionFactory
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= (uint)(_i_ & 0x3) << 20;
             _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply long (by element).
-    /// </summary>
-    /// <remarks><code>SQDMULL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMULL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMULL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x4F80B000U; // Encoding for: SQDMULL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
             raw |= (uint)(_i_ & 0x1) << 11;
         }
         return raw;
@@ -22063,35 +20291,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQDMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQDMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMULL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E60D000U; // Encoding for: SQDMULL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply long.
-    /// </summary>
-    /// <remarks><code>SQDMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQDMULL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E60D000U; // Encoding for: SQDMULL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating doubling multiply long.
-    /// </summary>
-    /// <remarks><code>SQDMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQDMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQDMULL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA0D000U; // Encoding for: SQDMULL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -23036,19 +21238,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F089C00U; // Encoding for: SQRSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQRSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x0F109C00U; // Encoding for: SQRSHRN_asimdshf_n
@@ -23062,48 +21251,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F109C00U; // Encoding for: SQRSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQRSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x0F209C00U; // Encoding for: SQRSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F209C00U; // Encoding for: SQRSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F089C00U; // Encoding for: SQRSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -23127,35 +21277,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F109C00U; // Encoding for: SQRSHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQRSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F109C00U; // Encoding for: SQRSHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F209C00U; // Encoding for: SQRSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -23231,19 +21355,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F088C00U; // Encoding for: SQRSHRUN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQRSHRUN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x2F108C00U; // Encoding for: SQRSHRUN_asimdshf_n
@@ -23257,48 +21368,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F108C00U; // Encoding for: SQRSHRUN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQRSHRUN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x2F208C00U; // Encoding for: SQRSHRUN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F208C00U; // Encoding for: SQRSHRUN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F088C00U; // Encoding for: SQRSHRUN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -23322,35 +21394,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQRSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F108C00U; // Encoding for: SQRSHRUN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQRSHRUN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F108C00U; // Encoding for: SQRSHRUN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating rounded shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQRSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQRSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQRSHRUN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F208C00U; // Encoding for: SQRSHRUN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -23855,19 +21901,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F089400U; // Encoding for: SQSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x0F109400U; // Encoding for: SQSHRN_asimdshf_n
@@ -23881,48 +21914,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F109400U; // Encoding for: SQSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x0F209400U; // Encoding for: SQSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F209400U; // Encoding for: SQSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F089400U; // Encoding for: SQSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -23946,35 +21940,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F109400U; // Encoding for: SQSHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x4F109400U; // Encoding for: SQSHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x4F209400U; // Encoding for: SQSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -24050,19 +22018,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F088400U; // Encoding for: SQSHRUN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQSHRUN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x2F108400U; // Encoding for: SQSHRUN_asimdshf_n
@@ -24076,48 +22031,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F108400U; // Encoding for: SQSHRUN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQSHRUN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x2F208400U; // Encoding for: SQSHRUN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRUN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F208400U; // Encoding for: SQSHRUN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F088400U; // Encoding for: SQSHRUN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -24141,35 +22057,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F108400U; // Encoding for: SQSHRUN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQSHRUN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F108400U; // Encoding for: SQSHRUN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating shift right unsigned narrow (immediate).
-    /// </summary>
-    /// <remarks><code>SQSHRUN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQSHRUN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQSHRUN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F208400U; // Encoding for: SQSHRUN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -24384,18 +22274,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQXTN Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQXTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta)
-    {
-        uint raw = 0x4E214800U; // Encoding for: SQXTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>SQXTN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQXTN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
     {
         uint raw = 0x0E614800U; // Encoding for: SQXTN_asimdmisc_n
@@ -24408,45 +22286,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQXTN Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQXTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
-    {
-        uint raw = 0x4E614800U; // Encoding for: SQXTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>SQXTN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQXTN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
     {
         uint raw = 0x0EA14800U; // Encoding for: SQXTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>SQXTN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
-    {
-        uint raw = 0x4EA14800U; // Encoding for: SQXTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>SQXTN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta)
-    {
-        uint raw = 0x4E214800U; // Encoding for: SQXTN2_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         return raw;
@@ -24468,33 +22310,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQXTN2 Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQXTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
-    {
-        uint raw = 0x4E614800U; // Encoding for: SQXTN2_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>SQXTN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQXTN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
     {
         uint raw = 0x4E614800U; // Encoding for: SQXTN2_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>SQXTN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
-    {
-        uint raw = 0x4EA14800U; // Encoding for: SQXTN2_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         return raw;
@@ -24564,18 +22382,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQXTUN Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQXTUN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTUN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta)
-    {
-        uint raw = 0x6E212800U; // Encoding for: SQXTUN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract unsigned narrow.
-    /// </summary>
-    /// <remarks><code>SQXTUN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTUN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQXTUN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
     {
         uint raw = 0x2E612800U; // Encoding for: SQXTUN_asimdmisc_n
@@ -24588,45 +22394,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQXTUN Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQXTUN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTUN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
-    {
-        uint raw = 0x6E612800U; // Encoding for: SQXTUN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract unsigned narrow.
-    /// </summary>
-    /// <remarks><code>SQXTUN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTUN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQXTUN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
     {
         uint raw = 0x2EA12800U; // Encoding for: SQXTUN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract unsigned narrow.
-    /// </summary>
-    /// <remarks><code>SQXTUN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTUN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTUN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
-    {
-        uint raw = 0x6EA12800U; // Encoding for: SQXTUN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract unsigned narrow.
-    /// </summary>
-    /// <remarks><code>SQXTUN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTUN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTUN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta)
-    {
-        uint raw = 0x6E212800U; // Encoding for: SQXTUN2_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         return raw;
@@ -24648,33 +22418,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SQXTUN2 Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SQXTUN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTUN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
-    {
-        uint raw = 0x6E612800U; // Encoding for: SQXTUN2_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract unsigned narrow.
-    /// </summary>
-    /// <remarks><code>SQXTUN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTUN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SQXTUN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
     {
         uint raw = 0x6E612800U; // Encoding for: SQXTUN2_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed saturating extract unsigned narrow.
-    /// </summary>
-    /// <remarks><code>SQXTUN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SQXTUN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SQXTUN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
-    {
-        uint raw = 0x6EA12800U; // Encoding for: SQXTUN2_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         return raw;
@@ -25307,19 +23053,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift)
-    {
-        uint raw = 0x4F08A400U; // Encoding for: SSHLL_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>SSHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SSHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift)
     {
         uint raw = 0x0F10A400U; // Encoding for: SSHLL_asimdshf_l
@@ -25333,48 +23066,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift)
-    {
-        uint raw = 0x4F10A400U; // Encoding for: SSHLL_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>SSHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SSHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift)
     {
         uint raw = 0x0F20A400U; // Encoding for: SSHLL_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>SSHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, byte shift)
-    {
-        uint raw = 0x4F20A400U; // Encoding for: SSHLL_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>SSHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift)
-    {
-        uint raw = 0x4F08A400U; // Encoding for: SSHLL2_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -25398,35 +23092,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift)
-    {
-        uint raw = 0x4F10A400U; // Encoding for: SSHLL2_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>SSHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SSHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift)
     {
         uint raw = 0x4F10A400U; // Encoding for: SSHLL2_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>SSHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift)
-    {
-        uint raw = 0x4F20A400U; // Encoding for: SSHLL2_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -25671,19 +23339,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSUBL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSUBL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x4E202000U; // Encoding for: SSUBL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract long.
-    /// </summary>
-    /// <remarks><code>SSUBL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SSUBL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x0E602000U; // Encoding for: SSUBL_asimddiff_l
@@ -25697,48 +23352,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSUBL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSUBL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E602000U; // Encoding for: SSUBL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract long.
-    /// </summary>
-    /// <remarks><code>SSUBL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SSUBL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x0EA02000U; // Encoding for: SSUBL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract long.
-    /// </summary>
-    /// <remarks><code>SSUBL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA02000U; // Encoding for: SSUBL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract long.
-    /// </summary>
-    /// <remarks><code>SSUBL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x4E202000U; // Encoding for: SSUBL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -25762,35 +23378,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSUBL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSUBL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E602000U; // Encoding for: SSUBL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract long.
-    /// </summary>
-    /// <remarks><code>SSUBL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SSUBL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E602000U; // Encoding for: SSUBL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract long.
-    /// </summary>
-    /// <remarks><code>SSUBL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA02000U; // Encoding for: SSUBL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -25827,19 +23417,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSUBW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSUBW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBW(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x4E203000U; // Encoding for: SSUBW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract wide.
-    /// </summary>
-    /// <remarks><code>SSUBW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SSUBW(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x0E603000U; // Encoding for: SSUBW_asimddiff_w
@@ -25853,48 +23430,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSUBW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSUBW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBW(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x4E603000U; // Encoding for: SSUBW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract wide.
-    /// </summary>
-    /// <remarks><code>SSUBW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SSUBW(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x0EA03000U; // Encoding for: SSUBW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract wide.
-    /// </summary>
-    /// <remarks><code>SSUBW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBW(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x4EA03000U; // Encoding for: SSUBW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract wide.
-    /// </summary>
-    /// <remarks><code>SSUBW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBW2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x4E203000U; // Encoding for: SSUBW2_asimddiff_w
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -25918,35 +23456,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SSUBW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SSUBW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBW2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x4E603000U; // Encoding for: SSUBW2_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract wide.
-    /// </summary>
-    /// <remarks><code>SSUBW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SSUBW2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x4E603000U; // Encoding for: SSUBW2_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Signed subtract wide.
-    /// </summary>
-    /// <remarks><code>SSUBW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SSUBW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SSUBW2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x4EA03000U; // Encoding for: SSUBW2_asimddiff_w
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -29466,19 +26978,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SUBHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUBHN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8H Vm_Ta)
-    {
-        uint raw = 0x4E206000U; // Encoding for: SUBHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>SUBHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SUBHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBHN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
     {
         uint raw = 0x0E606000U; // Encoding for: SUBHN_asimddiff_n
@@ -29492,48 +26991,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SUBHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUBHN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
-    {
-        uint raw = 0x4E606000U; // Encoding for: SUBHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>SUBHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SUBHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBHN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
     {
         uint raw = 0x0EA06000U; // Encoding for: SUBHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>SUBHN Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SUBHN_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUBHN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
-    {
-        uint raw = 0x4EA06000U; // Encoding for: SUBHN_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>SUBHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SUBHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUBHN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8H Vm_Ta)
-    {
-        uint raw = 0x4E206000U; // Encoding for: SUBHN2_asimddiff_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Ta.Index << 16;
@@ -29557,35 +27017,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SUBHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUBHN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
-    {
-        uint raw = 0x4E606000U; // Encoding for: SUBHN2_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>SUBHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SUBHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SUBHN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4S Vm_Ta)
     {
         uint raw = 0x4E606000U; // Encoding for: SUBHN2_asimddiff_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Ta.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Subtract returning high narrow.
-    /// </summary>
-    /// <remarks><code>SUBHN2 Vd.Tb, Vn.Ta, Vm.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SUBHN2_asimddiff_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUBHN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2D Vm_Ta)
-    {
-        uint raw = 0x4EA06000U; // Encoding for: SUBHN2_asimddiff_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Ta.Index << 16;
@@ -29793,18 +27227,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SXTL Vd.Ta, Vn.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SXTL_sshll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SXTL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb)
-    {
-        uint raw = 0x4F08A400U; // Encoding for: SXTL_sshll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed extend long.
-    /// </summary>
-    /// <remarks><code>SXTL Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SXTL_sshll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SXTL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb)
     {
         uint raw = 0x0F10A400U; // Encoding for: SXTL_sshll_asimdshf_l
@@ -29817,45 +27239,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SXTL Vd.Ta, Vn.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SXTL_sshll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SXTL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb)
-    {
-        uint raw = 0x4F10A400U; // Encoding for: SXTL_sshll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed extend long.
-    /// </summary>
-    /// <remarks><code>SXTL Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SXTL_sshll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SXTL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb)
     {
         uint raw = 0x0F20A400U; // Encoding for: SXTL_sshll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed extend long.
-    /// </summary>
-    /// <remarks><code>SXTL Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SXTL_sshll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SXTL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb)
-    {
-        uint raw = 0x4F20A400U; // Encoding for: SXTL_sshll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed extend long.
-    /// </summary>
-    /// <remarks><code>SXTL2 Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SXTL2_sshll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SXTL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb)
-    {
-        uint raw = 0x4F08A400U; // Encoding for: SXTL2_sshll_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         return raw;
@@ -29877,33 +27263,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SXTL2 Vd.Ta, Vn.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SXTL2_sshll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SXTL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb)
-    {
-        uint raw = 0x4F10A400U; // Encoding for: SXTL2_sshll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed extend long.
-    /// </summary>
-    /// <remarks><code>SXTL2 Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SXTL2_sshll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint SXTL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb)
     {
         uint raw = 0x4F10A400U; // Encoding for: SXTL2_sshll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Signed extend long.
-    /// </summary>
-    /// <remarks><code>SXTL2 Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.SXTL2_sshll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SXTL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb)
-    {
-        uint raw = 0x4F20A400U; // Encoding for: SXTL2_sshll_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         return raw;
@@ -30406,19 +27768,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UABAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UABAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABAL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x6E205000U; // Encoding for: UABAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>UABAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UABAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x2E605000U; // Encoding for: UABAL_asimddiff_l
@@ -30432,48 +27781,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UABAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UABAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x6E605000U; // Encoding for: UABAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>UABAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UABAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x2EA05000U; // Encoding for: UABAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>UABAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x6EA05000U; // Encoding for: UABAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>UABAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABAL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x6E205000U; // Encoding for: UABAL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -30497,35 +27807,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UABAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UABAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x6E605000U; // Encoding for: UABAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>UABAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UABAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x6E605000U; // Encoding for: UABAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference and accumulate long.
-    /// </summary>
-    /// <remarks><code>UABAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABAL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x6EA05000U; // Encoding for: UABAL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -30640,19 +27924,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UABDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UABDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABDL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x6E207000U; // Encoding for: UABDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference long.
-    /// </summary>
-    /// <remarks><code>UABDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UABDL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x2E607000U; // Encoding for: UABDL_asimddiff_l
@@ -30666,48 +27937,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UABDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UABDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABDL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x6E607000U; // Encoding for: UABDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference long.
-    /// </summary>
-    /// <remarks><code>UABDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UABDL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x2EA07000U; // Encoding for: UABDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference long.
-    /// </summary>
-    /// <remarks><code>UABDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABDL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x6EA07000U; // Encoding for: UABDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference long.
-    /// </summary>
-    /// <remarks><code>UABDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABDL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x6E207000U; // Encoding for: UABDL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -30731,35 +27963,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UABDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UABDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABDL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x6E607000U; // Encoding for: UABDL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference long.
-    /// </summary>
-    /// <remarks><code>UABDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UABDL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x6E607000U; // Encoding for: UABDL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned absolute difference long.
-    /// </summary>
-    /// <remarks><code>UABDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UABDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UABDL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x6EA07000U; // Encoding for: UABDL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -30868,19 +28074,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UADDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UADDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x6E200000U; // Encoding for: UADDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add long (vector).
-    /// </summary>
-    /// <remarks><code>UADDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UADDL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x2E600000U; // Encoding for: UADDL_asimddiff_l
@@ -30894,48 +28087,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UADDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UADDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x6E600000U; // Encoding for: UADDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add long (vector).
-    /// </summary>
-    /// <remarks><code>UADDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UADDL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x2EA00000U; // Encoding for: UADDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add long (vector).
-    /// </summary>
-    /// <remarks><code>UADDL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x6EA00000U; // Encoding for: UADDL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add long (vector).
-    /// </summary>
-    /// <remarks><code>UADDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x6E200000U; // Encoding for: UADDL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -30959,35 +28113,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UADDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UADDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x6E600000U; // Encoding for: UADDL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add long (vector).
-    /// </summary>
-    /// <remarks><code>UADDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UADDL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x6E600000U; // Encoding for: UADDL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add long (vector).
-    /// </summary>
-    /// <remarks><code>UADDL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x6EA00000U; // Encoding for: UADDL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -31156,19 +28284,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UADDW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UADDW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDW(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x6E201000U; // Encoding for: UADDW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add wide.
-    /// </summary>
-    /// <remarks><code>UADDW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UADDW(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x2E601000U; // Encoding for: UADDW_asimddiff_w
@@ -31182,48 +28297,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UADDW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UADDW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDW(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x6E601000U; // Encoding for: UADDW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add wide.
-    /// </summary>
-    /// <remarks><code>UADDW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UADDW(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x2EA01000U; // Encoding for: UADDW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add wide.
-    /// </summary>
-    /// <remarks><code>UADDW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDW(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x6EA01000U; // Encoding for: UADDW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add wide.
-    /// </summary>
-    /// <remarks><code>UADDW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDW2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x6E201000U; // Encoding for: UADDW2_asimddiff_w
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -31247,35 +28323,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UADDW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UADDW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDW2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x6E601000U; // Encoding for: UADDW2_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add wide.
-    /// </summary>
-    /// <remarks><code>UADDW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UADDW2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x6E601000U; // Encoding for: UADDW2_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned add wide.
-    /// </summary>
-    /// <remarks><code>UADDW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UADDW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UADDW2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x6EA01000U; // Encoding for: UADDW2_asimddiff_w
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -32173,49 +29223,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMLAL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMLAL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F402000U; // Encoding for: UMLAL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-add long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMLAL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLAL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMLAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
     {
         uint raw = 0x2F802000U; // Encoding for: UMLAL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-add long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMLAL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLAL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F802000U; // Encoding for: UMLAL_asimdelem_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
@@ -32246,35 +29256,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMLAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMLAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLAL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x6E208000U; // Encoding for: UMLAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>UMLAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMLAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x2E608000U; // Encoding for: UMLAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>UMLAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLAL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x6E608000U; // Encoding for: UMLAL_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -32294,39 +29278,6 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Unsigned multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>UMLAL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLAL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLAL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x6EA08000U; // Encoding for: UMLAL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-add long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMLAL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLAL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F402000U; // Encoding for: UMLAL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
     /// Unsigned multiply-add long (vector, by element).
     /// </summary>
     /// <remarks><code>UMLAL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
@@ -32342,26 +29293,6 @@ static partial class Arm64InstructionFactory
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= (uint)(_i_ & 0x3) << 20;
             _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-add long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMLAL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLAL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLAL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F802000U; // Encoding for: UMLAL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
             raw |= (uint)(_i_ & 0x1) << 11;
         }
         return raw;
@@ -32391,19 +29322,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLAL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x6E208000U; // Encoding for: UMLAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>UMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMLAL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
     {
         uint raw = 0x6E208000U; // Encoding for: UMLAL2_asimddiff_l
@@ -32417,35 +29335,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x6E608000U; // Encoding for: UMLAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>UMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMLAL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x6E608000U; // Encoding for: UMLAL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-add long (vector).
-    /// </summary>
-    /// <remarks><code>UMLAL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLAL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLAL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x6EA08000U; // Encoding for: UMLAL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -32489,49 +29381,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMLSL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMLSL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLSL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F406000U; // Encoding for: UMLSL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-subtract long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMLSL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLSL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMLSL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
     {
         uint raw = 0x2F806000U; // Encoding for: UMLSL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-subtract long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMLSL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLSL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLSL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F806000U; // Encoding for: UMLSL_asimdelem_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
@@ -32562,35 +29414,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMLSL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMLSL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLSL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x6E20A000U; // Encoding for: UMLSL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>UMLSL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLSL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMLSL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x2E60A000U; // Encoding for: UMLSL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>UMLSL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLSL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLSL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x6E60A000U; // Encoding for: UMLSL_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -32610,39 +29436,6 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Unsigned multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>UMLSL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLSL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLSL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x6EA0A000U; // Encoding for: UMLSL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-subtract long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMLSL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLSL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLSL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F406000U; // Encoding for: UMLSL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
     /// Unsigned multiply-subtract long (vector, by element).
     /// </summary>
     /// <remarks><code>UMLSL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
@@ -32658,26 +29451,6 @@ static partial class Arm64InstructionFactory
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= (uint)(_i_ & 0x3) << 20;
             _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-subtract long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMLSL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLSL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLSL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F806000U; // Encoding for: UMLSL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
             raw |= (uint)(_i_ & 0x1) << 11;
         }
         return raw;
@@ -32707,19 +29480,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLSL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x6E20A000U; // Encoding for: UMLSL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>UMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMLSL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
     {
         uint raw = 0x6E20A000U; // Encoding for: UMLSL2_asimddiff_l
@@ -32733,35 +29493,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLSL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x6E60A000U; // Encoding for: UMLSL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>UMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMLSL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x6E60A000U; // Encoding for: UMLSL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply-subtract long (vector).
-    /// </summary>
-    /// <remarks><code>UMLSL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMLSL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMLSL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x6EA0A000U; // Encoding for: UMLSL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -32857,49 +29591,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMULL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMULL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMULL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F40A000U; // Encoding for: UMULL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMULL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMULL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMULL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
     {
         uint raw = 0x2F80A000U; // Encoding for: UMULL_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMULL Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMULL_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMULL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F80A000U; // Encoding for: UMULL_asimdelem_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
@@ -32930,35 +29624,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMULL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x6E20C000U; // Encoding for: UMULL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply long (vector).
-    /// </summary>
-    /// <remarks><code>UMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMULL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x2E60C000U; // Encoding for: UMULL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply long (vector).
-    /// </summary>
-    /// <remarks><code>UMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMULL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x6E60C000U; // Encoding for: UMULL_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -32978,39 +29646,6 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Unsigned multiply long (vector).
-    /// </summary>
-    /// <remarks><code>UMULL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMULL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMULL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x6EA0C000U; // Encoding for: UMULL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMULL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMULL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMULL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_H.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F40A000U; // Encoding for: UMULL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0xF) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x3) << 20;
-            _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
     /// Unsigned multiply long (vector, by element).
     /// </summary>
     /// <remarks><code>UMULL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
@@ -33026,26 +29661,6 @@ static partial class Arm64InstructionFactory
             var _i_ = Vm_Ts.ElementIndex & 0x3;
             raw |= (uint)(_i_ & 0x3) << 20;
             _i_ >>= 2;
-            raw |= (uint)(_i_ & 0x1) << 11;
-        }
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply long (vector, by element).
-    /// </summary>
-    /// <remarks><code>UMULL2 Vd.Ta, Vn.Tb, Vm.Ts[index]</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMULL2_asimdelem_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMULL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_S.Indexed Vm_Ts)
-    {
-        uint raw = 0x6F80A000U; // Encoding for: UMULL2_asimdelem_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(Vm_Ts.Index & 0x1F) << 16;
-        {
-            // Write the element indexer for Vm_Ts.ElementIndex
-            var _i_ = Vm_Ts.ElementIndex & 0x3;
-            raw |= (uint)(_i_ & 0x1) << 21;
-            _i_ >>= 1;
             raw |= (uint)(_i_ & 0x1) << 11;
         }
         return raw;
@@ -33075,19 +29690,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMULL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x6E20C000U; // Encoding for: UMULL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply long (vector).
-    /// </summary>
-    /// <remarks><code>UMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMULL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
     {
         uint raw = 0x6E20C000U; // Encoding for: UMULL2_asimddiff_l
@@ -33101,35 +29703,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMULL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x6E60C000U; // Encoding for: UMULL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply long (vector).
-    /// </summary>
-    /// <remarks><code>UMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UMULL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x6E60C000U; // Encoding for: UMULL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned multiply long (vector).
-    /// </summary>
-    /// <remarks><code>UMULL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UMULL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UMULL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x6EA0C000U; // Encoding for: UMULL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -33491,19 +30067,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F089C00U; // Encoding for: UQRSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UQRSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x2F109C00U; // Encoding for: UQRSHRN_asimdshf_n
@@ -33517,48 +30080,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F109C00U; // Encoding for: UQRSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UQRSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x2F209C00U; // Encoding for: UQRSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQRSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F209C00U; // Encoding for: UQRSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F089C00U; // Encoding for: UQRSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -33582,35 +30106,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F109C00U; // Encoding for: UQRSHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UQRSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F109C00U; // Encoding for: UQRSHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating rounded shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQRSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQRSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQRSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F209C00U; // Encoding for: UQRSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -33972,19 +30470,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F089400U; // Encoding for: UQSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UQSHRN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x2F109400U; // Encoding for: UQSHRN_asimdshf_n
@@ -33998,48 +30483,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F109400U; // Encoding for: UQSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UQSHRN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
     {
         uint raw = 0x2F209400U; // Encoding for: UQSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQSHRN Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F209400U; // Encoding for: UQSHRN_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F089400U; // Encoding for: UQSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -34063,35 +30509,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F109400U; // Encoding for: UQSHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UQSHRN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta, byte shift)
     {
         uint raw = 0x6F109400U; // Encoding for: UQSHRN2_asimdshf_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating shift right narrow (immediate).
-    /// </summary>
-    /// <remarks><code>UQSHRN2 Vd.Tb, Vn.Ta, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQSHRN2_asimdshf_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQSHRN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta, byte shift)
-    {
-        uint raw = 0x6F209400U; // Encoding for: UQSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -34306,18 +30726,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQXTN Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQXTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQXTN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta)
-    {
-        uint raw = 0x6E214800U; // Encoding for: UQXTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>UQXTN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQXTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UQXTN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
     {
         uint raw = 0x2E614800U; // Encoding for: UQXTN_asimdmisc_n
@@ -34330,45 +30738,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQXTN Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQXTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQXTN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
-    {
-        uint raw = 0x6E614800U; // Encoding for: UQXTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>UQXTN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQXTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UQXTN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
     {
         uint raw = 0x2EA14800U; // Encoding for: UQXTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>UQXTN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQXTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQXTN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
-    {
-        uint raw = 0x6EA14800U; // Encoding for: UQXTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>UQXTN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQXTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQXTN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta)
-    {
-        uint raw = 0x6E214800U; // Encoding for: UQXTN2_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         return raw;
@@ -34390,33 +30762,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UQXTN2 Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UQXTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQXTN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
-    {
-        uint raw = 0x6E614800U; // Encoding for: UQXTN2_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>UQXTN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQXTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UQXTN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
     {
         uint raw = 0x6E614800U; // Encoding for: UQXTN2_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned saturating extract narrow.
-    /// </summary>
-    /// <remarks><code>UQXTN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UQXTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UQXTN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
-    {
-        uint raw = 0x6EA14800U; // Encoding for: UQXTN2_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         return raw;
@@ -35059,19 +31407,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, byte shift)
-    {
-        uint raw = 0x6F08A400U; // Encoding for: USHLL_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>USHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint USHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift)
     {
         uint raw = 0x2F10A400U; // Encoding for: USHLL_asimdshf_l
@@ -35085,48 +31420,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift)
-    {
-        uint raw = 0x6F10A400U; // Encoding for: USHLL_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>USHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint USHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift)
     {
         uint raw = 0x2F20A400U; // Encoding for: USHLL_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>USHLL Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USHLL_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, byte shift)
-    {
-        uint raw = 0x6F20A400U; // Encoding for: USHLL_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>USHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, byte shift)
-    {
-        uint raw = 0x6F08A400U; // Encoding for: USHLL2_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -35150,35 +31446,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, byte shift)
-    {
-        uint raw = 0x6F10A400U; // Encoding for: USHLL2_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>USHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint USHLL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, byte shift)
     {
         uint raw = 0x6F10A400U; // Encoding for: USHLL2_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned shift left long (immediate).
-    /// </summary>
-    /// <remarks><code>USHLL2 Vd.Ta, Vn.Tb, #shift</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USHLL2_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USHLL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, byte shift)
-    {
-        uint raw = 0x6F20A400U; // Encoding for: USHLL2_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)(shift & 0x7F) << 16;
@@ -35568,19 +31838,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USUBL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USUBL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x6E202000U; // Encoding for: USUBL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract long.
-    /// </summary>
-    /// <remarks><code>USUBL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint USUBL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x2E602000U; // Encoding for: USUBL_asimddiff_l
@@ -35594,48 +31851,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USUBL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USUBL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x6E602000U; // Encoding for: USUBL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract long.
-    /// </summary>
-    /// <remarks><code>USUBL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint USUBL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x2EA02000U; // Encoding for: USUBL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract long.
-    /// </summary>
-    /// <remarks><code>USUBL Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBL_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x6EA02000U; // Encoding for: USUBL_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract long.
-    /// </summary>
-    /// <remarks><code>USUBL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x6E202000U; // Encoding for: USUBL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -35659,35 +31877,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USUBL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USUBL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x6E602000U; // Encoding for: USUBL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract long.
-    /// </summary>
-    /// <remarks><code>USUBL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint USUBL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x6E602000U; // Encoding for: USUBL2_asimddiff_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract long.
-    /// </summary>
-    /// <remarks><code>USUBL2 Vd.Ta, Vn.Tb, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBL2_asimddiff_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x6EA02000U; // Encoding for: USUBL2_asimddiff_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -35724,19 +31916,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USUBW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USUBW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBW(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_16B Vm_Tb)
-    {
-        uint raw = 0x6E203000U; // Encoding for: USUBW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract wide.
-    /// </summary>
-    /// <remarks><code>USUBW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint USUBW(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4H Vm_Tb)
     {
         uint raw = 0x2E603000U; // Encoding for: USUBW_asimddiff_w
@@ -35750,48 +31929,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USUBW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USUBW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBW(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_8H Vm_Tb)
-    {
-        uint raw = 0x6E603000U; // Encoding for: USUBW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract wide.
-    /// </summary>
-    /// <remarks><code>USUBW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint USUBW(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2S Vm_Tb)
     {
         uint raw = 0x2EA03000U; // Encoding for: USUBW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract wide.
-    /// </summary>
-    /// <remarks><code>USUBW Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBW_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBW(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_4S Vm_Tb)
-    {
-        uint raw = 0x6EA03000U; // Encoding for: USUBW_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract wide.
-    /// </summary>
-    /// <remarks><code>USUBW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBW2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8H Vn_Ta, Arm64RegisterV_8B Vm_Tb)
-    {
-        uint raw = 0x6E203000U; // Encoding for: USUBW2_asimddiff_w
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -35815,35 +31955,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>USUBW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.USUBW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBW2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_4H Vm_Tb)
-    {
-        uint raw = 0x6E603000U; // Encoding for: USUBW2_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract wide.
-    /// </summary>
-    /// <remarks><code>USUBW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint USUBW2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4S Vn_Ta, Arm64RegisterV_8H Vm_Tb)
     {
         uint raw = 0x6E603000U; // Encoding for: USUBW2_asimddiff_w
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)Vm_Tb.Index << 16;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned subtract wide.
-    /// </summary>
-    /// <remarks><code>USUBW2 Vd.Ta, Vn.Ta, Vm.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.USUBW2_asimddiff_w), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint USUBW2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2D Vn_Ta, Arm64RegisterV_2S Vm_Tb)
-    {
-        uint raw = 0x6EA03000U; // Encoding for: USUBW2_asimddiff_w
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         raw |= (uint)Vm_Tb.Index << 16;
@@ -35879,18 +31993,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UXTL Vd.Ta, Vn.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UXTL_ushll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UXTL(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_16B Vn_Tb)
-    {
-        uint raw = 0x6F08A400U; // Encoding for: UXTL_ushll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned extend long.
-    /// </summary>
-    /// <remarks><code>UXTL Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UXTL_ushll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UXTL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb)
     {
         uint raw = 0x2F10A400U; // Encoding for: UXTL_ushll_asimdshf_l
@@ -35903,45 +32005,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UXTL Vd.Ta, Vn.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UXTL_ushll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UXTL(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb)
-    {
-        uint raw = 0x6F10A400U; // Encoding for: UXTL_ushll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned extend long.
-    /// </summary>
-    /// <remarks><code>UXTL Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UXTL_ushll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UXTL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb)
     {
         uint raw = 0x2F20A400U; // Encoding for: UXTL_ushll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned extend long.
-    /// </summary>
-    /// <remarks><code>UXTL Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UXTL_ushll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UXTL(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_4S Vn_Tb)
-    {
-        uint raw = 0x6F20A400U; // Encoding for: UXTL_ushll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned extend long.
-    /// </summary>
-    /// <remarks><code>UXTL2 Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UXTL2_ushll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UXTL2(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_8B Vn_Tb)
-    {
-        uint raw = 0x6F08A400U; // Encoding for: UXTL2_ushll_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         return raw;
@@ -35963,33 +32029,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>UXTL2 Vd.Ta, Vn.Tb</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.UXTL2_ushll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UXTL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_4H Vn_Tb)
-    {
-        uint raw = 0x6F10A400U; // Encoding for: UXTL2_ushll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned extend long.
-    /// </summary>
-    /// <remarks><code>UXTL2 Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UXTL2_ushll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint UXTL2(Arm64RegisterV_4S Vd_Ta, Arm64RegisterV_8H Vn_Tb)
     {
         uint raw = 0x6F10A400U; // Encoding for: UXTL2_ushll_asimdshf_l
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_Tb.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Unsigned extend long.
-    /// </summary>
-    /// <remarks><code>UXTL2 Vd.Ta, Vn.Tb</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.UXTL2_ushll_asimdshf_l), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint UXTL2(Arm64RegisterV_2D Vd_Ta, Arm64RegisterV_2S Vn_Tb)
-    {
-        uint raw = 0x6F20A400U; // Encoding for: UXTL2_ushll_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
         return raw;
@@ -36219,18 +32261,6 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>XTN Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.XTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint XTN(Arm64RegisterV_16B Vd_Tb, Arm64RegisterV_8H Vn_Ta)
-    {
-        uint raw = 0x4E212800U; // Encoding for: XTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Extract narrow.
-    /// </summary>
-    /// <remarks><code>XTN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.XTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint XTN(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
     {
         uint raw = 0x0E612800U; // Encoding for: XTN_asimdmisc_n
@@ -36243,45 +32273,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>XTN Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.XTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint XTN(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
-    {
-        uint raw = 0x4E612800U; // Encoding for: XTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Extract narrow.
-    /// </summary>
-    /// <remarks><code>XTN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.XTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint XTN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
     {
         uint raw = 0x0EA12800U; // Encoding for: XTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Extract narrow.
-    /// </summary>
-    /// <remarks><code>XTN Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.XTN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint XTN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
-    {
-        uint raw = 0x4EA12800U; // Encoding for: XTN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Extract narrow.
-    /// </summary>
-    /// <remarks><code>XTN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.XTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint XTN2(Arm64RegisterV_8B Vd_Tb, Arm64RegisterV_8H Vn_Ta)
-    {
-        uint raw = 0x4E212800U; // Encoding for: XTN2_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         return raw;
@@ -36303,33 +32297,9 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>XTN2 Vd.Tb, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.XTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint XTN2(Arm64RegisterV_4H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
-    {
-        uint raw = 0x4E612800U; // Encoding for: XTN2_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Extract narrow.
-    /// </summary>
-    /// <remarks><code>XTN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.XTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint XTN2(Arm64RegisterV_8H Vd_Tb, Arm64RegisterV_4S Vn_Ta)
     {
         uint raw = 0x4E612800U; // Encoding for: XTN2_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Extract narrow.
-    /// </summary>
-    /// <remarks><code>XTN2 Vd.Tb, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.XTN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint XTN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_Ta)
-    {
-        uint raw = 0x4EA12800U; // Encoding for: XTN2_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         return raw;
