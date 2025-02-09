@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_PRFUM_General
     [TestMethod]
     public void Test_PRFUM_p_ldst_unscaled_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = PRFUM(PLDL1KEEP, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.PRFUM_p_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.PRFUM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("PRFUM PLDL1KEEP, [X2, #5]", asm);
+        }
     }
 }

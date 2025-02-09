@@ -24,3 +24,9 @@ public enum Arm64StoredSharedHintPolicyKind : byte
     /// </summary>
     Undefined = 0xFF
 }
+
+partial class Arm64Factory
+{
+    public static Arm64StoredSharedHintPolicyKind KEEP => Arm64StoredSharedHintPolicyKind.KEEP;
+    public static Arm64StoredSharedHintPolicyKind STRM => Arm64StoredSharedHintPolicyKind.STRM;
+}

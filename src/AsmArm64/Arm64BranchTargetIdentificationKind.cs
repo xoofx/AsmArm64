@@ -34,3 +34,12 @@ public enum Arm64BranchTargetIdentificationKind : byte
     /// </summary>
     Undefined = 0xFF
 }
+
+partial class Arm64Factory
+{
+    public static Arm64BranchTargetIdentificationKind C => Arm64BranchTargetIdentificationKind.C;
+
+    public static Arm64BranchTargetIdentificationKind J => Arm64BranchTargetIdentificationKind.J;
+
+    public static Arm64BranchTargetIdentificationKind JC => Arm64BranchTargetIdentificationKind.JC;
+}

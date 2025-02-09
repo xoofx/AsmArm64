@@ -74,3 +74,15 @@ public enum Arm64BarrierOperationLimitKind : byte
     /// </summary>
     SY = 0b1111,
 }
+
+partial class Arm64Factory
+{
+    public static Arm64BarrierOperationLimitKind OSHLD => Arm64BarrierOperationLimitKind.OSHLD;
+    public static Arm64BarrierOperationLimitKind OSHST => Arm64BarrierOperationLimitKind.OSHST;
+    public static Arm64BarrierOperationLimitKind NSHLD => Arm64BarrierOperationLimitKind.NSHLD;
+    public static Arm64BarrierOperationLimitKind NSHST => Arm64BarrierOperationLimitKind.NSHST;
+    public static Arm64BarrierOperationLimitKind ISHLD => Arm64BarrierOperationLimitKind.ISHLD;
+    public static Arm64BarrierOperationLimitKind ISHST => Arm64BarrierOperationLimitKind.ISHST;
+    public static Arm64BarrierOperationLimitKind LD => Arm64BarrierOperationLimitKind.LD;
+    public static Arm64BarrierOperationLimitKind ST => Arm64BarrierOperationLimitKind.ST;
+}

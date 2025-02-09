@@ -24,7 +24,15 @@ public class Arm64InstructionFactoryTests_PRFM_General
     [TestMethod]
     public void Test_PRFM_p_ldst_pos_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = PRFM(PLDL1KEEP, _[X2, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.PRFM_p_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.PRFM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("PRFM PLDL1KEEP, [X2, #40]", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +41,15 @@ public class Arm64InstructionFactoryTests_PRFM_General
     [TestMethod]
     public void Test_PRFM_p_loadlit_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = PRFM(PLDL1KEEP, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.PRFM_p_loadlit, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.PRFM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("PRFM PLDL1KEEP, #32", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +58,15 @@ public class Arm64InstructionFactoryTests_PRFM_General
     [TestMethod]
     public void Test_PRFM_p_ldst_regoff_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = PRFM(PLDL1KEEP, _[X2, X3, _LSL, 3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.PRFM_p_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.PRFM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("PRFM PLDL1KEEP, [X2, X3, LSL #3]", asm);
+        }
     }
     
     /// <summary>

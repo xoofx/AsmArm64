@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_TSB_System
     [TestMethod]
     public void Test_TSB_hc_hints_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = TSB(CSYNC);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TSB_hc_hints, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TSB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TSB CSYNC", asm);
+        }
     }
 }

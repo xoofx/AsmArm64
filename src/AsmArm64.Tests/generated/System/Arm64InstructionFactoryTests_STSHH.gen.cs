@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_STSHH_System
     [TestMethod]
     public void Test_STSHH_hi_hints_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STSHH(STRM);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSHH_hi_hints, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSHH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSHH STRM", asm);
+        }
     }
 }

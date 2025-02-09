@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_DMB_System
     [TestMethod]
     public void Test_DMB_bo_barriers_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = DMB(OSHLD);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.DMB_bo_barriers, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.DMB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("DMB OSHLD", asm);
+        }
     }
 }

@@ -138,10 +138,22 @@ partial class Arm64Processor
             }
             w.WriteLine($"Assert.AreEqual(Arm64Mnemonic.{instruction.Mnemonic}, instruction.Mnemonic);");
             w.WriteLine("var asm = instruction.ToString(\"H\", null);");
-            w.WriteLine(testArguments.Count == 0
-                ? $"Assert.AreEqual(\"{instruction.Mnemonic}\", asm);"
-                : $"Assert.AreEqual(\"{instruction.Mnemonic} {string.Join(", ", testArguments.Select(x => x.Asm))}\", asm);"
-            );
+
+            if (instruction.Id == "B_only_condbranch" || instruction.Id == "BC_only_condbranch")
+            {
+                // `BC.NE #32` instead of `BC NE, #32`
+                w.WriteLine($"Assert.AreEqual(\"{instruction.Mnemonic}.{testArguments[0].Asm} {string.Join(", ", testArguments.Skip(1).Select(x => x.Asm))}\", asm);");
+            }
+            else
+            {
+                w.WriteLine(testArguments.Count == 0
+                    ? $"Assert.AreEqual(\"{instruction.Mnemonic}\", asm);"
+                    : $"Assert.AreEqual(\"{instruction.Mnemonic} {string.Join(", ", testArguments.Select(x => x.Asm))}\", asm);"
+                );
+            }
+
+
+
             w.CloseBraceBlock();
         }
     }

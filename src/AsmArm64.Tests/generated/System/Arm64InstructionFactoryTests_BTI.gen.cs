@@ -24,6 +24,23 @@ public class Arm64InstructionFactoryTests_BTI_System
     [TestMethod]
     public void Test_BTI_hb_hints_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = BTI(C);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BTI_hb_hints, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BTI, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BTI C", asm);
+        }
+        
+        {
+            var raw = BTI(J);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BTI_hb_hints, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BTI, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BTI J", asm);
+        }
     }
 }

@@ -938,44 +938,58 @@ partial class Arm64Processor
     {
         string enumType;
         string? fixedValue = null;
+        var rawArguments = new List<RawTestArgument>();
         switch (descriptor.EnumKind)
         {
             case Arm64EnumKind.Conditional:
             case Arm64EnumKind.InvertedConditional:
                 enumType = "Arm64ConditionalKind";
+                rawArguments.Add(new("NE", "NE"));
+                rawArguments.Add(new("AL", "AL"));
                 break;
             case Arm64EnumKind.BranchTargetIdentification:
                 enumType = "Arm64BranchTargetIdentificationKind";
+                rawArguments.Add(new("C", "C"));
+                rawArguments.Add(new("J", "J"));
                 break;
             case Arm64EnumKind.DataSynchronizationOption:
                 enumType = "Arm64DataSynchronizationKind";
+                rawArguments.Add(new("OSH", "OSH"));
                 break;
             case Arm64EnumKind.StoredSharedHintPolicy:
                 enumType = "Arm64StoredSharedHintPolicyKind";
+                rawArguments.Add(new("STRM", "STRM"));
                 break;
             case Arm64EnumKind.ProcessStateField:
                 enumType = "Arm64ProcessStateField";
+                rawArguments.Add(new("DAIFSet", "DAIFSet"));
                 break;
             case Arm64EnumKind.BarrierOperationLimit:
                 enumType = "Arm64BarrierOperationLimitKind";
+                rawArguments.Add(new("OSHLD", "OSHLD"));
                 break;
             case Arm64EnumKind.PrefetchOperation:
                 enumType = "Arm64PrefetchOperationKind";
+                rawArguments.Add(new("PLDL1KEEP", "PLDL1KEEP"));
                 break;
             case Arm64EnumKind.RangePrefetchOperation:
                 enumType = "Arm64RangePrefetchOperationKind";
+                rawArguments.Add(new("PLDSTRM", "PLDSTRM"));
                 break;
             case Arm64EnumKind.DataSync:
                 enumType = "Arm64DataSyncKind";
                 fixedValue = "Arm64DataSyncKind.DSYNC";
+                rawArguments.Add(new("DSYNC", "DSYNC"));
                 break;
             case Arm64EnumKind.CodeSync:
                 enumType = "Arm64CodeSyncKind";
                 fixedValue = "Arm64CodeSyncKind.CSYNC";
+                rawArguments.Add(new("CSYNC", "CSYNC"));
                 break;
             case Arm64EnumKind.RestrictionByContext:
                 enumType = "Arm64RestrictionByContextKind";
                 fixedValue = "Arm64RestrictionByContextKind.RCTX";
+                rawArguments.Add(new("RCTX", "RCTX"));
                 break;
             default:
                 throw new ArgumentOutOfRangeException($"Invalid enum kind  {descriptor.EnumKind}");
@@ -991,7 +1005,8 @@ partial class Arm64Processor
             OperandName = name,
             OperandType = enumType,
         };
-        
+        operandVariation.TestArguments.AddRange(rawArguments);
+
         if (descriptor.EnumKind == Arm64EnumKind.RangePrefetchOperation)
         {
             // (12:4),(0:5)

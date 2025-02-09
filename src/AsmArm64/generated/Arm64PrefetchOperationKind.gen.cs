@@ -121,3 +121,107 @@ public enum Arm64PrefetchOperationKind : byte
     IR = 24,
     Undefined = 0xFF,
 }
+
+partial class Arm64Factory
+{
+    /// <summary>
+    /// Prefetch Data Level 1, keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLDL1KEEP => Arm64PrefetchOperationKind.PLDL1KEEP;
+    /// <summary>
+    /// Prefetch Data Level 1, stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLDL1STRM => Arm64PrefetchOperationKind.PLDL1STRM;
+    /// <summary>
+    /// Prefetch Data Level 2, keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLDL2KEEP => Arm64PrefetchOperationKind.PLDL2KEEP;
+    /// <summary>
+    /// Prefetch Data Level 2, stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLDL2STRM => Arm64PrefetchOperationKind.PLDL2STRM;
+    /// <summary>
+    /// Prefetch Data Level 3, keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLDL3KEEP => Arm64PrefetchOperationKind.PLDL3KEEP;
+    /// <summary>
+    /// Prefetch Data Level 3, stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLDL3STRM => Arm64PrefetchOperationKind.PLDL3STRM;
+    /// <summary>
+    /// Prefetch Data SLC (System Level Cache), keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLDSLCKEEP => Arm64PrefetchOperationKind.PLDSLCKEEP;
+    /// <summary>
+    /// Prefetch Data SLC (System Level Cache), stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLDSLCSTRM => Arm64PrefetchOperationKind.PLDSLCSTRM;
+    /// <summary>
+    /// Prefetch Instruction Level 1, keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLIL1KEEP => Arm64PrefetchOperationKind.PLIL1KEEP;
+    /// <summary>
+    /// Prefetch Instruction Level 1, stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLIL1STRM => Arm64PrefetchOperationKind.PLIL1STRM;
+    /// <summary>
+    /// Prefetch Instruction Level 2, keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLIL2KEEP => Arm64PrefetchOperationKind.PLIL2KEEP;
+    /// <summary>
+    /// Prefetch Instruction Level 2, stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLIL2STRM => Arm64PrefetchOperationKind.PLIL2STRM;
+    /// <summary>
+    /// Prefetch Instruction Level 3, keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLIL3KEEP => Arm64PrefetchOperationKind.PLIL3KEEP;
+    /// <summary>
+    /// Prefetch Instruction Level 3, stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLIL3STRM => Arm64PrefetchOperationKind.PLIL3STRM;
+    /// <summary>
+    /// Prefetch Instruction SLC (System Level Cache), keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLISLCKEEP => Arm64PrefetchOperationKind.PLISLCKEEP;
+    /// <summary>
+    /// Prefetch Instruction SLC (System Level Cache), stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PLISLCSTRM => Arm64PrefetchOperationKind.PLISLCSTRM;
+    /// <summary>
+    /// Prefetch Store Level 1, keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PSTL1KEEP => Arm64PrefetchOperationKind.PSTL1KEEP;
+    /// <summary>
+    /// Prefetch Store Level 1, stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PSTL1STRM => Arm64PrefetchOperationKind.PSTL1STRM;
+    /// <summary>
+    /// Prefetch Store Level 2, keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PSTL2KEEP => Arm64PrefetchOperationKind.PSTL2KEEP;
+    /// <summary>
+    /// Prefetch Store Level 2, stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PSTL2STRM => Arm64PrefetchOperationKind.PSTL2STRM;
+    /// <summary>
+    /// Prefetch Store Level 3, keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PSTL3KEEP => Arm64PrefetchOperationKind.PSTL3KEEP;
+    /// <summary>
+    /// Prefetch Store Level 3, stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PSTL3STRM => Arm64PrefetchOperationKind.PSTL3STRM;
+    /// <summary>
+    /// Prefetch Store SLC (System Level Cache), keep in cache.
+    /// </summary>
+    public static Arm64PrefetchOperationKind PSTSLCKEEP => Arm64PrefetchOperationKind.PSTSLCKEEP;
+    /// <summary>
+    /// Prefetch Store SLC (System Level Cache), stream (do not retain in cache).
+    /// </summary>
+    public static Arm64PrefetchOperationKind PSTSLCSTRM => Arm64PrefetchOperationKind.PSTSLCSTRM;
+    /// <summary>
+    /// Immediate Read.
+    /// </summary>
+    public static Arm64PrefetchOperationKind IR => Arm64PrefetchOperationKind.IR;
+}

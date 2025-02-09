@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_PSB_System
     [TestMethod]
     public void Test_PSB_hc_hints_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = PSB(CSYNC);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.PSB_hc_hints, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.PSB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("PSB CSYNC", asm);
+        }
     }
 }

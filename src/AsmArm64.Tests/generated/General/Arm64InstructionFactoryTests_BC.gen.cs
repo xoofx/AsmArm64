@@ -24,6 +24,23 @@ public class Arm64InstructionFactoryTests_BC_General
     [TestMethod]
     public void Test_BC_only_condbranch_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = BC(NE, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BC_only_condbranch, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BC.NE #32", asm);
+        }
+        
+        {
+            var raw = BC(AL, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BC_only_condbranch, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BC.AL #32", asm);
+        }
     }
 }

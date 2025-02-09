@@ -36,4 +36,3 @@ public enum Arm64SystemRegisterKind
     <#= pair.Item1 #> = 1 << <#= pair.Item2 - 1 #>,
 <# } #>
 }
-

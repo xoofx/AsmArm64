@@ -24,7 +24,78 @@ public class Arm64InstructionFactoryTests_FCCMP_Float
     [TestMethod]
     public void Test_FCCMP_h_floatccmp_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FCCMP(H0, H1, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_h_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP H0, H1, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(H31, H1, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_h_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP H31, H1, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(H0, H31, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_h_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP H0, H31, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(H31, H31, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_h_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP H31, H31, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(H0, H1, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_h_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP H0, H1, #5, AL", asm);
+        }
+        
+        {
+            var raw = FCCMP(H31, H1, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_h_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP H31, H1, #5, AL", asm);
+        }
+        
+        {
+            var raw = FCCMP(H0, H31, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_h_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP H0, H31, #5, AL", asm);
+        }
+        
+        {
+            var raw = FCCMP(H31, H31, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_h_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP H31, H31, #5, AL", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +104,78 @@ public class Arm64InstructionFactoryTests_FCCMP_Float
     [TestMethod]
     public void Test_FCCMP_s_floatccmp_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FCCMP(S0, S1, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_s_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP S0, S1, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(S31, S1, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_s_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP S31, S1, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(S0, S31, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_s_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP S0, S31, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(S31, S31, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_s_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP S31, S31, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(S0, S1, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_s_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP S0, S1, #5, AL", asm);
+        }
+        
+        {
+            var raw = FCCMP(S31, S1, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_s_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP S31, S1, #5, AL", asm);
+        }
+        
+        {
+            var raw = FCCMP(S0, S31, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_s_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP S0, S31, #5, AL", asm);
+        }
+        
+        {
+            var raw = FCCMP(S31, S31, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_s_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP S31, S31, #5, AL", asm);
+        }
     }
     
     /// <summary>
@@ -42,6 +184,77 @@ public class Arm64InstructionFactoryTests_FCCMP_Float
     [TestMethod]
     public void Test_FCCMP_d_floatccmp_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FCCMP(D0, D1, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_d_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP D0, D1, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(D31, D1, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_d_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP D31, D1, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(D0, D31, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_d_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP D0, D31, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(D31, D31, 5, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_d_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP D31, D31, #5, NE", asm);
+        }
+        
+        {
+            var raw = FCCMP(D0, D1, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_d_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP D0, D1, #5, AL", asm);
+        }
+        
+        {
+            var raw = FCCMP(D31, D1, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_d_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP D31, D1, #5, AL", asm);
+        }
+        
+        {
+            var raw = FCCMP(D0, D31, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_d_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP D0, D31, #5, AL", asm);
+        }
+        
+        {
+            var raw = FCCMP(D31, D31, 5, AL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCCMP_d_floatccmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCCMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCCMP D31, D31, #5, AL", asm);
+        }
     }
 }

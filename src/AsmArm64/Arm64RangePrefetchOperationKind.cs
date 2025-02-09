@@ -37,3 +37,11 @@ public enum Arm64RangePrefetchOperationKind : byte
     /// </summary>
     Undefined = 0xFF,
 }
+
+partial class Arm64Factory
+{
+    public static Arm64RangePrefetchOperationKind PLDKEEP => Arm64RangePrefetchOperationKind.PLDKEEP;
+    public static Arm64RangePrefetchOperationKind PSTKEEP => Arm64RangePrefetchOperationKind.PSTKEEP;
+    public static Arm64RangePrefetchOperationKind PLDSTRM => Arm64RangePrefetchOperationKind.PLDSTRM;
+    public static Arm64RangePrefetchOperationKind PSTSTRM => Arm64RangePrefetchOperationKind.PSTSTRM;
+}

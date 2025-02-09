@@ -21,3 +21,10 @@ public enum Arm64RestrictionByContextKind : byte
     RCTX = 0,
     Undefined = 0xFF,
 }
+
+partial class Arm64Factory
+{
+    public static Arm64CodeSyncKind CSYNC => Arm64CodeSyncKind.CSYNC;
+    public static Arm64DataSyncKind DSYNC => Arm64DataSyncKind.DSYNC;
+    public static Arm64RestrictionByContextKind RCTX => Arm64RestrictionByContextKind.RCTX;
+}

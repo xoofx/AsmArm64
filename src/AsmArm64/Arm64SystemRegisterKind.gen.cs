@@ -138,4 +138,3 @@ public enum Arm64SystemRegisterKind
     /// </summary>
     TRCIT = 1 << 22,
 }
-

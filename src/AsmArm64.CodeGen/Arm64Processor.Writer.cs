@@ -596,6 +596,26 @@ partial class Arm64Processor
             w.WriteLine("Undefined = 0xFF,");
         }
         w.CloseBraceBlock();
+
+
+        w.WriteLine();
+        w.WriteLine("partial class Arm64Factory");
+        w.OpenBraceBlock();
+        {
+            foreach (var pair in enums.OrderBy(x => x.Value))
+            {
+                if (description.TryGetValue(pair.Key, out var itemSummary))
+                {
+                    w.WriteSummary(itemSummary);
+                }
+                else
+                {
+                    Console.WriteLine($"No summary found for enum {name} - item: {pair.Key}");
+                }
+                w.WriteLine($"public static {name} {pair.Key} => {name}.{pair.Key};");
+            }
+        }
+        w.CloseBraceBlock();
     }
     
     private void GenerateVectorArrangements()

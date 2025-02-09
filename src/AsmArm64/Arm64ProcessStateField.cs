@@ -23,3 +23,20 @@ public enum Arm64ProcessStateField : byte
     DAIFClr = 12,
     Undefined = 0xFF,
 }
+
+partial class Arm64Factory
+{
+    public static Arm64ProcessStateField ALLINT => Arm64ProcessStateField.ALLINT;
+    public static Arm64ProcessStateField PM => Arm64ProcessStateField.PM;
+    public static Arm64ProcessStateField SVCRSM => Arm64ProcessStateField.SVCRSM;
+    public static Arm64ProcessStateField SVCRZA => Arm64ProcessStateField.SVCRZA;
+    public static Arm64ProcessStateField SVCRSMZA => Arm64ProcessStateField.SVCRSMZA;
+    public static Arm64ProcessStateField UAO => Arm64ProcessStateField.UAO;
+    public static Arm64ProcessStateField PAN => Arm64ProcessStateField.PAN;
+    public static Arm64ProcessStateField SPSel => Arm64ProcessStateField.SPSel;
+    public static Arm64ProcessStateField SSBS => Arm64ProcessStateField.SSBS;
+    public static Arm64ProcessStateField DIT => Arm64ProcessStateField.DIT;
+    public static Arm64ProcessStateField TCO => Arm64ProcessStateField.TCO;
+    public static Arm64ProcessStateField DAIFSet => Arm64ProcessStateField.DAIFSet;
+    public static Arm64ProcessStateField DAIFClr => Arm64ProcessStateField.DAIFClr;
+}

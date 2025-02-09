@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_GCSB_System
     [TestMethod]
     public void Test_GCSB_hd_hints_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = GCSB(DSYNC);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.GCSB_hd_hints, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.GCSB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("GCSB DSYNC", asm);
+        }
     }
 }

@@ -95,6 +95,24 @@ public enum Arm64ConditionalKind : byte
     Undefined = 0xFF,
 }
 
+partial class Arm64Factory
+{
+    public static Arm64ConditionalKind EQ => Arm64ConditionalKind.EQ;
+    public static Arm64ConditionalKind NE => Arm64ConditionalKind.NE;
+    public static Arm64ConditionalKind HS => Arm64ConditionalKind.HS;
+    public static Arm64ConditionalKind LO => Arm64ConditionalKind.LO;
+    public static Arm64ConditionalKind MI => Arm64ConditionalKind.MI;
+    public static Arm64ConditionalKind PL => Arm64ConditionalKind.PL;
+    public static Arm64ConditionalKind VS => Arm64ConditionalKind.VS;
+    public static Arm64ConditionalKind VC => Arm64ConditionalKind.VC;
+    public static Arm64ConditionalKind HI => Arm64ConditionalKind.HI;
+    public static Arm64ConditionalKind LS => Arm64ConditionalKind.LS;
+    public static Arm64ConditionalKind GE => Arm64ConditionalKind.GE;
+    public static Arm64ConditionalKind LT => Arm64ConditionalKind.LT;
+    public static Arm64ConditionalKind GT => Arm64ConditionalKind.GT;
+    public static Arm64ConditionalKind LE => Arm64ConditionalKind.LE;
+    public static Arm64ConditionalKind AL => Arm64ConditionalKind.AL;
+}
 
 partial class Arm64Extensions
 {

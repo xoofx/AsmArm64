@@ -34,3 +34,11 @@ public enum Arm64DataSynchronizationKind : byte
     /// </summary>
     Undefined = 0xFF
 }
+
+partial class Arm64Factory
+{
+    public static Arm64DataSynchronizationKind OSH => Arm64DataSynchronizationKind.OSH;
+    public static Arm64DataSynchronizationKind NSH => Arm64DataSynchronizationKind.NSH;
+    public static Arm64DataSynchronizationKind ISH => Arm64DataSynchronizationKind.ISH;
+    public static Arm64DataSynchronizationKind SY => Arm64DataSynchronizationKind.SY;
+}
