@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_FMINNMP_Advsimd
     [TestMethod]
     public void Test_FMINNMP_asisdpair_only_h_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMINNMP(H0, V1.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMINNMP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMINNMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMINNMP H0, V1.2H", asm);
+        }
+        
+        {
+            var raw = FMINNMP(H31, V1.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMINNMP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMINNMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMINNMP H31, V1.2H", asm);
+        }
+        
+        {
+            var raw = FMINNMP(H0, V31.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMINNMP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMINNMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMINNMP H0, V31.2H", asm);
+        }
+        
+        {
+            var raw = FMINNMP(H31, V31.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMINNMP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMINNMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMINNMP H31, V31.2H", asm);
+        }
     }
     
     /// <summary>

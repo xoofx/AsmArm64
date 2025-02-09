@@ -458,7 +458,60 @@ public class Arm64InstructionFactoryTests_FMOV_Float
     [TestMethod]
     public void Test_FMOV_v64i_float2int_7()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMOV(V0.D[1], X1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_v64i_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V0.D[1], X1", asm);
+        }
+        
+        {
+            var raw = FMOV(V30.D[1], X1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_v64i_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V30.D[1], X1", asm);
+        }
+        
+        {
+            var raw = FMOV(V0.D[1], X16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_v64i_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V0.D[1], X16", asm);
+        }
+        
+        {
+            var raw = FMOV(V30.D[1], X16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_v64i_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V30.D[1], X16", asm);
+        }
+        
+        {
+            var raw = FMOV(V0.D[1], XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_v64i_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V0.D[1], XZR", asm);
+        }
+        
+        {
+            var raw = FMOV(V30.D[1], XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_v64i_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V30.D[1], XZR", asm);
+        }
     }
     
     /// <summary>
@@ -529,7 +582,60 @@ public class Arm64InstructionFactoryTests_FMOV_Float
     [TestMethod]
     public void Test_FMOV_64vx_float2int_9()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMOV(X0, V1.D[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_64vx_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV X0, V1.D[1]", asm);
+        }
+        
+        {
+            var raw = FMOV(X15, V1.D[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_64vx_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV X15, V1.D[1]", asm);
+        }
+        
+        {
+            var raw = FMOV(XZR, V1.D[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_64vx_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV XZR, V1.D[1]", asm);
+        }
+        
+        {
+            var raw = FMOV(X0, V31.D[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_64vx_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV X0, V31.D[1]", asm);
+        }
+        
+        {
+            var raw = FMOV(X15, V31.D[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_64vx_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV X15, V31.D[1]", asm);
+        }
+        
+        {
+            var raw = FMOV(XZR, V31.D[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_64vx_float2int, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV XZR, V31.D[1]", asm);
+        }
     }
     
     /// <summary>

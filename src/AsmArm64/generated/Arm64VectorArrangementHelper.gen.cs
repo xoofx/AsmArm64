@@ -139,8 +139,6 @@ static class Arm64VectorArrangementHelper
             // BFDOT_asimdelem_e             : BFDOT       Vd.Ta, Vn.Tb, Vm.2H[index] <- Operand: Vd.Ta
             // BFDOT_asimdsame2_d            : BFDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // BIC_asimdimm_l_sl             : BIC         Vd.T, #imm8 {, LSL #amount} <- Operand: Vd.T
-            // FCVTXN_asimdmisc_n            : FCVTXN      Vd.Tb, Vn.2D <- Operand: Vd.Tb
-            // FCVTXN2_asimdmisc_n           : FCVTXN2     Vd.Tb, Vn.2D <- Operand: Vd.Tb
             // FDOT_asimdelem_d              : FDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vd.Ta
             // FDOT_asimdsame2_dd            : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // FMLAL_asimdelem_lh            : FMLAL       Vd.Ta, Vn.Tb, Vm.H[index] <- Operand: Vd.Ta
@@ -185,8 +183,22 @@ static class Arm64VectorArrangementHelper
                 }
                 break;
             }
-            // BFCVTN_asimdmisc_4s           : BFCVTN      Vd.Ta, Vn.4S <- Operand: Vd.Ta
-            // BFCVTN2_asimdmisc_4s          : BFCVTN2     Vd.Ta, Vn.4S <- Operand: Vd.Ta
+            // FCVTXN_asimdmisc_n            : FCVTXN      Vd.Tb, Vn.2D <- Operand: Vd.Tb
+            case 6:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 2;
+                        return true;
+                    }
+                }
+                break;
+            }
             // BFDOT_asimdelem_e             : BFDOT       Vd.Ta, Vn.Tb, Vm.2H[index] <- Operand: Vn.Tb
             // BFDOT_asimdsame2_d            : BFDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // BFDOT_asimdsame2_d            : BFDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
@@ -350,7 +362,7 @@ static class Arm64VectorArrangementHelper
             // SCVTF_asimdmiscfp16_r         : SCVTF       Vd.T, Vn.T <- Operand: Vn.T
             // UCVTF_asimdmiscfp16_r         : UCVTF       Vd.T, Vn.T <- Operand: Vd.T
             // UCVTF_asimdmiscfp16_r         : UCVTF       Vd.T, Vn.T <- Operand: Vn.T
-            case 6:
+            case 7:
             {
                 var bitValue = ((rawValue >> 30) & 0x1);
                 var bitsToTest = (bitValue & 0x1);
@@ -371,13 +383,25 @@ static class Arm64VectorArrangementHelper
                 }
                 break;
             }
+            // BFCVTN_asimdmisc_4s           : BFCVTN      Vd.Ta, Vn.4S <- Operand: Vd.Ta
+            case 8:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
+            }
             // AND_asimdsame_only            : AND         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // AND_asimdsame_only            : AND         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // AND_asimdsame_only            : AND         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
-            // BF1CVTL_asimdmisc_v           : BF1CVTL     Vd.8H, Vn.Ta <- Operand: Vn.Ta
-            // BF1CVTL2_asimdmisc_v          : BF1CVTL2    Vd.8H, Vn.Ta <- Operand: Vn.Ta
-            // BF2CVTL_asimdmisc_v           : BF2CVTL     Vd.8H, Vn.Ta <- Operand: Vn.Ta
-            // BF2CVTL2_asimdmisc_v          : BF2CVTL2    Vd.8H, Vn.Ta <- Operand: Vn.Ta
             // BIC_asimdsame_only            : BIC         Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // BIC_asimdsame_only            : BIC         Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // BIC_asimdsame_only            : BIC         Vd.T, Vn.T, Vm.T <- Operand: Vm.T
@@ -396,13 +420,7 @@ static class Arm64VectorArrangementHelper
             // EXT_asimdext_only             : EXT         Vd.T, Vn.T, Vm.T, #index <- Operand: Vd.T
             // EXT_asimdext_only             : EXT         Vd.T, Vn.T, Vm.T, #index <- Operand: Vn.T
             // EXT_asimdext_only             : EXT         Vd.T, Vn.T, Vm.T, #index <- Operand: Vm.T
-            // F1CVTL_asimdmisc_v            : F1CVTL      Vd.8H, Vn.Ta <- Operand: Vn.Ta
-            // F1CVTL2_asimdmisc_v           : F1CVTL2     Vd.8H, Vn.Ta <- Operand: Vn.Ta
-            // F2CVTL_asimdmisc_v            : F2CVTL      Vd.8H, Vn.Ta <- Operand: Vn.Ta
-            // F2CVTL2_asimdmisc_v           : F2CVTL2     Vd.8H, Vn.Ta <- Operand: Vn.Ta
             // FCVTN_asimdsame2_d            : FCVTN       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
-            // FCVTN_asimdsame2_h            : FCVTN       Vd.Ta, Vn.4S, Vm.4S <- Operand: Vd.Ta
-            // FCVTN2_asimdsame2_h           : FCVTN2      Vd.Ta, Vn.4S, Vm.4S <- Operand: Vd.Ta
             // FDOT_asimdelem_d              : FDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vn.Tb
             // FDOT_asimdelem_g              : FDOT        Vd.Ta, Vn.Tb, Vm.2B[index] <- Operand: Vn.Tb
             // FDOT_asimdsame2_d             : FDOT        Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
@@ -450,7 +468,7 @@ static class Arm64VectorArrangementHelper
             // USDOT_asimdelem_d             : USDOT       Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vn.Tb
             // USDOT_asimdsame2_d            : USDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // USDOT_asimdsame2_d            : USDOT       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
-            case 7:
+            case 9:
             {
                 var bitValue = ((rawValue >> 30) & 0x1);
                 var bitsToTest = (bitValue & 0x1);
@@ -466,6 +484,78 @@ static class Arm64VectorArrangementHelper
                     {
                         vKind = Arm64RegisterVKind.B;
                         elementCount = 16;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // BF1CVTL_asimdmisc_v           : BF1CVTL     Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // BF2CVTL_asimdmisc_v           : BF2CVTL     Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // F1CVTL_asimdmisc_v            : F1CVTL      Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // F2CVTL_asimdmisc_v            : F2CVTL      Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // FCVTN_asimdsame2_h            : FCVTN       Vd.Ta, Vn.4S, Vm.4S <- Operand: Vd.Ta
+            case 10:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 0:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 8;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // BF1CVTL2_asimdmisc_v          : BF1CVTL2    Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // BF2CVTL2_asimdmisc_v          : BF2CVTL2    Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // F1CVTL2_asimdmisc_v           : F1CVTL2     Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // F2CVTL2_asimdmisc_v           : F2CVTL2     Vd.8H, Vn.Ta <- Operand: Vn.Ta
+            // FCVTN2_asimdsame2_h           : FCVTN2      Vd.Ta, Vn.4S, Vm.4S <- Operand: Vd.Ta
+            case 11:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.B;
+                        elementCount = 16;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // FCVTXN2_asimdmisc_n           : FCVTXN2     Vd.Tb, Vn.2D <- Operand: Vd.Tb
+            case 12:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.S;
+                        elementCount = 4;
+                        return true;
+                    }
+                }
+                break;
+            }
+            // BFCVTN2_asimdmisc_4s          : BFCVTN2     Vd.Ta, Vn.4S <- Operand: Vd.Ta
+            case 13:
+            {
+                var bitValue = ((rawValue >> 30) & 0x1);
+                var bitsToTest = (bitValue & 0x1);
+                switch (bitsToTest)
+                {
+                    case 1:
+                    {
+                        vKind = Arm64RegisterVKind.H;
+                        elementCount = 8;
                         return true;
                     }
                 }
@@ -618,7 +708,7 @@ static class Arm64VectorArrangementHelper
             // SCVTF_asimdmisc_r             : SCVTF       Vd.T, Vn.T <- Operand: Vn.T
             // UCVTF_asimdmisc_r             : UCVTF       Vd.T, Vn.T <- Operand: Vd.T
             // UCVTF_asimdmisc_r             : UCVTF       Vd.T, Vn.T <- Operand: Vn.T
-            case 8:
+            case 14:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
                 var bitsToTest = (bitValue & 0x3);
@@ -649,7 +739,7 @@ static class Arm64VectorArrangementHelper
             // URECPE_asimdmisc_r            : URECPE      Vd.T, Vn.T <- Operand: Vn.T
             // URSQRTE_asimdmisc_r           : URSQRTE     Vd.T, Vn.T <- Operand: Vd.T
             // URSQRTE_asimdmisc_r           : URSQRTE     Vd.T, Vn.T <- Operand: Vn.T
-            case 9:
+            case 15:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
                 var bitsToTest = (bitValue & 0x3);
@@ -672,7 +762,7 @@ static class Arm64VectorArrangementHelper
             }
             // FCVTL_asimdmisc_l             : FCVTL       Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             // FCVTN_asimdmisc_n             : FCVTN       Vd.Tb, Vn.Ta <- Operand: Vd.Tb
-            case 10:
+            case 16:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
                 var bitsToTest = (bitValue & 0x3);
@@ -695,7 +785,7 @@ static class Arm64VectorArrangementHelper
             }
             // FCVTL2_asimdmisc_l            : FCVTL2      Vd.Ta, Vn.Tb <- Operand: Vn.Tb
             // FCVTN2_asimdmisc_n            : FCVTN2      Vd.Tb, Vn.Ta <- Operand: Vd.Tb
-            case 11:
+            case 17:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x2);
                 var bitsToTest = (bitValue & 0x3);
@@ -786,7 +876,7 @@ static class Arm64VectorArrangementHelper
             // USUBW2_asimddiff_w            : USUBW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vn.Ta
             // XTN_asimdmisc_n               : XTN         Vd.Tb, Vn.Ta <- Operand: Vn.Ta
             // XTN2_asimdmisc_n              : XTN2        Vd.Tb, Vn.Ta <- Operand: Vn.Ta
-            case 12:
+            case 18:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -815,7 +905,7 @@ static class Arm64VectorArrangementHelper
             }
             // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
             // PMULL2_asimddiff_l            : PMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vd.Ta
-            case 13:
+            case 19:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -860,7 +950,7 @@ static class Arm64VectorArrangementHelper
             // UMLSL2_asimdelem_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
             // UMULL2_asimdelem_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vd.Ta
-            case 14:
+            case 20:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -914,7 +1004,7 @@ static class Arm64VectorArrangementHelper
             // UMLSL2_asimdelem_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
             // UMULL2_asimdelem_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vm.Ts[index]
-            case 15:
+            case 21:
             {
                 var bitValue = ((rawValue >> 22) & 0x3);
                 var bitsToTest = (bitValue & 0x3);
@@ -943,7 +1033,7 @@ static class Arm64VectorArrangementHelper
             // FMUL_asimdelem_r_sd           : FMUL        Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
             // FMULX_asimdelem_r_sd          : FMULX       Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vd.T
             // FMULX_asimdelem_r_sd          : FMULX       Vd.T, Vn.T, Vm.Ts[index] <- Operand: Vn.T
-            case 16:
+            case 22:
             {
                 var bitValue = ((rawValue >> 22) & 0x1) | ((rawValue >> 29) & 0x2);
                 var bitsToTest = (bitValue & 0x3);
@@ -1060,7 +1150,7 @@ static class Arm64VectorArrangementHelper
             // ST1_asisdlsep_r4_r4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt2.T
             // ST1_asisdlsep_r4_r4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt3.T
             // ST1_asisdlsep_r4_r4           : ST1         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt4.T
-            case 17:
+            case 23:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 9) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1171,7 +1261,7 @@ static class Arm64VectorArrangementHelper
             // ST4_asisdlsep_r4_r            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt2.T
             // ST4_asisdlsep_r4_r            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt3.T
             // ST4_asisdlsep_r4_r            : ST4         {Vt.T, Vt2.T, Vt3.T, Vt4.T}, [Xn|SP], Xm <- Operand: Vt4.T
-            case 18:
+            case 24:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 9) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1226,7 +1316,7 @@ static class Arm64VectorArrangementHelper
             // SADDLP_asimdmisc_p            : SADDLP      Vd.Ta, Vn.Tb <- Operand: Vd.Ta
             // UADALP_asimdmisc_p            : UADALP      Vd.Ta, Vn.Tb <- Operand: Vd.Ta
             // UADDLP_asimdmisc_p            : UADDLP      Vd.Ta, Vn.Tb <- Operand: Vd.Ta
-            case 19:
+            case 25:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1374,7 +1464,7 @@ static class Arm64VectorArrangementHelper
             // ZIP2_asimdperm_only           : ZIP2        Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // ZIP2_asimdperm_only           : ZIP2        Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // ZIP2_asimdperm_only           : ZIP2        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
-            case 20:
+            case 26:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1498,7 +1588,7 @@ static class Arm64VectorArrangementHelper
             // URHADD_asimdsame_only         : URHADD      Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // URHADD_asimdsame_only         : URHADD      Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // URHADD_asimdsame_only         : URHADD      Vd.T, Vn.T, Vm.T <- Operand: Vm.T
-            case 21:
+            case 27:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1550,7 +1640,7 @@ static class Arm64VectorArrangementHelper
             // UADDLV_asimdall_only          : UADDLV      Vd, Vn.T <- Operand: Vn.T
             // UMAXV_asimdall_only           : UMAXV       Vd, Vn.T <- Operand: Vn.T
             // UMINV_asimdall_only           : UMINV       Vd, Vn.T <- Operand: Vn.T
-            case 22:
+            case 28:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1591,7 +1681,7 @@ static class Arm64VectorArrangementHelper
             }
             // REV32_asimdmisc_r             : REV32       Vd.T, Vn.T <- Operand: Vd.T
             // REV32_asimdmisc_r             : REV32       Vd.T, Vn.T <- Operand: Vn.T
-            case 23:
+            case 29:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1631,7 +1721,7 @@ static class Arm64VectorArrangementHelper
             // PMUL_asimdsame_only           : PMUL        Vd.T, Vn.T, Vm.T <- Operand: Vm.T
             // REV16_asimdmisc_r             : REV16       Vd.T, Vn.T <- Operand: Vd.T
             // REV16_asimdmisc_r             : REV16       Vd.T, Vn.T <- Operand: Vn.T
-            case 24:
+            case 30:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1693,7 +1783,7 @@ static class Arm64VectorArrangementHelper
             // USUBL_asimddiff_l             : USUBL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // USUBW_asimddiff_w             : USUBW       Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
             // XTN_asimdmisc_n               : XTN         Vd.Tb, Vn.Ta <- Operand: Vd.Tb
-            case 25:
+            case 31:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1722,7 +1812,7 @@ static class Arm64VectorArrangementHelper
             }
             // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // PMULL_asimddiff_l             : PMULL       Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
-            case 26:
+            case 32:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1784,7 +1874,7 @@ static class Arm64VectorArrangementHelper
             // USUBL2_asimddiff_l            : USUBL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
             // USUBW2_asimddiff_w            : USUBW2      Vd.Ta, Vn.Ta, Vm.Tb <- Operand: Vm.Tb
             // XTN2_asimdmisc_n              : XTN2        Vd.Tb, Vn.Ta <- Operand: Vd.Tb
-            case 27:
+            case 33:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1813,7 +1903,7 @@ static class Arm64VectorArrangementHelper
             }
             // PMULL2_asimddiff_l            : PMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vn.Tb
             // PMULL2_asimddiff_l            : PMULL2      Vd.Ta, Vn.Tb, Vm.Tb <- Operand: Vm.Tb
-            case 28:
+            case 34:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1840,7 +1930,7 @@ static class Arm64VectorArrangementHelper
             // FCMLA_asimdsame2_c            : FCMLA       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vd.T
             // FCMLA_asimdsame2_c            : FCMLA       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vn.T
             // FCMLA_asimdsame2_c            : FCMLA       Vd.T, Vn.T, Vm.T, #rotate <- Operand: Vm.T
-            case 29:
+            case 35:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1905,7 +1995,7 @@ static class Arm64VectorArrangementHelper
             // SQRDMULH_asimdsame_only       : SQRDMULH    Vd.T, Vn.T, Vm.T <- Operand: Vd.T
             // SQRDMULH_asimdsame_only       : SQRDMULH    Vd.T, Vn.T, Vm.T <- Operand: Vn.T
             // SQRDMULH_asimdsame_only       : SQRDMULH    Vd.T, Vn.T, Vm.T <- Operand: Vm.T
-            case 30:
+            case 36:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1940,7 +2030,7 @@ static class Arm64VectorArrangementHelper
             }
             // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vd.T
             // FCMLA_advsimd_elt             : FCMLA       Vd.T, Vn.T, Vm.Ts[index], #rotate <- Operand: Vn.T
-            case 31:
+            case 37:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -1982,7 +2072,7 @@ static class Arm64VectorArrangementHelper
             // UMLAL_asimdelem_l             : UMLAL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // UMLSL_asimdelem_l             : UMLSL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // UMULL_asimdelem_l             : UMULL       Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
-            case 32:
+            case 38:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -2018,7 +2108,7 @@ static class Arm64VectorArrangementHelper
             // UMLAL2_asimdelem_l            : UMLAL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // UMLSL2_asimdelem_l            : UMLSL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
             // UMULL2_asimdelem_l            : UMULL2      Vd.Ta, Vn.Tb, Vm.Ts[index] <- Operand: Vn.Tb
-            case 33:
+            case 39:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 21) & 0x6);
                 var bitsToTest = (bitValue & 0x7);
@@ -2063,7 +2153,7 @@ static class Arm64VectorArrangementHelper
             // USHLL2_asimdshf_l             : USHLL2      Vd.Ta, Vn.Tb, #shift <- Operand: Vd.Ta
             // UXTL_ushll_asimdshf_l         : UXTL        Vd.Ta, Vn.Tb <- Operand: Vd.Ta
             // UXTL2_ushll_asimdshf_l        : UXTL2       Vd.Ta, Vn.Tb <- Operand: Vd.Ta
-            case 34:
+            case 40:
             {
                 var bitValue = ((rawValue >> 19) & 0xF);
                 var bitsToTest = (bitValue & 0xF);
@@ -2096,7 +2186,7 @@ static class Arm64VectorArrangementHelper
             // MOV_ins_asimdins_ir_r         : MOV         Vd.Ts[index], Rn <- Operand: Vd.Ts[index]
             // MOV_ins_asimdins_iv_v         : MOV         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vd.Ts[index1]
             // MOV_ins_asimdins_iv_v         : MOV         Vd.Ts[index1], Vn.Ts[index2] <- Operand: Vn.Ts[index2]
-            case 35:
+            case 41:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
@@ -2128,7 +2218,7 @@ static class Arm64VectorArrangementHelper
             }
             // SMOV_asimdins_x_x             : SMOV        Xd, Vn.Ts[index] <- Operand: Vn.Ts[index]
             // UMOV_asimdins_w_w             : UMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
-            case 36:
+            case 42:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
@@ -2153,7 +2243,7 @@ static class Arm64VectorArrangementHelper
                 break;
             }
             // SMOV_asimdins_w_w             : SMOV        Wd, Vn.Ts[index] <- Operand: Vn.Ts[index]
-            case 37:
+            case 43:
             {
                 var bitValue = ((rawValue >> 16) & 0x1F);
                 var bitsToTest = (bitValue & 0x1F);
@@ -2199,7 +2289,7 @@ static class Arm64VectorArrangementHelper
             // USHR_asimdshf_r               : USHR        Vd.T, Vn.T, #shift <- Operand: Vn.T
             // USRA_asimdshf_r               : USRA        Vd.T, Vn.T, #shift <- Operand: Vd.T
             // USRA_asimdshf_r               : USRA        Vd.T, Vn.T, #shift <- Operand: Vn.T
-            case 38:
+            case 44:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
                 var bitsToTest = (bitValue & 0x1F);
@@ -2259,7 +2349,7 @@ static class Arm64VectorArrangementHelper
             // UQSHRN_asimdshf_n             : UQSHRN      Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // USHLL_asimdshf_l              : USHLL       Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
             // UXTL_ushll_asimdshf_l         : UXTL        Vd.Ta, Vn.Tb <- Operand: Vn.Tb
-            case 39:
+            case 45:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
                 var bitsToTest = (bitValue & 0x1F);
@@ -2295,7 +2385,7 @@ static class Arm64VectorArrangementHelper
             // UQSHRN2_asimdshf_n            : UQSHRN2     Vd.Tb, Vn.Ta, #shift <- Operand: Vd.Tb
             // USHLL2_asimdshf_l             : USHLL2      Vd.Ta, Vn.Tb, #shift <- Operand: Vn.Tb
             // UXTL2_ushll_asimdshf_l        : UXTL2       Vd.Ta, Vn.Tb <- Operand: Vn.Tb
-            case 40:
+            case 46:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
                 var bitsToTest = (bitValue & 0x1F);
@@ -2327,7 +2417,7 @@ static class Arm64VectorArrangementHelper
             // SCVTF_asimdshf_c              : SCVTF       Vd.T, Vn.T, #fbits <- Operand: Vn.T
             // UCVTF_asimdshf_c              : UCVTF       Vd.T, Vn.T, #fbits <- Operand: Vd.T
             // UCVTF_asimdshf_c              : UCVTF       Vd.T, Vn.T, #fbits <- Operand: Vn.T
-            case 41:
+            case 47:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 18) & 0x1E);
                 var bitsToTest = (bitValue & 0x1F);
@@ -2365,7 +2455,7 @@ static class Arm64VectorArrangementHelper
             }
             // DUP_asimdins_dr_r             : DUP         Vd.T, Rn <- Operand: Vd.T
             // DUP_asimdins_dv_v             : DUP         Vd.T, Vn.Ts[index] <- Operand: Vd.T
-            case 42:
+            case 48:
             {
                 var bitValue = ((rawValue >> 30) & 0x1) | ((rawValue >> 15) & 0x3E);
                 var bitsToTest = (bitValue & 0x3F);
@@ -2479,7 +2569,7 @@ static class Arm64VectorArrangementHelper
             // ST4_asisdlsop_bx4_r4b         : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: Vt2.B
             // ST4_asisdlsop_bx4_r4b         : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: Vt3.B
             // ST4_asisdlsop_bx4_r4b         : ST4         {Vt.B, Vt2.B, Vt3.B, Vt4.B}[index], [Xn|SP], Xm <- Operand: Vt4.B
-            case 43:
+            case 49:
             {
                 vKind = Arm64RegisterVKind.B;
                 elementCount = 0;
@@ -2551,7 +2641,7 @@ static class Arm64VectorArrangementHelper
             // ST4_asisdlsop_dx4_r4d         : ST4         {Vt.D, Vt2.D, Vt3.D, Vt4.D}[index], [Xn|SP], Xm <- Operand: Vt4.D
             // STL1_asisdlso_d1              : STL1        {Vt.D}[index], [Xn|SP] <- Operand: Vt.D
             // UMOV_asimdins_x_x             : UMOV        Xd, Vn.D[index] <- Operand: Vn.D[index]
-            case 44:
+            case 50:
             {
                 vKind = Arm64RegisterVKind.D;
                 elementCount = 0;
@@ -2631,7 +2721,7 @@ static class Arm64VectorArrangementHelper
             // ST4_asisdlsop_hx4_r4h         : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: Vt2.H
             // ST4_asisdlsop_hx4_r4h         : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: Vt3.H
             // ST4_asisdlsop_hx4_r4h         : ST4         {Vt.H, Vt2.H, Vt3.H, Vt4.H}[index], [Xn|SP], Xm <- Operand: Vt4.H
-            case 45:
+            case 51:
             {
                 vKind = Arm64RegisterVKind.H;
                 elementCount = 0;
@@ -2702,7 +2792,7 @@ static class Arm64VectorArrangementHelper
             // ST4_asisdlsop_sx4_r4s         : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt2.S
             // ST4_asisdlsop_sx4_r4s         : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt3.S
             // ST4_asisdlsop_sx4_r4s         : ST4         {Vt.S, Vt2.S, Vt3.S, Vt4.S}[index], [Xn|SP], Xm <- Operand: Vt4.S
-            case 46:
+            case 52:
             {
                 vKind = Arm64RegisterVKind.S;
                 elementCount = 0;
@@ -2776,14 +2866,14 @@ static class Arm64VectorArrangementHelper
             // UMMLA_asimdsame2_g            : UMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vm.16B
             // USMMLA_asimdsame2_g           : USMMLA      Vd.4S, Vn.16B, Vm.16B <- Operand: Vn.16B
             // USMMLA_asimdsame2_g           : USMMLA      Vd.4S, Vn.16B, Vm.16B <- Operand: Vm.16B
-            case 47:
+            case 53:
             {
                 vKind = Arm64RegisterVKind.B;
                 elementCount = 16;
                 return true;
             }
             // FDOT_asimdelem_g              : FDOT        Vd.Ta, Vn.Tb, Vm.2B[index] <- Operand: Vm.2B[index]
-            case 48:
+            case 54:
             {
                 vKind = Arm64RegisterVKind.B;
                 elementCount = 2;
@@ -2807,7 +2897,7 @@ static class Arm64VectorArrangementHelper
             // XAR_vvv2_crypto3_imm6         : XAR         Vd.2D, Vn.2D, Vm.2D, #imm6 <- Operand: Vd.2D
             // XAR_vvv2_crypto3_imm6         : XAR         Vd.2D, Vn.2D, Vm.2D, #imm6 <- Operand: Vn.2D
             // XAR_vvv2_crypto3_imm6         : XAR         Vd.2D, Vn.2D, Vm.2D, #imm6 <- Operand: Vm.2D
-            case 49:
+            case 55:
             {
                 vKind = Arm64RegisterVKind.D;
                 elementCount = 2;
@@ -2819,7 +2909,7 @@ static class Arm64VectorArrangementHelper
             // FMAXP_asisdpair_only_h        : FMAXP       Hd, Vn.2H <- Operand: Vn.2H
             // FMINNMP_asisdpair_only_h      : FMINNMP     Hd, Vn.2H <- Operand: Vn.2H
             // FMINP_asisdpair_only_h        : FMINP       Hd, Vn.2H <- Operand: Vn.2H
-            case 50:
+            case 56:
             {
                 vKind = Arm64RegisterVKind.H;
                 elementCount = 2;
@@ -2830,7 +2920,7 @@ static class Arm64VectorArrangementHelper
             // SUDOT_asimdelem_d             : SUDOT       Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vm.4B[index]
             // UDOT_asimdelem_d              : UDOT        Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vm.4B[index]
             // USDOT_asimdelem_d             : USDOT       Vd.Ta, Vn.Tb, Vm.4B[index] <- Operand: Vm.4B[index]
-            case 51:
+            case 57:
             {
                 vKind = Arm64RegisterVKind.B;
                 elementCount = 4;
@@ -2901,7 +2991,7 @@ static class Arm64VectorArrangementHelper
             // SMMLA_asimdsame2_g            : SMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vd.4S
             // UMMLA_asimdsame2_g            : UMMLA       Vd.4S, Vn.16B, Vm.16B <- Operand: Vd.4S
             // USMMLA_asimdsame2_g           : USMMLA      Vd.4S, Vn.16B, Vm.16B <- Operand: Vd.4S
-            case 52:
+            case 58:
             {
                 vKind = Arm64RegisterVKind.S;
                 elementCount = 4;
@@ -2933,7 +3023,7 @@ static class Arm64VectorArrangementHelper
             // LUTI4_asimdtbl_l7             : LUTI4       Vd.8H, {Vn1.8H, Vn2.8H}, Vm[index] <- Operand: Vd.8H
             // LUTI4_asimdtbl_l7             : LUTI4       Vd.8H, {Vn1.8H, Vn2.8H}, Vm[index] <- Operand: Vn1.8H
             // LUTI4_asimdtbl_l7             : LUTI4       Vd.8H, {Vn1.8H, Vn2.8H}, Vm[index] <- Operand: Vn2.8H
-            case 53:
+            case 59:
             {
                 vKind = Arm64RegisterVKind.H;
                 elementCount = 8;

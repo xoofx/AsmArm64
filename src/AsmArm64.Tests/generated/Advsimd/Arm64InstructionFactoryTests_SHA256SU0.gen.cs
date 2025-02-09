@@ -24,6 +24,41 @@ public class Arm64InstructionFactoryTests_SHA256SU0_Advsimd
     [TestMethod]
     public void Test_SHA256SU0_vv_cryptosha2_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SHA256SU0(V0.T_4S, V1.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SHA256SU0_vv_cryptosha2, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SHA256SU0, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SHA256SU0 V0.4S, V1.4S", asm);
+        }
+        
+        {
+            var raw = SHA256SU0(V30.T_4S, V1.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SHA256SU0_vv_cryptosha2, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SHA256SU0, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SHA256SU0 V30.4S, V1.4S", asm);
+        }
+        
+        {
+            var raw = SHA256SU0(V0.T_4S, V31.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SHA256SU0_vv_cryptosha2, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SHA256SU0, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SHA256SU0 V0.4S, V31.4S", asm);
+        }
+        
+        {
+            var raw = SHA256SU0(V30.T_4S, V31.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SHA256SU0_vv_cryptosha2, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SHA256SU0, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SHA256SU0 V30.4S, V31.4S", asm);
+        }
     }
 }

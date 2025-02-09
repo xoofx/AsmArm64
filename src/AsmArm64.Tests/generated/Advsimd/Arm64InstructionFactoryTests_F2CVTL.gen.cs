@@ -24,15 +24,41 @@ public class Arm64InstructionFactoryTests_F2CVTL_Advsimd
     [TestMethod]
     public void Test_F2CVTL_asimdmisc_v_0()
     {
-        Assert.Inconclusive("TODO");
-    }
-    
-    /// <summary>
-    /// Test of <see cref="Arm64InstructionFactory.F2CVTL"/>.
-    /// </summary>
-    [TestMethod]
-    public void Test_F2CVTL_asimdmisc_v_1()
-    {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = F2CVTL(V0.T_8H, V1.T_8B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.F2CVTL_asimdmisc_v, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.F2CVTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("F2CVTL V0.8H, V1.8B", asm);
+        }
+        
+        {
+            var raw = F2CVTL(V30.T_8H, V1.T_8B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.F2CVTL_asimdmisc_v, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.F2CVTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("F2CVTL V30.8H, V1.8B", asm);
+        }
+        
+        {
+            var raw = F2CVTL(V0.T_8H, V31.T_8B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.F2CVTL_asimdmisc_v, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.F2CVTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("F2CVTL V0.8H, V31.8B", asm);
+        }
+        
+        {
+            var raw = F2CVTL(V30.T_8H, V31.T_8B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.F2CVTL_asimdmisc_v, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.F2CVTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("F2CVTL V30.8H, V31.8B", asm);
+        }
     }
 }

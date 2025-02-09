@@ -68,15 +68,41 @@ public class Arm64InstructionFactoryTests_FCVTXN_Advsimd
     [TestMethod]
     public void Test_FCVTXN_asimdmisc_n_1()
     {
-        Assert.Inconclusive("TODO");
-    }
-    
-    /// <summary>
-    /// Test of <see cref="Arm64InstructionFactory.FCVTXN"/>.
-    /// </summary>
-    [TestMethod]
-    public void Test_FCVTXN_asimdmisc_n_2()
-    {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FCVTXN(V0.T_2S, V1.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTXN_asimdmisc_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTXN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTXN V0.2S, V1.2D", asm);
+        }
+        
+        {
+            var raw = FCVTXN(V30.T_2S, V1.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTXN_asimdmisc_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTXN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTXN V30.2S, V1.2D", asm);
+        }
+        
+        {
+            var raw = FCVTXN(V0.T_2S, V31.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTXN_asimdmisc_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTXN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTXN V0.2S, V31.2D", asm);
+        }
+        
+        {
+            var raw = FCVTXN(V30.T_2S, V31.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTXN_asimdmisc_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTXN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTXN V30.2S, V31.2D", asm);
+        }
     }
 }

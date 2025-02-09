@@ -664,7 +664,78 @@ public class Arm64InstructionFactoryTests_FMULX_Advsimd
     [TestMethod]
     public void Test_FMULX_asisdelem_rh_h_8()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMULX(H0, H1, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asisdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX H0, H1, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(H31, H1, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asisdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX H31, H1, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(H0, H31, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asisdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX H0, H31, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(H31, H31, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asisdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX H31, H31, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(H0, H1, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asisdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX H0, H1, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(H31, H1, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asisdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX H31, H1, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(H0, H31, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asisdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX H0, H31, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(H31, H31, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asisdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX H31, H31, V0.H[1]", asm);
+        }
     }
     
     /// <summary>
@@ -833,7 +904,78 @@ public class Arm64InstructionFactoryTests_FMULX_Advsimd
     [TestMethod]
     public void Test_FMULX_asimdelem_rh_h_11()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMULX(V0.T_4H, V1.T_4H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V0.4H, V1.4H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V30.T_4H, V1.T_4H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V30.4H, V1.4H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V0.T_4H, V31.T_4H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V0.4H, V31.4H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V30.T_4H, V31.T_4H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V30.4H, V31.4H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V0.T_4H, V1.T_4H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V0.4H, V1.4H, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V30.T_4H, V1.T_4H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V30.4H, V1.4H, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V0.T_4H, V31.T_4H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V0.4H, V31.4H, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V30.T_4H, V31.T_4H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V30.4H, V31.4H, V0.H[1]", asm);
+        }
     }
     
     /// <summary>
@@ -842,7 +984,78 @@ public class Arm64InstructionFactoryTests_FMULX_Advsimd
     [TestMethod]
     public void Test_FMULX_asimdelem_rh_h_12()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMULX(V0.T_8H, V1.T_8H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V0.8H, V1.8H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V30.T_8H, V1.T_8H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V30.8H, V1.8H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V0.T_8H, V31.T_8H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V0.8H, V31.8H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V30.T_8H, V31.T_8H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V30.8H, V31.8H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V0.T_8H, V1.T_8H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V0.8H, V1.8H, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V30.T_8H, V1.T_8H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V30.8H, V1.8H, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V0.T_8H, V31.T_8H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V0.8H, V31.8H, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = FMULX(V30.T_8H, V31.T_8H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMULX_asimdelem_rh_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMULX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMULX V30.8H, V31.8H, V0.H[1]", asm);
+        }
     }
     
     /// <summary>

@@ -1849,10 +1849,14 @@ partial class Arm64Processor
                         if (elementCount == 0)
                         {
                             baseType += $"_{vKind}";
+                            testArguments.Add(new("V", 0 + operandIndex, vKind));
+                            testArguments.Add(new("V", 30 + operandIndex, vKind));
                         }
                         else
                         {
                             baseType += $"_{elementCount}{vKind}";
+                            testArguments.Add(new("V", 0 + operandIndex, $"{elementCount}{vKind}"));
+                            testArguments.Add(new("V", 30 + operandIndex, $"{elementCount}{vKind}"));
                         }
                     }
                 }

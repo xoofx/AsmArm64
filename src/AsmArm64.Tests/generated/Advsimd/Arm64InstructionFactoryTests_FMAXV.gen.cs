@@ -112,6 +112,41 @@ public class Arm64InstructionFactoryTests_FMAXV_Advsimd
     [TestMethod]
     public void Test_FMAXV_asimdall_only_sd_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMAXV(S0, V1.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMAXV_asimdall_only_sd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMAXV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMAXV S0, V1.4S", asm);
+        }
+        
+        {
+            var raw = FMAXV(S31, V1.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMAXV_asimdall_only_sd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMAXV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMAXV S31, V1.4S", asm);
+        }
+        
+        {
+            var raw = FMAXV(S0, V31.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMAXV_asimdall_only_sd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMAXV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMAXV S0, V31.4S", asm);
+        }
+        
+        {
+            var raw = FMAXV(S31, V31.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMAXV_asimdall_only_sd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMAXV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMAXV S31, V31.4S", asm);
+        }
     }
 }

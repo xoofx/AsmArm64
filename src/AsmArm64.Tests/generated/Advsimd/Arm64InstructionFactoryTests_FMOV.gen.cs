@@ -128,6 +128,23 @@ public class Arm64InstructionFactoryTests_FMOV_Advsimd
     [TestMethod]
     public void Test_FMOV_asimdimm_d2_d_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMOV(V0.T_2D, 0.50000000f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_asimdimm_d2_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V0.2D, #0.50000000", asm);
+        }
+        
+        {
+            var raw = FMOV(V30.T_2D, 0.50000000f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_asimdimm_d2_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V30.2D, #0.50000000", asm);
+        }
     }
 }

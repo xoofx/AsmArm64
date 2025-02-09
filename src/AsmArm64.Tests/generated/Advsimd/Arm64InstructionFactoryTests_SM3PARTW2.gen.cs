@@ -24,6 +24,77 @@ public class Arm64InstructionFactoryTests_SM3PARTW2_Advsimd
     [TestMethod]
     public void Test_SM3PARTW2_vvv4_cryptosha512_3_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SM3PARTW2(V0.T_4S, V1.T_4S, V2.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SM3PARTW2_vvv4_cryptosha512_3, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SM3PARTW2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SM3PARTW2 V0.4S, V1.4S, V2.4S", asm);
+        }
+        
+        {
+            var raw = SM3PARTW2(V30.T_4S, V1.T_4S, V2.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SM3PARTW2_vvv4_cryptosha512_3, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SM3PARTW2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SM3PARTW2 V30.4S, V1.4S, V2.4S", asm);
+        }
+        
+        {
+            var raw = SM3PARTW2(V0.T_4S, V31.T_4S, V2.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SM3PARTW2_vvv4_cryptosha512_3, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SM3PARTW2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SM3PARTW2 V0.4S, V31.4S, V2.4S", asm);
+        }
+        
+        {
+            var raw = SM3PARTW2(V30.T_4S, V31.T_4S, V2.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SM3PARTW2_vvv4_cryptosha512_3, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SM3PARTW2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SM3PARTW2 V30.4S, V31.4S, V2.4S", asm);
+        }
+        
+        {
+            var raw = SM3PARTW2(V0.T_4S, V1.T_4S, V0.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SM3PARTW2_vvv4_cryptosha512_3, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SM3PARTW2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SM3PARTW2 V0.4S, V1.4S, V0.4S", asm);
+        }
+        
+        {
+            var raw = SM3PARTW2(V30.T_4S, V1.T_4S, V0.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SM3PARTW2_vvv4_cryptosha512_3, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SM3PARTW2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SM3PARTW2 V30.4S, V1.4S, V0.4S", asm);
+        }
+        
+        {
+            var raw = SM3PARTW2(V0.T_4S, V31.T_4S, V0.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SM3PARTW2_vvv4_cryptosha512_3, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SM3PARTW2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SM3PARTW2 V0.4S, V31.4S, V0.4S", asm);
+        }
+        
+        {
+            var raw = SM3PARTW2(V30.T_4S, V31.T_4S, V0.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SM3PARTW2_vvv4_cryptosha512_3, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SM3PARTW2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SM3PARTW2 V30.4S, V31.4S, V0.4S", asm);
+        }
     }
 }

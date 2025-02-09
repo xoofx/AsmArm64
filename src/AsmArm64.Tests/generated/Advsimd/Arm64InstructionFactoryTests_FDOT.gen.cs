@@ -24,7 +24,78 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd
     [TestMethod]
     public void Test_FDOT_asimdelem_g_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FDOT(V0.T_4H, V1.T_8B, V2.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.4H, V1.8B, V2.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_4H, V1.T_8B, V2.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.4H, V1.8B, V2.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_4H, V31.T_8B, V2.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.4H, V31.8B, V2.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_4H, V31.T_8B, V2.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.4H, V31.8B, V2.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_4H, V1.T_8B, V0.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.4H, V1.8B, V0.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_4H, V1.T_8B, V0.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.4H, V1.8B, V0.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_4H, V31.T_8B, V0.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.4H, V31.8B, V0.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_4H, V31.T_8B, V0.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.4H, V31.8B, V0.2B[1]", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +104,78 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd
     [TestMethod]
     public void Test_FDOT_asimdelem_g_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FDOT(V0.T_8H, V1.T_16B, V2.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.8H, V1.16B, V2.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_8H, V1.T_16B, V2.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.8H, V1.16B, V2.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_8H, V31.T_16B, V2.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.8H, V31.16B, V2.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_8H, V31.T_16B, V2.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.8H, V31.16B, V2.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_8H, V1.T_16B, V0.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.8H, V1.16B, V0.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_8H, V1.T_16B, V0.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.8H, V1.16B, V0.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_8H, V31.T_16B, V0.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.8H, V31.16B, V0.2B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_8H, V31.T_16B, V0.T_2B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_g, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.8H, V31.16B, V0.2B[1]", asm);
+        }
     }
     
     /// <summary>
@@ -202,7 +344,78 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd
     [TestMethod]
     public void Test_FDOT_asimdelem_d_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FDOT(V0.T_2S, V1.T_8B, V2.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.2S, V1.8B, V2.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_2S, V1.T_8B, V2.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.2S, V1.8B, V2.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_2S, V31.T_8B, V2.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.2S, V31.8B, V2.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_2S, V31.T_8B, V2.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.2S, V31.8B, V2.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_2S, V1.T_8B, V0.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.2S, V1.8B, V0.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_2S, V1.T_8B, V0.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.2S, V1.8B, V0.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_2S, V31.T_8B, V0.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.2S, V31.8B, V0.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_2S, V31.T_8B, V0.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.2S, V31.8B, V0.4B[1]", asm);
+        }
     }
     
     /// <summary>
@@ -211,7 +424,78 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd
     [TestMethod]
     public void Test_FDOT_asimdelem_d_5()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FDOT(V0.T_4S, V1.T_16B, V2.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.4S, V1.16B, V2.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_4S, V1.T_16B, V2.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.4S, V1.16B, V2.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_4S, V31.T_16B, V2.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.4S, V31.16B, V2.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_4S, V31.T_16B, V2.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.4S, V31.16B, V2.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_4S, V1.T_16B, V0.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.4S, V1.16B, V0.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_4S, V1.T_16B, V0.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.4S, V1.16B, V0.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V0.T_4S, V31.T_16B, V0.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V0.4S, V31.16B, V0.4B[1]", asm);
+        }
+        
+        {
+            var raw = FDOT(V30.T_4S, V31.T_16B, V0.T_4B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FDOT_asimdelem_d, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FDOT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FDOT V30.4S, V31.16B, V0.4B[1]", asm);
+        }
     }
     
     /// <summary>

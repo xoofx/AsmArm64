@@ -24,7 +24,78 @@ public class Arm64InstructionFactoryTests_BFMLALT_Advsimd
     [TestMethod]
     public void Test_BFMLALT_asimdelem_f_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = BFMLALT(V0.T_4S, V1.T_8H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdelem_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V0.4S, V1.8H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V30.T_4S, V1.T_8H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdelem_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V30.4S, V1.8H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V0.T_4S, V31.T_8H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdelem_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V0.4S, V31.8H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V30.T_4S, V31.T_8H, V2.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdelem_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V30.4S, V31.8H, V2.H[1]", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V0.T_4S, V1.T_8H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdelem_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V0.4S, V1.8H, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V30.T_4S, V1.T_8H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdelem_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V30.4S, V1.8H, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V0.T_4S, V31.T_8H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdelem_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V0.4S, V31.8H, V0.H[1]", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V30.T_4S, V31.T_8H, V0.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdelem_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V30.4S, V31.8H, V0.H[1]", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +104,77 @@ public class Arm64InstructionFactoryTests_BFMLALT_Advsimd
     [TestMethod]
     public void Test_BFMLALT_asimdsame2_f_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = BFMLALT(V0.T_4S, V1.T_8H, V2.T_8H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdsame2_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V0.4S, V1.8H, V2.8H", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V30.T_4S, V1.T_8H, V2.T_8H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdsame2_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V30.4S, V1.8H, V2.8H", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V0.T_4S, V31.T_8H, V2.T_8H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdsame2_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V0.4S, V31.8H, V2.8H", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V30.T_4S, V31.T_8H, V2.T_8H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdsame2_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V30.4S, V31.8H, V2.8H", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V0.T_4S, V1.T_8H, V0.T_8H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdsame2_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V0.4S, V1.8H, V0.8H", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V30.T_4S, V1.T_8H, V0.T_8H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdsame2_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V30.4S, V1.8H, V0.8H", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V0.T_4S, V31.T_8H, V0.T_8H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdsame2_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V0.4S, V31.8H, V0.8H", asm);
+        }
+        
+        {
+            var raw = BFMLALT(V30.T_4S, V31.T_8H, V0.T_8H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFMLALT_asimdsame2_f, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFMLALT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFMLALT V30.4S, V31.8H, V0.8H", asm);
+        }
     }
 }

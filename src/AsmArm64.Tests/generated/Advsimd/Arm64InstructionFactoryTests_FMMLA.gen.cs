@@ -24,7 +24,78 @@ public class Arm64InstructionFactoryTests_FMMLA_Advsimd
     [TestMethod]
     public void Test_FMMLA_asimd_fp8fp16_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMMLA(V0.T_8H, V1.T_16B, V2.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V0.8H, V1.16B, V2.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V30.T_8H, V1.T_16B, V2.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V30.8H, V1.16B, V2.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V0.T_8H, V31.T_16B, V2.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V0.8H, V31.16B, V2.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V30.T_8H, V31.T_16B, V2.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V30.8H, V31.16B, V2.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V0.T_8H, V1.T_16B, V0.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V0.8H, V1.16B, V0.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V30.T_8H, V1.T_16B, V0.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V30.8H, V1.16B, V0.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V0.T_8H, V31.T_16B, V0.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V0.8H, V31.16B, V0.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V30.T_8H, V31.T_16B, V0.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V30.8H, V31.16B, V0.16B", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +104,77 @@ public class Arm64InstructionFactoryTests_FMMLA_Advsimd
     [TestMethod]
     public void Test_FMMLA_asimd_fp8fp32_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMMLA(V0.T_4S, V1.T_16B, V2.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V0.4S, V1.16B, V2.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V30.T_4S, V1.T_16B, V2.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V30.4S, V1.16B, V2.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V0.T_4S, V31.T_16B, V2.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V0.4S, V31.16B, V2.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V30.T_4S, V31.T_16B, V2.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V30.4S, V31.16B, V2.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V0.T_4S, V1.T_16B, V0.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V0.4S, V1.16B, V0.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V30.T_4S, V1.T_16B, V0.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V30.4S, V1.16B, V0.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V0.T_4S, V31.T_16B, V0.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V0.4S, V31.16B, V0.16B", asm);
+        }
+        
+        {
+            var raw = FMMLA(V30.T_4S, V31.T_16B, V0.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMMLA_asimd_fp8fp32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMMLA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMMLA V30.4S, V31.16B, V0.16B", asm);
+        }
     }
 }

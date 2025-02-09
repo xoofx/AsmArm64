@@ -272,15 +272,77 @@ public class Arm64InstructionFactoryTests_FCVTN_Advsimd
     [TestMethod]
     public void Test_FCVTN_asimdsame2_h_4()
     {
-        Assert.Inconclusive("TODO");
-    }
-    
-    /// <summary>
-    /// Test of <see cref="Arm64InstructionFactory.FCVTN"/>.
-    /// </summary>
-    [TestMethod]
-    public void Test_FCVTN_asimdsame2_h_5()
-    {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FCVTN(V0.T_8B, V1.T_4S, V2.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTN_asimdsame2_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTN V0.8B, V1.4S, V2.4S", asm);
+        }
+        
+        {
+            var raw = FCVTN(V30.T_8B, V1.T_4S, V2.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTN_asimdsame2_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTN V30.8B, V1.4S, V2.4S", asm);
+        }
+        
+        {
+            var raw = FCVTN(V0.T_8B, V31.T_4S, V2.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTN_asimdsame2_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTN V0.8B, V31.4S, V2.4S", asm);
+        }
+        
+        {
+            var raw = FCVTN(V30.T_8B, V31.T_4S, V2.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTN_asimdsame2_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTN V30.8B, V31.4S, V2.4S", asm);
+        }
+        
+        {
+            var raw = FCVTN(V0.T_8B, V1.T_4S, V0.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTN_asimdsame2_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTN V0.8B, V1.4S, V0.4S", asm);
+        }
+        
+        {
+            var raw = FCVTN(V30.T_8B, V1.T_4S, V0.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTN_asimdsame2_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTN V30.8B, V1.4S, V0.4S", asm);
+        }
+        
+        {
+            var raw = FCVTN(V0.T_8B, V31.T_4S, V0.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTN_asimdsame2_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTN V0.8B, V31.4S, V0.4S", asm);
+        }
+        
+        {
+            var raw = FCVTN(V30.T_8B, V31.T_4S, V0.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTN_asimdsame2_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTN V30.8B, V31.4S, V0.4S", asm);
+        }
     }
 }

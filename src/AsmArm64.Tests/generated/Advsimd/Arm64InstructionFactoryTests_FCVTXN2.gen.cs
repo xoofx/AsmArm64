@@ -24,15 +24,41 @@ public class Arm64InstructionFactoryTests_FCVTXN2_Advsimd
     [TestMethod]
     public void Test_FCVTXN2_asimdmisc_n_0()
     {
-        Assert.Inconclusive("TODO");
-    }
-    
-    /// <summary>
-    /// Test of <see cref="Arm64InstructionFactory.FCVTXN2"/>.
-    /// </summary>
-    [TestMethod]
-    public void Test_FCVTXN2_asimdmisc_n_1()
-    {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FCVTXN2(V0.T_4S, V1.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTXN2_asimdmisc_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTXN2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTXN2 V0.4S, V1.2D", asm);
+        }
+        
+        {
+            var raw = FCVTXN2(V30.T_4S, V1.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTXN2_asimdmisc_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTXN2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTXN2 V30.4S, V1.2D", asm);
+        }
+        
+        {
+            var raw = FCVTXN2(V0.T_4S, V31.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTXN2_asimdmisc_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTXN2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTXN2 V0.4S, V31.2D", asm);
+        }
+        
+        {
+            var raw = FCVTXN2(V30.T_4S, V31.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCVTXN2_asimdmisc_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCVTXN2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCVTXN2 V30.4S, V31.2D", asm);
+        }
     }
 }

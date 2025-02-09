@@ -24,15 +24,41 @@ public class Arm64InstructionFactoryTests_BFCVTN_Advsimd
     [TestMethod]
     public void Test_BFCVTN_asimdmisc_4s_0()
     {
-        Assert.Inconclusive("TODO");
-    }
-    
-    /// <summary>
-    /// Test of <see cref="Arm64InstructionFactory.BFCVTN"/>.
-    /// </summary>
-    [TestMethod]
-    public void Test_BFCVTN_asimdmisc_4s_1()
-    {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = BFCVTN(V0.T_4H, V1.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFCVTN_asimdmisc_4s, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFCVTN V0.4H, V1.4S", asm);
+        }
+        
+        {
+            var raw = BFCVTN(V30.T_4H, V1.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFCVTN_asimdmisc_4s, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFCVTN V30.4H, V1.4S", asm);
+        }
+        
+        {
+            var raw = BFCVTN(V0.T_4H, V31.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFCVTN_asimdmisc_4s, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFCVTN V0.4H, V31.4S", asm);
+        }
+        
+        {
+            var raw = BFCVTN(V30.T_4H, V31.T_4S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFCVTN_asimdmisc_4s, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFCVTN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFCVTN V30.4H, V31.4S", asm);
+        }
     }
 }

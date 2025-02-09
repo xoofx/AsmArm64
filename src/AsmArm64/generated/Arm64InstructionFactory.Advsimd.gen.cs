@@ -557,30 +557,6 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// 8-bit floating-point convert to BFloat16 (vector).
     /// </summary>
-    /// <remarks><code>BF1CVTL Vd.8H, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.BF1CVTL_asimdmisc_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BF1CVTL(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_16B Vn_Ta)
-    {
-        uint raw = 0x6EA17800U; // Encoding for: BF1CVTL_asimdmisc_v
-        raw |= (uint)Vd_8H.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// 8-bit floating-point convert to BFloat16 (vector).
-    /// </summary>
-    /// <remarks><code>BF1CVTL2 Vd.8H, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.BF1CVTL2_asimdmisc_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BF1CVTL2(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_8B Vn_Ta)
-    {
-        uint raw = 0x6EA17800U; // Encoding for: BF1CVTL2_asimdmisc_v
-        raw |= (uint)Vd_8H.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// 8-bit floating-point convert to BFloat16 (vector).
-    /// </summary>
     /// <remarks><code>BF1CVTL2 Vd.8H, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BF1CVTL2_asimdmisc_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BF1CVTL2(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_16B Vn_Ta)
@@ -605,30 +581,6 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// 8-bit floating-point convert to BFloat16 (vector).
     /// </summary>
-    /// <remarks><code>BF2CVTL Vd.8H, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.BF2CVTL_asimdmisc_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BF2CVTL(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_16B Vn_Ta)
-    {
-        uint raw = 0x6EE17800U; // Encoding for: BF2CVTL_asimdmisc_v
-        raw |= (uint)Vd_8H.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// 8-bit floating-point convert to BFloat16 (vector).
-    /// </summary>
-    /// <remarks><code>BF2CVTL2 Vd.8H, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.BF2CVTL2_asimdmisc_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BF2CVTL2(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_8B Vn_Ta)
-    {
-        uint raw = 0x6EE17800U; // Encoding for: BF2CVTL2_asimdmisc_v
-        raw |= (uint)Vd_8H.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// 8-bit floating-point convert to BFloat16 (vector).
-    /// </summary>
     /// <remarks><code>BF2CVTL2 Vd.8H, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BF2CVTL2_asimdmisc_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint BF2CVTL2(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_16B Vn_Ta)
@@ -646,30 +598,6 @@ static partial class Arm64InstructionFactory
     public static uint BFCVTN(Arm64RegisterV_4H Vd_Ta, Arm64RegisterV_4S Vn_4S)
     {
         uint raw = 0x0EA16800U; // Encoding for: BFCVTN_asimdmisc_4s
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_4S.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert from single-precision to BFloat16 format (vector).
-    /// </summary>
-    /// <remarks><code>BFCVTN Vd.Ta, Vn.4S</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.BFCVTN_asimdmisc_4s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFCVTN(Arm64RegisterV_8H Vd_Ta, Arm64RegisterV_4S Vn_4S)
-    {
-        uint raw = 0x4EA16800U; // Encoding for: BFCVTN_asimdmisc_4s
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_4S.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert from single-precision to BFloat16 format (vector).
-    /// </summary>
-    /// <remarks><code>BFCVTN2 Vd.Ta, Vn.4S</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.BFCVTN2_asimdmisc_4s), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BFCVTN2(Arm64RegisterV_4H Vd_Ta, Arm64RegisterV_4S Vn_4S)
-    {
-        uint raw = 0x4EA16800U; // Encoding for: BFCVTN2_asimdmisc_4s
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_4S.Index << 5;
         return raw;
@@ -2581,30 +2509,6 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// 8-bit floating-point convert to half-precision (vector).
     /// </summary>
-    /// <remarks><code>F1CVTL Vd.8H, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.F1CVTL_asimdmisc_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint F1CVTL(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_16B Vn_Ta)
-    {
-        uint raw = 0x6E217800U; // Encoding for: F1CVTL_asimdmisc_v
-        raw |= (uint)Vd_8H.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// 8-bit floating-point convert to half-precision (vector).
-    /// </summary>
-    /// <remarks><code>F1CVTL2 Vd.8H, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.F1CVTL2_asimdmisc_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint F1CVTL2(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_8B Vn_Ta)
-    {
-        uint raw = 0x6E217800U; // Encoding for: F1CVTL2_asimdmisc_v
-        raw |= (uint)Vd_8H.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// 8-bit floating-point convert to half-precision (vector).
-    /// </summary>
     /// <remarks><code>F1CVTL2 Vd.8H, Vn.Ta</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.F1CVTL2_asimdmisc_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint F1CVTL2(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_16B Vn_Ta)
@@ -2622,30 +2526,6 @@ static partial class Arm64InstructionFactory
     public static uint F2CVTL(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_8B Vn_Ta)
     {
         uint raw = 0x2E617800U; // Encoding for: F2CVTL_asimdmisc_v
-        raw |= (uint)Vd_8H.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// 8-bit floating-point convert to half-precision (vector).
-    /// </summary>
-    /// <remarks><code>F2CVTL Vd.8H, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.F2CVTL_asimdmisc_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint F2CVTL(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_16B Vn_Ta)
-    {
-        uint raw = 0x6E617800U; // Encoding for: F2CVTL_asimdmisc_v
-        raw |= (uint)Vd_8H.Index;
-        raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// 8-bit floating-point convert to half-precision (vector).
-    /// </summary>
-    /// <remarks><code>F2CVTL2 Vd.8H, Vn.Ta</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.F2CVTL2_asimdmisc_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint F2CVTL2(Arm64RegisterV_8H Vd_8H, Arm64RegisterV_8B Vn_Ta)
-    {
-        uint raw = 0x6E617800U; // Encoding for: F2CVTL2_asimdmisc_v
         raw |= (uint)Vd_8H.Index;
         raw |= (uint)Vn_Ta.Index << 5;
         return raw;
@@ -4936,19 +4816,6 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
-    /// Single-precision to 8-bit floating-point convert and narrow (vector).
-    /// </summary>
-    /// <remarks><code>FCVTN Vd.Ta, Vn.4S, Vm.4S</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTN_asimdsame2_h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTN(Arm64RegisterV_16B Vd_Ta, Arm64RegisterV_4S Vn_4S, Arm64RegisterV_4S Vm_4S)
-    {
-        uint raw = 0x4E00F400U; // Encoding for: FCVTN_asimdsame2_h
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_4S.Index << 5;
-        raw |= (uint)Vm_4S.Index << 16;
-        return raw;
-    }
-    /// <summary>
     /// Floating-point convert to lower precision narrow (vector).
     /// </summary>
     /// <remarks><code>FCVTN2 Vd.Tb, Vn.Ta</code></remarks>
@@ -4970,19 +4837,6 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4E616800U; // Encoding for: FCVTN2_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Single-precision to 8-bit floating-point convert and narrow (vector).
-    /// </summary>
-    /// <remarks><code>FCVTN2 Vd.Ta, Vn.4S, Vm.4S</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTN2_asimdsame2_h), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTN2(Arm64RegisterV_8B Vd_Ta, Arm64RegisterV_4S Vn_4S, Arm64RegisterV_4S Vm_4S)
-    {
-        uint raw = 0x4E00F400U; // Encoding for: FCVTN2_asimdsame2_h
-        raw |= (uint)Vd_Ta.Index;
-        raw |= (uint)Vn_4S.Index << 5;
-        raw |= (uint)Vm_4S.Index << 16;
         return raw;
     }
     /// <summary>
@@ -5402,30 +5256,6 @@ static partial class Arm64InstructionFactory
     public static uint FCVTXN(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_2D)
     {
         uint raw = 0x2E616800U; // Encoding for: FCVTXN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_2D.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert to lower precision narrow, rounding to odd (vector).
-    /// </summary>
-    /// <remarks><code>FCVTXN Vd.Tb, Vn.2D</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTXN_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTXN(Arm64RegisterV_4S Vd_Tb, Arm64RegisterV_2D Vn_2D)
-    {
-        uint raw = 0x6E616800U; // Encoding for: FCVTXN_asimdmisc_n
-        raw |= (uint)Vd_Tb.Index;
-        raw |= (uint)Vn_2D.Index << 5;
-        return raw;
-    }
-    /// <summary>
-    /// Floating-point convert to lower precision narrow, rounding to odd (vector).
-    /// </summary>
-    /// <remarks><code>FCVTXN2 Vd.Tb, Vn.2D</code></remarks>
-    [Arm64LinkInstructionId(Arm64InstructionId.FCVTXN2_asimdmisc_n), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint FCVTXN2(Arm64RegisterV_2S Vd_Tb, Arm64RegisterV_2D Vn_2D)
-    {
-        uint raw = 0x6E616800U; // Encoding for: FCVTXN2_asimdmisc_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_2D.Index << 5;
         return raw;

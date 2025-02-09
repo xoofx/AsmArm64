@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_FMAXP_Advsimd
     [TestMethod]
     public void Test_FMAXP_asisdpair_only_h_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMAXP(H0, V1.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMAXP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMAXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMAXP H0, V1.2H", asm);
+        }
+        
+        {
+            var raw = FMAXP(H31, V1.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMAXP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMAXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMAXP H31, V1.2H", asm);
+        }
+        
+        {
+            var raw = FMAXP(H0, V31.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMAXP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMAXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMAXP H0, V31.2H", asm);
+        }
+        
+        {
+            var raw = FMAXP(H31, V31.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMAXP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMAXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMAXP H31, V31.2H", asm);
+        }
     }
     
     /// <summary>

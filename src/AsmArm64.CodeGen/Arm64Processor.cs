@@ -548,7 +548,7 @@ partial class Arm64Processor
                     foreach (var symbol in encodingInfoForVariation.Symbols.Values)
                     {
                         var selector = symbol.Selector;
-                        if (symbol.EncodedInText != bitEncodingNameVariation && selector is not null && selector.BitNames.Contains(bitEncodingNameVariation))
+                        if (symbol.Link != multiInstructionSymbol && selector is not null && selector.BitNames.Contains(bitEncodingNameVariation!))
                         {
                             for (var i = selector.BitValues.Count - 1; i >= 0; i--)
                             {

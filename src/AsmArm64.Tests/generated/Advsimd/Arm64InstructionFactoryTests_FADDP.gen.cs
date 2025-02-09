@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_FADDP_Advsimd
     [TestMethod]
     public void Test_FADDP_asisdpair_only_h_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FADDP(H0, V1.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FADDP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FADDP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FADDP H0, V1.2H", asm);
+        }
+        
+        {
+            var raw = FADDP(H31, V1.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FADDP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FADDP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FADDP H31, V1.2H", asm);
+        }
+        
+        {
+            var raw = FADDP(H0, V31.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FADDP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FADDP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FADDP H0, V31.2H", asm);
+        }
+        
+        {
+            var raw = FADDP(H31, V31.T_2H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FADDP_asisdpair_only_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FADDP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FADDP H31, V31.2H", asm);
+        }
     }
     
     /// <summary>

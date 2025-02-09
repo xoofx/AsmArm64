@@ -24,6 +24,41 @@ public class Arm64InstructionFactoryTests_AESIMC_Advsimd
     [TestMethod]
     public void Test_AESIMC_b_cryptoaes_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = AESIMC(V0.T_16B, V1.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AESIMC_b_cryptoaes, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AESIMC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AESIMC V0.16B, V1.16B", asm);
+        }
+        
+        {
+            var raw = AESIMC(V30.T_16B, V1.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AESIMC_b_cryptoaes, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AESIMC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AESIMC V30.16B, V1.16B", asm);
+        }
+        
+        {
+            var raw = AESIMC(V0.T_16B, V31.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AESIMC_b_cryptoaes, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AESIMC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AESIMC V0.16B, V31.16B", asm);
+        }
+        
+        {
+            var raw = AESIMC(V30.T_16B, V31.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AESIMC_b_cryptoaes, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AESIMC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AESIMC V30.16B, V31.16B", asm);
+        }
     }
 }

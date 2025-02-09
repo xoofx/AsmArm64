@@ -24,15 +24,41 @@ public class Arm64InstructionFactoryTests_BF1CVTL2_Advsimd
     [TestMethod]
     public void Test_BF1CVTL2_asimdmisc_v_0()
     {
-        Assert.Inconclusive("TODO");
-    }
-    
-    /// <summary>
-    /// Test of <see cref="Arm64InstructionFactory.BF1CVTL2"/>.
-    /// </summary>
-    [TestMethod]
-    public void Test_BF1CVTL2_asimdmisc_v_1()
-    {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = BF1CVTL2(V0.T_8H, V1.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BF1CVTL2_asimdmisc_v, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BF1CVTL2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BF1CVTL2 V0.8H, V1.16B", asm);
+        }
+        
+        {
+            var raw = BF1CVTL2(V30.T_8H, V1.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BF1CVTL2_asimdmisc_v, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BF1CVTL2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BF1CVTL2 V30.8H, V1.16B", asm);
+        }
+        
+        {
+            var raw = BF1CVTL2(V0.T_8H, V31.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BF1CVTL2_asimdmisc_v, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BF1CVTL2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BF1CVTL2 V0.8H, V31.16B", asm);
+        }
+        
+        {
+            var raw = BF1CVTL2(V30.T_8H, V31.T_16B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BF1CVTL2_asimdmisc_v, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BF1CVTL2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BF1CVTL2 V30.8H, V31.16B", asm);
+        }
     }
 }

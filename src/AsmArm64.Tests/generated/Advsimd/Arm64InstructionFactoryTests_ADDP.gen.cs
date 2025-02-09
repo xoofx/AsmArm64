@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_ADDP_Advsimd
     [TestMethod]
     public void Test_ADDP_asisdpair_only_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = ADDP(D0, V1.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADDP_asisdpair_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADDP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADDP D0, V1.2D", asm);
+        }
+        
+        {
+            var raw = ADDP(D31, V1.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADDP_asisdpair_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADDP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADDP D31, V1.2D", asm);
+        }
+        
+        {
+            var raw = ADDP(D0, V31.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADDP_asisdpair_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADDP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADDP D0, V31.2D", asm);
+        }
+        
+        {
+            var raw = ADDP(D31, V31.T_2D);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADDP_asisdpair_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADDP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADDP D31, V31.2D", asm);
+        }
     }
     
     /// <summary>
