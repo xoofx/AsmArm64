@@ -24,6 +24,86 @@ public class Arm64InstructionFactoryTests_CBBNE_General
     [TestMethod]
     public void Test_CBBNE_8_regs_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CBBNE(W0, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBBNE_8_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBBNE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBBNE W0, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBBNE(W15, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBBNE_8_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBBNE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBBNE W15, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBBNE(WZR, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBBNE_8_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBBNE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBBNE WZR, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBBNE(W0, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBBNE_8_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBBNE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBBNE W0, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBBNE(W15, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBBNE_8_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBBNE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBBNE W15, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBBNE(WZR, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBBNE_8_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBBNE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBBNE WZR, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBBNE(W0, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBBNE_8_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBBNE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBBNE W0, WZR, #32", asm);
+        }
+        
+        {
+            var raw = CBBNE(W15, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBBNE_8_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBBNE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBBNE W15, WZR, #32", asm);
+        }
+        
+        {
+            var raw = CBBNE(WZR, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBBNE_8_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBBNE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBBNE WZR, WZR, #32", asm);
+        }
     }
 }

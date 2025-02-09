@@ -24,7 +24,33 @@ public class Arm64InstructionFactoryTests_CBEQ_General
     [TestMethod]
     public void Test_CBEQ_32_imm_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CBEQ(W0, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ W0, #5, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(W15, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ W15, #5, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(WZR, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ WZR, #5, #32", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +59,33 @@ public class Arm64InstructionFactoryTests_CBEQ_General
     [TestMethod]
     public void Test_CBEQ_64_imm_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CBEQ(X0, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ X0, #5, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(X15, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ X15, #5, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(XZR, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ XZR, #5, #32", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +94,87 @@ public class Arm64InstructionFactoryTests_CBEQ_General
     [TestMethod]
     public void Test_CBEQ_32_regs_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CBEQ(W0, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ W0, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(W15, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ W15, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(WZR, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ WZR, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(W0, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ W0, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(W15, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ W15, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(WZR, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ WZR, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(W0, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ W0, WZR, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(W15, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ W15, WZR, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(WZR, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ WZR, WZR, #32", asm);
+        }
     }
     
     /// <summary>
@@ -51,6 +183,86 @@ public class Arm64InstructionFactoryTests_CBEQ_General
     [TestMethod]
     public void Test_CBEQ_64_regs_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CBEQ(X0, X1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ X0, X1, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(X15, X1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ X15, X1, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(XZR, X1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ XZR, X1, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(X0, X16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ X0, X16, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(X15, X16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ X15, X16, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(XZR, X16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ XZR, X16, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(X0, XZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ X0, XZR, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(X15, XZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ X15, XZR, #32", asm);
+        }
+        
+        {
+            var raw = CBEQ(XZR, XZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBEQ_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBEQ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBEQ XZR, XZR, #32", asm);
+        }
     }
 }

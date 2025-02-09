@@ -7697,12 +7697,12 @@ partial class Arm64InstructionDecoderTable
         // TBNZ_only_testbranch           - TBNZ        Rt, #imm, label
         98,4,63,4,4,0,1,3,
         1,21,0,0,2,0,0,0,
-        5,1,0,2,19,5,31,1,
+        5,1,0,2,31,1,19,5,
         6,2,14,1,5,14,0,0,
         // TBZ_only_testbranch            - TBZ         Rt, #imm, label
         99,4,65,4,4,0,1,3,
         1,21,0,0,2,0,0,0,
-        5,1,0,2,19,5,31,1,
+        5,1,0,2,31,1,19,5,
         6,2,14,1,5,14,0,0,
         // TCANCEL_ex_exception           - TCANCEL     #imm
         100,4,66,4,6,76,1,1,

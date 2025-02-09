@@ -121,7 +121,7 @@ partial class Arm64Processor
             for (var argIndex = 0; argIndex < testArguments.Count; argIndex++)
             {
                 var testArgument = testArguments[argIndex];
-                testArgument.InitializeFromArguments(testArguments, argIndex);
+                testArgument.InitializeFromArguments(instructionVariation, testArguments, argIndex);
             }
             
             w.WriteLine($"var raw = {instruction.Mnemonic}({string.Join(", ", testArguments.Select(x => x.CSharp))});");
@@ -154,7 +154,7 @@ partial class Arm64Processor
 
         public abstract string Asm { get; }
 
-        public virtual void InitializeFromArguments(IReadOnlyList<TestArgument> arguments, int index)
+        public virtual void InitializeFromArguments(InstructionVariation instructionVariation, IReadOnlyList<TestArgument> arguments, int index)
         {
         }
     }
@@ -182,7 +182,7 @@ partial class Arm64Processor
 
         public ImmediateTestArgument(ulong value, bool hexa = true)
         {
-            Value = value;
+            Value = (long)value;
             Is32 = false;
             IsHexa = hexa;
         }
@@ -197,12 +197,12 @@ partial class Arm64Processor
 
         public ImmediateTestArgument(int value, bool hexa = false)
         {
-            Value = (ulong)(long)value;
+            Value = (long)value;
             Is32 = true;
             IsHexa = hexa;
         }
 
-        public ulong Value { get; }
+        public long Value { get; private set; }
 
         public bool Is32 { get; }
 
@@ -240,6 +240,24 @@ partial class Arm64Processor
             }
 
             return isAsm ? $"#{text}" : text;
+        }
+
+        public override void InitializeFromArguments(InstructionVariation instructionVariation, IReadOnlyList<TestArgument> arguments, int index)
+        {
+            var instruction = instructionVariation.Instruction;
+            if ((instruction.Id == "TBZ_only_testbranch" || instruction.Id == "TBNZ_only_testbranch") && index == 1)
+            {
+                var registerArg = (RegisterTestArgument)arguments[0];
+                if (registerArg.BaseRegisterName == "W")
+                {
+                    Value = 5;
+                }
+                else
+                {
+                    Debug.Assert(registerArg.BaseRegisterName == "X");
+                    Value = 37;
+                }
+            }
         }
     }
 
@@ -432,7 +450,7 @@ partial class Arm64Processor
         public override string CSharp => _baseRegister?.CSharp ?? string.Empty;
         public override string Asm => _baseRegister?.Asm ?? string.Empty;
 
-        public override void InitializeFromArguments(IReadOnlyList<TestArgument> arguments, int index)
+        public override void InitializeFromArguments(InstructionVariation instructionVariation, IReadOnlyList<TestArgument> arguments, int index)
         {
             var baseRegister = (RegisterTestArgument)arguments[index - 1];
             _baseRegister = new RegisterTestArgument(baseRegister.BaseRegisterName, baseRegister.Index + 1, baseRegister.VKind, baseRegister.Indexer);

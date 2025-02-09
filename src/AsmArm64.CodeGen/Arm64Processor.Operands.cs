@@ -673,6 +673,13 @@ partial class Arm64Processor
                 Debug.Assert(encodingSymbol.EncodedInText == "CRm:op1:op2");
                 encodingSymbol.EncodedInText = "CRm";
             }
+            else if ((enclist.Contains("TBNZ_only_testbranch")
+                      || enclist.Contains("TBZ_only_testbranch")) && name == "<imm>")
+            {
+                // The encoding is inverted/wrong for this one, so we put the correct encoding here
+                Debug.Assert(encodingSymbol.EncodedInText == "b40:b5");
+                encodingSymbol.EncodedInText = "b5:b40";
+            }
 
             if (accountElement.Name == "account")
             {

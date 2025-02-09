@@ -24,7 +24,15 @@ public class Arm64InstructionFactoryTests_B_General
     [TestMethod]
     public void Test_B_only_branch_imm_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = B(32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.B_only_branch_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.B, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("B #32", asm);
+        }
     }
     
     /// <summary>

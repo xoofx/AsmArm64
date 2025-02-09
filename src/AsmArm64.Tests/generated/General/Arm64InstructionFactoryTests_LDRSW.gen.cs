@@ -129,7 +129,33 @@ public class Arm64InstructionFactoryTests_LDRSW_General
     [TestMethod]
     public void Test_LDRSW_64_loadlit_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDRSW(X0, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRSW_64_loadlit, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRSW X0, #32", asm);
+        }
+        
+        {
+            var raw = LDRSW(X15, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRSW_64_loadlit, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRSW X15, #32", asm);
+        }
+        
+        {
+            var raw = LDRSW(XZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRSW_64_loadlit, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRSW XZR, #32", asm);
+        }
     }
     
     /// <summary>

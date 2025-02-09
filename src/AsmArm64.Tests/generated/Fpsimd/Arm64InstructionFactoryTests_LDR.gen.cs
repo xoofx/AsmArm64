@@ -449,7 +449,24 @@ public class Arm64InstructionFactoryTests_LDR_Fpsimd
     [TestMethod]
     public void Test_LDR_s_loadlit_17()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDR(S0, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_s_loadlit, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR S0, #32", asm);
+        }
+        
+        {
+            var raw = LDR(S31, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_s_loadlit, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR S31, #32", asm);
+        }
     }
     
     /// <summary>
@@ -458,7 +475,24 @@ public class Arm64InstructionFactoryTests_LDR_Fpsimd
     [TestMethod]
     public void Test_LDR_d_loadlit_18()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDR(D0, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_d_loadlit, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR D0, #32", asm);
+        }
+        
+        {
+            var raw = LDR(D31, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_d_loadlit, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR D31, #32", asm);
+        }
     }
     
     /// <summary>
@@ -467,7 +501,24 @@ public class Arm64InstructionFactoryTests_LDR_Fpsimd
     [TestMethod]
     public void Test_LDR_q_loadlit_19()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDR(Q0, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_q_loadlit, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR Q0, #32", asm);
+        }
+        
+        {
+            var raw = LDR(Q31, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_q_loadlit, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR Q31, #32", asm);
+        }
     }
     
     /// <summary>

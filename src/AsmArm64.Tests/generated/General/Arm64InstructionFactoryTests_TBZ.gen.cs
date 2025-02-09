@@ -24,6 +24,59 @@ public class Arm64InstructionFactoryTests_TBZ_General
     [TestMethod]
     public void Test_TBZ_only_testbranch_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = TBZ(X1, 37, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TBZ_only_testbranch, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TBZ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TBZ X1, #37, #32", asm);
+        }
+        
+        {
+            var raw = TBZ(W1, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TBZ_only_testbranch, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TBZ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TBZ W1, #5, #32", asm);
+        }
+        
+        {
+            var raw = TBZ(X14, 37, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TBZ_only_testbranch, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TBZ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TBZ X14, #37, #32", asm);
+        }
+        
+        {
+            var raw = TBZ(W14, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TBZ_only_testbranch, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TBZ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TBZ W14, #5, #32", asm);
+        }
+        
+        {
+            var raw = TBZ(XZR, 37, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TBZ_only_testbranch, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TBZ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TBZ XZR, #37, #32", asm);
+        }
+        
+        {
+            var raw = TBZ(WZR, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TBZ_only_testbranch, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TBZ, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TBZ WZR, #5, #32", asm);
+        }
     }
 }

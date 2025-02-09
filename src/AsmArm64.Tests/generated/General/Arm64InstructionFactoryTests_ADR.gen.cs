@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_ADR_General
     [TestMethod]
     public void Test_ADR_only_pcreladdr_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = ADR(X0, 11);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADR_only_pcreladdr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADR X0, #11", asm);
+        }
+        
+        {
+            var raw = ADR(X15, 11);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADR_only_pcreladdr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADR X15, #11", asm);
+        }
+        
+        {
+            var raw = ADR(XZR, 11);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADR_only_pcreladdr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADR XZR, #11", asm);
+        }
     }
 }

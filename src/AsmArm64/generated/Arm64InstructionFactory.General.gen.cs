@@ -13987,14 +13987,14 @@ static partial class Arm64InstructionFactory
     public static uint TBNZ(Arm64RegisterXOrW Rt, byte imm, Arm64LabelOffset label)
     {
         uint raw = 0x37000000U; // Encoding for: TBNZ_only_testbranch
-        if (Rt.Kind == Arm64RegisterKind.X) raw |= 0x80000000U;
+        if (Rt.Kind == Arm64RegisterKind.W && imm > 0x1F) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid register W and immediate value '{imm}'. The register must be X for a value > 31");
         raw |= (uint)Rt.Index;
         {
             // Write the immediate for imm
             var _i_ = imm & 0x3F;
-            raw |= (uint)(_i_ & 0x1) << 31;
-            _i_ >>= 1;
             raw |= (uint)(_i_ & 0x1F) << 19;
+            _i_ >>= 5;
+            raw |= (uint)(_i_ & 0x1) << 31;
         }
         raw |= (uint)((label.Value >> 2) & 0x3FFF) << 5;
         return raw;
@@ -14007,14 +14007,14 @@ static partial class Arm64InstructionFactory
     public static uint TBZ(Arm64RegisterXOrW Rt, byte imm, Arm64LabelOffset label)
     {
         uint raw = 0x36000000U; // Encoding for: TBZ_only_testbranch
-        if (Rt.Kind == Arm64RegisterKind.X) raw |= 0x80000000U;
+        if (Rt.Kind == Arm64RegisterKind.W && imm > 0x1F) throw new ArgumentOutOfRangeException(nameof(imm), $"Invalid register W and immediate value '{imm}'. The register must be X for a value > 31");
         raw |= (uint)Rt.Index;
         {
             // Write the immediate for imm
             var _i_ = imm & 0x3F;
-            raw |= (uint)(_i_ & 0x1) << 31;
-            _i_ >>= 1;
             raw |= (uint)(_i_ & 0x1F) << 19;
+            _i_ >>= 5;
+            raw |= (uint)(_i_ & 0x1) << 31;
         }
         raw |= (uint)((label.Value >> 2) & 0x3FFF) << 5;
         return raw;

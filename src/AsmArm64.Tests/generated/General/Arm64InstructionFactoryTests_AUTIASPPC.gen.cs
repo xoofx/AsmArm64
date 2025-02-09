@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_AUTIASPPC_General
     [TestMethod]
     public void Test_AUTIASPPC_only_dp_1src_imm_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = AUTIASPPC(-32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AUTIASPPC_only_dp_1src_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AUTIASPPC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AUTIASPPC #-32", asm);
+        }
     }
 }

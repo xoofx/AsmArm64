@@ -530,12 +530,15 @@ partial class Arm64Processor
         var originalOperandPath = $"{operandVariation.OperandName}.Value";
         var operandPath = originalOperandPath;
 
+        var testArguments = new List<ImmediateTestArgument>();
         switch (descriptor.LabelKind)
         {
             case Arm64LabelEncodingKind.ByteOffset:
+                testArguments.Add(new(11));
                 break;
             case Arm64LabelEncodingKind.OffsetMul4:
                 operandPath = $"({originalOperandPath} >> 2)";
+                testArguments.Add(new(32));
                 break;
             case Arm64LabelEncodingKind.NegativeEncodedAsUnsigned:
                 operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
@@ -543,15 +546,18 @@ partial class Arm64Processor
                     w.WriteLine($"if ({originalOperandPath} > 0) throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), \"The label offset must be negative.\");");
                 });
                 operandPath = $"(-{originalOperandPath} >> 2)";
+                testArguments.Add(new((int)-32));
                 break;
             case Arm64LabelEncodingKind.PageOffset:
                 operandPath = $"({originalOperandPath} >> 12)";
+                testArguments.Add(new((int)(3 << 12)));
                 break;
             default:
                 Debug.Assert(false, $"Invalid label kind {descriptor.LabelKind}");
                 break;
         }
 
+        operandVariation.TestArguments.AddRange(testArguments);
         GenerateBitRangeEncodingFromValue(operandPath, "label", descriptor.BitSize, descriptor.Encoding, operandVariation.WriteEncodings);
         operandVariations.Add(operandVariation);
     }
@@ -1651,11 +1657,23 @@ partial class Arm64Processor
                     var xSet = xOrWSelector.BitValues.Find(x => x.Text == "X")!;
                     var wSet = xOrWSelector.BitValues.Find(x => x.Text == "W")!;
                     Debug.Assert(wSet.BitSelectorValue == 0);
-                    encodings.Add((w, variable, instr, op, opIndex) =>
+                    if (instruction.Id == "TBZ_only_testbranch" || instruction.Id == "TBNZ_only_testbranch")
                     {
-                        Debug.Assert(xSet.BitSelectorValue != 0);
-                        w.WriteLine($"if ({operandName}.Kind == Arm64RegisterKind.X) {variable} |= 0x{xSet!.BitSelectorValue:X8}U;");
-                    });
+                        encodings.Add((w, variable, instr, op, opIndex) =>
+                        {
+                            Debug.Assert(xSet.BitSelectorValue != 0);
+                            // From the doc, In assembler source code an 'X' specifier is always permitted, but a 'W' specifier is only permitted when the bit number is less than 32.
+                            w.WriteLine($"if ({operandName}.Kind == Arm64RegisterKind.W && imm > 0x1F) throw new {nameof(ArgumentOutOfRangeException)}(nameof(imm), $\"Invalid register W and immediate value '{{imm}}'. The register must be X for a value > 31\");");
+                        });
+                    }
+                    else
+                    {
+                        encodings.Add((w, variable, instr, op, opIndex) =>
+                        {
+                            Debug.Assert(xSet.BitSelectorValue != 0);
+                            w.WriteLine($"if ({operandName}.Kind == Arm64RegisterKind.X) {variable} |= 0x{xSet!.BitSelectorValue:X8}U;");
+                        });
+                    }
 
                     testArguments.Add(new("X", 1 + operandIndex));
                     testArguments.Add(new("W", 1 + operandIndex));

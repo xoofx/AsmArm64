@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_RETAASPPC_General
     [TestMethod]
     public void Test_RETAASPPC_only_miscbranch_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = RETAASPPC(-32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RETAASPPC_only_miscbranch, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RETAASPPC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RETAASPPC #-32", asm);
+        }
     }
 }
