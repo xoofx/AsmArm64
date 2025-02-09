@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_ST64B_General
     [TestMethod]
     public void Test_ST64B_64l_memop_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = ST64B(X0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64B_64l_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64B, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64B X0, [X2]", asm);
+        }
+        
+        {
+            var raw = ST64B(X15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64B_64l_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64B, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64B X15, [X2]", asm);
+        }
+        
+        {
+            var raw = ST64B(XZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64B_64l_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64B, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64B XZR, [X2]", asm);
+        }
     }
 }

@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_LDNP_Fpsimd
     [TestMethod]
     public void Test_LDNP_s_ldstnapair_offs_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDNP(S0, S1, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_s_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP S0, S1, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = LDNP(S31, S1, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_s_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP S31, S1, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = LDNP(S0, S31, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_s_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP S0, S31, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = LDNP(S31, S31, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_s_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP S31, S31, [X3, #20]", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +68,42 @@ public class Arm64InstructionFactoryTests_LDNP_Fpsimd
     [TestMethod]
     public void Test_LDNP_d_ldstnapair_offs_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDNP(D0, D1, _[X3, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_d_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP D0, D1, [X3, #40]", asm);
+        }
+        
+        {
+            var raw = LDNP(D31, D1, _[X3, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_d_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP D31, D1, [X3, #40]", asm);
+        }
+        
+        {
+            var raw = LDNP(D0, D31, _[X3, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_d_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP D0, D31, [X3, #40]", asm);
+        }
+        
+        {
+            var raw = LDNP(D31, D31, _[X3, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_d_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP D31, D31, [X3, #40]", asm);
+        }
     }
     
     /// <summary>
@@ -42,6 +112,41 @@ public class Arm64InstructionFactoryTests_LDNP_Fpsimd
     [TestMethod]
     public void Test_LDNP_q_ldstnapair_offs_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDNP(Q0, Q1, _[X3, 80]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_q_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP Q0, Q1, [X3, #80]", asm);
+        }
+        
+        {
+            var raw = LDNP(Q31, Q1, _[X3, 80]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_q_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP Q31, Q1, [X3, #80]", asm);
+        }
+        
+        {
+            var raw = LDNP(Q0, Q31, _[X3, 80]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_q_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP Q0, Q31, [X3, #80]", asm);
+        }
+        
+        {
+            var raw = LDNP(Q31, Q31, _[X3, 80]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDNP_q_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDNP Q31, Q31, [X3, #80]", asm);
+        }
     }
 }

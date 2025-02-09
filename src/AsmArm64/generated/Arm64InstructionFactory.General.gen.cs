@@ -1302,9 +1302,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x08207C00U; // Encoding for: CASP_cp32_comswappr
         raw |= (uint)Ws.Index << 16;
-        raw = W_s_1.Index == Ws.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
+        if (W_s_1.Index != ((Ws.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
         raw |= (uint)Wt.Index;
-        raw = W_t_1.Index == Wt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
+        if (W_t_1.Index != ((Wt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -1317,9 +1317,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x48207C00U; // Encoding for: CASP_cp64_comswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -1332,9 +1332,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x08607C00U; // Encoding for: CASPA_cp32_comswappr
         raw |= (uint)Ws.Index << 16;
-        raw = W_s_1.Index == Ws.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
+        if (W_s_1.Index != ((Ws.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
         raw |= (uint)Wt.Index;
-        raw = W_t_1.Index == Wt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
+        if (W_t_1.Index != ((Wt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -1347,9 +1347,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x48607C00U; // Encoding for: CASPA_cp64_comswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -1362,9 +1362,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x0860FC00U; // Encoding for: CASPAL_cp32_comswappr
         raw |= (uint)Ws.Index << 16;
-        raw = W_s_1.Index == Ws.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
+        if (W_s_1.Index != ((Ws.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
         raw |= (uint)Wt.Index;
-        raw = W_t_1.Index == Wt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
+        if (W_t_1.Index != ((Wt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -1377,9 +1377,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x4860FC00U; // Encoding for: CASPAL_cp64_comswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -1392,9 +1392,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x49C0FC00U; // Encoding for: CASPALT_cp64_comswappr_unpriv
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -1407,9 +1407,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x49C07C00U; // Encoding for: CASPAT_cp64_comswappr_unpriv
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -1422,9 +1422,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x0820FC00U; // Encoding for: CASPL_cp32_comswappr
         raw |= (uint)Ws.Index << 16;
-        raw = W_s_1.Index == Ws.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
+        if (W_s_1.Index != ((Ws.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(W_s_1), $"Invalid Register. Index `{W_s_1.Index}` must be + 1 from operand Ws with index `{Ws.Index}`");
         raw |= (uint)Wt.Index;
-        raw = W_t_1.Index == Wt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
+        if (W_t_1.Index != ((Wt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(W_t_1), $"Invalid Register. Index `{W_t_1.Index}` must be + 1 from operand Wt with index `{Wt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -1437,9 +1437,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x4820FC00U; // Encoding for: CASPL_cp64_comswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -1452,9 +1452,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x4980FC00U; // Encoding for: CASPLT_cp64_comswappr_unpriv
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -1467,9 +1467,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x49807C00U; // Encoding for: CASPT_cp64_comswappr_unpriv
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -5654,7 +5654,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -5668,8 +5668,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -5693,8 +5693,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -5720,7 +5720,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -5734,8 +5734,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            3 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 3 are valid for this memory operand."),
         };
         return raw;
     }
@@ -5759,8 +5759,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            3 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 3 are valid for this memory operand."),
         };
         return raw;
     }
@@ -5771,7 +5771,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.LDRB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRB(Arm64RegisterW Wt, Arm64RegisterXExtendMemoryAccessor src)
     {
-        uint raw = 0x38602800U; // Encoding for: LDRB_32b_ldst_regoff
+        uint raw = 0x38602800U; // Encoding for: LDRB_32b_ldst_regoff and memory variation with 0x38606800 LDRB_32bl_ldst_regoff
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
@@ -5779,7 +5779,7 @@ static partial class Arm64InstructionFactory
         {
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -5803,7 +5803,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.LDRB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRB(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0x38600800U; // Encoding for: LDRB_32b_ldst_regoff
+        uint raw = 0x38600800U; // Encoding for: LDRB_32b_ldst_regoff and memory variation with 0x38606800 LDRB_32bl_ldst_regoff
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
@@ -5919,7 +5919,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -5933,8 +5933,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }
@@ -5958,8 +5958,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }
@@ -5970,7 +5970,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterW Wt, Arm64RegisterXExtendMemoryAccessor src)
     {
-        uint raw = 0x38E02800U; // Encoding for: LDRSB_32b_ldst_regoff
+        uint raw = 0x38E02800U; // Encoding for: LDRSB_32b_ldst_regoff and memory variation with 0x38E06800 LDRSB_32bl_ldst_regoff
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
@@ -5978,7 +5978,7 @@ static partial class Arm64InstructionFactory
         {
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -6002,7 +6002,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0x38E00800U; // Encoding for: LDRSB_32b_ldst_regoff
+        uint raw = 0x38E00800U; // Encoding for: LDRSB_32b_ldst_regoff and memory variation with 0x38E06800 LDRSB_32bl_ldst_regoff
         raw |= (uint)Wt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
@@ -6025,7 +6025,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_64b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterX Xt, Arm64RegisterXExtendMemoryAccessor src)
     {
-        uint raw = 0x38A02800U; // Encoding for: LDRSB_64b_ldst_regoff
+        uint raw = 0x38A02800U; // Encoding for: LDRSB_64b_ldst_regoff and memory variation with 0x38A06800 LDRSB_64bl_ldst_regoff
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
@@ -6033,7 +6033,7 @@ static partial class Arm64InstructionFactory
         {
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -6057,7 +6057,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.LDRSB_64b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDRSB(Arm64RegisterX Xt, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0x38A00800U; // Encoding for: LDRSB_64b_ldst_regoff
+        uint raw = 0x38A00800U; // Encoding for: LDRSB_64b_ldst_regoff and memory variation with 0x38A06800 LDRSB_64bl_ldst_regoff
         raw |= (uint)Xt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
@@ -6251,7 +6251,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -6265,8 +6265,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }
@@ -6290,8 +6290,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }
@@ -6317,7 +6317,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -6331,8 +6331,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }
@@ -6356,8 +6356,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }
@@ -6434,7 +6434,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -6448,8 +6448,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -6473,8 +6473,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -9162,7 +9162,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!mem.Extend.HasExplicitZeroAmount || mem.Extend.Amount == 0)
+                if (!mem.Extend.HasExplicitZeroAmount && mem.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend `{mem.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -9176,8 +9176,8 @@ static partial class Arm64InstructionFactory
         raw |= mem.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend amount `{mem.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            3 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend amount `{mem.Extend.Amount}`. Only 0 or 3 are valid for this memory operand."),
         };
         return raw;
     }
@@ -9201,8 +9201,8 @@ static partial class Arm64InstructionFactory
         raw |= mem.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend amount `{mem.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            3 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(mem), $"Unsupported extend amount `{mem.Extend.Amount}`. Only 0 or 3 are valid for this memory operand."),
         };
         return raw;
     }
@@ -9304,9 +9304,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x19200C00U; // Encoding for: RCWCASP_c64_rcwcomswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -9319,9 +9319,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x19A00C00U; // Encoding for: RCWCASPA_c64_rcwcomswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -9334,9 +9334,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x19E00C00U; // Encoding for: RCWCASPAL_c64_rcwcomswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -9349,9 +9349,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x19600C00U; // Encoding for: RCWCASPL_c64_rcwcomswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -9520,9 +9520,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x59200C00U; // Encoding for: RCWSCASP_c64_rcwcomswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -9535,9 +9535,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x59A00C00U; // Encoding for: RCWSCASPA_c64_rcwcomswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -9550,9 +9550,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x59E00C00U; // Encoding for: RCWSCASPAL_c64_rcwcomswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -9565,9 +9565,9 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x59600C00U; // Encoding for: RCWSCASPL_c64_rcwcomswappr
         raw |= (uint)Xs.Index << 16;
-        raw = X_s_1.Index == Xs.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
+        if (X_s_1.Index != ((Xs.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_s_1), $"Invalid Register. Index `{X_s_1.Index}` must be + 1 from operand Xs with index `{Xs.Index}`");
         raw |= (uint)Xt.Index;
-        raw = X_t_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (X_t_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(X_t_1), $"Invalid Register. Index `{X_t_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)mem.BaseRegister.Index << 5;
         return raw;
     }
@@ -11971,7 +11971,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                if (!dst.Extend.HasExplicitZeroAmount && dst.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -11985,8 +11985,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -12010,8 +12010,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -12037,7 +12037,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                if (!dst.Extend.HasExplicitZeroAmount && dst.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -12051,8 +12051,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            3 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 3 are valid for this memory operand."),
         };
         return raw;
     }
@@ -12076,8 +12076,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            3 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 3 are valid for this memory operand."),
         };
         return raw;
     }
@@ -12088,7 +12088,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.STRB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STRB(Arm64RegisterW Wt, Arm64RegisterXExtendMemoryAccessor dst)
     {
-        uint raw = 0x38202800U; // Encoding for: STRB_32b_ldst_regoff
+        uint raw = 0x38202800U; // Encoding for: STRB_32b_ldst_regoff and memory variation with 0x38206800 STRB_32bl_ldst_regoff
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
@@ -12096,7 +12096,7 @@ static partial class Arm64InstructionFactory
         {
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                if (!dst.Extend.HasExplicitZeroAmount && dst.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -12120,7 +12120,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.STRB_32b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STRB(Arm64RegisterW Wt, Arm64RegisterWExtendMemoryAccessor dst)
     {
-        uint raw = 0x38200800U; // Encoding for: STRB_32b_ldst_regoff
+        uint raw = 0x38200800U; // Encoding for: STRB_32b_ldst_regoff and memory variation with 0x38206800 STRB_32bl_ldst_regoff
         raw |= (uint)Wt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
@@ -12236,7 +12236,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                if (!dst.Extend.HasExplicitZeroAmount && dst.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -12250,8 +12250,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }
@@ -12275,8 +12275,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }

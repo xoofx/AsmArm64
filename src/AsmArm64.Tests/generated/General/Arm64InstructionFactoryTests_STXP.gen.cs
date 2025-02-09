@@ -24,7 +24,249 @@ public class Arm64InstructionFactoryTests_STXP_General
     [TestMethod]
     public void Test_STXP_sp32_ldstexclp_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STXP(W0, W1, W2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, W1, W2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, W1, W2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, W1, W2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, W1, W2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, W1, W2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, W16, W2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, W16, W2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, W16, W2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, W16, W2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, W16, W2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, W16, W2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, WZR, W2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, WZR, W2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, WZR, W2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, WZR, W2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, WZR, W2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, WZR, W2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, W1, W17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, W1, W17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, W1, W17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, W1, W17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, W1, W17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, W1, W17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, W16, W17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, W16, W17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, W16, W17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, W16, W17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, W16, W17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, W16, W17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, WZR, W17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, WZR, W17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, WZR, W17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, WZR, W17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, WZR, W17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, WZR, W17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, W1, WZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, W1, WZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, W1, WZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, W1, WZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, W1, WZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, W1, WZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, W16, WZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, W16, WZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, W16, WZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, W16, WZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, W16, WZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, W16, WZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, WZR, WZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, WZR, WZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, WZR, WZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, WZR, WZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, WZR, WZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp32_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, WZR, WZR, [X4]", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +275,248 @@ public class Arm64InstructionFactoryTests_STXP_General
     [TestMethod]
     public void Test_STXP_sp64_ldstexclp_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STXP(W0, X1, X2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, X1, X2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, X1, X2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, X1, X2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, X1, X2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, X1, X2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, X16, X2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, X16, X2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, X16, X2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, X16, X2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, X16, X2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, X16, X2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, XZR, X2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, XZR, X2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, XZR, X2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, XZR, X2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, XZR, X2, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, XZR, X2, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, X1, X17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, X1, X17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, X1, X17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, X1, X17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, X1, X17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, X1, X17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, X16, X17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, X16, X17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, X16, X17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, X16, X17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, X16, X17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, X16, X17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, XZR, X17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, XZR, X17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, XZR, X17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, XZR, X17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, XZR, X17, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, XZR, X17, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, X1, XZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, X1, XZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, X1, XZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, X1, XZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, X1, XZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, X1, XZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, X16, XZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, X16, XZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, X16, XZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, X16, XZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, X16, XZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, X16, XZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W0, XZR, XZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W0, XZR, XZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(W15, XZR, XZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP W15, XZR, XZR, [X4]", asm);
+        }
+        
+        {
+            var raw = STXP(WZR, XZR, XZR, _[X4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STXP_sp64_ldstexclp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STXP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STXP WZR, XZR, XZR, [X4]", asm);
+        }
     }
 }

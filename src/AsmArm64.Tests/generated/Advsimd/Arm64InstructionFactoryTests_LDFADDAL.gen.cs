@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_LDFADDAL_Advsimd
     [TestMethod]
     public void Test_LDFADDAL_16_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDFADDAL(H0, H1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL H0, H1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFADDAL(H31, H1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL H31, H1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFADDAL(H0, H31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL H0, H31, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFADDAL(H31, H31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL H31, H31, [X3]", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +68,42 @@ public class Arm64InstructionFactoryTests_LDFADDAL_Advsimd
     [TestMethod]
     public void Test_LDFADDAL_32_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDFADDAL(S0, S1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL S0, S1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFADDAL(S31, S1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL S31, S1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFADDAL(S0, S31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL S0, S31, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFADDAL(S31, S31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL S31, S31, [X3]", asm);
+        }
     }
     
     /// <summary>
@@ -42,6 +112,41 @@ public class Arm64InstructionFactoryTests_LDFADDAL_Advsimd
     [TestMethod]
     public void Test_LDFADDAL_64_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDFADDAL(D0, D1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL D0, D1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFADDAL(D31, D1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL D31, D1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFADDAL(D0, D31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL D0, D31, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFADDAL(D31, D31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFADDAL_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFADDAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFADDAL D31, D31, [X3]", asm);
+        }
     }
 }

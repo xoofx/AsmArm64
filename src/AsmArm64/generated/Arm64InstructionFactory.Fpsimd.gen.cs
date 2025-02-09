@@ -253,7 +253,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterB Bt, Arm64RegisterXExtendMemoryAccessor src)
     {
-        uint raw = 0x3C602800U; // Encoding for: LDR_b_ldst_regoff
+        uint raw = 0x3C602800U; // Encoding for: LDR_b_ldst_regoff and memory variation with 0x3C606800 LDR_bl_ldst_regoff
         raw |= (uint)Bt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
@@ -261,7 +261,7 @@ static partial class Arm64InstructionFactory
         {
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -285,7 +285,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.LDR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint LDR(Arm64RegisterB Bt, Arm64RegisterWExtendMemoryAccessor src)
     {
-        uint raw = 0x3C600800U; // Encoding for: LDR_b_ldst_regoff
+        uint raw = 0x3C600800U; // Encoding for: LDR_b_ldst_regoff and memory variation with 0x3C606800 LDR_bl_ldst_regoff
         raw |= (uint)Bt.Index;
         raw |= (uint)src.BaseRegister.Index << 5;
         raw |= (uint)src.IndexRegister.Index << 16;
@@ -554,7 +554,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -568,8 +568,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }
@@ -593,8 +593,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }
@@ -620,7 +620,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -634,8 +634,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -659,8 +659,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -686,7 +686,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -700,8 +700,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            3 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 3 are valid for this memory operand."),
         };
         return raw;
     }
@@ -725,8 +725,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            3 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 3 are valid for this memory operand."),
         };
         return raw;
     }
@@ -752,7 +752,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!src.Extend.HasExplicitZeroAmount || src.Extend.Amount == 0)
+                if (!src.Extend.HasExplicitZeroAmount && src.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend `{src.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -766,8 +766,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            16 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 16 are valid for this memory operand."),
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
         };
         return raw;
     }
@@ -791,8 +791,8 @@ static partial class Arm64InstructionFactory
         raw |= src.Extend.Amount switch
         {
             0 => 0U,
-            16 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 16 are valid for this memory operand."),
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(src), $"Unsupported extend amount `{src.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
         };
         return raw;
     }
@@ -1157,7 +1157,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterB Bt, Arm64RegisterXExtendMemoryAccessor dst)
     {
-        uint raw = 0x3C202800U; // Encoding for: STR_b_ldst_regoff
+        uint raw = 0x3C202800U; // Encoding for: STR_b_ldst_regoff and memory variation with 0x3C206800 STR_bl_ldst_regoff
         raw |= (uint)Bt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
@@ -1165,7 +1165,7 @@ static partial class Arm64InstructionFactory
         {
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                if (!dst.Extend.HasExplicitZeroAmount && dst.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -1189,7 +1189,7 @@ static partial class Arm64InstructionFactory
     [Arm64LinkInstructionId(Arm64InstructionId.STR_b_ldst_regoff), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint STR(Arm64RegisterB Bt, Arm64RegisterWExtendMemoryAccessor dst)
     {
-        uint raw = 0x3C200800U; // Encoding for: STR_b_ldst_regoff
+        uint raw = 0x3C200800U; // Encoding for: STR_b_ldst_regoff and memory variation with 0x3C206800 STR_bl_ldst_regoff
         raw |= (uint)Bt.Index;
         raw |= (uint)dst.BaseRegister.Index << 5;
         raw |= (uint)dst.IndexRegister.Index << 16;
@@ -1422,7 +1422,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                if (!dst.Extend.HasExplicitZeroAmount && dst.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -1436,8 +1436,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }
@@ -1461,8 +1461,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            2 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
+            1 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 1 are valid for this memory operand."),
         };
         return raw;
     }
@@ -1488,7 +1488,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                if (!dst.Extend.HasExplicitZeroAmount && dst.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -1502,8 +1502,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -1527,8 +1527,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            4 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
+            2 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 2 are valid for this memory operand."),
         };
         return raw;
     }
@@ -1554,7 +1554,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                if (!dst.Extend.HasExplicitZeroAmount && dst.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -1568,8 +1568,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            3 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 3 are valid for this memory operand."),
         };
         return raw;
     }
@@ -1593,8 +1593,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            8 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 8 are valid for this memory operand."),
+            3 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 3 are valid for this memory operand."),
         };
         return raw;
     }
@@ -1620,7 +1620,7 @@ static partial class Arm64InstructionFactory
                 break;
             case Arm64ExtendKind.LSL:
                 raw |= 0x00006000U;
-                if (!dst.Extend.HasExplicitZeroAmount || dst.Extend.Amount == 0)
+                if (!dst.Extend.HasExplicitZeroAmount && dst.Extend.Amount == 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend `{dst.Extend}`. A LSL extend is expecting an explicit amount.");
                 }
@@ -1634,8 +1634,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            16 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 16 are valid for this memory operand."),
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
         };
         return raw;
     }
@@ -1659,8 +1659,8 @@ static partial class Arm64InstructionFactory
         raw |= dst.Extend.Amount switch
         {
             0 => 0U,
-            16 => 0x00001000U,
-            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 16 are valid for this memory operand."),
+            4 => 0x00001000U,
+            _ => throw new ArgumentOutOfRangeException(nameof(dst), $"Unsupported extend amount `{dst.Extend.Amount}`. Only 0 or 4 are valid for this memory operand."),
         };
         return raw;
     }

@@ -24,7 +24,87 @@ public class Arm64InstructionFactoryTests_LDPSW_General
     [TestMethod]
     public void Test_LDPSW_64_ldstpair_post_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDPSW(X0, X1, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X0, X1, [X3], #20", asm);
+        }
+        
+        {
+            var raw = LDPSW(X15, X1, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X15, X1, [X3], #20", asm);
+        }
+        
+        {
+            var raw = LDPSW(XZR, X1, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW XZR, X1, [X3], #20", asm);
+        }
+        
+        {
+            var raw = LDPSW(X0, X16, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X0, X16, [X3], #20", asm);
+        }
+        
+        {
+            var raw = LDPSW(X15, X16, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X15, X16, [X3], #20", asm);
+        }
+        
+        {
+            var raw = LDPSW(XZR, X16, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW XZR, X16, [X3], #20", asm);
+        }
+        
+        {
+            var raw = LDPSW(X0, XZR, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X0, XZR, [X3], #20", asm);
+        }
+        
+        {
+            var raw = LDPSW(X15, XZR, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X15, XZR, [X3], #20", asm);
+        }
+        
+        {
+            var raw = LDPSW(XZR, XZR, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW XZR, XZR, [X3], #20", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +113,87 @@ public class Arm64InstructionFactoryTests_LDPSW_General
     [TestMethod]
     public void Test_LDPSW_64_ldstpair_pre_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDPSW(X0, X1, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X0, X1, [X3, #20]!", asm);
+        }
+        
+        {
+            var raw = LDPSW(X15, X1, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X15, X1, [X3, #20]!", asm);
+        }
+        
+        {
+            var raw = LDPSW(XZR, X1, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW XZR, X1, [X3, #20]!", asm);
+        }
+        
+        {
+            var raw = LDPSW(X0, X16, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X0, X16, [X3, #20]!", asm);
+        }
+        
+        {
+            var raw = LDPSW(X15, X16, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X15, X16, [X3, #20]!", asm);
+        }
+        
+        {
+            var raw = LDPSW(XZR, X16, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW XZR, X16, [X3, #20]!", asm);
+        }
+        
+        {
+            var raw = LDPSW(X0, XZR, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X0, XZR, [X3, #20]!", asm);
+        }
+        
+        {
+            var raw = LDPSW(X15, XZR, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X15, XZR, [X3, #20]!", asm);
+        }
+        
+        {
+            var raw = LDPSW(XZR, XZR, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW XZR, XZR, [X3, #20]!", asm);
+        }
     }
     
     /// <summary>
@@ -42,6 +202,86 @@ public class Arm64InstructionFactoryTests_LDPSW_General
     [TestMethod]
     public void Test_LDPSW_64_ldstpair_off_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDPSW(X0, X1, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X0, X1, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = LDPSW(X15, X1, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X15, X1, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = LDPSW(XZR, X1, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW XZR, X1, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = LDPSW(X0, X16, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X0, X16, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = LDPSW(X15, X16, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X15, X16, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = LDPSW(XZR, X16, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW XZR, X16, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = LDPSW(X0, XZR, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X0, XZR, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = LDPSW(X15, XZR, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW X15, XZR, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = LDPSW(XZR, XZR, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDPSW_64_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDPSW, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDPSW XZR, XZR, [X3, #20]", asm);
+        }
     }
 }

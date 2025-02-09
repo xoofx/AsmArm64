@@ -21,6 +21,8 @@ internal class JsonBitRangeConditionToStringConverter : JsonConverter<BitRangeCo
             "!=1+" => BitRangeCondition.AllNonOne,
             "!=111x" => BitRangeCondition.AllNon111x,
             "!=11xxx" => BitRangeCondition.AllNon11xxx,
+            "!=011" => BitRangeCondition.AllNon011,
+            "!=011111" => BitRangeCondition.AllNon011111,
             _ => throw new JsonException()
         };
     }
@@ -34,6 +36,8 @@ internal class JsonBitRangeConditionToStringConverter : JsonConverter<BitRangeCo
             BitRangeCondition.AllNonOne => "!=1+",
             BitRangeCondition.AllNon111x => "!=111x",
             BitRangeCondition.AllNon11xxx => "!=11xxx",
+            BitRangeCondition.AllNon011 => "!=011",
+            BitRangeCondition.AllNon011111 => "!=011111",
             _ => throw new ArgumentOutOfRangeException()
         });
     }

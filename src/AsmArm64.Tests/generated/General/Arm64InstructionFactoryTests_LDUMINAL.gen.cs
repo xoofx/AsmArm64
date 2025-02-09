@@ -24,7 +24,87 @@ public class Arm64InstructionFactoryTests_LDUMINAL_General
     [TestMethod]
     public void Test_LDUMINAL_32_memop_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDUMINAL(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL W0, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL W15, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL WZR, WZR, [X3]", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +113,86 @@ public class Arm64InstructionFactoryTests_LDUMINAL_General
     [TestMethod]
     public void Test_LDUMINAL_64_memop_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDUMINAL(X0, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL X0, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(X15, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL X15, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(XZR, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL XZR, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(X0, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL X0, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(X15, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL X15, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(XZR, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL XZR, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(X0, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL X0, XZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(X15, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL X15, XZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMINAL(XZR, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMINAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMINAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMINAL XZR, XZR, [X3]", asm);
+        }
     }
 }

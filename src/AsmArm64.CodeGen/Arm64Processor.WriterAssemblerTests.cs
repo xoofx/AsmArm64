@@ -117,9 +117,25 @@ partial class Arm64Processor
             w.WriteLine();
             w.OpenBraceBlock();
             //     var raw = ADD(X0, X1, X2);
+
+            for (var argIndex = 0; argIndex < testArguments.Count; argIndex++)
+            {
+                var testArgument = testArguments[argIndex];
+                testArgument.InitializeFromArguments(testArguments, argIndex);
+            }
+            
             w.WriteLine($"var raw = {instruction.Mnemonic}({string.Join(", ", testArguments.Select(x => x.CSharp))});");
             w.WriteLine("var instruction = Arm64Instruction.Decode(raw);");
-            w.WriteLine($"Assert.AreEqual(Arm64InstructionId.{instruction.Id}, instruction.Id);");
+
+            // Special case for LSL instructions that are folded into a single instruction
+            if (instructionVariation.ElseVariation is not null && testArguments.OfType<MemoryTestArgument>().Any(x => x.Extend == "LSL"))
+            {
+                w.WriteLine($"Assert.AreEqual(Arm64InstructionId.{instructionVariation.ElseVariation.Instruction.Id}, instruction.Id);");
+            }
+            else
+            {
+                w.WriteLine($"Assert.AreEqual(Arm64InstructionId.{instruction.Id}, instruction.Id);");
+            }
             w.WriteLine($"Assert.AreEqual(Arm64Mnemonic.{instruction.Mnemonic}, instruction.Mnemonic);");
             w.WriteLine("var asm = instruction.ToString(\"H\", null);");
             w.WriteLine(testArguments.Count == 0
@@ -131,11 +147,16 @@ partial class Arm64Processor
     }
 
 
+
     private abstract record TestArgument
     {
         public abstract string CSharp { get; }
 
         public abstract string Asm { get; }
+
+        public virtual void InitializeFromArguments(IReadOnlyList<TestArgument> arguments, int index)
+        {
+        }
     }
 
     private record RawTestArgument : TestArgument
@@ -222,7 +243,6 @@ partial class Arm64Processor
         }
     }
 
-
     private record RegisterGroupTestArgument : TestArgument
     {
         public RegisterGroupTestArgument(RegisterTestArgument baseRegister, int count)
@@ -232,6 +252,8 @@ partial class Arm64Processor
         }
 
         public RegisterTestArgument BaseRegister { get; }
+
+        public int? Indexer { get; init; }
 
         public int Count { get; }
 
@@ -257,15 +279,167 @@ partial class Arm64Processor
                 }
 
                 builder.Append(" }");
+                if (Indexer.HasValue)
+                {
+                    builder.Append($"[{Indexer.Value}]");
+                }
                 return builder.ToString();
             }
             else
             {
-                return $"{BaseRegister.CSharp}.Group{Count}()";
+                if (Indexer.HasValue)
+                {
+                    return $"{BaseRegister.CSharp}.Group{Count}()[{Indexer.Value}]";
+                }
+                else
+                {
+                    return $"{BaseRegister.CSharp}.Group{Count}()";
+                }
             }
         }
     }
-    
+
+    private record MemoryTestArgument : TestArgument
+    {
+        public MemoryTestArgument(RegisterTestArgument baseRegister, RegisterTestArgument? indexRegister, string? extend, int? amount)
+        {
+            BaseRegister = baseRegister;
+            IndexRegister = indexRegister;
+            Extend = extend;
+            Amount = amount;
+        }
+
+        public MemoryTestArgument(RegisterTestArgument baseRegister, RegisterTestArgument? indexRegister)
+        {
+            BaseRegister = baseRegister;
+            IndexRegister = indexRegister;
+        }
+
+        public MemoryTestArgument(RegisterTestArgument baseRegister, int? immediate)
+        {
+            BaseRegister = baseRegister;
+            Immediate = immediate;
+        }
+
+        public MemoryTestArgument(RegisterTestArgument baseRegister)
+        {
+            BaseRegister = baseRegister;
+        }
+
+        public RegisterTestArgument BaseRegister { get; }
+
+        public RegisterTestArgument? IndexRegister { get; }
+
+        public int? Immediate { get; }
+
+        public string? Extend { get; }
+
+        public int? Amount { get; }
+
+        public bool PreIncrement { get; init; }
+
+        public override string CSharp => GetAsText(false);
+
+        public override string Asm => GetAsText(true);
+
+        private string GetAsText(bool isAsm)
+        {
+            var immediate = Immediate?.ToString();
+            var extend = Extend;
+            var amount = Amount?.ToString();
+            if (isAsm)
+            {
+                var baseRegister = BaseRegister.Asm;
+                var indexRegister = IndexRegister?.Asm;
+
+                var builder = new StringBuilder();
+                builder.Append("[");
+                builder.Append(baseRegister);
+                if (indexRegister is not null)
+                {
+                    builder.Append(", ");
+                    builder.Append(indexRegister);
+                    if (extend is not null)
+                    {
+                        builder.Append(", ");
+                        builder.Append(extend);
+                        if (amount is not null)
+                        {
+                            builder.Append(" #");
+                            builder.Append(amount);
+                        }
+                    }
+                }
+                else if (immediate is not null)
+                {
+                    builder.Append(", #");
+                    builder.Append(immediate);
+                }
+                builder.Append("]");
+                if (PreIncrement)
+                {
+                    builder.Append('!');
+                }
+                return builder.ToString();
+            }
+            else
+            {
+                var baseRegister = BaseRegister.CSharp;
+                var indexRegister = IndexRegister?.CSharp;
+
+                var builder = new StringBuilder();
+                builder.Append("_[");
+                builder.Append(baseRegister);
+                if (indexRegister is not null)
+                {
+                    builder.Append(", ");
+                    builder.Append(indexRegister);
+                    if (extend is not null)
+                    {
+                        builder.Append(", _");
+                        builder.Append(extend);
+                        if (amount is not null)
+                        {
+                            builder.Append(", ");
+                            builder.Append(amount);
+                        }
+                    }
+                }
+                else if (immediate is not null)
+                {
+                    builder.Append(", ");
+                    builder.Append(immediate);
+                }
+                builder.Append("]");
+                if (PreIncrement)
+                {
+                    builder.Append(".Pre");
+                }
+                return builder.ToString();
+            }
+        }
+    }
+
+
+    private record RegisterPlus1TestArgument : TestArgument
+    {
+        private RegisterTestArgument? _baseRegister;
+
+        public RegisterPlus1TestArgument()
+        {
+        }
+
+        public override string CSharp => _baseRegister?.CSharp ?? string.Empty;
+        public override string Asm => _baseRegister?.Asm ?? string.Empty;
+
+        public override void InitializeFromArguments(IReadOnlyList<TestArgument> arguments, int index)
+        {
+            var baseRegister = (RegisterTestArgument)arguments[index - 1];
+            _baseRegister = new RegisterTestArgument(baseRegister.BaseRegisterName, baseRegister.Index + 1, baseRegister.VKind, baseRegister.Indexer);
+        }
+    }
+
+
     private record RegisterTestArgument : TestArgument
     {
         public RegisterTestArgument(string baseRegisterName, int index, int? indexer = null)

@@ -24,7 +24,87 @@ public class Arm64InstructionFactoryTests_CASPAL_General
     [TestMethod]
     public void Test_CASPAL_cp32_comswappr_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CASPAL(W0, W1, W2, W3, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp32_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL W0, W1, W2, W3, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(W15, W16, W2, W3, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp32_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL W15, W16, W2, W3, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(WZR, W0, W2, W3, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp32_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL WZR, W0, W2, W3, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(W0, W1, W17, W18, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp32_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL W0, W1, W17, W18, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(W15, W16, W17, W18, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp32_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL W15, W16, W17, W18, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(WZR, W0, W17, W18, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp32_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL WZR, W0, W17, W18, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(W0, W1, WZR, W0, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp32_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL W0, W1, WZR, W0, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(W15, W16, WZR, W0, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp32_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL W15, W16, WZR, W0, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(WZR, W0, WZR, W0, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp32_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL WZR, W0, WZR, W0, [X5]", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +113,86 @@ public class Arm64InstructionFactoryTests_CASPAL_General
     [TestMethod]
     public void Test_CASPAL_cp64_comswappr_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CASPAL(X0, X1, X2, X3, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp64_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL X0, X1, X2, X3, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(X15, X16, X2, X3, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp64_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL X15, X16, X2, X3, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(XZR, X0, X2, X3, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp64_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL XZR, X0, X2, X3, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(X0, X1, X17, X18, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp64_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL X0, X1, X17, X18, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(X15, X16, X17, X18, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp64_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL X15, X16, X17, X18, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(XZR, X0, X17, X18, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp64_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL XZR, X0, X17, X18, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(X0, X1, XZR, X0, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp64_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL X0, X1, XZR, X0, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(X15, X16, XZR, X0, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp64_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL X15, X16, XZR, X0, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAL(XZR, X0, XZR, X0, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAL_cp64_comswappr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAL XZR, X0, XZR, X0, [X5]", asm);
+        }
     }
 }

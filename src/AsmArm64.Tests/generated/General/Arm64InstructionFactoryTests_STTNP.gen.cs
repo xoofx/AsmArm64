@@ -24,6 +24,86 @@ public class Arm64InstructionFactoryTests_STTNP_General
     [TestMethod]
     public void Test_STTNP_64_ldstnapair_offs_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STTNP(X0, X1, _[X3, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTNP_64_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTNP X0, X1, [X3, #5]", asm);
+        }
+        
+        {
+            var raw = STTNP(X15, X1, _[X3, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTNP_64_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTNP X15, X1, [X3, #5]", asm);
+        }
+        
+        {
+            var raw = STTNP(XZR, X1, _[X3, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTNP_64_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTNP XZR, X1, [X3, #5]", asm);
+        }
+        
+        {
+            var raw = STTNP(X0, X16, _[X3, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTNP_64_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTNP X0, X16, [X3, #5]", asm);
+        }
+        
+        {
+            var raw = STTNP(X15, X16, _[X3, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTNP_64_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTNP X15, X16, [X3, #5]", asm);
+        }
+        
+        {
+            var raw = STTNP(XZR, X16, _[X3, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTNP_64_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTNP XZR, X16, [X3, #5]", asm);
+        }
+        
+        {
+            var raw = STTNP(X0, XZR, _[X3, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTNP_64_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTNP X0, XZR, [X3, #5]", asm);
+        }
+        
+        {
+            var raw = STTNP(X15, XZR, _[X3, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTNP_64_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTNP X15, XZR, [X3, #5]", asm);
+        }
+        
+        {
+            var raw = STTNP(XZR, XZR, _[X3, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTNP_64_ldstnapair_offs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTNP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTNP XZR, XZR, [X3, #5]", asm);
+        }
     }
 }

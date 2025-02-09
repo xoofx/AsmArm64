@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_LDFMINL_Advsimd
     [TestMethod]
     public void Test_LDFMINL_16_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDFMINL(H0, H1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL H0, H1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFMINL(H31, H1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL H31, H1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFMINL(H0, H31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL H0, H31, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFMINL(H31, H31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL H31, H31, [X3]", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +68,42 @@ public class Arm64InstructionFactoryTests_LDFMINL_Advsimd
     [TestMethod]
     public void Test_LDFMINL_32_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDFMINL(S0, S1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL S0, S1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFMINL(S31, S1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL S31, S1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFMINL(S0, S31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL S0, S31, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFMINL(S31, S31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL S31, S31, [X3]", asm);
+        }
     }
     
     /// <summary>
@@ -42,6 +112,41 @@ public class Arm64InstructionFactoryTests_LDFMINL_Advsimd
     [TestMethod]
     public void Test_LDFMINL_64_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDFMINL(D0, D1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL D0, D1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFMINL(D31, D1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL D31, D1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFMINL(D0, D31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL D0, D31, [X3]", asm);
+        }
+        
+        {
+            var raw = LDFMINL(D31, D31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDFMINL_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDFMINL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDFMINL D31, D31, [X3]", asm);
+        }
     }
 }

@@ -24,7 +24,33 @@ public class Arm64InstructionFactoryTests_STLLR_General
     [TestMethod]
     public void Test_STLLR_sl32_ldstord_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STLLR(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STLLR_sl32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STLLR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STLLR W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STLLR(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STLLR_sl32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STLLR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STLLR W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STLLR(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STLLR_sl32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STLLR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STLLR WZR, [X2]", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +59,32 @@ public class Arm64InstructionFactoryTests_STLLR_General
     [TestMethod]
     public void Test_STLLR_sl64_ldstord_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STLLR(X0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STLLR_sl64_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STLLR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STLLR X0, [X2]", asm);
+        }
+        
+        {
+            var raw = STLLR(X15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STLLR_sl64_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STLLR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STLLR X15, [X2]", asm);
+        }
+        
+        {
+            var raw = STLLR(XZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STLLR_sl64_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STLLR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STLLR XZR, [X2]", asm);
+        }
     }
 }

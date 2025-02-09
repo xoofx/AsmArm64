@@ -24,6 +24,23 @@ public class Arm64InstructionFactoryTests_STBFMAXNM_Advsimd
     [TestMethod]
     public void Test_STBFMAXNM_16_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STBFMAXNM(H0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STBFMAXNM_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STBFMAXNM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STBFMAXNM H0, [X2]", asm);
+        }
+        
+        {
+            var raw = STBFMAXNM(H31, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STBFMAXNM_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STBFMAXNM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STBFMAXNM H31, [X2]", asm);
+        }
     }
 }

@@ -24,6 +24,86 @@ public class Arm64InstructionFactoryTests_ST64BV_General
     [TestMethod]
     public void Test_ST64BV_64_memop_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = ST64BV(X0, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64BV_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64BV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64BV X0, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = ST64BV(X15, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64BV_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64BV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64BV X15, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = ST64BV(XZR, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64BV_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64BV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64BV XZR, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = ST64BV(X0, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64BV_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64BV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64BV X0, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = ST64BV(X15, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64BV_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64BV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64BV X15, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = ST64BV(XZR, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64BV_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64BV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64BV XZR, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = ST64BV(X0, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64BV_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64BV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64BV X0, XZR, [X3]", asm);
+        }
+        
+        {
+            var raw = ST64BV(X15, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64BV_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64BV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64BV X15, XZR, [X3]", asm);
+        }
+        
+        {
+            var raw = ST64BV(XZR, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ST64BV_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ST64BV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ST64BV XZR, XZR, [X3]", asm);
+        }
     }
 }

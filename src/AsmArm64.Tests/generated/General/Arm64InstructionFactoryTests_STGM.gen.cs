@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_STGM_General
     [TestMethod]
     public void Test_STGM_64bulk_ldsttags_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STGM(X0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STGM_64bulk_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STGM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STGM X0, [X2]", asm);
+        }
+        
+        {
+            var raw = STGM(X15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STGM_64bulk_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STGM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STGM X15, [X2]", asm);
+        }
+        
+        {
+            var raw = STGM(XZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STGM_64bulk_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STGM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STGM XZR, [X2]", asm);
+        }
     }
 }

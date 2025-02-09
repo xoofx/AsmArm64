@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_STP_Fpsimd
     [TestMethod]
     public void Test_STP_s_ldstpair_post_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STP(S0, S1, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S0, S1, [X3], #20", asm);
+        }
+        
+        {
+            var raw = STP(S31, S1, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S31, S1, [X3], #20", asm);
+        }
+        
+        {
+            var raw = STP(S0, S31, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S0, S31, [X3], #20", asm);
+        }
+        
+        {
+            var raw = STP(S31, S31, _[X3], 20);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S31, S31, [X3], #20", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +68,42 @@ public class Arm64InstructionFactoryTests_STP_Fpsimd
     [TestMethod]
     public void Test_STP_d_ldstpair_post_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STP(D0, D1, _[X3], 40);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D0, D1, [X3], #40", asm);
+        }
+        
+        {
+            var raw = STP(D31, D1, _[X3], 40);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D31, D1, [X3], #40", asm);
+        }
+        
+        {
+            var raw = STP(D0, D31, _[X3], 40);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D0, D31, [X3], #40", asm);
+        }
+        
+        {
+            var raw = STP(D31, D31, _[X3], 40);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D31, D31, [X3], #40", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +112,42 @@ public class Arm64InstructionFactoryTests_STP_Fpsimd
     [TestMethod]
     public void Test_STP_q_ldstpair_post_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STP(Q0, Q1, _[X3], 80);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q0, Q1, [X3], #80", asm);
+        }
+        
+        {
+            var raw = STP(Q31, Q1, _[X3], 80);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q31, Q1, [X3], #80", asm);
+        }
+        
+        {
+            var raw = STP(Q0, Q31, _[X3], 80);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q0, Q31, [X3], #80", asm);
+        }
+        
+        {
+            var raw = STP(Q31, Q31, _[X3], 80);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_post, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q31, Q31, [X3], #80", asm);
+        }
     }
     
     /// <summary>
@@ -51,7 +156,42 @@ public class Arm64InstructionFactoryTests_STP_Fpsimd
     [TestMethod]
     public void Test_STP_s_ldstpair_pre_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STP(S0, S1, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S0, S1, [X3, #20]!", asm);
+        }
+        
+        {
+            var raw = STP(S31, S1, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S31, S1, [X3, #20]!", asm);
+        }
+        
+        {
+            var raw = STP(S0, S31, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S0, S31, [X3, #20]!", asm);
+        }
+        
+        {
+            var raw = STP(S31, S31, _[X3, 20].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S31, S31, [X3, #20]!", asm);
+        }
     }
     
     /// <summary>
@@ -60,7 +200,42 @@ public class Arm64InstructionFactoryTests_STP_Fpsimd
     [TestMethod]
     public void Test_STP_d_ldstpair_pre_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STP(D0, D1, _[X3, 40].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D0, D1, [X3, #40]!", asm);
+        }
+        
+        {
+            var raw = STP(D31, D1, _[X3, 40].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D31, D1, [X3, #40]!", asm);
+        }
+        
+        {
+            var raw = STP(D0, D31, _[X3, 40].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D0, D31, [X3, #40]!", asm);
+        }
+        
+        {
+            var raw = STP(D31, D31, _[X3, 40].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D31, D31, [X3, #40]!", asm);
+        }
     }
     
     /// <summary>
@@ -69,7 +244,42 @@ public class Arm64InstructionFactoryTests_STP_Fpsimd
     [TestMethod]
     public void Test_STP_q_ldstpair_pre_5()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STP(Q0, Q1, _[X3, 80].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q0, Q1, [X3, #80]!", asm);
+        }
+        
+        {
+            var raw = STP(Q31, Q1, _[X3, 80].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q31, Q1, [X3, #80]!", asm);
+        }
+        
+        {
+            var raw = STP(Q0, Q31, _[X3, 80].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q0, Q31, [X3, #80]!", asm);
+        }
+        
+        {
+            var raw = STP(Q31, Q31, _[X3, 80].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_pre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q31, Q31, [X3, #80]!", asm);
+        }
     }
     
     /// <summary>
@@ -78,7 +288,42 @@ public class Arm64InstructionFactoryTests_STP_Fpsimd
     [TestMethod]
     public void Test_STP_s_ldstpair_off_6()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STP(S0, S1, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S0, S1, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = STP(S31, S1, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S31, S1, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = STP(S0, S31, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S0, S31, [X3, #20]", asm);
+        }
+        
+        {
+            var raw = STP(S31, S31, _[X3, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_s_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP S31, S31, [X3, #20]", asm);
+        }
     }
     
     /// <summary>
@@ -87,7 +332,42 @@ public class Arm64InstructionFactoryTests_STP_Fpsimd
     [TestMethod]
     public void Test_STP_d_ldstpair_off_7()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STP(D0, D1, _[X3, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D0, D1, [X3, #40]", asm);
+        }
+        
+        {
+            var raw = STP(D31, D1, _[X3, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D31, D1, [X3, #40]", asm);
+        }
+        
+        {
+            var raw = STP(D0, D31, _[X3, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D0, D31, [X3, #40]", asm);
+        }
+        
+        {
+            var raw = STP(D31, D31, _[X3, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_d_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP D31, D31, [X3, #40]", asm);
+        }
     }
     
     /// <summary>
@@ -96,6 +376,41 @@ public class Arm64InstructionFactoryTests_STP_Fpsimd
     [TestMethod]
     public void Test_STP_q_ldstpair_off_8()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STP(Q0, Q1, _[X3, 80]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q0, Q1, [X3, #80]", asm);
+        }
+        
+        {
+            var raw = STP(Q31, Q1, _[X3, 80]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q31, Q1, [X3, #80]", asm);
+        }
+        
+        {
+            var raw = STP(Q0, Q31, _[X3, 80]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q0, Q31, [X3, #80]", asm);
+        }
+        
+        {
+            var raw = STP(Q31, Q31, _[X3, 80]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STP_q_ldstpair_off, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STP Q31, Q31, [X3, #80]", asm);
+        }
     }
 }

@@ -61,7 +61,7 @@ public readonly record struct Arm64MemoryExtend : IArm64MemoryExtend
 
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
-        var text = Kind.ToText(format.Length >= 1 && format[0] == 'H');
+        var text = Kind.ToText(format.Length == 1 && format[0] == 'H');
         if (destination.Length < text.Length)
         {
             charsWritten = 0;
@@ -86,7 +86,7 @@ public readonly record struct Arm64MemoryExtend : IArm64MemoryExtend
             destination[written] = ' ';
             destination[written + 1] = '#';
             written += 2;
-            if (!Amount.TryFormat(destination.Slice(written), out var digitWritten, format, provider))
+            if (!Amount.TryFormat(destination.Slice(written), out var digitWritten, "G", provider))
             {
                 charsWritten = 0;
                 return false;

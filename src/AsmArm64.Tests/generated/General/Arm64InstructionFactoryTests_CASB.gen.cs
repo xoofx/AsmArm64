@@ -24,6 +24,86 @@ public class Arm64InstructionFactoryTests_CASB_General
     [TestMethod]
     public void Test_CASB_c32_comswap_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CASB(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASB W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = CASB(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASB W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = CASB(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASB WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = CASB(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASB W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = CASB(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASB W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = CASB(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASB WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = CASB(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASB W0, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = CASB(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASB W15, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = CASB(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASB WZR, WZR, [X3]", asm);
+        }
     }
 }

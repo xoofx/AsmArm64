@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_LDAPRH_General
     [TestMethod]
     public void Test_LDAPRH_32l_memop_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAPRH(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPRH_32l_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPRH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPRH W0, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAPRH(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPRH_32l_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPRH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPRH W15, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAPRH(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPRH_32l_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPRH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPRH WZR, [X2]", asm);
+        }
     }
 }

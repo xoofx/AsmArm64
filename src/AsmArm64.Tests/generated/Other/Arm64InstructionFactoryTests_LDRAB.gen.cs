@@ -24,7 +24,33 @@ public class Arm64InstructionFactoryTests_LDRAB_Other
     [TestMethod]
     public void Test_LDRAB_64_ldst_pac_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDRAB(X0, _[X2, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRAB_64_ldst_pac, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRAB X0, [X2, #40]", asm);
+        }
+        
+        {
+            var raw = LDRAB(X15, _[X2, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRAB_64_ldst_pac, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRAB X15, [X2, #40]", asm);
+        }
+        
+        {
+            var raw = LDRAB(XZR, _[X2, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRAB_64_ldst_pac, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRAB XZR, [X2, #40]", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +59,32 @@ public class Arm64InstructionFactoryTests_LDRAB_Other
     [TestMethod]
     public void Test_LDRAB_64w_ldst_pac_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDRAB(X0, _[X2, 40].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRAB_64w_ldst_pac, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRAB X0, [X2, #40]!", asm);
+        }
+        
+        {
+            var raw = LDRAB(X15, _[X2, 40].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRAB_64w_ldst_pac, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRAB X15, [X2, #40]!", asm);
+        }
+        
+        {
+            var raw = LDRAB(XZR, _[X2, 40].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRAB_64w_ldst_pac, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRAB XZR, [X2, #40]!", asm);
+        }
     }
 }

@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_LDXRH_General
     [TestMethod]
     public void Test_LDXRH_lr32_ldstexclr_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDXRH(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDXRH_lr32_ldstexclr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDXRH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDXRH W0, [X2]", asm);
+        }
+        
+        {
+            var raw = LDXRH(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDXRH_lr32_ldstexclr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDXRH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDXRH W15, [X2]", asm);
+        }
+        
+        {
+            var raw = LDXRH(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDXRH_lr32_ldstexclr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDXRH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDXRH WZR, [X2]", asm);
+        }
     }
 }

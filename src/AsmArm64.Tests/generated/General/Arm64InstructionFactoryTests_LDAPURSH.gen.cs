@@ -24,7 +24,33 @@ public class Arm64InstructionFactoryTests_LDAPURSH_General
     [TestMethod]
     public void Test_LDAPURSH_32_ldapstl_unscaled_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAPURSH(W0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPURSH_32_ldapstl_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPURSH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPURSH W0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDAPURSH(W15, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPURSH_32_ldapstl_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPURSH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPURSH W15, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDAPURSH(WZR, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPURSH_32_ldapstl_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPURSH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPURSH WZR, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +59,32 @@ public class Arm64InstructionFactoryTests_LDAPURSH_General
     [TestMethod]
     public void Test_LDAPURSH_64_ldapstl_unscaled_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAPURSH(X0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPURSH_64_ldapstl_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPURSH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPURSH X0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDAPURSH(X15, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPURSH_64_ldapstl_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPURSH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPURSH X15, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDAPURSH(XZR, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPURSH_64_ldapstl_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPURSH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPURSH XZR, [X2, #5]", asm);
+        }
     }
 }

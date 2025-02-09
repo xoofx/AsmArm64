@@ -24,6 +24,23 @@ public class Arm64InstructionFactoryTests_LDAP1_Advsimd
     [TestMethod]
     public void Test_LDAP1_asisdlso_d1_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAP1(V0.D.Group1()[1], _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAP1_asisdlso_d1, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAP1, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAP1 { V0.D }[1], [X2]", asm);
+        }
+        
+        {
+            var raw = LDAP1(V30.D.Group1()[1], _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAP1_asisdlso_d1, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAP1, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAP1 { V30.D }[1], [X2]", asm);
+        }
     }
 }

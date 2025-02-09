@@ -24,7 +24,33 @@ public class Arm64InstructionFactoryTests_LDR_General
     [TestMethod]
     public void Test_LDR_32_ldst_immpost_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDR(W0, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR W0, [X2], #5", asm);
+        }
+        
+        {
+            var raw = LDR(W15, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR W15, [X2], #5", asm);
+        }
+        
+        {
+            var raw = LDR(WZR, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR WZR, [X2], #5", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +59,33 @@ public class Arm64InstructionFactoryTests_LDR_General
     [TestMethod]
     public void Test_LDR_64_ldst_immpost_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDR(X0, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR X0, [X2], #5", asm);
+        }
+        
+        {
+            var raw = LDR(X15, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR X15, [X2], #5", asm);
+        }
+        
+        {
+            var raw = LDR(XZR, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR XZR, [X2], #5", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +94,33 @@ public class Arm64InstructionFactoryTests_LDR_General
     [TestMethod]
     public void Test_LDR_32_ldst_immpre_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDR(W0, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR W0, [X2, #5]!", asm);
+        }
+        
+        {
+            var raw = LDR(W15, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR W15, [X2, #5]!", asm);
+        }
+        
+        {
+            var raw = LDR(WZR, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR WZR, [X2, #5]!", asm);
+        }
     }
     
     /// <summary>
@@ -51,7 +129,33 @@ public class Arm64InstructionFactoryTests_LDR_General
     [TestMethod]
     public void Test_LDR_64_ldst_immpre_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDR(X0, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR X0, [X2, #5]!", asm);
+        }
+        
+        {
+            var raw = LDR(X15, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR X15, [X2, #5]!", asm);
+        }
+        
+        {
+            var raw = LDR(XZR, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR XZR, [X2, #5]!", asm);
+        }
     }
     
     /// <summary>
@@ -60,7 +164,33 @@ public class Arm64InstructionFactoryTests_LDR_General
     [TestMethod]
     public void Test_LDR_32_ldst_pos_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDR(W0, _[X2, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR W0, [X2, #20]", asm);
+        }
+        
+        {
+            var raw = LDR(W15, _[X2, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR W15, [X2, #20]", asm);
+        }
+        
+        {
+            var raw = LDR(WZR, _[X2, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR WZR, [X2, #20]", asm);
+        }
     }
     
     /// <summary>
@@ -69,7 +199,33 @@ public class Arm64InstructionFactoryTests_LDR_General
     [TestMethod]
     public void Test_LDR_64_ldst_pos_5()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDR(X0, _[X2, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR X0, [X2, #40]", asm);
+        }
+        
+        {
+            var raw = LDR(X15, _[X2, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR X15, [X2, #40]", asm);
+        }
+        
+        {
+            var raw = LDR(XZR, _[X2, 40]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR XZR, [X2, #40]", asm);
+        }
     }
     
     /// <summary>
@@ -96,7 +252,33 @@ public class Arm64InstructionFactoryTests_LDR_General
     [TestMethod]
     public void Test_LDR_32_ldst_regoff_8()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDR(W0, _[X2, X3, _LSL, 2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR W0, [X2, X3, LSL #2]", asm);
+        }
+        
+        {
+            var raw = LDR(W15, _[X2, X3, _LSL, 2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR W15, [X2, X3, LSL #2]", asm);
+        }
+        
+        {
+            var raw = LDR(WZR, _[X2, X3, _LSL, 2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_32_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR WZR, [X2, X3, LSL #2]", asm);
+        }
     }
     
     /// <summary>
@@ -114,7 +296,33 @@ public class Arm64InstructionFactoryTests_LDR_General
     [TestMethod]
     public void Test_LDR_64_ldst_regoff_10()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDR(X0, _[X2, X3, _LSL, 3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR X0, [X2, X3, LSL #3]", asm);
+        }
+        
+        {
+            var raw = LDR(X15, _[X2, X3, _LSL, 3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR X15, [X2, X3, LSL #3]", asm);
+        }
+        
+        {
+            var raw = LDR(XZR, _[X2, X3, _LSL, 3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDR_64_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDR XZR, [X2, X3, LSL #3]", asm);
+        }
     }
     
     /// <summary>

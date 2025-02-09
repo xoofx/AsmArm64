@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_GCSSTTR_General
     [TestMethod]
     public void Test_GCSSTTR_64_ldst_gcs_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = GCSSTTR(X0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.GCSSTTR_64_ldst_gcs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.GCSSTTR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("GCSSTTR X0, [X2]", asm);
+        }
+        
+        {
+            var raw = GCSSTTR(X15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.GCSSTTR_64_ldst_gcs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.GCSSTTR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("GCSSTTR X15, [X2]", asm);
+        }
+        
+        {
+            var raw = GCSSTTR(XZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.GCSSTTR_64_ldst_gcs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.GCSSTTR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("GCSSTTR XZR, [X2]", asm);
+        }
     }
 }

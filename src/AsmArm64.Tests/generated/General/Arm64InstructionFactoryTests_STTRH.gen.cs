@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_STTRH_General
     [TestMethod]
     public void Test_STTRH_32_ldst_unpriv_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STTRH(W0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTRH_32_ldst_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTRH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTRH W0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = STTRH(W15, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTRH_32_ldst_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTRH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTRH W15, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = STTRH(WZR, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STTRH_32_ldst_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STTRH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STTRH WZR, [X2, #5]", asm);
+        }
     }
 }

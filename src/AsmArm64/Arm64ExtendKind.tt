@@ -57,6 +57,17 @@ public interface IArm64ExtendKind
 <# } #>
 }
 
+partial class Arm64Factory
+{
+<# foreach (var kind in kinds) { #>
+    /// <summary>
+    /// Creates a new <see cref="IArm64ExtendKind.<#= kind #>"/> instance.
+    /// </summary>
+    public static IArm64ExtendKind.<#= kind #> _<#= kind #> => new();
+       
+<# } #>
+}
+
 // Extension methods for Arm64ExtendKind
 partial class Arm64Extensions
 {
@@ -72,7 +83,7 @@ partial class Arm64Extensions
     [
         "????",
 <# foreach (var kind in kinds) { #>
-        "<#= kind.ToLowerInvariant() #>",
+        "<#= kind.ToUpperInvariant() #>",
 <# } #>
     ];
     

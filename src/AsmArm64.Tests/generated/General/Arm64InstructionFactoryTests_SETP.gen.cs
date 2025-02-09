@@ -24,6 +24,86 @@ public class Arm64InstructionFactoryTests_SETP_General
     [TestMethod]
     public void Test_SETP_set_memcms_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SETP(_[X1].Pre, X1, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SETP_set_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SETP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SETP [X1]!, X1, X2", asm);
+        }
+        
+        {
+            var raw = SETP(_[X1].Pre, X16, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SETP_set_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SETP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SETP [X1]!, X16, X2", asm);
+        }
+        
+        {
+            var raw = SETP(_[X1].Pre, XZR, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SETP_set_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SETP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SETP [X1]!, XZR, X2", asm);
+        }
+        
+        {
+            var raw = SETP(_[X1].Pre, X1, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SETP_set_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SETP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SETP [X1]!, X1, X17", asm);
+        }
+        
+        {
+            var raw = SETP(_[X1].Pre, X16, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SETP_set_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SETP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SETP [X1]!, X16, X17", asm);
+        }
+        
+        {
+            var raw = SETP(_[X1].Pre, XZR, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SETP_set_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SETP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SETP [X1]!, XZR, X17", asm);
+        }
+        
+        {
+            var raw = SETP(_[X1].Pre, X1, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SETP_set_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SETP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SETP [X1]!, X1, XZR", asm);
+        }
+        
+        {
+            var raw = SETP(_[X1].Pre, X16, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SETP_set_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SETP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SETP [X1]!, X16, XZR", asm);
+        }
+        
+        {
+            var raw = SETP(_[X1].Pre, XZR, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SETP_set_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SETP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SETP [X1]!, XZR, XZR", asm);
+        }
     }
 }

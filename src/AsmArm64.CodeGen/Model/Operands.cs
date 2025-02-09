@@ -288,6 +288,7 @@ class EncodingSymbol
             Link = Link,
             Name = Name,
             EncodedInText = EncodedInText,
+            Condition = Condition,
             IsSignedImmediate = IsSignedImmediate,
             BitSize = BitSize
         };

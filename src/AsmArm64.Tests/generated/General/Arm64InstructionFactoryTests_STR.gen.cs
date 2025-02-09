@@ -24,7 +24,33 @@ public class Arm64InstructionFactoryTests_STR_General
     [TestMethod]
     public void Test_STR_32_ldst_immpost_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STR(W0, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR W0, [X2], #5", asm);
+        }
+        
+        {
+            var raw = STR(W15, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR W15, [X2], #5", asm);
+        }
+        
+        {
+            var raw = STR(WZR, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR WZR, [X2], #5", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +59,33 @@ public class Arm64InstructionFactoryTests_STR_General
     [TestMethod]
     public void Test_STR_64_ldst_immpost_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STR(X0, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR X0, [X2], #5", asm);
+        }
+        
+        {
+            var raw = STR(X15, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR X15, [X2], #5", asm);
+        }
+        
+        {
+            var raw = STR(XZR, _[X2], 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_immpost, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR XZR, [X2], #5", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +94,33 @@ public class Arm64InstructionFactoryTests_STR_General
     [TestMethod]
     public void Test_STR_32_ldst_immpre_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STR(W0, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR W0, [X2, #5]!", asm);
+        }
+        
+        {
+            var raw = STR(W15, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR W15, [X2, #5]!", asm);
+        }
+        
+        {
+            var raw = STR(WZR, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR WZR, [X2, #5]!", asm);
+        }
     }
     
     /// <summary>
@@ -51,7 +129,33 @@ public class Arm64InstructionFactoryTests_STR_General
     [TestMethod]
     public void Test_STR_64_ldst_immpre_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STR(X0, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR X0, [X2, #5]!", asm);
+        }
+        
+        {
+            var raw = STR(X15, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR X15, [X2, #5]!", asm);
+        }
+        
+        {
+            var raw = STR(XZR, _[X2, 5].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_immpre, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR XZR, [X2, #5]!", asm);
+        }
     }
     
     /// <summary>
@@ -60,7 +164,33 @@ public class Arm64InstructionFactoryTests_STR_General
     [TestMethod]
     public void Test_STR_32_ldst_pos_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STR(W0, _[X2, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR W0, [X2, #20]", asm);
+        }
+        
+        {
+            var raw = STR(W15, _[X2, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR W15, [X2, #20]", asm);
+        }
+        
+        {
+            var raw = STR(WZR, _[X2, 20]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR WZR, [X2, #20]", asm);
+        }
     }
     
     /// <summary>
@@ -69,7 +199,33 @@ public class Arm64InstructionFactoryTests_STR_General
     [TestMethod]
     public void Test_STR_64_ldst_pos_5()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STR(X0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR X0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = STR(X15, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR X15, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = STR(XZR, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_pos, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR XZR, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -78,7 +234,33 @@ public class Arm64InstructionFactoryTests_STR_General
     [TestMethod]
     public void Test_STR_32_ldst_regoff_6()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STR(W0, _[X2, X3, _LSL, 2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR W0, [X2, X3, LSL #2]", asm);
+        }
+        
+        {
+            var raw = STR(W15, _[X2, X3, _LSL, 2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR W15, [X2, X3, LSL #2]", asm);
+        }
+        
+        {
+            var raw = STR(WZR, _[X2, X3, _LSL, 2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_32_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR WZR, [X2, X3, LSL #2]", asm);
+        }
     }
     
     /// <summary>
@@ -96,7 +278,33 @@ public class Arm64InstructionFactoryTests_STR_General
     [TestMethod]
     public void Test_STR_64_ldst_regoff_8()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STR(X0, _[X2, X3, _LSL, 3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR X0, [X2, X3, LSL #3]", asm);
+        }
+        
+        {
+            var raw = STR(X15, _[X2, X3, _LSL, 3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR X15, [X2, X3, LSL #3]", asm);
+        }
+        
+        {
+            var raw = STR(XZR, _[X2, X3, _LSL, 3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_64_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR XZR, [X2, X3, LSL #3]", asm);
+        }
     }
     
     /// <summary>

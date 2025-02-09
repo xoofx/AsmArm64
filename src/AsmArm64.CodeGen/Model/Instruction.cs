@@ -128,6 +128,9 @@ class Instruction : IJsonOnDeserialized
         {
             Debug.Assert(existingField.BitFieldSet!.Count == bitRangeInfo.BitFieldSet.Count);
 
+            existingField.Condition = bitRangeInfo.Condition;
+            existingField.OriginalCondition = bitRangeInfo.OriginalCondition;
+
             for (var i = 0; i < bitRangeInfo.BitFieldSet.Count; i++)
             {
                 if (bitRangeInfo.BitFieldSet![i] != BitKind.NotSet)
@@ -203,6 +206,14 @@ class Instruction : IJsonOnDeserialized
                     case BitRangeCondition.AllNon11xxx:
                         NotBitfieldMask |= 0b11000U << lowBit;
                         NotBitfieldValue |= 0b11000U << lowBit;
+                        break;
+                    case BitRangeCondition.AllNon011:
+                        NotBitfieldMask |= 0b111U << lowBit;
+                        NotBitfieldValue |= 0b011U << lowBit;
+                        break;
+                    case BitRangeCondition.AllNon011111:
+                        NotBitfieldMask |= 0b111111U << lowBit;
+                        NotBitfieldValue |= 0b011111U << lowBit;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

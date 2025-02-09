@@ -45,7 +45,7 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
                 registerIndex = (int)(value & 0b11111);
                 if (encodingIndex == Arm64RegisterIndexEncodingKind.Std5Plus1)
                 {
-                    registerIndex = (registerIndex + 1) & 0x3F;
+                    registerIndex = (registerIndex + 1) & 0x1F;
                 }
                 break;
             }

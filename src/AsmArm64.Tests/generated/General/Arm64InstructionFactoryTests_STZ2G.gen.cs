@@ -24,7 +24,33 @@ public class Arm64InstructionFactoryTests_STZ2G_General
     [TestMethod]
     public void Test_STZ2G_64spost_ldsttags_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STZ2G(X1, _[X2], 80);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STZ2G_64spost_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STZ2G, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STZ2G X1, [X2], #80", asm);
+        }
+        
+        {
+            var raw = STZ2G(X17, _[X2], 80);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STZ2G_64spost_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STZ2G, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STZ2G X17, [X2], #80", asm);
+        }
+        
+        {
+            var raw = STZ2G(SP, _[X2], 80);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STZ2G_64spost_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STZ2G, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STZ2G SP, [X2], #80", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +59,33 @@ public class Arm64InstructionFactoryTests_STZ2G_General
     [TestMethod]
     public void Test_STZ2G_64spre_ldsttags_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STZ2G(X1, _[X2, 80].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STZ2G_64spre_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STZ2G, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STZ2G X1, [X2, #80]!", asm);
+        }
+        
+        {
+            var raw = STZ2G(X17, _[X2, 80].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STZ2G_64spre_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STZ2G, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STZ2G X17, [X2, #80]!", asm);
+        }
+        
+        {
+            var raw = STZ2G(SP, _[X2, 80].Pre);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STZ2G_64spre_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STZ2G, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STZ2G SP, [X2, #80]!", asm);
+        }
     }
     
     /// <summary>
@@ -42,6 +94,32 @@ public class Arm64InstructionFactoryTests_STZ2G_General
     [TestMethod]
     public void Test_STZ2G_64soffset_ldsttags_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STZ2G(X1, _[X2, 80]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STZ2G_64soffset_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STZ2G, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STZ2G X1, [X2, #80]", asm);
+        }
+        
+        {
+            var raw = STZ2G(X17, _[X2, 80]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STZ2G_64soffset_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STZ2G, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STZ2G X17, [X2, #80]", asm);
+        }
+        
+        {
+            var raw = STZ2G(SP, _[X2, 80]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STZ2G_64soffset_ldsttags, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STZ2G, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STZ2G SP, [X2, #80]", asm);
+        }
     }
 }

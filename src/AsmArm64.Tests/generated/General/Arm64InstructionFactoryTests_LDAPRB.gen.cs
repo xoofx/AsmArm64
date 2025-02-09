@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_LDAPRB_General
     [TestMethod]
     public void Test_LDAPRB_32l_memop_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAPRB(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPRB_32l_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPRB W0, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAPRB(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPRB_32l_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPRB W15, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAPRB(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPRB_32l_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPRB WZR, [X2]", asm);
+        }
     }
 }

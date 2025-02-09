@@ -24,6 +24,23 @@ public class Arm64InstructionFactoryTests_STBFMINNML_Advsimd
     [TestMethod]
     public void Test_STBFMINNML_16_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STBFMINNML(H0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STBFMINNML_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STBFMINNML, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STBFMINNML H0, [X2]", asm);
+        }
+        
+        {
+            var raw = STBFMINNML(H31, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STBFMINNML_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STBFMINNML, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STBFMINNML H31, [X2]", asm);
+        }
     }
 }

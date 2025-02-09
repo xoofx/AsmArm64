@@ -24,7 +24,24 @@ public class Arm64InstructionFactoryTests_STUR_Fpsimd
     [TestMethod]
     public void Test_STUR_b_ldst_unscaled_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STUR(B0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUR_b_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUR B0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = STUR(B31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUR_b_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUR B31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +50,24 @@ public class Arm64InstructionFactoryTests_STUR_Fpsimd
     [TestMethod]
     public void Test_STUR_h_ldst_unscaled_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STUR(H0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUR_h_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUR H0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = STUR(H31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUR_h_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUR H31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +76,24 @@ public class Arm64InstructionFactoryTests_STUR_Fpsimd
     [TestMethod]
     public void Test_STUR_s_ldst_unscaled_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STUR(S0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUR_s_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUR S0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = STUR(S31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUR_s_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUR S31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -51,7 +102,24 @@ public class Arm64InstructionFactoryTests_STUR_Fpsimd
     [TestMethod]
     public void Test_STUR_d_ldst_unscaled_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STUR(D0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUR_d_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUR D0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = STUR(D31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUR_d_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUR D31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -60,6 +128,23 @@ public class Arm64InstructionFactoryTests_STUR_Fpsimd
     [TestMethod]
     public void Test_STUR_q_ldst_unscaled_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STUR(Q0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUR_q_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUR Q0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = STUR(Q31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUR_q_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUR Q31, [X2, #5]", asm);
+        }
     }
 }

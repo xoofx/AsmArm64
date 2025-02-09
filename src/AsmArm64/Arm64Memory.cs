@@ -171,7 +171,7 @@ public readonly record struct Arm64MemoryAccessorAny : IArm64MemoryAccessor
                     destination[written + 2] = '#';
                     written += 3;
 
-                    if (!Immediate.TryFormat(destination.Slice(written), out var immediateWritten, format, provider))
+                    if (!Immediate.TryFormat(destination.Slice(written), out var immediateWritten, "G", provider))
                     {
                         charsWritten = 0;
                         return false;

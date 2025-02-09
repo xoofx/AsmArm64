@@ -24,7 +24,87 @@ public class Arm64InstructionFactoryTests_LDUMAXAL_General
     [TestMethod]
     public void Test_LDUMAXAL_32_memop_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDUMAXAL(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL W0, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL W15, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL WZR, WZR, [X3]", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +113,86 @@ public class Arm64InstructionFactoryTests_LDUMAXAL_General
     [TestMethod]
     public void Test_LDUMAXAL_64_memop_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDUMAXAL(X0, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL X0, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(X15, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL X15, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(XZR, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL XZR, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(X0, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL X0, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(X15, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL X15, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(XZR, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL XZR, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(X0, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL X0, XZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(X15, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL X15, XZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDUMAXAL(XZR, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUMAXAL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUMAXAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUMAXAL XZR, XZR, [X3]", asm);
+        }
     }
 }

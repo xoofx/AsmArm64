@@ -24,6 +24,86 @@ public class Arm64InstructionFactoryTests_CASPAT_General
     [TestMethod]
     public void Test_CASPAT_cp64_comswappr_unpriv_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CASPAT(X0, X1, X2, X3, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAT_cp64_comswappr_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAT X0, X1, X2, X3, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAT(X15, X16, X2, X3, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAT_cp64_comswappr_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAT X15, X16, X2, X3, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAT(XZR, X0, X2, X3, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAT_cp64_comswappr_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAT XZR, X0, X2, X3, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAT(X0, X1, X17, X18, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAT_cp64_comswappr_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAT X0, X1, X17, X18, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAT(X15, X16, X17, X18, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAT_cp64_comswappr_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAT X15, X16, X17, X18, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAT(XZR, X0, X17, X18, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAT_cp64_comswappr_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAT XZR, X0, X17, X18, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAT(X0, X1, XZR, X0, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAT_cp64_comswappr_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAT X0, X1, XZR, X0, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAT(X15, X16, XZR, X0, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAT_cp64_comswappr_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAT X15, X16, XZR, X0, [X5]", asm);
+        }
+        
+        {
+            var raw = CASPAT(XZR, X0, XZR, X0, _[X5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASPAT_cp64_comswappr_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASPAT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASPAT XZR, X0, XZR, X0, [X5]", asm);
+        }
     }
 }

@@ -698,6 +698,8 @@ partial class Arm64Processor
         };
         var fieldSetsList = info.BitFieldSet;
 
+        var nonBits = new List<byte>();
+
         var columns = elt.Descendants("c");
         foreach (var column in columns)
         {
@@ -759,8 +761,14 @@ partial class Arm64Processor
                         fieldSetsList.Add(BitKind.One);
                         break;
                     case 'x':
+                        fieldSetsList.Add(BitKind.NotSet);
+                        break;
                     case 'Z':
+                        nonBits.Add(0);
+                        fieldSetsList.Add(BitKind.NotSet);
+                        break;
                     case 'N':
+                        nonBits.Add(1);
                         fieldSetsList.Add(BitKind.NotSet);
                         break;
                     default:
@@ -777,6 +785,36 @@ partial class Arm64Processor
             }
         }
 
+        if (nonBits.Count > 0)
+        {
+            info.OriginalCondition = $"!= {string.Concat(nonBits)}";
+            if (nonBits.All(x => x == 1))
+            {
+                info.Condition = BitRangeCondition.AllNonOne;
+            }
+            else if (nonBits.Count == 3)
+            {
+                Debug.Assert(nonBits[0] == 0);
+                Debug.Assert(nonBits[1] == 1);
+                Debug.Assert(nonBits[2] == 1);
+                info.Condition = BitRangeCondition.AllNon011;
+
+            }
+            else if (nonBits.Count == 6)
+            {
+                Debug.Assert(nonBits[0] == 0);
+                Debug.Assert(nonBits[1] == 1);
+                Debug.Assert(nonBits[2] == 1);
+                Debug.Assert(nonBits[3] == 1);
+                Debug.Assert(nonBits[4] == 1);
+                Debug.Assert(nonBits[5] == 1);
+                info.Condition = BitRangeCondition.AllNon011111;
+            }
+            else
+            {
+                throw new InvalidOperationException($"Invalid non-bits value {string.Join(", ", nonBits)}");
+            }
+        }
 
         return info;
     }

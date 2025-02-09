@@ -47,11 +47,15 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
 
         if (memoryEncodingKind == Arm64MemoryEncodingKind.BaseRegister)
         {
-            _accessor = new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterXOrSP>(baseRegister));
+            var v = (byte)(descriptor >> 24);
+            var isPreIncrement = (v & 0x80) != 0;
+            _accessor = new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterXOrSP>(baseRegister), isPreIncrement);
         }
         else if (memoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterXn)
         {
-            _accessor = new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterX>(baseRegister));
+            var v = (byte)(descriptor >> 24);
+            var isPreIncrement = (v & 0x80) != 0;
+            _accessor = new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterX>(baseRegister), isPreIncrement);
         }
         else if (memoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate || memoryEncodingKind == Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional)
         {

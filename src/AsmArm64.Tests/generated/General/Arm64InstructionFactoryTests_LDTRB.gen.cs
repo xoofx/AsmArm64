@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_LDTRB_General
     [TestMethod]
     public void Test_LDTRB_32_ldst_unpriv_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDTRB(W0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDTRB_32_ldst_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDTRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDTRB W0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDTRB(W15, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDTRB_32_ldst_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDTRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDTRB W15, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDTRB(WZR, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDTRB_32_ldst_unpriv, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDTRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDTRB WZR, [X2, #5]", asm);
+        }
     }
 }

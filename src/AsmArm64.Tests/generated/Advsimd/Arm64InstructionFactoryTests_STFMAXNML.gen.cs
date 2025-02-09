@@ -24,7 +24,24 @@ public class Arm64InstructionFactoryTests_STFMAXNML_Advsimd
     [TestMethod]
     public void Test_STFMAXNML_16_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STFMAXNML(H0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMAXNML_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMAXNML, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMAXNML H0, [X2]", asm);
+        }
+        
+        {
+            var raw = STFMAXNML(H31, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMAXNML_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMAXNML, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMAXNML H31, [X2]", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +50,24 @@ public class Arm64InstructionFactoryTests_STFMAXNML_Advsimd
     [TestMethod]
     public void Test_STFMAXNML_32_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STFMAXNML(S0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMAXNML_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMAXNML, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMAXNML S0, [X2]", asm);
+        }
+        
+        {
+            var raw = STFMAXNML(S31, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMAXNML_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMAXNML, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMAXNML S31, [X2]", asm);
+        }
     }
     
     /// <summary>
@@ -42,6 +76,23 @@ public class Arm64InstructionFactoryTests_STFMAXNML_Advsimd
     [TestMethod]
     public void Test_STFMAXNML_64_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STFMAXNML(D0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMAXNML_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMAXNML, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMAXNML D0, [X2]", asm);
+        }
+        
+        {
+            var raw = STFMAXNML(D31, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMAXNML_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMAXNML, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMAXNML D31, [X2]", asm);
+        }
     }
 }

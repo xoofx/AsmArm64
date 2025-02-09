@@ -24,7 +24,87 @@ public class Arm64InstructionFactoryTests_LDIAPP_General
     [TestMethod]
     public void Test_LDIAPP_32le_ldiappstilp_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDIAPP(W0, W1, _[X3], 8);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32le_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W0, W1, [X3], #8", asm);
+        }
+        
+        {
+            var raw = LDIAPP(W15, W1, _[X3], 8);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32le_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W15, W1, [X3], #8", asm);
+        }
+        
+        {
+            var raw = LDIAPP(WZR, W1, _[X3], 8);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32le_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP WZR, W1, [X3], #8", asm);
+        }
+        
+        {
+            var raw = LDIAPP(W0, W16, _[X3], 8);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32le_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W0, W16, [X3], #8", asm);
+        }
+        
+        {
+            var raw = LDIAPP(W15, W16, _[X3], 8);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32le_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W15, W16, [X3], #8", asm);
+        }
+        
+        {
+            var raw = LDIAPP(WZR, W16, _[X3], 8);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32le_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP WZR, W16, [X3], #8", asm);
+        }
+        
+        {
+            var raw = LDIAPP(W0, WZR, _[X3], 8);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32le_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W0, WZR, [X3], #8", asm);
+        }
+        
+        {
+            var raw = LDIAPP(W15, WZR, _[X3], 8);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32le_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W15, WZR, [X3], #8", asm);
+        }
+        
+        {
+            var raw = LDIAPP(WZR, WZR, _[X3], 8);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32le_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP WZR, WZR, [X3], #8", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +113,87 @@ public class Arm64InstructionFactoryTests_LDIAPP_General
     [TestMethod]
     public void Test_LDIAPP_32l_ldiappstilp_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDIAPP(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W0, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP W15, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_32l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP WZR, WZR, [X3]", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +202,87 @@ public class Arm64InstructionFactoryTests_LDIAPP_General
     [TestMethod]
     public void Test_LDIAPP_64ls_ldiappstilp_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDIAPP(X0, X1, _[X3], 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64ls_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X0, X1, [X3], #16", asm);
+        }
+        
+        {
+            var raw = LDIAPP(X15, X1, _[X3], 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64ls_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X15, X1, [X3], #16", asm);
+        }
+        
+        {
+            var raw = LDIAPP(XZR, X1, _[X3], 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64ls_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP XZR, X1, [X3], #16", asm);
+        }
+        
+        {
+            var raw = LDIAPP(X0, X16, _[X3], 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64ls_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X0, X16, [X3], #16", asm);
+        }
+        
+        {
+            var raw = LDIAPP(X15, X16, _[X3], 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64ls_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X15, X16, [X3], #16", asm);
+        }
+        
+        {
+            var raw = LDIAPP(XZR, X16, _[X3], 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64ls_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP XZR, X16, [X3], #16", asm);
+        }
+        
+        {
+            var raw = LDIAPP(X0, XZR, _[X3], 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64ls_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X0, XZR, [X3], #16", asm);
+        }
+        
+        {
+            var raw = LDIAPP(X15, XZR, _[X3], 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64ls_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X15, XZR, [X3], #16", asm);
+        }
+        
+        {
+            var raw = LDIAPP(XZR, XZR, _[X3], 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64ls_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP XZR, XZR, [X3], #16", asm);
+        }
     }
     
     /// <summary>
@@ -51,6 +291,86 @@ public class Arm64InstructionFactoryTests_LDIAPP_General
     [TestMethod]
     public void Test_LDIAPP_64l_ldiappstilp_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDIAPP(X0, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X0, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(X15, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X15, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(XZR, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP XZR, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(X0, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X0, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(X15, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X15, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(XZR, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP XZR, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(X0, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X0, XZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(X15, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP X15, XZR, [X3]", asm);
+        }
+        
+        {
+            var raw = LDIAPP(XZR, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDIAPP_64l_ldiappstilp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDIAPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDIAPP XZR, XZR, [X3]", asm);
+        }
     }
 }

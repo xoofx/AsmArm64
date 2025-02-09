@@ -24,7 +24,24 @@ public class Arm64InstructionFactoryTests_LDUR_Fpsimd
     [TestMethod]
     public void Test_LDUR_b_ldst_unscaled_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDUR(B0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUR_b_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUR B0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDUR(B31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUR_b_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUR B31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +50,24 @@ public class Arm64InstructionFactoryTests_LDUR_Fpsimd
     [TestMethod]
     public void Test_LDUR_h_ldst_unscaled_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDUR(H0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUR_h_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUR H0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDUR(H31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUR_h_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUR H31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +76,24 @@ public class Arm64InstructionFactoryTests_LDUR_Fpsimd
     [TestMethod]
     public void Test_LDUR_s_ldst_unscaled_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDUR(S0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUR_s_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUR S0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDUR(S31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUR_s_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUR S31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -51,7 +102,24 @@ public class Arm64InstructionFactoryTests_LDUR_Fpsimd
     [TestMethod]
     public void Test_LDUR_d_ldst_unscaled_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDUR(D0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUR_d_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUR D0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDUR(D31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUR_d_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUR D31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -60,6 +128,23 @@ public class Arm64InstructionFactoryTests_LDUR_Fpsimd
     [TestMethod]
     public void Test_LDUR_q_ldst_unscaled_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDUR(Q0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUR_q_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUR Q0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDUR(Q31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDUR_q_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDUR Q31, [X2, #5]", asm);
+        }
     }
 }

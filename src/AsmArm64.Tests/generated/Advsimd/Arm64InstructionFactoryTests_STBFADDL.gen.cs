@@ -24,6 +24,23 @@ public class Arm64InstructionFactoryTests_STBFADDL_Advsimd
     [TestMethod]
     public void Test_STBFADDL_16_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STBFADDL(H0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STBFADDL_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STBFADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STBFADDL H0, [X2]", asm);
+        }
+        
+        {
+            var raw = STBFADDL(H31, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STBFADDL_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STBFADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STBFADDL H31, [X2]", asm);
+        }
     }
 }

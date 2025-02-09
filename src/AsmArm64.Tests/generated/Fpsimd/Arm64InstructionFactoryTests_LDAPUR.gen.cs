@@ -23,7 +23,24 @@ public class Arm64InstructionFactoryTests_LDAPUR_Fpsimd
     [TestMethod]
     public void Test_LDAPUR_b_ldapstl_simd_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAPUR(B0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPUR_b_ldapstl_simd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPUR B0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDAPUR(B31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPUR_b_ldapstl_simd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPUR B31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -32,7 +49,24 @@ public class Arm64InstructionFactoryTests_LDAPUR_Fpsimd
     [TestMethod]
     public void Test_LDAPUR_h_ldapstl_simd_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAPUR(H0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPUR_h_ldapstl_simd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPUR H0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDAPUR(H31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPUR_h_ldapstl_simd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPUR H31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -41,7 +75,24 @@ public class Arm64InstructionFactoryTests_LDAPUR_Fpsimd
     [TestMethod]
     public void Test_LDAPUR_s_ldapstl_simd_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAPUR(S0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPUR_s_ldapstl_simd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPUR S0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDAPUR(S31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPUR_s_ldapstl_simd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPUR S31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -50,7 +101,24 @@ public class Arm64InstructionFactoryTests_LDAPUR_Fpsimd
     [TestMethod]
     public void Test_LDAPUR_d_ldapstl_simd_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAPUR(D0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPUR_d_ldapstl_simd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPUR D0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDAPUR(D31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPUR_d_ldapstl_simd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPUR D31, [X2, #5]", asm);
+        }
     }
     
     /// <summary>
@@ -59,6 +127,23 @@ public class Arm64InstructionFactoryTests_LDAPUR_Fpsimd
     [TestMethod]
     public void Test_LDAPUR_q_ldapstl_simd_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAPUR(Q0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPUR_q_ldapstl_simd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPUR Q0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDAPUR(Q31, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAPUR_q_ldapstl_simd, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAPUR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAPUR Q31, [X2, #5]", asm);
+        }
     }
 }

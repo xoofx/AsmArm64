@@ -24,7 +24,24 @@ public class Arm64InstructionFactoryTests_STFMIN_Advsimd
     [TestMethod]
     public void Test_STFMIN_16_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STFMIN(H0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMIN_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMIN H0, [X2]", asm);
+        }
+        
+        {
+            var raw = STFMIN(H31, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMIN_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMIN H31, [X2]", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +50,24 @@ public class Arm64InstructionFactoryTests_STFMIN_Advsimd
     [TestMethod]
     public void Test_STFMIN_32_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STFMIN(S0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMIN_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMIN S0, [X2]", asm);
+        }
+        
+        {
+            var raw = STFMIN(S31, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMIN_32, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMIN S31, [X2]", asm);
+        }
     }
     
     /// <summary>
@@ -42,6 +76,23 @@ public class Arm64InstructionFactoryTests_STFMIN_Advsimd
     [TestMethod]
     public void Test_STFMIN_64_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STFMIN(D0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMIN_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMIN D0, [X2]", asm);
+        }
+        
+        {
+            var raw = STFMIN(D31, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STFMIN_64, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STFMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STFMIN D31, [X2]", asm);
+        }
     }
 }

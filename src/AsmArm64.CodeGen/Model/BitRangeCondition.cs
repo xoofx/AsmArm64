@@ -12,6 +12,8 @@ enum BitRangeCondition
     Unknown,
     AllNonZero,
     AllNonOne,
+    AllNon011,
+    AllNon011111,
     AllNon111x,
     AllNon11xxx
 }

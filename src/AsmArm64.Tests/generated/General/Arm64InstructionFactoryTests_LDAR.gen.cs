@@ -24,7 +24,33 @@ public class Arm64InstructionFactoryTests_LDAR_General
     [TestMethod]
     public void Test_LDAR_lr32_ldstord_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAR(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAR_lr32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAR W0, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAR(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAR_lr32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAR W15, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAR(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAR_lr32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAR WZR, [X2]", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +59,32 @@ public class Arm64InstructionFactoryTests_LDAR_General
     [TestMethod]
     public void Test_LDAR_lr64_ldstord_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAR(X0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAR_lr64_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAR X0, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAR(X15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAR_lr64_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAR X15, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAR(XZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAR_lr64_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAR XZR, [X2]", asm);
+        }
     }
 }

@@ -24,7 +24,33 @@ public class Arm64InstructionFactoryTests_LDAXR_General
     [TestMethod]
     public void Test_LDAXR_lr32_ldstexclr_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAXR(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAXR_lr32_ldstexclr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAXR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAXR W0, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAXR(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAXR_lr32_ldstexclr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAXR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAXR W15, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAXR(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAXR_lr32_ldstexclr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAXR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAXR WZR, [X2]", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +59,32 @@ public class Arm64InstructionFactoryTests_LDAXR_General
     [TestMethod]
     public void Test_LDAXR_lr64_ldstexclr_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDAXR(X0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAXR_lr64_ldstexclr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAXR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAXR X0, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAXR(X15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAXR_lr64_ldstexclr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAXR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAXR X15, [X2]", asm);
+        }
+        
+        {
+            var raw = LDAXR(XZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDAXR_lr64_ldstexclr, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDAXR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDAXR XZR, [X2]", asm);
+        }
     }
 }

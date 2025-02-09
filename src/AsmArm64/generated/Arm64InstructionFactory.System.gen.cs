@@ -506,7 +506,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xD5700000U; // Encoding for: MRRS_rs_systemmovepr
         raw |= (uint)Xt.Index;
-        raw = Xt_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(Xt_1), $"Invalid Register. Index `{Xt_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (Xt_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(Xt_1), $"Invalid Register. Index `{Xt_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         raw |= (uint)systemreg.Value << 5;
         return raw;
     }
@@ -618,7 +618,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0xD5500000U; // Encoding for: MSRR_sr_systemmovepr
         raw |= (uint)systemreg.Value << 5;
         raw |= (uint)Xt.Index;
-        raw = Xt_1.Index == Xt.Index + 1 ? 0U : throw new ArgumentOutOfRangeException(nameof(Xt_1), $"Invalid Register. Index `{Xt_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
+        if (Xt_1.Index != ((Xt.Index + 1) & 0x1F)) throw new ArgumentOutOfRangeException(nameof(Xt_1), $"Invalid Register. Index `{Xt_1.Index}` must be + 1 from operand Xt with index `{Xt.Index}`");
         return raw;
     }
     /// <summary>

@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_LDURB_General
     [TestMethod]
     public void Test_LDURB_32_ldst_unscaled_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDURB(W0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDURB_32_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDURB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDURB W0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDURB(W15, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDURB_32_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDURB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDURB W15, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDURB(WZR, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDURB_32_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDURB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDURB WZR, [X2, #5]", asm);
+        }
     }
 }

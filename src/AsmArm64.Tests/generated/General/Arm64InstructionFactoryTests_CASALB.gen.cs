@@ -24,6 +24,86 @@ public class Arm64InstructionFactoryTests_CASALB_General
     [TestMethod]
     public void Test_CASALB_c32_comswap_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CASALB(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASALB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASALB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASALB W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = CASALB(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASALB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASALB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASALB W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = CASALB(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASALB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASALB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASALB WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = CASALB(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASALB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASALB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASALB W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = CASALB(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASALB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASALB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASALB W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = CASALB(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASALB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASALB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASALB WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = CASALB(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASALB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASALB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASALB W0, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = CASALB(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASALB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASALB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASALB W15, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = CASALB(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CASALB_c32_comswap, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CASALB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CASALB WZR, WZR, [X3]", asm);
+        }
     }
 }

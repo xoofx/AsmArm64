@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_LDURH_General
     [TestMethod]
     public void Test_LDURH_32_ldst_unscaled_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDURH(W0, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDURH_32_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDURH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDURH W0, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDURH(W15, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDURH_32_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDURH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDURH W15, [X2, #5]", asm);
+        }
+        
+        {
+            var raw = LDURH(WZR, _[X2, 5]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDURH_32_ldst_unscaled, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDURH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDURH WZR, [X2, #5]", asm);
+        }
     }
 }

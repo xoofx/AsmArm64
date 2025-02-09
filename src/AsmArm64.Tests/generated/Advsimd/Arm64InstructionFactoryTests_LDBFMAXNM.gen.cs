@@ -24,6 +24,41 @@ public class Arm64InstructionFactoryTests_LDBFMAXNM_Advsimd
     [TestMethod]
     public void Test_LDBFMAXNM_16_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDBFMAXNM(H0, H1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDBFMAXNM_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDBFMAXNM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDBFMAXNM H0, H1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDBFMAXNM(H31, H1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDBFMAXNM_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDBFMAXNM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDBFMAXNM H31, H1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDBFMAXNM(H0, H31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDBFMAXNM_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDBFMAXNM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDBFMAXNM H0, H31, [X3]", asm);
+        }
+        
+        {
+            var raw = LDBFMAXNM(H31, H31, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDBFMAXNM_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDBFMAXNM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDBFMAXNM H31, H31, [X3]", asm);
+        }
     }
 }

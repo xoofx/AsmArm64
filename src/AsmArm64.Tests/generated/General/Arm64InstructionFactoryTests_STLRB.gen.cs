@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_STLRB_General
     [TestMethod]
     public void Test_STLRB_sl32_ldstord_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STLRB(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STLRB_sl32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STLRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STLRB W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STLRB(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STLRB_sl32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STLRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STLRB W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STLRB(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STLRB_sl32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STLRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STLRB WZR, [X2]", asm);
+        }
     }
 }

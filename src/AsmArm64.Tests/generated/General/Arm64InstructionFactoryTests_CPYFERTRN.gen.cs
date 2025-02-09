@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_CPYFERTRN_General
     [TestMethod]
     public void Test_CPYFERTRN_cpy_memcms_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CPYFERTRN(_[X1].Pre, _[X2].Pre, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CPYFERTRN_cpy_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CPYFERTRN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CPYFERTRN [X1]!, [X2]!, X2", asm);
+        }
+        
+        {
+            var raw = CPYFERTRN(_[X1].Pre, _[X2].Pre, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CPYFERTRN_cpy_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CPYFERTRN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CPYFERTRN [X1]!, [X2]!, X17", asm);
+        }
+        
+        {
+            var raw = CPYFERTRN(_[X1].Pre, _[X2].Pre, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CPYFERTRN_cpy_memcms, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CPYFERTRN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CPYFERTRN [X1]!, [X2]!, XZR", asm);
+        }
     }
 }

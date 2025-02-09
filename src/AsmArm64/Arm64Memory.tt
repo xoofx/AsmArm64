@@ -100,6 +100,12 @@ public readonly record struct <#= type #> : IArm64MemoryAccessor
     public PreIncrement Pre => new(Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterXOrSP>(_accessor.BaseRegister), Unsafe.BitCast<Arm64RegisterAny, Arm64RegisterW>(_accessor.IndexRegister), _accessor.Extend);
 <# } #>
 
+<# if (type == "Arm64BaseXMemoryAccessor") { #>
+    /// <summary>
+    /// Implicit conversion from <see cref="Arm64BaseXMemoryAccessor"/> to <see cref="Arm64BaseMemoryAccessor"/>.
+    /// </summary>
+    public static implicit operator Arm64BaseMemoryAccessor(Arm64BaseXMemoryAccessor accessor) => Unsafe.BitCast<Arm64BaseXMemoryAccessor, Arm64BaseMemoryAccessor>(accessor);
+<# } #>
     /// <summary>
     /// Represents a memory accessor with a pre-increment.
     /// </summary>

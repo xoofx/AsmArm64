@@ -24,6 +24,86 @@ public class Arm64InstructionFactoryTests_SWPAB_General
     [TestMethod]
     public void Test_SWPAB_32_memop_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SWPAB(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SWPAB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SWPAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SWPAB W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = SWPAB(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SWPAB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SWPAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SWPAB W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = SWPAB(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SWPAB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SWPAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SWPAB WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = SWPAB(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SWPAB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SWPAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SWPAB W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = SWPAB(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SWPAB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SWPAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SWPAB W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = SWPAB(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SWPAB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SWPAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SWPAB WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = SWPAB(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SWPAB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SWPAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SWPAB W0, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = SWPAB(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SWPAB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SWPAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SWPAB W15, WZR, [X3]", asm);
+        }
+        
+        {
+            var raw = SWPAB(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SWPAB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SWPAB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SWPAB WZR, WZR, [X3]", asm);
+        }
     }
 }

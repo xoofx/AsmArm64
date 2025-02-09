@@ -24,6 +24,23 @@ public class Arm64InstructionFactoryTests_STBFADD_Advsimd
     [TestMethod]
     public void Test_STBFADD_16_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = STBFADD(H0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STBFADD_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STBFADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STBFADD H0, [X2]", asm);
+        }
+        
+        {
+            var raw = STBFADD(H31, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STBFADD_16, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STBFADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STBFADD H31, [X2]", asm);
+        }
     }
 }

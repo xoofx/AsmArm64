@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_LDARH_General
     [TestMethod]
     public void Test_LDARH_lr32_ldstord_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = LDARH(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDARH_lr32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDARH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDARH W0, [X2]", asm);
+        }
+        
+        {
+            var raw = LDARH(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDARH_lr32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDARH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDARH W15, [X2]", asm);
+        }
+        
+        {
+            var raw = LDARH(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDARH_lr32_ldstord, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDARH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDARH WZR, [X2]", asm);
+        }
     }
 }

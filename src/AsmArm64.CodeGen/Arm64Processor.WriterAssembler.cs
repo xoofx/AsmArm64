@@ -187,10 +187,18 @@ partial class Arm64Processor
         if (v1.Count == 2)
         {
             variations.AddRange(v1);
+            foreach (var v in v1)
+            {
+                v.ElseVariation = v2[0];
+            }
         }
         else
         {
             variations.AddRange(v2);
+            foreach (var v in v2)
+            {
+                v.ElseVariation = v1[0];
+            }
         }
     }
 
@@ -474,7 +482,7 @@ partial class Arm64Processor
                 GetSystemRegisterVariation(instruction, (SystemRegisterOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Memory:
-                GetMemoryOperandVariation(instruction, (MemoryOperandDescriptor)descriptor, operandVariations);
+                GetMemoryOperandVariation(operandIndex, instruction, (MemoryOperandDescriptor)descriptor, operandVariations);
                 break;
             case Arm64OperandKind.Immediate:
                 GetImmediateVariation(instruction, (ImmediateOperandDescriptor)descriptor, operandVariations);
@@ -548,7 +556,7 @@ partial class Arm64Processor
         operandVariations.Add(operandVariation);
     }
     
-    private void GetMemoryOperandVariation(Instruction instruction, MemoryOperandDescriptor descriptor, List<OperandVariation> operandVariations)
+    private void GetMemoryOperandVariation(int operandIndex, Instruction instruction, MemoryOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
         var operandTypePair = GetMemoryOperandType((MemoryOperandDescriptor)descriptor);
 
@@ -567,6 +575,8 @@ partial class Arm64Processor
         // We have a register with an immediate or with a register + extend/LSL
         var bitSize = descriptor.IndexRegisterOrImmediate.Select(x => x.Width).Sum();
 
+        var testArguments = new List<MemoryTestArgument>();
+
         bool hasLslOrExtend = false;
         switch (descriptor.MemoryEncodingKind)
         {
@@ -579,6 +589,11 @@ partial class Arm64Processor
                     operandValue = GenerateImmediateValueEncoding(descriptor.ImmediateValueEncodingKind, operandValue);
                 }
 
+                testArguments.Add(new(new RegisterTestArgument("X", 1 + operandIndex), BuildTestImmediateValue(descriptor.ImmediateValueEncodingKind, 5))
+                {
+                    PreIncrement = descriptor.IsPreIncrement
+                });
+
                 GenerateBitRangeEncodingFromValue(operandValue, "immediate", bitSize, descriptor.IndexRegisterOrImmediate, operandVariation.WriteEncodings);
                 break;
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtendOptional:
@@ -586,10 +601,29 @@ partial class Arm64Processor
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
                 GenerateBitRangeEncodingFromValue($"{operandVariation.OperandName}.IndexRegister.Index", "index register", bitSize, descriptor.IndexRegisterOrImmediate, operandVariation.WriteEncodings, bitSize == 5 ? bitSize : 0);
                 hasLslOrExtend = true;
+
+                var extendValue = descriptor.ExtendKind switch
+                {
+                    Arm64MemoryExtendEncodingKind.Shift0 => 0,
+                    Arm64MemoryExtendEncodingKind.Shift1 => 1,
+                    Arm64MemoryExtendEncodingKind.Shift2 => 2,
+                    Arm64MemoryExtendEncodingKind.Shift3 => 3,
+                    Arm64MemoryExtendEncodingKind.Shift4 => 4,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+
+                testArguments.Add(new(new RegisterTestArgument("X", 1 + operandIndex), new RegisterTestArgument("X", 2 + operandIndex), "LSL", extendValue)
+                {
+                    PreIncrement = descriptor.IsPreIncrement
+                });
                 break;
             case Arm64MemoryEncodingKind.BaseRegisterXn:
             case Arm64MemoryEncodingKind.BaseRegister:
                 // Nothing to do for these
+                testArguments.Add(new(new RegisterTestArgument("X", 1 + operandIndex))
+                {
+                    PreIncrement = descriptor.IsPreIncrement
+                });
                 break;
             case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediate:
             case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional:
@@ -597,9 +631,17 @@ partial class Arm64Processor
                 if (descriptor.FixedValue == 0)
                 {
                     operandVariation.OperandType = descriptor.IsPreIncrement ? "Arm64BaseMemoryAccessor.PreIncrement" : "Arm64BaseMemoryAccessor";
+                    testArguments.Add(new(new RegisterTestArgument("X", 1 + operandIndex))
+                    {
+                        PreIncrement = descriptor.IsPreIncrement
+                    });
                 }
                 else
                 {
+                    testArguments.Add(new(new RegisterTestArgument("X", 1 + operandIndex), descriptor.FixedValue)
+                    {
+                        PreIncrement = descriptor.IsPreIncrement
+                    });
                     operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) =>
                     {
                         w.WriteLine($"if ({operand.OperandName}.Immediate != {descriptor.FixedValue}) throw new {nameof(ArgumentOutOfRangeException)}(nameof({operand.OperandName}), $\"Invalid immediate value '{{{operand.OperandName}.Immediate}}'. Expecting the fixed value `{descriptor.FixedValue}`\");");
@@ -609,6 +651,8 @@ partial class Arm64Processor
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
+        operandVariation.TestArguments.AddRange(testArguments);
         operandVariations.Add(operandVariation);
 
         if (operandTypePair.IndexRegisterW is not null)
@@ -705,7 +749,7 @@ partial class Arm64Processor
                         w.Indent();
                         {
                             w.WriteLine($"{variable} |= 0x{(0b011U << 13):X8}U;");
-                            w.WriteLine($"if (!{operand.OperandName}.Extend.HasExplicitZeroAmount || {operand.OperandName}.Extend.Amount == 0)");
+                            w.WriteLine($"if (!{operand.OperandName}.Extend.HasExplicitZeroAmount && {operand.OperandName}.Extend.Amount == 0)");
                             w.OpenBraceBlock();
                             {
                                 w.WriteLine($"throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), $\"Unsupported extend `{{{operand.OperandName}.Extend}}`. A LSL extend is expecting an explicit amount.\");");
@@ -759,10 +803,10 @@ partial class Arm64Processor
                     Debug.Assert(descriptor.ExtendKind != Arm64MemoryExtendEncodingKind.None);
                     string expectedNonZeroValue = descriptor.ExtendKind switch
                     {
-                        Arm64MemoryExtendEncodingKind.Shift1 => "2",
-                        Arm64MemoryExtendEncodingKind.Shift2 => "4",
-                        Arm64MemoryExtendEncodingKind.Shift3 => "8",
-                        Arm64MemoryExtendEncodingKind.Shift4 => "16",
+                        Arm64MemoryExtendEncodingKind.Shift1 => "1",
+                        Arm64MemoryExtendEncodingKind.Shift2 => "2",
+                        Arm64MemoryExtendEncodingKind.Shift3 => "3",
+                        Arm64MemoryExtendEncodingKind.Shift4 => "4",
                         _ => throw new ArgumentOutOfRangeException(),
                     };
                     w.WriteLine($"0 => 0U,");
@@ -843,7 +887,7 @@ partial class Arm64Processor
         return operandValue;
     }
 
-    private static long BuildTestImmediateValue(Arm64ImmediateValueEncodingKind valueEncodingKind, int value)
+    private static int BuildTestImmediateValue(Arm64ImmediateValueEncodingKind valueEncodingKind, int value)
     {
         switch (valueEncodingKind)
         {
@@ -1532,7 +1576,10 @@ partial class Arm64Processor
             operandVariation.AcceptedBitValues.AddRange(registerVariation.AcceptedBitValues);
 
             // Add tests arguments
-            operandVariation.TestArguments.AddRange(registerVariation.TestArguments.OfType<RegisterTestArgument>().Select(x => new RegisterGroupTestArgument(x, descriptor.Count)));
+            operandVariation.TestArguments.AddRange(registerVariation.TestArguments.OfType<RegisterTestArgument>().Select(x => new RegisterGroupTestArgument(x, descriptor.Count)
+            {
+                Indexer = descriptor.IndexerExtract is not null ? 1 : null
+            }));
             
             operandVariation.WriteEncodings.AddRange(registerVariation.WriteEncodings);
             GenerateEncodingForExtract(instruction, descriptor.IndexerExtract, operandVariation, "ElementIndex", "element indexer");
@@ -1614,8 +1661,11 @@ partial class Arm64Processor
                     testArguments.Add(new("W", 1 + operandIndex));
                     testArguments.Add(new("X", 14 + operandIndex));
                     testArguments.Add(new("W", 14 + operandIndex));
-                    if (!register.IsOptional) testArguments.Add(new("X", 31));
-                    if (!register.IsOptional) testArguments.Add(new("W", 31));
+                    if (register.Condition != BitRangeCondition.AllNonOne)
+                    {
+                        if (!register.IsOptional) testArguments.Add(new("X", 31));
+                        if (!register.IsOptional) testArguments.Add(new("W", 31));
+                    }
                 }
                 else
                 {
@@ -1628,7 +1678,10 @@ partial class Arm64Processor
                     };
                     operandVariationX.AcceptedBitValues.AddRange(xOrWSelector.BitValues.Where(x => x.Text == "X"));
                     operandVariationX.TestArguments.Add(new RegisterTestArgument("X", 1 + operandIndex));
-                    operandVariationX.TestArguments.Add(new RegisterTestArgument("X", 31));
+                    if (register.Condition != BitRangeCondition.AllNonOne)
+                    {
+                        operandVariationX.TestArguments.Add(new RegisterTestArgument("X", 31));
+                    }
 
                     var encodingX = GetRegisterIndexEncoding(instruction, register, operandVariationX);
                     Debug.Assert(encodingX is not null);
@@ -1642,7 +1695,10 @@ partial class Arm64Processor
                         OperandType = "Arm64RegisterW",
                     };
                     operandVariationW.TestArguments.Add(new RegisterTestArgument("W", 1 + operandIndex));
-                    operandVariationW.TestArguments.Add(new RegisterTestArgument("W", 31));
+                    if (register.Condition != BitRangeCondition.AllNonOne)
+                    {
+                        operandVariationW.TestArguments.Add(new RegisterTestArgument("W", 31));
+                    }
                     operandVariationW.AcceptedBitValues.AddRange(xOrWSelector.BitValues.Where(x => x.Text == "W"));
 
                     var encodingW = GetRegisterIndexEncoding(instruction, register, operandVariationW);
@@ -1881,7 +1937,15 @@ partial class Arm64Processor
             OperandName = operandName,
             OperandType = baseType,
         };
-        opVar.TestArguments.AddRange(testArguments);
+
+        if (register.RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.Std5Plus1)
+        {
+            opVar.TestArguments.Add(new RegisterPlus1TestArgument());
+        }
+        else
+        {
+            opVar.TestArguments.AddRange(testArguments);
+        }
 
         var directIndexEncoding = GetRegisterIndexEncoding(instruction, register, opVar);
         if (directIndexEncoding is not null)
@@ -2077,7 +2141,7 @@ partial class Arm64Processor
                 return (w, variable, instr, op, opIndex) =>
                 {
                     var previousOp = instr.Operands[opIndex - 1];
-                    w.WriteLine($"{variable} = {op.OperandName}.Index == {previousOp.OperandName}.Index + 1 ? 0U : throw new {nameof(ArgumentOutOfRangeException)}(nameof({op.OperandName}), $\"Invalid Register. Index `{{{op.OperandName}.Index}}` must be + 1 from operand {previousOp.OperandName} with index `{{{previousOp.OperandName}.Index}}`\");");
+                    w.WriteLine($"if ({op.OperandName}.Index != (({previousOp.OperandName}.Index + 1) & 0x1F)) throw new {nameof(ArgumentOutOfRangeException)}(nameof({op.OperandName}), $\"Invalid Register. Index `{{{op.OperandName}.Index}}` must be + 1 from operand {previousOp.OperandName} with index `{{{previousOp.OperandName}.Index}}`\");");
                 };
             case Arm64RegisterIndexEncodingKind.BitMapExtract:
                 GenerateEncodingForExtract(instruction, register.RegisterIndexExtract, operandVariation, "Index", "register index");

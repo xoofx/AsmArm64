@@ -139,6 +139,55 @@ public interface IArm64ExtendKind
     }
 }
 
+partial class Arm64Factory
+{
+    /// <summary>
+    /// Creates a new <see cref="IArm64ExtendKind.UXTB"/> instance.
+    /// </summary>
+    public static IArm64ExtendKind.UXTB _UXTB => new();
+       
+    /// <summary>
+    /// Creates a new <see cref="IArm64ExtendKind.UXTH"/> instance.
+    /// </summary>
+    public static IArm64ExtendKind.UXTH _UXTH => new();
+       
+    /// <summary>
+    /// Creates a new <see cref="IArm64ExtendKind.UXTW"/> instance.
+    /// </summary>
+    public static IArm64ExtendKind.UXTW _UXTW => new();
+       
+    /// <summary>
+    /// Creates a new <see cref="IArm64ExtendKind.UXTX"/> instance.
+    /// </summary>
+    public static IArm64ExtendKind.UXTX _UXTX => new();
+       
+    /// <summary>
+    /// Creates a new <see cref="IArm64ExtendKind.SXTB"/> instance.
+    /// </summary>
+    public static IArm64ExtendKind.SXTB _SXTB => new();
+       
+    /// <summary>
+    /// Creates a new <see cref="IArm64ExtendKind.SXTH"/> instance.
+    /// </summary>
+    public static IArm64ExtendKind.SXTH _SXTH => new();
+       
+    /// <summary>
+    /// Creates a new <see cref="IArm64ExtendKind.SXTW"/> instance.
+    /// </summary>
+    public static IArm64ExtendKind.SXTW _SXTW => new();
+       
+    /// <summary>
+    /// Creates a new <see cref="IArm64ExtendKind.SXTX"/> instance.
+    /// </summary>
+    public static IArm64ExtendKind.SXTX _SXTX => new();
+       
+    /// <summary>
+    /// Creates a new <see cref="IArm64ExtendKind.LSL"/> instance.
+    /// </summary>
+    public static IArm64ExtendKind.LSL _LSL => new();
+       
+}
+
 // Extension methods for Arm64ExtendKind
 partial class Arm64Extensions
 {
@@ -159,15 +208,15 @@ partial class Arm64Extensions
     private static readonly string[] ExtendTextUpper =
     [
         "????",
-        "uxtb",
-        "uxth",
-        "uxtw",
-        "uxtx",
-        "sxtb",
-        "sxth",
-        "sxtw",
-        "sxtx",
-        "lsl",
+        "UXTB",
+        "UXTH",
+        "UXTW",
+        "UXTX",
+        "SXTB",
+        "SXTH",
+        "SXTW",
+        "SXTX",
+        "LSL",
     ];
     
     public static string ToText(this Arm64ExtendKind kind, bool upper = false) => upper ? ExtendTextUpper[(int)kind] : ExtendTextLower[(int)kind];

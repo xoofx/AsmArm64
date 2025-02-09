@@ -24,6 +24,86 @@ public class Arm64InstructionFactoryTests_RCWSCLRPAL_General
     [TestMethod]
     public void Test_RCWSCLRPAL_128_memop_128_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = RCWSCLRPAL(X0, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RCWSCLRPAL_128_memop_128, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RCWSCLRPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RCWSCLRPAL X0, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = RCWSCLRPAL(X15, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RCWSCLRPAL_128_memop_128, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RCWSCLRPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RCWSCLRPAL X15, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = RCWSCLRPAL(XZR, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RCWSCLRPAL_128_memop_128, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RCWSCLRPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RCWSCLRPAL XZR, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = RCWSCLRPAL(X0, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RCWSCLRPAL_128_memop_128, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RCWSCLRPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RCWSCLRPAL X0, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = RCWSCLRPAL(X15, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RCWSCLRPAL_128_memop_128, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RCWSCLRPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RCWSCLRPAL X15, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = RCWSCLRPAL(XZR, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RCWSCLRPAL_128_memop_128, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RCWSCLRPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RCWSCLRPAL XZR, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = RCWSCLRPAL(X0, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RCWSCLRPAL_128_memop_128, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RCWSCLRPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RCWSCLRPAL X0, XZR, [X3]", asm);
+        }
+        
+        {
+            var raw = RCWSCLRPAL(X15, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RCWSCLRPAL_128_memop_128, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RCWSCLRPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RCWSCLRPAL X15, XZR, [X3]", asm);
+        }
+        
+        {
+            var raw = RCWSCLRPAL(XZR, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RCWSCLRPAL_128_memop_128, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RCWSCLRPAL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RCWSCLRPAL XZR, XZR, [X3]", asm);
+        }
     }
 }
