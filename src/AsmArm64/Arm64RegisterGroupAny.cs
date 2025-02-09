@@ -158,3 +158,14 @@ public readonly record struct Arm64RegisterGroupAny : IArm64RegisterGroup
         return true;
     }
 }
+
+partial class Arm64Extensions
+{
+    public static Arm64RegisterGroup1<TReg> Group1<TReg>(this TReg reg) where TReg : struct, IArm64RegisterV => new(reg);
+
+    public static Arm64RegisterGroup2<TReg> Group2<TReg>(this TReg reg) where TReg : struct, IArm64RegisterV => new(reg);
+
+    public static Arm64RegisterGroup3<TReg> Group3<TReg>(this TReg reg) where TReg : struct, IArm64RegisterV => new(reg);
+
+    public static Arm64RegisterGroup4<TReg> Group4<TReg>(this TReg reg) where TReg : struct, IArm64RegisterV => new(reg);
+}

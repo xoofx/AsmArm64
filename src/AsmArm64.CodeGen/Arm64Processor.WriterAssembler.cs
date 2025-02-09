@@ -1531,8 +1531,9 @@ partial class Arm64Processor
             };
             operandVariation.AcceptedBitValues.AddRange(registerVariation.AcceptedBitValues);
 
-            // TODO: test variations
-
+            // Add tests arguments
+            operandVariation.TestArguments.AddRange(registerVariation.TestArguments.OfType<RegisterTestArgument>().Select(x => new RegisterGroupTestArgument(x, descriptor.Count)));
+            
             operandVariation.WriteEncodings.AddRange(registerVariation.WriteEncodings);
             GenerateEncodingForExtract(instruction, descriptor.IndexerExtract, operandVariation, "ElementIndex", "element indexer");
 

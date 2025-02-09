@@ -3,6 +3,7 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
+using System.Text;
 using AsmArm64.CodeGen.Model;
 
 namespace AsmArm64.CodeGen;
@@ -221,6 +222,50 @@ partial class Arm64Processor
         }
     }
 
+
+    private record RegisterGroupTestArgument : TestArgument
+    {
+        public RegisterGroupTestArgument(RegisterTestArgument baseRegister, int count)
+        {
+            BaseRegister = baseRegister;
+            Count = count;
+        }
+
+        public RegisterTestArgument BaseRegister { get; }
+
+        public int Count { get; }
+
+        public override string CSharp => GetAsText(false);
+
+        public override string Asm => GetAsText(true);
+
+        private string GetAsText(bool isAsm)
+        {
+            if (isAsm)
+            {
+                var builder = new StringBuilder();
+                builder.Append("{ ");
+                for (var i = 0; i < Count; i++)
+                {
+                    if (i > 0)
+                    {
+                        builder.Append(", ");
+                    }
+
+                    var reg = new RegisterTestArgument(BaseRegister.BaseRegisterName, BaseRegister.Index + i, BaseRegister.VKind);
+                    builder.Append(reg.Asm);
+                }
+
+                builder.Append(" }");
+                return builder.ToString();
+            }
+            else
+            {
+                return $"{BaseRegister.CSharp}.Group{Count}()";
+            }
+        }
+    }
+    
     private record RegisterTestArgument : TestArgument
     {
         public RegisterTestArgument(string baseRegisterName, int index, int? indexer = null)
