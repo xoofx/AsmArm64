@@ -842,7 +842,48 @@ partial class Arm64Processor
 
         return operandValue;
     }
-    
+
+    private static long BuildTestImmediateValue(Arm64ImmediateValueEncodingKind valueEncodingKind, int value)
+    {
+        switch (valueEncodingKind)
+        {
+            case Arm64ImmediateValueEncodingKind.ValueMulBy2:
+                return value * 2;
+            case Arm64ImmediateValueEncodingKind.ValueMulBy4:
+                return value * 4;
+            case Arm64ImmediateValueEncodingKind.ValueMulBy8:
+                return value * 8;
+            case Arm64ImmediateValueEncodingKind.ValueMulBy16:
+                return value * 16;
+            //case Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1:
+            //    // encoded in imms:immr (reversed from the order in the instruction)
+            //    return ((value >> 6) & 0b111_1111) - (value & 0b111_111) + 1;
+            //case Arm64ImmediateValueEncodingKind.ValueImmsPlus1:
+            //    // encoded in imms:immr (reversed from the order in the instruction)
+            //    return ((value >> 6) & 0b111_1111) + 1;
+            //case Arm64ImmediateValueEncodingKind._32_Minus_Value_Mod32:
+            //    return ((32 - value) & 0x1F);
+            //case Arm64ImmediateValueEncodingKind._64_Minus_Value_Mod64:
+            //    return ((64 - value) & 0x3F);
+            //case Arm64ImmediateValueEncodingKind._32_Minus_Value:
+            //    return 32 - value;
+            //case Arm64ImmediateValueEncodingKind._64_Minus_Value:
+            //    return 64 - value;
+            //case Arm64ImmediateValueEncodingKind.Value_Minus_64:
+            //    return value - 64;
+            //case Arm64ImmediateValueEncodingKind._128_Minus_Value:
+            //    return 128 - value;
+            //case Arm64ImmediateValueEncodingKind.ValueMod64Plus1:
+            //    return (value & 0x3F) + 1;
+            //case Arm64ImmediateValueEncodingKind.InvertValueShiftWide32:
+            //    return ~(uint)((int)value >> 2) << ((value & 0x3) << 4);
+            //case Arm64ImmediateValueEncodingKind.ValueShiftWide64:
+            //    return ((long)value >> 2) << ((value & 0x3) << 4);
+            default:
+                return value;
+        }
+    }
+
     private void GetEnumVariations(EnumOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
         string enumType;
@@ -1206,7 +1247,8 @@ partial class Arm64Processor
 
         if (testArguments.Count == 0)
         {
-            if (instruction.Id != "ISB_bi_barriers") // TEMP instructions not handle correctly
+            // TEMP instructions not handle correctly
+            if (instruction.Id != "ISB_bi_barriers" && descriptor.ValueEncodingKind != Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1 && descriptor.ValueEncodingKind != Arm64ImmediateValueEncodingKind.ValueImmsPlus1)
             {
                 if (operandVariation.OperandName == "rotate")
                 {
@@ -1214,7 +1256,8 @@ partial class Arm64Processor
                 }
                 else
                 {
-                    testArguments.Add(new(5));
+                    var valueToTest = BuildTestImmediateValue(descriptor.ValueEncodingKind, 5);
+                    testArguments.Add(new((int)valueToTest));
                 }
             }
         }
