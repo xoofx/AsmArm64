@@ -22,6 +22,46 @@ partial class Arm64Processor
         }
     }
 
+    private void GetOperandVariations(int operandIndex, Instruction instruction, Operand operand, List<OperandVariation> operandVariations)
+    {
+        var descriptor = operand.Descriptor;
+        Debug.Assert(descriptor is not null);
+        Debug.Assert(descriptor.Name.Length > 0);
+
+        switch (descriptor.Kind)
+        {
+            case Arm64OperandKind.Register:
+                GetRegisterOperandVariation(operandIndex, instruction, (RegisterOperandDescriptor)descriptor, operandVariations);
+                break;
+            case Arm64OperandKind.RegisterGroup:
+                GetRegisterGroupOperandVariation(operandIndex, instruction, (RegisterGroupOperandDescriptor)descriptor, operandVariations);
+                break;
+            case Arm64OperandKind.SystemRegister:
+                GetSystemRegisterVariation(instruction, (SystemRegisterOperandDescriptor)descriptor, operandVariations);
+                break;
+            case Arm64OperandKind.Memory:
+                GetMemoryOperandVariation(operandIndex, instruction, (MemoryOperandDescriptor)descriptor, operandVariations);
+                break;
+            case Arm64OperandKind.Immediate:
+                GetImmediateVariation(instruction, (ImmediateOperandDescriptor)descriptor, operandVariations);
+                break;
+            case Arm64OperandKind.Label:
+                GetLabelVariation(instruction, (LabelOperandDescriptor)descriptor, operandVariations);
+                break;
+            case Arm64OperandKind.Shift:
+                GetShiftOperandVariations(instruction, (ShiftOperandDescriptor)descriptor, operandVariations);
+                break;
+            case Arm64OperandKind.Extend:
+                GetExtendOperandVariations(instruction, (ExtendOperandDescriptor)descriptor, operandVariations);
+                break;
+            case Arm64OperandKind.Enum:
+                GetEnumVariations((EnumOperandDescriptor)descriptor, operandVariations);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
     // Returns a map of instruction class to a map of mnemonic to a list of instruction variations
     private Dictionary<string, Dictionary<string, List<InstructionVariation>>> GenerateInstructionVariations()
     {
@@ -464,45 +504,7 @@ partial class Arm64Processor
         }
     }
 
-    private void GetOperandVariations(int operandIndex, Instruction instruction, Operand operand, List<OperandVariation> operandVariations)
-    {
-        var descriptor = operand.Descriptor;
-        Debug.Assert(descriptor is not null);
-        Debug.Assert(descriptor.Name.Length > 0);
 
-        switch (descriptor.Kind)
-        {
-            case Arm64OperandKind.Register:
-                GetRegisterOperandVariation(operandIndex, instruction, (RegisterOperandDescriptor)descriptor, operandVariations);
-                break;
-            case Arm64OperandKind.RegisterGroup:
-                GetRegisterGroupOperandVariation(operandIndex, instruction,(RegisterGroupOperandDescriptor)descriptor, operandVariations);
-                break;
-            case Arm64OperandKind.SystemRegister:
-                GetSystemRegisterVariation(instruction, (SystemRegisterOperandDescriptor)descriptor, operandVariations);
-                break;
-            case Arm64OperandKind.Memory:
-                GetMemoryOperandVariation(operandIndex, instruction, (MemoryOperandDescriptor)descriptor, operandVariations);
-                break;
-            case Arm64OperandKind.Immediate:
-                GetImmediateVariation(instruction, (ImmediateOperandDescriptor)descriptor, operandVariations);
-                break;
-            case Arm64OperandKind.Label:
-                GetLabelVariation(instruction, (LabelOperandDescriptor)descriptor, operandVariations);
-                break;
-            case Arm64OperandKind.Shift:
-                GetShiftOperandVariations(instruction, (ShiftOperandDescriptor)descriptor, operandVariations);
-                break;
-            case Arm64OperandKind.Extend:
-                GetExtendOperandVariations(instruction, (ExtendOperandDescriptor)descriptor, operandVariations);
-                break;
-            case Arm64OperandKind.Enum:
-                GetEnumVariations((EnumOperandDescriptor)descriptor, operandVariations);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-    }
 
     private void GetSystemRegisterVariation(Instruction instruction, SystemRegisterOperandDescriptor descriptor, List<OperandVariation> operandVariations)
     {
@@ -516,6 +518,16 @@ partial class Arm64Processor
         GenerateBitRangeEncodingFromValue($"{operandVariation.OperandName}.Value", "system register", descriptor.Encoding, operandVariation.WriteEncodings, 16); // Arm64SystemRegister.Value is 16 bits
 
         operandVariations.Add(operandVariation);
+
+        var systemRegisterKind = GetSystemRegisterKind(descriptor.SystemRegisterKindIndex);
+        foreach (var sysRegister in _systemRegisters.Values)
+        {
+            if (sysRegister.UsageKinds.Contains(systemRegisterKind))
+            {
+                operandVariation.TestArguments.Add(new RawTestArgument(sysRegister.Name, sysRegister.Name));
+                break;
+            }
+        }
     }
     
     private void GetLabelVariation(Instruction instruction, LabelOperandDescriptor descriptor, List<OperandVariation> operandVariations)

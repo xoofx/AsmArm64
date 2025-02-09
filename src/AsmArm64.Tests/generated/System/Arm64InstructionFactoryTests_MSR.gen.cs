@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_MSR_System
     [TestMethod]
     public void Test_MSR_sr_systemmove_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = MSR(ACCDATA_EL1, X1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MSR_sr_systemmove, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MSR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MSR ACCDATA_EL1, X1", asm);
+        }
+        
+        {
+            var raw = MSR(ACCDATA_EL1, X16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MSR_sr_systemmove, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MSR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MSR ACCDATA_EL1, X16", asm);
+        }
+        
+        {
+            var raw = MSR(ACCDATA_EL1, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MSR_sr_systemmove, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MSR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MSR ACCDATA_EL1, XZR", asm);
+        }
     }
 }

@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_MRS_System
     [TestMethod]
     public void Test_MRS_rs_systemmove_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = MRS(X0, ACCDATA_EL1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MRS_rs_systemmove, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MRS, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MRS X0, ACCDATA_EL1", asm);
+        }
+        
+        {
+            var raw = MRS(X15, ACCDATA_EL1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MRS_rs_systemmove, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MRS, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MRS X15, ACCDATA_EL1", asm);
+        }
+        
+        {
+            var raw = MRS(XZR, ACCDATA_EL1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MRS_rs_systemmove, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MRS, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MRS XZR, ACCDATA_EL1", asm);
+        }
     }
 }

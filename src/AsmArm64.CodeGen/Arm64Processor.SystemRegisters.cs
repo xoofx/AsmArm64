@@ -53,6 +53,14 @@ partial class Arm64Processor
         ["TRCIT"] = 23,
     };
 
+    private static readonly string[] SystemRegisterKinds = RegisteredSystemRegisterUsageKinds.OrderBy(x => x.Value).Select(x => x.Key).ToArray();
+
+    public static string GetSystemRegisterKind(int index)
+    {
+        Debug.Assert(index > 0 && index <= SystemRegisterKinds.Length);
+        return SystemRegisterKinds[index - 1];
+    }
+    
     private void ProcessSystemRegisters()
     {
         foreach (var xmlFile in Directory.EnumerateFiles(_registerSpecsFolder, "*.xml"))
@@ -276,6 +284,7 @@ partial class Arm64Processor
         GenerateSystemRegisterT4();
         GenerateSystemRegisterKnownId();
         GenerateSystemRegisterKnownIdTable();
+        GenerateSystemRegisterFactory();
     }
     
     private void GenerateSystemRegisterT4()
@@ -392,6 +401,40 @@ partial class Arm64Processor
         w.CloseBraceBlock();
     }
 
+
+    private void GenerateSystemRegisterFactory()
+    {
+        using var w = GetWriter("Arm64SystemRegisterFactory.gen.cs");
+
+        w.WriteLine("namespace AsmArm64;");
+        w.WriteLine();
+        w.WriteLine("partial class Arm64Factory");
+        w.OpenBraceBlock();
+        for (var i = 0; i < InstructionSet.SystemRegisters.Count; i++)
+        {
+            var register = InstructionSet.SystemRegisters[i];
+            w.WriteSummary(register.Description);
+            var registerKind = $"{string.Join(" | ", register.UsageKinds.Select(x => $"Arm64SystemRegisterKind.{x}"))}";
+            var prefix = SystemRegistersAlsoProcessStates.Contains(register.Name) ? "_" : "";
+            w.WriteLine($"public static Arm64SystemRegister {prefix}{register.Name} => new(Arm64SystemRegisterKnownId.{register.Name}, 0x{register.Value:X4}, {registerKind});");
+        }
+
+        w.CloseBraceBlock();
+    }
+
+    private static HashSet<string> SystemRegistersAlsoProcessStates = new HashSet<string>()
+    {
+        "ALLINT",
+        "DIT",
+        "PAN",
+        "PM",
+        "UAO",
+        "PAN",
+        "SPSel",
+        "SSBS",
+        "TCO",
+        "RCTX",
+    };
 
     private static string ReplaceVariation(string text, int m)
     {
