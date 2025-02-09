@@ -96,7 +96,24 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_d_ds_8()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = MOVI(D0, 0xff00ffUL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_d_ds, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOVI D0, #0xff00ff", asm);
+        }
+        
+        {
+            var raw = MOVI(D31, 0xff00ffUL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOVI_asimdimm_d_ds, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOVI, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOVI D31, #0xff00ff", asm);
+        }
     }
     
     /// <summary>

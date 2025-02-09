@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_CMLE_Advsimd
     [TestMethod]
     public void Test_CMLE_asisdmisc_z_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CMLE(D0, D1, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asisdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE D0, D1, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(D31, D1, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asisdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE D31, D1, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(D0, D31, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asisdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE D0, D31, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(D31, D31, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asisdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE D31, D31, #0", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +68,42 @@ public class Arm64InstructionFactoryTests_CMLE_Advsimd
     [TestMethod]
     public void Test_CMLE_asimdmisc_z_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CMLE(V0.T_8B, V1.T_8B, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.8B, V1.8B, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_8B, V1.T_8B, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.8B, V1.8B, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V0.T_8B, V31.T_8B, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.8B, V31.8B, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_8B, V31.T_8B, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.8B, V31.8B, #0", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +112,42 @@ public class Arm64InstructionFactoryTests_CMLE_Advsimd
     [TestMethod]
     public void Test_CMLE_asimdmisc_z_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CMLE(V0.T_16B, V1.T_16B, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.16B, V1.16B, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_16B, V1.T_16B, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.16B, V1.16B, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V0.T_16B, V31.T_16B, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.16B, V31.16B, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_16B, V31.T_16B, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.16B, V31.16B, #0", asm);
+        }
     }
     
     /// <summary>
@@ -51,7 +156,42 @@ public class Arm64InstructionFactoryTests_CMLE_Advsimd
     [TestMethod]
     public void Test_CMLE_asimdmisc_z_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CMLE(V0.T_4H, V1.T_4H, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.4H, V1.4H, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_4H, V1.T_4H, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.4H, V1.4H, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V0.T_4H, V31.T_4H, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.4H, V31.4H, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_4H, V31.T_4H, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.4H, V31.4H, #0", asm);
+        }
     }
     
     /// <summary>
@@ -60,7 +200,42 @@ public class Arm64InstructionFactoryTests_CMLE_Advsimd
     [TestMethod]
     public void Test_CMLE_asimdmisc_z_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CMLE(V0.T_8H, V1.T_8H, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.8H, V1.8H, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_8H, V1.T_8H, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.8H, V1.8H, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V0.T_8H, V31.T_8H, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.8H, V31.8H, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_8H, V31.T_8H, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.8H, V31.8H, #0", asm);
+        }
     }
     
     /// <summary>
@@ -69,7 +244,42 @@ public class Arm64InstructionFactoryTests_CMLE_Advsimd
     [TestMethod]
     public void Test_CMLE_asimdmisc_z_5()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CMLE(V0.T_2S, V1.T_2S, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.2S, V1.2S, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_2S, V1.T_2S, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.2S, V1.2S, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V0.T_2S, V31.T_2S, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.2S, V31.2S, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_2S, V31.T_2S, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.2S, V31.2S, #0", asm);
+        }
     }
     
     /// <summary>
@@ -78,7 +288,42 @@ public class Arm64InstructionFactoryTests_CMLE_Advsimd
     [TestMethod]
     public void Test_CMLE_asimdmisc_z_6()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CMLE(V0.T_4S, V1.T_4S, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.4S, V1.4S, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_4S, V1.T_4S, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.4S, V1.4S, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V0.T_4S, V31.T_4S, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.4S, V31.4S, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_4S, V31.T_4S, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.4S, V31.4S, #0", asm);
+        }
     }
     
     /// <summary>
@@ -87,6 +332,41 @@ public class Arm64InstructionFactoryTests_CMLE_Advsimd
     [TestMethod]
     public void Test_CMLE_asimdmisc_z_7()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CMLE(V0.T_2D, V1.T_2D, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.2D, V1.2D, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_2D, V1.T_2D, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.2D, V1.2D, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V0.T_2D, V31.T_2D, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V0.2D, V31.2D, #0", asm);
+        }
+        
+        {
+            var raw = CMLE(V30.T_2D, V31.T_2D, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMLE_asimdmisc_z, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMLE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMLE V30.2D, V31.2D, #0", asm);
+        }
     }
 }

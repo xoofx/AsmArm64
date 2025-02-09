@@ -24,7 +24,87 @@ public class Arm64InstructionFactoryTests_SMIN_General
     [TestMethod]
     public void Test_SMIN_32_minmax_imm_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SMIN(W0, W1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_32_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN W0, W1, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(W15, W1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_32_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN W15, W1, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(WZR, W1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_32_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN WZR, W1, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(W0, W16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_32_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN W0, W16, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(W15, W16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_32_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN W15, W16, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(WZR, W16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_32_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN WZR, W16, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(W0, WZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_32_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN W0, WZR, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(W15, WZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_32_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN W15, WZR, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(WZR, WZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_32_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN WZR, WZR, #5", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +113,87 @@ public class Arm64InstructionFactoryTests_SMIN_General
     [TestMethod]
     public void Test_SMIN_64_minmax_imm_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SMIN(X0, X1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_64_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN X0, X1, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(X15, X1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_64_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN X15, X1, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(XZR, X1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_64_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN XZR, X1, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(X0, X16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_64_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN X0, X16, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(X15, X16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_64_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN X15, X16, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(XZR, X16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_64_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN XZR, X16, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(X0, XZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_64_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN X0, XZR, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(X15, XZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_64_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN X15, XZR, #5", asm);
+        }
+        
+        {
+            var raw = SMIN(XZR, XZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMIN_64_minmax_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMIN XZR, XZR, #5", asm);
+        }
     }
     
     /// <summary>

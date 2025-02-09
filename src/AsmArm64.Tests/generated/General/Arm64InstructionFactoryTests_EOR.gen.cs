@@ -24,7 +24,87 @@ public class Arm64InstructionFactoryTests_EOR_General
     [TestMethod]
     public void Test_EOR_32_log_imm_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = EOR(W1, W1, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR W1, W1, #0x3030303", asm);
+        }
+        
+        {
+            var raw = EOR(W17, W1, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR W17, W1, #0x3030303", asm);
+        }
+        
+        {
+            var raw = EOR(WSP, W1, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR WSP, W1, #0x3030303", asm);
+        }
+        
+        {
+            var raw = EOR(W1, W16, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR W1, W16, #0x3030303", asm);
+        }
+        
+        {
+            var raw = EOR(W17, W16, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR W17, W16, #0x3030303", asm);
+        }
+        
+        {
+            var raw = EOR(WSP, W16, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR WSP, W16, #0x3030303", asm);
+        }
+        
+        {
+            var raw = EOR(W1, WZR, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR W1, WZR, #0x3030303", asm);
+        }
+        
+        {
+            var raw = EOR(W17, WZR, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR W17, WZR, #0x3030303", asm);
+        }
+        
+        {
+            var raw = EOR(WSP, WZR, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR WSP, WZR, #0x3030303", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +113,87 @@ public class Arm64InstructionFactoryTests_EOR_General
     [TestMethod]
     public void Test_EOR_64_log_imm_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = EOR(X1, X1, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR X1, X1, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = EOR(X17, X1, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR X17, X1, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = EOR(SP, X1, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR SP, X1, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = EOR(X1, X16, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR X1, X16, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = EOR(X17, X16, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR X17, X16, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = EOR(SP, X16, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR SP, X16, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = EOR(X1, XZR, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR X1, XZR, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = EOR(X17, XZR, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR X17, XZR, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = EOR(SP, XZR, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EOR_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EOR SP, XZR, #0x303030303030303", asm);
+        }
     }
     
     /// <summary>

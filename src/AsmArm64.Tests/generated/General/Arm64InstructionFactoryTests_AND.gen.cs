@@ -24,7 +24,87 @@ public class Arm64InstructionFactoryTests_AND_General
     [TestMethod]
     public void Test_AND_32_log_imm_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = AND(W1, W1, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND W1, W1, #0x3030303", asm);
+        }
+        
+        {
+            var raw = AND(W17, W1, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND W17, W1, #0x3030303", asm);
+        }
+        
+        {
+            var raw = AND(WSP, W1, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND WSP, W1, #0x3030303", asm);
+        }
+        
+        {
+            var raw = AND(W1, W16, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND W1, W16, #0x3030303", asm);
+        }
+        
+        {
+            var raw = AND(W17, W16, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND W17, W16, #0x3030303", asm);
+        }
+        
+        {
+            var raw = AND(WSP, W16, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND WSP, W16, #0x3030303", asm);
+        }
+        
+        {
+            var raw = AND(W1, WZR, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND W1, WZR, #0x3030303", asm);
+        }
+        
+        {
+            var raw = AND(W17, WZR, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND W17, WZR, #0x3030303", asm);
+        }
+        
+        {
+            var raw = AND(WSP, WZR, 0x3030303);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_32_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND WSP, WZR, #0x3030303", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +113,87 @@ public class Arm64InstructionFactoryTests_AND_General
     [TestMethod]
     public void Test_AND_64_log_imm_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = AND(X1, X1, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND X1, X1, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = AND(X17, X1, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND X17, X1, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = AND(SP, X1, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND SP, X1, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = AND(X1, X16, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND X1, X16, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = AND(X17, X16, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND X17, X16, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = AND(SP, X16, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND SP, X16, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = AND(X1, XZR, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND X1, XZR, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = AND(X17, XZR, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND X17, XZR, #0x303030303030303", asm);
+        }
+        
+        {
+            var raw = AND(SP, XZR, 0x303030303030303UL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.AND_64_log_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.AND, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("AND SP, XZR, #0x303030303030303", asm);
+        }
     }
     
     /// <summary>

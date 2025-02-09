@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_SRSHR_Advsimd
     [TestMethod]
     public void Test_SRSHR_asisdshf_r_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SRSHR(D0, D1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SRSHR_asisdshf_r, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SRSHR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SRSHR D0, D1, #5", asm);
+        }
+        
+        {
+            var raw = SRSHR(D31, D1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SRSHR_asisdshf_r, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SRSHR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SRSHR D31, D1, #5", asm);
+        }
+        
+        {
+            var raw = SRSHR(D0, D31, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SRSHR_asisdshf_r, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SRSHR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SRSHR D0, D31, #5", asm);
+        }
+        
+        {
+            var raw = SRSHR(D31, D31, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SRSHR_asisdshf_r, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SRSHR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SRSHR D31, D31, #5", asm);
+        }
     }
     
     /// <summary>

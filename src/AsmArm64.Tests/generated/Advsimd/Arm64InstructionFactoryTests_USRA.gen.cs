@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_USRA_Advsimd
     [TestMethod]
     public void Test_USRA_asisdshf_r_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = USRA(D0, D1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.USRA_asisdshf_r, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.USRA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("USRA D0, D1, #5", asm);
+        }
+        
+        {
+            var raw = USRA(D31, D1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.USRA_asisdshf_r, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.USRA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("USRA D31, D1, #5", asm);
+        }
+        
+        {
+            var raw = USRA(D0, D31, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.USRA_asisdshf_r, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.USRA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("USRA D0, D31, #5", asm);
+        }
+        
+        {
+            var raw = USRA(D31, D31, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.USRA_asisdshf_r, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.USRA, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("USRA D31, D31, #5", asm);
+        }
     }
     
     /// <summary>

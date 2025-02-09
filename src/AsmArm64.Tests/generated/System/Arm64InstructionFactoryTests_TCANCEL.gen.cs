@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_TCANCEL_System
     [TestMethod]
     public void Test_TCANCEL_ex_exception_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = TCANCEL(5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TCANCEL_ex_exception, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TCANCEL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TCANCEL #5", asm);
+        }
     }
 }

@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_UDF_General
     [TestMethod]
     public void Test_UDF_only_perm_undef_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = UDF(5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UDF_only_perm_undef, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UDF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UDF #5", asm);
+        }
     }
 }

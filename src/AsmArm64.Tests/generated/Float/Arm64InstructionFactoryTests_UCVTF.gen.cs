@@ -200,7 +200,60 @@ public class Arm64InstructionFactoryTests_UCVTF_Float
     [TestMethod]
     public void Test_UCVTF_h32_float2fix_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = UCVTF(H0, W1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H0, W1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(H31, W1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H31, W1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(H0, W16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H0, W16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(H31, W16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H31, W16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(H0, WZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H0, WZR, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(H31, WZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H31, WZR, #5", asm);
+        }
     }
     
     /// <summary>
@@ -209,7 +262,60 @@ public class Arm64InstructionFactoryTests_UCVTF_Float
     [TestMethod]
     public void Test_UCVTF_h64_float2fix_5()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = UCVTF(H0, X1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H0, X1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(H31, X1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H31, X1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(H0, X16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H0, X16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(H31, X16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H31, X16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(H0, XZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H0, XZR, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(H31, XZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_h64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF H31, XZR, #5", asm);
+        }
     }
     
     /// <summary>
@@ -218,7 +324,60 @@ public class Arm64InstructionFactoryTests_UCVTF_Float
     [TestMethod]
     public void Test_UCVTF_s32_float2fix_6()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = UCVTF(S0, W1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S0, W1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(S31, W1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S31, W1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(S0, W16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S0, W16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(S31, W16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S31, W16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(S0, WZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S0, WZR, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(S31, WZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S31, WZR, #5", asm);
+        }
     }
     
     /// <summary>
@@ -227,7 +386,60 @@ public class Arm64InstructionFactoryTests_UCVTF_Float
     [TestMethod]
     public void Test_UCVTF_s64_float2fix_7()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = UCVTF(S0, X1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S0, X1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(S31, X1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S31, X1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(S0, X16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S0, X16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(S31, X16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S31, X16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(S0, XZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S0, XZR, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(S31, XZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_s64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF S31, XZR, #5", asm);
+        }
     }
     
     /// <summary>
@@ -236,7 +448,60 @@ public class Arm64InstructionFactoryTests_UCVTF_Float
     [TestMethod]
     public void Test_UCVTF_d32_float2fix_8()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = UCVTF(D0, W1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D0, W1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(D31, W1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D31, W1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(D0, W16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D0, W16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(D31, W16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D31, W16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(D0, WZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D0, WZR, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(D31, WZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d32_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D31, WZR, #5", asm);
+        }
     }
     
     /// <summary>
@@ -245,7 +510,60 @@ public class Arm64InstructionFactoryTests_UCVTF_Float
     [TestMethod]
     public void Test_UCVTF_d64_float2fix_9()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = UCVTF(D0, X1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D0, X1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(D31, X1, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D31, X1, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(D0, X16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D0, X16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(D31, X16, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D31, X16, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(D0, XZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D0, XZR, #5", asm);
+        }
+        
+        {
+            var raw = UCVTF(D31, XZR, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UCVTF_d64_float2fix, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UCVTF D31, XZR, #5", asm);
+        }
     }
     
     /// <summary>

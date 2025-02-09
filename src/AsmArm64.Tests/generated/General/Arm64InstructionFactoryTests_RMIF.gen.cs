@@ -24,6 +24,32 @@ public class Arm64InstructionFactoryTests_RMIF_General
     [TestMethod]
     public void Test_RMIF_only_rmif_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = RMIF(X0, 5, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RMIF_only_rmif, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RMIF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RMIF X0, #5, #5", asm);
+        }
+        
+        {
+            var raw = RMIF(X15, 5, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RMIF_only_rmif, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RMIF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RMIF X15, #5, #5", asm);
+        }
+        
+        {
+            var raw = RMIF(XZR, 5, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.RMIF_only_rmif, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.RMIF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("RMIF XZR, #5, #5", asm);
+        }
     }
 }

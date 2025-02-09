@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_CLREX_System
     [TestMethod]
     public void Test_CLREX_bn_barriers_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = CLREX(5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CLREX_bn_barriers, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CLREX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CLREX #5", asm);
+        }
     }
 }

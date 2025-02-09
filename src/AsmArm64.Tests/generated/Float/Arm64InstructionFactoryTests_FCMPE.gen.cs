@@ -68,7 +68,24 @@ public class Arm64InstructionFactoryTests_FCMPE_Float
     [TestMethod]
     public void Test_FCMPE_hz_floatcmp_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FCMPE(H0, 0.0f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCMPE_hz_floatcmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCMPE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCMPE H0, #0.0", asm);
+        }
+        
+        {
+            var raw = FCMPE(H31, 0.0f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCMPE_hz_floatcmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCMPE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCMPE H31, #0.0", asm);
+        }
     }
     
     /// <summary>
@@ -121,7 +138,24 @@ public class Arm64InstructionFactoryTests_FCMPE_Float
     [TestMethod]
     public void Test_FCMPE_sz_floatcmp_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FCMPE(S0, 0.0f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCMPE_sz_floatcmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCMPE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCMPE S0, #0.0", asm);
+        }
+        
+        {
+            var raw = FCMPE(S31, 0.0f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCMPE_sz_floatcmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCMPE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCMPE S31, #0.0", asm);
+        }
     }
     
     /// <summary>
@@ -174,6 +208,23 @@ public class Arm64InstructionFactoryTests_FCMPE_Float
     [TestMethod]
     public void Test_FCMPE_dz_floatcmp_5()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FCMPE(D0, 0.0f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCMPE_dz_floatcmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCMPE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCMPE D0, #0.0", asm);
+        }
+        
+        {
+            var raw = FCMPE(D31, 0.0f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FCMPE_dz_floatcmp, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FCMPE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FCMPE D31, #0.0", asm);
+        }
     }
 }

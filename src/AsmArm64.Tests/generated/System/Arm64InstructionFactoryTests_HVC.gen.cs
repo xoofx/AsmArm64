@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_HVC_System
     [TestMethod]
     public void Test_HVC_ex_exception_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = HVC(5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.HVC_ex_exception, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.HVC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("HVC #5", asm);
+        }
     }
 }

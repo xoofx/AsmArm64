@@ -14,6 +14,17 @@ partial class Arm64Processor
         bool isFirst = true;
         foreach (var pair in mapMnemonicToInstructions.OrderBy(x => x.Key))
         {
+            // We skip this instruction
+            // Reason: it is conflicting with existing instruction.
+            //
+            // Additional reasons from the XML doc:
+            // - A disassembler will disassemble the allocated instruction, rather than the HINT instruction.
+            // - An assembler may support assembly of allocated encodings using <instruction>HINT</instruction> with the corresponding <syntax>&lt;imm&gt;</syntax> value, but it is not required to do so.
+            if (pair.Key == "HINT") // instruction.Id = HINT_HM_hints
+            {
+                continue;
+            }
+            
             using var w = GetWriter(Path.Combine(instClass, $"Arm64InstructionFactoryTests_{pair.Key}.gen.cs"), isTest: true);
 
             w.WriteLine("using System.Runtime.CompilerServices;");
@@ -124,6 +135,90 @@ partial class Arm64Processor
         public abstract string CSharp { get; }
 
         public abstract string Asm { get; }
+    }
+
+    private record RawTestArgument : TestArgument
+    {
+        public RawTestArgument(string cSharp, string asm)
+        {
+            CSharp = cSharp;
+            Asm = asm;
+        }
+
+        public override string CSharp { get; }
+        public override string Asm { get; }
+    }
+
+    private record ImmediateTestArgument : TestArgument
+    {
+        public ImmediateTestArgument(float value)
+        {
+            Value = BitConverter.SingleToUInt32Bits(value);
+            Is32 = true;
+            IsFloat = true;
+        }
+
+        public ImmediateTestArgument(ulong value, bool hexa = true)
+        {
+            Value = value;
+            Is32 = false;
+            IsHexa = hexa;
+        }
+
+        public ImmediateTestArgument(ushort value, int shift, bool is32)
+        {
+            Value = value;
+            Shift = shift;
+            Is32 = is32;
+            IsShift = true;
+        }
+
+        public ImmediateTestArgument(int value, bool hexa = false)
+        {
+            Value = (ulong)(long)value;
+            Is32 = true;
+            IsHexa = hexa;
+        }
+
+        public ulong Value { get; }
+
+        public bool Is32 { get; }
+
+        public bool IsShift { get; }
+
+        public int Shift { get; }
+
+        public bool IsFloat { get; }
+
+        public bool IsHexa { get; }
+
+        public override string CSharp => GetAsText(false);
+
+        public override string Asm => GetAsText(true);
+
+        private string GetAsText(bool isAsm)
+        {
+            string text;
+            if (IsFloat)
+            {
+                text = Value == 0 ? "0.0" : $"{BitConverter.UInt32BitsToSingle((uint)Value).ToString("0.00000000")}";
+                if (!isAsm) text += "f";
+            }
+            else if (IsShift)
+            {
+                    text = isAsm ? (Value << Shift).ToString() : $"new({Value}, {Shift})";
+            }
+            else
+            {
+                text = IsHexa ? $"0x{Value:x}" : Value.ToString();
+                if (!isAsm && !Is32 && IsHexa)
+                {
+                    text += "UL";
+                }
+            }
+
+            return isAsm ? $"#{text}" : text;
+        }
     }
 
     private record RegisterTestArgument : TestArgument

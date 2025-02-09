@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_DCPS2_System
     [TestMethod]
     public void Test_DCPS2_dc_exception_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = DCPS2(5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.DCPS2_dc_exception, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.DCPS2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("DCPS2 #5", asm);
+        }
     }
 }

@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_SMC_System
     [TestMethod]
     public void Test_SMC_ex_exception_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SMC(5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SMC_ex_exception, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SMC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SMC #5", asm);
+        }
     }
 }

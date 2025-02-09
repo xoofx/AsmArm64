@@ -24,7 +24,24 @@ public class Arm64InstructionFactoryTests_FMOV_Advsimd
     [TestMethod]
     public void Test_FMOV_asimdimm_h_h_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMOV(V0.T_4H, 0.50000000f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_asimdimm_h_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V0.4H, #0.50000000", asm);
+        }
+        
+        {
+            var raw = FMOV(V30.T_4H, 0.50000000f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_asimdimm_h_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V30.4H, #0.50000000", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +50,24 @@ public class Arm64InstructionFactoryTests_FMOV_Advsimd
     [TestMethod]
     public void Test_FMOV_asimdimm_h_h_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMOV(V0.T_8H, 0.50000000f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_asimdimm_h_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V0.8H, #0.50000000", asm);
+        }
+        
+        {
+            var raw = FMOV(V30.T_8H, 0.50000000f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_asimdimm_h_h, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V30.8H, #0.50000000", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +76,24 @@ public class Arm64InstructionFactoryTests_FMOV_Advsimd
     [TestMethod]
     public void Test_FMOV_asimdimm_s_s_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMOV(V0.T_2S, 0.50000000f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_asimdimm_s_s, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V0.2S, #0.50000000", asm);
+        }
+        
+        {
+            var raw = FMOV(V30.T_2S, 0.50000000f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_asimdimm_s_s, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V30.2S, #0.50000000", asm);
+        }
     }
     
     /// <summary>
@@ -51,7 +102,24 @@ public class Arm64InstructionFactoryTests_FMOV_Advsimd
     [TestMethod]
     public void Test_FMOV_asimdimm_s_s_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = FMOV(V0.T_4S, 0.50000000f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_asimdimm_s_s, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V0.4S, #0.50000000", asm);
+        }
+        
+        {
+            var raw = FMOV(V30.T_4S, 0.50000000f);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.FMOV_asimdimm_s_s, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.FMOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("FMOV V30.4S, #0.50000000", asm);
+        }
     }
     
     /// <summary>

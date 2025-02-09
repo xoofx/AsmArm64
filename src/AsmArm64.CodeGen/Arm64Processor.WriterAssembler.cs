@@ -74,9 +74,17 @@ partial class Arm64Processor
                     for (var i = 0; i < instructionVariation.Operands.Count; i++)
                     {
                         var operand = instructionVariation.Operands[i];
-                        foreach (var prepare in operand.PrepareWriteEncodings)
+
+                        if (operand.PrepareWriteEncodings.Count > 0)
                         {
-                            prepare(instructionVariation, operand, i);
+                            // As prepare can modify an operand, and an operand can be shared between variations, we need to clone the operand
+                            operand = operand.Clone();
+                            instructionVariation.Operands[i] = operand;
+
+                            foreach (var prepare in operand.PrepareWriteEncodings)
+                            {
+                                prepare(instructionVariation, operand, i);
+                            }
                         }
                     }
                 }
@@ -972,18 +980,21 @@ partial class Arm64Processor
     {
         bool hasFixedValue = descriptor.HasFixedValue;
         string? fixedValue = hasFixedValue  ? $"{descriptor.FixedValue}" : null;
+        List<ImmediateTestArgument> testArguments = new();
         var name = GetNormalizedOperandName(descriptor.Name);
         if (descriptor.Name == "0.0")
         {
             name = "zero";
             fixedValue = "0.0f";
             hasFixedValue = true;
+            testArguments.Add(new(0.0f));
         }
         else if (!descriptor.Name.Contains('.') && char.IsAsciiDigit(descriptor.Name[0]))
         {
             name = $"value{descriptor.Name}";
             hasFixedValue = true;
             fixedValue = $"{sbyte.Parse(descriptor.Name)}";
+            testArguments.Add(new(sbyte.Parse(descriptor.Name)));
         }
 
         var operandTypeBitSize = 0;
@@ -1016,29 +1027,35 @@ partial class Arm64Processor
         {
             operandType = "Arm64BitMaskImmediate64";
             operandTypeBitSize = 8;
+            testArguments.Add(new(0xFF00FFL));
         }
         else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask32)
         {
             operandType = "Arm64LogicalImmediate32";
             operandTypeBitSize = 13; // We specify that the exact size is 13 bits and we don't need to mask it as it is already done by the type
+            testArguments.Add(new(0x03030303, true));
         }
         else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.DecodeBitMask64)
         {
             operandType = "Arm64LogicalImmediate64";
+            testArguments.Add(new(0x03030303_03030303UL));
             operandTypeBitSize = 13; // idem as above
         }
         else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.SignedFloatExp3Mantissa4)
         {
             operandType = "Arm64FloatImmediate";
             operandTypeBitSize = 8;
+            testArguments.Add(new(0.5f));
         }
         else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.ValueShiftWide64)
         {
             operandType = "Arm64ShiftedImmediate64";
+            testArguments.Add(new(0x1234, 16, false));
         }
         else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.InvertValueShiftWide32)
         {
             operandType = "Arm64InvertedShiftedImmediate32";
+            testArguments.Add(new(0x1234, 16, true));
         }
 
         if (descriptor.ImmediateKind == Arm64ImmediateEncodingKind.FixedFloatZero)
@@ -1163,7 +1180,6 @@ partial class Arm64Processor
                 else
                 {
                     GenerateEncodingForExtract(instruction, descriptor.Extract, operandVariation, null, "immediate");
-                    return;
                 }
                 break;
             case Arm64ImmediateEncodingKind.FixedInt:
@@ -1187,7 +1203,23 @@ partial class Arm64Processor
             default:
                 throw new ArgumentOutOfRangeException($"The ImmediateKind {descriptor.ImmediateKind} is not supported");
         }
+
+        if (testArguments.Count == 0)
+        {
+            if (instruction.Id != "ISB_bi_barriers") // TEMP instructions not handle correctly
+            {
+                if (operandVariation.OperandName == "rotate")
+                {
+                    testArguments.Add(new(90));
+                }
+                else
+                {
+                    testArguments.Add(new(5));
+                }
+            }
+        }
         
+        operandVariation.TestArguments.AddRange(testArguments);
         operandVariations.Add(operandVariation);
     }
 
@@ -1938,6 +1970,8 @@ partial class Arm64Processor
                 if (expectedValue.HasValue)
                 {
                     operand.DefaultValue = $"{expectedValue.Value}";
+                    operand.TestArguments.Clear();
+                    operand.TestArguments.Add(new ImmediateTestArgument(expectedValue.Value));
                 }
             }
         );
@@ -2045,7 +2079,7 @@ partial class Arm64Processor
         public InstructionVariation? ElseVariation { get; set; }
     }
 
-    private record OperandVariation
+    private class OperandVariation
     {
         public required OperandDescriptor Descriptor { get; init; }
 
@@ -2074,6 +2108,28 @@ partial class Arm64Processor
         public List<PrepareWriteEncodingDelegate> PrepareWriteEncodings { get; } = new();
 
         public List<WriteEncodingDelegate> WriteEncodings { get; } = new();
+
+        public OperandVariation Clone()
+        {
+            var clone = new OperandVariation
+            {
+                Descriptor = Descriptor,
+                EncodingExtract = EncodingExtract,
+                OperandType = OperandType,
+                OperandName = OperandName,
+                OperandType2 = OperandType2,
+                OperandName2 = OperandName2,
+                BitfieldMask = BitfieldMask,
+                BitfieldSets = BitfieldSets,
+                DefaultValue = DefaultValue,
+                DefaultValue2 = DefaultValue2,
+            };
+            clone.AcceptedBitValues.AddRange(AcceptedBitValues);
+            clone.TestArguments.AddRange(TestArguments);
+            clone.PrepareWriteEncodings.AddRange(PrepareWriteEncodings);
+            clone.WriteEncodings.AddRange(WriteEncodings);
+            return clone;
+        }
 
         public void WriterParameters(CodeWriter writer)
         {

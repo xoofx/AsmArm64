@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_HLT_System
     [TestMethod]
     public void Test_HLT_ex_exception_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = HLT(5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.HLT_ex_exception, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.HLT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("HLT #5", asm);
+        }
     }
 }

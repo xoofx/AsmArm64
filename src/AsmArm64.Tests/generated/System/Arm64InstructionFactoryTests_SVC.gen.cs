@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_SVC_System
     [TestMethod]
     public void Test_SVC_ex_exception_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SVC(5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SVC_ex_exception, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SVC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SVC #5", asm);
+        }
     }
 }
