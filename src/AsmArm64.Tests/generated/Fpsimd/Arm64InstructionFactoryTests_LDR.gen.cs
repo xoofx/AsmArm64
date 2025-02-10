@@ -50,7 +50,7 @@ public class Arm64InstructionFactoryTests_LDR_Fpsimd
     [TestMethod]
     public void Test_LDR_b_ldst_regoff_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LDR_b_ldst_regoff - LDR         Bt, [Xn|SP, (Wm|Xm), extend{, amount}]");
     }
     
     /// <summary>
@@ -553,7 +553,7 @@ public class Arm64InstructionFactoryTests_LDR_Fpsimd
     [TestMethod]
     public void Test_LDR_h_ldst_regoff_21()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LDR_h_ldst_regoff - LDR         Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
     
     /// <summary>
@@ -588,7 +588,7 @@ public class Arm64InstructionFactoryTests_LDR_Fpsimd
     [TestMethod]
     public void Test_LDR_s_ldst_regoff_23()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LDR_s_ldst_regoff - LDR         St, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
     
     /// <summary>
@@ -623,7 +623,7 @@ public class Arm64InstructionFactoryTests_LDR_Fpsimd
     [TestMethod]
     public void Test_LDR_d_ldst_regoff_25()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LDR_d_ldst_regoff - LDR         Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
     
     /// <summary>
@@ -658,6 +658,6 @@ public class Arm64InstructionFactoryTests_LDR_Fpsimd
     [TestMethod]
     public void Test_LDR_q_ldst_regoff_27()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LDR_q_ldst_regoff - LDR         Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
 }

@@ -76,7 +76,7 @@ partial class Arm64Processor
     {
         if (instructionVariation.Operands.Any(x => x.TestArguments.Count == 0))
         {
-            w.WriteLine("Assert.Inconclusive(\"TODO\");");
+            w.WriteLine($"Assert.Inconclusive(\"Not handled {instructionVariation.Instruction.Id} - {instructionVariation.Instruction.FullSyntax}\");");
             return;
         }
 

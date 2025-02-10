@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_SQSHRUN_Advsimd
     [TestMethod]
     public void Test_SQSHRUN_asisdshf_n_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SQSHRUN(B1, H2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN B1, H2, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(B31, H2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN B31, H2, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(B1, H0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN B1, H0, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(B31, H0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN B31, H0, #5", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +68,42 @@ public class Arm64InstructionFactoryTests_SQSHRUN_Advsimd
     [TestMethod]
     public void Test_SQSHRUN_asisdshf_n_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SQSHRUN(H1, S2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN H1, S2, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(H31, S2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN H31, S2, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(H1, S0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN H1, S0, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(H31, S0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN H31, S0, #5", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +112,42 @@ public class Arm64InstructionFactoryTests_SQSHRUN_Advsimd
     [TestMethod]
     public void Test_SQSHRUN_asisdshf_n_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SQSHRUN(S1, D2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN S1, D2, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(S31, D2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN S31, D2, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(S1, D0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN S1, D0, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(S31, D0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asisdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN S31, D0, #5", asm);
+        }
     }
     
     /// <summary>
@@ -51,7 +156,42 @@ public class Arm64InstructionFactoryTests_SQSHRUN_Advsimd
     [TestMethod]
     public void Test_SQSHRUN_asimdshf_n_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SQSHRUN(V0.T_8B, V1.T_8H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V0.8B, V1.8H, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(V30.T_8B, V1.T_8H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V30.8B, V1.8H, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(V0.T_8B, V31.T_8H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V0.8B, V31.8H, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(V30.T_8B, V31.T_8H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V30.8B, V31.8H, #5", asm);
+        }
     }
     
     /// <summary>
@@ -60,7 +200,42 @@ public class Arm64InstructionFactoryTests_SQSHRUN_Advsimd
     [TestMethod]
     public void Test_SQSHRUN_asimdshf_n_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SQSHRUN(V0.T_4H, V1.T_4S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V0.4H, V1.4S, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(V30.T_4H, V1.T_4S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V30.4H, V1.4S, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(V0.T_4H, V31.T_4S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V0.4H, V31.4S, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(V30.T_4H, V31.T_4S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V30.4H, V31.4S, #5", asm);
+        }
     }
     
     /// <summary>
@@ -69,6 +244,41 @@ public class Arm64InstructionFactoryTests_SQSHRUN_Advsimd
     [TestMethod]
     public void Test_SQSHRUN_asimdshf_n_5()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SQSHRUN(V0.T_2S, V1.T_2D, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V0.2S, V1.2D, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(V30.T_2S, V1.T_2D, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V30.2S, V1.2D, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(V0.T_2S, V31.T_2D, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V0.2S, V31.2D, #5", asm);
+        }
+        
+        {
+            var raw = SQSHRUN(V30.T_2S, V31.T_2D, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SQSHRUN_asimdshf_n, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SQSHRUN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SQSHRUN V30.2S, V31.2D, #5", asm);
+        }
     }
 }

@@ -75,6 +75,6 @@ public class Arm64InstructionFactoryTests_PRFM_General
     [TestMethod]
     public void Test_PRFM_p_ldst_regoff_3()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled PRFM_p_ldst_regoff - PRFM        (prfop|#imm5), [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
 }

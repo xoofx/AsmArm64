@@ -202,7 +202,7 @@ public class Arm64InstructionFactoryTests_AND_General
     [TestMethod]
     public void Test_AND_32_log_shift_2()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled AND_32_log_shift - AND         Wd, Wn, Wm {, shift, #amount}");
     }
     
     /// <summary>
@@ -211,6 +211,6 @@ public class Arm64InstructionFactoryTests_AND_General
     [TestMethod]
     public void Test_AND_64_log_shift_3()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled AND_64_log_shift - AND         Xd, Xn, Xm {, shift, #amount}");
     }
 }

@@ -50,7 +50,7 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd
     [TestMethod]
     public void Test_STR_b_ldst_regoff_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled STR_b_ldst_regoff - STR         Bt, [Xn|SP, (Wm|Xm), extend{, amount}]");
     }
     
     /// <summary>
@@ -475,7 +475,7 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd
     [TestMethod]
     public void Test_STR_h_ldst_regoff_18()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled STR_h_ldst_regoff - STR         Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
     
     /// <summary>
@@ -510,7 +510,7 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd
     [TestMethod]
     public void Test_STR_s_ldst_regoff_20()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled STR_s_ldst_regoff - STR         St, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
     
     /// <summary>
@@ -545,7 +545,7 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd
     [TestMethod]
     public void Test_STR_d_ldst_regoff_22()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled STR_d_ldst_regoff - STR         Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
     
     /// <summary>
@@ -580,6 +580,6 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd
     [TestMethod]
     public void Test_STR_q_ldst_regoff_24()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled STR_q_ldst_regoff - STR         Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
 }

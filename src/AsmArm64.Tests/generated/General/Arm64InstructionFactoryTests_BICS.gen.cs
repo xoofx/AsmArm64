@@ -24,7 +24,7 @@ public class Arm64InstructionFactoryTests_BICS_General
     [TestMethod]
     public void Test_BICS_32_log_shift_0()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled BICS_32_log_shift - BICS        Wd, Wn, Wm {, shift, #amount}");
     }
     
     /// <summary>
@@ -33,6 +33,6 @@ public class Arm64InstructionFactoryTests_BICS_General
     [TestMethod]
     public void Test_BICS_64_log_shift_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled BICS_64_log_shift - BICS        Xd, Xn, Xm {, shift, #amount}");
     }
 }

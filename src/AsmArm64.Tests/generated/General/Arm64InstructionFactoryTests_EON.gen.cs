@@ -24,7 +24,7 @@ public class Arm64InstructionFactoryTests_EON_General
     [TestMethod]
     public void Test_EON_32_log_shift_0()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled EON_32_log_shift - EON         Wd, Wn, Wm {, shift, #amount}");
     }
     
     /// <summary>
@@ -33,6 +33,6 @@ public class Arm64InstructionFactoryTests_EON_General
     [TestMethod]
     public void Test_EON_64_log_shift_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled EON_64_log_shift - EON         Xd, Xn, Xm {, shift, #amount}");
     }
 }

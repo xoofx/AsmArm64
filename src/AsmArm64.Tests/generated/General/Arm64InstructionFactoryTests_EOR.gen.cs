@@ -202,7 +202,7 @@ public class Arm64InstructionFactoryTests_EOR_General
     [TestMethod]
     public void Test_EOR_32_log_shift_2()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled EOR_32_log_shift - EOR         Wd, Wn, Wm {, shift, #amount}");
     }
     
     /// <summary>
@@ -211,6 +211,6 @@ public class Arm64InstructionFactoryTests_EOR_General
     [TestMethod]
     public void Test_EOR_64_log_shift_3()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled EOR_64_log_shift - EOR         Xd, Xn, Xm {, shift, #amount}");
     }
 }

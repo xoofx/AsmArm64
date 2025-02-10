@@ -1267,7 +1267,37 @@ partial class Arm64Processor
                             };
                             newOperandVariation.AcceptedBitValues.Add(bitValue);
 
-                            GenerateEncodingForExtract(instruction, descriptor.Extract, newOperandVariation, null, "immediate");
+                            AddDefaultTestArguments(newOperandVariation);
+                            newOperandVariation.TestArguments.AddRange(testArguments);
+                            
+                            if (selector.BitRanges.Count == 1)
+                            {
+                                var bitIndex = BitOperations.TrailingZeroCount(bitValue.Addend);
+                                var size = bitIndex;
+                                if (bitValue.HasNegativeExtract)
+                                {
+                                    // Special encoding, for example:
+                                    // 16 - UInt(immh:immb)
+                                    // 32 - UInt(immh:immb)
+                                    // 64 - UInt(immh:immb)
+                                    // 128 - UInt(immh:immb)
+                                    operandPath = $"({(1 << size)} - ({operandVariation.OperandName} & 0x{(1 << size) - 1:X}))";
+                                }
+                                else
+                                {
+                                    // UInt(immh:immb) - 8
+                                    // UInt(immh:immb) - 16
+                                    // UInt(immh:immb) - 32
+                                    // UInt(immh:immb) - 64
+                                    operandPath = $"({operandVariation.OperandName} & 0x{(1 << size) - 1:X})";
+                                }
+                                GenerateBitRangeEncodingFromValue($"{operandPath}", operandVariation.OperandName, new BitRange(16, size), newOperandVariation.WriteEncodings, size);
+                            }
+                            else
+                            {
+                                GenerateEncodingForExtract(instruction, descriptor.Extract, newOperandVariation, null, "immediate");
+                            }
+
                             operandVariations.Add(newOperandVariation);
                         }
                         return;
@@ -1322,25 +1352,30 @@ partial class Arm64Processor
                 throw new ArgumentOutOfRangeException($"The ImmediateKind {descriptor.ImmediateKind} is not supported");
         }
 
-        if (testArguments.Count == 0)
+        AddDefaultTestArguments(operandVariation);
+        operandVariation.TestArguments.AddRange(testArguments);
+        operandVariations.Add(operandVariation);
+
+
+        void AddDefaultTestArguments(OperandVariation localOperandVariation)
         {
-            // TEMP instructions not handle correctly
-            if (instruction.Id != "ISB_bi_barriers" && descriptor.ValueEncodingKind != Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1 && descriptor.ValueEncodingKind != Arm64ImmediateValueEncodingKind.ValueImmsPlus1)
+            if (testArguments.Count == 0)
             {
-                if (operandVariation.OperandName == "rotate")
+                // TEMP instructions not handle correctly
+                if (instruction.Id != "ISB_bi_barriers" && descriptor.ValueEncodingKind != Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1 && descriptor.ValueEncodingKind != Arm64ImmediateValueEncodingKind.ValueImmsPlus1)
                 {
-                    testArguments.Add(new(90));
-                }
-                else
-                {
-                    var valueToTest = BuildTestImmediateValue(descriptor.ValueEncodingKind, 5);
-                    testArguments.Add(new((int)valueToTest));
+                    if (localOperandVariation.OperandName == "rotate")
+                    {
+                        testArguments.Add(new(90));
+                    }
+                    else
+                    {
+                        var valueToTest = BuildTestImmediateValue(descriptor.ValueEncodingKind, 5);
+                        testArguments.Add(new((int)valueToTest));
+                    }
                 }
             }
         }
-        
-        operandVariation.TestArguments.AddRange(testArguments);
-        operandVariations.Add(operandVariation);
     }
 
     private void GetShiftOperandVariations(Instruction instruction, ShiftOperandDescriptor descriptor, List<OperandVariation> operandVariations)

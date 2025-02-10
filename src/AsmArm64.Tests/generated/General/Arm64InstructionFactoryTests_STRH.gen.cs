@@ -164,6 +164,6 @@ public class Arm64InstructionFactoryTests_STRH_General
     [TestMethod]
     public void Test_STRH_32_ldst_regoff_4()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled STRH_32_ldst_regoff - STRH        Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
 }

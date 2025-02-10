@@ -24,7 +24,7 @@ public class Arm64InstructionFactoryTests_LUTI4_Advsimd
     [TestMethod]
     public void Test_LUTI4_asimdtbl_l5_0()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LUTI4_asimdtbl_l5 - LUTI4       Vd.16B, {Vn.16B}, Vm[index]");
     }
     
     /// <summary>
@@ -33,6 +33,6 @@ public class Arm64InstructionFactoryTests_LUTI4_Advsimd
     [TestMethod]
     public void Test_LUTI4_asimdtbl_l7_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LUTI4_asimdtbl_l7 - LUTI4       Vd.8H, {Vn1.8H, Vn2.8H}, Vm[index]");
     }
 }

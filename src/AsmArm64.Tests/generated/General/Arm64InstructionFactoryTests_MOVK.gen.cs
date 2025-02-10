@@ -24,7 +24,7 @@ public class Arm64InstructionFactoryTests_MOVK_General
     [TestMethod]
     public void Test_MOVK_32_movewide_0()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MOVK_32_movewide - MOVK        Wd, #imm {, LSL #shift}");
     }
     
     /// <summary>
@@ -33,6 +33,6 @@ public class Arm64InstructionFactoryTests_MOVK_General
     [TestMethod]
     public void Test_MOVK_64_movewide_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MOVK_64_movewide - MOVK        Xd, #imm {, LSL #shift}");
     }
 }

@@ -269,7 +269,7 @@ public class Arm64InstructionFactoryTests_STR_General
     [TestMethod]
     public void Test_STR_32_ldst_regoff_7()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled STR_32_ldst_regoff - STR         Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
     
     /// <summary>
@@ -313,6 +313,6 @@ public class Arm64InstructionFactoryTests_STR_General
     [TestMethod]
     public void Test_STR_64_ldst_regoff_9()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled STR_64_ldst_regoff - STR         Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
 }

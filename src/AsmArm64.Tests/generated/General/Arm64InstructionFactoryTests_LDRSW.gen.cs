@@ -199,6 +199,6 @@ public class Arm64InstructionFactoryTests_LDRSW_General
     [TestMethod]
     public void Test_LDRSW_64_ldst_regoff_5()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LDRSW_64_ldst_regoff - LDRSW       Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
 }

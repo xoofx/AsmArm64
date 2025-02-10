@@ -24,6 +24,6 @@ public class Arm64InstructionFactoryTests_ADDPT_General
     [TestMethod]
     public void Test_ADDPT_64_addsub_pt_0()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled ADDPT_64_addsub_pt - ADDPT       Xd|SP, Xn|SP, Xm {, LSL #amount}");
     }
 }

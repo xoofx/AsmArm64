@@ -24,6 +24,6 @@ public class Arm64InstructionFactoryTests_ISB_System
     [TestMethod]
     public void Test_ISB_bi_barriers_0()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled ISB_bi_barriers - ISB         {option, #imm}");
     }
 }

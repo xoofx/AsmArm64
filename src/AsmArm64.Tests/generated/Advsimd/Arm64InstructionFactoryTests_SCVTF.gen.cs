@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_SCVTF_Advsimd
     [TestMethod]
     public void Test_SCVTF_asisdshf_c_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SCVTF(H1, H2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF H1, H2, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(H31, H2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF H31, H2, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(H1, H0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF H1, H0, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(H31, H0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF H31, H0, #5", asm);
+        }
     }
     
     /// <summary>
@@ -33,7 +68,42 @@ public class Arm64InstructionFactoryTests_SCVTF_Advsimd
     [TestMethod]
     public void Test_SCVTF_asisdshf_c_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SCVTF(S1, S2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF S1, S2, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(S31, S2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF S31, S2, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(S1, S0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF S1, S0, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(S31, S0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF S31, S0, #5", asm);
+        }
     }
     
     /// <summary>
@@ -42,7 +112,42 @@ public class Arm64InstructionFactoryTests_SCVTF_Advsimd
     [TestMethod]
     public void Test_SCVTF_asisdshf_c_2()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SCVTF(D1, D2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF D1, D2, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(D31, D2, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF D31, D2, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(D1, D0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF D1, D0, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(D31, D0, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asisdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF D31, D0, #5", asm);
+        }
     }
     
     /// <summary>
@@ -51,7 +156,42 @@ public class Arm64InstructionFactoryTests_SCVTF_Advsimd
     [TestMethod]
     public void Test_SCVTF_asimdshf_c_3()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SCVTF(V0.T_4H, V1.T_4H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V0.4H, V1.4H, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V30.T_4H, V1.T_4H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V30.4H, V1.4H, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V0.T_4H, V31.T_4H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V0.4H, V31.4H, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V30.T_4H, V31.T_4H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V30.4H, V31.4H, #5", asm);
+        }
     }
     
     /// <summary>
@@ -60,7 +200,42 @@ public class Arm64InstructionFactoryTests_SCVTF_Advsimd
     [TestMethod]
     public void Test_SCVTF_asimdshf_c_4()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SCVTF(V0.T_8H, V1.T_8H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V0.8H, V1.8H, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V30.T_8H, V1.T_8H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V30.8H, V1.8H, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V0.T_8H, V31.T_8H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V0.8H, V31.8H, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V30.T_8H, V31.T_8H, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V30.8H, V31.8H, #5", asm);
+        }
     }
     
     /// <summary>
@@ -69,7 +244,42 @@ public class Arm64InstructionFactoryTests_SCVTF_Advsimd
     [TestMethod]
     public void Test_SCVTF_asimdshf_c_5()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SCVTF(V0.T_2S, V1.T_2S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V0.2S, V1.2S, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V30.T_2S, V1.T_2S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V30.2S, V1.2S, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V0.T_2S, V31.T_2S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V0.2S, V31.2S, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V30.T_2S, V31.T_2S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V30.2S, V31.2S, #5", asm);
+        }
     }
     
     /// <summary>
@@ -78,7 +288,42 @@ public class Arm64InstructionFactoryTests_SCVTF_Advsimd
     [TestMethod]
     public void Test_SCVTF_asimdshf_c_6()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SCVTF(V0.T_4S, V1.T_4S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V0.4S, V1.4S, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V30.T_4S, V1.T_4S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V30.4S, V1.4S, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V0.T_4S, V31.T_4S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V0.4S, V31.4S, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V30.T_4S, V31.T_4S, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V30.4S, V31.4S, #5", asm);
+        }
     }
     
     /// <summary>
@@ -87,7 +332,42 @@ public class Arm64InstructionFactoryTests_SCVTF_Advsimd
     [TestMethod]
     public void Test_SCVTF_asimdshf_c_7()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = SCVTF(V0.T_2D, V1.T_2D, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V0.2D, V1.2D, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V30.T_2D, V1.T_2D, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V30.2D, V1.2D, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V0.T_2D, V31.T_2D, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V0.2D, V31.2D, #5", asm);
+        }
+        
+        {
+            var raw = SCVTF(V30.T_2D, V31.T_2D, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SCVTF_asimdshf_c, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SCVTF, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SCVTF V30.2D, V31.2D, #5", asm);
+        }
     }
     
     /// <summary>

@@ -24,6 +24,6 @@ public class Arm64InstructionFactoryTests_SUBPT_General
     [TestMethod]
     public void Test_SUBPT_64_addsub_pt_0()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled SUBPT_64_addsub_pt - SUBPT       Xd|SP, Xn|SP, Xm {, LSL #amount}");
     }
 }

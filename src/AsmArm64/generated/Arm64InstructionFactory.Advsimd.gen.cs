@@ -5282,7 +5282,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F10FC00U; // Encoding for: FCVTZS_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5295,7 +5295,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F20FC00U; // Encoding for: FCVTZS_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5308,7 +5308,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F40FC00U; // Encoding for: FCVTZS_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(128 - (fbits & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5321,7 +5321,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F10FC00U; // Encoding for: FCVTZS_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5334,7 +5334,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F10FC00U; // Encoding for: FCVTZS_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5347,7 +5347,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F20FC00U; // Encoding for: FCVTZS_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5360,7 +5360,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F20FC00U; // Encoding for: FCVTZS_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5373,7 +5373,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F40FC00U; // Encoding for: FCVTZS_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(128 - (fbits & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5482,7 +5482,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F10FC00U; // Encoding for: FCVTZU_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5495,7 +5495,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F20FC00U; // Encoding for: FCVTZU_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5508,7 +5508,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F40FC00U; // Encoding for: FCVTZU_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(128 - (fbits & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5521,7 +5521,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F10FC00U; // Encoding for: FCVTZU_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5534,7 +5534,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F10FC00U; // Encoding for: FCVTZU_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5547,7 +5547,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F20FC00U; // Encoding for: FCVTZU_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5560,7 +5560,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F20FC00U; // Encoding for: FCVTZU_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -5573,7 +5573,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F40FC00U; // Encoding for: FCVTZU_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(128 - (fbits & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -16188,7 +16188,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F088C00U; // Encoding for: RSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -16201,7 +16201,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F108C00U; // Encoding for: RSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -16214,7 +16214,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F208C00U; // Encoding for: RSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -16227,7 +16227,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F088C00U; // Encoding for: RSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -16240,7 +16240,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F108C00U; // Encoding for: RSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -16253,7 +16253,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F208C00U; // Encoding for: RSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17016,7 +17016,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F10E400U; // Encoding for: SCVTF_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17029,7 +17029,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F20E400U; // Encoding for: SCVTF_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17042,7 +17042,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F40E400U; // Encoding for: SCVTF_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(128 - (fbits & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17055,7 +17055,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F10E400U; // Encoding for: SCVTF_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17068,7 +17068,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F10E400U; // Encoding for: SCVTF_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17081,7 +17081,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F20E400U; // Encoding for: SCVTF_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17094,7 +17094,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F20E400U; // Encoding for: SCVTF_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17107,7 +17107,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F40E400U; // Encoding for: SCVTF_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(128 - (fbits & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17551,7 +17551,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F085400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -17564,7 +17564,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F085400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -17577,7 +17577,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F105400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -17590,7 +17590,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F105400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -17603,7 +17603,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F205400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -17616,7 +17616,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F205400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -17629,7 +17629,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F405400U; // Encoding for: SHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x3F) << 16;
         return raw;
     }
     /// <summary>
@@ -17720,7 +17720,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F088400U; // Encoding for: SHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -17733,7 +17733,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F108400U; // Encoding for: SHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17746,7 +17746,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F208400U; // Encoding for: SHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17759,7 +17759,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F088400U; // Encoding for: SHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -17772,7 +17772,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F108400U; // Encoding for: SHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17785,7 +17785,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F208400U; // Encoding for: SHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -17889,7 +17889,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F085400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -17902,7 +17902,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F085400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -17915,7 +17915,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F105400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -17928,7 +17928,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F105400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -17941,7 +17941,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F205400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -17954,7 +17954,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F205400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -17967,7 +17967,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F405400U; // Encoding for: SLI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x3F) << 16;
         return raw;
     }
     /// <summary>
@@ -21021,7 +21021,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F089C00U; // Encoding for: SQRSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21034,7 +21034,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F109C00U; // Encoding for: SQRSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21047,7 +21047,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F209C00U; // Encoding for: SQRSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21060,7 +21060,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F089C00U; // Encoding for: SQRSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21073,7 +21073,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F109C00U; // Encoding for: SQRSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21086,7 +21086,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F209C00U; // Encoding for: SQRSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21099,7 +21099,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F089C00U; // Encoding for: SQRSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21112,7 +21112,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F109C00U; // Encoding for: SQRSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21125,7 +21125,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F209C00U; // Encoding for: SQRSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21138,7 +21138,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F088C00U; // Encoding for: SQRSHRUN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21151,7 +21151,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F108C00U; // Encoding for: SQRSHRUN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21164,7 +21164,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F208C00U; // Encoding for: SQRSHRUN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21177,7 +21177,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F088C00U; // Encoding for: SQRSHRUN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21190,7 +21190,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F108C00U; // Encoding for: SQRSHRUN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21203,7 +21203,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F208C00U; // Encoding for: SQRSHRUN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21216,7 +21216,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F088C00U; // Encoding for: SQRSHRUN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21229,7 +21229,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F108C00U; // Encoding for: SQRSHRUN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21242,7 +21242,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F208C00U; // Encoding for: SQRSHRUN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21255,7 +21255,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F087400U; // Encoding for: SQSHL_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -21268,7 +21268,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F107400U; // Encoding for: SQSHL_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -21281,7 +21281,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F207400U; // Encoding for: SQSHL_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -21294,7 +21294,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F407400U; // Encoding for: SQSHL_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x3F) << 16;
         return raw;
     }
     /// <summary>
@@ -21307,7 +21307,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F087400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -21320,7 +21320,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F087400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -21333,7 +21333,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F107400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -21346,7 +21346,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F107400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -21359,7 +21359,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F207400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -21372,7 +21372,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F207400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -21385,7 +21385,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F407400U; // Encoding for: SQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x3F) << 16;
         return raw;
     }
     /// <summary>
@@ -21541,7 +21541,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F086400U; // Encoding for: SQSHLU_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -21554,7 +21554,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F106400U; // Encoding for: SQSHLU_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -21567,7 +21567,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F206400U; // Encoding for: SQSHLU_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -21580,7 +21580,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F406400U; // Encoding for: SQSHLU_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x3F) << 16;
         return raw;
     }
     /// <summary>
@@ -21593,7 +21593,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F086400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -21606,7 +21606,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F086400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -21619,7 +21619,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F106400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -21632,7 +21632,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F106400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -21645,7 +21645,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F206400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -21658,7 +21658,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F206400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -21671,7 +21671,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F406400U; // Encoding for: SQSHLU_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x3F) << 16;
         return raw;
     }
     /// <summary>
@@ -21684,7 +21684,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F089400U; // Encoding for: SQSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21697,7 +21697,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F109400U; // Encoding for: SQSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21710,7 +21710,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x5F209400U; // Encoding for: SQSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21723,7 +21723,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F089400U; // Encoding for: SQSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21736,7 +21736,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F109400U; // Encoding for: SQSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21749,7 +21749,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F209400U; // Encoding for: SQSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21762,7 +21762,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F089400U; // Encoding for: SQSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21775,7 +21775,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F109400U; // Encoding for: SQSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21788,7 +21788,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F209400U; // Encoding for: SQSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21801,7 +21801,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F088400U; // Encoding for: SQSHRUN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21814,7 +21814,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F108400U; // Encoding for: SQSHRUN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21827,7 +21827,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F208400U; // Encoding for: SQSHRUN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21840,7 +21840,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F088400U; // Encoding for: SQSHRUN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21853,7 +21853,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F108400U; // Encoding for: SQSHRUN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21866,7 +21866,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F208400U; // Encoding for: SQSHRUN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21879,7 +21879,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F088400U; // Encoding for: SQSHRUN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -21892,7 +21892,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F108400U; // Encoding for: SQSHRUN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -21905,7 +21905,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F208400U; // Encoding for: SQSHRUN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22368,7 +22368,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F084400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -22381,7 +22381,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F084400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -22394,7 +22394,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F104400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22407,7 +22407,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F104400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22420,7 +22420,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F204400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22433,7 +22433,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F204400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22446,7 +22446,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F404400U; // Encoding for: SRI_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(128 - (shift & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22576,7 +22576,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F082400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -22589,7 +22589,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F082400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -22602,7 +22602,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F102400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22615,7 +22615,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F102400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22628,7 +22628,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F202400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22641,7 +22641,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F202400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22654,7 +22654,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F402400U; // Encoding for: SRSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(128 - (shift & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22680,7 +22680,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F083400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -22693,7 +22693,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F083400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -22706,7 +22706,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F103400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22719,7 +22719,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F103400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22732,7 +22732,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F203400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22745,7 +22745,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F203400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22758,7 +22758,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F403400U; // Encoding for: SRSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(128 - (shift & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -22875,7 +22875,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F08A400U; // Encoding for: SSHLL_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -22888,7 +22888,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F10A400U; // Encoding for: SSHLL_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -22901,7 +22901,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F20A400U; // Encoding for: SSHLL_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -22914,7 +22914,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F08A400U; // Encoding for: SSHLL2_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -22927,7 +22927,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F10A400U; // Encoding for: SSHLL2_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -22940,7 +22940,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F20A400U; // Encoding for: SSHLL2_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -22966,7 +22966,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F080400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -22979,7 +22979,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F080400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -22992,7 +22992,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F100400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -23005,7 +23005,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F100400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -23018,7 +23018,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F200400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -23031,7 +23031,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F200400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -23044,7 +23044,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F400400U; // Encoding for: SSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(128 - (shift & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -23070,7 +23070,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F081400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -23083,7 +23083,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F081400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -23096,7 +23096,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F101400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -23109,7 +23109,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F101400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -23122,7 +23122,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x0F201400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -23135,7 +23135,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F201400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -23148,7 +23148,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4F401400U; // Encoding for: SSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(128 - (shift & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -28184,7 +28184,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F10E400U; // Encoding for: UCVTF_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -28197,7 +28197,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F20E400U; // Encoding for: UCVTF_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -28210,7 +28210,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F40E400U; // Encoding for: UCVTF_asisdshf_c
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(128 - (fbits & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -28223,7 +28223,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F10E400U; // Encoding for: UCVTF_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -28236,7 +28236,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F10E400U; // Encoding for: UCVTF_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(32 - (fbits & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -28249,7 +28249,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F20E400U; // Encoding for: UCVTF_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -28262,7 +28262,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F20E400U; // Encoding for: UCVTF_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(64 - (fbits & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -28275,7 +28275,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F40E400U; // Encoding for: UCVTF_asimdshf_c
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(fbits & 0x7F) << 16;
+        raw |= (uint)(128 - (fbits & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -29850,7 +29850,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F089C00U; // Encoding for: UQRSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -29863,7 +29863,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F109C00U; // Encoding for: UQRSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -29876,7 +29876,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F209C00U; // Encoding for: UQRSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -29889,7 +29889,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F089C00U; // Encoding for: UQRSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -29902,7 +29902,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F109C00U; // Encoding for: UQRSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -29915,7 +29915,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F209C00U; // Encoding for: UQRSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -29928,7 +29928,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F089C00U; // Encoding for: UQRSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -29941,7 +29941,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F109C00U; // Encoding for: UQRSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -29954,7 +29954,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F209C00U; // Encoding for: UQRSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -29967,7 +29967,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F087400U; // Encoding for: UQSHL_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -29980,7 +29980,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F107400U; // Encoding for: UQSHL_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -29993,7 +29993,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F207400U; // Encoding for: UQSHL_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -30006,7 +30006,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F407400U; // Encoding for: UQSHL_asisdshf_r
         raw |= (uint)Vd.Index;
         raw |= (uint)Vn.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x3F) << 16;
         return raw;
     }
     /// <summary>
@@ -30019,7 +30019,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F087400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -30032,7 +30032,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F087400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -30045,7 +30045,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F107400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -30058,7 +30058,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F107400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -30071,7 +30071,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F207400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -30084,7 +30084,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F207400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -30097,7 +30097,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F407400U; // Encoding for: UQSHL_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x3F) << 16;
         return raw;
     }
     /// <summary>
@@ -30253,7 +30253,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F089400U; // Encoding for: UQSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -30266,7 +30266,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F109400U; // Encoding for: UQSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -30279,7 +30279,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x7F209400U; // Encoding for: UQSHRN_asisdshf_n
         raw |= (uint)Vbd.Index;
         raw |= (uint)Van.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -30292,7 +30292,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F089400U; // Encoding for: UQSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -30305,7 +30305,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F109400U; // Encoding for: UQSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -30318,7 +30318,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F209400U; // Encoding for: UQSHRN_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -30331,7 +30331,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F089400U; // Encoding for: UQSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -30344,7 +30344,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F109400U; // Encoding for: UQSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -30357,7 +30357,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F209400U; // Encoding for: UQSHRN2_asimdshf_n
         raw |= (uint)Vd_Tb.Index;
         raw |= (uint)Vn_Ta.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -30840,7 +30840,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F082400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -30853,7 +30853,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F082400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -30866,7 +30866,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F102400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -30879,7 +30879,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F102400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -30892,7 +30892,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F202400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -30905,7 +30905,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F202400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -30918,7 +30918,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F402400U; // Encoding for: URSHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(128 - (shift & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -30968,7 +30968,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F083400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -30981,7 +30981,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F083400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -30994,7 +30994,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F103400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31007,7 +31007,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F103400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31020,7 +31020,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F203400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31033,7 +31033,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F203400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31046,7 +31046,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F403400U; // Encoding for: URSRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(128 - (shift & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31229,7 +31229,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F08A400U; // Encoding for: USHLL_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -31242,7 +31242,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F10A400U; // Encoding for: USHLL_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -31255,7 +31255,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F20A400U; // Encoding for: USHLL_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -31268,7 +31268,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F08A400U; // Encoding for: USHLL2_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x7) << 16;
         return raw;
     }
     /// <summary>
@@ -31281,7 +31281,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F10A400U; // Encoding for: USHLL2_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0xF) << 16;
         return raw;
     }
     /// <summary>
@@ -31294,7 +31294,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F20A400U; // Encoding for: USHLL2_asimdshf_l
         raw |= (uint)Vd_Ta.Index;
         raw |= (uint)Vn_Tb.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(shift & 0x1F) << 16;
         return raw;
     }
     /// <summary>
@@ -31320,7 +31320,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F080400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -31333,7 +31333,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F080400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -31346,7 +31346,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F100400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31359,7 +31359,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F100400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31372,7 +31372,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F200400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31385,7 +31385,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F200400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31398,7 +31398,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F400400U; // Encoding for: USHR_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(128 - (shift & 0x7F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31569,7 +31569,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F081400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -31582,7 +31582,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F081400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(16 - (shift & 0xF)) << 16;
         return raw;
     }
     /// <summary>
@@ -31595,7 +31595,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F101400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31608,7 +31608,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F101400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(32 - (shift & 0x1F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31621,7 +31621,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x2F201400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31634,7 +31634,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F201400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(64 - (shift & 0x3F)) << 16;
         return raw;
     }
     /// <summary>
@@ -31647,7 +31647,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x6F401400U; // Encoding for: USRA_asimdshf_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
-        raw |= (uint)(shift & 0x7F) << 16;
+        raw |= (uint)(128 - (shift & 0x7F)) << 16;
         return raw;
     }
     /// <summary>

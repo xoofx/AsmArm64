@@ -24,7 +24,7 @@ public class Arm64InstructionFactoryTests_BIC_Advsimd
     [TestMethod]
     public void Test_BIC_asimdimm_l_hl_0()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled BIC_asimdimm_l_hl - BIC         Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>
@@ -33,7 +33,7 @@ public class Arm64InstructionFactoryTests_BIC_Advsimd
     [TestMethod]
     public void Test_BIC_asimdimm_l_hl_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled BIC_asimdimm_l_hl - BIC         Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>
@@ -42,7 +42,7 @@ public class Arm64InstructionFactoryTests_BIC_Advsimd
     [TestMethod]
     public void Test_BIC_asimdimm_l_sl_2()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled BIC_asimdimm_l_sl - BIC         Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>
@@ -51,7 +51,7 @@ public class Arm64InstructionFactoryTests_BIC_Advsimd
     [TestMethod]
     public void Test_BIC_asimdimm_l_sl_3()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled BIC_asimdimm_l_sl - BIC         Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>

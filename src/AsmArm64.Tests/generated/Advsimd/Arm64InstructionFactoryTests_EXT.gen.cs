@@ -24,7 +24,78 @@ public class Arm64InstructionFactoryTests_EXT_Advsimd
     [TestMethod]
     public void Test_EXT_asimdext_only_0()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = EXT(V0.T_8B, V1.T_8B, V2.T_8B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V0.8B, V1.8B, V2.8B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V30.T_8B, V1.T_8B, V2.T_8B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V30.8B, V1.8B, V2.8B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V0.T_8B, V31.T_8B, V2.T_8B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V0.8B, V31.8B, V2.8B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V30.T_8B, V31.T_8B, V2.T_8B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V30.8B, V31.8B, V2.8B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V0.T_8B, V1.T_8B, V0.T_8B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V0.8B, V1.8B, V0.8B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V30.T_8B, V1.T_8B, V0.T_8B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V30.8B, V1.8B, V0.8B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V0.T_8B, V31.T_8B, V0.T_8B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V0.8B, V31.8B, V0.8B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V30.T_8B, V31.T_8B, V0.T_8B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V30.8B, V31.8B, V0.8B, #5", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +104,77 @@ public class Arm64InstructionFactoryTests_EXT_Advsimd
     [TestMethod]
     public void Test_EXT_asimdext_only_1()
     {
-        Assert.Inconclusive("TODO");
+        
+        {
+            var raw = EXT(V0.T_16B, V1.T_16B, V2.T_16B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V0.16B, V1.16B, V2.16B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V30.T_16B, V1.T_16B, V2.T_16B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V30.16B, V1.16B, V2.16B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V0.T_16B, V31.T_16B, V2.T_16B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V0.16B, V31.16B, V2.16B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V30.T_16B, V31.T_16B, V2.T_16B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V30.16B, V31.16B, V2.16B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V0.T_16B, V1.T_16B, V0.T_16B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V0.16B, V1.16B, V0.16B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V30.T_16B, V1.T_16B, V0.T_16B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V30.16B, V1.16B, V0.16B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V0.T_16B, V31.T_16B, V0.T_16B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V0.16B, V31.16B, V0.16B, #5", asm);
+        }
+        
+        {
+            var raw = EXT(V30.T_16B, V31.T_16B, V0.T_16B, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.EXT_asimdext_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.EXT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("EXT V30.16B, V31.16B, V0.16B, #5", asm);
+        }
     }
 }

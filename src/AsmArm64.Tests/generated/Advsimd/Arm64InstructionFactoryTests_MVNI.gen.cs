@@ -24,7 +24,7 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd
     [TestMethod]
     public void Test_MVNI_asimdimm_l_hl_0()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MVNI_asimdimm_l_hl - MVNI        Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>
@@ -33,7 +33,7 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd
     [TestMethod]
     public void Test_MVNI_asimdimm_l_hl_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MVNI_asimdimm_l_hl - MVNI        Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>
@@ -42,7 +42,7 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd
     [TestMethod]
     public void Test_MVNI_asimdimm_l_sl_2()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MVNI_asimdimm_l_sl - MVNI        Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>
@@ -51,7 +51,7 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd
     [TestMethod]
     public void Test_MVNI_asimdimm_l_sl_3()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MVNI_asimdimm_l_sl - MVNI        Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>
@@ -60,7 +60,7 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd
     [TestMethod]
     public void Test_MVNI_asimdimm_m_sm_4()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MVNI_asimdimm_m_sm - MVNI        Vd.T, #imm8, MSL #amount");
     }
     
     /// <summary>
@@ -69,6 +69,6 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd
     [TestMethod]
     public void Test_MVNI_asimdimm_m_sm_5()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MVNI_asimdimm_m_sm - MVNI        Vd.T, #imm8, MSL #amount");
     }
 }

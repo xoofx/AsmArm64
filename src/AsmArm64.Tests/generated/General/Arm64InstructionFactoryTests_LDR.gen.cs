@@ -339,7 +339,7 @@ public class Arm64InstructionFactoryTests_LDR_General
     [TestMethod]
     public void Test_LDR_32_ldst_regoff_9()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LDR_32_ldst_regoff - LDR         Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
     
     /// <summary>
@@ -383,6 +383,6 @@ public class Arm64InstructionFactoryTests_LDR_General
     [TestMethod]
     public void Test_LDR_64_ldst_regoff_11()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LDR_64_ldst_regoff - LDR         Xt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
 }

@@ -59,7 +59,7 @@ public class Arm64InstructionFactoryTests_STRB_General
     [TestMethod]
     public void Test_STRB_32b_ldst_regoff_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled STRB_32b_ldst_regoff - STRB        Wt, [Xn|SP, (Wm|Xm), extend{, amount}]");
     }
     
     /// <summary>

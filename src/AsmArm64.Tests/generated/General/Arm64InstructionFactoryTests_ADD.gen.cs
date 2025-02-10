@@ -24,7 +24,7 @@ public class Arm64InstructionFactoryTests_ADD_General
     [TestMethod]
     public void Test_ADD_32_addsub_ext_0()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled ADD_32_addsub_ext - ADD         Wd|WSP, Wn|WSP, Wm {, extend, {#amount}}");
     }
     
     /// <summary>
@@ -33,7 +33,7 @@ public class Arm64InstructionFactoryTests_ADD_General
     [TestMethod]
     public void Test_ADD_64_addsub_ext_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled ADD_64_addsub_ext - ADD         Xd|SP, Xn|SP, Rm {, extend, {#amount}}");
     }
     
     /// <summary>
@@ -42,7 +42,7 @@ public class Arm64InstructionFactoryTests_ADD_General
     [TestMethod]
     public void Test_ADD_64_addsub_ext_2()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled ADD_64_addsub_ext - ADD         Xd|SP, Xn|SP, Rm {, extend, {#amount}}");
     }
     
     /// <summary>
@@ -51,7 +51,7 @@ public class Arm64InstructionFactoryTests_ADD_General
     [TestMethod]
     public void Test_ADD_32_addsub_shift_5()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled ADD_32_addsub_shift - ADD         Wd, Wn, Wm {, shift, #amount}");
     }
     
     /// <summary>
@@ -60,6 +60,6 @@ public class Arm64InstructionFactoryTests_ADD_General
     [TestMethod]
     public void Test_ADD_64_addsub_shift_6()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled ADD_64_addsub_shift - ADD         Xd, Xn, Xm {, shift, #amount}");
     }
 }

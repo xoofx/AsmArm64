@@ -59,7 +59,7 @@ public class Arm64InstructionFactoryTests_LDRB_General
     [TestMethod]
     public void Test_LDRB_32b_ldst_regoff_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LDRB_32b_ldst_regoff - LDRB        Wt, [Xn|SP, (Wm|Xm), extend{, amount}]");
     }
     
     /// <summary>

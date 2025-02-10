@@ -164,6 +164,6 @@ public class Arm64InstructionFactoryTests_LDRH_General
     [TestMethod]
     public void Test_LDRH_32_ldst_regoff_4()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled LDRH_32_ldst_regoff - LDRH        Wt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
     }
 }

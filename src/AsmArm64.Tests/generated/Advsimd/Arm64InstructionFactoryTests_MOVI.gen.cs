@@ -24,7 +24,7 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_n_b_0()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MOVI_asimdimm_n_b - MOVI        Vd.T, #imm8 {, LSL #0}");
     }
     
     /// <summary>
@@ -33,7 +33,7 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_n_b_1()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MOVI_asimdimm_n_b - MOVI        Vd.T, #imm8 {, LSL #0}");
     }
     
     /// <summary>
@@ -42,7 +42,7 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_l_hl_2()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MOVI_asimdimm_l_hl - MOVI        Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>
@@ -51,7 +51,7 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_l_hl_3()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MOVI_asimdimm_l_hl - MOVI        Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>
@@ -60,7 +60,7 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_l_sl_4()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MOVI_asimdimm_l_sl - MOVI        Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>
@@ -69,7 +69,7 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_l_sl_5()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MOVI_asimdimm_l_sl - MOVI        Vd.T, #imm8 {, LSL #amount}");
     }
     
     /// <summary>
@@ -78,7 +78,7 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_m_sm_6()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MOVI_asimdimm_m_sm - MOVI        Vd.T, #imm8, MSL #amount");
     }
     
     /// <summary>
@@ -87,7 +87,7 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd
     [TestMethod]
     public void Test_MOVI_asimdimm_m_sm_7()
     {
-        Assert.Inconclusive("TODO");
+        Assert.Inconclusive("Not handled MOVI_asimdimm_m_sm - MOVI        Vd.T, #imm8, MSL #amount");
     }
     
     /// <summary>
