@@ -620,16 +620,7 @@ partial class Arm64Processor
                 GenerateBitRangeEncodingFromValue($"{operandVariation.OperandName}.IndexRegister.Index", "index register", bitSize, descriptor.IndexRegisterOrImmediate, operandVariation.WriteEncodings, bitSize == 5 ? bitSize : 0);
                 hasLslOrExtend = true;
 
-                var extendValue = descriptor.ExtendKind switch
-                {
-                    Arm64MemoryExtendEncodingKind.Shift0 => 0,
-                    Arm64MemoryExtendEncodingKind.Shift1 => 1,
-                    Arm64MemoryExtendEncodingKind.Shift2 => 2,
-                    Arm64MemoryExtendEncodingKind.Shift3 => 3,
-                    Arm64MemoryExtendEncodingKind.Shift4 => 4,
-                    _ => throw new ArgumentOutOfRangeException()
-                };
-
+                var extendValue = GetExtendValue(descriptor.ExtendKind);
                 testArguments.Add(new(new RegisterTestArgument("X", 1 + operandIndex), new RegisterTestArgument("X", 2 + operandIndex), "LSL", extendValue)
                 {
                     PreIncrement = descriptor.IsPreIncrement
@@ -722,6 +713,11 @@ partial class Arm64Processor
 
             operandVariation2.WriteEncodings.AddRange(operandVariation.WriteEncodings);
             operandVariations.Add(operandVariation2);
+
+            operandVariation2.TestArguments.Add(new MemoryTestArgument(new RegisterTestArgument("X", 1 + operandIndex), new RegisterTestArgument("W", 2 + operandIndex), "UXTW", GetExtendValue(descriptor.ExtendKind))
+            {
+                PreIncrement = descriptor.IsPreIncrement
+            });
 
             if (hasLslOrExtend)
             {
@@ -834,6 +830,20 @@ partial class Arm64Processor
                 }
             });
         }
+    }
+
+    private static int GetExtendValue(Arm64MemoryExtendEncodingKind extendKind)
+    {
+        var extendValue = extendKind switch
+        {
+            Arm64MemoryExtendEncodingKind.Shift0 => 0,
+            Arm64MemoryExtendEncodingKind.Shift1 => 1,
+            Arm64MemoryExtendEncodingKind.Shift2 => 2,
+            Arm64MemoryExtendEncodingKind.Shift3 => 3,
+            Arm64MemoryExtendEncodingKind.Shift4 => 4,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+        return extendValue;
     }
     
     private string GenerateImmediateValueEncoding(Arm64ImmediateValueEncodingKind kind, string operandPath)

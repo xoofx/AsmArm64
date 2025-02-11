@@ -50,7 +50,24 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd
     [TestMethod]
     public void Test_STR_b_ldst_regoff_1()
     {
-        Assert.Inconclusive("Not handled STR_b_ldst_regoff - STR         Bt, [Xn|SP, (Wm|Xm), extend{, amount}]");
+        
+        {
+            var raw = STR(B0, _[X2, W3, _UXTW, 0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_b_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR B0, [X2, W3, UXTW #0]", asm);
+        }
+        
+        {
+            var raw = STR(B31, _[X2, W3, _UXTW, 0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_b_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR B31, [X2, W3, UXTW #0]", asm);
+        }
     }
     
     /// <summary>
@@ -475,7 +492,24 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd
     [TestMethod]
     public void Test_STR_h_ldst_regoff_18()
     {
-        Assert.Inconclusive("Not handled STR_h_ldst_regoff - STR         Ht, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
+        
+        {
+            var raw = STR(H0, _[X2, W3, _UXTW, 1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_h_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR H0, [X2, W3, UXTW #1]", asm);
+        }
+        
+        {
+            var raw = STR(H31, _[X2, W3, _UXTW, 1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_h_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR H31, [X2, W3, UXTW #1]", asm);
+        }
     }
     
     /// <summary>
@@ -510,7 +544,24 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd
     [TestMethod]
     public void Test_STR_s_ldst_regoff_20()
     {
-        Assert.Inconclusive("Not handled STR_s_ldst_regoff - STR         St, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
+        
+        {
+            var raw = STR(S0, _[X2, W3, _UXTW, 2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_s_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR S0, [X2, W3, UXTW #2]", asm);
+        }
+        
+        {
+            var raw = STR(S31, _[X2, W3, _UXTW, 2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_s_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR S31, [X2, W3, UXTW #2]", asm);
+        }
     }
     
     /// <summary>
@@ -545,7 +596,24 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd
     [TestMethod]
     public void Test_STR_d_ldst_regoff_22()
     {
-        Assert.Inconclusive("Not handled STR_d_ldst_regoff - STR         Dt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
+        
+        {
+            var raw = STR(D0, _[X2, W3, _UXTW, 3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_d_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR D0, [X2, W3, UXTW #3]", asm);
+        }
+        
+        {
+            var raw = STR(D31, _[X2, W3, _UXTW, 3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_d_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR D31, [X2, W3, UXTW #3]", asm);
+        }
     }
     
     /// <summary>
@@ -580,6 +648,23 @@ public class Arm64InstructionFactoryTests_STR_Fpsimd
     [TestMethod]
     public void Test_STR_q_ldst_regoff_24()
     {
-        Assert.Inconclusive("Not handled STR_q_ldst_regoff - STR         Qt, [Xn|SP, (Wm|Xm){, extend, {amount}}]");
+        
+        {
+            var raw = STR(Q0, _[X2, W3, _UXTW, 4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_q_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR Q0, [X2, W3, UXTW #4]", asm);
+        }
+        
+        {
+            var raw = STR(Q31, _[X2, W3, _UXTW, 4]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STR_q_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STR Q31, [X2, W3, UXTW #4]", asm);
+        }
     }
 }

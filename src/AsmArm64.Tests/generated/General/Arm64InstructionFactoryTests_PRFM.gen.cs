@@ -75,6 +75,14 @@ public class Arm64InstructionFactoryTests_PRFM_General
     [TestMethod]
     public void Test_PRFM_p_ldst_regoff_3()
     {
-        Assert.Inconclusive("Not handled PRFM_p_ldst_regoff - PRFM        (prfop|#imm5), [Xn|SP, (Wm|Xm){, extend, {amount}}]");
+        
+        {
+            var raw = PRFM(PLDL1KEEP, _[X2, W3, _UXTW, 3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.PRFM_p_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.PRFM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("PRFM PLDL1KEEP, [X2, W3, UXTW #3]", asm);
+        }
     }
 }

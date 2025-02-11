@@ -59,7 +59,33 @@ public class Arm64InstructionFactoryTests_LDRB_General
     [TestMethod]
     public void Test_LDRB_32b_ldst_regoff_1()
     {
-        Assert.Inconclusive("Not handled LDRB_32b_ldst_regoff - LDRB        Wt, [Xn|SP, (Wm|Xm), extend{, amount}]");
+        
+        {
+            var raw = LDRB(W0, _[X2, W3, _UXTW, 0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRB_32b_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRB W0, [X2, W3, UXTW #0]", asm);
+        }
+        
+        {
+            var raw = LDRB(W15, _[X2, W3, _UXTW, 0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRB_32b_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRB W15, [X2, W3, UXTW #0]", asm);
+        }
+        
+        {
+            var raw = LDRB(WZR, _[X2, W3, _UXTW, 0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDRB_32b_ldst_regoff, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDRB WZR, [X2, W3, UXTW #0]", asm);
+        }
     }
     
     /// <summary>

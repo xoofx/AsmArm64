@@ -63,7 +63,7 @@ public struct Arm64MemoryAccessorFactory
     /// <param name="extend">The extend operation.</param>
     /// <param name="amount">The amount to extend.</param>
     /// <returns>An accessor for the specified base register, index register, and extend operation.</returns>
-    public Arm64RegisterWExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterW indexRegister, Arm64ExtendWKind extend = default, byte? amount = null]
+    public Arm64RegisterWExtendMemoryAccessor this[Arm64RegisterXOrSP baseRegister, Arm64RegisterW indexRegister, Arm64MemoryExtendWKind extend = default, byte? amount = null]
         => new(baseRegister, indexRegister,
             amount.HasValue
                 ? amount.Value == 0
