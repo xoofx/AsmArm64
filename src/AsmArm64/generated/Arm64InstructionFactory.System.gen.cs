@@ -495,6 +495,7 @@ static partial class Arm64InstructionFactory
     public static uint ISB(byte option = default)
     {
         uint raw = 0xD50330DFU; // Encoding for: ISB_bi_barriers
+        raw |= (uint)(option & 0xF) << 8;
         return raw;
     }
     /// <summary>

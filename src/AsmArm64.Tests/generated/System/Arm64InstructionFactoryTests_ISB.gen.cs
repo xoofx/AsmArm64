@@ -24,6 +24,14 @@ public class Arm64InstructionFactoryTests_ISB_System
     [TestMethod]
     public void Test_ISB_bi_barriers_0()
     {
-        Assert.Inconclusive("Not handled ISB_bi_barriers - ISB         {option, #imm}");
+        
+        {
+            var raw = ISB(5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ISB_bi_barriers, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ISB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ISB #5", asm);
+        }
     }
 }

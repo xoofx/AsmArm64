@@ -1256,6 +1256,7 @@ partial class Arm64Processor
         switch (descriptor.ImmediateKind)
         {
             case Arm64ImmediateEncodingKind.Regular:
+            case Arm64ImmediateEncodingKind.IsbOption:
                 GenerateBitRangeEncodingFromValue(operandPath, "immediate", bitSize, bitRanges, operandVariation.WriteEncodings, operandTypeBitSize);
                 break;
             case Arm64ImmediateEncodingKind.BitMapExtract:
@@ -1355,9 +1356,6 @@ partial class Arm64Processor
                     w.WriteLine($"if ({operandVariation.OperandName} != 0.0f) throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariation.OperandName}), $\"Invalid Immediate. Expecting 0.0f instead of {{{operandVariation.OperandName}}}\");");
                 });
                 break;
-            case Arm64ImmediateEncodingKind.IsbOption:
-                // TODO
-                break;
             default:
                 throw new ArgumentOutOfRangeException($"The ImmediateKind {descriptor.ImmediateKind} is not supported");
         }
@@ -1372,7 +1370,7 @@ partial class Arm64Processor
             if (testArguments.Count == 0)
             {
                 // TEMP instructions not handle correctly
-                if (instruction.Id != "ISB_bi_barriers" && descriptor.ValueEncodingKind != Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1 && descriptor.ValueEncodingKind != Arm64ImmediateValueEncodingKind.ValueImmsPlus1)
+                if (descriptor.ValueEncodingKind != Arm64ImmediateValueEncodingKind.ValueImmsMinusImmrPlus1 && descriptor.ValueEncodingKind != Arm64ImmediateValueEncodingKind.ValueImmsPlus1)
                 {
                     if (localOperandVariation.OperandName == "rotate")
                     {
