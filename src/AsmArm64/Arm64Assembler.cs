@@ -27,7 +27,7 @@ public partial class Arm64Assembler
 
     public uint Test()
     {
-        return ADDS(X0, X1, X2, LSL, 9);
+        return ADDS(X0, X1, X2, _LSL, 9);
     }
     public uint Test2()
     {

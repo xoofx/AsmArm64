@@ -144,8 +144,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Rm.Index << 16;
         var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
-            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `LSL`. Expecting a valid extend kind"),
             _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
@@ -292,8 +292,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Rm.Index << 16;
         var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
-            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `LSL`. Expecting a valid extend kind"),
             _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
@@ -2266,8 +2266,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Rm.Index << 16;
         var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
-            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `LSL`. Expecting a valid extend kind"),
             _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
@@ -2380,8 +2380,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Rm.Index << 16;
         var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
-            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `LSL`. Expecting a valid extend kind"),
             _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
@@ -13315,8 +13315,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Rm.Index << 16;
         var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
-            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `LSL`. Expecting a valid extend kind"),
             _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;
@@ -13489,8 +13489,8 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Rm.Index << 16;
         var _extend_ = extend.ExtendKind switch
         {
-            Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,
-            Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,
+            Arm64ExtendKind.None => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `None`. Expecting a valid extend kind"),
+            Arm64ExtendKind.LSL => throw new ArgumentOutOfRangeException(nameof(extend), "Invalid extend value `LSL`. Expecting a valid extend kind"),
             _ => (byte)extend.ExtendKind
         };
         raw |= (uint)((byte)(_extend_ - 1) & 0x7) << 13;

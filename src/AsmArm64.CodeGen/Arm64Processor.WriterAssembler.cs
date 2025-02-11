@@ -1511,10 +1511,14 @@ partial class Arm64Processor
             GenerateBitRangeEncodingFromValue($"(byte)(_extend_ - 1)", "extend", descriptor.ExtendEncoding, operandVariation.WriteEncodings);
             GenerateBitRangeEncodingFromValue($"(byte){operandVariation.OperandName2}", "amount", descriptor.AmountEncoding, operandVariation.WriteEncodings);
 
+            operandVariation.TestArguments.Add(new ExtendTestArgument("LSL", 1));
+            operandVariation.TestArguments.Add(new ExtendTestArgument("UXTB", 2));
+
             variations.Add(operandVariation);
         }
         else
         {
+            Debug.Assert(descriptor.Is64Bit);
             {
                 var operandVariationX = new OperandVariation
                 {
@@ -1527,7 +1531,7 @@ partial class Arm64Processor
                 };
                 operandVariationX.AcceptedBitValues.AddRange(descriptor.ExtendExtract!.Selector!.BitValues.Where(x => x.Text.EndsWith("X")));
 
-                if (descriptor.Is64Bit && descriptor.IsOptional)
+                if (descriptor.IsOptional)
                 {
                     operandVariationX.DefaultValue = "default";
                     operandVariationX.DefaultValue2 = "0";
@@ -1537,22 +1541,17 @@ partial class Arm64Processor
                 {
                     w.WriteLine($"var _extend_ = {operandVariationX.OperandName}.ExtendKind switch");
                     w.OpenBraceBlock();
-                    if (descriptor.Is64Bit)
-                    {
-                        w.WriteLine($"Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,");
-                        w.WriteLine($"Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,");
-                    }
-                    else
-                    {
-                        w.WriteLine($"Arm64ExtendKind.None => throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariationX.OperandName}), \"Invalid extend value `None`. Expecting a valid extend kind\"),");
-                        w.WriteLine($"Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTW,");
-                    }
+                    w.WriteLine($"Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,");
+                    w.WriteLine($"Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,");
                     w.WriteLine($"_ => (byte){operandVariationX.OperandName}.ExtendKind");
                     w.CloseBraceBlockStatement();
                 });
 
                 GenerateBitRangeEncodingFromValue($"(byte)(_extend_ - 1)", "extend", descriptor.ExtendEncoding, operandVariationX.WriteEncodings);
                 GenerateBitRangeEncodingFromValue($"(byte){operandVariationX.OperandName2}", "amount", descriptor.AmountEncoding, operandVariationX.WriteEncodings);
+
+                operandVariationX.TestArguments.Add(new ExtendTestArgument("LSL", 1));
+                operandVariationX.TestArguments.Add(new ExtendTestArgument("SXTX", 1));
 
                 variations.Add(operandVariationX);
             }
@@ -1572,22 +1571,17 @@ partial class Arm64Processor
                 {
                     w.WriteLine($"var _extend_ = {operandVariationW.OperandName}.ExtendKind switch");
                     w.OpenBraceBlock();
-                    if (descriptor.Is64Bit)
-                    {
-                        w.WriteLine($"Arm64ExtendKind.None => (byte)Arm64ExtendKind.UXTX,");
-                        w.WriteLine($"Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTX,");
-                    }
-                    else
-                    {
-                        w.WriteLine($"Arm64ExtendKind.None => throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariationW.OperandName}), \"Invalid extend value `None`. Expecting a valid extend kind\"),");
-                        w.WriteLine($"Arm64ExtendKind.LSL => (byte)Arm64ExtendKind.UXTW,");
-                    }
+                    w.WriteLine($"Arm64ExtendKind.None => throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariationW.OperandName}), \"Invalid extend value `None`. Expecting a valid extend kind\"),");
+                    w.WriteLine($"Arm64ExtendKind.LSL => throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVariationW.OperandName}), \"Invalid extend value `LSL`. Expecting a valid extend kind\"),");
                     w.WriteLine($"_ => (byte){operandVariationW.OperandName}.ExtendKind");
                     w.CloseBraceBlockStatement();
                 });
 
                 GenerateBitRangeEncodingFromValue($"(byte)(_extend_ - 1)", "extend", descriptor.ExtendEncoding, operandVariationW.WriteEncodings);
                 GenerateBitRangeEncodingFromValue($"(byte){operandVariationW.OperandName2}", "amount", descriptor.AmountEncoding, operandVariationW.WriteEncodings);
+
+                operandVariationW.TestArguments.Add(new ExtendTestArgument("UXTW", 1));
+                operandVariationW.TestArguments.Add(new ExtendTestArgument("UXTB", 2));
 
                 variations.Add(operandVariationW);
             }

@@ -19,6 +19,7 @@ public readonly record struct Arm64ExtendXKind : IArm64ExtendKind
 
     public static implicit operator Arm64ExtendXKind(IArm64ExtendKind.LSL extendKind) => new(Arm64ExtendKind.LSL);
 
-    public static implicit operator Arm64ExtendXKind(IArm64ExtendKind.SXTX extendKind) => new(Arm64ExtendKind.SXTX);
+    public static implicit operator Arm64ExtendXKind(IArm64ExtendKind.UXTX extendKind) => new(Arm64ExtendKind.UXTX);
 
+    public static implicit operator Arm64ExtendXKind(IArm64ExtendKind.SXTX extendKind) => new(Arm64ExtendKind.SXTX);
 }

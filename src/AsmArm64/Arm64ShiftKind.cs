@@ -48,6 +48,8 @@ public struct LSLShiftKind : IArm64ShiftKind
     public override string ToString() => this.ShiftToText();
 
     public static implicit operator Arm64ExtendKind(LSLShiftKind shiftKind) => Arm64ExtendKind.LSL;
+
+    public static implicit operator LSLShiftKind(IArm64ExtendKind.LSL shiftKind) => new();
 }
 
 public struct LSRShiftKind : IArm64ShiftKind
@@ -133,13 +135,13 @@ public readonly record struct Arm64ShiftKind4(Arm64ShiftKind ShiftKind) : IArm64
 
 partial class Arm64Factory
 {
-    public static LSLShiftKind LSL => default;
+    public static LSLShiftKind _LSL => default;
 
-    public static LSRShiftKind LSR => default;
+    public static LSRShiftKind _LSR => default;
 
-    public static ASRShiftKind ASR => default;
+    public static ASRShiftKind _ASR => default;
 
-    public static RORShiftKind ROR => default;
+    public static RORShiftKind _ROR => default;
 
-    public static MSLShiftKind MSL => default;
+    public static MSLShiftKind _MSL => default;
 }

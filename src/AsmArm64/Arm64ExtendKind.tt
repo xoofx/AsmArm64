@@ -59,12 +59,12 @@ public interface IArm64ExtendKind
 
 partial class Arm64Factory
 {
-<# foreach (var kind in kinds) { #>
+<# foreach (var kind in kinds) { if (kind == "LSL") continue; #>
+
     /// <summary>
     /// Creates a new <see cref="IArm64ExtendKind.<#= kind #>"/> instance.
     /// </summary>
     public static IArm64ExtendKind.<#= kind #> _<#= kind #> => new();
-       
 <# } #>
 }
 

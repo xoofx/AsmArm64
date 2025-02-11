@@ -183,6 +183,70 @@ partial class Arm64Processor
         public override string Asm { get; }
     }
 
+    private record ExtendTestArgument : TestArgument
+    {
+        public ExtendTestArgument(string extend, int? amount)
+        {
+            Extend = extend;
+            Amount = amount;
+        }
+        public string Extend { get; private set; }
+
+        public int? Amount { get; }
+        
+        public override string CSharp => GetText(false);
+        public override string Asm => GetText(true);
+
+        public override void InitializeFromArguments(InstructionVariation instructionVariation, IReadOnlyList<TestArgument> arguments, int index)
+        {
+            var descriptor = (ExtendOperandDescriptor)instructionVariation.Operands[index].Descriptor;
+
+            var rd = (RegisterTestArgument)arguments[0];
+            var rn = (RegisterTestArgument)arguments[1];
+            var rm = (RegisterTestArgument)arguments[2];
+
+            var lslAlternative =  descriptor.Is64Bit ? "UXTX" : "UXTW";
+
+            if (Extend == lslAlternative || Extend == "LSL")
+            {
+                if (descriptor.EncodingKind == Arm64ExtendEncodingKind.PreferLSLIfRnIs11111)
+                {
+                    if (rn.Index == 31)
+                    {
+                        Extend = "LSL";
+                    }
+                    else if (Extend == "LSL")
+                    {
+                        Extend = lslAlternative;
+                    }
+                }
+                else
+                {
+                    if ((rn.Index == 31 || rd.Index == 31))
+                    {
+                        Extend = "LSL";
+                    }
+                    else if (Extend == "LSL")
+                    {
+                        Extend = lslAlternative;
+                    }
+                }
+            }
+        }
+
+        private string GetText(bool isAsm)
+        {
+            if (isAsm)
+            {
+                return Amount.HasValue ? $"{Extend} #{Amount.Value}" : Extend;
+            }
+            else
+            {
+                return Amount.HasValue ? $"_{Extend}, {Amount.Value}" : $"_{Extend}";
+            }
+        }
+    }
+
     private record ImmediateTestArgument : TestArgument
     {
         public ImmediateTestArgument(float value)
