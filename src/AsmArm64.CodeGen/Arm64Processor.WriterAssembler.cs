@@ -2020,7 +2020,10 @@ partial class Arm64Processor
                         }
                     }
                 }
-
+                else
+                {
+                    testArguments.Add(new RegisterTestArgument("V", 0 + operandIndex));
+                }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

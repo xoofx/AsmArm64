@@ -24,7 +24,42 @@ public class Arm64InstructionFactoryTests_LUTI2_Advsimd
     [TestMethod]
     public void Test_LUTI2_asimdtbl_l5_0()
     {
-        Assert.Inconclusive("Not handled LUTI2_asimdtbl_l5 - LUTI2       Vd.16B, {Vn.16B}, Vm[index]");
+        
+        {
+            var raw = LUTI2(V0.T_16B, V1.T_16B.Group1(), V2[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LUTI2_asimdtbl_l5, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LUTI2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LUTI2 V0.16B, { V1.16B }, V2[1]", asm);
+        }
+        
+        {
+            var raw = LUTI2(V30.T_16B, V1.T_16B.Group1(), V2[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LUTI2_asimdtbl_l5, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LUTI2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LUTI2 V30.16B, { V1.16B }, V2[1]", asm);
+        }
+        
+        {
+            var raw = LUTI2(V0.T_16B, V31.T_16B.Group1(), V2[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LUTI2_asimdtbl_l5, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LUTI2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LUTI2 V0.16B, { V31.16B }, V2[1]", asm);
+        }
+        
+        {
+            var raw = LUTI2(V30.T_16B, V31.T_16B.Group1(), V2[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LUTI2_asimdtbl_l5, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LUTI2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LUTI2 V30.16B, { V31.16B }, V2[1]", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +68,41 @@ public class Arm64InstructionFactoryTests_LUTI2_Advsimd
     [TestMethod]
     public void Test_LUTI2_asimdtbl_l6_1()
     {
-        Assert.Inconclusive("Not handled LUTI2_asimdtbl_l6 - LUTI2       Vd.8H, {Vn.8H}, Vm[index]");
+        
+        {
+            var raw = LUTI2(V0.T_8H, V1.T_8H.Group1(), V2[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LUTI2_asimdtbl_l6, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LUTI2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LUTI2 V0.8H, { V1.8H }, V2[1]", asm);
+        }
+        
+        {
+            var raw = LUTI2(V30.T_8H, V1.T_8H.Group1(), V2[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LUTI2_asimdtbl_l6, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LUTI2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LUTI2 V30.8H, { V1.8H }, V2[1]", asm);
+        }
+        
+        {
+            var raw = LUTI2(V0.T_8H, V31.T_8H.Group1(), V2[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LUTI2_asimdtbl_l6, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LUTI2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LUTI2 V0.8H, { V31.8H }, V2[1]", asm);
+        }
+        
+        {
+            var raw = LUTI2(V30.T_8H, V31.T_8H.Group1(), V2[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LUTI2_asimdtbl_l6, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LUTI2, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LUTI2 V30.8H, { V31.8H }, V2[1]", asm);
+        }
     }
 }
