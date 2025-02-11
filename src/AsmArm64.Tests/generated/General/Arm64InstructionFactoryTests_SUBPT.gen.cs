@@ -24,6 +24,248 @@ public class Arm64InstructionFactoryTests_SUBPT_General
     [TestMethod]
     public void Test_SUBPT_64_addsub_pt_0()
     {
-        Assert.Inconclusive("Not handled SUBPT_64_addsub_pt - SUBPT       Xd|SP, Xn|SP, Xm {, LSL #amount}");
+        
+        {
+            var raw = SUBPT(X1, X2, X2, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X1, X2, X2", asm);
+        }
+        
+        {
+            var raw = SUBPT(X17, X2, X2, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X17, X2, X2", asm);
+        }
+        
+        {
+            var raw = SUBPT(SP, X2, X2, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT SP, X2, X2", asm);
+        }
+        
+        {
+            var raw = SUBPT(X1, X18, X2, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X1, X18, X2", asm);
+        }
+        
+        {
+            var raw = SUBPT(X17, X18, X2, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X17, X18, X2", asm);
+        }
+        
+        {
+            var raw = SUBPT(SP, X18, X2, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT SP, X18, X2", asm);
+        }
+        
+        {
+            var raw = SUBPT(X1, SP, X2, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X1, SP, X2", asm);
+        }
+        
+        {
+            var raw = SUBPT(X17, SP, X2, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X17, SP, X2", asm);
+        }
+        
+        {
+            var raw = SUBPT(SP, SP, X2, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT SP, SP, X2", asm);
+        }
+        
+        {
+            var raw = SUBPT(X1, X2, X17, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X1, X2, X17", asm);
+        }
+        
+        {
+            var raw = SUBPT(X17, X2, X17, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X17, X2, X17", asm);
+        }
+        
+        {
+            var raw = SUBPT(SP, X2, X17, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT SP, X2, X17", asm);
+        }
+        
+        {
+            var raw = SUBPT(X1, X18, X17, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X1, X18, X17", asm);
+        }
+        
+        {
+            var raw = SUBPT(X17, X18, X17, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X17, X18, X17", asm);
+        }
+        
+        {
+            var raw = SUBPT(SP, X18, X17, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT SP, X18, X17", asm);
+        }
+        
+        {
+            var raw = SUBPT(X1, SP, X17, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X1, SP, X17", asm);
+        }
+        
+        {
+            var raw = SUBPT(X17, SP, X17, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X17, SP, X17", asm);
+        }
+        
+        {
+            var raw = SUBPT(SP, SP, X17, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT SP, SP, X17", asm);
+        }
+        
+        {
+            var raw = SUBPT(X1, X2, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X1, X2, XZR", asm);
+        }
+        
+        {
+            var raw = SUBPT(X17, X2, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X17, X2, XZR", asm);
+        }
+        
+        {
+            var raw = SUBPT(SP, X2, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT SP, X2, XZR", asm);
+        }
+        
+        {
+            var raw = SUBPT(X1, X18, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X1, X18, XZR", asm);
+        }
+        
+        {
+            var raw = SUBPT(X17, X18, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X17, X18, XZR", asm);
+        }
+        
+        {
+            var raw = SUBPT(SP, X18, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT SP, X18, XZR", asm);
+        }
+        
+        {
+            var raw = SUBPT(X1, SP, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X1, SP, XZR", asm);
+        }
+        
+        {
+            var raw = SUBPT(X17, SP, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT X17, SP, XZR", asm);
+        }
+        
+        {
+            var raw = SUBPT(SP, SP, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SUBPT_64_addsub_pt, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SUBPT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SUBPT SP, SP, XZR", asm);
+        }
     }
 }

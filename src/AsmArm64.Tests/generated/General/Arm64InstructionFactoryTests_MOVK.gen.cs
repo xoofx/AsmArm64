@@ -24,7 +24,33 @@ public class Arm64InstructionFactoryTests_MOVK_General
     [TestMethod]
     public void Test_MOVK_32_movewide_0()
     {
-        Assert.Inconclusive("Not handled MOVK_32_movewide - MOVK        Wd, #imm {, LSL #shift}");
+        
+        {
+            var raw = MOVK(W0, 5, _LSL, 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOVK_32_movewide, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOVK, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOVK W0, #5, LSL #16", asm);
+        }
+        
+        {
+            var raw = MOVK(W15, 5, _LSL, 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOVK_32_movewide, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOVK, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOVK W15, #5, LSL #16", asm);
+        }
+        
+        {
+            var raw = MOVK(WZR, 5, _LSL, 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOVK_32_movewide, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOVK, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOVK WZR, #5, LSL #16", asm);
+        }
     }
     
     /// <summary>
@@ -33,6 +59,32 @@ public class Arm64InstructionFactoryTests_MOVK_General
     [TestMethod]
     public void Test_MOVK_64_movewide_1()
     {
-        Assert.Inconclusive("Not handled MOVK_64_movewide - MOVK        Xd, #imm {, LSL #shift}");
+        
+        {
+            var raw = MOVK(X0, 5, _LSL, 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOVK_64_movewide, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOVK, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOVK X0, #5, LSL #16", asm);
+        }
+        
+        {
+            var raw = MOVK(X15, 5, _LSL, 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOVK_64_movewide, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOVK, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOVK X15, #5, LSL #16", asm);
+        }
+        
+        {
+            var raw = MOVK(XZR, 5, _LSL, 16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOVK_64_movewide, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOVK, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOVK XZR, #5, LSL #16", asm);
+        }
     }
 }

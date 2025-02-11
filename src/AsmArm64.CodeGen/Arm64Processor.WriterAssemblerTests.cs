@@ -142,23 +142,25 @@ partial class Arm64Processor
             if (instruction.Id == "B_only_condbranch" || instruction.Id == "BC_only_condbranch")
             {
                 // `BC.NE #32` instead of `BC NE, #32`
-                w.WriteLine($"Assert.AreEqual(\"{instruction.Mnemonic}.{testArguments[0].Asm} {string.Join(", ", testArguments.Skip(1).Select(x => x.Asm))}\", asm);");
+                w.WriteLine($"Assert.AreEqual(\"{instruction.Mnemonic}.{testArguments[0].Asm} {string.Join(", ", GetAsmArguments(testArguments.Skip(1)))}\", asm);");
             }
             else
             {
                 w.WriteLine(testArguments.Count == 0
                     ? $"Assert.AreEqual(\"{instruction.Mnemonic}\", asm);"
-                    : $"Assert.AreEqual(\"{instruction.Mnemonic} {string.Join(", ", testArguments.Select(x => x.Asm))}\", asm);"
+                    : $"Assert.AreEqual(\"{instruction.Mnemonic} {GetAsmArguments(testArguments)}\", asm);"
                 );
             }
-
-
-
+            
             w.CloseBraceBlock();
         }
     }
 
-
+    private static string GetAsmArguments(IEnumerable<TestArgument> arguments)
+    {
+        // Trim empty (optional) last argument
+        return string.Join(", ", arguments.Select(x => x.Asm)).Trim().Trim(',');
+    }
 
     private abstract record TestArgument
     {
@@ -245,6 +247,25 @@ partial class Arm64Processor
                 return Amount.HasValue ? $"_{Extend}, {Amount.Value}" : $"_{Extend}";
             }
         }
+    }
+
+    private record ShiftTestArgument : TestArgument
+    {
+        public ShiftTestArgument(string shift, int amount, bool optional)
+        {
+            Shift = shift;
+            Amount = amount;
+            IsOptional = optional;
+        }
+        public string Shift { get; private set; }
+
+        public int Amount { get; }
+
+        public bool IsOptional { get; }
+
+        public override string CSharp => $"_{Shift}, {Amount}";
+
+        public override string Asm => IsOptional && Amount == 0 ? "" : $"{Shift} #{Amount}";
     }
 
     private record ImmediateTestArgument : TestArgument

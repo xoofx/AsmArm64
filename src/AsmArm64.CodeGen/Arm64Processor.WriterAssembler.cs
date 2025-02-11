@@ -1383,6 +1383,8 @@ partial class Arm64Processor
         bool requiresShiftEncoding = false;
         bool requiresAmountEncoding = false;
 
+        var testArguments = new List<ShiftTestArgument>();
+
         string? operandType;
         switch (descriptor.ShiftKind)
         {
@@ -1390,30 +1392,45 @@ partial class Arm64Processor
                 operandType = "Arm64ShiftKind3";
                 requiresShiftEncoding = true;
                 requiresAmountEncoding = true;
+                testArguments.Add(new("LSL", 0, descriptor.IsOptional));
+                testArguments.Add(new("LSL", 1, descriptor.IsOptional));
+                testArguments.Add(new("LSR", 10, descriptor.IsOptional));
+                testArguments.Add(new("ASR", 12, descriptor.IsOptional));
                 break;
             case Arm64ShiftEncodingKind.Shift4:
                 operandType = "Arm64ShiftKind4";
                 requiresShiftEncoding = true;
                 requiresAmountEncoding = true;
+                testArguments.Add(new("LSL", 0, descriptor.IsOptional));
+                testArguments.Add(new("LSL", 1, descriptor.IsOptional));
+                testArguments.Add(new("LSR", 10, descriptor.IsOptional));
+                testArguments.Add(new("ASR", 12, descriptor.IsOptional));
+                testArguments.Add(new("ROR", 7, descriptor.IsOptional));
                 break;
             case Arm64ShiftEncodingKind.Lsl0Or12:
                 operandType = "LSLShiftKind";
                 requiresAmountEncoding = true;
+                testArguments.Add(new("LSL", 0, descriptor.IsOptional));
+                testArguments.Add(new("LSL", 12, descriptor.IsOptional));
                 break;
             case Arm64ShiftEncodingKind.Lsl0:
             case Arm64ShiftEncodingKind.Lsl:
                 operandType = "LSLShiftKind";
+                testArguments.Add(new("LSL", 0, descriptor.IsOptional));
                 break;
             case Arm64ShiftEncodingKind.LslScale8:
                 operandType = "LSLShiftKind";
                 requiresAmountEncoding = true;
+                testArguments.Add(new("LSL", 8, descriptor.IsOptional));
                 break;
             case Arm64ShiftEncodingKind.Msl:
                 operandType = "MSLShiftKind";
                 requiresAmountEncoding = true;
+                testArguments.Add(new("MSL", 16, descriptor.IsOptional));
                 break;
             case Arm64ShiftEncodingKind.LslScale16:
                 operandType = "LSLShiftKind";
+                testArguments.Add(new("LSL", 16, descriptor.IsOptional));
                 requiresAmountEncoding = true;
                 break;
             default:
@@ -1428,6 +1445,8 @@ partial class Arm64Processor
             OperandName2 = "amount",
             OperandType2 = "int"
         };
+
+        operandVariation.TestArguments.AddRange(testArguments);
 
         if (descriptor.IsOptional)
         {
