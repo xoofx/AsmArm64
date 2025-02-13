@@ -12,93 +12,93 @@
 using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
-namespace AsmArm64.Tests.manual;
+namespace AsmArm64.Tests.General;
 
 [TestClass]
-public class Arm64InstructionFactoryTests_BFXIL_General
+public class Arm64InstructionFactoryTests_BFM_General
 {
-
+    
     /// <summary>
-    /// Test of <see cref="Arm64InstructionFactory.BFXIL"/>.
+    /// Test of <see cref="Arm64InstructionFactory.BFM"/>.
     /// </summary>
     [TestMethod]
-    public void Test_BFXIL_bfm_32m_bitfield_0()
+    public void Test_BFM_32m_bitfield_0()
     {
-
+        
         {
-            var raw = BFXIL(W0, W1, 5, 1);
+            var raw = BFM(W0, W1, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_32m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL W0, W1, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(W15, W1, 5, 1);
+            var raw = BFM(W15, W1, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_32m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL W15, W1, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(WZR, W1, 5, 1);
+            var raw = BFM(WZR, W1, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_32m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL WZR, W1, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(W0, W16, 5, 1);
+            var raw = BFM(W0, W16, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_32m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL W0, W16, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(W15, W16, 5, 1);
+            var raw = BFM(W15, W16, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_32m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL W15, W16, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(WZR, W16, 5, 1);
+            var raw = BFM(WZR, W16, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_32m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL WZR, W16, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(W0, WZR, 5, 1);
+            var raw = BFM(W0, WZR, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFC_bfm_32m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFC W0, #27, #6", asm);
         }
-
+        
         {
-            var raw = BFXIL(W15, WZR, 5, 1);
+            var raw = BFM(W15, WZR, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFC_bfm_32m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFC W15, #27, #6", asm);
         }
-
+        
         {
-            var raw = BFXIL(WZR, WZR, 5, 1);
+            var raw = BFM(WZR, WZR, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFC_bfm_32m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
@@ -106,88 +106,88 @@ public class Arm64InstructionFactoryTests_BFXIL_General
             Assert.AreEqual("BFC WZR, #27, #6", asm);
         }
     }
-
+    
     /// <summary>
-    /// Test of <see cref="Arm64InstructionFactory.BFXIL"/>.
+    /// Test of <see cref="Arm64InstructionFactory.BFM"/>.
     /// </summary>
     [TestMethod]
-    public void Test_BFXIL_bfm_64m_bitfield_1()
+    public void Test_BFM_64m_bitfield_1()
     {
-
+        
         {
-            var raw = BFXIL(X0, X1, 5, 1);
+            var raw = BFM(X0, X1, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_64m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL X0, X1, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(X15, X1, 5, 1);
+            var raw = BFM(X15, X1, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_64m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL X15, X1, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(XZR, X1, 5, 1);
+            var raw = BFM(XZR, X1, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_64m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL XZR, X1, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(X0, X16, 5, 1);
+            var raw = BFM(X0, X16, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_64m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL X0, X16, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(X15, X16, 5, 1);
+            var raw = BFM(X15, X16, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_64m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL X15, X16, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(XZR, X16, 5, 1);
+            var raw = BFM(XZR, X16, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFXIL_bfm_64m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFXIL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFXIL XZR, X16, #5, #1", asm);
         }
-
+        
         {
-            var raw = BFXIL(X0, XZR, 5, 1);
+            var raw = BFM(X0, XZR, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFC_bfm_64m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFC X0, #59, #6", asm);
         }
-
+        
         {
-            var raw = BFXIL(X15, XZR, 5, 1);
+            var raw = BFM(X15, XZR, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFC_bfm_64m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("BFC X15, #59, #6", asm);
         }
-
+        
         {
-            var raw = BFXIL(XZR, XZR, 5, 1);
+            var raw = BFM(XZR, XZR, 5, 5);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BFC_bfm_64m_bitfield, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);

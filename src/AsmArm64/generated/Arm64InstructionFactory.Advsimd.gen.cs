@@ -15278,6 +15278,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x0EA01C00U; // Encoding for: MOV_orr_asimdsame_only
         raw |= (uint)Vd_T.Index;
+        raw |= (uint)Vn_T.Index << 16;
         raw |= (uint)Vn_T.Index << 5;
         return raw;
     }
@@ -15290,6 +15291,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x4EA01C00U; // Encoding for: MOV_orr_asimdsame_only
         raw |= (uint)Vd_T.Index;
+        raw |= (uint)Vn_T.Index << 16;
         raw |= (uint)Vn_T.Index << 5;
         return raw;
     }
@@ -29590,7 +29592,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x4E083C00U; // Encoding for: UMOV_asimdins_x_x
         raw |= (uint)Xd.Index;
         raw |= (uint)Vn_D.Index << 5;
-        raw |= (uint)(Vn_D.ElementIndex & 0x1F) << 16;
+        raw |= (uint)(Vn_D.ElementIndex & 0x1) << 20;
         return raw;
     }
     /// <summary>

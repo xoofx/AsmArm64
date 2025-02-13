@@ -12,19 +12,19 @@
 using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
-namespace AsmArm64.Tests.manual;
+namespace AsmArm64.Tests.General;
 
 [TestClass]
 public class Arm64InstructionFactoryTests_SBCS_General
 {
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.SBCS"/>.
     /// </summary>
     [TestMethod]
     public void Test_SBCS_32_addsub_carry_0()
     {
-
+        
         {
             var raw = SBCS(W0, W1, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -33,7 +33,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W0, W1, W2", asm);
         }
-
+        
         {
             var raw = SBCS(W15, W1, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -42,7 +42,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W15, W1, W2", asm);
         }
-
+        
         {
             var raw = SBCS(WZR, W1, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -51,7 +51,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS WZR, W1, W2", asm);
         }
-
+        
         {
             var raw = SBCS(W0, W16, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -60,7 +60,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W0, W16, W2", asm);
         }
-
+        
         {
             var raw = SBCS(W15, W16, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -69,7 +69,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W15, W16, W2", asm);
         }
-
+        
         {
             var raw = SBCS(WZR, W16, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -78,34 +78,34 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS WZR, W16, W2", asm);
         }
-
+        
         {
             var raw = SBCS(W0, WZR, W2);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_32_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS W0, WZR, W2", asm);
+            Assert.AreEqual("NGCS W0, W2", asm);
         }
-
+        
         {
             var raw = SBCS(W15, WZR, W2);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_32_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS W15, WZR, W2", asm);
+            Assert.AreEqual("NGCS W15, W2", asm);
         }
-
+        
         {
             var raw = SBCS(WZR, WZR, W2);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_32_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS WZR, WZR, W2", asm);
+            Assert.AreEqual("NGCS WZR, W2", asm);
         }
-
+        
         {
             var raw = SBCS(W0, W1, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -114,7 +114,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W0, W1, W17", asm);
         }
-
+        
         {
             var raw = SBCS(W15, W1, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -123,7 +123,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W15, W1, W17", asm);
         }
-
+        
         {
             var raw = SBCS(WZR, W1, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -132,7 +132,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS WZR, W1, W17", asm);
         }
-
+        
         {
             var raw = SBCS(W0, W16, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -141,7 +141,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W0, W16, W17", asm);
         }
-
+        
         {
             var raw = SBCS(W15, W16, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -150,7 +150,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W15, W16, W17", asm);
         }
-
+        
         {
             var raw = SBCS(WZR, W16, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -159,34 +159,34 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS WZR, W16, W17", asm);
         }
-
+        
         {
             var raw = SBCS(W0, WZR, W17);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_32_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS W0, WZR, W17", asm);
+            Assert.AreEqual("NGCS W0, W17", asm);
         }
-
+        
         {
             var raw = SBCS(W15, WZR, W17);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_32_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS W15, WZR, W17", asm);
+            Assert.AreEqual("NGCS W15, W17", asm);
         }
-
+        
         {
             var raw = SBCS(WZR, WZR, W17);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_32_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS WZR, WZR, W17", asm);
+            Assert.AreEqual("NGCS WZR, W17", asm);
         }
-
+        
         {
             var raw = SBCS(W0, W1, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -195,7 +195,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W0, W1, WZR", asm);
         }
-
+        
         {
             var raw = SBCS(W15, W1, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -204,7 +204,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W15, W1, WZR", asm);
         }
-
+        
         {
             var raw = SBCS(WZR, W1, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -213,7 +213,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS WZR, W1, WZR", asm);
         }
-
+        
         {
             var raw = SBCS(W0, W16, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -222,7 +222,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W0, W16, WZR", asm);
         }
-
+        
         {
             var raw = SBCS(W15, W16, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -231,7 +231,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS W15, W16, WZR", asm);
         }
-
+        
         {
             var raw = SBCS(WZR, W16, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -240,42 +240,42 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS WZR, W16, WZR", asm);
         }
-
+        
         {
             var raw = SBCS(W0, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_32_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS W0, WZR, WZR", asm);
+            Assert.AreEqual("NGCS W0, WZR", asm);
         }
-
+        
         {
             var raw = SBCS(W15, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_32_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS W15, WZR, WZR", asm);
+            Assert.AreEqual("NGCS W15, WZR", asm);
         }
-
+        
         {
             var raw = SBCS(WZR, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_32_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_32_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS WZR, WZR, WZR", asm);
+            Assert.AreEqual("NGCS WZR, WZR", asm);
         }
     }
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.SBCS"/>.
     /// </summary>
     [TestMethod]
     public void Test_SBCS_64_addsub_carry_1()
     {
-
+        
         {
             var raw = SBCS(X0, X1, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -284,7 +284,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X0, X1, X2", asm);
         }
-
+        
         {
             var raw = SBCS(X15, X1, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -293,7 +293,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X15, X1, X2", asm);
         }
-
+        
         {
             var raw = SBCS(XZR, X1, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -302,7 +302,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS XZR, X1, X2", asm);
         }
-
+        
         {
             var raw = SBCS(X0, X16, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -311,7 +311,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X0, X16, X2", asm);
         }
-
+        
         {
             var raw = SBCS(X15, X16, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -320,7 +320,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X15, X16, X2", asm);
         }
-
+        
         {
             var raw = SBCS(XZR, X16, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -329,34 +329,34 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS XZR, X16, X2", asm);
         }
-
+        
         {
             var raw = SBCS(X0, XZR, X2);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_64_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS X0, XZR, X2", asm);
+            Assert.AreEqual("NGCS X0, X2", asm);
         }
-
+        
         {
             var raw = SBCS(X15, XZR, X2);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_64_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS X15, XZR, X2", asm);
+            Assert.AreEqual("NGCS X15, X2", asm);
         }
-
+        
         {
             var raw = SBCS(XZR, XZR, X2);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_64_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS XZR, XZR, X2", asm);
+            Assert.AreEqual("NGCS XZR, X2", asm);
         }
-
+        
         {
             var raw = SBCS(X0, X1, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -365,7 +365,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X0, X1, X17", asm);
         }
-
+        
         {
             var raw = SBCS(X15, X1, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -374,7 +374,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X15, X1, X17", asm);
         }
-
+        
         {
             var raw = SBCS(XZR, X1, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -383,7 +383,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS XZR, X1, X17", asm);
         }
-
+        
         {
             var raw = SBCS(X0, X16, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -392,7 +392,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X0, X16, X17", asm);
         }
-
+        
         {
             var raw = SBCS(X15, X16, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -401,7 +401,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X15, X16, X17", asm);
         }
-
+        
         {
             var raw = SBCS(XZR, X16, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -410,34 +410,34 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS XZR, X16, X17", asm);
         }
-
+        
         {
             var raw = SBCS(X0, XZR, X17);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_64_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS X0, XZR, X17", asm);
+            Assert.AreEqual("NGCS X0, X17", asm);
         }
-
+        
         {
             var raw = SBCS(X15, XZR, X17);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_64_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS X15, XZR, X17", asm);
+            Assert.AreEqual("NGCS X15, X17", asm);
         }
-
+        
         {
             var raw = SBCS(XZR, XZR, X17);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_64_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS XZR, XZR, X17", asm);
+            Assert.AreEqual("NGCS XZR, X17", asm);
         }
-
+        
         {
             var raw = SBCS(X0, X1, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -446,7 +446,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X0, X1, XZR", asm);
         }
-
+        
         {
             var raw = SBCS(X15, X1, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -455,7 +455,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X15, X1, XZR", asm);
         }
-
+        
         {
             var raw = SBCS(XZR, X1, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -464,7 +464,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS XZR, X1, XZR", asm);
         }
-
+        
         {
             var raw = SBCS(X0, X16, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -473,7 +473,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X0, X16, XZR", asm);
         }
-
+        
         {
             var raw = SBCS(X15, X16, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -482,7 +482,7 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS X15, X16, XZR", asm);
         }
-
+        
         {
             var raw = SBCS(XZR, X16, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -491,32 +491,32 @@ public class Arm64InstructionFactoryTests_SBCS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("SBCS XZR, X16, XZR", asm);
         }
-
+        
         {
             var raw = SBCS(X0, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_64_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS X0, XZR, XZR", asm);
+            Assert.AreEqual("NGCS X0, XZR", asm);
         }
-
+        
         {
             var raw = SBCS(X15, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_64_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS X15, XZR, XZR", asm);
+            Assert.AreEqual("NGCS X15, XZR", asm);
         }
-
+        
         {
             var raw = SBCS(XZR, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.SBCS_64_addsub_carry, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.SBCS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.NGCS_sbcs_64_addsub_carry, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.NGCS, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("SBCS XZR, XZR, XZR", asm);
+            Assert.AreEqual("NGCS XZR, XZR", asm);
         }
     }
 }

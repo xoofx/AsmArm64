@@ -905,6 +905,8 @@ partial class Arm64Processor
                 // This is handled at encoding time
                 break;
             case Arm64ImmediateValueEncodingKind.InvertValueShiftWide32:
+            case Arm64ImmediateValueEncodingKind.InvertValueShiftWide64:
+            case Arm64ImmediateValueEncodingKind.ValueShiftWide32:
             case Arm64ImmediateValueEncodingKind.ValueShiftWide64:
             case Arm64ImmediateValueEncodingKind.SignedFloatExp3Mantissa4:
             case Arm64ImmediateValueEncodingKind.DecodeBitMask32:
@@ -1182,15 +1184,25 @@ partial class Arm64Processor
             operandTypeBitSize = 8;
             testArguments.Add(new(0.5f));
         }
+        else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.ValueShiftWide32)
+        {
+            operandType = "Arm64ShiftedImmediate32";
+            testArguments.Add(new(0x1234, 16, true, false));
+        }
         else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.ValueShiftWide64)
         {
             operandType = "Arm64ShiftedImmediate64";
-            testArguments.Add(new(0x1234, 16, false));
+            testArguments.Add(new(0x1234, 16, false, false));
         }
         else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.InvertValueShiftWide32)
         {
             operandType = "Arm64InvertedShiftedImmediate32";
-            testArguments.Add(new(0x1234, 16, true));
+            testArguments.Add(new(0x1234, 16, true, true));
+        }
+        else if (descriptor.ValueEncodingKind == Arm64ImmediateValueEncodingKind.InvertValueShiftWide64)
+        {
+            operandType = "Arm64InvertedShiftedImmediate64";
+            testArguments.Add(new(0x1234, 16, false, true));
         }
 
         if (descriptor.ImmediateKind == Arm64ImmediateEncodingKind.FixedFloatZero)
@@ -1999,12 +2011,23 @@ partial class Arm64Processor
                             operandVariation.AcceptedBitValues.Add(bitValue);
                             operandVariation.TestArguments.AddRange(testArguments);
 
+                            switch (instruction.Id)
+                            {
+                                case "MOV_orr_asimdsame_only":
+                                    if (operandIndex == 1)
+                                    {
+                                        // Encoding of Rm (in addition to Rn)
+                                        operandVariation.WriteEncodings.Add((w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint){op.OperandName}.Index << 16;"));
+                                    }
+                                    break;
+                            }
+
                             var indexEncoding = GetRegisterIndexEncoding(instruction, register, operandVariation);
                             if (indexEncoding is not null)
                             {
                                 operandVariation.WriteEncodings.Add(indexEncoding!);
                             }
-
+                            
                             GenerateEncodingForExtract(instruction, register.IndexerExtract, operandVariation, "ElementIndex", "element indexer");
                             operandVariations.Add(operandVariation);
                         }
@@ -2081,12 +2104,20 @@ partial class Arm64Processor
             case "CINV_csinv_64_condsel":
             case "CNEG_csneg_32_condsel":
             case "CNEG_csneg_64_condsel":
+            case "ROR_extr_32_extract":
+            case "ROR_extr_64_extract":
                 if (operandIndex == 1)
                 {
                     // Encoding of Rm (in addition to Rn)
                     opVar.WriteEncodings.Add((w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint){op.OperandName}.Index << 16;"));
                 }
                 break;
+                //if (operandIndex == 1)
+                //{
+                //    // Encoding of Rm (in addition to Rn)
+                //    opVar.WriteEncodings.Add((w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint){op.OperandName}.Index << 16;"));
+                //}
+                //break;
         }
 
         opVar.WriteEncodings.AddRange(encodings);

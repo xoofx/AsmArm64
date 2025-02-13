@@ -12,19 +12,19 @@
 using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
-namespace AsmArm64.Tests.manual;
+namespace AsmArm64.Tests.General;
 
 [TestClass]
 public class Arm64InstructionFactoryTests_NEGS_General
 {
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.NEGS"/>.
     /// </summary>
     [TestMethod]
     public void Test_NEGS_subs_32_addsub_shift_0()
     {
-
+        
         {
             var raw = NEGS(W0, W1, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -33,7 +33,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, W1", asm);
         }
-
+        
         {
             var raw = NEGS(W15, W1, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -42,16 +42,16 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, W1", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, W1, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, W1", asm);
+            Assert.AreEqual("CMP WZR, W1", asm);
         }
-
+        
         {
             var raw = NEGS(W0, W16, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -60,7 +60,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, W16", asm);
         }
-
+        
         {
             var raw = NEGS(W15, W16, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -69,16 +69,16 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, W16", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, W16, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, W16", asm);
+            Assert.AreEqual("CMP WZR, W16", asm);
         }
-
+        
         {
             var raw = NEGS(W0, WZR, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -87,7 +87,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, WZR", asm);
         }
-
+        
         {
             var raw = NEGS(W15, WZR, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -96,16 +96,16 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, WZR", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, WZR, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, WZR", asm);
+            Assert.AreEqual("CMP WZR, WZR", asm);
         }
-
+        
         {
             var raw = NEGS(W0, W1, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -114,7 +114,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, W1, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(W15, W1, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -123,16 +123,16 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, W1, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, W1, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, W1, LSL #1", asm);
+            Assert.AreEqual("CMP WZR, W1, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(W0, W16, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -141,7 +141,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, W16, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(W15, W16, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -150,16 +150,16 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, W16, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, W16, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, W16, LSL #1", asm);
+            Assert.AreEqual("CMP WZR, W16, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(W0, WZR, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -168,7 +168,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, WZR, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(W15, WZR, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -177,16 +177,16 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, WZR, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, WZR, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, WZR, LSL #1", asm);
+            Assert.AreEqual("CMP WZR, WZR, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(W0, W1, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -195,7 +195,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, W1, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(W15, W1, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -204,16 +204,16 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, W1, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, W1, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, W1, LSR #10", asm);
+            Assert.AreEqual("CMP WZR, W1, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(W0, W16, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -222,7 +222,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, W16, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(W15, W16, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -231,16 +231,16 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, W16, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, W16, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, W16, LSR #10", asm);
+            Assert.AreEqual("CMP WZR, W16, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(W0, WZR, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -249,7 +249,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, WZR, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(W15, WZR, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -258,16 +258,16 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, WZR, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, WZR, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, WZR, LSR #10", asm);
+            Assert.AreEqual("CMP WZR, WZR, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(W0, W1, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
@@ -276,7 +276,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, W1, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(W15, W1, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
@@ -285,16 +285,16 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, W1, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, W1, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, W1, ASR #12", asm);
+            Assert.AreEqual("CMP WZR, W1, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(W0, W16, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
@@ -303,7 +303,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, W16, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(W15, W16, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
@@ -312,16 +312,16 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, W16, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, W16, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, W16, ASR #12", asm);
+            Assert.AreEqual("CMP WZR, W16, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(W0, WZR, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
@@ -330,7 +330,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W0, WZR, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(W15, WZR, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
@@ -339,24 +339,24 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS W15, WZR, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(WZR, WZR, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.NEGS_subs_32_addsub_shift, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.NEGS, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("NEGS WZR, WZR, ASR #12", asm);
+            Assert.AreEqual("CMP WZR, WZR, ASR #12", asm);
         }
     }
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.NEGS"/>.
     /// </summary>
     [TestMethod]
     public void Test_NEGS_subs_64_addsub_shift_1()
     {
-
+        
         {
             var raw = NEGS(X0, X1, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -365,7 +365,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, X1", asm);
         }
-
+        
         {
             var raw = NEGS(X15, X1, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -374,7 +374,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X15, X1", asm);
         }
-
+        
         {
             var raw = NEGS(X0, X16, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -383,7 +383,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, X16", asm);
         }
-
+        
         {
             var raw = NEGS(X15, X16, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -392,7 +392,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X15, X16", asm);
         }
-
+        
         {
             var raw = NEGS(X0, XZR, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -401,7 +401,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, XZR", asm);
         }
-
+        
         {
             var raw = NEGS(X15, XZR, _LSL, 0);
             var instruction = Arm64Instruction.Decode(raw);
@@ -410,7 +410,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X15, XZR", asm);
         }
-
+        
         {
             var raw = NEGS(X0, X1, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -419,7 +419,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, X1, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(X15, X1, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -428,7 +428,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X15, X1, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(X0, X16, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -437,7 +437,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, X16, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(X15, X16, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -446,7 +446,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X15, X16, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(X0, XZR, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -455,7 +455,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, XZR, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(X15, XZR, _LSL, 1);
             var instruction = Arm64Instruction.Decode(raw);
@@ -464,7 +464,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X15, XZR, LSL #1", asm);
         }
-
+        
         {
             var raw = NEGS(X0, X1, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -473,7 +473,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, X1, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(X15, X1, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -482,7 +482,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X15, X1, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(X0, X16, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -491,7 +491,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, X16, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(X15, X16, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -500,7 +500,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X15, X16, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(X0, XZR, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -509,7 +509,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, XZR, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(X15, XZR, _LSR, 10);
             var instruction = Arm64Instruction.Decode(raw);
@@ -518,7 +518,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X15, XZR, LSR #10", asm);
         }
-
+        
         {
             var raw = NEGS(X0, X1, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
@@ -527,7 +527,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, X1, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(X15, X1, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
@@ -536,7 +536,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X15, X1, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(X0, X16, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
@@ -545,7 +545,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, X16, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(X15, X16, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
@@ -554,7 +554,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X15, X16, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(X0, XZR, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);
@@ -563,7 +563,7 @@ public class Arm64InstructionFactoryTests_NEGS_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("NEGS X0, XZR, ASR #12", asm);
         }
-
+        
         {
             var raw = NEGS(X15, XZR, _ASR, 12);
             var instruction = Arm64Instruction.Decode(raw);

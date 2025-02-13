@@ -12,19 +12,19 @@
 using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
-namespace AsmArm64.Tests.manual;
+namespace AsmArm64.Tests.General;
 
 [TestClass]
 public class Arm64InstructionFactoryTests_EXTR_General
 {
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.EXTR"/>.
     /// </summary>
     [TestMethod]
     public void Test_EXTR_32_extract_0()
     {
-
+        
         {
             var raw = EXTR(W0, W1, W2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -33,7 +33,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W0, W1, W2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W15, W1, W2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -42,7 +42,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W15, W1, W2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(WZR, W1, W2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -51,7 +51,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR WZR, W1, W2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W0, W16, W2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -60,7 +60,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W0, W16, W2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W15, W16, W2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -69,7 +69,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W15, W16, W2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(WZR, W16, W2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -78,7 +78,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR WZR, W16, W2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W0, WZR, W2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -87,7 +87,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W0, WZR, W2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W15, WZR, W2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -96,7 +96,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W15, WZR, W2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(WZR, WZR, W2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -105,7 +105,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR WZR, WZR, W2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W0, W1, W17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -114,7 +114,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W0, W1, W17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W15, W1, W17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -123,7 +123,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W15, W1, W17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(WZR, W1, W17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -132,7 +132,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR WZR, W1, W17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W0, W16, W17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -141,7 +141,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W0, W16, W17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W15, W16, W17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -150,7 +150,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W15, W16, W17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(WZR, W16, W17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -159,7 +159,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR WZR, W16, W17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W0, WZR, W17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -168,7 +168,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W0, WZR, W17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W15, WZR, W17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -177,7 +177,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W15, WZR, W17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(WZR, WZR, W17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -186,7 +186,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR WZR, WZR, W17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W0, W1, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -195,7 +195,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W0, W1, WZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W15, W1, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -204,7 +204,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W15, W1, WZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(WZR, W1, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -213,7 +213,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR WZR, W1, WZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W0, W16, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -222,7 +222,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W0, W16, WZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W15, W16, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -231,7 +231,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR W15, W16, WZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(WZR, W16, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -240,42 +240,42 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR WZR, W16, WZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W0, WZR, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.EXTR_32_extract, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.EXTR, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.ROR_extr_32_extract, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ROR, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("EXTR W0, WZR, WZR, #5", asm);
+            Assert.AreEqual("ROR W0, WZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(W15, WZR, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.EXTR_32_extract, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.EXTR, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.ROR_extr_32_extract, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ROR, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("EXTR W15, WZR, WZR, #5", asm);
+            Assert.AreEqual("ROR W15, WZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(WZR, WZR, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.EXTR_32_extract, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.EXTR, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.ROR_extr_32_extract, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ROR, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("EXTR WZR, WZR, WZR, #5", asm);
+            Assert.AreEqual("ROR WZR, WZR, #5", asm);
         }
     }
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.EXTR"/>.
     /// </summary>
     [TestMethod]
     public void Test_EXTR_64_extract_1()
     {
-
+        
         {
             var raw = EXTR(X0, X1, X2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -284,7 +284,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X0, X1, X2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X15, X1, X2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -293,7 +293,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X15, X1, X2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(XZR, X1, X2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -302,7 +302,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR XZR, X1, X2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X0, X16, X2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -311,7 +311,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X0, X16, X2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X15, X16, X2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -320,7 +320,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X15, X16, X2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(XZR, X16, X2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -329,7 +329,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR XZR, X16, X2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X0, XZR, X2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -338,7 +338,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X0, XZR, X2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X15, XZR, X2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -347,7 +347,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X15, XZR, X2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(XZR, XZR, X2, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -356,7 +356,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR XZR, XZR, X2, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X0, X1, X17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -365,7 +365,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X0, X1, X17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X15, X1, X17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -374,7 +374,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X15, X1, X17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(XZR, X1, X17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -383,7 +383,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR XZR, X1, X17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X0, X16, X17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -392,7 +392,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X0, X16, X17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X15, X16, X17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -401,7 +401,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X15, X16, X17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(XZR, X16, X17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -410,7 +410,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR XZR, X16, X17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X0, XZR, X17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -419,7 +419,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X0, XZR, X17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X15, XZR, X17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -428,7 +428,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X15, XZR, X17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(XZR, XZR, X17, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -437,7 +437,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR XZR, XZR, X17, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X0, X1, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -446,7 +446,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X0, X1, XZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X15, X1, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -455,7 +455,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X15, X1, XZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(XZR, X1, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -464,7 +464,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR XZR, X1, XZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X0, X16, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -473,7 +473,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X0, X16, XZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X15, X16, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -482,7 +482,7 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR X15, X16, XZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(XZR, X16, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -491,32 +491,32 @@ public class Arm64InstructionFactoryTests_EXTR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("EXTR XZR, X16, XZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X0, XZR, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.EXTR_64_extract, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.EXTR, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.ROR_extr_64_extract, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ROR, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("EXTR X0, XZR, XZR, #5", asm);
+            Assert.AreEqual("ROR X0, XZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(X15, XZR, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.EXTR_64_extract, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.EXTR, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.ROR_extr_64_extract, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ROR, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("EXTR X15, XZR, XZR, #5", asm);
+            Assert.AreEqual("ROR X15, XZR, #5", asm);
         }
-
+        
         {
             var raw = EXTR(XZR, XZR, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.EXTR_64_extract, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.EXTR, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.ROR_extr_64_extract, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ROR, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("EXTR XZR, XZR, XZR, #5", asm);
+            Assert.AreEqual("ROR XZR, XZR, #5", asm);
         }
     }
 }

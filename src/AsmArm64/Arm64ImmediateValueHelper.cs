@@ -71,9 +71,13 @@ internal static class Arm64ImmediateValueHelper
             case Arm64ImmediateValueEncodingKind.ValueImm64:
                 return (long)Arm64BitMaskImmediate64.DecodeAsMask((byte)value);
             case Arm64ImmediateValueEncodingKind.InvertValueShiftWide32:
-                return ~(uint)((int)value >> 2) << ((value & 0x3) << 4);
+                return ~(uint)((value >> 2) << ((value & 0x3) << 4));
+            case Arm64ImmediateValueEncodingKind.InvertValueShiftWide64:
+                return ~(((long)value >> 2) << ((value & 0x3) << 4));
             case Arm64ImmediateValueEncodingKind.ValueShiftWide64:
                 return ((long)value >> 2) << ((value & 0x3) << 4);
+            case Arm64ImmediateValueEncodingKind.ValueShiftWide32:
+                return ((int)value >> 2) << ((value & 0x3) << 4);
             default:
                 throw new ArgumentOutOfRangeException(nameof(valueEncodingKind), valueEncodingKind, null);
         }

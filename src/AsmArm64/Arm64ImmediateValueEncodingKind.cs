@@ -80,4 +80,14 @@ enum Arm64ImmediateValueEncodingKind : byte
     /// The lowest 2 bits encode a shift: * 16 for 64 bit
     /// </summary>
     ValueShiftWide64,
+
+    /// <summary>
+    /// The lowest 2 bits encode a shift: * 16 for 64 bit and bitwise inverse
+    /// </summary>
+    InvertValueShiftWide64,
+
+    /// <summary>
+    /// The lowest 2 bits encode a shift: * 16 for 32 bit
+    /// </summary>
+    ValueShiftWide32,
 }

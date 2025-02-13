@@ -12,19 +12,19 @@
 using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
-namespace AsmArm64.Tests.manual;
+namespace AsmArm64.Tests.General;
 
 [TestClass]
 public class Arm64InstructionFactoryTests_ROR_General
 {
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.ROR"/>.
     /// </summary>
     [TestMethod]
     public void Test_ROR_extr_32_extract_0()
     {
-
+        
         {
             var raw = ROR(W0, W1, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -33,7 +33,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, W1, #5", asm);
         }
-
+        
         {
             var raw = ROR(W15, W1, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -42,7 +42,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, W1, #5", asm);
         }
-
+        
         {
             var raw = ROR(WZR, W1, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -51,7 +51,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR WZR, W1, #5", asm);
         }
-
+        
         {
             var raw = ROR(W0, W16, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -60,7 +60,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, W16, #5", asm);
         }
-
+        
         {
             var raw = ROR(W15, W16, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -69,7 +69,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, W16, #5", asm);
         }
-
+        
         {
             var raw = ROR(WZR, W16, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -78,7 +78,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR WZR, W16, #5", asm);
         }
-
+        
         {
             var raw = ROR(W0, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -87,7 +87,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, WZR, #5", asm);
         }
-
+        
         {
             var raw = ROR(W15, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -96,7 +96,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, WZR, #5", asm);
         }
-
+        
         {
             var raw = ROR(WZR, WZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -106,14 +106,14 @@ public class Arm64InstructionFactoryTests_ROR_General
             Assert.AreEqual("ROR WZR, WZR, #5", asm);
         }
     }
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.ROR"/>.
     /// </summary>
     [TestMethod]
     public void Test_ROR_extr_64_extract_1()
     {
-
+        
         {
             var raw = ROR(X0, X1, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -122,7 +122,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, X1, #5", asm);
         }
-
+        
         {
             var raw = ROR(X15, X1, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -131,7 +131,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, X1, #5", asm);
         }
-
+        
         {
             var raw = ROR(XZR, X1, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -140,7 +140,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR XZR, X1, #5", asm);
         }
-
+        
         {
             var raw = ROR(X0, X16, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -149,7 +149,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, X16, #5", asm);
         }
-
+        
         {
             var raw = ROR(X15, X16, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -158,7 +158,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, X16, #5", asm);
         }
-
+        
         {
             var raw = ROR(XZR, X16, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -167,7 +167,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR XZR, X16, #5", asm);
         }
-
+        
         {
             var raw = ROR(X0, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -176,7 +176,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, XZR, #5", asm);
         }
-
+        
         {
             var raw = ROR(X15, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -185,7 +185,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, XZR, #5", asm);
         }
-
+        
         {
             var raw = ROR(XZR, XZR, 5);
             var instruction = Arm64Instruction.Decode(raw);
@@ -195,14 +195,14 @@ public class Arm64InstructionFactoryTests_ROR_General
             Assert.AreEqual("ROR XZR, XZR, #5", asm);
         }
     }
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.ROR"/>.
     /// </summary>
     [TestMethod]
     public void Test_ROR_rorv_32_dp_2src_2()
     {
-
+        
         {
             var raw = ROR(W0, W1, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -211,7 +211,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, W1, W2", asm);
         }
-
+        
         {
             var raw = ROR(W15, W1, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -220,7 +220,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, W1, W2", asm);
         }
-
+        
         {
             var raw = ROR(WZR, W1, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -229,7 +229,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR WZR, W1, W2", asm);
         }
-
+        
         {
             var raw = ROR(W0, W16, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -238,7 +238,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, W16, W2", asm);
         }
-
+        
         {
             var raw = ROR(W15, W16, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -247,7 +247,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, W16, W2", asm);
         }
-
+        
         {
             var raw = ROR(WZR, W16, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -256,7 +256,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR WZR, W16, W2", asm);
         }
-
+        
         {
             var raw = ROR(W0, WZR, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -265,7 +265,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, WZR, W2", asm);
         }
-
+        
         {
             var raw = ROR(W15, WZR, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -274,7 +274,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, WZR, W2", asm);
         }
-
+        
         {
             var raw = ROR(WZR, WZR, W2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -283,7 +283,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR WZR, WZR, W2", asm);
         }
-
+        
         {
             var raw = ROR(W0, W1, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -292,7 +292,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, W1, W17", asm);
         }
-
+        
         {
             var raw = ROR(W15, W1, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -301,7 +301,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, W1, W17", asm);
         }
-
+        
         {
             var raw = ROR(WZR, W1, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -310,7 +310,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR WZR, W1, W17", asm);
         }
-
+        
         {
             var raw = ROR(W0, W16, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -319,7 +319,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, W16, W17", asm);
         }
-
+        
         {
             var raw = ROR(W15, W16, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -328,7 +328,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, W16, W17", asm);
         }
-
+        
         {
             var raw = ROR(WZR, W16, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -337,7 +337,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR WZR, W16, W17", asm);
         }
-
+        
         {
             var raw = ROR(W0, WZR, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -346,7 +346,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, WZR, W17", asm);
         }
-
+        
         {
             var raw = ROR(W15, WZR, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -355,7 +355,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, WZR, W17", asm);
         }
-
+        
         {
             var raw = ROR(WZR, WZR, W17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -364,7 +364,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR WZR, WZR, W17", asm);
         }
-
+        
         {
             var raw = ROR(W0, W1, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -373,7 +373,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, W1, WZR", asm);
         }
-
+        
         {
             var raw = ROR(W15, W1, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -382,7 +382,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, W1, WZR", asm);
         }
-
+        
         {
             var raw = ROR(WZR, W1, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -391,7 +391,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR WZR, W1, WZR", asm);
         }
-
+        
         {
             var raw = ROR(W0, W16, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -400,7 +400,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, W16, WZR", asm);
         }
-
+        
         {
             var raw = ROR(W15, W16, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -409,7 +409,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, W16, WZR", asm);
         }
-
+        
         {
             var raw = ROR(WZR, W16, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -418,7 +418,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR WZR, W16, WZR", asm);
         }
-
+        
         {
             var raw = ROR(W0, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -427,7 +427,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W0, WZR, WZR", asm);
         }
-
+        
         {
             var raw = ROR(W15, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -436,7 +436,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR W15, WZR, WZR", asm);
         }
-
+        
         {
             var raw = ROR(WZR, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -446,14 +446,14 @@ public class Arm64InstructionFactoryTests_ROR_General
             Assert.AreEqual("ROR WZR, WZR, WZR", asm);
         }
     }
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.ROR"/>.
     /// </summary>
     [TestMethod]
     public void Test_ROR_rorv_64_dp_2src_3()
     {
-
+        
         {
             var raw = ROR(X0, X1, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -462,7 +462,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, X1, X2", asm);
         }
-
+        
         {
             var raw = ROR(X15, X1, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -471,7 +471,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, X1, X2", asm);
         }
-
+        
         {
             var raw = ROR(XZR, X1, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -480,7 +480,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR XZR, X1, X2", asm);
         }
-
+        
         {
             var raw = ROR(X0, X16, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -489,7 +489,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, X16, X2", asm);
         }
-
+        
         {
             var raw = ROR(X15, X16, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -498,7 +498,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, X16, X2", asm);
         }
-
+        
         {
             var raw = ROR(XZR, X16, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -507,7 +507,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR XZR, X16, X2", asm);
         }
-
+        
         {
             var raw = ROR(X0, XZR, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -516,7 +516,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, XZR, X2", asm);
         }
-
+        
         {
             var raw = ROR(X15, XZR, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -525,7 +525,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, XZR, X2", asm);
         }
-
+        
         {
             var raw = ROR(XZR, XZR, X2);
             var instruction = Arm64Instruction.Decode(raw);
@@ -534,7 +534,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR XZR, XZR, X2", asm);
         }
-
+        
         {
             var raw = ROR(X0, X1, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -543,7 +543,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, X1, X17", asm);
         }
-
+        
         {
             var raw = ROR(X15, X1, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -552,7 +552,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, X1, X17", asm);
         }
-
+        
         {
             var raw = ROR(XZR, X1, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -561,7 +561,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR XZR, X1, X17", asm);
         }
-
+        
         {
             var raw = ROR(X0, X16, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -570,7 +570,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, X16, X17", asm);
         }
-
+        
         {
             var raw = ROR(X15, X16, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -579,7 +579,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, X16, X17", asm);
         }
-
+        
         {
             var raw = ROR(XZR, X16, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -588,7 +588,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR XZR, X16, X17", asm);
         }
-
+        
         {
             var raw = ROR(X0, XZR, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -597,7 +597,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, XZR, X17", asm);
         }
-
+        
         {
             var raw = ROR(X15, XZR, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -606,7 +606,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, XZR, X17", asm);
         }
-
+        
         {
             var raw = ROR(XZR, XZR, X17);
             var instruction = Arm64Instruction.Decode(raw);
@@ -615,7 +615,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR XZR, XZR, X17", asm);
         }
-
+        
         {
             var raw = ROR(X0, X1, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -624,7 +624,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, X1, XZR", asm);
         }
-
+        
         {
             var raw = ROR(X15, X1, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -633,7 +633,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, X1, XZR", asm);
         }
-
+        
         {
             var raw = ROR(XZR, X1, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -642,7 +642,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR XZR, X1, XZR", asm);
         }
-
+        
         {
             var raw = ROR(X0, X16, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -651,7 +651,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, X16, XZR", asm);
         }
-
+        
         {
             var raw = ROR(X15, X16, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -660,7 +660,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, X16, XZR", asm);
         }
-
+        
         {
             var raw = ROR(XZR, X16, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -669,7 +669,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR XZR, X16, XZR", asm);
         }
-
+        
         {
             var raw = ROR(X0, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -678,7 +678,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X0, XZR, XZR", asm);
         }
-
+        
         {
             var raw = ROR(X15, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
@@ -687,7 +687,7 @@ public class Arm64InstructionFactoryTests_ROR_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("ROR X15, XZR, XZR", asm);
         }
-
+        
         {
             var raw = ROR(XZR, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);

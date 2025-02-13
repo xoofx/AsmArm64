@@ -562,7 +562,7 @@ partial class Arm64Processor
                     selector.BitValues.Add(bitValue);
                 }
             }
-            else if (enclist.Contains("MOV_UMOV_asimdins_W_w") && name == "<index>")
+            else if ((enclist.Contains("UMOV_asimdins_w_w") || enclist.Contains("MOV_UMOV_asimdins_W_w")) && name == "<index>")
             {
                 // We fake an encoding that is missing from the XML
                 // <entry class="bitfield">xx</entry>
@@ -581,7 +581,7 @@ partial class Arm64Processor
                 //};
                 //selector.BitValues.Add(bitValue);
             }
-            else if (enclist.Contains("MOV_UMOV_asimdins_X_x") && name == "<index>")
+            else if ((enclist.Contains("UMOV_asimdins_X_x") || enclist.Contains("MOV_UMOV_asimdins_X_x")) && name == "<index>")
             {
                 // We fake an encoding that is missing from the XML
                 // <entry class="bitfield">xx</entry>

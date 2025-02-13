@@ -12,19 +12,19 @@
 using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
-namespace AsmArm64.Tests.manual;
+namespace AsmArm64.Tests.General;
 
 [TestClass]
 public class Arm64InstructionFactoryTests_MADD_General
 {
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.MADD"/>.
     /// </summary>
     [TestMethod]
     public void Test_MADD_32a_dp_3src_0()
     {
-
+        
         {
             var raw = MADD(W0, W1, W2, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -33,7 +33,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W1, W2, W3", asm);
         }
-
+        
         {
             var raw = MADD(W15, W1, W2, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -42,7 +42,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W1, W2, W3", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W1, W2, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -51,7 +51,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W1, W2, W3", asm);
         }
-
+        
         {
             var raw = MADD(W0, W16, W2, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -60,7 +60,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W16, W2, W3", asm);
         }
-
+        
         {
             var raw = MADD(W15, W16, W2, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -69,7 +69,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W16, W2, W3", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W16, W2, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -78,7 +78,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W16, W2, W3", asm);
         }
-
+        
         {
             var raw = MADD(W0, WZR, W2, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -87,7 +87,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, WZR, W2, W3", asm);
         }
-
+        
         {
             var raw = MADD(W15, WZR, W2, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -96,7 +96,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, WZR, W2, W3", asm);
         }
-
+        
         {
             var raw = MADD(WZR, WZR, W2, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -105,7 +105,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, WZR, W2, W3", asm);
         }
-
+        
         {
             var raw = MADD(W0, W1, W17, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -114,7 +114,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W1, W17, W3", asm);
         }
-
+        
         {
             var raw = MADD(W15, W1, W17, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -123,7 +123,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W1, W17, W3", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W1, W17, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -132,7 +132,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W1, W17, W3", asm);
         }
-
+        
         {
             var raw = MADD(W0, W16, W17, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -141,7 +141,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W16, W17, W3", asm);
         }
-
+        
         {
             var raw = MADD(W15, W16, W17, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -150,7 +150,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W16, W17, W3", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W16, W17, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -159,7 +159,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W16, W17, W3", asm);
         }
-
+        
         {
             var raw = MADD(W0, WZR, W17, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -168,7 +168,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, WZR, W17, W3", asm);
         }
-
+        
         {
             var raw = MADD(W15, WZR, W17, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -177,7 +177,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, WZR, W17, W3", asm);
         }
-
+        
         {
             var raw = MADD(WZR, WZR, W17, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -186,7 +186,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, WZR, W17, W3", asm);
         }
-
+        
         {
             var raw = MADD(W0, W1, WZR, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -195,7 +195,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W1, WZR, W3", asm);
         }
-
+        
         {
             var raw = MADD(W15, W1, WZR, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -204,7 +204,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W1, WZR, W3", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W1, WZR, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -213,7 +213,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W1, WZR, W3", asm);
         }
-
+        
         {
             var raw = MADD(W0, W16, WZR, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -222,7 +222,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W16, WZR, W3", asm);
         }
-
+        
         {
             var raw = MADD(W15, W16, WZR, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -231,7 +231,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W16, WZR, W3", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W16, WZR, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -240,7 +240,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W16, WZR, W3", asm);
         }
-
+        
         {
             var raw = MADD(W0, WZR, WZR, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -249,7 +249,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, WZR, WZR, W3", asm);
         }
-
+        
         {
             var raw = MADD(W15, WZR, WZR, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -258,7 +258,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, WZR, WZR, W3", asm);
         }
-
+        
         {
             var raw = MADD(WZR, WZR, WZR, W3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -267,7 +267,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, WZR, WZR, W3", asm);
         }
-
+        
         {
             var raw = MADD(W0, W1, W2, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -276,7 +276,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W1, W2, W18", asm);
         }
-
+        
         {
             var raw = MADD(W15, W1, W2, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -285,7 +285,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W1, W2, W18", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W1, W2, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -294,7 +294,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W1, W2, W18", asm);
         }
-
+        
         {
             var raw = MADD(W0, W16, W2, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -303,7 +303,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W16, W2, W18", asm);
         }
-
+        
         {
             var raw = MADD(W15, W16, W2, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -312,7 +312,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W16, W2, W18", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W16, W2, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -321,7 +321,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W16, W2, W18", asm);
         }
-
+        
         {
             var raw = MADD(W0, WZR, W2, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -330,7 +330,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, WZR, W2, W18", asm);
         }
-
+        
         {
             var raw = MADD(W15, WZR, W2, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -339,7 +339,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, WZR, W2, W18", asm);
         }
-
+        
         {
             var raw = MADD(WZR, WZR, W2, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -348,7 +348,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, WZR, W2, W18", asm);
         }
-
+        
         {
             var raw = MADD(W0, W1, W17, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -357,7 +357,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W1, W17, W18", asm);
         }
-
+        
         {
             var raw = MADD(W15, W1, W17, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -366,7 +366,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W1, W17, W18", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W1, W17, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -375,7 +375,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W1, W17, W18", asm);
         }
-
+        
         {
             var raw = MADD(W0, W16, W17, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -384,7 +384,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W16, W17, W18", asm);
         }
-
+        
         {
             var raw = MADD(W15, W16, W17, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -393,7 +393,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W16, W17, W18", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W16, W17, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -402,7 +402,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W16, W17, W18", asm);
         }
-
+        
         {
             var raw = MADD(W0, WZR, W17, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -411,7 +411,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, WZR, W17, W18", asm);
         }
-
+        
         {
             var raw = MADD(W15, WZR, W17, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -420,7 +420,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, WZR, W17, W18", asm);
         }
-
+        
         {
             var raw = MADD(WZR, WZR, W17, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -429,7 +429,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, WZR, W17, W18", asm);
         }
-
+        
         {
             var raw = MADD(W0, W1, WZR, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -438,7 +438,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W1, WZR, W18", asm);
         }
-
+        
         {
             var raw = MADD(W15, W1, WZR, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -447,7 +447,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W1, WZR, W18", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W1, WZR, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -456,7 +456,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W1, WZR, W18", asm);
         }
-
+        
         {
             var raw = MADD(W0, W16, WZR, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -465,7 +465,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, W16, WZR, W18", asm);
         }
-
+        
         {
             var raw = MADD(W15, W16, WZR, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -474,7 +474,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, W16, WZR, W18", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W16, WZR, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -483,7 +483,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, W16, WZR, W18", asm);
         }
-
+        
         {
             var raw = MADD(W0, WZR, WZR, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -492,7 +492,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W0, WZR, WZR, W18", asm);
         }
-
+        
         {
             var raw = MADD(W15, WZR, WZR, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -501,7 +501,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD W15, WZR, WZR, W18", asm);
         }
-
+        
         {
             var raw = MADD(WZR, WZR, WZR, W18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -510,258 +510,258 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD WZR, WZR, WZR, W18", asm);
         }
-
+        
         {
             var raw = MADD(W0, W1, W2, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W0, W1, W2, WZR", asm);
+            Assert.AreEqual("MUL W0, W1, W2", asm);
         }
-
+        
         {
             var raw = MADD(W15, W1, W2, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W15, W1, W2, WZR", asm);
+            Assert.AreEqual("MUL W15, W1, W2", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W1, W2, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD WZR, W1, W2, WZR", asm);
+            Assert.AreEqual("MUL WZR, W1, W2", asm);
         }
-
+        
         {
             var raw = MADD(W0, W16, W2, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W0, W16, W2, WZR", asm);
+            Assert.AreEqual("MUL W0, W16, W2", asm);
         }
-
+        
         {
             var raw = MADD(W15, W16, W2, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W15, W16, W2, WZR", asm);
+            Assert.AreEqual("MUL W15, W16, W2", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W16, W2, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD WZR, W16, W2, WZR", asm);
+            Assert.AreEqual("MUL WZR, W16, W2", asm);
         }
-
+        
         {
             var raw = MADD(W0, WZR, W2, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W0, WZR, W2, WZR", asm);
+            Assert.AreEqual("MUL W0, WZR, W2", asm);
         }
-
+        
         {
             var raw = MADD(W15, WZR, W2, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W15, WZR, W2, WZR", asm);
+            Assert.AreEqual("MUL W15, WZR, W2", asm);
         }
-
+        
         {
             var raw = MADD(WZR, WZR, W2, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD WZR, WZR, W2, WZR", asm);
+            Assert.AreEqual("MUL WZR, WZR, W2", asm);
         }
-
+        
         {
             var raw = MADD(W0, W1, W17, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W0, W1, W17, WZR", asm);
+            Assert.AreEqual("MUL W0, W1, W17", asm);
         }
-
+        
         {
             var raw = MADD(W15, W1, W17, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W15, W1, W17, WZR", asm);
+            Assert.AreEqual("MUL W15, W1, W17", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W1, W17, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD WZR, W1, W17, WZR", asm);
+            Assert.AreEqual("MUL WZR, W1, W17", asm);
         }
-
+        
         {
             var raw = MADD(W0, W16, W17, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W0, W16, W17, WZR", asm);
+            Assert.AreEqual("MUL W0, W16, W17", asm);
         }
-
+        
         {
             var raw = MADD(W15, W16, W17, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W15, W16, W17, WZR", asm);
+            Assert.AreEqual("MUL W15, W16, W17", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W16, W17, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD WZR, W16, W17, WZR", asm);
+            Assert.AreEqual("MUL WZR, W16, W17", asm);
         }
-
+        
         {
             var raw = MADD(W0, WZR, W17, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W0, WZR, W17, WZR", asm);
+            Assert.AreEqual("MUL W0, WZR, W17", asm);
         }
-
+        
         {
             var raw = MADD(W15, WZR, W17, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W15, WZR, W17, WZR", asm);
+            Assert.AreEqual("MUL W15, WZR, W17", asm);
         }
-
+        
         {
             var raw = MADD(WZR, WZR, W17, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD WZR, WZR, W17, WZR", asm);
+            Assert.AreEqual("MUL WZR, WZR, W17", asm);
         }
-
+        
         {
             var raw = MADD(W0, W1, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W0, W1, WZR, WZR", asm);
+            Assert.AreEqual("MUL W0, W1, WZR", asm);
         }
-
+        
         {
             var raw = MADD(W15, W1, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W15, W1, WZR, WZR", asm);
+            Assert.AreEqual("MUL W15, W1, WZR", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W1, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD WZR, W1, WZR, WZR", asm);
+            Assert.AreEqual("MUL WZR, W1, WZR", asm);
         }
-
+        
         {
             var raw = MADD(W0, W16, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W0, W16, WZR, WZR", asm);
+            Assert.AreEqual("MUL W0, W16, WZR", asm);
         }
-
+        
         {
             var raw = MADD(W15, W16, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W15, W16, WZR, WZR", asm);
+            Assert.AreEqual("MUL W15, W16, WZR", asm);
         }
-
+        
         {
             var raw = MADD(WZR, W16, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD WZR, W16, WZR, WZR", asm);
+            Assert.AreEqual("MUL WZR, W16, WZR", asm);
         }
-
+        
         {
             var raw = MADD(W0, WZR, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W0, WZR, WZR, WZR", asm);
+            Assert.AreEqual("MUL W0, WZR, WZR", asm);
         }
-
+        
         {
             var raw = MADD(W15, WZR, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD W15, WZR, WZR, WZR", asm);
+            Assert.AreEqual("MUL W15, WZR, WZR", asm);
         }
-
+        
         {
             var raw = MADD(WZR, WZR, WZR, WZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_32a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD WZR, WZR, WZR, WZR", asm);
+            Assert.AreEqual("MUL WZR, WZR, WZR", asm);
         }
     }
-
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.MADD"/>.
     /// </summary>
     [TestMethod]
     public void Test_MADD_64a_dp_3src_1()
     {
-
+        
         {
             var raw = MADD(X0, X1, X2, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -770,7 +770,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X1, X2, X3", asm);
         }
-
+        
         {
             var raw = MADD(X15, X1, X2, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -779,7 +779,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X1, X2, X3", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X1, X2, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -788,7 +788,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X1, X2, X3", asm);
         }
-
+        
         {
             var raw = MADD(X0, X16, X2, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -797,7 +797,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X16, X2, X3", asm);
         }
-
+        
         {
             var raw = MADD(X15, X16, X2, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -806,7 +806,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X16, X2, X3", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X16, X2, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -815,7 +815,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X16, X2, X3", asm);
         }
-
+        
         {
             var raw = MADD(X0, XZR, X2, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -824,7 +824,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, XZR, X2, X3", asm);
         }
-
+        
         {
             var raw = MADD(X15, XZR, X2, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -833,7 +833,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, XZR, X2, X3", asm);
         }
-
+        
         {
             var raw = MADD(XZR, XZR, X2, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -842,7 +842,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, XZR, X2, X3", asm);
         }
-
+        
         {
             var raw = MADD(X0, X1, X17, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -851,7 +851,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X1, X17, X3", asm);
         }
-
+        
         {
             var raw = MADD(X15, X1, X17, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -860,7 +860,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X1, X17, X3", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X1, X17, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -869,7 +869,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X1, X17, X3", asm);
         }
-
+        
         {
             var raw = MADD(X0, X16, X17, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -878,7 +878,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X16, X17, X3", asm);
         }
-
+        
         {
             var raw = MADD(X15, X16, X17, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -887,7 +887,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X16, X17, X3", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X16, X17, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -896,7 +896,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X16, X17, X3", asm);
         }
-
+        
         {
             var raw = MADD(X0, XZR, X17, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -905,7 +905,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, XZR, X17, X3", asm);
         }
-
+        
         {
             var raw = MADD(X15, XZR, X17, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -914,7 +914,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, XZR, X17, X3", asm);
         }
-
+        
         {
             var raw = MADD(XZR, XZR, X17, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -923,7 +923,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, XZR, X17, X3", asm);
         }
-
+        
         {
             var raw = MADD(X0, X1, XZR, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -932,7 +932,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X1, XZR, X3", asm);
         }
-
+        
         {
             var raw = MADD(X15, X1, XZR, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -941,7 +941,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X1, XZR, X3", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X1, XZR, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -950,7 +950,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X1, XZR, X3", asm);
         }
-
+        
         {
             var raw = MADD(X0, X16, XZR, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -959,7 +959,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X16, XZR, X3", asm);
         }
-
+        
         {
             var raw = MADD(X15, X16, XZR, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -968,7 +968,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X16, XZR, X3", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X16, XZR, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -977,7 +977,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X16, XZR, X3", asm);
         }
-
+        
         {
             var raw = MADD(X0, XZR, XZR, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -986,7 +986,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, XZR, XZR, X3", asm);
         }
-
+        
         {
             var raw = MADD(X15, XZR, XZR, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -995,7 +995,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, XZR, XZR, X3", asm);
         }
-
+        
         {
             var raw = MADD(XZR, XZR, XZR, X3);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1004,7 +1004,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, XZR, XZR, X3", asm);
         }
-
+        
         {
             var raw = MADD(X0, X1, X2, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1013,7 +1013,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X1, X2, X18", asm);
         }
-
+        
         {
             var raw = MADD(X15, X1, X2, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1022,7 +1022,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X1, X2, X18", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X1, X2, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1031,7 +1031,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X1, X2, X18", asm);
         }
-
+        
         {
             var raw = MADD(X0, X16, X2, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1040,7 +1040,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X16, X2, X18", asm);
         }
-
+        
         {
             var raw = MADD(X15, X16, X2, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1049,7 +1049,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X16, X2, X18", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X16, X2, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1058,7 +1058,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X16, X2, X18", asm);
         }
-
+        
         {
             var raw = MADD(X0, XZR, X2, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1067,7 +1067,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, XZR, X2, X18", asm);
         }
-
+        
         {
             var raw = MADD(X15, XZR, X2, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1076,7 +1076,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, XZR, X2, X18", asm);
         }
-
+        
         {
             var raw = MADD(XZR, XZR, X2, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1085,7 +1085,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, XZR, X2, X18", asm);
         }
-
+        
         {
             var raw = MADD(X0, X1, X17, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1094,7 +1094,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X1, X17, X18", asm);
         }
-
+        
         {
             var raw = MADD(X15, X1, X17, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1103,7 +1103,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X1, X17, X18", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X1, X17, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1112,7 +1112,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X1, X17, X18", asm);
         }
-
+        
         {
             var raw = MADD(X0, X16, X17, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1121,7 +1121,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X16, X17, X18", asm);
         }
-
+        
         {
             var raw = MADD(X15, X16, X17, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1130,7 +1130,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X16, X17, X18", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X16, X17, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1139,7 +1139,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X16, X17, X18", asm);
         }
-
+        
         {
             var raw = MADD(X0, XZR, X17, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1148,7 +1148,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, XZR, X17, X18", asm);
         }
-
+        
         {
             var raw = MADD(X15, XZR, X17, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1157,7 +1157,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, XZR, X17, X18", asm);
         }
-
+        
         {
             var raw = MADD(XZR, XZR, X17, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1166,7 +1166,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, XZR, X17, X18", asm);
         }
-
+        
         {
             var raw = MADD(X0, X1, XZR, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1175,7 +1175,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X1, XZR, X18", asm);
         }
-
+        
         {
             var raw = MADD(X15, X1, XZR, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1184,7 +1184,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X1, XZR, X18", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X1, XZR, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1193,7 +1193,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X1, XZR, X18", asm);
         }
-
+        
         {
             var raw = MADD(X0, X16, XZR, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1202,7 +1202,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, X16, XZR, X18", asm);
         }
-
+        
         {
             var raw = MADD(X15, X16, XZR, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1211,7 +1211,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, X16, XZR, X18", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X16, XZR, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1220,7 +1220,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, X16, XZR, X18", asm);
         }
-
+        
         {
             var raw = MADD(X0, XZR, XZR, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1229,7 +1229,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X0, XZR, XZR, X18", asm);
         }
-
+        
         {
             var raw = MADD(X15, XZR, XZR, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1238,7 +1238,7 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD X15, XZR, XZR, X18", asm);
         }
-
+        
         {
             var raw = MADD(XZR, XZR, XZR, X18);
             var instruction = Arm64Instruction.Decode(raw);
@@ -1247,248 +1247,248 @@ public class Arm64InstructionFactoryTests_MADD_General
             var asm = instruction.ToString("H", null);
             Assert.AreEqual("MADD XZR, XZR, XZR, X18", asm);
         }
-
+        
         {
             var raw = MADD(X0, X1, X2, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X0, X1, X2, XZR", asm);
+            Assert.AreEqual("MUL X0, X1, X2", asm);
         }
-
+        
         {
             var raw = MADD(X15, X1, X2, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X15, X1, X2, XZR", asm);
+            Assert.AreEqual("MUL X15, X1, X2", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X1, X2, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD XZR, X1, X2, XZR", asm);
+            Assert.AreEqual("MUL XZR, X1, X2", asm);
         }
-
+        
         {
             var raw = MADD(X0, X16, X2, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X0, X16, X2, XZR", asm);
+            Assert.AreEqual("MUL X0, X16, X2", asm);
         }
-
+        
         {
             var raw = MADD(X15, X16, X2, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X15, X16, X2, XZR", asm);
+            Assert.AreEqual("MUL X15, X16, X2", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X16, X2, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD XZR, X16, X2, XZR", asm);
+            Assert.AreEqual("MUL XZR, X16, X2", asm);
         }
-
+        
         {
             var raw = MADD(X0, XZR, X2, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X0, XZR, X2, XZR", asm);
+            Assert.AreEqual("MUL X0, XZR, X2", asm);
         }
-
+        
         {
             var raw = MADD(X15, XZR, X2, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X15, XZR, X2, XZR", asm);
+            Assert.AreEqual("MUL X15, XZR, X2", asm);
         }
-
+        
         {
             var raw = MADD(XZR, XZR, X2, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD XZR, XZR, X2, XZR", asm);
+            Assert.AreEqual("MUL XZR, XZR, X2", asm);
         }
-
+        
         {
             var raw = MADD(X0, X1, X17, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X0, X1, X17, XZR", asm);
+            Assert.AreEqual("MUL X0, X1, X17", asm);
         }
-
+        
         {
             var raw = MADD(X15, X1, X17, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X15, X1, X17, XZR", asm);
+            Assert.AreEqual("MUL X15, X1, X17", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X1, X17, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD XZR, X1, X17, XZR", asm);
+            Assert.AreEqual("MUL XZR, X1, X17", asm);
         }
-
+        
         {
             var raw = MADD(X0, X16, X17, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X0, X16, X17, XZR", asm);
+            Assert.AreEqual("MUL X0, X16, X17", asm);
         }
-
+        
         {
             var raw = MADD(X15, X16, X17, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X15, X16, X17, XZR", asm);
+            Assert.AreEqual("MUL X15, X16, X17", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X16, X17, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD XZR, X16, X17, XZR", asm);
+            Assert.AreEqual("MUL XZR, X16, X17", asm);
         }
-
+        
         {
             var raw = MADD(X0, XZR, X17, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X0, XZR, X17, XZR", asm);
+            Assert.AreEqual("MUL X0, XZR, X17", asm);
         }
-
+        
         {
             var raw = MADD(X15, XZR, X17, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X15, XZR, X17, XZR", asm);
+            Assert.AreEqual("MUL X15, XZR, X17", asm);
         }
-
+        
         {
             var raw = MADD(XZR, XZR, X17, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD XZR, XZR, X17, XZR", asm);
+            Assert.AreEqual("MUL XZR, XZR, X17", asm);
         }
-
+        
         {
             var raw = MADD(X0, X1, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X0, X1, XZR, XZR", asm);
+            Assert.AreEqual("MUL X0, X1, XZR", asm);
         }
-
+        
         {
             var raw = MADD(X15, X1, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X15, X1, XZR, XZR", asm);
+            Assert.AreEqual("MUL X15, X1, XZR", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X1, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD XZR, X1, XZR, XZR", asm);
+            Assert.AreEqual("MUL XZR, X1, XZR", asm);
         }
-
+        
         {
             var raw = MADD(X0, X16, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X0, X16, XZR, XZR", asm);
+            Assert.AreEqual("MUL X0, X16, XZR", asm);
         }
-
+        
         {
             var raw = MADD(X15, X16, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X15, X16, XZR, XZR", asm);
+            Assert.AreEqual("MUL X15, X16, XZR", asm);
         }
-
+        
         {
             var raw = MADD(XZR, X16, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD XZR, X16, XZR, XZR", asm);
+            Assert.AreEqual("MUL XZR, X16, XZR", asm);
         }
-
+        
         {
             var raw = MADD(X0, XZR, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X0, XZR, XZR, XZR", asm);
+            Assert.AreEqual("MUL X0, XZR, XZR", asm);
         }
-
+        
         {
             var raw = MADD(X15, XZR, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD X15, XZR, XZR, XZR", asm);
+            Assert.AreEqual("MUL X15, XZR, XZR", asm);
         }
-
+        
         {
             var raw = MADD(XZR, XZR, XZR, XZR);
             var instruction = Arm64Instruction.Decode(raw);
-            Assert.AreEqual(Arm64InstructionId.MADD_64a_dp_3src, instruction.Id);
-            Assert.AreEqual(Arm64Mnemonic.MADD, instruction.Mnemonic);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("MADD XZR, XZR, XZR, XZR", asm);
+            Assert.AreEqual("MUL XZR, XZR, XZR", asm);
         }
     }
 }

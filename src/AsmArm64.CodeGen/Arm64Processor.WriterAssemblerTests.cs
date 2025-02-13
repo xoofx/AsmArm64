@@ -126,8 +126,9 @@ partial class Arm64Processor
             }
 
             FindBestAlias(instructionVariation, testArguments, out var preferredInstruction, out var expectedAsm);
-            
-            w.WriteLine($"var raw = {instruction.Mnemonic}({string.Join(", ", testArguments.Select(x => x.CSharp))});");
+
+            var cSharpMnemonic = GetInstructionMnemonic(instruction);
+            w.WriteLine($"var raw = {cSharpMnemonic}({string.Join(", ", testArguments.Select(x => x.CSharp))});");
             w.WriteLine("var instruction = Arm64Instruction.Decode(raw);");
             
             // Special case for LSL instructions that are folded into a single instruction
@@ -235,14 +236,29 @@ partial class Arm64Processor
                 break;
             case "ORR_32_log_shift":
             case "ORR_64_log_shift":
-            case "ORN_32_log_shift":
-            case "ORN_64_log_shift":
             {
-                if (IsWZR(localArguments[1]) && localArguments[3] is ShiftTestArgument shiftArg && shiftArg.Shift == "LSL" && shiftArg.Amount == 0)
+                if (IsWZR(localArguments[1]) && localArguments[3] is ShiftTestArgument shiftArg && shiftArg.Kind == "LSL" && shiftArg.Amount == 0)
                 {
                     preferredInstruction = potentialPreferredAlias;
                     mnemonic = preferredInstruction.Mnemonic;
                     localArguments.RemoveAt(3);
+                    localArguments.RemoveAt(1);
+                }
+
+                break;
+            }
+            case "ORN_32_log_shift":
+            case "ORN_64_log_shift":
+                {
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = potentialPreferredAlias;
+                    mnemonic = preferredInstruction.Mnemonic;
+
+                    if (localArguments[3] is ShiftTestArgument shiftArg && shiftArg.Kind == "LSL" && shiftArg.Amount == 0)
+                    {
+                        localArguments.RemoveAt(3);
+                    }
                     localArguments.RemoveAt(1);
                 }
 
@@ -264,9 +280,19 @@ partial class Arm64Processor
                     }
                     else if (IsWZR(localArguments[0]))
                     {
-                        preferredInstruction = potentialPreferredAlias;
-                        mnemonic = preferredInstruction.Mnemonic;
-                        localArguments.RemoveAt(0);
+                        if (localArguments[3] is ShiftTestArgument shiftArg)
+                        {
+                            if (shiftArg.Kind == "LSL" && shiftArg.Amount == 0)
+                            {
+                                localArguments.RemoveAt(3);
+                            }
+                        }
+                        else
+                        {
+                            preferredInstruction = potentialPreferredAlias;
+                            mnemonic = preferredInstruction.Mnemonic;
+                            localArguments.RemoveAt(0);
+                        }
                     }
 
                     break;
@@ -282,7 +308,7 @@ partial class Arm64Processor
                 }
                 else if (IsWZR(localArguments[1]))
                 {
-                    if (localArguments[3] is ShiftTestArgument shiftArg && shiftArg.Shift == "LSL" && shiftArg.Amount == 0)
+                    if (localArguments[3] is ShiftTestArgument shiftArg && shiftArg.Kind == "LSL" && shiftArg.Amount == 0)
                     {
                         localArguments.RemoveAt(3);
                     }
@@ -394,6 +420,266 @@ partial class Arm64Processor
                     localArguments[2] = new RawTestArgument(cond.CSharp, InvertConditional(cond.Asm));
                 }
                 break;
+            case "BFM_32m_bitfield":
+
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["BFC_bfm_32m_bitfield"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                    localArguments[1] = new ImmediateTestArgument(27);
+                    localArguments[2] = new ImmediateTestArgument(6);
+                }
+                else
+                {
+                    preferredInstruction = MapIdToInstruction["BFXIL_bfm_32m_bitfield"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments[3] = new ImmediateTestArgument(1);
+                }
+                break;
+            case "UBFM_32m_bitfield":
+                preferredInstruction = MapIdToInstruction["UBFX_ubfm_32m_bitfield"];
+                mnemonic = preferredInstruction.Mnemonic;
+                localArguments[3] = new ImmediateTestArgument(1);
+                break;
+
+            case "UBFM_64m_bitfield":
+                preferredInstruction = MapIdToInstruction["UBFX_ubfm_64m_bitfield"];
+                mnemonic = preferredInstruction.Mnemonic;
+                localArguments[3] = new ImmediateTestArgument(1);
+                break;
+
+            case "BFM_64m_bitfield":
+
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["BFC_bfm_64m_bitfield"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                    localArguments[1] = new ImmediateTestArgument(59);
+                    localArguments[2] = new ImmediateTestArgument(6);
+                }
+                else
+                {
+                    preferredInstruction = MapIdToInstruction["BFXIL_bfm_64m_bitfield"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments[3] = new ImmediateTestArgument(1);
+                }
+                break;
+            case "BFXIL_bfm_32m_bitfield":
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["BFC_bfm_32m_bitfield"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                    localArguments[1] = new ImmediateTestArgument(27);
+                    localArguments[2] = new ImmediateTestArgument(6);
+                }
+                break;
+            case "BFXIL_bfm_64m_bitfield":
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["BFC_bfm_64m_bitfield"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                    localArguments[1] = new ImmediateTestArgument(59);
+                    localArguments[2] = new ImmediateTestArgument(6);
+                }
+                break;
+            case "EXTR_32_extract":
+                if (IsWZR(localArguments[1]) && IsWZR(localArguments[2]))
+                {
+                    preferredInstruction = MapIdToInstruction["ROR_extr_32_extract"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(2);
+                }
+                break;
+            case "EXTR_64_extract":
+                if (IsWZR(localArguments[1]) && IsWZR(localArguments[2]))
+                {
+                    preferredInstruction = MapIdToInstruction["ROR_extr_64_extract"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(2);
+                }
+                break;
+            case "SBFM_32m_bitfield":
+                // Complicated alias rules, we cover only one in the unit tests
+                preferredInstruction = MapIdToInstruction["SBFX_sbfm_32m_bitfield"];
+                mnemonic = preferredInstruction.Mnemonic;
+                localArguments[3] = new ImmediateTestArgument(1);
+                break;
+            case "SBFM_64m_bitfield":
+                // Complicated alias rules, we cover only one in the unit tests
+                preferredInstruction = MapIdToInstruction["SBFX_sbfm_64m_bitfield"];
+                mnemonic = preferredInstruction.Mnemonic;
+                localArguments[3] = new ImmediateTestArgument(1);
+                break;
+            case "SBC_32_addsub_carry":
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["NGC_sbc_32_addsub_carry"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                }
+                break;
+            case "SBC_64_addsub_carry":
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["NGC_sbc_64_addsub_carry"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                }
+                break;
+            case "SBCS_32_addsub_carry":
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["NGCS_sbcs_32_addsub_carry"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                }
+                break;
+            case "SBCS_64_addsub_carry":
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["NGCS_sbcs_64_addsub_carry"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                }
+                break;
+            case "SMADDL_64wa_dp_3src":
+                if (IsWZR(localArguments[3]))
+                {
+                    preferredInstruction = MapIdToInstruction["SMULL_smaddl_64wa_dp_3src"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(3);
+                }
+                break;
+            case "MSUB_32a_dp_3src":
+                if (IsWZR(localArguments[3]))
+                {
+                    preferredInstruction = MapIdToInstruction["MNEG_msub_32a_dp_3src"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(3);
+                }
+                break;
+            case "MSUB_64a_dp_3src":
+                if (IsWZR(localArguments[3]))
+                {
+                    preferredInstruction = MapIdToInstruction["MNEG_msub_64a_dp_3src"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(3);
+                }
+                break;
+            case "NEGS_subs_32_addsub_shift":
+                if (IsWZR(localArguments[0]))
+                {
+                    preferredInstruction = MapIdToInstruction["CMP_subs_32_addsub_shift"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    if (localArguments[2] is ShiftTestArgument shiftArg && shiftArg.Amount == 0)
+                    {
+                        localArguments.RemoveAt(2);
+                    }
+                }
+                break;
+            case "LSL_ubfm_32m_bitfield":
+                // Complicated alias rules, we cover only one in the unit tests
+                preferredInstruction = MapIdToInstruction["UBFIZ_ubfm_32m_bitfield"];
+                mnemonic = preferredInstruction.Mnemonic;
+                localArguments.Add(new ImmediateTestArgument(1));
+                break;
+            case "LSL_ubfm_64m_bitfield":
+                // Complicated alias rules, we cover only one in the unit tests
+                preferredInstruction = MapIdToInstruction["UBFIZ_ubfm_64m_bitfield"];
+                mnemonic = preferredInstruction.Mnemonic;
+                localArguments.Add(new ImmediateTestArgument(1));
+                break;
+            case "MADD_32a_dp_3src":
+                if (IsWZR(localArguments[3]))
+                {
+                    preferredInstruction = MapIdToInstruction["MUL_madd_32a_dp_3src"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(3);
+                }
+                break;
+            case "MADD_64a_dp_3src":
+                if (IsWZR(localArguments[3]))
+                {
+                    preferredInstruction = MapIdToInstruction["MUL_madd_64a_dp_3src"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(3);
+                }
+                break;
+            case "UMADDL_64wa_dp_3src":
+                if (IsWZR(localArguments[3]))
+                {
+                    preferredInstruction = MapIdToInstruction["UMULL_umaddl_64wa_dp_3src"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(3);
+                }
+                break;
+            case "UMSUBL_64wa_dp_3src":
+                if (IsWZR(localArguments[3]))
+                {
+                    preferredInstruction = MapIdToInstruction["UMNEGL_umsubl_64wa_dp_3src"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(3);
+                }
+                break;
+            case "MOV_add_32_addsub_imm":
+                // Revert the change from auto-detection above
+                if (!IsWZR(localArguments[0]) && !IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["MOV_orr_32_log_shift"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                }
+                break;
+            case "MOV_add_64_addsub_imm":
+                // Revert the change from auto-detection above
+                if (!IsWZR(localArguments[0]) && !IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["MOV_orr_64_log_shift"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                }
+
+                break;
+            case "MOVN_32_movewide":
+                preferredInstruction = MapIdToInstruction["MOV_movn_32_movewide"];
+                mnemonic = preferredInstruction.Mnemonic;
+                localArguments.RemoveAt(2);
+                localArguments.RemoveAt(1);
+                localArguments.Add(new ImmediateTestArgument(5, 16, true, true));
+                break;
+            case "MOVN_64_movewide":
+                preferredInstruction = MapIdToInstruction["MOV_movn_64_movewide"];
+                mnemonic = preferredInstruction.Mnemonic;
+                localArguments.RemoveAt(2);
+                localArguments.RemoveAt(1);
+                localArguments.Add(new ImmediateTestArgument(5, 16, false, true));
+                break;
+            case "MOVZ_32_movewide":
+                preferredInstruction = MapIdToInstruction["MOV_movz_32_movewide"];
+                mnemonic = preferredInstruction.Mnemonic;
+                localArguments.RemoveAt(2);
+                localArguments.RemoveAt(1);
+                localArguments.Add(new ImmediateTestArgument(5, 16, true, false));
+                break;
+            case "MOVZ_64_movewide":
+                preferredInstruction = MapIdToInstruction["MOV_movz_64_movewide"];
+                mnemonic = preferredInstruction.Mnemonic;
+                localArguments.RemoveAt(2);
+                localArguments.RemoveAt(1);
+                localArguments.Add(new ImmediateTestArgument(5, 16, false, false));
+                break;
+            case "UMOV_asimdins_w_w":
+                preferredInstruction = testArguments[1] is RegisterTestArgument regArg && regArg.VKind == "S"
+                    ? MapIdToInstruction["MOV_umov_asimdins_w_w"]
+                    : MapIdToInstruction["UMOV_asimdins_w_w"];
+                mnemonic = preferredInstruction.Mnemonic;
+                break;
+                //case "UMOV_asimdins_x_x":
+                //    preferredInstruction = MapIdToInstruction["MOV_umov_asimdins_x_x"];
+                //    mnemonic = preferredInstruction.Mnemonic;
+                //    break;
         }
 
         // Swap arguments
@@ -523,21 +809,21 @@ partial class Arm64Processor
 
     private record ShiftTestArgument : TestArgument
     {
-        public ShiftTestArgument(string shift, int amount, bool optional)
+        public ShiftTestArgument(string kind, int amount, bool optional)
         {
-            Shift = shift;
+            Kind = kind;
             Amount = amount;
             IsOptional = optional;
         }
-        public string Shift { get; private set; }
+        public string Kind { get; private set; }
 
         public int Amount { get; }
 
         public bool IsOptional { get; }
 
-        public override string CSharp => $"_{Shift}, {Amount}";
+        public override string CSharp => $"_{Kind}, {Amount}";
 
-        public override string Asm => IsOptional && Amount == 0 ? "" : $"{Shift} #{Amount}";
+        public override string Asm => IsOptional && Amount == 0 ? "" : $"{Kind} #{Amount}";
     }
 
     private record ImmediateTestArgument : TestArgument
@@ -556,12 +842,13 @@ partial class Arm64Processor
             IsHexa = hexa;
         }
 
-        public ImmediateTestArgument(ushort value, int shift, bool is32)
+        public ImmediateTestArgument(ushort value, int shift, bool is32, bool inverted)
         {
             Value = value;
             Shift = shift;
             Is32 = is32;
             IsShift = true;
+            IsInverted = inverted;
         }
 
         public ImmediateTestArgument(int value, bool hexa = false)
@@ -583,6 +870,8 @@ partial class Arm64Processor
 
         public bool IsHexa { get; }
 
+        public bool IsInverted { get; }
+
         public override string CSharp => GetAsText(false);
 
         public override string Asm => GetAsText(true);
@@ -597,7 +886,28 @@ partial class Arm64Processor
             }
             else if (IsShift)
             {
-                    text = isAsm ? (Value << Shift).ToString() : $"Shift64({Value}, {Shift})";
+                if (Is32)
+                {
+                    if (IsInverted)
+                    {
+                        text = isAsm ? (~((int)Value << Shift)).ToString() : $"InvertShift32({Value}, {Shift})";
+                    }
+                    else
+                    {
+                        text = isAsm ? ((int)Value << Shift).ToString() : $"Shift32({Value}, {Shift})";
+                    }
+                }
+                else
+                {
+                    if (IsInverted)
+                    {
+                        text = isAsm ? (~(Value << Shift)).ToString() : $"InvertShift64({Value}, {Shift})";
+                    }
+                    else
+                    {
+                        text = isAsm ? (Value << Shift).ToString() : $"Shift64({Value}, {Shift})";
+                    }
+                }
             }
             else
             {
@@ -979,33 +1289,25 @@ partial class Arm64Processor
 
     private static readonly HashSet<string> MnemonicsRequiringManualHandlingBecauseOfAliases =
     [
-        "BFM",
-        "BFXIL",
-        //"CINC",
-        //"CINV",
-        //"CNEG",
-        //"CSET",
-        //"CSETM",
-        //"CSINC",
-        //"CSINV",
-        //"CSNEG",
-        "EXTR",
-        "LSL",
-        "MADD",
-        "MOV_MOVN",
-        "MOV",
-        "MOVN",
-        "MOVZ",
-        "MSUB",
-        "NEGS",
-        "ORN",
-        "ROR",
-        "SBC",
-        "SBCS",
-        "SBFM",
-        "SMADDL",
-        "UBFM",
-        "UMADDL",
-        "UMSUBL",
+        //"BFM",
+        //"BFXIL",
+        //"EXTR",
+        //"LSL",
+        //"MADD",
+        //"MOV_MOVN",
+        //"MOV",
+        //"MOVN",
+        //"MOVZ",
+        //"MSUB",
+        //"NEGS",
+        //"ORN",
+        //"ROR",
+        //"SBC",
+        //"SBCS",
+        //"SBFM",
+        //"SMADDL",
+        //"UBFM",
+        //"UMADDL",
+        //"UMSUBL",
     ];
 }
