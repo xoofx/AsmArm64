@@ -17,4 +17,182 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_LDSET_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.LDSET"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_LDSET_32_memop_0()
+    {
+        
+        {
+            var raw = LDSET(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSET_ldset_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSET W0, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSET_ldset_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSET W15, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSET_ldset_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSET WZR, [X3]", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.LDSET"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_LDSET_64_memop_1()
+    {
+        
+        {
+            var raw = LDSET(X0, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET X0, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(X15, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET X15, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(XZR, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET XZR, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(X0, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET X0, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(X15, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET X15, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(XZR, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSET_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSET XZR, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(X0, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSET_ldset_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSET X0, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(X15, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSET_ldset_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSET X15, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSET(XZR, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSET_ldset_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSET XZR, [X3]", asm);
+        }
+    }
 }

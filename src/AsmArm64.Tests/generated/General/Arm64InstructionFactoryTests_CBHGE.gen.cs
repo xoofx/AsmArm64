@@ -17,4 +17,93 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_CBHGE_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CBHGE"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CBHGE_16_regs_0()
+    {
+        
+        {
+            var raw = CBHGE(W0, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBHGE_16_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBHGE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBHGE W0, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBHGE(W15, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBHGE_16_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBHGE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBHGE W15, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBHGE(WZR, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBHGE_16_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBHGE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBHGE WZR, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBHGE(W0, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBHGE_16_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBHGE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBHGE W0, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBHGE(W15, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBHGE_16_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBHGE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBHGE W15, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBHGE(WZR, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBHGE_16_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBHGE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBHGE WZR, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBHGE(W0, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBHGE_16_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBHGE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBHGE W0, WZR, #32", asm);
+        }
+        
+        {
+            var raw = CBHGE(W15, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBHGE_16_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBHGE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBHGE W15, WZR, #32", asm);
+        }
+        
+        {
+            var raw = CBHGE(WZR, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBHGE_16_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBHGE, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBHGE WZR, WZR, #32", asm);
+        }
+    }
 }

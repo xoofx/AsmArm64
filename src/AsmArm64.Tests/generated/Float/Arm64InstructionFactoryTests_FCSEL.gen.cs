@@ -98,75 +98,75 @@ public class Arm64InstructionFactoryTests_FCSEL_Float
         }
         
         {
-            var raw = FCSEL(H0, H1, H2, AL);
+            var raw = FCSEL(H0, H1, H2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_h_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL H0, H1, H2, AL", asm);
+            Assert.AreEqual("FCSEL H0, H1, H2, HS", asm);
         }
         
         {
-            var raw = FCSEL(H31, H1, H2, AL);
+            var raw = FCSEL(H31, H1, H2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_h_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL H31, H1, H2, AL", asm);
+            Assert.AreEqual("FCSEL H31, H1, H2, HS", asm);
         }
         
         {
-            var raw = FCSEL(H0, H31, H2, AL);
+            var raw = FCSEL(H0, H31, H2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_h_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL H0, H31, H2, AL", asm);
+            Assert.AreEqual("FCSEL H0, H31, H2, HS", asm);
         }
         
         {
-            var raw = FCSEL(H31, H31, H2, AL);
+            var raw = FCSEL(H31, H31, H2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_h_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL H31, H31, H2, AL", asm);
+            Assert.AreEqual("FCSEL H31, H31, H2, HS", asm);
         }
         
         {
-            var raw = FCSEL(H0, H1, H31, AL);
+            var raw = FCSEL(H0, H1, H31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_h_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL H0, H1, H31, AL", asm);
+            Assert.AreEqual("FCSEL H0, H1, H31, HS", asm);
         }
         
         {
-            var raw = FCSEL(H31, H1, H31, AL);
+            var raw = FCSEL(H31, H1, H31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_h_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL H31, H1, H31, AL", asm);
+            Assert.AreEqual("FCSEL H31, H1, H31, HS", asm);
         }
         
         {
-            var raw = FCSEL(H0, H31, H31, AL);
+            var raw = FCSEL(H0, H31, H31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_h_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL H0, H31, H31, AL", asm);
+            Assert.AreEqual("FCSEL H0, H31, H31, HS", asm);
         }
         
         {
-            var raw = FCSEL(H31, H31, H31, AL);
+            var raw = FCSEL(H31, H31, H31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_h_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL H31, H31, H31, AL", asm);
+            Assert.AreEqual("FCSEL H31, H31, H31, HS", asm);
         }
     }
     
@@ -250,75 +250,75 @@ public class Arm64InstructionFactoryTests_FCSEL_Float
         }
         
         {
-            var raw = FCSEL(S0, S1, S2, AL);
+            var raw = FCSEL(S0, S1, S2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_s_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL S0, S1, S2, AL", asm);
+            Assert.AreEqual("FCSEL S0, S1, S2, HS", asm);
         }
         
         {
-            var raw = FCSEL(S31, S1, S2, AL);
+            var raw = FCSEL(S31, S1, S2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_s_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL S31, S1, S2, AL", asm);
+            Assert.AreEqual("FCSEL S31, S1, S2, HS", asm);
         }
         
         {
-            var raw = FCSEL(S0, S31, S2, AL);
+            var raw = FCSEL(S0, S31, S2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_s_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL S0, S31, S2, AL", asm);
+            Assert.AreEqual("FCSEL S0, S31, S2, HS", asm);
         }
         
         {
-            var raw = FCSEL(S31, S31, S2, AL);
+            var raw = FCSEL(S31, S31, S2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_s_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL S31, S31, S2, AL", asm);
+            Assert.AreEqual("FCSEL S31, S31, S2, HS", asm);
         }
         
         {
-            var raw = FCSEL(S0, S1, S31, AL);
+            var raw = FCSEL(S0, S1, S31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_s_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL S0, S1, S31, AL", asm);
+            Assert.AreEqual("FCSEL S0, S1, S31, HS", asm);
         }
         
         {
-            var raw = FCSEL(S31, S1, S31, AL);
+            var raw = FCSEL(S31, S1, S31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_s_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL S31, S1, S31, AL", asm);
+            Assert.AreEqual("FCSEL S31, S1, S31, HS", asm);
         }
         
         {
-            var raw = FCSEL(S0, S31, S31, AL);
+            var raw = FCSEL(S0, S31, S31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_s_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL S0, S31, S31, AL", asm);
+            Assert.AreEqual("FCSEL S0, S31, S31, HS", asm);
         }
         
         {
-            var raw = FCSEL(S31, S31, S31, AL);
+            var raw = FCSEL(S31, S31, S31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_s_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL S31, S31, S31, AL", asm);
+            Assert.AreEqual("FCSEL S31, S31, S31, HS", asm);
         }
     }
     
@@ -402,75 +402,75 @@ public class Arm64InstructionFactoryTests_FCSEL_Float
         }
         
         {
-            var raw = FCSEL(D0, D1, D2, AL);
+            var raw = FCSEL(D0, D1, D2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_d_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL D0, D1, D2, AL", asm);
+            Assert.AreEqual("FCSEL D0, D1, D2, HS", asm);
         }
         
         {
-            var raw = FCSEL(D31, D1, D2, AL);
+            var raw = FCSEL(D31, D1, D2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_d_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL D31, D1, D2, AL", asm);
+            Assert.AreEqual("FCSEL D31, D1, D2, HS", asm);
         }
         
         {
-            var raw = FCSEL(D0, D31, D2, AL);
+            var raw = FCSEL(D0, D31, D2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_d_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL D0, D31, D2, AL", asm);
+            Assert.AreEqual("FCSEL D0, D31, D2, HS", asm);
         }
         
         {
-            var raw = FCSEL(D31, D31, D2, AL);
+            var raw = FCSEL(D31, D31, D2, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_d_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL D31, D31, D2, AL", asm);
+            Assert.AreEqual("FCSEL D31, D31, D2, HS", asm);
         }
         
         {
-            var raw = FCSEL(D0, D1, D31, AL);
+            var raw = FCSEL(D0, D1, D31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_d_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL D0, D1, D31, AL", asm);
+            Assert.AreEqual("FCSEL D0, D1, D31, HS", asm);
         }
         
         {
-            var raw = FCSEL(D31, D1, D31, AL);
+            var raw = FCSEL(D31, D1, D31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_d_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL D31, D1, D31, AL", asm);
+            Assert.AreEqual("FCSEL D31, D1, D31, HS", asm);
         }
         
         {
-            var raw = FCSEL(D0, D31, D31, AL);
+            var raw = FCSEL(D0, D31, D31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_d_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL D0, D31, D31, AL", asm);
+            Assert.AreEqual("FCSEL D0, D31, D31, HS", asm);
         }
         
         {
-            var raw = FCSEL(D31, D31, D31, AL);
+            var raw = FCSEL(D31, D31, D31, HS);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.FCSEL_d_floatsel, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.FCSEL, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("FCSEL D31, D31, D31, AL", asm);
+            Assert.AreEqual("FCSEL D31, D31, D31, HS", asm);
         }
     }
 }

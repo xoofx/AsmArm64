@@ -71,7 +71,7 @@ partial class Arm64Processor
 
         foreach (var instruction in _instructions)
         {
-            if (instruction.IsDiscardedByPreferredAlias) continue;
+            //if (instruction.IsDiscardedByPreferredAlias) continue;
 
             if (!mapClassToInstructions.TryGetValue(instruction.InstructionClass, out var instructions))
             {
@@ -524,7 +524,14 @@ partial class Arm64Processor
         {
             if (sysRegister.UsageKinds.Contains(systemRegisterKind))
             {
-                operandVariation.TestArguments.Add(new RawTestArgument(sysRegister.Name, sysRegister.Name));
+                if (systemRegisterKind == "AT" || systemRegisterKind == "TLBI"  || systemRegisterKind == "TLBIP"  || systemRegisterKind == "DC" || systemRegisterKind == "IC")
+                {
+                    operandVariation.TestArguments.Add(new RawTestArgument(sysRegister.Name, sysRegister.Name.ToLowerInvariant()));
+                }
+                else
+                {
+                    operandVariation.TestArguments.Add(new RawTestArgument(sysRegister.Name, sysRegister.Name));
+                }
                 break;
             }
         }
@@ -967,7 +974,7 @@ partial class Arm64Processor
             case Arm64EnumKind.InvertedConditional:
                 enumType = "Arm64ConditionalKind";
                 rawArguments.Add(new("NE", "NE"));
-                rawArguments.Add(new("AL", "AL"));
+                rawArguments.Add(new("HS", "HS"));
                 break;
             case Arm64EnumKind.BranchTargetIdentification:
                 enumType = "Arm64BranchTargetIdentificationKind";
@@ -1381,6 +1388,10 @@ partial class Arm64Processor
                         var valueToTest = BuildTestImmediateValue(descriptor.ValueEncodingKind, 5);
                         testArguments.Add(new((int)valueToTest));
                     }
+                }
+                else
+                {
+                    testArguments.Add(new(1));
                 }
             }
         }
@@ -2048,6 +2059,11 @@ partial class Arm64Processor
         }
         else
         {
+            foreach (var testArgument in testArguments)
+            {
+                testArgument.Encode = GetRegisterTestArgumentEncoding(instruction, register);
+            }
+
             opVar.TestArguments.AddRange(testArguments);
         }
 
@@ -2056,8 +2072,24 @@ partial class Arm64Processor
         {
             encodings.Add(directIndexEncoding);
         }
-        opVar.WriteEncodings.AddRange(encodings);
 
+        switch (instruction.Id)
+        {
+            case "CINC_csinc_32_condsel":
+            case "CINC_csinc_64_condsel":
+            case "CINV_csinv_32_condsel":
+            case "CINV_csinv_64_condsel":
+            case "CNEG_csneg_32_condsel":
+            case "CNEG_csneg_64_condsel":
+                if (operandIndex == 1)
+                {
+                    // Encoding of Rm (in addition to Rn)
+                    opVar.WriteEncodings.Add((w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint){op.OperandName}.Index << 16;"));
+                }
+                break;
+        }
+
+        opVar.WriteEncodings.AddRange(encodings);
         GenerateEncodingForExtract(instruction, register.IndexerExtract, opVar, "ElementIndex", "element indexer");
         operandVariations.Add(opVar);
     }
@@ -2215,6 +2247,37 @@ partial class Arm64Processor
         );
     }
 
+    private static Func<RegisterTestArgument, uint>? GetRegisterTestArgumentEncoding(Instruction instruction, RegisterOperandDescriptor register)
+    {
+        switch (register.RegisterIndexEncodingKind)
+        {
+            case Arm64RegisterIndexEncodingKind.Std5:
+            {
+                if (register.LowBitIndexEncoding == 0)
+                {
+                        return x => (uint)x.Index;
+                }
+                else
+                {
+                    return x => ((uint)x.Index << register.LowBitIndexEncoding);
+                }
+            }
+            case Arm64RegisterIndexEncodingKind.Std4:
+            {
+                if (register.LowBitIndexEncoding == 0)
+                {
+                    return x => (uint)x.Index & 0xFU;
+                }
+                else
+                {
+                    return x => (((uint)x.Index & 0xFU) << register.LowBitIndexEncoding);
+                }
+            }
+        }
+
+        return null;
+    }
+    
     private static WriteEncodingDelegate? GetRegisterIndexEncoding(Instruction instruction, RegisterOperandDescriptor register, OperandVariation operandVariation)
     {
         switch (register.RegisterIndexEncodingKind)
@@ -2363,6 +2426,30 @@ partial class Arm64Processor
                 }
             }
         }
+    }
+
+    private static string InvertConditional(string cond)
+    {
+        return cond switch
+        {
+            "EQ" => "NE",
+            "NE" => "EQ",
+            "HS" => "LO",
+            "LO" => "HS",
+            "MI" => "PL",
+            "PL" => "MI",
+            "VS" => "VC",
+            "VC" => "VS",
+            "HI" => "LS",
+            "LS" => "HI",
+            "GE" => "LT",
+            "LT" => "GE",
+            "GT" => "LE",
+            "LE" => "GT",
+            "AL" => "NV",
+            "NV" => "AL",
+            _ => throw new ArgumentOutOfRangeException(nameof(cond), cond, null)
+        };
     }
 
     private delegate void WriteEncodingDelegate(CodeWriter writer, string variable, InstructionVariation instruction, OperandVariation operand, int operandIndex);

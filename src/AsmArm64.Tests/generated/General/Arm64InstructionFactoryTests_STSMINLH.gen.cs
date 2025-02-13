@@ -17,4 +17,39 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_STSMINLH_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STSMINLH"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STSMINLH_ldsminlh_32_memop_0()
+    {
+        
+        {
+            var raw = STSMINLH(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMINLH_ldsminlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMINLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMINLH W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STSMINLH(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMINLH_ldsminlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMINLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMINLH W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STSMINLH(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMINLH_ldsminlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMINLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMINLH WZR, [X2]", asm);
+        }
+    }
 }

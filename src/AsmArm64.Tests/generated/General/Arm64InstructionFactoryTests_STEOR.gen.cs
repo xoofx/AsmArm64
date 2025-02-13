@@ -17,4 +17,74 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_STEOR_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STEOR"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STEOR_ldeor_32_memop_0()
+    {
+        
+        {
+            var raw = STEOR(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEOR_ldeor_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEOR W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STEOR(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEOR_ldeor_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEOR W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STEOR(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEOR_ldeor_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEOR WZR, [X2]", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STEOR"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STEOR_ldeor_64_memop_1()
+    {
+        
+        {
+            var raw = STEOR(X0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEOR_ldeor_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEOR X0, [X2]", asm);
+        }
+        
+        {
+            var raw = STEOR(X15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEOR_ldeor_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEOR X15, [X2]", asm);
+        }
+        
+        {
+            var raw = STEOR(XZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEOR_ldeor_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEOR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEOR XZR, [X2]", asm);
+        }
+    }
 }

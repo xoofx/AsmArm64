@@ -22,7 +22,183 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dv_v_0()
+    public void Test_DUP_asisdone_only_0()
+    {
+        
+        {
+            var raw = DUP(B1, V1.B[0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV B1, V1.B[0]", asm);
+        }
+        
+        {
+            var raw = DUP(B31, V1.B[0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV B31, V1.B[0]", asm);
+        }
+        
+        {
+            var raw = DUP(B1, V31.B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV B1, V31.B[1]", asm);
+        }
+        
+        {
+            var raw = DUP(B31, V31.B[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV B31, V31.B[1]", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_DUP_asisdone_only_1()
+    {
+        
+        {
+            var raw = DUP(H1, V1.H[0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV H1, V1.H[0]", asm);
+        }
+        
+        {
+            var raw = DUP(H31, V1.H[0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV H31, V1.H[0]", asm);
+        }
+        
+        {
+            var raw = DUP(H1, V31.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV H1, V31.H[1]", asm);
+        }
+        
+        {
+            var raw = DUP(H31, V31.H[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV H31, V31.H[1]", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_DUP_asisdone_only_2()
+    {
+        
+        {
+            var raw = DUP(S1, V1.S[0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV S1, V1.S[0]", asm);
+        }
+        
+        {
+            var raw = DUP(S31, V1.S[0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV S31, V1.S[0]", asm);
+        }
+        
+        {
+            var raw = DUP(S1, V31.S[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV S1, V31.S[1]", asm);
+        }
+        
+        {
+            var raw = DUP(S31, V31.S[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV S31, V31.S[1]", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_DUP_asisdone_only_3()
+    {
+        
+        {
+            var raw = DUP(D1, V1.D[0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV D1, V1.D[0]", asm);
+        }
+        
+        {
+            var raw = DUP(D31, V1.D[0]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV D31, V1.D[0]", asm);
+        }
+        
+        {
+            var raw = DUP(D1, V31.D[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV D1, V31.D[1]", asm);
+        }
+        
+        {
+            var raw = DUP(D31, V31.D[1]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MOV_dup_asisdone_only, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MOV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MOV D31, V31.D[1]", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_DUP_asimdins_dv_v_4()
     {
         
         {
@@ -66,7 +242,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dv_v_1()
+    public void Test_DUP_asimdins_dv_v_5()
     {
         
         {
@@ -110,7 +286,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dv_v_2()
+    public void Test_DUP_asimdins_dv_v_6()
     {
         
         {
@@ -154,7 +330,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dv_v_3()
+    public void Test_DUP_asimdins_dv_v_7()
     {
         
         {
@@ -198,7 +374,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dv_v_4()
+    public void Test_DUP_asimdins_dv_v_8()
     {
         
         {
@@ -242,7 +418,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dv_v_5()
+    public void Test_DUP_asimdins_dv_v_9()
     {
         
         {
@@ -286,7 +462,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dv_v_6()
+    public void Test_DUP_asimdins_dv_v_10()
     {
         
         {
@@ -330,7 +506,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dr_r_7()
+    public void Test_DUP_asimdins_dr_r_11()
     {
         
         {
@@ -374,7 +550,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dr_r_8()
+    public void Test_DUP_asimdins_dr_r_12()
     {
         
         {
@@ -418,7 +594,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dr_r_9()
+    public void Test_DUP_asimdins_dr_r_13()
     {
         
         {
@@ -462,7 +638,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dr_r_10()
+    public void Test_DUP_asimdins_dr_r_14()
     {
         
         {
@@ -506,7 +682,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dr_r_11()
+    public void Test_DUP_asimdins_dr_r_15()
     {
         
         {
@@ -550,7 +726,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dr_r_12()
+    public void Test_DUP_asimdins_dr_r_16()
     {
         
         {
@@ -594,7 +770,7 @@ public class Arm64InstructionFactoryTests_DUP_Advsimd
     /// Test of <see cref="Arm64InstructionFactory.DUP"/>.
     /// </summary>
     [TestMethod]
-    public void Test_DUP_asimdins_dr_r_13()
+    public void Test_DUP_asimdins_dr_r_17()
     {
         
         {

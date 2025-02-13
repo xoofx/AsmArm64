@@ -17,4 +17,74 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_STSMIN_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STSMIN"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STSMIN_ldsmin_32_memop_0()
+    {
+        
+        {
+            var raw = STSMIN(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMIN_ldsmin_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMIN W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STSMIN(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMIN_ldsmin_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMIN W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STSMIN(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMIN_ldsmin_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMIN WZR, [X2]", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STSMIN"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STSMIN_ldsmin_64_memop_1()
+    {
+        
+        {
+            var raw = STSMIN(X0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMIN_ldsmin_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMIN X0, [X2]", asm);
+        }
+        
+        {
+            var raw = STSMIN(X15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMIN_ldsmin_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMIN X15, [X2]", asm);
+        }
+        
+        {
+            var raw = STSMIN(XZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMIN_ldsmin_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMIN XZR, [X2]", asm);
+        }
+    }
 }

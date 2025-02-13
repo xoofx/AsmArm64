@@ -17,4 +17,182 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_LDADDL_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.LDADDL"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_LDADDL_32_memop_0()
+    {
+        
+        {
+            var raw = LDADDL(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDL_ldaddl_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDL W0, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDL_ldaddl_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDL W15, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDL_ldaddl_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDL WZR, [X3]", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.LDADDL"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_LDADDL_64_memop_1()
+    {
+        
+        {
+            var raw = LDADDL(X0, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL X0, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(X15, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL X15, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(XZR, X1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL XZR, X1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(X0, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL X0, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(X15, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL X15, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(XZR, X16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDADDL_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDADDL XZR, X16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(X0, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDL_ldaddl_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDL X0, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(X15, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDL_ldaddl_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDL X15, [X3]", asm);
+        }
+        
+        {
+            var raw = LDADDL(XZR, XZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDL_ldaddl_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDL XZR, [X3]", asm);
+        }
+    }
 }

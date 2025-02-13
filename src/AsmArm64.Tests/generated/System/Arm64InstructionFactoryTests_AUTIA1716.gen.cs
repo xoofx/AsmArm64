@@ -17,6 +17,7 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_AUTIA1716_System
 {
+    
     /// <summary>
     /// Test of <see cref="Arm64InstructionFactory.AUTIA1716"/>.
     /// </summary>

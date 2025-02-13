@@ -22,6 +22,23 @@ public class Arm64InstructionFactoryTests_MSR_System
     /// Test of <see cref="Arm64InstructionFactory.MSR"/>.
     /// </summary>
     [TestMethod]
+    public void Test_MSR_si_pstate_0()
+    {
+        
+        {
+            var raw = MSR(DAIFSet, 5);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MSR_si_pstate, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MSR, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MSR DAIFSet, #5", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.MSR"/>.
+    /// </summary>
+    [TestMethod]
     public void Test_MSR_sr_systemmove_1()
     {
         

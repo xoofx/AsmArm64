@@ -17,4 +17,21 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_GCSPUSHX_System
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.GCSPUSHX"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_GCSPUSHX_sys_cr_systeminstrs_0()
+    {
+        
+        {
+            var raw = GCSPUSHX();
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.GCSPUSHX_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.GCSPUSHX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("GCSPUSHX", asm);
+        }
+    }
 }

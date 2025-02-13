@@ -17,4 +17,21 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_BRB_System
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.BRB"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_BRB_sys_cr_systeminstrs_0()
+    {
+        
+        {
+            var raw = BRB(IALL);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BRB_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BRB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BRB IALL", asm);
+        }
+    }
 }

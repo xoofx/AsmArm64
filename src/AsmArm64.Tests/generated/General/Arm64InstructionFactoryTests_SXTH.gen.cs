@@ -17,4 +17,182 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_SXTH_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.SXTH"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_SXTH_sbfm_32m_bitfield_0()
+    {
+        
+        {
+            var raw = SXTH(W0, W1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH W0, W1", asm);
+        }
+        
+        {
+            var raw = SXTH(W15, W1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH W15, W1", asm);
+        }
+        
+        {
+            var raw = SXTH(WZR, W1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH WZR, W1", asm);
+        }
+        
+        {
+            var raw = SXTH(W0, W16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH W0, W16", asm);
+        }
+        
+        {
+            var raw = SXTH(W15, W16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH W15, W16", asm);
+        }
+        
+        {
+            var raw = SXTH(WZR, W16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH WZR, W16", asm);
+        }
+        
+        {
+            var raw = SXTH(W0, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH W0, WZR", asm);
+        }
+        
+        {
+            var raw = SXTH(W15, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH W15, WZR", asm);
+        }
+        
+        {
+            var raw = SXTH(WZR, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH WZR, WZR", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.SXTH"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_SXTH_sbfm_64m_bitfield_1()
+    {
+        
+        {
+            var raw = SXTH(X0, W1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH X0, W1", asm);
+        }
+        
+        {
+            var raw = SXTH(X15, W1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH X15, W1", asm);
+        }
+        
+        {
+            var raw = SXTH(XZR, W1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH XZR, W1", asm);
+        }
+        
+        {
+            var raw = SXTH(X0, W16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH X0, W16", asm);
+        }
+        
+        {
+            var raw = SXTH(X15, W16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH X15, W16", asm);
+        }
+        
+        {
+            var raw = SXTH(XZR, W16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH XZR, W16", asm);
+        }
+        
+        {
+            var raw = SXTH(X0, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH X0, WZR", asm);
+        }
+        
+        {
+            var raw = SXTH(X15, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH X15, WZR", asm);
+        }
+        
+        {
+            var raw = SXTH(XZR, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SXTH_sbfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SXTH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SXTH XZR, WZR", asm);
+        }
+    }
 }

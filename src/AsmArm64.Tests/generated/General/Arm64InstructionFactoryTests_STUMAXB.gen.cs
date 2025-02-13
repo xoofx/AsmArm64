@@ -17,4 +17,39 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_STUMAXB_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STUMAXB"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STUMAXB_ldumaxb_32_memop_0()
+    {
+        
+        {
+            var raw = STUMAXB(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMAXB_ldumaxb_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMAXB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMAXB W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STUMAXB(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMAXB_ldumaxb_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMAXB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMAXB W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STUMAXB(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMAXB_ldumaxb_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMAXB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMAXB WZR, [X2]", asm);
+        }
+    }
 }

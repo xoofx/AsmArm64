@@ -196,10 +196,11 @@ partial class Arm64Processor
                     }
                     else
                     {
+                        targetInstruction.IsAliasPreferredByMoreSelectiveBitMask = true;
                         Debug.Assert(
                             BitOperations.PopCount(targetInstruction.BitfieldMask) >
                             BitOperations.PopCount(instruction.BitfieldMask),
-                            $"Alias {targetInstruction.Id} is not more selective with its BitfieldMask than {instruction.Id}");
+                            $"Alias {targetInstruction.Id} is more selective with its BitfieldMask than {instruction.Id}");
 
                     }
                 }

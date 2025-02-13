@@ -17,4 +17,30 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_TLBIP_System
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.TLBIP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_TLBIP_sysp_cr_syspairinstrs_0()
+    {
+        
+        {
+            var raw = TLBIP(IPAS2E1, X1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TLBIP_sysp_cr_syspairinstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TLBIP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TLBIP ipas2e1, X1", asm);
+        }
+        
+        {
+            var raw = TLBIP(IPAS2E1, X16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TLBIP_sysp_cr_syspairinstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TLBIP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TLBIP ipas2e1, X16", asm);
+        }
+    }
 }

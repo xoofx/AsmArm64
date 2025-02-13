@@ -17,4 +17,290 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_CINC_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CINC"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CINC_csinc_32_condsel_0()
+    {
+        
+        {
+            var raw = CINC(W0, W1, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC W0, W1, NE", asm);
+        }
+        
+        {
+            var raw = CINC(W15, W1, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC W15, W1, NE", asm);
+        }
+        
+        {
+            var raw = CINC(WZR, W1, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC WZR, W1, NE", asm);
+        }
+        
+        {
+            var raw = CINC(W0, W16, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC W0, W16, NE", asm);
+        }
+        
+        {
+            var raw = CINC(W15, W16, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC W15, W16, NE", asm);
+        }
+        
+        {
+            var raw = CINC(WZR, W16, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC WZR, W16, NE", asm);
+        }
+        
+        {
+            var raw = CINC(W0, WZR, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET W0, NE", asm);
+        }
+        
+        {
+            var raw = CINC(W15, WZR, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET W15, NE", asm);
+        }
+        
+        {
+            var raw = CINC(WZR, WZR, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET WZR, NE", asm);
+        }
+        
+        {
+            var raw = CINC(W0, W1, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC W0, W1, HS", asm);
+        }
+        
+        {
+            var raw = CINC(W15, W1, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC W15, W1, HS", asm);
+        }
+        
+        {
+            var raw = CINC(WZR, W1, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC WZR, W1, HS", asm);
+        }
+        
+        {
+            var raw = CINC(W0, W16, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC W0, W16, HS", asm);
+        }
+        
+        {
+            var raw = CINC(W15, W16, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC W15, W16, HS", asm);
+        }
+        
+        {
+            var raw = CINC(WZR, W16, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC WZR, W16, HS", asm);
+        }
+        
+        {
+            var raw = CINC(W0, WZR, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET W0, HS", asm);
+        }
+        
+        {
+            var raw = CINC(W15, WZR, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET W15, HS", asm);
+        }
+        
+        {
+            var raw = CINC(WZR, WZR, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET WZR, HS", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CINC"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CINC_csinc_64_condsel_1()
+    {
+        
+        {
+            var raw = CINC(X0, X1, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC X0, X1, NE", asm);
+        }
+        
+        {
+            var raw = CINC(X15, X1, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC X15, X1, NE", asm);
+        }
+        
+        {
+            var raw = CINC(XZR, X1, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC XZR, X1, NE", asm);
+        }
+        
+        {
+            var raw = CINC(X0, X16, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC X0, X16, NE", asm);
+        }
+        
+        {
+            var raw = CINC(X15, X16, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC X15, X16, NE", asm);
+        }
+        
+        {
+            var raw = CINC(XZR, X16, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC XZR, X16, NE", asm);
+        }
+        
+        {
+            var raw = CINC(X0, X1, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC X0, X1, HS", asm);
+        }
+        
+        {
+            var raw = CINC(X15, X1, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC X15, X1, HS", asm);
+        }
+        
+        {
+            var raw = CINC(XZR, X1, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC XZR, X1, HS", asm);
+        }
+        
+        {
+            var raw = CINC(X0, X16, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC X0, X16, HS", asm);
+        }
+        
+        {
+            var raw = CINC(X15, X16, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC X15, X16, HS", asm);
+        }
+        
+        {
+            var raw = CINC(XZR, X16, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CINC_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CINC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CINC XZR, X16, HS", asm);
+        }
+    }
 }

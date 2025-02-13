@@ -35,12 +35,12 @@ public class Arm64InstructionFactoryTests_BC_General
         }
         
         {
-            var raw = BC(AL, 32);
+            var raw = BC(HS, 32);
             var instruction = Arm64Instruction.Decode(raw);
             Assert.AreEqual(Arm64InstructionId.BC_only_condbranch, instruction.Id);
             Assert.AreEqual(Arm64Mnemonic.BC, instruction.Mnemonic);
             var asm = instruction.ToString("H", null);
-            Assert.AreEqual("BC.AL #32", asm);
+            Assert.AreEqual("BC.HS #32", asm);
         }
     }
 }

@@ -17,4 +17,39 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_DC_System
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.DC"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_DC_sys_cr_systeminstrs_0()
+    {
+        
+        {
+            var raw = DC(CGDSW, X1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.DC_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.DC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("DC cgdsw, X1", asm);
+        }
+        
+        {
+            var raw = DC(CGDSW, X16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.DC_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.DC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("DC cgdsw, X16", asm);
+        }
+        
+        {
+            var raw = DC(CGDSW, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.DC_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.DC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("DC cgdsw, XZR", asm);
+        }
+    }
 }

@@ -17,4 +17,30 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_TLBI_System
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.TLBI"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_TLBI_sys_cr_systeminstrs_0()
+    {
+        
+        {
+            var raw = TLBI(ALLE1, X1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TLBI_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TLBI, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TLBI alle1, X1", asm);
+        }
+        
+        {
+            var raw = TLBI(ALLE1, X16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.TLBI_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.TLBI, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("TLBI alle1, X16", asm);
+        }
+    }
 }

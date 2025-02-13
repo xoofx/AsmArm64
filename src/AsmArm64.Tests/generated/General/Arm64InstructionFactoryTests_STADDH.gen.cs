@@ -17,4 +17,39 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_STADDH_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STADDH"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STADDH_ldaddh_32_memop_0()
+    {
+        
+        {
+            var raw = STADDH(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDH_ldaddh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDH W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STADDH(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDH_ldaddh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDH W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STADDH(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDH_ldaddh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDH WZR, [X2]", asm);
+        }
+    }
 }

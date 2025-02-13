@@ -17,4 +17,93 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_LDSMINLB_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.LDSMINLB"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_LDSMINLB_32_memop_0()
+    {
+        
+        {
+            var raw = LDSMINLB(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSMINLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSMINLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSMINLB W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSMINLB(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSMINLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSMINLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSMINLB W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSMINLB(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSMINLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSMINLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSMINLB WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSMINLB(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSMINLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSMINLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSMINLB W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSMINLB(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSMINLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSMINLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSMINLB W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSMINLB(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSMINLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSMINLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSMINLB WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSMINLB(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMINLB_ldsminlb_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMINLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMINLB W0, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSMINLB(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMINLB_ldsminlb_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMINLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMINLB W15, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSMINLB(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMINLB_ldsminlb_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMINLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMINLB WZR, [X3]", asm);
+        }
+    }
 }

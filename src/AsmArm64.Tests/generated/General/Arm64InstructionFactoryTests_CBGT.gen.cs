@@ -17,4 +17,252 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_CBGT_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CBGT"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CBGT_32_imm_0()
+    {
+        
+        {
+            var raw = CBGT(W0, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT W0, #5, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(W15, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT W15, #5, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(WZR, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT WZR, #5, #32", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CBGT"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CBGT_64_imm_1()
+    {
+        
+        {
+            var raw = CBGT(X0, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT X0, #5, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(X15, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT X15, #5, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(XZR, 5, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT XZR, #5, #32", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CBGT"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CBGT_32_regs_2()
+    {
+        
+        {
+            var raw = CBGT(W0, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT W0, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(W15, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT W15, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(WZR, W1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT WZR, W1, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(W0, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT W0, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(W15, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT W15, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(WZR, W16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT WZR, W16, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(W0, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT W0, WZR, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(W15, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT W15, WZR, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(WZR, WZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_32_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT WZR, WZR, #32", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CBGT"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CBGT_64_regs_3()
+    {
+        
+        {
+            var raw = CBGT(X0, X1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT X0, X1, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(X15, X1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT X15, X1, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(XZR, X1, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT XZR, X1, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(X0, X16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT X0, X16, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(X15, X16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT X15, X16, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(XZR, X16, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT XZR, X16, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(X0, XZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT X0, XZR, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(X15, XZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT X15, XZR, #32", asm);
+        }
+        
+        {
+            var raw = CBGT(XZR, XZR, 32);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CBGT_64_regs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CBGT, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CBGT XZR, XZR, #32", asm);
+        }
+    }
 }

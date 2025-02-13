@@ -17,4 +17,128 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_CSET_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CSET"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CSET_csinc_32_condsel_0()
+    {
+        
+        {
+            var raw = CSET(W0, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET W0, NE", asm);
+        }
+        
+        {
+            var raw = CSET(W15, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET W15, NE", asm);
+        }
+        
+        {
+            var raw = CSET(WZR, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET WZR, NE", asm);
+        }
+        
+        {
+            var raw = CSET(W0, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET W0, HS", asm);
+        }
+        
+        {
+            var raw = CSET(W15, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET W15, HS", asm);
+        }
+        
+        {
+            var raw = CSET(WZR, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_32_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET WZR, HS", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CSET"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CSET_csinc_64_condsel_1()
+    {
+        
+        {
+            var raw = CSET(X0, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET X0, NE", asm);
+        }
+        
+        {
+            var raw = CSET(X15, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET X15, NE", asm);
+        }
+        
+        {
+            var raw = CSET(XZR, NE);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET XZR, NE", asm);
+        }
+        
+        {
+            var raw = CSET(X0, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET X0, HS", asm);
+        }
+        
+        {
+            var raw = CSET(X15, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET X15, HS", asm);
+        }
+        
+        {
+            var raw = CSET(XZR, HS);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CSET_csinc_64_condsel, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CSET, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CSET XZR, HS", asm);
+        }
+    }
 }

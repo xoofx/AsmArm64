@@ -17,4 +17,93 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_LDEORLB_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.LDEORLB"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_LDEORLB_32_memop_0()
+    {
+        
+        {
+            var raw = LDEORLB(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLB W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLB(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLB W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLB(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLB WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLB(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLB W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLB(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLB W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLB(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLB_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLB WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLB(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORLB_ldeorlb_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORLB W0, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLB(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORLB_ldeorlb_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORLB W15, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLB(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORLB_ldeorlb_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORLB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORLB WZR, [X3]", asm);
+        }
+    }
 }

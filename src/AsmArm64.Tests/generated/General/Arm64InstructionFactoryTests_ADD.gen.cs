@@ -1180,6 +1180,346 @@ public class Arm64InstructionFactoryTests_ADD_General
     /// Test of <see cref="Arm64InstructionFactory.ADD"/>.
     /// </summary>
     [TestMethod]
+    public void Test_ADD_32_addsub_imm_3()
+    {
+        
+        {
+            var raw = ADD(W1, W2, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W1, W2, #5", asm);
+        }
+        
+        {
+            var raw = ADD(W17, W2, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W17, W2, #5", asm);
+        }
+        
+        {
+            var raw = ADD(WSP, W2, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD WSP, W2, #5", asm);
+        }
+        
+        {
+            var raw = ADD(W1, W18, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W1, W18, #5", asm);
+        }
+        
+        {
+            var raw = ADD(W17, W18, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W17, W18, #5", asm);
+        }
+        
+        {
+            var raw = ADD(WSP, W18, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD WSP, W18, #5", asm);
+        }
+        
+        {
+            var raw = ADD(W1, WSP, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W1, WSP, #5", asm);
+        }
+        
+        {
+            var raw = ADD(W17, WSP, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W17, WSP, #5", asm);
+        }
+        
+        {
+            var raw = ADD(WSP, WSP, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD WSP, WSP, #5", asm);
+        }
+        
+        {
+            var raw = ADD(W1, W2, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W1, W2, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(W17, W2, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W17, W2, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(WSP, W2, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD WSP, W2, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(W1, W18, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W1, W18, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(W17, W18, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W17, W18, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(WSP, W18, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD WSP, W18, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(W1, WSP, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W1, WSP, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(W17, WSP, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD W17, WSP, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(WSP, WSP, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_32_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD WSP, WSP, #5, LSL #12", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.ADD"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_ADD_64_addsub_imm_4()
+    {
+        
+        {
+            var raw = ADD(X1, X2, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X1, X2, #5", asm);
+        }
+        
+        {
+            var raw = ADD(X17, X2, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X17, X2, #5", asm);
+        }
+        
+        {
+            var raw = ADD(SP, X2, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD SP, X2, #5", asm);
+        }
+        
+        {
+            var raw = ADD(X1, X18, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X1, X18, #5", asm);
+        }
+        
+        {
+            var raw = ADD(X17, X18, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X17, X18, #5", asm);
+        }
+        
+        {
+            var raw = ADD(SP, X18, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD SP, X18, #5", asm);
+        }
+        
+        {
+            var raw = ADD(X1, SP, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X1, SP, #5", asm);
+        }
+        
+        {
+            var raw = ADD(X17, SP, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X17, SP, #5", asm);
+        }
+        
+        {
+            var raw = ADD(SP, SP, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD SP, SP, #5", asm);
+        }
+        
+        {
+            var raw = ADD(X1, X2, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X1, X2, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(X17, X2, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X17, X2, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(SP, X2, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD SP, X2, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(X1, X18, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X1, X18, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(X17, X18, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X17, X18, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(SP, X18, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD SP, X18, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(X1, SP, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X1, SP, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(X17, SP, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD X17, SP, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = ADD(SP, SP, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.ADD_64_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.ADD, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("ADD SP, SP, #5, LSL #12", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.ADD"/>.
+    /// </summary>
+    [TestMethod]
     public void Test_ADD_32_addsub_shift_5()
     {
         

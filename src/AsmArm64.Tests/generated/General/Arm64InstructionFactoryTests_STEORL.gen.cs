@@ -17,4 +17,74 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_STEORL_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STEORL"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STEORL_ldeorl_32_memop_0()
+    {
+        
+        {
+            var raw = STEORL(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORL_ldeorl_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORL W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STEORL(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORL_ldeorl_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORL W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STEORL(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORL_ldeorl_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORL WZR, [X2]", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STEORL"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STEORL_ldeorl_64_memop_1()
+    {
+        
+        {
+            var raw = STEORL(X0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORL_ldeorl_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORL X0, [X2]", asm);
+        }
+        
+        {
+            var raw = STEORL(X15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORL_ldeorl_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORL X15, [X2]", asm);
+        }
+        
+        {
+            var raw = STEORL(XZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORL_ldeorl_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORL XZR, [X2]", asm);
+        }
+    }
 }

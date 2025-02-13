@@ -17,4 +17,93 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_UXTB_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.UXTB"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_UXTB_ubfm_32m_bitfield_0()
+    {
+        
+        {
+            var raw = UXTB(W0, W1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTB_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTB W0, W1", asm);
+        }
+        
+        {
+            var raw = UXTB(W15, W1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTB_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTB W15, W1", asm);
+        }
+        
+        {
+            var raw = UXTB(WZR, W1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTB_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTB WZR, W1", asm);
+        }
+        
+        {
+            var raw = UXTB(W0, W16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTB_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTB W0, W16", asm);
+        }
+        
+        {
+            var raw = UXTB(W15, W16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTB_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTB W15, W16", asm);
+        }
+        
+        {
+            var raw = UXTB(WZR, W16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTB_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTB WZR, W16", asm);
+        }
+        
+        {
+            var raw = UXTB(W0, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTB_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTB W0, WZR", asm);
+        }
+        
+        {
+            var raw = UXTB(W15, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTB_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTB W15, WZR", asm);
+        }
+        
+        {
+            var raw = UXTB(WZR, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTB_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTB WZR, WZR", asm);
+        }
+    }
 }

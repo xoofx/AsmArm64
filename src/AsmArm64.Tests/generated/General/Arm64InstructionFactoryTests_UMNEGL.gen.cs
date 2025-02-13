@@ -17,4 +17,255 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_UMNEGL_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.UMNEGL"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_UMNEGL_umsubl_64wa_dp_3src_0()
+    {
+        
+        {
+            var raw = UMNEGL(X0, W1, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X0, W1, W2", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X15, W1, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X15, W1, W2", asm);
+        }
+        
+        {
+            var raw = UMNEGL(XZR, W1, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL XZR, W1, W2", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X0, W16, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X0, W16, W2", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X15, W16, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X15, W16, W2", asm);
+        }
+        
+        {
+            var raw = UMNEGL(XZR, W16, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL XZR, W16, W2", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X0, WZR, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X0, WZR, W2", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X15, WZR, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X15, WZR, W2", asm);
+        }
+        
+        {
+            var raw = UMNEGL(XZR, WZR, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL XZR, WZR, W2", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X0, W1, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X0, W1, W17", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X15, W1, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X15, W1, W17", asm);
+        }
+        
+        {
+            var raw = UMNEGL(XZR, W1, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL XZR, W1, W17", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X0, W16, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X0, W16, W17", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X15, W16, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X15, W16, W17", asm);
+        }
+        
+        {
+            var raw = UMNEGL(XZR, W16, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL XZR, W16, W17", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X0, WZR, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X0, WZR, W17", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X15, WZR, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X15, WZR, W17", asm);
+        }
+        
+        {
+            var raw = UMNEGL(XZR, WZR, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL XZR, WZR, W17", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X0, W1, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X0, W1, WZR", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X15, W1, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X15, W1, WZR", asm);
+        }
+        
+        {
+            var raw = UMNEGL(XZR, W1, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL XZR, W1, WZR", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X0, W16, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X0, W16, WZR", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X15, W16, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X15, W16, WZR", asm);
+        }
+        
+        {
+            var raw = UMNEGL(XZR, W16, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL XZR, W16, WZR", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X0, WZR, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X0, WZR, WZR", asm);
+        }
+        
+        {
+            var raw = UMNEGL(X15, WZR, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL X15, WZR, WZR", asm);
+        }
+        
+        {
+            var raw = UMNEGL(XZR, WZR, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UMNEGL_umsubl_64wa_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UMNEGL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UMNEGL XZR, WZR, WZR", asm);
+        }
+    }
 }

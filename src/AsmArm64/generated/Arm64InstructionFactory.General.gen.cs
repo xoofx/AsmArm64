@@ -559,6 +559,32 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Arithmetic shift right variable.
+    /// </summary>
+    /// <remarks><code>ASRV Wd, Wn, Wm</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.ASRV_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint ASRV(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
+    {
+        uint raw = 0x1AC02800U; // Encoding for: ASRV_32_dp_2src
+        raw |= (uint)Wd.Index;
+        raw |= (uint)Wn.Index << 5;
+        raw |= (uint)Wm.Index << 16;
+        return raw;
+    }
+    /// <summary>
+    /// Arithmetic shift right variable.
+    /// </summary>
+    /// <remarks><code>ASRV Xd, Xn, Xm</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.ASRV_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint ASRV(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
+    {
+        uint raw = 0x9AC02800U; // Encoding for: ASRV_64_dp_2src
+        raw |= (uint)Xd.Index;
+        raw |= (uint)Xn.Index << 5;
+        raw |= (uint)Xm.Index << 16;
+        return raw;
+    }
+    /// <summary>
     /// Authenticate data address, using key A.
     /// </summary>
     /// <remarks><code>AUTDA Xd, Xn|SP</code></remarks>
@@ -1552,6 +1578,58 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Compare signed less than or equal bytes and branch.
+    /// </summary>
+    /// <remarks><code>CBBLE Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBLE_cbbge_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBBLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x74208000U; // Encoding for: CBBLE_cbbge_8_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare unsigned lower than bytes and branch.
+    /// </summary>
+    /// <remarks><code>CBBLO Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBLO_cbbhi_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBBLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x74408000U; // Encoding for: CBBLO_cbbhi_8_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare unsigned lower than or equal bytes and branch.
+    /// </summary>
+    /// <remarks><code>CBBLS Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBLS_cbbhs_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBBLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x74608000U; // Encoding for: CBBLS_cbbhs_8_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare signed less than bytes and branch.
+    /// </summary>
+    /// <remarks><code>CBBLT Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBBLT_cbbgt_8_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBBLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x74008000U; // Encoding for: CBBLT_cbbgt_8_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
     /// Compare bytes and branch.
     /// </summary>
     /// <remarks><code>CBBNE Wt, Wm, label</code></remarks>
@@ -1639,6 +1717,32 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF4200000U; // Encoding for: CBGE_64_regs
         raw |= (uint)Xt.Index;
         raw |= (uint)Xm.Index << 16;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare signed greater than or equal immediate and branch.
+    /// </summary>
+    /// <remarks><code>CBGE Wt, #immp1, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBGE_cbgt_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBGE(Arm64RegisterW Wt, byte immp1, Arm64LabelOffset label)
+    {
+        uint raw = 0x75000000U; // Encoding for: CBGE_cbgt_32_imm
+        raw |= (uint)Wt.Index;
+        raw |= (uint)(immp1 & 0x3F) << 15;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare signed greater than or equal immediate and branch.
+    /// </summary>
+    /// <remarks><code>CBGE Xt, #immp1, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBGE_cbgt_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBGE(Arm64RegisterX Xt, byte immp1, Arm64LabelOffset label)
+    {
+        uint raw = 0xF5000000U; // Encoding for: CBGE_cbgt_64_imm
+        raw |= (uint)Xt.Index;
+        raw |= (uint)(immp1 & 0x3F) << 15;
         raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
         return raw;
     }
@@ -1812,6 +1916,58 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Compare signed less than or equal halfwords and branch.
+    /// </summary>
+    /// <remarks><code>CBHLE Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHLE_cbhge_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBHLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x7420C000U; // Encoding for: CBHLE_cbhge_16_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare unsigned lower than halfwords and branch.
+    /// </summary>
+    /// <remarks><code>CBHLO Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHLO_cbhhi_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBHLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x7440C000U; // Encoding for: CBHLO_cbhhi_16_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare unsigned lower than or equal halfwords and branch.
+    /// </summary>
+    /// <remarks><code>CBHLS Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHLS_cbhhs_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBHLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x7460C000U; // Encoding for: CBHLS_cbhhs_16_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare signed less than halfwords and branch.
+    /// </summary>
+    /// <remarks><code>CBHLT Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHLT_cbhgt_16_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBHLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x7400C000U; // Encoding for: CBHLT_cbhgt_16_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
     /// Compare halfwords and branch.
     /// </summary>
     /// <remarks><code>CBHNE Wt, Wm, label</code></remarks>
@@ -1851,6 +2007,84 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Compare unsigned greater than or equal immediate and branch.
+    /// </summary>
+    /// <remarks><code>CBHS Wt, #immp1, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHS_cbhi_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBHS(Arm64RegisterW Wt, byte immp1, Arm64LabelOffset label)
+    {
+        uint raw = 0x75400000U; // Encoding for: CBHS_cbhi_32_imm
+        raw |= (uint)Wt.Index;
+        raw |= (uint)(immp1 & 0x3F) << 15;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare unsigned greater than or equal immediate and branch.
+    /// </summary>
+    /// <remarks><code>CBHS Xt, #immp1, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBHS_cbhi_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBHS(Arm64RegisterX Xt, byte immp1, Arm64LabelOffset label)
+    {
+        uint raw = 0xF5400000U; // Encoding for: CBHS_cbhi_64_imm
+        raw |= (uint)Xt.Index;
+        raw |= (uint)(immp1 & 0x3F) << 15;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare signed less than or equal immediate and branch.
+    /// </summary>
+    /// <remarks><code>CBLE Wt, #imms1, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cblt_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLE(Arm64RegisterW Wt, sbyte imms1, Arm64LabelOffset label)
+    {
+        uint raw = 0x75200000U; // Encoding for: CBLE_cblt_32_imm
+        raw |= (uint)Wt.Index;
+        raw |= (uint)(imms1 & 0x3F) << 15;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare signed less than or equal immediate and branch.
+    /// </summary>
+    /// <remarks><code>CBLE Xt, #imms1, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cblt_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLE(Arm64RegisterX Xt, sbyte imms1, Arm64LabelOffset label)
+    {
+        uint raw = 0xF5200000U; // Encoding for: CBLE_cblt_64_imm
+        raw |= (uint)Xt.Index;
+        raw |= (uint)(imms1 & 0x3F) << 15;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare signed less than or equal register and branch.
+    /// </summary>
+    /// <remarks><code>CBLE Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cbge_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLE(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x74200000U; // Encoding for: CBLE_cbge_32_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare signed less than or equal register and branch.
+    /// </summary>
+    /// <remarks><code>CBLE Xm, Xt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLE_cbge_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLE(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64LabelOffset label)
+    {
+        uint raw = 0xF4200000U; // Encoding for: CBLE_cbge_64_regs
+        raw |= (uint)Xm.Index << 16;
+        raw |= (uint)Xt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
     /// <remarks><code>CBLO Wt, #imm, label</code></remarks>
@@ -1877,6 +2111,84 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Compare unsigned lower than register and branch.
+    /// </summary>
+    /// <remarks><code>CBLO Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLO_cbhi_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLO(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x74400000U; // Encoding for: CBLO_cbhi_32_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare unsigned lower than register and branch.
+    /// </summary>
+    /// <remarks><code>CBLO Xm, Xt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLO_cbhi_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLO(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64LabelOffset label)
+    {
+        uint raw = 0xF4400000U; // Encoding for: CBLO_cbhi_64_regs
+        raw |= (uint)Xm.Index << 16;
+        raw |= (uint)Xt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare unsigned lower than or equal immediate and branch.
+    /// </summary>
+    /// <remarks><code>CBLS Wt, #imms1, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cblo_32_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLS(Arm64RegisterW Wt, sbyte imms1, Arm64LabelOffset label)
+    {
+        uint raw = 0x75600000U; // Encoding for: CBLS_cblo_32_imm
+        raw |= (uint)Wt.Index;
+        raw |= (uint)(imms1 & 0x3F) << 15;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare unsigned lower than or equal immediate and branch.
+    /// </summary>
+    /// <remarks><code>CBLS Xt, #imms1, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cblo_64_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLS(Arm64RegisterX Xt, sbyte imms1, Arm64LabelOffset label)
+    {
+        uint raw = 0xF5600000U; // Encoding for: CBLS_cblo_64_imm
+        raw |= (uint)Xt.Index;
+        raw |= (uint)(imms1 & 0x3F) << 15;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare unsigned lower than or equal register and branch.
+    /// </summary>
+    /// <remarks><code>CBLS Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cbhs_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLS(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x74600000U; // Encoding for: CBLS_cbhs_32_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare unsigned lower than or equal register and branch.
+    /// </summary>
+    /// <remarks><code>CBLS Xm, Xt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLS_cbhs_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLS(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64LabelOffset label)
+    {
+        uint raw = 0xF4600000U; // Encoding for: CBLS_cbhs_64_regs
+        raw |= (uint)Xm.Index << 16;
+        raw |= (uint)Xt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
     /// Compare register with immediate and branch.
     /// </summary>
     /// <remarks><code>CBLT Wt, #imm, label</code></remarks>
@@ -1899,6 +2211,32 @@ static partial class Arm64InstructionFactory
         uint raw = 0xF5200000U; // Encoding for: CBLT_64_imm
         raw |= (uint)Xt.Index;
         raw |= (uint)(imm & 0x3F) << 15;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare signed less than register and branch.
+    /// </summary>
+    /// <remarks><code>CBLT Wm, Wt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLT_cbgt_32_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLT(Arm64RegisterW Wm, Arm64RegisterW Wt, Arm64LabelOffset label)
+    {
+        uint raw = 0x74000000U; // Encoding for: CBLT_cbgt_32_regs
+        raw |= (uint)Wm.Index << 16;
+        raw |= (uint)Wt.Index;
+        raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Compare signed less than register and branch.
+    /// </summary>
+    /// <remarks><code>CBLT Xm, Xt, label</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.CBLT_cbgt_64_regs), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint CBLT(Arm64RegisterX Xm, Arm64RegisterX Xt, Arm64LabelOffset label)
+    {
+        uint raw = 0xF4000000U; // Encoding for: CBLT_cbgt_64_regs
+        raw |= (uint)Xm.Index << 16;
+        raw |= (uint)Xt.Index;
         raw |= (uint)((label.Value >> 2) & 0x1FF) << 5;
         return raw;
     }
@@ -2123,6 +2461,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x1A800400U; // Encoding for: CINC_csinc_32_condsel
         raw |= (uint)Wd.Index;
+        raw |= (uint)Wn.Index << 16;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
@@ -2136,6 +2475,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x9A800400U; // Encoding for: CINC_csinc_64_condsel
         raw |= (uint)Xd.Index;
+        raw |= (uint)Xn.Index << 16;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
@@ -2149,6 +2489,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x5A800000U; // Encoding for: CINV_csinv_32_condsel
         raw |= (uint)Wd.Index;
+        raw |= (uint)Wn.Index << 16;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
@@ -2162,6 +2503,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xDA800000U; // Encoding for: CINV_csinv_64_condsel
         raw |= (uint)Xd.Index;
+        raw |= (uint)Xn.Index << 16;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
@@ -2463,6 +2805,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x5A800400U; // Encoding for: CNEG_csneg_32_condsel
         raw |= (uint)Wd.Index;
+        raw |= (uint)Wn.Index << 16;
         raw |= (uint)Wn.Index << 5;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
@@ -2476,6 +2819,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xDA800400U; // Encoding for: CNEG_csneg_64_condsel
         raw |= (uint)Xd.Index;
+        raw |= (uint)Xn.Index << 16;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
@@ -8323,6 +8667,32 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Logical shift left variable.
+    /// </summary>
+    /// <remarks><code>LSLV Wd, Wn, Wm</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LSLV_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LSLV(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
+    {
+        uint raw = 0x1AC02000U; // Encoding for: LSLV_32_dp_2src
+        raw |= (uint)Wd.Index;
+        raw |= (uint)Wn.Index << 5;
+        raw |= (uint)Wm.Index << 16;
+        return raw;
+    }
+    /// <summary>
+    /// Logical shift left variable.
+    /// </summary>
+    /// <remarks><code>LSLV Xd, Xn, Xm</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LSLV_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LSLV(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
+    {
+        uint raw = 0x9AC02000U; // Encoding for: LSLV_64_dp_2src
+        raw |= (uint)Xd.Index;
+        raw |= (uint)Xn.Index << 5;
+        raw |= (uint)Xm.Index << 16;
+        return raw;
+    }
+    /// <summary>
     /// Logical shift right (immediate).
     /// </summary>
     /// <remarks><code>LSR Wd, Wn, #shift</code></remarks>
@@ -8369,6 +8739,32 @@ static partial class Arm64InstructionFactory
     public static uint LSR(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC02400U; // Encoding for: LSR_lsrv_64_dp_2src
+        raw |= (uint)Xd.Index;
+        raw |= (uint)Xn.Index << 5;
+        raw |= (uint)Xm.Index << 16;
+        return raw;
+    }
+    /// <summary>
+    /// Logical shift right variable.
+    /// </summary>
+    /// <remarks><code>LSRV Wd, Wn, Wm</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LSRV_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LSRV(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
+    {
+        uint raw = 0x1AC02400U; // Encoding for: LSRV_32_dp_2src
+        raw |= (uint)Wd.Index;
+        raw |= (uint)Wn.Index << 5;
+        raw |= (uint)Wm.Index << 16;
+        return raw;
+    }
+    /// <summary>
+    /// Logical shift right variable.
+    /// </summary>
+    /// <remarks><code>LSRV Xd, Xn, Xm</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.LSRV_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint LSRV(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
+    {
+        uint raw = 0x9AC02400U; // Encoding for: LSRV_64_dp_2src
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;
@@ -10229,6 +10625,18 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Reverse bytes.
+    /// </summary>
+    /// <remarks><code>REV64 Xd, Xn</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.REV64_rev_64_dp_1src), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint REV64(Arm64RegisterX Xd, Arm64RegisterX Xn)
+    {
+        uint raw = 0xDAC00C00U; // Encoding for: REV64_rev_64_dp_1src
+        raw |= (uint)Xd.Index;
+        raw |= (uint)Xn.Index << 5;
+        return raw;
+    }
+    /// <summary>
     /// Rotate, mask insert flags.
     /// </summary>
     /// <remarks><code>RMIF Xn, #shift, #mask</code></remarks>
@@ -10288,6 +10696,32 @@ static partial class Arm64InstructionFactory
     public static uint ROR(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
     {
         uint raw = 0x9AC02C00U; // Encoding for: ROR_rorv_64_dp_2src
+        raw |= (uint)Xd.Index;
+        raw |= (uint)Xn.Index << 5;
+        raw |= (uint)Xm.Index << 16;
+        return raw;
+    }
+    /// <summary>
+    /// Rotate right variable.
+    /// </summary>
+    /// <remarks><code>RORV Wd, Wn, Wm</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.RORV_32_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint RORV(Arm64RegisterW Wd, Arm64RegisterW Wn, Arm64RegisterW Wm)
+    {
+        uint raw = 0x1AC02C00U; // Encoding for: RORV_32_dp_2src
+        raw |= (uint)Wd.Index;
+        raw |= (uint)Wn.Index << 5;
+        raw |= (uint)Wm.Index << 16;
+        return raw;
+    }
+    /// <summary>
+    /// Rotate right variable.
+    /// </summary>
+    /// <remarks><code>RORV Xd, Xn, Xm</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.RORV_64_dp_2src), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint RORV(Arm64RegisterX Xd, Arm64RegisterX Xn, Arm64RegisterX Xm)
+    {
+        uint raw = 0x9AC02C00U; // Encoding for: RORV_64_dp_2src
         raw |= (uint)Xd.Index;
         raw |= (uint)Xn.Index << 5;
         raw |= (uint)Xm.Index << 16;

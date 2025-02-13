@@ -17,4 +17,74 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_BFC_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.BFC"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_BFC_bfm_32m_bitfield_0()
+    {
+        
+        {
+            var raw = BFC(W0, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFC_bfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFC W0, #5, #1", asm);
+        }
+        
+        {
+            var raw = BFC(W15, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFC_bfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFC W15, #5, #1", asm);
+        }
+        
+        {
+            var raw = BFC(WZR, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFC_bfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFC WZR, #5, #1", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.BFC"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_BFC_bfm_64m_bitfield_1()
+    {
+        
+        {
+            var raw = BFC(X0, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFC_bfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFC X0, #5, #1", asm);
+        }
+        
+        {
+            var raw = BFC(X15, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFC_bfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFC X15, #5, #1", asm);
+        }
+        
+        {
+            var raw = BFC(XZR, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.BFC_bfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.BFC, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("BFC XZR, #5, #1", asm);
+        }
+    }
 }

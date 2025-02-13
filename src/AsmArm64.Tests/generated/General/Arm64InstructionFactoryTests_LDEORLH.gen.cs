@@ -17,4 +17,93 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_LDEORLH_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.LDEORLH"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_LDEORLH_32_memop_0()
+    {
+        
+        {
+            var raw = LDEORLH(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLH W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLH(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLH W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLH(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLH WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLH(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLH W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLH(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLH W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLH(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDEORLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDEORLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDEORLH WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLH(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORLH_ldeorlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORLH W0, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLH(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORLH_ldeorlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORLH W15, [X3]", asm);
+        }
+        
+        {
+            var raw = LDEORLH(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORLH_ldeorlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORLH WZR, [X3]", asm);
+        }
+    }
 }

@@ -17,4 +17,506 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_MUL_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.MUL"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_MUL_madd_32a_dp_3src_0()
+    {
+        
+        {
+            var raw = MUL(W0, W1, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W0, W1, W2", asm);
+        }
+        
+        {
+            var raw = MUL(W15, W1, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W15, W1, W2", asm);
+        }
+        
+        {
+            var raw = MUL(WZR, W1, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL WZR, W1, W2", asm);
+        }
+        
+        {
+            var raw = MUL(W0, W16, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W0, W16, W2", asm);
+        }
+        
+        {
+            var raw = MUL(W15, W16, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W15, W16, W2", asm);
+        }
+        
+        {
+            var raw = MUL(WZR, W16, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL WZR, W16, W2", asm);
+        }
+        
+        {
+            var raw = MUL(W0, WZR, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W0, WZR, W2", asm);
+        }
+        
+        {
+            var raw = MUL(W15, WZR, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W15, WZR, W2", asm);
+        }
+        
+        {
+            var raw = MUL(WZR, WZR, W2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL WZR, WZR, W2", asm);
+        }
+        
+        {
+            var raw = MUL(W0, W1, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W0, W1, W17", asm);
+        }
+        
+        {
+            var raw = MUL(W15, W1, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W15, W1, W17", asm);
+        }
+        
+        {
+            var raw = MUL(WZR, W1, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL WZR, W1, W17", asm);
+        }
+        
+        {
+            var raw = MUL(W0, W16, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W0, W16, W17", asm);
+        }
+        
+        {
+            var raw = MUL(W15, W16, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W15, W16, W17", asm);
+        }
+        
+        {
+            var raw = MUL(WZR, W16, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL WZR, W16, W17", asm);
+        }
+        
+        {
+            var raw = MUL(W0, WZR, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W0, WZR, W17", asm);
+        }
+        
+        {
+            var raw = MUL(W15, WZR, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W15, WZR, W17", asm);
+        }
+        
+        {
+            var raw = MUL(WZR, WZR, W17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL WZR, WZR, W17", asm);
+        }
+        
+        {
+            var raw = MUL(W0, W1, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W0, W1, WZR", asm);
+        }
+        
+        {
+            var raw = MUL(W15, W1, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W15, W1, WZR", asm);
+        }
+        
+        {
+            var raw = MUL(WZR, W1, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL WZR, W1, WZR", asm);
+        }
+        
+        {
+            var raw = MUL(W0, W16, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W0, W16, WZR", asm);
+        }
+        
+        {
+            var raw = MUL(W15, W16, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W15, W16, WZR", asm);
+        }
+        
+        {
+            var raw = MUL(WZR, W16, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL WZR, W16, WZR", asm);
+        }
+        
+        {
+            var raw = MUL(W0, WZR, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W0, WZR, WZR", asm);
+        }
+        
+        {
+            var raw = MUL(W15, WZR, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL W15, WZR, WZR", asm);
+        }
+        
+        {
+            var raw = MUL(WZR, WZR, WZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_32a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL WZR, WZR, WZR", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.MUL"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_MUL_madd_64a_dp_3src_1()
+    {
+        
+        {
+            var raw = MUL(X0, X1, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X0, X1, X2", asm);
+        }
+        
+        {
+            var raw = MUL(X15, X1, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X15, X1, X2", asm);
+        }
+        
+        {
+            var raw = MUL(XZR, X1, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL XZR, X1, X2", asm);
+        }
+        
+        {
+            var raw = MUL(X0, X16, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X0, X16, X2", asm);
+        }
+        
+        {
+            var raw = MUL(X15, X16, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X15, X16, X2", asm);
+        }
+        
+        {
+            var raw = MUL(XZR, X16, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL XZR, X16, X2", asm);
+        }
+        
+        {
+            var raw = MUL(X0, XZR, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X0, XZR, X2", asm);
+        }
+        
+        {
+            var raw = MUL(X15, XZR, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X15, XZR, X2", asm);
+        }
+        
+        {
+            var raw = MUL(XZR, XZR, X2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL XZR, XZR, X2", asm);
+        }
+        
+        {
+            var raw = MUL(X0, X1, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X0, X1, X17", asm);
+        }
+        
+        {
+            var raw = MUL(X15, X1, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X15, X1, X17", asm);
+        }
+        
+        {
+            var raw = MUL(XZR, X1, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL XZR, X1, X17", asm);
+        }
+        
+        {
+            var raw = MUL(X0, X16, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X0, X16, X17", asm);
+        }
+        
+        {
+            var raw = MUL(X15, X16, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X15, X16, X17", asm);
+        }
+        
+        {
+            var raw = MUL(XZR, X16, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL XZR, X16, X17", asm);
+        }
+        
+        {
+            var raw = MUL(X0, XZR, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X0, XZR, X17", asm);
+        }
+        
+        {
+            var raw = MUL(X15, XZR, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X15, XZR, X17", asm);
+        }
+        
+        {
+            var raw = MUL(XZR, XZR, X17);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL XZR, XZR, X17", asm);
+        }
+        
+        {
+            var raw = MUL(X0, X1, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X0, X1, XZR", asm);
+        }
+        
+        {
+            var raw = MUL(X15, X1, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X15, X1, XZR", asm);
+        }
+        
+        {
+            var raw = MUL(XZR, X1, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL XZR, X1, XZR", asm);
+        }
+        
+        {
+            var raw = MUL(X0, X16, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X0, X16, XZR", asm);
+        }
+        
+        {
+            var raw = MUL(X15, X16, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X15, X16, XZR", asm);
+        }
+        
+        {
+            var raw = MUL(XZR, X16, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL XZR, X16, XZR", asm);
+        }
+        
+        {
+            var raw = MUL(X0, XZR, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X0, XZR, XZR", asm);
+        }
+        
+        {
+            var raw = MUL(X15, XZR, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL X15, XZR, XZR", asm);
+        }
+        
+        {
+            var raw = MUL(XZR, XZR, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.MUL_madd_64a_dp_3src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.MUL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("MUL XZR, XZR, XZR", asm);
+        }
+    }
 }

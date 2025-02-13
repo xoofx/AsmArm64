@@ -17,4 +17,38 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_APAS_System
 {
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.APAS"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_APAS_sys_cr_systeminstrs_0()
+    {
+        
+        {
+            var raw = APAS(X0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.APAS_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.APAS, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("APAS X0", asm);
+        }
+        
+        {
+            var raw = APAS(X15);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.APAS_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.APAS, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("APAS X15", asm);
+        }
+        
+        {
+            var raw = APAS(XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.APAS_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.APAS, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("APAS XZR", asm);
+        }
+    }
 }

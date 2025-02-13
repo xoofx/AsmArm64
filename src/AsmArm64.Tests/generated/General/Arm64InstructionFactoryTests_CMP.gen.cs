@@ -17,4 +17,1194 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_CMP_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CMP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CMP_subs_32s_addsub_ext_0()
+    {
+        
+        {
+            var raw = CMP(W1, W1, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W1, W1, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(W17, W1, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W17, W1, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(WSP, W1, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WSP, W1, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(W1, W16, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W1, W16, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(W17, W16, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W17, W16, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(WSP, W16, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WSP, W16, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(W1, WZR, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W1, WZR, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(W17, WZR, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W17, WZR, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(WSP, WZR, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WSP, WZR, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(W1, W1, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W1, W1, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(W17, W1, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W17, W1, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(WSP, W1, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WSP, W1, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(W1, W16, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W1, W16, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(W17, W16, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W17, W16, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(WSP, W16, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WSP, W16, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(W1, WZR, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W1, WZR, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(W17, WZR, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W17, WZR, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(WSP, WZR, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WSP, WZR, UXTB #2", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CMP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CMP_subs_64s_addsub_ext_1()
+    {
+        
+        {
+            var raw = CMP(X1, X2, _UXTX, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X1, X2, UXTX #1", asm);
+        }
+        
+        {
+            var raw = CMP(X17, X2, _UXTX, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X17, X2, UXTX #1", asm);
+        }
+        
+        {
+            var raw = CMP(SP, X2, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP SP, X2, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(X1, XZR, _UXTX, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X1, XZR, UXTX #1", asm);
+        }
+        
+        {
+            var raw = CMP(X17, XZR, _UXTX, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X17, XZR, UXTX #1", asm);
+        }
+        
+        {
+            var raw = CMP(SP, XZR, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP SP, XZR, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(X1, X2, _SXTX, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X1, X2, SXTX #1", asm);
+        }
+        
+        {
+            var raw = CMP(X17, X2, _SXTX, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X17, X2, SXTX #1", asm);
+        }
+        
+        {
+            var raw = CMP(SP, X2, _SXTX, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP SP, X2, SXTX #1", asm);
+        }
+        
+        {
+            var raw = CMP(X1, XZR, _SXTX, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X1, XZR, SXTX #1", asm);
+        }
+        
+        {
+            var raw = CMP(X17, XZR, _SXTX, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X17, XZR, SXTX #1", asm);
+        }
+        
+        {
+            var raw = CMP(SP, XZR, _SXTX, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP SP, XZR, SXTX #1", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CMP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CMP_subs_64s_addsub_ext_2()
+    {
+        
+        {
+            var raw = CMP(X1, W2, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X1, W2, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(X17, W2, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X17, W2, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(SP, W2, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP SP, W2, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(X1, WZR, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X1, WZR, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(X17, WZR, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X17, WZR, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(SP, WZR, _UXTW, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP SP, WZR, UXTW #1", asm);
+        }
+        
+        {
+            var raw = CMP(X1, W2, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X1, W2, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(X17, W2, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X17, W2, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(SP, W2, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP SP, W2, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(X1, WZR, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X1, WZR, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(X17, WZR, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X17, WZR, UXTB #2", asm);
+        }
+        
+        {
+            var raw = CMP(SP, WZR, _UXTB, 2);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_ext, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP SP, WZR, UXTB #2", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CMP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CMP_subs_32s_addsub_imm_3()
+    {
+        
+        {
+            var raw = CMP(W1, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W1, #5", asm);
+        }
+        
+        {
+            var raw = CMP(W17, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W17, #5", asm);
+        }
+        
+        {
+            var raw = CMP(WSP, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WSP, #5", asm);
+        }
+        
+        {
+            var raw = CMP(W1, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W1, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = CMP(W17, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W17, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = CMP(WSP, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WSP, #5, LSL #12", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CMP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CMP_subs_64s_addsub_imm_4()
+    {
+        
+        {
+            var raw = CMP(X1, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X1, #5", asm);
+        }
+        
+        {
+            var raw = CMP(X17, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X17, #5", asm);
+        }
+        
+        {
+            var raw = CMP(SP, 5, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP SP, #5", asm);
+        }
+        
+        {
+            var raw = CMP(X1, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X1, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = CMP(X17, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X17, #5, LSL #12", asm);
+        }
+        
+        {
+            var raw = CMP(SP, 5, _LSL, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64s_addsub_imm, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP SP, #5, LSL #12", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CMP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CMP_subs_32_addsub_shift_5()
+    {
+        
+        {
+            var raw = CMP(W0, W1, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, W1", asm);
+        }
+        
+        {
+            var raw = CMP(W15, W1, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, W1", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, W1, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, W1", asm);
+        }
+        
+        {
+            var raw = CMP(W0, W16, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, W16", asm);
+        }
+        
+        {
+            var raw = CMP(W15, W16, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, W16", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, W16, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, W16", asm);
+        }
+        
+        {
+            var raw = CMP(W0, WZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, WZR", asm);
+        }
+        
+        {
+            var raw = CMP(W15, WZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, WZR", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, WZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, WZR", asm);
+        }
+        
+        {
+            var raw = CMP(W0, W1, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, W1, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(W15, W1, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, W1, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, W1, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, W1, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(W0, W16, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, W16, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(W15, W16, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, W16, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, W16, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, W16, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(W0, WZR, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, WZR, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(W15, WZR, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, WZR, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, WZR, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, WZR, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(W0, W1, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, W1, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(W15, W1, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, W1, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, W1, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, W1, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(W0, W16, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, W16, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(W15, W16, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, W16, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, W16, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, W16, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(W0, WZR, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, WZR, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(W15, WZR, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, WZR, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, WZR, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, WZR, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(W0, W1, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, W1, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(W15, W1, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, W1, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, W1, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, W1, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(W0, W16, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, W16, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(W15, W16, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, W16, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, W16, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, W16, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(W0, WZR, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W0, WZR, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(W15, WZR, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP W15, WZR, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(WZR, WZR, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_32_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP WZR, WZR, ASR #12", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CMP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CMP_subs_64_addsub_shift_6()
+    {
+        
+        {
+            var raw = CMP(X0, X1, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, X1", asm);
+        }
+        
+        {
+            var raw = CMP(X15, X1, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, X1", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, X1, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, X1", asm);
+        }
+        
+        {
+            var raw = CMP(X0, X16, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, X16", asm);
+        }
+        
+        {
+            var raw = CMP(X15, X16, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, X16", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, X16, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, X16", asm);
+        }
+        
+        {
+            var raw = CMP(X0, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, XZR", asm);
+        }
+        
+        {
+            var raw = CMP(X15, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, XZR", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, XZR, _LSL, 0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, XZR", asm);
+        }
+        
+        {
+            var raw = CMP(X0, X1, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, X1, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(X15, X1, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, X1, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, X1, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, X1, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(X0, X16, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, X16, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(X15, X16, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, X16, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, X16, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, X16, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(X0, XZR, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, XZR, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(X15, XZR, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, XZR, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, XZR, _LSL, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, XZR, LSL #1", asm);
+        }
+        
+        {
+            var raw = CMP(X0, X1, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, X1, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(X15, X1, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, X1, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, X1, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, X1, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(X0, X16, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, X16, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(X15, X16, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, X16, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, X16, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, X16, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(X0, XZR, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, XZR, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(X15, XZR, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, XZR, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, XZR, _LSR, 10);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, XZR, LSR #10", asm);
+        }
+        
+        {
+            var raw = CMP(X0, X1, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, X1, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(X15, X1, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, X1, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, X1, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, X1, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(X0, X16, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, X16, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(X15, X16, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, X16, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, X16, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, X16, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(X0, XZR, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X0, XZR, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(X15, XZR, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP X15, XZR, ASR #12", asm);
+        }
+        
+        {
+            var raw = CMP(XZR, XZR, _ASR, 12);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CMP_subs_64_addsub_shift, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CMP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CMP XZR, XZR, ASR #12", asm);
+        }
+    }
 }

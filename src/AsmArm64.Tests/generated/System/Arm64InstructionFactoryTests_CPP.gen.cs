@@ -17,4 +17,39 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_CPP_System
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.CPP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_CPP_sys_cr_systeminstrs_0()
+    {
+        
+        {
+            var raw = CPP(RCTX, X1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CPP_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CPP RCTX, X1", asm);
+        }
+        
+        {
+            var raw = CPP(RCTX, X16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CPP_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CPP RCTX, X16", asm);
+        }
+        
+        {
+            var raw = CPP(RCTX, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.CPP_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.CPP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("CPP RCTX, XZR", asm);
+        }
+    }
 }

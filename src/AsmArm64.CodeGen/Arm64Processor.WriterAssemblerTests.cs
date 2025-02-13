@@ -3,6 +3,7 @@
 // See license.txt file in the project root for full license information.
 
 using System.Diagnostics;
+using System.Reflection.Metadata;
 using System.Text;
 using AsmArm64.CodeGen.Model;
 
@@ -21,7 +22,7 @@ partial class Arm64Processor
             // Additional reasons from the XML doc:
             // - A disassembler will disassemble the allocated instruction, rather than the HINT instruction.
             // - An assembler may support assembly of allocated encodings using <instruction>HINT</instruction> with the corresponding <syntax>&lt;imm&gt;</syntax> value, but it is not required to do so.
-            if (pair.Key == "HINT") // instruction.Id = HINT_HM_hints
+            if (pair.Key == "HINT" || MnemonicsRequiringManualHandlingBecauseOfAliases.Contains(pair.Key)) // instruction.Id = HINT_HM_hints
             {
                 continue;
             }
@@ -42,7 +43,7 @@ partial class Arm64Processor
             for (var i = 0; i < pair.Value.Count; i++)
             {
                 var variation = pair.Value[i];
-                if (variation.Instruction.IsDiscardedByPreferredAlias || variation.Instruction.Alias is not null || variation.Instruction.AliasesIn.Count > 0) continue;
+                //if (variation.Instruction.IsDiscardedByPreferredAlias || variation.Instruction.Alias is not null || variation.Instruction.AliasesIn.Count > 0) continue;
 
                 if (!isFirst)
                 {
@@ -123,10 +124,12 @@ partial class Arm64Processor
                 var testArgument = testArguments[argIndex];
                 testArgument.InitializeFromArguments(instructionVariation, testArguments, argIndex);
             }
+
+            FindBestAlias(instructionVariation, testArguments, out var preferredInstruction, out var expectedAsm);
             
             w.WriteLine($"var raw = {instruction.Mnemonic}({string.Join(", ", testArguments.Select(x => x.CSharp))});");
             w.WriteLine("var instruction = Arm64Instruction.Decode(raw);");
-
+            
             // Special case for LSL instructions that are folded into a single instruction
             if (instructionVariation.ElseVariation is not null && testArguments.OfType<MemoryTestArgument>().Any(x => x.Extend == "LSL"))
             {
@@ -134,27 +137,284 @@ partial class Arm64Processor
             }
             else
             {
-                w.WriteLine($"Assert.AreEqual(Arm64InstructionId.{instruction.Id}, instruction.Id);");
+                w.WriteLine($"Assert.AreEqual(Arm64InstructionId.{preferredInstruction.Id}, instruction.Id);");
             }
-            w.WriteLine($"Assert.AreEqual(Arm64Mnemonic.{instruction.Mnemonic}, instruction.Mnemonic);");
+            w.WriteLine($"Assert.AreEqual(Arm64Mnemonic.{preferredInstruction.Mnemonic}, instruction.Mnemonic);");
             w.WriteLine("var asm = instruction.ToString(\"H\", null);");
+            w.WriteLine($"Assert.AreEqual(\"{expectedAsm}\", asm);");
 
-            if (instruction.Id == "B_only_condbranch" || instruction.Id == "BC_only_condbranch")
-            {
-                // `BC.NE #32` instead of `BC NE, #32`
-                w.WriteLine($"Assert.AreEqual(\"{instruction.Mnemonic}.{testArguments[0].Asm} {string.Join(", ", GetAsmArguments(testArguments.Skip(1)))}\", asm);");
-            }
-            else
-            {
-                w.WriteLine(testArguments.Count == 0
-                    ? $"Assert.AreEqual(\"{instruction.Mnemonic}\", asm);"
-                    : $"Assert.AreEqual(\"{instruction.Mnemonic} {GetAsmArguments(testArguments)}\", asm);"
-                );
-            }
-            
             w.CloseBraceBlock();
         }
     }
+
+    private void FindBestAlias(InstructionVariation instructionVariation, List<TestArgument> testArguments, out Instruction preferredInstruction, out string? asm)
+    {
+        var instruction = instructionVariation.Instruction;
+        preferredInstruction = instruction;
+        Instruction? potentialPreferredAlias = null;
+        if (instruction.IsDiscardedByPreferredAlias)
+        {
+            if (instruction.Alias is not null)
+            {
+                Debug.Assert(instruction.Alias.IsNever);
+                preferredInstruction = MapIdToInstruction[instruction.Alias.InstructionId];
+            }
+            else
+            {
+                Debug.Assert(instruction.AliasesIn.Count > 0);
+                var bestAlias = instruction.AliasesIn.First(x => x.IsAlways);
+                preferredInstruction = MapIdToInstruction[bestAlias.InstructionId];
+            }
+        }
+        else
+        {
+            foreach (var potentialAlias in instruction.AliasesIn)
+            {
+                var alias = MapIdToInstruction[potentialAlias.InstructionId];
+                if (alias.IsAliasPreferredByMoreSelectiveBitMask)
+                {
+                    potentialPreferredAlias = alias;
+                    break;
+                }
+            }
+        }
+        potentialPreferredAlias ??= preferredInstruction;
+
+        var mnemonic = preferredInstruction.Mnemonic;
+        var localArguments = new List<TestArgument>(testArguments);
+
+        switch (instruction.Id)
+        {
+            case "B_only_condbranch":
+            case "BC_only_condbranch":
+                // `BC.NE #32` instead of `BC NE, #32`
+                mnemonic = $"{instruction.Mnemonic}.{testArguments[0].Asm}";
+                localArguments.RemoveAt(0);
+                break;
+            case "ADDS_32_addsub_shift":
+            case "ADDS_32s_addsub_ext":
+            case "ADDS_32s_addsub_imm":
+            case "ADDS_64_addsub_shift":
+            case "ADDS_64s_addsub_ext":
+            case "ADDS_64s_addsub_imm":
+            case "ANDS_32_log_shift":
+            case "ANDS_32s_log_imm":
+            case "ANDS_64_log_shift":
+            case "ANDS_64s_log_imm":
+            case "SUBPS_64s_dp_2src":
+            case "SUBS_32s_addsub_ext":
+            case "SUBS_32s_addsub_imm":
+            case "SUBS_64s_addsub_ext":
+            case "SUBS_64s_addsub_imm":
+                // First argument is WZR, so the preferred alias is the one without it
+
+                if (IsWZR(localArguments[0]))
+                {
+                    preferredInstruction = potentialPreferredAlias;
+                    mnemonic = potentialPreferredAlias.Mnemonic;
+                    localArguments.RemoveAt(0);
+                }
+                break;
+            case "BFI_bfm_32m_bitfield":
+                // Second argument is WZR, so the preferred alias is the one without it
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["BFC_bfm_32m_bitfield"];
+                    mnemonic = "BFC";
+                    localArguments.RemoveAt(1);
+                }
+                break;
+            case "ORR_32_log_imm":
+            case "ORR_64_log_imm":
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = potentialPreferredAlias;
+                    mnemonic = potentialPreferredAlias.Mnemonic;
+                    localArguments.RemoveAt(1);
+                }
+                break;
+            case "ORR_32_log_shift":
+            case "ORR_64_log_shift":
+            case "ORN_32_log_shift":
+            case "ORN_64_log_shift":
+            {
+                if (IsWZR(localArguments[1]) && localArguments[3] is ShiftTestArgument shiftArg && shiftArg.Shift == "LSL" && shiftArg.Amount == 0)
+                {
+                    preferredInstruction = potentialPreferredAlias;
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(3);
+                    localArguments.RemoveAt(1);
+                }
+
+                break;
+            }
+            case "SUB_32_addsub_shift":
+            case "SUB_64_addsub_shift":
+            {
+                    if (IsWZR(localArguments[1]))
+                    {
+                        preferredInstruction = potentialPreferredAlias;
+                        mnemonic = preferredInstruction.Mnemonic;
+                        //if (localArguments[3] is ExtendTestArgument shiftArg && shiftArg.Extend == "LSL" && shiftArg.Amount == 0)
+                        //{
+                        //    localArguments.RemoveAt(3);
+                        //}
+
+                        localArguments.RemoveAt(1);
+                    }
+                    else if (IsWZR(localArguments[0]))
+                    {
+                        preferredInstruction = potentialPreferredAlias;
+                        mnemonic = preferredInstruction.Mnemonic;
+                        localArguments.RemoveAt(0);
+                    }
+
+                    break;
+            }
+            case "SUBS_32_addsub_shift":
+            case "SUBS_64_addsub_shift":
+            {
+                if (IsWZR(localArguments[0]))
+                {
+                    preferredInstruction = potentialPreferredAlias;
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(0);
+                }
+                else if (IsWZR(localArguments[1]))
+                {
+                    if (localArguments[3] is ShiftTestArgument shiftArg && shiftArg.Shift == "LSL" && shiftArg.Amount == 0)
+                    {
+                        localArguments.RemoveAt(3);
+                    }
+
+                    preferredInstruction = MapIdToInstruction[instruction.Id == "SUBS_32_addsub_shift"
+                        ? "NEGS_subs_32_addsub_shift"
+                        : "NEGS_subs_64_addsub_shift"];
+                    mnemonic = preferredInstruction.Mnemonic;
+
+                    localArguments.RemoveAt(1);
+                }
+                break;
+            }
+
+            case "CINC_csinc_32_condsel":
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["CSET_csinc_32_condsel"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                }
+                break;
+            case "CINC_csinc_64_condsel":
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["CSET_csinc_64_condsel"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                }
+                break;
+            case "CINV_csinv_32_condsel":
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["CSETM_csinv_32_condsel"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                }
+                break;
+            case "CINV_csinv_64_condsel":
+                if (IsWZR(localArguments[1]))
+                {
+                    preferredInstruction = MapIdToInstruction["CSETM_csinv_64_condsel"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                }
+
+                break;
+            case "CSINC_32_condsel":
+                if (IsWZR(localArguments[1]) && IsWZR(localArguments[2]))
+                {
+                    preferredInstruction = MapIdToInstruction["CSET_csinc_32_condsel"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(2);
+                    localArguments.RemoveAt(1);
+                    var cond = ((RawTestArgument)localArguments[1]);
+                    localArguments[1] = new RawTestArgument(cond.CSharp, InvertConditional(cond.Asm));
+                }
+                break;
+            case "CSINC_64_condsel":
+                if (IsWZR(localArguments[1]) && IsWZR(localArguments[2]))
+                {
+                    preferredInstruction = MapIdToInstruction["CSET_csinc_64_condsel"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(2);
+                    localArguments.RemoveAt(1);
+                    var cond = ((RawTestArgument)localArguments[1]);
+                    localArguments[1] = new RawTestArgument(cond.CSharp, InvertConditional(cond.Asm));
+                }
+                break;
+            case "CSINV_32_condsel":
+                if (IsWZR(localArguments[1]) && IsWZR(localArguments[2]))
+                {
+                    preferredInstruction = MapIdToInstruction["CSETM_csinv_32_condsel"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(2);
+                    localArguments.RemoveAt(1);
+                    var cond = ((RawTestArgument)localArguments[1]);
+                    localArguments[1] = new RawTestArgument(cond.CSharp, InvertConditional(cond.Asm));
+                }
+                break;
+            case "CSINV_64_condsel":
+                if (IsWZR(localArguments[1]) && IsWZR(localArguments[2]))
+                {
+                    preferredInstruction = MapIdToInstruction["CSETM_csinv_64_condsel"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(2);
+                    localArguments.RemoveAt(1);
+                    var cond = ((RawTestArgument)localArguments[1]);
+                    localArguments[1] = new RawTestArgument(cond.CSharp, InvertConditional(cond.Asm));
+                }
+                break;
+            case "CSNEG_32_condsel":
+                if (IsWZR(localArguments[1]) && IsWZR(localArguments[2]))
+                {
+                    preferredInstruction = MapIdToInstruction["CNEG_csneg_32_condsel"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                    var cond = ((RawTestArgument)localArguments[2]);
+                    localArguments[2] = new RawTestArgument(cond.CSharp, InvertConditional(cond.Asm));
+                }
+                break;
+            case "CSNEG_64_condsel":
+                if (IsWZR(localArguments[1]) && IsWZR(localArguments[2]))
+                {
+                    preferredInstruction = MapIdToInstruction["CNEG_csneg_64_condsel"];
+                    mnemonic = preferredInstruction.Mnemonic;
+                    localArguments.RemoveAt(1);
+                    var cond = ((RawTestArgument)localArguments[2]);
+                    localArguments[2] = new RawTestArgument(cond.CSharp, InvertConditional(cond.Asm));
+                }
+                break;
+        }
+
+        // Swap arguments
+        if (MnemonicsToInvertFirstTwoOperands.Contains(instruction.Mnemonic) && localArguments[1] is RegisterTestArgument)
+        {
+            (localArguments[0], localArguments[1]) = (localArguments[1], localArguments[0]);
+        }
+        else if (SpecialLDMnemonicsAndWZR.Contains(instruction.Mnemonic) && IsWZR(localArguments[1]))
+        {
+            preferredInstruction = MapIdToInstruction[instruction.AliasesIn[0].InstructionId];
+            mnemonic = preferredInstruction.Mnemonic;
+            localArguments.RemoveAt(1);
+        }
+
+        asm = testArguments.Count == 0
+            ? mnemonic
+            : $"{mnemonic} {GetAsmArguments(localArguments)}";
+    }
+
+    private static bool IsWZR(TestArgument testArgument) => testArgument is RegisterTestArgument regArg && regArg.Index == 31;
+
 
     private static string GetAsmArguments(IEnumerable<TestArgument> arguments)
     {
@@ -205,7 +465,19 @@ partial class Arm64Processor
 
             var rd = (RegisterTestArgument)arguments[0];
             var rn = (RegisterTestArgument)arguments[1];
-            var rm = (RegisterTestArgument)arguments[2];
+            RegisterTestArgument rm;
+
+            if (arguments[2] is RegisterTestArgument regArg)
+            {
+                rm = regArg;
+            }
+            else
+            {
+                // Alias instructions with RD = XZR
+                rm = rn;
+                rn = rd;
+                rd = new RegisterTestArgument("X", 31);
+            }
 
             var lslAlternative =  descriptor.Is64Bit ? "UXTX" : "UXTW";
 
@@ -325,7 +597,7 @@ partial class Arm64Processor
             }
             else if (IsShift)
             {
-                    text = isAsm ? (Value << Shift).ToString() : $"new({Value}, {Shift})";
+                    text = isAsm ? (Value << Shift).ToString() : $"Shift64({Value}, {Shift})";
             }
             else
             {
@@ -581,6 +853,7 @@ partial class Arm64Processor
 
         public override string Asm => GetAsText(true);
 
+        public Func<RegisterTestArgument, uint>? Encode { get; set; }
 
         private string GetAsText(bool isAsm)
         {
@@ -629,4 +902,110 @@ partial class Arm64Processor
             }
         }
     }
+
+    private static readonly HashSet<string> MnemonicsToInvertFirstTwoOperands =
+    [
+        "CBBLE",
+        "CBBLO",
+        "CBBLS",
+        "CBBLT",
+        "CBHLE",
+        "CBHLO",
+        "CBHLS",
+        "CBHLT",
+        "CBLE",
+        "CBLO",
+        "CBLS",
+        "CBLT",
+    ];
+
+    private static readonly HashSet<string> SpecialLDMnemonicsAndWZR =
+    [
+        "LDADD",
+        "LDADDB",
+        "LDADDH",
+        "LDADDL",
+        "LDADDLB",
+        "LDADDLH",
+        "LDCLR",
+        "LDCLRB",
+        "LDCLRH",
+        "LDCLRL",
+        "LDCLRLB",
+        "LDCLRLH",
+        "LDEOR",
+        "LDEORB",
+        "LDEORH",
+        "LDEORL",
+        "LDEORLB",
+        "LDEORLH",
+        "LDSET",
+        "LDSETB",
+        "LDSETH",
+        "LDSETL",
+        "LDSETLB",
+        "LDSETLH",
+        "LDSMAX",
+        "LDSMAXB",
+        "LDSMAXH",
+        "LDSMAXL",
+        "LDSMAXLB",
+        "LDSMAXLH",
+        "LDSMIN",
+        "LDSMINB",
+        "LDSMINH",
+        "LDSMINL",
+        "LDSMINLB",
+        "LDSMINLH",
+        "LDTADD",
+        "LDTADDL",
+        "LDTCLR",
+        "LDTCLRL",
+        "LDTSET",
+        "LDTSETL",
+        "LDUMAX",
+        "LDUMAXB",
+        "LDUMAXH",
+        "LDUMAXL",
+        "LDUMAXLB",
+        "LDUMAXLH",
+        "LDUMIN",
+        "LDUMINB",
+        "LDUMINH",
+        "LDUMINL",
+        "LDUMINLB",
+        "LDUMINLH",
+    ];
+
+    private static readonly HashSet<string> MnemonicsRequiringManualHandlingBecauseOfAliases =
+    [
+        "BFM",
+        "BFXIL",
+        //"CINC",
+        //"CINV",
+        //"CNEG",
+        //"CSET",
+        //"CSETM",
+        //"CSINC",
+        //"CSINV",
+        //"CSNEG",
+        "EXTR",
+        "LSL",
+        "MADD",
+        "MOV_MOVN",
+        "MOV",
+        "MOVN",
+        "MOVZ",
+        "MSUB",
+        "NEGS",
+        "ORN",
+        "ROR",
+        "SBC",
+        "SBCS",
+        "SBFM",
+        "SMADDL",
+        "UBFM",
+        "UMADDL",
+        "UMSUBL",
+    ];
 }

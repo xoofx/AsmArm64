@@ -17,4 +17,39 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_STUMINLH_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STUMINLH"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STUMINLH_lduminlh_32_memop_0()
+    {
+        
+        {
+            var raw = STUMINLH(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMINLH_lduminlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMINLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMINLH W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STUMINLH(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMINLH_lduminlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMINLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMINLH W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STUMINLH(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMINLH_lduminlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMINLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMINLH WZR, [X2]", asm);
+        }
+    }
 }

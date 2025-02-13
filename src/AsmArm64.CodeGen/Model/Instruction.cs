@@ -39,7 +39,12 @@ class Instruction : IJsonOnDeserialized
     /// <c>true</c> if this instruction is aliased by other instructions from <see cref="AliasesIn"/> and require a dynamic resolution.
     /// </summary>
     public bool HasAliasesInAndRequiringDynamicResolution { get; set; }
-    
+
+    /// <summary>
+    /// <c>true</c> if this instruction is an alias that is preferred by a more selective bit mask.
+    /// </summary>
+    public bool IsAliasPreferredByMoreSelectiveBitMask { get; set; }
+
     /// <summary>
     /// When not null, this instruction instance is an alias for another instruction defined by <see cref="AliasInfo.InstructionId"/>. when the given <see cref="AliasInfo.Condition"/> is met.
     /// </summary>
@@ -109,7 +114,7 @@ class Instruction : IJsonOnDeserialized
     public Dictionary<string, BitRangeInfo> BitRangeMap { get; } = new();
 
     public bool UseOperandEncoding8Bytes { get; set; }
-    
+
     public void Encode(Span<byte> buffer)
     {
         MemoryMarshal.Write(buffer, (ushort)Index);

@@ -17,4 +17,39 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_STADDLH_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STADDLH"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STADDLH_ldaddlh_32_memop_0()
+    {
+        
+        {
+            var raw = STADDLH(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDLH_ldaddlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDLH W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STADDLH(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDLH_ldaddlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDLH W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STADDLH(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STADDLH_ldaddlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STADDLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STADDLH WZR, [X2]", asm);
+        }
+    }
 }

@@ -17,4 +17,74 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_STUMIN_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STUMIN"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STUMIN_ldumin_32_memop_0()
+    {
+        
+        {
+            var raw = STUMIN(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMIN_ldumin_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMIN W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STUMIN(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMIN_ldumin_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMIN W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STUMIN(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMIN_ldumin_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMIN WZR, [X2]", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STUMIN"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STUMIN_ldumin_64_memop_1()
+    {
+        
+        {
+            var raw = STUMIN(X0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMIN_ldumin_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMIN X0, [X2]", asm);
+        }
+        
+        {
+            var raw = STUMIN(X15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMIN_ldumin_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMIN X15, [X2]", asm);
+        }
+        
+        {
+            var raw = STUMIN(XZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STUMIN_ldumin_64_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STUMIN, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STUMIN XZR, [X2]", asm);
+        }
+    }
 }

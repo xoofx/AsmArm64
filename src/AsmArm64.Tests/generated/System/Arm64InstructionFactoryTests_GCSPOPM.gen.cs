@@ -17,4 +17,30 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_GCSPOPM_System
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.GCSPOPM"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_GCSPOPM_sysl_rc_systeminstrs_0()
+    {
+        
+        {
+            var raw = GCSPOPM(X0);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.GCSPOPM_sysl_rc_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.GCSPOPM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("GCSPOPM X0", asm);
+        }
+        
+        {
+            var raw = GCSPOPM(X15);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.GCSPOPM_sysl_rc_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.GCSPOPM, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("GCSPOPM X15", asm);
+        }
+    }
 }

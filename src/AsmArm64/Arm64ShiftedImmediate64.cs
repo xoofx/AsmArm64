@@ -31,3 +31,8 @@ public readonly record struct Arm64ShiftedImmediate64 : ISpanFormattable
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
         => Value().TryFormat(destination, out charsWritten, format, provider);
 }
+
+partial class Arm64Factory
+{
+    public static Arm64ShiftedImmediate64 Shift64(ushort value, int shift) => new(value, shift);
+}

@@ -2254,6 +2254,58 @@ static partial class Arm64InstructionFactory
     /// <summary>
     /// Duplicate vector element to vector or scalar.
     /// </summary>
+    /// <remarks><code>DUP Vd, Vn.T[index]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.DUP_asisdone_only), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint DUP(Arm64RegisterB Vd, Arm64RegisterV_B.Indexed Vn_T)
+    {
+        uint raw = 0x5E010400U; // Encoding for: DUP_asisdone_only
+        raw |= (uint)Vd.Index;
+        raw |= (uint)Vn_T.Index << 5;
+        raw |= (uint)(Vn_T.ElementIndex & 0xF) << 17;
+        return raw;
+    }
+    /// <summary>
+    /// Duplicate vector element to vector or scalar.
+    /// </summary>
+    /// <remarks><code>DUP Vd, Vn.T[index]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.DUP_asisdone_only), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint DUP(Arm64RegisterH Vd, Arm64RegisterV_H.Indexed Vn_T)
+    {
+        uint raw = 0x5E020400U; // Encoding for: DUP_asisdone_only
+        raw |= (uint)Vd.Index;
+        raw |= (uint)Vn_T.Index << 5;
+        raw |= (uint)(Vn_T.ElementIndex & 0x7) << 18;
+        return raw;
+    }
+    /// <summary>
+    /// Duplicate vector element to vector or scalar.
+    /// </summary>
+    /// <remarks><code>DUP Vd, Vn.T[index]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.DUP_asisdone_only), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint DUP(Arm64RegisterS Vd, Arm64RegisterV_S.Indexed Vn_T)
+    {
+        uint raw = 0x5E040400U; // Encoding for: DUP_asisdone_only
+        raw |= (uint)Vd.Index;
+        raw |= (uint)Vn_T.Index << 5;
+        raw |= (uint)(Vn_T.ElementIndex & 0x3) << 19;
+        return raw;
+    }
+    /// <summary>
+    /// Duplicate vector element to vector or scalar.
+    /// </summary>
+    /// <remarks><code>DUP Vd, Vn.T[index]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.DUP_asisdone_only), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint DUP(Arm64RegisterD Vd, Arm64RegisterV_D.Indexed Vn_T)
+    {
+        uint raw = 0x5E080400U; // Encoding for: DUP_asisdone_only
+        raw |= (uint)Vd.Index;
+        raw |= (uint)Vn_T.Index << 5;
+        raw |= (uint)(Vn_T.ElementIndex & 0x1) << 20;
+        return raw;
+    }
+    /// <summary>
+    /// Duplicate vector element to vector or scalar.
+    /// </summary>
     /// <remarks><code>DUP Vd.T, Vn.Ts[index]</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.DUP_asimdins_dv_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint DUP(Arm64RegisterV_8B Vd_T, Arm64RegisterV_B.Indexed Vn_Ts)
@@ -9397,6 +9449,114 @@ static partial class Arm64InstructionFactory
         return raw;
     }
     /// <summary>
+    /// Insert vector element from another vector element.
+    /// </summary>
+    /// <remarks><code>INS Vd.Ts[index1], Vn.Ts[index2]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.INS_asimdins_iv_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint INS(Arm64RegisterV_B.Indexed Vd_Ts, Arm64RegisterV_B.Indexed Vn_Ts)
+    {
+        uint raw = 0x6E010400U; // Encoding for: INS_asimdins_iv_v
+        raw |= (uint)Vd_Ts.Index;
+        raw |= (uint)(Vd_Ts.ElementIndex & 0xF) << 17;
+        raw |= (uint)Vn_Ts.Index << 5;
+        raw |= (uint)(Vn_Ts.ElementIndex & 0xF) << 11;
+        return raw;
+    }
+    /// <summary>
+    /// Insert vector element from another vector element.
+    /// </summary>
+    /// <remarks><code>INS Vd.Ts[index1], Vn.Ts[index2]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.INS_asimdins_iv_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint INS(Arm64RegisterV_H.Indexed Vd_Ts, Arm64RegisterV_H.Indexed Vn_Ts)
+    {
+        uint raw = 0x6E020400U; // Encoding for: INS_asimdins_iv_v
+        raw |= (uint)Vd_Ts.Index;
+        raw |= (uint)(Vd_Ts.ElementIndex & 0x7) << 18;
+        raw |= (uint)Vn_Ts.Index << 5;
+        raw |= (uint)(Vn_Ts.ElementIndex & 0x7) << 12;
+        return raw;
+    }
+    /// <summary>
+    /// Insert vector element from another vector element.
+    /// </summary>
+    /// <remarks><code>INS Vd.Ts[index1], Vn.Ts[index2]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.INS_asimdins_iv_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint INS(Arm64RegisterV_S.Indexed Vd_Ts, Arm64RegisterV_S.Indexed Vn_Ts)
+    {
+        uint raw = 0x6E040400U; // Encoding for: INS_asimdins_iv_v
+        raw |= (uint)Vd_Ts.Index;
+        raw |= (uint)(Vd_Ts.ElementIndex & 0x3) << 19;
+        raw |= (uint)Vn_Ts.Index << 5;
+        raw |= (uint)(Vn_Ts.ElementIndex & 0x3) << 13;
+        return raw;
+    }
+    /// <summary>
+    /// Insert vector element from another vector element.
+    /// </summary>
+    /// <remarks><code>INS Vd.Ts[index1], Vn.Ts[index2]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.INS_asimdins_iv_v), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint INS(Arm64RegisterV_D.Indexed Vd_Ts, Arm64RegisterV_D.Indexed Vn_Ts)
+    {
+        uint raw = 0x6E080400U; // Encoding for: INS_asimdins_iv_v
+        raw |= (uint)Vd_Ts.Index;
+        raw |= (uint)(Vd_Ts.ElementIndex & 0x1) << 20;
+        raw |= (uint)Vn_Ts.Index << 5;
+        raw |= (uint)(Vn_Ts.ElementIndex & 0x1) << 14;
+        return raw;
+    }
+    /// <summary>
+    /// Insert vector element from general-purpose register.
+    /// </summary>
+    /// <remarks><code>INS Vd.Ts[index], Rn</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.INS_asimdins_ir_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint INS(Arm64RegisterV_B.Indexed Vd_Ts, Arm64RegisterW Rn)
+    {
+        uint raw = 0x4E011C00U; // Encoding for: INS_asimdins_ir_r
+        raw |= (uint)Vd_Ts.Index;
+        raw |= (uint)(Vd_Ts.ElementIndex & 0xF) << 17;
+        raw |= (uint)Rn.Index << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Insert vector element from general-purpose register.
+    /// </summary>
+    /// <remarks><code>INS Vd.Ts[index], Rn</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.INS_asimdins_ir_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint INS(Arm64RegisterV_H.Indexed Vd_Ts, Arm64RegisterW Rn)
+    {
+        uint raw = 0x4E021C00U; // Encoding for: INS_asimdins_ir_r
+        raw |= (uint)Vd_Ts.Index;
+        raw |= (uint)(Vd_Ts.ElementIndex & 0x7) << 18;
+        raw |= (uint)Rn.Index << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Insert vector element from general-purpose register.
+    /// </summary>
+    /// <remarks><code>INS Vd.Ts[index], Rn</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.INS_asimdins_ir_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint INS(Arm64RegisterV_S.Indexed Vd_Ts, Arm64RegisterW Rn)
+    {
+        uint raw = 0x4E041C00U; // Encoding for: INS_asimdins_ir_r
+        raw |= (uint)Vd_Ts.Index;
+        raw |= (uint)(Vd_Ts.ElementIndex & 0x3) << 19;
+        raw |= (uint)Rn.Index << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Insert vector element from general-purpose register.
+    /// </summary>
+    /// <remarks><code>INS Vd.Ts[index], Rn</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.INS_asimdins_ir_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint INS(Arm64RegisterV_D.Indexed Vd_Ts, Arm64RegisterX Rn)
+    {
+        uint raw = 0x4E081C00U; // Encoding for: INS_asimdins_ir_r
+        raw |= (uint)Vd_Ts.Index;
+        raw |= (uint)(Vd_Ts.ElementIndex & 0x1) << 20;
+        raw |= (uint)Rn.Index << 5;
+        return raw;
+    }
+    /// <summary>
     /// Load multiple single-element structures to one, two, three, or four registers.
     /// </summary>
     /// <remarks><code>LD1 {Vt.T}, [Xn|SP]</code></remarks>
@@ -15709,6 +15869,30 @@ static partial class Arm64InstructionFactory
     public static uint NEG(Arm64RegisterV_2D Vd_T, Arm64RegisterV_2D Vn_T)
     {
         uint raw = 0x6EE0B800U; // Encoding for: NEG_asimdmisc_r
+        raw |= (uint)Vd_T.Index;
+        raw |= (uint)Vn_T.Index << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Bitwise NOT (vector).
+    /// </summary>
+    /// <remarks><code>NOT Vd.T, Vn.T</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.NOT_asimdmisc_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint NOT(Arm64RegisterV_8B Vd_T, Arm64RegisterV_8B Vn_T)
+    {
+        uint raw = 0x2E205800U; // Encoding for: NOT_asimdmisc_r
+        raw |= (uint)Vd_T.Index;
+        raw |= (uint)Vn_T.Index << 5;
+        return raw;
+    }
+    /// <summary>
+    /// Bitwise NOT (vector).
+    /// </summary>
+    /// <remarks><code>NOT Vd.T, Vn.T</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.NOT_asimdmisc_r), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint NOT(Arm64RegisterV_16B Vd_T, Arm64RegisterV_16B Vn_T)
+    {
+        uint raw = 0x6E205800U; // Encoding for: NOT_asimdmisc_r
         raw |= (uint)Vd_T.Index;
         raw |= (uint)Vn_T.Index << 5;
         return raw;
@@ -29394,6 +29578,19 @@ static partial class Arm64InstructionFactory
         raw |= (uint)Wd.Index;
         raw |= (uint)Vn_Ts.Index << 5;
         raw |= (uint)(Vn_Ts.ElementIndex & 0x3) << 19;
+        return raw;
+    }
+    /// <summary>
+    /// Unsigned move vector element to general-purpose register.
+    /// </summary>
+    /// <remarks><code>UMOV Xd, Vn.D[index]</code></remarks>
+    [Arm64LinkInstructionId(Arm64InstructionId.UMOV_asimdins_x_x), MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint UMOV(Arm64RegisterX Xd, Arm64RegisterV_D.Indexed Vn_D)
+    {
+        uint raw = 0x4E083C00U; // Encoding for: UMOV_asimdins_x_x
+        raw |= (uint)Xd.Index;
+        raw |= (uint)Vn_D.Index << 5;
+        raw |= (uint)(Vn_D.ElementIndex & 0x1F) << 16;
         return raw;
     }
     /// <summary>

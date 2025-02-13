@@ -17,4 +17,21 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_PSSBB_System
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.PSSBB"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_PSSBB_dsb_bo_barriers_0()
+    {
+        
+        {
+            var raw = PSSBB();
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.PSSBB_dsb_bo_barriers, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.PSSBB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("PSSBB", asm);
+        }
+    }
 }

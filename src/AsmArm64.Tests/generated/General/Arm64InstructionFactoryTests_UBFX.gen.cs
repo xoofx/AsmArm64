@@ -17,4 +17,182 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_UBFX_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.UBFX"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_UBFX_ubfm_32m_bitfield_0()
+    {
+        
+        {
+            var raw = UBFX(W0, W1, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX W0, W1, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(W15, W1, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX W15, W1, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(WZR, W1, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX WZR, W1, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(W0, W16, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX W0, W16, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(W15, W16, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX W15, W16, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(WZR, W16, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX WZR, W16, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(W0, WZR, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX W0, WZR, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(W15, WZR, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX W15, WZR, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(WZR, WZR, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_32m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX WZR, WZR, #5, #1", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.UBFX"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_UBFX_ubfm_64m_bitfield_1()
+    {
+        
+        {
+            var raw = UBFX(X0, X1, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX X0, X1, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(X15, X1, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX X15, X1, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(XZR, X1, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX XZR, X1, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(X0, X16, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX X0, X16, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(X15, X16, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX X15, X16, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(XZR, X16, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX XZR, X16, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(X0, XZR, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX X0, XZR, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(X15, XZR, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX X15, XZR, #5, #1", asm);
+        }
+        
+        {
+            var raw = UBFX(XZR, XZR, 5, 1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UBFX_ubfm_64m_bitfield, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UBFX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UBFX XZR, XZR, #5, #1", asm);
+        }
+    }
 }

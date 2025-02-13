@@ -17,4 +17,39 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_STEORH_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STEORH"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STEORH_ldeorh_32_memop_0()
+    {
+        
+        {
+            var raw = STEORH(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORH_ldeorh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORH W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STEORH(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORH_ldeorh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORH W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STEORH(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STEORH_ldeorh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STEORH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STEORH WZR, [X2]", asm);
+        }
+    }
 }

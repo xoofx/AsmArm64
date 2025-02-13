@@ -22,6 +22,23 @@ public class Arm64InstructionFactoryTests_DSB_System
     /// Test of <see cref="Arm64InstructionFactory.DSB"/>.
     /// </summary>
     [TestMethod]
+    public void Test_DSB_bo_barriers_0()
+    {
+        
+        {
+            var raw = DSB(OSHLD);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.DSB_bo_barriers, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.DSB, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("DSB OSHLD", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.DSB"/>.
+    /// </summary>
+    [TestMethod]
     public void Test_DSB_bon_barriers_1()
     {
         

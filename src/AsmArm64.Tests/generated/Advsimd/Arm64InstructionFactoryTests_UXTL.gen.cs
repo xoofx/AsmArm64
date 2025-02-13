@@ -17,4 +17,136 @@ namespace AsmArm64.Tests.Advsimd;
 [TestClass]
 public class Arm64InstructionFactoryTests_UXTL_Advsimd
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.UXTL"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_UXTL_ushll_asimdshf_l_0()
+    {
+        
+        {
+            var raw = UXTL(V0.T_8H, V1.T_8B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V0.8H, V1.8B", asm);
+        }
+        
+        {
+            var raw = UXTL(V30.T_8H, V1.T_8B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V30.8H, V1.8B", asm);
+        }
+        
+        {
+            var raw = UXTL(V0.T_8H, V31.T_8B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V0.8H, V31.8B", asm);
+        }
+        
+        {
+            var raw = UXTL(V30.T_8H, V31.T_8B);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V30.8H, V31.8B", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.UXTL"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_UXTL_ushll_asimdshf_l_1()
+    {
+        
+        {
+            var raw = UXTL(V0.T_4S, V1.T_4H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V0.4S, V1.4H", asm);
+        }
+        
+        {
+            var raw = UXTL(V30.T_4S, V1.T_4H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V30.4S, V1.4H", asm);
+        }
+        
+        {
+            var raw = UXTL(V0.T_4S, V31.T_4H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V0.4S, V31.4H", asm);
+        }
+        
+        {
+            var raw = UXTL(V30.T_4S, V31.T_4H);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V30.4S, V31.4H", asm);
+        }
+    }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.UXTL"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_UXTL_ushll_asimdshf_l_2()
+    {
+        
+        {
+            var raw = UXTL(V0.T_2D, V1.T_2S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V0.2D, V1.2S", asm);
+        }
+        
+        {
+            var raw = UXTL(V30.T_2D, V1.T_2S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V30.2D, V1.2S", asm);
+        }
+        
+        {
+            var raw = UXTL(V0.T_2D, V31.T_2S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V0.2D, V31.2S", asm);
+        }
+        
+        {
+            var raw = UXTL(V30.T_2D, V31.T_2S);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.UXTL_ushll_asimdshf_l, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.UXTL, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("UXTL V30.2D, V31.2S", asm);
+        }
+    }
 }

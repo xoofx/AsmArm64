@@ -17,4 +17,93 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_LDSETLH_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.LDSETLH"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_LDSETLH_32_memop_0()
+    {
+        
+        {
+            var raw = LDSETLH(W0, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSETLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSETLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSETLH W0, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSETLH(W15, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSETLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSETLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSETLH W15, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSETLH(WZR, W1, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSETLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSETLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSETLH WZR, W1, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSETLH(W0, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSETLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSETLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSETLH W0, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSETLH(W15, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSETLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSETLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSETLH W15, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSETLH(WZR, W16, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.LDSETLH_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.LDSETLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("LDSETLH WZR, W16, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSETLH(W0, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSETLH_ldsetlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSETLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSETLH W0, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSETLH(W15, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSETLH_ldsetlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSETLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSETLH W15, [X3]", asm);
+        }
+        
+        {
+            var raw = LDSETLH(WZR, WZR, _[X3]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSETLH_ldsetlh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSETLH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSETLH WZR, [X3]", asm);
+        }
+    }
 }

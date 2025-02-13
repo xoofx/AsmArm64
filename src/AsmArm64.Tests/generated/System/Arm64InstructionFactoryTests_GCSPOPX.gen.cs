@@ -17,4 +17,21 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_GCSPOPX_System
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.GCSPOPX"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_GCSPOPX_sys_cr_systeminstrs_0()
+    {
+        
+        {
+            var raw = GCSPOPX();
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.GCSPOPX_sys_cr_systeminstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.GCSPOPX, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("GCSPOPX", asm);
+        }
+    }
 }

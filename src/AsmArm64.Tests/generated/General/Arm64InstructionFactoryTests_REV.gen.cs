@@ -106,4 +106,93 @@ public class Arm64InstructionFactoryTests_REV_General
             Assert.AreEqual("REV WZR, WZR", asm);
         }
     }
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.REV"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_REV_64_dp_1src_1()
+    {
+        
+        {
+            var raw = REV(X0, X1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.REV_64_dp_1src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.REV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("REV X0, X1", asm);
+        }
+        
+        {
+            var raw = REV(X15, X1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.REV_64_dp_1src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.REV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("REV X15, X1", asm);
+        }
+        
+        {
+            var raw = REV(XZR, X1);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.REV_64_dp_1src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.REV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("REV XZR, X1", asm);
+        }
+        
+        {
+            var raw = REV(X0, X16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.REV_64_dp_1src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.REV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("REV X0, X16", asm);
+        }
+        
+        {
+            var raw = REV(X15, X16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.REV_64_dp_1src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.REV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("REV X15, X16", asm);
+        }
+        
+        {
+            var raw = REV(XZR, X16);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.REV_64_dp_1src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.REV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("REV XZR, X16", asm);
+        }
+        
+        {
+            var raw = REV(X0, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.REV_64_dp_1src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.REV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("REV X0, XZR", asm);
+        }
+        
+        {
+            var raw = REV(X15, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.REV_64_dp_1src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.REV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("REV X15, XZR", asm);
+        }
+        
+        {
+            var raw = REV(XZR, XZR);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.REV_64_dp_1src, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.REV, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("REV XZR, XZR", asm);
+        }
+    }
 }

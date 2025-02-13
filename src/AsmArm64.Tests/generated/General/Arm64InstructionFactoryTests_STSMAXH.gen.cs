@@ -17,4 +17,39 @@ namespace AsmArm64.Tests.General;
 [TestClass]
 public class Arm64InstructionFactoryTests_STSMAXH_General
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.STSMAXH"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_STSMAXH_ldsmaxh_32_memop_0()
+    {
+        
+        {
+            var raw = STSMAXH(W0, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMAXH_ldsmaxh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMAXH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMAXH W0, [X2]", asm);
+        }
+        
+        {
+            var raw = STSMAXH(W15, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMAXH_ldsmaxh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMAXH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMAXH W15, [X2]", asm);
+        }
+        
+        {
+            var raw = STSMAXH(WZR, _[X2]);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.STSMAXH_ldsmaxh_32_memop, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.STSMAXH, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("STSMAXH WZR, [X2]", asm);
+        }
+    }
 }

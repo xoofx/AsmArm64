@@ -17,4 +17,84 @@ namespace AsmArm64.Tests.System;
 [TestClass]
 public class Arm64InstructionFactoryTests_SYSP_System
 {
+    
+    /// <summary>
+    /// Test of <see cref="Arm64InstructionFactory.SYSP"/>.
+    /// </summary>
+    [TestMethod]
+    public void Test_SYSP_cr_syspairinstrs_0()
+    {
+        
+        {
+            var raw = SYSP(5, C1, C2, 5, X4);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SYSP_cr_syspairinstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SYSP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SYSP #5, C1, C2, #5, X4", asm);
+        }
+        
+        {
+            var raw = SYSP(5, C15, C2, 5, X4);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SYSP_cr_syspairinstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SYSP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SYSP #5, C15, C2, #5, X4", asm);
+        }
+        
+        {
+            var raw = SYSP(5, C1, C15, 5, X4);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SYSP_cr_syspairinstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SYSP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SYSP #5, C1, C15, #5, X4", asm);
+        }
+        
+        {
+            var raw = SYSP(5, C15, C15, 5, X4);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SYSP_cr_syspairinstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SYSP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SYSP #5, C15, C15, #5, X4", asm);
+        }
+        
+        {
+            var raw = SYSP(5, C1, C2, 5, X19);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SYSP_cr_syspairinstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SYSP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SYSP #5, C1, C2, #5, X19", asm);
+        }
+        
+        {
+            var raw = SYSP(5, C15, C2, 5, X19);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SYSP_cr_syspairinstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SYSP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SYSP #5, C15, C2, #5, X19", asm);
+        }
+        
+        {
+            var raw = SYSP(5, C1, C15, 5, X19);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SYSP_cr_syspairinstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SYSP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SYSP #5, C1, C15, #5, X19", asm);
+        }
+        
+        {
+            var raw = SYSP(5, C15, C15, 5, X19);
+            var instruction = Arm64Instruction.Decode(raw);
+            Assert.AreEqual(Arm64InstructionId.SYSP_cr_syspairinstrs, instruction.Id);
+            Assert.AreEqual(Arm64Mnemonic.SYSP, instruction.Mnemonic);
+            var asm = instruction.ToString("H", null);
+            Assert.AreEqual("SYSP #5, C15, C15, #5, X19", asm);
+        }
+    }
 }
