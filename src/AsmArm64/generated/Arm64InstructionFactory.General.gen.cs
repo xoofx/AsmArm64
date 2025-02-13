@@ -157,7 +157,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ADD Wd|WSP, Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADD_32_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADD(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterWOrWSP Wn_WSP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint ADD(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterWOrWSP Wn_WSP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0x11000000U; // Encoding for: ADD_32_addsub_imm
         raw |= (uint)Wd_WSP.Index;
@@ -171,7 +171,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ADD Xd|SP, Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADD_64_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADD(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint ADD(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0x91000000U; // Encoding for: ADD_64_addsub_imm
         raw |= (uint)Xd_SP.Index;
@@ -229,7 +229,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ADDPT Xd|SP, Xn|SP, Xm {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDPT_64_addsub_pt), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADDPT(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Xm, LSLShiftKind LSL = default, int amount = 0)
+    public static uint ADDPT(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Xm, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x9A002000U; // Encoding for: ADDPT_64_addsub_pt
         raw |= (uint)Xd_SP.Index;
@@ -305,7 +305,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ADDS Wd, Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDS_32s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADDS(Arm64RegisterW Wd, Arm64RegisterWOrWSP Wn_WSP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint ADDS(Arm64RegisterW Wd, Arm64RegisterWOrWSP Wn_WSP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0x31000000U; // Encoding for: ADDS_32s_addsub_imm
         raw |= (uint)Wd.Index;
@@ -319,7 +319,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ADDS Xd, Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ADDS_64s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ADDS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint ADDS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0xB1000000U; // Encoding for: ADDS_64s_addsub_imm
         raw |= (uint)Xd.Index;
@@ -2621,7 +2621,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMN Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMN_adds_32s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMN(Arm64RegisterWOrWSP Wn_WSP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint CMN(Arm64RegisterWOrWSP Wn_WSP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0x3100001FU; // Encoding for: CMN_adds_32s_addsub_imm
         raw |= (uint)Wn_WSP.Index << 5;
@@ -2634,7 +2634,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMN Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMN_adds_64s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMN(Arm64RegisterXOrSP Xn_SP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint CMN(Arm64RegisterXOrSP Xn_SP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0xB100001FU; // Encoding for: CMN_adds_64s_addsub_imm
         raw |= (uint)Xn_SP.Index << 5;
@@ -2735,7 +2735,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMP Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMP_subs_32s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMP(Arm64RegisterWOrWSP Wn_WSP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint CMP(Arm64RegisterWOrWSP Wn_WSP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0x7100001FU; // Encoding for: CMP_subs_32s_addsub_imm
         raw |= (uint)Wn_WSP.Index << 5;
@@ -2748,7 +2748,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>CMP Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.CMP_subs_64s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint CMP(Arm64RegisterXOrSP Xn_SP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint CMP(Arm64RegisterXOrSP Xn_SP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0xF100001FU; // Encoding for: CMP_subs_64s_addsub_imm
         raw |= (uint)Xn_SP.Index << 5;
@@ -8987,7 +8987,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVK Wd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVK_32_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVK(Arm64RegisterW Wd, ushort imm, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVK(Arm64RegisterW Wd, ushort imm, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x72800000U; // Encoding for: MOVK_32_movewide
         raw |= (uint)Wd.Index;
@@ -9000,7 +9000,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVK Xd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVK_64_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVK(Arm64RegisterX Xd, ushort imm, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVK(Arm64RegisterX Xd, ushort imm, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0xF2800000U; // Encoding for: MOVK_64_movewide
         raw |= (uint)Xd.Index;
@@ -9013,7 +9013,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVN Wd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVN_32_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVN(Arm64RegisterW Wd, ushort imm, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVN(Arm64RegisterW Wd, ushort imm, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x12800000U; // Encoding for: MOVN_32_movewide
         raw |= (uint)Wd.Index;
@@ -9026,7 +9026,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVN Xd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVN_64_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVN(Arm64RegisterX Xd, ushort imm, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVN(Arm64RegisterX Xd, ushort imm, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x92800000U; // Encoding for: MOVN_64_movewide
         raw |= (uint)Xd.Index;
@@ -9039,7 +9039,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVZ Wd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVZ_32_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVZ(Arm64RegisterW Wd, ushort imm, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVZ(Arm64RegisterW Wd, ushort imm, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x52800000U; // Encoding for: MOVZ_32_movewide
         raw |= (uint)Wd.Index;
@@ -9052,7 +9052,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVZ Xd, #imm {, LSL #shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVZ_64_movewide), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVZ(Arm64RegisterX Xd, ushort imm, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVZ(Arm64RegisterX Xd, ushort imm, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0xD2800000U; // Encoding for: MOVZ_64_movewide
         raw |= (uint)Xd.Index;
@@ -13764,7 +13764,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SUB Wd|WSP, Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUB_32_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUB(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterWOrWSP Wn_WSP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint SUB(Arm64RegisterWOrWSP Wd_WSP, Arm64RegisterWOrWSP Wn_WSP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0x51000000U; // Encoding for: SUB_32_addsub_imm
         raw |= (uint)Wd_WSP.Index;
@@ -13778,7 +13778,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SUB Xd|SP, Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUB_64_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUB(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint SUB(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0xD1000000U; // Encoding for: SUB_64_addsub_imm
         raw |= (uint)Xd_SP.Index;
@@ -13862,7 +13862,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SUBPT Xd|SP, Xn|SP, Xm {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBPT_64_addsub_pt), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUBPT(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Xm, LSLShiftKind LSL = default, int amount = 0)
+    public static uint SUBPT(Arm64RegisterXOrSP Xd_SP, Arm64RegisterXOrSP Xn_SP, Arm64RegisterX Xm, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0xDA002000U; // Encoding for: SUBPT_64_addsub_pt
         raw |= (uint)Xd_SP.Index;
@@ -13938,7 +13938,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SUBS Wd, Wn|WSP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBS_32s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUBS(Arm64RegisterW Wd, Arm64RegisterWOrWSP Wn_WSP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint SUBS(Arm64RegisterW Wd, Arm64RegisterWOrWSP Wn_WSP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0x71000000U; // Encoding for: SUBS_32s_addsub_imm
         raw |= (uint)Wd.Index;
@@ -13952,7 +13952,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>SUBS Xd, Xn|SP, #imm {, shift}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.SUBS_64s_addsub_imm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint SUBS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, ushort imm, LSLShiftKind shift = default, int amount = 0)
+    public static uint SUBS(Arm64RegisterX Xd, Arm64RegisterXOrSP Xn_SP, ushort imm, IArm64ShiftKind.LSL shift = default, int amount = 0)
     {
         uint raw = 0xF1000000U; // Encoding for: SUBS_64s_addsub_imm
         raw |= (uint)Xd.Index;

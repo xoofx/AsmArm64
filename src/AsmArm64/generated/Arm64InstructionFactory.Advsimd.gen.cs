@@ -764,7 +764,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BIC Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BIC_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BIC(Arm64RegisterV_4H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint BIC(Arm64RegisterV_4H Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x2F009400U; // Encoding for: BIC_asimdimm_l_hl
         raw |= (uint)Vd_T.Index;
@@ -783,7 +783,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BIC Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BIC_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BIC(Arm64RegisterV_8H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint BIC(Arm64RegisterV_8H Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x6F009400U; // Encoding for: BIC_asimdimm_l_hl
         raw |= (uint)Vd_T.Index;
@@ -802,7 +802,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BIC Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BIC_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BIC(Arm64RegisterV_2S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint BIC(Arm64RegisterV_2S Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x2F001400U; // Encoding for: BIC_asimdimm_l_sl
         raw |= (uint)Vd_T.Index;
@@ -821,7 +821,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>BIC Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.BIC_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint BIC(Arm64RegisterV_4S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint BIC(Arm64RegisterV_4S Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x6F001400U; // Encoding for: BIC_asimdimm_l_sl
         raw |= (uint)Vd_T.Index;
@@ -15300,7 +15300,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #0}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_n_b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_8B Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_8B Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x0F00E400U; // Encoding for: MOVI_asimdimm_n_b
         raw |= (uint)Vd_T.Index;
@@ -15319,7 +15319,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #0}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_n_b), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_16B Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_16B Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x4F00E400U; // Encoding for: MOVI_asimdimm_n_b
         raw |= (uint)Vd_T.Index;
@@ -15338,7 +15338,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_4H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_4H Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x0F008400U; // Encoding for: MOVI_asimdimm_l_hl
         raw |= (uint)Vd_T.Index;
@@ -15357,7 +15357,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_8H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_8H Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x4F008400U; // Encoding for: MOVI_asimdimm_l_hl
         raw |= (uint)Vd_T.Index;
@@ -15376,7 +15376,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_2S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_2S Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x0F000400U; // Encoding for: MOVI_asimdimm_l_sl
         raw |= (uint)Vd_T.Index;
@@ -15395,7 +15395,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_4S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MOVI(Arm64RegisterV_4S Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x4F000400U; // Encoding for: MOVI_asimdimm_l_sl
         raw |= (uint)Vd_T.Index;
@@ -15414,7 +15414,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8, MSL #amount</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_m_sm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_2S Vd_T, byte imm8, MSLShiftKind MSL, int amount)
+    public static uint MOVI(Arm64RegisterV_2S Vd_T, byte imm8, IArm64ShiftKind.MSL MSL, int amount)
     {
         uint raw = 0x0F00C400U; // Encoding for: MOVI_asimdimm_m_sm
         raw |= (uint)Vd_T.Index;
@@ -15433,7 +15433,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MOVI Vd.T, #imm8, MSL #amount</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MOVI_asimdimm_m_sm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MOVI(Arm64RegisterV_4S Vd_T, byte imm8, MSLShiftKind MSL, int amount)
+    public static uint MOVI(Arm64RegisterV_4S Vd_T, byte imm8, IArm64ShiftKind.MSL MSL, int amount)
     {
         uint raw = 0x4F00C400U; // Encoding for: MOVI_asimdimm_m_sm
         raw |= (uint)Vd_T.Index;
@@ -15670,7 +15670,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_4H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MVNI(Arm64RegisterV_4H Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x2F008400U; // Encoding for: MVNI_asimdimm_l_hl
         raw |= (uint)Vd_T.Index;
@@ -15689,7 +15689,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_8H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MVNI(Arm64RegisterV_8H Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x6F008400U; // Encoding for: MVNI_asimdimm_l_hl
         raw |= (uint)Vd_T.Index;
@@ -15708,7 +15708,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_2S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MVNI(Arm64RegisterV_2S Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x2F000400U; // Encoding for: MVNI_asimdimm_l_sl
         raw |= (uint)Vd_T.Index;
@@ -15727,7 +15727,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_4S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint MVNI(Arm64RegisterV_4S Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x6F000400U; // Encoding for: MVNI_asimdimm_l_sl
         raw |= (uint)Vd_T.Index;
@@ -15746,7 +15746,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8, MSL #amount</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_m_sm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_2S Vd_T, byte imm8, MSLShiftKind MSL, int amount)
+    public static uint MVNI(Arm64RegisterV_2S Vd_T, byte imm8, IArm64ShiftKind.MSL MSL, int amount)
     {
         uint raw = 0x2F00C400U; // Encoding for: MVNI_asimdimm_m_sm
         raw |= (uint)Vd_T.Index;
@@ -15765,7 +15765,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>MVNI Vd.T, #imm8, MSL #amount</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.MVNI_asimdimm_m_sm), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint MVNI(Arm64RegisterV_4S Vd_T, byte imm8, MSLShiftKind MSL, int amount)
+    public static uint MVNI(Arm64RegisterV_4S Vd_T, byte imm8, IArm64ShiftKind.MSL MSL, int amount)
     {
         uint raw = 0x6F00C400U; // Encoding for: MVNI_asimdimm_m_sm
         raw |= (uint)Vd_T.Index;
@@ -15930,7 +15930,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ORR Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ORR(Arm64RegisterV_4H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint ORR(Arm64RegisterV_4H Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x0F009400U; // Encoding for: ORR_asimdimm_l_hl
         raw |= (uint)Vd_T.Index;
@@ -15949,7 +15949,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ORR Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_asimdimm_l_hl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ORR(Arm64RegisterV_8H Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint ORR(Arm64RegisterV_8H Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x4F009400U; // Encoding for: ORR_asimdimm_l_hl
         raw |= (uint)Vd_T.Index;
@@ -15968,7 +15968,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ORR Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ORR(Arm64RegisterV_2S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint ORR(Arm64RegisterV_2S Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x0F001400U; // Encoding for: ORR_asimdimm_l_sl
         raw |= (uint)Vd_T.Index;
@@ -15987,7 +15987,7 @@ static partial class Arm64InstructionFactory
     /// </summary>
     /// <remarks><code>ORR Vd.T, #imm8 {, LSL #amount}</code></remarks>
     [Arm64LinkInstructionId(Arm64InstructionId.ORR_asimdimm_l_sl), MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint ORR(Arm64RegisterV_4S Vd_T, byte imm8, LSLShiftKind LSL = default, int amount = 0)
+    public static uint ORR(Arm64RegisterV_4S Vd_T, byte imm8, IArm64ShiftKind.LSL LSL = default, int amount = 0)
     {
         uint raw = 0x4F001400U; // Encoding for: ORR_asimdimm_l_sl
         raw |= (uint)Vd_T.Index;

@@ -285,6 +285,7 @@ partial class Arm64Processor
         GenerateSystemRegisterKnownId();
         GenerateSystemRegisterKnownIdTable();
         GenerateSystemRegisterFactory();
+        GenerateSystemRegisterFactoryTests();
     }
     
     private void GenerateSystemRegisterT4()
@@ -422,6 +423,32 @@ partial class Arm64Processor
         w.CloseBraceBlock();
     }
 
+
+    private void GenerateSystemRegisterFactoryTests()
+    {
+        using var w = GetWriter("Arm64SystemRegisterFactoryTests.gen.cs", true);
+
+        w.WriteLine("using static AsmArm64.Arm64Factory;");
+        w.WriteLine();
+        w.WriteLine("namespace AsmArm64.Tests;");
+        w.WriteLine();
+        w.WriteLine("partial class Arm64SystemRegisterFactoryTests");
+        w.OpenBraceBlock();
+        for (var i = 0; i < InstructionSet.SystemRegisters.Count; i++)
+        {
+            //     public void Test_ACCDATA_EL1() => Assert.AreEqual("ACCDATA_EL1", ACCDATA_EL1.ToString());
+            var register = InstructionSet.SystemRegisters[i];
+            w.WriteLine("[TestMethod]");
+            var registerName = register.Name;
+            if (register.UsageKinds.Any(x => IsSystemRegisterKindLowerCase(x)))
+            {
+                registerName = registerName.ToLowerInvariant();
+            }
+            w.WriteLine($"public void Test_{register.Name}() => Assert.AreEqual(\"{registerName}\", {register.Name}.ToString());");
+        }
+        w.CloseBraceBlock();
+    }
+
     private static HashSet<string> SystemRegistersAlsoProcessStates = new HashSet<string>()
     {
         "ALLINT",
@@ -478,6 +505,11 @@ partial class Arm64Processor
         }
 
         _systemRegisterUsageKinds.Add(usageKind);
+    }
+
+    private static bool IsSystemRegisterKindLowerCase(string kind)
+    {
+        return kind == "AT" || kind == "TLBI" || kind == "TLBIP" || kind == "DC" || kind == "IC";
     }
 
     private static readonly Regex MatchVariableInBits = new(@"(?<varName>[A-Za-z]\w*)\[(?<bits>[^\]]+)\]");

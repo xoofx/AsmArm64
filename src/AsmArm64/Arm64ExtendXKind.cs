@@ -15,7 +15,7 @@ public readonly record struct Arm64ExtendXKind : IArm64ExtendKind
 
     public override string ToString() => this.ExtendToText();
 
-    public static implicit operator Arm64ExtendXKind(LSLShiftKind shiftKindAsExtendKind) => new(Arm64ExtendKind.LSL);
+    public static implicit operator Arm64ExtendXKind(IArm64ShiftKind.LSL shiftKindAsExtendKind) => new(Arm64ExtendKind.LSL);
 
     public static implicit operator Arm64ExtendXKind(IArm64ExtendKind.LSL extendKind) => new(Arm64ExtendKind.LSL);
 

@@ -524,7 +524,7 @@ partial class Arm64Processor
         {
             if (sysRegister.UsageKinds.Contains(systemRegisterKind))
             {
-                if (systemRegisterKind == "AT" || systemRegisterKind == "TLBI"  || systemRegisterKind == "TLBIP"  || systemRegisterKind == "DC" || systemRegisterKind == "IC")
+                if (IsSystemRegisterKindLowerCase(systemRegisterKind))
                 {
                     operandVariation.TestArguments.Add(new RawTestArgument(sysRegister.Name, sysRegister.Name.ToLowerInvariant()));
                 }
@@ -1439,28 +1439,28 @@ partial class Arm64Processor
                 testArguments.Add(new("ROR", 7, descriptor.IsOptional));
                 break;
             case Arm64ShiftEncodingKind.Lsl0Or12:
-                operandType = "LSLShiftKind";
+                operandType = "IArm64ShiftKind.LSL";
                 requiresAmountEncoding = true;
                 testArguments.Add(new("LSL", 0, descriptor.IsOptional));
                 testArguments.Add(new("LSL", 12, descriptor.IsOptional));
                 break;
             case Arm64ShiftEncodingKind.Lsl0:
             case Arm64ShiftEncodingKind.Lsl:
-                operandType = "LSLShiftKind";
+                operandType = "IArm64ShiftKind.LSL";
                 testArguments.Add(new("LSL", 0, descriptor.IsOptional));
                 break;
             case Arm64ShiftEncodingKind.LslScale8:
-                operandType = "LSLShiftKind";
+                operandType = "IArm64ShiftKind.LSL";
                 requiresAmountEncoding = true;
                 testArguments.Add(new("LSL", 8, descriptor.IsOptional));
                 break;
             case Arm64ShiftEncodingKind.Msl:
-                operandType = "MSLShiftKind";
+                operandType = "IArm64ShiftKind.MSL";
                 requiresAmountEncoding = true;
                 testArguments.Add(new("MSL", 16, descriptor.IsOptional));
                 break;
             case Arm64ShiftEncodingKind.LslScale16:
-                operandType = "LSLShiftKind";
+                operandType = "IArm64ShiftKind.LSL";
                 testArguments.Add(new("LSL", 16, descriptor.IsOptional));
                 requiresAmountEncoding = true;
                 break;

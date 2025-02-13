@@ -39,45 +39,45 @@ public enum Arm64ShiftKind : byte
 public interface IArm64ShiftKind
 {
     Arm64ShiftKind ShiftKind { get; }
-}
 
-public struct LSLShiftKind : IArm64ShiftKind
-{
-    public Arm64ShiftKind ShiftKind => Arm64ShiftKind.LSL;
+    public struct LSL : IArm64ShiftKind
+    {
+        public Arm64ShiftKind ShiftKind => Arm64ShiftKind.LSL;
 
-    public override string ToString() => this.ShiftToText();
+        public override string ToString() => this.ShiftToText();
 
-    public static implicit operator Arm64ExtendKind(LSLShiftKind shiftKind) => Arm64ExtendKind.LSL;
+        public static implicit operator Arm64ExtendKind(LSL shiftKind) => Arm64ExtendKind.LSL;
 
-    public static implicit operator LSLShiftKind(IArm64ExtendKind.LSL shiftKind) => new();
-}
+        public static implicit operator LSL(IArm64ExtendKind.LSL shiftKind) => new();
+    }
 
-public struct LSRShiftKind : IArm64ShiftKind
-{
-    public Arm64ShiftKind ShiftKind => Arm64ShiftKind.LSR;
+    public struct LSR : IArm64ShiftKind
+    {
+        public Arm64ShiftKind ShiftKind => Arm64ShiftKind.LSR;
 
-    public override string ToString() => this.ShiftToText();
-}
+        public override string ToString() => this.ShiftToText();
+    }
 
-public struct ASRShiftKind : IArm64ShiftKind
-{
-    public Arm64ShiftKind ShiftKind => Arm64ShiftKind.ASR;
+    public struct ASR : IArm64ShiftKind
+    {
+        public Arm64ShiftKind ShiftKind => Arm64ShiftKind.ASR;
 
-    public override string ToString() => this.ShiftToText();
-}
+        public override string ToString() => this.ShiftToText();
+    }
 
-public struct RORShiftKind : IArm64ShiftKind
-{
-    public Arm64ShiftKind ShiftKind => Arm64ShiftKind.ROR;
+    public struct ROR : IArm64ShiftKind
+    {
+        public Arm64ShiftKind ShiftKind => Arm64ShiftKind.ROR;
 
-    public override string ToString() => this.ShiftToText();
-}
+        public override string ToString() => this.ShiftToText();
+    }
 
-public struct MSLShiftKind : IArm64ShiftKind
-{
-    public Arm64ShiftKind ShiftKind => Arm64ShiftKind.MSL;
+    public struct MSL : IArm64ShiftKind
+    {
+        public Arm64ShiftKind ShiftKind => Arm64ShiftKind.MSL;
 
-    public override string ToString() => this.ShiftToText();
+        public override string ToString() => this.ShiftToText();
+    }
 }
 
 /// <summary>
@@ -99,11 +99,11 @@ public readonly record struct Arm64ShiftKind3 : IArm64ShiftKind
     /// <inheritdoc />
     public override string ToString() => this.ShiftToText();
     
-    public static implicit operator Arm64ShiftKind3(LSLShiftKind shiftKind) => new(Arm64ShiftKind.LSL);
+    public static implicit operator Arm64ShiftKind3(IArm64ShiftKind.LSL shiftKind) => new(Arm64ShiftKind.LSL);
 
-    public static implicit operator Arm64ShiftKind3(LSRShiftKind shiftKind) => new(Arm64ShiftKind.LSR);
+    public static implicit operator Arm64ShiftKind3(IArm64ShiftKind.LSR shiftKind) => new(Arm64ShiftKind.LSR);
 
-    public static implicit operator Arm64ShiftKind3(ASRShiftKind shiftKind) => new(Arm64ShiftKind.ASR);
+    public static implicit operator Arm64ShiftKind3(IArm64ShiftKind.ASR shiftKind) => new(Arm64ShiftKind.ASR);
 
     public static implicit operator Arm64ShiftKind3(Arm64ShiftKind shiftKind) => new(shiftKind);
 
@@ -121,10 +121,10 @@ public readonly record struct Arm64ShiftKind4(Arm64ShiftKind ShiftKind) : IArm64
 {
     public override string ToString() => this.ShiftToText();
 
-    public static implicit operator Arm64ShiftKind4(LSLShiftKind shiftKind) => new(Arm64ShiftKind.LSL);
-    public static implicit operator Arm64ShiftKind4(LSRShiftKind shiftKind) => new(Arm64ShiftKind.LSR);
-    public static implicit operator Arm64ShiftKind4(ASRShiftKind shiftKind) => new(Arm64ShiftKind.ASR);
-    public static implicit operator Arm64ShiftKind4(RORShiftKind shiftKind) => new(Arm64ShiftKind.ROR);
+    public static implicit operator Arm64ShiftKind4(IArm64ShiftKind.LSL shiftKind) => new(Arm64ShiftKind.LSL);
+    public static implicit operator Arm64ShiftKind4(IArm64ShiftKind.LSR shiftKind) => new(Arm64ShiftKind.LSR);
+    public static implicit operator Arm64ShiftKind4(IArm64ShiftKind.ASR shiftKind) => new(Arm64ShiftKind.ASR);
+    public static implicit operator Arm64ShiftKind4(IArm64ShiftKind.ROR shiftKind) => new(Arm64ShiftKind.ROR);
     public static implicit operator Arm64ShiftKind4(Arm64ShiftKind shiftKind) => new(shiftKind);
 
     public void Deconstruct(out Arm64ShiftKind shiftKind)
@@ -135,13 +135,13 @@ public readonly record struct Arm64ShiftKind4(Arm64ShiftKind ShiftKind) : IArm64
 
 partial class Arm64Factory
 {
-    public static LSLShiftKind _LSL => default;
+    public static IArm64ShiftKind.LSL _LSL => default;
 
-    public static LSRShiftKind _LSR => default;
+    public static IArm64ShiftKind.LSR _LSR => default;
 
-    public static ASRShiftKind _ASR => default;
+    public static IArm64ShiftKind.ASR _ASR => default;
 
-    public static RORShiftKind _ROR => default;
+    public static IArm64ShiftKind.ROR _ROR => default;
 
-    public static MSLShiftKind _MSL => default;
+    public static IArm64ShiftKind.MSL _MSL => default;
 }

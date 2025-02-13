@@ -5,6 +5,4 @@
 namespace AsmArm64.Tests;
 
 [TestClass]
-public partial class Arm64InstructionFactoryTests
-{
-}
+public partial class Arm64SystemRegisterFactoryTests;
