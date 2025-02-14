@@ -307,6 +307,11 @@ internal sealed class InstructionProcessor
             var encodingSize = instruction.UseOperandEncoding8Bytes ? 8 : 4;
             for (int i = 0; i < instruction.Operands.Count; i++)
             {
+                var descriptor = instruction.Operands[i].Descriptor;
+                if (descriptor is not null)
+                {
+                    descriptor.TableEncodingOffset = (uint)InstructionEncodingBuffer.Position;
+                }
                 Write(allOperands.Slice(i * 8, encodingSize));
             }
         }

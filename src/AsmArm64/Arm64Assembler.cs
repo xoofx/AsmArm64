@@ -3,34 +3,99 @@
 // See license.txt file in the project root for full license information.
 
 // ReSharper disable InconsistentNaming
-namespace AsmArm64;
 
-using static Arm64Factory;
+using System.Runtime.CompilerServices;
+
+namespace AsmArm64;
 
 public partial class Arm64Assembler
 {
-    public uint ADD(Arm64RegisterX xd, Arm64RegisterX xn, Arm64RegisterX xm, Arm64ShiftKind shift = Arm64ShiftKind.LSL, int amount = 0)
+    private readonly List<Arm64Label> _labels;
+    private readonly List<UnboundInstructionLabel> _instructionsWithLabelToPatch;
+    private readonly Arm64InstructionAccessor _accessor;
+
+    public Arm64Assembler(Arm64InstructionAccessor accessor)
     {
-        if (amount > 10) throw new System.ArgumentOutOfRangeException(nameof(amount), "Amount must be in the range [0, 10]");
-        return 0xFF00_0000 | ((uint)shift << 22) | ((uint)amount << 10) | ((uint)xn.Index << 5) | ((uint)xm.Index << 16) | ((uint)xd.Index << 0);
+        ArgumentNullException.ThrowIfNull(accessor);
+        _labels = new();
+        _instructionsWithLabelToPatch = new();
+        BaseAddress = 0x1_0000UL;
+        _accessor = accessor;
     }
 
-    public uint ADDS(Arm64RegisterX xd, Arm64RegisterX xn, Arm64RegisterX xm, Arm64ShiftKind3 shift = default, int amount = 0)
+    public Arm64InstructionAccessor Accessor => _accessor;
+
+    public uint CurrentOffset { get; private protected set; }
+
+    public ulong BaseAddress { get; set; }
+
+    public ulong CurrentAddress => BaseAddress + CurrentOffset;
+
+    public void Reset()
     {
-        return 0xFF00_0000 | ((uint)shift.ShiftKind << 22) | ((uint)amount << 10) | ((uint)xn.Index << 5) | ((uint)xm.Index << 16) | ((uint)xd.Index << 0);
+        _labels.Clear();
+        _instructionsWithLabelToPatch.Clear();
+        CurrentOffset = 0;
     }
 
-    public uint LDR(Arm64RegisterX xd, ReadOnlySpan<Arm64RegisterX> xs)
+    public void Assemble()
     {
-        return 0x1F00_0000 | ((uint)xs[0].Index << 5) | ((uint)xd.Index << 0);
+        foreach (var unboundLabel in _instructionsWithLabelToPatch)
+        {
+            var labelReference = GetLabel(unboundLabel.LabelId);
+            if (!labelReference.IsBound) throw new InvalidOperationException($"Label {unboundLabel.LabelId} is not bound");
+            var offset = (int)(labelReference.Address - (BaseAddress + unboundLabel.InstructionOffset));
+            var rawInstruction = _accessor.ReadAt(unboundLabel.InstructionOffset);
+            rawInstruction |= Arm64LabelOperand.Encode(unboundLabel.LabelOperandDescriptor, offset);
+            _accessor.WriteAt(unboundLabel.InstructionOffset, rawInstruction);
+        }
+
+        _instructionsWithLabelToPatch.Clear();
+    }
+    
+    public Arm64LabelId CreateLabelId(string? name = null, ulong address = ulong.MaxValue)
+    {
+        var index = _labels.Count + 1;
+        _labels.Add(new(address, name));
+        return new Arm64LabelId(index);
     }
 
-    public uint Test()
+    public void BindLabel(Arm64LabelId labelId)
     {
-        return ADDS(X0, X1, X2, _LSL, 9);
+        if (labelId.Index == 0) throw new ArgumentException("Cannot bind the first label", nameof(labelId));
+
+        var index = labelId.Index - 1;
+        var labelReference = _labels[index];
+        var currentAddress = CurrentAddress;
+        if (labelReference.Address == ulong.MaxValue)
+        {
+            _labels[index] = new(currentAddress, labelReference.Name);
+        }
+        else
+        {
+            throw new InvalidOperationException($"Label {labelReference.Name} is already bound to address {labelReference.Address}");
+        }
     }
-    public uint Test2()
+    public Arm64Label GetLabel(Arm64LabelId labelId) => labelId.Index == 0 ? default : _labels[labelId.Index - 1];
+
+    private int RecordLabelOffset(Arm64LabelId labelId, nint operandDescriptorEncodingOffset)
     {
-        return LDR(X0, [X1]);
+        var labelReference = GetLabel(labelId);
+        if (labelReference.IsEmpty) throw new ArgumentException("Label is not defined", nameof(labelId));
+        if (!labelReference.IsBound)
+        {
+            _instructionsWithLabelToPatch.Add(new(CurrentOffset, labelId, Arm64Instruction.GetOperandDescriptor(operandDescriptorEncodingOffset)));
+            return 0;
+        }
+        return (int)(labelReference.Address - CurrentAddress);
     }
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private void AddInstruction(Arm64RawInstruction rawInstruction)
+    {
+        _accessor.WriteAt(CurrentOffset, rawInstruction);
+        CurrentOffset += 4;
+    }
+    
+    private record struct UnboundInstructionLabel(uint InstructionOffset, Arm64LabelId LabelId, ulong LabelOperandDescriptor);
 }

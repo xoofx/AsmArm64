@@ -26,6 +26,7 @@ abstract class OperandDescriptor(Arm64OperandKind kind)
     public bool IsOptional { get; set; }
 
     public string Name { get; set; } = string.Empty;
+    public uint TableEncodingOffset { get; set; }
 
     public void Encode(Span<byte> buffer)
     {

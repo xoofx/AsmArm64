@@ -46,6 +46,46 @@ public readonly struct Arm64LabelOperand : IArm64Operand
         }
     }
 
+    internal static uint Encode(ulong descriptor, int offset)
+    {
+        var labelKind = (Arm64LabelEncodingKind)(descriptor >> 8);
+        var encodingCount = (byte)(descriptor >> 24);
+        switch (labelKind)
+        {
+            case Arm64LabelEncodingKind.OffsetMul4:
+                offset >>= 2;
+                break;
+            case Arm64LabelEncodingKind.NegativeEncodedAsUnsigned:
+                offset = -(offset >> 2);
+                break;
+            case Arm64LabelEncodingKind.PageOffset:
+                offset >>= 12;
+                break;
+        }
+
+        if (encodingCount == 1)
+        {
+            var bitOffset = (byte)(descriptor >> 32);
+            var bitSize = (byte)(descriptor >> 40);
+            var bitMask = (1 << bitSize) - 1;
+            offset &= bitMask;
+            return (uint)offset << (int)bitOffset;
+        }
+        else
+        {
+            Debug.Assert(encodingCount == 2);
+            var bitOffset2 = (byte)(descriptor >> 48);
+            var bitSize2 = (byte)(descriptor >> 56);
+            var bitMask2 = (1 << bitSize2) - 1;
+            var value = (uint)(offset & bitMask2) << bitOffset2;
+            offset >>= bitSize2;
+            var bitOffset1 = (byte)(descriptor >> 32);
+            var bitSize1 = (byte)(descriptor >> 40);
+            var bitMask1 = (1 << bitSize1) - 1;
+            return value | (uint)(offset & bitMask1) << bitOffset1;
+        }
+    }
+
     public Arm64OperandKind Kind => Arm64OperandKind.Label;
 
     public long Offset { get; }

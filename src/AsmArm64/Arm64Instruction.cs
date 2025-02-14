@@ -140,6 +140,9 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
         return new Arm64Instruction(*descriptor, operands, rawInstruction);
     }
 
+    internal static ulong GetOperandDescriptor(nint offset)
+        => Unsafe.As<byte, ulong>(ref Unsafe.Add(ref MemoryMarshal.GetReference(Arm64InstructionDecoderTable.Buffer), offset));
+    
     public static unsafe Arm64InstructionId DecodeId(Arm64RawInstruction rawInstruction)
     {
         ref byte buffer = ref MemoryMarshal.GetReference(Arm64InstructionIdDecoderTable.Buffer);

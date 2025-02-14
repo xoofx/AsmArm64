@@ -136,24 +136,47 @@ partial class Arm64Processor
 
     private void WriteInstructions(string instClass, Dictionary<string, List<InstructionVariation>> mapMnemonicToInstructions)
     {
-        using var w = GetWriter($"Arm64InstructionFactory.{instClass}.gen.cs");
-
-        w.WriteLine("using System.Runtime.CompilerServices;");
-
-        w.WriteLine("namespace AsmArm64;");
-
-        w.WriteLine("static partial class Arm64InstructionFactory");
-        w.OpenBraceBlock();
-
-        foreach (var pair in mapMnemonicToInstructions.OrderBy(x => x.Key))
         {
-            foreach (var variation in pair.Value)
-            {
-                WriteInstructionVariation(w, variation);
-            }
-        }
+            using var w = GetWriter($"Arm64InstructionFactory.{instClass}.gen.cs");
 
-        w.CloseBraceBlock();
+            w.WriteLine("using System.Runtime.CompilerServices;");
+
+            w.WriteLine("namespace AsmArm64;");
+
+            w.WriteLine("static partial class Arm64InstructionFactory");
+            w.OpenBraceBlock();
+
+            foreach (var pair in mapMnemonicToInstructions.OrderBy(x => x.Key))
+            {
+                foreach (var variation in pair.Value)
+                {
+                    WriteInstructionVariation(w, variation);
+                }
+            }
+
+            w.CloseBraceBlock();
+        }
+        {
+            using var w = GetWriter($"Arm64Assembler.{instClass}.gen.cs");
+
+            w.WriteLine("using System.Runtime.CompilerServices;");
+
+            w.WriteLine("namespace AsmArm64;");
+
+            w.WriteLine("partial class Arm64Assembler");
+            w.OpenBraceBlock();
+
+            foreach (var pair in mapMnemonicToInstructions.OrderBy(x => x.Key))
+            {
+                foreach (var variation in pair.Value)
+                {
+                    WriteInstructionVariationForAssembler(w, variation);
+                }
+            }
+
+            w.CloseBraceBlock();
+
+        }
     }
 
     private void WriteInstructionVariation(CodeWriter w, InstructionVariation instructionVariation)
@@ -204,7 +227,68 @@ partial class Arm64Processor
         }
         w.CloseBraceBlock();
     }
-    
+
+    private void WriteInstructionVariationForAssembler(CodeWriter w, InstructionVariation instructionVariation)
+    {
+        var instruction = instructionVariation.Instruction;
+
+        w.WriteSummary($"{EscapeHtmlEntities(instruction.Summary)}.");
+        w.WriteDoc($"<remarks><code>{EscapeHtmlEntities(MatchSpace.Replace(instruction.FullSyntax, " "))}</code></remarks>");
+        w.WriteLine($"[Arm64LinkInstructionId(Arm64InstructionId.{instruction.Id}), MethodImpl(MethodImplOptions.AggressiveInlining)]");
+        w.Write($"public void {instructionVariation.Mnemonic}(");
+
+        for (var i = 0; i < instructionVariation.Operands.Count; i++)
+        {
+            var operand = instructionVariation.Operands[i];
+
+            if (i > 0)
+            {
+                w.Write(", ");
+            }
+
+            if (operand.Descriptor is LabelOperandDescriptor)
+            {
+                w.Write($"Arm64LabelId {operand.OperandName}");
+            }
+            else
+            {
+                operand.WriterParameters(w);
+            }
+        }
+
+        w.WriteLine(")");
+        w.Indent();
+
+        w.Write($" => AddInstruction(Arm64InstructionFactory.{instructionVariation.Mnemonic}(");
+
+        for (var i = 0; i < instructionVariation.Operands.Count; i++)
+        {
+            var operand = instructionVariation.Operands[i];
+
+            if (i > 0)
+            {
+                w.Write(", ");
+            }
+
+            if (operand.Descriptor is LabelOperandDescriptor)
+            {
+                w.Write($"RecordLabelOffset({operand.OperandName}, {operand.Descriptor.TableEncodingOffset})");
+            }
+            else
+            {
+                w.Write(operand.OperandName);
+            }
+            if (operand.OperandName2 != null)
+            {
+                w.Write(", ");
+                w.Write(operand.OperandName2);
+            }
+        }
+
+        w.WriteLine("));");
+        w.UnIndent();
+    }
+
     private void CombineInstructionVariations(string mnemonic, string id1, string id2, List<Instruction> instructions, List<InstructionVariation> variations)
     {
         var i1 = instructions.Find(x => x.Id == id1);
