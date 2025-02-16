@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STEORH_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STEORH_ldeorh_32_memop_0()
     {
-        TestInst(STEORH(W0, _[X2]), Arm64InstructionId.STEORH_ldeorh_32_memop, Arm64Mnemonic.STEORH, "STEORH W0, [X2]");
-        TestInst(STEORH(W15, _[X2]), Arm64InstructionId.STEORH_ldeorh_32_memop, Arm64Mnemonic.STEORH, "STEORH W15, [X2]");
-        TestInst(STEORH(WZR, _[X2]), Arm64InstructionId.STEORH_ldeorh_32_memop, Arm64Mnemonic.STEORH, "STEORH WZR, [X2]");
+        TestInst(STEORH(W0, _[X2]), asm => asm.STEORH(W0, _[X2]), Arm64InstructionId.STEORH_ldeorh_32_memop, Arm64Mnemonic.STEORH, "STEORH W0, [X2]");
+        TestInst(STEORH(W15, _[X2]), asm => asm.STEORH(W15, _[X2]), Arm64InstructionId.STEORH_ldeorh_32_memop, Arm64Mnemonic.STEORH, "STEORH W15, [X2]");
+        TestInst(STEORH(WZR, _[X2]), asm => asm.STEORH(WZR, _[X2]), Arm64InstructionId.STEORH_ldeorh_32_memop, Arm64Mnemonic.STEORH, "STEORH WZR, [X2]");
     }
 }

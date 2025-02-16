@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_NOP_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_NOP_hi_hints_0()
     {
-        TestInst(NOP(), Arm64InstructionId.NOP_hi_hints, Arm64Mnemonic.NOP, "NOP");
+        TestInst(NOP(), asm => asm.NOP(), Arm64InstructionId.NOP_hi_hints, Arm64Mnemonic.NOP, "NOP");
     }
 }

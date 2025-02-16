@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_FMLALLTB_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_FMLALLTB_asimdelem_j_0()
     {
-        TestInst(FMLALLTB(V0.T_4S, V1.T_16B, V2.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V1.16B, V2.B[1]");
-        TestInst(FMLALLTB(V30.T_4S, V1.T_16B, V2.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V1.16B, V2.B[1]");
-        TestInst(FMLALLTB(V0.T_4S, V31.T_16B, V2.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V31.16B, V2.B[1]");
-        TestInst(FMLALLTB(V30.T_4S, V31.T_16B, V2.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V31.16B, V2.B[1]");
-        TestInst(FMLALLTB(V0.T_4S, V1.T_16B, V0.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V1.16B, V0.B[1]");
-        TestInst(FMLALLTB(V30.T_4S, V1.T_16B, V0.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V1.16B, V0.B[1]");
-        TestInst(FMLALLTB(V0.T_4S, V31.T_16B, V0.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V31.16B, V0.B[1]");
-        TestInst(FMLALLTB(V30.T_4S, V31.T_16B, V0.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V31.16B, V0.B[1]");
+        TestInst(FMLALLTB(V0.T_4S, V1.T_16B, V2.B[1]), asm => asm.FMLALLTB(V0.T_4S, V1.T_16B, V2.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V1.16B, V2.B[1]");
+        TestInst(FMLALLTB(V30.T_4S, V1.T_16B, V2.B[1]), asm => asm.FMLALLTB(V30.T_4S, V1.T_16B, V2.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V1.16B, V2.B[1]");
+        TestInst(FMLALLTB(V0.T_4S, V31.T_16B, V2.B[1]), asm => asm.FMLALLTB(V0.T_4S, V31.T_16B, V2.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V31.16B, V2.B[1]");
+        TestInst(FMLALLTB(V30.T_4S, V31.T_16B, V2.B[1]), asm => asm.FMLALLTB(V30.T_4S, V31.T_16B, V2.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V31.16B, V2.B[1]");
+        TestInst(FMLALLTB(V0.T_4S, V1.T_16B, V0.B[1]), asm => asm.FMLALLTB(V0.T_4S, V1.T_16B, V0.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V1.16B, V0.B[1]");
+        TestInst(FMLALLTB(V30.T_4S, V1.T_16B, V0.B[1]), asm => asm.FMLALLTB(V30.T_4S, V1.T_16B, V0.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V1.16B, V0.B[1]");
+        TestInst(FMLALLTB(V0.T_4S, V31.T_16B, V0.B[1]), asm => asm.FMLALLTB(V0.T_4S, V31.T_16B, V0.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V31.16B, V0.B[1]");
+        TestInst(FMLALLTB(V30.T_4S, V31.T_16B, V0.B[1]), asm => asm.FMLALLTB(V30.T_4S, V31.T_16B, V0.B[1]), Arm64InstructionId.FMLALLTB_asimdelem_j, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V31.16B, V0.B[1]");
     }
     
     /// <summary>
@@ -40,13 +39,13 @@ public class Arm64InstructionFactoryTests_FMLALLTB_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_FMLALLTB_asimdsame2_g_1()
     {
-        TestInst(FMLALLTB(V0.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V1.16B, V2.16B");
-        TestInst(FMLALLTB(V30.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V1.16B, V2.16B");
-        TestInst(FMLALLTB(V0.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V31.16B, V2.16B");
-        TestInst(FMLALLTB(V30.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V31.16B, V2.16B");
-        TestInst(FMLALLTB(V0.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V1.16B, V0.16B");
-        TestInst(FMLALLTB(V30.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V1.16B, V0.16B");
-        TestInst(FMLALLTB(V0.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V31.16B, V0.16B");
-        TestInst(FMLALLTB(V30.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V31.16B, V0.16B");
+        TestInst(FMLALLTB(V0.T_4S, V1.T_16B, V2.T_16B), asm => asm.FMLALLTB(V0.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V1.16B, V2.16B");
+        TestInst(FMLALLTB(V30.T_4S, V1.T_16B, V2.T_16B), asm => asm.FMLALLTB(V30.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V1.16B, V2.16B");
+        TestInst(FMLALLTB(V0.T_4S, V31.T_16B, V2.T_16B), asm => asm.FMLALLTB(V0.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V31.16B, V2.16B");
+        TestInst(FMLALLTB(V30.T_4S, V31.T_16B, V2.T_16B), asm => asm.FMLALLTB(V30.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V31.16B, V2.16B");
+        TestInst(FMLALLTB(V0.T_4S, V1.T_16B, V0.T_16B), asm => asm.FMLALLTB(V0.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V1.16B, V0.16B");
+        TestInst(FMLALLTB(V30.T_4S, V1.T_16B, V0.T_16B), asm => asm.FMLALLTB(V30.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V1.16B, V0.16B");
+        TestInst(FMLALLTB(V0.T_4S, V31.T_16B, V0.T_16B), asm => asm.FMLALLTB(V0.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V0.4S, V31.16B, V0.16B");
+        TestInst(FMLALLTB(V30.T_4S, V31.T_16B, V0.T_16B), asm => asm.FMLALLTB(V30.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.FMLALLTB_asimdsame2_g, Arm64Mnemonic.FMLALLTB, "FMLALLTB V30.4S, V31.16B, V0.16B");
     }
 }

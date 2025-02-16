@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asisdshf_c_0()
     {
-        TestInst(FCVTZS(H1, H2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS H1, H2, #5");
-        TestInst(FCVTZS(H31, H2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS H31, H2, #5");
-        TestInst(FCVTZS(H1, H0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS H1, H0, #5");
-        TestInst(FCVTZS(H31, H0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS H31, H0, #5");
+        TestInst(FCVTZS(H1, H2, 5), asm => asm.FCVTZS(H1, H2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS H1, H2, #5");
+        TestInst(FCVTZS(H31, H2, 5), asm => asm.FCVTZS(H31, H2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS H31, H2, #5");
+        TestInst(FCVTZS(H1, H0, 5), asm => asm.FCVTZS(H1, H0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS H1, H0, #5");
+        TestInst(FCVTZS(H31, H0, 5), asm => asm.FCVTZS(H31, H0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS H31, H0, #5");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asisdshf_c_1()
     {
-        TestInst(FCVTZS(S1, S2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS S1, S2, #5");
-        TestInst(FCVTZS(S31, S2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS S31, S2, #5");
-        TestInst(FCVTZS(S1, S0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS S1, S0, #5");
-        TestInst(FCVTZS(S31, S0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS S31, S0, #5");
+        TestInst(FCVTZS(S1, S2, 5), asm => asm.FCVTZS(S1, S2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS S1, S2, #5");
+        TestInst(FCVTZS(S31, S2, 5), asm => asm.FCVTZS(S31, S2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS S31, S2, #5");
+        TestInst(FCVTZS(S1, S0, 5), asm => asm.FCVTZS(S1, S0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS S1, S0, #5");
+        TestInst(FCVTZS(S31, S0, 5), asm => asm.FCVTZS(S31, S0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS S31, S0, #5");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asisdshf_c_2()
     {
-        TestInst(FCVTZS(D1, D2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS D1, D2, #5");
-        TestInst(FCVTZS(D31, D2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS D31, D2, #5");
-        TestInst(FCVTZS(D1, D0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS D1, D0, #5");
-        TestInst(FCVTZS(D31, D0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS D31, D0, #5");
+        TestInst(FCVTZS(D1, D2, 5), asm => asm.FCVTZS(D1, D2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS D1, D2, #5");
+        TestInst(FCVTZS(D31, D2, 5), asm => asm.FCVTZS(D31, D2, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS D31, D2, #5");
+        TestInst(FCVTZS(D1, D0, 5), asm => asm.FCVTZS(D1, D0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS D1, D0, #5");
+        TestInst(FCVTZS(D31, D0, 5), asm => asm.FCVTZS(D31, D0, 5), Arm64InstructionId.FCVTZS_asisdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS D31, D0, #5");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asimdshf_c_3()
     {
-        TestInst(FCVTZS(V0.T_4H, V1.T_4H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4H, V1.4H, #5");
-        TestInst(FCVTZS(V30.T_4H, V1.T_4H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4H, V1.4H, #5");
-        TestInst(FCVTZS(V0.T_4H, V31.T_4H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4H, V31.4H, #5");
-        TestInst(FCVTZS(V30.T_4H, V31.T_4H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4H, V31.4H, #5");
+        TestInst(FCVTZS(V0.T_4H, V1.T_4H, 5), asm => asm.FCVTZS(V0.T_4H, V1.T_4H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4H, V1.4H, #5");
+        TestInst(FCVTZS(V30.T_4H, V1.T_4H, 5), asm => asm.FCVTZS(V30.T_4H, V1.T_4H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4H, V1.4H, #5");
+        TestInst(FCVTZS(V0.T_4H, V31.T_4H, 5), asm => asm.FCVTZS(V0.T_4H, V31.T_4H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4H, V31.4H, #5");
+        TestInst(FCVTZS(V30.T_4H, V31.T_4H, 5), asm => asm.FCVTZS(V30.T_4H, V31.T_4H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4H, V31.4H, #5");
     }
     
     /// <summary>
@@ -72,10 +71,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asimdshf_c_4()
     {
-        TestInst(FCVTZS(V0.T_8H, V1.T_8H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.8H, V1.8H, #5");
-        TestInst(FCVTZS(V30.T_8H, V1.T_8H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.8H, V1.8H, #5");
-        TestInst(FCVTZS(V0.T_8H, V31.T_8H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.8H, V31.8H, #5");
-        TestInst(FCVTZS(V30.T_8H, V31.T_8H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.8H, V31.8H, #5");
+        TestInst(FCVTZS(V0.T_8H, V1.T_8H, 5), asm => asm.FCVTZS(V0.T_8H, V1.T_8H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.8H, V1.8H, #5");
+        TestInst(FCVTZS(V30.T_8H, V1.T_8H, 5), asm => asm.FCVTZS(V30.T_8H, V1.T_8H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.8H, V1.8H, #5");
+        TestInst(FCVTZS(V0.T_8H, V31.T_8H, 5), asm => asm.FCVTZS(V0.T_8H, V31.T_8H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.8H, V31.8H, #5");
+        TestInst(FCVTZS(V30.T_8H, V31.T_8H, 5), asm => asm.FCVTZS(V30.T_8H, V31.T_8H, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.8H, V31.8H, #5");
     }
     
     /// <summary>
@@ -84,10 +83,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asimdshf_c_5()
     {
-        TestInst(FCVTZS(V0.T_2S, V1.T_2S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2S, V1.2S, #5");
-        TestInst(FCVTZS(V30.T_2S, V1.T_2S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2S, V1.2S, #5");
-        TestInst(FCVTZS(V0.T_2S, V31.T_2S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2S, V31.2S, #5");
-        TestInst(FCVTZS(V30.T_2S, V31.T_2S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2S, V31.2S, #5");
+        TestInst(FCVTZS(V0.T_2S, V1.T_2S, 5), asm => asm.FCVTZS(V0.T_2S, V1.T_2S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2S, V1.2S, #5");
+        TestInst(FCVTZS(V30.T_2S, V1.T_2S, 5), asm => asm.FCVTZS(V30.T_2S, V1.T_2S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2S, V1.2S, #5");
+        TestInst(FCVTZS(V0.T_2S, V31.T_2S, 5), asm => asm.FCVTZS(V0.T_2S, V31.T_2S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2S, V31.2S, #5");
+        TestInst(FCVTZS(V30.T_2S, V31.T_2S, 5), asm => asm.FCVTZS(V30.T_2S, V31.T_2S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2S, V31.2S, #5");
     }
     
     /// <summary>
@@ -96,10 +95,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asimdshf_c_6()
     {
-        TestInst(FCVTZS(V0.T_4S, V1.T_4S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4S, V1.4S, #5");
-        TestInst(FCVTZS(V30.T_4S, V1.T_4S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4S, V1.4S, #5");
-        TestInst(FCVTZS(V0.T_4S, V31.T_4S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4S, V31.4S, #5");
-        TestInst(FCVTZS(V30.T_4S, V31.T_4S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4S, V31.4S, #5");
+        TestInst(FCVTZS(V0.T_4S, V1.T_4S, 5), asm => asm.FCVTZS(V0.T_4S, V1.T_4S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4S, V1.4S, #5");
+        TestInst(FCVTZS(V30.T_4S, V1.T_4S, 5), asm => asm.FCVTZS(V30.T_4S, V1.T_4S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4S, V1.4S, #5");
+        TestInst(FCVTZS(V0.T_4S, V31.T_4S, 5), asm => asm.FCVTZS(V0.T_4S, V31.T_4S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4S, V31.4S, #5");
+        TestInst(FCVTZS(V30.T_4S, V31.T_4S, 5), asm => asm.FCVTZS(V30.T_4S, V31.T_4S, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4S, V31.4S, #5");
     }
     
     /// <summary>
@@ -108,10 +107,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asimdshf_c_7()
     {
-        TestInst(FCVTZS(V0.T_2D, V1.T_2D, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2D, V1.2D, #5");
-        TestInst(FCVTZS(V30.T_2D, V1.T_2D, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2D, V1.2D, #5");
-        TestInst(FCVTZS(V0.T_2D, V31.T_2D, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2D, V31.2D, #5");
-        TestInst(FCVTZS(V30.T_2D, V31.T_2D, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2D, V31.2D, #5");
+        TestInst(FCVTZS(V0.T_2D, V1.T_2D, 5), asm => asm.FCVTZS(V0.T_2D, V1.T_2D, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2D, V1.2D, #5");
+        TestInst(FCVTZS(V30.T_2D, V1.T_2D, 5), asm => asm.FCVTZS(V30.T_2D, V1.T_2D, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2D, V1.2D, #5");
+        TestInst(FCVTZS(V0.T_2D, V31.T_2D, 5), asm => asm.FCVTZS(V0.T_2D, V31.T_2D, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2D, V31.2D, #5");
+        TestInst(FCVTZS(V30.T_2D, V31.T_2D, 5), asm => asm.FCVTZS(V30.T_2D, V31.T_2D, 5), Arm64InstructionId.FCVTZS_asimdshf_c, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2D, V31.2D, #5");
     }
     
     /// <summary>
@@ -120,10 +119,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asisdmiscfp16_r_8()
     {
-        TestInst(FCVTZS(H0, H1), Arm64InstructionId.FCVTZS_asisdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS H0, H1");
-        TestInst(FCVTZS(H31, H1), Arm64InstructionId.FCVTZS_asisdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS H31, H1");
-        TestInst(FCVTZS(H0, H31), Arm64InstructionId.FCVTZS_asisdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS H0, H31");
-        TestInst(FCVTZS(H31, H31), Arm64InstructionId.FCVTZS_asisdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS H31, H31");
+        TestInst(FCVTZS(H0, H1), asm => asm.FCVTZS(H0, H1), Arm64InstructionId.FCVTZS_asisdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS H0, H1");
+        TestInst(FCVTZS(H31, H1), asm => asm.FCVTZS(H31, H1), Arm64InstructionId.FCVTZS_asisdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS H31, H1");
+        TestInst(FCVTZS(H0, H31), asm => asm.FCVTZS(H0, H31), Arm64InstructionId.FCVTZS_asisdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS H0, H31");
+        TestInst(FCVTZS(H31, H31), asm => asm.FCVTZS(H31, H31), Arm64InstructionId.FCVTZS_asisdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS H31, H31");
     }
     
     /// <summary>
@@ -132,10 +131,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asisdmisc_r_9()
     {
-        TestInst(FCVTZS(S1, S2), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS S1, S2");
-        TestInst(FCVTZS(S31, S2), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS S31, S2");
-        TestInst(FCVTZS(S1, S0), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS S1, S0");
-        TestInst(FCVTZS(S31, S0), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS S31, S0");
+        TestInst(FCVTZS(S1, S2), asm => asm.FCVTZS(S1, S2), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS S1, S2");
+        TestInst(FCVTZS(S31, S2), asm => asm.FCVTZS(S31, S2), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS S31, S2");
+        TestInst(FCVTZS(S1, S0), asm => asm.FCVTZS(S1, S0), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS S1, S0");
+        TestInst(FCVTZS(S31, S0), asm => asm.FCVTZS(S31, S0), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS S31, S0");
     }
     
     /// <summary>
@@ -144,10 +143,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asisdmisc_r_10()
     {
-        TestInst(FCVTZS(D1, D2), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS D1, D2");
-        TestInst(FCVTZS(D31, D2), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS D31, D2");
-        TestInst(FCVTZS(D1, D0), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS D1, D0");
-        TestInst(FCVTZS(D31, D0), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS D31, D0");
+        TestInst(FCVTZS(D1, D2), asm => asm.FCVTZS(D1, D2), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS D1, D2");
+        TestInst(FCVTZS(D31, D2), asm => asm.FCVTZS(D31, D2), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS D31, D2");
+        TestInst(FCVTZS(D1, D0), asm => asm.FCVTZS(D1, D0), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS D1, D0");
+        TestInst(FCVTZS(D31, D0), asm => asm.FCVTZS(D31, D0), Arm64InstructionId.FCVTZS_asisdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS D31, D0");
     }
     
     /// <summary>
@@ -156,10 +155,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asimdmiscfp16_r_11()
     {
-        TestInst(FCVTZS(V0.T_4H, V1.T_4H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4H, V1.4H");
-        TestInst(FCVTZS(V30.T_4H, V1.T_4H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4H, V1.4H");
-        TestInst(FCVTZS(V0.T_4H, V31.T_4H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4H, V31.4H");
-        TestInst(FCVTZS(V30.T_4H, V31.T_4H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4H, V31.4H");
+        TestInst(FCVTZS(V0.T_4H, V1.T_4H), asm => asm.FCVTZS(V0.T_4H, V1.T_4H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4H, V1.4H");
+        TestInst(FCVTZS(V30.T_4H, V1.T_4H), asm => asm.FCVTZS(V30.T_4H, V1.T_4H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4H, V1.4H");
+        TestInst(FCVTZS(V0.T_4H, V31.T_4H), asm => asm.FCVTZS(V0.T_4H, V31.T_4H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4H, V31.4H");
+        TestInst(FCVTZS(V30.T_4H, V31.T_4H), asm => asm.FCVTZS(V30.T_4H, V31.T_4H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4H, V31.4H");
     }
     
     /// <summary>
@@ -168,10 +167,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asimdmiscfp16_r_12()
     {
-        TestInst(FCVTZS(V0.T_8H, V1.T_8H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.8H, V1.8H");
-        TestInst(FCVTZS(V30.T_8H, V1.T_8H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.8H, V1.8H");
-        TestInst(FCVTZS(V0.T_8H, V31.T_8H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.8H, V31.8H");
-        TestInst(FCVTZS(V30.T_8H, V31.T_8H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.8H, V31.8H");
+        TestInst(FCVTZS(V0.T_8H, V1.T_8H), asm => asm.FCVTZS(V0.T_8H, V1.T_8H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.8H, V1.8H");
+        TestInst(FCVTZS(V30.T_8H, V1.T_8H), asm => asm.FCVTZS(V30.T_8H, V1.T_8H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.8H, V1.8H");
+        TestInst(FCVTZS(V0.T_8H, V31.T_8H), asm => asm.FCVTZS(V0.T_8H, V31.T_8H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.8H, V31.8H");
+        TestInst(FCVTZS(V30.T_8H, V31.T_8H), asm => asm.FCVTZS(V30.T_8H, V31.T_8H), Arm64InstructionId.FCVTZS_asimdmiscfp16_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.8H, V31.8H");
     }
     
     /// <summary>
@@ -180,10 +179,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asimdmisc_r_13()
     {
-        TestInst(FCVTZS(V0.T_2S, V1.T_2S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2S, V1.2S");
-        TestInst(FCVTZS(V30.T_2S, V1.T_2S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2S, V1.2S");
-        TestInst(FCVTZS(V0.T_2S, V31.T_2S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2S, V31.2S");
-        TestInst(FCVTZS(V30.T_2S, V31.T_2S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2S, V31.2S");
+        TestInst(FCVTZS(V0.T_2S, V1.T_2S), asm => asm.FCVTZS(V0.T_2S, V1.T_2S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2S, V1.2S");
+        TestInst(FCVTZS(V30.T_2S, V1.T_2S), asm => asm.FCVTZS(V30.T_2S, V1.T_2S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2S, V1.2S");
+        TestInst(FCVTZS(V0.T_2S, V31.T_2S), asm => asm.FCVTZS(V0.T_2S, V31.T_2S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2S, V31.2S");
+        TestInst(FCVTZS(V30.T_2S, V31.T_2S), asm => asm.FCVTZS(V30.T_2S, V31.T_2S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2S, V31.2S");
     }
     
     /// <summary>
@@ -192,10 +191,10 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asimdmisc_r_14()
     {
-        TestInst(FCVTZS(V0.T_4S, V1.T_4S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4S, V1.4S");
-        TestInst(FCVTZS(V30.T_4S, V1.T_4S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4S, V1.4S");
-        TestInst(FCVTZS(V0.T_4S, V31.T_4S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4S, V31.4S");
-        TestInst(FCVTZS(V30.T_4S, V31.T_4S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4S, V31.4S");
+        TestInst(FCVTZS(V0.T_4S, V1.T_4S), asm => asm.FCVTZS(V0.T_4S, V1.T_4S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4S, V1.4S");
+        TestInst(FCVTZS(V30.T_4S, V1.T_4S), asm => asm.FCVTZS(V30.T_4S, V1.T_4S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4S, V1.4S");
+        TestInst(FCVTZS(V0.T_4S, V31.T_4S), asm => asm.FCVTZS(V0.T_4S, V31.T_4S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.4S, V31.4S");
+        TestInst(FCVTZS(V30.T_4S, V31.T_4S), asm => asm.FCVTZS(V30.T_4S, V31.T_4S), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.4S, V31.4S");
     }
     
     /// <summary>
@@ -204,9 +203,9 @@ public class Arm64InstructionFactoryTests_FCVTZS_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTZS_asimdmisc_r_15()
     {
-        TestInst(FCVTZS(V0.T_2D, V1.T_2D), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2D, V1.2D");
-        TestInst(FCVTZS(V30.T_2D, V1.T_2D), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2D, V1.2D");
-        TestInst(FCVTZS(V0.T_2D, V31.T_2D), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2D, V31.2D");
-        TestInst(FCVTZS(V30.T_2D, V31.T_2D), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2D, V31.2D");
+        TestInst(FCVTZS(V0.T_2D, V1.T_2D), asm => asm.FCVTZS(V0.T_2D, V1.T_2D), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2D, V1.2D");
+        TestInst(FCVTZS(V30.T_2D, V1.T_2D), asm => asm.FCVTZS(V30.T_2D, V1.T_2D), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2D, V1.2D");
+        TestInst(FCVTZS(V0.T_2D, V31.T_2D), asm => asm.FCVTZS(V0.T_2D, V31.T_2D), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V0.2D, V31.2D");
+        TestInst(FCVTZS(V30.T_2D, V31.T_2D), asm => asm.FCVTZS(V30.T_2D, V31.T_2D), Arm64InstructionId.FCVTZS_asimdmisc_r, Arm64Mnemonic.FCVTZS, "FCVTZS V30.2D, V31.2D");
     }
 }

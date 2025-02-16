@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STSMAXLH_General : Arm64InstructionFac
     [TestMethod]
     public void Test_STSMAXLH_ldsmaxlh_32_memop_0()
     {
-        TestInst(STSMAXLH(W0, _[X2]), Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, Arm64Mnemonic.STSMAXLH, "STSMAXLH W0, [X2]");
-        TestInst(STSMAXLH(W15, _[X2]), Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, Arm64Mnemonic.STSMAXLH, "STSMAXLH W15, [X2]");
-        TestInst(STSMAXLH(WZR, _[X2]), Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, Arm64Mnemonic.STSMAXLH, "STSMAXLH WZR, [X2]");
+        TestInst(STSMAXLH(W0, _[X2]), asm => asm.STSMAXLH(W0, _[X2]), Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, Arm64Mnemonic.STSMAXLH, "STSMAXLH W0, [X2]");
+        TestInst(STSMAXLH(W15, _[X2]), asm => asm.STSMAXLH(W15, _[X2]), Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, Arm64Mnemonic.STSMAXLH, "STSMAXLH W15, [X2]");
+        TestInst(STSMAXLH(WZR, _[X2]), asm => asm.STSMAXLH(WZR, _[X2]), Arm64InstructionId.STSMAXLH_ldsmaxlh_32_memop, Arm64Mnemonic.STSMAXLH, "STSMAXLH WZR, [X2]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_MSRR_System : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_MSRR_sr_systemmovepr_0()
     {
-        TestInst(MSRR(PAR_EL1, X1, X2), Arm64InstructionId.MSRR_sr_systemmovepr, Arm64Mnemonic.MSRR, "MSRR PAR_EL1, X1, X2");
-        TestInst(MSRR(PAR_EL1, X16, X17), Arm64InstructionId.MSRR_sr_systemmovepr, Arm64Mnemonic.MSRR, "MSRR PAR_EL1, X16, X17");
-        TestInst(MSRR(PAR_EL1, XZR, X0), Arm64InstructionId.MSRR_sr_systemmovepr, Arm64Mnemonic.MSRR, "MSRR PAR_EL1, XZR, X0");
+        TestInst(MSRR(PAR_EL1, X1, X2), asm => asm.MSRR(PAR_EL1, X1, X2), Arm64InstructionId.MSRR_sr_systemmovepr, Arm64Mnemonic.MSRR, "MSRR PAR_EL1, X1, X2");
+        TestInst(MSRR(PAR_EL1, X16, X17), asm => asm.MSRR(PAR_EL1, X16, X17), Arm64InstructionId.MSRR_sr_systemmovepr, Arm64Mnemonic.MSRR, "MSRR PAR_EL1, X16, X17");
+        TestInst(MSRR(PAR_EL1, XZR, X0), asm => asm.MSRR(PAR_EL1, XZR, X0), Arm64InstructionId.MSRR_sr_systemmovepr, Arm64Mnemonic.MSRR, "MSRR PAR_EL1, XZR, X0");
     }
 }

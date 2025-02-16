@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_AUTIB171615_General : Arm64Instruction
     [TestMethod]
     public void Test_AUTIB171615_64lr_dp_1src_0()
     {
-        TestInst(AUTIB171615(), Arm64InstructionId.AUTIB171615_64lr_dp_1src, Arm64Mnemonic.AUTIB171615, "AUTIB171615");
+        TestInst(AUTIB171615(), asm => asm.AUTIB171615(), Arm64InstructionId.AUTIB171615_64lr_dp_1src, Arm64Mnemonic.AUTIB171615, "AUTIB171615");
     }
 }

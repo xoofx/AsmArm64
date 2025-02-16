@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_ISB_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_ISB_bi_barriers_0()
     {
-        TestInst(ISB(5), Arm64InstructionId.ISB_bi_barriers, Arm64Mnemonic.ISB, "ISB #5");
+        TestInst(ISB(5), asm => asm.ISB(5), Arm64InstructionId.ISB_bi_barriers, Arm64Mnemonic.ISB, "ISB #5");
     }
 }

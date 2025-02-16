@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_CBZ_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CBZ_32_compbranch_0()
     {
-        TestInst(CBZ(W0, 32), Arm64InstructionId.CBZ_32_compbranch, Arm64Mnemonic.CBZ, "CBZ W0, #32");
-        TestInst(CBZ(W15, 32), Arm64InstructionId.CBZ_32_compbranch, Arm64Mnemonic.CBZ, "CBZ W15, #32");
-        TestInst(CBZ(WZR, 32), Arm64InstructionId.CBZ_32_compbranch, Arm64Mnemonic.CBZ, "CBZ WZR, #32");
+        TestInst(CBZ(W0, 32), null, Arm64InstructionId.CBZ_32_compbranch, Arm64Mnemonic.CBZ, "CBZ W0, #32");
+        TestInst(CBZ(W15, 32), null, Arm64InstructionId.CBZ_32_compbranch, Arm64Mnemonic.CBZ, "CBZ W15, #32");
+        TestInst(CBZ(WZR, 32), null, Arm64InstructionId.CBZ_32_compbranch, Arm64Mnemonic.CBZ, "CBZ WZR, #32");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_CBZ_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CBZ_64_compbranch_1()
     {
-        TestInst(CBZ(X0, 32), Arm64InstructionId.CBZ_64_compbranch, Arm64Mnemonic.CBZ, "CBZ X0, #32");
-        TestInst(CBZ(X15, 32), Arm64InstructionId.CBZ_64_compbranch, Arm64Mnemonic.CBZ, "CBZ X15, #32");
-        TestInst(CBZ(XZR, 32), Arm64InstructionId.CBZ_64_compbranch, Arm64Mnemonic.CBZ, "CBZ XZR, #32");
+        TestInst(CBZ(X0, 32), null, Arm64InstructionId.CBZ_64_compbranch, Arm64Mnemonic.CBZ, "CBZ X0, #32");
+        TestInst(CBZ(X15, 32), null, Arm64InstructionId.CBZ_64_compbranch, Arm64Mnemonic.CBZ, "CBZ X15, #32");
+        TestInst(CBZ(XZR, 32), null, Arm64InstructionId.CBZ_64_compbranch, Arm64Mnemonic.CBZ, "CBZ XZR, #32");
     }
 }

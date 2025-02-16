@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SETGPN_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_SETGPN_set_memcms_0()
     {
-        TestInst(SETGPN(_[X1].Pre, X1, X2), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X1, X2");
-        TestInst(SETGPN(_[X1].Pre, X16, X2), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X16, X2");
-        TestInst(SETGPN(_[X1].Pre, XZR, X2), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, XZR, X2");
-        TestInst(SETGPN(_[X1].Pre, X1, X17), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X1, X17");
-        TestInst(SETGPN(_[X1].Pre, X16, X17), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X16, X17");
-        TestInst(SETGPN(_[X1].Pre, XZR, X17), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, XZR, X17");
-        TestInst(SETGPN(_[X1].Pre, X1, XZR), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X1, XZR");
-        TestInst(SETGPN(_[X1].Pre, X16, XZR), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X16, XZR");
-        TestInst(SETGPN(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, XZR, XZR");
+        TestInst(SETGPN(_[X1].Pre, X1, X2), asm => asm.SETGPN(_[X1].Pre, X1, X2), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X1, X2");
+        TestInst(SETGPN(_[X1].Pre, X16, X2), asm => asm.SETGPN(_[X1].Pre, X16, X2), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X16, X2");
+        TestInst(SETGPN(_[X1].Pre, XZR, X2), asm => asm.SETGPN(_[X1].Pre, XZR, X2), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, XZR, X2");
+        TestInst(SETGPN(_[X1].Pre, X1, X17), asm => asm.SETGPN(_[X1].Pre, X1, X17), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X1, X17");
+        TestInst(SETGPN(_[X1].Pre, X16, X17), asm => asm.SETGPN(_[X1].Pre, X16, X17), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X16, X17");
+        TestInst(SETGPN(_[X1].Pre, XZR, X17), asm => asm.SETGPN(_[X1].Pre, XZR, X17), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, XZR, X17");
+        TestInst(SETGPN(_[X1].Pre, X1, XZR), asm => asm.SETGPN(_[X1].Pre, X1, XZR), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X1, XZR");
+        TestInst(SETGPN(_[X1].Pre, X16, XZR), asm => asm.SETGPN(_[X1].Pre, X16, XZR), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, X16, XZR");
+        TestInst(SETGPN(_[X1].Pre, XZR, XZR), asm => asm.SETGPN(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETGPN_set_memcms, Arm64Mnemonic.SETGPN, "SETGPN [X1]!, XZR, XZR");
     }
 }

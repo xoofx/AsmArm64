@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_BFCVTN_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_BFCVTN_asimdmisc_4s_0()
     {
-        TestInst(BFCVTN(V0.T_4H, V1.T_4S), Arm64InstructionId.BFCVTN_asimdmisc_4s, Arm64Mnemonic.BFCVTN, "BFCVTN V0.4H, V1.4S");
-        TestInst(BFCVTN(V30.T_4H, V1.T_4S), Arm64InstructionId.BFCVTN_asimdmisc_4s, Arm64Mnemonic.BFCVTN, "BFCVTN V30.4H, V1.4S");
-        TestInst(BFCVTN(V0.T_4H, V31.T_4S), Arm64InstructionId.BFCVTN_asimdmisc_4s, Arm64Mnemonic.BFCVTN, "BFCVTN V0.4H, V31.4S");
-        TestInst(BFCVTN(V30.T_4H, V31.T_4S), Arm64InstructionId.BFCVTN_asimdmisc_4s, Arm64Mnemonic.BFCVTN, "BFCVTN V30.4H, V31.4S");
+        TestInst(BFCVTN(V0.T_4H, V1.T_4S), asm => asm.BFCVTN(V0.T_4H, V1.T_4S), Arm64InstructionId.BFCVTN_asimdmisc_4s, Arm64Mnemonic.BFCVTN, "BFCVTN V0.4H, V1.4S");
+        TestInst(BFCVTN(V30.T_4H, V1.T_4S), asm => asm.BFCVTN(V30.T_4H, V1.T_4S), Arm64InstructionId.BFCVTN_asimdmisc_4s, Arm64Mnemonic.BFCVTN, "BFCVTN V30.4H, V1.4S");
+        TestInst(BFCVTN(V0.T_4H, V31.T_4S), asm => asm.BFCVTN(V0.T_4H, V31.T_4S), Arm64InstructionId.BFCVTN_asimdmisc_4s, Arm64Mnemonic.BFCVTN, "BFCVTN V0.4H, V31.4S");
+        TestInst(BFCVTN(V30.T_4H, V31.T_4S), asm => asm.BFCVTN(V30.T_4H, V31.T_4S), Arm64InstructionId.BFCVTN_asimdmisc_4s, Arm64Mnemonic.BFCVTN, "BFCVTN V30.4H, V31.4S");
     }
 }

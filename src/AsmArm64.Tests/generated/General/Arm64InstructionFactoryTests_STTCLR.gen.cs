@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STTCLR_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STTCLR_ldtclr_32_memop_unpriv_0()
     {
-        TestInst(STTCLR(W0, _[X2]), Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR W0, [X2]");
-        TestInst(STTCLR(W15, _[X2]), Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR W15, [X2]");
-        TestInst(STTCLR(WZR, _[X2]), Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR WZR, [X2]");
+        TestInst(STTCLR(W0, _[X2]), asm => asm.STTCLR(W0, _[X2]), Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR W0, [X2]");
+        TestInst(STTCLR(W15, _[X2]), asm => asm.STTCLR(W15, _[X2]), Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR W15, [X2]");
+        TestInst(STTCLR(WZR, _[X2]), asm => asm.STTCLR(WZR, _[X2]), Arm64InstructionId.STTCLR_ldtclr_32_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STTCLR_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STTCLR_ldtclr_64_memop_unpriv_1()
     {
-        TestInst(STTCLR(X0, _[X2]), Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR X0, [X2]");
-        TestInst(STTCLR(X15, _[X2]), Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR X15, [X2]");
-        TestInst(STTCLR(XZR, _[X2]), Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR XZR, [X2]");
+        TestInst(STTCLR(X0, _[X2]), asm => asm.STTCLR(X0, _[X2]), Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR X0, [X2]");
+        TestInst(STTCLR(X15, _[X2]), asm => asm.STTCLR(X15, _[X2]), Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR X15, [X2]");
+        TestInst(STTCLR(XZR, _[X2]), asm => asm.STTCLR(XZR, _[X2]), Arm64InstructionId.STTCLR_ldtclr_64_memop_unpriv, Arm64Mnemonic.STTCLR, "STTCLR XZR, [X2]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_AUTIASPPC_General : Arm64InstructionFa
     [TestMethod]
     public void Test_AUTIASPPC_only_dp_1src_imm_0()
     {
-        TestInst(AUTIASPPC(-32), Arm64InstructionId.AUTIASPPC_only_dp_1src_imm, Arm64Mnemonic.AUTIASPPC, "AUTIASPPC #-32");
+        TestInst(AUTIASPPC(-32), null, Arm64InstructionId.AUTIASPPC_only_dp_1src_imm, Arm64Mnemonic.AUTIASPPC, "AUTIASPPC #-32");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STLURH_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STLURH_32_ldapstl_unscaled_0()
     {
-        TestInst(STLURH(W0, _[X2, 5]), Arm64InstructionId.STLURH_32_ldapstl_unscaled, Arm64Mnemonic.STLURH, "STLURH W0, [X2, #5]");
-        TestInst(STLURH(W15, _[X2, 5]), Arm64InstructionId.STLURH_32_ldapstl_unscaled, Arm64Mnemonic.STLURH, "STLURH W15, [X2, #5]");
-        TestInst(STLURH(WZR, _[X2, 5]), Arm64InstructionId.STLURH_32_ldapstl_unscaled, Arm64Mnemonic.STLURH, "STLURH WZR, [X2, #5]");
+        TestInst(STLURH(W0, _[X2, 5]), asm => asm.STLURH(W0, _[X2, 5]), Arm64InstructionId.STLURH_32_ldapstl_unscaled, Arm64Mnemonic.STLURH, "STLURH W0, [X2, #5]");
+        TestInst(STLURH(W15, _[X2, 5]), asm => asm.STLURH(W15, _[X2, 5]), Arm64InstructionId.STLURH_32_ldapstl_unscaled, Arm64Mnemonic.STLURH, "STLURH W15, [X2, #5]");
+        TestInst(STLURH(WZR, _[X2, 5]), asm => asm.STLURH(WZR, _[X2, 5]), Arm64InstructionId.STLURH_32_ldapstl_unscaled, Arm64Mnemonic.STLURH, "STLURH WZR, [X2, #5]");
     }
 }

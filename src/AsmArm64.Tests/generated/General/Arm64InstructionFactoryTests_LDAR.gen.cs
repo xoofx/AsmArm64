@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDAR_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDAR_lr32_ldstord_0()
     {
-        TestInst(LDAR(W0, _[X2]), Arm64InstructionId.LDAR_lr32_ldstord, Arm64Mnemonic.LDAR, "LDAR W0, [X2]");
-        TestInst(LDAR(W15, _[X2]), Arm64InstructionId.LDAR_lr32_ldstord, Arm64Mnemonic.LDAR, "LDAR W15, [X2]");
-        TestInst(LDAR(WZR, _[X2]), Arm64InstructionId.LDAR_lr32_ldstord, Arm64Mnemonic.LDAR, "LDAR WZR, [X2]");
+        TestInst(LDAR(W0, _[X2]), asm => asm.LDAR(W0, _[X2]), Arm64InstructionId.LDAR_lr32_ldstord, Arm64Mnemonic.LDAR, "LDAR W0, [X2]");
+        TestInst(LDAR(W15, _[X2]), asm => asm.LDAR(W15, _[X2]), Arm64InstructionId.LDAR_lr32_ldstord, Arm64Mnemonic.LDAR, "LDAR W15, [X2]");
+        TestInst(LDAR(WZR, _[X2]), asm => asm.LDAR(WZR, _[X2]), Arm64InstructionId.LDAR_lr32_ldstord, Arm64Mnemonic.LDAR, "LDAR WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_LDAR_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDAR_lr64_ldstord_1()
     {
-        TestInst(LDAR(X0, _[X2]), Arm64InstructionId.LDAR_lr64_ldstord, Arm64Mnemonic.LDAR, "LDAR X0, [X2]");
-        TestInst(LDAR(X15, _[X2]), Arm64InstructionId.LDAR_lr64_ldstord, Arm64Mnemonic.LDAR, "LDAR X15, [X2]");
-        TestInst(LDAR(XZR, _[X2]), Arm64InstructionId.LDAR_lr64_ldstord, Arm64Mnemonic.LDAR, "LDAR XZR, [X2]");
+        TestInst(LDAR(X0, _[X2]), asm => asm.LDAR(X0, _[X2]), Arm64InstructionId.LDAR_lr64_ldstord, Arm64Mnemonic.LDAR, "LDAR X0, [X2]");
+        TestInst(LDAR(X15, _[X2]), asm => asm.LDAR(X15, _[X2]), Arm64InstructionId.LDAR_lr64_ldstord, Arm64Mnemonic.LDAR, "LDAR X15, [X2]");
+        TestInst(LDAR(XZR, _[X2]), asm => asm.LDAR(XZR, _[X2]), Arm64InstructionId.LDAR_lr64_ldstord, Arm64Mnemonic.LDAR, "LDAR XZR, [X2]");
     }
 }

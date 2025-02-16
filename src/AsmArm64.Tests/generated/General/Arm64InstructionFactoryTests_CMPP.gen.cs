@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_CMPP_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMPP_subps_64s_dp_2src_0()
     {
-        TestInst(CMPP(X1, X2), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X1, X2");
-        TestInst(CMPP(X17, X2), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X17, X2");
-        TestInst(CMPP(SP, X2), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP SP, X2");
-        TestInst(CMPP(X1, X18), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X1, X18");
-        TestInst(CMPP(X17, X18), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X17, X18");
-        TestInst(CMPP(SP, X18), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP SP, X18");
-        TestInst(CMPP(X1, SP), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X1, SP");
-        TestInst(CMPP(X17, SP), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X17, SP");
-        TestInst(CMPP(SP, SP), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP SP, SP");
+        TestInst(CMPP(X1, X2), asm => asm.CMPP(X1, X2), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X1, X2");
+        TestInst(CMPP(X17, X2), asm => asm.CMPP(X17, X2), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X17, X2");
+        TestInst(CMPP(SP, X2), asm => asm.CMPP(SP, X2), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP SP, X2");
+        TestInst(CMPP(X1, X18), asm => asm.CMPP(X1, X18), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X1, X18");
+        TestInst(CMPP(X17, X18), asm => asm.CMPP(X17, X18), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X17, X18");
+        TestInst(CMPP(SP, X18), asm => asm.CMPP(SP, X18), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP SP, X18");
+        TestInst(CMPP(X1, SP), asm => asm.CMPP(X1, SP), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X1, SP");
+        TestInst(CMPP(X17, SP), asm => asm.CMPP(X17, SP), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP X17, SP");
+        TestInst(CMPP(SP, SP), asm => asm.CMPP(SP, SP), Arm64InstructionId.CMPP_subps_64s_dp_2src, Arm64Mnemonic.CMPP, "CMPP SP, SP");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FMINV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FMINV_asimdall_only_h_0()
     {
-        TestInst(FMINV(H0, V1.T_4H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H0, V1.4H");
-        TestInst(FMINV(H31, V1.T_4H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H31, V1.4H");
-        TestInst(FMINV(H0, V31.T_4H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H0, V31.4H");
-        TestInst(FMINV(H31, V31.T_4H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H31, V31.4H");
+        TestInst(FMINV(H0, V1.T_4H), asm => asm.FMINV(H0, V1.T_4H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H0, V1.4H");
+        TestInst(FMINV(H31, V1.T_4H), asm => asm.FMINV(H31, V1.T_4H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H31, V1.4H");
+        TestInst(FMINV(H0, V31.T_4H), asm => asm.FMINV(H0, V31.T_4H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H0, V31.4H");
+        TestInst(FMINV(H31, V31.T_4H), asm => asm.FMINV(H31, V31.T_4H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H31, V31.4H");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FMINV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FMINV_asimdall_only_h_1()
     {
-        TestInst(FMINV(H0, V1.T_8H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H0, V1.8H");
-        TestInst(FMINV(H31, V1.T_8H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H31, V1.8H");
-        TestInst(FMINV(H0, V31.T_8H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H0, V31.8H");
-        TestInst(FMINV(H31, V31.T_8H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H31, V31.8H");
+        TestInst(FMINV(H0, V1.T_8H), asm => asm.FMINV(H0, V1.T_8H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H0, V1.8H");
+        TestInst(FMINV(H31, V1.T_8H), asm => asm.FMINV(H31, V1.T_8H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H31, V1.8H");
+        TestInst(FMINV(H0, V31.T_8H), asm => asm.FMINV(H0, V31.T_8H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H0, V31.8H");
+        TestInst(FMINV(H31, V31.T_8H), asm => asm.FMINV(H31, V31.T_8H), Arm64InstructionId.FMINV_asimdall_only_h, Arm64Mnemonic.FMINV, "FMINV H31, V31.8H");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_FMINV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FMINV_asimdall_only_sd_2()
     {
-        TestInst(FMINV(S0, V1.T_4S), Arm64InstructionId.FMINV_asimdall_only_sd, Arm64Mnemonic.FMINV, "FMINV S0, V1.4S");
-        TestInst(FMINV(S31, V1.T_4S), Arm64InstructionId.FMINV_asimdall_only_sd, Arm64Mnemonic.FMINV, "FMINV S31, V1.4S");
-        TestInst(FMINV(S0, V31.T_4S), Arm64InstructionId.FMINV_asimdall_only_sd, Arm64Mnemonic.FMINV, "FMINV S0, V31.4S");
-        TestInst(FMINV(S31, V31.T_4S), Arm64InstructionId.FMINV_asimdall_only_sd, Arm64Mnemonic.FMINV, "FMINV S31, V31.4S");
+        TestInst(FMINV(S0, V1.T_4S), asm => asm.FMINV(S0, V1.T_4S), Arm64InstructionId.FMINV_asimdall_only_sd, Arm64Mnemonic.FMINV, "FMINV S0, V1.4S");
+        TestInst(FMINV(S31, V1.T_4S), asm => asm.FMINV(S31, V1.T_4S), Arm64InstructionId.FMINV_asimdall_only_sd, Arm64Mnemonic.FMINV, "FMINV S31, V1.4S");
+        TestInst(FMINV(S0, V31.T_4S), asm => asm.FMINV(S0, V31.T_4S), Arm64InstructionId.FMINV_asimdall_only_sd, Arm64Mnemonic.FMINV, "FMINV S0, V31.4S");
+        TestInst(FMINV(S31, V31.T_4S), asm => asm.FMINV(S31, V31.T_4S), Arm64InstructionId.FMINV_asimdall_only_sd, Arm64Mnemonic.FMINV, "FMINV S31, V31.4S");
     }
 }

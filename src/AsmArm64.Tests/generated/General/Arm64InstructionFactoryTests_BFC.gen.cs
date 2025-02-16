@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_BFC_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BFC_bfm_32m_bitfield_0()
     {
-        TestInst(BFC(W0, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC W0, #5, #1");
-        TestInst(BFC(W15, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC W15, #5, #1");
-        TestInst(BFC(WZR, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC WZR, #5, #1");
+        TestInst(BFC(W0, 5, 1), asm => asm.BFC(W0, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC W0, #5, #1");
+        TestInst(BFC(W15, 5, 1), asm => asm.BFC(W15, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC W15, #5, #1");
+        TestInst(BFC(WZR, 5, 1), asm => asm.BFC(WZR, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC WZR, #5, #1");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_BFC_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BFC_bfm_64m_bitfield_1()
     {
-        TestInst(BFC(X0, 5, 1), Arm64InstructionId.BFC_bfm_64m_bitfield, Arm64Mnemonic.BFC, "BFC X0, #5, #1");
-        TestInst(BFC(X15, 5, 1), Arm64InstructionId.BFC_bfm_64m_bitfield, Arm64Mnemonic.BFC, "BFC X15, #5, #1");
-        TestInst(BFC(XZR, 5, 1), Arm64InstructionId.BFC_bfm_64m_bitfield, Arm64Mnemonic.BFC, "BFC XZR, #5, #1");
+        TestInst(BFC(X0, 5, 1), asm => asm.BFC(X0, 5, 1), Arm64InstructionId.BFC_bfm_64m_bitfield, Arm64Mnemonic.BFC, "BFC X0, #5, #1");
+        TestInst(BFC(X15, 5, 1), asm => asm.BFC(X15, 5, 1), Arm64InstructionId.BFC_bfm_64m_bitfield, Arm64Mnemonic.BFC, "BFC X15, #5, #1");
+        TestInst(BFC(XZR, 5, 1), asm => asm.BFC(XZR, 5, 1), Arm64InstructionId.BFC_bfm_64m_bitfield, Arm64Mnemonic.BFC, "BFC XZR, #5, #1");
     }
 }

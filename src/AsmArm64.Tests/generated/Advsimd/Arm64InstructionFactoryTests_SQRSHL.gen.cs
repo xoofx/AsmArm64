@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SQRSHL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQRSHL_asisdsame_only_0()
     {
-        TestInst(SQRSHL(B1, B2, B3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B1, B2, B3");
-        TestInst(SQRSHL(B31, B2, B3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B31, B2, B3");
-        TestInst(SQRSHL(B1, B0, B3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B1, B0, B3");
-        TestInst(SQRSHL(B31, B0, B3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B31, B0, B3");
-        TestInst(SQRSHL(B1, B2, B1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B1, B2, B1");
-        TestInst(SQRSHL(B31, B2, B1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B31, B2, B1");
-        TestInst(SQRSHL(B1, B0, B1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B1, B0, B1");
-        TestInst(SQRSHL(B31, B0, B1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B31, B0, B1");
+        TestInst(SQRSHL(B1, B2, B3), asm => asm.SQRSHL(B1, B2, B3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B1, B2, B3");
+        TestInst(SQRSHL(B31, B2, B3), asm => asm.SQRSHL(B31, B2, B3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B31, B2, B3");
+        TestInst(SQRSHL(B1, B0, B3), asm => asm.SQRSHL(B1, B0, B3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B1, B0, B3");
+        TestInst(SQRSHL(B31, B0, B3), asm => asm.SQRSHL(B31, B0, B3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B31, B0, B3");
+        TestInst(SQRSHL(B1, B2, B1), asm => asm.SQRSHL(B1, B2, B1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B1, B2, B1");
+        TestInst(SQRSHL(B31, B2, B1), asm => asm.SQRSHL(B31, B2, B1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B31, B2, B1");
+        TestInst(SQRSHL(B1, B0, B1), asm => asm.SQRSHL(B1, B0, B1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B1, B0, B1");
+        TestInst(SQRSHL(B31, B0, B1), asm => asm.SQRSHL(B31, B0, B1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL B31, B0, B1");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_SQRSHL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQRSHL_asisdsame_only_1()
     {
-        TestInst(SQRSHL(H1, H2, H3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H1, H2, H3");
-        TestInst(SQRSHL(H31, H2, H3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H31, H2, H3");
-        TestInst(SQRSHL(H1, H0, H3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H1, H0, H3");
-        TestInst(SQRSHL(H31, H0, H3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H31, H0, H3");
-        TestInst(SQRSHL(H1, H2, H1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H1, H2, H1");
-        TestInst(SQRSHL(H31, H2, H1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H31, H2, H1");
-        TestInst(SQRSHL(H1, H0, H1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H1, H0, H1");
-        TestInst(SQRSHL(H31, H0, H1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H31, H0, H1");
+        TestInst(SQRSHL(H1, H2, H3), asm => asm.SQRSHL(H1, H2, H3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H1, H2, H3");
+        TestInst(SQRSHL(H31, H2, H3), asm => asm.SQRSHL(H31, H2, H3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H31, H2, H3");
+        TestInst(SQRSHL(H1, H0, H3), asm => asm.SQRSHL(H1, H0, H3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H1, H0, H3");
+        TestInst(SQRSHL(H31, H0, H3), asm => asm.SQRSHL(H31, H0, H3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H31, H0, H3");
+        TestInst(SQRSHL(H1, H2, H1), asm => asm.SQRSHL(H1, H2, H1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H1, H2, H1");
+        TestInst(SQRSHL(H31, H2, H1), asm => asm.SQRSHL(H31, H2, H1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H31, H2, H1");
+        TestInst(SQRSHL(H1, H0, H1), asm => asm.SQRSHL(H1, H0, H1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H1, H0, H1");
+        TestInst(SQRSHL(H31, H0, H1), asm => asm.SQRSHL(H31, H0, H1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL H31, H0, H1");
     }
     
     /// <summary>
@@ -56,14 +55,14 @@ public class Arm64InstructionFactoryTests_SQRSHL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQRSHL_asisdsame_only_2()
     {
-        TestInst(SQRSHL(S1, S2, S3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S1, S2, S3");
-        TestInst(SQRSHL(S31, S2, S3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S31, S2, S3");
-        TestInst(SQRSHL(S1, S0, S3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S1, S0, S3");
-        TestInst(SQRSHL(S31, S0, S3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S31, S0, S3");
-        TestInst(SQRSHL(S1, S2, S1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S1, S2, S1");
-        TestInst(SQRSHL(S31, S2, S1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S31, S2, S1");
-        TestInst(SQRSHL(S1, S0, S1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S1, S0, S1");
-        TestInst(SQRSHL(S31, S0, S1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S31, S0, S1");
+        TestInst(SQRSHL(S1, S2, S3), asm => asm.SQRSHL(S1, S2, S3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S1, S2, S3");
+        TestInst(SQRSHL(S31, S2, S3), asm => asm.SQRSHL(S31, S2, S3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S31, S2, S3");
+        TestInst(SQRSHL(S1, S0, S3), asm => asm.SQRSHL(S1, S0, S3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S1, S0, S3");
+        TestInst(SQRSHL(S31, S0, S3), asm => asm.SQRSHL(S31, S0, S3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S31, S0, S3");
+        TestInst(SQRSHL(S1, S2, S1), asm => asm.SQRSHL(S1, S2, S1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S1, S2, S1");
+        TestInst(SQRSHL(S31, S2, S1), asm => asm.SQRSHL(S31, S2, S1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S31, S2, S1");
+        TestInst(SQRSHL(S1, S0, S1), asm => asm.SQRSHL(S1, S0, S1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S1, S0, S1");
+        TestInst(SQRSHL(S31, S0, S1), asm => asm.SQRSHL(S31, S0, S1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL S31, S0, S1");
     }
     
     /// <summary>
@@ -72,14 +71,14 @@ public class Arm64InstructionFactoryTests_SQRSHL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQRSHL_asisdsame_only_3()
     {
-        TestInst(SQRSHL(D1, D2, D3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D1, D2, D3");
-        TestInst(SQRSHL(D31, D2, D3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D31, D2, D3");
-        TestInst(SQRSHL(D1, D0, D3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D1, D0, D3");
-        TestInst(SQRSHL(D31, D0, D3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D31, D0, D3");
-        TestInst(SQRSHL(D1, D2, D1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D1, D2, D1");
-        TestInst(SQRSHL(D31, D2, D1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D31, D2, D1");
-        TestInst(SQRSHL(D1, D0, D1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D1, D0, D1");
-        TestInst(SQRSHL(D31, D0, D1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D31, D0, D1");
+        TestInst(SQRSHL(D1, D2, D3), asm => asm.SQRSHL(D1, D2, D3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D1, D2, D3");
+        TestInst(SQRSHL(D31, D2, D3), asm => asm.SQRSHL(D31, D2, D3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D31, D2, D3");
+        TestInst(SQRSHL(D1, D0, D3), asm => asm.SQRSHL(D1, D0, D3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D1, D0, D3");
+        TestInst(SQRSHL(D31, D0, D3), asm => asm.SQRSHL(D31, D0, D3), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D31, D0, D3");
+        TestInst(SQRSHL(D1, D2, D1), asm => asm.SQRSHL(D1, D2, D1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D1, D2, D1");
+        TestInst(SQRSHL(D31, D2, D1), asm => asm.SQRSHL(D31, D2, D1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D31, D2, D1");
+        TestInst(SQRSHL(D1, D0, D1), asm => asm.SQRSHL(D1, D0, D1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D1, D0, D1");
+        TestInst(SQRSHL(D31, D0, D1), asm => asm.SQRSHL(D31, D0, D1), Arm64InstructionId.SQRSHL_asisdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL D31, D0, D1");
     }
     
     /// <summary>
@@ -88,14 +87,14 @@ public class Arm64InstructionFactoryTests_SQRSHL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQRSHL_asimdsame_only_4()
     {
-        TestInst(SQRSHL(V0.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8B, V1.8B, V2.8B");
-        TestInst(SQRSHL(V30.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8B, V1.8B, V2.8B");
-        TestInst(SQRSHL(V0.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8B, V31.8B, V2.8B");
-        TestInst(SQRSHL(V30.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8B, V31.8B, V2.8B");
-        TestInst(SQRSHL(V0.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8B, V1.8B, V0.8B");
-        TestInst(SQRSHL(V30.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8B, V1.8B, V0.8B");
-        TestInst(SQRSHL(V0.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8B, V31.8B, V0.8B");
-        TestInst(SQRSHL(V30.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8B, V31.8B, V0.8B");
+        TestInst(SQRSHL(V0.T_8B, V1.T_8B, V2.T_8B), asm => asm.SQRSHL(V0.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8B, V1.8B, V2.8B");
+        TestInst(SQRSHL(V30.T_8B, V1.T_8B, V2.T_8B), asm => asm.SQRSHL(V30.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8B, V1.8B, V2.8B");
+        TestInst(SQRSHL(V0.T_8B, V31.T_8B, V2.T_8B), asm => asm.SQRSHL(V0.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8B, V31.8B, V2.8B");
+        TestInst(SQRSHL(V30.T_8B, V31.T_8B, V2.T_8B), asm => asm.SQRSHL(V30.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8B, V31.8B, V2.8B");
+        TestInst(SQRSHL(V0.T_8B, V1.T_8B, V0.T_8B), asm => asm.SQRSHL(V0.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8B, V1.8B, V0.8B");
+        TestInst(SQRSHL(V30.T_8B, V1.T_8B, V0.T_8B), asm => asm.SQRSHL(V30.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8B, V1.8B, V0.8B");
+        TestInst(SQRSHL(V0.T_8B, V31.T_8B, V0.T_8B), asm => asm.SQRSHL(V0.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8B, V31.8B, V0.8B");
+        TestInst(SQRSHL(V30.T_8B, V31.T_8B, V0.T_8B), asm => asm.SQRSHL(V30.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8B, V31.8B, V0.8B");
     }
     
     /// <summary>
@@ -104,14 +103,14 @@ public class Arm64InstructionFactoryTests_SQRSHL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQRSHL_asimdsame_only_5()
     {
-        TestInst(SQRSHL(V0.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.16B, V1.16B, V2.16B");
-        TestInst(SQRSHL(V30.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.16B, V1.16B, V2.16B");
-        TestInst(SQRSHL(V0.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.16B, V31.16B, V2.16B");
-        TestInst(SQRSHL(V30.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.16B, V31.16B, V2.16B");
-        TestInst(SQRSHL(V0.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.16B, V1.16B, V0.16B");
-        TestInst(SQRSHL(V30.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.16B, V1.16B, V0.16B");
-        TestInst(SQRSHL(V0.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.16B, V31.16B, V0.16B");
-        TestInst(SQRSHL(V30.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.16B, V31.16B, V0.16B");
+        TestInst(SQRSHL(V0.T_16B, V1.T_16B, V2.T_16B), asm => asm.SQRSHL(V0.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.16B, V1.16B, V2.16B");
+        TestInst(SQRSHL(V30.T_16B, V1.T_16B, V2.T_16B), asm => asm.SQRSHL(V30.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.16B, V1.16B, V2.16B");
+        TestInst(SQRSHL(V0.T_16B, V31.T_16B, V2.T_16B), asm => asm.SQRSHL(V0.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.16B, V31.16B, V2.16B");
+        TestInst(SQRSHL(V30.T_16B, V31.T_16B, V2.T_16B), asm => asm.SQRSHL(V30.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.16B, V31.16B, V2.16B");
+        TestInst(SQRSHL(V0.T_16B, V1.T_16B, V0.T_16B), asm => asm.SQRSHL(V0.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.16B, V1.16B, V0.16B");
+        TestInst(SQRSHL(V30.T_16B, V1.T_16B, V0.T_16B), asm => asm.SQRSHL(V30.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.16B, V1.16B, V0.16B");
+        TestInst(SQRSHL(V0.T_16B, V31.T_16B, V0.T_16B), asm => asm.SQRSHL(V0.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.16B, V31.16B, V0.16B");
+        TestInst(SQRSHL(V30.T_16B, V31.T_16B, V0.T_16B), asm => asm.SQRSHL(V30.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.16B, V31.16B, V0.16B");
     }
     
     /// <summary>
@@ -120,14 +119,14 @@ public class Arm64InstructionFactoryTests_SQRSHL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQRSHL_asimdsame_only_6()
     {
-        TestInst(SQRSHL(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4H, V1.4H, V2.4H");
-        TestInst(SQRSHL(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4H, V1.4H, V2.4H");
-        TestInst(SQRSHL(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4H, V31.4H, V2.4H");
-        TestInst(SQRSHL(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4H, V31.4H, V2.4H");
-        TestInst(SQRSHL(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4H, V1.4H, V0.4H");
-        TestInst(SQRSHL(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4H, V1.4H, V0.4H");
-        TestInst(SQRSHL(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4H, V31.4H, V0.4H");
-        TestInst(SQRSHL(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4H, V31.4H, V0.4H");
+        TestInst(SQRSHL(V0.T_4H, V1.T_4H, V2.T_4H), asm => asm.SQRSHL(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4H, V1.4H, V2.4H");
+        TestInst(SQRSHL(V30.T_4H, V1.T_4H, V2.T_4H), asm => asm.SQRSHL(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4H, V1.4H, V2.4H");
+        TestInst(SQRSHL(V0.T_4H, V31.T_4H, V2.T_4H), asm => asm.SQRSHL(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4H, V31.4H, V2.4H");
+        TestInst(SQRSHL(V30.T_4H, V31.T_4H, V2.T_4H), asm => asm.SQRSHL(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4H, V31.4H, V2.4H");
+        TestInst(SQRSHL(V0.T_4H, V1.T_4H, V0.T_4H), asm => asm.SQRSHL(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4H, V1.4H, V0.4H");
+        TestInst(SQRSHL(V30.T_4H, V1.T_4H, V0.T_4H), asm => asm.SQRSHL(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4H, V1.4H, V0.4H");
+        TestInst(SQRSHL(V0.T_4H, V31.T_4H, V0.T_4H), asm => asm.SQRSHL(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4H, V31.4H, V0.4H");
+        TestInst(SQRSHL(V30.T_4H, V31.T_4H, V0.T_4H), asm => asm.SQRSHL(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4H, V31.4H, V0.4H");
     }
     
     /// <summary>
@@ -136,14 +135,14 @@ public class Arm64InstructionFactoryTests_SQRSHL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQRSHL_asimdsame_only_7()
     {
-        TestInst(SQRSHL(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8H, V1.8H, V2.8H");
-        TestInst(SQRSHL(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8H, V1.8H, V2.8H");
-        TestInst(SQRSHL(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8H, V31.8H, V2.8H");
-        TestInst(SQRSHL(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8H, V31.8H, V2.8H");
-        TestInst(SQRSHL(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8H, V1.8H, V0.8H");
-        TestInst(SQRSHL(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8H, V1.8H, V0.8H");
-        TestInst(SQRSHL(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8H, V31.8H, V0.8H");
-        TestInst(SQRSHL(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8H, V31.8H, V0.8H");
+        TestInst(SQRSHL(V0.T_8H, V1.T_8H, V2.T_8H), asm => asm.SQRSHL(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8H, V1.8H, V2.8H");
+        TestInst(SQRSHL(V30.T_8H, V1.T_8H, V2.T_8H), asm => asm.SQRSHL(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8H, V1.8H, V2.8H");
+        TestInst(SQRSHL(V0.T_8H, V31.T_8H, V2.T_8H), asm => asm.SQRSHL(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8H, V31.8H, V2.8H");
+        TestInst(SQRSHL(V30.T_8H, V31.T_8H, V2.T_8H), asm => asm.SQRSHL(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8H, V31.8H, V2.8H");
+        TestInst(SQRSHL(V0.T_8H, V1.T_8H, V0.T_8H), asm => asm.SQRSHL(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8H, V1.8H, V0.8H");
+        TestInst(SQRSHL(V30.T_8H, V1.T_8H, V0.T_8H), asm => asm.SQRSHL(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8H, V1.8H, V0.8H");
+        TestInst(SQRSHL(V0.T_8H, V31.T_8H, V0.T_8H), asm => asm.SQRSHL(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.8H, V31.8H, V0.8H");
+        TestInst(SQRSHL(V30.T_8H, V31.T_8H, V0.T_8H), asm => asm.SQRSHL(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.8H, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -152,14 +151,14 @@ public class Arm64InstructionFactoryTests_SQRSHL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQRSHL_asimdsame_only_8()
     {
-        TestInst(SQRSHL(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2S, V1.2S, V2.2S");
-        TestInst(SQRSHL(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2S, V1.2S, V2.2S");
-        TestInst(SQRSHL(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2S, V31.2S, V2.2S");
-        TestInst(SQRSHL(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2S, V31.2S, V2.2S");
-        TestInst(SQRSHL(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2S, V1.2S, V0.2S");
-        TestInst(SQRSHL(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2S, V1.2S, V0.2S");
-        TestInst(SQRSHL(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2S, V31.2S, V0.2S");
-        TestInst(SQRSHL(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2S, V31.2S, V0.2S");
+        TestInst(SQRSHL(V0.T_2S, V1.T_2S, V2.T_2S), asm => asm.SQRSHL(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2S, V1.2S, V2.2S");
+        TestInst(SQRSHL(V30.T_2S, V1.T_2S, V2.T_2S), asm => asm.SQRSHL(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2S, V1.2S, V2.2S");
+        TestInst(SQRSHL(V0.T_2S, V31.T_2S, V2.T_2S), asm => asm.SQRSHL(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2S, V31.2S, V2.2S");
+        TestInst(SQRSHL(V30.T_2S, V31.T_2S, V2.T_2S), asm => asm.SQRSHL(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2S, V31.2S, V2.2S");
+        TestInst(SQRSHL(V0.T_2S, V1.T_2S, V0.T_2S), asm => asm.SQRSHL(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2S, V1.2S, V0.2S");
+        TestInst(SQRSHL(V30.T_2S, V1.T_2S, V0.T_2S), asm => asm.SQRSHL(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2S, V1.2S, V0.2S");
+        TestInst(SQRSHL(V0.T_2S, V31.T_2S, V0.T_2S), asm => asm.SQRSHL(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2S, V31.2S, V0.2S");
+        TestInst(SQRSHL(V30.T_2S, V31.T_2S, V0.T_2S), asm => asm.SQRSHL(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2S, V31.2S, V0.2S");
     }
     
     /// <summary>
@@ -168,14 +167,14 @@ public class Arm64InstructionFactoryTests_SQRSHL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQRSHL_asimdsame_only_9()
     {
-        TestInst(SQRSHL(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4S, V1.4S, V2.4S");
-        TestInst(SQRSHL(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4S, V1.4S, V2.4S");
-        TestInst(SQRSHL(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4S, V31.4S, V2.4S");
-        TestInst(SQRSHL(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4S, V31.4S, V2.4S");
-        TestInst(SQRSHL(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4S, V1.4S, V0.4S");
-        TestInst(SQRSHL(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4S, V1.4S, V0.4S");
-        TestInst(SQRSHL(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4S, V31.4S, V0.4S");
-        TestInst(SQRSHL(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4S, V31.4S, V0.4S");
+        TestInst(SQRSHL(V0.T_4S, V1.T_4S, V2.T_4S), asm => asm.SQRSHL(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4S, V1.4S, V2.4S");
+        TestInst(SQRSHL(V30.T_4S, V1.T_4S, V2.T_4S), asm => asm.SQRSHL(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4S, V1.4S, V2.4S");
+        TestInst(SQRSHL(V0.T_4S, V31.T_4S, V2.T_4S), asm => asm.SQRSHL(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4S, V31.4S, V2.4S");
+        TestInst(SQRSHL(V30.T_4S, V31.T_4S, V2.T_4S), asm => asm.SQRSHL(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4S, V31.4S, V2.4S");
+        TestInst(SQRSHL(V0.T_4S, V1.T_4S, V0.T_4S), asm => asm.SQRSHL(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4S, V1.4S, V0.4S");
+        TestInst(SQRSHL(V30.T_4S, V1.T_4S, V0.T_4S), asm => asm.SQRSHL(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4S, V1.4S, V0.4S");
+        TestInst(SQRSHL(V0.T_4S, V31.T_4S, V0.T_4S), asm => asm.SQRSHL(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.4S, V31.4S, V0.4S");
+        TestInst(SQRSHL(V30.T_4S, V31.T_4S, V0.T_4S), asm => asm.SQRSHL(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.4S, V31.4S, V0.4S");
     }
     
     /// <summary>
@@ -184,13 +183,13 @@ public class Arm64InstructionFactoryTests_SQRSHL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQRSHL_asimdsame_only_10()
     {
-        TestInst(SQRSHL(V0.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2D, V1.2D, V2.2D");
-        TestInst(SQRSHL(V30.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2D, V1.2D, V2.2D");
-        TestInst(SQRSHL(V0.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2D, V31.2D, V2.2D");
-        TestInst(SQRSHL(V30.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2D, V31.2D, V2.2D");
-        TestInst(SQRSHL(V0.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2D, V1.2D, V0.2D");
-        TestInst(SQRSHL(V30.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2D, V1.2D, V0.2D");
-        TestInst(SQRSHL(V0.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2D, V31.2D, V0.2D");
-        TestInst(SQRSHL(V30.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2D, V31.2D, V0.2D");
+        TestInst(SQRSHL(V0.T_2D, V1.T_2D, V2.T_2D), asm => asm.SQRSHL(V0.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2D, V1.2D, V2.2D");
+        TestInst(SQRSHL(V30.T_2D, V1.T_2D, V2.T_2D), asm => asm.SQRSHL(V30.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2D, V1.2D, V2.2D");
+        TestInst(SQRSHL(V0.T_2D, V31.T_2D, V2.T_2D), asm => asm.SQRSHL(V0.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2D, V31.2D, V2.2D");
+        TestInst(SQRSHL(V30.T_2D, V31.T_2D, V2.T_2D), asm => asm.SQRSHL(V30.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2D, V31.2D, V2.2D");
+        TestInst(SQRSHL(V0.T_2D, V1.T_2D, V0.T_2D), asm => asm.SQRSHL(V0.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2D, V1.2D, V0.2D");
+        TestInst(SQRSHL(V30.T_2D, V1.T_2D, V0.T_2D), asm => asm.SQRSHL(V30.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2D, V1.2D, V0.2D");
+        TestInst(SQRSHL(V0.T_2D, V31.T_2D, V0.T_2D), asm => asm.SQRSHL(V0.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V0.2D, V31.2D, V0.2D");
+        TestInst(SQRSHL(V30.T_2D, V31.T_2D, V0.T_2D), asm => asm.SQRSHL(V30.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.SQRSHL_asimdsame_only, Arm64Mnemonic.SQRSHL, "SQRSHL V30.2D, V31.2D, V0.2D");
     }
 }

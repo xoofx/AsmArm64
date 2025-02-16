@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_STL1_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_STL1_asisdlso_d1_0()
     {
-        TestInst(STL1(V0.D.Group1()[1], _[X2]), Arm64InstructionId.STL1_asisdlso_d1, Arm64Mnemonic.STL1, "STL1 { V0.D }[1], [X2]");
-        TestInst(STL1(V30.D.Group1()[1], _[X2]), Arm64InstructionId.STL1_asisdlso_d1, Arm64Mnemonic.STL1, "STL1 { V30.D }[1], [X2]");
+        TestInst(STL1(V0.D.Group1()[1], _[X2]), asm => asm.STL1(V0.D.Group1()[1], _[X2]), Arm64InstructionId.STL1_asisdlso_d1, Arm64Mnemonic.STL1, "STL1 { V0.D }[1], [X2]");
+        TestInst(STL1(V30.D.Group1()[1], _[X2]), asm => asm.STL1(V30.D.Group1()[1], _[X2]), Arm64InstructionId.STL1_asisdlso_d1, Arm64Mnemonic.STL1, "STL1 { V30.D }[1], [X2]");
     }
 }

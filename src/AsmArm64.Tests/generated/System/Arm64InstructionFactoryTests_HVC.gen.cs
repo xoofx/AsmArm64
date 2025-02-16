@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_HVC_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_HVC_ex_exception_0()
     {
-        TestInst(HVC(5), Arm64InstructionId.HVC_ex_exception, Arm64Mnemonic.HVC, "HVC #5");
+        TestInst(HVC(5), asm => asm.HVC(5), Arm64InstructionId.HVC_ex_exception, Arm64Mnemonic.HVC, "HVC #5");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Fpsimd;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STLUR_Fpsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_STLUR_b_ldapstl_simd_0()
     {
-        TestInst(STLUR(B0, _[X2, 5]), Arm64InstructionId.STLUR_b_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR B0, [X2, #5]");
-        TestInst(STLUR(B31, _[X2, 5]), Arm64InstructionId.STLUR_b_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR B31, [X2, #5]");
+        TestInst(STLUR(B0, _[X2, 5]), asm => asm.STLUR(B0, _[X2, 5]), Arm64InstructionId.STLUR_b_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR B0, [X2, #5]");
+        TestInst(STLUR(B31, _[X2, 5]), asm => asm.STLUR(B31, _[X2, 5]), Arm64InstructionId.STLUR_b_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR B31, [X2, #5]");
     }
     
     /// <summary>
@@ -34,8 +33,8 @@ public class Arm64InstructionFactoryTests_STLUR_Fpsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_STLUR_h_ldapstl_simd_1()
     {
-        TestInst(STLUR(H0, _[X2, 5]), Arm64InstructionId.STLUR_h_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR H0, [X2, #5]");
-        TestInst(STLUR(H31, _[X2, 5]), Arm64InstructionId.STLUR_h_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR H31, [X2, #5]");
+        TestInst(STLUR(H0, _[X2, 5]), asm => asm.STLUR(H0, _[X2, 5]), Arm64InstructionId.STLUR_h_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR H0, [X2, #5]");
+        TestInst(STLUR(H31, _[X2, 5]), asm => asm.STLUR(H31, _[X2, 5]), Arm64InstructionId.STLUR_h_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR H31, [X2, #5]");
     }
     
     /// <summary>
@@ -44,8 +43,8 @@ public class Arm64InstructionFactoryTests_STLUR_Fpsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_STLUR_s_ldapstl_simd_2()
     {
-        TestInst(STLUR(S0, _[X2, 5]), Arm64InstructionId.STLUR_s_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR S0, [X2, #5]");
-        TestInst(STLUR(S31, _[X2, 5]), Arm64InstructionId.STLUR_s_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR S31, [X2, #5]");
+        TestInst(STLUR(S0, _[X2, 5]), asm => asm.STLUR(S0, _[X2, 5]), Arm64InstructionId.STLUR_s_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR S0, [X2, #5]");
+        TestInst(STLUR(S31, _[X2, 5]), asm => asm.STLUR(S31, _[X2, 5]), Arm64InstructionId.STLUR_s_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR S31, [X2, #5]");
     }
     
     /// <summary>
@@ -54,8 +53,8 @@ public class Arm64InstructionFactoryTests_STLUR_Fpsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_STLUR_d_ldapstl_simd_3()
     {
-        TestInst(STLUR(D0, _[X2, 5]), Arm64InstructionId.STLUR_d_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR D0, [X2, #5]");
-        TestInst(STLUR(D31, _[X2, 5]), Arm64InstructionId.STLUR_d_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR D31, [X2, #5]");
+        TestInst(STLUR(D0, _[X2, 5]), asm => asm.STLUR(D0, _[X2, 5]), Arm64InstructionId.STLUR_d_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR D0, [X2, #5]");
+        TestInst(STLUR(D31, _[X2, 5]), asm => asm.STLUR(D31, _[X2, 5]), Arm64InstructionId.STLUR_d_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR D31, [X2, #5]");
     }
     
     /// <summary>
@@ -64,7 +63,7 @@ public class Arm64InstructionFactoryTests_STLUR_Fpsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_STLUR_q_ldapstl_simd_4()
     {
-        TestInst(STLUR(Q0, _[X2, 5]), Arm64InstructionId.STLUR_q_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR Q0, [X2, #5]");
-        TestInst(STLUR(Q31, _[X2, 5]), Arm64InstructionId.STLUR_q_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR Q31, [X2, #5]");
+        TestInst(STLUR(Q0, _[X2, 5]), asm => asm.STLUR(Q0, _[X2, 5]), Arm64InstructionId.STLUR_q_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR Q0, [X2, #5]");
+        TestInst(STLUR(Q31, _[X2, 5]), asm => asm.STLUR(Q31, _[X2, 5]), Arm64InstructionId.STLUR_q_ldapstl_simd, Arm64Mnemonic.STLUR, "STLUR Q31, [X2, #5]");
     }
 }

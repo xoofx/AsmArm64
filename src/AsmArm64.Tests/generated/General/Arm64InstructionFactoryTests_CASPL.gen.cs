@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_CASPL_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_CASPL_cp32_comswappr_0()
     {
-        TestInst(CASPL(W0, W1, W2, W3, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W0, W1, W2, W3, [X5]");
-        TestInst(CASPL(W15, W16, W2, W3, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W15, W16, W2, W3, [X5]");
-        TestInst(CASPL(WZR, W0, W2, W3, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL WZR, W0, W2, W3, [X5]");
-        TestInst(CASPL(W0, W1, W17, W18, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W0, W1, W17, W18, [X5]");
-        TestInst(CASPL(W15, W16, W17, W18, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W15, W16, W17, W18, [X5]");
-        TestInst(CASPL(WZR, W0, W17, W18, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL WZR, W0, W17, W18, [X5]");
-        TestInst(CASPL(W0, W1, WZR, W0, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W0, W1, WZR, W0, [X5]");
-        TestInst(CASPL(W15, W16, WZR, W0, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W15, W16, WZR, W0, [X5]");
-        TestInst(CASPL(WZR, W0, WZR, W0, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL WZR, W0, WZR, W0, [X5]");
+        TestInst(CASPL(W0, W1, W2, W3, _[X5]), asm => asm.CASPL(W0, W1, W2, W3, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W0, W1, W2, W3, [X5]");
+        TestInst(CASPL(W15, W16, W2, W3, _[X5]), asm => asm.CASPL(W15, W16, W2, W3, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W15, W16, W2, W3, [X5]");
+        TestInst(CASPL(WZR, W0, W2, W3, _[X5]), asm => asm.CASPL(WZR, W0, W2, W3, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL WZR, W0, W2, W3, [X5]");
+        TestInst(CASPL(W0, W1, W17, W18, _[X5]), asm => asm.CASPL(W0, W1, W17, W18, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W0, W1, W17, W18, [X5]");
+        TestInst(CASPL(W15, W16, W17, W18, _[X5]), asm => asm.CASPL(W15, W16, W17, W18, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W15, W16, W17, W18, [X5]");
+        TestInst(CASPL(WZR, W0, W17, W18, _[X5]), asm => asm.CASPL(WZR, W0, W17, W18, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL WZR, W0, W17, W18, [X5]");
+        TestInst(CASPL(W0, W1, WZR, W0, _[X5]), asm => asm.CASPL(W0, W1, WZR, W0, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W0, W1, WZR, W0, [X5]");
+        TestInst(CASPL(W15, W16, WZR, W0, _[X5]), asm => asm.CASPL(W15, W16, WZR, W0, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL W15, W16, WZR, W0, [X5]");
+        TestInst(CASPL(WZR, W0, WZR, W0, _[X5]), asm => asm.CASPL(WZR, W0, WZR, W0, _[X5]), Arm64InstructionId.CASPL_cp32_comswappr, Arm64Mnemonic.CASPL, "CASPL WZR, W0, WZR, W0, [X5]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_CASPL_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_CASPL_cp64_comswappr_1()
     {
-        TestInst(CASPL(X0, X1, X2, X3, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X0, X1, X2, X3, [X5]");
-        TestInst(CASPL(X15, X16, X2, X3, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X15, X16, X2, X3, [X5]");
-        TestInst(CASPL(XZR, X0, X2, X3, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL XZR, X0, X2, X3, [X5]");
-        TestInst(CASPL(X0, X1, X17, X18, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X0, X1, X17, X18, [X5]");
-        TestInst(CASPL(X15, X16, X17, X18, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X15, X16, X17, X18, [X5]");
-        TestInst(CASPL(XZR, X0, X17, X18, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL XZR, X0, X17, X18, [X5]");
-        TestInst(CASPL(X0, X1, XZR, X0, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X0, X1, XZR, X0, [X5]");
-        TestInst(CASPL(X15, X16, XZR, X0, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X15, X16, XZR, X0, [X5]");
-        TestInst(CASPL(XZR, X0, XZR, X0, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL XZR, X0, XZR, X0, [X5]");
+        TestInst(CASPL(X0, X1, X2, X3, _[X5]), asm => asm.CASPL(X0, X1, X2, X3, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X0, X1, X2, X3, [X5]");
+        TestInst(CASPL(X15, X16, X2, X3, _[X5]), asm => asm.CASPL(X15, X16, X2, X3, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X15, X16, X2, X3, [X5]");
+        TestInst(CASPL(XZR, X0, X2, X3, _[X5]), asm => asm.CASPL(XZR, X0, X2, X3, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL XZR, X0, X2, X3, [X5]");
+        TestInst(CASPL(X0, X1, X17, X18, _[X5]), asm => asm.CASPL(X0, X1, X17, X18, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X0, X1, X17, X18, [X5]");
+        TestInst(CASPL(X15, X16, X17, X18, _[X5]), asm => asm.CASPL(X15, X16, X17, X18, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X15, X16, X17, X18, [X5]");
+        TestInst(CASPL(XZR, X0, X17, X18, _[X5]), asm => asm.CASPL(XZR, X0, X17, X18, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL XZR, X0, X17, X18, [X5]");
+        TestInst(CASPL(X0, X1, XZR, X0, _[X5]), asm => asm.CASPL(X0, X1, XZR, X0, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X0, X1, XZR, X0, [X5]");
+        TestInst(CASPL(X15, X16, XZR, X0, _[X5]), asm => asm.CASPL(X15, X16, XZR, X0, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL X15, X16, XZR, X0, [X5]");
+        TestInst(CASPL(XZR, X0, XZR, X0, _[X5]), asm => asm.CASPL(XZR, X0, XZR, X0, _[X5]), Arm64InstructionId.CASPL_cp64_comswappr, Arm64Mnemonic.CASPL, "CASPL XZR, X0, XZR, X0, [X5]");
     }
 }

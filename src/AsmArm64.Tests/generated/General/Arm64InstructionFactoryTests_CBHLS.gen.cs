@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_CBHLS_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_CBHLS_cbhhs_16_regs_0()
     {
-        TestInst(CBHLS(W0, W1, 32), Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W1, W0, #32");
-        TestInst(CBHLS(W15, W1, 32), Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W1, W15, #32");
-        TestInst(CBHLS(WZR, W1, 32), Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W1, WZR, #32");
-        TestInst(CBHLS(W0, W16, 32), Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W16, W0, #32");
-        TestInst(CBHLS(W15, W16, 32), Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W16, W15, #32");
-        TestInst(CBHLS(WZR, W16, 32), Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W16, WZR, #32");
-        TestInst(CBHLS(W0, WZR, 32), Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS WZR, W0, #32");
-        TestInst(CBHLS(W15, WZR, 32), Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS WZR, W15, #32");
-        TestInst(CBHLS(WZR, WZR, 32), Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS WZR, WZR, #32");
+        TestInst(CBHLS(W0, W1, 32), null, Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W1, W0, #32");
+        TestInst(CBHLS(W15, W1, 32), null, Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W1, W15, #32");
+        TestInst(CBHLS(WZR, W1, 32), null, Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W1, WZR, #32");
+        TestInst(CBHLS(W0, W16, 32), null, Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W16, W0, #32");
+        TestInst(CBHLS(W15, W16, 32), null, Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W16, W15, #32");
+        TestInst(CBHLS(WZR, W16, 32), null, Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS W16, WZR, #32");
+        TestInst(CBHLS(W0, WZR, 32), null, Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS WZR, W0, #32");
+        TestInst(CBHLS(W15, WZR, 32), null, Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS WZR, W15, #32");
+        TestInst(CBHLS(WZR, WZR, 32), null, Arm64InstructionId.CBHHS_16_regs, Arm64Mnemonic.CBHHS, "CBHHS WZR, WZR, #32");
     }
 }

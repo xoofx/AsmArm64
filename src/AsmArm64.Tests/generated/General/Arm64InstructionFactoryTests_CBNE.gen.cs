@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_CBNE_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBNE_32_imm_0()
     {
-        TestInst(CBNE(W0, 5, 32), Arm64InstructionId.CBNE_32_imm, Arm64Mnemonic.CBNE, "CBNE W0, #5, #32");
-        TestInst(CBNE(W15, 5, 32), Arm64InstructionId.CBNE_32_imm, Arm64Mnemonic.CBNE, "CBNE W15, #5, #32");
-        TestInst(CBNE(WZR, 5, 32), Arm64InstructionId.CBNE_32_imm, Arm64Mnemonic.CBNE, "CBNE WZR, #5, #32");
+        TestInst(CBNE(W0, 5, 32), null, Arm64InstructionId.CBNE_32_imm, Arm64Mnemonic.CBNE, "CBNE W0, #5, #32");
+        TestInst(CBNE(W15, 5, 32), null, Arm64InstructionId.CBNE_32_imm, Arm64Mnemonic.CBNE, "CBNE W15, #5, #32");
+        TestInst(CBNE(WZR, 5, 32), null, Arm64InstructionId.CBNE_32_imm, Arm64Mnemonic.CBNE, "CBNE WZR, #5, #32");
     }
     
     /// <summary>
@@ -35,9 +34,9 @@ public class Arm64InstructionFactoryTests_CBNE_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBNE_64_imm_1()
     {
-        TestInst(CBNE(X0, 5, 32), Arm64InstructionId.CBNE_64_imm, Arm64Mnemonic.CBNE, "CBNE X0, #5, #32");
-        TestInst(CBNE(X15, 5, 32), Arm64InstructionId.CBNE_64_imm, Arm64Mnemonic.CBNE, "CBNE X15, #5, #32");
-        TestInst(CBNE(XZR, 5, 32), Arm64InstructionId.CBNE_64_imm, Arm64Mnemonic.CBNE, "CBNE XZR, #5, #32");
+        TestInst(CBNE(X0, 5, 32), null, Arm64InstructionId.CBNE_64_imm, Arm64Mnemonic.CBNE, "CBNE X0, #5, #32");
+        TestInst(CBNE(X15, 5, 32), null, Arm64InstructionId.CBNE_64_imm, Arm64Mnemonic.CBNE, "CBNE X15, #5, #32");
+        TestInst(CBNE(XZR, 5, 32), null, Arm64InstructionId.CBNE_64_imm, Arm64Mnemonic.CBNE, "CBNE XZR, #5, #32");
     }
     
     /// <summary>
@@ -46,15 +45,15 @@ public class Arm64InstructionFactoryTests_CBNE_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBNE_32_regs_2()
     {
-        TestInst(CBNE(W0, W1, 32), Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W0, W1, #32");
-        TestInst(CBNE(W15, W1, 32), Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W15, W1, #32");
-        TestInst(CBNE(WZR, W1, 32), Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE WZR, W1, #32");
-        TestInst(CBNE(W0, W16, 32), Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W0, W16, #32");
-        TestInst(CBNE(W15, W16, 32), Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W15, W16, #32");
-        TestInst(CBNE(WZR, W16, 32), Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE WZR, W16, #32");
-        TestInst(CBNE(W0, WZR, 32), Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W0, WZR, #32");
-        TestInst(CBNE(W15, WZR, 32), Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W15, WZR, #32");
-        TestInst(CBNE(WZR, WZR, 32), Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE WZR, WZR, #32");
+        TestInst(CBNE(W0, W1, 32), null, Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W0, W1, #32");
+        TestInst(CBNE(W15, W1, 32), null, Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W15, W1, #32");
+        TestInst(CBNE(WZR, W1, 32), null, Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE WZR, W1, #32");
+        TestInst(CBNE(W0, W16, 32), null, Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W0, W16, #32");
+        TestInst(CBNE(W15, W16, 32), null, Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W15, W16, #32");
+        TestInst(CBNE(WZR, W16, 32), null, Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE WZR, W16, #32");
+        TestInst(CBNE(W0, WZR, 32), null, Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W0, WZR, #32");
+        TestInst(CBNE(W15, WZR, 32), null, Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE W15, WZR, #32");
+        TestInst(CBNE(WZR, WZR, 32), null, Arm64InstructionId.CBNE_32_regs, Arm64Mnemonic.CBNE, "CBNE WZR, WZR, #32");
     }
     
     /// <summary>
@@ -63,14 +62,14 @@ public class Arm64InstructionFactoryTests_CBNE_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBNE_64_regs_3()
     {
-        TestInst(CBNE(X0, X1, 32), Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X0, X1, #32");
-        TestInst(CBNE(X15, X1, 32), Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X15, X1, #32");
-        TestInst(CBNE(XZR, X1, 32), Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE XZR, X1, #32");
-        TestInst(CBNE(X0, X16, 32), Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X0, X16, #32");
-        TestInst(CBNE(X15, X16, 32), Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X15, X16, #32");
-        TestInst(CBNE(XZR, X16, 32), Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE XZR, X16, #32");
-        TestInst(CBNE(X0, XZR, 32), Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X0, XZR, #32");
-        TestInst(CBNE(X15, XZR, 32), Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X15, XZR, #32");
-        TestInst(CBNE(XZR, XZR, 32), Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE XZR, XZR, #32");
+        TestInst(CBNE(X0, X1, 32), null, Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X0, X1, #32");
+        TestInst(CBNE(X15, X1, 32), null, Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X15, X1, #32");
+        TestInst(CBNE(XZR, X1, 32), null, Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE XZR, X1, #32");
+        TestInst(CBNE(X0, X16, 32), null, Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X0, X16, #32");
+        TestInst(CBNE(X15, X16, 32), null, Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X15, X16, #32");
+        TestInst(CBNE(XZR, X16, 32), null, Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE XZR, X16, #32");
+        TestInst(CBNE(X0, XZR, 32), null, Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X0, XZR, #32");
+        TestInst(CBNE(X15, XZR, 32), null, Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE X15, XZR, #32");
+        TestInst(CBNE(XZR, XZR, 32), null, Arm64InstructionId.CBNE_64_regs, Arm64Mnemonic.CBNE, "CBNE XZR, XZR, #32");
     }
 }

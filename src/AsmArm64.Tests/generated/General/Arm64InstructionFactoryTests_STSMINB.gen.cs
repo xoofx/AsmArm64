@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STSMINB_General : Arm64InstructionFact
     [TestMethod]
     public void Test_STSMINB_ldsminb_32_memop_0()
     {
-        TestInst(STSMINB(W0, _[X2]), Arm64InstructionId.STSMINB_ldsminb_32_memop, Arm64Mnemonic.STSMINB, "STSMINB W0, [X2]");
-        TestInst(STSMINB(W15, _[X2]), Arm64InstructionId.STSMINB_ldsminb_32_memop, Arm64Mnemonic.STSMINB, "STSMINB W15, [X2]");
-        TestInst(STSMINB(WZR, _[X2]), Arm64InstructionId.STSMINB_ldsminb_32_memop, Arm64Mnemonic.STSMINB, "STSMINB WZR, [X2]");
+        TestInst(STSMINB(W0, _[X2]), asm => asm.STSMINB(W0, _[X2]), Arm64InstructionId.STSMINB_ldsminb_32_memop, Arm64Mnemonic.STSMINB, "STSMINB W0, [X2]");
+        TestInst(STSMINB(W15, _[X2]), asm => asm.STSMINB(W15, _[X2]), Arm64InstructionId.STSMINB_ldsminb_32_memop, Arm64Mnemonic.STSMINB, "STSMINB W15, [X2]");
+        TestInst(STSMINB(WZR, _[X2]), asm => asm.STSMINB(WZR, _[X2]), Arm64InstructionId.STSMINB_ldsminb_32_memop, Arm64Mnemonic.STSMINB, "STSMINB WZR, [X2]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_CASAL_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_CASAL_c32_comswap_0()
     {
-        TestInst(CASAL(W0, W1, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W0, W1, [X3]");
-        TestInst(CASAL(W15, W1, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W15, W1, [X3]");
-        TestInst(CASAL(WZR, W1, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL WZR, W1, [X3]");
-        TestInst(CASAL(W0, W16, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W0, W16, [X3]");
-        TestInst(CASAL(W15, W16, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W15, W16, [X3]");
-        TestInst(CASAL(WZR, W16, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL WZR, W16, [X3]");
-        TestInst(CASAL(W0, WZR, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W0, WZR, [X3]");
-        TestInst(CASAL(W15, WZR, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W15, WZR, [X3]");
-        TestInst(CASAL(WZR, WZR, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL WZR, WZR, [X3]");
+        TestInst(CASAL(W0, W1, _[X3]), asm => asm.CASAL(W0, W1, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W0, W1, [X3]");
+        TestInst(CASAL(W15, W1, _[X3]), asm => asm.CASAL(W15, W1, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W15, W1, [X3]");
+        TestInst(CASAL(WZR, W1, _[X3]), asm => asm.CASAL(WZR, W1, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL WZR, W1, [X3]");
+        TestInst(CASAL(W0, W16, _[X3]), asm => asm.CASAL(W0, W16, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W0, W16, [X3]");
+        TestInst(CASAL(W15, W16, _[X3]), asm => asm.CASAL(W15, W16, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W15, W16, [X3]");
+        TestInst(CASAL(WZR, W16, _[X3]), asm => asm.CASAL(WZR, W16, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL WZR, W16, [X3]");
+        TestInst(CASAL(W0, WZR, _[X3]), asm => asm.CASAL(W0, WZR, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W0, WZR, [X3]");
+        TestInst(CASAL(W15, WZR, _[X3]), asm => asm.CASAL(W15, WZR, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL W15, WZR, [X3]");
+        TestInst(CASAL(WZR, WZR, _[X3]), asm => asm.CASAL(WZR, WZR, _[X3]), Arm64InstructionId.CASAL_c32_comswap, Arm64Mnemonic.CASAL, "CASAL WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_CASAL_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_CASAL_c64_comswap_1()
     {
-        TestInst(CASAL(X0, X1, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X0, X1, [X3]");
-        TestInst(CASAL(X15, X1, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X15, X1, [X3]");
-        TestInst(CASAL(XZR, X1, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL XZR, X1, [X3]");
-        TestInst(CASAL(X0, X16, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X0, X16, [X3]");
-        TestInst(CASAL(X15, X16, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X15, X16, [X3]");
-        TestInst(CASAL(XZR, X16, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL XZR, X16, [X3]");
-        TestInst(CASAL(X0, XZR, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X0, XZR, [X3]");
-        TestInst(CASAL(X15, XZR, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X15, XZR, [X3]");
-        TestInst(CASAL(XZR, XZR, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL XZR, XZR, [X3]");
+        TestInst(CASAL(X0, X1, _[X3]), asm => asm.CASAL(X0, X1, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X0, X1, [X3]");
+        TestInst(CASAL(X15, X1, _[X3]), asm => asm.CASAL(X15, X1, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X15, X1, [X3]");
+        TestInst(CASAL(XZR, X1, _[X3]), asm => asm.CASAL(XZR, X1, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL XZR, X1, [X3]");
+        TestInst(CASAL(X0, X16, _[X3]), asm => asm.CASAL(X0, X16, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X0, X16, [X3]");
+        TestInst(CASAL(X15, X16, _[X3]), asm => asm.CASAL(X15, X16, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X15, X16, [X3]");
+        TestInst(CASAL(XZR, X16, _[X3]), asm => asm.CASAL(XZR, X16, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL XZR, X16, [X3]");
+        TestInst(CASAL(X0, XZR, _[X3]), asm => asm.CASAL(X0, XZR, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X0, XZR, [X3]");
+        TestInst(CASAL(X15, XZR, _[X3]), asm => asm.CASAL(X15, XZR, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL X15, XZR, [X3]");
+        TestInst(CASAL(XZR, XZR, _[X3]), asm => asm.CASAL(XZR, XZR, _[X3]), Arm64InstructionId.CASAL_c64_comswap, Arm64Mnemonic.CASAL, "CASAL XZR, XZR, [X3]");
     }
 }

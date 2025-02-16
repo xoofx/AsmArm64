@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDAPUR_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDAPUR_32_ldapstl_unscaled_0()
     {
-        TestInst(LDAPUR(W0, _[X2, 5]), Arm64InstructionId.LDAPUR_32_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR W0, [X2, #5]");
-        TestInst(LDAPUR(W15, _[X2, 5]), Arm64InstructionId.LDAPUR_32_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR W15, [X2, #5]");
-        TestInst(LDAPUR(WZR, _[X2, 5]), Arm64InstructionId.LDAPUR_32_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR WZR, [X2, #5]");
+        TestInst(LDAPUR(W0, _[X2, 5]), asm => asm.LDAPUR(W0, _[X2, 5]), Arm64InstructionId.LDAPUR_32_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR W0, [X2, #5]");
+        TestInst(LDAPUR(W15, _[X2, 5]), asm => asm.LDAPUR(W15, _[X2, 5]), Arm64InstructionId.LDAPUR_32_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR W15, [X2, #5]");
+        TestInst(LDAPUR(WZR, _[X2, 5]), asm => asm.LDAPUR(WZR, _[X2, 5]), Arm64InstructionId.LDAPUR_32_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_LDAPUR_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDAPUR_64_ldapstl_unscaled_1()
     {
-        TestInst(LDAPUR(X0, _[X2, 5]), Arm64InstructionId.LDAPUR_64_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR X0, [X2, #5]");
-        TestInst(LDAPUR(X15, _[X2, 5]), Arm64InstructionId.LDAPUR_64_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR X15, [X2, #5]");
-        TestInst(LDAPUR(XZR, _[X2, 5]), Arm64InstructionId.LDAPUR_64_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR XZR, [X2, #5]");
+        TestInst(LDAPUR(X0, _[X2, 5]), asm => asm.LDAPUR(X0, _[X2, 5]), Arm64InstructionId.LDAPUR_64_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR X0, [X2, #5]");
+        TestInst(LDAPUR(X15, _[X2, 5]), asm => asm.LDAPUR(X15, _[X2, 5]), Arm64InstructionId.LDAPUR_64_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR X15, [X2, #5]");
+        TestInst(LDAPUR(XZR, _[X2, 5]), asm => asm.LDAPUR(XZR, _[X2, 5]), Arm64InstructionId.LDAPUR_64_ldapstl_unscaled, Arm64Mnemonic.LDAPUR, "LDAPUR XZR, [X2, #5]");
     }
 }

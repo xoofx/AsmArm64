@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FMAXNMV_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_FMAXNMV_asimdall_only_h_0()
     {
-        TestInst(FMAXNMV(H0, V1.T_4H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H0, V1.4H");
-        TestInst(FMAXNMV(H31, V1.T_4H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H31, V1.4H");
-        TestInst(FMAXNMV(H0, V31.T_4H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H0, V31.4H");
-        TestInst(FMAXNMV(H31, V31.T_4H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H31, V31.4H");
+        TestInst(FMAXNMV(H0, V1.T_4H), asm => asm.FMAXNMV(H0, V1.T_4H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H0, V1.4H");
+        TestInst(FMAXNMV(H31, V1.T_4H), asm => asm.FMAXNMV(H31, V1.T_4H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H31, V1.4H");
+        TestInst(FMAXNMV(H0, V31.T_4H), asm => asm.FMAXNMV(H0, V31.T_4H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H0, V31.4H");
+        TestInst(FMAXNMV(H31, V31.T_4H), asm => asm.FMAXNMV(H31, V31.T_4H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H31, V31.4H");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FMAXNMV_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_FMAXNMV_asimdall_only_h_1()
     {
-        TestInst(FMAXNMV(H0, V1.T_8H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H0, V1.8H");
-        TestInst(FMAXNMV(H31, V1.T_8H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H31, V1.8H");
-        TestInst(FMAXNMV(H0, V31.T_8H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H0, V31.8H");
-        TestInst(FMAXNMV(H31, V31.T_8H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H31, V31.8H");
+        TestInst(FMAXNMV(H0, V1.T_8H), asm => asm.FMAXNMV(H0, V1.T_8H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H0, V1.8H");
+        TestInst(FMAXNMV(H31, V1.T_8H), asm => asm.FMAXNMV(H31, V1.T_8H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H31, V1.8H");
+        TestInst(FMAXNMV(H0, V31.T_8H), asm => asm.FMAXNMV(H0, V31.T_8H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H0, V31.8H");
+        TestInst(FMAXNMV(H31, V31.T_8H), asm => asm.FMAXNMV(H31, V31.T_8H), Arm64InstructionId.FMAXNMV_asimdall_only_h, Arm64Mnemonic.FMAXNMV, "FMAXNMV H31, V31.8H");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_FMAXNMV_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_FMAXNMV_asimdall_only_sd_2()
     {
-        TestInst(FMAXNMV(S0, V1.T_4S), Arm64InstructionId.FMAXNMV_asimdall_only_sd, Arm64Mnemonic.FMAXNMV, "FMAXNMV S0, V1.4S");
-        TestInst(FMAXNMV(S31, V1.T_4S), Arm64InstructionId.FMAXNMV_asimdall_only_sd, Arm64Mnemonic.FMAXNMV, "FMAXNMV S31, V1.4S");
-        TestInst(FMAXNMV(S0, V31.T_4S), Arm64InstructionId.FMAXNMV_asimdall_only_sd, Arm64Mnemonic.FMAXNMV, "FMAXNMV S0, V31.4S");
-        TestInst(FMAXNMV(S31, V31.T_4S), Arm64InstructionId.FMAXNMV_asimdall_only_sd, Arm64Mnemonic.FMAXNMV, "FMAXNMV S31, V31.4S");
+        TestInst(FMAXNMV(S0, V1.T_4S), asm => asm.FMAXNMV(S0, V1.T_4S), Arm64InstructionId.FMAXNMV_asimdall_only_sd, Arm64Mnemonic.FMAXNMV, "FMAXNMV S0, V1.4S");
+        TestInst(FMAXNMV(S31, V1.T_4S), asm => asm.FMAXNMV(S31, V1.T_4S), Arm64InstructionId.FMAXNMV_asimdall_only_sd, Arm64Mnemonic.FMAXNMV, "FMAXNMV S31, V1.4S");
+        TestInst(FMAXNMV(S0, V31.T_4S), asm => asm.FMAXNMV(S0, V31.T_4S), Arm64InstructionId.FMAXNMV_asimdall_only_sd, Arm64Mnemonic.FMAXNMV, "FMAXNMV S0, V31.4S");
+        TestInst(FMAXNMV(S31, V31.T_4S), asm => asm.FMAXNMV(S31, V31.T_4S), Arm64InstructionId.FMAXNMV_asimdall_only_sd, Arm64Mnemonic.FMAXNMV, "FMAXNMV S31, V31.4S");
     }
 }

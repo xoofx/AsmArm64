@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_REV16_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_REV16_32_dp_1src_0()
     {
-        TestInst(REV16(W0, W1), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W0, W1");
-        TestInst(REV16(W15, W1), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W15, W1");
-        TestInst(REV16(WZR, W1), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 WZR, W1");
-        TestInst(REV16(W0, W16), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W0, W16");
-        TestInst(REV16(W15, W16), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W15, W16");
-        TestInst(REV16(WZR, W16), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 WZR, W16");
-        TestInst(REV16(W0, WZR), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W0, WZR");
-        TestInst(REV16(W15, WZR), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W15, WZR");
-        TestInst(REV16(WZR, WZR), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 WZR, WZR");
+        TestInst(REV16(W0, W1), asm => asm.REV16(W0, W1), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W0, W1");
+        TestInst(REV16(W15, W1), asm => asm.REV16(W15, W1), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W15, W1");
+        TestInst(REV16(WZR, W1), asm => asm.REV16(WZR, W1), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 WZR, W1");
+        TestInst(REV16(W0, W16), asm => asm.REV16(W0, W16), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W0, W16");
+        TestInst(REV16(W15, W16), asm => asm.REV16(W15, W16), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W15, W16");
+        TestInst(REV16(WZR, W16), asm => asm.REV16(WZR, W16), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 WZR, W16");
+        TestInst(REV16(W0, WZR), asm => asm.REV16(W0, WZR), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W0, WZR");
+        TestInst(REV16(W15, WZR), asm => asm.REV16(W15, WZR), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 W15, WZR");
+        TestInst(REV16(WZR, WZR), asm => asm.REV16(WZR, WZR), Arm64InstructionId.REV16_32_dp_1src, Arm64Mnemonic.REV16, "REV16 WZR, WZR");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_REV16_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_REV16_64_dp_1src_1()
     {
-        TestInst(REV16(X0, X1), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X0, X1");
-        TestInst(REV16(X15, X1), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X15, X1");
-        TestInst(REV16(XZR, X1), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 XZR, X1");
-        TestInst(REV16(X0, X16), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X0, X16");
-        TestInst(REV16(X15, X16), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X15, X16");
-        TestInst(REV16(XZR, X16), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 XZR, X16");
-        TestInst(REV16(X0, XZR), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X0, XZR");
-        TestInst(REV16(X15, XZR), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X15, XZR");
-        TestInst(REV16(XZR, XZR), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 XZR, XZR");
+        TestInst(REV16(X0, X1), asm => asm.REV16(X0, X1), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X0, X1");
+        TestInst(REV16(X15, X1), asm => asm.REV16(X15, X1), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X15, X1");
+        TestInst(REV16(XZR, X1), asm => asm.REV16(XZR, X1), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 XZR, X1");
+        TestInst(REV16(X0, X16), asm => asm.REV16(X0, X16), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X0, X16");
+        TestInst(REV16(X15, X16), asm => asm.REV16(X15, X16), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X15, X16");
+        TestInst(REV16(XZR, X16), asm => asm.REV16(XZR, X16), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 XZR, X16");
+        TestInst(REV16(X0, XZR), asm => asm.REV16(X0, XZR), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X0, XZR");
+        TestInst(REV16(X15, XZR), asm => asm.REV16(X15, XZR), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 X15, XZR");
+        TestInst(REV16(XZR, XZR), asm => asm.REV16(XZR, XZR), Arm64InstructionId.REV16_64_dp_1src, Arm64Mnemonic.REV16, "REV16 XZR, XZR");
     }
 }

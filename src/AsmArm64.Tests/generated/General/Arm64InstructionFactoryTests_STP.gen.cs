@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_STP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STP_32_ldstpair_post_0()
     {
-        TestInst(STP(W0, W1, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W0, W1, [X3], #20");
-        TestInst(STP(W15, W1, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W15, W1, [X3], #20");
-        TestInst(STP(WZR, W1, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP WZR, W1, [X3], #20");
-        TestInst(STP(W0, W16, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W0, W16, [X3], #20");
-        TestInst(STP(W15, W16, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W15, W16, [X3], #20");
-        TestInst(STP(WZR, W16, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP WZR, W16, [X3], #20");
-        TestInst(STP(W0, WZR, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W0, WZR, [X3], #20");
-        TestInst(STP(W15, WZR, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W15, WZR, [X3], #20");
-        TestInst(STP(WZR, WZR, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP WZR, WZR, [X3], #20");
+        TestInst(STP(W0, W1, _[X3], 20), asm => asm.STP(W0, W1, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W0, W1, [X3], #20");
+        TestInst(STP(W15, W1, _[X3], 20), asm => asm.STP(W15, W1, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W15, W1, [X3], #20");
+        TestInst(STP(WZR, W1, _[X3], 20), asm => asm.STP(WZR, W1, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP WZR, W1, [X3], #20");
+        TestInst(STP(W0, W16, _[X3], 20), asm => asm.STP(W0, W16, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W0, W16, [X3], #20");
+        TestInst(STP(W15, W16, _[X3], 20), asm => asm.STP(W15, W16, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W15, W16, [X3], #20");
+        TestInst(STP(WZR, W16, _[X3], 20), asm => asm.STP(WZR, W16, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP WZR, W16, [X3], #20");
+        TestInst(STP(W0, WZR, _[X3], 20), asm => asm.STP(W0, WZR, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W0, WZR, [X3], #20");
+        TestInst(STP(W15, WZR, _[X3], 20), asm => asm.STP(W15, WZR, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP W15, WZR, [X3], #20");
+        TestInst(STP(WZR, WZR, _[X3], 20), asm => asm.STP(WZR, WZR, _[X3], 20), Arm64InstructionId.STP_32_ldstpair_post, Arm64Mnemonic.STP, "STP WZR, WZR, [X3], #20");
     }
     
     /// <summary>
@@ -41,15 +40,15 @@ public class Arm64InstructionFactoryTests_STP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STP_64_ldstpair_post_1()
     {
-        TestInst(STP(X0, X1, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X0, X1, [X3], #40");
-        TestInst(STP(X15, X1, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X15, X1, [X3], #40");
-        TestInst(STP(XZR, X1, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP XZR, X1, [X3], #40");
-        TestInst(STP(X0, X16, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X0, X16, [X3], #40");
-        TestInst(STP(X15, X16, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X15, X16, [X3], #40");
-        TestInst(STP(XZR, X16, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP XZR, X16, [X3], #40");
-        TestInst(STP(X0, XZR, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X0, XZR, [X3], #40");
-        TestInst(STP(X15, XZR, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X15, XZR, [X3], #40");
-        TestInst(STP(XZR, XZR, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP XZR, XZR, [X3], #40");
+        TestInst(STP(X0, X1, _[X3], 40), asm => asm.STP(X0, X1, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X0, X1, [X3], #40");
+        TestInst(STP(X15, X1, _[X3], 40), asm => asm.STP(X15, X1, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X15, X1, [X3], #40");
+        TestInst(STP(XZR, X1, _[X3], 40), asm => asm.STP(XZR, X1, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP XZR, X1, [X3], #40");
+        TestInst(STP(X0, X16, _[X3], 40), asm => asm.STP(X0, X16, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X0, X16, [X3], #40");
+        TestInst(STP(X15, X16, _[X3], 40), asm => asm.STP(X15, X16, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X15, X16, [X3], #40");
+        TestInst(STP(XZR, X16, _[X3], 40), asm => asm.STP(XZR, X16, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP XZR, X16, [X3], #40");
+        TestInst(STP(X0, XZR, _[X3], 40), asm => asm.STP(X0, XZR, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X0, XZR, [X3], #40");
+        TestInst(STP(X15, XZR, _[X3], 40), asm => asm.STP(X15, XZR, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP X15, XZR, [X3], #40");
+        TestInst(STP(XZR, XZR, _[X3], 40), asm => asm.STP(XZR, XZR, _[X3], 40), Arm64InstructionId.STP_64_ldstpair_post, Arm64Mnemonic.STP, "STP XZR, XZR, [X3], #40");
     }
     
     /// <summary>
@@ -58,15 +57,15 @@ public class Arm64InstructionFactoryTests_STP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STP_32_ldstpair_pre_2()
     {
-        TestInst(STP(W0, W1, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W0, W1, [X3, #20]!");
-        TestInst(STP(W15, W1, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W15, W1, [X3, #20]!");
-        TestInst(STP(WZR, W1, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP WZR, W1, [X3, #20]!");
-        TestInst(STP(W0, W16, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W0, W16, [X3, #20]!");
-        TestInst(STP(W15, W16, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W15, W16, [X3, #20]!");
-        TestInst(STP(WZR, W16, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP WZR, W16, [X3, #20]!");
-        TestInst(STP(W0, WZR, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W0, WZR, [X3, #20]!");
-        TestInst(STP(W15, WZR, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W15, WZR, [X3, #20]!");
-        TestInst(STP(WZR, WZR, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP WZR, WZR, [X3, #20]!");
+        TestInst(STP(W0, W1, _[X3, 20].Pre), asm => asm.STP(W0, W1, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W0, W1, [X3, #20]!");
+        TestInst(STP(W15, W1, _[X3, 20].Pre), asm => asm.STP(W15, W1, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W15, W1, [X3, #20]!");
+        TestInst(STP(WZR, W1, _[X3, 20].Pre), asm => asm.STP(WZR, W1, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP WZR, W1, [X3, #20]!");
+        TestInst(STP(W0, W16, _[X3, 20].Pre), asm => asm.STP(W0, W16, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W0, W16, [X3, #20]!");
+        TestInst(STP(W15, W16, _[X3, 20].Pre), asm => asm.STP(W15, W16, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W15, W16, [X3, #20]!");
+        TestInst(STP(WZR, W16, _[X3, 20].Pre), asm => asm.STP(WZR, W16, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP WZR, W16, [X3, #20]!");
+        TestInst(STP(W0, WZR, _[X3, 20].Pre), asm => asm.STP(W0, WZR, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W0, WZR, [X3, #20]!");
+        TestInst(STP(W15, WZR, _[X3, 20].Pre), asm => asm.STP(W15, WZR, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP W15, WZR, [X3, #20]!");
+        TestInst(STP(WZR, WZR, _[X3, 20].Pre), asm => asm.STP(WZR, WZR, _[X3, 20].Pre), Arm64InstructionId.STP_32_ldstpair_pre, Arm64Mnemonic.STP, "STP WZR, WZR, [X3, #20]!");
     }
     
     /// <summary>
@@ -75,15 +74,15 @@ public class Arm64InstructionFactoryTests_STP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STP_64_ldstpair_pre_3()
     {
-        TestInst(STP(X0, X1, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X0, X1, [X3, #5]!");
-        TestInst(STP(X15, X1, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X15, X1, [X3, #5]!");
-        TestInst(STP(XZR, X1, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP XZR, X1, [X3, #5]!");
-        TestInst(STP(X0, X16, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X0, X16, [X3, #5]!");
-        TestInst(STP(X15, X16, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X15, X16, [X3, #5]!");
-        TestInst(STP(XZR, X16, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP XZR, X16, [X3, #5]!");
-        TestInst(STP(X0, XZR, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X0, XZR, [X3, #5]!");
-        TestInst(STP(X15, XZR, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X15, XZR, [X3, #5]!");
-        TestInst(STP(XZR, XZR, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP XZR, XZR, [X3, #5]!");
+        TestInst(STP(X0, X1, _[X3, 5].Pre), asm => asm.STP(X0, X1, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X0, X1, [X3, #5]!");
+        TestInst(STP(X15, X1, _[X3, 5].Pre), asm => asm.STP(X15, X1, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X15, X1, [X3, #5]!");
+        TestInst(STP(XZR, X1, _[X3, 5].Pre), asm => asm.STP(XZR, X1, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP XZR, X1, [X3, #5]!");
+        TestInst(STP(X0, X16, _[X3, 5].Pre), asm => asm.STP(X0, X16, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X0, X16, [X3, #5]!");
+        TestInst(STP(X15, X16, _[X3, 5].Pre), asm => asm.STP(X15, X16, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X15, X16, [X3, #5]!");
+        TestInst(STP(XZR, X16, _[X3, 5].Pre), asm => asm.STP(XZR, X16, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP XZR, X16, [X3, #5]!");
+        TestInst(STP(X0, XZR, _[X3, 5].Pre), asm => asm.STP(X0, XZR, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X0, XZR, [X3, #5]!");
+        TestInst(STP(X15, XZR, _[X3, 5].Pre), asm => asm.STP(X15, XZR, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP X15, XZR, [X3, #5]!");
+        TestInst(STP(XZR, XZR, _[X3, 5].Pre), asm => asm.STP(XZR, XZR, _[X3, 5].Pre), Arm64InstructionId.STP_64_ldstpair_pre, Arm64Mnemonic.STP, "STP XZR, XZR, [X3, #5]!");
     }
     
     /// <summary>
@@ -92,15 +91,15 @@ public class Arm64InstructionFactoryTests_STP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STP_32_ldstpair_off_4()
     {
-        TestInst(STP(W0, W1, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W0, W1, [X3, #20]");
-        TestInst(STP(W15, W1, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W15, W1, [X3, #20]");
-        TestInst(STP(WZR, W1, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP WZR, W1, [X3, #20]");
-        TestInst(STP(W0, W16, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W0, W16, [X3, #20]");
-        TestInst(STP(W15, W16, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W15, W16, [X3, #20]");
-        TestInst(STP(WZR, W16, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP WZR, W16, [X3, #20]");
-        TestInst(STP(W0, WZR, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W0, WZR, [X3, #20]");
-        TestInst(STP(W15, WZR, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W15, WZR, [X3, #20]");
-        TestInst(STP(WZR, WZR, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP WZR, WZR, [X3, #20]");
+        TestInst(STP(W0, W1, _[X3, 20]), asm => asm.STP(W0, W1, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W0, W1, [X3, #20]");
+        TestInst(STP(W15, W1, _[X3, 20]), asm => asm.STP(W15, W1, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W15, W1, [X3, #20]");
+        TestInst(STP(WZR, W1, _[X3, 20]), asm => asm.STP(WZR, W1, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP WZR, W1, [X3, #20]");
+        TestInst(STP(W0, W16, _[X3, 20]), asm => asm.STP(W0, W16, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W0, W16, [X3, #20]");
+        TestInst(STP(W15, W16, _[X3, 20]), asm => asm.STP(W15, W16, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W15, W16, [X3, #20]");
+        TestInst(STP(WZR, W16, _[X3, 20]), asm => asm.STP(WZR, W16, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP WZR, W16, [X3, #20]");
+        TestInst(STP(W0, WZR, _[X3, 20]), asm => asm.STP(W0, WZR, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W0, WZR, [X3, #20]");
+        TestInst(STP(W15, WZR, _[X3, 20]), asm => asm.STP(W15, WZR, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP W15, WZR, [X3, #20]");
+        TestInst(STP(WZR, WZR, _[X3, 20]), asm => asm.STP(WZR, WZR, _[X3, 20]), Arm64InstructionId.STP_32_ldstpair_off, Arm64Mnemonic.STP, "STP WZR, WZR, [X3, #20]");
     }
     
     /// <summary>
@@ -109,14 +108,14 @@ public class Arm64InstructionFactoryTests_STP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STP_64_ldstpair_off_5()
     {
-        TestInst(STP(X0, X1, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X0, X1, [X3, #5]");
-        TestInst(STP(X15, X1, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X15, X1, [X3, #5]");
-        TestInst(STP(XZR, X1, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP XZR, X1, [X3, #5]");
-        TestInst(STP(X0, X16, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X0, X16, [X3, #5]");
-        TestInst(STP(X15, X16, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X15, X16, [X3, #5]");
-        TestInst(STP(XZR, X16, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP XZR, X16, [X3, #5]");
-        TestInst(STP(X0, XZR, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X0, XZR, [X3, #5]");
-        TestInst(STP(X15, XZR, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X15, XZR, [X3, #5]");
-        TestInst(STP(XZR, XZR, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP XZR, XZR, [X3, #5]");
+        TestInst(STP(X0, X1, _[X3, 5]), asm => asm.STP(X0, X1, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X0, X1, [X3, #5]");
+        TestInst(STP(X15, X1, _[X3, 5]), asm => asm.STP(X15, X1, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X15, X1, [X3, #5]");
+        TestInst(STP(XZR, X1, _[X3, 5]), asm => asm.STP(XZR, X1, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP XZR, X1, [X3, #5]");
+        TestInst(STP(X0, X16, _[X3, 5]), asm => asm.STP(X0, X16, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X0, X16, [X3, #5]");
+        TestInst(STP(X15, X16, _[X3, 5]), asm => asm.STP(X15, X16, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X15, X16, [X3, #5]");
+        TestInst(STP(XZR, X16, _[X3, 5]), asm => asm.STP(XZR, X16, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP XZR, X16, [X3, #5]");
+        TestInst(STP(X0, XZR, _[X3, 5]), asm => asm.STP(X0, XZR, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X0, XZR, [X3, #5]");
+        TestInst(STP(X15, XZR, _[X3, 5]), asm => asm.STP(X15, XZR, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP X15, XZR, [X3, #5]");
+        TestInst(STP(XZR, XZR, _[X3, 5]), asm => asm.STP(XZR, XZR, _[X3, 5]), Arm64InstructionId.STP_64_ldstpair_off, Arm64Mnemonic.STP, "STP XZR, XZR, [X3, #5]");
     }
 }

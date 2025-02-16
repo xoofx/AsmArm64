@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,13 +23,13 @@ public class Arm64InstructionFactoryTests_SHA256SU1_Advsimd : Arm64InstructionFa
     [TestMethod]
     public void Test_SHA256SU1_vvv_cryptosha3_0()
     {
-        TestInst(SHA256SU1(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V0.4S, V1.4S, V2.4S");
-        TestInst(SHA256SU1(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V30.4S, V1.4S, V2.4S");
-        TestInst(SHA256SU1(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V0.4S, V31.4S, V2.4S");
-        TestInst(SHA256SU1(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V30.4S, V31.4S, V2.4S");
-        TestInst(SHA256SU1(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V0.4S, V1.4S, V0.4S");
-        TestInst(SHA256SU1(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V30.4S, V1.4S, V0.4S");
-        TestInst(SHA256SU1(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V0.4S, V31.4S, V0.4S");
-        TestInst(SHA256SU1(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V30.4S, V31.4S, V0.4S");
+        TestInst(SHA256SU1(V0.T_4S, V1.T_4S, V2.T_4S), asm => asm.SHA256SU1(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V0.4S, V1.4S, V2.4S");
+        TestInst(SHA256SU1(V30.T_4S, V1.T_4S, V2.T_4S), asm => asm.SHA256SU1(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V30.4S, V1.4S, V2.4S");
+        TestInst(SHA256SU1(V0.T_4S, V31.T_4S, V2.T_4S), asm => asm.SHA256SU1(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V0.4S, V31.4S, V2.4S");
+        TestInst(SHA256SU1(V30.T_4S, V31.T_4S, V2.T_4S), asm => asm.SHA256SU1(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V30.4S, V31.4S, V2.4S");
+        TestInst(SHA256SU1(V0.T_4S, V1.T_4S, V0.T_4S), asm => asm.SHA256SU1(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V0.4S, V1.4S, V0.4S");
+        TestInst(SHA256SU1(V30.T_4S, V1.T_4S, V0.T_4S), asm => asm.SHA256SU1(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V30.4S, V1.4S, V0.4S");
+        TestInst(SHA256SU1(V0.T_4S, V31.T_4S, V0.T_4S), asm => asm.SHA256SU1(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V0.4S, V31.4S, V0.4S");
+        TestInst(SHA256SU1(V30.T_4S, V31.T_4S, V0.T_4S), asm => asm.SHA256SU1(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SHA256SU1_vvv_cryptosha3, Arm64Mnemonic.SHA256SU1, "SHA256SU1 V30.4S, V31.4S, V0.4S");
     }
 }

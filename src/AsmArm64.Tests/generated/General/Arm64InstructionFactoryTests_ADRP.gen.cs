@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_ADRP_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_ADRP_only_pcreladdr_0()
     {
-        TestInst(ADRP(X0, 12288), Arm64InstructionId.ADRP_only_pcreladdr, Arm64Mnemonic.ADRP, "ADRP X0, #12288");
-        TestInst(ADRP(X15, 12288), Arm64InstructionId.ADRP_only_pcreladdr, Arm64Mnemonic.ADRP, "ADRP X15, #12288");
-        TestInst(ADRP(XZR, 12288), Arm64InstructionId.ADRP_only_pcreladdr, Arm64Mnemonic.ADRP, "ADRP XZR, #12288");
+        TestInst(ADRP(X0, 12288), null, Arm64InstructionId.ADRP_only_pcreladdr, Arm64Mnemonic.ADRP, "ADRP X0, #12288");
+        TestInst(ADRP(X15, 12288), null, Arm64InstructionId.ADRP_only_pcreladdr, Arm64Mnemonic.ADRP, "ADRP X15, #12288");
+        TestInst(ADRP(XZR, 12288), null, Arm64InstructionId.ADRP_only_pcreladdr, Arm64Mnemonic.ADRP, "ADRP XZR, #12288");
     }
 }

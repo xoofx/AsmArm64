@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_BLRAAZ_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_BLRAAZ_64_branch_reg_0()
     {
-        TestInst(BLRAAZ(X0), Arm64InstructionId.BLRAAZ_64_branch_reg, Arm64Mnemonic.BLRAAZ, "BLRAAZ X0");
-        TestInst(BLRAAZ(X15), Arm64InstructionId.BLRAAZ_64_branch_reg, Arm64Mnemonic.BLRAAZ, "BLRAAZ X15");
-        TestInst(BLRAAZ(XZR), Arm64InstructionId.BLRAAZ_64_branch_reg, Arm64Mnemonic.BLRAAZ, "BLRAAZ XZR");
+        TestInst(BLRAAZ(X0), asm => asm.BLRAAZ(X0), Arm64InstructionId.BLRAAZ_64_branch_reg, Arm64Mnemonic.BLRAAZ, "BLRAAZ X0");
+        TestInst(BLRAAZ(X15), asm => asm.BLRAAZ(X15), Arm64InstructionId.BLRAAZ_64_branch_reg, Arm64Mnemonic.BLRAAZ, "BLRAAZ X15");
+        TestInst(BLRAAZ(XZR), asm => asm.BLRAAZ(XZR), Arm64InstructionId.BLRAAZ_64_branch_reg, Arm64Mnemonic.BLRAAZ, "BLRAAZ XZR");
     }
 }

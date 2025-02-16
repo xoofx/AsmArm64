@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_IC_System : Arm64InstructionFactoryTes
     [TestMethod]
     public void Test_IC_sys_cr_systeminstrs_0()
     {
-        TestInst(IC(IALLU, X1), Arm64InstructionId.IC_sys_cr_systeminstrs, Arm64Mnemonic.IC, "IC iallu, X1");
-        TestInst(IC(IALLU, X16), Arm64InstructionId.IC_sys_cr_systeminstrs, Arm64Mnemonic.IC, "IC iallu, X16");
+        TestInst(IC(IALLU, X1), asm => asm.IC(IALLU, X1), Arm64InstructionId.IC_sys_cr_systeminstrs, Arm64Mnemonic.IC, "IC iallu, X1");
+        TestInst(IC(IALLU, X16), asm => asm.IC(IALLU, X16), Arm64InstructionId.IC_sys_cr_systeminstrs, Arm64Mnemonic.IC, "IC iallu, X16");
     }
 }

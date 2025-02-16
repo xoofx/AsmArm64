@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_DSB_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_DSB_bo_barriers_0()
     {
-        TestInst(DSB(OSHLD), Arm64InstructionId.DSB_bo_barriers, Arm64Mnemonic.DSB, "DSB OSHLD");
+        TestInst(DSB(OSHLD), asm => asm.DSB(OSHLD), Arm64InstructionId.DSB_bo_barriers, Arm64Mnemonic.DSB, "DSB OSHLD");
     }
     
     /// <summary>
@@ -33,6 +32,6 @@ public class Arm64InstructionFactoryTests_DSB_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_DSB_bon_barriers_1()
     {
-        TestInst(DSB(OSH), Arm64InstructionId.DSB_bon_barriers, Arm64Mnemonic.DSB, "DSB OSH");
+        TestInst(DSB(OSH), asm => asm.DSB(OSH), Arm64InstructionId.DSB_bon_barriers, Arm64Mnemonic.DSB, "DSB OSH");
     }
 }

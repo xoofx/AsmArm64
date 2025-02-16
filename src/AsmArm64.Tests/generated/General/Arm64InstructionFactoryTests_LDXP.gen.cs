@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDXP_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDXP_lp32_ldstexclp_0()
     {
-        TestInst(LDXP(W0, W1, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W0, W1, [X3]");
-        TestInst(LDXP(W15, W1, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W15, W1, [X3]");
-        TestInst(LDXP(WZR, W1, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP WZR, W1, [X3]");
-        TestInst(LDXP(W0, W16, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W0, W16, [X3]");
-        TestInst(LDXP(W15, W16, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W15, W16, [X3]");
-        TestInst(LDXP(WZR, W16, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP WZR, W16, [X3]");
-        TestInst(LDXP(W0, WZR, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W0, WZR, [X3]");
-        TestInst(LDXP(W15, WZR, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W15, WZR, [X3]");
-        TestInst(LDXP(WZR, WZR, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP WZR, WZR, [X3]");
+        TestInst(LDXP(W0, W1, _[X3]), asm => asm.LDXP(W0, W1, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W0, W1, [X3]");
+        TestInst(LDXP(W15, W1, _[X3]), asm => asm.LDXP(W15, W1, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W15, W1, [X3]");
+        TestInst(LDXP(WZR, W1, _[X3]), asm => asm.LDXP(WZR, W1, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP WZR, W1, [X3]");
+        TestInst(LDXP(W0, W16, _[X3]), asm => asm.LDXP(W0, W16, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W0, W16, [X3]");
+        TestInst(LDXP(W15, W16, _[X3]), asm => asm.LDXP(W15, W16, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W15, W16, [X3]");
+        TestInst(LDXP(WZR, W16, _[X3]), asm => asm.LDXP(WZR, W16, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP WZR, W16, [X3]");
+        TestInst(LDXP(W0, WZR, _[X3]), asm => asm.LDXP(W0, WZR, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W0, WZR, [X3]");
+        TestInst(LDXP(W15, WZR, _[X3]), asm => asm.LDXP(W15, WZR, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP W15, WZR, [X3]");
+        TestInst(LDXP(WZR, WZR, _[X3]), asm => asm.LDXP(WZR, WZR, _[X3]), Arm64InstructionId.LDXP_lp32_ldstexclp, Arm64Mnemonic.LDXP, "LDXP WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDXP_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDXP_lp64_ldstexclp_1()
     {
-        TestInst(LDXP(X0, X1, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X0, X1, [X3]");
-        TestInst(LDXP(X15, X1, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X15, X1, [X3]");
-        TestInst(LDXP(XZR, X1, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP XZR, X1, [X3]");
-        TestInst(LDXP(X0, X16, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X0, X16, [X3]");
-        TestInst(LDXP(X15, X16, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X15, X16, [X3]");
-        TestInst(LDXP(XZR, X16, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP XZR, X16, [X3]");
-        TestInst(LDXP(X0, XZR, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X0, XZR, [X3]");
-        TestInst(LDXP(X15, XZR, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X15, XZR, [X3]");
-        TestInst(LDXP(XZR, XZR, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP XZR, XZR, [X3]");
+        TestInst(LDXP(X0, X1, _[X3]), asm => asm.LDXP(X0, X1, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X0, X1, [X3]");
+        TestInst(LDXP(X15, X1, _[X3]), asm => asm.LDXP(X15, X1, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X15, X1, [X3]");
+        TestInst(LDXP(XZR, X1, _[X3]), asm => asm.LDXP(XZR, X1, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP XZR, X1, [X3]");
+        TestInst(LDXP(X0, X16, _[X3]), asm => asm.LDXP(X0, X16, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X0, X16, [X3]");
+        TestInst(LDXP(X15, X16, _[X3]), asm => asm.LDXP(X15, X16, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X15, X16, [X3]");
+        TestInst(LDXP(XZR, X16, _[X3]), asm => asm.LDXP(XZR, X16, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP XZR, X16, [X3]");
+        TestInst(LDXP(X0, XZR, _[X3]), asm => asm.LDXP(X0, XZR, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X0, XZR, [X3]");
+        TestInst(LDXP(X15, XZR, _[X3]), asm => asm.LDXP(X15, XZR, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP X15, XZR, [X3]");
+        TestInst(LDXP(XZR, XZR, _[X3]), asm => asm.LDXP(XZR, XZR, _[X3]), Arm64InstructionId.LDXP_lp64_ldstexclp, Arm64Mnemonic.LDXP, "LDXP XZR, XZR, [X3]");
     }
 }

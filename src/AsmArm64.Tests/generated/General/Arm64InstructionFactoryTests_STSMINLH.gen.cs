@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STSMINLH_General : Arm64InstructionFac
     [TestMethod]
     public void Test_STSMINLH_ldsminlh_32_memop_0()
     {
-        TestInst(STSMINLH(W0, _[X2]), Arm64InstructionId.STSMINLH_ldsminlh_32_memop, Arm64Mnemonic.STSMINLH, "STSMINLH W0, [X2]");
-        TestInst(STSMINLH(W15, _[X2]), Arm64InstructionId.STSMINLH_ldsminlh_32_memop, Arm64Mnemonic.STSMINLH, "STSMINLH W15, [X2]");
-        TestInst(STSMINLH(WZR, _[X2]), Arm64InstructionId.STSMINLH_ldsminlh_32_memop, Arm64Mnemonic.STSMINLH, "STSMINLH WZR, [X2]");
+        TestInst(STSMINLH(W0, _[X2]), asm => asm.STSMINLH(W0, _[X2]), Arm64InstructionId.STSMINLH_ldsminlh_32_memop, Arm64Mnemonic.STSMINLH, "STSMINLH W0, [X2]");
+        TestInst(STSMINLH(W15, _[X2]), asm => asm.STSMINLH(W15, _[X2]), Arm64InstructionId.STSMINLH_ldsminlh_32_memop, Arm64Mnemonic.STSMINLH, "STSMINLH W15, [X2]");
+        TestInst(STSMINLH(WZR, _[X2]), asm => asm.STSMINLH(WZR, _[X2]), Arm64InstructionId.STSMINLH_ldsminlh_32_memop, Arm64Mnemonic.STSMINLH, "STSMINLH WZR, [X2]");
     }
 }

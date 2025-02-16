@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_SHA1H_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SHA1H_ss_cryptosha2_0()
     {
-        TestInst(SHA1H(S0, S1), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S0, S1");
-        TestInst(SHA1H(S31, S1), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S31, S1");
-        TestInst(SHA1H(S0, S31), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S0, S31");
-        TestInst(SHA1H(S31, S31), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S31, S31");
+        TestInst(SHA1H(S0, S1), asm => asm.SHA1H(S0, S1), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S0, S1");
+        TestInst(SHA1H(S31, S1), asm => asm.SHA1H(S31, S1), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S31, S1");
+        TestInst(SHA1H(S0, S31), asm => asm.SHA1H(S0, S31), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S0, S31");
+        TestInst(SHA1H(S31, S31), asm => asm.SHA1H(S31, S31), Arm64InstructionId.SHA1H_ss_cryptosha2, Arm64Mnemonic.SHA1H, "SHA1H S31, S31");
     }
 }

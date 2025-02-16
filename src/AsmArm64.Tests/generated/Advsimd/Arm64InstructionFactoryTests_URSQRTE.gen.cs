@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_URSQRTE_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_URSQRTE_asimdmisc_r_0()
     {
-        TestInst(URSQRTE(V0.T_2S, V1.T_2S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V0.2S, V1.2S");
-        TestInst(URSQRTE(V30.T_2S, V1.T_2S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V30.2S, V1.2S");
-        TestInst(URSQRTE(V0.T_2S, V31.T_2S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V0.2S, V31.2S");
-        TestInst(URSQRTE(V30.T_2S, V31.T_2S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V30.2S, V31.2S");
+        TestInst(URSQRTE(V0.T_2S, V1.T_2S), asm => asm.URSQRTE(V0.T_2S, V1.T_2S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V0.2S, V1.2S");
+        TestInst(URSQRTE(V30.T_2S, V1.T_2S), asm => asm.URSQRTE(V30.T_2S, V1.T_2S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V30.2S, V1.2S");
+        TestInst(URSQRTE(V0.T_2S, V31.T_2S), asm => asm.URSQRTE(V0.T_2S, V31.T_2S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V0.2S, V31.2S");
+        TestInst(URSQRTE(V30.T_2S, V31.T_2S), asm => asm.URSQRTE(V30.T_2S, V31.T_2S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V30.2S, V31.2S");
     }
     
     /// <summary>
@@ -36,9 +35,9 @@ public class Arm64InstructionFactoryTests_URSQRTE_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_URSQRTE_asimdmisc_r_1()
     {
-        TestInst(URSQRTE(V0.T_4S, V1.T_4S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V0.4S, V1.4S");
-        TestInst(URSQRTE(V30.T_4S, V1.T_4S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V30.4S, V1.4S");
-        TestInst(URSQRTE(V0.T_4S, V31.T_4S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V0.4S, V31.4S");
-        TestInst(URSQRTE(V30.T_4S, V31.T_4S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V30.4S, V31.4S");
+        TestInst(URSQRTE(V0.T_4S, V1.T_4S), asm => asm.URSQRTE(V0.T_4S, V1.T_4S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V0.4S, V1.4S");
+        TestInst(URSQRTE(V30.T_4S, V1.T_4S), asm => asm.URSQRTE(V30.T_4S, V1.T_4S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V30.4S, V1.4S");
+        TestInst(URSQRTE(V0.T_4S, V31.T_4S), asm => asm.URSQRTE(V0.T_4S, V31.T_4S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V0.4S, V31.4S");
+        TestInst(URSQRTE(V30.T_4S, V31.T_4S), asm => asm.URSQRTE(V30.T_4S, V31.T_4S), Arm64InstructionId.URSQRTE_asimdmisc_r, Arm64Mnemonic.URSQRTE, "URSQRTE V30.4S, V31.4S");
     }
 }

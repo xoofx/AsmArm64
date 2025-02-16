@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_PACIZB_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_PACIZB_64z_dp_1src_0()
     {
-        TestInst(PACIZB(X0), Arm64InstructionId.PACIZB_64z_dp_1src, Arm64Mnemonic.PACIZB, "PACIZB X0");
-        TestInst(PACIZB(X15), Arm64InstructionId.PACIZB_64z_dp_1src, Arm64Mnemonic.PACIZB, "PACIZB X15");
-        TestInst(PACIZB(XZR), Arm64InstructionId.PACIZB_64z_dp_1src, Arm64Mnemonic.PACIZB, "PACIZB XZR");
+        TestInst(PACIZB(X0), asm => asm.PACIZB(X0), Arm64InstructionId.PACIZB_64z_dp_1src, Arm64Mnemonic.PACIZB, "PACIZB X0");
+        TestInst(PACIZB(X15), asm => asm.PACIZB(X15), Arm64InstructionId.PACIZB_64z_dp_1src, Arm64Mnemonic.PACIZB, "PACIZB X15");
+        TestInst(PACIZB(XZR), asm => asm.PACIZB(XZR), Arm64InstructionId.PACIZB_64z_dp_1src, Arm64Mnemonic.PACIZB, "PACIZB XZR");
     }
 }

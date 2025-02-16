@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_GCSSTTR_General : Arm64InstructionFact
     [TestMethod]
     public void Test_GCSSTTR_64_ldst_gcs_0()
     {
-        TestInst(GCSSTTR(X0, _[X2]), Arm64InstructionId.GCSSTTR_64_ldst_gcs, Arm64Mnemonic.GCSSTTR, "GCSSTTR X0, [X2]");
-        TestInst(GCSSTTR(X15, _[X2]), Arm64InstructionId.GCSSTTR_64_ldst_gcs, Arm64Mnemonic.GCSSTTR, "GCSSTTR X15, [X2]");
-        TestInst(GCSSTTR(XZR, _[X2]), Arm64InstructionId.GCSSTTR_64_ldst_gcs, Arm64Mnemonic.GCSSTTR, "GCSSTTR XZR, [X2]");
+        TestInst(GCSSTTR(X0, _[X2]), asm => asm.GCSSTTR(X0, _[X2]), Arm64InstructionId.GCSSTTR_64_ldst_gcs, Arm64Mnemonic.GCSSTTR, "GCSSTTR X0, [X2]");
+        TestInst(GCSSTTR(X15, _[X2]), asm => asm.GCSSTTR(X15, _[X2]), Arm64InstructionId.GCSSTTR_64_ldst_gcs, Arm64Mnemonic.GCSSTTR, "GCSSTTR X15, [X2]");
+        TestInst(GCSSTTR(XZR, _[X2]), asm => asm.GCSSTTR(XZR, _[X2]), Arm64InstructionId.GCSSTTR_64_ldst_gcs, Arm64Mnemonic.GCSSTTR, "GCSSTTR XZR, [X2]");
     }
 }

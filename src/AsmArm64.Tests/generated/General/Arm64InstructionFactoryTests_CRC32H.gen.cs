@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,32 +23,32 @@ public class Arm64InstructionFactoryTests_CRC32H_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_CRC32H_32c_dp_2src_0()
     {
-        TestInst(CRC32H(W0, W1, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W1, W2");
-        TestInst(CRC32H(W15, W1, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W1, W2");
-        TestInst(CRC32H(WZR, W1, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W1, W2");
-        TestInst(CRC32H(W0, W16, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W16, W2");
-        TestInst(CRC32H(W15, W16, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W16, W2");
-        TestInst(CRC32H(WZR, W16, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W16, W2");
-        TestInst(CRC32H(W0, WZR, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, WZR, W2");
-        TestInst(CRC32H(W15, WZR, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, WZR, W2");
-        TestInst(CRC32H(WZR, WZR, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, WZR, W2");
-        TestInst(CRC32H(W0, W1, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W1, W17");
-        TestInst(CRC32H(W15, W1, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W1, W17");
-        TestInst(CRC32H(WZR, W1, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W1, W17");
-        TestInst(CRC32H(W0, W16, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W16, W17");
-        TestInst(CRC32H(W15, W16, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W16, W17");
-        TestInst(CRC32H(WZR, W16, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W16, W17");
-        TestInst(CRC32H(W0, WZR, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, WZR, W17");
-        TestInst(CRC32H(W15, WZR, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, WZR, W17");
-        TestInst(CRC32H(WZR, WZR, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, WZR, W17");
-        TestInst(CRC32H(W0, W1, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W1, WZR");
-        TestInst(CRC32H(W15, W1, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W1, WZR");
-        TestInst(CRC32H(WZR, W1, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W1, WZR");
-        TestInst(CRC32H(W0, W16, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W16, WZR");
-        TestInst(CRC32H(W15, W16, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W16, WZR");
-        TestInst(CRC32H(WZR, W16, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W16, WZR");
-        TestInst(CRC32H(W0, WZR, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, WZR, WZR");
-        TestInst(CRC32H(W15, WZR, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, WZR, WZR");
-        TestInst(CRC32H(WZR, WZR, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, WZR, WZR");
+        TestInst(CRC32H(W0, W1, W2), asm => asm.CRC32H(W0, W1, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W1, W2");
+        TestInst(CRC32H(W15, W1, W2), asm => asm.CRC32H(W15, W1, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W1, W2");
+        TestInst(CRC32H(WZR, W1, W2), asm => asm.CRC32H(WZR, W1, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W1, W2");
+        TestInst(CRC32H(W0, W16, W2), asm => asm.CRC32H(W0, W16, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W16, W2");
+        TestInst(CRC32H(W15, W16, W2), asm => asm.CRC32H(W15, W16, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W16, W2");
+        TestInst(CRC32H(WZR, W16, W2), asm => asm.CRC32H(WZR, W16, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W16, W2");
+        TestInst(CRC32H(W0, WZR, W2), asm => asm.CRC32H(W0, WZR, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, WZR, W2");
+        TestInst(CRC32H(W15, WZR, W2), asm => asm.CRC32H(W15, WZR, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, WZR, W2");
+        TestInst(CRC32H(WZR, WZR, W2), asm => asm.CRC32H(WZR, WZR, W2), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, WZR, W2");
+        TestInst(CRC32H(W0, W1, W17), asm => asm.CRC32H(W0, W1, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W1, W17");
+        TestInst(CRC32H(W15, W1, W17), asm => asm.CRC32H(W15, W1, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W1, W17");
+        TestInst(CRC32H(WZR, W1, W17), asm => asm.CRC32H(WZR, W1, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W1, W17");
+        TestInst(CRC32H(W0, W16, W17), asm => asm.CRC32H(W0, W16, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W16, W17");
+        TestInst(CRC32H(W15, W16, W17), asm => asm.CRC32H(W15, W16, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W16, W17");
+        TestInst(CRC32H(WZR, W16, W17), asm => asm.CRC32H(WZR, W16, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W16, W17");
+        TestInst(CRC32H(W0, WZR, W17), asm => asm.CRC32H(W0, WZR, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, WZR, W17");
+        TestInst(CRC32H(W15, WZR, W17), asm => asm.CRC32H(W15, WZR, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, WZR, W17");
+        TestInst(CRC32H(WZR, WZR, W17), asm => asm.CRC32H(WZR, WZR, W17), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, WZR, W17");
+        TestInst(CRC32H(W0, W1, WZR), asm => asm.CRC32H(W0, W1, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W1, WZR");
+        TestInst(CRC32H(W15, W1, WZR), asm => asm.CRC32H(W15, W1, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W1, WZR");
+        TestInst(CRC32H(WZR, W1, WZR), asm => asm.CRC32H(WZR, W1, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W1, WZR");
+        TestInst(CRC32H(W0, W16, WZR), asm => asm.CRC32H(W0, W16, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, W16, WZR");
+        TestInst(CRC32H(W15, W16, WZR), asm => asm.CRC32H(W15, W16, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, W16, WZR");
+        TestInst(CRC32H(WZR, W16, WZR), asm => asm.CRC32H(WZR, W16, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, W16, WZR");
+        TestInst(CRC32H(W0, WZR, WZR), asm => asm.CRC32H(W0, WZR, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W0, WZR, WZR");
+        TestInst(CRC32H(W15, WZR, WZR), asm => asm.CRC32H(W15, WZR, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H W15, WZR, WZR");
+        TestInst(CRC32H(WZR, WZR, WZR), asm => asm.CRC32H(WZR, WZR, WZR), Arm64InstructionId.CRC32H_32c_dp_2src, Arm64Mnemonic.CRC32H, "CRC32H WZR, WZR, WZR");
     }
 }

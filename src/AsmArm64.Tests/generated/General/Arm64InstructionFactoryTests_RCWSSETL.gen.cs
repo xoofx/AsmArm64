@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_RCWSSETL_General : Arm64InstructionFac
     [TestMethod]
     public void Test_RCWSSETL_64_memop_0()
     {
-        TestInst(RCWSSETL(X0, X1, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X0, X1, [X3]");
-        TestInst(RCWSSETL(X15, X1, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X15, X1, [X3]");
-        TestInst(RCWSSETL(XZR, X1, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL XZR, X1, [X3]");
-        TestInst(RCWSSETL(X0, X16, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X0, X16, [X3]");
-        TestInst(RCWSSETL(X15, X16, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X15, X16, [X3]");
-        TestInst(RCWSSETL(XZR, X16, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL XZR, X16, [X3]");
-        TestInst(RCWSSETL(X0, XZR, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X0, XZR, [X3]");
-        TestInst(RCWSSETL(X15, XZR, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X15, XZR, [X3]");
-        TestInst(RCWSSETL(XZR, XZR, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL XZR, XZR, [X3]");
+        TestInst(RCWSSETL(X0, X1, _[X3]), asm => asm.RCWSSETL(X0, X1, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X0, X1, [X3]");
+        TestInst(RCWSSETL(X15, X1, _[X3]), asm => asm.RCWSSETL(X15, X1, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X15, X1, [X3]");
+        TestInst(RCWSSETL(XZR, X1, _[X3]), asm => asm.RCWSSETL(XZR, X1, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL XZR, X1, [X3]");
+        TestInst(RCWSSETL(X0, X16, _[X3]), asm => asm.RCWSSETL(X0, X16, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X0, X16, [X3]");
+        TestInst(RCWSSETL(X15, X16, _[X3]), asm => asm.RCWSSETL(X15, X16, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X15, X16, [X3]");
+        TestInst(RCWSSETL(XZR, X16, _[X3]), asm => asm.RCWSSETL(XZR, X16, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL XZR, X16, [X3]");
+        TestInst(RCWSSETL(X0, XZR, _[X3]), asm => asm.RCWSSETL(X0, XZR, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X0, XZR, [X3]");
+        TestInst(RCWSSETL(X15, XZR, _[X3]), asm => asm.RCWSSETL(X15, XZR, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL X15, XZR, [X3]");
+        TestInst(RCWSSETL(XZR, XZR, _[X3]), asm => asm.RCWSSETL(XZR, XZR, _[X3]), Arm64InstructionId.RCWSSETL_64_memop, Arm64Mnemonic.RCWSSETL, "RCWSSETL XZR, XZR, [X3]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_SMC_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_SMC_ex_exception_0()
     {
-        TestInst(SMC(5), Arm64InstructionId.SMC_ex_exception, Arm64Mnemonic.SMC, "SMC #5");
+        TestInst(SMC(5), asm => asm.SMC(5), Arm64InstructionId.SMC_ex_exception, Arm64Mnemonic.SMC, "SMC #5");
     }
 }

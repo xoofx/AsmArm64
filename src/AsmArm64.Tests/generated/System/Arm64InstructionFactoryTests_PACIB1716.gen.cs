@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_PACIB1716_System : Arm64InstructionFac
     [TestMethod]
     public void Test_PACIB1716_hi_hints_0()
     {
-        TestInst(PACIB1716(), Arm64InstructionId.PACIB1716_hi_hints, Arm64Mnemonic.PACIB1716, "PACIB1716");
+        TestInst(PACIB1716(), asm => asm.PACIB1716(), Arm64InstructionId.PACIB1716_hi_hints, Arm64Mnemonic.PACIB1716, "PACIB1716");
     }
 }

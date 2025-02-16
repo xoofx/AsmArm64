@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_XPACI_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_XPACI_64z_dp_1src_0()
     {
-        TestInst(XPACI(X0), Arm64InstructionId.XPACI_64z_dp_1src, Arm64Mnemonic.XPACI, "XPACI X0");
-        TestInst(XPACI(X15), Arm64InstructionId.XPACI_64z_dp_1src, Arm64Mnemonic.XPACI, "XPACI X15");
-        TestInst(XPACI(XZR), Arm64InstructionId.XPACI_64z_dp_1src, Arm64Mnemonic.XPACI, "XPACI XZR");
+        TestInst(XPACI(X0), asm => asm.XPACI(X0), Arm64InstructionId.XPACI_64z_dp_1src, Arm64Mnemonic.XPACI, "XPACI X0");
+        TestInst(XPACI(X15), asm => asm.XPACI(X15), Arm64InstructionId.XPACI_64z_dp_1src, Arm64Mnemonic.XPACI, "XPACI X15");
+        TestInst(XPACI(XZR), asm => asm.XPACI(XZR), Arm64InstructionId.XPACI_64z_dp_1src, Arm64Mnemonic.XPACI, "XPACI XZR");
     }
 }

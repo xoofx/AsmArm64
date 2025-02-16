@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_CPP_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_CPP_sys_cr_systeminstrs_0()
     {
-        TestInst(CPP(RCTX, X1), Arm64InstructionId.CPP_sys_cr_systeminstrs, Arm64Mnemonic.CPP, "CPP RCTX, X1");
-        TestInst(CPP(RCTX, X16), Arm64InstructionId.CPP_sys_cr_systeminstrs, Arm64Mnemonic.CPP, "CPP RCTX, X16");
-        TestInst(CPP(RCTX, XZR), Arm64InstructionId.CPP_sys_cr_systeminstrs, Arm64Mnemonic.CPP, "CPP RCTX, XZR");
+        TestInst(CPP(RCTX, X1), asm => asm.CPP(RCTX, X1), Arm64InstructionId.CPP_sys_cr_systeminstrs, Arm64Mnemonic.CPP, "CPP RCTX, X1");
+        TestInst(CPP(RCTX, X16), asm => asm.CPP(RCTX, X16), Arm64InstructionId.CPP_sys_cr_systeminstrs, Arm64Mnemonic.CPP, "CPP RCTX, X16");
+        TestInst(CPP(RCTX, XZR), asm => asm.CPP(RCTX, XZR), Arm64InstructionId.CPP_sys_cr_systeminstrs, Arm64Mnemonic.CPP, "CPP RCTX, XZR");
     }
 }

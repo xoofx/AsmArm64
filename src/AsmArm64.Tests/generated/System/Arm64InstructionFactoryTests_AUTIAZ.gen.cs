@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_AUTIAZ_System : Arm64InstructionFactor
     [TestMethod]
     public void Test_AUTIAZ_hi_hints_0()
     {
-        TestInst(AUTIAZ(), Arm64InstructionId.AUTIAZ_hi_hints, Arm64Mnemonic.AUTIAZ, "AUTIAZ");
+        TestInst(AUTIAZ(), asm => asm.AUTIAZ(), Arm64InstructionId.AUTIAZ_hi_hints, Arm64Mnemonic.AUTIAZ, "AUTIAZ");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_XTN2_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_XTN2_asimdmisc_n_0()
     {
-        TestInst(XTN2(V0.T_16B, V1.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.16B, V1.8H");
-        TestInst(XTN2(V30.T_16B, V1.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.16B, V1.8H");
-        TestInst(XTN2(V0.T_16B, V31.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.16B, V31.8H");
-        TestInst(XTN2(V30.T_16B, V31.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.16B, V31.8H");
+        TestInst(XTN2(V0.T_16B, V1.T_8H), asm => asm.XTN2(V0.T_16B, V1.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.16B, V1.8H");
+        TestInst(XTN2(V30.T_16B, V1.T_8H), asm => asm.XTN2(V30.T_16B, V1.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.16B, V1.8H");
+        TestInst(XTN2(V0.T_16B, V31.T_8H), asm => asm.XTN2(V0.T_16B, V31.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.16B, V31.8H");
+        TestInst(XTN2(V30.T_16B, V31.T_8H), asm => asm.XTN2(V30.T_16B, V31.T_8H), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.16B, V31.8H");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_XTN2_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_XTN2_asimdmisc_n_1()
     {
-        TestInst(XTN2(V0.T_8H, V1.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.8H, V1.4S");
-        TestInst(XTN2(V30.T_8H, V1.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.8H, V1.4S");
-        TestInst(XTN2(V0.T_8H, V31.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.8H, V31.4S");
-        TestInst(XTN2(V30.T_8H, V31.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.8H, V31.4S");
+        TestInst(XTN2(V0.T_8H, V1.T_4S), asm => asm.XTN2(V0.T_8H, V1.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.8H, V1.4S");
+        TestInst(XTN2(V30.T_8H, V1.T_4S), asm => asm.XTN2(V30.T_8H, V1.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.8H, V1.4S");
+        TestInst(XTN2(V0.T_8H, V31.T_4S), asm => asm.XTN2(V0.T_8H, V31.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.8H, V31.4S");
+        TestInst(XTN2(V30.T_8H, V31.T_4S), asm => asm.XTN2(V30.T_8H, V31.T_4S), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.8H, V31.4S");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_XTN2_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_XTN2_asimdmisc_n_2()
     {
-        TestInst(XTN2(V0.T_4S, V1.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.4S, V1.2D");
-        TestInst(XTN2(V30.T_4S, V1.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.4S, V1.2D");
-        TestInst(XTN2(V0.T_4S, V31.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.4S, V31.2D");
-        TestInst(XTN2(V30.T_4S, V31.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.4S, V31.2D");
+        TestInst(XTN2(V0.T_4S, V1.T_2D), asm => asm.XTN2(V0.T_4S, V1.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.4S, V1.2D");
+        TestInst(XTN2(V30.T_4S, V1.T_2D), asm => asm.XTN2(V30.T_4S, V1.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.4S, V1.2D");
+        TestInst(XTN2(V0.T_4S, V31.T_2D), asm => asm.XTN2(V0.T_4S, V31.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V0.4S, V31.2D");
+        TestInst(XTN2(V30.T_4S, V31.T_2D), asm => asm.XTN2(V30.T_4S, V31.T_2D), Arm64InstructionId.XTN2_asimdmisc_n, Arm64Mnemonic.XTN2, "XTN2 V30.4S, V31.2D");
     }
 }

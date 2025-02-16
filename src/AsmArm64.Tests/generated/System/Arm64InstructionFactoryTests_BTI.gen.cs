@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_BTI_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_BTI_hb_hints_0()
     {
-        TestInst(BTI(C), Arm64InstructionId.BTI_hb_hints, Arm64Mnemonic.BTI, "BTI C");
-        TestInst(BTI(J), Arm64InstructionId.BTI_hb_hints, Arm64Mnemonic.BTI, "BTI J");
+        TestInst(BTI(C), asm => asm.BTI(C), Arm64InstructionId.BTI_hb_hints, Arm64Mnemonic.BTI, "BTI C");
+        TestInst(BTI(J), asm => asm.BTI(J), Arm64InstructionId.BTI_hb_hints, Arm64Mnemonic.BTI, "BTI J");
     }
 }

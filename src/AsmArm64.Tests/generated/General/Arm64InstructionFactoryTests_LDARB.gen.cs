@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_LDARB_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDARB_lr32_ldstord_0()
     {
-        TestInst(LDARB(W0, _[X2]), Arm64InstructionId.LDARB_lr32_ldstord, Arm64Mnemonic.LDARB, "LDARB W0, [X2]");
-        TestInst(LDARB(W15, _[X2]), Arm64InstructionId.LDARB_lr32_ldstord, Arm64Mnemonic.LDARB, "LDARB W15, [X2]");
-        TestInst(LDARB(WZR, _[X2]), Arm64InstructionId.LDARB_lr32_ldstord, Arm64Mnemonic.LDARB, "LDARB WZR, [X2]");
+        TestInst(LDARB(W0, _[X2]), asm => asm.LDARB(W0, _[X2]), Arm64InstructionId.LDARB_lr32_ldstord, Arm64Mnemonic.LDARB, "LDARB W0, [X2]");
+        TestInst(LDARB(W15, _[X2]), asm => asm.LDARB(W15, _[X2]), Arm64InstructionId.LDARB_lr32_ldstord, Arm64Mnemonic.LDARB, "LDARB W15, [X2]");
+        TestInst(LDARB(WZR, _[X2]), asm => asm.LDARB(WZR, _[X2]), Arm64InstructionId.LDARB_lr32_ldstord, Arm64Mnemonic.LDARB, "LDARB WZR, [X2]");
     }
 }

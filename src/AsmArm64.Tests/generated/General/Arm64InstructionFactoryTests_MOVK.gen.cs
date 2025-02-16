@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_MOVK_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVK_32_movewide_0()
     {
-        TestInst(MOVK(W0, 5, _LSL, 16), Arm64InstructionId.MOVK_32_movewide, Arm64Mnemonic.MOVK, "MOVK W0, #5, LSL #16");
-        TestInst(MOVK(W15, 5, _LSL, 16), Arm64InstructionId.MOVK_32_movewide, Arm64Mnemonic.MOVK, "MOVK W15, #5, LSL #16");
-        TestInst(MOVK(WZR, 5, _LSL, 16), Arm64InstructionId.MOVK_32_movewide, Arm64Mnemonic.MOVK, "MOVK WZR, #5, LSL #16");
+        TestInst(MOVK(W0, 5, _LSL, 16), asm => asm.MOVK(W0, 5, _LSL, 16), Arm64InstructionId.MOVK_32_movewide, Arm64Mnemonic.MOVK, "MOVK W0, #5, LSL #16");
+        TestInst(MOVK(W15, 5, _LSL, 16), asm => asm.MOVK(W15, 5, _LSL, 16), Arm64InstructionId.MOVK_32_movewide, Arm64Mnemonic.MOVK, "MOVK W15, #5, LSL #16");
+        TestInst(MOVK(WZR, 5, _LSL, 16), asm => asm.MOVK(WZR, 5, _LSL, 16), Arm64InstructionId.MOVK_32_movewide, Arm64Mnemonic.MOVK, "MOVK WZR, #5, LSL #16");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_MOVK_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVK_64_movewide_1()
     {
-        TestInst(MOVK(X0, 5, _LSL, 16), Arm64InstructionId.MOVK_64_movewide, Arm64Mnemonic.MOVK, "MOVK X0, #5, LSL #16");
-        TestInst(MOVK(X15, 5, _LSL, 16), Arm64InstructionId.MOVK_64_movewide, Arm64Mnemonic.MOVK, "MOVK X15, #5, LSL #16");
-        TestInst(MOVK(XZR, 5, _LSL, 16), Arm64InstructionId.MOVK_64_movewide, Arm64Mnemonic.MOVK, "MOVK XZR, #5, LSL #16");
+        TestInst(MOVK(X0, 5, _LSL, 16), asm => asm.MOVK(X0, 5, _LSL, 16), Arm64InstructionId.MOVK_64_movewide, Arm64Mnemonic.MOVK, "MOVK X0, #5, LSL #16");
+        TestInst(MOVK(X15, 5, _LSL, 16), asm => asm.MOVK(X15, 5, _LSL, 16), Arm64InstructionId.MOVK_64_movewide, Arm64Mnemonic.MOVK, "MOVK X15, #5, LSL #16");
+        TestInst(MOVK(XZR, 5, _LSL, 16), asm => asm.MOVK(XZR, 5, _LSL, 16), Arm64InstructionId.MOVK_64_movewide, Arm64Mnemonic.MOVK, "MOVK XZR, #5, LSL #16");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_GCSSS2_System : Arm64InstructionFactor
     [TestMethod]
     public void Test_GCSSS2_sysl_rc_systeminstrs_0()
     {
-        TestInst(GCSSS2(X0), Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, Arm64Mnemonic.GCSSS2, "GCSSS2 X0");
-        TestInst(GCSSS2(X15), Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, Arm64Mnemonic.GCSSS2, "GCSSS2 X15");
-        TestInst(GCSSS2(XZR), Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, Arm64Mnemonic.GCSSS2, "GCSSS2 XZR");
+        TestInst(GCSSS2(X0), asm => asm.GCSSS2(X0), Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, Arm64Mnemonic.GCSSS2, "GCSSS2 X0");
+        TestInst(GCSSS2(X15), asm => asm.GCSSS2(X15), Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, Arm64Mnemonic.GCSSS2, "GCSSS2 X15");
+        TestInst(GCSSS2(XZR), asm => asm.GCSSS2(XZR), Arm64InstructionId.GCSSS2_sysl_rc_systeminstrs, Arm64Mnemonic.GCSSS2, "GCSSS2 XZR");
     }
 }

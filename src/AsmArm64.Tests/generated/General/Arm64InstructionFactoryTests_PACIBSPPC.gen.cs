@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_PACIBSPPC_General : Arm64InstructionFa
     [TestMethod]
     public void Test_PACIBSPPC_64lr_dp_1src_0()
     {
-        TestInst(PACIBSPPC(), Arm64InstructionId.PACIBSPPC_64lr_dp_1src, Arm64Mnemonic.PACIBSPPC, "PACIBSPPC");
+        TestInst(PACIBSPPC(), asm => asm.PACIBSPPC(), Arm64InstructionId.PACIBSPPC_64lr_dp_1src, Arm64Mnemonic.PACIBSPPC, "PACIBSPPC");
     }
 }

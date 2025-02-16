@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDTR_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDTR_32_ldst_unpriv_0()
     {
-        TestInst(LDTR(W0, _[X2, 5]), Arm64InstructionId.LDTR_32_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR W0, [X2, #5]");
-        TestInst(LDTR(W15, _[X2, 5]), Arm64InstructionId.LDTR_32_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR W15, [X2, #5]");
-        TestInst(LDTR(WZR, _[X2, 5]), Arm64InstructionId.LDTR_32_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR WZR, [X2, #5]");
+        TestInst(LDTR(W0, _[X2, 5]), asm => asm.LDTR(W0, _[X2, 5]), Arm64InstructionId.LDTR_32_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR W0, [X2, #5]");
+        TestInst(LDTR(W15, _[X2, 5]), asm => asm.LDTR(W15, _[X2, 5]), Arm64InstructionId.LDTR_32_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR W15, [X2, #5]");
+        TestInst(LDTR(WZR, _[X2, 5]), asm => asm.LDTR(WZR, _[X2, 5]), Arm64InstructionId.LDTR_32_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_LDTR_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDTR_64_ldst_unpriv_1()
     {
-        TestInst(LDTR(X0, _[X2, 5]), Arm64InstructionId.LDTR_64_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR X0, [X2, #5]");
-        TestInst(LDTR(X15, _[X2, 5]), Arm64InstructionId.LDTR_64_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR X15, [X2, #5]");
-        TestInst(LDTR(XZR, _[X2, 5]), Arm64InstructionId.LDTR_64_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR XZR, [X2, #5]");
+        TestInst(LDTR(X0, _[X2, 5]), asm => asm.LDTR(X0, _[X2, 5]), Arm64InstructionId.LDTR_64_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR X0, [X2, #5]");
+        TestInst(LDTR(X15, _[X2, 5]), asm => asm.LDTR(X15, _[X2, 5]), Arm64InstructionId.LDTR_64_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR X15, [X2, #5]");
+        TestInst(LDTR(XZR, _[X2, 5]), asm => asm.LDTR(XZR, _[X2, 5]), Arm64InstructionId.LDTR_64_ldst_unpriv, Arm64Mnemonic.LDTR, "LDTR XZR, [X2, #5]");
     }
 }

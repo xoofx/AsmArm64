@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,24 +23,24 @@ public class Arm64InstructionFactoryTests_CMN_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CMN_adds_32s_addsub_ext_0()
     {
-        TestInst(CMN(W1, W1, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, W1, UXTW #1");
-        TestInst(CMN(W17, W1, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, W1, UXTW #1");
-        TestInst(CMN(WSP, W1, _LSL, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, W1, LSL #1");
-        TestInst(CMN(W1, W16, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, W16, UXTW #1");
-        TestInst(CMN(W17, W16, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, W16, UXTW #1");
-        TestInst(CMN(WSP, W16, _LSL, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, W16, LSL #1");
-        TestInst(CMN(W1, WZR, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, WZR, UXTW #1");
-        TestInst(CMN(W17, WZR, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, WZR, UXTW #1");
-        TestInst(CMN(WSP, WZR, _LSL, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, WZR, LSL #1");
-        TestInst(CMN(W1, W1, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, W1, UXTB #2");
-        TestInst(CMN(W17, W1, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, W1, UXTB #2");
-        TestInst(CMN(WSP, W1, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, W1, UXTB #2");
-        TestInst(CMN(W1, W16, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, W16, UXTB #2");
-        TestInst(CMN(W17, W16, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, W16, UXTB #2");
-        TestInst(CMN(WSP, W16, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, W16, UXTB #2");
-        TestInst(CMN(W1, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, WZR, UXTB #2");
-        TestInst(CMN(W17, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, WZR, UXTB #2");
-        TestInst(CMN(WSP, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, WZR, UXTB #2");
+        TestInst(CMN(W1, W1, _UXTW, 1), asm => asm.CMN(W1, W1, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, W1, UXTW #1");
+        TestInst(CMN(W17, W1, _UXTW, 1), asm => asm.CMN(W17, W1, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, W1, UXTW #1");
+        TestInst(CMN(WSP, W1, _LSL, 1), asm => asm.CMN(WSP, W1, _LSL, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, W1, LSL #1");
+        TestInst(CMN(W1, W16, _UXTW, 1), asm => asm.CMN(W1, W16, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, W16, UXTW #1");
+        TestInst(CMN(W17, W16, _UXTW, 1), asm => asm.CMN(W17, W16, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, W16, UXTW #1");
+        TestInst(CMN(WSP, W16, _LSL, 1), asm => asm.CMN(WSP, W16, _LSL, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, W16, LSL #1");
+        TestInst(CMN(W1, WZR, _UXTW, 1), asm => asm.CMN(W1, WZR, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, WZR, UXTW #1");
+        TestInst(CMN(W17, WZR, _UXTW, 1), asm => asm.CMN(W17, WZR, _UXTW, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, WZR, UXTW #1");
+        TestInst(CMN(WSP, WZR, _LSL, 1), asm => asm.CMN(WSP, WZR, _LSL, 1), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, WZR, LSL #1");
+        TestInst(CMN(W1, W1, _UXTB, 2), asm => asm.CMN(W1, W1, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, W1, UXTB #2");
+        TestInst(CMN(W17, W1, _UXTB, 2), asm => asm.CMN(W17, W1, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, W1, UXTB #2");
+        TestInst(CMN(WSP, W1, _UXTB, 2), asm => asm.CMN(WSP, W1, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, W1, UXTB #2");
+        TestInst(CMN(W1, W16, _UXTB, 2), asm => asm.CMN(W1, W16, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, W16, UXTB #2");
+        TestInst(CMN(W17, W16, _UXTB, 2), asm => asm.CMN(W17, W16, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, W16, UXTB #2");
+        TestInst(CMN(WSP, W16, _UXTB, 2), asm => asm.CMN(WSP, W16, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, W16, UXTB #2");
+        TestInst(CMN(W1, WZR, _UXTB, 2), asm => asm.CMN(W1, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W1, WZR, UXTB #2");
+        TestInst(CMN(W17, WZR, _UXTB, 2), asm => asm.CMN(W17, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN W17, WZR, UXTB #2");
+        TestInst(CMN(WSP, WZR, _UXTB, 2), asm => asm.CMN(WSP, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_32s_addsub_ext, Arm64Mnemonic.CMN, "CMN WSP, WZR, UXTB #2");
     }
     
     /// <summary>
@@ -50,18 +49,18 @@ public class Arm64InstructionFactoryTests_CMN_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CMN_adds_64s_addsub_ext_1()
     {
-        TestInst(CMN(X1, X2, _UXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, X2, UXTX #1");
-        TestInst(CMN(X17, X2, _UXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, X2, UXTX #1");
-        TestInst(CMN(SP, X2, _LSL, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, X2, LSL #1");
-        TestInst(CMN(X1, XZR, _UXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, XZR, UXTX #1");
-        TestInst(CMN(X17, XZR, _UXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, XZR, UXTX #1");
-        TestInst(CMN(SP, XZR, _LSL, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, XZR, LSL #1");
-        TestInst(CMN(X1, X2, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, X2, SXTX #1");
-        TestInst(CMN(X17, X2, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, X2, SXTX #1");
-        TestInst(CMN(SP, X2, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, X2, SXTX #1");
-        TestInst(CMN(X1, XZR, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, XZR, SXTX #1");
-        TestInst(CMN(X17, XZR, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, XZR, SXTX #1");
-        TestInst(CMN(SP, XZR, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, XZR, SXTX #1");
+        TestInst(CMN(X1, X2, _UXTX, 1), asm => asm.CMN(X1, X2, _UXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, X2, UXTX #1");
+        TestInst(CMN(X17, X2, _UXTX, 1), asm => asm.CMN(X17, X2, _UXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, X2, UXTX #1");
+        TestInst(CMN(SP, X2, _LSL, 1), asm => asm.CMN(SP, X2, _LSL, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, X2, LSL #1");
+        TestInst(CMN(X1, XZR, _UXTX, 1), asm => asm.CMN(X1, XZR, _UXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, XZR, UXTX #1");
+        TestInst(CMN(X17, XZR, _UXTX, 1), asm => asm.CMN(X17, XZR, _UXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, XZR, UXTX #1");
+        TestInst(CMN(SP, XZR, _LSL, 1), asm => asm.CMN(SP, XZR, _LSL, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, XZR, LSL #1");
+        TestInst(CMN(X1, X2, _SXTX, 1), asm => asm.CMN(X1, X2, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, X2, SXTX #1");
+        TestInst(CMN(X17, X2, _SXTX, 1), asm => asm.CMN(X17, X2, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, X2, SXTX #1");
+        TestInst(CMN(SP, X2, _SXTX, 1), asm => asm.CMN(SP, X2, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, X2, SXTX #1");
+        TestInst(CMN(X1, XZR, _SXTX, 1), asm => asm.CMN(X1, XZR, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, XZR, SXTX #1");
+        TestInst(CMN(X17, XZR, _SXTX, 1), asm => asm.CMN(X17, XZR, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, XZR, SXTX #1");
+        TestInst(CMN(SP, XZR, _SXTX, 1), asm => asm.CMN(SP, XZR, _SXTX, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, XZR, SXTX #1");
     }
     
     /// <summary>
@@ -70,18 +69,18 @@ public class Arm64InstructionFactoryTests_CMN_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CMN_adds_64s_addsub_ext_2()
     {
-        TestInst(CMN(X1, W2, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, W2, UXTW #1");
-        TestInst(CMN(X17, W2, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, W2, UXTW #1");
-        TestInst(CMN(SP, W2, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, W2, UXTW #1");
-        TestInst(CMN(X1, WZR, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, WZR, UXTW #1");
-        TestInst(CMN(X17, WZR, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, WZR, UXTW #1");
-        TestInst(CMN(SP, WZR, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, WZR, UXTW #1");
-        TestInst(CMN(X1, W2, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, W2, UXTB #2");
-        TestInst(CMN(X17, W2, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, W2, UXTB #2");
-        TestInst(CMN(SP, W2, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, W2, UXTB #2");
-        TestInst(CMN(X1, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, WZR, UXTB #2");
-        TestInst(CMN(X17, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, WZR, UXTB #2");
-        TestInst(CMN(SP, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, WZR, UXTB #2");
+        TestInst(CMN(X1, W2, _UXTW, 1), asm => asm.CMN(X1, W2, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, W2, UXTW #1");
+        TestInst(CMN(X17, W2, _UXTW, 1), asm => asm.CMN(X17, W2, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, W2, UXTW #1");
+        TestInst(CMN(SP, W2, _UXTW, 1), asm => asm.CMN(SP, W2, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, W2, UXTW #1");
+        TestInst(CMN(X1, WZR, _UXTW, 1), asm => asm.CMN(X1, WZR, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, WZR, UXTW #1");
+        TestInst(CMN(X17, WZR, _UXTW, 1), asm => asm.CMN(X17, WZR, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, WZR, UXTW #1");
+        TestInst(CMN(SP, WZR, _UXTW, 1), asm => asm.CMN(SP, WZR, _UXTW, 1), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, WZR, UXTW #1");
+        TestInst(CMN(X1, W2, _UXTB, 2), asm => asm.CMN(X1, W2, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, W2, UXTB #2");
+        TestInst(CMN(X17, W2, _UXTB, 2), asm => asm.CMN(X17, W2, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, W2, UXTB #2");
+        TestInst(CMN(SP, W2, _UXTB, 2), asm => asm.CMN(SP, W2, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, W2, UXTB #2");
+        TestInst(CMN(X1, WZR, _UXTB, 2), asm => asm.CMN(X1, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X1, WZR, UXTB #2");
+        TestInst(CMN(X17, WZR, _UXTB, 2), asm => asm.CMN(X17, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN X17, WZR, UXTB #2");
+        TestInst(CMN(SP, WZR, _UXTB, 2), asm => asm.CMN(SP, WZR, _UXTB, 2), Arm64InstructionId.CMN_adds_64s_addsub_ext, Arm64Mnemonic.CMN, "CMN SP, WZR, UXTB #2");
     }
     
     /// <summary>
@@ -90,12 +89,12 @@ public class Arm64InstructionFactoryTests_CMN_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CMN_adds_32s_addsub_imm_3()
     {
-        TestInst(CMN(W1, 5, _LSL, 0), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN W1, #5");
-        TestInst(CMN(W17, 5, _LSL, 0), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN W17, #5");
-        TestInst(CMN(WSP, 5, _LSL, 0), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN WSP, #5");
-        TestInst(CMN(W1, 5, _LSL, 12), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN W1, #5, LSL #12");
-        TestInst(CMN(W17, 5, _LSL, 12), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN W17, #5, LSL #12");
-        TestInst(CMN(WSP, 5, _LSL, 12), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN WSP, #5, LSL #12");
+        TestInst(CMN(W1, 5, _LSL, 0), asm => asm.CMN(W1, 5, _LSL, 0), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN W1, #5");
+        TestInst(CMN(W17, 5, _LSL, 0), asm => asm.CMN(W17, 5, _LSL, 0), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN W17, #5");
+        TestInst(CMN(WSP, 5, _LSL, 0), asm => asm.CMN(WSP, 5, _LSL, 0), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN WSP, #5");
+        TestInst(CMN(W1, 5, _LSL, 12), asm => asm.CMN(W1, 5, _LSL, 12), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN W1, #5, LSL #12");
+        TestInst(CMN(W17, 5, _LSL, 12), asm => asm.CMN(W17, 5, _LSL, 12), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN W17, #5, LSL #12");
+        TestInst(CMN(WSP, 5, _LSL, 12), asm => asm.CMN(WSP, 5, _LSL, 12), Arm64InstructionId.CMN_adds_32s_addsub_imm, Arm64Mnemonic.CMN, "CMN WSP, #5, LSL #12");
     }
     
     /// <summary>
@@ -104,12 +103,12 @@ public class Arm64InstructionFactoryTests_CMN_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CMN_adds_64s_addsub_imm_4()
     {
-        TestInst(CMN(X1, 5, _LSL, 0), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN X1, #5");
-        TestInst(CMN(X17, 5, _LSL, 0), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN X17, #5");
-        TestInst(CMN(SP, 5, _LSL, 0), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN SP, #5");
-        TestInst(CMN(X1, 5, _LSL, 12), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN X1, #5, LSL #12");
-        TestInst(CMN(X17, 5, _LSL, 12), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN X17, #5, LSL #12");
-        TestInst(CMN(SP, 5, _LSL, 12), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN SP, #5, LSL #12");
+        TestInst(CMN(X1, 5, _LSL, 0), asm => asm.CMN(X1, 5, _LSL, 0), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN X1, #5");
+        TestInst(CMN(X17, 5, _LSL, 0), asm => asm.CMN(X17, 5, _LSL, 0), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN X17, #5");
+        TestInst(CMN(SP, 5, _LSL, 0), asm => asm.CMN(SP, 5, _LSL, 0), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN SP, #5");
+        TestInst(CMN(X1, 5, _LSL, 12), asm => asm.CMN(X1, 5, _LSL, 12), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN X1, #5, LSL #12");
+        TestInst(CMN(X17, 5, _LSL, 12), asm => asm.CMN(X17, 5, _LSL, 12), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN X17, #5, LSL #12");
+        TestInst(CMN(SP, 5, _LSL, 12), asm => asm.CMN(SP, 5, _LSL, 12), Arm64InstructionId.CMN_adds_64s_addsub_imm, Arm64Mnemonic.CMN, "CMN SP, #5, LSL #12");
     }
     
     /// <summary>
@@ -118,42 +117,42 @@ public class Arm64InstructionFactoryTests_CMN_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CMN_adds_32_addsub_shift_5()
     {
-        TestInst(CMN(W0, W1, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W1");
-        TestInst(CMN(W15, W1, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W1");
-        TestInst(CMN(WZR, W1, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W1");
-        TestInst(CMN(W0, W16, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W16");
-        TestInst(CMN(W15, W16, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W16");
-        TestInst(CMN(WZR, W16, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W16");
-        TestInst(CMN(W0, WZR, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, WZR");
-        TestInst(CMN(W15, WZR, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, WZR");
-        TestInst(CMN(WZR, WZR, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, WZR");
-        TestInst(CMN(W0, W1, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W1, LSL #1");
-        TestInst(CMN(W15, W1, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W1, LSL #1");
-        TestInst(CMN(WZR, W1, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W1, LSL #1");
-        TestInst(CMN(W0, W16, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W16, LSL #1");
-        TestInst(CMN(W15, W16, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W16, LSL #1");
-        TestInst(CMN(WZR, W16, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W16, LSL #1");
-        TestInst(CMN(W0, WZR, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, WZR, LSL #1");
-        TestInst(CMN(W15, WZR, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, WZR, LSL #1");
-        TestInst(CMN(WZR, WZR, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, WZR, LSL #1");
-        TestInst(CMN(W0, W1, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W1, LSR #10");
-        TestInst(CMN(W15, W1, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W1, LSR #10");
-        TestInst(CMN(WZR, W1, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W1, LSR #10");
-        TestInst(CMN(W0, W16, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W16, LSR #10");
-        TestInst(CMN(W15, W16, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W16, LSR #10");
-        TestInst(CMN(WZR, W16, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W16, LSR #10");
-        TestInst(CMN(W0, WZR, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, WZR, LSR #10");
-        TestInst(CMN(W15, WZR, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, WZR, LSR #10");
-        TestInst(CMN(WZR, WZR, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, WZR, LSR #10");
-        TestInst(CMN(W0, W1, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W1, ASR #12");
-        TestInst(CMN(W15, W1, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W1, ASR #12");
-        TestInst(CMN(WZR, W1, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W1, ASR #12");
-        TestInst(CMN(W0, W16, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W16, ASR #12");
-        TestInst(CMN(W15, W16, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W16, ASR #12");
-        TestInst(CMN(WZR, W16, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W16, ASR #12");
-        TestInst(CMN(W0, WZR, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, WZR, ASR #12");
-        TestInst(CMN(W15, WZR, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, WZR, ASR #12");
-        TestInst(CMN(WZR, WZR, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, WZR, ASR #12");
+        TestInst(CMN(W0, W1, _LSL, 0), asm => asm.CMN(W0, W1, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W1");
+        TestInst(CMN(W15, W1, _LSL, 0), asm => asm.CMN(W15, W1, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W1");
+        TestInst(CMN(WZR, W1, _LSL, 0), asm => asm.CMN(WZR, W1, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W1");
+        TestInst(CMN(W0, W16, _LSL, 0), asm => asm.CMN(W0, W16, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W16");
+        TestInst(CMN(W15, W16, _LSL, 0), asm => asm.CMN(W15, W16, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W16");
+        TestInst(CMN(WZR, W16, _LSL, 0), asm => asm.CMN(WZR, W16, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W16");
+        TestInst(CMN(W0, WZR, _LSL, 0), asm => asm.CMN(W0, WZR, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, WZR");
+        TestInst(CMN(W15, WZR, _LSL, 0), asm => asm.CMN(W15, WZR, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, WZR");
+        TestInst(CMN(WZR, WZR, _LSL, 0), asm => asm.CMN(WZR, WZR, _LSL, 0), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, WZR");
+        TestInst(CMN(W0, W1, _LSL, 1), asm => asm.CMN(W0, W1, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W1, LSL #1");
+        TestInst(CMN(W15, W1, _LSL, 1), asm => asm.CMN(W15, W1, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W1, LSL #1");
+        TestInst(CMN(WZR, W1, _LSL, 1), asm => asm.CMN(WZR, W1, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W1, LSL #1");
+        TestInst(CMN(W0, W16, _LSL, 1), asm => asm.CMN(W0, W16, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W16, LSL #1");
+        TestInst(CMN(W15, W16, _LSL, 1), asm => asm.CMN(W15, W16, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W16, LSL #1");
+        TestInst(CMN(WZR, W16, _LSL, 1), asm => asm.CMN(WZR, W16, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W16, LSL #1");
+        TestInst(CMN(W0, WZR, _LSL, 1), asm => asm.CMN(W0, WZR, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, WZR, LSL #1");
+        TestInst(CMN(W15, WZR, _LSL, 1), asm => asm.CMN(W15, WZR, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, WZR, LSL #1");
+        TestInst(CMN(WZR, WZR, _LSL, 1), asm => asm.CMN(WZR, WZR, _LSL, 1), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, WZR, LSL #1");
+        TestInst(CMN(W0, W1, _LSR, 10), asm => asm.CMN(W0, W1, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W1, LSR #10");
+        TestInst(CMN(W15, W1, _LSR, 10), asm => asm.CMN(W15, W1, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W1, LSR #10");
+        TestInst(CMN(WZR, W1, _LSR, 10), asm => asm.CMN(WZR, W1, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W1, LSR #10");
+        TestInst(CMN(W0, W16, _LSR, 10), asm => asm.CMN(W0, W16, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W16, LSR #10");
+        TestInst(CMN(W15, W16, _LSR, 10), asm => asm.CMN(W15, W16, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W16, LSR #10");
+        TestInst(CMN(WZR, W16, _LSR, 10), asm => asm.CMN(WZR, W16, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W16, LSR #10");
+        TestInst(CMN(W0, WZR, _LSR, 10), asm => asm.CMN(W0, WZR, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, WZR, LSR #10");
+        TestInst(CMN(W15, WZR, _LSR, 10), asm => asm.CMN(W15, WZR, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, WZR, LSR #10");
+        TestInst(CMN(WZR, WZR, _LSR, 10), asm => asm.CMN(WZR, WZR, _LSR, 10), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, WZR, LSR #10");
+        TestInst(CMN(W0, W1, _ASR, 12), asm => asm.CMN(W0, W1, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W1, ASR #12");
+        TestInst(CMN(W15, W1, _ASR, 12), asm => asm.CMN(W15, W1, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W1, ASR #12");
+        TestInst(CMN(WZR, W1, _ASR, 12), asm => asm.CMN(WZR, W1, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W1, ASR #12");
+        TestInst(CMN(W0, W16, _ASR, 12), asm => asm.CMN(W0, W16, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, W16, ASR #12");
+        TestInst(CMN(W15, W16, _ASR, 12), asm => asm.CMN(W15, W16, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, W16, ASR #12");
+        TestInst(CMN(WZR, W16, _ASR, 12), asm => asm.CMN(WZR, W16, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, W16, ASR #12");
+        TestInst(CMN(W0, WZR, _ASR, 12), asm => asm.CMN(W0, WZR, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W0, WZR, ASR #12");
+        TestInst(CMN(W15, WZR, _ASR, 12), asm => asm.CMN(W15, WZR, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN W15, WZR, ASR #12");
+        TestInst(CMN(WZR, WZR, _ASR, 12), asm => asm.CMN(WZR, WZR, _ASR, 12), Arm64InstructionId.CMN_adds_32_addsub_shift, Arm64Mnemonic.CMN, "CMN WZR, WZR, ASR #12");
     }
     
     /// <summary>
@@ -162,41 +161,41 @@ public class Arm64InstructionFactoryTests_CMN_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CMN_adds_64_addsub_shift_6()
     {
-        TestInst(CMN(X0, X1, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X1");
-        TestInst(CMN(X15, X1, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X1");
-        TestInst(CMN(XZR, X1, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X1");
-        TestInst(CMN(X0, X16, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X16");
-        TestInst(CMN(X15, X16, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X16");
-        TestInst(CMN(XZR, X16, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X16");
-        TestInst(CMN(X0, XZR, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, XZR");
-        TestInst(CMN(X15, XZR, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, XZR");
-        TestInst(CMN(XZR, XZR, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, XZR");
-        TestInst(CMN(X0, X1, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X1, LSL #1");
-        TestInst(CMN(X15, X1, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X1, LSL #1");
-        TestInst(CMN(XZR, X1, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X1, LSL #1");
-        TestInst(CMN(X0, X16, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X16, LSL #1");
-        TestInst(CMN(X15, X16, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X16, LSL #1");
-        TestInst(CMN(XZR, X16, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X16, LSL #1");
-        TestInst(CMN(X0, XZR, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, XZR, LSL #1");
-        TestInst(CMN(X15, XZR, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, XZR, LSL #1");
-        TestInst(CMN(XZR, XZR, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, XZR, LSL #1");
-        TestInst(CMN(X0, X1, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X1, LSR #10");
-        TestInst(CMN(X15, X1, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X1, LSR #10");
-        TestInst(CMN(XZR, X1, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X1, LSR #10");
-        TestInst(CMN(X0, X16, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X16, LSR #10");
-        TestInst(CMN(X15, X16, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X16, LSR #10");
-        TestInst(CMN(XZR, X16, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X16, LSR #10");
-        TestInst(CMN(X0, XZR, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, XZR, LSR #10");
-        TestInst(CMN(X15, XZR, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, XZR, LSR #10");
-        TestInst(CMN(XZR, XZR, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, XZR, LSR #10");
-        TestInst(CMN(X0, X1, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X1, ASR #12");
-        TestInst(CMN(X15, X1, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X1, ASR #12");
-        TestInst(CMN(XZR, X1, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X1, ASR #12");
-        TestInst(CMN(X0, X16, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X16, ASR #12");
-        TestInst(CMN(X15, X16, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X16, ASR #12");
-        TestInst(CMN(XZR, X16, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X16, ASR #12");
-        TestInst(CMN(X0, XZR, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, XZR, ASR #12");
-        TestInst(CMN(X15, XZR, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, XZR, ASR #12");
-        TestInst(CMN(XZR, XZR, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, XZR, ASR #12");
+        TestInst(CMN(X0, X1, _LSL, 0), asm => asm.CMN(X0, X1, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X1");
+        TestInst(CMN(X15, X1, _LSL, 0), asm => asm.CMN(X15, X1, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X1");
+        TestInst(CMN(XZR, X1, _LSL, 0), asm => asm.CMN(XZR, X1, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X1");
+        TestInst(CMN(X0, X16, _LSL, 0), asm => asm.CMN(X0, X16, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X16");
+        TestInst(CMN(X15, X16, _LSL, 0), asm => asm.CMN(X15, X16, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X16");
+        TestInst(CMN(XZR, X16, _LSL, 0), asm => asm.CMN(XZR, X16, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X16");
+        TestInst(CMN(X0, XZR, _LSL, 0), asm => asm.CMN(X0, XZR, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, XZR");
+        TestInst(CMN(X15, XZR, _LSL, 0), asm => asm.CMN(X15, XZR, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, XZR");
+        TestInst(CMN(XZR, XZR, _LSL, 0), asm => asm.CMN(XZR, XZR, _LSL, 0), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, XZR");
+        TestInst(CMN(X0, X1, _LSL, 1), asm => asm.CMN(X0, X1, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X1, LSL #1");
+        TestInst(CMN(X15, X1, _LSL, 1), asm => asm.CMN(X15, X1, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X1, LSL #1");
+        TestInst(CMN(XZR, X1, _LSL, 1), asm => asm.CMN(XZR, X1, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X1, LSL #1");
+        TestInst(CMN(X0, X16, _LSL, 1), asm => asm.CMN(X0, X16, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X16, LSL #1");
+        TestInst(CMN(X15, X16, _LSL, 1), asm => asm.CMN(X15, X16, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X16, LSL #1");
+        TestInst(CMN(XZR, X16, _LSL, 1), asm => asm.CMN(XZR, X16, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X16, LSL #1");
+        TestInst(CMN(X0, XZR, _LSL, 1), asm => asm.CMN(X0, XZR, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, XZR, LSL #1");
+        TestInst(CMN(X15, XZR, _LSL, 1), asm => asm.CMN(X15, XZR, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, XZR, LSL #1");
+        TestInst(CMN(XZR, XZR, _LSL, 1), asm => asm.CMN(XZR, XZR, _LSL, 1), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, XZR, LSL #1");
+        TestInst(CMN(X0, X1, _LSR, 10), asm => asm.CMN(X0, X1, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X1, LSR #10");
+        TestInst(CMN(X15, X1, _LSR, 10), asm => asm.CMN(X15, X1, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X1, LSR #10");
+        TestInst(CMN(XZR, X1, _LSR, 10), asm => asm.CMN(XZR, X1, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X1, LSR #10");
+        TestInst(CMN(X0, X16, _LSR, 10), asm => asm.CMN(X0, X16, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X16, LSR #10");
+        TestInst(CMN(X15, X16, _LSR, 10), asm => asm.CMN(X15, X16, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X16, LSR #10");
+        TestInst(CMN(XZR, X16, _LSR, 10), asm => asm.CMN(XZR, X16, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X16, LSR #10");
+        TestInst(CMN(X0, XZR, _LSR, 10), asm => asm.CMN(X0, XZR, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, XZR, LSR #10");
+        TestInst(CMN(X15, XZR, _LSR, 10), asm => asm.CMN(X15, XZR, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, XZR, LSR #10");
+        TestInst(CMN(XZR, XZR, _LSR, 10), asm => asm.CMN(XZR, XZR, _LSR, 10), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, XZR, LSR #10");
+        TestInst(CMN(X0, X1, _ASR, 12), asm => asm.CMN(X0, X1, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X1, ASR #12");
+        TestInst(CMN(X15, X1, _ASR, 12), asm => asm.CMN(X15, X1, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X1, ASR #12");
+        TestInst(CMN(XZR, X1, _ASR, 12), asm => asm.CMN(XZR, X1, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X1, ASR #12");
+        TestInst(CMN(X0, X16, _ASR, 12), asm => asm.CMN(X0, X16, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, X16, ASR #12");
+        TestInst(CMN(X15, X16, _ASR, 12), asm => asm.CMN(X15, X16, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, X16, ASR #12");
+        TestInst(CMN(XZR, X16, _ASR, 12), asm => asm.CMN(XZR, X16, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, X16, ASR #12");
+        TestInst(CMN(X0, XZR, _ASR, 12), asm => asm.CMN(X0, XZR, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X0, XZR, ASR #12");
+        TestInst(CMN(X15, XZR, _ASR, 12), asm => asm.CMN(X15, XZR, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN X15, XZR, ASR #12");
+        TestInst(CMN(XZR, XZR, _ASR, 12), asm => asm.CMN(XZR, XZR, _ASR, 12), Arm64InstructionId.CMN_adds_64_addsub_shift, Arm64Mnemonic.CMN, "CMN XZR, XZR, ASR #12");
     }
 }

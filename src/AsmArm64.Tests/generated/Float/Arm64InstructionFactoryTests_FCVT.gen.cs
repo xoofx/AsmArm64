@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FCVT_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FCVT_sh_floatdp1_0()
     {
-        TestInst(FCVT(S0, H1), Arm64InstructionId.FCVT_sh_floatdp1, Arm64Mnemonic.FCVT, "FCVT S0, H1");
-        TestInst(FCVT(S31, H1), Arm64InstructionId.FCVT_sh_floatdp1, Arm64Mnemonic.FCVT, "FCVT S31, H1");
-        TestInst(FCVT(S0, H31), Arm64InstructionId.FCVT_sh_floatdp1, Arm64Mnemonic.FCVT, "FCVT S0, H31");
-        TestInst(FCVT(S31, H31), Arm64InstructionId.FCVT_sh_floatdp1, Arm64Mnemonic.FCVT, "FCVT S31, H31");
+        TestInst(FCVT(S0, H1), asm => asm.FCVT(S0, H1), Arm64InstructionId.FCVT_sh_floatdp1, Arm64Mnemonic.FCVT, "FCVT S0, H1");
+        TestInst(FCVT(S31, H1), asm => asm.FCVT(S31, H1), Arm64InstructionId.FCVT_sh_floatdp1, Arm64Mnemonic.FCVT, "FCVT S31, H1");
+        TestInst(FCVT(S0, H31), asm => asm.FCVT(S0, H31), Arm64InstructionId.FCVT_sh_floatdp1, Arm64Mnemonic.FCVT, "FCVT S0, H31");
+        TestInst(FCVT(S31, H31), asm => asm.FCVT(S31, H31), Arm64InstructionId.FCVT_sh_floatdp1, Arm64Mnemonic.FCVT, "FCVT S31, H31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FCVT_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FCVT_dh_floatdp1_1()
     {
-        TestInst(FCVT(D0, H1), Arm64InstructionId.FCVT_dh_floatdp1, Arm64Mnemonic.FCVT, "FCVT D0, H1");
-        TestInst(FCVT(D31, H1), Arm64InstructionId.FCVT_dh_floatdp1, Arm64Mnemonic.FCVT, "FCVT D31, H1");
-        TestInst(FCVT(D0, H31), Arm64InstructionId.FCVT_dh_floatdp1, Arm64Mnemonic.FCVT, "FCVT D0, H31");
-        TestInst(FCVT(D31, H31), Arm64InstructionId.FCVT_dh_floatdp1, Arm64Mnemonic.FCVT, "FCVT D31, H31");
+        TestInst(FCVT(D0, H1), asm => asm.FCVT(D0, H1), Arm64InstructionId.FCVT_dh_floatdp1, Arm64Mnemonic.FCVT, "FCVT D0, H1");
+        TestInst(FCVT(D31, H1), asm => asm.FCVT(D31, H1), Arm64InstructionId.FCVT_dh_floatdp1, Arm64Mnemonic.FCVT, "FCVT D31, H1");
+        TestInst(FCVT(D0, H31), asm => asm.FCVT(D0, H31), Arm64InstructionId.FCVT_dh_floatdp1, Arm64Mnemonic.FCVT, "FCVT D0, H31");
+        TestInst(FCVT(D31, H31), asm => asm.FCVT(D31, H31), Arm64InstructionId.FCVT_dh_floatdp1, Arm64Mnemonic.FCVT, "FCVT D31, H31");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_FCVT_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FCVT_hs_floatdp1_2()
     {
-        TestInst(FCVT(H0, S1), Arm64InstructionId.FCVT_hs_floatdp1, Arm64Mnemonic.FCVT, "FCVT H0, S1");
-        TestInst(FCVT(H31, S1), Arm64InstructionId.FCVT_hs_floatdp1, Arm64Mnemonic.FCVT, "FCVT H31, S1");
-        TestInst(FCVT(H0, S31), Arm64InstructionId.FCVT_hs_floatdp1, Arm64Mnemonic.FCVT, "FCVT H0, S31");
-        TestInst(FCVT(H31, S31), Arm64InstructionId.FCVT_hs_floatdp1, Arm64Mnemonic.FCVT, "FCVT H31, S31");
+        TestInst(FCVT(H0, S1), asm => asm.FCVT(H0, S1), Arm64InstructionId.FCVT_hs_floatdp1, Arm64Mnemonic.FCVT, "FCVT H0, S1");
+        TestInst(FCVT(H31, S1), asm => asm.FCVT(H31, S1), Arm64InstructionId.FCVT_hs_floatdp1, Arm64Mnemonic.FCVT, "FCVT H31, S1");
+        TestInst(FCVT(H0, S31), asm => asm.FCVT(H0, S31), Arm64InstructionId.FCVT_hs_floatdp1, Arm64Mnemonic.FCVT, "FCVT H0, S31");
+        TestInst(FCVT(H31, S31), asm => asm.FCVT(H31, S31), Arm64InstructionId.FCVT_hs_floatdp1, Arm64Mnemonic.FCVT, "FCVT H31, S31");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_FCVT_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FCVT_ds_floatdp1_3()
     {
-        TestInst(FCVT(D0, S1), Arm64InstructionId.FCVT_ds_floatdp1, Arm64Mnemonic.FCVT, "FCVT D0, S1");
-        TestInst(FCVT(D31, S1), Arm64InstructionId.FCVT_ds_floatdp1, Arm64Mnemonic.FCVT, "FCVT D31, S1");
-        TestInst(FCVT(D0, S31), Arm64InstructionId.FCVT_ds_floatdp1, Arm64Mnemonic.FCVT, "FCVT D0, S31");
-        TestInst(FCVT(D31, S31), Arm64InstructionId.FCVT_ds_floatdp1, Arm64Mnemonic.FCVT, "FCVT D31, S31");
+        TestInst(FCVT(D0, S1), asm => asm.FCVT(D0, S1), Arm64InstructionId.FCVT_ds_floatdp1, Arm64Mnemonic.FCVT, "FCVT D0, S1");
+        TestInst(FCVT(D31, S1), asm => asm.FCVT(D31, S1), Arm64InstructionId.FCVT_ds_floatdp1, Arm64Mnemonic.FCVT, "FCVT D31, S1");
+        TestInst(FCVT(D0, S31), asm => asm.FCVT(D0, S31), Arm64InstructionId.FCVT_ds_floatdp1, Arm64Mnemonic.FCVT, "FCVT D0, S31");
+        TestInst(FCVT(D31, S31), asm => asm.FCVT(D31, S31), Arm64InstructionId.FCVT_ds_floatdp1, Arm64Mnemonic.FCVT, "FCVT D31, S31");
     }
     
     /// <summary>
@@ -72,10 +71,10 @@ public class Arm64InstructionFactoryTests_FCVT_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FCVT_hd_floatdp1_4()
     {
-        TestInst(FCVT(H0, D1), Arm64InstructionId.FCVT_hd_floatdp1, Arm64Mnemonic.FCVT, "FCVT H0, D1");
-        TestInst(FCVT(H31, D1), Arm64InstructionId.FCVT_hd_floatdp1, Arm64Mnemonic.FCVT, "FCVT H31, D1");
-        TestInst(FCVT(H0, D31), Arm64InstructionId.FCVT_hd_floatdp1, Arm64Mnemonic.FCVT, "FCVT H0, D31");
-        TestInst(FCVT(H31, D31), Arm64InstructionId.FCVT_hd_floatdp1, Arm64Mnemonic.FCVT, "FCVT H31, D31");
+        TestInst(FCVT(H0, D1), asm => asm.FCVT(H0, D1), Arm64InstructionId.FCVT_hd_floatdp1, Arm64Mnemonic.FCVT, "FCVT H0, D1");
+        TestInst(FCVT(H31, D1), asm => asm.FCVT(H31, D1), Arm64InstructionId.FCVT_hd_floatdp1, Arm64Mnemonic.FCVT, "FCVT H31, D1");
+        TestInst(FCVT(H0, D31), asm => asm.FCVT(H0, D31), Arm64InstructionId.FCVT_hd_floatdp1, Arm64Mnemonic.FCVT, "FCVT H0, D31");
+        TestInst(FCVT(H31, D31), asm => asm.FCVT(H31, D31), Arm64InstructionId.FCVT_hd_floatdp1, Arm64Mnemonic.FCVT, "FCVT H31, D31");
     }
     
     /// <summary>
@@ -84,9 +83,9 @@ public class Arm64InstructionFactoryTests_FCVT_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FCVT_sd_floatdp1_5()
     {
-        TestInst(FCVT(S0, D1), Arm64InstructionId.FCVT_sd_floatdp1, Arm64Mnemonic.FCVT, "FCVT S0, D1");
-        TestInst(FCVT(S31, D1), Arm64InstructionId.FCVT_sd_floatdp1, Arm64Mnemonic.FCVT, "FCVT S31, D1");
-        TestInst(FCVT(S0, D31), Arm64InstructionId.FCVT_sd_floatdp1, Arm64Mnemonic.FCVT, "FCVT S0, D31");
-        TestInst(FCVT(S31, D31), Arm64InstructionId.FCVT_sd_floatdp1, Arm64Mnemonic.FCVT, "FCVT S31, D31");
+        TestInst(FCVT(S0, D1), asm => asm.FCVT(S0, D1), Arm64InstructionId.FCVT_sd_floatdp1, Arm64Mnemonic.FCVT, "FCVT S0, D1");
+        TestInst(FCVT(S31, D1), asm => asm.FCVT(S31, D1), Arm64InstructionId.FCVT_sd_floatdp1, Arm64Mnemonic.FCVT, "FCVT S31, D1");
+        TestInst(FCVT(S0, D31), asm => asm.FCVT(S0, D31), Arm64InstructionId.FCVT_sd_floatdp1, Arm64Mnemonic.FCVT, "FCVT S0, D31");
+        TestInst(FCVT(S31, D31), asm => asm.FCVT(S31, D31), Arm64InstructionId.FCVT_sd_floatdp1, Arm64Mnemonic.FCVT, "FCVT S31, D31");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_STLXRB_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STLXRB_sr32_ldstexclr_0()
     {
-        TestInst(STLXRB(W0, W1, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W0, W1, [X3]");
-        TestInst(STLXRB(W15, W1, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W15, W1, [X3]");
-        TestInst(STLXRB(WZR, W1, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB WZR, W1, [X3]");
-        TestInst(STLXRB(W0, W16, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W0, W16, [X3]");
-        TestInst(STLXRB(W15, W16, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W15, W16, [X3]");
-        TestInst(STLXRB(WZR, W16, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB WZR, W16, [X3]");
-        TestInst(STLXRB(W0, WZR, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W0, WZR, [X3]");
-        TestInst(STLXRB(W15, WZR, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W15, WZR, [X3]");
-        TestInst(STLXRB(WZR, WZR, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB WZR, WZR, [X3]");
+        TestInst(STLXRB(W0, W1, _[X3]), asm => asm.STLXRB(W0, W1, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W0, W1, [X3]");
+        TestInst(STLXRB(W15, W1, _[X3]), asm => asm.STLXRB(W15, W1, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W15, W1, [X3]");
+        TestInst(STLXRB(WZR, W1, _[X3]), asm => asm.STLXRB(WZR, W1, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB WZR, W1, [X3]");
+        TestInst(STLXRB(W0, W16, _[X3]), asm => asm.STLXRB(W0, W16, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W0, W16, [X3]");
+        TestInst(STLXRB(W15, W16, _[X3]), asm => asm.STLXRB(W15, W16, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W15, W16, [X3]");
+        TestInst(STLXRB(WZR, W16, _[X3]), asm => asm.STLXRB(WZR, W16, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB WZR, W16, [X3]");
+        TestInst(STLXRB(W0, WZR, _[X3]), asm => asm.STLXRB(W0, WZR, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W0, WZR, [X3]");
+        TestInst(STLXRB(W15, WZR, _[X3]), asm => asm.STLXRB(W15, WZR, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB W15, WZR, [X3]");
+        TestInst(STLXRB(WZR, WZR, _[X3]), asm => asm.STLXRB(WZR, WZR, _[X3]), Arm64InstructionId.STLXRB_sr32_ldstexclr, Arm64Mnemonic.STLXRB, "STLXRB WZR, WZR, [X3]");
     }
 }

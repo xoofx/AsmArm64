@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,22 +23,22 @@ public class Arm64InstructionFactoryTests_FCSEL_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_FCSEL_h_floatsel_0()
     {
-        TestInst(FCSEL(H0, H1, H2, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H1, H2, NE");
-        TestInst(FCSEL(H31, H1, H2, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H1, H2, NE");
-        TestInst(FCSEL(H0, H31, H2, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H31, H2, NE");
-        TestInst(FCSEL(H31, H31, H2, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H31, H2, NE");
-        TestInst(FCSEL(H0, H1, H31, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H1, H31, NE");
-        TestInst(FCSEL(H31, H1, H31, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H1, H31, NE");
-        TestInst(FCSEL(H0, H31, H31, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H31, H31, NE");
-        TestInst(FCSEL(H31, H31, H31, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H31, H31, NE");
-        TestInst(FCSEL(H0, H1, H2, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H1, H2, HS");
-        TestInst(FCSEL(H31, H1, H2, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H1, H2, HS");
-        TestInst(FCSEL(H0, H31, H2, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H31, H2, HS");
-        TestInst(FCSEL(H31, H31, H2, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H31, H2, HS");
-        TestInst(FCSEL(H0, H1, H31, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H1, H31, HS");
-        TestInst(FCSEL(H31, H1, H31, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H1, H31, HS");
-        TestInst(FCSEL(H0, H31, H31, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H31, H31, HS");
-        TestInst(FCSEL(H31, H31, H31, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H31, H31, HS");
+        TestInst(FCSEL(H0, H1, H2, NE), asm => asm.FCSEL(H0, H1, H2, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H1, H2, NE");
+        TestInst(FCSEL(H31, H1, H2, NE), asm => asm.FCSEL(H31, H1, H2, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H1, H2, NE");
+        TestInst(FCSEL(H0, H31, H2, NE), asm => asm.FCSEL(H0, H31, H2, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H31, H2, NE");
+        TestInst(FCSEL(H31, H31, H2, NE), asm => asm.FCSEL(H31, H31, H2, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H31, H2, NE");
+        TestInst(FCSEL(H0, H1, H31, NE), asm => asm.FCSEL(H0, H1, H31, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H1, H31, NE");
+        TestInst(FCSEL(H31, H1, H31, NE), asm => asm.FCSEL(H31, H1, H31, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H1, H31, NE");
+        TestInst(FCSEL(H0, H31, H31, NE), asm => asm.FCSEL(H0, H31, H31, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H31, H31, NE");
+        TestInst(FCSEL(H31, H31, H31, NE), asm => asm.FCSEL(H31, H31, H31, NE), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H31, H31, NE");
+        TestInst(FCSEL(H0, H1, H2, HS), asm => asm.FCSEL(H0, H1, H2, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H1, H2, HS");
+        TestInst(FCSEL(H31, H1, H2, HS), asm => asm.FCSEL(H31, H1, H2, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H1, H2, HS");
+        TestInst(FCSEL(H0, H31, H2, HS), asm => asm.FCSEL(H0, H31, H2, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H31, H2, HS");
+        TestInst(FCSEL(H31, H31, H2, HS), asm => asm.FCSEL(H31, H31, H2, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H31, H2, HS");
+        TestInst(FCSEL(H0, H1, H31, HS), asm => asm.FCSEL(H0, H1, H31, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H1, H31, HS");
+        TestInst(FCSEL(H31, H1, H31, HS), asm => asm.FCSEL(H31, H1, H31, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H1, H31, HS");
+        TestInst(FCSEL(H0, H31, H31, HS), asm => asm.FCSEL(H0, H31, H31, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H0, H31, H31, HS");
+        TestInst(FCSEL(H31, H31, H31, HS), asm => asm.FCSEL(H31, H31, H31, HS), Arm64InstructionId.FCSEL_h_floatsel, Arm64Mnemonic.FCSEL, "FCSEL H31, H31, H31, HS");
     }
     
     /// <summary>
@@ -48,22 +47,22 @@ public class Arm64InstructionFactoryTests_FCSEL_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_FCSEL_s_floatsel_1()
     {
-        TestInst(FCSEL(S0, S1, S2, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S1, S2, NE");
-        TestInst(FCSEL(S31, S1, S2, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S1, S2, NE");
-        TestInst(FCSEL(S0, S31, S2, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S31, S2, NE");
-        TestInst(FCSEL(S31, S31, S2, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S31, S2, NE");
-        TestInst(FCSEL(S0, S1, S31, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S1, S31, NE");
-        TestInst(FCSEL(S31, S1, S31, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S1, S31, NE");
-        TestInst(FCSEL(S0, S31, S31, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S31, S31, NE");
-        TestInst(FCSEL(S31, S31, S31, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S31, S31, NE");
-        TestInst(FCSEL(S0, S1, S2, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S1, S2, HS");
-        TestInst(FCSEL(S31, S1, S2, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S1, S2, HS");
-        TestInst(FCSEL(S0, S31, S2, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S31, S2, HS");
-        TestInst(FCSEL(S31, S31, S2, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S31, S2, HS");
-        TestInst(FCSEL(S0, S1, S31, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S1, S31, HS");
-        TestInst(FCSEL(S31, S1, S31, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S1, S31, HS");
-        TestInst(FCSEL(S0, S31, S31, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S31, S31, HS");
-        TestInst(FCSEL(S31, S31, S31, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S31, S31, HS");
+        TestInst(FCSEL(S0, S1, S2, NE), asm => asm.FCSEL(S0, S1, S2, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S1, S2, NE");
+        TestInst(FCSEL(S31, S1, S2, NE), asm => asm.FCSEL(S31, S1, S2, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S1, S2, NE");
+        TestInst(FCSEL(S0, S31, S2, NE), asm => asm.FCSEL(S0, S31, S2, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S31, S2, NE");
+        TestInst(FCSEL(S31, S31, S2, NE), asm => asm.FCSEL(S31, S31, S2, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S31, S2, NE");
+        TestInst(FCSEL(S0, S1, S31, NE), asm => asm.FCSEL(S0, S1, S31, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S1, S31, NE");
+        TestInst(FCSEL(S31, S1, S31, NE), asm => asm.FCSEL(S31, S1, S31, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S1, S31, NE");
+        TestInst(FCSEL(S0, S31, S31, NE), asm => asm.FCSEL(S0, S31, S31, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S31, S31, NE");
+        TestInst(FCSEL(S31, S31, S31, NE), asm => asm.FCSEL(S31, S31, S31, NE), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S31, S31, NE");
+        TestInst(FCSEL(S0, S1, S2, HS), asm => asm.FCSEL(S0, S1, S2, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S1, S2, HS");
+        TestInst(FCSEL(S31, S1, S2, HS), asm => asm.FCSEL(S31, S1, S2, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S1, S2, HS");
+        TestInst(FCSEL(S0, S31, S2, HS), asm => asm.FCSEL(S0, S31, S2, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S31, S2, HS");
+        TestInst(FCSEL(S31, S31, S2, HS), asm => asm.FCSEL(S31, S31, S2, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S31, S2, HS");
+        TestInst(FCSEL(S0, S1, S31, HS), asm => asm.FCSEL(S0, S1, S31, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S1, S31, HS");
+        TestInst(FCSEL(S31, S1, S31, HS), asm => asm.FCSEL(S31, S1, S31, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S1, S31, HS");
+        TestInst(FCSEL(S0, S31, S31, HS), asm => asm.FCSEL(S0, S31, S31, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S0, S31, S31, HS");
+        TestInst(FCSEL(S31, S31, S31, HS), asm => asm.FCSEL(S31, S31, S31, HS), Arm64InstructionId.FCSEL_s_floatsel, Arm64Mnemonic.FCSEL, "FCSEL S31, S31, S31, HS");
     }
     
     /// <summary>
@@ -72,21 +71,21 @@ public class Arm64InstructionFactoryTests_FCSEL_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_FCSEL_d_floatsel_2()
     {
-        TestInst(FCSEL(D0, D1, D2, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D1, D2, NE");
-        TestInst(FCSEL(D31, D1, D2, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D1, D2, NE");
-        TestInst(FCSEL(D0, D31, D2, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D31, D2, NE");
-        TestInst(FCSEL(D31, D31, D2, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D31, D2, NE");
-        TestInst(FCSEL(D0, D1, D31, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D1, D31, NE");
-        TestInst(FCSEL(D31, D1, D31, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D1, D31, NE");
-        TestInst(FCSEL(D0, D31, D31, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D31, D31, NE");
-        TestInst(FCSEL(D31, D31, D31, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D31, D31, NE");
-        TestInst(FCSEL(D0, D1, D2, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D1, D2, HS");
-        TestInst(FCSEL(D31, D1, D2, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D1, D2, HS");
-        TestInst(FCSEL(D0, D31, D2, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D31, D2, HS");
-        TestInst(FCSEL(D31, D31, D2, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D31, D2, HS");
-        TestInst(FCSEL(D0, D1, D31, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D1, D31, HS");
-        TestInst(FCSEL(D31, D1, D31, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D1, D31, HS");
-        TestInst(FCSEL(D0, D31, D31, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D31, D31, HS");
-        TestInst(FCSEL(D31, D31, D31, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D31, D31, HS");
+        TestInst(FCSEL(D0, D1, D2, NE), asm => asm.FCSEL(D0, D1, D2, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D1, D2, NE");
+        TestInst(FCSEL(D31, D1, D2, NE), asm => asm.FCSEL(D31, D1, D2, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D1, D2, NE");
+        TestInst(FCSEL(D0, D31, D2, NE), asm => asm.FCSEL(D0, D31, D2, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D31, D2, NE");
+        TestInst(FCSEL(D31, D31, D2, NE), asm => asm.FCSEL(D31, D31, D2, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D31, D2, NE");
+        TestInst(FCSEL(D0, D1, D31, NE), asm => asm.FCSEL(D0, D1, D31, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D1, D31, NE");
+        TestInst(FCSEL(D31, D1, D31, NE), asm => asm.FCSEL(D31, D1, D31, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D1, D31, NE");
+        TestInst(FCSEL(D0, D31, D31, NE), asm => asm.FCSEL(D0, D31, D31, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D31, D31, NE");
+        TestInst(FCSEL(D31, D31, D31, NE), asm => asm.FCSEL(D31, D31, D31, NE), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D31, D31, NE");
+        TestInst(FCSEL(D0, D1, D2, HS), asm => asm.FCSEL(D0, D1, D2, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D1, D2, HS");
+        TestInst(FCSEL(D31, D1, D2, HS), asm => asm.FCSEL(D31, D1, D2, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D1, D2, HS");
+        TestInst(FCSEL(D0, D31, D2, HS), asm => asm.FCSEL(D0, D31, D2, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D31, D2, HS");
+        TestInst(FCSEL(D31, D31, D2, HS), asm => asm.FCSEL(D31, D31, D2, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D31, D2, HS");
+        TestInst(FCSEL(D0, D1, D31, HS), asm => asm.FCSEL(D0, D1, D31, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D1, D31, HS");
+        TestInst(FCSEL(D31, D1, D31, HS), asm => asm.FCSEL(D31, D1, D31, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D1, D31, HS");
+        TestInst(FCSEL(D0, D31, D31, HS), asm => asm.FCSEL(D0, D31, D31, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D0, D31, D31, HS");
+        TestInst(FCSEL(D31, D31, D31, HS), asm => asm.FCSEL(D31, D31, D31, HS), Arm64InstructionId.FCSEL_d_floatsel, Arm64Mnemonic.FCSEL, "FCSEL D31, D31, D31, HS");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_USQADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USQADD_asisdmisc_r_0()
     {
-        TestInst(USQADD(B1, B2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD B1, B2");
-        TestInst(USQADD(B31, B2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD B31, B2");
-        TestInst(USQADD(B1, B0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD B1, B0");
-        TestInst(USQADD(B31, B0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD B31, B0");
+        TestInst(USQADD(B1, B2), asm => asm.USQADD(B1, B2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD B1, B2");
+        TestInst(USQADD(B31, B2), asm => asm.USQADD(B31, B2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD B31, B2");
+        TestInst(USQADD(B1, B0), asm => asm.USQADD(B1, B0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD B1, B0");
+        TestInst(USQADD(B31, B0), asm => asm.USQADD(B31, B0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD B31, B0");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_USQADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USQADD_asisdmisc_r_1()
     {
-        TestInst(USQADD(H1, H2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD H1, H2");
-        TestInst(USQADD(H31, H2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD H31, H2");
-        TestInst(USQADD(H1, H0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD H1, H0");
-        TestInst(USQADD(H31, H0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD H31, H0");
+        TestInst(USQADD(H1, H2), asm => asm.USQADD(H1, H2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD H1, H2");
+        TestInst(USQADD(H31, H2), asm => asm.USQADD(H31, H2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD H31, H2");
+        TestInst(USQADD(H1, H0), asm => asm.USQADD(H1, H0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD H1, H0");
+        TestInst(USQADD(H31, H0), asm => asm.USQADD(H31, H0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD H31, H0");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_USQADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USQADD_asisdmisc_r_2()
     {
-        TestInst(USQADD(S1, S2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD S1, S2");
-        TestInst(USQADD(S31, S2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD S31, S2");
-        TestInst(USQADD(S1, S0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD S1, S0");
-        TestInst(USQADD(S31, S0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD S31, S0");
+        TestInst(USQADD(S1, S2), asm => asm.USQADD(S1, S2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD S1, S2");
+        TestInst(USQADD(S31, S2), asm => asm.USQADD(S31, S2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD S31, S2");
+        TestInst(USQADD(S1, S0), asm => asm.USQADD(S1, S0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD S1, S0");
+        TestInst(USQADD(S31, S0), asm => asm.USQADD(S31, S0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD S31, S0");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_USQADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USQADD_asisdmisc_r_3()
     {
-        TestInst(USQADD(D1, D2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD D1, D2");
-        TestInst(USQADD(D31, D2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD D31, D2");
-        TestInst(USQADD(D1, D0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD D1, D0");
-        TestInst(USQADD(D31, D0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD D31, D0");
+        TestInst(USQADD(D1, D2), asm => asm.USQADD(D1, D2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD D1, D2");
+        TestInst(USQADD(D31, D2), asm => asm.USQADD(D31, D2), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD D31, D2");
+        TestInst(USQADD(D1, D0), asm => asm.USQADD(D1, D0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD D1, D0");
+        TestInst(USQADD(D31, D0), asm => asm.USQADD(D31, D0), Arm64InstructionId.USQADD_asisdmisc_r, Arm64Mnemonic.USQADD, "USQADD D31, D0");
     }
     
     /// <summary>
@@ -72,10 +71,10 @@ public class Arm64InstructionFactoryTests_USQADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USQADD_asimdmisc_r_4()
     {
-        TestInst(USQADD(V0.T_8B, V1.T_8B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.8B, V1.8B");
-        TestInst(USQADD(V30.T_8B, V1.T_8B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.8B, V1.8B");
-        TestInst(USQADD(V0.T_8B, V31.T_8B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.8B, V31.8B");
-        TestInst(USQADD(V30.T_8B, V31.T_8B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.8B, V31.8B");
+        TestInst(USQADD(V0.T_8B, V1.T_8B), asm => asm.USQADD(V0.T_8B, V1.T_8B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.8B, V1.8B");
+        TestInst(USQADD(V30.T_8B, V1.T_8B), asm => asm.USQADD(V30.T_8B, V1.T_8B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.8B, V1.8B");
+        TestInst(USQADD(V0.T_8B, V31.T_8B), asm => asm.USQADD(V0.T_8B, V31.T_8B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.8B, V31.8B");
+        TestInst(USQADD(V30.T_8B, V31.T_8B), asm => asm.USQADD(V30.T_8B, V31.T_8B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.8B, V31.8B");
     }
     
     /// <summary>
@@ -84,10 +83,10 @@ public class Arm64InstructionFactoryTests_USQADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USQADD_asimdmisc_r_5()
     {
-        TestInst(USQADD(V0.T_16B, V1.T_16B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.16B, V1.16B");
-        TestInst(USQADD(V30.T_16B, V1.T_16B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.16B, V1.16B");
-        TestInst(USQADD(V0.T_16B, V31.T_16B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.16B, V31.16B");
-        TestInst(USQADD(V30.T_16B, V31.T_16B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.16B, V31.16B");
+        TestInst(USQADD(V0.T_16B, V1.T_16B), asm => asm.USQADD(V0.T_16B, V1.T_16B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.16B, V1.16B");
+        TestInst(USQADD(V30.T_16B, V1.T_16B), asm => asm.USQADD(V30.T_16B, V1.T_16B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.16B, V1.16B");
+        TestInst(USQADD(V0.T_16B, V31.T_16B), asm => asm.USQADD(V0.T_16B, V31.T_16B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.16B, V31.16B");
+        TestInst(USQADD(V30.T_16B, V31.T_16B), asm => asm.USQADD(V30.T_16B, V31.T_16B), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.16B, V31.16B");
     }
     
     /// <summary>
@@ -96,10 +95,10 @@ public class Arm64InstructionFactoryTests_USQADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USQADD_asimdmisc_r_6()
     {
-        TestInst(USQADD(V0.T_4H, V1.T_4H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.4H, V1.4H");
-        TestInst(USQADD(V30.T_4H, V1.T_4H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.4H, V1.4H");
-        TestInst(USQADD(V0.T_4H, V31.T_4H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.4H, V31.4H");
-        TestInst(USQADD(V30.T_4H, V31.T_4H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.4H, V31.4H");
+        TestInst(USQADD(V0.T_4H, V1.T_4H), asm => asm.USQADD(V0.T_4H, V1.T_4H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.4H, V1.4H");
+        TestInst(USQADD(V30.T_4H, V1.T_4H), asm => asm.USQADD(V30.T_4H, V1.T_4H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.4H, V1.4H");
+        TestInst(USQADD(V0.T_4H, V31.T_4H), asm => asm.USQADD(V0.T_4H, V31.T_4H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.4H, V31.4H");
+        TestInst(USQADD(V30.T_4H, V31.T_4H), asm => asm.USQADD(V30.T_4H, V31.T_4H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.4H, V31.4H");
     }
     
     /// <summary>
@@ -108,10 +107,10 @@ public class Arm64InstructionFactoryTests_USQADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USQADD_asimdmisc_r_7()
     {
-        TestInst(USQADD(V0.T_8H, V1.T_8H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.8H, V1.8H");
-        TestInst(USQADD(V30.T_8H, V1.T_8H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.8H, V1.8H");
-        TestInst(USQADD(V0.T_8H, V31.T_8H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.8H, V31.8H");
-        TestInst(USQADD(V30.T_8H, V31.T_8H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.8H, V31.8H");
+        TestInst(USQADD(V0.T_8H, V1.T_8H), asm => asm.USQADD(V0.T_8H, V1.T_8H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.8H, V1.8H");
+        TestInst(USQADD(V30.T_8H, V1.T_8H), asm => asm.USQADD(V30.T_8H, V1.T_8H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.8H, V1.8H");
+        TestInst(USQADD(V0.T_8H, V31.T_8H), asm => asm.USQADD(V0.T_8H, V31.T_8H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.8H, V31.8H");
+        TestInst(USQADD(V30.T_8H, V31.T_8H), asm => asm.USQADD(V30.T_8H, V31.T_8H), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.8H, V31.8H");
     }
     
     /// <summary>
@@ -120,10 +119,10 @@ public class Arm64InstructionFactoryTests_USQADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USQADD_asimdmisc_r_8()
     {
-        TestInst(USQADD(V0.T_2S, V1.T_2S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.2S, V1.2S");
-        TestInst(USQADD(V30.T_2S, V1.T_2S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.2S, V1.2S");
-        TestInst(USQADD(V0.T_2S, V31.T_2S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.2S, V31.2S");
-        TestInst(USQADD(V30.T_2S, V31.T_2S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.2S, V31.2S");
+        TestInst(USQADD(V0.T_2S, V1.T_2S), asm => asm.USQADD(V0.T_2S, V1.T_2S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.2S, V1.2S");
+        TestInst(USQADD(V30.T_2S, V1.T_2S), asm => asm.USQADD(V30.T_2S, V1.T_2S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.2S, V1.2S");
+        TestInst(USQADD(V0.T_2S, V31.T_2S), asm => asm.USQADD(V0.T_2S, V31.T_2S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.2S, V31.2S");
+        TestInst(USQADD(V30.T_2S, V31.T_2S), asm => asm.USQADD(V30.T_2S, V31.T_2S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.2S, V31.2S");
     }
     
     /// <summary>
@@ -132,10 +131,10 @@ public class Arm64InstructionFactoryTests_USQADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USQADD_asimdmisc_r_9()
     {
-        TestInst(USQADD(V0.T_4S, V1.T_4S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.4S, V1.4S");
-        TestInst(USQADD(V30.T_4S, V1.T_4S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.4S, V1.4S");
-        TestInst(USQADD(V0.T_4S, V31.T_4S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.4S, V31.4S");
-        TestInst(USQADD(V30.T_4S, V31.T_4S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.4S, V31.4S");
+        TestInst(USQADD(V0.T_4S, V1.T_4S), asm => asm.USQADD(V0.T_4S, V1.T_4S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.4S, V1.4S");
+        TestInst(USQADD(V30.T_4S, V1.T_4S), asm => asm.USQADD(V30.T_4S, V1.T_4S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.4S, V1.4S");
+        TestInst(USQADD(V0.T_4S, V31.T_4S), asm => asm.USQADD(V0.T_4S, V31.T_4S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.4S, V31.4S");
+        TestInst(USQADD(V30.T_4S, V31.T_4S), asm => asm.USQADD(V30.T_4S, V31.T_4S), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.4S, V31.4S");
     }
     
     /// <summary>
@@ -144,9 +143,9 @@ public class Arm64InstructionFactoryTests_USQADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USQADD_asimdmisc_r_10()
     {
-        TestInst(USQADD(V0.T_2D, V1.T_2D), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.2D, V1.2D");
-        TestInst(USQADD(V30.T_2D, V1.T_2D), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.2D, V1.2D");
-        TestInst(USQADD(V0.T_2D, V31.T_2D), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.2D, V31.2D");
-        TestInst(USQADD(V30.T_2D, V31.T_2D), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.2D, V31.2D");
+        TestInst(USQADD(V0.T_2D, V1.T_2D), asm => asm.USQADD(V0.T_2D, V1.T_2D), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.2D, V1.2D");
+        TestInst(USQADD(V30.T_2D, V1.T_2D), asm => asm.USQADD(V30.T_2D, V1.T_2D), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.2D, V1.2D");
+        TestInst(USQADD(V0.T_2D, V31.T_2D), asm => asm.USQADD(V0.T_2D, V31.T_2D), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V0.2D, V31.2D");
+        TestInst(USQADD(V30.T_2D, V31.T_2D), asm => asm.USQADD(V30.T_2D, V31.T_2D), Arm64InstructionId.USQADD_asimdmisc_r, Arm64Mnemonic.USQADD, "USQADD V30.2D, V31.2D");
     }
 }

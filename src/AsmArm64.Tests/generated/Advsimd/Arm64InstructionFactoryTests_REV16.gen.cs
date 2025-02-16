@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_REV16_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_REV16_asimdmisc_r_0()
     {
-        TestInst(REV16(V0.T_8B, V1.T_8B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V0.8B, V1.8B");
-        TestInst(REV16(V30.T_8B, V1.T_8B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V30.8B, V1.8B");
-        TestInst(REV16(V0.T_8B, V31.T_8B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V0.8B, V31.8B");
-        TestInst(REV16(V30.T_8B, V31.T_8B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V30.8B, V31.8B");
+        TestInst(REV16(V0.T_8B, V1.T_8B), asm => asm.REV16(V0.T_8B, V1.T_8B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V0.8B, V1.8B");
+        TestInst(REV16(V30.T_8B, V1.T_8B), asm => asm.REV16(V30.T_8B, V1.T_8B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V30.8B, V1.8B");
+        TestInst(REV16(V0.T_8B, V31.T_8B), asm => asm.REV16(V0.T_8B, V31.T_8B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V0.8B, V31.8B");
+        TestInst(REV16(V30.T_8B, V31.T_8B), asm => asm.REV16(V30.T_8B, V31.T_8B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V30.8B, V31.8B");
     }
     
     /// <summary>
@@ -36,9 +35,9 @@ public class Arm64InstructionFactoryTests_REV16_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_REV16_asimdmisc_r_1()
     {
-        TestInst(REV16(V0.T_16B, V1.T_16B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V0.16B, V1.16B");
-        TestInst(REV16(V30.T_16B, V1.T_16B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V30.16B, V1.16B");
-        TestInst(REV16(V0.T_16B, V31.T_16B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V0.16B, V31.16B");
-        TestInst(REV16(V30.T_16B, V31.T_16B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V30.16B, V31.16B");
+        TestInst(REV16(V0.T_16B, V1.T_16B), asm => asm.REV16(V0.T_16B, V1.T_16B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V0.16B, V1.16B");
+        TestInst(REV16(V30.T_16B, V1.T_16B), asm => asm.REV16(V30.T_16B, V1.T_16B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V30.16B, V1.16B");
+        TestInst(REV16(V0.T_16B, V31.T_16B), asm => asm.REV16(V0.T_16B, V31.T_16B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V0.16B, V31.16B");
+        TestInst(REV16(V30.T_16B, V31.T_16B), asm => asm.REV16(V30.T_16B, V31.T_16B), Arm64InstructionId.REV16_asimdmisc_r, Arm64Mnemonic.REV16, "REV16 V30.16B, V31.16B");
     }
 }

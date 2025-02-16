@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_PACIASP_System : Arm64InstructionFacto
     [TestMethod]
     public void Test_PACIASP_hi_hints_0()
     {
-        TestInst(PACIASP(), Arm64InstructionId.PACIASP_hi_hints, Arm64Mnemonic.PACIASP, "PACIASP");
+        TestInst(PACIASP(), asm => asm.PACIASP(), Arm64InstructionId.PACIASP_hi_hints, Arm64Mnemonic.PACIASP, "PACIASP");
     }
 }

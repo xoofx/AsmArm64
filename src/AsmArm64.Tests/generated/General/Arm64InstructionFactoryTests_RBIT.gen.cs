@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_RBIT_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_RBIT_32_dp_1src_0()
     {
-        TestInst(RBIT(W0, W1), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W0, W1");
-        TestInst(RBIT(W15, W1), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W15, W1");
-        TestInst(RBIT(WZR, W1), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT WZR, W1");
-        TestInst(RBIT(W0, W16), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W0, W16");
-        TestInst(RBIT(W15, W16), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W15, W16");
-        TestInst(RBIT(WZR, W16), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT WZR, W16");
-        TestInst(RBIT(W0, WZR), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W0, WZR");
-        TestInst(RBIT(W15, WZR), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W15, WZR");
-        TestInst(RBIT(WZR, WZR), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT WZR, WZR");
+        TestInst(RBIT(W0, W1), asm => asm.RBIT(W0, W1), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W0, W1");
+        TestInst(RBIT(W15, W1), asm => asm.RBIT(W15, W1), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W15, W1");
+        TestInst(RBIT(WZR, W1), asm => asm.RBIT(WZR, W1), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT WZR, W1");
+        TestInst(RBIT(W0, W16), asm => asm.RBIT(W0, W16), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W0, W16");
+        TestInst(RBIT(W15, W16), asm => asm.RBIT(W15, W16), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W15, W16");
+        TestInst(RBIT(WZR, W16), asm => asm.RBIT(WZR, W16), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT WZR, W16");
+        TestInst(RBIT(W0, WZR), asm => asm.RBIT(W0, WZR), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W0, WZR");
+        TestInst(RBIT(W15, WZR), asm => asm.RBIT(W15, WZR), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT W15, WZR");
+        TestInst(RBIT(WZR, WZR), asm => asm.RBIT(WZR, WZR), Arm64InstructionId.RBIT_32_dp_1src, Arm64Mnemonic.RBIT, "RBIT WZR, WZR");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_RBIT_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_RBIT_64_dp_1src_1()
     {
-        TestInst(RBIT(X0, X1), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X0, X1");
-        TestInst(RBIT(X15, X1), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X15, X1");
-        TestInst(RBIT(XZR, X1), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT XZR, X1");
-        TestInst(RBIT(X0, X16), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X0, X16");
-        TestInst(RBIT(X15, X16), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X15, X16");
-        TestInst(RBIT(XZR, X16), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT XZR, X16");
-        TestInst(RBIT(X0, XZR), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X0, XZR");
-        TestInst(RBIT(X15, XZR), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X15, XZR");
-        TestInst(RBIT(XZR, XZR), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT XZR, XZR");
+        TestInst(RBIT(X0, X1), asm => asm.RBIT(X0, X1), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X0, X1");
+        TestInst(RBIT(X15, X1), asm => asm.RBIT(X15, X1), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X15, X1");
+        TestInst(RBIT(XZR, X1), asm => asm.RBIT(XZR, X1), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT XZR, X1");
+        TestInst(RBIT(X0, X16), asm => asm.RBIT(X0, X16), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X0, X16");
+        TestInst(RBIT(X15, X16), asm => asm.RBIT(X15, X16), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X15, X16");
+        TestInst(RBIT(XZR, X16), asm => asm.RBIT(XZR, X16), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT XZR, X16");
+        TestInst(RBIT(X0, XZR), asm => asm.RBIT(X0, XZR), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X0, XZR");
+        TestInst(RBIT(X15, XZR), asm => asm.RBIT(X15, XZR), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT X15, XZR");
+        TestInst(RBIT(XZR, XZR), asm => asm.RBIT(XZR, XZR), Arm64InstructionId.RBIT_64_dp_1src, Arm64Mnemonic.RBIT, "RBIT XZR, XZR");
     }
 }

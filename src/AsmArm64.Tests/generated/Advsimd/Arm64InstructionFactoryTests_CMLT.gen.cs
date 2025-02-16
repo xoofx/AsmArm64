@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_CMLT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMLT_asisdmisc_z_0()
     {
-        TestInst(CMLT(D0, D1, 0), Arm64InstructionId.CMLT_asisdmisc_z, Arm64Mnemonic.CMLT, "CMLT D0, D1, #0");
-        TestInst(CMLT(D31, D1, 0), Arm64InstructionId.CMLT_asisdmisc_z, Arm64Mnemonic.CMLT, "CMLT D31, D1, #0");
-        TestInst(CMLT(D0, D31, 0), Arm64InstructionId.CMLT_asisdmisc_z, Arm64Mnemonic.CMLT, "CMLT D0, D31, #0");
-        TestInst(CMLT(D31, D31, 0), Arm64InstructionId.CMLT_asisdmisc_z, Arm64Mnemonic.CMLT, "CMLT D31, D31, #0");
+        TestInst(CMLT(D0, D1, 0), asm => asm.CMLT(D0, D1, 0), Arm64InstructionId.CMLT_asisdmisc_z, Arm64Mnemonic.CMLT, "CMLT D0, D1, #0");
+        TestInst(CMLT(D31, D1, 0), asm => asm.CMLT(D31, D1, 0), Arm64InstructionId.CMLT_asisdmisc_z, Arm64Mnemonic.CMLT, "CMLT D31, D1, #0");
+        TestInst(CMLT(D0, D31, 0), asm => asm.CMLT(D0, D31, 0), Arm64InstructionId.CMLT_asisdmisc_z, Arm64Mnemonic.CMLT, "CMLT D0, D31, #0");
+        TestInst(CMLT(D31, D31, 0), asm => asm.CMLT(D31, D31, 0), Arm64InstructionId.CMLT_asisdmisc_z, Arm64Mnemonic.CMLT, "CMLT D31, D31, #0");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_CMLT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMLT_asimdmisc_z_1()
     {
-        TestInst(CMLT(V0.T_8B, V1.T_8B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.8B, V1.8B, #0");
-        TestInst(CMLT(V30.T_8B, V1.T_8B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.8B, V1.8B, #0");
-        TestInst(CMLT(V0.T_8B, V31.T_8B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.8B, V31.8B, #0");
-        TestInst(CMLT(V30.T_8B, V31.T_8B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.8B, V31.8B, #0");
+        TestInst(CMLT(V0.T_8B, V1.T_8B, 0), asm => asm.CMLT(V0.T_8B, V1.T_8B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.8B, V1.8B, #0");
+        TestInst(CMLT(V30.T_8B, V1.T_8B, 0), asm => asm.CMLT(V30.T_8B, V1.T_8B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.8B, V1.8B, #0");
+        TestInst(CMLT(V0.T_8B, V31.T_8B, 0), asm => asm.CMLT(V0.T_8B, V31.T_8B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.8B, V31.8B, #0");
+        TestInst(CMLT(V30.T_8B, V31.T_8B, 0), asm => asm.CMLT(V30.T_8B, V31.T_8B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.8B, V31.8B, #0");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_CMLT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMLT_asimdmisc_z_2()
     {
-        TestInst(CMLT(V0.T_16B, V1.T_16B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.16B, V1.16B, #0");
-        TestInst(CMLT(V30.T_16B, V1.T_16B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.16B, V1.16B, #0");
-        TestInst(CMLT(V0.T_16B, V31.T_16B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.16B, V31.16B, #0");
-        TestInst(CMLT(V30.T_16B, V31.T_16B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.16B, V31.16B, #0");
+        TestInst(CMLT(V0.T_16B, V1.T_16B, 0), asm => asm.CMLT(V0.T_16B, V1.T_16B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.16B, V1.16B, #0");
+        TestInst(CMLT(V30.T_16B, V1.T_16B, 0), asm => asm.CMLT(V30.T_16B, V1.T_16B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.16B, V1.16B, #0");
+        TestInst(CMLT(V0.T_16B, V31.T_16B, 0), asm => asm.CMLT(V0.T_16B, V31.T_16B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.16B, V31.16B, #0");
+        TestInst(CMLT(V30.T_16B, V31.T_16B, 0), asm => asm.CMLT(V30.T_16B, V31.T_16B, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.16B, V31.16B, #0");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_CMLT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMLT_asimdmisc_z_3()
     {
-        TestInst(CMLT(V0.T_4H, V1.T_4H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.4H, V1.4H, #0");
-        TestInst(CMLT(V30.T_4H, V1.T_4H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.4H, V1.4H, #0");
-        TestInst(CMLT(V0.T_4H, V31.T_4H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.4H, V31.4H, #0");
-        TestInst(CMLT(V30.T_4H, V31.T_4H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.4H, V31.4H, #0");
+        TestInst(CMLT(V0.T_4H, V1.T_4H, 0), asm => asm.CMLT(V0.T_4H, V1.T_4H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.4H, V1.4H, #0");
+        TestInst(CMLT(V30.T_4H, V1.T_4H, 0), asm => asm.CMLT(V30.T_4H, V1.T_4H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.4H, V1.4H, #0");
+        TestInst(CMLT(V0.T_4H, V31.T_4H, 0), asm => asm.CMLT(V0.T_4H, V31.T_4H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.4H, V31.4H, #0");
+        TestInst(CMLT(V30.T_4H, V31.T_4H, 0), asm => asm.CMLT(V30.T_4H, V31.T_4H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.4H, V31.4H, #0");
     }
     
     /// <summary>
@@ -72,10 +71,10 @@ public class Arm64InstructionFactoryTests_CMLT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMLT_asimdmisc_z_4()
     {
-        TestInst(CMLT(V0.T_8H, V1.T_8H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.8H, V1.8H, #0");
-        TestInst(CMLT(V30.T_8H, V1.T_8H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.8H, V1.8H, #0");
-        TestInst(CMLT(V0.T_8H, V31.T_8H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.8H, V31.8H, #0");
-        TestInst(CMLT(V30.T_8H, V31.T_8H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.8H, V31.8H, #0");
+        TestInst(CMLT(V0.T_8H, V1.T_8H, 0), asm => asm.CMLT(V0.T_8H, V1.T_8H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.8H, V1.8H, #0");
+        TestInst(CMLT(V30.T_8H, V1.T_8H, 0), asm => asm.CMLT(V30.T_8H, V1.T_8H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.8H, V1.8H, #0");
+        TestInst(CMLT(V0.T_8H, V31.T_8H, 0), asm => asm.CMLT(V0.T_8H, V31.T_8H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.8H, V31.8H, #0");
+        TestInst(CMLT(V30.T_8H, V31.T_8H, 0), asm => asm.CMLT(V30.T_8H, V31.T_8H, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.8H, V31.8H, #0");
     }
     
     /// <summary>
@@ -84,10 +83,10 @@ public class Arm64InstructionFactoryTests_CMLT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMLT_asimdmisc_z_5()
     {
-        TestInst(CMLT(V0.T_2S, V1.T_2S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.2S, V1.2S, #0");
-        TestInst(CMLT(V30.T_2S, V1.T_2S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.2S, V1.2S, #0");
-        TestInst(CMLT(V0.T_2S, V31.T_2S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.2S, V31.2S, #0");
-        TestInst(CMLT(V30.T_2S, V31.T_2S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.2S, V31.2S, #0");
+        TestInst(CMLT(V0.T_2S, V1.T_2S, 0), asm => asm.CMLT(V0.T_2S, V1.T_2S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.2S, V1.2S, #0");
+        TestInst(CMLT(V30.T_2S, V1.T_2S, 0), asm => asm.CMLT(V30.T_2S, V1.T_2S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.2S, V1.2S, #0");
+        TestInst(CMLT(V0.T_2S, V31.T_2S, 0), asm => asm.CMLT(V0.T_2S, V31.T_2S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.2S, V31.2S, #0");
+        TestInst(CMLT(V30.T_2S, V31.T_2S, 0), asm => asm.CMLT(V30.T_2S, V31.T_2S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.2S, V31.2S, #0");
     }
     
     /// <summary>
@@ -96,10 +95,10 @@ public class Arm64InstructionFactoryTests_CMLT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMLT_asimdmisc_z_6()
     {
-        TestInst(CMLT(V0.T_4S, V1.T_4S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.4S, V1.4S, #0");
-        TestInst(CMLT(V30.T_4S, V1.T_4S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.4S, V1.4S, #0");
-        TestInst(CMLT(V0.T_4S, V31.T_4S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.4S, V31.4S, #0");
-        TestInst(CMLT(V30.T_4S, V31.T_4S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.4S, V31.4S, #0");
+        TestInst(CMLT(V0.T_4S, V1.T_4S, 0), asm => asm.CMLT(V0.T_4S, V1.T_4S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.4S, V1.4S, #0");
+        TestInst(CMLT(V30.T_4S, V1.T_4S, 0), asm => asm.CMLT(V30.T_4S, V1.T_4S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.4S, V1.4S, #0");
+        TestInst(CMLT(V0.T_4S, V31.T_4S, 0), asm => asm.CMLT(V0.T_4S, V31.T_4S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.4S, V31.4S, #0");
+        TestInst(CMLT(V30.T_4S, V31.T_4S, 0), asm => asm.CMLT(V30.T_4S, V31.T_4S, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.4S, V31.4S, #0");
     }
     
     /// <summary>
@@ -108,9 +107,9 @@ public class Arm64InstructionFactoryTests_CMLT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMLT_asimdmisc_z_7()
     {
-        TestInst(CMLT(V0.T_2D, V1.T_2D, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.2D, V1.2D, #0");
-        TestInst(CMLT(V30.T_2D, V1.T_2D, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.2D, V1.2D, #0");
-        TestInst(CMLT(V0.T_2D, V31.T_2D, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.2D, V31.2D, #0");
-        TestInst(CMLT(V30.T_2D, V31.T_2D, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.2D, V31.2D, #0");
+        TestInst(CMLT(V0.T_2D, V1.T_2D, 0), asm => asm.CMLT(V0.T_2D, V1.T_2D, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.2D, V1.2D, #0");
+        TestInst(CMLT(V30.T_2D, V1.T_2D, 0), asm => asm.CMLT(V30.T_2D, V1.T_2D, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.2D, V1.2D, #0");
+        TestInst(CMLT(V0.T_2D, V31.T_2D, 0), asm => asm.CMLT(V0.T_2D, V31.T_2D, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V0.2D, V31.2D, #0");
+        TestInst(CMLT(V30.T_2D, V31.T_2D, 0), asm => asm.CMLT(V30.T_2D, V31.T_2D, 0), Arm64InstructionId.CMLT_asimdmisc_z, Arm64Mnemonic.CMLT, "CMLT V30.2D, V31.2D, #0");
     }
 }

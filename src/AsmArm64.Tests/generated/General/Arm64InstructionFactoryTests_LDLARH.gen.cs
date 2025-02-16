@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_LDLARH_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDLARH_lr32_ldstord_0()
     {
-        TestInst(LDLARH(W0, _[X2]), Arm64InstructionId.LDLARH_lr32_ldstord, Arm64Mnemonic.LDLARH, "LDLARH W0, [X2]");
-        TestInst(LDLARH(W15, _[X2]), Arm64InstructionId.LDLARH_lr32_ldstord, Arm64Mnemonic.LDLARH, "LDLARH W15, [X2]");
-        TestInst(LDLARH(WZR, _[X2]), Arm64InstructionId.LDLARH_lr32_ldstord, Arm64Mnemonic.LDLARH, "LDLARH WZR, [X2]");
+        TestInst(LDLARH(W0, _[X2]), asm => asm.LDLARH(W0, _[X2]), Arm64InstructionId.LDLARH_lr32_ldstord, Arm64Mnemonic.LDLARH, "LDLARH W0, [X2]");
+        TestInst(LDLARH(W15, _[X2]), asm => asm.LDLARH(W15, _[X2]), Arm64InstructionId.LDLARH_lr32_ldstord, Arm64Mnemonic.LDLARH, "LDLARH W15, [X2]");
+        TestInst(LDLARH(WZR, _[X2]), asm => asm.LDLARH(WZR, _[X2]), Arm64InstructionId.LDLARH_lr32_ldstord, Arm64Mnemonic.LDLARH, "LDLARH WZR, [X2]");
     }
 }

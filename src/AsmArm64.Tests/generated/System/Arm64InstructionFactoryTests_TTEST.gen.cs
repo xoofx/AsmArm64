@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_TTEST_System : Arm64InstructionFactory
     [TestMethod]
     public void Test_TTEST_br_systemresult_0()
     {
-        TestInst(TTEST(X0), Arm64InstructionId.TTEST_br_systemresult, Arm64Mnemonic.TTEST, "TTEST X0");
-        TestInst(TTEST(X15), Arm64InstructionId.TTEST_br_systemresult, Arm64Mnemonic.TTEST, "TTEST X15");
-        TestInst(TTEST(XZR), Arm64InstructionId.TTEST_br_systemresult, Arm64Mnemonic.TTEST, "TTEST XZR");
+        TestInst(TTEST(X0), asm => asm.TTEST(X0), Arm64InstructionId.TTEST_br_systemresult, Arm64Mnemonic.TTEST, "TTEST X0");
+        TestInst(TTEST(X15), asm => asm.TTEST(X15), Arm64InstructionId.TTEST_br_systemresult, Arm64Mnemonic.TTEST, "TTEST X15");
+        TestInst(TTEST(XZR), asm => asm.TTEST(XZR), Arm64InstructionId.TTEST_br_systemresult, Arm64Mnemonic.TTEST, "TTEST XZR");
     }
 }

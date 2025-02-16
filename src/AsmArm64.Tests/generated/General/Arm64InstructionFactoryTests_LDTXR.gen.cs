@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDTXR_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDTXR_lr32_ldstexclr_unpriv_0()
     {
-        TestInst(LDTXR(W0, _[X2]), Arm64InstructionId.LDTXR_lr32_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR W0, [X2]");
-        TestInst(LDTXR(W15, _[X2]), Arm64InstructionId.LDTXR_lr32_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR W15, [X2]");
-        TestInst(LDTXR(WZR, _[X2]), Arm64InstructionId.LDTXR_lr32_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR WZR, [X2]");
+        TestInst(LDTXR(W0, _[X2]), asm => asm.LDTXR(W0, _[X2]), Arm64InstructionId.LDTXR_lr32_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR W0, [X2]");
+        TestInst(LDTXR(W15, _[X2]), asm => asm.LDTXR(W15, _[X2]), Arm64InstructionId.LDTXR_lr32_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR W15, [X2]");
+        TestInst(LDTXR(WZR, _[X2]), asm => asm.LDTXR(WZR, _[X2]), Arm64InstructionId.LDTXR_lr32_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_LDTXR_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDTXR_lr64_ldstexclr_unpriv_1()
     {
-        TestInst(LDTXR(X0, _[X2]), Arm64InstructionId.LDTXR_lr64_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR X0, [X2]");
-        TestInst(LDTXR(X15, _[X2]), Arm64InstructionId.LDTXR_lr64_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR X15, [X2]");
-        TestInst(LDTXR(XZR, _[X2]), Arm64InstructionId.LDTXR_lr64_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR XZR, [X2]");
+        TestInst(LDTXR(X0, _[X2]), asm => asm.LDTXR(X0, _[X2]), Arm64InstructionId.LDTXR_lr64_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR X0, [X2]");
+        TestInst(LDTXR(X15, _[X2]), asm => asm.LDTXR(X15, _[X2]), Arm64InstructionId.LDTXR_lr64_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR X15, [X2]");
+        TestInst(LDTXR(XZR, _[X2]), asm => asm.LDTXR(XZR, _[X2]), Arm64InstructionId.LDTXR_lr64_ldstexclr_unpriv, Arm64Mnemonic.LDTXR, "LDTXR XZR, [X2]");
     }
 }

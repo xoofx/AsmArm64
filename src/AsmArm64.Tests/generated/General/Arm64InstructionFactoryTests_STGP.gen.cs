@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_STGP_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_STGP_64_ldstpair_post_0()
     {
-        TestInst(STGP(X0, X1, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X0, X1, [X3], #80");
-        TestInst(STGP(X15, X1, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X15, X1, [X3], #80");
-        TestInst(STGP(XZR, X1, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP XZR, X1, [X3], #80");
-        TestInst(STGP(X0, X16, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X0, X16, [X3], #80");
-        TestInst(STGP(X15, X16, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X15, X16, [X3], #80");
-        TestInst(STGP(XZR, X16, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP XZR, X16, [X3], #80");
-        TestInst(STGP(X0, XZR, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X0, XZR, [X3], #80");
-        TestInst(STGP(X15, XZR, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X15, XZR, [X3], #80");
-        TestInst(STGP(XZR, XZR, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP XZR, XZR, [X3], #80");
+        TestInst(STGP(X0, X1, _[X3], 80), asm => asm.STGP(X0, X1, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X0, X1, [X3], #80");
+        TestInst(STGP(X15, X1, _[X3], 80), asm => asm.STGP(X15, X1, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X15, X1, [X3], #80");
+        TestInst(STGP(XZR, X1, _[X3], 80), asm => asm.STGP(XZR, X1, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP XZR, X1, [X3], #80");
+        TestInst(STGP(X0, X16, _[X3], 80), asm => asm.STGP(X0, X16, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X0, X16, [X3], #80");
+        TestInst(STGP(X15, X16, _[X3], 80), asm => asm.STGP(X15, X16, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X15, X16, [X3], #80");
+        TestInst(STGP(XZR, X16, _[X3], 80), asm => asm.STGP(XZR, X16, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP XZR, X16, [X3], #80");
+        TestInst(STGP(X0, XZR, _[X3], 80), asm => asm.STGP(X0, XZR, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X0, XZR, [X3], #80");
+        TestInst(STGP(X15, XZR, _[X3], 80), asm => asm.STGP(X15, XZR, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP X15, XZR, [X3], #80");
+        TestInst(STGP(XZR, XZR, _[X3], 80), asm => asm.STGP(XZR, XZR, _[X3], 80), Arm64InstructionId.STGP_64_ldstpair_post, Arm64Mnemonic.STGP, "STGP XZR, XZR, [X3], #80");
     }
     
     /// <summary>
@@ -41,15 +40,15 @@ public class Arm64InstructionFactoryTests_STGP_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_STGP_64_ldstpair_pre_1()
     {
-        TestInst(STGP(X0, X1, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X0, X1, [X3, #80]!");
-        TestInst(STGP(X15, X1, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X15, X1, [X3, #80]!");
-        TestInst(STGP(XZR, X1, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP XZR, X1, [X3, #80]!");
-        TestInst(STGP(X0, X16, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X0, X16, [X3, #80]!");
-        TestInst(STGP(X15, X16, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X15, X16, [X3, #80]!");
-        TestInst(STGP(XZR, X16, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP XZR, X16, [X3, #80]!");
-        TestInst(STGP(X0, XZR, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X0, XZR, [X3, #80]!");
-        TestInst(STGP(X15, XZR, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X15, XZR, [X3, #80]!");
-        TestInst(STGP(XZR, XZR, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP XZR, XZR, [X3, #80]!");
+        TestInst(STGP(X0, X1, _[X3, 80].Pre), asm => asm.STGP(X0, X1, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X0, X1, [X3, #80]!");
+        TestInst(STGP(X15, X1, _[X3, 80].Pre), asm => asm.STGP(X15, X1, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X15, X1, [X3, #80]!");
+        TestInst(STGP(XZR, X1, _[X3, 80].Pre), asm => asm.STGP(XZR, X1, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP XZR, X1, [X3, #80]!");
+        TestInst(STGP(X0, X16, _[X3, 80].Pre), asm => asm.STGP(X0, X16, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X0, X16, [X3, #80]!");
+        TestInst(STGP(X15, X16, _[X3, 80].Pre), asm => asm.STGP(X15, X16, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X15, X16, [X3, #80]!");
+        TestInst(STGP(XZR, X16, _[X3, 80].Pre), asm => asm.STGP(XZR, X16, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP XZR, X16, [X3, #80]!");
+        TestInst(STGP(X0, XZR, _[X3, 80].Pre), asm => asm.STGP(X0, XZR, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X0, XZR, [X3, #80]!");
+        TestInst(STGP(X15, XZR, _[X3, 80].Pre), asm => asm.STGP(X15, XZR, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP X15, XZR, [X3, #80]!");
+        TestInst(STGP(XZR, XZR, _[X3, 80].Pre), asm => asm.STGP(XZR, XZR, _[X3, 80].Pre), Arm64InstructionId.STGP_64_ldstpair_pre, Arm64Mnemonic.STGP, "STGP XZR, XZR, [X3, #80]!");
     }
     
     /// <summary>
@@ -58,14 +57,14 @@ public class Arm64InstructionFactoryTests_STGP_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_STGP_64_ldstpair_off_2()
     {
-        TestInst(STGP(X0, X1, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X0, X1, [X3, #80]");
-        TestInst(STGP(X15, X1, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X15, X1, [X3, #80]");
-        TestInst(STGP(XZR, X1, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP XZR, X1, [X3, #80]");
-        TestInst(STGP(X0, X16, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X0, X16, [X3, #80]");
-        TestInst(STGP(X15, X16, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X15, X16, [X3, #80]");
-        TestInst(STGP(XZR, X16, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP XZR, X16, [X3, #80]");
-        TestInst(STGP(X0, XZR, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X0, XZR, [X3, #80]");
-        TestInst(STGP(X15, XZR, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X15, XZR, [X3, #80]");
-        TestInst(STGP(XZR, XZR, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP XZR, XZR, [X3, #80]");
+        TestInst(STGP(X0, X1, _[X3, 80]), asm => asm.STGP(X0, X1, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X0, X1, [X3, #80]");
+        TestInst(STGP(X15, X1, _[X3, 80]), asm => asm.STGP(X15, X1, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X15, X1, [X3, #80]");
+        TestInst(STGP(XZR, X1, _[X3, 80]), asm => asm.STGP(XZR, X1, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP XZR, X1, [X3, #80]");
+        TestInst(STGP(X0, X16, _[X3, 80]), asm => asm.STGP(X0, X16, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X0, X16, [X3, #80]");
+        TestInst(STGP(X15, X16, _[X3, 80]), asm => asm.STGP(X15, X16, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X15, X16, [X3, #80]");
+        TestInst(STGP(XZR, X16, _[X3, 80]), asm => asm.STGP(XZR, X16, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP XZR, X16, [X3, #80]");
+        TestInst(STGP(X0, XZR, _[X3, 80]), asm => asm.STGP(X0, XZR, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X0, XZR, [X3, #80]");
+        TestInst(STGP(X15, XZR, _[X3, 80]), asm => asm.STGP(X15, XZR, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP X15, XZR, [X3, #80]");
+        TestInst(STGP(XZR, XZR, _[X3, 80]), asm => asm.STGP(XZR, XZR, _[X3, 80]), Arm64InstructionId.STGP_64_ldstpair_off, Arm64Mnemonic.STGP, "STGP XZR, XZR, [X3, #80]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_CFP_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_CFP_sys_cr_systeminstrs_0()
     {
-        TestInst(CFP(RCTX, X1), Arm64InstructionId.CFP_sys_cr_systeminstrs, Arm64Mnemonic.CFP, "CFP RCTX, X1");
-        TestInst(CFP(RCTX, X16), Arm64InstructionId.CFP_sys_cr_systeminstrs, Arm64Mnemonic.CFP, "CFP RCTX, X16");
-        TestInst(CFP(RCTX, XZR), Arm64InstructionId.CFP_sys_cr_systeminstrs, Arm64Mnemonic.CFP, "CFP RCTX, XZR");
+        TestInst(CFP(RCTX, X1), asm => asm.CFP(RCTX, X1), Arm64InstructionId.CFP_sys_cr_systeminstrs, Arm64Mnemonic.CFP, "CFP RCTX, X1");
+        TestInst(CFP(RCTX, X16), asm => asm.CFP(RCTX, X16), Arm64InstructionId.CFP_sys_cr_systeminstrs, Arm64Mnemonic.CFP, "CFP RCTX, X16");
+        TestInst(CFP(RCTX, XZR), asm => asm.CFP(RCTX, XZR), Arm64InstructionId.CFP_sys_cr_systeminstrs, Arm64Mnemonic.CFP, "CFP RCTX, XZR");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_AT_System : Arm64InstructionFactoryTes
     [TestMethod]
     public void Test_AT_sys_cr_systeminstrs_0()
     {
-        TestInst(AT(S12E0R, X1), Arm64InstructionId.AT_sys_cr_systeminstrs, Arm64Mnemonic.AT, "AT s12e0r, X1");
-        TestInst(AT(S12E0R, X16), Arm64InstructionId.AT_sys_cr_systeminstrs, Arm64Mnemonic.AT, "AT s12e0r, X16");
-        TestInst(AT(S12E0R, XZR), Arm64InstructionId.AT_sys_cr_systeminstrs, Arm64Mnemonic.AT, "AT s12e0r, XZR");
+        TestInst(AT(S12E0R, X1), asm => asm.AT(S12E0R, X1), Arm64InstructionId.AT_sys_cr_systeminstrs, Arm64Mnemonic.AT, "AT s12e0r, X1");
+        TestInst(AT(S12E0R, X16), asm => asm.AT(S12E0R, X16), Arm64InstructionId.AT_sys_cr_systeminstrs, Arm64Mnemonic.AT, "AT s12e0r, X16");
+        TestInst(AT(S12E0R, XZR), asm => asm.AT(S12E0R, XZR), Arm64InstructionId.AT_sys_cr_systeminstrs, Arm64Mnemonic.AT, "AT s12e0r, XZR");
     }
 }

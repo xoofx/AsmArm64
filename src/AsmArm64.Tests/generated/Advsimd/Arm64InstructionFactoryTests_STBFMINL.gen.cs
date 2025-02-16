@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_STBFMINL_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_STBFMINL_16_0()
     {
-        TestInst(STBFMINL(H0, _[X2]), Arm64InstructionId.STBFMINL_16, Arm64Mnemonic.STBFMINL, "STBFMINL H0, [X2]");
-        TestInst(STBFMINL(H31, _[X2]), Arm64InstructionId.STBFMINL_16, Arm64Mnemonic.STBFMINL, "STBFMINL H31, [X2]");
+        TestInst(STBFMINL(H0, _[X2]), asm => asm.STBFMINL(H0, _[X2]), Arm64InstructionId.STBFMINL_16, Arm64Mnemonic.STBFMINL, "STBFMINL H0, [X2]");
+        TestInst(STBFMINL(H31, _[X2]), asm => asm.STBFMINL(H31, _[X2]), Arm64InstructionId.STBFMINL_16, Arm64Mnemonic.STBFMINL, "STBFMINL H31, [X2]");
     }
 }

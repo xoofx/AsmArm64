@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDBFADD_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_LDBFADD_16_0()
     {
-        TestInst(LDBFADD(H0, H1, _[X3]), Arm64InstructionId.LDBFADD_16, Arm64Mnemonic.LDBFADD, "LDBFADD H0, H1, [X3]");
-        TestInst(LDBFADD(H31, H1, _[X3]), Arm64InstructionId.LDBFADD_16, Arm64Mnemonic.LDBFADD, "LDBFADD H31, H1, [X3]");
-        TestInst(LDBFADD(H0, H31, _[X3]), Arm64InstructionId.LDBFADD_16, Arm64Mnemonic.LDBFADD, "LDBFADD H0, H31, [X3]");
-        TestInst(LDBFADD(H31, H31, _[X3]), Arm64InstructionId.LDBFADD_16, Arm64Mnemonic.LDBFADD, "LDBFADD H31, H31, [X3]");
+        TestInst(LDBFADD(H0, H1, _[X3]), asm => asm.LDBFADD(H0, H1, _[X3]), Arm64InstructionId.LDBFADD_16, Arm64Mnemonic.LDBFADD, "LDBFADD H0, H1, [X3]");
+        TestInst(LDBFADD(H31, H1, _[X3]), asm => asm.LDBFADD(H31, H1, _[X3]), Arm64InstructionId.LDBFADD_16, Arm64Mnemonic.LDBFADD, "LDBFADD H31, H1, [X3]");
+        TestInst(LDBFADD(H0, H31, _[X3]), asm => asm.LDBFADD(H0, H31, _[X3]), Arm64InstructionId.LDBFADD_16, Arm64Mnemonic.LDBFADD, "LDBFADD H0, H31, [X3]");
+        TestInst(LDBFADD(H31, H31, _[X3]), asm => asm.LDBFADD(H31, H31, _[X3]), Arm64InstructionId.LDBFADD_16, Arm64Mnemonic.LDBFADD, "LDBFADD H31, H31, [X3]");
     }
 }

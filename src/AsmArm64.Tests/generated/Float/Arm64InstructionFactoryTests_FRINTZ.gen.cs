@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FRINTZ_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTZ_h_floatdp1_0()
     {
-        TestInst(FRINTZ(H0, H1), Arm64InstructionId.FRINTZ_h_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ H0, H1");
-        TestInst(FRINTZ(H31, H1), Arm64InstructionId.FRINTZ_h_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ H31, H1");
-        TestInst(FRINTZ(H0, H31), Arm64InstructionId.FRINTZ_h_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ H0, H31");
-        TestInst(FRINTZ(H31, H31), Arm64InstructionId.FRINTZ_h_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ H31, H31");
+        TestInst(FRINTZ(H0, H1), asm => asm.FRINTZ(H0, H1), Arm64InstructionId.FRINTZ_h_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ H0, H1");
+        TestInst(FRINTZ(H31, H1), asm => asm.FRINTZ(H31, H1), Arm64InstructionId.FRINTZ_h_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ H31, H1");
+        TestInst(FRINTZ(H0, H31), asm => asm.FRINTZ(H0, H31), Arm64InstructionId.FRINTZ_h_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ H0, H31");
+        TestInst(FRINTZ(H31, H31), asm => asm.FRINTZ(H31, H31), Arm64InstructionId.FRINTZ_h_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ H31, H31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FRINTZ_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTZ_s_floatdp1_1()
     {
-        TestInst(FRINTZ(S0, S1), Arm64InstructionId.FRINTZ_s_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ S0, S1");
-        TestInst(FRINTZ(S31, S1), Arm64InstructionId.FRINTZ_s_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ S31, S1");
-        TestInst(FRINTZ(S0, S31), Arm64InstructionId.FRINTZ_s_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ S0, S31");
-        TestInst(FRINTZ(S31, S31), Arm64InstructionId.FRINTZ_s_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ S31, S31");
+        TestInst(FRINTZ(S0, S1), asm => asm.FRINTZ(S0, S1), Arm64InstructionId.FRINTZ_s_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ S0, S1");
+        TestInst(FRINTZ(S31, S1), asm => asm.FRINTZ(S31, S1), Arm64InstructionId.FRINTZ_s_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ S31, S1");
+        TestInst(FRINTZ(S0, S31), asm => asm.FRINTZ(S0, S31), Arm64InstructionId.FRINTZ_s_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ S0, S31");
+        TestInst(FRINTZ(S31, S31), asm => asm.FRINTZ(S31, S31), Arm64InstructionId.FRINTZ_s_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ S31, S31");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_FRINTZ_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTZ_d_floatdp1_2()
     {
-        TestInst(FRINTZ(D0, D1), Arm64InstructionId.FRINTZ_d_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ D0, D1");
-        TestInst(FRINTZ(D31, D1), Arm64InstructionId.FRINTZ_d_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ D31, D1");
-        TestInst(FRINTZ(D0, D31), Arm64InstructionId.FRINTZ_d_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ D0, D31");
-        TestInst(FRINTZ(D31, D31), Arm64InstructionId.FRINTZ_d_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ D31, D31");
+        TestInst(FRINTZ(D0, D1), asm => asm.FRINTZ(D0, D1), Arm64InstructionId.FRINTZ_d_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ D0, D1");
+        TestInst(FRINTZ(D31, D1), asm => asm.FRINTZ(D31, D1), Arm64InstructionId.FRINTZ_d_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ D31, D1");
+        TestInst(FRINTZ(D0, D31), asm => asm.FRINTZ(D0, D31), Arm64InstructionId.FRINTZ_d_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ D0, D31");
+        TestInst(FRINTZ(D31, D31), asm => asm.FRINTZ(D31, D31), Arm64InstructionId.FRINTZ_d_floatdp1, Arm64Mnemonic.FRINTZ, "FRINTZ D31, D31");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STADDB_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STADDB_ldaddb_32_memop_0()
     {
-        TestInst(STADDB(W0, _[X2]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB W0, [X2]");
-        TestInst(STADDB(W15, _[X2]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB W15, [X2]");
-        TestInst(STADDB(WZR, _[X2]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB WZR, [X2]");
+        TestInst(STADDB(W0, _[X2]), asm => asm.STADDB(W0, _[X2]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB W0, [X2]");
+        TestInst(STADDB(W15, _[X2]), asm => asm.STADDB(W15, _[X2]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB W15, [X2]");
+        TestInst(STADDB(WZR, _[X2]), asm => asm.STADDB(WZR, _[X2]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB WZR, [X2]");
     }
 }

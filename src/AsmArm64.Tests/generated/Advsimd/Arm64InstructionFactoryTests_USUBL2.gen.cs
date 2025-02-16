@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_USUBL2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USUBL2_asimddiff_l_0()
     {
-        TestInst(USUBL2(V0.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.8H, V1.16B, V2.16B");
-        TestInst(USUBL2(V30.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.8H, V1.16B, V2.16B");
-        TestInst(USUBL2(V0.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.8H, V31.16B, V2.16B");
-        TestInst(USUBL2(V30.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.8H, V31.16B, V2.16B");
-        TestInst(USUBL2(V0.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.8H, V1.16B, V0.16B");
-        TestInst(USUBL2(V30.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.8H, V1.16B, V0.16B");
-        TestInst(USUBL2(V0.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.8H, V31.16B, V0.16B");
-        TestInst(USUBL2(V30.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.8H, V31.16B, V0.16B");
+        TestInst(USUBL2(V0.T_8H, V1.T_16B, V2.T_16B), asm => asm.USUBL2(V0.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.8H, V1.16B, V2.16B");
+        TestInst(USUBL2(V30.T_8H, V1.T_16B, V2.T_16B), asm => asm.USUBL2(V30.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.8H, V1.16B, V2.16B");
+        TestInst(USUBL2(V0.T_8H, V31.T_16B, V2.T_16B), asm => asm.USUBL2(V0.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.8H, V31.16B, V2.16B");
+        TestInst(USUBL2(V30.T_8H, V31.T_16B, V2.T_16B), asm => asm.USUBL2(V30.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.8H, V31.16B, V2.16B");
+        TestInst(USUBL2(V0.T_8H, V1.T_16B, V0.T_16B), asm => asm.USUBL2(V0.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.8H, V1.16B, V0.16B");
+        TestInst(USUBL2(V30.T_8H, V1.T_16B, V0.T_16B), asm => asm.USUBL2(V30.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.8H, V1.16B, V0.16B");
+        TestInst(USUBL2(V0.T_8H, V31.T_16B, V0.T_16B), asm => asm.USUBL2(V0.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.8H, V31.16B, V0.16B");
+        TestInst(USUBL2(V30.T_8H, V31.T_16B, V0.T_16B), asm => asm.USUBL2(V30.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.8H, V31.16B, V0.16B");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_USUBL2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USUBL2_asimddiff_l_1()
     {
-        TestInst(USUBL2(V0.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.4S, V1.8H, V2.8H");
-        TestInst(USUBL2(V30.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.4S, V1.8H, V2.8H");
-        TestInst(USUBL2(V0.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.4S, V31.8H, V2.8H");
-        TestInst(USUBL2(V30.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.4S, V31.8H, V2.8H");
-        TestInst(USUBL2(V0.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.4S, V1.8H, V0.8H");
-        TestInst(USUBL2(V30.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.4S, V1.8H, V0.8H");
-        TestInst(USUBL2(V0.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.4S, V31.8H, V0.8H");
-        TestInst(USUBL2(V30.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.4S, V31.8H, V0.8H");
+        TestInst(USUBL2(V0.T_4S, V1.T_8H, V2.T_8H), asm => asm.USUBL2(V0.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.4S, V1.8H, V2.8H");
+        TestInst(USUBL2(V30.T_4S, V1.T_8H, V2.T_8H), asm => asm.USUBL2(V30.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.4S, V1.8H, V2.8H");
+        TestInst(USUBL2(V0.T_4S, V31.T_8H, V2.T_8H), asm => asm.USUBL2(V0.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.4S, V31.8H, V2.8H");
+        TestInst(USUBL2(V30.T_4S, V31.T_8H, V2.T_8H), asm => asm.USUBL2(V30.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.4S, V31.8H, V2.8H");
+        TestInst(USUBL2(V0.T_4S, V1.T_8H, V0.T_8H), asm => asm.USUBL2(V0.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.4S, V1.8H, V0.8H");
+        TestInst(USUBL2(V30.T_4S, V1.T_8H, V0.T_8H), asm => asm.USUBL2(V30.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.4S, V1.8H, V0.8H");
+        TestInst(USUBL2(V0.T_4S, V31.T_8H, V0.T_8H), asm => asm.USUBL2(V0.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.4S, V31.8H, V0.8H");
+        TestInst(USUBL2(V30.T_4S, V31.T_8H, V0.T_8H), asm => asm.USUBL2(V30.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.4S, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -56,13 +55,13 @@ public class Arm64InstructionFactoryTests_USUBL2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_USUBL2_asimddiff_l_2()
     {
-        TestInst(USUBL2(V0.T_2D, V1.T_4S, V2.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.2D, V1.4S, V2.4S");
-        TestInst(USUBL2(V30.T_2D, V1.T_4S, V2.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.2D, V1.4S, V2.4S");
-        TestInst(USUBL2(V0.T_2D, V31.T_4S, V2.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.2D, V31.4S, V2.4S");
-        TestInst(USUBL2(V30.T_2D, V31.T_4S, V2.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.2D, V31.4S, V2.4S");
-        TestInst(USUBL2(V0.T_2D, V1.T_4S, V0.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.2D, V1.4S, V0.4S");
-        TestInst(USUBL2(V30.T_2D, V1.T_4S, V0.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.2D, V1.4S, V0.4S");
-        TestInst(USUBL2(V0.T_2D, V31.T_4S, V0.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.2D, V31.4S, V0.4S");
-        TestInst(USUBL2(V30.T_2D, V31.T_4S, V0.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.2D, V31.4S, V0.4S");
+        TestInst(USUBL2(V0.T_2D, V1.T_4S, V2.T_4S), asm => asm.USUBL2(V0.T_2D, V1.T_4S, V2.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.2D, V1.4S, V2.4S");
+        TestInst(USUBL2(V30.T_2D, V1.T_4S, V2.T_4S), asm => asm.USUBL2(V30.T_2D, V1.T_4S, V2.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.2D, V1.4S, V2.4S");
+        TestInst(USUBL2(V0.T_2D, V31.T_4S, V2.T_4S), asm => asm.USUBL2(V0.T_2D, V31.T_4S, V2.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.2D, V31.4S, V2.4S");
+        TestInst(USUBL2(V30.T_2D, V31.T_4S, V2.T_4S), asm => asm.USUBL2(V30.T_2D, V31.T_4S, V2.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.2D, V31.4S, V2.4S");
+        TestInst(USUBL2(V0.T_2D, V1.T_4S, V0.T_4S), asm => asm.USUBL2(V0.T_2D, V1.T_4S, V0.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.2D, V1.4S, V0.4S");
+        TestInst(USUBL2(V30.T_2D, V1.T_4S, V0.T_4S), asm => asm.USUBL2(V30.T_2D, V1.T_4S, V0.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.2D, V1.4S, V0.4S");
+        TestInst(USUBL2(V0.T_2D, V31.T_4S, V0.T_4S), asm => asm.USUBL2(V0.T_2D, V31.T_4S, V0.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V0.2D, V31.4S, V0.4S");
+        TestInst(USUBL2(V30.T_2D, V31.T_4S, V0.T_4S), asm => asm.USUBL2(V30.T_2D, V31.T_4S, V0.T_4S), Arm64InstructionId.USUBL2_asimddiff_l, Arm64Mnemonic.USUBL2, "USUBL2 V30.2D, V31.4S, V0.4S");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_LDTRSW_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDTRSW_64_ldst_unpriv_0()
     {
-        TestInst(LDTRSW(X0, _[X2, 5]), Arm64InstructionId.LDTRSW_64_ldst_unpriv, Arm64Mnemonic.LDTRSW, "LDTRSW X0, [X2, #5]");
-        TestInst(LDTRSW(X15, _[X2, 5]), Arm64InstructionId.LDTRSW_64_ldst_unpriv, Arm64Mnemonic.LDTRSW, "LDTRSW X15, [X2, #5]");
-        TestInst(LDTRSW(XZR, _[X2, 5]), Arm64InstructionId.LDTRSW_64_ldst_unpriv, Arm64Mnemonic.LDTRSW, "LDTRSW XZR, [X2, #5]");
+        TestInst(LDTRSW(X0, _[X2, 5]), asm => asm.LDTRSW(X0, _[X2, 5]), Arm64InstructionId.LDTRSW_64_ldst_unpriv, Arm64Mnemonic.LDTRSW, "LDTRSW X0, [X2, #5]");
+        TestInst(LDTRSW(X15, _[X2, 5]), asm => asm.LDTRSW(X15, _[X2, 5]), Arm64InstructionId.LDTRSW_64_ldst_unpriv, Arm64Mnemonic.LDTRSW, "LDTRSW X15, [X2, #5]");
+        TestInst(LDTRSW(XZR, _[X2, 5]), asm => asm.LDTRSW(XZR, _[X2, 5]), Arm64InstructionId.LDTRSW_64_ldst_unpriv, Arm64Mnemonic.LDTRSW, "LDTRSW XZR, [X2, #5]");
     }
 }

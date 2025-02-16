@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_PACNBIASPPC_General : Arm64Instruction
     [TestMethod]
     public void Test_PACNBIASPPC_64lr_dp_1src_0()
     {
-        TestInst(PACNBIASPPC(), Arm64InstructionId.PACNBIASPPC_64lr_dp_1src, Arm64Mnemonic.PACNBIASPPC, "PACNBIASPPC");
+        TestInst(PACNBIASPPC(), asm => asm.PACNBIASPPC(), Arm64InstructionId.PACNBIASPPC_64lr_dp_1src, Arm64Mnemonic.PACNBIASPPC, "PACNBIASPPC");
     }
 }

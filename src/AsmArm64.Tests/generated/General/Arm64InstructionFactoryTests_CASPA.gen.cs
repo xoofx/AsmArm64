@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_CASPA_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_CASPA_cp32_comswappr_0()
     {
-        TestInst(CASPA(W0, W1, W2, W3, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W0, W1, W2, W3, [X5]");
-        TestInst(CASPA(W15, W16, W2, W3, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W15, W16, W2, W3, [X5]");
-        TestInst(CASPA(WZR, W0, W2, W3, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA WZR, W0, W2, W3, [X5]");
-        TestInst(CASPA(W0, W1, W17, W18, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W0, W1, W17, W18, [X5]");
-        TestInst(CASPA(W15, W16, W17, W18, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W15, W16, W17, W18, [X5]");
-        TestInst(CASPA(WZR, W0, W17, W18, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA WZR, W0, W17, W18, [X5]");
-        TestInst(CASPA(W0, W1, WZR, W0, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W0, W1, WZR, W0, [X5]");
-        TestInst(CASPA(W15, W16, WZR, W0, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W15, W16, WZR, W0, [X5]");
-        TestInst(CASPA(WZR, W0, WZR, W0, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA WZR, W0, WZR, W0, [X5]");
+        TestInst(CASPA(W0, W1, W2, W3, _[X5]), asm => asm.CASPA(W0, W1, W2, W3, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W0, W1, W2, W3, [X5]");
+        TestInst(CASPA(W15, W16, W2, W3, _[X5]), asm => asm.CASPA(W15, W16, W2, W3, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W15, W16, W2, W3, [X5]");
+        TestInst(CASPA(WZR, W0, W2, W3, _[X5]), asm => asm.CASPA(WZR, W0, W2, W3, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA WZR, W0, W2, W3, [X5]");
+        TestInst(CASPA(W0, W1, W17, W18, _[X5]), asm => asm.CASPA(W0, W1, W17, W18, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W0, W1, W17, W18, [X5]");
+        TestInst(CASPA(W15, W16, W17, W18, _[X5]), asm => asm.CASPA(W15, W16, W17, W18, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W15, W16, W17, W18, [X5]");
+        TestInst(CASPA(WZR, W0, W17, W18, _[X5]), asm => asm.CASPA(WZR, W0, W17, W18, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA WZR, W0, W17, W18, [X5]");
+        TestInst(CASPA(W0, W1, WZR, W0, _[X5]), asm => asm.CASPA(W0, W1, WZR, W0, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W0, W1, WZR, W0, [X5]");
+        TestInst(CASPA(W15, W16, WZR, W0, _[X5]), asm => asm.CASPA(W15, W16, WZR, W0, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA W15, W16, WZR, W0, [X5]");
+        TestInst(CASPA(WZR, W0, WZR, W0, _[X5]), asm => asm.CASPA(WZR, W0, WZR, W0, _[X5]), Arm64InstructionId.CASPA_cp32_comswappr, Arm64Mnemonic.CASPA, "CASPA WZR, W0, WZR, W0, [X5]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_CASPA_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_CASPA_cp64_comswappr_1()
     {
-        TestInst(CASPA(X0, X1, X2, X3, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X0, X1, X2, X3, [X5]");
-        TestInst(CASPA(X15, X16, X2, X3, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X15, X16, X2, X3, [X5]");
-        TestInst(CASPA(XZR, X0, X2, X3, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA XZR, X0, X2, X3, [X5]");
-        TestInst(CASPA(X0, X1, X17, X18, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X0, X1, X17, X18, [X5]");
-        TestInst(CASPA(X15, X16, X17, X18, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X15, X16, X17, X18, [X5]");
-        TestInst(CASPA(XZR, X0, X17, X18, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA XZR, X0, X17, X18, [X5]");
-        TestInst(CASPA(X0, X1, XZR, X0, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X0, X1, XZR, X0, [X5]");
-        TestInst(CASPA(X15, X16, XZR, X0, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X15, X16, XZR, X0, [X5]");
-        TestInst(CASPA(XZR, X0, XZR, X0, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA XZR, X0, XZR, X0, [X5]");
+        TestInst(CASPA(X0, X1, X2, X3, _[X5]), asm => asm.CASPA(X0, X1, X2, X3, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X0, X1, X2, X3, [X5]");
+        TestInst(CASPA(X15, X16, X2, X3, _[X5]), asm => asm.CASPA(X15, X16, X2, X3, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X15, X16, X2, X3, [X5]");
+        TestInst(CASPA(XZR, X0, X2, X3, _[X5]), asm => asm.CASPA(XZR, X0, X2, X3, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA XZR, X0, X2, X3, [X5]");
+        TestInst(CASPA(X0, X1, X17, X18, _[X5]), asm => asm.CASPA(X0, X1, X17, X18, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X0, X1, X17, X18, [X5]");
+        TestInst(CASPA(X15, X16, X17, X18, _[X5]), asm => asm.CASPA(X15, X16, X17, X18, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X15, X16, X17, X18, [X5]");
+        TestInst(CASPA(XZR, X0, X17, X18, _[X5]), asm => asm.CASPA(XZR, X0, X17, X18, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA XZR, X0, X17, X18, [X5]");
+        TestInst(CASPA(X0, X1, XZR, X0, _[X5]), asm => asm.CASPA(X0, X1, XZR, X0, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X0, X1, XZR, X0, [X5]");
+        TestInst(CASPA(X15, X16, XZR, X0, _[X5]), asm => asm.CASPA(X15, X16, XZR, X0, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA X15, X16, XZR, X0, [X5]");
+        TestInst(CASPA(XZR, X0, XZR, X0, _[X5]), asm => asm.CASPA(XZR, X0, XZR, X0, _[X5]), Arm64InstructionId.CASPA_cp64_comswappr, Arm64Mnemonic.CASPA, "CASPA XZR, X0, XZR, X0, [X5]");
     }
 }

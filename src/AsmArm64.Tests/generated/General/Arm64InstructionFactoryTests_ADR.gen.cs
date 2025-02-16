@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_ADR_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ADR_only_pcreladdr_0()
     {
-        TestInst(ADR(X0, 11), Arm64InstructionId.ADR_only_pcreladdr, Arm64Mnemonic.ADR, "ADR X0, #11");
-        TestInst(ADR(X15, 11), Arm64InstructionId.ADR_only_pcreladdr, Arm64Mnemonic.ADR, "ADR X15, #11");
-        TestInst(ADR(XZR, 11), Arm64InstructionId.ADR_only_pcreladdr, Arm64Mnemonic.ADR, "ADR XZR, #11");
+        TestInst(ADR(X0, 11), null, Arm64InstructionId.ADR_only_pcreladdr, Arm64Mnemonic.ADR, "ADR X0, #11");
+        TestInst(ADR(X15, 11), null, Arm64InstructionId.ADR_only_pcreladdr, Arm64Mnemonic.ADR, "ADR X15, #11");
+        TestInst(ADR(XZR, 11), null, Arm64InstructionId.ADR_only_pcreladdr, Arm64Mnemonic.ADR, "ADR XZR, #11");
     }
 }

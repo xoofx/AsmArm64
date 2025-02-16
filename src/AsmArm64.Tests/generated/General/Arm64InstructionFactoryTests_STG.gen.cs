@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STG_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STG_64spost_ldsttags_0()
     {
-        TestInst(STG(X1, _[X2], 80), Arm64InstructionId.STG_64spost_ldsttags, Arm64Mnemonic.STG, "STG X1, [X2], #80");
-        TestInst(STG(X17, _[X2], 80), Arm64InstructionId.STG_64spost_ldsttags, Arm64Mnemonic.STG, "STG X17, [X2], #80");
-        TestInst(STG(SP, _[X2], 80), Arm64InstructionId.STG_64spost_ldsttags, Arm64Mnemonic.STG, "STG SP, [X2], #80");
+        TestInst(STG(X1, _[X2], 80), asm => asm.STG(X1, _[X2], 80), Arm64InstructionId.STG_64spost_ldsttags, Arm64Mnemonic.STG, "STG X1, [X2], #80");
+        TestInst(STG(X17, _[X2], 80), asm => asm.STG(X17, _[X2], 80), Arm64InstructionId.STG_64spost_ldsttags, Arm64Mnemonic.STG, "STG X17, [X2], #80");
+        TestInst(STG(SP, _[X2], 80), asm => asm.STG(SP, _[X2], 80), Arm64InstructionId.STG_64spost_ldsttags, Arm64Mnemonic.STG, "STG SP, [X2], #80");
     }
     
     /// <summary>
@@ -35,9 +34,9 @@ public class Arm64InstructionFactoryTests_STG_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STG_64spre_ldsttags_1()
     {
-        TestInst(STG(X1, _[X2, 80].Pre), Arm64InstructionId.STG_64spre_ldsttags, Arm64Mnemonic.STG, "STG X1, [X2, #80]!");
-        TestInst(STG(X17, _[X2, 80].Pre), Arm64InstructionId.STG_64spre_ldsttags, Arm64Mnemonic.STG, "STG X17, [X2, #80]!");
-        TestInst(STG(SP, _[X2, 80].Pre), Arm64InstructionId.STG_64spre_ldsttags, Arm64Mnemonic.STG, "STG SP, [X2, #80]!");
+        TestInst(STG(X1, _[X2, 80].Pre), asm => asm.STG(X1, _[X2, 80].Pre), Arm64InstructionId.STG_64spre_ldsttags, Arm64Mnemonic.STG, "STG X1, [X2, #80]!");
+        TestInst(STG(X17, _[X2, 80].Pre), asm => asm.STG(X17, _[X2, 80].Pre), Arm64InstructionId.STG_64spre_ldsttags, Arm64Mnemonic.STG, "STG X17, [X2, #80]!");
+        TestInst(STG(SP, _[X2, 80].Pre), asm => asm.STG(SP, _[X2, 80].Pre), Arm64InstructionId.STG_64spre_ldsttags, Arm64Mnemonic.STG, "STG SP, [X2, #80]!");
     }
     
     /// <summary>
@@ -46,8 +45,8 @@ public class Arm64InstructionFactoryTests_STG_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STG_64soffset_ldsttags_2()
     {
-        TestInst(STG(X1, _[X2, 80]), Arm64InstructionId.STG_64soffset_ldsttags, Arm64Mnemonic.STG, "STG X1, [X2, #80]");
-        TestInst(STG(X17, _[X2, 80]), Arm64InstructionId.STG_64soffset_ldsttags, Arm64Mnemonic.STG, "STG X17, [X2, #80]");
-        TestInst(STG(SP, _[X2, 80]), Arm64InstructionId.STG_64soffset_ldsttags, Arm64Mnemonic.STG, "STG SP, [X2, #80]");
+        TestInst(STG(X1, _[X2, 80]), asm => asm.STG(X1, _[X2, 80]), Arm64InstructionId.STG_64soffset_ldsttags, Arm64Mnemonic.STG, "STG X1, [X2, #80]");
+        TestInst(STG(X17, _[X2, 80]), asm => asm.STG(X17, _[X2, 80]), Arm64InstructionId.STG_64soffset_ldsttags, Arm64Mnemonic.STG, "STG X17, [X2, #80]");
+        TestInst(STG(SP, _[X2, 80]), asm => asm.STG(SP, _[X2, 80]), Arm64InstructionId.STG_64soffset_ldsttags, Arm64Mnemonic.STG, "STG SP, [X2, #80]");
     }
 }

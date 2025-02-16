@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SUBHN2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SUBHN2_asimddiff_n_0()
     {
-        TestInst(SUBHN2(V0.T_16B, V1.T_8H, V2.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.16B, V1.8H, V2.8H");
-        TestInst(SUBHN2(V30.T_16B, V1.T_8H, V2.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.16B, V1.8H, V2.8H");
-        TestInst(SUBHN2(V0.T_16B, V31.T_8H, V2.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.16B, V31.8H, V2.8H");
-        TestInst(SUBHN2(V30.T_16B, V31.T_8H, V2.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.16B, V31.8H, V2.8H");
-        TestInst(SUBHN2(V0.T_16B, V1.T_8H, V0.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.16B, V1.8H, V0.8H");
-        TestInst(SUBHN2(V30.T_16B, V1.T_8H, V0.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.16B, V1.8H, V0.8H");
-        TestInst(SUBHN2(V0.T_16B, V31.T_8H, V0.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.16B, V31.8H, V0.8H");
-        TestInst(SUBHN2(V30.T_16B, V31.T_8H, V0.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.16B, V31.8H, V0.8H");
+        TestInst(SUBHN2(V0.T_16B, V1.T_8H, V2.T_8H), asm => asm.SUBHN2(V0.T_16B, V1.T_8H, V2.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.16B, V1.8H, V2.8H");
+        TestInst(SUBHN2(V30.T_16B, V1.T_8H, V2.T_8H), asm => asm.SUBHN2(V30.T_16B, V1.T_8H, V2.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.16B, V1.8H, V2.8H");
+        TestInst(SUBHN2(V0.T_16B, V31.T_8H, V2.T_8H), asm => asm.SUBHN2(V0.T_16B, V31.T_8H, V2.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.16B, V31.8H, V2.8H");
+        TestInst(SUBHN2(V30.T_16B, V31.T_8H, V2.T_8H), asm => asm.SUBHN2(V30.T_16B, V31.T_8H, V2.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.16B, V31.8H, V2.8H");
+        TestInst(SUBHN2(V0.T_16B, V1.T_8H, V0.T_8H), asm => asm.SUBHN2(V0.T_16B, V1.T_8H, V0.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.16B, V1.8H, V0.8H");
+        TestInst(SUBHN2(V30.T_16B, V1.T_8H, V0.T_8H), asm => asm.SUBHN2(V30.T_16B, V1.T_8H, V0.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.16B, V1.8H, V0.8H");
+        TestInst(SUBHN2(V0.T_16B, V31.T_8H, V0.T_8H), asm => asm.SUBHN2(V0.T_16B, V31.T_8H, V0.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.16B, V31.8H, V0.8H");
+        TestInst(SUBHN2(V30.T_16B, V31.T_8H, V0.T_8H), asm => asm.SUBHN2(V30.T_16B, V31.T_8H, V0.T_8H), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.16B, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_SUBHN2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SUBHN2_asimddiff_n_1()
     {
-        TestInst(SUBHN2(V0.T_8H, V1.T_4S, V2.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.8H, V1.4S, V2.4S");
-        TestInst(SUBHN2(V30.T_8H, V1.T_4S, V2.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.8H, V1.4S, V2.4S");
-        TestInst(SUBHN2(V0.T_8H, V31.T_4S, V2.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.8H, V31.4S, V2.4S");
-        TestInst(SUBHN2(V30.T_8H, V31.T_4S, V2.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.8H, V31.4S, V2.4S");
-        TestInst(SUBHN2(V0.T_8H, V1.T_4S, V0.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.8H, V1.4S, V0.4S");
-        TestInst(SUBHN2(V30.T_8H, V1.T_4S, V0.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.8H, V1.4S, V0.4S");
-        TestInst(SUBHN2(V0.T_8H, V31.T_4S, V0.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.8H, V31.4S, V0.4S");
-        TestInst(SUBHN2(V30.T_8H, V31.T_4S, V0.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.8H, V31.4S, V0.4S");
+        TestInst(SUBHN2(V0.T_8H, V1.T_4S, V2.T_4S), asm => asm.SUBHN2(V0.T_8H, V1.T_4S, V2.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.8H, V1.4S, V2.4S");
+        TestInst(SUBHN2(V30.T_8H, V1.T_4S, V2.T_4S), asm => asm.SUBHN2(V30.T_8H, V1.T_4S, V2.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.8H, V1.4S, V2.4S");
+        TestInst(SUBHN2(V0.T_8H, V31.T_4S, V2.T_4S), asm => asm.SUBHN2(V0.T_8H, V31.T_4S, V2.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.8H, V31.4S, V2.4S");
+        TestInst(SUBHN2(V30.T_8H, V31.T_4S, V2.T_4S), asm => asm.SUBHN2(V30.T_8H, V31.T_4S, V2.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.8H, V31.4S, V2.4S");
+        TestInst(SUBHN2(V0.T_8H, V1.T_4S, V0.T_4S), asm => asm.SUBHN2(V0.T_8H, V1.T_4S, V0.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.8H, V1.4S, V0.4S");
+        TestInst(SUBHN2(V30.T_8H, V1.T_4S, V0.T_4S), asm => asm.SUBHN2(V30.T_8H, V1.T_4S, V0.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.8H, V1.4S, V0.4S");
+        TestInst(SUBHN2(V0.T_8H, V31.T_4S, V0.T_4S), asm => asm.SUBHN2(V0.T_8H, V31.T_4S, V0.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.8H, V31.4S, V0.4S");
+        TestInst(SUBHN2(V30.T_8H, V31.T_4S, V0.T_4S), asm => asm.SUBHN2(V30.T_8H, V31.T_4S, V0.T_4S), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.8H, V31.4S, V0.4S");
     }
     
     /// <summary>
@@ -56,13 +55,13 @@ public class Arm64InstructionFactoryTests_SUBHN2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SUBHN2_asimddiff_n_2()
     {
-        TestInst(SUBHN2(V0.T_4S, V1.T_2D, V2.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.4S, V1.2D, V2.2D");
-        TestInst(SUBHN2(V30.T_4S, V1.T_2D, V2.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.4S, V1.2D, V2.2D");
-        TestInst(SUBHN2(V0.T_4S, V31.T_2D, V2.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.4S, V31.2D, V2.2D");
-        TestInst(SUBHN2(V30.T_4S, V31.T_2D, V2.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.4S, V31.2D, V2.2D");
-        TestInst(SUBHN2(V0.T_4S, V1.T_2D, V0.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.4S, V1.2D, V0.2D");
-        TestInst(SUBHN2(V30.T_4S, V1.T_2D, V0.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.4S, V1.2D, V0.2D");
-        TestInst(SUBHN2(V0.T_4S, V31.T_2D, V0.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.4S, V31.2D, V0.2D");
-        TestInst(SUBHN2(V30.T_4S, V31.T_2D, V0.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.4S, V31.2D, V0.2D");
+        TestInst(SUBHN2(V0.T_4S, V1.T_2D, V2.T_2D), asm => asm.SUBHN2(V0.T_4S, V1.T_2D, V2.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.4S, V1.2D, V2.2D");
+        TestInst(SUBHN2(V30.T_4S, V1.T_2D, V2.T_2D), asm => asm.SUBHN2(V30.T_4S, V1.T_2D, V2.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.4S, V1.2D, V2.2D");
+        TestInst(SUBHN2(V0.T_4S, V31.T_2D, V2.T_2D), asm => asm.SUBHN2(V0.T_4S, V31.T_2D, V2.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.4S, V31.2D, V2.2D");
+        TestInst(SUBHN2(V30.T_4S, V31.T_2D, V2.T_2D), asm => asm.SUBHN2(V30.T_4S, V31.T_2D, V2.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.4S, V31.2D, V2.2D");
+        TestInst(SUBHN2(V0.T_4S, V1.T_2D, V0.T_2D), asm => asm.SUBHN2(V0.T_4S, V1.T_2D, V0.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.4S, V1.2D, V0.2D");
+        TestInst(SUBHN2(V30.T_4S, V1.T_2D, V0.T_2D), asm => asm.SUBHN2(V30.T_4S, V1.T_2D, V0.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.4S, V1.2D, V0.2D");
+        TestInst(SUBHN2(V0.T_4S, V31.T_2D, V0.T_2D), asm => asm.SUBHN2(V0.T_4S, V31.T_2D, V0.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V0.4S, V31.2D, V0.2D");
+        TestInst(SUBHN2(V30.T_4S, V31.T_2D, V0.T_2D), asm => asm.SUBHN2(V30.T_4S, V31.T_2D, V0.T_2D), Arm64InstructionId.SUBHN2_asimddiff_n, Arm64Mnemonic.SUBHN2, "SUBHN2 V30.4S, V31.2D, V0.2D");
     }
 }

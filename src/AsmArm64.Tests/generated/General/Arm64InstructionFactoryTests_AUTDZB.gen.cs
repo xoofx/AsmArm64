@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_AUTDZB_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_AUTDZB_64z_dp_1src_0()
     {
-        TestInst(AUTDZB(X0), Arm64InstructionId.AUTDZB_64z_dp_1src, Arm64Mnemonic.AUTDZB, "AUTDZB X0");
-        TestInst(AUTDZB(X15), Arm64InstructionId.AUTDZB_64z_dp_1src, Arm64Mnemonic.AUTDZB, "AUTDZB X15");
-        TestInst(AUTDZB(XZR), Arm64InstructionId.AUTDZB_64z_dp_1src, Arm64Mnemonic.AUTDZB, "AUTDZB XZR");
+        TestInst(AUTDZB(X0), asm => asm.AUTDZB(X0), Arm64InstructionId.AUTDZB_64z_dp_1src, Arm64Mnemonic.AUTDZB, "AUTDZB X0");
+        TestInst(AUTDZB(X15), asm => asm.AUTDZB(X15), Arm64InstructionId.AUTDZB_64z_dp_1src, Arm64Mnemonic.AUTDZB, "AUTDZB X15");
+        TestInst(AUTDZB(XZR), asm => asm.AUTDZB(XZR), Arm64InstructionId.AUTDZB_64z_dp_1src, Arm64Mnemonic.AUTDZB, "AUTDZB XZR");
     }
 }

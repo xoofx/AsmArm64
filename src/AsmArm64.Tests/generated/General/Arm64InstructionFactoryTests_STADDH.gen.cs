@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STADDH_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STADDH_ldaddh_32_memop_0()
     {
-        TestInst(STADDH(W0, _[X2]), Arm64InstructionId.STADDH_ldaddh_32_memop, Arm64Mnemonic.STADDH, "STADDH W0, [X2]");
-        TestInst(STADDH(W15, _[X2]), Arm64InstructionId.STADDH_ldaddh_32_memop, Arm64Mnemonic.STADDH, "STADDH W15, [X2]");
-        TestInst(STADDH(WZR, _[X2]), Arm64InstructionId.STADDH_ldaddh_32_memop, Arm64Mnemonic.STADDH, "STADDH WZR, [X2]");
+        TestInst(STADDH(W0, _[X2]), asm => asm.STADDH(W0, _[X2]), Arm64InstructionId.STADDH_ldaddh_32_memop, Arm64Mnemonic.STADDH, "STADDH W0, [X2]");
+        TestInst(STADDH(W15, _[X2]), asm => asm.STADDH(W15, _[X2]), Arm64InstructionId.STADDH_ldaddh_32_memop, Arm64Mnemonic.STADDH, "STADDH W15, [X2]");
+        TestInst(STADDH(WZR, _[X2]), asm => asm.STADDH(WZR, _[X2]), Arm64InstructionId.STADDH_ldaddh_32_memop, Arm64Mnemonic.STADDH, "STADDH WZR, [X2]");
     }
 }

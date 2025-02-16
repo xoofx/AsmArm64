@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FRINTA_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTA_h_floatdp1_0()
     {
-        TestInst(FRINTA(H0, H1), Arm64InstructionId.FRINTA_h_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA H0, H1");
-        TestInst(FRINTA(H31, H1), Arm64InstructionId.FRINTA_h_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA H31, H1");
-        TestInst(FRINTA(H0, H31), Arm64InstructionId.FRINTA_h_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA H0, H31");
-        TestInst(FRINTA(H31, H31), Arm64InstructionId.FRINTA_h_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA H31, H31");
+        TestInst(FRINTA(H0, H1), asm => asm.FRINTA(H0, H1), Arm64InstructionId.FRINTA_h_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA H0, H1");
+        TestInst(FRINTA(H31, H1), asm => asm.FRINTA(H31, H1), Arm64InstructionId.FRINTA_h_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA H31, H1");
+        TestInst(FRINTA(H0, H31), asm => asm.FRINTA(H0, H31), Arm64InstructionId.FRINTA_h_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA H0, H31");
+        TestInst(FRINTA(H31, H31), asm => asm.FRINTA(H31, H31), Arm64InstructionId.FRINTA_h_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA H31, H31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FRINTA_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTA_s_floatdp1_1()
     {
-        TestInst(FRINTA(S0, S1), Arm64InstructionId.FRINTA_s_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA S0, S1");
-        TestInst(FRINTA(S31, S1), Arm64InstructionId.FRINTA_s_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA S31, S1");
-        TestInst(FRINTA(S0, S31), Arm64InstructionId.FRINTA_s_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA S0, S31");
-        TestInst(FRINTA(S31, S31), Arm64InstructionId.FRINTA_s_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA S31, S31");
+        TestInst(FRINTA(S0, S1), asm => asm.FRINTA(S0, S1), Arm64InstructionId.FRINTA_s_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA S0, S1");
+        TestInst(FRINTA(S31, S1), asm => asm.FRINTA(S31, S1), Arm64InstructionId.FRINTA_s_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA S31, S1");
+        TestInst(FRINTA(S0, S31), asm => asm.FRINTA(S0, S31), Arm64InstructionId.FRINTA_s_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA S0, S31");
+        TestInst(FRINTA(S31, S31), asm => asm.FRINTA(S31, S31), Arm64InstructionId.FRINTA_s_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA S31, S31");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_FRINTA_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTA_d_floatdp1_2()
     {
-        TestInst(FRINTA(D0, D1), Arm64InstructionId.FRINTA_d_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA D0, D1");
-        TestInst(FRINTA(D31, D1), Arm64InstructionId.FRINTA_d_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA D31, D1");
-        TestInst(FRINTA(D0, D31), Arm64InstructionId.FRINTA_d_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA D0, D31");
-        TestInst(FRINTA(D31, D31), Arm64InstructionId.FRINTA_d_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA D31, D31");
+        TestInst(FRINTA(D0, D1), asm => asm.FRINTA(D0, D1), Arm64InstructionId.FRINTA_d_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA D0, D1");
+        TestInst(FRINTA(D31, D1), asm => asm.FRINTA(D31, D1), Arm64InstructionId.FRINTA_d_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA D31, D1");
+        TestInst(FRINTA(D0, D31), asm => asm.FRINTA(D0, D31), Arm64InstructionId.FRINTA_d_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA D0, D31");
+        TestInst(FRINTA(D31, D31), asm => asm.FRINTA(D31, D31), Arm64InstructionId.FRINTA_d_floatdp1, Arm64Mnemonic.FRINTA, "FRINTA D31, D31");
     }
 }

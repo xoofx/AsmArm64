@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STEORLB_General : Arm64InstructionFact
     [TestMethod]
     public void Test_STEORLB_ldeorlb_32_memop_0()
     {
-        TestInst(STEORLB(W0, _[X2]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB W0, [X2]");
-        TestInst(STEORLB(W15, _[X2]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB W15, [X2]");
-        TestInst(STEORLB(WZR, _[X2]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB WZR, [X2]");
+        TestInst(STEORLB(W0, _[X2]), asm => asm.STEORLB(W0, _[X2]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB W0, [X2]");
+        TestInst(STEORLB(W15, _[X2]), asm => asm.STEORLB(W15, _[X2]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB W15, [X2]");
+        TestInst(STEORLB(WZR, _[X2]), asm => asm.STEORLB(WZR, _[X2]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB WZR, [X2]");
     }
 }

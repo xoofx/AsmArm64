@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,17 +23,17 @@ public class Arm64InstructionFactoryTests_SYSL_System : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_SYSL_rc_systeminstrs_0()
     {
-        TestInst(SYSL(X0, 5, C2, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X0, #5, C2, C3, #5");
-        TestInst(SYSL(X15, 5, C2, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X15, #5, C2, C3, #5");
-        TestInst(SYSL(XZR, 5, C2, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL XZR, #5, C2, C3, #5");
-        TestInst(SYSL(X0, 5, C15, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X0, #5, C15, C3, #5");
-        TestInst(SYSL(X15, 5, C15, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X15, #5, C15, C3, #5");
-        TestInst(SYSL(XZR, 5, C15, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL XZR, #5, C15, C3, #5");
-        TestInst(SYSL(X0, 5, C2, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X0, #5, C2, C15, #5");
-        TestInst(SYSL(X15, 5, C2, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X15, #5, C2, C15, #5");
-        TestInst(SYSL(XZR, 5, C2, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL XZR, #5, C2, C15, #5");
-        TestInst(SYSL(X0, 5, C15, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X0, #5, C15, C15, #5");
-        TestInst(SYSL(X15, 5, C15, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X15, #5, C15, C15, #5");
-        TestInst(SYSL(XZR, 5, C15, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL XZR, #5, C15, C15, #5");
+        TestInst(SYSL(X0, 5, C2, C3, 5), asm => asm.SYSL(X0, 5, C2, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X0, #5, C2, C3, #5");
+        TestInst(SYSL(X15, 5, C2, C3, 5), asm => asm.SYSL(X15, 5, C2, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X15, #5, C2, C3, #5");
+        TestInst(SYSL(XZR, 5, C2, C3, 5), asm => asm.SYSL(XZR, 5, C2, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL XZR, #5, C2, C3, #5");
+        TestInst(SYSL(X0, 5, C15, C3, 5), asm => asm.SYSL(X0, 5, C15, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X0, #5, C15, C3, #5");
+        TestInst(SYSL(X15, 5, C15, C3, 5), asm => asm.SYSL(X15, 5, C15, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X15, #5, C15, C3, #5");
+        TestInst(SYSL(XZR, 5, C15, C3, 5), asm => asm.SYSL(XZR, 5, C15, C3, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL XZR, #5, C15, C3, #5");
+        TestInst(SYSL(X0, 5, C2, C15, 5), asm => asm.SYSL(X0, 5, C2, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X0, #5, C2, C15, #5");
+        TestInst(SYSL(X15, 5, C2, C15, 5), asm => asm.SYSL(X15, 5, C2, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X15, #5, C2, C15, #5");
+        TestInst(SYSL(XZR, 5, C2, C15, 5), asm => asm.SYSL(XZR, 5, C2, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL XZR, #5, C2, C15, #5");
+        TestInst(SYSL(X0, 5, C15, C15, 5), asm => asm.SYSL(X0, 5, C15, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X0, #5, C15, C15, #5");
+        TestInst(SYSL(X15, 5, C15, C15, 5), asm => asm.SYSL(X15, 5, C15, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL X15, #5, C15, C15, #5");
+        TestInst(SYSL(XZR, 5, C15, C15, 5), asm => asm.SYSL(XZR, 5, C15, C15, 5), Arm64InstructionId.SYSL_rc_systeminstrs, Arm64Mnemonic.SYSL, "SYSL XZR, #5, C15, C15, #5");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_TLBIP_System : Arm64InstructionFactory
     [TestMethod]
     public void Test_TLBIP_sysp_cr_syspairinstrs_0()
     {
-        TestInst(TLBIP(IPAS2E1, X1), Arm64InstructionId.TLBIP_sysp_cr_syspairinstrs, Arm64Mnemonic.TLBIP, "TLBIP ipas2e1, X1");
-        TestInst(TLBIP(IPAS2E1, X16), Arm64InstructionId.TLBIP_sysp_cr_syspairinstrs, Arm64Mnemonic.TLBIP, "TLBIP ipas2e1, X16");
+        TestInst(TLBIP(IPAS2E1, X1), asm => asm.TLBIP(IPAS2E1, X1), Arm64InstructionId.TLBIP_sysp_cr_syspairinstrs, Arm64Mnemonic.TLBIP, "TLBIP ipas2e1, X1");
+        TestInst(TLBIP(IPAS2E1, X16), asm => asm.TLBIP(IPAS2E1, X16), Arm64InstructionId.TLBIP_sysp_cr_syspairinstrs, Arm64Mnemonic.TLBIP, "TLBIP ipas2e1, X16");
     }
 }

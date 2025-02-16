@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDEOR_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDEOR_32_memop_0()
     {
-        TestInst(LDEOR(W0, W1, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR W0, W1, [X3]");
-        TestInst(LDEOR(W15, W1, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR W15, W1, [X3]");
-        TestInst(LDEOR(WZR, W1, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR WZR, W1, [X3]");
-        TestInst(LDEOR(W0, W16, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR W0, W16, [X3]");
-        TestInst(LDEOR(W15, W16, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR W15, W16, [X3]");
-        TestInst(LDEOR(WZR, W16, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR WZR, W16, [X3]");
-        TestInst(LDEOR(W0, WZR, _[X3]), Arm64InstructionId.STEOR_ldeor_32_memop, Arm64Mnemonic.STEOR, "STEOR W0, [X3]");
-        TestInst(LDEOR(W15, WZR, _[X3]), Arm64InstructionId.STEOR_ldeor_32_memop, Arm64Mnemonic.STEOR, "STEOR W15, [X3]");
-        TestInst(LDEOR(WZR, WZR, _[X3]), Arm64InstructionId.STEOR_ldeor_32_memop, Arm64Mnemonic.STEOR, "STEOR WZR, [X3]");
+        TestInst(LDEOR(W0, W1, _[X3]), asm => asm.LDEOR(W0, W1, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR W0, W1, [X3]");
+        TestInst(LDEOR(W15, W1, _[X3]), asm => asm.LDEOR(W15, W1, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR W15, W1, [X3]");
+        TestInst(LDEOR(WZR, W1, _[X3]), asm => asm.LDEOR(WZR, W1, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR WZR, W1, [X3]");
+        TestInst(LDEOR(W0, W16, _[X3]), asm => asm.LDEOR(W0, W16, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR W0, W16, [X3]");
+        TestInst(LDEOR(W15, W16, _[X3]), asm => asm.LDEOR(W15, W16, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR W15, W16, [X3]");
+        TestInst(LDEOR(WZR, W16, _[X3]), asm => asm.LDEOR(WZR, W16, _[X3]), Arm64InstructionId.LDEOR_32_memop, Arm64Mnemonic.LDEOR, "LDEOR WZR, W16, [X3]");
+        TestInst(LDEOR(W0, WZR, _[X3]), asm => asm.LDEOR(W0, WZR, _[X3]), Arm64InstructionId.STEOR_ldeor_32_memop, Arm64Mnemonic.STEOR, "STEOR W0, [X3]");
+        TestInst(LDEOR(W15, WZR, _[X3]), asm => asm.LDEOR(W15, WZR, _[X3]), Arm64InstructionId.STEOR_ldeor_32_memop, Arm64Mnemonic.STEOR, "STEOR W15, [X3]");
+        TestInst(LDEOR(WZR, WZR, _[X3]), asm => asm.LDEOR(WZR, WZR, _[X3]), Arm64InstructionId.STEOR_ldeor_32_memop, Arm64Mnemonic.STEOR, "STEOR WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDEOR_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDEOR_64_memop_1()
     {
-        TestInst(LDEOR(X0, X1, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR X0, X1, [X3]");
-        TestInst(LDEOR(X15, X1, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR X15, X1, [X3]");
-        TestInst(LDEOR(XZR, X1, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR XZR, X1, [X3]");
-        TestInst(LDEOR(X0, X16, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR X0, X16, [X3]");
-        TestInst(LDEOR(X15, X16, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR X15, X16, [X3]");
-        TestInst(LDEOR(XZR, X16, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR XZR, X16, [X3]");
-        TestInst(LDEOR(X0, XZR, _[X3]), Arm64InstructionId.STEOR_ldeor_64_memop, Arm64Mnemonic.STEOR, "STEOR X0, [X3]");
-        TestInst(LDEOR(X15, XZR, _[X3]), Arm64InstructionId.STEOR_ldeor_64_memop, Arm64Mnemonic.STEOR, "STEOR X15, [X3]");
-        TestInst(LDEOR(XZR, XZR, _[X3]), Arm64InstructionId.STEOR_ldeor_64_memop, Arm64Mnemonic.STEOR, "STEOR XZR, [X3]");
+        TestInst(LDEOR(X0, X1, _[X3]), asm => asm.LDEOR(X0, X1, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR X0, X1, [X3]");
+        TestInst(LDEOR(X15, X1, _[X3]), asm => asm.LDEOR(X15, X1, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR X15, X1, [X3]");
+        TestInst(LDEOR(XZR, X1, _[X3]), asm => asm.LDEOR(XZR, X1, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR XZR, X1, [X3]");
+        TestInst(LDEOR(X0, X16, _[X3]), asm => asm.LDEOR(X0, X16, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR X0, X16, [X3]");
+        TestInst(LDEOR(X15, X16, _[X3]), asm => asm.LDEOR(X15, X16, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR X15, X16, [X3]");
+        TestInst(LDEOR(XZR, X16, _[X3]), asm => asm.LDEOR(XZR, X16, _[X3]), Arm64InstructionId.LDEOR_64_memop, Arm64Mnemonic.LDEOR, "LDEOR XZR, X16, [X3]");
+        TestInst(LDEOR(X0, XZR, _[X3]), asm => asm.LDEOR(X0, XZR, _[X3]), Arm64InstructionId.STEOR_ldeor_64_memop, Arm64Mnemonic.STEOR, "STEOR X0, [X3]");
+        TestInst(LDEOR(X15, XZR, _[X3]), asm => asm.LDEOR(X15, XZR, _[X3]), Arm64InstructionId.STEOR_ldeor_64_memop, Arm64Mnemonic.STEOR, "STEOR X15, [X3]");
+        TestInst(LDEOR(XZR, XZR, _[X3]), asm => asm.LDEOR(XZR, XZR, _[X3]), Arm64InstructionId.STEOR_ldeor_64_memop, Arm64Mnemonic.STEOR, "STEOR XZR, [X3]");
     }
 }

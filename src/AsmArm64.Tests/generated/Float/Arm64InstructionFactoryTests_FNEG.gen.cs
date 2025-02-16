@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FNEG_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FNEG_h_floatdp1_0()
     {
-        TestInst(FNEG(H0, H1), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H0, H1");
-        TestInst(FNEG(H31, H1), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H31, H1");
-        TestInst(FNEG(H0, H31), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H0, H31");
-        TestInst(FNEG(H31, H31), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H31, H31");
+        TestInst(FNEG(H0, H1), asm => asm.FNEG(H0, H1), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H0, H1");
+        TestInst(FNEG(H31, H1), asm => asm.FNEG(H31, H1), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H31, H1");
+        TestInst(FNEG(H0, H31), asm => asm.FNEG(H0, H31), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H0, H31");
+        TestInst(FNEG(H31, H31), asm => asm.FNEG(H31, H31), Arm64InstructionId.FNEG_h_floatdp1, Arm64Mnemonic.FNEG, "FNEG H31, H31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FNEG_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FNEG_s_floatdp1_1()
     {
-        TestInst(FNEG(S0, S1), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S0, S1");
-        TestInst(FNEG(S31, S1), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S31, S1");
-        TestInst(FNEG(S0, S31), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S0, S31");
-        TestInst(FNEG(S31, S31), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S31, S31");
+        TestInst(FNEG(S0, S1), asm => asm.FNEG(S0, S1), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S0, S1");
+        TestInst(FNEG(S31, S1), asm => asm.FNEG(S31, S1), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S31, S1");
+        TestInst(FNEG(S0, S31), asm => asm.FNEG(S0, S31), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S0, S31");
+        TestInst(FNEG(S31, S31), asm => asm.FNEG(S31, S31), Arm64InstructionId.FNEG_s_floatdp1, Arm64Mnemonic.FNEG, "FNEG S31, S31");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_FNEG_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FNEG_d_floatdp1_2()
     {
-        TestInst(FNEG(D0, D1), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D0, D1");
-        TestInst(FNEG(D31, D1), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D31, D1");
-        TestInst(FNEG(D0, D31), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D0, D31");
-        TestInst(FNEG(D31, D31), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D31, D31");
+        TestInst(FNEG(D0, D1), asm => asm.FNEG(D0, D1), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D0, D1");
+        TestInst(FNEG(D31, D1), asm => asm.FNEG(D31, D1), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D31, D1");
+        TestInst(FNEG(D0, D31), asm => asm.FNEG(D0, D31), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D0, D31");
+        TestInst(FNEG(D31, D31), asm => asm.FNEG(D31, D31), Arm64InstructionId.FNEG_d_floatdp1, Arm64Mnemonic.FNEG, "FNEG D31, D31");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_CASB_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CASB_c32_comswap_0()
     {
-        TestInst(CASB(W0, W1, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W0, W1, [X3]");
-        TestInst(CASB(W15, W1, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W15, W1, [X3]");
-        TestInst(CASB(WZR, W1, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB WZR, W1, [X3]");
-        TestInst(CASB(W0, W16, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W0, W16, [X3]");
-        TestInst(CASB(W15, W16, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W15, W16, [X3]");
-        TestInst(CASB(WZR, W16, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB WZR, W16, [X3]");
-        TestInst(CASB(W0, WZR, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W0, WZR, [X3]");
-        TestInst(CASB(W15, WZR, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W15, WZR, [X3]");
-        TestInst(CASB(WZR, WZR, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB WZR, WZR, [X3]");
+        TestInst(CASB(W0, W1, _[X3]), asm => asm.CASB(W0, W1, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W0, W1, [X3]");
+        TestInst(CASB(W15, W1, _[X3]), asm => asm.CASB(W15, W1, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W15, W1, [X3]");
+        TestInst(CASB(WZR, W1, _[X3]), asm => asm.CASB(WZR, W1, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB WZR, W1, [X3]");
+        TestInst(CASB(W0, W16, _[X3]), asm => asm.CASB(W0, W16, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W0, W16, [X3]");
+        TestInst(CASB(W15, W16, _[X3]), asm => asm.CASB(W15, W16, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W15, W16, [X3]");
+        TestInst(CASB(WZR, W16, _[X3]), asm => asm.CASB(WZR, W16, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB WZR, W16, [X3]");
+        TestInst(CASB(W0, WZR, _[X3]), asm => asm.CASB(W0, WZR, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W0, WZR, [X3]");
+        TestInst(CASB(W15, WZR, _[X3]), asm => asm.CASB(W15, WZR, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB W15, WZR, [X3]");
+        TestInst(CASB(WZR, WZR, _[X3]), asm => asm.CASB(WZR, WZR, _[X3]), Arm64InstructionId.CASB_c32_comswap, Arm64Mnemonic.CASB, "CASB WZR, WZR, [X3]");
     }
 }

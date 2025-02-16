@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STUR_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_STUR_32_ldst_unscaled_0()
     {
-        TestInst(STUR(W0, _[X2, 5]), Arm64InstructionId.STUR_32_ldst_unscaled, Arm64Mnemonic.STUR, "STUR W0, [X2, #5]");
-        TestInst(STUR(W15, _[X2, 5]), Arm64InstructionId.STUR_32_ldst_unscaled, Arm64Mnemonic.STUR, "STUR W15, [X2, #5]");
-        TestInst(STUR(WZR, _[X2, 5]), Arm64InstructionId.STUR_32_ldst_unscaled, Arm64Mnemonic.STUR, "STUR WZR, [X2, #5]");
+        TestInst(STUR(W0, _[X2, 5]), asm => asm.STUR(W0, _[X2, 5]), Arm64InstructionId.STUR_32_ldst_unscaled, Arm64Mnemonic.STUR, "STUR W0, [X2, #5]");
+        TestInst(STUR(W15, _[X2, 5]), asm => asm.STUR(W15, _[X2, 5]), Arm64InstructionId.STUR_32_ldst_unscaled, Arm64Mnemonic.STUR, "STUR W15, [X2, #5]");
+        TestInst(STUR(WZR, _[X2, 5]), asm => asm.STUR(WZR, _[X2, 5]), Arm64InstructionId.STUR_32_ldst_unscaled, Arm64Mnemonic.STUR, "STUR WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STUR_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_STUR_64_ldst_unscaled_1()
     {
-        TestInst(STUR(X0, _[X2, 5]), Arm64InstructionId.STUR_64_ldst_unscaled, Arm64Mnemonic.STUR, "STUR X0, [X2, #5]");
-        TestInst(STUR(X15, _[X2, 5]), Arm64InstructionId.STUR_64_ldst_unscaled, Arm64Mnemonic.STUR, "STUR X15, [X2, #5]");
-        TestInst(STUR(XZR, _[X2, 5]), Arm64InstructionId.STUR_64_ldst_unscaled, Arm64Mnemonic.STUR, "STUR XZR, [X2, #5]");
+        TestInst(STUR(X0, _[X2, 5]), asm => asm.STUR(X0, _[X2, 5]), Arm64InstructionId.STUR_64_ldst_unscaled, Arm64Mnemonic.STUR, "STUR X0, [X2, #5]");
+        TestInst(STUR(X15, _[X2, 5]), asm => asm.STUR(X15, _[X2, 5]), Arm64InstructionId.STUR_64_ldst_unscaled, Arm64Mnemonic.STUR, "STUR X15, [X2, #5]");
+        TestInst(STUR(XZR, _[X2, 5]), asm => asm.STUR(XZR, _[X2, 5]), Arm64InstructionId.STUR_64_ldst_unscaled, Arm64Mnemonic.STUR, "STUR XZR, [X2, #5]");
     }
 }

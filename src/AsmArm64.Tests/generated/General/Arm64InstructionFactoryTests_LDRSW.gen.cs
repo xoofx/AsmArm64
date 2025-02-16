@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDRSW_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDRSW_64_ldst_immpost_0()
     {
-        TestInst(LDRSW(X0, _[X2], 5), Arm64InstructionId.LDRSW_64_ldst_immpost, Arm64Mnemonic.LDRSW, "LDRSW X0, [X2], #5");
-        TestInst(LDRSW(X15, _[X2], 5), Arm64InstructionId.LDRSW_64_ldst_immpost, Arm64Mnemonic.LDRSW, "LDRSW X15, [X2], #5");
-        TestInst(LDRSW(XZR, _[X2], 5), Arm64InstructionId.LDRSW_64_ldst_immpost, Arm64Mnemonic.LDRSW, "LDRSW XZR, [X2], #5");
+        TestInst(LDRSW(X0, _[X2], 5), asm => asm.LDRSW(X0, _[X2], 5), Arm64InstructionId.LDRSW_64_ldst_immpost, Arm64Mnemonic.LDRSW, "LDRSW X0, [X2], #5");
+        TestInst(LDRSW(X15, _[X2], 5), asm => asm.LDRSW(X15, _[X2], 5), Arm64InstructionId.LDRSW_64_ldst_immpost, Arm64Mnemonic.LDRSW, "LDRSW X15, [X2], #5");
+        TestInst(LDRSW(XZR, _[X2], 5), asm => asm.LDRSW(XZR, _[X2], 5), Arm64InstructionId.LDRSW_64_ldst_immpost, Arm64Mnemonic.LDRSW, "LDRSW XZR, [X2], #5");
     }
     
     /// <summary>
@@ -35,9 +34,9 @@ public class Arm64InstructionFactoryTests_LDRSW_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDRSW_64_ldst_immpre_1()
     {
-        TestInst(LDRSW(X0, _[X2, 5].Pre), Arm64InstructionId.LDRSW_64_ldst_immpre, Arm64Mnemonic.LDRSW, "LDRSW X0, [X2, #5]!");
-        TestInst(LDRSW(X15, _[X2, 5].Pre), Arm64InstructionId.LDRSW_64_ldst_immpre, Arm64Mnemonic.LDRSW, "LDRSW X15, [X2, #5]!");
-        TestInst(LDRSW(XZR, _[X2, 5].Pre), Arm64InstructionId.LDRSW_64_ldst_immpre, Arm64Mnemonic.LDRSW, "LDRSW XZR, [X2, #5]!");
+        TestInst(LDRSW(X0, _[X2, 5].Pre), asm => asm.LDRSW(X0, _[X2, 5].Pre), Arm64InstructionId.LDRSW_64_ldst_immpre, Arm64Mnemonic.LDRSW, "LDRSW X0, [X2, #5]!");
+        TestInst(LDRSW(X15, _[X2, 5].Pre), asm => asm.LDRSW(X15, _[X2, 5].Pre), Arm64InstructionId.LDRSW_64_ldst_immpre, Arm64Mnemonic.LDRSW, "LDRSW X15, [X2, #5]!");
+        TestInst(LDRSW(XZR, _[X2, 5].Pre), asm => asm.LDRSW(XZR, _[X2, 5].Pre), Arm64InstructionId.LDRSW_64_ldst_immpre, Arm64Mnemonic.LDRSW, "LDRSW XZR, [X2, #5]!");
     }
     
     /// <summary>
@@ -46,9 +45,9 @@ public class Arm64InstructionFactoryTests_LDRSW_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDRSW_64_ldst_pos_2()
     {
-        TestInst(LDRSW(X0, _[X2, 20]), Arm64InstructionId.LDRSW_64_ldst_pos, Arm64Mnemonic.LDRSW, "LDRSW X0, [X2, #20]");
-        TestInst(LDRSW(X15, _[X2, 20]), Arm64InstructionId.LDRSW_64_ldst_pos, Arm64Mnemonic.LDRSW, "LDRSW X15, [X2, #20]");
-        TestInst(LDRSW(XZR, _[X2, 20]), Arm64InstructionId.LDRSW_64_ldst_pos, Arm64Mnemonic.LDRSW, "LDRSW XZR, [X2, #20]");
+        TestInst(LDRSW(X0, _[X2, 20]), asm => asm.LDRSW(X0, _[X2, 20]), Arm64InstructionId.LDRSW_64_ldst_pos, Arm64Mnemonic.LDRSW, "LDRSW X0, [X2, #20]");
+        TestInst(LDRSW(X15, _[X2, 20]), asm => asm.LDRSW(X15, _[X2, 20]), Arm64InstructionId.LDRSW_64_ldst_pos, Arm64Mnemonic.LDRSW, "LDRSW X15, [X2, #20]");
+        TestInst(LDRSW(XZR, _[X2, 20]), asm => asm.LDRSW(XZR, _[X2, 20]), Arm64InstructionId.LDRSW_64_ldst_pos, Arm64Mnemonic.LDRSW, "LDRSW XZR, [X2, #20]");
     }
     
     /// <summary>
@@ -57,9 +56,9 @@ public class Arm64InstructionFactoryTests_LDRSW_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDRSW_64_loadlit_3()
     {
-        TestInst(LDRSW(X0, 32), Arm64InstructionId.LDRSW_64_loadlit, Arm64Mnemonic.LDRSW, "LDRSW X0, #32");
-        TestInst(LDRSW(X15, 32), Arm64InstructionId.LDRSW_64_loadlit, Arm64Mnemonic.LDRSW, "LDRSW X15, #32");
-        TestInst(LDRSW(XZR, 32), Arm64InstructionId.LDRSW_64_loadlit, Arm64Mnemonic.LDRSW, "LDRSW XZR, #32");
+        TestInst(LDRSW(X0, 32), null, Arm64InstructionId.LDRSW_64_loadlit, Arm64Mnemonic.LDRSW, "LDRSW X0, #32");
+        TestInst(LDRSW(X15, 32), null, Arm64InstructionId.LDRSW_64_loadlit, Arm64Mnemonic.LDRSW, "LDRSW X15, #32");
+        TestInst(LDRSW(XZR, 32), null, Arm64InstructionId.LDRSW_64_loadlit, Arm64Mnemonic.LDRSW, "LDRSW XZR, #32");
     }
     
     /// <summary>
@@ -68,9 +67,9 @@ public class Arm64InstructionFactoryTests_LDRSW_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDRSW_64_ldst_regoff_4()
     {
-        TestInst(LDRSW(X0, _[X2, X3, _LSL, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW X0, [X2, X3, LSL #2]");
-        TestInst(LDRSW(X15, _[X2, X3, _LSL, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW X15, [X2, X3, LSL #2]");
-        TestInst(LDRSW(XZR, _[X2, X3, _LSL, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW XZR, [X2, X3, LSL #2]");
+        TestInst(LDRSW(X0, _[X2, X3, _LSL, 2]), asm => asm.LDRSW(X0, _[X2, X3, _LSL, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW X0, [X2, X3, LSL #2]");
+        TestInst(LDRSW(X15, _[X2, X3, _LSL, 2]), asm => asm.LDRSW(X15, _[X2, X3, _LSL, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW X15, [X2, X3, LSL #2]");
+        TestInst(LDRSW(XZR, _[X2, X3, _LSL, 2]), asm => asm.LDRSW(XZR, _[X2, X3, _LSL, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW XZR, [X2, X3, LSL #2]");
     }
     
     /// <summary>
@@ -79,8 +78,8 @@ public class Arm64InstructionFactoryTests_LDRSW_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDRSW_64_ldst_regoff_5()
     {
-        TestInst(LDRSW(X0, _[X2, W3, _UXTW, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW X0, [X2, W3, UXTW #2]");
-        TestInst(LDRSW(X15, _[X2, W3, _UXTW, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW X15, [X2, W3, UXTW #2]");
-        TestInst(LDRSW(XZR, _[X2, W3, _UXTW, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW XZR, [X2, W3, UXTW #2]");
+        TestInst(LDRSW(X0, _[X2, W3, _UXTW, 2]), asm => asm.LDRSW(X0, _[X2, W3, _UXTW, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW X0, [X2, W3, UXTW #2]");
+        TestInst(LDRSW(X15, _[X2, W3, _UXTW, 2]), asm => asm.LDRSW(X15, _[X2, W3, _UXTW, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW X15, [X2, W3, UXTW #2]");
+        TestInst(LDRSW(XZR, _[X2, W3, _UXTW, 2]), asm => asm.LDRSW(XZR, _[X2, W3, _UXTW, 2]), Arm64InstructionId.LDRSW_64_ldst_regoff, Arm64Mnemonic.LDRSW, "LDRSW XZR, [X2, W3, UXTW #2]");
     }
 }

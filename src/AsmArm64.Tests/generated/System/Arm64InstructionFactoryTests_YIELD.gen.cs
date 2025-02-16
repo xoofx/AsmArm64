@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_YIELD_System : Arm64InstructionFactory
     [TestMethod]
     public void Test_YIELD_hi_hints_0()
     {
-        TestInst(YIELD(), Arm64InstructionId.YIELD_hi_hints, Arm64Mnemonic.YIELD, "YIELD");
+        TestInst(YIELD(), asm => asm.YIELD(), Arm64InstructionId.YIELD_hi_hints, Arm64Mnemonic.YIELD, "YIELD");
     }
 }

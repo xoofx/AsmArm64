@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_LDG_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDG_64loffset_ldsttags_0()
     {
-        TestInst(LDG(X0, _[X2, 80]), Arm64InstructionId.LDG_64loffset_ldsttags, Arm64Mnemonic.LDG, "LDG X0, [X2, #80]");
-        TestInst(LDG(X15, _[X2, 80]), Arm64InstructionId.LDG_64loffset_ldsttags, Arm64Mnemonic.LDG, "LDG X15, [X2, #80]");
-        TestInst(LDG(XZR, _[X2, 80]), Arm64InstructionId.LDG_64loffset_ldsttags, Arm64Mnemonic.LDG, "LDG XZR, [X2, #80]");
+        TestInst(LDG(X0, _[X2, 80]), asm => asm.LDG(X0, _[X2, 80]), Arm64InstructionId.LDG_64loffset_ldsttags, Arm64Mnemonic.LDG, "LDG X0, [X2, #80]");
+        TestInst(LDG(X15, _[X2, 80]), asm => asm.LDG(X15, _[X2, 80]), Arm64InstructionId.LDG_64loffset_ldsttags, Arm64Mnemonic.LDG, "LDG X15, [X2, #80]");
+        TestInst(LDG(XZR, _[X2, 80]), asm => asm.LDG(XZR, _[X2, 80]), Arm64InstructionId.LDG_64loffset_ldsttags, Arm64Mnemonic.LDG, "LDG XZR, [X2, #80]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_ERET_System : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ERET_64e_branch_reg_0()
     {
-        TestInst(ERET(), Arm64InstructionId.ERET_64e_branch_reg, Arm64Mnemonic.ERET, "ERET");
+        TestInst(ERET(), asm => asm.ERET(), Arm64InstructionId.ERET_64e_branch_reg, Arm64Mnemonic.ERET, "ERET");
     }
 }

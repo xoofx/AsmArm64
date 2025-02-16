@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_F2CVTL_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_F2CVTL_asimdmisc_v_0()
     {
-        TestInst(F2CVTL(V0.T_8H, V1.T_8B), Arm64InstructionId.F2CVTL_asimdmisc_v, Arm64Mnemonic.F2CVTL, "F2CVTL V0.8H, V1.8B");
-        TestInst(F2CVTL(V30.T_8H, V1.T_8B), Arm64InstructionId.F2CVTL_asimdmisc_v, Arm64Mnemonic.F2CVTL, "F2CVTL V30.8H, V1.8B");
-        TestInst(F2CVTL(V0.T_8H, V31.T_8B), Arm64InstructionId.F2CVTL_asimdmisc_v, Arm64Mnemonic.F2CVTL, "F2CVTL V0.8H, V31.8B");
-        TestInst(F2CVTL(V30.T_8H, V31.T_8B), Arm64InstructionId.F2CVTL_asimdmisc_v, Arm64Mnemonic.F2CVTL, "F2CVTL V30.8H, V31.8B");
+        TestInst(F2CVTL(V0.T_8H, V1.T_8B), asm => asm.F2CVTL(V0.T_8H, V1.T_8B), Arm64InstructionId.F2CVTL_asimdmisc_v, Arm64Mnemonic.F2CVTL, "F2CVTL V0.8H, V1.8B");
+        TestInst(F2CVTL(V30.T_8H, V1.T_8B), asm => asm.F2CVTL(V30.T_8H, V1.T_8B), Arm64InstructionId.F2CVTL_asimdmisc_v, Arm64Mnemonic.F2CVTL, "F2CVTL V30.8H, V1.8B");
+        TestInst(F2CVTL(V0.T_8H, V31.T_8B), asm => asm.F2CVTL(V0.T_8H, V31.T_8B), Arm64InstructionId.F2CVTL_asimdmisc_v, Arm64Mnemonic.F2CVTL, "F2CVTL V0.8H, V31.8B");
+        TestInst(F2CVTL(V30.T_8H, V31.T_8B), asm => asm.F2CVTL(V30.T_8H, V31.T_8B), Arm64InstructionId.F2CVTL_asimdmisc_v, Arm64Mnemonic.F2CVTL, "F2CVTL V30.8H, V31.8B");
     }
 }

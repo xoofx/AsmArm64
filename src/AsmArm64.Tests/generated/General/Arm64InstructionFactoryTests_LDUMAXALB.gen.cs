@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDUMAXALB_General : Arm64InstructionFa
     [TestMethod]
     public void Test_LDUMAXALB_32_memop_0()
     {
-        TestInst(LDUMAXALB(W0, W1, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W0, W1, [X3]");
-        TestInst(LDUMAXALB(W15, W1, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W15, W1, [X3]");
-        TestInst(LDUMAXALB(WZR, W1, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB WZR, W1, [X3]");
-        TestInst(LDUMAXALB(W0, W16, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W0, W16, [X3]");
-        TestInst(LDUMAXALB(W15, W16, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W15, W16, [X3]");
-        TestInst(LDUMAXALB(WZR, W16, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB WZR, W16, [X3]");
-        TestInst(LDUMAXALB(W0, WZR, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W0, WZR, [X3]");
-        TestInst(LDUMAXALB(W15, WZR, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W15, WZR, [X3]");
-        TestInst(LDUMAXALB(WZR, WZR, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB WZR, WZR, [X3]");
+        TestInst(LDUMAXALB(W0, W1, _[X3]), asm => asm.LDUMAXALB(W0, W1, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W0, W1, [X3]");
+        TestInst(LDUMAXALB(W15, W1, _[X3]), asm => asm.LDUMAXALB(W15, W1, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W15, W1, [X3]");
+        TestInst(LDUMAXALB(WZR, W1, _[X3]), asm => asm.LDUMAXALB(WZR, W1, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB WZR, W1, [X3]");
+        TestInst(LDUMAXALB(W0, W16, _[X3]), asm => asm.LDUMAXALB(W0, W16, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W0, W16, [X3]");
+        TestInst(LDUMAXALB(W15, W16, _[X3]), asm => asm.LDUMAXALB(W15, W16, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W15, W16, [X3]");
+        TestInst(LDUMAXALB(WZR, W16, _[X3]), asm => asm.LDUMAXALB(WZR, W16, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB WZR, W16, [X3]");
+        TestInst(LDUMAXALB(W0, WZR, _[X3]), asm => asm.LDUMAXALB(W0, WZR, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W0, WZR, [X3]");
+        TestInst(LDUMAXALB(W15, WZR, _[X3]), asm => asm.LDUMAXALB(W15, WZR, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB W15, WZR, [X3]");
+        TestInst(LDUMAXALB(WZR, WZR, _[X3]), asm => asm.LDUMAXALB(WZR, WZR, _[X3]), Arm64InstructionId.LDUMAXALB_32_memop, Arm64Mnemonic.LDUMAXALB, "LDUMAXALB WZR, WZR, [X3]");
     }
 }

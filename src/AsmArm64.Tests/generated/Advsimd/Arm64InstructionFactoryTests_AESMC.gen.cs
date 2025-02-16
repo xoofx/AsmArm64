@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_AESMC_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_AESMC_b_cryptoaes_0()
     {
-        TestInst(AESMC(V0.T_16B, V1.T_16B), Arm64InstructionId.AESMC_b_cryptoaes, Arm64Mnemonic.AESMC, "AESMC V0.16B, V1.16B");
-        TestInst(AESMC(V30.T_16B, V1.T_16B), Arm64InstructionId.AESMC_b_cryptoaes, Arm64Mnemonic.AESMC, "AESMC V30.16B, V1.16B");
-        TestInst(AESMC(V0.T_16B, V31.T_16B), Arm64InstructionId.AESMC_b_cryptoaes, Arm64Mnemonic.AESMC, "AESMC V0.16B, V31.16B");
-        TestInst(AESMC(V30.T_16B, V31.T_16B), Arm64InstructionId.AESMC_b_cryptoaes, Arm64Mnemonic.AESMC, "AESMC V30.16B, V31.16B");
+        TestInst(AESMC(V0.T_16B, V1.T_16B), asm => asm.AESMC(V0.T_16B, V1.T_16B), Arm64InstructionId.AESMC_b_cryptoaes, Arm64Mnemonic.AESMC, "AESMC V0.16B, V1.16B");
+        TestInst(AESMC(V30.T_16B, V1.T_16B), asm => asm.AESMC(V30.T_16B, V1.T_16B), Arm64InstructionId.AESMC_b_cryptoaes, Arm64Mnemonic.AESMC, "AESMC V30.16B, V1.16B");
+        TestInst(AESMC(V0.T_16B, V31.T_16B), asm => asm.AESMC(V0.T_16B, V31.T_16B), Arm64InstructionId.AESMC_b_cryptoaes, Arm64Mnemonic.AESMC, "AESMC V0.16B, V31.16B");
+        TestInst(AESMC(V30.T_16B, V31.T_16B), asm => asm.AESMC(V30.T_16B, V31.T_16B), Arm64InstructionId.AESMC_b_cryptoaes, Arm64Mnemonic.AESMC, "AESMC V30.16B, V31.16B");
     }
 }

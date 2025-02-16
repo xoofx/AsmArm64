@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SWPH_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SWPH_32_memop_0()
     {
-        TestInst(SWPH(W0, W1, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W0, W1, [X3]");
-        TestInst(SWPH(W15, W1, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W15, W1, [X3]");
-        TestInst(SWPH(WZR, W1, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH WZR, W1, [X3]");
-        TestInst(SWPH(W0, W16, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W0, W16, [X3]");
-        TestInst(SWPH(W15, W16, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W15, W16, [X3]");
-        TestInst(SWPH(WZR, W16, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH WZR, W16, [X3]");
-        TestInst(SWPH(W0, WZR, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W0, WZR, [X3]");
-        TestInst(SWPH(W15, WZR, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W15, WZR, [X3]");
-        TestInst(SWPH(WZR, WZR, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH WZR, WZR, [X3]");
+        TestInst(SWPH(W0, W1, _[X3]), asm => asm.SWPH(W0, W1, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W0, W1, [X3]");
+        TestInst(SWPH(W15, W1, _[X3]), asm => asm.SWPH(W15, W1, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W15, W1, [X3]");
+        TestInst(SWPH(WZR, W1, _[X3]), asm => asm.SWPH(WZR, W1, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH WZR, W1, [X3]");
+        TestInst(SWPH(W0, W16, _[X3]), asm => asm.SWPH(W0, W16, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W0, W16, [X3]");
+        TestInst(SWPH(W15, W16, _[X3]), asm => asm.SWPH(W15, W16, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W15, W16, [X3]");
+        TestInst(SWPH(WZR, W16, _[X3]), asm => asm.SWPH(WZR, W16, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH WZR, W16, [X3]");
+        TestInst(SWPH(W0, WZR, _[X3]), asm => asm.SWPH(W0, WZR, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W0, WZR, [X3]");
+        TestInst(SWPH(W15, WZR, _[X3]), asm => asm.SWPH(W15, WZR, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH W15, WZR, [X3]");
+        TestInst(SWPH(WZR, WZR, _[X3]), asm => asm.SWPH(WZR, WZR, _[X3]), Arm64InstructionId.SWPH_32_memop, Arm64Mnemonic.SWPH, "SWPH WZR, WZR, [X3]");
     }
 }

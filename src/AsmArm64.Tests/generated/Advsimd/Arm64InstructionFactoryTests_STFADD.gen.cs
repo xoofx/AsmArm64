@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STFADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_STFADD_16_0()
     {
-        TestInst(STFADD(H0, _[X2]), Arm64InstructionId.STFADD_16, Arm64Mnemonic.STFADD, "STFADD H0, [X2]");
-        TestInst(STFADD(H31, _[X2]), Arm64InstructionId.STFADD_16, Arm64Mnemonic.STFADD, "STFADD H31, [X2]");
+        TestInst(STFADD(H0, _[X2]), asm => asm.STFADD(H0, _[X2]), Arm64InstructionId.STFADD_16, Arm64Mnemonic.STFADD, "STFADD H0, [X2]");
+        TestInst(STFADD(H31, _[X2]), asm => asm.STFADD(H31, _[X2]), Arm64InstructionId.STFADD_16, Arm64Mnemonic.STFADD, "STFADD H31, [X2]");
     }
     
     /// <summary>
@@ -34,8 +33,8 @@ public class Arm64InstructionFactoryTests_STFADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_STFADD_32_1()
     {
-        TestInst(STFADD(S0, _[X2]), Arm64InstructionId.STFADD_32, Arm64Mnemonic.STFADD, "STFADD S0, [X2]");
-        TestInst(STFADD(S31, _[X2]), Arm64InstructionId.STFADD_32, Arm64Mnemonic.STFADD, "STFADD S31, [X2]");
+        TestInst(STFADD(S0, _[X2]), asm => asm.STFADD(S0, _[X2]), Arm64InstructionId.STFADD_32, Arm64Mnemonic.STFADD, "STFADD S0, [X2]");
+        TestInst(STFADD(S31, _[X2]), asm => asm.STFADD(S31, _[X2]), Arm64InstructionId.STFADD_32, Arm64Mnemonic.STFADD, "STFADD S31, [X2]");
     }
     
     /// <summary>
@@ -44,7 +43,7 @@ public class Arm64InstructionFactoryTests_STFADD_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_STFADD_64_2()
     {
-        TestInst(STFADD(D0, _[X2]), Arm64InstructionId.STFADD_64, Arm64Mnemonic.STFADD, "STFADD D0, [X2]");
-        TestInst(STFADD(D31, _[X2]), Arm64InstructionId.STFADD_64, Arm64Mnemonic.STFADD, "STFADD D31, [X2]");
+        TestInst(STFADD(D0, _[X2]), asm => asm.STFADD(D0, _[X2]), Arm64InstructionId.STFADD_64, Arm64Mnemonic.STFADD, "STFADD D0, [X2]");
+        TestInst(STFADD(D31, _[X2]), asm => asm.STFADD(D31, _[X2]), Arm64InstructionId.STFADD_64, Arm64Mnemonic.STFADD, "STFADD D31, [X2]");
     }
 }

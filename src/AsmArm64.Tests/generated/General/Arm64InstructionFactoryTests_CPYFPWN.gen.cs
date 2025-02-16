@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_CPYFPWN_General : Arm64InstructionFact
     [TestMethod]
     public void Test_CPYFPWN_cpy_memcms_0()
     {
-        TestInst(CPYFPWN(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYFPWN_cpy_memcms, Arm64Mnemonic.CPYFPWN, "CPYFPWN [X1]!, [X2]!, X2");
-        TestInst(CPYFPWN(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYFPWN_cpy_memcms, Arm64Mnemonic.CPYFPWN, "CPYFPWN [X1]!, [X2]!, X17");
-        TestInst(CPYFPWN(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYFPWN_cpy_memcms, Arm64Mnemonic.CPYFPWN, "CPYFPWN [X1]!, [X2]!, XZR");
+        TestInst(CPYFPWN(_[X1].Pre, _[X2].Pre, X2), asm => asm.CPYFPWN(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYFPWN_cpy_memcms, Arm64Mnemonic.CPYFPWN, "CPYFPWN [X1]!, [X2]!, X2");
+        TestInst(CPYFPWN(_[X1].Pre, _[X2].Pre, X17), asm => asm.CPYFPWN(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYFPWN_cpy_memcms, Arm64Mnemonic.CPYFPWN, "CPYFPWN [X1]!, [X2]!, X17");
+        TestInst(CPYFPWN(_[X1].Pre, _[X2].Pre, XZR), asm => asm.CPYFPWN(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYFPWN_cpy_memcms, Arm64Mnemonic.CPYFPWN, "CPYFPWN [X1]!, [X2]!, XZR");
     }
 }

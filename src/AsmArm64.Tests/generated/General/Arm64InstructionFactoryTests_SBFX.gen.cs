@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_SBFX_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SBFX_sbfm_32m_bitfield_0()
     {
-        TestInst(SBFX(W0, W1, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W0, W1, #5, #1");
-        TestInst(SBFX(W15, W1, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W15, W1, #5, #1");
-        TestInst(SBFX(WZR, W1, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX WZR, W1, #5, #1");
-        TestInst(SBFX(W0, W16, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W0, W16, #5, #1");
-        TestInst(SBFX(W15, W16, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W15, W16, #5, #1");
-        TestInst(SBFX(WZR, W16, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX WZR, W16, #5, #1");
-        TestInst(SBFX(W0, WZR, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W0, WZR, #5, #1");
-        TestInst(SBFX(W15, WZR, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W15, WZR, #5, #1");
-        TestInst(SBFX(WZR, WZR, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX WZR, WZR, #5, #1");
+        TestInst(SBFX(W0, W1, 5, 1), asm => asm.SBFX(W0, W1, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W0, W1, #5, #1");
+        TestInst(SBFX(W15, W1, 5, 1), asm => asm.SBFX(W15, W1, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W15, W1, #5, #1");
+        TestInst(SBFX(WZR, W1, 5, 1), asm => asm.SBFX(WZR, W1, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX WZR, W1, #5, #1");
+        TestInst(SBFX(W0, W16, 5, 1), asm => asm.SBFX(W0, W16, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W0, W16, #5, #1");
+        TestInst(SBFX(W15, W16, 5, 1), asm => asm.SBFX(W15, W16, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W15, W16, #5, #1");
+        TestInst(SBFX(WZR, W16, 5, 1), asm => asm.SBFX(WZR, W16, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX WZR, W16, #5, #1");
+        TestInst(SBFX(W0, WZR, 5, 1), asm => asm.SBFX(W0, WZR, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W0, WZR, #5, #1");
+        TestInst(SBFX(W15, WZR, 5, 1), asm => asm.SBFX(W15, WZR, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX W15, WZR, #5, #1");
+        TestInst(SBFX(WZR, WZR, 5, 1), asm => asm.SBFX(WZR, WZR, 5, 1), Arm64InstructionId.SBFX_sbfm_32m_bitfield, Arm64Mnemonic.SBFX, "SBFX WZR, WZR, #5, #1");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_SBFX_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SBFX_sbfm_64m_bitfield_1()
     {
-        TestInst(SBFX(X0, X1, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X0, X1, #5, #1");
-        TestInst(SBFX(X15, X1, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X15, X1, #5, #1");
-        TestInst(SBFX(XZR, X1, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX XZR, X1, #5, #1");
-        TestInst(SBFX(X0, X16, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X0, X16, #5, #1");
-        TestInst(SBFX(X15, X16, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X15, X16, #5, #1");
-        TestInst(SBFX(XZR, X16, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX XZR, X16, #5, #1");
-        TestInst(SBFX(X0, XZR, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X0, XZR, #5, #1");
-        TestInst(SBFX(X15, XZR, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X15, XZR, #5, #1");
-        TestInst(SBFX(XZR, XZR, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX XZR, XZR, #5, #1");
+        TestInst(SBFX(X0, X1, 5, 1), asm => asm.SBFX(X0, X1, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X0, X1, #5, #1");
+        TestInst(SBFX(X15, X1, 5, 1), asm => asm.SBFX(X15, X1, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X15, X1, #5, #1");
+        TestInst(SBFX(XZR, X1, 5, 1), asm => asm.SBFX(XZR, X1, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX XZR, X1, #5, #1");
+        TestInst(SBFX(X0, X16, 5, 1), asm => asm.SBFX(X0, X16, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X0, X16, #5, #1");
+        TestInst(SBFX(X15, X16, 5, 1), asm => asm.SBFX(X15, X16, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X15, X16, #5, #1");
+        TestInst(SBFX(XZR, X16, 5, 1), asm => asm.SBFX(XZR, X16, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX XZR, X16, #5, #1");
+        TestInst(SBFX(X0, XZR, 5, 1), asm => asm.SBFX(X0, XZR, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X0, XZR, #5, #1");
+        TestInst(SBFX(X15, XZR, 5, 1), asm => asm.SBFX(X15, XZR, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX X15, XZR, #5, #1");
+        TestInst(SBFX(XZR, XZR, 5, 1), asm => asm.SBFX(XZR, XZR, 5, 1), Arm64InstructionId.SBFX_sbfm_64m_bitfield, Arm64Mnemonic.SBFX, "SBFX XZR, XZR, #5, #1");
     }
 }

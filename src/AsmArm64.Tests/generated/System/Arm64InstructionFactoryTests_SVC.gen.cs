@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_SVC_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_SVC_ex_exception_0()
     {
-        TestInst(SVC(5), Arm64InstructionId.SVC_ex_exception, Arm64Mnemonic.SVC, "SVC #5");
+        TestInst(SVC(5), asm => asm.SVC(5), Arm64InstructionId.SVC_ex_exception, Arm64Mnemonic.SVC, "SVC #5");
     }
 }

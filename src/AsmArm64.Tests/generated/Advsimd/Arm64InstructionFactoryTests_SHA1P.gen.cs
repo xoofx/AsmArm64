@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,13 +23,13 @@ public class Arm64InstructionFactoryTests_SHA1P_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SHA1P_qsv_cryptosha3_0()
     {
-        TestInst(SHA1P(Q0, S1, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S1, V2.4S");
-        TestInst(SHA1P(Q31, S1, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S1, V2.4S");
-        TestInst(SHA1P(Q0, S31, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S31, V2.4S");
-        TestInst(SHA1P(Q31, S31, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S31, V2.4S");
-        TestInst(SHA1P(Q0, S1, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S1, V0.4S");
-        TestInst(SHA1P(Q31, S1, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S1, V0.4S");
-        TestInst(SHA1P(Q0, S31, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S31, V0.4S");
-        TestInst(SHA1P(Q31, S31, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S31, V0.4S");
+        TestInst(SHA1P(Q0, S1, V2.T_4S), asm => asm.SHA1P(Q0, S1, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S1, V2.4S");
+        TestInst(SHA1P(Q31, S1, V2.T_4S), asm => asm.SHA1P(Q31, S1, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S1, V2.4S");
+        TestInst(SHA1P(Q0, S31, V2.T_4S), asm => asm.SHA1P(Q0, S31, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S31, V2.4S");
+        TestInst(SHA1P(Q31, S31, V2.T_4S), asm => asm.SHA1P(Q31, S31, V2.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S31, V2.4S");
+        TestInst(SHA1P(Q0, S1, V0.T_4S), asm => asm.SHA1P(Q0, S1, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S1, V0.4S");
+        TestInst(SHA1P(Q31, S1, V0.T_4S), asm => asm.SHA1P(Q31, S1, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S1, V0.4S");
+        TestInst(SHA1P(Q0, S31, V0.T_4S), asm => asm.SHA1P(Q0, S31, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q0, S31, V0.4S");
+        TestInst(SHA1P(Q31, S31, V0.T_4S), asm => asm.SHA1P(Q31, S31, V0.T_4S), Arm64InstructionId.SHA1P_qsv_cryptosha3, Arm64Mnemonic.SHA1P, "SHA1P Q31, S31, V0.4S");
     }
 }

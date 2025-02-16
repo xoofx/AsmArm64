@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDUMINAH_General : Arm64InstructionFac
     [TestMethod]
     public void Test_LDUMINAH_32_memop_0()
     {
-        TestInst(LDUMINAH(W0, W1, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W0, W1, [X3]");
-        TestInst(LDUMINAH(W15, W1, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W15, W1, [X3]");
-        TestInst(LDUMINAH(WZR, W1, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH WZR, W1, [X3]");
-        TestInst(LDUMINAH(W0, W16, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W0, W16, [X3]");
-        TestInst(LDUMINAH(W15, W16, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W15, W16, [X3]");
-        TestInst(LDUMINAH(WZR, W16, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH WZR, W16, [X3]");
-        TestInst(LDUMINAH(W0, WZR, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W0, WZR, [X3]");
-        TestInst(LDUMINAH(W15, WZR, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W15, WZR, [X3]");
-        TestInst(LDUMINAH(WZR, WZR, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH WZR, WZR, [X3]");
+        TestInst(LDUMINAH(W0, W1, _[X3]), asm => asm.LDUMINAH(W0, W1, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W0, W1, [X3]");
+        TestInst(LDUMINAH(W15, W1, _[X3]), asm => asm.LDUMINAH(W15, W1, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W15, W1, [X3]");
+        TestInst(LDUMINAH(WZR, W1, _[X3]), asm => asm.LDUMINAH(WZR, W1, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH WZR, W1, [X3]");
+        TestInst(LDUMINAH(W0, W16, _[X3]), asm => asm.LDUMINAH(W0, W16, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W0, W16, [X3]");
+        TestInst(LDUMINAH(W15, W16, _[X3]), asm => asm.LDUMINAH(W15, W16, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W15, W16, [X3]");
+        TestInst(LDUMINAH(WZR, W16, _[X3]), asm => asm.LDUMINAH(WZR, W16, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH WZR, W16, [X3]");
+        TestInst(LDUMINAH(W0, WZR, _[X3]), asm => asm.LDUMINAH(W0, WZR, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W0, WZR, [X3]");
+        TestInst(LDUMINAH(W15, WZR, _[X3]), asm => asm.LDUMINAH(W15, WZR, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH W15, WZR, [X3]");
+        TestInst(LDUMINAH(WZR, WZR, _[X3]), asm => asm.LDUMINAH(WZR, WZR, _[X3]), Arm64InstructionId.LDUMINAH_32_memop, Arm64Mnemonic.LDUMINAH, "LDUMINAH WZR, WZR, [X3]");
     }
 }

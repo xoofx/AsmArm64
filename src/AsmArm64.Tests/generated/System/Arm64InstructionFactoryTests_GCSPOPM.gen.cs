@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_GCSPOPM_System : Arm64InstructionFacto
     [TestMethod]
     public void Test_GCSPOPM_sysl_rc_systeminstrs_0()
     {
-        TestInst(GCSPOPM(X0), Arm64InstructionId.GCSPOPM_sysl_rc_systeminstrs, Arm64Mnemonic.GCSPOPM, "GCSPOPM X0");
-        TestInst(GCSPOPM(X15), Arm64InstructionId.GCSPOPM_sysl_rc_systeminstrs, Arm64Mnemonic.GCSPOPM, "GCSPOPM X15");
+        TestInst(GCSPOPM(X0), asm => asm.GCSPOPM(X0), Arm64InstructionId.GCSPOPM_sysl_rc_systeminstrs, Arm64Mnemonic.GCSPOPM, "GCSPOPM X0");
+        TestInst(GCSPOPM(X15), asm => asm.GCSPOPM(X15), Arm64InstructionId.GCSPOPM_sysl_rc_systeminstrs, Arm64Mnemonic.GCSPOPM, "GCSPOPM X15");
     }
 }

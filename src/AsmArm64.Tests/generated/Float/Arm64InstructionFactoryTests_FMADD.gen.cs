@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,22 +23,22 @@ public class Arm64InstructionFactoryTests_FMADD_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_FMADD_h_floatdp3_0()
     {
-        TestInst(FMADD(H0, H1, H2, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H1, H2, H3");
-        TestInst(FMADD(H31, H1, H2, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H1, H2, H3");
-        TestInst(FMADD(H0, H31, H2, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H31, H2, H3");
-        TestInst(FMADD(H31, H31, H2, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H31, H2, H3");
-        TestInst(FMADD(H0, H1, H31, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H1, H31, H3");
-        TestInst(FMADD(H31, H1, H31, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H1, H31, H3");
-        TestInst(FMADD(H0, H31, H31, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H31, H31, H3");
-        TestInst(FMADD(H31, H31, H31, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H31, H31, H3");
-        TestInst(FMADD(H0, H1, H2, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H1, H2, H31");
-        TestInst(FMADD(H31, H1, H2, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H1, H2, H31");
-        TestInst(FMADD(H0, H31, H2, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H31, H2, H31");
-        TestInst(FMADD(H31, H31, H2, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H31, H2, H31");
-        TestInst(FMADD(H0, H1, H31, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H1, H31, H31");
-        TestInst(FMADD(H31, H1, H31, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H1, H31, H31");
-        TestInst(FMADD(H0, H31, H31, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H31, H31, H31");
-        TestInst(FMADD(H31, H31, H31, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H31, H31, H31");
+        TestInst(FMADD(H0, H1, H2, H3), asm => asm.FMADD(H0, H1, H2, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H1, H2, H3");
+        TestInst(FMADD(H31, H1, H2, H3), asm => asm.FMADD(H31, H1, H2, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H1, H2, H3");
+        TestInst(FMADD(H0, H31, H2, H3), asm => asm.FMADD(H0, H31, H2, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H31, H2, H3");
+        TestInst(FMADD(H31, H31, H2, H3), asm => asm.FMADD(H31, H31, H2, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H31, H2, H3");
+        TestInst(FMADD(H0, H1, H31, H3), asm => asm.FMADD(H0, H1, H31, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H1, H31, H3");
+        TestInst(FMADD(H31, H1, H31, H3), asm => asm.FMADD(H31, H1, H31, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H1, H31, H3");
+        TestInst(FMADD(H0, H31, H31, H3), asm => asm.FMADD(H0, H31, H31, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H31, H31, H3");
+        TestInst(FMADD(H31, H31, H31, H3), asm => asm.FMADD(H31, H31, H31, H3), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H31, H31, H3");
+        TestInst(FMADD(H0, H1, H2, H31), asm => asm.FMADD(H0, H1, H2, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H1, H2, H31");
+        TestInst(FMADD(H31, H1, H2, H31), asm => asm.FMADD(H31, H1, H2, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H1, H2, H31");
+        TestInst(FMADD(H0, H31, H2, H31), asm => asm.FMADD(H0, H31, H2, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H31, H2, H31");
+        TestInst(FMADD(H31, H31, H2, H31), asm => asm.FMADD(H31, H31, H2, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H31, H2, H31");
+        TestInst(FMADD(H0, H1, H31, H31), asm => asm.FMADD(H0, H1, H31, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H1, H31, H31");
+        TestInst(FMADD(H31, H1, H31, H31), asm => asm.FMADD(H31, H1, H31, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H1, H31, H31");
+        TestInst(FMADD(H0, H31, H31, H31), asm => asm.FMADD(H0, H31, H31, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H0, H31, H31, H31");
+        TestInst(FMADD(H31, H31, H31, H31), asm => asm.FMADD(H31, H31, H31, H31), Arm64InstructionId.FMADD_h_floatdp3, Arm64Mnemonic.FMADD, "FMADD H31, H31, H31, H31");
     }
     
     /// <summary>
@@ -48,22 +47,22 @@ public class Arm64InstructionFactoryTests_FMADD_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_FMADD_s_floatdp3_1()
     {
-        TestInst(FMADD(S0, S1, S2, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S1, S2, S3");
-        TestInst(FMADD(S31, S1, S2, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S1, S2, S3");
-        TestInst(FMADD(S0, S31, S2, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S31, S2, S3");
-        TestInst(FMADD(S31, S31, S2, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S31, S2, S3");
-        TestInst(FMADD(S0, S1, S31, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S1, S31, S3");
-        TestInst(FMADD(S31, S1, S31, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S1, S31, S3");
-        TestInst(FMADD(S0, S31, S31, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S31, S31, S3");
-        TestInst(FMADD(S31, S31, S31, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S31, S31, S3");
-        TestInst(FMADD(S0, S1, S2, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S1, S2, S31");
-        TestInst(FMADD(S31, S1, S2, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S1, S2, S31");
-        TestInst(FMADD(S0, S31, S2, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S31, S2, S31");
-        TestInst(FMADD(S31, S31, S2, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S31, S2, S31");
-        TestInst(FMADD(S0, S1, S31, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S1, S31, S31");
-        TestInst(FMADD(S31, S1, S31, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S1, S31, S31");
-        TestInst(FMADD(S0, S31, S31, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S31, S31, S31");
-        TestInst(FMADD(S31, S31, S31, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S31, S31, S31");
+        TestInst(FMADD(S0, S1, S2, S3), asm => asm.FMADD(S0, S1, S2, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S1, S2, S3");
+        TestInst(FMADD(S31, S1, S2, S3), asm => asm.FMADD(S31, S1, S2, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S1, S2, S3");
+        TestInst(FMADD(S0, S31, S2, S3), asm => asm.FMADD(S0, S31, S2, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S31, S2, S3");
+        TestInst(FMADD(S31, S31, S2, S3), asm => asm.FMADD(S31, S31, S2, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S31, S2, S3");
+        TestInst(FMADD(S0, S1, S31, S3), asm => asm.FMADD(S0, S1, S31, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S1, S31, S3");
+        TestInst(FMADD(S31, S1, S31, S3), asm => asm.FMADD(S31, S1, S31, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S1, S31, S3");
+        TestInst(FMADD(S0, S31, S31, S3), asm => asm.FMADD(S0, S31, S31, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S31, S31, S3");
+        TestInst(FMADD(S31, S31, S31, S3), asm => asm.FMADD(S31, S31, S31, S3), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S31, S31, S3");
+        TestInst(FMADD(S0, S1, S2, S31), asm => asm.FMADD(S0, S1, S2, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S1, S2, S31");
+        TestInst(FMADD(S31, S1, S2, S31), asm => asm.FMADD(S31, S1, S2, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S1, S2, S31");
+        TestInst(FMADD(S0, S31, S2, S31), asm => asm.FMADD(S0, S31, S2, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S31, S2, S31");
+        TestInst(FMADD(S31, S31, S2, S31), asm => asm.FMADD(S31, S31, S2, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S31, S2, S31");
+        TestInst(FMADD(S0, S1, S31, S31), asm => asm.FMADD(S0, S1, S31, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S1, S31, S31");
+        TestInst(FMADD(S31, S1, S31, S31), asm => asm.FMADD(S31, S1, S31, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S1, S31, S31");
+        TestInst(FMADD(S0, S31, S31, S31), asm => asm.FMADD(S0, S31, S31, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S0, S31, S31, S31");
+        TestInst(FMADD(S31, S31, S31, S31), asm => asm.FMADD(S31, S31, S31, S31), Arm64InstructionId.FMADD_s_floatdp3, Arm64Mnemonic.FMADD, "FMADD S31, S31, S31, S31");
     }
     
     /// <summary>
@@ -72,21 +71,21 @@ public class Arm64InstructionFactoryTests_FMADD_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_FMADD_d_floatdp3_2()
     {
-        TestInst(FMADD(D0, D1, D2, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D1, D2, D3");
-        TestInst(FMADD(D31, D1, D2, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D1, D2, D3");
-        TestInst(FMADD(D0, D31, D2, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D31, D2, D3");
-        TestInst(FMADD(D31, D31, D2, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D31, D2, D3");
-        TestInst(FMADD(D0, D1, D31, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D1, D31, D3");
-        TestInst(FMADD(D31, D1, D31, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D1, D31, D3");
-        TestInst(FMADD(D0, D31, D31, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D31, D31, D3");
-        TestInst(FMADD(D31, D31, D31, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D31, D31, D3");
-        TestInst(FMADD(D0, D1, D2, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D1, D2, D31");
-        TestInst(FMADD(D31, D1, D2, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D1, D2, D31");
-        TestInst(FMADD(D0, D31, D2, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D31, D2, D31");
-        TestInst(FMADD(D31, D31, D2, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D31, D2, D31");
-        TestInst(FMADD(D0, D1, D31, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D1, D31, D31");
-        TestInst(FMADD(D31, D1, D31, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D1, D31, D31");
-        TestInst(FMADD(D0, D31, D31, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D31, D31, D31");
-        TestInst(FMADD(D31, D31, D31, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D31, D31, D31");
+        TestInst(FMADD(D0, D1, D2, D3), asm => asm.FMADD(D0, D1, D2, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D1, D2, D3");
+        TestInst(FMADD(D31, D1, D2, D3), asm => asm.FMADD(D31, D1, D2, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D1, D2, D3");
+        TestInst(FMADD(D0, D31, D2, D3), asm => asm.FMADD(D0, D31, D2, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D31, D2, D3");
+        TestInst(FMADD(D31, D31, D2, D3), asm => asm.FMADD(D31, D31, D2, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D31, D2, D3");
+        TestInst(FMADD(D0, D1, D31, D3), asm => asm.FMADD(D0, D1, D31, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D1, D31, D3");
+        TestInst(FMADD(D31, D1, D31, D3), asm => asm.FMADD(D31, D1, D31, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D1, D31, D3");
+        TestInst(FMADD(D0, D31, D31, D3), asm => asm.FMADD(D0, D31, D31, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D31, D31, D3");
+        TestInst(FMADD(D31, D31, D31, D3), asm => asm.FMADD(D31, D31, D31, D3), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D31, D31, D3");
+        TestInst(FMADD(D0, D1, D2, D31), asm => asm.FMADD(D0, D1, D2, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D1, D2, D31");
+        TestInst(FMADD(D31, D1, D2, D31), asm => asm.FMADD(D31, D1, D2, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D1, D2, D31");
+        TestInst(FMADD(D0, D31, D2, D31), asm => asm.FMADD(D0, D31, D2, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D31, D2, D31");
+        TestInst(FMADD(D31, D31, D2, D31), asm => asm.FMADD(D31, D31, D2, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D31, D2, D31");
+        TestInst(FMADD(D0, D1, D31, D31), asm => asm.FMADD(D0, D1, D31, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D1, D31, D31");
+        TestInst(FMADD(D31, D1, D31, D31), asm => asm.FMADD(D31, D1, D31, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D1, D31, D31");
+        TestInst(FMADD(D0, D31, D31, D31), asm => asm.FMADD(D0, D31, D31, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D0, D31, D31, D31");
+        TestInst(FMADD(D31, D31, D31, D31), asm => asm.FMADD(D31, D31, D31, D31), Arm64InstructionId.FMADD_d_floatdp3, Arm64Mnemonic.FMADD, "FMADD D31, D31, D31, D31");
     }
 }

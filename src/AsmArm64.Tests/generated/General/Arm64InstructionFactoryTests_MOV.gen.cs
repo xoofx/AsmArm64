@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_MOV_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_MOV_orr_32_log_imm_0()
     {
-        TestInst(MOV(W1, 0x3030303), Arm64InstructionId.MOV_orr_32_log_imm, Arm64Mnemonic.MOV, "MOV W1, #0x3030303");
-        TestInst(MOV(W17, 0x3030303), Arm64InstructionId.MOV_orr_32_log_imm, Arm64Mnemonic.MOV, "MOV W17, #0x3030303");
-        TestInst(MOV(WSP, 0x3030303), Arm64InstructionId.MOV_orr_32_log_imm, Arm64Mnemonic.MOV, "MOV WSP, #0x3030303");
+        TestInst(MOV(W1, 0x3030303), asm => asm.MOV(W1, 0x3030303), Arm64InstructionId.MOV_orr_32_log_imm, Arm64Mnemonic.MOV, "MOV W1, #0x3030303");
+        TestInst(MOV(W17, 0x3030303), asm => asm.MOV(W17, 0x3030303), Arm64InstructionId.MOV_orr_32_log_imm, Arm64Mnemonic.MOV, "MOV W17, #0x3030303");
+        TestInst(MOV(WSP, 0x3030303), asm => asm.MOV(WSP, 0x3030303), Arm64InstructionId.MOV_orr_32_log_imm, Arm64Mnemonic.MOV, "MOV WSP, #0x3030303");
     }
     
     /// <summary>
@@ -35,9 +34,9 @@ public class Arm64InstructionFactoryTests_MOV_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_MOV_orr_64_log_imm_1()
     {
-        TestInst(MOV(X1, 0x303030303030303UL), Arm64InstructionId.MOV_orr_64_log_imm, Arm64Mnemonic.MOV, "MOV X1, #0x303030303030303");
-        TestInst(MOV(X17, 0x303030303030303UL), Arm64InstructionId.MOV_orr_64_log_imm, Arm64Mnemonic.MOV, "MOV X17, #0x303030303030303");
-        TestInst(MOV(SP, 0x303030303030303UL), Arm64InstructionId.MOV_orr_64_log_imm, Arm64Mnemonic.MOV, "MOV SP, #0x303030303030303");
+        TestInst(MOV(X1, 0x303030303030303UL), asm => asm.MOV(X1, 0x303030303030303UL), Arm64InstructionId.MOV_orr_64_log_imm, Arm64Mnemonic.MOV, "MOV X1, #0x303030303030303");
+        TestInst(MOV(X17, 0x303030303030303UL), asm => asm.MOV(X17, 0x303030303030303UL), Arm64InstructionId.MOV_orr_64_log_imm, Arm64Mnemonic.MOV, "MOV X17, #0x303030303030303");
+        TestInst(MOV(SP, 0x303030303030303UL), asm => asm.MOV(SP, 0x303030303030303UL), Arm64InstructionId.MOV_orr_64_log_imm, Arm64Mnemonic.MOV, "MOV SP, #0x303030303030303");
     }
     
     /// <summary>
@@ -46,15 +45,15 @@ public class Arm64InstructionFactoryTests_MOV_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_MOV_orr_32_log_shift_2()
     {
-        TestInst(MOV(W0, W1), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W0, W1");
-        TestInst(MOV(W15, W1), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W15, W1");
-        TestInst(MOV(WZR, W1), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV WZR, W1");
-        TestInst(MOV(W0, W16), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W0, W16");
-        TestInst(MOV(W15, W16), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W15, W16");
-        TestInst(MOV(WZR, W16), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV WZR, W16");
-        TestInst(MOV(W0, WZR), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W0, WZR");
-        TestInst(MOV(W15, WZR), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W15, WZR");
-        TestInst(MOV(WZR, WZR), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV WZR, WZR");
+        TestInst(MOV(W0, W1), asm => asm.MOV(W0, W1), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W0, W1");
+        TestInst(MOV(W15, W1), asm => asm.MOV(W15, W1), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W15, W1");
+        TestInst(MOV(WZR, W1), asm => asm.MOV(WZR, W1), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV WZR, W1");
+        TestInst(MOV(W0, W16), asm => asm.MOV(W0, W16), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W0, W16");
+        TestInst(MOV(W15, W16), asm => asm.MOV(W15, W16), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W15, W16");
+        TestInst(MOV(WZR, W16), asm => asm.MOV(WZR, W16), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV WZR, W16");
+        TestInst(MOV(W0, WZR), asm => asm.MOV(W0, WZR), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W0, WZR");
+        TestInst(MOV(W15, WZR), asm => asm.MOV(W15, WZR), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W15, WZR");
+        TestInst(MOV(WZR, WZR), asm => asm.MOV(WZR, WZR), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV WZR, WZR");
     }
     
     /// <summary>
@@ -63,15 +62,15 @@ public class Arm64InstructionFactoryTests_MOV_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_MOV_orr_64_log_shift_3()
     {
-        TestInst(MOV(X0, X1), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X0, X1");
-        TestInst(MOV(X15, X1), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X15, X1");
-        TestInst(MOV(XZR, X1), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV XZR, X1");
-        TestInst(MOV(X0, X16), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X0, X16");
-        TestInst(MOV(X15, X16), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X15, X16");
-        TestInst(MOV(XZR, X16), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV XZR, X16");
-        TestInst(MOV(X0, XZR), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X0, XZR");
-        TestInst(MOV(X15, XZR), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X15, XZR");
-        TestInst(MOV(XZR, XZR), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV XZR, XZR");
+        TestInst(MOV(X0, X1), asm => asm.MOV(X0, X1), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X0, X1");
+        TestInst(MOV(X15, X1), asm => asm.MOV(X15, X1), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X15, X1");
+        TestInst(MOV(XZR, X1), asm => asm.MOV(XZR, X1), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV XZR, X1");
+        TestInst(MOV(X0, X16), asm => asm.MOV(X0, X16), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X0, X16");
+        TestInst(MOV(X15, X16), asm => asm.MOV(X15, X16), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X15, X16");
+        TestInst(MOV(XZR, X16), asm => asm.MOV(XZR, X16), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV XZR, X16");
+        TestInst(MOV(X0, XZR), asm => asm.MOV(X0, XZR), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X0, XZR");
+        TestInst(MOV(X15, XZR), asm => asm.MOV(X15, XZR), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X15, XZR");
+        TestInst(MOV(XZR, XZR), asm => asm.MOV(XZR, XZR), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV XZR, XZR");
     }
     
     /// <summary>
@@ -80,15 +79,15 @@ public class Arm64InstructionFactoryTests_MOV_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_MOV_add_32_addsub_imm_4()
     {
-        TestInst(MOV(W1, W2), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W1, W2");
-        TestInst(MOV(W17, W2), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W17, W2");
-        TestInst(MOV(WSP, W2), Arm64InstructionId.MOV_add_32_addsub_imm, Arm64Mnemonic.MOV, "MOV WSP, W2");
-        TestInst(MOV(W1, W18), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W1, W18");
-        TestInst(MOV(W17, W18), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W17, W18");
-        TestInst(MOV(WSP, W18), Arm64InstructionId.MOV_add_32_addsub_imm, Arm64Mnemonic.MOV, "MOV WSP, W18");
-        TestInst(MOV(W1, WSP), Arm64InstructionId.MOV_add_32_addsub_imm, Arm64Mnemonic.MOV, "MOV W1, WSP");
-        TestInst(MOV(W17, WSP), Arm64InstructionId.MOV_add_32_addsub_imm, Arm64Mnemonic.MOV, "MOV W17, WSP");
-        TestInst(MOV(WSP, WSP), Arm64InstructionId.MOV_add_32_addsub_imm, Arm64Mnemonic.MOV, "MOV WSP, WSP");
+        TestInst(MOV(W1, W2), asm => asm.MOV(W1, W2), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W1, W2");
+        TestInst(MOV(W17, W2), asm => asm.MOV(W17, W2), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W17, W2");
+        TestInst(MOV(WSP, W2), asm => asm.MOV(WSP, W2), Arm64InstructionId.MOV_add_32_addsub_imm, Arm64Mnemonic.MOV, "MOV WSP, W2");
+        TestInst(MOV(W1, W18), asm => asm.MOV(W1, W18), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W1, W18");
+        TestInst(MOV(W17, W18), asm => asm.MOV(W17, W18), Arm64InstructionId.MOV_orr_32_log_shift, Arm64Mnemonic.MOV, "MOV W17, W18");
+        TestInst(MOV(WSP, W18), asm => asm.MOV(WSP, W18), Arm64InstructionId.MOV_add_32_addsub_imm, Arm64Mnemonic.MOV, "MOV WSP, W18");
+        TestInst(MOV(W1, WSP), asm => asm.MOV(W1, WSP), Arm64InstructionId.MOV_add_32_addsub_imm, Arm64Mnemonic.MOV, "MOV W1, WSP");
+        TestInst(MOV(W17, WSP), asm => asm.MOV(W17, WSP), Arm64InstructionId.MOV_add_32_addsub_imm, Arm64Mnemonic.MOV, "MOV W17, WSP");
+        TestInst(MOV(WSP, WSP), asm => asm.MOV(WSP, WSP), Arm64InstructionId.MOV_add_32_addsub_imm, Arm64Mnemonic.MOV, "MOV WSP, WSP");
     }
     
     /// <summary>
@@ -97,15 +96,15 @@ public class Arm64InstructionFactoryTests_MOV_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_MOV_add_64_addsub_imm_5()
     {
-        TestInst(MOV(X1, X2), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X1, X2");
-        TestInst(MOV(X17, X2), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X17, X2");
-        TestInst(MOV(SP, X2), Arm64InstructionId.MOV_add_64_addsub_imm, Arm64Mnemonic.MOV, "MOV SP, X2");
-        TestInst(MOV(X1, X18), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X1, X18");
-        TestInst(MOV(X17, X18), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X17, X18");
-        TestInst(MOV(SP, X18), Arm64InstructionId.MOV_add_64_addsub_imm, Arm64Mnemonic.MOV, "MOV SP, X18");
-        TestInst(MOV(X1, SP), Arm64InstructionId.MOV_add_64_addsub_imm, Arm64Mnemonic.MOV, "MOV X1, SP");
-        TestInst(MOV(X17, SP), Arm64InstructionId.MOV_add_64_addsub_imm, Arm64Mnemonic.MOV, "MOV X17, SP");
-        TestInst(MOV(SP, SP), Arm64InstructionId.MOV_add_64_addsub_imm, Arm64Mnemonic.MOV, "MOV SP, SP");
+        TestInst(MOV(X1, X2), asm => asm.MOV(X1, X2), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X1, X2");
+        TestInst(MOV(X17, X2), asm => asm.MOV(X17, X2), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X17, X2");
+        TestInst(MOV(SP, X2), asm => asm.MOV(SP, X2), Arm64InstructionId.MOV_add_64_addsub_imm, Arm64Mnemonic.MOV, "MOV SP, X2");
+        TestInst(MOV(X1, X18), asm => asm.MOV(X1, X18), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X1, X18");
+        TestInst(MOV(X17, X18), asm => asm.MOV(X17, X18), Arm64InstructionId.MOV_orr_64_log_shift, Arm64Mnemonic.MOV, "MOV X17, X18");
+        TestInst(MOV(SP, X18), asm => asm.MOV(SP, X18), Arm64InstructionId.MOV_add_64_addsub_imm, Arm64Mnemonic.MOV, "MOV SP, X18");
+        TestInst(MOV(X1, SP), asm => asm.MOV(X1, SP), Arm64InstructionId.MOV_add_64_addsub_imm, Arm64Mnemonic.MOV, "MOV X1, SP");
+        TestInst(MOV(X17, SP), asm => asm.MOV(X17, SP), Arm64InstructionId.MOV_add_64_addsub_imm, Arm64Mnemonic.MOV, "MOV X17, SP");
+        TestInst(MOV(SP, SP), asm => asm.MOV(SP, SP), Arm64InstructionId.MOV_add_64_addsub_imm, Arm64Mnemonic.MOV, "MOV SP, SP");
     }
     
     /// <summary>
@@ -114,9 +113,9 @@ public class Arm64InstructionFactoryTests_MOV_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_MOV_movz_32_movewide_6()
     {
-        TestInst(MOV(W0, Shift32(4660, 16)), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV W0, #305397760");
-        TestInst(MOV(W15, Shift32(4660, 16)), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV W15, #305397760");
-        TestInst(MOV(WZR, Shift32(4660, 16)), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV WZR, #305397760");
+        TestInst(MOV(W0, Shift32(4660, 16)), asm => asm.MOV(W0, Shift32(4660, 16)), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV W0, #305397760");
+        TestInst(MOV(W15, Shift32(4660, 16)), asm => asm.MOV(W15, Shift32(4660, 16)), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV W15, #305397760");
+        TestInst(MOV(WZR, Shift32(4660, 16)), asm => asm.MOV(WZR, Shift32(4660, 16)), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV WZR, #305397760");
     }
     
     /// <summary>
@@ -125,8 +124,8 @@ public class Arm64InstructionFactoryTests_MOV_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_MOV_movz_64_movewide_7()
     {
-        TestInst(MOV(X0, Shift64(4660, 16)), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV X0, #305397760");
-        TestInst(MOV(X15, Shift64(4660, 16)), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV X15, #305397760");
-        TestInst(MOV(XZR, Shift64(4660, 16)), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV XZR, #305397760");
+        TestInst(MOV(X0, Shift64(4660, 16)), asm => asm.MOV(X0, Shift64(4660, 16)), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV X0, #305397760");
+        TestInst(MOV(X15, Shift64(4660, 16)), asm => asm.MOV(X15, Shift64(4660, 16)), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV X15, #305397760");
+        TestInst(MOV(XZR, Shift64(4660, 16)), asm => asm.MOV(XZR, Shift64(4660, 16)), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV XZR, #305397760");
     }
 }

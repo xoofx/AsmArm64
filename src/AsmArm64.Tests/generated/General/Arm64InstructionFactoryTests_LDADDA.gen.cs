@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDADDA_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDADDA_32_memop_0()
     {
-        TestInst(LDADDA(W0, W1, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W0, W1, [X3]");
-        TestInst(LDADDA(W15, W1, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W15, W1, [X3]");
-        TestInst(LDADDA(WZR, W1, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA WZR, W1, [X3]");
-        TestInst(LDADDA(W0, W16, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W0, W16, [X3]");
-        TestInst(LDADDA(W15, W16, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W15, W16, [X3]");
-        TestInst(LDADDA(WZR, W16, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA WZR, W16, [X3]");
-        TestInst(LDADDA(W0, WZR, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W0, WZR, [X3]");
-        TestInst(LDADDA(W15, WZR, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W15, WZR, [X3]");
-        TestInst(LDADDA(WZR, WZR, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA WZR, WZR, [X3]");
+        TestInst(LDADDA(W0, W1, _[X3]), asm => asm.LDADDA(W0, W1, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W0, W1, [X3]");
+        TestInst(LDADDA(W15, W1, _[X3]), asm => asm.LDADDA(W15, W1, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W15, W1, [X3]");
+        TestInst(LDADDA(WZR, W1, _[X3]), asm => asm.LDADDA(WZR, W1, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA WZR, W1, [X3]");
+        TestInst(LDADDA(W0, W16, _[X3]), asm => asm.LDADDA(W0, W16, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W0, W16, [X3]");
+        TestInst(LDADDA(W15, W16, _[X3]), asm => asm.LDADDA(W15, W16, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W15, W16, [X3]");
+        TestInst(LDADDA(WZR, W16, _[X3]), asm => asm.LDADDA(WZR, W16, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA WZR, W16, [X3]");
+        TestInst(LDADDA(W0, WZR, _[X3]), asm => asm.LDADDA(W0, WZR, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W0, WZR, [X3]");
+        TestInst(LDADDA(W15, WZR, _[X3]), asm => asm.LDADDA(W15, WZR, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA W15, WZR, [X3]");
+        TestInst(LDADDA(WZR, WZR, _[X3]), asm => asm.LDADDA(WZR, WZR, _[X3]), Arm64InstructionId.LDADDA_32_memop, Arm64Mnemonic.LDADDA, "LDADDA WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDADDA_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDADDA_64_memop_1()
     {
-        TestInst(LDADDA(X0, X1, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X0, X1, [X3]");
-        TestInst(LDADDA(X15, X1, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X15, X1, [X3]");
-        TestInst(LDADDA(XZR, X1, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA XZR, X1, [X3]");
-        TestInst(LDADDA(X0, X16, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X0, X16, [X3]");
-        TestInst(LDADDA(X15, X16, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X15, X16, [X3]");
-        TestInst(LDADDA(XZR, X16, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA XZR, X16, [X3]");
-        TestInst(LDADDA(X0, XZR, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X0, XZR, [X3]");
-        TestInst(LDADDA(X15, XZR, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X15, XZR, [X3]");
-        TestInst(LDADDA(XZR, XZR, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA XZR, XZR, [X3]");
+        TestInst(LDADDA(X0, X1, _[X3]), asm => asm.LDADDA(X0, X1, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X0, X1, [X3]");
+        TestInst(LDADDA(X15, X1, _[X3]), asm => asm.LDADDA(X15, X1, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X15, X1, [X3]");
+        TestInst(LDADDA(XZR, X1, _[X3]), asm => asm.LDADDA(XZR, X1, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA XZR, X1, [X3]");
+        TestInst(LDADDA(X0, X16, _[X3]), asm => asm.LDADDA(X0, X16, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X0, X16, [X3]");
+        TestInst(LDADDA(X15, X16, _[X3]), asm => asm.LDADDA(X15, X16, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X15, X16, [X3]");
+        TestInst(LDADDA(XZR, X16, _[X3]), asm => asm.LDADDA(XZR, X16, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA XZR, X16, [X3]");
+        TestInst(LDADDA(X0, XZR, _[X3]), asm => asm.LDADDA(X0, XZR, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X0, XZR, [X3]");
+        TestInst(LDADDA(X15, XZR, _[X3]), asm => asm.LDADDA(X15, XZR, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA X15, XZR, [X3]");
+        TestInst(LDADDA(XZR, XZR, _[X3]), asm => asm.LDADDA(XZR, XZR, _[X3]), Arm64InstructionId.LDADDA_64_memop, Arm64Mnemonic.LDADDA, "LDADDA XZR, XZR, [X3]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_CBBLE_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_CBBLE_cbbge_8_regs_0()
     {
-        TestInst(CBBLE(W0, W1, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W1, W0, #32");
-        TestInst(CBBLE(W15, W1, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W1, W15, #32");
-        TestInst(CBBLE(WZR, W1, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W1, WZR, #32");
-        TestInst(CBBLE(W0, W16, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W16, W0, #32");
-        TestInst(CBBLE(W15, W16, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W16, W15, #32");
-        TestInst(CBBLE(WZR, W16, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W16, WZR, #32");
-        TestInst(CBBLE(W0, WZR, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE WZR, W0, #32");
-        TestInst(CBBLE(W15, WZR, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE WZR, W15, #32");
-        TestInst(CBBLE(WZR, WZR, 32), Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE WZR, WZR, #32");
+        TestInst(CBBLE(W0, W1, 32), null, Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W1, W0, #32");
+        TestInst(CBBLE(W15, W1, 32), null, Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W1, W15, #32");
+        TestInst(CBBLE(WZR, W1, 32), null, Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W1, WZR, #32");
+        TestInst(CBBLE(W0, W16, 32), null, Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W16, W0, #32");
+        TestInst(CBBLE(W15, W16, 32), null, Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W16, W15, #32");
+        TestInst(CBBLE(WZR, W16, 32), null, Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE W16, WZR, #32");
+        TestInst(CBBLE(W0, WZR, 32), null, Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE WZR, W0, #32");
+        TestInst(CBBLE(W15, WZR, 32), null, Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE WZR, W15, #32");
+        TestInst(CBBLE(WZR, WZR, 32), null, Arm64InstructionId.CBBGE_8_regs, Arm64Mnemonic.CBBGE, "CBBGE WZR, WZR, #32");
     }
 }

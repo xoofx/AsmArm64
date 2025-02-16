@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_NGC_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_NGC_sbc_32_addsub_carry_0()
     {
-        TestInst(NGC(W0, W1), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W0, W1");
-        TestInst(NGC(W15, W1), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W15, W1");
-        TestInst(NGC(WZR, W1), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC WZR, W1");
-        TestInst(NGC(W0, W16), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W0, W16");
-        TestInst(NGC(W15, W16), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W15, W16");
-        TestInst(NGC(WZR, W16), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC WZR, W16");
-        TestInst(NGC(W0, WZR), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W0, WZR");
-        TestInst(NGC(W15, WZR), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W15, WZR");
-        TestInst(NGC(WZR, WZR), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC WZR, WZR");
+        TestInst(NGC(W0, W1), asm => asm.NGC(W0, W1), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W0, W1");
+        TestInst(NGC(W15, W1), asm => asm.NGC(W15, W1), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W15, W1");
+        TestInst(NGC(WZR, W1), asm => asm.NGC(WZR, W1), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC WZR, W1");
+        TestInst(NGC(W0, W16), asm => asm.NGC(W0, W16), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W0, W16");
+        TestInst(NGC(W15, W16), asm => asm.NGC(W15, W16), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W15, W16");
+        TestInst(NGC(WZR, W16), asm => asm.NGC(WZR, W16), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC WZR, W16");
+        TestInst(NGC(W0, WZR), asm => asm.NGC(W0, WZR), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W0, WZR");
+        TestInst(NGC(W15, WZR), asm => asm.NGC(W15, WZR), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC W15, WZR");
+        TestInst(NGC(WZR, WZR), asm => asm.NGC(WZR, WZR), Arm64InstructionId.NGC_sbc_32_addsub_carry, Arm64Mnemonic.NGC, "NGC WZR, WZR");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_NGC_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_NGC_sbc_64_addsub_carry_1()
     {
-        TestInst(NGC(X0, X1), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X0, X1");
-        TestInst(NGC(X15, X1), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X15, X1");
-        TestInst(NGC(XZR, X1), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC XZR, X1");
-        TestInst(NGC(X0, X16), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X0, X16");
-        TestInst(NGC(X15, X16), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X15, X16");
-        TestInst(NGC(XZR, X16), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC XZR, X16");
-        TestInst(NGC(X0, XZR), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X0, XZR");
-        TestInst(NGC(X15, XZR), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X15, XZR");
-        TestInst(NGC(XZR, XZR), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC XZR, XZR");
+        TestInst(NGC(X0, X1), asm => asm.NGC(X0, X1), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X0, X1");
+        TestInst(NGC(X15, X1), asm => asm.NGC(X15, X1), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X15, X1");
+        TestInst(NGC(XZR, X1), asm => asm.NGC(XZR, X1), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC XZR, X1");
+        TestInst(NGC(X0, X16), asm => asm.NGC(X0, X16), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X0, X16");
+        TestInst(NGC(X15, X16), asm => asm.NGC(X15, X16), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X15, X16");
+        TestInst(NGC(XZR, X16), asm => asm.NGC(XZR, X16), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC XZR, X16");
+        TestInst(NGC(X0, XZR), asm => asm.NGC(X0, XZR), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X0, XZR");
+        TestInst(NGC(X15, XZR), asm => asm.NGC(X15, XZR), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC X15, XZR");
+        TestInst(NGC(XZR, XZR), asm => asm.NGC(XZR, XZR), Arm64InstructionId.NGC_sbc_64_addsub_carry, Arm64Mnemonic.NGC, "NGC XZR, XZR");
     }
 }

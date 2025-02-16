@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SETGET_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_SETGET_set_memcms_0()
     {
-        TestInst(SETGET(_[X1].Pre, X1, X2), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X1, X2");
-        TestInst(SETGET(_[X1].Pre, X16, X2), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X16, X2");
-        TestInst(SETGET(_[X1].Pre, XZR, X2), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, XZR, X2");
-        TestInst(SETGET(_[X1].Pre, X1, X17), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X1, X17");
-        TestInst(SETGET(_[X1].Pre, X16, X17), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X16, X17");
-        TestInst(SETGET(_[X1].Pre, XZR, X17), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, XZR, X17");
-        TestInst(SETGET(_[X1].Pre, X1, XZR), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X1, XZR");
-        TestInst(SETGET(_[X1].Pre, X16, XZR), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X16, XZR");
-        TestInst(SETGET(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, XZR, XZR");
+        TestInst(SETGET(_[X1].Pre, X1, X2), asm => asm.SETGET(_[X1].Pre, X1, X2), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X1, X2");
+        TestInst(SETGET(_[X1].Pre, X16, X2), asm => asm.SETGET(_[X1].Pre, X16, X2), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X16, X2");
+        TestInst(SETGET(_[X1].Pre, XZR, X2), asm => asm.SETGET(_[X1].Pre, XZR, X2), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, XZR, X2");
+        TestInst(SETGET(_[X1].Pre, X1, X17), asm => asm.SETGET(_[X1].Pre, X1, X17), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X1, X17");
+        TestInst(SETGET(_[X1].Pre, X16, X17), asm => asm.SETGET(_[X1].Pre, X16, X17), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X16, X17");
+        TestInst(SETGET(_[X1].Pre, XZR, X17), asm => asm.SETGET(_[X1].Pre, XZR, X17), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, XZR, X17");
+        TestInst(SETGET(_[X1].Pre, X1, XZR), asm => asm.SETGET(_[X1].Pre, X1, XZR), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X1, XZR");
+        TestInst(SETGET(_[X1].Pre, X16, XZR), asm => asm.SETGET(_[X1].Pre, X16, XZR), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, X16, XZR");
+        TestInst(SETGET(_[X1].Pre, XZR, XZR), asm => asm.SETGET(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETGET_set_memcms, Arm64Mnemonic.SETGET, "SETGET [X1]!, XZR, XZR");
     }
 }

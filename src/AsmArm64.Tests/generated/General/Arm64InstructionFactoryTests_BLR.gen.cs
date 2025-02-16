@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_BLR_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BLR_64_branch_reg_0()
     {
-        TestInst(BLR(X0), Arm64InstructionId.BLR_64_branch_reg, Arm64Mnemonic.BLR, "BLR X0");
-        TestInst(BLR(X15), Arm64InstructionId.BLR_64_branch_reg, Arm64Mnemonic.BLR, "BLR X15");
-        TestInst(BLR(XZR), Arm64InstructionId.BLR_64_branch_reg, Arm64Mnemonic.BLR, "BLR XZR");
+        TestInst(BLR(X0), asm => asm.BLR(X0), Arm64InstructionId.BLR_64_branch_reg, Arm64Mnemonic.BLR, "BLR X0");
+        TestInst(BLR(X15), asm => asm.BLR(X15), Arm64InstructionId.BLR_64_branch_reg, Arm64Mnemonic.BLR, "BLR X15");
+        TestInst(BLR(XZR), asm => asm.BLR(XZR), Arm64InstructionId.BLR_64_branch_reg, Arm64Mnemonic.BLR, "BLR XZR");
     }
 }

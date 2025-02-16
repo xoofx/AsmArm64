@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDUMAXAB_General : Arm64InstructionFac
     [TestMethod]
     public void Test_LDUMAXAB_32_memop_0()
     {
-        TestInst(LDUMAXAB(W0, W1, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W0, W1, [X3]");
-        TestInst(LDUMAXAB(W15, W1, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W15, W1, [X3]");
-        TestInst(LDUMAXAB(WZR, W1, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB WZR, W1, [X3]");
-        TestInst(LDUMAXAB(W0, W16, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W0, W16, [X3]");
-        TestInst(LDUMAXAB(W15, W16, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W15, W16, [X3]");
-        TestInst(LDUMAXAB(WZR, W16, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB WZR, W16, [X3]");
-        TestInst(LDUMAXAB(W0, WZR, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W0, WZR, [X3]");
-        TestInst(LDUMAXAB(W15, WZR, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W15, WZR, [X3]");
-        TestInst(LDUMAXAB(WZR, WZR, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB WZR, WZR, [X3]");
+        TestInst(LDUMAXAB(W0, W1, _[X3]), asm => asm.LDUMAXAB(W0, W1, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W0, W1, [X3]");
+        TestInst(LDUMAXAB(W15, W1, _[X3]), asm => asm.LDUMAXAB(W15, W1, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W15, W1, [X3]");
+        TestInst(LDUMAXAB(WZR, W1, _[X3]), asm => asm.LDUMAXAB(WZR, W1, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB WZR, W1, [X3]");
+        TestInst(LDUMAXAB(W0, W16, _[X3]), asm => asm.LDUMAXAB(W0, W16, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W0, W16, [X3]");
+        TestInst(LDUMAXAB(W15, W16, _[X3]), asm => asm.LDUMAXAB(W15, W16, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W15, W16, [X3]");
+        TestInst(LDUMAXAB(WZR, W16, _[X3]), asm => asm.LDUMAXAB(WZR, W16, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB WZR, W16, [X3]");
+        TestInst(LDUMAXAB(W0, WZR, _[X3]), asm => asm.LDUMAXAB(W0, WZR, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W0, WZR, [X3]");
+        TestInst(LDUMAXAB(W15, WZR, _[X3]), asm => asm.LDUMAXAB(W15, WZR, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB W15, WZR, [X3]");
+        TestInst(LDUMAXAB(WZR, WZR, _[X3]), asm => asm.LDUMAXAB(WZR, WZR, _[X3]), Arm64InstructionId.LDUMAXAB_32_memop, Arm64Mnemonic.LDUMAXAB, "LDUMAXAB WZR, WZR, [X3]");
     }
 }

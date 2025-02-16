@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Other;
@@ -23,9 +22,9 @@ public class Arm64InstructionFactoryTests_LDRAA_Other : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDRAA_64_ldst_pac_0()
     {
-        TestInst(LDRAA(X0, _[X2, 40]), Arm64InstructionId.LDRAA_64_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X0, [X2, #40]");
-        TestInst(LDRAA(X15, _[X2, 40]), Arm64InstructionId.LDRAA_64_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X15, [X2, #40]");
-        TestInst(LDRAA(XZR, _[X2, 40]), Arm64InstructionId.LDRAA_64_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA XZR, [X2, #40]");
+        TestInst(LDRAA(X0, _[X2, 40]), asm => asm.LDRAA(X0, _[X2, 40]), Arm64InstructionId.LDRAA_64_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X0, [X2, #40]");
+        TestInst(LDRAA(X15, _[X2, 40]), asm => asm.LDRAA(X15, _[X2, 40]), Arm64InstructionId.LDRAA_64_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X15, [X2, #40]");
+        TestInst(LDRAA(XZR, _[X2, 40]), asm => asm.LDRAA(XZR, _[X2, 40]), Arm64InstructionId.LDRAA_64_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA XZR, [X2, #40]");
     }
     
     /// <summary>
@@ -34,8 +33,8 @@ public class Arm64InstructionFactoryTests_LDRAA_Other : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDRAA_64w_ldst_pac_1()
     {
-        TestInst(LDRAA(X0, _[X2, 40].Pre), Arm64InstructionId.LDRAA_64w_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X0, [X2, #40]!");
-        TestInst(LDRAA(X15, _[X2, 40].Pre), Arm64InstructionId.LDRAA_64w_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X15, [X2, #40]!");
-        TestInst(LDRAA(XZR, _[X2, 40].Pre), Arm64InstructionId.LDRAA_64w_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA XZR, [X2, #40]!");
+        TestInst(LDRAA(X0, _[X2, 40].Pre), asm => asm.LDRAA(X0, _[X2, 40].Pre), Arm64InstructionId.LDRAA_64w_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X0, [X2, #40]!");
+        TestInst(LDRAA(X15, _[X2, 40].Pre), asm => asm.LDRAA(X15, _[X2, 40].Pre), Arm64InstructionId.LDRAA_64w_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA X15, [X2, #40]!");
+        TestInst(LDRAA(XZR, _[X2, 40].Pre), asm => asm.LDRAA(XZR, _[X2, 40].Pre), Arm64InstructionId.LDRAA_64w_ldst_pac, Arm64Mnemonic.LDRAA, "LDRAA XZR, [X2, #40]!");
     }
 }

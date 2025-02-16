@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_STSHH_System : Arm64InstructionFactory
     [TestMethod]
     public void Test_STSHH_hi_hints_0()
     {
-        TestInst(STSHH(STRM), Arm64InstructionId.STSHH_hi_hints, Arm64Mnemonic.STSHH, "STSHH STRM");
+        TestInst(STSHH(STRM), asm => asm.STSHH(STRM), Arm64InstructionId.STSHH_hi_hints, Arm64Mnemonic.STSHH, "STSHH STRM");
     }
 }

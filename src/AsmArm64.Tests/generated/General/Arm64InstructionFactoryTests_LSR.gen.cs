@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LSR_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LSR_ubfm_32m_bitfield_0()
     {
-        TestInst(LSR(W0, W1, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W0, W1, #5");
-        TestInst(LSR(W15, W1, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W15, W1, #5");
-        TestInst(LSR(WZR, W1, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR WZR, W1, #5");
-        TestInst(LSR(W0, W16, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W0, W16, #5");
-        TestInst(LSR(W15, W16, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W15, W16, #5");
-        TestInst(LSR(WZR, W16, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR WZR, W16, #5");
-        TestInst(LSR(W0, WZR, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W0, WZR, #5");
-        TestInst(LSR(W15, WZR, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W15, WZR, #5");
-        TestInst(LSR(WZR, WZR, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR WZR, WZR, #5");
+        TestInst(LSR(W0, W1, 5), asm => asm.LSR(W0, W1, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W0, W1, #5");
+        TestInst(LSR(W15, W1, 5), asm => asm.LSR(W15, W1, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W15, W1, #5");
+        TestInst(LSR(WZR, W1, 5), asm => asm.LSR(WZR, W1, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR WZR, W1, #5");
+        TestInst(LSR(W0, W16, 5), asm => asm.LSR(W0, W16, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W0, W16, #5");
+        TestInst(LSR(W15, W16, 5), asm => asm.LSR(W15, W16, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W15, W16, #5");
+        TestInst(LSR(WZR, W16, 5), asm => asm.LSR(WZR, W16, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR WZR, W16, #5");
+        TestInst(LSR(W0, WZR, 5), asm => asm.LSR(W0, WZR, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W0, WZR, #5");
+        TestInst(LSR(W15, WZR, 5), asm => asm.LSR(W15, WZR, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR W15, WZR, #5");
+        TestInst(LSR(WZR, WZR, 5), asm => asm.LSR(WZR, WZR, 5), Arm64InstructionId.LSR_ubfm_32m_bitfield, Arm64Mnemonic.LSR, "LSR WZR, WZR, #5");
     }
     
     /// <summary>
@@ -41,15 +40,15 @@ public class Arm64InstructionFactoryTests_LSR_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LSR_ubfm_64m_bitfield_1()
     {
-        TestInst(LSR(X0, X1, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X0, X1, #5");
-        TestInst(LSR(X15, X1, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X15, X1, #5");
-        TestInst(LSR(XZR, X1, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR XZR, X1, #5");
-        TestInst(LSR(X0, X16, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X0, X16, #5");
-        TestInst(LSR(X15, X16, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X15, X16, #5");
-        TestInst(LSR(XZR, X16, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR XZR, X16, #5");
-        TestInst(LSR(X0, XZR, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X0, XZR, #5");
-        TestInst(LSR(X15, XZR, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X15, XZR, #5");
-        TestInst(LSR(XZR, XZR, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR XZR, XZR, #5");
+        TestInst(LSR(X0, X1, 5), asm => asm.LSR(X0, X1, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X0, X1, #5");
+        TestInst(LSR(X15, X1, 5), asm => asm.LSR(X15, X1, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X15, X1, #5");
+        TestInst(LSR(XZR, X1, 5), asm => asm.LSR(XZR, X1, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR XZR, X1, #5");
+        TestInst(LSR(X0, X16, 5), asm => asm.LSR(X0, X16, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X0, X16, #5");
+        TestInst(LSR(X15, X16, 5), asm => asm.LSR(X15, X16, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X15, X16, #5");
+        TestInst(LSR(XZR, X16, 5), asm => asm.LSR(XZR, X16, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR XZR, X16, #5");
+        TestInst(LSR(X0, XZR, 5), asm => asm.LSR(X0, XZR, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X0, XZR, #5");
+        TestInst(LSR(X15, XZR, 5), asm => asm.LSR(X15, XZR, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR X15, XZR, #5");
+        TestInst(LSR(XZR, XZR, 5), asm => asm.LSR(XZR, XZR, 5), Arm64InstructionId.LSR_ubfm_64m_bitfield, Arm64Mnemonic.LSR, "LSR XZR, XZR, #5");
     }
     
     /// <summary>
@@ -58,33 +57,33 @@ public class Arm64InstructionFactoryTests_LSR_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LSR_lsrv_32_dp_2src_2()
     {
-        TestInst(LSR(W0, W1, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W1, W2");
-        TestInst(LSR(W15, W1, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W1, W2");
-        TestInst(LSR(WZR, W1, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W1, W2");
-        TestInst(LSR(W0, W16, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W16, W2");
-        TestInst(LSR(W15, W16, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W16, W2");
-        TestInst(LSR(WZR, W16, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W16, W2");
-        TestInst(LSR(W0, WZR, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, WZR, W2");
-        TestInst(LSR(W15, WZR, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, WZR, W2");
-        TestInst(LSR(WZR, WZR, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, WZR, W2");
-        TestInst(LSR(W0, W1, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W1, W17");
-        TestInst(LSR(W15, W1, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W1, W17");
-        TestInst(LSR(WZR, W1, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W1, W17");
-        TestInst(LSR(W0, W16, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W16, W17");
-        TestInst(LSR(W15, W16, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W16, W17");
-        TestInst(LSR(WZR, W16, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W16, W17");
-        TestInst(LSR(W0, WZR, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, WZR, W17");
-        TestInst(LSR(W15, WZR, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, WZR, W17");
-        TestInst(LSR(WZR, WZR, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, WZR, W17");
-        TestInst(LSR(W0, W1, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W1, WZR");
-        TestInst(LSR(W15, W1, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W1, WZR");
-        TestInst(LSR(WZR, W1, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W1, WZR");
-        TestInst(LSR(W0, W16, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W16, WZR");
-        TestInst(LSR(W15, W16, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W16, WZR");
-        TestInst(LSR(WZR, W16, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W16, WZR");
-        TestInst(LSR(W0, WZR, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, WZR, WZR");
-        TestInst(LSR(W15, WZR, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, WZR, WZR");
-        TestInst(LSR(WZR, WZR, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, WZR, WZR");
+        TestInst(LSR(W0, W1, W2), asm => asm.LSR(W0, W1, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W1, W2");
+        TestInst(LSR(W15, W1, W2), asm => asm.LSR(W15, W1, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W1, W2");
+        TestInst(LSR(WZR, W1, W2), asm => asm.LSR(WZR, W1, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W1, W2");
+        TestInst(LSR(W0, W16, W2), asm => asm.LSR(W0, W16, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W16, W2");
+        TestInst(LSR(W15, W16, W2), asm => asm.LSR(W15, W16, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W16, W2");
+        TestInst(LSR(WZR, W16, W2), asm => asm.LSR(WZR, W16, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W16, W2");
+        TestInst(LSR(W0, WZR, W2), asm => asm.LSR(W0, WZR, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, WZR, W2");
+        TestInst(LSR(W15, WZR, W2), asm => asm.LSR(W15, WZR, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, WZR, W2");
+        TestInst(LSR(WZR, WZR, W2), asm => asm.LSR(WZR, WZR, W2), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, WZR, W2");
+        TestInst(LSR(W0, W1, W17), asm => asm.LSR(W0, W1, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W1, W17");
+        TestInst(LSR(W15, W1, W17), asm => asm.LSR(W15, W1, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W1, W17");
+        TestInst(LSR(WZR, W1, W17), asm => asm.LSR(WZR, W1, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W1, W17");
+        TestInst(LSR(W0, W16, W17), asm => asm.LSR(W0, W16, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W16, W17");
+        TestInst(LSR(W15, W16, W17), asm => asm.LSR(W15, W16, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W16, W17");
+        TestInst(LSR(WZR, W16, W17), asm => asm.LSR(WZR, W16, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W16, W17");
+        TestInst(LSR(W0, WZR, W17), asm => asm.LSR(W0, WZR, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, WZR, W17");
+        TestInst(LSR(W15, WZR, W17), asm => asm.LSR(W15, WZR, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, WZR, W17");
+        TestInst(LSR(WZR, WZR, W17), asm => asm.LSR(WZR, WZR, W17), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, WZR, W17");
+        TestInst(LSR(W0, W1, WZR), asm => asm.LSR(W0, W1, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W1, WZR");
+        TestInst(LSR(W15, W1, WZR), asm => asm.LSR(W15, W1, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W1, WZR");
+        TestInst(LSR(WZR, W1, WZR), asm => asm.LSR(WZR, W1, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W1, WZR");
+        TestInst(LSR(W0, W16, WZR), asm => asm.LSR(W0, W16, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, W16, WZR");
+        TestInst(LSR(W15, W16, WZR), asm => asm.LSR(W15, W16, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, W16, WZR");
+        TestInst(LSR(WZR, W16, WZR), asm => asm.LSR(WZR, W16, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, W16, WZR");
+        TestInst(LSR(W0, WZR, WZR), asm => asm.LSR(W0, WZR, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W0, WZR, WZR");
+        TestInst(LSR(W15, WZR, WZR), asm => asm.LSR(W15, WZR, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR W15, WZR, WZR");
+        TestInst(LSR(WZR, WZR, WZR), asm => asm.LSR(WZR, WZR, WZR), Arm64InstructionId.LSR_lsrv_32_dp_2src, Arm64Mnemonic.LSR, "LSR WZR, WZR, WZR");
     }
     
     /// <summary>
@@ -93,32 +92,32 @@ public class Arm64InstructionFactoryTests_LSR_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LSR_lsrv_64_dp_2src_3()
     {
-        TestInst(LSR(X0, X1, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X1, X2");
-        TestInst(LSR(X15, X1, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X1, X2");
-        TestInst(LSR(XZR, X1, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X1, X2");
-        TestInst(LSR(X0, X16, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X16, X2");
-        TestInst(LSR(X15, X16, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X16, X2");
-        TestInst(LSR(XZR, X16, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X16, X2");
-        TestInst(LSR(X0, XZR, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, XZR, X2");
-        TestInst(LSR(X15, XZR, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, XZR, X2");
-        TestInst(LSR(XZR, XZR, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, XZR, X2");
-        TestInst(LSR(X0, X1, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X1, X17");
-        TestInst(LSR(X15, X1, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X1, X17");
-        TestInst(LSR(XZR, X1, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X1, X17");
-        TestInst(LSR(X0, X16, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X16, X17");
-        TestInst(LSR(X15, X16, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X16, X17");
-        TestInst(LSR(XZR, X16, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X16, X17");
-        TestInst(LSR(X0, XZR, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, XZR, X17");
-        TestInst(LSR(X15, XZR, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, XZR, X17");
-        TestInst(LSR(XZR, XZR, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, XZR, X17");
-        TestInst(LSR(X0, X1, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X1, XZR");
-        TestInst(LSR(X15, X1, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X1, XZR");
-        TestInst(LSR(XZR, X1, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X1, XZR");
-        TestInst(LSR(X0, X16, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X16, XZR");
-        TestInst(LSR(X15, X16, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X16, XZR");
-        TestInst(LSR(XZR, X16, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X16, XZR");
-        TestInst(LSR(X0, XZR, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, XZR, XZR");
-        TestInst(LSR(X15, XZR, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, XZR, XZR");
-        TestInst(LSR(XZR, XZR, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, XZR, XZR");
+        TestInst(LSR(X0, X1, X2), asm => asm.LSR(X0, X1, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X1, X2");
+        TestInst(LSR(X15, X1, X2), asm => asm.LSR(X15, X1, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X1, X2");
+        TestInst(LSR(XZR, X1, X2), asm => asm.LSR(XZR, X1, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X1, X2");
+        TestInst(LSR(X0, X16, X2), asm => asm.LSR(X0, X16, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X16, X2");
+        TestInst(LSR(X15, X16, X2), asm => asm.LSR(X15, X16, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X16, X2");
+        TestInst(LSR(XZR, X16, X2), asm => asm.LSR(XZR, X16, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X16, X2");
+        TestInst(LSR(X0, XZR, X2), asm => asm.LSR(X0, XZR, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, XZR, X2");
+        TestInst(LSR(X15, XZR, X2), asm => asm.LSR(X15, XZR, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, XZR, X2");
+        TestInst(LSR(XZR, XZR, X2), asm => asm.LSR(XZR, XZR, X2), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, XZR, X2");
+        TestInst(LSR(X0, X1, X17), asm => asm.LSR(X0, X1, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X1, X17");
+        TestInst(LSR(X15, X1, X17), asm => asm.LSR(X15, X1, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X1, X17");
+        TestInst(LSR(XZR, X1, X17), asm => asm.LSR(XZR, X1, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X1, X17");
+        TestInst(LSR(X0, X16, X17), asm => asm.LSR(X0, X16, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X16, X17");
+        TestInst(LSR(X15, X16, X17), asm => asm.LSR(X15, X16, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X16, X17");
+        TestInst(LSR(XZR, X16, X17), asm => asm.LSR(XZR, X16, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X16, X17");
+        TestInst(LSR(X0, XZR, X17), asm => asm.LSR(X0, XZR, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, XZR, X17");
+        TestInst(LSR(X15, XZR, X17), asm => asm.LSR(X15, XZR, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, XZR, X17");
+        TestInst(LSR(XZR, XZR, X17), asm => asm.LSR(XZR, XZR, X17), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, XZR, X17");
+        TestInst(LSR(X0, X1, XZR), asm => asm.LSR(X0, X1, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X1, XZR");
+        TestInst(LSR(X15, X1, XZR), asm => asm.LSR(X15, X1, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X1, XZR");
+        TestInst(LSR(XZR, X1, XZR), asm => asm.LSR(XZR, X1, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X1, XZR");
+        TestInst(LSR(X0, X16, XZR), asm => asm.LSR(X0, X16, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, X16, XZR");
+        TestInst(LSR(X15, X16, XZR), asm => asm.LSR(X15, X16, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, X16, XZR");
+        TestInst(LSR(XZR, X16, XZR), asm => asm.LSR(XZR, X16, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, X16, XZR");
+        TestInst(LSR(X0, XZR, XZR), asm => asm.LSR(X0, XZR, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X0, XZR, XZR");
+        TestInst(LSR(X15, XZR, XZR), asm => asm.LSR(X15, XZR, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR X15, XZR, XZR");
+        TestInst(LSR(XZR, XZR, XZR), asm => asm.LSR(XZR, XZR, XZR), Arm64InstructionId.LSR_lsrv_64_dp_2src, Arm64Mnemonic.LSR, "LSR XZR, XZR, XZR");
     }
 }

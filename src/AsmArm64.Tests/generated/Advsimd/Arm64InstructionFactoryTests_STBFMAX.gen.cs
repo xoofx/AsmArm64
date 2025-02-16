@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_STBFMAX_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_STBFMAX_16_0()
     {
-        TestInst(STBFMAX(H0, _[X2]), Arm64InstructionId.STBFMAX_16, Arm64Mnemonic.STBFMAX, "STBFMAX H0, [X2]");
-        TestInst(STBFMAX(H31, _[X2]), Arm64InstructionId.STBFMAX_16, Arm64Mnemonic.STBFMAX, "STBFMAX H31, [X2]");
+        TestInst(STBFMAX(H0, _[X2]), asm => asm.STBFMAX(H0, _[X2]), Arm64InstructionId.STBFMAX_16, Arm64Mnemonic.STBFMAX, "STBFMAX H0, [X2]");
+        TestInst(STBFMAX(H31, _[X2]), asm => asm.STBFMAX(H31, _[X2]), Arm64InstructionId.STBFMAX_16, Arm64Mnemonic.STBFMAX, "STBFMAX H31, [X2]");
     }
 }

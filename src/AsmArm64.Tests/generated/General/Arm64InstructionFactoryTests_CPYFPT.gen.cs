@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_CPYFPT_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_CPYFPT_cpy_memcms_0()
     {
-        TestInst(CPYFPT(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYFPT_cpy_memcms, Arm64Mnemonic.CPYFPT, "CPYFPT [X1]!, [X2]!, X2");
-        TestInst(CPYFPT(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYFPT_cpy_memcms, Arm64Mnemonic.CPYFPT, "CPYFPT [X1]!, [X2]!, X17");
-        TestInst(CPYFPT(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYFPT_cpy_memcms, Arm64Mnemonic.CPYFPT, "CPYFPT [X1]!, [X2]!, XZR");
+        TestInst(CPYFPT(_[X1].Pre, _[X2].Pre, X2), asm => asm.CPYFPT(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYFPT_cpy_memcms, Arm64Mnemonic.CPYFPT, "CPYFPT [X1]!, [X2]!, X2");
+        TestInst(CPYFPT(_[X1].Pre, _[X2].Pre, X17), asm => asm.CPYFPT(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYFPT_cpy_memcms, Arm64Mnemonic.CPYFPT, "CPYFPT [X1]!, [X2]!, X17");
+        TestInst(CPYFPT(_[X1].Pre, _[X2].Pre, XZR), asm => asm.CPYFPT(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYFPT_cpy_memcms, Arm64Mnemonic.CPYFPT, "CPYFPT [X1]!, [X2]!, XZR");
     }
 }

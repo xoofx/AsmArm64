@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_SMIN_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SMIN_32_minmax_imm_0()
     {
-        TestInst(SMIN(W0, W1, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W0, W1, #5");
-        TestInst(SMIN(W15, W1, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W15, W1, #5");
-        TestInst(SMIN(WZR, W1, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN WZR, W1, #5");
-        TestInst(SMIN(W0, W16, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W0, W16, #5");
-        TestInst(SMIN(W15, W16, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W15, W16, #5");
-        TestInst(SMIN(WZR, W16, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN WZR, W16, #5");
-        TestInst(SMIN(W0, WZR, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W0, WZR, #5");
-        TestInst(SMIN(W15, WZR, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W15, WZR, #5");
-        TestInst(SMIN(WZR, WZR, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN WZR, WZR, #5");
+        TestInst(SMIN(W0, W1, 5), asm => asm.SMIN(W0, W1, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W0, W1, #5");
+        TestInst(SMIN(W15, W1, 5), asm => asm.SMIN(W15, W1, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W15, W1, #5");
+        TestInst(SMIN(WZR, W1, 5), asm => asm.SMIN(WZR, W1, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN WZR, W1, #5");
+        TestInst(SMIN(W0, W16, 5), asm => asm.SMIN(W0, W16, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W0, W16, #5");
+        TestInst(SMIN(W15, W16, 5), asm => asm.SMIN(W15, W16, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W15, W16, #5");
+        TestInst(SMIN(WZR, W16, 5), asm => asm.SMIN(WZR, W16, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN WZR, W16, #5");
+        TestInst(SMIN(W0, WZR, 5), asm => asm.SMIN(W0, WZR, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W0, WZR, #5");
+        TestInst(SMIN(W15, WZR, 5), asm => asm.SMIN(W15, WZR, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN W15, WZR, #5");
+        TestInst(SMIN(WZR, WZR, 5), asm => asm.SMIN(WZR, WZR, 5), Arm64InstructionId.SMIN_32_minmax_imm, Arm64Mnemonic.SMIN, "SMIN WZR, WZR, #5");
     }
     
     /// <summary>
@@ -41,15 +40,15 @@ public class Arm64InstructionFactoryTests_SMIN_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SMIN_64_minmax_imm_1()
     {
-        TestInst(SMIN(X0, X1, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X0, X1, #5");
-        TestInst(SMIN(X15, X1, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X15, X1, #5");
-        TestInst(SMIN(XZR, X1, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN XZR, X1, #5");
-        TestInst(SMIN(X0, X16, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X0, X16, #5");
-        TestInst(SMIN(X15, X16, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X15, X16, #5");
-        TestInst(SMIN(XZR, X16, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN XZR, X16, #5");
-        TestInst(SMIN(X0, XZR, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X0, XZR, #5");
-        TestInst(SMIN(X15, XZR, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X15, XZR, #5");
-        TestInst(SMIN(XZR, XZR, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN XZR, XZR, #5");
+        TestInst(SMIN(X0, X1, 5), asm => asm.SMIN(X0, X1, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X0, X1, #5");
+        TestInst(SMIN(X15, X1, 5), asm => asm.SMIN(X15, X1, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X15, X1, #5");
+        TestInst(SMIN(XZR, X1, 5), asm => asm.SMIN(XZR, X1, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN XZR, X1, #5");
+        TestInst(SMIN(X0, X16, 5), asm => asm.SMIN(X0, X16, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X0, X16, #5");
+        TestInst(SMIN(X15, X16, 5), asm => asm.SMIN(X15, X16, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X15, X16, #5");
+        TestInst(SMIN(XZR, X16, 5), asm => asm.SMIN(XZR, X16, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN XZR, X16, #5");
+        TestInst(SMIN(X0, XZR, 5), asm => asm.SMIN(X0, XZR, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X0, XZR, #5");
+        TestInst(SMIN(X15, XZR, 5), asm => asm.SMIN(X15, XZR, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN X15, XZR, #5");
+        TestInst(SMIN(XZR, XZR, 5), asm => asm.SMIN(XZR, XZR, 5), Arm64InstructionId.SMIN_64_minmax_imm, Arm64Mnemonic.SMIN, "SMIN XZR, XZR, #5");
     }
     
     /// <summary>
@@ -58,33 +57,33 @@ public class Arm64InstructionFactoryTests_SMIN_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SMIN_32_dp_2src_2()
     {
-        TestInst(SMIN(W0, W1, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W1, W2");
-        TestInst(SMIN(W15, W1, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W1, W2");
-        TestInst(SMIN(WZR, W1, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W1, W2");
-        TestInst(SMIN(W0, W16, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W16, W2");
-        TestInst(SMIN(W15, W16, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W16, W2");
-        TestInst(SMIN(WZR, W16, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W16, W2");
-        TestInst(SMIN(W0, WZR, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, WZR, W2");
-        TestInst(SMIN(W15, WZR, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, WZR, W2");
-        TestInst(SMIN(WZR, WZR, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, WZR, W2");
-        TestInst(SMIN(W0, W1, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W1, W17");
-        TestInst(SMIN(W15, W1, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W1, W17");
-        TestInst(SMIN(WZR, W1, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W1, W17");
-        TestInst(SMIN(W0, W16, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W16, W17");
-        TestInst(SMIN(W15, W16, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W16, W17");
-        TestInst(SMIN(WZR, W16, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W16, W17");
-        TestInst(SMIN(W0, WZR, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, WZR, W17");
-        TestInst(SMIN(W15, WZR, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, WZR, W17");
-        TestInst(SMIN(WZR, WZR, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, WZR, W17");
-        TestInst(SMIN(W0, W1, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W1, WZR");
-        TestInst(SMIN(W15, W1, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W1, WZR");
-        TestInst(SMIN(WZR, W1, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W1, WZR");
-        TestInst(SMIN(W0, W16, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W16, WZR");
-        TestInst(SMIN(W15, W16, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W16, WZR");
-        TestInst(SMIN(WZR, W16, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W16, WZR");
-        TestInst(SMIN(W0, WZR, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, WZR, WZR");
-        TestInst(SMIN(W15, WZR, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, WZR, WZR");
-        TestInst(SMIN(WZR, WZR, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, WZR, WZR");
+        TestInst(SMIN(W0, W1, W2), asm => asm.SMIN(W0, W1, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W1, W2");
+        TestInst(SMIN(W15, W1, W2), asm => asm.SMIN(W15, W1, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W1, W2");
+        TestInst(SMIN(WZR, W1, W2), asm => asm.SMIN(WZR, W1, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W1, W2");
+        TestInst(SMIN(W0, W16, W2), asm => asm.SMIN(W0, W16, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W16, W2");
+        TestInst(SMIN(W15, W16, W2), asm => asm.SMIN(W15, W16, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W16, W2");
+        TestInst(SMIN(WZR, W16, W2), asm => asm.SMIN(WZR, W16, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W16, W2");
+        TestInst(SMIN(W0, WZR, W2), asm => asm.SMIN(W0, WZR, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, WZR, W2");
+        TestInst(SMIN(W15, WZR, W2), asm => asm.SMIN(W15, WZR, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, WZR, W2");
+        TestInst(SMIN(WZR, WZR, W2), asm => asm.SMIN(WZR, WZR, W2), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, WZR, W2");
+        TestInst(SMIN(W0, W1, W17), asm => asm.SMIN(W0, W1, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W1, W17");
+        TestInst(SMIN(W15, W1, W17), asm => asm.SMIN(W15, W1, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W1, W17");
+        TestInst(SMIN(WZR, W1, W17), asm => asm.SMIN(WZR, W1, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W1, W17");
+        TestInst(SMIN(W0, W16, W17), asm => asm.SMIN(W0, W16, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W16, W17");
+        TestInst(SMIN(W15, W16, W17), asm => asm.SMIN(W15, W16, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W16, W17");
+        TestInst(SMIN(WZR, W16, W17), asm => asm.SMIN(WZR, W16, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W16, W17");
+        TestInst(SMIN(W0, WZR, W17), asm => asm.SMIN(W0, WZR, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, WZR, W17");
+        TestInst(SMIN(W15, WZR, W17), asm => asm.SMIN(W15, WZR, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, WZR, W17");
+        TestInst(SMIN(WZR, WZR, W17), asm => asm.SMIN(WZR, WZR, W17), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, WZR, W17");
+        TestInst(SMIN(W0, W1, WZR), asm => asm.SMIN(W0, W1, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W1, WZR");
+        TestInst(SMIN(W15, W1, WZR), asm => asm.SMIN(W15, W1, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W1, WZR");
+        TestInst(SMIN(WZR, W1, WZR), asm => asm.SMIN(WZR, W1, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W1, WZR");
+        TestInst(SMIN(W0, W16, WZR), asm => asm.SMIN(W0, W16, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, W16, WZR");
+        TestInst(SMIN(W15, W16, WZR), asm => asm.SMIN(W15, W16, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, W16, WZR");
+        TestInst(SMIN(WZR, W16, WZR), asm => asm.SMIN(WZR, W16, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, W16, WZR");
+        TestInst(SMIN(W0, WZR, WZR), asm => asm.SMIN(W0, WZR, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W0, WZR, WZR");
+        TestInst(SMIN(W15, WZR, WZR), asm => asm.SMIN(W15, WZR, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN W15, WZR, WZR");
+        TestInst(SMIN(WZR, WZR, WZR), asm => asm.SMIN(WZR, WZR, WZR), Arm64InstructionId.SMIN_32_dp_2src, Arm64Mnemonic.SMIN, "SMIN WZR, WZR, WZR");
     }
     
     /// <summary>
@@ -93,32 +92,32 @@ public class Arm64InstructionFactoryTests_SMIN_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SMIN_64_dp_2src_3()
     {
-        TestInst(SMIN(X0, X1, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X1, X2");
-        TestInst(SMIN(X15, X1, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X1, X2");
-        TestInst(SMIN(XZR, X1, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X1, X2");
-        TestInst(SMIN(X0, X16, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X16, X2");
-        TestInst(SMIN(X15, X16, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X16, X2");
-        TestInst(SMIN(XZR, X16, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X16, X2");
-        TestInst(SMIN(X0, XZR, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, XZR, X2");
-        TestInst(SMIN(X15, XZR, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, XZR, X2");
-        TestInst(SMIN(XZR, XZR, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, XZR, X2");
-        TestInst(SMIN(X0, X1, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X1, X17");
-        TestInst(SMIN(X15, X1, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X1, X17");
-        TestInst(SMIN(XZR, X1, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X1, X17");
-        TestInst(SMIN(X0, X16, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X16, X17");
-        TestInst(SMIN(X15, X16, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X16, X17");
-        TestInst(SMIN(XZR, X16, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X16, X17");
-        TestInst(SMIN(X0, XZR, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, XZR, X17");
-        TestInst(SMIN(X15, XZR, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, XZR, X17");
-        TestInst(SMIN(XZR, XZR, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, XZR, X17");
-        TestInst(SMIN(X0, X1, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X1, XZR");
-        TestInst(SMIN(X15, X1, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X1, XZR");
-        TestInst(SMIN(XZR, X1, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X1, XZR");
-        TestInst(SMIN(X0, X16, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X16, XZR");
-        TestInst(SMIN(X15, X16, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X16, XZR");
-        TestInst(SMIN(XZR, X16, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X16, XZR");
-        TestInst(SMIN(X0, XZR, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, XZR, XZR");
-        TestInst(SMIN(X15, XZR, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, XZR, XZR");
-        TestInst(SMIN(XZR, XZR, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, XZR, XZR");
+        TestInst(SMIN(X0, X1, X2), asm => asm.SMIN(X0, X1, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X1, X2");
+        TestInst(SMIN(X15, X1, X2), asm => asm.SMIN(X15, X1, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X1, X2");
+        TestInst(SMIN(XZR, X1, X2), asm => asm.SMIN(XZR, X1, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X1, X2");
+        TestInst(SMIN(X0, X16, X2), asm => asm.SMIN(X0, X16, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X16, X2");
+        TestInst(SMIN(X15, X16, X2), asm => asm.SMIN(X15, X16, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X16, X2");
+        TestInst(SMIN(XZR, X16, X2), asm => asm.SMIN(XZR, X16, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X16, X2");
+        TestInst(SMIN(X0, XZR, X2), asm => asm.SMIN(X0, XZR, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, XZR, X2");
+        TestInst(SMIN(X15, XZR, X2), asm => asm.SMIN(X15, XZR, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, XZR, X2");
+        TestInst(SMIN(XZR, XZR, X2), asm => asm.SMIN(XZR, XZR, X2), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, XZR, X2");
+        TestInst(SMIN(X0, X1, X17), asm => asm.SMIN(X0, X1, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X1, X17");
+        TestInst(SMIN(X15, X1, X17), asm => asm.SMIN(X15, X1, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X1, X17");
+        TestInst(SMIN(XZR, X1, X17), asm => asm.SMIN(XZR, X1, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X1, X17");
+        TestInst(SMIN(X0, X16, X17), asm => asm.SMIN(X0, X16, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X16, X17");
+        TestInst(SMIN(X15, X16, X17), asm => asm.SMIN(X15, X16, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X16, X17");
+        TestInst(SMIN(XZR, X16, X17), asm => asm.SMIN(XZR, X16, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X16, X17");
+        TestInst(SMIN(X0, XZR, X17), asm => asm.SMIN(X0, XZR, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, XZR, X17");
+        TestInst(SMIN(X15, XZR, X17), asm => asm.SMIN(X15, XZR, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, XZR, X17");
+        TestInst(SMIN(XZR, XZR, X17), asm => asm.SMIN(XZR, XZR, X17), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, XZR, X17");
+        TestInst(SMIN(X0, X1, XZR), asm => asm.SMIN(X0, X1, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X1, XZR");
+        TestInst(SMIN(X15, X1, XZR), asm => asm.SMIN(X15, X1, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X1, XZR");
+        TestInst(SMIN(XZR, X1, XZR), asm => asm.SMIN(XZR, X1, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X1, XZR");
+        TestInst(SMIN(X0, X16, XZR), asm => asm.SMIN(X0, X16, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, X16, XZR");
+        TestInst(SMIN(X15, X16, XZR), asm => asm.SMIN(X15, X16, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, X16, XZR");
+        TestInst(SMIN(XZR, X16, XZR), asm => asm.SMIN(XZR, X16, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, X16, XZR");
+        TestInst(SMIN(X0, XZR, XZR), asm => asm.SMIN(X0, XZR, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X0, XZR, XZR");
+        TestInst(SMIN(X15, XZR, XZR), asm => asm.SMIN(X15, XZR, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN X15, XZR, XZR");
+        TestInst(SMIN(XZR, XZR, XZR), asm => asm.SMIN(XZR, XZR, XZR), Arm64InstructionId.SMIN_64_dp_2src, Arm64Mnemonic.SMIN, "SMIN XZR, XZR, XZR");
     }
 }

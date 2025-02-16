@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STLRB_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_STLRB_sl32_ldstord_0()
     {
-        TestInst(STLRB(W0, _[X2]), Arm64InstructionId.STLRB_sl32_ldstord, Arm64Mnemonic.STLRB, "STLRB W0, [X2]");
-        TestInst(STLRB(W15, _[X2]), Arm64InstructionId.STLRB_sl32_ldstord, Arm64Mnemonic.STLRB, "STLRB W15, [X2]");
-        TestInst(STLRB(WZR, _[X2]), Arm64InstructionId.STLRB_sl32_ldstord, Arm64Mnemonic.STLRB, "STLRB WZR, [X2]");
+        TestInst(STLRB(W0, _[X2]), asm => asm.STLRB(W0, _[X2]), Arm64InstructionId.STLRB_sl32_ldstord, Arm64Mnemonic.STLRB, "STLRB W0, [X2]");
+        TestInst(STLRB(W15, _[X2]), asm => asm.STLRB(W15, _[X2]), Arm64InstructionId.STLRB_sl32_ldstord, Arm64Mnemonic.STLRB, "STLRB W15, [X2]");
+        TestInst(STLRB(WZR, _[X2]), asm => asm.STLRB(WZR, _[X2]), Arm64InstructionId.STLRB_sl32_ldstord, Arm64Mnemonic.STLRB, "STLRB WZR, [X2]");
     }
 }

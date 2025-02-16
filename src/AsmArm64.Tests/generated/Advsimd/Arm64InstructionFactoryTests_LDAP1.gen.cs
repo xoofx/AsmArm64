@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_LDAP1_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDAP1_asisdlso_d1_0()
     {
-        TestInst(LDAP1(V0.D.Group1()[1], _[X2]), Arm64InstructionId.LDAP1_asisdlso_d1, Arm64Mnemonic.LDAP1, "LDAP1 { V0.D }[1], [X2]");
-        TestInst(LDAP1(V30.D.Group1()[1], _[X2]), Arm64InstructionId.LDAP1_asisdlso_d1, Arm64Mnemonic.LDAP1, "LDAP1 { V30.D }[1], [X2]");
+        TestInst(LDAP1(V0.D.Group1()[1], _[X2]), asm => asm.LDAP1(V0.D.Group1()[1], _[X2]), Arm64InstructionId.LDAP1_asisdlso_d1, Arm64Mnemonic.LDAP1, "LDAP1 { V0.D }[1], [X2]");
+        TestInst(LDAP1(V30.D.Group1()[1], _[X2]), asm => asm.LDAP1(V30.D.Group1()[1], _[X2]), Arm64InstructionId.LDAP1_asisdlso_d1, Arm64Mnemonic.LDAP1, "LDAP1 { V30.D }[1], [X2]");
     }
 }

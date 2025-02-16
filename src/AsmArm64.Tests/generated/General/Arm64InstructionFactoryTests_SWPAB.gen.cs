@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SWPAB_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_SWPAB_32_memop_0()
     {
-        TestInst(SWPAB(W0, W1, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W0, W1, [X3]");
-        TestInst(SWPAB(W15, W1, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W15, W1, [X3]");
-        TestInst(SWPAB(WZR, W1, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB WZR, W1, [X3]");
-        TestInst(SWPAB(W0, W16, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W0, W16, [X3]");
-        TestInst(SWPAB(W15, W16, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W15, W16, [X3]");
-        TestInst(SWPAB(WZR, W16, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB WZR, W16, [X3]");
-        TestInst(SWPAB(W0, WZR, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W0, WZR, [X3]");
-        TestInst(SWPAB(W15, WZR, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W15, WZR, [X3]");
-        TestInst(SWPAB(WZR, WZR, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB WZR, WZR, [X3]");
+        TestInst(SWPAB(W0, W1, _[X3]), asm => asm.SWPAB(W0, W1, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W0, W1, [X3]");
+        TestInst(SWPAB(W15, W1, _[X3]), asm => asm.SWPAB(W15, W1, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W15, W1, [X3]");
+        TestInst(SWPAB(WZR, W1, _[X3]), asm => asm.SWPAB(WZR, W1, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB WZR, W1, [X3]");
+        TestInst(SWPAB(W0, W16, _[X3]), asm => asm.SWPAB(W0, W16, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W0, W16, [X3]");
+        TestInst(SWPAB(W15, W16, _[X3]), asm => asm.SWPAB(W15, W16, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W15, W16, [X3]");
+        TestInst(SWPAB(WZR, W16, _[X3]), asm => asm.SWPAB(WZR, W16, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB WZR, W16, [X3]");
+        TestInst(SWPAB(W0, WZR, _[X3]), asm => asm.SWPAB(W0, WZR, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W0, WZR, [X3]");
+        TestInst(SWPAB(W15, WZR, _[X3]), asm => asm.SWPAB(W15, WZR, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB W15, WZR, [X3]");
+        TestInst(SWPAB(WZR, WZR, _[X3]), asm => asm.SWPAB(WZR, WZR, _[X3]), Arm64InstructionId.SWPAB_32_memop, Arm64Mnemonic.SWPAB, "SWPAB WZR, WZR, [X3]");
     }
 }

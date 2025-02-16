@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDADDB_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDADDB_32_memop_0()
     {
-        TestInst(LDADDB(W0, W1, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB W0, W1, [X3]");
-        TestInst(LDADDB(W15, W1, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB W15, W1, [X3]");
-        TestInst(LDADDB(WZR, W1, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB WZR, W1, [X3]");
-        TestInst(LDADDB(W0, W16, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB W0, W16, [X3]");
-        TestInst(LDADDB(W15, W16, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB W15, W16, [X3]");
-        TestInst(LDADDB(WZR, W16, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB WZR, W16, [X3]");
-        TestInst(LDADDB(W0, WZR, _[X3]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB W0, [X3]");
-        TestInst(LDADDB(W15, WZR, _[X3]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB W15, [X3]");
-        TestInst(LDADDB(WZR, WZR, _[X3]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB WZR, [X3]");
+        TestInst(LDADDB(W0, W1, _[X3]), asm => asm.LDADDB(W0, W1, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB W0, W1, [X3]");
+        TestInst(LDADDB(W15, W1, _[X3]), asm => asm.LDADDB(W15, W1, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB W15, W1, [X3]");
+        TestInst(LDADDB(WZR, W1, _[X3]), asm => asm.LDADDB(WZR, W1, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB WZR, W1, [X3]");
+        TestInst(LDADDB(W0, W16, _[X3]), asm => asm.LDADDB(W0, W16, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB W0, W16, [X3]");
+        TestInst(LDADDB(W15, W16, _[X3]), asm => asm.LDADDB(W15, W16, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB W15, W16, [X3]");
+        TestInst(LDADDB(WZR, W16, _[X3]), asm => asm.LDADDB(WZR, W16, _[X3]), Arm64InstructionId.LDADDB_32_memop, Arm64Mnemonic.LDADDB, "LDADDB WZR, W16, [X3]");
+        TestInst(LDADDB(W0, WZR, _[X3]), asm => asm.LDADDB(W0, WZR, _[X3]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB W0, [X3]");
+        TestInst(LDADDB(W15, WZR, _[X3]), asm => asm.LDADDB(W15, WZR, _[X3]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB W15, [X3]");
+        TestInst(LDADDB(WZR, WZR, _[X3]), asm => asm.LDADDB(WZR, WZR, _[X3]), Arm64InstructionId.STADDB_ldaddb_32_memop, Arm64Mnemonic.STADDB, "STADDB WZR, [X3]");
     }
 }

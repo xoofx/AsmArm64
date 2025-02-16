@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDSMAXALB_General : Arm64InstructionFa
     [TestMethod]
     public void Test_LDSMAXALB_32_memop_0()
     {
-        TestInst(LDSMAXALB(W0, W1, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W0, W1, [X3]");
-        TestInst(LDSMAXALB(W15, W1, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W15, W1, [X3]");
-        TestInst(LDSMAXALB(WZR, W1, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB WZR, W1, [X3]");
-        TestInst(LDSMAXALB(W0, W16, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W0, W16, [X3]");
-        TestInst(LDSMAXALB(W15, W16, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W15, W16, [X3]");
-        TestInst(LDSMAXALB(WZR, W16, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB WZR, W16, [X3]");
-        TestInst(LDSMAXALB(W0, WZR, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W0, WZR, [X3]");
-        TestInst(LDSMAXALB(W15, WZR, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W15, WZR, [X3]");
-        TestInst(LDSMAXALB(WZR, WZR, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB WZR, WZR, [X3]");
+        TestInst(LDSMAXALB(W0, W1, _[X3]), asm => asm.LDSMAXALB(W0, W1, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W0, W1, [X3]");
+        TestInst(LDSMAXALB(W15, W1, _[X3]), asm => asm.LDSMAXALB(W15, W1, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W15, W1, [X3]");
+        TestInst(LDSMAXALB(WZR, W1, _[X3]), asm => asm.LDSMAXALB(WZR, W1, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB WZR, W1, [X3]");
+        TestInst(LDSMAXALB(W0, W16, _[X3]), asm => asm.LDSMAXALB(W0, W16, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W0, W16, [X3]");
+        TestInst(LDSMAXALB(W15, W16, _[X3]), asm => asm.LDSMAXALB(W15, W16, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W15, W16, [X3]");
+        TestInst(LDSMAXALB(WZR, W16, _[X3]), asm => asm.LDSMAXALB(WZR, W16, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB WZR, W16, [X3]");
+        TestInst(LDSMAXALB(W0, WZR, _[X3]), asm => asm.LDSMAXALB(W0, WZR, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W0, WZR, [X3]");
+        TestInst(LDSMAXALB(W15, WZR, _[X3]), asm => asm.LDSMAXALB(W15, WZR, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB W15, WZR, [X3]");
+        TestInst(LDSMAXALB(WZR, WZR, _[X3]), asm => asm.LDSMAXALB(WZR, WZR, _[X3]), Arm64InstructionId.LDSMAXALB_32_memop, Arm64Mnemonic.LDSMAXALB, "LDSMAXALB WZR, WZR, [X3]");
     }
 }

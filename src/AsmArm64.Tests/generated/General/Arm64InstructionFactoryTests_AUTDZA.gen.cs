@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_AUTDZA_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_AUTDZA_64z_dp_1src_0()
     {
-        TestInst(AUTDZA(X0), Arm64InstructionId.AUTDZA_64z_dp_1src, Arm64Mnemonic.AUTDZA, "AUTDZA X0");
-        TestInst(AUTDZA(X15), Arm64InstructionId.AUTDZA_64z_dp_1src, Arm64Mnemonic.AUTDZA, "AUTDZA X15");
-        TestInst(AUTDZA(XZR), Arm64InstructionId.AUTDZA_64z_dp_1src, Arm64Mnemonic.AUTDZA, "AUTDZA XZR");
+        TestInst(AUTDZA(X0), asm => asm.AUTDZA(X0), Arm64InstructionId.AUTDZA_64z_dp_1src, Arm64Mnemonic.AUTDZA, "AUTDZA X0");
+        TestInst(AUTDZA(X15), asm => asm.AUTDZA(X15), Arm64InstructionId.AUTDZA_64z_dp_1src, Arm64Mnemonic.AUTDZA, "AUTDZA X15");
+        TestInst(AUTDZA(XZR), asm => asm.AUTDZA(XZR), Arm64InstructionId.AUTDZA_64z_dp_1src, Arm64Mnemonic.AUTDZA, "AUTDZA XZR");
     }
 }

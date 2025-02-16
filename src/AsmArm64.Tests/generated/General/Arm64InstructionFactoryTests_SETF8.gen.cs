@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_SETF8_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_SETF8_only_setf_0()
     {
-        TestInst(SETF8(W0), Arm64InstructionId.SETF8_only_setf, Arm64Mnemonic.SETF8, "SETF8 W0");
-        TestInst(SETF8(W15), Arm64InstructionId.SETF8_only_setf, Arm64Mnemonic.SETF8, "SETF8 W15");
-        TestInst(SETF8(WZR), Arm64InstructionId.SETF8_only_setf, Arm64Mnemonic.SETF8, "SETF8 WZR");
+        TestInst(SETF8(W0), asm => asm.SETF8(W0), Arm64InstructionId.SETF8_only_setf, Arm64Mnemonic.SETF8, "SETF8 W0");
+        TestInst(SETF8(W15), asm => asm.SETF8(W15), Arm64InstructionId.SETF8_only_setf, Arm64Mnemonic.SETF8, "SETF8 W15");
+        TestInst(SETF8(WZR), asm => asm.SETF8(WZR), Arm64InstructionId.SETF8_only_setf, Arm64Mnemonic.SETF8, "SETF8 WZR");
     }
 }

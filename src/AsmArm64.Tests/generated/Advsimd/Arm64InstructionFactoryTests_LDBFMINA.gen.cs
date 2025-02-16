@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDBFMINA_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_LDBFMINA_16_0()
     {
-        TestInst(LDBFMINA(H0, H1, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H0, H1, [X3]");
-        TestInst(LDBFMINA(H31, H1, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H31, H1, [X3]");
-        TestInst(LDBFMINA(H0, H31, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H0, H31, [X3]");
-        TestInst(LDBFMINA(H31, H31, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H31, H31, [X3]");
+        TestInst(LDBFMINA(H0, H1, _[X3]), asm => asm.LDBFMINA(H0, H1, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H0, H1, [X3]");
+        TestInst(LDBFMINA(H31, H1, _[X3]), asm => asm.LDBFMINA(H31, H1, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H31, H1, [X3]");
+        TestInst(LDBFMINA(H0, H31, _[X3]), asm => asm.LDBFMINA(H0, H31, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H0, H31, [X3]");
+        TestInst(LDBFMINA(H31, H31, _[X3]), asm => asm.LDBFMINA(H31, H31, _[X3]), Arm64InstructionId.LDBFMINA_16, Arm64Mnemonic.LDBFMINA, "LDBFMINA H31, H31, [X3]");
     }
 }

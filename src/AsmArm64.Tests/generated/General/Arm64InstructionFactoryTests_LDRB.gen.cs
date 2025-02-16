@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDRB_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDRB_32b_ldst_regoff_0()
     {
-        TestInst(LDRB(W0, _[X2, X3, _LSL, 0]), Arm64InstructionId.LDRB_32bl_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB W0, [X2, X3, LSL #0]");
-        TestInst(LDRB(W15, _[X2, X3, _LSL, 0]), Arm64InstructionId.LDRB_32bl_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB W15, [X2, X3, LSL #0]");
-        TestInst(LDRB(WZR, _[X2, X3, _LSL, 0]), Arm64InstructionId.LDRB_32bl_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB WZR, [X2, X3, LSL #0]");
+        TestInst(LDRB(W0, _[X2, X3, _LSL, 0]), asm => asm.LDRB(W0, _[X2, X3, _LSL, 0]), Arm64InstructionId.LDRB_32bl_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB W0, [X2, X3, LSL #0]");
+        TestInst(LDRB(W15, _[X2, X3, _LSL, 0]), asm => asm.LDRB(W15, _[X2, X3, _LSL, 0]), Arm64InstructionId.LDRB_32bl_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB W15, [X2, X3, LSL #0]");
+        TestInst(LDRB(WZR, _[X2, X3, _LSL, 0]), asm => asm.LDRB(WZR, _[X2, X3, _LSL, 0]), Arm64InstructionId.LDRB_32bl_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB WZR, [X2, X3, LSL #0]");
     }
     
     /// <summary>
@@ -35,9 +34,9 @@ public class Arm64InstructionFactoryTests_LDRB_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDRB_32b_ldst_regoff_1()
     {
-        TestInst(LDRB(W0, _[X2, W3, _UXTW, 0]), Arm64InstructionId.LDRB_32b_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB W0, [X2, W3, UXTW #0]");
-        TestInst(LDRB(W15, _[X2, W3, _UXTW, 0]), Arm64InstructionId.LDRB_32b_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB W15, [X2, W3, UXTW #0]");
-        TestInst(LDRB(WZR, _[X2, W3, _UXTW, 0]), Arm64InstructionId.LDRB_32b_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB WZR, [X2, W3, UXTW #0]");
+        TestInst(LDRB(W0, _[X2, W3, _UXTW, 0]), asm => asm.LDRB(W0, _[X2, W3, _UXTW, 0]), Arm64InstructionId.LDRB_32b_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB W0, [X2, W3, UXTW #0]");
+        TestInst(LDRB(W15, _[X2, W3, _UXTW, 0]), asm => asm.LDRB(W15, _[X2, W3, _UXTW, 0]), Arm64InstructionId.LDRB_32b_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB W15, [X2, W3, UXTW #0]");
+        TestInst(LDRB(WZR, _[X2, W3, _UXTW, 0]), asm => asm.LDRB(WZR, _[X2, W3, _UXTW, 0]), Arm64InstructionId.LDRB_32b_ldst_regoff, Arm64Mnemonic.LDRB, "LDRB WZR, [X2, W3, UXTW #0]");
     }
     
     /// <summary>
@@ -46,9 +45,9 @@ public class Arm64InstructionFactoryTests_LDRB_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDRB_32_ldst_immpost_2()
     {
-        TestInst(LDRB(W0, _[X2], 5), Arm64InstructionId.LDRB_32_ldst_immpost, Arm64Mnemonic.LDRB, "LDRB W0, [X2], #5");
-        TestInst(LDRB(W15, _[X2], 5), Arm64InstructionId.LDRB_32_ldst_immpost, Arm64Mnemonic.LDRB, "LDRB W15, [X2], #5");
-        TestInst(LDRB(WZR, _[X2], 5), Arm64InstructionId.LDRB_32_ldst_immpost, Arm64Mnemonic.LDRB, "LDRB WZR, [X2], #5");
+        TestInst(LDRB(W0, _[X2], 5), asm => asm.LDRB(W0, _[X2], 5), Arm64InstructionId.LDRB_32_ldst_immpost, Arm64Mnemonic.LDRB, "LDRB W0, [X2], #5");
+        TestInst(LDRB(W15, _[X2], 5), asm => asm.LDRB(W15, _[X2], 5), Arm64InstructionId.LDRB_32_ldst_immpost, Arm64Mnemonic.LDRB, "LDRB W15, [X2], #5");
+        TestInst(LDRB(WZR, _[X2], 5), asm => asm.LDRB(WZR, _[X2], 5), Arm64InstructionId.LDRB_32_ldst_immpost, Arm64Mnemonic.LDRB, "LDRB WZR, [X2], #5");
     }
     
     /// <summary>
@@ -57,9 +56,9 @@ public class Arm64InstructionFactoryTests_LDRB_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDRB_32_ldst_immpre_3()
     {
-        TestInst(LDRB(W0, _[X2, 5].Pre), Arm64InstructionId.LDRB_32_ldst_immpre, Arm64Mnemonic.LDRB, "LDRB W0, [X2, #5]!");
-        TestInst(LDRB(W15, _[X2, 5].Pre), Arm64InstructionId.LDRB_32_ldst_immpre, Arm64Mnemonic.LDRB, "LDRB W15, [X2, #5]!");
-        TestInst(LDRB(WZR, _[X2, 5].Pre), Arm64InstructionId.LDRB_32_ldst_immpre, Arm64Mnemonic.LDRB, "LDRB WZR, [X2, #5]!");
+        TestInst(LDRB(W0, _[X2, 5].Pre), asm => asm.LDRB(W0, _[X2, 5].Pre), Arm64InstructionId.LDRB_32_ldst_immpre, Arm64Mnemonic.LDRB, "LDRB W0, [X2, #5]!");
+        TestInst(LDRB(W15, _[X2, 5].Pre), asm => asm.LDRB(W15, _[X2, 5].Pre), Arm64InstructionId.LDRB_32_ldst_immpre, Arm64Mnemonic.LDRB, "LDRB W15, [X2, #5]!");
+        TestInst(LDRB(WZR, _[X2, 5].Pre), asm => asm.LDRB(WZR, _[X2, 5].Pre), Arm64InstructionId.LDRB_32_ldst_immpre, Arm64Mnemonic.LDRB, "LDRB WZR, [X2, #5]!");
     }
     
     /// <summary>
@@ -68,8 +67,8 @@ public class Arm64InstructionFactoryTests_LDRB_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDRB_32_ldst_pos_4()
     {
-        TestInst(LDRB(W0, _[X2, 5]), Arm64InstructionId.LDRB_32_ldst_pos, Arm64Mnemonic.LDRB, "LDRB W0, [X2, #5]");
-        TestInst(LDRB(W15, _[X2, 5]), Arm64InstructionId.LDRB_32_ldst_pos, Arm64Mnemonic.LDRB, "LDRB W15, [X2, #5]");
-        TestInst(LDRB(WZR, _[X2, 5]), Arm64InstructionId.LDRB_32_ldst_pos, Arm64Mnemonic.LDRB, "LDRB WZR, [X2, #5]");
+        TestInst(LDRB(W0, _[X2, 5]), asm => asm.LDRB(W0, _[X2, 5]), Arm64InstructionId.LDRB_32_ldst_pos, Arm64Mnemonic.LDRB, "LDRB W0, [X2, #5]");
+        TestInst(LDRB(W15, _[X2, 5]), asm => asm.LDRB(W15, _[X2, 5]), Arm64InstructionId.LDRB_32_ldst_pos, Arm64Mnemonic.LDRB, "LDRB W15, [X2, #5]");
+        TestInst(LDRB(WZR, _[X2, 5]), asm => asm.LDRB(WZR, _[X2, 5]), Arm64InstructionId.LDRB_32_ldst_pos, Arm64Mnemonic.LDRB, "LDRB WZR, [X2, #5]");
     }
 }

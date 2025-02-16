@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDBFMAX_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_LDBFMAX_16_0()
     {
-        TestInst(LDBFMAX(H0, H1, _[X3]), Arm64InstructionId.LDBFMAX_16, Arm64Mnemonic.LDBFMAX, "LDBFMAX H0, H1, [X3]");
-        TestInst(LDBFMAX(H31, H1, _[X3]), Arm64InstructionId.LDBFMAX_16, Arm64Mnemonic.LDBFMAX, "LDBFMAX H31, H1, [X3]");
-        TestInst(LDBFMAX(H0, H31, _[X3]), Arm64InstructionId.LDBFMAX_16, Arm64Mnemonic.LDBFMAX, "LDBFMAX H0, H31, [X3]");
-        TestInst(LDBFMAX(H31, H31, _[X3]), Arm64InstructionId.LDBFMAX_16, Arm64Mnemonic.LDBFMAX, "LDBFMAX H31, H31, [X3]");
+        TestInst(LDBFMAX(H0, H1, _[X3]), asm => asm.LDBFMAX(H0, H1, _[X3]), Arm64InstructionId.LDBFMAX_16, Arm64Mnemonic.LDBFMAX, "LDBFMAX H0, H1, [X3]");
+        TestInst(LDBFMAX(H31, H1, _[X3]), asm => asm.LDBFMAX(H31, H1, _[X3]), Arm64InstructionId.LDBFMAX_16, Arm64Mnemonic.LDBFMAX, "LDBFMAX H31, H1, [X3]");
+        TestInst(LDBFMAX(H0, H31, _[X3]), asm => asm.LDBFMAX(H0, H31, _[X3]), Arm64InstructionId.LDBFMAX_16, Arm64Mnemonic.LDBFMAX, "LDBFMAX H0, H31, [X3]");
+        TestInst(LDBFMAX(H31, H31, _[X3]), asm => asm.LDBFMAX(H31, H31, _[X3]), Arm64InstructionId.LDBFMAX_16, Arm64Mnemonic.LDBFMAX, "LDBFMAX H31, H31, [X3]");
     }
 }

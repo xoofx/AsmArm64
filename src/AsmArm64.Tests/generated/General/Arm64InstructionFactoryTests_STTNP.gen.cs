@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_STTNP_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_STTNP_64_ldstnapair_offs_0()
     {
-        TestInst(STTNP(X0, X1, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X0, X1, [X3, #5]");
-        TestInst(STTNP(X15, X1, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X15, X1, [X3, #5]");
-        TestInst(STTNP(XZR, X1, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP XZR, X1, [X3, #5]");
-        TestInst(STTNP(X0, X16, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X0, X16, [X3, #5]");
-        TestInst(STTNP(X15, X16, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X15, X16, [X3, #5]");
-        TestInst(STTNP(XZR, X16, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP XZR, X16, [X3, #5]");
-        TestInst(STTNP(X0, XZR, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X0, XZR, [X3, #5]");
-        TestInst(STTNP(X15, XZR, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X15, XZR, [X3, #5]");
-        TestInst(STTNP(XZR, XZR, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP XZR, XZR, [X3, #5]");
+        TestInst(STTNP(X0, X1, _[X3, 5]), asm => asm.STTNP(X0, X1, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X0, X1, [X3, #5]");
+        TestInst(STTNP(X15, X1, _[X3, 5]), asm => asm.STTNP(X15, X1, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X15, X1, [X3, #5]");
+        TestInst(STTNP(XZR, X1, _[X3, 5]), asm => asm.STTNP(XZR, X1, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP XZR, X1, [X3, #5]");
+        TestInst(STTNP(X0, X16, _[X3, 5]), asm => asm.STTNP(X0, X16, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X0, X16, [X3, #5]");
+        TestInst(STTNP(X15, X16, _[X3, 5]), asm => asm.STTNP(X15, X16, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X15, X16, [X3, #5]");
+        TestInst(STTNP(XZR, X16, _[X3, 5]), asm => asm.STTNP(XZR, X16, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP XZR, X16, [X3, #5]");
+        TestInst(STTNP(X0, XZR, _[X3, 5]), asm => asm.STTNP(X0, XZR, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X0, XZR, [X3, #5]");
+        TestInst(STTNP(X15, XZR, _[X3, 5]), asm => asm.STTNP(X15, XZR, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP X15, XZR, [X3, #5]");
+        TestInst(STTNP(XZR, XZR, _[X3, 5]), asm => asm.STTNP(XZR, XZR, _[X3, 5]), Arm64InstructionId.STTNP_64_ldstnapair_offs, Arm64Mnemonic.STTNP, "STTNP XZR, XZR, [X3, #5]");
     }
 }

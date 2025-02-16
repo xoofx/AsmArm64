@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_BFMLALT_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_BFMLALT_asimdelem_f_0()
     {
-        TestInst(BFMLALT(V0.T_4S, V1.T_8H, V2.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V1.8H, V2.H[1]");
-        TestInst(BFMLALT(V30.T_4S, V1.T_8H, V2.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V1.8H, V2.H[1]");
-        TestInst(BFMLALT(V0.T_4S, V31.T_8H, V2.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V31.8H, V2.H[1]");
-        TestInst(BFMLALT(V30.T_4S, V31.T_8H, V2.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V31.8H, V2.H[1]");
-        TestInst(BFMLALT(V0.T_4S, V1.T_8H, V0.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V1.8H, V0.H[1]");
-        TestInst(BFMLALT(V30.T_4S, V1.T_8H, V0.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V1.8H, V0.H[1]");
-        TestInst(BFMLALT(V0.T_4S, V31.T_8H, V0.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V31.8H, V0.H[1]");
-        TestInst(BFMLALT(V30.T_4S, V31.T_8H, V0.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V31.8H, V0.H[1]");
+        TestInst(BFMLALT(V0.T_4S, V1.T_8H, V2.H[1]), asm => asm.BFMLALT(V0.T_4S, V1.T_8H, V2.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V1.8H, V2.H[1]");
+        TestInst(BFMLALT(V30.T_4S, V1.T_8H, V2.H[1]), asm => asm.BFMLALT(V30.T_4S, V1.T_8H, V2.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V1.8H, V2.H[1]");
+        TestInst(BFMLALT(V0.T_4S, V31.T_8H, V2.H[1]), asm => asm.BFMLALT(V0.T_4S, V31.T_8H, V2.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V31.8H, V2.H[1]");
+        TestInst(BFMLALT(V30.T_4S, V31.T_8H, V2.H[1]), asm => asm.BFMLALT(V30.T_4S, V31.T_8H, V2.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V31.8H, V2.H[1]");
+        TestInst(BFMLALT(V0.T_4S, V1.T_8H, V0.H[1]), asm => asm.BFMLALT(V0.T_4S, V1.T_8H, V0.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V1.8H, V0.H[1]");
+        TestInst(BFMLALT(V30.T_4S, V1.T_8H, V0.H[1]), asm => asm.BFMLALT(V30.T_4S, V1.T_8H, V0.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V1.8H, V0.H[1]");
+        TestInst(BFMLALT(V0.T_4S, V31.T_8H, V0.H[1]), asm => asm.BFMLALT(V0.T_4S, V31.T_8H, V0.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V31.8H, V0.H[1]");
+        TestInst(BFMLALT(V30.T_4S, V31.T_8H, V0.H[1]), asm => asm.BFMLALT(V30.T_4S, V31.T_8H, V0.H[1]), Arm64InstructionId.BFMLALT_asimdelem_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V31.8H, V0.H[1]");
     }
     
     /// <summary>
@@ -40,13 +39,13 @@ public class Arm64InstructionFactoryTests_BFMLALT_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_BFMLALT_asimdsame2_f_1()
     {
-        TestInst(BFMLALT(V0.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V1.8H, V2.8H");
-        TestInst(BFMLALT(V30.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V1.8H, V2.8H");
-        TestInst(BFMLALT(V0.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V31.8H, V2.8H");
-        TestInst(BFMLALT(V30.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V31.8H, V2.8H");
-        TestInst(BFMLALT(V0.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V1.8H, V0.8H");
-        TestInst(BFMLALT(V30.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V1.8H, V0.8H");
-        TestInst(BFMLALT(V0.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V31.8H, V0.8H");
-        TestInst(BFMLALT(V30.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V31.8H, V0.8H");
+        TestInst(BFMLALT(V0.T_4S, V1.T_8H, V2.T_8H), asm => asm.BFMLALT(V0.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V1.8H, V2.8H");
+        TestInst(BFMLALT(V30.T_4S, V1.T_8H, V2.T_8H), asm => asm.BFMLALT(V30.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V1.8H, V2.8H");
+        TestInst(BFMLALT(V0.T_4S, V31.T_8H, V2.T_8H), asm => asm.BFMLALT(V0.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V31.8H, V2.8H");
+        TestInst(BFMLALT(V30.T_4S, V31.T_8H, V2.T_8H), asm => asm.BFMLALT(V30.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V31.8H, V2.8H");
+        TestInst(BFMLALT(V0.T_4S, V1.T_8H, V0.T_8H), asm => asm.BFMLALT(V0.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V1.8H, V0.8H");
+        TestInst(BFMLALT(V30.T_4S, V1.T_8H, V0.T_8H), asm => asm.BFMLALT(V30.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V1.8H, V0.8H");
+        TestInst(BFMLALT(V0.T_4S, V31.T_8H, V0.T_8H), asm => asm.BFMLALT(V0.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V0.4S, V31.8H, V0.8H");
+        TestInst(BFMLALT(V30.T_4S, V31.T_8H, V0.T_8H), asm => asm.BFMLALT(V30.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.BFMLALT_asimdsame2_f, Arm64Mnemonic.BFMLALT, "BFMLALT V30.4S, V31.8H, V0.8H");
     }
 }

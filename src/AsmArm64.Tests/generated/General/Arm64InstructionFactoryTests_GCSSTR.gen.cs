@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_GCSSTR_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_GCSSTR_64_ldst_gcs_0()
     {
-        TestInst(GCSSTR(X0, _[X2]), Arm64InstructionId.GCSSTR_64_ldst_gcs, Arm64Mnemonic.GCSSTR, "GCSSTR X0, [X2]");
-        TestInst(GCSSTR(X15, _[X2]), Arm64InstructionId.GCSSTR_64_ldst_gcs, Arm64Mnemonic.GCSSTR, "GCSSTR X15, [X2]");
-        TestInst(GCSSTR(XZR, _[X2]), Arm64InstructionId.GCSSTR_64_ldst_gcs, Arm64Mnemonic.GCSSTR, "GCSSTR XZR, [X2]");
+        TestInst(GCSSTR(X0, _[X2]), asm => asm.GCSSTR(X0, _[X2]), Arm64InstructionId.GCSSTR_64_ldst_gcs, Arm64Mnemonic.GCSSTR, "GCSSTR X0, [X2]");
+        TestInst(GCSSTR(X15, _[X2]), asm => asm.GCSSTR(X15, _[X2]), Arm64InstructionId.GCSSTR_64_ldst_gcs, Arm64Mnemonic.GCSSTR, "GCSSTR X15, [X2]");
+        TestInst(GCSSTR(XZR, _[X2]), asm => asm.GCSSTR(XZR, _[X2]), Arm64InstructionId.GCSSTR_64_ldst_gcs, Arm64Mnemonic.GCSSTR, "GCSSTR XZR, [X2]");
     }
 }

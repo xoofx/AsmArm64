@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_MOV_MOVN_General : Arm64InstructionFac
     [TestMethod]
     public void Test_MOV_movn_32_movewide_0()
     {
-        TestInst(MOV_MOVN(W0, InvertShift32(4660, 16)), Arm64InstructionId.MOV_movn_32_movewide, Arm64Mnemonic.MOV, "MOV W0, #-305397761");
-        TestInst(MOV_MOVN(W15, InvertShift32(4660, 16)), Arm64InstructionId.MOV_movn_32_movewide, Arm64Mnemonic.MOV, "MOV W15, #-305397761");
-        TestInst(MOV_MOVN(WZR, InvertShift32(4660, 16)), Arm64InstructionId.MOV_movn_32_movewide, Arm64Mnemonic.MOV, "MOV WZR, #-305397761");
+        TestInst(MOV_MOVN(W0, InvertShift32(4660, 16)), asm => asm.MOV_MOVN(W0, InvertShift32(4660, 16)), Arm64InstructionId.MOV_movn_32_movewide, Arm64Mnemonic.MOV, "MOV W0, #-305397761");
+        TestInst(MOV_MOVN(W15, InvertShift32(4660, 16)), asm => asm.MOV_MOVN(W15, InvertShift32(4660, 16)), Arm64InstructionId.MOV_movn_32_movewide, Arm64Mnemonic.MOV, "MOV W15, #-305397761");
+        TestInst(MOV_MOVN(WZR, InvertShift32(4660, 16)), asm => asm.MOV_MOVN(WZR, InvertShift32(4660, 16)), Arm64InstructionId.MOV_movn_32_movewide, Arm64Mnemonic.MOV, "MOV WZR, #-305397761");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_MOV_MOVN_General : Arm64InstructionFac
     [TestMethod]
     public void Test_MOV_movn_64_movewide_1()
     {
-        TestInst(MOV_MOVN(X0, InvertShift64(4660, 16)), Arm64InstructionId.MOV_movn_64_movewide, Arm64Mnemonic.MOV, "MOV X0, #-305397761");
-        TestInst(MOV_MOVN(X15, InvertShift64(4660, 16)), Arm64InstructionId.MOV_movn_64_movewide, Arm64Mnemonic.MOV, "MOV X15, #-305397761");
-        TestInst(MOV_MOVN(XZR, InvertShift64(4660, 16)), Arm64InstructionId.MOV_movn_64_movewide, Arm64Mnemonic.MOV, "MOV XZR, #-305397761");
+        TestInst(MOV_MOVN(X0, InvertShift64(4660, 16)), asm => asm.MOV_MOVN(X0, InvertShift64(4660, 16)), Arm64InstructionId.MOV_movn_64_movewide, Arm64Mnemonic.MOV, "MOV X0, #-305397761");
+        TestInst(MOV_MOVN(X15, InvertShift64(4660, 16)), asm => asm.MOV_MOVN(X15, InvertShift64(4660, 16)), Arm64InstructionId.MOV_movn_64_movewide, Arm64Mnemonic.MOV, "MOV X15, #-305397761");
+        TestInst(MOV_MOVN(XZR, InvertShift64(4660, 16)), asm => asm.MOV_MOVN(XZR, InvertShift64(4660, 16)), Arm64InstructionId.MOV_movn_64_movewide, Arm64Mnemonic.MOV, "MOV XZR, #-305397761");
     }
 }

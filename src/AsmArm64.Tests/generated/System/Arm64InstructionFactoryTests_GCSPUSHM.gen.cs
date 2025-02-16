@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_GCSPUSHM_System : Arm64InstructionFact
     [TestMethod]
     public void Test_GCSPUSHM_sys_cr_systeminstrs_0()
     {
-        TestInst(GCSPUSHM(X0), Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, Arm64Mnemonic.GCSPUSHM, "GCSPUSHM X0");
-        TestInst(GCSPUSHM(X15), Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, Arm64Mnemonic.GCSPUSHM, "GCSPUSHM X15");
-        TestInst(GCSPUSHM(XZR), Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, Arm64Mnemonic.GCSPUSHM, "GCSPUSHM XZR");
+        TestInst(GCSPUSHM(X0), asm => asm.GCSPUSHM(X0), Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, Arm64Mnemonic.GCSPUSHM, "GCSPUSHM X0");
+        TestInst(GCSPUSHM(X15), asm => asm.GCSPUSHM(X15), Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, Arm64Mnemonic.GCSPUSHM, "GCSPUSHM X15");
+        TestInst(GCSPUSHM(XZR), asm => asm.GCSPUSHM(XZR), Arm64InstructionId.GCSPUSHM_sys_cr_systeminstrs, Arm64Mnemonic.GCSPUSHM, "GCSPUSHM XZR");
     }
 }

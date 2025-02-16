@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_WFIT_System : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_WFIT_only_systeminstrswithreg_0()
     {
-        TestInst(WFIT(X0), Arm64InstructionId.WFIT_only_systeminstrswithreg, Arm64Mnemonic.WFIT, "WFIT X0");
-        TestInst(WFIT(X15), Arm64InstructionId.WFIT_only_systeminstrswithreg, Arm64Mnemonic.WFIT, "WFIT X15");
-        TestInst(WFIT(XZR), Arm64InstructionId.WFIT_only_systeminstrswithreg, Arm64Mnemonic.WFIT, "WFIT XZR");
+        TestInst(WFIT(X0), asm => asm.WFIT(X0), Arm64InstructionId.WFIT_only_systeminstrswithreg, Arm64Mnemonic.WFIT, "WFIT X0");
+        TestInst(WFIT(X15), asm => asm.WFIT(X15), Arm64InstructionId.WFIT_only_systeminstrswithreg, Arm64Mnemonic.WFIT, "WFIT X15");
+        TestInst(WFIT(XZR), asm => asm.WFIT(XZR), Arm64InstructionId.WFIT_only_systeminstrswithreg, Arm64Mnemonic.WFIT, "WFIT XZR");
     }
 }

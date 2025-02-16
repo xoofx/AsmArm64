@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_MOVZ_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVZ_32_movewide_0()
     {
-        TestInst(MOVZ(W0, 5, _LSL, 16), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV W0, #327680");
-        TestInst(MOVZ(W15, 5, _LSL, 16), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV W15, #327680");
-        TestInst(MOVZ(WZR, 5, _LSL, 16), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV WZR, #327680");
+        TestInst(MOVZ(W0, 5, _LSL, 16), asm => asm.MOVZ(W0, 5, _LSL, 16), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV W0, #327680");
+        TestInst(MOVZ(W15, 5, _LSL, 16), asm => asm.MOVZ(W15, 5, _LSL, 16), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV W15, #327680");
+        TestInst(MOVZ(WZR, 5, _LSL, 16), asm => asm.MOVZ(WZR, 5, _LSL, 16), Arm64InstructionId.MOV_movz_32_movewide, Arm64Mnemonic.MOV, "MOV WZR, #327680");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_MOVZ_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVZ_64_movewide_1()
     {
-        TestInst(MOVZ(X0, 5, _LSL, 16), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV X0, #327680");
-        TestInst(MOVZ(X15, 5, _LSL, 16), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV X15, #327680");
-        TestInst(MOVZ(XZR, 5, _LSL, 16), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV XZR, #327680");
+        TestInst(MOVZ(X0, 5, _LSL, 16), asm => asm.MOVZ(X0, 5, _LSL, 16), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV X0, #327680");
+        TestInst(MOVZ(X15, 5, _LSL, 16), asm => asm.MOVZ(X15, 5, _LSL, 16), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV X15, #327680");
+        TestInst(MOVZ(XZR, 5, _LSL, 16), asm => asm.MOVZ(XZR, 5, _LSL, 16), Arm64InstructionId.MOV_movz_64_movewide, Arm64Mnemonic.MOV, "MOV XZR, #327680");
     }
 }

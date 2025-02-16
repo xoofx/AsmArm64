@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_BLRAA_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_BLRAA_64p_branch_reg_0()
     {
-        TestInst(BLRAA(X0, X2), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X0, X2");
-        TestInst(BLRAA(X15, X2), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X15, X2");
-        TestInst(BLRAA(XZR, X2), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA XZR, X2");
-        TestInst(BLRAA(X0, X18), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X0, X18");
-        TestInst(BLRAA(X15, X18), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X15, X18");
-        TestInst(BLRAA(XZR, X18), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA XZR, X18");
-        TestInst(BLRAA(X0, SP), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X0, SP");
-        TestInst(BLRAA(X15, SP), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X15, SP");
-        TestInst(BLRAA(XZR, SP), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA XZR, SP");
+        TestInst(BLRAA(X0, X2), asm => asm.BLRAA(X0, X2), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X0, X2");
+        TestInst(BLRAA(X15, X2), asm => asm.BLRAA(X15, X2), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X15, X2");
+        TestInst(BLRAA(XZR, X2), asm => asm.BLRAA(XZR, X2), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA XZR, X2");
+        TestInst(BLRAA(X0, X18), asm => asm.BLRAA(X0, X18), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X0, X18");
+        TestInst(BLRAA(X15, X18), asm => asm.BLRAA(X15, X18), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X15, X18");
+        TestInst(BLRAA(XZR, X18), asm => asm.BLRAA(XZR, X18), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA XZR, X18");
+        TestInst(BLRAA(X0, SP), asm => asm.BLRAA(X0, SP), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X0, SP");
+        TestInst(BLRAA(X15, SP), asm => asm.BLRAA(X15, SP), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA X15, SP");
+        TestInst(BLRAA(XZR, SP), asm => asm.BLRAA(XZR, SP), Arm64InstructionId.BLRAA_64p_branch_reg, Arm64Mnemonic.BLRAA, "BLRAA XZR, SP");
     }
 }

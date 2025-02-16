@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SUBG_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SUBG_64_addsub_immtags_0()
     {
-        TestInst(SUBG(X1, X2, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X1, X2, #80, #5");
-        TestInst(SUBG(X17, X2, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X17, X2, #80, #5");
-        TestInst(SUBG(SP, X2, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG SP, X2, #80, #5");
-        TestInst(SUBG(X1, X18, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X1, X18, #80, #5");
-        TestInst(SUBG(X17, X18, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X17, X18, #80, #5");
-        TestInst(SUBG(SP, X18, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG SP, X18, #80, #5");
-        TestInst(SUBG(X1, SP, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X1, SP, #80, #5");
-        TestInst(SUBG(X17, SP, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X17, SP, #80, #5");
-        TestInst(SUBG(SP, SP, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG SP, SP, #80, #5");
+        TestInst(SUBG(X1, X2, 80, 5), asm => asm.SUBG(X1, X2, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X1, X2, #80, #5");
+        TestInst(SUBG(X17, X2, 80, 5), asm => asm.SUBG(X17, X2, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X17, X2, #80, #5");
+        TestInst(SUBG(SP, X2, 80, 5), asm => asm.SUBG(SP, X2, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG SP, X2, #80, #5");
+        TestInst(SUBG(X1, X18, 80, 5), asm => asm.SUBG(X1, X18, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X1, X18, #80, #5");
+        TestInst(SUBG(X17, X18, 80, 5), asm => asm.SUBG(X17, X18, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X17, X18, #80, #5");
+        TestInst(SUBG(SP, X18, 80, 5), asm => asm.SUBG(SP, X18, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG SP, X18, #80, #5");
+        TestInst(SUBG(X1, SP, 80, 5), asm => asm.SUBG(X1, SP, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X1, SP, #80, #5");
+        TestInst(SUBG(X17, SP, 80, 5), asm => asm.SUBG(X17, SP, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG X17, SP, #80, #5");
+        TestInst(SUBG(SP, SP, 80, 5), asm => asm.SUBG(SP, SP, 80, 5), Arm64InstructionId.SUBG_64_addsub_immtags, Arm64Mnemonic.SUBG, "SUBG SP, SP, #80, #5");
     }
 }

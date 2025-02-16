@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDSETP_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDSETP_128_memop_128_0()
     {
-        TestInst(LDSETP(X0, X1, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X0, X1, [X3]");
-        TestInst(LDSETP(X15, X1, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X15, X1, [X3]");
-        TestInst(LDSETP(XZR, X1, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP XZR, X1, [X3]");
-        TestInst(LDSETP(X0, X16, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X0, X16, [X3]");
-        TestInst(LDSETP(X15, X16, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X15, X16, [X3]");
-        TestInst(LDSETP(XZR, X16, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP XZR, X16, [X3]");
-        TestInst(LDSETP(X0, XZR, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X0, XZR, [X3]");
-        TestInst(LDSETP(X15, XZR, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X15, XZR, [X3]");
-        TestInst(LDSETP(XZR, XZR, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP XZR, XZR, [X3]");
+        TestInst(LDSETP(X0, X1, _[X3]), asm => asm.LDSETP(X0, X1, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X0, X1, [X3]");
+        TestInst(LDSETP(X15, X1, _[X3]), asm => asm.LDSETP(X15, X1, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X15, X1, [X3]");
+        TestInst(LDSETP(XZR, X1, _[X3]), asm => asm.LDSETP(XZR, X1, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP XZR, X1, [X3]");
+        TestInst(LDSETP(X0, X16, _[X3]), asm => asm.LDSETP(X0, X16, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X0, X16, [X3]");
+        TestInst(LDSETP(X15, X16, _[X3]), asm => asm.LDSETP(X15, X16, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X15, X16, [X3]");
+        TestInst(LDSETP(XZR, X16, _[X3]), asm => asm.LDSETP(XZR, X16, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP XZR, X16, [X3]");
+        TestInst(LDSETP(X0, XZR, _[X3]), asm => asm.LDSETP(X0, XZR, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X0, XZR, [X3]");
+        TestInst(LDSETP(X15, XZR, _[X3]), asm => asm.LDSETP(X15, XZR, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP X15, XZR, [X3]");
+        TestInst(LDSETP(XZR, XZR, _[X3]), asm => asm.LDSETP(XZR, XZR, _[X3]), Arm64InstructionId.LDSETP_128_memop_128, Arm64Mnemonic.LDSETP, "LDSETP XZR, XZR, [X3]");
     }
 }

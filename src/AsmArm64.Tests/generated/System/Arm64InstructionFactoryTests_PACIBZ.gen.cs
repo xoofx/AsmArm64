@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_PACIBZ_System : Arm64InstructionFactor
     [TestMethod]
     public void Test_PACIBZ_hi_hints_0()
     {
-        TestInst(PACIBZ(), Arm64InstructionId.PACIBZ_hi_hints, Arm64Mnemonic.PACIBZ, "PACIBZ");
+        TestInst(PACIBZ(), asm => asm.PACIBZ(), Arm64InstructionId.PACIBZ_hi_hints, Arm64Mnemonic.PACIBZ, "PACIBZ");
     }
 }

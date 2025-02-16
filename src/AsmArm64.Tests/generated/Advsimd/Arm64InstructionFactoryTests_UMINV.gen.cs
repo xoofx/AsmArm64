@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_UMINV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_UMINV_asimdall_only_0()
     {
-        TestInst(UMINV(B1, V1.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V1.8B");
-        TestInst(UMINV(B31, V1.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V1.8B");
-        TestInst(UMINV(B1, V31.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V31.8B");
-        TestInst(UMINV(B31, V31.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V31.8B");
+        TestInst(UMINV(B1, V1.T_8B), asm => asm.UMINV(B1, V1.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V1.8B");
+        TestInst(UMINV(B31, V1.T_8B), asm => asm.UMINV(B31, V1.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V1.8B");
+        TestInst(UMINV(B1, V31.T_8B), asm => asm.UMINV(B1, V31.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V31.8B");
+        TestInst(UMINV(B31, V31.T_8B), asm => asm.UMINV(B31, V31.T_8B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V31.8B");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_UMINV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_UMINV_asimdall_only_1()
     {
-        TestInst(UMINV(B1, V1.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V1.16B");
-        TestInst(UMINV(B31, V1.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V1.16B");
-        TestInst(UMINV(B1, V31.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V31.16B");
-        TestInst(UMINV(B31, V31.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V31.16B");
+        TestInst(UMINV(B1, V1.T_16B), asm => asm.UMINV(B1, V1.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V1.16B");
+        TestInst(UMINV(B31, V1.T_16B), asm => asm.UMINV(B31, V1.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V1.16B");
+        TestInst(UMINV(B1, V31.T_16B), asm => asm.UMINV(B1, V31.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B1, V31.16B");
+        TestInst(UMINV(B31, V31.T_16B), asm => asm.UMINV(B31, V31.T_16B), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV B31, V31.16B");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_UMINV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_UMINV_asimdall_only_2()
     {
-        TestInst(UMINV(H1, V1.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V1.4H");
-        TestInst(UMINV(H31, V1.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V1.4H");
-        TestInst(UMINV(H1, V31.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V31.4H");
-        TestInst(UMINV(H31, V31.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V31.4H");
+        TestInst(UMINV(H1, V1.T_4H), asm => asm.UMINV(H1, V1.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V1.4H");
+        TestInst(UMINV(H31, V1.T_4H), asm => asm.UMINV(H31, V1.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V1.4H");
+        TestInst(UMINV(H1, V31.T_4H), asm => asm.UMINV(H1, V31.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V31.4H");
+        TestInst(UMINV(H31, V31.T_4H), asm => asm.UMINV(H31, V31.T_4H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V31.4H");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_UMINV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_UMINV_asimdall_only_3()
     {
-        TestInst(UMINV(H1, V1.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V1.8H");
-        TestInst(UMINV(H31, V1.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V1.8H");
-        TestInst(UMINV(H1, V31.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V31.8H");
-        TestInst(UMINV(H31, V31.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V31.8H");
+        TestInst(UMINV(H1, V1.T_8H), asm => asm.UMINV(H1, V1.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V1.8H");
+        TestInst(UMINV(H31, V1.T_8H), asm => asm.UMINV(H31, V1.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V1.8H");
+        TestInst(UMINV(H1, V31.T_8H), asm => asm.UMINV(H1, V31.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H1, V31.8H");
+        TestInst(UMINV(H31, V31.T_8H), asm => asm.UMINV(H31, V31.T_8H), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV H31, V31.8H");
     }
     
     /// <summary>
@@ -72,9 +71,9 @@ public class Arm64InstructionFactoryTests_UMINV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_UMINV_asimdall_only_4()
     {
-        TestInst(UMINV(S1, V1.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S1, V1.4S");
-        TestInst(UMINV(S31, V1.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S31, V1.4S");
-        TestInst(UMINV(S1, V31.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S1, V31.4S");
-        TestInst(UMINV(S31, V31.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S31, V31.4S");
+        TestInst(UMINV(S1, V1.T_4S), asm => asm.UMINV(S1, V1.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S1, V1.4S");
+        TestInst(UMINV(S31, V1.T_4S), asm => asm.UMINV(S31, V1.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S31, V1.4S");
+        TestInst(UMINV(S1, V31.T_4S), asm => asm.UMINV(S1, V31.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S1, V31.4S");
+        TestInst(UMINV(S31, V31.T_4S), asm => asm.UMINV(S31, V31.T_4S), Arm64InstructionId.UMINV_asimdall_only, Arm64Mnemonic.UMINV, "UMINV S31, V31.4S");
     }
 }

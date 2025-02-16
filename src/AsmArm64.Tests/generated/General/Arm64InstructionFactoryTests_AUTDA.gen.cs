@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_AUTDA_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_AUTDA_64p_dp_1src_0()
     {
-        TestInst(AUTDA(X0, X2), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X0, X2");
-        TestInst(AUTDA(X15, X2), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X15, X2");
-        TestInst(AUTDA(XZR, X2), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA XZR, X2");
-        TestInst(AUTDA(X0, X18), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X0, X18");
-        TestInst(AUTDA(X15, X18), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X15, X18");
-        TestInst(AUTDA(XZR, X18), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA XZR, X18");
-        TestInst(AUTDA(X0, SP), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X0, SP");
-        TestInst(AUTDA(X15, SP), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X15, SP");
-        TestInst(AUTDA(XZR, SP), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA XZR, SP");
+        TestInst(AUTDA(X0, X2), asm => asm.AUTDA(X0, X2), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X0, X2");
+        TestInst(AUTDA(X15, X2), asm => asm.AUTDA(X15, X2), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X15, X2");
+        TestInst(AUTDA(XZR, X2), asm => asm.AUTDA(XZR, X2), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA XZR, X2");
+        TestInst(AUTDA(X0, X18), asm => asm.AUTDA(X0, X18), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X0, X18");
+        TestInst(AUTDA(X15, X18), asm => asm.AUTDA(X15, X18), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X15, X18");
+        TestInst(AUTDA(XZR, X18), asm => asm.AUTDA(XZR, X18), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA XZR, X18");
+        TestInst(AUTDA(X0, SP), asm => asm.AUTDA(X0, SP), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X0, SP");
+        TestInst(AUTDA(X15, SP), asm => asm.AUTDA(X15, SP), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA X15, SP");
+        TestInst(AUTDA(XZR, SP), asm => asm.AUTDA(XZR, SP), Arm64InstructionId.AUTDA_64p_dp_1src, Arm64Mnemonic.AUTDA, "AUTDA XZR, SP");
     }
 }

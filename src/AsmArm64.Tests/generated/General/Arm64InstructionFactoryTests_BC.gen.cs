@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_BC_General : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_BC_only_condbranch_0()
     {
-        TestInst(BC(NE, 32), Arm64InstructionId.BC_only_condbranch, Arm64Mnemonic.BC, "BC.NE #32");
-        TestInst(BC(HS, 32), Arm64InstructionId.BC_only_condbranch, Arm64Mnemonic.BC, "BC.HS #32");
+        TestInst(BC(NE, 32), null, Arm64InstructionId.BC_only_condbranch, Arm64Mnemonic.BC, "BC.NE #32");
+        TestInst(BC(HS, 32), null, Arm64InstructionId.BC_only_condbranch, Arm64Mnemonic.BC, "BC.HS #32");
     }
 }

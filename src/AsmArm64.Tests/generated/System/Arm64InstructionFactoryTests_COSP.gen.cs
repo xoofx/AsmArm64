@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_COSP_System : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_COSP_sys_cr_systeminstrs_0()
     {
-        TestInst(COSP(RCTX, X1), Arm64InstructionId.COSP_sys_cr_systeminstrs, Arm64Mnemonic.COSP, "COSP RCTX, X1");
-        TestInst(COSP(RCTX, X16), Arm64InstructionId.COSP_sys_cr_systeminstrs, Arm64Mnemonic.COSP, "COSP RCTX, X16");
-        TestInst(COSP(RCTX, XZR), Arm64InstructionId.COSP_sys_cr_systeminstrs, Arm64Mnemonic.COSP, "COSP RCTX, XZR");
+        TestInst(COSP(RCTX, X1), asm => asm.COSP(RCTX, X1), Arm64InstructionId.COSP_sys_cr_systeminstrs, Arm64Mnemonic.COSP, "COSP RCTX, X1");
+        TestInst(COSP(RCTX, X16), asm => asm.COSP(RCTX, X16), Arm64InstructionId.COSP_sys_cr_systeminstrs, Arm64Mnemonic.COSP, "COSP RCTX, X16");
+        TestInst(COSP(RCTX, XZR), asm => asm.COSP(RCTX, XZR), Arm64InstructionId.COSP_sys_cr_systeminstrs, Arm64Mnemonic.COSP, "COSP RCTX, XZR");
     }
 }

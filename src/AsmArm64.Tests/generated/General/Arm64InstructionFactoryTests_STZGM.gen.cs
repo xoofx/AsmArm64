@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STZGM_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_STZGM_64bulk_ldsttags_0()
     {
-        TestInst(STZGM(X0, _[X2]), Arm64InstructionId.STZGM_64bulk_ldsttags, Arm64Mnemonic.STZGM, "STZGM X0, [X2]");
-        TestInst(STZGM(X15, _[X2]), Arm64InstructionId.STZGM_64bulk_ldsttags, Arm64Mnemonic.STZGM, "STZGM X15, [X2]");
-        TestInst(STZGM(XZR, _[X2]), Arm64InstructionId.STZGM_64bulk_ldsttags, Arm64Mnemonic.STZGM, "STZGM XZR, [X2]");
+        TestInst(STZGM(X0, _[X2]), asm => asm.STZGM(X0, _[X2]), Arm64InstructionId.STZGM_64bulk_ldsttags, Arm64Mnemonic.STZGM, "STZGM X0, [X2]");
+        TestInst(STZGM(X15, _[X2]), asm => asm.STZGM(X15, _[X2]), Arm64InstructionId.STZGM_64bulk_ldsttags, Arm64Mnemonic.STZGM, "STZGM X15, [X2]");
+        TestInst(STZGM(XZR, _[X2]), asm => asm.STZGM(XZR, _[X2]), Arm64InstructionId.STZGM_64bulk_ldsttags, Arm64Mnemonic.STZGM, "STZGM XZR, [X2]");
     }
 }

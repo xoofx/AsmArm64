@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STLRH_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_STLRH_sl32_ldstord_0()
     {
-        TestInst(STLRH(W0, _[X2]), Arm64InstructionId.STLRH_sl32_ldstord, Arm64Mnemonic.STLRH, "STLRH W0, [X2]");
-        TestInst(STLRH(W15, _[X2]), Arm64InstructionId.STLRH_sl32_ldstord, Arm64Mnemonic.STLRH, "STLRH W15, [X2]");
-        TestInst(STLRH(WZR, _[X2]), Arm64InstructionId.STLRH_sl32_ldstord, Arm64Mnemonic.STLRH, "STLRH WZR, [X2]");
+        TestInst(STLRH(W0, _[X2]), asm => asm.STLRH(W0, _[X2]), Arm64InstructionId.STLRH_sl32_ldstord, Arm64Mnemonic.STLRH, "STLRH W0, [X2]");
+        TestInst(STLRH(W15, _[X2]), asm => asm.STLRH(W15, _[X2]), Arm64InstructionId.STLRH_sl32_ldstord, Arm64Mnemonic.STLRH, "STLRH W15, [X2]");
+        TestInst(STLRH(WZR, _[X2]), asm => asm.STLRH(WZR, _[X2]), Arm64InstructionId.STLRH_sl32_ldstord, Arm64Mnemonic.STLRH, "STLRH WZR, [X2]");
     }
 }

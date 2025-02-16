@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_CBBGT_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_CBBGT_8_regs_0()
     {
-        TestInst(CBBGT(W0, W1, 32), Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W0, W1, #32");
-        TestInst(CBBGT(W15, W1, 32), Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W15, W1, #32");
-        TestInst(CBBGT(WZR, W1, 32), Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT WZR, W1, #32");
-        TestInst(CBBGT(W0, W16, 32), Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W0, W16, #32");
-        TestInst(CBBGT(W15, W16, 32), Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W15, W16, #32");
-        TestInst(CBBGT(WZR, W16, 32), Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT WZR, W16, #32");
-        TestInst(CBBGT(W0, WZR, 32), Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W0, WZR, #32");
-        TestInst(CBBGT(W15, WZR, 32), Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W15, WZR, #32");
-        TestInst(CBBGT(WZR, WZR, 32), Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT WZR, WZR, #32");
+        TestInst(CBBGT(W0, W1, 32), null, Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W0, W1, #32");
+        TestInst(CBBGT(W15, W1, 32), null, Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W15, W1, #32");
+        TestInst(CBBGT(WZR, W1, 32), null, Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT WZR, W1, #32");
+        TestInst(CBBGT(W0, W16, 32), null, Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W0, W16, #32");
+        TestInst(CBBGT(W15, W16, 32), null, Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W15, W16, #32");
+        TestInst(CBBGT(WZR, W16, 32), null, Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT WZR, W16, #32");
+        TestInst(CBBGT(W0, WZR, 32), null, Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W0, WZR, #32");
+        TestInst(CBBGT(W15, WZR, 32), null, Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT W15, WZR, #32");
+        TestInst(CBBGT(WZR, WZR, 32), null, Arm64InstructionId.CBBGT_8_regs, Arm64Mnemonic.CBBGT, "CBBGT WZR, WZR, #32");
     }
 }

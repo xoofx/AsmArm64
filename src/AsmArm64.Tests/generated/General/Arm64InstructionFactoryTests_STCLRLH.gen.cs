@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STCLRLH_General : Arm64InstructionFact
     [TestMethod]
     public void Test_STCLRLH_ldclrlh_32_memop_0()
     {
-        TestInst(STCLRLH(W0, _[X2]), Arm64InstructionId.STCLRLH_ldclrlh_32_memop, Arm64Mnemonic.STCLRLH, "STCLRLH W0, [X2]");
-        TestInst(STCLRLH(W15, _[X2]), Arm64InstructionId.STCLRLH_ldclrlh_32_memop, Arm64Mnemonic.STCLRLH, "STCLRLH W15, [X2]");
-        TestInst(STCLRLH(WZR, _[X2]), Arm64InstructionId.STCLRLH_ldclrlh_32_memop, Arm64Mnemonic.STCLRLH, "STCLRLH WZR, [X2]");
+        TestInst(STCLRLH(W0, _[X2]), asm => asm.STCLRLH(W0, _[X2]), Arm64InstructionId.STCLRLH_ldclrlh_32_memop, Arm64Mnemonic.STCLRLH, "STCLRLH W0, [X2]");
+        TestInst(STCLRLH(W15, _[X2]), asm => asm.STCLRLH(W15, _[X2]), Arm64InstructionId.STCLRLH_ldclrlh_32_memop, Arm64Mnemonic.STCLRLH, "STCLRLH W15, [X2]");
+        TestInst(STCLRLH(WZR, _[X2]), asm => asm.STCLRLH(WZR, _[X2]), Arm64InstructionId.STCLRLH_ldclrlh_32_memop, Arm64Mnemonic.STCLRLH, "STCLRLH WZR, [X2]");
     }
 }

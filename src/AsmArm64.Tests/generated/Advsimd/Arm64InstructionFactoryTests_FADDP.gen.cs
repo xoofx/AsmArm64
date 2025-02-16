@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FADDP_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FADDP_asisdpair_only_h_0()
     {
-        TestInst(FADDP(H0, V1.T_2H), Arm64InstructionId.FADDP_asisdpair_only_h, Arm64Mnemonic.FADDP, "FADDP H0, V1.2H");
-        TestInst(FADDP(H31, V1.T_2H), Arm64InstructionId.FADDP_asisdpair_only_h, Arm64Mnemonic.FADDP, "FADDP H31, V1.2H");
-        TestInst(FADDP(H0, V31.T_2H), Arm64InstructionId.FADDP_asisdpair_only_h, Arm64Mnemonic.FADDP, "FADDP H0, V31.2H");
-        TestInst(FADDP(H31, V31.T_2H), Arm64InstructionId.FADDP_asisdpair_only_h, Arm64Mnemonic.FADDP, "FADDP H31, V31.2H");
+        TestInst(FADDP(H0, V1.T_2H), asm => asm.FADDP(H0, V1.T_2H), Arm64InstructionId.FADDP_asisdpair_only_h, Arm64Mnemonic.FADDP, "FADDP H0, V1.2H");
+        TestInst(FADDP(H31, V1.T_2H), asm => asm.FADDP(H31, V1.T_2H), Arm64InstructionId.FADDP_asisdpair_only_h, Arm64Mnemonic.FADDP, "FADDP H31, V1.2H");
+        TestInst(FADDP(H0, V31.T_2H), asm => asm.FADDP(H0, V31.T_2H), Arm64InstructionId.FADDP_asisdpair_only_h, Arm64Mnemonic.FADDP, "FADDP H0, V31.2H");
+        TestInst(FADDP(H31, V31.T_2H), asm => asm.FADDP(H31, V31.T_2H), Arm64InstructionId.FADDP_asisdpair_only_h, Arm64Mnemonic.FADDP, "FADDP H31, V31.2H");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FADDP_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FADDP_asisdpair_only_sd_1()
     {
-        TestInst(FADDP(S1, V1.T_2S), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP S1, V1.2S");
-        TestInst(FADDP(S31, V1.T_2S), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP S31, V1.2S");
-        TestInst(FADDP(S1, V31.T_2S), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP S1, V31.2S");
-        TestInst(FADDP(S31, V31.T_2S), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP S31, V31.2S");
+        TestInst(FADDP(S1, V1.T_2S), asm => asm.FADDP(S1, V1.T_2S), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP S1, V1.2S");
+        TestInst(FADDP(S31, V1.T_2S), asm => asm.FADDP(S31, V1.T_2S), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP S31, V1.2S");
+        TestInst(FADDP(S1, V31.T_2S), asm => asm.FADDP(S1, V31.T_2S), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP S1, V31.2S");
+        TestInst(FADDP(S31, V31.T_2S), asm => asm.FADDP(S31, V31.T_2S), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP S31, V31.2S");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_FADDP_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FADDP_asisdpair_only_sd_2()
     {
-        TestInst(FADDP(D1, V1.T_2D), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP D1, V1.2D");
-        TestInst(FADDP(D31, V1.T_2D), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP D31, V1.2D");
-        TestInst(FADDP(D1, V31.T_2D), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP D1, V31.2D");
-        TestInst(FADDP(D31, V31.T_2D), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP D31, V31.2D");
+        TestInst(FADDP(D1, V1.T_2D), asm => asm.FADDP(D1, V1.T_2D), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP D1, V1.2D");
+        TestInst(FADDP(D31, V1.T_2D), asm => asm.FADDP(D31, V1.T_2D), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP D31, V1.2D");
+        TestInst(FADDP(D1, V31.T_2D), asm => asm.FADDP(D1, V31.T_2D), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP D1, V31.2D");
+        TestInst(FADDP(D31, V31.T_2D), asm => asm.FADDP(D31, V31.T_2D), Arm64InstructionId.FADDP_asisdpair_only_sd, Arm64Mnemonic.FADDP, "FADDP D31, V31.2D");
     }
     
     /// <summary>
@@ -60,14 +59,14 @@ public class Arm64InstructionFactoryTests_FADDP_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FADDP_asimdsamefp16_only_3()
     {
-        TestInst(FADDP(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.4H, V1.4H, V2.4H");
-        TestInst(FADDP(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.4H, V1.4H, V2.4H");
-        TestInst(FADDP(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.4H, V31.4H, V2.4H");
-        TestInst(FADDP(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.4H, V31.4H, V2.4H");
-        TestInst(FADDP(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.4H, V1.4H, V0.4H");
-        TestInst(FADDP(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.4H, V1.4H, V0.4H");
-        TestInst(FADDP(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.4H, V31.4H, V0.4H");
-        TestInst(FADDP(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.4H, V31.4H, V0.4H");
+        TestInst(FADDP(V0.T_4H, V1.T_4H, V2.T_4H), asm => asm.FADDP(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.4H, V1.4H, V2.4H");
+        TestInst(FADDP(V30.T_4H, V1.T_4H, V2.T_4H), asm => asm.FADDP(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.4H, V1.4H, V2.4H");
+        TestInst(FADDP(V0.T_4H, V31.T_4H, V2.T_4H), asm => asm.FADDP(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.4H, V31.4H, V2.4H");
+        TestInst(FADDP(V30.T_4H, V31.T_4H, V2.T_4H), asm => asm.FADDP(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.4H, V31.4H, V2.4H");
+        TestInst(FADDP(V0.T_4H, V1.T_4H, V0.T_4H), asm => asm.FADDP(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.4H, V1.4H, V0.4H");
+        TestInst(FADDP(V30.T_4H, V1.T_4H, V0.T_4H), asm => asm.FADDP(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.4H, V1.4H, V0.4H");
+        TestInst(FADDP(V0.T_4H, V31.T_4H, V0.T_4H), asm => asm.FADDP(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.4H, V31.4H, V0.4H");
+        TestInst(FADDP(V30.T_4H, V31.T_4H, V0.T_4H), asm => asm.FADDP(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.4H, V31.4H, V0.4H");
     }
     
     /// <summary>
@@ -76,14 +75,14 @@ public class Arm64InstructionFactoryTests_FADDP_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FADDP_asimdsamefp16_only_4()
     {
-        TestInst(FADDP(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.8H, V1.8H, V2.8H");
-        TestInst(FADDP(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.8H, V1.8H, V2.8H");
-        TestInst(FADDP(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.8H, V31.8H, V2.8H");
-        TestInst(FADDP(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.8H, V31.8H, V2.8H");
-        TestInst(FADDP(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.8H, V1.8H, V0.8H");
-        TestInst(FADDP(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.8H, V1.8H, V0.8H");
-        TestInst(FADDP(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.8H, V31.8H, V0.8H");
-        TestInst(FADDP(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.8H, V31.8H, V0.8H");
+        TestInst(FADDP(V0.T_8H, V1.T_8H, V2.T_8H), asm => asm.FADDP(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.8H, V1.8H, V2.8H");
+        TestInst(FADDP(V30.T_8H, V1.T_8H, V2.T_8H), asm => asm.FADDP(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.8H, V1.8H, V2.8H");
+        TestInst(FADDP(V0.T_8H, V31.T_8H, V2.T_8H), asm => asm.FADDP(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.8H, V31.8H, V2.8H");
+        TestInst(FADDP(V30.T_8H, V31.T_8H, V2.T_8H), asm => asm.FADDP(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.8H, V31.8H, V2.8H");
+        TestInst(FADDP(V0.T_8H, V1.T_8H, V0.T_8H), asm => asm.FADDP(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.8H, V1.8H, V0.8H");
+        TestInst(FADDP(V30.T_8H, V1.T_8H, V0.T_8H), asm => asm.FADDP(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.8H, V1.8H, V0.8H");
+        TestInst(FADDP(V0.T_8H, V31.T_8H, V0.T_8H), asm => asm.FADDP(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V0.8H, V31.8H, V0.8H");
+        TestInst(FADDP(V30.T_8H, V31.T_8H, V0.T_8H), asm => asm.FADDP(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FADDP_asimdsamefp16_only, Arm64Mnemonic.FADDP, "FADDP V30.8H, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -92,14 +91,14 @@ public class Arm64InstructionFactoryTests_FADDP_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FADDP_asimdsame_only_5()
     {
-        TestInst(FADDP(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2S, V1.2S, V2.2S");
-        TestInst(FADDP(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2S, V1.2S, V2.2S");
-        TestInst(FADDP(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2S, V31.2S, V2.2S");
-        TestInst(FADDP(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2S, V31.2S, V2.2S");
-        TestInst(FADDP(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2S, V1.2S, V0.2S");
-        TestInst(FADDP(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2S, V1.2S, V0.2S");
-        TestInst(FADDP(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2S, V31.2S, V0.2S");
-        TestInst(FADDP(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2S, V31.2S, V0.2S");
+        TestInst(FADDP(V0.T_2S, V1.T_2S, V2.T_2S), asm => asm.FADDP(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2S, V1.2S, V2.2S");
+        TestInst(FADDP(V30.T_2S, V1.T_2S, V2.T_2S), asm => asm.FADDP(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2S, V1.2S, V2.2S");
+        TestInst(FADDP(V0.T_2S, V31.T_2S, V2.T_2S), asm => asm.FADDP(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2S, V31.2S, V2.2S");
+        TestInst(FADDP(V30.T_2S, V31.T_2S, V2.T_2S), asm => asm.FADDP(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2S, V31.2S, V2.2S");
+        TestInst(FADDP(V0.T_2S, V1.T_2S, V0.T_2S), asm => asm.FADDP(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2S, V1.2S, V0.2S");
+        TestInst(FADDP(V30.T_2S, V1.T_2S, V0.T_2S), asm => asm.FADDP(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2S, V1.2S, V0.2S");
+        TestInst(FADDP(V0.T_2S, V31.T_2S, V0.T_2S), asm => asm.FADDP(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2S, V31.2S, V0.2S");
+        TestInst(FADDP(V30.T_2S, V31.T_2S, V0.T_2S), asm => asm.FADDP(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2S, V31.2S, V0.2S");
     }
     
     /// <summary>
@@ -108,14 +107,14 @@ public class Arm64InstructionFactoryTests_FADDP_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FADDP_asimdsame_only_6()
     {
-        TestInst(FADDP(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.4S, V1.4S, V2.4S");
-        TestInst(FADDP(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.4S, V1.4S, V2.4S");
-        TestInst(FADDP(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.4S, V31.4S, V2.4S");
-        TestInst(FADDP(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.4S, V31.4S, V2.4S");
-        TestInst(FADDP(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.4S, V1.4S, V0.4S");
-        TestInst(FADDP(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.4S, V1.4S, V0.4S");
-        TestInst(FADDP(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.4S, V31.4S, V0.4S");
-        TestInst(FADDP(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.4S, V31.4S, V0.4S");
+        TestInst(FADDP(V0.T_4S, V1.T_4S, V2.T_4S), asm => asm.FADDP(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.4S, V1.4S, V2.4S");
+        TestInst(FADDP(V30.T_4S, V1.T_4S, V2.T_4S), asm => asm.FADDP(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.4S, V1.4S, V2.4S");
+        TestInst(FADDP(V0.T_4S, V31.T_4S, V2.T_4S), asm => asm.FADDP(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.4S, V31.4S, V2.4S");
+        TestInst(FADDP(V30.T_4S, V31.T_4S, V2.T_4S), asm => asm.FADDP(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.4S, V31.4S, V2.4S");
+        TestInst(FADDP(V0.T_4S, V1.T_4S, V0.T_4S), asm => asm.FADDP(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.4S, V1.4S, V0.4S");
+        TestInst(FADDP(V30.T_4S, V1.T_4S, V0.T_4S), asm => asm.FADDP(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.4S, V1.4S, V0.4S");
+        TestInst(FADDP(V0.T_4S, V31.T_4S, V0.T_4S), asm => asm.FADDP(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.4S, V31.4S, V0.4S");
+        TestInst(FADDP(V30.T_4S, V31.T_4S, V0.T_4S), asm => asm.FADDP(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.4S, V31.4S, V0.4S");
     }
     
     /// <summary>
@@ -124,13 +123,13 @@ public class Arm64InstructionFactoryTests_FADDP_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FADDP_asimdsame_only_7()
     {
-        TestInst(FADDP(V0.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2D, V1.2D, V2.2D");
-        TestInst(FADDP(V30.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2D, V1.2D, V2.2D");
-        TestInst(FADDP(V0.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2D, V31.2D, V2.2D");
-        TestInst(FADDP(V30.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2D, V31.2D, V2.2D");
-        TestInst(FADDP(V0.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2D, V1.2D, V0.2D");
-        TestInst(FADDP(V30.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2D, V1.2D, V0.2D");
-        TestInst(FADDP(V0.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2D, V31.2D, V0.2D");
-        TestInst(FADDP(V30.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2D, V31.2D, V0.2D");
+        TestInst(FADDP(V0.T_2D, V1.T_2D, V2.T_2D), asm => asm.FADDP(V0.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2D, V1.2D, V2.2D");
+        TestInst(FADDP(V30.T_2D, V1.T_2D, V2.T_2D), asm => asm.FADDP(V30.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2D, V1.2D, V2.2D");
+        TestInst(FADDP(V0.T_2D, V31.T_2D, V2.T_2D), asm => asm.FADDP(V0.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2D, V31.2D, V2.2D");
+        TestInst(FADDP(V30.T_2D, V31.T_2D, V2.T_2D), asm => asm.FADDP(V30.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2D, V31.2D, V2.2D");
+        TestInst(FADDP(V0.T_2D, V1.T_2D, V0.T_2D), asm => asm.FADDP(V0.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2D, V1.2D, V0.2D");
+        TestInst(FADDP(V30.T_2D, V1.T_2D, V0.T_2D), asm => asm.FADDP(V30.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2D, V1.2D, V0.2D");
+        TestInst(FADDP(V0.T_2D, V31.T_2D, V0.T_2D), asm => asm.FADDP(V0.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V0.2D, V31.2D, V0.2D");
+        TestInst(FADDP(V30.T_2D, V31.T_2D, V0.T_2D), asm => asm.FADDP(V30.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FADDP_asimdsame_only, Arm64Mnemonic.FADDP, "FADDP V30.2D, V31.2D, V0.2D");
     }
 }

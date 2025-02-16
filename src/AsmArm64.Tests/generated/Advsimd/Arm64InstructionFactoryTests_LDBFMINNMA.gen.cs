@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDBFMINNMA_Advsimd : Arm64InstructionF
     [TestMethod]
     public void Test_LDBFMINNMA_16_0()
     {
-        TestInst(LDBFMINNMA(H0, H1, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H0, H1, [X3]");
-        TestInst(LDBFMINNMA(H31, H1, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H31, H1, [X3]");
-        TestInst(LDBFMINNMA(H0, H31, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H0, H31, [X3]");
-        TestInst(LDBFMINNMA(H31, H31, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H31, H31, [X3]");
+        TestInst(LDBFMINNMA(H0, H1, _[X3]), asm => asm.LDBFMINNMA(H0, H1, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H0, H1, [X3]");
+        TestInst(LDBFMINNMA(H31, H1, _[X3]), asm => asm.LDBFMINNMA(H31, H1, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H31, H1, [X3]");
+        TestInst(LDBFMINNMA(H0, H31, _[X3]), asm => asm.LDBFMINNMA(H0, H31, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H0, H31, [X3]");
+        TestInst(LDBFMINNMA(H31, H31, _[X3]), asm => asm.LDBFMINNMA(H31, H31, _[X3]), Arm64InstructionId.LDBFMINNMA_16, Arm64Mnemonic.LDBFMINNMA, "LDBFMINNMA H31, H31, [X3]");
     }
 }

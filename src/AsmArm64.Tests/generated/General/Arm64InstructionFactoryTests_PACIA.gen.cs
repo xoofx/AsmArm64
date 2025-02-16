@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_PACIA_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_PACIA_64p_dp_1src_0()
     {
-        TestInst(PACIA(X0, X2), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X0, X2");
-        TestInst(PACIA(X15, X2), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X15, X2");
-        TestInst(PACIA(XZR, X2), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA XZR, X2");
-        TestInst(PACIA(X0, X18), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X0, X18");
-        TestInst(PACIA(X15, X18), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X15, X18");
-        TestInst(PACIA(XZR, X18), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA XZR, X18");
-        TestInst(PACIA(X0, SP), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X0, SP");
-        TestInst(PACIA(X15, SP), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X15, SP");
-        TestInst(PACIA(XZR, SP), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA XZR, SP");
+        TestInst(PACIA(X0, X2), asm => asm.PACIA(X0, X2), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X0, X2");
+        TestInst(PACIA(X15, X2), asm => asm.PACIA(X15, X2), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X15, X2");
+        TestInst(PACIA(XZR, X2), asm => asm.PACIA(XZR, X2), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA XZR, X2");
+        TestInst(PACIA(X0, X18), asm => asm.PACIA(X0, X18), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X0, X18");
+        TestInst(PACIA(X15, X18), asm => asm.PACIA(X15, X18), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X15, X18");
+        TestInst(PACIA(XZR, X18), asm => asm.PACIA(XZR, X18), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA XZR, X18");
+        TestInst(PACIA(X0, SP), asm => asm.PACIA(X0, SP), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X0, SP");
+        TestInst(PACIA(X15, SP), asm => asm.PACIA(X15, SP), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA X15, SP");
+        TestInst(PACIA(XZR, SP), asm => asm.PACIA(XZR, SP), Arm64InstructionId.PACIA_64p_dp_1src, Arm64Mnemonic.PACIA, "PACIA XZR, SP");
     }
 }

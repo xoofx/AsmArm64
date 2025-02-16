@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STFMAXL_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_STFMAXL_16_0()
     {
-        TestInst(STFMAXL(H0, _[X2]), Arm64InstructionId.STFMAXL_16, Arm64Mnemonic.STFMAXL, "STFMAXL H0, [X2]");
-        TestInst(STFMAXL(H31, _[X2]), Arm64InstructionId.STFMAXL_16, Arm64Mnemonic.STFMAXL, "STFMAXL H31, [X2]");
+        TestInst(STFMAXL(H0, _[X2]), asm => asm.STFMAXL(H0, _[X2]), Arm64InstructionId.STFMAXL_16, Arm64Mnemonic.STFMAXL, "STFMAXL H0, [X2]");
+        TestInst(STFMAXL(H31, _[X2]), asm => asm.STFMAXL(H31, _[X2]), Arm64InstructionId.STFMAXL_16, Arm64Mnemonic.STFMAXL, "STFMAXL H31, [X2]");
     }
     
     /// <summary>
@@ -34,8 +33,8 @@ public class Arm64InstructionFactoryTests_STFMAXL_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_STFMAXL_32_1()
     {
-        TestInst(STFMAXL(S0, _[X2]), Arm64InstructionId.STFMAXL_32, Arm64Mnemonic.STFMAXL, "STFMAXL S0, [X2]");
-        TestInst(STFMAXL(S31, _[X2]), Arm64InstructionId.STFMAXL_32, Arm64Mnemonic.STFMAXL, "STFMAXL S31, [X2]");
+        TestInst(STFMAXL(S0, _[X2]), asm => asm.STFMAXL(S0, _[X2]), Arm64InstructionId.STFMAXL_32, Arm64Mnemonic.STFMAXL, "STFMAXL S0, [X2]");
+        TestInst(STFMAXL(S31, _[X2]), asm => asm.STFMAXL(S31, _[X2]), Arm64InstructionId.STFMAXL_32, Arm64Mnemonic.STFMAXL, "STFMAXL S31, [X2]");
     }
     
     /// <summary>
@@ -44,7 +43,7 @@ public class Arm64InstructionFactoryTests_STFMAXL_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_STFMAXL_64_2()
     {
-        TestInst(STFMAXL(D0, _[X2]), Arm64InstructionId.STFMAXL_64, Arm64Mnemonic.STFMAXL, "STFMAXL D0, [X2]");
-        TestInst(STFMAXL(D31, _[X2]), Arm64InstructionId.STFMAXL_64, Arm64Mnemonic.STFMAXL, "STFMAXL D31, [X2]");
+        TestInst(STFMAXL(D0, _[X2]), asm => asm.STFMAXL(D0, _[X2]), Arm64InstructionId.STFMAXL_64, Arm64Mnemonic.STFMAXL, "STFMAXL D0, [X2]");
+        TestInst(STFMAXL(D31, _[X2]), asm => asm.STFMAXL(D31, _[X2]), Arm64InstructionId.STFMAXL_64, Arm64Mnemonic.STFMAXL, "STFMAXL D31, [X2]");
     }
 }

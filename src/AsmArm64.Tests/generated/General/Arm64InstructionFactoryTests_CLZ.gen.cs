@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_CLZ_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CLZ_32_dp_1src_0()
     {
-        TestInst(CLZ(W0, W1), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W0, W1");
-        TestInst(CLZ(W15, W1), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W15, W1");
-        TestInst(CLZ(WZR, W1), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ WZR, W1");
-        TestInst(CLZ(W0, W16), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W0, W16");
-        TestInst(CLZ(W15, W16), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W15, W16");
-        TestInst(CLZ(WZR, W16), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ WZR, W16");
-        TestInst(CLZ(W0, WZR), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W0, WZR");
-        TestInst(CLZ(W15, WZR), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W15, WZR");
-        TestInst(CLZ(WZR, WZR), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ WZR, WZR");
+        TestInst(CLZ(W0, W1), asm => asm.CLZ(W0, W1), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W0, W1");
+        TestInst(CLZ(W15, W1), asm => asm.CLZ(W15, W1), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W15, W1");
+        TestInst(CLZ(WZR, W1), asm => asm.CLZ(WZR, W1), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ WZR, W1");
+        TestInst(CLZ(W0, W16), asm => asm.CLZ(W0, W16), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W0, W16");
+        TestInst(CLZ(W15, W16), asm => asm.CLZ(W15, W16), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W15, W16");
+        TestInst(CLZ(WZR, W16), asm => asm.CLZ(WZR, W16), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ WZR, W16");
+        TestInst(CLZ(W0, WZR), asm => asm.CLZ(W0, WZR), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W0, WZR");
+        TestInst(CLZ(W15, WZR), asm => asm.CLZ(W15, WZR), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ W15, WZR");
+        TestInst(CLZ(WZR, WZR), asm => asm.CLZ(WZR, WZR), Arm64InstructionId.CLZ_32_dp_1src, Arm64Mnemonic.CLZ, "CLZ WZR, WZR");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_CLZ_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CLZ_64_dp_1src_1()
     {
-        TestInst(CLZ(X0, X1), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X0, X1");
-        TestInst(CLZ(X15, X1), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X15, X1");
-        TestInst(CLZ(XZR, X1), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ XZR, X1");
-        TestInst(CLZ(X0, X16), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X0, X16");
-        TestInst(CLZ(X15, X16), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X15, X16");
-        TestInst(CLZ(XZR, X16), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ XZR, X16");
-        TestInst(CLZ(X0, XZR), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X0, XZR");
-        TestInst(CLZ(X15, XZR), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X15, XZR");
-        TestInst(CLZ(XZR, XZR), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ XZR, XZR");
+        TestInst(CLZ(X0, X1), asm => asm.CLZ(X0, X1), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X0, X1");
+        TestInst(CLZ(X15, X1), asm => asm.CLZ(X15, X1), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X15, X1");
+        TestInst(CLZ(XZR, X1), asm => asm.CLZ(XZR, X1), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ XZR, X1");
+        TestInst(CLZ(X0, X16), asm => asm.CLZ(X0, X16), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X0, X16");
+        TestInst(CLZ(X15, X16), asm => asm.CLZ(X15, X16), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X15, X16");
+        TestInst(CLZ(XZR, X16), asm => asm.CLZ(XZR, X16), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ XZR, X16");
+        TestInst(CLZ(X0, XZR), asm => asm.CLZ(X0, XZR), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X0, XZR");
+        TestInst(CLZ(X15, XZR), asm => asm.CLZ(X15, XZR), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ X15, XZR");
+        TestInst(CLZ(XZR, XZR), asm => asm.CLZ(XZR, XZR), Arm64InstructionId.CLZ_64_dp_1src, Arm64Mnemonic.CLZ, "CLZ XZR, XZR");
     }
 }

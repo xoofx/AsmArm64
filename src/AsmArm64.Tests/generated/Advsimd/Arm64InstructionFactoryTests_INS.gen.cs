@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_INS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_INS_asimdins_iv_v_0()
     {
-        TestInst(INS(V0.B[0], V1.B[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.B[0], V1.B[0]");
-        TestInst(INS(V30.B[1], V1.B[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.B[1], V1.B[0]");
-        TestInst(INS(V0.B[0], V31.B[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.B[0], V31.B[1]");
-        TestInst(INS(V30.B[1], V31.B[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.B[1], V31.B[1]");
+        TestInst(INS(V0.B[0], V1.B[0]), asm => asm.INS(V0.B[0], V1.B[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.B[0], V1.B[0]");
+        TestInst(INS(V30.B[1], V1.B[0]), asm => asm.INS(V30.B[1], V1.B[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.B[1], V1.B[0]");
+        TestInst(INS(V0.B[0], V31.B[1]), asm => asm.INS(V0.B[0], V31.B[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.B[0], V31.B[1]");
+        TestInst(INS(V30.B[1], V31.B[1]), asm => asm.INS(V30.B[1], V31.B[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.B[1], V31.B[1]");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_INS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_INS_asimdins_iv_v_1()
     {
-        TestInst(INS(V0.H[0], V1.H[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.H[0], V1.H[0]");
-        TestInst(INS(V30.H[1], V1.H[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.H[1], V1.H[0]");
-        TestInst(INS(V0.H[0], V31.H[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.H[0], V31.H[1]");
-        TestInst(INS(V30.H[1], V31.H[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.H[1], V31.H[1]");
+        TestInst(INS(V0.H[0], V1.H[0]), asm => asm.INS(V0.H[0], V1.H[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.H[0], V1.H[0]");
+        TestInst(INS(V30.H[1], V1.H[0]), asm => asm.INS(V30.H[1], V1.H[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.H[1], V1.H[0]");
+        TestInst(INS(V0.H[0], V31.H[1]), asm => asm.INS(V0.H[0], V31.H[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.H[0], V31.H[1]");
+        TestInst(INS(V30.H[1], V31.H[1]), asm => asm.INS(V30.H[1], V31.H[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.H[1], V31.H[1]");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_INS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_INS_asimdins_iv_v_2()
     {
-        TestInst(INS(V0.S[0], V1.S[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.S[0], V1.S[0]");
-        TestInst(INS(V30.S[1], V1.S[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.S[1], V1.S[0]");
-        TestInst(INS(V0.S[0], V31.S[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.S[0], V31.S[1]");
-        TestInst(INS(V30.S[1], V31.S[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.S[1], V31.S[1]");
+        TestInst(INS(V0.S[0], V1.S[0]), asm => asm.INS(V0.S[0], V1.S[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.S[0], V1.S[0]");
+        TestInst(INS(V30.S[1], V1.S[0]), asm => asm.INS(V30.S[1], V1.S[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.S[1], V1.S[0]");
+        TestInst(INS(V0.S[0], V31.S[1]), asm => asm.INS(V0.S[0], V31.S[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.S[0], V31.S[1]");
+        TestInst(INS(V30.S[1], V31.S[1]), asm => asm.INS(V30.S[1], V31.S[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.S[1], V31.S[1]");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_INS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_INS_asimdins_iv_v_3()
     {
-        TestInst(INS(V0.D[0], V1.D[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.D[0], V1.D[0]");
-        TestInst(INS(V30.D[1], V1.D[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.D[1], V1.D[0]");
-        TestInst(INS(V0.D[0], V31.D[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.D[0], V31.D[1]");
-        TestInst(INS(V30.D[1], V31.D[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.D[1], V31.D[1]");
+        TestInst(INS(V0.D[0], V1.D[0]), asm => asm.INS(V0.D[0], V1.D[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.D[0], V1.D[0]");
+        TestInst(INS(V30.D[1], V1.D[0]), asm => asm.INS(V30.D[1], V1.D[0]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.D[1], V1.D[0]");
+        TestInst(INS(V0.D[0], V31.D[1]), asm => asm.INS(V0.D[0], V31.D[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V0.D[0], V31.D[1]");
+        TestInst(INS(V30.D[1], V31.D[1]), asm => asm.INS(V30.D[1], V31.D[1]), Arm64InstructionId.MOV_ins_asimdins_iv_v, Arm64Mnemonic.MOV, "MOV V30.D[1], V31.D[1]");
     }
     
     /// <summary>
@@ -72,10 +71,10 @@ public class Arm64InstructionFactoryTests_INS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_INS_asimdins_ir_r_4()
     {
-        TestInst(INS(V0.B[0], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.B[0], W2");
-        TestInst(INS(V30.B[1], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.B[1], W2");
-        TestInst(INS(V0.B[0], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.B[0], WZR");
-        TestInst(INS(V30.B[1], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.B[1], WZR");
+        TestInst(INS(V0.B[0], W2), asm => asm.INS(V0.B[0], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.B[0], W2");
+        TestInst(INS(V30.B[1], W2), asm => asm.INS(V30.B[1], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.B[1], W2");
+        TestInst(INS(V0.B[0], WZR), asm => asm.INS(V0.B[0], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.B[0], WZR");
+        TestInst(INS(V30.B[1], WZR), asm => asm.INS(V30.B[1], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.B[1], WZR");
     }
     
     /// <summary>
@@ -84,10 +83,10 @@ public class Arm64InstructionFactoryTests_INS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_INS_asimdins_ir_r_5()
     {
-        TestInst(INS(V0.H[0], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.H[0], W2");
-        TestInst(INS(V30.H[1], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.H[1], W2");
-        TestInst(INS(V0.H[0], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.H[0], WZR");
-        TestInst(INS(V30.H[1], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.H[1], WZR");
+        TestInst(INS(V0.H[0], W2), asm => asm.INS(V0.H[0], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.H[0], W2");
+        TestInst(INS(V30.H[1], W2), asm => asm.INS(V30.H[1], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.H[1], W2");
+        TestInst(INS(V0.H[0], WZR), asm => asm.INS(V0.H[0], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.H[0], WZR");
+        TestInst(INS(V30.H[1], WZR), asm => asm.INS(V30.H[1], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.H[1], WZR");
     }
     
     /// <summary>
@@ -96,10 +95,10 @@ public class Arm64InstructionFactoryTests_INS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_INS_asimdins_ir_r_6()
     {
-        TestInst(INS(V0.S[0], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.S[0], W2");
-        TestInst(INS(V30.S[1], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.S[1], W2");
-        TestInst(INS(V0.S[0], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.S[0], WZR");
-        TestInst(INS(V30.S[1], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.S[1], WZR");
+        TestInst(INS(V0.S[0], W2), asm => asm.INS(V0.S[0], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.S[0], W2");
+        TestInst(INS(V30.S[1], W2), asm => asm.INS(V30.S[1], W2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.S[1], W2");
+        TestInst(INS(V0.S[0], WZR), asm => asm.INS(V0.S[0], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.S[0], WZR");
+        TestInst(INS(V30.S[1], WZR), asm => asm.INS(V30.S[1], WZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.S[1], WZR");
     }
     
     /// <summary>
@@ -108,9 +107,9 @@ public class Arm64InstructionFactoryTests_INS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_INS_asimdins_ir_r_7()
     {
-        TestInst(INS(V0.D[0], X2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.D[0], X2");
-        TestInst(INS(V30.D[1], X2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.D[1], X2");
-        TestInst(INS(V0.D[0], XZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.D[0], XZR");
-        TestInst(INS(V30.D[1], XZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.D[1], XZR");
+        TestInst(INS(V0.D[0], X2), asm => asm.INS(V0.D[0], X2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.D[0], X2");
+        TestInst(INS(V30.D[1], X2), asm => asm.INS(V30.D[1], X2), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.D[1], X2");
+        TestInst(INS(V0.D[0], XZR), asm => asm.INS(V0.D[0], XZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V0.D[0], XZR");
+        TestInst(INS(V30.D[1], XZR), asm => asm.INS(V30.D[1], XZR), Arm64InstructionId.MOV_ins_asimdins_ir_r, Arm64Mnemonic.MOV, "MOV V30.D[1], XZR");
     }
 }

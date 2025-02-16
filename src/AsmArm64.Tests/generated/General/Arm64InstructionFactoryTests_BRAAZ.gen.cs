@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_BRAAZ_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_BRAAZ_64_branch_reg_0()
     {
-        TestInst(BRAAZ(X0), Arm64InstructionId.BRAAZ_64_branch_reg, Arm64Mnemonic.BRAAZ, "BRAAZ X0");
-        TestInst(BRAAZ(X15), Arm64InstructionId.BRAAZ_64_branch_reg, Arm64Mnemonic.BRAAZ, "BRAAZ X15");
-        TestInst(BRAAZ(XZR), Arm64InstructionId.BRAAZ_64_branch_reg, Arm64Mnemonic.BRAAZ, "BRAAZ XZR");
+        TestInst(BRAAZ(X0), asm => asm.BRAAZ(X0), Arm64InstructionId.BRAAZ_64_branch_reg, Arm64Mnemonic.BRAAZ, "BRAAZ X0");
+        TestInst(BRAAZ(X15), asm => asm.BRAAZ(X15), Arm64InstructionId.BRAAZ_64_branch_reg, Arm64Mnemonic.BRAAZ, "BRAAZ X15");
+        TestInst(BRAAZ(XZR), asm => asm.BRAAZ(XZR), Arm64InstructionId.BRAAZ_64_branch_reg, Arm64Mnemonic.BRAAZ, "BRAAZ XZR");
     }
 }

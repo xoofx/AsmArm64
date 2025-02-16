@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_DCPS3_System : Arm64InstructionFactory
     [TestMethod]
     public void Test_DCPS3_dc_exception_0()
     {
-        TestInst(DCPS3(5), Arm64InstructionId.DCPS3_dc_exception, Arm64Mnemonic.DCPS3, "DCPS3 #5");
+        TestInst(DCPS3(5), asm => asm.DCPS3(5), Arm64InstructionId.DCPS3_dc_exception, Arm64Mnemonic.DCPS3, "DCPS3 #5");
     }
 }

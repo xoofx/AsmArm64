@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_BIC_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BIC_asimdimm_l_hl_0()
     {
-        TestInst(BIC(V0.T_4H, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_hl, Arm64Mnemonic.BIC, "BIC V0.4H, #5, LSL #8");
-        TestInst(BIC(V30.T_4H, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_hl, Arm64Mnemonic.BIC, "BIC V30.4H, #5, LSL #8");
+        TestInst(BIC(V0.T_4H, 5, _LSL, 8), asm => asm.BIC(V0.T_4H, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_hl, Arm64Mnemonic.BIC, "BIC V0.4H, #5, LSL #8");
+        TestInst(BIC(V30.T_4H, 5, _LSL, 8), asm => asm.BIC(V30.T_4H, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_hl, Arm64Mnemonic.BIC, "BIC V30.4H, #5, LSL #8");
     }
     
     /// <summary>
@@ -34,8 +33,8 @@ public class Arm64InstructionFactoryTests_BIC_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BIC_asimdimm_l_hl_1()
     {
-        TestInst(BIC(V0.T_8H, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_hl, Arm64Mnemonic.BIC, "BIC V0.8H, #5, LSL #8");
-        TestInst(BIC(V30.T_8H, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_hl, Arm64Mnemonic.BIC, "BIC V30.8H, #5, LSL #8");
+        TestInst(BIC(V0.T_8H, 5, _LSL, 8), asm => asm.BIC(V0.T_8H, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_hl, Arm64Mnemonic.BIC, "BIC V0.8H, #5, LSL #8");
+        TestInst(BIC(V30.T_8H, 5, _LSL, 8), asm => asm.BIC(V30.T_8H, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_hl, Arm64Mnemonic.BIC, "BIC V30.8H, #5, LSL #8");
     }
     
     /// <summary>
@@ -44,8 +43,8 @@ public class Arm64InstructionFactoryTests_BIC_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BIC_asimdimm_l_sl_2()
     {
-        TestInst(BIC(V0.T_2S, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_sl, Arm64Mnemonic.BIC, "BIC V0.2S, #5, LSL #8");
-        TestInst(BIC(V30.T_2S, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_sl, Arm64Mnemonic.BIC, "BIC V30.2S, #5, LSL #8");
+        TestInst(BIC(V0.T_2S, 5, _LSL, 8), asm => asm.BIC(V0.T_2S, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_sl, Arm64Mnemonic.BIC, "BIC V0.2S, #5, LSL #8");
+        TestInst(BIC(V30.T_2S, 5, _LSL, 8), asm => asm.BIC(V30.T_2S, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_sl, Arm64Mnemonic.BIC, "BIC V30.2S, #5, LSL #8");
     }
     
     /// <summary>
@@ -54,8 +53,8 @@ public class Arm64InstructionFactoryTests_BIC_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BIC_asimdimm_l_sl_3()
     {
-        TestInst(BIC(V0.T_4S, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_sl, Arm64Mnemonic.BIC, "BIC V0.4S, #5, LSL #8");
-        TestInst(BIC(V30.T_4S, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_sl, Arm64Mnemonic.BIC, "BIC V30.4S, #5, LSL #8");
+        TestInst(BIC(V0.T_4S, 5, _LSL, 8), asm => asm.BIC(V0.T_4S, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_sl, Arm64Mnemonic.BIC, "BIC V0.4S, #5, LSL #8");
+        TestInst(BIC(V30.T_4S, 5, _LSL, 8), asm => asm.BIC(V30.T_4S, 5, _LSL, 8), Arm64InstructionId.BIC_asimdimm_l_sl, Arm64Mnemonic.BIC, "BIC V30.4S, #5, LSL #8");
     }
     
     /// <summary>
@@ -64,14 +63,14 @@ public class Arm64InstructionFactoryTests_BIC_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BIC_asimdsame_only_4()
     {
-        TestInst(BIC(V0.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.8B, V1.8B, V2.8B");
-        TestInst(BIC(V30.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.8B, V1.8B, V2.8B");
-        TestInst(BIC(V0.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.8B, V31.8B, V2.8B");
-        TestInst(BIC(V30.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.8B, V31.8B, V2.8B");
-        TestInst(BIC(V0.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.8B, V1.8B, V0.8B");
-        TestInst(BIC(V30.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.8B, V1.8B, V0.8B");
-        TestInst(BIC(V0.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.8B, V31.8B, V0.8B");
-        TestInst(BIC(V30.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.8B, V31.8B, V0.8B");
+        TestInst(BIC(V0.T_8B, V1.T_8B, V2.T_8B), asm => asm.BIC(V0.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.8B, V1.8B, V2.8B");
+        TestInst(BIC(V30.T_8B, V1.T_8B, V2.T_8B), asm => asm.BIC(V30.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.8B, V1.8B, V2.8B");
+        TestInst(BIC(V0.T_8B, V31.T_8B, V2.T_8B), asm => asm.BIC(V0.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.8B, V31.8B, V2.8B");
+        TestInst(BIC(V30.T_8B, V31.T_8B, V2.T_8B), asm => asm.BIC(V30.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.8B, V31.8B, V2.8B");
+        TestInst(BIC(V0.T_8B, V1.T_8B, V0.T_8B), asm => asm.BIC(V0.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.8B, V1.8B, V0.8B");
+        TestInst(BIC(V30.T_8B, V1.T_8B, V0.T_8B), asm => asm.BIC(V30.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.8B, V1.8B, V0.8B");
+        TestInst(BIC(V0.T_8B, V31.T_8B, V0.T_8B), asm => asm.BIC(V0.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.8B, V31.8B, V0.8B");
+        TestInst(BIC(V30.T_8B, V31.T_8B, V0.T_8B), asm => asm.BIC(V30.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.8B, V31.8B, V0.8B");
     }
     
     /// <summary>
@@ -80,13 +79,13 @@ public class Arm64InstructionFactoryTests_BIC_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BIC_asimdsame_only_5()
     {
-        TestInst(BIC(V0.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.16B, V1.16B, V2.16B");
-        TestInst(BIC(V30.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.16B, V1.16B, V2.16B");
-        TestInst(BIC(V0.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.16B, V31.16B, V2.16B");
-        TestInst(BIC(V30.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.16B, V31.16B, V2.16B");
-        TestInst(BIC(V0.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.16B, V1.16B, V0.16B");
-        TestInst(BIC(V30.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.16B, V1.16B, V0.16B");
-        TestInst(BIC(V0.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.16B, V31.16B, V0.16B");
-        TestInst(BIC(V30.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.16B, V31.16B, V0.16B");
+        TestInst(BIC(V0.T_16B, V1.T_16B, V2.T_16B), asm => asm.BIC(V0.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.16B, V1.16B, V2.16B");
+        TestInst(BIC(V30.T_16B, V1.T_16B, V2.T_16B), asm => asm.BIC(V30.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.16B, V1.16B, V2.16B");
+        TestInst(BIC(V0.T_16B, V31.T_16B, V2.T_16B), asm => asm.BIC(V0.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.16B, V31.16B, V2.16B");
+        TestInst(BIC(V30.T_16B, V31.T_16B, V2.T_16B), asm => asm.BIC(V30.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.16B, V31.16B, V2.16B");
+        TestInst(BIC(V0.T_16B, V1.T_16B, V0.T_16B), asm => asm.BIC(V0.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.16B, V1.16B, V0.16B");
+        TestInst(BIC(V30.T_16B, V1.T_16B, V0.T_16B), asm => asm.BIC(V30.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.16B, V1.16B, V0.16B");
+        TestInst(BIC(V0.T_16B, V31.T_16B, V0.T_16B), asm => asm.BIC(V0.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V0.16B, V31.16B, V0.16B");
+        TestInst(BIC(V30.T_16B, V31.T_16B, V0.T_16B), asm => asm.BIC(V30.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.BIC_asimdsame_only, Arm64Mnemonic.BIC, "BIC V30.16B, V31.16B, V0.16B");
     }
 }

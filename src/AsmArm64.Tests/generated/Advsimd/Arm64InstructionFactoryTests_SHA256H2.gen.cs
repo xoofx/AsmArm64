@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,13 +23,13 @@ public class Arm64InstructionFactoryTests_SHA256H2_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SHA256H2_qqv_cryptosha3_0()
     {
-        TestInst(SHA256H2(Q0, Q1, V2.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q0, Q1, V2.4S");
-        TestInst(SHA256H2(Q31, Q1, V2.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q31, Q1, V2.4S");
-        TestInst(SHA256H2(Q0, Q31, V2.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q0, Q31, V2.4S");
-        TestInst(SHA256H2(Q31, Q31, V2.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q31, Q31, V2.4S");
-        TestInst(SHA256H2(Q0, Q1, V0.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q0, Q1, V0.4S");
-        TestInst(SHA256H2(Q31, Q1, V0.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q31, Q1, V0.4S");
-        TestInst(SHA256H2(Q0, Q31, V0.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q0, Q31, V0.4S");
-        TestInst(SHA256H2(Q31, Q31, V0.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q31, Q31, V0.4S");
+        TestInst(SHA256H2(Q0, Q1, V2.T_4S), asm => asm.SHA256H2(Q0, Q1, V2.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q0, Q1, V2.4S");
+        TestInst(SHA256H2(Q31, Q1, V2.T_4S), asm => asm.SHA256H2(Q31, Q1, V2.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q31, Q1, V2.4S");
+        TestInst(SHA256H2(Q0, Q31, V2.T_4S), asm => asm.SHA256H2(Q0, Q31, V2.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q0, Q31, V2.4S");
+        TestInst(SHA256H2(Q31, Q31, V2.T_4S), asm => asm.SHA256H2(Q31, Q31, V2.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q31, Q31, V2.4S");
+        TestInst(SHA256H2(Q0, Q1, V0.T_4S), asm => asm.SHA256H2(Q0, Q1, V0.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q0, Q1, V0.4S");
+        TestInst(SHA256H2(Q31, Q1, V0.T_4S), asm => asm.SHA256H2(Q31, Q1, V0.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q31, Q1, V0.4S");
+        TestInst(SHA256H2(Q0, Q31, V0.T_4S), asm => asm.SHA256H2(Q0, Q31, V0.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q0, Q31, V0.4S");
+        TestInst(SHA256H2(Q31, Q31, V0.T_4S), asm => asm.SHA256H2(Q31, Q31, V0.T_4S), Arm64InstructionId.SHA256H2_qqv_cryptosha3, Arm64Mnemonic.SHA256H2, "SHA256H2 Q31, Q31, V0.4S");
     }
 }

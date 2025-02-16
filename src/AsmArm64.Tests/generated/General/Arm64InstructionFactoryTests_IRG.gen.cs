@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,23 +23,23 @@ public class Arm64InstructionFactoryTests_IRG_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_IRG_64i_dp_2src_0()
     {
-        TestInst(IRG(X1, X2, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X2, X2");
-        TestInst(IRG(X17, X2, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X2, X2");
-        TestInst(IRG(SP, X2, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X2, X2");
-        TestInst(IRG(X1, X18, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X18, X2");
-        TestInst(IRG(X17, X18, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X18, X2");
-        TestInst(IRG(SP, X18, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X18, X2");
-        TestInst(IRG(X1, SP, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, SP, X2");
-        TestInst(IRG(X17, SP, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, SP, X2");
-        TestInst(IRG(SP, SP, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, SP, X2");
-        TestInst(IRG(X1, X2, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X2, X17");
-        TestInst(IRG(X17, X2, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X2, X17");
-        TestInst(IRG(SP, X2, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X2, X17");
-        TestInst(IRG(X1, X18, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X18, X17");
-        TestInst(IRG(X17, X18, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X18, X17");
-        TestInst(IRG(SP, X18, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X18, X17");
-        TestInst(IRG(X1, SP, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, SP, X17");
-        TestInst(IRG(X17, SP, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, SP, X17");
-        TestInst(IRG(SP, SP, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, SP, X17");
+        TestInst(IRG(X1, X2, X2), asm => asm.IRG(X1, X2, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X2, X2");
+        TestInst(IRG(X17, X2, X2), asm => asm.IRG(X17, X2, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X2, X2");
+        TestInst(IRG(SP, X2, X2), asm => asm.IRG(SP, X2, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X2, X2");
+        TestInst(IRG(X1, X18, X2), asm => asm.IRG(X1, X18, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X18, X2");
+        TestInst(IRG(X17, X18, X2), asm => asm.IRG(X17, X18, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X18, X2");
+        TestInst(IRG(SP, X18, X2), asm => asm.IRG(SP, X18, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X18, X2");
+        TestInst(IRG(X1, SP, X2), asm => asm.IRG(X1, SP, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, SP, X2");
+        TestInst(IRG(X17, SP, X2), asm => asm.IRG(X17, SP, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, SP, X2");
+        TestInst(IRG(SP, SP, X2), asm => asm.IRG(SP, SP, X2), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, SP, X2");
+        TestInst(IRG(X1, X2, X17), asm => asm.IRG(X1, X2, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X2, X17");
+        TestInst(IRG(X17, X2, X17), asm => asm.IRG(X17, X2, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X2, X17");
+        TestInst(IRG(SP, X2, X17), asm => asm.IRG(SP, X2, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X2, X17");
+        TestInst(IRG(X1, X18, X17), asm => asm.IRG(X1, X18, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, X18, X17");
+        TestInst(IRG(X17, X18, X17), asm => asm.IRG(X17, X18, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, X18, X17");
+        TestInst(IRG(SP, X18, X17), asm => asm.IRG(SP, X18, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, X18, X17");
+        TestInst(IRG(X1, SP, X17), asm => asm.IRG(X1, SP, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X1, SP, X17");
+        TestInst(IRG(X17, SP, X17), asm => asm.IRG(X17, SP, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG X17, SP, X17");
+        TestInst(IRG(SP, SP, X17), asm => asm.IRG(SP, SP, X17), Arm64InstructionId.IRG_64i_dp_2src, Arm64Mnemonic.IRG, "IRG SP, SP, X17");
     }
 }

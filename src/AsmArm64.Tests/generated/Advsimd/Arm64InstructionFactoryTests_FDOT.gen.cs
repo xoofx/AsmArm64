@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FDOT_asimdelem_g_0()
     {
-        TestInst(FDOT(V0.T_4H, V1.T_8B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.4H, V1.8B, V2.2B[1]");
-        TestInst(FDOT(V30.T_4H, V1.T_8B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.4H, V1.8B, V2.2B[1]");
-        TestInst(FDOT(V0.T_4H, V31.T_8B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.4H, V31.8B, V2.2B[1]");
-        TestInst(FDOT(V30.T_4H, V31.T_8B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.4H, V31.8B, V2.2B[1]");
-        TestInst(FDOT(V0.T_4H, V1.T_8B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.4H, V1.8B, V0.2B[1]");
-        TestInst(FDOT(V30.T_4H, V1.T_8B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.4H, V1.8B, V0.2B[1]");
-        TestInst(FDOT(V0.T_4H, V31.T_8B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.4H, V31.8B, V0.2B[1]");
-        TestInst(FDOT(V30.T_4H, V31.T_8B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.4H, V31.8B, V0.2B[1]");
+        TestInst(FDOT(V0.T_4H, V1.T_8B, V2.T_2B[1]), asm => asm.FDOT(V0.T_4H, V1.T_8B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.4H, V1.8B, V2.2B[1]");
+        TestInst(FDOT(V30.T_4H, V1.T_8B, V2.T_2B[1]), asm => asm.FDOT(V30.T_4H, V1.T_8B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.4H, V1.8B, V2.2B[1]");
+        TestInst(FDOT(V0.T_4H, V31.T_8B, V2.T_2B[1]), asm => asm.FDOT(V0.T_4H, V31.T_8B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.4H, V31.8B, V2.2B[1]");
+        TestInst(FDOT(V30.T_4H, V31.T_8B, V2.T_2B[1]), asm => asm.FDOT(V30.T_4H, V31.T_8B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.4H, V31.8B, V2.2B[1]");
+        TestInst(FDOT(V0.T_4H, V1.T_8B, V0.T_2B[1]), asm => asm.FDOT(V0.T_4H, V1.T_8B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.4H, V1.8B, V0.2B[1]");
+        TestInst(FDOT(V30.T_4H, V1.T_8B, V0.T_2B[1]), asm => asm.FDOT(V30.T_4H, V1.T_8B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.4H, V1.8B, V0.2B[1]");
+        TestInst(FDOT(V0.T_4H, V31.T_8B, V0.T_2B[1]), asm => asm.FDOT(V0.T_4H, V31.T_8B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.4H, V31.8B, V0.2B[1]");
+        TestInst(FDOT(V30.T_4H, V31.T_8B, V0.T_2B[1]), asm => asm.FDOT(V30.T_4H, V31.T_8B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.4H, V31.8B, V0.2B[1]");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FDOT_asimdelem_g_1()
     {
-        TestInst(FDOT(V0.T_8H, V1.T_16B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.8H, V1.16B, V2.2B[1]");
-        TestInst(FDOT(V30.T_8H, V1.T_16B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.8H, V1.16B, V2.2B[1]");
-        TestInst(FDOT(V0.T_8H, V31.T_16B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.8H, V31.16B, V2.2B[1]");
-        TestInst(FDOT(V30.T_8H, V31.T_16B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.8H, V31.16B, V2.2B[1]");
-        TestInst(FDOT(V0.T_8H, V1.T_16B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.8H, V1.16B, V0.2B[1]");
-        TestInst(FDOT(V30.T_8H, V1.T_16B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.8H, V1.16B, V0.2B[1]");
-        TestInst(FDOT(V0.T_8H, V31.T_16B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.8H, V31.16B, V0.2B[1]");
-        TestInst(FDOT(V30.T_8H, V31.T_16B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.8H, V31.16B, V0.2B[1]");
+        TestInst(FDOT(V0.T_8H, V1.T_16B, V2.T_2B[1]), asm => asm.FDOT(V0.T_8H, V1.T_16B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.8H, V1.16B, V2.2B[1]");
+        TestInst(FDOT(V30.T_8H, V1.T_16B, V2.T_2B[1]), asm => asm.FDOT(V30.T_8H, V1.T_16B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.8H, V1.16B, V2.2B[1]");
+        TestInst(FDOT(V0.T_8H, V31.T_16B, V2.T_2B[1]), asm => asm.FDOT(V0.T_8H, V31.T_16B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.8H, V31.16B, V2.2B[1]");
+        TestInst(FDOT(V30.T_8H, V31.T_16B, V2.T_2B[1]), asm => asm.FDOT(V30.T_8H, V31.T_16B, V2.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.8H, V31.16B, V2.2B[1]");
+        TestInst(FDOT(V0.T_8H, V1.T_16B, V0.T_2B[1]), asm => asm.FDOT(V0.T_8H, V1.T_16B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.8H, V1.16B, V0.2B[1]");
+        TestInst(FDOT(V30.T_8H, V1.T_16B, V0.T_2B[1]), asm => asm.FDOT(V30.T_8H, V1.T_16B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.8H, V1.16B, V0.2B[1]");
+        TestInst(FDOT(V0.T_8H, V31.T_16B, V0.T_2B[1]), asm => asm.FDOT(V0.T_8H, V31.T_16B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V0.8H, V31.16B, V0.2B[1]");
+        TestInst(FDOT(V30.T_8H, V31.T_16B, V0.T_2B[1]), asm => asm.FDOT(V30.T_8H, V31.T_16B, V0.T_2B[1]), Arm64InstructionId.FDOT_asimdelem_g, Arm64Mnemonic.FDOT, "FDOT V30.8H, V31.16B, V0.2B[1]");
     }
     
     /// <summary>
@@ -56,14 +55,14 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FDOT_asimdsame2_d_2()
     {
-        TestInst(FDOT(V0.T_4H, V1.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.4H, V1.8B, V2.8B");
-        TestInst(FDOT(V30.T_4H, V1.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.4H, V1.8B, V2.8B");
-        TestInst(FDOT(V0.T_4H, V31.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.4H, V31.8B, V2.8B");
-        TestInst(FDOT(V30.T_4H, V31.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.4H, V31.8B, V2.8B");
-        TestInst(FDOT(V0.T_4H, V1.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.4H, V1.8B, V0.8B");
-        TestInst(FDOT(V30.T_4H, V1.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.4H, V1.8B, V0.8B");
-        TestInst(FDOT(V0.T_4H, V31.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.4H, V31.8B, V0.8B");
-        TestInst(FDOT(V30.T_4H, V31.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.4H, V31.8B, V0.8B");
+        TestInst(FDOT(V0.T_4H, V1.T_8B, V2.T_8B), asm => asm.FDOT(V0.T_4H, V1.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.4H, V1.8B, V2.8B");
+        TestInst(FDOT(V30.T_4H, V1.T_8B, V2.T_8B), asm => asm.FDOT(V30.T_4H, V1.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.4H, V1.8B, V2.8B");
+        TestInst(FDOT(V0.T_4H, V31.T_8B, V2.T_8B), asm => asm.FDOT(V0.T_4H, V31.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.4H, V31.8B, V2.8B");
+        TestInst(FDOT(V30.T_4H, V31.T_8B, V2.T_8B), asm => asm.FDOT(V30.T_4H, V31.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.4H, V31.8B, V2.8B");
+        TestInst(FDOT(V0.T_4H, V1.T_8B, V0.T_8B), asm => asm.FDOT(V0.T_4H, V1.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.4H, V1.8B, V0.8B");
+        TestInst(FDOT(V30.T_4H, V1.T_8B, V0.T_8B), asm => asm.FDOT(V30.T_4H, V1.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.4H, V1.8B, V0.8B");
+        TestInst(FDOT(V0.T_4H, V31.T_8B, V0.T_8B), asm => asm.FDOT(V0.T_4H, V31.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.4H, V31.8B, V0.8B");
+        TestInst(FDOT(V30.T_4H, V31.T_8B, V0.T_8B), asm => asm.FDOT(V30.T_4H, V31.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.4H, V31.8B, V0.8B");
     }
     
     /// <summary>
@@ -72,14 +71,14 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FDOT_asimdsame2_d_3()
     {
-        TestInst(FDOT(V0.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.8H, V1.16B, V2.16B");
-        TestInst(FDOT(V30.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.8H, V1.16B, V2.16B");
-        TestInst(FDOT(V0.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.8H, V31.16B, V2.16B");
-        TestInst(FDOT(V30.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.8H, V31.16B, V2.16B");
-        TestInst(FDOT(V0.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.8H, V1.16B, V0.16B");
-        TestInst(FDOT(V30.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.8H, V1.16B, V0.16B");
-        TestInst(FDOT(V0.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.8H, V31.16B, V0.16B");
-        TestInst(FDOT(V30.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.8H, V31.16B, V0.16B");
+        TestInst(FDOT(V0.T_8H, V1.T_16B, V2.T_16B), asm => asm.FDOT(V0.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.8H, V1.16B, V2.16B");
+        TestInst(FDOT(V30.T_8H, V1.T_16B, V2.T_16B), asm => asm.FDOT(V30.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.8H, V1.16B, V2.16B");
+        TestInst(FDOT(V0.T_8H, V31.T_16B, V2.T_16B), asm => asm.FDOT(V0.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.8H, V31.16B, V2.16B");
+        TestInst(FDOT(V30.T_8H, V31.T_16B, V2.T_16B), asm => asm.FDOT(V30.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.8H, V31.16B, V2.16B");
+        TestInst(FDOT(V0.T_8H, V1.T_16B, V0.T_16B), asm => asm.FDOT(V0.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.8H, V1.16B, V0.16B");
+        TestInst(FDOT(V30.T_8H, V1.T_16B, V0.T_16B), asm => asm.FDOT(V30.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.8H, V1.16B, V0.16B");
+        TestInst(FDOT(V0.T_8H, V31.T_16B, V0.T_16B), asm => asm.FDOT(V0.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V0.8H, V31.16B, V0.16B");
+        TestInst(FDOT(V30.T_8H, V31.T_16B, V0.T_16B), asm => asm.FDOT(V30.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_d, Arm64Mnemonic.FDOT, "FDOT V30.8H, V31.16B, V0.16B");
     }
     
     /// <summary>
@@ -88,14 +87,14 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FDOT_asimdelem_d_4()
     {
-        TestInst(FDOT(V0.T_2S, V1.T_8B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.2S, V1.8B, V2.4B[1]");
-        TestInst(FDOT(V30.T_2S, V1.T_8B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.2S, V1.8B, V2.4B[1]");
-        TestInst(FDOT(V0.T_2S, V31.T_8B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.2S, V31.8B, V2.4B[1]");
-        TestInst(FDOT(V30.T_2S, V31.T_8B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.2S, V31.8B, V2.4B[1]");
-        TestInst(FDOT(V0.T_2S, V1.T_8B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.2S, V1.8B, V0.4B[1]");
-        TestInst(FDOT(V30.T_2S, V1.T_8B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.2S, V1.8B, V0.4B[1]");
-        TestInst(FDOT(V0.T_2S, V31.T_8B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.2S, V31.8B, V0.4B[1]");
-        TestInst(FDOT(V30.T_2S, V31.T_8B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.2S, V31.8B, V0.4B[1]");
+        TestInst(FDOT(V0.T_2S, V1.T_8B, V2.T_4B[1]), asm => asm.FDOT(V0.T_2S, V1.T_8B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.2S, V1.8B, V2.4B[1]");
+        TestInst(FDOT(V30.T_2S, V1.T_8B, V2.T_4B[1]), asm => asm.FDOT(V30.T_2S, V1.T_8B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.2S, V1.8B, V2.4B[1]");
+        TestInst(FDOT(V0.T_2S, V31.T_8B, V2.T_4B[1]), asm => asm.FDOT(V0.T_2S, V31.T_8B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.2S, V31.8B, V2.4B[1]");
+        TestInst(FDOT(V30.T_2S, V31.T_8B, V2.T_4B[1]), asm => asm.FDOT(V30.T_2S, V31.T_8B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.2S, V31.8B, V2.4B[1]");
+        TestInst(FDOT(V0.T_2S, V1.T_8B, V0.T_4B[1]), asm => asm.FDOT(V0.T_2S, V1.T_8B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.2S, V1.8B, V0.4B[1]");
+        TestInst(FDOT(V30.T_2S, V1.T_8B, V0.T_4B[1]), asm => asm.FDOT(V30.T_2S, V1.T_8B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.2S, V1.8B, V0.4B[1]");
+        TestInst(FDOT(V0.T_2S, V31.T_8B, V0.T_4B[1]), asm => asm.FDOT(V0.T_2S, V31.T_8B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.2S, V31.8B, V0.4B[1]");
+        TestInst(FDOT(V30.T_2S, V31.T_8B, V0.T_4B[1]), asm => asm.FDOT(V30.T_2S, V31.T_8B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.2S, V31.8B, V0.4B[1]");
     }
     
     /// <summary>
@@ -104,14 +103,14 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FDOT_asimdelem_d_5()
     {
-        TestInst(FDOT(V0.T_4S, V1.T_16B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.4S, V1.16B, V2.4B[1]");
-        TestInst(FDOT(V30.T_4S, V1.T_16B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.4S, V1.16B, V2.4B[1]");
-        TestInst(FDOT(V0.T_4S, V31.T_16B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.4S, V31.16B, V2.4B[1]");
-        TestInst(FDOT(V30.T_4S, V31.T_16B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.4S, V31.16B, V2.4B[1]");
-        TestInst(FDOT(V0.T_4S, V1.T_16B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.4S, V1.16B, V0.4B[1]");
-        TestInst(FDOT(V30.T_4S, V1.T_16B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.4S, V1.16B, V0.4B[1]");
-        TestInst(FDOT(V0.T_4S, V31.T_16B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.4S, V31.16B, V0.4B[1]");
-        TestInst(FDOT(V30.T_4S, V31.T_16B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.4S, V31.16B, V0.4B[1]");
+        TestInst(FDOT(V0.T_4S, V1.T_16B, V2.T_4B[1]), asm => asm.FDOT(V0.T_4S, V1.T_16B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.4S, V1.16B, V2.4B[1]");
+        TestInst(FDOT(V30.T_4S, V1.T_16B, V2.T_4B[1]), asm => asm.FDOT(V30.T_4S, V1.T_16B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.4S, V1.16B, V2.4B[1]");
+        TestInst(FDOT(V0.T_4S, V31.T_16B, V2.T_4B[1]), asm => asm.FDOT(V0.T_4S, V31.T_16B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.4S, V31.16B, V2.4B[1]");
+        TestInst(FDOT(V30.T_4S, V31.T_16B, V2.T_4B[1]), asm => asm.FDOT(V30.T_4S, V31.T_16B, V2.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.4S, V31.16B, V2.4B[1]");
+        TestInst(FDOT(V0.T_4S, V1.T_16B, V0.T_4B[1]), asm => asm.FDOT(V0.T_4S, V1.T_16B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.4S, V1.16B, V0.4B[1]");
+        TestInst(FDOT(V30.T_4S, V1.T_16B, V0.T_4B[1]), asm => asm.FDOT(V30.T_4S, V1.T_16B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.4S, V1.16B, V0.4B[1]");
+        TestInst(FDOT(V0.T_4S, V31.T_16B, V0.T_4B[1]), asm => asm.FDOT(V0.T_4S, V31.T_16B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V0.4S, V31.16B, V0.4B[1]");
+        TestInst(FDOT(V30.T_4S, V31.T_16B, V0.T_4B[1]), asm => asm.FDOT(V30.T_4S, V31.T_16B, V0.T_4B[1]), Arm64InstructionId.FDOT_asimdelem_d, Arm64Mnemonic.FDOT, "FDOT V30.4S, V31.16B, V0.4B[1]");
     }
     
     /// <summary>
@@ -120,14 +119,14 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FDOT_asimdsame2_dd_6()
     {
-        TestInst(FDOT(V0.T_2S, V1.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.2S, V1.8B, V2.8B");
-        TestInst(FDOT(V30.T_2S, V1.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.2S, V1.8B, V2.8B");
-        TestInst(FDOT(V0.T_2S, V31.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.2S, V31.8B, V2.8B");
-        TestInst(FDOT(V30.T_2S, V31.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.2S, V31.8B, V2.8B");
-        TestInst(FDOT(V0.T_2S, V1.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.2S, V1.8B, V0.8B");
-        TestInst(FDOT(V30.T_2S, V1.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.2S, V1.8B, V0.8B");
-        TestInst(FDOT(V0.T_2S, V31.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.2S, V31.8B, V0.8B");
-        TestInst(FDOT(V30.T_2S, V31.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.2S, V31.8B, V0.8B");
+        TestInst(FDOT(V0.T_2S, V1.T_8B, V2.T_8B), asm => asm.FDOT(V0.T_2S, V1.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.2S, V1.8B, V2.8B");
+        TestInst(FDOT(V30.T_2S, V1.T_8B, V2.T_8B), asm => asm.FDOT(V30.T_2S, V1.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.2S, V1.8B, V2.8B");
+        TestInst(FDOT(V0.T_2S, V31.T_8B, V2.T_8B), asm => asm.FDOT(V0.T_2S, V31.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.2S, V31.8B, V2.8B");
+        TestInst(FDOT(V30.T_2S, V31.T_8B, V2.T_8B), asm => asm.FDOT(V30.T_2S, V31.T_8B, V2.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.2S, V31.8B, V2.8B");
+        TestInst(FDOT(V0.T_2S, V1.T_8B, V0.T_8B), asm => asm.FDOT(V0.T_2S, V1.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.2S, V1.8B, V0.8B");
+        TestInst(FDOT(V30.T_2S, V1.T_8B, V0.T_8B), asm => asm.FDOT(V30.T_2S, V1.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.2S, V1.8B, V0.8B");
+        TestInst(FDOT(V0.T_2S, V31.T_8B, V0.T_8B), asm => asm.FDOT(V0.T_2S, V31.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.2S, V31.8B, V0.8B");
+        TestInst(FDOT(V30.T_2S, V31.T_8B, V0.T_8B), asm => asm.FDOT(V30.T_2S, V31.T_8B, V0.T_8B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.2S, V31.8B, V0.8B");
     }
     
     /// <summary>
@@ -136,13 +135,13 @@ public class Arm64InstructionFactoryTests_FDOT_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FDOT_asimdsame2_dd_7()
     {
-        TestInst(FDOT(V0.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.4S, V1.16B, V2.16B");
-        TestInst(FDOT(V30.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.4S, V1.16B, V2.16B");
-        TestInst(FDOT(V0.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.4S, V31.16B, V2.16B");
-        TestInst(FDOT(V30.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.4S, V31.16B, V2.16B");
-        TestInst(FDOT(V0.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.4S, V1.16B, V0.16B");
-        TestInst(FDOT(V30.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.4S, V1.16B, V0.16B");
-        TestInst(FDOT(V0.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.4S, V31.16B, V0.16B");
-        TestInst(FDOT(V30.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.4S, V31.16B, V0.16B");
+        TestInst(FDOT(V0.T_4S, V1.T_16B, V2.T_16B), asm => asm.FDOT(V0.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.4S, V1.16B, V2.16B");
+        TestInst(FDOT(V30.T_4S, V1.T_16B, V2.T_16B), asm => asm.FDOT(V30.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.4S, V1.16B, V2.16B");
+        TestInst(FDOT(V0.T_4S, V31.T_16B, V2.T_16B), asm => asm.FDOT(V0.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.4S, V31.16B, V2.16B");
+        TestInst(FDOT(V30.T_4S, V31.T_16B, V2.T_16B), asm => asm.FDOT(V30.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.4S, V31.16B, V2.16B");
+        TestInst(FDOT(V0.T_4S, V1.T_16B, V0.T_16B), asm => asm.FDOT(V0.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.4S, V1.16B, V0.16B");
+        TestInst(FDOT(V30.T_4S, V1.T_16B, V0.T_16B), asm => asm.FDOT(V30.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.4S, V1.16B, V0.16B");
+        TestInst(FDOT(V0.T_4S, V31.T_16B, V0.T_16B), asm => asm.FDOT(V0.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V0.4S, V31.16B, V0.16B");
+        TestInst(FDOT(V30.T_4S, V31.T_16B, V0.T_16B), asm => asm.FDOT(V30.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.FDOT_asimdsame2_dd, Arm64Mnemonic.FDOT, "FDOT V30.4S, V31.16B, V0.16B");
     }
 }

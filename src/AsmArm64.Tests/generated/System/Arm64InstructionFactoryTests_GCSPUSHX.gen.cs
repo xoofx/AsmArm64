@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_GCSPUSHX_System : Arm64InstructionFact
     [TestMethod]
     public void Test_GCSPUSHX_sys_cr_systeminstrs_0()
     {
-        TestInst(GCSPUSHX(), Arm64InstructionId.GCSPUSHX_sys_cr_systeminstrs, Arm64Mnemonic.GCSPUSHX, "GCSPUSHX");
+        TestInst(GCSPUSHX(), asm => asm.GCSPUSHX(), Arm64InstructionId.GCSPUSHX_sys_cr_systeminstrs, Arm64Mnemonic.GCSPUSHX, "GCSPUSHX");
     }
 }

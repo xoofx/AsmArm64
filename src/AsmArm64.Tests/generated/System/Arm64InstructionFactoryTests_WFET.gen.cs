@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_WFET_System : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_WFET_only_systeminstrswithreg_0()
     {
-        TestInst(WFET(X0), Arm64InstructionId.WFET_only_systeminstrswithreg, Arm64Mnemonic.WFET, "WFET X0");
-        TestInst(WFET(X15), Arm64InstructionId.WFET_only_systeminstrswithreg, Arm64Mnemonic.WFET, "WFET X15");
-        TestInst(WFET(XZR), Arm64InstructionId.WFET_only_systeminstrswithreg, Arm64Mnemonic.WFET, "WFET XZR");
+        TestInst(WFET(X0), asm => asm.WFET(X0), Arm64InstructionId.WFET_only_systeminstrswithreg, Arm64Mnemonic.WFET, "WFET X0");
+        TestInst(WFET(X15), asm => asm.WFET(X15), Arm64InstructionId.WFET_only_systeminstrswithreg, Arm64Mnemonic.WFET, "WFET X15");
+        TestInst(WFET(XZR), asm => asm.WFET(XZR), Arm64InstructionId.WFET_only_systeminstrswithreg, Arm64Mnemonic.WFET, "WFET XZR");
     }
 }

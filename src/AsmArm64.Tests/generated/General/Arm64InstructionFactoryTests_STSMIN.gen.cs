@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STSMIN_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STSMIN_ldsmin_32_memop_0()
     {
-        TestInst(STSMIN(W0, _[X2]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN W0, [X2]");
-        TestInst(STSMIN(W15, _[X2]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN W15, [X2]");
-        TestInst(STSMIN(WZR, _[X2]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN WZR, [X2]");
+        TestInst(STSMIN(W0, _[X2]), asm => asm.STSMIN(W0, _[X2]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN W0, [X2]");
+        TestInst(STSMIN(W15, _[X2]), asm => asm.STSMIN(W15, _[X2]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN W15, [X2]");
+        TestInst(STSMIN(WZR, _[X2]), asm => asm.STSMIN(WZR, _[X2]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STSMIN_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STSMIN_ldsmin_64_memop_1()
     {
-        TestInst(STSMIN(X0, _[X2]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN X0, [X2]");
-        TestInst(STSMIN(X15, _[X2]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN X15, [X2]");
-        TestInst(STSMIN(XZR, _[X2]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN XZR, [X2]");
+        TestInst(STSMIN(X0, _[X2]), asm => asm.STSMIN(X0, _[X2]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN X0, [X2]");
+        TestInst(STSMIN(X15, _[X2]), asm => asm.STSMIN(X15, _[X2]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN X15, [X2]");
+        TestInst(STSMIN(XZR, _[X2]), asm => asm.STSMIN(XZR, _[X2]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN XZR, [X2]");
     }
 }

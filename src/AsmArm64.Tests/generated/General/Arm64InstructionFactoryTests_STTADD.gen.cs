@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STTADD_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STTADD_ldtadd_32_memop_unpriv_0()
     {
-        TestInst(STTADD(W0, _[X2]), Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD W0, [X2]");
-        TestInst(STTADD(W15, _[X2]), Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD W15, [X2]");
-        TestInst(STTADD(WZR, _[X2]), Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD WZR, [X2]");
+        TestInst(STTADD(W0, _[X2]), asm => asm.STTADD(W0, _[X2]), Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD W0, [X2]");
+        TestInst(STTADD(W15, _[X2]), asm => asm.STTADD(W15, _[X2]), Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD W15, [X2]");
+        TestInst(STTADD(WZR, _[X2]), asm => asm.STTADD(WZR, _[X2]), Arm64InstructionId.STTADD_ldtadd_32_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STTADD_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STTADD_ldtadd_64_memop_unpriv_1()
     {
-        TestInst(STTADD(X0, _[X2]), Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD X0, [X2]");
-        TestInst(STTADD(X15, _[X2]), Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD X15, [X2]");
-        TestInst(STTADD(XZR, _[X2]), Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD XZR, [X2]");
+        TestInst(STTADD(X0, _[X2]), asm => asm.STTADD(X0, _[X2]), Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD X0, [X2]");
+        TestInst(STTADD(X15, _[X2]), asm => asm.STTADD(X15, _[X2]), Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD X15, [X2]");
+        TestInst(STTADD(XZR, _[X2]), asm => asm.STTADD(XZR, _[X2]), Arm64InstructionId.STTADD_ldtadd_64_memop_unpriv, Arm64Mnemonic.STTADD, "STTADD XZR, [X2]");
     }
 }

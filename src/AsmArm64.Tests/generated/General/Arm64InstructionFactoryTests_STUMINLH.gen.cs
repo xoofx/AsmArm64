@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STUMINLH_General : Arm64InstructionFac
     [TestMethod]
     public void Test_STUMINLH_lduminlh_32_memop_0()
     {
-        TestInst(STUMINLH(W0, _[X2]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH W0, [X2]");
-        TestInst(STUMINLH(W15, _[X2]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH W15, [X2]");
-        TestInst(STUMINLH(WZR, _[X2]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH WZR, [X2]");
+        TestInst(STUMINLH(W0, _[X2]), asm => asm.STUMINLH(W0, _[X2]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH W0, [X2]");
+        TestInst(STUMINLH(W15, _[X2]), asm => asm.STUMINLH(W15, _[X2]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH W15, [X2]");
+        TestInst(STUMINLH(WZR, _[X2]), asm => asm.STUMINLH(WZR, _[X2]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH WZR, [X2]");
     }
 }

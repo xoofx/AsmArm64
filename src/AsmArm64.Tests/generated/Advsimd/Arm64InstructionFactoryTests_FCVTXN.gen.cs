@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FCVTXN_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTXN_asisdmisc_n_0()
     {
-        TestInst(FCVTXN(S0, D1), Arm64InstructionId.FCVTXN_asisdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN S0, D1");
-        TestInst(FCVTXN(S31, D1), Arm64InstructionId.FCVTXN_asisdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN S31, D1");
-        TestInst(FCVTXN(S0, D31), Arm64InstructionId.FCVTXN_asisdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN S0, D31");
-        TestInst(FCVTXN(S31, D31), Arm64InstructionId.FCVTXN_asisdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN S31, D31");
+        TestInst(FCVTXN(S0, D1), asm => asm.FCVTXN(S0, D1), Arm64InstructionId.FCVTXN_asisdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN S0, D1");
+        TestInst(FCVTXN(S31, D1), asm => asm.FCVTXN(S31, D1), Arm64InstructionId.FCVTXN_asisdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN S31, D1");
+        TestInst(FCVTXN(S0, D31), asm => asm.FCVTXN(S0, D31), Arm64InstructionId.FCVTXN_asisdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN S0, D31");
+        TestInst(FCVTXN(S31, D31), asm => asm.FCVTXN(S31, D31), Arm64InstructionId.FCVTXN_asisdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN S31, D31");
     }
     
     /// <summary>
@@ -36,9 +35,9 @@ public class Arm64InstructionFactoryTests_FCVTXN_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTXN_asimdmisc_n_1()
     {
-        TestInst(FCVTXN(V0.T_2S, V1.T_2D), Arm64InstructionId.FCVTXN_asimdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN V0.2S, V1.2D");
-        TestInst(FCVTXN(V30.T_2S, V1.T_2D), Arm64InstructionId.FCVTXN_asimdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN V30.2S, V1.2D");
-        TestInst(FCVTXN(V0.T_2S, V31.T_2D), Arm64InstructionId.FCVTXN_asimdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN V0.2S, V31.2D");
-        TestInst(FCVTXN(V30.T_2S, V31.T_2D), Arm64InstructionId.FCVTXN_asimdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN V30.2S, V31.2D");
+        TestInst(FCVTXN(V0.T_2S, V1.T_2D), asm => asm.FCVTXN(V0.T_2S, V1.T_2D), Arm64InstructionId.FCVTXN_asimdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN V0.2S, V1.2D");
+        TestInst(FCVTXN(V30.T_2S, V1.T_2D), asm => asm.FCVTXN(V30.T_2S, V1.T_2D), Arm64InstructionId.FCVTXN_asimdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN V30.2S, V1.2D");
+        TestInst(FCVTXN(V0.T_2S, V31.T_2D), asm => asm.FCVTXN(V0.T_2S, V31.T_2D), Arm64InstructionId.FCVTXN_asimdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN V0.2S, V31.2D");
+        TestInst(FCVTXN(V30.T_2S, V31.T_2D), asm => asm.FCVTXN(V30.T_2S, V31.T_2D), Arm64InstructionId.FCVTXN_asimdmisc_n, Arm64Mnemonic.FCVTXN, "FCVTXN V30.2S, V31.2D");
     }
 }

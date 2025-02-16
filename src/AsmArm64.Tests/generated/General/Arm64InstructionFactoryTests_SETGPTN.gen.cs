@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SETGPTN_General : Arm64InstructionFact
     [TestMethod]
     public void Test_SETGPTN_set_memcms_0()
     {
-        TestInst(SETGPTN(_[X1].Pre, X1, X2), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X1, X2");
-        TestInst(SETGPTN(_[X1].Pre, X16, X2), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X16, X2");
-        TestInst(SETGPTN(_[X1].Pre, XZR, X2), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, XZR, X2");
-        TestInst(SETGPTN(_[X1].Pre, X1, X17), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X1, X17");
-        TestInst(SETGPTN(_[X1].Pre, X16, X17), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X16, X17");
-        TestInst(SETGPTN(_[X1].Pre, XZR, X17), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, XZR, X17");
-        TestInst(SETGPTN(_[X1].Pre, X1, XZR), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X1, XZR");
-        TestInst(SETGPTN(_[X1].Pre, X16, XZR), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X16, XZR");
-        TestInst(SETGPTN(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, XZR, XZR");
+        TestInst(SETGPTN(_[X1].Pre, X1, X2), asm => asm.SETGPTN(_[X1].Pre, X1, X2), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X1, X2");
+        TestInst(SETGPTN(_[X1].Pre, X16, X2), asm => asm.SETGPTN(_[X1].Pre, X16, X2), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X16, X2");
+        TestInst(SETGPTN(_[X1].Pre, XZR, X2), asm => asm.SETGPTN(_[X1].Pre, XZR, X2), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, XZR, X2");
+        TestInst(SETGPTN(_[X1].Pre, X1, X17), asm => asm.SETGPTN(_[X1].Pre, X1, X17), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X1, X17");
+        TestInst(SETGPTN(_[X1].Pre, X16, X17), asm => asm.SETGPTN(_[X1].Pre, X16, X17), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X16, X17");
+        TestInst(SETGPTN(_[X1].Pre, XZR, X17), asm => asm.SETGPTN(_[X1].Pre, XZR, X17), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, XZR, X17");
+        TestInst(SETGPTN(_[X1].Pre, X1, XZR), asm => asm.SETGPTN(_[X1].Pre, X1, XZR), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X1, XZR");
+        TestInst(SETGPTN(_[X1].Pre, X16, XZR), asm => asm.SETGPTN(_[X1].Pre, X16, XZR), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, X16, XZR");
+        TestInst(SETGPTN(_[X1].Pre, XZR, XZR), asm => asm.SETGPTN(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETGPTN_set_memcms, Arm64Mnemonic.SETGPTN, "SETGPTN [X1]!, XZR, XZR");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STUMINL_General : Arm64InstructionFact
     [TestMethod]
     public void Test_STUMINL_lduminl_32_memop_0()
     {
-        TestInst(STUMINL(W0, _[X2]), Arm64InstructionId.STUMINL_lduminl_32_memop, Arm64Mnemonic.STUMINL, "STUMINL W0, [X2]");
-        TestInst(STUMINL(W15, _[X2]), Arm64InstructionId.STUMINL_lduminl_32_memop, Arm64Mnemonic.STUMINL, "STUMINL W15, [X2]");
-        TestInst(STUMINL(WZR, _[X2]), Arm64InstructionId.STUMINL_lduminl_32_memop, Arm64Mnemonic.STUMINL, "STUMINL WZR, [X2]");
+        TestInst(STUMINL(W0, _[X2]), asm => asm.STUMINL(W0, _[X2]), Arm64InstructionId.STUMINL_lduminl_32_memop, Arm64Mnemonic.STUMINL, "STUMINL W0, [X2]");
+        TestInst(STUMINL(W15, _[X2]), asm => asm.STUMINL(W15, _[X2]), Arm64InstructionId.STUMINL_lduminl_32_memop, Arm64Mnemonic.STUMINL, "STUMINL W15, [X2]");
+        TestInst(STUMINL(WZR, _[X2]), asm => asm.STUMINL(WZR, _[X2]), Arm64InstructionId.STUMINL_lduminl_32_memop, Arm64Mnemonic.STUMINL, "STUMINL WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STUMINL_General : Arm64InstructionFact
     [TestMethod]
     public void Test_STUMINL_lduminl_64_memop_1()
     {
-        TestInst(STUMINL(X0, _[X2]), Arm64InstructionId.STUMINL_lduminl_64_memop, Arm64Mnemonic.STUMINL, "STUMINL X0, [X2]");
-        TestInst(STUMINL(X15, _[X2]), Arm64InstructionId.STUMINL_lduminl_64_memop, Arm64Mnemonic.STUMINL, "STUMINL X15, [X2]");
-        TestInst(STUMINL(XZR, _[X2]), Arm64InstructionId.STUMINL_lduminl_64_memop, Arm64Mnemonic.STUMINL, "STUMINL XZR, [X2]");
+        TestInst(STUMINL(X0, _[X2]), asm => asm.STUMINL(X0, _[X2]), Arm64InstructionId.STUMINL_lduminl_64_memop, Arm64Mnemonic.STUMINL, "STUMINL X0, [X2]");
+        TestInst(STUMINL(X15, _[X2]), asm => asm.STUMINL(X15, _[X2]), Arm64InstructionId.STUMINL_lduminl_64_memop, Arm64Mnemonic.STUMINL, "STUMINL X15, [X2]");
+        TestInst(STUMINL(XZR, _[X2]), asm => asm.STUMINL(XZR, _[X2]), Arm64InstructionId.STUMINL_lduminl_64_memop, Arm64Mnemonic.STUMINL, "STUMINL XZR, [X2]");
     }
 }

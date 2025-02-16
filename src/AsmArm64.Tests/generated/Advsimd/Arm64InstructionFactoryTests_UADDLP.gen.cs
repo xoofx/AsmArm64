@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_UADDLP_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_UADDLP_asimdmisc_p_0()
     {
-        TestInst(UADDLP(V0.T_4H, V1.T_8B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.4H, V1.8B");
-        TestInst(UADDLP(V30.T_4H, V1.T_8B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.4H, V1.8B");
-        TestInst(UADDLP(V0.T_4H, V31.T_8B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.4H, V31.8B");
-        TestInst(UADDLP(V30.T_4H, V31.T_8B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.4H, V31.8B");
+        TestInst(UADDLP(V0.T_4H, V1.T_8B), asm => asm.UADDLP(V0.T_4H, V1.T_8B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.4H, V1.8B");
+        TestInst(UADDLP(V30.T_4H, V1.T_8B), asm => asm.UADDLP(V30.T_4H, V1.T_8B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.4H, V1.8B");
+        TestInst(UADDLP(V0.T_4H, V31.T_8B), asm => asm.UADDLP(V0.T_4H, V31.T_8B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.4H, V31.8B");
+        TestInst(UADDLP(V30.T_4H, V31.T_8B), asm => asm.UADDLP(V30.T_4H, V31.T_8B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.4H, V31.8B");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_UADDLP_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_UADDLP_asimdmisc_p_1()
     {
-        TestInst(UADDLP(V0.T_8H, V1.T_16B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.8H, V1.16B");
-        TestInst(UADDLP(V30.T_8H, V1.T_16B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.8H, V1.16B");
-        TestInst(UADDLP(V0.T_8H, V31.T_16B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.8H, V31.16B");
-        TestInst(UADDLP(V30.T_8H, V31.T_16B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.8H, V31.16B");
+        TestInst(UADDLP(V0.T_8H, V1.T_16B), asm => asm.UADDLP(V0.T_8H, V1.T_16B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.8H, V1.16B");
+        TestInst(UADDLP(V30.T_8H, V1.T_16B), asm => asm.UADDLP(V30.T_8H, V1.T_16B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.8H, V1.16B");
+        TestInst(UADDLP(V0.T_8H, V31.T_16B), asm => asm.UADDLP(V0.T_8H, V31.T_16B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.8H, V31.16B");
+        TestInst(UADDLP(V30.T_8H, V31.T_16B), asm => asm.UADDLP(V30.T_8H, V31.T_16B), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.8H, V31.16B");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_UADDLP_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_UADDLP_asimdmisc_p_2()
     {
-        TestInst(UADDLP(V0.T_2S, V1.T_4H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.2S, V1.4H");
-        TestInst(UADDLP(V30.T_2S, V1.T_4H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.2S, V1.4H");
-        TestInst(UADDLP(V0.T_2S, V31.T_4H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.2S, V31.4H");
-        TestInst(UADDLP(V30.T_2S, V31.T_4H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.2S, V31.4H");
+        TestInst(UADDLP(V0.T_2S, V1.T_4H), asm => asm.UADDLP(V0.T_2S, V1.T_4H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.2S, V1.4H");
+        TestInst(UADDLP(V30.T_2S, V1.T_4H), asm => asm.UADDLP(V30.T_2S, V1.T_4H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.2S, V1.4H");
+        TestInst(UADDLP(V0.T_2S, V31.T_4H), asm => asm.UADDLP(V0.T_2S, V31.T_4H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.2S, V31.4H");
+        TestInst(UADDLP(V30.T_2S, V31.T_4H), asm => asm.UADDLP(V30.T_2S, V31.T_4H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.2S, V31.4H");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_UADDLP_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_UADDLP_asimdmisc_p_3()
     {
-        TestInst(UADDLP(V0.T_4S, V1.T_8H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.4S, V1.8H");
-        TestInst(UADDLP(V30.T_4S, V1.T_8H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.4S, V1.8H");
-        TestInst(UADDLP(V0.T_4S, V31.T_8H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.4S, V31.8H");
-        TestInst(UADDLP(V30.T_4S, V31.T_8H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.4S, V31.8H");
+        TestInst(UADDLP(V0.T_4S, V1.T_8H), asm => asm.UADDLP(V0.T_4S, V1.T_8H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.4S, V1.8H");
+        TestInst(UADDLP(V30.T_4S, V1.T_8H), asm => asm.UADDLP(V30.T_4S, V1.T_8H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.4S, V1.8H");
+        TestInst(UADDLP(V0.T_4S, V31.T_8H), asm => asm.UADDLP(V0.T_4S, V31.T_8H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.4S, V31.8H");
+        TestInst(UADDLP(V30.T_4S, V31.T_8H), asm => asm.UADDLP(V30.T_4S, V31.T_8H), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.4S, V31.8H");
     }
     
     /// <summary>
@@ -72,10 +71,10 @@ public class Arm64InstructionFactoryTests_UADDLP_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_UADDLP_asimdmisc_p_4()
     {
-        TestInst(UADDLP(V0.T_1D, V1.T_2S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.1D, V1.2S");
-        TestInst(UADDLP(V30.T_1D, V1.T_2S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.1D, V1.2S");
-        TestInst(UADDLP(V0.T_1D, V31.T_2S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.1D, V31.2S");
-        TestInst(UADDLP(V30.T_1D, V31.T_2S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.1D, V31.2S");
+        TestInst(UADDLP(V0.T_1D, V1.T_2S), asm => asm.UADDLP(V0.T_1D, V1.T_2S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.1D, V1.2S");
+        TestInst(UADDLP(V30.T_1D, V1.T_2S), asm => asm.UADDLP(V30.T_1D, V1.T_2S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.1D, V1.2S");
+        TestInst(UADDLP(V0.T_1D, V31.T_2S), asm => asm.UADDLP(V0.T_1D, V31.T_2S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.1D, V31.2S");
+        TestInst(UADDLP(V30.T_1D, V31.T_2S), asm => asm.UADDLP(V30.T_1D, V31.T_2S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.1D, V31.2S");
     }
     
     /// <summary>
@@ -84,9 +83,9 @@ public class Arm64InstructionFactoryTests_UADDLP_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_UADDLP_asimdmisc_p_5()
     {
-        TestInst(UADDLP(V0.T_2D, V1.T_4S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.2D, V1.4S");
-        TestInst(UADDLP(V30.T_2D, V1.T_4S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.2D, V1.4S");
-        TestInst(UADDLP(V0.T_2D, V31.T_4S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.2D, V31.4S");
-        TestInst(UADDLP(V30.T_2D, V31.T_4S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.2D, V31.4S");
+        TestInst(UADDLP(V0.T_2D, V1.T_4S), asm => asm.UADDLP(V0.T_2D, V1.T_4S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.2D, V1.4S");
+        TestInst(UADDLP(V30.T_2D, V1.T_4S), asm => asm.UADDLP(V30.T_2D, V1.T_4S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.2D, V1.4S");
+        TestInst(UADDLP(V0.T_2D, V31.T_4S), asm => asm.UADDLP(V0.T_2D, V31.T_4S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V0.2D, V31.4S");
+        TestInst(UADDLP(V30.T_2D, V31.T_4S), asm => asm.UADDLP(V30.T_2D, V31.T_4S), Arm64InstructionId.UADDLP_asimdmisc_p, Arm64Mnemonic.UADDLP, "UADDLP V30.2D, V31.4S");
     }
 }

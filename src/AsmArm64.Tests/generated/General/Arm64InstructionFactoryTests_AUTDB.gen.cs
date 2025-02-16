@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_AUTDB_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_AUTDB_64p_dp_1src_0()
     {
-        TestInst(AUTDB(X0, X2), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X0, X2");
-        TestInst(AUTDB(X15, X2), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X15, X2");
-        TestInst(AUTDB(XZR, X2), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB XZR, X2");
-        TestInst(AUTDB(X0, X18), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X0, X18");
-        TestInst(AUTDB(X15, X18), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X15, X18");
-        TestInst(AUTDB(XZR, X18), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB XZR, X18");
-        TestInst(AUTDB(X0, SP), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X0, SP");
-        TestInst(AUTDB(X15, SP), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X15, SP");
-        TestInst(AUTDB(XZR, SP), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB XZR, SP");
+        TestInst(AUTDB(X0, X2), asm => asm.AUTDB(X0, X2), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X0, X2");
+        TestInst(AUTDB(X15, X2), asm => asm.AUTDB(X15, X2), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X15, X2");
+        TestInst(AUTDB(XZR, X2), asm => asm.AUTDB(XZR, X2), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB XZR, X2");
+        TestInst(AUTDB(X0, X18), asm => asm.AUTDB(X0, X18), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X0, X18");
+        TestInst(AUTDB(X15, X18), asm => asm.AUTDB(X15, X18), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X15, X18");
+        TestInst(AUTDB(XZR, X18), asm => asm.AUTDB(XZR, X18), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB XZR, X18");
+        TestInst(AUTDB(X0, SP), asm => asm.AUTDB(X0, SP), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X0, SP");
+        TestInst(AUTDB(X15, SP), asm => asm.AUTDB(X15, SP), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB X15, SP");
+        TestInst(AUTDB(XZR, SP), asm => asm.AUTDB(XZR, SP), Arm64InstructionId.AUTDB_64p_dp_1src, Arm64Mnemonic.AUTDB, "AUTDB XZR, SP");
     }
 }

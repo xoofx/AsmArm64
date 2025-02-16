@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDBFMAXNMAL_Advsimd : Arm64Instruction
     [TestMethod]
     public void Test_LDBFMAXNMAL_16_0()
     {
-        TestInst(LDBFMAXNMAL(H0, H1, _[X3]), Arm64InstructionId.LDBFMAXNMAL_16, Arm64Mnemonic.LDBFMAXNMAL, "LDBFMAXNMAL H0, H1, [X3]");
-        TestInst(LDBFMAXNMAL(H31, H1, _[X3]), Arm64InstructionId.LDBFMAXNMAL_16, Arm64Mnemonic.LDBFMAXNMAL, "LDBFMAXNMAL H31, H1, [X3]");
-        TestInst(LDBFMAXNMAL(H0, H31, _[X3]), Arm64InstructionId.LDBFMAXNMAL_16, Arm64Mnemonic.LDBFMAXNMAL, "LDBFMAXNMAL H0, H31, [X3]");
-        TestInst(LDBFMAXNMAL(H31, H31, _[X3]), Arm64InstructionId.LDBFMAXNMAL_16, Arm64Mnemonic.LDBFMAXNMAL, "LDBFMAXNMAL H31, H31, [X3]");
+        TestInst(LDBFMAXNMAL(H0, H1, _[X3]), asm => asm.LDBFMAXNMAL(H0, H1, _[X3]), Arm64InstructionId.LDBFMAXNMAL_16, Arm64Mnemonic.LDBFMAXNMAL, "LDBFMAXNMAL H0, H1, [X3]");
+        TestInst(LDBFMAXNMAL(H31, H1, _[X3]), asm => asm.LDBFMAXNMAL(H31, H1, _[X3]), Arm64InstructionId.LDBFMAXNMAL_16, Arm64Mnemonic.LDBFMAXNMAL, "LDBFMAXNMAL H31, H1, [X3]");
+        TestInst(LDBFMAXNMAL(H0, H31, _[X3]), asm => asm.LDBFMAXNMAL(H0, H31, _[X3]), Arm64InstructionId.LDBFMAXNMAL_16, Arm64Mnemonic.LDBFMAXNMAL, "LDBFMAXNMAL H0, H31, [X3]");
+        TestInst(LDBFMAXNMAL(H31, H31, _[X3]), asm => asm.LDBFMAXNMAL(H31, H31, _[X3]), Arm64InstructionId.LDBFMAXNMAL_16, Arm64Mnemonic.LDBFMAXNMAL, "LDBFMAXNMAL H31, H31, [X3]");
     }
 }

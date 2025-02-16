@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,13 +23,13 @@ public class Arm64InstructionFactoryTests_SM3TT2B_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_SM3TT2B_vvv_crypto3_imm2_0()
     {
-        TestInst(SM3TT2B(V0.T_4S, V1.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V1.4S, V2.S[1]");
-        TestInst(SM3TT2B(V30.T_4S, V1.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V1.4S, V2.S[1]");
-        TestInst(SM3TT2B(V0.T_4S, V31.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V31.4S, V2.S[1]");
-        TestInst(SM3TT2B(V30.T_4S, V31.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V31.4S, V2.S[1]");
-        TestInst(SM3TT2B(V0.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V1.4S, V0.S[1]");
-        TestInst(SM3TT2B(V30.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V1.4S, V0.S[1]");
-        TestInst(SM3TT2B(V0.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V31.4S, V0.S[1]");
-        TestInst(SM3TT2B(V30.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V31.4S, V0.S[1]");
+        TestInst(SM3TT2B(V0.T_4S, V1.T_4S, V2.S[1]), asm => asm.SM3TT2B(V0.T_4S, V1.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V1.4S, V2.S[1]");
+        TestInst(SM3TT2B(V30.T_4S, V1.T_4S, V2.S[1]), asm => asm.SM3TT2B(V30.T_4S, V1.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V1.4S, V2.S[1]");
+        TestInst(SM3TT2B(V0.T_4S, V31.T_4S, V2.S[1]), asm => asm.SM3TT2B(V0.T_4S, V31.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V31.4S, V2.S[1]");
+        TestInst(SM3TT2B(V30.T_4S, V31.T_4S, V2.S[1]), asm => asm.SM3TT2B(V30.T_4S, V31.T_4S, V2.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V31.4S, V2.S[1]");
+        TestInst(SM3TT2B(V0.T_4S, V1.T_4S, V0.S[1]), asm => asm.SM3TT2B(V0.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V1.4S, V0.S[1]");
+        TestInst(SM3TT2B(V30.T_4S, V1.T_4S, V0.S[1]), asm => asm.SM3TT2B(V30.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V1.4S, V0.S[1]");
+        TestInst(SM3TT2B(V0.T_4S, V31.T_4S, V0.S[1]), asm => asm.SM3TT2B(V0.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V0.4S, V31.4S, V0.S[1]");
+        TestInst(SM3TT2B(V30.T_4S, V31.T_4S, V0.S[1]), asm => asm.SM3TT2B(V30.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SM3TT2B_vvv_crypto3_imm2, Arm64Mnemonic.SM3TT2B, "SM3TT2B V30.4S, V31.4S, V0.S[1]");
     }
 }

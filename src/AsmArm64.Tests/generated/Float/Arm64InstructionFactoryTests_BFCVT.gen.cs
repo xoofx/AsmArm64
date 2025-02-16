@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -23,9 +22,9 @@ public class Arm64InstructionFactoryTests_BFCVT_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BFCVT_bs_floatdp1_0()
     {
-        TestInst(BFCVT(H0, S1), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H0, S1");
-        TestInst(BFCVT(H31, S1), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H31, S1");
-        TestInst(BFCVT(H0, S31), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H0, S31");
-        TestInst(BFCVT(H31, S31), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H31, S31");
+        TestInst(BFCVT(H0, S1), asm => asm.BFCVT(H0, S1), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H0, S1");
+        TestInst(BFCVT(H31, S1), asm => asm.BFCVT(H31, S1), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H31, S1");
+        TestInst(BFCVT(H0, S31), asm => asm.BFCVT(H0, S31), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H0, S31");
+        TestInst(BFCVT(H31, S31), asm => asm.BFCVT(H31, S31), Arm64InstructionId.BFCVT_bs_floatdp1, Arm64Mnemonic.BFCVT, "BFCVT H31, S31");
     }
 }

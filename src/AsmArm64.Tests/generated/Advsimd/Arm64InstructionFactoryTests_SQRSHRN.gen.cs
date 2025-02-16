@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_SQRSHRN_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_SQRSHRN_asisdshf_n_0()
     {
-        TestInst(SQRSHRN(B1, H2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN B1, H2, #5");
-        TestInst(SQRSHRN(B31, H2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN B31, H2, #5");
-        TestInst(SQRSHRN(B1, H0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN B1, H0, #5");
-        TestInst(SQRSHRN(B31, H0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN B31, H0, #5");
+        TestInst(SQRSHRN(B1, H2, 5), asm => asm.SQRSHRN(B1, H2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN B1, H2, #5");
+        TestInst(SQRSHRN(B31, H2, 5), asm => asm.SQRSHRN(B31, H2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN B31, H2, #5");
+        TestInst(SQRSHRN(B1, H0, 5), asm => asm.SQRSHRN(B1, H0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN B1, H0, #5");
+        TestInst(SQRSHRN(B31, H0, 5), asm => asm.SQRSHRN(B31, H0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN B31, H0, #5");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_SQRSHRN_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_SQRSHRN_asisdshf_n_1()
     {
-        TestInst(SQRSHRN(H1, S2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN H1, S2, #5");
-        TestInst(SQRSHRN(H31, S2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN H31, S2, #5");
-        TestInst(SQRSHRN(H1, S0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN H1, S0, #5");
-        TestInst(SQRSHRN(H31, S0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN H31, S0, #5");
+        TestInst(SQRSHRN(H1, S2, 5), asm => asm.SQRSHRN(H1, S2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN H1, S2, #5");
+        TestInst(SQRSHRN(H31, S2, 5), asm => asm.SQRSHRN(H31, S2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN H31, S2, #5");
+        TestInst(SQRSHRN(H1, S0, 5), asm => asm.SQRSHRN(H1, S0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN H1, S0, #5");
+        TestInst(SQRSHRN(H31, S0, 5), asm => asm.SQRSHRN(H31, S0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN H31, S0, #5");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_SQRSHRN_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_SQRSHRN_asisdshf_n_2()
     {
-        TestInst(SQRSHRN(S1, D2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN S1, D2, #5");
-        TestInst(SQRSHRN(S31, D2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN S31, D2, #5");
-        TestInst(SQRSHRN(S1, D0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN S1, D0, #5");
-        TestInst(SQRSHRN(S31, D0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN S31, D0, #5");
+        TestInst(SQRSHRN(S1, D2, 5), asm => asm.SQRSHRN(S1, D2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN S1, D2, #5");
+        TestInst(SQRSHRN(S31, D2, 5), asm => asm.SQRSHRN(S31, D2, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN S31, D2, #5");
+        TestInst(SQRSHRN(S1, D0, 5), asm => asm.SQRSHRN(S1, D0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN S1, D0, #5");
+        TestInst(SQRSHRN(S31, D0, 5), asm => asm.SQRSHRN(S31, D0, 5), Arm64InstructionId.SQRSHRN_asisdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN S31, D0, #5");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_SQRSHRN_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_SQRSHRN_asimdshf_n_3()
     {
-        TestInst(SQRSHRN(V0.T_8B, V1.T_8H, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.8B, V1.8H, #5");
-        TestInst(SQRSHRN(V30.T_8B, V1.T_8H, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.8B, V1.8H, #5");
-        TestInst(SQRSHRN(V0.T_8B, V31.T_8H, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.8B, V31.8H, #5");
-        TestInst(SQRSHRN(V30.T_8B, V31.T_8H, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.8B, V31.8H, #5");
+        TestInst(SQRSHRN(V0.T_8B, V1.T_8H, 5), asm => asm.SQRSHRN(V0.T_8B, V1.T_8H, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.8B, V1.8H, #5");
+        TestInst(SQRSHRN(V30.T_8B, V1.T_8H, 5), asm => asm.SQRSHRN(V30.T_8B, V1.T_8H, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.8B, V1.8H, #5");
+        TestInst(SQRSHRN(V0.T_8B, V31.T_8H, 5), asm => asm.SQRSHRN(V0.T_8B, V31.T_8H, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.8B, V31.8H, #5");
+        TestInst(SQRSHRN(V30.T_8B, V31.T_8H, 5), asm => asm.SQRSHRN(V30.T_8B, V31.T_8H, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.8B, V31.8H, #5");
     }
     
     /// <summary>
@@ -72,10 +71,10 @@ public class Arm64InstructionFactoryTests_SQRSHRN_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_SQRSHRN_asimdshf_n_4()
     {
-        TestInst(SQRSHRN(V0.T_4H, V1.T_4S, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.4H, V1.4S, #5");
-        TestInst(SQRSHRN(V30.T_4H, V1.T_4S, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.4H, V1.4S, #5");
-        TestInst(SQRSHRN(V0.T_4H, V31.T_4S, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.4H, V31.4S, #5");
-        TestInst(SQRSHRN(V30.T_4H, V31.T_4S, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.4H, V31.4S, #5");
+        TestInst(SQRSHRN(V0.T_4H, V1.T_4S, 5), asm => asm.SQRSHRN(V0.T_4H, V1.T_4S, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.4H, V1.4S, #5");
+        TestInst(SQRSHRN(V30.T_4H, V1.T_4S, 5), asm => asm.SQRSHRN(V30.T_4H, V1.T_4S, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.4H, V1.4S, #5");
+        TestInst(SQRSHRN(V0.T_4H, V31.T_4S, 5), asm => asm.SQRSHRN(V0.T_4H, V31.T_4S, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.4H, V31.4S, #5");
+        TestInst(SQRSHRN(V30.T_4H, V31.T_4S, 5), asm => asm.SQRSHRN(V30.T_4H, V31.T_4S, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.4H, V31.4S, #5");
     }
     
     /// <summary>
@@ -84,9 +83,9 @@ public class Arm64InstructionFactoryTests_SQRSHRN_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_SQRSHRN_asimdshf_n_5()
     {
-        TestInst(SQRSHRN(V0.T_2S, V1.T_2D, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.2S, V1.2D, #5");
-        TestInst(SQRSHRN(V30.T_2S, V1.T_2D, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.2S, V1.2D, #5");
-        TestInst(SQRSHRN(V0.T_2S, V31.T_2D, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.2S, V31.2D, #5");
-        TestInst(SQRSHRN(V30.T_2S, V31.T_2D, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.2S, V31.2D, #5");
+        TestInst(SQRSHRN(V0.T_2S, V1.T_2D, 5), asm => asm.SQRSHRN(V0.T_2S, V1.T_2D, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.2S, V1.2D, #5");
+        TestInst(SQRSHRN(V30.T_2S, V1.T_2D, 5), asm => asm.SQRSHRN(V30.T_2S, V1.T_2D, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.2S, V1.2D, #5");
+        TestInst(SQRSHRN(V0.T_2S, V31.T_2D, 5), asm => asm.SQRSHRN(V0.T_2S, V31.T_2D, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V0.2S, V31.2D, #5");
+        TestInst(SQRSHRN(V30.T_2S, V31.T_2D, 5), asm => asm.SQRSHRN(V30.T_2S, V31.T_2D, 5), Arm64InstructionId.SQRSHRN_asimdshf_n, Arm64Mnemonic.SQRSHRN, "SQRSHRN V30.2S, V31.2D, #5");
     }
 }

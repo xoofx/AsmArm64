@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Other;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDRAB_Other : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDRAB_64_ldst_pac_0()
     {
-        TestInst(LDRAB(X0, _[X2, 40]), Arm64InstructionId.LDRAB_64_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB X0, [X2, #40]");
-        TestInst(LDRAB(X15, _[X2, 40]), Arm64InstructionId.LDRAB_64_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB X15, [X2, #40]");
-        TestInst(LDRAB(XZR, _[X2, 40]), Arm64InstructionId.LDRAB_64_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB XZR, [X2, #40]");
+        TestInst(LDRAB(X0, _[X2, 40]), asm => asm.LDRAB(X0, _[X2, 40]), Arm64InstructionId.LDRAB_64_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB X0, [X2, #40]");
+        TestInst(LDRAB(X15, _[X2, 40]), asm => asm.LDRAB(X15, _[X2, 40]), Arm64InstructionId.LDRAB_64_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB X15, [X2, #40]");
+        TestInst(LDRAB(XZR, _[X2, 40]), asm => asm.LDRAB(XZR, _[X2, 40]), Arm64InstructionId.LDRAB_64_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB XZR, [X2, #40]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_LDRAB_Other : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDRAB_64w_ldst_pac_1()
     {
-        TestInst(LDRAB(X0, _[X2, 40].Pre), Arm64InstructionId.LDRAB_64w_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB X0, [X2, #40]!");
-        TestInst(LDRAB(X15, _[X2, 40].Pre), Arm64InstructionId.LDRAB_64w_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB X15, [X2, #40]!");
-        TestInst(LDRAB(XZR, _[X2, 40].Pre), Arm64InstructionId.LDRAB_64w_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB XZR, [X2, #40]!");
+        TestInst(LDRAB(X0, _[X2, 40].Pre), asm => asm.LDRAB(X0, _[X2, 40].Pre), Arm64InstructionId.LDRAB_64w_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB X0, [X2, #40]!");
+        TestInst(LDRAB(X15, _[X2, 40].Pre), asm => asm.LDRAB(X15, _[X2, 40].Pre), Arm64InstructionId.LDRAB_64w_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB X15, [X2, #40]!");
+        TestInst(LDRAB(XZR, _[X2, 40].Pre), asm => asm.LDRAB(XZR, _[X2, 40].Pre), Arm64InstructionId.LDRAB_64w_ldst_pac, Arm64Mnemonic.LDRAB, "LDRAB XZR, [X2, #40]!");
     }
 }

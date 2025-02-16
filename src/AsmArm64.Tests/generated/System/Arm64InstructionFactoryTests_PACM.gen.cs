@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_PACM_System : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_PACM_hi_hints_0()
     {
-        TestInst(PACM(), Arm64InstructionId.PACM_hi_hints, Arm64Mnemonic.PACM, "PACM");
+        TestInst(PACM(), asm => asm.PACM(), Arm64InstructionId.PACM_hi_hints, Arm64Mnemonic.PACM, "PACM");
     }
 }

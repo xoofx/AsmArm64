@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,22 +23,22 @@ public class Arm64InstructionFactoryTests_FNMSUB_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FNMSUB_h_floatdp3_0()
     {
-        TestInst(FNMSUB(H0, H1, H2, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H1, H2, H3");
-        TestInst(FNMSUB(H31, H1, H2, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H1, H2, H3");
-        TestInst(FNMSUB(H0, H31, H2, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H31, H2, H3");
-        TestInst(FNMSUB(H31, H31, H2, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H31, H2, H3");
-        TestInst(FNMSUB(H0, H1, H31, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H1, H31, H3");
-        TestInst(FNMSUB(H31, H1, H31, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H1, H31, H3");
-        TestInst(FNMSUB(H0, H31, H31, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H31, H31, H3");
-        TestInst(FNMSUB(H31, H31, H31, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H31, H31, H3");
-        TestInst(FNMSUB(H0, H1, H2, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H1, H2, H31");
-        TestInst(FNMSUB(H31, H1, H2, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H1, H2, H31");
-        TestInst(FNMSUB(H0, H31, H2, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H31, H2, H31");
-        TestInst(FNMSUB(H31, H31, H2, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H31, H2, H31");
-        TestInst(FNMSUB(H0, H1, H31, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H1, H31, H31");
-        TestInst(FNMSUB(H31, H1, H31, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H1, H31, H31");
-        TestInst(FNMSUB(H0, H31, H31, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H31, H31, H31");
-        TestInst(FNMSUB(H31, H31, H31, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H31, H31, H31");
+        TestInst(FNMSUB(H0, H1, H2, H3), asm => asm.FNMSUB(H0, H1, H2, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H1, H2, H3");
+        TestInst(FNMSUB(H31, H1, H2, H3), asm => asm.FNMSUB(H31, H1, H2, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H1, H2, H3");
+        TestInst(FNMSUB(H0, H31, H2, H3), asm => asm.FNMSUB(H0, H31, H2, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H31, H2, H3");
+        TestInst(FNMSUB(H31, H31, H2, H3), asm => asm.FNMSUB(H31, H31, H2, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H31, H2, H3");
+        TestInst(FNMSUB(H0, H1, H31, H3), asm => asm.FNMSUB(H0, H1, H31, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H1, H31, H3");
+        TestInst(FNMSUB(H31, H1, H31, H3), asm => asm.FNMSUB(H31, H1, H31, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H1, H31, H3");
+        TestInst(FNMSUB(H0, H31, H31, H3), asm => asm.FNMSUB(H0, H31, H31, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H31, H31, H3");
+        TestInst(FNMSUB(H31, H31, H31, H3), asm => asm.FNMSUB(H31, H31, H31, H3), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H31, H31, H3");
+        TestInst(FNMSUB(H0, H1, H2, H31), asm => asm.FNMSUB(H0, H1, H2, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H1, H2, H31");
+        TestInst(FNMSUB(H31, H1, H2, H31), asm => asm.FNMSUB(H31, H1, H2, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H1, H2, H31");
+        TestInst(FNMSUB(H0, H31, H2, H31), asm => asm.FNMSUB(H0, H31, H2, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H31, H2, H31");
+        TestInst(FNMSUB(H31, H31, H2, H31), asm => asm.FNMSUB(H31, H31, H2, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H31, H2, H31");
+        TestInst(FNMSUB(H0, H1, H31, H31), asm => asm.FNMSUB(H0, H1, H31, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H1, H31, H31");
+        TestInst(FNMSUB(H31, H1, H31, H31), asm => asm.FNMSUB(H31, H1, H31, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H1, H31, H31");
+        TestInst(FNMSUB(H0, H31, H31, H31), asm => asm.FNMSUB(H0, H31, H31, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H0, H31, H31, H31");
+        TestInst(FNMSUB(H31, H31, H31, H31), asm => asm.FNMSUB(H31, H31, H31, H31), Arm64InstructionId.FNMSUB_h_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB H31, H31, H31, H31");
     }
     
     /// <summary>
@@ -48,22 +47,22 @@ public class Arm64InstructionFactoryTests_FNMSUB_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FNMSUB_s_floatdp3_1()
     {
-        TestInst(FNMSUB(S0, S1, S2, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S1, S2, S3");
-        TestInst(FNMSUB(S31, S1, S2, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S1, S2, S3");
-        TestInst(FNMSUB(S0, S31, S2, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S31, S2, S3");
-        TestInst(FNMSUB(S31, S31, S2, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S31, S2, S3");
-        TestInst(FNMSUB(S0, S1, S31, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S1, S31, S3");
-        TestInst(FNMSUB(S31, S1, S31, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S1, S31, S3");
-        TestInst(FNMSUB(S0, S31, S31, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S31, S31, S3");
-        TestInst(FNMSUB(S31, S31, S31, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S31, S31, S3");
-        TestInst(FNMSUB(S0, S1, S2, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S1, S2, S31");
-        TestInst(FNMSUB(S31, S1, S2, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S1, S2, S31");
-        TestInst(FNMSUB(S0, S31, S2, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S31, S2, S31");
-        TestInst(FNMSUB(S31, S31, S2, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S31, S2, S31");
-        TestInst(FNMSUB(S0, S1, S31, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S1, S31, S31");
-        TestInst(FNMSUB(S31, S1, S31, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S1, S31, S31");
-        TestInst(FNMSUB(S0, S31, S31, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S31, S31, S31");
-        TestInst(FNMSUB(S31, S31, S31, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S31, S31, S31");
+        TestInst(FNMSUB(S0, S1, S2, S3), asm => asm.FNMSUB(S0, S1, S2, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S1, S2, S3");
+        TestInst(FNMSUB(S31, S1, S2, S3), asm => asm.FNMSUB(S31, S1, S2, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S1, S2, S3");
+        TestInst(FNMSUB(S0, S31, S2, S3), asm => asm.FNMSUB(S0, S31, S2, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S31, S2, S3");
+        TestInst(FNMSUB(S31, S31, S2, S3), asm => asm.FNMSUB(S31, S31, S2, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S31, S2, S3");
+        TestInst(FNMSUB(S0, S1, S31, S3), asm => asm.FNMSUB(S0, S1, S31, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S1, S31, S3");
+        TestInst(FNMSUB(S31, S1, S31, S3), asm => asm.FNMSUB(S31, S1, S31, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S1, S31, S3");
+        TestInst(FNMSUB(S0, S31, S31, S3), asm => asm.FNMSUB(S0, S31, S31, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S31, S31, S3");
+        TestInst(FNMSUB(S31, S31, S31, S3), asm => asm.FNMSUB(S31, S31, S31, S3), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S31, S31, S3");
+        TestInst(FNMSUB(S0, S1, S2, S31), asm => asm.FNMSUB(S0, S1, S2, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S1, S2, S31");
+        TestInst(FNMSUB(S31, S1, S2, S31), asm => asm.FNMSUB(S31, S1, S2, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S1, S2, S31");
+        TestInst(FNMSUB(S0, S31, S2, S31), asm => asm.FNMSUB(S0, S31, S2, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S31, S2, S31");
+        TestInst(FNMSUB(S31, S31, S2, S31), asm => asm.FNMSUB(S31, S31, S2, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S31, S2, S31");
+        TestInst(FNMSUB(S0, S1, S31, S31), asm => asm.FNMSUB(S0, S1, S31, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S1, S31, S31");
+        TestInst(FNMSUB(S31, S1, S31, S31), asm => asm.FNMSUB(S31, S1, S31, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S1, S31, S31");
+        TestInst(FNMSUB(S0, S31, S31, S31), asm => asm.FNMSUB(S0, S31, S31, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S0, S31, S31, S31");
+        TestInst(FNMSUB(S31, S31, S31, S31), asm => asm.FNMSUB(S31, S31, S31, S31), Arm64InstructionId.FNMSUB_s_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB S31, S31, S31, S31");
     }
     
     /// <summary>
@@ -72,21 +71,21 @@ public class Arm64InstructionFactoryTests_FNMSUB_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FNMSUB_d_floatdp3_2()
     {
-        TestInst(FNMSUB(D0, D1, D2, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D1, D2, D3");
-        TestInst(FNMSUB(D31, D1, D2, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D1, D2, D3");
-        TestInst(FNMSUB(D0, D31, D2, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D31, D2, D3");
-        TestInst(FNMSUB(D31, D31, D2, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D31, D2, D3");
-        TestInst(FNMSUB(D0, D1, D31, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D1, D31, D3");
-        TestInst(FNMSUB(D31, D1, D31, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D1, D31, D3");
-        TestInst(FNMSUB(D0, D31, D31, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D31, D31, D3");
-        TestInst(FNMSUB(D31, D31, D31, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D31, D31, D3");
-        TestInst(FNMSUB(D0, D1, D2, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D1, D2, D31");
-        TestInst(FNMSUB(D31, D1, D2, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D1, D2, D31");
-        TestInst(FNMSUB(D0, D31, D2, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D31, D2, D31");
-        TestInst(FNMSUB(D31, D31, D2, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D31, D2, D31");
-        TestInst(FNMSUB(D0, D1, D31, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D1, D31, D31");
-        TestInst(FNMSUB(D31, D1, D31, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D1, D31, D31");
-        TestInst(FNMSUB(D0, D31, D31, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D31, D31, D31");
-        TestInst(FNMSUB(D31, D31, D31, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D31, D31, D31");
+        TestInst(FNMSUB(D0, D1, D2, D3), asm => asm.FNMSUB(D0, D1, D2, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D1, D2, D3");
+        TestInst(FNMSUB(D31, D1, D2, D3), asm => asm.FNMSUB(D31, D1, D2, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D1, D2, D3");
+        TestInst(FNMSUB(D0, D31, D2, D3), asm => asm.FNMSUB(D0, D31, D2, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D31, D2, D3");
+        TestInst(FNMSUB(D31, D31, D2, D3), asm => asm.FNMSUB(D31, D31, D2, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D31, D2, D3");
+        TestInst(FNMSUB(D0, D1, D31, D3), asm => asm.FNMSUB(D0, D1, D31, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D1, D31, D3");
+        TestInst(FNMSUB(D31, D1, D31, D3), asm => asm.FNMSUB(D31, D1, D31, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D1, D31, D3");
+        TestInst(FNMSUB(D0, D31, D31, D3), asm => asm.FNMSUB(D0, D31, D31, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D31, D31, D3");
+        TestInst(FNMSUB(D31, D31, D31, D3), asm => asm.FNMSUB(D31, D31, D31, D3), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D31, D31, D3");
+        TestInst(FNMSUB(D0, D1, D2, D31), asm => asm.FNMSUB(D0, D1, D2, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D1, D2, D31");
+        TestInst(FNMSUB(D31, D1, D2, D31), asm => asm.FNMSUB(D31, D1, D2, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D1, D2, D31");
+        TestInst(FNMSUB(D0, D31, D2, D31), asm => asm.FNMSUB(D0, D31, D2, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D31, D2, D31");
+        TestInst(FNMSUB(D31, D31, D2, D31), asm => asm.FNMSUB(D31, D31, D2, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D31, D2, D31");
+        TestInst(FNMSUB(D0, D1, D31, D31), asm => asm.FNMSUB(D0, D1, D31, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D1, D31, D31");
+        TestInst(FNMSUB(D31, D1, D31, D31), asm => asm.FNMSUB(D31, D1, D31, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D1, D31, D31");
+        TestInst(FNMSUB(D0, D31, D31, D31), asm => asm.FNMSUB(D0, D31, D31, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D0, D31, D31, D31");
+        TestInst(FNMSUB(D31, D31, D31, D31), asm => asm.FNMSUB(D31, D31, D31, D31), Arm64InstructionId.FNMSUB_d_floatdp3, Arm64Mnemonic.FNMSUB, "FNMSUB D31, D31, D31, D31");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Fpsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_LDNP_Fpsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDNP_s_ldstnapair_offs_0()
     {
-        TestInst(LDNP(S0, S1, _[X3, 20]), Arm64InstructionId.LDNP_s_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP S0, S1, [X3, #20]");
-        TestInst(LDNP(S31, S1, _[X3, 20]), Arm64InstructionId.LDNP_s_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP S31, S1, [X3, #20]");
-        TestInst(LDNP(S0, S31, _[X3, 20]), Arm64InstructionId.LDNP_s_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP S0, S31, [X3, #20]");
-        TestInst(LDNP(S31, S31, _[X3, 20]), Arm64InstructionId.LDNP_s_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP S31, S31, [X3, #20]");
+        TestInst(LDNP(S0, S1, _[X3, 20]), asm => asm.LDNP(S0, S1, _[X3, 20]), Arm64InstructionId.LDNP_s_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP S0, S1, [X3, #20]");
+        TestInst(LDNP(S31, S1, _[X3, 20]), asm => asm.LDNP(S31, S1, _[X3, 20]), Arm64InstructionId.LDNP_s_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP S31, S1, [X3, #20]");
+        TestInst(LDNP(S0, S31, _[X3, 20]), asm => asm.LDNP(S0, S31, _[X3, 20]), Arm64InstructionId.LDNP_s_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP S0, S31, [X3, #20]");
+        TestInst(LDNP(S31, S31, _[X3, 20]), asm => asm.LDNP(S31, S31, _[X3, 20]), Arm64InstructionId.LDNP_s_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP S31, S31, [X3, #20]");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_LDNP_Fpsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDNP_d_ldstnapair_offs_1()
     {
-        TestInst(LDNP(D0, D1, _[X3, 40]), Arm64InstructionId.LDNP_d_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP D0, D1, [X3, #40]");
-        TestInst(LDNP(D31, D1, _[X3, 40]), Arm64InstructionId.LDNP_d_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP D31, D1, [X3, #40]");
-        TestInst(LDNP(D0, D31, _[X3, 40]), Arm64InstructionId.LDNP_d_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP D0, D31, [X3, #40]");
-        TestInst(LDNP(D31, D31, _[X3, 40]), Arm64InstructionId.LDNP_d_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP D31, D31, [X3, #40]");
+        TestInst(LDNP(D0, D1, _[X3, 40]), asm => asm.LDNP(D0, D1, _[X3, 40]), Arm64InstructionId.LDNP_d_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP D0, D1, [X3, #40]");
+        TestInst(LDNP(D31, D1, _[X3, 40]), asm => asm.LDNP(D31, D1, _[X3, 40]), Arm64InstructionId.LDNP_d_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP D31, D1, [X3, #40]");
+        TestInst(LDNP(D0, D31, _[X3, 40]), asm => asm.LDNP(D0, D31, _[X3, 40]), Arm64InstructionId.LDNP_d_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP D0, D31, [X3, #40]");
+        TestInst(LDNP(D31, D31, _[X3, 40]), asm => asm.LDNP(D31, D31, _[X3, 40]), Arm64InstructionId.LDNP_d_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP D31, D31, [X3, #40]");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_LDNP_Fpsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDNP_q_ldstnapair_offs_2()
     {
-        TestInst(LDNP(Q0, Q1, _[X3, 80]), Arm64InstructionId.LDNP_q_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP Q0, Q1, [X3, #80]");
-        TestInst(LDNP(Q31, Q1, _[X3, 80]), Arm64InstructionId.LDNP_q_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP Q31, Q1, [X3, #80]");
-        TestInst(LDNP(Q0, Q31, _[X3, 80]), Arm64InstructionId.LDNP_q_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP Q0, Q31, [X3, #80]");
-        TestInst(LDNP(Q31, Q31, _[X3, 80]), Arm64InstructionId.LDNP_q_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP Q31, Q31, [X3, #80]");
+        TestInst(LDNP(Q0, Q1, _[X3, 80]), asm => asm.LDNP(Q0, Q1, _[X3, 80]), Arm64InstructionId.LDNP_q_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP Q0, Q1, [X3, #80]");
+        TestInst(LDNP(Q31, Q1, _[X3, 80]), asm => asm.LDNP(Q31, Q1, _[X3, 80]), Arm64InstructionId.LDNP_q_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP Q31, Q1, [X3, #80]");
+        TestInst(LDNP(Q0, Q31, _[X3, 80]), asm => asm.LDNP(Q0, Q31, _[X3, 80]), Arm64InstructionId.LDNP_q_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP Q0, Q31, [X3, #80]");
+        TestInst(LDNP(Q31, Q31, _[X3, 80]), asm => asm.LDNP(Q31, Q31, _[X3, 80]), Arm64InstructionId.LDNP_q_ldstnapair_offs, Arm64Mnemonic.LDNP, "LDNP Q31, Q31, [X3, #80]");
     }
 }

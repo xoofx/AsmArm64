@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_CSDB_System : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CSDB_hi_hints_0()
     {
-        TestInst(CSDB(), Arm64InstructionId.CSDB_hi_hints, Arm64Mnemonic.CSDB, "CSDB");
+        TestInst(CSDB(), asm => asm.CSDB(), Arm64InstructionId.CSDB_hi_hints, Arm64Mnemonic.CSDB, "CSDB");
     }
 }

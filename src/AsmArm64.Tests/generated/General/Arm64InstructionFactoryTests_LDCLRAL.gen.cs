@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDCLRAL_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDCLRAL_32_memop_0()
     {
-        TestInst(LDCLRAL(W0, W1, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W0, W1, [X3]");
-        TestInst(LDCLRAL(W15, W1, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W15, W1, [X3]");
-        TestInst(LDCLRAL(WZR, W1, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL WZR, W1, [X3]");
-        TestInst(LDCLRAL(W0, W16, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W0, W16, [X3]");
-        TestInst(LDCLRAL(W15, W16, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W15, W16, [X3]");
-        TestInst(LDCLRAL(WZR, W16, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL WZR, W16, [X3]");
-        TestInst(LDCLRAL(W0, WZR, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W0, WZR, [X3]");
-        TestInst(LDCLRAL(W15, WZR, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W15, WZR, [X3]");
-        TestInst(LDCLRAL(WZR, WZR, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL WZR, WZR, [X3]");
+        TestInst(LDCLRAL(W0, W1, _[X3]), asm => asm.LDCLRAL(W0, W1, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W0, W1, [X3]");
+        TestInst(LDCLRAL(W15, W1, _[X3]), asm => asm.LDCLRAL(W15, W1, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W15, W1, [X3]");
+        TestInst(LDCLRAL(WZR, W1, _[X3]), asm => asm.LDCLRAL(WZR, W1, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL WZR, W1, [X3]");
+        TestInst(LDCLRAL(W0, W16, _[X3]), asm => asm.LDCLRAL(W0, W16, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W0, W16, [X3]");
+        TestInst(LDCLRAL(W15, W16, _[X3]), asm => asm.LDCLRAL(W15, W16, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W15, W16, [X3]");
+        TestInst(LDCLRAL(WZR, W16, _[X3]), asm => asm.LDCLRAL(WZR, W16, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL WZR, W16, [X3]");
+        TestInst(LDCLRAL(W0, WZR, _[X3]), asm => asm.LDCLRAL(W0, WZR, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W0, WZR, [X3]");
+        TestInst(LDCLRAL(W15, WZR, _[X3]), asm => asm.LDCLRAL(W15, WZR, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL W15, WZR, [X3]");
+        TestInst(LDCLRAL(WZR, WZR, _[X3]), asm => asm.LDCLRAL(WZR, WZR, _[X3]), Arm64InstructionId.LDCLRAL_32_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDCLRAL_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDCLRAL_64_memop_1()
     {
-        TestInst(LDCLRAL(X0, X1, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X0, X1, [X3]");
-        TestInst(LDCLRAL(X15, X1, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X15, X1, [X3]");
-        TestInst(LDCLRAL(XZR, X1, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL XZR, X1, [X3]");
-        TestInst(LDCLRAL(X0, X16, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X0, X16, [X3]");
-        TestInst(LDCLRAL(X15, X16, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X15, X16, [X3]");
-        TestInst(LDCLRAL(XZR, X16, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL XZR, X16, [X3]");
-        TestInst(LDCLRAL(X0, XZR, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X0, XZR, [X3]");
-        TestInst(LDCLRAL(X15, XZR, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X15, XZR, [X3]");
-        TestInst(LDCLRAL(XZR, XZR, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL XZR, XZR, [X3]");
+        TestInst(LDCLRAL(X0, X1, _[X3]), asm => asm.LDCLRAL(X0, X1, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X0, X1, [X3]");
+        TestInst(LDCLRAL(X15, X1, _[X3]), asm => asm.LDCLRAL(X15, X1, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X15, X1, [X3]");
+        TestInst(LDCLRAL(XZR, X1, _[X3]), asm => asm.LDCLRAL(XZR, X1, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL XZR, X1, [X3]");
+        TestInst(LDCLRAL(X0, X16, _[X3]), asm => asm.LDCLRAL(X0, X16, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X0, X16, [X3]");
+        TestInst(LDCLRAL(X15, X16, _[X3]), asm => asm.LDCLRAL(X15, X16, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X15, X16, [X3]");
+        TestInst(LDCLRAL(XZR, X16, _[X3]), asm => asm.LDCLRAL(XZR, X16, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL XZR, X16, [X3]");
+        TestInst(LDCLRAL(X0, XZR, _[X3]), asm => asm.LDCLRAL(X0, XZR, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X0, XZR, [X3]");
+        TestInst(LDCLRAL(X15, XZR, _[X3]), asm => asm.LDCLRAL(X15, XZR, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL X15, XZR, [X3]");
+        TestInst(LDCLRAL(XZR, XZR, _[X3]), asm => asm.LDCLRAL(XZR, XZR, _[X3]), Arm64InstructionId.LDCLRAL_64_memop, Arm64Mnemonic.LDCLRAL, "LDCLRAL XZR, XZR, [X3]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_XTN_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_XTN_asimdmisc_n_0()
     {
-        TestInst(XTN(V0.T_8B, V1.T_8H), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.8B, V1.8H");
-        TestInst(XTN(V30.T_8B, V1.T_8H), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.8B, V1.8H");
-        TestInst(XTN(V0.T_8B, V31.T_8H), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.8B, V31.8H");
-        TestInst(XTN(V30.T_8B, V31.T_8H), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.8B, V31.8H");
+        TestInst(XTN(V0.T_8B, V1.T_8H), asm => asm.XTN(V0.T_8B, V1.T_8H), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.8B, V1.8H");
+        TestInst(XTN(V30.T_8B, V1.T_8H), asm => asm.XTN(V30.T_8B, V1.T_8H), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.8B, V1.8H");
+        TestInst(XTN(V0.T_8B, V31.T_8H), asm => asm.XTN(V0.T_8B, V31.T_8H), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.8B, V31.8H");
+        TestInst(XTN(V30.T_8B, V31.T_8H), asm => asm.XTN(V30.T_8B, V31.T_8H), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.8B, V31.8H");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_XTN_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_XTN_asimdmisc_n_1()
     {
-        TestInst(XTN(V0.T_4H, V1.T_4S), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.4H, V1.4S");
-        TestInst(XTN(V30.T_4H, V1.T_4S), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.4H, V1.4S");
-        TestInst(XTN(V0.T_4H, V31.T_4S), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.4H, V31.4S");
-        TestInst(XTN(V30.T_4H, V31.T_4S), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.4H, V31.4S");
+        TestInst(XTN(V0.T_4H, V1.T_4S), asm => asm.XTN(V0.T_4H, V1.T_4S), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.4H, V1.4S");
+        TestInst(XTN(V30.T_4H, V1.T_4S), asm => asm.XTN(V30.T_4H, V1.T_4S), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.4H, V1.4S");
+        TestInst(XTN(V0.T_4H, V31.T_4S), asm => asm.XTN(V0.T_4H, V31.T_4S), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.4H, V31.4S");
+        TestInst(XTN(V30.T_4H, V31.T_4S), asm => asm.XTN(V30.T_4H, V31.T_4S), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.4H, V31.4S");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_XTN_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_XTN_asimdmisc_n_2()
     {
-        TestInst(XTN(V0.T_2S, V1.T_2D), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.2S, V1.2D");
-        TestInst(XTN(V30.T_2S, V1.T_2D), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.2S, V1.2D");
-        TestInst(XTN(V0.T_2S, V31.T_2D), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.2S, V31.2D");
-        TestInst(XTN(V30.T_2S, V31.T_2D), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.2S, V31.2D");
+        TestInst(XTN(V0.T_2S, V1.T_2D), asm => asm.XTN(V0.T_2S, V1.T_2D), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.2S, V1.2D");
+        TestInst(XTN(V30.T_2S, V1.T_2D), asm => asm.XTN(V30.T_2S, V1.T_2D), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.2S, V1.2D");
+        TestInst(XTN(V0.T_2S, V31.T_2D), asm => asm.XTN(V0.T_2S, V31.T_2D), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V0.2S, V31.2D");
+        TestInst(XTN(V30.T_2S, V31.T_2D), asm => asm.XTN(V30.T_2S, V31.T_2D), Arm64InstructionId.XTN_asimdmisc_n, Arm64Mnemonic.XTN, "XTN V30.2S, V31.2D");
     }
 }

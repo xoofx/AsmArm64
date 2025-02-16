@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDSMAX_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDSMAX_32_memop_0()
     {
-        TestInst(LDSMAX(W0, W1, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX W0, W1, [X3]");
-        TestInst(LDSMAX(W15, W1, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX W15, W1, [X3]");
-        TestInst(LDSMAX(WZR, W1, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX WZR, W1, [X3]");
-        TestInst(LDSMAX(W0, W16, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX W0, W16, [X3]");
-        TestInst(LDSMAX(W15, W16, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX W15, W16, [X3]");
-        TestInst(LDSMAX(WZR, W16, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX WZR, W16, [X3]");
-        TestInst(LDSMAX(W0, WZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX W0, [X3]");
-        TestInst(LDSMAX(W15, WZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX W15, [X3]");
-        TestInst(LDSMAX(WZR, WZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX WZR, [X3]");
+        TestInst(LDSMAX(W0, W1, _[X3]), asm => asm.LDSMAX(W0, W1, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX W0, W1, [X3]");
+        TestInst(LDSMAX(W15, W1, _[X3]), asm => asm.LDSMAX(W15, W1, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX W15, W1, [X3]");
+        TestInst(LDSMAX(WZR, W1, _[X3]), asm => asm.LDSMAX(WZR, W1, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX WZR, W1, [X3]");
+        TestInst(LDSMAX(W0, W16, _[X3]), asm => asm.LDSMAX(W0, W16, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX W0, W16, [X3]");
+        TestInst(LDSMAX(W15, W16, _[X3]), asm => asm.LDSMAX(W15, W16, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX W15, W16, [X3]");
+        TestInst(LDSMAX(WZR, W16, _[X3]), asm => asm.LDSMAX(WZR, W16, _[X3]), Arm64InstructionId.LDSMAX_32_memop, Arm64Mnemonic.LDSMAX, "LDSMAX WZR, W16, [X3]");
+        TestInst(LDSMAX(W0, WZR, _[X3]), asm => asm.LDSMAX(W0, WZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX W0, [X3]");
+        TestInst(LDSMAX(W15, WZR, _[X3]), asm => asm.LDSMAX(W15, WZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX W15, [X3]");
+        TestInst(LDSMAX(WZR, WZR, _[X3]), asm => asm.LDSMAX(WZR, WZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDSMAX_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDSMAX_64_memop_1()
     {
-        TestInst(LDSMAX(X0, X1, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX X0, X1, [X3]");
-        TestInst(LDSMAX(X15, X1, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX X15, X1, [X3]");
-        TestInst(LDSMAX(XZR, X1, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX XZR, X1, [X3]");
-        TestInst(LDSMAX(X0, X16, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX X0, X16, [X3]");
-        TestInst(LDSMAX(X15, X16, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX X15, X16, [X3]");
-        TestInst(LDSMAX(XZR, X16, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX XZR, X16, [X3]");
-        TestInst(LDSMAX(X0, XZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX X0, [X3]");
-        TestInst(LDSMAX(X15, XZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX X15, [X3]");
-        TestInst(LDSMAX(XZR, XZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX XZR, [X3]");
+        TestInst(LDSMAX(X0, X1, _[X3]), asm => asm.LDSMAX(X0, X1, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX X0, X1, [X3]");
+        TestInst(LDSMAX(X15, X1, _[X3]), asm => asm.LDSMAX(X15, X1, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX X15, X1, [X3]");
+        TestInst(LDSMAX(XZR, X1, _[X3]), asm => asm.LDSMAX(XZR, X1, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX XZR, X1, [X3]");
+        TestInst(LDSMAX(X0, X16, _[X3]), asm => asm.LDSMAX(X0, X16, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX X0, X16, [X3]");
+        TestInst(LDSMAX(X15, X16, _[X3]), asm => asm.LDSMAX(X15, X16, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX X15, X16, [X3]");
+        TestInst(LDSMAX(XZR, X16, _[X3]), asm => asm.LDSMAX(XZR, X16, _[X3]), Arm64InstructionId.LDSMAX_64_memop, Arm64Mnemonic.LDSMAX, "LDSMAX XZR, X16, [X3]");
+        TestInst(LDSMAX(X0, XZR, _[X3]), asm => asm.LDSMAX(X0, XZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX X0, [X3]");
+        TestInst(LDSMAX(X15, XZR, _[X3]), asm => asm.LDSMAX(X15, XZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX X15, [X3]");
+        TestInst(LDSMAX(XZR, XZR, _[X3]), asm => asm.LDSMAX(XZR, XZR, _[X3]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX XZR, [X3]");
     }
 }

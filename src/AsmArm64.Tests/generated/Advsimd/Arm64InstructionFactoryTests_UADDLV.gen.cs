@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_UADDLV_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_UADDLV_asimdall_only_0()
     {
-        TestInst(UADDLV(H1, V1.T_8B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H1, V1.8B");
-        TestInst(UADDLV(H31, V1.T_8B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H31, V1.8B");
-        TestInst(UADDLV(H1, V31.T_8B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H1, V31.8B");
-        TestInst(UADDLV(H31, V31.T_8B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H31, V31.8B");
+        TestInst(UADDLV(H1, V1.T_8B), asm => asm.UADDLV(H1, V1.T_8B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H1, V1.8B");
+        TestInst(UADDLV(H31, V1.T_8B), asm => asm.UADDLV(H31, V1.T_8B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H31, V1.8B");
+        TestInst(UADDLV(H1, V31.T_8B), asm => asm.UADDLV(H1, V31.T_8B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H1, V31.8B");
+        TestInst(UADDLV(H31, V31.T_8B), asm => asm.UADDLV(H31, V31.T_8B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H31, V31.8B");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_UADDLV_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_UADDLV_asimdall_only_1()
     {
-        TestInst(UADDLV(H1, V1.T_16B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H1, V1.16B");
-        TestInst(UADDLV(H31, V1.T_16B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H31, V1.16B");
-        TestInst(UADDLV(H1, V31.T_16B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H1, V31.16B");
-        TestInst(UADDLV(H31, V31.T_16B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H31, V31.16B");
+        TestInst(UADDLV(H1, V1.T_16B), asm => asm.UADDLV(H1, V1.T_16B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H1, V1.16B");
+        TestInst(UADDLV(H31, V1.T_16B), asm => asm.UADDLV(H31, V1.T_16B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H31, V1.16B");
+        TestInst(UADDLV(H1, V31.T_16B), asm => asm.UADDLV(H1, V31.T_16B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H1, V31.16B");
+        TestInst(UADDLV(H31, V31.T_16B), asm => asm.UADDLV(H31, V31.T_16B), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV H31, V31.16B");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_UADDLV_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_UADDLV_asimdall_only_2()
     {
-        TestInst(UADDLV(S1, V1.T_4H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S1, V1.4H");
-        TestInst(UADDLV(S31, V1.T_4H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S31, V1.4H");
-        TestInst(UADDLV(S1, V31.T_4H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S1, V31.4H");
-        TestInst(UADDLV(S31, V31.T_4H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S31, V31.4H");
+        TestInst(UADDLV(S1, V1.T_4H), asm => asm.UADDLV(S1, V1.T_4H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S1, V1.4H");
+        TestInst(UADDLV(S31, V1.T_4H), asm => asm.UADDLV(S31, V1.T_4H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S31, V1.4H");
+        TestInst(UADDLV(S1, V31.T_4H), asm => asm.UADDLV(S1, V31.T_4H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S1, V31.4H");
+        TestInst(UADDLV(S31, V31.T_4H), asm => asm.UADDLV(S31, V31.T_4H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S31, V31.4H");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_UADDLV_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_UADDLV_asimdall_only_3()
     {
-        TestInst(UADDLV(S1, V1.T_8H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S1, V1.8H");
-        TestInst(UADDLV(S31, V1.T_8H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S31, V1.8H");
-        TestInst(UADDLV(S1, V31.T_8H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S1, V31.8H");
-        TestInst(UADDLV(S31, V31.T_8H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S31, V31.8H");
+        TestInst(UADDLV(S1, V1.T_8H), asm => asm.UADDLV(S1, V1.T_8H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S1, V1.8H");
+        TestInst(UADDLV(S31, V1.T_8H), asm => asm.UADDLV(S31, V1.T_8H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S31, V1.8H");
+        TestInst(UADDLV(S1, V31.T_8H), asm => asm.UADDLV(S1, V31.T_8H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S1, V31.8H");
+        TestInst(UADDLV(S31, V31.T_8H), asm => asm.UADDLV(S31, V31.T_8H), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV S31, V31.8H");
     }
     
     /// <summary>
@@ -72,9 +71,9 @@ public class Arm64InstructionFactoryTests_UADDLV_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_UADDLV_asimdall_only_4()
     {
-        TestInst(UADDLV(D1, V1.T_4S), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV D1, V1.4S");
-        TestInst(UADDLV(D31, V1.T_4S), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV D31, V1.4S");
-        TestInst(UADDLV(D1, V31.T_4S), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV D1, V31.4S");
-        TestInst(UADDLV(D31, V31.T_4S), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV D31, V31.4S");
+        TestInst(UADDLV(D1, V1.T_4S), asm => asm.UADDLV(D1, V1.T_4S), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV D1, V1.4S");
+        TestInst(UADDLV(D31, V1.T_4S), asm => asm.UADDLV(D31, V1.T_4S), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV D31, V1.4S");
+        TestInst(UADDLV(D1, V31.T_4S), asm => asm.UADDLV(D1, V31.T_4S), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV D1, V31.4S");
+        TestInst(UADDLV(D31, V31.T_4S), asm => asm.UADDLV(D31, V31.T_4S), Arm64InstructionId.UADDLV_asimdall_only, Arm64Mnemonic.UADDLV, "UADDLV D31, V31.4S");
     }
 }

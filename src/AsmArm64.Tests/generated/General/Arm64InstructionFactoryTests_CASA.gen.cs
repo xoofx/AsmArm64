@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_CASA_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CASA_c32_comswap_0()
     {
-        TestInst(CASA(W0, W1, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W0, W1, [X3]");
-        TestInst(CASA(W15, W1, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W15, W1, [X3]");
-        TestInst(CASA(WZR, W1, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA WZR, W1, [X3]");
-        TestInst(CASA(W0, W16, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W0, W16, [X3]");
-        TestInst(CASA(W15, W16, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W15, W16, [X3]");
-        TestInst(CASA(WZR, W16, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA WZR, W16, [X3]");
-        TestInst(CASA(W0, WZR, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W0, WZR, [X3]");
-        TestInst(CASA(W15, WZR, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W15, WZR, [X3]");
-        TestInst(CASA(WZR, WZR, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA WZR, WZR, [X3]");
+        TestInst(CASA(W0, W1, _[X3]), asm => asm.CASA(W0, W1, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W0, W1, [X3]");
+        TestInst(CASA(W15, W1, _[X3]), asm => asm.CASA(W15, W1, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W15, W1, [X3]");
+        TestInst(CASA(WZR, W1, _[X3]), asm => asm.CASA(WZR, W1, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA WZR, W1, [X3]");
+        TestInst(CASA(W0, W16, _[X3]), asm => asm.CASA(W0, W16, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W0, W16, [X3]");
+        TestInst(CASA(W15, W16, _[X3]), asm => asm.CASA(W15, W16, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W15, W16, [X3]");
+        TestInst(CASA(WZR, W16, _[X3]), asm => asm.CASA(WZR, W16, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA WZR, W16, [X3]");
+        TestInst(CASA(W0, WZR, _[X3]), asm => asm.CASA(W0, WZR, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W0, WZR, [X3]");
+        TestInst(CASA(W15, WZR, _[X3]), asm => asm.CASA(W15, WZR, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA W15, WZR, [X3]");
+        TestInst(CASA(WZR, WZR, _[X3]), asm => asm.CASA(WZR, WZR, _[X3]), Arm64InstructionId.CASA_c32_comswap, Arm64Mnemonic.CASA, "CASA WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_CASA_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CASA_c64_comswap_1()
     {
-        TestInst(CASA(X0, X1, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X0, X1, [X3]");
-        TestInst(CASA(X15, X1, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X15, X1, [X3]");
-        TestInst(CASA(XZR, X1, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA XZR, X1, [X3]");
-        TestInst(CASA(X0, X16, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X0, X16, [X3]");
-        TestInst(CASA(X15, X16, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X15, X16, [X3]");
-        TestInst(CASA(XZR, X16, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA XZR, X16, [X3]");
-        TestInst(CASA(X0, XZR, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X0, XZR, [X3]");
-        TestInst(CASA(X15, XZR, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X15, XZR, [X3]");
-        TestInst(CASA(XZR, XZR, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA XZR, XZR, [X3]");
+        TestInst(CASA(X0, X1, _[X3]), asm => asm.CASA(X0, X1, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X0, X1, [X3]");
+        TestInst(CASA(X15, X1, _[X3]), asm => asm.CASA(X15, X1, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X15, X1, [X3]");
+        TestInst(CASA(XZR, X1, _[X3]), asm => asm.CASA(XZR, X1, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA XZR, X1, [X3]");
+        TestInst(CASA(X0, X16, _[X3]), asm => asm.CASA(X0, X16, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X0, X16, [X3]");
+        TestInst(CASA(X15, X16, _[X3]), asm => asm.CASA(X15, X16, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X15, X16, [X3]");
+        TestInst(CASA(XZR, X16, _[X3]), asm => asm.CASA(XZR, X16, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA XZR, X16, [X3]");
+        TestInst(CASA(X0, XZR, _[X3]), asm => asm.CASA(X0, XZR, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X0, XZR, [X3]");
+        TestInst(CASA(X15, XZR, _[X3]), asm => asm.CASA(X15, XZR, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA X15, XZR, [X3]");
+        TestInst(CASA(XZR, XZR, _[X3]), asm => asm.CASA(XZR, XZR, _[X3]), Arm64InstructionId.CASA_c64_comswap, Arm64Mnemonic.CASA, "CASA XZR, XZR, [X3]");
     }
 }

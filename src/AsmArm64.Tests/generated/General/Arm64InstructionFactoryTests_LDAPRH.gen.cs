@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_LDAPRH_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDAPRH_32l_memop_0()
     {
-        TestInst(LDAPRH(W0, _[X2]), Arm64InstructionId.LDAPRH_32l_memop, Arm64Mnemonic.LDAPRH, "LDAPRH W0, [X2]");
-        TestInst(LDAPRH(W15, _[X2]), Arm64InstructionId.LDAPRH_32l_memop, Arm64Mnemonic.LDAPRH, "LDAPRH W15, [X2]");
-        TestInst(LDAPRH(WZR, _[X2]), Arm64InstructionId.LDAPRH_32l_memop, Arm64Mnemonic.LDAPRH, "LDAPRH WZR, [X2]");
+        TestInst(LDAPRH(W0, _[X2]), asm => asm.LDAPRH(W0, _[X2]), Arm64InstructionId.LDAPRH_32l_memop, Arm64Mnemonic.LDAPRH, "LDAPRH W0, [X2]");
+        TestInst(LDAPRH(W15, _[X2]), asm => asm.LDAPRH(W15, _[X2]), Arm64InstructionId.LDAPRH_32l_memop, Arm64Mnemonic.LDAPRH, "LDAPRH W15, [X2]");
+        TestInst(LDAPRH(WZR, _[X2]), asm => asm.LDAPRH(WZR, _[X2]), Arm64InstructionId.LDAPRH_32l_memop, Arm64Mnemonic.LDAPRH, "LDAPRH WZR, [X2]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,11 +23,11 @@ public class Arm64InstructionFactoryTests_TBNZ_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_TBNZ_only_testbranch_0()
     {
-        TestInst(TBNZ(X1, 37, 32), Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ X1, #37, #32");
-        TestInst(TBNZ(W1, 5, 32), Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ W1, #5, #32");
-        TestInst(TBNZ(X14, 37, 32), Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ X14, #37, #32");
-        TestInst(TBNZ(W14, 5, 32), Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ W14, #5, #32");
-        TestInst(TBNZ(XZR, 37, 32), Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ XZR, #37, #32");
-        TestInst(TBNZ(WZR, 5, 32), Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ WZR, #5, #32");
+        TestInst(TBNZ(X1, 37, 32), null, Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ X1, #37, #32");
+        TestInst(TBNZ(W1, 5, 32), null, Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ W1, #5, #32");
+        TestInst(TBNZ(X14, 37, 32), null, Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ X14, #37, #32");
+        TestInst(TBNZ(W14, 5, 32), null, Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ W14, #5, #32");
+        TestInst(TBNZ(XZR, 37, 32), null, Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ XZR, #37, #32");
+        TestInst(TBNZ(WZR, 5, 32), null, Arm64InstructionId.TBNZ_only_testbranch, Arm64Mnemonic.TBNZ, "TBNZ WZR, #5, #32");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_AUTIASPPCR_General : Arm64InstructionF
     [TestMethod]
     public void Test_AUTIASPPCR_64lrr_dp_1src_0()
     {
-        TestInst(AUTIASPPCR(X0), Arm64InstructionId.AUTIASPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIASPPCR, "AUTIASPPCR X0");
-        TestInst(AUTIASPPCR(X15), Arm64InstructionId.AUTIASPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIASPPCR, "AUTIASPPCR X15");
-        TestInst(AUTIASPPCR(XZR), Arm64InstructionId.AUTIASPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIASPPCR, "AUTIASPPCR XZR");
+        TestInst(AUTIASPPCR(X0), asm => asm.AUTIASPPCR(X0), Arm64InstructionId.AUTIASPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIASPPCR, "AUTIASPPCR X0");
+        TestInst(AUTIASPPCR(X15), asm => asm.AUTIASPPCR(X15), Arm64InstructionId.AUTIASPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIASPPCR, "AUTIASPPCR X15");
+        TestInst(AUTIASPPCR(XZR), asm => asm.AUTIASPPCR(XZR), Arm64InstructionId.AUTIASPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIASPPCR, "AUTIASPPCR XZR");
     }
 }

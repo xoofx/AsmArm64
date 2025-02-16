@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_PSB_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_PSB_hc_hints_0()
     {
-        TestInst(PSB(CSYNC), Arm64InstructionId.PSB_hc_hints, Arm64Mnemonic.PSB, "PSB CSYNC");
+        TestInst(PSB(CSYNC), asm => asm.PSB(CSYNC), Arm64InstructionId.PSB_hc_hints, Arm64Mnemonic.PSB, "PSB CSYNC");
     }
 }

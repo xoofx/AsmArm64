@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_PACIB_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_PACIB_64p_dp_1src_0()
     {
-        TestInst(PACIB(X0, X2), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X0, X2");
-        TestInst(PACIB(X15, X2), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X15, X2");
-        TestInst(PACIB(XZR, X2), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB XZR, X2");
-        TestInst(PACIB(X0, X18), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X0, X18");
-        TestInst(PACIB(X15, X18), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X15, X18");
-        TestInst(PACIB(XZR, X18), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB XZR, X18");
-        TestInst(PACIB(X0, SP), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X0, SP");
-        TestInst(PACIB(X15, SP), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X15, SP");
-        TestInst(PACIB(XZR, SP), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB XZR, SP");
+        TestInst(PACIB(X0, X2), asm => asm.PACIB(X0, X2), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X0, X2");
+        TestInst(PACIB(X15, X2), asm => asm.PACIB(X15, X2), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X15, X2");
+        TestInst(PACIB(XZR, X2), asm => asm.PACIB(XZR, X2), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB XZR, X2");
+        TestInst(PACIB(X0, X18), asm => asm.PACIB(X0, X18), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X0, X18");
+        TestInst(PACIB(X15, X18), asm => asm.PACIB(X15, X18), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X15, X18");
+        TestInst(PACIB(XZR, X18), asm => asm.PACIB(XZR, X18), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB XZR, X18");
+        TestInst(PACIB(X0, SP), asm => asm.PACIB(X0, SP), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X0, SP");
+        TestInst(PACIB(X15, SP), asm => asm.PACIB(X15, SP), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB X15, SP");
+        TestInst(PACIB(XZR, SP), asm => asm.PACIB(XZR, SP), Arm64InstructionId.PACIB_64p_dp_1src, Arm64Mnemonic.PACIB, "PACIB XZR, SP");
     }
 }

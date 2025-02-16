@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STSETLB_General : Arm64InstructionFact
     [TestMethod]
     public void Test_STSETLB_ldsetlb_32_memop_0()
     {
-        TestInst(STSETLB(W0, _[X2]), Arm64InstructionId.STSETLB_ldsetlb_32_memop, Arm64Mnemonic.STSETLB, "STSETLB W0, [X2]");
-        TestInst(STSETLB(W15, _[X2]), Arm64InstructionId.STSETLB_ldsetlb_32_memop, Arm64Mnemonic.STSETLB, "STSETLB W15, [X2]");
-        TestInst(STSETLB(WZR, _[X2]), Arm64InstructionId.STSETLB_ldsetlb_32_memop, Arm64Mnemonic.STSETLB, "STSETLB WZR, [X2]");
+        TestInst(STSETLB(W0, _[X2]), asm => asm.STSETLB(W0, _[X2]), Arm64InstructionId.STSETLB_ldsetlb_32_memop, Arm64Mnemonic.STSETLB, "STSETLB W0, [X2]");
+        TestInst(STSETLB(W15, _[X2]), asm => asm.STSETLB(W15, _[X2]), Arm64InstructionId.STSETLB_ldsetlb_32_memop, Arm64Mnemonic.STSETLB, "STSETLB W15, [X2]");
+        TestInst(STSETLB(WZR, _[X2]), asm => asm.STSETLB(WZR, _[X2]), Arm64InstructionId.STSETLB_ldsetlb_32_memop, Arm64Mnemonic.STSETLB, "STSETLB WZR, [X2]");
     }
 }

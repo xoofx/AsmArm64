@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDSETL_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDSETL_32_memop_0()
     {
-        TestInst(LDSETL(W0, W1, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL W0, W1, [X3]");
-        TestInst(LDSETL(W15, W1, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL W15, W1, [X3]");
-        TestInst(LDSETL(WZR, W1, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL WZR, W1, [X3]");
-        TestInst(LDSETL(W0, W16, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL W0, W16, [X3]");
-        TestInst(LDSETL(W15, W16, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL W15, W16, [X3]");
-        TestInst(LDSETL(WZR, W16, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL WZR, W16, [X3]");
-        TestInst(LDSETL(W0, WZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL W0, [X3]");
-        TestInst(LDSETL(W15, WZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL W15, [X3]");
-        TestInst(LDSETL(WZR, WZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL WZR, [X3]");
+        TestInst(LDSETL(W0, W1, _[X3]), asm => asm.LDSETL(W0, W1, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL W0, W1, [X3]");
+        TestInst(LDSETL(W15, W1, _[X3]), asm => asm.LDSETL(W15, W1, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL W15, W1, [X3]");
+        TestInst(LDSETL(WZR, W1, _[X3]), asm => asm.LDSETL(WZR, W1, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL WZR, W1, [X3]");
+        TestInst(LDSETL(W0, W16, _[X3]), asm => asm.LDSETL(W0, W16, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL W0, W16, [X3]");
+        TestInst(LDSETL(W15, W16, _[X3]), asm => asm.LDSETL(W15, W16, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL W15, W16, [X3]");
+        TestInst(LDSETL(WZR, W16, _[X3]), asm => asm.LDSETL(WZR, W16, _[X3]), Arm64InstructionId.LDSETL_32_memop, Arm64Mnemonic.LDSETL, "LDSETL WZR, W16, [X3]");
+        TestInst(LDSETL(W0, WZR, _[X3]), asm => asm.LDSETL(W0, WZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL W0, [X3]");
+        TestInst(LDSETL(W15, WZR, _[X3]), asm => asm.LDSETL(W15, WZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL W15, [X3]");
+        TestInst(LDSETL(WZR, WZR, _[X3]), asm => asm.LDSETL(WZR, WZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDSETL_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDSETL_64_memop_1()
     {
-        TestInst(LDSETL(X0, X1, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL X0, X1, [X3]");
-        TestInst(LDSETL(X15, X1, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL X15, X1, [X3]");
-        TestInst(LDSETL(XZR, X1, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL XZR, X1, [X3]");
-        TestInst(LDSETL(X0, X16, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL X0, X16, [X3]");
-        TestInst(LDSETL(X15, X16, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL X15, X16, [X3]");
-        TestInst(LDSETL(XZR, X16, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL XZR, X16, [X3]");
-        TestInst(LDSETL(X0, XZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL X0, [X3]");
-        TestInst(LDSETL(X15, XZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL X15, [X3]");
-        TestInst(LDSETL(XZR, XZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL XZR, [X3]");
+        TestInst(LDSETL(X0, X1, _[X3]), asm => asm.LDSETL(X0, X1, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL X0, X1, [X3]");
+        TestInst(LDSETL(X15, X1, _[X3]), asm => asm.LDSETL(X15, X1, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL X15, X1, [X3]");
+        TestInst(LDSETL(XZR, X1, _[X3]), asm => asm.LDSETL(XZR, X1, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL XZR, X1, [X3]");
+        TestInst(LDSETL(X0, X16, _[X3]), asm => asm.LDSETL(X0, X16, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL X0, X16, [X3]");
+        TestInst(LDSETL(X15, X16, _[X3]), asm => asm.LDSETL(X15, X16, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL X15, X16, [X3]");
+        TestInst(LDSETL(XZR, X16, _[X3]), asm => asm.LDSETL(XZR, X16, _[X3]), Arm64InstructionId.LDSETL_64_memop, Arm64Mnemonic.LDSETL, "LDSETL XZR, X16, [X3]");
+        TestInst(LDSETL(X0, XZR, _[X3]), asm => asm.LDSETL(X0, XZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL X0, [X3]");
+        TestInst(LDSETL(X15, XZR, _[X3]), asm => asm.LDSETL(X15, XZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL X15, [X3]");
+        TestInst(LDSETL(XZR, XZR, _[X3]), asm => asm.LDSETL(XZR, XZR, _[X3]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL XZR, [X3]");
     }
 }

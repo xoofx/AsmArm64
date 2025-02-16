@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_BRABZ_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_BRABZ_64_branch_reg_0()
     {
-        TestInst(BRABZ(X0), Arm64InstructionId.BRABZ_64_branch_reg, Arm64Mnemonic.BRABZ, "BRABZ X0");
-        TestInst(BRABZ(X15), Arm64InstructionId.BRABZ_64_branch_reg, Arm64Mnemonic.BRABZ, "BRABZ X15");
-        TestInst(BRABZ(XZR), Arm64InstructionId.BRABZ_64_branch_reg, Arm64Mnemonic.BRABZ, "BRABZ XZR");
+        TestInst(BRABZ(X0), asm => asm.BRABZ(X0), Arm64InstructionId.BRABZ_64_branch_reg, Arm64Mnemonic.BRABZ, "BRABZ X0");
+        TestInst(BRABZ(X15), asm => asm.BRABZ(X15), Arm64InstructionId.BRABZ_64_branch_reg, Arm64Mnemonic.BRABZ, "BRABZ X15");
+        TestInst(BRABZ(XZR), asm => asm.BRABZ(XZR), Arm64InstructionId.BRABZ_64_branch_reg, Arm64Mnemonic.BRABZ, "BRABZ XZR");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SQDMULL2_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQDMULL2_asimdelem_l_0()
     {
-        TestInst(SQDMULL2(V0.T_4S, V1.T_8H, V2.H[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V1.8H, V2.H[0]");
-        TestInst(SQDMULL2(V30.T_4S, V1.T_8H, V2.H[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V1.8H, V2.H[0]");
-        TestInst(SQDMULL2(V0.T_4S, V31.T_8H, V2.H[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V31.8H, V2.H[0]");
-        TestInst(SQDMULL2(V30.T_4S, V31.T_8H, V2.H[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V31.8H, V2.H[0]");
-        TestInst(SQDMULL2(V0.T_4S, V1.T_8H, V0.H[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V1.8H, V0.H[1]");
-        TestInst(SQDMULL2(V30.T_4S, V1.T_8H, V0.H[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V1.8H, V0.H[1]");
-        TestInst(SQDMULL2(V0.T_4S, V31.T_8H, V0.H[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V31.8H, V0.H[1]");
-        TestInst(SQDMULL2(V30.T_4S, V31.T_8H, V0.H[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V31.8H, V0.H[1]");
+        TestInst(SQDMULL2(V0.T_4S, V1.T_8H, V2.H[0]), asm => asm.SQDMULL2(V0.T_4S, V1.T_8H, V2.H[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V1.8H, V2.H[0]");
+        TestInst(SQDMULL2(V30.T_4S, V1.T_8H, V2.H[0]), asm => asm.SQDMULL2(V30.T_4S, V1.T_8H, V2.H[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V1.8H, V2.H[0]");
+        TestInst(SQDMULL2(V0.T_4S, V31.T_8H, V2.H[0]), asm => asm.SQDMULL2(V0.T_4S, V31.T_8H, V2.H[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V31.8H, V2.H[0]");
+        TestInst(SQDMULL2(V30.T_4S, V31.T_8H, V2.H[0]), asm => asm.SQDMULL2(V30.T_4S, V31.T_8H, V2.H[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V31.8H, V2.H[0]");
+        TestInst(SQDMULL2(V0.T_4S, V1.T_8H, V0.H[1]), asm => asm.SQDMULL2(V0.T_4S, V1.T_8H, V0.H[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V1.8H, V0.H[1]");
+        TestInst(SQDMULL2(V30.T_4S, V1.T_8H, V0.H[1]), asm => asm.SQDMULL2(V30.T_4S, V1.T_8H, V0.H[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V1.8H, V0.H[1]");
+        TestInst(SQDMULL2(V0.T_4S, V31.T_8H, V0.H[1]), asm => asm.SQDMULL2(V0.T_4S, V31.T_8H, V0.H[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V31.8H, V0.H[1]");
+        TestInst(SQDMULL2(V30.T_4S, V31.T_8H, V0.H[1]), asm => asm.SQDMULL2(V30.T_4S, V31.T_8H, V0.H[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V31.8H, V0.H[1]");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_SQDMULL2_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQDMULL2_asimdelem_l_1()
     {
-        TestInst(SQDMULL2(V0.T_2D, V1.T_4S, V2.S[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V1.4S, V2.S[0]");
-        TestInst(SQDMULL2(V30.T_2D, V1.T_4S, V2.S[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V1.4S, V2.S[0]");
-        TestInst(SQDMULL2(V0.T_2D, V31.T_4S, V2.S[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V31.4S, V2.S[0]");
-        TestInst(SQDMULL2(V30.T_2D, V31.T_4S, V2.S[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V31.4S, V2.S[0]");
-        TestInst(SQDMULL2(V0.T_2D, V1.T_4S, V0.S[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V1.4S, V0.S[1]");
-        TestInst(SQDMULL2(V30.T_2D, V1.T_4S, V0.S[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V1.4S, V0.S[1]");
-        TestInst(SQDMULL2(V0.T_2D, V31.T_4S, V0.S[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V31.4S, V0.S[1]");
-        TestInst(SQDMULL2(V30.T_2D, V31.T_4S, V0.S[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V31.4S, V0.S[1]");
+        TestInst(SQDMULL2(V0.T_2D, V1.T_4S, V2.S[0]), asm => asm.SQDMULL2(V0.T_2D, V1.T_4S, V2.S[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V1.4S, V2.S[0]");
+        TestInst(SQDMULL2(V30.T_2D, V1.T_4S, V2.S[0]), asm => asm.SQDMULL2(V30.T_2D, V1.T_4S, V2.S[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V1.4S, V2.S[0]");
+        TestInst(SQDMULL2(V0.T_2D, V31.T_4S, V2.S[0]), asm => asm.SQDMULL2(V0.T_2D, V31.T_4S, V2.S[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V31.4S, V2.S[0]");
+        TestInst(SQDMULL2(V30.T_2D, V31.T_4S, V2.S[0]), asm => asm.SQDMULL2(V30.T_2D, V31.T_4S, V2.S[0]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V31.4S, V2.S[0]");
+        TestInst(SQDMULL2(V0.T_2D, V1.T_4S, V0.S[1]), asm => asm.SQDMULL2(V0.T_2D, V1.T_4S, V0.S[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V1.4S, V0.S[1]");
+        TestInst(SQDMULL2(V30.T_2D, V1.T_4S, V0.S[1]), asm => asm.SQDMULL2(V30.T_2D, V1.T_4S, V0.S[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V1.4S, V0.S[1]");
+        TestInst(SQDMULL2(V0.T_2D, V31.T_4S, V0.S[1]), asm => asm.SQDMULL2(V0.T_2D, V31.T_4S, V0.S[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V31.4S, V0.S[1]");
+        TestInst(SQDMULL2(V30.T_2D, V31.T_4S, V0.S[1]), asm => asm.SQDMULL2(V30.T_2D, V31.T_4S, V0.S[1]), Arm64InstructionId.SQDMULL2_asimdelem_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V31.4S, V0.S[1]");
     }
     
     /// <summary>
@@ -56,14 +55,14 @@ public class Arm64InstructionFactoryTests_SQDMULL2_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQDMULL2_asimddiff_l_2()
     {
-        TestInst(SQDMULL2(V0.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V1.8H, V2.8H");
-        TestInst(SQDMULL2(V30.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V1.8H, V2.8H");
-        TestInst(SQDMULL2(V0.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V31.8H, V2.8H");
-        TestInst(SQDMULL2(V30.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V31.8H, V2.8H");
-        TestInst(SQDMULL2(V0.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V1.8H, V0.8H");
-        TestInst(SQDMULL2(V30.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V1.8H, V0.8H");
-        TestInst(SQDMULL2(V0.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V31.8H, V0.8H");
-        TestInst(SQDMULL2(V30.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V31.8H, V0.8H");
+        TestInst(SQDMULL2(V0.T_4S, V1.T_8H, V2.T_8H), asm => asm.SQDMULL2(V0.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V1.8H, V2.8H");
+        TestInst(SQDMULL2(V30.T_4S, V1.T_8H, V2.T_8H), asm => asm.SQDMULL2(V30.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V1.8H, V2.8H");
+        TestInst(SQDMULL2(V0.T_4S, V31.T_8H, V2.T_8H), asm => asm.SQDMULL2(V0.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V31.8H, V2.8H");
+        TestInst(SQDMULL2(V30.T_4S, V31.T_8H, V2.T_8H), asm => asm.SQDMULL2(V30.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V31.8H, V2.8H");
+        TestInst(SQDMULL2(V0.T_4S, V1.T_8H, V0.T_8H), asm => asm.SQDMULL2(V0.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V1.8H, V0.8H");
+        TestInst(SQDMULL2(V30.T_4S, V1.T_8H, V0.T_8H), asm => asm.SQDMULL2(V30.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V1.8H, V0.8H");
+        TestInst(SQDMULL2(V0.T_4S, V31.T_8H, V0.T_8H), asm => asm.SQDMULL2(V0.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.4S, V31.8H, V0.8H");
+        TestInst(SQDMULL2(V30.T_4S, V31.T_8H, V0.T_8H), asm => asm.SQDMULL2(V30.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.4S, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -72,13 +71,13 @@ public class Arm64InstructionFactoryTests_SQDMULL2_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQDMULL2_asimddiff_l_3()
     {
-        TestInst(SQDMULL2(V0.T_2D, V1.T_4S, V2.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V1.4S, V2.4S");
-        TestInst(SQDMULL2(V30.T_2D, V1.T_4S, V2.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V1.4S, V2.4S");
-        TestInst(SQDMULL2(V0.T_2D, V31.T_4S, V2.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V31.4S, V2.4S");
-        TestInst(SQDMULL2(V30.T_2D, V31.T_4S, V2.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V31.4S, V2.4S");
-        TestInst(SQDMULL2(V0.T_2D, V1.T_4S, V0.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V1.4S, V0.4S");
-        TestInst(SQDMULL2(V30.T_2D, V1.T_4S, V0.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V1.4S, V0.4S");
-        TestInst(SQDMULL2(V0.T_2D, V31.T_4S, V0.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V31.4S, V0.4S");
-        TestInst(SQDMULL2(V30.T_2D, V31.T_4S, V0.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V31.4S, V0.4S");
+        TestInst(SQDMULL2(V0.T_2D, V1.T_4S, V2.T_4S), asm => asm.SQDMULL2(V0.T_2D, V1.T_4S, V2.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V1.4S, V2.4S");
+        TestInst(SQDMULL2(V30.T_2D, V1.T_4S, V2.T_4S), asm => asm.SQDMULL2(V30.T_2D, V1.T_4S, V2.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V1.4S, V2.4S");
+        TestInst(SQDMULL2(V0.T_2D, V31.T_4S, V2.T_4S), asm => asm.SQDMULL2(V0.T_2D, V31.T_4S, V2.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V31.4S, V2.4S");
+        TestInst(SQDMULL2(V30.T_2D, V31.T_4S, V2.T_4S), asm => asm.SQDMULL2(V30.T_2D, V31.T_4S, V2.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V31.4S, V2.4S");
+        TestInst(SQDMULL2(V0.T_2D, V1.T_4S, V0.T_4S), asm => asm.SQDMULL2(V0.T_2D, V1.T_4S, V0.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V1.4S, V0.4S");
+        TestInst(SQDMULL2(V30.T_2D, V1.T_4S, V0.T_4S), asm => asm.SQDMULL2(V30.T_2D, V1.T_4S, V0.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V1.4S, V0.4S");
+        TestInst(SQDMULL2(V0.T_2D, V31.T_4S, V0.T_4S), asm => asm.SQDMULL2(V0.T_2D, V31.T_4S, V0.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V0.2D, V31.4S, V0.4S");
+        TestInst(SQDMULL2(V30.T_2D, V31.T_4S, V0.T_4S), asm => asm.SQDMULL2(V30.T_2D, V31.T_4S, V0.T_4S), Arm64InstructionId.SQDMULL2_asimddiff_l, Arm64Mnemonic.SQDMULL2, "SQDMULL2 V30.2D, V31.4S, V0.4S");
     }
 }

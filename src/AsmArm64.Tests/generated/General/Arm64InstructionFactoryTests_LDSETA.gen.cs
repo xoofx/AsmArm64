@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDSETA_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDSETA_32_memop_0()
     {
-        TestInst(LDSETA(W0, W1, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W0, W1, [X3]");
-        TestInst(LDSETA(W15, W1, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W15, W1, [X3]");
-        TestInst(LDSETA(WZR, W1, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA WZR, W1, [X3]");
-        TestInst(LDSETA(W0, W16, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W0, W16, [X3]");
-        TestInst(LDSETA(W15, W16, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W15, W16, [X3]");
-        TestInst(LDSETA(WZR, W16, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA WZR, W16, [X3]");
-        TestInst(LDSETA(W0, WZR, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W0, WZR, [X3]");
-        TestInst(LDSETA(W15, WZR, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W15, WZR, [X3]");
-        TestInst(LDSETA(WZR, WZR, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA WZR, WZR, [X3]");
+        TestInst(LDSETA(W0, W1, _[X3]), asm => asm.LDSETA(W0, W1, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W0, W1, [X3]");
+        TestInst(LDSETA(W15, W1, _[X3]), asm => asm.LDSETA(W15, W1, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W15, W1, [X3]");
+        TestInst(LDSETA(WZR, W1, _[X3]), asm => asm.LDSETA(WZR, W1, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA WZR, W1, [X3]");
+        TestInst(LDSETA(W0, W16, _[X3]), asm => asm.LDSETA(W0, W16, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W0, W16, [X3]");
+        TestInst(LDSETA(W15, W16, _[X3]), asm => asm.LDSETA(W15, W16, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W15, W16, [X3]");
+        TestInst(LDSETA(WZR, W16, _[X3]), asm => asm.LDSETA(WZR, W16, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA WZR, W16, [X3]");
+        TestInst(LDSETA(W0, WZR, _[X3]), asm => asm.LDSETA(W0, WZR, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W0, WZR, [X3]");
+        TestInst(LDSETA(W15, WZR, _[X3]), asm => asm.LDSETA(W15, WZR, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA W15, WZR, [X3]");
+        TestInst(LDSETA(WZR, WZR, _[X3]), asm => asm.LDSETA(WZR, WZR, _[X3]), Arm64InstructionId.LDSETA_32_memop, Arm64Mnemonic.LDSETA, "LDSETA WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDSETA_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDSETA_64_memop_1()
     {
-        TestInst(LDSETA(X0, X1, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X0, X1, [X3]");
-        TestInst(LDSETA(X15, X1, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X15, X1, [X3]");
-        TestInst(LDSETA(XZR, X1, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA XZR, X1, [X3]");
-        TestInst(LDSETA(X0, X16, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X0, X16, [X3]");
-        TestInst(LDSETA(X15, X16, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X15, X16, [X3]");
-        TestInst(LDSETA(XZR, X16, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA XZR, X16, [X3]");
-        TestInst(LDSETA(X0, XZR, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X0, XZR, [X3]");
-        TestInst(LDSETA(X15, XZR, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X15, XZR, [X3]");
-        TestInst(LDSETA(XZR, XZR, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA XZR, XZR, [X3]");
+        TestInst(LDSETA(X0, X1, _[X3]), asm => asm.LDSETA(X0, X1, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X0, X1, [X3]");
+        TestInst(LDSETA(X15, X1, _[X3]), asm => asm.LDSETA(X15, X1, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X15, X1, [X3]");
+        TestInst(LDSETA(XZR, X1, _[X3]), asm => asm.LDSETA(XZR, X1, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA XZR, X1, [X3]");
+        TestInst(LDSETA(X0, X16, _[X3]), asm => asm.LDSETA(X0, X16, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X0, X16, [X3]");
+        TestInst(LDSETA(X15, X16, _[X3]), asm => asm.LDSETA(X15, X16, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X15, X16, [X3]");
+        TestInst(LDSETA(XZR, X16, _[X3]), asm => asm.LDSETA(XZR, X16, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA XZR, X16, [X3]");
+        TestInst(LDSETA(X0, XZR, _[X3]), asm => asm.LDSETA(X0, XZR, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X0, XZR, [X3]");
+        TestInst(LDSETA(X15, XZR, _[X3]), asm => asm.LDSETA(X15, XZR, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA X15, XZR, [X3]");
+        TestInst(LDSETA(XZR, XZR, _[X3]), asm => asm.LDSETA(XZR, XZR, _[X3]), Arm64InstructionId.LDSETA_64_memop, Arm64Mnemonic.LDSETA, "LDSETA XZR, XZR, [X3]");
     }
 }

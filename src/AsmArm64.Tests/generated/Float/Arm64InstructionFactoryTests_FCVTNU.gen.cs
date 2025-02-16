@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FCVTNU_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNU_sisd_32h_0()
     {
-        TestInst(FCVTNU(S0, H1), Arm64InstructionId.FCVTNU_sisd_32h, Arm64Mnemonic.FCVTNU, "FCVTNU S0, H1");
-        TestInst(FCVTNU(S31, H1), Arm64InstructionId.FCVTNU_sisd_32h, Arm64Mnemonic.FCVTNU, "FCVTNU S31, H1");
-        TestInst(FCVTNU(S0, H31), Arm64InstructionId.FCVTNU_sisd_32h, Arm64Mnemonic.FCVTNU, "FCVTNU S0, H31");
-        TestInst(FCVTNU(S31, H31), Arm64InstructionId.FCVTNU_sisd_32h, Arm64Mnemonic.FCVTNU, "FCVTNU S31, H31");
+        TestInst(FCVTNU(S0, H1), asm => asm.FCVTNU(S0, H1), Arm64InstructionId.FCVTNU_sisd_32h, Arm64Mnemonic.FCVTNU, "FCVTNU S0, H1");
+        TestInst(FCVTNU(S31, H1), asm => asm.FCVTNU(S31, H1), Arm64InstructionId.FCVTNU_sisd_32h, Arm64Mnemonic.FCVTNU, "FCVTNU S31, H1");
+        TestInst(FCVTNU(S0, H31), asm => asm.FCVTNU(S0, H31), Arm64InstructionId.FCVTNU_sisd_32h, Arm64Mnemonic.FCVTNU, "FCVTNU S0, H31");
+        TestInst(FCVTNU(S31, H31), asm => asm.FCVTNU(S31, H31), Arm64InstructionId.FCVTNU_sisd_32h, Arm64Mnemonic.FCVTNU, "FCVTNU S31, H31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FCVTNU_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNU_sisd_64h_1()
     {
-        TestInst(FCVTNU(D0, H1), Arm64InstructionId.FCVTNU_sisd_64h, Arm64Mnemonic.FCVTNU, "FCVTNU D0, H1");
-        TestInst(FCVTNU(D31, H1), Arm64InstructionId.FCVTNU_sisd_64h, Arm64Mnemonic.FCVTNU, "FCVTNU D31, H1");
-        TestInst(FCVTNU(D0, H31), Arm64InstructionId.FCVTNU_sisd_64h, Arm64Mnemonic.FCVTNU, "FCVTNU D0, H31");
-        TestInst(FCVTNU(D31, H31), Arm64InstructionId.FCVTNU_sisd_64h, Arm64Mnemonic.FCVTNU, "FCVTNU D31, H31");
+        TestInst(FCVTNU(D0, H1), asm => asm.FCVTNU(D0, H1), Arm64InstructionId.FCVTNU_sisd_64h, Arm64Mnemonic.FCVTNU, "FCVTNU D0, H1");
+        TestInst(FCVTNU(D31, H1), asm => asm.FCVTNU(D31, H1), Arm64InstructionId.FCVTNU_sisd_64h, Arm64Mnemonic.FCVTNU, "FCVTNU D31, H1");
+        TestInst(FCVTNU(D0, H31), asm => asm.FCVTNU(D0, H31), Arm64InstructionId.FCVTNU_sisd_64h, Arm64Mnemonic.FCVTNU, "FCVTNU D0, H31");
+        TestInst(FCVTNU(D31, H31), asm => asm.FCVTNU(D31, H31), Arm64InstructionId.FCVTNU_sisd_64h, Arm64Mnemonic.FCVTNU, "FCVTNU D31, H31");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_FCVTNU_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNU_sisd_64s_2()
     {
-        TestInst(FCVTNU(D0, S1), Arm64InstructionId.FCVTNU_sisd_64s, Arm64Mnemonic.FCVTNU, "FCVTNU D0, S1");
-        TestInst(FCVTNU(D31, S1), Arm64InstructionId.FCVTNU_sisd_64s, Arm64Mnemonic.FCVTNU, "FCVTNU D31, S1");
-        TestInst(FCVTNU(D0, S31), Arm64InstructionId.FCVTNU_sisd_64s, Arm64Mnemonic.FCVTNU, "FCVTNU D0, S31");
-        TestInst(FCVTNU(D31, S31), Arm64InstructionId.FCVTNU_sisd_64s, Arm64Mnemonic.FCVTNU, "FCVTNU D31, S31");
+        TestInst(FCVTNU(D0, S1), asm => asm.FCVTNU(D0, S1), Arm64InstructionId.FCVTNU_sisd_64s, Arm64Mnemonic.FCVTNU, "FCVTNU D0, S1");
+        TestInst(FCVTNU(D31, S1), asm => asm.FCVTNU(D31, S1), Arm64InstructionId.FCVTNU_sisd_64s, Arm64Mnemonic.FCVTNU, "FCVTNU D31, S1");
+        TestInst(FCVTNU(D0, S31), asm => asm.FCVTNU(D0, S31), Arm64InstructionId.FCVTNU_sisd_64s, Arm64Mnemonic.FCVTNU, "FCVTNU D0, S31");
+        TestInst(FCVTNU(D31, S31), asm => asm.FCVTNU(D31, S31), Arm64InstructionId.FCVTNU_sisd_64s, Arm64Mnemonic.FCVTNU, "FCVTNU D31, S31");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_FCVTNU_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNU_sisd_32d_3()
     {
-        TestInst(FCVTNU(S0, D1), Arm64InstructionId.FCVTNU_sisd_32d, Arm64Mnemonic.FCVTNU, "FCVTNU S0, D1");
-        TestInst(FCVTNU(S31, D1), Arm64InstructionId.FCVTNU_sisd_32d, Arm64Mnemonic.FCVTNU, "FCVTNU S31, D1");
-        TestInst(FCVTNU(S0, D31), Arm64InstructionId.FCVTNU_sisd_32d, Arm64Mnemonic.FCVTNU, "FCVTNU S0, D31");
-        TestInst(FCVTNU(S31, D31), Arm64InstructionId.FCVTNU_sisd_32d, Arm64Mnemonic.FCVTNU, "FCVTNU S31, D31");
+        TestInst(FCVTNU(S0, D1), asm => asm.FCVTNU(S0, D1), Arm64InstructionId.FCVTNU_sisd_32d, Arm64Mnemonic.FCVTNU, "FCVTNU S0, D1");
+        TestInst(FCVTNU(S31, D1), asm => asm.FCVTNU(S31, D1), Arm64InstructionId.FCVTNU_sisd_32d, Arm64Mnemonic.FCVTNU, "FCVTNU S31, D1");
+        TestInst(FCVTNU(S0, D31), asm => asm.FCVTNU(S0, D31), Arm64InstructionId.FCVTNU_sisd_32d, Arm64Mnemonic.FCVTNU, "FCVTNU S0, D31");
+        TestInst(FCVTNU(S31, D31), asm => asm.FCVTNU(S31, D31), Arm64InstructionId.FCVTNU_sisd_32d, Arm64Mnemonic.FCVTNU, "FCVTNU S31, D31");
     }
     
     /// <summary>
@@ -72,12 +71,12 @@ public class Arm64InstructionFactoryTests_FCVTNU_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNU_32h_float2int_4()
     {
-        TestInst(FCVTNU(W0, H1), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, H1");
-        TestInst(FCVTNU(W15, H1), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, H1");
-        TestInst(FCVTNU(WZR, H1), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, H1");
-        TestInst(FCVTNU(W0, H31), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, H31");
-        TestInst(FCVTNU(W15, H31), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, H31");
-        TestInst(FCVTNU(WZR, H31), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, H31");
+        TestInst(FCVTNU(W0, H1), asm => asm.FCVTNU(W0, H1), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, H1");
+        TestInst(FCVTNU(W15, H1), asm => asm.FCVTNU(W15, H1), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, H1");
+        TestInst(FCVTNU(WZR, H1), asm => asm.FCVTNU(WZR, H1), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, H1");
+        TestInst(FCVTNU(W0, H31), asm => asm.FCVTNU(W0, H31), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, H31");
+        TestInst(FCVTNU(W15, H31), asm => asm.FCVTNU(W15, H31), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, H31");
+        TestInst(FCVTNU(WZR, H31), asm => asm.FCVTNU(WZR, H31), Arm64InstructionId.FCVTNU_32h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, H31");
     }
     
     /// <summary>
@@ -86,12 +85,12 @@ public class Arm64InstructionFactoryTests_FCVTNU_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNU_64h_float2int_5()
     {
-        TestInst(FCVTNU(X0, H1), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, H1");
-        TestInst(FCVTNU(X15, H1), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, H1");
-        TestInst(FCVTNU(XZR, H1), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, H1");
-        TestInst(FCVTNU(X0, H31), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, H31");
-        TestInst(FCVTNU(X15, H31), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, H31");
-        TestInst(FCVTNU(XZR, H31), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, H31");
+        TestInst(FCVTNU(X0, H1), asm => asm.FCVTNU(X0, H1), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, H1");
+        TestInst(FCVTNU(X15, H1), asm => asm.FCVTNU(X15, H1), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, H1");
+        TestInst(FCVTNU(XZR, H1), asm => asm.FCVTNU(XZR, H1), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, H1");
+        TestInst(FCVTNU(X0, H31), asm => asm.FCVTNU(X0, H31), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, H31");
+        TestInst(FCVTNU(X15, H31), asm => asm.FCVTNU(X15, H31), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, H31");
+        TestInst(FCVTNU(XZR, H31), asm => asm.FCVTNU(XZR, H31), Arm64InstructionId.FCVTNU_64h_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, H31");
     }
     
     /// <summary>
@@ -100,12 +99,12 @@ public class Arm64InstructionFactoryTests_FCVTNU_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNU_32s_float2int_6()
     {
-        TestInst(FCVTNU(W0, S1), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, S1");
-        TestInst(FCVTNU(W15, S1), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, S1");
-        TestInst(FCVTNU(WZR, S1), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, S1");
-        TestInst(FCVTNU(W0, S31), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, S31");
-        TestInst(FCVTNU(W15, S31), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, S31");
-        TestInst(FCVTNU(WZR, S31), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, S31");
+        TestInst(FCVTNU(W0, S1), asm => asm.FCVTNU(W0, S1), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, S1");
+        TestInst(FCVTNU(W15, S1), asm => asm.FCVTNU(W15, S1), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, S1");
+        TestInst(FCVTNU(WZR, S1), asm => asm.FCVTNU(WZR, S1), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, S1");
+        TestInst(FCVTNU(W0, S31), asm => asm.FCVTNU(W0, S31), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, S31");
+        TestInst(FCVTNU(W15, S31), asm => asm.FCVTNU(W15, S31), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, S31");
+        TestInst(FCVTNU(WZR, S31), asm => asm.FCVTNU(WZR, S31), Arm64InstructionId.FCVTNU_32s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, S31");
     }
     
     /// <summary>
@@ -114,12 +113,12 @@ public class Arm64InstructionFactoryTests_FCVTNU_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNU_64s_float2int_7()
     {
-        TestInst(FCVTNU(X0, S1), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, S1");
-        TestInst(FCVTNU(X15, S1), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, S1");
-        TestInst(FCVTNU(XZR, S1), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, S1");
-        TestInst(FCVTNU(X0, S31), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, S31");
-        TestInst(FCVTNU(X15, S31), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, S31");
-        TestInst(FCVTNU(XZR, S31), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, S31");
+        TestInst(FCVTNU(X0, S1), asm => asm.FCVTNU(X0, S1), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, S1");
+        TestInst(FCVTNU(X15, S1), asm => asm.FCVTNU(X15, S1), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, S1");
+        TestInst(FCVTNU(XZR, S1), asm => asm.FCVTNU(XZR, S1), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, S1");
+        TestInst(FCVTNU(X0, S31), asm => asm.FCVTNU(X0, S31), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, S31");
+        TestInst(FCVTNU(X15, S31), asm => asm.FCVTNU(X15, S31), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, S31");
+        TestInst(FCVTNU(XZR, S31), asm => asm.FCVTNU(XZR, S31), Arm64InstructionId.FCVTNU_64s_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, S31");
     }
     
     /// <summary>
@@ -128,12 +127,12 @@ public class Arm64InstructionFactoryTests_FCVTNU_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNU_32d_float2int_8()
     {
-        TestInst(FCVTNU(W0, D1), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, D1");
-        TestInst(FCVTNU(W15, D1), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, D1");
-        TestInst(FCVTNU(WZR, D1), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, D1");
-        TestInst(FCVTNU(W0, D31), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, D31");
-        TestInst(FCVTNU(W15, D31), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, D31");
-        TestInst(FCVTNU(WZR, D31), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, D31");
+        TestInst(FCVTNU(W0, D1), asm => asm.FCVTNU(W0, D1), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, D1");
+        TestInst(FCVTNU(W15, D1), asm => asm.FCVTNU(W15, D1), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, D1");
+        TestInst(FCVTNU(WZR, D1), asm => asm.FCVTNU(WZR, D1), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, D1");
+        TestInst(FCVTNU(W0, D31), asm => asm.FCVTNU(W0, D31), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W0, D31");
+        TestInst(FCVTNU(W15, D31), asm => asm.FCVTNU(W15, D31), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU W15, D31");
+        TestInst(FCVTNU(WZR, D31), asm => asm.FCVTNU(WZR, D31), Arm64InstructionId.FCVTNU_32d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU WZR, D31");
     }
     
     /// <summary>
@@ -142,11 +141,11 @@ public class Arm64InstructionFactoryTests_FCVTNU_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNU_64d_float2int_9()
     {
-        TestInst(FCVTNU(X0, D1), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, D1");
-        TestInst(FCVTNU(X15, D1), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, D1");
-        TestInst(FCVTNU(XZR, D1), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, D1");
-        TestInst(FCVTNU(X0, D31), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, D31");
-        TestInst(FCVTNU(X15, D31), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, D31");
-        TestInst(FCVTNU(XZR, D31), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, D31");
+        TestInst(FCVTNU(X0, D1), asm => asm.FCVTNU(X0, D1), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, D1");
+        TestInst(FCVTNU(X15, D1), asm => asm.FCVTNU(X15, D1), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, D1");
+        TestInst(FCVTNU(XZR, D1), asm => asm.FCVTNU(XZR, D1), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, D1");
+        TestInst(FCVTNU(X0, D31), asm => asm.FCVTNU(X0, D31), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X0, D31");
+        TestInst(FCVTNU(X15, D31), asm => asm.FCVTNU(X15, D31), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU X15, D31");
+        TestInst(FCVTNU(XZR, D31), asm => asm.FCVTNU(XZR, D31), Arm64InstructionId.FCVTNU_64d_float2int, Arm64Mnemonic.FCVTNU, "FCVTNU XZR, D31");
     }
 }

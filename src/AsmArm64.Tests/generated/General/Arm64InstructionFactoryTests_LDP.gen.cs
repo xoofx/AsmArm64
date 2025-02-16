@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDP_32_ldstpair_post_0()
     {
-        TestInst(LDP(W0, W1, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W0, W1, [X3], #20");
-        TestInst(LDP(W15, W1, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W15, W1, [X3], #20");
-        TestInst(LDP(WZR, W1, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP WZR, W1, [X3], #20");
-        TestInst(LDP(W0, W16, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W0, W16, [X3], #20");
-        TestInst(LDP(W15, W16, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W15, W16, [X3], #20");
-        TestInst(LDP(WZR, W16, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP WZR, W16, [X3], #20");
-        TestInst(LDP(W0, WZR, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W0, WZR, [X3], #20");
-        TestInst(LDP(W15, WZR, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W15, WZR, [X3], #20");
-        TestInst(LDP(WZR, WZR, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP WZR, WZR, [X3], #20");
+        TestInst(LDP(W0, W1, _[X3], 20), asm => asm.LDP(W0, W1, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W0, W1, [X3], #20");
+        TestInst(LDP(W15, W1, _[X3], 20), asm => asm.LDP(W15, W1, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W15, W1, [X3], #20");
+        TestInst(LDP(WZR, W1, _[X3], 20), asm => asm.LDP(WZR, W1, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP WZR, W1, [X3], #20");
+        TestInst(LDP(W0, W16, _[X3], 20), asm => asm.LDP(W0, W16, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W0, W16, [X3], #20");
+        TestInst(LDP(W15, W16, _[X3], 20), asm => asm.LDP(W15, W16, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W15, W16, [X3], #20");
+        TestInst(LDP(WZR, W16, _[X3], 20), asm => asm.LDP(WZR, W16, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP WZR, W16, [X3], #20");
+        TestInst(LDP(W0, WZR, _[X3], 20), asm => asm.LDP(W0, WZR, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W0, WZR, [X3], #20");
+        TestInst(LDP(W15, WZR, _[X3], 20), asm => asm.LDP(W15, WZR, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP W15, WZR, [X3], #20");
+        TestInst(LDP(WZR, WZR, _[X3], 20), asm => asm.LDP(WZR, WZR, _[X3], 20), Arm64InstructionId.LDP_32_ldstpair_post, Arm64Mnemonic.LDP, "LDP WZR, WZR, [X3], #20");
     }
     
     /// <summary>
@@ -41,15 +40,15 @@ public class Arm64InstructionFactoryTests_LDP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDP_64_ldstpair_post_1()
     {
-        TestInst(LDP(X0, X1, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X0, X1, [X3], #40");
-        TestInst(LDP(X15, X1, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X15, X1, [X3], #40");
-        TestInst(LDP(XZR, X1, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP XZR, X1, [X3], #40");
-        TestInst(LDP(X0, X16, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X0, X16, [X3], #40");
-        TestInst(LDP(X15, X16, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X15, X16, [X3], #40");
-        TestInst(LDP(XZR, X16, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP XZR, X16, [X3], #40");
-        TestInst(LDP(X0, XZR, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X0, XZR, [X3], #40");
-        TestInst(LDP(X15, XZR, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X15, XZR, [X3], #40");
-        TestInst(LDP(XZR, XZR, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP XZR, XZR, [X3], #40");
+        TestInst(LDP(X0, X1, _[X3], 40), asm => asm.LDP(X0, X1, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X0, X1, [X3], #40");
+        TestInst(LDP(X15, X1, _[X3], 40), asm => asm.LDP(X15, X1, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X15, X1, [X3], #40");
+        TestInst(LDP(XZR, X1, _[X3], 40), asm => asm.LDP(XZR, X1, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP XZR, X1, [X3], #40");
+        TestInst(LDP(X0, X16, _[X3], 40), asm => asm.LDP(X0, X16, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X0, X16, [X3], #40");
+        TestInst(LDP(X15, X16, _[X3], 40), asm => asm.LDP(X15, X16, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X15, X16, [X3], #40");
+        TestInst(LDP(XZR, X16, _[X3], 40), asm => asm.LDP(XZR, X16, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP XZR, X16, [X3], #40");
+        TestInst(LDP(X0, XZR, _[X3], 40), asm => asm.LDP(X0, XZR, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X0, XZR, [X3], #40");
+        TestInst(LDP(X15, XZR, _[X3], 40), asm => asm.LDP(X15, XZR, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP X15, XZR, [X3], #40");
+        TestInst(LDP(XZR, XZR, _[X3], 40), asm => asm.LDP(XZR, XZR, _[X3], 40), Arm64InstructionId.LDP_64_ldstpair_post, Arm64Mnemonic.LDP, "LDP XZR, XZR, [X3], #40");
     }
     
     /// <summary>
@@ -58,15 +57,15 @@ public class Arm64InstructionFactoryTests_LDP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDP_32_ldstpair_pre_2()
     {
-        TestInst(LDP(W0, W1, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W0, W1, [X3, #20]!");
-        TestInst(LDP(W15, W1, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W15, W1, [X3, #20]!");
-        TestInst(LDP(WZR, W1, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP WZR, W1, [X3, #20]!");
-        TestInst(LDP(W0, W16, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W0, W16, [X3, #20]!");
-        TestInst(LDP(W15, W16, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W15, W16, [X3, #20]!");
-        TestInst(LDP(WZR, W16, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP WZR, W16, [X3, #20]!");
-        TestInst(LDP(W0, WZR, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W0, WZR, [X3, #20]!");
-        TestInst(LDP(W15, WZR, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W15, WZR, [X3, #20]!");
-        TestInst(LDP(WZR, WZR, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP WZR, WZR, [X3, #20]!");
+        TestInst(LDP(W0, W1, _[X3, 20].Pre), asm => asm.LDP(W0, W1, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W0, W1, [X3, #20]!");
+        TestInst(LDP(W15, W1, _[X3, 20].Pre), asm => asm.LDP(W15, W1, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W15, W1, [X3, #20]!");
+        TestInst(LDP(WZR, W1, _[X3, 20].Pre), asm => asm.LDP(WZR, W1, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP WZR, W1, [X3, #20]!");
+        TestInst(LDP(W0, W16, _[X3, 20].Pre), asm => asm.LDP(W0, W16, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W0, W16, [X3, #20]!");
+        TestInst(LDP(W15, W16, _[X3, 20].Pre), asm => asm.LDP(W15, W16, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W15, W16, [X3, #20]!");
+        TestInst(LDP(WZR, W16, _[X3, 20].Pre), asm => asm.LDP(WZR, W16, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP WZR, W16, [X3, #20]!");
+        TestInst(LDP(W0, WZR, _[X3, 20].Pre), asm => asm.LDP(W0, WZR, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W0, WZR, [X3, #20]!");
+        TestInst(LDP(W15, WZR, _[X3, 20].Pre), asm => asm.LDP(W15, WZR, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP W15, WZR, [X3, #20]!");
+        TestInst(LDP(WZR, WZR, _[X3, 20].Pre), asm => asm.LDP(WZR, WZR, _[X3, 20].Pre), Arm64InstructionId.LDP_32_ldstpair_pre, Arm64Mnemonic.LDP, "LDP WZR, WZR, [X3, #20]!");
     }
     
     /// <summary>
@@ -75,15 +74,15 @@ public class Arm64InstructionFactoryTests_LDP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDP_64_ldstpair_pre_3()
     {
-        TestInst(LDP(X0, X1, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X0, X1, [X3, #40]!");
-        TestInst(LDP(X15, X1, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X15, X1, [X3, #40]!");
-        TestInst(LDP(XZR, X1, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP XZR, X1, [X3, #40]!");
-        TestInst(LDP(X0, X16, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X0, X16, [X3, #40]!");
-        TestInst(LDP(X15, X16, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X15, X16, [X3, #40]!");
-        TestInst(LDP(XZR, X16, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP XZR, X16, [X3, #40]!");
-        TestInst(LDP(X0, XZR, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X0, XZR, [X3, #40]!");
-        TestInst(LDP(X15, XZR, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X15, XZR, [X3, #40]!");
-        TestInst(LDP(XZR, XZR, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP XZR, XZR, [X3, #40]!");
+        TestInst(LDP(X0, X1, _[X3, 40].Pre), asm => asm.LDP(X0, X1, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X0, X1, [X3, #40]!");
+        TestInst(LDP(X15, X1, _[X3, 40].Pre), asm => asm.LDP(X15, X1, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X15, X1, [X3, #40]!");
+        TestInst(LDP(XZR, X1, _[X3, 40].Pre), asm => asm.LDP(XZR, X1, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP XZR, X1, [X3, #40]!");
+        TestInst(LDP(X0, X16, _[X3, 40].Pre), asm => asm.LDP(X0, X16, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X0, X16, [X3, #40]!");
+        TestInst(LDP(X15, X16, _[X3, 40].Pre), asm => asm.LDP(X15, X16, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X15, X16, [X3, #40]!");
+        TestInst(LDP(XZR, X16, _[X3, 40].Pre), asm => asm.LDP(XZR, X16, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP XZR, X16, [X3, #40]!");
+        TestInst(LDP(X0, XZR, _[X3, 40].Pre), asm => asm.LDP(X0, XZR, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X0, XZR, [X3, #40]!");
+        TestInst(LDP(X15, XZR, _[X3, 40].Pre), asm => asm.LDP(X15, XZR, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP X15, XZR, [X3, #40]!");
+        TestInst(LDP(XZR, XZR, _[X3, 40].Pre), asm => asm.LDP(XZR, XZR, _[X3, 40].Pre), Arm64InstructionId.LDP_64_ldstpair_pre, Arm64Mnemonic.LDP, "LDP XZR, XZR, [X3, #40]!");
     }
     
     /// <summary>
@@ -92,15 +91,15 @@ public class Arm64InstructionFactoryTests_LDP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDP_32_ldstpair_off_4()
     {
-        TestInst(LDP(W0, W1, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W0, W1, [X3, #20]");
-        TestInst(LDP(W15, W1, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W15, W1, [X3, #20]");
-        TestInst(LDP(WZR, W1, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP WZR, W1, [X3, #20]");
-        TestInst(LDP(W0, W16, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W0, W16, [X3, #20]");
-        TestInst(LDP(W15, W16, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W15, W16, [X3, #20]");
-        TestInst(LDP(WZR, W16, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP WZR, W16, [X3, #20]");
-        TestInst(LDP(W0, WZR, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W0, WZR, [X3, #20]");
-        TestInst(LDP(W15, WZR, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W15, WZR, [X3, #20]");
-        TestInst(LDP(WZR, WZR, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP WZR, WZR, [X3, #20]");
+        TestInst(LDP(W0, W1, _[X3, 20]), asm => asm.LDP(W0, W1, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W0, W1, [X3, #20]");
+        TestInst(LDP(W15, W1, _[X3, 20]), asm => asm.LDP(W15, W1, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W15, W1, [X3, #20]");
+        TestInst(LDP(WZR, W1, _[X3, 20]), asm => asm.LDP(WZR, W1, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP WZR, W1, [X3, #20]");
+        TestInst(LDP(W0, W16, _[X3, 20]), asm => asm.LDP(W0, W16, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W0, W16, [X3, #20]");
+        TestInst(LDP(W15, W16, _[X3, 20]), asm => asm.LDP(W15, W16, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W15, W16, [X3, #20]");
+        TestInst(LDP(WZR, W16, _[X3, 20]), asm => asm.LDP(WZR, W16, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP WZR, W16, [X3, #20]");
+        TestInst(LDP(W0, WZR, _[X3, 20]), asm => asm.LDP(W0, WZR, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W0, WZR, [X3, #20]");
+        TestInst(LDP(W15, WZR, _[X3, 20]), asm => asm.LDP(W15, WZR, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP W15, WZR, [X3, #20]");
+        TestInst(LDP(WZR, WZR, _[X3, 20]), asm => asm.LDP(WZR, WZR, _[X3, 20]), Arm64InstructionId.LDP_32_ldstpair_off, Arm64Mnemonic.LDP, "LDP WZR, WZR, [X3, #20]");
     }
     
     /// <summary>
@@ -109,14 +108,14 @@ public class Arm64InstructionFactoryTests_LDP_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LDP_64_ldstpair_off_5()
     {
-        TestInst(LDP(X0, X1, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X0, X1, [X3, #40]");
-        TestInst(LDP(X15, X1, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X15, X1, [X3, #40]");
-        TestInst(LDP(XZR, X1, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP XZR, X1, [X3, #40]");
-        TestInst(LDP(X0, X16, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X0, X16, [X3, #40]");
-        TestInst(LDP(X15, X16, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X15, X16, [X3, #40]");
-        TestInst(LDP(XZR, X16, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP XZR, X16, [X3, #40]");
-        TestInst(LDP(X0, XZR, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X0, XZR, [X3, #40]");
-        TestInst(LDP(X15, XZR, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X15, XZR, [X3, #40]");
-        TestInst(LDP(XZR, XZR, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP XZR, XZR, [X3, #40]");
+        TestInst(LDP(X0, X1, _[X3, 40]), asm => asm.LDP(X0, X1, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X0, X1, [X3, #40]");
+        TestInst(LDP(X15, X1, _[X3, 40]), asm => asm.LDP(X15, X1, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X15, X1, [X3, #40]");
+        TestInst(LDP(XZR, X1, _[X3, 40]), asm => asm.LDP(XZR, X1, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP XZR, X1, [X3, #40]");
+        TestInst(LDP(X0, X16, _[X3, 40]), asm => asm.LDP(X0, X16, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X0, X16, [X3, #40]");
+        TestInst(LDP(X15, X16, _[X3, 40]), asm => asm.LDP(X15, X16, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X15, X16, [X3, #40]");
+        TestInst(LDP(XZR, X16, _[X3, 40]), asm => asm.LDP(XZR, X16, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP XZR, X16, [X3, #40]");
+        TestInst(LDP(X0, XZR, _[X3, 40]), asm => asm.LDP(X0, XZR, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X0, XZR, [X3, #40]");
+        TestInst(LDP(X15, XZR, _[X3, 40]), asm => asm.LDP(X15, XZR, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP X15, XZR, [X3, #40]");
+        TestInst(LDP(XZR, XZR, _[X3, 40]), asm => asm.LDP(XZR, XZR, _[X3, 40]), Arm64InstructionId.LDP_64_ldstpair_off, Arm64Mnemonic.LDP, "LDP XZR, XZR, [X3, #40]");
     }
 }

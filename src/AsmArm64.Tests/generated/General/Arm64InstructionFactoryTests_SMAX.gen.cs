@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_SMAX_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SMAX_32_minmax_imm_0()
     {
-        TestInst(SMAX(W0, W1, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W0, W1, #5");
-        TestInst(SMAX(W15, W1, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W15, W1, #5");
-        TestInst(SMAX(WZR, W1, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX WZR, W1, #5");
-        TestInst(SMAX(W0, W16, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W0, W16, #5");
-        TestInst(SMAX(W15, W16, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W15, W16, #5");
-        TestInst(SMAX(WZR, W16, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX WZR, W16, #5");
-        TestInst(SMAX(W0, WZR, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W0, WZR, #5");
-        TestInst(SMAX(W15, WZR, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W15, WZR, #5");
-        TestInst(SMAX(WZR, WZR, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, #5");
+        TestInst(SMAX(W0, W1, 5), asm => asm.SMAX(W0, W1, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W0, W1, #5");
+        TestInst(SMAX(W15, W1, 5), asm => asm.SMAX(W15, W1, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W15, W1, #5");
+        TestInst(SMAX(WZR, W1, 5), asm => asm.SMAX(WZR, W1, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX WZR, W1, #5");
+        TestInst(SMAX(W0, W16, 5), asm => asm.SMAX(W0, W16, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W0, W16, #5");
+        TestInst(SMAX(W15, W16, 5), asm => asm.SMAX(W15, W16, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W15, W16, #5");
+        TestInst(SMAX(WZR, W16, 5), asm => asm.SMAX(WZR, W16, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX WZR, W16, #5");
+        TestInst(SMAX(W0, WZR, 5), asm => asm.SMAX(W0, WZR, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W0, WZR, #5");
+        TestInst(SMAX(W15, WZR, 5), asm => asm.SMAX(W15, WZR, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX W15, WZR, #5");
+        TestInst(SMAX(WZR, WZR, 5), asm => asm.SMAX(WZR, WZR, 5), Arm64InstructionId.SMAX_32_minmax_imm, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, #5");
     }
     
     /// <summary>
@@ -41,15 +40,15 @@ public class Arm64InstructionFactoryTests_SMAX_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SMAX_64_minmax_imm_1()
     {
-        TestInst(SMAX(X0, X1, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X0, X1, #5");
-        TestInst(SMAX(X15, X1, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X15, X1, #5");
-        TestInst(SMAX(XZR, X1, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX XZR, X1, #5");
-        TestInst(SMAX(X0, X16, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X0, X16, #5");
-        TestInst(SMAX(X15, X16, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X15, X16, #5");
-        TestInst(SMAX(XZR, X16, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX XZR, X16, #5");
-        TestInst(SMAX(X0, XZR, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X0, XZR, #5");
-        TestInst(SMAX(X15, XZR, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X15, XZR, #5");
-        TestInst(SMAX(XZR, XZR, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, #5");
+        TestInst(SMAX(X0, X1, 5), asm => asm.SMAX(X0, X1, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X0, X1, #5");
+        TestInst(SMAX(X15, X1, 5), asm => asm.SMAX(X15, X1, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X15, X1, #5");
+        TestInst(SMAX(XZR, X1, 5), asm => asm.SMAX(XZR, X1, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX XZR, X1, #5");
+        TestInst(SMAX(X0, X16, 5), asm => asm.SMAX(X0, X16, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X0, X16, #5");
+        TestInst(SMAX(X15, X16, 5), asm => asm.SMAX(X15, X16, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X15, X16, #5");
+        TestInst(SMAX(XZR, X16, 5), asm => asm.SMAX(XZR, X16, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX XZR, X16, #5");
+        TestInst(SMAX(X0, XZR, 5), asm => asm.SMAX(X0, XZR, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X0, XZR, #5");
+        TestInst(SMAX(X15, XZR, 5), asm => asm.SMAX(X15, XZR, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX X15, XZR, #5");
+        TestInst(SMAX(XZR, XZR, 5), asm => asm.SMAX(XZR, XZR, 5), Arm64InstructionId.SMAX_64_minmax_imm, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, #5");
     }
     
     /// <summary>
@@ -58,33 +57,33 @@ public class Arm64InstructionFactoryTests_SMAX_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SMAX_32_dp_2src_2()
     {
-        TestInst(SMAX(W0, W1, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W1, W2");
-        TestInst(SMAX(W15, W1, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W1, W2");
-        TestInst(SMAX(WZR, W1, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W1, W2");
-        TestInst(SMAX(W0, W16, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W16, W2");
-        TestInst(SMAX(W15, W16, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W16, W2");
-        TestInst(SMAX(WZR, W16, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W16, W2");
-        TestInst(SMAX(W0, WZR, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, WZR, W2");
-        TestInst(SMAX(W15, WZR, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, WZR, W2");
-        TestInst(SMAX(WZR, WZR, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, W2");
-        TestInst(SMAX(W0, W1, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W1, W17");
-        TestInst(SMAX(W15, W1, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W1, W17");
-        TestInst(SMAX(WZR, W1, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W1, W17");
-        TestInst(SMAX(W0, W16, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W16, W17");
-        TestInst(SMAX(W15, W16, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W16, W17");
-        TestInst(SMAX(WZR, W16, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W16, W17");
-        TestInst(SMAX(W0, WZR, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, WZR, W17");
-        TestInst(SMAX(W15, WZR, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, WZR, W17");
-        TestInst(SMAX(WZR, WZR, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, W17");
-        TestInst(SMAX(W0, W1, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W1, WZR");
-        TestInst(SMAX(W15, W1, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W1, WZR");
-        TestInst(SMAX(WZR, W1, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W1, WZR");
-        TestInst(SMAX(W0, W16, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W16, WZR");
-        TestInst(SMAX(W15, W16, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W16, WZR");
-        TestInst(SMAX(WZR, W16, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W16, WZR");
-        TestInst(SMAX(W0, WZR, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, WZR, WZR");
-        TestInst(SMAX(W15, WZR, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, WZR, WZR");
-        TestInst(SMAX(WZR, WZR, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, WZR");
+        TestInst(SMAX(W0, W1, W2), asm => asm.SMAX(W0, W1, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W1, W2");
+        TestInst(SMAX(W15, W1, W2), asm => asm.SMAX(W15, W1, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W1, W2");
+        TestInst(SMAX(WZR, W1, W2), asm => asm.SMAX(WZR, W1, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W1, W2");
+        TestInst(SMAX(W0, W16, W2), asm => asm.SMAX(W0, W16, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W16, W2");
+        TestInst(SMAX(W15, W16, W2), asm => asm.SMAX(W15, W16, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W16, W2");
+        TestInst(SMAX(WZR, W16, W2), asm => asm.SMAX(WZR, W16, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W16, W2");
+        TestInst(SMAX(W0, WZR, W2), asm => asm.SMAX(W0, WZR, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, WZR, W2");
+        TestInst(SMAX(W15, WZR, W2), asm => asm.SMAX(W15, WZR, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, WZR, W2");
+        TestInst(SMAX(WZR, WZR, W2), asm => asm.SMAX(WZR, WZR, W2), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, W2");
+        TestInst(SMAX(W0, W1, W17), asm => asm.SMAX(W0, W1, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W1, W17");
+        TestInst(SMAX(W15, W1, W17), asm => asm.SMAX(W15, W1, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W1, W17");
+        TestInst(SMAX(WZR, W1, W17), asm => asm.SMAX(WZR, W1, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W1, W17");
+        TestInst(SMAX(W0, W16, W17), asm => asm.SMAX(W0, W16, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W16, W17");
+        TestInst(SMAX(W15, W16, W17), asm => asm.SMAX(W15, W16, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W16, W17");
+        TestInst(SMAX(WZR, W16, W17), asm => asm.SMAX(WZR, W16, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W16, W17");
+        TestInst(SMAX(W0, WZR, W17), asm => asm.SMAX(W0, WZR, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, WZR, W17");
+        TestInst(SMAX(W15, WZR, W17), asm => asm.SMAX(W15, WZR, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, WZR, W17");
+        TestInst(SMAX(WZR, WZR, W17), asm => asm.SMAX(WZR, WZR, W17), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, W17");
+        TestInst(SMAX(W0, W1, WZR), asm => asm.SMAX(W0, W1, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W1, WZR");
+        TestInst(SMAX(W15, W1, WZR), asm => asm.SMAX(W15, W1, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W1, WZR");
+        TestInst(SMAX(WZR, W1, WZR), asm => asm.SMAX(WZR, W1, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W1, WZR");
+        TestInst(SMAX(W0, W16, WZR), asm => asm.SMAX(W0, W16, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, W16, WZR");
+        TestInst(SMAX(W15, W16, WZR), asm => asm.SMAX(W15, W16, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, W16, WZR");
+        TestInst(SMAX(WZR, W16, WZR), asm => asm.SMAX(WZR, W16, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, W16, WZR");
+        TestInst(SMAX(W0, WZR, WZR), asm => asm.SMAX(W0, WZR, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W0, WZR, WZR");
+        TestInst(SMAX(W15, WZR, WZR), asm => asm.SMAX(W15, WZR, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX W15, WZR, WZR");
+        TestInst(SMAX(WZR, WZR, WZR), asm => asm.SMAX(WZR, WZR, WZR), Arm64InstructionId.SMAX_32_dp_2src, Arm64Mnemonic.SMAX, "SMAX WZR, WZR, WZR");
     }
     
     /// <summary>
@@ -93,32 +92,32 @@ public class Arm64InstructionFactoryTests_SMAX_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SMAX_64_dp_2src_3()
     {
-        TestInst(SMAX(X0, X1, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X1, X2");
-        TestInst(SMAX(X15, X1, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X1, X2");
-        TestInst(SMAX(XZR, X1, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X1, X2");
-        TestInst(SMAX(X0, X16, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X16, X2");
-        TestInst(SMAX(X15, X16, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X16, X2");
-        TestInst(SMAX(XZR, X16, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X16, X2");
-        TestInst(SMAX(X0, XZR, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, XZR, X2");
-        TestInst(SMAX(X15, XZR, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, XZR, X2");
-        TestInst(SMAX(XZR, XZR, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, X2");
-        TestInst(SMAX(X0, X1, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X1, X17");
-        TestInst(SMAX(X15, X1, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X1, X17");
-        TestInst(SMAX(XZR, X1, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X1, X17");
-        TestInst(SMAX(X0, X16, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X16, X17");
-        TestInst(SMAX(X15, X16, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X16, X17");
-        TestInst(SMAX(XZR, X16, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X16, X17");
-        TestInst(SMAX(X0, XZR, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, XZR, X17");
-        TestInst(SMAX(X15, XZR, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, XZR, X17");
-        TestInst(SMAX(XZR, XZR, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, X17");
-        TestInst(SMAX(X0, X1, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X1, XZR");
-        TestInst(SMAX(X15, X1, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X1, XZR");
-        TestInst(SMAX(XZR, X1, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X1, XZR");
-        TestInst(SMAX(X0, X16, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X16, XZR");
-        TestInst(SMAX(X15, X16, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X16, XZR");
-        TestInst(SMAX(XZR, X16, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X16, XZR");
-        TestInst(SMAX(X0, XZR, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, XZR, XZR");
-        TestInst(SMAX(X15, XZR, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, XZR, XZR");
-        TestInst(SMAX(XZR, XZR, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, XZR");
+        TestInst(SMAX(X0, X1, X2), asm => asm.SMAX(X0, X1, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X1, X2");
+        TestInst(SMAX(X15, X1, X2), asm => asm.SMAX(X15, X1, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X1, X2");
+        TestInst(SMAX(XZR, X1, X2), asm => asm.SMAX(XZR, X1, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X1, X2");
+        TestInst(SMAX(X0, X16, X2), asm => asm.SMAX(X0, X16, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X16, X2");
+        TestInst(SMAX(X15, X16, X2), asm => asm.SMAX(X15, X16, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X16, X2");
+        TestInst(SMAX(XZR, X16, X2), asm => asm.SMAX(XZR, X16, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X16, X2");
+        TestInst(SMAX(X0, XZR, X2), asm => asm.SMAX(X0, XZR, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, XZR, X2");
+        TestInst(SMAX(X15, XZR, X2), asm => asm.SMAX(X15, XZR, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, XZR, X2");
+        TestInst(SMAX(XZR, XZR, X2), asm => asm.SMAX(XZR, XZR, X2), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, X2");
+        TestInst(SMAX(X0, X1, X17), asm => asm.SMAX(X0, X1, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X1, X17");
+        TestInst(SMAX(X15, X1, X17), asm => asm.SMAX(X15, X1, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X1, X17");
+        TestInst(SMAX(XZR, X1, X17), asm => asm.SMAX(XZR, X1, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X1, X17");
+        TestInst(SMAX(X0, X16, X17), asm => asm.SMAX(X0, X16, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X16, X17");
+        TestInst(SMAX(X15, X16, X17), asm => asm.SMAX(X15, X16, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X16, X17");
+        TestInst(SMAX(XZR, X16, X17), asm => asm.SMAX(XZR, X16, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X16, X17");
+        TestInst(SMAX(X0, XZR, X17), asm => asm.SMAX(X0, XZR, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, XZR, X17");
+        TestInst(SMAX(X15, XZR, X17), asm => asm.SMAX(X15, XZR, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, XZR, X17");
+        TestInst(SMAX(XZR, XZR, X17), asm => asm.SMAX(XZR, XZR, X17), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, X17");
+        TestInst(SMAX(X0, X1, XZR), asm => asm.SMAX(X0, X1, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X1, XZR");
+        TestInst(SMAX(X15, X1, XZR), asm => asm.SMAX(X15, X1, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X1, XZR");
+        TestInst(SMAX(XZR, X1, XZR), asm => asm.SMAX(XZR, X1, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X1, XZR");
+        TestInst(SMAX(X0, X16, XZR), asm => asm.SMAX(X0, X16, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, X16, XZR");
+        TestInst(SMAX(X15, X16, XZR), asm => asm.SMAX(X15, X16, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, X16, XZR");
+        TestInst(SMAX(XZR, X16, XZR), asm => asm.SMAX(XZR, X16, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, X16, XZR");
+        TestInst(SMAX(X0, XZR, XZR), asm => asm.SMAX(X0, XZR, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X0, XZR, XZR");
+        TestInst(SMAX(X15, XZR, XZR), asm => asm.SMAX(X15, XZR, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX X15, XZR, XZR");
+        TestInst(SMAX(XZR, XZR, XZR), asm => asm.SMAX(XZR, XZR, XZR), Arm64InstructionId.SMAX_64_dp_2src, Arm64Mnemonic.SMAX, "SMAX XZR, XZR, XZR");
     }
 }

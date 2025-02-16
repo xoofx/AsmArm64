@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_CLRBHB_System : Arm64InstructionFactor
     [TestMethod]
     public void Test_CLRBHB_hi_hints_0()
     {
-        TestInst(CLRBHB(), Arm64InstructionId.CLRBHB_hi_hints, Arm64Mnemonic.CLRBHB, "CLRBHB");
+        TestInst(CLRBHB(), asm => asm.CLRBHB(), Arm64InstructionId.CLRBHB_hi_hints, Arm64Mnemonic.CLRBHB, "CLRBHB");
     }
 }

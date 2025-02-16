@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_FMLALB_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FMLALB_asimdelem_h_0()
     {
-        TestInst(FMLALB(V0.T_8H, V1.T_16B, V2.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V1.16B, V2.B[1]");
-        TestInst(FMLALB(V30.T_8H, V1.T_16B, V2.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V1.16B, V2.B[1]");
-        TestInst(FMLALB(V0.T_8H, V31.T_16B, V2.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V31.16B, V2.B[1]");
-        TestInst(FMLALB(V30.T_8H, V31.T_16B, V2.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V31.16B, V2.B[1]");
-        TestInst(FMLALB(V0.T_8H, V1.T_16B, V0.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V1.16B, V0.B[1]");
-        TestInst(FMLALB(V30.T_8H, V1.T_16B, V0.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V1.16B, V0.B[1]");
-        TestInst(FMLALB(V0.T_8H, V31.T_16B, V0.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V31.16B, V0.B[1]");
-        TestInst(FMLALB(V30.T_8H, V31.T_16B, V0.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V31.16B, V0.B[1]");
+        TestInst(FMLALB(V0.T_8H, V1.T_16B, V2.B[1]), asm => asm.FMLALB(V0.T_8H, V1.T_16B, V2.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V1.16B, V2.B[1]");
+        TestInst(FMLALB(V30.T_8H, V1.T_16B, V2.B[1]), asm => asm.FMLALB(V30.T_8H, V1.T_16B, V2.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V1.16B, V2.B[1]");
+        TestInst(FMLALB(V0.T_8H, V31.T_16B, V2.B[1]), asm => asm.FMLALB(V0.T_8H, V31.T_16B, V2.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V31.16B, V2.B[1]");
+        TestInst(FMLALB(V30.T_8H, V31.T_16B, V2.B[1]), asm => asm.FMLALB(V30.T_8H, V31.T_16B, V2.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V31.16B, V2.B[1]");
+        TestInst(FMLALB(V0.T_8H, V1.T_16B, V0.B[1]), asm => asm.FMLALB(V0.T_8H, V1.T_16B, V0.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V1.16B, V0.B[1]");
+        TestInst(FMLALB(V30.T_8H, V1.T_16B, V0.B[1]), asm => asm.FMLALB(V30.T_8H, V1.T_16B, V0.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V1.16B, V0.B[1]");
+        TestInst(FMLALB(V0.T_8H, V31.T_16B, V0.B[1]), asm => asm.FMLALB(V0.T_8H, V31.T_16B, V0.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V31.16B, V0.B[1]");
+        TestInst(FMLALB(V30.T_8H, V31.T_16B, V0.B[1]), asm => asm.FMLALB(V30.T_8H, V31.T_16B, V0.B[1]), Arm64InstructionId.FMLALB_asimdelem_h, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V31.16B, V0.B[1]");
     }
     
     /// <summary>
@@ -40,13 +39,13 @@ public class Arm64InstructionFactoryTests_FMLALB_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FMLALB_asimdsame2_j_1()
     {
-        TestInst(FMLALB(V0.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V1.16B, V2.16B");
-        TestInst(FMLALB(V30.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V1.16B, V2.16B");
-        TestInst(FMLALB(V0.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V31.16B, V2.16B");
-        TestInst(FMLALB(V30.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V31.16B, V2.16B");
-        TestInst(FMLALB(V0.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V1.16B, V0.16B");
-        TestInst(FMLALB(V30.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V1.16B, V0.16B");
-        TestInst(FMLALB(V0.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V31.16B, V0.16B");
-        TestInst(FMLALB(V30.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V31.16B, V0.16B");
+        TestInst(FMLALB(V0.T_8H, V1.T_16B, V2.T_16B), asm => asm.FMLALB(V0.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V1.16B, V2.16B");
+        TestInst(FMLALB(V30.T_8H, V1.T_16B, V2.T_16B), asm => asm.FMLALB(V30.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V1.16B, V2.16B");
+        TestInst(FMLALB(V0.T_8H, V31.T_16B, V2.T_16B), asm => asm.FMLALB(V0.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V31.16B, V2.16B");
+        TestInst(FMLALB(V30.T_8H, V31.T_16B, V2.T_16B), asm => asm.FMLALB(V30.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V31.16B, V2.16B");
+        TestInst(FMLALB(V0.T_8H, V1.T_16B, V0.T_16B), asm => asm.FMLALB(V0.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V1.16B, V0.16B");
+        TestInst(FMLALB(V30.T_8H, V1.T_16B, V0.T_16B), asm => asm.FMLALB(V30.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V1.16B, V0.16B");
+        TestInst(FMLALB(V0.T_8H, V31.T_16B, V0.T_16B), asm => asm.FMLALB(V0.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V0.8H, V31.16B, V0.16B");
+        TestInst(FMLALB(V30.T_8H, V31.T_16B, V0.T_16B), asm => asm.FMLALB(V30.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.FMLALB_asimdsame2_j, Arm64Mnemonic.FMLALB, "FMLALB V30.8H, V31.16B, V0.16B");
     }
 }

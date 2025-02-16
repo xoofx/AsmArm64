@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_RCWSSWPPAL_General : Arm64InstructionF
     [TestMethod]
     public void Test_RCWSSWPPAL_128_memop_128_0()
     {
-        TestInst(RCWSSWPPAL(X0, X1, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X0, X1, [X3]");
-        TestInst(RCWSSWPPAL(X15, X1, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X15, X1, [X3]");
-        TestInst(RCWSSWPPAL(XZR, X1, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL XZR, X1, [X3]");
-        TestInst(RCWSSWPPAL(X0, X16, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X0, X16, [X3]");
-        TestInst(RCWSSWPPAL(X15, X16, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X15, X16, [X3]");
-        TestInst(RCWSSWPPAL(XZR, X16, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL XZR, X16, [X3]");
-        TestInst(RCWSSWPPAL(X0, XZR, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X0, XZR, [X3]");
-        TestInst(RCWSSWPPAL(X15, XZR, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X15, XZR, [X3]");
-        TestInst(RCWSSWPPAL(XZR, XZR, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL XZR, XZR, [X3]");
+        TestInst(RCWSSWPPAL(X0, X1, _[X3]), asm => asm.RCWSSWPPAL(X0, X1, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X0, X1, [X3]");
+        TestInst(RCWSSWPPAL(X15, X1, _[X3]), asm => asm.RCWSSWPPAL(X15, X1, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X15, X1, [X3]");
+        TestInst(RCWSSWPPAL(XZR, X1, _[X3]), asm => asm.RCWSSWPPAL(XZR, X1, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL XZR, X1, [X3]");
+        TestInst(RCWSSWPPAL(X0, X16, _[X3]), asm => asm.RCWSSWPPAL(X0, X16, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X0, X16, [X3]");
+        TestInst(RCWSSWPPAL(X15, X16, _[X3]), asm => asm.RCWSSWPPAL(X15, X16, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X15, X16, [X3]");
+        TestInst(RCWSSWPPAL(XZR, X16, _[X3]), asm => asm.RCWSSWPPAL(XZR, X16, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL XZR, X16, [X3]");
+        TestInst(RCWSSWPPAL(X0, XZR, _[X3]), asm => asm.RCWSSWPPAL(X0, XZR, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X0, XZR, [X3]");
+        TestInst(RCWSSWPPAL(X15, XZR, _[X3]), asm => asm.RCWSSWPPAL(X15, XZR, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL X15, XZR, [X3]");
+        TestInst(RCWSSWPPAL(XZR, XZR, _[X3]), asm => asm.RCWSSWPPAL(XZR, XZR, _[X3]), Arm64InstructionId.RCWSSWPPAL_128_memop_128, Arm64Mnemonic.RCWSSWPPAL, "RCWSSWPPAL XZR, XZR, [X3]");
     }
 }

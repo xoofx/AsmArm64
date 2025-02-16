@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDSETALH_General : Arm64InstructionFac
     [TestMethod]
     public void Test_LDSETALH_32_memop_0()
     {
-        TestInst(LDSETALH(W0, W1, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W0, W1, [X3]");
-        TestInst(LDSETALH(W15, W1, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W15, W1, [X3]");
-        TestInst(LDSETALH(WZR, W1, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH WZR, W1, [X3]");
-        TestInst(LDSETALH(W0, W16, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W0, W16, [X3]");
-        TestInst(LDSETALH(W15, W16, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W15, W16, [X3]");
-        TestInst(LDSETALH(WZR, W16, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH WZR, W16, [X3]");
-        TestInst(LDSETALH(W0, WZR, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W0, WZR, [X3]");
-        TestInst(LDSETALH(W15, WZR, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W15, WZR, [X3]");
-        TestInst(LDSETALH(WZR, WZR, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH WZR, WZR, [X3]");
+        TestInst(LDSETALH(W0, W1, _[X3]), asm => asm.LDSETALH(W0, W1, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W0, W1, [X3]");
+        TestInst(LDSETALH(W15, W1, _[X3]), asm => asm.LDSETALH(W15, W1, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W15, W1, [X3]");
+        TestInst(LDSETALH(WZR, W1, _[X3]), asm => asm.LDSETALH(WZR, W1, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH WZR, W1, [X3]");
+        TestInst(LDSETALH(W0, W16, _[X3]), asm => asm.LDSETALH(W0, W16, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W0, W16, [X3]");
+        TestInst(LDSETALH(W15, W16, _[X3]), asm => asm.LDSETALH(W15, W16, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W15, W16, [X3]");
+        TestInst(LDSETALH(WZR, W16, _[X3]), asm => asm.LDSETALH(WZR, W16, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH WZR, W16, [X3]");
+        TestInst(LDSETALH(W0, WZR, _[X3]), asm => asm.LDSETALH(W0, WZR, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W0, WZR, [X3]");
+        TestInst(LDSETALH(W15, WZR, _[X3]), asm => asm.LDSETALH(W15, WZR, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH W15, WZR, [X3]");
+        TestInst(LDSETALH(WZR, WZR, _[X3]), asm => asm.LDSETALH(WZR, WZR, _[X3]), Arm64InstructionId.LDSETALH_32_memop, Arm64Mnemonic.LDSETALH, "LDSETALH WZR, WZR, [X3]");
     }
 }

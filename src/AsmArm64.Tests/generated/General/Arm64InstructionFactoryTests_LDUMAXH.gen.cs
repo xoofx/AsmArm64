@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDUMAXH_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDUMAXH_32_memop_0()
     {
-        TestInst(LDUMAXH(W0, W1, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH W0, W1, [X3]");
-        TestInst(LDUMAXH(W15, W1, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH W15, W1, [X3]");
-        TestInst(LDUMAXH(WZR, W1, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH WZR, W1, [X3]");
-        TestInst(LDUMAXH(W0, W16, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH W0, W16, [X3]");
-        TestInst(LDUMAXH(W15, W16, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH W15, W16, [X3]");
-        TestInst(LDUMAXH(WZR, W16, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH WZR, W16, [X3]");
-        TestInst(LDUMAXH(W0, WZR, _[X3]), Arm64InstructionId.STUMAXH_ldumaxh_32_memop, Arm64Mnemonic.STUMAXH, "STUMAXH W0, [X3]");
-        TestInst(LDUMAXH(W15, WZR, _[X3]), Arm64InstructionId.STUMAXH_ldumaxh_32_memop, Arm64Mnemonic.STUMAXH, "STUMAXH W15, [X3]");
-        TestInst(LDUMAXH(WZR, WZR, _[X3]), Arm64InstructionId.STUMAXH_ldumaxh_32_memop, Arm64Mnemonic.STUMAXH, "STUMAXH WZR, [X3]");
+        TestInst(LDUMAXH(W0, W1, _[X3]), asm => asm.LDUMAXH(W0, W1, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH W0, W1, [X3]");
+        TestInst(LDUMAXH(W15, W1, _[X3]), asm => asm.LDUMAXH(W15, W1, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH W15, W1, [X3]");
+        TestInst(LDUMAXH(WZR, W1, _[X3]), asm => asm.LDUMAXH(WZR, W1, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH WZR, W1, [X3]");
+        TestInst(LDUMAXH(W0, W16, _[X3]), asm => asm.LDUMAXH(W0, W16, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH W0, W16, [X3]");
+        TestInst(LDUMAXH(W15, W16, _[X3]), asm => asm.LDUMAXH(W15, W16, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH W15, W16, [X3]");
+        TestInst(LDUMAXH(WZR, W16, _[X3]), asm => asm.LDUMAXH(WZR, W16, _[X3]), Arm64InstructionId.LDUMAXH_32_memop, Arm64Mnemonic.LDUMAXH, "LDUMAXH WZR, W16, [X3]");
+        TestInst(LDUMAXH(W0, WZR, _[X3]), asm => asm.LDUMAXH(W0, WZR, _[X3]), Arm64InstructionId.STUMAXH_ldumaxh_32_memop, Arm64Mnemonic.STUMAXH, "STUMAXH W0, [X3]");
+        TestInst(LDUMAXH(W15, WZR, _[X3]), asm => asm.LDUMAXH(W15, WZR, _[X3]), Arm64InstructionId.STUMAXH_ldumaxh_32_memop, Arm64Mnemonic.STUMAXH, "STUMAXH W15, [X3]");
+        TestInst(LDUMAXH(WZR, WZR, _[X3]), asm => asm.LDUMAXH(WZR, WZR, _[X3]), Arm64InstructionId.STUMAXH_ldumaxh_32_memop, Arm64Mnemonic.STUMAXH, "STUMAXH WZR, [X3]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STLURB_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STLURB_32_ldapstl_unscaled_0()
     {
-        TestInst(STLURB(W0, _[X2, 5]), Arm64InstructionId.STLURB_32_ldapstl_unscaled, Arm64Mnemonic.STLURB, "STLURB W0, [X2, #5]");
-        TestInst(STLURB(W15, _[X2, 5]), Arm64InstructionId.STLURB_32_ldapstl_unscaled, Arm64Mnemonic.STLURB, "STLURB W15, [X2, #5]");
-        TestInst(STLURB(WZR, _[X2, 5]), Arm64InstructionId.STLURB_32_ldapstl_unscaled, Arm64Mnemonic.STLURB, "STLURB WZR, [X2, #5]");
+        TestInst(STLURB(W0, _[X2, 5]), asm => asm.STLURB(W0, _[X2, 5]), Arm64InstructionId.STLURB_32_ldapstl_unscaled, Arm64Mnemonic.STLURB, "STLURB W0, [X2, #5]");
+        TestInst(STLURB(W15, _[X2, 5]), asm => asm.STLURB(W15, _[X2, 5]), Arm64InstructionId.STLURB_32_ldapstl_unscaled, Arm64Mnemonic.STLURB, "STLURB W15, [X2, #5]");
+        TestInst(STLURB(WZR, _[X2, 5]), asm => asm.STLURB(WZR, _[X2, 5]), Arm64InstructionId.STLURB_32_ldapstl_unscaled, Arm64Mnemonic.STLURB, "STLURB WZR, [X2, #5]");
     }
 }

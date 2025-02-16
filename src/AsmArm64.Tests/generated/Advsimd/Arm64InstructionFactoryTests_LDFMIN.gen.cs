@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_LDFMIN_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDFMIN_16_0()
     {
-        TestInst(LDFMIN(H0, H1, _[X3]), Arm64InstructionId.LDFMIN_16, Arm64Mnemonic.LDFMIN, "LDFMIN H0, H1, [X3]");
-        TestInst(LDFMIN(H31, H1, _[X3]), Arm64InstructionId.LDFMIN_16, Arm64Mnemonic.LDFMIN, "LDFMIN H31, H1, [X3]");
-        TestInst(LDFMIN(H0, H31, _[X3]), Arm64InstructionId.LDFMIN_16, Arm64Mnemonic.LDFMIN, "LDFMIN H0, H31, [X3]");
-        TestInst(LDFMIN(H31, H31, _[X3]), Arm64InstructionId.LDFMIN_16, Arm64Mnemonic.LDFMIN, "LDFMIN H31, H31, [X3]");
+        TestInst(LDFMIN(H0, H1, _[X3]), asm => asm.LDFMIN(H0, H1, _[X3]), Arm64InstructionId.LDFMIN_16, Arm64Mnemonic.LDFMIN, "LDFMIN H0, H1, [X3]");
+        TestInst(LDFMIN(H31, H1, _[X3]), asm => asm.LDFMIN(H31, H1, _[X3]), Arm64InstructionId.LDFMIN_16, Arm64Mnemonic.LDFMIN, "LDFMIN H31, H1, [X3]");
+        TestInst(LDFMIN(H0, H31, _[X3]), asm => asm.LDFMIN(H0, H31, _[X3]), Arm64InstructionId.LDFMIN_16, Arm64Mnemonic.LDFMIN, "LDFMIN H0, H31, [X3]");
+        TestInst(LDFMIN(H31, H31, _[X3]), asm => asm.LDFMIN(H31, H31, _[X3]), Arm64InstructionId.LDFMIN_16, Arm64Mnemonic.LDFMIN, "LDFMIN H31, H31, [X3]");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_LDFMIN_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDFMIN_32_1()
     {
-        TestInst(LDFMIN(S0, S1, _[X3]), Arm64InstructionId.LDFMIN_32, Arm64Mnemonic.LDFMIN, "LDFMIN S0, S1, [X3]");
-        TestInst(LDFMIN(S31, S1, _[X3]), Arm64InstructionId.LDFMIN_32, Arm64Mnemonic.LDFMIN, "LDFMIN S31, S1, [X3]");
-        TestInst(LDFMIN(S0, S31, _[X3]), Arm64InstructionId.LDFMIN_32, Arm64Mnemonic.LDFMIN, "LDFMIN S0, S31, [X3]");
-        TestInst(LDFMIN(S31, S31, _[X3]), Arm64InstructionId.LDFMIN_32, Arm64Mnemonic.LDFMIN, "LDFMIN S31, S31, [X3]");
+        TestInst(LDFMIN(S0, S1, _[X3]), asm => asm.LDFMIN(S0, S1, _[X3]), Arm64InstructionId.LDFMIN_32, Arm64Mnemonic.LDFMIN, "LDFMIN S0, S1, [X3]");
+        TestInst(LDFMIN(S31, S1, _[X3]), asm => asm.LDFMIN(S31, S1, _[X3]), Arm64InstructionId.LDFMIN_32, Arm64Mnemonic.LDFMIN, "LDFMIN S31, S1, [X3]");
+        TestInst(LDFMIN(S0, S31, _[X3]), asm => asm.LDFMIN(S0, S31, _[X3]), Arm64InstructionId.LDFMIN_32, Arm64Mnemonic.LDFMIN, "LDFMIN S0, S31, [X3]");
+        TestInst(LDFMIN(S31, S31, _[X3]), asm => asm.LDFMIN(S31, S31, _[X3]), Arm64InstructionId.LDFMIN_32, Arm64Mnemonic.LDFMIN, "LDFMIN S31, S31, [X3]");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_LDFMIN_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDFMIN_64_2()
     {
-        TestInst(LDFMIN(D0, D1, _[X3]), Arm64InstructionId.LDFMIN_64, Arm64Mnemonic.LDFMIN, "LDFMIN D0, D1, [X3]");
-        TestInst(LDFMIN(D31, D1, _[X3]), Arm64InstructionId.LDFMIN_64, Arm64Mnemonic.LDFMIN, "LDFMIN D31, D1, [X3]");
-        TestInst(LDFMIN(D0, D31, _[X3]), Arm64InstructionId.LDFMIN_64, Arm64Mnemonic.LDFMIN, "LDFMIN D0, D31, [X3]");
-        TestInst(LDFMIN(D31, D31, _[X3]), Arm64InstructionId.LDFMIN_64, Arm64Mnemonic.LDFMIN, "LDFMIN D31, D31, [X3]");
+        TestInst(LDFMIN(D0, D1, _[X3]), asm => asm.LDFMIN(D0, D1, _[X3]), Arm64InstructionId.LDFMIN_64, Arm64Mnemonic.LDFMIN, "LDFMIN D0, D1, [X3]");
+        TestInst(LDFMIN(D31, D1, _[X3]), asm => asm.LDFMIN(D31, D1, _[X3]), Arm64InstructionId.LDFMIN_64, Arm64Mnemonic.LDFMIN, "LDFMIN D31, D1, [X3]");
+        TestInst(LDFMIN(D0, D31, _[X3]), asm => asm.LDFMIN(D0, D31, _[X3]), Arm64InstructionId.LDFMIN_64, Arm64Mnemonic.LDFMIN, "LDFMIN D0, D31, [X3]");
+        TestInst(LDFMIN(D31, D31, _[X3]), asm => asm.LDFMIN(D31, D31, _[X3]), Arm64InstructionId.LDFMIN_64, Arm64Mnemonic.LDFMIN, "LDFMIN D31, D31, [X3]");
     }
 }

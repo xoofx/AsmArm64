@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,12 +23,12 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_32h_float2int_0()
     {
-        TestInst(FMOV(W0, H1), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV W0, H1");
-        TestInst(FMOV(W15, H1), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV W15, H1");
-        TestInst(FMOV(WZR, H1), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV WZR, H1");
-        TestInst(FMOV(W0, H31), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV W0, H31");
-        TestInst(FMOV(W15, H31), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV W15, H31");
-        TestInst(FMOV(WZR, H31), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV WZR, H31");
+        TestInst(FMOV(W0, H1), asm => asm.FMOV(W0, H1), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV W0, H1");
+        TestInst(FMOV(W15, H1), asm => asm.FMOV(W15, H1), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV W15, H1");
+        TestInst(FMOV(WZR, H1), asm => asm.FMOV(WZR, H1), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV WZR, H1");
+        TestInst(FMOV(W0, H31), asm => asm.FMOV(W0, H31), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV W0, H31");
+        TestInst(FMOV(W15, H31), asm => asm.FMOV(W15, H31), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV W15, H31");
+        TestInst(FMOV(WZR, H31), asm => asm.FMOV(WZR, H31), Arm64InstructionId.FMOV_32h_float2int, Arm64Mnemonic.FMOV, "FMOV WZR, H31");
     }
     
     /// <summary>
@@ -38,12 +37,12 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_64h_float2int_1()
     {
-        TestInst(FMOV(X0, H1), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV X0, H1");
-        TestInst(FMOV(X15, H1), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV X15, H1");
-        TestInst(FMOV(XZR, H1), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, H1");
-        TestInst(FMOV(X0, H31), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV X0, H31");
-        TestInst(FMOV(X15, H31), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV X15, H31");
-        TestInst(FMOV(XZR, H31), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, H31");
+        TestInst(FMOV(X0, H1), asm => asm.FMOV(X0, H1), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV X0, H1");
+        TestInst(FMOV(X15, H1), asm => asm.FMOV(X15, H1), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV X15, H1");
+        TestInst(FMOV(XZR, H1), asm => asm.FMOV(XZR, H1), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, H1");
+        TestInst(FMOV(X0, H31), asm => asm.FMOV(X0, H31), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV X0, H31");
+        TestInst(FMOV(X15, H31), asm => asm.FMOV(X15, H31), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV X15, H31");
+        TestInst(FMOV(XZR, H31), asm => asm.FMOV(XZR, H31), Arm64InstructionId.FMOV_64h_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, H31");
     }
     
     /// <summary>
@@ -52,12 +51,12 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_h32_float2int_2()
     {
-        TestInst(FMOV(H0, W1), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H0, W1");
-        TestInst(FMOV(H31, W1), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H31, W1");
-        TestInst(FMOV(H0, W16), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H0, W16");
-        TestInst(FMOV(H31, W16), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H31, W16");
-        TestInst(FMOV(H0, WZR), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H0, WZR");
-        TestInst(FMOV(H31, WZR), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H31, WZR");
+        TestInst(FMOV(H0, W1), asm => asm.FMOV(H0, W1), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H0, W1");
+        TestInst(FMOV(H31, W1), asm => asm.FMOV(H31, W1), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H31, W1");
+        TestInst(FMOV(H0, W16), asm => asm.FMOV(H0, W16), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H0, W16");
+        TestInst(FMOV(H31, W16), asm => asm.FMOV(H31, W16), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H31, W16");
+        TestInst(FMOV(H0, WZR), asm => asm.FMOV(H0, WZR), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H0, WZR");
+        TestInst(FMOV(H31, WZR), asm => asm.FMOV(H31, WZR), Arm64InstructionId.FMOV_h32_float2int, Arm64Mnemonic.FMOV, "FMOV H31, WZR");
     }
     
     /// <summary>
@@ -66,12 +65,12 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_s32_float2int_3()
     {
-        TestInst(FMOV(S0, W1), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S0, W1");
-        TestInst(FMOV(S31, W1), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S31, W1");
-        TestInst(FMOV(S0, W16), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S0, W16");
-        TestInst(FMOV(S31, W16), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S31, W16");
-        TestInst(FMOV(S0, WZR), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S0, WZR");
-        TestInst(FMOV(S31, WZR), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S31, WZR");
+        TestInst(FMOV(S0, W1), asm => asm.FMOV(S0, W1), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S0, W1");
+        TestInst(FMOV(S31, W1), asm => asm.FMOV(S31, W1), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S31, W1");
+        TestInst(FMOV(S0, W16), asm => asm.FMOV(S0, W16), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S0, W16");
+        TestInst(FMOV(S31, W16), asm => asm.FMOV(S31, W16), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S31, W16");
+        TestInst(FMOV(S0, WZR), asm => asm.FMOV(S0, WZR), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S0, WZR");
+        TestInst(FMOV(S31, WZR), asm => asm.FMOV(S31, WZR), Arm64InstructionId.FMOV_s32_float2int, Arm64Mnemonic.FMOV, "FMOV S31, WZR");
     }
     
     /// <summary>
@@ -80,12 +79,12 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_32s_float2int_4()
     {
-        TestInst(FMOV(W0, S1), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV W0, S1");
-        TestInst(FMOV(W15, S1), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV W15, S1");
-        TestInst(FMOV(WZR, S1), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV WZR, S1");
-        TestInst(FMOV(W0, S31), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV W0, S31");
-        TestInst(FMOV(W15, S31), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV W15, S31");
-        TestInst(FMOV(WZR, S31), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV WZR, S31");
+        TestInst(FMOV(W0, S1), asm => asm.FMOV(W0, S1), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV W0, S1");
+        TestInst(FMOV(W15, S1), asm => asm.FMOV(W15, S1), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV W15, S1");
+        TestInst(FMOV(WZR, S1), asm => asm.FMOV(WZR, S1), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV WZR, S1");
+        TestInst(FMOV(W0, S31), asm => asm.FMOV(W0, S31), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV W0, S31");
+        TestInst(FMOV(W15, S31), asm => asm.FMOV(W15, S31), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV W15, S31");
+        TestInst(FMOV(WZR, S31), asm => asm.FMOV(WZR, S31), Arm64InstructionId.FMOV_32s_float2int, Arm64Mnemonic.FMOV, "FMOV WZR, S31");
     }
     
     /// <summary>
@@ -94,12 +93,12 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_h64_float2int_5()
     {
-        TestInst(FMOV(H0, X1), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H0, X1");
-        TestInst(FMOV(H31, X1), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H31, X1");
-        TestInst(FMOV(H0, X16), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H0, X16");
-        TestInst(FMOV(H31, X16), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H31, X16");
-        TestInst(FMOV(H0, XZR), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H0, XZR");
-        TestInst(FMOV(H31, XZR), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H31, XZR");
+        TestInst(FMOV(H0, X1), asm => asm.FMOV(H0, X1), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H0, X1");
+        TestInst(FMOV(H31, X1), asm => asm.FMOV(H31, X1), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H31, X1");
+        TestInst(FMOV(H0, X16), asm => asm.FMOV(H0, X16), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H0, X16");
+        TestInst(FMOV(H31, X16), asm => asm.FMOV(H31, X16), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H31, X16");
+        TestInst(FMOV(H0, XZR), asm => asm.FMOV(H0, XZR), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H0, XZR");
+        TestInst(FMOV(H31, XZR), asm => asm.FMOV(H31, XZR), Arm64InstructionId.FMOV_h64_float2int, Arm64Mnemonic.FMOV, "FMOV H31, XZR");
     }
     
     /// <summary>
@@ -108,12 +107,12 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_d64_float2int_6()
     {
-        TestInst(FMOV(D0, X1), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D0, X1");
-        TestInst(FMOV(D31, X1), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D31, X1");
-        TestInst(FMOV(D0, X16), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D0, X16");
-        TestInst(FMOV(D31, X16), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D31, X16");
-        TestInst(FMOV(D0, XZR), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D0, XZR");
-        TestInst(FMOV(D31, XZR), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D31, XZR");
+        TestInst(FMOV(D0, X1), asm => asm.FMOV(D0, X1), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D0, X1");
+        TestInst(FMOV(D31, X1), asm => asm.FMOV(D31, X1), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D31, X1");
+        TestInst(FMOV(D0, X16), asm => asm.FMOV(D0, X16), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D0, X16");
+        TestInst(FMOV(D31, X16), asm => asm.FMOV(D31, X16), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D31, X16");
+        TestInst(FMOV(D0, XZR), asm => asm.FMOV(D0, XZR), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D0, XZR");
+        TestInst(FMOV(D31, XZR), asm => asm.FMOV(D31, XZR), Arm64InstructionId.FMOV_d64_float2int, Arm64Mnemonic.FMOV, "FMOV D31, XZR");
     }
     
     /// <summary>
@@ -122,12 +121,12 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_v64i_float2int_7()
     {
-        TestInst(FMOV(V0.D[1], X1), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V0.D[1], X1");
-        TestInst(FMOV(V30.D[1], X1), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V30.D[1], X1");
-        TestInst(FMOV(V0.D[1], X16), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V0.D[1], X16");
-        TestInst(FMOV(V30.D[1], X16), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V30.D[1], X16");
-        TestInst(FMOV(V0.D[1], XZR), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V0.D[1], XZR");
-        TestInst(FMOV(V30.D[1], XZR), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V30.D[1], XZR");
+        TestInst(FMOV(V0.D[1], X1), asm => asm.FMOV(V0.D[1], X1), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V0.D[1], X1");
+        TestInst(FMOV(V30.D[1], X1), asm => asm.FMOV(V30.D[1], X1), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V30.D[1], X1");
+        TestInst(FMOV(V0.D[1], X16), asm => asm.FMOV(V0.D[1], X16), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V0.D[1], X16");
+        TestInst(FMOV(V30.D[1], X16), asm => asm.FMOV(V30.D[1], X16), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V30.D[1], X16");
+        TestInst(FMOV(V0.D[1], XZR), asm => asm.FMOV(V0.D[1], XZR), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V0.D[1], XZR");
+        TestInst(FMOV(V30.D[1], XZR), asm => asm.FMOV(V30.D[1], XZR), Arm64InstructionId.FMOV_v64i_float2int, Arm64Mnemonic.FMOV, "FMOV V30.D[1], XZR");
     }
     
     /// <summary>
@@ -136,12 +135,12 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_64d_float2int_8()
     {
-        TestInst(FMOV(X0, D1), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV X0, D1");
-        TestInst(FMOV(X15, D1), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV X15, D1");
-        TestInst(FMOV(XZR, D1), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, D1");
-        TestInst(FMOV(X0, D31), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV X0, D31");
-        TestInst(FMOV(X15, D31), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV X15, D31");
-        TestInst(FMOV(XZR, D31), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, D31");
+        TestInst(FMOV(X0, D1), asm => asm.FMOV(X0, D1), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV X0, D1");
+        TestInst(FMOV(X15, D1), asm => asm.FMOV(X15, D1), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV X15, D1");
+        TestInst(FMOV(XZR, D1), asm => asm.FMOV(XZR, D1), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, D1");
+        TestInst(FMOV(X0, D31), asm => asm.FMOV(X0, D31), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV X0, D31");
+        TestInst(FMOV(X15, D31), asm => asm.FMOV(X15, D31), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV X15, D31");
+        TestInst(FMOV(XZR, D31), asm => asm.FMOV(XZR, D31), Arm64InstructionId.FMOV_64d_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, D31");
     }
     
     /// <summary>
@@ -150,12 +149,12 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_64vx_float2int_9()
     {
-        TestInst(FMOV(X0, V1.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV X0, V1.D[1]");
-        TestInst(FMOV(X15, V1.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV X15, V1.D[1]");
-        TestInst(FMOV(XZR, V1.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, V1.D[1]");
-        TestInst(FMOV(X0, V31.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV X0, V31.D[1]");
-        TestInst(FMOV(X15, V31.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV X15, V31.D[1]");
-        TestInst(FMOV(XZR, V31.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, V31.D[1]");
+        TestInst(FMOV(X0, V1.D[1]), asm => asm.FMOV(X0, V1.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV X0, V1.D[1]");
+        TestInst(FMOV(X15, V1.D[1]), asm => asm.FMOV(X15, V1.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV X15, V1.D[1]");
+        TestInst(FMOV(XZR, V1.D[1]), asm => asm.FMOV(XZR, V1.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, V1.D[1]");
+        TestInst(FMOV(X0, V31.D[1]), asm => asm.FMOV(X0, V31.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV X0, V31.D[1]");
+        TestInst(FMOV(X15, V31.D[1]), asm => asm.FMOV(X15, V31.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV X15, V31.D[1]");
+        TestInst(FMOV(XZR, V31.D[1]), asm => asm.FMOV(XZR, V31.D[1]), Arm64InstructionId.FMOV_64vx_float2int, Arm64Mnemonic.FMOV, "FMOV XZR, V31.D[1]");
     }
     
     /// <summary>
@@ -164,10 +163,10 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_h_floatdp1_10()
     {
-        TestInst(FMOV(H0, H1), Arm64InstructionId.FMOV_h_floatdp1, Arm64Mnemonic.FMOV, "FMOV H0, H1");
-        TestInst(FMOV(H31, H1), Arm64InstructionId.FMOV_h_floatdp1, Arm64Mnemonic.FMOV, "FMOV H31, H1");
-        TestInst(FMOV(H0, H31), Arm64InstructionId.FMOV_h_floatdp1, Arm64Mnemonic.FMOV, "FMOV H0, H31");
-        TestInst(FMOV(H31, H31), Arm64InstructionId.FMOV_h_floatdp1, Arm64Mnemonic.FMOV, "FMOV H31, H31");
+        TestInst(FMOV(H0, H1), asm => asm.FMOV(H0, H1), Arm64InstructionId.FMOV_h_floatdp1, Arm64Mnemonic.FMOV, "FMOV H0, H1");
+        TestInst(FMOV(H31, H1), asm => asm.FMOV(H31, H1), Arm64InstructionId.FMOV_h_floatdp1, Arm64Mnemonic.FMOV, "FMOV H31, H1");
+        TestInst(FMOV(H0, H31), asm => asm.FMOV(H0, H31), Arm64InstructionId.FMOV_h_floatdp1, Arm64Mnemonic.FMOV, "FMOV H0, H31");
+        TestInst(FMOV(H31, H31), asm => asm.FMOV(H31, H31), Arm64InstructionId.FMOV_h_floatdp1, Arm64Mnemonic.FMOV, "FMOV H31, H31");
     }
     
     /// <summary>
@@ -176,10 +175,10 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_s_floatdp1_11()
     {
-        TestInst(FMOV(S0, S1), Arm64InstructionId.FMOV_s_floatdp1, Arm64Mnemonic.FMOV, "FMOV S0, S1");
-        TestInst(FMOV(S31, S1), Arm64InstructionId.FMOV_s_floatdp1, Arm64Mnemonic.FMOV, "FMOV S31, S1");
-        TestInst(FMOV(S0, S31), Arm64InstructionId.FMOV_s_floatdp1, Arm64Mnemonic.FMOV, "FMOV S0, S31");
-        TestInst(FMOV(S31, S31), Arm64InstructionId.FMOV_s_floatdp1, Arm64Mnemonic.FMOV, "FMOV S31, S31");
+        TestInst(FMOV(S0, S1), asm => asm.FMOV(S0, S1), Arm64InstructionId.FMOV_s_floatdp1, Arm64Mnemonic.FMOV, "FMOV S0, S1");
+        TestInst(FMOV(S31, S1), asm => asm.FMOV(S31, S1), Arm64InstructionId.FMOV_s_floatdp1, Arm64Mnemonic.FMOV, "FMOV S31, S1");
+        TestInst(FMOV(S0, S31), asm => asm.FMOV(S0, S31), Arm64InstructionId.FMOV_s_floatdp1, Arm64Mnemonic.FMOV, "FMOV S0, S31");
+        TestInst(FMOV(S31, S31), asm => asm.FMOV(S31, S31), Arm64InstructionId.FMOV_s_floatdp1, Arm64Mnemonic.FMOV, "FMOV S31, S31");
     }
     
     /// <summary>
@@ -188,10 +187,10 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_d_floatdp1_12()
     {
-        TestInst(FMOV(D0, D1), Arm64InstructionId.FMOV_d_floatdp1, Arm64Mnemonic.FMOV, "FMOV D0, D1");
-        TestInst(FMOV(D31, D1), Arm64InstructionId.FMOV_d_floatdp1, Arm64Mnemonic.FMOV, "FMOV D31, D1");
-        TestInst(FMOV(D0, D31), Arm64InstructionId.FMOV_d_floatdp1, Arm64Mnemonic.FMOV, "FMOV D0, D31");
-        TestInst(FMOV(D31, D31), Arm64InstructionId.FMOV_d_floatdp1, Arm64Mnemonic.FMOV, "FMOV D31, D31");
+        TestInst(FMOV(D0, D1), asm => asm.FMOV(D0, D1), Arm64InstructionId.FMOV_d_floatdp1, Arm64Mnemonic.FMOV, "FMOV D0, D1");
+        TestInst(FMOV(D31, D1), asm => asm.FMOV(D31, D1), Arm64InstructionId.FMOV_d_floatdp1, Arm64Mnemonic.FMOV, "FMOV D31, D1");
+        TestInst(FMOV(D0, D31), asm => asm.FMOV(D0, D31), Arm64InstructionId.FMOV_d_floatdp1, Arm64Mnemonic.FMOV, "FMOV D0, D31");
+        TestInst(FMOV(D31, D31), asm => asm.FMOV(D31, D31), Arm64InstructionId.FMOV_d_floatdp1, Arm64Mnemonic.FMOV, "FMOV D31, D31");
     }
     
     /// <summary>
@@ -200,8 +199,8 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_h_floatimm_13()
     {
-        TestInst(FMOV(H0, 0.50000000f), Arm64InstructionId.FMOV_h_floatimm, Arm64Mnemonic.FMOV, "FMOV H0, #0.50000000");
-        TestInst(FMOV(H31, 0.50000000f), Arm64InstructionId.FMOV_h_floatimm, Arm64Mnemonic.FMOV, "FMOV H31, #0.50000000");
+        TestInst(FMOV(H0, 0.50000000f), asm => asm.FMOV(H0, 0.50000000f), Arm64InstructionId.FMOV_h_floatimm, Arm64Mnemonic.FMOV, "FMOV H0, #0.50000000");
+        TestInst(FMOV(H31, 0.50000000f), asm => asm.FMOV(H31, 0.50000000f), Arm64InstructionId.FMOV_h_floatimm, Arm64Mnemonic.FMOV, "FMOV H31, #0.50000000");
     }
     
     /// <summary>
@@ -210,8 +209,8 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_s_floatimm_14()
     {
-        TestInst(FMOV(S0, 0.50000000f), Arm64InstructionId.FMOV_s_floatimm, Arm64Mnemonic.FMOV, "FMOV S0, #0.50000000");
-        TestInst(FMOV(S31, 0.50000000f), Arm64InstructionId.FMOV_s_floatimm, Arm64Mnemonic.FMOV, "FMOV S31, #0.50000000");
+        TestInst(FMOV(S0, 0.50000000f), asm => asm.FMOV(S0, 0.50000000f), Arm64InstructionId.FMOV_s_floatimm, Arm64Mnemonic.FMOV, "FMOV S0, #0.50000000");
+        TestInst(FMOV(S31, 0.50000000f), asm => asm.FMOV(S31, 0.50000000f), Arm64InstructionId.FMOV_s_floatimm, Arm64Mnemonic.FMOV, "FMOV S31, #0.50000000");
     }
     
     /// <summary>
@@ -220,7 +219,7 @@ public class Arm64InstructionFactoryTests_FMOV_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMOV_d_floatimm_15()
     {
-        TestInst(FMOV(D0, 0.50000000f), Arm64InstructionId.FMOV_d_floatimm, Arm64Mnemonic.FMOV, "FMOV D0, #0.50000000");
-        TestInst(FMOV(D31, 0.50000000f), Arm64InstructionId.FMOV_d_floatimm, Arm64Mnemonic.FMOV, "FMOV D31, #0.50000000");
+        TestInst(FMOV(D0, 0.50000000f), asm => asm.FMOV(D0, 0.50000000f), Arm64InstructionId.FMOV_d_floatimm, Arm64Mnemonic.FMOV, "FMOV D0, #0.50000000");
+        TestInst(FMOV(D31, 0.50000000f), asm => asm.FMOV(D31, 0.50000000f), Arm64InstructionId.FMOV_d_floatimm, Arm64Mnemonic.FMOV, "FMOV D31, #0.50000000");
     }
 }

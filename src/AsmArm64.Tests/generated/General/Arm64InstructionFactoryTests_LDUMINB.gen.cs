@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDUMINB_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDUMINB_32_memop_0()
     {
-        TestInst(LDUMINB(W0, W1, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB W0, W1, [X3]");
-        TestInst(LDUMINB(W15, W1, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB W15, W1, [X3]");
-        TestInst(LDUMINB(WZR, W1, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB WZR, W1, [X3]");
-        TestInst(LDUMINB(W0, W16, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB W0, W16, [X3]");
-        TestInst(LDUMINB(W15, W16, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB W15, W16, [X3]");
-        TestInst(LDUMINB(WZR, W16, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB WZR, W16, [X3]");
-        TestInst(LDUMINB(W0, WZR, _[X3]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB W0, [X3]");
-        TestInst(LDUMINB(W15, WZR, _[X3]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB W15, [X3]");
-        TestInst(LDUMINB(WZR, WZR, _[X3]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB WZR, [X3]");
+        TestInst(LDUMINB(W0, W1, _[X3]), asm => asm.LDUMINB(W0, W1, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB W0, W1, [X3]");
+        TestInst(LDUMINB(W15, W1, _[X3]), asm => asm.LDUMINB(W15, W1, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB W15, W1, [X3]");
+        TestInst(LDUMINB(WZR, W1, _[X3]), asm => asm.LDUMINB(WZR, W1, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB WZR, W1, [X3]");
+        TestInst(LDUMINB(W0, W16, _[X3]), asm => asm.LDUMINB(W0, W16, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB W0, W16, [X3]");
+        TestInst(LDUMINB(W15, W16, _[X3]), asm => asm.LDUMINB(W15, W16, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB W15, W16, [X3]");
+        TestInst(LDUMINB(WZR, W16, _[X3]), asm => asm.LDUMINB(WZR, W16, _[X3]), Arm64InstructionId.LDUMINB_32_memop, Arm64Mnemonic.LDUMINB, "LDUMINB WZR, W16, [X3]");
+        TestInst(LDUMINB(W0, WZR, _[X3]), asm => asm.LDUMINB(W0, WZR, _[X3]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB W0, [X3]");
+        TestInst(LDUMINB(W15, WZR, _[X3]), asm => asm.LDUMINB(W15, WZR, _[X3]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB W15, [X3]");
+        TestInst(LDUMINB(WZR, WZR, _[X3]), asm => asm.LDUMINB(WZR, WZR, _[X3]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB WZR, [X3]");
     }
 }

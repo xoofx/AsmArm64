@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FCVTL2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTL2_asimdmisc_l_0()
     {
-        TestInst(FCVTL2(V0.T_4S, V1.T_8H), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V0.4S, V1.8H");
-        TestInst(FCVTL2(V30.T_4S, V1.T_8H), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V30.4S, V1.8H");
-        TestInst(FCVTL2(V0.T_4S, V31.T_8H), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V0.4S, V31.8H");
-        TestInst(FCVTL2(V30.T_4S, V31.T_8H), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V30.4S, V31.8H");
+        TestInst(FCVTL2(V0.T_4S, V1.T_8H), asm => asm.FCVTL2(V0.T_4S, V1.T_8H), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V0.4S, V1.8H");
+        TestInst(FCVTL2(V30.T_4S, V1.T_8H), asm => asm.FCVTL2(V30.T_4S, V1.T_8H), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V30.4S, V1.8H");
+        TestInst(FCVTL2(V0.T_4S, V31.T_8H), asm => asm.FCVTL2(V0.T_4S, V31.T_8H), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V0.4S, V31.8H");
+        TestInst(FCVTL2(V30.T_4S, V31.T_8H), asm => asm.FCVTL2(V30.T_4S, V31.T_8H), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V30.4S, V31.8H");
     }
     
     /// <summary>
@@ -36,9 +35,9 @@ public class Arm64InstructionFactoryTests_FCVTL2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_FCVTL2_asimdmisc_l_1()
     {
-        TestInst(FCVTL2(V0.T_2D, V1.T_4S), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V0.2D, V1.4S");
-        TestInst(FCVTL2(V30.T_2D, V1.T_4S), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V30.2D, V1.4S");
-        TestInst(FCVTL2(V0.T_2D, V31.T_4S), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V0.2D, V31.4S");
-        TestInst(FCVTL2(V30.T_2D, V31.T_4S), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V30.2D, V31.4S");
+        TestInst(FCVTL2(V0.T_2D, V1.T_4S), asm => asm.FCVTL2(V0.T_2D, V1.T_4S), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V0.2D, V1.4S");
+        TestInst(FCVTL2(V30.T_2D, V1.T_4S), asm => asm.FCVTL2(V30.T_2D, V1.T_4S), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V30.2D, V1.4S");
+        TestInst(FCVTL2(V0.T_2D, V31.T_4S), asm => asm.FCVTL2(V0.T_2D, V31.T_4S), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V0.2D, V31.4S");
+        TestInst(FCVTL2(V30.T_2D, V31.T_4S), asm => asm.FCVTL2(V30.T_2D, V31.T_4S), Arm64InstructionId.FCVTL2_asimdmisc_l, Arm64Mnemonic.FCVTL2, "FCVTL2 V30.2D, V31.4S");
     }
 }

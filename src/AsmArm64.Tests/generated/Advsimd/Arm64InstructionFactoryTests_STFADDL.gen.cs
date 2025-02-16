@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STFADDL_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_STFADDL_16_0()
     {
-        TestInst(STFADDL(H0, _[X2]), Arm64InstructionId.STFADDL_16, Arm64Mnemonic.STFADDL, "STFADDL H0, [X2]");
-        TestInst(STFADDL(H31, _[X2]), Arm64InstructionId.STFADDL_16, Arm64Mnemonic.STFADDL, "STFADDL H31, [X2]");
+        TestInst(STFADDL(H0, _[X2]), asm => asm.STFADDL(H0, _[X2]), Arm64InstructionId.STFADDL_16, Arm64Mnemonic.STFADDL, "STFADDL H0, [X2]");
+        TestInst(STFADDL(H31, _[X2]), asm => asm.STFADDL(H31, _[X2]), Arm64InstructionId.STFADDL_16, Arm64Mnemonic.STFADDL, "STFADDL H31, [X2]");
     }
     
     /// <summary>
@@ -34,8 +33,8 @@ public class Arm64InstructionFactoryTests_STFADDL_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_STFADDL_32_1()
     {
-        TestInst(STFADDL(S0, _[X2]), Arm64InstructionId.STFADDL_32, Arm64Mnemonic.STFADDL, "STFADDL S0, [X2]");
-        TestInst(STFADDL(S31, _[X2]), Arm64InstructionId.STFADDL_32, Arm64Mnemonic.STFADDL, "STFADDL S31, [X2]");
+        TestInst(STFADDL(S0, _[X2]), asm => asm.STFADDL(S0, _[X2]), Arm64InstructionId.STFADDL_32, Arm64Mnemonic.STFADDL, "STFADDL S0, [X2]");
+        TestInst(STFADDL(S31, _[X2]), asm => asm.STFADDL(S31, _[X2]), Arm64InstructionId.STFADDL_32, Arm64Mnemonic.STFADDL, "STFADDL S31, [X2]");
     }
     
     /// <summary>
@@ -44,7 +43,7 @@ public class Arm64InstructionFactoryTests_STFADDL_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_STFADDL_64_2()
     {
-        TestInst(STFADDL(D0, _[X2]), Arm64InstructionId.STFADDL_64, Arm64Mnemonic.STFADDL, "STFADDL D0, [X2]");
-        TestInst(STFADDL(D31, _[X2]), Arm64InstructionId.STFADDL_64, Arm64Mnemonic.STFADDL, "STFADDL D31, [X2]");
+        TestInst(STFADDL(D0, _[X2]), asm => asm.STFADDL(D0, _[X2]), Arm64InstructionId.STFADDL_64, Arm64Mnemonic.STFADDL, "STFADDL D0, [X2]");
+        TestInst(STFADDL(D31, _[X2]), asm => asm.STFADDL(D31, _[X2]), Arm64InstructionId.STFADDL_64, Arm64Mnemonic.STFADDL, "STFADDL D31, [X2]");
     }
 }

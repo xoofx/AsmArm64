@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_WFI_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_WFI_hi_hints_0()
     {
-        TestInst(WFI(), Arm64InstructionId.WFI_hi_hints, Arm64Mnemonic.WFI, "WFI");
+        TestInst(WFI(), asm => asm.WFI(), Arm64InstructionId.WFI_hi_hints, Arm64Mnemonic.WFI, "WFI");
     }
 }

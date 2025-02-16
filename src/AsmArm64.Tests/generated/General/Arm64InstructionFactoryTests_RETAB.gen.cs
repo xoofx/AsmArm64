@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_RETAB_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_RETAB_64e_branch_reg_0()
     {
-        TestInst(RETAB(), Arm64InstructionId.RETAB_64e_branch_reg, Arm64Mnemonic.RETAB, "RETAB");
+        TestInst(RETAB(), asm => asm.RETAB(), Arm64InstructionId.RETAB_64e_branch_reg, Arm64Mnemonic.RETAB, "RETAB");
     }
 }

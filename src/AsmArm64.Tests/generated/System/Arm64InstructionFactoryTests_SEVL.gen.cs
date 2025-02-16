@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_SEVL_System : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_SEVL_hi_hints_0()
     {
-        TestInst(SEVL(), Arm64InstructionId.SEVL_hi_hints, Arm64Mnemonic.SEVL, "SEVL");
+        TestInst(SEVL(), asm => asm.SEVL(), Arm64InstructionId.SEVL_hi_hints, Arm64Mnemonic.SEVL, "SEVL");
     }
 }

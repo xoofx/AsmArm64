@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_TCANCEL_System : Arm64InstructionFacto
     [TestMethod]
     public void Test_TCANCEL_ex_exception_0()
     {
-        TestInst(TCANCEL(5), Arm64InstructionId.TCANCEL_ex_exception, Arm64Mnemonic.TCANCEL, "TCANCEL #5");
+        TestInst(TCANCEL(5), asm => asm.TCANCEL(5), Arm64InstructionId.TCANCEL_ex_exception, Arm64Mnemonic.TCANCEL, "TCANCEL #5");
     }
 }

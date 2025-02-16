@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_FMUL_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMUL_h_floatdp2_0()
     {
-        TestInst(FMUL(H0, H1, H2), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H0, H1, H2");
-        TestInst(FMUL(H31, H1, H2), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H31, H1, H2");
-        TestInst(FMUL(H0, H31, H2), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H0, H31, H2");
-        TestInst(FMUL(H31, H31, H2), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H31, H31, H2");
-        TestInst(FMUL(H0, H1, H31), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H0, H1, H31");
-        TestInst(FMUL(H31, H1, H31), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H31, H1, H31");
-        TestInst(FMUL(H0, H31, H31), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H0, H31, H31");
-        TestInst(FMUL(H31, H31, H31), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H31, H31, H31");
+        TestInst(FMUL(H0, H1, H2), asm => asm.FMUL(H0, H1, H2), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H0, H1, H2");
+        TestInst(FMUL(H31, H1, H2), asm => asm.FMUL(H31, H1, H2), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H31, H1, H2");
+        TestInst(FMUL(H0, H31, H2), asm => asm.FMUL(H0, H31, H2), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H0, H31, H2");
+        TestInst(FMUL(H31, H31, H2), asm => asm.FMUL(H31, H31, H2), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H31, H31, H2");
+        TestInst(FMUL(H0, H1, H31), asm => asm.FMUL(H0, H1, H31), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H0, H1, H31");
+        TestInst(FMUL(H31, H1, H31), asm => asm.FMUL(H31, H1, H31), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H31, H1, H31");
+        TestInst(FMUL(H0, H31, H31), asm => asm.FMUL(H0, H31, H31), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H0, H31, H31");
+        TestInst(FMUL(H31, H31, H31), asm => asm.FMUL(H31, H31, H31), Arm64InstructionId.FMUL_h_floatdp2, Arm64Mnemonic.FMUL, "FMUL H31, H31, H31");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_FMUL_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMUL_s_floatdp2_1()
     {
-        TestInst(FMUL(S0, S1, S2), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S0, S1, S2");
-        TestInst(FMUL(S31, S1, S2), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S31, S1, S2");
-        TestInst(FMUL(S0, S31, S2), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S0, S31, S2");
-        TestInst(FMUL(S31, S31, S2), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S31, S31, S2");
-        TestInst(FMUL(S0, S1, S31), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S0, S1, S31");
-        TestInst(FMUL(S31, S1, S31), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S31, S1, S31");
-        TestInst(FMUL(S0, S31, S31), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S0, S31, S31");
-        TestInst(FMUL(S31, S31, S31), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S31, S31, S31");
+        TestInst(FMUL(S0, S1, S2), asm => asm.FMUL(S0, S1, S2), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S0, S1, S2");
+        TestInst(FMUL(S31, S1, S2), asm => asm.FMUL(S31, S1, S2), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S31, S1, S2");
+        TestInst(FMUL(S0, S31, S2), asm => asm.FMUL(S0, S31, S2), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S0, S31, S2");
+        TestInst(FMUL(S31, S31, S2), asm => asm.FMUL(S31, S31, S2), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S31, S31, S2");
+        TestInst(FMUL(S0, S1, S31), asm => asm.FMUL(S0, S1, S31), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S0, S1, S31");
+        TestInst(FMUL(S31, S1, S31), asm => asm.FMUL(S31, S1, S31), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S31, S1, S31");
+        TestInst(FMUL(S0, S31, S31), asm => asm.FMUL(S0, S31, S31), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S0, S31, S31");
+        TestInst(FMUL(S31, S31, S31), asm => asm.FMUL(S31, S31, S31), Arm64InstructionId.FMUL_s_floatdp2, Arm64Mnemonic.FMUL, "FMUL S31, S31, S31");
     }
     
     /// <summary>
@@ -56,13 +55,13 @@ public class Arm64InstructionFactoryTests_FMUL_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FMUL_d_floatdp2_2()
     {
-        TestInst(FMUL(D0, D1, D2), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D0, D1, D2");
-        TestInst(FMUL(D31, D1, D2), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D31, D1, D2");
-        TestInst(FMUL(D0, D31, D2), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D0, D31, D2");
-        TestInst(FMUL(D31, D31, D2), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D31, D31, D2");
-        TestInst(FMUL(D0, D1, D31), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D0, D1, D31");
-        TestInst(FMUL(D31, D1, D31), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D31, D1, D31");
-        TestInst(FMUL(D0, D31, D31), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D0, D31, D31");
-        TestInst(FMUL(D31, D31, D31), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D31, D31, D31");
+        TestInst(FMUL(D0, D1, D2), asm => asm.FMUL(D0, D1, D2), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D0, D1, D2");
+        TestInst(FMUL(D31, D1, D2), asm => asm.FMUL(D31, D1, D2), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D31, D1, D2");
+        TestInst(FMUL(D0, D31, D2), asm => asm.FMUL(D0, D31, D2), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D0, D31, D2");
+        TestInst(FMUL(D31, D31, D2), asm => asm.FMUL(D31, D31, D2), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D31, D31, D2");
+        TestInst(FMUL(D0, D1, D31), asm => asm.FMUL(D0, D1, D31), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D0, D1, D31");
+        TestInst(FMUL(D31, D1, D31), asm => asm.FMUL(D31, D1, D31), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D31, D1, D31");
+        TestInst(FMUL(D0, D31, D31), asm => asm.FMUL(D0, D31, D31), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D0, D31, D31");
+        TestInst(FMUL(D31, D31, D31), asm => asm.FMUL(D31, D31, D31), Arm64InstructionId.FMUL_d_floatdp2, Arm64Mnemonic.FMUL, "FMUL D31, D31, D31");
     }
 }

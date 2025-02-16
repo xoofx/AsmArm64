@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_RPRFM_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_RPRFM_r_ldst_regoff_0()
     {
-        TestInst(RPRFM(PLDSTRM, X1, _[X3]), Arm64InstructionId.RPRFM_r_ldst_regoff, Arm64Mnemonic.RPRFM, "RPRFM PLDSTRM, X1, [X3]");
-        TestInst(RPRFM(PLDSTRM, X16, _[X3]), Arm64InstructionId.RPRFM_r_ldst_regoff, Arm64Mnemonic.RPRFM, "RPRFM PLDSTRM, X16, [X3]");
-        TestInst(RPRFM(PLDSTRM, XZR, _[X3]), Arm64InstructionId.RPRFM_r_ldst_regoff, Arm64Mnemonic.RPRFM, "RPRFM PLDSTRM, XZR, [X3]");
+        TestInst(RPRFM(PLDSTRM, X1, _[X3]), asm => asm.RPRFM(PLDSTRM, X1, _[X3]), Arm64InstructionId.RPRFM_r_ldst_regoff, Arm64Mnemonic.RPRFM, "RPRFM PLDSTRM, X1, [X3]");
+        TestInst(RPRFM(PLDSTRM, X16, _[X3]), asm => asm.RPRFM(PLDSTRM, X16, _[X3]), Arm64InstructionId.RPRFM_r_ldst_regoff, Arm64Mnemonic.RPRFM, "RPRFM PLDSTRM, X16, [X3]");
+        TestInst(RPRFM(PLDSTRM, XZR, _[X3]), asm => asm.RPRFM(PLDSTRM, XZR, _[X3]), Arm64InstructionId.RPRFM_r_ldst_regoff, Arm64Mnemonic.RPRFM, "RPRFM PLDSTRM, XZR, [X3]");
     }
 }

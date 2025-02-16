@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STUMAX_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STUMAX_ldumax_32_memop_0()
     {
-        TestInst(STUMAX(W0, _[X2]), Arm64InstructionId.STUMAX_ldumax_32_memop, Arm64Mnemonic.STUMAX, "STUMAX W0, [X2]");
-        TestInst(STUMAX(W15, _[X2]), Arm64InstructionId.STUMAX_ldumax_32_memop, Arm64Mnemonic.STUMAX, "STUMAX W15, [X2]");
-        TestInst(STUMAX(WZR, _[X2]), Arm64InstructionId.STUMAX_ldumax_32_memop, Arm64Mnemonic.STUMAX, "STUMAX WZR, [X2]");
+        TestInst(STUMAX(W0, _[X2]), asm => asm.STUMAX(W0, _[X2]), Arm64InstructionId.STUMAX_ldumax_32_memop, Arm64Mnemonic.STUMAX, "STUMAX W0, [X2]");
+        TestInst(STUMAX(W15, _[X2]), asm => asm.STUMAX(W15, _[X2]), Arm64InstructionId.STUMAX_ldumax_32_memop, Arm64Mnemonic.STUMAX, "STUMAX W15, [X2]");
+        TestInst(STUMAX(WZR, _[X2]), asm => asm.STUMAX(WZR, _[X2]), Arm64InstructionId.STUMAX_ldumax_32_memop, Arm64Mnemonic.STUMAX, "STUMAX WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STUMAX_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STUMAX_ldumax_64_memop_1()
     {
-        TestInst(STUMAX(X0, _[X2]), Arm64InstructionId.STUMAX_ldumax_64_memop, Arm64Mnemonic.STUMAX, "STUMAX X0, [X2]");
-        TestInst(STUMAX(X15, _[X2]), Arm64InstructionId.STUMAX_ldumax_64_memop, Arm64Mnemonic.STUMAX, "STUMAX X15, [X2]");
-        TestInst(STUMAX(XZR, _[X2]), Arm64InstructionId.STUMAX_ldumax_64_memop, Arm64Mnemonic.STUMAX, "STUMAX XZR, [X2]");
+        TestInst(STUMAX(X0, _[X2]), asm => asm.STUMAX(X0, _[X2]), Arm64InstructionId.STUMAX_ldumax_64_memop, Arm64Mnemonic.STUMAX, "STUMAX X0, [X2]");
+        TestInst(STUMAX(X15, _[X2]), asm => asm.STUMAX(X15, _[X2]), Arm64InstructionId.STUMAX_ldumax_64_memop, Arm64Mnemonic.STUMAX, "STUMAX X15, [X2]");
+        TestInst(STUMAX(XZR, _[X2]), asm => asm.STUMAX(XZR, _[X2]), Arm64InstructionId.STUMAX_ldumax_64_memop, Arm64Mnemonic.STUMAX, "STUMAX XZR, [X2]");
     }
 }

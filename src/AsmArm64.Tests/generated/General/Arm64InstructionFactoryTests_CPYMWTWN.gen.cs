@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_CPYMWTWN_General : Arm64InstructionFac
     [TestMethod]
     public void Test_CPYMWTWN_cpy_memcms_0()
     {
-        TestInst(CPYMWTWN(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYMWTWN_cpy_memcms, Arm64Mnemonic.CPYMWTWN, "CPYMWTWN [X1]!, [X2]!, X2");
-        TestInst(CPYMWTWN(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYMWTWN_cpy_memcms, Arm64Mnemonic.CPYMWTWN, "CPYMWTWN [X1]!, [X2]!, X17");
-        TestInst(CPYMWTWN(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYMWTWN_cpy_memcms, Arm64Mnemonic.CPYMWTWN, "CPYMWTWN [X1]!, [X2]!, XZR");
+        TestInst(CPYMWTWN(_[X1].Pre, _[X2].Pre, X2), asm => asm.CPYMWTWN(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYMWTWN_cpy_memcms, Arm64Mnemonic.CPYMWTWN, "CPYMWTWN [X1]!, [X2]!, X2");
+        TestInst(CPYMWTWN(_[X1].Pre, _[X2].Pre, X17), asm => asm.CPYMWTWN(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYMWTWN_cpy_memcms, Arm64Mnemonic.CPYMWTWN, "CPYMWTWN [X1]!, [X2]!, X17");
+        TestInst(CPYMWTWN(_[X1].Pre, _[X2].Pre, XZR), asm => asm.CPYMWTWN(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYMWTWN_cpy_memcms, Arm64Mnemonic.CPYMWTWN, "CPYMWTWN [X1]!, [X2]!, XZR");
     }
 }

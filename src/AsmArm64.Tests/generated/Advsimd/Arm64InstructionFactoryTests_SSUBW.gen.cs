@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SSUBW_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SSUBW_asimddiff_w_0()
     {
-        TestInst(SSUBW(V0.T_8H, V1.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V1.8H, V2.8B");
-        TestInst(SSUBW(V30.T_8H, V1.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V1.8H, V2.8B");
-        TestInst(SSUBW(V0.T_8H, V31.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V31.8H, V2.8B");
-        TestInst(SSUBW(V30.T_8H, V31.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V31.8H, V2.8B");
-        TestInst(SSUBW(V0.T_8H, V1.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V1.8H, V0.8B");
-        TestInst(SSUBW(V30.T_8H, V1.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V1.8H, V0.8B");
-        TestInst(SSUBW(V0.T_8H, V31.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V31.8H, V0.8B");
-        TestInst(SSUBW(V30.T_8H, V31.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V31.8H, V0.8B");
+        TestInst(SSUBW(V0.T_8H, V1.T_8H, V2.T_8B), asm => asm.SSUBW(V0.T_8H, V1.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V1.8H, V2.8B");
+        TestInst(SSUBW(V30.T_8H, V1.T_8H, V2.T_8B), asm => asm.SSUBW(V30.T_8H, V1.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V1.8H, V2.8B");
+        TestInst(SSUBW(V0.T_8H, V31.T_8H, V2.T_8B), asm => asm.SSUBW(V0.T_8H, V31.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V31.8H, V2.8B");
+        TestInst(SSUBW(V30.T_8H, V31.T_8H, V2.T_8B), asm => asm.SSUBW(V30.T_8H, V31.T_8H, V2.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V31.8H, V2.8B");
+        TestInst(SSUBW(V0.T_8H, V1.T_8H, V0.T_8B), asm => asm.SSUBW(V0.T_8H, V1.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V1.8H, V0.8B");
+        TestInst(SSUBW(V30.T_8H, V1.T_8H, V0.T_8B), asm => asm.SSUBW(V30.T_8H, V1.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V1.8H, V0.8B");
+        TestInst(SSUBW(V0.T_8H, V31.T_8H, V0.T_8B), asm => asm.SSUBW(V0.T_8H, V31.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.8H, V31.8H, V0.8B");
+        TestInst(SSUBW(V30.T_8H, V31.T_8H, V0.T_8B), asm => asm.SSUBW(V30.T_8H, V31.T_8H, V0.T_8B), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.8H, V31.8H, V0.8B");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_SSUBW_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SSUBW_asimddiff_w_1()
     {
-        TestInst(SSUBW(V0.T_4S, V1.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V1.4S, V2.4H");
-        TestInst(SSUBW(V30.T_4S, V1.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V1.4S, V2.4H");
-        TestInst(SSUBW(V0.T_4S, V31.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V31.4S, V2.4H");
-        TestInst(SSUBW(V30.T_4S, V31.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V31.4S, V2.4H");
-        TestInst(SSUBW(V0.T_4S, V1.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V1.4S, V0.4H");
-        TestInst(SSUBW(V30.T_4S, V1.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V1.4S, V0.4H");
-        TestInst(SSUBW(V0.T_4S, V31.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V31.4S, V0.4H");
-        TestInst(SSUBW(V30.T_4S, V31.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V31.4S, V0.4H");
+        TestInst(SSUBW(V0.T_4S, V1.T_4S, V2.T_4H), asm => asm.SSUBW(V0.T_4S, V1.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V1.4S, V2.4H");
+        TestInst(SSUBW(V30.T_4S, V1.T_4S, V2.T_4H), asm => asm.SSUBW(V30.T_4S, V1.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V1.4S, V2.4H");
+        TestInst(SSUBW(V0.T_4S, V31.T_4S, V2.T_4H), asm => asm.SSUBW(V0.T_4S, V31.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V31.4S, V2.4H");
+        TestInst(SSUBW(V30.T_4S, V31.T_4S, V2.T_4H), asm => asm.SSUBW(V30.T_4S, V31.T_4S, V2.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V31.4S, V2.4H");
+        TestInst(SSUBW(V0.T_4S, V1.T_4S, V0.T_4H), asm => asm.SSUBW(V0.T_4S, V1.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V1.4S, V0.4H");
+        TestInst(SSUBW(V30.T_4S, V1.T_4S, V0.T_4H), asm => asm.SSUBW(V30.T_4S, V1.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V1.4S, V0.4H");
+        TestInst(SSUBW(V0.T_4S, V31.T_4S, V0.T_4H), asm => asm.SSUBW(V0.T_4S, V31.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.4S, V31.4S, V0.4H");
+        TestInst(SSUBW(V30.T_4S, V31.T_4S, V0.T_4H), asm => asm.SSUBW(V30.T_4S, V31.T_4S, V0.T_4H), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.4S, V31.4S, V0.4H");
     }
     
     /// <summary>
@@ -56,13 +55,13 @@ public class Arm64InstructionFactoryTests_SSUBW_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SSUBW_asimddiff_w_2()
     {
-        TestInst(SSUBW(V0.T_2D, V1.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V1.2D, V2.2S");
-        TestInst(SSUBW(V30.T_2D, V1.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V1.2D, V2.2S");
-        TestInst(SSUBW(V0.T_2D, V31.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V31.2D, V2.2S");
-        TestInst(SSUBW(V30.T_2D, V31.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V31.2D, V2.2S");
-        TestInst(SSUBW(V0.T_2D, V1.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V1.2D, V0.2S");
-        TestInst(SSUBW(V30.T_2D, V1.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V1.2D, V0.2S");
-        TestInst(SSUBW(V0.T_2D, V31.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V31.2D, V0.2S");
-        TestInst(SSUBW(V30.T_2D, V31.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V31.2D, V0.2S");
+        TestInst(SSUBW(V0.T_2D, V1.T_2D, V2.T_2S), asm => asm.SSUBW(V0.T_2D, V1.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V1.2D, V2.2S");
+        TestInst(SSUBW(V30.T_2D, V1.T_2D, V2.T_2S), asm => asm.SSUBW(V30.T_2D, V1.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V1.2D, V2.2S");
+        TestInst(SSUBW(V0.T_2D, V31.T_2D, V2.T_2S), asm => asm.SSUBW(V0.T_2D, V31.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V31.2D, V2.2S");
+        TestInst(SSUBW(V30.T_2D, V31.T_2D, V2.T_2S), asm => asm.SSUBW(V30.T_2D, V31.T_2D, V2.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V31.2D, V2.2S");
+        TestInst(SSUBW(V0.T_2D, V1.T_2D, V0.T_2S), asm => asm.SSUBW(V0.T_2D, V1.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V1.2D, V0.2S");
+        TestInst(SSUBW(V30.T_2D, V1.T_2D, V0.T_2S), asm => asm.SSUBW(V30.T_2D, V1.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V1.2D, V0.2S");
+        TestInst(SSUBW(V0.T_2D, V31.T_2D, V0.T_2S), asm => asm.SSUBW(V0.T_2D, V31.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V0.2D, V31.2D, V0.2S");
+        TestInst(SSUBW(V30.T_2D, V31.T_2D, V0.T_2S), asm => asm.SSUBW(V30.T_2D, V31.T_2D, V0.T_2S), Arm64InstructionId.SSUBW_asimddiff_w, Arm64Mnemonic.SSUBW, "SSUBW V30.2D, V31.2D, V0.2S");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDEORLB_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDEORLB_32_memop_0()
     {
-        TestInst(LDEORLB(W0, W1, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB W0, W1, [X3]");
-        TestInst(LDEORLB(W15, W1, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB W15, W1, [X3]");
-        TestInst(LDEORLB(WZR, W1, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB WZR, W1, [X3]");
-        TestInst(LDEORLB(W0, W16, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB W0, W16, [X3]");
-        TestInst(LDEORLB(W15, W16, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB W15, W16, [X3]");
-        TestInst(LDEORLB(WZR, W16, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB WZR, W16, [X3]");
-        TestInst(LDEORLB(W0, WZR, _[X3]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB W0, [X3]");
-        TestInst(LDEORLB(W15, WZR, _[X3]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB W15, [X3]");
-        TestInst(LDEORLB(WZR, WZR, _[X3]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB WZR, [X3]");
+        TestInst(LDEORLB(W0, W1, _[X3]), asm => asm.LDEORLB(W0, W1, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB W0, W1, [X3]");
+        TestInst(LDEORLB(W15, W1, _[X3]), asm => asm.LDEORLB(W15, W1, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB W15, W1, [X3]");
+        TestInst(LDEORLB(WZR, W1, _[X3]), asm => asm.LDEORLB(WZR, W1, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB WZR, W1, [X3]");
+        TestInst(LDEORLB(W0, W16, _[X3]), asm => asm.LDEORLB(W0, W16, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB W0, W16, [X3]");
+        TestInst(LDEORLB(W15, W16, _[X3]), asm => asm.LDEORLB(W15, W16, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB W15, W16, [X3]");
+        TestInst(LDEORLB(WZR, W16, _[X3]), asm => asm.LDEORLB(WZR, W16, _[X3]), Arm64InstructionId.LDEORLB_32_memop, Arm64Mnemonic.LDEORLB, "LDEORLB WZR, W16, [X3]");
+        TestInst(LDEORLB(W0, WZR, _[X3]), asm => asm.LDEORLB(W0, WZR, _[X3]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB W0, [X3]");
+        TestInst(LDEORLB(W15, WZR, _[X3]), asm => asm.LDEORLB(W15, WZR, _[X3]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB W15, [X3]");
+        TestInst(LDEORLB(WZR, WZR, _[X3]), asm => asm.LDEORLB(WZR, WZR, _[X3]), Arm64InstructionId.STEORLB_ldeorlb_32_memop, Arm64Mnemonic.STEORLB, "STEORLB WZR, [X3]");
     }
 }

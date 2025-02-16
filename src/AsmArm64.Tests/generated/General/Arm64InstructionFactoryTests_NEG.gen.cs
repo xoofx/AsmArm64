@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,42 +23,42 @@ public class Arm64InstructionFactoryTests_NEG_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_NEG_sub_32_addsub_shift_0()
     {
-        TestInst(NEG(W0, W1, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W1");
-        TestInst(NEG(W15, W1, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W1");
-        TestInst(NEG(WZR, W1, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W1");
-        TestInst(NEG(W0, W16, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W16");
-        TestInst(NEG(W15, W16, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W16");
-        TestInst(NEG(WZR, W16, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W16");
-        TestInst(NEG(W0, WZR, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, WZR");
-        TestInst(NEG(W15, WZR, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, WZR");
-        TestInst(NEG(WZR, WZR, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, WZR");
-        TestInst(NEG(W0, W1, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W1, LSL #1");
-        TestInst(NEG(W15, W1, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W1, LSL #1");
-        TestInst(NEG(WZR, W1, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W1, LSL #1");
-        TestInst(NEG(W0, W16, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W16, LSL #1");
-        TestInst(NEG(W15, W16, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W16, LSL #1");
-        TestInst(NEG(WZR, W16, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W16, LSL #1");
-        TestInst(NEG(W0, WZR, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, WZR, LSL #1");
-        TestInst(NEG(W15, WZR, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, WZR, LSL #1");
-        TestInst(NEG(WZR, WZR, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, WZR, LSL #1");
-        TestInst(NEG(W0, W1, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W1, LSR #10");
-        TestInst(NEG(W15, W1, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W1, LSR #10");
-        TestInst(NEG(WZR, W1, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W1, LSR #10");
-        TestInst(NEG(W0, W16, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W16, LSR #10");
-        TestInst(NEG(W15, W16, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W16, LSR #10");
-        TestInst(NEG(WZR, W16, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W16, LSR #10");
-        TestInst(NEG(W0, WZR, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, WZR, LSR #10");
-        TestInst(NEG(W15, WZR, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, WZR, LSR #10");
-        TestInst(NEG(WZR, WZR, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, WZR, LSR #10");
-        TestInst(NEG(W0, W1, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W1, ASR #12");
-        TestInst(NEG(W15, W1, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W1, ASR #12");
-        TestInst(NEG(WZR, W1, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W1, ASR #12");
-        TestInst(NEG(W0, W16, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W16, ASR #12");
-        TestInst(NEG(W15, W16, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W16, ASR #12");
-        TestInst(NEG(WZR, W16, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W16, ASR #12");
-        TestInst(NEG(W0, WZR, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, WZR, ASR #12");
-        TestInst(NEG(W15, WZR, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, WZR, ASR #12");
-        TestInst(NEG(WZR, WZR, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, WZR, ASR #12");
+        TestInst(NEG(W0, W1, _LSL, 0), asm => asm.NEG(W0, W1, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W1");
+        TestInst(NEG(W15, W1, _LSL, 0), asm => asm.NEG(W15, W1, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W1");
+        TestInst(NEG(WZR, W1, _LSL, 0), asm => asm.NEG(WZR, W1, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W1");
+        TestInst(NEG(W0, W16, _LSL, 0), asm => asm.NEG(W0, W16, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W16");
+        TestInst(NEG(W15, W16, _LSL, 0), asm => asm.NEG(W15, W16, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W16");
+        TestInst(NEG(WZR, W16, _LSL, 0), asm => asm.NEG(WZR, W16, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W16");
+        TestInst(NEG(W0, WZR, _LSL, 0), asm => asm.NEG(W0, WZR, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, WZR");
+        TestInst(NEG(W15, WZR, _LSL, 0), asm => asm.NEG(W15, WZR, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, WZR");
+        TestInst(NEG(WZR, WZR, _LSL, 0), asm => asm.NEG(WZR, WZR, _LSL, 0), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, WZR");
+        TestInst(NEG(W0, W1, _LSL, 1), asm => asm.NEG(W0, W1, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W1, LSL #1");
+        TestInst(NEG(W15, W1, _LSL, 1), asm => asm.NEG(W15, W1, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W1, LSL #1");
+        TestInst(NEG(WZR, W1, _LSL, 1), asm => asm.NEG(WZR, W1, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W1, LSL #1");
+        TestInst(NEG(W0, W16, _LSL, 1), asm => asm.NEG(W0, W16, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W16, LSL #1");
+        TestInst(NEG(W15, W16, _LSL, 1), asm => asm.NEG(W15, W16, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W16, LSL #1");
+        TestInst(NEG(WZR, W16, _LSL, 1), asm => asm.NEG(WZR, W16, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W16, LSL #1");
+        TestInst(NEG(W0, WZR, _LSL, 1), asm => asm.NEG(W0, WZR, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, WZR, LSL #1");
+        TestInst(NEG(W15, WZR, _LSL, 1), asm => asm.NEG(W15, WZR, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, WZR, LSL #1");
+        TestInst(NEG(WZR, WZR, _LSL, 1), asm => asm.NEG(WZR, WZR, _LSL, 1), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, WZR, LSL #1");
+        TestInst(NEG(W0, W1, _LSR, 10), asm => asm.NEG(W0, W1, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W1, LSR #10");
+        TestInst(NEG(W15, W1, _LSR, 10), asm => asm.NEG(W15, W1, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W1, LSR #10");
+        TestInst(NEG(WZR, W1, _LSR, 10), asm => asm.NEG(WZR, W1, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W1, LSR #10");
+        TestInst(NEG(W0, W16, _LSR, 10), asm => asm.NEG(W0, W16, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W16, LSR #10");
+        TestInst(NEG(W15, W16, _LSR, 10), asm => asm.NEG(W15, W16, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W16, LSR #10");
+        TestInst(NEG(WZR, W16, _LSR, 10), asm => asm.NEG(WZR, W16, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W16, LSR #10");
+        TestInst(NEG(W0, WZR, _LSR, 10), asm => asm.NEG(W0, WZR, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, WZR, LSR #10");
+        TestInst(NEG(W15, WZR, _LSR, 10), asm => asm.NEG(W15, WZR, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, WZR, LSR #10");
+        TestInst(NEG(WZR, WZR, _LSR, 10), asm => asm.NEG(WZR, WZR, _LSR, 10), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, WZR, LSR #10");
+        TestInst(NEG(W0, W1, _ASR, 12), asm => asm.NEG(W0, W1, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W1, ASR #12");
+        TestInst(NEG(W15, W1, _ASR, 12), asm => asm.NEG(W15, W1, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W1, ASR #12");
+        TestInst(NEG(WZR, W1, _ASR, 12), asm => asm.NEG(WZR, W1, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W1, ASR #12");
+        TestInst(NEG(W0, W16, _ASR, 12), asm => asm.NEG(W0, W16, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, W16, ASR #12");
+        TestInst(NEG(W15, W16, _ASR, 12), asm => asm.NEG(W15, W16, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, W16, ASR #12");
+        TestInst(NEG(WZR, W16, _ASR, 12), asm => asm.NEG(WZR, W16, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, W16, ASR #12");
+        TestInst(NEG(W0, WZR, _ASR, 12), asm => asm.NEG(W0, WZR, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W0, WZR, ASR #12");
+        TestInst(NEG(W15, WZR, _ASR, 12), asm => asm.NEG(W15, WZR, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG W15, WZR, ASR #12");
+        TestInst(NEG(WZR, WZR, _ASR, 12), asm => asm.NEG(WZR, WZR, _ASR, 12), Arm64InstructionId.NEG_sub_32_addsub_shift, Arm64Mnemonic.NEG, "NEG WZR, WZR, ASR #12");
     }
     
     /// <summary>
@@ -68,41 +67,41 @@ public class Arm64InstructionFactoryTests_NEG_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_NEG_sub_64_addsub_shift_1()
     {
-        TestInst(NEG(X0, X1, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X1");
-        TestInst(NEG(X15, X1, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X1");
-        TestInst(NEG(XZR, X1, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X1");
-        TestInst(NEG(X0, X16, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X16");
-        TestInst(NEG(X15, X16, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X16");
-        TestInst(NEG(XZR, X16, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X16");
-        TestInst(NEG(X0, XZR, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, XZR");
-        TestInst(NEG(X15, XZR, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, XZR");
-        TestInst(NEG(XZR, XZR, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, XZR");
-        TestInst(NEG(X0, X1, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X1, LSL #1");
-        TestInst(NEG(X15, X1, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X1, LSL #1");
-        TestInst(NEG(XZR, X1, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X1, LSL #1");
-        TestInst(NEG(X0, X16, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X16, LSL #1");
-        TestInst(NEG(X15, X16, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X16, LSL #1");
-        TestInst(NEG(XZR, X16, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X16, LSL #1");
-        TestInst(NEG(X0, XZR, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, XZR, LSL #1");
-        TestInst(NEG(X15, XZR, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, XZR, LSL #1");
-        TestInst(NEG(XZR, XZR, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, XZR, LSL #1");
-        TestInst(NEG(X0, X1, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X1, LSR #10");
-        TestInst(NEG(X15, X1, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X1, LSR #10");
-        TestInst(NEG(XZR, X1, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X1, LSR #10");
-        TestInst(NEG(X0, X16, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X16, LSR #10");
-        TestInst(NEG(X15, X16, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X16, LSR #10");
-        TestInst(NEG(XZR, X16, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X16, LSR #10");
-        TestInst(NEG(X0, XZR, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, XZR, LSR #10");
-        TestInst(NEG(X15, XZR, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, XZR, LSR #10");
-        TestInst(NEG(XZR, XZR, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, XZR, LSR #10");
-        TestInst(NEG(X0, X1, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X1, ASR #12");
-        TestInst(NEG(X15, X1, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X1, ASR #12");
-        TestInst(NEG(XZR, X1, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X1, ASR #12");
-        TestInst(NEG(X0, X16, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X16, ASR #12");
-        TestInst(NEG(X15, X16, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X16, ASR #12");
-        TestInst(NEG(XZR, X16, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X16, ASR #12");
-        TestInst(NEG(X0, XZR, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, XZR, ASR #12");
-        TestInst(NEG(X15, XZR, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, XZR, ASR #12");
-        TestInst(NEG(XZR, XZR, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, XZR, ASR #12");
+        TestInst(NEG(X0, X1, _LSL, 0), asm => asm.NEG(X0, X1, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X1");
+        TestInst(NEG(X15, X1, _LSL, 0), asm => asm.NEG(X15, X1, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X1");
+        TestInst(NEG(XZR, X1, _LSL, 0), asm => asm.NEG(XZR, X1, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X1");
+        TestInst(NEG(X0, X16, _LSL, 0), asm => asm.NEG(X0, X16, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X16");
+        TestInst(NEG(X15, X16, _LSL, 0), asm => asm.NEG(X15, X16, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X16");
+        TestInst(NEG(XZR, X16, _LSL, 0), asm => asm.NEG(XZR, X16, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X16");
+        TestInst(NEG(X0, XZR, _LSL, 0), asm => asm.NEG(X0, XZR, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, XZR");
+        TestInst(NEG(X15, XZR, _LSL, 0), asm => asm.NEG(X15, XZR, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, XZR");
+        TestInst(NEG(XZR, XZR, _LSL, 0), asm => asm.NEG(XZR, XZR, _LSL, 0), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, XZR");
+        TestInst(NEG(X0, X1, _LSL, 1), asm => asm.NEG(X0, X1, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X1, LSL #1");
+        TestInst(NEG(X15, X1, _LSL, 1), asm => asm.NEG(X15, X1, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X1, LSL #1");
+        TestInst(NEG(XZR, X1, _LSL, 1), asm => asm.NEG(XZR, X1, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X1, LSL #1");
+        TestInst(NEG(X0, X16, _LSL, 1), asm => asm.NEG(X0, X16, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X16, LSL #1");
+        TestInst(NEG(X15, X16, _LSL, 1), asm => asm.NEG(X15, X16, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X16, LSL #1");
+        TestInst(NEG(XZR, X16, _LSL, 1), asm => asm.NEG(XZR, X16, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X16, LSL #1");
+        TestInst(NEG(X0, XZR, _LSL, 1), asm => asm.NEG(X0, XZR, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, XZR, LSL #1");
+        TestInst(NEG(X15, XZR, _LSL, 1), asm => asm.NEG(X15, XZR, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, XZR, LSL #1");
+        TestInst(NEG(XZR, XZR, _LSL, 1), asm => asm.NEG(XZR, XZR, _LSL, 1), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, XZR, LSL #1");
+        TestInst(NEG(X0, X1, _LSR, 10), asm => asm.NEG(X0, X1, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X1, LSR #10");
+        TestInst(NEG(X15, X1, _LSR, 10), asm => asm.NEG(X15, X1, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X1, LSR #10");
+        TestInst(NEG(XZR, X1, _LSR, 10), asm => asm.NEG(XZR, X1, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X1, LSR #10");
+        TestInst(NEG(X0, X16, _LSR, 10), asm => asm.NEG(X0, X16, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X16, LSR #10");
+        TestInst(NEG(X15, X16, _LSR, 10), asm => asm.NEG(X15, X16, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X16, LSR #10");
+        TestInst(NEG(XZR, X16, _LSR, 10), asm => asm.NEG(XZR, X16, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X16, LSR #10");
+        TestInst(NEG(X0, XZR, _LSR, 10), asm => asm.NEG(X0, XZR, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, XZR, LSR #10");
+        TestInst(NEG(X15, XZR, _LSR, 10), asm => asm.NEG(X15, XZR, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, XZR, LSR #10");
+        TestInst(NEG(XZR, XZR, _LSR, 10), asm => asm.NEG(XZR, XZR, _LSR, 10), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, XZR, LSR #10");
+        TestInst(NEG(X0, X1, _ASR, 12), asm => asm.NEG(X0, X1, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X1, ASR #12");
+        TestInst(NEG(X15, X1, _ASR, 12), asm => asm.NEG(X15, X1, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X1, ASR #12");
+        TestInst(NEG(XZR, X1, _ASR, 12), asm => asm.NEG(XZR, X1, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X1, ASR #12");
+        TestInst(NEG(X0, X16, _ASR, 12), asm => asm.NEG(X0, X16, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, X16, ASR #12");
+        TestInst(NEG(X15, X16, _ASR, 12), asm => asm.NEG(X15, X16, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, X16, ASR #12");
+        TestInst(NEG(XZR, X16, _ASR, 12), asm => asm.NEG(XZR, X16, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, X16, ASR #12");
+        TestInst(NEG(X0, XZR, _ASR, 12), asm => asm.NEG(X0, XZR, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X0, XZR, ASR #12");
+        TestInst(NEG(X15, XZR, _ASR, 12), asm => asm.NEG(X15, XZR, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG X15, XZR, ASR #12");
+        TestInst(NEG(XZR, XZR, _ASR, 12), asm => asm.NEG(XZR, XZR, _ASR, 12), Arm64InstructionId.NEG_sub_64_addsub_shift, Arm64Mnemonic.NEG, "NEG XZR, XZR, ASR #12");
     }
 }

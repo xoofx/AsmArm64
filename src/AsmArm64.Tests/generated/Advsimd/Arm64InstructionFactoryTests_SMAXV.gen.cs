@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_SMAXV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SMAXV_asimdall_only_0()
     {
-        TestInst(SMAXV(B1, V1.T_8B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B1, V1.8B");
-        TestInst(SMAXV(B31, V1.T_8B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B31, V1.8B");
-        TestInst(SMAXV(B1, V31.T_8B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B1, V31.8B");
-        TestInst(SMAXV(B31, V31.T_8B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B31, V31.8B");
+        TestInst(SMAXV(B1, V1.T_8B), asm => asm.SMAXV(B1, V1.T_8B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B1, V1.8B");
+        TestInst(SMAXV(B31, V1.T_8B), asm => asm.SMAXV(B31, V1.T_8B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B31, V1.8B");
+        TestInst(SMAXV(B1, V31.T_8B), asm => asm.SMAXV(B1, V31.T_8B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B1, V31.8B");
+        TestInst(SMAXV(B31, V31.T_8B), asm => asm.SMAXV(B31, V31.T_8B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B31, V31.8B");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_SMAXV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SMAXV_asimdall_only_1()
     {
-        TestInst(SMAXV(B1, V1.T_16B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B1, V1.16B");
-        TestInst(SMAXV(B31, V1.T_16B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B31, V1.16B");
-        TestInst(SMAXV(B1, V31.T_16B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B1, V31.16B");
-        TestInst(SMAXV(B31, V31.T_16B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B31, V31.16B");
+        TestInst(SMAXV(B1, V1.T_16B), asm => asm.SMAXV(B1, V1.T_16B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B1, V1.16B");
+        TestInst(SMAXV(B31, V1.T_16B), asm => asm.SMAXV(B31, V1.T_16B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B31, V1.16B");
+        TestInst(SMAXV(B1, V31.T_16B), asm => asm.SMAXV(B1, V31.T_16B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B1, V31.16B");
+        TestInst(SMAXV(B31, V31.T_16B), asm => asm.SMAXV(B31, V31.T_16B), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV B31, V31.16B");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_SMAXV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SMAXV_asimdall_only_2()
     {
-        TestInst(SMAXV(H1, V1.T_4H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H1, V1.4H");
-        TestInst(SMAXV(H31, V1.T_4H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H31, V1.4H");
-        TestInst(SMAXV(H1, V31.T_4H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H1, V31.4H");
-        TestInst(SMAXV(H31, V31.T_4H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H31, V31.4H");
+        TestInst(SMAXV(H1, V1.T_4H), asm => asm.SMAXV(H1, V1.T_4H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H1, V1.4H");
+        TestInst(SMAXV(H31, V1.T_4H), asm => asm.SMAXV(H31, V1.T_4H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H31, V1.4H");
+        TestInst(SMAXV(H1, V31.T_4H), asm => asm.SMAXV(H1, V31.T_4H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H1, V31.4H");
+        TestInst(SMAXV(H31, V31.T_4H), asm => asm.SMAXV(H31, V31.T_4H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H31, V31.4H");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_SMAXV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SMAXV_asimdall_only_3()
     {
-        TestInst(SMAXV(H1, V1.T_8H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H1, V1.8H");
-        TestInst(SMAXV(H31, V1.T_8H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H31, V1.8H");
-        TestInst(SMAXV(H1, V31.T_8H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H1, V31.8H");
-        TestInst(SMAXV(H31, V31.T_8H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H31, V31.8H");
+        TestInst(SMAXV(H1, V1.T_8H), asm => asm.SMAXV(H1, V1.T_8H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H1, V1.8H");
+        TestInst(SMAXV(H31, V1.T_8H), asm => asm.SMAXV(H31, V1.T_8H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H31, V1.8H");
+        TestInst(SMAXV(H1, V31.T_8H), asm => asm.SMAXV(H1, V31.T_8H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H1, V31.8H");
+        TestInst(SMAXV(H31, V31.T_8H), asm => asm.SMAXV(H31, V31.T_8H), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV H31, V31.8H");
     }
     
     /// <summary>
@@ -72,9 +71,9 @@ public class Arm64InstructionFactoryTests_SMAXV_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SMAXV_asimdall_only_4()
     {
-        TestInst(SMAXV(S1, V1.T_4S), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV S1, V1.4S");
-        TestInst(SMAXV(S31, V1.T_4S), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV S31, V1.4S");
-        TestInst(SMAXV(S1, V31.T_4S), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV S1, V31.4S");
-        TestInst(SMAXV(S31, V31.T_4S), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV S31, V31.4S");
+        TestInst(SMAXV(S1, V1.T_4S), asm => asm.SMAXV(S1, V1.T_4S), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV S1, V1.4S");
+        TestInst(SMAXV(S31, V1.T_4S), asm => asm.SMAXV(S31, V1.T_4S), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV S31, V1.4S");
+        TestInst(SMAXV(S1, V31.T_4S), asm => asm.SMAXV(S1, V31.T_4S), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV S1, V31.4S");
+        TestInst(SMAXV(S31, V31.T_4S), asm => asm.SMAXV(S31, V31.T_4S), Arm64InstructionId.SMAXV_asimdall_only, Arm64Mnemonic.SMAXV, "SMAXV S31, V31.4S");
     }
 }

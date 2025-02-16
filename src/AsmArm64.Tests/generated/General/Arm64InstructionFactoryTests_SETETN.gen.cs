@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SETETN_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_SETETN_set_memcms_0()
     {
-        TestInst(SETETN(_[X1].Pre, X1, X2), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X1, X2");
-        TestInst(SETETN(_[X1].Pre, X16, X2), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X16, X2");
-        TestInst(SETETN(_[X1].Pre, XZR, X2), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, XZR, X2");
-        TestInst(SETETN(_[X1].Pre, X1, X17), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X1, X17");
-        TestInst(SETETN(_[X1].Pre, X16, X17), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X16, X17");
-        TestInst(SETETN(_[X1].Pre, XZR, X17), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, XZR, X17");
-        TestInst(SETETN(_[X1].Pre, X1, XZR), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X1, XZR");
-        TestInst(SETETN(_[X1].Pre, X16, XZR), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X16, XZR");
-        TestInst(SETETN(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, XZR, XZR");
+        TestInst(SETETN(_[X1].Pre, X1, X2), asm => asm.SETETN(_[X1].Pre, X1, X2), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X1, X2");
+        TestInst(SETETN(_[X1].Pre, X16, X2), asm => asm.SETETN(_[X1].Pre, X16, X2), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X16, X2");
+        TestInst(SETETN(_[X1].Pre, XZR, X2), asm => asm.SETETN(_[X1].Pre, XZR, X2), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, XZR, X2");
+        TestInst(SETETN(_[X1].Pre, X1, X17), asm => asm.SETETN(_[X1].Pre, X1, X17), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X1, X17");
+        TestInst(SETETN(_[X1].Pre, X16, X17), asm => asm.SETETN(_[X1].Pre, X16, X17), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X16, X17");
+        TestInst(SETETN(_[X1].Pre, XZR, X17), asm => asm.SETETN(_[X1].Pre, XZR, X17), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, XZR, X17");
+        TestInst(SETETN(_[X1].Pre, X1, XZR), asm => asm.SETETN(_[X1].Pre, X1, XZR), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X1, XZR");
+        TestInst(SETETN(_[X1].Pre, X16, XZR), asm => asm.SETETN(_[X1].Pre, X16, XZR), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, X16, XZR");
+        TestInst(SETETN(_[X1].Pre, XZR, XZR), asm => asm.SETETN(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETETN_set_memcms, Arm64Mnemonic.SETETN, "SETETN [X1]!, XZR, XZR");
     }
 }

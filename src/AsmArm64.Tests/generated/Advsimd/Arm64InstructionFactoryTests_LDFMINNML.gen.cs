@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_LDFMINNML_Advsimd : Arm64InstructionFa
     [TestMethod]
     public void Test_LDFMINNML_16_0()
     {
-        TestInst(LDFMINNML(H0, H1, _[X3]), Arm64InstructionId.LDFMINNML_16, Arm64Mnemonic.LDFMINNML, "LDFMINNML H0, H1, [X3]");
-        TestInst(LDFMINNML(H31, H1, _[X3]), Arm64InstructionId.LDFMINNML_16, Arm64Mnemonic.LDFMINNML, "LDFMINNML H31, H1, [X3]");
-        TestInst(LDFMINNML(H0, H31, _[X3]), Arm64InstructionId.LDFMINNML_16, Arm64Mnemonic.LDFMINNML, "LDFMINNML H0, H31, [X3]");
-        TestInst(LDFMINNML(H31, H31, _[X3]), Arm64InstructionId.LDFMINNML_16, Arm64Mnemonic.LDFMINNML, "LDFMINNML H31, H31, [X3]");
+        TestInst(LDFMINNML(H0, H1, _[X3]), asm => asm.LDFMINNML(H0, H1, _[X3]), Arm64InstructionId.LDFMINNML_16, Arm64Mnemonic.LDFMINNML, "LDFMINNML H0, H1, [X3]");
+        TestInst(LDFMINNML(H31, H1, _[X3]), asm => asm.LDFMINNML(H31, H1, _[X3]), Arm64InstructionId.LDFMINNML_16, Arm64Mnemonic.LDFMINNML, "LDFMINNML H31, H1, [X3]");
+        TestInst(LDFMINNML(H0, H31, _[X3]), asm => asm.LDFMINNML(H0, H31, _[X3]), Arm64InstructionId.LDFMINNML_16, Arm64Mnemonic.LDFMINNML, "LDFMINNML H0, H31, [X3]");
+        TestInst(LDFMINNML(H31, H31, _[X3]), asm => asm.LDFMINNML(H31, H31, _[X3]), Arm64InstructionId.LDFMINNML_16, Arm64Mnemonic.LDFMINNML, "LDFMINNML H31, H31, [X3]");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_LDFMINNML_Advsimd : Arm64InstructionFa
     [TestMethod]
     public void Test_LDFMINNML_32_1()
     {
-        TestInst(LDFMINNML(S0, S1, _[X3]), Arm64InstructionId.LDFMINNML_32, Arm64Mnemonic.LDFMINNML, "LDFMINNML S0, S1, [X3]");
-        TestInst(LDFMINNML(S31, S1, _[X3]), Arm64InstructionId.LDFMINNML_32, Arm64Mnemonic.LDFMINNML, "LDFMINNML S31, S1, [X3]");
-        TestInst(LDFMINNML(S0, S31, _[X3]), Arm64InstructionId.LDFMINNML_32, Arm64Mnemonic.LDFMINNML, "LDFMINNML S0, S31, [X3]");
-        TestInst(LDFMINNML(S31, S31, _[X3]), Arm64InstructionId.LDFMINNML_32, Arm64Mnemonic.LDFMINNML, "LDFMINNML S31, S31, [X3]");
+        TestInst(LDFMINNML(S0, S1, _[X3]), asm => asm.LDFMINNML(S0, S1, _[X3]), Arm64InstructionId.LDFMINNML_32, Arm64Mnemonic.LDFMINNML, "LDFMINNML S0, S1, [X3]");
+        TestInst(LDFMINNML(S31, S1, _[X3]), asm => asm.LDFMINNML(S31, S1, _[X3]), Arm64InstructionId.LDFMINNML_32, Arm64Mnemonic.LDFMINNML, "LDFMINNML S31, S1, [X3]");
+        TestInst(LDFMINNML(S0, S31, _[X3]), asm => asm.LDFMINNML(S0, S31, _[X3]), Arm64InstructionId.LDFMINNML_32, Arm64Mnemonic.LDFMINNML, "LDFMINNML S0, S31, [X3]");
+        TestInst(LDFMINNML(S31, S31, _[X3]), asm => asm.LDFMINNML(S31, S31, _[X3]), Arm64InstructionId.LDFMINNML_32, Arm64Mnemonic.LDFMINNML, "LDFMINNML S31, S31, [X3]");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_LDFMINNML_Advsimd : Arm64InstructionFa
     [TestMethod]
     public void Test_LDFMINNML_64_2()
     {
-        TestInst(LDFMINNML(D0, D1, _[X3]), Arm64InstructionId.LDFMINNML_64, Arm64Mnemonic.LDFMINNML, "LDFMINNML D0, D1, [X3]");
-        TestInst(LDFMINNML(D31, D1, _[X3]), Arm64InstructionId.LDFMINNML_64, Arm64Mnemonic.LDFMINNML, "LDFMINNML D31, D1, [X3]");
-        TestInst(LDFMINNML(D0, D31, _[X3]), Arm64InstructionId.LDFMINNML_64, Arm64Mnemonic.LDFMINNML, "LDFMINNML D0, D31, [X3]");
-        TestInst(LDFMINNML(D31, D31, _[X3]), Arm64InstructionId.LDFMINNML_64, Arm64Mnemonic.LDFMINNML, "LDFMINNML D31, D31, [X3]");
+        TestInst(LDFMINNML(D0, D1, _[X3]), asm => asm.LDFMINNML(D0, D1, _[X3]), Arm64InstructionId.LDFMINNML_64, Arm64Mnemonic.LDFMINNML, "LDFMINNML D0, D1, [X3]");
+        TestInst(LDFMINNML(D31, D1, _[X3]), asm => asm.LDFMINNML(D31, D1, _[X3]), Arm64InstructionId.LDFMINNML_64, Arm64Mnemonic.LDFMINNML, "LDFMINNML D31, D1, [X3]");
+        TestInst(LDFMINNML(D0, D31, _[X3]), asm => asm.LDFMINNML(D0, D31, _[X3]), Arm64InstructionId.LDFMINNML_64, Arm64Mnemonic.LDFMINNML, "LDFMINNML D0, D31, [X3]");
+        TestInst(LDFMINNML(D31, D31, _[X3]), asm => asm.LDFMINNML(D31, D31, _[X3]), Arm64InstructionId.LDFMINNML_64, Arm64Mnemonic.LDFMINNML, "LDFMINNML D31, D31, [X3]");
     }
 }

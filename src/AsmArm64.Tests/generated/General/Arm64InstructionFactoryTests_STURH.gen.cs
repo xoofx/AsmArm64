@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STURH_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_STURH_32_ldst_unscaled_0()
     {
-        TestInst(STURH(W0, _[X2, 5]), Arm64InstructionId.STURH_32_ldst_unscaled, Arm64Mnemonic.STURH, "STURH W0, [X2, #5]");
-        TestInst(STURH(W15, _[X2, 5]), Arm64InstructionId.STURH_32_ldst_unscaled, Arm64Mnemonic.STURH, "STURH W15, [X2, #5]");
-        TestInst(STURH(WZR, _[X2, 5]), Arm64InstructionId.STURH_32_ldst_unscaled, Arm64Mnemonic.STURH, "STURH WZR, [X2, #5]");
+        TestInst(STURH(W0, _[X2, 5]), asm => asm.STURH(W0, _[X2, 5]), Arm64InstructionId.STURH_32_ldst_unscaled, Arm64Mnemonic.STURH, "STURH W0, [X2, #5]");
+        TestInst(STURH(W15, _[X2, 5]), asm => asm.STURH(W15, _[X2, 5]), Arm64InstructionId.STURH_32_ldst_unscaled, Arm64Mnemonic.STURH, "STURH W15, [X2, #5]");
+        TestInst(STURH(WZR, _[X2, 5]), asm => asm.STURH(WZR, _[X2, 5]), Arm64InstructionId.STURH_32_ldst_unscaled, Arm64Mnemonic.STURH, "STURH WZR, [X2, #5]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,32 +23,32 @@ public class Arm64InstructionFactoryTests_SMNEGL_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_SMNEGL_smsubl_64wa_dp_3src_0()
     {
-        TestInst(SMNEGL(X0, W1, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W1, W2");
-        TestInst(SMNEGL(X15, W1, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W1, W2");
-        TestInst(SMNEGL(XZR, W1, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W1, W2");
-        TestInst(SMNEGL(X0, W16, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W16, W2");
-        TestInst(SMNEGL(X15, W16, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W16, W2");
-        TestInst(SMNEGL(XZR, W16, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W16, W2");
-        TestInst(SMNEGL(X0, WZR, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, WZR, W2");
-        TestInst(SMNEGL(X15, WZR, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, WZR, W2");
-        TestInst(SMNEGL(XZR, WZR, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, WZR, W2");
-        TestInst(SMNEGL(X0, W1, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W1, W17");
-        TestInst(SMNEGL(X15, W1, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W1, W17");
-        TestInst(SMNEGL(XZR, W1, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W1, W17");
-        TestInst(SMNEGL(X0, W16, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W16, W17");
-        TestInst(SMNEGL(X15, W16, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W16, W17");
-        TestInst(SMNEGL(XZR, W16, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W16, W17");
-        TestInst(SMNEGL(X0, WZR, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, WZR, W17");
-        TestInst(SMNEGL(X15, WZR, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, WZR, W17");
-        TestInst(SMNEGL(XZR, WZR, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, WZR, W17");
-        TestInst(SMNEGL(X0, W1, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W1, WZR");
-        TestInst(SMNEGL(X15, W1, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W1, WZR");
-        TestInst(SMNEGL(XZR, W1, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W1, WZR");
-        TestInst(SMNEGL(X0, W16, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W16, WZR");
-        TestInst(SMNEGL(X15, W16, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W16, WZR");
-        TestInst(SMNEGL(XZR, W16, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W16, WZR");
-        TestInst(SMNEGL(X0, WZR, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, WZR, WZR");
-        TestInst(SMNEGL(X15, WZR, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, WZR, WZR");
-        TestInst(SMNEGL(XZR, WZR, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, WZR, WZR");
+        TestInst(SMNEGL(X0, W1, W2), asm => asm.SMNEGL(X0, W1, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W1, W2");
+        TestInst(SMNEGL(X15, W1, W2), asm => asm.SMNEGL(X15, W1, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W1, W2");
+        TestInst(SMNEGL(XZR, W1, W2), asm => asm.SMNEGL(XZR, W1, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W1, W2");
+        TestInst(SMNEGL(X0, W16, W2), asm => asm.SMNEGL(X0, W16, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W16, W2");
+        TestInst(SMNEGL(X15, W16, W2), asm => asm.SMNEGL(X15, W16, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W16, W2");
+        TestInst(SMNEGL(XZR, W16, W2), asm => asm.SMNEGL(XZR, W16, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W16, W2");
+        TestInst(SMNEGL(X0, WZR, W2), asm => asm.SMNEGL(X0, WZR, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, WZR, W2");
+        TestInst(SMNEGL(X15, WZR, W2), asm => asm.SMNEGL(X15, WZR, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, WZR, W2");
+        TestInst(SMNEGL(XZR, WZR, W2), asm => asm.SMNEGL(XZR, WZR, W2), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, WZR, W2");
+        TestInst(SMNEGL(X0, W1, W17), asm => asm.SMNEGL(X0, W1, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W1, W17");
+        TestInst(SMNEGL(X15, W1, W17), asm => asm.SMNEGL(X15, W1, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W1, W17");
+        TestInst(SMNEGL(XZR, W1, W17), asm => asm.SMNEGL(XZR, W1, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W1, W17");
+        TestInst(SMNEGL(X0, W16, W17), asm => asm.SMNEGL(X0, W16, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W16, W17");
+        TestInst(SMNEGL(X15, W16, W17), asm => asm.SMNEGL(X15, W16, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W16, W17");
+        TestInst(SMNEGL(XZR, W16, W17), asm => asm.SMNEGL(XZR, W16, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W16, W17");
+        TestInst(SMNEGL(X0, WZR, W17), asm => asm.SMNEGL(X0, WZR, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, WZR, W17");
+        TestInst(SMNEGL(X15, WZR, W17), asm => asm.SMNEGL(X15, WZR, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, WZR, W17");
+        TestInst(SMNEGL(XZR, WZR, W17), asm => asm.SMNEGL(XZR, WZR, W17), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, WZR, W17");
+        TestInst(SMNEGL(X0, W1, WZR), asm => asm.SMNEGL(X0, W1, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W1, WZR");
+        TestInst(SMNEGL(X15, W1, WZR), asm => asm.SMNEGL(X15, W1, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W1, WZR");
+        TestInst(SMNEGL(XZR, W1, WZR), asm => asm.SMNEGL(XZR, W1, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W1, WZR");
+        TestInst(SMNEGL(X0, W16, WZR), asm => asm.SMNEGL(X0, W16, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, W16, WZR");
+        TestInst(SMNEGL(X15, W16, WZR), asm => asm.SMNEGL(X15, W16, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, W16, WZR");
+        TestInst(SMNEGL(XZR, W16, WZR), asm => asm.SMNEGL(XZR, W16, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, W16, WZR");
+        TestInst(SMNEGL(X0, WZR, WZR), asm => asm.SMNEGL(X0, WZR, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X0, WZR, WZR");
+        TestInst(SMNEGL(X15, WZR, WZR), asm => asm.SMNEGL(X15, WZR, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL X15, WZR, WZR");
+        TestInst(SMNEGL(XZR, WZR, WZR), asm => asm.SMNEGL(XZR, WZR, WZR), Arm64InstructionId.SMNEGL_smsubl_64wa_dp_3src, Arm64Mnemonic.SMNEGL, "SMNEGL XZR, WZR, WZR");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_BRK_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_BRK_ex_exception_0()
     {
-        TestInst(BRK(5), Arm64InstructionId.BRK_ex_exception, Arm64Mnemonic.BRK, "BRK #5");
+        TestInst(BRK(5), asm => asm.BRK(5), Arm64InstructionId.BRK_ex_exception, Arm64Mnemonic.BRK, "BRK #5");
     }
 }

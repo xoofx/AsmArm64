@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_RCWCLRPA_General : Arm64InstructionFac
     [TestMethod]
     public void Test_RCWCLRPA_128_memop_128_0()
     {
-        TestInst(RCWCLRPA(X0, X1, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X0, X1, [X3]");
-        TestInst(RCWCLRPA(X15, X1, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X15, X1, [X3]");
-        TestInst(RCWCLRPA(XZR, X1, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA XZR, X1, [X3]");
-        TestInst(RCWCLRPA(X0, X16, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X0, X16, [X3]");
-        TestInst(RCWCLRPA(X15, X16, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X15, X16, [X3]");
-        TestInst(RCWCLRPA(XZR, X16, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA XZR, X16, [X3]");
-        TestInst(RCWCLRPA(X0, XZR, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X0, XZR, [X3]");
-        TestInst(RCWCLRPA(X15, XZR, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X15, XZR, [X3]");
-        TestInst(RCWCLRPA(XZR, XZR, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA XZR, XZR, [X3]");
+        TestInst(RCWCLRPA(X0, X1, _[X3]), asm => asm.RCWCLRPA(X0, X1, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X0, X1, [X3]");
+        TestInst(RCWCLRPA(X15, X1, _[X3]), asm => asm.RCWCLRPA(X15, X1, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X15, X1, [X3]");
+        TestInst(RCWCLRPA(XZR, X1, _[X3]), asm => asm.RCWCLRPA(XZR, X1, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA XZR, X1, [X3]");
+        TestInst(RCWCLRPA(X0, X16, _[X3]), asm => asm.RCWCLRPA(X0, X16, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X0, X16, [X3]");
+        TestInst(RCWCLRPA(X15, X16, _[X3]), asm => asm.RCWCLRPA(X15, X16, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X15, X16, [X3]");
+        TestInst(RCWCLRPA(XZR, X16, _[X3]), asm => asm.RCWCLRPA(XZR, X16, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA XZR, X16, [X3]");
+        TestInst(RCWCLRPA(X0, XZR, _[X3]), asm => asm.RCWCLRPA(X0, XZR, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X0, XZR, [X3]");
+        TestInst(RCWCLRPA(X15, XZR, _[X3]), asm => asm.RCWCLRPA(X15, XZR, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA X15, XZR, [X3]");
+        TestInst(RCWCLRPA(XZR, XZR, _[X3]), asm => asm.RCWCLRPA(XZR, XZR, _[X3]), Arm64InstructionId.RCWCLRPA_128_memop_128, Arm64Mnemonic.RCWCLRPA, "RCWCLRPA XZR, XZR, [X3]");
     }
 }

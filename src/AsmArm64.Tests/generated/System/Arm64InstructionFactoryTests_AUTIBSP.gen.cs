@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_AUTIBSP_System : Arm64InstructionFacto
     [TestMethod]
     public void Test_AUTIBSP_hi_hints_0()
     {
-        TestInst(AUTIBSP(), Arm64InstructionId.AUTIBSP_hi_hints, Arm64Mnemonic.AUTIBSP, "AUTIBSP");
+        TestInst(AUTIBSP(), asm => asm.AUTIBSP(), Arm64InstructionId.AUTIBSP_hi_hints, Arm64Mnemonic.AUTIBSP, "AUTIBSP");
     }
 }

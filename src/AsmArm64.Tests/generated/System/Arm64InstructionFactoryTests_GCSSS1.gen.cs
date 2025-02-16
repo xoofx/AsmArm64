@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_GCSSS1_System : Arm64InstructionFactor
     [TestMethod]
     public void Test_GCSSS1_sys_cr_systeminstrs_0()
     {
-        TestInst(GCSSS1(X0), Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, Arm64Mnemonic.GCSSS1, "GCSSS1 X0");
-        TestInst(GCSSS1(X15), Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, Arm64Mnemonic.GCSSS1, "GCSSS1 X15");
-        TestInst(GCSSS1(XZR), Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, Arm64Mnemonic.GCSSS1, "GCSSS1 XZR");
+        TestInst(GCSSS1(X0), asm => asm.GCSSS1(X0), Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, Arm64Mnemonic.GCSSS1, "GCSSS1 X0");
+        TestInst(GCSSS1(X15), asm => asm.GCSSS1(X15), Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, Arm64Mnemonic.GCSSS1, "GCSSS1 X15");
+        TestInst(GCSSS1(XZR), asm => asm.GCSSS1(XZR), Arm64InstructionId.GCSSS1_sys_cr_systeminstrs, Arm64Mnemonic.GCSSS1, "GCSSS1 XZR");
     }
 }

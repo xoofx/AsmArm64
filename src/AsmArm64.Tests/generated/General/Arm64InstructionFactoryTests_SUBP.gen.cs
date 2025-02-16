@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,32 +23,32 @@ public class Arm64InstructionFactoryTests_SUBP_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SUBP_64s_dp_2src_0()
     {
-        TestInst(SUBP(X0, X2, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X2, X3");
-        TestInst(SUBP(X15, X2, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X2, X3");
-        TestInst(SUBP(XZR, X2, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X2, X3");
-        TestInst(SUBP(X0, X18, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X18, X3");
-        TestInst(SUBP(X15, X18, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X18, X3");
-        TestInst(SUBP(XZR, X18, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X18, X3");
-        TestInst(SUBP(X0, SP, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, SP, X3");
-        TestInst(SUBP(X15, SP, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, SP, X3");
-        TestInst(SUBP(XZR, SP, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, SP, X3");
-        TestInst(SUBP(X0, X2, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X2, X19");
-        TestInst(SUBP(X15, X2, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X2, X19");
-        TestInst(SUBP(XZR, X2, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X2, X19");
-        TestInst(SUBP(X0, X18, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X18, X19");
-        TestInst(SUBP(X15, X18, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X18, X19");
-        TestInst(SUBP(XZR, X18, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X18, X19");
-        TestInst(SUBP(X0, SP, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, SP, X19");
-        TestInst(SUBP(X15, SP, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, SP, X19");
-        TestInst(SUBP(XZR, SP, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, SP, X19");
-        TestInst(SUBP(X0, X2, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X2, SP");
-        TestInst(SUBP(X15, X2, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X2, SP");
-        TestInst(SUBP(XZR, X2, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X2, SP");
-        TestInst(SUBP(X0, X18, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X18, SP");
-        TestInst(SUBP(X15, X18, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X18, SP");
-        TestInst(SUBP(XZR, X18, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X18, SP");
-        TestInst(SUBP(X0, SP, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, SP, SP");
-        TestInst(SUBP(X15, SP, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, SP, SP");
-        TestInst(SUBP(XZR, SP, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, SP, SP");
+        TestInst(SUBP(X0, X2, X3), asm => asm.SUBP(X0, X2, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X2, X3");
+        TestInst(SUBP(X15, X2, X3), asm => asm.SUBP(X15, X2, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X2, X3");
+        TestInst(SUBP(XZR, X2, X3), asm => asm.SUBP(XZR, X2, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X2, X3");
+        TestInst(SUBP(X0, X18, X3), asm => asm.SUBP(X0, X18, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X18, X3");
+        TestInst(SUBP(X15, X18, X3), asm => asm.SUBP(X15, X18, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X18, X3");
+        TestInst(SUBP(XZR, X18, X3), asm => asm.SUBP(XZR, X18, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X18, X3");
+        TestInst(SUBP(X0, SP, X3), asm => asm.SUBP(X0, SP, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, SP, X3");
+        TestInst(SUBP(X15, SP, X3), asm => asm.SUBP(X15, SP, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, SP, X3");
+        TestInst(SUBP(XZR, SP, X3), asm => asm.SUBP(XZR, SP, X3), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, SP, X3");
+        TestInst(SUBP(X0, X2, X19), asm => asm.SUBP(X0, X2, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X2, X19");
+        TestInst(SUBP(X15, X2, X19), asm => asm.SUBP(X15, X2, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X2, X19");
+        TestInst(SUBP(XZR, X2, X19), asm => asm.SUBP(XZR, X2, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X2, X19");
+        TestInst(SUBP(X0, X18, X19), asm => asm.SUBP(X0, X18, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X18, X19");
+        TestInst(SUBP(X15, X18, X19), asm => asm.SUBP(X15, X18, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X18, X19");
+        TestInst(SUBP(XZR, X18, X19), asm => asm.SUBP(XZR, X18, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X18, X19");
+        TestInst(SUBP(X0, SP, X19), asm => asm.SUBP(X0, SP, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, SP, X19");
+        TestInst(SUBP(X15, SP, X19), asm => asm.SUBP(X15, SP, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, SP, X19");
+        TestInst(SUBP(XZR, SP, X19), asm => asm.SUBP(XZR, SP, X19), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, SP, X19");
+        TestInst(SUBP(X0, X2, SP), asm => asm.SUBP(X0, X2, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X2, SP");
+        TestInst(SUBP(X15, X2, SP), asm => asm.SUBP(X15, X2, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X2, SP");
+        TestInst(SUBP(XZR, X2, SP), asm => asm.SUBP(XZR, X2, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X2, SP");
+        TestInst(SUBP(X0, X18, SP), asm => asm.SUBP(X0, X18, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, X18, SP");
+        TestInst(SUBP(X15, X18, SP), asm => asm.SUBP(X15, X18, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, X18, SP");
+        TestInst(SUBP(XZR, X18, SP), asm => asm.SUBP(XZR, X18, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, X18, SP");
+        TestInst(SUBP(X0, SP, SP), asm => asm.SUBP(X0, SP, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X0, SP, SP");
+        TestInst(SUBP(X15, SP, SP), asm => asm.SUBP(X15, SP, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP X15, SP, SP");
+        TestInst(SUBP(XZR, SP, SP), asm => asm.SUBP(XZR, SP, SP), Arm64InstructionId.SUBP_64s_dp_2src, Arm64Mnemonic.SUBP, "SUBP XZR, SP, SP");
     }
 }

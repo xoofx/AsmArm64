@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STSETH_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STSETH_ldseth_32_memop_0()
     {
-        TestInst(STSETH(W0, _[X2]), Arm64InstructionId.STSETH_ldseth_32_memop, Arm64Mnemonic.STSETH, "STSETH W0, [X2]");
-        TestInst(STSETH(W15, _[X2]), Arm64InstructionId.STSETH_ldseth_32_memop, Arm64Mnemonic.STSETH, "STSETH W15, [X2]");
-        TestInst(STSETH(WZR, _[X2]), Arm64InstructionId.STSETH_ldseth_32_memop, Arm64Mnemonic.STSETH, "STSETH WZR, [X2]");
+        TestInst(STSETH(W0, _[X2]), asm => asm.STSETH(W0, _[X2]), Arm64InstructionId.STSETH_ldseth_32_memop, Arm64Mnemonic.STSETH, "STSETH W0, [X2]");
+        TestInst(STSETH(W15, _[X2]), asm => asm.STSETH(W15, _[X2]), Arm64InstructionId.STSETH_ldseth_32_memop, Arm64Mnemonic.STSETH, "STSETH W15, [X2]");
+        TestInst(STSETH(WZR, _[X2]), asm => asm.STSETH(WZR, _[X2]), Arm64InstructionId.STSETH_ldseth_32_memop, Arm64Mnemonic.STSETH, "STSETH WZR, [X2]");
     }
 }

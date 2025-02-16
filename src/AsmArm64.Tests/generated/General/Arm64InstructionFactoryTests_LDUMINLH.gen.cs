@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDUMINLH_General : Arm64InstructionFac
     [TestMethod]
     public void Test_LDUMINLH_32_memop_0()
     {
-        TestInst(LDUMINLH(W0, W1, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH W0, W1, [X3]");
-        TestInst(LDUMINLH(W15, W1, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH W15, W1, [X3]");
-        TestInst(LDUMINLH(WZR, W1, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH WZR, W1, [X3]");
-        TestInst(LDUMINLH(W0, W16, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH W0, W16, [X3]");
-        TestInst(LDUMINLH(W15, W16, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH W15, W16, [X3]");
-        TestInst(LDUMINLH(WZR, W16, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH WZR, W16, [X3]");
-        TestInst(LDUMINLH(W0, WZR, _[X3]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH W0, [X3]");
-        TestInst(LDUMINLH(W15, WZR, _[X3]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH W15, [X3]");
-        TestInst(LDUMINLH(WZR, WZR, _[X3]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH WZR, [X3]");
+        TestInst(LDUMINLH(W0, W1, _[X3]), asm => asm.LDUMINLH(W0, W1, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH W0, W1, [X3]");
+        TestInst(LDUMINLH(W15, W1, _[X3]), asm => asm.LDUMINLH(W15, W1, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH W15, W1, [X3]");
+        TestInst(LDUMINLH(WZR, W1, _[X3]), asm => asm.LDUMINLH(WZR, W1, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH WZR, W1, [X3]");
+        TestInst(LDUMINLH(W0, W16, _[X3]), asm => asm.LDUMINLH(W0, W16, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH W0, W16, [X3]");
+        TestInst(LDUMINLH(W15, W16, _[X3]), asm => asm.LDUMINLH(W15, W16, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH W15, W16, [X3]");
+        TestInst(LDUMINLH(WZR, W16, _[X3]), asm => asm.LDUMINLH(WZR, W16, _[X3]), Arm64InstructionId.LDUMINLH_32_memop, Arm64Mnemonic.LDUMINLH, "LDUMINLH WZR, W16, [X3]");
+        TestInst(LDUMINLH(W0, WZR, _[X3]), asm => asm.LDUMINLH(W0, WZR, _[X3]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH W0, [X3]");
+        TestInst(LDUMINLH(W15, WZR, _[X3]), asm => asm.LDUMINLH(W15, WZR, _[X3]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH W15, [X3]");
+        TestInst(LDUMINLH(WZR, WZR, _[X3]), asm => asm.LDUMINLH(WZR, WZR, _[X3]), Arm64InstructionId.STUMINLH_lduminlh_32_memop, Arm64Mnemonic.STUMINLH, "STUMINLH WZR, [X3]");
     }
 }

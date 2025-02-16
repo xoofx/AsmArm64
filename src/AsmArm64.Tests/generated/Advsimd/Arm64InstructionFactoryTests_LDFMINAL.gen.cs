@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_LDFMINAL_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_LDFMINAL_16_0()
     {
-        TestInst(LDFMINAL(H0, H1, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H0, H1, [X3]");
-        TestInst(LDFMINAL(H31, H1, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H31, H1, [X3]");
-        TestInst(LDFMINAL(H0, H31, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H0, H31, [X3]");
-        TestInst(LDFMINAL(H31, H31, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H31, H31, [X3]");
+        TestInst(LDFMINAL(H0, H1, _[X3]), asm => asm.LDFMINAL(H0, H1, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H0, H1, [X3]");
+        TestInst(LDFMINAL(H31, H1, _[X3]), asm => asm.LDFMINAL(H31, H1, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H31, H1, [X3]");
+        TestInst(LDFMINAL(H0, H31, _[X3]), asm => asm.LDFMINAL(H0, H31, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H0, H31, [X3]");
+        TestInst(LDFMINAL(H31, H31, _[X3]), asm => asm.LDFMINAL(H31, H31, _[X3]), Arm64InstructionId.LDFMINAL_16, Arm64Mnemonic.LDFMINAL, "LDFMINAL H31, H31, [X3]");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_LDFMINAL_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_LDFMINAL_32_1()
     {
-        TestInst(LDFMINAL(S0, S1, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S0, S1, [X3]");
-        TestInst(LDFMINAL(S31, S1, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S31, S1, [X3]");
-        TestInst(LDFMINAL(S0, S31, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S0, S31, [X3]");
-        TestInst(LDFMINAL(S31, S31, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S31, S31, [X3]");
+        TestInst(LDFMINAL(S0, S1, _[X3]), asm => asm.LDFMINAL(S0, S1, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S0, S1, [X3]");
+        TestInst(LDFMINAL(S31, S1, _[X3]), asm => asm.LDFMINAL(S31, S1, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S31, S1, [X3]");
+        TestInst(LDFMINAL(S0, S31, _[X3]), asm => asm.LDFMINAL(S0, S31, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S0, S31, [X3]");
+        TestInst(LDFMINAL(S31, S31, _[X3]), asm => asm.LDFMINAL(S31, S31, _[X3]), Arm64InstructionId.LDFMINAL_32, Arm64Mnemonic.LDFMINAL, "LDFMINAL S31, S31, [X3]");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_LDFMINAL_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_LDFMINAL_64_2()
     {
-        TestInst(LDFMINAL(D0, D1, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D0, D1, [X3]");
-        TestInst(LDFMINAL(D31, D1, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D31, D1, [X3]");
-        TestInst(LDFMINAL(D0, D31, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D0, D31, [X3]");
-        TestInst(LDFMINAL(D31, D31, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D31, D31, [X3]");
+        TestInst(LDFMINAL(D0, D1, _[X3]), asm => asm.LDFMINAL(D0, D1, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D0, D1, [X3]");
+        TestInst(LDFMINAL(D31, D1, _[X3]), asm => asm.LDFMINAL(D31, D1, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D31, D1, [X3]");
+        TestInst(LDFMINAL(D0, D31, _[X3]), asm => asm.LDFMINAL(D0, D31, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D0, D31, [X3]");
+        TestInst(LDFMINAL(D31, D31, _[X3]), asm => asm.LDFMINAL(D31, D31, _[X3]), Arm64InstructionId.LDFMINAL_64, Arm64Mnemonic.LDFMINAL, "LDFMINAL D31, D31, [X3]");
     }
 }

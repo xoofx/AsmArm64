@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_SXTB_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SXTB_sbfm_32m_bitfield_0()
     {
-        TestInst(SXTB(W0, W1), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W0, W1");
-        TestInst(SXTB(W15, W1), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W15, W1");
-        TestInst(SXTB(WZR, W1), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB WZR, W1");
-        TestInst(SXTB(W0, W16), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W0, W16");
-        TestInst(SXTB(W15, W16), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W15, W16");
-        TestInst(SXTB(WZR, W16), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB WZR, W16");
-        TestInst(SXTB(W0, WZR), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W0, WZR");
-        TestInst(SXTB(W15, WZR), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W15, WZR");
-        TestInst(SXTB(WZR, WZR), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB WZR, WZR");
+        TestInst(SXTB(W0, W1), asm => asm.SXTB(W0, W1), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W0, W1");
+        TestInst(SXTB(W15, W1), asm => asm.SXTB(W15, W1), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W15, W1");
+        TestInst(SXTB(WZR, W1), asm => asm.SXTB(WZR, W1), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB WZR, W1");
+        TestInst(SXTB(W0, W16), asm => asm.SXTB(W0, W16), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W0, W16");
+        TestInst(SXTB(W15, W16), asm => asm.SXTB(W15, W16), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W15, W16");
+        TestInst(SXTB(WZR, W16), asm => asm.SXTB(WZR, W16), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB WZR, W16");
+        TestInst(SXTB(W0, WZR), asm => asm.SXTB(W0, WZR), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W0, WZR");
+        TestInst(SXTB(W15, WZR), asm => asm.SXTB(W15, WZR), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB W15, WZR");
+        TestInst(SXTB(WZR, WZR), asm => asm.SXTB(WZR, WZR), Arm64InstructionId.SXTB_sbfm_32m_bitfield, Arm64Mnemonic.SXTB, "SXTB WZR, WZR");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_SXTB_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SXTB_sbfm_64m_bitfield_1()
     {
-        TestInst(SXTB(X0, W1), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X0, W1");
-        TestInst(SXTB(X15, W1), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X15, W1");
-        TestInst(SXTB(XZR, W1), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB XZR, W1");
-        TestInst(SXTB(X0, W16), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X0, W16");
-        TestInst(SXTB(X15, W16), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X15, W16");
-        TestInst(SXTB(XZR, W16), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB XZR, W16");
-        TestInst(SXTB(X0, WZR), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X0, WZR");
-        TestInst(SXTB(X15, WZR), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X15, WZR");
-        TestInst(SXTB(XZR, WZR), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB XZR, WZR");
+        TestInst(SXTB(X0, W1), asm => asm.SXTB(X0, W1), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X0, W1");
+        TestInst(SXTB(X15, W1), asm => asm.SXTB(X15, W1), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X15, W1");
+        TestInst(SXTB(XZR, W1), asm => asm.SXTB(XZR, W1), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB XZR, W1");
+        TestInst(SXTB(X0, W16), asm => asm.SXTB(X0, W16), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X0, W16");
+        TestInst(SXTB(X15, W16), asm => asm.SXTB(X15, W16), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X15, W16");
+        TestInst(SXTB(XZR, W16), asm => asm.SXTB(XZR, W16), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB XZR, W16");
+        TestInst(SXTB(X0, WZR), asm => asm.SXTB(X0, WZR), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X0, WZR");
+        TestInst(SXTB(X15, WZR), asm => asm.SXTB(X15, WZR), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB X15, WZR");
+        TestInst(SXTB(XZR, WZR), asm => asm.SXTB(XZR, WZR), Arm64InstructionId.SXTB_sbfm_64m_bitfield, Arm64Mnemonic.SXTB, "SXTB XZR, WZR");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STSMAX_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STSMAX_ldsmax_32_memop_0()
     {
-        TestInst(STSMAX(W0, _[X2]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX W0, [X2]");
-        TestInst(STSMAX(W15, _[X2]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX W15, [X2]");
-        TestInst(STSMAX(WZR, _[X2]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX WZR, [X2]");
+        TestInst(STSMAX(W0, _[X2]), asm => asm.STSMAX(W0, _[X2]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX W0, [X2]");
+        TestInst(STSMAX(W15, _[X2]), asm => asm.STSMAX(W15, _[X2]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX W15, [X2]");
+        TestInst(STSMAX(WZR, _[X2]), asm => asm.STSMAX(WZR, _[X2]), Arm64InstructionId.STSMAX_ldsmax_32_memop, Arm64Mnemonic.STSMAX, "STSMAX WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STSMAX_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STSMAX_ldsmax_64_memop_1()
     {
-        TestInst(STSMAX(X0, _[X2]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX X0, [X2]");
-        TestInst(STSMAX(X15, _[X2]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX X15, [X2]");
-        TestInst(STSMAX(XZR, _[X2]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX XZR, [X2]");
+        TestInst(STSMAX(X0, _[X2]), asm => asm.STSMAX(X0, _[X2]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX X0, [X2]");
+        TestInst(STSMAX(X15, _[X2]), asm => asm.STSMAX(X15, _[X2]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX X15, [X2]");
+        TestInst(STSMAX(XZR, _[X2]), asm => asm.STSMAX(XZR, _[X2]), Arm64InstructionId.STSMAX_ldsmax_64_memop, Arm64Mnemonic.STSMAX, "STSMAX XZR, [X2]");
     }
 }

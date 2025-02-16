@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Fpsimd;
@@ -23,8 +22,8 @@ public class Arm64InstructionFactoryTests_LDAPUR_Fpsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDAPUR_b_ldapstl_simd_0()
     {
-        TestInst(LDAPUR(B0, _[X2, 5]), Arm64InstructionId.LDAPUR_b_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR B0, [X2, #5]");
-        TestInst(LDAPUR(B31, _[X2, 5]), Arm64InstructionId.LDAPUR_b_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR B31, [X2, #5]");
+        TestInst(LDAPUR(B0, _[X2, 5]), asm => asm.LDAPUR(B0, _[X2, 5]), Arm64InstructionId.LDAPUR_b_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR B0, [X2, #5]");
+        TestInst(LDAPUR(B31, _[X2, 5]), asm => asm.LDAPUR(B31, _[X2, 5]), Arm64InstructionId.LDAPUR_b_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR B31, [X2, #5]");
     }
     
     /// <summary>
@@ -33,8 +32,8 @@ public class Arm64InstructionFactoryTests_LDAPUR_Fpsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDAPUR_h_ldapstl_simd_1()
     {
-        TestInst(LDAPUR(H0, _[X2, 5]), Arm64InstructionId.LDAPUR_h_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR H0, [X2, #5]");
-        TestInst(LDAPUR(H31, _[X2, 5]), Arm64InstructionId.LDAPUR_h_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR H31, [X2, #5]");
+        TestInst(LDAPUR(H0, _[X2, 5]), asm => asm.LDAPUR(H0, _[X2, 5]), Arm64InstructionId.LDAPUR_h_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR H0, [X2, #5]");
+        TestInst(LDAPUR(H31, _[X2, 5]), asm => asm.LDAPUR(H31, _[X2, 5]), Arm64InstructionId.LDAPUR_h_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR H31, [X2, #5]");
     }
     
     /// <summary>
@@ -43,8 +42,8 @@ public class Arm64InstructionFactoryTests_LDAPUR_Fpsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDAPUR_s_ldapstl_simd_2()
     {
-        TestInst(LDAPUR(S0, _[X2, 5]), Arm64InstructionId.LDAPUR_s_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR S0, [X2, #5]");
-        TestInst(LDAPUR(S31, _[X2, 5]), Arm64InstructionId.LDAPUR_s_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR S31, [X2, #5]");
+        TestInst(LDAPUR(S0, _[X2, 5]), asm => asm.LDAPUR(S0, _[X2, 5]), Arm64InstructionId.LDAPUR_s_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR S0, [X2, #5]");
+        TestInst(LDAPUR(S31, _[X2, 5]), asm => asm.LDAPUR(S31, _[X2, 5]), Arm64InstructionId.LDAPUR_s_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR S31, [X2, #5]");
     }
     
     /// <summary>
@@ -53,8 +52,8 @@ public class Arm64InstructionFactoryTests_LDAPUR_Fpsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDAPUR_d_ldapstl_simd_3()
     {
-        TestInst(LDAPUR(D0, _[X2, 5]), Arm64InstructionId.LDAPUR_d_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR D0, [X2, #5]");
-        TestInst(LDAPUR(D31, _[X2, 5]), Arm64InstructionId.LDAPUR_d_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR D31, [X2, #5]");
+        TestInst(LDAPUR(D0, _[X2, 5]), asm => asm.LDAPUR(D0, _[X2, 5]), Arm64InstructionId.LDAPUR_d_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR D0, [X2, #5]");
+        TestInst(LDAPUR(D31, _[X2, 5]), asm => asm.LDAPUR(D31, _[X2, 5]), Arm64InstructionId.LDAPUR_d_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR D31, [X2, #5]");
     }
     
     /// <summary>
@@ -63,7 +62,7 @@ public class Arm64InstructionFactoryTests_LDAPUR_Fpsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDAPUR_q_ldapstl_simd_4()
     {
-        TestInst(LDAPUR(Q0, _[X2, 5]), Arm64InstructionId.LDAPUR_q_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR Q0, [X2, #5]");
-        TestInst(LDAPUR(Q31, _[X2, 5]), Arm64InstructionId.LDAPUR_q_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR Q31, [X2, #5]");
+        TestInst(LDAPUR(Q0, _[X2, 5]), asm => asm.LDAPUR(Q0, _[X2, 5]), Arm64InstructionId.LDAPUR_q_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR Q0, [X2, #5]");
+        TestInst(LDAPUR(Q31, _[X2, 5]), asm => asm.LDAPUR(Q31, _[X2, 5]), Arm64InstructionId.LDAPUR_q_ldapstl_simd, Arm64Mnemonic.LDAPUR, "LDAPUR Q31, [X2, #5]");
     }
 }

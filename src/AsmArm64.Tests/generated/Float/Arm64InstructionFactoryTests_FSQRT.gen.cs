@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FSQRT_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_FSQRT_h_floatdp1_0()
     {
-        TestInst(FSQRT(H0, H1), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H0, H1");
-        TestInst(FSQRT(H31, H1), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H31, H1");
-        TestInst(FSQRT(H0, H31), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H0, H31");
-        TestInst(FSQRT(H31, H31), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H31, H31");
+        TestInst(FSQRT(H0, H1), asm => asm.FSQRT(H0, H1), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H0, H1");
+        TestInst(FSQRT(H31, H1), asm => asm.FSQRT(H31, H1), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H31, H1");
+        TestInst(FSQRT(H0, H31), asm => asm.FSQRT(H0, H31), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H0, H31");
+        TestInst(FSQRT(H31, H31), asm => asm.FSQRT(H31, H31), Arm64InstructionId.FSQRT_h_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT H31, H31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FSQRT_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_FSQRT_s_floatdp1_1()
     {
-        TestInst(FSQRT(S0, S1), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S0, S1");
-        TestInst(FSQRT(S31, S1), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S31, S1");
-        TestInst(FSQRT(S0, S31), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S0, S31");
-        TestInst(FSQRT(S31, S31), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S31, S31");
+        TestInst(FSQRT(S0, S1), asm => asm.FSQRT(S0, S1), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S0, S1");
+        TestInst(FSQRT(S31, S1), asm => asm.FSQRT(S31, S1), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S31, S1");
+        TestInst(FSQRT(S0, S31), asm => asm.FSQRT(S0, S31), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S0, S31");
+        TestInst(FSQRT(S31, S31), asm => asm.FSQRT(S31, S31), Arm64InstructionId.FSQRT_s_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT S31, S31");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_FSQRT_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_FSQRT_d_floatdp1_2()
     {
-        TestInst(FSQRT(D0, D1), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D0, D1");
-        TestInst(FSQRT(D31, D1), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D31, D1");
-        TestInst(FSQRT(D0, D31), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D0, D31");
-        TestInst(FSQRT(D31, D31), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D31, D31");
+        TestInst(FSQRT(D0, D1), asm => asm.FSQRT(D0, D1), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D0, D1");
+        TestInst(FSQRT(D31, D1), asm => asm.FSQRT(D31, D1), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D31, D1");
+        TestInst(FSQRT(D0, D31), asm => asm.FSQRT(D0, D31), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D0, D31");
+        TestInst(FSQRT(D31, D31), asm => asm.FSQRT(D31, D31), Arm64InstructionId.FSQRT_d_floatdp1, Arm64Mnemonic.FSQRT, "FSQRT D31, D31");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_PACDZB_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_PACDZB_64z_dp_1src_0()
     {
-        TestInst(PACDZB(X0), Arm64InstructionId.PACDZB_64z_dp_1src, Arm64Mnemonic.PACDZB, "PACDZB X0");
-        TestInst(PACDZB(X15), Arm64InstructionId.PACDZB_64z_dp_1src, Arm64Mnemonic.PACDZB, "PACDZB X15");
-        TestInst(PACDZB(XZR), Arm64InstructionId.PACDZB_64z_dp_1src, Arm64Mnemonic.PACDZB, "PACDZB XZR");
+        TestInst(PACDZB(X0), asm => asm.PACDZB(X0), Arm64InstructionId.PACDZB_64z_dp_1src, Arm64Mnemonic.PACDZB, "PACDZB X0");
+        TestInst(PACDZB(X15), asm => asm.PACDZB(X15), Arm64InstructionId.PACDZB_64z_dp_1src, Arm64Mnemonic.PACDZB, "PACDZB X15");
+        TestInst(PACDZB(XZR), asm => asm.PACDZB(XZR), Arm64InstructionId.PACDZB_64z_dp_1src, Arm64Mnemonic.PACDZB, "PACDZB XZR");
     }
 }

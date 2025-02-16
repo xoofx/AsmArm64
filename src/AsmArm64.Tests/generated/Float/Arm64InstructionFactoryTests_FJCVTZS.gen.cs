@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,11 +23,11 @@ public class Arm64InstructionFactoryTests_FJCVTZS_Float : Arm64InstructionFactor
     [TestMethod]
     public void Test_FJCVTZS_32d_float2int_0()
     {
-        TestInst(FJCVTZS(W0, D1), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W0, D1");
-        TestInst(FJCVTZS(W15, D1), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W15, D1");
-        TestInst(FJCVTZS(WZR, D1), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS WZR, D1");
-        TestInst(FJCVTZS(W0, D31), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W0, D31");
-        TestInst(FJCVTZS(W15, D31), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W15, D31");
-        TestInst(FJCVTZS(WZR, D31), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS WZR, D31");
+        TestInst(FJCVTZS(W0, D1), asm => asm.FJCVTZS(W0, D1), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W0, D1");
+        TestInst(FJCVTZS(W15, D1), asm => asm.FJCVTZS(W15, D1), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W15, D1");
+        TestInst(FJCVTZS(WZR, D1), asm => asm.FJCVTZS(WZR, D1), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS WZR, D1");
+        TestInst(FJCVTZS(W0, D31), asm => asm.FJCVTZS(W0, D31), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W0, D31");
+        TestInst(FJCVTZS(W15, D31), asm => asm.FJCVTZS(W15, D31), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS W15, D31");
+        TestInst(FJCVTZS(WZR, D31), asm => asm.FJCVTZS(WZR, D31), Arm64InstructionId.FJCVTZS_32d_float2int, Arm64Mnemonic.FJCVTZS, "FJCVTZS WZR, D31");
     }
 }

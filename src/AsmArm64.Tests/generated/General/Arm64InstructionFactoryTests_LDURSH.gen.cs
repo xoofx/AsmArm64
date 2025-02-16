@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDURSH_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDURSH_32_ldst_unscaled_0()
     {
-        TestInst(LDURSH(W0, _[X2, 5]), Arm64InstructionId.LDURSH_32_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH W0, [X2, #5]");
-        TestInst(LDURSH(W15, _[X2, 5]), Arm64InstructionId.LDURSH_32_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH W15, [X2, #5]");
-        TestInst(LDURSH(WZR, _[X2, 5]), Arm64InstructionId.LDURSH_32_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH WZR, [X2, #5]");
+        TestInst(LDURSH(W0, _[X2, 5]), asm => asm.LDURSH(W0, _[X2, 5]), Arm64InstructionId.LDURSH_32_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH W0, [X2, #5]");
+        TestInst(LDURSH(W15, _[X2, 5]), asm => asm.LDURSH(W15, _[X2, 5]), Arm64InstructionId.LDURSH_32_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH W15, [X2, #5]");
+        TestInst(LDURSH(WZR, _[X2, 5]), asm => asm.LDURSH(WZR, _[X2, 5]), Arm64InstructionId.LDURSH_32_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_LDURSH_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDURSH_64_ldst_unscaled_1()
     {
-        TestInst(LDURSH(X0, _[X2, 5]), Arm64InstructionId.LDURSH_64_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH X0, [X2, #5]");
-        TestInst(LDURSH(X15, _[X2, 5]), Arm64InstructionId.LDURSH_64_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH X15, [X2, #5]");
-        TestInst(LDURSH(XZR, _[X2, 5]), Arm64InstructionId.LDURSH_64_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH XZR, [X2, #5]");
+        TestInst(LDURSH(X0, _[X2, 5]), asm => asm.LDURSH(X0, _[X2, 5]), Arm64InstructionId.LDURSH_64_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH X0, [X2, #5]");
+        TestInst(LDURSH(X15, _[X2, 5]), asm => asm.LDURSH(X15, _[X2, 5]), Arm64InstructionId.LDURSH_64_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH X15, [X2, #5]");
+        TestInst(LDURSH(XZR, _[X2, 5]), asm => asm.LDURSH(XZR, _[X2, 5]), Arm64InstructionId.LDURSH_64_ldst_unscaled, Arm64Mnemonic.LDURSH, "LDURSH XZR, [X2, #5]");
     }
 }

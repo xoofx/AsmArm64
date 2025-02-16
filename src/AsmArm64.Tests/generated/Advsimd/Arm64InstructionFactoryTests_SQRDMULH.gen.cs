@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asisdelem_r_0()
     {
-        TestInst(SQRDMULH(H1, H2, V2.H[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H2, V2.H[0]");
-        TestInst(SQRDMULH(H31, H2, V2.H[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H2, V2.H[0]");
-        TestInst(SQRDMULH(H1, H0, V2.H[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H0, V2.H[0]");
-        TestInst(SQRDMULH(H31, H0, V2.H[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H0, V2.H[0]");
-        TestInst(SQRDMULH(H1, H2, V0.H[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H2, V0.H[1]");
-        TestInst(SQRDMULH(H31, H2, V0.H[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H2, V0.H[1]");
-        TestInst(SQRDMULH(H1, H0, V0.H[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H0, V0.H[1]");
-        TestInst(SQRDMULH(H31, H0, V0.H[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H0, V0.H[1]");
+        TestInst(SQRDMULH(H1, H2, V2.H[0]), asm => asm.SQRDMULH(H1, H2, V2.H[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H2, V2.H[0]");
+        TestInst(SQRDMULH(H31, H2, V2.H[0]), asm => asm.SQRDMULH(H31, H2, V2.H[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H2, V2.H[0]");
+        TestInst(SQRDMULH(H1, H0, V2.H[0]), asm => asm.SQRDMULH(H1, H0, V2.H[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H0, V2.H[0]");
+        TestInst(SQRDMULH(H31, H0, V2.H[0]), asm => asm.SQRDMULH(H31, H0, V2.H[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H0, V2.H[0]");
+        TestInst(SQRDMULH(H1, H2, V0.H[1]), asm => asm.SQRDMULH(H1, H2, V0.H[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H2, V0.H[1]");
+        TestInst(SQRDMULH(H31, H2, V0.H[1]), asm => asm.SQRDMULH(H31, H2, V0.H[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H2, V0.H[1]");
+        TestInst(SQRDMULH(H1, H0, V0.H[1]), asm => asm.SQRDMULH(H1, H0, V0.H[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H0, V0.H[1]");
+        TestInst(SQRDMULH(H31, H0, V0.H[1]), asm => asm.SQRDMULH(H31, H0, V0.H[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H0, V0.H[1]");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asisdelem_r_1()
     {
-        TestInst(SQRDMULH(S1, S2, V2.S[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S2, V2.S[0]");
-        TestInst(SQRDMULH(S31, S2, V2.S[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S2, V2.S[0]");
-        TestInst(SQRDMULH(S1, S0, V2.S[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S0, V2.S[0]");
-        TestInst(SQRDMULH(S31, S0, V2.S[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S0, V2.S[0]");
-        TestInst(SQRDMULH(S1, S2, V0.S[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S2, V0.S[1]");
-        TestInst(SQRDMULH(S31, S2, V0.S[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S2, V0.S[1]");
-        TestInst(SQRDMULH(S1, S0, V0.S[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S0, V0.S[1]");
-        TestInst(SQRDMULH(S31, S0, V0.S[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S0, V0.S[1]");
+        TestInst(SQRDMULH(S1, S2, V2.S[0]), asm => asm.SQRDMULH(S1, S2, V2.S[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S2, V2.S[0]");
+        TestInst(SQRDMULH(S31, S2, V2.S[0]), asm => asm.SQRDMULH(S31, S2, V2.S[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S2, V2.S[0]");
+        TestInst(SQRDMULH(S1, S0, V2.S[0]), asm => asm.SQRDMULH(S1, S0, V2.S[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S0, V2.S[0]");
+        TestInst(SQRDMULH(S31, S0, V2.S[0]), asm => asm.SQRDMULH(S31, S0, V2.S[0]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S0, V2.S[0]");
+        TestInst(SQRDMULH(S1, S2, V0.S[1]), asm => asm.SQRDMULH(S1, S2, V0.S[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S2, V0.S[1]");
+        TestInst(SQRDMULH(S31, S2, V0.S[1]), asm => asm.SQRDMULH(S31, S2, V0.S[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S2, V0.S[1]");
+        TestInst(SQRDMULH(S1, S0, V0.S[1]), asm => asm.SQRDMULH(S1, S0, V0.S[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S0, V0.S[1]");
+        TestInst(SQRDMULH(S31, S0, V0.S[1]), asm => asm.SQRDMULH(S31, S0, V0.S[1]), Arm64InstructionId.SQRDMULH_asisdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S0, V0.S[1]");
     }
     
     /// <summary>
@@ -56,14 +55,14 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asimdelem_r_2()
     {
-        TestInst(SQRDMULH(V0.T_4H, V1.T_4H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V1.4H, V2.H[0]");
-        TestInst(SQRDMULH(V30.T_4H, V1.T_4H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V1.4H, V2.H[0]");
-        TestInst(SQRDMULH(V0.T_4H, V31.T_4H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V31.4H, V2.H[0]");
-        TestInst(SQRDMULH(V30.T_4H, V31.T_4H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V31.4H, V2.H[0]");
-        TestInst(SQRDMULH(V0.T_4H, V1.T_4H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V1.4H, V0.H[1]");
-        TestInst(SQRDMULH(V30.T_4H, V1.T_4H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V1.4H, V0.H[1]");
-        TestInst(SQRDMULH(V0.T_4H, V31.T_4H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V31.4H, V0.H[1]");
-        TestInst(SQRDMULH(V30.T_4H, V31.T_4H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V31.4H, V0.H[1]");
+        TestInst(SQRDMULH(V0.T_4H, V1.T_4H, V2.H[0]), asm => asm.SQRDMULH(V0.T_4H, V1.T_4H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V1.4H, V2.H[0]");
+        TestInst(SQRDMULH(V30.T_4H, V1.T_4H, V2.H[0]), asm => asm.SQRDMULH(V30.T_4H, V1.T_4H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V1.4H, V2.H[0]");
+        TestInst(SQRDMULH(V0.T_4H, V31.T_4H, V2.H[0]), asm => asm.SQRDMULH(V0.T_4H, V31.T_4H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V31.4H, V2.H[0]");
+        TestInst(SQRDMULH(V30.T_4H, V31.T_4H, V2.H[0]), asm => asm.SQRDMULH(V30.T_4H, V31.T_4H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V31.4H, V2.H[0]");
+        TestInst(SQRDMULH(V0.T_4H, V1.T_4H, V0.H[1]), asm => asm.SQRDMULH(V0.T_4H, V1.T_4H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V1.4H, V0.H[1]");
+        TestInst(SQRDMULH(V30.T_4H, V1.T_4H, V0.H[1]), asm => asm.SQRDMULH(V30.T_4H, V1.T_4H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V1.4H, V0.H[1]");
+        TestInst(SQRDMULH(V0.T_4H, V31.T_4H, V0.H[1]), asm => asm.SQRDMULH(V0.T_4H, V31.T_4H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V31.4H, V0.H[1]");
+        TestInst(SQRDMULH(V30.T_4H, V31.T_4H, V0.H[1]), asm => asm.SQRDMULH(V30.T_4H, V31.T_4H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V31.4H, V0.H[1]");
     }
     
     /// <summary>
@@ -72,14 +71,14 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asimdelem_r_3()
     {
-        TestInst(SQRDMULH(V0.T_8H, V1.T_8H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V1.8H, V2.H[0]");
-        TestInst(SQRDMULH(V30.T_8H, V1.T_8H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V1.8H, V2.H[0]");
-        TestInst(SQRDMULH(V0.T_8H, V31.T_8H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V31.8H, V2.H[0]");
-        TestInst(SQRDMULH(V30.T_8H, V31.T_8H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V31.8H, V2.H[0]");
-        TestInst(SQRDMULH(V0.T_8H, V1.T_8H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V1.8H, V0.H[1]");
-        TestInst(SQRDMULH(V30.T_8H, V1.T_8H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V1.8H, V0.H[1]");
-        TestInst(SQRDMULH(V0.T_8H, V31.T_8H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V31.8H, V0.H[1]");
-        TestInst(SQRDMULH(V30.T_8H, V31.T_8H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V31.8H, V0.H[1]");
+        TestInst(SQRDMULH(V0.T_8H, V1.T_8H, V2.H[0]), asm => asm.SQRDMULH(V0.T_8H, V1.T_8H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V1.8H, V2.H[0]");
+        TestInst(SQRDMULH(V30.T_8H, V1.T_8H, V2.H[0]), asm => asm.SQRDMULH(V30.T_8H, V1.T_8H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V1.8H, V2.H[0]");
+        TestInst(SQRDMULH(V0.T_8H, V31.T_8H, V2.H[0]), asm => asm.SQRDMULH(V0.T_8H, V31.T_8H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V31.8H, V2.H[0]");
+        TestInst(SQRDMULH(V30.T_8H, V31.T_8H, V2.H[0]), asm => asm.SQRDMULH(V30.T_8H, V31.T_8H, V2.H[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V31.8H, V2.H[0]");
+        TestInst(SQRDMULH(V0.T_8H, V1.T_8H, V0.H[1]), asm => asm.SQRDMULH(V0.T_8H, V1.T_8H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V1.8H, V0.H[1]");
+        TestInst(SQRDMULH(V30.T_8H, V1.T_8H, V0.H[1]), asm => asm.SQRDMULH(V30.T_8H, V1.T_8H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V1.8H, V0.H[1]");
+        TestInst(SQRDMULH(V0.T_8H, V31.T_8H, V0.H[1]), asm => asm.SQRDMULH(V0.T_8H, V31.T_8H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V31.8H, V0.H[1]");
+        TestInst(SQRDMULH(V30.T_8H, V31.T_8H, V0.H[1]), asm => asm.SQRDMULH(V30.T_8H, V31.T_8H, V0.H[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V31.8H, V0.H[1]");
     }
     
     /// <summary>
@@ -88,14 +87,14 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asimdelem_r_4()
     {
-        TestInst(SQRDMULH(V0.T_2S, V1.T_2S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V1.2S, V2.S[0]");
-        TestInst(SQRDMULH(V30.T_2S, V1.T_2S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V1.2S, V2.S[0]");
-        TestInst(SQRDMULH(V0.T_2S, V31.T_2S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V31.2S, V2.S[0]");
-        TestInst(SQRDMULH(V30.T_2S, V31.T_2S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V31.2S, V2.S[0]");
-        TestInst(SQRDMULH(V0.T_2S, V1.T_2S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V1.2S, V0.S[1]");
-        TestInst(SQRDMULH(V30.T_2S, V1.T_2S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V1.2S, V0.S[1]");
-        TestInst(SQRDMULH(V0.T_2S, V31.T_2S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V31.2S, V0.S[1]");
-        TestInst(SQRDMULH(V30.T_2S, V31.T_2S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V31.2S, V0.S[1]");
+        TestInst(SQRDMULH(V0.T_2S, V1.T_2S, V2.S[0]), asm => asm.SQRDMULH(V0.T_2S, V1.T_2S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V1.2S, V2.S[0]");
+        TestInst(SQRDMULH(V30.T_2S, V1.T_2S, V2.S[0]), asm => asm.SQRDMULH(V30.T_2S, V1.T_2S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V1.2S, V2.S[0]");
+        TestInst(SQRDMULH(V0.T_2S, V31.T_2S, V2.S[0]), asm => asm.SQRDMULH(V0.T_2S, V31.T_2S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V31.2S, V2.S[0]");
+        TestInst(SQRDMULH(V30.T_2S, V31.T_2S, V2.S[0]), asm => asm.SQRDMULH(V30.T_2S, V31.T_2S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V31.2S, V2.S[0]");
+        TestInst(SQRDMULH(V0.T_2S, V1.T_2S, V0.S[1]), asm => asm.SQRDMULH(V0.T_2S, V1.T_2S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V1.2S, V0.S[1]");
+        TestInst(SQRDMULH(V30.T_2S, V1.T_2S, V0.S[1]), asm => asm.SQRDMULH(V30.T_2S, V1.T_2S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V1.2S, V0.S[1]");
+        TestInst(SQRDMULH(V0.T_2S, V31.T_2S, V0.S[1]), asm => asm.SQRDMULH(V0.T_2S, V31.T_2S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V31.2S, V0.S[1]");
+        TestInst(SQRDMULH(V30.T_2S, V31.T_2S, V0.S[1]), asm => asm.SQRDMULH(V30.T_2S, V31.T_2S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V31.2S, V0.S[1]");
     }
     
     /// <summary>
@@ -104,14 +103,14 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asimdelem_r_5()
     {
-        TestInst(SQRDMULH(V0.T_4S, V1.T_4S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V1.4S, V2.S[0]");
-        TestInst(SQRDMULH(V30.T_4S, V1.T_4S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V1.4S, V2.S[0]");
-        TestInst(SQRDMULH(V0.T_4S, V31.T_4S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V31.4S, V2.S[0]");
-        TestInst(SQRDMULH(V30.T_4S, V31.T_4S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V31.4S, V2.S[0]");
-        TestInst(SQRDMULH(V0.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V1.4S, V0.S[1]");
-        TestInst(SQRDMULH(V30.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V1.4S, V0.S[1]");
-        TestInst(SQRDMULH(V0.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V31.4S, V0.S[1]");
-        TestInst(SQRDMULH(V30.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V31.4S, V0.S[1]");
+        TestInst(SQRDMULH(V0.T_4S, V1.T_4S, V2.S[0]), asm => asm.SQRDMULH(V0.T_4S, V1.T_4S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V1.4S, V2.S[0]");
+        TestInst(SQRDMULH(V30.T_4S, V1.T_4S, V2.S[0]), asm => asm.SQRDMULH(V30.T_4S, V1.T_4S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V1.4S, V2.S[0]");
+        TestInst(SQRDMULH(V0.T_4S, V31.T_4S, V2.S[0]), asm => asm.SQRDMULH(V0.T_4S, V31.T_4S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V31.4S, V2.S[0]");
+        TestInst(SQRDMULH(V30.T_4S, V31.T_4S, V2.S[0]), asm => asm.SQRDMULH(V30.T_4S, V31.T_4S, V2.S[0]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V31.4S, V2.S[0]");
+        TestInst(SQRDMULH(V0.T_4S, V1.T_4S, V0.S[1]), asm => asm.SQRDMULH(V0.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V1.4S, V0.S[1]");
+        TestInst(SQRDMULH(V30.T_4S, V1.T_4S, V0.S[1]), asm => asm.SQRDMULH(V30.T_4S, V1.T_4S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V1.4S, V0.S[1]");
+        TestInst(SQRDMULH(V0.T_4S, V31.T_4S, V0.S[1]), asm => asm.SQRDMULH(V0.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V31.4S, V0.S[1]");
+        TestInst(SQRDMULH(V30.T_4S, V31.T_4S, V0.S[1]), asm => asm.SQRDMULH(V30.T_4S, V31.T_4S, V0.S[1]), Arm64InstructionId.SQRDMULH_asimdelem_r, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V31.4S, V0.S[1]");
     }
     
     /// <summary>
@@ -120,14 +119,14 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asisdsame_only_6()
     {
-        TestInst(SQRDMULH(H1, H2, H3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H2, H3");
-        TestInst(SQRDMULH(H31, H2, H3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H2, H3");
-        TestInst(SQRDMULH(H1, H0, H3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H0, H3");
-        TestInst(SQRDMULH(H31, H0, H3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H0, H3");
-        TestInst(SQRDMULH(H1, H2, H1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H2, H1");
-        TestInst(SQRDMULH(H31, H2, H1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H2, H1");
-        TestInst(SQRDMULH(H1, H0, H1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H0, H1");
-        TestInst(SQRDMULH(H31, H0, H1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H0, H1");
+        TestInst(SQRDMULH(H1, H2, H3), asm => asm.SQRDMULH(H1, H2, H3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H2, H3");
+        TestInst(SQRDMULH(H31, H2, H3), asm => asm.SQRDMULH(H31, H2, H3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H2, H3");
+        TestInst(SQRDMULH(H1, H0, H3), asm => asm.SQRDMULH(H1, H0, H3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H0, H3");
+        TestInst(SQRDMULH(H31, H0, H3), asm => asm.SQRDMULH(H31, H0, H3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H0, H3");
+        TestInst(SQRDMULH(H1, H2, H1), asm => asm.SQRDMULH(H1, H2, H1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H2, H1");
+        TestInst(SQRDMULH(H31, H2, H1), asm => asm.SQRDMULH(H31, H2, H1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H2, H1");
+        TestInst(SQRDMULH(H1, H0, H1), asm => asm.SQRDMULH(H1, H0, H1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H1, H0, H1");
+        TestInst(SQRDMULH(H31, H0, H1), asm => asm.SQRDMULH(H31, H0, H1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH H31, H0, H1");
     }
     
     /// <summary>
@@ -136,14 +135,14 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asisdsame_only_7()
     {
-        TestInst(SQRDMULH(S1, S2, S3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S2, S3");
-        TestInst(SQRDMULH(S31, S2, S3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S2, S3");
-        TestInst(SQRDMULH(S1, S0, S3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S0, S3");
-        TestInst(SQRDMULH(S31, S0, S3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S0, S3");
-        TestInst(SQRDMULH(S1, S2, S1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S2, S1");
-        TestInst(SQRDMULH(S31, S2, S1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S2, S1");
-        TestInst(SQRDMULH(S1, S0, S1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S0, S1");
-        TestInst(SQRDMULH(S31, S0, S1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S0, S1");
+        TestInst(SQRDMULH(S1, S2, S3), asm => asm.SQRDMULH(S1, S2, S3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S2, S3");
+        TestInst(SQRDMULH(S31, S2, S3), asm => asm.SQRDMULH(S31, S2, S3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S2, S3");
+        TestInst(SQRDMULH(S1, S0, S3), asm => asm.SQRDMULH(S1, S0, S3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S0, S3");
+        TestInst(SQRDMULH(S31, S0, S3), asm => asm.SQRDMULH(S31, S0, S3), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S0, S3");
+        TestInst(SQRDMULH(S1, S2, S1), asm => asm.SQRDMULH(S1, S2, S1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S2, S1");
+        TestInst(SQRDMULH(S31, S2, S1), asm => asm.SQRDMULH(S31, S2, S1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S2, S1");
+        TestInst(SQRDMULH(S1, S0, S1), asm => asm.SQRDMULH(S1, S0, S1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S1, S0, S1");
+        TestInst(SQRDMULH(S31, S0, S1), asm => asm.SQRDMULH(S31, S0, S1), Arm64InstructionId.SQRDMULH_asisdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH S31, S0, S1");
     }
     
     /// <summary>
@@ -152,14 +151,14 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asimdsame_only_8()
     {
-        TestInst(SQRDMULH(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V1.4H, V2.4H");
-        TestInst(SQRDMULH(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V1.4H, V2.4H");
-        TestInst(SQRDMULH(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V31.4H, V2.4H");
-        TestInst(SQRDMULH(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V31.4H, V2.4H");
-        TestInst(SQRDMULH(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V1.4H, V0.4H");
-        TestInst(SQRDMULH(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V1.4H, V0.4H");
-        TestInst(SQRDMULH(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V31.4H, V0.4H");
-        TestInst(SQRDMULH(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V31.4H, V0.4H");
+        TestInst(SQRDMULH(V0.T_4H, V1.T_4H, V2.T_4H), asm => asm.SQRDMULH(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V1.4H, V2.4H");
+        TestInst(SQRDMULH(V30.T_4H, V1.T_4H, V2.T_4H), asm => asm.SQRDMULH(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V1.4H, V2.4H");
+        TestInst(SQRDMULH(V0.T_4H, V31.T_4H, V2.T_4H), asm => asm.SQRDMULH(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V31.4H, V2.4H");
+        TestInst(SQRDMULH(V30.T_4H, V31.T_4H, V2.T_4H), asm => asm.SQRDMULH(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V31.4H, V2.4H");
+        TestInst(SQRDMULH(V0.T_4H, V1.T_4H, V0.T_4H), asm => asm.SQRDMULH(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V1.4H, V0.4H");
+        TestInst(SQRDMULH(V30.T_4H, V1.T_4H, V0.T_4H), asm => asm.SQRDMULH(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V1.4H, V0.4H");
+        TestInst(SQRDMULH(V0.T_4H, V31.T_4H, V0.T_4H), asm => asm.SQRDMULH(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4H, V31.4H, V0.4H");
+        TestInst(SQRDMULH(V30.T_4H, V31.T_4H, V0.T_4H), asm => asm.SQRDMULH(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4H, V31.4H, V0.4H");
     }
     
     /// <summary>
@@ -168,14 +167,14 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asimdsame_only_9()
     {
-        TestInst(SQRDMULH(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V1.8H, V2.8H");
-        TestInst(SQRDMULH(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V1.8H, V2.8H");
-        TestInst(SQRDMULH(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V31.8H, V2.8H");
-        TestInst(SQRDMULH(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V31.8H, V2.8H");
-        TestInst(SQRDMULH(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V1.8H, V0.8H");
-        TestInst(SQRDMULH(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V1.8H, V0.8H");
-        TestInst(SQRDMULH(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V31.8H, V0.8H");
-        TestInst(SQRDMULH(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V31.8H, V0.8H");
+        TestInst(SQRDMULH(V0.T_8H, V1.T_8H, V2.T_8H), asm => asm.SQRDMULH(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V1.8H, V2.8H");
+        TestInst(SQRDMULH(V30.T_8H, V1.T_8H, V2.T_8H), asm => asm.SQRDMULH(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V1.8H, V2.8H");
+        TestInst(SQRDMULH(V0.T_8H, V31.T_8H, V2.T_8H), asm => asm.SQRDMULH(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V31.8H, V2.8H");
+        TestInst(SQRDMULH(V30.T_8H, V31.T_8H, V2.T_8H), asm => asm.SQRDMULH(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V31.8H, V2.8H");
+        TestInst(SQRDMULH(V0.T_8H, V1.T_8H, V0.T_8H), asm => asm.SQRDMULH(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V1.8H, V0.8H");
+        TestInst(SQRDMULH(V30.T_8H, V1.T_8H, V0.T_8H), asm => asm.SQRDMULH(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V1.8H, V0.8H");
+        TestInst(SQRDMULH(V0.T_8H, V31.T_8H, V0.T_8H), asm => asm.SQRDMULH(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.8H, V31.8H, V0.8H");
+        TestInst(SQRDMULH(V30.T_8H, V31.T_8H, V0.T_8H), asm => asm.SQRDMULH(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.8H, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -184,14 +183,14 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asimdsame_only_10()
     {
-        TestInst(SQRDMULH(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V1.2S, V2.2S");
-        TestInst(SQRDMULH(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V1.2S, V2.2S");
-        TestInst(SQRDMULH(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V31.2S, V2.2S");
-        TestInst(SQRDMULH(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V31.2S, V2.2S");
-        TestInst(SQRDMULH(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V1.2S, V0.2S");
-        TestInst(SQRDMULH(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V1.2S, V0.2S");
-        TestInst(SQRDMULH(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V31.2S, V0.2S");
-        TestInst(SQRDMULH(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V31.2S, V0.2S");
+        TestInst(SQRDMULH(V0.T_2S, V1.T_2S, V2.T_2S), asm => asm.SQRDMULH(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V1.2S, V2.2S");
+        TestInst(SQRDMULH(V30.T_2S, V1.T_2S, V2.T_2S), asm => asm.SQRDMULH(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V1.2S, V2.2S");
+        TestInst(SQRDMULH(V0.T_2S, V31.T_2S, V2.T_2S), asm => asm.SQRDMULH(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V31.2S, V2.2S");
+        TestInst(SQRDMULH(V30.T_2S, V31.T_2S, V2.T_2S), asm => asm.SQRDMULH(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V31.2S, V2.2S");
+        TestInst(SQRDMULH(V0.T_2S, V1.T_2S, V0.T_2S), asm => asm.SQRDMULH(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V1.2S, V0.2S");
+        TestInst(SQRDMULH(V30.T_2S, V1.T_2S, V0.T_2S), asm => asm.SQRDMULH(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V1.2S, V0.2S");
+        TestInst(SQRDMULH(V0.T_2S, V31.T_2S, V0.T_2S), asm => asm.SQRDMULH(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.2S, V31.2S, V0.2S");
+        TestInst(SQRDMULH(V30.T_2S, V31.T_2S, V0.T_2S), asm => asm.SQRDMULH(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.2S, V31.2S, V0.2S");
     }
     
     /// <summary>
@@ -200,13 +199,13 @@ public class Arm64InstructionFactoryTests_SQRDMULH_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SQRDMULH_asimdsame_only_11()
     {
-        TestInst(SQRDMULH(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V1.4S, V2.4S");
-        TestInst(SQRDMULH(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V1.4S, V2.4S");
-        TestInst(SQRDMULH(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V31.4S, V2.4S");
-        TestInst(SQRDMULH(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V31.4S, V2.4S");
-        TestInst(SQRDMULH(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V1.4S, V0.4S");
-        TestInst(SQRDMULH(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V1.4S, V0.4S");
-        TestInst(SQRDMULH(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V31.4S, V0.4S");
-        TestInst(SQRDMULH(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V31.4S, V0.4S");
+        TestInst(SQRDMULH(V0.T_4S, V1.T_4S, V2.T_4S), asm => asm.SQRDMULH(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V1.4S, V2.4S");
+        TestInst(SQRDMULH(V30.T_4S, V1.T_4S, V2.T_4S), asm => asm.SQRDMULH(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V1.4S, V2.4S");
+        TestInst(SQRDMULH(V0.T_4S, V31.T_4S, V2.T_4S), asm => asm.SQRDMULH(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V31.4S, V2.4S");
+        TestInst(SQRDMULH(V30.T_4S, V31.T_4S, V2.T_4S), asm => asm.SQRDMULH(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V31.4S, V2.4S");
+        TestInst(SQRDMULH(V0.T_4S, V1.T_4S, V0.T_4S), asm => asm.SQRDMULH(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V1.4S, V0.4S");
+        TestInst(SQRDMULH(V30.T_4S, V1.T_4S, V0.T_4S), asm => asm.SQRDMULH(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V1.4S, V0.4S");
+        TestInst(SQRDMULH(V0.T_4S, V31.T_4S, V0.T_4S), asm => asm.SQRDMULH(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V0.4S, V31.4S, V0.4S");
+        TestInst(SQRDMULH(V30.T_4S, V31.T_4S, V0.T_4S), asm => asm.SQRDMULH(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SQRDMULH_asimdsame_only, Arm64Mnemonic.SQRDMULH, "SQRDMULH V30.4S, V31.4S, V0.4S");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_UDF_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UDF_only_perm_undef_0()
     {
-        TestInst(UDF(5), Arm64InstructionId.UDF_only_perm_undef, Arm64Mnemonic.UDF, "UDF #5");
+        TestInst(UDF(5), asm => asm.UDF(5), Arm64InstructionId.UDF_only_perm_undef, Arm64Mnemonic.UDF, "UDF #5");
     }
 }

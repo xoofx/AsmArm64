@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STSETL_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STSETL_ldsetl_32_memop_0()
     {
-        TestInst(STSETL(W0, _[X2]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL W0, [X2]");
-        TestInst(STSETL(W15, _[X2]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL W15, [X2]");
-        TestInst(STSETL(WZR, _[X2]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL WZR, [X2]");
+        TestInst(STSETL(W0, _[X2]), asm => asm.STSETL(W0, _[X2]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL W0, [X2]");
+        TestInst(STSETL(W15, _[X2]), asm => asm.STSETL(W15, _[X2]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL W15, [X2]");
+        TestInst(STSETL(WZR, _[X2]), asm => asm.STSETL(WZR, _[X2]), Arm64InstructionId.STSETL_ldsetl_32_memop, Arm64Mnemonic.STSETL, "STSETL WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STSETL_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STSETL_ldsetl_64_memop_1()
     {
-        TestInst(STSETL(X0, _[X2]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL X0, [X2]");
-        TestInst(STSETL(X15, _[X2]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL X15, [X2]");
-        TestInst(STSETL(XZR, _[X2]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL XZR, [X2]");
+        TestInst(STSETL(X0, _[X2]), asm => asm.STSETL(X0, _[X2]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL X0, [X2]");
+        TestInst(STSETL(X15, _[X2]), asm => asm.STSETL(X15, _[X2]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL X15, [X2]");
+        TestInst(STSETL(XZR, _[X2]), asm => asm.STSETL(XZR, _[X2]), Arm64InstructionId.STSETL_ldsetl_64_memop, Arm64Mnemonic.STSETL, "STSETL XZR, [X2]");
     }
 }

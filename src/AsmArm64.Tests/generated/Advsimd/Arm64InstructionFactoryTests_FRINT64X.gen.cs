@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FRINT64X_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_FRINT64X_asimdmisc_r_0()
     {
-        TestInst(FRINT64X(V0.T_2S, V1.T_2S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.2S, V1.2S");
-        TestInst(FRINT64X(V30.T_2S, V1.T_2S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.2S, V1.2S");
-        TestInst(FRINT64X(V0.T_2S, V31.T_2S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.2S, V31.2S");
-        TestInst(FRINT64X(V30.T_2S, V31.T_2S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.2S, V31.2S");
+        TestInst(FRINT64X(V0.T_2S, V1.T_2S), asm => asm.FRINT64X(V0.T_2S, V1.T_2S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.2S, V1.2S");
+        TestInst(FRINT64X(V30.T_2S, V1.T_2S), asm => asm.FRINT64X(V30.T_2S, V1.T_2S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.2S, V1.2S");
+        TestInst(FRINT64X(V0.T_2S, V31.T_2S), asm => asm.FRINT64X(V0.T_2S, V31.T_2S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.2S, V31.2S");
+        TestInst(FRINT64X(V30.T_2S, V31.T_2S), asm => asm.FRINT64X(V30.T_2S, V31.T_2S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.2S, V31.2S");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FRINT64X_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_FRINT64X_asimdmisc_r_1()
     {
-        TestInst(FRINT64X(V0.T_4S, V1.T_4S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.4S, V1.4S");
-        TestInst(FRINT64X(V30.T_4S, V1.T_4S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.4S, V1.4S");
-        TestInst(FRINT64X(V0.T_4S, V31.T_4S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.4S, V31.4S");
-        TestInst(FRINT64X(V30.T_4S, V31.T_4S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.4S, V31.4S");
+        TestInst(FRINT64X(V0.T_4S, V1.T_4S), asm => asm.FRINT64X(V0.T_4S, V1.T_4S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.4S, V1.4S");
+        TestInst(FRINT64X(V30.T_4S, V1.T_4S), asm => asm.FRINT64X(V30.T_4S, V1.T_4S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.4S, V1.4S");
+        TestInst(FRINT64X(V0.T_4S, V31.T_4S), asm => asm.FRINT64X(V0.T_4S, V31.T_4S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.4S, V31.4S");
+        TestInst(FRINT64X(V30.T_4S, V31.T_4S), asm => asm.FRINT64X(V30.T_4S, V31.T_4S), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.4S, V31.4S");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_FRINT64X_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_FRINT64X_asimdmisc_r_2()
     {
-        TestInst(FRINT64X(V0.T_2D, V1.T_2D), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.2D, V1.2D");
-        TestInst(FRINT64X(V30.T_2D, V1.T_2D), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.2D, V1.2D");
-        TestInst(FRINT64X(V0.T_2D, V31.T_2D), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.2D, V31.2D");
-        TestInst(FRINT64X(V30.T_2D, V31.T_2D), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.2D, V31.2D");
+        TestInst(FRINT64X(V0.T_2D, V1.T_2D), asm => asm.FRINT64X(V0.T_2D, V1.T_2D), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.2D, V1.2D");
+        TestInst(FRINT64X(V30.T_2D, V1.T_2D), asm => asm.FRINT64X(V30.T_2D, V1.T_2D), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.2D, V1.2D");
+        TestInst(FRINT64X(V0.T_2D, V31.T_2D), asm => asm.FRINT64X(V0.T_2D, V31.T_2D), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V0.2D, V31.2D");
+        TestInst(FRINT64X(V30.T_2D, V31.T_2D), asm => asm.FRINT64X(V30.T_2D, V31.T_2D), Arm64InstructionId.FRINT64X_asimdmisc_r, Arm64Mnemonic.FRINT64X, "FRINT64X V30.2D, V31.2D");
     }
 }

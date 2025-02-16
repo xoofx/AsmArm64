@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STCLRL_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STCLRL_ldclrl_32_memop_0()
     {
-        TestInst(STCLRL(W0, _[X2]), Arm64InstructionId.STCLRL_ldclrl_32_memop, Arm64Mnemonic.STCLRL, "STCLRL W0, [X2]");
-        TestInst(STCLRL(W15, _[X2]), Arm64InstructionId.STCLRL_ldclrl_32_memop, Arm64Mnemonic.STCLRL, "STCLRL W15, [X2]");
-        TestInst(STCLRL(WZR, _[X2]), Arm64InstructionId.STCLRL_ldclrl_32_memop, Arm64Mnemonic.STCLRL, "STCLRL WZR, [X2]");
+        TestInst(STCLRL(W0, _[X2]), asm => asm.STCLRL(W0, _[X2]), Arm64InstructionId.STCLRL_ldclrl_32_memop, Arm64Mnemonic.STCLRL, "STCLRL W0, [X2]");
+        TestInst(STCLRL(W15, _[X2]), asm => asm.STCLRL(W15, _[X2]), Arm64InstructionId.STCLRL_ldclrl_32_memop, Arm64Mnemonic.STCLRL, "STCLRL W15, [X2]");
+        TestInst(STCLRL(WZR, _[X2]), asm => asm.STCLRL(WZR, _[X2]), Arm64InstructionId.STCLRL_ldclrl_32_memop, Arm64Mnemonic.STCLRL, "STCLRL WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STCLRL_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_STCLRL_ldclrl_64_memop_1()
     {
-        TestInst(STCLRL(X0, _[X2]), Arm64InstructionId.STCLRL_ldclrl_64_memop, Arm64Mnemonic.STCLRL, "STCLRL X0, [X2]");
-        TestInst(STCLRL(X15, _[X2]), Arm64InstructionId.STCLRL_ldclrl_64_memop, Arm64Mnemonic.STCLRL, "STCLRL X15, [X2]");
-        TestInst(STCLRL(XZR, _[X2]), Arm64InstructionId.STCLRL_ldclrl_64_memop, Arm64Mnemonic.STCLRL, "STCLRL XZR, [X2]");
+        TestInst(STCLRL(X0, _[X2]), asm => asm.STCLRL(X0, _[X2]), Arm64InstructionId.STCLRL_ldclrl_64_memop, Arm64Mnemonic.STCLRL, "STCLRL X0, [X2]");
+        TestInst(STCLRL(X15, _[X2]), asm => asm.STCLRL(X15, _[X2]), Arm64InstructionId.STCLRL_ldclrl_64_memop, Arm64Mnemonic.STCLRL, "STCLRL X15, [X2]");
+        TestInst(STCLRL(XZR, _[X2]), asm => asm.STCLRL(XZR, _[X2]), Arm64InstructionId.STCLRL_ldclrl_64_memop, Arm64Mnemonic.STCLRL, "STCLRL XZR, [X2]");
     }
 }

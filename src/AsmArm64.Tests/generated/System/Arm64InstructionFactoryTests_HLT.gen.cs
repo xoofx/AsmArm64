@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_HLT_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_HLT_ex_exception_0()
     {
-        TestInst(HLT(5), Arm64InstructionId.HLT_ex_exception, Arm64Mnemonic.HLT, "HLT #5");
+        TestInst(HLT(5), asm => asm.HLT(5), Arm64InstructionId.HLT_ex_exception, Arm64Mnemonic.HLT, "HLT #5");
     }
 }

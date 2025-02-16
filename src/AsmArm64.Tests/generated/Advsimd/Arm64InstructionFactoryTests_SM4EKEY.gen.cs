@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,13 +23,13 @@ public class Arm64InstructionFactoryTests_SM4EKEY_Advsimd : Arm64InstructionFact
     [TestMethod]
     public void Test_SM4EKEY_vvv4_cryptosha512_3_0()
     {
-        TestInst(SM4EKEY(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V0.4S, V1.4S, V2.4S");
-        TestInst(SM4EKEY(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V30.4S, V1.4S, V2.4S");
-        TestInst(SM4EKEY(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V0.4S, V31.4S, V2.4S");
-        TestInst(SM4EKEY(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V30.4S, V31.4S, V2.4S");
-        TestInst(SM4EKEY(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V0.4S, V1.4S, V0.4S");
-        TestInst(SM4EKEY(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V30.4S, V1.4S, V0.4S");
-        TestInst(SM4EKEY(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V0.4S, V31.4S, V0.4S");
-        TestInst(SM4EKEY(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V30.4S, V31.4S, V0.4S");
+        TestInst(SM4EKEY(V0.T_4S, V1.T_4S, V2.T_4S), asm => asm.SM4EKEY(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V0.4S, V1.4S, V2.4S");
+        TestInst(SM4EKEY(V30.T_4S, V1.T_4S, V2.T_4S), asm => asm.SM4EKEY(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V30.4S, V1.4S, V2.4S");
+        TestInst(SM4EKEY(V0.T_4S, V31.T_4S, V2.T_4S), asm => asm.SM4EKEY(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V0.4S, V31.4S, V2.4S");
+        TestInst(SM4EKEY(V30.T_4S, V31.T_4S, V2.T_4S), asm => asm.SM4EKEY(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V30.4S, V31.4S, V2.4S");
+        TestInst(SM4EKEY(V0.T_4S, V1.T_4S, V0.T_4S), asm => asm.SM4EKEY(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V0.4S, V1.4S, V0.4S");
+        TestInst(SM4EKEY(V30.T_4S, V1.T_4S, V0.T_4S), asm => asm.SM4EKEY(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V30.4S, V1.4S, V0.4S");
+        TestInst(SM4EKEY(V0.T_4S, V31.T_4S, V0.T_4S), asm => asm.SM4EKEY(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V0.4S, V31.4S, V0.4S");
+        TestInst(SM4EKEY(V30.T_4S, V31.T_4S, V0.T_4S), asm => asm.SM4EKEY(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.SM4EKEY_vvv4_cryptosha512_3, Arm64Mnemonic.SM4EKEY, "SM4EKEY V30.4S, V31.4S, V0.4S");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,12 +23,12 @@ public class Arm64InstructionFactoryTests_CCMN_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CCMN_32_condcmp_imm_0()
     {
-        TestInst(CCMN(W0, 5, 5, NE), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN W0, #5, #5, NE");
-        TestInst(CCMN(W15, 5, 5, NE), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN W15, #5, #5, NE");
-        TestInst(CCMN(WZR, 5, 5, NE), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN WZR, #5, #5, NE");
-        TestInst(CCMN(W0, 5, 5, HS), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN W0, #5, #5, HS");
-        TestInst(CCMN(W15, 5, 5, HS), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN W15, #5, #5, HS");
-        TestInst(CCMN(WZR, 5, 5, HS), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN WZR, #5, #5, HS");
+        TestInst(CCMN(W0, 5, 5, NE), asm => asm.CCMN(W0, 5, 5, NE), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN W0, #5, #5, NE");
+        TestInst(CCMN(W15, 5, 5, NE), asm => asm.CCMN(W15, 5, 5, NE), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN W15, #5, #5, NE");
+        TestInst(CCMN(WZR, 5, 5, NE), asm => asm.CCMN(WZR, 5, 5, NE), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN WZR, #5, #5, NE");
+        TestInst(CCMN(W0, 5, 5, HS), asm => asm.CCMN(W0, 5, 5, HS), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN W0, #5, #5, HS");
+        TestInst(CCMN(W15, 5, 5, HS), asm => asm.CCMN(W15, 5, 5, HS), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN W15, #5, #5, HS");
+        TestInst(CCMN(WZR, 5, 5, HS), asm => asm.CCMN(WZR, 5, 5, HS), Arm64InstructionId.CCMN_32_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN WZR, #5, #5, HS");
     }
     
     /// <summary>
@@ -38,12 +37,12 @@ public class Arm64InstructionFactoryTests_CCMN_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CCMN_64_condcmp_imm_1()
     {
-        TestInst(CCMN(X0, 5, 5, NE), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN X0, #5, #5, NE");
-        TestInst(CCMN(X15, 5, 5, NE), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN X15, #5, #5, NE");
-        TestInst(CCMN(XZR, 5, 5, NE), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN XZR, #5, #5, NE");
-        TestInst(CCMN(X0, 5, 5, HS), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN X0, #5, #5, HS");
-        TestInst(CCMN(X15, 5, 5, HS), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN X15, #5, #5, HS");
-        TestInst(CCMN(XZR, 5, 5, HS), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN XZR, #5, #5, HS");
+        TestInst(CCMN(X0, 5, 5, NE), asm => asm.CCMN(X0, 5, 5, NE), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN X0, #5, #5, NE");
+        TestInst(CCMN(X15, 5, 5, NE), asm => asm.CCMN(X15, 5, 5, NE), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN X15, #5, #5, NE");
+        TestInst(CCMN(XZR, 5, 5, NE), asm => asm.CCMN(XZR, 5, 5, NE), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN XZR, #5, #5, NE");
+        TestInst(CCMN(X0, 5, 5, HS), asm => asm.CCMN(X0, 5, 5, HS), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN X0, #5, #5, HS");
+        TestInst(CCMN(X15, 5, 5, HS), asm => asm.CCMN(X15, 5, 5, HS), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN X15, #5, #5, HS");
+        TestInst(CCMN(XZR, 5, 5, HS), asm => asm.CCMN(XZR, 5, 5, HS), Arm64InstructionId.CCMN_64_condcmp_imm, Arm64Mnemonic.CCMN, "CCMN XZR, #5, #5, HS");
     }
     
     /// <summary>
@@ -52,24 +51,24 @@ public class Arm64InstructionFactoryTests_CCMN_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CCMN_32_condcmp_reg_2()
     {
-        TestInst(CCMN(W0, W1, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, W1, #5, NE");
-        TestInst(CCMN(W15, W1, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, W1, #5, NE");
-        TestInst(CCMN(WZR, W1, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, W1, #5, NE");
-        TestInst(CCMN(W0, W16, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, W16, #5, NE");
-        TestInst(CCMN(W15, W16, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, W16, #5, NE");
-        TestInst(CCMN(WZR, W16, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, W16, #5, NE");
-        TestInst(CCMN(W0, WZR, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, WZR, #5, NE");
-        TestInst(CCMN(W15, WZR, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, WZR, #5, NE");
-        TestInst(CCMN(WZR, WZR, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, WZR, #5, NE");
-        TestInst(CCMN(W0, W1, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, W1, #5, HS");
-        TestInst(CCMN(W15, W1, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, W1, #5, HS");
-        TestInst(CCMN(WZR, W1, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, W1, #5, HS");
-        TestInst(CCMN(W0, W16, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, W16, #5, HS");
-        TestInst(CCMN(W15, W16, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, W16, #5, HS");
-        TestInst(CCMN(WZR, W16, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, W16, #5, HS");
-        TestInst(CCMN(W0, WZR, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, WZR, #5, HS");
-        TestInst(CCMN(W15, WZR, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, WZR, #5, HS");
-        TestInst(CCMN(WZR, WZR, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, WZR, #5, HS");
+        TestInst(CCMN(W0, W1, 5, NE), asm => asm.CCMN(W0, W1, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, W1, #5, NE");
+        TestInst(CCMN(W15, W1, 5, NE), asm => asm.CCMN(W15, W1, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, W1, #5, NE");
+        TestInst(CCMN(WZR, W1, 5, NE), asm => asm.CCMN(WZR, W1, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, W1, #5, NE");
+        TestInst(CCMN(W0, W16, 5, NE), asm => asm.CCMN(W0, W16, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, W16, #5, NE");
+        TestInst(CCMN(W15, W16, 5, NE), asm => asm.CCMN(W15, W16, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, W16, #5, NE");
+        TestInst(CCMN(WZR, W16, 5, NE), asm => asm.CCMN(WZR, W16, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, W16, #5, NE");
+        TestInst(CCMN(W0, WZR, 5, NE), asm => asm.CCMN(W0, WZR, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, WZR, #5, NE");
+        TestInst(CCMN(W15, WZR, 5, NE), asm => asm.CCMN(W15, WZR, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, WZR, #5, NE");
+        TestInst(CCMN(WZR, WZR, 5, NE), asm => asm.CCMN(WZR, WZR, 5, NE), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, WZR, #5, NE");
+        TestInst(CCMN(W0, W1, 5, HS), asm => asm.CCMN(W0, W1, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, W1, #5, HS");
+        TestInst(CCMN(W15, W1, 5, HS), asm => asm.CCMN(W15, W1, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, W1, #5, HS");
+        TestInst(CCMN(WZR, W1, 5, HS), asm => asm.CCMN(WZR, W1, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, W1, #5, HS");
+        TestInst(CCMN(W0, W16, 5, HS), asm => asm.CCMN(W0, W16, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, W16, #5, HS");
+        TestInst(CCMN(W15, W16, 5, HS), asm => asm.CCMN(W15, W16, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, W16, #5, HS");
+        TestInst(CCMN(WZR, W16, 5, HS), asm => asm.CCMN(WZR, W16, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, W16, #5, HS");
+        TestInst(CCMN(W0, WZR, 5, HS), asm => asm.CCMN(W0, WZR, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W0, WZR, #5, HS");
+        TestInst(CCMN(W15, WZR, 5, HS), asm => asm.CCMN(W15, WZR, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN W15, WZR, #5, HS");
+        TestInst(CCMN(WZR, WZR, 5, HS), asm => asm.CCMN(WZR, WZR, 5, HS), Arm64InstructionId.CCMN_32_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN WZR, WZR, #5, HS");
     }
     
     /// <summary>
@@ -78,23 +77,23 @@ public class Arm64InstructionFactoryTests_CCMN_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CCMN_64_condcmp_reg_3()
     {
-        TestInst(CCMN(X0, X1, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, X1, #5, NE");
-        TestInst(CCMN(X15, X1, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, X1, #5, NE");
-        TestInst(CCMN(XZR, X1, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, X1, #5, NE");
-        TestInst(CCMN(X0, X16, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, X16, #5, NE");
-        TestInst(CCMN(X15, X16, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, X16, #5, NE");
-        TestInst(CCMN(XZR, X16, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, X16, #5, NE");
-        TestInst(CCMN(X0, XZR, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, XZR, #5, NE");
-        TestInst(CCMN(X15, XZR, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, XZR, #5, NE");
-        TestInst(CCMN(XZR, XZR, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, XZR, #5, NE");
-        TestInst(CCMN(X0, X1, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, X1, #5, HS");
-        TestInst(CCMN(X15, X1, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, X1, #5, HS");
-        TestInst(CCMN(XZR, X1, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, X1, #5, HS");
-        TestInst(CCMN(X0, X16, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, X16, #5, HS");
-        TestInst(CCMN(X15, X16, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, X16, #5, HS");
-        TestInst(CCMN(XZR, X16, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, X16, #5, HS");
-        TestInst(CCMN(X0, XZR, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, XZR, #5, HS");
-        TestInst(CCMN(X15, XZR, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, XZR, #5, HS");
-        TestInst(CCMN(XZR, XZR, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, XZR, #5, HS");
+        TestInst(CCMN(X0, X1, 5, NE), asm => asm.CCMN(X0, X1, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, X1, #5, NE");
+        TestInst(CCMN(X15, X1, 5, NE), asm => asm.CCMN(X15, X1, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, X1, #5, NE");
+        TestInst(CCMN(XZR, X1, 5, NE), asm => asm.CCMN(XZR, X1, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, X1, #5, NE");
+        TestInst(CCMN(X0, X16, 5, NE), asm => asm.CCMN(X0, X16, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, X16, #5, NE");
+        TestInst(CCMN(X15, X16, 5, NE), asm => asm.CCMN(X15, X16, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, X16, #5, NE");
+        TestInst(CCMN(XZR, X16, 5, NE), asm => asm.CCMN(XZR, X16, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, X16, #5, NE");
+        TestInst(CCMN(X0, XZR, 5, NE), asm => asm.CCMN(X0, XZR, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, XZR, #5, NE");
+        TestInst(CCMN(X15, XZR, 5, NE), asm => asm.CCMN(X15, XZR, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, XZR, #5, NE");
+        TestInst(CCMN(XZR, XZR, 5, NE), asm => asm.CCMN(XZR, XZR, 5, NE), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, XZR, #5, NE");
+        TestInst(CCMN(X0, X1, 5, HS), asm => asm.CCMN(X0, X1, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, X1, #5, HS");
+        TestInst(CCMN(X15, X1, 5, HS), asm => asm.CCMN(X15, X1, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, X1, #5, HS");
+        TestInst(CCMN(XZR, X1, 5, HS), asm => asm.CCMN(XZR, X1, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, X1, #5, HS");
+        TestInst(CCMN(X0, X16, 5, HS), asm => asm.CCMN(X0, X16, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, X16, #5, HS");
+        TestInst(CCMN(X15, X16, 5, HS), asm => asm.CCMN(X15, X16, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, X16, #5, HS");
+        TestInst(CCMN(XZR, X16, 5, HS), asm => asm.CCMN(XZR, X16, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, X16, #5, HS");
+        TestInst(CCMN(X0, XZR, 5, HS), asm => asm.CCMN(X0, XZR, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X0, XZR, #5, HS");
+        TestInst(CCMN(X15, XZR, 5, HS), asm => asm.CCMN(X15, XZR, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN X15, XZR, #5, HS");
+        TestInst(CCMN(XZR, XZR, 5, HS), asm => asm.CCMN(XZR, XZR, 5, HS), Arm64InstructionId.CCMN_64_condcmp_reg, Arm64Mnemonic.CCMN, "CCMN XZR, XZR, #5, HS");
     }
 }

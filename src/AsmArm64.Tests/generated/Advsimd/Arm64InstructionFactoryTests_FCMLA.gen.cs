@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_FCMLA_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FCMLA_asimdsame2_c_0()
     {
-        TestInst(FCMLA(V0.T_4H, V1.T_4H, V2.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V1.4H, V2.4H, #90");
-        TestInst(FCMLA(V30.T_4H, V1.T_4H, V2.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V1.4H, V2.4H, #90");
-        TestInst(FCMLA(V0.T_4H, V31.T_4H, V2.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V31.4H, V2.4H, #90");
-        TestInst(FCMLA(V30.T_4H, V31.T_4H, V2.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V31.4H, V2.4H, #90");
-        TestInst(FCMLA(V0.T_4H, V1.T_4H, V0.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V1.4H, V0.4H, #90");
-        TestInst(FCMLA(V30.T_4H, V1.T_4H, V0.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V1.4H, V0.4H, #90");
-        TestInst(FCMLA(V0.T_4H, V31.T_4H, V0.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V31.4H, V0.4H, #90");
-        TestInst(FCMLA(V30.T_4H, V31.T_4H, V0.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V31.4H, V0.4H, #90");
+        TestInst(FCMLA(V0.T_4H, V1.T_4H, V2.T_4H, 90), asm => asm.FCMLA(V0.T_4H, V1.T_4H, V2.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V1.4H, V2.4H, #90");
+        TestInst(FCMLA(V30.T_4H, V1.T_4H, V2.T_4H, 90), asm => asm.FCMLA(V30.T_4H, V1.T_4H, V2.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V1.4H, V2.4H, #90");
+        TestInst(FCMLA(V0.T_4H, V31.T_4H, V2.T_4H, 90), asm => asm.FCMLA(V0.T_4H, V31.T_4H, V2.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V31.4H, V2.4H, #90");
+        TestInst(FCMLA(V30.T_4H, V31.T_4H, V2.T_4H, 90), asm => asm.FCMLA(V30.T_4H, V31.T_4H, V2.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V31.4H, V2.4H, #90");
+        TestInst(FCMLA(V0.T_4H, V1.T_4H, V0.T_4H, 90), asm => asm.FCMLA(V0.T_4H, V1.T_4H, V0.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V1.4H, V0.4H, #90");
+        TestInst(FCMLA(V30.T_4H, V1.T_4H, V0.T_4H, 90), asm => asm.FCMLA(V30.T_4H, V1.T_4H, V0.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V1.4H, V0.4H, #90");
+        TestInst(FCMLA(V0.T_4H, V31.T_4H, V0.T_4H, 90), asm => asm.FCMLA(V0.T_4H, V31.T_4H, V0.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V31.4H, V0.4H, #90");
+        TestInst(FCMLA(V30.T_4H, V31.T_4H, V0.T_4H, 90), asm => asm.FCMLA(V30.T_4H, V31.T_4H, V0.T_4H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V31.4H, V0.4H, #90");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_FCMLA_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FCMLA_asimdsame2_c_1()
     {
-        TestInst(FCMLA(V0.T_8H, V1.T_8H, V2.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V1.8H, V2.8H, #90");
-        TestInst(FCMLA(V30.T_8H, V1.T_8H, V2.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V1.8H, V2.8H, #90");
-        TestInst(FCMLA(V0.T_8H, V31.T_8H, V2.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V31.8H, V2.8H, #90");
-        TestInst(FCMLA(V30.T_8H, V31.T_8H, V2.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V31.8H, V2.8H, #90");
-        TestInst(FCMLA(V0.T_8H, V1.T_8H, V0.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V1.8H, V0.8H, #90");
-        TestInst(FCMLA(V30.T_8H, V1.T_8H, V0.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V1.8H, V0.8H, #90");
-        TestInst(FCMLA(V0.T_8H, V31.T_8H, V0.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V31.8H, V0.8H, #90");
-        TestInst(FCMLA(V30.T_8H, V31.T_8H, V0.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V31.8H, V0.8H, #90");
+        TestInst(FCMLA(V0.T_8H, V1.T_8H, V2.T_8H, 90), asm => asm.FCMLA(V0.T_8H, V1.T_8H, V2.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V1.8H, V2.8H, #90");
+        TestInst(FCMLA(V30.T_8H, V1.T_8H, V2.T_8H, 90), asm => asm.FCMLA(V30.T_8H, V1.T_8H, V2.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V1.8H, V2.8H, #90");
+        TestInst(FCMLA(V0.T_8H, V31.T_8H, V2.T_8H, 90), asm => asm.FCMLA(V0.T_8H, V31.T_8H, V2.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V31.8H, V2.8H, #90");
+        TestInst(FCMLA(V30.T_8H, V31.T_8H, V2.T_8H, 90), asm => asm.FCMLA(V30.T_8H, V31.T_8H, V2.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V31.8H, V2.8H, #90");
+        TestInst(FCMLA(V0.T_8H, V1.T_8H, V0.T_8H, 90), asm => asm.FCMLA(V0.T_8H, V1.T_8H, V0.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V1.8H, V0.8H, #90");
+        TestInst(FCMLA(V30.T_8H, V1.T_8H, V0.T_8H, 90), asm => asm.FCMLA(V30.T_8H, V1.T_8H, V0.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V1.8H, V0.8H, #90");
+        TestInst(FCMLA(V0.T_8H, V31.T_8H, V0.T_8H, 90), asm => asm.FCMLA(V0.T_8H, V31.T_8H, V0.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V31.8H, V0.8H, #90");
+        TestInst(FCMLA(V30.T_8H, V31.T_8H, V0.T_8H, 90), asm => asm.FCMLA(V30.T_8H, V31.T_8H, V0.T_8H, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V31.8H, V0.8H, #90");
     }
     
     /// <summary>
@@ -56,14 +55,14 @@ public class Arm64InstructionFactoryTests_FCMLA_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FCMLA_asimdsame2_c_2()
     {
-        TestInst(FCMLA(V0.T_2S, V1.T_2S, V2.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2S, V1.2S, V2.2S, #90");
-        TestInst(FCMLA(V30.T_2S, V1.T_2S, V2.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2S, V1.2S, V2.2S, #90");
-        TestInst(FCMLA(V0.T_2S, V31.T_2S, V2.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2S, V31.2S, V2.2S, #90");
-        TestInst(FCMLA(V30.T_2S, V31.T_2S, V2.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2S, V31.2S, V2.2S, #90");
-        TestInst(FCMLA(V0.T_2S, V1.T_2S, V0.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2S, V1.2S, V0.2S, #90");
-        TestInst(FCMLA(V30.T_2S, V1.T_2S, V0.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2S, V1.2S, V0.2S, #90");
-        TestInst(FCMLA(V0.T_2S, V31.T_2S, V0.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2S, V31.2S, V0.2S, #90");
-        TestInst(FCMLA(V30.T_2S, V31.T_2S, V0.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2S, V31.2S, V0.2S, #90");
+        TestInst(FCMLA(V0.T_2S, V1.T_2S, V2.T_2S, 90), asm => asm.FCMLA(V0.T_2S, V1.T_2S, V2.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2S, V1.2S, V2.2S, #90");
+        TestInst(FCMLA(V30.T_2S, V1.T_2S, V2.T_2S, 90), asm => asm.FCMLA(V30.T_2S, V1.T_2S, V2.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2S, V1.2S, V2.2S, #90");
+        TestInst(FCMLA(V0.T_2S, V31.T_2S, V2.T_2S, 90), asm => asm.FCMLA(V0.T_2S, V31.T_2S, V2.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2S, V31.2S, V2.2S, #90");
+        TestInst(FCMLA(V30.T_2S, V31.T_2S, V2.T_2S, 90), asm => asm.FCMLA(V30.T_2S, V31.T_2S, V2.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2S, V31.2S, V2.2S, #90");
+        TestInst(FCMLA(V0.T_2S, V1.T_2S, V0.T_2S, 90), asm => asm.FCMLA(V0.T_2S, V1.T_2S, V0.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2S, V1.2S, V0.2S, #90");
+        TestInst(FCMLA(V30.T_2S, V1.T_2S, V0.T_2S, 90), asm => asm.FCMLA(V30.T_2S, V1.T_2S, V0.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2S, V1.2S, V0.2S, #90");
+        TestInst(FCMLA(V0.T_2S, V31.T_2S, V0.T_2S, 90), asm => asm.FCMLA(V0.T_2S, V31.T_2S, V0.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2S, V31.2S, V0.2S, #90");
+        TestInst(FCMLA(V30.T_2S, V31.T_2S, V0.T_2S, 90), asm => asm.FCMLA(V30.T_2S, V31.T_2S, V0.T_2S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2S, V31.2S, V0.2S, #90");
     }
     
     /// <summary>
@@ -72,14 +71,14 @@ public class Arm64InstructionFactoryTests_FCMLA_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FCMLA_asimdsame2_c_3()
     {
-        TestInst(FCMLA(V0.T_4S, V1.T_4S, V2.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V1.4S, V2.4S, #90");
-        TestInst(FCMLA(V30.T_4S, V1.T_4S, V2.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V1.4S, V2.4S, #90");
-        TestInst(FCMLA(V0.T_4S, V31.T_4S, V2.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V31.4S, V2.4S, #90");
-        TestInst(FCMLA(V30.T_4S, V31.T_4S, V2.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V31.4S, V2.4S, #90");
-        TestInst(FCMLA(V0.T_4S, V1.T_4S, V0.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V1.4S, V0.4S, #90");
-        TestInst(FCMLA(V30.T_4S, V1.T_4S, V0.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V1.4S, V0.4S, #90");
-        TestInst(FCMLA(V0.T_4S, V31.T_4S, V0.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V31.4S, V0.4S, #90");
-        TestInst(FCMLA(V30.T_4S, V31.T_4S, V0.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V31.4S, V0.4S, #90");
+        TestInst(FCMLA(V0.T_4S, V1.T_4S, V2.T_4S, 90), asm => asm.FCMLA(V0.T_4S, V1.T_4S, V2.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V1.4S, V2.4S, #90");
+        TestInst(FCMLA(V30.T_4S, V1.T_4S, V2.T_4S, 90), asm => asm.FCMLA(V30.T_4S, V1.T_4S, V2.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V1.4S, V2.4S, #90");
+        TestInst(FCMLA(V0.T_4S, V31.T_4S, V2.T_4S, 90), asm => asm.FCMLA(V0.T_4S, V31.T_4S, V2.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V31.4S, V2.4S, #90");
+        TestInst(FCMLA(V30.T_4S, V31.T_4S, V2.T_4S, 90), asm => asm.FCMLA(V30.T_4S, V31.T_4S, V2.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V31.4S, V2.4S, #90");
+        TestInst(FCMLA(V0.T_4S, V1.T_4S, V0.T_4S, 90), asm => asm.FCMLA(V0.T_4S, V1.T_4S, V0.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V1.4S, V0.4S, #90");
+        TestInst(FCMLA(V30.T_4S, V1.T_4S, V0.T_4S, 90), asm => asm.FCMLA(V30.T_4S, V1.T_4S, V0.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V1.4S, V0.4S, #90");
+        TestInst(FCMLA(V0.T_4S, V31.T_4S, V0.T_4S, 90), asm => asm.FCMLA(V0.T_4S, V31.T_4S, V0.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V31.4S, V0.4S, #90");
+        TestInst(FCMLA(V30.T_4S, V31.T_4S, V0.T_4S, 90), asm => asm.FCMLA(V30.T_4S, V31.T_4S, V0.T_4S, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V31.4S, V0.4S, #90");
     }
     
     /// <summary>
@@ -88,14 +87,14 @@ public class Arm64InstructionFactoryTests_FCMLA_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FCMLA_asimdsame2_c_4()
     {
-        TestInst(FCMLA(V0.T_2D, V1.T_2D, V2.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2D, V1.2D, V2.2D, #90");
-        TestInst(FCMLA(V30.T_2D, V1.T_2D, V2.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2D, V1.2D, V2.2D, #90");
-        TestInst(FCMLA(V0.T_2D, V31.T_2D, V2.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2D, V31.2D, V2.2D, #90");
-        TestInst(FCMLA(V30.T_2D, V31.T_2D, V2.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2D, V31.2D, V2.2D, #90");
-        TestInst(FCMLA(V0.T_2D, V1.T_2D, V0.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2D, V1.2D, V0.2D, #90");
-        TestInst(FCMLA(V30.T_2D, V1.T_2D, V0.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2D, V1.2D, V0.2D, #90");
-        TestInst(FCMLA(V0.T_2D, V31.T_2D, V0.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2D, V31.2D, V0.2D, #90");
-        TestInst(FCMLA(V30.T_2D, V31.T_2D, V0.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2D, V31.2D, V0.2D, #90");
+        TestInst(FCMLA(V0.T_2D, V1.T_2D, V2.T_2D, 90), asm => asm.FCMLA(V0.T_2D, V1.T_2D, V2.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2D, V1.2D, V2.2D, #90");
+        TestInst(FCMLA(V30.T_2D, V1.T_2D, V2.T_2D, 90), asm => asm.FCMLA(V30.T_2D, V1.T_2D, V2.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2D, V1.2D, V2.2D, #90");
+        TestInst(FCMLA(V0.T_2D, V31.T_2D, V2.T_2D, 90), asm => asm.FCMLA(V0.T_2D, V31.T_2D, V2.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2D, V31.2D, V2.2D, #90");
+        TestInst(FCMLA(V30.T_2D, V31.T_2D, V2.T_2D, 90), asm => asm.FCMLA(V30.T_2D, V31.T_2D, V2.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2D, V31.2D, V2.2D, #90");
+        TestInst(FCMLA(V0.T_2D, V1.T_2D, V0.T_2D, 90), asm => asm.FCMLA(V0.T_2D, V1.T_2D, V0.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2D, V1.2D, V0.2D, #90");
+        TestInst(FCMLA(V30.T_2D, V1.T_2D, V0.T_2D, 90), asm => asm.FCMLA(V30.T_2D, V1.T_2D, V0.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2D, V1.2D, V0.2D, #90");
+        TestInst(FCMLA(V0.T_2D, V31.T_2D, V0.T_2D, 90), asm => asm.FCMLA(V0.T_2D, V31.T_2D, V0.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V0.2D, V31.2D, V0.2D, #90");
+        TestInst(FCMLA(V30.T_2D, V31.T_2D, V0.T_2D, 90), asm => asm.FCMLA(V30.T_2D, V31.T_2D, V0.T_2D, 90), Arm64InstructionId.FCMLA_asimdsame2_c, Arm64Mnemonic.FCMLA, "FCMLA V30.2D, V31.2D, V0.2D, #90");
     }
     
     /// <summary>
@@ -104,14 +103,14 @@ public class Arm64InstructionFactoryTests_FCMLA_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FCMLA_advsimd_elt_5()
     {
-        TestInst(FCMLA(V0.T_4H, V1.T_4H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V1.4H, V2.H[0], #90");
-        TestInst(FCMLA(V30.T_4H, V1.T_4H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V1.4H, V2.H[0], #90");
-        TestInst(FCMLA(V0.T_4H, V31.T_4H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V31.4H, V2.H[0], #90");
-        TestInst(FCMLA(V30.T_4H, V31.T_4H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V31.4H, V2.H[0], #90");
-        TestInst(FCMLA(V0.T_4H, V1.T_4H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V1.4H, V0.H[1], #90");
-        TestInst(FCMLA(V30.T_4H, V1.T_4H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V1.4H, V0.H[1], #90");
-        TestInst(FCMLA(V0.T_4H, V31.T_4H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V31.4H, V0.H[1], #90");
-        TestInst(FCMLA(V30.T_4H, V31.T_4H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V31.4H, V0.H[1], #90");
+        TestInst(FCMLA(V0.T_4H, V1.T_4H, V2.H[0], 90), asm => asm.FCMLA(V0.T_4H, V1.T_4H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V1.4H, V2.H[0], #90");
+        TestInst(FCMLA(V30.T_4H, V1.T_4H, V2.H[0], 90), asm => asm.FCMLA(V30.T_4H, V1.T_4H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V1.4H, V2.H[0], #90");
+        TestInst(FCMLA(V0.T_4H, V31.T_4H, V2.H[0], 90), asm => asm.FCMLA(V0.T_4H, V31.T_4H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V31.4H, V2.H[0], #90");
+        TestInst(FCMLA(V30.T_4H, V31.T_4H, V2.H[0], 90), asm => asm.FCMLA(V30.T_4H, V31.T_4H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V31.4H, V2.H[0], #90");
+        TestInst(FCMLA(V0.T_4H, V1.T_4H, V0.H[1], 90), asm => asm.FCMLA(V0.T_4H, V1.T_4H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V1.4H, V0.H[1], #90");
+        TestInst(FCMLA(V30.T_4H, V1.T_4H, V0.H[1], 90), asm => asm.FCMLA(V30.T_4H, V1.T_4H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V1.4H, V0.H[1], #90");
+        TestInst(FCMLA(V0.T_4H, V31.T_4H, V0.H[1], 90), asm => asm.FCMLA(V0.T_4H, V31.T_4H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4H, V31.4H, V0.H[1], #90");
+        TestInst(FCMLA(V30.T_4H, V31.T_4H, V0.H[1], 90), asm => asm.FCMLA(V30.T_4H, V31.T_4H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4H, V31.4H, V0.H[1], #90");
     }
     
     /// <summary>
@@ -120,14 +119,14 @@ public class Arm64InstructionFactoryTests_FCMLA_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FCMLA_advsimd_elt_6()
     {
-        TestInst(FCMLA(V0.T_8H, V1.T_8H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V1.8H, V2.H[0], #90");
-        TestInst(FCMLA(V30.T_8H, V1.T_8H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V1.8H, V2.H[0], #90");
-        TestInst(FCMLA(V0.T_8H, V31.T_8H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V31.8H, V2.H[0], #90");
-        TestInst(FCMLA(V30.T_8H, V31.T_8H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V31.8H, V2.H[0], #90");
-        TestInst(FCMLA(V0.T_8H, V1.T_8H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V1.8H, V0.H[1], #90");
-        TestInst(FCMLA(V30.T_8H, V1.T_8H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V1.8H, V0.H[1], #90");
-        TestInst(FCMLA(V0.T_8H, V31.T_8H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V31.8H, V0.H[1], #90");
-        TestInst(FCMLA(V30.T_8H, V31.T_8H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V31.8H, V0.H[1], #90");
+        TestInst(FCMLA(V0.T_8H, V1.T_8H, V2.H[0], 90), asm => asm.FCMLA(V0.T_8H, V1.T_8H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V1.8H, V2.H[0], #90");
+        TestInst(FCMLA(V30.T_8H, V1.T_8H, V2.H[0], 90), asm => asm.FCMLA(V30.T_8H, V1.T_8H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V1.8H, V2.H[0], #90");
+        TestInst(FCMLA(V0.T_8H, V31.T_8H, V2.H[0], 90), asm => asm.FCMLA(V0.T_8H, V31.T_8H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V31.8H, V2.H[0], #90");
+        TestInst(FCMLA(V30.T_8H, V31.T_8H, V2.H[0], 90), asm => asm.FCMLA(V30.T_8H, V31.T_8H, V2.H[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V31.8H, V2.H[0], #90");
+        TestInst(FCMLA(V0.T_8H, V1.T_8H, V0.H[1], 90), asm => asm.FCMLA(V0.T_8H, V1.T_8H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V1.8H, V0.H[1], #90");
+        TestInst(FCMLA(V30.T_8H, V1.T_8H, V0.H[1], 90), asm => asm.FCMLA(V30.T_8H, V1.T_8H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V1.8H, V0.H[1], #90");
+        TestInst(FCMLA(V0.T_8H, V31.T_8H, V0.H[1], 90), asm => asm.FCMLA(V0.T_8H, V31.T_8H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.8H, V31.8H, V0.H[1], #90");
+        TestInst(FCMLA(V30.T_8H, V31.T_8H, V0.H[1], 90), asm => asm.FCMLA(V30.T_8H, V31.T_8H, V0.H[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.8H, V31.8H, V0.H[1], #90");
     }
     
     /// <summary>
@@ -136,13 +135,13 @@ public class Arm64InstructionFactoryTests_FCMLA_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_FCMLA_advsimd_elt_7()
     {
-        TestInst(FCMLA(V0.T_4S, V1.T_4S, V2.S[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V1.4S, V2.S[0], #90");
-        TestInst(FCMLA(V30.T_4S, V1.T_4S, V2.S[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V1.4S, V2.S[0], #90");
-        TestInst(FCMLA(V0.T_4S, V31.T_4S, V2.S[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V31.4S, V2.S[0], #90");
-        TestInst(FCMLA(V30.T_4S, V31.T_4S, V2.S[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V31.4S, V2.S[0], #90");
-        TestInst(FCMLA(V0.T_4S, V1.T_4S, V0.S[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V1.4S, V0.S[1], #90");
-        TestInst(FCMLA(V30.T_4S, V1.T_4S, V0.S[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V1.4S, V0.S[1], #90");
-        TestInst(FCMLA(V0.T_4S, V31.T_4S, V0.S[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V31.4S, V0.S[1], #90");
-        TestInst(FCMLA(V30.T_4S, V31.T_4S, V0.S[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V31.4S, V0.S[1], #90");
+        TestInst(FCMLA(V0.T_4S, V1.T_4S, V2.S[0], 90), asm => asm.FCMLA(V0.T_4S, V1.T_4S, V2.S[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V1.4S, V2.S[0], #90");
+        TestInst(FCMLA(V30.T_4S, V1.T_4S, V2.S[0], 90), asm => asm.FCMLA(V30.T_4S, V1.T_4S, V2.S[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V1.4S, V2.S[0], #90");
+        TestInst(FCMLA(V0.T_4S, V31.T_4S, V2.S[0], 90), asm => asm.FCMLA(V0.T_4S, V31.T_4S, V2.S[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V31.4S, V2.S[0], #90");
+        TestInst(FCMLA(V30.T_4S, V31.T_4S, V2.S[0], 90), asm => asm.FCMLA(V30.T_4S, V31.T_4S, V2.S[0], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V31.4S, V2.S[0], #90");
+        TestInst(FCMLA(V0.T_4S, V1.T_4S, V0.S[1], 90), asm => asm.FCMLA(V0.T_4S, V1.T_4S, V0.S[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V1.4S, V0.S[1], #90");
+        TestInst(FCMLA(V30.T_4S, V1.T_4S, V0.S[1], 90), asm => asm.FCMLA(V30.T_4S, V1.T_4S, V0.S[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V1.4S, V0.S[1], #90");
+        TestInst(FCMLA(V0.T_4S, V31.T_4S, V0.S[1], 90), asm => asm.FCMLA(V0.T_4S, V31.T_4S, V0.S[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V0.4S, V31.4S, V0.S[1], #90");
+        TestInst(FCMLA(V30.T_4S, V31.T_4S, V0.S[1], 90), asm => asm.FCMLA(V30.T_4S, V31.T_4S, V0.S[1], 90), Arm64InstructionId.FCMLA_advsimd_elt, Arm64Mnemonic.FCMLA, "FCMLA V30.4S, V31.4S, V0.S[1], #90");
     }
 }

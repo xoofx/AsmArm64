@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDCLRAB_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDCLRAB_32_memop_0()
     {
-        TestInst(LDCLRAB(W0, W1, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W0, W1, [X3]");
-        TestInst(LDCLRAB(W15, W1, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W15, W1, [X3]");
-        TestInst(LDCLRAB(WZR, W1, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB WZR, W1, [X3]");
-        TestInst(LDCLRAB(W0, W16, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W0, W16, [X3]");
-        TestInst(LDCLRAB(W15, W16, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W15, W16, [X3]");
-        TestInst(LDCLRAB(WZR, W16, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB WZR, W16, [X3]");
-        TestInst(LDCLRAB(W0, WZR, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W0, WZR, [X3]");
-        TestInst(LDCLRAB(W15, WZR, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W15, WZR, [X3]");
-        TestInst(LDCLRAB(WZR, WZR, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB WZR, WZR, [X3]");
+        TestInst(LDCLRAB(W0, W1, _[X3]), asm => asm.LDCLRAB(W0, W1, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W0, W1, [X3]");
+        TestInst(LDCLRAB(W15, W1, _[X3]), asm => asm.LDCLRAB(W15, W1, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W15, W1, [X3]");
+        TestInst(LDCLRAB(WZR, W1, _[X3]), asm => asm.LDCLRAB(WZR, W1, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB WZR, W1, [X3]");
+        TestInst(LDCLRAB(W0, W16, _[X3]), asm => asm.LDCLRAB(W0, W16, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W0, W16, [X3]");
+        TestInst(LDCLRAB(W15, W16, _[X3]), asm => asm.LDCLRAB(W15, W16, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W15, W16, [X3]");
+        TestInst(LDCLRAB(WZR, W16, _[X3]), asm => asm.LDCLRAB(WZR, W16, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB WZR, W16, [X3]");
+        TestInst(LDCLRAB(W0, WZR, _[X3]), asm => asm.LDCLRAB(W0, WZR, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W0, WZR, [X3]");
+        TestInst(LDCLRAB(W15, WZR, _[X3]), asm => asm.LDCLRAB(W15, WZR, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB W15, WZR, [X3]");
+        TestInst(LDCLRAB(WZR, WZR, _[X3]), asm => asm.LDCLRAB(WZR, WZR, _[X3]), Arm64InstructionId.LDCLRAB_32_memop, Arm64Mnemonic.LDCLRAB, "LDCLRAB WZR, WZR, [X3]");
     }
 }

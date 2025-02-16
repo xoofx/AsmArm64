@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_PACIAZ_System : Arm64InstructionFactor
     [TestMethod]
     public void Test_PACIAZ_hi_hints_0()
     {
-        TestInst(PACIAZ(), Arm64InstructionId.PACIAZ_hi_hints, Arm64Mnemonic.PACIAZ, "PACIAZ");
+        TestInst(PACIAZ(), asm => asm.PACIAZ(), Arm64InstructionId.PACIAZ_hi_hints, Arm64Mnemonic.PACIAZ, "PACIAZ");
     }
 }

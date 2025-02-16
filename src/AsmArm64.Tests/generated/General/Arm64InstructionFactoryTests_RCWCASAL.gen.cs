@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_RCWCASAL_General : Arm64InstructionFac
     [TestMethod]
     public void Test_RCWCASAL_c64_rcwcomswap_0()
     {
-        TestInst(RCWCASAL(X0, X1, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X0, X1, [X3]");
-        TestInst(RCWCASAL(X15, X1, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X15, X1, [X3]");
-        TestInst(RCWCASAL(XZR, X1, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL XZR, X1, [X3]");
-        TestInst(RCWCASAL(X0, X16, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X0, X16, [X3]");
-        TestInst(RCWCASAL(X15, X16, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X15, X16, [X3]");
-        TestInst(RCWCASAL(XZR, X16, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL XZR, X16, [X3]");
-        TestInst(RCWCASAL(X0, XZR, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X0, XZR, [X3]");
-        TestInst(RCWCASAL(X15, XZR, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X15, XZR, [X3]");
-        TestInst(RCWCASAL(XZR, XZR, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL XZR, XZR, [X3]");
+        TestInst(RCWCASAL(X0, X1, _[X3]), asm => asm.RCWCASAL(X0, X1, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X0, X1, [X3]");
+        TestInst(RCWCASAL(X15, X1, _[X3]), asm => asm.RCWCASAL(X15, X1, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X15, X1, [X3]");
+        TestInst(RCWCASAL(XZR, X1, _[X3]), asm => asm.RCWCASAL(XZR, X1, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL XZR, X1, [X3]");
+        TestInst(RCWCASAL(X0, X16, _[X3]), asm => asm.RCWCASAL(X0, X16, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X0, X16, [X3]");
+        TestInst(RCWCASAL(X15, X16, _[X3]), asm => asm.RCWCASAL(X15, X16, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X15, X16, [X3]");
+        TestInst(RCWCASAL(XZR, X16, _[X3]), asm => asm.RCWCASAL(XZR, X16, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL XZR, X16, [X3]");
+        TestInst(RCWCASAL(X0, XZR, _[X3]), asm => asm.RCWCASAL(X0, XZR, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X0, XZR, [X3]");
+        TestInst(RCWCASAL(X15, XZR, _[X3]), asm => asm.RCWCASAL(X15, XZR, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL X15, XZR, [X3]");
+        TestInst(RCWCASAL(XZR, XZR, _[X3]), asm => asm.RCWCASAL(XZR, XZR, _[X3]), Arm64InstructionId.RCWCASAL_c64_rcwcomswap, Arm64Mnemonic.RCWCASAL, "RCWCASAL XZR, XZR, [X3]");
     }
 }

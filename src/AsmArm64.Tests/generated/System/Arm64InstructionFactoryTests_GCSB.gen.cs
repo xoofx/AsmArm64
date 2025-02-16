@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_GCSB_System : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_GCSB_hd_hints_0()
     {
-        TestInst(GCSB(DSYNC), Arm64InstructionId.GCSB_hd_hints, Arm64Mnemonic.GCSB, "GCSB DSYNC");
+        TestInst(GCSB(DSYNC), asm => asm.GCSB(DSYNC), Arm64InstructionId.GCSB_hd_hints, Arm64Mnemonic.GCSB, "GCSB DSYNC");
     }
 }

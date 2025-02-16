@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_BRB_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_BRB_sys_cr_systeminstrs_0()
     {
-        TestInst(BRB(IALL), Arm64InstructionId.BRB_sys_cr_systeminstrs, Arm64Mnemonic.BRB, "BRB IALL");
+        TestInst(BRB(IALL), asm => asm.BRB(IALL), Arm64InstructionId.BRB_sys_cr_systeminstrs, Arm64Mnemonic.BRB, "BRB IALL");
     }
 }

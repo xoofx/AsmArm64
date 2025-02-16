@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_BFI_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BFI_bfm_32m_bitfield_0()
     {
-        TestInst(BFI(W0, W1, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI W0, W1, #5, #1");
-        TestInst(BFI(W15, W1, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI W15, W1, #5, #1");
-        TestInst(BFI(WZR, W1, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI WZR, W1, #5, #1");
-        TestInst(BFI(W0, W16, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI W0, W16, #5, #1");
-        TestInst(BFI(W15, W16, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI W15, W16, #5, #1");
-        TestInst(BFI(WZR, W16, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI WZR, W16, #5, #1");
-        TestInst(BFI(W0, WZR, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC W0, #5, #1");
-        TestInst(BFI(W15, WZR, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC W15, #5, #1");
-        TestInst(BFI(WZR, WZR, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC WZR, #5, #1");
+        TestInst(BFI(W0, W1, 5, 1), asm => asm.BFI(W0, W1, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI W0, W1, #5, #1");
+        TestInst(BFI(W15, W1, 5, 1), asm => asm.BFI(W15, W1, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI W15, W1, #5, #1");
+        TestInst(BFI(WZR, W1, 5, 1), asm => asm.BFI(WZR, W1, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI WZR, W1, #5, #1");
+        TestInst(BFI(W0, W16, 5, 1), asm => asm.BFI(W0, W16, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI W0, W16, #5, #1");
+        TestInst(BFI(W15, W16, 5, 1), asm => asm.BFI(W15, W16, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI W15, W16, #5, #1");
+        TestInst(BFI(WZR, W16, 5, 1), asm => asm.BFI(WZR, W16, 5, 1), Arm64InstructionId.BFI_bfm_32m_bitfield, Arm64Mnemonic.BFI, "BFI WZR, W16, #5, #1");
+        TestInst(BFI(W0, WZR, 5, 1), asm => asm.BFI(W0, WZR, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC W0, #5, #1");
+        TestInst(BFI(W15, WZR, 5, 1), asm => asm.BFI(W15, WZR, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC W15, #5, #1");
+        TestInst(BFI(WZR, WZR, 5, 1), asm => asm.BFI(WZR, WZR, 5, 1), Arm64InstructionId.BFC_bfm_32m_bitfield, Arm64Mnemonic.BFC, "BFC WZR, #5, #1");
     }
     
     /// <summary>
@@ -41,11 +40,11 @@ public class Arm64InstructionFactoryTests_BFI_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_BFI_bfm_64m_bitfield_1()
     {
-        TestInst(BFI(X0, X1, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI X0, X1, #5, #1");
-        TestInst(BFI(X15, X1, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI X15, X1, #5, #1");
-        TestInst(BFI(XZR, X1, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI XZR, X1, #5, #1");
-        TestInst(BFI(X0, X16, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI X0, X16, #5, #1");
-        TestInst(BFI(X15, X16, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI X15, X16, #5, #1");
-        TestInst(BFI(XZR, X16, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI XZR, X16, #5, #1");
+        TestInst(BFI(X0, X1, 5, 1), asm => asm.BFI(X0, X1, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI X0, X1, #5, #1");
+        TestInst(BFI(X15, X1, 5, 1), asm => asm.BFI(X15, X1, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI X15, X1, #5, #1");
+        TestInst(BFI(XZR, X1, 5, 1), asm => asm.BFI(XZR, X1, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI XZR, X1, #5, #1");
+        TestInst(BFI(X0, X16, 5, 1), asm => asm.BFI(X0, X16, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI X0, X16, #5, #1");
+        TestInst(BFI(X15, X16, 5, 1), asm => asm.BFI(X15, X16, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI X15, X16, #5, #1");
+        TestInst(BFI(XZR, X16, 5, 1), asm => asm.BFI(XZR, X16, 5, 1), Arm64InstructionId.BFI_bfm_64m_bitfield, Arm64Mnemonic.BFI, "BFI XZR, X16, #5, #1");
     }
 }

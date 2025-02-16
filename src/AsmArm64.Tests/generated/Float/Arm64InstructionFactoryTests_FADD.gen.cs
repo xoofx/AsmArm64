@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_FADD_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FADD_h_floatdp2_0()
     {
-        TestInst(FADD(H0, H1, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H1, H2");
-        TestInst(FADD(H31, H1, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H1, H2");
-        TestInst(FADD(H0, H31, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H31, H2");
-        TestInst(FADD(H31, H31, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H31, H2");
-        TestInst(FADD(H0, H1, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H1, H31");
-        TestInst(FADD(H31, H1, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H1, H31");
-        TestInst(FADD(H0, H31, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H31, H31");
-        TestInst(FADD(H31, H31, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H31, H31");
+        TestInst(FADD(H0, H1, H2), asm => asm.FADD(H0, H1, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H1, H2");
+        TestInst(FADD(H31, H1, H2), asm => asm.FADD(H31, H1, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H1, H2");
+        TestInst(FADD(H0, H31, H2), asm => asm.FADD(H0, H31, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H31, H2");
+        TestInst(FADD(H31, H31, H2), asm => asm.FADD(H31, H31, H2), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H31, H2");
+        TestInst(FADD(H0, H1, H31), asm => asm.FADD(H0, H1, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H1, H31");
+        TestInst(FADD(H31, H1, H31), asm => asm.FADD(H31, H1, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H1, H31");
+        TestInst(FADD(H0, H31, H31), asm => asm.FADD(H0, H31, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H0, H31, H31");
+        TestInst(FADD(H31, H31, H31), asm => asm.FADD(H31, H31, H31), Arm64InstructionId.FADD_h_floatdp2, Arm64Mnemonic.FADD, "FADD H31, H31, H31");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_FADD_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FADD_s_floatdp2_1()
     {
-        TestInst(FADD(S0, S1, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S1, S2");
-        TestInst(FADD(S31, S1, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S1, S2");
-        TestInst(FADD(S0, S31, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S31, S2");
-        TestInst(FADD(S31, S31, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S31, S2");
-        TestInst(FADD(S0, S1, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S1, S31");
-        TestInst(FADD(S31, S1, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S1, S31");
-        TestInst(FADD(S0, S31, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S31, S31");
-        TestInst(FADD(S31, S31, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S31, S31");
+        TestInst(FADD(S0, S1, S2), asm => asm.FADD(S0, S1, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S1, S2");
+        TestInst(FADD(S31, S1, S2), asm => asm.FADD(S31, S1, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S1, S2");
+        TestInst(FADD(S0, S31, S2), asm => asm.FADD(S0, S31, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S31, S2");
+        TestInst(FADD(S31, S31, S2), asm => asm.FADD(S31, S31, S2), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S31, S2");
+        TestInst(FADD(S0, S1, S31), asm => asm.FADD(S0, S1, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S1, S31");
+        TestInst(FADD(S31, S1, S31), asm => asm.FADD(S31, S1, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S1, S31");
+        TestInst(FADD(S0, S31, S31), asm => asm.FADD(S0, S31, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S0, S31, S31");
+        TestInst(FADD(S31, S31, S31), asm => asm.FADD(S31, S31, S31), Arm64InstructionId.FADD_s_floatdp2, Arm64Mnemonic.FADD, "FADD S31, S31, S31");
     }
     
     /// <summary>
@@ -56,13 +55,13 @@ public class Arm64InstructionFactoryTests_FADD_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FADD_d_floatdp2_2()
     {
-        TestInst(FADD(D0, D1, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D1, D2");
-        TestInst(FADD(D31, D1, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D1, D2");
-        TestInst(FADD(D0, D31, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D31, D2");
-        TestInst(FADD(D31, D31, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D31, D2");
-        TestInst(FADD(D0, D1, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D1, D31");
-        TestInst(FADD(D31, D1, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D1, D31");
-        TestInst(FADD(D0, D31, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D31, D31");
-        TestInst(FADD(D31, D31, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D31, D31");
+        TestInst(FADD(D0, D1, D2), asm => asm.FADD(D0, D1, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D1, D2");
+        TestInst(FADD(D31, D1, D2), asm => asm.FADD(D31, D1, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D1, D2");
+        TestInst(FADD(D0, D31, D2), asm => asm.FADD(D0, D31, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D31, D2");
+        TestInst(FADD(D31, D31, D2), asm => asm.FADD(D31, D31, D2), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D31, D2");
+        TestInst(FADD(D0, D1, D31), asm => asm.FADD(D0, D1, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D1, D31");
+        TestInst(FADD(D31, D1, D31), asm => asm.FADD(D31, D1, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D1, D31");
+        TestInst(FADD(D0, D31, D31), asm => asm.FADD(D0, D31, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D0, D31, D31");
+        TestInst(FADD(D31, D31, D31), asm => asm.FADD(D31, D31, D31), Arm64InstructionId.FADD_d_floatdp2, Arm64Mnemonic.FADD, "FADD D31, D31, D31");
     }
 }

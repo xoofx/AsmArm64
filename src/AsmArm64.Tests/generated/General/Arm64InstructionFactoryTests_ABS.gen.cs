@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -23,15 +22,15 @@ public class Arm64InstructionFactoryTests_ABS_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ABS_32_dp_1src_0()
     {
-        TestInst(ABS(W0, W1), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W0, W1");
-        TestInst(ABS(W15, W1), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W15, W1");
-        TestInst(ABS(WZR, W1), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS WZR, W1");
-        TestInst(ABS(W0, W16), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W0, W16");
-        TestInst(ABS(W15, W16), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W15, W16");
-        TestInst(ABS(WZR, W16), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS WZR, W16");
-        TestInst(ABS(W0, WZR), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W0, WZR");
-        TestInst(ABS(W15, WZR), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W15, WZR");
-        TestInst(ABS(WZR, WZR), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS WZR, WZR");
+        TestInst(ABS(W0, W1), asm => asm.ABS(W0, W1), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W0, W1");
+        TestInst(ABS(W15, W1), asm => asm.ABS(W15, W1), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W15, W1");
+        TestInst(ABS(WZR, W1), asm => asm.ABS(WZR, W1), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS WZR, W1");
+        TestInst(ABS(W0, W16), asm => asm.ABS(W0, W16), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W0, W16");
+        TestInst(ABS(W15, W16), asm => asm.ABS(W15, W16), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W15, W16");
+        TestInst(ABS(WZR, W16), asm => asm.ABS(WZR, W16), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS WZR, W16");
+        TestInst(ABS(W0, WZR), asm => asm.ABS(W0, WZR), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W0, WZR");
+        TestInst(ABS(W15, WZR), asm => asm.ABS(W15, WZR), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS W15, WZR");
+        TestInst(ABS(WZR, WZR), asm => asm.ABS(WZR, WZR), Arm64InstructionId.ABS_32_dp_1src, Arm64Mnemonic.ABS, "ABS WZR, WZR");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_ABS_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ABS_64_dp_1src_1()
     {
-        TestInst(ABS(X0, X1), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X0, X1");
-        TestInst(ABS(X15, X1), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X15, X1");
-        TestInst(ABS(XZR, X1), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS XZR, X1");
-        TestInst(ABS(X0, X16), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X0, X16");
-        TestInst(ABS(X15, X16), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X15, X16");
-        TestInst(ABS(XZR, X16), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS XZR, X16");
-        TestInst(ABS(X0, XZR), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X0, XZR");
-        TestInst(ABS(X15, XZR), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X15, XZR");
-        TestInst(ABS(XZR, XZR), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS XZR, XZR");
+        TestInst(ABS(X0, X1), asm => asm.ABS(X0, X1), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X0, X1");
+        TestInst(ABS(X15, X1), asm => asm.ABS(X15, X1), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X15, X1");
+        TestInst(ABS(XZR, X1), asm => asm.ABS(XZR, X1), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS XZR, X1");
+        TestInst(ABS(X0, X16), asm => asm.ABS(X0, X16), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X0, X16");
+        TestInst(ABS(X15, X16), asm => asm.ABS(X15, X16), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X15, X16");
+        TestInst(ABS(XZR, X16), asm => asm.ABS(XZR, X16), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS XZR, X16");
+        TestInst(ABS(X0, XZR), asm => asm.ABS(X0, XZR), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X0, XZR");
+        TestInst(ABS(X15, XZR), asm => asm.ABS(X15, XZR), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS X15, XZR");
+        TestInst(ABS(XZR, XZR), asm => asm.ABS(XZR, XZR), Arm64InstructionId.ABS_64_dp_1src, Arm64Mnemonic.ABS, "ABS XZR, XZR");
     }
 }

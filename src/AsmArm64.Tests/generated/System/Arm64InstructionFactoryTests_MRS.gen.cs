@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_MRS_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_MRS_rs_systemmove_0()
     {
-        TestInst(MRS(X0, ACCDATA_EL1), Arm64InstructionId.MRS_rs_systemmove, Arm64Mnemonic.MRS, "MRS X0, ACCDATA_EL1");
-        TestInst(MRS(X15, ACCDATA_EL1), Arm64InstructionId.MRS_rs_systemmove, Arm64Mnemonic.MRS, "MRS X15, ACCDATA_EL1");
-        TestInst(MRS(XZR, ACCDATA_EL1), Arm64InstructionId.MRS_rs_systemmove, Arm64Mnemonic.MRS, "MRS XZR, ACCDATA_EL1");
+        TestInst(MRS(X0, ACCDATA_EL1), asm => asm.MRS(X0, ACCDATA_EL1), Arm64InstructionId.MRS_rs_systemmove, Arm64Mnemonic.MRS, "MRS X0, ACCDATA_EL1");
+        TestInst(MRS(X15, ACCDATA_EL1), asm => asm.MRS(X15, ACCDATA_EL1), Arm64InstructionId.MRS_rs_systemmove, Arm64Mnemonic.MRS, "MRS X15, ACCDATA_EL1");
+        TestInst(MRS(XZR, ACCDATA_EL1), asm => asm.MRS(XZR, ACCDATA_EL1), Arm64InstructionId.MRS_rs_systemmove, Arm64Mnemonic.MRS, "MRS XZR, ACCDATA_EL1");
     }
 }

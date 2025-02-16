@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_AXFLAG_System : Arm64InstructionFactor
     [TestMethod]
     public void Test_AXFLAG_m_pstate_0()
     {
-        TestInst(AXFLAG(), Arm64InstructionId.AXFLAG_m_pstate, Arm64Mnemonic.AXFLAG, "AXFLAG");
+        TestInst(AXFLAG(), asm => asm.AXFLAG(), Arm64InstructionId.AXFLAG_m_pstate, Arm64Mnemonic.AXFLAG, "AXFLAG");
     }
 }

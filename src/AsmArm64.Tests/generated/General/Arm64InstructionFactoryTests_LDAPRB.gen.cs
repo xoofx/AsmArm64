@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_LDAPRB_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDAPRB_32l_memop_0()
     {
-        TestInst(LDAPRB(W0, _[X2]), Arm64InstructionId.LDAPRB_32l_memop, Arm64Mnemonic.LDAPRB, "LDAPRB W0, [X2]");
-        TestInst(LDAPRB(W15, _[X2]), Arm64InstructionId.LDAPRB_32l_memop, Arm64Mnemonic.LDAPRB, "LDAPRB W15, [X2]");
-        TestInst(LDAPRB(WZR, _[X2]), Arm64InstructionId.LDAPRB_32l_memop, Arm64Mnemonic.LDAPRB, "LDAPRB WZR, [X2]");
+        TestInst(LDAPRB(W0, _[X2]), asm => asm.LDAPRB(W0, _[X2]), Arm64InstructionId.LDAPRB_32l_memop, Arm64Mnemonic.LDAPRB, "LDAPRB W0, [X2]");
+        TestInst(LDAPRB(W15, _[X2]), asm => asm.LDAPRB(W15, _[X2]), Arm64InstructionId.LDAPRB_32l_memop, Arm64Mnemonic.LDAPRB, "LDAPRB W15, [X2]");
+        TestInst(LDAPRB(WZR, _[X2]), asm => asm.LDAPRB(WZR, _[X2]), Arm64InstructionId.LDAPRB_32l_memop, Arm64Mnemonic.LDAPRB, "LDAPRB WZR, [X2]");
     }
 }

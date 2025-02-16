@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_ERETAB_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_ERETAB_64e_branch_reg_0()
     {
-        TestInst(ERETAB(), Arm64InstructionId.ERETAB_64e_branch_reg, Arm64Mnemonic.ERETAB, "ERETAB");
+        TestInst(ERETAB(), asm => asm.ERETAB(), Arm64InstructionId.ERETAB_64e_branch_reg, Arm64Mnemonic.ERETAB, "ERETAB");
     }
 }

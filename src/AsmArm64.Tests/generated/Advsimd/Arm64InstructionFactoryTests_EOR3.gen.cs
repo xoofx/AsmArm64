@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,21 +23,21 @@ public class Arm64InstructionFactoryTests_EOR3_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_EOR3_vvv16_crypto4_0()
     {
-        TestInst(EOR3(V0.T_16B, V1.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V1.16B, V2.16B, V3.16B");
-        TestInst(EOR3(V30.T_16B, V1.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V1.16B, V2.16B, V3.16B");
-        TestInst(EOR3(V0.T_16B, V31.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V31.16B, V2.16B, V3.16B");
-        TestInst(EOR3(V30.T_16B, V31.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V31.16B, V2.16B, V3.16B");
-        TestInst(EOR3(V0.T_16B, V1.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V1.16B, V0.16B, V3.16B");
-        TestInst(EOR3(V30.T_16B, V1.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V1.16B, V0.16B, V3.16B");
-        TestInst(EOR3(V0.T_16B, V31.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V31.16B, V0.16B, V3.16B");
-        TestInst(EOR3(V30.T_16B, V31.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V31.16B, V0.16B, V3.16B");
-        TestInst(EOR3(V0.T_16B, V1.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V1.16B, V2.16B, V1.16B");
-        TestInst(EOR3(V30.T_16B, V1.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V1.16B, V2.16B, V1.16B");
-        TestInst(EOR3(V0.T_16B, V31.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V31.16B, V2.16B, V1.16B");
-        TestInst(EOR3(V30.T_16B, V31.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V31.16B, V2.16B, V1.16B");
-        TestInst(EOR3(V0.T_16B, V1.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V1.16B, V0.16B, V1.16B");
-        TestInst(EOR3(V30.T_16B, V1.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V1.16B, V0.16B, V1.16B");
-        TestInst(EOR3(V0.T_16B, V31.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V31.16B, V0.16B, V1.16B");
-        TestInst(EOR3(V30.T_16B, V31.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V31.16B, V0.16B, V1.16B");
+        TestInst(EOR3(V0.T_16B, V1.T_16B, V2.T_16B, V3.T_16B), asm => asm.EOR3(V0.T_16B, V1.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V1.16B, V2.16B, V3.16B");
+        TestInst(EOR3(V30.T_16B, V1.T_16B, V2.T_16B, V3.T_16B), asm => asm.EOR3(V30.T_16B, V1.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V1.16B, V2.16B, V3.16B");
+        TestInst(EOR3(V0.T_16B, V31.T_16B, V2.T_16B, V3.T_16B), asm => asm.EOR3(V0.T_16B, V31.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V31.16B, V2.16B, V3.16B");
+        TestInst(EOR3(V30.T_16B, V31.T_16B, V2.T_16B, V3.T_16B), asm => asm.EOR3(V30.T_16B, V31.T_16B, V2.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V31.16B, V2.16B, V3.16B");
+        TestInst(EOR3(V0.T_16B, V1.T_16B, V0.T_16B, V3.T_16B), asm => asm.EOR3(V0.T_16B, V1.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V1.16B, V0.16B, V3.16B");
+        TestInst(EOR3(V30.T_16B, V1.T_16B, V0.T_16B, V3.T_16B), asm => asm.EOR3(V30.T_16B, V1.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V1.16B, V0.16B, V3.16B");
+        TestInst(EOR3(V0.T_16B, V31.T_16B, V0.T_16B, V3.T_16B), asm => asm.EOR3(V0.T_16B, V31.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V31.16B, V0.16B, V3.16B");
+        TestInst(EOR3(V30.T_16B, V31.T_16B, V0.T_16B, V3.T_16B), asm => asm.EOR3(V30.T_16B, V31.T_16B, V0.T_16B, V3.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V31.16B, V0.16B, V3.16B");
+        TestInst(EOR3(V0.T_16B, V1.T_16B, V2.T_16B, V1.T_16B), asm => asm.EOR3(V0.T_16B, V1.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V1.16B, V2.16B, V1.16B");
+        TestInst(EOR3(V30.T_16B, V1.T_16B, V2.T_16B, V1.T_16B), asm => asm.EOR3(V30.T_16B, V1.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V1.16B, V2.16B, V1.16B");
+        TestInst(EOR3(V0.T_16B, V31.T_16B, V2.T_16B, V1.T_16B), asm => asm.EOR3(V0.T_16B, V31.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V31.16B, V2.16B, V1.16B");
+        TestInst(EOR3(V30.T_16B, V31.T_16B, V2.T_16B, V1.T_16B), asm => asm.EOR3(V30.T_16B, V31.T_16B, V2.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V31.16B, V2.16B, V1.16B");
+        TestInst(EOR3(V0.T_16B, V1.T_16B, V0.T_16B, V1.T_16B), asm => asm.EOR3(V0.T_16B, V1.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V1.16B, V0.16B, V1.16B");
+        TestInst(EOR3(V30.T_16B, V1.T_16B, V0.T_16B, V1.T_16B), asm => asm.EOR3(V30.T_16B, V1.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V1.16B, V0.16B, V1.16B");
+        TestInst(EOR3(V0.T_16B, V31.T_16B, V0.T_16B, V1.T_16B), asm => asm.EOR3(V0.T_16B, V31.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V0.16B, V31.16B, V0.16B, V1.16B");
+        TestInst(EOR3(V30.T_16B, V31.T_16B, V0.T_16B, V1.T_16B), asm => asm.EOR3(V30.T_16B, V31.T_16B, V0.T_16B, V1.T_16B), Arm64InstructionId.EOR3_vvv16_crypto4, Arm64Mnemonic.EOR3, "EOR3 V30.16B, V31.16B, V0.16B, V1.16B");
     }
 }

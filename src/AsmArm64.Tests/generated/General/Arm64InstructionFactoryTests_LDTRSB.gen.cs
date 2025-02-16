@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDTRSB_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDTRSB_32_ldst_unpriv_0()
     {
-        TestInst(LDTRSB(W0, _[X2, 5]), Arm64InstructionId.LDTRSB_32_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB W0, [X2, #5]");
-        TestInst(LDTRSB(W15, _[X2, 5]), Arm64InstructionId.LDTRSB_32_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB W15, [X2, #5]");
-        TestInst(LDTRSB(WZR, _[X2, 5]), Arm64InstructionId.LDTRSB_32_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB WZR, [X2, #5]");
+        TestInst(LDTRSB(W0, _[X2, 5]), asm => asm.LDTRSB(W0, _[X2, 5]), Arm64InstructionId.LDTRSB_32_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB W0, [X2, #5]");
+        TestInst(LDTRSB(W15, _[X2, 5]), asm => asm.LDTRSB(W15, _[X2, 5]), Arm64InstructionId.LDTRSB_32_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB W15, [X2, #5]");
+        TestInst(LDTRSB(WZR, _[X2, 5]), asm => asm.LDTRSB(WZR, _[X2, 5]), Arm64InstructionId.LDTRSB_32_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_LDTRSB_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDTRSB_64_ldst_unpriv_1()
     {
-        TestInst(LDTRSB(X0, _[X2, 5]), Arm64InstructionId.LDTRSB_64_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB X0, [X2, #5]");
-        TestInst(LDTRSB(X15, _[X2, 5]), Arm64InstructionId.LDTRSB_64_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB X15, [X2, #5]");
-        TestInst(LDTRSB(XZR, _[X2, 5]), Arm64InstructionId.LDTRSB_64_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB XZR, [X2, #5]");
+        TestInst(LDTRSB(X0, _[X2, 5]), asm => asm.LDTRSB(X0, _[X2, 5]), Arm64InstructionId.LDTRSB_64_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB X0, [X2, #5]");
+        TestInst(LDTRSB(X15, _[X2, 5]), asm => asm.LDTRSB(X15, _[X2, 5]), Arm64InstructionId.LDTRSB_64_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB X15, [X2, #5]");
+        TestInst(LDTRSB(XZR, _[X2, 5]), asm => asm.LDTRSB(XZR, _[X2, 5]), Arm64InstructionId.LDTRSB_64_ldst_unpriv, Arm64Mnemonic.LDTRSB, "LDTRSB XZR, [X2, #5]");
     }
 }

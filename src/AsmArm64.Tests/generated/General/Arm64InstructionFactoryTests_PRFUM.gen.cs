@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_PRFUM_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_PRFUM_p_ldst_unscaled_0()
     {
-        TestInst(PRFUM(PLDL1KEEP, _[X2, 5]), Arm64InstructionId.PRFUM_p_ldst_unscaled, Arm64Mnemonic.PRFUM, "PRFUM PLDL1KEEP, [X2, #5]");
+        TestInst(PRFUM(PLDL1KEEP, _[X2, 5]), asm => asm.PRFUM(PLDL1KEEP, _[X2, 5]), Arm64InstructionId.PRFUM_p_ldst_unscaled, Arm64Mnemonic.PRFUM, "PRFUM PLDL1KEEP, [X2, #5]");
     }
 }

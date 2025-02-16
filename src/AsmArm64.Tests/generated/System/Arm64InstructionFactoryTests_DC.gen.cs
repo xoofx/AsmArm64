@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_DC_System : Arm64InstructionFactoryTes
     [TestMethod]
     public void Test_DC_sys_cr_systeminstrs_0()
     {
-        TestInst(DC(CGDSW, X1), Arm64InstructionId.DC_sys_cr_systeminstrs, Arm64Mnemonic.DC, "DC cgdsw, X1");
-        TestInst(DC(CGDSW, X16), Arm64InstructionId.DC_sys_cr_systeminstrs, Arm64Mnemonic.DC, "DC cgdsw, X16");
-        TestInst(DC(CGDSW, XZR), Arm64InstructionId.DC_sys_cr_systeminstrs, Arm64Mnemonic.DC, "DC cgdsw, XZR");
+        TestInst(DC(CGDSW, X1), asm => asm.DC(CGDSW, X1), Arm64InstructionId.DC_sys_cr_systeminstrs, Arm64Mnemonic.DC, "DC cgdsw, X1");
+        TestInst(DC(CGDSW, X16), asm => asm.DC(CGDSW, X16), Arm64InstructionId.DC_sys_cr_systeminstrs, Arm64Mnemonic.DC, "DC cgdsw, X16");
+        TestInst(DC(CGDSW, XZR), asm => asm.DC(CGDSW, XZR), Arm64InstructionId.DC_sys_cr_systeminstrs, Arm64Mnemonic.DC, "DC cgdsw, XZR");
     }
 }

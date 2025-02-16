@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_CPYFEWTRN_General : Arm64InstructionFa
     [TestMethod]
     public void Test_CPYFEWTRN_cpy_memcms_0()
     {
-        TestInst(CPYFEWTRN(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYFEWTRN_cpy_memcms, Arm64Mnemonic.CPYFEWTRN, "CPYFEWTRN [X1]!, [X2]!, X2");
-        TestInst(CPYFEWTRN(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYFEWTRN_cpy_memcms, Arm64Mnemonic.CPYFEWTRN, "CPYFEWTRN [X1]!, [X2]!, X17");
-        TestInst(CPYFEWTRN(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYFEWTRN_cpy_memcms, Arm64Mnemonic.CPYFEWTRN, "CPYFEWTRN [X1]!, [X2]!, XZR");
+        TestInst(CPYFEWTRN(_[X1].Pre, _[X2].Pre, X2), asm => asm.CPYFEWTRN(_[X1].Pre, _[X2].Pre, X2), Arm64InstructionId.CPYFEWTRN_cpy_memcms, Arm64Mnemonic.CPYFEWTRN, "CPYFEWTRN [X1]!, [X2]!, X2");
+        TestInst(CPYFEWTRN(_[X1].Pre, _[X2].Pre, X17), asm => asm.CPYFEWTRN(_[X1].Pre, _[X2].Pre, X17), Arm64InstructionId.CPYFEWTRN_cpy_memcms, Arm64Mnemonic.CPYFEWTRN, "CPYFEWTRN [X1]!, [X2]!, X17");
+        TestInst(CPYFEWTRN(_[X1].Pre, _[X2].Pre, XZR), asm => asm.CPYFEWTRN(_[X1].Pre, _[X2].Pre, XZR), Arm64InstructionId.CPYFEWTRN_cpy_memcms, Arm64Mnemonic.CPYFEWTRN, "CPYFEWTRN [X1]!, [X2]!, XZR");
     }
 }

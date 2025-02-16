@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_UXTH_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_UXTH_ubfm_32m_bitfield_0()
     {
-        TestInst(UXTH(W0, W1), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W0, W1");
-        TestInst(UXTH(W15, W1), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W15, W1");
-        TestInst(UXTH(WZR, W1), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH WZR, W1");
-        TestInst(UXTH(W0, W16), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W0, W16");
-        TestInst(UXTH(W15, W16), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W15, W16");
-        TestInst(UXTH(WZR, W16), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH WZR, W16");
-        TestInst(UXTH(W0, WZR), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W0, WZR");
-        TestInst(UXTH(W15, WZR), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W15, WZR");
-        TestInst(UXTH(WZR, WZR), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH WZR, WZR");
+        TestInst(UXTH(W0, W1), asm => asm.UXTH(W0, W1), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W0, W1");
+        TestInst(UXTH(W15, W1), asm => asm.UXTH(W15, W1), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W15, W1");
+        TestInst(UXTH(WZR, W1), asm => asm.UXTH(WZR, W1), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH WZR, W1");
+        TestInst(UXTH(W0, W16), asm => asm.UXTH(W0, W16), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W0, W16");
+        TestInst(UXTH(W15, W16), asm => asm.UXTH(W15, W16), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W15, W16");
+        TestInst(UXTH(WZR, W16), asm => asm.UXTH(WZR, W16), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH WZR, W16");
+        TestInst(UXTH(W0, WZR), asm => asm.UXTH(W0, WZR), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W0, WZR");
+        TestInst(UXTH(W15, WZR), asm => asm.UXTH(W15, WZR), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH W15, WZR");
+        TestInst(UXTH(WZR, WZR), asm => asm.UXTH(WZR, WZR), Arm64InstructionId.UXTH_ubfm_32m_bitfield, Arm64Mnemonic.UXTH, "UXTH WZR, WZR");
     }
 }

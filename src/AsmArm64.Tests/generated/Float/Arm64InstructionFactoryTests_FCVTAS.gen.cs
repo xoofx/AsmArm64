@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FCVTAS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTAS_sisd_32h_0()
     {
-        TestInst(FCVTAS(S0, H1), Arm64InstructionId.FCVTAS_sisd_32h, Arm64Mnemonic.FCVTAS, "FCVTAS S0, H1");
-        TestInst(FCVTAS(S31, H1), Arm64InstructionId.FCVTAS_sisd_32h, Arm64Mnemonic.FCVTAS, "FCVTAS S31, H1");
-        TestInst(FCVTAS(S0, H31), Arm64InstructionId.FCVTAS_sisd_32h, Arm64Mnemonic.FCVTAS, "FCVTAS S0, H31");
-        TestInst(FCVTAS(S31, H31), Arm64InstructionId.FCVTAS_sisd_32h, Arm64Mnemonic.FCVTAS, "FCVTAS S31, H31");
+        TestInst(FCVTAS(S0, H1), asm => asm.FCVTAS(S0, H1), Arm64InstructionId.FCVTAS_sisd_32h, Arm64Mnemonic.FCVTAS, "FCVTAS S0, H1");
+        TestInst(FCVTAS(S31, H1), asm => asm.FCVTAS(S31, H1), Arm64InstructionId.FCVTAS_sisd_32h, Arm64Mnemonic.FCVTAS, "FCVTAS S31, H1");
+        TestInst(FCVTAS(S0, H31), asm => asm.FCVTAS(S0, H31), Arm64InstructionId.FCVTAS_sisd_32h, Arm64Mnemonic.FCVTAS, "FCVTAS S0, H31");
+        TestInst(FCVTAS(S31, H31), asm => asm.FCVTAS(S31, H31), Arm64InstructionId.FCVTAS_sisd_32h, Arm64Mnemonic.FCVTAS, "FCVTAS S31, H31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FCVTAS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTAS_sisd_64h_1()
     {
-        TestInst(FCVTAS(D0, H1), Arm64InstructionId.FCVTAS_sisd_64h, Arm64Mnemonic.FCVTAS, "FCVTAS D0, H1");
-        TestInst(FCVTAS(D31, H1), Arm64InstructionId.FCVTAS_sisd_64h, Arm64Mnemonic.FCVTAS, "FCVTAS D31, H1");
-        TestInst(FCVTAS(D0, H31), Arm64InstructionId.FCVTAS_sisd_64h, Arm64Mnemonic.FCVTAS, "FCVTAS D0, H31");
-        TestInst(FCVTAS(D31, H31), Arm64InstructionId.FCVTAS_sisd_64h, Arm64Mnemonic.FCVTAS, "FCVTAS D31, H31");
+        TestInst(FCVTAS(D0, H1), asm => asm.FCVTAS(D0, H1), Arm64InstructionId.FCVTAS_sisd_64h, Arm64Mnemonic.FCVTAS, "FCVTAS D0, H1");
+        TestInst(FCVTAS(D31, H1), asm => asm.FCVTAS(D31, H1), Arm64InstructionId.FCVTAS_sisd_64h, Arm64Mnemonic.FCVTAS, "FCVTAS D31, H1");
+        TestInst(FCVTAS(D0, H31), asm => asm.FCVTAS(D0, H31), Arm64InstructionId.FCVTAS_sisd_64h, Arm64Mnemonic.FCVTAS, "FCVTAS D0, H31");
+        TestInst(FCVTAS(D31, H31), asm => asm.FCVTAS(D31, H31), Arm64InstructionId.FCVTAS_sisd_64h, Arm64Mnemonic.FCVTAS, "FCVTAS D31, H31");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_FCVTAS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTAS_sisd_64s_2()
     {
-        TestInst(FCVTAS(D0, S1), Arm64InstructionId.FCVTAS_sisd_64s, Arm64Mnemonic.FCVTAS, "FCVTAS D0, S1");
-        TestInst(FCVTAS(D31, S1), Arm64InstructionId.FCVTAS_sisd_64s, Arm64Mnemonic.FCVTAS, "FCVTAS D31, S1");
-        TestInst(FCVTAS(D0, S31), Arm64InstructionId.FCVTAS_sisd_64s, Arm64Mnemonic.FCVTAS, "FCVTAS D0, S31");
-        TestInst(FCVTAS(D31, S31), Arm64InstructionId.FCVTAS_sisd_64s, Arm64Mnemonic.FCVTAS, "FCVTAS D31, S31");
+        TestInst(FCVTAS(D0, S1), asm => asm.FCVTAS(D0, S1), Arm64InstructionId.FCVTAS_sisd_64s, Arm64Mnemonic.FCVTAS, "FCVTAS D0, S1");
+        TestInst(FCVTAS(D31, S1), asm => asm.FCVTAS(D31, S1), Arm64InstructionId.FCVTAS_sisd_64s, Arm64Mnemonic.FCVTAS, "FCVTAS D31, S1");
+        TestInst(FCVTAS(D0, S31), asm => asm.FCVTAS(D0, S31), Arm64InstructionId.FCVTAS_sisd_64s, Arm64Mnemonic.FCVTAS, "FCVTAS D0, S31");
+        TestInst(FCVTAS(D31, S31), asm => asm.FCVTAS(D31, S31), Arm64InstructionId.FCVTAS_sisd_64s, Arm64Mnemonic.FCVTAS, "FCVTAS D31, S31");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_FCVTAS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTAS_sisd_32d_3()
     {
-        TestInst(FCVTAS(S0, D1), Arm64InstructionId.FCVTAS_sisd_32d, Arm64Mnemonic.FCVTAS, "FCVTAS S0, D1");
-        TestInst(FCVTAS(S31, D1), Arm64InstructionId.FCVTAS_sisd_32d, Arm64Mnemonic.FCVTAS, "FCVTAS S31, D1");
-        TestInst(FCVTAS(S0, D31), Arm64InstructionId.FCVTAS_sisd_32d, Arm64Mnemonic.FCVTAS, "FCVTAS S0, D31");
-        TestInst(FCVTAS(S31, D31), Arm64InstructionId.FCVTAS_sisd_32d, Arm64Mnemonic.FCVTAS, "FCVTAS S31, D31");
+        TestInst(FCVTAS(S0, D1), asm => asm.FCVTAS(S0, D1), Arm64InstructionId.FCVTAS_sisd_32d, Arm64Mnemonic.FCVTAS, "FCVTAS S0, D1");
+        TestInst(FCVTAS(S31, D1), asm => asm.FCVTAS(S31, D1), Arm64InstructionId.FCVTAS_sisd_32d, Arm64Mnemonic.FCVTAS, "FCVTAS S31, D1");
+        TestInst(FCVTAS(S0, D31), asm => asm.FCVTAS(S0, D31), Arm64InstructionId.FCVTAS_sisd_32d, Arm64Mnemonic.FCVTAS, "FCVTAS S0, D31");
+        TestInst(FCVTAS(S31, D31), asm => asm.FCVTAS(S31, D31), Arm64InstructionId.FCVTAS_sisd_32d, Arm64Mnemonic.FCVTAS, "FCVTAS S31, D31");
     }
     
     /// <summary>
@@ -72,12 +71,12 @@ public class Arm64InstructionFactoryTests_FCVTAS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTAS_32h_float2int_4()
     {
-        TestInst(FCVTAS(W0, H1), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, H1");
-        TestInst(FCVTAS(W15, H1), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, H1");
-        TestInst(FCVTAS(WZR, H1), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, H1");
-        TestInst(FCVTAS(W0, H31), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, H31");
-        TestInst(FCVTAS(W15, H31), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, H31");
-        TestInst(FCVTAS(WZR, H31), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, H31");
+        TestInst(FCVTAS(W0, H1), asm => asm.FCVTAS(W0, H1), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, H1");
+        TestInst(FCVTAS(W15, H1), asm => asm.FCVTAS(W15, H1), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, H1");
+        TestInst(FCVTAS(WZR, H1), asm => asm.FCVTAS(WZR, H1), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, H1");
+        TestInst(FCVTAS(W0, H31), asm => asm.FCVTAS(W0, H31), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, H31");
+        TestInst(FCVTAS(W15, H31), asm => asm.FCVTAS(W15, H31), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, H31");
+        TestInst(FCVTAS(WZR, H31), asm => asm.FCVTAS(WZR, H31), Arm64InstructionId.FCVTAS_32h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, H31");
     }
     
     /// <summary>
@@ -86,12 +85,12 @@ public class Arm64InstructionFactoryTests_FCVTAS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTAS_64h_float2int_5()
     {
-        TestInst(FCVTAS(X0, H1), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, H1");
-        TestInst(FCVTAS(X15, H1), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, H1");
-        TestInst(FCVTAS(XZR, H1), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, H1");
-        TestInst(FCVTAS(X0, H31), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, H31");
-        TestInst(FCVTAS(X15, H31), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, H31");
-        TestInst(FCVTAS(XZR, H31), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, H31");
+        TestInst(FCVTAS(X0, H1), asm => asm.FCVTAS(X0, H1), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, H1");
+        TestInst(FCVTAS(X15, H1), asm => asm.FCVTAS(X15, H1), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, H1");
+        TestInst(FCVTAS(XZR, H1), asm => asm.FCVTAS(XZR, H1), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, H1");
+        TestInst(FCVTAS(X0, H31), asm => asm.FCVTAS(X0, H31), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, H31");
+        TestInst(FCVTAS(X15, H31), asm => asm.FCVTAS(X15, H31), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, H31");
+        TestInst(FCVTAS(XZR, H31), asm => asm.FCVTAS(XZR, H31), Arm64InstructionId.FCVTAS_64h_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, H31");
     }
     
     /// <summary>
@@ -100,12 +99,12 @@ public class Arm64InstructionFactoryTests_FCVTAS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTAS_32s_float2int_6()
     {
-        TestInst(FCVTAS(W0, S1), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, S1");
-        TestInst(FCVTAS(W15, S1), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, S1");
-        TestInst(FCVTAS(WZR, S1), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, S1");
-        TestInst(FCVTAS(W0, S31), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, S31");
-        TestInst(FCVTAS(W15, S31), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, S31");
-        TestInst(FCVTAS(WZR, S31), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, S31");
+        TestInst(FCVTAS(W0, S1), asm => asm.FCVTAS(W0, S1), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, S1");
+        TestInst(FCVTAS(W15, S1), asm => asm.FCVTAS(W15, S1), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, S1");
+        TestInst(FCVTAS(WZR, S1), asm => asm.FCVTAS(WZR, S1), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, S1");
+        TestInst(FCVTAS(W0, S31), asm => asm.FCVTAS(W0, S31), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, S31");
+        TestInst(FCVTAS(W15, S31), asm => asm.FCVTAS(W15, S31), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, S31");
+        TestInst(FCVTAS(WZR, S31), asm => asm.FCVTAS(WZR, S31), Arm64InstructionId.FCVTAS_32s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, S31");
     }
     
     /// <summary>
@@ -114,12 +113,12 @@ public class Arm64InstructionFactoryTests_FCVTAS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTAS_64s_float2int_7()
     {
-        TestInst(FCVTAS(X0, S1), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, S1");
-        TestInst(FCVTAS(X15, S1), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, S1");
-        TestInst(FCVTAS(XZR, S1), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, S1");
-        TestInst(FCVTAS(X0, S31), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, S31");
-        TestInst(FCVTAS(X15, S31), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, S31");
-        TestInst(FCVTAS(XZR, S31), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, S31");
+        TestInst(FCVTAS(X0, S1), asm => asm.FCVTAS(X0, S1), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, S1");
+        TestInst(FCVTAS(X15, S1), asm => asm.FCVTAS(X15, S1), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, S1");
+        TestInst(FCVTAS(XZR, S1), asm => asm.FCVTAS(XZR, S1), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, S1");
+        TestInst(FCVTAS(X0, S31), asm => asm.FCVTAS(X0, S31), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, S31");
+        TestInst(FCVTAS(X15, S31), asm => asm.FCVTAS(X15, S31), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, S31");
+        TestInst(FCVTAS(XZR, S31), asm => asm.FCVTAS(XZR, S31), Arm64InstructionId.FCVTAS_64s_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, S31");
     }
     
     /// <summary>
@@ -128,12 +127,12 @@ public class Arm64InstructionFactoryTests_FCVTAS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTAS_32d_float2int_8()
     {
-        TestInst(FCVTAS(W0, D1), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, D1");
-        TestInst(FCVTAS(W15, D1), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, D1");
-        TestInst(FCVTAS(WZR, D1), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, D1");
-        TestInst(FCVTAS(W0, D31), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, D31");
-        TestInst(FCVTAS(W15, D31), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, D31");
-        TestInst(FCVTAS(WZR, D31), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, D31");
+        TestInst(FCVTAS(W0, D1), asm => asm.FCVTAS(W0, D1), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, D1");
+        TestInst(FCVTAS(W15, D1), asm => asm.FCVTAS(W15, D1), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, D1");
+        TestInst(FCVTAS(WZR, D1), asm => asm.FCVTAS(WZR, D1), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, D1");
+        TestInst(FCVTAS(W0, D31), asm => asm.FCVTAS(W0, D31), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W0, D31");
+        TestInst(FCVTAS(W15, D31), asm => asm.FCVTAS(W15, D31), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS W15, D31");
+        TestInst(FCVTAS(WZR, D31), asm => asm.FCVTAS(WZR, D31), Arm64InstructionId.FCVTAS_32d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS WZR, D31");
     }
     
     /// <summary>
@@ -142,11 +141,11 @@ public class Arm64InstructionFactoryTests_FCVTAS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTAS_64d_float2int_9()
     {
-        TestInst(FCVTAS(X0, D1), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, D1");
-        TestInst(FCVTAS(X15, D1), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, D1");
-        TestInst(FCVTAS(XZR, D1), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, D1");
-        TestInst(FCVTAS(X0, D31), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, D31");
-        TestInst(FCVTAS(X15, D31), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, D31");
-        TestInst(FCVTAS(XZR, D31), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, D31");
+        TestInst(FCVTAS(X0, D1), asm => asm.FCVTAS(X0, D1), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, D1");
+        TestInst(FCVTAS(X15, D1), asm => asm.FCVTAS(X15, D1), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, D1");
+        TestInst(FCVTAS(XZR, D1), asm => asm.FCVTAS(XZR, D1), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, D1");
+        TestInst(FCVTAS(X0, D31), asm => asm.FCVTAS(X0, D31), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X0, D31");
+        TestInst(FCVTAS(X15, D31), asm => asm.FCVTAS(X15, D31), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS X15, D31");
+        TestInst(FCVTAS(XZR, D31), asm => asm.FCVTAS(XZR, D31), Arm64InstructionId.FCVTAS_64d_float2int, Arm64Mnemonic.FCVTAS, "FCVTAS XZR, D31");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,32 +23,32 @@ public class Arm64InstructionFactoryTests_UMULH_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_UMULH_64_dp_3src_0()
     {
-        TestInst(UMULH(X0, X1, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X1, X2");
-        TestInst(UMULH(X15, X1, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X1, X2");
-        TestInst(UMULH(XZR, X1, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X1, X2");
-        TestInst(UMULH(X0, X16, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X16, X2");
-        TestInst(UMULH(X15, X16, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X16, X2");
-        TestInst(UMULH(XZR, X16, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X16, X2");
-        TestInst(UMULH(X0, XZR, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, XZR, X2");
-        TestInst(UMULH(X15, XZR, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, XZR, X2");
-        TestInst(UMULH(XZR, XZR, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, XZR, X2");
-        TestInst(UMULH(X0, X1, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X1, X17");
-        TestInst(UMULH(X15, X1, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X1, X17");
-        TestInst(UMULH(XZR, X1, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X1, X17");
-        TestInst(UMULH(X0, X16, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X16, X17");
-        TestInst(UMULH(X15, X16, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X16, X17");
-        TestInst(UMULH(XZR, X16, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X16, X17");
-        TestInst(UMULH(X0, XZR, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, XZR, X17");
-        TestInst(UMULH(X15, XZR, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, XZR, X17");
-        TestInst(UMULH(XZR, XZR, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, XZR, X17");
-        TestInst(UMULH(X0, X1, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X1, XZR");
-        TestInst(UMULH(X15, X1, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X1, XZR");
-        TestInst(UMULH(XZR, X1, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X1, XZR");
-        TestInst(UMULH(X0, X16, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X16, XZR");
-        TestInst(UMULH(X15, X16, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X16, XZR");
-        TestInst(UMULH(XZR, X16, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X16, XZR");
-        TestInst(UMULH(X0, XZR, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, XZR, XZR");
-        TestInst(UMULH(X15, XZR, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, XZR, XZR");
-        TestInst(UMULH(XZR, XZR, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, XZR, XZR");
+        TestInst(UMULH(X0, X1, X2), asm => asm.UMULH(X0, X1, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X1, X2");
+        TestInst(UMULH(X15, X1, X2), asm => asm.UMULH(X15, X1, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X1, X2");
+        TestInst(UMULH(XZR, X1, X2), asm => asm.UMULH(XZR, X1, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X1, X2");
+        TestInst(UMULH(X0, X16, X2), asm => asm.UMULH(X0, X16, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X16, X2");
+        TestInst(UMULH(X15, X16, X2), asm => asm.UMULH(X15, X16, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X16, X2");
+        TestInst(UMULH(XZR, X16, X2), asm => asm.UMULH(XZR, X16, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X16, X2");
+        TestInst(UMULH(X0, XZR, X2), asm => asm.UMULH(X0, XZR, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, XZR, X2");
+        TestInst(UMULH(X15, XZR, X2), asm => asm.UMULH(X15, XZR, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, XZR, X2");
+        TestInst(UMULH(XZR, XZR, X2), asm => asm.UMULH(XZR, XZR, X2), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, XZR, X2");
+        TestInst(UMULH(X0, X1, X17), asm => asm.UMULH(X0, X1, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X1, X17");
+        TestInst(UMULH(X15, X1, X17), asm => asm.UMULH(X15, X1, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X1, X17");
+        TestInst(UMULH(XZR, X1, X17), asm => asm.UMULH(XZR, X1, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X1, X17");
+        TestInst(UMULH(X0, X16, X17), asm => asm.UMULH(X0, X16, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X16, X17");
+        TestInst(UMULH(X15, X16, X17), asm => asm.UMULH(X15, X16, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X16, X17");
+        TestInst(UMULH(XZR, X16, X17), asm => asm.UMULH(XZR, X16, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X16, X17");
+        TestInst(UMULH(X0, XZR, X17), asm => asm.UMULH(X0, XZR, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, XZR, X17");
+        TestInst(UMULH(X15, XZR, X17), asm => asm.UMULH(X15, XZR, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, XZR, X17");
+        TestInst(UMULH(XZR, XZR, X17), asm => asm.UMULH(XZR, XZR, X17), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, XZR, X17");
+        TestInst(UMULH(X0, X1, XZR), asm => asm.UMULH(X0, X1, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X1, XZR");
+        TestInst(UMULH(X15, X1, XZR), asm => asm.UMULH(X15, X1, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X1, XZR");
+        TestInst(UMULH(XZR, X1, XZR), asm => asm.UMULH(XZR, X1, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X1, XZR");
+        TestInst(UMULH(X0, X16, XZR), asm => asm.UMULH(X0, X16, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, X16, XZR");
+        TestInst(UMULH(X15, X16, XZR), asm => asm.UMULH(X15, X16, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, X16, XZR");
+        TestInst(UMULH(XZR, X16, XZR), asm => asm.UMULH(XZR, X16, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, X16, XZR");
+        TestInst(UMULH(X0, XZR, XZR), asm => asm.UMULH(X0, XZR, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X0, XZR, XZR");
+        TestInst(UMULH(X15, XZR, XZR), asm => asm.UMULH(X15, XZR, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH X15, XZR, XZR");
+        TestInst(UMULH(XZR, XZR, XZR), asm => asm.UMULH(XZR, XZR, XZR), Arm64InstructionId.UMULH_64_dp_3src, Arm64Mnemonic.UMULH, "UMULH XZR, XZR, XZR");
     }
 }

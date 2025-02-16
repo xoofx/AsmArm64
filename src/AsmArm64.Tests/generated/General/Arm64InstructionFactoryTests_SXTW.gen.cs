@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SXTW_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_SXTW_sbfm_64m_bitfield_0()
     {
-        TestInst(SXTW(X0, W1), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X0, W1");
-        TestInst(SXTW(X15, W1), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X15, W1");
-        TestInst(SXTW(XZR, W1), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW XZR, W1");
-        TestInst(SXTW(X0, W16), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X0, W16");
-        TestInst(SXTW(X15, W16), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X15, W16");
-        TestInst(SXTW(XZR, W16), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW XZR, W16");
-        TestInst(SXTW(X0, WZR), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X0, WZR");
-        TestInst(SXTW(X15, WZR), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X15, WZR");
-        TestInst(SXTW(XZR, WZR), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW XZR, WZR");
+        TestInst(SXTW(X0, W1), asm => asm.SXTW(X0, W1), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X0, W1");
+        TestInst(SXTW(X15, W1), asm => asm.SXTW(X15, W1), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X15, W1");
+        TestInst(SXTW(XZR, W1), asm => asm.SXTW(XZR, W1), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW XZR, W1");
+        TestInst(SXTW(X0, W16), asm => asm.SXTW(X0, W16), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X0, W16");
+        TestInst(SXTW(X15, W16), asm => asm.SXTW(X15, W16), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X15, W16");
+        TestInst(SXTW(XZR, W16), asm => asm.SXTW(XZR, W16), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW XZR, W16");
+        TestInst(SXTW(X0, WZR), asm => asm.SXTW(X0, WZR), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X0, WZR");
+        TestInst(SXTW(X15, WZR), asm => asm.SXTW(X15, WZR), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW X15, WZR");
+        TestInst(SXTW(XZR, WZR), asm => asm.SXTW(XZR, WZR), Arm64InstructionId.SXTW_sbfm_64m_bitfield, Arm64Mnemonic.SXTW, "SXTW XZR, WZR");
     }
 }

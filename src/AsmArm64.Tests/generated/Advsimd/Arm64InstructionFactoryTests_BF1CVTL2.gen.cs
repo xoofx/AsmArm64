@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_BF1CVTL2_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_BF1CVTL2_asimdmisc_v_0()
     {
-        TestInst(BF1CVTL2(V0.T_8H, V1.T_16B), Arm64InstructionId.BF1CVTL2_asimdmisc_v, Arm64Mnemonic.BF1CVTL2, "BF1CVTL2 V0.8H, V1.16B");
-        TestInst(BF1CVTL2(V30.T_8H, V1.T_16B), Arm64InstructionId.BF1CVTL2_asimdmisc_v, Arm64Mnemonic.BF1CVTL2, "BF1CVTL2 V30.8H, V1.16B");
-        TestInst(BF1CVTL2(V0.T_8H, V31.T_16B), Arm64InstructionId.BF1CVTL2_asimdmisc_v, Arm64Mnemonic.BF1CVTL2, "BF1CVTL2 V0.8H, V31.16B");
-        TestInst(BF1CVTL2(V30.T_8H, V31.T_16B), Arm64InstructionId.BF1CVTL2_asimdmisc_v, Arm64Mnemonic.BF1CVTL2, "BF1CVTL2 V30.8H, V31.16B");
+        TestInst(BF1CVTL2(V0.T_8H, V1.T_16B), asm => asm.BF1CVTL2(V0.T_8H, V1.T_16B), Arm64InstructionId.BF1CVTL2_asimdmisc_v, Arm64Mnemonic.BF1CVTL2, "BF1CVTL2 V0.8H, V1.16B");
+        TestInst(BF1CVTL2(V30.T_8H, V1.T_16B), asm => asm.BF1CVTL2(V30.T_8H, V1.T_16B), Arm64InstructionId.BF1CVTL2_asimdmisc_v, Arm64Mnemonic.BF1CVTL2, "BF1CVTL2 V30.8H, V1.16B");
+        TestInst(BF1CVTL2(V0.T_8H, V31.T_16B), asm => asm.BF1CVTL2(V0.T_8H, V31.T_16B), Arm64InstructionId.BF1CVTL2_asimdmisc_v, Arm64Mnemonic.BF1CVTL2, "BF1CVTL2 V0.8H, V31.16B");
+        TestInst(BF1CVTL2(V30.T_8H, V31.T_16B), asm => asm.BF1CVTL2(V30.T_8H, V31.T_16B), Arm64InstructionId.BF1CVTL2_asimdmisc_v, Arm64Mnemonic.BF1CVTL2, "BF1CVTL2 V30.8H, V31.16B");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Fpsimd;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STUR_Fpsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STUR_b_ldst_unscaled_0()
     {
-        TestInst(STUR(B0, _[X2, 5]), Arm64InstructionId.STUR_b_ldst_unscaled, Arm64Mnemonic.STUR, "STUR B0, [X2, #5]");
-        TestInst(STUR(B31, _[X2, 5]), Arm64InstructionId.STUR_b_ldst_unscaled, Arm64Mnemonic.STUR, "STUR B31, [X2, #5]");
+        TestInst(STUR(B0, _[X2, 5]), asm => asm.STUR(B0, _[X2, 5]), Arm64InstructionId.STUR_b_ldst_unscaled, Arm64Mnemonic.STUR, "STUR B0, [X2, #5]");
+        TestInst(STUR(B31, _[X2, 5]), asm => asm.STUR(B31, _[X2, 5]), Arm64InstructionId.STUR_b_ldst_unscaled, Arm64Mnemonic.STUR, "STUR B31, [X2, #5]");
     }
     
     /// <summary>
@@ -34,8 +33,8 @@ public class Arm64InstructionFactoryTests_STUR_Fpsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STUR_h_ldst_unscaled_1()
     {
-        TestInst(STUR(H0, _[X2, 5]), Arm64InstructionId.STUR_h_ldst_unscaled, Arm64Mnemonic.STUR, "STUR H0, [X2, #5]");
-        TestInst(STUR(H31, _[X2, 5]), Arm64InstructionId.STUR_h_ldst_unscaled, Arm64Mnemonic.STUR, "STUR H31, [X2, #5]");
+        TestInst(STUR(H0, _[X2, 5]), asm => asm.STUR(H0, _[X2, 5]), Arm64InstructionId.STUR_h_ldst_unscaled, Arm64Mnemonic.STUR, "STUR H0, [X2, #5]");
+        TestInst(STUR(H31, _[X2, 5]), asm => asm.STUR(H31, _[X2, 5]), Arm64InstructionId.STUR_h_ldst_unscaled, Arm64Mnemonic.STUR, "STUR H31, [X2, #5]");
     }
     
     /// <summary>
@@ -44,8 +43,8 @@ public class Arm64InstructionFactoryTests_STUR_Fpsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STUR_s_ldst_unscaled_2()
     {
-        TestInst(STUR(S0, _[X2, 5]), Arm64InstructionId.STUR_s_ldst_unscaled, Arm64Mnemonic.STUR, "STUR S0, [X2, #5]");
-        TestInst(STUR(S31, _[X2, 5]), Arm64InstructionId.STUR_s_ldst_unscaled, Arm64Mnemonic.STUR, "STUR S31, [X2, #5]");
+        TestInst(STUR(S0, _[X2, 5]), asm => asm.STUR(S0, _[X2, 5]), Arm64InstructionId.STUR_s_ldst_unscaled, Arm64Mnemonic.STUR, "STUR S0, [X2, #5]");
+        TestInst(STUR(S31, _[X2, 5]), asm => asm.STUR(S31, _[X2, 5]), Arm64InstructionId.STUR_s_ldst_unscaled, Arm64Mnemonic.STUR, "STUR S31, [X2, #5]");
     }
     
     /// <summary>
@@ -54,8 +53,8 @@ public class Arm64InstructionFactoryTests_STUR_Fpsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STUR_d_ldst_unscaled_3()
     {
-        TestInst(STUR(D0, _[X2, 5]), Arm64InstructionId.STUR_d_ldst_unscaled, Arm64Mnemonic.STUR, "STUR D0, [X2, #5]");
-        TestInst(STUR(D31, _[X2, 5]), Arm64InstructionId.STUR_d_ldst_unscaled, Arm64Mnemonic.STUR, "STUR D31, [X2, #5]");
+        TestInst(STUR(D0, _[X2, 5]), asm => asm.STUR(D0, _[X2, 5]), Arm64InstructionId.STUR_d_ldst_unscaled, Arm64Mnemonic.STUR, "STUR D0, [X2, #5]");
+        TestInst(STUR(D31, _[X2, 5]), asm => asm.STUR(D31, _[X2, 5]), Arm64InstructionId.STUR_d_ldst_unscaled, Arm64Mnemonic.STUR, "STUR D31, [X2, #5]");
     }
     
     /// <summary>
@@ -64,7 +63,7 @@ public class Arm64InstructionFactoryTests_STUR_Fpsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STUR_q_ldst_unscaled_4()
     {
-        TestInst(STUR(Q0, _[X2, 5]), Arm64InstructionId.STUR_q_ldst_unscaled, Arm64Mnemonic.STUR, "STUR Q0, [X2, #5]");
-        TestInst(STUR(Q31, _[X2, 5]), Arm64InstructionId.STUR_q_ldst_unscaled, Arm64Mnemonic.STUR, "STUR Q31, [X2, #5]");
+        TestInst(STUR(Q0, _[X2, 5]), asm => asm.STUR(Q0, _[X2, 5]), Arm64InstructionId.STUR_q_ldst_unscaled, Arm64Mnemonic.STUR, "STUR Q0, [X2, #5]");
+        TestInst(STUR(Q31, _[X2, 5]), asm => asm.STUR(Q31, _[X2, 5]), Arm64InstructionId.STUR_q_ldst_unscaled, Arm64Mnemonic.STUR, "STUR Q31, [X2, #5]");
     }
 }

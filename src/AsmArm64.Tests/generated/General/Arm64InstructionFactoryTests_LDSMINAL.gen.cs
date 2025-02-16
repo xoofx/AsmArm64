@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDSMINAL_General : Arm64InstructionFac
     [TestMethod]
     public void Test_LDSMINAL_32_memop_0()
     {
-        TestInst(LDSMINAL(W0, W1, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W0, W1, [X3]");
-        TestInst(LDSMINAL(W15, W1, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W15, W1, [X3]");
-        TestInst(LDSMINAL(WZR, W1, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL WZR, W1, [X3]");
-        TestInst(LDSMINAL(W0, W16, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W0, W16, [X3]");
-        TestInst(LDSMINAL(W15, W16, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W15, W16, [X3]");
-        TestInst(LDSMINAL(WZR, W16, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL WZR, W16, [X3]");
-        TestInst(LDSMINAL(W0, WZR, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W0, WZR, [X3]");
-        TestInst(LDSMINAL(W15, WZR, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W15, WZR, [X3]");
-        TestInst(LDSMINAL(WZR, WZR, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL WZR, WZR, [X3]");
+        TestInst(LDSMINAL(W0, W1, _[X3]), asm => asm.LDSMINAL(W0, W1, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W0, W1, [X3]");
+        TestInst(LDSMINAL(W15, W1, _[X3]), asm => asm.LDSMINAL(W15, W1, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W15, W1, [X3]");
+        TestInst(LDSMINAL(WZR, W1, _[X3]), asm => asm.LDSMINAL(WZR, W1, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL WZR, W1, [X3]");
+        TestInst(LDSMINAL(W0, W16, _[X3]), asm => asm.LDSMINAL(W0, W16, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W0, W16, [X3]");
+        TestInst(LDSMINAL(W15, W16, _[X3]), asm => asm.LDSMINAL(W15, W16, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W15, W16, [X3]");
+        TestInst(LDSMINAL(WZR, W16, _[X3]), asm => asm.LDSMINAL(WZR, W16, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL WZR, W16, [X3]");
+        TestInst(LDSMINAL(W0, WZR, _[X3]), asm => asm.LDSMINAL(W0, WZR, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W0, WZR, [X3]");
+        TestInst(LDSMINAL(W15, WZR, _[X3]), asm => asm.LDSMINAL(W15, WZR, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL W15, WZR, [X3]");
+        TestInst(LDSMINAL(WZR, WZR, _[X3]), asm => asm.LDSMINAL(WZR, WZR, _[X3]), Arm64InstructionId.LDSMINAL_32_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDSMINAL_General : Arm64InstructionFac
     [TestMethod]
     public void Test_LDSMINAL_64_memop_1()
     {
-        TestInst(LDSMINAL(X0, X1, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X0, X1, [X3]");
-        TestInst(LDSMINAL(X15, X1, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X15, X1, [X3]");
-        TestInst(LDSMINAL(XZR, X1, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL XZR, X1, [X3]");
-        TestInst(LDSMINAL(X0, X16, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X0, X16, [X3]");
-        TestInst(LDSMINAL(X15, X16, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X15, X16, [X3]");
-        TestInst(LDSMINAL(XZR, X16, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL XZR, X16, [X3]");
-        TestInst(LDSMINAL(X0, XZR, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X0, XZR, [X3]");
-        TestInst(LDSMINAL(X15, XZR, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X15, XZR, [X3]");
-        TestInst(LDSMINAL(XZR, XZR, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL XZR, XZR, [X3]");
+        TestInst(LDSMINAL(X0, X1, _[X3]), asm => asm.LDSMINAL(X0, X1, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X0, X1, [X3]");
+        TestInst(LDSMINAL(X15, X1, _[X3]), asm => asm.LDSMINAL(X15, X1, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X15, X1, [X3]");
+        TestInst(LDSMINAL(XZR, X1, _[X3]), asm => asm.LDSMINAL(XZR, X1, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL XZR, X1, [X3]");
+        TestInst(LDSMINAL(X0, X16, _[X3]), asm => asm.LDSMINAL(X0, X16, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X0, X16, [X3]");
+        TestInst(LDSMINAL(X15, X16, _[X3]), asm => asm.LDSMINAL(X15, X16, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X15, X16, [X3]");
+        TestInst(LDSMINAL(XZR, X16, _[X3]), asm => asm.LDSMINAL(XZR, X16, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL XZR, X16, [X3]");
+        TestInst(LDSMINAL(X0, XZR, _[X3]), asm => asm.LDSMINAL(X0, XZR, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X0, XZR, [X3]");
+        TestInst(LDSMINAL(X15, XZR, _[X3]), asm => asm.LDSMINAL(X15, XZR, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL X15, XZR, [X3]");
+        TestInst(LDSMINAL(XZR, XZR, _[X3]), asm => asm.LDSMINAL(XZR, XZR, _[X3]), Arm64InstructionId.LDSMINAL_64_memop, Arm64Mnemonic.LDSMINAL, "LDSMINAL XZR, XZR, [X3]");
     }
 }

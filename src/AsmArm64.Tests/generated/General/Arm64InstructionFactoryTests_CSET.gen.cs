@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,12 +23,12 @@ public class Arm64InstructionFactoryTests_CSET_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CSET_csinc_32_condsel_0()
     {
-        TestInst(CSET(W0, NE), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET W0, NE");
-        TestInst(CSET(W15, NE), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET W15, NE");
-        TestInst(CSET(WZR, NE), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET WZR, NE");
-        TestInst(CSET(W0, HS), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET W0, HS");
-        TestInst(CSET(W15, HS), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET W15, HS");
-        TestInst(CSET(WZR, HS), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET WZR, HS");
+        TestInst(CSET(W0, NE), asm => asm.CSET(W0, NE), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET W0, NE");
+        TestInst(CSET(W15, NE), asm => asm.CSET(W15, NE), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET W15, NE");
+        TestInst(CSET(WZR, NE), asm => asm.CSET(WZR, NE), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET WZR, NE");
+        TestInst(CSET(W0, HS), asm => asm.CSET(W0, HS), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET W0, HS");
+        TestInst(CSET(W15, HS), asm => asm.CSET(W15, HS), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET W15, HS");
+        TestInst(CSET(WZR, HS), asm => asm.CSET(WZR, HS), Arm64InstructionId.CSET_csinc_32_condsel, Arm64Mnemonic.CSET, "CSET WZR, HS");
     }
     
     /// <summary>
@@ -38,11 +37,11 @@ public class Arm64InstructionFactoryTests_CSET_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CSET_csinc_64_condsel_1()
     {
-        TestInst(CSET(X0, NE), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET X0, NE");
-        TestInst(CSET(X15, NE), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET X15, NE");
-        TestInst(CSET(XZR, NE), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET XZR, NE");
-        TestInst(CSET(X0, HS), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET X0, HS");
-        TestInst(CSET(X15, HS), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET X15, HS");
-        TestInst(CSET(XZR, HS), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET XZR, HS");
+        TestInst(CSET(X0, NE), asm => asm.CSET(X0, NE), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET X0, NE");
+        TestInst(CSET(X15, NE), asm => asm.CSET(X15, NE), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET X15, NE");
+        TestInst(CSET(XZR, NE), asm => asm.CSET(XZR, NE), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET XZR, NE");
+        TestInst(CSET(X0, HS), asm => asm.CSET(X0, HS), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET X0, HS");
+        TestInst(CSET(X15, HS), asm => asm.CSET(X15, HS), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET X15, HS");
+        TestInst(CSET(XZR, HS), asm => asm.CSET(XZR, HS), Arm64InstructionId.CSET_csinc_64_condsel, Arm64Mnemonic.CSET, "CSET XZR, HS");
     }
 }

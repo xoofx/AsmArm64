@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_LUTI2_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_LUTI2_asimdtbl_l5_0()
     {
-        TestInst(LUTI2(V0.T_16B, V1.T_16B.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l5, Arm64Mnemonic.LUTI2, "LUTI2 V0.16B, { V1.16B }, V2[1]");
-        TestInst(LUTI2(V30.T_16B, V1.T_16B.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l5, Arm64Mnemonic.LUTI2, "LUTI2 V30.16B, { V1.16B }, V2[1]");
-        TestInst(LUTI2(V0.T_16B, V31.T_16B.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l5, Arm64Mnemonic.LUTI2, "LUTI2 V0.16B, { V31.16B }, V2[1]");
-        TestInst(LUTI2(V30.T_16B, V31.T_16B.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l5, Arm64Mnemonic.LUTI2, "LUTI2 V30.16B, { V31.16B }, V2[1]");
+        TestInst(LUTI2(V0.T_16B, V1.T_16B.Group1(), V2[1]), asm => asm.LUTI2(V0.T_16B, V1.T_16B.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l5, Arm64Mnemonic.LUTI2, "LUTI2 V0.16B, { V1.16B }, V2[1]");
+        TestInst(LUTI2(V30.T_16B, V1.T_16B.Group1(), V2[1]), asm => asm.LUTI2(V30.T_16B, V1.T_16B.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l5, Arm64Mnemonic.LUTI2, "LUTI2 V30.16B, { V1.16B }, V2[1]");
+        TestInst(LUTI2(V0.T_16B, V31.T_16B.Group1(), V2[1]), asm => asm.LUTI2(V0.T_16B, V31.T_16B.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l5, Arm64Mnemonic.LUTI2, "LUTI2 V0.16B, { V31.16B }, V2[1]");
+        TestInst(LUTI2(V30.T_16B, V31.T_16B.Group1(), V2[1]), asm => asm.LUTI2(V30.T_16B, V31.T_16B.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l5, Arm64Mnemonic.LUTI2, "LUTI2 V30.16B, { V31.16B }, V2[1]");
     }
     
     /// <summary>
@@ -36,9 +35,9 @@ public class Arm64InstructionFactoryTests_LUTI2_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_LUTI2_asimdtbl_l6_1()
     {
-        TestInst(LUTI2(V0.T_8H, V1.T_8H.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l6, Arm64Mnemonic.LUTI2, "LUTI2 V0.8H, { V1.8H }, V2[1]");
-        TestInst(LUTI2(V30.T_8H, V1.T_8H.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l6, Arm64Mnemonic.LUTI2, "LUTI2 V30.8H, { V1.8H }, V2[1]");
-        TestInst(LUTI2(V0.T_8H, V31.T_8H.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l6, Arm64Mnemonic.LUTI2, "LUTI2 V0.8H, { V31.8H }, V2[1]");
-        TestInst(LUTI2(V30.T_8H, V31.T_8H.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l6, Arm64Mnemonic.LUTI2, "LUTI2 V30.8H, { V31.8H }, V2[1]");
+        TestInst(LUTI2(V0.T_8H, V1.T_8H.Group1(), V2[1]), asm => asm.LUTI2(V0.T_8H, V1.T_8H.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l6, Arm64Mnemonic.LUTI2, "LUTI2 V0.8H, { V1.8H }, V2[1]");
+        TestInst(LUTI2(V30.T_8H, V1.T_8H.Group1(), V2[1]), asm => asm.LUTI2(V30.T_8H, V1.T_8H.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l6, Arm64Mnemonic.LUTI2, "LUTI2 V30.8H, { V1.8H }, V2[1]");
+        TestInst(LUTI2(V0.T_8H, V31.T_8H.Group1(), V2[1]), asm => asm.LUTI2(V0.T_8H, V31.T_8H.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l6, Arm64Mnemonic.LUTI2, "LUTI2 V0.8H, { V31.8H }, V2[1]");
+        TestInst(LUTI2(V30.T_8H, V31.T_8H.Group1(), V2[1]), asm => asm.LUTI2(V30.T_8H, V31.T_8H.Group1(), V2[1]), Arm64InstructionId.LUTI2_asimdtbl_l6, Arm64Mnemonic.LUTI2, "LUTI2 V30.8H, { V31.8H }, V2[1]");
     }
 }

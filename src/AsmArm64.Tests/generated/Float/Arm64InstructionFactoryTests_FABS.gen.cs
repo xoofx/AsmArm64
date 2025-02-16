@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FABS_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FABS_h_floatdp1_0()
     {
-        TestInst(FABS(H0, H1), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H0, H1");
-        TestInst(FABS(H31, H1), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H31, H1");
-        TestInst(FABS(H0, H31), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H0, H31");
-        TestInst(FABS(H31, H31), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H31, H31");
+        TestInst(FABS(H0, H1), asm => asm.FABS(H0, H1), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H0, H1");
+        TestInst(FABS(H31, H1), asm => asm.FABS(H31, H1), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H31, H1");
+        TestInst(FABS(H0, H31), asm => asm.FABS(H0, H31), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H0, H31");
+        TestInst(FABS(H31, H31), asm => asm.FABS(H31, H31), Arm64InstructionId.FABS_h_floatdp1, Arm64Mnemonic.FABS, "FABS H31, H31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FABS_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FABS_s_floatdp1_1()
     {
-        TestInst(FABS(S0, S1), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S0, S1");
-        TestInst(FABS(S31, S1), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S31, S1");
-        TestInst(FABS(S0, S31), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S0, S31");
-        TestInst(FABS(S31, S31), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S31, S31");
+        TestInst(FABS(S0, S1), asm => asm.FABS(S0, S1), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S0, S1");
+        TestInst(FABS(S31, S1), asm => asm.FABS(S31, S1), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S31, S1");
+        TestInst(FABS(S0, S31), asm => asm.FABS(S0, S31), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S0, S31");
+        TestInst(FABS(S31, S31), asm => asm.FABS(S31, S31), Arm64InstructionId.FABS_s_floatdp1, Arm64Mnemonic.FABS, "FABS S31, S31");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_FABS_Float : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_FABS_d_floatdp1_2()
     {
-        TestInst(FABS(D0, D1), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D0, D1");
-        TestInst(FABS(D31, D1), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D31, D1");
-        TestInst(FABS(D0, D31), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D0, D31");
-        TestInst(FABS(D31, D31), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D31, D31");
+        TestInst(FABS(D0, D1), asm => asm.FABS(D0, D1), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D0, D1");
+        TestInst(FABS(D31, D1), asm => asm.FABS(D31, D1), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D31, D1");
+        TestInst(FABS(D0, D31), asm => asm.FABS(D0, D31), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D0, D31");
+        TestInst(FABS(D31, D31), asm => asm.FABS(D31, D31), Arm64InstructionId.FABS_d_floatdp1, Arm64Mnemonic.FABS, "FABS D31, D31");
     }
 }

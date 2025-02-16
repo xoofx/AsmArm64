@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_PACIA171615_General : Arm64Instruction
     [TestMethod]
     public void Test_PACIA171615_64lr_dp_1src_0()
     {
-        TestInst(PACIA171615(), Arm64InstructionId.PACIA171615_64lr_dp_1src, Arm64Mnemonic.PACIA171615, "PACIA171615");
+        TestInst(PACIA171615(), asm => asm.PACIA171615(), Arm64InstructionId.PACIA171615_64lr_dp_1src, Arm64Mnemonic.PACIA171615, "PACIA171615");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_XPACD_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_XPACD_64z_dp_1src_0()
     {
-        TestInst(XPACD(X0), Arm64InstructionId.XPACD_64z_dp_1src, Arm64Mnemonic.XPACD, "XPACD X0");
-        TestInst(XPACD(X15), Arm64InstructionId.XPACD_64z_dp_1src, Arm64Mnemonic.XPACD, "XPACD X15");
-        TestInst(XPACD(XZR), Arm64InstructionId.XPACD_64z_dp_1src, Arm64Mnemonic.XPACD, "XPACD XZR");
+        TestInst(XPACD(X0), asm => asm.XPACD(X0), Arm64InstructionId.XPACD_64z_dp_1src, Arm64Mnemonic.XPACD, "XPACD X0");
+        TestInst(XPACD(X15), asm => asm.XPACD(X15), Arm64InstructionId.XPACD_64z_dp_1src, Arm64Mnemonic.XPACD, "XPACD X15");
+        TestInst(XPACD(XZR), asm => asm.XPACD(XZR), Arm64InstructionId.XPACD_64z_dp_1src, Arm64Mnemonic.XPACD, "XPACD XZR");
     }
 }

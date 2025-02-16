@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_PACIZA_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_PACIZA_64z_dp_1src_0()
     {
-        TestInst(PACIZA(X0), Arm64InstructionId.PACIZA_64z_dp_1src, Arm64Mnemonic.PACIZA, "PACIZA X0");
-        TestInst(PACIZA(X15), Arm64InstructionId.PACIZA_64z_dp_1src, Arm64Mnemonic.PACIZA, "PACIZA X15");
-        TestInst(PACIZA(XZR), Arm64InstructionId.PACIZA_64z_dp_1src, Arm64Mnemonic.PACIZA, "PACIZA XZR");
+        TestInst(PACIZA(X0), asm => asm.PACIZA(X0), Arm64InstructionId.PACIZA_64z_dp_1src, Arm64Mnemonic.PACIZA, "PACIZA X0");
+        TestInst(PACIZA(X15), asm => asm.PACIZA(X15), Arm64InstructionId.PACIZA_64z_dp_1src, Arm64Mnemonic.PACIZA, "PACIZA X15");
+        TestInst(PACIZA(XZR), asm => asm.PACIZA(XZR), Arm64InstructionId.PACIZA_64z_dp_1src, Arm64Mnemonic.PACIZA, "PACIZA XZR");
     }
 }

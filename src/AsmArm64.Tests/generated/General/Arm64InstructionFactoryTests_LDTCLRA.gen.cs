@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDTCLRA_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDTCLRA_32_memop_unpriv_0()
     {
-        TestInst(LDTCLRA(W0, W1, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W0, W1, [X3]");
-        TestInst(LDTCLRA(W15, W1, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W15, W1, [X3]");
-        TestInst(LDTCLRA(WZR, W1, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA WZR, W1, [X3]");
-        TestInst(LDTCLRA(W0, W16, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W0, W16, [X3]");
-        TestInst(LDTCLRA(W15, W16, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W15, W16, [X3]");
-        TestInst(LDTCLRA(WZR, W16, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA WZR, W16, [X3]");
-        TestInst(LDTCLRA(W0, WZR, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W0, WZR, [X3]");
-        TestInst(LDTCLRA(W15, WZR, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W15, WZR, [X3]");
-        TestInst(LDTCLRA(WZR, WZR, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA WZR, WZR, [X3]");
+        TestInst(LDTCLRA(W0, W1, _[X3]), asm => asm.LDTCLRA(W0, W1, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W0, W1, [X3]");
+        TestInst(LDTCLRA(W15, W1, _[X3]), asm => asm.LDTCLRA(W15, W1, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W15, W1, [X3]");
+        TestInst(LDTCLRA(WZR, W1, _[X3]), asm => asm.LDTCLRA(WZR, W1, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA WZR, W1, [X3]");
+        TestInst(LDTCLRA(W0, W16, _[X3]), asm => asm.LDTCLRA(W0, W16, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W0, W16, [X3]");
+        TestInst(LDTCLRA(W15, W16, _[X3]), asm => asm.LDTCLRA(W15, W16, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W15, W16, [X3]");
+        TestInst(LDTCLRA(WZR, W16, _[X3]), asm => asm.LDTCLRA(WZR, W16, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA WZR, W16, [X3]");
+        TestInst(LDTCLRA(W0, WZR, _[X3]), asm => asm.LDTCLRA(W0, WZR, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W0, WZR, [X3]");
+        TestInst(LDTCLRA(W15, WZR, _[X3]), asm => asm.LDTCLRA(W15, WZR, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA W15, WZR, [X3]");
+        TestInst(LDTCLRA(WZR, WZR, _[X3]), asm => asm.LDTCLRA(WZR, WZR, _[X3]), Arm64InstructionId.LDTCLRA_32_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDTCLRA_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDTCLRA_64_memop_unpriv_1()
     {
-        TestInst(LDTCLRA(X0, X1, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X0, X1, [X3]");
-        TestInst(LDTCLRA(X15, X1, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X15, X1, [X3]");
-        TestInst(LDTCLRA(XZR, X1, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA XZR, X1, [X3]");
-        TestInst(LDTCLRA(X0, X16, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X0, X16, [X3]");
-        TestInst(LDTCLRA(X15, X16, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X15, X16, [X3]");
-        TestInst(LDTCLRA(XZR, X16, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA XZR, X16, [X3]");
-        TestInst(LDTCLRA(X0, XZR, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X0, XZR, [X3]");
-        TestInst(LDTCLRA(X15, XZR, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X15, XZR, [X3]");
-        TestInst(LDTCLRA(XZR, XZR, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA XZR, XZR, [X3]");
+        TestInst(LDTCLRA(X0, X1, _[X3]), asm => asm.LDTCLRA(X0, X1, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X0, X1, [X3]");
+        TestInst(LDTCLRA(X15, X1, _[X3]), asm => asm.LDTCLRA(X15, X1, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X15, X1, [X3]");
+        TestInst(LDTCLRA(XZR, X1, _[X3]), asm => asm.LDTCLRA(XZR, X1, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA XZR, X1, [X3]");
+        TestInst(LDTCLRA(X0, X16, _[X3]), asm => asm.LDTCLRA(X0, X16, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X0, X16, [X3]");
+        TestInst(LDTCLRA(X15, X16, _[X3]), asm => asm.LDTCLRA(X15, X16, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X15, X16, [X3]");
+        TestInst(LDTCLRA(XZR, X16, _[X3]), asm => asm.LDTCLRA(XZR, X16, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA XZR, X16, [X3]");
+        TestInst(LDTCLRA(X0, XZR, _[X3]), asm => asm.LDTCLRA(X0, XZR, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X0, XZR, [X3]");
+        TestInst(LDTCLRA(X15, XZR, _[X3]), asm => asm.LDTCLRA(X15, XZR, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA X15, XZR, [X3]");
+        TestInst(LDTCLRA(XZR, XZR, _[X3]), asm => asm.LDTCLRA(XZR, XZR, _[X3]), Arm64InstructionId.LDTCLRA_64_memop_unpriv, Arm64Mnemonic.LDTCLRA, "LDTCLRA XZR, XZR, [X3]");
     }
 }

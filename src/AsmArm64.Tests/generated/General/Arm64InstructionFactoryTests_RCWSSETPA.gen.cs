@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_RCWSSETPA_General : Arm64InstructionFa
     [TestMethod]
     public void Test_RCWSSETPA_128_memop_128_0()
     {
-        TestInst(RCWSSETPA(X0, X1, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X0, X1, [X3]");
-        TestInst(RCWSSETPA(X15, X1, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X15, X1, [X3]");
-        TestInst(RCWSSETPA(XZR, X1, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA XZR, X1, [X3]");
-        TestInst(RCWSSETPA(X0, X16, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X0, X16, [X3]");
-        TestInst(RCWSSETPA(X15, X16, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X15, X16, [X3]");
-        TestInst(RCWSSETPA(XZR, X16, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA XZR, X16, [X3]");
-        TestInst(RCWSSETPA(X0, XZR, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X0, XZR, [X3]");
-        TestInst(RCWSSETPA(X15, XZR, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X15, XZR, [X3]");
-        TestInst(RCWSSETPA(XZR, XZR, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA XZR, XZR, [X3]");
+        TestInst(RCWSSETPA(X0, X1, _[X3]), asm => asm.RCWSSETPA(X0, X1, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X0, X1, [X3]");
+        TestInst(RCWSSETPA(X15, X1, _[X3]), asm => asm.RCWSSETPA(X15, X1, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X15, X1, [X3]");
+        TestInst(RCWSSETPA(XZR, X1, _[X3]), asm => asm.RCWSSETPA(XZR, X1, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA XZR, X1, [X3]");
+        TestInst(RCWSSETPA(X0, X16, _[X3]), asm => asm.RCWSSETPA(X0, X16, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X0, X16, [X3]");
+        TestInst(RCWSSETPA(X15, X16, _[X3]), asm => asm.RCWSSETPA(X15, X16, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X15, X16, [X3]");
+        TestInst(RCWSSETPA(XZR, X16, _[X3]), asm => asm.RCWSSETPA(XZR, X16, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA XZR, X16, [X3]");
+        TestInst(RCWSSETPA(X0, XZR, _[X3]), asm => asm.RCWSSETPA(X0, XZR, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X0, XZR, [X3]");
+        TestInst(RCWSSETPA(X15, XZR, _[X3]), asm => asm.RCWSSETPA(X15, XZR, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA X15, XZR, [X3]");
+        TestInst(RCWSSETPA(XZR, XZR, _[X3]), asm => asm.RCWSSETPA(XZR, XZR, _[X3]), Arm64InstructionId.RCWSSETPA_128_memop_128, Arm64Mnemonic.RCWSSETPA, "RCWSSETPA XZR, XZR, [X3]");
     }
 }

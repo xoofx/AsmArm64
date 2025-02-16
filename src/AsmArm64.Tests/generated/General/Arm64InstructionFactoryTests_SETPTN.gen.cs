@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SETPTN_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_SETPTN_set_memcms_0()
     {
-        TestInst(SETPTN(_[X1].Pre, X1, X2), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X1, X2");
-        TestInst(SETPTN(_[X1].Pre, X16, X2), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X16, X2");
-        TestInst(SETPTN(_[X1].Pre, XZR, X2), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, XZR, X2");
-        TestInst(SETPTN(_[X1].Pre, X1, X17), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X1, X17");
-        TestInst(SETPTN(_[X1].Pre, X16, X17), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X16, X17");
-        TestInst(SETPTN(_[X1].Pre, XZR, X17), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, XZR, X17");
-        TestInst(SETPTN(_[X1].Pre, X1, XZR), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X1, XZR");
-        TestInst(SETPTN(_[X1].Pre, X16, XZR), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X16, XZR");
-        TestInst(SETPTN(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, XZR, XZR");
+        TestInst(SETPTN(_[X1].Pre, X1, X2), asm => asm.SETPTN(_[X1].Pre, X1, X2), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X1, X2");
+        TestInst(SETPTN(_[X1].Pre, X16, X2), asm => asm.SETPTN(_[X1].Pre, X16, X2), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X16, X2");
+        TestInst(SETPTN(_[X1].Pre, XZR, X2), asm => asm.SETPTN(_[X1].Pre, XZR, X2), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, XZR, X2");
+        TestInst(SETPTN(_[X1].Pre, X1, X17), asm => asm.SETPTN(_[X1].Pre, X1, X17), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X1, X17");
+        TestInst(SETPTN(_[X1].Pre, X16, X17), asm => asm.SETPTN(_[X1].Pre, X16, X17), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X16, X17");
+        TestInst(SETPTN(_[X1].Pre, XZR, X17), asm => asm.SETPTN(_[X1].Pre, XZR, X17), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, XZR, X17");
+        TestInst(SETPTN(_[X1].Pre, X1, XZR), asm => asm.SETPTN(_[X1].Pre, X1, XZR), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X1, XZR");
+        TestInst(SETPTN(_[X1].Pre, X16, XZR), asm => asm.SETPTN(_[X1].Pre, X16, XZR), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, X16, XZR");
+        TestInst(SETPTN(_[X1].Pre, XZR, XZR), asm => asm.SETPTN(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETPTN_set_memcms, Arm64Mnemonic.SETPTN, "SETPTN [X1]!, XZR, XZR");
     }
 }

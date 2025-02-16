@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_EXT_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_EXT_asimdext_only_0()
     {
-        TestInst(EXT(V0.T_8B, V1.T_8B, V2.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.8B, V1.8B, V2.8B, #5");
-        TestInst(EXT(V30.T_8B, V1.T_8B, V2.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.8B, V1.8B, V2.8B, #5");
-        TestInst(EXT(V0.T_8B, V31.T_8B, V2.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.8B, V31.8B, V2.8B, #5");
-        TestInst(EXT(V30.T_8B, V31.T_8B, V2.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.8B, V31.8B, V2.8B, #5");
-        TestInst(EXT(V0.T_8B, V1.T_8B, V0.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.8B, V1.8B, V0.8B, #5");
-        TestInst(EXT(V30.T_8B, V1.T_8B, V0.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.8B, V1.8B, V0.8B, #5");
-        TestInst(EXT(V0.T_8B, V31.T_8B, V0.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.8B, V31.8B, V0.8B, #5");
-        TestInst(EXT(V30.T_8B, V31.T_8B, V0.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.8B, V31.8B, V0.8B, #5");
+        TestInst(EXT(V0.T_8B, V1.T_8B, V2.T_8B, 5), asm => asm.EXT(V0.T_8B, V1.T_8B, V2.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.8B, V1.8B, V2.8B, #5");
+        TestInst(EXT(V30.T_8B, V1.T_8B, V2.T_8B, 5), asm => asm.EXT(V30.T_8B, V1.T_8B, V2.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.8B, V1.8B, V2.8B, #5");
+        TestInst(EXT(V0.T_8B, V31.T_8B, V2.T_8B, 5), asm => asm.EXT(V0.T_8B, V31.T_8B, V2.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.8B, V31.8B, V2.8B, #5");
+        TestInst(EXT(V30.T_8B, V31.T_8B, V2.T_8B, 5), asm => asm.EXT(V30.T_8B, V31.T_8B, V2.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.8B, V31.8B, V2.8B, #5");
+        TestInst(EXT(V0.T_8B, V1.T_8B, V0.T_8B, 5), asm => asm.EXT(V0.T_8B, V1.T_8B, V0.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.8B, V1.8B, V0.8B, #5");
+        TestInst(EXT(V30.T_8B, V1.T_8B, V0.T_8B, 5), asm => asm.EXT(V30.T_8B, V1.T_8B, V0.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.8B, V1.8B, V0.8B, #5");
+        TestInst(EXT(V0.T_8B, V31.T_8B, V0.T_8B, 5), asm => asm.EXT(V0.T_8B, V31.T_8B, V0.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.8B, V31.8B, V0.8B, #5");
+        TestInst(EXT(V30.T_8B, V31.T_8B, V0.T_8B, 5), asm => asm.EXT(V30.T_8B, V31.T_8B, V0.T_8B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.8B, V31.8B, V0.8B, #5");
     }
     
     /// <summary>
@@ -40,13 +39,13 @@ public class Arm64InstructionFactoryTests_EXT_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_EXT_asimdext_only_1()
     {
-        TestInst(EXT(V0.T_16B, V1.T_16B, V2.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.16B, V1.16B, V2.16B, #5");
-        TestInst(EXT(V30.T_16B, V1.T_16B, V2.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.16B, V1.16B, V2.16B, #5");
-        TestInst(EXT(V0.T_16B, V31.T_16B, V2.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.16B, V31.16B, V2.16B, #5");
-        TestInst(EXT(V30.T_16B, V31.T_16B, V2.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.16B, V31.16B, V2.16B, #5");
-        TestInst(EXT(V0.T_16B, V1.T_16B, V0.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.16B, V1.16B, V0.16B, #5");
-        TestInst(EXT(V30.T_16B, V1.T_16B, V0.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.16B, V1.16B, V0.16B, #5");
-        TestInst(EXT(V0.T_16B, V31.T_16B, V0.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.16B, V31.16B, V0.16B, #5");
-        TestInst(EXT(V30.T_16B, V31.T_16B, V0.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.16B, V31.16B, V0.16B, #5");
+        TestInst(EXT(V0.T_16B, V1.T_16B, V2.T_16B, 5), asm => asm.EXT(V0.T_16B, V1.T_16B, V2.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.16B, V1.16B, V2.16B, #5");
+        TestInst(EXT(V30.T_16B, V1.T_16B, V2.T_16B, 5), asm => asm.EXT(V30.T_16B, V1.T_16B, V2.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.16B, V1.16B, V2.16B, #5");
+        TestInst(EXT(V0.T_16B, V31.T_16B, V2.T_16B, 5), asm => asm.EXT(V0.T_16B, V31.T_16B, V2.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.16B, V31.16B, V2.16B, #5");
+        TestInst(EXT(V30.T_16B, V31.T_16B, V2.T_16B, 5), asm => asm.EXT(V30.T_16B, V31.T_16B, V2.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.16B, V31.16B, V2.16B, #5");
+        TestInst(EXT(V0.T_16B, V1.T_16B, V0.T_16B, 5), asm => asm.EXT(V0.T_16B, V1.T_16B, V0.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.16B, V1.16B, V0.16B, #5");
+        TestInst(EXT(V30.T_16B, V1.T_16B, V0.T_16B, 5), asm => asm.EXT(V30.T_16B, V1.T_16B, V0.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.16B, V1.16B, V0.16B, #5");
+        TestInst(EXT(V0.T_16B, V31.T_16B, V0.T_16B, 5), asm => asm.EXT(V0.T_16B, V31.T_16B, V0.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V0.16B, V31.16B, V0.16B, #5");
+        TestInst(EXT(V30.T_16B, V31.T_16B, V0.T_16B, 5), asm => asm.EXT(V30.T_16B, V31.T_16B, V0.T_16B, 5), Arm64InstructionId.EXT_asimdext_only, Arm64Mnemonic.EXT, "EXT V30.16B, V31.16B, V0.16B, #5");
     }
 }

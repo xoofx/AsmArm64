@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_ST64BV0_General : Arm64InstructionFact
     [TestMethod]
     public void Test_ST64BV0_64_memop_0()
     {
-        TestInst(ST64BV0(X0, X1, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X0, X1, [X3]");
-        TestInst(ST64BV0(X15, X1, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X15, X1, [X3]");
-        TestInst(ST64BV0(XZR, X1, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 XZR, X1, [X3]");
-        TestInst(ST64BV0(X0, X16, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X0, X16, [X3]");
-        TestInst(ST64BV0(X15, X16, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X15, X16, [X3]");
-        TestInst(ST64BV0(XZR, X16, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 XZR, X16, [X3]");
-        TestInst(ST64BV0(X0, XZR, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X0, XZR, [X3]");
-        TestInst(ST64BV0(X15, XZR, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X15, XZR, [X3]");
-        TestInst(ST64BV0(XZR, XZR, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 XZR, XZR, [X3]");
+        TestInst(ST64BV0(X0, X1, _[X3]), asm => asm.ST64BV0(X0, X1, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X0, X1, [X3]");
+        TestInst(ST64BV0(X15, X1, _[X3]), asm => asm.ST64BV0(X15, X1, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X15, X1, [X3]");
+        TestInst(ST64BV0(XZR, X1, _[X3]), asm => asm.ST64BV0(XZR, X1, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 XZR, X1, [X3]");
+        TestInst(ST64BV0(X0, X16, _[X3]), asm => asm.ST64BV0(X0, X16, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X0, X16, [X3]");
+        TestInst(ST64BV0(X15, X16, _[X3]), asm => asm.ST64BV0(X15, X16, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X15, X16, [X3]");
+        TestInst(ST64BV0(XZR, X16, _[X3]), asm => asm.ST64BV0(XZR, X16, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 XZR, X16, [X3]");
+        TestInst(ST64BV0(X0, XZR, _[X3]), asm => asm.ST64BV0(X0, XZR, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X0, XZR, [X3]");
+        TestInst(ST64BV0(X15, XZR, _[X3]), asm => asm.ST64BV0(X15, XZR, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 X15, XZR, [X3]");
+        TestInst(ST64BV0(XZR, XZR, _[X3]), asm => asm.ST64BV0(XZR, XZR, _[X3]), Arm64InstructionId.ST64BV0_64_memop, Arm64Mnemonic.ST64BV0, "ST64BV0 XZR, XZR, [X3]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_CBBEQ_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_CBBEQ_8_regs_0()
     {
-        TestInst(CBBEQ(W0, W1, 32), Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W0, W1, #32");
-        TestInst(CBBEQ(W15, W1, 32), Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W15, W1, #32");
-        TestInst(CBBEQ(WZR, W1, 32), Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ WZR, W1, #32");
-        TestInst(CBBEQ(W0, W16, 32), Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W0, W16, #32");
-        TestInst(CBBEQ(W15, W16, 32), Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W15, W16, #32");
-        TestInst(CBBEQ(WZR, W16, 32), Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ WZR, W16, #32");
-        TestInst(CBBEQ(W0, WZR, 32), Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W0, WZR, #32");
-        TestInst(CBBEQ(W15, WZR, 32), Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W15, WZR, #32");
-        TestInst(CBBEQ(WZR, WZR, 32), Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ WZR, WZR, #32");
+        TestInst(CBBEQ(W0, W1, 32), null, Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W0, W1, #32");
+        TestInst(CBBEQ(W15, W1, 32), null, Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W15, W1, #32");
+        TestInst(CBBEQ(WZR, W1, 32), null, Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ WZR, W1, #32");
+        TestInst(CBBEQ(W0, W16, 32), null, Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W0, W16, #32");
+        TestInst(CBBEQ(W15, W16, 32), null, Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W15, W16, #32");
+        TestInst(CBBEQ(WZR, W16, 32), null, Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ WZR, W16, #32");
+        TestInst(CBBEQ(W0, WZR, 32), null, Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W0, WZR, #32");
+        TestInst(CBBEQ(W15, WZR, 32), null, Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ W15, WZR, #32");
+        TestInst(CBBEQ(WZR, WZR, 32), null, Arm64InstructionId.CBBEQ_8_regs, Arm64Mnemonic.CBBEQ, "CBBEQ WZR, WZR, #32");
     }
 }

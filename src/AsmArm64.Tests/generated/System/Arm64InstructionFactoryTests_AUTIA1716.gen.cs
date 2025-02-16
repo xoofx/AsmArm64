@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_AUTIA1716_System : Arm64InstructionFac
     [TestMethod]
     public void Test_AUTIA1716_hi_hints_0()
     {
-        TestInst(AUTIA1716(), Arm64InstructionId.AUTIA1716_hi_hints, Arm64Mnemonic.AUTIA1716, "AUTIA1716");
+        TestInst(AUTIA1716(), asm => asm.AUTIA1716(), Arm64InstructionId.AUTIA1716_hi_hints, Arm64Mnemonic.AUTIA1716, "AUTIA1716");
     }
 }

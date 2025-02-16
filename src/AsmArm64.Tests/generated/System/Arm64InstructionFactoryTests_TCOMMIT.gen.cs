@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_TCOMMIT_System : Arm64InstructionFacto
     [TestMethod]
     public void Test_TCOMMIT_only_barriers_0()
     {
-        TestInst(TCOMMIT(), Arm64InstructionId.TCOMMIT_only_barriers, Arm64Mnemonic.TCOMMIT, "TCOMMIT");
+        TestInst(TCOMMIT(), asm => asm.TCOMMIT(), Arm64InstructionId.TCOMMIT_only_barriers, Arm64Mnemonic.TCOMMIT, "TCOMMIT");
     }
 }

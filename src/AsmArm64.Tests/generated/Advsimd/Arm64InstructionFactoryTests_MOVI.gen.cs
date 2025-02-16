@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVI_asimdimm_n_b_0()
     {
-        TestInst(MOVI(V0.T_8B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V0.8B, #5");
-        TestInst(MOVI(V30.T_8B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V30.8B, #5");
+        TestInst(MOVI(V0.T_8B, 5, _LSL, 0), asm => asm.MOVI(V0.T_8B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V0.8B, #5");
+        TestInst(MOVI(V30.T_8B, 5, _LSL, 0), asm => asm.MOVI(V30.T_8B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V30.8B, #5");
     }
     
     /// <summary>
@@ -34,8 +33,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVI_asimdimm_n_b_1()
     {
-        TestInst(MOVI(V0.T_16B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V0.16B, #5");
-        TestInst(MOVI(V30.T_16B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V30.16B, #5");
+        TestInst(MOVI(V0.T_16B, 5, _LSL, 0), asm => asm.MOVI(V0.T_16B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V0.16B, #5");
+        TestInst(MOVI(V30.T_16B, 5, _LSL, 0), asm => asm.MOVI(V30.T_16B, 5, _LSL, 0), Arm64InstructionId.MOVI_asimdimm_n_b, Arm64Mnemonic.MOVI, "MOVI V30.16B, #5");
     }
     
     /// <summary>
@@ -44,8 +43,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVI_asimdimm_l_hl_2()
     {
-        TestInst(MOVI(V0.T_4H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V0.4H, #5, LSL #8");
-        TestInst(MOVI(V30.T_4H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V30.4H, #5, LSL #8");
+        TestInst(MOVI(V0.T_4H, 5, _LSL, 8), asm => asm.MOVI(V0.T_4H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V0.4H, #5, LSL #8");
+        TestInst(MOVI(V30.T_4H, 5, _LSL, 8), asm => asm.MOVI(V30.T_4H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V30.4H, #5, LSL #8");
     }
     
     /// <summary>
@@ -54,8 +53,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVI_asimdimm_l_hl_3()
     {
-        TestInst(MOVI(V0.T_8H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V0.8H, #5, LSL #8");
-        TestInst(MOVI(V30.T_8H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V30.8H, #5, LSL #8");
+        TestInst(MOVI(V0.T_8H, 5, _LSL, 8), asm => asm.MOVI(V0.T_8H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V0.8H, #5, LSL #8");
+        TestInst(MOVI(V30.T_8H, 5, _LSL, 8), asm => asm.MOVI(V30.T_8H, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_hl, Arm64Mnemonic.MOVI, "MOVI V30.8H, #5, LSL #8");
     }
     
     /// <summary>
@@ -64,8 +63,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVI_asimdimm_l_sl_4()
     {
-        TestInst(MOVI(V0.T_2S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V0.2S, #5, LSL #8");
-        TestInst(MOVI(V30.T_2S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V30.2S, #5, LSL #8");
+        TestInst(MOVI(V0.T_2S, 5, _LSL, 8), asm => asm.MOVI(V0.T_2S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V0.2S, #5, LSL #8");
+        TestInst(MOVI(V30.T_2S, 5, _LSL, 8), asm => asm.MOVI(V30.T_2S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V30.2S, #5, LSL #8");
     }
     
     /// <summary>
@@ -74,8 +73,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVI_asimdimm_l_sl_5()
     {
-        TestInst(MOVI(V0.T_4S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V0.4S, #5, LSL #8");
-        TestInst(MOVI(V30.T_4S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V30.4S, #5, LSL #8");
+        TestInst(MOVI(V0.T_4S, 5, _LSL, 8), asm => asm.MOVI(V0.T_4S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V0.4S, #5, LSL #8");
+        TestInst(MOVI(V30.T_4S, 5, _LSL, 8), asm => asm.MOVI(V30.T_4S, 5, _LSL, 8), Arm64InstructionId.MOVI_asimdimm_l_sl, Arm64Mnemonic.MOVI, "MOVI V30.4S, #5, LSL #8");
     }
     
     /// <summary>
@@ -84,8 +83,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVI_asimdimm_m_sm_6()
     {
-        TestInst(MOVI(V0.T_2S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V0.2S, #5, MSL #16");
-        TestInst(MOVI(V30.T_2S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V30.2S, #5, MSL #16");
+        TestInst(MOVI(V0.T_2S, 5, _MSL, 16), asm => asm.MOVI(V0.T_2S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V0.2S, #5, MSL #16");
+        TestInst(MOVI(V30.T_2S, 5, _MSL, 16), asm => asm.MOVI(V30.T_2S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V30.2S, #5, MSL #16");
     }
     
     /// <summary>
@@ -94,8 +93,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVI_asimdimm_m_sm_7()
     {
-        TestInst(MOVI(V0.T_4S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V0.4S, #5, MSL #16");
-        TestInst(MOVI(V30.T_4S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V30.4S, #5, MSL #16");
+        TestInst(MOVI(V0.T_4S, 5, _MSL, 16), asm => asm.MOVI(V0.T_4S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V0.4S, #5, MSL #16");
+        TestInst(MOVI(V30.T_4S, 5, _MSL, 16), asm => asm.MOVI(V30.T_4S, 5, _MSL, 16), Arm64InstructionId.MOVI_asimdimm_m_sm, Arm64Mnemonic.MOVI, "MOVI V30.4S, #5, MSL #16");
     }
     
     /// <summary>
@@ -104,8 +103,8 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVI_asimdimm_d_ds_8()
     {
-        TestInst(MOVI(D0, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d_ds, Arm64Mnemonic.MOVI, "MOVI D0, #0xff00ff");
-        TestInst(MOVI(D31, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d_ds, Arm64Mnemonic.MOVI, "MOVI D31, #0xff00ff");
+        TestInst(MOVI(D0, 0xff00ffUL), asm => asm.MOVI(D0, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d_ds, Arm64Mnemonic.MOVI, "MOVI D0, #0xff00ff");
+        TestInst(MOVI(D31, 0xff00ffUL), asm => asm.MOVI(D31, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d_ds, Arm64Mnemonic.MOVI, "MOVI D31, #0xff00ff");
     }
     
     /// <summary>
@@ -114,7 +113,7 @@ public class Arm64InstructionFactoryTests_MOVI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MOVI_asimdimm_d2_d_9()
     {
-        TestInst(MOVI(V0.T_2D, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d2_d, Arm64Mnemonic.MOVI, "MOVI V0.2D, #0xff00ff");
-        TestInst(MOVI(V30.T_2D, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d2_d, Arm64Mnemonic.MOVI, "MOVI V30.2D, #0xff00ff");
+        TestInst(MOVI(V0.T_2D, 0xff00ffUL), asm => asm.MOVI(V0.T_2D, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d2_d, Arm64Mnemonic.MOVI, "MOVI V0.2D, #0xff00ff");
+        TestInst(MOVI(V30.T_2D, 0xff00ffUL), asm => asm.MOVI(V30.T_2D, 0xff00ffUL), Arm64InstructionId.MOVI_asimdimm_d2_d, Arm64Mnemonic.MOVI, "MOVI V30.2D, #0xff00ff");
     }
 }

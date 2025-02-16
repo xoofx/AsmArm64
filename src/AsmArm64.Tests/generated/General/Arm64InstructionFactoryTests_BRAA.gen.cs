@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_BRAA_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_BRAA_64p_branch_reg_0()
     {
-        TestInst(BRAA(X0, X2), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X0, X2");
-        TestInst(BRAA(X15, X2), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X15, X2");
-        TestInst(BRAA(XZR, X2), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA XZR, X2");
-        TestInst(BRAA(X0, X18), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X0, X18");
-        TestInst(BRAA(X15, X18), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X15, X18");
-        TestInst(BRAA(XZR, X18), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA XZR, X18");
-        TestInst(BRAA(X0, SP), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X0, SP");
-        TestInst(BRAA(X15, SP), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X15, SP");
-        TestInst(BRAA(XZR, SP), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA XZR, SP");
+        TestInst(BRAA(X0, X2), asm => asm.BRAA(X0, X2), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X0, X2");
+        TestInst(BRAA(X15, X2), asm => asm.BRAA(X15, X2), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X15, X2");
+        TestInst(BRAA(XZR, X2), asm => asm.BRAA(XZR, X2), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA XZR, X2");
+        TestInst(BRAA(X0, X18), asm => asm.BRAA(X0, X18), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X0, X18");
+        TestInst(BRAA(X15, X18), asm => asm.BRAA(X15, X18), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X15, X18");
+        TestInst(BRAA(XZR, X18), asm => asm.BRAA(XZR, X18), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA XZR, X18");
+        TestInst(BRAA(X0, SP), asm => asm.BRAA(X0, SP), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X0, SP");
+        TestInst(BRAA(X15, SP), asm => asm.BRAA(X15, SP), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA X15, SP");
+        TestInst(BRAA(XZR, SP), asm => asm.BRAA(XZR, SP), Arm64InstructionId.BRAA_64p_branch_reg, Arm64Mnemonic.BRAA, "BRAA XZR, SP");
     }
 }

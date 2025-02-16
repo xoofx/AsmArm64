@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_UXTB_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_UXTB_ubfm_32m_bitfield_0()
     {
-        TestInst(UXTB(W0, W1), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W0, W1");
-        TestInst(UXTB(W15, W1), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W15, W1");
-        TestInst(UXTB(WZR, W1), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB WZR, W1");
-        TestInst(UXTB(W0, W16), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W0, W16");
-        TestInst(UXTB(W15, W16), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W15, W16");
-        TestInst(UXTB(WZR, W16), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB WZR, W16");
-        TestInst(UXTB(W0, WZR), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W0, WZR");
-        TestInst(UXTB(W15, WZR), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W15, WZR");
-        TestInst(UXTB(WZR, WZR), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB WZR, WZR");
+        TestInst(UXTB(W0, W1), asm => asm.UXTB(W0, W1), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W0, W1");
+        TestInst(UXTB(W15, W1), asm => asm.UXTB(W15, W1), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W15, W1");
+        TestInst(UXTB(WZR, W1), asm => asm.UXTB(WZR, W1), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB WZR, W1");
+        TestInst(UXTB(W0, W16), asm => asm.UXTB(W0, W16), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W0, W16");
+        TestInst(UXTB(W15, W16), asm => asm.UXTB(W15, W16), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W15, W16");
+        TestInst(UXTB(WZR, W16), asm => asm.UXTB(WZR, W16), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB WZR, W16");
+        TestInst(UXTB(W0, WZR), asm => asm.UXTB(W0, WZR), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W0, WZR");
+        TestInst(UXTB(W15, WZR), asm => asm.UXTB(W15, WZR), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB W15, WZR");
+        TestInst(UXTB(WZR, WZR), asm => asm.UXTB(WZR, WZR), Arm64InstructionId.UXTB_ubfm_32m_bitfield, Arm64Mnemonic.UXTB, "UXTB WZR, WZR");
     }
 }

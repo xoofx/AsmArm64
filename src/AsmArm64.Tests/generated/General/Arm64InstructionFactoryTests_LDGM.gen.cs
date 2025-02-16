@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_LDGM_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDGM_64bulk_ldsttags_0()
     {
-        TestInst(LDGM(X0, _[X2]), Arm64InstructionId.LDGM_64bulk_ldsttags, Arm64Mnemonic.LDGM, "LDGM X0, [X2]");
-        TestInst(LDGM(X15, _[X2]), Arm64InstructionId.LDGM_64bulk_ldsttags, Arm64Mnemonic.LDGM, "LDGM X15, [X2]");
-        TestInst(LDGM(XZR, _[X2]), Arm64InstructionId.LDGM_64bulk_ldsttags, Arm64Mnemonic.LDGM, "LDGM XZR, [X2]");
+        TestInst(LDGM(X0, _[X2]), asm => asm.LDGM(X0, _[X2]), Arm64InstructionId.LDGM_64bulk_ldsttags, Arm64Mnemonic.LDGM, "LDGM X0, [X2]");
+        TestInst(LDGM(X15, _[X2]), asm => asm.LDGM(X15, _[X2]), Arm64InstructionId.LDGM_64bulk_ldsttags, Arm64Mnemonic.LDGM, "LDGM X15, [X2]");
+        TestInst(LDGM(XZR, _[X2]), asm => asm.LDGM(XZR, _[X2]), Arm64InstructionId.LDGM_64bulk_ldsttags, Arm64Mnemonic.LDGM, "LDGM XZR, [X2]");
     }
 }

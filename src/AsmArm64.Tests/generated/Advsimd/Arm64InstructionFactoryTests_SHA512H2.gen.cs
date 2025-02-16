@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,13 +23,13 @@ public class Arm64InstructionFactoryTests_SHA512H2_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_SHA512H2_qqv_cryptosha512_3_0()
     {
-        TestInst(SHA512H2(Q0, Q1, V2.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q0, Q1, V2.2D");
-        TestInst(SHA512H2(Q31, Q1, V2.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q31, Q1, V2.2D");
-        TestInst(SHA512H2(Q0, Q31, V2.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q0, Q31, V2.2D");
-        TestInst(SHA512H2(Q31, Q31, V2.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q31, Q31, V2.2D");
-        TestInst(SHA512H2(Q0, Q1, V0.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q0, Q1, V0.2D");
-        TestInst(SHA512H2(Q31, Q1, V0.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q31, Q1, V0.2D");
-        TestInst(SHA512H2(Q0, Q31, V0.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q0, Q31, V0.2D");
-        TestInst(SHA512H2(Q31, Q31, V0.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q31, Q31, V0.2D");
+        TestInst(SHA512H2(Q0, Q1, V2.T_2D), asm => asm.SHA512H2(Q0, Q1, V2.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q0, Q1, V2.2D");
+        TestInst(SHA512H2(Q31, Q1, V2.T_2D), asm => asm.SHA512H2(Q31, Q1, V2.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q31, Q1, V2.2D");
+        TestInst(SHA512H2(Q0, Q31, V2.T_2D), asm => asm.SHA512H2(Q0, Q31, V2.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q0, Q31, V2.2D");
+        TestInst(SHA512H2(Q31, Q31, V2.T_2D), asm => asm.SHA512H2(Q31, Q31, V2.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q31, Q31, V2.2D");
+        TestInst(SHA512H2(Q0, Q1, V0.T_2D), asm => asm.SHA512H2(Q0, Q1, V0.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q0, Q1, V0.2D");
+        TestInst(SHA512H2(Q31, Q1, V0.T_2D), asm => asm.SHA512H2(Q31, Q1, V0.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q31, Q1, V0.2D");
+        TestInst(SHA512H2(Q0, Q31, V0.T_2D), asm => asm.SHA512H2(Q0, Q31, V0.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q0, Q31, V0.2D");
+        TestInst(SHA512H2(Q31, Q31, V0.T_2D), asm => asm.SHA512H2(Q31, Q31, V0.T_2D), Arm64InstructionId.SHA512H2_qqv_cryptosha512_3, Arm64Mnemonic.SHA512H2, "SHA512H2 Q31, Q31, V0.2D");
     }
 }

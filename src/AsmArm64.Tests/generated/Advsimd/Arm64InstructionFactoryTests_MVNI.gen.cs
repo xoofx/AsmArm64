@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MVNI_asimdimm_l_hl_0()
     {
-        TestInst(MVNI(V0.T_4H, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_hl, Arm64Mnemonic.MVNI, "MVNI V0.4H, #5, LSL #8");
-        TestInst(MVNI(V30.T_4H, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_hl, Arm64Mnemonic.MVNI, "MVNI V30.4H, #5, LSL #8");
+        TestInst(MVNI(V0.T_4H, 5, _LSL, 8), asm => asm.MVNI(V0.T_4H, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_hl, Arm64Mnemonic.MVNI, "MVNI V0.4H, #5, LSL #8");
+        TestInst(MVNI(V30.T_4H, 5, _LSL, 8), asm => asm.MVNI(V30.T_4H, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_hl, Arm64Mnemonic.MVNI, "MVNI V30.4H, #5, LSL #8");
     }
     
     /// <summary>
@@ -34,8 +33,8 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MVNI_asimdimm_l_hl_1()
     {
-        TestInst(MVNI(V0.T_8H, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_hl, Arm64Mnemonic.MVNI, "MVNI V0.8H, #5, LSL #8");
-        TestInst(MVNI(V30.T_8H, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_hl, Arm64Mnemonic.MVNI, "MVNI V30.8H, #5, LSL #8");
+        TestInst(MVNI(V0.T_8H, 5, _LSL, 8), asm => asm.MVNI(V0.T_8H, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_hl, Arm64Mnemonic.MVNI, "MVNI V0.8H, #5, LSL #8");
+        TestInst(MVNI(V30.T_8H, 5, _LSL, 8), asm => asm.MVNI(V30.T_8H, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_hl, Arm64Mnemonic.MVNI, "MVNI V30.8H, #5, LSL #8");
     }
     
     /// <summary>
@@ -44,8 +43,8 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MVNI_asimdimm_l_sl_2()
     {
-        TestInst(MVNI(V0.T_2S, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_sl, Arm64Mnemonic.MVNI, "MVNI V0.2S, #5, LSL #8");
-        TestInst(MVNI(V30.T_2S, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_sl, Arm64Mnemonic.MVNI, "MVNI V30.2S, #5, LSL #8");
+        TestInst(MVNI(V0.T_2S, 5, _LSL, 8), asm => asm.MVNI(V0.T_2S, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_sl, Arm64Mnemonic.MVNI, "MVNI V0.2S, #5, LSL #8");
+        TestInst(MVNI(V30.T_2S, 5, _LSL, 8), asm => asm.MVNI(V30.T_2S, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_sl, Arm64Mnemonic.MVNI, "MVNI V30.2S, #5, LSL #8");
     }
     
     /// <summary>
@@ -54,8 +53,8 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MVNI_asimdimm_l_sl_3()
     {
-        TestInst(MVNI(V0.T_4S, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_sl, Arm64Mnemonic.MVNI, "MVNI V0.4S, #5, LSL #8");
-        TestInst(MVNI(V30.T_4S, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_sl, Arm64Mnemonic.MVNI, "MVNI V30.4S, #5, LSL #8");
+        TestInst(MVNI(V0.T_4S, 5, _LSL, 8), asm => asm.MVNI(V0.T_4S, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_sl, Arm64Mnemonic.MVNI, "MVNI V0.4S, #5, LSL #8");
+        TestInst(MVNI(V30.T_4S, 5, _LSL, 8), asm => asm.MVNI(V30.T_4S, 5, _LSL, 8), Arm64InstructionId.MVNI_asimdimm_l_sl, Arm64Mnemonic.MVNI, "MVNI V30.4S, #5, LSL #8");
     }
     
     /// <summary>
@@ -64,8 +63,8 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MVNI_asimdimm_m_sm_4()
     {
-        TestInst(MVNI(V0.T_2S, 5, _MSL, 16), Arm64InstructionId.MVNI_asimdimm_m_sm, Arm64Mnemonic.MVNI, "MVNI V0.2S, #5, MSL #16");
-        TestInst(MVNI(V30.T_2S, 5, _MSL, 16), Arm64InstructionId.MVNI_asimdimm_m_sm, Arm64Mnemonic.MVNI, "MVNI V30.2S, #5, MSL #16");
+        TestInst(MVNI(V0.T_2S, 5, _MSL, 16), asm => asm.MVNI(V0.T_2S, 5, _MSL, 16), Arm64InstructionId.MVNI_asimdimm_m_sm, Arm64Mnemonic.MVNI, "MVNI V0.2S, #5, MSL #16");
+        TestInst(MVNI(V30.T_2S, 5, _MSL, 16), asm => asm.MVNI(V30.T_2S, 5, _MSL, 16), Arm64InstructionId.MVNI_asimdimm_m_sm, Arm64Mnemonic.MVNI, "MVNI V30.2S, #5, MSL #16");
     }
     
     /// <summary>
@@ -74,7 +73,7 @@ public class Arm64InstructionFactoryTests_MVNI_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_MVNI_asimdimm_m_sm_5()
     {
-        TestInst(MVNI(V0.T_4S, 5, _MSL, 16), Arm64InstructionId.MVNI_asimdimm_m_sm, Arm64Mnemonic.MVNI, "MVNI V0.4S, #5, MSL #16");
-        TestInst(MVNI(V30.T_4S, 5, _MSL, 16), Arm64InstructionId.MVNI_asimdimm_m_sm, Arm64Mnemonic.MVNI, "MVNI V30.4S, #5, MSL #16");
+        TestInst(MVNI(V0.T_4S, 5, _MSL, 16), asm => asm.MVNI(V0.T_4S, 5, _MSL, 16), Arm64InstructionId.MVNI_asimdimm_m_sm, Arm64Mnemonic.MVNI, "MVNI V0.4S, #5, MSL #16");
+        TestInst(MVNI(V30.T_4S, 5, _MSL, 16), asm => asm.MVNI(V30.T_4S, 5, _MSL, 16), Arm64InstructionId.MVNI_asimdimm_m_sm, Arm64Mnemonic.MVNI, "MVNI V30.4S, #5, MSL #16");
     }
 }

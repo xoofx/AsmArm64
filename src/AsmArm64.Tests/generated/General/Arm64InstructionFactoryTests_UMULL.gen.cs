@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,32 +23,32 @@ public class Arm64InstructionFactoryTests_UMULL_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_UMULL_umaddl_64wa_dp_3src_0()
     {
-        TestInst(UMULL(X0, W1, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W1, W2");
-        TestInst(UMULL(X15, W1, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W1, W2");
-        TestInst(UMULL(XZR, W1, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W1, W2");
-        TestInst(UMULL(X0, W16, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W16, W2");
-        TestInst(UMULL(X15, W16, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W16, W2");
-        TestInst(UMULL(XZR, W16, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W16, W2");
-        TestInst(UMULL(X0, WZR, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, WZR, W2");
-        TestInst(UMULL(X15, WZR, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, WZR, W2");
-        TestInst(UMULL(XZR, WZR, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, WZR, W2");
-        TestInst(UMULL(X0, W1, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W1, W17");
-        TestInst(UMULL(X15, W1, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W1, W17");
-        TestInst(UMULL(XZR, W1, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W1, W17");
-        TestInst(UMULL(X0, W16, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W16, W17");
-        TestInst(UMULL(X15, W16, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W16, W17");
-        TestInst(UMULL(XZR, W16, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W16, W17");
-        TestInst(UMULL(X0, WZR, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, WZR, W17");
-        TestInst(UMULL(X15, WZR, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, WZR, W17");
-        TestInst(UMULL(XZR, WZR, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, WZR, W17");
-        TestInst(UMULL(X0, W1, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W1, WZR");
-        TestInst(UMULL(X15, W1, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W1, WZR");
-        TestInst(UMULL(XZR, W1, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W1, WZR");
-        TestInst(UMULL(X0, W16, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W16, WZR");
-        TestInst(UMULL(X15, W16, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W16, WZR");
-        TestInst(UMULL(XZR, W16, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W16, WZR");
-        TestInst(UMULL(X0, WZR, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, WZR, WZR");
-        TestInst(UMULL(X15, WZR, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, WZR, WZR");
-        TestInst(UMULL(XZR, WZR, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, WZR, WZR");
+        TestInst(UMULL(X0, W1, W2), asm => asm.UMULL(X0, W1, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W1, W2");
+        TestInst(UMULL(X15, W1, W2), asm => asm.UMULL(X15, W1, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W1, W2");
+        TestInst(UMULL(XZR, W1, W2), asm => asm.UMULL(XZR, W1, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W1, W2");
+        TestInst(UMULL(X0, W16, W2), asm => asm.UMULL(X0, W16, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W16, W2");
+        TestInst(UMULL(X15, W16, W2), asm => asm.UMULL(X15, W16, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W16, W2");
+        TestInst(UMULL(XZR, W16, W2), asm => asm.UMULL(XZR, W16, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W16, W2");
+        TestInst(UMULL(X0, WZR, W2), asm => asm.UMULL(X0, WZR, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, WZR, W2");
+        TestInst(UMULL(X15, WZR, W2), asm => asm.UMULL(X15, WZR, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, WZR, W2");
+        TestInst(UMULL(XZR, WZR, W2), asm => asm.UMULL(XZR, WZR, W2), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, WZR, W2");
+        TestInst(UMULL(X0, W1, W17), asm => asm.UMULL(X0, W1, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W1, W17");
+        TestInst(UMULL(X15, W1, W17), asm => asm.UMULL(X15, W1, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W1, W17");
+        TestInst(UMULL(XZR, W1, W17), asm => asm.UMULL(XZR, W1, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W1, W17");
+        TestInst(UMULL(X0, W16, W17), asm => asm.UMULL(X0, W16, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W16, W17");
+        TestInst(UMULL(X15, W16, W17), asm => asm.UMULL(X15, W16, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W16, W17");
+        TestInst(UMULL(XZR, W16, W17), asm => asm.UMULL(XZR, W16, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W16, W17");
+        TestInst(UMULL(X0, WZR, W17), asm => asm.UMULL(X0, WZR, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, WZR, W17");
+        TestInst(UMULL(X15, WZR, W17), asm => asm.UMULL(X15, WZR, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, WZR, W17");
+        TestInst(UMULL(XZR, WZR, W17), asm => asm.UMULL(XZR, WZR, W17), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, WZR, W17");
+        TestInst(UMULL(X0, W1, WZR), asm => asm.UMULL(X0, W1, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W1, WZR");
+        TestInst(UMULL(X15, W1, WZR), asm => asm.UMULL(X15, W1, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W1, WZR");
+        TestInst(UMULL(XZR, W1, WZR), asm => asm.UMULL(XZR, W1, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W1, WZR");
+        TestInst(UMULL(X0, W16, WZR), asm => asm.UMULL(X0, W16, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, W16, WZR");
+        TestInst(UMULL(X15, W16, WZR), asm => asm.UMULL(X15, W16, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, W16, WZR");
+        TestInst(UMULL(XZR, W16, WZR), asm => asm.UMULL(XZR, W16, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, W16, WZR");
+        TestInst(UMULL(X0, WZR, WZR), asm => asm.UMULL(X0, WZR, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X0, WZR, WZR");
+        TestInst(UMULL(X15, WZR, WZR), asm => asm.UMULL(X15, WZR, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL X15, WZR, WZR");
+        TestInst(UMULL(XZR, WZR, WZR), asm => asm.UMULL(XZR, WZR, WZR), Arm64InstructionId.UMULL_umaddl_64wa_dp_3src, Arm64Mnemonic.UMULL, "UMULL XZR, WZR, WZR");
     }
 }

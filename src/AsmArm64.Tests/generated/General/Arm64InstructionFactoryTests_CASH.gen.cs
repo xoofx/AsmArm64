@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_CASH_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CASH_c32_comswap_0()
     {
-        TestInst(CASH(W0, W1, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W0, W1, [X3]");
-        TestInst(CASH(W15, W1, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W15, W1, [X3]");
-        TestInst(CASH(WZR, W1, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH WZR, W1, [X3]");
-        TestInst(CASH(W0, W16, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W0, W16, [X3]");
-        TestInst(CASH(W15, W16, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W15, W16, [X3]");
-        TestInst(CASH(WZR, W16, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH WZR, W16, [X3]");
-        TestInst(CASH(W0, WZR, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W0, WZR, [X3]");
-        TestInst(CASH(W15, WZR, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W15, WZR, [X3]");
-        TestInst(CASH(WZR, WZR, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH WZR, WZR, [X3]");
+        TestInst(CASH(W0, W1, _[X3]), asm => asm.CASH(W0, W1, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W0, W1, [X3]");
+        TestInst(CASH(W15, W1, _[X3]), asm => asm.CASH(W15, W1, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W15, W1, [X3]");
+        TestInst(CASH(WZR, W1, _[X3]), asm => asm.CASH(WZR, W1, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH WZR, W1, [X3]");
+        TestInst(CASH(W0, W16, _[X3]), asm => asm.CASH(W0, W16, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W0, W16, [X3]");
+        TestInst(CASH(W15, W16, _[X3]), asm => asm.CASH(W15, W16, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W15, W16, [X3]");
+        TestInst(CASH(WZR, W16, _[X3]), asm => asm.CASH(WZR, W16, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH WZR, W16, [X3]");
+        TestInst(CASH(W0, WZR, _[X3]), asm => asm.CASH(W0, WZR, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W0, WZR, [X3]");
+        TestInst(CASH(W15, WZR, _[X3]), asm => asm.CASH(W15, WZR, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH W15, WZR, [X3]");
+        TestInst(CASH(WZR, WZR, _[X3]), asm => asm.CASH(WZR, WZR, _[X3]), Arm64InstructionId.CASH_c32_comswap, Arm64Mnemonic.CASH, "CASH WZR, WZR, [X3]");
     }
 }

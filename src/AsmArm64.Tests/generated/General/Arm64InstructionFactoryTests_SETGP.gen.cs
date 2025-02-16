@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SETGP_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_SETGP_set_memcms_0()
     {
-        TestInst(SETGP(_[X1].Pre, X1, X2), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X1, X2");
-        TestInst(SETGP(_[X1].Pre, X16, X2), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X16, X2");
-        TestInst(SETGP(_[X1].Pre, XZR, X2), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, XZR, X2");
-        TestInst(SETGP(_[X1].Pre, X1, X17), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X1, X17");
-        TestInst(SETGP(_[X1].Pre, X16, X17), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X16, X17");
-        TestInst(SETGP(_[X1].Pre, XZR, X17), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, XZR, X17");
-        TestInst(SETGP(_[X1].Pre, X1, XZR), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X1, XZR");
-        TestInst(SETGP(_[X1].Pre, X16, XZR), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X16, XZR");
-        TestInst(SETGP(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, XZR, XZR");
+        TestInst(SETGP(_[X1].Pre, X1, X2), asm => asm.SETGP(_[X1].Pre, X1, X2), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X1, X2");
+        TestInst(SETGP(_[X1].Pre, X16, X2), asm => asm.SETGP(_[X1].Pre, X16, X2), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X16, X2");
+        TestInst(SETGP(_[X1].Pre, XZR, X2), asm => asm.SETGP(_[X1].Pre, XZR, X2), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, XZR, X2");
+        TestInst(SETGP(_[X1].Pre, X1, X17), asm => asm.SETGP(_[X1].Pre, X1, X17), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X1, X17");
+        TestInst(SETGP(_[X1].Pre, X16, X17), asm => asm.SETGP(_[X1].Pre, X16, X17), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X16, X17");
+        TestInst(SETGP(_[X1].Pre, XZR, X17), asm => asm.SETGP(_[X1].Pre, XZR, X17), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, XZR, X17");
+        TestInst(SETGP(_[X1].Pre, X1, XZR), asm => asm.SETGP(_[X1].Pre, X1, XZR), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X1, XZR");
+        TestInst(SETGP(_[X1].Pre, X16, XZR), asm => asm.SETGP(_[X1].Pre, X16, XZR), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, X16, XZR");
+        TestInst(SETGP(_[X1].Pre, XZR, XZR), asm => asm.SETGP(_[X1].Pre, XZR, XZR), Arm64InstructionId.SETGP_set_memcms, Arm64Mnemonic.SETGP, "SETGP [X1]!, XZR, XZR");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_CFINV_System : Arm64InstructionFactory
     [TestMethod]
     public void Test_CFINV_m_pstate_0()
     {
-        TestInst(CFINV(), Arm64InstructionId.CFINV_m_pstate, Arm64Mnemonic.CFINV, "CFINV");
+        TestInst(CFINV(), asm => asm.CFINV(), Arm64InstructionId.CFINV_m_pstate, Arm64Mnemonic.CFINV, "CFINV");
     }
 }

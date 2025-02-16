@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_ST64B_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_ST64B_64l_memop_0()
     {
-        TestInst(ST64B(X0, _[X2]), Arm64InstructionId.ST64B_64l_memop, Arm64Mnemonic.ST64B, "ST64B X0, [X2]");
-        TestInst(ST64B(X15, _[X2]), Arm64InstructionId.ST64B_64l_memop, Arm64Mnemonic.ST64B, "ST64B X15, [X2]");
-        TestInst(ST64B(XZR, _[X2]), Arm64InstructionId.ST64B_64l_memop, Arm64Mnemonic.ST64B, "ST64B XZR, [X2]");
+        TestInst(ST64B(X0, _[X2]), asm => asm.ST64B(X0, _[X2]), Arm64InstructionId.ST64B_64l_memop, Arm64Mnemonic.ST64B, "ST64B X0, [X2]");
+        TestInst(ST64B(X15, _[X2]), asm => asm.ST64B(X15, _[X2]), Arm64InstructionId.ST64B_64l_memop, Arm64Mnemonic.ST64B, "ST64B X15, [X2]");
+        TestInst(ST64B(XZR, _[X2]), asm => asm.ST64B(XZR, _[X2]), Arm64InstructionId.ST64B_64l_memop, Arm64Mnemonic.ST64B, "ST64B XZR, [X2]");
     }
 }

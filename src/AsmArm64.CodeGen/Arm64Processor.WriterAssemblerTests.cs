@@ -125,8 +125,19 @@ partial class Arm64Processor
             FindBestAlias(instructionVariation, testArguments, out var preferredInstruction, out var expectedAsm);
 
             var cSharpMnemonic = GetInstructionMnemonic(instruction);
-            w.Write($"TestInst({cSharpMnemonic}({string.Join(", ", testArguments.Select(x => x.CSharp))})");
             
+            // Test Arm64Assembler
+            var labelIndex = instructionVariation.Operands.FindIndex(x => x.Descriptor is LabelOperandDescriptor);
+            if (labelIndex >= 0)
+            {
+                w.Write($"TestInst({cSharpMnemonic}({string.Join(", ", testArguments.Select(x => x.CSharp))}), null");
+            }
+            else
+            {
+                w.Write($"TestInst({cSharpMnemonic}({string.Join(", ", testArguments.Select(x => x.CSharp))})");
+                w.Write($", asm => asm.{cSharpMnemonic}({string.Join(", ", testArguments.Select(x => x.CSharp))})");
+            }
+
             // Special case for LSL instructions that are folded into a single instruction
             if (instructionVariation.ElseVariation is not null && testArguments.OfType<MemoryTestArgument>().Any(x => x.Extend == "LSL"))
             {

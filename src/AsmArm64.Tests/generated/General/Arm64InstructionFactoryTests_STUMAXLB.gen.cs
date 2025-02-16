@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STUMAXLB_General : Arm64InstructionFac
     [TestMethod]
     public void Test_STUMAXLB_ldumaxlb_32_memop_0()
     {
-        TestInst(STUMAXLB(W0, _[X2]), Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, Arm64Mnemonic.STUMAXLB, "STUMAXLB W0, [X2]");
-        TestInst(STUMAXLB(W15, _[X2]), Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, Arm64Mnemonic.STUMAXLB, "STUMAXLB W15, [X2]");
-        TestInst(STUMAXLB(WZR, _[X2]), Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, Arm64Mnemonic.STUMAXLB, "STUMAXLB WZR, [X2]");
+        TestInst(STUMAXLB(W0, _[X2]), asm => asm.STUMAXLB(W0, _[X2]), Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, Arm64Mnemonic.STUMAXLB, "STUMAXLB W0, [X2]");
+        TestInst(STUMAXLB(W15, _[X2]), asm => asm.STUMAXLB(W15, _[X2]), Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, Arm64Mnemonic.STUMAXLB, "STUMAXLB W15, [X2]");
+        TestInst(STUMAXLB(WZR, _[X2]), asm => asm.STUMAXLB(WZR, _[X2]), Arm64InstructionId.STUMAXLB_ldumaxlb_32_memop, Arm64Mnemonic.STUMAXLB, "STUMAXLB WZR, [X2]");
     }
 }

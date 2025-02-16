@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_CASLT_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_CASLT_c64_comswap_unpriv_0()
     {
-        TestInst(CASLT(X0, X1, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X0, X1, [X3]");
-        TestInst(CASLT(X15, X1, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X15, X1, [X3]");
-        TestInst(CASLT(XZR, X1, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT XZR, X1, [X3]");
-        TestInst(CASLT(X0, X16, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X0, X16, [X3]");
-        TestInst(CASLT(X15, X16, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X15, X16, [X3]");
-        TestInst(CASLT(XZR, X16, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT XZR, X16, [X3]");
-        TestInst(CASLT(X0, XZR, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X0, XZR, [X3]");
-        TestInst(CASLT(X15, XZR, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X15, XZR, [X3]");
-        TestInst(CASLT(XZR, XZR, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT XZR, XZR, [X3]");
+        TestInst(CASLT(X0, X1, _[X3]), asm => asm.CASLT(X0, X1, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X0, X1, [X3]");
+        TestInst(CASLT(X15, X1, _[X3]), asm => asm.CASLT(X15, X1, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X15, X1, [X3]");
+        TestInst(CASLT(XZR, X1, _[X3]), asm => asm.CASLT(XZR, X1, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT XZR, X1, [X3]");
+        TestInst(CASLT(X0, X16, _[X3]), asm => asm.CASLT(X0, X16, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X0, X16, [X3]");
+        TestInst(CASLT(X15, X16, _[X3]), asm => asm.CASLT(X15, X16, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X15, X16, [X3]");
+        TestInst(CASLT(XZR, X16, _[X3]), asm => asm.CASLT(XZR, X16, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT XZR, X16, [X3]");
+        TestInst(CASLT(X0, XZR, _[X3]), asm => asm.CASLT(X0, XZR, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X0, XZR, [X3]");
+        TestInst(CASLT(X15, XZR, _[X3]), asm => asm.CASLT(X15, XZR, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT X15, XZR, [X3]");
+        TestInst(CASLT(XZR, XZR, _[X3]), asm => asm.CASLT(XZR, XZR, _[X3]), Arm64InstructionId.CASLT_c64_comswap_unpriv, Arm64Mnemonic.CASLT, "CASLT XZR, XZR, [X3]");
     }
 }

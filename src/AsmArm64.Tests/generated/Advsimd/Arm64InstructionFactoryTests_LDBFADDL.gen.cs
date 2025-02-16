@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDBFADDL_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_LDBFADDL_16_0()
     {
-        TestInst(LDBFADDL(H0, H1, _[X3]), Arm64InstructionId.LDBFADDL_16, Arm64Mnemonic.LDBFADDL, "LDBFADDL H0, H1, [X3]");
-        TestInst(LDBFADDL(H31, H1, _[X3]), Arm64InstructionId.LDBFADDL_16, Arm64Mnemonic.LDBFADDL, "LDBFADDL H31, H1, [X3]");
-        TestInst(LDBFADDL(H0, H31, _[X3]), Arm64InstructionId.LDBFADDL_16, Arm64Mnemonic.LDBFADDL, "LDBFADDL H0, H31, [X3]");
-        TestInst(LDBFADDL(H31, H31, _[X3]), Arm64InstructionId.LDBFADDL_16, Arm64Mnemonic.LDBFADDL, "LDBFADDL H31, H31, [X3]");
+        TestInst(LDBFADDL(H0, H1, _[X3]), asm => asm.LDBFADDL(H0, H1, _[X3]), Arm64InstructionId.LDBFADDL_16, Arm64Mnemonic.LDBFADDL, "LDBFADDL H0, H1, [X3]");
+        TestInst(LDBFADDL(H31, H1, _[X3]), asm => asm.LDBFADDL(H31, H1, _[X3]), Arm64InstructionId.LDBFADDL_16, Arm64Mnemonic.LDBFADDL, "LDBFADDL H31, H1, [X3]");
+        TestInst(LDBFADDL(H0, H31, _[X3]), asm => asm.LDBFADDL(H0, H31, _[X3]), Arm64InstructionId.LDBFADDL_16, Arm64Mnemonic.LDBFADDL, "LDBFADDL H0, H31, [X3]");
+        TestInst(LDBFADDL(H31, H31, _[X3]), asm => asm.LDBFADDL(H31, H31, _[X3]), Arm64InstructionId.LDBFADDL_16, Arm64Mnemonic.LDBFADDL, "LDBFADDL H31, H31, [X3]");
     }
 }

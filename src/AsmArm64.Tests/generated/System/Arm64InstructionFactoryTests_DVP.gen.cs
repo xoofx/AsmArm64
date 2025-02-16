@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_DVP_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_DVP_sys_cr_systeminstrs_0()
     {
-        TestInst(DVP(RCTX, X1), Arm64InstructionId.DVP_sys_cr_systeminstrs, Arm64Mnemonic.DVP, "DVP RCTX, X1");
-        TestInst(DVP(RCTX, X16), Arm64InstructionId.DVP_sys_cr_systeminstrs, Arm64Mnemonic.DVP, "DVP RCTX, X16");
-        TestInst(DVP(RCTX, XZR), Arm64InstructionId.DVP_sys_cr_systeminstrs, Arm64Mnemonic.DVP, "DVP RCTX, XZR");
+        TestInst(DVP(RCTX, X1), asm => asm.DVP(RCTX, X1), Arm64InstructionId.DVP_sys_cr_systeminstrs, Arm64Mnemonic.DVP, "DVP RCTX, X1");
+        TestInst(DVP(RCTX, X16), asm => asm.DVP(RCTX, X16), Arm64InstructionId.DVP_sys_cr_systeminstrs, Arm64Mnemonic.DVP, "DVP RCTX, X16");
+        TestInst(DVP(RCTX, XZR), asm => asm.DVP(RCTX, XZR), Arm64InstructionId.DVP_sys_cr_systeminstrs, Arm64Mnemonic.DVP, "DVP RCTX, XZR");
     }
 }

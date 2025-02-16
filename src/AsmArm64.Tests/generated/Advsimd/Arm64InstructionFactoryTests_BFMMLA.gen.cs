@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,13 +23,13 @@ public class Arm64InstructionFactoryTests_BFMMLA_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_BFMMLA_asimdsame2_e_0()
     {
-        TestInst(BFMMLA(V0.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V0.4S, V1.8H, V2.8H");
-        TestInst(BFMMLA(V30.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V30.4S, V1.8H, V2.8H");
-        TestInst(BFMMLA(V0.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V0.4S, V31.8H, V2.8H");
-        TestInst(BFMMLA(V30.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V30.4S, V31.8H, V2.8H");
-        TestInst(BFMMLA(V0.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V0.4S, V1.8H, V0.8H");
-        TestInst(BFMMLA(V30.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V30.4S, V1.8H, V0.8H");
-        TestInst(BFMMLA(V0.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V0.4S, V31.8H, V0.8H");
-        TestInst(BFMMLA(V30.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V30.4S, V31.8H, V0.8H");
+        TestInst(BFMMLA(V0.T_4S, V1.T_8H, V2.T_8H), asm => asm.BFMMLA(V0.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V0.4S, V1.8H, V2.8H");
+        TestInst(BFMMLA(V30.T_4S, V1.T_8H, V2.T_8H), asm => asm.BFMMLA(V30.T_4S, V1.T_8H, V2.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V30.4S, V1.8H, V2.8H");
+        TestInst(BFMMLA(V0.T_4S, V31.T_8H, V2.T_8H), asm => asm.BFMMLA(V0.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V0.4S, V31.8H, V2.8H");
+        TestInst(BFMMLA(V30.T_4S, V31.T_8H, V2.T_8H), asm => asm.BFMMLA(V30.T_4S, V31.T_8H, V2.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V30.4S, V31.8H, V2.8H");
+        TestInst(BFMMLA(V0.T_4S, V1.T_8H, V0.T_8H), asm => asm.BFMMLA(V0.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V0.4S, V1.8H, V0.8H");
+        TestInst(BFMMLA(V30.T_4S, V1.T_8H, V0.T_8H), asm => asm.BFMMLA(V30.T_4S, V1.T_8H, V0.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V30.4S, V1.8H, V0.8H");
+        TestInst(BFMMLA(V0.T_4S, V31.T_8H, V0.T_8H), asm => asm.BFMMLA(V0.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V0.4S, V31.8H, V0.8H");
+        TestInst(BFMMLA(V30.T_4S, V31.T_8H, V0.T_8H), asm => asm.BFMMLA(V30.T_4S, V31.T_8H, V0.T_8H), Arm64InstructionId.BFMMLA_asimdsame2_e, Arm64Mnemonic.BFMMLA, "BFMMLA V30.4S, V31.8H, V0.8H");
     }
 }

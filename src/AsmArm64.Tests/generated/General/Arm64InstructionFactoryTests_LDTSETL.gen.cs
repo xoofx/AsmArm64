@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDTSETL_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDTSETL_32_memop_unpriv_0()
     {
-        TestInst(LDTSETL(W0, W1, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL W0, W1, [X3]");
-        TestInst(LDTSETL(W15, W1, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL W15, W1, [X3]");
-        TestInst(LDTSETL(WZR, W1, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL WZR, W1, [X3]");
-        TestInst(LDTSETL(W0, W16, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL W0, W16, [X3]");
-        TestInst(LDTSETL(W15, W16, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL W15, W16, [X3]");
-        TestInst(LDTSETL(WZR, W16, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL WZR, W16, [X3]");
-        TestInst(LDTSETL(W0, WZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_32_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL W0, [X3]");
-        TestInst(LDTSETL(W15, WZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_32_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL W15, [X3]");
-        TestInst(LDTSETL(WZR, WZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_32_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL WZR, [X3]");
+        TestInst(LDTSETL(W0, W1, _[X3]), asm => asm.LDTSETL(W0, W1, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL W0, W1, [X3]");
+        TestInst(LDTSETL(W15, W1, _[X3]), asm => asm.LDTSETL(W15, W1, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL W15, W1, [X3]");
+        TestInst(LDTSETL(WZR, W1, _[X3]), asm => asm.LDTSETL(WZR, W1, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL WZR, W1, [X3]");
+        TestInst(LDTSETL(W0, W16, _[X3]), asm => asm.LDTSETL(W0, W16, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL W0, W16, [X3]");
+        TestInst(LDTSETL(W15, W16, _[X3]), asm => asm.LDTSETL(W15, W16, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL W15, W16, [X3]");
+        TestInst(LDTSETL(WZR, W16, _[X3]), asm => asm.LDTSETL(WZR, W16, _[X3]), Arm64InstructionId.LDTSETL_32_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL WZR, W16, [X3]");
+        TestInst(LDTSETL(W0, WZR, _[X3]), asm => asm.LDTSETL(W0, WZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_32_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL W0, [X3]");
+        TestInst(LDTSETL(W15, WZR, _[X3]), asm => asm.LDTSETL(W15, WZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_32_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL W15, [X3]");
+        TestInst(LDTSETL(WZR, WZR, _[X3]), asm => asm.LDTSETL(WZR, WZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_32_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDTSETL_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDTSETL_64_memop_unpriv_1()
     {
-        TestInst(LDTSETL(X0, X1, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL X0, X1, [X3]");
-        TestInst(LDTSETL(X15, X1, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL X15, X1, [X3]");
-        TestInst(LDTSETL(XZR, X1, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL XZR, X1, [X3]");
-        TestInst(LDTSETL(X0, X16, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL X0, X16, [X3]");
-        TestInst(LDTSETL(X15, X16, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL X15, X16, [X3]");
-        TestInst(LDTSETL(XZR, X16, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL XZR, X16, [X3]");
-        TestInst(LDTSETL(X0, XZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_64_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL X0, [X3]");
-        TestInst(LDTSETL(X15, XZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_64_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL X15, [X3]");
-        TestInst(LDTSETL(XZR, XZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_64_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL XZR, [X3]");
+        TestInst(LDTSETL(X0, X1, _[X3]), asm => asm.LDTSETL(X0, X1, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL X0, X1, [X3]");
+        TestInst(LDTSETL(X15, X1, _[X3]), asm => asm.LDTSETL(X15, X1, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL X15, X1, [X3]");
+        TestInst(LDTSETL(XZR, X1, _[X3]), asm => asm.LDTSETL(XZR, X1, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL XZR, X1, [X3]");
+        TestInst(LDTSETL(X0, X16, _[X3]), asm => asm.LDTSETL(X0, X16, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL X0, X16, [X3]");
+        TestInst(LDTSETL(X15, X16, _[X3]), asm => asm.LDTSETL(X15, X16, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL X15, X16, [X3]");
+        TestInst(LDTSETL(XZR, X16, _[X3]), asm => asm.LDTSETL(XZR, X16, _[X3]), Arm64InstructionId.LDTSETL_64_memop_unpriv, Arm64Mnemonic.LDTSETL, "LDTSETL XZR, X16, [X3]");
+        TestInst(LDTSETL(X0, XZR, _[X3]), asm => asm.LDTSETL(X0, XZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_64_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL X0, [X3]");
+        TestInst(LDTSETL(X15, XZR, _[X3]), asm => asm.LDTSETL(X15, XZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_64_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL X15, [X3]");
+        TestInst(LDTSETL(XZR, XZR, _[X3]), asm => asm.LDTSETL(XZR, XZR, _[X3]), Arm64InstructionId.STTSETL_ldtsetl_64_memop_unpriv, Arm64Mnemonic.STTSETL, "STTSETL XZR, [X3]");
     }
 }

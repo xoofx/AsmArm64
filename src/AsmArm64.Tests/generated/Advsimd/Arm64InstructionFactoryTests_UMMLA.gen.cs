@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,13 +23,13 @@ public class Arm64InstructionFactoryTests_UMMLA_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_UMMLA_asimdsame2_g_0()
     {
-        TestInst(UMMLA(V0.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V0.4S, V1.16B, V2.16B");
-        TestInst(UMMLA(V30.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V30.4S, V1.16B, V2.16B");
-        TestInst(UMMLA(V0.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V0.4S, V31.16B, V2.16B");
-        TestInst(UMMLA(V30.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V30.4S, V31.16B, V2.16B");
-        TestInst(UMMLA(V0.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V0.4S, V1.16B, V0.16B");
-        TestInst(UMMLA(V30.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V30.4S, V1.16B, V0.16B");
-        TestInst(UMMLA(V0.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V0.4S, V31.16B, V0.16B");
-        TestInst(UMMLA(V30.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V30.4S, V31.16B, V0.16B");
+        TestInst(UMMLA(V0.T_4S, V1.T_16B, V2.T_16B), asm => asm.UMMLA(V0.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V0.4S, V1.16B, V2.16B");
+        TestInst(UMMLA(V30.T_4S, V1.T_16B, V2.T_16B), asm => asm.UMMLA(V30.T_4S, V1.T_16B, V2.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V30.4S, V1.16B, V2.16B");
+        TestInst(UMMLA(V0.T_4S, V31.T_16B, V2.T_16B), asm => asm.UMMLA(V0.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V0.4S, V31.16B, V2.16B");
+        TestInst(UMMLA(V30.T_4S, V31.T_16B, V2.T_16B), asm => asm.UMMLA(V30.T_4S, V31.T_16B, V2.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V30.4S, V31.16B, V2.16B");
+        TestInst(UMMLA(V0.T_4S, V1.T_16B, V0.T_16B), asm => asm.UMMLA(V0.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V0.4S, V1.16B, V0.16B");
+        TestInst(UMMLA(V30.T_4S, V1.T_16B, V0.T_16B), asm => asm.UMMLA(V30.T_4S, V1.T_16B, V0.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V30.4S, V1.16B, V0.16B");
+        TestInst(UMMLA(V0.T_4S, V31.T_16B, V0.T_16B), asm => asm.UMMLA(V0.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V0.4S, V31.16B, V0.16B");
+        TestInst(UMMLA(V30.T_4S, V31.T_16B, V0.T_16B), asm => asm.UMMLA(V30.T_4S, V31.T_16B, V0.T_16B), Arm64InstructionId.UMMLA_asimdsame2_g, Arm64Mnemonic.UMMLA, "UMMLA V30.4S, V31.16B, V0.16B");
     }
 }

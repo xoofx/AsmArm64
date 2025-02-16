@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_STTXR_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_STTXR_sr32_ldstexclr_unpriv_0()
     {
-        TestInst(STTXR(W0, W1, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, W1, [X3]");
-        TestInst(STTXR(W15, W1, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, W1, [X3]");
-        TestInst(STTXR(WZR, W1, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, W1, [X3]");
-        TestInst(STTXR(W0, W16, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, W16, [X3]");
-        TestInst(STTXR(W15, W16, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, W16, [X3]");
-        TestInst(STTXR(WZR, W16, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, W16, [X3]");
-        TestInst(STTXR(W0, WZR, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, WZR, [X3]");
-        TestInst(STTXR(W15, WZR, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, WZR, [X3]");
-        TestInst(STTXR(WZR, WZR, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, WZR, [X3]");
+        TestInst(STTXR(W0, W1, _[X3]), asm => asm.STTXR(W0, W1, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, W1, [X3]");
+        TestInst(STTXR(W15, W1, _[X3]), asm => asm.STTXR(W15, W1, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, W1, [X3]");
+        TestInst(STTXR(WZR, W1, _[X3]), asm => asm.STTXR(WZR, W1, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, W1, [X3]");
+        TestInst(STTXR(W0, W16, _[X3]), asm => asm.STTXR(W0, W16, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, W16, [X3]");
+        TestInst(STTXR(W15, W16, _[X3]), asm => asm.STTXR(W15, W16, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, W16, [X3]");
+        TestInst(STTXR(WZR, W16, _[X3]), asm => asm.STTXR(WZR, W16, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, W16, [X3]");
+        TestInst(STTXR(W0, WZR, _[X3]), asm => asm.STTXR(W0, WZR, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, WZR, [X3]");
+        TestInst(STTXR(W15, WZR, _[X3]), asm => asm.STTXR(W15, WZR, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, WZR, [X3]");
+        TestInst(STTXR(WZR, WZR, _[X3]), asm => asm.STTXR(WZR, WZR, _[X3]), Arm64InstructionId.STTXR_sr32_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_STTXR_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_STTXR_sr64_ldstexclr_unpriv_1()
     {
-        TestInst(STTXR(W0, X1, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, X1, [X3]");
-        TestInst(STTXR(W15, X1, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, X1, [X3]");
-        TestInst(STTXR(WZR, X1, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, X1, [X3]");
-        TestInst(STTXR(W0, X16, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, X16, [X3]");
-        TestInst(STTXR(W15, X16, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, X16, [X3]");
-        TestInst(STTXR(WZR, X16, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, X16, [X3]");
-        TestInst(STTXR(W0, XZR, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, XZR, [X3]");
-        TestInst(STTXR(W15, XZR, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, XZR, [X3]");
-        TestInst(STTXR(WZR, XZR, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, XZR, [X3]");
+        TestInst(STTXR(W0, X1, _[X3]), asm => asm.STTXR(W0, X1, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, X1, [X3]");
+        TestInst(STTXR(W15, X1, _[X3]), asm => asm.STTXR(W15, X1, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, X1, [X3]");
+        TestInst(STTXR(WZR, X1, _[X3]), asm => asm.STTXR(WZR, X1, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, X1, [X3]");
+        TestInst(STTXR(W0, X16, _[X3]), asm => asm.STTXR(W0, X16, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, X16, [X3]");
+        TestInst(STTXR(W15, X16, _[X3]), asm => asm.STTXR(W15, X16, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, X16, [X3]");
+        TestInst(STTXR(WZR, X16, _[X3]), asm => asm.STTXR(WZR, X16, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, X16, [X3]");
+        TestInst(STTXR(W0, XZR, _[X3]), asm => asm.STTXR(W0, XZR, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W0, XZR, [X3]");
+        TestInst(STTXR(W15, XZR, _[X3]), asm => asm.STTXR(W15, XZR, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR W15, XZR, [X3]");
+        TestInst(STTXR(WZR, XZR, _[X3]), asm => asm.STTXR(WZR, XZR, _[X3]), Arm64InstructionId.STTXR_sr64_ldstexclr_unpriv, Arm64Mnemonic.STTXR, "STTXR WZR, XZR, [X3]");
     }
 }

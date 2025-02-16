@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDSET_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDSET_32_memop_0()
     {
-        TestInst(LDSET(W0, W1, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET W0, W1, [X3]");
-        TestInst(LDSET(W15, W1, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET W15, W1, [X3]");
-        TestInst(LDSET(WZR, W1, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET WZR, W1, [X3]");
-        TestInst(LDSET(W0, W16, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET W0, W16, [X3]");
-        TestInst(LDSET(W15, W16, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET W15, W16, [X3]");
-        TestInst(LDSET(WZR, W16, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET WZR, W16, [X3]");
-        TestInst(LDSET(W0, WZR, _[X3]), Arm64InstructionId.STSET_ldset_32_memop, Arm64Mnemonic.STSET, "STSET W0, [X3]");
-        TestInst(LDSET(W15, WZR, _[X3]), Arm64InstructionId.STSET_ldset_32_memop, Arm64Mnemonic.STSET, "STSET W15, [X3]");
-        TestInst(LDSET(WZR, WZR, _[X3]), Arm64InstructionId.STSET_ldset_32_memop, Arm64Mnemonic.STSET, "STSET WZR, [X3]");
+        TestInst(LDSET(W0, W1, _[X3]), asm => asm.LDSET(W0, W1, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET W0, W1, [X3]");
+        TestInst(LDSET(W15, W1, _[X3]), asm => asm.LDSET(W15, W1, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET W15, W1, [X3]");
+        TestInst(LDSET(WZR, W1, _[X3]), asm => asm.LDSET(WZR, W1, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET WZR, W1, [X3]");
+        TestInst(LDSET(W0, W16, _[X3]), asm => asm.LDSET(W0, W16, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET W0, W16, [X3]");
+        TestInst(LDSET(W15, W16, _[X3]), asm => asm.LDSET(W15, W16, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET W15, W16, [X3]");
+        TestInst(LDSET(WZR, W16, _[X3]), asm => asm.LDSET(WZR, W16, _[X3]), Arm64InstructionId.LDSET_32_memop, Arm64Mnemonic.LDSET, "LDSET WZR, W16, [X3]");
+        TestInst(LDSET(W0, WZR, _[X3]), asm => asm.LDSET(W0, WZR, _[X3]), Arm64InstructionId.STSET_ldset_32_memop, Arm64Mnemonic.STSET, "STSET W0, [X3]");
+        TestInst(LDSET(W15, WZR, _[X3]), asm => asm.LDSET(W15, WZR, _[X3]), Arm64InstructionId.STSET_ldset_32_memop, Arm64Mnemonic.STSET, "STSET W15, [X3]");
+        TestInst(LDSET(WZR, WZR, _[X3]), asm => asm.LDSET(WZR, WZR, _[X3]), Arm64InstructionId.STSET_ldset_32_memop, Arm64Mnemonic.STSET, "STSET WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDSET_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_LDSET_64_memop_1()
     {
-        TestInst(LDSET(X0, X1, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET X0, X1, [X3]");
-        TestInst(LDSET(X15, X1, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET X15, X1, [X3]");
-        TestInst(LDSET(XZR, X1, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET XZR, X1, [X3]");
-        TestInst(LDSET(X0, X16, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET X0, X16, [X3]");
-        TestInst(LDSET(X15, X16, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET X15, X16, [X3]");
-        TestInst(LDSET(XZR, X16, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET XZR, X16, [X3]");
-        TestInst(LDSET(X0, XZR, _[X3]), Arm64InstructionId.STSET_ldset_64_memop, Arm64Mnemonic.STSET, "STSET X0, [X3]");
-        TestInst(LDSET(X15, XZR, _[X3]), Arm64InstructionId.STSET_ldset_64_memop, Arm64Mnemonic.STSET, "STSET X15, [X3]");
-        TestInst(LDSET(XZR, XZR, _[X3]), Arm64InstructionId.STSET_ldset_64_memop, Arm64Mnemonic.STSET, "STSET XZR, [X3]");
+        TestInst(LDSET(X0, X1, _[X3]), asm => asm.LDSET(X0, X1, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET X0, X1, [X3]");
+        TestInst(LDSET(X15, X1, _[X3]), asm => asm.LDSET(X15, X1, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET X15, X1, [X3]");
+        TestInst(LDSET(XZR, X1, _[X3]), asm => asm.LDSET(XZR, X1, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET XZR, X1, [X3]");
+        TestInst(LDSET(X0, X16, _[X3]), asm => asm.LDSET(X0, X16, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET X0, X16, [X3]");
+        TestInst(LDSET(X15, X16, _[X3]), asm => asm.LDSET(X15, X16, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET X15, X16, [X3]");
+        TestInst(LDSET(XZR, X16, _[X3]), asm => asm.LDSET(XZR, X16, _[X3]), Arm64InstructionId.LDSET_64_memop, Arm64Mnemonic.LDSET, "LDSET XZR, X16, [X3]");
+        TestInst(LDSET(X0, XZR, _[X3]), asm => asm.LDSET(X0, XZR, _[X3]), Arm64InstructionId.STSET_ldset_64_memop, Arm64Mnemonic.STSET, "STSET X0, [X3]");
+        TestInst(LDSET(X15, XZR, _[X3]), asm => asm.LDSET(X15, XZR, _[X3]), Arm64InstructionId.STSET_ldset_64_memop, Arm64Mnemonic.STSET, "STSET X15, [X3]");
+        TestInst(LDSET(XZR, XZR, _[X3]), asm => asm.LDSET(XZR, XZR, _[X3]), Arm64InstructionId.STSET_ldset_64_memop, Arm64Mnemonic.STSET, "STSET XZR, [X3]");
     }
 }

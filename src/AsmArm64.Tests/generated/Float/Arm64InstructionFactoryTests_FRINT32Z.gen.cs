@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FRINT32Z_Float : Arm64InstructionFacto
     [TestMethod]
     public void Test_FRINT32Z_s_floatdp1_0()
     {
-        TestInst(FRINT32Z(S0, S1), Arm64InstructionId.FRINT32Z_s_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z S0, S1");
-        TestInst(FRINT32Z(S31, S1), Arm64InstructionId.FRINT32Z_s_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z S31, S1");
-        TestInst(FRINT32Z(S0, S31), Arm64InstructionId.FRINT32Z_s_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z S0, S31");
-        TestInst(FRINT32Z(S31, S31), Arm64InstructionId.FRINT32Z_s_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z S31, S31");
+        TestInst(FRINT32Z(S0, S1), asm => asm.FRINT32Z(S0, S1), Arm64InstructionId.FRINT32Z_s_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z S0, S1");
+        TestInst(FRINT32Z(S31, S1), asm => asm.FRINT32Z(S31, S1), Arm64InstructionId.FRINT32Z_s_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z S31, S1");
+        TestInst(FRINT32Z(S0, S31), asm => asm.FRINT32Z(S0, S31), Arm64InstructionId.FRINT32Z_s_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z S0, S31");
+        TestInst(FRINT32Z(S31, S31), asm => asm.FRINT32Z(S31, S31), Arm64InstructionId.FRINT32Z_s_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z S31, S31");
     }
     
     /// <summary>
@@ -36,9 +35,9 @@ public class Arm64InstructionFactoryTests_FRINT32Z_Float : Arm64InstructionFacto
     [TestMethod]
     public void Test_FRINT32Z_d_floatdp1_1()
     {
-        TestInst(FRINT32Z(D0, D1), Arm64InstructionId.FRINT32Z_d_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z D0, D1");
-        TestInst(FRINT32Z(D31, D1), Arm64InstructionId.FRINT32Z_d_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z D31, D1");
-        TestInst(FRINT32Z(D0, D31), Arm64InstructionId.FRINT32Z_d_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z D0, D31");
-        TestInst(FRINT32Z(D31, D31), Arm64InstructionId.FRINT32Z_d_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z D31, D31");
+        TestInst(FRINT32Z(D0, D1), asm => asm.FRINT32Z(D0, D1), Arm64InstructionId.FRINT32Z_d_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z D0, D1");
+        TestInst(FRINT32Z(D31, D1), asm => asm.FRINT32Z(D31, D1), Arm64InstructionId.FRINT32Z_d_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z D31, D1");
+        TestInst(FRINT32Z(D0, D31), asm => asm.FRINT32Z(D0, D31), Arm64InstructionId.FRINT32Z_d_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z D0, D31");
+        TestInst(FRINT32Z(D31, D31), asm => asm.FRINT32Z(D31, D31), Arm64InstructionId.FRINT32Z_d_floatdp1, Arm64Mnemonic.FRINT32Z, "FRINT32Z D31, D31");
     }
 }

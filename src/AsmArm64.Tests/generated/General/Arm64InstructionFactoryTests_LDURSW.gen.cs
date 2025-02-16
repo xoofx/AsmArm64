@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_LDURSW_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDURSW_64_ldst_unscaled_0()
     {
-        TestInst(LDURSW(X0, _[X2, 5]), Arm64InstructionId.LDURSW_64_ldst_unscaled, Arm64Mnemonic.LDURSW, "LDURSW X0, [X2, #5]");
-        TestInst(LDURSW(X15, _[X2, 5]), Arm64InstructionId.LDURSW_64_ldst_unscaled, Arm64Mnemonic.LDURSW, "LDURSW X15, [X2, #5]");
-        TestInst(LDURSW(XZR, _[X2, 5]), Arm64InstructionId.LDURSW_64_ldst_unscaled, Arm64Mnemonic.LDURSW, "LDURSW XZR, [X2, #5]");
+        TestInst(LDURSW(X0, _[X2, 5]), asm => asm.LDURSW(X0, _[X2, 5]), Arm64InstructionId.LDURSW_64_ldst_unscaled, Arm64Mnemonic.LDURSW, "LDURSW X0, [X2, #5]");
+        TestInst(LDURSW(X15, _[X2, 5]), asm => asm.LDURSW(X15, _[X2, 5]), Arm64InstructionId.LDURSW_64_ldst_unscaled, Arm64Mnemonic.LDURSW, "LDURSW X15, [X2, #5]");
+        TestInst(LDURSW(XZR, _[X2, 5]), asm => asm.LDURSW(XZR, _[X2, 5]), Arm64InstructionId.LDURSW_64_ldst_unscaled, Arm64Mnemonic.LDURSW, "LDURSW XZR, [X2, #5]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FRINTX_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTX_h_floatdp1_0()
     {
-        TestInst(FRINTX(H0, H1), Arm64InstructionId.FRINTX_h_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX H0, H1");
-        TestInst(FRINTX(H31, H1), Arm64InstructionId.FRINTX_h_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX H31, H1");
-        TestInst(FRINTX(H0, H31), Arm64InstructionId.FRINTX_h_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX H0, H31");
-        TestInst(FRINTX(H31, H31), Arm64InstructionId.FRINTX_h_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX H31, H31");
+        TestInst(FRINTX(H0, H1), asm => asm.FRINTX(H0, H1), Arm64InstructionId.FRINTX_h_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX H0, H1");
+        TestInst(FRINTX(H31, H1), asm => asm.FRINTX(H31, H1), Arm64InstructionId.FRINTX_h_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX H31, H1");
+        TestInst(FRINTX(H0, H31), asm => asm.FRINTX(H0, H31), Arm64InstructionId.FRINTX_h_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX H0, H31");
+        TestInst(FRINTX(H31, H31), asm => asm.FRINTX(H31, H31), Arm64InstructionId.FRINTX_h_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX H31, H31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FRINTX_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTX_s_floatdp1_1()
     {
-        TestInst(FRINTX(S0, S1), Arm64InstructionId.FRINTX_s_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX S0, S1");
-        TestInst(FRINTX(S31, S1), Arm64InstructionId.FRINTX_s_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX S31, S1");
-        TestInst(FRINTX(S0, S31), Arm64InstructionId.FRINTX_s_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX S0, S31");
-        TestInst(FRINTX(S31, S31), Arm64InstructionId.FRINTX_s_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX S31, S31");
+        TestInst(FRINTX(S0, S1), asm => asm.FRINTX(S0, S1), Arm64InstructionId.FRINTX_s_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX S0, S1");
+        TestInst(FRINTX(S31, S1), asm => asm.FRINTX(S31, S1), Arm64InstructionId.FRINTX_s_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX S31, S1");
+        TestInst(FRINTX(S0, S31), asm => asm.FRINTX(S0, S31), Arm64InstructionId.FRINTX_s_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX S0, S31");
+        TestInst(FRINTX(S31, S31), asm => asm.FRINTX(S31, S31), Arm64InstructionId.FRINTX_s_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX S31, S31");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_FRINTX_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTX_d_floatdp1_2()
     {
-        TestInst(FRINTX(D0, D1), Arm64InstructionId.FRINTX_d_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX D0, D1");
-        TestInst(FRINTX(D31, D1), Arm64InstructionId.FRINTX_d_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX D31, D1");
-        TestInst(FRINTX(D0, D31), Arm64InstructionId.FRINTX_d_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX D0, D31");
-        TestInst(FRINTX(D31, D31), Arm64InstructionId.FRINTX_d_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX D31, D31");
+        TestInst(FRINTX(D0, D1), asm => asm.FRINTX(D0, D1), Arm64InstructionId.FRINTX_d_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX D0, D1");
+        TestInst(FRINTX(D31, D1), asm => asm.FRINTX(D31, D1), Arm64InstructionId.FRINTX_d_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX D31, D1");
+        TestInst(FRINTX(D0, D31), asm => asm.FRINTX(D0, D31), Arm64InstructionId.FRINTX_d_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX D0, D31");
+        TestInst(FRINTX(D31, D31), asm => asm.FRINTX(D31, D31), Arm64InstructionId.FRINTX_d_floatdp1, Arm64Mnemonic.FRINTX, "FRINTX D31, D31");
     }
 }

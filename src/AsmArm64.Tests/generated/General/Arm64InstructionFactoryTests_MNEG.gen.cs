@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,33 +23,33 @@ public class Arm64InstructionFactoryTests_MNEG_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_MNEG_msub_32a_dp_3src_0()
     {
-        TestInst(MNEG(W0, W1, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W1, W2");
-        TestInst(MNEG(W15, W1, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W1, W2");
-        TestInst(MNEG(WZR, W1, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W1, W2");
-        TestInst(MNEG(W0, W16, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W16, W2");
-        TestInst(MNEG(W15, W16, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W16, W2");
-        TestInst(MNEG(WZR, W16, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W16, W2");
-        TestInst(MNEG(W0, WZR, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, WZR, W2");
-        TestInst(MNEG(W15, WZR, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, WZR, W2");
-        TestInst(MNEG(WZR, WZR, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, WZR, W2");
-        TestInst(MNEG(W0, W1, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W1, W17");
-        TestInst(MNEG(W15, W1, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W1, W17");
-        TestInst(MNEG(WZR, W1, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W1, W17");
-        TestInst(MNEG(W0, W16, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W16, W17");
-        TestInst(MNEG(W15, W16, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W16, W17");
-        TestInst(MNEG(WZR, W16, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W16, W17");
-        TestInst(MNEG(W0, WZR, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, WZR, W17");
-        TestInst(MNEG(W15, WZR, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, WZR, W17");
-        TestInst(MNEG(WZR, WZR, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, WZR, W17");
-        TestInst(MNEG(W0, W1, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W1, WZR");
-        TestInst(MNEG(W15, W1, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W1, WZR");
-        TestInst(MNEG(WZR, W1, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W1, WZR");
-        TestInst(MNEG(W0, W16, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W16, WZR");
-        TestInst(MNEG(W15, W16, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W16, WZR");
-        TestInst(MNEG(WZR, W16, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W16, WZR");
-        TestInst(MNEG(W0, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, WZR, WZR");
-        TestInst(MNEG(W15, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, WZR, WZR");
-        TestInst(MNEG(WZR, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, WZR, WZR");
+        TestInst(MNEG(W0, W1, W2), asm => asm.MNEG(W0, W1, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W1, W2");
+        TestInst(MNEG(W15, W1, W2), asm => asm.MNEG(W15, W1, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W1, W2");
+        TestInst(MNEG(WZR, W1, W2), asm => asm.MNEG(WZR, W1, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W1, W2");
+        TestInst(MNEG(W0, W16, W2), asm => asm.MNEG(W0, W16, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W16, W2");
+        TestInst(MNEG(W15, W16, W2), asm => asm.MNEG(W15, W16, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W16, W2");
+        TestInst(MNEG(WZR, W16, W2), asm => asm.MNEG(WZR, W16, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W16, W2");
+        TestInst(MNEG(W0, WZR, W2), asm => asm.MNEG(W0, WZR, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, WZR, W2");
+        TestInst(MNEG(W15, WZR, W2), asm => asm.MNEG(W15, WZR, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, WZR, W2");
+        TestInst(MNEG(WZR, WZR, W2), asm => asm.MNEG(WZR, WZR, W2), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, WZR, W2");
+        TestInst(MNEG(W0, W1, W17), asm => asm.MNEG(W0, W1, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W1, W17");
+        TestInst(MNEG(W15, W1, W17), asm => asm.MNEG(W15, W1, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W1, W17");
+        TestInst(MNEG(WZR, W1, W17), asm => asm.MNEG(WZR, W1, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W1, W17");
+        TestInst(MNEG(W0, W16, W17), asm => asm.MNEG(W0, W16, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W16, W17");
+        TestInst(MNEG(W15, W16, W17), asm => asm.MNEG(W15, W16, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W16, W17");
+        TestInst(MNEG(WZR, W16, W17), asm => asm.MNEG(WZR, W16, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W16, W17");
+        TestInst(MNEG(W0, WZR, W17), asm => asm.MNEG(W0, WZR, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, WZR, W17");
+        TestInst(MNEG(W15, WZR, W17), asm => asm.MNEG(W15, WZR, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, WZR, W17");
+        TestInst(MNEG(WZR, WZR, W17), asm => asm.MNEG(WZR, WZR, W17), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, WZR, W17");
+        TestInst(MNEG(W0, W1, WZR), asm => asm.MNEG(W0, W1, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W1, WZR");
+        TestInst(MNEG(W15, W1, WZR), asm => asm.MNEG(W15, W1, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W1, WZR");
+        TestInst(MNEG(WZR, W1, WZR), asm => asm.MNEG(WZR, W1, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W1, WZR");
+        TestInst(MNEG(W0, W16, WZR), asm => asm.MNEG(W0, W16, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, W16, WZR");
+        TestInst(MNEG(W15, W16, WZR), asm => asm.MNEG(W15, W16, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, W16, WZR");
+        TestInst(MNEG(WZR, W16, WZR), asm => asm.MNEG(WZR, W16, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, W16, WZR");
+        TestInst(MNEG(W0, WZR, WZR), asm => asm.MNEG(W0, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W0, WZR, WZR");
+        TestInst(MNEG(W15, WZR, WZR), asm => asm.MNEG(W15, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG W15, WZR, WZR");
+        TestInst(MNEG(WZR, WZR, WZR), asm => asm.MNEG(WZR, WZR, WZR), Arm64InstructionId.MNEG_msub_32a_dp_3src, Arm64Mnemonic.MNEG, "MNEG WZR, WZR, WZR");
     }
     
     /// <summary>
@@ -59,32 +58,32 @@ public class Arm64InstructionFactoryTests_MNEG_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_MNEG_msub_64a_dp_3src_1()
     {
-        TestInst(MNEG(X0, X1, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X1, X2");
-        TestInst(MNEG(X15, X1, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X1, X2");
-        TestInst(MNEG(XZR, X1, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X1, X2");
-        TestInst(MNEG(X0, X16, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X16, X2");
-        TestInst(MNEG(X15, X16, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X16, X2");
-        TestInst(MNEG(XZR, X16, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X16, X2");
-        TestInst(MNEG(X0, XZR, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, XZR, X2");
-        TestInst(MNEG(X15, XZR, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, XZR, X2");
-        TestInst(MNEG(XZR, XZR, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, XZR, X2");
-        TestInst(MNEG(X0, X1, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X1, X17");
-        TestInst(MNEG(X15, X1, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X1, X17");
-        TestInst(MNEG(XZR, X1, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X1, X17");
-        TestInst(MNEG(X0, X16, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X16, X17");
-        TestInst(MNEG(X15, X16, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X16, X17");
-        TestInst(MNEG(XZR, X16, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X16, X17");
-        TestInst(MNEG(X0, XZR, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, XZR, X17");
-        TestInst(MNEG(X15, XZR, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, XZR, X17");
-        TestInst(MNEG(XZR, XZR, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, XZR, X17");
-        TestInst(MNEG(X0, X1, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X1, XZR");
-        TestInst(MNEG(X15, X1, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X1, XZR");
-        TestInst(MNEG(XZR, X1, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X1, XZR");
-        TestInst(MNEG(X0, X16, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X16, XZR");
-        TestInst(MNEG(X15, X16, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X16, XZR");
-        TestInst(MNEG(XZR, X16, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X16, XZR");
-        TestInst(MNEG(X0, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, XZR, XZR");
-        TestInst(MNEG(X15, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, XZR, XZR");
-        TestInst(MNEG(XZR, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, XZR, XZR");
+        TestInst(MNEG(X0, X1, X2), asm => asm.MNEG(X0, X1, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X1, X2");
+        TestInst(MNEG(X15, X1, X2), asm => asm.MNEG(X15, X1, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X1, X2");
+        TestInst(MNEG(XZR, X1, X2), asm => asm.MNEG(XZR, X1, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X1, X2");
+        TestInst(MNEG(X0, X16, X2), asm => asm.MNEG(X0, X16, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X16, X2");
+        TestInst(MNEG(X15, X16, X2), asm => asm.MNEG(X15, X16, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X16, X2");
+        TestInst(MNEG(XZR, X16, X2), asm => asm.MNEG(XZR, X16, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X16, X2");
+        TestInst(MNEG(X0, XZR, X2), asm => asm.MNEG(X0, XZR, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, XZR, X2");
+        TestInst(MNEG(X15, XZR, X2), asm => asm.MNEG(X15, XZR, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, XZR, X2");
+        TestInst(MNEG(XZR, XZR, X2), asm => asm.MNEG(XZR, XZR, X2), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, XZR, X2");
+        TestInst(MNEG(X0, X1, X17), asm => asm.MNEG(X0, X1, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X1, X17");
+        TestInst(MNEG(X15, X1, X17), asm => asm.MNEG(X15, X1, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X1, X17");
+        TestInst(MNEG(XZR, X1, X17), asm => asm.MNEG(XZR, X1, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X1, X17");
+        TestInst(MNEG(X0, X16, X17), asm => asm.MNEG(X0, X16, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X16, X17");
+        TestInst(MNEG(X15, X16, X17), asm => asm.MNEG(X15, X16, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X16, X17");
+        TestInst(MNEG(XZR, X16, X17), asm => asm.MNEG(XZR, X16, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X16, X17");
+        TestInst(MNEG(X0, XZR, X17), asm => asm.MNEG(X0, XZR, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, XZR, X17");
+        TestInst(MNEG(X15, XZR, X17), asm => asm.MNEG(X15, XZR, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, XZR, X17");
+        TestInst(MNEG(XZR, XZR, X17), asm => asm.MNEG(XZR, XZR, X17), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, XZR, X17");
+        TestInst(MNEG(X0, X1, XZR), asm => asm.MNEG(X0, X1, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X1, XZR");
+        TestInst(MNEG(X15, X1, XZR), asm => asm.MNEG(X15, X1, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X1, XZR");
+        TestInst(MNEG(XZR, X1, XZR), asm => asm.MNEG(XZR, X1, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X1, XZR");
+        TestInst(MNEG(X0, X16, XZR), asm => asm.MNEG(X0, X16, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, X16, XZR");
+        TestInst(MNEG(X15, X16, XZR), asm => asm.MNEG(X15, X16, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, X16, XZR");
+        TestInst(MNEG(XZR, X16, XZR), asm => asm.MNEG(XZR, X16, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, X16, XZR");
+        TestInst(MNEG(X0, XZR, XZR), asm => asm.MNEG(X0, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X0, XZR, XZR");
+        TestInst(MNEG(X15, XZR, XZR), asm => asm.MNEG(X15, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG X15, XZR, XZR");
+        TestInst(MNEG(XZR, XZR, XZR), asm => asm.MNEG(XZR, XZR, XZR), Arm64InstructionId.MNEG_msub_64a_dp_3src, Arm64Mnemonic.MNEG, "MNEG XZR, XZR, XZR");
     }
 }

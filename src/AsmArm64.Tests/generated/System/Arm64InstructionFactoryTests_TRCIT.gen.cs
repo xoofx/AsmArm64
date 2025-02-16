@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_TRCIT_System : Arm64InstructionFactory
     [TestMethod]
     public void Test_TRCIT_sys_cr_systeminstrs_0()
     {
-        TestInst(TRCIT(X0), Arm64InstructionId.TRCIT_sys_cr_systeminstrs, Arm64Mnemonic.TRCIT, "TRCIT X0");
-        TestInst(TRCIT(X15), Arm64InstructionId.TRCIT_sys_cr_systeminstrs, Arm64Mnemonic.TRCIT, "TRCIT X15");
-        TestInst(TRCIT(XZR), Arm64InstructionId.TRCIT_sys_cr_systeminstrs, Arm64Mnemonic.TRCIT, "TRCIT XZR");
+        TestInst(TRCIT(X0), asm => asm.TRCIT(X0), Arm64InstructionId.TRCIT_sys_cr_systeminstrs, Arm64Mnemonic.TRCIT, "TRCIT X0");
+        TestInst(TRCIT(X15), asm => asm.TRCIT(X15), Arm64InstructionId.TRCIT_sys_cr_systeminstrs, Arm64Mnemonic.TRCIT, "TRCIT X15");
+        TestInst(TRCIT(XZR), asm => asm.TRCIT(XZR), Arm64InstructionId.TRCIT_sys_cr_systeminstrs, Arm64Mnemonic.TRCIT, "TRCIT XZR");
     }
 }

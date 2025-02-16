@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -23,10 +22,10 @@ public class Arm64InstructionFactoryTests_ABS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ABS_asisdmisc_r_0()
     {
-        TestInst(ABS(D0, D1), Arm64InstructionId.ABS_asisdmisc_r, Arm64Mnemonic.ABS, "ABS D0, D1");
-        TestInst(ABS(D31, D1), Arm64InstructionId.ABS_asisdmisc_r, Arm64Mnemonic.ABS, "ABS D31, D1");
-        TestInst(ABS(D0, D31), Arm64InstructionId.ABS_asisdmisc_r, Arm64Mnemonic.ABS, "ABS D0, D31");
-        TestInst(ABS(D31, D31), Arm64InstructionId.ABS_asisdmisc_r, Arm64Mnemonic.ABS, "ABS D31, D31");
+        TestInst(ABS(D0, D1), asm => asm.ABS(D0, D1), Arm64InstructionId.ABS_asisdmisc_r, Arm64Mnemonic.ABS, "ABS D0, D1");
+        TestInst(ABS(D31, D1), asm => asm.ABS(D31, D1), Arm64InstructionId.ABS_asisdmisc_r, Arm64Mnemonic.ABS, "ABS D31, D1");
+        TestInst(ABS(D0, D31), asm => asm.ABS(D0, D31), Arm64InstructionId.ABS_asisdmisc_r, Arm64Mnemonic.ABS, "ABS D0, D31");
+        TestInst(ABS(D31, D31), asm => asm.ABS(D31, D31), Arm64InstructionId.ABS_asisdmisc_r, Arm64Mnemonic.ABS, "ABS D31, D31");
     }
     
     /// <summary>
@@ -35,10 +34,10 @@ public class Arm64InstructionFactoryTests_ABS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ABS_asimdmisc_r_1()
     {
-        TestInst(ABS(V0.T_8B, V1.T_8B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.8B, V1.8B");
-        TestInst(ABS(V30.T_8B, V1.T_8B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.8B, V1.8B");
-        TestInst(ABS(V0.T_8B, V31.T_8B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.8B, V31.8B");
-        TestInst(ABS(V30.T_8B, V31.T_8B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.8B, V31.8B");
+        TestInst(ABS(V0.T_8B, V1.T_8B), asm => asm.ABS(V0.T_8B, V1.T_8B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.8B, V1.8B");
+        TestInst(ABS(V30.T_8B, V1.T_8B), asm => asm.ABS(V30.T_8B, V1.T_8B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.8B, V1.8B");
+        TestInst(ABS(V0.T_8B, V31.T_8B), asm => asm.ABS(V0.T_8B, V31.T_8B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.8B, V31.8B");
+        TestInst(ABS(V30.T_8B, V31.T_8B), asm => asm.ABS(V30.T_8B, V31.T_8B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.8B, V31.8B");
     }
     
     /// <summary>
@@ -47,10 +46,10 @@ public class Arm64InstructionFactoryTests_ABS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ABS_asimdmisc_r_2()
     {
-        TestInst(ABS(V0.T_16B, V1.T_16B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.16B, V1.16B");
-        TestInst(ABS(V30.T_16B, V1.T_16B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.16B, V1.16B");
-        TestInst(ABS(V0.T_16B, V31.T_16B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.16B, V31.16B");
-        TestInst(ABS(V30.T_16B, V31.T_16B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.16B, V31.16B");
+        TestInst(ABS(V0.T_16B, V1.T_16B), asm => asm.ABS(V0.T_16B, V1.T_16B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.16B, V1.16B");
+        TestInst(ABS(V30.T_16B, V1.T_16B), asm => asm.ABS(V30.T_16B, V1.T_16B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.16B, V1.16B");
+        TestInst(ABS(V0.T_16B, V31.T_16B), asm => asm.ABS(V0.T_16B, V31.T_16B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.16B, V31.16B");
+        TestInst(ABS(V30.T_16B, V31.T_16B), asm => asm.ABS(V30.T_16B, V31.T_16B), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.16B, V31.16B");
     }
     
     /// <summary>
@@ -59,10 +58,10 @@ public class Arm64InstructionFactoryTests_ABS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ABS_asimdmisc_r_3()
     {
-        TestInst(ABS(V0.T_4H, V1.T_4H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.4H, V1.4H");
-        TestInst(ABS(V30.T_4H, V1.T_4H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.4H, V1.4H");
-        TestInst(ABS(V0.T_4H, V31.T_4H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.4H, V31.4H");
-        TestInst(ABS(V30.T_4H, V31.T_4H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.4H, V31.4H");
+        TestInst(ABS(V0.T_4H, V1.T_4H), asm => asm.ABS(V0.T_4H, V1.T_4H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.4H, V1.4H");
+        TestInst(ABS(V30.T_4H, V1.T_4H), asm => asm.ABS(V30.T_4H, V1.T_4H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.4H, V1.4H");
+        TestInst(ABS(V0.T_4H, V31.T_4H), asm => asm.ABS(V0.T_4H, V31.T_4H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.4H, V31.4H");
+        TestInst(ABS(V30.T_4H, V31.T_4H), asm => asm.ABS(V30.T_4H, V31.T_4H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.4H, V31.4H");
     }
     
     /// <summary>
@@ -71,10 +70,10 @@ public class Arm64InstructionFactoryTests_ABS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ABS_asimdmisc_r_4()
     {
-        TestInst(ABS(V0.T_8H, V1.T_8H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.8H, V1.8H");
-        TestInst(ABS(V30.T_8H, V1.T_8H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.8H, V1.8H");
-        TestInst(ABS(V0.T_8H, V31.T_8H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.8H, V31.8H");
-        TestInst(ABS(V30.T_8H, V31.T_8H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.8H, V31.8H");
+        TestInst(ABS(V0.T_8H, V1.T_8H), asm => asm.ABS(V0.T_8H, V1.T_8H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.8H, V1.8H");
+        TestInst(ABS(V30.T_8H, V1.T_8H), asm => asm.ABS(V30.T_8H, V1.T_8H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.8H, V1.8H");
+        TestInst(ABS(V0.T_8H, V31.T_8H), asm => asm.ABS(V0.T_8H, V31.T_8H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.8H, V31.8H");
+        TestInst(ABS(V30.T_8H, V31.T_8H), asm => asm.ABS(V30.T_8H, V31.T_8H), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.8H, V31.8H");
     }
     
     /// <summary>
@@ -83,10 +82,10 @@ public class Arm64InstructionFactoryTests_ABS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ABS_asimdmisc_r_5()
     {
-        TestInst(ABS(V0.T_2S, V1.T_2S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.2S, V1.2S");
-        TestInst(ABS(V30.T_2S, V1.T_2S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.2S, V1.2S");
-        TestInst(ABS(V0.T_2S, V31.T_2S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.2S, V31.2S");
-        TestInst(ABS(V30.T_2S, V31.T_2S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.2S, V31.2S");
+        TestInst(ABS(V0.T_2S, V1.T_2S), asm => asm.ABS(V0.T_2S, V1.T_2S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.2S, V1.2S");
+        TestInst(ABS(V30.T_2S, V1.T_2S), asm => asm.ABS(V30.T_2S, V1.T_2S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.2S, V1.2S");
+        TestInst(ABS(V0.T_2S, V31.T_2S), asm => asm.ABS(V0.T_2S, V31.T_2S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.2S, V31.2S");
+        TestInst(ABS(V30.T_2S, V31.T_2S), asm => asm.ABS(V30.T_2S, V31.T_2S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.2S, V31.2S");
     }
     
     /// <summary>
@@ -95,10 +94,10 @@ public class Arm64InstructionFactoryTests_ABS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ABS_asimdmisc_r_6()
     {
-        TestInst(ABS(V0.T_4S, V1.T_4S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.4S, V1.4S");
-        TestInst(ABS(V30.T_4S, V1.T_4S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.4S, V1.4S");
-        TestInst(ABS(V0.T_4S, V31.T_4S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.4S, V31.4S");
-        TestInst(ABS(V30.T_4S, V31.T_4S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.4S, V31.4S");
+        TestInst(ABS(V0.T_4S, V1.T_4S), asm => asm.ABS(V0.T_4S, V1.T_4S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.4S, V1.4S");
+        TestInst(ABS(V30.T_4S, V1.T_4S), asm => asm.ABS(V30.T_4S, V1.T_4S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.4S, V1.4S");
+        TestInst(ABS(V0.T_4S, V31.T_4S), asm => asm.ABS(V0.T_4S, V31.T_4S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.4S, V31.4S");
+        TestInst(ABS(V30.T_4S, V31.T_4S), asm => asm.ABS(V30.T_4S, V31.T_4S), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.4S, V31.4S");
     }
     
     /// <summary>
@@ -107,9 +106,9 @@ public class Arm64InstructionFactoryTests_ABS_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_ABS_asimdmisc_r_7()
     {
-        TestInst(ABS(V0.T_2D, V1.T_2D), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.2D, V1.2D");
-        TestInst(ABS(V30.T_2D, V1.T_2D), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.2D, V1.2D");
-        TestInst(ABS(V0.T_2D, V31.T_2D), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.2D, V31.2D");
-        TestInst(ABS(V30.T_2D, V31.T_2D), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.2D, V31.2D");
+        TestInst(ABS(V0.T_2D, V1.T_2D), asm => asm.ABS(V0.T_2D, V1.T_2D), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.2D, V1.2D");
+        TestInst(ABS(V30.T_2D, V1.T_2D), asm => asm.ABS(V30.T_2D, V1.T_2D), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.2D, V1.2D");
+        TestInst(ABS(V0.T_2D, V31.T_2D), asm => asm.ABS(V0.T_2D, V31.T_2D), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V0.2D, V31.2D");
+        TestInst(ABS(V30.T_2D, V31.T_2D), asm => asm.ABS(V30.T_2D, V31.T_2D), Arm64InstructionId.ABS_asimdmisc_r, Arm64Mnemonic.ABS, "ABS V30.2D, V31.2D");
     }
 }

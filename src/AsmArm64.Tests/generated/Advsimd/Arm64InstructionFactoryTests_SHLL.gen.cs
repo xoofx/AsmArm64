@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_SHLL_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_SHLL_asimdmisc_s_0()
     {
-        TestInst(SHLL(V0.T_8H, V1.T_8B, 8), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.8H, V1.8B, #8");
-        TestInst(SHLL(V30.T_8H, V1.T_8B, 8), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.8H, V1.8B, #8");
-        TestInst(SHLL(V0.T_8H, V31.T_8B, 8), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.8H, V31.8B, #8");
-        TestInst(SHLL(V30.T_8H, V31.T_8B, 8), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.8H, V31.8B, #8");
+        TestInst(SHLL(V0.T_8H, V1.T_8B, 8), asm => asm.SHLL(V0.T_8H, V1.T_8B, 8), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.8H, V1.8B, #8");
+        TestInst(SHLL(V30.T_8H, V1.T_8B, 8), asm => asm.SHLL(V30.T_8H, V1.T_8B, 8), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.8H, V1.8B, #8");
+        TestInst(SHLL(V0.T_8H, V31.T_8B, 8), asm => asm.SHLL(V0.T_8H, V31.T_8B, 8), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.8H, V31.8B, #8");
+        TestInst(SHLL(V30.T_8H, V31.T_8B, 8), asm => asm.SHLL(V30.T_8H, V31.T_8B, 8), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.8H, V31.8B, #8");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_SHLL_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_SHLL_asimdmisc_s_1()
     {
-        TestInst(SHLL(V0.T_4S, V1.T_4H, 16), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.4S, V1.4H, #16");
-        TestInst(SHLL(V30.T_4S, V1.T_4H, 16), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.4S, V1.4H, #16");
-        TestInst(SHLL(V0.T_4S, V31.T_4H, 16), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.4S, V31.4H, #16");
-        TestInst(SHLL(V30.T_4S, V31.T_4H, 16), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.4S, V31.4H, #16");
+        TestInst(SHLL(V0.T_4S, V1.T_4H, 16), asm => asm.SHLL(V0.T_4S, V1.T_4H, 16), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.4S, V1.4H, #16");
+        TestInst(SHLL(V30.T_4S, V1.T_4H, 16), asm => asm.SHLL(V30.T_4S, V1.T_4H, 16), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.4S, V1.4H, #16");
+        TestInst(SHLL(V0.T_4S, V31.T_4H, 16), asm => asm.SHLL(V0.T_4S, V31.T_4H, 16), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.4S, V31.4H, #16");
+        TestInst(SHLL(V30.T_4S, V31.T_4H, 16), asm => asm.SHLL(V30.T_4S, V31.T_4H, 16), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.4S, V31.4H, #16");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_SHLL_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_SHLL_asimdmisc_s_2()
     {
-        TestInst(SHLL(V0.T_2D, V1.T_2S, 32), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.2D, V1.2S, #32");
-        TestInst(SHLL(V30.T_2D, V1.T_2S, 32), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.2D, V1.2S, #32");
-        TestInst(SHLL(V0.T_2D, V31.T_2S, 32), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.2D, V31.2S, #32");
-        TestInst(SHLL(V30.T_2D, V31.T_2S, 32), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.2D, V31.2S, #32");
+        TestInst(SHLL(V0.T_2D, V1.T_2S, 32), asm => asm.SHLL(V0.T_2D, V1.T_2S, 32), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.2D, V1.2S, #32");
+        TestInst(SHLL(V30.T_2D, V1.T_2S, 32), asm => asm.SHLL(V30.T_2D, V1.T_2S, 32), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.2D, V1.2S, #32");
+        TestInst(SHLL(V0.T_2D, V31.T_2S, 32), asm => asm.SHLL(V0.T_2D, V31.T_2S, 32), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V0.2D, V31.2S, #32");
+        TestInst(SHLL(V30.T_2D, V31.T_2S, 32), asm => asm.SHLL(V30.T_2D, V31.T_2S, 32), Arm64InstructionId.SHLL_asimdmisc_s, Arm64Mnemonic.SHLL, "SHLL V30.2D, V31.2S, #32");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_RMIF_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_RMIF_only_rmif_0()
     {
-        TestInst(RMIF(X0, 5, 5), Arm64InstructionId.RMIF_only_rmif, Arm64Mnemonic.RMIF, "RMIF X0, #5, #5");
-        TestInst(RMIF(X15, 5, 5), Arm64InstructionId.RMIF_only_rmif, Arm64Mnemonic.RMIF, "RMIF X15, #5, #5");
-        TestInst(RMIF(XZR, 5, 5), Arm64InstructionId.RMIF_only_rmif, Arm64Mnemonic.RMIF, "RMIF XZR, #5, #5");
+        TestInst(RMIF(X0, 5, 5), asm => asm.RMIF(X0, 5, 5), Arm64InstructionId.RMIF_only_rmif, Arm64Mnemonic.RMIF, "RMIF X0, #5, #5");
+        TestInst(RMIF(X15, 5, 5), asm => asm.RMIF(X15, 5, 5), Arm64InstructionId.RMIF_only_rmif, Arm64Mnemonic.RMIF, "RMIF X15, #5, #5");
+        TestInst(RMIF(XZR, 5, 5), asm => asm.RMIF(XZR, 5, 5), Arm64InstructionId.RMIF_only_rmif, Arm64Mnemonic.RMIF, "RMIF XZR, #5, #5");
     }
 }

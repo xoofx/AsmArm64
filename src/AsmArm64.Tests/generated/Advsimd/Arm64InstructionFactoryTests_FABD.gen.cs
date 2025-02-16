@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_FABD_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FABD_asisdsamefp16_only_0()
     {
-        TestInst(FABD(H0, H1, H2), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H0, H1, H2");
-        TestInst(FABD(H31, H1, H2), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H31, H1, H2");
-        TestInst(FABD(H0, H31, H2), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H0, H31, H2");
-        TestInst(FABD(H31, H31, H2), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H31, H31, H2");
-        TestInst(FABD(H0, H1, H31), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H0, H1, H31");
-        TestInst(FABD(H31, H1, H31), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H31, H1, H31");
-        TestInst(FABD(H0, H31, H31), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H0, H31, H31");
-        TestInst(FABD(H31, H31, H31), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H31, H31, H31");
+        TestInst(FABD(H0, H1, H2), asm => asm.FABD(H0, H1, H2), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H0, H1, H2");
+        TestInst(FABD(H31, H1, H2), asm => asm.FABD(H31, H1, H2), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H31, H1, H2");
+        TestInst(FABD(H0, H31, H2), asm => asm.FABD(H0, H31, H2), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H0, H31, H2");
+        TestInst(FABD(H31, H31, H2), asm => asm.FABD(H31, H31, H2), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H31, H31, H2");
+        TestInst(FABD(H0, H1, H31), asm => asm.FABD(H0, H1, H31), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H0, H1, H31");
+        TestInst(FABD(H31, H1, H31), asm => asm.FABD(H31, H1, H31), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H31, H1, H31");
+        TestInst(FABD(H0, H31, H31), asm => asm.FABD(H0, H31, H31), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H0, H31, H31");
+        TestInst(FABD(H31, H31, H31), asm => asm.FABD(H31, H31, H31), Arm64InstructionId.FABD_asisdsamefp16_only, Arm64Mnemonic.FABD, "FABD H31, H31, H31");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_FABD_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FABD_asisdsame_only_1()
     {
-        TestInst(FABD(S1, S2, S3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S1, S2, S3");
-        TestInst(FABD(S31, S2, S3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S31, S2, S3");
-        TestInst(FABD(S1, S0, S3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S1, S0, S3");
-        TestInst(FABD(S31, S0, S3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S31, S0, S3");
-        TestInst(FABD(S1, S2, S1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S1, S2, S1");
-        TestInst(FABD(S31, S2, S1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S31, S2, S1");
-        TestInst(FABD(S1, S0, S1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S1, S0, S1");
-        TestInst(FABD(S31, S0, S1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S31, S0, S1");
+        TestInst(FABD(S1, S2, S3), asm => asm.FABD(S1, S2, S3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S1, S2, S3");
+        TestInst(FABD(S31, S2, S3), asm => asm.FABD(S31, S2, S3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S31, S2, S3");
+        TestInst(FABD(S1, S0, S3), asm => asm.FABD(S1, S0, S3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S1, S0, S3");
+        TestInst(FABD(S31, S0, S3), asm => asm.FABD(S31, S0, S3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S31, S0, S3");
+        TestInst(FABD(S1, S2, S1), asm => asm.FABD(S1, S2, S1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S1, S2, S1");
+        TestInst(FABD(S31, S2, S1), asm => asm.FABD(S31, S2, S1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S31, S2, S1");
+        TestInst(FABD(S1, S0, S1), asm => asm.FABD(S1, S0, S1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S1, S0, S1");
+        TestInst(FABD(S31, S0, S1), asm => asm.FABD(S31, S0, S1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD S31, S0, S1");
     }
     
     /// <summary>
@@ -56,14 +55,14 @@ public class Arm64InstructionFactoryTests_FABD_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FABD_asisdsame_only_2()
     {
-        TestInst(FABD(D1, D2, D3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D1, D2, D3");
-        TestInst(FABD(D31, D2, D3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D31, D2, D3");
-        TestInst(FABD(D1, D0, D3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D1, D0, D3");
-        TestInst(FABD(D31, D0, D3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D31, D0, D3");
-        TestInst(FABD(D1, D2, D1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D1, D2, D1");
-        TestInst(FABD(D31, D2, D1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D31, D2, D1");
-        TestInst(FABD(D1, D0, D1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D1, D0, D1");
-        TestInst(FABD(D31, D0, D1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D31, D0, D1");
+        TestInst(FABD(D1, D2, D3), asm => asm.FABD(D1, D2, D3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D1, D2, D3");
+        TestInst(FABD(D31, D2, D3), asm => asm.FABD(D31, D2, D3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D31, D2, D3");
+        TestInst(FABD(D1, D0, D3), asm => asm.FABD(D1, D0, D3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D1, D0, D3");
+        TestInst(FABD(D31, D0, D3), asm => asm.FABD(D31, D0, D3), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D31, D0, D3");
+        TestInst(FABD(D1, D2, D1), asm => asm.FABD(D1, D2, D1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D1, D2, D1");
+        TestInst(FABD(D31, D2, D1), asm => asm.FABD(D31, D2, D1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D31, D2, D1");
+        TestInst(FABD(D1, D0, D1), asm => asm.FABD(D1, D0, D1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D1, D0, D1");
+        TestInst(FABD(D31, D0, D1), asm => asm.FABD(D31, D0, D1), Arm64InstructionId.FABD_asisdsame_only, Arm64Mnemonic.FABD, "FABD D31, D0, D1");
     }
     
     /// <summary>
@@ -72,14 +71,14 @@ public class Arm64InstructionFactoryTests_FABD_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FABD_asimdsamefp16_only_3()
     {
-        TestInst(FABD(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.4H, V1.4H, V2.4H");
-        TestInst(FABD(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.4H, V1.4H, V2.4H");
-        TestInst(FABD(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.4H, V31.4H, V2.4H");
-        TestInst(FABD(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.4H, V31.4H, V2.4H");
-        TestInst(FABD(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.4H, V1.4H, V0.4H");
-        TestInst(FABD(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.4H, V1.4H, V0.4H");
-        TestInst(FABD(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.4H, V31.4H, V0.4H");
-        TestInst(FABD(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.4H, V31.4H, V0.4H");
+        TestInst(FABD(V0.T_4H, V1.T_4H, V2.T_4H), asm => asm.FABD(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.4H, V1.4H, V2.4H");
+        TestInst(FABD(V30.T_4H, V1.T_4H, V2.T_4H), asm => asm.FABD(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.4H, V1.4H, V2.4H");
+        TestInst(FABD(V0.T_4H, V31.T_4H, V2.T_4H), asm => asm.FABD(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.4H, V31.4H, V2.4H");
+        TestInst(FABD(V30.T_4H, V31.T_4H, V2.T_4H), asm => asm.FABD(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.4H, V31.4H, V2.4H");
+        TestInst(FABD(V0.T_4H, V1.T_4H, V0.T_4H), asm => asm.FABD(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.4H, V1.4H, V0.4H");
+        TestInst(FABD(V30.T_4H, V1.T_4H, V0.T_4H), asm => asm.FABD(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.4H, V1.4H, V0.4H");
+        TestInst(FABD(V0.T_4H, V31.T_4H, V0.T_4H), asm => asm.FABD(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.4H, V31.4H, V0.4H");
+        TestInst(FABD(V30.T_4H, V31.T_4H, V0.T_4H), asm => asm.FABD(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.4H, V31.4H, V0.4H");
     }
     
     /// <summary>
@@ -88,14 +87,14 @@ public class Arm64InstructionFactoryTests_FABD_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FABD_asimdsamefp16_only_4()
     {
-        TestInst(FABD(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.8H, V1.8H, V2.8H");
-        TestInst(FABD(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.8H, V1.8H, V2.8H");
-        TestInst(FABD(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.8H, V31.8H, V2.8H");
-        TestInst(FABD(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.8H, V31.8H, V2.8H");
-        TestInst(FABD(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.8H, V1.8H, V0.8H");
-        TestInst(FABD(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.8H, V1.8H, V0.8H");
-        TestInst(FABD(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.8H, V31.8H, V0.8H");
-        TestInst(FABD(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.8H, V31.8H, V0.8H");
+        TestInst(FABD(V0.T_8H, V1.T_8H, V2.T_8H), asm => asm.FABD(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.8H, V1.8H, V2.8H");
+        TestInst(FABD(V30.T_8H, V1.T_8H, V2.T_8H), asm => asm.FABD(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.8H, V1.8H, V2.8H");
+        TestInst(FABD(V0.T_8H, V31.T_8H, V2.T_8H), asm => asm.FABD(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.8H, V31.8H, V2.8H");
+        TestInst(FABD(V30.T_8H, V31.T_8H, V2.T_8H), asm => asm.FABD(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.8H, V31.8H, V2.8H");
+        TestInst(FABD(V0.T_8H, V1.T_8H, V0.T_8H), asm => asm.FABD(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.8H, V1.8H, V0.8H");
+        TestInst(FABD(V30.T_8H, V1.T_8H, V0.T_8H), asm => asm.FABD(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.8H, V1.8H, V0.8H");
+        TestInst(FABD(V0.T_8H, V31.T_8H, V0.T_8H), asm => asm.FABD(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V0.8H, V31.8H, V0.8H");
+        TestInst(FABD(V30.T_8H, V31.T_8H, V0.T_8H), asm => asm.FABD(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.FABD_asimdsamefp16_only, Arm64Mnemonic.FABD, "FABD V30.8H, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -104,14 +103,14 @@ public class Arm64InstructionFactoryTests_FABD_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FABD_asimdsame_only_5()
     {
-        TestInst(FABD(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2S, V1.2S, V2.2S");
-        TestInst(FABD(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2S, V1.2S, V2.2S");
-        TestInst(FABD(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2S, V31.2S, V2.2S");
-        TestInst(FABD(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2S, V31.2S, V2.2S");
-        TestInst(FABD(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2S, V1.2S, V0.2S");
-        TestInst(FABD(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2S, V1.2S, V0.2S");
-        TestInst(FABD(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2S, V31.2S, V0.2S");
-        TestInst(FABD(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2S, V31.2S, V0.2S");
+        TestInst(FABD(V0.T_2S, V1.T_2S, V2.T_2S), asm => asm.FABD(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2S, V1.2S, V2.2S");
+        TestInst(FABD(V30.T_2S, V1.T_2S, V2.T_2S), asm => asm.FABD(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2S, V1.2S, V2.2S");
+        TestInst(FABD(V0.T_2S, V31.T_2S, V2.T_2S), asm => asm.FABD(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2S, V31.2S, V2.2S");
+        TestInst(FABD(V30.T_2S, V31.T_2S, V2.T_2S), asm => asm.FABD(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2S, V31.2S, V2.2S");
+        TestInst(FABD(V0.T_2S, V1.T_2S, V0.T_2S), asm => asm.FABD(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2S, V1.2S, V0.2S");
+        TestInst(FABD(V30.T_2S, V1.T_2S, V0.T_2S), asm => asm.FABD(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2S, V1.2S, V0.2S");
+        TestInst(FABD(V0.T_2S, V31.T_2S, V0.T_2S), asm => asm.FABD(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2S, V31.2S, V0.2S");
+        TestInst(FABD(V30.T_2S, V31.T_2S, V0.T_2S), asm => asm.FABD(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2S, V31.2S, V0.2S");
     }
     
     /// <summary>
@@ -120,14 +119,14 @@ public class Arm64InstructionFactoryTests_FABD_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FABD_asimdsame_only_6()
     {
-        TestInst(FABD(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.4S, V1.4S, V2.4S");
-        TestInst(FABD(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.4S, V1.4S, V2.4S");
-        TestInst(FABD(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.4S, V31.4S, V2.4S");
-        TestInst(FABD(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.4S, V31.4S, V2.4S");
-        TestInst(FABD(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.4S, V1.4S, V0.4S");
-        TestInst(FABD(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.4S, V1.4S, V0.4S");
-        TestInst(FABD(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.4S, V31.4S, V0.4S");
-        TestInst(FABD(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.4S, V31.4S, V0.4S");
+        TestInst(FABD(V0.T_4S, V1.T_4S, V2.T_4S), asm => asm.FABD(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.4S, V1.4S, V2.4S");
+        TestInst(FABD(V30.T_4S, V1.T_4S, V2.T_4S), asm => asm.FABD(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.4S, V1.4S, V2.4S");
+        TestInst(FABD(V0.T_4S, V31.T_4S, V2.T_4S), asm => asm.FABD(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.4S, V31.4S, V2.4S");
+        TestInst(FABD(V30.T_4S, V31.T_4S, V2.T_4S), asm => asm.FABD(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.4S, V31.4S, V2.4S");
+        TestInst(FABD(V0.T_4S, V1.T_4S, V0.T_4S), asm => asm.FABD(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.4S, V1.4S, V0.4S");
+        TestInst(FABD(V30.T_4S, V1.T_4S, V0.T_4S), asm => asm.FABD(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.4S, V1.4S, V0.4S");
+        TestInst(FABD(V0.T_4S, V31.T_4S, V0.T_4S), asm => asm.FABD(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.4S, V31.4S, V0.4S");
+        TestInst(FABD(V30.T_4S, V31.T_4S, V0.T_4S), asm => asm.FABD(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.4S, V31.4S, V0.4S");
     }
     
     /// <summary>
@@ -136,13 +135,13 @@ public class Arm64InstructionFactoryTests_FABD_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_FABD_asimdsame_only_7()
     {
-        TestInst(FABD(V0.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2D, V1.2D, V2.2D");
-        TestInst(FABD(V30.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2D, V1.2D, V2.2D");
-        TestInst(FABD(V0.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2D, V31.2D, V2.2D");
-        TestInst(FABD(V30.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2D, V31.2D, V2.2D");
-        TestInst(FABD(V0.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2D, V1.2D, V0.2D");
-        TestInst(FABD(V30.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2D, V1.2D, V0.2D");
-        TestInst(FABD(V0.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2D, V31.2D, V0.2D");
-        TestInst(FABD(V30.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2D, V31.2D, V0.2D");
+        TestInst(FABD(V0.T_2D, V1.T_2D, V2.T_2D), asm => asm.FABD(V0.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2D, V1.2D, V2.2D");
+        TestInst(FABD(V30.T_2D, V1.T_2D, V2.T_2D), asm => asm.FABD(V30.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2D, V1.2D, V2.2D");
+        TestInst(FABD(V0.T_2D, V31.T_2D, V2.T_2D), asm => asm.FABD(V0.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2D, V31.2D, V2.2D");
+        TestInst(FABD(V30.T_2D, V31.T_2D, V2.T_2D), asm => asm.FABD(V30.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2D, V31.2D, V2.2D");
+        TestInst(FABD(V0.T_2D, V1.T_2D, V0.T_2D), asm => asm.FABD(V0.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2D, V1.2D, V0.2D");
+        TestInst(FABD(V30.T_2D, V1.T_2D, V0.T_2D), asm => asm.FABD(V30.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2D, V1.2D, V0.2D");
+        TestInst(FABD(V0.T_2D, V31.T_2D, V0.T_2D), asm => asm.FABD(V0.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V0.2D, V31.2D, V0.2D");
+        TestInst(FABD(V30.T_2D, V31.T_2D, V0.T_2D), asm => asm.FABD(V30.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.FABD_asimdsame_only, Arm64Mnemonic.FABD, "FABD V30.2D, V31.2D, V0.2D");
     }
 }

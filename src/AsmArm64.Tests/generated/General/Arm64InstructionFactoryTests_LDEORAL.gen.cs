@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDEORAL_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDEORAL_32_memop_0()
     {
-        TestInst(LDEORAL(W0, W1, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W0, W1, [X3]");
-        TestInst(LDEORAL(W15, W1, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W15, W1, [X3]");
-        TestInst(LDEORAL(WZR, W1, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL WZR, W1, [X3]");
-        TestInst(LDEORAL(W0, W16, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W0, W16, [X3]");
-        TestInst(LDEORAL(W15, W16, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W15, W16, [X3]");
-        TestInst(LDEORAL(WZR, W16, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL WZR, W16, [X3]");
-        TestInst(LDEORAL(W0, WZR, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W0, WZR, [X3]");
-        TestInst(LDEORAL(W15, WZR, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W15, WZR, [X3]");
-        TestInst(LDEORAL(WZR, WZR, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL WZR, WZR, [X3]");
+        TestInst(LDEORAL(W0, W1, _[X3]), asm => asm.LDEORAL(W0, W1, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W0, W1, [X3]");
+        TestInst(LDEORAL(W15, W1, _[X3]), asm => asm.LDEORAL(W15, W1, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W15, W1, [X3]");
+        TestInst(LDEORAL(WZR, W1, _[X3]), asm => asm.LDEORAL(WZR, W1, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL WZR, W1, [X3]");
+        TestInst(LDEORAL(W0, W16, _[X3]), asm => asm.LDEORAL(W0, W16, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W0, W16, [X3]");
+        TestInst(LDEORAL(W15, W16, _[X3]), asm => asm.LDEORAL(W15, W16, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W15, W16, [X3]");
+        TestInst(LDEORAL(WZR, W16, _[X3]), asm => asm.LDEORAL(WZR, W16, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL WZR, W16, [X3]");
+        TestInst(LDEORAL(W0, WZR, _[X3]), asm => asm.LDEORAL(W0, WZR, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W0, WZR, [X3]");
+        TestInst(LDEORAL(W15, WZR, _[X3]), asm => asm.LDEORAL(W15, WZR, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL W15, WZR, [X3]");
+        TestInst(LDEORAL(WZR, WZR, _[X3]), asm => asm.LDEORAL(WZR, WZR, _[X3]), Arm64InstructionId.LDEORAL_32_memop, Arm64Mnemonic.LDEORAL, "LDEORAL WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDEORAL_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDEORAL_64_memop_1()
     {
-        TestInst(LDEORAL(X0, X1, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X0, X1, [X3]");
-        TestInst(LDEORAL(X15, X1, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X15, X1, [X3]");
-        TestInst(LDEORAL(XZR, X1, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL XZR, X1, [X3]");
-        TestInst(LDEORAL(X0, X16, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X0, X16, [X3]");
-        TestInst(LDEORAL(X15, X16, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X15, X16, [X3]");
-        TestInst(LDEORAL(XZR, X16, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL XZR, X16, [X3]");
-        TestInst(LDEORAL(X0, XZR, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X0, XZR, [X3]");
-        TestInst(LDEORAL(X15, XZR, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X15, XZR, [X3]");
-        TestInst(LDEORAL(XZR, XZR, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL XZR, XZR, [X3]");
+        TestInst(LDEORAL(X0, X1, _[X3]), asm => asm.LDEORAL(X0, X1, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X0, X1, [X3]");
+        TestInst(LDEORAL(X15, X1, _[X3]), asm => asm.LDEORAL(X15, X1, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X15, X1, [X3]");
+        TestInst(LDEORAL(XZR, X1, _[X3]), asm => asm.LDEORAL(XZR, X1, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL XZR, X1, [X3]");
+        TestInst(LDEORAL(X0, X16, _[X3]), asm => asm.LDEORAL(X0, X16, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X0, X16, [X3]");
+        TestInst(LDEORAL(X15, X16, _[X3]), asm => asm.LDEORAL(X15, X16, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X15, X16, [X3]");
+        TestInst(LDEORAL(XZR, X16, _[X3]), asm => asm.LDEORAL(XZR, X16, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL XZR, X16, [X3]");
+        TestInst(LDEORAL(X0, XZR, _[X3]), asm => asm.LDEORAL(X0, XZR, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X0, XZR, [X3]");
+        TestInst(LDEORAL(X15, XZR, _[X3]), asm => asm.LDEORAL(X15, XZR, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL X15, XZR, [X3]");
+        TestInst(LDEORAL(XZR, XZR, _[X3]), asm => asm.LDEORAL(XZR, XZR, _[X3]), Arm64InstructionId.LDEORAL_64_memop, Arm64Mnemonic.LDEORAL, "LDEORAL XZR, XZR, [X3]");
     }
 }

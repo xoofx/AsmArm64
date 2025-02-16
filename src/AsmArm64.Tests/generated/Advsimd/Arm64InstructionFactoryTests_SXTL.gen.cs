@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_SXTL_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_SXTL_sshll_asimdshf_l_0()
     {
-        TestInst(SXTL(V0.T_8H, V1.T_8B), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.8H, V1.8B");
-        TestInst(SXTL(V30.T_8H, V1.T_8B), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.8H, V1.8B");
-        TestInst(SXTL(V0.T_8H, V31.T_8B), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.8H, V31.8B");
-        TestInst(SXTL(V30.T_8H, V31.T_8B), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.8H, V31.8B");
+        TestInst(SXTL(V0.T_8H, V1.T_8B), asm => asm.SXTL(V0.T_8H, V1.T_8B), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.8H, V1.8B");
+        TestInst(SXTL(V30.T_8H, V1.T_8B), asm => asm.SXTL(V30.T_8H, V1.T_8B), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.8H, V1.8B");
+        TestInst(SXTL(V0.T_8H, V31.T_8B), asm => asm.SXTL(V0.T_8H, V31.T_8B), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.8H, V31.8B");
+        TestInst(SXTL(V30.T_8H, V31.T_8B), asm => asm.SXTL(V30.T_8H, V31.T_8B), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.8H, V31.8B");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_SXTL_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_SXTL_sshll_asimdshf_l_1()
     {
-        TestInst(SXTL(V0.T_4S, V1.T_4H), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.4S, V1.4H");
-        TestInst(SXTL(V30.T_4S, V1.T_4H), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.4S, V1.4H");
-        TestInst(SXTL(V0.T_4S, V31.T_4H), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.4S, V31.4H");
-        TestInst(SXTL(V30.T_4S, V31.T_4H), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.4S, V31.4H");
+        TestInst(SXTL(V0.T_4S, V1.T_4H), asm => asm.SXTL(V0.T_4S, V1.T_4H), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.4S, V1.4H");
+        TestInst(SXTL(V30.T_4S, V1.T_4H), asm => asm.SXTL(V30.T_4S, V1.T_4H), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.4S, V1.4H");
+        TestInst(SXTL(V0.T_4S, V31.T_4H), asm => asm.SXTL(V0.T_4S, V31.T_4H), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.4S, V31.4H");
+        TestInst(SXTL(V30.T_4S, V31.T_4H), asm => asm.SXTL(V30.T_4S, V31.T_4H), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.4S, V31.4H");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_SXTL_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_SXTL_sshll_asimdshf_l_2()
     {
-        TestInst(SXTL(V0.T_2D, V1.T_2S), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.2D, V1.2S");
-        TestInst(SXTL(V30.T_2D, V1.T_2S), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.2D, V1.2S");
-        TestInst(SXTL(V0.T_2D, V31.T_2S), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.2D, V31.2S");
-        TestInst(SXTL(V30.T_2D, V31.T_2S), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.2D, V31.2S");
+        TestInst(SXTL(V0.T_2D, V1.T_2S), asm => asm.SXTL(V0.T_2D, V1.T_2S), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.2D, V1.2S");
+        TestInst(SXTL(V30.T_2D, V1.T_2S), asm => asm.SXTL(V30.T_2D, V1.T_2S), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.2D, V1.2S");
+        TestInst(SXTL(V0.T_2D, V31.T_2S), asm => asm.SXTL(V0.T_2D, V31.T_2S), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V0.2D, V31.2S");
+        TestInst(SXTL(V30.T_2D, V31.T_2S), asm => asm.SXTL(V30.T_2D, V31.T_2S), Arm64InstructionId.SXTL_sshll_asimdshf_l, Arm64Mnemonic.SXTL, "SXTL V30.2D, V31.2S");
     }
 }

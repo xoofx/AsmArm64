@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_SQXTN2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQXTN2_asimdmisc_n_0()
     {
-        TestInst(SQXTN2(V0.T_16B, V1.T_8H), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.16B, V1.8H");
-        TestInst(SQXTN2(V30.T_16B, V1.T_8H), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.16B, V1.8H");
-        TestInst(SQXTN2(V0.T_16B, V31.T_8H), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.16B, V31.8H");
-        TestInst(SQXTN2(V30.T_16B, V31.T_8H), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.16B, V31.8H");
+        TestInst(SQXTN2(V0.T_16B, V1.T_8H), asm => asm.SQXTN2(V0.T_16B, V1.T_8H), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.16B, V1.8H");
+        TestInst(SQXTN2(V30.T_16B, V1.T_8H), asm => asm.SQXTN2(V30.T_16B, V1.T_8H), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.16B, V1.8H");
+        TestInst(SQXTN2(V0.T_16B, V31.T_8H), asm => asm.SQXTN2(V0.T_16B, V31.T_8H), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.16B, V31.8H");
+        TestInst(SQXTN2(V30.T_16B, V31.T_8H), asm => asm.SQXTN2(V30.T_16B, V31.T_8H), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.16B, V31.8H");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_SQXTN2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQXTN2_asimdmisc_n_1()
     {
-        TestInst(SQXTN2(V0.T_8H, V1.T_4S), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.8H, V1.4S");
-        TestInst(SQXTN2(V30.T_8H, V1.T_4S), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.8H, V1.4S");
-        TestInst(SQXTN2(V0.T_8H, V31.T_4S), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.8H, V31.4S");
-        TestInst(SQXTN2(V30.T_8H, V31.T_4S), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.8H, V31.4S");
+        TestInst(SQXTN2(V0.T_8H, V1.T_4S), asm => asm.SQXTN2(V0.T_8H, V1.T_4S), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.8H, V1.4S");
+        TestInst(SQXTN2(V30.T_8H, V1.T_4S), asm => asm.SQXTN2(V30.T_8H, V1.T_4S), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.8H, V1.4S");
+        TestInst(SQXTN2(V0.T_8H, V31.T_4S), asm => asm.SQXTN2(V0.T_8H, V31.T_4S), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.8H, V31.4S");
+        TestInst(SQXTN2(V30.T_8H, V31.T_4S), asm => asm.SQXTN2(V30.T_8H, V31.T_4S), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.8H, V31.4S");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_SQXTN2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_SQXTN2_asimdmisc_n_2()
     {
-        TestInst(SQXTN2(V0.T_4S, V1.T_2D), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.4S, V1.2D");
-        TestInst(SQXTN2(V30.T_4S, V1.T_2D), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.4S, V1.2D");
-        TestInst(SQXTN2(V0.T_4S, V31.T_2D), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.4S, V31.2D");
-        TestInst(SQXTN2(V30.T_4S, V31.T_2D), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.4S, V31.2D");
+        TestInst(SQXTN2(V0.T_4S, V1.T_2D), asm => asm.SQXTN2(V0.T_4S, V1.T_2D), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.4S, V1.2D");
+        TestInst(SQXTN2(V30.T_4S, V1.T_2D), asm => asm.SQXTN2(V30.T_4S, V1.T_2D), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.4S, V1.2D");
+        TestInst(SQXTN2(V0.T_4S, V31.T_2D), asm => asm.SQXTN2(V0.T_4S, V31.T_2D), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V0.4S, V31.2D");
+        TestInst(SQXTN2(V30.T_4S, V31.T_2D), asm => asm.SQXTN2(V30.T_4S, V31.T_2D), Arm64InstructionId.SQXTN2_asimdmisc_n, Arm64Mnemonic.SQXTN2, "SQXTN2 V30.4S, V31.2D");
     }
 }

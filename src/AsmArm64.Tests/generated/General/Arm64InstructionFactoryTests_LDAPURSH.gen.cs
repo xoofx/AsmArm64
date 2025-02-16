@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDAPURSH_General : Arm64InstructionFac
     [TestMethod]
     public void Test_LDAPURSH_32_ldapstl_unscaled_0()
     {
-        TestInst(LDAPURSH(W0, _[X2, 5]), Arm64InstructionId.LDAPURSH_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH W0, [X2, #5]");
-        TestInst(LDAPURSH(W15, _[X2, 5]), Arm64InstructionId.LDAPURSH_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH W15, [X2, #5]");
-        TestInst(LDAPURSH(WZR, _[X2, 5]), Arm64InstructionId.LDAPURSH_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH WZR, [X2, #5]");
+        TestInst(LDAPURSH(W0, _[X2, 5]), asm => asm.LDAPURSH(W0, _[X2, 5]), Arm64InstructionId.LDAPURSH_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH W0, [X2, #5]");
+        TestInst(LDAPURSH(W15, _[X2, 5]), asm => asm.LDAPURSH(W15, _[X2, 5]), Arm64InstructionId.LDAPURSH_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH W15, [X2, #5]");
+        TestInst(LDAPURSH(WZR, _[X2, 5]), asm => asm.LDAPURSH(WZR, _[X2, 5]), Arm64InstructionId.LDAPURSH_32_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_LDAPURSH_General : Arm64InstructionFac
     [TestMethod]
     public void Test_LDAPURSH_64_ldapstl_unscaled_1()
     {
-        TestInst(LDAPURSH(X0, _[X2, 5]), Arm64InstructionId.LDAPURSH_64_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH X0, [X2, #5]");
-        TestInst(LDAPURSH(X15, _[X2, 5]), Arm64InstructionId.LDAPURSH_64_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH X15, [X2, #5]");
-        TestInst(LDAPURSH(XZR, _[X2, 5]), Arm64InstructionId.LDAPURSH_64_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH XZR, [X2, #5]");
+        TestInst(LDAPURSH(X0, _[X2, 5]), asm => asm.LDAPURSH(X0, _[X2, 5]), Arm64InstructionId.LDAPURSH_64_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH X0, [X2, #5]");
+        TestInst(LDAPURSH(X15, _[X2, 5]), asm => asm.LDAPURSH(X15, _[X2, 5]), Arm64InstructionId.LDAPURSH_64_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH X15, [X2, #5]");
+        TestInst(LDAPURSH(XZR, _[X2, 5]), asm => asm.LDAPURSH(XZR, _[X2, 5]), Arm64InstructionId.LDAPURSH_64_ldapstl_unscaled, Arm64Mnemonic.LDAPURSH, "LDAPURSH XZR, [X2, #5]");
     }
 }

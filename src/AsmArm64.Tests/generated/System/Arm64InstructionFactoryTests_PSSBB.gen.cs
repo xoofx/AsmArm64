@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_PSSBB_System : Arm64InstructionFactory
     [TestMethod]
     public void Test_PSSBB_dsb_bo_barriers_0()
     {
-        TestInst(PSSBB(), Arm64InstructionId.PSSBB_dsb_bo_barriers, Arm64Mnemonic.PSSBB, "PSSBB");
+        TestInst(PSSBB(), asm => asm.PSSBB(), Arm64InstructionId.PSSBB_dsb_bo_barriers, Arm64Mnemonic.PSSBB, "PSSBB");
     }
 }

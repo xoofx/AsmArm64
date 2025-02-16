@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STADD_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_STADD_ldadd_32_memop_0()
     {
-        TestInst(STADD(W0, _[X2]), Arm64InstructionId.STADD_ldadd_32_memop, Arm64Mnemonic.STADD, "STADD W0, [X2]");
-        TestInst(STADD(W15, _[X2]), Arm64InstructionId.STADD_ldadd_32_memop, Arm64Mnemonic.STADD, "STADD W15, [X2]");
-        TestInst(STADD(WZR, _[X2]), Arm64InstructionId.STADD_ldadd_32_memop, Arm64Mnemonic.STADD, "STADD WZR, [X2]");
+        TestInst(STADD(W0, _[X2]), asm => asm.STADD(W0, _[X2]), Arm64InstructionId.STADD_ldadd_32_memop, Arm64Mnemonic.STADD, "STADD W0, [X2]");
+        TestInst(STADD(W15, _[X2]), asm => asm.STADD(W15, _[X2]), Arm64InstructionId.STADD_ldadd_32_memop, Arm64Mnemonic.STADD, "STADD W15, [X2]");
+        TestInst(STADD(WZR, _[X2]), asm => asm.STADD(WZR, _[X2]), Arm64InstructionId.STADD_ldadd_32_memop, Arm64Mnemonic.STADD, "STADD WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STADD_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_STADD_ldadd_64_memop_1()
     {
-        TestInst(STADD(X0, _[X2]), Arm64InstructionId.STADD_ldadd_64_memop, Arm64Mnemonic.STADD, "STADD X0, [X2]");
-        TestInst(STADD(X15, _[X2]), Arm64InstructionId.STADD_ldadd_64_memop, Arm64Mnemonic.STADD, "STADD X15, [X2]");
-        TestInst(STADD(XZR, _[X2]), Arm64InstructionId.STADD_ldadd_64_memop, Arm64Mnemonic.STADD, "STADD XZR, [X2]");
+        TestInst(STADD(X0, _[X2]), asm => asm.STADD(X0, _[X2]), Arm64InstructionId.STADD_ldadd_64_memop, Arm64Mnemonic.STADD, "STADD X0, [X2]");
+        TestInst(STADD(X15, _[X2]), asm => asm.STADD(X15, _[X2]), Arm64InstructionId.STADD_ldadd_64_memop, Arm64Mnemonic.STADD, "STADD X15, [X2]");
+        TestInst(STADD(XZR, _[X2]), asm => asm.STADD(XZR, _[X2]), Arm64InstructionId.STADD_ldadd_64_memop, Arm64Mnemonic.STADD, "STADD XZR, [X2]");
     }
 }

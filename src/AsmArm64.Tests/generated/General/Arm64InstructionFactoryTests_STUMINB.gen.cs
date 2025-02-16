@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STUMINB_General : Arm64InstructionFact
     [TestMethod]
     public void Test_STUMINB_lduminb_32_memop_0()
     {
-        TestInst(STUMINB(W0, _[X2]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB W0, [X2]");
-        TestInst(STUMINB(W15, _[X2]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB W15, [X2]");
-        TestInst(STUMINB(WZR, _[X2]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB WZR, [X2]");
+        TestInst(STUMINB(W0, _[X2]), asm => asm.STUMINB(W0, _[X2]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB W0, [X2]");
+        TestInst(STUMINB(W15, _[X2]), asm => asm.STUMINB(W15, _[X2]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB W15, [X2]");
+        TestInst(STUMINB(WZR, _[X2]), asm => asm.STUMINB(WZR, _[X2]), Arm64InstructionId.STUMINB_lduminb_32_memop, Arm64Mnemonic.STUMINB, "STUMINB WZR, [X2]");
     }
 }

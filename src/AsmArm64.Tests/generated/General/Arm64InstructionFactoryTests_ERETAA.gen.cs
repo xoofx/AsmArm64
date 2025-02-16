@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_ERETAA_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_ERETAA_64e_branch_reg_0()
     {
-        TestInst(ERETAA(), Arm64InstructionId.ERETAA_64e_branch_reg, Arm64Mnemonic.ERETAA, "ERETAA");
+        TestInst(ERETAA(), asm => asm.ERETAA(), Arm64InstructionId.ERETAA_64e_branch_reg, Arm64Mnemonic.ERETAA, "ERETAA");
     }
 }

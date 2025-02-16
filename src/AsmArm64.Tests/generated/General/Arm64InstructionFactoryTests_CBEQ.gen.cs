@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_CBEQ_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBEQ_32_imm_0()
     {
-        TestInst(CBEQ(W0, 5, 32), Arm64InstructionId.CBEQ_32_imm, Arm64Mnemonic.CBEQ, "CBEQ W0, #5, #32");
-        TestInst(CBEQ(W15, 5, 32), Arm64InstructionId.CBEQ_32_imm, Arm64Mnemonic.CBEQ, "CBEQ W15, #5, #32");
-        TestInst(CBEQ(WZR, 5, 32), Arm64InstructionId.CBEQ_32_imm, Arm64Mnemonic.CBEQ, "CBEQ WZR, #5, #32");
+        TestInst(CBEQ(W0, 5, 32), null, Arm64InstructionId.CBEQ_32_imm, Arm64Mnemonic.CBEQ, "CBEQ W0, #5, #32");
+        TestInst(CBEQ(W15, 5, 32), null, Arm64InstructionId.CBEQ_32_imm, Arm64Mnemonic.CBEQ, "CBEQ W15, #5, #32");
+        TestInst(CBEQ(WZR, 5, 32), null, Arm64InstructionId.CBEQ_32_imm, Arm64Mnemonic.CBEQ, "CBEQ WZR, #5, #32");
     }
     
     /// <summary>
@@ -35,9 +34,9 @@ public class Arm64InstructionFactoryTests_CBEQ_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBEQ_64_imm_1()
     {
-        TestInst(CBEQ(X0, 5, 32), Arm64InstructionId.CBEQ_64_imm, Arm64Mnemonic.CBEQ, "CBEQ X0, #5, #32");
-        TestInst(CBEQ(X15, 5, 32), Arm64InstructionId.CBEQ_64_imm, Arm64Mnemonic.CBEQ, "CBEQ X15, #5, #32");
-        TestInst(CBEQ(XZR, 5, 32), Arm64InstructionId.CBEQ_64_imm, Arm64Mnemonic.CBEQ, "CBEQ XZR, #5, #32");
+        TestInst(CBEQ(X0, 5, 32), null, Arm64InstructionId.CBEQ_64_imm, Arm64Mnemonic.CBEQ, "CBEQ X0, #5, #32");
+        TestInst(CBEQ(X15, 5, 32), null, Arm64InstructionId.CBEQ_64_imm, Arm64Mnemonic.CBEQ, "CBEQ X15, #5, #32");
+        TestInst(CBEQ(XZR, 5, 32), null, Arm64InstructionId.CBEQ_64_imm, Arm64Mnemonic.CBEQ, "CBEQ XZR, #5, #32");
     }
     
     /// <summary>
@@ -46,15 +45,15 @@ public class Arm64InstructionFactoryTests_CBEQ_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBEQ_32_regs_2()
     {
-        TestInst(CBEQ(W0, W1, 32), Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W0, W1, #32");
-        TestInst(CBEQ(W15, W1, 32), Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W15, W1, #32");
-        TestInst(CBEQ(WZR, W1, 32), Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ WZR, W1, #32");
-        TestInst(CBEQ(W0, W16, 32), Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W0, W16, #32");
-        TestInst(CBEQ(W15, W16, 32), Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W15, W16, #32");
-        TestInst(CBEQ(WZR, W16, 32), Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ WZR, W16, #32");
-        TestInst(CBEQ(W0, WZR, 32), Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W0, WZR, #32");
-        TestInst(CBEQ(W15, WZR, 32), Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W15, WZR, #32");
-        TestInst(CBEQ(WZR, WZR, 32), Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ WZR, WZR, #32");
+        TestInst(CBEQ(W0, W1, 32), null, Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W0, W1, #32");
+        TestInst(CBEQ(W15, W1, 32), null, Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W15, W1, #32");
+        TestInst(CBEQ(WZR, W1, 32), null, Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ WZR, W1, #32");
+        TestInst(CBEQ(W0, W16, 32), null, Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W0, W16, #32");
+        TestInst(CBEQ(W15, W16, 32), null, Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W15, W16, #32");
+        TestInst(CBEQ(WZR, W16, 32), null, Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ WZR, W16, #32");
+        TestInst(CBEQ(W0, WZR, 32), null, Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W0, WZR, #32");
+        TestInst(CBEQ(W15, WZR, 32), null, Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ W15, WZR, #32");
+        TestInst(CBEQ(WZR, WZR, 32), null, Arm64InstructionId.CBEQ_32_regs, Arm64Mnemonic.CBEQ, "CBEQ WZR, WZR, #32");
     }
     
     /// <summary>
@@ -63,14 +62,14 @@ public class Arm64InstructionFactoryTests_CBEQ_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBEQ_64_regs_3()
     {
-        TestInst(CBEQ(X0, X1, 32), Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X0, X1, #32");
-        TestInst(CBEQ(X15, X1, 32), Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X15, X1, #32");
-        TestInst(CBEQ(XZR, X1, 32), Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ XZR, X1, #32");
-        TestInst(CBEQ(X0, X16, 32), Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X0, X16, #32");
-        TestInst(CBEQ(X15, X16, 32), Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X15, X16, #32");
-        TestInst(CBEQ(XZR, X16, 32), Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ XZR, X16, #32");
-        TestInst(CBEQ(X0, XZR, 32), Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X0, XZR, #32");
-        TestInst(CBEQ(X15, XZR, 32), Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X15, XZR, #32");
-        TestInst(CBEQ(XZR, XZR, 32), Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ XZR, XZR, #32");
+        TestInst(CBEQ(X0, X1, 32), null, Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X0, X1, #32");
+        TestInst(CBEQ(X15, X1, 32), null, Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X15, X1, #32");
+        TestInst(CBEQ(XZR, X1, 32), null, Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ XZR, X1, #32");
+        TestInst(CBEQ(X0, X16, 32), null, Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X0, X16, #32");
+        TestInst(CBEQ(X15, X16, 32), null, Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X15, X16, #32");
+        TestInst(CBEQ(XZR, X16, 32), null, Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ XZR, X16, #32");
+        TestInst(CBEQ(X0, XZR, 32), null, Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X0, XZR, #32");
+        TestInst(CBEQ(X15, XZR, 32), null, Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ X15, XZR, #32");
+        TestInst(CBEQ(XZR, XZR, 32), null, Arm64InstructionId.CBEQ_64_regs, Arm64Mnemonic.CBEQ, "CBEQ XZR, XZR, #32");
     }
 }

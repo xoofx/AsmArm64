@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_sisd_32h_0()
     {
-        TestInst(UCVTF(H0, S1), Arm64InstructionId.UCVTF_sisd_32h, Arm64Mnemonic.UCVTF, "UCVTF H0, S1");
-        TestInst(UCVTF(H31, S1), Arm64InstructionId.UCVTF_sisd_32h, Arm64Mnemonic.UCVTF, "UCVTF H31, S1");
-        TestInst(UCVTF(H0, S31), Arm64InstructionId.UCVTF_sisd_32h, Arm64Mnemonic.UCVTF, "UCVTF H0, S31");
-        TestInst(UCVTF(H31, S31), Arm64InstructionId.UCVTF_sisd_32h, Arm64Mnemonic.UCVTF, "UCVTF H31, S31");
+        TestInst(UCVTF(H0, S1), asm => asm.UCVTF(H0, S1), Arm64InstructionId.UCVTF_sisd_32h, Arm64Mnemonic.UCVTF, "UCVTF H0, S1");
+        TestInst(UCVTF(H31, S1), asm => asm.UCVTF(H31, S1), Arm64InstructionId.UCVTF_sisd_32h, Arm64Mnemonic.UCVTF, "UCVTF H31, S1");
+        TestInst(UCVTF(H0, S31), asm => asm.UCVTF(H0, S31), Arm64InstructionId.UCVTF_sisd_32h, Arm64Mnemonic.UCVTF, "UCVTF H0, S31");
+        TestInst(UCVTF(H31, S31), asm => asm.UCVTF(H31, S31), Arm64InstructionId.UCVTF_sisd_32h, Arm64Mnemonic.UCVTF, "UCVTF H31, S31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_sisd_32d_1()
     {
-        TestInst(UCVTF(D0, S1), Arm64InstructionId.UCVTF_sisd_32d, Arm64Mnemonic.UCVTF, "UCVTF D0, S1");
-        TestInst(UCVTF(D31, S1), Arm64InstructionId.UCVTF_sisd_32d, Arm64Mnemonic.UCVTF, "UCVTF D31, S1");
-        TestInst(UCVTF(D0, S31), Arm64InstructionId.UCVTF_sisd_32d, Arm64Mnemonic.UCVTF, "UCVTF D0, S31");
-        TestInst(UCVTF(D31, S31), Arm64InstructionId.UCVTF_sisd_32d, Arm64Mnemonic.UCVTF, "UCVTF D31, S31");
+        TestInst(UCVTF(D0, S1), asm => asm.UCVTF(D0, S1), Arm64InstructionId.UCVTF_sisd_32d, Arm64Mnemonic.UCVTF, "UCVTF D0, S1");
+        TestInst(UCVTF(D31, S1), asm => asm.UCVTF(D31, S1), Arm64InstructionId.UCVTF_sisd_32d, Arm64Mnemonic.UCVTF, "UCVTF D31, S1");
+        TestInst(UCVTF(D0, S31), asm => asm.UCVTF(D0, S31), Arm64InstructionId.UCVTF_sisd_32d, Arm64Mnemonic.UCVTF, "UCVTF D0, S31");
+        TestInst(UCVTF(D31, S31), asm => asm.UCVTF(D31, S31), Arm64InstructionId.UCVTF_sisd_32d, Arm64Mnemonic.UCVTF, "UCVTF D31, S31");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_sisd_64h_2()
     {
-        TestInst(UCVTF(H0, D1), Arm64InstructionId.UCVTF_sisd_64h, Arm64Mnemonic.UCVTF, "UCVTF H0, D1");
-        TestInst(UCVTF(H31, D1), Arm64InstructionId.UCVTF_sisd_64h, Arm64Mnemonic.UCVTF, "UCVTF H31, D1");
-        TestInst(UCVTF(H0, D31), Arm64InstructionId.UCVTF_sisd_64h, Arm64Mnemonic.UCVTF, "UCVTF H0, D31");
-        TestInst(UCVTF(H31, D31), Arm64InstructionId.UCVTF_sisd_64h, Arm64Mnemonic.UCVTF, "UCVTF H31, D31");
+        TestInst(UCVTF(H0, D1), asm => asm.UCVTF(H0, D1), Arm64InstructionId.UCVTF_sisd_64h, Arm64Mnemonic.UCVTF, "UCVTF H0, D1");
+        TestInst(UCVTF(H31, D1), asm => asm.UCVTF(H31, D1), Arm64InstructionId.UCVTF_sisd_64h, Arm64Mnemonic.UCVTF, "UCVTF H31, D1");
+        TestInst(UCVTF(H0, D31), asm => asm.UCVTF(H0, D31), Arm64InstructionId.UCVTF_sisd_64h, Arm64Mnemonic.UCVTF, "UCVTF H0, D31");
+        TestInst(UCVTF(H31, D31), asm => asm.UCVTF(H31, D31), Arm64InstructionId.UCVTF_sisd_64h, Arm64Mnemonic.UCVTF, "UCVTF H31, D31");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_sisd_64s_3()
     {
-        TestInst(UCVTF(S0, D1), Arm64InstructionId.UCVTF_sisd_64s, Arm64Mnemonic.UCVTF, "UCVTF S0, D1");
-        TestInst(UCVTF(S31, D1), Arm64InstructionId.UCVTF_sisd_64s, Arm64Mnemonic.UCVTF, "UCVTF S31, D1");
-        TestInst(UCVTF(S0, D31), Arm64InstructionId.UCVTF_sisd_64s, Arm64Mnemonic.UCVTF, "UCVTF S0, D31");
-        TestInst(UCVTF(S31, D31), Arm64InstructionId.UCVTF_sisd_64s, Arm64Mnemonic.UCVTF, "UCVTF S31, D31");
+        TestInst(UCVTF(S0, D1), asm => asm.UCVTF(S0, D1), Arm64InstructionId.UCVTF_sisd_64s, Arm64Mnemonic.UCVTF, "UCVTF S0, D1");
+        TestInst(UCVTF(S31, D1), asm => asm.UCVTF(S31, D1), Arm64InstructionId.UCVTF_sisd_64s, Arm64Mnemonic.UCVTF, "UCVTF S31, D1");
+        TestInst(UCVTF(S0, D31), asm => asm.UCVTF(S0, D31), Arm64InstructionId.UCVTF_sisd_64s, Arm64Mnemonic.UCVTF, "UCVTF S0, D31");
+        TestInst(UCVTF(S31, D31), asm => asm.UCVTF(S31, D31), Arm64InstructionId.UCVTF_sisd_64s, Arm64Mnemonic.UCVTF, "UCVTF S31, D31");
     }
     
     /// <summary>
@@ -72,12 +71,12 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_h32_float2fix_4()
     {
-        TestInst(UCVTF(H0, W1, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, W1, #5");
-        TestInst(UCVTF(H31, W1, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, W1, #5");
-        TestInst(UCVTF(H0, W16, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, W16, #5");
-        TestInst(UCVTF(H31, W16, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, W16, #5");
-        TestInst(UCVTF(H0, WZR, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, WZR, #5");
-        TestInst(UCVTF(H31, WZR, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, WZR, #5");
+        TestInst(UCVTF(H0, W1, 5), asm => asm.UCVTF(H0, W1, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, W1, #5");
+        TestInst(UCVTF(H31, W1, 5), asm => asm.UCVTF(H31, W1, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, W1, #5");
+        TestInst(UCVTF(H0, W16, 5), asm => asm.UCVTF(H0, W16, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, W16, #5");
+        TestInst(UCVTF(H31, W16, 5), asm => asm.UCVTF(H31, W16, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, W16, #5");
+        TestInst(UCVTF(H0, WZR, 5), asm => asm.UCVTF(H0, WZR, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, WZR, #5");
+        TestInst(UCVTF(H31, WZR, 5), asm => asm.UCVTF(H31, WZR, 5), Arm64InstructionId.UCVTF_h32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, WZR, #5");
     }
     
     /// <summary>
@@ -86,12 +85,12 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_h64_float2fix_5()
     {
-        TestInst(UCVTF(H0, X1, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, X1, #5");
-        TestInst(UCVTF(H31, X1, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, X1, #5");
-        TestInst(UCVTF(H0, X16, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, X16, #5");
-        TestInst(UCVTF(H31, X16, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, X16, #5");
-        TestInst(UCVTF(H0, XZR, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, XZR, #5");
-        TestInst(UCVTF(H31, XZR, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, XZR, #5");
+        TestInst(UCVTF(H0, X1, 5), asm => asm.UCVTF(H0, X1, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, X1, #5");
+        TestInst(UCVTF(H31, X1, 5), asm => asm.UCVTF(H31, X1, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, X1, #5");
+        TestInst(UCVTF(H0, X16, 5), asm => asm.UCVTF(H0, X16, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, X16, #5");
+        TestInst(UCVTF(H31, X16, 5), asm => asm.UCVTF(H31, X16, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, X16, #5");
+        TestInst(UCVTF(H0, XZR, 5), asm => asm.UCVTF(H0, XZR, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H0, XZR, #5");
+        TestInst(UCVTF(H31, XZR, 5), asm => asm.UCVTF(H31, XZR, 5), Arm64InstructionId.UCVTF_h64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF H31, XZR, #5");
     }
     
     /// <summary>
@@ -100,12 +99,12 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_s32_float2fix_6()
     {
-        TestInst(UCVTF(S0, W1, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, W1, #5");
-        TestInst(UCVTF(S31, W1, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, W1, #5");
-        TestInst(UCVTF(S0, W16, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, W16, #5");
-        TestInst(UCVTF(S31, W16, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, W16, #5");
-        TestInst(UCVTF(S0, WZR, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, WZR, #5");
-        TestInst(UCVTF(S31, WZR, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, WZR, #5");
+        TestInst(UCVTF(S0, W1, 5), asm => asm.UCVTF(S0, W1, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, W1, #5");
+        TestInst(UCVTF(S31, W1, 5), asm => asm.UCVTF(S31, W1, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, W1, #5");
+        TestInst(UCVTF(S0, W16, 5), asm => asm.UCVTF(S0, W16, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, W16, #5");
+        TestInst(UCVTF(S31, W16, 5), asm => asm.UCVTF(S31, W16, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, W16, #5");
+        TestInst(UCVTF(S0, WZR, 5), asm => asm.UCVTF(S0, WZR, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, WZR, #5");
+        TestInst(UCVTF(S31, WZR, 5), asm => asm.UCVTF(S31, WZR, 5), Arm64InstructionId.UCVTF_s32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, WZR, #5");
     }
     
     /// <summary>
@@ -114,12 +113,12 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_s64_float2fix_7()
     {
-        TestInst(UCVTF(S0, X1, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, X1, #5");
-        TestInst(UCVTF(S31, X1, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, X1, #5");
-        TestInst(UCVTF(S0, X16, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, X16, #5");
-        TestInst(UCVTF(S31, X16, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, X16, #5");
-        TestInst(UCVTF(S0, XZR, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, XZR, #5");
-        TestInst(UCVTF(S31, XZR, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, XZR, #5");
+        TestInst(UCVTF(S0, X1, 5), asm => asm.UCVTF(S0, X1, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, X1, #5");
+        TestInst(UCVTF(S31, X1, 5), asm => asm.UCVTF(S31, X1, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, X1, #5");
+        TestInst(UCVTF(S0, X16, 5), asm => asm.UCVTF(S0, X16, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, X16, #5");
+        TestInst(UCVTF(S31, X16, 5), asm => asm.UCVTF(S31, X16, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, X16, #5");
+        TestInst(UCVTF(S0, XZR, 5), asm => asm.UCVTF(S0, XZR, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S0, XZR, #5");
+        TestInst(UCVTF(S31, XZR, 5), asm => asm.UCVTF(S31, XZR, 5), Arm64InstructionId.UCVTF_s64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF S31, XZR, #5");
     }
     
     /// <summary>
@@ -128,12 +127,12 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_d32_float2fix_8()
     {
-        TestInst(UCVTF(D0, W1, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, W1, #5");
-        TestInst(UCVTF(D31, W1, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, W1, #5");
-        TestInst(UCVTF(D0, W16, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, W16, #5");
-        TestInst(UCVTF(D31, W16, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, W16, #5");
-        TestInst(UCVTF(D0, WZR, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, WZR, #5");
-        TestInst(UCVTF(D31, WZR, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, WZR, #5");
+        TestInst(UCVTF(D0, W1, 5), asm => asm.UCVTF(D0, W1, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, W1, #5");
+        TestInst(UCVTF(D31, W1, 5), asm => asm.UCVTF(D31, W1, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, W1, #5");
+        TestInst(UCVTF(D0, W16, 5), asm => asm.UCVTF(D0, W16, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, W16, #5");
+        TestInst(UCVTF(D31, W16, 5), asm => asm.UCVTF(D31, W16, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, W16, #5");
+        TestInst(UCVTF(D0, WZR, 5), asm => asm.UCVTF(D0, WZR, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, WZR, #5");
+        TestInst(UCVTF(D31, WZR, 5), asm => asm.UCVTF(D31, WZR, 5), Arm64InstructionId.UCVTF_d32_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, WZR, #5");
     }
     
     /// <summary>
@@ -142,12 +141,12 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_d64_float2fix_9()
     {
-        TestInst(UCVTF(D0, X1, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, X1, #5");
-        TestInst(UCVTF(D31, X1, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, X1, #5");
-        TestInst(UCVTF(D0, X16, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, X16, #5");
-        TestInst(UCVTF(D31, X16, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, X16, #5");
-        TestInst(UCVTF(D0, XZR, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, XZR, #5");
-        TestInst(UCVTF(D31, XZR, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, XZR, #5");
+        TestInst(UCVTF(D0, X1, 5), asm => asm.UCVTF(D0, X1, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, X1, #5");
+        TestInst(UCVTF(D31, X1, 5), asm => asm.UCVTF(D31, X1, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, X1, #5");
+        TestInst(UCVTF(D0, X16, 5), asm => asm.UCVTF(D0, X16, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, X16, #5");
+        TestInst(UCVTF(D31, X16, 5), asm => asm.UCVTF(D31, X16, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, X16, #5");
+        TestInst(UCVTF(D0, XZR, 5), asm => asm.UCVTF(D0, XZR, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D0, XZR, #5");
+        TestInst(UCVTF(D31, XZR, 5), asm => asm.UCVTF(D31, XZR, 5), Arm64InstructionId.UCVTF_d64_float2fix, Arm64Mnemonic.UCVTF, "UCVTF D31, XZR, #5");
     }
     
     /// <summary>
@@ -156,12 +155,12 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_h32_float2int_10()
     {
-        TestInst(UCVTF(H0, W1), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, W1");
-        TestInst(UCVTF(H31, W1), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, W1");
-        TestInst(UCVTF(H0, W16), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, W16");
-        TestInst(UCVTF(H31, W16), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, W16");
-        TestInst(UCVTF(H0, WZR), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, WZR");
-        TestInst(UCVTF(H31, WZR), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, WZR");
+        TestInst(UCVTF(H0, W1), asm => asm.UCVTF(H0, W1), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, W1");
+        TestInst(UCVTF(H31, W1), asm => asm.UCVTF(H31, W1), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, W1");
+        TestInst(UCVTF(H0, W16), asm => asm.UCVTF(H0, W16), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, W16");
+        TestInst(UCVTF(H31, W16), asm => asm.UCVTF(H31, W16), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, W16");
+        TestInst(UCVTF(H0, WZR), asm => asm.UCVTF(H0, WZR), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, WZR");
+        TestInst(UCVTF(H31, WZR), asm => asm.UCVTF(H31, WZR), Arm64InstructionId.UCVTF_h32_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, WZR");
     }
     
     /// <summary>
@@ -170,12 +169,12 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_s32_float2int_11()
     {
-        TestInst(UCVTF(S0, W1), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, W1");
-        TestInst(UCVTF(S31, W1), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, W1");
-        TestInst(UCVTF(S0, W16), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, W16");
-        TestInst(UCVTF(S31, W16), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, W16");
-        TestInst(UCVTF(S0, WZR), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, WZR");
-        TestInst(UCVTF(S31, WZR), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, WZR");
+        TestInst(UCVTF(S0, W1), asm => asm.UCVTF(S0, W1), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, W1");
+        TestInst(UCVTF(S31, W1), asm => asm.UCVTF(S31, W1), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, W1");
+        TestInst(UCVTF(S0, W16), asm => asm.UCVTF(S0, W16), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, W16");
+        TestInst(UCVTF(S31, W16), asm => asm.UCVTF(S31, W16), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, W16");
+        TestInst(UCVTF(S0, WZR), asm => asm.UCVTF(S0, WZR), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, WZR");
+        TestInst(UCVTF(S31, WZR), asm => asm.UCVTF(S31, WZR), Arm64InstructionId.UCVTF_s32_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, WZR");
     }
     
     /// <summary>
@@ -184,12 +183,12 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_d32_float2int_12()
     {
-        TestInst(UCVTF(D0, W1), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, W1");
-        TestInst(UCVTF(D31, W1), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, W1");
-        TestInst(UCVTF(D0, W16), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, W16");
-        TestInst(UCVTF(D31, W16), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, W16");
-        TestInst(UCVTF(D0, WZR), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, WZR");
-        TestInst(UCVTF(D31, WZR), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, WZR");
+        TestInst(UCVTF(D0, W1), asm => asm.UCVTF(D0, W1), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, W1");
+        TestInst(UCVTF(D31, W1), asm => asm.UCVTF(D31, W1), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, W1");
+        TestInst(UCVTF(D0, W16), asm => asm.UCVTF(D0, W16), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, W16");
+        TestInst(UCVTF(D31, W16), asm => asm.UCVTF(D31, W16), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, W16");
+        TestInst(UCVTF(D0, WZR), asm => asm.UCVTF(D0, WZR), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, WZR");
+        TestInst(UCVTF(D31, WZR), asm => asm.UCVTF(D31, WZR), Arm64InstructionId.UCVTF_d32_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, WZR");
     }
     
     /// <summary>
@@ -198,12 +197,12 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_h64_float2int_13()
     {
-        TestInst(UCVTF(H0, X1), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, X1");
-        TestInst(UCVTF(H31, X1), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, X1");
-        TestInst(UCVTF(H0, X16), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, X16");
-        TestInst(UCVTF(H31, X16), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, X16");
-        TestInst(UCVTF(H0, XZR), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, XZR");
-        TestInst(UCVTF(H31, XZR), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, XZR");
+        TestInst(UCVTF(H0, X1), asm => asm.UCVTF(H0, X1), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, X1");
+        TestInst(UCVTF(H31, X1), asm => asm.UCVTF(H31, X1), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, X1");
+        TestInst(UCVTF(H0, X16), asm => asm.UCVTF(H0, X16), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, X16");
+        TestInst(UCVTF(H31, X16), asm => asm.UCVTF(H31, X16), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, X16");
+        TestInst(UCVTF(H0, XZR), asm => asm.UCVTF(H0, XZR), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H0, XZR");
+        TestInst(UCVTF(H31, XZR), asm => asm.UCVTF(H31, XZR), Arm64InstructionId.UCVTF_h64_float2int, Arm64Mnemonic.UCVTF, "UCVTF H31, XZR");
     }
     
     /// <summary>
@@ -212,12 +211,12 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_s64_float2int_14()
     {
-        TestInst(UCVTF(S0, X1), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, X1");
-        TestInst(UCVTF(S31, X1), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, X1");
-        TestInst(UCVTF(S0, X16), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, X16");
-        TestInst(UCVTF(S31, X16), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, X16");
-        TestInst(UCVTF(S0, XZR), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, XZR");
-        TestInst(UCVTF(S31, XZR), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, XZR");
+        TestInst(UCVTF(S0, X1), asm => asm.UCVTF(S0, X1), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, X1");
+        TestInst(UCVTF(S31, X1), asm => asm.UCVTF(S31, X1), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, X1");
+        TestInst(UCVTF(S0, X16), asm => asm.UCVTF(S0, X16), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, X16");
+        TestInst(UCVTF(S31, X16), asm => asm.UCVTF(S31, X16), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, X16");
+        TestInst(UCVTF(S0, XZR), asm => asm.UCVTF(S0, XZR), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S0, XZR");
+        TestInst(UCVTF(S31, XZR), asm => asm.UCVTF(S31, XZR), Arm64InstructionId.UCVTF_s64_float2int, Arm64Mnemonic.UCVTF, "UCVTF S31, XZR");
     }
     
     /// <summary>
@@ -226,11 +225,11 @@ public class Arm64InstructionFactoryTests_UCVTF_Float : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_UCVTF_d64_float2int_15()
     {
-        TestInst(UCVTF(D0, X1), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, X1");
-        TestInst(UCVTF(D31, X1), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, X1");
-        TestInst(UCVTF(D0, X16), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, X16");
-        TestInst(UCVTF(D31, X16), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, X16");
-        TestInst(UCVTF(D0, XZR), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, XZR");
-        TestInst(UCVTF(D31, XZR), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, XZR");
+        TestInst(UCVTF(D0, X1), asm => asm.UCVTF(D0, X1), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, X1");
+        TestInst(UCVTF(D31, X1), asm => asm.UCVTF(D31, X1), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, X1");
+        TestInst(UCVTF(D0, X16), asm => asm.UCVTF(D0, X16), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, X16");
+        TestInst(UCVTF(D31, X16), asm => asm.UCVTF(D31, X16), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, X16");
+        TestInst(UCVTF(D0, XZR), asm => asm.UCVTF(D0, XZR), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D0, XZR");
+        TestInst(UCVTF(D31, XZR), asm => asm.UCVTF(D31, XZR), Arm64InstructionId.UCVTF_d64_float2int, Arm64Mnemonic.UCVTF, "UCVTF D31, XZR");
     }
 }

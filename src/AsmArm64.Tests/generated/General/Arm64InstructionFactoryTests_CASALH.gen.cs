@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_CASALH_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_CASALH_c32_comswap_0()
     {
-        TestInst(CASALH(W0, W1, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W0, W1, [X3]");
-        TestInst(CASALH(W15, W1, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W15, W1, [X3]");
-        TestInst(CASALH(WZR, W1, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH WZR, W1, [X3]");
-        TestInst(CASALH(W0, W16, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W0, W16, [X3]");
-        TestInst(CASALH(W15, W16, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W15, W16, [X3]");
-        TestInst(CASALH(WZR, W16, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH WZR, W16, [X3]");
-        TestInst(CASALH(W0, WZR, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W0, WZR, [X3]");
-        TestInst(CASALH(W15, WZR, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W15, WZR, [X3]");
-        TestInst(CASALH(WZR, WZR, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH WZR, WZR, [X3]");
+        TestInst(CASALH(W0, W1, _[X3]), asm => asm.CASALH(W0, W1, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W0, W1, [X3]");
+        TestInst(CASALH(W15, W1, _[X3]), asm => asm.CASALH(W15, W1, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W15, W1, [X3]");
+        TestInst(CASALH(WZR, W1, _[X3]), asm => asm.CASALH(WZR, W1, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH WZR, W1, [X3]");
+        TestInst(CASALH(W0, W16, _[X3]), asm => asm.CASALH(W0, W16, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W0, W16, [X3]");
+        TestInst(CASALH(W15, W16, _[X3]), asm => asm.CASALH(W15, W16, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W15, W16, [X3]");
+        TestInst(CASALH(WZR, W16, _[X3]), asm => asm.CASALH(WZR, W16, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH WZR, W16, [X3]");
+        TestInst(CASALH(W0, WZR, _[X3]), asm => asm.CASALH(W0, WZR, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W0, WZR, [X3]");
+        TestInst(CASALH(W15, WZR, _[X3]), asm => asm.CASALH(W15, WZR, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH W15, WZR, [X3]");
+        TestInst(CASALH(WZR, WZR, _[X3]), asm => asm.CASALH(WZR, WZR, _[X3]), Arm64InstructionId.CASALH_c32_comswap, Arm64Mnemonic.CASALH, "CASALH WZR, WZR, [X3]");
     }
 }

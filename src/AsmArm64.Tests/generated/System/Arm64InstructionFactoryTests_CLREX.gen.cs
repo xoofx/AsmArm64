@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_CLREX_System : Arm64InstructionFactory
     [TestMethod]
     public void Test_CLREX_bn_barriers_0()
     {
-        TestInst(CLREX(5), Arm64InstructionId.CLREX_bn_barriers, Arm64Mnemonic.CLREX, "CLREX #5");
+        TestInst(CLREX(5), asm => asm.CLREX(5), Arm64InstructionId.CLREX_bn_barriers, Arm64Mnemonic.CLREX, "CLREX #5");
     }
 }

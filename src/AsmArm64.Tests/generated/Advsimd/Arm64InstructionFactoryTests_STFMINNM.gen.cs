@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STFMINNM_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_STFMINNM_16_0()
     {
-        TestInst(STFMINNM(H0, _[X2]), Arm64InstructionId.STFMINNM_16, Arm64Mnemonic.STFMINNM, "STFMINNM H0, [X2]");
-        TestInst(STFMINNM(H31, _[X2]), Arm64InstructionId.STFMINNM_16, Arm64Mnemonic.STFMINNM, "STFMINNM H31, [X2]");
+        TestInst(STFMINNM(H0, _[X2]), asm => asm.STFMINNM(H0, _[X2]), Arm64InstructionId.STFMINNM_16, Arm64Mnemonic.STFMINNM, "STFMINNM H0, [X2]");
+        TestInst(STFMINNM(H31, _[X2]), asm => asm.STFMINNM(H31, _[X2]), Arm64InstructionId.STFMINNM_16, Arm64Mnemonic.STFMINNM, "STFMINNM H31, [X2]");
     }
     
     /// <summary>
@@ -34,8 +33,8 @@ public class Arm64InstructionFactoryTests_STFMINNM_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_STFMINNM_32_1()
     {
-        TestInst(STFMINNM(S0, _[X2]), Arm64InstructionId.STFMINNM_32, Arm64Mnemonic.STFMINNM, "STFMINNM S0, [X2]");
-        TestInst(STFMINNM(S31, _[X2]), Arm64InstructionId.STFMINNM_32, Arm64Mnemonic.STFMINNM, "STFMINNM S31, [X2]");
+        TestInst(STFMINNM(S0, _[X2]), asm => asm.STFMINNM(S0, _[X2]), Arm64InstructionId.STFMINNM_32, Arm64Mnemonic.STFMINNM, "STFMINNM S0, [X2]");
+        TestInst(STFMINNM(S31, _[X2]), asm => asm.STFMINNM(S31, _[X2]), Arm64InstructionId.STFMINNM_32, Arm64Mnemonic.STFMINNM, "STFMINNM S31, [X2]");
     }
     
     /// <summary>
@@ -44,7 +43,7 @@ public class Arm64InstructionFactoryTests_STFMINNM_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_STFMINNM_64_2()
     {
-        TestInst(STFMINNM(D0, _[X2]), Arm64InstructionId.STFMINNM_64, Arm64Mnemonic.STFMINNM, "STFMINNM D0, [X2]");
-        TestInst(STFMINNM(D31, _[X2]), Arm64InstructionId.STFMINNM_64, Arm64Mnemonic.STFMINNM, "STFMINNM D31, [X2]");
+        TestInst(STFMINNM(D0, _[X2]), asm => asm.STFMINNM(D0, _[X2]), Arm64InstructionId.STFMINNM_64, Arm64Mnemonic.STFMINNM, "STFMINNM D0, [X2]");
+        TestInst(STFMINNM(D31, _[X2]), asm => asm.STFMINNM(D31, _[X2]), Arm64InstructionId.STFMINNM_64, Arm64Mnemonic.STFMINNM, "STFMINNM D31, [X2]");
     }
 }

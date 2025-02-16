@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_PMULL2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_PMULL2_asimddiff_l_0()
     {
-        TestInst(PMULL2(V0.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V1.16B, V2.16B");
-        TestInst(PMULL2(V30.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V1.16B, V2.16B");
-        TestInst(PMULL2(V0.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V31.16B, V2.16B");
-        TestInst(PMULL2(V30.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V31.16B, V2.16B");
-        TestInst(PMULL2(V0.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V1.16B, V0.16B");
-        TestInst(PMULL2(V30.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V1.16B, V0.16B");
-        TestInst(PMULL2(V0.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V31.16B, V0.16B");
-        TestInst(PMULL2(V30.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V31.16B, V0.16B");
+        TestInst(PMULL2(V0.T_8H, V1.T_16B, V2.T_16B), asm => asm.PMULL2(V0.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V1.16B, V2.16B");
+        TestInst(PMULL2(V30.T_8H, V1.T_16B, V2.T_16B), asm => asm.PMULL2(V30.T_8H, V1.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V1.16B, V2.16B");
+        TestInst(PMULL2(V0.T_8H, V31.T_16B, V2.T_16B), asm => asm.PMULL2(V0.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V31.16B, V2.16B");
+        TestInst(PMULL2(V30.T_8H, V31.T_16B, V2.T_16B), asm => asm.PMULL2(V30.T_8H, V31.T_16B, V2.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V31.16B, V2.16B");
+        TestInst(PMULL2(V0.T_8H, V1.T_16B, V0.T_16B), asm => asm.PMULL2(V0.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V1.16B, V0.16B");
+        TestInst(PMULL2(V30.T_8H, V1.T_16B, V0.T_16B), asm => asm.PMULL2(V30.T_8H, V1.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V1.16B, V0.16B");
+        TestInst(PMULL2(V0.T_8H, V31.T_16B, V0.T_16B), asm => asm.PMULL2(V0.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.8H, V31.16B, V0.16B");
+        TestInst(PMULL2(V30.T_8H, V31.T_16B, V0.T_16B), asm => asm.PMULL2(V30.T_8H, V31.T_16B, V0.T_16B), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.8H, V31.16B, V0.16B");
     }
     
     /// <summary>
@@ -40,13 +39,13 @@ public class Arm64InstructionFactoryTests_PMULL2_Advsimd : Arm64InstructionFacto
     [TestMethod]
     public void Test_PMULL2_asimddiff_l_1()
     {
-        TestInst(PMULL2(V0.T_1Q, V1.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V1.2D, V2.2D");
-        TestInst(PMULL2(V30.T_1Q, V1.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V1.2D, V2.2D");
-        TestInst(PMULL2(V0.T_1Q, V31.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V31.2D, V2.2D");
-        TestInst(PMULL2(V30.T_1Q, V31.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V31.2D, V2.2D");
-        TestInst(PMULL2(V0.T_1Q, V1.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V1.2D, V0.2D");
-        TestInst(PMULL2(V30.T_1Q, V1.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V1.2D, V0.2D");
-        TestInst(PMULL2(V0.T_1Q, V31.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V31.2D, V0.2D");
-        TestInst(PMULL2(V30.T_1Q, V31.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V31.2D, V0.2D");
+        TestInst(PMULL2(V0.T_1Q, V1.T_2D, V2.T_2D), asm => asm.PMULL2(V0.T_1Q, V1.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V1.2D, V2.2D");
+        TestInst(PMULL2(V30.T_1Q, V1.T_2D, V2.T_2D), asm => asm.PMULL2(V30.T_1Q, V1.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V1.2D, V2.2D");
+        TestInst(PMULL2(V0.T_1Q, V31.T_2D, V2.T_2D), asm => asm.PMULL2(V0.T_1Q, V31.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V31.2D, V2.2D");
+        TestInst(PMULL2(V30.T_1Q, V31.T_2D, V2.T_2D), asm => asm.PMULL2(V30.T_1Q, V31.T_2D, V2.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V31.2D, V2.2D");
+        TestInst(PMULL2(V0.T_1Q, V1.T_2D, V0.T_2D), asm => asm.PMULL2(V0.T_1Q, V1.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V1.2D, V0.2D");
+        TestInst(PMULL2(V30.T_1Q, V1.T_2D, V0.T_2D), asm => asm.PMULL2(V30.T_1Q, V1.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V1.2D, V0.2D");
+        TestInst(PMULL2(V0.T_1Q, V31.T_2D, V0.T_2D), asm => asm.PMULL2(V0.T_1Q, V31.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V0.1Q, V31.2D, V0.2D");
+        TestInst(PMULL2(V30.T_1Q, V31.T_2D, V0.T_2D), asm => asm.PMULL2(V30.T_1Q, V31.T_2D, V0.T_2D), Arm64InstructionId.PMULL2_asimddiff_l, Arm64Mnemonic.PMULL2, "PMULL2 V30.1Q, V31.2D, V0.2D");
     }
 }

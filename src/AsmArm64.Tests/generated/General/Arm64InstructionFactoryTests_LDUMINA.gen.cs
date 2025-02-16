@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDUMINA_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDUMINA_32_memop_0()
     {
-        TestInst(LDUMINA(W0, W1, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W0, W1, [X3]");
-        TestInst(LDUMINA(W15, W1, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W15, W1, [X3]");
-        TestInst(LDUMINA(WZR, W1, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA WZR, W1, [X3]");
-        TestInst(LDUMINA(W0, W16, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W0, W16, [X3]");
-        TestInst(LDUMINA(W15, W16, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W15, W16, [X3]");
-        TestInst(LDUMINA(WZR, W16, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA WZR, W16, [X3]");
-        TestInst(LDUMINA(W0, WZR, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W0, WZR, [X3]");
-        TestInst(LDUMINA(W15, WZR, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W15, WZR, [X3]");
-        TestInst(LDUMINA(WZR, WZR, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA WZR, WZR, [X3]");
+        TestInst(LDUMINA(W0, W1, _[X3]), asm => asm.LDUMINA(W0, W1, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W0, W1, [X3]");
+        TestInst(LDUMINA(W15, W1, _[X3]), asm => asm.LDUMINA(W15, W1, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W15, W1, [X3]");
+        TestInst(LDUMINA(WZR, W1, _[X3]), asm => asm.LDUMINA(WZR, W1, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA WZR, W1, [X3]");
+        TestInst(LDUMINA(W0, W16, _[X3]), asm => asm.LDUMINA(W0, W16, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W0, W16, [X3]");
+        TestInst(LDUMINA(W15, W16, _[X3]), asm => asm.LDUMINA(W15, W16, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W15, W16, [X3]");
+        TestInst(LDUMINA(WZR, W16, _[X3]), asm => asm.LDUMINA(WZR, W16, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA WZR, W16, [X3]");
+        TestInst(LDUMINA(W0, WZR, _[X3]), asm => asm.LDUMINA(W0, WZR, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W0, WZR, [X3]");
+        TestInst(LDUMINA(W15, WZR, _[X3]), asm => asm.LDUMINA(W15, WZR, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA W15, WZR, [X3]");
+        TestInst(LDUMINA(WZR, WZR, _[X3]), asm => asm.LDUMINA(WZR, WZR, _[X3]), Arm64InstructionId.LDUMINA_32_memop, Arm64Mnemonic.LDUMINA, "LDUMINA WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDUMINA_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDUMINA_64_memop_1()
     {
-        TestInst(LDUMINA(X0, X1, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X0, X1, [X3]");
-        TestInst(LDUMINA(X15, X1, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X15, X1, [X3]");
-        TestInst(LDUMINA(XZR, X1, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA XZR, X1, [X3]");
-        TestInst(LDUMINA(X0, X16, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X0, X16, [X3]");
-        TestInst(LDUMINA(X15, X16, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X15, X16, [X3]");
-        TestInst(LDUMINA(XZR, X16, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA XZR, X16, [X3]");
-        TestInst(LDUMINA(X0, XZR, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X0, XZR, [X3]");
-        TestInst(LDUMINA(X15, XZR, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X15, XZR, [X3]");
-        TestInst(LDUMINA(XZR, XZR, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA XZR, XZR, [X3]");
+        TestInst(LDUMINA(X0, X1, _[X3]), asm => asm.LDUMINA(X0, X1, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X0, X1, [X3]");
+        TestInst(LDUMINA(X15, X1, _[X3]), asm => asm.LDUMINA(X15, X1, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X15, X1, [X3]");
+        TestInst(LDUMINA(XZR, X1, _[X3]), asm => asm.LDUMINA(XZR, X1, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA XZR, X1, [X3]");
+        TestInst(LDUMINA(X0, X16, _[X3]), asm => asm.LDUMINA(X0, X16, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X0, X16, [X3]");
+        TestInst(LDUMINA(X15, X16, _[X3]), asm => asm.LDUMINA(X15, X16, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X15, X16, [X3]");
+        TestInst(LDUMINA(XZR, X16, _[X3]), asm => asm.LDUMINA(XZR, X16, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA XZR, X16, [X3]");
+        TestInst(LDUMINA(X0, XZR, _[X3]), asm => asm.LDUMINA(X0, XZR, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X0, XZR, [X3]");
+        TestInst(LDUMINA(X15, XZR, _[X3]), asm => asm.LDUMINA(X15, XZR, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA X15, XZR, [X3]");
+        TestInst(LDUMINA(XZR, XZR, _[X3]), asm => asm.LDUMINA(XZR, XZR, _[X3]), Arm64InstructionId.LDUMINA_64_memop, Arm64Mnemonic.LDUMINA, "LDUMINA XZR, XZR, [X3]");
     }
 }

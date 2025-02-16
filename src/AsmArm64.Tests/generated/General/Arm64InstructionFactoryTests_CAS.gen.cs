@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_CAS_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CAS_c32_comswap_0()
     {
-        TestInst(CAS(W0, W1, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W0, W1, [X3]");
-        TestInst(CAS(W15, W1, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W15, W1, [X3]");
-        TestInst(CAS(WZR, W1, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS WZR, W1, [X3]");
-        TestInst(CAS(W0, W16, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W0, W16, [X3]");
-        TestInst(CAS(W15, W16, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W15, W16, [X3]");
-        TestInst(CAS(WZR, W16, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS WZR, W16, [X3]");
-        TestInst(CAS(W0, WZR, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W0, WZR, [X3]");
-        TestInst(CAS(W15, WZR, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W15, WZR, [X3]");
-        TestInst(CAS(WZR, WZR, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS WZR, WZR, [X3]");
+        TestInst(CAS(W0, W1, _[X3]), asm => asm.CAS(W0, W1, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W0, W1, [X3]");
+        TestInst(CAS(W15, W1, _[X3]), asm => asm.CAS(W15, W1, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W15, W1, [X3]");
+        TestInst(CAS(WZR, W1, _[X3]), asm => asm.CAS(WZR, W1, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS WZR, W1, [X3]");
+        TestInst(CAS(W0, W16, _[X3]), asm => asm.CAS(W0, W16, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W0, W16, [X3]");
+        TestInst(CAS(W15, W16, _[X3]), asm => asm.CAS(W15, W16, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W15, W16, [X3]");
+        TestInst(CAS(WZR, W16, _[X3]), asm => asm.CAS(WZR, W16, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS WZR, W16, [X3]");
+        TestInst(CAS(W0, WZR, _[X3]), asm => asm.CAS(W0, WZR, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W0, WZR, [X3]");
+        TestInst(CAS(W15, WZR, _[X3]), asm => asm.CAS(W15, WZR, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS W15, WZR, [X3]");
+        TestInst(CAS(WZR, WZR, _[X3]), asm => asm.CAS(WZR, WZR, _[X3]), Arm64InstructionId.CAS_c32_comswap, Arm64Mnemonic.CAS, "CAS WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_CAS_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_CAS_c64_comswap_1()
     {
-        TestInst(CAS(X0, X1, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X0, X1, [X3]");
-        TestInst(CAS(X15, X1, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X15, X1, [X3]");
-        TestInst(CAS(XZR, X1, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS XZR, X1, [X3]");
-        TestInst(CAS(X0, X16, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X0, X16, [X3]");
-        TestInst(CAS(X15, X16, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X15, X16, [X3]");
-        TestInst(CAS(XZR, X16, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS XZR, X16, [X3]");
-        TestInst(CAS(X0, XZR, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X0, XZR, [X3]");
-        TestInst(CAS(X15, XZR, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X15, XZR, [X3]");
-        TestInst(CAS(XZR, XZR, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS XZR, XZR, [X3]");
+        TestInst(CAS(X0, X1, _[X3]), asm => asm.CAS(X0, X1, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X0, X1, [X3]");
+        TestInst(CAS(X15, X1, _[X3]), asm => asm.CAS(X15, X1, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X15, X1, [X3]");
+        TestInst(CAS(XZR, X1, _[X3]), asm => asm.CAS(XZR, X1, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS XZR, X1, [X3]");
+        TestInst(CAS(X0, X16, _[X3]), asm => asm.CAS(X0, X16, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X0, X16, [X3]");
+        TestInst(CAS(X15, X16, _[X3]), asm => asm.CAS(X15, X16, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X15, X16, [X3]");
+        TestInst(CAS(XZR, X16, _[X3]), asm => asm.CAS(XZR, X16, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS XZR, X16, [X3]");
+        TestInst(CAS(X0, XZR, _[X3]), asm => asm.CAS(X0, XZR, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X0, XZR, [X3]");
+        TestInst(CAS(X15, XZR, _[X3]), asm => asm.CAS(X15, XZR, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS X15, XZR, [X3]");
+        TestInst(CAS(XZR, XZR, _[X3]), asm => asm.CAS(XZR, XZR, _[X3]), Arm64InstructionId.CAS_c64_comswap, Arm64Mnemonic.CAS, "CAS XZR, XZR, [X3]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Fpsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_STTP_Fpsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STTP_q_ldstpair_post_0()
     {
-        TestInst(STTP(Q0, Q1, _[X3], 80), Arm64InstructionId.STTP_q_ldstpair_post, Arm64Mnemonic.STTP, "STTP Q0, Q1, [X3], #80");
-        TestInst(STTP(Q31, Q1, _[X3], 80), Arm64InstructionId.STTP_q_ldstpair_post, Arm64Mnemonic.STTP, "STTP Q31, Q1, [X3], #80");
-        TestInst(STTP(Q0, Q31, _[X3], 80), Arm64InstructionId.STTP_q_ldstpair_post, Arm64Mnemonic.STTP, "STTP Q0, Q31, [X3], #80");
-        TestInst(STTP(Q31, Q31, _[X3], 80), Arm64InstructionId.STTP_q_ldstpair_post, Arm64Mnemonic.STTP, "STTP Q31, Q31, [X3], #80");
+        TestInst(STTP(Q0, Q1, _[X3], 80), asm => asm.STTP(Q0, Q1, _[X3], 80), Arm64InstructionId.STTP_q_ldstpair_post, Arm64Mnemonic.STTP, "STTP Q0, Q1, [X3], #80");
+        TestInst(STTP(Q31, Q1, _[X3], 80), asm => asm.STTP(Q31, Q1, _[X3], 80), Arm64InstructionId.STTP_q_ldstpair_post, Arm64Mnemonic.STTP, "STTP Q31, Q1, [X3], #80");
+        TestInst(STTP(Q0, Q31, _[X3], 80), asm => asm.STTP(Q0, Q31, _[X3], 80), Arm64InstructionId.STTP_q_ldstpair_post, Arm64Mnemonic.STTP, "STTP Q0, Q31, [X3], #80");
+        TestInst(STTP(Q31, Q31, _[X3], 80), asm => asm.STTP(Q31, Q31, _[X3], 80), Arm64InstructionId.STTP_q_ldstpair_post, Arm64Mnemonic.STTP, "STTP Q31, Q31, [X3], #80");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_STTP_Fpsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STTP_q_ldstpair_pre_1()
     {
-        TestInst(STTP(Q0, Q1, _[X3, 5].Pre), Arm64InstructionId.STTP_q_ldstpair_pre, Arm64Mnemonic.STTP, "STTP Q0, Q1, [X3, #5]!");
-        TestInst(STTP(Q31, Q1, _[X3, 5].Pre), Arm64InstructionId.STTP_q_ldstpair_pre, Arm64Mnemonic.STTP, "STTP Q31, Q1, [X3, #5]!");
-        TestInst(STTP(Q0, Q31, _[X3, 5].Pre), Arm64InstructionId.STTP_q_ldstpair_pre, Arm64Mnemonic.STTP, "STTP Q0, Q31, [X3, #5]!");
-        TestInst(STTP(Q31, Q31, _[X3, 5].Pre), Arm64InstructionId.STTP_q_ldstpair_pre, Arm64Mnemonic.STTP, "STTP Q31, Q31, [X3, #5]!");
+        TestInst(STTP(Q0, Q1, _[X3, 5].Pre), asm => asm.STTP(Q0, Q1, _[X3, 5].Pre), Arm64InstructionId.STTP_q_ldstpair_pre, Arm64Mnemonic.STTP, "STTP Q0, Q1, [X3, #5]!");
+        TestInst(STTP(Q31, Q1, _[X3, 5].Pre), asm => asm.STTP(Q31, Q1, _[X3, 5].Pre), Arm64InstructionId.STTP_q_ldstpair_pre, Arm64Mnemonic.STTP, "STTP Q31, Q1, [X3, #5]!");
+        TestInst(STTP(Q0, Q31, _[X3, 5].Pre), asm => asm.STTP(Q0, Q31, _[X3, 5].Pre), Arm64InstructionId.STTP_q_ldstpair_pre, Arm64Mnemonic.STTP, "STTP Q0, Q31, [X3, #5]!");
+        TestInst(STTP(Q31, Q31, _[X3, 5].Pre), asm => asm.STTP(Q31, Q31, _[X3, 5].Pre), Arm64InstructionId.STTP_q_ldstpair_pre, Arm64Mnemonic.STTP, "STTP Q31, Q31, [X3, #5]!");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_STTP_Fpsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_STTP_q_ldstpair_off_2()
     {
-        TestInst(STTP(Q0, Q1, _[X3, 5]), Arm64InstructionId.STTP_q_ldstpair_off, Arm64Mnemonic.STTP, "STTP Q0, Q1, [X3, #5]");
-        TestInst(STTP(Q31, Q1, _[X3, 5]), Arm64InstructionId.STTP_q_ldstpair_off, Arm64Mnemonic.STTP, "STTP Q31, Q1, [X3, #5]");
-        TestInst(STTP(Q0, Q31, _[X3, 5]), Arm64InstructionId.STTP_q_ldstpair_off, Arm64Mnemonic.STTP, "STTP Q0, Q31, [X3, #5]");
-        TestInst(STTP(Q31, Q31, _[X3, 5]), Arm64InstructionId.STTP_q_ldstpair_off, Arm64Mnemonic.STTP, "STTP Q31, Q31, [X3, #5]");
+        TestInst(STTP(Q0, Q1, _[X3, 5]), asm => asm.STTP(Q0, Q1, _[X3, 5]), Arm64InstructionId.STTP_q_ldstpair_off, Arm64Mnemonic.STTP, "STTP Q0, Q1, [X3, #5]");
+        TestInst(STTP(Q31, Q1, _[X3, 5]), asm => asm.STTP(Q31, Q1, _[X3, 5]), Arm64InstructionId.STTP_q_ldstpair_off, Arm64Mnemonic.STTP, "STTP Q31, Q1, [X3, #5]");
+        TestInst(STTP(Q0, Q31, _[X3, 5]), asm => asm.STTP(Q0, Q31, _[X3, 5]), Arm64InstructionId.STTP_q_ldstpair_off, Arm64Mnemonic.STTP, "STTP Q0, Q31, [X3, #5]");
+        TestInst(STTP(Q31, Q31, _[X3, 5]), asm => asm.STTP(Q31, Q31, _[X3, 5]), Arm64InstructionId.STTP_q_ldstpair_off, Arm64Mnemonic.STTP, "STTP Q31, Q31, [X3, #5]");
     }
 }

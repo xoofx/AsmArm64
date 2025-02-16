@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_MSR_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_MSR_si_pstate_0()
     {
-        TestInst(MSR(DAIFSet, 5), Arm64InstructionId.MSR_si_pstate, Arm64Mnemonic.MSR, "MSR DAIFSet, #5");
+        TestInst(MSR(DAIFSet, 5), asm => asm.MSR(DAIFSet, 5), Arm64InstructionId.MSR_si_pstate, Arm64Mnemonic.MSR, "MSR DAIFSet, #5");
     }
     
     /// <summary>
@@ -33,8 +32,8 @@ public class Arm64InstructionFactoryTests_MSR_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_MSR_sr_systemmove_1()
     {
-        TestInst(MSR(ACCDATA_EL1, X1), Arm64InstructionId.MSR_sr_systemmove, Arm64Mnemonic.MSR, "MSR ACCDATA_EL1, X1");
-        TestInst(MSR(ACCDATA_EL1, X16), Arm64InstructionId.MSR_sr_systemmove, Arm64Mnemonic.MSR, "MSR ACCDATA_EL1, X16");
-        TestInst(MSR(ACCDATA_EL1, XZR), Arm64InstructionId.MSR_sr_systemmove, Arm64Mnemonic.MSR, "MSR ACCDATA_EL1, XZR");
+        TestInst(MSR(ACCDATA_EL1, X1), asm => asm.MSR(ACCDATA_EL1, X1), Arm64InstructionId.MSR_sr_systemmove, Arm64Mnemonic.MSR, "MSR ACCDATA_EL1, X1");
+        TestInst(MSR(ACCDATA_EL1, X16), asm => asm.MSR(ACCDATA_EL1, X16), Arm64InstructionId.MSR_sr_systemmove, Arm64Mnemonic.MSR, "MSR ACCDATA_EL1, X16");
+        TestInst(MSR(ACCDATA_EL1, XZR), asm => asm.MSR(ACCDATA_EL1, XZR), Arm64InstructionId.MSR_sr_systemmove, Arm64Mnemonic.MSR, "MSR ACCDATA_EL1, XZR");
     }
 }

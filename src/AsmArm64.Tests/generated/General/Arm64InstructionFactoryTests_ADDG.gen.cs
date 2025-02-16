@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_ADDG_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_ADDG_64_addsub_immtags_0()
     {
-        TestInst(ADDG(X1, X2, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X1, X2, #80, #5");
-        TestInst(ADDG(X17, X2, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X17, X2, #80, #5");
-        TestInst(ADDG(SP, X2, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG SP, X2, #80, #5");
-        TestInst(ADDG(X1, X18, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X1, X18, #80, #5");
-        TestInst(ADDG(X17, X18, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X17, X18, #80, #5");
-        TestInst(ADDG(SP, X18, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG SP, X18, #80, #5");
-        TestInst(ADDG(X1, SP, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X1, SP, #80, #5");
-        TestInst(ADDG(X17, SP, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X17, SP, #80, #5");
-        TestInst(ADDG(SP, SP, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG SP, SP, #80, #5");
+        TestInst(ADDG(X1, X2, 80, 5), asm => asm.ADDG(X1, X2, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X1, X2, #80, #5");
+        TestInst(ADDG(X17, X2, 80, 5), asm => asm.ADDG(X17, X2, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X17, X2, #80, #5");
+        TestInst(ADDG(SP, X2, 80, 5), asm => asm.ADDG(SP, X2, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG SP, X2, #80, #5");
+        TestInst(ADDG(X1, X18, 80, 5), asm => asm.ADDG(X1, X18, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X1, X18, #80, #5");
+        TestInst(ADDG(X17, X18, 80, 5), asm => asm.ADDG(X17, X18, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X17, X18, #80, #5");
+        TestInst(ADDG(SP, X18, 80, 5), asm => asm.ADDG(SP, X18, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG SP, X18, #80, #5");
+        TestInst(ADDG(X1, SP, 80, 5), asm => asm.ADDG(X1, SP, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X1, SP, #80, #5");
+        TestInst(ADDG(X17, SP, 80, 5), asm => asm.ADDG(X17, SP, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG X17, SP, #80, #5");
+        TestInst(ADDG(SP, SP, 80, 5), asm => asm.ADDG(SP, SP, 80, 5), Arm64InstructionId.ADDG_64_addsub_immtags, Arm64Mnemonic.ADDG, "ADDG SP, SP, #80, #5");
     }
 }

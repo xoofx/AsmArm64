@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,7 +23,7 @@ public class Arm64InstructionFactoryTests_STBFADDL_Advsimd : Arm64InstructionFac
     [TestMethod]
     public void Test_STBFADDL_16_0()
     {
-        TestInst(STBFADDL(H0, _[X2]), Arm64InstructionId.STBFADDL_16, Arm64Mnemonic.STBFADDL, "STBFADDL H0, [X2]");
-        TestInst(STBFADDL(H31, _[X2]), Arm64InstructionId.STBFADDL_16, Arm64Mnemonic.STBFADDL, "STBFADDL H31, [X2]");
+        TestInst(STBFADDL(H0, _[X2]), asm => asm.STBFADDL(H0, _[X2]), Arm64InstructionId.STBFADDL_16, Arm64Mnemonic.STBFADDL, "STBFADDL H0, [X2]");
+        TestInst(STBFADDL(H31, _[X2]), asm => asm.STBFADDL(H31, _[X2]), Arm64InstructionId.STBFADDL_16, Arm64Mnemonic.STBFADDL, "STBFADDL H31, [X2]");
     }
 }

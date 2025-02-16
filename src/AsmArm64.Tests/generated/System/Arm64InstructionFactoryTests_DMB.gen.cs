@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_DMB_System : Arm64InstructionFactoryTe
     [TestMethod]
     public void Test_DMB_bo_barriers_0()
     {
-        TestInst(DMB(OSHLD), Arm64InstructionId.DMB_bo_barriers, Arm64Mnemonic.DMB, "DMB OSHLD");
+        TestInst(DMB(OSHLD), asm => asm.DMB(OSHLD), Arm64InstructionId.DMB_bo_barriers, Arm64Mnemonic.DMB, "DMB OSHLD");
     }
 }

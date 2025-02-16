@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDRH_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDRH_32_ldst_immpost_0()
     {
-        TestInst(LDRH(W0, _[X2], 5), Arm64InstructionId.LDRH_32_ldst_immpost, Arm64Mnemonic.LDRH, "LDRH W0, [X2], #5");
-        TestInst(LDRH(W15, _[X2], 5), Arm64InstructionId.LDRH_32_ldst_immpost, Arm64Mnemonic.LDRH, "LDRH W15, [X2], #5");
-        TestInst(LDRH(WZR, _[X2], 5), Arm64InstructionId.LDRH_32_ldst_immpost, Arm64Mnemonic.LDRH, "LDRH WZR, [X2], #5");
+        TestInst(LDRH(W0, _[X2], 5), asm => asm.LDRH(W0, _[X2], 5), Arm64InstructionId.LDRH_32_ldst_immpost, Arm64Mnemonic.LDRH, "LDRH W0, [X2], #5");
+        TestInst(LDRH(W15, _[X2], 5), asm => asm.LDRH(W15, _[X2], 5), Arm64InstructionId.LDRH_32_ldst_immpost, Arm64Mnemonic.LDRH, "LDRH W15, [X2], #5");
+        TestInst(LDRH(WZR, _[X2], 5), asm => asm.LDRH(WZR, _[X2], 5), Arm64InstructionId.LDRH_32_ldst_immpost, Arm64Mnemonic.LDRH, "LDRH WZR, [X2], #5");
     }
     
     /// <summary>
@@ -35,9 +34,9 @@ public class Arm64InstructionFactoryTests_LDRH_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDRH_32_ldst_immpre_1()
     {
-        TestInst(LDRH(W0, _[X2, 5].Pre), Arm64InstructionId.LDRH_32_ldst_immpre, Arm64Mnemonic.LDRH, "LDRH W0, [X2, #5]!");
-        TestInst(LDRH(W15, _[X2, 5].Pre), Arm64InstructionId.LDRH_32_ldst_immpre, Arm64Mnemonic.LDRH, "LDRH W15, [X2, #5]!");
-        TestInst(LDRH(WZR, _[X2, 5].Pre), Arm64InstructionId.LDRH_32_ldst_immpre, Arm64Mnemonic.LDRH, "LDRH WZR, [X2, #5]!");
+        TestInst(LDRH(W0, _[X2, 5].Pre), asm => asm.LDRH(W0, _[X2, 5].Pre), Arm64InstructionId.LDRH_32_ldst_immpre, Arm64Mnemonic.LDRH, "LDRH W0, [X2, #5]!");
+        TestInst(LDRH(W15, _[X2, 5].Pre), asm => asm.LDRH(W15, _[X2, 5].Pre), Arm64InstructionId.LDRH_32_ldst_immpre, Arm64Mnemonic.LDRH, "LDRH W15, [X2, #5]!");
+        TestInst(LDRH(WZR, _[X2, 5].Pre), asm => asm.LDRH(WZR, _[X2, 5].Pre), Arm64InstructionId.LDRH_32_ldst_immpre, Arm64Mnemonic.LDRH, "LDRH WZR, [X2, #5]!");
     }
     
     /// <summary>
@@ -46,9 +45,9 @@ public class Arm64InstructionFactoryTests_LDRH_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDRH_32_ldst_pos_2()
     {
-        TestInst(LDRH(W0, _[X2, 5]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH W0, [X2, #5]");
-        TestInst(LDRH(W15, _[X2, 5]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH W15, [X2, #5]");
-        TestInst(LDRH(WZR, _[X2, 5]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH WZR, [X2, #5]");
+        TestInst(LDRH(W0, _[X2, 5]), asm => asm.LDRH(W0, _[X2, 5]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH W0, [X2, #5]");
+        TestInst(LDRH(W15, _[X2, 5]), asm => asm.LDRH(W15, _[X2, 5]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH W15, [X2, #5]");
+        TestInst(LDRH(WZR, _[X2, 5]), asm => asm.LDRH(WZR, _[X2, 5]), Arm64InstructionId.LDRH_32_ldst_pos, Arm64Mnemonic.LDRH, "LDRH WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -57,9 +56,9 @@ public class Arm64InstructionFactoryTests_LDRH_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDRH_32_ldst_regoff_3()
     {
-        TestInst(LDRH(W0, _[X2, X3, _LSL, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH W0, [X2, X3, LSL #1]");
-        TestInst(LDRH(W15, _[X2, X3, _LSL, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH W15, [X2, X3, LSL #1]");
-        TestInst(LDRH(WZR, _[X2, X3, _LSL, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH WZR, [X2, X3, LSL #1]");
+        TestInst(LDRH(W0, _[X2, X3, _LSL, 1]), asm => asm.LDRH(W0, _[X2, X3, _LSL, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH W0, [X2, X3, LSL #1]");
+        TestInst(LDRH(W15, _[X2, X3, _LSL, 1]), asm => asm.LDRH(W15, _[X2, X3, _LSL, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH W15, [X2, X3, LSL #1]");
+        TestInst(LDRH(WZR, _[X2, X3, _LSL, 1]), asm => asm.LDRH(WZR, _[X2, X3, _LSL, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH WZR, [X2, X3, LSL #1]");
     }
     
     /// <summary>
@@ -68,8 +67,8 @@ public class Arm64InstructionFactoryTests_LDRH_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDRH_32_ldst_regoff_4()
     {
-        TestInst(LDRH(W0, _[X2, W3, _UXTW, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH W0, [X2, W3, UXTW #1]");
-        TestInst(LDRH(W15, _[X2, W3, _UXTW, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH W15, [X2, W3, UXTW #1]");
-        TestInst(LDRH(WZR, _[X2, W3, _UXTW, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH WZR, [X2, W3, UXTW #1]");
+        TestInst(LDRH(W0, _[X2, W3, _UXTW, 1]), asm => asm.LDRH(W0, _[X2, W3, _UXTW, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH W0, [X2, W3, UXTW #1]");
+        TestInst(LDRH(W15, _[X2, W3, _UXTW, 1]), asm => asm.LDRH(W15, _[X2, W3, _UXTW, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH W15, [X2, W3, UXTW #1]");
+        TestInst(LDRH(WZR, _[X2, W3, _UXTW, 1]), asm => asm.LDRH(WZR, _[X2, W3, _UXTW, 1]), Arm64InstructionId.LDRH_32_ldst_regoff, Arm64Mnemonic.LDRH, "LDRH WZR, [X2, W3, UXTW #1]");
     }
 }

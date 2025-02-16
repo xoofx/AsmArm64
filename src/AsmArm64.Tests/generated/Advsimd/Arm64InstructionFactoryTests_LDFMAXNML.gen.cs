@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_LDFMAXNML_Advsimd : Arm64InstructionFa
     [TestMethod]
     public void Test_LDFMAXNML_16_0()
     {
-        TestInst(LDFMAXNML(H0, H1, _[X3]), Arm64InstructionId.LDFMAXNML_16, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML H0, H1, [X3]");
-        TestInst(LDFMAXNML(H31, H1, _[X3]), Arm64InstructionId.LDFMAXNML_16, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML H31, H1, [X3]");
-        TestInst(LDFMAXNML(H0, H31, _[X3]), Arm64InstructionId.LDFMAXNML_16, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML H0, H31, [X3]");
-        TestInst(LDFMAXNML(H31, H31, _[X3]), Arm64InstructionId.LDFMAXNML_16, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML H31, H31, [X3]");
+        TestInst(LDFMAXNML(H0, H1, _[X3]), asm => asm.LDFMAXNML(H0, H1, _[X3]), Arm64InstructionId.LDFMAXNML_16, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML H0, H1, [X3]");
+        TestInst(LDFMAXNML(H31, H1, _[X3]), asm => asm.LDFMAXNML(H31, H1, _[X3]), Arm64InstructionId.LDFMAXNML_16, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML H31, H1, [X3]");
+        TestInst(LDFMAXNML(H0, H31, _[X3]), asm => asm.LDFMAXNML(H0, H31, _[X3]), Arm64InstructionId.LDFMAXNML_16, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML H0, H31, [X3]");
+        TestInst(LDFMAXNML(H31, H31, _[X3]), asm => asm.LDFMAXNML(H31, H31, _[X3]), Arm64InstructionId.LDFMAXNML_16, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML H31, H31, [X3]");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_LDFMAXNML_Advsimd : Arm64InstructionFa
     [TestMethod]
     public void Test_LDFMAXNML_32_1()
     {
-        TestInst(LDFMAXNML(S0, S1, _[X3]), Arm64InstructionId.LDFMAXNML_32, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML S0, S1, [X3]");
-        TestInst(LDFMAXNML(S31, S1, _[X3]), Arm64InstructionId.LDFMAXNML_32, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML S31, S1, [X3]");
-        TestInst(LDFMAXNML(S0, S31, _[X3]), Arm64InstructionId.LDFMAXNML_32, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML S0, S31, [X3]");
-        TestInst(LDFMAXNML(S31, S31, _[X3]), Arm64InstructionId.LDFMAXNML_32, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML S31, S31, [X3]");
+        TestInst(LDFMAXNML(S0, S1, _[X3]), asm => asm.LDFMAXNML(S0, S1, _[X3]), Arm64InstructionId.LDFMAXNML_32, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML S0, S1, [X3]");
+        TestInst(LDFMAXNML(S31, S1, _[X3]), asm => asm.LDFMAXNML(S31, S1, _[X3]), Arm64InstructionId.LDFMAXNML_32, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML S31, S1, [X3]");
+        TestInst(LDFMAXNML(S0, S31, _[X3]), asm => asm.LDFMAXNML(S0, S31, _[X3]), Arm64InstructionId.LDFMAXNML_32, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML S0, S31, [X3]");
+        TestInst(LDFMAXNML(S31, S31, _[X3]), asm => asm.LDFMAXNML(S31, S31, _[X3]), Arm64InstructionId.LDFMAXNML_32, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML S31, S31, [X3]");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_LDFMAXNML_Advsimd : Arm64InstructionFa
     [TestMethod]
     public void Test_LDFMAXNML_64_2()
     {
-        TestInst(LDFMAXNML(D0, D1, _[X3]), Arm64InstructionId.LDFMAXNML_64, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML D0, D1, [X3]");
-        TestInst(LDFMAXNML(D31, D1, _[X3]), Arm64InstructionId.LDFMAXNML_64, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML D31, D1, [X3]");
-        TestInst(LDFMAXNML(D0, D31, _[X3]), Arm64InstructionId.LDFMAXNML_64, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML D0, D31, [X3]");
-        TestInst(LDFMAXNML(D31, D31, _[X3]), Arm64InstructionId.LDFMAXNML_64, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML D31, D31, [X3]");
+        TestInst(LDFMAXNML(D0, D1, _[X3]), asm => asm.LDFMAXNML(D0, D1, _[X3]), Arm64InstructionId.LDFMAXNML_64, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML D0, D1, [X3]");
+        TestInst(LDFMAXNML(D31, D1, _[X3]), asm => asm.LDFMAXNML(D31, D1, _[X3]), Arm64InstructionId.LDFMAXNML_64, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML D31, D1, [X3]");
+        TestInst(LDFMAXNML(D0, D31, _[X3]), asm => asm.LDFMAXNML(D0, D31, _[X3]), Arm64InstructionId.LDFMAXNML_64, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML D0, D31, [X3]");
+        TestInst(LDFMAXNML(D31, D31, _[X3]), asm => asm.LDFMAXNML(D31, D31, _[X3]), Arm64InstructionId.LDFMAXNML_64, Arm64Mnemonic.LDFMAXNML, "LDFMAXNML D31, D31, [X3]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_STADDLH_General : Arm64InstructionFact
     [TestMethod]
     public void Test_STADDLH_ldaddlh_32_memop_0()
     {
-        TestInst(STADDLH(W0, _[X2]), Arm64InstructionId.STADDLH_ldaddlh_32_memop, Arm64Mnemonic.STADDLH, "STADDLH W0, [X2]");
-        TestInst(STADDLH(W15, _[X2]), Arm64InstructionId.STADDLH_ldaddlh_32_memop, Arm64Mnemonic.STADDLH, "STADDLH W15, [X2]");
-        TestInst(STADDLH(WZR, _[X2]), Arm64InstructionId.STADDLH_ldaddlh_32_memop, Arm64Mnemonic.STADDLH, "STADDLH WZR, [X2]");
+        TestInst(STADDLH(W0, _[X2]), asm => asm.STADDLH(W0, _[X2]), Arm64InstructionId.STADDLH_ldaddlh_32_memop, Arm64Mnemonic.STADDLH, "STADDLH W0, [X2]");
+        TestInst(STADDLH(W15, _[X2]), asm => asm.STADDLH(W15, _[X2]), Arm64InstructionId.STADDLH_ldaddlh_32_memop, Arm64Mnemonic.STADDLH, "STADDLH W15, [X2]");
+        TestInst(STADDLH(WZR, _[X2]), asm => asm.STADDLH(WZR, _[X2]), Arm64InstructionId.STADDLH_ldaddlh_32_memop, Arm64Mnemonic.STADDLH, "STADDLH WZR, [X2]");
     }
 }

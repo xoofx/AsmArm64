@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_CBLT_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBLT_32_imm_0()
     {
-        TestInst(CBLT(W0, 5, 32), Arm64InstructionId.CBLT_32_imm, Arm64Mnemonic.CBLT, "CBLT W0, #5, #32");
-        TestInst(CBLT(W15, 5, 32), Arm64InstructionId.CBLT_32_imm, Arm64Mnemonic.CBLT, "CBLT W15, #5, #32");
-        TestInst(CBLT(WZR, 5, 32), Arm64InstructionId.CBLT_32_imm, Arm64Mnemonic.CBLT, "CBLT WZR, #5, #32");
+        TestInst(CBLT(W0, 5, 32), null, Arm64InstructionId.CBLT_32_imm, Arm64Mnemonic.CBLT, "CBLT W0, #5, #32");
+        TestInst(CBLT(W15, 5, 32), null, Arm64InstructionId.CBLT_32_imm, Arm64Mnemonic.CBLT, "CBLT W15, #5, #32");
+        TestInst(CBLT(WZR, 5, 32), null, Arm64InstructionId.CBLT_32_imm, Arm64Mnemonic.CBLT, "CBLT WZR, #5, #32");
     }
     
     /// <summary>
@@ -35,9 +34,9 @@ public class Arm64InstructionFactoryTests_CBLT_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBLT_64_imm_1()
     {
-        TestInst(CBLT(X0, 5, 32), Arm64InstructionId.CBLT_64_imm, Arm64Mnemonic.CBLT, "CBLT X0, #5, #32");
-        TestInst(CBLT(X15, 5, 32), Arm64InstructionId.CBLT_64_imm, Arm64Mnemonic.CBLT, "CBLT X15, #5, #32");
-        TestInst(CBLT(XZR, 5, 32), Arm64InstructionId.CBLT_64_imm, Arm64Mnemonic.CBLT, "CBLT XZR, #5, #32");
+        TestInst(CBLT(X0, 5, 32), null, Arm64InstructionId.CBLT_64_imm, Arm64Mnemonic.CBLT, "CBLT X0, #5, #32");
+        TestInst(CBLT(X15, 5, 32), null, Arm64InstructionId.CBLT_64_imm, Arm64Mnemonic.CBLT, "CBLT X15, #5, #32");
+        TestInst(CBLT(XZR, 5, 32), null, Arm64InstructionId.CBLT_64_imm, Arm64Mnemonic.CBLT, "CBLT XZR, #5, #32");
     }
     
     /// <summary>
@@ -46,15 +45,15 @@ public class Arm64InstructionFactoryTests_CBLT_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBLT_cbgt_32_regs_2()
     {
-        TestInst(CBLT(W0, W1, 32), Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W1, W0, #32");
-        TestInst(CBLT(W15, W1, 32), Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W1, W15, #32");
-        TestInst(CBLT(WZR, W1, 32), Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W1, WZR, #32");
-        TestInst(CBLT(W0, W16, 32), Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W16, W0, #32");
-        TestInst(CBLT(W15, W16, 32), Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W16, W15, #32");
-        TestInst(CBLT(WZR, W16, 32), Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W16, WZR, #32");
-        TestInst(CBLT(W0, WZR, 32), Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT WZR, W0, #32");
-        TestInst(CBLT(W15, WZR, 32), Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT WZR, W15, #32");
-        TestInst(CBLT(WZR, WZR, 32), Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT WZR, WZR, #32");
+        TestInst(CBLT(W0, W1, 32), null, Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W1, W0, #32");
+        TestInst(CBLT(W15, W1, 32), null, Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W1, W15, #32");
+        TestInst(CBLT(WZR, W1, 32), null, Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W1, WZR, #32");
+        TestInst(CBLT(W0, W16, 32), null, Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W16, W0, #32");
+        TestInst(CBLT(W15, W16, 32), null, Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W16, W15, #32");
+        TestInst(CBLT(WZR, W16, 32), null, Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT W16, WZR, #32");
+        TestInst(CBLT(W0, WZR, 32), null, Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT WZR, W0, #32");
+        TestInst(CBLT(W15, WZR, 32), null, Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT WZR, W15, #32");
+        TestInst(CBLT(WZR, WZR, 32), null, Arm64InstructionId.CBGT_32_regs, Arm64Mnemonic.CBGT, "CBGT WZR, WZR, #32");
     }
     
     /// <summary>
@@ -63,14 +62,14 @@ public class Arm64InstructionFactoryTests_CBLT_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CBLT_cbgt_64_regs_3()
     {
-        TestInst(CBLT(X0, X1, 32), Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X1, X0, #32");
-        TestInst(CBLT(X15, X1, 32), Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X1, X15, #32");
-        TestInst(CBLT(XZR, X1, 32), Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X1, XZR, #32");
-        TestInst(CBLT(X0, X16, 32), Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X16, X0, #32");
-        TestInst(CBLT(X15, X16, 32), Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X16, X15, #32");
-        TestInst(CBLT(XZR, X16, 32), Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X16, XZR, #32");
-        TestInst(CBLT(X0, XZR, 32), Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT XZR, X0, #32");
-        TestInst(CBLT(X15, XZR, 32), Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT XZR, X15, #32");
-        TestInst(CBLT(XZR, XZR, 32), Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT XZR, XZR, #32");
+        TestInst(CBLT(X0, X1, 32), null, Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X1, X0, #32");
+        TestInst(CBLT(X15, X1, 32), null, Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X1, X15, #32");
+        TestInst(CBLT(XZR, X1, 32), null, Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X1, XZR, #32");
+        TestInst(CBLT(X0, X16, 32), null, Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X16, X0, #32");
+        TestInst(CBLT(X15, X16, 32), null, Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X16, X15, #32");
+        TestInst(CBLT(XZR, X16, 32), null, Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT X16, XZR, #32");
+        TestInst(CBLT(X0, XZR, 32), null, Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT XZR, X0, #32");
+        TestInst(CBLT(X15, XZR, 32), null, Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT XZR, X15, #32");
+        TestInst(CBLT(XZR, XZR, 32), null, Arm64InstructionId.CBGT_64_regs, Arm64Mnemonic.CBGT, "CBGT XZR, XZR, #32");
     }
 }

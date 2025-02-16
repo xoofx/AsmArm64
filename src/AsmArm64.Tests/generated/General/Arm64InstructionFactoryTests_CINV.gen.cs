@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,24 +23,24 @@ public class Arm64InstructionFactoryTests_CINV_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CINV_csinv_32_condsel_0()
     {
-        TestInst(CINV(W0, W1, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W0, W1, NE");
-        TestInst(CINV(W15, W1, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W15, W1, NE");
-        TestInst(CINV(WZR, W1, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV WZR, W1, NE");
-        TestInst(CINV(W0, W16, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W0, W16, NE");
-        TestInst(CINV(W15, W16, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W15, W16, NE");
-        TestInst(CINV(WZR, W16, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV WZR, W16, NE");
-        TestInst(CINV(W0, WZR, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W0, NE");
-        TestInst(CINV(W15, WZR, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W15, NE");
-        TestInst(CINV(WZR, WZR, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM WZR, NE");
-        TestInst(CINV(W0, W1, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W0, W1, HS");
-        TestInst(CINV(W15, W1, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W15, W1, HS");
-        TestInst(CINV(WZR, W1, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV WZR, W1, HS");
-        TestInst(CINV(W0, W16, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W0, W16, HS");
-        TestInst(CINV(W15, W16, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W15, W16, HS");
-        TestInst(CINV(WZR, W16, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV WZR, W16, HS");
-        TestInst(CINV(W0, WZR, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W0, HS");
-        TestInst(CINV(W15, WZR, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W15, HS");
-        TestInst(CINV(WZR, WZR, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM WZR, HS");
+        TestInst(CINV(W0, W1, NE), asm => asm.CINV(W0, W1, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W0, W1, NE");
+        TestInst(CINV(W15, W1, NE), asm => asm.CINV(W15, W1, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W15, W1, NE");
+        TestInst(CINV(WZR, W1, NE), asm => asm.CINV(WZR, W1, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV WZR, W1, NE");
+        TestInst(CINV(W0, W16, NE), asm => asm.CINV(W0, W16, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W0, W16, NE");
+        TestInst(CINV(W15, W16, NE), asm => asm.CINV(W15, W16, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W15, W16, NE");
+        TestInst(CINV(WZR, W16, NE), asm => asm.CINV(WZR, W16, NE), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV WZR, W16, NE");
+        TestInst(CINV(W0, WZR, NE), asm => asm.CINV(W0, WZR, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W0, NE");
+        TestInst(CINV(W15, WZR, NE), asm => asm.CINV(W15, WZR, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W15, NE");
+        TestInst(CINV(WZR, WZR, NE), asm => asm.CINV(WZR, WZR, NE), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM WZR, NE");
+        TestInst(CINV(W0, W1, HS), asm => asm.CINV(W0, W1, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W0, W1, HS");
+        TestInst(CINV(W15, W1, HS), asm => asm.CINV(W15, W1, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W15, W1, HS");
+        TestInst(CINV(WZR, W1, HS), asm => asm.CINV(WZR, W1, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV WZR, W1, HS");
+        TestInst(CINV(W0, W16, HS), asm => asm.CINV(W0, W16, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W0, W16, HS");
+        TestInst(CINV(W15, W16, HS), asm => asm.CINV(W15, W16, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV W15, W16, HS");
+        TestInst(CINV(WZR, W16, HS), asm => asm.CINV(WZR, W16, HS), Arm64InstructionId.CINV_csinv_32_condsel, Arm64Mnemonic.CINV, "CINV WZR, W16, HS");
+        TestInst(CINV(W0, WZR, HS), asm => asm.CINV(W0, WZR, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W0, HS");
+        TestInst(CINV(W15, WZR, HS), asm => asm.CINV(W15, WZR, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM W15, HS");
+        TestInst(CINV(WZR, WZR, HS), asm => asm.CINV(WZR, WZR, HS), Arm64InstructionId.CSETM_csinv_32_condsel, Arm64Mnemonic.CSETM, "CSETM WZR, HS");
     }
     
     /// <summary>
@@ -50,17 +49,17 @@ public class Arm64InstructionFactoryTests_CINV_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_CINV_csinv_64_condsel_1()
     {
-        TestInst(CINV(X0, X1, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X0, X1, NE");
-        TestInst(CINV(X15, X1, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X15, X1, NE");
-        TestInst(CINV(XZR, X1, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV XZR, X1, NE");
-        TestInst(CINV(X0, X16, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X0, X16, NE");
-        TestInst(CINV(X15, X16, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X15, X16, NE");
-        TestInst(CINV(XZR, X16, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV XZR, X16, NE");
-        TestInst(CINV(X0, X1, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X0, X1, HS");
-        TestInst(CINV(X15, X1, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X15, X1, HS");
-        TestInst(CINV(XZR, X1, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV XZR, X1, HS");
-        TestInst(CINV(X0, X16, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X0, X16, HS");
-        TestInst(CINV(X15, X16, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X15, X16, HS");
-        TestInst(CINV(XZR, X16, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV XZR, X16, HS");
+        TestInst(CINV(X0, X1, NE), asm => asm.CINV(X0, X1, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X0, X1, NE");
+        TestInst(CINV(X15, X1, NE), asm => asm.CINV(X15, X1, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X15, X1, NE");
+        TestInst(CINV(XZR, X1, NE), asm => asm.CINV(XZR, X1, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV XZR, X1, NE");
+        TestInst(CINV(X0, X16, NE), asm => asm.CINV(X0, X16, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X0, X16, NE");
+        TestInst(CINV(X15, X16, NE), asm => asm.CINV(X15, X16, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X15, X16, NE");
+        TestInst(CINV(XZR, X16, NE), asm => asm.CINV(XZR, X16, NE), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV XZR, X16, NE");
+        TestInst(CINV(X0, X1, HS), asm => asm.CINV(X0, X1, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X0, X1, HS");
+        TestInst(CINV(X15, X1, HS), asm => asm.CINV(X15, X1, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X15, X1, HS");
+        TestInst(CINV(XZR, X1, HS), asm => asm.CINV(XZR, X1, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV XZR, X1, HS");
+        TestInst(CINV(X0, X16, HS), asm => asm.CINV(X0, X16, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X0, X16, HS");
+        TestInst(CINV(X15, X16, HS), asm => asm.CINV(X15, X16, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV X15, X16, HS");
+        TestInst(CINV(XZR, X16, HS), asm => asm.CINV(XZR, X16, HS), Arm64InstructionId.CINV_csinv_64_condsel, Arm64Mnemonic.CINV, "CINV XZR, X16, HS");
     }
 }

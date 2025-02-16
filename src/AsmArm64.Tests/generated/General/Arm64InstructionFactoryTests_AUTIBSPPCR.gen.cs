@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_AUTIBSPPCR_General : Arm64InstructionF
     [TestMethod]
     public void Test_AUTIBSPPCR_64lrr_dp_1src_0()
     {
-        TestInst(AUTIBSPPCR(X0), Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIBSPPCR, "AUTIBSPPCR X0");
-        TestInst(AUTIBSPPCR(X15), Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIBSPPCR, "AUTIBSPPCR X15");
-        TestInst(AUTIBSPPCR(XZR), Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIBSPPCR, "AUTIBSPPCR XZR");
+        TestInst(AUTIBSPPCR(X0), asm => asm.AUTIBSPPCR(X0), Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIBSPPCR, "AUTIBSPPCR X0");
+        TestInst(AUTIBSPPCR(X15), asm => asm.AUTIBSPPCR(X15), Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIBSPPCR, "AUTIBSPPCR X15");
+        TestInst(AUTIBSPPCR(XZR), asm => asm.AUTIBSPPCR(XZR), Arm64InstructionId.AUTIBSPPCR_64lrr_dp_1src, Arm64Mnemonic.AUTIBSPPCR, "AUTIBSPPCR XZR");
     }
 }

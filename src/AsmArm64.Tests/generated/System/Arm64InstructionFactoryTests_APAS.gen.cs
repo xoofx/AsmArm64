@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.System;
@@ -23,8 +22,8 @@ public class Arm64InstructionFactoryTests_APAS_System : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_APAS_sys_cr_systeminstrs_0()
     {
-        TestInst(APAS(X0), Arm64InstructionId.APAS_sys_cr_systeminstrs, Arm64Mnemonic.APAS, "APAS X0");
-        TestInst(APAS(X15), Arm64InstructionId.APAS_sys_cr_systeminstrs, Arm64Mnemonic.APAS, "APAS X15");
-        TestInst(APAS(XZR), Arm64InstructionId.APAS_sys_cr_systeminstrs, Arm64Mnemonic.APAS, "APAS XZR");
+        TestInst(APAS(X0), asm => asm.APAS(X0), Arm64InstructionId.APAS_sys_cr_systeminstrs, Arm64Mnemonic.APAS, "APAS X0");
+        TestInst(APAS(X15), asm => asm.APAS(X15), Arm64InstructionId.APAS_sys_cr_systeminstrs, Arm64Mnemonic.APAS, "APAS X15");
+        TestInst(APAS(XZR), asm => asm.APAS(XZR), Arm64InstructionId.APAS_sys_cr_systeminstrs, Arm64Mnemonic.APAS, "APAS XZR");
     }
 }

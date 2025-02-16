@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asisdsame_only_0()
     {
-        TestInst(CMGE(D0, D1, D2), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D0, D1, D2");
-        TestInst(CMGE(D31, D1, D2), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D31, D1, D2");
-        TestInst(CMGE(D0, D31, D2), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D0, D31, D2");
-        TestInst(CMGE(D31, D31, D2), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D31, D31, D2");
-        TestInst(CMGE(D0, D1, D31), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D0, D1, D31");
-        TestInst(CMGE(D31, D1, D31), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D31, D1, D31");
-        TestInst(CMGE(D0, D31, D31), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D0, D31, D31");
-        TestInst(CMGE(D31, D31, D31), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D31, D31, D31");
+        TestInst(CMGE(D0, D1, D2), asm => asm.CMGE(D0, D1, D2), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D0, D1, D2");
+        TestInst(CMGE(D31, D1, D2), asm => asm.CMGE(D31, D1, D2), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D31, D1, D2");
+        TestInst(CMGE(D0, D31, D2), asm => asm.CMGE(D0, D31, D2), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D0, D31, D2");
+        TestInst(CMGE(D31, D31, D2), asm => asm.CMGE(D31, D31, D2), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D31, D31, D2");
+        TestInst(CMGE(D0, D1, D31), asm => asm.CMGE(D0, D1, D31), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D0, D1, D31");
+        TestInst(CMGE(D31, D1, D31), asm => asm.CMGE(D31, D1, D31), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D31, D1, D31");
+        TestInst(CMGE(D0, D31, D31), asm => asm.CMGE(D0, D31, D31), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D0, D31, D31");
+        TestInst(CMGE(D31, D31, D31), asm => asm.CMGE(D31, D31, D31), Arm64InstructionId.CMGE_asisdsame_only, Arm64Mnemonic.CMGE, "CMGE D31, D31, D31");
     }
     
     /// <summary>
@@ -40,14 +39,14 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdsame_only_1()
     {
-        TestInst(CMGE(V0.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8B, V1.8B, V2.8B");
-        TestInst(CMGE(V30.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8B, V1.8B, V2.8B");
-        TestInst(CMGE(V0.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8B, V31.8B, V2.8B");
-        TestInst(CMGE(V30.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8B, V31.8B, V2.8B");
-        TestInst(CMGE(V0.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8B, V1.8B, V0.8B");
-        TestInst(CMGE(V30.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8B, V1.8B, V0.8B");
-        TestInst(CMGE(V0.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8B, V31.8B, V0.8B");
-        TestInst(CMGE(V30.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8B, V31.8B, V0.8B");
+        TestInst(CMGE(V0.T_8B, V1.T_8B, V2.T_8B), asm => asm.CMGE(V0.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8B, V1.8B, V2.8B");
+        TestInst(CMGE(V30.T_8B, V1.T_8B, V2.T_8B), asm => asm.CMGE(V30.T_8B, V1.T_8B, V2.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8B, V1.8B, V2.8B");
+        TestInst(CMGE(V0.T_8B, V31.T_8B, V2.T_8B), asm => asm.CMGE(V0.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8B, V31.8B, V2.8B");
+        TestInst(CMGE(V30.T_8B, V31.T_8B, V2.T_8B), asm => asm.CMGE(V30.T_8B, V31.T_8B, V2.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8B, V31.8B, V2.8B");
+        TestInst(CMGE(V0.T_8B, V1.T_8B, V0.T_8B), asm => asm.CMGE(V0.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8B, V1.8B, V0.8B");
+        TestInst(CMGE(V30.T_8B, V1.T_8B, V0.T_8B), asm => asm.CMGE(V30.T_8B, V1.T_8B, V0.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8B, V1.8B, V0.8B");
+        TestInst(CMGE(V0.T_8B, V31.T_8B, V0.T_8B), asm => asm.CMGE(V0.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8B, V31.8B, V0.8B");
+        TestInst(CMGE(V30.T_8B, V31.T_8B, V0.T_8B), asm => asm.CMGE(V30.T_8B, V31.T_8B, V0.T_8B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8B, V31.8B, V0.8B");
     }
     
     /// <summary>
@@ -56,14 +55,14 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdsame_only_2()
     {
-        TestInst(CMGE(V0.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.16B, V1.16B, V2.16B");
-        TestInst(CMGE(V30.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.16B, V1.16B, V2.16B");
-        TestInst(CMGE(V0.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.16B, V31.16B, V2.16B");
-        TestInst(CMGE(V30.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.16B, V31.16B, V2.16B");
-        TestInst(CMGE(V0.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.16B, V1.16B, V0.16B");
-        TestInst(CMGE(V30.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.16B, V1.16B, V0.16B");
-        TestInst(CMGE(V0.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.16B, V31.16B, V0.16B");
-        TestInst(CMGE(V30.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.16B, V31.16B, V0.16B");
+        TestInst(CMGE(V0.T_16B, V1.T_16B, V2.T_16B), asm => asm.CMGE(V0.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.16B, V1.16B, V2.16B");
+        TestInst(CMGE(V30.T_16B, V1.T_16B, V2.T_16B), asm => asm.CMGE(V30.T_16B, V1.T_16B, V2.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.16B, V1.16B, V2.16B");
+        TestInst(CMGE(V0.T_16B, V31.T_16B, V2.T_16B), asm => asm.CMGE(V0.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.16B, V31.16B, V2.16B");
+        TestInst(CMGE(V30.T_16B, V31.T_16B, V2.T_16B), asm => asm.CMGE(V30.T_16B, V31.T_16B, V2.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.16B, V31.16B, V2.16B");
+        TestInst(CMGE(V0.T_16B, V1.T_16B, V0.T_16B), asm => asm.CMGE(V0.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.16B, V1.16B, V0.16B");
+        TestInst(CMGE(V30.T_16B, V1.T_16B, V0.T_16B), asm => asm.CMGE(V30.T_16B, V1.T_16B, V0.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.16B, V1.16B, V0.16B");
+        TestInst(CMGE(V0.T_16B, V31.T_16B, V0.T_16B), asm => asm.CMGE(V0.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.16B, V31.16B, V0.16B");
+        TestInst(CMGE(V30.T_16B, V31.T_16B, V0.T_16B), asm => asm.CMGE(V30.T_16B, V31.T_16B, V0.T_16B), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.16B, V31.16B, V0.16B");
     }
     
     /// <summary>
@@ -72,14 +71,14 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdsame_only_3()
     {
-        TestInst(CMGE(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4H, V1.4H, V2.4H");
-        TestInst(CMGE(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4H, V1.4H, V2.4H");
-        TestInst(CMGE(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4H, V31.4H, V2.4H");
-        TestInst(CMGE(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4H, V31.4H, V2.4H");
-        TestInst(CMGE(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4H, V1.4H, V0.4H");
-        TestInst(CMGE(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4H, V1.4H, V0.4H");
-        TestInst(CMGE(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4H, V31.4H, V0.4H");
-        TestInst(CMGE(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4H, V31.4H, V0.4H");
+        TestInst(CMGE(V0.T_4H, V1.T_4H, V2.T_4H), asm => asm.CMGE(V0.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4H, V1.4H, V2.4H");
+        TestInst(CMGE(V30.T_4H, V1.T_4H, V2.T_4H), asm => asm.CMGE(V30.T_4H, V1.T_4H, V2.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4H, V1.4H, V2.4H");
+        TestInst(CMGE(V0.T_4H, V31.T_4H, V2.T_4H), asm => asm.CMGE(V0.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4H, V31.4H, V2.4H");
+        TestInst(CMGE(V30.T_4H, V31.T_4H, V2.T_4H), asm => asm.CMGE(V30.T_4H, V31.T_4H, V2.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4H, V31.4H, V2.4H");
+        TestInst(CMGE(V0.T_4H, V1.T_4H, V0.T_4H), asm => asm.CMGE(V0.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4H, V1.4H, V0.4H");
+        TestInst(CMGE(V30.T_4H, V1.T_4H, V0.T_4H), asm => asm.CMGE(V30.T_4H, V1.T_4H, V0.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4H, V1.4H, V0.4H");
+        TestInst(CMGE(V0.T_4H, V31.T_4H, V0.T_4H), asm => asm.CMGE(V0.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4H, V31.4H, V0.4H");
+        TestInst(CMGE(V30.T_4H, V31.T_4H, V0.T_4H), asm => asm.CMGE(V30.T_4H, V31.T_4H, V0.T_4H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4H, V31.4H, V0.4H");
     }
     
     /// <summary>
@@ -88,14 +87,14 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdsame_only_4()
     {
-        TestInst(CMGE(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8H, V1.8H, V2.8H");
-        TestInst(CMGE(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8H, V1.8H, V2.8H");
-        TestInst(CMGE(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8H, V31.8H, V2.8H");
-        TestInst(CMGE(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8H, V31.8H, V2.8H");
-        TestInst(CMGE(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8H, V1.8H, V0.8H");
-        TestInst(CMGE(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8H, V1.8H, V0.8H");
-        TestInst(CMGE(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8H, V31.8H, V0.8H");
-        TestInst(CMGE(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8H, V31.8H, V0.8H");
+        TestInst(CMGE(V0.T_8H, V1.T_8H, V2.T_8H), asm => asm.CMGE(V0.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8H, V1.8H, V2.8H");
+        TestInst(CMGE(V30.T_8H, V1.T_8H, V2.T_8H), asm => asm.CMGE(V30.T_8H, V1.T_8H, V2.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8H, V1.8H, V2.8H");
+        TestInst(CMGE(V0.T_8H, V31.T_8H, V2.T_8H), asm => asm.CMGE(V0.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8H, V31.8H, V2.8H");
+        TestInst(CMGE(V30.T_8H, V31.T_8H, V2.T_8H), asm => asm.CMGE(V30.T_8H, V31.T_8H, V2.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8H, V31.8H, V2.8H");
+        TestInst(CMGE(V0.T_8H, V1.T_8H, V0.T_8H), asm => asm.CMGE(V0.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8H, V1.8H, V0.8H");
+        TestInst(CMGE(V30.T_8H, V1.T_8H, V0.T_8H), asm => asm.CMGE(V30.T_8H, V1.T_8H, V0.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8H, V1.8H, V0.8H");
+        TestInst(CMGE(V0.T_8H, V31.T_8H, V0.T_8H), asm => asm.CMGE(V0.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.8H, V31.8H, V0.8H");
+        TestInst(CMGE(V30.T_8H, V31.T_8H, V0.T_8H), asm => asm.CMGE(V30.T_8H, V31.T_8H, V0.T_8H), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.8H, V31.8H, V0.8H");
     }
     
     /// <summary>
@@ -104,14 +103,14 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdsame_only_5()
     {
-        TestInst(CMGE(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2S, V1.2S, V2.2S");
-        TestInst(CMGE(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2S, V1.2S, V2.2S");
-        TestInst(CMGE(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2S, V31.2S, V2.2S");
-        TestInst(CMGE(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2S, V31.2S, V2.2S");
-        TestInst(CMGE(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2S, V1.2S, V0.2S");
-        TestInst(CMGE(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2S, V1.2S, V0.2S");
-        TestInst(CMGE(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2S, V31.2S, V0.2S");
-        TestInst(CMGE(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2S, V31.2S, V0.2S");
+        TestInst(CMGE(V0.T_2S, V1.T_2S, V2.T_2S), asm => asm.CMGE(V0.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2S, V1.2S, V2.2S");
+        TestInst(CMGE(V30.T_2S, V1.T_2S, V2.T_2S), asm => asm.CMGE(V30.T_2S, V1.T_2S, V2.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2S, V1.2S, V2.2S");
+        TestInst(CMGE(V0.T_2S, V31.T_2S, V2.T_2S), asm => asm.CMGE(V0.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2S, V31.2S, V2.2S");
+        TestInst(CMGE(V30.T_2S, V31.T_2S, V2.T_2S), asm => asm.CMGE(V30.T_2S, V31.T_2S, V2.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2S, V31.2S, V2.2S");
+        TestInst(CMGE(V0.T_2S, V1.T_2S, V0.T_2S), asm => asm.CMGE(V0.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2S, V1.2S, V0.2S");
+        TestInst(CMGE(V30.T_2S, V1.T_2S, V0.T_2S), asm => asm.CMGE(V30.T_2S, V1.T_2S, V0.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2S, V1.2S, V0.2S");
+        TestInst(CMGE(V0.T_2S, V31.T_2S, V0.T_2S), asm => asm.CMGE(V0.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2S, V31.2S, V0.2S");
+        TestInst(CMGE(V30.T_2S, V31.T_2S, V0.T_2S), asm => asm.CMGE(V30.T_2S, V31.T_2S, V0.T_2S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2S, V31.2S, V0.2S");
     }
     
     /// <summary>
@@ -120,14 +119,14 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdsame_only_6()
     {
-        TestInst(CMGE(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4S, V1.4S, V2.4S");
-        TestInst(CMGE(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4S, V1.4S, V2.4S");
-        TestInst(CMGE(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4S, V31.4S, V2.4S");
-        TestInst(CMGE(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4S, V31.4S, V2.4S");
-        TestInst(CMGE(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4S, V1.4S, V0.4S");
-        TestInst(CMGE(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4S, V1.4S, V0.4S");
-        TestInst(CMGE(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4S, V31.4S, V0.4S");
-        TestInst(CMGE(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4S, V31.4S, V0.4S");
+        TestInst(CMGE(V0.T_4S, V1.T_4S, V2.T_4S), asm => asm.CMGE(V0.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4S, V1.4S, V2.4S");
+        TestInst(CMGE(V30.T_4S, V1.T_4S, V2.T_4S), asm => asm.CMGE(V30.T_4S, V1.T_4S, V2.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4S, V1.4S, V2.4S");
+        TestInst(CMGE(V0.T_4S, V31.T_4S, V2.T_4S), asm => asm.CMGE(V0.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4S, V31.4S, V2.4S");
+        TestInst(CMGE(V30.T_4S, V31.T_4S, V2.T_4S), asm => asm.CMGE(V30.T_4S, V31.T_4S, V2.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4S, V31.4S, V2.4S");
+        TestInst(CMGE(V0.T_4S, V1.T_4S, V0.T_4S), asm => asm.CMGE(V0.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4S, V1.4S, V0.4S");
+        TestInst(CMGE(V30.T_4S, V1.T_4S, V0.T_4S), asm => asm.CMGE(V30.T_4S, V1.T_4S, V0.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4S, V1.4S, V0.4S");
+        TestInst(CMGE(V0.T_4S, V31.T_4S, V0.T_4S), asm => asm.CMGE(V0.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.4S, V31.4S, V0.4S");
+        TestInst(CMGE(V30.T_4S, V31.T_4S, V0.T_4S), asm => asm.CMGE(V30.T_4S, V31.T_4S, V0.T_4S), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.4S, V31.4S, V0.4S");
     }
     
     /// <summary>
@@ -136,14 +135,14 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdsame_only_7()
     {
-        TestInst(CMGE(V0.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2D, V1.2D, V2.2D");
-        TestInst(CMGE(V30.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2D, V1.2D, V2.2D");
-        TestInst(CMGE(V0.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2D, V31.2D, V2.2D");
-        TestInst(CMGE(V30.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2D, V31.2D, V2.2D");
-        TestInst(CMGE(V0.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2D, V1.2D, V0.2D");
-        TestInst(CMGE(V30.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2D, V1.2D, V0.2D");
-        TestInst(CMGE(V0.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2D, V31.2D, V0.2D");
-        TestInst(CMGE(V30.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2D, V31.2D, V0.2D");
+        TestInst(CMGE(V0.T_2D, V1.T_2D, V2.T_2D), asm => asm.CMGE(V0.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2D, V1.2D, V2.2D");
+        TestInst(CMGE(V30.T_2D, V1.T_2D, V2.T_2D), asm => asm.CMGE(V30.T_2D, V1.T_2D, V2.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2D, V1.2D, V2.2D");
+        TestInst(CMGE(V0.T_2D, V31.T_2D, V2.T_2D), asm => asm.CMGE(V0.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2D, V31.2D, V2.2D");
+        TestInst(CMGE(V30.T_2D, V31.T_2D, V2.T_2D), asm => asm.CMGE(V30.T_2D, V31.T_2D, V2.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2D, V31.2D, V2.2D");
+        TestInst(CMGE(V0.T_2D, V1.T_2D, V0.T_2D), asm => asm.CMGE(V0.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2D, V1.2D, V0.2D");
+        TestInst(CMGE(V30.T_2D, V1.T_2D, V0.T_2D), asm => asm.CMGE(V30.T_2D, V1.T_2D, V0.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2D, V1.2D, V0.2D");
+        TestInst(CMGE(V0.T_2D, V31.T_2D, V0.T_2D), asm => asm.CMGE(V0.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V0.2D, V31.2D, V0.2D");
+        TestInst(CMGE(V30.T_2D, V31.T_2D, V0.T_2D), asm => asm.CMGE(V30.T_2D, V31.T_2D, V0.T_2D), Arm64InstructionId.CMGE_asimdsame_only, Arm64Mnemonic.CMGE, "CMGE V30.2D, V31.2D, V0.2D");
     }
     
     /// <summary>
@@ -152,10 +151,10 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asisdmisc_z_8()
     {
-        TestInst(CMGE(D0, D1, 0), Arm64InstructionId.CMGE_asisdmisc_z, Arm64Mnemonic.CMGE, "CMGE D0, D1, #0");
-        TestInst(CMGE(D31, D1, 0), Arm64InstructionId.CMGE_asisdmisc_z, Arm64Mnemonic.CMGE, "CMGE D31, D1, #0");
-        TestInst(CMGE(D0, D31, 0), Arm64InstructionId.CMGE_asisdmisc_z, Arm64Mnemonic.CMGE, "CMGE D0, D31, #0");
-        TestInst(CMGE(D31, D31, 0), Arm64InstructionId.CMGE_asisdmisc_z, Arm64Mnemonic.CMGE, "CMGE D31, D31, #0");
+        TestInst(CMGE(D0, D1, 0), asm => asm.CMGE(D0, D1, 0), Arm64InstructionId.CMGE_asisdmisc_z, Arm64Mnemonic.CMGE, "CMGE D0, D1, #0");
+        TestInst(CMGE(D31, D1, 0), asm => asm.CMGE(D31, D1, 0), Arm64InstructionId.CMGE_asisdmisc_z, Arm64Mnemonic.CMGE, "CMGE D31, D1, #0");
+        TestInst(CMGE(D0, D31, 0), asm => asm.CMGE(D0, D31, 0), Arm64InstructionId.CMGE_asisdmisc_z, Arm64Mnemonic.CMGE, "CMGE D0, D31, #0");
+        TestInst(CMGE(D31, D31, 0), asm => asm.CMGE(D31, D31, 0), Arm64InstructionId.CMGE_asisdmisc_z, Arm64Mnemonic.CMGE, "CMGE D31, D31, #0");
     }
     
     /// <summary>
@@ -164,10 +163,10 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdmisc_z_9()
     {
-        TestInst(CMGE(V0.T_8B, V1.T_8B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.8B, V1.8B, #0");
-        TestInst(CMGE(V30.T_8B, V1.T_8B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.8B, V1.8B, #0");
-        TestInst(CMGE(V0.T_8B, V31.T_8B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.8B, V31.8B, #0");
-        TestInst(CMGE(V30.T_8B, V31.T_8B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.8B, V31.8B, #0");
+        TestInst(CMGE(V0.T_8B, V1.T_8B, 0), asm => asm.CMGE(V0.T_8B, V1.T_8B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.8B, V1.8B, #0");
+        TestInst(CMGE(V30.T_8B, V1.T_8B, 0), asm => asm.CMGE(V30.T_8B, V1.T_8B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.8B, V1.8B, #0");
+        TestInst(CMGE(V0.T_8B, V31.T_8B, 0), asm => asm.CMGE(V0.T_8B, V31.T_8B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.8B, V31.8B, #0");
+        TestInst(CMGE(V30.T_8B, V31.T_8B, 0), asm => asm.CMGE(V30.T_8B, V31.T_8B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.8B, V31.8B, #0");
     }
     
     /// <summary>
@@ -176,10 +175,10 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdmisc_z_10()
     {
-        TestInst(CMGE(V0.T_16B, V1.T_16B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.16B, V1.16B, #0");
-        TestInst(CMGE(V30.T_16B, V1.T_16B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.16B, V1.16B, #0");
-        TestInst(CMGE(V0.T_16B, V31.T_16B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.16B, V31.16B, #0");
-        TestInst(CMGE(V30.T_16B, V31.T_16B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.16B, V31.16B, #0");
+        TestInst(CMGE(V0.T_16B, V1.T_16B, 0), asm => asm.CMGE(V0.T_16B, V1.T_16B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.16B, V1.16B, #0");
+        TestInst(CMGE(V30.T_16B, V1.T_16B, 0), asm => asm.CMGE(V30.T_16B, V1.T_16B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.16B, V1.16B, #0");
+        TestInst(CMGE(V0.T_16B, V31.T_16B, 0), asm => asm.CMGE(V0.T_16B, V31.T_16B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.16B, V31.16B, #0");
+        TestInst(CMGE(V30.T_16B, V31.T_16B, 0), asm => asm.CMGE(V30.T_16B, V31.T_16B, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.16B, V31.16B, #0");
     }
     
     /// <summary>
@@ -188,10 +187,10 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdmisc_z_11()
     {
-        TestInst(CMGE(V0.T_4H, V1.T_4H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.4H, V1.4H, #0");
-        TestInst(CMGE(V30.T_4H, V1.T_4H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.4H, V1.4H, #0");
-        TestInst(CMGE(V0.T_4H, V31.T_4H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.4H, V31.4H, #0");
-        TestInst(CMGE(V30.T_4H, V31.T_4H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.4H, V31.4H, #0");
+        TestInst(CMGE(V0.T_4H, V1.T_4H, 0), asm => asm.CMGE(V0.T_4H, V1.T_4H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.4H, V1.4H, #0");
+        TestInst(CMGE(V30.T_4H, V1.T_4H, 0), asm => asm.CMGE(V30.T_4H, V1.T_4H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.4H, V1.4H, #0");
+        TestInst(CMGE(V0.T_4H, V31.T_4H, 0), asm => asm.CMGE(V0.T_4H, V31.T_4H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.4H, V31.4H, #0");
+        TestInst(CMGE(V30.T_4H, V31.T_4H, 0), asm => asm.CMGE(V30.T_4H, V31.T_4H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.4H, V31.4H, #0");
     }
     
     /// <summary>
@@ -200,10 +199,10 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdmisc_z_12()
     {
-        TestInst(CMGE(V0.T_8H, V1.T_8H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.8H, V1.8H, #0");
-        TestInst(CMGE(V30.T_8H, V1.T_8H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.8H, V1.8H, #0");
-        TestInst(CMGE(V0.T_8H, V31.T_8H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.8H, V31.8H, #0");
-        TestInst(CMGE(V30.T_8H, V31.T_8H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.8H, V31.8H, #0");
+        TestInst(CMGE(V0.T_8H, V1.T_8H, 0), asm => asm.CMGE(V0.T_8H, V1.T_8H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.8H, V1.8H, #0");
+        TestInst(CMGE(V30.T_8H, V1.T_8H, 0), asm => asm.CMGE(V30.T_8H, V1.T_8H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.8H, V1.8H, #0");
+        TestInst(CMGE(V0.T_8H, V31.T_8H, 0), asm => asm.CMGE(V0.T_8H, V31.T_8H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.8H, V31.8H, #0");
+        TestInst(CMGE(V30.T_8H, V31.T_8H, 0), asm => asm.CMGE(V30.T_8H, V31.T_8H, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.8H, V31.8H, #0");
     }
     
     /// <summary>
@@ -212,10 +211,10 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdmisc_z_13()
     {
-        TestInst(CMGE(V0.T_2S, V1.T_2S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.2S, V1.2S, #0");
-        TestInst(CMGE(V30.T_2S, V1.T_2S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.2S, V1.2S, #0");
-        TestInst(CMGE(V0.T_2S, V31.T_2S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.2S, V31.2S, #0");
-        TestInst(CMGE(V30.T_2S, V31.T_2S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.2S, V31.2S, #0");
+        TestInst(CMGE(V0.T_2S, V1.T_2S, 0), asm => asm.CMGE(V0.T_2S, V1.T_2S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.2S, V1.2S, #0");
+        TestInst(CMGE(V30.T_2S, V1.T_2S, 0), asm => asm.CMGE(V30.T_2S, V1.T_2S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.2S, V1.2S, #0");
+        TestInst(CMGE(V0.T_2S, V31.T_2S, 0), asm => asm.CMGE(V0.T_2S, V31.T_2S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.2S, V31.2S, #0");
+        TestInst(CMGE(V30.T_2S, V31.T_2S, 0), asm => asm.CMGE(V30.T_2S, V31.T_2S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.2S, V31.2S, #0");
     }
     
     /// <summary>
@@ -224,10 +223,10 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdmisc_z_14()
     {
-        TestInst(CMGE(V0.T_4S, V1.T_4S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.4S, V1.4S, #0");
-        TestInst(CMGE(V30.T_4S, V1.T_4S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.4S, V1.4S, #0");
-        TestInst(CMGE(V0.T_4S, V31.T_4S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.4S, V31.4S, #0");
-        TestInst(CMGE(V30.T_4S, V31.T_4S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.4S, V31.4S, #0");
+        TestInst(CMGE(V0.T_4S, V1.T_4S, 0), asm => asm.CMGE(V0.T_4S, V1.T_4S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.4S, V1.4S, #0");
+        TestInst(CMGE(V30.T_4S, V1.T_4S, 0), asm => asm.CMGE(V30.T_4S, V1.T_4S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.4S, V1.4S, #0");
+        TestInst(CMGE(V0.T_4S, V31.T_4S, 0), asm => asm.CMGE(V0.T_4S, V31.T_4S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.4S, V31.4S, #0");
+        TestInst(CMGE(V30.T_4S, V31.T_4S, 0), asm => asm.CMGE(V30.T_4S, V31.T_4S, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.4S, V31.4S, #0");
     }
     
     /// <summary>
@@ -236,9 +235,9 @@ public class Arm64InstructionFactoryTests_CMGE_Advsimd : Arm64InstructionFactory
     [TestMethod]
     public void Test_CMGE_asimdmisc_z_15()
     {
-        TestInst(CMGE(V0.T_2D, V1.T_2D, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.2D, V1.2D, #0");
-        TestInst(CMGE(V30.T_2D, V1.T_2D, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.2D, V1.2D, #0");
-        TestInst(CMGE(V0.T_2D, V31.T_2D, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.2D, V31.2D, #0");
-        TestInst(CMGE(V30.T_2D, V31.T_2D, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.2D, V31.2D, #0");
+        TestInst(CMGE(V0.T_2D, V1.T_2D, 0), asm => asm.CMGE(V0.T_2D, V1.T_2D, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.2D, V1.2D, #0");
+        TestInst(CMGE(V30.T_2D, V1.T_2D, 0), asm => asm.CMGE(V30.T_2D, V1.T_2D, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.2D, V1.2D, #0");
+        TestInst(CMGE(V0.T_2D, V31.T_2D, 0), asm => asm.CMGE(V0.T_2D, V31.T_2D, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V0.2D, V31.2D, #0");
+        TestInst(CMGE(V30.T_2D, V31.T_2D, 0), asm => asm.CMGE(V30.T_2D, V31.T_2D, 0), Arm64InstructionId.CMGE_asimdmisc_z, Arm64Mnemonic.CMGE, "CMGE V30.2D, V31.2D, #0");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_RETAASPPC_General : Arm64InstructionFa
     [TestMethod]
     public void Test_RETAASPPC_only_miscbranch_0()
     {
-        TestInst(RETAASPPC(-32), Arm64InstructionId.RETAASPPC_only_miscbranch, Arm64Mnemonic.RETAASPPC, "RETAASPPC #-32");
+        TestInst(RETAASPPC(-32), null, Arm64InstructionId.RETAASPPC_only_miscbranch, Arm64Mnemonic.RETAASPPC, "RETAASPPC #-32");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDUR_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDUR_32_ldst_unscaled_0()
     {
-        TestInst(LDUR(W0, _[X2, 5]), Arm64InstructionId.LDUR_32_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR W0, [X2, #5]");
-        TestInst(LDUR(W15, _[X2, 5]), Arm64InstructionId.LDUR_32_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR W15, [X2, #5]");
-        TestInst(LDUR(WZR, _[X2, 5]), Arm64InstructionId.LDUR_32_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR WZR, [X2, #5]");
+        TestInst(LDUR(W0, _[X2, 5]), asm => asm.LDUR(W0, _[X2, 5]), Arm64InstructionId.LDUR_32_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR W0, [X2, #5]");
+        TestInst(LDUR(W15, _[X2, 5]), asm => asm.LDUR(W15, _[X2, 5]), Arm64InstructionId.LDUR_32_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR W15, [X2, #5]");
+        TestInst(LDUR(WZR, _[X2, 5]), asm => asm.LDUR(WZR, _[X2, 5]), Arm64InstructionId.LDUR_32_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_LDUR_General : Arm64InstructionFactory
     [TestMethod]
     public void Test_LDUR_64_ldst_unscaled_1()
     {
-        TestInst(LDUR(X0, _[X2, 5]), Arm64InstructionId.LDUR_64_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR X0, [X2, #5]");
-        TestInst(LDUR(X15, _[X2, 5]), Arm64InstructionId.LDUR_64_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR X15, [X2, #5]");
-        TestInst(LDUR(XZR, _[X2, 5]), Arm64InstructionId.LDUR_64_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR XZR, [X2, #5]");
+        TestInst(LDUR(X0, _[X2, 5]), asm => asm.LDUR(X0, _[X2, 5]), Arm64InstructionId.LDUR_64_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR X0, [X2, #5]");
+        TestInst(LDUR(X15, _[X2, 5]), asm => asm.LDUR(X15, _[X2, 5]), Arm64InstructionId.LDUR_64_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR X15, [X2, #5]");
+        TestInst(LDUR(XZR, _[X2, 5]), asm => asm.LDUR(XZR, _[X2, 5]), Arm64InstructionId.LDUR_64_ldst_unscaled, Arm64Mnemonic.LDUR, "LDUR XZR, [X2, #5]");
     }
 }

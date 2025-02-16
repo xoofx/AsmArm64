@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_LDBFMINNM_Advsimd : Arm64InstructionFa
     [TestMethod]
     public void Test_LDBFMINNM_16_0()
     {
-        TestInst(LDBFMINNM(H0, H1, _[X3]), Arm64InstructionId.LDBFMINNM_16, Arm64Mnemonic.LDBFMINNM, "LDBFMINNM H0, H1, [X3]");
-        TestInst(LDBFMINNM(H31, H1, _[X3]), Arm64InstructionId.LDBFMINNM_16, Arm64Mnemonic.LDBFMINNM, "LDBFMINNM H31, H1, [X3]");
-        TestInst(LDBFMINNM(H0, H31, _[X3]), Arm64InstructionId.LDBFMINNM_16, Arm64Mnemonic.LDBFMINNM, "LDBFMINNM H0, H31, [X3]");
-        TestInst(LDBFMINNM(H31, H31, _[X3]), Arm64InstructionId.LDBFMINNM_16, Arm64Mnemonic.LDBFMINNM, "LDBFMINNM H31, H31, [X3]");
+        TestInst(LDBFMINNM(H0, H1, _[X3]), asm => asm.LDBFMINNM(H0, H1, _[X3]), Arm64InstructionId.LDBFMINNM_16, Arm64Mnemonic.LDBFMINNM, "LDBFMINNM H0, H1, [X3]");
+        TestInst(LDBFMINNM(H31, H1, _[X3]), asm => asm.LDBFMINNM(H31, H1, _[X3]), Arm64InstructionId.LDBFMINNM_16, Arm64Mnemonic.LDBFMINNM, "LDBFMINNM H31, H1, [X3]");
+        TestInst(LDBFMINNM(H0, H31, _[X3]), asm => asm.LDBFMINNM(H0, H31, _[X3]), Arm64InstructionId.LDBFMINNM_16, Arm64Mnemonic.LDBFMINNM, "LDBFMINNM H0, H31, [X3]");
+        TestInst(LDBFMINNM(H31, H31, _[X3]), asm => asm.LDBFMINNM(H31, H31, _[X3]), Arm64InstructionId.LDBFMINNM_16, Arm64Mnemonic.LDBFMINNM, "LDBFMINNM H31, H31, [X3]");
     }
 }

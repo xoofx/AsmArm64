@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDTSETA_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDTSETA_32_memop_unpriv_0()
     {
-        TestInst(LDTSETA(W0, W1, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W0, W1, [X3]");
-        TestInst(LDTSETA(W15, W1, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W15, W1, [X3]");
-        TestInst(LDTSETA(WZR, W1, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA WZR, W1, [X3]");
-        TestInst(LDTSETA(W0, W16, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W0, W16, [X3]");
-        TestInst(LDTSETA(W15, W16, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W15, W16, [X3]");
-        TestInst(LDTSETA(WZR, W16, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA WZR, W16, [X3]");
-        TestInst(LDTSETA(W0, WZR, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W0, WZR, [X3]");
-        TestInst(LDTSETA(W15, WZR, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W15, WZR, [X3]");
-        TestInst(LDTSETA(WZR, WZR, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA WZR, WZR, [X3]");
+        TestInst(LDTSETA(W0, W1, _[X3]), asm => asm.LDTSETA(W0, W1, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W0, W1, [X3]");
+        TestInst(LDTSETA(W15, W1, _[X3]), asm => asm.LDTSETA(W15, W1, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W15, W1, [X3]");
+        TestInst(LDTSETA(WZR, W1, _[X3]), asm => asm.LDTSETA(WZR, W1, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA WZR, W1, [X3]");
+        TestInst(LDTSETA(W0, W16, _[X3]), asm => asm.LDTSETA(W0, W16, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W0, W16, [X3]");
+        TestInst(LDTSETA(W15, W16, _[X3]), asm => asm.LDTSETA(W15, W16, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W15, W16, [X3]");
+        TestInst(LDTSETA(WZR, W16, _[X3]), asm => asm.LDTSETA(WZR, W16, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA WZR, W16, [X3]");
+        TestInst(LDTSETA(W0, WZR, _[X3]), asm => asm.LDTSETA(W0, WZR, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W0, WZR, [X3]");
+        TestInst(LDTSETA(W15, WZR, _[X3]), asm => asm.LDTSETA(W15, WZR, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA W15, WZR, [X3]");
+        TestInst(LDTSETA(WZR, WZR, _[X3]), asm => asm.LDTSETA(WZR, WZR, _[X3]), Arm64InstructionId.LDTSETA_32_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA WZR, WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDTSETA_General : Arm64InstructionFact
     [TestMethod]
     public void Test_LDTSETA_64_memop_unpriv_1()
     {
-        TestInst(LDTSETA(X0, X1, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X0, X1, [X3]");
-        TestInst(LDTSETA(X15, X1, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X15, X1, [X3]");
-        TestInst(LDTSETA(XZR, X1, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA XZR, X1, [X3]");
-        TestInst(LDTSETA(X0, X16, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X0, X16, [X3]");
-        TestInst(LDTSETA(X15, X16, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X15, X16, [X3]");
-        TestInst(LDTSETA(XZR, X16, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA XZR, X16, [X3]");
-        TestInst(LDTSETA(X0, XZR, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X0, XZR, [X3]");
-        TestInst(LDTSETA(X15, XZR, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X15, XZR, [X3]");
-        TestInst(LDTSETA(XZR, XZR, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA XZR, XZR, [X3]");
+        TestInst(LDTSETA(X0, X1, _[X3]), asm => asm.LDTSETA(X0, X1, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X0, X1, [X3]");
+        TestInst(LDTSETA(X15, X1, _[X3]), asm => asm.LDTSETA(X15, X1, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X15, X1, [X3]");
+        TestInst(LDTSETA(XZR, X1, _[X3]), asm => asm.LDTSETA(XZR, X1, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA XZR, X1, [X3]");
+        TestInst(LDTSETA(X0, X16, _[X3]), asm => asm.LDTSETA(X0, X16, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X0, X16, [X3]");
+        TestInst(LDTSETA(X15, X16, _[X3]), asm => asm.LDTSETA(X15, X16, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X15, X16, [X3]");
+        TestInst(LDTSETA(XZR, X16, _[X3]), asm => asm.LDTSETA(XZR, X16, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA XZR, X16, [X3]");
+        TestInst(LDTSETA(X0, XZR, _[X3]), asm => asm.LDTSETA(X0, XZR, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X0, XZR, [X3]");
+        TestInst(LDTSETA(X15, XZR, _[X3]), asm => asm.LDTSETA(X15, XZR, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA X15, XZR, [X3]");
+        TestInst(LDTSETA(XZR, XZR, _[X3]), asm => asm.LDTSETA(XZR, XZR, _[X3]), Arm64InstructionId.LDTSETA_64_memop_unpriv, Arm64Mnemonic.LDTSETA, "LDTSETA XZR, XZR, [X3]");
     }
 }

@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,6 +23,6 @@ public class Arm64InstructionFactoryTests_RETAA_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_RETAA_64e_branch_reg_0()
     {
-        TestInst(RETAA(), Arm64InstructionId.RETAA_64e_branch_reg, Arm64Mnemonic.RETAA, "RETAA");
+        TestInst(RETAA(), asm => asm.RETAA(), Arm64InstructionId.RETAA_64e_branch_reg, Arm64Mnemonic.RETAA, "RETAA");
     }
 }

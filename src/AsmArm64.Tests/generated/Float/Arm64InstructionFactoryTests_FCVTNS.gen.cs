@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FCVTNS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNS_sisd_32h_0()
     {
-        TestInst(FCVTNS(S0, H1), Arm64InstructionId.FCVTNS_sisd_32h, Arm64Mnemonic.FCVTNS, "FCVTNS S0, H1");
-        TestInst(FCVTNS(S31, H1), Arm64InstructionId.FCVTNS_sisd_32h, Arm64Mnemonic.FCVTNS, "FCVTNS S31, H1");
-        TestInst(FCVTNS(S0, H31), Arm64InstructionId.FCVTNS_sisd_32h, Arm64Mnemonic.FCVTNS, "FCVTNS S0, H31");
-        TestInst(FCVTNS(S31, H31), Arm64InstructionId.FCVTNS_sisd_32h, Arm64Mnemonic.FCVTNS, "FCVTNS S31, H31");
+        TestInst(FCVTNS(S0, H1), asm => asm.FCVTNS(S0, H1), Arm64InstructionId.FCVTNS_sisd_32h, Arm64Mnemonic.FCVTNS, "FCVTNS S0, H1");
+        TestInst(FCVTNS(S31, H1), asm => asm.FCVTNS(S31, H1), Arm64InstructionId.FCVTNS_sisd_32h, Arm64Mnemonic.FCVTNS, "FCVTNS S31, H1");
+        TestInst(FCVTNS(S0, H31), asm => asm.FCVTNS(S0, H31), Arm64InstructionId.FCVTNS_sisd_32h, Arm64Mnemonic.FCVTNS, "FCVTNS S0, H31");
+        TestInst(FCVTNS(S31, H31), asm => asm.FCVTNS(S31, H31), Arm64InstructionId.FCVTNS_sisd_32h, Arm64Mnemonic.FCVTNS, "FCVTNS S31, H31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FCVTNS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNS_sisd_64h_1()
     {
-        TestInst(FCVTNS(D0, H1), Arm64InstructionId.FCVTNS_sisd_64h, Arm64Mnemonic.FCVTNS, "FCVTNS D0, H1");
-        TestInst(FCVTNS(D31, H1), Arm64InstructionId.FCVTNS_sisd_64h, Arm64Mnemonic.FCVTNS, "FCVTNS D31, H1");
-        TestInst(FCVTNS(D0, H31), Arm64InstructionId.FCVTNS_sisd_64h, Arm64Mnemonic.FCVTNS, "FCVTNS D0, H31");
-        TestInst(FCVTNS(D31, H31), Arm64InstructionId.FCVTNS_sisd_64h, Arm64Mnemonic.FCVTNS, "FCVTNS D31, H31");
+        TestInst(FCVTNS(D0, H1), asm => asm.FCVTNS(D0, H1), Arm64InstructionId.FCVTNS_sisd_64h, Arm64Mnemonic.FCVTNS, "FCVTNS D0, H1");
+        TestInst(FCVTNS(D31, H1), asm => asm.FCVTNS(D31, H1), Arm64InstructionId.FCVTNS_sisd_64h, Arm64Mnemonic.FCVTNS, "FCVTNS D31, H1");
+        TestInst(FCVTNS(D0, H31), asm => asm.FCVTNS(D0, H31), Arm64InstructionId.FCVTNS_sisd_64h, Arm64Mnemonic.FCVTNS, "FCVTNS D0, H31");
+        TestInst(FCVTNS(D31, H31), asm => asm.FCVTNS(D31, H31), Arm64InstructionId.FCVTNS_sisd_64h, Arm64Mnemonic.FCVTNS, "FCVTNS D31, H31");
     }
     
     /// <summary>
@@ -48,10 +47,10 @@ public class Arm64InstructionFactoryTests_FCVTNS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNS_sisd_64s_2()
     {
-        TestInst(FCVTNS(D0, S1), Arm64InstructionId.FCVTNS_sisd_64s, Arm64Mnemonic.FCVTNS, "FCVTNS D0, S1");
-        TestInst(FCVTNS(D31, S1), Arm64InstructionId.FCVTNS_sisd_64s, Arm64Mnemonic.FCVTNS, "FCVTNS D31, S1");
-        TestInst(FCVTNS(D0, S31), Arm64InstructionId.FCVTNS_sisd_64s, Arm64Mnemonic.FCVTNS, "FCVTNS D0, S31");
-        TestInst(FCVTNS(D31, S31), Arm64InstructionId.FCVTNS_sisd_64s, Arm64Mnemonic.FCVTNS, "FCVTNS D31, S31");
+        TestInst(FCVTNS(D0, S1), asm => asm.FCVTNS(D0, S1), Arm64InstructionId.FCVTNS_sisd_64s, Arm64Mnemonic.FCVTNS, "FCVTNS D0, S1");
+        TestInst(FCVTNS(D31, S1), asm => asm.FCVTNS(D31, S1), Arm64InstructionId.FCVTNS_sisd_64s, Arm64Mnemonic.FCVTNS, "FCVTNS D31, S1");
+        TestInst(FCVTNS(D0, S31), asm => asm.FCVTNS(D0, S31), Arm64InstructionId.FCVTNS_sisd_64s, Arm64Mnemonic.FCVTNS, "FCVTNS D0, S31");
+        TestInst(FCVTNS(D31, S31), asm => asm.FCVTNS(D31, S31), Arm64InstructionId.FCVTNS_sisd_64s, Arm64Mnemonic.FCVTNS, "FCVTNS D31, S31");
     }
     
     /// <summary>
@@ -60,10 +59,10 @@ public class Arm64InstructionFactoryTests_FCVTNS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNS_sisd_32d_3()
     {
-        TestInst(FCVTNS(S0, D1), Arm64InstructionId.FCVTNS_sisd_32d, Arm64Mnemonic.FCVTNS, "FCVTNS S0, D1");
-        TestInst(FCVTNS(S31, D1), Arm64InstructionId.FCVTNS_sisd_32d, Arm64Mnemonic.FCVTNS, "FCVTNS S31, D1");
-        TestInst(FCVTNS(S0, D31), Arm64InstructionId.FCVTNS_sisd_32d, Arm64Mnemonic.FCVTNS, "FCVTNS S0, D31");
-        TestInst(FCVTNS(S31, D31), Arm64InstructionId.FCVTNS_sisd_32d, Arm64Mnemonic.FCVTNS, "FCVTNS S31, D31");
+        TestInst(FCVTNS(S0, D1), asm => asm.FCVTNS(S0, D1), Arm64InstructionId.FCVTNS_sisd_32d, Arm64Mnemonic.FCVTNS, "FCVTNS S0, D1");
+        TestInst(FCVTNS(S31, D1), asm => asm.FCVTNS(S31, D1), Arm64InstructionId.FCVTNS_sisd_32d, Arm64Mnemonic.FCVTNS, "FCVTNS S31, D1");
+        TestInst(FCVTNS(S0, D31), asm => asm.FCVTNS(S0, D31), Arm64InstructionId.FCVTNS_sisd_32d, Arm64Mnemonic.FCVTNS, "FCVTNS S0, D31");
+        TestInst(FCVTNS(S31, D31), asm => asm.FCVTNS(S31, D31), Arm64InstructionId.FCVTNS_sisd_32d, Arm64Mnemonic.FCVTNS, "FCVTNS S31, D31");
     }
     
     /// <summary>
@@ -72,12 +71,12 @@ public class Arm64InstructionFactoryTests_FCVTNS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNS_32h_float2int_4()
     {
-        TestInst(FCVTNS(W0, H1), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, H1");
-        TestInst(FCVTNS(W15, H1), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, H1");
-        TestInst(FCVTNS(WZR, H1), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, H1");
-        TestInst(FCVTNS(W0, H31), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, H31");
-        TestInst(FCVTNS(W15, H31), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, H31");
-        TestInst(FCVTNS(WZR, H31), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, H31");
+        TestInst(FCVTNS(W0, H1), asm => asm.FCVTNS(W0, H1), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, H1");
+        TestInst(FCVTNS(W15, H1), asm => asm.FCVTNS(W15, H1), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, H1");
+        TestInst(FCVTNS(WZR, H1), asm => asm.FCVTNS(WZR, H1), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, H1");
+        TestInst(FCVTNS(W0, H31), asm => asm.FCVTNS(W0, H31), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, H31");
+        TestInst(FCVTNS(W15, H31), asm => asm.FCVTNS(W15, H31), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, H31");
+        TestInst(FCVTNS(WZR, H31), asm => asm.FCVTNS(WZR, H31), Arm64InstructionId.FCVTNS_32h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, H31");
     }
     
     /// <summary>
@@ -86,12 +85,12 @@ public class Arm64InstructionFactoryTests_FCVTNS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNS_64h_float2int_5()
     {
-        TestInst(FCVTNS(X0, H1), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, H1");
-        TestInst(FCVTNS(X15, H1), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, H1");
-        TestInst(FCVTNS(XZR, H1), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, H1");
-        TestInst(FCVTNS(X0, H31), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, H31");
-        TestInst(FCVTNS(X15, H31), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, H31");
-        TestInst(FCVTNS(XZR, H31), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, H31");
+        TestInst(FCVTNS(X0, H1), asm => asm.FCVTNS(X0, H1), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, H1");
+        TestInst(FCVTNS(X15, H1), asm => asm.FCVTNS(X15, H1), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, H1");
+        TestInst(FCVTNS(XZR, H1), asm => asm.FCVTNS(XZR, H1), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, H1");
+        TestInst(FCVTNS(X0, H31), asm => asm.FCVTNS(X0, H31), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, H31");
+        TestInst(FCVTNS(X15, H31), asm => asm.FCVTNS(X15, H31), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, H31");
+        TestInst(FCVTNS(XZR, H31), asm => asm.FCVTNS(XZR, H31), Arm64InstructionId.FCVTNS_64h_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, H31");
     }
     
     /// <summary>
@@ -100,12 +99,12 @@ public class Arm64InstructionFactoryTests_FCVTNS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNS_32s_float2int_6()
     {
-        TestInst(FCVTNS(W0, S1), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, S1");
-        TestInst(FCVTNS(W15, S1), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, S1");
-        TestInst(FCVTNS(WZR, S1), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, S1");
-        TestInst(FCVTNS(W0, S31), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, S31");
-        TestInst(FCVTNS(W15, S31), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, S31");
-        TestInst(FCVTNS(WZR, S31), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, S31");
+        TestInst(FCVTNS(W0, S1), asm => asm.FCVTNS(W0, S1), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, S1");
+        TestInst(FCVTNS(W15, S1), asm => asm.FCVTNS(W15, S1), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, S1");
+        TestInst(FCVTNS(WZR, S1), asm => asm.FCVTNS(WZR, S1), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, S1");
+        TestInst(FCVTNS(W0, S31), asm => asm.FCVTNS(W0, S31), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, S31");
+        TestInst(FCVTNS(W15, S31), asm => asm.FCVTNS(W15, S31), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, S31");
+        TestInst(FCVTNS(WZR, S31), asm => asm.FCVTNS(WZR, S31), Arm64InstructionId.FCVTNS_32s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, S31");
     }
     
     /// <summary>
@@ -114,12 +113,12 @@ public class Arm64InstructionFactoryTests_FCVTNS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNS_64s_float2int_7()
     {
-        TestInst(FCVTNS(X0, S1), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, S1");
-        TestInst(FCVTNS(X15, S1), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, S1");
-        TestInst(FCVTNS(XZR, S1), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, S1");
-        TestInst(FCVTNS(X0, S31), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, S31");
-        TestInst(FCVTNS(X15, S31), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, S31");
-        TestInst(FCVTNS(XZR, S31), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, S31");
+        TestInst(FCVTNS(X0, S1), asm => asm.FCVTNS(X0, S1), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, S1");
+        TestInst(FCVTNS(X15, S1), asm => asm.FCVTNS(X15, S1), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, S1");
+        TestInst(FCVTNS(XZR, S1), asm => asm.FCVTNS(XZR, S1), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, S1");
+        TestInst(FCVTNS(X0, S31), asm => asm.FCVTNS(X0, S31), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, S31");
+        TestInst(FCVTNS(X15, S31), asm => asm.FCVTNS(X15, S31), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, S31");
+        TestInst(FCVTNS(XZR, S31), asm => asm.FCVTNS(XZR, S31), Arm64InstructionId.FCVTNS_64s_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, S31");
     }
     
     /// <summary>
@@ -128,12 +127,12 @@ public class Arm64InstructionFactoryTests_FCVTNS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNS_32d_float2int_8()
     {
-        TestInst(FCVTNS(W0, D1), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, D1");
-        TestInst(FCVTNS(W15, D1), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, D1");
-        TestInst(FCVTNS(WZR, D1), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, D1");
-        TestInst(FCVTNS(W0, D31), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, D31");
-        TestInst(FCVTNS(W15, D31), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, D31");
-        TestInst(FCVTNS(WZR, D31), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, D31");
+        TestInst(FCVTNS(W0, D1), asm => asm.FCVTNS(W0, D1), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, D1");
+        TestInst(FCVTNS(W15, D1), asm => asm.FCVTNS(W15, D1), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, D1");
+        TestInst(FCVTNS(WZR, D1), asm => asm.FCVTNS(WZR, D1), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, D1");
+        TestInst(FCVTNS(W0, D31), asm => asm.FCVTNS(W0, D31), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W0, D31");
+        TestInst(FCVTNS(W15, D31), asm => asm.FCVTNS(W15, D31), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS W15, D31");
+        TestInst(FCVTNS(WZR, D31), asm => asm.FCVTNS(WZR, D31), Arm64InstructionId.FCVTNS_32d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS WZR, D31");
     }
     
     /// <summary>
@@ -142,11 +141,11 @@ public class Arm64InstructionFactoryTests_FCVTNS_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FCVTNS_64d_float2int_9()
     {
-        TestInst(FCVTNS(X0, D1), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, D1");
-        TestInst(FCVTNS(X15, D1), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, D1");
-        TestInst(FCVTNS(XZR, D1), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, D1");
-        TestInst(FCVTNS(X0, D31), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, D31");
-        TestInst(FCVTNS(X15, D31), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, D31");
-        TestInst(FCVTNS(XZR, D31), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, D31");
+        TestInst(FCVTNS(X0, D1), asm => asm.FCVTNS(X0, D1), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, D1");
+        TestInst(FCVTNS(X15, D1), asm => asm.FCVTNS(X15, D1), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, D1");
+        TestInst(FCVTNS(XZR, D1), asm => asm.FCVTNS(XZR, D1), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, D1");
+        TestInst(FCVTNS(X0, D31), asm => asm.FCVTNS(X0, D31), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X0, D31");
+        TestInst(FCVTNS(X15, D31), asm => asm.FCVTNS(X15, D31), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS X15, D31");
+        TestInst(FCVTNS(XZR, D31), asm => asm.FCVTNS(XZR, D31), Arm64InstructionId.FCVTNS_64d_float2int, Arm64Mnemonic.FCVTNS, "FCVTNS XZR, D31");
     }
 }

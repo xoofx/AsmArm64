@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_SUDOT_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SUDOT_asimdelem_d_0()
     {
-        TestInst(SUDOT(V0.T_2S, V1.T_8B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.2S, V1.8B, V2.4B[1]");
-        TestInst(SUDOT(V30.T_2S, V1.T_8B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.2S, V1.8B, V2.4B[1]");
-        TestInst(SUDOT(V0.T_2S, V31.T_8B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.2S, V31.8B, V2.4B[1]");
-        TestInst(SUDOT(V30.T_2S, V31.T_8B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.2S, V31.8B, V2.4B[1]");
-        TestInst(SUDOT(V0.T_2S, V1.T_8B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.2S, V1.8B, V0.4B[1]");
-        TestInst(SUDOT(V30.T_2S, V1.T_8B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.2S, V1.8B, V0.4B[1]");
-        TestInst(SUDOT(V0.T_2S, V31.T_8B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.2S, V31.8B, V0.4B[1]");
-        TestInst(SUDOT(V30.T_2S, V31.T_8B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.2S, V31.8B, V0.4B[1]");
+        TestInst(SUDOT(V0.T_2S, V1.T_8B, V2.T_4B[1]), asm => asm.SUDOT(V0.T_2S, V1.T_8B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.2S, V1.8B, V2.4B[1]");
+        TestInst(SUDOT(V30.T_2S, V1.T_8B, V2.T_4B[1]), asm => asm.SUDOT(V30.T_2S, V1.T_8B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.2S, V1.8B, V2.4B[1]");
+        TestInst(SUDOT(V0.T_2S, V31.T_8B, V2.T_4B[1]), asm => asm.SUDOT(V0.T_2S, V31.T_8B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.2S, V31.8B, V2.4B[1]");
+        TestInst(SUDOT(V30.T_2S, V31.T_8B, V2.T_4B[1]), asm => asm.SUDOT(V30.T_2S, V31.T_8B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.2S, V31.8B, V2.4B[1]");
+        TestInst(SUDOT(V0.T_2S, V1.T_8B, V0.T_4B[1]), asm => asm.SUDOT(V0.T_2S, V1.T_8B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.2S, V1.8B, V0.4B[1]");
+        TestInst(SUDOT(V30.T_2S, V1.T_8B, V0.T_4B[1]), asm => asm.SUDOT(V30.T_2S, V1.T_8B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.2S, V1.8B, V0.4B[1]");
+        TestInst(SUDOT(V0.T_2S, V31.T_8B, V0.T_4B[1]), asm => asm.SUDOT(V0.T_2S, V31.T_8B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.2S, V31.8B, V0.4B[1]");
+        TestInst(SUDOT(V30.T_2S, V31.T_8B, V0.T_4B[1]), asm => asm.SUDOT(V30.T_2S, V31.T_8B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.2S, V31.8B, V0.4B[1]");
     }
     
     /// <summary>
@@ -40,13 +39,13 @@ public class Arm64InstructionFactoryTests_SUDOT_Advsimd : Arm64InstructionFactor
     [TestMethod]
     public void Test_SUDOT_asimdelem_d_1()
     {
-        TestInst(SUDOT(V0.T_4S, V1.T_16B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.4S, V1.16B, V2.4B[1]");
-        TestInst(SUDOT(V30.T_4S, V1.T_16B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.4S, V1.16B, V2.4B[1]");
-        TestInst(SUDOT(V0.T_4S, V31.T_16B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.4S, V31.16B, V2.4B[1]");
-        TestInst(SUDOT(V30.T_4S, V31.T_16B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.4S, V31.16B, V2.4B[1]");
-        TestInst(SUDOT(V0.T_4S, V1.T_16B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.4S, V1.16B, V0.4B[1]");
-        TestInst(SUDOT(V30.T_4S, V1.T_16B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.4S, V1.16B, V0.4B[1]");
-        TestInst(SUDOT(V0.T_4S, V31.T_16B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.4S, V31.16B, V0.4B[1]");
-        TestInst(SUDOT(V30.T_4S, V31.T_16B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.4S, V31.16B, V0.4B[1]");
+        TestInst(SUDOT(V0.T_4S, V1.T_16B, V2.T_4B[1]), asm => asm.SUDOT(V0.T_4S, V1.T_16B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.4S, V1.16B, V2.4B[1]");
+        TestInst(SUDOT(V30.T_4S, V1.T_16B, V2.T_4B[1]), asm => asm.SUDOT(V30.T_4S, V1.T_16B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.4S, V1.16B, V2.4B[1]");
+        TestInst(SUDOT(V0.T_4S, V31.T_16B, V2.T_4B[1]), asm => asm.SUDOT(V0.T_4S, V31.T_16B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.4S, V31.16B, V2.4B[1]");
+        TestInst(SUDOT(V30.T_4S, V31.T_16B, V2.T_4B[1]), asm => asm.SUDOT(V30.T_4S, V31.T_16B, V2.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.4S, V31.16B, V2.4B[1]");
+        TestInst(SUDOT(V0.T_4S, V1.T_16B, V0.T_4B[1]), asm => asm.SUDOT(V0.T_4S, V1.T_16B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.4S, V1.16B, V0.4B[1]");
+        TestInst(SUDOT(V30.T_4S, V1.T_16B, V0.T_4B[1]), asm => asm.SUDOT(V30.T_4S, V1.T_16B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.4S, V1.16B, V0.4B[1]");
+        TestInst(SUDOT(V0.T_4S, V31.T_16B, V0.T_4B[1]), asm => asm.SUDOT(V0.T_4S, V31.T_16B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V0.4S, V31.16B, V0.4B[1]");
+        TestInst(SUDOT(V30.T_4S, V31.T_16B, V0.T_4B[1]), asm => asm.SUDOT(V30.T_4S, V31.T_16B, V0.T_4B[1]), Arm64InstructionId.SUDOT_asimdelem_d, Arm64Mnemonic.SUDOT, "SUDOT V30.4S, V31.16B, V0.4B[1]");
     }
 }

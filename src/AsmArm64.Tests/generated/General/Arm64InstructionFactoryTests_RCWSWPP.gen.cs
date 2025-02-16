@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_RCWSWPP_General : Arm64InstructionFact
     [TestMethod]
     public void Test_RCWSWPP_128_memop_128_0()
     {
-        TestInst(RCWSWPP(X0, X1, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X0, X1, [X3]");
-        TestInst(RCWSWPP(X15, X1, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X15, X1, [X3]");
-        TestInst(RCWSWPP(XZR, X1, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP XZR, X1, [X3]");
-        TestInst(RCWSWPP(X0, X16, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X0, X16, [X3]");
-        TestInst(RCWSWPP(X15, X16, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X15, X16, [X3]");
-        TestInst(RCWSWPP(XZR, X16, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP XZR, X16, [X3]");
-        TestInst(RCWSWPP(X0, XZR, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X0, XZR, [X3]");
-        TestInst(RCWSWPP(X15, XZR, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X15, XZR, [X3]");
-        TestInst(RCWSWPP(XZR, XZR, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP XZR, XZR, [X3]");
+        TestInst(RCWSWPP(X0, X1, _[X3]), asm => asm.RCWSWPP(X0, X1, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X0, X1, [X3]");
+        TestInst(RCWSWPP(X15, X1, _[X3]), asm => asm.RCWSWPP(X15, X1, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X15, X1, [X3]");
+        TestInst(RCWSWPP(XZR, X1, _[X3]), asm => asm.RCWSWPP(XZR, X1, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP XZR, X1, [X3]");
+        TestInst(RCWSWPP(X0, X16, _[X3]), asm => asm.RCWSWPP(X0, X16, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X0, X16, [X3]");
+        TestInst(RCWSWPP(X15, X16, _[X3]), asm => asm.RCWSWPP(X15, X16, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X15, X16, [X3]");
+        TestInst(RCWSWPP(XZR, X16, _[X3]), asm => asm.RCWSWPP(XZR, X16, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP XZR, X16, [X3]");
+        TestInst(RCWSWPP(X0, XZR, _[X3]), asm => asm.RCWSWPP(X0, XZR, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X0, XZR, [X3]");
+        TestInst(RCWSWPP(X15, XZR, _[X3]), asm => asm.RCWSWPP(X15, XZR, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP X15, XZR, [X3]");
+        TestInst(RCWSWPP(XZR, XZR, _[X3]), asm => asm.RCWSWPP(XZR, XZR, _[X3]), Arm64InstructionId.RCWSWPP_128_memop_128, Arm64Mnemonic.RCWSWPP, "RCWSWPP XZR, XZR, [X3]");
     }
 }

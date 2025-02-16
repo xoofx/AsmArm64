@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,15 +23,15 @@ public class Arm64InstructionFactoryTests_LDSMIN_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDSMIN_32_memop_0()
     {
-        TestInst(LDSMIN(W0, W1, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN W0, W1, [X3]");
-        TestInst(LDSMIN(W15, W1, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN W15, W1, [X3]");
-        TestInst(LDSMIN(WZR, W1, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN WZR, W1, [X3]");
-        TestInst(LDSMIN(W0, W16, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN W0, W16, [X3]");
-        TestInst(LDSMIN(W15, W16, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN W15, W16, [X3]");
-        TestInst(LDSMIN(WZR, W16, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN WZR, W16, [X3]");
-        TestInst(LDSMIN(W0, WZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN W0, [X3]");
-        TestInst(LDSMIN(W15, WZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN W15, [X3]");
-        TestInst(LDSMIN(WZR, WZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN WZR, [X3]");
+        TestInst(LDSMIN(W0, W1, _[X3]), asm => asm.LDSMIN(W0, W1, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN W0, W1, [X3]");
+        TestInst(LDSMIN(W15, W1, _[X3]), asm => asm.LDSMIN(W15, W1, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN W15, W1, [X3]");
+        TestInst(LDSMIN(WZR, W1, _[X3]), asm => asm.LDSMIN(WZR, W1, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN WZR, W1, [X3]");
+        TestInst(LDSMIN(W0, W16, _[X3]), asm => asm.LDSMIN(W0, W16, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN W0, W16, [X3]");
+        TestInst(LDSMIN(W15, W16, _[X3]), asm => asm.LDSMIN(W15, W16, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN W15, W16, [X3]");
+        TestInst(LDSMIN(WZR, W16, _[X3]), asm => asm.LDSMIN(WZR, W16, _[X3]), Arm64InstructionId.LDSMIN_32_memop, Arm64Mnemonic.LDSMIN, "LDSMIN WZR, W16, [X3]");
+        TestInst(LDSMIN(W0, WZR, _[X3]), asm => asm.LDSMIN(W0, WZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN W0, [X3]");
+        TestInst(LDSMIN(W15, WZR, _[X3]), asm => asm.LDSMIN(W15, WZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN W15, [X3]");
+        TestInst(LDSMIN(WZR, WZR, _[X3]), asm => asm.LDSMIN(WZR, WZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_32_memop, Arm64Mnemonic.STSMIN, "STSMIN WZR, [X3]");
     }
     
     /// <summary>
@@ -41,14 +40,14 @@ public class Arm64InstructionFactoryTests_LDSMIN_General : Arm64InstructionFacto
     [TestMethod]
     public void Test_LDSMIN_64_memop_1()
     {
-        TestInst(LDSMIN(X0, X1, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN X0, X1, [X3]");
-        TestInst(LDSMIN(X15, X1, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN X15, X1, [X3]");
-        TestInst(LDSMIN(XZR, X1, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN XZR, X1, [X3]");
-        TestInst(LDSMIN(X0, X16, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN X0, X16, [X3]");
-        TestInst(LDSMIN(X15, X16, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN X15, X16, [X3]");
-        TestInst(LDSMIN(XZR, X16, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN XZR, X16, [X3]");
-        TestInst(LDSMIN(X0, XZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN X0, [X3]");
-        TestInst(LDSMIN(X15, XZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN X15, [X3]");
-        TestInst(LDSMIN(XZR, XZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN XZR, [X3]");
+        TestInst(LDSMIN(X0, X1, _[X3]), asm => asm.LDSMIN(X0, X1, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN X0, X1, [X3]");
+        TestInst(LDSMIN(X15, X1, _[X3]), asm => asm.LDSMIN(X15, X1, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN X15, X1, [X3]");
+        TestInst(LDSMIN(XZR, X1, _[X3]), asm => asm.LDSMIN(XZR, X1, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN XZR, X1, [X3]");
+        TestInst(LDSMIN(X0, X16, _[X3]), asm => asm.LDSMIN(X0, X16, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN X0, X16, [X3]");
+        TestInst(LDSMIN(X15, X16, _[X3]), asm => asm.LDSMIN(X15, X16, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN X15, X16, [X3]");
+        TestInst(LDSMIN(XZR, X16, _[X3]), asm => asm.LDSMIN(XZR, X16, _[X3]), Arm64InstructionId.LDSMIN_64_memop, Arm64Mnemonic.LDSMIN, "LDSMIN XZR, X16, [X3]");
+        TestInst(LDSMIN(X0, XZR, _[X3]), asm => asm.LDSMIN(X0, XZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN X0, [X3]");
+        TestInst(LDSMIN(X15, XZR, _[X3]), asm => asm.LDSMIN(X15, XZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN X15, [X3]");
+        TestInst(LDSMIN(XZR, XZR, _[X3]), asm => asm.LDSMIN(XZR, XZR, _[X3]), Arm64InstructionId.STSMIN_ldsmin_64_memop, Arm64Mnemonic.STSMIN, "STSMIN XZR, [X3]");
     }
 }

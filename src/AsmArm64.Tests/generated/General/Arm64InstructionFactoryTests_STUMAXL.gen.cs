@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STUMAXL_General : Arm64InstructionFact
     [TestMethod]
     public void Test_STUMAXL_ldumaxl_32_memop_0()
     {
-        TestInst(STUMAXL(W0, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_32_memop, Arm64Mnemonic.STUMAXL, "STUMAXL W0, [X2]");
-        TestInst(STUMAXL(W15, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_32_memop, Arm64Mnemonic.STUMAXL, "STUMAXL W15, [X2]");
-        TestInst(STUMAXL(WZR, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_32_memop, Arm64Mnemonic.STUMAXL, "STUMAXL WZR, [X2]");
+        TestInst(STUMAXL(W0, _[X2]), asm => asm.STUMAXL(W0, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_32_memop, Arm64Mnemonic.STUMAXL, "STUMAXL W0, [X2]");
+        TestInst(STUMAXL(W15, _[X2]), asm => asm.STUMAXL(W15, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_32_memop, Arm64Mnemonic.STUMAXL, "STUMAXL W15, [X2]");
+        TestInst(STUMAXL(WZR, _[X2]), asm => asm.STUMAXL(WZR, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_32_memop, Arm64Mnemonic.STUMAXL, "STUMAXL WZR, [X2]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STUMAXL_General : Arm64InstructionFact
     [TestMethod]
     public void Test_STUMAXL_ldumaxl_64_memop_1()
     {
-        TestInst(STUMAXL(X0, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_64_memop, Arm64Mnemonic.STUMAXL, "STUMAXL X0, [X2]");
-        TestInst(STUMAXL(X15, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_64_memop, Arm64Mnemonic.STUMAXL, "STUMAXL X15, [X2]");
-        TestInst(STUMAXL(XZR, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_64_memop, Arm64Mnemonic.STUMAXL, "STUMAXL XZR, [X2]");
+        TestInst(STUMAXL(X0, _[X2]), asm => asm.STUMAXL(X0, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_64_memop, Arm64Mnemonic.STUMAXL, "STUMAXL X0, [X2]");
+        TestInst(STUMAXL(X15, _[X2]), asm => asm.STUMAXL(X15, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_64_memop, Arm64Mnemonic.STUMAXL, "STUMAXL X15, [X2]");
+        TestInst(STUMAXL(XZR, _[X2]), asm => asm.STUMAXL(XZR, _[X2]), Arm64InstructionId.STUMAXL_ldumaxl_64_memop, Arm64Mnemonic.STUMAXL, "STUMAXL XZR, [X2]");
     }
 }

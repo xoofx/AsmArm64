@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,9 +23,9 @@ public class Arm64InstructionFactoryTests_STLUR_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_STLUR_32_ldapstl_unscaled_0()
     {
-        TestInst(STLUR(W0, _[X2, 5]), Arm64InstructionId.STLUR_32_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR W0, [X2, #5]");
-        TestInst(STLUR(W15, _[X2, 5]), Arm64InstructionId.STLUR_32_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR W15, [X2, #5]");
-        TestInst(STLUR(WZR, _[X2, 5]), Arm64InstructionId.STLUR_32_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR WZR, [X2, #5]");
+        TestInst(STLUR(W0, _[X2, 5]), asm => asm.STLUR(W0, _[X2, 5]), Arm64InstructionId.STLUR_32_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR W0, [X2, #5]");
+        TestInst(STLUR(W15, _[X2, 5]), asm => asm.STLUR(W15, _[X2, 5]), Arm64InstructionId.STLUR_32_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR W15, [X2, #5]");
+        TestInst(STLUR(WZR, _[X2, 5]), asm => asm.STLUR(WZR, _[X2, 5]), Arm64InstructionId.STLUR_32_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR WZR, [X2, #5]");
     }
     
     /// <summary>
@@ -35,8 +34,8 @@ public class Arm64InstructionFactoryTests_STLUR_General : Arm64InstructionFactor
     [TestMethod]
     public void Test_STLUR_64_ldapstl_unscaled_1()
     {
-        TestInst(STLUR(X0, _[X2, 5]), Arm64InstructionId.STLUR_64_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR X0, [X2, #5]");
-        TestInst(STLUR(X15, _[X2, 5]), Arm64InstructionId.STLUR_64_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR X15, [X2, #5]");
-        TestInst(STLUR(XZR, _[X2, 5]), Arm64InstructionId.STLUR_64_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR XZR, [X2, #5]");
+        TestInst(STLUR(X0, _[X2, 5]), asm => asm.STLUR(X0, _[X2, 5]), Arm64InstructionId.STLUR_64_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR X0, [X2, #5]");
+        TestInst(STLUR(X15, _[X2, 5]), asm => asm.STLUR(X15, _[X2, 5]), Arm64InstructionId.STLUR_64_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR X15, [X2, #5]");
+        TestInst(STLUR(XZR, _[X2, 5]), asm => asm.STLUR(XZR, _[X2, 5]), Arm64InstructionId.STLUR_64_ldapstl_unscaled, Arm64Mnemonic.STLUR, "STLUR XZR, [X2, #5]");
     }
 }

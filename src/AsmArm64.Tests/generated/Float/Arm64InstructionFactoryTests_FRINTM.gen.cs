@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Float;
@@ -24,10 +23,10 @@ public class Arm64InstructionFactoryTests_FRINTM_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTM_h_floatdp1_0()
     {
-        TestInst(FRINTM(H0, H1), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H0, H1");
-        TestInst(FRINTM(H31, H1), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H31, H1");
-        TestInst(FRINTM(H0, H31), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H0, H31");
-        TestInst(FRINTM(H31, H31), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H31, H31");
+        TestInst(FRINTM(H0, H1), asm => asm.FRINTM(H0, H1), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H0, H1");
+        TestInst(FRINTM(H31, H1), asm => asm.FRINTM(H31, H1), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H31, H1");
+        TestInst(FRINTM(H0, H31), asm => asm.FRINTM(H0, H31), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H0, H31");
+        TestInst(FRINTM(H31, H31), asm => asm.FRINTM(H31, H31), Arm64InstructionId.FRINTM_h_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM H31, H31");
     }
     
     /// <summary>
@@ -36,10 +35,10 @@ public class Arm64InstructionFactoryTests_FRINTM_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTM_s_floatdp1_1()
     {
-        TestInst(FRINTM(S0, S1), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S0, S1");
-        TestInst(FRINTM(S31, S1), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S31, S1");
-        TestInst(FRINTM(S0, S31), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S0, S31");
-        TestInst(FRINTM(S31, S31), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S31, S31");
+        TestInst(FRINTM(S0, S1), asm => asm.FRINTM(S0, S1), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S0, S1");
+        TestInst(FRINTM(S31, S1), asm => asm.FRINTM(S31, S1), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S31, S1");
+        TestInst(FRINTM(S0, S31), asm => asm.FRINTM(S0, S31), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S0, S31");
+        TestInst(FRINTM(S31, S31), asm => asm.FRINTM(S31, S31), Arm64InstructionId.FRINTM_s_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM S31, S31");
     }
     
     /// <summary>
@@ -48,9 +47,9 @@ public class Arm64InstructionFactoryTests_FRINTM_Float : Arm64InstructionFactory
     [TestMethod]
     public void Test_FRINTM_d_floatdp1_2()
     {
-        TestInst(FRINTM(D0, D1), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D0, D1");
-        TestInst(FRINTM(D31, D1), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D31, D1");
-        TestInst(FRINTM(D0, D31), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D0, D31");
-        TestInst(FRINTM(D31, D31), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D31, D31");
+        TestInst(FRINTM(D0, D1), asm => asm.FRINTM(D0, D1), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D0, D1");
+        TestInst(FRINTM(D31, D1), asm => asm.FRINTM(D31, D1), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D31, D1");
+        TestInst(FRINTM(D0, D31), asm => asm.FRINTM(D0, D31), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D0, D31");
+        TestInst(FRINTM(D31, D31), asm => asm.FRINTM(D31, D31), Arm64InstructionId.FRINTM_d_floatdp1, Arm64Mnemonic.FRINTM, "FRINTM D31, D31");
     }
 }

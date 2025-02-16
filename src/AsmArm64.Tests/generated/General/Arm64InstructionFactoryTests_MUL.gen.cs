@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,33 +23,33 @@ public class Arm64InstructionFactoryTests_MUL_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_MUL_madd_32a_dp_3src_0()
     {
-        TestInst(MUL(W0, W1, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W1, W2");
-        TestInst(MUL(W15, W1, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W1, W2");
-        TestInst(MUL(WZR, W1, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W1, W2");
-        TestInst(MUL(W0, W16, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W16, W2");
-        TestInst(MUL(W15, W16, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W16, W2");
-        TestInst(MUL(WZR, W16, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W16, W2");
-        TestInst(MUL(W0, WZR, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, WZR, W2");
-        TestInst(MUL(W15, WZR, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, WZR, W2");
-        TestInst(MUL(WZR, WZR, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, WZR, W2");
-        TestInst(MUL(W0, W1, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W1, W17");
-        TestInst(MUL(W15, W1, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W1, W17");
-        TestInst(MUL(WZR, W1, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W1, W17");
-        TestInst(MUL(W0, W16, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W16, W17");
-        TestInst(MUL(W15, W16, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W16, W17");
-        TestInst(MUL(WZR, W16, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W16, W17");
-        TestInst(MUL(W0, WZR, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, WZR, W17");
-        TestInst(MUL(W15, WZR, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, WZR, W17");
-        TestInst(MUL(WZR, WZR, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, WZR, W17");
-        TestInst(MUL(W0, W1, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W1, WZR");
-        TestInst(MUL(W15, W1, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W1, WZR");
-        TestInst(MUL(WZR, W1, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W1, WZR");
-        TestInst(MUL(W0, W16, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W16, WZR");
-        TestInst(MUL(W15, W16, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W16, WZR");
-        TestInst(MUL(WZR, W16, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W16, WZR");
-        TestInst(MUL(W0, WZR, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, WZR, WZR");
-        TestInst(MUL(W15, WZR, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, WZR, WZR");
-        TestInst(MUL(WZR, WZR, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, WZR, WZR");
+        TestInst(MUL(W0, W1, W2), asm => asm.MUL(W0, W1, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W1, W2");
+        TestInst(MUL(W15, W1, W2), asm => asm.MUL(W15, W1, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W1, W2");
+        TestInst(MUL(WZR, W1, W2), asm => asm.MUL(WZR, W1, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W1, W2");
+        TestInst(MUL(W0, W16, W2), asm => asm.MUL(W0, W16, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W16, W2");
+        TestInst(MUL(W15, W16, W2), asm => asm.MUL(W15, W16, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W16, W2");
+        TestInst(MUL(WZR, W16, W2), asm => asm.MUL(WZR, W16, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W16, W2");
+        TestInst(MUL(W0, WZR, W2), asm => asm.MUL(W0, WZR, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, WZR, W2");
+        TestInst(MUL(W15, WZR, W2), asm => asm.MUL(W15, WZR, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, WZR, W2");
+        TestInst(MUL(WZR, WZR, W2), asm => asm.MUL(WZR, WZR, W2), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, WZR, W2");
+        TestInst(MUL(W0, W1, W17), asm => asm.MUL(W0, W1, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W1, W17");
+        TestInst(MUL(W15, W1, W17), asm => asm.MUL(W15, W1, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W1, W17");
+        TestInst(MUL(WZR, W1, W17), asm => asm.MUL(WZR, W1, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W1, W17");
+        TestInst(MUL(W0, W16, W17), asm => asm.MUL(W0, W16, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W16, W17");
+        TestInst(MUL(W15, W16, W17), asm => asm.MUL(W15, W16, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W16, W17");
+        TestInst(MUL(WZR, W16, W17), asm => asm.MUL(WZR, W16, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W16, W17");
+        TestInst(MUL(W0, WZR, W17), asm => asm.MUL(W0, WZR, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, WZR, W17");
+        TestInst(MUL(W15, WZR, W17), asm => asm.MUL(W15, WZR, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, WZR, W17");
+        TestInst(MUL(WZR, WZR, W17), asm => asm.MUL(WZR, WZR, W17), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, WZR, W17");
+        TestInst(MUL(W0, W1, WZR), asm => asm.MUL(W0, W1, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W1, WZR");
+        TestInst(MUL(W15, W1, WZR), asm => asm.MUL(W15, W1, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W1, WZR");
+        TestInst(MUL(WZR, W1, WZR), asm => asm.MUL(WZR, W1, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W1, WZR");
+        TestInst(MUL(W0, W16, WZR), asm => asm.MUL(W0, W16, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, W16, WZR");
+        TestInst(MUL(W15, W16, WZR), asm => asm.MUL(W15, W16, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, W16, WZR");
+        TestInst(MUL(WZR, W16, WZR), asm => asm.MUL(WZR, W16, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, W16, WZR");
+        TestInst(MUL(W0, WZR, WZR), asm => asm.MUL(W0, WZR, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W0, WZR, WZR");
+        TestInst(MUL(W15, WZR, WZR), asm => asm.MUL(W15, WZR, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL W15, WZR, WZR");
+        TestInst(MUL(WZR, WZR, WZR), asm => asm.MUL(WZR, WZR, WZR), Arm64InstructionId.MUL_madd_32a_dp_3src, Arm64Mnemonic.MUL, "MUL WZR, WZR, WZR");
     }
     
     /// <summary>
@@ -59,32 +58,32 @@ public class Arm64InstructionFactoryTests_MUL_General : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_MUL_madd_64a_dp_3src_1()
     {
-        TestInst(MUL(X0, X1, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X1, X2");
-        TestInst(MUL(X15, X1, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X1, X2");
-        TestInst(MUL(XZR, X1, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X1, X2");
-        TestInst(MUL(X0, X16, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X16, X2");
-        TestInst(MUL(X15, X16, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X16, X2");
-        TestInst(MUL(XZR, X16, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X16, X2");
-        TestInst(MUL(X0, XZR, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, XZR, X2");
-        TestInst(MUL(X15, XZR, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, XZR, X2");
-        TestInst(MUL(XZR, XZR, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, XZR, X2");
-        TestInst(MUL(X0, X1, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X1, X17");
-        TestInst(MUL(X15, X1, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X1, X17");
-        TestInst(MUL(XZR, X1, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X1, X17");
-        TestInst(MUL(X0, X16, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X16, X17");
-        TestInst(MUL(X15, X16, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X16, X17");
-        TestInst(MUL(XZR, X16, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X16, X17");
-        TestInst(MUL(X0, XZR, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, XZR, X17");
-        TestInst(MUL(X15, XZR, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, XZR, X17");
-        TestInst(MUL(XZR, XZR, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, XZR, X17");
-        TestInst(MUL(X0, X1, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X1, XZR");
-        TestInst(MUL(X15, X1, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X1, XZR");
-        TestInst(MUL(XZR, X1, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X1, XZR");
-        TestInst(MUL(X0, X16, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X16, XZR");
-        TestInst(MUL(X15, X16, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X16, XZR");
-        TestInst(MUL(XZR, X16, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X16, XZR");
-        TestInst(MUL(X0, XZR, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, XZR, XZR");
-        TestInst(MUL(X15, XZR, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, XZR, XZR");
-        TestInst(MUL(XZR, XZR, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, XZR, XZR");
+        TestInst(MUL(X0, X1, X2), asm => asm.MUL(X0, X1, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X1, X2");
+        TestInst(MUL(X15, X1, X2), asm => asm.MUL(X15, X1, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X1, X2");
+        TestInst(MUL(XZR, X1, X2), asm => asm.MUL(XZR, X1, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X1, X2");
+        TestInst(MUL(X0, X16, X2), asm => asm.MUL(X0, X16, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X16, X2");
+        TestInst(MUL(X15, X16, X2), asm => asm.MUL(X15, X16, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X16, X2");
+        TestInst(MUL(XZR, X16, X2), asm => asm.MUL(XZR, X16, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X16, X2");
+        TestInst(MUL(X0, XZR, X2), asm => asm.MUL(X0, XZR, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, XZR, X2");
+        TestInst(MUL(X15, XZR, X2), asm => asm.MUL(X15, XZR, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, XZR, X2");
+        TestInst(MUL(XZR, XZR, X2), asm => asm.MUL(XZR, XZR, X2), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, XZR, X2");
+        TestInst(MUL(X0, X1, X17), asm => asm.MUL(X0, X1, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X1, X17");
+        TestInst(MUL(X15, X1, X17), asm => asm.MUL(X15, X1, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X1, X17");
+        TestInst(MUL(XZR, X1, X17), asm => asm.MUL(XZR, X1, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X1, X17");
+        TestInst(MUL(X0, X16, X17), asm => asm.MUL(X0, X16, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X16, X17");
+        TestInst(MUL(X15, X16, X17), asm => asm.MUL(X15, X16, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X16, X17");
+        TestInst(MUL(XZR, X16, X17), asm => asm.MUL(XZR, X16, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X16, X17");
+        TestInst(MUL(X0, XZR, X17), asm => asm.MUL(X0, XZR, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, XZR, X17");
+        TestInst(MUL(X15, XZR, X17), asm => asm.MUL(X15, XZR, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, XZR, X17");
+        TestInst(MUL(XZR, XZR, X17), asm => asm.MUL(XZR, XZR, X17), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, XZR, X17");
+        TestInst(MUL(X0, X1, XZR), asm => asm.MUL(X0, X1, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X1, XZR");
+        TestInst(MUL(X15, X1, XZR), asm => asm.MUL(X15, X1, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X1, XZR");
+        TestInst(MUL(XZR, X1, XZR), asm => asm.MUL(XZR, X1, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X1, XZR");
+        TestInst(MUL(X0, X16, XZR), asm => asm.MUL(X0, X16, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, X16, XZR");
+        TestInst(MUL(X15, X16, XZR), asm => asm.MUL(X15, X16, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, X16, XZR");
+        TestInst(MUL(XZR, X16, XZR), asm => asm.MUL(XZR, X16, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, X16, XZR");
+        TestInst(MUL(X0, XZR, XZR), asm => asm.MUL(X0, XZR, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X0, XZR, XZR");
+        TestInst(MUL(X15, XZR, XZR), asm => asm.MUL(X15, XZR, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL X15, XZR, XZR");
+        TestInst(MUL(XZR, XZR, XZR), asm => asm.MUL(XZR, XZR, XZR), Arm64InstructionId.MUL_madd_64a_dp_3src, Arm64Mnemonic.MUL, "MUL XZR, XZR, XZR");
     }
 }

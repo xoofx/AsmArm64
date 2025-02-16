@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.General;
@@ -24,14 +23,14 @@ public class Arm64InstructionFactoryTests_LDCLRPAL_General : Arm64InstructionFac
     [TestMethod]
     public void Test_LDCLRPAL_128_memop_128_0()
     {
-        TestInst(LDCLRPAL(X0, X1, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X0, X1, [X3]");
-        TestInst(LDCLRPAL(X15, X1, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X15, X1, [X3]");
-        TestInst(LDCLRPAL(XZR, X1, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL XZR, X1, [X3]");
-        TestInst(LDCLRPAL(X0, X16, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X0, X16, [X3]");
-        TestInst(LDCLRPAL(X15, X16, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X15, X16, [X3]");
-        TestInst(LDCLRPAL(XZR, X16, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL XZR, X16, [X3]");
-        TestInst(LDCLRPAL(X0, XZR, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X0, XZR, [X3]");
-        TestInst(LDCLRPAL(X15, XZR, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X15, XZR, [X3]");
-        TestInst(LDCLRPAL(XZR, XZR, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL XZR, XZR, [X3]");
+        TestInst(LDCLRPAL(X0, X1, _[X3]), asm => asm.LDCLRPAL(X0, X1, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X0, X1, [X3]");
+        TestInst(LDCLRPAL(X15, X1, _[X3]), asm => asm.LDCLRPAL(X15, X1, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X15, X1, [X3]");
+        TestInst(LDCLRPAL(XZR, X1, _[X3]), asm => asm.LDCLRPAL(XZR, X1, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL XZR, X1, [X3]");
+        TestInst(LDCLRPAL(X0, X16, _[X3]), asm => asm.LDCLRPAL(X0, X16, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X0, X16, [X3]");
+        TestInst(LDCLRPAL(X15, X16, _[X3]), asm => asm.LDCLRPAL(X15, X16, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X15, X16, [X3]");
+        TestInst(LDCLRPAL(XZR, X16, _[X3]), asm => asm.LDCLRPAL(XZR, X16, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL XZR, X16, [X3]");
+        TestInst(LDCLRPAL(X0, XZR, _[X3]), asm => asm.LDCLRPAL(X0, XZR, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X0, XZR, [X3]");
+        TestInst(LDCLRPAL(X15, XZR, _[X3]), asm => asm.LDCLRPAL(X15, XZR, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL X15, XZR, [X3]");
+        TestInst(LDCLRPAL(XZR, XZR, _[X3]), asm => asm.LDCLRPAL(XZR, XZR, _[X3]), Arm64InstructionId.LDCLRPAL_128_memop_128, Arm64Mnemonic.LDCLRPAL, "LDCLRPAL XZR, XZR, [X3]");
     }
 }

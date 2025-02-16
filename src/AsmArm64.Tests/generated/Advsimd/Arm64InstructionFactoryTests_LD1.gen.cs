@@ -9,7 +9,6 @@
 // ReSharper disable All
 // ------------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using static AsmArm64.Arm64InstructionFactory;
 using static AsmArm64.Arm64Factory;
 namespace AsmArm64.Tests.Advsimd;
@@ -24,8 +23,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r1_1v_0()
     {
-        TestInst(LD1(V0.T_8B.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.8B }, [X2]");
-        TestInst(LD1(V30.T_8B.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.8B }, [X2]");
+        TestInst(LD1(V0.T_8B.Group1(), _[X2]), asm => asm.LD1(V0.T_8B.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.8B }, [X2]");
+        TestInst(LD1(V30.T_8B.Group1(), _[X2]), asm => asm.LD1(V30.T_8B.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.8B }, [X2]");
     }
     
     /// <summary>
@@ -34,8 +33,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r1_1v_1()
     {
-        TestInst(LD1(V0.T_16B.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.16B }, [X2]");
-        TestInst(LD1(V30.T_16B.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.16B }, [X2]");
+        TestInst(LD1(V0.T_16B.Group1(), _[X2]), asm => asm.LD1(V0.T_16B.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.16B }, [X2]");
+        TestInst(LD1(V30.T_16B.Group1(), _[X2]), asm => asm.LD1(V30.T_16B.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.16B }, [X2]");
     }
     
     /// <summary>
@@ -44,8 +43,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r1_1v_2()
     {
-        TestInst(LD1(V0.T_4H.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.4H }, [X2]");
-        TestInst(LD1(V30.T_4H.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.4H }, [X2]");
+        TestInst(LD1(V0.T_4H.Group1(), _[X2]), asm => asm.LD1(V0.T_4H.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.4H }, [X2]");
+        TestInst(LD1(V30.T_4H.Group1(), _[X2]), asm => asm.LD1(V30.T_4H.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.4H }, [X2]");
     }
     
     /// <summary>
@@ -54,8 +53,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r1_1v_3()
     {
-        TestInst(LD1(V0.T_8H.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.8H }, [X2]");
-        TestInst(LD1(V30.T_8H.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.8H }, [X2]");
+        TestInst(LD1(V0.T_8H.Group1(), _[X2]), asm => asm.LD1(V0.T_8H.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.8H }, [X2]");
+        TestInst(LD1(V30.T_8H.Group1(), _[X2]), asm => asm.LD1(V30.T_8H.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.8H }, [X2]");
     }
     
     /// <summary>
@@ -64,8 +63,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r1_1v_4()
     {
-        TestInst(LD1(V0.T_2S.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.2S }, [X2]");
-        TestInst(LD1(V30.T_2S.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.2S }, [X2]");
+        TestInst(LD1(V0.T_2S.Group1(), _[X2]), asm => asm.LD1(V0.T_2S.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.2S }, [X2]");
+        TestInst(LD1(V30.T_2S.Group1(), _[X2]), asm => asm.LD1(V30.T_2S.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.2S }, [X2]");
     }
     
     /// <summary>
@@ -74,8 +73,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r1_1v_5()
     {
-        TestInst(LD1(V0.T_4S.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.4S }, [X2]");
-        TestInst(LD1(V30.T_4S.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.4S }, [X2]");
+        TestInst(LD1(V0.T_4S.Group1(), _[X2]), asm => asm.LD1(V0.T_4S.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.4S }, [X2]");
+        TestInst(LD1(V30.T_4S.Group1(), _[X2]), asm => asm.LD1(V30.T_4S.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.4S }, [X2]");
     }
     
     /// <summary>
@@ -84,8 +83,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r1_1v_6()
     {
-        TestInst(LD1(V0.T_1D.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.1D }, [X2]");
-        TestInst(LD1(V30.T_1D.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.1D }, [X2]");
+        TestInst(LD1(V0.T_1D.Group1(), _[X2]), asm => asm.LD1(V0.T_1D.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.1D }, [X2]");
+        TestInst(LD1(V30.T_1D.Group1(), _[X2]), asm => asm.LD1(V30.T_1D.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.1D }, [X2]");
     }
     
     /// <summary>
@@ -94,8 +93,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r1_1v_7()
     {
-        TestInst(LD1(V0.T_2D.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.2D }, [X2]");
-        TestInst(LD1(V30.T_2D.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.2D }, [X2]");
+        TestInst(LD1(V0.T_2D.Group1(), _[X2]), asm => asm.LD1(V0.T_2D.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V0.2D }, [X2]");
+        TestInst(LD1(V30.T_2D.Group1(), _[X2]), asm => asm.LD1(V30.T_2D.Group1(), _[X2]), Arm64InstructionId.LD1_asisdlse_r1_1v, Arm64Mnemonic.LD1, "LD1 { V30.2D }, [X2]");
     }
     
     /// <summary>
@@ -104,8 +103,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r2_2v_8()
     {
-        TestInst(LD1(V0.T_8B.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B }, [X2]");
-        TestInst(LD1(V30.T_8B.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B }, [X2]");
+        TestInst(LD1(V0.T_8B.Group2(), _[X2]), asm => asm.LD1(V0.T_8B.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B }, [X2]");
+        TestInst(LD1(V30.T_8B.Group2(), _[X2]), asm => asm.LD1(V30.T_8B.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B }, [X2]");
     }
     
     /// <summary>
@@ -114,8 +113,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r2_2v_9()
     {
-        TestInst(LD1(V0.T_16B.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B }, [X2]");
-        TestInst(LD1(V30.T_16B.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B }, [X2]");
+        TestInst(LD1(V0.T_16B.Group2(), _[X2]), asm => asm.LD1(V0.T_16B.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B }, [X2]");
+        TestInst(LD1(V30.T_16B.Group2(), _[X2]), asm => asm.LD1(V30.T_16B.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B }, [X2]");
     }
     
     /// <summary>
@@ -124,8 +123,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r2_2v_10()
     {
-        TestInst(LD1(V0.T_4H.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H }, [X2]");
-        TestInst(LD1(V30.T_4H.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H }, [X2]");
+        TestInst(LD1(V0.T_4H.Group2(), _[X2]), asm => asm.LD1(V0.T_4H.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H }, [X2]");
+        TestInst(LD1(V30.T_4H.Group2(), _[X2]), asm => asm.LD1(V30.T_4H.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H }, [X2]");
     }
     
     /// <summary>
@@ -134,8 +133,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r2_2v_11()
     {
-        TestInst(LD1(V0.T_8H.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H }, [X2]");
-        TestInst(LD1(V30.T_8H.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H }, [X2]");
+        TestInst(LD1(V0.T_8H.Group2(), _[X2]), asm => asm.LD1(V0.T_8H.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H }, [X2]");
+        TestInst(LD1(V30.T_8H.Group2(), _[X2]), asm => asm.LD1(V30.T_8H.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H }, [X2]");
     }
     
     /// <summary>
@@ -144,8 +143,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r2_2v_12()
     {
-        TestInst(LD1(V0.T_2S.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S }, [X2]");
-        TestInst(LD1(V30.T_2S.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S }, [X2]");
+        TestInst(LD1(V0.T_2S.Group2(), _[X2]), asm => asm.LD1(V0.T_2S.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S }, [X2]");
+        TestInst(LD1(V30.T_2S.Group2(), _[X2]), asm => asm.LD1(V30.T_2S.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S }, [X2]");
     }
     
     /// <summary>
@@ -154,8 +153,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r2_2v_13()
     {
-        TestInst(LD1(V0.T_4S.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S }, [X2]");
-        TestInst(LD1(V30.T_4S.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S }, [X2]");
+        TestInst(LD1(V0.T_4S.Group2(), _[X2]), asm => asm.LD1(V0.T_4S.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S }, [X2]");
+        TestInst(LD1(V30.T_4S.Group2(), _[X2]), asm => asm.LD1(V30.T_4S.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S }, [X2]");
     }
     
     /// <summary>
@@ -164,8 +163,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r2_2v_14()
     {
-        TestInst(LD1(V0.T_1D.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D }, [X2]");
-        TestInst(LD1(V30.T_1D.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D }, [X2]");
+        TestInst(LD1(V0.T_1D.Group2(), _[X2]), asm => asm.LD1(V0.T_1D.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D }, [X2]");
+        TestInst(LD1(V30.T_1D.Group2(), _[X2]), asm => asm.LD1(V30.T_1D.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D }, [X2]");
     }
     
     /// <summary>
@@ -174,8 +173,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r2_2v_15()
     {
-        TestInst(LD1(V0.T_2D.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D }, [X2]");
-        TestInst(LD1(V30.T_2D.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D }, [X2]");
+        TestInst(LD1(V0.T_2D.Group2(), _[X2]), asm => asm.LD1(V0.T_2D.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D }, [X2]");
+        TestInst(LD1(V30.T_2D.Group2(), _[X2]), asm => asm.LD1(V30.T_2D.Group2(), _[X2]), Arm64InstructionId.LD1_asisdlse_r2_2v, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D }, [X2]");
     }
     
     /// <summary>
@@ -184,8 +183,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r3_3v_16()
     {
-        TestInst(LD1(V0.T_8B.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B }, [X2]");
-        TestInst(LD1(V30.T_8B.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B }, [X2]");
+        TestInst(LD1(V0.T_8B.Group3(), _[X2]), asm => asm.LD1(V0.T_8B.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B }, [X2]");
+        TestInst(LD1(V30.T_8B.Group3(), _[X2]), asm => asm.LD1(V30.T_8B.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B }, [X2]");
     }
     
     /// <summary>
@@ -194,8 +193,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r3_3v_17()
     {
-        TestInst(LD1(V0.T_16B.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B }, [X2]");
-        TestInst(LD1(V30.T_16B.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B }, [X2]");
+        TestInst(LD1(V0.T_16B.Group3(), _[X2]), asm => asm.LD1(V0.T_16B.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B }, [X2]");
+        TestInst(LD1(V30.T_16B.Group3(), _[X2]), asm => asm.LD1(V30.T_16B.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B }, [X2]");
     }
     
     /// <summary>
@@ -204,8 +203,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r3_3v_18()
     {
-        TestInst(LD1(V0.T_4H.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H }, [X2]");
-        TestInst(LD1(V30.T_4H.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H }, [X2]");
+        TestInst(LD1(V0.T_4H.Group3(), _[X2]), asm => asm.LD1(V0.T_4H.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H }, [X2]");
+        TestInst(LD1(V30.T_4H.Group3(), _[X2]), asm => asm.LD1(V30.T_4H.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H }, [X2]");
     }
     
     /// <summary>
@@ -214,8 +213,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r3_3v_19()
     {
-        TestInst(LD1(V0.T_8H.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H }, [X2]");
-        TestInst(LD1(V30.T_8H.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H }, [X2]");
+        TestInst(LD1(V0.T_8H.Group3(), _[X2]), asm => asm.LD1(V0.T_8H.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H }, [X2]");
+        TestInst(LD1(V30.T_8H.Group3(), _[X2]), asm => asm.LD1(V30.T_8H.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H }, [X2]");
     }
     
     /// <summary>
@@ -224,8 +223,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r3_3v_20()
     {
-        TestInst(LD1(V0.T_2S.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S }, [X2]");
-        TestInst(LD1(V30.T_2S.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S }, [X2]");
+        TestInst(LD1(V0.T_2S.Group3(), _[X2]), asm => asm.LD1(V0.T_2S.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S }, [X2]");
+        TestInst(LD1(V30.T_2S.Group3(), _[X2]), asm => asm.LD1(V30.T_2S.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S }, [X2]");
     }
     
     /// <summary>
@@ -234,8 +233,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r3_3v_21()
     {
-        TestInst(LD1(V0.T_4S.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S }, [X2]");
-        TestInst(LD1(V30.T_4S.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S }, [X2]");
+        TestInst(LD1(V0.T_4S.Group3(), _[X2]), asm => asm.LD1(V0.T_4S.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S }, [X2]");
+        TestInst(LD1(V30.T_4S.Group3(), _[X2]), asm => asm.LD1(V30.T_4S.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S }, [X2]");
     }
     
     /// <summary>
@@ -244,8 +243,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r3_3v_22()
     {
-        TestInst(LD1(V0.T_1D.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D }, [X2]");
-        TestInst(LD1(V30.T_1D.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D }, [X2]");
+        TestInst(LD1(V0.T_1D.Group3(), _[X2]), asm => asm.LD1(V0.T_1D.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D }, [X2]");
+        TestInst(LD1(V30.T_1D.Group3(), _[X2]), asm => asm.LD1(V30.T_1D.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D }, [X2]");
     }
     
     /// <summary>
@@ -254,8 +253,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r3_3v_23()
     {
-        TestInst(LD1(V0.T_2D.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D }, [X2]");
-        TestInst(LD1(V30.T_2D.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D }, [X2]");
+        TestInst(LD1(V0.T_2D.Group3(), _[X2]), asm => asm.LD1(V0.T_2D.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D }, [X2]");
+        TestInst(LD1(V30.T_2D.Group3(), _[X2]), asm => asm.LD1(V30.T_2D.Group3(), _[X2]), Arm64InstructionId.LD1_asisdlse_r3_3v, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D }, [X2]");
     }
     
     /// <summary>
@@ -264,8 +263,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r4_4v_24()
     {
-        TestInst(LD1(V0.T_8B.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B, V3.8B }, [X2]");
-        TestInst(LD1(V30.T_8B.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B, V1.8B }, [X2]");
+        TestInst(LD1(V0.T_8B.Group4(), _[X2]), asm => asm.LD1(V0.T_8B.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B, V3.8B }, [X2]");
+        TestInst(LD1(V30.T_8B.Group4(), _[X2]), asm => asm.LD1(V30.T_8B.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B, V1.8B }, [X2]");
     }
     
     /// <summary>
@@ -274,8 +273,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r4_4v_25()
     {
-        TestInst(LD1(V0.T_16B.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B, V3.16B }, [X2]");
-        TestInst(LD1(V30.T_16B.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B, V1.16B }, [X2]");
+        TestInst(LD1(V0.T_16B.Group4(), _[X2]), asm => asm.LD1(V0.T_16B.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B, V3.16B }, [X2]");
+        TestInst(LD1(V30.T_16B.Group4(), _[X2]), asm => asm.LD1(V30.T_16B.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B, V1.16B }, [X2]");
     }
     
     /// <summary>
@@ -284,8 +283,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r4_4v_26()
     {
-        TestInst(LD1(V0.T_4H.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H, V3.4H }, [X2]");
-        TestInst(LD1(V30.T_4H.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H, V1.4H }, [X2]");
+        TestInst(LD1(V0.T_4H.Group4(), _[X2]), asm => asm.LD1(V0.T_4H.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H, V3.4H }, [X2]");
+        TestInst(LD1(V30.T_4H.Group4(), _[X2]), asm => asm.LD1(V30.T_4H.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H, V1.4H }, [X2]");
     }
     
     /// <summary>
@@ -294,8 +293,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r4_4v_27()
     {
-        TestInst(LD1(V0.T_8H.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H, V3.8H }, [X2]");
-        TestInst(LD1(V30.T_8H.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H, V1.8H }, [X2]");
+        TestInst(LD1(V0.T_8H.Group4(), _[X2]), asm => asm.LD1(V0.T_8H.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H, V3.8H }, [X2]");
+        TestInst(LD1(V30.T_8H.Group4(), _[X2]), asm => asm.LD1(V30.T_8H.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H, V1.8H }, [X2]");
     }
     
     /// <summary>
@@ -304,8 +303,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r4_4v_28()
     {
-        TestInst(LD1(V0.T_2S.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S, V3.2S }, [X2]");
-        TestInst(LD1(V30.T_2S.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S, V1.2S }, [X2]");
+        TestInst(LD1(V0.T_2S.Group4(), _[X2]), asm => asm.LD1(V0.T_2S.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S, V3.2S }, [X2]");
+        TestInst(LD1(V30.T_2S.Group4(), _[X2]), asm => asm.LD1(V30.T_2S.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S, V1.2S }, [X2]");
     }
     
     /// <summary>
@@ -314,8 +313,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r4_4v_29()
     {
-        TestInst(LD1(V0.T_4S.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S, V3.4S }, [X2]");
-        TestInst(LD1(V30.T_4S.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S, V1.4S }, [X2]");
+        TestInst(LD1(V0.T_4S.Group4(), _[X2]), asm => asm.LD1(V0.T_4S.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S, V3.4S }, [X2]");
+        TestInst(LD1(V30.T_4S.Group4(), _[X2]), asm => asm.LD1(V30.T_4S.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S, V1.4S }, [X2]");
     }
     
     /// <summary>
@@ -324,8 +323,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r4_4v_30()
     {
-        TestInst(LD1(V0.T_1D.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D, V3.1D }, [X2]");
-        TestInst(LD1(V30.T_1D.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D, V1.1D }, [X2]");
+        TestInst(LD1(V0.T_1D.Group4(), _[X2]), asm => asm.LD1(V0.T_1D.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D, V3.1D }, [X2]");
+        TestInst(LD1(V30.T_1D.Group4(), _[X2]), asm => asm.LD1(V30.T_1D.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D, V1.1D }, [X2]");
     }
     
     /// <summary>
@@ -334,8 +333,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlse_r4_4v_31()
     {
-        TestInst(LD1(V0.T_2D.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D, V3.2D }, [X2]");
-        TestInst(LD1(V30.T_2D.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D, V1.2D }, [X2]");
+        TestInst(LD1(V0.T_2D.Group4(), _[X2]), asm => asm.LD1(V0.T_2D.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D, V3.2D }, [X2]");
+        TestInst(LD1(V30.T_2D.Group4(), _[X2]), asm => asm.LD1(V30.T_2D.Group4(), _[X2]), Arm64InstructionId.LD1_asisdlse_r4_4v, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D, V1.2D }, [X2]");
     }
     
     /// <summary>
@@ -344,8 +343,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i1_i1_32()
     {
-        TestInst(LD1(V0.T_8B.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.8B }, [X2], #8");
-        TestInst(LD1(V30.T_8B.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.8B }, [X2], #8");
+        TestInst(LD1(V0.T_8B.Group1(), _[X2], 8), asm => asm.LD1(V0.T_8B.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.8B }, [X2], #8");
+        TestInst(LD1(V30.T_8B.Group1(), _[X2], 8), asm => asm.LD1(V30.T_8B.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.8B }, [X2], #8");
     }
     
     /// <summary>
@@ -354,8 +353,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i1_i1_33()
     {
-        TestInst(LD1(V0.T_16B.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.16B }, [X2], #16");
-        TestInst(LD1(V30.T_16B.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.16B }, [X2], #16");
+        TestInst(LD1(V0.T_16B.Group1(), _[X2], 16), asm => asm.LD1(V0.T_16B.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.16B }, [X2], #16");
+        TestInst(LD1(V30.T_16B.Group1(), _[X2], 16), asm => asm.LD1(V30.T_16B.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.16B }, [X2], #16");
     }
     
     /// <summary>
@@ -364,8 +363,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i1_i1_34()
     {
-        TestInst(LD1(V0.T_4H.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.4H }, [X2], #8");
-        TestInst(LD1(V30.T_4H.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.4H }, [X2], #8");
+        TestInst(LD1(V0.T_4H.Group1(), _[X2], 8), asm => asm.LD1(V0.T_4H.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.4H }, [X2], #8");
+        TestInst(LD1(V30.T_4H.Group1(), _[X2], 8), asm => asm.LD1(V30.T_4H.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.4H }, [X2], #8");
     }
     
     /// <summary>
@@ -374,8 +373,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i1_i1_35()
     {
-        TestInst(LD1(V0.T_8H.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.8H }, [X2], #16");
-        TestInst(LD1(V30.T_8H.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.8H }, [X2], #16");
+        TestInst(LD1(V0.T_8H.Group1(), _[X2], 16), asm => asm.LD1(V0.T_8H.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.8H }, [X2], #16");
+        TestInst(LD1(V30.T_8H.Group1(), _[X2], 16), asm => asm.LD1(V30.T_8H.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.8H }, [X2], #16");
     }
     
     /// <summary>
@@ -384,8 +383,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i1_i1_36()
     {
-        TestInst(LD1(V0.T_2S.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.2S }, [X2], #8");
-        TestInst(LD1(V30.T_2S.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.2S }, [X2], #8");
+        TestInst(LD1(V0.T_2S.Group1(), _[X2], 8), asm => asm.LD1(V0.T_2S.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.2S }, [X2], #8");
+        TestInst(LD1(V30.T_2S.Group1(), _[X2], 8), asm => asm.LD1(V30.T_2S.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.2S }, [X2], #8");
     }
     
     /// <summary>
@@ -394,8 +393,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i1_i1_37()
     {
-        TestInst(LD1(V0.T_4S.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.4S }, [X2], #16");
-        TestInst(LD1(V30.T_4S.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.4S }, [X2], #16");
+        TestInst(LD1(V0.T_4S.Group1(), _[X2], 16), asm => asm.LD1(V0.T_4S.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.4S }, [X2], #16");
+        TestInst(LD1(V30.T_4S.Group1(), _[X2], 16), asm => asm.LD1(V30.T_4S.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.4S }, [X2], #16");
     }
     
     /// <summary>
@@ -404,8 +403,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i1_i1_38()
     {
-        TestInst(LD1(V0.T_1D.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.1D }, [X2], #8");
-        TestInst(LD1(V30.T_1D.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.1D }, [X2], #8");
+        TestInst(LD1(V0.T_1D.Group1(), _[X2], 8), asm => asm.LD1(V0.T_1D.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.1D }, [X2], #8");
+        TestInst(LD1(V30.T_1D.Group1(), _[X2], 8), asm => asm.LD1(V30.T_1D.Group1(), _[X2], 8), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.1D }, [X2], #8");
     }
     
     /// <summary>
@@ -414,8 +413,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i1_i1_39()
     {
-        TestInst(LD1(V0.T_2D.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.2D }, [X2], #16");
-        TestInst(LD1(V30.T_2D.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.2D }, [X2], #16");
+        TestInst(LD1(V0.T_2D.Group1(), _[X2], 16), asm => asm.LD1(V0.T_2D.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V0.2D }, [X2], #16");
+        TestInst(LD1(V30.T_2D.Group1(), _[X2], 16), asm => asm.LD1(V30.T_2D.Group1(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i1_i1, Arm64Mnemonic.LD1, "LD1 { V30.2D }, [X2], #16");
     }
     
     /// <summary>
@@ -424,10 +423,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r1_r1_40()
     {
-        TestInst(LD1(V0.T_8B.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.8B }, [X2], X2");
-        TestInst(LD1(V30.T_8B.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.8B }, [X2], X2");
-        TestInst(LD1(V0.T_8B.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.8B }, [X2], X17");
-        TestInst(LD1(V30.T_8B.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.8B }, [X2], X17");
+        TestInst(LD1(V0.T_8B.Group1(), _[X2], X2), asm => asm.LD1(V0.T_8B.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.8B }, [X2], X2");
+        TestInst(LD1(V30.T_8B.Group1(), _[X2], X2), asm => asm.LD1(V30.T_8B.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.8B }, [X2], X2");
+        TestInst(LD1(V0.T_8B.Group1(), _[X2], X17), asm => asm.LD1(V0.T_8B.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.8B }, [X2], X17");
+        TestInst(LD1(V30.T_8B.Group1(), _[X2], X17), asm => asm.LD1(V30.T_8B.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.8B }, [X2], X17");
     }
     
     /// <summary>
@@ -436,10 +435,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r1_r1_41()
     {
-        TestInst(LD1(V0.T_16B.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.16B }, [X2], X2");
-        TestInst(LD1(V30.T_16B.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.16B }, [X2], X2");
-        TestInst(LD1(V0.T_16B.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.16B }, [X2], X17");
-        TestInst(LD1(V30.T_16B.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.16B }, [X2], X17");
+        TestInst(LD1(V0.T_16B.Group1(), _[X2], X2), asm => asm.LD1(V0.T_16B.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.16B }, [X2], X2");
+        TestInst(LD1(V30.T_16B.Group1(), _[X2], X2), asm => asm.LD1(V30.T_16B.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.16B }, [X2], X2");
+        TestInst(LD1(V0.T_16B.Group1(), _[X2], X17), asm => asm.LD1(V0.T_16B.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.16B }, [X2], X17");
+        TestInst(LD1(V30.T_16B.Group1(), _[X2], X17), asm => asm.LD1(V30.T_16B.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.16B }, [X2], X17");
     }
     
     /// <summary>
@@ -448,10 +447,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r1_r1_42()
     {
-        TestInst(LD1(V0.T_4H.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.4H }, [X2], X2");
-        TestInst(LD1(V30.T_4H.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.4H }, [X2], X2");
-        TestInst(LD1(V0.T_4H.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.4H }, [X2], X17");
-        TestInst(LD1(V30.T_4H.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.4H }, [X2], X17");
+        TestInst(LD1(V0.T_4H.Group1(), _[X2], X2), asm => asm.LD1(V0.T_4H.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.4H }, [X2], X2");
+        TestInst(LD1(V30.T_4H.Group1(), _[X2], X2), asm => asm.LD1(V30.T_4H.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.4H }, [X2], X2");
+        TestInst(LD1(V0.T_4H.Group1(), _[X2], X17), asm => asm.LD1(V0.T_4H.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.4H }, [X2], X17");
+        TestInst(LD1(V30.T_4H.Group1(), _[X2], X17), asm => asm.LD1(V30.T_4H.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.4H }, [X2], X17");
     }
     
     /// <summary>
@@ -460,10 +459,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r1_r1_43()
     {
-        TestInst(LD1(V0.T_8H.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.8H }, [X2], X2");
-        TestInst(LD1(V30.T_8H.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.8H }, [X2], X2");
-        TestInst(LD1(V0.T_8H.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.8H }, [X2], X17");
-        TestInst(LD1(V30.T_8H.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.8H }, [X2], X17");
+        TestInst(LD1(V0.T_8H.Group1(), _[X2], X2), asm => asm.LD1(V0.T_8H.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.8H }, [X2], X2");
+        TestInst(LD1(V30.T_8H.Group1(), _[X2], X2), asm => asm.LD1(V30.T_8H.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.8H }, [X2], X2");
+        TestInst(LD1(V0.T_8H.Group1(), _[X2], X17), asm => asm.LD1(V0.T_8H.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.8H }, [X2], X17");
+        TestInst(LD1(V30.T_8H.Group1(), _[X2], X17), asm => asm.LD1(V30.T_8H.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.8H }, [X2], X17");
     }
     
     /// <summary>
@@ -472,10 +471,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r1_r1_44()
     {
-        TestInst(LD1(V0.T_2S.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.2S }, [X2], X2");
-        TestInst(LD1(V30.T_2S.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.2S }, [X2], X2");
-        TestInst(LD1(V0.T_2S.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.2S }, [X2], X17");
-        TestInst(LD1(V30.T_2S.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.2S }, [X2], X17");
+        TestInst(LD1(V0.T_2S.Group1(), _[X2], X2), asm => asm.LD1(V0.T_2S.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.2S }, [X2], X2");
+        TestInst(LD1(V30.T_2S.Group1(), _[X2], X2), asm => asm.LD1(V30.T_2S.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.2S }, [X2], X2");
+        TestInst(LD1(V0.T_2S.Group1(), _[X2], X17), asm => asm.LD1(V0.T_2S.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.2S }, [X2], X17");
+        TestInst(LD1(V30.T_2S.Group1(), _[X2], X17), asm => asm.LD1(V30.T_2S.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.2S }, [X2], X17");
     }
     
     /// <summary>
@@ -484,10 +483,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r1_r1_45()
     {
-        TestInst(LD1(V0.T_4S.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.4S }, [X2], X2");
-        TestInst(LD1(V30.T_4S.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.4S }, [X2], X2");
-        TestInst(LD1(V0.T_4S.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.4S }, [X2], X17");
-        TestInst(LD1(V30.T_4S.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.4S }, [X2], X17");
+        TestInst(LD1(V0.T_4S.Group1(), _[X2], X2), asm => asm.LD1(V0.T_4S.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.4S }, [X2], X2");
+        TestInst(LD1(V30.T_4S.Group1(), _[X2], X2), asm => asm.LD1(V30.T_4S.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.4S }, [X2], X2");
+        TestInst(LD1(V0.T_4S.Group1(), _[X2], X17), asm => asm.LD1(V0.T_4S.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.4S }, [X2], X17");
+        TestInst(LD1(V30.T_4S.Group1(), _[X2], X17), asm => asm.LD1(V30.T_4S.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.4S }, [X2], X17");
     }
     
     /// <summary>
@@ -496,10 +495,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r1_r1_46()
     {
-        TestInst(LD1(V0.T_1D.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.1D }, [X2], X2");
-        TestInst(LD1(V30.T_1D.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.1D }, [X2], X2");
-        TestInst(LD1(V0.T_1D.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.1D }, [X2], X17");
-        TestInst(LD1(V30.T_1D.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.1D }, [X2], X17");
+        TestInst(LD1(V0.T_1D.Group1(), _[X2], X2), asm => asm.LD1(V0.T_1D.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.1D }, [X2], X2");
+        TestInst(LD1(V30.T_1D.Group1(), _[X2], X2), asm => asm.LD1(V30.T_1D.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.1D }, [X2], X2");
+        TestInst(LD1(V0.T_1D.Group1(), _[X2], X17), asm => asm.LD1(V0.T_1D.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.1D }, [X2], X17");
+        TestInst(LD1(V30.T_1D.Group1(), _[X2], X17), asm => asm.LD1(V30.T_1D.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.1D }, [X2], X17");
     }
     
     /// <summary>
@@ -508,10 +507,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r1_r1_47()
     {
-        TestInst(LD1(V0.T_2D.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.2D }, [X2], X2");
-        TestInst(LD1(V30.T_2D.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.2D }, [X2], X2");
-        TestInst(LD1(V0.T_2D.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.2D }, [X2], X17");
-        TestInst(LD1(V30.T_2D.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.2D }, [X2], X17");
+        TestInst(LD1(V0.T_2D.Group1(), _[X2], X2), asm => asm.LD1(V0.T_2D.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.2D }, [X2], X2");
+        TestInst(LD1(V30.T_2D.Group1(), _[X2], X2), asm => asm.LD1(V30.T_2D.Group1(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.2D }, [X2], X2");
+        TestInst(LD1(V0.T_2D.Group1(), _[X2], X17), asm => asm.LD1(V0.T_2D.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V0.2D }, [X2], X17");
+        TestInst(LD1(V30.T_2D.Group1(), _[X2], X17), asm => asm.LD1(V30.T_2D.Group1(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r1_r1, Arm64Mnemonic.LD1, "LD1 { V30.2D }, [X2], X17");
     }
     
     /// <summary>
@@ -520,8 +519,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i2_i2_48()
     {
-        TestInst(LD1(V0.T_8B.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B }, [X2], #16");
-        TestInst(LD1(V30.T_8B.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B }, [X2], #16");
+        TestInst(LD1(V0.T_8B.Group2(), _[X2], 16), asm => asm.LD1(V0.T_8B.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B }, [X2], #16");
+        TestInst(LD1(V30.T_8B.Group2(), _[X2], 16), asm => asm.LD1(V30.T_8B.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B }, [X2], #16");
     }
     
     /// <summary>
@@ -530,8 +529,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i2_i2_49()
     {
-        TestInst(LD1(V0.T_16B.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B }, [X2], #32");
-        TestInst(LD1(V30.T_16B.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B }, [X2], #32");
+        TestInst(LD1(V0.T_16B.Group2(), _[X2], 32), asm => asm.LD1(V0.T_16B.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B }, [X2], #32");
+        TestInst(LD1(V30.T_16B.Group2(), _[X2], 32), asm => asm.LD1(V30.T_16B.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B }, [X2], #32");
     }
     
     /// <summary>
@@ -540,8 +539,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i2_i2_50()
     {
-        TestInst(LD1(V0.T_4H.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H }, [X2], #16");
-        TestInst(LD1(V30.T_4H.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H }, [X2], #16");
+        TestInst(LD1(V0.T_4H.Group2(), _[X2], 16), asm => asm.LD1(V0.T_4H.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H }, [X2], #16");
+        TestInst(LD1(V30.T_4H.Group2(), _[X2], 16), asm => asm.LD1(V30.T_4H.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H }, [X2], #16");
     }
     
     /// <summary>
@@ -550,8 +549,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i2_i2_51()
     {
-        TestInst(LD1(V0.T_8H.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H }, [X2], #32");
-        TestInst(LD1(V30.T_8H.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H }, [X2], #32");
+        TestInst(LD1(V0.T_8H.Group2(), _[X2], 32), asm => asm.LD1(V0.T_8H.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H }, [X2], #32");
+        TestInst(LD1(V30.T_8H.Group2(), _[X2], 32), asm => asm.LD1(V30.T_8H.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H }, [X2], #32");
     }
     
     /// <summary>
@@ -560,8 +559,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i2_i2_52()
     {
-        TestInst(LD1(V0.T_2S.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S }, [X2], #16");
-        TestInst(LD1(V30.T_2S.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S }, [X2], #16");
+        TestInst(LD1(V0.T_2S.Group2(), _[X2], 16), asm => asm.LD1(V0.T_2S.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S }, [X2], #16");
+        TestInst(LD1(V30.T_2S.Group2(), _[X2], 16), asm => asm.LD1(V30.T_2S.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S }, [X2], #16");
     }
     
     /// <summary>
@@ -570,8 +569,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i2_i2_53()
     {
-        TestInst(LD1(V0.T_4S.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S }, [X2], #32");
-        TestInst(LD1(V30.T_4S.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S }, [X2], #32");
+        TestInst(LD1(V0.T_4S.Group2(), _[X2], 32), asm => asm.LD1(V0.T_4S.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S }, [X2], #32");
+        TestInst(LD1(V30.T_4S.Group2(), _[X2], 32), asm => asm.LD1(V30.T_4S.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S }, [X2], #32");
     }
     
     /// <summary>
@@ -580,8 +579,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i2_i2_54()
     {
-        TestInst(LD1(V0.T_1D.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D }, [X2], #16");
-        TestInst(LD1(V30.T_1D.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D }, [X2], #16");
+        TestInst(LD1(V0.T_1D.Group2(), _[X2], 16), asm => asm.LD1(V0.T_1D.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D }, [X2], #16");
+        TestInst(LD1(V30.T_1D.Group2(), _[X2], 16), asm => asm.LD1(V30.T_1D.Group2(), _[X2], 16), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D }, [X2], #16");
     }
     
     /// <summary>
@@ -590,8 +589,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i2_i2_55()
     {
-        TestInst(LD1(V0.T_2D.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D }, [X2], #32");
-        TestInst(LD1(V30.T_2D.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D }, [X2], #32");
+        TestInst(LD1(V0.T_2D.Group2(), _[X2], 32), asm => asm.LD1(V0.T_2D.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D }, [X2], #32");
+        TestInst(LD1(V30.T_2D.Group2(), _[X2], 32), asm => asm.LD1(V30.T_2D.Group2(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i2_i2, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D }, [X2], #32");
     }
     
     /// <summary>
@@ -600,10 +599,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r2_r2_56()
     {
-        TestInst(LD1(V0.T_8B.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B }, [X2], X2");
-        TestInst(LD1(V30.T_8B.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B }, [X2], X2");
-        TestInst(LD1(V0.T_8B.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B }, [X2], X17");
-        TestInst(LD1(V30.T_8B.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B }, [X2], X17");
+        TestInst(LD1(V0.T_8B.Group2(), _[X2], X2), asm => asm.LD1(V0.T_8B.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B }, [X2], X2");
+        TestInst(LD1(V30.T_8B.Group2(), _[X2], X2), asm => asm.LD1(V30.T_8B.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B }, [X2], X2");
+        TestInst(LD1(V0.T_8B.Group2(), _[X2], X17), asm => asm.LD1(V0.T_8B.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B }, [X2], X17");
+        TestInst(LD1(V30.T_8B.Group2(), _[X2], X17), asm => asm.LD1(V30.T_8B.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B }, [X2], X17");
     }
     
     /// <summary>
@@ -612,10 +611,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r2_r2_57()
     {
-        TestInst(LD1(V0.T_16B.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B }, [X2], X2");
-        TestInst(LD1(V30.T_16B.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B }, [X2], X2");
-        TestInst(LD1(V0.T_16B.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B }, [X2], X17");
-        TestInst(LD1(V30.T_16B.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B }, [X2], X17");
+        TestInst(LD1(V0.T_16B.Group2(), _[X2], X2), asm => asm.LD1(V0.T_16B.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B }, [X2], X2");
+        TestInst(LD1(V30.T_16B.Group2(), _[X2], X2), asm => asm.LD1(V30.T_16B.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B }, [X2], X2");
+        TestInst(LD1(V0.T_16B.Group2(), _[X2], X17), asm => asm.LD1(V0.T_16B.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B }, [X2], X17");
+        TestInst(LD1(V30.T_16B.Group2(), _[X2], X17), asm => asm.LD1(V30.T_16B.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B }, [X2], X17");
     }
     
     /// <summary>
@@ -624,10 +623,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r2_r2_58()
     {
-        TestInst(LD1(V0.T_4H.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H }, [X2], X2");
-        TestInst(LD1(V30.T_4H.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H }, [X2], X2");
-        TestInst(LD1(V0.T_4H.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H }, [X2], X17");
-        TestInst(LD1(V30.T_4H.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H }, [X2], X17");
+        TestInst(LD1(V0.T_4H.Group2(), _[X2], X2), asm => asm.LD1(V0.T_4H.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H }, [X2], X2");
+        TestInst(LD1(V30.T_4H.Group2(), _[X2], X2), asm => asm.LD1(V30.T_4H.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H }, [X2], X2");
+        TestInst(LD1(V0.T_4H.Group2(), _[X2], X17), asm => asm.LD1(V0.T_4H.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H }, [X2], X17");
+        TestInst(LD1(V30.T_4H.Group2(), _[X2], X17), asm => asm.LD1(V30.T_4H.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H }, [X2], X17");
     }
     
     /// <summary>
@@ -636,10 +635,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r2_r2_59()
     {
-        TestInst(LD1(V0.T_8H.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H }, [X2], X2");
-        TestInst(LD1(V30.T_8H.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H }, [X2], X2");
-        TestInst(LD1(V0.T_8H.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H }, [X2], X17");
-        TestInst(LD1(V30.T_8H.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H }, [X2], X17");
+        TestInst(LD1(V0.T_8H.Group2(), _[X2], X2), asm => asm.LD1(V0.T_8H.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H }, [X2], X2");
+        TestInst(LD1(V30.T_8H.Group2(), _[X2], X2), asm => asm.LD1(V30.T_8H.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H }, [X2], X2");
+        TestInst(LD1(V0.T_8H.Group2(), _[X2], X17), asm => asm.LD1(V0.T_8H.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H }, [X2], X17");
+        TestInst(LD1(V30.T_8H.Group2(), _[X2], X17), asm => asm.LD1(V30.T_8H.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H }, [X2], X17");
     }
     
     /// <summary>
@@ -648,10 +647,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r2_r2_60()
     {
-        TestInst(LD1(V0.T_2S.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S }, [X2], X2");
-        TestInst(LD1(V30.T_2S.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S }, [X2], X2");
-        TestInst(LD1(V0.T_2S.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S }, [X2], X17");
-        TestInst(LD1(V30.T_2S.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S }, [X2], X17");
+        TestInst(LD1(V0.T_2S.Group2(), _[X2], X2), asm => asm.LD1(V0.T_2S.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S }, [X2], X2");
+        TestInst(LD1(V30.T_2S.Group2(), _[X2], X2), asm => asm.LD1(V30.T_2S.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S }, [X2], X2");
+        TestInst(LD1(V0.T_2S.Group2(), _[X2], X17), asm => asm.LD1(V0.T_2S.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S }, [X2], X17");
+        TestInst(LD1(V30.T_2S.Group2(), _[X2], X17), asm => asm.LD1(V30.T_2S.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S }, [X2], X17");
     }
     
     /// <summary>
@@ -660,10 +659,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r2_r2_61()
     {
-        TestInst(LD1(V0.T_4S.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S }, [X2], X2");
-        TestInst(LD1(V30.T_4S.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S }, [X2], X2");
-        TestInst(LD1(V0.T_4S.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S }, [X2], X17");
-        TestInst(LD1(V30.T_4S.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S }, [X2], X17");
+        TestInst(LD1(V0.T_4S.Group2(), _[X2], X2), asm => asm.LD1(V0.T_4S.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S }, [X2], X2");
+        TestInst(LD1(V30.T_4S.Group2(), _[X2], X2), asm => asm.LD1(V30.T_4S.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S }, [X2], X2");
+        TestInst(LD1(V0.T_4S.Group2(), _[X2], X17), asm => asm.LD1(V0.T_4S.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S }, [X2], X17");
+        TestInst(LD1(V30.T_4S.Group2(), _[X2], X17), asm => asm.LD1(V30.T_4S.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S }, [X2], X17");
     }
     
     /// <summary>
@@ -672,10 +671,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r2_r2_62()
     {
-        TestInst(LD1(V0.T_1D.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D }, [X2], X2");
-        TestInst(LD1(V30.T_1D.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D }, [X2], X2");
-        TestInst(LD1(V0.T_1D.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D }, [X2], X17");
-        TestInst(LD1(V30.T_1D.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D }, [X2], X17");
+        TestInst(LD1(V0.T_1D.Group2(), _[X2], X2), asm => asm.LD1(V0.T_1D.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D }, [X2], X2");
+        TestInst(LD1(V30.T_1D.Group2(), _[X2], X2), asm => asm.LD1(V30.T_1D.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D }, [X2], X2");
+        TestInst(LD1(V0.T_1D.Group2(), _[X2], X17), asm => asm.LD1(V0.T_1D.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D }, [X2], X17");
+        TestInst(LD1(V30.T_1D.Group2(), _[X2], X17), asm => asm.LD1(V30.T_1D.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D }, [X2], X17");
     }
     
     /// <summary>
@@ -684,10 +683,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r2_r2_63()
     {
-        TestInst(LD1(V0.T_2D.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D }, [X2], X2");
-        TestInst(LD1(V30.T_2D.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D }, [X2], X2");
-        TestInst(LD1(V0.T_2D.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D }, [X2], X17");
-        TestInst(LD1(V30.T_2D.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D }, [X2], X17");
+        TestInst(LD1(V0.T_2D.Group2(), _[X2], X2), asm => asm.LD1(V0.T_2D.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D }, [X2], X2");
+        TestInst(LD1(V30.T_2D.Group2(), _[X2], X2), asm => asm.LD1(V30.T_2D.Group2(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D }, [X2], X2");
+        TestInst(LD1(V0.T_2D.Group2(), _[X2], X17), asm => asm.LD1(V0.T_2D.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D }, [X2], X17");
+        TestInst(LD1(V30.T_2D.Group2(), _[X2], X17), asm => asm.LD1(V30.T_2D.Group2(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r2_r2, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D }, [X2], X17");
     }
     
     /// <summary>
@@ -696,8 +695,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i3_i3_64()
     {
-        TestInst(LD1(V0.T_8B.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B }, [X2], #24");
-        TestInst(LD1(V30.T_8B.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B }, [X2], #24");
+        TestInst(LD1(V0.T_8B.Group3(), _[X2], 24), asm => asm.LD1(V0.T_8B.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B }, [X2], #24");
+        TestInst(LD1(V30.T_8B.Group3(), _[X2], 24), asm => asm.LD1(V30.T_8B.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B }, [X2], #24");
     }
     
     /// <summary>
@@ -706,8 +705,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i3_i3_65()
     {
-        TestInst(LD1(V0.T_16B.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B }, [X2], #48");
-        TestInst(LD1(V30.T_16B.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B }, [X2], #48");
+        TestInst(LD1(V0.T_16B.Group3(), _[X2], 48), asm => asm.LD1(V0.T_16B.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B }, [X2], #48");
+        TestInst(LD1(V30.T_16B.Group3(), _[X2], 48), asm => asm.LD1(V30.T_16B.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B }, [X2], #48");
     }
     
     /// <summary>
@@ -716,8 +715,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i3_i3_66()
     {
-        TestInst(LD1(V0.T_4H.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H }, [X2], #24");
-        TestInst(LD1(V30.T_4H.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H }, [X2], #24");
+        TestInst(LD1(V0.T_4H.Group3(), _[X2], 24), asm => asm.LD1(V0.T_4H.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H }, [X2], #24");
+        TestInst(LD1(V30.T_4H.Group3(), _[X2], 24), asm => asm.LD1(V30.T_4H.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H }, [X2], #24");
     }
     
     /// <summary>
@@ -726,8 +725,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i3_i3_67()
     {
-        TestInst(LD1(V0.T_8H.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H }, [X2], #48");
-        TestInst(LD1(V30.T_8H.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H }, [X2], #48");
+        TestInst(LD1(V0.T_8H.Group3(), _[X2], 48), asm => asm.LD1(V0.T_8H.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H }, [X2], #48");
+        TestInst(LD1(V30.T_8H.Group3(), _[X2], 48), asm => asm.LD1(V30.T_8H.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H }, [X2], #48");
     }
     
     /// <summary>
@@ -736,8 +735,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i3_i3_68()
     {
-        TestInst(LD1(V0.T_2S.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S }, [X2], #24");
-        TestInst(LD1(V30.T_2S.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S }, [X2], #24");
+        TestInst(LD1(V0.T_2S.Group3(), _[X2], 24), asm => asm.LD1(V0.T_2S.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S }, [X2], #24");
+        TestInst(LD1(V30.T_2S.Group3(), _[X2], 24), asm => asm.LD1(V30.T_2S.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S }, [X2], #24");
     }
     
     /// <summary>
@@ -746,8 +745,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i3_i3_69()
     {
-        TestInst(LD1(V0.T_4S.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S }, [X2], #48");
-        TestInst(LD1(V30.T_4S.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S }, [X2], #48");
+        TestInst(LD1(V0.T_4S.Group3(), _[X2], 48), asm => asm.LD1(V0.T_4S.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S }, [X2], #48");
+        TestInst(LD1(V30.T_4S.Group3(), _[X2], 48), asm => asm.LD1(V30.T_4S.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S }, [X2], #48");
     }
     
     /// <summary>
@@ -756,8 +755,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i3_i3_70()
     {
-        TestInst(LD1(V0.T_1D.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D }, [X2], #24");
-        TestInst(LD1(V30.T_1D.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D }, [X2], #24");
+        TestInst(LD1(V0.T_1D.Group3(), _[X2], 24), asm => asm.LD1(V0.T_1D.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D }, [X2], #24");
+        TestInst(LD1(V30.T_1D.Group3(), _[X2], 24), asm => asm.LD1(V30.T_1D.Group3(), _[X2], 24), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D }, [X2], #24");
     }
     
     /// <summary>
@@ -766,8 +765,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i3_i3_71()
     {
-        TestInst(LD1(V0.T_2D.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D }, [X2], #48");
-        TestInst(LD1(V30.T_2D.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D }, [X2], #48");
+        TestInst(LD1(V0.T_2D.Group3(), _[X2], 48), asm => asm.LD1(V0.T_2D.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D }, [X2], #48");
+        TestInst(LD1(V30.T_2D.Group3(), _[X2], 48), asm => asm.LD1(V30.T_2D.Group3(), _[X2], 48), Arm64InstructionId.LD1_asisdlsep_i3_i3, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D }, [X2], #48");
     }
     
     /// <summary>
@@ -776,10 +775,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r3_r3_72()
     {
-        TestInst(LD1(V0.T_8B.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B }, [X2], X2");
-        TestInst(LD1(V30.T_8B.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B }, [X2], X2");
-        TestInst(LD1(V0.T_8B.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B }, [X2], X17");
-        TestInst(LD1(V30.T_8B.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B }, [X2], X17");
+        TestInst(LD1(V0.T_8B.Group3(), _[X2], X2), asm => asm.LD1(V0.T_8B.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B }, [X2], X2");
+        TestInst(LD1(V30.T_8B.Group3(), _[X2], X2), asm => asm.LD1(V30.T_8B.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B }, [X2], X2");
+        TestInst(LD1(V0.T_8B.Group3(), _[X2], X17), asm => asm.LD1(V0.T_8B.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B }, [X2], X17");
+        TestInst(LD1(V30.T_8B.Group3(), _[X2], X17), asm => asm.LD1(V30.T_8B.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B }, [X2], X17");
     }
     
     /// <summary>
@@ -788,10 +787,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r3_r3_73()
     {
-        TestInst(LD1(V0.T_16B.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B }, [X2], X2");
-        TestInst(LD1(V30.T_16B.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B }, [X2], X2");
-        TestInst(LD1(V0.T_16B.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B }, [X2], X17");
-        TestInst(LD1(V30.T_16B.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B }, [X2], X17");
+        TestInst(LD1(V0.T_16B.Group3(), _[X2], X2), asm => asm.LD1(V0.T_16B.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B }, [X2], X2");
+        TestInst(LD1(V30.T_16B.Group3(), _[X2], X2), asm => asm.LD1(V30.T_16B.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B }, [X2], X2");
+        TestInst(LD1(V0.T_16B.Group3(), _[X2], X17), asm => asm.LD1(V0.T_16B.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B }, [X2], X17");
+        TestInst(LD1(V30.T_16B.Group3(), _[X2], X17), asm => asm.LD1(V30.T_16B.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B }, [X2], X17");
     }
     
     /// <summary>
@@ -800,10 +799,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r3_r3_74()
     {
-        TestInst(LD1(V0.T_4H.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H }, [X2], X2");
-        TestInst(LD1(V30.T_4H.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H }, [X2], X2");
-        TestInst(LD1(V0.T_4H.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H }, [X2], X17");
-        TestInst(LD1(V30.T_4H.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H }, [X2], X17");
+        TestInst(LD1(V0.T_4H.Group3(), _[X2], X2), asm => asm.LD1(V0.T_4H.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H }, [X2], X2");
+        TestInst(LD1(V30.T_4H.Group3(), _[X2], X2), asm => asm.LD1(V30.T_4H.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H }, [X2], X2");
+        TestInst(LD1(V0.T_4H.Group3(), _[X2], X17), asm => asm.LD1(V0.T_4H.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H }, [X2], X17");
+        TestInst(LD1(V30.T_4H.Group3(), _[X2], X17), asm => asm.LD1(V30.T_4H.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H }, [X2], X17");
     }
     
     /// <summary>
@@ -812,10 +811,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r3_r3_75()
     {
-        TestInst(LD1(V0.T_8H.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H }, [X2], X2");
-        TestInst(LD1(V30.T_8H.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H }, [X2], X2");
-        TestInst(LD1(V0.T_8H.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H }, [X2], X17");
-        TestInst(LD1(V30.T_8H.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H }, [X2], X17");
+        TestInst(LD1(V0.T_8H.Group3(), _[X2], X2), asm => asm.LD1(V0.T_8H.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H }, [X2], X2");
+        TestInst(LD1(V30.T_8H.Group3(), _[X2], X2), asm => asm.LD1(V30.T_8H.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H }, [X2], X2");
+        TestInst(LD1(V0.T_8H.Group3(), _[X2], X17), asm => asm.LD1(V0.T_8H.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H }, [X2], X17");
+        TestInst(LD1(V30.T_8H.Group3(), _[X2], X17), asm => asm.LD1(V30.T_8H.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H }, [X2], X17");
     }
     
     /// <summary>
@@ -824,10 +823,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r3_r3_76()
     {
-        TestInst(LD1(V0.T_2S.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S }, [X2], X2");
-        TestInst(LD1(V30.T_2S.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S }, [X2], X2");
-        TestInst(LD1(V0.T_2S.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S }, [X2], X17");
-        TestInst(LD1(V30.T_2S.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S }, [X2], X17");
+        TestInst(LD1(V0.T_2S.Group3(), _[X2], X2), asm => asm.LD1(V0.T_2S.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S }, [X2], X2");
+        TestInst(LD1(V30.T_2S.Group3(), _[X2], X2), asm => asm.LD1(V30.T_2S.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S }, [X2], X2");
+        TestInst(LD1(V0.T_2S.Group3(), _[X2], X17), asm => asm.LD1(V0.T_2S.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S }, [X2], X17");
+        TestInst(LD1(V30.T_2S.Group3(), _[X2], X17), asm => asm.LD1(V30.T_2S.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S }, [X2], X17");
     }
     
     /// <summary>
@@ -836,10 +835,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r3_r3_77()
     {
-        TestInst(LD1(V0.T_4S.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S }, [X2], X2");
-        TestInst(LD1(V30.T_4S.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S }, [X2], X2");
-        TestInst(LD1(V0.T_4S.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S }, [X2], X17");
-        TestInst(LD1(V30.T_4S.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S }, [X2], X17");
+        TestInst(LD1(V0.T_4S.Group3(), _[X2], X2), asm => asm.LD1(V0.T_4S.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S }, [X2], X2");
+        TestInst(LD1(V30.T_4S.Group3(), _[X2], X2), asm => asm.LD1(V30.T_4S.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S }, [X2], X2");
+        TestInst(LD1(V0.T_4S.Group3(), _[X2], X17), asm => asm.LD1(V0.T_4S.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S }, [X2], X17");
+        TestInst(LD1(V30.T_4S.Group3(), _[X2], X17), asm => asm.LD1(V30.T_4S.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S }, [X2], X17");
     }
     
     /// <summary>
@@ -848,10 +847,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r3_r3_78()
     {
-        TestInst(LD1(V0.T_1D.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D }, [X2], X2");
-        TestInst(LD1(V30.T_1D.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D }, [X2], X2");
-        TestInst(LD1(V0.T_1D.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D }, [X2], X17");
-        TestInst(LD1(V30.T_1D.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D }, [X2], X17");
+        TestInst(LD1(V0.T_1D.Group3(), _[X2], X2), asm => asm.LD1(V0.T_1D.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D }, [X2], X2");
+        TestInst(LD1(V30.T_1D.Group3(), _[X2], X2), asm => asm.LD1(V30.T_1D.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D }, [X2], X2");
+        TestInst(LD1(V0.T_1D.Group3(), _[X2], X17), asm => asm.LD1(V0.T_1D.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D }, [X2], X17");
+        TestInst(LD1(V30.T_1D.Group3(), _[X2], X17), asm => asm.LD1(V30.T_1D.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D }, [X2], X17");
     }
     
     /// <summary>
@@ -860,10 +859,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r3_r3_79()
     {
-        TestInst(LD1(V0.T_2D.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D }, [X2], X2");
-        TestInst(LD1(V30.T_2D.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D }, [X2], X2");
-        TestInst(LD1(V0.T_2D.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D }, [X2], X17");
-        TestInst(LD1(V30.T_2D.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D }, [X2], X17");
+        TestInst(LD1(V0.T_2D.Group3(), _[X2], X2), asm => asm.LD1(V0.T_2D.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D }, [X2], X2");
+        TestInst(LD1(V30.T_2D.Group3(), _[X2], X2), asm => asm.LD1(V30.T_2D.Group3(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D }, [X2], X2");
+        TestInst(LD1(V0.T_2D.Group3(), _[X2], X17), asm => asm.LD1(V0.T_2D.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D }, [X2], X17");
+        TestInst(LD1(V30.T_2D.Group3(), _[X2], X17), asm => asm.LD1(V30.T_2D.Group3(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r3_r3, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D }, [X2], X17");
     }
     
     /// <summary>
@@ -872,8 +871,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i4_i4_80()
     {
-        TestInst(LD1(V0.T_8B.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B, V3.8B }, [X2], #32");
-        TestInst(LD1(V30.T_8B.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B, V1.8B }, [X2], #32");
+        TestInst(LD1(V0.T_8B.Group4(), _[X2], 32), asm => asm.LD1(V0.T_8B.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B, V3.8B }, [X2], #32");
+        TestInst(LD1(V30.T_8B.Group4(), _[X2], 32), asm => asm.LD1(V30.T_8B.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B, V1.8B }, [X2], #32");
     }
     
     /// <summary>
@@ -882,8 +881,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i4_i4_81()
     {
-        TestInst(LD1(V0.T_16B.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B, V3.16B }, [X2], #64");
-        TestInst(LD1(V30.T_16B.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B, V1.16B }, [X2], #64");
+        TestInst(LD1(V0.T_16B.Group4(), _[X2], 64), asm => asm.LD1(V0.T_16B.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B, V3.16B }, [X2], #64");
+        TestInst(LD1(V30.T_16B.Group4(), _[X2], 64), asm => asm.LD1(V30.T_16B.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B, V1.16B }, [X2], #64");
     }
     
     /// <summary>
@@ -892,8 +891,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i4_i4_82()
     {
-        TestInst(LD1(V0.T_4H.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H, V3.4H }, [X2], #32");
-        TestInst(LD1(V30.T_4H.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H, V1.4H }, [X2], #32");
+        TestInst(LD1(V0.T_4H.Group4(), _[X2], 32), asm => asm.LD1(V0.T_4H.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H, V3.4H }, [X2], #32");
+        TestInst(LD1(V30.T_4H.Group4(), _[X2], 32), asm => asm.LD1(V30.T_4H.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H, V1.4H }, [X2], #32");
     }
     
     /// <summary>
@@ -902,8 +901,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i4_i4_83()
     {
-        TestInst(LD1(V0.T_8H.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H, V3.8H }, [X2], #64");
-        TestInst(LD1(V30.T_8H.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H, V1.8H }, [X2], #64");
+        TestInst(LD1(V0.T_8H.Group4(), _[X2], 64), asm => asm.LD1(V0.T_8H.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H, V3.8H }, [X2], #64");
+        TestInst(LD1(V30.T_8H.Group4(), _[X2], 64), asm => asm.LD1(V30.T_8H.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H, V1.8H }, [X2], #64");
     }
     
     /// <summary>
@@ -912,8 +911,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i4_i4_84()
     {
-        TestInst(LD1(V0.T_2S.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S, V3.2S }, [X2], #32");
-        TestInst(LD1(V30.T_2S.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S, V1.2S }, [X2], #32");
+        TestInst(LD1(V0.T_2S.Group4(), _[X2], 32), asm => asm.LD1(V0.T_2S.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S, V3.2S }, [X2], #32");
+        TestInst(LD1(V30.T_2S.Group4(), _[X2], 32), asm => asm.LD1(V30.T_2S.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S, V1.2S }, [X2], #32");
     }
     
     /// <summary>
@@ -922,8 +921,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i4_i4_85()
     {
-        TestInst(LD1(V0.T_4S.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S, V3.4S }, [X2], #64");
-        TestInst(LD1(V30.T_4S.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S, V1.4S }, [X2], #64");
+        TestInst(LD1(V0.T_4S.Group4(), _[X2], 64), asm => asm.LD1(V0.T_4S.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S, V3.4S }, [X2], #64");
+        TestInst(LD1(V30.T_4S.Group4(), _[X2], 64), asm => asm.LD1(V30.T_4S.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S, V1.4S }, [X2], #64");
     }
     
     /// <summary>
@@ -932,8 +931,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i4_i4_86()
     {
-        TestInst(LD1(V0.T_1D.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D, V3.1D }, [X2], #32");
-        TestInst(LD1(V30.T_1D.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D, V1.1D }, [X2], #32");
+        TestInst(LD1(V0.T_1D.Group4(), _[X2], 32), asm => asm.LD1(V0.T_1D.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D, V3.1D }, [X2], #32");
+        TestInst(LD1(V30.T_1D.Group4(), _[X2], 32), asm => asm.LD1(V30.T_1D.Group4(), _[X2], 32), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D, V1.1D }, [X2], #32");
     }
     
     /// <summary>
@@ -942,8 +941,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_i4_i4_87()
     {
-        TestInst(LD1(V0.T_2D.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D, V3.2D }, [X2], #64");
-        TestInst(LD1(V30.T_2D.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D, V1.2D }, [X2], #64");
+        TestInst(LD1(V0.T_2D.Group4(), _[X2], 64), asm => asm.LD1(V0.T_2D.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D, V3.2D }, [X2], #64");
+        TestInst(LD1(V30.T_2D.Group4(), _[X2], 64), asm => asm.LD1(V30.T_2D.Group4(), _[X2], 64), Arm64InstructionId.LD1_asisdlsep_i4_i4, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D, V1.2D }, [X2], #64");
     }
     
     /// <summary>
@@ -952,10 +951,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r4_r4_88()
     {
-        TestInst(LD1(V0.T_8B.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B, V3.8B }, [X2], X2");
-        TestInst(LD1(V30.T_8B.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B, V1.8B }, [X2], X2");
-        TestInst(LD1(V0.T_8B.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B, V3.8B }, [X2], X17");
-        TestInst(LD1(V30.T_8B.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B, V1.8B }, [X2], X17");
+        TestInst(LD1(V0.T_8B.Group4(), _[X2], X2), asm => asm.LD1(V0.T_8B.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B, V3.8B }, [X2], X2");
+        TestInst(LD1(V30.T_8B.Group4(), _[X2], X2), asm => asm.LD1(V30.T_8B.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B, V1.8B }, [X2], X2");
+        TestInst(LD1(V0.T_8B.Group4(), _[X2], X17), asm => asm.LD1(V0.T_8B.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.8B, V1.8B, V2.8B, V3.8B }, [X2], X17");
+        TestInst(LD1(V30.T_8B.Group4(), _[X2], X17), asm => asm.LD1(V30.T_8B.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.8B, V31.8B, V0.8B, V1.8B }, [X2], X17");
     }
     
     /// <summary>
@@ -964,10 +963,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r4_r4_89()
     {
-        TestInst(LD1(V0.T_16B.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B, V3.16B }, [X2], X2");
-        TestInst(LD1(V30.T_16B.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B, V1.16B }, [X2], X2");
-        TestInst(LD1(V0.T_16B.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B, V3.16B }, [X2], X17");
-        TestInst(LD1(V30.T_16B.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B, V1.16B }, [X2], X17");
+        TestInst(LD1(V0.T_16B.Group4(), _[X2], X2), asm => asm.LD1(V0.T_16B.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B, V3.16B }, [X2], X2");
+        TestInst(LD1(V30.T_16B.Group4(), _[X2], X2), asm => asm.LD1(V30.T_16B.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B, V1.16B }, [X2], X2");
+        TestInst(LD1(V0.T_16B.Group4(), _[X2], X17), asm => asm.LD1(V0.T_16B.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.16B, V1.16B, V2.16B, V3.16B }, [X2], X17");
+        TestInst(LD1(V30.T_16B.Group4(), _[X2], X17), asm => asm.LD1(V30.T_16B.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.16B, V31.16B, V0.16B, V1.16B }, [X2], X17");
     }
     
     /// <summary>
@@ -976,10 +975,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r4_r4_90()
     {
-        TestInst(LD1(V0.T_4H.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H, V3.4H }, [X2], X2");
-        TestInst(LD1(V30.T_4H.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H, V1.4H }, [X2], X2");
-        TestInst(LD1(V0.T_4H.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H, V3.4H }, [X2], X17");
-        TestInst(LD1(V30.T_4H.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H, V1.4H }, [X2], X17");
+        TestInst(LD1(V0.T_4H.Group4(), _[X2], X2), asm => asm.LD1(V0.T_4H.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H, V3.4H }, [X2], X2");
+        TestInst(LD1(V30.T_4H.Group4(), _[X2], X2), asm => asm.LD1(V30.T_4H.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H, V1.4H }, [X2], X2");
+        TestInst(LD1(V0.T_4H.Group4(), _[X2], X17), asm => asm.LD1(V0.T_4H.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.4H, V1.4H, V2.4H, V3.4H }, [X2], X17");
+        TestInst(LD1(V30.T_4H.Group4(), _[X2], X17), asm => asm.LD1(V30.T_4H.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.4H, V31.4H, V0.4H, V1.4H }, [X2], X17");
     }
     
     /// <summary>
@@ -988,10 +987,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r4_r4_91()
     {
-        TestInst(LD1(V0.T_8H.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H, V3.8H }, [X2], X2");
-        TestInst(LD1(V30.T_8H.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H, V1.8H }, [X2], X2");
-        TestInst(LD1(V0.T_8H.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H, V3.8H }, [X2], X17");
-        TestInst(LD1(V30.T_8H.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H, V1.8H }, [X2], X17");
+        TestInst(LD1(V0.T_8H.Group4(), _[X2], X2), asm => asm.LD1(V0.T_8H.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H, V3.8H }, [X2], X2");
+        TestInst(LD1(V30.T_8H.Group4(), _[X2], X2), asm => asm.LD1(V30.T_8H.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H, V1.8H }, [X2], X2");
+        TestInst(LD1(V0.T_8H.Group4(), _[X2], X17), asm => asm.LD1(V0.T_8H.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.8H, V1.8H, V2.8H, V3.8H }, [X2], X17");
+        TestInst(LD1(V30.T_8H.Group4(), _[X2], X17), asm => asm.LD1(V30.T_8H.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.8H, V31.8H, V0.8H, V1.8H }, [X2], X17");
     }
     
     /// <summary>
@@ -1000,10 +999,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r4_r4_92()
     {
-        TestInst(LD1(V0.T_2S.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S, V3.2S }, [X2], X2");
-        TestInst(LD1(V30.T_2S.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S, V1.2S }, [X2], X2");
-        TestInst(LD1(V0.T_2S.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S, V3.2S }, [X2], X17");
-        TestInst(LD1(V30.T_2S.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S, V1.2S }, [X2], X17");
+        TestInst(LD1(V0.T_2S.Group4(), _[X2], X2), asm => asm.LD1(V0.T_2S.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S, V3.2S }, [X2], X2");
+        TestInst(LD1(V30.T_2S.Group4(), _[X2], X2), asm => asm.LD1(V30.T_2S.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S, V1.2S }, [X2], X2");
+        TestInst(LD1(V0.T_2S.Group4(), _[X2], X17), asm => asm.LD1(V0.T_2S.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.2S, V1.2S, V2.2S, V3.2S }, [X2], X17");
+        TestInst(LD1(V30.T_2S.Group4(), _[X2], X17), asm => asm.LD1(V30.T_2S.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.2S, V31.2S, V0.2S, V1.2S }, [X2], X17");
     }
     
     /// <summary>
@@ -1012,10 +1011,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r4_r4_93()
     {
-        TestInst(LD1(V0.T_4S.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S, V3.4S }, [X2], X2");
-        TestInst(LD1(V30.T_4S.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S, V1.4S }, [X2], X2");
-        TestInst(LD1(V0.T_4S.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S, V3.4S }, [X2], X17");
-        TestInst(LD1(V30.T_4S.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S, V1.4S }, [X2], X17");
+        TestInst(LD1(V0.T_4S.Group4(), _[X2], X2), asm => asm.LD1(V0.T_4S.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S, V3.4S }, [X2], X2");
+        TestInst(LD1(V30.T_4S.Group4(), _[X2], X2), asm => asm.LD1(V30.T_4S.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S, V1.4S }, [X2], X2");
+        TestInst(LD1(V0.T_4S.Group4(), _[X2], X17), asm => asm.LD1(V0.T_4S.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.4S, V1.4S, V2.4S, V3.4S }, [X2], X17");
+        TestInst(LD1(V30.T_4S.Group4(), _[X2], X17), asm => asm.LD1(V30.T_4S.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.4S, V31.4S, V0.4S, V1.4S }, [X2], X17");
     }
     
     /// <summary>
@@ -1024,10 +1023,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r4_r4_94()
     {
-        TestInst(LD1(V0.T_1D.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D, V3.1D }, [X2], X2");
-        TestInst(LD1(V30.T_1D.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D, V1.1D }, [X2], X2");
-        TestInst(LD1(V0.T_1D.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D, V3.1D }, [X2], X17");
-        TestInst(LD1(V30.T_1D.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D, V1.1D }, [X2], X17");
+        TestInst(LD1(V0.T_1D.Group4(), _[X2], X2), asm => asm.LD1(V0.T_1D.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D, V3.1D }, [X2], X2");
+        TestInst(LD1(V30.T_1D.Group4(), _[X2], X2), asm => asm.LD1(V30.T_1D.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D, V1.1D }, [X2], X2");
+        TestInst(LD1(V0.T_1D.Group4(), _[X2], X17), asm => asm.LD1(V0.T_1D.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.1D, V1.1D, V2.1D, V3.1D }, [X2], X17");
+        TestInst(LD1(V30.T_1D.Group4(), _[X2], X17), asm => asm.LD1(V30.T_1D.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.1D, V31.1D, V0.1D, V1.1D }, [X2], X17");
     }
     
     /// <summary>
@@ -1036,10 +1035,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsep_r4_r4_95()
     {
-        TestInst(LD1(V0.T_2D.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D, V3.2D }, [X2], X2");
-        TestInst(LD1(V30.T_2D.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D, V1.2D }, [X2], X2");
-        TestInst(LD1(V0.T_2D.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D, V3.2D }, [X2], X17");
-        TestInst(LD1(V30.T_2D.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D, V1.2D }, [X2], X17");
+        TestInst(LD1(V0.T_2D.Group4(), _[X2], X2), asm => asm.LD1(V0.T_2D.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D, V3.2D }, [X2], X2");
+        TestInst(LD1(V30.T_2D.Group4(), _[X2], X2), asm => asm.LD1(V30.T_2D.Group4(), _[X2], X2), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D, V1.2D }, [X2], X2");
+        TestInst(LD1(V0.T_2D.Group4(), _[X2], X17), asm => asm.LD1(V0.T_2D.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V0.2D, V1.2D, V2.2D, V3.2D }, [X2], X17");
+        TestInst(LD1(V30.T_2D.Group4(), _[X2], X17), asm => asm.LD1(V30.T_2D.Group4(), _[X2], X17), Arm64InstructionId.LD1_asisdlsep_r4_r4, Arm64Mnemonic.LD1, "LD1 { V30.2D, V31.2D, V0.2D, V1.2D }, [X2], X17");
     }
     
     /// <summary>
@@ -1048,8 +1047,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlso_b1_1b_96()
     {
-        TestInst(LD1(V0.B.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_b1_1b, Arm64Mnemonic.LD1, "LD1 { V0.B }[1], [X2]");
-        TestInst(LD1(V30.B.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_b1_1b, Arm64Mnemonic.LD1, "LD1 { V30.B }[1], [X2]");
+        TestInst(LD1(V0.B.Group1()[1], _[X2]), asm => asm.LD1(V0.B.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_b1_1b, Arm64Mnemonic.LD1, "LD1 { V0.B }[1], [X2]");
+        TestInst(LD1(V30.B.Group1()[1], _[X2]), asm => asm.LD1(V30.B.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_b1_1b, Arm64Mnemonic.LD1, "LD1 { V30.B }[1], [X2]");
     }
     
     /// <summary>
@@ -1058,8 +1057,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlso_h1_1h_97()
     {
-        TestInst(LD1(V0.H.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_h1_1h, Arm64Mnemonic.LD1, "LD1 { V0.H }[1], [X2]");
-        TestInst(LD1(V30.H.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_h1_1h, Arm64Mnemonic.LD1, "LD1 { V30.H }[1], [X2]");
+        TestInst(LD1(V0.H.Group1()[1], _[X2]), asm => asm.LD1(V0.H.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_h1_1h, Arm64Mnemonic.LD1, "LD1 { V0.H }[1], [X2]");
+        TestInst(LD1(V30.H.Group1()[1], _[X2]), asm => asm.LD1(V30.H.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_h1_1h, Arm64Mnemonic.LD1, "LD1 { V30.H }[1], [X2]");
     }
     
     /// <summary>
@@ -1068,8 +1067,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlso_s1_1s_98()
     {
-        TestInst(LD1(V0.S.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_s1_1s, Arm64Mnemonic.LD1, "LD1 { V0.S }[1], [X2]");
-        TestInst(LD1(V30.S.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_s1_1s, Arm64Mnemonic.LD1, "LD1 { V30.S }[1], [X2]");
+        TestInst(LD1(V0.S.Group1()[1], _[X2]), asm => asm.LD1(V0.S.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_s1_1s, Arm64Mnemonic.LD1, "LD1 { V0.S }[1], [X2]");
+        TestInst(LD1(V30.S.Group1()[1], _[X2]), asm => asm.LD1(V30.S.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_s1_1s, Arm64Mnemonic.LD1, "LD1 { V30.S }[1], [X2]");
     }
     
     /// <summary>
@@ -1078,8 +1077,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlso_d1_1d_99()
     {
-        TestInst(LD1(V0.D.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_d1_1d, Arm64Mnemonic.LD1, "LD1 { V0.D }[1], [X2]");
-        TestInst(LD1(V30.D.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_d1_1d, Arm64Mnemonic.LD1, "LD1 { V30.D }[1], [X2]");
+        TestInst(LD1(V0.D.Group1()[1], _[X2]), asm => asm.LD1(V0.D.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_d1_1d, Arm64Mnemonic.LD1, "LD1 { V0.D }[1], [X2]");
+        TestInst(LD1(V30.D.Group1()[1], _[X2]), asm => asm.LD1(V30.D.Group1()[1], _[X2]), Arm64InstructionId.LD1_asisdlso_d1_1d, Arm64Mnemonic.LD1, "LD1 { V30.D }[1], [X2]");
     }
     
     /// <summary>
@@ -1088,8 +1087,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsop_b1_i1b_100()
     {
-        TestInst(LD1(V0.B.Group1()[1], _[X2], 1), Arm64InstructionId.LD1_asisdlsop_b1_i1b, Arm64Mnemonic.LD1, "LD1 { V0.B }[1], [X2], #1");
-        TestInst(LD1(V30.B.Group1()[1], _[X2], 1), Arm64InstructionId.LD1_asisdlsop_b1_i1b, Arm64Mnemonic.LD1, "LD1 { V30.B }[1], [X2], #1");
+        TestInst(LD1(V0.B.Group1()[1], _[X2], 1), asm => asm.LD1(V0.B.Group1()[1], _[X2], 1), Arm64InstructionId.LD1_asisdlsop_b1_i1b, Arm64Mnemonic.LD1, "LD1 { V0.B }[1], [X2], #1");
+        TestInst(LD1(V30.B.Group1()[1], _[X2], 1), asm => asm.LD1(V30.B.Group1()[1], _[X2], 1), Arm64InstructionId.LD1_asisdlsop_b1_i1b, Arm64Mnemonic.LD1, "LD1 { V30.B }[1], [X2], #1");
     }
     
     /// <summary>
@@ -1098,10 +1097,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsop_bx1_r1b_101()
     {
-        TestInst(LD1(V0.B.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_bx1_r1b, Arm64Mnemonic.LD1, "LD1 { V0.B }[1], [X2], X2");
-        TestInst(LD1(V30.B.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_bx1_r1b, Arm64Mnemonic.LD1, "LD1 { V30.B }[1], [X2], X2");
-        TestInst(LD1(V0.B.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_bx1_r1b, Arm64Mnemonic.LD1, "LD1 { V0.B }[1], [X2], X17");
-        TestInst(LD1(V30.B.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_bx1_r1b, Arm64Mnemonic.LD1, "LD1 { V30.B }[1], [X2], X17");
+        TestInst(LD1(V0.B.Group1()[1], _[X2], X2), asm => asm.LD1(V0.B.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_bx1_r1b, Arm64Mnemonic.LD1, "LD1 { V0.B }[1], [X2], X2");
+        TestInst(LD1(V30.B.Group1()[1], _[X2], X2), asm => asm.LD1(V30.B.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_bx1_r1b, Arm64Mnemonic.LD1, "LD1 { V30.B }[1], [X2], X2");
+        TestInst(LD1(V0.B.Group1()[1], _[X2], X17), asm => asm.LD1(V0.B.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_bx1_r1b, Arm64Mnemonic.LD1, "LD1 { V0.B }[1], [X2], X17");
+        TestInst(LD1(V30.B.Group1()[1], _[X2], X17), asm => asm.LD1(V30.B.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_bx1_r1b, Arm64Mnemonic.LD1, "LD1 { V30.B }[1], [X2], X17");
     }
     
     /// <summary>
@@ -1110,8 +1109,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsop_d1_i1d_102()
     {
-        TestInst(LD1(V0.D.Group1()[1], _[X2], 8), Arm64InstructionId.LD1_asisdlsop_d1_i1d, Arm64Mnemonic.LD1, "LD1 { V0.D }[1], [X2], #8");
-        TestInst(LD1(V30.D.Group1()[1], _[X2], 8), Arm64InstructionId.LD1_asisdlsop_d1_i1d, Arm64Mnemonic.LD1, "LD1 { V30.D }[1], [X2], #8");
+        TestInst(LD1(V0.D.Group1()[1], _[X2], 8), asm => asm.LD1(V0.D.Group1()[1], _[X2], 8), Arm64InstructionId.LD1_asisdlsop_d1_i1d, Arm64Mnemonic.LD1, "LD1 { V0.D }[1], [X2], #8");
+        TestInst(LD1(V30.D.Group1()[1], _[X2], 8), asm => asm.LD1(V30.D.Group1()[1], _[X2], 8), Arm64InstructionId.LD1_asisdlsop_d1_i1d, Arm64Mnemonic.LD1, "LD1 { V30.D }[1], [X2], #8");
     }
     
     /// <summary>
@@ -1120,10 +1119,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsop_dx1_r1d_103()
     {
-        TestInst(LD1(V0.D.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_dx1_r1d, Arm64Mnemonic.LD1, "LD1 { V0.D }[1], [X2], X2");
-        TestInst(LD1(V30.D.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_dx1_r1d, Arm64Mnemonic.LD1, "LD1 { V30.D }[1], [X2], X2");
-        TestInst(LD1(V0.D.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_dx1_r1d, Arm64Mnemonic.LD1, "LD1 { V0.D }[1], [X2], X17");
-        TestInst(LD1(V30.D.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_dx1_r1d, Arm64Mnemonic.LD1, "LD1 { V30.D }[1], [X2], X17");
+        TestInst(LD1(V0.D.Group1()[1], _[X2], X2), asm => asm.LD1(V0.D.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_dx1_r1d, Arm64Mnemonic.LD1, "LD1 { V0.D }[1], [X2], X2");
+        TestInst(LD1(V30.D.Group1()[1], _[X2], X2), asm => asm.LD1(V30.D.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_dx1_r1d, Arm64Mnemonic.LD1, "LD1 { V30.D }[1], [X2], X2");
+        TestInst(LD1(V0.D.Group1()[1], _[X2], X17), asm => asm.LD1(V0.D.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_dx1_r1d, Arm64Mnemonic.LD1, "LD1 { V0.D }[1], [X2], X17");
+        TestInst(LD1(V30.D.Group1()[1], _[X2], X17), asm => asm.LD1(V30.D.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_dx1_r1d, Arm64Mnemonic.LD1, "LD1 { V30.D }[1], [X2], X17");
     }
     
     /// <summary>
@@ -1132,8 +1131,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsop_h1_i1h_104()
     {
-        TestInst(LD1(V0.H.Group1()[1], _[X2], 2), Arm64InstructionId.LD1_asisdlsop_h1_i1h, Arm64Mnemonic.LD1, "LD1 { V0.H }[1], [X2], #2");
-        TestInst(LD1(V30.H.Group1()[1], _[X2], 2), Arm64InstructionId.LD1_asisdlsop_h1_i1h, Arm64Mnemonic.LD1, "LD1 { V30.H }[1], [X2], #2");
+        TestInst(LD1(V0.H.Group1()[1], _[X2], 2), asm => asm.LD1(V0.H.Group1()[1], _[X2], 2), Arm64InstructionId.LD1_asisdlsop_h1_i1h, Arm64Mnemonic.LD1, "LD1 { V0.H }[1], [X2], #2");
+        TestInst(LD1(V30.H.Group1()[1], _[X2], 2), asm => asm.LD1(V30.H.Group1()[1], _[X2], 2), Arm64InstructionId.LD1_asisdlsop_h1_i1h, Arm64Mnemonic.LD1, "LD1 { V30.H }[1], [X2], #2");
     }
     
     /// <summary>
@@ -1142,10 +1141,10 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsop_hx1_r1h_105()
     {
-        TestInst(LD1(V0.H.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_hx1_r1h, Arm64Mnemonic.LD1, "LD1 { V0.H }[1], [X2], X2");
-        TestInst(LD1(V30.H.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_hx1_r1h, Arm64Mnemonic.LD1, "LD1 { V30.H }[1], [X2], X2");
-        TestInst(LD1(V0.H.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_hx1_r1h, Arm64Mnemonic.LD1, "LD1 { V0.H }[1], [X2], X17");
-        TestInst(LD1(V30.H.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_hx1_r1h, Arm64Mnemonic.LD1, "LD1 { V30.H }[1], [X2], X17");
+        TestInst(LD1(V0.H.Group1()[1], _[X2], X2), asm => asm.LD1(V0.H.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_hx1_r1h, Arm64Mnemonic.LD1, "LD1 { V0.H }[1], [X2], X2");
+        TestInst(LD1(V30.H.Group1()[1], _[X2], X2), asm => asm.LD1(V30.H.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_hx1_r1h, Arm64Mnemonic.LD1, "LD1 { V30.H }[1], [X2], X2");
+        TestInst(LD1(V0.H.Group1()[1], _[X2], X17), asm => asm.LD1(V0.H.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_hx1_r1h, Arm64Mnemonic.LD1, "LD1 { V0.H }[1], [X2], X17");
+        TestInst(LD1(V30.H.Group1()[1], _[X2], X17), asm => asm.LD1(V30.H.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_hx1_r1h, Arm64Mnemonic.LD1, "LD1 { V30.H }[1], [X2], X17");
     }
     
     /// <summary>
@@ -1154,8 +1153,8 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsop_s1_i1s_106()
     {
-        TestInst(LD1(V0.S.Group1()[1], _[X2], 4), Arm64InstructionId.LD1_asisdlsop_s1_i1s, Arm64Mnemonic.LD1, "LD1 { V0.S }[1], [X2], #4");
-        TestInst(LD1(V30.S.Group1()[1], _[X2], 4), Arm64InstructionId.LD1_asisdlsop_s1_i1s, Arm64Mnemonic.LD1, "LD1 { V30.S }[1], [X2], #4");
+        TestInst(LD1(V0.S.Group1()[1], _[X2], 4), asm => asm.LD1(V0.S.Group1()[1], _[X2], 4), Arm64InstructionId.LD1_asisdlsop_s1_i1s, Arm64Mnemonic.LD1, "LD1 { V0.S }[1], [X2], #4");
+        TestInst(LD1(V30.S.Group1()[1], _[X2], 4), asm => asm.LD1(V30.S.Group1()[1], _[X2], 4), Arm64InstructionId.LD1_asisdlsop_s1_i1s, Arm64Mnemonic.LD1, "LD1 { V30.S }[1], [X2], #4");
     }
     
     /// <summary>
@@ -1164,9 +1163,9 @@ public class Arm64InstructionFactoryTests_LD1_Advsimd : Arm64InstructionFactoryT
     [TestMethod]
     public void Test_LD1_asisdlsop_sx1_r1s_107()
     {
-        TestInst(LD1(V0.S.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_sx1_r1s, Arm64Mnemonic.LD1, "LD1 { V0.S }[1], [X2], X2");
-        TestInst(LD1(V30.S.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_sx1_r1s, Arm64Mnemonic.LD1, "LD1 { V30.S }[1], [X2], X2");
-        TestInst(LD1(V0.S.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_sx1_r1s, Arm64Mnemonic.LD1, "LD1 { V0.S }[1], [X2], X17");
-        TestInst(LD1(V30.S.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_sx1_r1s, Arm64Mnemonic.LD1, "LD1 { V30.S }[1], [X2], X17");
+        TestInst(LD1(V0.S.Group1()[1], _[X2], X2), asm => asm.LD1(V0.S.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_sx1_r1s, Arm64Mnemonic.LD1, "LD1 { V0.S }[1], [X2], X2");
+        TestInst(LD1(V30.S.Group1()[1], _[X2], X2), asm => asm.LD1(V30.S.Group1()[1], _[X2], X2), Arm64InstructionId.LD1_asisdlsop_sx1_r1s, Arm64Mnemonic.LD1, "LD1 { V30.S }[1], [X2], X2");
+        TestInst(LD1(V0.S.Group1()[1], _[X2], X17), asm => asm.LD1(V0.S.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_sx1_r1s, Arm64Mnemonic.LD1, "LD1 { V0.S }[1], [X2], X17");
+        TestInst(LD1(V30.S.Group1()[1], _[X2], X17), asm => asm.LD1(V30.S.Group1()[1], _[X2], X17), Arm64InstructionId.LD1_asisdlsop_sx1_r1s, Arm64Mnemonic.LD1, "LD1 { V30.S }[1], [X2], X17");
     }
 }
