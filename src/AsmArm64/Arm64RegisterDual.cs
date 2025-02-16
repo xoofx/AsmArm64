@@ -11,7 +11,9 @@ namespace AsmArm64;
 /// </summary>
 public readonly record struct Arm64RegisterXOrSP : IArm64Register
 {
+#pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
     private readonly int _value;
+#pragma warning restore CS0649 // Field is never assigned to, and will always have its default value
     
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -89,7 +91,9 @@ public readonly record struct Arm64RegisterXOrSP : IArm64Register
 /// </summary>
 public readonly record struct Arm64RegisterWOrWSP : IArm64Register
 {
+#pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
     private readonly int _value;
+#pragma warning restore CS0649 // Field is never assigned to, and will always have its default value
     
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);
@@ -167,7 +171,9 @@ public readonly record struct Arm64RegisterWOrWSP : IArm64Register
 /// </summary>
 public readonly record struct Arm64RegisterXOrW : IArm64Register
 {
+#pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
     private readonly int _value;
+#pragma warning restore CS0649 // Field is never assigned to, and will always have its default value
     
     /// <inheritdoc />
     public Arm64RegisterKind Kind => (Arm64RegisterKind)(_value >> 8);

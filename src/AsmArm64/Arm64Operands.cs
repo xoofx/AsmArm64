@@ -10,7 +10,14 @@ namespace AsmArm64;
 public readonly unsafe struct Arm64Operands : IEnumerable<Arm64Operand>
 {
     private readonly Arm64Instruction _instruction;
-    
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Arm64Operands"/> struct.
+    /// </summary>
+    /// <param name="instruction">The instruction.</param>
+    public Arm64Operands(Arm64Instruction instruction)
+        => _instruction = instruction;
+
     public int Count => _instruction.OperandCount;
     
     public Arm64Operand this[int index]

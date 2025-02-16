@@ -43,8 +43,10 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
 
     public int OperandCount => (byte)(Descriptor >> 56);
 
-    internal bool IsOperandEncodingSize4Bytes => ((byte)(Descriptor >> 48) & 1) == 0;
+    public Arm64Operands Operands => new(this);
 
+    internal bool IsOperandEncodingSize4Bytes => ((byte)(Descriptor >> 48) & 1) == 0;
+    
     public Arm64Operand GetOperand(int index)
     {
         ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual((uint)index, (uint)OperandCount);
