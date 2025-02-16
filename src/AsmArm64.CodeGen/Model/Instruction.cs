@@ -121,7 +121,17 @@ class Instruction : IJsonOnDeserialized
         MemoryMarshal.Write(buffer.Slice(2), (ushort)MnemonicIndex);
         buffer[4] = (byte)InstructionClassIndex;
         buffer[5] = (byte)FeatureExpressionIdIndex;
-        buffer[6] = (byte)(UseOperandEncoding8Bytes ? 1 : 0);
+        var flags = UseOperandEncoding8Bytes ? Arm64InstructionEncodingFlags.Encoding8Bytes : Arm64InstructionEncodingFlags.None;
+        if (Operands.Any(x => x.Descriptor is LabelOperandDescriptor))
+        {
+            flags |= Arm64InstructionEncodingFlags.HasLabel;
+        }
+
+        if (DocVars.TryGetValue("cond-setting", out var str) && str.Equals("S", StringComparison.OrdinalIgnoreCase))
+        {
+            flags |= Arm64InstructionEncodingFlags.HasSetFlags;
+        }
+        buffer[6] = (byte)flags;
         buffer[7] = (byte)Operands.Count;
     }
     

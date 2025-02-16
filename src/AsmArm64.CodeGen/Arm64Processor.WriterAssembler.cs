@@ -1735,7 +1735,6 @@ partial class Arm64Processor
             case Arm64MemoryEncodingKind.BaseRegisterAndFixedImmediateOptional:
             case Arm64MemoryEncodingKind.BaseRegisterAndImmediateOptional:
                 return ("Arm64ImmediateMemoryAccessor", null);
-                break;
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexXmAndLslAmount:
                 return ("Arm64RegisterXExtendMemoryAccessor", null);
             case Arm64MemoryEncodingKind.BaseRegisterAndIndexWmOrXmAndExtend:
@@ -1791,7 +1790,6 @@ partial class Arm64Processor
         string? baseType;
 
         var operandName = GetNormalizedOperandName(register.Name);
-
         List<WriteEncodingDelegate> encodings = new();
 
         var testArguments = new List<RegisterTestArgument>();
@@ -1891,9 +1889,7 @@ partial class Arm64Processor
                         operandVariationX.TestArguments.Add(new RegisterTestArgument("X", 31));
                     }
 
-                    var encodingX = GetRegisterIndexEncoding(instruction, register, operandVariationX);
-                    Debug.Assert(encodingX is not null);
-                    operandVariationX.WriteEncodings.Add(encodingX);
+                    AddRegisterIndexEncoding(instruction, register, operandVariationX);
                     
                     var operandVariationW = new OperandVariation()
                     {
@@ -1909,9 +1905,7 @@ partial class Arm64Processor
                     }
                     operandVariationW.AcceptedBitValues.AddRange(xOrWSelector.BitValues.Where(x => x.Text == "W"));
 
-                    var encodingW = GetRegisterIndexEncoding(instruction, register, operandVariationW);
-                    Debug.Assert(encodingW is not null);
-                    operandVariationW.WriteEncodings.Add(encodingW);
+                    AddRegisterIndexEncoding(instruction, register, operandVariationW);
                     
                     operandVariations.Add(operandVariationX);
                     operandVariations.Add(operandVariationW);
@@ -2045,12 +2039,7 @@ partial class Arm64Processor
                     operandVariation.AcceptedBitValues.Add(bitValue);
                     operandVariation.TestArguments.AddRange(testArguments);
 
-                        var indexEncoding = GetRegisterIndexEncoding(instruction, register, operandVariation);
-                    if (indexEncoding != null)
-                    {
-                        operandVariation.WriteEncodings.Add(indexEncoding);
-                    }
-
+                    AddRegisterIndexEncoding(instruction, register, operandVariation);
                     GenerateEncodingForExtract(instruction, register.IndexerExtract, operandVariation, "ElementIndex", "element indexer");
                     operandVariations.Add(operandVariation);
                 }
@@ -2106,12 +2095,7 @@ partial class Arm64Processor
                                     break;
                             }
 
-                            var indexEncoding = GetRegisterIndexEncoding(instruction, register, operandVariation);
-                            if (indexEncoding is not null)
-                            {
-                                operandVariation.WriteEncodings.Add(indexEncoding!);
-                            }
-                            
+                            AddRegisterIndexEncoding(instruction, register, operandVariation);
                             GenerateEncodingForExtract(instruction, register.IndexerExtract, operandVariation, "ElementIndex", "element indexer");
                             operandVariations.Add(operandVariation);
                         }
@@ -2174,11 +2158,8 @@ partial class Arm64Processor
             opVar.TestArguments.AddRange(testArguments);
         }
 
-        var directIndexEncoding = GetRegisterIndexEncoding(instruction, register, opVar);
-        if (directIndexEncoding is not null)
-        {
-            encodings.Add(directIndexEncoding);
-        }
+        opVar.WriteEncodings.AddRange(encodings);
+        AddRegisterIndexEncoding(instruction, register, opVar);
 
         switch (instruction.Id)
         {
@@ -2204,7 +2185,6 @@ partial class Arm64Processor
                 //break;
         }
 
-        opVar.WriteEncodings.AddRange(encodings);
         GenerateEncodingForExtract(instruction, register.IndexerExtract, opVar, "ElementIndex", "element indexer");
         operandVariations.Add(opVar);
     }
@@ -2393,52 +2373,69 @@ partial class Arm64Processor
         return null;
     }
     
-    private static WriteEncodingDelegate? GetRegisterIndexEncoding(Instruction instruction, RegisterOperandDescriptor register, OperandVariation operandVariation)
+    private static void AddRegisterIndexEncoding(Instruction instruction, RegisterOperandDescriptor register, OperandVariation operandVariation)
     {
+        var operandVar = operandVariation.OperandName;
+
+        if (register.IsOptional)
+        {
+            var regName = instruction.Id == "RET_64r_branch_reg" ? "X30" : "XZR";
+            operandVariation.WriteEncodings.Add((w, variable, variation, operand, index) => w.WriteLine($"{operandVar} = ({operandVar}.Kind == Arm64RegisterKind.Invalid) ? Arm64RegisterX.{regName} : {operandVar};"));
+        }
+
         switch (register.RegisterIndexEncodingKind)
         {
             case Arm64RegisterIndexEncodingKind.Std5:
             {
                 if (register.LowBitIndexEncoding == 0)
                 {
-                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint){op.OperandName}.Index;");
+                    operandVariation.WriteEncodings.Add((w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint){operandVar}.Index;"));
                 }
                 else
                 {
-                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint){op.OperandName}.Index << {register.LowBitIndexEncoding};");
+                    operandVariation.WriteEncodings.Add((w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint){operandVar}.Index << {register.LowBitIndexEncoding};"));
                 }
+
+                break;
             }
             case Arm64RegisterIndexEncodingKind.Std4:
             {
                 if (register.LowBitIndexEncoding == 0)
                 {
-                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({op.OperandName}.Index & 0xF);"); // 4 bits so we mask by security
+                    operandVariation.WriteEncodings.Add((w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({operandVar}.Index & 0xF);")); // 4 bits so we mask by security
                 }
                 else
                 {
-                    return (w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({op.OperandName}.Index & 0xF) << {register.LowBitIndexEncoding};");
+                    operandVariation.WriteEncodings.Add((w, variable, instr, op, opIndex) => w.WriteLine($"{variable} |= (uint)({operandVar}.Index & 0xF) << {register.LowBitIndexEncoding};"));
                 }
+
+                break;
             }
             case Arm64RegisterIndexEncodingKind.Std5Plus1:
-                return (w, variable, instr, op, opIndex) =>
-                {
-                    var previousOp = instr.Operands[opIndex - 1];
-                    w.WriteLine($"if ({op.OperandName}.Index != (({previousOp.OperandName}.Index + 1) & 0x1F)) throw new {nameof(ArgumentOutOfRangeException)}(nameof({op.OperandName}), $\"Invalid Register. Index `{{{op.OperandName}.Index}}` must be + 1 from operand {previousOp.OperandName} with index `{{{previousOp.OperandName}.Index}}`\");");
-                };
+                operandVariation.WriteEncodings.Add(
+                    (w, variable, instr, op, opIndex) =>
+                    {
+                        var previousOp = instr.Operands[opIndex - 1];
+                        w.WriteLine(
+                            $"if ({operandVar}.Index != (({previousOp.OperandName}.Index + 1) & 0x1F)) throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVar}), $\"Invalid Register. Index `{{{operandVar}.Index}}` must be + 1 from operand {previousOp.OperandName} with index `{{{previousOp.OperandName}.Index}}`\");");
+                    }
+                );
+                break;
             case Arm64RegisterIndexEncodingKind.BitMapExtract:
                 GenerateEncodingForExtract(instruction, register.RegisterIndexExtract, operandVariation, "Index", "register index");
                 break;
             case Arm64RegisterIndexEncodingKind.Fixed:
-                return (w, variable, instr, op, opIndex) =>
-                {
-                    w.WriteLine($"if ({operandVariation.OperandName}.Index != {register.FixedRegisterIndex}) throw new {nameof(ArgumentOutOfRangeException)}(nameof({op.OperandName}), $\"Invalid Register. Expecting the fixed index {register.FixedRegisterIndex} instead of {{{operandVariation.OperandName}}}\");");
-                };
+                operandVariation.WriteEncodings.Add((w, variable, instr, op, opIndex) =>
+                    {
+                        w.WriteLine(
+                            $"if ({operandVariation.OperandName}.Index != {register.FixedRegisterIndex}) throw new {nameof(ArgumentOutOfRangeException)}(nameof({operandVar}), $\"Invalid Register. Expecting the fixed index {register.FixedRegisterIndex} instead of {{{operandVariation.OperandName}}}\");");
+                    }
+                );
+                break;
             default:
                 Debug.Assert(false,"register", $"RegisterIndexEncodingKind `{register.RegisterIndexEncodingKind}` is not supported");
                 break;
         }
-
-        return null;
     }
     
     private static string GetNormalizedOperandName(string name)

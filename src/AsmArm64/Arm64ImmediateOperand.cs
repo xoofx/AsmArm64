@@ -145,7 +145,7 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
         IFormatProvider? provider) =>
         TryFormat(default, destination, out charsWritten, out _, format, provider, null);
 
-    public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel)
+    public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel)
     {
         var defaultValue = (instruction.Id == Arm64InstructionId.ISB_bi_barriers || instruction.Id == Arm64InstructionId.CLREX_bn_barriers) ? 15 : 0;
         isDefaultValue = (_isOptional && Value == defaultValue);

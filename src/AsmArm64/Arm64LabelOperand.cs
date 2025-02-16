@@ -108,24 +108,13 @@ public readonly struct Arm64LabelOperand : IArm64Operand
         IFormatProvider? provider)
         => TryFormat(default, destination, out charsWritten, out _, format, provider, null);
     
-    public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel)
+    public bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel)
     {
         isDefaultValue = false;
 
-        if (tryResolveLabel is not null)
+        if (tryFormatLabel is not null && tryFormatLabel(Offset, destination, out charsWritten))
         {
-            if (tryResolveLabel(Offset, out var label))
-            {
-                var labelSpan = label.AsSpan();
-                if (destination.Length < labelSpan.Length)
-                {
-                    charsWritten = 0;
-                    return false;
-                }
-                labelSpan.CopyTo(destination);
-                charsWritten = labelSpan.Length;
-                return true;
-            }
+            return true;
         }
 
         if (destination.Length <= 1)

@@ -71,4 +71,109 @@ public static partial class Arm64Extensions
     {
         throw new InvalidOperationException($"Invalid register index {index}. The index must be in the range [0, 31]");
     }
+
+    /// <summary>
+    /// Detects if the instruction is a branch instruction.
+    /// </summary>
+    /// <param name="id">The instruction id</param>
+    /// <returns><c>true</c> if the instruction is a branch instruction; otherwise, <c>false</c>.</returns>
+    public static bool IsBranch(this Arm64InstructionId id)
+    {
+        switch (id)
+        {
+            case Arm64InstructionId.B_only_branch_imm:
+            case Arm64InstructionId.B_only_condbranch:
+            case Arm64InstructionId.BC_only_condbranch:
+            case Arm64InstructionId.BL_only_branch_imm:
+            case Arm64InstructionId.BLR_64_branch_reg:
+            case Arm64InstructionId.BLRAA_64p_branch_reg:
+            case Arm64InstructionId.BLRAAZ_64_branch_reg:
+            case Arm64InstructionId.BLRAB_64p_branch_reg:
+            case Arm64InstructionId.BLRABZ_64_branch_reg:
+            case Arm64InstructionId.BR_64_branch_reg:
+            case Arm64InstructionId.BRAA_64p_branch_reg:
+            case Arm64InstructionId.BRAAZ_64_branch_reg:
+            case Arm64InstructionId.BRAB_64p_branch_reg:
+            case Arm64InstructionId.BRABZ_64_branch_reg:
+            case Arm64InstructionId.CBGT_32_imm:
+            case Arm64InstructionId.CBLT_32_imm:
+            case Arm64InstructionId.CBHI_32_imm:
+            case Arm64InstructionId.CBLO_32_imm:
+            case Arm64InstructionId.CBEQ_32_imm:
+            case Arm64InstructionId.CBNE_32_imm:
+            case Arm64InstructionId.CBGT_64_imm:
+            case Arm64InstructionId.CBLT_64_imm:
+            case Arm64InstructionId.CBHI_64_imm:
+            case Arm64InstructionId.CBLO_64_imm:
+            case Arm64InstructionId.CBEQ_64_imm:
+            case Arm64InstructionId.CBNE_64_imm:
+            case Arm64InstructionId.CBGT_32_regs:
+            case Arm64InstructionId.CBGE_32_regs:
+            case Arm64InstructionId.CBHI_32_regs:
+            case Arm64InstructionId.CBHS_32_regs:
+            case Arm64InstructionId.CBEQ_32_regs:
+            case Arm64InstructionId.CBNE_32_regs:
+            case Arm64InstructionId.CBGT_64_regs:
+            case Arm64InstructionId.CBGE_64_regs:
+            case Arm64InstructionId.CBHI_64_regs:
+            case Arm64InstructionId.CBHS_64_regs:
+            case Arm64InstructionId.CBEQ_64_regs:
+            case Arm64InstructionId.CBNE_64_regs:
+            case Arm64InstructionId.CBBGT_8_regs:
+            case Arm64InstructionId.CBBGE_8_regs:
+            case Arm64InstructionId.CBBHI_8_regs:
+            case Arm64InstructionId.CBBHS_8_regs:
+            case Arm64InstructionId.CBBEQ_8_regs:
+            case Arm64InstructionId.CBBNE_8_regs:
+            case Arm64InstructionId.CBBLE_cbbge_8_regs:
+            case Arm64InstructionId.CBBLO_cbbhi_8_regs:
+            case Arm64InstructionId.CBBLS_cbbhs_8_regs:
+            case Arm64InstructionId.CBBLT_cbbgt_8_regs:
+            case Arm64InstructionId.CBGE_cbgt_32_imm:
+            case Arm64InstructionId.CBGE_cbgt_64_imm:
+            case Arm64InstructionId.CBHGT_16_regs:
+            case Arm64InstructionId.CBHGE_16_regs:
+            case Arm64InstructionId.CBHHI_16_regs:
+            case Arm64InstructionId.CBHHS_16_regs:
+            case Arm64InstructionId.CBHEQ_16_regs:
+            case Arm64InstructionId.CBHNE_16_regs:
+            case Arm64InstructionId.CBHLE_cbhge_16_regs:
+            case Arm64InstructionId.CBHLO_cbhhi_16_regs:
+            case Arm64InstructionId.CBHLS_cbhhs_16_regs:
+            case Arm64InstructionId.CBHLT_cbhgt_16_regs:
+            case Arm64InstructionId.CBHS_cbhi_32_imm:
+            case Arm64InstructionId.CBHS_cbhi_64_imm:
+            case Arm64InstructionId.CBLE_cblt_32_imm:
+            case Arm64InstructionId.CBLE_cblt_64_imm:
+            case Arm64InstructionId.CBLE_cbge_32_regs:
+            case Arm64InstructionId.CBLE_cbge_64_regs:
+            case Arm64InstructionId.CBLO_cbhi_32_regs:
+            case Arm64InstructionId.CBLO_cbhi_64_regs:
+            case Arm64InstructionId.CBLS_cblo_32_imm:
+            case Arm64InstructionId.CBLS_cblo_64_imm:
+            case Arm64InstructionId.CBLS_cbhs_32_regs:
+            case Arm64InstructionId.CBLS_cbhs_64_regs:
+            case Arm64InstructionId.CBLT_cbgt_32_regs:
+            case Arm64InstructionId.CBLT_cbgt_64_regs:
+            case Arm64InstructionId.CBNZ_32_compbranch:
+            case Arm64InstructionId.CBNZ_64_compbranch:
+            case Arm64InstructionId.CBZ_32_compbranch:
+            case Arm64InstructionId.CBZ_64_compbranch:
+            case Arm64InstructionId.ERET_64e_branch_reg:
+            case Arm64InstructionId.ERETAA_64e_branch_reg:
+            case Arm64InstructionId.ERETAB_64e_branch_reg:
+            case Arm64InstructionId.RET_64r_branch_reg:
+            case Arm64InstructionId.RETAA_64e_branch_reg:
+            case Arm64InstructionId.RETAB_64e_branch_reg:
+            case Arm64InstructionId.RETAASPPC_only_miscbranch:
+            case Arm64InstructionId.RETABSPPC_only_miscbranch:
+            case Arm64InstructionId.RETAASPPCR_64m_branch_reg:
+            case Arm64InstructionId.RETABSPPCR_64m_branch_reg:
+            case Arm64InstructionId.TBNZ_only_testbranch:
+            case Arm64InstructionId.TBZ_only_testbranch:
+                return true;
+            default:
+                return false;
+        }
+    }
 }

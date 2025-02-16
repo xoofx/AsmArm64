@@ -26,7 +26,7 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
         // MemoryMarshal.Write(buffer.Slice(2), (ushort)MnemonicIndex);
         // buffer[4] = (byte)InstructionClassIndex;
         // buffer[5] = (byte)FeatureExpressionIdIndex;
-        // buffer[6] = (byte)(UseOperandEncoding8Bytes ? 1 : 0);
+        // buffer[6] = Arm64InstructionEncodingFlags
         // buffer[7] = (byte)Operands.Count;
         Descriptor = descriptor;
         OperandsPtr = operandsPtr;
@@ -39,13 +39,15 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
 
     public Arm64InstructionClass Class => (Arm64InstructionClass) (byte) (Descriptor >> 32);
 
+    public Arm64InstructionFlags Flags => (Arm64InstructionFlags)((byte)(Descriptor >> 48) & 0x7F); // Don't expose bit 7 (flags encoding as 8 bytes)
+
     public Arm64FeatureExpressionId FeatureExpressionId => (Arm64FeatureExpressionId)(byte)(Descriptor >> 40);
 
     public int OperandCount => (byte)(Descriptor >> 56);
 
     public Arm64Operands Operands => new(this);
 
-    internal bool IsOperandEncodingSize4Bytes => ((byte)(Descriptor >> 48) & 1) == 0;
+    internal bool IsOperandEncodingSize4Bytes => ((byte)(Descriptor >> (48 + 7)) & 1) == 0;
     
     public Arm64Operand GetOperand(int index)
     {
@@ -66,7 +68,7 @@ public readonly unsafe struct Arm64Instruction : ISpanFormattable
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
         => TryFormat(destination, out charsWritten, format, provider, null);
 
-    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider, TryResolveLabelDelegate? tryResolveLabel)
+    public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryResolveLabel)
     {
         var mnemonic = this.Mnemonic.ToText(format.Length == 1 && format[0] == 'H');
         if (destination.Length < mnemonic.Length)

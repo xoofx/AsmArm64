@@ -25,6 +25,8 @@ public class Arm64InstructionBufferByList : Arm64InstructionBuffer
 
     public List<Arm64RawInstruction> Instructions => _instructions;
 
+    public override int Length => _instructions.Count * 4;
+
     public override Arm64RawInstruction ReadAt(uint offset) => _instructions[(int)offset >> 2];
 
     public override void WriteAt(uint offset, Arm64RawInstruction rawInstruction)

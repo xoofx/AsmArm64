@@ -6,6 +6,11 @@ namespace AsmArm64;
 
 public abstract class Arm64InstructionBuffer
 {
+    /// <summary>
+    /// Gets the length of this buffer in bytes.
+    /// </summary>
+    public abstract int Length { get; }
+
     public abstract Arm64RawInstruction ReadAt(uint offset);
 
     public abstract void WriteAt(uint offset, Arm64RawInstruction rawInstruction);

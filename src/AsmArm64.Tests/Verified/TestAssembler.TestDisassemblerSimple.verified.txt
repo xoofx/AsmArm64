@@ -1,0 +1,18 @@
+﻿LL_01:
+    mov x0, #5
+    bl LL_02
+
+    ret
+
+LL_02:
+    mov x1, #0
+    mov x2, #0
+
+LL_03:
+    add x1, x1, x2
+    add x2, x2, #1
+    cmp x2, x0
+    b.lt LL_03
+
+    mov x0, x1
+    ret

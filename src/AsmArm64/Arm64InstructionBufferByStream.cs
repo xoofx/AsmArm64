@@ -9,16 +9,20 @@ namespace AsmArm64;
 
 public class Arm64InstructionBufferByStream : Arm64InstructionBuffer
 {
-    private readonly Stream _stream;
     public Arm64InstructionBufferByStream(Stream stream)
     {
-        _stream = stream;
+        Stream = stream;
     }
+
+    public Stream Stream { get; set; }
+
+    public override int Length => (int)Stream.Length;
+
     public override Arm64RawInstruction ReadAt(uint offset)
     {
-        _stream.Seek(offset, SeekOrigin.Begin);
+        Stream.Seek(offset, SeekOrigin.Begin);
         Unsafe.SkipInit(out Arm64RawInstruction rawInstruction);
-        if (_stream.Read(MemoryMarshal.CreateSpan(ref Unsafe.As<uint, byte>(ref rawInstruction), 4)) != 4)
+        if (Stream.Read(MemoryMarshal.CreateSpan(ref Unsafe.As<uint, byte>(ref rawInstruction), 4)) != 4)
         {
             throw new InvalidOperationException("Cannot read instruction");
         }
@@ -27,7 +31,7 @@ public class Arm64InstructionBufferByStream : Arm64InstructionBuffer
 
     public override void WriteAt(uint offset, Arm64RawInstruction rawInstruction)
     {
-        _stream.Seek(offset, SeekOrigin.Begin);
-        _stream.Write(MemoryMarshal.CreateSpan(ref Unsafe.As<uint, byte>(ref rawInstruction), 4));
+        Stream.Seek(offset, SeekOrigin.Begin);
+        Stream.Write(MemoryMarshal.CreateSpan(ref Unsafe.As<uint, byte>(ref rawInstruction), 4));
     }
 }

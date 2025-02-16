@@ -2461,8 +2461,8 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x1A800400U; // Encoding for: CINC_csinc_32_condsel
         raw |= (uint)Wd.Index;
-        raw |= (uint)Wn.Index << 16;
         raw |= (uint)Wn.Index << 5;
+        raw |= (uint)Wn.Index << 16;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
     }
@@ -2475,8 +2475,8 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x9A800400U; // Encoding for: CINC_csinc_64_condsel
         raw |= (uint)Xd.Index;
-        raw |= (uint)Xn.Index << 16;
         raw |= (uint)Xn.Index << 5;
+        raw |= (uint)Xn.Index << 16;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
     }
@@ -2489,8 +2489,8 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x5A800000U; // Encoding for: CINV_csinv_32_condsel
         raw |= (uint)Wd.Index;
-        raw |= (uint)Wn.Index << 16;
         raw |= (uint)Wn.Index << 5;
+        raw |= (uint)Wn.Index << 16;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
     }
@@ -2503,8 +2503,8 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xDA800000U; // Encoding for: CINV_csinv_64_condsel
         raw |= (uint)Xd.Index;
-        raw |= (uint)Xn.Index << 16;
         raw |= (uint)Xn.Index << 5;
+        raw |= (uint)Xn.Index << 16;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
     }
@@ -2805,8 +2805,8 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x5A800400U; // Encoding for: CNEG_csneg_32_condsel
         raw |= (uint)Wd.Index;
-        raw |= (uint)Wn.Index << 16;
         raw |= (uint)Wn.Index << 5;
+        raw |= (uint)Wn.Index << 16;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
     }
@@ -2819,8 +2819,8 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xDA800400U; // Encoding for: CNEG_csneg_64_condsel
         raw |= (uint)Xd.Index;
-        raw |= (uint)Xn.Index << 16;
         raw |= (uint)Xn.Index << 5;
+        raw |= (uint)Xn.Index << 16;
         raw |= (uint)((byte)invcond.Invert() & (byte)0xF) << 12;
         return raw;
     }
@@ -4565,6 +4565,7 @@ static partial class Arm64InstructionFactory
         uint raw = 0x9AC01000U; // Encoding for: IRG_64i_dp_2src
         raw |= (uint)Xd_SP.Index;
         raw |= (uint)Xn_SP.Index << 5;
+        Xm = (Xm.Kind == Arm64RegisterKind.Invalid) ? Arm64RegisterX.XZR : Xm;
         raw |= (uint)Xm.Index << 16;
         return raw;
     }
@@ -10495,6 +10496,7 @@ static partial class Arm64InstructionFactory
     public static uint RET(Arm64RegisterX Xn = default)
     {
         uint raw = 0xD65F0000U; // Encoding for: RET_64r_branch_reg
+        Xn = (Xn.Kind == Arm64RegisterKind.Invalid) ? Arm64RegisterX.X30 : Xn;
         raw |= (uint)Xn.Index << 5;
         return raw;
     }
@@ -10658,8 +10660,8 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x13800000U; // Encoding for: ROR_extr_32_extract
         raw |= (uint)Wd.Index;
-        raw |= (uint)Ws.Index << 16;
         raw |= (uint)Ws.Index << 5;
+        raw |= (uint)Ws.Index << 16;
         raw |= (uint)(shift & 0x3F) << 10;
         return raw;
     }
@@ -10672,8 +10674,8 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0x93C00000U; // Encoding for: ROR_extr_64_extract
         raw |= (uint)Xd.Index;
-        raw |= (uint)Xs.Index << 16;
         raw |= (uint)Xs.Index << 5;
+        raw |= (uint)Xs.Index << 16;
         raw |= (uint)(shift & 0x3F) << 10;
         return raw;
     }

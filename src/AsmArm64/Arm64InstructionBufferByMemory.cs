@@ -9,11 +9,20 @@ namespace AsmArm64;
 
 public class Arm64InstructionBufferByMemory : Arm64InstructionBuffer
 {
-    private readonly Memory<byte> _memory;
+    private Memory<byte> _memory;
     public Arm64InstructionBufferByMemory(Memory<byte> memory)
     {
         _memory = memory;
     }
+
+    public Memory<byte> Memory
+    {
+        get => _memory;
+        set => _memory = value;
+    }
+    
+    public override int Length => _memory.Length;
+
     public override Arm64RawInstruction ReadAt(uint offset) => GetInstructionAt(offset);
 
     public override void WriteAt(uint offset, Arm64RawInstruction rawInstruction) => GetInstructionAt(offset) = rawInstruction;

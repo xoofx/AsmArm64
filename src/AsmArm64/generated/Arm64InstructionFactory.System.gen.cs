@@ -386,6 +386,7 @@ static partial class Arm64InstructionFactory
     public static uint GCSPOPM(Arm64RegisterX Xt = default)
     {
         uint raw = 0xD52B7720U; // Encoding for: GCSPOPM_sysl_rc_systeminstrs
+        Xt = (Xt.Kind == Arm64RegisterKind.Invalid) ? Arm64RegisterX.XZR : Xt;
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -484,6 +485,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xD5087000U; // Encoding for: IC_sys_cr_systeminstrs
         raw |= (uint)ic_op.Value << 5;
+        Xt = (Xt.Kind == Arm64RegisterKind.Invalid) ? Arm64RegisterX.XZR : Xt;
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -808,6 +810,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Cn.Index & 0xF) << 12;
         raw |= (uint)(Cm.Index & 0xF) << 8;
         raw |= (uint)(op2 & 0x7) << 5;
+        Xt = (Xt.Kind == Arm64RegisterKind.Invalid) ? Arm64RegisterX.XZR : Xt;
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -838,6 +841,7 @@ static partial class Arm64InstructionFactory
         raw |= (uint)(Cn.Index & 0xF) << 12;
         raw |= (uint)(Cm.Index & 0xF) << 8;
         raw |= (uint)(op2 & 0x7) << 5;
+        Xt1 = (Xt1.Kind == Arm64RegisterKind.Invalid) ? Arm64RegisterX.XZR : Xt1;
         raw |= (uint)Xt1.Index;
         return raw;
     }
@@ -871,6 +875,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xD5088000U; // Encoding for: TLBI_sys_cr_systeminstrs
         raw |= (uint)tlbi_op.Value << 5;
+        Xt = (Xt.Kind == Arm64RegisterKind.Invalid) ? Arm64RegisterX.XZR : Xt;
         raw |= (uint)Xt.Index;
         return raw;
     }
@@ -883,6 +888,7 @@ static partial class Arm64InstructionFactory
     {
         uint raw = 0xD5488000U; // Encoding for: TLBIP_sysp_cr_syspairinstrs
         raw |= (uint)tlbip_op.Value << 5;
+        Xt1 = (Xt1.Kind == Arm64RegisterKind.Invalid) ? Arm64RegisterX.XZR : Xt1;
         raw |= (uint)Xt1.Index;
         return raw;
     }

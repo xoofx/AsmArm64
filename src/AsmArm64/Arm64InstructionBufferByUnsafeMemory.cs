@@ -9,10 +9,22 @@ namespace AsmArm64;
 
 public unsafe class Arm64InstructionBufferByUnsafeMemory : Arm64InstructionBuffer
 {
-    private readonly byte* _buffer;
-    private readonly int _length;
+    private byte* _buffer;
+    private int _length;
     
     public Arm64InstructionBufferByUnsafeMemory(byte* buffer, int length)
+    {
+        if (buffer is null) throw new ArgumentNullException(nameof(buffer));
+        if (length < 0) throw new ArgumentOutOfRangeException(nameof(length));
+        _buffer = buffer;
+        _length = length;
+    }
+
+    public byte* Buffer => _buffer;
+
+    public override int Length => _length;
+
+    public void SetBuffer(byte* buffer, int length)
     {
         if (buffer is null) throw new ArgumentNullException(nameof(buffer));
         if (length < 0) throw new ArgumentOutOfRangeException(nameof(length));
