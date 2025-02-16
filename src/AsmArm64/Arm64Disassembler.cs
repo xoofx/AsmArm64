@@ -86,66 +86,107 @@ public class Arm64Disassembler
             for (int i = 0; i < rawInstructions.Length; i++)
             {
                 var rawInstruction = rawInstructions[i];
+
+                var instruction = Arm64Instruction.Decode(rawInstruction);
+
                 _currentOffset = i * 4;
-                PrintLabel(_currentOffset, textSpan, writer, nextNewLine, i == 0);
+                PrintLabel(_currentOffset, textSpan, writer, nextNewLine, i == 0, false);
                 nextNewLine = false;
+
+                // Pre instruction printer
+                if (Options.PreInstructionPrinter is not null)
+                {
+                    Options.PreInstructionPrinter(_currentOffset, instruction, writer);
+                }
+
+                var runningSpan = textSpan;
+                int charsWritten = 0;
 
                 // Write the indent
                 if (Options.PrintAddress || Options.PrintAssemblyBytes)
                 {
                     if (Options.PrintAddress)
                     {
-                        writer.Write($"{Options.BaseAddress + _currentOffset:X16}");
-                        WriteIndentSize(textSpan, writer);
+                        textSpan.TryWrite($"{Options.BaseAddress + _currentOffset:X16}", out var localCharsWritten);
+                        charsWritten += localCharsWritten;
+                        runningSpan = textSpan.Slice(localCharsWritten);
+
+                        TryWriteSpaces(runningSpan, Options.IndentSize);
+                        charsWritten += Options.IndentSize;
+                        runningSpan = runningSpan.Slice(Options.IndentSize);
                     }
 
                     if (Options.PrintAssemblyBytes)
                     {
                         var bytes = MemoryMarshal.AsBytes(new Span<uint>(ref rawInstruction));
-                        for (int bi = 0; bi < bytes.Length; bi++)
-                        {
-                            if (bi > 0) writer.Write(' ');
-                            writer.Write($"{bytes[bi]:X2}");
-                        }
+                        runningSpan.TryWrite($"{bytes[0]:X2} {bytes[1]:X2} {bytes[2]:X2} {bytes[3]:X2}", out var localCharsWritten);
+                        charsWritten += localCharsWritten;
+                        runningSpan = runningSpan.Slice(localCharsWritten);
 
-                        WriteIndentSize(textSpan, writer);
+                        TryWriteSpaces(runningSpan, Options.IndentSize);
+                        charsWritten += Options.IndentSize;
+                        runningSpan = runningSpan.Slice(Options.IndentSize);
                     }
                 }
                 else
                 {
-                    WriteIndentSize(textSpan, writer);
+                    TryWriteSpaces(runningSpan, Options.IndentSize);
+                    charsWritten += Options.IndentSize;
+                    runningSpan = runningSpan.Slice(Options.IndentSize);
                 }
 
                 // Write the instruction
                 {
-                    var instruction = Arm64Instruction.Decode(rawInstruction);
-                    var result = instruction.TryFormat(textSpan, out var charsWritten, null, Options.FormatProvider, _tryFormatLabelDelegate);
-                    Debug.Assert(result);
-                    writer.Write(textSpan.Slice(0, charsWritten));
+                    instruction.TryFormat(runningSpan, out var instructionCharsWritten, null, Options.FormatProvider, _tryFormatLabelDelegate);
+                    charsWritten += instructionCharsWritten;
+                    runningSpan = runningSpan.Slice(instructionCharsWritten);
 
-                    if (Options.TryFormatComment is not null)
+                    // Write padding
+                    if (Options.InstructionTextPaddingLength > 0 && instructionCharsWritten < Options.InstructionTextPaddingLength && TryWriteSpaces(runningSpan, Options.InstructionTextPaddingLength - instructionCharsWritten))
                     {
-                        var indentSpan = GetIndentSpan(textSpan);
-                        var localTextSpan = textSpan.Slice(indentSpan.Length);
-                        if (Options.TryFormatComment(_currentOffset, localTextSpan, out charsWritten))
+                        var paddingWritten = Options.InstructionTextPaddingLength - instructionCharsWritten;
+                        charsWritten += paddingWritten;
+                        runningSpan = runningSpan.Slice(paddingWritten);
+                    }
+                    
+                    if (Options.TryFormatComment is not null && TryWriteSpaces(runningSpan, 4))
+                    {
+                        charsWritten += 4;
+                        runningSpan = runningSpan.Slice(4);
+
+                        if ("// ".TryCopyTo(runningSpan))
                         {
-                            writer.Write(indentSpan);
-                            writer.Write("// ");
-                            writer.Write(localTextSpan.Slice(0, charsWritten));
+                            charsWritten += 3;
+                            runningSpan = runningSpan.Slice(3);
+                            if (Options.TryFormatComment(_currentOffset, instruction, runningSpan, out var commentsCharsWritten))
+                            {
+                                charsWritten += commentsCharsWritten;
+                                runningSpan = runningSpan.Slice(commentsCharsWritten);
+                            }
                         }
                     }
-                    writer.WriteLine();
+
+                    runningSpan = textSpan.Slice(0, charsWritten);
+                    runningSpan = runningSpan.TrimEnd(' ');
+
+                    writer.WriteLine(runningSpan);
 
                     if (instruction.Id.IsBranch())
                     {
                         nextNewLine = true;
                     }
                 }
+
+                // Post instruction printer
+                if (Options.PostInstructionPrinter is not null)
+                {
+                    Options.PostInstructionPrinter(_currentOffset, instruction, writer);
+                }
             }
 
             _currentOffset = rawInstructions.Length * 4;
             // Print any pending labels
-            PrintLabel(_currentOffset, textSpan, writer, false, false);
+            PrintLabel(_currentOffset, textSpan, writer, false, false, true);
         }
         finally
         {
@@ -169,10 +210,23 @@ public class Arm64Disassembler
         return default;
     }
 
+    private bool TryWriteSpaces(Span<char> textSpan, int count)
+    {
+        if (count > textSpan.Length)
+        {
+            return false;
+        }
+        for (int i = 0; i < count; i++)
+        {
+            textSpan[i] = ' ';
+        }
+        return true;
+    }
+    
     private void WriteIndentSize(Span<char> textSpan, TextWriter writer)
         => writer.Write(GetIndentSpan(textSpan));
 
-    private void PrintLabel(int offset, Span<char> textSpan, TextWriter writer, bool nextNewLine, bool isFirstLabel)
+    private void PrintLabel(int offset, Span<char> textSpan, TextWriter writer, bool nextNewLine, bool isFirstLabel, bool isLast)
     {
         if (_internalLabels.TryGetValue(offset, out var labelIndex))
         {
@@ -194,7 +248,7 @@ public class Arm64Disassembler
         }
         else
         {
-            if (Options.PrintNewLineAfterBranch && nextNewLine)
+            if (Options.PrintNewLineAfterBranch && nextNewLine && !isLast)
             {
                 writer.WriteLine();
             }

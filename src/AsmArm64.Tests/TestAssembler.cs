@@ -70,6 +70,30 @@ public class TestAssembler : VerifyBase
         await Verify(disassembledText);
     }
 
+    [TestMethod]
+    public async Task TestDisassemblerAdvanced()
+    {
+        var instructionBuffer = AssembleInstructionsSample();
+        var disassembler = new Arm64Disassembler
+        {
+            Options =
+            {
+                PrintAddress = true,
+                PrintAssemblyBytes = true,
+                PreInstructionPrinter = (offset, instruction, writer) => writer.WriteLine($"// Id: {instruction.Id}, Class: {instruction.Class}, Flags: {instruction.Flags}, OperandCount: {instruction.OperandCount}"),
+                PostInstructionPrinter = (offset, instruction, writer) => writer.WriteLine($"// End of instruction {instruction.Id}"),
+                TryFormatComment = (long offset, Arm64Instruction instruction, Span<char> destination, out int written) => destination.TryWrite($"<- {instruction.Id}, Feature: {instruction.FeatureExpressionId}", out written)
+            }
+        };
+
+        var textWriter = new StringWriter();
+
+        disassembler.Disassemble(instructionBuffer, textWriter);
+
+        var disassembledText = textWriter.ToString();
+        await Verify(disassembledText);
+    }
+
     private static byte[] AssembleInstructionsSample()
     {
         var bufferList = new Arm64InstructionBufferByList();

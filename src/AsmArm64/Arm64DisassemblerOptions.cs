@@ -7,21 +7,38 @@ namespace AsmArm64;
 public class Arm64DisassemblerOptions
 {
     private int _formatLineBufferLength;
+    private int _indentSize;
+    private int _instructionTextPaddingLength;
 
     public Arm64DisassemblerOptions()
     {
         BaseAddress = 0x1_0000;
-        FormatLineBufferLength = 1024;
+        FormatLineBufferLength = 4096;
         IndentSize = 4;
         LocalLabelPrefix = "LL_";
         PrintNewLineBeforeLabel = true;
         PrintNewLineAfterBranch = true;
         PrintLabelBeforeFirstInstruction = true;
+        InstructionTextPaddingLength = 16;
     }
 
     public Arm64TryFormatDelegate? TryFormatLabel { get; set; }
 
-    public Arm64TryFormatDelegate? TryFormatComment { get; set; }
+    public Arm64TryFormatInstructionCommentDelegate? TryFormatComment { get; set; }
+
+    public int InstructionTextPaddingLength
+    {
+        get => _instructionTextPaddingLength;
+        set
+        {
+            ArgumentOutOfRangeException.ThrowIfNegative(value);
+            _instructionTextPaddingLength = value;
+        }
+    }
+
+    public Arm64InstructionPrinterDelegate? PreInstructionPrinter { get; set; }
+
+    public Arm64InstructionPrinterDelegate? PostInstructionPrinter { get; set; }
 
     public int FormatLineBufferLength
     {
@@ -41,7 +58,15 @@ public class Arm64DisassemblerOptions
 
     public long BaseAddress { get; set; }
 
-    public uint IndentSize { get; set; }
+    public int IndentSize
+    {
+        get => _indentSize;
+        set
+        {
+            ArgumentOutOfRangeException.ThrowIfNegative(value);
+            _indentSize = value;
+        }
+    }
 
     public bool PrintLabelBeforeFirstInstruction { get; set; }
 
@@ -51,3 +76,8 @@ public class Arm64DisassemblerOptions
 
     public IFormatProvider? FormatProvider { get; set; }
 }
+
+
+public delegate void Arm64InstructionPrinterDelegate(long offset, Arm64Instruction instruction, TextWriter writer);
+
+public delegate bool Arm64TryFormatInstructionCommentDelegate(long offset, Arm64Instruction instruction, Span<char> destination, out int charsWritten);

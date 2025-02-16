@@ -17,9 +17,9 @@ namespace AsmArm64;
 public enum Arm64FeatureExpressionId : byte
 {
     /// <summary>
-    /// The feature is invalid / unknown.
+    /// There is no specific required CPU features.
     /// </summary>
-    Invalid,
+    None,
     /// <summary>
     /// Feature `FEAT_AES` for `ARMv8.0`.
     /// </summary>
