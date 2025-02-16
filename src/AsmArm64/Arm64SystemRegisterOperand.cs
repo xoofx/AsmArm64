@@ -12,6 +12,7 @@ public readonly struct Arm64SystemRegisterOperand : IArm64Operand
     internal Arm64SystemRegisterOperand(Arm64Operand operand)
     {
         var descriptor = operand.Descriptor;
+        Flags = operand.Flags;
         var rawValue = operand.RawValue;
 
         // We don't need to encode the position, as it is always BitRange(5, 16)
@@ -36,6 +37,8 @@ public readonly struct Arm64SystemRegisterOperand : IArm64Operand
 
     public Arm64SystemRegisterKind RegisterKind { get; }
 
+    public Arm64OperandFlags Flags { get; }
+    
     public Arm64SystemRegister Value { get; }
 
     /// <inheritdoc />

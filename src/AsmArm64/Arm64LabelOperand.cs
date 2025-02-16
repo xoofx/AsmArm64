@@ -13,6 +13,7 @@ public readonly struct Arm64LabelOperand : IArm64Operand
     internal Arm64LabelOperand(Arm64Operand operand)
     {
         var descriptor = operand.Descriptor;
+        Flags = operand.Flags;
         var rawValue = operand.RawValue;
 
         // buffer[1] = (byte)LabelKind;
@@ -87,6 +88,8 @@ public readonly struct Arm64LabelOperand : IArm64Operand
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Label;
+
+    public Arm64OperandFlags Flags { get; }
 
     public long Offset { get; }
 

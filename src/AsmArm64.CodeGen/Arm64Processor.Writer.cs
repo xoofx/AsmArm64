@@ -234,8 +234,8 @@ partial class Arm64Processor
         w.WriteSummary("A list of ARM64 CPU features.");
         w.WriteLine("public enum Arm64FeatureExpressionId : byte");
         w.OpenBraceBlock();
-        w.WriteSummary("The feature is invalid / unknown.");
-        w.WriteLine("Invalid,");
+        w.WriteSummary("There is no specific CPU features.");
+        w.WriteLine("None,");
         for (var i = 0; i < _featureExpressions.Count; i++)
         {
             var featureExpression = _featureExpressions[i];

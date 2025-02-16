@@ -23,7 +23,14 @@ abstract class OperandDescriptor(Arm64OperandKind kind)
     [JsonIgnore]
     public Arm64OperandKind Kind { get; } = kind;
 
-    public bool IsOptional { get; set; }
+    public bool IsOptional
+    {
+        get => (Flags & Arm64OperandFlags.Optional) != 0;
+        set => Flags = value ? Flags | Arm64OperandFlags.Optional : Flags & ~Arm64OperandFlags.Optional;
+    }
+
+    public Arm64OperandFlags Flags { get; set; }
+
 
     public string Name { get; set; } = string.Empty;
     public uint TableEncodingOffset { get; set; }
@@ -31,7 +38,7 @@ abstract class OperandDescriptor(Arm64OperandKind kind)
     public void Encode(Span<byte> buffer)
     {
         Debug.Assert((byte)Kind <= 0xF);
-        buffer[0] = (byte)((byte)Kind | (IsOptional ? 0x80 : 0));
+        buffer[0] = (byte)((byte)Kind | ((byte)Flags << 4));
         EncodeImpl(buffer);
     }
 

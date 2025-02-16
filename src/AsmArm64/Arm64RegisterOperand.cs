@@ -12,6 +12,7 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
     internal Arm64RegisterOperand(Arm64Operand operand)
     {
         var descriptor = operand.Descriptor;
+        Flags = operand.Flags;
         var rawValue = operand.RawValue;
         // buffer[1] = (byte)((byte)RegisterKind | ((byte)RegisterIndexEncodingKind << 4));
         var encodingKind = (Arm64RegisterEncodingKind)((byte)(descriptor >> 8) & 0xF);
@@ -19,7 +20,6 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
         // buffer[2] = (byte)((byte)IndexerIndex | (byte)(IsOptional ? 0x80  : 0) | (byte)(IsPaired ? 0x40 : 0));
         var elt2 = (byte)(descriptor >> 16);
         var elementIndexerId = (byte)(elt2 & 0x3F);
-        IsOptional = (elt2 & 0x80) != 0;
         IsPaired = (elt2 & 0x40) != 0;
         // if (RegisterIndexEncodingKind == Arm64RegisterIndexEncodingKind.BitMapExtract)
         // {
@@ -167,7 +167,9 @@ public readonly struct Arm64RegisterOperand : IArm64Operand
 
     public Arm64RegisterAny Value { get; }
 
-    public bool IsOptional { get; }
+    public bool IsOptional => (Flags & Arm64OperandFlags.Optional) != 0;
+
+    public Arm64OperandFlags Flags { get; }
 
     public bool IsPaired { get; }
 

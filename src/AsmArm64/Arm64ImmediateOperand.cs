@@ -17,6 +17,7 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
     internal Arm64ImmediateOperand(Arm64Operand operand)
     {
         var descriptor = operand.Descriptor;
+        Flags = operand.Flags;
         var rawValue = operand.RawValue;
 
         _is32 = true;
@@ -119,7 +120,11 @@ public readonly struct Arm64ImmediateOperand : IArm64Operand
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Immediate;
-    
+
+    public bool IsOptional => (Flags & Arm64OperandFlags.Optional) != 0;
+
+    public Arm64OperandFlags Flags { get; }
+
     public long Value { get; }
 
     public int ValueAsInt => (int)Value;

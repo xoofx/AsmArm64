@@ -12,6 +12,7 @@ public readonly struct Arm64RegisterGroupOperand : IArm64Operand
     internal Arm64RegisterGroupOperand(Arm64Operand operand)
     {
         var descriptor = operand.Descriptor;
+        Flags = operand.Flags;
         var rawValue = operand.RawValue;
 
         // Debug.Assert(Count >= 1 && Count <= 4);
@@ -37,6 +38,8 @@ public readonly struct Arm64RegisterGroupOperand : IArm64Operand
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.RegisterGroup;
+
+    public Arm64OperandFlags Flags { get; }
 
     public Arm64RegisterGroupAny Value { get; }
 

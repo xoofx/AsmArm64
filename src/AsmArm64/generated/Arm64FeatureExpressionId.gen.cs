@@ -17,7 +17,7 @@ namespace AsmArm64;
 public enum Arm64FeatureExpressionId : byte
 {
     /// <summary>
-    /// There is no specific required CPU features.
+    /// There is no specific CPU features.
     /// </summary>
     None,
     /// <summary>

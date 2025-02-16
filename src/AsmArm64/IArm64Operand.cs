@@ -7,7 +7,9 @@ namespace AsmArm64;
 public interface IArm64Operand : ISpanFormattable
 {
     Arm64OperandKind Kind { get; }
-    
+
+    Arm64OperandFlags Flags { get; }
+
     bool TryFormat(Arm64Instruction instruction, Span<char> destination, out int charsWritten, out bool isDefaultValue, ReadOnlySpan<char> format, IFormatProvider? provider, Arm64TryFormatDelegate? tryFormatLabel = null);
 }
 

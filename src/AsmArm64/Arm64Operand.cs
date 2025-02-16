@@ -19,7 +19,9 @@ public readonly struct Arm64Operand : IArm64Operand
 
     public Arm64OperandKind Kind => (Arm64OperandKind)(byte)(Descriptor & 0xF);
 
-    public bool IsOptional => ((byte)Descriptor & 0x80) != 0;
+    public bool IsOptional => (Flags & Arm64OperandFlags.Optional) != 0;
+
+    public Arm64OperandFlags Flags => (Arm64OperandFlags)((byte)Descriptor >> 4);
 
     /// <inheritdoc />
     public override string ToString() => ToString(null, null);

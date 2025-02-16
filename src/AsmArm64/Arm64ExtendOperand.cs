@@ -16,6 +16,7 @@ public readonly struct Arm64ExtendOperand : IArm64Operand
         // buffer[2] = (byte)AmountEncoding.ToSmallEncoding();
         // buffer[3] = (byte)((byte)EncodingKind | (byte)(Is64Bit ? 0x80 : 0));
         var descriptor = operand.Descriptor;
+        Flags = operand.Flags;
         var rawValue = operand.RawValue;
 
         var b3 = (byte)(descriptor >> 24);
@@ -56,6 +57,10 @@ public readonly struct Arm64ExtendOperand : IArm64Operand
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Shift;
+
+    public bool IsOptional => (Flags & Arm64OperandFlags.Optional) != 0;
+
+    public Arm64OperandFlags Flags { get; }
 
     public Arm64ExtendKind ExtendKind { get; }
 

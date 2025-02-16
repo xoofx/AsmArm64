@@ -15,6 +15,7 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
     internal Arm64MemoryOperand(Arm64Operand operand)
     {
         var descriptor = operand.Descriptor;
+        Flags = operand.Flags;
         var rawValue = operand.RawValue;
 
         // buffer[1] = (byte)((byte)MemoryEncodingKind | ((byte)ExtendKind << 4));
@@ -192,6 +193,8 @@ public readonly struct Arm64MemoryOperand : IArm64Operand
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Memory;
+
+    public Arm64OperandFlags Flags { get; }
 
     public Arm64MemoryAccessorAny Accessor => _accessor;
 

@@ -16,6 +16,7 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
         // buffer[2] = (byte)ShiftEncoding.ToSmallEncoding();
         // buffer[3] = (byte)AmountEncoding.ToSmallEncoding();
         var descriptor = operand.Descriptor;
+        Flags = operand.Flags;
         var rawValue = operand.RawValue;
 
         var amount = Arm64DecodingHelper.GetSmallBitRange((byte)(descriptor >> 24), rawValue);
@@ -60,6 +61,8 @@ public readonly struct Arm64ShiftOperand : IArm64Operand
     }
 
     public Arm64OperandKind Kind => Arm64OperandKind.Shift;
+
+    public Arm64OperandFlags Flags { get; }
 
     public Arm64ShiftKind ShiftKind { get; }
 

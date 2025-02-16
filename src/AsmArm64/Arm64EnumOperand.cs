@@ -13,6 +13,7 @@ public readonly struct Arm64EnumOperand : IArm64Operand
     internal Arm64EnumOperand(Arm64Operand operand)
     {
         var descriptor = operand.Descriptor;
+        Flags = operand.Flags;
         var rawValue = operand.RawValue;
 
         // buffer[1] = (byte)EnumKind;
@@ -73,6 +74,11 @@ public readonly struct Arm64EnumOperand : IArm64Operand
     public Arm64EnumKind EnumKind { get; }
 
     public int Value { get; }
+
+    public bool IsOptional => (Flags & Arm64OperandFlags.Optional) != 0;
+
+    public Arm64OperandFlags Flags { get; }
+
 
     public bool IsImmediate { get; }
 

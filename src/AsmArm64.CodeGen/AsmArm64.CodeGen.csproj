@@ -17,6 +17,7 @@
     <Compile Include="..\AsmArm64\Arm64LabelEncodingKind.cs" Link="Model\Arm64LabelEncodingKind.cs" />
     <Compile Include="..\AsmArm64\Arm64MemoryEncodingKind.cs" Link="Model\Arm64MemoryEncodingKind.cs" />
     <Compile Include="..\AsmArm64\Arm64MemoryExtendEncodingKind.cs" Link="Model\Arm64MemoryExtendEncodingKind.cs" />
+    <Compile Include="..\AsmArm64\Arm64OperandFlags.cs" Link="Arm64OperandFlags.cs" />
     <Compile Include="..\AsmArm64\Arm64OperandKind.cs" Link="Model\Arm64OperandKind.cs" />
     <Compile Include="..\AsmArm64\Arm64RegisterEncodingKind.cs" Link="Model\Arm64RegisterEncodingKind.cs" />
     <Compile Include="..\AsmArm64\Arm64RegisterIndexEncodingKind.cs" Link="Model\Arm64RegisterIndexEncodingKind.cs" />
