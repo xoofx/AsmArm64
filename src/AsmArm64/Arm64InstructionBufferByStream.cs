@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 
 namespace AsmArm64;
 
-public class Arm64InstructionAccessorByStream : Arm64InstructionAccessor
+public class Arm64InstructionBufferByStream : Arm64InstructionBuffer
 {
     private readonly Stream _stream;
-    public Arm64InstructionAccessorByStream(Stream stream)
+    public Arm64InstructionBufferByStream(Stream stream)
     {
         _stream = stream;
     }

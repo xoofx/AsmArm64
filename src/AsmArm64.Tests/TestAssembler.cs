@@ -10,7 +10,7 @@ public class TestAssembler
     [TestMethod]
     public void TestSimple()
     {
-        var accessor = new Arm64InstructionAccessorByList();
+        var accessor = new Arm64InstructionBufferByList();
         var asm = new Arm64Assembler(accessor);
         var label = asm.CreateLabelId("Hello");
         asm.B(Arm64ConditionalKind.AL, label);

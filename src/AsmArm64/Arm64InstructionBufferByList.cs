@@ -6,19 +6,19 @@ using System.Runtime.InteropServices;
 
 namespace AsmArm64;
 
-public class Arm64InstructionAccessorByList : Arm64InstructionAccessor
+public class Arm64InstructionBufferByList : Arm64InstructionBuffer
 {
     private readonly List<Arm64RawInstruction> _instructions;
 
-    public Arm64InstructionAccessorByList()
+    public Arm64InstructionBufferByList()
     {
         _instructions = new();
     }
-    public Arm64InstructionAccessorByList(int capacity)
+    public Arm64InstructionBufferByList(int capacity)
     {
         _instructions = new(capacity);
     }
-    public Arm64InstructionAccessorByList(List<Arm64RawInstruction> instructions)
+    public Arm64InstructionBufferByList(List<Arm64RawInstruction> instructions)
     {
         _instructions = instructions;
     }

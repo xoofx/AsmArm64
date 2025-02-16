@@ -12,18 +12,18 @@ public partial class Arm64Assembler
 {
     private readonly List<Arm64Label> _labels;
     private readonly List<UnboundInstructionLabel> _instructionsWithLabelToPatch;
-    private readonly Arm64InstructionAccessor _accessor;
+    private readonly Arm64InstructionBuffer _buffer;
 
-    public Arm64Assembler(Arm64InstructionAccessor accessor)
+    public Arm64Assembler(Arm64InstructionBuffer buffer)
     {
-        ArgumentNullException.ThrowIfNull(accessor);
+        ArgumentNullException.ThrowIfNull(buffer);
         _labels = new();
         _instructionsWithLabelToPatch = new();
         BaseAddress = 0x1_0000UL;
-        _accessor = accessor;
+        _buffer = buffer;
     }
 
-    public Arm64InstructionAccessor Accessor => _accessor;
+    public Arm64InstructionBuffer Buffer => _buffer;
 
     public uint CurrentOffset { get; private protected set; }
 
@@ -45,9 +45,9 @@ public partial class Arm64Assembler
             var labelReference = GetLabel(unboundLabel.LabelId);
             if (!labelReference.IsBound) throw new InvalidOperationException($"Label {unboundLabel.LabelId} is not bound");
             var offset = (int)(labelReference.Address - (BaseAddress + unboundLabel.InstructionOffset));
-            var rawInstruction = _accessor.ReadAt(unboundLabel.InstructionOffset);
+            var rawInstruction = _buffer.ReadAt(unboundLabel.InstructionOffset);
             rawInstruction |= Arm64LabelOperand.Encode(unboundLabel.LabelOperandDescriptor, offset);
-            _accessor.WriteAt(unboundLabel.InstructionOffset, rawInstruction);
+            _buffer.WriteAt(unboundLabel.InstructionOffset, rawInstruction);
         }
 
         _instructionsWithLabelToPatch.Clear();
@@ -93,7 +93,7 @@ public partial class Arm64Assembler
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void AddInstruction(Arm64RawInstruction rawInstruction)
     {
-        _accessor.WriteAt(CurrentOffset, rawInstruction);
+        _buffer.WriteAt(CurrentOffset, rawInstruction);
         CurrentOffset += 4;
     }
     

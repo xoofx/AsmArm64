@@ -16,7 +16,7 @@ public class Arm64InstructionFactoryTests
 
         if (funcAsm is not null)
         {
-            var instrList = new Arm64InstructionAccessorByList();
+            var instrList = new Arm64InstructionBufferByList();
             var assembler = new Arm64Assembler(instrList);
             funcAsm(assembler);
             assembler.Assemble();

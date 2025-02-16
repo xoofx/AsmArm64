@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 
 namespace AsmArm64;
 
-public class Arm64InstructionAccessorByMemory : Arm64InstructionAccessor
+public class Arm64InstructionBufferByMemory : Arm64InstructionBuffer
 {
     private readonly Memory<byte> _memory;
-    public Arm64InstructionAccessorByMemory(Memory<byte> memory)
+    public Arm64InstructionBufferByMemory(Memory<byte> memory)
     {
         _memory = memory;
     }

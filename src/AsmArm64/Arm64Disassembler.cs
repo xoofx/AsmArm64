@@ -4,9 +4,7 @@
 
 namespace AsmArm64;
 
-public abstract class Arm64InstructionAccessor
+public class Arm64Disassembler
 {
-    public abstract Arm64RawInstruction ReadAt(uint offset);
-
-    public abstract void WriteAt(uint offset, Arm64RawInstruction rawInstruction);
+        
 }
